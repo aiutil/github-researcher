@@ -31,7 +31,7 @@
     <div class="filter-bar">
         <div class="filter-group">
             <label>🔤 语言</label>
-            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="JavaScript">JavaScript</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="PLpgSQL">PLpgSQL</option><option value="Python">Python</option><option value="Python / C++">Python / C++</option><option value="Python/Swift">Python/Swift</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Shell / Python">Shell / Python</option><option value="Swift">Swift</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Zig">Zig</option><option value="无特定语言">无特定语言</option></select>
+            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="JavaScript">JavaScript</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="Python">Python</option><option value="Python / C++">Python / C++</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Shell / Python">Shell / Python</option><option value="Swift">Swift</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Zig">Zig</option><option value="无特定语言">无特定语言</option></select>
         </div>
         <div class="filter-group">
             <label>🏷️ 类型</label>
@@ -55,6 +55,50 @@
     </div>
     <div class="filter-empty" id="filter-empty">😢 没有匹配的项目</div>
     <div class="card-grid" id="project-grid">
+                <div class="card" onclick="window.location='/projects/xyz-ai-lab-axrl.html'" style="cursor:pointer" data-language="Python" data-category="基础设施候选" data-stars="569" data-date="2026-07-30" data-name="XYZ-AI-Lab/axrl">
+                    <div class="card-top">
+                        <div class="card-emoji">🔄</div>
+                        <div class="card-stars">569 stars</div>
+                    </div>
+                    <div class="card-title">XYZ-AI-Lab/axrl</div>
+                    <div class="card-desc">Agentic RL 后训练框架，SGLang rollout + Megatron 训练，支持 300+ 轮轨迹、数百亿参数规模训练，PPO/GRPO/GSPO 多目标，解决 rollout-trainer 一致性</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-green">基础设施候选</span></div>
+                    <div class="card-actions"><a href="https://github.com/XYZ-AI-Lab/axrl" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-07-30</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/gavamedia-deltafin.html'" style="cursor:pointer" data-language="Python" data-category="观察型" data-stars="308" data-date="2026-07-30" data-name="gavamedia/deltafin">
+                    <div class="card-top">
+                        <div class="card-emoji">🍎</div>
+                        <div class="card-stars">308 stars</div>
+                    </div>
+                    <div class="card-title">gavamedia/deltafin</div>
+                    <div class="card-desc">在单台 Apple Silicon Mac 上运行 2.8T 参数 Kimi K3，MXFP4 专家按需 HTTP 流式加载到本地磁盘缓存，融合 NEON 内核 + Metal 计算，M1 Max 64GB 实测 0.0687 token/</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">观察型</span></div>
+                    <div class="card-actions"><a href="https://github.com/gavamedia/deltafin" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-07-30</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/moonshotai-kimi-k3.html'" style="cursor:pointer" data-language="N/A（模型权重仓库）" data-category="基础设施候选" data-stars="5511" data-date="2026-07-30" data-name="MoonshotAI/Kimi-K3">
+                    <div class="card-top">
+                        <div class="card-emoji">🧠</div>
+                        <div class="card-stars">5,511 stars</div>
+                    </div>
+                    <div class="card-title">MoonshotAI/Kimi-K3</div>
+                    <div class="card-desc">首个开源 3T 级模型，2.8T 参数 MoE / 104B 激活，KDA + Attention Residuals 新架构，Stable LatentMoE（896 专家选 16），1M 上下文，原生多模态，对标 Claude Fabl</div>
+                    <div class="card-tags"><span class="tag tag-purple">N/A（模型权重仓库）</span><span class="tag tag-green">基础设施候选</span></div>
+                    <div class="card-actions"><a href="https://github.com/MoonshotAI/Kimi-K3" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-07-30</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/moonshotai-moonep.html'" style="cursor:pointer" data-language="Python/CUDA" data-category="基础设施候选" data-stars="858" data-date="2026-07-30" data-name="MoonshotAI/MoonEP">
+                    <div class="card-top">
+                        <div class="card-emoji">⚖️</div>
+                        <div class="card-stars">858 stars</div>
+                    </div>
+                    <div class="card-title">MoonshotAI/MoonEP</div>
+                    <div class="card-desc">专家并行通信库，通过动态冗余专家实现每 rank 完美负载均衡（恒定 S×K tokens），零拷贝 + 静态形状，通信延迟低于 DeepEP v2 且对路由不均衡免疫</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python/CUDA</span><span class="tag tag-green">基础设施候选</span></div>
+                    <div class="card-actions"><a href="https://github.com/MoonshotAI/MoonEP" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-07-30</div>
+                </div>
                 <div class="card" onclick="window.location='/projects/kvcache-ai-agentenv.html'" style="cursor:pointer" data-language="Rust" data-category="基础设施候选" data-stars="1411" data-date="2026-07-29" data-name="kvcache-ai/AgentENV">
                     <div class="card-top">
                         <div class="card-emoji">⚡</div>

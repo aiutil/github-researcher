@@ -6,19 +6,19 @@
 
 ---
 
-## 最新研究摘要（2026-07-29）
+## 最新研究摘要（2026-07-30）
 
-**OpenWorker 重定义「本地优先 AI Coworker」交付物范式 · AgentENV 把 Agent RL 训练底层 Firecracker 微虚拟机基础设施开源 · scriptc 让 TypeScript 零运行时编译为原生二进制**
+**Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1M 上下文/原生多模态）并带火全栈基础设施 · MoonEP 用动态冗余专家实现 EP 完美负载均衡，对标 DeepEP v2 · deltafin 把 2.8T MoE 通过专家按需流式加载塞进单台 Apple Silicon Mac**
 
 今日热榜新信号：
-- **andrewyng/openworker**（9,965 stars）：Andrew Ng 出品的开源本地 AI Coworker，交付成品（文档/报告/已发送消息）而非聊天，审批门控 + BYO 模型 + 25+ 连接器
-- **kvcache-ai/AgentENV**（1,411 stars）：Rust 实现的分布式 Agent 环境平台，Firecracker 微虚拟机 + 快照 fork + 50ms 恢复，为 Kimi K3 Agent RL 训练提供底座
-- **vercel-labs/scriptc**（2,099 stars）：TypeScript→原生二进制编译器，零运行时（无 Node/V8），178KB 二进制 / 2ms 启动，99% 语句可静态编译
+- **MoonshotAI/Kimi-K3**（5,511 stars）：首个开源 3T 级模型，2.8T 参数 MoE / 104B 激活，KDA + Attention Residuals 新架构，Stable LatentMoE（896 专家选 16），1M 上下文，原生多模态，对标 Claude Fable 5 / GPT-5.6
+- **MoonshotAI/MoonEP**（858 stars）：专家并行通信库，通过动态冗余专家实现每 rank 完美负载均衡（恒定 S×K tokens），零拷贝 + 静态形状，通信延迟低于 DeepEP v2 且对路由不均衡免疫
+- **gavamedia/deltafin**（308 stars）：在单台 Apple Silicon Mac 上运行 2.8T 参数 Kimi K3，MXFP4 专家按需 HTTP 流式加载到本地磁盘缓存，融合 NEON 内核 + Metal 计算，M1 Max 64GB 实测 0.0687 token/s
 
+**→ [查看 2026-07-30 完整简报](daily/2026-07-30.md)**
 **→ [查看 2026-07-29 完整简报](daily/2026-07-29.md)**
 **→ [查看 2026-07-28 完整简报](daily/2026-07-28.md)**
 **→ [查看 2026-07-27 完整简报](daily/2026-07-27.md)**
-**→ [查看 2026-07-26 完整简报](daily/2026-07-26.md)**
 
 ---
 
@@ -26,22 +26,22 @@
 
 | 日期 | 核心主题 | 重点项目数 |
 |------|---------|----------|
+| [2026-07-30](daily/2026-07-30.md) | Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1 | 4 个深度分析 |
 | [2026-07-29](daily/2026-07-29.md) | OpenWorker 重定义「本地优先 AI Coworker」交付物范式 ·  | 4 个深度分析 |
 | [2026-07-28](daily/2026-07-28.md) | openclaw（384,378 stars） · hermes-agent（2 | 8 个深度分析 |
 | [2026-07-27](daily/2026-07-27.md) | freeCodeCamp（453,008 stars） · openclaw（3 | 8 个深度分析 |
 | [2026-07-26](daily/2026-07-26.md) | freeCodeCamp（453,008 stars） · react（246, | 8 个深度分析 |
 | [2026-07-25](daily/2026-07-25.md) | caveman（93,628 stars） · awesome-mcp-serv | 8 个深度分析 |
 | [2026-07-24](daily/2026-07-24.md) | Human-Agent 协作通信基础设施——Block/Buzz 8.1K⭐（N | 5 个深度分析 |
-| [2026-07-23](daily/2026-07-23.md) | superpowers（262,276 stars） · yt-dlp（180, | 8 个深度分析 |
 
 ---
 
 ## 当前最值得关注的趋势
 
-1. **本地优先 AI Coworker 范式：交付成品而非对话**：相关项目 openworker, hermes-agent。
-2. **Agent RL 训练基础设施开源化：Firecracker 微虚拟机即服务**：相关项目 agentenv, kimi-k3。
-3. **零运行时语言编译：TS→Native 打破 JS 引擎依赖**：相关项目 scriptc。
-4. **单文件自包含应用 + AI 可编辑 JSON：本地优先文档新形态**：相关项目 bento。
+1. **Kimi K3 发布：3T 级开源模型 + 全栈基础设施同日涌现**：相关项目 kimi-k3, moonep, deltafin。
+2. **MoE 训练通信库赛道：MoonEP 动态冗余专家对标 DeepEP**：相关项目 moonep。
+3. **超参数模型本地推理边界探索：2.8T MoE 按需流式加载进单机**：相关项目 deltafin。
+4. **Agent 后训练框架成熟化：多轮 Agent RL 走向工程化**：相关项目 axrl。
 
 ---
 
@@ -49,6 +49,7 @@
 
 | 项目 | 分类 | 核心价值 | 状态 |
 |------|------|---------|------|
+| [MoonshotAI/Kimi-K3](projects/kimi-k3.md) | 基础设施候选 | 首个开源 3T 级模型——2.8T 参数 MoE / 104B 激活，KDA + | 持续跟踪 |
 | [DietrichGebert/ponytail](projects/ponytail.md) | 工具型 | 让 AI Agent 像最懒的资深工程师一样思考——YAGNI 极简主义 Ski | 持续跟踪 |
 | [12-Factor Agents](projects/12-factor-agents.md) | 基础设施候选 | 构建足够好到可以交给专业用户使用的 LLM 驱动软件的 12 条工程原则，Age | 持续跟踪 |
 | [codebase-memory-mcp](projects/codebase-memory-mcp.md) | 基础设施候选 | 高性能代码智能 MCP Server——用 tree-sitter 将代码库索引 | 持续跟踪 |
@@ -58,15 +59,14 @@
 | [Understand-Anything](projects/understand-anything.md) | 平台候选 | 将任意代码转换为交互式知识图谱，支持探索、搜索和问答，兼容 Claude Cod | 持续跟踪 |
 | [NVIDIA OpenShell](projects/openshell.md) | 基础设施候选 | NVIDIA 出品的 Agent 安全运行时沙箱——Rust 实现，四层策略防御 | 持续跟踪 |
 | [Agent-Reach](projects/agent-reach.md) | 基础设施候选 | AI Agent 的互联网感知层——一个 CLI 聚合 Twitter/Redd | 持续跟踪 |
-| [agent-skills](projects/agent-skills.md) | 平台候选 | 为 AI Coding Agent 提供生产级工程技能的标准化集合，由前端架构师 | 持续跟踪 |
 
 ---
 
 ## 数据统计
 
-- 📊 项目档案：283 个
-- 📅 日报总数：114 期
-- 🔄 最近更新：2026-07-29
+- 📊 项目档案：285 个
+- 📅 日报总数：115 期
+- 🔄 最近更新：2026-07-30
 
 ---
 

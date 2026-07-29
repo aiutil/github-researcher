@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-07-29'
+last_updated: '2026-07-30'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,36 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-07-30（第八十四版）
+
+### Kimi K3 发布首个开源 3T 级模型并带火全栈基础设施 · MoonEP 动态冗余专家实现 EP 完美负载均衡 · 2.8T MoE 按需流式加载进单台 Mac · 多轮 Agent RL 后训练走向工程化
+
+#### 今日五大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | 首个开源 3T 级模型：Kimi K3 5.5K⭐（2.8T MoE/104B 激活/KDA+AttnRes 新架构/Stable LatentMoE 896 选 16/1M 上下文/原生多模态），发布同日带动全栈基础设施涌现 | kimi-k3 | 93 |
+| 2 | MoE 训练通信库赛道：MoonEP 858⭐（动态冗余专家/完美负载均衡/零拷贝+静态形状/通信低于 DeepEP v2 且对不均衡免疫），EP 均衡从"接受"走向"消除" | moonep | 88 |
+| 3 | 超参数模型本地推理边界：deltafin 308⭐（MXFP4 专家按需 HTTP 流式加载/磁盘缓存/NEON+Metal/M1 Max 14.6s/token），MoE 稀疏性使超大模型本地部署在原理上可行 | deltafin | 84 |
+| 4 | 多轮 Agent RL 后训练工程化：AxisRL 569⭐（SGLang rollout+Megatron 训练/300+ 轮轨迹/rollout-trainer 一致性调试），呼应昨日 AgentENV 环境层信号 | axrl | 83 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| MoonshotAI/Kimi-K3 | 5,511 | 基础设施候选 | 93 | 新增 |
+| MoonshotAI/MoonEP | 858 | 基础设施候选 | 88 | 新增 |
+| gavamedia/deltafin | 308 | 观察型 | 84 | 新增 |
+| XYZ-AI-Lab/axrl | 569 | 基础设施候选 | 83 | 新增 |
+
+#### 关键判断
+
+- **"模型发布即生态动员"**：Kimi K3 单点发布在 72 小时内带动训练通信库（MoonEP）、本地推理（deltafin）、Agent RL 后训练（axrl）三层基础设施同时涌入 trending——说明 3T 级 MoE 的全栈工程化知识已足够下沉到开源社区。
+- **MoonEP 的"完美均衡"思想值得吸收**：把 EP 负载不均衡从不可避免变为可工程消除，静态形状顺带解决内存碎片——对所有大规模 MoE 训练有借鉴价值，不限于 K3。风险：benchmark 为自报（H20 EP=8），待独立复现。
+- **K3 评测需独立复现**：对标 Claude Fable 5/GPT-5.6 的分数为厂商自报，存在选择性披露风险；"2.5× scaling 效率"为官方声称。deltafin 的 14.6s/token 说明 2.8T 推理成本仍高，本地落地依赖量化/蒸馏。
+
+---
 
 ## 2026-07-29（第八十三版）
 

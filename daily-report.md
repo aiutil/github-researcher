@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-07-30
+
+**核心主题：** 首个开源 3T 级模型发布并带火全栈基础设施——Kimi K3 5.5K⭐（MoonshotAI/2.8T MoE/104B 激活/KDA+Attention Residuals 新架构/Stable LatentMoE 896 选 16/1M 上下文/原生多模态 MXFP4），对标 Claude Fable 5/GPT-5.6 · MoE 训练通信库赛道——MoonEP 858⭐（动态冗余专家/每 rank 完美负载均衡/零拷贝+静态形状/通信低于 DeepEP v2 且对不均衡免疫），EP 均衡从"接受"走向"消除" · 超参数模型本地推理边界——deltafin 308⭐（MXFP4 专家按需 HTTP 流式加载/磁盘缓存/NEON+Metal/M1 Max 64GB 实测 14.6s/token），MoE 稀疏性使超大模型本地部署在原理上可行 · 多轮 Agent RL 后训练工程化——AxisRL 569⭐（SGLang rollout+Megatron 训练/300+ 轮轨迹/rollout-trainer 一致性调试），呼应昨日 AgentENV 环境层信号
+
+**关键项目：**
+- 🧠 MoonshotAI/Kimi-K3 (5,511, 新增) — 首个开源 3T 级模型，2.8T MoE 新架构，Score 93
+- ⚖️ MoonshotAI/MoonEP (858, 新增) — MoE 专家并行完美负载均衡通信库，对标 DeepEP v2，Score 88
+- 🍎 gavamedia/deltafin (308, 新增) — 2.8T MoE 单台 Mac 按需流式推理，Score 84
+- 🔄 XYZ-AI-Lab/axrl (569, 新增) — 多轮 Agent RL 后训练框架，rollout-trainer 一致性，Score 83
+
+---
+
 ## 2026-07-29
 
 **核心主题：** 本地优先 AI Coworker 交付成品范式——OpenWorker 9.9K⭐（Andrew Ng/交付成品非聊天/审批门控/BYO 模型/25+ 连接器/aisuite），重定义 Agent 应用层信任模型 · Agent RL 训练 Firecracker 基础设施开源——AgentENV 1.4K⭐（Rust/microVM/快照 fork<50ms 恢复/为 Kimi K3 训练提供底座），环境即快照即 fork · 零运行时语言编译——scriptc 2.1K⭐（Vercel Labs/TS→原生二进制/无 Node V8/178KB 2ms 启动/99% 静态），Agent 代码部署成本降维 · 单文件自包含 AI 可编辑文档——Bento 2.8K⭐（文件即软件/自重写保存/CRDT+E2EE/JSON 可被 Agent 原地编辑）
