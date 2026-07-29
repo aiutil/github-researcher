@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Extract | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Manavarya09/design-extract" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="design-extract">Design Extract</h1>
+<h2 id="_1">一句话定位</h2>
+<p>一键提取网站完整设计系统，输出 DTCG tokens，并作为 MCP server 集成到 Claude Code/Cursor/Windsurf。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>设计师和开发者需要将现有网站的设计规范（颜色、字体、间距、组件）提取为结构化 token，然后同步到各平台（iOS/Android/Flutter/Web）。这个过程通常极其耗时且容易不一致。design-extract 用一条命令完成全链路。</p>
+<p>目标用户：前端团队、设计系统团队、AI agent 开发者。</p>
+<h2 id="2026-04-20">为什么值得关注（2026-04-20）</h2>
+<ul>
+<li>覆盖了完整的 design token 提取 → 多平台 emit 链路</li>
+<li>内置 MCP server，可直接被 Claude Code/Cursor/Windsurf 调用</li>
+<li>支持 WCAG remediation 和 CSS health audit</li>
+<li>Agent Skill 生态中第一个真正覆盖设计工程链的 Skill</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>50% 真实痛点（设计系统提取确实是高频需求）+ 30% Agent Skill 热潮 + 20% 多平台 emitter 的完整度。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>DTCG 标准 tokens</strong>：输出符合 Design Tokens Community Group 标准的 tokens</li>
+<li><strong>三层 token 体系</strong>：primitive + semantic + composite，符合现代设计系统最佳实践</li>
+<li><strong>MCP Server 集成</strong>：作为 MCP server 运行，AI agent 可直接调用</li>
+<li><strong>多平台 emitter</strong>：iOS SwiftUI / Android Compose / Flutter / WordPress / Tailwind v4 / Figma variables / shadcn/ui</li>
+<li><strong>WCAG remediation + CSS health audit</strong>：不只提取，还能检测可访问性问题</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<ul>
+<li><strong>Design token 作为 AI agent 的接口</strong>：通过 MCP 暴露设计系统，让 agent 能理解和操作设计规范</li>
+<li><strong>单命令多平台输出</strong>：一次提取、多端同步，符合企业设计系统的核心需求</li>
+</ul>
+<h2 id="_6">定位判断</h2>
+<p>在 Agent Skill 生态中定位为"设计工程链"的基础工具。与设计系统工具（Figma Tokens、Style Dictionary）互补。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>提取准确度</strong>：复杂 CSS（CSS-in-JS、动态样式）的提取质量存疑</li>
+<li><strong>维护成本</strong>：多平台 emitter 需要持续跟进各平台 API 变化</li>
+<li><strong>MCP 生态不确定性</strong>：MCP 标准仍在快速演化</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>Figma Tokens</strong>：专注于 Figma 内的 token 管理</li>
+<li><strong>Style Dictionary</strong>（Amazon）：token 编译器，但不做提取</li>
+<li><strong>bergside/design-md-chrome</strong>：Chrome 扩展，类似目标但更轻量</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是</strong>。如果 MCP 成为 agent 工具调用标准，design-extract 可能成为设计系统与 agent 的桥梁。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>实际网站提取的准确度（尤其是 CSS-in-JS 项目）</li>
+<li>MCP server 在 Claude Code/Cursor 中的实际集成体验</li>
+<li>社区是否贡献更多平台 emitter</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-04-20</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

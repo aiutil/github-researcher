@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft SkillOpt | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/microsoft/SkillOpt" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="microsoft-skillopt">Microsoft SkillOpt</h1>
+<h2 id="_1">一句话定位</h2>
+<p>文本空间技能优化器——为冻结的 LLM Agent 训练可复用的自然语言技能，产出可部署的 best_skill.md 工件。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Agent Skill（如 Claude Code Skills、Codex Skills）目前完全依赖手工编写和人工调优。当 Skill 数量增长、复杂度提升时，手工迭代效率极低，且缺乏系统化的质量保障方法。SkillOpt 把「prompt engineering」升级为「prompt training」。</p>
+<h2 id="2026-06-21">为什么值得关注（2026-06-21 更新）</h2>
+<p>Microsoft 官方出品，MIT 协议，第一个提出系统化 Agent Skill 训练方法的开源项目。6月21日已达 8,448 stars + 816 forks。<strong>v0.1.0 已发布 PyPI</strong>，可 <code>pip install skillopt</code>。新增 <strong>Sleep 模块（preview）</strong>——夜间离线审查历史会话、重放循环任务、验证 skill 更新。在 6 benchmark × 7 model × 3 harness = 52 个评估单元中<strong>全部排名第一</strong>。GPT-5.5 上平均提升 +23.5（直接 chat）、+24.8（Codex）、+19.1（Claude Code）。</p>
+<p>gbrain、gbrain-evals、darwin-skill 已宣布集成 SkillOpt。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>真实需求：Agent Skill 生态爆发（html-anything 75 种 Skill、9arm-skills、gsd-core 等），但 Skill 质量参差不齐</li>
+<li>Microsoft 背书增加了信任度</li>
+<li>487 forks 反映开发者不只是收藏，在积极实验</li>
+<li>MIT 协议消除了商用障碍</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>文本空间优化</strong>：不修改 LLM 权重，只优化自然语言技能描述。这意味着任何冻结的 LLM 都可以使用</li>
+<li><strong>轨迹驱动编辑（Trajectory-Driven Edits）</strong>：从 Agent 执行轨迹中提取优化信号，自动编辑技能描述</li>
+<li><strong>验证门控更新（Validation-Gated Updates）</strong>：每次技能修改必须通过验证才能合并，防止优化方向跑偏</li>
+<li><strong>可部署工件</strong>：产出 best_skill.md，直接可部署到 Claude Code / Codex / Copilot 等 Agent</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<ul>
+<li>Skill = 文本空间的「模型参数」。SkillOpt = 文本空间的「训练器」</li>
+<li>验证门控是关键设计：等同于 ML 训练中的 evaluation set</li>
+<li>轨迹数据 = 训练数据。谁掌握了 Agent 执行轨迹，谁就能训练更好的 Skill</li>
+<li>启发：未来可能出现「Skill 训练数据市场」和「Skill 评估基准」</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    A["Agent 执行<br/>产生轨迹"] --> B["SkillOpt<br/>轨迹分析"]
+    B --> C["候选编辑<br/>技能描述"]
+    C --> D{"验证门控"}
+    D -->|通过| E["best_skill.md<br/>可部署工件"]
+    D -->|拒绝| B
+    E --> F["Agent 部署<br/>冻结 LLM"]
+    style B fill:#00bcf2,color:#fff
+    style D fill:#f59e0b,color:#fff
+    style E fill:#76b900,color:#fff
+</pre>
+<h2 id="_6">定位判断</h2>
+<p><strong>平台候选。</strong> 如果 Skill 训练范式成立，SkillOpt 将成为 Agent Skill 生命周期的核心工具——从编写、训练、验证到部署的基础设施。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li>~~<strong>实验性项目</strong>~~：已发布 v0.1.0 到 PyPI，但 Sleep 模块仍是 preview</li>
+<li><strong>52 cell 全第一的泛化性</strong>：benchmark 覆盖面虽广但仍有领域局限，真实生产场景效果待验证</li>
+<li><strong>轨迹数据依赖</strong>：需要大量高质量的 Agent 执行轨迹，冷启动困难</li>
+<li><strong>Sleep 模块安全风险</strong>：夜间自动进化 Agent skill 的安全性需要独立验证——自动修改 skill 可能引入意外行为</li>
+<li><strong>评估标准缺失</strong>：什么是「更好的 Skill」？缺乏行业统一评估基准</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>html-anything (6.1K)</strong>：Skill 的消费者/应用层（75 种 Skill 的 agentic HTML 编辑器），与 SkillOpt 是上下游关系</li>
+<li><strong>gsd-core (2.7K)</strong>：Spec-driven Agent 开发流程，关注 Skill 的组织和管理，与 SkillOpt 的训练能力互补</li>
+<li><strong>9arm-skills (2.7K)</strong>：Shell 技能集合，SkillOpt 可以用来训练优化这些 Skill</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>强烈建议持续跟踪。</strong> Agent Skill 训练是 Agent 自主演化能力的基础设施级能力。如果 SkillOpt 的方法论成立，将深刻影响整个 Agent Skill 生态。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>验证门控的具体实现：是基于规则、模型评估、还是人工审查？</li>
+<li>社区是否开始贡献轨迹数据集</li>
+<li>Microsoft 是否将 SkillOpt 集成到 Copilot 产品线</li>
+<li>出现基于 SkillOpt 训练的高质量 Skill 发布</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-05</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

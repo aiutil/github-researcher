@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ollama | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="ollama">ollama</h1>
+<h2 id="_1">一句话定位</h2>
+<p>本地 LLM 部署工具，一行命令在个人硬件上运行大模型，支持 Kimi-K2.5、Gemma、Llama 等主流模型。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>大模型的推理依赖云端 API，带来三个核心问题：</p>
+<ol>
+<li><strong>成本</strong>：按 token 计费，高频使用成本高昂</li>
+<li><strong>隐私</strong>：数据必须发送到第三方服务器，企业敏感代码和数据存在泄露风险</li>
+<li><strong>延迟</strong>：网络延迟在实时交互场景下体验差</li>
+</ol>
+<p>ollama 让开发者在本地硬件上零门槛运行大模型，一行 <code>ollama run llama3</code> 即可开始对话。</p>
+<h2 id="2026-04-11">为什么值得关注（2026-04-11）</h2>
+<p>167.7K stars，持续 GitHub Trending，是本地推理赛道的绝对王者。支持最新模型（Kimi-K2.5、Gemma 4），AI 开发者的必备基础设施。</p>
+<p>这不是一个正在验证的项目，而是已经被大规模采用的基础设施。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>零门槛体验</strong>：<code>ollama run</code> 一行命令即可开始，降低了本地推理的技术门槛</li>
+<li><strong>模型生态丰富</strong>：支持几乎所有主流开源模型，模型库持续更新</li>
+<li><strong>跨平台支持</strong>：macOS、Linux、Windows 全覆盖</li>
+<li><strong>开发者刚需</strong>：在 API 成本上升和隐私合规要求的背景下，本地推理成为刚需</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>极简模型管理</strong>：<code>ollama pull</code> / <code>ollama run</code> 管理 LLM，体验类似 Docker 管理容器</li>
+<li><strong>GGUF 格式优化</strong>：自动处理模型量化（Q4_K_M、Q5_K_M 等），在消费级硬件上实现可接受的推理速度</li>
+<li><strong>API 兼容 OpenAI</strong>：提供 OpenAI 兼容的 API 接口，现有应用可以无缝切换到本地推理</li>
+<li><strong>多模态支持</strong>：支持 LLaVA 等多模态模型，本地推理不限于文本</li>
+<li><strong>Modelfile 自定义</strong>：支持自定义模型配置，类似 Dockerfile 的体验</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>ollama 的核心设计哲学是 <strong>LLM 的 Docker 化</strong>：</p>
+<ul>
+<li><strong>镜像管理</strong>：模型 = 镜像，pull/run/rm 语义与 Docker 一致</li>
+<li><strong>运行时抽象</strong>：屏蔽 llama.cpp、GGUF 等底层细节，用户无需关心</li>
+<li><strong>API 标准化</strong>：OpenAI 兼容 API，让本地推理可以无缝替代云端</li>
+<li><strong>量化自动化</strong>：根据硬件自动选择最佳量化级别</li>
+</ul>
+<p>Trade-off：消费级硬件上推理速度仍远低于云端，适合非实时场景和开发测试，不适合高并发生产环境。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>基础设施</strong>。ollama 是本地 LLM 推理的基础设施层，所有需要本地运行大模型的工具和应用都可以基于 ollama 构建。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>硬件门槛</strong>：高质量推理仍需要足够的 GPU/内存，并非所有人都能流畅运行</li>
+<li><strong>推理速度</strong>：消费级硬件上的推理速度无法与云端 GPU 集群相比</li>
+<li><strong>模型更新延迟</strong>：新模型发布后，GGUF 量化版本通常有几天延迟</li>
+<li><strong>企业级功能缺失</strong>：缺少企业需要的 RBAC、审计、多用户管理等</li>
+</ul>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>llama.cpp</strong>：ollama 的底层推理引擎，ollama 在其上提供了更友好的用户体验</li>
+<li><strong>LM Studio</strong>：竞品，提供 GUI 但非开源</li>
+<li><strong>vLLM / TGI</strong>：面向生产环境的推理引擎，ollama 面向开发和边缘场景</li>
+<li><strong>litert-inference</strong>：Google 端侧推理方案，面向移动端，ollama 面向桌面端</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p>⭐ <strong>必须跟踪。</strong> 167.7K stars 已经证明了市场地位。本地推理是 AI 基础设施的确定性趋势，ollama 是这个赛道的标准工具。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li><strong>企业版功能</strong>：是否会推出面向企业的管理功能</li>
+<li><strong>硬件加速进展</strong>：对 Apple Silicon、NVIDIA、AMD 等硬件的优化深度</li>
+<li><strong>模型生态扩展</strong>：对新发布模型的跟进速度</li>
+<li><strong>与 Agent 框架集成</strong>：与 Claude Code、Cursor 等 Agent 工具的集成深度</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-04-11</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

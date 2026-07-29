@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiroFish | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/666ghj/MiroFish" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="mirofish">MiroFish — 通用群体智能引擎</h1>
+<h2 id="_1">一句话定位</h2>
+<p>将群体智能算法（粒子群、蚁群、蜂群等）封装为可调用的通用引擎，为多 Agent 协作提供算法层支撑。</p>
+<h2 id="_2">解决的问题</h2>
+<p>多 Agent 系统的协作缺乏理论基础支撑。当前主流 Agent 框架（LangChain、CrewAI 等）提供的协作模式主要是"角色分配+消息传递"，缺乏优化理论。群体智能作为多 Agent 协作的数学基础，长期停留在学术层面。</p>
+<p>MiroFish 尝试把群体智能从论文变成可调用的 API。</p>
+<h2 id="_3">为什么值得关注</h2>
+<ol>
+<li><strong>概念前瞻</strong>：群体智能是多 Agent 从"串行协作"到"涌现智能"的关键理论</li>
+<li><strong>25K+ stars</strong>：开发者对此方向有强烈兴趣</li>
+<li><strong>月度 trending 前列</strong>：持续热度，非昙花一现</li>
+<li><strong>定位"通用引擎"</strong>：如果 API 设计得当，可能成为多 Agent 框架的基础依赖</li>
+</ol>
+<h2 id="_4">热度来源判断</h2>
+<ul>
+<li>概念驱动："群体智能"自带话题性</li>
+<li>多 Agent 热潮的溢出效应：开发者寻找 Agent 协作的"下一层"</li>
+<li>Star 质量存疑：需要进一步验证 star 的真实性和活跃度</li>
+</ul>
+<h2 id="_5">关键技术亮点</h2>
+<ul>
+<li>多种群体智能算法统一封装（PSO、ACO、蜂群等）</li>
+<li>预测 + 优化 + 协作一体化设计</li>
+<li>声称支持多种应用场景（预测、调度、优化等）</li>
+</ul>
+<h2 id="_6">架构启发</h2>
+<p>群体智能如果成功工程化，可能成为多 Agent 框架的"算法层"：</p>
+<pre class="mermaid">graph TB
+    subgraph "多 Agent 系统分层"
+        A[应用层<br>具体业务场景]
+        B[编排层<br>CrewAI / LangGraph]
+        C[算法层<br>MiroFish?<br>群体智能]
+        D[模型层<br>GPT / Claude / Gemma]
+    end
+    A --> B --> C --> D
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>学习型 → 平台候选的过渡阶段</strong>。目前缺乏足够的工程验证，但概念方向正确。如果 API 设计得当且有 benchmark 数据支撑，可能升级为平台候选。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ol>
+<li><strong>"通用"的陷阱</strong>：抽象层过高可能什么都做不好</li>
+<li><strong>Benchmark 缺失</strong>：缺乏与传统优化方法的对比数据</li>
+<li><strong>群体智能在 LLM Agent 中的适用性存疑</strong>：群体智能优化的是连续空间参数，LLM 输出是离散的 token 序列，两者之间的适配不直观</li>
+<li><strong>泡沫风险中等</strong>：概念吸睛但落地案例不足</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs agency-agents</strong>：agency-agents 是 Agent 模板集合（应用层），MiroFish 是算法引擎（底层）。理论上 MiroFish 可以为 agency-agents 提供优化能力。</li>
+<li><strong>vs CrewAI / LangGraph</strong>：MiroFish 是这些编排框架的潜在依赖，而非竞争者。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>⚠️ 观望</strong>。概念方向正确但工程验证不足。需要等待 benchmark 数据和真实使用案例。</p>
+<h2 id="poc">是否值得企业 PoC</h2>
+<p><strong>暂不建议</strong>。除非企业有明确的多 Agent 优化需求且有研究团队可以评估。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>是否发布 benchmark 数据——与经典优化方法的对比</li>
+<li>是否被主流 Agent 框架集成</li>
+<li>社区活跃度和 issue/PR 质量</li>
+<li>实际使用案例的涌现</li>
+</ol>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

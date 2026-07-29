@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenLogi | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/AprilNEA/OpenLogi" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="openlogi">OpenLogi</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Rust 实现的 Logitech Options+ 本地替代，通过 HID++ 协议直接驱动罗技鼠标，无账号、无遥测、无云端。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Logitech Options+ 强制账号登录 + 云端同步 + 遥测追踪，用户丧失外设控制权和数据隐私。开发者、隐私敏感用户需要本地优先的硬件驱动方案。</p>
+<h2 id="2026-06-06">为什么值得关注（2026-06-06）</h2>
+<p>本地优先运动从软件领域延伸到硬件外设。OpenLogi 用 Rust + HID++ 协议证明：硬件驱动也可以做到本地优先。4K stars + Apache 2.0 + 仅 57 个 issues 说明市场需求真实。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>Logitech Options+ 的强制登录 + 遥测引发用户不满</li>
+<li>Rust 语言在系统编程领域的吸引力</li>
+<li>隐私 / 本地优先运动的持续扩展</li>
+<li>MX Master 系列在开发者中普及率极高</li>
+<li>4K stars 增长快，话题度持续</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>HID++ 协议原生实现</strong>：直接通过 HID 协议与罗技设备通信，不依赖官方驱动</li>
+<li><strong>Rust + GPUI 框架</strong>：内存安全 + 原生性能，GPUI 提供 GPU 加速 UI</li>
+<li><strong>SmartShift 自动滚轮</strong>：自动检测滚动速度切换自由滚轮/棘轮模式</li>
+<li><strong>DPI 调节</strong>：通过 HID++ 命令动态调整鼠标 DPI</li>
+<li><strong>按键重映射</strong>：自定义按键功能，不依赖云端配置同步</li>
+<li><strong>完全离线</strong>：无账号、无遥测、无自动更新检查</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>本地优先硬件驱动的设计模式：
+- <strong>协议层</strong>：HID++ 直通，绕过厂商 SDK
+- <strong>驱动层</strong>：Rust 内存安全 + 低延迟
+- <strong>UI 层</strong>：GPUI GPU 加速，原生体验
+- <strong>配置层</strong>：本地配置文件，版本可控</p>
+<p>这个模式可以迁移到其他硬件外设领域（键盘、手柄、显示器）。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>工具型。</strong> 面向特定用户群体的优质工具。不演变为平台或基础设施，但在本地优先运动中有标志性价值。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>设备兼容性</strong>：当前只支持特定型号，全罗技产品线覆盖需要大量工作</li>
+<li><strong>HID++ 协议逆向</strong>：依赖逆向工程，罗技固件更新可能破坏兼容</li>
+<li><strong>单人开发</strong>：AprilNEA 为主开发者，bus factor = 1</li>
+<li><strong>平台覆盖</strong>：目前主要支持 macOS/Linux，Windows 支持不确定</li>
+<li><strong>法律风险</strong>：虽然不使用官方 SDK，但 HID++ 协议使用可能面临厂商挑战</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>定位</th>
+<th>差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logitech Options+</td>
+<td>官方驱动</td>
+<td>强制账号 + 云端，用户不满</td>
+</tr>
+<tr>
+<td>Piper</td>
+<td>Linux 罗技配置工具</td>
+<td>只支持 Linux，功能较少</td>
+</tr>
+<tr>
+<td>Solaar</td>
+<td>Linux 罗技管理</td>
+<td>Python，仅 Linux</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 本地优先硬件运动的标杆项目。如果成功，可能激励更多硬件外设的本地替代项目。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>设备支持范围扩展速度</li>
+<li>Windows 平台支持是否出现</li>
+<li>社区贡献者增长情况（当前 bus factor 风险）</li>
+<li>罗技官方反应（限制 vs 默许）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-06</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

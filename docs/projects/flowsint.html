@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowsint | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/reconurge/flowsint" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="flowsint">Flowsint</h1>
+<h2 id="_1">一句话定位</h2>
+<p>开源 OSINT 图谱调查平台——可视化实体关系探索，支持域名/IP/社交/加密货币等多维度自动关联，Docker 一键部署。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>网络安全分析师和调查人员需要跨多个数据源（DNS/IP/WHOIS/社交/加密货币）进行关联分析。现有工具要么分散，要么昂贵。Flowsint 将所有数据源统一到可视化图谱中。</p>
+<h2 id="2026-06-03">为什么值得关注（2026-06-03）</h2>
+<ul>
+<li><strong>+190 stars/day</strong>，GitHub Trending TypeScript 前列</li>
+<li>图谱化 OSINT 调查是网络安全领域的刚需</li>
+<li>模块化设计（Core/Types/Enrichers/API/App）架构清晰</li>
+<li>完全本地部署，数据不出机器，隐私友好</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>网络安全 + OSINT 垂直领域，用户群体明确</li>
+<li>Docker 一键部署降低使用门槛</li>
+<li>4.5K stars 对安全工具来说已经很高</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>丰富器（Enricher）架构</strong>：每种数据源一个 Enricher，模块化可扩展</li>
+<li><strong>图谱可视化</strong>：千级节点无卡顿</li>
+<li><strong>多维度关联</strong>：域名→IP→ASN→CIDR→组织 的自动链条</li>
+<li><strong>N8n 集成</strong>：可接入自动化工作流</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<ul>
+<li>Enricher 模式可以推广到其他需要多源数据关联的场景（如供应链风险分析）</li>
+<li>图谱 + 自动关联的交互模式比传统表格更适合探索性调查</li>
+</ul>
+<h2 id="_6">定位判断</h2>
+<p><strong>工具型。</strong> 面向安全分析师的专业工具，非通用基础设施。</p>
+<h2 id="_7">风险/局限/泡沫点</h2>
+<ol>
+<li>早期开发阶段，测试覆盖不完整</li>
+<li>社区贡献者较少，可持续性待验证</li>
+<li>Enricher 质量参差不齐（部分依赖外部 API）</li>
+<li>非架构师日常关注范畴，偏安全专业领域</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>Maltego</strong>：商业 OSINT 平台，Flowsint 是开源替代</li>
+<li><strong>Shrek/Sherlock</strong>：单项工具，Flowsint 做平台化整合</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>观察。</strong> 安全垂直领域工具，非核心关注方向，但 Enricher 架构模式值得借鉴。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>Enricher 生态的丰富度和质量</li>
+<li>社区活跃度和贡献者增长</li>
+<li>是否有企业级使用案例</li>
+</ol>
+<hr />
+<p><em>档案创建于 2026-06-03 · 数据截止 2026-06-03 06:00 CST</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

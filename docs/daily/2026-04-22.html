@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-04-22 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-04-22-github">2026-04-22 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日趋势概览</h2>
+<p>今天 GitHub Trending 的核心信号是<strong>已验证方向的持续强化</strong>和<strong>基础设施极简主义的回归</strong>。Browser Use 赛道不再需要证明方向正确，而是在工程细节上竞争（self-healing 能力）；Claude Code Skill 生态从"什么都做"进入专业细分（设计、排版、图表）；同时，PgQue 代表了一种反趋势：用最简单的方式解决排队问题。</p>
+<h3 id="1browser-use-85">趋势 1：Browser Use 赛道的工程深化（⭐ 85）</h3>
+<p><strong>browser-harness</strong> 从 browser-use 组织独立出来，4 天 4347 star，370 fork。与之前的 browser-use 主项目不同，它聚焦在 <strong>self-healing</strong> —— 当页面结构变化时自动修复定位器。这是 Browser Use 从"能用"到"可靠"的关键跨越。</p>
+<p><strong>判断</strong>：Browser Use 已从热点变为<strong>确立赛道</strong>。self-healing 能力是区分玩具和基础设施的关键。browser-use 团队拆分出独立仓库说明他们在认真做工程分层。</p>
+<h3 id="2claude-code-skill-80">趋势 2：Claude Code Skill 进入设计工具细分（⭐ 80）</h3>
+<p><strong>diagram-design</strong>（1303⭐）和 <strong>Kami</strong>（1354⭐）代表了 Claude Code Skill 生态的新阶段：不再是通用 Skill，而是面向具体设计场景的专业工具。diagram-design 做 13 种编辑级图表，Kami 做内容排版。</p>
+<p>这意味着 Skill 生态正在经历<strong>从工具到工艺</strong>的转变——用户不再满足于"能生成 HTML"，而是要求"生成的设计师级别的输出"。</p>
+<p><strong>判断</strong>：中期趋势。Skill 细分化是生态成熟标志，但单个 Skill 的生命周期可能较短（被 Harness 内置能力替代）。</p>
+<h3 id="3-75">趋势 3：极简主义基础设施回归（⭐ 75）</h3>
+<p><strong>PgQue</strong> 用一个 SQL 文件 + pg_cron 实现消息队列，913 star。在大家都追求"云原生、微服务、分布式"的时候，这种"你已经有 Postgres，再加一个 SQL 文件就有队列"的思路正在获得共鸣。</p>
+<p><strong>判断</strong>：不是反云原生，而是<strong>适度架构</strong>思潮的体现。对于中小规模场景（绝大多数企业内部工具），Postgres 足以承担队列角色。这是<strong>工具型</strong>项目，但有演化为<strong>基础设施候选</strong>的可能——如果它能证明在生产中可靠。</p>
+<h3 id="4agent-78">趋势 4：Agent 工具链可观测性成为刚需（⭐ 78）</h3>
+<p><strong>codeburn</strong> 3239 star，追踪 Claude Code / Codex / Cursor 的 Token 消耗。这从侧面验证了 AI 编码工具在企业中已经被认真使用——才会有人关心成本。</p>
+<hr />
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="browser-harness-self-healing">🌐 Browser Harness — Self-healing 浏览器自动化</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>4 天 4.3K star，browser-use 团队出品，工程背景强</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>Self-healing 定位器是真正的工程创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>新项目，但背后有成熟团队</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>自愈能力的架构模式可迁移到其他自动化领域</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>RPA + AI 的企业需求真实存在</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>9</td>
+<td>Browser Use 方向已确立</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>可成为 Browser Use 的基础设施层</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>7</td>
+<td>Self-healing 能力可能下沉为标准能力</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：62/80 | 归类：平台候选 | 建议持续跟踪</strong></p>
+<p>核心风险：Playwright/Puppeteer 可能内置类似能力；与 browser-use 主项目的关系和演进路线不明确。</p>
+<h3 id="diagram-design-claude-code">📊 Diagram Design — Claude Code 的编辑级图表</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>1303 star，稳定增长</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>5</td>
+<td>SVG 图表生成并非新技术，亮点在 Skill 封装</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>13 种图表类型覆盖面广</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>5</td>
+<td>Skill 封装模式的又一个实例</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>6</td>
+<td>技术文档/报告生成场景有需求</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>6</td>
+<td>可能被 Harness 内置能力替代</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>3</td>
+<td>单一功能工具</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>2</td>
+<td>无平台化可能</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：40/80 | 归类：工具型 | 可选跟踪</strong></p>
+<h3 id="pgque-postgres">🐘 PgQue — 零臃肿 Postgres 队列</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>913 star，PLpgSQL 项目能到这个数说明切中痛点</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>6</td>
+<td>不是新技术，是"正确使用已有技术"的智慧</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>单 SQL 文件，审计容易，但生产验证待观察</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>"你不需要消息队列，你需要正确使用 Postgres"的架构哲学</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>内部工具/中小规模场景直接可用</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>极简主义基础设施是长期思潮</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>5</td>
+<td>可能成为 Postgres 生态的标准扩展</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>6</td>
+<td>若生产验证通过，可作为轻量级基础设施组件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：54/80 | 归类：工具型 → 基础设施候选 | 建议持续跟踪</strong></p>
+<p>核心风险：大规模吞吐下性能未验证；缺少死信队列等企业级特性。</p>
+<h3 id="codeburn-ai-token">🔥 Codeburn — AI 编码 Token 成本追踪</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>3239 star，验证了 AI 编码成本是真实痛点</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>6</td>
+<td>成本追踪本身不新，但跨 Harness 聚合是亮点</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>TUI 交互设计精良，支持三大主流工具</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>6</td>
+<td>可观测性在 AI 工具链中的重要性</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>企业 AI 编码成本管控的直接需求</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>AI 编码工具用量增长必然伴随成本追踪需求</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>5</td>
+<td>可能被 IDE/平台内建</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>4</td>
+<td>工具级而非基础设施级</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：52/80 | 归类：生产可用 | 建议持续跟踪</strong></p>
+<hr />
+<h2 id="_3">值得关注的其他项目</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Star</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenMythos</td>
+<td>6615</td>
+<td>持续增长，Claude 架构逆向，理论讨论热度不减</td>
+</tr>
+<tr>
+<td>Kami</td>
+<td>1354</td>
+<td>tw93 出品，内容排版工具，设计社区关注</td>
+</tr>
+<tr>
+<td>agentic-stack</td>
+<td>1231</td>
+<td>跨 Harness 可移植 Agent 规范，方向正确</td>
+</tr>
+<tr>
+<td>anything-analyzer</td>
+<td>1607</td>
+<td>全能协议分析 + MITM 代理 + MCP Server</td>
+</tr>
+<tr>
+<td>lingbot-map</td>
+<td>3860</td>
+<td>Feed-forward 3D 场景重建，CV 社区关注</td>
+</tr>
+<tr>
+<td>BuilderPulse</td>
+<td>1043</td>
+<td>AI 驱动的独立开发者每日情报</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<p><strong>风险</strong>：
+1. Browser Use 赛道可能过度拥挤，多个团队做类似事情
+2. Claude Code Skill 细分化可能导致生态碎片化
+3. PgQue 类极简方案在大规模场景下可能暴露缺陷</p>
+<p><strong>机遇</strong>：
+1. Self-healing Browser Use 可能在 RPA+AI 场景形成新基础设施层
+2. Agent 可观测性（codeburn 类）是 AI 编码企业化的必要条件
+3. 极简主义基础设施可能改变中小企业技术选型思路</p>
+<h2 id="_5">趋势关系图</h2>
+<pre class="mermaid">graph TD
+    A[AI 工程化深化] --> B[Browser Use 工程化]
+    A --> C[Skill 生态细分]
+    A --> D[工具链可观测性]
+    
+    B --> B1[browser-harness<br/>self-healing]
+    
+    C --> C1[diagram-design<br/>图表设计]
+    C --> C2[Kami<br/>内容排版]
+    
+    D --> D1[codeburn<br/>Token 成本追踪]
+    
+    E[基础设施极简主义] --> F[PgQue<br/>SQL-only 队列]
+    
+    B1 -.->|代表| G[自动化从能用→可靠]
+    D1 -.->|代表| H[AI 编码从尝鲜→管控]
+    F -.->|代表| I[架构从复杂→适度]
+    
+    style A fill:#f9f,stroke:#333
+    style E fill:#bbf,stroke:#333
+</pre>
+<h2 id="_6">重点项目档案</h2>
+<p>今日重点项目的完整档案见：
+- <a href="../projects/browser-harness.md">Browser Harness</a>
+- <a href="../projects/codeburn.md">Codeburn</a>
+- <a href="../projects/diagram-design.md">Diagram Design</a>
+- <a href="../projects/kami.md">Kami</a>
+- <a href="../projects/pgque.md">PgQue</a></p>
+<hr />
+<p><em>本报告由 GitHub Researcher 自动生成 · 2026-04-22</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

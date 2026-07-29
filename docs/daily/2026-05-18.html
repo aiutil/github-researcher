@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-18 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日趋势概览</h2>
+<pre class="mermaid">mindmap
+  root((2026-05-18<br/>趋势))
+    安全
+      Dirty Frag Linux LPE
+      CVE-2026-43284 + CVE-2026-43500
+      9 年影响窗口
+    Agent 语言
+      Zero 1600⭐ (+74%)
+      显式 effect 系统
+      结构化编译输出
+    AI 伴侣
+      grok-animus 人格/记忆/梦境
+      trustclaw 自托管 Agent
+      持久化 + 向量记忆
+    基础设施
+      files-sdk 统一存储
+      ds4 本地推理 10K+
+      Mirage VFS 2.3K
+    工具链
+      html-anything agentic 编辑器
+      75 Skills × 9 Surfaces
+</pre>
+<hr />
+<h2 id="1-dirty-frag-linux">1. Dirty Frag — Linux 内核安全的又一次地震</h2>
+<p><strong>项目：</strong> <a href="https://github.com/V4bel/dirtyfrag">V4bel/dirtyfrag</a> | 4,611⭐ | C 语言</p>
+<p><strong>这是什么：</strong> 通用 Linux 本地提权（LPE）漏洞利用，属于 Dirty Pipe / Copy Fail 漏洞家族的延续。通过链式利用 <code>xfrm-ESP Page-Cache Write (CVE-2026-43284)</code> 和 <code>RxRPC Page-Cache Write (CVE-2026-43500)</code> 实现任意文件写入，获取 root 权限。</p>
+<p><strong>为什么重要：</strong>
+- <strong>确定性逻辑 bug</strong>，无需竞态条件，成功率极高
+- 内核不会 panic，利用失败也无副作用
+- <strong>影响窗口长达 9 年</strong>（CVE-2026-43284 自 2017 年引入）
+- 影响所有主流 Linux 发行版
+- 修复补丁已合入 mainline（f4c50a4034e6 / aa54b1d27fe0）</p>
+<p><strong>架构师视角：</strong>
+Page Cache 写入漏洞是一个持续出现的 bug 类——从 Dirty Pipe（2022）到 Copy Fail（2026-03）再到 Dirty Frag（2026-05），内核的 page cache 管理层存在系统性的设计缺陷。对于基础设施团队，这意味着：
+1. 容器不能防 LPE——runC/CVE-2024-2163 已经证明
+2. 内核升级策略需要更激进的滚动频率
+3. 最小权限 + seccomp + AppArmor 应成为强制基线</p>
+<p><strong>定位：</strong> 短期热点（安全漏洞天然时效性），但对内核安全审计方法论有中长期启发。</p>
+<hr />
+<h2 id="2-zero-agent">2. Zero — Agent 原生语言获市场验证</h2>
+<p><strong>项目：</strong> <a href="https://github.com/vercel-labs/zero">vercel-labs/zero</a> | 1,600⭐（+74%）| C 语言</p>
+<p><strong>动态：</strong> Zero 语言从昨天的 916⭐ 暴涨到 1600⭐，单日增长 74%。作为 Vercel Labs 推出的面向 Agent 的系统编程语言，其核心概念——显式 effect、可预测内存、结构化编译输出——正在获得开发者关注。</p>
+<p><strong>关键判断更新：</strong>
+- 从"观察型"上调至"值得持续跟踪"
+- 编译器本身用 C 编写，体现了语言团队对系统级可控性的追求
+- 与 Zig（zero-native 使用）形成 Vercel 的"系统层 + 应用层"双栈布局</p>
+<p><strong>架构启发：</strong> Agent 不再只是 Python 脚本——它需要有自己的系统级语言。Zero 代表了一个新方向：为 Agent 设计的语言应该控制 effect 边界，让 Agent 的行为可审计、可预测。</p>
+<hr />
+<h2 id="3-ai-agent">3. AI 伴侣引擎 — Agent 从工具到伙伴</h2>
+<p><strong>项目 A：</strong> <a href="https://github.com/shefyYuri/grok-animus">shefyYuri/grok-animus</a> | 573⭐ | Python
+<strong>项目 B：</strong> <a href="https://github.com/ComposioHQ/trustclaw">ComposioHQ/trustclaw</a> | 665⭐ | TypeScript</p>
+<p><strong>趋势：</strong> AI Agent 正在从"任务执行器"分化出"持久化伴侣"方向。两个项目分别从不同角度切入：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>grok-animus</th>
+<th>trustclaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心概念</td>
+<td>人格 + 记忆 + 梦境 + 演化</td>
+<td>自托管 + 向量记忆 + 工具</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>Python</td>
+<td>TypeScript</td>
+</tr>
+<tr>
+<td>技术栈</td>
+<td>LLM-agnostic</td>
+<td>Composio + Telegram</td>
+</tr>
+<tr>
+<td>定位</td>
+<td>AI 伴侣框架</td>
+<td>个人 AI Agent</td>
+</tr>
+<tr>
+<td>差异化</td>
+<td>"活的"AI：有性格和成长</td>
+<td>隐私优先，完全自托管</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断：</strong> AI 伴侣/持久化 Agent 代表了 Agent 架构的一个重要分支——<strong>有状态 Agent</strong>。与当前主流的无状态 Agent 不同，这类 Agent 需要：
+- 长期记忆管理（不只是 RAG）
+- 人格一致性（不只是 system prompt）
+- 行为演化（随时间变化的决策模式）</p>
+<p>这个方向目前还太早期，但值得观察。短期更偏"玩具"，中期可能演化为"个人 AI 基础设施"。</p>
+<hr />
+<h2 id="4-agent">4. 统一存储抽象 — Agent 时代的文件系统补丁</h2>
+<p><strong>项目：</strong> <a href="https://github.com/haydenbleasel/files-sdk">haydenbleasel/files-sdk</a> | 772⭐ | TypeScript</p>
+<p><strong>定位：</strong> 一个统一存储 SDK，用 Web 标准 I/O 抽象 S3/R2/MinIO/Google Cloud/Cloudflare 等后端。特点是"一个小而诚实的 API"。</p>
+<p><strong>与 Mirage VFS 的关系：</strong></p>
+<pre class="mermaid">graph TD
+    A[AI Agent] -->|需要读文件| B{存储层抽象}
+    B -->|Mirage 路线| C[统一虚拟文件系统<br/>Unix 语义 + FUSE]
+    B -->|files-sdk 路线| D[统一存储 SDK<br/>Web 标准 I/O]
+    C --> E[S3/Slack/GitHub/Gmail...]
+    D --> F[S3/R2/MinIO/GCS/Cloudflare...]
+    style C fill:#f9f,stroke:#333
+    style D fill:#9ff,stroke:#333
+</pre>
+<p><strong>判断：</strong> files-sdk 走的是"只做存储，做好存储"的务实路线，与 Mirage 的"万物皆文件"野心形成互补。对于 Agent 开发者，files-sdk 更容易集成到现有项目中。属于<strong>工具型</strong>，有潜力成为<strong>基础设施候选</strong>。</p>
+<hr />
+<h2 id="5-html-agent">5. HTML Agent 工具链分化</h2>
+<p><strong>项目：</strong> <a href="https://github.com/nexu-io/html-anything">nexu-io/html-anything</a> | 2,758⭐ | HTML</p>
+<p><strong>定位：</strong> Agentic HTML 编辑器，75 个 Skills × 9 种输出面（杂志、幻灯片、海报、小红书/推文、原型、数据报告、Hyperframes），零 API Key 本地运行。</p>
+<p><strong>架构亮点：</strong>
+- 支持 Claude Code / Cursor / Codex / Gemini / Copilot / OpenCode / Qwen / Aider 等多种 coding agent
+- 沙盒化预览
+- 一键发布到微信/X/知乎/HTML/PNG
+- 本地优先，BYOK 模式</p>
+<p><strong>判断：</strong> 这是 vibe-coding 趋势的 HTML 垂直化工具。技术壁垒不高，但产品定位精准——解决了 coding agent 输出 HTML 质量差的问题。属于<strong>工具型</strong>，短期热度高，中期取决于能否形成 Skill 生态。</p>
+<hr />
+<h2 id="_2">风险与机遇</h2>
+<h3 id="_3">本周风险</h3>
+<ol>
+<li><strong>Dirty Frag LPE</strong> — 未修补的 Linux 服务器面临实际提权风险，运维团队应立即检查补丁状态</li>
+<li><strong>Agent 工具链碎片化</strong> — html-anything/nexu-io 与其他 agentic HTML 工具开始内卷，标准未定</li>
+<li><strong>AI 伴侣引擎泡沫</strong> — grok-animus 的"梦境"和"演化"概念听起来炫酷但缺乏可验证的工程实现</li>
+</ol>
+<h3 id="_4">本周机遇</h3>
+<ol>
+<li><strong>Agent 原生语言 Zero</strong> — 如果 Vercel 持续投入，可能催生 Agent 系统层的新生态</li>
+<li><strong>统一存储抽象</strong> — files-sdk + Mirage 代表了 Agent 基础设施层正在被逐步补全</li>
+<li><strong>ds4 磁盘 KV 缓存范式</strong> — antirez 提出的"KV cache is a first-class disk citizen"可能改变本地推理架构</li>
+</ol>
+<hr />
+<h2 id="_5">重点项目评分汇总</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度质量</th>
+<th>技术创新</th>
+<th>工程成熟</th>
+<th>架构启发</th>
+<th>企业落地</th>
+<th>中期趋势</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>归类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dirty Frag</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>43</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>Zero</td>
+<td>8</td>
+<td>8</td>
+<td>4</td>
+<td>9</td>
+<td>3</td>
+<td>8</td>
+<td>6</td>
+<td>5</td>
+<td>51</td>
+<td>观察型</td>
+</tr>
+<tr>
+<td>grok-animus</td>
+<td>5</td>
+<td>6</td>
+<td>3</td>
+<td>7</td>
+<td>2</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>35</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>trustclaw</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>34</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>files-sdk</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>5</td>
+<td>6</td>
+<td>49</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>html-anything</td>
+<td>7</td>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>3</td>
+<td>41</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>ds4</td>
+<td>10</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>64</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>Pixal3D</td>
+<td>5</td>
+<td>7</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>34</td>
+<td>研究型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">生态关系图</h2>
+<pre class="mermaid">graph LR
+    subgraph Agent基础设施层
+        M[Mirage VFS]
+        F[files-sdk]
+        Z[Zero Language]
+    end
+
+    subgraph Agent推理层
+        D[ds4 本地推理]
+        T[TokenSpeed]
+    end
+
+    subgraph Agent应用层
+        H[html-anything]
+        G[grok-animus]
+        TR[trustclaw]
+        OS[OpenSquilla]
+    end
+
+    subgraph 安全层
+        DF[Dirty Frag]
+    end
+
+    Z -->|编译输出| M
+    M -->|文件抽象| F
+    D -->|本地推理| TR
+    D -->|本地推理| G
+    G -->|持久化记忆| TR
+    DF -.->|安全约束| D
+</pre>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

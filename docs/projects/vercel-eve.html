@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vercel/eve | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/vercel/eve" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="vercel-eve">Vercel Eve</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Vercel 出品的 filesystem-first AI Agent 框架——agent 的能力（tools/skills/channels/schedules）映射到约定目录结构，文件系统就是 agent 的开发界面。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>构建 AI Agent 通常需要学习框架特定的 DSL 或配置格式。eve 的方案是：你不需要学框架，只需要按目录约定放文件——<code>tools/</code> 是工具，<code>skills/</code> 是技能，<code>channels/</code> 是消息通道，<code>schedules/</code> 是定时任务。</p>
+<h2 id="2026-07-10">最近动态（2026-07-10）</h2>
+<ul>
+<li>Star 数从 2,526（6-19）增长到 3,360（7-10），21 天增 834 Star</li>
+<li>日均增速从初期 280+ 回落到 ~40/天——从爆发期进入稳步期</li>
+<li>Issues 增长到 223 个，社区活跃但可能暴露出早期质量问题</li>
+<li>持续活跃推送（pushed_at: 2026-07-09），开发节奏健康</li>
+<li>核心判断不变：filesystem-first 是 Agent 开发的优雅范式，但需要看生态是否跟进</li>
+</ul>
+<h2 id="2026-06-19">为什么值得关注（2026-06-19）</h2>
+<ul>
+<li>Vercel 出品，品牌信任 + npm 生态 + Vercel 部署链路</li>
+<li>3 天 1,327 stars，开发者社区关注度高</li>
+<li><code>npx eve@latest init</code> 一键创建 agent 项目，DX 极佳</li>
+<li>文档内置在 npm 包中（<code>node_modules/eve/docs</code>），Coding Agent 可直接读取</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>Vercel 品牌效应 + filesystem-first 理念优雅 + TypeScript 开发者基数大。热度有真实需求支撑，但也包含 Vercel 粉丝效应。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Filesystem as API</strong> — agent.ts（配置）、instructions.md（系统提示）、tools/（函数）、skills/（按需加载）、channels/（消息）、schedules/（定时）</li>
+<li><strong>Skills 按需加载</strong> — 不是一次性灌入所有 context，而是根据需要加载 skill</li>
+<li><strong>Channels 抽象</strong> — HTTP、Slack、Discord 消息通道统一管理</li>
+<li><strong>内嵌文档</strong> — npm 包包含完整文档，Coding Agent 无需联网查文档</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>eve 的设计哲学是 <strong>convention over configuration</strong> 应用于 Agent 开发。这与 Next.js 的 app/ 目录约定一脉相承，Vercel 在把这个模式复制到 Agent 领域。</p>
+<pre class="mermaid">graph TD
+    subgraph "eve Agent 目录结构"
+        A["agent/"] --> AT["agent.ts<br/>模型 + 运行时配置"]
+        A --> AI["instructions.md<br/>常驻系统提示"]
+        A --> AT2["tools/<br/>typed 函数"]
+        A --> AS["skills/<br/>按需加载程序"]
+        A --> AC["channels/<br/>HTTP / Slack / Discord"]
+        A --> AS2["schedules/<br/>cron 定时任务"]
+    end
+</pre>
+<h2 id="_6">定位判断</h2>
+<p>eve 是 <strong>Agent 开发框架层的 Next.js</strong>——通过约定优于配置大幅降低 Agent 开发门槛。如果 Vercel 部署链路打通，它可能成为 TypeScript 开发者构建 Agent 的事实标准。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>TypeScript 限定</strong> — Python/Go 开发者被排除在外</li>
+<li><strong>Vercel 锁定风险</strong> — channels/schedules 依赖 Vercel 基础设施才能发挥最大价值</li>
+<li><strong>早期阶段</strong> — 78 forks，33 issues，生态尚小</li>
+<li><strong>与 LangChain/LangGraph 竞争</strong> — 已有大型框架占据开发者心智</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs LangChain/LangGraph</strong> — LangChain 是 Python-first + 链式组合，eve 是 TypeScript-first + 目录约定</li>
+<li><strong>vs omnigent</strong> — omnigent 编排已有 agent，eve 从零构建 agent</li>
+<li><strong>vs Claude Code skills</strong> — Claude Code skills 是单个 Skill 文件，eve 是完整框架</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> Vercel 的分发能力 + filesystem-first 的优雅设计 = TypeScript Agent 开发的重要变量。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>npm 下载量趋势</li>
+<li>社区贡献的 tools/skills/channels 数量</li>
+<li>是否与 Vercel 部署链路深度集成</li>
+<li>是否出现基于 eve 构建的生产 Agent</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-19 · 更新：2026-07-10</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

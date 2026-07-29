@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TencentDB-Agent-Memory | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/TencentCloud/TencentDB-Agent-Memory" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="tencentdb-agent-memory">TencentDB-Agent-Memory</h1>
+<h2 id="_1">一句话定位</h2>
+<p>腾讯云出品的 AI Agent 长期记忆解决方案——全本地 4 层渐进式管线，零外部 API 依赖，为 Agent 提供跨会话的持久记忆能力。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>AI Agent（Claude Code、Cursor、Codex 等）的上下文窗口有限，会话结束后记忆丢失。现有方案要么依赖云端 API（隐私风险）、要么只是简单的向量检索（语义不精确）、要么无法处理复杂的时间衰减和优先级。</p>
+<p>目标用户：需要 Agent 长期运行且保持记忆的开发者和企业。</p>
+<h2 id="2026-06-26">为什么值得关注（2026-06-26）</h2>
+<ul>
+<li>腾讯云官方出品，TypeScript 实现，6,157⭐ 稳步增长</li>
+<li>"全本地"和"零外部 API 依赖"是核心差异化——在隐私敏感场景下有优势</li>
+<li>4 层渐进式管线设计不常见，暗示比简单的向量检索更精细</li>
+<li>Agent 记忆层是 2026 H1 的热门赛道——codebase-memory-mcp 14.7K⭐ 也在这个方向</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>企业级需求 + 腾讯品牌背书。</strong> Agent 记忆是真实痛点，"全本地"标签吸引隐私敏感用户。日增 67 stars 不算爆发，但稳健。需要更多技术细节公开后判断是否是真实工程创新还是腾讯云导流项目。</p>
+<h2 id="_4">关键技术亮点</h2>
+<h3 id="1-4">1. 4 层渐进式记忆管线</h3>
+<p>从 README 推断，管线包含多层处理（具体架构尚未完全公开）：
+- 层级 1：原始信息采集（会话记录、用户输入）
+- 层级 2：信息提取与摘要
+- 层级 3：长期记忆固化
+- 层级 4：记忆检索与注入</p>
+<h3 id="2">2. 全本地执行</h3>
+<ul>
+<li>零外部 API 调用——所有处理在本地完成</li>
+<li>适合隐私敏感场景（企业内部 Agent、个人助手）</li>
+<li>无网络延迟和 API 费用</li>
+</ul>
+<h3 id="3-typescript">3. TypeScript 原生</h3>
+<ul>
+<li>与 Claude Code、Cursor 等 TS 生态 Agent 无缝集成</li>
+<li>npm 安装即可使用</li>
+</ul>
+<h2 id="_5">架构启发</h2>
+<p><strong>Agent 记忆层的品类分化：</strong>
+- 通用会话记忆（TencentDB-Agent-Memory）：对话上下文、用户偏好、决策历史
+- 代码结构记忆（codebase-memory-mcp）：函数调用链、类继承、路由、依赖</p>
+<p>这两个方向的技术路径完全不同：
+- 会话记忆 → 信息检索 + 摘要 + 时间衰减
+- 结构记忆 → 静态分析 + 图数据库 + 符号查询</p>
+<p>Agent 框架需要同时支持两种记忆类型。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>Agent 记忆基础设施的早期竞争者。</strong> 与 codebase-memory-mcp 形成互补关系，但技术细节公开度不足，需要持续观察。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>技术细节不足</strong>：4 层管线的具体架构未完全公开，无法深度评估工程创新</li>
+<li><strong>腾讯云导流风险</strong>：可能是 TencentDB 云服务的入口产品，未来可能需要腾讯云账号</li>
+<li><strong>社区活跃度待验证</strong>：contributors 数量少，主要是内部团队</li>
+<li><strong>生态封闭风险</strong>：如果深度绑定腾讯云生态，可能限制开源社区 adoption</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>记忆类型</th>
+<th>技术路径</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>codebase-memory-mcp 14.7K⭐</td>
+<td>代码结构</td>
+<td>tree-sitter + 图数据库</td>
+<td>Coding Agent 基础设施</td>
+</tr>
+<tr>
+<td>TencentDB-Agent-Memory 6.2K⭐</td>
+<td>通用会话</td>
+<td>4 层渐进式管线</td>
+<td>通用 Agent 记忆</td>
+</tr>
+<tr>
+<td>Mem0</td>
+<td>通用会话</td>
+<td>向量检索 + LLM 摘要</td>
+<td>Agent 记忆 SaaS</td>
+</tr>
+<tr>
+<td>Letta (前 MemGPT)</td>
+<td>通用会话</td>
+<td>分层记忆（core/archival/recall）</td>
+<td>Agent 记忆框架</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>✅ 建议跟踪，但需更多信息。</strong> 等 4 层管线架构详情公开后重新评估。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>4 层管线的具体技术架构是否公开</li>
+<li>是否真正保持"零外部依赖"还是后续接入腾讯云服务</li>
+<li>benchmark 数据：记忆检索精度、延迟、token 消耗</li>
+<li>社区 adoption：非腾讯系项目是否使用</li>
+<li>与 codebase-memory-mcp 是否出现功能重叠</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-26</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

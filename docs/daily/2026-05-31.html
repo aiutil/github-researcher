@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-31 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日趋势概览</h2>
+<p>GitHub Trending 今日延续 Plugin/Skill 赛道热度，但出现一个值得注意的<strong>元趋势转向</strong>——<strong>"AI Taste"控制</strong>。taste-skill 和 stop-slop 两个项目本周合计 +12K，反映出一个深层需求：用户不再满足于 AI 能生成内容，而是要求 AI 生成的内容有"品味"。与此同时，ai-engineering-from-scratch 以 13.1K/week 的增速证明 AI 教育赛道的巨大需求，LiteParse 日增 929 星持续加速，Microsoft Agent Governance Toolkit 正式切入 Agent 安全治理。</p>
+<hr />
+<h2 id="1ai-tasteslop-control">趋势 1：AI Taste/Slop Control 元趋势</h2>
+<pre class="mermaid">graph TB
+    subgraph "问题：AI 输出质量"
+        SLOP["AI Slop 问题<br/>通用、无聊、模式化输出"]
+    end
+
+    subgraph "解决方案"
+        TS["taste-skill<br/>29K ⭐ | +9K/week<br/>给 AI 好 taste<br/>Shell"]
+        SS["stop-slop<br/>7.4K ⭐ | +3K/week<br/>移除 AI 写作痕迹"]
+    end
+
+    subgraph "受影响场景"
+        CODE["代码生成"]
+        PROSE["文本写作"]
+        DOC["文档生成"]
+        REVIEW["Code Review"]
+    end
+
+    SLOP --> TS & SS
+    TS --> CODE & PROSE & DOC
+    SS --> PROSE & DOC & REVIEW
+</pre>
+<h3 id="taste-skill29k-9kweek">taste-skill（29K ⭐, +9K/week）</h3>
+<ul>
+<li><strong>定位</strong>：给 AI "好品味"，阻止生成无聊、通用的内容</li>
+<li><strong>本周爆发</strong>：从约 20K 暴涨到 29K，Shell 实现极简</li>
+<li><strong>本质</strong>：这是一个 <strong>Skill 文件</strong>而非独立工具——通过系统指令引导 AI 产生更高质量的输出</li>
+<li><strong>信号意义</strong>：大于项目本身——用户对 AI 输出质量的控制需求正在显式化</li>
+</ul>
+<h3 id="stop-slop74k-3kweek">stop-slop（7.4K ⭐, +3K/week）</h3>
+<ul>
+<li><strong>定位</strong>：从文章中移除 AI 写作痕迹</li>
+<li><strong>与 taste-skill 的关系</strong>：一个预防、一个治疗——taste-skill 让 AI 不生成 slop，stop-slop 清理已有的 slop</li>
+</ul>
+<p><strong>架构师启发</strong>：AI Taste 控制本质上是一种 <strong>输出质量治理层</strong>。在企业 AI 应用中，这对应的是内容审核、风格一致性、品牌语调控制。taste-skill 的 Skill 化思路（而非独立服务化）值得借鉴——把质量控制嵌入到 AI 工具链中，而不是做成独立服务。</p>
+<hr />
+<h2 id="2ai">趋势 2：AI 工程教育赛道爆发</h2>
+<p><strong>rohitg00/ai-engineering-from-scratch</strong> 25.1K，本周 +13.1K。</p>
+<ul>
+<li><strong>定位</strong>："Learn it. Build it. Ship it." — AI 工程从零开始</li>
+<li><strong>与 FareedKhan-dev/train-llm-from-scratch</strong>（2.2K, +316/day）形成教育矩阵</li>
+<li><strong>增速判断</strong>：13.1K/week 是本周全站第三高增速，纯教育类项目达到这个量级很少见</li>
+<li><strong>信号</strong>：AI 工程人才缺口巨大，开发者正在从"用 API"转向"理解原理"</li>
+<li><strong>风险</strong>：教育项目热度通常短期爆发后回落，不适合作为技术选型参考</li>
+</ul>
+<hr />
+<h2 id="3liteparse-929">趋势 3：LiteParse 持续加速 — +929/天</h2>
+<p><strong>run-llama/liteparse</strong> 从昨天的 7.2K 涨到 7.9K，日增 929 星。</p>
+<pre class="mermaid">graph LR
+    subgraph "RAG Pipeline"
+        DOC["文档输入<br/>PDF/DOCX/XLSX/PPTX"]
+        LP["LiteParse<br/>Rust Core"]
+        MD["Markdown/JSON<br/>+ Bounding Boxes"]
+        LLM["LLM 处理"]
+        OUT["结构化输出"]
+    end
+
+    DOC --> LP --> MD --> LLM --> OUT
+
+    subgraph "LiteParse 优势"
+        F["快速：PDFium"]
+        L["轻量：无云依赖"]
+        M["多语言：Rust/Node/Python/WASM"]
+    end
+</pre>
+<ul>
+<li><strong>本周累计</strong>：+1.5K/week → 日增 929，加速度明显</li>
+<li><strong>Rust 实现</strong>：PDFium C 库做文本提取 + Tesseract OCR + Grid Projection 做空间布局重建</li>
+<li><strong>多语言绑定</strong>：Rust / Node.js (napi-rs) / Python (PyO3) / WASM 全覆盖</li>
+<li><strong>定位</strong>：RAG Infra 的文档解析环节，LlamaIndex 生态的补充</li>
+<li><strong>判断</strong>：作为 <strong>RAG 文档解析的轻量级开源方案</strong>，工程成熟度和品牌背书都不错。对于不需要 LlamaParse 云服务的场景，这是最好的本地替代</li>
+</ul>
+<hr />
+<h2 id="4microsoft-agent-governance-toolkit-agent">趋势 4：Microsoft Agent Governance Toolkit — Agent 安全治理工具化</h2>
+<p><strong>microsoft/agent-governance-toolkit</strong> 3.5K，本周 +1.5K。</p>
+<ul>
+<li><strong>定位</strong>：AI Agent 治理工具包——Policy enforcement、zero-trust identity、execution sandboxing、reliability engineering</li>
+<li><strong>覆盖范围</strong>：10/10 OWASP Agentic Top 10</li>
+<li><strong>多语言 SDK</strong>：Python (PyPI)、TypeScript (npm)、.NET (NuGet)、Rust、Go</li>
+<li><strong>核心能力</strong>：</li>
+<li><strong>Policy Engine</strong>：YAML 声明策略，每个工具调用经过策略评估</li>
+<li><strong>Zero-Trust Identity</strong>：每个 Agent 有独立身份，不再共享 API Key</li>
+<li><strong>Execution Sandboxing</strong>：在应用层而非 prompt 层拦截危险操作</li>
+<li><strong>Audit Trail</strong>：防篡改的审计记录</li>
+<li><strong>与 prompt-level safety 的本质区别</strong>：不依赖 prompt 来控制行为，而是在确定性代码层拦截——"结构上不可能犯错" vs "请求 AI 不要犯错"</li>
+</ul>
+<p><strong>架构师启发</strong>：这是目前看到的<strong>最实用的 Agent 安全治理方案</strong>。核心思路是把 Agent 安全从 prompt 层移到应用层，用确定性的 Policy Engine 拦截所有工具调用。这个设计模式——"intercept in deterministic code, not in stochastic prompts"——值得所有 Agent 开发者学习。对于企业级 Agent 部署，这应该是标配。</p>
+<hr />
+<h2 id="5-ai">趋势 5：世界模型与离线 AI</h2>
+<h3 id="stable-worldmodel14k-319day">stable-worldmodel（1.4K ⭐, +319/day）</h3>
+<ul>
+<li><strong>定位</strong>：可复现的世界模型研究与评估平台</li>
+<li><strong>意义</strong>：世界模型（World Model）是 Agent 从"文本理解"走向"环境理解"的关键能力</li>
+<li><strong>判断</strong>：学术研究导向，目前偏学习型，但世界模型赛道是中期确定性方向</li>
+</ul>
+<h3 id="project-nomad273k-473day">project-nomad（27.3K ⭐, +473/day）</h3>
+<ul>
+<li><strong>定位</strong>：自包含的离线生存计算机，打包工具/知识/AI，无需网络</li>
+<li><strong>信号</strong>：离线 AI 需求在增长——与 Edge AI、本地部署趋势一致</li>
+<li><strong>27.3K 的真相</strong>：概念足够吸引生存主义者/户外爱好者，但与我们的技术关注点重叠有限</li>
+<li><strong>判断</strong>：偏<strong>概念型/社区型</strong>项目，技术参考价值有限</li>
+</ul>
+<hr />
+<h2 id="_2">风险与机遇</h2>
+<h3 id="_3">泡沫预警</h3>
+<ol>
+<li><strong>taste-skill 29K</strong>：作为单个 Skill 文件达到 29K 星，增速含跟风成分，实际使用价值需验证</li>
+<li><strong>ai-engineering-from-scratch 13.1K/week</strong>：教育类项目热度短期爆发后通常回落</li>
+<li><strong>project-nomad 27.3K</strong>：社区驱动热度，非技术驱动</li>
+</ol>
+<h3 id="_4">真实机遇</h3>
+<ol>
+<li><strong>Agent Governance 工具化</strong>：Microsoft AGT 把 Agent 安全从概念变成可安装的工具包，企业级部署必备</li>
+<li><strong>AI 输出质量治理层</strong>：taste-skill/stop-slop 代表了一个新需求层——AI 输出质量控制，企业场景对应内容审核/品牌一致性</li>
+<li><strong>Rust 文档解析赛道</strong>：LiteParse 确立了 Rust 在 RAG 文档解析环节的优势地位</li>
+<li><strong>世界模型评估标准化</strong>：stable-worldmodel 代表了 Agent 能力评估的基础设施化</li>
+</ol>
+<hr />
+<h2 id="_5">重点项目评分</h2>
+<h3 id="taste-skill">taste-skill</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>29K 但增速含跟风</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>5</td>
+<td>本质是 Skill 文件/系统提示词工程</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>4</td>
+<td>Shell 脚本，无复杂工程</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>7</td>
+<td>AI 输出质量控制作为独立关注点</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>6</td>
+<td>需求真实但需服务化</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>AI 质量控制是确定趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>5</td>
+<td>Skill 模式不适合直接平台化</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>4</td>
+<td>需要演进为服务层</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>45</strong></td>
+<td><strong>归类：学习型 · 代表元趋势</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="agent-governance-toolkit">agent-governance-toolkit</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>3.5K，Microsoft 官方</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>Policy Engine + 确定性拦截思路</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>8</td>
+<td>多语言 SDK，PyPI/npm/NuGet，CI 完善</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>Agent 安全从 prompt 层移到应用层</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>9</td>
+<td>企业 Agent 部署必备</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>9</td>
+<td>Agent 安全治理是确定性趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>8</td>
+<td>治理框架天然平台属性</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>9</td>
+<td>Agent 安全基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>66</strong></td>
+<td><strong>归类：基础设施候选 · 强烈建议跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="liteparse">liteparse（更新）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>7.9K，+929/天，加速中</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>Rust + PDFium + OCR Pipeline</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>8</td>
+<td>多语言绑定，CI 完善</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>7</td>
+<td>RAG 文档解析的工程化</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>run-llama 品牌 + 本地部署</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>RAG Infra 刚需</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>6</td>
+<td>垂直工具</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>7</td>
+<td>RAG Pipeline 标准组件</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>59</strong></td>
+<td><strong>归类：生产可用 · 建议持续跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-engineering-from-scratch">ai-engineering-from-scratch</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>25.1K，+13.1K/week</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>3</td>
+<td>教育内容，非技术创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>Python/Jupyter 教程</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>5</td>
+<td>教学而非架构</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>4</td>
+<td>教育用途</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>AI 教育需求持续增长</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>4</td>
+<td>教育课程</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>2</td>
+<td>非基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>39</strong></td>
+<td><strong>归类：学习型 · 教育价值高但非技术选型</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="oh-my-pi">oh-my-pi</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>8.7K，+2.3K/week</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>hash-anchored edits + LSP 集成</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>TypeScript，多能力集成</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>终端 Coding Agent 的功能组合</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>6</td>
+<td>个人工具为主</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>Coding Agent 赛道确定</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>5</td>
+<td>工具属性</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>5</td>
+<td>开发者工具</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>53</strong></td>
+<td><strong>归类：工具型 · 值得关注</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">项目档案</h2>
+<p>所有 key_projects 的详细档案见 <code>projects/</code> 目录。今日新增档案：stable-worldmodel、project-nomad。今日更新档案：taste-skill、liteparse、agent-governance-toolkit、compound-engineering-plugin、oh-my-pi、ai-engineering-from-scratch。</p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

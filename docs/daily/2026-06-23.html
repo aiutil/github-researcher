@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-23 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-23-github">2026-06-23 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p><strong>Agent Skills 经济已经爆发，而且比预想的更快。</strong> 今天 GitHub Trending 前 25 中，有三个"Skills"类项目同时出现：gstack 113K⭐（YC CEO Garry Tan 的 23 角色化 Claude Code 工具栈）、mattpocock/skills 141K⭐（TypeScript 教父 Matt Pocock 的 .claude 目录）、Anthropic-Cybersecurity-Skills 18.6K⭐（817 安全技能映射 6 大框架）。三个加起来 273K⭐。</p>
+<p>这标志着 Agent 生态的一个关键转折：<strong>Skills 正在成为 Agent 时代的"应用包格式"</strong>。就像 npm 之于 Node.js，pip 之于 Python——Skills 目录是 Agent 能力的分发、版本管理和复用单元。但与传统的包管理器不同，Skills 包含的不是代码逻辑，而是"角色认知 + 工作流程 + 领域知识"。</p>
+<p>Garry Tan 在 README 中引用 Karpathy 的话："I don't think I've typed like a line of code probably since December"——并声称自己 2026 年的 ship 速度是 2013 年的 810×。这不是炫技，这是 YC CEO 用自己的实践证明"一个人 + Agent 工具栈 = 一支团队"。</p>
+<pre class="mermaid">graph TD
+    subgraph "Agent Skills 经济三层结构"
+        A["Skills 格式层<br/>agentskills.io 标准<br/>SKILL.md + scripts + references"]
+        B["Skills 分发层<br/>.claude/skills/ 目录<br/>GitHub 仓库分发<br/>团队模式 auto-update"]
+        C["Skills 应用层<br/>gstack 113K - 角色化工具栈<br/>mattpocock/skills 141K - 工程师技能包<br/>Cybersecurity-Skills 18.6K - 安全领域技能"]
+    end
+    
+    A --> B --> C
+    
+    subgraph "消费端"
+        D["Claude Code"]
+        E["Cursor"]
+        F["Codex CLI"]
+        G["Gemini CLI"]
+        H["20+ Platforms"]
+    end
+    
+    C --> D & E & F & G & H
+</pre>
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-agent-skills-95">1. Agent Skills 经济爆发（趋势分: 95）</h3>
+<p>三个 "Skills" 项目同时上 Trending，总星数 273K：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>核心价值</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mattpocock/skills</td>
+<td>141.5K</td>
+<td>TypeScript 教父的 .claude 目录</td>
+<td>个人品牌 → 行业标准</td>
+</tr>
+<tr>
+<td>garrytan/gstack</td>
+<td>113K</td>
+<td>YC CEO 的 23 角色化工具栈</td>
+<td>完整软件工厂</td>
+</tr>
+<tr>
+<td>Anthropic-Cybersecurity-Skills</td>
+<td>18.6K</td>
+<td>817 安全技能 × 6 框架映射</td>
+<td>领域垂直深度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键洞察：</strong> Skills 不是插件。插件是"给程序增加功能"，Skills 是"给 Agent 增加角色认知和领域专业知识"。gstack 的 /cso 不是运行一个安全扫描脚本——它让 Claude 以 CISO 的视角审查你的代码。这种"角色化认知注入"是 Agent 时代独有的产物。</p>
+<p><strong>gstack 深度分析：</strong> 23 个工具覆盖了完整的软件工程流程：
+- /office-hours → 产品思考
+- /plan-ceo-review → 架构决策
+- /plan-eng-review → 工程审查
+- /review → 代码审查
+- /qa → 浏览器 QA
+- /cso → 安全审计（OWASP + STRIDE）
+- /ship → 发布工程
+- /canary → 金丝雀部署
+- /autoplan → 端到端自动化</p>
+<p>每个工具都是 Markdown slash command，MIT 开源。Garry Tan 声称这是他"每天使用的软件工厂"。</p>
+<h3 id="2-agent-88">2. Agent 权限与集成层出现（趋势分: 88）</h3>
+<p><strong>corsair 2.8K⭐</strong> 定义了一个全新品类：Agent Integration Layer。</p>
+<p>核心创新不是技术——是<strong>权限模型</strong>：
+- <strong>open</strong>: 一切立即执行
+- <strong>cautious</strong>（推荐）: 读操作立即执行，破坏性操作需审批
+- <strong>strict</strong>: 读立即执行，写需审批，破坏性操作被阻止
+- <strong>readonly</strong>: 只读</p>
+<p>加上 multi-tenancy 隔离（每个租户独立凭证/数据/权限）和 webhook 全覆盖，corsair 解决的是 Agent 集成的核心矛盾：<strong>你需要给 Agent 权限才能让它有用，但你不信任它点的每一下按钮</strong>。</p>
+<pre class="mermaid">flowchart LR
+    Agent["AI Agent"] -->|"API Call"| Corsair["Corsair Layer"]
+    Corsair -->|"权限检查"| Decision{权限模式?}
+    Decision -->|open| Auto["✅ 自动执行"]
+    Decision -->|cautious| Check{"破坏性操作?"}
+    Check -->|否| Auto
+    Check -->|是| Approve["⏳ 请求审批"]
+    Decision -->|strict| Check2{"写操作?"}
+    Check2 -->|否| Auto
+    Check2 -->|是| Approve
+    Decision -->|readonly| Block["❌ 拒绝"]
+    Approve -->|"10min 过期链接"| Human["👤 人类审批"]
+    Human -->|"批准"| Execute["执行"]
+    Human -->|"拒绝"| Deny["拒绝 + 反馈"]
+    
+    Corsair -.->|"Agent 永不见凭证"| Vault["🔐 凭证保险库"]
+</pre>
+<h3 id="3-agentic-code-review-86">3. Agentic Code Review 工具分化（趋势分: 86）</h3>
+<p>当 Agent 写代码成为常态，Review 工具必须重新设计：</p>
+<ul>
+<li><strong>hunk 5.4K⭐</strong>：Review-first terminal diff viewer——diff 本身就是 review 界面，不是先看 diff 再 review</li>
+<li><strong>gstack /review</strong>：角色化审查（bug 查找 + 设计审查 + 生产安全）</li>
+<li><strong>gstack /cso</strong>：安全专家视角（OWASP + STRIDE 自动审计）</li>
+</ul>
+<p><strong>关键转变：</strong> 传统 Code Review 是"人审人写的代码"，Agentic Code Review 是"人审 Agent 写的代码 + Agent 辅助审"。review 的重点从"这段代码对不对"变成"这个 Agent 的决策链路合不合理"。</p>
+<h3 id="4-ai-84">4. AI 金融分析工业化（趋势分: 84）</h3>
+<p><strong>daily_stock_analysis 45.7K⭐ + 41.8K forks</strong>——forks/stars 比 0.92 是今天 Trending 所有项目中最高的。</p>
+<p>这意味着什么？几乎每个 star 都伴随着 fork + 实际部署。这不是看热闹——这是真刀真枪在用。</p>
+<ul>
+<li>多市场：A股 / 美股 / 港股</li>
+<li>多源数据：实时行情 + 新闻 + 财报</li>
+<li>LLM 决策：多模型分析 + 决策看板</li>
+<li>零成本运行：定时任务 + 自动推送</li>
+</ul>
+<p><strong>对架构师的启发：</strong> LLM 在金融决策领域已从"实验"走向"日常工具"。这个项目的 forks 分布（41.8K forks vs 418 open issues = 极低 issue 率）说明用户更多是"部署使用"而非"参与开发"——这是工具型产品（而非平台型）的典型特征。</p>
+<h3 id="5-agentic-83">5. Agentic 内容生产加速验证（趋势分: 83）</h3>
+<p>昨天判断的"Agentic 内容生产工业化"不是一日游——<strong>增速在加速</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>昨日</th>
+<th>今日</th>
+<th>日增量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenMontage</td>
+<td>8,487</td>
+<td>11,762</td>
+<td>+3,275</td>
+</tr>
+<tr>
+<td>Palmier-Pro</td>
+<td>4,900</td>
+<td>7,212</td>
+<td>+2,312</td>
+</tr>
+<tr>
+<td>voicebox</td>
+<td>31,500</td>
+<td>32,139</td>
+<td>+639</td>
+</tr>
+<tr>
+<td>hyperframes</td>
+<td>29,900</td>
+<td>29,915</td>
+<td>+15</td>
+</tr>
+</tbody>
+</table>
+<p>OpenMontage 日增 3.3K，Palmier-Pro 日增 2.3K——增速在扩大而非收敛。</p>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="1-garrytangstack-yc-ceo-agent">1. garrytan/gstack — YC CEO 的 Agent 软件工厂</h3>
+<p><strong>它是什么：</strong> 23 个角色化 slash commands + 8 个 power tools，把 Claude Code 变成一支虚拟工程团队。</p>
+<p><strong>它为什么火：</strong> Garry Tan 是 YC CEO，他的个人品牌就是信任背书。但更核心的是，gstack 不是演示项目——他声称自己用这套工具在 60 天内交付了 3 个生产服务 + 40+ 功能，同时全职管理 YC。</p>
+<p><strong>真正的技术亮点：</strong>
+1. <strong>角色化认知注入</strong> — /cso 不是安全扫描，是让 Claude 以 CISO 视角思考
+2. <strong>团队模式 auto-update</strong> — git hook 自动同步，零版本漂移
+3. <strong>gstack-detach</strong> — 长时间 eval/benchmark 在独立 session 运行，不受 SIGTERM 影响
+4. <strong>hermetic E2E</strong> — 本地测试与 CI 一致的密封环境
+5. <strong>反检测浏览器</strong> — Layer C stealth + UA 精处理 + WebGL 指纹防护</p>
+<p><strong>定位判断：平台候选。</strong> gstack 正在定义"Agent 工具栈应该长什么样"。如果 Claude Code 是 Agent 时代的操作系统，gstack 就是预装的 iWork。</p>
+<h3 id="2-corsairdevcorsair-agent">2. corsairdev/corsair — Agent 权限网关</h3>
+<p><strong>它是什么：</strong> Agent 的统一集成层，4 档权限模式 + multi-tenancy + webhook + 凭证隔离。</p>
+<p><strong>它为什么火：</strong> Agent 集成的核心矛盾是"给权限才能有用 vs 给了权限就危险"。corsair 用权限分级 + 人类审批解决了这个问题。</p>
+<p><strong>真正的技术亮点：</strong>
+1. <strong>四档权限模式</strong> — open/cautious/strict/readonly，每个 API endpoint 可单独 override
+2. <strong>Multi-tenancy</strong> — 每个租户独立凭证/数据/权限，零交叉污染
+3. <strong>Webhook 全覆盖</strong> — 每个 plugin 自带类型化、签名验证的 webhook handler
+4. <strong>Agent 永不见凭证</strong> — Corsair 持有 token，Agent 只看到结果</p>
+<p><strong>定位判断：基础设施候选。</strong> 当 Agent 从"个人工具"走向"企业部署"，权限和集成是必选组件。</p>
+<h3 id="3-zhulinsendaily_stock_analysis-llm">3. ZhuLinsen/daily_stock_analysis — LLM 金融分析民主化</h3>
+<p><strong>它是什么：</strong> LLM 驱动的多市场股票分析系统，支持 A股/美股/港股。</p>
+<p><strong>它为什么火：</strong> 零成本运行 + 多市场覆盖 + 实时推送。41.8K forks 说明大量用户在真跑。</p>
+<p><strong>真正的技术亮点：</strong>
+1. <strong>多源数据融合</strong> — 行情 + 新闻 + 财报 + 社交情绪
+2. <strong>LLM 决策链路</strong> — 不只是看数据，而是 LLM 理解数据并给出建议
+3. <strong>零成本定时运行</strong> — GitHub Actions / 免费层定时任务</p>
+<p><strong>风险：</strong> 金融建议的合规风险 + LLM 幻觉可能导致错误决策。</p>
+<h3 id="4-anthropic-cybersecurity-skills">4. Anthropic-Cybersecurity-Skills — 安全技能标准化</h3>
+<p><strong>更新动态：</strong> 从 11.4K（6月15日）增长到 18.6K，新增 55 skills（762→817），覆盖 AI Security / Supply Chain / Hardware &amp; Firmware 三个新领域。</p>
+<p><strong>关键新增：</strong> MITRE F3（Fight Fraud Framework）v1.1 映射——94 个欺诈相关技能，覆盖 Positioning（FA0001）和 Monetization（FA0002）两大欺诈战术。</p>
+<h3 id="5-modem-devhunk-agentic-diff-viewer">5. modem-dev/hunk — Agentic Diff Viewer</h3>
+<p><strong>它是什么：</strong> Review-first terminal diff viewer，为 Agentic Coders 重新设计。</p>
+<p><strong>定位：</strong> 当 Agent 写代码成为常态，你需要一个专门的工具来审查 Agent 的输出。hunk 不是 git diff 的替代——它是 Agent 代码审查工作流的核心组件。</p>
+<h2 id="_4">持续跟踪项目状态</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>昨日</th>
+<th>今日</th>
+<th>变化</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>headroom</td>
+<td>44,115</td>
+<td>46,934</td>
+<td>+2,819</td>
+<td>继续加速，Context Engineering 层稳固</td>
+</tr>
+<tr>
+<td>codebase-memory-mcp</td>
+<td>10,179</td>
+<td>11,426</td>
+<td>+1,247</td>
+<td>持续增长，Code Intelligence MCP 标配化</td>
+</tr>
+<tr>
+<td>OpenMontage</td>
+<td>8,487</td>
+<td>11,762</td>
+<td>+3,275</td>
+<td>增速扩大，Agentic 内容生产主力</td>
+</tr>
+<tr>
+<td>Palmier-Pro</td>
+<td>4,900</td>
+<td>7,212</td>
+<td>+2,312</td>
+<td>增速扩大，macOS AI 视频编辑</td>
+</tr>
+<tr>
+<td>stablyai/orca</td>
+<td>5,784</td>
+<td>6,009</td>
+<td>+225</td>
+<td>稳定增长，多 Agent ADE</td>
+</tr>
+<tr>
+<td>hyperframes</td>
+<td>~30K</td>
+<td>29,915</td>
+<td>stable</td>
+<td>"Write HTML. Render video. Built for agents."</td>
+</tr>
+<tr>
+<td>voicebox</td>
+<td>31,500</td>
+<td>32,139</td>
+<td>+639</td>
+<td>持续稳定增长</td>
+</tr>
+<tr>
+<td>freellmapi</td>
+<td>11,300</td>
+<td>11,558</td>
+<td>+258</td>
+<td>稳定增长</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">风险与机遇</h2>
+<h3 id="_6">机遇</h3>
+<ol>
+<li><strong>Agent Skills 是新 npm</strong> — 先发优势巨大，谁定义了格式谁就控制了生态</li>
+<li><strong>Agent 权限层是新 API Gateway</strong> — 企业部署 Agent 的必经之路</li>
+<li><strong>AI 金融分析验证了 LLM 在决策领域的可用性</strong> — 从金融扩展到法律/医疗只是时间问题</li>
+<li><strong>Agentic 内容生产工具链正在形成</strong> — OpenMontage(生产) + Palmier-Pro(编辑) + hyperframes(渲染) + voicebox(音频)</li>
+</ol>
+<h3 id="_7">风险</h3>
+<ol>
+<li><strong>gstack 个人依赖风险</strong> — Garry Tan 是 YC CEO，如果精力转移，项目可能停滞</li>
+<li><strong>Agent Skills 标准碎片化</strong> — agentskills.io vs .claude/skills vs 自定义格式，需要统一</li>
+<li><strong>AI 金融分析的合规风险</strong> — 45.7K 用户依赖 LLM 做投资决策，一旦出问题影响面巨大</li>
+<li><strong>Agent 权限层的信任假设</strong> — corsair 的审批链接 10 分钟过期，但钓鱼/社工攻击不在模型覆盖范围内</li>
+</ol>
+<h2 id="_8">重点项目档案</h2>
+<ul>
+<li>🏗️ <a href="projects/garrytan-gstack.html">garrytan/gstack</a> — YC CEO 的 Agent 软件工厂</li>
+<li>🔐 <a href="projects/corsairdev-corsair.html">corsairdev/corsair</a> — Agent 权限与集成层</li>
+<li>🔍 <a href="projects/modem-dev-hunk.html">modem-dev/hunk</a> — Agentic Code Review</li>
+<li>📈 <a href="projects/zhulinsen-daily-stock-analysis.html">ZhuLinsen/daily_stock_analysis</a> — LLM 金融分析</li>
+<li>🛡️ <a href="projects/anthropic-cybersecurity-skills.html">Anthropic-Cybersecurity-Skills</a> — 817 安全技能（更新）</li>
+</ul>
+<hr />
+<p><em>研究日期：2026-06-23 · 数据来源：GitHub Trending + gh CLI · 研究者：GitHub 趋势研究助理</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

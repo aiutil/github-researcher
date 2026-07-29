@@ -1,0 +1,817 @@
+/* =========================================================================
+   GitHub Researcher — GitHub Primer design system
+   Shared stylesheet for all pages (index, daily, projects, trends, detail)
+   ========================================================================= */
+
+:root {
+  /* GitHub Primer color tokens */
+  --canvas-default: #ffffff;
+  --canvas-subtle: #f6f8fa;
+  --canvas-inset: #eaeef2;
+  --border-default: #d0d7de;
+  --border-muted: #d8dee4;
+  --fg-default: #1f2328;
+  --fg-muted: #656d76;
+  --fg-subtle: #6e7781;
+  --accent-fg: #0969da;
+  --accent-emphasis: #0969da;
+  --accent-subtle: #ddf4ff;
+  --success-fg: #1a7f37;
+  --success-emphasis: #1f883d;
+  --success-subtle: #dafbe1;
+  --attention-fg: #9a6700;
+  --attention-subtle: #fff8c5;
+  --danger-fg: #d1242f;
+  --done-fg: #8250df;
+  --done-subtle: #fbefff;
+  --header-bg: #ffffff;
+  --header-fg: #1f2328;
+  --header-logo: #0969da;
+
+  /* Button tokens (GitHub) */
+  --btn-bg: #f6f8fa;
+  --btn-hover-bg: #f3f4f6;
+  --btn-border: rgba(31, 35, 40, 0.15);
+  --btn-primary-bg: #1f883d;
+  --btn-primary-hover-bg: #1a7f37;
+  --btn-primary-border: rgba(31, 35, 40, 0.15);
+
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Radius / shadow */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-xs: 4px;
+  --shadow-sm: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-md: 0 3px 6px rgba(140, 149, 159, 0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--canvas-default);
+  color: var(--fg-default);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent-fg); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* =========================================================================
+   Top navigation (light, GitHub Primer style, 56px)
+   ========================================================================= */
+.nav {
+  background: var(--canvas-default);
+  color: var(--fg-default);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-default);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--fg-default);
+  text-decoration: none;
+}
+.nav-brand:hover { text-decoration: none; color: var(--accent-fg); }
+.nav-brand svg { width: 26px; height: 26px; flex-shrink: 0; color: var(--fg-default); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-links a:hover { background: var(--accent-subtle); color: var(--accent-fg); text-decoration: none; }
+.nav-links a svg { width: 16px; height: 16px; }
+.nav-links a.active { background: var(--accent-subtle); color: var(--accent-fg); }
+
+/* =========================================================================
+   Layout container
+   ========================================================================= */
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
+
+/* =========================================================================
+   Hero (index)
+   ========================================================================= */
+.hero { text-align: center; padding: 56px 0 44px; }
+
+/* Meta line: green dot · date · separator · status — no pill, no animation */
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+.hero-meta-dot {
+  width: 8px; height: 8px;
+  background: var(--success-emphasis);
+  border-radius: 50%;
+  display: inline-block;
+}
+.hero-meta-date { color: var(--fg-default); font-weight: 500; }
+.hero-meta-sep { color: var(--border-default); }
+.hero-meta-status { color: var(--fg-muted); }
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--fg-default);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--fg-muted);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================================
+   Buttons (GitHub Primer)
+   ========================================================================= */
+.btn-primary, .btn-secondary, .btn-outline, .btn-github, .btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 14px;
+  font-family: var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  line-height: 1.5;
+}
+.btn-primary:hover, .btn-secondary:hover, .btn-outline:hover, .btn-github:hover, .btn-dark:hover { text-decoration: none; }
+
+/* Dark CTA — high contrast, GitHub Primer inverted */
+.btn-dark {
+  background: #1f2328;
+  color: #ffffff;
+  border-color: rgba(31,35,40,0.15);
+  padding: 8px 18px;
+  font-weight: 500;
+}
+.btn-dark:hover {
+  background: #2a2f36;
+  color: #ffffff;
+  border-color: rgba(31,35,40,0.2);
+}
+.btn-dark svg { transition: transform 0.18s ease; }
+.btn-dark:hover svg { transform: translateX(2px); }
+
+/* Primary (green CTA) */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: #ffffff;
+  border-color: rgba(31,35,40,0.15);
+  box-shadow: 0 1px 0 rgba(31,35,40,0.1);
+}
+.btn-primary:hover { background: var(--btn-primary-hover-bg); color: #ffffff; border-color: rgba(31,35,40,0.15); }
+
+/* Secondary (default gray) */
+.btn-secondary {
+  background: var(--btn-bg);
+  color: var(--fg-default);
+  border-color: var(--btn-border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover { background: var(--btn-hover-bg); }
+
+/* Outline (white / accent link style) */
+.btn-outline {
+  background: #fff;
+  color: var(--accent-fg);
+  border-color: var(--border-default);
+}
+.btn-outline:hover { background: var(--accent-subtle); border-color: #54aeff; }
+
+/* Small GitHub button inside cards */
+.btn-github {
+  padding: 5px 12px;
+  font-size: 12px;
+  background: var(--btn-bg);
+  color: var(--fg-default);
+  border: 1px solid var(--btn-border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-github:hover { background: var(--btn-hover-bg); border-color: var(--border-default); }
+.btn-github svg { width: 14px; height: 14px; }
+
+/* =========================================================================
+   Stats row
+   ========================================================================= */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 44px;
+}
+.stat-card {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 22px 18px 20px;
+  text-align: center;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.stat-card:hover {
+  border-color: #54aeff;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+/* Primary stat — inverted, hero number */
+.stat-card-primary {
+  background: #1f2328;
+  border-color: #1f2328;
+  color: #ffffff;
+}
+.stat-card-primary:hover {
+  border-color: #2a2f36;
+  box-shadow: 0 6px 14px rgba(31,35,40,0.18);
+}
+.stat-card-primary .stat-icon { color: #8b949e; }
+.stat-card-primary .stat-number { color: #ffffff; }
+.stat-card-primary .stat-label { color: #8b949e; }
+.stat-icon {
+  width: 36px; height: 36px;
+  margin: 0 auto 12px;
+  color: var(--fg-muted);
+  display: flex; align-items: center; justify-content: center;
+}
+.stat-number {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.stat-label { font-size: 12px; color: var(--fg-muted); font-weight: 400; }
+
+/* =========================================================================
+   Section headers
+   ========================================================================= */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-default);
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--fg-default);
+}
+.section-title .icon { font-size: 16px; }
+.section-link {
+  font-size: 13px;
+  color: var(--accent-fg);
+  text-decoration: none;
+  font-weight: 500;
+}
+.section-link:hover { text-decoration: underline; }
+
+/* =========================================================================
+   Cards (GitHub repo card style)
+   ========================================================================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 44px;
+}
+.card {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.card:hover {
+  border-color: #54aeff;
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.card-emoji { font-size: 24px; line-height: 1; }
+.card-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--success-subtle);
+  color: var(--success-fg);
+  padding: 3px 10px;
+  border-radius: 2em;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  border: 1px solid #aceebb;
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--accent-fg);
+}
+.card-title:hover { text-decoration: underline; }
+.card-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.55;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.card-actions { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+
+/* =========================================================================
+   Tags / Labels (GitHub label style)
+   ========================================================================= */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 2em;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+.tag-purple { background: var(--done-subtle); color: var(--done-fg); border-color: #d8b9fe; }
+.tag-cyan   { background: var(--accent-subtle); color: var(--accent-fg); border-color: #54aeff; }
+.tag-green  { background: var(--success-subtle); color: var(--success-fg); border-color: #aceebb; }
+.tag-orange { background: var(--attention-subtle); color: var(--attention-fg); border-color: #d4a72c; }
+
+/* =========================================================================
+   Trend list (index + trends page)
+   ========================================================================= */
+.trend-list {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 44px;
+}
+.trend-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-muted);
+  gap: 14px;
+  transition: background 0.1s;
+}
+.trend-item:last-child { border-bottom: none; }
+.trend-item:hover { background: var(--canvas-subtle); }
+.trend-rank {
+  width: 24px; height: 24px;
+  border-radius: 2em;
+  background: var(--canvas-subtle);
+  color: var(--fg-muted);
+  border: 1px solid var(--border-default);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+.trend-rank.top { background: #fff8c5; color: var(--attention-fg); border-color: #d4a72c; }
+.trend-content { flex: 1; min-width: 0; }
+.trend-title { font-size: 14px; font-weight: 600; color: var(--fg-default); margin-bottom: 2px; }
+.trend-meta { font-size: 12px; color: var(--fg-muted); }
+.trend-score {
+  padding: 3px 12px;
+  border-radius: 2em;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--canvas-subtle);
+  color: var(--fg-muted);
+  border: 1px solid var(--border-default);
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+.trend-score.high { background: var(--success-subtle); color: var(--success-fg); border-color: #aceebb; }
+
+/* =========================================================================
+   Brief card (today's verdict, index)
+   ========================================================================= */
+.brief-card {
+  background: var(--canvas-subtle);
+  border: 1px solid var(--border-default);
+  border-left: 4px solid var(--accent-fg);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 44px;
+}
+.brief-date {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+}
+.brief-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+.brief-text {
+  font-size: 14px;
+  color: var(--fg-default);
+  line-height: 1.65;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+.brief-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-fg);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+.brief-cta:hover { text-decoration: underline; }
+
+/* =========================================================================
+   Category pills (index)
+   ========================================================================= */
+.category-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
+.category-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--canvas-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: 2em;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-default);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.category-pill:hover {
+  background: var(--accent-subtle);
+  color: var(--accent-fg);
+  border-color: #54aeff;
+  text-decoration: none;
+}
+.category-pill .emoji { font-size: 14px; }
+
+/* =========================================================================
+   Filter bar (GitHub-style search/filter)
+   ========================================================================= */
+.filter-bar {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.filter-group { display: flex; align-items: center; gap: 8px; }
+.filter-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-default);
+  white-space: nowrap;
+}
+.filter-group select, .filter-group input {
+  padding: 6px 12px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  background: var(--canvas-default);
+  color: var(--fg-default);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: var(--font-body);
+}
+.filter-group select:focus, .filter-group input:focus {
+  border-color: var(--accent-fg);
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+.filter-group input[type="text"] { min-width: 200px; }
+.filter-count {
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-left: auto;
+  font-weight: 500;
+}
+.filter-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--fg-muted);
+  font-size: 14px;
+  display: none;
+}
+
+/* =========================================================================
+   Tables (GitHub-style)
+   ========================================================================= */
+.gh-table {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 44px;
+}
+.gh-table table { width: 100%; border-collapse: collapse; }
+.gh-table th {
+  background: var(--canvas-subtle);
+  color: var(--fg-default);
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-default);
+}
+.gh-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-muted);
+  font-size: 14px;
+}
+.gh-table tr:last-child td { border-bottom: none; }
+.gh-table tr:hover td { background: var(--canvas-subtle); }
+
+/* =========================================================================
+   Page header (sub-pages)
+   ========================================================================= */
+.page-header { padding: 32px 0 28px; }
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+.page-header p { color: var(--fg-muted); font-size: 14px; }
+
+/* =========================================================================
+   Content / article (daily + project detail)
+   ========================================================================= */
+.content-card {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 36px 44px;
+  margin-bottom: 44px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.content-card h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-default);
+}
+.content-card h2 {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin: 28px 0 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border-default);
+}
+.content-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg-default);
+  margin: 22px 0 8px;
+}
+.content-card p { font-size: 14px; margin-bottom: 12px; line-height: 1.7; color: var(--fg-default); }
+.content-card strong { color: var(--fg-default); font-weight: 600; }
+.content-card ul, .content-card ol { padding-left: 26px; margin: 10px 0 16px; }
+.content-card li { margin: 5px 0; font-size: 14px; line-height: 1.65; }
+.content-card code {
+  font-family: var(--font-mono);
+  font-size: 85%;
+  background: var(--canvas-inset);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-xs);
+}
+.content-card pre {
+  font-family: var(--font-mono);
+  background: var(--canvas-subtle);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  border: 1px solid var(--border-muted);
+}
+.content-card pre code { background: none; padding: 0; }
+.content-card blockquote {
+  background: var(--canvas-subtle);
+  border-left: 4px solid var(--accent-fg);
+  padding: 12px 16px;
+  margin: 14px 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--fg-default);
+}
+.content-card blockquote p:last-child { margin-bottom: 0; }
+.content-card table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  display: block;
+  overflow-x: auto;
+}
+.content-card th, .content-card td {
+  border: 1px solid var(--border-default);
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+}
+.content-card th {
+  background: var(--canvas-subtle);
+  font-weight: 600;
+}
+.content-card tr:nth-child(even) td { background: var(--canvas-subtle); }
+.content-card a { color: var(--accent-fg); }
+.content-card hr { border: none; border-top: 1px solid var(--border-default); margin: 24px 0; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-fg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.back-link:hover { text-decoration: underline; }
+
+/* =========================================================================
+   Date sections (trends page)
+   ========================================================================= */
+.date-section {
+  background: var(--canvas-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.date-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  transition: background 0.1s;
+}
+.date-toggle { cursor: pointer; }
+.date-toggle:hover .date-header { background: var(--canvas-subtle); }
+.date-badge {
+  background: var(--canvas-subtle);
+  color: var(--fg-default);
+  border: 1px solid var(--border-default);
+  padding: 3px 12px;
+  border-radius: 2em;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+.date-summary {
+  flex: 1;
+  font-size: 14px;
+  color: var(--fg-muted);
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.date-arrow { color: var(--fg-muted); font-size: 12px; }
+.date-trends { padding: 0 18px 14px; }
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.footer {
+  text-align: center;
+  padding: 28px 0;
+  border-top: 1px solid var(--border-default);
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+.footer a { color: var(--accent-fg); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* =========================================================================
+   Mermaid diagrams
+   ========================================================================= */
+.mermaid { background: var(--canvas-default); text-align: center; margin: 16px 0; }
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+@media (max-width: 768px) {
+  .hero-title { font-size: 28px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .nav-links span { display: none; }
+  .nav-links a { padding: 8px 10px; }
+  .brief-card, .content-card { padding: 22px 18px; }
+  .container { padding: 24px 16px 48px; }
+}
+@media (max-width: 480px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* =========================================================================
+   Subtle fade-in on first paint (kept light — GitHub is restrained)
+   ========================================================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero, .stats-row, .brief-card { animation: fadeInUp 0.3s ease-out; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

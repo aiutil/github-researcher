@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-10 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-07-10-github">2026-07-10 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p>今天是 2026 年 7 月 10 日，周四。GitHub 趋势生态出现三个值得关注的信号：</p>
+<ol>
+<li><strong>安全 Agent 正式成为独立赛道</strong>——T3MP3ST 把"AI 编码 Agent → 攻击性安全工具"的路径走通了，而且用 <code>verify-claims</code> 复现机制建立了信任标杆</li>
+<li><strong>AI4Science 工具链从实验室走向可用产品</strong>——OpenScience 把文献阅读、实验代码、科学数据库查询、论文写作整合到一个浏览器工作台</li>
+<li><strong>Agent Harness 头部生态已经定型</strong>——ECC 228K + Hermes 212K + OpenCode 184K + OpenClaw 382K，四大项目定义了编码 Agent 基础设施的边界</li>
+</ol>
+<h2 id="_2">趋势深度分析</h2>
+<h3 id="1ai-t3mp3st4152-8-agpl-30">🏆 趋势 1：AI 红队元框架——T3MP3ST（4,152⭐ / 8 天 / AGPL-3.0）</h3>
+<p><strong>它是什么：</strong> 多 Agent 攻击性安全元框架（meta-harness），让 Claude Code、Codex、Hermes 或本地 Ollama 模型变成零日漏洞猎人。Kill chain 全自动：recon → exploit → report，支持 Web 应用、CTF、机器人/OT 嵌入式、源代码、智能合约、云 IaC、移动端、二进制/逆向 8 个领域。</p>
+<p><strong>为什么火：</strong>
+- <strong>90.1% pass@1 on XBOW 104-challenge suite</strong>（XBOW 自报 85%）——用别人的基准打别人的分
+- <strong><code>npm run verify-claims</code> 复现机制</strong>——README 里每个数字都可从 committed JSON 重算，24/24 绿
+- <strong>Keyless 设计</strong>——不额外收 API key，用你已有的编码 Agent 作为推理引擎
+- <strong>Pliny（elder-plinius）品牌效应</strong>——AI 安全圈 KOL + 越狱研究者
+- 8 天 4.2K Star + 890 Fork，社区参与度极高</p>
+<p><strong>技术亮点：</strong>
+- 8-operator kill chain 架构（Recon → Exploiter → Infiltrator → Exfiltrator → Ghost 等）
+- 35 个内置工具（全量 83 个，危险工具如 metasploit/hydra 在 human-approval gate 后）
+- Egress-scope containment：目标设定后，网络工具拒绝访问域外主机
+- 支持完全离线运行（Ollama/LM Studio/vLLM/llama.cpp）
+- War Room 浏览器 UI + CLI 双入口
+- 协调披露管道（OSV novelty + live PoC + refuter panel）</p>
+<p><strong>架构启发：</strong>
+<pre class="mermaid">flowchart TB
+    subgraph "T3MP3ST Kill Chain"
+        A[Op Admiral<br/>任务规划] --> B[Recon<br/>侦察引擎]
+        B --> C[Exploiter<br/>漏洞利用]
+        C --> D[Infiltrator<br/>内网渗透]
+        D --> E[Exfiltrator<br/>数据提取]
+        E --> F[Ghost<br/>痕迹清除]
+        F --> G[Report<br/>报告生成]
+    end
+
+    subgraph "Agent Backends"
+        H[Claude Code]
+        I[Codex]
+        J[Hermes]
+        K[Ollama<br/>offline]
+    end
+
+    subgraph "Arsenal"
+        L[35 built-in tools]
+        M[48 opt-in adapters]
+        N[Human-gated<br/>metasploit/hydra]
+    end
+
+    H & I & J & K --> A
+    L & M & N --> C
+</pre></p>
+<p><strong>定位判断：</strong> 工具型 → 平台候选。当前是高级工具，但 meta-harness 架构（任意 Agent + 工具集 + 基准验证）有平台化潜力。</p>
+<p><strong>风险/局限/泡沫点：</strong>
+- Exploiter/Infiltrator/Ghost 仍标注 Experimental——swarm 协调端到端尚未基准验证
+- AGPL-3.0 限制商业集成
+- 安全工具天然面临滥用风险
+- "零日猎人"的营销话术需要更多真实 CVE 发现来支撑（当前有 8/10 post-cutoff CVE 但规模有限）
+- Pliny 个人品牌带来的关注度可能高于工程成熟度</p>
+<h3 id="2openscience-agent1935-7-apache-20">🔬 趋势 2：OpenScience——科研全闭环 Agent（1,935⭐ / 7 天 / Apache-2.0）</h3>
+<p><strong>它是什么：</strong> 开源 AI 科研工作台。给它一个研究目标，它自动完成：读文献 → 提假设 → 写代码 → 跑实验 → 查数据库 → 分析数据 → 写论文。</p>
+<p><strong>为什么值得关注：</strong>
+- <strong>290+ Skills</strong> 覆盖 ML 训练（DeepSpeed/PEFT/TRL）、分子生物学、化学信息学、LaTeX 排版、云计算（Modal/Tinker）
+- <strong>30+ 科学数据库直连</strong>：UniProt、PDB、Ensembl、ChEMBL、PubChem、arXiv、OpenAlex、Semantic Scholar
+- 浏览器 UI 含文件树、编辑器、终端、会话历史，还支持分子/结构/基因组/图表的 inline 渲染
+- 默认 <code>research</code> agent + biology/physics/ml 三个专家 agent + critique/literature-review 子 agent
+- BYOK 永远免费，Atlas 平台可选
+- Bun 构建，TypeScript 全栈</p>
+<p><strong>架构启发：</strong>
+<pre class="mermaid">flowchart LR
+    subgraph "OpenScience Agent Loop"
+        A[研究目标] --> B[Literature Review<br/>子Agent]
+        B --> C[Hypothesis<br/>规划]
+        C --> D[Code Generation<br/>+实验执行]
+        D --> E[Database Query<br/>30+科学数据库]
+        E --> F[Analysis<br/>+可视化]
+        F --> G[Write-up<br/>LaTeX/Mardown]
+        G -.->|critique| C
+    end
+
+    subgraph "Model Layer"
+        H[Anthropic]
+        I[OpenAI]
+        J[Google]
+        K[Local/Open-weight]
+    end
+
+    H & I & J & K --> A
+</pre></p>
+<p><strong>定位判断：</strong> 平台候选。已具备 AI4Science 平台的雏形——多领域覆盖、技能可扩展、模型无关。</p>
+<p><strong>风险/局限：</strong>
+- Agent 未沙箱化——权限系统仅提醒，非隔离边界（官方建议在容器/VM 中运行）
+- 7 天 1.9K Star 增速健康但不算爆发——AI4Science 受众比通用编码 Agent 窄
+- Atlas 商业平台的存在可能引发开源 vs 商业路线分歧
+- 科研可重复性需要实际验证，Agent 生成的实验代码可能有微妙错误</p>
+<h3 id="3agent-harness">⚡ 趋势 3：Agent Harness 头部生态定型</h3>
+<p>今日 GitHub 全局活跃仓库 Top 10 中，Agent 相关项目占据显著位置：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Star</th>
+<th>Forks</th>
+<th>Issues</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenClaw</td>
+<td>382K</td>
+<td>80K</td>
+<td>6,269</td>
+<td>个人 AI 助手/跨平台</td>
+</tr>
+<tr>
+<td>ECC</td>
+<td>228K</td>
+<td>35K</td>
+<td>83</td>
+<td>Agent 性能优化/技能+记忆+安全</td>
+</tr>
+<tr>
+<td>Hermes-Agent</td>
+<td>212K</td>
+<td>39K</td>
+<td>27K</td>
+<td>成长型 Agent/NousResearch</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td>184K</td>
+<td>23K</td>
+<td>4,658</td>
+<td>开源编码 Agent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键判断：编码 Agent 基础设施层已定型。</strong> 这四个项目合计 100 万+ Star，覆盖了个人助手、性能优化、成长型 Agent、通用编码四个方向。新入局者很难在这个层面竞争，机会在上层应用和下层工具：</p>
+<ul>
+<li><strong>上层：</strong> 特定领域 Agent（安全 T3MP3ST、科研 OpenScience、运维、数据分析）</li>
+<li><strong>下层：</strong> Agent 工具链（Loop Engineering、Skills、MCP servers）</li>
+<li><strong>横向：</strong> 元编排（Omnigent）和框架标准化（Vercel Eve）</li>
+</ul>
+<h3 id="4-gpu-talos815-8">🌐 趋势 4：分布式 GPU 推理网络——Talos（815⭐ / 8 天）</h3>
+<p><strong>它是什么：</strong> GPU worker 客户端，连接 Talos 网络执行开源模型推理任务，通过 WebSocket 报告 uptime 获取奖励。</p>
+<p><strong>为什么关注：</strong> 去中心化推理算力市场的早期信号。如果 CDN 模式可以用于 GPU 推理供给，算力市场结构可能被重塑。当前体量很小（815 Star、13 Fork），但方向值得关注。</p>
+<p><strong>风险：</strong> 体量过小，可能是概念验证阶段。经济模型可持续性未知。与 Ollama（175K⭐）等本地推理方案不构成直接竞争，更像是算力市场的 Airbnb。</p>
+<h3 id="5vercel-eve-34k-24">趋势 5：Vercel Eve 稳步增长（3.4K⭐ / 24 天）</h3>
+<p>从 6 月 19 日的 2.5K 到今天 3.4K，日均 ~40 Star。增长不算爆发但很稳定。</p>
+<p><strong>核心设计理念——filesystem-first：</strong> agent 的 tools/skills/channels/schedules 映射到约定目录结构。文件系统就是 Agent 的开发界面。</p>
+<p>这个设计的核心洞察是：<strong>Agent 框架应该消除框架学习成本。</strong> 你不需要学 DSL，只需要按目录约定放文件。Coding Agent（Claude Code/Codex）可以直接从 <code>node_modules/eve/docs</code> 读取文档——这是 Agent-native 的 DX 设计。</p>
+<h2 id="_3">重点项目评分</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度质量</th>
+<th>技术创新</th>
+<th>工程成熟度</th>
+<th>架构启发</th>
+<th>企业落地</th>
+<th>中期趋势</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T3MP3ST</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>4</td>
+<td><strong>57/80</strong></td>
+<td>工具型→平台候选</td>
+</tr>
+<tr>
+<td>OpenScience</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>5</td>
+<td><strong>56/80</strong></td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>Talos</td>
+<td>5</td>
+<td>6</td>
+<td>4</td>
+<td>6</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>6</td>
+<td><strong>39/80</strong></td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>Vercel Eve</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td><strong>55/80</strong></td>
+<td>平台候选</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">本周值得补看（如果还没看）</h2>
+<blockquote>
+<p>7 月 7 日日报中的 <strong>Ponytail（79K⭐）</strong> ——YAGNI Agent Skill 范式，54% less code / 20% cheaper / 27% faster / 100% safe。如果你还没看，这是本周最值得花 5 分钟了解的 Agent 工程实践。</p>
+</blockquote>
+<h2 id="_5">项目档案</h2>
+<p>今日新增 3 个项目档案，更新 1 个项目档案：</p>
+<ul>
+<li>🆕 <code>projects/t3mp3st.md</code> — 多 Agent 攻击性安全元框架</li>
+<li>🆕 <code>projects/openscience.md</code> — 开源 AI 科研工作台</li>
+<li>🆕 <code>projects/talos.md</code> — 分布式 GPU 推理网络</li>
+<li>🔄 <code>projects/vercel-eve.md</code> — 更新 Star 数和增长趋势</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

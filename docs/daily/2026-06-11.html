@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-11 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-11-github">2026-06-11 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日重点趋势</h2>
+<h3 id="1agent">趋势 1：Agent 编排分层 — 顾问模式定义新协作范式</h3>
+<p><strong>核心信号：</strong> shadcn/improve 1 天 745⭐，这不是又一个 Agent 工具，而是一个全新的 Agent 协作范式。</p>
+<p><strong>模式解析：</strong> 该项目的核心理念是「昂贵模型做审计和计划，便宜模型做执行」。这是一个关键认知转变——不是所有 Agent 任务都需要最贵的模型。通过引入「顾问-执行者」分层，可以将 Agent 工作流的成本降低一个数量级，同时保持质量。</p>
+<p><strong>生态呼应：</strong>
+- <strong>amElnagdy/guard-skills</strong> (548⭐) — 为 Coding Agent 提供质量门禁，捕获 AI 生成的典型失败模式
+- <strong>JimLiu/baoyu-design</strong> (680⭐) — Claude Design 本地化 Skill，UI 设计也能 Agent 化</p>
+<p><strong>架构启发：</strong> Agent Skill 生态正在从「单一工具」演进为「多步骤工作流编排」。关键不是某个 Skill 能做什么，而是多个 Skill 如何组合成可靠的工作流。shadcn/improve 的 <code>audit → plan → execute → verify</code> 闭环是值得学习的编排模式。</p>
+<pre class="mermaid">flowchart LR
+    A[昂贵模型<br/>Opus/GPT-5] -->|审计 + 计划| B[plans/*.md]
+    B -->|自包含规格| C[便宜模型<br/>Haiku/GPT-4o-mini]
+    C -->|实现 + 测试| D[代码变更]
+    D -->|验证| E[质量门禁<br/>guard-skills]
+    E -->|通过| F[合并]
+    E -->|失败| C
+</pre>
+<h3 id="2apple-ai">趋势 2：Apple 端侧 AI 生态正式开放</h3>
+<p><strong>核心信号：</strong> apple/coreai-models 3 天 605⭐，Apple 首次系统性开放端侧 AI 全栈。</p>
+<p><strong>关键分析：</strong> 这不是一个简单的模型仓库，而是 Apple 端侧 AI 的完整开发者生态：
+- <strong>模型导出层</strong> — 从 HuggingFace 到 Core AI 格式的配方
+- <strong>Python 原语层</strong> — PyTorch 模型到端侧的构建块
+- <strong>Swift 运行时层</strong> — macOS/iOS 集成的 Swift 包
+- <strong>Agent Skills 层</strong> — 让 Coding Agent 直接利用 Core AI 的技能插件</p>
+<p><strong>平台判断：</strong> 这是 Apple 在 AI 生态的「App Store 时刻」。通过开放 Core AI 的模型导出和运行时，Apple 正在构建一个封闭花园中的开放生态。对架构师而言，这意味着端侧 AI 不再是概念，而是有了官方工具链支撑的生产路径。</p>
+<p><strong>风险点：</strong> 目前要求 macOS/iOS 27.0+、Xcode 27.0+，生态成熟度仍需观察。</p>
+<h3 id="3ai">趋势 3：AI 原生可观测性从监控到自愈</h3>
+<p><strong>核心信号：</strong> superloglabs/superlog 721⭐，YC P26，OpenTelemetry + AI Agent 自愈。</p>
+<p><strong>技术栈：</strong> Postgres + ClickHouse + OTLP + AI Agent Runner。这不是在现有监控工具上加 AI 外壳，而是从底层重新设计的 AI-native 可观测性。</p>
+<p><strong>为什么重要：</strong>
+1. 告警疲劳是 SRE 的头号痛点，AI 做信号聚合和降噪是真需求
+2. 从「发现问题」到「定位根因」到「修复建议」的闭环是可观测性的终极目标
+3. OpenTelemetry 是事实标准，基于 OTel 构建意味着可集成性</p>
+<p><strong>平台潜力：</strong> 高。可观测性天然是平台生意，AI 自愈能力是差异化壁垒。</p>
+<h3 id="4-agent">趋势 4：开发沙箱成为 Agent 基础设施</h3>
+<p><strong>核心信号：</strong> tastyeffectco/sandboxd 561⭐，Go 实现，Docker 隔离，一条命令启动。</p>
+<p><strong>需求分析：</strong> Coding Agent 需要安全的执行环境来运行代码、安装依赖、预览结果。sandboxd 精准切入这个需求：
+- 无 K8s 依赖，降低部署门槛
+- Preview URL 支持，方便 Agent 和人类查看结果
+- 自托管，数据不离开企业环境</p>
+<p><strong>基础设施判断：</strong> 如果 Coding Agent 成为标准开发流程，开发沙箱就是必要的基础设施层。类似 CI/CD 中的 Runner，Agent 时代的 Sandbox。</p>
+<h3 id="5ai">趋势 5：AI 生成式设计资产走向生产</h3>
+<p><strong>核心信号：</strong> diffusionstudio/lottie 2,004⭐（本周最高增速之一），AI 生成生产级 Lottie 动画。</p>
+<p><strong>趋势判断：</strong> AI 生成设计资产正从「概念验证」走向「生产可用」。Lottie 是移动端和 Web 动画的工业标准格式，能直接生成 Lottie 意味着可以直接进入产品流程。这不是「AI 替代设计师」，而是「AI 扩大设计产能」。</p>
+<hr />
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="top-1shadcnimprove-agent">Top 1：shadcn/improve — Agent 顾问模式</h3>
+<p><strong>它做什么：</strong> 审计代码库，生成自包含的实现计划，交给便宜模型执行。</p>
+<p><strong>为什么火：</strong> shadcn 的品牌背书 + 解决了一个真实痛点（Agent 工作流成本高）+ 概念清晰（计划是产品，不是代码）。</p>
+<p><strong>技术亮点：</strong>
+- 并行子 Agent 审计 9 个维度（正确性、安全、性能、测试覆盖、技术债、依赖、DX、文档、方向）
+- 每个发现都有 <code>file:line</code> 级证据
+- 顾问模型会重新验证子 Agent 的发现，剔除误报
+- 计划包含验证门禁和停止条件
+- 支持 <code>execute</code> 模式在隔离 worktree 中派发执行</p>
+<p><strong>定位：</strong> 平台候选。这是一个编排模式的开源实现，可能成为 Agent 工作流的事实标准。</p>
+<p><strong>风险：</strong> 目前只有 shadcn 的品牌背书，缺乏大规模使用验证。计划质量高度依赖模型能力。</p>
+<h3 id="top-2applecoreai-models-ai">Top 2：apple/coreai-models — 端侧 AI 全栈</h3>
+<p><strong>它做什么：</strong> 提供模型导出配方、Python 原语和 Swift 运行时，让开发者在 Apple 设备上运行 AI 模型。</p>
+<p><strong>为什么火：</strong> Apple 官方开源，端侧 AI 开发者苦工具链久矣。</p>
+<p><strong>技术亮点：</strong>
+- 模型导出管线：HuggingFace → Core AI <code>.aimodel</code> 格式
+- Swift 运行时：与 Core AI 框架无缝集成
+- Agent Skills：让 Coding Agent 能直接使用 Core AI
+- 支持量化、调色板压缩等端侧优化</p>
+<p><strong>定位：</strong> 基础设施候选。这是 Apple 端侧 AI 生态的基石。</p>
+<h3 id="top-3superloglabssuperlog-ai">Top 3：superloglabs/superlog — AI 自愈可观测性</h3>
+<p><strong>它做什么：</strong> 基于开源 OTel 的可观测性平台，AI Agent 自动聚合信号、定位根因、生成修复建议。</p>
+<p><strong>为什么火：</strong> YC P26 背书 + 解决告警疲劳真痛点 + AI-native 架构。</p>
+<p><strong>技术亮点：</strong>
+- OTLP 原生接入，与现有 OpenTelemetry 生态无缝集成
+- ClickHouse 支撑海量遥测数据查询
+- 社区版 Agent Runner 自动记录事件摘要
+- 从信号到事件到修复建议的 AI 闭环</p>
+<p><strong>定位：</strong> 平台候选。可观测性天然是平台生意。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">风险</h3>
+<ol>
+<li><strong>Agent Skill 生态碎片化加剧</strong> — shadcn/improve、guard-skills、baoyu-design 各自为战，缺乏统一编排标准</li>
+<li><strong>Apple 生态锁定</strong> — coreai-models 只服务于 Apple 平台，跨平台团队需谨慎投入</li>
+<li><strong>AI 自愈的可靠性</strong> — superlog 的 AI 修复建议目前更偏向辅助，离真正自动修复还有距离</li>
+</ol>
+<h3 id="_5">机遇</h3>
+<ol>
+<li><strong>模型分层编排</strong> — shadcn/improve 的顾问模式可能是 Agent 成本优化的关键突破口</li>
+<li><strong>端侧 AI 开发窗口期</strong> — Apple Core AI 刚开放，早期投入有先发优势</li>
+<li><strong>Agent 基础设施层</strong> — sandboxd 这类项目预示 Agent 运行时基础设施的蓝海</li>
+</ol>
+<hr />
+<h2 id="_6">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>⭐</th>
+<th>类别</th>
+<th>评分</th>
+<th>是否持续跟踪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shadcn/improve</td>
+<td>745</td>
+<td>平台候选</td>
+<td>92</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>apple/coreai-models</td>
+<td>605</td>
+<td>基础设施候选</td>
+<td>90</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>superloglabs/superlog</td>
+<td>721</td>
+<td>平台候选</td>
+<td>86</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>tastyeffectco/sandboxd</td>
+<td>561</td>
+<td>基础设施候选</td>
+<td>83</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>diffusionstudio/lottie</td>
+<td>2,004</td>
+<td>工具型</td>
+<td>78</td>
+<td>🔍 观察</td>
+</tr>
+<tr>
+<td>JimLiu/baoyu-design</td>
+<td>680</td>
+<td>工具型</td>
+<td>75</td>
+<td>🔍 观察</td>
+</tr>
+<tr>
+<td>amElnagdy/guard-skills</td>
+<td>548</td>
+<td>工具型</td>
+<td>74</td>
+<td>🔍 观察</td>
+</tr>
+<tr>
+<td>Tencent-Hunyuan/UniRL</td>
+<td>427</td>
+<td>学习型</td>
+<td>70</td>
+<td>🔍 观察</td>
+</tr>
+</tbody>
+</table>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

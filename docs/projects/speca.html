@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPECA | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/NyxFoundation/speca" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="speca">SPECA</h1>
+<h2 id="_1">一句话定位</h2>
+<p>基于规约的安全审计 Agent 框架（Specification-to-Checklist Agentic Auditing），从自然语言规约推导安全属性，再验证代码实现是否满足这些属性，而非传统的"扫描代码模式找 Bug"。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统安全审计工具从代码出发找漏洞模式，但规约驱动系统（协议栈、共识实现、密码学库）的漏洞可能来自"实现不满足规约"而非"代码有 Bug"。现有工具缺乏表达"规约要求什么"的能力。</p>
+<p>SPECA 反转分析方向：从规约（Specification）出发，推导类型化安全属性，再要求实现"证明"每个属性。</p>
+<h2 id="2026-05-08">为什么值得关注（2026-05-08）</h2>
+<p>SPECA 代表了安全审计的范式升级，且有学术验证：
+- Sherlock Ethereum Fusaka 审计竞赛（366 份提交）中恢复全部 15 个 H/M/L 漏洞
+- 独立发现 4 个竞赛中未被发现的 Bug（包括密码学不变量违反）
+- RepoAudit C/C++ 基准上精确率 88.9%
+- 所有误报可追溯到 3 个可解释根因</p>
+<p>这种"从规约推导属性，再验证实现"的方法，在金融、区块链、密码学等规约驱动领域有独特价值。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>345 stars 偏低但有学术论文支撑（arXiv:2604.26495）</li>
+<li>属于"小众但高价值"项目</li>
+<li>安全审计 + LLM Agent 是小众但确定的需求</li>
+<li>TUI 前端（speca-cli）降低了使用门槛</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>规约锚定审计</strong>：从自然语言规约推导类型化安全属性（INV-* 标签），每个发现都有完整溯源链（属性→子图→规约章节→标签）</li>
+<li><strong>Proof-attempt 推理</strong>：不是"找 Bug"，而是要求实现"证明"每个属性。未通过证明的就是潜在漏洞</li>
+<li><strong>可控的跨实现比较</strong>：同一属性词汇表应用于 N 个实现，可做跨实现的系统化比较</li>
+<li><strong>误报可解释</strong>：误报分解为 3 个根因（信任边界误解 50%、代码阅读错误 37.5%、规约误解 12.5%），每个映射到具体管道阶段</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>SPECA 的核心洞察：<strong>安全审计应该从"代码模式匹配"升级为"规约属性验证"</strong>。</p>
+<p>对架构师的启发：
+- 在设计规约驱动系统（协议、共识、密码学模块）时，可以将安全属性显式编码为规约的一部分
+- SPECA 的"属性推导 + 证明尝试"管道可以嵌入 CI/CD，实现持续安全验证
+- 误报可解释性是企业落地的关键——安全团队需要知道为什么报了这个问题</p>
+<h2 id="_6">定位判断</h2>
+<p>学术化但可用的安全审计平台。定位在：
+- 高于传统 SAST/DAST 工具（因为从规约出发）
+- 低于全功能 DevSecOps 平台（因为聚焦规约驱动系统）
+- 适合金融、区块链、密码学等领域的安全审计</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>适用范围窄</strong>：规约驱动系统是安全审计的子集，不是所有代码都适合这种范式</li>
+<li><strong>LLM 成本高</strong>：完整的规约推导 + 属性验证需要大量 LLM 调用，成本不低</li>
+<li><strong>Star 数低</strong>：345 stars 说明社区关注度有限，可能影响长期维护</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>Deepsec (Vercel)</strong>：工业化 Agent 安全扫描，从代码出发。SPECA 从规约出发。互补。</li>
+<li><strong>Slither (Trail of Bits)</strong>：Solidity 静态分析框架。SPECA 可以在 Slither 输出之上做规约层分析</li>
+<li><strong>CodeQL (GitHub)</strong>：通用代码查询框架。SPECA 的规约锚定是 CodeQL 不覆盖的能力</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 规约锚定审计是有学术验证的创新方法。特别适合金融/区块链企业做 PoC。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>是否有金融/区块链企业采用并公开案例</li>
+<li>对非 EVM 协议（如 Cosmos、Solana）的适配进度</li>
+<li>TUI 前端（speca-cli）的用户体验成熟度</li>
+<li>LLM 成本是否可控（完整的审计 run 需要多少 token）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-08</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

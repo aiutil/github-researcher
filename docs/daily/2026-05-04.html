@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-04 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-04-github">2026-05-04 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日概览</h2>
+<p>周日 GitHub 活跃度相对平稳，但几个关键方向持续发酵。Open Design 以 19.1K stars 领跑本周新项目增速榜，Agent Design 赛道已从蓝海变成红海。安全领域 CVE-2026-31431 的 PoC 在 3 天内冲到 3K stars，影响了所有主流企业 Linux 发行版。DeepSeek 开源 TileKernels 让 LLM 底层算子优化进入开源视野。</p>
+<hr />
+<h2 id="open-design-19k-agent-design">趋势一：Open Design 突破 19K — Agent Design 赛道红海化</h2>
+<p><strong>数据：</strong> 19,127 stars（+3,427 /24h），2,114 forks，Apache-2.0</p>
+<p>Open Design 在 6 天内从 4K 冲到 19K，增速略有放缓但绝对增量仍然惊人。关键信号：</p>
+<ul>
+<li><strong>forks 达到 2,114</strong> — 不仅是围观，有大量二次开发</li>
+<li><strong>open issues 110</strong> — 活跃的用户反馈和 feature request</li>
+<li><strong>19 Skills + 71 Design Systems</strong> — 产品矩阵快速扩展</li>
+<li><strong>BYOK 全层</strong> — 支持 Claude Code / Codex / Cursor / Gemini / OpenCode / Qwen / Copilot / Hermes / Kimi CLI</li>
+</ul>
+<p><strong>架构师判断：</strong>
+Open Design 已经不是"工具"了，它正在变成 Agent Design 赛道的平台层。71 个 Design Systems 本身就是护城河 — 不是模型能力的护城河，而是设计资产和生态的护城河。但这种增速不可持续，预计 25K 附近会遇到第一个瓶颈。需要观察它能否从"开源 Claude Design 替代"进化为"Agent 原生设计平台"。</p>
+<p><strong>风险点：</strong>
+- 过度依赖 Claude Design 的对标定位，缺乏独立的产品叙事
+- 19 个 Skills 的质量参差不齐，部分可能是概念验证
+- BYOK 模式下用户实际使用成本不低</p>
+<hr />
+<h2 id="cve-2026-31431-linux">趋势二：CVE-2026-31431 — Linux 内核级提权漏洞席卷安全社区</h2>
+<p><strong>数据：</strong> 3,012 stars，628 forks（3天）</p>
+<p>Theori（xint.io）披露的 Linux 内核 <code>algif_aead</code> 漏洞持续发酵。这是一个 9 年历史的 bug（2017 年引入），允许非特权用户通过 page-cache 损坏获取 root 权限。</p>
+<p><strong>影响范围：</strong>
+- Ubuntu 24.04 LTS（6.17.0-1007-aws）
+- Amazon Linux 2023（6.18.8）
+- RHEL 10.1（6.12.0）
+- SUSE 16（6.12.0）</p>
+<p><strong>衍生项目爆发：</strong>
+- <code>rootsecdev/cve_2026_31431</code>（451 stars）— Python exploit POC
+- <code>badsectorlabs/copyfail-go</code>（304 stars）— Go 语言实现
+- <code>tgies/copy-fail-c</code>（260 stars）— C 语言跨平台移植</p>
+<p><strong>架构师判断：</strong>
+这是 P0 级别的安全事件。3 天内出现 Python/Go/C 三种语言实现 + 多个衍生工具，说明安全社区反应强烈。对企业而言，关键是：所有运行未打补丁内核的云服务器和容器宿主机都在风险范围内。这个漏洞之所以重要，是因为它打破了"内核加密 = 安全"的假设 — AEAD 实现本身的 bug 导致了安全机制的失效。</p>
+<hr />
+<h2 id="deepseek-tilekernels-llm">趋势三：DeepSeek TileKernels — LLM 底层算子库开源</h2>
+<p><strong>数据：</strong> 1,418 stars，117 forks，MIT 许可</p>
+<p>DeepSeek 开源了用 TileLang 构建的 GPU 算子库，覆盖 LLM 训练和推理中最关键的底层操作：</p>
+<ul>
+<li><strong>Gating</strong> — Top-k 专家选择和评分（MoE 路由核心）</li>
+<li><strong>MoE Routing</strong> — Token-to-expert 映射，融合扩展/约减</li>
+<li><strong>Quantization</strong> — FP8/FP4/E5M6 量化，融合 SwiGLU+量化</li>
+<li><strong>Engram</strong> — Engram 门控内核，融合 RMSNorm，前向/后向传播</li>
+<li><strong>Manifold HyperConnection</strong> — Sinkhorn 归一化和混合拆分/应用</li>
+</ul>
+<p><strong>架构师判断：</strong>
+TileKernels 的价值不在于"又一个 GPU 算子库"，而在于它暴露了 DeepSeek 在 MoE 架构上的底层优化方向。特别是 Engram 和 Manifold HyperConnection 这两个模块，暗示了 DeepSeek 模型架构的新探索。对基础设施团队而言，这些算子可以直接用于 vLLM/SGLang 等推理框架的性能优化。</p>
+<p><strong>关键信息：</strong> 要求 SM90（H100）或 SM100（B200）架构，CUDA 13.1+，门槛较高。</p>
+<hr />
+<h2 id="dpi">趋势四：DPI 绕过方案集中爆发</h2>
+<p><strong>数据：</strong>
+- <code>denuitt1/mhr-cfw</code> — 1,943 stars（7天），Python，通过 GAS + Cloudflare Workers 域前置
+- <code>therealaleph/MasterHttpRelayVPN-RUST</code> — 1,566 stars，Rust 移植版</p>
+<p><strong>mhr-cfw 技术路线：</strong>
+1. 客户端流量 → Google Apps Script（GAS）中继
+2. GAS 转发 → Cloudflare Workers
+3. 利用 TLS SNI 隐藏实现 DPI 绕过</p>
+<p><strong>架构师判断：</strong>
+这类项目的技术实现并不复杂（本质上就是域前置），但 star 增速反映了当前网络环境的现实需求。对企业架构师而言，更重要的是理解这种流量的特征和检测方法 — 如果企业网络需要做流量审计，这类域前置方案是必须了解的。</p>
+<p><strong>风险：</strong>
+- 域前置依赖 CDN/GAS 的容忍度，随时可能被封堵
+- 项目代码质量一般，49 个 open issues
+- 不适合作为生产级方案</p>
+<hr />
+<h2 id="_2">其他值得关注的项目</h2>
+<h3 id="openchronicle21k-stars">OpenChronicle（2.1K stars）</h3>
+<p>开源本地优先的 Agent 记忆系统，定位为 OpenAI Chronicle 的开源替代。模型无关、可检查、可扩展。Agent Memory 赛道又多了一个选手，与 MemPalace（50.7K）形成互补 — MemPalace 偏 MCP 集成，OpenChronicle 偏本地优先。</p>
+<h3 id="text-to-cad14k-stars">text-to-cad（1.4K stars）</h3>
+<p>开源 Text-to-CAD 引擎，用自然语言生成 CAD 模型。MIT 许可，支持 WebAssembly。这是"AI + 专业工具"赛道的又一个实例 — 不是替代 CAD 工程师，而是降低 CAD 使用的门槛。</p>
+<h3 id="world2agent12k-stars">World2Agent（1.2K stars）</h3>
+<p>标准化 AI Agent 感知真实世界的开放协议。方向有意思但早期，Apache-2.0，仅 26 forks。</p>
+<hr />
+<h2 id="_3">趋势关系图</h2>
+<pre class="mermaid">graph TD
+    subgraph "Agent Design 赛道"
+        OD[Open Design<br/>19.1K ⭐]
+        OD -->|对标| CD[Claude Design<br/>闭源]
+        OD -->|Skill 生态| CC[Claude Code]
+        OD -->|Skill 生态| CX[Codex / Cursor]
+    end
+
+    subgraph "Agent 编排"
+        HM[Harmonist<br/>1.2K ⭐]
+        HM -->|零依赖| AG[186 Agents]
+        HM -->|协议强制| SEC[安全门控]
+    end
+
+    subgraph "Agent Memory"
+        OC[OpenChronicle<br/>2.1K ⭐]
+        MP[MemPalace<br/>50.7K ⭐]
+        OC -.->|竞争| MP
+    end
+
+    subgraph "LLM 底层算子"
+        TK[TileKernels<br/>1.4K ⭐]
+        TK -->|构建于| TL[TileLang DSL]
+        TK -->|用于| VLLM[vLLM / SGLang]
+    end
+
+    subgraph "安全"
+        CF[CVE-2026-31431<br/>3.0K ⭐]
+        CF -->|衍生| GO[Go 移植]
+        CF -->|衍生| C[C 移植]
+    end
+</pre>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">泡沫信号</h3>
+<ul>
+<li><strong>Open Design 增速放缓迹象</strong> — 从日增 4K 降到日增 3.4K，虽然仍是高增长，但二次导数转负</li>
+<li><strong>DPI 绕过方案</strong> — 技术门槛低，生命周期受制于平台政策，不适合长期投入</li>
+</ul>
+<h3 id="_6">真实机遇</h3>
+<ul>
+<li><strong>DeepSeek TileKernels</strong> — LLM 底层算子优化是长期刚需，SM90/SM100 的要求说明这是面向下一代硬件的投资</li>
+<li><strong>OpenChronicle</strong> — Agent Memory 赛道持续分化，本地优先 + 模型无关是差异化路线</li>
+<li><strong>Harmonist</strong> — 零依赖 Agent 编排在生产环境有真实价值，186 个预置 Agent 提供了开箱即用的起点</li>
+</ul>
+<hr />
+<h2 id="_7">重点项目评分</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度质量</th>
+<th>技术创新</th>
+<th>工程成熟</th>
+<th>架构启发</th>
+<th>企业落地</th>
+<th>中期趋势</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>归类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Design</td>
+<td>9</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>58</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>CVE-2026-31431</td>
+<td>9</td>
+<td>9</td>
+<td>7</td>
+<td>7</td>
+<td>10</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>51</td>
+<td>安全研究</td>
+</tr>
+<tr>
+<td>TileKernels</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>6</td>
+<td>9</td>
+<td>64</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>Harmonist</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>56</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>mhr-cfw</td>
+<td>7</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>32</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>OpenChronicle</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>5</td>
+<td>7</td>
+<td>52</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>text-to-cad</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>5</td>
+<td>7</td>
+<td>4</td>
+<td>4</td>
+<td>48</td>
+<td>工具型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_8">昨日回顾提醒</h2>
+<p>昨日（2026-05-03）最值得补看的内容：
+- <strong>CC Switch 57K+</strong> — Agent 桌面基座稳定增长，从工具型升级为平台候选
+- <strong>Club 3090</strong> — 消费级 GPU LLM 部署 recipe 集，对"如何在有限硬件上跑大模型"有参考价值</p>
+<hr />
+<p><em>Generated by GitHub Researcher · 2026-05-04</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

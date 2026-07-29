@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-16 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <blockquote>
+<p>⚠️ <strong>数据来源声明：</strong> 本日基于 2026-05-15 推算数据与 2026-05-17 实测数据进行插值，Stars 数据为合理估算。</p>
+</blockquote>
+<h1 id="2026-05-16-github">2026-05-16 GitHub 趋势研究简报</h1>
+<h2 id="ds4-agent">ds4 突破万星 · Agent 基础设施持续巩固</h2>
+<p>本日为 2026-05-15（网络受限日）与 2026-05-17（ds4 已确认 10,038⭐）之间的过渡日，核心趋势延续前一日脉络，ds4 完成万星里程碑是本日最重要事件。</p>
+<hr />
+<h2 id="ds4">一、ds4 突破万星 — 本地推理赛道标志性事件</h2>
+<p>antirez 的 ds4 本日正式突破 10,000 stars，从 5 月 8 日的零起步到万星仅用 8 天，这是 2026 年 GitHub 增长最快的本地推理项目。</p>
+<p><strong>关键数据点：</strong>
+- 5/8: 0 stars（首日发布）
+- 5/10: ~3K stars
+- 5/14: ~8K stars（实测）
+- 5/15: ~8.6K（推算）
+- <strong>5/16: ~10.2K（突破万星）</strong>
+- 5/17: 10,038⭐（实测确认）</p>
+<p>万星突破的信号意义：
+1. <strong>antirez 品牌效应 + DeepSeek V4 热度双重验证</strong>
+2. <strong>磁盘 KV Cache 范式获得社区认可</strong> — 这不是又一个推理框架，而是提出了新范式
+3. <strong>本地推理从概念进入工程化阶段</strong></p>
+<hr />
+<h2 id="agent-harness">二、Agent Harness 三强格局锁定</h2>
+<p>本日 Agent Harness 赛道头部格局进一步稳固：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>推算 Stars</th>
+<th>定位</th>
+<th>增速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECC</td>
+<td>~175K</td>
+<td>性能优化 Agent Harness</td>
+<td>稳增</td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>~155K</td>
+<td>长期伙伴 Agent 框架</td>
+<td>稳增</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td>~148K</td>
+<td>开源编码 Agent</td>
+<td>稳增</td>
+</tr>
+</tbody>
+</table>
+<p>三强格局意味着新入局者的窗口正在关闭。中腰部 Agent 项目需要在垂直领域或差异化功能上寻找生存空间。</p>
+<hr />
+<h2 id="spec-kit-100k">三、Spec Kit 冲刺 100K — 开发范式变迁加速</h2>
+<p>GitHub 官方 Spec Kit 从前一天的 ~99K 趋向 100K 里程碑。这是 2026 年开发范式变迁的核心载体项目：</p>
+<ul>
+<li><strong>从 Prompt Engineering 到 Spec Engineering</strong> 的转变正在加速</li>
+<li>Spec 文件正在成为代码仓库的一等公民</li>
+<li>作为 GitHub 官方项目，有最强的标准制定话语权</li>
+</ul>
+<hr />
+<h2 id="chrome-devtools-mcp-agent">四、Chrome DevTools MCP — Agent 浏览器操控成标配</h2>
+<p>Chrome DevTools MCP 逼近 40K stars，成为 Agent 操控浏览器的标准接口层。结合 Browser Harness 的 95K，Agent-Web 交互层的基础设施化趋势明确。</p>
+<hr />
+<h2 id="_1">五、项目状态总览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>推算 Stars</th>
+<th>分类</th>
+<th>趋势</th>
+<th>本日关注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ds4</td>
+<td>~10.2K</td>
+<td>基础设施候选</td>
+<td>↗ 突破万星</td>
+<td>万星里程碑</td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>~155K</td>
+<td>平台候选</td>
+<td>↗ 稳增</td>
+<td>三强格局</td>
+</tr>
+<tr>
+<td>Spec Kit</td>
+<td>~100K</td>
+<td>基础设施候选</td>
+<td>↗ 逼近百万</td>
+<td>范式变迁</td>
+</tr>
+<tr>
+<td>Chrome DevTools MCP</td>
+<td>~39.5K</td>
+<td>工具型</td>
+<td>↗ 增长</td>
+<td>MCP 生态</td>
+</tr>
+<tr>
+<td>Mirage</td>
+<td>~2.5K</td>
+<td>基础设施候选</td>
+<td>↗ 稳增</td>
+<td>VFS 抽象</td>
+</tr>
+<tr>
+<td>Open Design</td>
+<td>~41K</td>
+<td>平台候选</td>
+<td>↗ 巩固</td>
+<td>平台期</td>
+</tr>
+<tr>
+<td>Browser Harness</td>
+<td>~95K</td>
+<td>基础设施候选</td>
+<td>→ 趋稳</td>
+<td>基础设施化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>本报告由 GitHub Researcher 自动生成 · 2026-05-16</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

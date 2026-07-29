@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-22 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-22-github">2026-05-22 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日概览</h2>
+<p>GitHub Trending 本周持续围绕 <strong>Agent 生态</strong> 展开，但方向从「造轮子」转向「建标准」和「做基建」。</p>
+<p>三个核心信号：
+1. <strong>Claude Skills 生态爆发</strong>：CodeGraph、Claude Plugins Official、Superpowers、Academic Research Skills 多个仓库同时登顶，Agent 技能注册/分发/标准化正在形成产业共识
+2. <strong>Agent 工程化原则出现</strong>：12-Factor Agents 21.5K⭐ 明确提出 LLM 软件工程 12 条原则，标志着 Agent 从实验走向工程
+3. <strong>Agent-Native 基础设施加速</strong>：CloakBrowser 18K⭐ 反检测浏览器、Chrome DevTools MCP 40K⭐ Agent 浏览器操控，Agent 浏览器层正在成为基础设施</p>
+<hr />
+<h2 id="claude-skillsplugins">趋势一：Claude Skills/Plugins 生态持续分化与专业化</h2>
+<p>本周 GitHub Trending 出现了一个壮观现象：<strong>5+ 个 Claude Code Skills/Plugins 仓库同时上榜</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>周增速</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obra/superpowers</td>
+<td>201K</td>
+<td>+10.8K/周</td>
+<td>技能框架 + 开发方法论</td>
+</tr>
+<tr>
+<td>anthropics/claude-plugins-official</td>
+<td>22.2K</td>
+<td>+891/日</td>
+<td>Anthropic 官方插件目录</td>
+</tr>
+<tr>
+<td>colbymchenry/codegraph</td>
+<td>13.2K</td>
+<td>+4.2K/日</td>
+<td>预索引代码知识图谱</td>
+</tr>
+<tr>
+<td>Imbad0202/academic-research-skills</td>
+<td>~8.7K</td>
+<td>+8.7K/周</td>
+<td>学术研究技能</td>
+</tr>
+<tr>
+<td>multica-ai/andrej-karpathy-skills</td>
+<td>~2.6K</td>
+<td>+2.6K/日</td>
+<td>Karpathy 风格编码技能</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断：</strong>
+- Agent 技能市场正在从碎片化走向<strong>标准化和专业化</strong>
+- Anthropic 官方介入是关键信号 — 类似 npm registry 对 Node.js 生态的意义
+- CodeGraph 的「预索引代码知识图谱」思路值得关注 — 将代码理解从运行时移到构建时，降低 token 消耗</p>
+<p><strong>架构师视角：</strong> Skills 生态正在复现 npm/Docker Hub 的路径 — 先碎片，再标准，最后平台化。当前阶段最值得关注的是<strong>标准化入口</strong>（Claude Plugins Official）和<strong>差异化能力</strong>（CodeGraph 知识图谱）。</p>
+<hr />
+<h2 id="agent-12-factor-agents">趋势二：Agent 工程原则确立 — 12-Factor Agents</h2>
+<p><strong>humanlayer/12-factor-agents</strong> 21.5K⭐ 提出了构建 LLM 驱动软件的 12 条工程原则。</p>
+<p>这不是又一个 Agent 框架，而是<strong>Agent 世界的「12-Factor App」</strong> — 从原则层面定义什么才是「好的 Agent 软件」。</p>
+<p><strong>与 multica 30.6K⭐ 的关系：</strong>
+- 12-Factor Agents 是<strong>理论框架</strong> — 定义原则
+- multica 是<strong>实践平台</strong> — 将编码 Agent 变成真正队友
+- 两者互补：前者告诉你「应该怎么做」，后者让你「这样做」</p>
+<p><strong>架构师视角：</strong> 当一个领域开始出现「最佳实践」和「工程原则」类项目时，说明这个领域正在从实验期进入工程期。这对架构师的意义是：<strong>现在可以开始基于这些原则做内部 Agent 架构评估了。</strong></p>
+<hr />
+<h2 id="ai">趋势三：个人 AI 超级智能赛道形成</h2>
+<p><strong>OpenHuman</strong> 24.7K⭐ 本周 +19K，增速惊人。</p>
+<p>Rust 构建，隐私优先，定位为「个人 AI 超级智能」。从上周 16.9K 到本周 24.7K，增速保持高位。</p>
+<p><strong>判断：</strong>
+- 个人 AI 操作系统赛道正在形成（OpenHuman、各种 Agent Memory 项目）
+- 隐私优先 + 本地运行是核心卖点，与云端 AI 形成差异化
+- 但目前仍偏<strong>概念验证阶段</strong>，真实使用场景和工程成熟度有待验证</p>
+<hr />
+<h2 id="agent-native">趋势四：Agent-Native 浏览器层成基础设施</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome DevTools MCP</td>
+<td>40.4K</td>
+<td>Agent 操控 Chrome DevTools</td>
+</tr>
+<tr>
+<td>CloakBrowser</td>
+<td>18.2K</td>
+<td>隐身 Chromium，30/30 反检测</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断：</strong>
+- Agent 需要操控浏览器已成刚需，但<strong>反检测</strong>是关键能力
+- CloakBrowser 作为 Playwright 替代品，解决了 Agent 自动化最头疼的反爬问题
+- Chrome DevTools MCP 让 Agent 直接接入浏览器开发工具，属于<strong>开发者工具层</strong>
+- 两者组合 = Agent 拥有了「既能看又能躲」的浏览器能力</p>
+<hr />
+<h2 id="_2">趋势五：端侧多模态进入实用阶段</h2>
+<ul>
+<li><strong>Supertonic</strong> 9.1K⭐：设备端多语言 TTS，ONNX 推理，Swift 构建</li>
+<li><strong>ViMax</strong> 6.4K⭐：Agentic 视频生成（导演+编剧+制片人+视频生成一体）</li>
+</ul>
+<p>端侧 TTS + Agentic 视频生成，标志着多模态能力从云端走向设备端。</p>
+<hr />
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="1-codegraph-agent-token">1. CodeGraph — 代码知识图谱降低 Agent Token 消耗</h3>
+<p><strong>它是什么：</strong> 预索引的代码知识图谱，为 Claude Code、Codex、Cursor、OpenCode 提供更少的 token 消耗和更少的工具调用。</p>
+<p><strong>为什么火：</strong> 解决了 Coding Agent 的核心痛点 — 每次理解代码都要消耗大量 token 和工具调用。CodeGraph 将代码理解移到<strong>构建时</strong>，运行时直接查询预构建的知识图谱。</p>
+<p><strong>技术亮点：</strong>
+- 预索引而非运行时分析
+- 支持 Claude Code、Codex、Cursor、OpenCode 多个 Agent
+- 100% 本地运行</p>
+<p><strong>定位：</strong> 工具型 → 可能演进为平台候选</p>
+<p><strong>风险：</strong> 知识图谱的维护成本、大型仓库的索引效率、与 IDE 内置能力的竞争</p>
+<hr />
+<h3 id="2-12-factor-agents-agent">2. 12-Factor Agents — Agent 工程化的里程碑</h3>
+<p><strong>它是什么：</strong> 构建足够好到可以交给专业用户使用的 LLM 驱动软件的 12 条工程原则。</p>
+<p><strong>为什么重要：</strong> 这是 Agent 领域的「12-Factor App」时刻。当社区开始定义工程原则时，意味着领域正在成熟。</p>
+<p><strong>对架构师的价值：</strong>
+- 可以作为内部 Agent 项目评估的 checklist
+- 可以作为团队 Agent 开发规范的起点
+- 明确了 Agent 软件的「好」是什么</p>
+<hr />
+<h3 id="3-multica-agent">3. Multica — 编码 Agent 变成真正队友</h3>
+<p><strong>它是什么：</strong> 开源托管 Agent 平台，将编码 Agent 转化为真正的队友 — 分配任务、跟踪进度、复合输出。</p>
+<p><strong>为什么火：</strong> 当前大部分编码 Agent 是「单人模式」— 一个人给 Agent 下指令。Multica 让多个 Agent 协作，像一个真正的开发团队。</p>
+<p><strong>技术亮点：</strong>
+- Go 构建，高性能
+- 任务分配 + 进度跟踪 + 复合输出
+- 开源可自托管</p>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">机遇</h3>
+<ol>
+<li><strong>Agent Skills 标准化</strong>：Anthropic 官方介入 Skills 目录，标准化窗口已打开</li>
+<li><strong>Agent 工程原则</strong>：12-Factor Agents 提供了架构评估框架</li>
+<li><strong>端侧多模态</strong>：Supertonic 证明 TTS 可以完全本地化</li>
+</ol>
+<h3 id="_6">风险</h3>
+<ol>
+<li><strong>Skills 生态泡沫</strong>：太多 Skills 仓库同时出现，部分可能是蹭概念</li>
+<li><strong>OpenHuman 过热</strong>：周增 19K 但缺乏真实使用场景验证</li>
+<li><strong>Agent 浏览器层碎片化</strong>：CloakBrowser + Chrome DevTools MCP + 多个 Browser Use 项目，尚未收敛</li>
+</ol>
+<hr />
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>🕸️ <a href="projects/codegraph.html">CodeGraph</a> — 预索引代码知识图谱</li>
+<li>🔌 <a href="projects/claude-plugins-official.html">Claude Plugins Official</a> — Anthropic 官方插件目录</li>
+<li>📐 <a href="projects/12-factor-agents.html">12-Factor Agents</a> — Agent 工程 12 条原则</li>
+<li>🧬 <a href="projects/openhuman.html">OpenHuman</a> — 个人 AI 超级智能（更新）</li>
+<li>🤝 <a href="projects/multica-ai.html">Multica</a> — 托管 Agent 平台（更新）</li>
+<li>🎭 <a href="projects/cloakbrowser.html">CloakBrowser</a> — 隐身 Chromium（更新）</li>
+<li>🔊 <a href="projects/supertonic.html">Supertonic</a> — 设备端多语言 TTS</li>
+</ul>
+<hr />
+<h2 id="_8">本周趋势关系图</h2>
+<pre class="mermaid">graph TB
+    subgraph Agent生态
+        Skills[Skills/Plugins 标准化]
+        Eng[工程原则 12-Factor]
+        Platform[Agent 平台 Multica]
+    end
+    
+    subgraph Agent基建
+        Browser[浏览器层 CloakBrowser + DevTools MCP]
+        Memory[记忆层 agentmemory + Memori]
+        Knowledge[知识图谱 CodeGraph]
+    end
+    
+    subgraph 端侧智能
+        Personal[个人AI OpenHuman]
+        TTS[端侧TTS Supertonic]
+        Video[Agentic视频 ViMax]
+    end
+    
+    Skills --> Knowledge
+    Skills --> Browser
+    Eng --> Platform
+    Platform --> Memory
+    Platform --> Browser
+    Personal --> Memory
+</pre>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

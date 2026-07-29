@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmDash | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/emdash-cms/emdash" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="emdash-cloudflare-wordpress">EmDash — Cloudflare 的 WordPress 精神继任者</h1>
+<h2 id="_1">一句话定位</h2>
+<p>全栈 TypeScript CMS，基于 Astro 6.0 + Cloudflare Workers，用沙箱化 Worker Isolate 运行插件，从架构层面解决 WordPress 四十年的安全顽疾。</p>
+<h2 id="_2">解决的问题</h2>
+<p>WordPress 是全球最大的 CMS（43% 网站使用），但其核心安全问题是<strong>插件运行在进程内</strong>——一个恶意或漏洞插件可以影响整个站点。EmDash 用 Cloudflare Worker Isolate 实现了操作系统级的插件隔离，从根本上消除了这个风险。</p>
+<h2 id="_3">为什么值得关注</h2>
+<ol>
+<li><strong>Cloudflare 官方出品</strong>：不是独立开发者的 side project，而是 Cloudflare 战略级产品</li>
+<li><strong>架构级创新</strong>：Worker Isolate 插件沙箱是 CMS 领域的重大突破</li>
+<li><strong>MIT 开源</strong>：消除了许可顾虑</li>
+<li><strong>现代化技术栈</strong>：TypeScript + Astro 6.0 + D1 + R2，对开发者友好</li>
+<li><strong>WordPress 创始人关注</strong>：Matt Mullenweg 公开评论，说明引起了行业重视</li>
+</ol>
+<h2 id="_4">热度来源判断</h2>
+<ul>
+<li>真实需求驱动：CMS 市场长期缺乏有竞争力的现代化方案</li>
+<li>品牌效应：Cloudflare 的全球基础设施 + 开发者社区</li>
+<li>话题性：4 月 1 日发布 + "WordPress 继任者"叙事</li>
+<li>行业讨论：WordPress 创始人的公开评论引发广泛讨论</li>
+</ul>
+<h2 id="_5">关键技术亮点</h2>
+<h3 id="_6">插件沙箱架构</h3>
+<pre class="mermaid">graph TB
+    subgraph "传统 CMS（WordPress）"
+        A1[主进程] --> B1[插件 1<br>共享内存]
+        A1 --> C1[插件 2<br>共享内存]
+        A1 --> D1[插件 N<br>共享内存]
+        B1 -.->|可直接访问| C1
+    end
+    
+    subgraph "EmDash"
+        A2[主服务<br>Cloudflare Worker] --> B2[Worker Isolate<br>插件 1]
+        A2 --> C2[Worker Isolate<br>插件 2]
+        A2 --> D2[Worker Isolate<br>插件 N]
+        B2 -.->|隔离| C2
+    end
+    
+    style B2 fill:#00cc66,color:#000
+    style C2 fill:#00cc66,color:#000
+    style D2 fill:#00cc66,color:#000
+</pre>
+<h3 id="_7">技术栈</h3>
+<ul>
+<li><strong>前端</strong>：Astro 6.0（SSR + Islands 架构）</li>
+<li><strong>运行时</strong>：Cloudflare Workers（全球边缘网络）</li>
+<li><strong>数据库</strong>：D1（SQLite，Cloudflare 托管）</li>
+<li><strong>对象存储</strong>：R2（S3 兼容）</li>
+<li><strong>插件隔离</strong>：Worker Isolate（操作系统级隔离）</li>
+<li><strong>类型安全</strong>：全栈 TypeScript</li>
+</ul>
+<h2 id="_8">架构启发</h2>
+<ol>
+<li><strong>插件隔离应该是默认选项</strong>：任何需要插件系统的项目都应该考虑进程级/容器级隔离</li>
+<li><strong>Serverless CMS 是可行路径</strong>：CMS 不需要 7×24 长驻进程，Serverless + Edge 才是正确架构</li>
+<li><strong>平台能力决定产品上限</strong>：EmDash 的能力直接受 Cloudflare 平台能力限制</li>
+</ol>
+<h2 id="_9">定位判断</h2>
+<p><strong>平台候选</strong>。CMS 是 Web 生态的基础设施层。Cloudflare 有网络基础设施、开发者社区、全球边缘网络——这三点加起来构成平台基础。如果 EmDash 成功建立插件生态，有潜力成为 WordPress 的真正挑战者。</p>
+<h2 id="_10">风险/局限/泡沫点</h2>
+<ol>
+<li><strong>Beta 阶段</strong>：核心功能可用但离生产级还有距离</li>
+<li><strong>插件生态为零</strong>：CMS 的价值在生态，EmDash 目前没有插件生态</li>
+<li><strong>Cloudflare 锁定风险</strong>：虽然 MIT 开源，但 Workers 运行时有迁移成本。Matt Mullenweg 已公开指出这一点</li>
+<li><strong>WordPress 的惯性巨大</strong>：43% 的市场份额不是靠一个更好的产品就能颠覆的</li>
+<li><strong>模板系统局限</strong>：目前提供 blog/marketing/portfolio/starter/blank 模板，覆盖面有限</li>
+</ol>
+<h2 id="_11">与同类项目的关系</h2>
+<ul>
+<li><strong>vs WordPress</strong>：EmDash 不是 WordPress 的替代品，而是对 CMS 架构的根本性重新思考</li>
+<li><strong>vs Ghost</strong>：Ghost 专注博客/出版，EmDash 定位更广的全栈 CMS</li>
+<li><strong>vs Astro Content Collections</strong>：EmDash 基于 Astro 但提供完整的 CMS 管理界面和插件系统</li>
+</ul>
+<h2 id="_12">是否值得持续跟踪</h2>
+<p><strong>✅ 是</strong>。这是 2026 年 Web 基础设施领域最重要的事件之一。Cloudflare 有资源持续投入。</p>
+<h2 id="poc">是否值得企业 PoC</h2>
+<p><strong>✅ 是</strong>。特别是对于安全敏感的企业 CMS 场景，插件沙箱架构提供了根本性的安全优势。建议：
+- 先在非核心站点试用
+- 评估插件生态建设路径
+- 监控 Cloudflare 的长期投入承诺</p>
+<h2 id="_13">后续观察点</h2>
+<ol>
+<li>插件生态发展速度——这是成败关键</li>
+<li>是否有知名站点迁移到 EmDash</li>
+<li>Cloudflare 的投入力度（团队规模、迭代速度）</li>
+<li>社区对 Cloudflare 锁定风险的接受度</li>
+<li>WordPress 社区的反应和可能的对策</li>
+</ol>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

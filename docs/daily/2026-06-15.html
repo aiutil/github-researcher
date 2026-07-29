@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-15 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-15-github">2026-06-15 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p>Agent Skills 生态在 48 小时内完成了从"基础设施铺设"到"杀手级应用验证"的跳跃。上周我们还在讨论 Skills 的分发层、安全层、压缩层——今天 last30days-skill 周增 12.6K 证明 Skill 有真实杀手级用例，taste-skill 周增 8K 证明质量控制的 Skill 也有市场。这不是一个概念了。</p>
+<p>同时，上下文工程工具链的三位一体（压缩→索引→缓存）在今日完成闭环。headroom 做输入压缩、turbovec 做向量索引、LMCache 做 KV Cache 加速——三个项目分别解决了 LLM 上下文窗口的"太贵"、"太慢"、"太大"三个核心问题。</p>
+<h2 id="_2">今日五大趋势</h2>
+<h3 id="1agent-skills-92">趋势 1：Agent Skills 杀手级应用涌现（趋势分 92）</h3>
+<pre class="mermaid">flowchart LR
+    subgraph Skills生态演进
+        A[基础设施层<br/>agent-skills 59K<br/>分发+安装] --> B[安全层<br/>SkillSpector 5.2K<br/>漏洞扫描]
+        A --> C[压缩层<br/>headroom 27K<br/>Token优化]
+        A --> D[感知层<br/>Agent-Reach 29K<br/>多平台数据]
+    end
+    subgraph 杀手级应用
+        D --> E[last30days-skill 42K<br/>跨平台研究聚合]
+        B --> F[taste-skill 44K<br/>输出质量控制]
+        A --> G[compound-eng-plugin 21K<br/>工程实践插件]
+    end
+    style E fill:#4CAF50,color:#fff
+    style F fill:#4CAF50,color:#fff
+    style G fill:#4CAF50,color:#fff
+</pre>
+<p><strong>关键变化：</strong>
+- last30days-skill 从 29K 涨到 42K（周增 12.6K），是本周增速最快的 Agent Skill 项目
+- taste-skill 从 29K 涨到 44K（周增 8K），质量控制 Skill 的市场需求被验证
+- compound-engineering-plugin 21K（周增 1.2K），将工程方法论编码为 Agent 可执行插件
+- pm-skills 上榜 PM Skills Marketplace，Agent Skills 向非技术角色扩展</p>
+<p><strong>架构判断：</strong> Agent Skills 正在重复 Docker 镜像的路径——先是基础设施（Docker Hub），然后是安全扫描（Trivy/Clair），最后是杀手级应用（K8s 生态）。Skills 的"K8s 时刻"可能还没到，但"应用层验证"已经完成。</p>
+<h3 id="2-89">趋势 2：上下文工程工具链三位一体（趋势分 89）</h3>
+<pre class="mermaid">flowchart LR
+    subgraph 上下文工程管道
+        A[原始输入<br/>日志/文件/RAG] --> B[headroom 27K<br/>Token压缩<br/>60-95%节省]
+        B --> C[turbovec 11.5K<br/>向量索引<br/>Rust+TurboQuant]
+        C --> D[LMCache 9K<br/>KV Cache<br/>推理加速]
+        D --> E[LLM]
+    end
+    style B fill:#2196F3,color:#fff
+    style C fill:#2196F3,color:#fff
+    style D fill:#2196F3,color:#fff
+</pre>
+<ul>
+<li><strong>headroom</strong>（27.5K，周增 10.4K）：Token 压缩中间件，支持 Library/Proxy/MCP 三种部署模式</li>
+<li><strong>turbovec</strong>（11.5K，周增 6.5K）：Rust 向量索引，10M 文档从 31GB 压缩到 4GB，速度击败 FAISS</li>
+<li><strong>LMCache</strong>（9K，周增 585）：vLLM 生态的 KV Cache 加速层，PagedAttention 之后的推理优化新原语</li>
+</ul>
+<p><strong>架构判断：</strong> 这三个项目合在一起构成了 context engineering 的完整管道：压缩（减少输入 token）→ 索引（快速检索相关上下文）→ 缓存（避免重复计算）。每个环节都是独立可替换的，但组合使用效果最大化。这预示着 LLM 推理成本优化从"调参"进入"系统工程"阶段。</p>
+<h3 id="3-ai-84">趋势 3：本地多模态 AI 运行时扩展（趋势分 84）</h3>
+<ul>
+<li><strong>whichllm</strong>（4.7K，周增 1.8K）：一行命令测出本地硬件最优 LLM 配置</li>
+<li><strong>Open-LLM-VTuber</strong>（11.3K，周增 1.1K）：本地语音交互 + Live2D 虚拟形象</li>
+<li><strong>MoneyPrinterTurbo</strong>（87.8K，周增 7K）：AI 短视频生成，从文本到高清视频</li>
+</ul>
+<p>本地 AI 不再只是文本推理。语音、视频、多模态交互的端侧运行时正在快速成熟。</p>
+<h3 id="4-ai-80">趋势 4：安全工具 AI 化与图分析化（趋势分 80）</h3>
+<ul>
+<li><strong>NVIDIA SkillSpector</strong>（5.2K，周增 2.8K）：Agent Skill 安全扫描器，NVIDIA 官方出品</li>
+<li><strong>flowsint</strong>（6.6K，周增 966）：图分析安全调查平台</li>
+<li><strong>maigret</strong>（33K，周增 1.7K）：OSINT 用户名追踪，3000+ 站点</li>
+</ul>
+<p>安全工具正在经历 AI 原生重构——不是"用 AI 做安全"，而是"为 AI 系统做安全工具"。</p>
+<h3 id="5-ai-76">趋势 5：垂直领域 AI 基础模型萌芽（趋势分 76）</h3>
+<ul>
+<li><strong>shiyu-coder/Kronos</strong>：金融市场基础模型，登上日榜</li>
+<li><strong>openmed</strong>（3.5K，周增 2K）：开源医疗 AI</li>
+</ul>
+<p>基础模型从通用走向垂直。金融和医疗是最先发力的两个方向——它们有足够的数据密度和专业壁垒。</p>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="1-last30days-skill-agent-skills">1. 🔎 last30days-skill — Agent Skills 第一个杀手级应用</h3>
+<p><strong>Stars:</strong> 41,943（周增 12,602，本周 GitHub 全站周榜 #1）
+<strong>语言:</strong> Python
+<strong>分类:</strong> 生产可用 → 平台候选</p>
+<p><strong>为什么重要：</strong> 它证明了 Agent Skills 不只是开发者的工具配置文件，而是能产生独立价值的杀手级应用。一个 Skill 就解决了"跨 10+ 平台聚合信息并合成研究简报"这个真实需求——这正是 AI Agent 最常见的用例之一。</p>
+<p><strong>架构启发：</strong> Skill 作为独立分发单元，其价值不依附于任何特定 Agent 框架。这很像 Docker 镜像——容器的价值不依附于 K8s 或 Docker Swarm。Skill 可能会成为 Agent 时代的"包"格式。</p>
+<p><strong>风险/局限：</strong> 依赖第三方平台 ToS，API 变动可能导致功能不可用。12.6K/周增速中有多少来自媒体效应需要持续观察。</p>
+<h3 id="2-lmcache-llm-kv-cache">2. ⚡ LMCache — LLM 推理 KV Cache 加速层</h3>
+<p><strong>Stars:</strong> 9,043（周增 585）
+<strong>语言:</strong> Python
+<strong>分类:</strong> 基础设施候选</p>
+<p><strong>为什么重要：</strong> 在 vLLM/PagedAttention 之后，KV Cache 管理是 LLM 推理优化的下一个前沿。LMCache 将缓存层从推理引擎中解耦，使得多模型共享缓存成为可能。</p>
+<p><strong>架构启发：</strong> 缓存层的解耦是推理基础设施成熟化的标志。从 GPU 内存 → 进程内缓存 → 跨进程缓存 → 分布式缓存，这个层次结构正在形成。</p>
+<h3 id="3-taste-skill-ai">3. 🎨 taste-skill — AI 输出质量守门员</h3>
+<p><strong>Stars:</strong> 43,637（周增 8,097）
+<strong>语言:</strong> Shell
+<strong>分类:</strong> 工具型</p>
+<p><strong>为什么重要：</strong> "AI slop"（AI 生成的低质量通用内容）正在成为严肃问题。taste-skill 通过编码"好品味"规则来约束 AI 输出，证明了质量控制可以做成独立的、可分发的 Skill。</p>
+<p><strong>架构启发：</strong> 质量控制作为独立层，而不是嵌入模型本身——这是 AI 工程从"模型中心"走向"系统中心"的又一个信号。</p>
+<h3 id="4-turbovec">4. 🚀 turbovec — 上下文工程的索引层</h3>
+<p><strong>Stars:</strong> 11,493（周增 6,535）
+<strong>语言:</strong> Rust / Python
+<strong>分类:</strong> 基础设施候选</p>
+<p><strong>为什么重要：</strong> 在 RAG 场景下，向量索引是性能瓶颈。turbovec 用 Rust + SIMD + TurboQuant 量化实现了 10M 文档 31GB→4GB 的压缩和比 FAISS 更快的搜索。它填补了上下文工程管道中的索引环节。</p>
+<h2 id="_4">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- Agent Skills 杀手级应用的出现意味着 Agent 生态进入"应用商店"阶段的前夜
+- 上下文工程工具链成型将大幅降低 LLM 推理成本，加速企业落地
+- 本地多模态 AI 运行时扩展意味着端侧 AI 场景将爆发</p>
+<p><strong>风险：</strong>
+- Agent Skill 周增速可能存在媒体泡沫，需要关注 2-3 周后的留存率
+- 上下文工程工具目前各自为政，缺乏统一标准接口
+- 垂直领域 AI 基础模型的壁垒可能被通用模型的领域微调打破</p>
+<h2 id="_5">重点项目档案</h2>
+<ul>
+<li>🔎 <a href="projects/last30days-skill.html">last30days-skill</a> — Agent Skills 杀手级应用</li>
+<li>⚡ <a href="projects/lmcache.html">LMCache</a> — LLM KV Cache 加速层</li>
+<li>🎨 <a href="projects/taste-skill.html">taste-skill</a> — AI 输出质量守门员</li>
+<li>🚀 <a href="projects/turbovec.html">turbovec</a> — Rust 向量索引引擎</li>
+<li>🖥️ <a href="projects/whichllm.html">whichllm</a> — 本地 LLM 硬件选型工具</li>
+</ul>
+<hr />
+<p><em>本报告由 GitHub 趋势研究助理自动生成 | 2026-06-15</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

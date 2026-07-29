@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-04-15 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-04-15-github">2026-04-15 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日趋势概览</h2>
+<pre class="mermaid">mindmap
+  root((2026-04-15<br/>趋势全景))
+    Karpathy Skills 现象
+      andrej-karpathy-skills 33.8K 日增9.2K
+      claude-code-best-practice 43.8K
+      claude-skills 232+ 技能插件
+      信号：个人心智模型 → 可复用技能
+    Claude 生态整合
+      claude-mem 55.8K 会话记忆
+      cc-switch 44.7K 多Agent管理
+      chrome-devtools-mcp 35K 浏览器工具
+      claude-cookbooks 40.2K 官方案例集
+      信号：工具链深度 > 单点工具
+    AI 金融
+      ai-hedge-fund 54.1K
+      Kronos 17.8K 金融市场FM
+      信号：垂直领域AI落地加速
+    Agent 基础设施
+      microsandbox 沙箱化
+      plano AI网关/数据面
+      edgequake 高性能GraphRAG
+      opensre AI SRE工具包
+</pre>
+<hr />
+<h2 id="karpathy-skills">趋势一：Karpathy Skills 现象 —— 个人心智模型即技能</h2>
+<p><strong>核心数据：</strong> <code>andrej-karpathy-skills</code> 今日日增 9,263 stars，周增 21,795 stars，总计 33,801 stars。一个单文件 CLAUDE.md 项目。</p>
+<h3 id="_2">现象解读</h3>
+<p>这不是一个软件项目。这是一个 <strong>CLAUDE.md 文件</strong>——把 Andrej Karpathy 在 LLM 编程中的观察和最佳实践，提炼为 Claude Code 的行为指令。</p>
+<p><strong>为什么它火：</strong></p>
+<ol>
+<li><strong>Karpathy 效应</strong>：AI 领域最有影响力的技术布道者之一，他的一篇推文就能驱动 10K+ stars</li>
+<li><strong>痛点精准</strong>：所有用 Claude Code 的人都在问"怎么让它更好用"——这个文件直接回答了</li>
+<li><strong>门槛极低</strong>：一个 markdown 文件，copy-paste 即用</li>
+<li><strong>可蒸馏范式的验证</strong>：证明"把专家的隐性知识显性化 → 结构化为 AI 指令"这条路走得通</li>
+</ol>
+<h3 id="nuwa-skill">与 nuwa-skill 人格蒸馏的对比</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>andrej-karpathy-skills</th>
+<th>nuwa-skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方法</td>
+<td>手工提炼专家思维模式</td>
+<td>自动蒸馏公开资料</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>单文件 CLAUDE.md</td>
+<td>多文件 Skill 包</td>
+</tr>
+<tr>
+<td>质量控制</td>
+<td>高（人审）</td>
+<td>低（自动生成）</td>
+</tr>
+<tr>
+<td>复用性</td>
+<td>高（通用编程场景）</td>
+<td>低（人格模仿场景）</td>
+</tr>
+<tr>
+<td>工程深度</td>
+<td>中（prompt engineering）</td>
+<td>低（模板化）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断：</strong> Karpathy Skills 的真正价值不是这个文件本身，而是它验证了一个范式——<strong>人类专家的心智模型可以结构化为 AI 的行为配置</strong>。这是 Agent Skill 生态走向成熟的关键一步。</p>
+<h3 id="_3">相关项目生态</h3>
+<p>围绕这一现象形成了完整的"AI 编程最佳实践"生态：</p>
+<ul>
+<li><strong>claude-code-best-practice</strong>（43,782 stars）：从 vibe coding 到 agentic engineering 的实践指南</li>
+<li><strong>claude-skills</strong>（11,098 stars）：232+ Claude Code 技能和 agent 插件集合，覆盖工程/营销/产品/合规</li>
+<li><strong>claude-cookbooks</strong>（40,248 stars）：Anthropic 官方案例集</li>
+</ul>
+<pre class="mermaid">graph TB
+    subgraph "Claude Skill 生态分层"
+        L1["知识层<br/>claude-code-best-practice<br/>andrej-karpathy-skills"]
+        L2["技能层<br/>claude-skills (232+)<br/>superpowers"]
+        L3["记忆层<br/>claude-mem<br/>会话捕获+注入"]
+        L4["工具层<br/>chrome-devtools-mcp<br/>cc-switch"]
+        L5["基础设施层<br/>microsandbox<br/>plano AI网关"]
+    end
+    L1 --> L2 --> L3 --> L4 --> L5
+</pre>
+<hr />
+<h2 id="claude">趋势二：Claude 生态工具链深度整合</h2>
+<p><strong>核心数据：</strong> 今日 Trending 前 12 名中，7 个项目直接服务于 Claude Code / AI Agent 生态。不再是单个工具，而是完整的工具链。</p>
+<h3 id="claude-mem">claude-mem：会话记忆的工程化</h3>
+<p>55,797 stars，日增 2,997。它做了什么：</p>
+<ol>
+<li><strong>自动捕获</strong>：记录 Claude Code 编码会话中的所有操作</li>
+<li><strong>AI 压缩</strong>：用 Claude Agent SDK 压缩会话历史</li>
+<li><strong>上下文注入</strong>：将相关记忆注入未来的编码会话</li>
+</ol>
+<p><strong>技术栈：</strong> TypeScript + ChromaDB + SQLite + Claude Agent SDK + Embeddings</p>
+<p><strong>架构师视角：</strong> claude-mem 代表了 AI Agent 记忆系统的第二种形态——不是通用记忆（如 mempalace），而是 <strong>工作记忆</strong>（Working Memory）。它关注的是"这个 AI 上次帮我做了什么"而不是"AI 知道什么"。这是 Agent 长期可用性的关键基础设施。</p>
+<h3 id="cc-switch-agent">cc-switch：多 Agent 桌面管理器</h3>
+<p>44,702 stars。一个 Tauri (Rust + TypeScript) 桌面应用，统一管理 Claude Code、Codex、OpenCode、openclaw、Gemini CLI 等多个 AI 编程工具。</p>
+<p><strong>为什么值得关注：</strong>
+- 证明了 AI 编程工具的<strong>多工具共存</strong>是真实需求
+- Tauri + Rust 桌面应用的技术选型（轻量、跨平台、高性能）
+- Skills 和 MCP 的统一管理界面</p>
+<h3 id="chrome-devtools-mcpagent">chrome-devtools-mcp：Agent 的浏览器之眼</h3>
+<p>35,007 stars，日增 218。让 AI Coding Agent 通过 MCP 协议直接操作 Chrome DevTools。</p>
+<p><strong>架构判断：</strong> MCP 协议正在从"文件系统/数据库"等后端工具，扩展到"浏览器/DevTools"等前端工具。这意味着 Agent 的感知边界在显著扩大——从代码编辑扩展到了运行时调试。</p>
+<hr />
+<h2 id="ai">趋势三：AI 金融模型进入主流视野</h2>
+<p>两个金融 AI 项目同时出现在 Trending：</p>
+<h3 id="kronos-foundation-model">Kronos：金融市场 Foundation Model</h3>
+<p>17,799 stars，MIT 许可。这是一个专门为金融市场语言训练的基础模型。</p>
+<p><strong>核心问题：</strong> 通用 LLM 不理解金融市场的特殊语言——订单簿、K 线、期权定价、风险敞口。Kronos 把这些领域知识 baked into model weights。</p>
+<p><strong>为什么重要：</strong>
+- 证明 <strong>垂直领域 Foundation Model</strong> 路径可行
+- 金融市场是信息密度最高的领域之一，如果 AI 能有效处理，其他垂直领域（法律、医疗）也能复制
+- 与 ai-hedge-fund（54,140 stars）形成互补：一个做推理，一个做决策框架</p>
+<h3 id="ai-hedge-fundai">ai-hedge-fund：AI 对冲基金团队</h3>
+<p>54,140 stars，日增 1,007。多个 AI Agent 扮演不同角色的投资团队模拟。</p>
+<p><strong>泡沫判断：</strong> ⚠️ 高 stars 但需要警惕——这是教学/研究项目，不是真实交易系统。stars 主要来自"AI + 金融"的概念吸引力。但它揭示的趋势是真实的：<strong>AI 在金融分析中的应用正在从"概念验证"走向"工具化"</strong>。</p>
+<hr />
+<h2 id="agent">趋势四：Agent 基础设施工具层成型</h2>
+<p>过去几周的关注点在 Agent 框架和 Skill 生态，本周看到了 <strong>Agent 运行所需的基础设施工具</strong>开始成熟：</p>
+<h3 id="microsandboxagent-5365-stars">microsandbox：Agent 沙箱（5,365 stars）</h3>
+<p>安全、本地、跨平台、可编程的沙箱环境。解决 Agent 执行代码时的安全问题。</p>
+<h3 id="planoai-6317-stars">plano：AI 原生代理/数据面（6,317 stars）</h3>
+<p>Rust 构建的 AI 网关，内置编排、安全、可观测性和智能 LLM 路由。</p>
+<h3 id="edgequake-graphrag1754-stars">edgequake：高性能 GraphRAG（1,754 stars）</h3>
+<p>Rust 重写的 GraphRAG，灵感来自 LightRAG。高性能文档→知识图谱转换。</p>
+<h3 id="opensreai-sre-735-stars">opensre：AI SRE 工具包（735 stars）</h3>
+<p>构建 AI SRE Agent 的开源工具包，集成 Datadog/Grafana/Slack。</p>
+<pre class="mermaid">graph LR
+    subgraph "Agent 基础设施栈"
+        A[Agent 应用层<br/>Hermes/Claude Code]
+        B[网关/路由层<br/>plano/new-api]
+        C[安全/沙箱层<br/>microsandbox]
+        D[知识/记忆层<br/>edgequake/claude-mem]
+        E[可观测/SRE层<br/>opensre]
+    end
+    A --> B --> C
+    A --> D
+    B --> E
+</pre>
+<hr />
+<h2 id="_4">今日重点项目深度分析</h2>
+<h3 id="1-claude-memagent">1. claude-mem：Agent 工作记忆基础设施</h3>
+<p><strong>它是做什么的：</strong> Claude Code 插件，自动捕获、压缩、注入编码会话上下文。</p>
+<p><strong>它为什么火：</strong>
+- 解决了 Claude Code 最被诟病的问题：会话间没有记忆
+- 55K stars 说明这不仅是痛点，而且是大量用户愿意投入时间解决的痛点
+- 底层技术栈成熟（ChromaDB + SQLite + Embeddings）</p>
+<p><strong>技术亮点：</strong>
+1. <strong>增量压缩</strong>：不是简单存储完整会话，而是用 AI 提取关键决策和上下文
+2. <strong>RAG 检索</strong>：基于向量相似度检索历史会话中的相关片段
+3. <strong>Agent SDK 集成</strong>：利用 Claude Agent SDK 进行上下文理解</p>
+<p><strong>架构启发：</strong> claude-mem 的模式——"捕获 → 压缩 → 检索 → 注入"——是一个通用的 Agent 记忆架构，可以迁移到任何 AI 工具。</p>
+<p><strong>风险：</strong>
+- 55K stars 可能包含大量跟随热度但未深度使用的用户
+- 与 mempalace 等通用记忆系统的边界不清晰
+- 依赖 Claude Agent SDK，Anthropic API 变更可能影响可用性</p>
+<p><strong>评分：</strong>
+| 维度 | 评分 | 理由 |
+|------|------|------|
+| 热度质量 | 8 | 会话记忆是真实痛点 |
+| 技术创新度 | 6 | RAG + 压缩不是新概念，但工程实现好 |
+| 工程成熟度 | 7 | TypeScript + 成熟存储方案 |
+| 架构启发价值 | 8 | 通用 Agent 记忆范式 |
+| 企业落地潜力 | 7 | 可作为企业 AI 编程工具链组件 |
+| 中期趋势概率 | 8 | Agent 记忆是刚需 |
+| 平台化潜力 | 7 | 可扩展为通用记忆中间件 |
+| 基础设施潜力 | 8 | Agent 记忆层 |</p>
+<p><strong>总分：59/80 · 基础设施候选 · 深度跟踪</strong></p>
+<h3 id="2-andrej-karpathy-skills">2. andrej-karpathy-skills：心智模型即代码</h3>
+<p><strong>它是做什么的：</strong> 单文件 CLAUDE.md，基于 Karpathy 对 LLM 编程陷阱的观察，改善 Claude Code 的编程行为。</p>
+<p><strong>它为什么火：</strong>
+- Karpathy 在 AI 领域的影响力（前 Tesla AI 总监、OpenAI 联合创始人）
+- LLM 编程的系统性方法论还非常稀缺
+- 极低的采用门槛（复制一个文件）</p>
+<p><strong>技术亮点：</strong>
+1. <strong>隐性知识显性化</strong>：把专家的"直觉"转化为结构化指令
+2. <strong>错误模式库</strong>：不是告诉 AI 该做什么，而是告诉它不该做什么
+3. <strong>自适应提示</strong>：根据代码上下文动态调整行为</p>
+<p><strong>架构启发：</strong> 这验证了"<strong>编程方法论 → AI 行为配置</strong>"的蒸馏路径。未来可能出现更多"编程大师 CLAUDE.md"，形成可组合的最佳实践库。</p>
+<p><strong>风险：</strong>
+- 单文件，维护依赖个人，可持续性存疑
+- Karpathy 效应带来的 stars 膨胀，实际工程价值需要时间验证
+- 与 claude-code-best-practice 等项目内容可能重叠</p>
+<p><strong>评分：</strong>
+| 维度 | 评分 | 理由 |
+|------|------|------|
+| 热度质量 | 7 | 名人效应显著 |
+| 技术创新度 | 5 | prompt engineering，非技术创新 |
+| 工程成熟度 | 4 | 单文件，无测试/CI |
+| 架构启发价值 | 9 | 心智模型蒸馏范式的验证 |
+| 企业落地潜力 | 6 | 思路可借鉴，但需定制 |
+| 中期趋势概率 | 8 | 方法论 → AI 配置是趋势 |
+| 平台化潜力 | 6 | 可形成最佳实践市场 |
+| 基础设施潜力 | 4 | 非基础设施 |</p>
+<p><strong>总分：49/80 · 工具型 · 关注方法论趋势</strong></p>
+<h3 id="3-chrome-devtools-mcpagent">3. chrome-devtools-mcp：Agent 的浏览器感知</h3>
+<p><strong>它是做什么的：</strong> 通过 MCP 协议让 AI Agent 直接操作 Chrome DevTools。</p>
+<p><strong>它为什么火：</strong>
+- MCP 是当前 Agent 工具互操作的标准协议
+- DevTools 是前端开发的核心工具，Agent 能操作它意味着可以自主调试
+- 日增稳定（218/day），说明是持续需求而非脉冲式关注</p>
+<p><strong>技术亮点：</strong>
+1. <strong>MCP 协议实现</strong>：标准的工具描述和调用接口
+2. <strong>Puppeteer 集成</strong>：成熟的浏览器自动化方案
+3. <strong>双向通信</strong>：Agent 既能读取 DevTools 数据，也能执行操作</p>
+<p><strong>架构启发：</strong> 这代表了 MCP 协议的扩展方向——从后端工具（文件系统、数据库）到前端工具（浏览器、DevTools）。Agent 的感知边界在显著扩大。</p>
+<p><strong>风险：</strong>
+- 安全性：Agent 操作浏览器可能带来安全风险
+- 稳定性：依赖 Chrome 和 Puppeteer 的版本兼容</p>
+<p><strong>评分：</strong>
+| 维度 | 评分 | 理由 |
+|------|------|------|
+| 热度质量 | 8 | 真实开发需求 |
+| 技术创新度 | 7 | MCP + DevTools 组合创新 |
+| 工程成熟度 | 7 | Puppeteer 成熟方案 |
+| 架构启发价值 | 8 | Agent 感知边界扩展 |
+| 企业落地潜力 | 8 | 前端开发自动化 |
+| 中期趋势概率 | 9 | MCP 是标准协议 |
+| 平台化潜力 | 7 | 可扩展为通用浏览器工具 |
+| 基础设施潜力 | 7 | Agent 工具层基础设施 |</p>
+<p><strong>总分：61/80 · 基础设施候选 · 深度跟踪 + PoC</strong></p>
+<hr />
+<h2 id="_5">风险与机遇</h2>
+<h3 id="_6">本日风险信号</h3>
+<ol>
+<li><strong>Claude 生态锁定风险</strong>：Trending 上 70% 的项目与 Claude Code 生态相关。如果 Anthropic 改变 API 定价或策略，整个生态将受冲击</li>
+<li><strong>Skill 饱和加速</strong>：232+ Claude Skills 已发布，信号质量在下降</li>
+<li><strong>AI 金融泡沫</strong>：ai-hedge-fund 和 Kronos 的 stars 主要来自概念吸引力，实际交易应用尚远</li>
+</ol>
+<h3 id="_7">本日机遇</h3>
+<ol>
+<li><strong>Agent 记忆基础设施</strong>：claude-mem 验证了"工作记忆"需求，这个模式可以泛化到所有 AI 工具</li>
+<li><strong>MCP 协议扩展</strong>：chrome-devtools-mcp 证明 MCP 可以覆盖前端工具，想象空间巨大</li>
+<li><strong>垂直领域 Foundation Model</strong>：Kronos 验证了金融领域 FM 的可行性，其他垂直领域可复制</li>
+</ol>
+<hr />
+<h2 id="_8">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>日增</th>
+<th>分类</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hermes Agent</td>
+<td>84,317</td>
+<td>8,301</td>
+<td>基础设施候选</td>
+<td>持续霸榜，增长健康</td>
+</tr>
+<tr>
+<td>claude-mem</td>
+<td>55,797</td>
+<td>2,997</td>
+<td>基础设施候选</td>
+<td>Agent 工作记忆，深度跟踪</td>
+</tr>
+<tr>
+<td>ai-hedge-fund</td>
+<td>54,140</td>
+<td>1,007</td>
+<td>工具型</td>
+<td>教学/研究项目，关注趋势</td>
+</tr>
+<tr>
+<td>cc-switch</td>
+<td>44,702</td>
+<td>633</td>
+<td>工具型/平台候选</td>
+<td>多Agent管理桌面工具</td>
+</tr>
+<tr>
+<td>claude-code-best-practice</td>
+<td>43,782</td>
+<td>2,583</td>
+<td>学习型</td>
+<td>实践指南，方法论价值</td>
+</tr>
+<tr>
+<td>superpowers</td>
+<td>152,281</td>
+<td>1,919</td>
+<td>平台候选</td>
+<td>Agent 技能框架，持续跟踪</td>
+</tr>
+<tr>
+<td>claude-cookbooks</td>
+<td>40,248</td>
+<td>931</td>
+<td>学习型</td>
+<td>官方案例集</td>
+</tr>
+<tr>
+<td>chrome-devtools-mcp</td>
+<td>35,007</td>
+<td>218</td>
+<td>基础设施候选</td>
+<td>Agent 浏览器工具，PoC</td>
+</tr>
+<tr>
+<td>andrej-karpathy-skills</td>
+<td>33,801</td>
+<td>9,263</td>
+<td>工具型</td>
+<td>心智模型蒸馏范式验证</td>
+</tr>
+<tr>
+<td>voicebox</td>
+<td>17,338</td>
+<td>1,162</td>
+<td>工具型</td>
+<td>开源语音合成工作室</td>
+</tr>
+<tr>
+<td>Kronos</td>
+<td>17,799</td>
+<td>963</td>
+<td>生产可用</td>
+<td>金融FM，垂直领域突破</td>
+</tr>
+<tr>
+<td>DeepTutor</td>
+<td>18,135</td>
+<td>—</td>
+<td>工具型</td>
+<td>Agent 驱动个性化学习</td>
+</tr>
+<tr>
+<td>PersonaPlex</td>
+<td>9,304</td>
+<td>—</td>
+<td>工具型/平台候选</td>
+<td>NVIDIA 人格复用框架</td>
+</tr>
+<tr>
+<td>microsandbox</td>
+<td>5,365</td>
+<td>29</td>
+<td>基础设施候选</td>
+<td>Agent 沙箱化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_9">前日跟踪提醒</h2>
+<p>昨日（2026-04-14）最值得补看的内容：
+- <strong>RustFS</strong>：Rust 重写的 MinIO 替代方案，Apache 2.0，4KB 小对象性能 2.3x MinIO。如果你在用 MinIO 且受 AGPL 限制，这个项目值得评估。</p>
+<hr />
+<p><em>数据来源：GitHub Trending (daily + weekly + 语言分类)、GitHub API、DuckDuckGo 搜索</em>
+<em>采集时间：2026-04-15 08:55 CST</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

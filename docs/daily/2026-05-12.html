@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-12 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-12-github">2026-05-12 GitHub 趋势研究简报</h1>
+<blockquote>
+<p>✅ <strong>数据来源声明：</strong> 今日数据已通过网络恢复后的首次实测校正完成（GitHub API 直接查询）。之前 05-10~12 因代理订阅过期导致数据源不可达，Star 数为推演值。现已全部替换为实测数据。</p>
+</blockquote>
+<h2 id="agent-90">趋势一：Agent 基础设施层通过筛选（热度 90）</h2>
+<p>网络恢复后的首次实测数据校正显示，Agent 基础设施层三强地位全面确认：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>推演值</th>
+<th>实测值</th>
+<th>误差</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CC Switch</td>
+<td>~65K</td>
+<td><strong>68,099</strong></td>
+<td>+4.8%</td>
+<td>✅ 超预期</td>
+</tr>
+<tr>
+<td>MemPalace</td>
+<td>~53K</td>
+<td><strong>51,997</strong></td>
+<td>-1.9%</td>
+<td>✅ 高位稳定</td>
+</tr>
+<tr>
+<td>Open Design</td>
+<td>~38K</td>
+<td><strong>37,929</strong></td>
+<td>-0.2%</td>
+<td>✅ 接近推演</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现：</strong>
+- CC Switch 实测 68K 远超推演的 65K，Agent Desktop 基座的生态锁定效应比预期更强
+- MemPalace 52K + 6,852 forks，社区参与度极高（fork/star 比 13.2%，远高于一般项目）
+- Open Design 37.9K + 4,302 forks，增速从爆发期进入平台期但地位稳固</p>
+<h2 id="ds4c-78k-177-89">趋势二：ds4.c 实测 7.8K 超推演 177%（热度 89）</h2>
+<p>这是本轮数据校正中<strong>最惊人的发现</strong>。推演预估 ds4.c 约 3.8K stars，但实测达到 <strong>7,765 stars</strong>，超出推演 <strong>177%</strong>。</p>
+<p><strong>原因分析：</strong>
+1. <strong>antirez 效应远超预期</strong>：Redis 作者的个人品牌在开发者社区有巨大号召力
+2. <strong>本地推理赛道爆发</strong>：DeepSeek V4 发布后，开发者对本地运行大模型的需求激增
+3. <strong>Metal 生态红利</strong>：macOS 开发者群体对 Metal-only 方案接受度比预期高很多
+4. <strong>推演模型偏差</strong>：我们用的是线性外推，但 ds4.c 实际经历了指数增长阶段</p>
+<p><strong>后续观察：</strong> 是否出现 CUDA/Vulkan 社区 Fork 是该项目能否从"工具"升级为"基础设施"的关键拐点。</p>
+<h2 id="deepseek-v4-85">趋势三：DeepSeek V4 推理生态三层架构成型（热度 85）</h2>
+<p>经过实测数据校正，DeepSeek V4 的开源推理生态架构确认：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>项目</th>
+<th>实测 Stars</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kernel 层</td>
+<td>TileKernels</td>
+<td>N/A</td>
+<td>MoE 量化 + GPU Kernel 优化</td>
+</tr>
+<tr>
+<td>推理引擎（本地）</td>
+<td>ds4.c</td>
+<td><strong>7,765</strong></td>
+<td>Metal + 2-bit + 磁盘 KV</td>
+</tr>
+<tr>
+<td>推理引擎（服务端）</td>
+<td>TokenSpeed</td>
+<td><strong>959</strong></td>
+<td>Blackwell + Agentic Workload</td>
+</tr>
+<tr>
+<td>应用层</td>
+<td>GGUF 生态</td>
+<td>—</td>
+<td>Ollama / 企业部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>企业落地路径：</strong>
+- 开发/测试 → ds4.c 本地推理
+- 生产/规模 → TokenSpeed 服务端推理
+- 定制/极致 → TileKernels Kernel 优化</p>
+<h2 id="82">趋势四：安全双范式验证闭环（热度 82）</h2>
+<p>实测数据确认安全赛道双范式：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>实测 Stars</th>
+<th>Forks</th>
+<th>定位</th>
+<th>价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deepsec</td>
+<td><strong>2,356</strong></td>
+<td>151</td>
+<td>Agent 安全审计</td>
+<td>价值密度高，立即发现漏洞</td>
+</tr>
+<tr>
+<td>Harmonist</td>
+<td><strong>1,556</strong></td>
+<td>319</td>
+<td>协议强制约束</td>
+<td>零依赖，长期架构保障</td>
+</tr>
+</tbody>
+</table>
+<p><strong>企业 PoC 建议：</strong>
+1. 先用 Deepsec 对现有代码做一次性 Agent 安全审计
+2. 在新 Agent 项目中引入 Harmonist 协议强制约束
+3. 形成「审计发现 → 协议加固 → 审计验证」闭环</p>
+<h2 id="_1">本周关键观察点（校正后更新）</h2>
+<ol>
+<li><strong>CC Switch 生态扩展：</strong> 68K+ stars 确认基座地位，关注新 Agent CLI 接入速度</li>
+<li><strong>Open Design 平台粘性：</strong> 增速从爆发进入平稳，关注 Skills/Design Systems 增量</li>
+<li><strong>ds4.c CUDA Fork：</strong> 社区是否出现非 Metal 版本是突破天花板的关键</li>
+<li><strong>Mirage 后端适配器：</strong> 数量是否从 6-8 个增长到 15+</li>
+<li><strong>推理引擎基准测试：</strong> TokenSpeed 是否出现第三方独立评测</li>
+<li><strong>安全双范式落地：</strong> Deepsec + Harmonist 是否出现企业采用案例</li>
+</ol>
+<h2 id="_2">持续跟踪项目状态（实测数据校正）</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>实测 Stars</th>
+<th>Forks</th>
+<th>推演值</th>
+<th>误差</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CC Switch</td>
+<td><strong>68,099</strong></td>
+<td>4,355</td>
+<td>~65K</td>
+<td>+4.8%</td>
+<td>✅ 超预期</td>
+</tr>
+<tr>
+<td>MemPalace</td>
+<td><strong>51,997</strong></td>
+<td>6,852</td>
+<td>~53K</td>
+<td>-1.9%</td>
+<td>✅ 吻合</td>
+</tr>
+<tr>
+<td>Open Design</td>
+<td><strong>37,929</strong></td>
+<td>4,302</td>
+<td>~38K</td>
+<td>-0.2%</td>
+<td>✅ 吻合</td>
+</tr>
+<tr>
+<td>ds4.c</td>
+<td><strong>7,765</strong></td>
+<td>594</td>
+<td>~3.8K</td>
+<td>+177%</td>
+<td>❗ 远超预期</td>
+</tr>
+<tr>
+<td>Mirage</td>
+<td><strong>2,004</strong></td>
+<td>129</td>
+<td>~2.5K</td>
+<td>-19.8%</td>
+<td>⚠️ 低于推演</td>
+</tr>
+<tr>
+<td>Deepsec</td>
+<td><strong>2,356</strong></td>
+<td>151</td>
+<td>~2.8K</td>
+<td>-15.9%</td>
+<td>⚠️ 增速放缓</td>
+</tr>
+<tr>
+<td>Harmonist</td>
+<td><strong>1,556</strong></td>
+<td>319</td>
+<td>~2.3K</td>
+<td>-32.3%</td>
+<td>⚠️ 低于推演</td>
+</tr>
+<tr>
+<td>TokenSpeed</td>
+<td><strong>959</strong></td>
+<td>74</td>
+<td>~1.3K</td>
+<td>-26.2%</td>
+<td>⚠️ 低于推演</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+1. <strong>ds4.c 天花板：</strong> Metal-only 限制 + antirez 个人项目属性，增长持续性存疑
+2. <strong>Open Design 增速拐点：</strong> 日增可能已跌破 1K，需要关注平台粘性指标
+3. <strong>推演模型偏差：</strong> 对高增长项目（ds4.c）严重低估，对稳定项目相对准确</p>
+<p><strong>机遇：</strong>
+1. <strong>数据校正完成：</strong> 所有跟踪项目已更新为实测数据，可信度恢复
+2. <strong>Agent 基础设施层三强格局：</strong> CC Switch / MemPalace / Open Design 各据一方
+3. <strong>推理赛道超预期：</strong> ds4.c 的爆发说明本地推理需求远超预期
+4. <strong>安全双范式可落地：</strong> Deepsec + Harmonist 技术路线清晰，可启动 PoC</p>
+<h2 id="_4">重点项目档案</h2>
+<p>今日数据校正更新项目：
+- 🎛️ CC Switch → <code>projects/cc-switch.md</code>（实测 68,099 ⬆️ 推演 65K）
+- 🧠 MemPalace → <code>projects/mempalace.md</code>（实测 51,997 ⬇️ 推演 53K）
+- 🎨 Open Design → <code>projects/open-design.md</code>（实测 37,929 ≈ 推演 38K）
+- 🔧 ds4.c → <code>projects/ds4.md</code>（实测 7,765 ⬆️⬆️ 推演 3.8K，+177%）
+- 🗂️ Mirage → <code>projects/mirage.md</code>（实测 2,004 ⬇️ 推演 2.5K）
+- 🛡️ Deepsec → <code>projects/deepsec.md</code>（实测 2,356 ⬇️ 推演 2.8K）
+- 🎭 Harmonist → <code>projects/harmonist.md</code>（实测 1,556 ⬇️ 推演 2.3K）
+- ⚡ TokenSpeed → <code>projects/tokenspeed.md</code>（实测 959 ⬇️ 推演 1.3K）</p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

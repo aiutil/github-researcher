@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dbx | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/t8y2/dbx" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="dbx">dbx</h1>
+<h2 id="_1">一句话定位</h2>
+<p>开源、轻量级、跨平台数据库客户端，Tauri + Rust 构建，支持 8 种主流数据库。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>DBeaver、DataGrip 等数据库客户端虽然功能强大但体积大、启动慢、Java 依赖重。dbx 提供了一个轻量替代 — 原生体验、快速启动、覆盖主流数据库。</p>
+<h2 id="2026-05-01">为什么值得关注（2026-05-01）</h2>
+<p>Tauri 生态的典型成功案例。用 Rust 后端 + Vue 前端 + Tauri 框架构建跨平台桌面应用，安装包小、内存占用低。对架构师而言，这是"如何用现代技术栈重新造一个老品类的轮子并做得更好"的参考。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>实用需求驱动。开发者对轻量级数据库客户端有持续需求，DBeaver 的 Java 重体验一直被吐槽。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>8 种数据库支持</strong>：MySQL、PostgreSQL、SQLite、Redis、MongoDB、DuckDB、ClickHouse、SQL Server</li>
+<li><strong>Tauri 框架</strong>：比 Electron 更轻的跨平台方案，Rust 后端 + Web 前端</li>
+<li><strong>Rust 核心驱动</strong>：每个数据库连接使用 Rust 原生驱动，性能好</li>
+<li><strong>Vue 前端</strong>：现代化 UI，响应式设计</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>经典的技术栈升级案例：
+- Electron → Tauri（更小、更快、更安全）
+- Java → Rust（更低内存、更快启动）
+- 这证明了"老品类可以用新技术栈重新做"</p>
+<h2 id="_6">定位判断</h2>
+<p>实用工具。DBeaver/Datagrip 的轻量替代，适合日常数据库操作。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>早期阶段</strong>：2 天历史，功能完善度远不如 DBeaver</li>
+<li><strong>功能覆盖有限</strong>：可能缺少高级功能（如 ER 图、数据迁移、SSH tunnel）</li>
+<li><strong>社区规模小</strong>：19 forks，长期维护能力存疑</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>DBeaver</strong>：市场领导者，功能最全，但 Java 生态重</li>
+<li><strong>DataGrip</strong>：JetBrains 出品，付费，功能强大</li>
+<li><strong>Beekeeper Studio</strong>：另一个轻量级选择，Electron 构建</li>
+<li><strong>Sequel Ace</strong>（macOS）：原生 macOS 选择</li>
+</ul>
+<p>dbx 的差异化在于 Tauri + Rust 的技术栈选择，理论上性能最优。</p>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>有限跟踪</strong>。作为工具型项目，关注其功能完善速度和社区增长。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>是否推出高级功能（ER 图、数据迁移、连接池管理）</li>
+<li>性能对比测试（vs DBeaver、Beekeeper Studio）</li>
+<li>跨平台 UI 一致性</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-01</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

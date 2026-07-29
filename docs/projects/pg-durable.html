@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pg_durable | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/microsoft/pg_durable" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="pg_durable">pg_durable</h1>
+<h2 id="_1">一句话定位</h2>
+<p>微软官方 PostgreSQL 扩展，将 Durable Execution（容错工作流引擎）原生嵌入数据库，消除外部编排器需求。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>数据团队构建 ETL / embedding / 数据清洗管道时，通常需要拼接 cron job + worker + queue + status table + orchestrator（Airflow/Temporal）来保证可靠性。pg_durable 将这一切内化到 PostgreSQL 中：用 SQL 定义工作流，运行时自动检查点，崩溃/重启后自动恢复。</p>
+<h2 id="2026-06-08">为什么值得关注（2026-06-08）</h2>
+<ol>
+<li><strong>微软官方出品</strong>，不是社区实验——代表了微软对"compute close to data"方向的架构判断</li>
+<li><strong>Rust 实现</strong>，作为 PostgreSQL extension 运行，性能和安全兼顾</li>
+<li><strong>SQL-native 工作流定义</strong>：<code>~&gt;</code> (sequential) 和 <code>|=&gt;</code> (parallel fan-out) 操作符</li>
+<li>在 Azure HorizonDB（微软新云服务）中内置——说明有商业化路径支撑</li>
+</ol>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>真实需求</strong>。数据工程师苦 Airflow + Worker + Queue 久矣，将编排移回数据库是简化架构的真实需求</li>
+<li>微软品牌背书带来初始曝光，但 +314/天的增速说明开发者确实在认真评估</li>
+<li>52 个 open issues 反映了真实用户在尝试使用，不是纯 star farming</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>SQL-native DAG 定义</strong>：用 <code>~&gt;</code> 和 <code>|=&gt;</code> 组合操作符定义工作流图，<code>df.start()</code> 启动</li>
+<li><strong>检查点持久化</strong>：每步执行后自动 checkpoint 到 PG 系统表，崩溃后从最后检查点恢复</li>
+<li><strong>零外部基础设施</strong>：不需要 Redis、Temporal、Airflow、Step Functions</li>
+<li><strong>Rust 实现</strong>：作为 PG extension 运行在 <code>shared_preload_libraries</code>，后台 worker 异步执行</li>
+<li><strong>并行执行</strong>：<code>|=&gt;</code> 操作符原生 fan-out，自动等待所有分支完成后 join</li>
+</ol>
+<p><code>sql
+-- 示例：并行处理 + 汇总
+SELECT df.start(
+    'SELECT id FROM documents WHERE processed = false LIMIT 100' |=&gt; 'batch'
+    ~&gt; 'UPDATE documents SET processed = true WHERE id = ANY($batch)'
+);</code></p>
+<h2 id="_5">架构启发</h2>
+<p>pg_durable 代表了 <strong>data-compute convergence</strong>（数据-计算收敛）趋势：</p>
+<pre class="mermaid">graph LR
+    subgraph "传统 3 层架构"
+        A1[Orchestrator<br/>Airflow/Temporal] --> A2[Worker Pool]
+        A2 --> A3[(PostgreSQL)]
+    end
+    subgraph "pg_durable 单层架构"
+        B1[SQL Workflow Definition] --> B2[pg_durable Runtime]
+        B2 --> B3[(PostgreSQL<br/>执行 + 检查点 + 状态)]
+    end
+</pre>
+<p><strong>核心洞察</strong>：当工作流本质是数据转换（chunk → embed → upsert），把编排逻辑放在数据旁边比维护一个独立编排集群更简洁。这不是取代 Temporal（跨系统编排仍需要），而是<strong>消除不必要的编排器</strong>。</p>
+<h3 id="vs">适用场景 vs 不适用场景</h3>
+<table>
+<thead>
+<tr>
+<th>适用</th>
+<th>不适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向量 embedding 管道</td>
+<td>跨多个异构系统的编排</td>
+</tr>
+<tr>
+<td>批量数据清洗/去重</td>
+<td>需要亚毫秒同步响应的场景</td>
+</tr>
+<tr>
+<td>定时维护任务</td>
+<td>无法安装 PG 扩展的云托管环境</td>
+</tr>
+<tr>
+<td>Fan-out 聚合查询</td>
+<td>主要逻辑在应用层的非 SQL 工作流</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">定位判断</h2>
+<ul>
+<li>当前：<strong>观察型</strong>（1.4K stars，早期 preview）</li>
+<li>趋势：<strong>基础设施候选</strong> — 如果微软持续投入，将成为 PG 生态标配</li>
+</ul>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>早期阶段</strong>：52 个 open issues，README 明确标注 limitations</li>
+<li><strong>SQL-shaped 限制</strong>：复杂控制流需要包装成 SQL 函数或 HTTP 端点</li>
+<li><strong>微软内部优先级不确定</strong>：可能被作为 Azure HorizonDB 的独家特性，开源版本投入有限</li>
+<li><strong>与 Temporal 的竞争定位</strong>：pg_durable 解决的是数据层内编排，不是通用编排，但市场教育可能混淆</li>
+<li><strong>PostgreSQL 扩展安装门槛</strong>：很多云 PG 服务不支持自定义扩展</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Temporal</strong>：Temporal 是跨系统通用编排器，pg_durable 是数据层内编排器</li>
+<li><strong>vs Airflow</strong>：Airflow 是 Python 生态 + 独立调度，pg_durable 是 SQL 生态 + 内嵌执行</li>
+<li><strong>vs pg_cron</strong>：pg_cron 只是定时执行，pg_durable 是 DAG + 检查点 + 容错恢复</li>
+<li><strong>vs DBOS</strong>：DBOS（MIT）提出过类似理念，pg_durable 是微软的工程化实现</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 微软官方 + 数据层编排新范式 + Rust 实现，三个因素叠加使其成为高价值观察对象。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>微软是否在 Azure HorizonDB 之外持续维护开源版本</li>
+<li>生产环境用户的反馈（特别是 embedding 管道场景）</li>
+<li>复杂工作流（分支/循环/错误处理）的 SQL 表达能力上限</li>
+<li>社区贡献者增长和 issue 解决速度</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-08</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

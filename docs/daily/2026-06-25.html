@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-25 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-25-github">2026-06-25 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p><strong>Agent 编程范式正在经历从"写更多"到"写更少"的系统性翻转。</strong></p>
+<p>今天 GitHub 最强的信号来自 ponytail——55K⭐，13天从 0 到 55K。它不是一个工具或框架，而是一个 Agent Skill：在 AI Agent 写代码之前，强制走一个 7 级"懒惰阶梯"决策树。实测数据：<strong>54% 更少代码、20% 更低成本、27% 更快速度、100% 安全护栏保持</strong>。</p>
+<p>关键不是星数——而是这个信号确认了：<strong>Agent 的核心竞争力不是"能写多少代码"，而是"能不写多少代码"</strong>。这与过去两年 Agent 领域的叙事截然相反。</p>
+<p>同时，<strong>Meta-harness 编排层正在形成一个新品类</strong>。omnigent（4.7K⭐）和 vercel/eve（2.5K⭐）同时在构建"harness above harnesses"——当 Claude Code、Codex、Cursor 各自成熟后，上面需要一层来管理跨 harness 协作。这是"Agent 的 Kubernetes"级别的机会。</p>
+<pre class="mermaid">graph TD
+    subgraph "Meta-harness 编排层（正在形成）"
+        OM["omnigent 4.7K⭐<br/>Python · 多设备 · 策略治理<br/>编排 CC+Codex+Cursor+Pi"]
+        EVE["vercel/eve 2.5K⭐<br/>TypeScript · filesystem-first<br/>约定优于配置"]
+    end
+    
+    subgraph "Coding Agent 层（已成熟）"
+        CC["Claude Code"]
+        CX["Codex"]
+        CS["Cursor"]
+        MM["MiMo-Code 10.6K⭐<br/>持久内存+Goal/Stop"]
+    end
+    
+    subgraph "Agent Skills 生态（独立化）"
+        PT["ponytail 55K⭐<br/>懒惰阶梯"]
+        SI["shadcn/improve 6.1K⭐<br/>审计→计划→执行"]
+        BS["BuilderIO/skills 2.6K⭐<br/>Skills 分发平台"]
+        LL["loop-library<br/>工作流循环模式"]
+    end
+    
+    subgraph "感知/输入层"
+        FC["firecrawl 138K⭐<br/>抓取层"]
+        AR["Agent-Reach 38.6K⭐<br/>平台适配层"]
+        PA["page-agent 19.2K⭐<br/>DOM 操作层"]
+    end
+    
+    OM --> CC & CX & CS & MM
+    EVE --> CC & CX & CS
+    CC & CX & CS & MM -.-> PT & SI & BS & LL
+    CC & CX & CS & MM -.-> FC & AR & PA
+</pre>
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-agent-93">1. Agent "懒惰工程"范式大规模验证（趋势分: 93）</h3>
+<p><strong>ponytail 55K⭐ 深度分析：</strong></p>
+<p>ponytail 的核心是一个 7 级决策阶梯，Agent 在写代码前必须从上到下逐级检查：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>检查内容</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>这需要存在吗？</td>
+<td>YAGNI 砍掉</td>
+</tr>
+<tr>
+<td>2</td>
+<td>代码库已经有了？</td>
+<td>复用，不重写</td>
+</tr>
+<tr>
+<td>3</td>
+<td>标准库能做？</td>
+<td>用 stdlib</td>
+</tr>
+<tr>
+<td>4</td>
+<td>平台原生功能？</td>
+<td><code>&lt;input type="date"&gt;</code> 而非 flatpickr</td>
+</tr>
+<tr>
+<td>5</td>
+<td>已安装的依赖能做？</td>
+<td>用现有依赖</td>
+</tr>
+<tr>
+<td>6</td>
+<td>一行能搞定？</td>
+<td>一行代码</td>
+</tr>
+<tr>
+<td>7</td>
+<td>最后才写最小可行实现</td>
+<td>最简实现</td>
+</tr>
+</tbody>
+</table>
+<p>ponytail 与简单"写更少代码"提示词的本质差异：
+- <strong>懒惰关于解决方案，严格关于阅读理解</strong>——Agent 必须先读完受影响代码、追踪真实数据流，再选择阶梯级别
+- <strong>安全护栏不退让</strong>——验证、错误处理、安全、可访问性代码不能被"懒惰"掉
+- <strong>可量化</strong>——在 tiangolo/full-stack-fastapi-template 真实仓库上跑 12 个任务 × 4 次，数据公开可复现</p>
+<p><strong>架构启发：</strong> ponytail 验证了一个重要假设——Agent 最大的浪费不是模型能力不足，而是 Agent 过度生产代码。传统思路是"让 Agent 更聪明"，ponytail 的思路是"让 Agent 更克制"。这与资深工程师的行为模式一致。</p>
+<h3 id="2-meta-harness-90">2. Meta-harness 编排层竞争白热化（趋势分: 90）</h3>
+<p>两个项目几乎同时出现，走截然不同的技术路线：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>omnigent</th>
+<th>vercel/eve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语言</td>
+<td>Python 3.12+</td>
+<td>TypeScript</td>
+</tr>
+<tr>
+<td>创建日期</td>
+<td>6/11</td>
+<td>6/16</td>
+</tr>
+<tr>
+<td>Stars</td>
+<td>4,713</td>
+<td>2,526</td>
+</tr>
+<tr>
+<td>核心理念</td>
+<td>统一编排+治理</td>
+<td>约定优于配置</td>
+</tr>
+<tr>
+<td>架构</td>
+<td>Server/Client，桌面 App</td>
+<td>Filesystem-first</td>
+</tr>
+<tr>
+<td>沙箱</td>
+<td>Modal/Daytona/Islo 云沙箱</td>
+<td>内置 worktree 隔离</td>
+</tr>
+<tr>
+<td>策略治理</td>
+<td>✅ YAML policies（花费限制、工具白名单）</td>
+<td>❌ 当前无</td>
+</tr>
+<tr>
+<td>多设备</td>
+<td>✅ 手机→浏览器→终端同步</td>
+<td>❌ 当前无</td>
+</tr>
+<tr>
+<td>分发</td>
+<td>curl install + Homebrew + pip</td>
+<td>npx eve init</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键判断：</strong> 这不是"谁赢"的问题——而是两个项目共同确认了 meta-harness 是真实品类。omnigent 更偏向<strong>企业级治理场景</strong>（策略、审计、多设备），eve 更偏向<strong>开发者体验场景</strong>（filesystem-first、TypeScript 原生、Vercel 生态）。类似 Kubernetes（omnigent）vs Next.js（eve）的关系。</p>
+<h3 id="3-coding-agent-89">3. 大厂 Coding Agent 终端争夺战（趋势分: 89）</h3>
+<p><strong>MiMo-Code 10.6K⭐ 关键更新：</strong>
+- 持久内存升级为 4 层：Project Memory（MEMORY.md）+ Session Checkpoint（checkpoint.md）+ Scratch Notes（notes.md）+ Task Progress（tasks/）
+- 新增 Goal/Stop 条件：独立 judge 模型评估"是否真的完成"，防止 Agent 过早乐观退出
+- Compose Mode：specs-driven 开发全生命周期（plan→execute→review→TDD→debug→verify→merge）
+- 子 Agent 系统：主 Agent 按需创建子 Agent，共享上下文、可并行</p>
+<p><strong>shadcn/improve 6.1K⭐ 关键更新：</strong>
+- 新增 <code>/improve reconcile</code>——验证已落地计划、刷新漂移、解除阻塞
+- 新增 <code>/improve branch</code>——只审计当前分支变更
+- 完整工作流：/improve → 选发现 → /improve plan → /improve execute → /improve reconcile</p>
+<p>两个项目代表两条路线：</p>
+<pre class="mermaid">flowchart LR
+    subgraph "MiMo-Code 路线：全功能终端 Agent"
+        A1[用户输入] --> A2[持久内存注入]
+        A2 --> A3[多 Agent 协作]
+        A3 --> A4[Goal/Stop 判断]
+        A4 --> A5[代码输出]
+    end
+    
+    subgraph "shadcn/improve 路线：顾问-执行者分层"
+        B1[/improve] --> B2[最贵模型审计]
+        B2 --> B3[plans/*.md 文件]
+        B3 --> B4[最便宜模型执行]
+        B4 --> B5[审计模型 review diff]
+    end
+</pre>
+<h3 id="4-ocr-87">4. OCR 长程解析突破（趋势分: 87）</h3>
+<p><strong>baidu/Unlimited-OCR 6.3K⭐ 深度分析：</strong></p>
+<p>百度 PaddlePaddle 团队 6/18 发布，6天到 6.3K。核心突破：</p>
+<ul>
+<li><strong>One-shot Long-horizon Parsing</strong>：单次推理处理超长文档（论文、书籍、复杂表格+图+公式混排）</li>
+<li>基于 DeepSeek-OCR 架构进一步突破，支持 gundam 模式（crop_mode=True，分块处理超长文档）</li>
+<li>HuggingFace Spaces 已上线在线 Demo</li>
+<li>MIT 协议，支持 transformers 直接加载</li>
+</ul>
+<p><strong>架构启发：</strong> OCR 正在从"切段→逐段识别→后处理拼接"迁移到"端到端单次推理"。这与 LLM 从 sliding window 到 long-context 的演进路径一致。长程 OCR 的突破会直接影响文档智能、知识库构建、Agent 文档理解等场景。</p>
+<h3 id="5-agent-skills-86">5. Agent Skills 生态独立化（趋势分: 86）</h3>
+<p>BuilderIO/skills 2.6K⭐ 的入场是一个重要信号：</p>
+<ul>
+<li>BuilderIO 是被 Nike/Google/TikTok 使用的网站构建器公司</li>
+<li>他们把 Skills 当作独立的软件分发单元——不是某个 Agent 的附属配置</li>
+<li><code>npx skills add builderio/skills</code> ——类似 npm install 但面向 Agent Skills</li>
+<li>标志着 Skills 正在形成 B2D 分发渠道</li>
+</ul>
+<p>加上 Forward-Future/loop-library（Agent 工作流循环模式库）和 cobusgreyling/loop-engineering（loop 设计 CLI 工具），Agent Skills 的生态层已经包含：
+1. <strong>分发平台</strong>（agent-native.com、agentskills.io）
+2. <strong>工程方法论</strong>（shadcn/improve、ponytail）
+3. <strong>模式库</strong>（loop-library、loop-engineering）
+4. <strong>安全审计</strong>（NVIDIA/SkillSpector）</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ul>
+<li><strong>"懒惰工程"方法论产品化</strong>——ponytail 的决策树可以企业内部定制化，把团队最佳实践编码为 Agent 指令</li>
+<li><strong>Meta-harness 是新的平台机会</strong>——如果 omnigent 或 eve 成为事实标准，它们就是"Agent 的操作系统"</li>
+<li><strong>OCR 长程突破降低文档智能成本</strong>——Unlimited-OCR 的 one-shot 模式简化了企业文档处理管线</li>
+</ul>
+<h3 id="_5">风险</h3>
+<ul>
+<li><strong>ponytail 55K 的星数增速过于陡峭</strong>——13天 55K，可能存在社交媒体泡沫放大效应。需观察实际 adoption（npm downloads、fork 活跃度）</li>
+<li><strong>Meta-harness 品类过早竞争</strong>——两个项目都还在 alpha 阶段，品类定义本身还在变化</li>
+<li><strong>Skills 生态碎片化</strong>——每个 Skills 作者定义自己的格式和约定，缺乏标准可能阻碍互操作</li>
+</ul>
+<h2 id="_6">重点项目档案</h2>
+<h3 id="_7">今日更新档案</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars 变化</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ponytail</td>
+<td>36K→55K (+18.6K/6天)</td>
+<td>更新最新 benchmark 数据、7 级阶梯说明</td>
+</tr>
+<tr>
+<td>omnigent</td>
+<td>4.2K→4.7K</td>
+<td>更新 latest 文档分析、策略治理详情</td>
+</tr>
+<tr>
+<td>vercel-eve</td>
+<td>1.8K→2.5K (+700)</td>
+<td>更新 filesystem-first 架构分析</td>
+</tr>
+<tr>
+<td>shadcn-improve</td>
+<td>5.5K→6.1K (+600)</td>
+<td>新增 reconcile/branch/execute 命令分析</td>
+</tr>
+<tr>
+<td>mimo-code</td>
+<td>9.8K→10.6K (+800)</td>
+<td>新增 Goal/Stop、Compose Mode 分析</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">今日新增档案</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baidu/Unlimited-OCR</td>
+<td>6,273</td>
+<td>基础设施候选</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">今日评分亮点</h2>
+<h3 id="ponytail">Ponytail 综合评分</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>13天55K，TrendShift 日/周榜 #1，但增速过陡需观察持续性</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>7级决策树不复杂，但系统化为可执行 Skill 是创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>benchmark 方法论严谨（真实 repo、12 任务、n=4），但生态刚起步</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>10</td>
+<td>"Agent 更克制 &gt; Agent 更聪明"——改变整个 Agent 设计哲学</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>企业可定制决策树编码团队最佳实践</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>9</td>
+<td>YAGNI 方法论本身经过几十年验证</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>可扩展为更多语言的懒惰决策框架</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>5</td>
+<td>是 Skill 不是 Infra</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分: 63/80</strong> · 分类: <strong>平台候选</strong> · 持续跟踪: ✅</p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

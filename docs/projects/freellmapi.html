@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeLLMAPI | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/tashfeenahmed/freellmapi" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="freellmapi">FreeLLMAPI</h1>
+<h2 id="_1">一句话定位</h2>
+<p>聚合 16 家免费 LLM Provider 的 OpenAI/Anthropic 双兼容代理——~1.7B tokens/月免费推理能力，2 个月 17 倍增长。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>开发者需要在多个 LLM Provider 之间切换以利用各自的免费额度，但每个 Provider 的 SDK、rate limit、key 管理都不同。FreeLLMAPI 将这些聚合为一个 OpenAI 兼容端点 + Anthropic 兼容端点。</p>
+<h2 id="2026-06-27">为什么值得关注（2026-06-27 更新）</h2>
+<p>从 5 月 1 日的 783⭐ 暴涨至 13,142⭐（2 个月 17 倍），日增 586。代表了一个加速的新兴模式——<strong>免费推理聚合</strong>。16 家 Provider 聚合后 ~1.7B tokens/月，已形成可用的推理能力。</p>
+<h3 id="2026-06-27_1">最近动态（2026-06-27）</h3>
+<ul>
+<li>Provider 从 14 扩展至 16（新增 OVH AI Endpoints、OpenCode Zen）</li>
+<li>新增 Anthropic Messages API 兼容（<code>/v1/messages</code>）——Claude Code 可直接对接免费 pool</li>
+<li>新增 Responses API（<code>/v1/responses</code>）——Codex CLI 兼容</li>
+<li>新增图片生成（<code>/v1/images/generations</code>）和 TTS（<code>/v1/audio/speech</code>）</li>
+<li>新增 Embeddings（<code>/v1/embeddings</code>，family-based 路由）</li>
+<li>Sticky sessions（30 分钟同模型，避免中途切换幻觉）</li>
+<li>Context handoff（model switch 时注入 compact system message）</li>
+<li>桌面 App + Docker 部署支持</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>实用性驱动</strong>：~1.7B tokens/月免费额度对个人开发者有巨大吸引力</li>
+<li><strong>Claude Code / Codex 兼容</strong>：直接对接主流 Agent 工具是增长加速器</li>
+<li><strong>合规讨论引发关注</strong>：ToS 灰色地带本身也是话题传播点</li>
+<li><strong>17 倍增长验证需求</strong>：不是一日热点，持续 2 个月高增长</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>三协议兼容</strong>——OpenAI <code>/v1/chat/completions</code> + Anthropic <code>/v1/messages</code> + Responses API（<code>/v1/responses</code>）</li>
+<li><strong>智能路由 + 自动 failover</strong>——429/5xx 自动跳到下一个 Provider，每 key RPM/RPD/TPM/TPD 计数，最多 20 次重试</li>
+<li><strong>Sticky sessions</strong>——多轮对话 30 分钟内保持同一模型，避免中途切换的幻觉</li>
+<li><strong>AES-256-GCM 加密 key 存储</strong>——16 个 Provider 的 API key 加密存储在 SQLite</li>
+<li><strong>Embeddings family-based 路由</strong>——failover 只在同模型 Provider 间发生（不同模型向量不兼容）</li>
+<li><strong>16 Provider 覆盖</strong>——Google/Groq/Cerebras/NVIDIA/Mistral/OpenRouter/GitHub Models/Cloudflare/Z.ai/Cohere/HuggingFace/Ollama Cloud/Kilo/Pollinations/LLM7/OVH</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<pre class="mermaid">flowchart TD
+    subgraph "FreeLLMAPI 路由架构"
+        C[Client Request<br/>/v1/chat/completions<br/>/v1/messages<br/>/v1/responses]
+        R[Smart Router<br/>RPM/RPD/TPM/TPD tracking]
+        F[Fallback Chain<br/>up to 20 attempts]
+        K[Encrypted Key Store<br/>AES-256-GCM]
+    end
+
+    subgraph "16 Free Providers"
+        P1[Google Gemini]
+        P2[Groq]
+        P3[Cerebras]
+        P4[NVIDIA NIM]
+        P5[Mistral]
+        P6[Cloudflare]
+        P7[Z.ai/Zhipu]
+        P8[...9 more]
+    end
+
+    C --> R
+    K --> R
+    R -->|"1st try"| P1
+    P1 -->|"429/5xx"| F
+    F -->|"failover"| P2
+    F -->|"failover"| P3
+    F -->|"failover"| P4
+</pre>
+<p>FreeLLMAPI 的架构本质上是一个 <strong>LLM Gateway 的免费版</strong>。企业级 LLM Gateway（如 Portkey、LiteLLM）做的是多 Provider 路由 + 可观测性 + 成本控制，FreeLLMAPI 聚焦在免费 tier 的最大化利用。</p>
+<p>启示：
+1. LLM Gateway 层标准化加速——OpenAI 兼容已成为事实标准，Anthropic 兼容正在成为第二标准
+2. 免费 tier 聚合是一种新型 Cloud Arbitrage——不同 Provider 的免费额度等价于"云资源碎片"
+3. Agent 工具（Claude Code/Codex）兼容是增长杠杆</p>
+<h2 id="_6">定位判断</h2>
+<ul>
+<li><strong>个人实验工具 → 开发者基础设施过渡</strong></li>
+<li>适合 PoC 和个人开发者降低成本</li>
+<li>Anthropic/OpenAI 双兼容是关键差异化</li>
+<li>对 SLA 有要求的场景不可用</li>
+</ul>
+<h2 id="_7">评分</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>17 倍增长真实，但增速可能见顶</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>6</td>
+<td>路由+failover 非新概念，免费聚合角度有新意</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>功能完整，三协议支持，但依赖外部 Provider 稳定性</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>7</td>
+<td>LLM Gateway 标准化+Cloud Arbitrage 模式</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>4</td>
+<td>ToS 灰色地带是硬伤</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>免费 tier 聚合需求持续，但政策风险大</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>5</td>
+<td>可演化为个人 AI infra 入口</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>4</td>
+<td>合规限制使其难以成为企业基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>48/80</strong></td>
+<td><strong>工具型→平台候选过渡</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li>⚠️ <strong>合规灰色地带（高）</strong>：部分 Provider 免费 tier 限个人非商用（如 NVIDIA eval-only ToS）</li>
+<li>⚠️ <strong>无 SLA 保障</strong>：免费 tier 随时可能被限流或取消</li>
+<li>⚠️ <strong>Provider 政策变更</strong>：任何一家 Provider 修改免费 tier 政策都会影响整体可用性</li>
+<li>⚠️ <strong>安全攻击面</strong>：16 个 Provider 的 key 集中存储，即使加密也增加攻击面</li>
+<li>⚠️ <strong>ToS 审查风险</strong>：随着规模增长，可能引发 Provider 的合规审查</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>LiteLLM</strong>：企业级 LLM Gateway，100+ Provider，更成熟但非免费导向</li>
+<li><strong>Portkey AI</strong>：LLM Gateway + 可观测性，企业级方案</li>
+<li><strong>OneAPI / New API</strong>：国内 API 聚合方案</li>
+<li><strong>Cloudflare AI Gateway</strong>：云厂商提供的 Gateway 方案</li>
+</ul>
+<p>差异化：免费 tier 最大化 + Anthropic 兼容 + Claude Code 可直接对接</p>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p>✅ <strong>持续跟踪</strong>。17 倍增长验证需求。关键观察点：
+1. Provider 是否会限制此类聚合使用
+2. 是否有 Provider 推出官方聚合方案
+3. Claude Code / Codex 兼容是否带动更多 Agent 工具集成
+4. 是否出现企业级合规版本</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>Provider 政策变更影响</li>
+<li>社区合规性讨论</li>
+<li>是否出现 SaaS 化版本</li>
+<li>免费 tier 总额度是否随 AI 竞争加剧而增长</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-01</em>
+<em>重大更新：2026-06-27 — stars 783→13K（17 倍），Provider 14→16，新增 Anthropic/Responses API 兼容，评分 76→85</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

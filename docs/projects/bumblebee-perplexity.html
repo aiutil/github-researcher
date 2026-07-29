@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumblebee (Perplexity) | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/perplexityai/bumblebee" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="bumblebee">Bumblebee</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Perplexity 出品的只读供应链元数据扫描器，Go 单二进制，覆盖 npm/pypi/go/MCP/编辑器扩展等全生态包管理器。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>目标用户：安全响应团队、DevSecOps 工程师。</p>
+<p>痛点：
+- CVE 发布后，需要快速知道「哪些开发者机器上安装了受影响的包」
+- SBOM 告诉你「什么发了版」，EDR 告诉你「什么跑了」，但开发者设备上的「本地实际安装状态」没人管
+- 开发者设备上的包管理器元数据、编辑器扩展、MCP 配置分散在各处</p>
+<h2 id="2026-05-23">为什么值得关注（2026-05-23）</h2>
+<p>Bumblebee 首次将 MCP 配置文件纳入供应链扫描范围。随着 MCP 成为 Agent 工具调用标准，MCP 配置中的凭证和暴露面成为新的攻击向量。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>251 stars / 3 天。热度来自：
+- Perplexity 品牌效应
+- 供应链安全是当前热门话题
+- Go 单二进制 + 零依赖的工程品质</p>
+<p>热度合理但有限 — 工具定位明确，受众是安全团队。</p>
+<h2 id="_4">关键技术亮点</h2>
+<h3 id="1">1. 全生态覆盖</h3>
+<p>npm/pnpm/yarn/bun/PyPI/Go/RubyGems/Composer/MCP/编辑器扩展/浏览器扩展 — 11 个包管理器生态。</p>
+<h3 id="2-mcp">2. MCP 配置扫描</h3>
+<p>首次将 MCP host 配置文件（mcp.json、claude_desktop_config.json 等）纳入扫描。MCP 配置中可能暴露凭证（env blocks）。</p>
+<h3 id="3">3. 三级扫描配置</h3>
+<p>baseline（快速）/ project（项目级）/ deep（深度）三种扫描 profile，适应不同场景。</p>
+<h3 id="4">4. 只读设计</h3>
+<p>不执行任何包管理器命令（npm ls、pip show 等），只读取本地元数据文件。安全无害。</p>
+<h3 id="5">5. 暴露匹配</h3>
+<p>给定 CVE catalog，可以快速匹配开发者设备上的受影响组件。</p>
+<h2 id="_5">架构启发</h2>
+<p>Bumblebee 展示了「开发者设备安全」这个被忽视的领域。SBOM 管的是制品，EDR 管的是运行时，但开发者设备上散落的 lockfile、包管理器元数据、编辑器扩展是安全盲区。</p>
+<p>特别是 MCP 配置扫描 — 随着 Agent 生态爆发，MCP 配置可能成为新的攻击面。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>工具型。</strong> 专用安全扫描工具，定位明确，不会成为平台。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>只读限制</strong>：无法发现运行时依赖或动态加载的包</li>
+<li><strong>251 stars 非常早期</strong>：覆盖的包管理器可能不完整</li>
+<li><strong>Perplexity 可能不支持长期</strong>：作为 Perplexity 的「side project」可能缺乏持续投入</li>
+<li><strong>与企业级 SCA 工具的竞争</strong>：Snyk、FOSSA 等已有成熟的 SCA 产品</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>定位</th>
+<th>核心差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Snyk/FOSSA</td>
+<td>企业 SCA 平台</td>
+<td>商业产品，CI/CD 集成</td>
+</tr>
+<tr>
+<td>Trivy</td>
+<td>容器镜像扫描</td>
+<td>聚焦容器和制品</td>
+</tr>
+<tr>
+<td>Bumblebee</td>
+<td>开发者设备扫描</td>
+<td>只读本地元数据，含 MCP</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>中性。</strong> 作为安全团队的补充工具值得关注，但不是核心关注方向。MCP 扫描能力是独特价值。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>MCP 配置扫描的覆盖范围和准确性</li>
+<li>是否有企业开始用 Bumblebee 做供应链应急响应</li>
+<li>Perplexity 是否会持续投入开发</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-23</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

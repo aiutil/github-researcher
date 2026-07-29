@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-02 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-02-github">2026-06-02 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日趋势总览</h2>
+<pre class="mermaid">mindmap
+  root((2026-06-02<br/>GitHub 趋势))
+    上下文压缩
+      Headroom 4.1K
+        60-95% Token 压缩
+        Library/Proxy/MCP 三模式
+        CCR 可逆架构
+    TTS 语音 AI
+      VoxCPM 24K
+        Tokenizer-Free
+        多语言语音生成
+      MOSS-TTS 2.8K
+        高保真长语音
+      dograh 4K
+        Vapi/Retell 替代
+    Agent Harness 竞争
+      ECC 202K
+        跨 7 个 Harness
+      oh-my-pi 9.4K
+        终端 AI Agent
+      harness 5.1K
+        元技能系统
+    代码知识图谱
+      Understand-Anything 48.7K
+        +22.7K/week
+      codegraph 36.6K
+        +13.9K/week
+    Agent 治理安全
+      AGT 3.7K
+        OWASP Top 10
+      Cybersecurity Skills 13K
+        754 技能
+      Heretic 23K
+        审查移除
+</pre>
+<h2 id="1ai-agent">趋势 1：AI Agent 上下文压缩赛道浮现</h2>
+<p><strong>Headroom</strong> 本周 +1.5K 至 4.1K stars，是今天最值得注意的新项目。</p>
+<p>它解决的核心问题极其精准：AI Agent 在处理 tool output、日志、RAG 结果时，大量 Token 被浪费在冗余信息上。Headroom 提供 60-95% 的 Token 压缩，同时保持回答质量不变。</p>
+<p><strong>架构亮点：</strong>
+- <strong>三种接入模式</strong>：Library 内联、Proxy 透明代理、MCP Server — 适配任意 Agent 架构
+- <strong>CCR（可逆压缩）</strong>：原始数据不删除，LLM 按需 retrieve，这是关键差异化
+- <strong>ContentRouter</strong>：自动检测内容类型（JSON/代码/文本），选择对应压缩器
+- <strong>CacheAligner</strong>：稳定前缀使 Provider KV Cache 命中，这不仅是压缩，更是缓存优化</p>
+<p><strong>实测数据可信：</strong>
+- 代码搜索 92% Token 节省
+- SRE 事件调试 92% 节省
+- GSM8K/TruthfulQA 基准无精度损失</p>
+<p><strong>判断：</strong> 这是 Agent 基础设施层的关键组件。随着 Agent 处理的上下文越来越长，Token 优化会从「锦上添花」变成「必须」。建议持续跟踪，适合企业内部 PoC。</p>
+<p>与 Code Knowledge Graph（Understand-Anything/codegraph）形成互补：索引层减少搜索次数，压缩层减少每次搜索的 Token 消耗。</p>
+<h2 id="2tts">趋势 2：TTS 开源模型爆发</h2>
+<p>三个语音 AI 项目同时爆发：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>周增量</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VoxCPM</td>
+<td>24.2K</td>
+<td>+4.2K</td>
+<td>Tokenizer-Free 多语言 TTS</td>
+</tr>
+<tr>
+<td>MOSS-TTS</td>
+<td>2.8K</td>
+<td>+0.9K</td>
+<td>高保真长语音/多角色对话/环境音效</td>
+</tr>
+<tr>
+<td>dograh</td>
+<td>4.1K</td>
+<td>+1.3K</td>
+<td>Vapi/Retell 开源替代平台</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VoxCPM</strong> 是 OpenBMB 出品，Tokenizer-Free 是真创新：不用传统语音 Tokenizer，直接建模语音生成，意味着更自然的韵律和跨语言迁移。24K stars 说明市场需求强劲。</p>
+<p><strong>dograh</strong> 定位为 Vapi/Retell 自托管替代，关键特性：可视化工作流构建器、MCP 原生、电话集成。企业级语音 AI 部署的刚需。</p>
+<p><strong>判断：</strong> 语音 AI 开源生态正在快速追赶闭源 API。对企业架构师而言，dograh 值得 PoC（语音客服/内部助手），VoxCPM 值得技术评估。中期趋势。</p>
+<h2 id="3agent-harness">趋势 3：Agent Harness 深度竞争</h2>
+<p>ECC (202K)、oh-my-pi (9.4K)、harness (5.1K) 三个 Agent Harness 项目同时 Trending。</p>
+<p><strong>关键观察：</strong>
+- ECC 从 Claude Code 单一 Harness 扩展到跨 7 个 Harness（Claude Code/Codex/Cursor/OpenCode/Gemini/Zed/Copilot），v2.0 引入 Hermes operator，定位为「Harness 无关的 Agent 操作系统」
+- oh-my-pi 是终端原生 AI Coding Agent，hash-anchored edits + LSP + subagents，定位偏极客
+- harness 是元技能系统，能自动设计 Agent 团队、定义专业 Agent、生成所需技能</p>
+<p><strong>判断：</strong> Agent Harness 正从单一工具向平台化演进。ECC 的跨 Harness 策略最值得关注 — 如果 Harness 成为 Agent 的「操作系统」，那么跨 Harness 兼容层就是基础设施。但 ECC 202K stars 的增速和质量需要警惕泡沫（部分可能来自刷 star）。</p>
+<h2 id="4agent">趋势 4：Agent 治理与安全持续升温</h2>
+<p>Microsoft AGT (+1.6K/week) 和 Anthropic Cybersecurity Skills (13K) 持续走高，Heretic (23K) 审查移除工具本周 +1.4K。</p>
+<p>AGT 的核心价值是<strong>确定性拦截</strong>：不依赖 prompt 约束，而是在应用代码层面拦截所有 tool call/message/delegation，被拒绝的动作「结构性不可能」。</p>
+<p>这对企业 Agent 部署至关重要：
+- 金融/医疗行业的合规审计需要 tamper-evident 记录
+- 多 Agent 系统需要身份隔离和权限分级
+- OWASP Agentic Top 10 正在成为安全标准</p>
+<h2 id="5ai">趋势 5：AI 写作品质治理</h2>
+<p>stop-slop (8K) 和 taste-skill (30.9K) 本周合计 +14.5K stars。</p>
+<p>本质是 AI 生成内容的「去模板化」工具。taste-skill 30K stars 说明痛点很真实 — AI 生成的内容越来越同质化。但这类项目的长期价值有限，更多是当前 LLM 输出风格的临时解决方案。</p>
+<p><strong>判断：</strong> 短期热点。随着模型自身输出质量提升，这类工具的需求会下降。不作为持续跟踪项。</p>
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="top-1-headroom-agent">Top 1: Headroom — Agent 上下文压缩层</h3>
+<p><strong>它做什么：</strong> 在 Agent 和 LLM 之间插入压缩层，减少 60-95% Token 消耗。</p>
+<p><strong>为什么火：</strong> 触及了所有 Agent 开发者的真实痛点 — Token 成本和上下文窗口限制。多模式接入（Library/Proxy/MCP）让任何 Agent 都能用。</p>
+<p><strong>技术亮点：</strong>
+1. CCR 可逆压缩 — 原始数据本地存储，LLM 按需 retrieve，不丢信息
+2. ContentRouter — 自动识别 JSON/代码/文本，选最佳压缩策略
+3. CacheAligner — 优化 KV Cache 命中率，不仅压缩还提速
+4. SmartCrusher (JSON) / CodeCompressor (AST) / Kompress-base (文本) 三引擎</p>
+<p><strong>架构启发：</strong> Agent 系统的 Token 管理应该分层：索引层（codegraph）减少搜索范围 → 压缩层（Headroom）减少每次传输量 → 缓存层（CacheAligner）减少重复计算。</p>
+<p><strong>定位：</strong> 工具型 → 平台候选。如果能成为 Agent 与 LLM 之间的标准中间件，有基础设施潜力。</p>
+<p><strong>风险：</strong>
+- 压缩质量依赖内容类型识别准确性
+- 单人项目，工程成熟度待验证
+- LLM Provider 可能原生支持类似能力</p>
+<h3 id="top-2-voxcpm-tokenizer-free-tts">Top 2: VoxCPM — Tokenizer-Free 多语言 TTS</h3>
+<p><strong>它做什么：</strong> 不使用传统语音 Tokenizer 的端到端多语言语音生成模型。</p>
+<p><strong>为什么火：</strong> Tokenizer-Free 是 TTS 领域的真实创新，解决了传统方案韵律不自然、跨语言迁移难的问题。OpenBMB 出品有品牌背书。</p>
+<p><strong>技术亮点：</strong> Tokenizer-Free 架构意味着直接从文本到语音波形，跳过了传统 TTS 的中间 Token 表示，理论上能捕获更自然的语音特征。</p>
+<p><strong>定位：</strong> 生产可用级别。24K stars + OpenBMB 维护，适合实际部署评估。</p>
+<h3 id="top-3-microsoft-agt-agent">Top 3: Microsoft AGT — Agent 治理工具</h3>
+<p><strong>它做什么：</strong> 为自主 Agent 提供策略执行、零信任身份、执行沙箱、可靠性工程。</p>
+<p><strong>为什么火：</strong> 企业部署 Agent 的头号问题是安全和合规。AGT 直接覆盖 OWASP Agentic Top 10 全部 10 项，而且用确定性代码拦截而非 prompt 约束。</p>
+<p><strong>架构启发：</strong> Agent 安全应该分为两层：
+1. 模型层：prompt-based safety（概率性）
+2. 应用层：AGT-style 确定性拦截（结构性）</p>
+<p>只有两层叠加，才能达到企业级安全要求。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">🔴 泡沫信号</h3>
+<ul>
+<li><strong>ECC 202K stars</strong>：增速异常快，部分可能来自刷 star。代码质量和实际生产使用需要独立验证</li>
+<li><strong>taste-skill / stop-slop</strong>：30K+ stars 的 AI 写作品质工具，属于当前 LLM 输出风格的临时解药</li>
+</ul>
+<h3 id="_5">🟢 潜力信号</h3>
+<ul>
+<li><strong>Headroom</strong>：Token 压缩是 Agent 基础设施刚需，MCP 原生是正确方向</li>
+<li><strong>VoxCPM + dograh</strong>：语音 AI 开源栈正在完整化（模型 + 平台）</li>
+<li><strong>Microsoft AGT</strong>：企业 Agent 安全的缺失环节，有成为标准工具的潜力</li>
+</ul>
+<h2 id="_6">项目评分汇总</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度</th>
+<th>技术创新</th>
+<th>工程成熟</th>
+<th>架构启发</th>
+<th>落地潜力</th>
+<th>趋势概率</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>归类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headroom</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>9</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>61</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>VoxCPM</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>56</td>
+<td>生产可用</td>
+</tr>
+<tr>
+<td>AGT</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>62</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>Dograh</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>54</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>ECC</td>
+<td>9</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>55</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>Heretic</td>
+<td>8</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>35</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>AI Eng Scratch</td>
+<td>8</td>
+<td>4</td>
+<td>6</td>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>37</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>LiteParse</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>57</td>
+<td>生产可用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>本报告由 GitHub 趋势研究助理自动生成 | 数据来源：GitHub Trending + gh CLI | 2026-06-02</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

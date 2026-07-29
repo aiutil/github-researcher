@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hallmark | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="hallmark">Hallmark</h1>
+<h2 id="_1">一句话定位</h2>
+<p>反 AI-slop 设计 Skill——让 Claude Code/Cursor/Codex 生成的 UI 拒绝千篇一律的"AI 味"，通过 57 道 slop-test 门禁和 pre-emit 自批评确保设计质量。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>LLM 生成的 UI 普遍存在"AI-slop"问题：千篇一律的卡片布局、紫色渐变、居中 hero、相同的字体配对。开发者使用 AI 编程助手生成前端时，产出的页面看起来像同一个模板的颜色变体。Hallmark 解决的是"AI 生成 UI 的设计同质化"问题。</p>
+<h2 id="2026-07-14">为什么值得关注（2026-07-14）</h2>
+<p>5K⭐ 日增 802，Together AI 出品。核心创新不是"提供设计模板"，而是"建立质量门禁"——57 道反 slop 检测 + pre-emit 自批评机制，强制 AI 在输出前自我审查。支持四个动词：build（新建）、audit（审计已有代码）、redesign（重构）、study（从截图提取设计 DNA）。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>AI 生成 UI 的同质化是真实痛点——开发者普遍反馈"AI 做的网站都长一个样"</li>
+<li>Together AI 背书带来信任</li>
+<li>作为 Skill 分发，安装简单（<code>npx skills add nutlope/hallmark</code>）</li>
+<li>示例页面质量高（20 个主题展示），自举效果好</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>57 道 slop-test 门禁</strong>：检测 AI 生成 UI 的常见反模式（紫色渐变、居中 hero、卡片网格等）</li>
+<li><strong>pre-emit 自批评</strong>：在输出前 AI 先自我审查，不通过则重新生成</li>
+<li><strong>Custom 主题模式</strong>：当预设主题无法匹配时，从零生成定制设计（调色板/字体/布局）</li>
+<li><strong>Study 模式</strong>：从截图/URL 提取设计 DNA（宏观结构/字体配对/色彩锚点），生成可移植的 design.md</li>
+<li><strong>跨平台 Skill</strong>：支持 Claude Code、Cursor、Codex、Gemini CLI 等</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>Hallmark 代表了 Agent 质量保障的新范式：<strong>不是后处理修正，而是前置门禁</strong>。这种"pre-emit 自批评"模式可以推广到其他领域——代码质量、安全合规、内容审核都可以建立类似的"生成前门禁"。</p>
+<h2 id="_6">定位判断</h2>
+<p>在 Agent Skill 生态中，Hallmark 占据"设计质量守卫"的位置。它不生成内容，而是确保生成的内容达到设计标准。类似于编译器的 lint，但是面向设计审美。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>设计审美主观性强</strong>：57 道 slop-test 的标准来自少数人，可能不适合所有场景</li>
+<li><strong>依赖 LLM 的自批评</strong>：pre-emit 自批评本身也是 LLM 推理，可能被绕过</li>
+<li><strong>主题数量有限</strong>：20 个预设主题 + Custom 模式，长期来看可能不够</li>
+<li><strong>适用范围窄</strong>：目前主要针对营销页/落地页，复杂应用 UI 不适用</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>impeccable（46.3K⭐）</strong>：另一个设计语言 Skill，定位相似但更偏"设计系统"而非"反 slop"</li>
+<li><strong>facebook/astryx（8.7K⭐）</strong>：Meta 的开源设计系统，agent ready，更偏基础设施</li>
+<li><strong>archify（4.2K⭐）</strong>：架构图生成 Skill，不同赛道但同属 Agent Skill 生态</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> "生成前门禁"模式具有跨领域可复制性。如果 slop-test 框架被抽象为通用质量检测层，价值将远超设计领域。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>slop-test 是否会被抽象为通用的 AI 质量检测框架</li>
+<li>社区是否会贡献新的检测规则和主题</li>
+<li>study 模式的设计 DNA 提取是否真的能捕捉到优秀设计的精髓</li>
+<li>是否会有"Hallmark for Code"（反 AI-slop 代码质量版）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-07-14</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

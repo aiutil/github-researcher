@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nub | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/nubjs/nub" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="nub-nodejs-rust">Nub — Node.js Rust 工具链</h1>
+<blockquote>
+<p><strong>一句话定位：</strong> 用 Rust 编写的 Node.js 全能工具箱，在保持 stock Node.js runtime 不变的前提下，提供 Bun 式开发体验——24× 更快的脚本运行、19× 更快的 npx、2.5× 更快的包安装。</p>
+</blockquote>
+<h2 id="_1">解决的问题</h2>
+<p>Node.js 开发者工具链碎片化严重：运行 TS 需要 tsx/ts-node，运行脚本需要 npm/pnpm，执行临时包需要 npx，管理 Node 版本需要 nvm/fnm，管理包管理器需要 corepack。每个工具都有自己的安装、配置和学习成本。</p>
+<p>Bun 用一个二进制解决了这些问题，但代价是<strong>替换了整个 runtime</strong>——企业需要重新验证兼容性，风险高。Nub 的策略是：只替换工具链，不替换 runtime。</p>
+<h2 id="_2">为什么值得关注</h2>
+<ul>
+<li><strong>不替换 runtime</strong>：保持 stock Node.js 不变，企业 adoption 零风险</li>
+<li><strong>33 天 2.6K⭐</strong>：2026-06-03 创建，Rust 编写</li>
+<li><strong>性能数据亮眼</strong>：24× faster run、19× faster npx、2.5× faster install</li>
+<li><strong>一站式替代</strong>：node + tsx + npx + nodemon + nvm + corepack 一个工具搞定</li>
+<li><strong>多平台支持</strong>：macOS/Linux/Windows/Homebrew/Nix/mise/npm 全覆盖</li>
+<li><strong>GitHub Actions 兼容</strong>：<code>nubjs/setup-nub</code> 直接替代 <code>actions/setup-node</code></li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>Node.js 生态 Rust 化趋势（Deno/Bun/Nub 都在用底层语言重写）</li>
+<li>开发者对工具链速度的永恒追求</li>
+<li>colinhacks（Zod 作者）的影响力</li>
+<li>对 Bun 策略的差异化（不替换 runtime）</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Rust 核心</strong>：所有子命令用 Rust 实现，启动开销极低</li>
+<li><strong>透明 runtime 层</strong>：TS 文件直接通过 Node.js 运行，不做 runtime hack</li>
+<li><strong>Corepack shim</strong>：<code>nub pm shim</code> 自动配置 pnpm/yarn 等包管理器</li>
+<li><strong>内置版本管理</strong>：<code>nub node install 26</code> 替代 nvm，无需额外工具</li>
+<li><strong>Watch 模式</strong>：原生文件监听，替代 nodemon</li>
+</ol>
+<p><code>nub index.ts          # TS→JS 转译 + Node.js 运行（24× faster）
+nub run dev            # 脚本运行（24× faster than pnpm run）
+nubx prisma generate   # 临时包执行（19× faster than npx）
+nub install            # 包安装（2.5× faster than pnpm）
+nub watch src/server.ts # 文件监听 + 自动重启
+nub node install 26    # Node 版本管理
+nub pm shim            # 包管理器 shim</code></p>
+<h2 id="_5">架构启发</h2>
+<p>Nub 代表了一个重要趋势：<strong>JavaScript 工具链的 Rust/Zig 化已成定局</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>语言</th>
+<th>替换什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bun</td>
+<td>Zig</td>
+<td>Node.js runtime</td>
+</tr>
+<tr>
+<td>Deno</td>
+<td>Rust</td>
+<td>Node.js runtime</td>
+</tr>
+<tr>
+<td>Nub</td>
+<td>Rust</td>
+<td>Node.js 工具链（不替换 runtime）</td>
+</tr>
+<tr>
+<td>esbuild</td>
+<td>Go</td>
+<td>Webpack/Babel</td>
+</tr>
+<tr>
+<td>Turbopack</td>
+<td>Rust</td>
+<td>Webpack</td>
+</tr>
+<tr>
+<td>SWC</td>
+<td>Rust</td>
+<td>Babel</td>
+</tr>
+</tbody>
+</table>
+<p>Nub 的独特之处是找到了一个甜蜜点：<strong>用 Rust 加速工具链，但保留 Node.js runtime 的兼容性</strong>。这是企业最安全的加速路径。</p>
+<h2 id="_6">定位判断</h2>
+<ul>
+<li><strong>不是</strong>新 runtime（不做 JS 引擎）</li>
+<li><strong>不是</strong>包管理器替代品（调用底层 npm/pnpm）</li>
+<li><strong>是</strong>Node.js 开发者工具链的统一加速层</li>
+</ul>
+<p>定位：<strong>工具型</strong> — 优秀的开发者体验工具，企业 adoption 门槛极低。</p>
+<h2 id="_7">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>项目极早期</strong>（33 天）：生产稳定性未经验证</li>
+<li><strong>维护团队小</strong>：bus factor 风险</li>
+<li><strong>与 Node.js 生态耦合</strong>：Node.js 上游变更可能影响兼容性</li>
+<li><strong>竞争激烈</strong>：Bun 生态在扩展，pnpm 在加速，nx 等 monorepo 工具也在演进</li>
+<li><strong>性能数据需独立验证</strong>：24× 等数字可能基于特定场景</li>
+</ul>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>定位</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bun</td>
+<td>Zig runtime + 工具链</td>
+<td>竞争：Bun 替换 runtime，Nub 不替换</td>
+</tr>
+<tr>
+<td>pnpm</td>
+<td>包管理器</td>
+<td>Nub 内部调用 pnpm，是加速层而非替代</td>
+</tr>
+<tr>
+<td>tsx</td>
+<td>TS 运行器</td>
+<td>Nub 替代 tsx</td>
+</tr>
+<tr>
+<td>nvm/fnm</td>
+<td>Node 版本管理</td>
+<td>Nub 内置版本管理替代它们</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">评分</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>33 天 2.6K，Rust 语言吸引力</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>不替换 runtime 的加速策略是差异化亮点</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>33 天极早期，需更多生产验证</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>JS 工具链 Rust 化趋势的代表案例</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>不替换 runtime = 零兼容性风险</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>JS 工具链底层语言重写是确定趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>6</td>
+<td>工具链可以扩展（plugin 系统）</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>5</td>
+<td>工具层，不是基础设施层</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：55/80</strong></p>
+<p><strong>项目归类：工具型</strong></p>
+<p><strong>是否建议持续跟踪：是</strong> — JS 工具链 Rust 化趋势的重要数据点，关注生产环境稳定性反馈。</p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

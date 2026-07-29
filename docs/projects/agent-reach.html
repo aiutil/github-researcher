@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent-Reach | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="agent-reach">Agent-Reach</h1>
+<h2 id="_1">一句话定位</h2>
+<p>AI Agent 的互联网感知层——一个 CLI 聚合 Twitter/Reddit/YouTube/GitHub/Bilibili/XiaoHongShu 等 7+ 平台数据，零 API 费用。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>AI Agent 需要访问多个社交和内容平台的数据来做判断，但：
+- 官方 API 贵且覆盖不全
+- 每个平台 API 协议不同，集成成本高
+- 中文平台（Bilibili/XiaoHongShu）几乎无官方 API
+- Agent 需要结构化数据，而非给人看的 HTML</p>
+<p>Agent-Reach 用一个统一 CLI 解决了这些问题。</p>
+<h2 id="2026-06-27">为什么值得关注（2026-06-27 更新）</h2>
+<p>GitHub Trending 持续在榜，42,263⭐（日增 1,164），从 6 月 14 日的 38K 增长到 42K+。更重要的是它代表了 Agent 技术栈中"感知层"的独立——类似自动驾驶中的感知模块，Agent 感知层正在从 Agent 核心中分离出来成为独立组件。</p>
+<h3 id="2026-06-27_1">最近动态（2026-06-27）</h3>
+<ul>
+<li>平台覆盖扩展至 10+（新增 LinkedIn、V2EX、雪球、小宇宙播客）</li>
+<li>多后端路由架构成熟——B站 yt-dlp 被风控封死后自动切换 bili-cli，用户零操作</li>
+<li>新增 <code>agent-reach doctor</code> 自诊断系统</li>
+<li>安全模式 <code>--safe</code> + Dry Run <code>--dry-run</code> 支持</li>
+<li>设计理念明确为"能力层（capability layer）"定位</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>真实需求驱动</strong>：Agent 开发者确实需要多平台数据，这是刚需</li>
+<li><strong>零 API 费用</strong>降低了使用门槛，与收费 API 形成鲜明对比</li>
+<li><strong>中文平台覆盖</strong>（Bilibili/XiaoHongShu）打开了中文开发者市场</li>
+<li><strong>Claude Code / Cursor 生态红利</strong>：作为 Agent skill 分发</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>统一接口覆盖异构平台</strong>：10+ 平台用同一 CLI 接口（Web/YouTube/Twitter/Reddit/B站/小红书/GitHub/LinkedIn/V2EX/雪球/RSS/小宇宙），输出统一格式</li>
+<li><strong>多后端路由架构</strong>：每个平台有"首选 + 备选"后端，某个失效自动切换（2026-06 实例：B站 yt-dlp 被风控 412 封死 → 切换 bili-cli，用户零操作）</li>
+<li><strong>结构化输出</strong>：直接产出 Agent 可消费的 JSON/Markdown，无需二次解析</li>
+<li><strong>零 API 费用架构</strong>：全部开源工具，零付费 API</li>
+<li><strong>自诊断系统</strong>：<code>agent-reach doctor</code> 一条命令告诉你每个渠道的状态、当前走哪条路</li>
+<li><strong>能力层定位</strong>：不负责底层读取本身，负责选型 + 安装 + 体检 + 路由</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>Agent 技术栈正在分化出明确的"感知层"：
+- 传统爬虫 → 给人看的数据
+- Agent 感知层 → 给 Agent 消费的结构化数据</p>
+<p>这一分层与自动驾驶架构类似：Perception → Planning → Action。Agent-Reach 占据的就是 Perception 层位置。</p>
+<pre class="mermaid">flowchart LR
+    subgraph "Agent 技术栈"
+        P["感知层 Perception<br/>Agent-Reach / last30days-skill"]
+        PL["规划层 Planning<br/>LLM Core (GPT/Claude)"]
+        A["执行层 Action<br/>Tool calls / Code execution"]
+    end
+    P -->|"结构化数据"| PL
+    PL -->|"动作指令"| A
+    A -->|"执行结果"| PL
+</pre>
+<h2 id="_6">定位判断</h2>
+<ul>
+<li>基础设施候选：Agent 感知层的早期代表</li>
+<li>偏向工具型 → 基础设施型的过渡产品</li>
+<li>如果能加入缓存、调度、合规层，有成为 Agent 数据基础设施的潜力</li>
+</ul>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li>⚠️ <strong>反爬风险（高）</strong>：平台随时可能加强反爬，导致核心功能失效</li>
+<li>⚠️ <strong>合规灰区</strong>：大规模抓取可能违反平台 ToS，企业使用有法律风险</li>
+<li>⚠️ <strong>数据质量不稳定</strong>：无 API 保障的数据完整性和准确性</li>
+<li>⚠️ <strong>可持续性疑问</strong>：反爬与反反爬是长期军备竞赛，小团队难以持续投入</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs last30days-skill（41K⭐）</strong>：last30days 偏深度研究（30天聚合分析），Agent-Reach 偏广度爬取（实时多平台读取）。互补关系。</li>
+<li><strong>vs 传统爬虫框架（Scrapy/BeautifulSoup）</strong>：面向 Agent 消费 vs 面向人类消费，目标用户不同。</li>
+<li><strong>vs 官方 API</strong>：零成本 vs 合规保障，各有取舍。</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p>✅ 是。即使 Agent-Reach 本身受反爬限制，"Agent 感知层独立"这一趋势值得长期跟踪。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>反爬升级后的可用性变化——各平台封禁策略的响应</li>
+<li>是否引入合规层（如 API fallback、速率限制、ToS 检查）</li>
+<li>企业采用案例——是否有公司在生产环境使用</li>
+<li>是否有商业 API 产品从该项目孵化</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-14</em>
+<em>最近更新：2026-06-27 — stars 更新至 42K，平台扩展至 10+，多后端路由成熟，新增安全模式</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

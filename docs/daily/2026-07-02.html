@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-02 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-07-02-github">2026-07-02 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日趋势全景</h2>
+<pre class="mermaid">flowchart TB
+    subgraph Standard["Agent Skills 标准层（新基础设施）"]
+        AS[agentskills/agentskills<br/>开放规范]
+        NV[nvidia/skills]
+        MS[microsoft/skills]
+        GG[google/agents-cli]
+        VC[vercel-labs/skills]
+        OB[obra/superpowers<br/>方法论升级]
+    end
+    
+    subgraph IDE["Agent IDE / 编排层"]
+        ORC[stablyai/orca<br/>多 Agent ADE]
+        HRD[ogulancelik/herdr<br/>终端多路复用]
+        ECC[affaan-m/ECC<br/>harness 优化]
+        CPC[openai/codex-plugin-cc<br/>跨 Agent 桥接]
+    end
+    
+    subgraph Design["Agent 前端规范"]
+        AST[facebook/astryx<br/>Meta 设计系统]
+        DMD[google-labs-code/design.md<br/>DESIGN.md 规范]
+    end
+    
+    subgraph Data["Agent 数据/记忆层"]
+        AR[Panniantong/Agent-Reach<br/>48.9K 全互联网感知]
+        CGN[topoteretes/cognee<br/>26.5K Agent 记忆]
+        CBM[DeusData/codebase-memory-mcp<br/>24.4K 代码知识图谱]
+    end
+    
+    subgraph Sec["AI 安全/成本"]
+        STX[usestrix/strix<br/>31K AI 渗透测试]
+        CVM[JuliusBrussee/caveman<br/>79.8K token 压缩]
+        NMT[kunchenguid/no-mistakes<br/>4.8K git 防护]
+    end
+    
+    AS --> IDE
+    AS --> Design
+    AS --> Data
+    IDE --> Sec
+</pre>
+<h2 id="agent-skills-agent-92">趋势一：Agent Skills 正在成为 Agent 生态的"标准接口层"（92 分）</h2>
+<p><strong>核心事件：</strong> Anthropic 发起的 Agent Skills 开放规范正在被全行业采纳。</p>
+<p>今日 GitHub Trending 同时出现多个巨头发布的 Skills 仓库：
+- <strong>nvidia/skills</strong> (2,157⭐) — NVIDIA 发布的 AI Agent 技能集
+- <strong>microsoft/skills</strong> (2,655⭐) — Microsoft 的 Skills/MCP servers/Custom Agents
+- <strong>google/agents-cli</strong> (4,627⭐, 日+586) — Google 官方 Agent CLI + Skills
+- <strong>vercel-labs/skills</strong> (24,763⭐) — Vercel 的开源 Agent Skills 工具
+- <strong>agentskills/agentskills</strong> — 规范主仓库，定义 SKILL.md 标准格式</p>
+<p><strong>规范核心设计：</strong>
+1. 一个 Skill = 一个文件夹 + SKILL.md
+2. 三阶段渐进加载：Discovery（名称+描述）→ Activation（加载完整指令）→ Execution（执行+脚本）
+3. 跨产品复用——一次编写，Claude Code/Codex/Cursor/Copilot 等通用</p>
+<p><strong>obra/superpowers 将 Skills 升级为方法论：</strong> 不是简单的技能包，而是完整的软件开发流程——brainstorming → spec → plan → TDD → subagent-driven development。Agent 自动拆分任务、分派子 Agent、审查代码，可自主工作数小时。</p>
+<p><strong>架构师判断：</strong> Agent Skills 规范正在成为类似 npm/pip 的"技能包分发层"。这是 Agent 生态走向标准化的关键信号。当 NVIDIA/Microsoft/Google/Vercel/Anthropic 都采纳同一格式时，事实标准已经确立。</p>
+<h2 id="meta-astryxagent-ready-88">趋势二：Meta 开源 Astryx——Agent-Ready 设计系统（88 分）</h2>
+<p><strong>核心事件：</strong> Facebook 开源 Astryx 设计系统——Meta 内部 8 年打磨，驱动 13000+ 应用。</p>
+<p><strong>关键数据：</strong>
+- 150+ 可访问组件，StyleX 构建
+- 7 套预制主题（neutral/butter/chocolate/matcha/stone/gothic/y2k）
+- CLI 工具（组件文档/模板/脚手架/codemods）
+- Agent-ready：API+文档+CLI 统一设计，人和 AI 用同一套参考构建
+- 无构建插件依赖——预构建 CSS + 类型化 React 组件
+- swizzle 机制：组件源码可弹出至项目，完全拥有</p>
+<p><strong>与 design.md 的关系：</strong> google-labs-code/design.md（24.3K⭐，周+7.2K）定义了"如何向 Agent 描述设计系统"，是<strong>描述层</strong>。Astryx 直接提供组件库+CLI，是<strong>组件层</strong>。两者互补——design.md 告诉 Agent "应该长什么样"，Astryx 让 Agent "直接用这些组件构建"。</p>
+<h2 id="agent-ide-87">趋势三：Agent IDE 与编排层激战（87 分）</h2>
+<p><strong>Orca（10.8K⭐，周+3.5K）——多 Agent 并行 ADE：</strong>
+- 多 worktree 隔离——一个 prompt 扇出到 5 个 Agent 各自独立 worktree
+- Ghostty-class 终端 + WebGL 渲染 + 无限分屏
+- Design Mode——点击 UI 元素直接发送 HTML/CSS/截图到 Agent prompt
+- GitHub &amp; Linear 原生集成
+- SSH remote——远程 beefy box 上跑 Agent
+- Mobile companion——手机监控+发送后续指令
+- 支持 Claude Code/Codex/Grok/Cursor/Copilot/OpenCode/Pi 等 16+ Agent</p>
+<p><strong>herdr（9.9K⭐，周+2.4K）——Rust 终端 Agent 多路复用器：</strong> 轻量级方案，在终端中同时运行多个 Agent。</p>
+<p><strong>codex-plugin-cc（22.4K⭐）——跨 Agent 桥接：</strong> 让 Claude Code 调用 OpenAI Codex 进行代码审查或委托任务。Agent 互操作性开始出现。</p>
+<p><strong>ECC——Agent harness 性能优化系统：</strong> skills + instincts + memory + security + research-first development，针对 Claude Code/Codex/Cursor 等的统一性能层。</p>
+<p><strong>架构师判断：</strong> Agent 开发工具链正从"单 Agent CLI"进化为"多 Agent IDE"。Orca 代表了"重 IDE"路线（类 VS Code for Agents），herdr 代表了"轻终端"路线。两条路线的竞争才刚开始。</p>
+<h2 id="ai-85">趋势四：AI 安全与成本优化并行（85 分）</h2>
+<p><strong>strix 31K⭐（日+2,167）：</strong> AI 渗透测试 Agent 持续高增长，已从昨日的趋势延续。</p>
+<p><strong>caveman 79.8K⭐（日+866）：</strong> Claude Code skill 通过"caveman speak"压缩 65% token。看似搞笑，实则揭示了 LLM 推理的重要特性——模型不需要完整自然语言就能正确推理。这对 Agent 成本优化有深远启发。</p>
+<p><strong>no-mistakes 4.8K⭐（周+2.9K）：</strong> git push 防护门，AI 验证流水线全绿才放行。</p>
+<h2 id="agent-86">趋势五：Agent 数据层深化（86 分）</h2>
+<ul>
+<li><strong>Agent-Reach 48.9K⭐（周+8.8K）</strong> — 给 Agent 全互联网感知（Twitter/Reddit/YouTube/GitHub/Bilibili/XiaoHongShu），零 API 费用</li>
+<li><strong>cognee 26.5K⭐（周+5.2K）</strong> — 自托管 Agent 记忆平台，知识图谱+向量搜索</li>
+<li><strong>codebase-memory-mcp 24.4K⭐（周+4.9K）</strong> — 代码知识图谱，持续高增长</li>
+</ul>
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="facebookastryx-meta">🎨 facebook/astryx — Meta 设计系统开源</h3>
+<p><strong>它做什么：</strong> Meta 内部最大的设计系统，8 年打磨，驱动 13000+ 应用。150+ 可访问组件，StyleX 构建，agent-ready。</p>
+<p><strong>它为什么火：</strong>
+1. Meta 内部验证——13000+ 应用是极强的可信背书
+2. Agent-ready 不是噱头——CLI+API+文档统一设计，AI 和人用同一套工具
+3. 无构建插件——预构建 CSS + React 组件，零配置成本
+4. swizzle 机制独特——组件源码可弹出，不锁定用户</p>
+<p><strong>技术亮点：</strong>
+1. StyleX（Meta 的 CSS-in-JS）对消费者透明——可用 Tailwind/CSS Modules/原生 CSS 覆盖
+2. 主题=CSS 自定义属性覆盖——设计师无需 fork 即可定制
+3. 组件设计哲学："guidance over enforcement"——给能力而非设护栏
+4. CLI 与 AI 协同——组件文档/模板/脚手架/codemods 一体化</p>
+<p><strong>架构启发：</strong> Astryx 的"agent-ready"设计哲学值得学习——不是简单地在文档中加 AI 提示，而是从 API 设计、CLI 工具、文档结构三个维度统一考虑 AI 和人类的使用体验。</p>
+<p><strong>定位：</strong> 平台候选——有潜力成为 Agent 时代前端开发的默认组件库</p>
+<p><strong>风险：</strong>
+1. React 专享——Vue/Svelte 生态无法直接使用
+2. StyleX 虽然对消费者透明，但内部构建依赖 Meta 工具链
+3. 与 Ant Design/MUI/shadcn 竞争激烈，社区需要时间建立</p>
+<h3 id="agentskillsagentskills-agent-skills">📋 agentskills/agentskills — Agent Skills 开放规范</h3>
+<p><strong>它做什么：</strong> 定义 Agent Skills 的标准格式——一个文件夹 + SKILL.md，包含元数据+指令+脚本+资源。</p>
+<p><strong>为什么重要：</strong> 这是 Agent 生态的"HTTP 时刻"——当一个开放规范被多家巨头采纳时，网络效应启动。Skills 将成为 Agent 能力分发的标准单位。</p>
+<p><strong>架构启发：</strong> 三阶段渐进加载（Discovery → Activation → Execution）是精巧的 context 管理设计——只在需要时加载完整指令，大幅减少 token 消耗。</p>
+<h3 id="stablyaiorca-agent-ade">🐬 stablyai/orca — 多 Agent 并行 ADE</h3>
+<p><strong>它做什么：</strong> Agent Development Environment (ADE)，支持多 Agent 在隔离的 worktree 中并行工作，统一管理。</p>
+<p><strong>技术亮点：</strong>
+1. Worktree 隔离——一个 prompt 扇出到 N 个 Agent，各自独立 worktree，比较结果后 merge 最优解
+2. Design Mode——Chromium 窗口中点击 UI 元素，HTML/CSS/截图直接进入 Agent prompt
+3. Mobile companion——手机监控 Agent 完成状态，发送后续指令
+4. SSH worktree——远程高性能机器上运行 Agent
+5. Annotate AI Diffs——在 diff 行上注释，反馈给 Agent</p>
+<p><strong>架构启发：</strong> 从"单 Agent 执行"到"多 Agent 编排"的范式转移。Worktree 隔离+比较合并是解决 Agent 代码质量问题的重要模式。</p>
+<h3 id="openaicodex-plugin-cc-agent">🔌 openai/codex-plugin-cc — 跨 Agent 桥接</h3>
+<p><strong>它做什么：</strong> OpenAI 官方插件，让 Claude Code 调用 Codex 进行代码审查或委托任务。</p>
+<p><strong>意义：</strong> 这是 Agent 互操作性的早期信号。不同厂商的 Agent 开始能相互调用——这对 Agent 生态的去锁定位有深远意义。</p>
+<h3 id="googleagents-cli-google-agent-cli">☁️ google/agents-cli — Google 官方 Agent CLI</h3>
+<p><strong>它做什么：</strong> Google 官方 CLI 工具，帮助编码助手在 Google Cloud 上创建、评估、部署 AI Agent。</p>
+<p><strong>意义：</strong> Google 加入 Agent CLI 竞争。结合 nvidia/skills 和 microsoft/skills，巨头都在抢占 Agent 技能层。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ol>
+<li><strong>Agent Skills 标准化</strong>——开放规范被多巨头采纳，Agent 生态的"npm 时刻"正在到来</li>
+<li><strong>Meta 设计系统开源</strong>——Astryx+design.md 组合让 Agent 前端开发有了统一参考</li>
+<li><strong>多 Agent IDE 模式验证</strong>——Orca 的 worktree 并行模式可能成为标配</li>
+<li><strong>Agent 互操作起点</strong>——codex-plugin-cc 跨 Agent 桥接是去锁定化的早期信号</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>Skills 生态碎片化</strong>——每家巨头都有自己的 Skills 仓库，可能形成事实上的分裂</li>
+<li><strong>设计系统锁定</strong>——Astryx 虽开源但与 React+StyleX 深度绑定</li>
+<li><strong>Agent IDE 过度竞争</strong>——Orca/herdr/ECC/OpenClaude 等大量类似项目，市场可能快速洗牌</li>
+<li><strong>caveman 模式泡沫</strong>——token 压缩技巧虽有效但可能损害模型推理质量</li>
+</ol>
+<h2 id="_6">重点项目档案</h2>
+<h3 id="_7">新增项目档案</h3>
+<ul>
+<li>🎨 facebook/astryx — Meta 设计系统开源（agent-ready）</li>
+<li>📋 agentskills/agentskills — Agent Skills 开放规范</li>
+<li>🐬 stablyai/orca — 多 Agent 并行 ADE（如已有则更新）</li>
+<li>🔌 openai/codex-plugin-cc — 跨 Agent 桥接插件</li>
+<li>☁️ google/agents-cli — Google 官方 Agent CLI</li>
+</ul>
+<h3 id="_8">更新项目档案</h3>
+<ul>
+<li>🗡️ usestrix/strix — 31K（+6.9K since first tracked）</li>
+<li>🔀 diegosouzapw/OmniRoute — 10.1K（+2.8K）</li>
+<li>🧠 DeusData/codebase-memory-mcp — 24.4K（+5K since last tracked）</li>
+<li>🌐 Panniantong/Agent-Reach — 48.9K（+4.5K）</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

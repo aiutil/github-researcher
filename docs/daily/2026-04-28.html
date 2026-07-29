@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-04-28 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-04-28-github">2026-04-28 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日重点趋势</h2>
+<h3 id="1-moe-hy3-kimi-k26-score-85">1. 国产大模型 MoE 密集发布：Hy3 + Kimi K2.6 双雄并立（Score: 85）</h3>
+<p>这一周是中国大模型开源的集中爆发期。4 月 23 日腾讯发布 Hy3 Preview（295B MoE，21B 活跃参数），4 月 20 日月之暗面发布 Kimi K2.6（1T MoE，32B 活跃参数），两者都选择了 MoE 架构 + 开源路线，但定位不同：</p>
+<ul>
+<li><strong>Hy3 Preview</strong> 侧重通用能力 + Agent 任务，是腾讯重建训练基础设施后的首个交付物（90 天重建）</li>
+<li><strong>Kimi K2.6</strong> 狠抓 Agentic Coding——SWE-Bench Pro 58.6%，超过 GPT-5.4（57.7%）和 Claude Opus 4.6（53.4%），且支持 300 Agent Swarm 并行编排</li>
+</ul>
+<p><strong>架构师判断：</strong> MoE 已成为国产大模型的标准架构选择。核心逻辑是：<strong>用总参数量撑起能力天花板，用稀疏激活控制推理成本</strong>。对企业落地而言，21B-32B 活跃参数意味着可以用合理的 GPU 资源跑出接近前沿的效果。Kimi K2.6 的 Agent Swarm 能力尤其值得关注——300 个子 Agent 并行、4000 协调步，已经超出"单 Agent 补全"的范式。</p>
+<p><strong>关键信号：</strong>
+- Hy3 由前 OpenAI 研究员姚顺雨主导，90 天完成基础设施重建到模型交付
+- Kimi K2.6 的 SWE-Bench Pro 成绩首次让开源模型在这个核心指标上超过闭源模型
+- 两者都选择了 Modified MIT License，商业友好</p>
+<pre class="mermaid">graph TD
+    A[国产 MoE 大模型双雄] --> B[Hy3 Preview<br/>腾讯混元]
+    A --> C[Kimi K2.6<br/>月之暗面]
+    B --> D[295B 总参 / 21B 活跃]
+    B --> E[256K Context]
+    B --> F[Agent + 推理 + 编码]
+    C --> G[1T 总参 / 32B 活跃]
+    C --> H[300 Agent Swarm]
+    C --> I[SWE-Bench Pro 58.6%]
+    D --> J[推理成本可控]
+    G --> J
+    F --> K[企业落地潜力]
+    I --> K
+</pre>
+<h3 id="2-code-intelligence-mcp-nativegitnexus-28k-starsscore-82">2. Code Intelligence 走向 MCP-Native：GitNexus 28K+ Stars（Score: 82）</h3>
+<p>GitNexus 从 2025 年 8 月发布，到 2026 年 2 月病毒式传播后飙升至 28K+ stars。核心卖点：<strong>把代码仓库变成知识图谱，通过 MCP 协议暴露给 AI Agent</strong>。</p>
+<p>它解决的痛点极其精确：当前 AI Coding Agent（Claude Code、Cursor、Codex）都是"函数级编辑"——它们在改代码时看不到依赖链、调用链、执行流。GitNexus 把整个仓库索引成结构化图谱，让 Agent 获得"系统级视野"。</p>
+<p><strong>架构师判断：</strong> 这是一个典型的 <strong>AI 基础设施补丁</strong>。MCP 协议让 GitNexus 可以无缝接入 Claude Code、Cursor 等工具，而不需要改变 Agent 本身的架构。这种"侧补丁"模式是 AI 工具链演进中最务实的路径——不需要重写 Agent，只需要给它更好的上下文。</p>
+<p><strong>风险点：</strong> 零服务器架构虽然酷，但在大型 monorepo 上的性能尚未验证。Graph RAG 的查询精度和延迟也是未知数。</p>
+<h3 id="3-claude-code-skill-ppt-design-cad-score-79">3. Claude Code Skill 生态爆发：PPT / Design / CAD 全覆盖（Score: 79）</h3>
+<p>Claude Code 的 Skill 生态正在快速长出各种垂直能力：</p>
+<ul>
+<li><strong>guizang-ppt-skill</strong>（3.4K stars）：把 Prompt 变成横滑杂志风 HTML，10 种布局 + 5 种主题</li>
+<li><strong>huashu-design</strong>（8.3K stars）：HTML 原生设计 Skill，4 天破 8K</li>
+<li><strong>text-to-cad</strong>（940 stars）：开源 CAD 模型生成 Harness</li>
+<li><strong>gpt-image-2 生态</strong>：GPT-Image-2 的工业级提示词引擎和模板库</li>
+</ul>
+<p>这些 Skill 的共同特点是：<strong>用单一文件（通常是 HTML/CSS/JS）交付完整的垂直能力</strong>。这不是框架，不是 SDK，而是一种新的"AI 原生"交付形态。</p>
+<p><strong>架构师判断：</strong> Skill 正在成为 AI Agent 的"插件"标准。当前形态还很原始（基本上是 Prompt Template + 输出模板），但趋势明确——Agent 的能力边界不再由 Agent 框架决定，而由 Skill 生态决定。Andrej Karpathy Skills（93.8K stars）本身就是这个趋势的引爆点。</p>
+<h3 id="4-agent-harmonist-186-agentscore-76">4. Agent 编排协议化：Harmonist 零依赖 186 Agent（Score: 76）</h3>
+<p>Harmonist（741 stars）提出了一个有趣的定位：<strong>零运行时依赖 + 机械协议执行 + 186 Agent</strong>。它的核心思路是不依赖任何外部框架（LangChain、CrewAI 等），通过纯协议层编排大量 Agent。</p>
+<p>同日出现的 Mercury Agent（1.5K stars）也走了类似路线——"Soul-driven" Agent，内置权限控制、Token 预算、多渠道能力。</p>
+<p><strong>架构师判断：</strong> Agent 编排正在经历一个"去框架化"的阶段。早期是 LangChain/CrewAI 模式（重框架），现在趋势是<strong>协议定义 + 轻量实现</strong>。这与微服务从 Spring Cloud 到 Service Mesh 的演进路径类似。</p>
+<hr />
+<h2 id="_2">持续跟踪项目状态</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>上次 Stars</th>
+<th>今日 Stars</th>
+<th>变化</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>claw-code</td>
+<td>187.5K</td>
+<td>188.8K</td>
+<td>+1.3K</td>
+<td>稳定增长，增速放缓</td>
+</tr>
+<tr>
+<td>hermes-agent</td>
+<td>118K</td>
+<td>120.5K</td>
+<td>+2.5K</td>
+<td>持续增长</td>
+</tr>
+<tr>
+<td>andrej-karpathy-skills</td>
+<td>90.8K</td>
+<td>93.8K</td>
+<td>+3K</td>
+<td>Skill 生态核心资产</td>
+</tr>
+<tr>
+<td>oh-my-codex</td>
+<td>16K</td>
+<td>26.4K</td>
+<td>+10.4K</td>
+<td>强力增长</td>
+</tr>
+<tr>
+<td>Vaultwarden</td>
+<td>59K</td>
+<td>59.4K</td>
+<td>+400</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>VoxCPM2</td>
+<td>15K</td>
+<td>16.1K</td>
+<td>+1.1K</td>
+<td>稳定增长</td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>168K</td>
+<td>170.2K</td>
+<td>+2.2K</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">今日重点项目深度分析</h2>
+<h3 id="top-1-kimi-k26-agentic-coding">Top 1: Kimi K2.6 — 开源 Agentic Coding 的新标杆</h3>
+<p><strong>它是什么：</strong> 月之暗面（Moonshot AI）发布的 1T MoE 模型，32B 活跃参数，256K Context，核心能力是 Agentic Coding 和 Agent Swarm 编排。</p>
+<p><strong>它为什么火：</strong>
+1. SWE-Bench Pro 58.6%，首次开源模型超过 GPT-5.4（57.7%）和 Claude Opus 4.6（53.4%）
+2. 300 Agent Swarm 并行编排，4000 协调步——这不再是"单 Agent 补全"，而是"Agent 集群工程"
+3. 12 小时自主运行能力，适合处理大型长期任务
+4. Modified MIT License，商业友好</p>
+<p><strong>真正的技术亮点：</strong>
+- <strong>Agent Swarm 架构</strong>：不是单 Agent 循环调用工具，而是 300 个子 Agent 并行执行、协调、汇总
+- <strong>长 Horizon 执行</strong>：12 小时自主运行不中断，对任务规划和错误恢复要求极高
+- <strong>MoE 稀疏激活</strong>：1T 参数只激活 32B，推理成本控制在可接受范围</p>
+<p><strong>定位：</strong> 基础设施候选。如果 Agent Swarm 被验证可靠，它可能成为 Agentic Coding 的底座模型。</p>
+<h3 id="top-2-hy3-preview-90">Top 2: Hy3 Preview — 腾讯 90 天重建的答卷</h3>
+<p><strong>它是什么：</strong> 腾讯混元团队在重建训练基础设施后的首个模型。295B MoE，21B 活跃参数，256K Context。</p>
+<p><strong>架构师视角的关键信息：</strong>
+- 前期由前 OpenAI 研究员姚顺雨主导
+- 2026 年 2 月拆毁旧基础设施重建，90 天交付——这个速度本身就是工程能力的证明
+- 侧重复杂推理、指令遵循、上下文学习、编码、Agent 任务
+- RMB 1.2/M input token 的定价，成本竞争力强</p>
+<p><strong>当前局限：</strong> GitHub 只有 262 stars，说明模型刚刚发布，社区接受度尚未验证。但腾讯生态内的集成（微信、QQ、腾讯云）是它的天然优势。</p>
+<h3 id="top-3-gitnexus-ai-agent">Top 3: GitNexus — AI Agent 的"代码透视镜"</h3>
+<p><strong>它是什么：</strong> 浏览器端运行的代码知识图谱引擎，把仓库索引成结构化图谱，通过 MCP 暴露给 AI Agent。</p>
+<p><strong>关键价值：</strong>
+- 解决了 AI Agent "只见函数，不见系统" 的核心缺陷
+- MCP 协议让它可以无侵入地接入 Claude Code、Cursor、Codex
+- 零服务器——全部在浏览器端运行，数据不离开本地</p>
+<p><strong>评分：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>持续增长，非一次性爆发</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>Graph RAG + MCP + Zero-Server 组合独特</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>大型 monorepo 性能未验证</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>"侧补丁"模式对 AI 工具链演进有启发</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>7</td>
+<td>MCP 集成降低了接入门槛</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>Code Intelligence 是 Agent 的刚需</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>MCP 协议是平台化基础</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>8</td>
+<td>可能成为 Agent 的标准"眼睛"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：61/80 | 归类：基础设施候选 | 建议持续跟踪</strong></p>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">🔴 本日风险信号</h3>
+<ol>
+<li><strong>Skill 生态的"馒头效应"</strong>：Claude Code Skill 正在快速涌现，但大部分是 Prompt Template 包装，真正的工程创新稀少。guizang-ppt-skill 和 huashu-design 本质上是 HTML 模板 + Prompt，技术壁垒极低。</li>
+<li><strong>MoE 模型推理成本的不确定性</strong>：虽然稀疏激活降低了单次推理成本，但 300 Agent Swarm 的总成本可能远超预期。Agent Swarm 的经济模型尚未被验证。</li>
+</ol>
+<h3 id="_6">🟢 本日机遇信号</h3>
+<ol>
+<li><strong>MCP 协议正在成为 Agent 工具链的标准接口</strong>：GitNexus、MemPalace 等项目都选择了 MCP 集成，这意味着 MCP 可能成为 Agent 生态的"USB 接口"。</li>
+<li><strong>国产 MoE 模型的企业落地窗口</strong>：Hy3 和 Kimi K2.6 都选择了 Modified MIT License + 低定价策略，企业落地成本极低。窗口期可能只有 3-6 个月。</li>
+</ol>
+<hr />
+<h2 id="_7">重点项目评分汇总</h2>
+<h3 id="kimi-k26">Kimi K2.6</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>SWE-Bench Pro 登顶 + 900% 搜索增速</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>9</td>
+<td>300 Agent Swarm 是真正的架构创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>GA 发布一周，API 稳定性待验证</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>Agent Swarm 可能改变 Coding Agent 范式</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>Modified MIT + 低成本 + API 可用</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>Agentic Coding 是确定趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>需要生态支撑</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>9</td>
+<td>可能成为 Agent Swarm 的标准底座</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：66/80 | 归类：基础设施候选 | 建议持续跟踪 + PoC 评估</strong></p>
+<h3 id="hy3-preview">Hy3 Preview</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>5</td>
+<td>刚发布，GitHub 262 stars</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>90 天基础设施重建是工程亮点</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>5</td>
+<td>Preview 阶段</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>7</td>
+<td>MoE + Agent 任务的训练方法论</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>腾讯生态 + 低定价 + MIT License</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>腾讯投入 + 姚顺雨团队</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>6</td>
+<td>需要社区验证</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>7</td>
+<td>21B 活跃参数适合私有部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分：52/80 | 归类：观察型 | 建议持续跟踪，等待社区验证</strong></p>
+<hr />
+<h2 id="_8">昨日回顾提醒</h2>
+<p>2026-04-27 日报中最值得补看的内容：<strong>MemPalace（49.8K stars）</strong>——AI Memory 系统的领跑者，如果你正在评估 Agent 的持久记忆层方案，值得一看。</p>
+<hr />
+<p><em>本报告基于 GitHub Trending 数据、gh API 查询、以及多个开源趋势追踪平台综合分析。数据获取时间：2026-04-28 06:00 CST。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

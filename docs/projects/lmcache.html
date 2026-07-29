@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMCache | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/LMCache/LMCache" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="lmcache">LMCache</h1>
+<h2 id="_1">一句话定位</h2>
+<p>LLM 推理的 KV Cache 加速层——将注意力计算的中间结果（Key-Value Cache）从推理引擎中解耦，实现跨请求缓存复用，大幅提升推理吞吐。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>LLM 推理的核心瓶颈之一是 KV Cache 的内存占用和重复计算。同一个 system prompt + few-shot 上下文在不同请求中被重复计算成百上千次。PagedAttention（vLLM）解决了单次推理内的内存碎片问题，但跨请求的缓存复用仍是空白。LMCache 填补的就是这个空白。</p>
+<p>目标用户：LLM 推理服务提供方、企业 AI 平台团队、MaaS 运营商。</p>
+<h2 id="2026-06-15">为什么值得关注（2026-06-15）</h2>
+<p>本周 GitHub Python 周榜上榜，9,043 stars 且增速稳定。在上下文工程工具链（headroom 压缩 + turbovec 索引 + LMCache 缓存）三位一体中担任缓存层角色。KV Cache 管理是 vLLM/PagedAttention 之后推理优化的下一个前沿。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>真实需求驱动。LLM 推理成本是企业落地的核心障碍。KV Cache 复用可以直接降低 GPU 占用和推理延迟，ROI 明确。vLLM 生态的扩展为这类项目提供了天然的集成入口。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>跨请求 KV Cache 复用</strong>：相同前缀（system prompt、few-shot 模板）的 KV Cache 计算一次、复用多次</li>
+<li><strong>vLLM 生态集成</strong>：与 PagedAttention 兼容，可作为 vLLM 的扩展模块使用</li>
+<li><strong>多层级缓存策略</strong>：GPU 内存 → CPU 内存 → 分布式存储，按延迟/成本分层</li>
+<li><strong>Prefix Caching 优化</strong>：自动检测输入前缀匹配，避免重复计算</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>缓存层的解耦是推理基础设施成熟化的标志。从 GPU 内存 → 进程内缓存 → 跨进程缓存 → 分布式缓存，这个层次结构与 CPU 缓存（L1→L2→L3→RAM）的演进如出一辙。推理引擎不再需要自己管理所有缓存逻辑，而是可以依赖独立的缓存层。</p>
+<pre class="mermaid">flowchart TD
+    A[推理请求] --> B{KV Cache 命中?}
+    B -- 命中 --> C[直接复用缓存]
+    B -- 未命中 --> D[计算 KV Cache]
+    D --> E[存入 LMCache]
+    E --> F[执行推理]
+    C --> F
+    F --> G[返回结果]
+    G --> H[更新缓存元数据]
+</pre>
+<h2 id="_6">定位判断</h2>
+<p>LLM 推理基础设施栈中的缓存层。类比数据库生态中的 Redis——不是必需，但在规模化场景下是刚需。当前处于从"vLLM 插件"向"独立缓存基础设施"演进的关键期。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>vLLM 强依赖</strong>：与 vLLM 深度绑定，如果 vLLM 内置了类似功能（如 vLLM 已在开发 prefix caching），项目价值会被稀释</li>
+<li><strong>缓存失效复杂性</strong>：模型版本更新、tokenizer 变更都会导致缓存全部失效，管理复杂度高</li>
+<li><strong>收益场景有限</strong>：KV Cache 复用的收益主要在多请求共享相同前缀的场景（如 RAG、Agent system prompt），对于完全不同的请求收益有限</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vLLM (PagedAttention)</strong>：互补关系，vLLM 管理单次推理的内存碎片，LMCache 管理跨请求的缓存复用</li>
+<li><strong>TensorRT-LLM</strong>：NVIDIA 的推理引擎内置了 KV Cache 管理，但非开源生态</li>
+<li><strong>SGLang</strong>：另一条推理优化路线（RadixAttention），与 LMCache 的缓存策略不同但目标一致</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> KV Cache 管理是 LLM 推理优化的核心赛道，LMCache 代表了缓存层独立化的早期尝试。如果 vLLM 不内置等效功能，LMCache 有潜力成为推理栈的标准组件。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>vLLM 是否在核心代码中内置 prefix caching，以及 LMCache 的应对策略</li>
+<li>大规模生产环境的 benchmark 数据（当前主要是小规模测试）</li>
+<li>是否支持 TensorRT-LLM、SGLang 等其他推理引擎</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-15</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

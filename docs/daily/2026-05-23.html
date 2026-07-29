@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-23 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-23-github">2026-05-23 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日概览</h2>
+<p>GitHub 本周趋势出现一个<strong>重要拐点信号</strong>：Agent 工具链开始<strong>向下兼容小模型</strong>。</p>
+<p>此前 Agent 工具（Claude Code、Codex、OpenCode）均假设用户拥有前沿大模型（128K+ 上下文、可靠 tool calling）。SmallCode 的出现标志着 Agent 工具链开始为 8B-35B 本地模型做适配。与此同时，HRM-Text 展示了 $1000 即可预训练基础模型的可能性。</p>
+<p>三个核心信号：
+1. <strong>小模型 Agent 工具链觉醒</strong>：SmallCode 针对 8B-35B 的专项优化，从上下文管理到 tool calling 格式容错，是对当前 Agent 工具链假设的根本性挑战
+2. <strong>Agent 安全双线突破</strong>：audit（攻击视角）和 Bumblebee（防御视角）同时出现，Agent 正在成为安全领域的基础能力
+3. <strong>团队级 Agent 基础设施</strong>：Centaur（Paradigm 出品）将 Agent 从个人工具升级为团队共享资源</p>
+<hr />
+<h2 id="agent">趋势一：小模型 Agent 工具链觉醒</h2>
+<p>这是今天最值得关注的趋势。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>核心创新</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmallCode</td>
+<td>1.2K</td>
+<td>专为 8B-35B 优化：budget-managed 上下文、forgiving tool calling、search-and-replace patch</td>
+</tr>
+<tr>
+<td>HRM-Text</td>
+<td>650</td>
+<td>层级循环架构，$1000 预训练 1B 模型，GSM8k 84.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SmallCode 的关键设计决策：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>前沿模型 Agent（OpenCode 等）</th>
+<th>SmallCode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上下文</td>
+<td>全量灌入</td>
+<td>Budget-managed，自动摘要</td>
+</tr>
+<tr>
+<td>Tool calling</td>
+<td>假设可靠 JSON</td>
+<td>多格式容错解析</td>
+</tr>
+<tr>
+<td>规划</td>
+<td>单次规划</td>
+<td>TODO-file 分步分解</td>
+</tr>
+<tr>
+<td>编辑</td>
+<td>全文件写入</td>
+<td>search-and-replace 补丁</td>
+</tr>
+<tr>
+<td>隐私</td>
+<td>依赖云端 API</td>
+<td>完全本地，无需网络</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断：</strong>
+- 当前所有主流编码 Agent 都假设用户有 Claude/GPT-5 级别模型，这是一个<strong>巨大的市场盲区</strong>
+- 8B-35B 模型（Qwen、Llama、Mistral 等）在消费级硬件上完全可运行，但缺乏配套工具
+- SmallCode 如果能证明「小模型 + 好工具 &gt; 大模型 + 通用工具」，将改变 Agent 工具链的设计范式</p>
+<p><strong>架构师视角：</strong> 小模型 Agent 不是降级方案，而是<strong>不同场景的正确选择</strong>。对于私有化部署、离线环境、成本敏感场景，小模型 Agent 才是正解。企业内部应该关注这个方向。</p>
+<hr />
+<h2 id="agent_1">趋势二：Agent 安全双线突破</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>视角</th>
+<th>核心能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>evilsocket/audit</td>
+<td>433</td>
+<td>攻击</td>
+<td>8 阶段漏洞发现，多窄 Agent 并行</td>
+</tr>
+<tr>
+<td>Perplexity/Bumblebee</td>
+<td>251</td>
+<td>防御</td>
+<td>供应链元数据扫描，只读 inventory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>audit（攻击视角）：</strong>
+- 基于 Cloudflare Project Glasswing 论文的完整实现
+- 8 阶段流水线：Recon → Hunt → Triage → Disprove → Reachability → Feedback → Report → Summary
+- 核心创新：<strong>故意反对</strong>（Disprove 阶段用不同模型反驳发现）+ <strong>可达性门控</strong>（只保留攻击者可达的漏洞）
+- 由 evilsocket（知名安全研究员，goSecure 作者）开发</p>
+<p><strong>Bumblebee（防御视角）：</strong>
+- Perplexity 出品，Go 单二进制，零外部依赖
+- 覆盖 npm/pnpm/yarn/bun/pypi/go/rubygems/composer/MCP/编辑器扩展/浏览器扩展
+- 专门为<strong>供应链应急响应</strong>设计：当 CVE 发布时，快速扫描开发者设备上哪些包受影响
+- 首次将 MCP 配置文件纳入扫描范围</p>
+<p><strong>架构师视角：</strong> Agent 安全是一个双向能力。用 Agent 发现漏洞（audit）和用 Agent 防御攻击（Bumblebee）正在形成闭环。对于企业安全团队，Bumblebee 的 MCP 扫描能力特别值得关注 — MCP 配置中可能暴露凭证。</p>
+<hr />
+<h2 id="agent-centaur">趋势三：团队级 Agent 基础设施 — Centaur</h2>
+<p><strong>paradigmxyz/centaur</strong> 364⭐，Paradigm（知名 crypto VC）出品。</p>
+<p>核心能力：
+- <strong>Slack 原生交互</strong>：在 Slack 中 @bot 即可启动对话
+- <strong>K8s 沙箱隔离</strong>：每个对话一个独立沙箱，预装 Python/Node/Bun/常用开发工具
+- <strong>Bring your own harness</strong>：支持 Amp、Claude Code、Codex 等多种 Agent harness
+- <strong>共享工具</strong>：一次添加 Python 工具插件，所有对话可用
+- <strong>持久工作流</strong>：支持 sleep/resume/等待事件/启动子 Agent/服务重启不丢失
+- <strong>凭证边界</strong>：Agent 可使用已批准服务，但不直接持有 API key</p>
+<p><strong>判断：</strong>
+- 当前大多数 Agent 工具是<strong>个人级</strong>的，Centaur 瞄准的是<strong>团队级</strong>共享
+- K8s 沙箱 + 凭证边界是企业最关心的两个问题
+- 「Bring your own harness」设计很聪明 — 不重新造轮子，而是让团队共享已有的 Agent</p>
+<p><strong>架构师视角：</strong> 企业内部 Agent 平台的方向就该是这样 — 不是造一个新 Agent，而是让团队安全地共享 Agent 能力。Centaur 的 K8s 沙箱 + 凭证边界设计值得企业参考。</p>
+<hr />
+<h2 id="agent-harness">趋势四：Agent Harness 赛道格局锁定</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>趋势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECC</td>
+<td>188.5K</td>
+<td>稳定增长，Agent Harness 性能优化系统</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td>164K</td>
+<td>开源编码 Agent，5997 open issues</td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>163K</td>
+<td>NousResearch 出品，「与你一起成长的 Agent」</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>125.8K</td>
+<td>Anthropic 官方</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>84.7K</td>
+<td>OpenAI 官方</td>
+</tr>
+<tr>
+<td>cc-switch</td>
+<td>78.2K</td>
+<td>跨平台 Agent 桌面助手</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断：</strong>
+- Agent Harness 赛道 Top 6 格局已基本锁定
+- ECC 以 188.5K 领跑，但 OpenCode 和 Hermes 紧随其后
+- 值得注意的是 <strong>OpenCode 的 5997 open issues</strong> — 增长快但维护压力大
+- cc-switch 作为「Agent 管理器」定位独特</p>
+<hr />
+<h2 id="claude-skills">趋势五：Claude Skills 生态持续细分</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9arm-skills</td>
+<td>1.5K</td>
+<td>通用技能集合（工程/生产力/调试/审查）</td>
+</tr>
+<tr>
+<td>PaperSpine</td>
+<td>428</td>
+<td>论文学习技能（阅读→论证→改写）</td>
+</tr>
+<tr>
+<td>datawhalechina/Agent-Learning-Hub</td>
+<td>1.1K</td>
+<td>Agent 学习路线与资料库</td>
+</tr>
+</tbody>
+</table>
+<p>Skills 正在按职能垂直细分，从通用编码扩展到学术研究、论文学习等专门领域。</p>
+<hr />
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="1-smallcode-agent">1. SmallCode — 小模型编码 Agent 的正确姿势</h3>
+<p><strong>做什么：</strong> 专为 8B-35B 参数模型设计的终端编码 Agent。</p>
+<p><strong>为什么火：</strong> 填补了 Agent 工具链的巨大空白 — 所有现有 Agent 都假设你有前沿模型。</p>
+<p><strong>技术亮点：</strong>
+- <strong>Budget-managed 上下文</strong>：不把所有代码灌入上下文，而是按需加载并自动摘要
+- <strong>Forgiving tool calling</strong>：小模型不总能输出合法 JSON，SmallCode 用多格式解析器容错
+- <strong>TODO-file 分步规划</strong>：将大任务分解为 TODO 文件中的小步骤
+- <strong>Search-and-replace patch</strong>：不做全文件重写，用精确搜索替换</p>
+<p><strong>定位判断：</strong> 工具型，短期是学习型，但有可能演化为<strong>平台候选</strong> — 如果小模型 Agent 生态爆发，SmallCode 会成为标准工具。</p>
+<p><strong>风险：</strong>
+- 1.2K stars 还很早期
+- 小模型能力上限决定了工具能做的事有限
+- 87% benchmark 声称值需要验证</p>
+<h3 id="2-centaur-agent">2. Centaur — 团队共享 Agent 平台</h3>
+<p><strong>做什么：</strong> 让团队通过 Slack 共享一个 Agent，Agent 在 K8s 沙箱中执行任务。</p>
+<p><strong>为什么值得关注：</strong>
+- 解决了企业最关心的两个问题：<strong>安全隔离</strong>（K8s 沙箱）和<strong>凭证管理</strong>（Agent 不持有 raw key）
+- 「Bring your own harness」设计避免了重新造轮子
+- 持久工作流支持 sleep/resume，适合长时间运行的任务</p>
+<p><strong>定位判断：</strong> 基础设施候选。如果企业要部署团队级 Agent，Centaur 的架构值得参考。</p>
+<p><strong>风险：</strong>
+- 364 stars 非常早期
+- Paradigm 是 crypto VC，crypto 行业有特殊性
+- K8s 沙箱的资源消耗和启动延迟</p>
+<h3 id="3-audit-agent">3. audit — 漏洞发现 Agent</h3>
+<p><strong>做什么：</strong> 8 阶段漏洞发现 Agent，基于 Cloudflare Project Glasswing 论文。</p>
+<p><strong>为什么值得关注：</strong>
+- 「多窄 Agent 并行」+「故意反对」+「可达性门控」三重设计
+- evilsocket 是知名安全研究员，项目质量有保障
+- 直接利用 Claude Pro/Max 订阅，无需额外 API key</p>
+<p><strong>架构启发：</strong> 这展示了 Agent 在安全领域的正确使用方式 — 不是一个大 Agent 啥都干，而是多个窄 Agent 各自负责一个环节，最后汇总。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">风险</h3>
+<ul>
+<li><strong>SmallCode</strong> 声称 87% benchmark 但仅 1.2K stars，可能存在 cherry-picking</li>
+<li><strong>Centaur</strong> 出自 crypto VC，可能有行业特定设计，通用性待验证</li>
+<li><strong>HRM-Text</strong> $1000 预训练的前提是 8-16 张 H100，对大多数组织不现实</li>
+</ul>
+<h3 id="_5">机遇</h3>
+<ul>
+<li>小模型 Agent 工具链是<strong>蓝海</strong> — 当前几乎无人关注</li>
+<li>Agent 安全（audit + Bumblebee）正在形成独立赛道</li>
+<li>团队级 Agent 平台（Centaur）解决了企业部署的核心痛点</li>
+</ul>
+<hr />
+<h2 id="_6">项目评分汇总</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度</th>
+<th>技术创新</th>
+<th>工程成熟度</th>
+<th>架构启发</th>
+<th>企业落地</th>
+<th>趋势概率</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>归类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmallCode</td>
+<td>5</td>
+<td>9</td>
+<td>6</td>
+<td>9</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td>5</td>
+<td>57/80</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>Centaur</td>
+<td>4</td>
+<td>7</td>
+<td>5</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>56/80</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>audit</td>
+<td>5</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td>4</td>
+<td>49/80</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>HRM-Text</td>
+<td>5</td>
+<td>9</td>
+<td>5</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>3</td>
+<td>3</td>
+<td>44/80</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>Bumblebee</td>
+<td>3</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>4</td>
+<td>6</td>
+<td>47/80</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>9arm-skills</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>2</td>
+<td>31/80</td>
+<td>学习型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li><a href="projects/smallcode.md">SmallCode</a> — 小模型编码 Agent ⭐建议持续跟踪</li>
+<li><a href="projects/centaur.md">Centaur</a> — 团队共享 Agent 平台 ⭐建议持续跟踪</li>
+<li><a href="projects/audit-evilsocket.md">audit</a> — 8 阶段漏洞发现 Agent ⭐值得关注</li>
+<li><a href="projects/hrm-text.md">HRM-Text</a> — $1000 预训练基础模型</li>
+<li><a href="projects/bumblebee-perplexity.md">Bumblebee</a> — 供应链安全扫描</li>
+<li><a href="projects/9arm-skills.md">9arm-skills</a> — Claude Code 技能集合</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

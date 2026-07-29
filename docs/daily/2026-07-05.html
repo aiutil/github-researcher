@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-05 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-07-05-github">2026-07-05 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p>今天 GitHub 趋势最重大的信号是 <strong>代码智能层正在 MCP 化并爆发</strong>。<code>codebase-memory-mcp</code> 以周 +10.2K stars 成为本周增速最快的项目之一，它不是又一个 code search 工具——它代表了一种范式转换：<strong>从"Agent 读文件"到"Agent 查图谱"</strong>。</p>
+<p>与此同时，Agent 应用层正在突破纯代码/文本边界。<code>OpenMontage</code>（33K⭐）和 <code>video-use</code>（14.7K⭐）表明 Agent 正在进入多媒体生产领域。</p>
+<h2 id="_2">今日五大趋势</h2>
+<h3 id="1-mcp-92">趋势 1：代码智能 MCP 爆发（92 分）</h3>
+<p><strong>DeusData/codebase-memory-mcp</strong> 26.1K⭐（周 +10.2K，今日 Trending #6 全球）</p>
+<p>核心数据：
+- C 语言编写，单静态二进制，零运行时依赖
+- tree-sitter AST 解析 158 种语言
+- Hybrid LSP 语义类型解析（Python/TS/JS/Go/C++/Java/Kotlin/Rust 等）
+- 持久化知识图谱：函数、类、调用链、HTTP 路由、跨服务链接
+- 亚毫秒级结构化查询（&lt;1ms）
+- token 缩减 99%（5 次结构化查询 ≈3,400 tokens vs 文件搜索 ≈412,000 tokens）
+- Linux 内核（28M LOC/75K 文件）3 分钟完成索引
+- 14 个 MCP 工具 + 3D 图谱可视化
+- 自动检测并配置 11 种 Coding Agent
+- arXiv 论文背书（2603.27277）：31 个真实仓库评测 83% 回答质量</p>
+<p>架构启发：<strong>知识图谱 + MCP 是 Agent 理解大型代码库的最优路径</strong>。当前主流方案（grep+read 循环）在大仓库中 token 消耗巨大且理解碎片化。codebase-memory-mcp 的思路——预处理构建持久化图谱，查询时返回精确子图——本质上是把编译器前端的语义分析能力开放给 Agent。</p>
+<h3 id="2agent-87">趋势 2：Agent 视频生产系统崛起（87 分）</h3>
+<p><strong>calesthio/OpenMontage</strong> 33K⭐（周 +9.2K）— 12 pipeline/52 tool/500+ agent skill 的开源 Agent 视频生产系统。把 Coding Agent 变成完整视频工作室。</p>
+<p><strong>browser-use/video-use</strong> 14.7K⭐（周 +4.1K）— 让 Coding Agent 编辑视频。</p>
+<p>判断：Agent 应用层正在从代码/文本扩展到多媒体生产。这是一个重要信号——当 Agent 工具链开始覆盖视频创作工作流，意味着 Agent 基础设施（MCP/沙箱/编排）已经足够成熟，可以支撑复杂的非线性创作任务。</p>
+<h3 id="3-agent-ready-86">趋势 3：前端 Agent-Ready 设计系统（86 分）</h3>
+<p><strong>facebook/astryx</strong> 5.3K⭐（日 +1,013，TS 榜首）— Meta 8 年内部设计系统开源。</p>
+<p>关键差异化：
+- 不是又一套 UI 库，而是 <strong>为人+Agent 共用设计</strong>的系统
+- API + docs + CLI 一体化，AI 和人从同一参考构建
+- swizzle 源码导出，无 styling lock-in
+- 150+ 组件，7 套主题
+- 已在 Meta 内部驱动 13,000+ 应用</p>
+<h3 id="4agent-85">趋势 4：Agent 终端多路复用成熟化（85 分）</h3>
+<p><strong>ogulcancelik/herdr</strong> 11.4K⭐（日 +706，周 +3K）— tmux-for-agents。</p>
+<p>与昨日对比数据：
+- 7/4: 10.7K⭐ 日 +513
+- 7/5: 11.4K⭐ 日 +706</p>
+<p>增速在加快。herdr 证明 Agent fleet 管理需要原生终端基础设施，而非凑合用 tmux + hooks。</p>
+<h3 id="583">趋势 5：安全+隐私双线并进（83 分）</h3>
+<ul>
+<li><strong>strix</strong> 35.9K⭐（日 +1,910）AI 渗透测试持续高位</li>
+<li><strong>meetily</strong> 隐私优先本地会议助手（Rust + Parakeet/Whisper + Ollama，100% 本地处理）</li>
+<li><strong>system_prompts_leaks</strong> 48.8K⭐ 系统 prompt 泄露合集</li>
+</ul>
+<p>安全从攻击模拟（strix）→ 隐私保护（meetily）→ prompt 审计（leaks）全链条发酵。</p>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="1-deusdatacodebase-memory-mcp-26117-score-92">1. DeusData/codebase-memory-mcp — ⭐ 26,117 | Score: 92</h3>
+<p><strong>它做什么</strong>：高性能代码智能 MCP 服务器，将代码库索引为持久化知识图谱，支持亚毫秒级结构化查询。</p>
+<p><strong>为什么火</strong>：解决了 Agent 理解大型代码库的核心痛点——token 消耗和上下文碎片化。99% 的 token 缩减不是营销数字，而是实际可验证的工程价值。</p>
+<p><strong>技术亮点</strong>：
+1. C 语言编写的 tree-sitter 全量 AST 解析（158 种语言，vendored grammars 编译进二进制）
+2. Hybrid LSP 语义增强（不只解析语法，还解析类型信息）
+3. 持久化知识图谱（SQLite in-memory + LZ4 压缩）
+4. Aho-Corasick 模式匹配加速
+5. 14 个 MCP 工具（search/trace/architecture/impact analysis/Cypher/dead code/HTTP linking/ADR）
+6. Infrastructure-as-code 索引（Dockerfile/K8s/Kustomize 作为图节点）
+7. 3D 图谱可视化</p>
+<p><strong>架构启发</strong>：预处理 + 图查询 &gt; 实时搜索。这与编译器的设计哲学一致——先 build 再 query。Agent 时代的代码理解工具应该更像 IDE 的 language server，而不是更强的 grep。</p>
+<p><strong>定位</strong>：基础设施候选。如果 MCP 成为标准，这类代码智能层将成为 Agent 基础设施的标配组件。</p>
+<p><strong>风险</strong>：
+1. C 语言编写带来跨平台编译复杂度
+2. tree-sitter grammar 质量参差（158 种语言覆盖深度不一）
+3. 知识图谱构建增量更新能力待验证
+4. arXiv 论文为 preprint，尚未经过同行评审</p>
+<h3 id="2-calesthioopenmontage-33050-score-85">2. calesthio/OpenMontage — ⭐ 33,050 | Score: 85</h3>
+<p><strong>它做什么</strong>：开源 Agent 视频生产系统，12 pipeline/52 tool/500+ agent skill。</p>
+<p><strong>为什么火</strong>：将视频创作工作流 Agent 化，填补了 Agent 在多媒体生产领域的空白。</p>
+<p><strong>技术亮点</strong>：pipeline + tool + agent skill 三层架构，让 Coding Agent 成为视频生产编排器。</p>
+<p><strong>定位</strong>：平台候选。如果 Agent 能覆盖完整视频工作流，意味着 Agent 工具链已具备支撑复杂非线性创作任务的能力。</p>
+<p><strong>风险</strong>：500+ agent skill 数字可能存在营销泡沫；视频生产工作流的 Agent 化程度和实际质量待验证。</p>
+<h3 id="3-ogulcancelikherdr-11372-score-83">3. ogulcancelik/herdr — ⭐ 11,372 | Score: 83</h3>
+<p><strong>它做什么</strong>：Agent 多路复用终端，tmux 重新设计为 Agent 原生。</p>
+<p><strong>为什么火</strong>：开发者需要同时运行多个 Coding Agent（Claude Code/Codex/Cursor CLI 等），现有终端工具不感知 Agent 状态。</p>
+<p><strong>技术亮点</strong>：
+1. Agent 状态感知（🔴 blocked / 🟡 working / 🔵 done / 🟢 idle）
+2. 真实终端（非 GUI 模拟），支持全屏 TUI
+3. SSH detach/reattach，手机也能连
+4. Socket API，Agent 可以编程化操作
+5. ~10MB 单 Rust 二进制
+6. Workspaces/tabs/panes 鼠标原生操作</p>
+<p><strong>定位</strong>：工具型→平台候选。Agent fleet 管理的终端基础设施，如果加入编排能力可升级为平台。</p>
+<p><strong>风险</strong>：tmux 生态惯性强大；Rust 二进制虽好但插件生态需时间建立。</p>
+<h2 id="_4">趋势关系图</h2>
+<pre class="mermaid">flowchart TB
+    subgraph "代码智能层"
+        CMM[codebase-memory-mcp<br/>26K⭐ 知识图谱+MCP]
+        TS[tree-sitter<br/>AST 解析引擎]
+        CMM -->|依赖| TS
+    end
+
+    subgraph "Agent 应用层"
+        OM[OpenMontage<br/>33K⭐ 视频生产]
+        VU[video-use<br/>14.7K⭐ 视频编辑]
+        AX[Astryx<br/>5.3K⭐ Agent-Ready UI]
+    end
+
+    subgraph "Agent 编排/管理"
+        HD[herdr<br/>11.4K⭐ 终端多路复用]
+        ORC[Orca<br/>12K⭐ 并行 ADE]
+    end
+
+    subgraph "安全/隐私"
+        SX[strix<br/>35.9K⭐ AI 渗透测试]
+        MT[meetily<br/>本地会议助手]
+        SPL[system_prompts_leaks<br/>48.8K⭐ prompt 审计]
+    end
+
+    CMM -.->|赋能| OM
+    CMM -.->|赋能| VU
+    HD -->|运行| OM
+    HD -->|运行| VU
+    HD -->|运行| AX
+</pre>
+<h2 id="_5">风险与机遇</h2>
+<p><strong>机遇</strong>：
+- 代码智能 MCP 层可能成为 Agent 基础设施标配（类似 language server 之于 IDE）
+- Agent 多媒体生产是新蓝海
+- Agent-Ready 设计系统标准化窗口期</p>
+<p><strong>风险</strong>：
+- OpenMontage 500+ skill 数字需谨慎评估实际可用性
+- codebase-memory-mcp 的 C 语言选择可能限制社区贡献速度
+- 视频生产 Agent 化的质量标准尚未建立</p>
+<h2 id="_6">重点项目档案</h2>
+<p>今日重点档案：
+- <a href="projects/codebase-memory-mcp.html">codebase-memory-mcp</a> — 🧠 代码智能 MCP，知识图谱 + tree-sitter
+- <a href="projects/openmontage.html">OpenMontage</a> — 🎬 Agent 视频生产系统
+- <a href="projects/herdr.html">herdr</a> — 🦬 Agent 终端多路复用器</p>
+<hr />
+<p><em>2026-07-05 · github-researcher · 第 84 期</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

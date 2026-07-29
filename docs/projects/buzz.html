@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Buzz | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/block/buzz" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="block-buzz">Block Buzz</h1>
+<h2 id="_1">一句话定位</h2>
+<p>基于 Nostr Relay 协议的人机协同工作空间——人类和 AI Agent 在同一个频道里工作，共享身份模型、审计日志和 Git 事件流。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>AI Agent 已能做代码审查、发布管理、事件响应，但它们以"haunted cron jobs"方式存在——藏在 CI 后台、Bot token 后面，不在团队的工作流里。团队协作需要人类、Agent、工作流、Git 事件在同一个上下文中可见、可搜索、可审计。现有方案（Slack+Bot+CI Dashboard+Forge）是 7 个 tab 的拼凑。</p>
+<h2 id="2026-07-24">为什么值得关注（2026-07-24）</h2>
+<p>Block Inc.（Square/Cash App 母公司）出品，日增 2,162 stars，Rust 实现，Apache 2.0 协议。这不是又一个 AI 聊天工具——它定义了一种新的协作协议层。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>Block Inc. 背书</strong>：大公司开源，自带信任溢价和工程能力背书</li>
+<li><strong>Nostr 协议原生</strong>：利用已有的 Nostr 生态（签名事件、中继），不是 reinvent</li>
+<li><strong>Agent 协作痛点真实</strong>：开发者已饱受 Agent 藏在 CI 后台、缺乏上下文之苦</li>
+<li><strong>Rust + 自托管</strong>：隐私优先、可自托管，满足企业需求</li>
+<li><strong>ACP 接入</strong>：支持 Goose/Codex/Claude Code，不锁定 Agent 框架</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Nostr 协议底座</strong>：所有交互（消息、反应、工作流、Git 事件）都是签名 Nostr 事件。同一身份模型（NIP-42 Schnorr 认证），同一审计轨迹，无论作者是人还是 Agent</li>
+<li><strong>Git NIP-34 原生支持</strong>：Patch、Repo 公告、Status 作为标准 Nostr 事件流转。Feature branch 可以自动成为一个"房间"</li>
+<li><strong>buzz-cli（agent-first）</strong>：JSON in / JSON out，专为 LLM 工具调用设计。ACP harness 支持 Goose、Codex、Claude Code</li>
+<li><strong>多租户架构</strong>：单 Relay 托管一个社区，Hosted 模式通过 host-derived community 做租户隔离，共享 Postgres/Redis/S3</li>
+<li><strong>Rust workspace 设计</strong>：buzz-core（零 I/O 类型）、buzz-relay（Axum WS+REST）、buzz-db（Postgres）、buzz-auth（NIP-42/98 认证+限流）、buzz-pubsub（Redis）、buzz-search（Postgres FTS）、buzz-audit（哈希链日志）</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<pre class="mermaid">flowchart TB
+    subgraph Clients
+        H[Human Client<br/>Buzz Desktop]
+        A[AI Agent<br/>Goose/Codex/Claude Code]
+        C[CLI/Scripts<br/>buzz-cli]
+    end
+
+    subgraph "buzz-relay (Rust)"
+        R[NIP-01 · NIP-42 Auth<br/>Channel/DM/Media/Workflow/Git REST<br/>Audit Log]
+    end
+
+    subgraph Storage
+        PG[(Postgres<br/>Events + FTS)]
+        RD[(Redis<br/>Pub/Sub)]
+        S3[(S3/MinIO<br/>Blossom)]
+    end
+
+    H -->|WebSocket| R
+    A -->|ACP ↔ MCP| R
+    C -->|WS + REST| R
+    R --> PG
+    R --> RD
+    R --> S3
+</pre>
+<p><strong>设计哲学：</strong> 一个协议替代七个 tab。人类和 Agent 的 affordance 完全对等——同样的频道、画布、工作流、语音室，不同的只是密钥对。</p>
+<h2 id="_6">定位判断</h2>
+<p>平台候选。如果 Nostr-as-workspace-protocol 成立，它有潜力成为人机协作的 Slack+Forge 替代。但高度依赖 Block Inc. 的持续投入和社区采纳。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>单公司主导</strong>：Block Inc. 开源，Apache 2.0 但治理模式不明朗。大公司开源项目的常见风险：战略变更即弃坑</li>
+<li><strong>Nostr 生态依赖</strong>：Nostr 用户基数仍小，协议网络效应未形成</li>
+<li><strong>功能成熟度</strong>：README 明确标注 Mobile 客户端、Push 通知、Git 托管后端仍在开发中</li>
+<li><strong>竞争激烈</strong>：Slack+Bot 生态已根深蒂固，切换成本高</li>
+<li><strong>过度野心风险</strong>：试图同时替代 Forge+Chat+CI+搜索+发布，每个领域都有强竞争者</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Slack+Bot</strong>：Slack 是人类优先+Bot 附加，Buzz 是人类和 Agent 对等设计。但 Slack 的网络效应巨大</li>
+<li><strong>vs Zulip</strong>：Zulip 有良好的 Bot 支持，但缺乏 Agent-first 的身份模型和 Nostr 协议底座</li>
+<li><strong>vs Mattermost</strong>：自托管替代方案，但同样缺乏 Agent 原生设计</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 协议层创新稀缺，Block Inc. 的工程能力是质量背书。关注社区采纳速度和第三方 Agent 接入情况。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>第三方 Agent（非 Block 内部）接入数量和活跃度</li>
+<li>buzz-cli 和 ACP harness 的实际使用反馈</li>
+<li>Mobile 客户端和 Push 通知落地时间</li>
+<li>Nostr 生态项目是否选择 Buzz 作为协作前端</li>
+<li>企业自托管案例</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-07-24</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

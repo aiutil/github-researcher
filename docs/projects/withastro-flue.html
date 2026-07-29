@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro flue | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/withastro/flue" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="astro-flue">Astro flue</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Astro 团队出品的可编程 TypeScript Agent harness——内置沙箱、持久执行、CRDT 多人协作，目标是让任何模型获得 Claude Code 级别的自主工作能力。</p>
+<h2 id="_2">解决的问题</h2>
+<p>构建自主 Agent 需要 sessions、tools、skills、instructions、filesystem access 和安全沙箱——这些能力每个开发者都在重复实现。flue 把这些打包成一个可编程的 TypeScript harness，让 Agent 开发从"raw LLM API 调用"升级到"Claude Code 级别的自主工作"。</p>
+<h2 id="2026-06-20">为什么值得关注（2026-06-20）</h2>
+<p>Astro 团队（Fred K. Schott + cpojer 等）出品的框架自带品牌信誉。5,803 stars 日增 305。核心差异化是"不是另一个 SDK"——它是一个完整的 harness，包含沙箱（virtual/local/remote container）、持久执行（durable recovery）、多人协作（CRDT + live presence）、channels（Slack/Teams/Discord/GitHub）和完整的可观测性（OpenTelemetry/Braintrust/Sentry）。</p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>Astro 品牌红利 + 真实需求。</strong> Astro 是最成功的前端框架之一，开发者信任其团队的工程能力。flue 解决的"Agent 从 chatbot 升级到自主工作者"问题是行业刚需。日增 305 不算爆发，但质量高——这说明深度用户在关注。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>可编程沙箱：</strong> <code>local()</code> / <code>virtual()</code> / <code>remote()</code> 三种沙箱模式。Agent 可以在沙箱中安全地使用工具、修改文件、执行代码。</p>
+</li>
+<li>
+<p><strong>持久执行（Durable Execution）：</strong> Agent 任务在失败和重启后可恢复。这对生产环境至关重要——长时间运行的 Agent 任务不会因为进程崩溃而丢失。</p>
+</li>
+<li>
+<p><strong>CRDT 多人协作：</strong> 人类和 Agent 可以在同一个 document 上实时协作。live presence（cursor、selection ring、who's on which slide），Agent 作为 first-class peer editor。</p>
+</li>
+<li>
+<p><strong>Channels + MCP 集成：</strong> 从 Slack/Teams/Discord/GitHub 接收 verified events，通过 MCP 连接 authenticated tools。</p>
+</li>
+<li>
+<p><strong>多部署目标：</strong> Node.js / Cloudflare Workers / GitHub Actions / GitLab CI / Daytona / Render。</p>
+</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>flue 的核心设计理念是"harness 而非 SDK"：
+- SDK 模式：你写代码调用 LLM API，SDK 提供辅助函数
+- Harness 模式：harness 提供完整的运行环境（sessions、tools、skills、sandbox），你只需要定义 Agent 的行为</p>
+<p>这种设计与 Vercel eve 的 "filesystem-first" 和 omnigent 的 "meta-harness" 在哲学上接近——都认为 Agent 需要的是"运行环境"而非"函数库"。但 flue 更强调"可编程性"（TypeScript harness）和"可部署性"（多目标）。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>通用 Agent 应用框架。</strong> 在框架光谱中：
+- Kilo Code / Cursor = IDE-bound Coding Agent
+- omnigent / vercel eve = Agent 编排/定义层
+- Astro flue = 通用 Agent 应用运行时
+- BuilderIO agent-native = Agent 原生 SaaS 应用框架</p>
+<p>flue 更接近"Agent 版的 Next.js"——一个让你快速构建和部署 Agent 应用的全栈框架。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>TypeScript 限定：</strong> 不支持 Python，限制了在 AI/ML 社区的采用。</li>
+<li><strong>早期阶段：</strong> API 可能不稳定，文档可能不完整。</li>
+<li><strong>Astro 团队精力分配：</strong> Astro 框架本身仍在活跃开发，flue 是否会获得持续投入存疑。</li>
+<li><strong>竞争激烈：</strong> Vercel eve、BuilderIO agent-native、Inngest、Temporal 等都在争夺类似生态位。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>定位</th>
+<th>语言</th>
+<th>沙箱</th>
+<th>持久执行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Astro flue</td>
+<td>通用 Agent 应用框架</td>
+<td>TypeScript</td>
+<td>✅ 三模式</td>
+<td>✅ Durable</td>
+</tr>
+<tr>
+<td>Vercel eve</td>
+<td>Filesystem-first Agent 框架</td>
+<td>TypeScript</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>BuilderIO agent-native</td>
+<td>Agent 原生 SaaS 框架</td>
+<td>TypeScript</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>通用工作流引擎</td>
+<td>Multi</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>flue 与 vercel eve 是竞争关系（同为 TS Agent 框架），但 flue 更完整（沙箱 + 持久执行 + 多人协作）。</p>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> flue 的沙箱 + 持久执行 + CRDT 多人协作组合在 Agent 框架中独一无二。如果 Astro 团队全力投入，有潜力成为 TypeScript Agent 应用的默认框架。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>是否有真实生产应用基于 flue 构建</li>
+<li>npm 包下载量趋势</li>
+<li>CRDT 多人协作在真实场景中的稳定性</li>
+<li>与 Vercel eve 的差异化是否能持续</li>
+<li>Cloudflare Workers 部署模式的采用情况</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-06-20</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

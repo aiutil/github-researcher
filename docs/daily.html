@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日报索引 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📊</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<script>document.getElementById('nav-daily').classList.add('active');</script>
+<main class="container">
+    <div class="page-header">
+        <h1>📅 日报索引</h1>
+        <p>每日 GitHub 趋势研究简报,持续跟踪不间断</p>
+    </div>
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>🔍 搜索</label>
+            <input type="text" id="daily-search" placeholder="搜索日期或主题...">
+        </div>
+        <div class="filter-group">
+            <label>↕️ 排序</label>
+            <select id="daily-sort">
+                <option value="date-desc">日期 ↓ (新→旧)</option>
+                <option value="date-asc">日期 ↑ (旧→新)</option>
+            </select>
+        </div>
+        <span class="filter-count" id="daily-count"></span>
+    </div>
+    <div class="gh-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>核心主题</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr data-date="2026-07-29">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-29</td>
+            <td>OpenWorker 重定义「本地优先 AI Coworker」交付物范式 · AgentENV 把 Agent RL 训练底层 Firecracker 微虚拟机基础设施开源 · scriptc 让 TypeScript 零运行时编译为原生二进制</td>
+            <td><a href="/daily/2026-07-29.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-28">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-28</td>
+            <td>openclaw（384,378 stars） · hermes-agent（221,553 stars） · n8n（198,309 stars）</td>
+            <td><a href="/daily/2026-07-28.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-27">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-27</td>
+            <td>freeCodeCamp（453,008 stars） · openclaw（384,378 stars） · react（246,756 stars）</td>
+            <td><a href="/daily/2026-07-27.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-26">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-26</td>
+            <td>freeCodeCamp（453,008 stars） · react（246,756 stars） · ECC（234,311 stars）</td>
+            <td><a href="/daily/2026-07-26.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-25">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-25</td>
+            <td>caveman（93,628 stars） · awesome-mcp-servers（91,470 stars） · lazygit（80,794 stars）</td>
+            <td><a href="/daily/2026-07-25.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-24">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-24</td>
+            <td>Human-Agent 协作通信基础设施——Block/Buzz 8.1K⭐（Nostr relay 底座/人类与 Agent 共享频道/签名事件审计链/自托管），重新定义团队工作流的底层协议 · 代码知识图谱进入主流——code-review-graph 26K⭐（tree-sitter AST/MCP 集成/周增 6.3K），Agent 上下文管理从 RAG 搜索转向图谱遍历 · AI 网关聚合层爆发——OmniRoute 27.9K⭐（290+ Provider/500+ 模型/免费层堆叠/Token 压缩 15-95%），LLM 路由成为开发者基础设施刚需</td>
+            <td><a href="/daily/2026-07-24.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-23">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-23</td>
+            <td>superpowers（262,276 stars） · yt-dlp（180,566 stars） · skills（164,651 stars）</td>
+            <td><a href="/daily/2026-07-23.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-22">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-22</td>
+            <td>yt-dlp（180,566 stars） · agency-agents（137,151 stars） · awesome-llm-apps（128,188 stars）</td>
+            <td><a href="/daily/2026-07-22.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-21">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-21</td>
+            <td>PaddleOCR（86,382 stars） · kong（43,869 stars） · claude-howto（40,612 stars）</td>
+            <td><a href="/daily/2026-07-21.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-20">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-20</td>
+            <td>awesome-react（74,111 stars） · bubbletea（44,006 stars） · zoxide（38,289 stars）</td>
+            <td><a href="/daily/2026-07-20.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-19">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-19</td>
+            <td>awesome-react（74,111 stars） · bubbletea（44,006 stars） · styled-components（41,126 stars）</td>
+            <td><a href="/daily/2026-07-19.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-18">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-18</td>
+            <td>TradingAgents（94,793 stars） · styled-components（41,126 stars） · gpt-researcher（28,681 stars）</td>
+            <td><a href="/daily/2026-07-18.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-17">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-17</td>
+            <td>TradingAgents（94,793 stars） · hello-agents（69,059 stars） · TrendRadar（60,950 stars）</td>
+            <td><a href="/daily/2026-07-17.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-16">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-16</td>
+            <td>hello-agents（69,059 stars） · TrendRadar（60,950 stars） · awesome-openclaw-skills（51,565 stars）</td>
+            <td><a href="/daily/2026-07-16.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-15">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-15</td>
+            <td>gstack（124,858 stars） · ponytail（90,512 stars） · awesome-openclaw-skills（51,565 stars）</td>
+            <td><a href="/daily/2026-07-15.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-14">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-14</td>
+            <td>AI 代码知识图谱——Graphify 84.5K⭐（tree-sitter AST/非向量/跨40+语言）将代码库变成可查询图谱，重新定义 Agent 上下文理解 · AI 安全攻防双爆发——Strix 41K⭐（AI 渗透测试/Multi-Agent/真实 PoC）+ Hallmark 5K⭐（反 AI-slop 设计 Skill），Agent 安全与质量守卫形成双翼 · 开源视频编辑器冲击 CapCut——OpenCut 66K⭐（Rust 重写/插件优先/MCP Server/Headless 渲染），Agent 原生创作工具浮出水面</td>
+            <td><a href="/daily/2026-07-14.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-13">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-13</td>
+            <td>Agent 沙箱基础设施收敛——CubeSandbox 9.8K⭐（腾讯/Rust/KVM/E2B兼容）成为 Agent 安全隔离标准方案 · 本地优先 AI 应用爆发——Meetily 23.5K⭐（Rust/纯本地/8.6K周增）引领隐私优先的 AI 会议助手赛道 · Agent 多路复用与编排成熟——herdr 15.8K⭐（终端 Agent 多路复用）+ Orca 16.8K⭐（并行 Agent ADE）+ OfficeCLI 15.4K⭐（Office 文件自动化），Agent 工具链从单体走向fleet 管理</td>
+            <td><a href="/daily/2026-07-13.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-12">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-12</td>
+            <td>Agent Skills 三巨头格局成型——Superpowers 252K+ECC 228K+mattpocock/skills 165K，Agent Skill 从'提示词技巧'升维为独立赛道 · Code Intelligence MCP 基础设施化——codebase-memory-mcp 30K⭐（158语言/tree-sitter+Hybrid LSP/纯C零依赖/11 Agent 自动配置），从工具变为 Agent 必备底座 · 实用工具回归——Knockoff 1.7K⭐（6天/过滤亚马逊伪品牌/Chrome+Firefox/Safari/全本地运行），不蹭 AI 概念解决真实痛点获多家媒体报道</td>
+            <td><a href="/daily/2026-07-12.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-11">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-11</td>
+            <td>LLM 可解释性工具化——Anthropic Jacobian Lens 1.1K⭐（9天/Python/全局工作空间理论/平均输入-输出雅可比矩阵/逐层逐位置 token 读出），论文配套参考实现，让任意中间层激活投影到词表空间 · 教育知识图谱数据基础设施——Marble os-taxonomy 2.1K⭐（3天/1590微主题/3221前置依赖边/8学科/课程对齐），开源结构化课程图谱 · DevTools Rust 化加速——Nub 2.8K⭐（38天/Rust/24×更快脚本运行/19×更快npx/18×更快pnpm install），用 Rust 增强而非替代 Node.js · Agent Skill 生态走向方法论——Loop Engineering 6.9K⭐+Ponytail 80K⭐+Omnigent 7K⭐，从单 Skill 竞争走向系统性编排范式</td>
+            <td><a href="/daily/2026-07-11.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-10">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-10</td>
+            <td>AI 红队元兵器——T3MP3ST 4.2K⭐（8天/AGPL-3.0/多Agent攻击性安全框架/复现率100%/XBOW基准90.1%/复现式声明验证），把已有编码Agent变零日猎人 · 科研全闭环Agent——OpenScience 1.9K⭐（7天/Apache-2.0/290+技能/30+科学数据库/全研究循环自动化），从读文献到跑实验到写论文一站完成 · Agent Harness生态收敛——ECC 228K⭐+Hermes 212K⭐+OpenCode 184K⭐+OpenClaw 382K⭐，编码Agent基础设施格局基本成型</td>
+            <td><a href="/daily/2026-07-10.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-09">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-09</td>
+            <td>CLI-Anything（46,211 stars） · mindshub（39,501 stars） · awesome-agent-skills（29,087 stars）</td>
+            <td><a href="/daily/2026-07-09.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-08">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-08</td>
+            <td>CLI-Anything（46,211 stars） · VoxCPM（34,328 stars） · codex-plugin-cc（30,153 stars）</td>
+            <td><a href="/daily/2026-07-08.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-07">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-07</td>
+            <td>Agent 约束即性能——Ponytail 75.8K⭐（25 天创建/MIT/54% less code/20% cheaper/27% faster/100% safe），用 YAGNI 理念约束 Agent 行为成为最热项目 · OCR 长程解析突破——Baidu Unlimited-OCR 13.5K⭐（19 天创建/One-shot Long-horizon Parsing/超越 DeepSeek-OCR/vLLM+Transformers 双引擎），OCR 从分页拼接走向整文档一次解析 · 贵模型规划+便宜模型执行——shadcn/improve 7K⭐（27 天创建/MIT/审计→计划→委派执行/9 类并行子 Agent），将 LLM 成本梯度利用范式固化成 Skill · 多 Agent 元编排——Omnigent 6.4K⭐（26 天创建/Apache-2.0/Claude Code+Codex+Cursor+自定义 Agent 统一编排/云沙箱+策略治理+实时协作）</td>
+            <td><a href="/daily/2026-07-07.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-06">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-06</td>
+            <td>推测解码训练框架基建化——DeepSeek DeepSpec 6.2K⭐（10 天创建/含 DSpark+DFlash+Eagle3 三算法/完整 train→eval pipeline/38TB 数据集/多模型支持），推理加速从黑盒 API 走向可训练全栈基础设施 · Agent 文档自动化成新赛道——langchain-ai/openwiki 5K⭐（14 天创建/CLI+GitHub Action/自动 AGENTS.md 注入/Multi-LLM 支持），代码文档从人写走向 Agent 写+Agent 读 · Loop Engineering 方法论化——cobusgreyling/loop-engineering 5.9K⭐（loop-audit/loop-init/loop-cost/loop-sync/loop-context 五件套），Agent 编排从 ad-hoc prompting 走向系统化工程方法论 · Node.js 工具链 Rust 化加速——nubjs/nub 2.6K⭐（Rust 编写/bun-like DX on stock node/24× faster script runner/19× faster npx），Node.js 生态开始用 Rust 重写工具链</td>
+            <td><a href="/daily/2026-07-06.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-05">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-05</td>
+            <td>代码智能 MCP 爆发——codebase-memory-mcp 26K⭐（周+10.2K/C 编写/tree-sitter+知识图谱/亚毫秒查询/99% token 缩减/单二进制零依赖/158 语言/11 Agent 自动配置），代码理解从文件搜索进化为图谱查询 · Agent 视频生产系统崛起——OpenMontage 33K⭐（周+9.2K/12 pipeline/52 tool/500+ agent skill）将 Coding Agent 变成视频工作室，video-use 14.7K⭐ 让 Agent 编辑视频 · 前端 Agent-Ready 加速——Astryx 5.3K⭐（日+1,013 TS 榜首）Meta 8 年设计系统开源，API/docs/CLI 一体化让人和 Agent 用同一套参考 · Agent 终端多路复用成熟——herdr 11.4K⭐（日+706/周+3K）tmux-for-agents 路线清晰，meetily 隐私优先本地会议助手（Rust）新入榜</td>
+            <td><a href="/daily/2026-07-05.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-04">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-04</td>
+            <td>Agent 安全运行时双雄对垒——腾讯 CubeSandbox 7.1K⭐（Rust+KVM 亚 60ms 启动/5MB 开销/E2B 兼容）vs NVIDIA OpenShell 7.3K⭐（Rust+YAML 策略引擎/四层隔离/GPU 直通），两大巨头同时押注 Agent 安全沙箱，microVM 路线正在成为标准 · 前端 Agent-Ready 设计系统——Meta Astryx 4.5K⭐（日+943 8 年内部/13K+ 应用/150+ 组件/StyleX）开源，Google design.md 24.6K⭐，设计系统从'人用'到'人+Agent 共用'范式转移 · Agent 多路复用持续升温——herdr 10.7K⭐（日+513）Rust 终端多路复用，Orca 11.6K⭐（日+736）多 Agent 并行 ADE，Agent 编排层从工具变基础设施 · Token 经济学常态化——caveman 82.8K⭐ 日+2,851 持续霸榜，token 压缩从技巧变标配</td>
+            <td><a href="/daily/2026-07-04.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-03">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-03</td>
+            <td>Agentic Video Production 元年——OpenMontage 31.7K⭐（周+12.6K）12 管线/52 工具/500+ Agent 技能，video-use 13.7K⭐ 让 coding agent 剪视频，Agent 从代码生产扩展到内容生产 · 代码知识图谱爆发——codebase-memory-mcp 24.6K⭐（周+9.7K 爆发式增长）158 语言/亚毫秒查询/99% token 节省，cognee 26.6K⭐ 自托管记忆平台，Agent 记忆层从可选变必选 · Agent 多路复用基础设施化——herdr 10.1K⭐ Rust 终端 Agent 多路复用器，Orca 11K⭐ 多 Agent 并行 ADE，gstack 119K⭐ 现象级 Agent 工具栈 · Agent 全网感知——Agent-Reach 49K⭐（周+8.8K）CLI 零 API 费用覆盖 Twitter/Reddit/YouTube/Bilibili</td>
+            <td><a href="/daily/2026-07-03.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-02">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-02</td>
+            <td>Agent Skills 成为新标准层——Anthropic 发起的 Agent Skills 开放规范被 NVIDIA/microsoft/google/vercel 等巨头采纳，skills 成为 Agent 生态的'插件标准' · Meta 开源 Astryx 设计系统（内部 8 年/13000+ 应用/150+ 组件/agent-ready），design.md 24.3K⭐，Agent 前端规范双轨确立 · Agent IDE/编排层激战——Orca 多 Agent 并行 ADE（10.8K⭐ 周+3.5K），herdr 终端 Agent 多路复用（9.9K⭐），ECC Agent 性能优化系统，codex-plugin-cc 跨 Agent 桥接（22.4K⭐） · AI 安全攻防高烧不退——strix 31K⭐ 日+2.2K，caveman 79.8K⭐ token 压缩 65%</td>
+            <td><a href="/daily/2026-07-02.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-07-01">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-07-01</td>
+            <td>bat（59,897 stars） · UI-TARS-desktop（38,328 stars） · python-fire（28,213 stars）</td>
+            <td><a href="/daily/2026-07-01.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-30">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-30</td>
+            <td>bat（59,897 stars） · UI-TARS-desktop（38,328 stars） · tabby（33,790 stars）</td>
+            <td><a href="/daily/2026-06-30.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-29">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-29</td>
+            <td>AI 安全攻防工具化加速——strix AI 自主渗透测试（Docker 沙箱+多 Agent 协作+PoC 验证），claude-bug-bounty 终端化漏洞猎捕，Agent 安全从'治理规范'走向'自动化攻防' · 代码智能层继续高增——codebase-memory-mcp 19.5K⭐（日增 1.2K）知识图谱代码理解已成 Agent 基建标配，design.md 22.8K⭐ 设计系统 Agent 规范确立 · AI 金融 Agent 全面爆发——ai-berkshire 1,456⭐/日 多大师方法论并行研究，daily_stock_analysis 51K⭐，Vibe-Trading 个人交易 Agent 登场 · 本地 AI Voice I/O 成熟——FluidVoice 3.7K⭐ macOS 离线听写（Parakeet 零延迟+本地 AI 增强），voicebox 35.4K⭐ 开源语音工作室 · OmniRoute 7.3K⭐ 免费 LLM 网关聚合 160+ Provider</td>
+            <td><a href="/daily/2026-06-29.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-28">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-28</td>
+            <td>代码智能层大爆发——codebase-memory-mcp 17.5K⭐ tree-sitter 知识图谱让 Agent 理解全局代码（158 语言/亚毫秒查询/99% token 节省），cognee 23.9K⭐ 自托管知识图谱 Agent 记忆平台（周增 5K），Agent 的'大脑'基建成熟 · Agent 安全治理层崛起——no-mistakes 3.8K⭐ git push 防护门（disposable worktree + AI 验证流水线），Anthropic-Cybersecurity-Skills 22.2K⭐ 817 条安全技能映射 MITRE ATT&CK · Agent-Native 应用框架首次定义——BuilderIO/agent-native 2.7K⭐ 'UI + Agent 等公民'架构模式 · 本周 85K+ Star 增量，Agent 生态进入分层整合期</td>
+            <td><a href="/daily/2026-06-28.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-27">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-27</td>
+            <td>Agent 感知层大整合——Agent-Reach 42K⭐ 给 Agent 装上全互联网感知（7+ 平台零 API 费用），page-agent 20K⭐ 操控网页 UI，Agent 的'眼睛+手'标准化 · LLM 零成本基建加速——FreeLLMAPI 从 783→13K⭐（2 个月 17 倍），16 家 Provider 聚合 ~1.7B tokens/月 · Agent 并行编排日常化——Orca 7.9K⭐ ADE + multica 开源 Agent 管理平台 + gstack 23 工具链</td>
+            <td><a href="/daily/2026-06-27.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-26">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-26</td>
+            <td>Agent × Design System 标准化接口——Google Labs design.md 19K⭐ 定义 AI Agent 的设计系统规范（DESIGN.md = YAML tokens + Markdown 理由 = Agent 可读的设计宪法），填补 Agent 与 UI 之间的结构化理解缺口 · Agentic 视频生产大爆发——OpenMontage 4天从 8.5K 暴涨至 22K（+13.5K），12 pipeline × 52 tools × 500+ skills 验证 Agent 不止写代码还能做视频 · Agent 安全治理工具化——NVIDIA SkillSpector 10.7K⭐ 68 类漏洞检测 + Anthropic-Cybersecurity-Skills 21K⭐ 817 条安全 Skills，Agent 安全从理念变成可执行工具链 · Agent 记忆层竞速——TencentDB-Agent-Memory 6.2K⭐ 全本地 4 层记忆管线 vs codebase-memory-mcp 14.7K⭐ 知识图谱索引</td>
+            <td><a href="/daily/2026-06-26.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-25">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-25</td>
+            <td>Agent '懒惰工程'范式大规模验证——ponytail 55K⭐ 用 7 级'懒惰阶梯'实现 54% 代码削减+100% 安全保持，从'写更多'到'写更少'的范式翻转 · Meta-harness 编排层竞争白热化——omnigent 4.7K⭐ 跨设备多 Agent 编排（Claude Code+Codex+Cursor+Pi 统一管理）vs vercel/eve 2.5K⭐ filesystem-first agent 框架（tools/skills/channels/schedules=目录结构），'harness above harnesses'品类形成 · 大厂 Coding Agent 终端争夺战——XiaomiMiMo/MiMo-Code 10.6K⭐ 持久内存+多 Agent+Goal/Stop 自治条件 vs shadcn/improve 6.1K⭐ 审计→计划→执行的模型分层协作 · OCR 长程解析突破——baidu/Unlimited-OCR 6.3K⭐ 一次推理解析超长文档，超越 DeepSeek-OCR</td>
+            <td><a href="/daily/2026-06-25.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-24">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-24</td>
+            <td>Agent 感知层成熟化——alibaba/page-agent 19.2K⭐ 零依赖注入式 DOM 控制（不截图、不多模态、纯文本操作网页）+ Agent-Reach 38.6K⭐ 一键给 Agent 装上全网读取能力（Twitter/Reddit/YouTube/B站/小红书/GitHub）+ firecrawl 138K⭐ 持续日增 1.3K · Agent Skills 工业化——addyosmani/agent-skills 65.9K⭐ 24 skills × 8 slash commands 覆盖完整 SDLC（Define→Plan→Build→Verify→Review→Ship），Google Chrome 架构师的工程方法论产品化 · Agent 自我进化框架涌现——hermes-agent（自创建技能 + 自改进 + 跨会话记忆）+ deer-flow 2.0（字节跳动长周期 SuperAgent：subagents + sandbox + memory + skills 全栈） · Code Intelligence MCP 标配化——codebase-memory-mcp 12.8K⭐ 周增 7.6K，tree-sitter + 知识图谱 + 158 语言 + sub-ms 查询</td>
+            <td><a href="/daily/2026-06-24.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-23">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-23</td>
+            <td>Agent Skills 经济爆发——gstack 113K⭐（Garry Tan 23 工具CEO/Designer/Eng Manager 角色化）+ mattpocock/skills 141K⭐ + Anthropic-Cybersecurity-Skills 18.6K⭐ 817 技能映射 6 框架 · Agent 权限与集成层正式出现（corsair 2.8K⭐ open/cautious/strict/readonly 四模式 + multi-tenancy + webhook——Agent 的 API Gateway with human-in-the-loop） · Agentic Code Review 工具分化（hunk 5.4K⭐ review-first diff viewer——为 Agent 写的代码重新设计 review 流程） · AI 金融分析工业化（daily_stock_analysis 45.7K⭐ 41.8K forks LLM 多市场股票分析——forks/stars 比 0.92 异常高说明大量用户在真跑） · Agentic 内容生产加速（OpenMontage 日增 3.3K→11.7K + Palmier-Pro 日增 2.3K→7.2K）</td>
+            <td><a href="/daily/2026-06-23.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-22">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-22</td>
+            <td>Agent 上下文压缩进入标准化期——Headroom 44K⭐ 日增 2.6K 确立 Agent 基础设施层地位（6 算法 + proxy/MCP/library 三模式 + 输出 token 削减） · 多 Agent 并行编排成熟化（Orca 5.7K ADE + herdr 6.6K 终端 multiplexer + jcode 7.5K Rust harness + claude-squad 7.8K） · AI Gateway 性能战打响（Bifrost 5.9K Go 网关 11µs overhead + freellmapi 11.3K 免费 LLM 聚合代理） · Agent 沙箱框架分化（Astro flue 6.2K 持久执行 + BuilderIO agent-native 框架 + DeerFlow SuperAgent harness） · Agentic 内容生产工业化（OpenMontage 8.4K 52 工具 + Palmier-Pro 4.9K AI 视频编辑）</td>
+            <td><a href="/daily/2026-06-22.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-21">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-21</td>
+            <td>Agent Skill 训练正式化——SkillOpt 用 epoch/lr/val gate 训练 skill 文档（6 benchmark × 52 cell 全第一 + Sleep 离线进化） · Agent 元框架混战升级（Omnigent 4.2K meta-harness + Vercel Eve 1.8K 文件系统优先 + ECC 218K 登顶） · 本地推理引擎专业化（antirez/ds4 14.8K DeepSeek V4 专用 inference + SSD 流式 KV cache） · Epic Games 开源下一代 VCS（Lore 5.1K 内容寻址 + Merkle Tree + 大二进制优先） · Agent 增强工具爆发（CodexPlusPlus 20.4K + html-anything 7K + shadcn/improve 5.8K）</td>
+            <td><a href="/daily/2026-06-21.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-20">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-20</td>
+            <td>LLM Token 经济学基础设施爆发（headroom 38K⭐ 日增 3,938——压缩即基础设施 + codebase-memory-mcp 8K 用知识图谱替代 grep） · Agent Skill 安全生态成型（NVIDIA SkillSpector 64 类漏洞检测——Skill 供应链安全的 SAST 时刻） · Agent 框架第二轮混战（Astro flue 沙箱框架 + BuilderIO agent-native 应用框架 + Kilo 22.9K 开源 Coding Agent——三种范式争夺开发者心智） · 基础模型超越文本（Google TimesFM 2.5 时间序列基础模型已部署 BigQuery/Sheets/Vertex） · Coding Agent 可观测性赛道启动（agentsview 2.9K 本地化 20+ Agent 分析）</td>
+            <td><a href="/daily/2026-06-20.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-19">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-19</td>
+            <td>Agent Skill 经济学验证完成（ponytail 36K⭐ 一周暴涨 42 倍——Skill 不是实验品而是生产力工具） · Agent 编排层混战开启（omnigent meta-harness + vercel/eve filesystem-first + flock chat-driven dev team——三条路线争夺 Agent 运行时标准） · 大厂端侧 AI 与上下文工程双线推进（Apple CoreAI SDK 开源 + Microsoft FastContext 论文——端侧推理与上下文委托模式同步成熟）</td>
+            <td><a href="/daily/2026-06-19.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-18">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-18</td>
+            <td>Front-End-Checklist（73,343 stars） · shellcheck（39,766 stars） · gpt-pilot（33,727 stars）</td>
+            <td><a href="/daily/2026-06-18.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-17">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-17</td>
+            <td>Front-End-Checklist（73,343 stars） · openscreen（39,844 stars） · gpt-pilot（33,727 stars）</td>
+            <td><a href="/daily/2026-06-17.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-16">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-16</td>
+            <td>awesome-design-md（104,970 stars） · openscreen（39,844 stars） · PLFM_RADAR（23,067 stars）</td>
+            <td><a href="/daily/2026-06-16.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-15">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-15</td>
+            <td>Agent Skills 杀手级应用涌现（last30days-skill 42K⭐ + taste-skill 44K⭐ 周增均超 8K——Skills 从基础设施走向真实应用） · 上下文工程工具链三位一体（headroom 压缩 + turbovec 向量索引 + LMCache KV 缓存——压缩→索引→缓存完整管道成型） · 本地多模态 AI 运行时扩展（whichllm 选型 + Open-LLM-VTuber 语音 + MoneyPrinterTurbo 视频）</td>
+            <td><a href="/daily/2026-06-15.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-14">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-14</td>
+            <td>Agent Skills 全栈基础设施化：分发层(agent-skills 58K)+安全层(SkillSpector)+压缩层(headroom 26K)+感知层(Agent-Reach 27K) · Apple Container 36K⭐ 苹果官方轻量 VM 容器 · open-notebook 30K⭐ 开源 NotebookLM 替代趋于成熟</td>
+            <td><a href="/daily/2026-06-14.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-13">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-13</td>
+            <td>Agent 架构分层加速：shadcn/improve 贵模型审计+廉模型执行分层范式 · Xiaomi MiMo-Code 6.7K⭐ 小米开源编码 Agent · Apple CoreAI Models 端侧 AI 运行时基础设施化 · Ponytail YAGNI 极简主义 Agent Skill · Superlog AI 自愈可观测性</td>
+            <td><a href="/daily/2026-06-13.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-12">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-12</td>
+            <td>Agent Skills 生态爆发：addyosmani/agent-skills 54K⭐ 日+3.3K 引爆工程技能标准化 · LLM Token 压缩基础设施化：headroom 23K⭐ 周+13K 60-95% 压缩率 · Apple 容器化落地：apple/container 32K⭐ Apple Silicon 原生 Linux 容器 · Agent 安全面浮出：NVIDIA/SkillSpector 2.6K⭐ 技能安全扫描</td>
+            <td><a href="/daily/2026-06-12.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-11">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-11</td>
+            <td>Agent 编排分层：shadcn/improve 745⭐ 顾问模式引爆 Agent 工作流 · Apple Core AI 开放：coreai-models 605⭐ 端侧 AI 从框架到生态 · AI 可观测性自愈：superlog 721⭐ OTel + Agent 融合 · 开发沙箱基础设施化：sandboxd 561⭐ Go/Docker 为 Agent 隔离</td>
+            <td><a href="/daily/2026-06-11.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-10">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-10</td>
+            <td>LLM Token 压缩从优化变基础设施：headroom 20.4K 周增 14K 登顶周榜 · 向量索引 Rust 化加速：turbovec 10K 日增 1.8K 超越 FAISS · Agent Skill 碎片化到平台化：ECC 211K + taste-skill 39.5K + impeccable 36.8K 同场竞争 · 开源知识管理觉醒：tolaria 14.3K Git-first + open-notebook 28.5K 双赛道</td>
+            <td><a href="/daily/2026-06-10.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-09">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-09</td>
+            <td>Coding Agent 工具链基础设施化：cc-switch 95K + codegraph 44.8K + oh-my-pi 11.3K，Agent IDE 化加速 · NVIDIA OpenShell 定义 Agent 安全会话运行时 · AI Memory 基础设施竞争白热化：supermemory 26K vs MemPalace · 语音 AI 全栈爆发：VoxCPM 27.7K + Open-LLM-VTuber 10.5K + FunASR 17.5K</td>
+            <td><a href="/daily/2026-06-09.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-08">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-08</td>
+            <td>Agent Skill 生态核聚变：ECC 209K + hermes-agent 185K + taste-skill 36K 同屏霸榜，Compound Engineering 从概念进入基础设施阶段 · Token 压缩基础设施化：headroom 一周 4.1K→16.8K +300% 增长 · PostgreSQL 成为 Agent 运行时：微软 pg_durable 将 Durable Execution 原生嵌入数据库 · 向量检索 SIMD 新世代：turbovec 日增 1,533 stars 登顶日增速第一 · Agentic Backend Platform 浮现：InsForge 11.5K 为 Coding Agent 提供全栈后端</td>
+            <td><a href="/daily/2026-06-08.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-07">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-07</td>
+            <td>Agent 多源感知基础设施化：last30days-skill 跨平台信号聚合 + Agent-Reach 零 API 费全网读取 · AI Memory 本地优先成熟：MemPalace 96.6% R@5 零 API 调用 · 代码执行沙箱进入 OS 级：Microsoft MXC 跨平台策略驱动隔离 · Agent 多路复用终端：herdr 4.7K tmux+GUI 混合体 · HTML 原生视频渲染：HyperFrames 25K Agent 友好确定性 MP4</td>
+            <td><a href="/daily/2026-06-07.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-06">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-06</td>
+            <td>AI Code Review 进入混合架构时代：Alibaba open-code-review 2.7K 确定性流水线 + Agent 决策 · Agent Memory 分层操作系统化：Memory OS 7 层架构 + Qdrant 向量记忆 · 本地优先运动席卷硬件外设：OpenLogi 4K 替代 Logitech Options+ · 自托管团队 Agent 平台化：Paradigm Centaur K8s 沙箱 + Slack 原生 · Coding Agent CLI 新格局：Moonshot Kimi Code 1.9K 单二进制分发</td>
+            <td><a href="/daily/2026-06-06.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-05">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-05</td>
+            <td>Agent Skill 从手工编写进化为可训练优化：Microsoft SkillOpt 4.9K 文本空间技能优化器 · 自托管 AI 工作空间现象级项目：Odysseus 50.6K · Agent 专用语言与运行时涌现：zerolang 4.9K + zero-native 4.1K + forkd 1.3K microVM · AI 供应链安全成新赛道：Perplexity bumblebee 4.3K</td>
+            <td><a href="/daily/2026-06-05.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-04">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-04</td>
+            <td>refine（35,403 stars） · meetily（27,064 stars） · OpenHarness（15,070 stars）</td>
+            <td><a href="/daily/2026-06-04.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-03">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-03</td>
+            <td>Agent 运行时安全沙箱成新赛道：NVIDIA OpenShell 6.6K Rust 沙箱 + 策略引擎 + GPU 直通 · Agent Terminal 基础设施深化：herdr 3.9K + fff 7.4K 文件搜索工具 · Memory API 标准化加速：supermemory 24.6K · AI 视频生成大爆发：MoneyPrinterTurbo 78K +19K/week</td>
+            <td><a href="/daily/2026-06-03.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-02">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-02</td>
+            <td>AI Agent 上下文压缩赛道浮现：Headroom 4K(+1.5K/week) 提供 60-95% Token 压缩，MCP 原生 · TTS 开源模型爆发：VoxCPM 24K + MOSS-TTS 2.8K + dograh 语音平台 4K · Agent Harness 深度竞争：ECC 202K + oh-my-pi 9.4K + harness 5.1K · Code Knowledge Graph 持续高热</td>
+            <td><a href="/daily/2026-06-02.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-06-01">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-06-01</td>
+            <td>Code Knowledge Graph 赛道爆发：Understand-Anything 47K(+25K/week) + codegraph 35K(+15.9K/week) 共同定义 AI Agent 代码理解基础设施 · google/ax 分布式 Agent Runtime 开源 · Microsoft AGT 覆盖 OWASP Top 10 · herdr Agent 多路复用器 · AI Coding Plugin 生态全面爆发</td>
+            <td><a href="/daily/2026-06-01.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-31">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-31</td>
+            <td>AI Taste 元趋势爆发：taste-skill 29K + stop-slop 7.4K 共享 '反 AI 味' 需求 · ai-engineering-from-scratch 25K 周增 13K 领跑教育赛道 · LiteParse +929/天突破文档解析天花板 · Microsoft Agent Governance Toolkit 3.5K 覆盖 OWASP Top 10 · stable-worldmodel 世界模型研究平台</td>
+            <td><a href="/daily/2026-05-31.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-30">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-30</td>
+            <td>Code Knowledge Graph 双雄争霸：Understand-Anything 44K + codegraph 33K 共享 45K 周增量 · ECC 198K 横空出世定义 Agent Harness 标杆 · Anthropic 连发三弹 Plugin 生态 · RuView 68K 用 WiFi CSI 信号做空间智能 · Cursor 正式发布 Plugin 规范</td>
+            <td><a href="/daily/2026-05-30.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-29">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-29</td>
+            <td>Agent Skills 大爆发：taste-skill 26K + stop-slop 6.3K 同台竞技 · agentmemory 冲刺 19K 锁定 Agent 记忆层 · oh-my-pi 8.2K 定义终端 Agent IDE 化 · Microsoft Agent Governance 覆盖 OWASP Top 10 · turbovec 3.4K 用 Rust 击败 FAISS</td>
+            <td><a href="/daily/2026-05-29.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-28">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-28</td>
+            <td>五日断网周度复盘 · Agent Harness 格局锁定 · Skills 生态分化加速 · 小模型 Agent 工程化破局 · 安全 Agent 双线闭环</td>
+            <td><a href="/daily/2026-05-28.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-27">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-27</td>
+            <td>Understand-Anything 突破 42K 逼近趋势之巅 · CodeGraph 冲刺 30K · RuView WiFi 传感逼近 67K · anthropics/knowledge-work-plugins 浮出 · Cursor Plugins 规范化启动</td>
+            <td><a href="/daily/2026-05-27.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-26">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-26</td>
+            <td>MoneyPrinterTurbo AI 短视频 65K⭐ 登顶 · Understand-Anything 持续爆发冲刺 42K · Skills 质量竞争白热化 · ViMax Agentic 视频生成突破 7K · AI 工程教育赛道兴起</td>
+            <td><a href="/daily/2026-05-26.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-25">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-25</td>
+            <td>Understand-Anything 突破 40K⭐ · CodeGraph 冲刺 20K · 网络安全 Skills 兴起 · presenton AI 演示工具浮出 · MOSS-TTS 开源语音家族</td>
+            <td><a href="/daily/2026-05-25.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-24">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-24</td>
+            <td>Skills 生态进入稳定分化期 · Understand-Anything 知识图谱爆发 · Agent Harness 三强突破 185K+ · 小模型 Agent 工具链持续进化 · Compound Engineering 插件浮出</td>
+            <td><a href="/daily/2026-05-24.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-23">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-23</td>
+            <td>小模型 Agent 工具链觉醒：SmallCode 1.2K⭐ 专为 8B-35B 优化编码 · HRM-Text 650⭐ $1000 预训练基础模型 · Centaur 364⭐ 多人自托管 K8s Agent · evilsocket/audit 433⭐ 8 阶段漏洞发现 Agent · Perplexity Bumblebee 供应链安全扫描</td>
+            <td><a href="/daily/2026-05-23.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-22">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-22</td>
+            <td>Claude Skills 生态持续分化：CodeGraph 13K⭐ 知识图谱 + Claude Plugins Official 22K⭐ · OpenHuman 24.7K⭐ 突破 2 万 · CloakBrowser 18K⭐ 反检测浏览器成 Agent 必备 · 12-Factor Agents 21.5K⭐ 定义 Agent 工程原则</td>
+            <td><a href="/daily/2026-05-22.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-21">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-21</td>
+            <td>OpenHuman 突破 24K⭐ · Agent Memory 双雄并进 · CodeGraph 代码知识图谱浮出 · 12-Factor Agents 工程原则预热 · 安全 Agent 赛道蓄势</td>
+            <td><a href="/daily/2026-05-21.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-20">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-20</td>
+            <td>Agent Skills 生态进入垂直分化期 · anthropics/skills 突破 140K⭐ · OpenHuman 持续爆发 · RuView WiFi 传感突破 60K⭐ · Agent Memory 赛道升温</td>
+            <td><a href="/daily/2026-05-20.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-19">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-19</td>
+            <td>Agent Skills 生态大爆发：anthropics/skills 137K⭐ 领跑 · CLI-Anything 36.5K⭐ 重新定义 Agent-Native · RuView WiFi 传感 59.8K⭐ 突破感知边界 · Agent Memory 持久化成新基建</td>
+            <td><a href="/daily/2026-05-19.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-18">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-18</td>
+            <td>Dirty Frag Linux LPE 席卷安全圈 · Agent 语言 Zero 一日暴涨 74% · AI 伴侣引擎浮出水面 · 统一存储抽象加速 · HTML Agent 工具链持续分化</td>
+            <td><a href="/daily/2026-05-18.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-17">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-17</td>
+            <td>本地推理双雄对决 · Agent VFS 基础设施化 · Agent 原生语言 Zero 问世 · AI 安全新物种 AiSOC · Token 效率成 Agent 新战场</td>
+            <td><a href="/daily/2026-05-17.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-16">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-16</td>
+            <td>ds4 突破万星 · Mirage VFS 持续增长 · Agent Harness 三强稳固 · Chrome DevTools MCP 逼近 40K · Spec Kit 冲刺百万</td>
+            <td><a href="/daily/2026-05-16.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-15">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-15</td>
+            <td>网络受限日 · Agent 生态进入整合期深读 · Spec-Driven Dev 范式变迁架构分析 · 本地推理三赛道分化复盘 · 安全赛道从漏洞驱动到平台化演进 · 3D 打印开放 vs 封闭之争的长期意义</td>
+            <td><a href="/daily/2026-05-15.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-14">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-14</td>
+            <td>YellowKey BitLocker 绕过漏洞引爆安全社区 · OrcaSlicer 恢复 BambuNetwork 驱动 3D 打印社区反弹 · Zero Native 3.3K Vercel 用 Zig 重定义桌面开发 · Files SDK 统一存储 API + Agent 工具链 · Agent 人格化浪潮 Goblin Agent 登场</td>
+            <td><a href="/daily/2026-05-14.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-13">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-13</td>
+            <td>断网结束实测回归 · Open Design 38.4K 增速趋稳确认平台地位 · Browser Harness 12.3K 突入 Agent 工具链核心 · GitHub Spec Kit 97K 官方入场 Spec-Driven Dev · Hermes Agent 147K 印证 Agent 竞赛升级 · ds4.c 突破 8K</td>
+            <td><a href="/daily/2026-05-13.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-12">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-12</td>
+            <td>数据校正完成 · CC Switch 68K 确认基座地位 · MemPalace 52K 稳居基础设施 · Open Design 37.9K 增速趋稳 · ds4.c 7.7K 超推演 177% · 安全双范式验证闭环</td>
+            <td><a href="/daily/2026-05-12.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-11">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-11</td>
+            <td>数据校正完成 · Agent 基础设施层进入筛选期 · ds4.c 7.7K 超预估 177% 是本周最大信号 · 推理引擎从工具走向生态 · 安全双范式验证闭环</td>
+            <td><a href="/daily/2026-05-11.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-10">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-10</td>
+            <td>周度复盘：Agent 生态分层成型 · ds4.c 爆发破 7.7K 验证推理热度 · Open Design 37.9K 确认平台地位 · DirtyFrag+Copy-Fail 安全双爆</td>
+            <td><a href="/daily/2026-05-10.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-09">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-09</td>
+            <td>Linux 内核安全漏洞密集爆发 · Open Design 33.8K 确认平台地位 · antirez/ds4 本地推理引擎赛道加速 · Agent 安全工具走向成熟</td>
+            <td><a href="/daily/2026-05-09.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-08">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-08</td>
+            <td>Agent VFS 统一抽象层出现 · AI 设计赛道 32K 确认 · 推理引擎赛道新玩家入场 · 安全审计 Agent 学术化突破</td>
+            <td><a href="/daily/2026-05-08.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-07">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-07</td>
+            <td>Agent 生态分层加速：Agent Design 进入平台整合期 · Agent 后端解耦工具链成熟 · 安全 Agent 化从概念到落地 · AI 视频赛道平台化竞争加剧 · Open Design 预估突破 30K</td>
+            <td><a href="/daily/2026-05-07.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-06">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-06</td>
+            <td>Agent Design 赛道爆发：Open Design 7 天 27K 重新定义设计工具链 · Cursor 官方 Cookbook 出炉 · Linux 内核 9 年 LPE 漏洞曝光 · AI PPT 生成工具集中爆发 · Vercel Deepsec 用 Agent 找漏洞</td>
+            <td><a href="/daily/2026-05-06.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-05">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-05</td>
+            <td>Agent 后端解耦趋势加速：DeepClaude 替换 Claude Code 后端 17x 降本 · Browser Agent 新形态 Chromex 入局 · Future AGI 开源 Agent 评估观测平台 · Reversa 遗留系统 Agent 化 · AI 编程术语标准化萌芽</td>
+            <td><a href="/daily/2026-05-05.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-04">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-04</td>
+            <td>Agent Design 红海化 · Linux 内核 CVE-2026-31431 席卷安全社区 · Harmonist 协议级 Agent 编排至 1.2K · DeepSeek TileKernels 定义 LLM 底层算子新方向 · DPI 绕过方案激增</td>
+            <td><a href="/daily/2026-05-04.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-03">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-03</td>
+            <td>Agent Skills 生态进入工具整合期：CC Switch 57K+ 稳守桌面基座 · Open Design 突破 15K · 3090 社区 LLM 部署方案崛起 · AI 语音输入 OpenLess 开辟新赛道</td>
+            <td><a href="/daily/2026-05-03.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-02">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-02</td>
+            <td>Agent Design 赛道爆发：Open Design 4天翻倍至 11.4K · Graphify 跨 Agent 知识图谱逼近 40K · HeyGen HyperFrames 定义 Agent 原生视频生成范式</td>
+            <td><a href="/daily/2026-05-02.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-05-01">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-05-01</td>
+            <td>Linux 内核 CVE-2026-31431 本地提权曝光 · Open Design 近 8K Stars 领跑 Agent Design 赛道 · DeepSeek TileKernels 输出 GPU Kernel 基础设施</td>
+            <td><a href="/daily/2026-05-01.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-30">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-30</td>
+            <td>Claude 架构逆向工程引爆 ML 社区 · AI Agent 记忆层进入本地优先时代 · Coding Agent Harness 标准化加速</td>
+            <td><a href="/daily/2026-04-30.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-29">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-29</td>
+            <td>AI 记忆层基础设施竞赛升温 · Agent Skill 生态进入长尾分化期 · Browser Agent 向 Harness 模式收敛</td>
+            <td><a href="/daily/2026-04-29.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-28">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-28</td>
+            <td>国产大模型 MoE 密集发布（Hy3 + Kimi K2.6）· Code Intelligence 走向 MCP-Native · Claude Code Skill 生态爆发</td>
+            <td><a href="/daily/2026-04-28.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-27">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-27</td>
+            <td>AI Memory 系统走向产品化 · Token 效率成为 Agent Skill 新焦点 · Agent 沙箱基础设施升温</td>
+            <td><a href="/daily/2026-04-27.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-26">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-26</td>
+            <td>AI Agent Skill 生态爆发 · 零人类公司编排走出概念 · CLI 成为 Agent-Native 标准接口</td>
+            <td><a href="/daily/2026-04-26.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-25">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-25</td>
+            <td>AI Agent 安全基础设施成型 · Memory 层竞争从 API 转向嵌入式 · Rust 正在成为 Agent Runtime 首选语言</td>
+            <td><a href="/daily/2026-04-25.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-24">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-24</td>
+            <td>Claude Code Skill 生态分化为垂直子赛道 · AI Coding 成本可观测性成为刚需 · LLM 推理内核性能优化进入白热化</td>
+            <td><a href="/daily/2026-04-24.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-23">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-23</td>
+            <td>OpenMythos 重建 Claude 架构引发研究热潮 · Claude Code 设计工具生态全面爆发 · Browser Harness 验证自愈浏览器成为 Agent 标配能力</td>
+            <td><a href="/daily/2026-04-23.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-22">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-22</td>
+            <td>Browser Harness 持续爆发验证 Browser Use 赛道 · Claude Code Skill 生态进入设计工具细分 · PgQue 代表极简主义基础设施思潮回归</td>
+            <td><a href="/daily/2026-04-22.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-21">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-21</td>
+            <td>OpenMythos 逆向重建 Claude 架构引爆关注 · Agentic Stack 定义跨 Harness 可移植 Agent 规范 · Weft 探索 AI 原生编程语言</td>
+            <td><a href="/daily/2026-04-21.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-20">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-20</td>
+            <td>Browser Use 推出 Self-Healing Browser Harness · Vercel 开源 Web 终端 wterm · Agent Skill 生态持续爆发（设计提取/PPT/诊断）</td>
+            <td><a href="/daily/2026-04-20.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-19">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-19</td>
+            <td>Agent 可移植性与 Harness 互操作成新焦点 · AI-native 编程语言 Weft 首次进入视野 · 分布式 DuckDB 与云原生 Postgres 数据基座演进加速</td>
+            <td><a href="/daily/2026-04-19.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-18">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-18</td>
+            <td>Claude Code Skill 生态爆发 · 全场景协议分析+AI 逆向成新范式 · Web 终端基础设施加速 · Token 可观测性进入平台化前夜</td>
+            <td><a href="/daily/2026-04-18.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-17">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-17</td>
+            <td>Agent Skill 自进化范式成形 · AI原生编程语言登场 · Token可观测性持续升温 · 端侧多模态推理加速</td>
+            <td><a href="/daily/2026-04-17.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-16">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-16</td>
+            <td>Agent成本可观测性觉醒 · AI记忆系统标准化竞赛 · Zero-Human Company编排框架落地 · 知识工程从RAG走向持久化Wiki</td>
+            <td><a href="/daily/2026-04-16.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-15">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-15</td>
+            <td>Karpathy Skills现象级爆发 · Claude生态工具链深度整合 · AI金融模型入场 · Agent基础设施工具层成型</td>
+            <td><a href="/daily/2026-04-15.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-14">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-14</td>
+            <td>Hermes Agent 65K星霸榜 · Agent Skill生态饱和信号 · 存储基础设施Rust化 · 语音AI开源破局</td>
+            <td><a href="/daily/2026-04-14.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-13">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-13</td>
+            <td>AI Agent工业化 · Harness工程新范式 · 群体智能觉醒 · 端侧AI生态成型</td>
+            <td><a href="/daily/2026-04-13.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-12">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-12</td>
+            <td>AI记忆系统破局 · Agent知识脑标配化 · 人格蒸馏Skill生态爆发</td>
+            <td><a href="/daily/2026-04-12.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-11">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-11</td>
+            <td>AI Agent 技能框架爆发 · 托管式 Agent 平台兴起 · Copilot Workspace 多仓库上下文</td>
+            <td><a href="/daily/2026-04-11.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-10">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-10</td>
+            <td>端侧AI推理生产化 · AI编程平台生态成熟 · 多代理协作标准化</td>
+            <td><a href="/daily/2026-04-10.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-09">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-09</td>
+            <td>自主 AI Agent 系统爆发 · AI 原生开发工具革新 · 科研自动化</td>
+            <td><a href="/daily/2026-04-09.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-08">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-08</td>
+            <td>claw-code 爆炸式增长 · Edge AI 加速落地 · Claude Code 生态持续扩张</td>
+            <td><a href="/daily/2026-04-08.html" class="section-link">查看 →</a></td>
+        </tr>
+        <tr data-date="2026-04-07">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-04-07</td>
+            <td>MCP 协议扩散 + 端侧 LLM 推理生产化</td>
+            <td><a href="/daily/2026-04-07.html" class="section-link">查看 →</a></td>
+        </tr>
+
+            </tbody>
+        </table>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script>
+    (function() {
+        var tbody = document.querySelector('.daily-table tbody');
+        var rows = tbody.querySelectorAll('tr');
+        var searchInput = document.getElementById('daily-search');
+        var sortBy = document.getElementById('daily-sort');
+        var countLabel = document.getElementById('daily-count');
+
+        function applyFilters() {
+            var search = (searchInput.value || '').toLowerCase().trim();
+            var sort = sortBy.value;
+            var visible = 0;
+            var rowArray = Array.from(rows);
+
+            rowArray.forEach(function(r) {
+                var text = (r.textContent || '').toLowerCase();
+                if (!search || text.indexOf(search) >= 0) { r.style.display = ''; visible++; }
+                else { r.style.display = 'none'; }
+            });
+
+            if (sort === 'date-desc') rowArray.sort(function(a,b) { return (b.getAttribute('data-date')||'').localeCompare(a.getAttribute('data-date')||''); });
+            else if (sort === 'date-asc') rowArray.sort(function(a,b) { return (a.getAttribute('data-date')||'').localeCompare(b.getAttribute('data-date')||''); });
+
+            rowArray.forEach(function(r) { tbody.appendChild(r); });
+            countLabel.textContent = '显示 ' + visible + ' / ' + rows.length + ' 篇日报';
+        }
+        searchInput.addEventListener('input', applyFilters);
+        sortBy.addEventListener('change', applyFilters);
+        applyFilters();
+    })();
+    </script>
+</body>
+</html>

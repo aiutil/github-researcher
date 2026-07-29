@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-04-26 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-04-26-github">2026-04-26 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日重点趋势</h2>
+<h3 id="1ai-agent-skill-84">趋势 1：AI Agent Skill 生态大爆发（评分 84）</h3>
+<p>本周最显著的趋势是 <strong>Skill 作为 Agent 认知单元</strong> 正在形成完整生态：</p>
+<ul>
+<li><strong>Graphify (34.8K)</strong>：跨 Agent 平台的 GraphRAG 编排 Skill，支持 Claude Code、Codex、Cursor、Gemini CLI 等 7+ 平台。本质是将知识图谱能力封装为可复用 Skill，一次编写多处运行。</li>
+<li><strong>guizang-ppt-skill (2.7K)</strong>：3 天破 2.6K，将 prompt 转为横滑杂志风 HTML Deck，10 种布局 + 5 主题。</li>
+<li><strong>garden-skills (1.2K)</strong>：ConardLi 的开源 Skill 合集，覆盖网页设计、知识检索、图像生成。</li>
+<li><strong>PUA (16.7K)</strong>：Tanweai 的"高能动性 Skill"——让 Agent 像被 PIP 的 P8 工程师一样拼命干活。概念戏谑但工程扎实。</li>
+</ul>
+<p><strong>架构师判断</strong>：Skill 正在从"小工具"演变为 Agent 的<strong>可复用认知模块</strong>。未来 Agent 能力 = Base Model + Skill Layer + Memory Layer。这个分层一旦稳固，Skill 分发平台将是新的 npm/PyPI。</p>
+<pre class="mermaid">graph TD
+    A[Agent Runtime] --> B[Skill Layer]
+    B --> C[Knowledge Skills<br/>Graphify, garden-skills]
+    B --> D[Content Skills<br/>guizang-ppt-skill, text-to-cad]
+    B --> E[Agency Skills<br/>PUA, colleague-skill]
+    B --> F[DevOps Skills<br/>claude-mem, clawsweeper]
+    A --> G[Memory Layer<br/>MemPalace, mem0]
+    A --> H[Tool Layer<br/>CLI-Anything, Google CLI]
+</pre>
+<h3 id="2-80">趋势 2：零人类公司编排从概念走向工程（评分 80）</h3>
+<p><strong>Paperclip (58.8K)</strong> 已经不是概念验证，而是一个完整的企业级编排框架：
+- 支持多 Agent 协作、任务分拆、自动化审批流
+- 零人类介入的端到端商业流程编排
+- TypeScript 技术栈，工程成熟度高</p>
+<p>同期涌现的：
+- <strong>Mercury Agent (1K)</strong>：Soul-driven Agent，权限硬化 + Token 预算控制，7×24 运行
+- <strong>Harmonist (596)</strong>：186 个 Agent 的纯 Python 编排，零运行时依赖</p>
+<p><strong>架构师判断</strong>：零人类公司正在从噱头变为严肃工程问题。核心挑战不是"能不能"，而是"审计链怎么做"、"故障怎么兜底"、"合规谁负责"。Paperclip 值得做 PoC。</p>
+<h3 id="3cli-agent-native-78">趋势 3：CLI 成为 Agent-Native 标准接口（评分 78）</h3>
+<p><strong>CLI-Anything (32.6K)</strong> 的定位非常清晰：<strong>把所有软件变成 Agent 可调用的 CLI 接口</strong>。这解决了一个真实痛点——Agent 要操控 GUI 软件非常困难，但如果能先把 GUI → CLI，再 CLI → Agent，难度大幅下降。</p>
+<p><strong>Google Workspace CLI (25.4K)</strong> 更有说服力——Google 自己下场做统一 CLI。当平台厂商开始提供 CLI 优先接口时，Agent-Native 的基础设施就成熟了。</p>
+<p><strong>架构师判断</strong>：CLI 作为 Agent-Native 接口标准正在形成共识。这对企业架构的影响是：所有内部工具都应该考虑暴露 CLI 接口。</p>
+<h3 id="4karpathy-autoresearch-76k-76">趋势 4：Karpathy autoresearch 76K（评分 76）</h3>
+<p>Karpathy 的 <strong>autoresearch</strong> 用单 GPU 自动跑 nanochat 训练实验。76K Stars 更多是 Karpathy 个人影响力加持，但项目本身代表了一个重要方向：<strong>研究自动化</strong>。</p>
+<p>与 OpenGame (1K) 的"用 Agent 写游戏"类似，autoresearch 本质是 <strong>Agent 对专业知识工作的渗透</strong>——不是替代研究者，而是把实验编排、参数搜索、结果记录自动化。</p>
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="1-graphify-agent-skill-graphrag">1. Graphify — Agent Skill 的 GraphRAG 标准雏形</h3>
+<p><strong>定位</strong>：跨 Agent 平台的 GraphRAG 编排 Skill</p>
+<p><strong>为什么火</strong>：
+- 解决了真实痛点：每个 Agent 平台都有自己的插件体系，知识检索逻辑无法复用
+- 34.8K Stars + 3.9K Forks，说明不只是围观，有人真在用
+- 支持 7+ Agent 平台，覆盖 Claude Code / Codex / Cursor / Gemini CLI / OpenClaw 等</p>
+<p><strong>技术亮点</strong>：
+- 统一的知识图谱抽象层，屏蔽底层 Agent 平台差异
+- Skill 声明式定义 + 运行时适配
+- GraphRAG 增强检索，比纯向量检索精度更高</p>
+<p><strong>架构启发</strong>：Skill 应该是平台无关的。未来的 Skill 标准可能会像容器镜像标准一样，成为跨运行时的分发单元。</p>
+<p><strong>风险</strong>：
+- GraphRAG 的实际效果 vs 纯向量检索，在很多场景差异不大
+- 依赖底层 LLM 的图谱抽取能力，效果不稳定
+- 跨平台兼容性维护成本高</p>
+<p><strong>归类</strong>：工具型 → 有平台化潜力。建议持续跟踪。</p>
+<h3 id="2-paperclip">2. Paperclip — 零人类公司编排</h3>
+<p><strong>定位</strong>：端到端零人类介入的自动化商业流程编排</p>
+<p><strong>为什么火</strong>：58.8K Stars 说明"零人类公司"概念击中了市场想象。但 fork 数 10K+ 说明工程上确实有内容。</p>
+<p><strong>技术亮点</strong>：
+- TypeScript 全栈，部署门槛低
+- 多 Agent 协作编排，支持任务分拆、依赖管理
+- 内置审批流模拟（即使没有人类也在运行）</p>
+<p><strong>架构启发</strong>：把"审批"建模为 Agent 间的消息传递，而不是人类 UI 操作。这对企业内部流程自动化有直接启发。</p>
+<p><strong>风险</strong>：
+- "零人类"在大多数监管环境不合规
+- 真实商业场景的边界条件极其复杂
+- 高度依赖 LLM 的可靠性</p>
+<p><strong>归类</strong>：平台候选。建议 PoC。</p>
+<h3 id="3-cli-anything-agent-native">3. CLI-Anything — Agent-Native 万物互联</h3>
+<p><strong>定位</strong>：将所有软件暴露为 Agent 可调用的 CLI 接口</p>
+<p><strong>为什么火</strong>：32.6K Stars + "Making ALL Software Agent-Native" 的定位极具野心。</p>
+<p><strong>技术亮点</strong>：
+- 自动发现 GUI 软件的可操作入口
+- 生成 CLI 包装层
+- Agent 可通过标准 CLI 协议调用</p>
+<p><strong>架构启发</strong>：与其让 Agent 学会操作 GUI，不如先把 GUI 软件变成 CLI。这是"接口适配器"模式的 Agent 时代版本。</p>
+<p><strong>风险</strong>：
+- GUI 软件变化频繁，CLI 包装层维护成本高
+- 很多 GUI 操作本身有状态依赖，CLI 化不完整
+- 定位过于宏大，可能无法对所有软件都有效</p>
+<p><strong>归类</strong>：基础设施候选。建议持续跟踪。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">泡沫信号</h3>
+<ul>
+<li><strong>PUA (16.7K)</strong> 的概念包装大于工程实质，"被 PIP 的 P8"是段子，不是架构</li>
+<li><strong>Kami (3.2K)</strong> 5 天破 3K，但本质是排版工具，与 AI 趋势关联度有限</li>
+<li><strong>Harmonist (596)</strong> "186 个 Agent 零依赖"更像是玩具示范</li>
+</ul>
+<h3 id="_5">真实机会</h3>
+<ul>
+<li><strong>Skill 标准化</strong>正在发生，Graphify 是目前最好的跨平台 Skill 实现</li>
+<li><strong>CLI 作为 Agent 接口</strong>有 Google 背书（Workspace CLI），企业应开始规划</li>
+<li><strong>零人类编排</strong>的审计和合规问题，将催生新的基础设施需求</li>
+</ul>
+<h2 id="_6">重点项目评分</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度</th>
+<th>创新</th>
+<th>成熟度</th>
+<th>架构启发</th>
+<th>落地</th>
+<th>趋势</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>归类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graphify</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>66</td>
+<td>工具型→平台候选</td>
+</tr>
+<tr>
+<td>Paperclip</td>
+<td>9</td>
+<td>7</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>66</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>autoresearch</td>
+<td>9</td>
+<td>7</td>
+<td>5</td>
+<td>7</td>
+<td>4</td>
+<td>7</td>
+<td>3</td>
+<td>3</td>
+<td>52</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>CLI-Anything</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>8</td>
+<td>5</td>
+<td>8</td>
+<td>6</td>
+<td>7</td>
+<td>61</td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>Google Workspace CLI</td>
+<td>7</td>
+<td>5</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>5</td>
+<td>6</td>
+<td>59</td>
+<td>生产可用</td>
+</tr>
+</tbody>
+</table>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

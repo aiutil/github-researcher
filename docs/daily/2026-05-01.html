@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-01 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-01-github">2026-05-01 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日重点趋势</h2>
+<h3 id="1-cve-2026-31431-copy-faillinux-aead-score-90">1. CVE-2026-31431 "Copy Fail"：Linux 内核 AEAD 本地提权漏洞曝光（Score: 90）</h3>
+<p><strong>theori-io/copy-fail-CVE-2026-31431</strong> 在 24 小时内冲到 1.6K stars。这不是一个普通的安全研究项目 — 它暴露了 Linux 内核中存在 <strong>9 年的 page-cache 损坏漏洞</strong>。</p>
+<p><strong>漏洞机制</strong>：
+- <code>algif_aead</code> 运行 AEAD 加密时使用 in-place 模式（<code>req-&gt;src == req-&gt;dst</code>）
+- 当通过 <code>splice()</code> 从普通文件传入数据时，目标 scatterlist 直接指向文件的 page-cache 页
+- <code>authencesn(hmac(sha256), cbc(aes))</code> 算法执行时，会在 page-cache 中写入 4 字节的 AAD <code>seqno_lo</code> 字段
+- <strong>结果</strong>：攻击者可以静默修改 page-cache 中的文件内容，而磁盘文件不变</p>
+<p><strong>利用路径</strong>：
+1. 修改 <code>/etc/passwd</code> 的 page-cache 副本，将当前用户 UID 改为 0
+2. 调用 <code>su</code> 获取 root shell
+3. 纯 Python 3.10+ 标准库即可利用，无需编译</p>
+<p><strong>影响范围</strong>：
+| 发行版 | 内核版本 |
+|--------|----------|
+| Ubuntu 24.04 LTS | 6.17.0-1007-aws |
+| Amazon Linux 2023 | 6.18.8 |
+| RHEL 10.1 | 6.12.0 |
+| SUSE 16 | 6.12.0 |</p>
+<p><strong>架构师视角</strong>：这个漏洞的严重性在于两点：
+1. <strong>无磁盘痕迹</strong>：攻击只修改内存中的 page-cache，磁盘文件完好，传统文件完整性检测失效
+2. <strong>历史积累</strong>：底层 bug 自 2017 年 commit <code>72548b093ee3</code> 引入，已存在 9 年</p>
+<p>影响所有运行未打补丁内核的云服务器和容器宿主机。如果企业 Linux 基础设施尚未完成内核升级，这是一个 <strong>P0 级安全问题</strong>。</p>
+<pre class="mermaid">graph LR
+    A[攻击者<br/>普通用户] --> B[splice 文件到 algif_aead]
+    B --> C[AEAD in-place 写入]
+    C --> D[4 字节 seqno_lo 写入<br/>page-cache]
+    D --> E[/etc/passwd 内存副本被修改]
+    E --> F[UID → 0]
+    F --> G[su → root shell]
+    
+    style D fill:#ff4444,color:#fff
+    style G fill:#ff0000,color:#fff
+</pre>
+<h3 id="2-open-design-8k-starsagent-design-tool-score-83">2. Open Design 近 8K Stars：Agent Design Tool 进入平台化阶段（Score: 83）</h3>
+<p><strong>nexu-io/open-design</strong> 两天从 4.1K → 8.0K stars，接近翻倍。这个 Claude Design 的开源替代正在快速整合 Agent Design 生态：</p>
+<p><strong>当前能力</strong>：
+- <strong>72 个品牌级 Design Systems</strong>（Linear、Stripe、Vercel、Airbnb、Tesla、Notion、Apple、Figma 等）
+- <strong>31 个 Composable Skills</strong>（27 prototype 模式 + 4 deck 模式）
+- <strong>10 个 Coding Agent CLI</strong> 自动检测（Claude Code、Codex、Cursor、Gemini CLI、OpenCode、Qwen、Copilot、Hermes、Kimi、Pi）
+- <strong>BYOK 全层</strong>：无 CLI 时可用 OpenAI 兼容代理接入任意模型
+- <strong>Claude Design 导入</strong>：可直接导入 Claude Design 导出的 ZIP 文件继续编辑
+- <strong>SQLite 持久化</strong>：项目、对话、模板全部本地存储</p>
+<p><strong>架构亮点</strong>：
+- Local daemon 架构：web 层可部署到 Vercel，daemon 在本地管理 CLI 进程
+- 5 种视觉方向（Editorial Monocle、Modern Minimal、Warm Soft、Tech Utility、Brutalist Experimental）
+- 每种方向都有确定性 OKLch 色板 + 字体栈</p>
+<p><strong>平台化判断</strong>：Open Design 正在从"单一工具"向"Agent Design 平台"进化。它不造 Agent — 它利用用户已有的 CLI Agent，提供了一个统一的设计工作流层。这种"不造轮子、编排已有工具"的架构选择，比自建 Agent 运行时更可持续。</p>
+<pre class="mermaid">graph TB
+    subgraph "Open Design Architecture"
+        WEB[Web Layer<br/>Vercel Deployable]
+        DAEMON[Local Daemon<br/>CLI Manager]
+        DB[SQLite<br/>Projects + Conversations]
+    end
+    
+    subgraph "Agent CLIs"
+        CC[Claude Code]
+        CX[Codex CLI]
+        CUR[Cursor Agent]
+        GEM[Gemini CLI]
+        OP[OpenCode]
+        COP[Copilot CLI]
+    end
+    
+    subgraph "Design Assets"
+        DS[72 Design Systems]
+        SK[31 Skills]
+        VD[5 Visual Directions]
+    end
+    
+    WEB --> DAEMON
+    DAEMON --> CC & CX & CUR & GEM & OP & COP
+    DAEMON --> DB
+    WEB --> DS & SK & VD
+</pre>
+<p><strong>风险</strong>：增速过快部分来自生态项目的 Star 交叉带动。87 个 open issues 表明项目稳定性仍需验证。但作为 Agent Design 赛道的最完整开源方案，值得持续跟踪。</p>
+<h3 id="3-deepseek-tilekernelsgpu-kernel-score-80">3. DeepSeek TileKernels：GPU Kernel 层开源基础设施浮出水面（Score: 80）</h3>
+<p><strong>deepseek-ai/TileKernels</strong>（1.4K stars）是 DeepSeek 出品的 GPU Kernel 库，基于 TileLang DSL 构建。这不是一个普通的开源项目 — 它代表国内头部 AI 厂商开始输出 <strong>GPU Kernel 层的基础设施能力</strong>。</p>
+<p><strong>核心模块</strong>：
+- <strong>Gating</strong> — Top-k 专家选择和评分（MoE 路由）
+- <strong>MoE Routing</strong> — Token-to-expert 映射，融合扩展/缩减 + 权重归一化
+- <strong>Quantization</strong> — FP8/FP4/E5M6 量化，融合 SwiGLU+量化算子
+- <strong>Engram</strong> — Engram 门控核，融合 RMSNorm + 前向/反向传播
+- <strong>Manifold HyperConnection</strong> — Sinkhorn 归一化 + 混合分割/应用</p>
+<p><strong>技术要求</strong>：SM90/SM100 架构 GPU + CUDA 13.1+。部分 Kernel 已在 DeepSeek 内部训练和推理中使用。</p>
+<p><strong>架构师视角</strong>：这释放了一个重要信号 — 大模型的竞争已经从模型层下沉到 Kernel 层。TileKernels 覆盖的 MoE、量化、Engram 门控都是下一代大模型架构的关键算子。开源这些 Kernel 意味着：
+1. DeepSeek 在构建 GPU Kernel 生态壁垒
+2. 下层基础设施的标准化正在加速
+3. 对依赖闭源 Kernel 的推理框架构成竞争压力</p>
+<p><strong>风险</strong>：SM90/SM100 限制意味着只有 H100/B200 级硬件可用，大部分开发者无法直接验证。</p>
+<h3 id="4-agent-score-78">4. Agent 安全治理新范式：协议硬强制 + 免费推理聚合（Score: 78）</h3>
+<p>两个方向看似无关，实则都指向 <strong>Agent 安全边界</strong>：</p>
+<p><strong>Harmonist</strong>（945 stars）— "不让 LLM 跳过规则"：
+- 首个开源 Agent 框架将 <strong>协议执行作为机械门控</strong> 而非提示词请求
+- 186 个预置 Agent，零运行时依赖（纯 Python 标准库）
+- 430+ 测试用例
+- 支持结构化验证记忆 + 供应链完整性检查
+- 集成 Cursor、Claude Code、Copilot、Windsurf、Aider</p>
+<p><strong>架构创新</strong>：Harmonist 的核心主张是 "thin agent frameworks leave enforcement to the prompt"（薄框架把执行留给提示词）。它用 hook 机制在每次代码变更前检查：是否运行了必要的 reviewer？记忆是否更新？供应链是否完整？不满足条件则阻断。</p>
+<p><strong>FreeLLMAPI</strong>（783 stars）— 聚合 14 家免费 LLM Provider：
+- OpenAI 兼容端点，路由选择最佳可用模型
+- 自动 failover，逐 key 追踪用量
+- 加密存储密钥
+- 月 1.3B+ tokens 免费推理能力</p>
+<p><strong>安全思考</strong>：FreeLLMAPI 聚合了 14 个免费 API，看似方便，但存在明确的合规风险 — 它可能在多个 Provider 的 ToS 边界上操作。对于个人实验可用，但<strong>绝不能用于生产环境</strong>。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<h3 id="p0-linux-cve-2026-31431">🔴 P0 安全：Linux 内核 CVE-2026-31431 紧急修复</h3>
+<p>这个漏洞不是理论可能 — 它有完整的 PoC 代码，纯 Python 即可利用。如果企业 Linux 基础设施存在以下情况，应立即排查：
+- 运行 Ubuntu 24.04 LTS、Amazon Linux 2023、RHEL 10.x、SUSE 16
+- 内核版本低于补丁版本
+- 容器宿主机暴露给非信任用户</p>
+<h3 id="agent-design-tool">🔥 Agent Design Tool 平台化</h3>
+<p>Open Design 两天翻倍的背后是整个 Agent Design 赛道的整合信号。从"百花齐放的 PPT/CAD/Design Skills"到"统一框架 + 可插拔 Skills"，这个演进路径与当年的 IDE 插件生态高度相似。</p>
+<h3 id="gpu-kernel">🔥 GPU Kernel 开源趋势</h3>
+<p>DeepSeek TileKernels + TileLang 意味着大模型竞争进入 Kernel 层。当模型架构趋同，性能差异将来自底层 Kernel 的优化质量。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">⚠️ 风险</h3>
+<ol>
+<li><strong>CVE-2026-31431 的 PoC 已公开</strong>：exploit 代码已开源，攻击门槛极低。48 小时内可能出现自动化利用工具。</li>
+<li><strong>Open Design 增速存疑</strong>：892 forks 中有多少是真实活跃用户需要观察。87 open issues 表明稳定性不足。</li>
+<li><strong>FreeLLMAPI 的合规灰色地带</strong>：聚合 14 家免费 tier 可能在使用条款的边界上操作，不适合企业场景。</li>
+</ol>
+<h3 id="_5">✅ 机遇</h3>
+<ol>
+<li><strong>Harmonist 的协议硬强制模式</strong>如果被主流 Agent 框架采纳，将成为 Agent 安全层的事实标准。</li>
+<li><strong>TileKernels 开源</strong>降低了 MoE 模型的推理门槛，对自建推理集群的企业有价值。</li>
+<li><strong>World2Agent 的 Sensor 协议</strong>如果建立标准，将解决 Agent 对物理世界感知的碎片化问题。</li>
+</ol>
+<h2 id="_6">延续观察</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>首次追踪</th>
+<th>当前状态</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Design</td>
+<td>2026-04-30</td>
+<td>8.0K stars</td>
+<td>↑ 4.1K → 8.0K（+95%）</td>
+</tr>
+<tr>
+<td>OpenMythos</td>
+<td>2026-04-30</td>
+<td>11.2K stars</td>
+<td>→ 稳定</td>
+</tr>
+<tr>
+<td>OpenChronicle</td>
+<td>2026-04-30</td>
+<td>1.9K stars</td>
+<td>→ 稳定</td>
+</tr>
+<tr>
+<td>Harmonist</td>
+<td>2026-04-29</td>
+<td>945 stars</td>
+<td>↑ 893 → 945</td>
+</tr>
+<tr>
+<td>TileKernels</td>
+<td>2026-04-30</td>
+<td>1.4K stars</td>
+<td>→ 新出现</td>
+</tr>
+<tr>
+<td>Copy Fail CVE</td>
+<td>2026-05-01</td>
+<td>1.6K stars</td>
+<td>🆕 首次追踪</td>
+</tr>
+<tr>
+<td>FreeLLMAPI</td>
+<td>2026-05-01</td>
+<td>783 stars</td>
+<td>🆕 首次追踪</td>
+</tr>
+<tr>
+<td>World2Agent</td>
+<td>2026-05-01</td>
+<td>588 stars</td>
+<td>🆕 首次追踪</td>
+</tr>
+<tr>
+<td>dbx</td>
+<td>2026-05-01</td>
+<td>391 stars</td>
+<td>🆕 首次追踪</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">其他值得关注</h2>
+<ul>
+<li><strong>cursor/cookbook</strong>（2.6K stars）— Cursor 官方食谱仓库，刚刚创建，可能成为 Cursor 生态的参考手册</li>
+<li><strong>Fokkyp/SoftwareCopyright-Skill</strong>（488 stars）— 中国软著申请材料自动生成 Skill，实用工具</li>
+<li><strong>t8y2/dbx</strong>（391 stars）— Tauri + Rust 轻量级数据库客户端，支持 8 种数据库，DBeaver 的轻量替代</li>
+<li><strong>ps5-linux/ps5-linux-loader</strong>（792 stars）— PS5 HV exploit + Linux bootloader，主机黑客社区热点</li>
+<li><strong>future-agi/future-agi</strong>（770 stars）— LLM/Agent 应用的评估+观测+改进平台，Apache 2.0</li>
+</ul>
+<hr />
+<p><em>本报告由 GitHub Researcher 自动生成 | 2026-05-01</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

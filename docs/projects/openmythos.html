@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenMythos | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/kyegomez/OpenMythos" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="openmythos">OpenMythos</h1>
+<h2 id="_1">一句话定位</h2>
+<p>基于公开论文理论重建 Claude Mythos 架构的开源实现 — Recurrent-Depth Transformer + Sparse MoE。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>大模型架构不透明。Anthropic 的 Claude 系列被广泛认为采用了创新的推理架构，但从未公开细节。OpenMythos 为研究者和工程师提供了一个可运行、可调试的理论参考实现。</p>
+<p>目标用户：ML 研究者、架构师、对推理优化感兴趣的工程师。</p>
+<h2 id="2026-04-30">为什么值得关注（2026-04-30）</h2>
+<ul>
+<li>12 天 11.2K stars，是本月增长最快的研究型项目</li>
+<li>首次将 Recurrent-Depth Transformer 的概念推向社区实践</li>
+<li>直接影响对推理基础设施未来设计的认知</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>真实需求 + 社区好奇心驱动</strong>。Anthropic 的 Claude 在推理质量上与竞品明显不同，社区对"它到底怎么做到的"有强烈求知欲。OpenMythos 满足了这个需求。但需注意：star 增长中相当部分来自"围观"而非"使用"。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>Recurrent-Depth Transformer (RDT)</strong>：三层架构（Prelude → Recurrent Block × N → Coda），推理时计算深度可变。核心洞察：不是所有 token 都需要相同深度的计算。</p>
+</li>
+<li>
+<p><strong>MLA / GQA 双注意力切换</strong>：支持 Multi-Head Latent Attention（DeepSeek 风格 KV 压缩）和 Grouped Query Attention，可在配置中切换。</p>
+</li>
+<li>
+<p><strong>Sparse MoE with Shared Experts</strong>：路由专家 + 共享专家的混合 FFN，21B 活跃参数承载大模型能力。</p>
+</li>
+<li>
+<p><strong>pip install 即可运行</strong>：<code>pip install open-mythos</code> 即可实验，门槛极低。</p>
+</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<pre class="mermaid">graph TB
+    subgraph "RDT Core Loop"
+        IN[Input] --> PRE[Prelude Layers]
+        PRE --> REC[Recurrent Block]
+        REC --> |"loop iter 1..N"| REC
+        REC --> CODA[Coda Layers]
+        CODA --> OUT[Output]
+    end
+    
+    subgraph "Key Innovation"
+        ADAPT["Adaptive Compute<br/>简单问题: 少循环<br/>复杂问题: 多循环"]
+    end
+    
+    REC --- ADAPT
+</pre>
+<p><strong>设计哲学</strong>：推理成本应该与问题复杂度成正比。这打破了"每个 token 固定计算量"的传统范式。</p>
+<p><strong>Trade-off</strong>：循环次数的上限需要平衡延迟和准确率。过高的循环次数会导致尾延迟不可控。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>学习型 + 研究探索型</strong>。目前不适合生产使用，但作为理解下一代 Transformer 架构的教学工具和实验平台，价值极高。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>理论重建 vs 实际架构</strong>：完全基于公开论文推测，Anthropic 从未确认 Mythos 架构细节。实际实现可能截然不同。</li>
+<li><strong>无预训练权重</strong>：仅提供架构代码，无可用预训练模型。真正的验证需要完整训练流程。</li>
+<li><strong>过度追捧风险</strong>：社区可能将理论模型等同于 Anthropic 的实际做法，产生误导。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>定位</th>
+<th>差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeepSeek-V3/R1</td>
+<td>生产级 MoE 模型</td>
+<td>有完整训练和权重，生产可用</td>
+</tr>
+<tr>
+<td>Mistral</td>
+<td>开源 MoE 模型</td>
+<td>成熟产品，OpenMythos 是纯架构</td>
+</tr>
+<tr>
+<td>llama.cpp</td>
+<td>推理框架</td>
+<td>聚焦推理优化，OpenMythos 聚焦架构设计</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是，高优先级</strong>。RDT 概念如果被验证，将改变推理基础设施设计。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>是否出现基于 OpenMythos 架构的实际预训练尝试</li>
+<li>Anthropic 是否对 Mythos 架构做出任何公开回应</li>
+<li>RDT 的推理效率 benchmark（与标准 Transformer 对比）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-04-30</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

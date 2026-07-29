@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-28 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-28-github">2026-05-28 GitHub 趋势研究简报</h1>
+<blockquote>
+<p>⚠️ <strong>网络受限日（连续第 5 天）</strong>：外部数据源（GitHub API/Trending/web_search）自 05-24 起完全不可达。本报告基于 05-19~05-23 已采集数据完成周度趋势综合分析。Stars 数据为最后实测推算值，非当日实时数据。趋势分析基于近 5 日连续数据，推演可信度开始下降。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一、五日趋势总览</h2>
+<p>基于 05-19 至 05-23 五天连续数据的趋势合成分析：</p>
+<pre class="mermaid">graph TD
+    A[Agent 生态分层] --> B[Harness 格局锁定]
+    A --> C[Skills 垂直分化]
+    A --> D[小模型 Agent 工程化]
+    
+    E[安全赛道] --> F[攻击 Agent: audit]
+    E --> G[防御 Agent: Bumblebee]
+    
+    H[基础设施演进] --> I[团队级: Centaur]
+    H --> J[记忆层: agentmemory/memori]
+    
+    K[端侧突破] --> L[本地推理: ds4/TokenSpeed]
+    K --> M[端侧 TTS: Supertonic]
+    
+    style A fill:#f9f,stroke:#333
+    style E fill:#f66,stroke:#333
+    style H fill:#69f,stroke:#333
+    style K fill:#6c6,stroke:#333
+</pre>
+<h3 id="_2">关键趋势演变</h3>
+<table>
+<thead>
+<tr>
+<th>趋势方向</th>
+<th>05-19</th>
+<th>05-22</th>
+<th>05-23</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Skills 生态</td>
+<td>大爆发(95)</td>
+<td>分化加速(95)</td>
+<td>持续分化(75)</td>
+<td>✅ 从爆发期进入分化期</td>
+</tr>
+<tr>
+<td>Agent Harness</td>
+<td>—</td>
+<td>格局锁定(80)</td>
+<td>持续统治(80)</td>
+<td>✅ ECC/Hermes/OpenCode 三强锁定</td>
+</tr>
+<tr>
+<td>小模型 Agent</td>
+<td>—</td>
+<td>—</td>
+<td>工程化破局(92)</td>
+<td>🆕 新趋势，端侧 Agent 工程化</td>
+</tr>
+<tr>
+<td>安全 Agent</td>
+<td>—</td>
+<td>—</td>
+<td>双线闭环(88)</td>
+<td>🆕 攻防双线成熟</td>
+</tr>
+<tr>
+<td>Agent Memory</td>
+<td>基建成型(86)</td>
+<td>—</td>
+<td>—</td>
+<td>→ 稳定在基础设施层</td>
+</tr>
+<tr>
+<td>12-Factor Agents</td>
+<td>—</td>
+<td>工程原则(90)</td>
+<td>—</td>
+<td>✅ Agent 工程化里程碑</td>
+</tr>
+<tr>
+<td>团队级 Agent</td>
+<td>—</td>
+<td>—</td>
+<td>Centaur(86)</td>
+<td>🆕 从个人走向团队</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">二、本周最值得关注的三个方向</h2>
+<h3 id="1-agent-harness">1. Agent Harness 三强格局锁定</h3>
+<p><strong>判断：赛道格局基本确定，新入局者窗口关闭。</strong></p>
+<p>ECC（188.5K⭐）、Hermes Agent（163K⭐）、OpenCode（164K⭐）形成头部三强。从 04-08 claw-code 一日暴涨开始，到 05-23 格局锁定，整个赛道的爆发-整合周期仅用了 6 周。</p>
+<p><strong>架构师视角</strong>：Harness 层的锁定意味着 Agent 生态的"操作系统层"已定。接下来的竞争在上层——Skills、Memory、安全。企业选型建议锁定 ECC 或 Hermes Agent 做 PoC。</p>
+<h3 id="2-skills">2. Skills 从通用框架走向垂直分化</h3>
+<p><strong>判断：Skills 生态正在按职能垂直细分，不是一个大一统市场。</strong></p>
+<ul>
+<li>Claude Plugins Official（22K⭐）— Anthropic 官方入口</li>
+<li>9arm-skills（1.5K⭐）— 综合技能集合</li>
+<li>PaperSpine（428⭐）— 论文学习专用技能</li>
+<li>CodeGraph（13K⭐）— 代码知识图谱技能</li>
+</ul>
+<p>这与 04-15 Karpathy Skills 爆发时"万物皆技能"的狂热形成对比。市场正在理性分化：每个垂直领域会有 1-2 个头部 Skills。</p>
+<h3 id="3-agent-05-23">3. 小模型 Agent 工程化 — 05-23 新出现的趋势</h3>
+<p><strong>判断：这不是简单的"本地部署"，而是从模型能力到 Agent 工具链的完整适配。</strong></p>
+<p>SmallCode（1.2K⭐）的三个关键工程决策值得关注：
+1. <strong>Budget-managed context</strong>：根据模型上下文窗口动态调整上下文策略
+2. <strong>Forgiving tool calling</strong>：容错 tool call 解析，适配小模型不稳定的工具调用输出
+3. <strong>TODO-file planning</strong>：用 TODO 文件代替复杂的 in-context 规划</p>
+<p>这些是"为小模型做工程适配"而不是"把大模型方案缩小"。这是端侧 Agent 工程化的正确方向。</p>
+<hr />
+<h2 id="_4">三、重点项目追踪</h2>
+<h3 id="_5">持续跟踪项目状态</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>最后实测 Stars</th>
+<th>分类</th>
+<th>状态</th>
+<th>本周变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECC (claw-code)</td>
+<td>188.5K</td>
+<td>基础设施候选</td>
+<td>🟢 稳定领跑</td>
+<td>格局锁定</td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>163K</td>
+<td>基础设施候选</td>
+<td>🟢 稳定第二</td>
+<td>三强之一</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td>164K</td>
+<td>基础设施候选</td>
+<td>🟢 稳定第三</td>
+<td>三强之一</td>
+</tr>
+<tr>
+<td>Claude Plugins</td>
+<td>22K</td>
+<td>平台候选</td>
+<td>🟢 官方入口</td>
+<td>生态核心</td>
+</tr>
+<tr>
+<td>12-Factor Agents</td>
+<td>21.5K</td>
+<td>学习型</td>
+<td>🟡 里程碑级</td>
+<td>首次出现</td>
+</tr>
+<tr>
+<td>OpenHuman</td>
+<td>24.7K</td>
+<td>平台候选</td>
+<td>🟡 高速增长</td>
+<td>本周 +19K</td>
+</tr>
+<tr>
+<td>CloakBrowser</td>
+<td>18K</td>
+<td>工具型</td>
+<td>🟢 Agent 必备</td>
+<td>反检测标杆</td>
+</tr>
+<tr>
+<td>CodeGraph</td>
+<td>13K</td>
+<td>工具型</td>
+<td>🟢 增长中</td>
+<td>降低 token 消耗</td>
+</tr>
+<tr>
+<td>CLI-Anything</td>
+<td>36.5K</td>
+<td>平台候选</td>
+<td>🟢 Agent-Native</td>
+<td>CLI-Hub 模式</td>
+</tr>
+<tr>
+<td>RuView</td>
+<td>59.8K</td>
+<td>基础设施候选</td>
+<td>🟢 WiFi 传感</td>
+<td>感知突破</td>
+</tr>
+<tr>
+<td>SmallCode</td>
+<td>1.2K</td>
+<td>工具型</td>
+<td>🆕 新增</td>
+<td>小模型适配</td>
+</tr>
+<tr>
+<td>Centaur</td>
+<td>364</td>
+<td>基础设施候选</td>
+<td>🆕 新增</td>
+<td>团队级 Agent</td>
+</tr>
+<tr>
+<td>audit</td>
+<td>433</td>
+<td>工具型</td>
+<td>🆕 新增</td>
+<td>安全 Agent</td>
+</tr>
+<tr>
+<td>HRM-Text</td>
+<td>650</td>
+<td>学习型</td>
+<td>🆕 新增</td>
+<td>低成本预训练</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">本周新增项目评价</h3>
+<p><strong>🔬 SmallCode（87 分）</strong>
+- 定位精准：不与大模型 Agent 竞争，专注 8B-35B 小模型的编码场景
+- 工程创新：budget-managed context、forgiving tool calling 是真正的工程适配
+- 架构启发：端侧 Agent 需要为模型局限性做专门的工程补偿
+- 风险：小模型能力天花板明显，复杂编码场景受限
+- <strong>归类：工具型 · 建议持续跟踪</strong></p>
+<p><strong>🐴 Centaur（84 分）</strong>
+- 定位独特：多人自托管 Agent 平台，Slack 原生集成
+- 技术亮点：K8s 沙箱隔离 + 凭证边界 + 持久工作流
+- 架构启发：Agent 从个人工具升级为团队基础设施，需要沙箱和权限模型
+- 风险：364 stars 偏早期，Paradigm 出品有一定背书但用户基数不足
+- <strong>归类：基础设施候选 · 建议持续跟踪</strong></p>
+<hr />
+<h2 id="_7">四、五日断网期趋势推演</h2>
+<h3 id="_8">可信度评估</h3>
+<p>本次断网 5 天（05-24~05-28），推演可信度分为三档：</p>
+<table>
+<thead>
+<tr>
+<th>可信度</th>
+<th>趋势方向</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 高</td>
+<td>Harness 三强锁定</td>
+<td>188K+ 级别的格局不易改变</td>
+</tr>
+<tr>
+<td>🟢 高</td>
+<td>Skills 垂直分化</td>
+<td>从爆发到分化是确定性路径</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td>小模型 Agent 工程化</td>
+<td>05-23 刚出现，延续性需验证</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td>安全 Agent 双线闭环</td>
+<td>赛道存在但项目量级小</td>
+</tr>
+<tr>
+<td>🟡 中</td>
+<td>团队级 Agent 基础设施</td>
+<td>Centaur 偏早期</td>
+</tr>
+<tr>
+<td>🔴 低</td>
+<td>具体项目 star 变化</td>
+<td>无实测数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">可能有遗漏的方向</h3>
+<p>断网期间可能遗漏的新趋势：
+1. <strong>新的大型安全漏洞</strong>（类似 Dirty Frag 级别的事件可能在断网期间出现）
+2. <strong>新的模型发布</strong>（大模型厂商的突然发布）
+3. <strong>Agent 编排领域的新项目</strong>（可能在 05-24~05-28 新出现的编排框架）
+4. <strong>K8s/云原生领域的突发热点</strong></p>
+<hr />
+<h2 id="_10">五、风险与机遇</h2>
+<h3 id="_11">风险</h3>
+<ol>
+<li><strong>推演数据时效性下降</strong>：5 天断网导致数据可信度下降</li>
+<li><strong>遗漏重大事件</strong>：可能错过安全漏洞、模型发布等突发事件</li>
+<li><strong>Skills 泡沫风险</strong>：Skills 生态爆发速度过快，大量低质量 Skills 可能拖累生态</li>
+</ol>
+<h3 id="_12">机遇</h3>
+<ol>
+<li><strong>小模型 Agent 工程化</strong>：企业可以在 8B-35B 模型上做 Agent PoC，成本低、隐私好</li>
+<li><strong>团队级 Agent 基础设施</strong>：Centaur 的 K8s + Slack 模式适合企业内部 Agent 平台建设</li>
+<li><strong>安全 Agent 双线闭环</strong>：攻击+防御 Agent 的出现说明安全赛道从概念走向工程</li>
+</ol>
+<hr />
+<h2 id="_13">六、下一步行动</h2>
+<ol>
+<li>恢复网络后优先补充 05-24~05-27 的趋势数据</li>
+<li>重点关注 SmallCode 和 Centaur 的后续发展</li>
+<li>跟踪安全 Agent 赛道是否出现更多项目</li>
+<li>验证 Skills 生态的分化趋势是否持续</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-28</em>
+<em>数据来源：本地仓库历史数据（05-19~05-23）</em>
+<em>外部数据源不可达，本报告标记为网络受限日</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

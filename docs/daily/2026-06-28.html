@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-28 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日趋势概览</h2>
+<h3 id="191">趋势 1：代码智能与记忆层大爆发（趋势分：91）</h3>
+<p>本周最值得关注的结构性变化：Agent 的"大脑层"从实验阶段进入生产级方案。</p>
+<p><strong>codebase-memory-mcp</strong>（DeusData）17,459⭐ 周增 7,592，将整个代码库索引为持久化知识图谱：
+- 158 语言 tree-sitter AST 解析 + Hybrid LSP 语义类型推断（Python/TS/Go/Rust/C++ 等 11 种）
+- Linux 内核 28M LOC / 75K 文件 3 分钟索引完成，查询 &lt; 1ms
+- 对比 file-by-file 探索：83% 答案质量 + 10× token 节省 + 2.1× 工具调用减少
+- 14 个 MCP 工具（call graph/impact analysis/dead code detection/Cypher query 等）
+- 单静态二进制，零依赖，自动检测 11 种 Coding Agent 配置
+- 有 arXiv 论文支撑（arXiv:2603.27277）</p>
+<p><strong>cognee</strong>（topoteretes）23,943⭐ 周增 5,072，自托管 Agent 记忆平台：
+- remember / recall / forget / improve 四个原语，API 极简
+- 知识图谱 + 向量嵌入 + 认知科学本体生成
+- 多模态数据摄入，session memory + graph memory 双层
+- 支持 Python / Rust / TypeScript 客户端 + Claude Code 插件 + OpenClaw 插件
+- 有 arXiv 论文（arXiv:2505.24478）</p>
+<p><strong>架构师判断：</strong> 这两个项目代表 Agent 技术栈的"大脑层"分化。codebase-memory-mcp 解决"理解现有代码"问题，cognee 解决"跨会话记忆"问题。两者都是 MCP server，可组合使用。这类基础设施一旦成熟，会像 LSP 一样成为标配。</p>
+<pre class="mermaid">graph TB
+    subgraph "Agent 大脑层"
+        CBM[codebase-memory-mcp<br/>代码库知识图谱<br/>158 语言 · 亚毫秒查询]
+        COG[cognee<br/>Agent 记忆平台<br/>知识图谱 + 向量搜索]
+    end
+
+    subgraph "Agent 感知层"
+        AR[Agent-Reach<br/>互联网感知<br/>7+ 平台 CLI]
+        PA[page-agent<br/>网页操作<br/>自然语言控制 UI]
+    end
+
+    subgraph "Agent 执行层"
+        ORC[Orca ADE<br/>并行编排<br/>30+ Agent]
+        NM[no-mistakes<br/>安全防护<br/>pre-push 验证]
+    end
+
+    subgraph "Agent 应用层"
+        AN[agent-native<br/>全栈框架<br/>UI = Agent]
+        VB[voicebox<br/>语音 I/O<br/>7 TTS · MCP]
+        OM[OpenMontage<br/>视频生产<br/>12 pipelines]
+    end
+
+    AR --> CBM
+    PA --> CBM
+    CBM --> ORC
+    COG --> ORC
+    ORC --> NM
+    ORC --> AN
+    COG --> AN
+    VB --> AN
+    ORC --> OM
+</pre>
+<h3 id="2agent-87">趋势 2：Agent 安全治理层崛起（趋势分：87）</h3>
+<p>Agent 生态从"能跑就行"进入"安全可控"阶段，三个信号：</p>
+<ol>
+<li>
+<p><strong>no-mistakes</strong> 3,790⭐ — git push 防护门。核心机制：<code>git push no-mistakes</code> → 创建 disposable worktree → 跑 review/test/docs/lint/PR 流水线 → AI 驱动验证 → 全绿才放行到 origin。支持 Claude Code/Codex/Copilot 等 agent 触发。设计哲学是"自动修复安全的机械问题，涉及意图的升级给人类"。</p>
+</li>
+<li>
+<p><strong>Anthropic-Cybersecurity-Skills</strong> 22,163⭐ 周增 5,109 — 817 条结构化安全技能，映射 MITRE ATT&amp;CK/NIST CSF 2.0/MITRE ATLAS/D3FEND/NIST AI RMF/MITRE F3 六大框架。29 个安全领域，兼容 Claude Code/Copilot/Codex/Cursor 等 20+ 平台。</p>
+</li>
+<li>
+<p><strong>OpenSpec</strong> 57,088⭐ — Spec-driven development (SDD) 持续增长，从规格出发约束 Agent 行为。</p>
+</li>
+</ol>
+<p><strong>架构师判断：</strong> 安全治理层的出现标志着 Agent 生态进入"工程化深水区"。no-mistakes 的 disposable worktree 模式非常精妙——它不阻塞开发者工作，在隔离空间做验证，类似 CI 的本地前置。安全技能映射到 6 大框架说明 Agent 安全已经从"想法"进入"体系化实施"阶段。</p>
+<h3 id="3agent-native-85">趋势 3：Agent-Native 应用框架首次定义（趋势分：85）</h3>
+<p><strong>BuilderIO/agent-native</strong> 2,707⭐ 周增 1,569 — 这不是又一个 Chat UI wrapper，而是首次系统性地定义"Agent-Native 应用"架构模式：</p>
+<p>核心理念：<code>defineAction</code> 一次定义，六端复用（UI / Agent / HTTP / MCP / A2A / CLI）。所有 action 共享一个 SQL-backed state，人类和 Agent 是同一系统的平等公民。</p>
+<p>关键特征：
+- Agent 和 UI 互为一等公民——点击或命令都行
+- Real-time multiplayer——人类和 Agent 同时编辑同一文档
+- Agent 可自修改应用——添加功能、修 bug、改进 UI
+- Agent 调 Agent——A2A 标签触发协作
+- 完整模板（Mail/Plans/Design/Content/Slides/Analytics）不是 scaffold，是 cloneable app</p>
+<p><strong>架构师判断：</strong> BuilderIO 团队（Qwik/Mitosis/Builder.io 创始人）有前端框架设计经验，这给了 agent-native 独特的架构品味。如果 agent-native 模式成立，它可能像 Rails 之于 MVC 一样，定义 Agent 时代全栈应用的默认架构。</p>
+<h3 id="4openmontage-designmd-88">趋势 4：OpenMontage 爆发式增长 + design.md 持续领跑（趋势分：88）</h3>
+<p><strong>OpenMontage</strong>（calesthio）25,143⭐ <strong>周增 17,249</strong>，本周 GitHub 增长第一：
+- 首个开源 Agentic 视频生产系统
+- 12 pipelines / 52 tools / 500+ agent skills
+- 从 YouTube 参考视频生成制作方案（分析 transcript/pacing/keyframes → 输出差异化概念 + 工具路径 + 成本估算）
+- 可制作真实视频（从免费素材库检索运动片段 + 时间线编辑 + 渲染），不只是"把静态图动起来"
+- 案例展示成本极低：Pixar 风格短片 $0.15，产品广告 $0.69，纪录片 $0.02
+- 与 Claude Code/Cursor/Copilot/Windsurf/Codex 全兼容</p>
+<p><strong>design.md</strong> 22,286⭐ 日增 1,542，连续 4 天高增长。设计系统 Agent 规范化已确立。</p>
+<h3 id="5voice-io-agent-83">趋势 5：Voice I/O 成熟 + Agent 垂直应用深化（趋势分：83）</h3>
+<p><strong>voicebox</strong>（jamiepine）34,860⭐ 周增 3,819 — 本地 AI 语音工作室：
+- 7 TTS 引擎（Qwen3-TTS/Qwen CustomVoice/LuxTTS/Chatterbox Multilingual/Turbo/HumeAI TADA/Kokoro）
+- Voice cloning + 50+ 预设声音
+- 23 语言、Whisper STT、global dictation hotkey
+- MCP server——Agent 一个 tool call 就能"说话"
+- Tauri (Rust) 构建，非 Electron
+- ElevenLabs + WisprFlow 开源替代</p>
+<p><strong>其他垂直应用持续活跃：</strong>
+- ai-berkshire 4,044⭐ — Claude Code 驱动的价值投资研究
+- daily_stock_analysis 50,510⭐ — LLM 多市场股票分析
+- open-seo 3,346⭐ — 开源 Semrush/Ahrefs 替代
+- system_prompts_leaks 46,597⭐ — 各大 AI 系统 prompt 泄露合集</p>
+<hr />
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="1-deusdatacodebase-memory-mcp">1. DeusData/codebase-memory-mcp — 代码智能基础设施</h3>
+<p><strong>定位：</strong> AI Coding Agent 的"代码理解引擎"。通过 tree-sitter + LSP 将代码库变成可查询的知识图谱，解决 Agent"看不懂全局"的核心痛点。</p>
+<p><strong>为什么火（周增 7.6K）：</strong>
+- 真实痛点：Agent 逐文件读取代码效率极低（~412K tokens vs 3.4K tokens）
+- arXiv 论文背书，31 个真实仓库评测
+- 单二进制零依赖，安装即用
+- 11 种 Coding Agent 自动配置</p>
+<p><strong>技术亮点：</strong>
+- RAM-first 索引管线（LZ4 压缩 + 内存 SQLite + fused Aho-Corasick）
+- Hybrid LSP：tree-sitter 做语法，LSP 做语义类型解析
+- Cypher-like 查询语言
+- Louvain 社区发现算法自动发现功能模块
+- 3D 知识图谱可视化（localhost:9749）</p>
+<p><strong>评分：</strong> 热度质量 9 · 技术创新度 9 · 工程成熟度 8 · 架构启发价值 9 · 企业落地潜力 8 · 中期趋势概率 8 · 平台化潜力 7 · 基础设施潜力 9 = <strong>总分 67/80</strong></p>
+<p><strong>定位：基础设施候选 · 建议持续跟踪 · 值得 PoC</strong></p>
+<h3 id="2-kunchenguidno-mistakes-agent">2. kunchenguid/no-mistakes — Agent 时代的代码安全门</h3>
+<p><strong>定位：</strong> git push 和 origin 之间的 AI 验证层。不替代 CI，而是 CI 的前置——在代码离开本地之前做质量把关。</p>
+<p><strong>核心机制：</strong>
+<pre class="mermaid">flowchart LR
+    A[你的分支] -->|git push no-mistakes| B[Disposable Worktree]
+    B --> C[Review]
+    C --> D[Test]
+    D --> E[Docs]
+    E --> F[Lint]
+    F --> G{全绿?}
+    G -->|Yes| H[Push to Origin + 开 PR]
+    G -->|No| I[AI 自动修复 / 升级给人类]
+    I --> C
+</pre></p>
+<p><strong>评分：</strong> 热度质量 7 · 技术创新度 8 · 工程成熟度 7 · 架构启发价值 8 · 企业落地潜力 8 · 中期趋势概率 7 · 平台化潜力 6 · 基础设施潜力 7 = <strong>总分 58/80</strong></p>
+<p><strong>定位：工具型 · 建议持续跟踪 · 中小团队可试用</strong></p>
+<h3 id="3-builderioagent-native-agent-native">3. BuilderIO/agent-native — Agent-Native 全栈框架</h3>
+<p><strong>定位：</strong> 定义"Agent-Native Application"架构模式。不是 Chat UI，不是 Copilot Sidebar，而是 Agent 与 UI 共享同一套 actions 和 state 的全栈框架。</p>
+<p><strong>架构启发：</strong>
+- Action-first 设计：一次 <code>defineAction</code>，六端复用
+- 数据同步：一个数据库，UI 和 Agent 的修改互相同步
+- Agent 自改进：Agent 可以给应用添加功能、修 bug
+- 这可能定义下一代 SaaS 的默认架构</p>
+<p><strong>评分：</strong> 热度质量 7 · 技术创新度 8 · 工程成熟度 6 · 架构启发价值 9 · 企业落地潜力 7 · 中期趋势概率 8 · 平台化潜力 8 · 基础设施潜力 6 = <strong>总分 59/80</strong></p>
+<p><strong>定位：平台候选 · 建议持续跟踪 · 架构师应研究其设计理念</strong></p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ol>
+<li><strong>代码智能层商机明确：</strong> codebase-memory-mcp 证明"让 Agent 理解全局代码"有巨大价值。企业内部可构建类似方案（私有代码库 + 自定义规则）</li>
+<li><strong>Agent 安全治理是新蓝海：</strong> no-mistakes + Anthropic-Cybersecurity-Skills 显示安全治理需求真实存在</li>
+<li><strong>Voice I/O 本地化：</strong> voicebox 证明本地 voice pipeline 可行，隐私友好，成本可控</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>OpenMontage 周增 17K 过于陡峭：</strong> 需观察是否可持续，Agentic 视频生产工具用户留存率通常不高</li>
+<li><strong>Agent-Native 框架过早锁定风险：</strong> agent-native 设计理念前卫但生态尚小（2.7K），框架选择需谨慎</li>
+<li><strong>system_prompts_leaks 类项目法律风险：</strong> 46.6K⭐ 但本质上是对抗 AI 公司 IP 保护，长期存续性存疑</li>
+</ol>
+<hr />
+<h2 id="agent">本周 Agent 技术栈分层图</h2>
+<pre class="mermaid">graph TB
+    subgraph L5["L5: 应用层"]
+        OM2[OpenMontage<br/>视频生产]
+        VB2[voicebox<br/>语音 I/O]
+        AB[ai-berkshire<br/>投资研究]
+        OS2[open-seo<br/>SEO 工具]
+    end
+
+    subgraph L4["L4: 框架层"]
+        AN2[agent-native<br/>Agent-Native 全栈]
+        DM2[design.md<br/>设计规范]
+    end
+
+    subgraph L3["L3: 编排/治理层"]
+        ORC2[Orca ADE<br/>并行编排]
+        NM2[no-mistakes<br/>安全防护]
+        ACS[Anthropic-Cyber<br/>Security Skills]
+    end
+
+    subgraph L2["L2: 智能/记忆层"]
+        CBM2[codebase-memory-mcp<br/>代码知识图谱]
+        COG2[cognee<br/>Agent 记忆]
+    end
+
+    subgraph L1["L1: 感知/执行层"]
+        AR2[Agent-Reach<br/>互联网感知]
+        PA2[page-agent<br/>网页操作]
+    end
+
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+</pre>
+<hr />
+<h2 id="_6">重点项目档案</h2>
+<p>今日新增项目档案：
+- <a href="projects/codebase-memory-mcp.md">codebase-memory-mcp</a> — 更新至 17.5K⭐
+- <a href="projects/cognee.md">cognee</a> — 新增
+- <a href="projects/no-mistakes.md">no-mistakes</a> — 新增
+- <a href="projects/agent-native.md">agent-native</a> — 新增
+- <a href="projects/voicebox.md">voicebox</a> — 新增</p>
+<hr />
+<p><em>研究日期：2026-06-28 · 数据来源：GitHub Trending (daily + weekly) · 分析视角：资深软件架构师</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

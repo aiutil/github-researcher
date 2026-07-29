@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-05-02 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-05-02-github">2026-05-02 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日趋势总览</h2>
+<pre class="mermaid">graph TB
+    subgraph "Agent Design 生态"
+        OD[Open Design<br/>11.4K ⭐]
+        ADM[awesome-design-md<br/>69.2K ⭐]
+        DM[DESIGN.md 规范<br/>10.8K ⭐]
+        HD[华术设计 Skill<br/>11.1K ⭐]
+    end
+
+    subgraph "Agent 知识/记忆层"
+        GF[Graphify<br/>39.6K ⭐]
+        MP[MemPalace<br/>50.7K ⭐]
+    end
+
+    subgraph "Agent 原生媒体"
+        HF[HyperFrames<br/>13.6K ⭐]
+        VU[Video Use<br/>5.9K ⭐]
+    end
+
+    subgraph "Agent 浏览器/工具"
+        OB[Obscura<br/>9.3K ⭐]
+        BH[Browser Harness<br/>9.2K ⭐]
+        CDM[Chrome DevTools MCP<br/>37.9K ⭐]
+    end
+
+    OD -->|"设计系统输出"| HF
+    GF -->|"知识注入"| MP
+    OB -->|"页面数据"| GF
+    CDM -->|"调试能力"| BH
+</pre>
+<hr />
+<h2 id="1agent-design-open-design-4-114k">趋势 1：Agent Design 赛道爆发，Open Design 4天翻倍至 11.4K</h2>
+<p><strong>判断：中期趋势，平台化加速</strong></p>
+<p>Open Design（nexu-io/open-design）自 4月28日创建以来，从 8K 飙升至 11.4K，4天增速 43%。这不是单纯的 Star 增长——它的 Design System 数量从 71 扩展到 72，Skills 从 19 扩展到 31，已经从一个 Skill 演化为<strong>设计平台</strong>。</p>
+<p>关键数据：
+- 11.4K stars / 1,288 forks / 100 open issues / 活跃贡献者 37+
+- BYOK 模式，支持 Claude Code / Codex / Cursor / Gemini / OpenCode / Hermes 等 10+ Agent
+- 输出格式覆盖：Web / Desktop / Mobile / Slides / Images / Videos / HyperFrames
+- Apache-2.0 开源</p>
+<p><strong>架构师视角：</strong> Agent Design 正在从"给 Agent 加设计能力"向"以 Agent 为核心的设计工作流"演变。Open Design 的定位是<strong>设计系统的 Agent 化中间层</strong>——它不替代 Figma，而是让 Agent 理解设计系统并直接输出产品级 UI。这是 Vibe Coding 向 Vibe Design 的关键跃迁。</p>
+<p><strong>与同赛道的对比：</strong>
+- awesome-design-md (69.2K)：静态资源集合，无运行时能力
+- DESIGN.md 规范 (10.8K)：格式定义，无工具链
+- 华术设计 (11.1K)：中文社区 Skill，更偏 HTML 原生</p>
+<p>Open Design 是目前唯一同时具备<strong>运行时 + 多Agent支持 + 输出格式覆盖</strong>的候选平台。</p>
+<hr />
+<h2 id="2graphify-40k-agent-skill">趋势 2：Graphify 逼近 40K，跨 Agent 知识图谱 Skill 生态新基座</h2>
+<p><strong>判断：中期趋势，基础设施候选</strong></p>
+<p>Graphify (safishamsi/graphify) 从 4月26日的 37.3K 增长到今天的 39.6K，日均增速约 460 stars，持续加速。更关键的是它从 v0.5 升级到 v0.6.2，修复了 6+ 类问题（Windows 路径、跨语言噪声、有向图、否定模式等），说明工程成熟度在快速提升。</p>
+<p>关键数据：
+- 39.6K stars / 4,372 forks / 220 open issues
+- 支持 Claude Code / Codex / OpenCode / Cursor / Gemini CLI / OpenClaw 等 10+ 平台
+- 基于 Tree-sitter 的代码解析 + Leiden 算法的社区检测
+- v0.6.2 新增：Kim Thinking 支持、内联注释、查询加速、缓存竞态修复</p>
+<p><strong>架构师视角：</strong> Graphify 的核心价值不是"知识图谱"本身，而是<strong>让 Coding Agent 获得全局代码理解能力</strong>。当一个 Agent 在修改代码时，它不仅看到当前文件，而是通过 Graphify 获得整个代码库的模块依赖、调用链、数据流图。这是 Agent 从"文件级编辑"向"仓库级理解"的关键基础设施。</p>
+<hr />
+<h2 id="3heygen-hyperframes-agent">趋势 3：HeyGen HyperFrames — Agent 原生视频生成范式</h2>
+<p><strong>判断：短期热点，但范式值得关注</strong></p>
+<p>HyperFrames (heygen-com/hyperframes) 提出了一个有趣的范式：<strong>用 HTML 描述视频帧，Agent 生成 HTML，渲染引擎输出视频</strong>。13.6K stars，TypeScript 实现。</p>
+<p>关键数据：
+- 13.6K stars / 创建于 2026年4月
+- 核心理念：Write HTML → Render Video
+- 面向 Agent 的视频生成 API
+- TypeScript / Apache-2.0</p>
+<p><strong>架构师视角：</strong> 这代表一个新趋势——<strong>Agent 原生媒体生成</strong>。传统视频生成是模型直接输出像素（Sora/Runway），而 HyperFrames 是 Agent 写结构化描述（HTML），然后由渲染引擎转换为视频。这条路径的优势是：Agent 可以精确控制每一帧，与现有 Web 技术栈无缝衔接，且输出可解释、可编辑。</p>
+<p>风险点：HeyGen 是商业公司，HyperFrames 更像是其 API 的开源前端入口，真正的视频渲染能力仍依赖 HeyGen 后端。独立性不足。</p>
+<hr />
+<h2 id="4quipnetwork-star-fork">趋势 4：QuipNetwork 量子虚拟机 — 高 Star 低 Fork 的可疑信号</h2>
+<p><strong>判断：疑似刷星，建议观望</strong></p>
+<p>QuipNetwork 在4月2日同日创建三个项目：
+- quip-protocol-rs: 5,803 stars / 30 forks
+- xq-rs: 5,734 stars / 17 forks
+- xq-py: 5,675 stars / 13 forks</p>
+<p><strong>异常信号：</strong>
+1. Star/Fork 比例极度不正常（200:1 到 400:1），正常热门项目通常在 10:1 到 30:1
+2. 三个项目几乎同一时间创建，star 数高度相似（5.6K-5.8K）
+3. 创建后仅推送过一次代码（4月2日），之后无任何更新
+4. 无 README 描述、无 issue 讨论、无贡献者社区
+5. 描述中提到"量子虚拟机"和"Substrate fork"，但无任何技术验证</p>
+<p><strong>结论：</strong> 高度疑似刷星项目。从区块链/加密领域常见的 pattern 来看，这是典型的"制造热度"行为。<strong>不建议跟踪，不生成项目档案。</strong></p>
+<hr />
+<h2 id="_2">持续跟踪项目动态</h2>
+<h3 id="mempalace-507k">MemPalace (50.7K ⬆️)</h3>
+<ul>
+<li>从 50.2K 微涨至 50.7K，增速放缓但已稳守 50K+</li>
+<li>最新提交修复了 MCP Server 的 collection reopen crash（#1289）</li>
+<li>核心贡献者 igorls 261 commits，工程成熟度持续提升</li>
+<li><strong>判断：</strong> AI Memory 赛道的标准候选者，继续深度跟踪</li>
+</ul>
+<h3 id="browser-harness-92k">Browser Harness (9.2K ⬆️)</h3>
+<ul>
+<li>从 8.4K 增至 9.2K，稳步增长</li>
+<li>新增 VOUCHED.td 贡献者信任机制，有意思的治理实验</li>
+<li>199 commits，核心团队 MagMueller (76) + sauravpanda (56)</li>
+<li><strong>判断：</strong> Browser Agent 赛道的 Harness 标准候选，继续深度跟踪</li>
+</ul>
+<h3 id="chrome-devtools-mcp-379k">Chrome DevTools MCP (37.9K ⬆️)</h3>
+<ul>
+<li>从 35K 增至 37.9K，日均约 300 stars</li>
+<li>Agent 浏览器调试能力的标准接口</li>
+<li><strong>判断：</strong> MCP 生态的重要基础设施，继续跟踪</li>
+</ul>
+<h3 id="claw-code-1895k">Claw Code (189.5K)</h3>
+<ul>
+<li>仍居 GitHub Star 榜首，189.5K stars</li>
+<li>但最近一次 push 是 4月30日，活跃度有所下降</li>
+<li><strong>判断：</strong> 现象级项目，关注其生态演化</li>
+</ul>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ol>
+<li><strong>Agent Design 平台化</strong> — Open Design 正在定义一个新赛道，将设计系统的消费方从人类设计师扩展到 AI Agent，这是 Vibe Coding 的自然延伸</li>
+<li><strong>知识图谱作为 Agent 基础设施</strong> — Graphify 证明了"Agent 原生知识图谱"有真实需求，未来可能成为 Coding Agent 的标准配置</li>
+<li><strong>Agent 原生媒体</strong> — HyperFrames 虽然有商业化风险，但 HTML→Video 的范式值得 PoC</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>QuipNetwork 类刷星项目增多</strong> — 加密/量子概念的 repo 通过刷星制造虚假热度，需要更强的甄别能力</li>
+<li><strong>Agent Skill 生态碎片化</strong> — 每天涌现大量新 Skill（caveman 52K、career-ops 41K），但质量参差不齐</li>
+<li><strong>MemPalace 增速放缓</strong> — 从暴涨期进入平台期，需要关注是否有新的增长驱动力</li>
+</ol>
+<hr />
+<h2 id="_6">重点项目评分</h2>
+<h3 id="open-design">Open Design</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>4天翻倍，fork/star 比健康，贡献者多样</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>BYOK + 多Agent + 多输出格式，设计系统 Agent 化</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>100 open issues 但修复活跃，v1 前期</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>Agent 作为设计系统消费方的架构模型</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>7</td>
+<td>需要 Agent 基础设施就绪</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>Vibe Design 是 Vibe Coding 的自然延伸</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>9</td>
+<td>设计系统 + Agent + 多输出，天然平台</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>7</td>
+<td>更偏平台层，不是底层基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>64/80</strong></td>
+<td><strong>平台候选，建议持续跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="graphify">Graphify</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>逼近40K，日增460，fork比健康</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>Tree-sitter + Leiden + 跨Agent</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>8</td>
+<td>v0.6.2，修复活跃，质量可控</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>代码即图谱，Agent 全局理解</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>8</td>
+<td>直接提升 Coding Agent 效果</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>Agent 知识层是刚需</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>Skill 形态，平台化需要更多</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>9</td>
+<td>Agent 理解代码库的标准路径</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>66/80</strong></td>
+<td><strong>基础设施候选，强烈建议持续跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyperframes">HyperFrames</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>8</td>
+<td>13.6K，HeyGen 品牌加持</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>HTML→Video 范式创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>早期项目，依赖 HeyGen 后端</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>Agent 原生媒体生成架构</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>6</td>
+<td>商业依赖风险</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>Agent 媒体生成是真实趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>6</td>
+<td>受限于 HeyGen 生态</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>5</td>
+<td>非底层，更偏应用层</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>54/80</strong></td>
+<td><strong>工具型，建议观察</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="mermaidagent-2026-05-02">Mermaid：Agent 生态分层图（2026-05-02）</h2>
+<pre class="mermaid">graph TD
+    subgraph "应用层"
+        OD[Open Design<br/>Agent 设计平台]
+        HF[HyperFrames<br/>Agent 视频生成]
+        VU[Video Use<br/>Agent 视频编辑]
+    end
+
+    subgraph "能力层 / Skill"
+        GF[Graphify<br/>代码知识图谱]
+        NS[Nuwa Skill<br/>思维蒸馏]
+        CM[Caveman<br/>Token 压缩]
+        CO[Career Ops<br/>求职自动化]
+    end
+
+    subgraph "记忆 / 知识层"
+        MP[MemPalace<br/>AI 记忆系统]
+        DM[DESIGN.md<br/>设计规范]
+    end
+
+    subgraph "工具 / 浏览器层"
+        BH[Browser Harness<br/>自愈浏览器]
+        OB[Obscura<br/>Rust 无头浏览器]
+        CDM[Chrome DevTools MCP<br/>调试协议]
+        GW[Google Workspace CLI<br/>Rust 工作流]
+    end
+
+    subgraph "Agent Runtime"
+        CC[Claw Code 189K]
+        OC[OpenCode 153K]
+        SP[Superpowers 175K]
+    end
+
+    OD -->|"设计输出"| HF
+    GF -->|"知识注入"| CC
+    MP -->|"记忆检索"| CC
+    BH -->|"页面交互"| GF
+    CDM -->|"调试能力"| BH
+    CC -->|"调用"| GF
+    CC -->|"调用"| OD
+</pre>
+<hr />
+<p><em>研究日期：2026-05-02 | 数据来源：GitHub Search API via gh CLI | 项目数：10 | 趋势方向：4</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

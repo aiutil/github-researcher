@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qmd | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/qmd-project/qmd" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="qmd-cli">qmd — 本地 CLI 搜索引擎</h1>
+<blockquote>
+<p>2026-04-07 新增跟踪</p>
+</blockquote>
+<hr />
+<h2 id="_1">基本信息</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td>https://github.com/tobi/qmd</td>
+</tr>
+<tr>
+<td>Stars</td>
+<td>18,843（总） / 394（今日）</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>TypeScript</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>@tobi</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">它是做什么的</h2>
+<p><strong>mini cli search engine for your docs, knowledge bases, meeting notes</strong></p>
+<p>一个本地运行的文档搜索引擎，结合 BM25 全文检索 + 向量语义搜索 + LLM 重排，全部跑在本地（通过 node-llama-cpp + GGUF 模型）。支持 MCP Server 暴露工具给 AI Agent。</p>
+<p>核心功能：
+- <strong>keyword search</strong>：<code>qmd search "project timeline"</code> — 快速关键词搜索
+- <strong>semantic search</strong>：<code>qmd vsearch "how to deploy"</code> — 向量语义搜索
+- <strong>hybrid reranking</strong>：<code>qmd query "quarterly planning process"</code> — BM25 + 向量 + LLM 重排，质量最高
+- <strong>context 树</strong>：<code>qmd context add qmd://notes "Personal notes and ideas"</code> — 为检索结果提供上下文，帮助 LLM 做更好选择
+- <strong>MCP Server</strong>：<code>qmd mcp</code> — 暴露 query/get/multi_get/status 工具给 Claude Desktop、Claude Code 等
+- <strong>agentic 格式输出</strong>：<code>--json</code>、<code>--all --files --min-score 0.3</code> 等专为 Agent 设计的输出格式</p>
+<p>安装：
+```bash
+npm install -g @tobilu/qmd</p>
+<h1 id="_3">或</h1>
+<p>bun install -g @tobilu/qmd
+```</p>
+<hr />
+<h2 id="_4">它为什么火</h2>
+<ol>
+<li><strong>隐私优先 + 全本地运行</strong>：在 AI Agent 越来越热的时候，本地文档隐私成为强需求。</li>
+<li><strong>MCP 协议集成</strong>：MCP Server 暴露让 qmd 可以无缝接入 Claude Desktop、Claude Code、Windsurf 等 AI 工具。</li>
+<li><strong>context 树机制</strong>：这是 qmd 最有特色的设计——不是返回文档片段，而是返回"上下文树"，让 LLM 更好地理解文档层级关系。</li>
+<li><strong>纯 npm 安装</strong>：零门槛，本地跑 LLM 模型（GGUF），不需要 GPU。</li>
+</ol>
+<hr />
+<h2 id="_5">真正的技术亮点</h2>
+<ol>
+<li><strong>混合检索 + LLM 重排</strong>：BM25（精确）+ 向量（语义）+ LLM reranking（质量最优），三层级联。</li>
+<li><strong>context 树机制</strong>：文档的层级关系被编码为 context 树，返回结果时带着父级上下文。这个设计让 Agent 能理解"这份文档在哪里、它和什么相关"，而不只是匹配关键词。</li>
+<li><strong>全本地 LLM</strong>：通过 node-llama-cpp 跑 GGUF 模型，不需要云端 API，纯本地推理。</li>
+<li><strong>MCP Server 原生集成</strong>：query、get、multi_get、status 四个工具直接暴露为 MCP 工具，Claude Code 一行配置即可使用。</li>
+</ol>
+<hr />
+<h2 id="_6">解决的问题是否真实存在</h2>
+<p><strong>真实，是强需求。</strong></p>
+<p>开发者有大量本地文档：Notes、Meeting transcripts、Work docs、Knowledge bases。AI Agent 时代，如何让 Agent 精准检索这些本地文档是个真实问题。qmd 用纯本地方案解决了隐私 + 离线 + AI Agent 集成三个需求。</p>
+<hr />
+<h2 id="_7">它更偏玩具、工具、平台还是基础设施</h2>
+<p><strong>工具型，但有基础设施潜力。</strong></p>
+<p>qmd 目前是一个 CLI 工具，但它的定位是"Agent 的本地记忆系统"。如果 AI Agent 的本地上下文管理成为标配（这很可能是趋势），qmd 这类工具会从工具演化为基础设施组件。</p>
+<hr />
+<h2 id="_8">它属于短期热点还是中期趋势</h2>
+<p><strong>中期趋势。</strong></p>
+<p>隐私优先的本地文档检索 + AI Agent 集成是持续需求，不会在短期内消失。但竞品（ripgrep + LLM、pagefind、Elasticsearch 本地版）也在发展，qmd 需要在 context 树等差异化能力上持续强化。</p>
+<hr />
+<h2 id="_9">对架构师最有价值的启发</h2>
+<ol>
+<li><strong>context 树设计</strong>：检索结果不只是"相关文档列表"，而是带着层级上下文的树状结构。这个设计让 Agent 能做更智能的上下文选择，而不只是关键词匹配。</li>
+<li><strong>Agent 记忆系统的本地化路径</strong>：qmd 是"个人知识库 + AI Agent"的一个轻量级解法。如果企业内部需要类似能力，qmd 的架构值得参考。</li>
+<li><strong>MCP 工具暴露</strong>：把搜索能力通过 MCP 暴露给 AI Agent，比 API 更规范，比插件更通用。</li>
+</ol>
+<hr />
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>是，持续跟踪。</strong></p>
+<p>如果 MCP 协议成为标准，类似 qmd 的 MCP-native 工具会越来越多。qmd 的 context 树机制是差异化亮点，值得观察它是否能在竞争中保持优势。</p>
+<hr />
+<h2 id="poc">是否值得企业内部做 PoC</h2>
+<p><strong>可以小范围尝试。</strong></p>
+<p>适合场景：团队成员有大量本地文档（会议记录、技术文档、个人笔记），且对数据隐私有要求。使用 qmd + Claude Code 可以快速构建本地知识检索能力。</p>
+<hr />
+<h2 id="_11">风险、局限、泡沫点</h2>
+<ol>
+<li><strong>竞品压力</strong>：pagefind（静态站点搜索）、ripgrep + LLM 等方案成熟后，qmd 的差异化会缩小。</li>
+<li><strong>模型质量依赖</strong>：全本地 GGUF 模型的质量直接影响搜索效果，不同模型差异大。</li>
+<li><strong>不支持多用户协作</strong>：纯本地设计，不适合团队共享知识库场景。</li>
+<li><strong>index 更新成本</strong>：每次文档变化需要重新 embed，大文档库索引成本不可忽视。</li>
+</ol>
+<hr />
+<h2 id="_12">是否值得沉淀进长期研究仓库</h2>
+<p><strong>值得持续跟踪。</strong></p>
+<p>标签：<strong>值得跟踪 | Agent 记忆基础设施 | MCP 生态</strong></p>
+<hr />
+<h2 id="_13">评分</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>394/day，稳健增长，但总量 18.8k 与增长速率有一定背离</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>context 树 + 混合检索 + 全本地 LLM，工程实现扎实</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>npm 发布，MCP 集成完整，文档清晰</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>Agent 本地记忆系统的轻量级参考实现</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>5</td>
+<td>单用户本地工具，多用户协作场景需定制</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>本地隐私 + AI Agent 需求是持续趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>4</td>
+<td>工具定位明确，平台化路径不清晰</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>6</td>
+<td>Agent 本地记忆层有基础设施潜力，但依赖 MCP 生态</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>51/80</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>归类：工具型 | 建议持续跟踪</strong></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

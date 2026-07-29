@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-04-23 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日趋势概览</h2>
+<h3 id="1llm-openmythos">趋势 1：LLM 架构逆向工程热潮 — OpenMythos</h3>
+<p><strong>OpenMythos</strong> 在 4 天内收获 8.7k stars，成为本周最火热的新项目之一。它基于公开研究文献，从第一性原理重建 Claude 的 "Mythos" 架构 — 实现了 Recurrent-Depth Transformer (RDT) 三阶段结构（Prelude → Recurrent Block → Coda），支持 MLA/GQA 注意力切换和稀疏 MoE。</p>
+<p><strong>架构师视角：</strong> 这代表了两个趋势交汇：
+1. 闭源模型架构正在被社区逆向工程并以开源形式复现
+2. Recurrent-Depth / compute-adaptive 推理正在成为新一代 LLM 架构的关键范式</p>
+<p><strong>风险点：</strong> 纯理论重建，无官方验证；实际训练效果未知；更多是研究教育价值而非生产可用。</p>
+<h3 id="2claude-code">趋势 2：Claude Code 设计工具生态全面爆发</h3>
+<p>本周 Claude Code Skill 生态进入设计工具细分领域，多个项目同时爆发：</p>
+<ul>
+<li><strong>huashu-design</strong> (4.4k ⭐)：HTML 原生设计 Skill，20 个设计哲学 + 5 维评审 + MP4 导出</li>
+<li><strong>open-codesign</strong> (1.2k ⭐)：开源 Claude Design 替代品，Electron 桌面应用，支持 Claude/GPT/Gemini/Kimi/GLM/Ollama</li>
+<li><strong>Kami</strong> (2.5k ⭐，延续跟踪)：内容驱动的好纸张体验</li>
+</ul>
+<p><strong>架构师视角：</strong> 这不再是简单的 prompt engineering，而是正在形成「设计能力即 Skill」的完整生态。关键信号：
+- 从单一工具到多模型 BYOK 平台化演进
+- HTML/CSS/SVG 作为 Agent 输出格式正在成为事实标准
+- 设计 → 代码的自动化链路正在被 Agent 原生接管</p>
+<h3 id="3browser-agent">趋势 3：Browser Agent 自愈能力成为标配</h3>
+<p><strong>browser-harness</strong> (5.0k ⭐) 延续昨日爆发态势，进一步验证 Browser Use 赛道的持续性。Self-healing 能力（自动修复选择器失败、页面变更）正在从差异化特性变成基础能力要求。</p>
+<h3 id="4coding-agent">趋势 4：Coding Agent 赛道稳定格局</h3>
+<p>Coding Agent 赛道格局进一步稳定：
+- <strong>claw-code</strong> (187.5k ⭐) — Rust 实现，持续领跑
+- <strong>opencode</strong> (147.7k ⭐) — TypeScript 开源 coding agent
+- <strong>hermes-agent</strong> (110.5k ⭐) — Nous Research，6.3k open issues 显示社区极度活跃
+- <strong>everything-claude-code</strong> (164.2k ⭐) — Agent harness 性能优化系统</p>
+<pre class="mermaid">graph TD
+    subgraph "Coding Agent 赛道格局 2026-04-23"
+        A[claw-code<br/>187.5k ⭐ Rust] --> B[opencode<br/>147.7k ⭐ TypeScript]
+        A --> C[hermes-agent<br/>110.5k ⭐ Python]
+        A --> D[everything-claude-code<br/>164.2k ⭐ JS]
+    end
+
+    subgraph "Browser Agent"
+        E[browser-use<br/>89.5k ⭐] --> F[browser-harness<br/>5.0k ⭐ Self-healing]
+    end
+
+    subgraph "设计工具生态"
+        G[huashu-design<br/>4.4k ⭐] --> H[open-codesign<br/>1.2k ⭐ BYOK]
+        G --> I[Kami<br/>2.5k ⭐]
+    end
+
+    subgraph "LLM 研究"
+        J[OpenMythos<br/>8.7k ⭐ RDT 重建]
+    end
+
+    A -.->|Skill 生态| G
+    E -.->|基础设施| F
+</pre>
+<h2 id="_2">重点项目深度分析</h2>
+<h3 id="top-1-openmythos-claude">Top 1: OpenMythos — Claude 架构逆向重建</h3>
+<p><strong>是什么：</strong> 基于 Recurrent-Depth Transformer 的 Claude Mythos 架构开源复现。三阶段设计（Prelude → Recurrent Block → Coda），支持 MLA/GQA 注意力和 MoE 前馈。</p>
+<p><strong>为什么火：</strong> 闭源模型架构逆向工程 + compute-adaptive 推理范式 + Anthropic 技术路线的公开验证，三重因素叠加。</p>
+<p><strong>技术亮点：</strong>
+1. Recurrent Block 支持可变推理深度（<code>max_loop_iters</code>）— 这是 test-time compute 的核心机制
+2. MLA/GQA 双注意力实现 — 对应不同规模下的效率/质量权衡
+3. 稀疏 MoE with routed + shared experts — 模型规模扩展的关键</p>
+<p><strong>定位：</strong> 学习型 / 研究型。当前是架构复现，不是生产级推理引擎。</p>
+<h3 id="top-2-browser-harness-agent">Top 2: browser-harness — 自愈浏览器 Agent</h3>
+<p><strong>延续跟踪。</strong> 4 天 5.0k stars，browser-use 官方团队出品。Self-healing 定位器、自动重试、页面变更适应 — 这些正在成为 Browser Agent 的基础能力。</p>
+<p><strong>架构启发：</strong> 将"容错"从可选特性提升为架构级能力，是 Agent 基础设施成熟的关键信号。</p>
+<h3 id="top-3-open-codesign-agent">Top 3: open-codesign — 开源设计 Agent 平台</h3>
+<p><strong>是什么：</strong> Electron 桌面应用，支持多模型（Claude/GPT/Gemini/Kimi/GLM/Ollama），BYOK 本地优先。</p>
+<p><strong>为什么值得关注：</strong> 代表了 Agent 工具从"单模型绑定"向"多模型 BYOK"平台的演进方向。这可能是设计类 Agent 工具平台化的早期信号。</p>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- OpenMythos 纯理论重建，无实际训练验证，可能存在大量工程细节偏差
+- Claude Code 设计 Skill 爆发式增长，但同质化严重，大部分是 HTML 模板 + prompt 包装
+- Coding Agent 赛道格局虽稳定，但 open issues 数量巨大（hermes-agent 6.3k），说明成熟度仍不足</p>
+<p><strong>机遇：</strong>
+- Recurrent-Depth Transformer 可能成为下一代 LLM 架构标准，值得深入研究
+- Browser Agent self-healing 正在成为基础设施级能力
+- 多模型 BYOK 模式可能成为 Agent 工具的通用架构模式</p>
+<h2 id="_4">重点项目档案</h2>
+<blockquote>
+<p>完整档案见 <code>projects/</code> 目录：
+- <code>projects/openmythos.md</code> — 新增
+- <code>projects/huashu-design.md</code> — 新增
+- <code>projects/open-codesign.md</code> — 新增
+- <code>projects/browser-harness.md</code> — 更新
+- <code>projects/claw-code.md</code> — 更新</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

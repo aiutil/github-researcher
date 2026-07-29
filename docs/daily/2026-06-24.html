@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-24 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-24-github">2026-06-24 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p><strong>Agent 感知层（Perception Layer）正在形成标准的三层架构。</strong> 今天 GitHub Trending 的最大信号不是单个项目，而是多个项目共同构成了 Agent 输入能力的完整分层：</p>
+<ul>
+<li><strong>抓取层</strong>：firecrawl（138K⭐，日增 1.3K）——将任意网页结构化</li>
+<li><strong>平台适配层</strong>：Agent-Reach（38.6K⭐，周增 8.1K）——一键打通 Twitter/Reddit/YouTube/B站/小红书/GitHub</li>
+<li><strong>DOM 操作层</strong>：alibaba/page-agent（19.2K⭐）——纯 JS 注入，不截图、不多模态，文本操作 DOM</li>
+</ul>
+<p>这意味着 Agent 的"看世界"能力正在从"每个开发者自己写 scraper"变成"三层标准化基础设施"。就像网络协议从"每人自己实现 TCP"到"标准 HTTP 栈"的演进。</p>
+<p>同时，<strong>Agent Skills 的工业化阶段已经确认</strong>。addyosmani/agent-skills 65.9K⭐ 的关键不是星数——而是 Addy Osmani（Google Chrome 性能团队）把完整的软件工程方法论封装成了 24 个 Skills + 8 个 slash commands。这不是"分享我的 .claude 目录"，而是"把十年工程经验产品化为 Agent 可执行的指令"。</p>
+<pre class="mermaid">graph TD
+    subgraph "Agent 感知层三层架构"
+        L1["抓取层<br/>firecrawl 138K⭐<br/>Web → Structured Data"]
+        L2["平台适配层<br/>Agent-Reach 38.6K⭐<br/>Twitter/Reddit/YouTube<br/>B站/小红书/GitHub"]
+        L3["DOM 操作层<br/>alibaba/page-agent 19.2K⭐<br/>纯 JS 注入 · 无截图"]
+    end
+    
+    L1 -->|"结构化数据"| L2
+    L2 -->|"平台特定操作"| L3
+    L3 -->|"DOM 操作结果"| Agent["AI Agent"]
+    L1 -.->|"直接抓取"| Agent
+    
+    subgraph "Agent 认知层"
+        Skills["Skills 层<br/>addyosmani 65.9K · gstack 113K<br/>24 skills × 8 commands"]
+        Memory["Memory 层<br/>codebase-memory-mcp 12.8K<br/>Knowledge Graph + 158 lang"]
+        Security["Security 层<br/>SkillSpector 9.8K<br/>Skills 杀毒"]
+    end
+    
+    Agent --> Skills
+    Agent --> Memory
+    Skills -.->|"执行前扫描"| Security
+</pre>
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-agent-92">1. Agent 感知层成熟化（趋势分: 92）</h3>
+<p>三个项目从不同角度解决同一个问题——让 Agent "看见"互联网：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>方法</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firecrawl</td>
+<td>138K</td>
+<td>API 化抓取，Web → Markdown/Structured</td>
+<td>通用抓取基础设施</td>
+</tr>
+<tr>
+<td>Agent-Reach</td>
+<td>38.6K</td>
+<td>一键 CLI 打通 12+ 平台</td>
+<td>平台适配层</td>
+</tr>
+<tr>
+<td>alibaba/page-agent</td>
+<td>19.2K</td>
+<td>纯 JS 注入，DOM 文本操作</td>
+<td>In-page 操作层</td>
+</tr>
+</tbody>
+</table>
+<p><strong>page-agent 深度分析：</strong> 它的技术路线与 browser-use 截然不同——不用截图、不需要多模态 LLM、不需要 headless browser。<code>new PageAgent({ model: 'qwen3.5-plus' }).execute('Click the login button')</code> 即可。这种"文本 DOM 操作"路线有三个关键优势：</p>
+<ol>
+<li><strong>成本极低</strong>：不需要 GPT-4V 级别的多模态模型</li>
+<li><strong>速度极快</strong>：没有截图渲染开销</li>
+<li><strong>隐私可控</strong>：不截屏 = 不泄露视觉信息</li>
+</ol>
+<p>加上 MCP Server 支持，page-agent 可以被外部 Agent 调用——这意味着它既是嵌入式工具（SaaS Copilot），也是可编排的 MCP 节点。</p>
+<h3 id="2-agent-skills-90">2. Agent Skills 工业化（趋势分: 90）</h3>
+<p><strong>addyosmani/agent-skills 更新动态：</strong> 58K → 65.9K（一周 +7.7K），已支持 8 个平台（Claude Code、Cursor、Antigravity CLI、Gemini CLI、Windsurf、OpenCode、GitHub Copilot、Kiro IDE）。</p>
+<p>Addy Osmani 的 Skills 包核心设计理念：
+- <strong>阶段化</strong>：/spec → /plan → /build → /test → /review → /ship
+- <strong>自动激活</strong>：设计 API 自动触发 api-and-interface-design skill，构建 UI 自动触发 frontend-ui-engineering skill
+- <strong>验证门禁</strong>：每个 skill 都有验证步骤和反合理化表
+- <strong>/build 自动化</strong>：spec 存在后，/build 自动生成计划并实现每个任务——人只批准一次计划，之后全自动运行</p>
+<p><strong>与昨天 gstack 的对比：</strong> gstack 是"CEO 的工具箱"（角色化覆盖全流程），agent-skills 是"工程师的方法论"（工程化覆盖全 SDLC）。两者不冲突，可以组合使用。</p>
+<pre class="mermaid">flowchart LR
+    subgraph "Agent Skills 工业化矩阵"
+        direction TB
+        A["个人方法论型<br/>addyosmani/agent-skills 65.9K<br/>24 skills · 8 commands · SDLC"]
+        B["角色化工具型<br/>garrytan/gstack 113K<br/>23 slash commands · CEO/QA/CSO"]
+        C["领域垂直型<br/>Anthropic-Cybersecurity 19.6K<br/>817 skills · 6 frameworks"]
+        D["个人品牌型<br/>mattpocock/skills 141K<br/>TypeScript .claude 目录"]
+    end
+    
+    A --> Agent["AI Coding Agent"]
+    B --> Agent
+    C --> Agent
+    D --> Agent
+    
+    Agent -->|"跨平台分发"| P["8+ 平台<br/>Claude Code · Cursor · Gemini CLI<br/>Copilot · Windsurf · Antigravity · Kiro · OpenCode"]
+</pre>
+<h3 id="3-agent-87">3. Agent 自我进化框架涌现（趋势分: 87）</h3>
+<p><strong>NousResearch/hermes-agent：</strong> "The agent that grows with you"——核心是闭环学习：
+1. Agent 完成复杂任务 → 自动创建 skills
+2. Skills 在使用中自我改进
+3. 周期性 nudge 持久化知识
+4. FTS5 全文搜索跨会话回忆
+5. Honcho dialectic user modeling 建立用户画像</p>
+<p>关键架构亮点：6 种终端后端（local、Docker、SSH、Singularity、Modal、Daytona），支持 $5 VPS 到 GPU 集群，Modal 和 Daytona 提供 serverless 持久化——空闲时几乎零成本。</p>
+<p><strong>bytedance/deer-flow 2.0：</strong> 字节跳动的 SuperAgent harness，2.0 完全重写：
+- Subagents：生成隔离子代理做并行工作流
+- Sandbox：安全执行环境
+- Memory：跨会话长期记忆
+- Skills：可扩展技能系统
+- Message Gateway：IM 渠道集成
+- Claude Code / Codex CLI / Claude Code OAuth 集成</p>
+<p>两个项目共同指向：<strong>Agent 正在获得"元认知"能力</strong>——不只是执行任务，而是在执行任务的过程中积累经验、创建新工具。</p>
+<h3 id="4-code-intelligence-mcp-85">4. Code Intelligence MCP 标准化（趋势分: 85）</h3>
+<p><strong>codebase-memory-mcp 持续高增长：</strong> 10.2K → 12.8K（周增 7.6K，日均 ~1.1K）。</p>
+<p>arXiv 论文（2603.27277）验证的关键数据：
+- <strong>83% 回答质量</strong>（vs file-by-file 探索）
+- <strong>10× 更少 tokens</strong>（5 个结构化查询 ~3,400 tokens vs ~412,000 tokens）
+- <strong>2.1× 更少 tool calls</strong>
+- Linux 内核（28M LOC, 75K 文件）3 分钟完成索引
+- 查询响应 &lt; 1ms</p>
+<p><strong>架构启发：</strong> 这标志着代码理解范式的转移——从"把文件塞进 context window"到"持久化知识图谱 + MCP 查询"。知识图谱包含函数、类、调用链、HTTP 路由、跨服务链接，甚至 Dockerfiles 和 K8s manifests 也被索引为图节点。</p>
+<h3 id="5-agent-83">5. Agent 安全审计新品类（趋势分: 83）</h3>
+<p><strong>NVIDIA/SkillSpector 9.8K⭐（周增 3.3K）：</strong> 定义了"Skills 杀毒"这一新品类。当 Agent 执行第三方 Skills 时，Skills 本身就是新的攻击面——恶意 Skills 可以：
+- 注入隐藏的系统提示
+- 在工具调用中执行危险操作
+- 泄露代码库信息</p>
+<p>SkillSpector 扫描 AI Agent Skills 中的漏洞、恶意模式和安全风险。这是一个<strong>必要的品类</strong>——没有它，Agent Skills 生态就像没有杀毒软件的 npm。</p>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="1-alibabapage-agent-gui-agent">1. alibaba/page-agent — 注入式 GUI Agent</h3>
+<p><strong>它是什么：</strong> 阿里巴巴开源的 JavaScript in-page GUI agent。一段 JS 嵌入网页，Agent 即可通过自然语言操作 DOM。</p>
+<p><strong>核心技术亮点：</strong>
+1. <strong>零依赖注入</strong>：不需要浏览器扩展、Python、headless browser——纯 JS CDN 加载
+2. <strong>文本 DOM 操作</strong>：不截图、不需要多模态 LLM——基于 browser-use 的 DOM 处理组件改造
+3. <strong>BYO LLM</strong>：支持任何 LLM 提供商，包括 qwen3.5-plus、OpenAI 等
+4. <strong>MCP Server</strong>：可从外部控制浏览器
+5. <strong>Chrome 扩展</strong>：可选的多页面任务支持</p>
+<p><strong>定位判断：平台候选。</strong> page-agent 定义了一种新的 Web 交互范式——不是"自动化网页"而是"赋予网页自然语言接口"。SaaS AI Copilot、智能表单填写、无障碍访问——这些只是起点。</p>
+<p><strong>风险：</strong> DOM 注入的安全性需要严格审计。恶意页面可以欺骗 Agent 执行危险操作。文本 DOM 方案在复杂 Canvas/WebGL 场景下可能失效。</p>
+<h3 id="2-addyosmaniagent-skills">2. addyosmani/agent-skills — 工程方法论产品化</h3>
+<p><strong>更新动态：</strong> 58K → 65.9K（+7.7K/周），已支持 8 个平台。</p>
+<p><strong>关键进化：</strong>
+- 新增 /webperf（Web 性能审计）和 /code-simplify（代码简化）skill
+- /build 自动化模式：批准一次计划，全自动执行
+- Skills 自动激活：根据上下文触发对应 skill</p>
+<p><strong>为什么重要：</strong> Addy Osmani 不是在分享配置文件——他在把 Google Chrome 团队的工程方法论封装为 Agent 可执行的指令。每个 skill 都有验证步骤、反合理化表和质量门禁。</p>
+<h3 id="3-koala73worldmonitor">3. koala73/worldmonitor — 全球情报仪表盘</h3>
+<p><strong>它是什么：</strong> 实时全球情报聚合——500+ 新闻源 × 15 分类 × AI 合成摘要 + 地缘政治监控 + 金融雷达 + 24 语言。</p>
+<p><strong>技术亮点：</strong>
+1. <strong>6 站点变体</strong>：world/tech/finance/commodity/happy/energy 从单一代码库构建
+2. <strong>双地图引擎</strong>：3D globe.gl + WebGL deck.gl（56 种图层）
+3. <strong>CII v8 压力评分</strong>：31 个 Tier-1 国家的不稳定性指数
+4. <strong>本地 AI</strong>：支持 Ollama 完全离线运行
+5. <strong>Tauri 2 桌面端</strong>：Rust + Node.js sidecar
+6. <strong>Protocol Buffers</strong>：276 protos / 34 services</p>
+<p><strong>定位判断：工具型（偏平台化）。</strong> 单代码库 6 站点变体的架构非常优雅——本质上是"情报聚合的 white-label 平台"。</p>
+<h3 id="4-jamiepinevoicebox-ai">4. jamiepine/voicebox — 开源 AI 语音工作室</h3>
+<p><strong>它是什么：</strong> 本地优先的 AI 语音工作室——ElevenLabs + WisprFlow 的开源替代。7 个 TTS 引擎、语音克隆、全局听写、MCP Agent 语音输出。</p>
+<p><strong>核心技术亮点：</strong>
+1. <strong>7 TTS 引擎</strong>：Qwen3-TTS、Qwen CustomVoice、LuxTTS、Chatterbox Multilingual/Turbo、HumeAI TADA、Kokoro
+2. <strong>23 语言</strong> + 副语言标签（[laugh]、[sigh]、[gasp]）
+3. <strong>MCP Server</strong>：任何 MCP-aware Agent 可以调用 voicebox.speak
+4. <strong>Tauri (Rust)</strong>：不是 Electron，原生性能
+5. <strong>全局听写热键</strong>：push-to-talk + toggle 模式</p>
+<p><strong>定位判断：工具型。</strong> Agent 语音 I/O 的基础设施——为 Agent 增加"嘴巴"。</p>
+<h3 id="5-bytedancedeer-flow-superagent-harness">5. bytedance/deer-flow — 字节跳动 SuperAgent Harness</h3>
+<p><strong>它是什么：</strong> 字节跳动开源的长周期 SuperAgent 编排框架。subagents + sandbox + memory + skills + message gateway 全栈。</p>
+<p><strong>核心技术亮点：</strong>
+1. <strong>长周期任务</strong>：分钟到小时级任务编排
+2. <strong>CLI-backed providers</strong>：支持 Codex CLI、Claude Code OAuth 作为模型 provider
+3. <strong>vLLM 集成</strong>：支持 Qwen3-32B 等模型的本地部署
+4. <strong>InfoQuest</strong>：字节跳动自研搜索爬虫工具集
+5. <strong>LangSmith + Langfuse 双 Tracing</strong></p>
+<p><strong>定位判断：平台候选。</strong> DeerFlow 2.0 是字节跳动在 Agent 基础设施层面的重要布局——从 Deep Research 框架升级为通用 SuperAgent harness。</p>
+<h2 id="_4">持续跟踪项目状态</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>昨日</th>
+<th>今日</th>
+<th>变化</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenMontage</td>
+<td>11,762</td>
+<td>15,399</td>
+<td>+3,637</td>
+<td>增速继续扩大，Agentic 内容生产主力</td>
+</tr>
+<tr>
+<td>addyosmani/agent-skills</td>
+<td>~58K</td>
+<td>65,910</td>
+<td>+7,900</td>
+<td>Skills 工业化龙头，持续加速</td>
+</tr>
+<tr>
+<td>Agent-Reach</td>
+<td>~35K</td>
+<td>38,576</td>
+<td>+3,576</td>
+<td>Agent 感知层标配化</td>
+</tr>
+<tr>
+<td>codebase-memory-mcp</td>
+<td>11,426</td>
+<td>12,783</td>
+<td>+1,357</td>
+<td>Code Intelligence MCP 持续高增长</td>
+</tr>
+<tr>
+<td>Anthropic-Cybersecurity</td>
+<td>18,601</td>
+<td>19,596</td>
+<td>+995</td>
+<td>安全技能标准化持续</td>
+</tr>
+<tr>
+<td>voicebox</td>
+<td>32,139</td>
+<td>33,079</td>
+<td>+940</td>
+<td>稳定增长，Agent 语音 I/O</td>
+</tr>
+<tr>
+<td>stablyai/orca</td>
+<td>6,009</td>
+<td>6,296</td>
+<td>+287</td>
+<td>稳定增长，多 Agent ADE</td>
+</tr>
+<tr>
+<td>NVIDIA/SkillSpector</td>
+<td>~8K</td>
+<td>9,795</td>
+<td>+1,795</td>
+<td>Agent 安全审计品类增长快</td>
+</tr>
+<tr>
+<td>worldmonitor</td>
+<td>~57K</td>
+<td>59,022</td>
+<td>+2,022</td>
+<td>全球情报仪表盘持续</td>
+</tr>
+<tr>
+<td>firecrawl</td>
+<td>~137K</td>
+<td>138,129</td>
+<td>+1,129</td>
+<td>Web 抓取基础设施持续</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">风险与机遇</h2>
+<h3 id="_6">机遇</h3>
+<ol>
+<li><strong>Agent 感知层三层架构 = 新基础设施机会</strong> — 抓取/适配/操作三层都有独立的产品空间</li>
+<li><strong>Skills 工业化 = Agent 时代的 npm</strong> — 方法论封装为可执行指令的市场正在形成</li>
+<li><strong>Agent 自我进化 = 下一个范式转移</strong> — 从"被动执行"到"主动积累能力"</li>
+<li><strong>Code Intelligence MCP 化 = 代码理解的范式转移</strong> — 知识图谱替代 context window 填充</li>
+<li><strong>Voice I/O + MCP = Agent 的语音接口</strong> — voicebox 证明语音输出已可被 Agent 调用</li>
+</ol>
+<h3 id="_7">风险</h3>
+<ol>
+<li><strong>page-agent DOM 注入风险</strong> — 恶意页面可欺骗 Agent，需要严格的沙箱隔离</li>
+<li><strong>Skills 供应链安全</strong> — 第三方 Skills 可能包含恶意指令，SkillSpector 目前只覆盖基础扫描</li>
+<li><strong>deer-flow 过度依赖字节生态</strong> — InfoQuest 等核心组件绑定 BytePlus/Volcengine</li>
+<li><strong>Agent-Reach 平台依赖风险</strong> — Twitter/Reddit 等平台随时可能封堵，多后端路由是关键</li>
+<li><strong>worldmonitor 的信息可信度</strong> — AI 合成情报摘要的准确性难以验证</li>
+</ol>
+<h2 id="_8">重点项目档案</h2>
+<ul>
+<li>🎯 <a href="projects/alibaba-page-agent.html">alibaba/page-agent</a> — 注入式 GUI Agent（新增）</li>
+<li>🛠️ <a href="projects/agent-skills.html">addyosmani/agent-skills</a> — 工程方法论产品化（更新）</li>
+<li>🌍 <a href="projects/koala73-worldmonitor.html">koala73/worldmonitor</a> — 全球情报仪表盘（新增）</li>
+<li>🎙️ <a href="projects/jamiepine-voicebox.html">jamiepine/voicebox</a> — 开源 AI 语音工作室（新增）</li>
+<li>🦌 <a href="projects/bytedance-deer-flow.html">bytedance/deer-flow</a> — SuperAgent Harness（新增）</li>
+</ul>
+<hr />
+<p><em>研究日期：2026-06-24 · 数据来源：GitHub Trending (daily/weekly) + Web Fetch · 研究者：GitHub 趋势研究助理</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

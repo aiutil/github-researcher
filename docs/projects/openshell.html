@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA OpenShell | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="nvidia-openshell">NVIDIA OpenShell</h1>
+<h2 id="_1">一句话定位</h2>
+<p>NVIDIA 出品的 Agent 安全运行时沙箱——Rust 实现，四层策略防御（文件系统/网络/进程/推理），凭证隔离，GPU 直通，覆盖 OWASP Agentic Top 10。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>AI Agent 在执行任务时需要访问文件系统、网络、API 密钥等敏感资源。当前大多数 Agent 直接在宿主机运行，存在数据泄露、凭证暴露、未授权操作等安全风险。OpenShell 为每个 Agent 提供隔离沙箱，通过声明式 YAML 策略控制所有资源访问。</p>
+<h2 id="2026-06-03">为什么值得关注（2026-06-03）</h2>
+<ul>
+<li><strong>NVIDIA 官方出品</strong>，背书强度高</li>
+<li><strong>Rust 实现</strong>，性能和安全双重保障</li>
+<li><strong>四层防御体系</strong>是目前最完整的 Agent 沙箱方案：文件系统（锁定）+ 网络（热重载）+ 进程（锁定）+ 推理路由（热重载）</li>
+<li><strong>GPU 直通</strong>支持本地推理，这是其他沙箱方案没有的</li>
+<li><strong>凭证隔离设计</strong>正确：凭证不进沙箱文件系统，环境变量注入</li>
+<li>已有 Helm chart，K8s 部署路线正在开发</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li>GitHub Trending Rust 排名前列，+142 stars/day</li>
+<li>NVIDIA 品牌效应 + Agent 安全刚需双重驱动</li>
+<li>Alpha 阶段已有 6.6K stars，说明市场期待度高</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<h3 id="_5">策略引擎</h3>
+<ul>
+<li>声明式 YAML 策略，静态层（文件系统/进程）锁定，动态层（网络/推理）热重载</li>
+<li>L7 级别 HTTP 方法 + 路径粒度控制</li>
+</ul>
+<h3 id="_6">凭证管理</h3>
+<ul>
+<li>自动发现 Claude/Codex/Copilot/OpenCode 凭证</li>
+<li>Provider 抽象，运行时注入，不落盘</li>
+</ul>
+<h3 id="gpu">GPU 直通</h3>
+<ul>
+<li>CDI 优先，回退 NVIDIA Container Toolkit</li>
+<li>实验性但路线明确</li>
+</ul>
+<h3 id="agent">Agent 支持</h3>
+<ul>
+<li>Claude Code / Codex / Copilot / OpenCode / OpenClaw / Ollama / Pi</li>
+<li>社区可贡献新 Agent 镜像</li>
+</ul>
+<h2 id="_7">架构启发</h2>
+<pre class="mermaid">graph TB
+    subgraph "OpenShell 架构"
+        Gateway["Gateway<br/>控制面 API<br/>Auth 边界"]
+        Sandbox["Sandbox<br/>容器隔离<br/>策略路由"]
+        Policy["Policy Engine<br/>四层策略执行"]
+        Privacy["Privacy Router<br/>凭证剥离<br/>推理路由"]
+    end
+    
+    Agent["AI Agent<br/>Claude/Codex/..."] --> Sandbox
+    Sandbox --> Policy
+    Policy -->|允许| Internet["外部服务"]
+    Policy -->|拒绝| Block["🚫 拦截"]
+    Policy -->|推理路由| Privacy
+    Privacy --> LLM["LLM 后端"]
+    Gateway --> Sandbox
+</pre>
+<p><strong>架构师启发：</strong>
+1. Agent 沙箱应该是 Agent 运行时的标准组件，不是可选安全加固
+2. 策略热重载设计使 Agent 运行时可以动态扩展能力，无需重启
+3. 推理路由（Privacy Router）是独特设计——Agent 的 API 调用经过审计后才转发
+4. 与 Microsoft AGT 互补：AGT 定义策略，OpenShell 执行策略</p>
+<h2 id="_8">定位判断</h2>
+<p><strong>基础设施候选。</strong> 如果 Agent 成为标准开发模式，安全沙箱运行时就是必须的基础设施层。NVIDIA 的入场为这个品类提供了强有力的验证。</p>
+<h2 id="_9">风险/局限/泡沫点</h2>
+<ol>
+<li><strong>Elastic License 2.0（引擎部分）</strong>——商业使用受限，SDK 是 Apache 2.0</li>
+<li><strong>Alpha 阶段</strong>——单租户模式，企业多租户部署还需等待</li>
+<li><strong>依赖 Docker/Podman/MicroVM</strong>——对已有容器环境的团队友好，但增加了部署复杂度</li>
+<li><strong>NVIDIA 生态绑定</strong>——GPU 直通依赖 NVIDIA 硬件和驱动</li>
+<li><strong>竞品风险</strong>——Docker/Mozilla 等也可能推出类似方案</li>
+</ol>
+<h2 id="_10">与同类项目的关系</h2>
+<ul>
+<li><strong>Microsoft AGT</strong>：互补关系，AGT 做策略定义，OpenShell 做沙箱执行</li>
+<li><strong>Docker/Podman</strong>：底层运行时，OpenShell 在其上构建 Agent 感知层</li>
+<li><strong>Anthropic Cybersecurity Skills</strong>：安全知识层，与沙箱运行时互补</li>
+</ul>
+<h2 id="_11">是否值得持续跟踪</h2>
+<p><strong>是。</strong> Agent 安全运行时是明确的中期趋势，NVIDIA 出品增加了成为标准的可能性。</p>
+<h2 id="_12">后续观察点</h2>
+<ol>
+<li>引擎 License 是否会调整（ELv2 → Apache 2.0？）</li>
+<li>K8s 多租户路线的推进速度</li>
+<li>社区贡献的 Agent 镜像生态</li>
+<li>与主流 Agent Harness（ECC/Claude Code/Codex）的集成深度</li>
+<li>GPU 直通的稳定性和生产就绪度</li>
+</ol>
+<hr />
+<p><em>档案创建于 2026-06-03 · 数据截止 2026-06-03 06:00 CST</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

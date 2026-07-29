@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-06 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-06-06-github">2026-06-06 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<blockquote>
+<p>AI Code Review 正从「让 LLM 读 diff」的原始阶段跳到「确定性工程 + Agent 混合架构」的工业化阶段。Alibaba open-code-review 的核心洞察是：<strong>纯语言驱动的 Agent 审查无法保证覆盖率和定位精度</strong>。解法是把不该出错的部分（文件选择、规则匹配、评论定位）交给确定性代码，把需要判断的部分（语义分析、上下文检索）交给 Agent。这个混合范式不只适用于 code review，是所有 Agent 落地生产场景的通用模式。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    subgraph "AI Code Review 架构演进"
+        direction LR
+        A["Phase 1: LLM 读 diff<br/>直接生成评论<br/>覆盖不全 + 定位漂移"]
+        B["Phase 2: Skill 驱动<br/>prompt 引导审查<br/>质量不稳定"]
+        C["Phase 3: 混合架构<br/>确定性流水线 + Agent<br/>精确覆盖 + 行级定位"]
+    end
+    A -->|2024-2025| B
+    B -->|2026 Q2| C
+    C --> D["确定性: 文件选择 + 捆绑 + 规则匹配 + 定位"]
+    C --> E["Agent: 语义分析 + 上下文检索 + 评论生成"]
+    D --> F["可审计 · 可调试 · 可扩展规则"]
+    E --> G["灵活 · 上下文感知 · 生产数据调优"]
+    style C fill:#ff6b6b,color:#fff
+    style D fill:#4ecdc4,color:#fff
+    style E fill:#f9ca24,color:#333
+</pre>
+<hr />
+<h2 id="ai-code-review-91">趋势一：AI Code Review 进入混合架构时代（★91）</h2>
+<p><strong>核心信号：Alibaba open-code-review 2.7K stars, Go, Apache 2.0</strong></p>
+<p>阿里内部两年、数万开发者验证，识别数百万代码缺陷后开源。这不是玩具——是经过生产规模验证的工具。</p>
+<h3 id="agent">为什么纯 Agent 方案不够？</h3>
+<table>
+<thead>
+<tr>
+<th>痛点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>覆盖不全</td>
+<td>大变更集时 Agent 偷懒，只审部分文件</td>
+</tr>
+<tr>
+<td>定位漂移</td>
+<td>报告的行号和文件经常对不上</td>
+</tr>
+<tr>
+<td>质量不稳定</td>
+<td>prompt 微调导致输出大幅波动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">混合架构的解法</h3>
+<table>
+<thead>
+<tr>
+<th>确定性工程（硬约束）</th>
+<th>Agent（动态决策）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>精确文件选择 — 哪些要审、哪些过滤</td>
+<td>语义级缺陷分析</td>
+</tr>
+<tr>
+<td>智能文件捆绑 — 关联文件分组审查</td>
+<td>代码库上下文检索</td>
+</tr>
+<tr>
+<td>精细规则匹配 — 按文件特征分配规则</td>
+<td>场景化评论生成</td>
+</tr>
+<tr>
+<td>外部定位模块 — 保证行号准确</td>
+<td>工具调用链优化</td>
+</tr>
+<tr>
+<td>评论反思模块 — 自动验证评论准确性</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师视角：</strong>
+- 这是 Agent 落地生产的通用模式：不能出错的部分用代码，需要判断的部分用 LLM
+- 内置 NPE / 线程安全 / XSS / SQL 注入规则集，OpenAI + Anthropic 兼容
+- Go 语言实现，NPM 分发，一行命令安装
+- 2754 stars + 130 forks + 14 issues = 生产级项目的特征
+- 同赛道：openclaw/clawpatch 705 stars（Review + Patch + PR），更轻量但覆盖面窄</p>
+<h3 id="_3">评分</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>2.7K stars，阿里背景，增长稳健</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>混合架构是生产级 AI Code Review 的正确范式</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>9</td>
+<td>阿里内部两年验证，数万开发者，数百万缺陷</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>确定性 + Agent 混合模式适用于所有 Agent 生产场景</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>9</td>
+<td>NPM 一行安装，OpenAI/Anthropic 兼容，规则可扩展</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>AI Code Review 是刚需，混合架构是正确方向</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>规则系统 + Agent 工具链可扩展为通用审查平台</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>6</td>
+<td>更偏 DevTools，不是基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>63</strong></td>
+<td><strong>生产可用 · 强烈推荐 PoC</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="agent-memory-87">趋势二：Agent Memory 分层操作系统化（★87）</h2>
+<p><strong>核心信号：Memory OS 869 stars + MemPalace 53.8K stars（持续跟踪）</strong></p>
+<p>Agent 的记忆系统正在从「单一 RAG 检索」进化为「多层操作系统」。</p>
+<h3 id="memory-os-7">Memory OS 7 层架构</h3>
+<pre class="mermaid">graph TB
+    subgraph "Memory OS — 7 层记忆操作系统"
+        L1["Layer 1: WORKSPACE<br/>MEMORY.md · USER.md<br/>每轮注入 system prompt"]
+        L2["Layer 2: SESSIONS<br/>SQLite + FTS5<br/>全对话历史全文搜索"]
+        L3["Layer 3: STRUCTURED FACTS<br/>SQLite + HRR + 信任评分<br/>实体消解 + 自动反馈训练"]
+        L4["Layer 4: FABRIC<br/>Icarus 插件<br/>跨会话提取 + 16 个工具"]
+        L5["Layer 5: VECTOR DB<br/>Qdrant 4096d Cosine + BM25<br/>4 级回退：hybrid→dense→lexical→SQLite"]
+        L6["Layer 6: LLM WIKI<br/>自动策展 vault<br/>concepts/ entities/ comparisons/"]
+        L7["Layer 7: CONTEXT INJECTION<br/>手术式上下文注入<br/>精准 token 预算控制"]
+    end
+    L1 --> L7
+    L2 --> L7
+    L3 --> L7
+    L4 --> L7
+    L5 --> L7
+    L6 --> L7
+
+    style L5 fill:#5B8FF9,color:#fff
+    style L7 fill:#5AD8A6,color:#fff
+</pre>
+<h3 id="_4">关键技术决策</h3>
+<table>
+<thead>
+<tr>
+<th>决策</th>
+<th>选择</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向量数据库</td>
+<td>Qdrant</td>
+<td>4096d Cosine + BM25 稀疏，混合检索</td>
+</tr>
+<tr>
+<td>全文搜索</td>
+<td>SQLite FTS5</td>
+<td>轻量，零依赖，O(1) 路径查找</td>
+</tr>
+<tr>
+<td>语义去重</td>
+<td>cosine &gt; 0.92 自动合并</td>
+<td>防止记忆膨胀</td>
+</tr>
+<tr>
+<td>知识衰减</td>
+<td>每周扫描器</td>
+<td>过期信息自动降权</td>
+</tr>
+<tr>
+<td>Provider</td>
+<td>全部本地</td>
+<td>OpenRouter/OpenAI/Anthropic/Ollama 兼容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师视角：</strong>
+- 7 层不是过度设计——每一层解决不同时间尺度的记忆问题
+- 信任评分 + 反馈回路 = 记忆的可演化性
+- 一键安装（v0.2.0）说明项目认真对待用户体验
+- 869 stars 对 Agent 基础设施来说不少了，说明是严肃开发者在使用</p>
+<h3 id="_5">评分</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>5</td>
+<td>869 stars，严肃项目但尚未爆发</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>7 层分层架构 + 信任评分 + 自动策展</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>7</td>
+<td>v0.2.0，一键安装，社区贡献就绪</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>9</td>
+<td>Agent 记忆系统的参考架构</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>6</td>
+<td>需 Docker + Qdrant，有一定运维门槛</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>Agent 记忆是刚需，分层方案是趋势</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>可作为 Agent 基础设施层</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>8</td>
+<td>记忆层是 Agent OS 的核心组件</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>57</strong></td>
+<td><strong>平台候选 · 值得跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="85">趋势三：本地优先运动从软件延伸到硬件（★85）</h2>
+<p><strong>核心信号：OpenLogi 4K + Goose 2.1K + Skylight 1.6K</strong></p>
+<p>本地优先（Local-First）运动不再局限于软件，正在席卷硬件外设领域。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>语言</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenLogi</td>
+<td>4K</td>
+<td>Rust</td>
+<td>Logitech Options+ 本地替代，HID++ 协议</td>
+</tr>
+<tr>
+<td>Goose</td>
+<td>2.1K</td>
+<td>Rust + Swift</td>
+<td>WHOOP 5.0 本地健康数据，BLE 直连</td>
+</tr>
+<tr>
+<td>Skylight</td>
+<td>1.6K</td>
+<td>TypeScript</td>
+<td>RTL-SDR 飞机追踪 + 天花板投影</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">为什么重要？</h3>
+<p><strong>OpenLogi</strong>（4K stars, Apache 2.0, Rust）
+- 直接替代 Logitech Options+，无需账号、无遥测
+- HID++ 协议实现，支持按键重映射、DPI、SmartShift
+- 57 个 open issues = 活跃社区反馈
+- Rust + GPUI 框架，原生性能</p>
+<p><strong>Goose</strong>（2.1K stars, Rust + Swift）
+- WHOOP 5.0 健康手环的本地数据伴侣
+- BLE 直连 + Rust 核心 + Swift UI
+- 明确声明「独立项目，非 WHOOP 官方」
+- 6 月 13 日 TestFlight 公测</p>
+<p><strong>Skylight</strong>（1.6K stars, TypeScript, MIT）
+- RTL-SDR 接收 ADS-B 信号 → 实时飞机投射到天花板
+- 包含太阳/月亮/星星/ISS 位置
+- 树莓派 + 投影仪 = 硬件 + 软件的艺术装置</p>
+<p><strong>架构师视角：</strong>
+- 本地优先 = 隐私 + 性能 + 数据主权
+- 硬件外设本地化是 SaaS 模式的逆向运动
+- Rust 成为本地优先硬件项目的首选语言（内存安全 + 嵌入式友好）
+- 对开发者生态的启发：用户对「账号墙 + 遥测」的耐性在降低</p>
+<hr />
+<h2 id="agent-83">趋势四：自托管团队 Agent 平台化（★83）</h2>
+<p><strong>核心信号：Paradigm Centaur 718 stars + Butterbase 1.3K + Odysseus 55.4K（持续跟踪）</strong></p>
+<p>Agent 不再只是个人工具，开始出现团队级自托管平台。</p>
+<h3 id="paradigm-centaur-slack-agent">Paradigm Centaur — Slack 原生的团队 Agent</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对话入口</td>
+<td>Slack @mention，线程级回复</td>
+</tr>
+<tr>
+<td>执行环境</td>
+<td>K8s 隔离沙箱（k3s 即可）</td>
+</tr>
+<tr>
+<td>Agent 引擎</td>
+<td>可插拔：Claude Code / Codex / Amp / 自定义</td>
+</tr>
+<tr>
+<td>工具系统</td>
+<td>Python 插件式，共享工具注册表</td>
+</tr>
+<tr>
+<td>工作流</td>
+<td>持久化 Python 步骤，支持 sleep/resume/子 Agent</td>
+</tr>
+<tr>
+<td>凭据安全</td>
+<td>iron-proxy 代理，Agent 只看到占位符</td>
+</tr>
+<tr>
+<td>状态存储</td>
+<td>Postgres 持久化，可重放</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心设计：凭据边界（Credential Boundaries）</strong>
+Agent 永远拿不到原始 API Key。iron-proxy 在出站请求时替换占位符为真实凭据，只替换到指定 host + header。这意味着 Agent 可以调用服务，但不能泄露密钥。</p>
+<h3 id="butterbase-ai-baas">Butterbase — AI 原生 BaaS</h3>
+<p>1.3K stars, Apache 2.0, TypeScript。Postgres + Auth + Storage + Functions + AI Gateway + MCP Server。定位为「开源 Supabase + AI 能力」。MCP Server 内建意味着 Agent 可以直接通过 MCP 协议操作后端。</p>
+<h3 id="centaur">评分（Centaur）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>5</td>
+<td>718 stars，Paradigm 出品</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>K8s 沙箱 + 凭据隔离 + 持久工作流</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>早期但架构清晰，有完整文档</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>团队级 Agent 平台的参考架构</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>7</td>
+<td>K8s 依赖是门槛，但 k3s 降低了门槛</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>团队共享 Agent 是自然需求</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>8</td>
+<td>工具 + 工作流 + 沙箱 = 平台三要素</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>7</td>
+<td>可成为企业 Agent 基础设施</td>
+</tr>
+<tr>
+<td><strong>总分</strong></td>
+<td><strong>55</strong></td>
+<td><strong>平台候选 · 早期观察</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="coding-agent-cli-80">趋势五：Coding Agent CLI 新格局（★80）</h2>
+<p><strong>Moonshot Kimi Code 1.9K + Alibaba OCR 2.7K 形成「中国大厂 Coding Agent」赛道</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>出品方</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi Code CLI</td>
+<td>1.9K</td>
+<td>Moonshot AI</td>
+<td>终端编程 Agent，Kimi 模型驱动</td>
+</tr>
+<tr>
+<td>Open Code Review</td>
+<td>2.7K</td>
+<td>Alibaba</td>
+<td>AI 代码审查，混合架构</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>193K</td>
+<td>Anthropic</td>
+<td>终端编程 Agent 霸主</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td>170K</td>
+<td>anomalyco</td>
+<td>开源终端编程 Agent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kimi-code-cli">Kimi Code CLI 亮点</h3>
+<ul>
+<li><strong>单二进制分发</strong>：curl 一行安装，不需要 Node.js</li>
+<li><strong>视频输入</strong>：丢一个屏幕录像进去，Agent 看视频写代码</li>
+<li><strong>MCP 原生配置</strong>：<code>/mcp-config</code> 对话式配置，不用手编 JSON</li>
+<li><strong>毫秒级启动</strong>：TUI 瞬间就绪</li>
+<li><strong>插件生态</strong>：Skills / MCP / 数据源 可从 marketplace 或 GitHub 安装</li>
+</ul>
+<p><strong>判断：</strong> Moonshot 是中国大模型公司的第一梯队。Kimi Code CLI 的定位是「Kimi 模型的终端入口」，策略类似 Claude Code 之于 Anthropic。单二进制 + 视频输入是差异化。</p>
+<hr />
+<h2 id="_7">全局观察</h2>
+<h3 id="_8">今日项目矩阵</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度</th>
+<th>创新度</th>
+<th>成熟度</th>
+<th>架构启发</th>
+<th>落地潜力</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open-code-review</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>9</td>
+<td>9</td>
+<td>生产可用</td>
+</tr>
+<tr>
+<td>Memory OS</td>
+<td>5</td>
+<td>8</td>
+<td>7</td>
+<td>9</td>
+<td>6</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>Centaur</td>
+<td>5</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>OpenLogi</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>8</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>Kimi Code</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>Butterbase</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>6</td>
+<td>观察型</td>
+</tr>
+<tr>
+<td>Skylight</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>3</td>
+<td>3</td>
+<td>学习型</td>
+</tr>
+<tr>
+<td>Goose</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>观察型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">泡沫预警</h3>
+<ul>
+<li><strong>Odysseus 55.4K stars</strong> — 持续增长（昨日 50.6K → 今日 55.4K），但依然无 topics、无详细描述。增长真实但项目透明度不足。已在昨日报告中标记，今日继续观察。</li>
+<li><strong>Kimi Code CLI</strong> — 1.9K stars 但 123 个 issues，稳定性待验证</li>
+<li><strong>Butterbase</strong> — 零 issues 零 PR（除初始化），项目极早期</li>
+</ul>
+<h3 id="_10">值得持续跟踪</h3>
+<ul>
+<li><strong>Alibaba open-code-review</strong> — 生产级 AI Code Review，混合架构范式</li>
+<li><strong>Memory OS</strong> — 7 层记忆架构，Agent OS 参考设计</li>
+<li><strong>Paradigm Centaur</strong> — 团队 Agent 平台架构</li>
+<li><strong>OpenLogi</strong> — 本地优先硬件运动的标杆项目</li>
+</ul>
+<h3 id="odysseus">Odysseus 增长追踪</h3>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>Stars</th>
+<th>日增</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>06-05</td>
+<td>50.6K</td>
+<td>—</td>
+</tr>
+<tr>
+<td>06-06</td>
+<td>55.4K</td>
+<td>+4.8K</td>
+</tr>
+</tbody>
+</table>
+<p>日增 4.8K stars，增长仍在加速。</p>
+<hr />
+<p><em>本报告由 GitHub Researcher 自动生成 · 数据截止 2026-06-06 06:00 CST</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

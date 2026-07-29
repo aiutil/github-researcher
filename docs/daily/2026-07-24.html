@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-24 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-07-24-github">2026-07-24 GitHub 趋势研究简报</h1>
+<h2 id="_1">今日核心判断</h2>
+<p>距上次研究（7/14）已过 10 天。这 10 天里，GitHub 趋势发生了一次重要的结构性转移：<strong>从"单点 Agent 工具爆发"转向"Agent 基础设施协议化"</strong>。</p>
+<p>最显著的信号是 Block（原 Square）推出的 <strong>Buzz</strong>——一个基于 Nostr 协议的 Human-Agent 协作通信平台。它不是又一个 Slack 机器人集成，而是从底层重新定义：当 Agent 是一等公民时，团队协作工具应该长什么样。每个消息、反应、代码审查、工作流步骤都是签名事件（Nostr event），人和 Agent 共享同一身份模型和审计链。</p>
+<p>与此同时，<strong>code-review-graph</strong> 以 26K⭐ + 周增 6.3K 的速度，把上周 Graphify 验证的"代码知识图谱替代 RAG"范式推向工程落地。CRG 通过 MCP 集成 Claude Code / Cursor / Codex / Gemini CLI / Copilot，支持 40+ 语言的 tree-sitter AST 解析和 blast radius 分析。<strong>这不是概念验证，是可直接 pip install 的生产工具。</strong></p>
+<p>第三个值得高度关注的是 <strong>OmniRoute</strong>——一个 500+ 贡献者维护的 AI 网关聚合层，290+ Provider、500+ 模型，支持免费层堆叠和 Token 压缩（15-95%）。它正在成为 LLM 时代的 "Kong/Nginx"。</p>
+<hr />
+<h2 id="human-agent-score-90">趋势一：Human-Agent 协作通信基础设施（Score 90）</h2>
+<h3 id="blockbuzz-8122-2162-rust">🐝 Block/Buzz — 8,122⭐ · 日增 2,162 · Rust</h3>
+<p><strong>一句话：</strong> 自托管的 Nostr relay，人类和 AI Agent 在同一频道里工作、审查代码、执行工作流。</p>
+<p><strong>为什么火：</strong>
+- Block（原 Square）官方项目，大公司背书
+- Nostr 协议原生设计，事件签名 → 天然审计链
+- Agent 不是外挂 bot，而是频道的一等公民（自己的密钥、频道成员身份、审计链）
+- Git 事件走 NIP-34 协议：patch、repo 公告、status 都是 Nostr 事件
+- YAML 工作流触发器：消息/反应/调度/webhook</p>
+<p><strong>技术亮点：</strong>
+1. <strong>统一事件模型</strong>：消息、反应、代码审查、CI 结果、工作流审批都是同一种 Nostr 事件——一种数据结构贯穿所有协作场景
+2. <strong>Agent 身份 = 密钥对</strong>：Agent 的权限边界由密钥对定义，而非权限标志位，和人类同事一样的 scoping 方式
+3. <strong>buzz-cli（JSON in/JSON out）</strong>：专为 LLM 工具调用设计的 CLI，支持 Goose / Codex / Claude Code 等 Agent harness
+4. <strong>Branch as Room</strong>：Feature branch 自动创建频道，patch / CI / review / merge decision 全在一个房间</p>
+<p><strong>架构启发：</strong>
+Buzz 提出了一个根本性问题：<strong>当团队里有 3 个人和 5 个 Agent 时，协作工具的底层协议应该怎么设计？</strong> 现有方案（Slack bot / Discord bot / GitHub Actions）都是"人优先，Agent 外挂"。Buzz 反过来：<strong>协议层就是为 Human-Agent 协作设计的</strong>，人只是特殊的事件签名者。</p>
+<pre class="mermaid">graph TB
+    subgraph "Buzz 协作模型"
+        Relay["Nostr Relay（自托管）"]
+        
+        Human["👤 人类成员"]
+        Agent1["🤖 Agent 成员"]
+        Agent2["🤖 Agent 成员"]
+        
+        Channel["💬 频道 / 房间"]
+        Branch["🌿 Branch Room"]
+        Workflow["⚙️ YAML 工作流"]
+        
+        Event["📋 签名事件日志<br/>消息/反应/patch/CI/审批"]
+        
+        Human --> Channel
+        Agent1 --> Channel
+        Agent2 --> Channel
+        
+        Channel --> Relay
+        Branch --> Relay
+        Workflow --> Relay
+        
+        Relay --> Event
+    end
+</pre>
+<p><strong>风险/局限：</strong>
+- 仅 Rust + Tauri 桌面端，移动端仍在开发中
+- 自托管门槛高（需要 Docker + Hermit + Rust 1.88+）
+- Nostr 协议在团队协作场景的采用仍属小众
+- Block 内部版本功能领先开源版本，存在"开源阉割"风险</p>
+<p><strong>定位：</strong> 基础设施候选 — 如果 Human-Agent 协作成为主流范式，Buzz 可能成为底层协议</p>
+<hr />
+<h2 id="score-89">趋势二：代码知识图谱进入主流（Score 89）</h2>
+<h3 id="tirth8205code-review-graph-26051-6257-python">🔍 tirth8205/code-review-graph — 26,051⭐ · 周增 6,257 · Python</h3>
+<p><strong>一句话：</strong> 通过 tree-sitter AST 构建代码知识图谱，让 AI 编程助手只读真正需要的文件。</p>
+<p><strong>与 Graphify 的关系：</strong>
+Graphify（7/14 报告）验证了"代码图谱替代 RAG"的范式。code-review-graph 把这个范式做成了可以直接 <code>pip install</code> 的工程工具，并且已集成 MCP 协议，支持 Claude Code / Cursor / Codex / Gemini CLI / Copilot 等主流平台。</p>
+<p><strong>关键数据：</strong>
+- 2,900 文件项目 → 增量索引 &lt; 2 秒
+- 27,700+ 文件 monorepo → 实际只读 ~15 个文件
+- 覆盖 40+ 编程语言（Python, JS/TS, Go, Rust, Java, C/C++, C#, Ruby, Kotlin, Swift...）
+- 一行命令安装：<code>code-review-graph install</code>（自动检测平台并写入 MCP 配置）</p>
+<p><strong>架构启发：</strong>
+CRG 的 blast radius 分析是核心价值：当文件 A 变更时，图谱自动追踪所有调用方、依赖方、测试文件。这比传统的 RAG "语义相似度搜索"精确一个量级——因为它走的是<strong>静态分析图谱遍历</strong>，不是向量近似。</p>
+<p><strong>定位：</strong> 平台候选 — 正在成为 AI 编程工具的上下文管理标准层</p>
+<hr />
+<h2 id="ai-score-86">趋势三：AI 网关聚合层（Score 86）</h2>
+<h3 id="diegosouzapwomniroute-27919-8673-typescript">🌐 diegosouzapw/OmniRoute — 27,919⭐ · 周增 8,673 · TypeScript</h3>
+<p><strong>一句话：</strong> 一个端点聚合 290+ LLM Provider、500+ 模型，免费层堆叠 + Token 压缩。</p>
+<p><strong>为什么重要：</strong>
+当你的 Agent 需要调用 Kimi、Claude、GPT、Gemini、DeepSeek 等多个模型时，OmniRoute 解决了三个痛点：
+1. <strong>Provider 管理</strong>：290+ Provider 统一接口，90+ 免费层自动堆叠
+2. <strong>Token 成本</strong>：RTK + Caveman 压缩节省 15-95% Token
+3. <strong>高可用</strong>：配额感知自动降级（quota-aware auto-fallback）</p>
+<p><strong>生态规模：</strong> 500+ 贡献者，MIT 协议，43 种语言 README，支持 Claude Code / Codex / Cursor / Cline / Copilot。</p>
+<p><strong>架构启发：</strong>
+OmniRoute 的定位类比微服务时代的 API 网关（Kong/Nginx）。<strong>当 LLM Provider 数量超过 500 个时，路由/聚合/降级/压缩自然成为基础设施层。</strong> 这不是临时方案——只要多模型格局持续，网关层就是刚需。</p>
+<p><strong>风险：</strong>
+- 免费层依赖第三方 Provider 政策，随时可能变化
+- 500+ 贡献者的维护模式可持续性存疑
+- Token 压缩可能影响输出质量（取决于场景）</p>
+<p><strong>定位：</strong> 基础设施候选 — LLM 时代的 API 网关</p>
+<hr />
+<h2 id="agent-20score-82">趋势四：Agent 浏览器 2.0（Score 82）</h2>
+<h3 id="citrolabsego-lite-2046-247-javascript">🧭 citrolabs/ego-lite — 2,046⭐ · 日增 247 · JavaScript</h3>
+<p><strong>核心转变：</strong> 从 browser-use 的"驱动浏览器" → ego-lite 的"共享浏览器"。</p>
+<p>Agent 不再需要单独启动一个浏览器实例——它在你的浏览器里有自己的 Space（隔离工作区），能看到你的登录状态、cookies，但不会干扰你的标签页。</p>
+<p><strong>技术差异：</strong>
+- <strong>代码驱动而非 CLI 驱动</strong>：Agent 写 JavaScript 函数调用浏览器 API，比逐步 CLI 指令快 2.5x
+- <strong>多 Space 并行</strong>：10 个 Space 同时跑 10 个任务，互不干扰
+- <strong>Chrome 迁移</strong>：首次启动可选择迁移 Chrome 数据，Agent 直接继承你的登录态</p>
+<hr />
+<h2 id="coding-agent-cli-score-84">趋势五：Coding Agent CLI 多极化（Score 84）</h2>
+<p>本周 GitHub Trending 同时出现 4 个 Coding Agent CLI：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>语言</th>
+<th>亮点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>earendil-works/pi</td>
+<td>76.8K</td>
+<td>TS</td>
+<td>统一 LLM API + Agent loop + TUI + Coding CLI</td>
+</tr>
+<tr>
+<td>1jehuang/jcode</td>
+<td>11.1K</td>
+<td>Rust</td>
+<td>"最智能的 Agent harness"</td>
+</tr>
+<tr>
+<td>MoonshotAI/kimi-cli</td>
+<td>10.7K</td>
+<td>Python</td>
+<td>Moonshot 官方 Python CLI</td>
+</tr>
+<tr>
+<td>MoonshotAI/kimi-code</td>
+<td>4.9K</td>
+<td>TS</td>
+<td>Moonshot 官方 TypeScript CLI，单二进制</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断：</strong> Coding Agent CLI 赛道进入战国时代。pi 以 76.8K 领跑（统一 LLM API 的定位让它成为事实上的 Agent 运行时），但真正的竞争在于<strong>生态</strong>：谁的插件/Skill/MCP 市场最先繁荣，谁就赢。</p>
+<hr />
+<h2 id="_2">全球态势情报面板</h2>
+<h3 id="koala73worldmonitor-72534-9054">koala73/worldmonitor — 72,534⭐ · 周增 9,054</h3>
+<p>世界级全球情报仪表板，AI 驱动的新闻聚合 + 地缘政治监测 + 基础设施追踪。500+ 新闻源、56 种地图图层、国家不稳定指数（CII v8）。虽然不直接属于架构师关注的核心方向，但其<strong>多源数据聚合 + AI 合成简报</strong>的架构思路值得关注。</p>
+<hr />
+<h2 id="_3">本日评分汇总</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>热度</th>
+<th>创新度</th>
+<th>成熟度</th>
+<th>架构启发</th>
+<th>落地潜力</th>
+<th>趋势概率</th>
+<th>平台化</th>
+<th>基础设施</th>
+<th>总分</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block/Buzz</td>
+<td>8</td>
+<td>9</td>
+<td>6</td>
+<td>10</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td><strong>90</strong></td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>code-review-graph</td>
+<td>9</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td>9</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td><strong>89</strong></td>
+<td>平台候选</td>
+</tr>
+<tr>
+<td>OmniRoute</td>
+<td>9</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>9</td>
+<td><strong>86</strong></td>
+<td>基础设施候选</td>
+</tr>
+<tr>
+<td>ego-lite</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td><strong>82</strong></td>
+<td>工具型</td>
+</tr>
+<tr>
+<td>kimi-code</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>5</td>
+<td><strong>80</strong></td>
+<td>工具型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<p><strong>机遇：</strong>
+1. <strong>Human-Agent 协作协议层</strong>正在形成——Buzz 的 Nostr 路线如果被验证，可能成为 Agent 时代的 "HTTP"
+2. <strong>代码图谱</strong>正在从概念走向工程标准——code-review-graph 已可直接 pip install 集成 MCP
+3. <strong>AI 网关</strong>赛道确认——OmniRoute 的 500+ 贡献者说明社区对 LLM 路由有强需求</p>
+<p><strong>风险：</strong>
+1. Buzz 依赖 Block 内部版本领先开源版本，社区版可能沦为"二等公民"
+2. OmniRoute 的免费层堆叠模式存在政策风险——Provider 一旦收紧免费额度，核心价值打折
+3. Coding Agent CLI 过多分流，可能导致生态碎片化（类似 Unix 编辑器大战）</p>
+<hr />
+<h2 id="_5">重点项目档案</h2>
+<p>详见以下项目档案：</p>
+<ul>
+<li>🐝 <a href="projects/block-buzz.html">Block/Buzz</a> — Human-Agent 协作通信基础设施</li>
+<li>🔍 <a href="projects/code-review-graph.html">code-review-graph</a> — 代码知识图谱 MCP 工具</li>
+<li>🌐 <a href="projects/omniroute.html">OmniRoute</a> — AI 网关聚合层</li>
+<li>🧭 <a href="projects/ego-lite.html">ego-lite</a> — 人机并行浏览器</li>
+<li>🌙 <a href="projects/kimi-code.html">kimi-code</a> — Moonshot Coding Agent CLI</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
