@@ -4,9 +4,9 @@ slug: "colibri"
 date_added: "2026-07-11"
 category: "基础设施候选"
 emoji: "🐦"
-stars: "3,850 stars"
-stars_delta: "11天3.9K，日均350+，C语言项目高增长"
-last_seen_date: "2026-07-12"
+stars: "21,218 stars"
+stars_delta: "7/01创建→7/12 3.85K→7/31 21.2K；19天从3.85K飙至21K，C语言项目现象级增长"
+last_seen_date: "2026-07-31"
 language: "C"
 score: 88
 tags: ["llm-inference", "moe", "glm-5.2", "pure-c", "edge-ai", "quantization", "speculative-decoding"]
@@ -14,6 +14,15 @@ url: "https://github.com/JustVugg/colibri"
 ---
 
 # Colibri
+
+## 最近动态（2026-07-31）
+- **Stars 暴涨至 21,218**（19 天从 7/12 的 3,850 飙至 21K，+17,368），forks 2,206，v1.1.0 已发布。
+- 已扩展为多后端：CPU / CUDA / Metal / NUMA 共享同一 runtime，支持部分或全专家驻留。
+- README 公开实测：6× RTX 5090 全专家驻留下 **4 tok/s、TTFT 1.6s、disk 0**（无需磁盘流式）；Web dashboard 实时展示 VRAM/RAM/disk 三级条与专家路由热度。
+- 在今日"前沿 MoE 本地推理范式确立"趋势中作为代表，与 deltafin（K3 单机）同属"MoE 推理瓶颈是 I/O 而非 FLOPS"的范式家族。
+- 证据边界：6×5090 仍是高门槛配置；单人项目（bus factor=1）；非 SLA 研究运行时，不应作生产推理方案。
+
+---
 
 ## 一句话定位
 纯C、零依赖的 GLM-5.2 744B MoE 推理引擎，在 25GB RAM 消费机上正确运行前沿大模型。

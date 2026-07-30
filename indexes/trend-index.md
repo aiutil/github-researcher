@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-07-30'
+last_updated: '2026-07-31'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,35 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-07-31（第八十五版）
+
+### Coding agent harness 多极化：SpaceXAI 官方 grok-build 入场 + omnigent meta-harness + vercel/eve filesystem-first · 前沿 MoE 本地推理范式确立：colibri 纯 C 引擎 744B MoE 跑上消费硬件 19 天飙至 21K⭐ · Kimi K3 全栈生态五层齐增长
+
+#### 今日三大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | Coding agent harness 多极化：grok-build 23.5K⭐（SpaceXAI 官方/Rust TUI/ACP 嵌入/headless CI 三模式），omnigent 7.9K⭐（meta-harness/编排多 agent/跨设备协作/策略治理），vercel/eve 4.2K⭐（filesystem-first/agent 能力即目录结构/durable）——harness 层从单一工具分化为本体/范式/编排三层 | grok-build, omnigent, eve | 90 |
+| 2 | 前沿 MoE 本地推理范式确立：colibri 21.2K⭐（纯 C/零依赖/GLM-5.2 744B MoE/VRAM-RAM-NVMe 三级内存层级/6×5090 全驻留 4 tok/s），19 天从 3.85K 飙至 21K，与 deltafin 同属"MoE 推理瓶颈是 I/O 而非 FLOPS"范式家族 | colibri | 87 |
+| 3 | Kimi K3 全栈生态持续深化：五层齐增（K3 5.5K→7.5K/MoonEP 858→923/deltafin 308→466/axrl 569→641/AgentENV 1.4K→2.6K），验证"模型发布即生态动员"判断延续 | kimi-k3, moonep, deltafin, axrl, agentenv | 84 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| xai-org/grok-build | 23,556 | 基础设施候选 | 90 | 新增 |
+| JustVugg/colibri | 21,218 | 基础设施候选 | 88 | 更新（3.85K→21.2K） |
+| omnigent-ai/omnigent | 7,924 | 平台候选 | 84 | 更新（7.0K→7.9K） |
+| vercel/eve | 4,198 | 平台候选 | 83 | 更新（1.3K→4.2K，展开档案） |
+
+#### 关键判断
+
+- **harness 层成为独立品类**：当 coding agent 数量超过用户能手动切换的阈值，"harness 本体"（grok-build）、"开发范式"（eve）、"跨 harness 编排"（omnigent）各自成赛道。三者在不同抽象层次同框放量是结构性信号。风险：grok-build 当前 contributors 接口仅 1、无 release tag（源码从 monorepo 周期同步），生产成熟度待独立评估。
+- **本地前沿 MoE 推理范式确立**：colibri 把 deltafin 验证的"MoE 稀疏性 → 专家按需加载"范式推进到多 GPU 全驻留可用吞吐（6×5090 4 tok/s）。待观察：6×5090 门槛仍高；单人项目 bus factor=1；非 SLA 研究运行时。
+- **K3 生态齐增证明的是注意力而非生产成熟**：五层增量真实（GitHub API 可核验），但 K3 评测/MoonEP benchmark 均为自报（待独立复现），AgentENV 54 open issues 说明工程尚早。
+
+---
 
 ## 2026-07-30（第八十四版）
 

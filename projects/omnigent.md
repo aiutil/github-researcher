@@ -4,9 +4,9 @@ slug: "omnigent"
 date_added: "2026-06-19"
 category: "平台候选"
 emoji: "🤖"
-stars: "7,000 stars"
-stars_delta: "30天7K，日均~233"
-last_seen_date: "2026-07-11"
+stars: "7,924 stars"
+stars_delta: "6/19 3.8K→7/11 7.0K→7/31 7.9K；持续高位增长"
+last_seen_date: "2026-07-31"
 language: "Python"
 score: 84
 tags: ["agent-orchestration", "meta-harness", "multi-agent", "policy", "sandbox"]
@@ -14,6 +14,16 @@ url: "https://github.com/omnigent-ai/omnigent"
 ---
 
 # Omnigent
+
+## 最近动态（2026-07-31）
+- Stars 增至 7,924（+924 since 7/11），forks 1,177，仍处 alpha（README 标注 status: alpha）。
+- 在今日 "coding agent harness 多极化" 趋势中作为 **meta-harness 编排层**代表，与 grok-build（官方 harness 本体）、vercel/eve（filesystem-first 范式）三线并进。
+- 已扩展支持的 agent：Claude Code、Codex、Cursor、OpenCode、Hermes、Pi + YAML 自定义 agent。
+- 云沙箱后端扩展至 Modal/Daytona/Islo/E2B/CoreWeave/Kubernetes/OpenShell/Boxlite/Databricks。
+
+---
+
+*首次记录：2026-06-19*
 
 ## 一句话定位
 开源 AI Agent meta-harness——用统一的编排层管理 Claude Code、Codex、Cursor、Pi 和自定义 agent，支持跨设备实时协作、策略治理和沙箱隔离。

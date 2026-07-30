@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-07-31 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-07-31">GitHub 趋势研究简报 - 2026-07-31</h1>
+<blockquote>
+<p>本报基于 GitHub Search API（gh CLI）+ 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-07-31。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天 GitHub 趋势的信号从昨日的\"单一模型发布动员生态\"转向<strong>两条结构性主线叠加</strong>：</p>
+<ol>
+<li><strong>Coding agent harness 层进入多极化竞争</strong>。SpaceXAI 官方开源 <code>grok-build</code>（23.5K⭐，Rust TUI），与 omniscent 的 <code>omnigent</code>（meta-harness，7.9K⭐）和 Vercel 的 <code>eve</code>（filesystem-first，4.2K⭐）在三个不同抽象层次同时放量。这不是偶然同框——它说明 <strong>\"coding agent 的 harness/编排层\"正在从单一工具变成一个独立品类</strong>，且官方实验室（SpaceXAI）、框架厂（Vercel）、社区（omnigent）各占一条路线。</li>
+<li><strong>前沿 MoE 本地推理从\"极限探索\"固化为\"工程范式\"</strong>。<code>colibri</code> 在 19 天内从 3.85K 飙至 21K⭐，纯 C、零依赖、把 744B MoE 跑上消费硬件。它的工程内核（VRAM/RAM/存储三级内存层级 + 专家按需流式 + LRU 预取）与昨日追踪的 deltafin（K3 单机）是同一范式家族——<strong>MoE 稀疏性使\"前沿模型跑在已有硬件上\"从噱头变成可复现的工程路径</strong>。</li>
+</ol>
+<p>与此同时，昨日的主角 <strong>Kimi K3 全栈生态仍在深化</strong>：K3 5.5K→7.5K、MoonEP 858→923、deltafin 308→466、axrl 569→641、AgentENV 1.4K→2.6K——五层（模型/训练通信/本地推理/后训练/环境）齐增。这验证了昨日\"模型发布即生态动员\"的判断仍在生效。</p>
+<blockquote>
+<p><strong>证据边界声明</strong>：star 数、fork 数、创建时间、license、语言均来自 GitHub API（可核验事实）。\"harness 层成为独立品类\"\"本地推理范式确立\"为基于多个独立项目同框的<strong>推断</strong>（待后续多周数据验证持续性）。grok-build 的 README 自述为\"SpaceXAI's coding agent harness\"（照录原文）；其 contributors 接口当前仅返回 1 个贡献者、无正式 release tag，源码\"periodically synced from the SpaceXAI monorepo\"——这些是<strong>待观察项</strong>，不代表其工程成熟度。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-coding-agent-harness-meta-harness-filesystem-first-90">1. Coding agent harness 多极化：官方入场 + meta-harness + filesystem-first 三线并进（评分 90）</h3>
+<p>三条路线在同一周内同时放量，且抽象层次互补：</p>
+<ul>
+<li><strong>官方厂商 harness（grok-build）</strong>：<code>xai-org/grok-build</code>，23,556⭐ / 4,478 fork，Rust，Apache-2.0，2026-07-14 创建。README 自述为\"SpaceXAI's coding agent harness and TUI\"——全屏鼠标交互 TUI，理解代码库、编辑文件、执行 shell、搜索网页、管理长任务；支持交互式、headless（脚本/CI）、经 Agent Client Protocol (ACP) 嵌入编辑器三种模式。预编译二进制覆盖 macOS/Linux/Windows。这是<strong>头部 AI 实验室把自家 coding agent harness 完整开源</strong>的信号，与 OpenAI 的 Codex、Anthropic 的 Claude Code 同台。</li>
+<li><strong>meta-harness 编排层（omnigent）</strong>：<code>omnigent-ai/omnigent</code>，7,924⭐ / 1,177 fork，Python，Apache-2.0，alpha。定位\"Agent 层的编排\"——不替换你的 agent，用统一 transport 抽象层管理 Claude Code/Codex/Cursor/OpenCode/Hermes/Pi + 自定义 agent，跨设备实时协作、策略治理（审批/预算/工具限制）、云沙箱（Modal/Daytona/Islo/E2B/CoreWeave/K8s 等）。</li>
+<li><strong>filesystem-first 开发框架（vercel/eve）</strong>：<code>vercel/eve</code>，4,198⭐ / 407 fork，TypeScript，Apache-2.0。把 agent 能力映射为约定目录结构（<code>instructions.md</code>/<code>tools/</code>/<code>skills/</code>/<code>channels/</code>/<code>schedules/</code>），\"filesystem is the authoring interface\"，30 天从 1.3K 增至 4.2K。</li>
+</ul>
+<p><strong>架构师判断</strong>：三者抽象层次不同——grok-build 是\"一个 harness 本体\"，eve 是\"用文件系统定义 harness 的开发范式\"，omnigent 是\"在多个 harness 之上的编排层\"。它们同框放量说明：<strong>当 coding agent 数量超过用户能手动切换的阈值，\"harness 本身\"与\"跨 harness 编排\"就会各自成为独立品类</strong>。这是 Agent 工具链分层成熟的结构性信号。<strong>风险</strong>：grok-build 当前 contributors 接口仅返回 1、无 release tag（源码从 monorepo 周期同步），生产成熟度待独立评估；omnigent 仍为 alpha。</p>
+<h3 id="2-moe-colibri-c-744b-moe-87">2. 前沿 MoE 本地推理范式确立：colibri 纯 C 引擎把 744B MoE 跑上消费硬件（评分 87）</h3>
+<p><code>JustVugg/colibri</code>（21,218⭐ / 2,206 fork，C，Apache-2.0，2026-07-01 创建，v1.1.0）在 19 天内从 7 月 12 日的 3,850⭐ 飙至 21K⭐——<strong>这是本周本地推理赛道最强的增长信号</strong>。核心机制（来自 README，可核验）：</p>
+<ul>
+<li><strong>统一内存层级</strong>：把 VRAM、RAM、NVMe storage 当作同一份权重的放置层级；\"有限快内存改变速度，不改变模型语义\"——默认策略\"never silently changes model precision or router semantics\"。</li>
+<li><strong>专家按需流式 + JIT</strong>：路由热度驱动 per-layer LRU + 学习型 pinned hot-store + 一层提前预取；batched expert unions、<code>O_DIRECT</code>、双 SSD 加权条带化攻击流式路径。</li>
+<li><strong>异构执行</strong>：CPU/CUDA/Metal/NUMA/部分或全专家驻留共享同一 runtime。</li>
+<li><strong>可观测</strong>：Web dashboard 实时展示 token 指标、每轮时间分解、VRAM/RAM/disk 三级条；\"Brain\" 页把全部专家可视化为活体皮层。</li>
+</ul>
+<p>README 公开实测：6× RTX 5090 全专家驻留下 4 tok/s、TTFT 1.6s、disk 0（即无需磁盘流式）。</p>
+<p><strong>架构师判断</strong>：colibri 把昨日 deltafin（K3 单机 14.6s/token）验证的\"MoE 稀疏性 → 专家按需加载\"范式，推进到了<strong>多 GPU 全驻留可用吞吐</strong>的区间。与 deltafin 一起，二者共同确立了一个工程范式家族：<strong>前沿 MoE 的推理瓶颈是 I/O 与放置策略，而非 FLOPS</strong>。colibri 的价值在于它把这件事做到了\"纯 C、零引擎依赖、token 级可验证\"的参考实现程度。<strong>待观察</strong>：6×5090 配置门槛仍高；单人项目（bus factor=1）；非 SLA 研究运行时。</p>
+<h3 id="3-kimi-k3-84">3. Kimi K3 全栈生态持续深化（评分 84，连续性追踪）</h3>
+<p>昨日主角 Kimi K3 的全栈基础设施在一日内集体增长，验证\"模型发布即生态动员\"判断仍在延续：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>项目</th>
+<th>昨日(07-30)</th>
+<th>今日(07-31)</th>
+<th>增量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型权重</td>
+<td>MoonshotAI/Kimi-K3</td>
+<td>5,511</td>
+<td>7,520</td>
+<td>+2,009</td>
+</tr>
+<tr>
+<td>训练通信</td>
+<td>MoonshotAI/MoonEP</td>
+<td>858</td>
+<td>923</td>
+<td>+65</td>
+</tr>
+<tr>
+<td>本地推理</td>
+<td>gavamedia/deltafin</td>
+<td>308</td>
+<td>466</td>
+<td>+158</td>
+</tr>
+<tr>
+<td>后训练</td>
+<td>XYZ-AI-Lab/axrl</td>
+<td>569</td>
+<td>641</td>
+<td>+72</td>
+</tr>
+<tr>
+<td>训练环境</td>
+<td>kvcache-ai/AgentENV</td>
+<td>~1,411</td>
+<td>2,595</td>
+<td>+1,184</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断</strong>：AgentENV（+1,184）与 K3（+2,009）增速最陡，说明\"3T 级 MoE + Agent RL 环境\"的组合仍在吸引注意。但需区分<strong>热度与价值</strong>：K3 评测仍为厂商自报（待独立复现），AgentENV 54 open issues 说明工程尚早。生态\"齐增\"证明的是社区注意力，不等于各层已生产可用。</p>
+<hr />
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="grok-build-23556-stars-score-90">🛰️ grok-build — 23,556 stars · 基础设施候选 · Score 90</h3>
+<p><strong>评分明细（0-10）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>9</td>
+<td>官方实验室开源 + 17 天 23.5K⭐ + 4.5K fork，Rust 工程化</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>7</td>
+<td>TUI/ACP 嵌入/headless 三模式是工程整合，非基础架构创新</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>源码从 monorepo 周期同步，contributors 接口仅 1，无 release tag（待观察）</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>头部实验室把 coding agent harness 完整开源，定义 harness 品类基线</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>7</td>
+<td>预编译三平台二进制降低部署门槛，但生产成熟度待验证</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>8</td>
+<td>官方背书的 coding agent 是确定性品类</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>7</td>
+<td>ACP 协议可被其他编辑器嵌入，有平台化路径</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>8</td>
+<td>作为 coding agent harness 基础设施候选</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分 60/80</strong> · <strong>归类：基础设施候选</strong> · <strong>建议：跟踪官方 release 节奏与 ACP 生态采纳</strong></p>
+<h3 id="colibri-21218-stars-score-87">🐦 colibri — 21,218 stars · 基础设施候选 · Score 87</h3>
+<p>详见项目档案。纯 C/零依赖 GLM-5.2 744B MoE 引擎，统一内存层级 + 专家按需流式。</p>
+<h3 id="omnigent-7924-stars-score-85">🤖 omnigent — 7,924 stars · 平台候选 · Score 85</h3>
+<p>详见项目档案。Agent meta-harness，统一编排多 harness + 跨设备协作 + 策略治理。</p>
+<h3 id="verceleve-4198-stars-score-83">🌙 vercel/eve — 4,198 stars · 平台候选 · Score 83</h3>
+<p>详见项目档案。Filesystem-first durable agent 框架，agent 能力即目录结构。</p>
+<hr />
+<h2 id="coding-agent-harness">Coding Agent Harness 分层（今日视角）</h2>
+<pre class="mermaid">flowchart TB
+    subgraph L3["L3 编排层 · meta-harness"]
+        OM["omnigent<br/>统一 transport 抽象<br/>跨设备协作 · 策略治理 · 云沙箱"]
+    end
+    subgraph L2["L2 开发范式 · filesystem-first"]
+        EV["vercel/eve<br/>agent 能力 = 目录结构<br/>instructions/tools/skills/channels/schedules"]
+    end
+    subgraph L1["L1 harness 本体 · 官方"]
+        GB["grok-build<br/>Rust TUI · ACP 嵌入<br/>交互/headless/编辑器三模式"]
+    end
+    OM -->|"编排"| GB
+    OM -->|"编排"| OTHER["Claude Code / Codex / Cursor / Pi / Hermes"]
+    EV -.->|"定义范式可作用于"| GB
+    GB -->|"Agent Client Protocol"| EDITORS["编辑器 / CI"]
+</pre>
+<h2 id="_4">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- <strong>harness 层成为独立品类</strong>：当 coding agent 超过手动切换阈值，harness 本体（grok-build）、开发范式（eve）、跨 harness 编排（omnigent）各自成赛道。对架构师意味着：选型需在\"用谁的 harness\"\"怎么定义 agent\"\"怎么编排多个 agent\"三个维度分别决策。
+- <strong>本地前沿 MoE 推理范式确立</strong>：colibri + deltafin 共同验证\"MoE 推理瓶颈是 I/O/放置而非 FLOPS\"，对边缘/离线/私有部署有结构性启发——6×5090 全驻留已到 4 tok/s 可用区间。</p>
+<p><strong>风险/泡沫点：</strong>
+- <strong>grok-build 工程成熟度待证</strong>：contributors 接口仅 1、无 release tag、源码从 monorepo 周期同步——这些是 GitHub API 可核验的事实缺口，不代表不成熟但需独立评估，不应因\"官方\"光环等同于生产可用。
+- <strong>colibri bus factor=1</strong>：单人项目，21K⭐ 部分来自\"纯 C 跑 744B\"的话题性；非 SLA 研究运行时，不应作为生产推理方案。
+- <strong>热度 ≠ 价值</strong>：K3 生态五层齐增证明的是社区注意力，不等于各层生产成熟；K3 评测、MoonEP benchmark 均为自报（待独立复现）。
+- <strong>harness 品类可能被原生能力收编</strong>：若 Claude Code/Codex 原生支持多 agent 编排，omnigent 的 meta-harness 价值会下降（adapter 维护成本高、抽象越深越脆弱）。</p>
+<hr />
+<h2 id="_5">重点项目档案</h2>
+<ul>
+<li>🛰️ <a href="projects/grok-build.html">grok-build</a> — SpaceXAI 官方 coding agent harness 与 TUI</li>
+<li>🐦 <a href="projects/colibri.html">colibri</a> — 纯 C/零依赖 GLM-5.2 744B MoE 推理引擎</li>
+<li>🤖 <a href="projects/omnigent.html">omnigent</a> — Agent meta-harness 编排层</li>
+<li>🌙 <a href="projects/eve.html">eve</a> — Filesystem-first durable agent 框架</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (gh CLI) + 仓库 README 深度阅读 | 生成时间: 2026-07-31</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

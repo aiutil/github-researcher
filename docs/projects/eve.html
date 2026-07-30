@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eve | GitHub 趋势研究</title>
+    <title>vercel/eve | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,28 +26,54 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+        <div style="margin-bottom:20px;"><a href="https://github.com/vercel/eve" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="verceleve">vercel/eve</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Vercel 出品的 filesystem-first agent 框架——agent 能力映射到目录结构，tools/skills/channels/schedules 即文件</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-06-19 的趋势数据。</p>
-<h2 id="_3">为什么值得关注</h2>
+<p>Vercel 出品的 filesystem-first durable agent 框架（TypeScript / Apache-2.0）——把 agent 的核心能力映射为约定的目录结构（instructions / tools / skills / channels / schedules 即文件），"filesystem is the authoring interface"。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>定义一个 production-grade agent 时，开发者通常要拼装 prompt、工具、技能、消息通道、定时任务等散落各处的配置。eve 把这些能力统一映射到一个 <code>agent/</code> 目录下的文件约定：<code>instructions.md</code>（常驻系统提示）、<code>tools/</code>（类型化函数）、<code>skills/</code>（按需加载的过程）、<code>channels/</code>（HTTP/Slack/Discord 消息通道）、<code>schedules/</code>（cron 定时任务）。目标用户是希望用可检视、可扩展的文件结构来构建与运维 durable agent 的开发者。</p>
+<h2 id="2026-07-31">为什么值得关注（2026-07-31 更新）</h2>
 <ul>
-<li><strong>Stars:</strong> 1,327 stars</li>
-<li><strong>分类:</strong> 平台候选</li>
-<li><strong>标签:</strong> agent-framework, filesystem-first, vercel, typescript</li>
+<li><strong>官方背书 + 持续增长</strong>：Vercel 出品，42 天从 1.3K 增至 4,198⭐（+3.2×），forks 407，仍在活跃 push（2026-07-30）。</li>
+<li><strong>filesystem-first 范式</strong>：在今日 "coding agent harness 多极化" 趋势中代表<strong>开发范式层</strong>——与 grok-build（harness 本体）、omnigent（meta-harness 编排层）三线互补。</li>
+<li><strong>durable agent 定位</strong>：强调持久化与可运维，区别于一次性脚本式 agent。</li>
+<li><strong>npm 即装即用</strong>：<code>npx eve@latest init my-agent</code>，与 JS/TS 生态无缝。</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>官方品牌 + 范式红利双驱动。</strong> Vercel 在前端与开发者工具领域的声誉贡献了首发流量；filesystem-first 的设计哲学迎合了"agent 应该可检视、可版本控制、可协作"的真实工程诉求。但 framework 类项目的高 star 不等于高生产采纳——需看真实部署案例。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>目录即能力</strong>：agent 能力以约定文件结构存在（instructions.md / tools/ / skills/ / channels/ / schedules/），项目因此更易检视、扩展、运维。</li>
+<li><strong>durable 定位</strong>：面向持久化、可恢复的 agent，而非无状态的一次性调用。</li>
+<li><strong>多通道</strong>：channels 支持 HTTP / Slack / Discord，agent 可接入真实消息面。</li>
+<li><strong>schedules 原生</strong>：recurring cron jobs 作为一等公民，agent 可被定时驱动。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>eve 的核心 trade-off 是"约定优于配置"：用文件系统约定换取 agent 的可读性与可运维性。这与 omnigent 的"runtime-first 编排"、grok-build 的"harness 本体"形成层次划分——eve 回答"agent 怎么被定义"，omnigent 回答"多个 agent 怎么被编排"，grok-build 回答"一个 agent harness 长什么样"。</p>
+<h2 id="_6">定位判断</h2>
+<p>在 Agent 生态中，eve 是 <strong>filesystem-first 的 agent 开发范式</strong>候选。它不试图编排多个外部 agent，而是提供一种用文件结构定义 durable agent 的方法论。若该范式被社区采纳，它将成为 agent 项目的脚手架标准之一。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>framework 竞争激烈</strong>：agent 框架赛道拥挤（LangChain/LangGraph、Mastra、Inngest 等），filesystem-first 的差异化能否形成护城河待观察。</li>
+<li><strong>生产成熟度待证</strong>：高 star 不等于高采纳，需独立部署案例验证。</li>
+<li><strong>TS 单语言</strong>：与 Python 生态的 agent 工具链互操作需额外工程。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li><strong>vs omnigent</strong>：eve 是"定义 agent 的开发范式"，omnigent 是"编排多个 agent 的运行时"——互补层次。</li>
+<li><strong>vs grok-build</strong>：grok-build 是一个具体 harness 本体，eve 是定义 harness/agent 的方法论；eve 可作为定义范式作用于 grok-build 类本体。</li>
+<li><strong>vs LangChain/LangGraph</strong>：同为 agent 框架，但 eve 强调 filesystem-first 与 durable，LangChain 强调链式组合。</li>
 </ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> filesystem-first 是 agent 开发范式的一条独立路线，且 Vercel 持续投入。重点跟踪：社区采纳的 agent 模板数量、真实生产部署案例、是否被其他 harness 借鉴其目录约定。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>是否出现被广泛复用的 eve agent 模板与 skills 生态。</li>
+<li>filesystem-first 约定是否被其他框架（或 grok-build 类 harness）借鉴。</li>
+<li>真实生产部署案例与 durability 在长任务中的表现。</li>
+</ol>
 <hr />
-<blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-06-19</p>
-</blockquote>
+<p><em>首次记录：2026-06-19 · 重大更新：2026-07-31 · 数据来源：GitHub API + 仓库 README</em></p>
     </div>
 </main>
     <footer class="footer">

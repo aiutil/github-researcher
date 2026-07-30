@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-07-31
+
+**核心主题：** Coding agent harness 多极化——SpaceXAI 官方 grok-build 23.5K⭐（Rust TUI/ACP 嵌入编辑器/headless CI 三模式/预编译三平台），omnigent meta-harness 7.9K⭐（编排 Claude Code/Codex/Cursor/Pi/Hermes + 自定义 agent/跨设备协作/策略治理/云沙箱），vercel/eve filesystem-first 4.2K⭐（agent 能力即目录结构/durable）三线并进，harness 层从单一工具分化为本体/范式/编排三层 · 前沿 MoE 本地推理范式确立——colibri 纯 C/零依赖 GLM-5.2 744B 引擎 19 天从 3.85K 飙至 21K⭐，VRAM/RAM/NVMe 三级内存层级，6×5090 全驻留 4 tok/s · Kimi K3 全栈生态持续深化——五层齐增（K3 5.5K→7.5K/MoonEP→923/deltafin→466/axrl→641/AgentENV→2.6K）
+
+**关键项目：**
+- 🛰️ xai-org/grok-build (23,556, 新增) — SpaceXAI 官方 coding agent harness 与 TUI，Rust，Score 90
+- 🐦 JustVugg/colibri (21,218, 更新) — 纯 C/零依赖 GLM-5.2 744B MoE 推理引擎，Score 88
+- 🤖 omnigent-ai/omnigent (7,924, 更新) — Agent meta-harness 编排层，Score 84
+- 🌙 vercel/eve (4,198, 更新) — Filesystem-first durable agent 框架，Score 83
+
+---
+
 ## 2026-07-30
 
 **核心主题：** 首个开源 3T 级模型发布并带火全栈基础设施——Kimi K3 5.5K⭐（MoonshotAI/2.8T MoE/104B 激活/KDA+Attention Residuals 新架构/Stable LatentMoE 896 选 16/1M 上下文/原生多模态 MXFP4），对标 Claude Fable 5/GPT-5.6 · MoE 训练通信库赛道——MoonEP 858⭐（动态冗余专家/每 rank 完美负载均衡/零拷贝+静态形状/通信低于 DeepEP v2 且对不均衡免疫），EP 均衡从"接受"走向"消除" · 超参数模型本地推理边界——deltafin 308⭐（MXFP4 专家按需 HTTP 流式加载/磁盘缓存/NEON+Metal/M1 Max 64GB 实测 14.6s/token），MoE 稀疏性使超大模型本地部署在原理上可行 · 多轮 Agent RL 后训练工程化——AxisRL 569⭐（SGLang rollout+Megatron 训练/300+ 轮轨迹/rollout-trainer 一致性调试），呼应昨日 AgentENV 环境层信号

@@ -6,19 +6,19 @@
 
 ---
 
-## 最新研究摘要（2026-07-30）
+## 最新研究摘要（2026-07-31）
 
-**Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1M 上下文/原生多模态）并带火全栈基础设施 · MoonEP 用动态冗余专家实现 EP 完美负载均衡，对标 DeepEP v2 · deltafin 把 2.8T MoE 通过专家按需流式加载塞进单台 Apple Silicon Mac**
+**Coding agent harness 多极化——SpaceXAI 官方 grok-build（Rust TUI/23.5K⭐）入场，omnigent meta-harness（7.9K⭐）与 vercel/eve filesystem-first（4.2K⭐）三线并进 · 前沿 MoE 本地推理范式确立——colibri 从 3.85K 飙升至 21K⭐，纯 C/零依赖跑 GLM-5.2 744B，VRAM/RAM/存储三级内存层级 · Kimi K3 全栈生态持续深化（K3 5.5K→7.5K/MoonEP→923/deltafin→466/axrl→641/AgentENV→2.6K）**
 
 今日热榜新信号：
-- **MoonshotAI/Kimi-K3**（5,511 stars）：首个开源 3T 级模型，2.8T 参数 MoE / 104B 激活，KDA + Attention Residuals 新架构，Stable LatentMoE（896 专家选 16），1M 上下文，原生多模态，对标 Claude Fable 5 / GPT-5.6
-- **MoonshotAI/MoonEP**（858 stars）：专家并行通信库，通过动态冗余专家实现每 rank 完美负载均衡（恒定 S×K tokens），零拷贝 + 静态形状，通信延迟低于 DeepEP v2 且对路由不均衡免疫
-- **gavamedia/deltafin**（308 stars）：在单台 Apple Silicon Mac 上运行 2.8T 参数 Kimi K3，MXFP4 专家按需 HTTP 流式加载到本地磁盘缓存，融合 NEON 内核 + Metal 计算，M1 Max 64GB 实测 0.0687 token/s
+- **xai-org/grok-build**（23,556 stars）：SpaceXAI 官方开源 coding agent harness 与 TUI（Rust），全屏鼠标交互/可 headless 跑 CI/经 Agent Client Protocol 嵌入编辑器，预编译二进制覆盖 macOS/Linux/Windows
+- **JustVugg/colibri**（21,218 stars）：纯 C/零依赖的 GLM-5.2 744B MoE 推理引擎，把 VRAM/RAM/NVMe 当作统一内存层级；6×RTX 5090 全专家驻留实测 4 tok/s、TTFT 1.6s；19 天从 3.85K 飙至 21K⭐
+- **omnigent-ai/omnigent**（7,924 stars）：开源 Agent meta-harness，统一编排 Claude Code/Codex/Cursor/Pi/Hermes + 自定义 agent，跨设备实时协作、策略治理、云沙箱（Modal/Daytona/E2B 等），alpha 阶段
 
+**→ [查看 2026-07-31 完整简报](daily/2026-07-31.md)**
 **→ [查看 2026-07-30 完整简报](daily/2026-07-30.md)**
 **→ [查看 2026-07-29 完整简报](daily/2026-07-29.md)**
 **→ [查看 2026-07-28 完整简报](daily/2026-07-28.md)**
-**→ [查看 2026-07-27 完整简报](daily/2026-07-27.md)**
 
 ---
 
@@ -26,22 +26,21 @@
 
 | 日期 | 核心主题 | 重点项目数 |
 |------|---------|----------|
+| [2026-07-31](daily/2026-07-31.md) | Coding agent harness 多极化——SpaceXAI 官方 gr | 4 个深度分析 |
 | [2026-07-30](daily/2026-07-30.md) | Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1 | 4 个深度分析 |
 | [2026-07-29](daily/2026-07-29.md) | OpenWorker 重定义「本地优先 AI Coworker」交付物范式 ·  | 4 个深度分析 |
 | [2026-07-28](daily/2026-07-28.md) | openclaw（384,378 stars） · hermes-agent（2 | 8 个深度分析 |
 | [2026-07-27](daily/2026-07-27.md) | freeCodeCamp（453,008 stars） · openclaw（3 | 8 个深度分析 |
 | [2026-07-26](daily/2026-07-26.md) | freeCodeCamp（453,008 stars） · react（246, | 8 个深度分析 |
 | [2026-07-25](daily/2026-07-25.md) | caveman（93,628 stars） · awesome-mcp-serv | 8 个深度分析 |
-| [2026-07-24](daily/2026-07-24.md) | Human-Agent 协作通信基础设施——Block/Buzz 8.1K⭐（N | 5 个深度分析 |
 
 ---
 
 ## 当前最值得关注的趋势
 
-1. **Kimi K3 发布：3T 级开源模型 + 全栈基础设施同日涌现**：相关项目 kimi-k3, moonep, deltafin。
-2. **MoE 训练通信库赛道：MoonEP 动态冗余专家对标 DeepEP**：相关项目 moonep。
-3. **超参数模型本地推理边界探索：2.8T MoE 按需流式加载进单机**：相关项目 deltafin。
-4. **Agent 后训练框架成熟化：多轮 Agent RL 走向工程化**：相关项目 axrl。
+1. **Coding agent harness 多极化：官方入场 + meta-harness + filesystem-first 三线并进**：相关项目 grok-build, omnigent, eve。
+2. **前沿 MoE 本地推理范式确立：colibri 纯 C 引擎把 744B MoE 跑上消费硬件**：相关项目 colibri。
+3. **Kimi K3 全栈生态持续深化：模型/训练/推理/后训练/环境五层齐增长**：相关项目 kimi-k3, moonep, deltafin。
 
 ---
 
@@ -64,9 +63,9 @@
 
 ## 数据统计
 
-- 📊 项目档案：285 个
-- 📅 日报总数：115 期
-- 🔄 最近更新：2026-07-30
+- 📊 项目档案：287 个
+- 📅 日报总数：116 期
+- 🔄 最近更新：2026-07-31
 
 ---
 
