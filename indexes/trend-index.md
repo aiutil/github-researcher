@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-07-31'
+last_updated: '2026-08-01'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,35 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-01（第八十六版）
+
+### Coding agent 应用层产品化：qm 多人协作 harness / cindy 开箱即用客户端 / better-harness 工程化方法论 · 边缘推理推到物理极限：esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M LLM（Per-Layer Embeddings/flash 存参数表/9.5 tok/s） · quill 全本地 macOS 会议转录 · Kimi K3 生态增长斜率趋平（K3 +189/AgentENV +95，较昨日降一个数量级）
+
+#### 今日三大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | Coding agent 应用层产品化：qm 1.4K⭐（多人协作 harness/Slack+Web/per-scope sandbox），cindy 1.3K⭐（开箱即用多 harness 客户端/任务中途切换 harness×model），better-harness 1.3K⭐（harness 自我改进/loop engineering）——harness 竞争前沿从本体转移到应用产品形态 | qm, cindy, better-harness | 88 |
+| 2 | 边缘推理边界推到极致：esp32-ai 2.6K⭐（28.9M LLM on $8 ESP32-S3/Per-Layer Embeddings/flash 存 25M 参数表/512KB SRAM/9.5 tok/s），quill 3.2K⭐（全本地 macOS 会议转录/Parakeet TDT/双轨录制/CAF 容错）——"推理瓶颈是内存放置策略"范式从 MoE 下沉到微控制器 | esp32-ai, quill | 85 |
+| 3 | Kimi K3 生态延续增长但斜率趋平：K3 7,520→7,709（+189，昨日 +2,009）、AgentENV 2,595→2,690（+95，昨日 +1,184），axrl +109/deltafin +87 逆势正增长，脉冲效应衰减 | kimi-k3, agentenv, axrl, deltafin | 80 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| yc-software/qm | 1,367 | 平台候选 | 86 | 新增 |
+| slvDev/esp32-ai | 2,627 | 观察型 | 83 | 新增 |
+| makecindy/cindy | 1,260 | 平台候选 | 82 | 新增 |
+| digimata/quill | 3,195 | 工具型 | 81 | 新增 |
+
+#### 关键判断
+
+- **harness 竞争前沿转移到应用层**：07-31 grok-build/omnigent/eve 在 harness 层多极化后，08-01 扩散到应用产品（qm/cindy）和工程方法论（better-harness）。分层演进链：harness 本体（grok-build）→ 编排（omnigent）→ 开发范式（eve）→ **应用产品（qm/cindy）+ 工程方法论（better-harness）**。当底层 harness 商品化，产品化竞争自然上移。风险：应用层项目均为早期（创建 7-11 天），上游 harness breaking change 可能使维护成本激增。
+- **边缘推理范式家族成型**：esp32-ai（512KB SRAM）、quill（macOS 端侧）、colibri（多 GPU）、deltafin（单台 Mac）共享"推理瓶颈是内存放置策略"洞察。Per-Layer Embeddings（把不计算的参数留在慢存储）与 MoE 专家按需加载是同一原理的两种表现。待观察：esp32-ai 模型能力极有限（仅 TinyStories 级），热度来自话题性而非实用性；quill 是已可交付的工具。
+- **K3 生态脉冲衰减**：增量较昨日降一个数量级说明"模型发布即生态动员"效应衰减，注意力转向新热点。但增长趋平≠价值下降，只是社区发现阶段接近完成。axrl/deltafin 逆势正增长说明后训练和本地推理有独立关注度。
+
+---
 
 ## 2026-07-31（第八十五版）
 

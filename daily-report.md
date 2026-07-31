@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-08-01
+
+**核心主题：** Coding agent 应用层从 harness 扩散为完整产品形态——qm 多人协作 agent harness（1.4K⭐/Slack+Web/每人独立沙箱）、cindy 开箱即用多 harness agent 客户端（1.3K⭐/Claude Code+Codex 混合驱动/任务中途切换）、better-harness harness 工程化（1.3K⭐/loop engineering），harness 层从工具进化为多人协同平台 · 边缘推理边界推到极致——esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M 参数 LLM（9.5 tok/s/Per-Layer Embeddings/flash 存储 25M 参数表/512KB SRAM），quill 全本地 macOS 会议录音转录（Parakeet TDT/系统音频+麦克风双轨/CAF 容错），"把模型塞进最小内存"从 MoE 下沉到微控制器 · Kimi K3 生态延续增长但斜率趋平（K3 7.5K→7.7K +189/AgentENV 2.6K→2.7K +95，较昨日降一个数量级）
+
+**关键项目：**
+- 👥 yc-software/qm (1,367, 新增) — 多人协作 agent harness for work，per-scope sandbox，Score 86
+- 🔧 slvDev/esp32-ai (2,627, 新增) — 28.9M LLM on $8 ESP32-S3，Per-Layer Embeddings，Score 83
+- 🎯 makecindy/cindy (1,260, 新增) — 开箱即用多 harness agent 客户端，中途切换，Score 82
+- 🪶 digimata/quill (3,195, 新增) — 极简全本地 macOS 会议录音+转录，Score 81
+
+---
+
 ## 2026-07-31
 
 **核心主题：** Coding agent harness 多极化——SpaceXAI 官方 grok-build 23.5K⭐（Rust TUI/ACP 嵌入编辑器/headless CI 三模式/预编译三平台），omnigent meta-harness 7.9K⭐（编排 Claude Code/Codex/Cursor/Pi/Hermes + 自定义 agent/跨设备协作/策略治理/云沙箱），vercel/eve filesystem-first 4.2K⭐（agent 能力即目录结构/durable）三线并进，harness 层从单一工具分化为本体/范式/编排三层 · 前沿 MoE 本地推理范式确立——colibri 纯 C/零依赖 GLM-5.2 744B 引擎 19 天从 3.85K 飙至 21K⭐，VRAM/RAM/NVMe 三级内存层级，6×5090 全驻留 4 tok/s · Kimi K3 全栈生态持续深化——五层齐增（K3 5.5K→7.5K/MoonEP→923/deltafin→466/axrl→641/AgentENV→2.6K）

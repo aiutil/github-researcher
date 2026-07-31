@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-01 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-01">GitHub 趋势研究简报 - 2026-08-01</h1>
+<blockquote>
+<p>本报基于 GitHub Search API（gh CLI）+ 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-08-01。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天的 GitHub 趋势出现两个清晰的信号转移：</p>
+<ol>
+<li>
+<p><strong>Coding agent 的竞争前沿从"harness 本体"转移到"应用层产品形态"</strong>。昨天（07-31）我们观察到 grok-build/omnigent/eve 三条路线在 harness 层多极化；今天这个趋势进一步扩散到<strong>应用层</strong>：<code>qm</code>（1.4K⭐）把 harness 做成<strong>多人协作平台</strong>（每人独立沙箱+Slack 集成）；<code>cindy</code>（1.3K⭐）把多 harness 做成<strong>开箱即用的桌面/移动客户端</strong>；<code>better-harness</code>（1.3K⭐）则走向<strong>harness 工程化方法论</strong>。这意味着——<strong>当 harness 本身成为基础设施，"怎么用 harness 交付产品"就变成了新战场</strong>。</p>
+</li>
+<li>
+<p><strong>边缘/微型推理的边界被推到了物理极限</strong>。<code>esp32-ai</code>（2.6K⭐）用 Google 的 Per-Layer Embeddings 思路，把 28.9M 参数 LLM 塞进 512KB SRAM 的 ESP32-S3（8 美元），靠把 25M 参数表留在 flash、每 token 只读 ~450B 实现 9.5 tok/s。这与本周追踪的 colibri（744B MoE 跑消费 GPU）、deltafin（2.8T 跑单台 Mac）是<strong>同一个范式家族的极端验证</strong>——"模型推理瓶颈是内存放置策略，而非算力"。quill（3.2K⭐）则把这个思路用于<strong>全本地 macOS 会议转录</strong>，用 Parakeet TDT 0.6B 做端侧 ASR。</p>
+</li>
+</ol>
+<p>与此同时，昨日主角 Kimi K3 生态仍在增长但<strong>斜率明显趋平</strong>：K3 7,520→7,709（+189，昨日 +2,009）、AgentENV 2,595→2,690（+95，昨日 +1,184）。MoonEP/deltafin/axrl 增量更小。这说明"模型发布即生态动员"的脉冲效应正在衰减，注意力开始转移。</p>
+<blockquote>
+<p><strong>证据边界声明</strong>：star 数、fork 数、创建时间、license、语言均来自 GitHub API（可核验事实）。"harness 竞争前沿转移"和"边缘推理范式家族"为基于多个独立项目同框的<strong>推断</strong>（待后续多周数据验证）。esp32-ai 的 9.5 tok/s、28.9M 参数、Per-Layer Embeddings 来源均为作者 README 自述（含作者自述的参数计数 bug 修正历史），模型仅训练于 TinyStories、不能回答问题或执行指令——这是<strong>能力边界</strong>，非推理速度的夸大。qm/cindy 均为早期项目，生产成熟度未经验证。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-coding-agent-harness-88">1. Coding agent 应用层产品化：多人协作平台 / 开箱即用客户端 / harness 工程化（评分 88）</h3>
+<p>昨天 harness 层的"三线并进"（grok-build/omnigent/eve）在今天扩散为应用层的多种产品形态。三个项目创建于同一周（7/21-7/29），各自占据一个产品方向：</p>
+<ul>
+<li><strong>多人协作平台（qm）</strong>：<code>yc-software/qm</code>，1,367⭐ / 125 fork，TypeScript，MIT，2026-07-29 创建。定位"multiplayer agent harness for work"——不是个人助手，而是<strong>面向初创团队</strong>的共享 agent。每人/每房间有独立 scope（记忆、文件、keychain、权限、crons、web apps、durable sandbox），可在 Slack 和 Web 间无缝切换。统一编排 Pi/OpenCode/Claude Code/Codex，支持 org 级安全策略（Strict/Auto/Dangerous 三档）。</li>
+<li><strong>开箱即用客户端（cindy）</strong>：<code>makecindy/cindy</code>，1,260⭐ / 161 fork，TypeScript，Apache-2.0，2026-07-22 创建。定位"open-source AI agent that works out of the box"——Electron 桌面 + React Native 移动客户端，首个支持 Claude Code 和 Codex 两个 harness，<strong>可在任务中途切换 harness×model 组合</strong>而工作区/记忆/技能/工具保持连续。本地运行，用真实文件和已登录应用。</li>
+<li><strong>harness 工程化方法论（better-harness）</strong>：<code>QoderAI/better-harness</code>，1,309⭐ / 104 fork，JavaScript，MIT，2026-07-21 创建。定位"help your coding agents get better at getting better"——不是新 harness，而是让现有 harness（Claude Code/Codex/Qoder/Cursor）<strong>自我改进</strong>的工程化框架，topics 含 <code>harness-design</code>/<code>harness-engineering</code>/<code>loop-engineering</code>。</li>
+</ul>
+<p><strong>架构师判断</strong>：这三个项目与昨天的 grok-build/omnigent/eve 构成了一条清晰的<strong>分层演进链</strong>：harness 本体（grok-build）→ harness 编排（omnigent）→ harness 开发范式（eve）→ <strong>harness 应用产品（qm/cindy）+ harness 工程方法论（better-harness）</strong>。当底层 harness 成为商品，产品化的竞争自然上移。值得注意：qm 的"多人 scope + Slack 集成"与 cindy 的"多 harness 混合驱动"分别代表了<strong>协同维度</strong>和<strong>异构组合维度</strong>的差异化。<strong>风险</strong>：均为早期项目（创建 7-11 天），star 在 1.2K-1.4K 区间，社区验证尚浅；qm 和 cindy 的"开箱即用"承诺依赖 Claude Code/Codex 的稳定性，而这些 harness 本身仍在快速迭代。</p>
+<h3 id="2-esp32-ai-289m-llm-8-85">2. 边缘推理边界推到物理极限：esp32-ai 把 28.9M LLM 跑上 8 美元微控制器（评分 85）</h3>
+<p><code>slvDev/esp32-ai</code>（2,627⭐ / 322 fork，Python，MIT，2026-07-23 创建）代表了本周"边缘推理"趋势的极端案例。核心机制（README 自述，可核验）：</p>
+<ul>
+<li><strong>Per-Layer Embeddings 下沉到微控制器</strong>：借鉴 Google Gemma 3n/4 的 Per-Layer Embeddings 设计，把 25M 参数的 embedding 表留在 flash（慢速大容量），只把"思考核心"（每 token 实际计算的参数）放在 SRAM（512KB 快速内存）。每 token 仅从 flash 读取 ~450B（约 6 行），"大部分参数从不被加载，只是坐在 flash 里被少量采样"。</li>
+<li><strong>三级内存布局</strong>：SRAM（快/小）放思考核心 → PSRAM（中速）放输出头和工作内存 → FLASH（大/慢）放 25M 参数表。</li>
+<li><strong>实测数据</strong>：ESP32-S3（512KB SRAM + 8MB PSRAM + 16MB flash），28.9M 参数，4-bit 量化后 14.9MB，端到端 ~9.5 tok/s（纯计算 9.7 tok/s），完全离线。</li>
+<li><strong>诚实的能力边界</strong>：模型训练于 TinyStories，只能写简单的短故事，<strong>不能回答问题、执行指令、写代码或掌握事实</strong>。作者明确指出："The memory trick does not change [the reasoning limit]... What is interesting here is the architecture, fitting a large model onto a tiny chip, rather than what a 28.9 million parameter model can say."</li>
+</ul>
+<p>与此同框的 <code>digimata/quill</code>（3,195⭐ / 193 fork，Swift，MIT，2026-07-24 创建）把同一思路用于实用工具：极简全本地 macOS 会议录音+转录。单 Swift 二进制、菜单栏托盘、麦克风+系统音频双轨录制（免费两方话者分离），用 Parakeet TDT 0.6B v2 经 Core ML 端侧转录（Apple Silicon 约 20s/小时音频），数据完全不离机。</p>
+<p><strong>架构师判断</strong>：esp32-ai 与本周的 colibri（744B MoE / VRAM-RAM-NVMe 三级）、deltafin（2.8T MoE / HTTP 流式）共享同一个核心洞察——<strong>"模型推理瓶颈是内存放置策略，而非算力"</strong>，但把它推到了前所未有的极端（512KB SRAM）。Per-Layer Embeddings 的"把不计算的参数留在慢存储"与 MoE 的"把不激活的专家留在磁盘"是同一原理的两种表现。quill 则证明这个范式在<strong>端侧实用工具</strong>上已有可交付的产品形态。<strong>待观察</strong>：esp32-ai 是单人项目（README 含作者自述的参数计数 bug 修正历史）、0 releases、模型能力极有限；其价值在架构启发而非实用。quill 的 2 contributors 同样偏小团队。</p>
+<h3 id="3-kimi-k3-80">3. Kimi K3 全栈生态延续增长，但斜率趋平（评分 80，连续性追踪）</h3>
+<p>昨日主角 Kimi K3 的全栈基础设施仍在增长，但增速明显放缓：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>项目</th>
+<th>昨日(07-31)</th>
+<th>今日(08-01)</th>
+<th>增量</th>
+<th>昨日增量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型权重</td>
+<td>MoonshotAI/Kimi-K3</td>
+<td>7,520</td>
+<td>7,709</td>
+<td>+189</td>
+<td>+2,009</td>
+</tr>
+<tr>
+<td>训练环境</td>
+<td>kvcache-ai/AgentENV</td>
+<td>2,595</td>
+<td>2,690</td>
+<td>+95</td>
+<td>+1,184</td>
+</tr>
+<tr>
+<td>训练通信</td>
+<td>MoonshotAI/MoonEP</td>
+<td>923</td>
+<td>958</td>
+<td>+35</td>
+<td>+65</td>
+</tr>
+<tr>
+<td>后训练</td>
+<td>XYZ-AI-Lab/axrl</td>
+<td>641</td>
+<td>750</td>
+<td>+109</td>
+<td>+72</td>
+</tr>
+<tr>
+<td>本地推理</td>
+<td>gavamedia/deltafin</td>
+<td>466</td>
+<td>553</td>
+<td>+87</td>
+<td>+158</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断</strong>：K3（+189）和 AgentENV（+95）的增量较昨日（+2,009 / +1,184）下降约一个数量级，说明"模型发布即生态动员"的<strong>脉冲效应正在衰减</strong>。axrl（+109）和 deltafin（+87）逆势保持正增长，说明后训练和本地推理方向仍有独立关注度。但整体而言，注意力正在从 K3 生态向新的热点（harness 应用层、边缘推理）转移。<strong>注意区分热度与价值</strong>：K3 评测仍为厂商自报（待独立复现），生态"增长趋平"不等于价值下降——它只是说明社区的发现阶段接近完成。</p>
+<hr />
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="qm-1367-stars-score-86">👥 qm — 1,367 stars · 平台候选 · Score 86</h3>
+<p><strong>评分明细（0-10）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热度质量</td>
+<td>7</td>
+<td>3 天 1.4K⭐，fork 125 说明有试用意愿</td>
+</tr>
+<tr>
+<td>技术创新度</td>
+<td>8</td>
+<td>"多人 scope + Slack/Web 统一身份"是协同维度的真实差异化</td>
+</tr>
+<tr>
+<td>工程成熟度</td>
+<td>6</td>
+<td>早期项目，部署目录架构清晰但生产验证缺失</td>
+</tr>
+<tr>
+<td>架构启发价值</td>
+<td>8</td>
+<td>per-scope durable sandbox + harness 无关 core 是清晰的分层</td>
+</tr>
+<tr>
+<td>企业落地潜力</td>
+<td>7</td>
+<td>面向初创团队定位精准，安全策略三档设计合理</td>
+</tr>
+<tr>
+<td>中期趋势概率</td>
+<td>7</td>
+<td>harness 应用化是确定方向，但竞争激烈</td>
+</tr>
+<tr>
+<td>平台化潜力</td>
+<td>8</td>
+<td>web apps + shared skills + admin control 有平台骨架</td>
+</tr>
+<tr>
+<td>基础设施潜力</td>
+<td>6</td>
+<td>更偏应用层而非基础设施</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总分 57/80</strong> · <strong>归类：平台候选</strong> · <strong>建议：跟踪 Slack 集成深度与 per-scope 沙箱的隔离强度</strong></p>
+<h3 id="esp32-ai-2627-stars-score-83">🔧 esp32-ai — 2,627 stars · 观察型 · Score 83</h3>
+<p>详见项目档案。28.9M LLM on $8 ESP32-S3，Per-Layer Embeddings + flash 参数表。</p>
+<h3 id="cindy-1260-stars-score-82">🎯 cindy — 1,260 stars · 平台候选 · Score 82</h3>
+<p>详见项目档案。开箱即用多 harness agent 客户端，任务中途切换 harness×model。</p>
+<h3 id="quill-3195-stars-score-81">🪶 quill — 3,195 stars · 工具型 · Score 81</h3>
+<p>详见项目档案。极简全本地 macOS 会议录音+转录，Parakeet TDT 端侧 ASR。</p>
+<hr />
+<h2 id="coding-agent">Coding Agent 分层演进（今日视角）</h2>
+<pre class="mermaid">flowchart TB
+    subgraph L5["L5 应用产品 · 本周新增"]
+        QM["qm<br/>多人协作平台<br/>per-scope sandbox · Slack/Web"]
+        CD["cindy<br/>开箱即用客户端<br/>中途切换 harness×model"]
+    end
+    subgraph L4["L4 工程方法论"]
+        BH["better-harness<br/>harness 自我改进<br/>loop engineering"]
+    end
+    subgraph L3["L3 编排层 · meta-harness"]
+        OM["omnigent<br/>统一编排多 harness"]
+    end
+    subgraph L2["L2 开发范式"]
+        EV["vercel/eve<br/>filesystem-first"]
+    end
+    subgraph L1["L1 harness 本体"]
+        GB["grok-build<br/>官方 Rust TUI"]
+    end
+    BH -.->|"作用于"| GB
+    OM -->|"编排"| GB
+    EV -.->|"定义范式"| GB
+    QM -->|"调用"| OM
+    CD -->|"混合驱动"| GB
+</pre>
+<h2 id="_4">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- <strong>harness 应用层是新蓝海</strong>：当 grok-build/omnigent/eve 把 harness 基础设施铺设完毕，"怎么用 harness 交付多人协作产品"（qm）、"怎么让非技术用户开箱即用"（cindy）成为差异化战场。对架构师意味着：选 harness 只是第一步，产品形态设计才是竞争核心。
+- <strong>边缘推理范式家族成型</strong>：esp32-ai（512KB SRAM）、quill（macOS 端侧）、colibri（多 GPU）、deltafin（单台 Mac）共同验证"推理瓶颈是内存放置策略"。对嵌入式/IoT/隐私场景有结构性启发——离线 AI 不再是噱头而是工程路径。</p>
+<p><strong>风险/泡沫点：</strong>
+- <strong>应用层项目均为早期</strong>：qm/cindy/better-harness 创建于 7/21-7/29，star 1.2K-1.4K，生产成熟度未经验证。它们的"开箱即用"承诺依赖 Claude Code/Codex 的稳定性，而这些 harness 本身仍在快速迭代——<strong>上游 breaking change 可能使下游应用层项目维护成本激增</strong>。
+- <strong>esp32-ai 能力边界常被误读</strong>：28.9M 参数 + 9.5 tok/s 的数字容易让人高估其实用性。作者明确声明模型仅能写 TinyStories 级别的短故事，不能问答/指令/编码。<strong>热度（2.6K⭐）来自"把 LLM 塞进微控制器"的话题性，而非产品成熟度</strong>。
+- <strong>K3 生态增长趋平≠价值下降</strong>：增量下降一个数量级是注意力转移的正常表现，不代表 K3 或其生态项目的技术价值降低。但需警惕"趋平"被误读为"失败"。
+- <strong>harness 品类可能被原生能力收编</strong>：若 Claude Code/Codex 原生支持多人协作或多 harness 混合，qm/cindy 的差异化会被削弱（重复昨日判断，但应用层比编排层更脆弱）。</p>
+<hr />
+<h2 id="_5">重点项目档案</h2>
+<ul>
+<li>👥 <a href="projects/qm.html">qm</a> — 多人协作 agent harness for work</li>
+<li>🔧 <a href="projects/esp32-ai.html">esp32-ai</a> — 28.9M LLM on $8 ESP32-S3 微控制器</li>
+<li>🎯 <a href="projects/cindy.html">cindy</a> — 开箱即用多 harness agent 客户端</li>
+<li>🪶 <a href="projects/quill.html">quill</a> — 极简全本地 macOS 会议录音+转录</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (gh CLI) + 仓库 README 深度阅读 | 生成时间: 2026-08-01</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

@@ -6,19 +6,19 @@
 
 ---
 
-## 最新研究摘要（2026-07-31）
+## 最新研究摘要（2026-08-01）
 
-**Coding agent harness 多极化——SpaceXAI 官方 grok-build（Rust TUI/23.5K⭐）入场，omnigent meta-harness（7.9K⭐）与 vercel/eve filesystem-first（4.2K⭐）三线并进 · 前沿 MoE 本地推理范式确立——colibri 从 3.85K 飙升至 21K⭐，纯 C/零依赖跑 GLM-5.2 744B，VRAM/RAM/存储三级内存层级 · Kimi K3 全栈生态持续深化（K3 5.5K→7.5K/MoonEP→923/deltafin→466/axrl→641/AgentENV→2.6K）**
+**Coding agent 应用层从 harness 扩散为完整产品形态——qm 多人协作 agent harness（1.4K⭐/Slack+Web/每人独立沙箱）、cindy 开箱即用多 harness agent 客户端（1.3K⭐/Claude Code+Codex 混合驱动）、better-harness harness 工程化（1.3K⭐/loop engineering），harness 层从工具进化为多人协同平台 · 边缘推理边界推到极致——esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M 参数 LLM（9.5 tok/s/Per-Layer Embeddings/flash 存储 25M 参数表），quill 全本地 macOS 会议录音转录（Parakeet TDT/系统音频+麦克风双轨），"把模型塞进最小内存"从 MoE 下沉到微控制器 · Kimi K3 生态延续增长（K3 7.5K→7.7K/AgentENV 2.6K→2.7K）**
 
 今日热榜新信号：
-- **xai-org/grok-build**（23,556 stars）：SpaceXAI 官方开源 coding agent harness 与 TUI（Rust），全屏鼠标交互/可 headless 跑 CI/经 Agent Client Protocol 嵌入编辑器，预编译二进制覆盖 macOS/Linux/Windows
-- **JustVugg/colibri**（21,218 stars）：纯 C/零依赖的 GLM-5.2 744B MoE 推理引擎，把 VRAM/RAM/NVMe 当作统一内存层级；6×RTX 5090 全专家驻留实测 4 tok/s、TTFT 1.6s；19 天从 3.85K 飙至 21K⭐
-- **omnigent-ai/omnigent**（7,924 stars）：开源 Agent meta-harness，统一编排 Claude Code/Codex/Cursor/Pi/Hermes + 自定义 agent，跨设备实时协作、策略治理、云沙箱（Modal/Daytona/E2B 等），alpha 阶段
+- **yc-software/qm**（1,367 stars）：多人协作 agent harness for work，Slack + Web 双入口，每人独立沙箱/记忆/权限/技能，统一编排 Pi/OpenCode/Claude Code/Codex，面向初创团队的共享 agent 平台
+- **slvDev/esp32-ai**（2,627 stars）：在 8 美元 ESP32-S3 微控制器上运行 28.9M 参数 LLM，用 Google Per-Layer Embeddings 把 25M 参数表存入 flash，每 token 仅读取 ~450B，实测 9.5 tok/s，完全离线
+- **makecindy/cindy**（1,260 stars）：开箱即用的开源 AI agent 客户端（Electron+React Native），混合驱动 Claude Code/Codex，可在任务中途切换 harness×model 组合，本地运行用真实文件和已登录应用
 
+**→ [查看 2026-08-01 完整简报](daily/2026-08-01.md)**
 **→ [查看 2026-07-31 完整简报](daily/2026-07-31.md)**
 **→ [查看 2026-07-30 完整简报](daily/2026-07-30.md)**
 **→ [查看 2026-07-29 完整简报](daily/2026-07-29.md)**
-**→ [查看 2026-07-28 完整简报](daily/2026-07-28.md)**
 
 ---
 
@@ -26,21 +26,21 @@
 
 | 日期 | 核心主题 | 重点项目数 |
 |------|---------|----------|
+| [2026-08-01](daily/2026-08-01.md) | Coding agent 应用层从 harness 扩散为完整产品形态——qm  | 4 个深度分析 |
 | [2026-07-31](daily/2026-07-31.md) | Coding agent harness 多极化——SpaceXAI 官方 gr | 4 个深度分析 |
 | [2026-07-30](daily/2026-07-30.md) | Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1 | 4 个深度分析 |
 | [2026-07-29](daily/2026-07-29.md) | OpenWorker 重定义「本地优先 AI Coworker」交付物范式 ·  | 4 个深度分析 |
 | [2026-07-28](daily/2026-07-28.md) | openclaw（384,378 stars） · hermes-agent（2 | 8 个深度分析 |
 | [2026-07-27](daily/2026-07-27.md) | freeCodeCamp（453,008 stars） · openclaw（3 | 8 个深度分析 |
 | [2026-07-26](daily/2026-07-26.md) | freeCodeCamp（453,008 stars） · react（246, | 8 个深度分析 |
-| [2026-07-25](daily/2026-07-25.md) | caveman（93,628 stars） · awesome-mcp-serv | 8 个深度分析 |
 
 ---
 
 ## 当前最值得关注的趋势
 
-1. **Coding agent harness 多极化：官方入场 + meta-harness + filesystem-first 三线并进**：相关项目 grok-build, omnigent, eve。
-2. **前沿 MoE 本地推理范式确立：colibri 纯 C 引擎把 744B MoE 跑上消费硬件**：相关项目 colibri。
-3. **Kimi K3 全栈生态持续深化：模型/训练/推理/后训练/环境五层齐增长**：相关项目 kimi-k3, moonep, deltafin。
+1. **Coding agent 应用层产品化：从 harness 工具扩散为多人协作平台（qm）/开箱即用客户端（cindy）/harness 工程化（better-harness）**：相关项目 qm, cindy, better-harness。
+2. **边缘推理边界推到极致：esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M LLM（Per-Layer Embeddings/flash 存参数表/9.5 tok/s），quill 全本地 macOS 会议转录**：相关项目 esp32-ai, quill。
+3. **Kimi K3 全栈生态延续增长：K3 7.5K→7.7K、AgentENV 2.6K→2.7K，注意力持续但增长斜率趋平**：相关项目 kimi-k3, agentenv, moonep。
 
 ---
 
@@ -63,9 +63,9 @@
 
 ## 数据统计
 
-- 📊 项目档案：287 个
-- 📅 日报总数：116 期
-- 🔄 最近更新：2026-07-31
+- 📊 项目档案：291 个
+- 📅 日报总数：117 期
+- 🔄 最近更新：2026-08-01
 
 ---
 
