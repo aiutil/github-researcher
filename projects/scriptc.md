@@ -2,11 +2,11 @@
 title: "vercel-labs/scriptc"
 slug: scriptc
 date_added: "2026-07-29"
-last_seen_date: "2026-07-29"
+last_seen_date: "2026-08-02"
 category: "工具型"
 emoji: "🔷"
-stars: "2,099 stars"
-stars_delta: "创建于 2026-07-22，7 天 2.1K 星"
+stars: "2,677 stars"
+stars_delta: "创建于 2026-07-22，7 天 2.1K 星 → 8/02 2,677（+578）"
 language: "TypeScript"
 score: 86
 tags: ["typescript", "native-compiler", "aot", "zero-runtime", "quickjs"]
@@ -74,4 +74,4 @@ flowchart LR
 3. 与 Edge Runtime（Vercel/Cloudflare Workers）的集成——是否成为 Edge 函数的编译后端。
 
 ---
-*首次记录：2026-07-29* · *数据来源: GitHub Search API (gh CLI) + README*
+*首次记录：2026-07-29* · *最近更新：2026-08-02（stars 2,099→2,677，无其他变化）* · *数据来源: GitHub Search API (gh CLI) + README*

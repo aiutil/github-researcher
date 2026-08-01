@@ -6,19 +6,19 @@
 
 ---
 
-## 最新研究摘要（2026-08-01）
+## 最新研究摘要（2026-08-02）
 
-**Coding agent 应用层从 harness 扩散为完整产品形态——qm 多人协作 agent harness（1.4K⭐/Slack+Web/每人独立沙箱）、cindy 开箱即用多 harness agent 客户端（1.3K⭐/Claude Code+Codex 混合驱动）、better-harness harness 工程化（1.3K⭐/loop engineering），harness 层从工具进化为多人协同平台 · 边缘推理边界推到极致——esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M 参数 LLM（9.5 tok/s/Per-Layer Embeddings/flash 存储 25M 参数表），quill 全本地 macOS 会议录音转录（Parakeet TDT/系统音频+麦克风双轨），"把模型塞进最小内存"从 MoE 下沉到微控制器 · Kimi K3 生态延续增长（K3 7.5K→7.7K/AgentENV 2.6K→2.7K）**
+**qm 单日爆发 +250%（1,367→4,782⭐，验证 harness 应用层产品化进入主流），qwen-audio-agent 1.2K⭐ 加入应用层（全双工实时语音 + 后台任务并行编排多 harness via ACP） · Agent 记忆独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity，1M 记忆 wake 0.03s） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)/colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现 · K3 生态斜率继续趋平（K3 +108 / AgentENV +41） · decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐**
 
 今日热榜新信号：
-- **yc-software/qm**（1,367 stars）：多人协作 agent harness for work，Slack + Web 双入口，每人独立沙箱/记忆/权限/技能，统一编排 Pi/OpenCode/Claude Code/Codex，面向初创团队的共享 agent 平台
-- **slvDev/esp32-ai**（2,627 stars）：在 8 美元 ESP32-S3 微控制器上运行 28.9M 参数 LLM，用 Google Per-Layer Embeddings 把 25M 参数表存入 flash，每 token 仅读取 ~450B，实测 9.5 tok/s，完全离线
-- **makecindy/cindy**（1,260 stars）：开箱即用的开源 AI agent 客户端（Electron+React Native），混合驱动 Claude Code/Codex，可在任务中途切换 harness×model 组合，本地运行用真实文件和已登录应用
+- **yc-software/qm**（4,782 stars）：多人协作 agent harness for work，24h 内 1,367→4,782（+250%），Slack+Web 双入口/per-scope 沙箱/统一编排 Pi/OpenCode/Claude Code/Codex
+- **VictorTaelin/OptMem**（1,058 stars）：Agent 永久记忆：426-token prompt + 单个无依赖 Python 脚本，append-only log + 重建式树摘要，position-is-identity 每次 lookup 一次 seek，1M 记忆(608MB)wake 0.03s
+- **QwenAudio/qwen-audio-agent**（1,181 stars）：Agent 实时语音运行时，全双工语音 + 自然打断，前台对话与后台任务并行，后台 Agent 经 ACP 接入 OpenCode/Claude Code/Codex/Hermes/Kimi Code，v1.0.0 已发布 macOS 桌面版
 
+**→ [查看 2026-08-02 完整简报](daily/2026-08-02.md)**
 **→ [查看 2026-08-01 完整简报](daily/2026-08-01.md)**
 **→ [查看 2026-07-31 完整简报](daily/2026-07-31.md)**
 **→ [查看 2026-07-30 完整简报](daily/2026-07-30.md)**
-**→ [查看 2026-07-29 完整简报](daily/2026-07-29.md)**
 
 ---
 
@@ -26,21 +26,21 @@
 
 | 日期 | 核心主题 | 重点项目数 |
 |------|---------|----------|
+| [2026-08-02](daily/2026-08-02.md) | qm 单日爆发 +250%（1,367→4,782⭐，验证 harness 应用 | 5 个深度分析 |
 | [2026-08-01](daily/2026-08-01.md) | Coding agent 应用层从 harness 扩散为完整产品形态——qm  | 4 个深度分析 |
 | [2026-07-31](daily/2026-07-31.md) | Coding agent harness 多极化——SpaceXAI 官方 gr | 4 个深度分析 |
 | [2026-07-30](daily/2026-07-30.md) | Kimi K3 发布首个开源 3T 级模型（2.8T MoE/KDA 新架构/1 | 4 个深度分析 |
 | [2026-07-29](daily/2026-07-29.md) | OpenWorker 重定义「本地优先 AI Coworker」交付物范式 ·  | 4 个深度分析 |
 | [2026-07-28](daily/2026-07-28.md) | openclaw（384,378 stars） · hermes-agent（2 | 8 个深度分析 |
 | [2026-07-27](daily/2026-07-27.md) | freeCodeCamp（453,008 stars） · openclaw（3 | 8 个深度分析 |
-| [2026-07-26](daily/2026-07-26.md) | freeCodeCamp（453,008 stars） · react（246, | 8 个深度分析 |
 
 ---
 
 ## 当前最值得关注的趋势
 
-1. **Coding agent 应用层产品化：从 harness 工具扩散为多人协作平台（qm）/开箱即用客户端（cindy）/harness 工程化（better-harness）**：相关项目 qm, cindy, better-harness。
-2. **边缘推理边界推到极致：esp32-ai 在 8 美元 ESP32-S3 上跑 28.9M LLM（Per-Layer Embeddings/flash 存参数表/9.5 tok/s），quill 全本地 macOS 会议转录**：相关项目 esp32-ai, quill。
-3. **Kimi K3 全栈生态延续增长：K3 7.5K→7.7K、AgentENV 2.6K→2.7K，注意力持续但增长斜率趋平**：相关项目 kimi-k3, agentenv, moonep。
+1. **qm 单日爆发 +250%（1,367→4,782⭐），harness 应用层产品化进入主流；qwen-audio-agent 1.2K⭐ 以全双工实时语音加入应用层**：相关项目 qm, qwen-audio-agent, cindy。
+2. **Agent 记忆/持久化独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity / 1M 记忆 wake 0.03s）**：相关项目 optmem。
+3. **Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)、colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现**：相关项目 waste, deltafin, colibri。
 
 ---
 
@@ -63,9 +63,9 @@
 
 ## 数据统计
 
-- 📊 项目档案：291 个
-- 📅 日报总数：117 期
-- 🔄 最近更新：2026-08-01
+- 📊 项目档案：294 个
+- 📅 日报总数：118 期
+- 🔄 最近更新：2026-08-02
 
 ---
 

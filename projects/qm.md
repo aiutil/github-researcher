@@ -2,14 +2,14 @@
 title: "yc-software/qm"
 slug: "qm"
 date_added: "2026-08-01"
-last_seen_date: "2026-08-01"
+last_seen_date: "2026-08-02"
 category: "平台候选"
 emoji: "👥"
-stars: "1,367 stars"
-stars_delta: "7/29创建→8/01 1,367⭐，3天破千"
+stars: "4,782 stars"
+stars_delta: "7/29创建→8/01 1,367⭐→8/02 4,782⭐（24h +250%/+3,415），fork 125→469（+344）"
 language: "TypeScript"
 license: "MIT"
-score: 86
+score: 89
 tags: ["agent-harness", "multiplayer", "slack", "collaboration", "sandbox", "typescript", "multi-agent"]
 url: "https://github.com/yc-software/qm"
 ---
@@ -64,5 +64,12 @@ qm 的分层很清晰：headless core（API/identity/policy/scheduler + agent lo
 2. **上游 harness breaking change 的影响**：观察 Claude Code/Codex 下一次大版本更新后 qm 的适配速度和 issue 数变化。
 3. **Slack 集成的并发瓶颈**：当多个用户同时在 Slack 触发 agent 时，in-process plugin 模式是否扛得住。
 
+## 最近动态（2026-08-02）
+
+- **24h 爆发**：1,367 → 4,782（+3,415，+250%），fork 同步 125 → 469（+344）。**fork 与 star 同步暴涨**是真实部署意愿的强信号（对比 decimen-optical-transfer 3K⭐ 仅 19 watcher / stargazers 接口异常的刷星特征）。
+- **全站排名**：在 created>2026-07-20, stars>300 的搜索里，qm 已是仅次于 Kimi-K3 本体（7,817⭐）的第二名，且日增速（+3,415）远超 K3（+108）。
+- **判断修正**：昨日"应用层产品化"从趋势判断升级为**市场既成事实**。score 86 → 89（热度质量、中期趋势概率两维提升）。
+- **脉冲性待验**：+250% 可能部分来自登上 trending 后的注意力脉冲。明后日若回落到 +几百/天属脉冲；若维持 +1000/天量级则确认进入主流。
+
 ---
-*首次记录：2026-08-01*
+*首次记录：2026-08-01* · *最近更新：2026-08-02（24h +250%，score 89）*

@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-01'
+last_updated: '2026-08-02'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,38 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-02（第八十七版）
+
+### qm 单日爆发 +250%（1,367→4,782⭐）验证 harness 应用层产品化进入主流 · qwen-audio-agent 1.2K⭐（全双工实时语音 + 后台任务并行/ACP 多 harness）加入应用层 · Agent 记忆独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本/append-only log/position-is-identity） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s/64GB Mac）与 deltafin(Python)/colibri 并立 · K3 生态斜率继续趋平（K3 +108/AgentENV +41）· decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐
+
+#### 今日三大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | qm 单日爆发 +250%（1,367→4,782⭐，fork 125→469 同步暴涨），harness 应用层产品化从趋势判断升级为市场既成事实；qwen-audio-agent 1.2K⭐ 以全双工实时语音 + 后台任务并行（ACP 接入 OpenCode/Claude Code/Codex/Hermes/Kimi Code）加入应用层 | qm, qwen-audio-agent, cindy | 89 |
+| 2 | Agent 记忆/持久化独立成品类——OptMem 1.05K⭐（VictorTaelin/HVM 作者），426-token prompt + 单个无依赖 Python 脚本，append-only log + 重建式树摘要，position-is-identity，1M 记忆(608MB)wake 0.03s | optmem | 85 |
+| 3 | Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.45-0.62 tok/s/64GB Mac/trunk 驻内存+expert 磁盘流式/作者自验 logits 3.6e-06），与 deltafin(Python/589⭐)、colibri(C/744B) 并立，"推理瓶颈是内存放置策略"出现三种独立实现 | waste, deltafin, colibri | 82 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| yc-software/qm | 4,782 | 平台候选 | 89 | 更新（1,367→4,782，+250%，score 86→89） |
+| VictorTaelin/OptMem | 1,058 | 工具型 | 85 | 新增 |
+| QwenAudio/qwen-audio-agent | 1,181 | 平台候选 | 84 | 新增 |
+| sqliteai/waste | 652 | 观察型 | 82 | 新增 |
+| vercel-labs/scriptc | 2,677 | 工具型 | 86 | 更新（2,099→2,677，无其他变化） |
+
+#### 关键判断
+
+- **qm 爆发把应用层判断升级为既成事实**：昨日（08-01）判断 harness 竞争前沿向应用层转移，今日 qm 24h +250%（fork 同步 +344）给出最强市场验证。应用层从"qm/cindy/better-harness 三点"扩展为多形态矩阵（团队协同 qm / 语音 qwen-audio-agent / 个人客户端 cindy / 工程方法论 better-harness）。**待验**：+250% 含登上 trending 的注意力脉冲成分，明后日增速是确认主流 vs 脉冲的关键。**证据边界**：star/fork 为可核验事实；"应用层进入主流"为推断。
+- **Agent 记忆独立成品类**：OptMem 把记忆从"需要数据库/向量库/后台服务"降维到"426-token prompt + 单脚本"。position-is-identity（定长记录→seek 即查询）与 qm 的 per-scope memory（内嵌平台）形成独立性 vs 集成度的路线对比。**注意**：0.03s/1M 记忆为作者自述；并发写与长上下文压缩边界未验；license 未声明。
+- **本地推理三极分化**：waste（C/2.78T/单机）、deltafin（Python/全量/API server）、colibri（C/744B/多 GPU）三个独立团队、三种实现，命题"推理瓶颈是内存放置策略"不再依赖单一项目。**注意**：waste 0.62 tok/s 是可用性下限（26s/句），logits 一致性为作者自验非第三方复现；价值在可行性证明。
+- **刷星干扰**：decimen-optical-transfer（3,031⭐，star/watcher ≈159:1，无描述，stargazers 接口异常）在搜索排名高于 qm/scriptc/quill，疑似刷星，标记不推荐、不纳入 key_projects。
+- **K3 生态持续趋平**：K3 +108/AgentENV +41 较昨日再降；axrl +133 逆势高于昨日 +109，后训练方向有独立注意力。趋平≠价值下降，是社区发现阶段接近完成。
+
+---
 
 ## 2026-08-01（第八十六版）
 
