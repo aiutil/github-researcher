@@ -72,14 +72,21 @@
 </ul>
 <h2 id="_9">是否值得持续跟踪</h2>
 <p><strong>是，作为"超大模型本地推理三极"之一跟踪。</strong> 关注其 expert cache 命中率优化、是否出现第三方对齐复现、以及能否从 0.62 tok/s 工程优化到"日常可用"速度（如 5+ tok/s）。</p>
+<h2 id="2026-08-03">最近动态（2026-08-03）</h2>
+<ul>
+<li><strong>持续放量</strong>：652 → 1,010（+358），fork 53 → 89（+36）。纯 C 万亿级推理话题持续获得关注。</li>
+<li><strong>v0.6.2 发布</strong>：cgroup-aware budget——按 cgroup limit 而非 host RAM 自动预算内存（"Size the automatic budget against the cgroup limit, not the host's RAM"）。这是容器化部署的工程改进。</li>
+<li><strong>K3 本地推理第四极出现</strong>：FareedKhan-dev/kimi-k3-in-c（218⭐）用便携 C99 把 peak RSS 压到 8.24GB（waste 要求 ~64GB）。waste 不再是纯 C K3 推理的唯一实现，但两者在 Pareto 前沿占据不同点——waste 求接近可用速度（0.62 tok/s），kimi-k3-in-c 求内存下限（8.24GB / 32s·token⁻¹）。</li>
+<li><strong>判断</strong>：score 82 → 83。品类成熟（四极并立）提升整体关注度，waste 作为"接近可用速度"的代表持续受益。</li>
+</ul>
 <h2 id="_10">后续观察点</h2>
 <ol>
 <li><strong>expert cache 命中率优化</strong>：当前 38%（9038/14514），命中率提升直接提速；关注作者的工程优化进展。</li>
 <li><strong>第三方对齐复现</strong>：logits 3.6e-06 一致性是否被独立团队复现，是验证可行性的关键。</li>
-<li><strong>与 deltafin/colibri 的速度竞赛</strong>：谁先达到"日常可用"速度（5+ tok/s），谁就率先从"可行性"跨入"实用性"。</li>
+<li><strong>与 kimi-k3-in-c/deltafin/colibri 的 Pareto 前沿竞赛</strong>：四极并立后，速度-内存-易用性前沿被多个实现探索。关注 waste 能否工程优化到 5+ tok/s（跨入实用性）。</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-08-02</em> · <em>数据来源: GitHub API (gh CLI) + README 深度阅读</em></p>
+<p><em>首次记录：2026-08-02</em> · <em>最近更新：2026-08-03（652→1,010，v0.6.2，score 83）</em></p>
     </div>
 </main>
     <footer class="footer">

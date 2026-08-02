@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-08-02 GitHub 趋势研究简报 | GitHub Researcher</title>
+    <title>2026-08-03 GitHub 趋势研究简报 | GitHub Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📊</text></svg>">
-    <meta name="description" content="qm 单日爆发 +250%（1,367→4,782⭐，验证 harness 应用层产品化进入主流），qwen-audio-agent 1.2K⭐ 加入应用层（全双工实时语音 + 后台任务并行编排多 harness via ACP） · Agent 记忆独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity，1M 记忆 wake 0.03s） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)/colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现 · K3 生态斜率继续趋平（K3 +108 / AgentENV +41） · decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐">
+    <meta name="description" content="qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736 同步增），昨日'脉冲 vs 趋势'之问得到回应——应用层产品化确认非一日脉冲 · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出），waste 652→1,010 续涨 · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 eve 为底座把 agent 做成 CRM 产品本体（'agent 是产品，数据库只是它记笔记的地方'/证据账本/无置信度/deny-all egress 沙箱） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot 重建意图+步骤→生成可复用 Skill）">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -27,14 +27,14 @@
         <section class="hero">
             <div class="hero-meta">
                 <span class="hero-meta-dot"></span>
-                <span class="hero-meta-date">2026-08-02</span>
+                <span class="hero-meta-date">2026-08-03</span>
                 <span class="hero-meta-sep">·</span>
-                <span class="hero-meta-status">2026-08-02</span>
+                <span class="hero-meta-status">2026-08-03</span>
             </div>
             <h1 class="hero-title">GitHub 趋势研究</h1>
             <p class="hero-subtitle">每日从 GitHub Trending 中筛选真正值得架构师关注的项目——不只是搬运 star 数，而是判断它属于玩具、工具、平台还是未来基础设施。</p>
             <div class="hero-actions">
-                <a href="/daily/2026-08-02.html" class="btn-dark">
+                <a href="/daily/2026-08-03.html" class="btn-dark">
                     阅读今日简报
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -46,30 +46,30 @@
         <section class="stats-row">
             <div class="stat-card stat-card-primary">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                <div class="stat-number">5.0k+</div>
+                <div class="stat-number">6.0k+</div>
                 <div class="stat-label">本周总 Star 增速</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                <div class="stat-number">453</div>
+                <div class="stat-number">456</div>
                 <div class="stat-label">深度分析项目</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div class="stat-number">118</div>
+                <div class="stat-number">119</div>
                 <div class="stat-label">日更日报</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                <div class="stat-number">496</div>
+                <div class="stat-number">499</div>
                 <div class="stat-label">核心跟踪方向</div>
             </div>
         </section>
         <section class="brief-card">
-            <div class="brief-date">📅 2026-08-02 · 今日核心判断</div>
-            <h2 class="brief-title">qm 单日爆发 +250%（1,367→4,782⭐，验证 harness 应用层产品化进入主流），qwen-audio-agent 1.2K⭐ 加入应用层（全双工实时语音 + 后台任务并行编排多 harness via ACP） · Agent 记忆独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity，1M 记忆 wake 0.03s） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)/colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现 · K3 生态斜率继续趋平（K3 +108 / AgentENV +41） · decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐</h2>
-            <p class="brief-text">qm 单日爆发 +250%（1,367→4,782⭐，验证 harness 应用层产品化进入主流），qwen-audio-agent 1.2K⭐ 加入应用层（全双工实时语音 + 后台任务并行编排多 harness via ACP） · Agent 记忆独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity，1M 记忆 wake 0.03s） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)/colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现 · K3 生态斜率继续趋平（K3 +108 / AgentENV +41） · decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐 今日头条趋势:qm 单日爆发 +250%（1,367→4,782⭐），harness 应用层产品化进入主流；qwen-audio-agent 1.2K⭐ 以全双工实时语音加入应用层。</p>
-            <a href="/daily/2026-08-02.html" class="brief-cta">阅读完整简报 →</a>
+            <div class="brief-date">📅 2026-08-03 · 今日核心判断</div>
+            <h2 class="brief-title">qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736 同步增），昨日'脉冲 vs 趋势'之问得到回应——应用层产品化确认非一日脉冲 · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出），waste 652→1,010 续涨 · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 eve 为底座把 agent 做成 CRM 产品本体（'agent 是产品，数据库只是它记笔记的地方'/证据账本/无置信度/deny-all egress 沙箱） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot 重建意图+步骤→生成可复用 Skill）</h2>
+            <p class="brief-text">qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736 同步增），昨日'脉冲 vs 趋势'之问得到回应——应用层产品化确认非一日脉冲 · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出），waste 652→1,010 续涨 · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 eve 为底座把 agent 做成 CRM 产品本体（'agent 是产品，数据库只是它记笔记的地方'/证据账本/无置信度/deny-all egress 沙箱） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot 重建意图+步骤→生成可复用 Skill） 今日头条趋势:qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736），增速从 +250% 正常化至 +47% 但量级仍远超 K3（+75），应用层产品化确认非一日脉冲。</p>
+            <a href="/daily/2026-08-03.html" class="brief-cta">阅读完整简报 →</a>
         </section>
         <section>
             <div class="section-header">
@@ -83,32 +83,32 @@
                 <div class="card" onclick="window.location='/projects/qm.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">👥</div>
-                        <div class="card-stars">4,782 stars</div>
+                        <div class="card-stars">7,015 stars</div>
                     </div>
                     <div class="card-title">yc-software/qm</div>
-                    <div class="card-desc">多人协作 agent harness for work，24h 内 1,367→4,782（+250%），Slack+Web 双入口/per-scope 沙箱/统一编排 Pi/OpenCode/Claude Code/Codex</div>
+                    <div class="card-desc">多人协作 agent harness，第二日续涨 4,782→7,015（+2,233/+47%），fork 469→736（+267），应用层产品化确认非一日脉冲</div>
                     <div class="card-tags"><span class="tag tag-purple">agent-harness</span><span class="tag tag-purple">multiplayer</span><span class="tag tag-purple">slack</span></div>
                     <div class="card-actions"><a href="https://github.com/yc-software/qm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/optmem.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/crm.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">🧠</div>
-                        <div class="card-stars">1,058 stars</div>
+                        <div class="card-emoji">📋</div>
+                        <div class="card-stars">1,731 stars</div>
                     </div>
-                    <div class="card-title">VictorTaelin/OptMem</div>
-                    <div class="card-desc">Agent 永久记忆：426-token prompt + 单个无依赖 Python 脚本，append-only log + 重建式树摘要，position-is-identity 每次 lookup 一次 seek，1M 记忆(608MB)wake 0.03s</div>
-                    <div class="card-tags"><span class="tag tag-purple">agent-memory</span><span class="tag tag-purple">persistent-memory</span><span class="tag tag-purple">append-only</span></div>
-                    <div class="card-actions"><a href="https://github.com/VictorTaelin/OptMem" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">trycompai/crm</div>
+                    <div class="card-desc">Agentic-first 开源 CRM，以 Vercel eve 为底座——agent 是产品本体、数据库只是它记笔记的地方；证据账本（工具报告观察而非置信度）、deny-all egress 沙箱、单租户内部设计</div>
+                    <div class="card-tags"><span class="tag tag-purple">agentic-crm</span><span class="tag tag-purple">eve</span><span class="tag tag-purple">vertical-agent</span></div>
+                    <div class="card-actions"><a href="https://github.com/trycompai/crm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/qwen-audio-agent.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/kimi-k3-in-c.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">🎙️</div>
-                        <div class="card-stars">1,181 stars</div>
+                        <div class="card-emoji">💠</div>
+                        <div class="card-stars">218 stars</div>
                     </div>
-                    <div class="card-title">QwenAudio/qwen-audio-agent</div>
-                    <div class="card-desc">Agent 实时语音运行时，全双工语音 + 自然打断，前台对话与后台任务并行，后台 Agent 经 ACP 接入 OpenCode/Claude Code/Codex/Hermes/Kimi Code，v1.0.0 已发布 macOS 桌面版</div>
-                    <div class="card-tags"><span class="tag tag-purple">voice-agent</span><span class="tag tag-purple">realtime</span><span class="tag tag-purple">full-duplex</span></div>
-                    <div class="card-actions"><a href="https://github.com/QwenAudio/qwen-audio-agent" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">FareedKhan-dev/kimi-k3-in-c</div>
+                    <div class="card-desc">便携 C99 跑全量 Kimi K3 2.78T，peak RSS 仅 8.24GB（176KB 引擎/0 GPU/1.56TB 检查点），'同一模型在 8GB 与 224GB 字节一致输出'，本地推理第四种独立实现</div>
+                    <div class="card-tags"><span class="tag tag-purple">kimi-k3</span><span class="tag tag-purple">moe</span><span class="tag tag-purple">local-inference</span></div>
+                    <div class="card-actions"><a href="https://github.com/FareedKhan-dev/kimi-k3-in-c" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
             </div>
         </section>
@@ -124,26 +124,26 @@
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>
                     <div class="trend-content">
-                        <div class="trend-title">qm 单日爆发 +250%（1,367→4,782⭐），harness 应用层产品化进入主流；qwen-audio-agent 1.2K⭐ 以全双工实时语音加入应用层</div>
-                        <div class="trend-meta">qm · qwen-audio-agent · cindy</div>
+                        <div class="trend-title">qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736），增速从 +250% 正常化至 +47% 但量级仍远超 K3（+75），应用层产品化确认非一日脉冲</div>
+                        <div class="trend-meta">qm · cindy</div>
                     </div>
-                    <div class="trend-score high">89/80</div>
+                    <div class="trend-score high">90/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank top">2</div>
                     <div class="trend-content">
-                        <div class="trend-title">Agent 记忆/持久化独立成品类——OptMem 1.05K⭐（426-token prompt + 单 Python 脚本 / append-only log + 重建式树摘要 / position-is-identity / 1M 记忆 wake 0.03s）</div>
-                        <div class="trend-meta">optmem</div>
+                        <div class="trend-title">K3 本地推理第四极——kimi-k3-in-c 便携 C99（8.24GB peak RSS/176KB 引擎/0 GPU/'8GB 与 224GB 字节一致输出'）加入战局，waste 652→1,010 续涨，命题从'能否跑'深化为'RAM 下限能压到多低'</div>
+                        <div class="trend-meta">kimi-k3-in-c · waste · deltafin</div>
                     </div>
-                    <div class="trend-score high">85/80</div>
+                    <div class="trend-score high">87/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">3</div>
                     <div class="trend-content">
-                        <div class="trend-title">Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s / 64GB Mac / expert 磁盘流式），与 deltafin(Python)、colibri 并立，'推理瓶颈是内存放置策略'出现三种独立实现</div>
-                        <div class="trend-meta">waste · deltafin · colibri</div>
+                        <div class="trend-title">垂直应用层成型——trycompai/crm 1.7K⭐ 以 Vercel eve 为底座把 agent 做成 CRM 产品本体（agent 是产品/数据库只是笔记/证据账本/无置信度/deny-all egress），eve 首个可观察的生产级应用</div>
+                        <div class="trend-meta">crm · skill-recorder</div>
                     </div>
-                    <div class="trend-score high">82/80</div>
+                    <div class="trend-score high">86/80</div>
                 </div>
             </div>
         </section>

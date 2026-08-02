@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-02'
+last_updated: '2026-08-03'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,37 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-03（第八十八版）
+
+### qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736），昨日"脉冲 vs 趋势"之问得到回应——应用层产品化确认非一日脉冲 · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出），waste 652→1,010 续涨 · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 Vercel eve 为底座把 agent 做成 CRM 产品本体（agent 是产品/数据库只是笔记/证据账本/无置信度/deny-all egress 沙箱） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot 重建意图+步骤→生成可复用 Skill）
+
+#### 今日三大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736），增速从 +250% 正常化至 +47% 但绝对量级仍远超同期一切项目（K3 仅 +75），应用层产品化从"市场既成事实"确认为持续性趋势 | qm, cindy | 90 |
+| 2 | K3 本地推理第四极——kimi-k3-in-c 便携 C99（8.24GB peak RSS/176KB 引擎/0 GPU/32s·token⁻¹）加入战局，waste 652→1,010 续涨，命题从"能否跑"深化为"RAM 下限能压到多低、速度-内存 Pareto 前沿在哪" | kimi-k3-in-c, waste, deltafin | 87 |
+| 3 | 垂直应用层成型——trycompai/crm 1.7K⭐ 以 Vercel eve 为底座把 agent 做成 CRM 产品本体（agent 是产品/数据库只是笔记/证据账本/工具不接受置信度/deny-all egress 沙箱），eve 首个可观察生产级应用 | crm, skill-recorder | 86 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| yc-software/qm | 7,015 | 平台候选 | 90 | 更新（4,782→7,015，第二日 +2,233，score 89→90） |
+| trycompai/crm | 1,731 | 平台候选 | 86 | 新增 |
+| FareedKhan-dev/kimi-k3-in-c | 218 | 观察型 | 83 | 新增 |
+| microsoft/skill-recorder | 726 | 工具型 | 84 | 新增 |
+| sqliteai/waste | 1,010 | 观察型 | 83 | 更新（652→1,010，v0.6.2 cgroup-aware budget，score 82→83） |
+
+#### 关键判断
+
+- **qm 续涨确认应用层非脉冲**：昨日（08-02）最大悬念是 qm +250% 是否 trending 注意力脉冲。今日答案：4,782→7,015（+2,233/+47%），fork 同步 469→736。增速百分比衰减（+250%→+47%）是健康曲线，但绝对量级（+2,233/day）仍远超同期一切项目（K3 +75）。两日累计 +5,648 stars / +611 forks。**证据边界**：star/fork 为可核验事实；"持续性趋势"为两日数据的推断，第三日（08-04）是最终确认点。pushed_at 停在 08-01（热度由已有版本驱动）。
+- **K3 本地推理 Pareto 前沿被四个独立实现探索**：waste（64GB/0.62 tok.s）、kimi-k3-in-c（8.24GB/32s·token⁻¹）、deltafin（Python/API）、colibri（多 GPU/744B/4 tok.s）覆盖速度-内存-易用性的不同权衡。kimi-k3-in-c 把 RAM 下限推到新极限（8.24GB），定义 Pareto 内存端。**注意**：8.24GB/32s·token⁻¹ 为作者 README 自述+标注 docs/data 实测，非第三方复现；"字节一致输出"是确定性计算推论，依赖 checkpoint 完整性待独立验证。作者 FareedKhan-dev 有从零实现公信力（train-llm-from-scratch 8.8K⭐）。
+- **垂直应用层以 agent 为本体成型**：trycompai/crm 证明"agent 不是 CRM 功能，CRM 是 agent 记笔记的地方"可工程化——证据账本（工具不接受置信度）、deny-all egress 沙箱、以 Vercel eve 为底座。这是应用层第二次深化（08-02 通用 harness 产品化 → 08-03 垂直 SaaS 以 agent 重写）。eve 首个生产级采用，验证 filesystem-first 范式。**注意**：3 天项目，仅 2 contributors，生产成熟度未验。
+- **刷星判断被印证**：decimen-optical-transfer 昨日 3,031→今日 3,620 几乎停滞，印证"刷星/脉冲"判断——真实热门项目不会在爆发次日停滞。WilonityLoader（1,213⭐/0 fork，游戏作弊工具）、flashloan-scalper-bot（213⭐/153 fork，疑似诈骗）具刷星/欺诈特征，已排除。
+
+---
 
 ## 2026-08-02（第八十七版）
 

@@ -4,6 +4,19 @@
 
 ---
 
+## 2026-08-03
+
+**核心主题：** qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736 同步增），昨日"脉冲 vs 趋势"之问得到回应——应用层产品化确认非一日脉冲（增速 +250%→+47% 是健康衰减，绝对量级仍远超 K3 +75） · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出/32s·token⁻¹），waste 652→1,010 续涨（v0.6.2 cgroup-aware budget） · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 Vercel eve 为底座把 agent 做成 CRM 产品本体（"agent 是产品，数据库只是它记笔记的地方"/证据账本/工具不接受置信度/deny-all egress 沙箱/单租户内部） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot CLI 重建意图+步骤→生成可复用 SKILL.md 或定时 Automation） · decimen-optical-transfer 昨日 3,031→今日 3,620 几乎停滞，印证刷星判断
+
+**关键项目：**
+- 👥 yc-software/qm (7,015, 更新 +2,233) — 多人协作 agent harness，第二日续涨确认非脉冲，Score 90
+- 📋 trycompai/crm (1,731, 新增) — Agentic-first 开源 CRM，以 eve 为底座，证据账本 + deny-all 沙箱，Score 86
+- 💠 FareedKhan-dev/kimi-k3-in-c (218, 新增) — 便携 C99 跑全量 K3，peak RSS 8.24GB，Score 83
+- 🎥 microsoft/skill-recorder (726, 新增) — Microsoft 官方录屏→Skill 生成，Score 84
+- 💽 sqliteai/waste (1,010, 更新 +358) — 纯 C K3 推理，v0.6.2 cgroup-aware budget，Score 83
+
+---
+
 ## 2026-08-02
 
 **核心主题：** qm 单日爆发 +250%（1,367→4,782⭐，fork 125→469 同步暴涨，验证 harness 应用层产品化进入主流），qwen-audio-agent 1.2K⭐ 加入应用层（全双工实时语音 + 后台任务并行/经 ACP 接入 OpenCode/Claude Code/Codex/Hermes/Kimi Code，v1.0.0 已发布） · Agent 记忆独立成品类——OptMem 1.05K⭐（VictorTaelin/HVM 作者，426-token prompt + 单 Python 脚本/append-only log + 重建式树摘要/position-is-identity，1M 记忆 wake 0.03s） · Kimi K3 本地推理三极分化——waste 纯 C 零依赖跑全量 2.78T（0.62 tok/s/64GB Mac/trunk 驻内存 + expert 磁盘流式/作者自验 logits 3.6e-06），与 deltafin(Python)、colibri(C) 并立 · K3 生态斜率继续趋平（K3 +108/AgentENV +41，axrl +133 逆势） · decimen-optical-transfer 3K⭐ 疑似刷星（star/watcher 159:1）标记不推荐

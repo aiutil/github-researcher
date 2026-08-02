@@ -2,14 +2,14 @@
 title: "sqliteai/waste"
 slug: waste
 date_added: "2026-08-02"
-last_seen_date: "2026-08-02"
+last_seen_date: "2026-08-03"
 category: "观察型"
 emoji: "💽"
-stars: "652 stars"
-stars_delta: "7/28创建→8/02 652⭐，5天破600"
+stars: "1,010 stars"
+stars_delta: "7/28创建→8/02 652⭐→8/03 1,010⭐（+358），fork 53→89，v0.6.2 cgroup-aware budget"
 language: "C"
 license: "Apache-2.0"
-score: 82
+score: 83
 tags: ["kimi-k3", "moe", "local-inference", "nvme-streaming", "c", "dependency-free", "trillion-parameter", "streaming-tensor-engine"]
 url: "https://github.com/sqliteai/waste"
 ---
@@ -67,10 +67,17 @@ WASTE（Weight-Aware Streaming Tensor Engine）——纯 C、零运行时依赖�
 ## 是否值得持续跟踪
 **是，作为"超大模型本地推理三极"之一跟踪。** 关注其 expert cache 命中率优化、是否出现第三方对齐复现、以及能否从 0.62 tok/s 工程优化到"日常可用"速度（如 5+ tok/s）。
 
+## 最近动态（2026-08-03）
+
+- **持续放量**：652 → 1,010（+358），fork 53 → 89（+36）。纯 C 万亿级推理话题持续获得关注。
+- **v0.6.2 发布**：cgroup-aware budget——按 cgroup limit 而非 host RAM 自动预算内存（"Size the automatic budget against the cgroup limit, not the host's RAM"）。这是容器化部署的工程改进。
+- **K3 本地推理第四极出现**：FareedKhan-dev/kimi-k3-in-c（218⭐）用便携 C99 把 peak RSS 压到 8.24GB（waste 要求 ~64GB）。waste 不再是纯 C K3 推理的唯一实现，但两者在 Pareto 前沿占据不同点——waste 求接近可用速度（0.62 tok/s），kimi-k3-in-c 求内存下限（8.24GB / 32s·token⁻¹）。
+- **判断**：score 82 → 83。品类成熟（四极并立）提升整体关注度，waste 作为"接近可用速度"的代表持续受益。
+
 ## 后续观察点
 1. **expert cache 命中率优化**：当前 38%（9038/14514），命中率提升直接提速；关注作者的工程优化进展。
 2. **第三方对齐复现**：logits 3.6e-06 一致性是否被独立团队复现，是验证可行性的关键。
-3. **与 deltafin/colibri 的速度竞赛**：谁先达到"日常可用"速度（5+ tok/s），谁就率先从"可行性"跨入"实用性"。
+3. **与 kimi-k3-in-c/deltafin/colibri 的 Pareto 前沿竞赛**：四极并立后，速度-内存-易用性前沿被多个实现探索。关注 waste 能否工程优化到 5+ tok/s（跨入实用性）。
 
 ---
-*首次记录：2026-08-02* · *数据来源: GitHub API (gh CLI) + README 深度阅读*
+*首次记录：2026-08-02* · *最近更新：2026-08-03（652→1,010，v0.6.2，score 83）*

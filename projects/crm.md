@@ -1,0 +1,69 @@
+---
+title: "trycompai/crm"
+slug: crm
+date_added: "2026-08-03"
+last_seen_date: "2026-08-03"
+category: "平台候选"
+emoji: "📋"
+stars: "1,731 stars"
+stars_delta: "7/31创建→8/03 1,731⭐，3天破1.7K，fork 205"
+language: "TypeScript"
+license: "MIT"
+score: 86
+tags: ["agentic-crm", "eve", "vertical-agent", "evidence-ledger", "typescript", "bun", "deny-all-egress"]
+url: "https://github.com/trycompai/crm"
+---
+
+# trycompai/crm — Agentic-first 开源 CRM（agent 是产品本体）
+
+## 一句话定位
+一个把 agent 作为产品本体的开源 CRM——agent 不是 CRM 的功能，CRM 是 agent 记笔记的地方；agent 跑在自己的部署、调度、工作队列上，花研究预算、到预算耗尽就停。
+
+## 它解决的问题
+传统 CRM 是"数据库 + 表单"，AI CRM 是"给表单旁边加个聊天框"，两者都把真正的工作（查清事实、写下来）留给人类。trycompai/crm 面向的痛点是：销售/BD 团队的线索研究、富化、跟进调度本应是 agent 自动完成的持续工作，而非请求-响应的查询。目标用户是需要内部 CRM 且希望 agent 持续自主做研究的团队。
+
+## 为什么值得关注（2026-08-03）
+
+这是本周应用层演进的**第二次深化**。08-02 的应用层是"通用 harness 产品化"（qm/cindy/qwen-audio-agent）——把现有 harness 包成不同产品形态。trycompai/crm 是另一条路径：**把一个垂直领域（CRM）的整个产品逻辑以 agent 为核心重建**。它是 07-31 追踪的 Vercel eve（filesystem-first durable agent 框架）的**首个可观察生产级应用**，验证了 eve 从框架走向产品。3 天 1,731⭐ + 205 fork（fork/star ≈12%，健康）。
+
+## 热度来源判断
+- **真实需求信号**：fork 205 在 3 天项目里偏高，说明有团队在尝试部署/学习；README 是认真写的工程文档（含 `docs/agent.md`、`docs/api.md`、SECURITY.md），非营销页面。
+- **品类热度成分**："agentic-first CRM"踩中本周应用层 + 垂直 SaaS 重写双热点；但"证据账本""deny-all egress 沙箱""eve 底座"是独立的设计深度，非纯蹭热度。
+- **价值定位**：核心价值不在"又一个 CRM"，而在于它示范了**"agent 作为产品本体"的工程范式**——可迁移到其他垂直领域。
+
+## 关键技术亮点
+
+1. **证据账本取代置信度**：agent 的工具**不接受置信度分数**。README 原文论证——"a model asked to grade its own certainty will, and it will be wrong in the direction that makes it look useful"。工具只报告观察到的事实（`crm.signature-block`、`github.account-identity`），一个账本对证据定价：强证据写记录，弱证据变成人类裁决的建议。"A confidently wrong fact about a customer is worse than a blank field, because nobody can tell it is wrong."
+2. **deny-all egress 沙箱**：agent 的 bash 沙箱**无网络、无数据库**。`web_fetch` 在 app 运行时跑、`web_search` 在 model provider 跑，沙箱 shell 只做文本处理。沙箱**永不获得 `DATABASE_URL`**。论证："A shell with credentials and egress is exfiltration-shaped even in an internal tool; a shell with neither is a text processor."
+3. **以 Vercel eve 为底座**：agent 部署（`apps/agent`）构建在 [eve](https://eve.dev)——filesystem-first durable agent 框架。tool 是文件、skill 是 markdown、schedule 是文件，runtime 处理持久化（session 跨 redeploy 存活、工作恢复）。这是 eve 首个可观察的生产级应用。
+4. **工作队列语义**：`lib/tasks.ts` 用 `claimDue` + `FOR UPDATE SKIP LOCKED` 租约行——两个 dispatcher 取不相交的工作，死掉的 run 在租约过期时释放行。"每隔 N 分钟最旧的 10 个联系人"属于 task 的 `dueAt` 而非 cron 表达式。
+5. **单租户内部设计**：Google 登录 + 一个环境变量的 allow-list，进去的人能看到一切。这是有意的安全边界（见 SECURITY.md），非多租户 SaaS。
+
+## 架构启发
+核心启发是 **"agent 是产品，数据库是笔记"** 的倒置。传统架构是 API 层含智能（调富化 API、打分），agent 在旁边辅助；trycompai/crm 反过来——API 层（NestJS）刻意"无智能"，只报告"发生了某事"并写队列，**智能全部在 agent 侧**。这种倒置使 agent 的决策可审计（证据账本）、可隔离（deny-all 沙箱）、可独立调度（自己的工作队列）。代价是 agent 的决策质量成为产品的核心瓶颈——若 agent 判断差，整个产品差。
+
+## 定位判断
+在应用层生态中占据**垂直 SaaS 以 agent 为核心重写**的位置。与 qm（通用 harness 平台）、cindy（个人客户端）不是竞争，而是**不同抽象层次的互补**——qm 是"让团队用 agent 协同"，crm 是"让 agent 重写一个垂直领域"。它是 Vercel eve 框架的首个生产级采用者，也反向验证了 eve 的 filesystem-first 范式。
+
+## 风险 / 局限 / 泡沫点
+
+1. **极早期 + 极少 contributors**：创建于 2026-07-31（3 天），仅 2 名 contributors（carhartlewis 34 commits / ripgrim 14 commits）。"证据账本""deny-all egress"是设计声明，生产环境下的 agent 决策质量、证据定价准确性未经规模验证。
+2. **单租户内部设计限制适用场景**：明确"single-tenant and internal by design"，非多租户 SaaS。这意味着它更适合作为**范式参考**而非直接商业化产品。
+3. **agent 决策质量是产品核心瓶颈**：整个产品逻辑依赖 agent 的研究/判断质量。若底层模型（GPT-5.6 等）在某些 CRM 场景判断差，产品直接差——这是"agent 是产品"架构的结构性风险。
+4. **eve 依赖**：以 Vercel eve 为底座，eve 本身仍在快速迭代（07-31 追踪时 4.2K⭐），上游 breaking change 风险存在。
+
+## 与同类项目的关系
+- **vs qm（7,015⭐）**：qm 是通用 agent 协同平台（团队多人 scope），crm 是垂直 SaaS 重写（CRM 领域 agent 为本体）。不同抽象层次，qm 更宽，crm 更深。
+- **vs openworker（9,965⭐，Andrew Ng）**：openworker 是通用本地优先 AI Coworker（审批门控/BYO 模型/25+ 连接器），crm 是垂直领域（CRM）的 agent-native 重写。openworker 更通用，crm 更聚焦。
+- **vs 传统 CRM（开源/商业）**：传统 CRM 是数据库+表单+可选 AI 助手；crm 把这个范式倒置。它不与 Salesforce 直接竞争（单租户内部），而是示范一种新架构范式。
+
+## 是否值得持续跟踪
+**是，作为"垂直 SaaS 以 agent 为核心重写"的范式参考跟踪。** 关注其证据账本在生产数据上的表现、eve 底座的稳定性、以及"agent 决策质量"在真实 CRM 场景的边界。
+
+## 后续观察点
+1. **证据账本在生产数据的准确性**：弱证据→人类裁决的建议机制是否真的减少了"自信但错误"的事实，还是增加了人工裁决负担。
+2. **eve 底座的稳定性**：eve 下一次大版本更新对 crm 的影响，是否出现 breaking change。
+3. **contributors 增长**：若长期停留 2 人，则更像一个范式 demo 而非可持续产品；若增长到 5+ 则说明社区在认真采用。
+
+---
+*首次记录：2026-08-03* · *数据来源: GitHub API (gh CLI) + README 深度阅读*
