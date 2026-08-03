@@ -2,11 +2,11 @@
 title: "trycompai/crm"
 slug: crm
 date_added: "2026-08-03"
-last_seen_date: "2026-08-03"
+last_seen_date: "2026-08-04"
 category: "平台候选"
 emoji: "📋"
-stars: "1,731 stars"
-stars_delta: "7/31创建→8/03 1,731⭐，3天破1.7K，fork 205"
+stars: "3,123 stars"
+stars_delta: "7/31创建→8/03 1,731⭐→8/04 3,123⭐（第二日 +1,392/+80%，fork 205→341）"
 language: "TypeScript"
 license: "MIT"
 score: 86
@@ -65,5 +65,11 @@ url: "https://github.com/trycompai/crm"
 2. **eve 底座的稳定性**：eve 下一次大版本更新对 crm 的影响，是否出现 breaking change。
 3. **contributors 增长**：若长期停留 2 人，则更像一个范式 demo 而非可持续产品；若增长到 5+ 则说明社区在认真采用。
 
+## 最近动态（2026-08-04）
+
+- **第二日续涨 +1,392（+80%），垂直 agentic SaaS 路线获持续确认**：1,731 → 3,123，fork 205 → 341（+136）。fork/star 比维持在 ~11%，健康。4 天从 0 到 3.1K⭐，垂直 agent 重写路线与 qm 的通用平台路线**同步放量**，说明应用层趋势不是单点而是**多路线并行扩张**。
+- **与 qm 的横切**：qm 三日 +8,091（通用平台），crm 两日 +1,392（垂直重写）——通用平台量级更大，但垂直路线增速百分比可观（crm 第二日 +80%）。两者代表应用层的两条并行路线，非零和竞争。
+- **待观察**：contributors 仍为 2（carhartlewis/ripgrim），需关注是否吸引外部贡献者。证据账本/deny-all egress 的生产验证仍缺。
+
 ---
-*首次记录：2026-08-03* · *数据来源: GitHub API (gh CLI) + README 深度阅读*
+*首次记录：2026-08-03* · *最近更新：2026-08-04（1,731→3,123，+1,392，垂直路线持续确认）*

@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-08-04
+
+**核心主题：** 应用层产品化第三日完全确认——qm 三日连涨无一日回落（1,367→9,458，三日 +8,091，第三日 +2,443 反超第二日 +2,233 彻底排除脉冲假设）+ 多路线并行扩张（通用平台 qm 9.5K/垂直重写 crm 3.1K/AI-native 桌面 genoffice 564 同步放量） · K3 本地推理品类级爆发——kimi-k3-in-c 单日 +955（218→1,173，近 5.4 倍）引爆极端低内存（8.24GB）卖点，waste +510 续涨（连续三日增速递增 +342/+358/+510） · AI 推理边界外延——OpenAI 官方 ten-proofs 用 Lean 4 形式化十项数学/理论计算机成果（球填充/非 sofic 群/Connes 刚性反例等），每个可 `lake build` 独立验证，标志 AI + 形式化验证交叉品类出现 · agent 质量基础设施成型——ratchet 把 coding agent 极简规则从开环注入变闭环检查（PostToolUse hook 实时测复杂度/依赖/wrapper/yagni，285 watchers 高质量关注），与 skill-recorder 正交互补
+
+**关键项目：**
+- 👥 yc-software/qm (9,458, 更新 +2,443) — 多人协作 agent harness，三日连涨彻底排除脉冲，应用层趋势完全确立，Score 90
+- 💠 FareedKhan-dev/kimi-k3-in-c (1,173, 更新 +955) — 便携 C99 跑全量 K3，8.24GB RAM，爆发性增长，Score 83
+- 📐 openai/ten-proofs (432, 新增) — OpenAI 官方 Lean 4 数学形式化，AI + 形式化验证交叉品类，Score 82
+- 📄 genspark-ai/genoffice (564, 新增) — AI-native 办公套件，字节保真往返，Score 84
+- 🔧 0xwilliamortiz/ratchet (423, 新增) — agent 规则闭环检查，285 watchers，Score 83
+- 📋 trycompai/crm (3,123, 更新 +1,392) — Agentic-first CRM，垂直路线持续确认，Score 86
+- 🎥 microsoft/skill-recorder (1,366, 更新 +640) — Microsoft 录屏→Skill，与 ratchet 正交互补，Score 84
+- 💽 sqliteai/waste (1,520, 更新 +510) — 纯 C K3 推理，品类持续放量，Score 83
+
+---
+
 ## 2026-08-03
 
 **核心主题：** qm 第二日续涨 +2,233（4,782→7,015⭐，fork 469→736 同步增），昨日"脉冲 vs 趋势"之问得到回应——应用层产品化确认非一日脉冲（增速 +250%→+47% 是健康衰减，绝对量级仍远超 K3 +75） · K3 本地推理第四极：kimi-k3-in-c 便携 C99 把 RAM 下限打到 8.24GB（176KB 引擎/0 GPU/8GB 与 224GB 字节一致输出/32s·token⁻¹），waste 652→1,010 续涨（v0.6.2 cgroup-aware budget） · 垂直应用层成型：trycompai/crm 1.7K⭐ 以 Vercel eve 为底座把 agent 做成 CRM 产品本体（"agent 是产品，数据库只是它记笔记的地方"/证据账本/工具不接受置信度/deny-all egress 沙箱/单租户内部） · Microsoft skill-recorder 726⭐ 官方入场（录屏→Copilot CLI 重建意图+步骤→生成可复用 SKILL.md 或定时 Automation） · decimen-optical-transfer 昨日 3,031→今日 3,620 几乎停滞，印证刷星判断

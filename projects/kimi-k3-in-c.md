@@ -2,11 +2,11 @@
 title: "FareedKhan-dev/kimi-k3-in-c"
 slug: kimi-k3-in-c
 date_added: "2026-08-03"
-last_seen_date: "2026-08-03"
+last_seen_date: "2026-08-04"
 category: "观察型"
 emoji: "💠"
-stars: "218 stars"
-stars_delta: "8/01创建→8/03 218⭐，fork 23"
+stars: "1,173 stars"
+stars_delta: "8/01创建→8/03 218⭐→8/04 1,173⭐（+955，单日近 5.4 倍），fork 23→176"
 language: "C"
 license: "Apache-2.0"
 score: 83
@@ -64,5 +64,11 @@ url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 2. **trunk 深度-速度曲线**：`--preset laptop/server` 之间的中间预设能否找到"中等内存 + 接近可用速度"的甜点。
 3. **与 waste 的速度-内存 Pareto 对比**：两个纯 C 实现能否合并洞察，把前沿整体推进。
 
+## 最近动态（2026-08-04）
+
+- **爆发性增长 +955（218→1,173，单日近 5.4 倍），fork 23→176**：这是今日 K3 本地推理品类中增速最猛的项目。"8.24GB RAM 跑全量 K3"的极端内存下限卖点在第三日引爆关注。fork 176（vs 昨日 23）说明有人在尝试复现/部署。
+- **与 waste 的对比**：kimi-k3-in-c 今日增量（+955）首次超过 waste（+510），说明"最低 RAM"这个卖点的传播力强于"接近可用速度"。但需注意：32s/token 的速度意味着其价值仍在**可行性证明**而非日常使用。
+- **待验证**：8.24GB RSS 与"字节一致输出"仍为作者自述（标注来自 docs/data/ 实测），未见独立第三方复现。fork 增长可能带来首批独立验证信号。
+
 ---
-*首次记录：2026-08-03* · *数据来源: GitHub API (gh CLI) + README 深度阅读（性能数据标注来自 docs/data/ 实测）*
+*首次记录：2026-08-03* · *最近更新：2026-08-04（218→1,173，+955，爆发性增长）*
