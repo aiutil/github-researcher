@@ -2,11 +2,11 @@
 title: "openai/ten-proofs"
 slug: "ten-proofs"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-04"
+last_seen_date: "2026-08-05"
 category: "观察型"
 emoji: "📐"
-stars: "432 stars"
-stars_delta: "8/01创建，8/04观测 432⭐ / 39 fork"
+stars: "470 stars"
+stars_delta: "8/01创建，8/04观测 432⭐→8/05观测 470⭐（+38，平缓）"
 language: "Lean"
 license: "Apache-2.0"
 score: 82
@@ -60,5 +60,10 @@ AI 推理模型产出的数学"发现"面临一个根本信任问题：**怎么�
 2. **社区审查信号**：关注是否有 Lean/mathlib 核心贡献者公开 review 这些形式化的 claim 对应准确性。
 3. **ComparatorChallenges 的可用性**：README 提及独立检查流程，验证其是否真能被外部工具运行。
 
+## 最近动态（2026-08-05）
+
+- **+38（432→470），fork 39→43**：增速平缓（+8.8%），符合研究类仓库的预期——此类项目更新稀疏，受众限于 Lean/mathlib 专家。open_issues 0，pushed_at 停在 08-02（"发布即冻结"状态延续）。
+- **判断**：score 维持 82。作为 L0 基础研究/范式信号持续跟踪，重点观察 OpenAI 是否发布更多形式化、社区是否出现复现/质疑，而非日增速。
+
 ---
-*首次记录：2026-08-04* · *数据来源: GitHub API + 仓库 README*
+*首次记录：2026-08-04* · *最近更新：2026-08-05（432→470，+38，平缓符合预期）*

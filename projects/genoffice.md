@@ -2,14 +2,14 @@
 title: "genspark-ai/genoffice"
 slug: "genoffice"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-04"
+last_seen_date: "2026-08-05"
 category: "平台候选"
 emoji: "📄"
-stars: "564 stars"
-stars_delta: "7/31创建→8/04观测 564⭐ / 74 fork，最新 release v0.4.110（8/02）"
+stars: "1,273 stars"
+stars_delta: "7/31创建→8/04 564⭐→8/05 1,273⭐（+709，翻倍 +125%），fork 197"
 language: "TypeScript"
 license: "Apache-2.0"
-score: 84
+score: 85
 tags: ["ai-native", "office-suite", "electron", "docx", "xlsx", "pptx", "pdf", "byte-preserving"]
 url: "https://github.com/genspark-ai/genoffice"
 ---
@@ -62,5 +62,12 @@ genoffice 的核心 trade-off 是 **"原件是真理来源（original file is so
 2. **字节保真往返的真实表现**：社区是否报告复杂 docx（宏/嵌入对象/多级样式）往返后的保真问题。
 3. **release 节奏与 contributors 增长**：当前 2 人 + 5 天 4 release，观察是否持续及是否吸引外部贡献者。
 
+## 最近动态（2026-08-05）
+
+- **翻倍 +709（564→1,273，+125%），fork 197**：AI-native 桌面生产力路线获强验证。这是今日应用层三条路线中**增速最快**的——qm +17%、crm +46%、genoffice +125%。说明"AI-native 办公套件"这个切片在快速验证 PMF。
+- **应用层分化信号**：genoffice 翻倍 + crm 增速反超 qm，共同标志应用层从"齐涨"进入"分化"。桌面生产力（genoffice）在最小基数上展现了最强的相对吸引力。
+- **待观察（不变）**：强绑定 Genspark 服务仍是最大采用门槛（无账号则 AI 不可用）。字节保真往返在复杂 docx（宏/嵌入对象）下的实际表现未独立验证。contributors 仍待确认。
+- **判断修正**：score 84 → 85。翻倍增速是 PMF 的强信号，但 Genspark 绑定风险未消除。pushed_at 08-04（活跃开发）。
+
 ---
-*首次记录：2026-08-04* · *数据来源: GitHub API + 仓库 README + Releases*
+*首次记录：2026-08-04* · *最近更新：2026-08-05（564→1,273，翻倍，应用层分化中增速最快，score 85）*

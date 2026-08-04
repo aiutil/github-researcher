@@ -2,11 +2,11 @@
 title: "microsoft/skill-recorder"
 slug: skill-recorder
 date_added: "2026-08-03"
-last_seen_date: "2026-08-04"
+last_seen_date: "2026-08-05"
 category: "工具型"
 emoji: "🎥"
-stars: "1,366 stars"
-stars_delta: "7/29创建→8/03 726⭐→8/04 1,366⭐（+640），fork 75→141"
+stars: "1,751 stars"
+stars_delta: "7/29创建→8/03 726⭐→8/04 1,366⭐→8/05 1,751⭐（+385），fork 141→177"
 language: "TypeScript"
 license: "MIT"
 score: 84
@@ -69,5 +69,11 @@ Microsoft 官方桌面应用：录屏捕获一次真实工作会话（点击、�
 - **续涨 +640（726→1,366），fork 75→141**：连续增长，"从观察到技能提取"的官方入场持续获关注。fork 141 说明有人在真实尝试构建 Skill。
 - **品类定位**：与今日新增的 ratchet（agent 代码质量约束）形成正交互补——skill-recorder 解决"技能从哪来"，ratchet 解决"执行后是否守住底线"。两者共同构成 agent 工作流的质量基础设施。
 
+## 最近动态（2026-08-05）
+
+- **续涨 +385（1,366→1,751），fork 141→177**：增速从 +640 衰减到 +385，但仍维持正增长。作为 agent 三层质量栈的"技能提取层"，随 numbat（可观测性层）今日加入，skill-recorder 的品类定位进一步巩固。
+- **三层栈成型**：skill-recorder（技能提取，事前）→ ratchet（执行约束，事中）→ numbat（可观测/取证/阻断，事中+事后）。skill-recorder 是这个栈的入口。
+- **待观察（不变）**：强绑 Microsoft 生态（需 Copilot 访问权限），29 open issues 早期质量问题待收敛。
+
 ---
-*首次记录：2026-08-03* · *最近更新：2026-08-04（726→1,366，+640）*
+*首次记录：2026-08-03* · *最近更新：2026-08-05（1,366→1,751，+385，三层栈成型）*

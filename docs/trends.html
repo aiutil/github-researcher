@@ -37,14 +37,158 @@
     </div>
 
         <div class="date-section">
+            <div class="date-toggle" onclick="toggleSection('ds-2026-08-05')" style="cursor:pointer;">
+                <div class="date-header">
+                    <span class="date-badge">2026-08-05</span>
+                    <span class="date-summary">应用层第四日——qm 突破 10K 关口（9,458→11,092，+1,634，增速继续健康衰减至 +17%），多路线出现分化：crm 加速 +1,446（3,123→4,569，+46% 反超 qm 增速）、genoffice 翻倍 +709（564→1,273，+125%），应用层从'齐涨'进入'分化'阶段 · K3 本地推理品类分化——kimi-k3-in-c 持续 +779（1,173→1,952）逼近 2K，waste 增量骤降（+510→+145），'极限低内存'叙事热度持续压过'可用速度' · Agent 可观测性/治理品类出现——Perplexity 官方 numbat（684⭐，端点 agent 活动可见性 + 取证重建 + 可选阻断），与 ratchet/skill-recorder 构成三层 agent 质量基础设施栈（技能提取→执行约束→事后取证） · Agent 摄入层扩张——Firecrawl 官方 anydoc（2 天 1.1K⭐，Rust，office 文档→LLM-ready Markdown，单数毫秒）</span>
+                    <span class="date-arrow" id="arrow-ds-2026-08-05">▼</span>
+                </div>
+            </div>
+            <div class="date-trends" id="ds-2026-08-05" style="display:block;">
+<div style="margin-bottom:16px;">
+                <div class="trend-item">
+                    <div class="trend-rank top">1</div>
+                    <div class="trend-content">
+                        <div class="trend-title">应用层第四日分化——qm 突破 10K 关口（+1,634，增速衰减至 +17%）但 crm 反超增速（+1,446/+46%）、genoffice 翻倍（+709/+125%）；'齐涨'结束、'分化'开始，多路线各自验证 PMF</div>
+                    </div>
+                    <div class="trend-score high">90/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank top">2</div>
+                    <div class="trend-content">
+                        <div class="trend-title">K3 本地推理品类分化——kimi-k3-in-c 持续 +779 逼近 2K（极限低内存叙事延续），waste 增量骤降 +510→+145（可用速度叙事退潮），'最低 RAM'卖点持续压过'接近可用速度'</div>
+                    </div>
+                    <div class="trend-score high">84/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank ">3</div>
+                    <div class="trend-content">
+                        <div class="trend-title">Agent 可观测性/治理品类出现——Perplexity 官方 numbat（端点 agent 活动可见性 + 取证重建 + 可选 pre-action 阻断 + 单二进制）把 agent 安全从'事后审计'推向'实时可观测 + 事中阻断'，与 ratchet（执行约束）、skill-recorder（技能提取）构成三层栈</div>
+                    </div>
+                    <div class="trend-score high">85/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank ">4</div>
+                    <div class="trend-content">
+                        <div class="trend-title">Agent 摄入层扩张——Firecrawl 官方 anydoc（2 天 1.1K⭐，Rust，office 文档→LLM-ready Markdown，单数毫秒，Node/Python 绑定 + Agent Skill 分发），文档解析成为 agent 基础设施标配</div>
+                    </div>
+                    <div class="trend-score high">82/80</div>
+                </div></div><div class="section-title" style="margin-bottom:12px;"><span>🎯 重点项目</span></div>
+<div class="card-grid" style="animation:none;margin-bottom:8px;">
+
+                <div class="card" onclick="window.location='/projects/yc-software-qm.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">11,092 stars</div>
+                    </div>
+                    <div class="card-title">yc-software/qm</div>
+                    <div class="card-desc">多人协作 agent harness，第四日 +1,634（9,458→11,092），突破 10K 关口，增速继续健康衰减（+47%→+35%→+17%），f</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/yc-software/qm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/trycompai-crm.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">4,569 stars</div>
+                    </div>
+                    <div class="card-title">trycompai/crm</div>
+                    <div class="card-desc">Agentic-first 开源 CRM，第四日加速 +1,446（3,123→4,569，+46%），增速反超 qm，fork 205→485（+280），垂</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/trycompai/crm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/genspark-ai-genoffice.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">1,273 stars</div>
+                    </div>
+                    <div class="card-title">genspark-ai/genoffice</div>
+                    <div class="card-desc">AI-native 办公套件，第四日翻倍 +709（564→1,273，+125%），fork 197，增速最快，AI-native 桌面生产力路线获得强验证</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/genspark-ai/genoffice" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/fareedkhan-dev-kimi-k3-in-c.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">1,952 stars</div>
+                    </div>
+                    <div class="card-title">FareedKhan-dev/kimi-k3-in-c</div>
+                    <div class="card-desc">便携 C99 跑全量 K3，第四日 +779（1,173→1,952），逼近 2K，fork 176→318（+142），'极限低内存（8.24GB）'叙事延续</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/FareedKhan-dev/kimi-k3-in-c" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/perplexityai-numbat.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">684 stars</div>
+                    </div>
+                    <div class="card-title">perplexityai/numbat</div>
+                    <div class="card-desc">Perplexity 官方端点 agent 可观测性：本地 hooks + OTLP 日志 + 磁盘会话取证，CEL 规则引擎实时检测，可选 pre-actio</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/perplexityai/numbat" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/firecrawl-anydoc.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">1,086 stars</div>
+                    </div>
+                    <div class="card-title">firecrawl/anydoc</div>
+                    <div class="card-desc">Firecrawl 官方 Rust 库，office 文档（Word/PPT/Excel/ODP/RTF/EPUB/CSV/PDF）→ GitHub-Flavo</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/firecrawl/anydoc" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/microsoft-skill-recorder.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">1,751 stars</div>
+                    </div>
+                    <div class="card-title">microsoft/skill-recorder</div>
+                    <div class="card-desc">Microsoft 录屏→Skill 生成，第四日 +385（1,366→1,751），与 numbat/ratchet 构成 agent 三层质量栈（技能提取</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/microsoft/skill-recorder" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/0xwilliamortiz-ratchet.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">430 stars</div>
+                    </div>
+                    <div class="card-title">0xwilliamortiz/ratchet</div>
+                    <div class="card-desc">agent 规则闭环检查，第四日 +7（几乎持平），285 watchers 保持异常比例，与 numbat（事后取证）、skill-recorder（技能提取</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/0xwilliamortiz/ratchet" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/sqliteai-waste.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">1,665 stars</div>
+                    </div>
+                    <div class="card-title">sqliteai/waste</div>
+                    <div class="card-desc">纯 C 零依赖 K3 推理，第四日增量骤降 +510→+145（1,520→1,665），可用速度叙事退潮，但仍在 Pareto 可用速度端</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/sqliteai/waste" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/openai-ten-proofs.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">470 stars</div>
+                    </div>
+                    <div class="card-title">openai/ten-proofs</div>
+                    <div class="card-desc">OpenAI 官方 Lean 4 形式化十项数学成果，第四日 +38（432→470），平缓符合预期（研究类仓库更新稀疏）</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/openai/ten-proofs" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div></div>
+
+            </div>
+        </div>
+
+        <div class="date-section">
             <div class="date-toggle" onclick="toggleSection('ds-2026-08-04')" style="cursor:pointer;">
                 <div class="date-header">
                     <span class="date-badge">2026-08-04</span>
                     <span class="date-summary">应用层产品化第三日完全确认——qm 三日连涨无一日回落（1,367→9,458，三日 +8,091，第三日增量反超第二日彻底排除脉冲假设）+ 多路线并行扩张（通用平台 qm/垂直重写 crm/AI-native 桌面 genoffice 同步放量） · K3 本地推理品类级爆发——kimi-k3-in-c 单日 +955（218→1,173，近 5.4 倍）引爆极端低内存卖点，waste +510 续涨，品类从个别项目变为系统性关注 · AI 推理边界外延——OpenAI 官方发布 ten-proofs，用 Lean 4 形式化十项数学成果，标志'AI + 形式化验证'交叉品类出现 · agent 质量基础设施成型——ratchet 把极简规则从开环注入变闭环检查（285 watchers 高质量关注）</span>
-                    <span class="date-arrow" id="arrow-ds-2026-08-04">▼</span>
+                    <span class="date-arrow" id="arrow-ds-2026-08-04">▶</span>
                 </div>
             </div>
-            <div class="date-trends" id="ds-2026-08-04" style="display:block;">
+            <div class="date-trends" id="ds-2026-08-04" style="display:none;">
 <div style="margin-bottom:16px;">
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>

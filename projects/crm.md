@@ -2,14 +2,14 @@
 title: "trycompai/crm"
 slug: crm
 date_added: "2026-08-03"
-last_seen_date: "2026-08-04"
+last_seen_date: "2026-08-05"
 category: "平台候选"
 emoji: "📋"
-stars: "3,123 stars"
-stars_delta: "7/31创建→8/03 1,731⭐→8/04 3,123⭐（第二日 +1,392/+80%，fork 205→341）"
+stars: "4,569 stars"
+stars_delta: "7/31创建→8/03 1,731⭐→8/04 3,123⭐→8/05 4,569⭐（第三日 +1,446/+46%，fork 205→485）"
 language: "TypeScript"
 license: "MIT"
-score: 86
+score: 87
 tags: ["agentic-crm", "eve", "vertical-agent", "evidence-ledger", "typescript", "bun", "deny-all-egress"]
 url: "https://github.com/trycompai/crm"
 ---
@@ -71,5 +71,11 @@ url: "https://github.com/trycompai/crm"
 - **与 qm 的横切**：qm 三日 +8,091（通用平台），crm 两日 +1,392（垂直重写）——通用平台量级更大，但垂直路线增速百分比可观（crm 第二日 +80%）。两者代表应用层的两条并行路线，非零和竞争。
 - **待观察**：contributors 仍为 2（carhartlewis/ripgrim），需关注是否吸引外部贡献者。证据账本/deny-all egress 的生产验证仍缺。
 
+## 最近动态（2026-08-05）
+
+- **第三日加速 +1,446（+46%），增速反超 qm——应用层进入分化**：3,123 → 4,569，fork 341 → 485（+144，**注：fork 从昨日观测的 205 修正为今日 485，两日 +280**）。关键转折：crm 第三日 +46%，而 qm 第四日仅 +17%——**crm 增速首次反超 qm**。这意味着应用层从"齐涨"进入"分化"，市场开始在通用平台（qm）vs 垂直重写（crm）间区分 PMF 强度。
+- **fork 高速增长信号**：fork 485（vs 3 天前 205），fork/star 比 10.6% 维持健康。说明垂直 CRM 的部署/二次开发意愿强于通用平台（qm fork/star 比 10.8%，量级相近）。
+- **判断修正**：score 86 → 87。增速反超 + fork 高比例是垂直路线 PMF 的强信号。但 contributors 仍待观察（需确认是否仍 2 人）。pushed_at 08-04（活跃开发）。
+
 ---
-*首次记录：2026-08-03* · *最近更新：2026-08-04（1,731→3,123，+1,392，垂直路线持续确认）*
+*首次记录：2026-08-03* · *最近更新：2026-08-05（3,123→4,569，+1,446，增速反超 qm，score 87）*

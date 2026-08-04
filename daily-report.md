@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-08-05
+
+**核心主题：** 应用层第四日分化——qm 突破 10K 关口（9,458→11,092，+1,634，增速衰减至 +17%）但 crm 反超增速（+1,446/+46%）、genoffice 翻倍（+709/+125%）；"齐涨"结束、"分化"开始，多路线各自验证 PMF · K3 本地推理品类叙事分裂——kimi-k3-in-c 持续 +779 逼近 2K（极限低内存叙事延续），waste 增量骤降 +510→+145（可用速度叙事退潮），"最低 RAM"卖点持续压过"接近可用速度" · Agent 可观测性/治理品类出现——Perplexity 官方 numbat（684⭐，端点 agent 活动可见性 + 取证重建 + 可选 pre-action 阻断 + 单二进制，覆盖十余个 agent），与 ratchet/skill-recorder 构成三层 agent 质量基础设施栈（技能提取→执行约束→事后取证）· Agent 摄入层扩张——Firecrawl 官方 anydoc（2 天 1.1K⭐，Rust，office 文档→LLM-ready Markdown，单数毫秒）
+
+**关键项目：**
+- 👥 yc-software/qm (11,092, 更新 +1,634) — 多人协作 agent harness，突破 10K，增速衰减，被 crm 反超，Score 90
+- 📋 trycompai/crm (4,569, 更新 +1,446) — Agentic-first CRM，增速反超 qm，垂直路线 PMF 强信号，Score 87
+- 📄 genspark-ai/genoffice (1,273, 更新 +709) — AI-native 办公套件，翻倍 +125%，增速最快，Score 85
+- 💠 FareedKhan-dev/kimi-k3-in-c (1,952, 更新 +779) — 便携 C99 跑全量 K3，逼近 2K，叙事分裂中持续放量，Score 83
+- 🦝 perplexityai/numbat (684, 新增) — Perplexity agent 可观测性，覆盖十余个 agent，三层栈，Score 84
+- 📑 firecrawl/anydoc (1,086, 新增) — Firecrawl office 文档→Markdown，agent 摄入层，Score 82
+- 🎥 microsoft/skill-recorder (1,751, 更新 +385) — Microsoft 录屏→Skill，三层栈技能提取层，Score 84
+- 🔧 0xwilliamortiz/ratchet (430, 更新 +7) — agent 规则闭环检查，285 watchers 保持，三层栈执行约束层，Score 83
+- 💽 sqliteai/waste (1,665, 更新 +145) — 纯 C K3 推理，增量骤降，叙事分裂，Score 82
+- 📐 openai/ten-proofs (470, 更新 +38) — OpenAI Lean 4 形式化，平缓符合预期，Score 82
+
+---
+
 ## 2026-08-04
 
 **核心主题：** 应用层产品化第三日完全确认——qm 三日连涨无一日回落（1,367→9,458，三日 +8,091，第三日 +2,443 反超第二日 +2,233 彻底排除脉冲假设）+ 多路线并行扩张（通用平台 qm 9.5K/垂直重写 crm 3.1K/AI-native 桌面 genoffice 564 同步放量） · K3 本地推理品类级爆发——kimi-k3-in-c 单日 +955（218→1,173，近 5.4 倍）引爆极端低内存（8.24GB）卖点，waste +510 续涨（连续三日增速递增 +342/+358/+510） · AI 推理边界外延——OpenAI 官方 ten-proofs 用 Lean 4 形式化十项数学/理论计算机成果（球填充/非 sofic 群/Connes 刚性反例等），每个可 `lake build` 独立验证，标志 AI + 形式化验证交叉品类出现 · agent 质量基础设施成型——ratchet 把 coding agent 极简规则从开环注入变闭环检查（PostToolUse hook 实时测复杂度/依赖/wrapper/yagni，285 watchers 高质量关注），与 skill-recorder 正交互补

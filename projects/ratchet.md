@@ -2,11 +2,11 @@
 title: "0xwilliamortiz/ratchet"
 slug: "ratchet"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-04"
+last_seen_date: "2026-08-05"
 category: "工具型"
 emoji: "🔧"
-stars: "423 stars"
-stars_delta: "7/31创建→8/04观测 423⭐ / 85 fork / 285 watchers"
+stars: "430 stars"
+stars_delta: "7/31创建→8/04观测 423⭐→8/05观测 430⭐（+7），285 watchers 保持异常比例"
 language: "JavaScript"
 license: "MIT"
 score: 83
@@ -62,5 +62,11 @@ ratchet 的哲学是 **"ratchet turns one way"（棘轮单向转动）**——�
 2. **strict 模式的真实采用**：社区是否报告 strict 在生产流的可用性反馈。
 3. **探测器规则演化**：六类探测器是否会扩展，以及社区贡献的规则质量。
 
+## 最近动态（2026-08-05）
+
+- **+7（423→430），几乎持平**：第四日增量极小，但 **285 watchers 保持异常比例**（watchers/star ≈ 66%，远高于常规项目）。这说明 ratchet 的核心使用者群体稳定且深度关注——热度不在量级而在关注质量。
+- **三层栈定位巩固**：随 numbat（Perplexity 官方，agent 可观测性）今日加入，ratchet 作为三层栈的"执行约束层"定位进一步明确：skill-recorder（技能提取）→ ratchet（执行约束）→ numbat（可观测/取证/阻断）。ratchet 强绑 Claude Code，numbat 覆盖十余个 agent——广度互补。
+- **判断**：score 维持 83。star 增速放缓但 watchers 质量信号强，作为"agent 代码质量治理"品类早期代表继续跟踪。
+
 ---
-*首次记录：2026-08-04* · *数据来源: GitHub API + 仓库 README*
+*首次记录：2026-08-04* · *最近更新：2026-08-05（423→430，+7，285 watchers 保持，三层栈定位巩固）*

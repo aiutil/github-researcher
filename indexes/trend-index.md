@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-04'
+last_updated: '2026-08-05'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,43 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-05（第九十版）
+
+### 应用层第四日分化——qm 突破 10K 关口（9,458→11,092，+1,634，增速衰减至 +17%）但 crm 反超增速（+1,446/+46%）、genoffice 翻倍（+709/+125%）；"齐涨"结束、"分化"开始，多路线各自验证 PMF · K3 本地推理品类叙事分裂——kimi-k3-in-c 持续 +779 逼近 2K（极限低内存叙事延续），waste 增量骤降 +510→+145（可用速度叙事退潮），"最低 RAM"卖点持续压过"接近可用速度" · Agent 可观测性/治理品类出现——Perplexity 官方 numbat（684⭐，端点 agent 活动可见性 + 取证重建 + 可选 pre-action 阻断 + 单二进制，覆盖十余个 agent），与 ratchet/skill-recorder 构成三层 agent 质量基础设施栈（技能提取→执行约束→事后取证）· Agent 摄入层扩张——Firecrawl 官方 anydoc（2 天 1.1K⭐，Rust，office 文档→LLM-ready Markdown，单数毫秒）
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | 应用层第四日分化——qm 突破 10K（+1,634，+17%）但 crm 反超增速（+1,446/+46%）、genoffice 翻倍（+709/+125%）；"齐涨"结束、"分化"开始 | qm, crm, genoffice | 90 |
+| 2 | Agent 可观测性/治理品类出现——Perplexity numbat 端点 agent 活动可见 + 取证 + 可选阻断，与 ratchet/skill-recorder 构成三层栈 | numbat, ratchet, skill-recorder | 85 |
+| 3 | K3 本地推理品类叙事分裂——kimi-k3-in-c +779 逼近 2K，waste +510→+145 骤降，"最低 RAM"叙事压过"可用速度" | kimi-k3-in-c, waste | 84 |
+| 4 | Agent 摄入层扩张——Firecrawl anydoc（office 文档→Markdown，2 天 1.1K⭐），文档解析成为 agent 基础设施标配 | anydoc | 82 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| yc-software/qm | 11,092 | 平台候选 | 90 | 更新（9,458→11,092，第四日 +1,634，突破 10K） |
+| trycompai/crm | 4,569 | 平台候选 | 87 | 更新（3,123→4,569，+1,446，增速反超 qm，score 86→87） |
+| genspark-ai/genoffice | 1,273 | 平台候选 | 85 | 更新（564→1,273，翻倍 +125%，score 84→85） |
+| FareedKhan-dev/kimi-k3-in-c | 1,952 | 观察型 | 83 | 更新（1,173→1,952，+779，逼近 2K） |
+| perplexityai/numbat | 684 | 工具型 | 84 | 新增 |
+| firecrawl/anydoc | 1,086 | 工具型 | 82 | 新增 |
+| microsoft/skill-recorder | 1,751 | 工具型 | 84 | 更新（1,366→1,751，+385） |
+| 0xwilliamortiz/ratchet | 430 | 工具型 | 83 | 更新（423→430，+7，285 watchers 保持） |
+| sqliteai/waste | 1,665 | 观察型 | 82 | 更新（1,520→1,665，+145，增量骤降，score 83→82） |
+| openai/ten-proofs | 470 | 观察型 | 82 | 更新（432→470，+38，平缓） |
+
+#### 关键判断
+
+- **应用层从"齐涨"进入"分化"**：qm 第四日 +1,634（+17%）继续健康衰减（+250%→+47%→+35%→+17%），突破 10K 关口（11,092⭐），但**增速被 crm（+46%）和 genoffice（+125%）反超**。这是品类成熟的关键标志——市场开始在通用平台（qm，量级护城河）/ 垂直重写（crm，增速反超）/ 桌面生产力（genoffice，翻倍）三条路线间区分 PMF 强度。**证据边界**：star/fork 为可核验事实；"分化"为基于四日数据的强推断（增速交叉是可核验事实，"市场区分 PMF"是解释性推断）。crm fork 485（fork/star 10.6%）说明垂直 CRM 部署意愿强。
+- **K3 本地推理品类叙事分裂**：waste 增量骤降 +510→+145（-72%），kimi-k3-in-c 持续 +779。两者增量比从 1.9:1 扩大到 5.4:1。这不是品类降温（kimi-k3-in-c 仍放量），而是**注意力在品类内部从"可用速度端"迁移到"极限低内存端"**。需警惕误读：叙事热度 ≠ 可用性——waste 0.62 tok/s 仍是真正日常可用方案，kimi-k3-in-c 32s/token 是可行性证明。**证据边界**：8.24GB RSS/32s/token/字节一致输出仍为作者自述。
+- **Agent 可观测性/治理品类出现**：Perplexity 官方 numbat（684⭐）覆盖十余个 agent（Claude/Codex/Gemini/Copilot/OpenCode/Grok/Hermes/OpenClaw 等），三类输入（hooks/OTLP 日志/磁盘 artifacts）归一到统一事件模型，CEL 规则引擎 + 可选 pre-action 阻断。与 ratchet（执行约束）、skill-recorder（技能提取）构成三层栈。**证据边界**：覆盖矩阵为 docs 自述，未逐一验证 hook 实现深度；pre-action 阻断默认关闭（shipped 规则全为 monitor-only）；v0.1.2，subscribers 仅 5。
+- **Agent 摄入层扩张**：Firecrawl anydoc（2 天 1.1K⭐）把 office 文档→LLM-ready Markdown，扩展 agent 文档摄入基础设施。**证据边界**："单数毫秒""格式无关一致性"为设计声明，复杂文档场景未独立验证；v0.1.3，subscribers 仅 2，含 Firecrawl 品牌导流成分。
+
+---
 
 ## 2026-08-04（第八十九版）
 
