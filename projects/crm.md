@@ -2,14 +2,14 @@
 title: "trycompai/crm"
 slug: crm
 date_added: "2026-08-03"
-last_seen_date: "2026-08-05"
+last_seen_date: "2026-08-06"
 category: "平台候选"
 emoji: "📋"
-stars: "4,569 stars"
-stars_delta: "7/31创建→8/03 1,731⭐→8/04 3,123⭐→8/05 4,569⭐（第三日 +1,446/+46%，fork 205→485）"
+stars: "6,138 stars"
+stars_delta: "7/31创建→8/06 6,138⭐（第五日 +1,569/+34%，连续两日增速第一），fork 485→627"
 language: "TypeScript"
 license: "MIT"
-score: 87
+score: 88
 tags: ["agentic-crm", "eve", "vertical-agent", "evidence-ledger", "typescript", "bun", "deny-all-egress"]
 url: "https://github.com/trycompai/crm"
 ---
@@ -78,4 +78,10 @@ url: "https://github.com/trycompai/crm"
 - **判断修正**：score 86 → 87。增速反超 + fork 高比例是垂直路线 PMF 的强信号。但 contributors 仍待观察（需确认是否仍 2 人）。pushed_at 08-04（活跃开发）。
 
 ---
-*首次记录：2026-08-03* · *最近更新：2026-08-05（3,123→4,569，+1,446，增速反超 qm，score 87）*
+*首次记录：2026-08-03* · *最近更新：2026-08-06（4,569→6,138，+1,569/+34%，连续两日增速第一，score 87→88）*
+
+## 最近动态（2026-08-06）
+
+- **第五日反超为应用层增速第一 +1,569（+34%），连续两日领先**：4,569 → 6,138，fork 485 → 627（+142）。crm 第五日 +34% vs qm +5%，增速差距从昨日扩大。连续两日增速领先意味着"crm 领跑、qm 守量"格局确立——不再是单日波动。
+- **fork 高速增长持续**：fork 627（vs 两日前 341，fork/star 比 10.2%）。垂直 CRM 的部署/二次开发意愿持续强于通用平台。
+- **判断修正**：score 87 → 88。连续两日增速第一 + fork 高比例是垂直路线 PMF 的强确认。pushed_at 08-05（活跃开发）。

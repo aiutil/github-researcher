@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>magicrew/doc7 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/magicrew/doc7" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="magicrewdoc7-vlm">magicrew/doc7 — 本地 VLM 文档解析</h1>
+<h2 id="_1">一句话定位</h2>
+<p>通过本地 OpenAI 兼容多模态模型（LM Studio/Ollama），把 PDF/Office/扫描/截图/图表/公式/图表转成 AI-ready Markdown 的 Go 工具，不依赖云服务或 OCR 栈。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>目标用户是需要私有化/离线文档解析的开发者和企业。痛点：云文档解析服务（如 Firecrawl Parse）要求数据上传，不适合敏感文档；传统 OCR 栈（Tesseract + 格式解析）复杂且对扫描页/图表/公式效果差。doc7 用<strong>本地多模态 VLM</strong>（视觉语言模型）直接"看"文档并转 Markdown，无需云服务、无需独立 OCR 栈。</p>
+<h2 id="2026-08-06">为什么值得关注（2026-08-06）</h2>
+<p>这代表 agent 文档摄入层的<strong>本地私有化路线</strong>，与 anydoc（4,688⭐，云/Rust/单数毫秒）构成"云 vs 本地"路线分化。关键差异化：(a) <strong>本地 VLM</strong>（用 LM Studio/Ollama 跑本地多模态模型，数据不离机）；(b) <strong>覆盖扫描页/截图</strong>（anydoc 明确表示不读扫描页，需 Firecrawl Parse OCR；doc7 用 VLM 直接处理）；(c) <strong>无 OCR 栈依赖</strong>（"No required OCR stack. No document-processing service lock-in"）。454⭐ / 9 fork 说明本地化路线有需求但关注度远低于 anydoc 的云路线。</p>
+<h2 id="_3">热度来源判断</h2>
+<ul>
+<li><strong>真实需求信号</strong>：私有化/离线文档解析是企业刚需（合规/隐私）。"no cloud, no OCR stack"的定位明确切中这个痛点。fork 仅 9（vs anydoc 205）说明目前关注度低，可能因为本地 VLM 门槛（需 GPU/本地模型）高于 anydoc 的 npm install。</li>
+<li><strong>话题性成分</strong>：doc7 热度（454⭐）远低于 anydoc（4,688⭐），没有爆发性话题成分。更像"稳定但小众"的项目。</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>本地 OpenAI 兼容多模态模型</strong>：通过 OpenAI 兼容 API 调用本地 VLM（LM Studio/Ollama 部署），数据完全本地。"No required OCR stack"——VLM 直接理解文档视觉内容。</li>
+<li><strong>覆盖扫描页/截图/图表/公式/图表</strong>：PDF/Office/扫描/截图/图表/公式/diagrams 都能处理——VLM 的视觉理解能力覆盖传统 OCR 难处理的复杂视觉元素。</li>
+<li><strong>Go 实现</strong>：单二进制部署，install 脚本（curl | bash）。与 anydoc 的 Rust 不同，doc7 用 Go。</li>
+<li><strong>Benchmark 示例</strong>：README 含 benchmarks/attention-is-all-you-need 示例，展示对学术论文（含公式/图表）的解析效果。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>doc7 的设计哲学是 <strong>"用 VLM 替代专用 OCR + 格式解析"</strong>——不针对每种格式（docx/pdf/扫描）写专用解析器，而是用通用 VLM"看"文档统一输出。这与 anydoc 的"专用 Rust 解析器 + 格式无关输出"是两种范式：anydoc 追求<strong>速度和确定性</strong>（专用解析器，单数毫秒，格式无关），doc7 追求<strong>通用性和私有化</strong>（VLM 看一切，本地运行）。对架构师的启发：文档解析的"速度/确定性 vs 通用性/隐私"是核心 trade-off。</p>
+<h2 id="_6">定位判断</h2>
+<p>属于 <strong>L1 基础设施/工具层</strong>，是 agent 文档摄入层的<strong>本地私有化路线代表</strong>。与 anydoc（云路线）互补，覆盖不同场景（敏感文档/离线 vs 快速/集成友好）。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>本地 VLM 门槛高</strong>：需 GPU + 本地多模态模型（LM Studio/Ollama），部署门槛远高于 anydoc 的 <code>npm install</code>。这可能解释 fork 仅 9。</li>
+<li><strong>VLM 解析质量依赖模型</strong>：输出质量完全取决于本地 VLM 的能力，弱模型会导致 Markdown 质量差。不同模型（Qwen-VL/Llama-Vision 等）的效果差异未披露。</li>
+<li><strong>速度劣势</strong>：VLM 推理（秒级）远慢于 anydoc 的专用解析器（单数毫秒），不适合大批量处理。</li>
+<li><strong>关注度低</strong>：454⭐ / 9 fork 远低于 anydoc，本地化路线可能是边缘场景而非主流需求。需观察是否放量。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs anydoc（4,688⭐）</strong>：核心路线分化——anydoc 云/Rust/专用解析器/单数毫秒 vs doc7 本地/Go/VLM/秒级。anydoc 不读扫描页（需 Firecrawl Parse OCR），doc7 用 VLM 覆盖扫描页。两者是"云 vs 本地"的路线分化。</li>
+<li><strong>vs Unstructured/LlamaParse</strong>：同为文档解析，doc7 的差异化是纯本地 VLM（无云依赖）。Unstructured 也有本地模式但架构不同。</li>
+<li><strong>vs Marker（PDF→Markdown）</strong>：Marker 专注 PDF，doc7 覆盖更多格式 + 用 VLM 处理复杂视觉。</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是，作为"agent 文档摄入层本地化路线"的代表项目跟踪。</strong> 与 anydoc（云路线）互补，观察本地化路线是否从边缘场景变为主流需求。重点验证 VLM 解析质量和部署门槛的影响。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li><strong>放量情况</strong>：fork 是否从 9 增长——如果持续低，说明本地化是边缘场景；如果放量，说明私有化需求真实。</li>
+<li><strong>VLM 模型兼容性</strong>：不同本地 VLM（Qwen-VL/Llama-Vision 等）的解析质量差异。</li>
+<li><strong>与 anydoc 的路线竞争</strong>：云路线（anydoc 爆发）是否会挤压本地路线（doc7）的生存空间，还是两者各占细分市场。</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-08-06</em> · <em>数据来源: GitHub API + 仓库 README</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

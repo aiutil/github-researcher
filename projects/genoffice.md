@@ -2,10 +2,10 @@
 title: "genspark-ai/genoffice"
 slug: "genoffice"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-05"
+last_seen_date: "2026-08-06"
 category: "平台候选"
 emoji: "📄"
-stars: "1,273 stars"
+stars: "1,755 stars"
 stars_delta: "7/31创建→8/04 564⭐→8/05 1,273⭐（+709，翻倍 +125%），fork 197"
 language: "TypeScript"
 license: "Apache-2.0"
@@ -70,4 +70,11 @@ genoffice 的核心 trade-off 是 **"原件是真理来源（original file is so
 - **判断修正**：score 84 → 85。翻倍增速是 PMF 的强信号，但 Genspark 绑定风险未消除。pushed_at 08-04（活跃开发）。
 
 ---
-*首次记录：2026-08-04* · *最近更新：2026-08-05（564→1,273，翻倍，应用层分化中增速最快，score 85）*
+*首次记录：2026-08-04* · *最近更新：2026-08-06（1,273→1,755，+482/+38%，首个 fork 变体 HermesOffice 出现）*
+
+## 最近动态（2026-08-06）
+
+- **第五日 +482（+38%），增速稳定**：1,273 → 1,755，fork 197 → 283。增速从昨日 +125% 回落到 +38%，但仍显著高于 qm（+5%）。非爆发非骤降，属于健康增长。
+- **首个 fork 变体出现——HermesOffice**：criptogus/HermesOffice（327⭐ / 41 fork，Apache-2.0）是 genoffice 的薄 fork，叠加 Hermes Agent（Nous Research）作为原生 AI。这验证了 genoffice 的**架构可 fork 性**——引擎层/AI 层分离设计允许第三方替换 AI 后端（Genspark → Hermes），降低供应商锁定风险。
+- **风险对冲**：08-05 标注的"强绑定 Genspark 服务"风险因 fork 生态出现而部分对冲——如果 Genspark 服务变化，社区有 fork 替代。但 HermesOffice 是薄 fork（引擎跟随上游），独立产品力有限。
+- **判断**：score 维持 85。增速稳定 + fork 生态出现是正面信号，但 Genspark 绑定风险未完全消除。pushed_at 08-05（活跃开发）。

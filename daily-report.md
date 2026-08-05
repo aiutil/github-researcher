@@ -4,6 +4,25 @@
 
 ---
 
+## 2026-08-06
+
+**核心主题：** anydoc 爆发式跃迁（1,086→4,688，单日 +3,602/+331%，5 天连发 6 个版本），agent 文档摄入层从"新品类"变为"最热赛道"，doc7（本地 VLM 解析）与之构成"云 vs 本地"路线分化 · 应用层第五日结构性降温——qm 增速骤降（+1,634→+561，+17%→+5%）但仍守万星量级，crm 反超为增速第一（+1,569/+34%，连续两日领先），genoffice 稳健（+482/+38%），"分化"进入"crm 领跑、qm 守量"格局 · 中文 agent skill 品类出现——human-writing（1,006⭐，"活人感"写作）+ open-kimi-ppt-skill（530⭐，逆向 Kimi Slides→PPT），中文社区从"用 agent"进入"造 skill" · 长程 agent benchmark 品类出现——阿里 Accio RealReplicaBench（1,017⭐，107 任务，状态化评测，OpenClaw harness）
+
+**关键项目：**
+- 📑 firecrawl/anydoc (4,688, 更新 +3,602) — Firecrawl office 文档解析，爆发跃迁，5 天 6 版，agent 文档摄入层成最热赛道，Score 90
+- 📋 trycompai/crm (6,138, 更新 +1,569) — Agentic-first CRM，连续两日增速第一，"crm 领跑"格局确立，Score 88
+- 👥 yc-software/qm (11,653, 更新 +561) — 多人协作 agent harness，增速骤降 +5%，仍守万星量级，Score 89
+- 📄 genspark-ai/genoffice (1,755, 更新 +482) — AI-native 办公套件，增速稳定，首个 fork 变体 HermesOffice，Score 85
+- ✍️ KKKKhazix/human-writing (1,006, 新增) — 中文"活人感"写作 Skill，1 天破千星，Score 84
+- 📊 Accio-Lab/RealReplicaBench (1,017, 新增) — 阿里 Accio 长程 agent benchmark，107 任务，状态化评测，Score 84
+- 💠 FareedKhan-dev/kimi-k3-in-c (2,544, 更新 +592) — 便携 C99 跑全量 K3，突破 2K 关口，Score 83
+- 🎞️ Binaryify/open-kimi-ppt-skill (530, 新增) — 逆向 Kimi Slides→PPT Skill，530⭐/149 fork，Score 82
+- 🎥 microsoft/skill-recorder (1,944, 更新 +193) — Microsoft 录屏→Skill，稳定增长，Score 84
+- 🗂️ magicrew/doc7 (454, 新增) — 本地 VLM 文档解析，与 anydoc 构成云 vs 本地分化，Score 81
+- 🦫 criptogus/HermesOffice (327, 新增) — genoffice fork + Hermes Agent，首个 fork 变体，Score 80
+
+---
+
 ## 2026-08-05
 
 **核心主题：** 应用层第四日分化——qm 突破 10K 关口（9,458→11,092，+1,634，增速衰减至 +17%）但 crm 反超增速（+1,446/+46%）、genoffice 翻倍（+709/+125%）；"齐涨"结束、"分化"开始，多路线各自验证 PMF · K3 本地推理品类叙事分裂——kimi-k3-in-c 持续 +779 逼近 2K（极限低内存叙事延续），waste 增量骤降 +510→+145（可用速度叙事退潮），"最低 RAM"卖点持续压过"接近可用速度" · Agent 可观测性/治理品类出现——Perplexity 官方 numbat（684⭐，端点 agent 活动可见性 + 取证重建 + 可选 pre-action 阻断 + 单二进制，覆盖十余个 agent），与 ratchet/skill-recorder 构成三层 agent 质量基础设施栈（技能提取→执行约束→事后取证）· Agent 摄入层扩张——Firecrawl 官方 anydoc（2 天 1.1K⭐，Rust，office 文档→LLM-ready Markdown，单数毫秒）

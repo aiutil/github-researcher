@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-05'
+last_updated: '2026-08-06'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,44 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-06（第九十一版）
+
+### anydoc 爆发式跃迁（1,086→4,688，单日 +3,602/+331%，5 天连发 6 个版本），agent 文档摄入层从"新品类"变为"最热赛道"，doc7（本地 VLM 解析）与之构成"云 vs 本地"路线分化 · 应用层第五日结构性降温——qm 增速骤降（+1,634→+561，+17%→+5%）但仍守万星量级，crm 反超为增速第一（+1,569/+34%，连续两日领先），genoffice 稳健（+482/+38%），"分化"进入"crm 领跑、qm 守量"格局 · 中文 agent skill 品类出现——human-writing（1,006⭐，"活人感"写作）+ open-kimi-ppt-skill（530⭐，逆向 Kimi Slides→PPT），中文社区从"用 agent"进入"造 skill" · 长程 agent benchmark 品类出现——阿里 Accio RealReplicaBench（1,017⭐，107 任务，状态化评测，OpenClaw harness）
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | anydoc 爆发式跃迁 + agent 文档摄入层成最热赛道——1,086→4,688（单日 +3,602/+331%，5 天 6 版），doc7（本地 VLM 解析）与之构成"云/服务化 vs 本地/私有化"路线分化 | anydoc, doc7 | 90 |
+| 2 | 应用层第五日结构性降温——qm 增速骤降（+1,634→+561，+17%→+5%）但仍守万星量级，crm 反超为增速第一（+1,569/+34%，连续两日），genoffice 稳健（+482/+38%），"分化"进入"crm 领跑、qm 守量"阶段 | qm, crm, genoffice | 88 |
+| 3 | 中文 agent skill 品类出现——human-writing（1,006⭐，"活人感"中文写作 Skill）+ open-kimi-ppt-skill（530⭐，逆向 Kimi Slides→可编辑 PPTX），中文社区从"使用 agent"进入"制造 skill" | human-writing, open-kimi-ppt-skill | 85 |
+| 4 | 长程 agent benchmark 品类出现——阿里 Accio RealReplicaBench（1,017⭐，107 任务，状态化 SaaS 副本评测，OpenClaw harness），填补"agent 能否完成真实业务流"的评测空白 | realreplicabench | 84 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| firecrawl/anydoc | 4,688 | 工具型 | 90 | 更新（1,086→4,688，+3,602/+331%，5 天 6 版高频迭代，score 82→90） |
+| trycompai/crm | 6,138 | 平台候选 | 88 | 更新（4,569→6,138，+1,569/+34%，连续两日增速第一，score 87→88） |
+| yc-software/qm | 11,653 | 平台候选 | 89 | 更新（11,092→11,653，+561/+5%，增速骤降，score 90→89） |
+| genspark-ai/genoffice | 1,755 | 平台候选 | 85 | 更新（1,273→1,755，+482/+38%，首个 fork 变体 HermesOffice 出现） |
+| KKKKhazix/human-writing | 1,006 | 工具型 | 84 | 新增 |
+| Accio-Lab/RealReplicaBench | 1,017 | 观察型 | 84 | 新增 |
+| FareedKhan-dev/kimi-k3-in-c | 2,544 | 观察型 | 83 | 更新（1,952→2,544，+592，突破 2K） |
+| Binaryify/open-kimi-ppt-skill | 530 | 工具型 | 82 | 新增 |
+| microsoft/skill-recorder | 1,944 | 工具型 | 84 | 更新（1,751→1,944，+193/+11%） |
+| magicrew/doc7 | 454 | 观察型 | 81 | 新增 |
+| criptogus/HermesOffice | 327 | 观察型 | 80 | 新增（genoffice fork + Hermes Agent） |
+
+#### 关键判断
+
+- **anydoc 爆发跃迁，agent 文档摄入层成最热赛道**：5 天 6 版高频迭代（今日单日三版）是关键驱动——非自然增长，而是 Firecrawl 团队集中投入 + 现有用户基数（149K⭐主仓库）转化 + Agent Skill 分发放大。doc7（本地 VLM）与之构成"云 vs 本地"路线分化，与 K3 本地推理的"可用速度 vs 极限低内存"分化模式高度同构。**证据边界**：star/fork/发版频率为可核验事实；"集中投入"为推断；"单数毫秒""格式无关一致性"仍为 README 设计声明。
+- **应用层进入"crm 领跑、qm 守量"格局**：qm 增速骤降（+5%），crm 连续两日增速第一（+34%）。这不是 qm 失败（仍守万星量级），而是应用层多路线竞争的格局确立——垂直重写（crm，PMF 最强信号）vs 通用平台（qm，量级护城河但衰减）。**证据边界**："格局确立"为连续两日数据的强推断（crm 连续增速领先是可核验事实）；qm 是否触及天花板需再观察 2-3 日。
+- **中文 agent skill 品类出现**：human-writing（"去 AI 腔"写作）+ open-kimi-ppt-skill（逆向 Kimi→PPT）同日爆发，标志中文社区从"使用 agent"进入"制造 skill"。**证据边界**：首日数据，持续性未验；open-kimi-ppt-skill 的逆向工程路径有法律/稳定性风险（README 自述非官方，可能随 Kimi 更新失效）。
+- **长程 agent benchmark 品类出现**：阿里 Accio RealReplicaBench（107 任务，状态化 SaaS 副本评测）填补"agent 能否完成真实业务流"评测空白。**证据边界**：107 任务覆盖面和验证器质量为 README 自述；mock 保真度未独立验证；强绑定 OpenClaw harness。
+
+---
 
 ## 2026-08-05（第九十版）
 

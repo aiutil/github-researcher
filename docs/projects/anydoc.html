@@ -74,7 +74,15 @@
 <li><strong>与 Firecrawl Parse 的边界</strong>：开源 anydoc 与付费 Firecrawl Parse（OCR/扫描页）的功能边界是否会推动用户走向付费，还是 anydoc 独立足够。</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-08-05</em> · <em>数据来源: GitHub API + 仓库 README</em></p>
+<p><em>首次记录：2026-08-05</em> · <em>最近更新：2026-08-06（爆发跃迁 1,086→4,688，+3,602/+331%，5 天 6 版高频迭代，score 82→90）</em></p>
+<h2 id="2026-08-06">最近动态（2026-08-06）</h2>
+<ul>
+<li><strong>爆发式跃迁 +3,602（+331%），agent 文档摄入层成最热赛道</strong>：1,086 → 4,688，fork 40 → 205（+165），subscribers 2 → 9。第五日单日 +3,602 是今日 GitHub 全球增速最高的真实项目（排除刷星后）。</li>
+<li><strong>高频版本迭代是关键驱动</strong>：5 天连发 6 个版本（v0.1.1→v0.1.6），今日单日发 v0.1.4/v0.1.5/v0.1.6 三版（分别修 wasm32 构建阻塞、标题强调/header 行、binding 错误码）。这种"每日多版"节奏说明 Firecrawl 团队在<strong>集中投入</strong>，而非自然增长。</li>
+<li><strong>路线分化出现</strong>：magicrew/doc7（454⭐，Go，本地 VLM 解析）代表本地私有化路线，与 anydoc 的云路线（Firecrawl Parse hosted API）构成"云 vs 本地"分化——与 K3 本地推理的"可用速度 vs 极限低内存"分化模式高度同构。</li>
+<li><strong>判断修正</strong>：score 82 → 90。爆发跃迁 + 高频迭代 + 品类最热 + 路线分化共同提升 score。但需注意 +331% 不可持续，关键看回落后的稳态增速。</li>
+<li><strong>风险（不变）</strong>："单数毫秒""格式无关一致性"仍为 README 设计声明，未独立基准测试。扫描 PDF 仍依赖 Firecrawl 付费 OCR。</li>
+</ul>
     </div>
 </main>
     <footer class="footer">

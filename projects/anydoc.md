@@ -2,14 +2,14 @@
 title: "firecrawl/anydoc"
 slug: "anydoc"
 date_added: "2026-08-05"
-last_seen_date: "2026-08-05"
+last_seen_date: "2026-08-06"
 category: "工具型"
 emoji: "📑"
-stars: "1,086 stars"
-stars_delta: "8/03创建→8/05观测 1,086⭐ / 40 fork / 2 subscribers，v0.1.3，2 天"
+stars: "4,688 stars"
+stars_delta: "8/03创建→8/06观测 4,688⭐ / 205 fork / 9 subscribers，v0.1.6，3 天，第五日 +3,602（+331%）"
 language: "Rust"
 license: "MIT"
-score: 82
+score: 90
 tags: ["document-parsing", "markdown", "rust", "agent-intake", "firecrawl", "llm-ready", "docx", "pptx", "xlsx", "pdf"]
 url: "https://github.com/firecrawl/anydoc"
 ---
@@ -66,4 +66,12 @@ anydoc 的设计哲学是 **"格式无关的输出统一"**——无论输入是
 3. **与 Firecrawl Parse 的边界**：开源 anydoc 与付费 Firecrawl Parse（OCR/扫描页）的功能边界是否会推动用户走向付费，还是 anydoc 独立足够。
 
 ---
-*首次记录：2026-08-05* · *数据来源: GitHub API + 仓库 README*
+*首次记录：2026-08-05* · *最近更新：2026-08-06（爆发跃迁 1,086→4,688，+3,602/+331%，5 天 6 版高频迭代，score 82→90）*
+
+## 最近动态（2026-08-06）
+
+- **爆发式跃迁 +3,602（+331%），agent 文档摄入层成最热赛道**：1,086 → 4,688，fork 40 → 205（+165），subscribers 2 → 9。第五日单日 +3,602 是今日 GitHub 全球增速最高的真实项目（排除刷星后）。
+- **高频版本迭代是关键驱动**：5 天连发 6 个版本（v0.1.1→v0.1.6），今日单日发 v0.1.4/v0.1.5/v0.1.6 三版（分别修 wasm32 构建阻塞、标题强调/header 行、binding 错误码）。这种"每日多版"节奏说明 Firecrawl 团队在**集中投入**，而非自然增长。
+- **路线分化出现**：magicrew/doc7（454⭐，Go，本地 VLM 解析）代表本地私有化路线，与 anydoc 的云路线（Firecrawl Parse hosted API）构成"云 vs 本地"分化——与 K3 本地推理的"可用速度 vs 极限低内存"分化模式高度同构。
+- **判断修正**：score 82 → 90。爆发跃迁 + 高频迭代 + 品类最热 + 路线分化共同提升 score。但需注意 +331% 不可持续，关键看回落后的稳态增速。
+- **风险（不变）**："单数毫秒""格式无关一致性"仍为 README 设计声明，未独立基准测试。扫描 PDF 仍依赖 Firecrawl 付费 OCR。
