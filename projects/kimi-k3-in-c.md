@@ -2,11 +2,11 @@
 title: "FareedKhan-dev/kimi-k3-in-c"
 slug: kimi-k3-in-c
 date_added: "2026-08-03"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "观察型"
 emoji: "💠"
-stars: "2,544 stars"
-stars_delta: "8/01创建→8/06 2,544⭐（第五日 +592，突破 2K），fork 318→424"
+stars: "2,801 stars"
+stars_delta: "8/01创建→8/07 2,801⭐（第六日 +257/+10%，逼近 3K），fork 424→466"
 language: "C"
 license: "Apache-2.0"
 score: 83
@@ -86,3 +86,10 @@ url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 - **叙事分裂持续**：kimi-k3-in-c +592 vs waste +93，增量比从 5.4:1 扩大到 ~6.4:1。"极限低内存"叙事持续压倒"可用速度"，品类内部注意力迁移未停止。
 - **待验证（不变）**：8.24GB RSS、32s/token、字节一致输出仍为作者自述，未见独立第三方复现。open_issues 8（低），pushed_at 停在 08-01（代码未更新，热度由已有版本驱动）。
 - **判断**：score 维持 83。叙事热度延续，价值仍在可行性证明（RAM 极限），非日常可用。
+
+## 最近动态（2026-08-07）
+
+- **逼近 3K 关口 +257（+10%），fork 424→466（+42）**：2,544 → 2,801。增量从 +592 衰减到 +257，热度在收敛但仍维持正增长。逼近 3K 关口。
+- **"极限低内存"叙事延续**：作为"2.78T 参数在 8.24GB RAM 跑"的可行性证明，持续吸引注意力。fork 466 说明有人在尝试复现/学习。
+- **判断**：score 维持 83。叙事热度收敛中，价值仍在可行性证明（RAM 极限），非日常可用。pushed_at 08-06（有新代码推送）。open_issues 2（低）。
+- **待验证（不变）**：8.24GB RSS、32s/token、字节一致输出仍为作者自述，未见独立第三方复现。

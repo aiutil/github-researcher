@@ -2,11 +2,11 @@
 title: "criptogus/HermesOffice"
 slug: "hermesoffice"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "观察型"
 emoji: "🦫"
-stars: "327 stars"
-stars_delta: "8/04创建→8/06观测 327⭐ / 41 fork / 0 subscribers（API 未返回）"
+stars: "388 stars"
+stars_delta: "8/04创建→8/07观测 388⭐ / 47 fork，第二日 +61（+18%）"
 language: "TypeScript"
 license: "Apache-2.0"
 score: 80
@@ -64,3 +64,9 @@ HermesOffice 验证了一个重要架构判断：**当 AI-native 应用的 AI �
 
 ---
 *首次记录：2026-08-06* · *数据来源: GitHub API + 仓库 README*
+
+## 最近动态（2026-08-07）
+
+- **第二日 +61（+18%），fork 41→47（+6）**：327 → 388。增速维持，说明 genoffice fork 生态有持续关注度。
+- **验证 genoffice 架构可 fork 性**：HermesOffice 作为 genoffice 首个有意义的 fork 变体，其存在本身验证了 genoffice 引擎层/AI 层分离设计允许第三方替换 AI 后端。这是 genoffice 降低供应商锁定风险的关键证据。
+- **判断**：score 维持 80。薄 fork（引擎跟随上游），价值在于验证架构而非独立产品力。pushed_at 08-06（活跃维护）。open_issues 22。

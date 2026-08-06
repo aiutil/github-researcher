@@ -2,14 +2,14 @@
 title: "yc-software/qm"
 slug: "qm"
 date_added: "2026-08-01"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "平台候选"
 emoji: "👥"
-stars: "11,653 stars"
-stars_delta: "7/29创建→8/06 11,653⭐（第五日 +561，+5%，增速骤降），fork 1,200→1,290，五日累计 +10,286"
+stars: "12,022 stars"
+stars_delta: "7/29创建→8/07 12,022⭐（第六日 +369，+3%，接近停滞），fork 1,290→1,349，六日累计 +10,655"
 language: "TypeScript"
 license: "MIT"
-score: 89
+score: 88
 tags: ["agent-harness", "multiplayer", "slack", "collaboration", "sandbox", "typescript", "multi-agent"]
 url: "https://github.com/yc-software/qm"
 ---
@@ -102,3 +102,10 @@ qm 的分层很清晰：headless core（API/identity/policy/scheduler + agent lo
 - **关键转折：crm 连续两日增速领先，"crm 领跑、qm 守量"格局确立**：qm +5% vs crm +34%，差距从昨日（+17% vs +46%）进一步扩大。qm 仍是量级龙头（11.7K⭐），但增速接近停滞，可能触及自然热度上限。crm（6.1K⭐）持续放量追赶。
 - **数据细节**：open_issues 101（健康），subscribers 52（相对 11.7K⭐ 偏低），pushed_at 仍停在 08-04（热度由已有版本驱动，无新代码刺激）。
 - **判断修正**：score 90 → 89。增速骤降 + 被反超差距扩大。下一观察点：+5% 是否进一步降到 +1-2%（则 qm 热度基本结束），还是企稳（则进入万星稳态）。
+
+## 最近动态（2026-08-07）
+
+- **第六日接近停滞 +369（+3%），万星量级为最终稳态**：11,653 → 12,022，fork 1,290 → 1,349（+59）。增速序列 +250%→+47%→+35%→+17%→+5%→+3%，已明确进入停滞通道。08-06 判断的"接近自然热度上限"被今日 +3% 数据证实。
+- **格局固化**：qm +3% vs crm +16%，差距仍在但两者都在减速。qm 守住 12K 量级（绝对增量 +369 仍为正），但增长动能基本消失。
+- **判断修正**：score 89 → 88。增速接近停滞，万星量级为最终稳态。pushed_at 仍停在 08-04（无新代码刺激）。open_issues 112（略升，健康的社区反馈）。
+- **下一观察点**：+3% 是否进一步降到 +1-2%（则 qm 热度基本结束），还是企稳在 +2-3%（则进入万星稳态）。

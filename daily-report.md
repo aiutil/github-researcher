@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-08-07
+
+**核心主题：** anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入"高增量+减速"阶段 · "去 AI 腔"写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成"写作治理三层谱系"（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），"crm 领跑、qm 守量"格局从分化进入固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）
+
+**关键项目：**
+- 📑 firecrawl/anydoc (8,069, 更新 +3,381) — Firecrawl office 文档解析，延续爆发但减速，跨入 8K，爆发进入"高增量+减速"阶段，Score 90
+- 📋 trycompai/crm (7,156, 更新 +1,018) — Agentic-first CRM，增速回落但仍为增速第一，连续三日领先，格局固化，Score 88
+- 👥 yc-software/qm (12,022, 更新 +369) — 多人协作 agent harness，接近停滞 +3%，万星量级为最终稳态，Score 88
+- ✍️ KKKKhazix/human-writing (1,552, 更新 +546) — 中文"活人感"写作 Skill，溯源 humanizer 谱系，去 AI 腔写作治理品类，Score 85
+- 🔎 0xwilliamortiz/humanizer-cli (581, 新增) — 终端去 AI 腔检测 CLI，208 watchers，33 种 AI 写作模式，溯源 blader/humanizer，Score 83
+- 🎞️ Binaryify/open-kimi-ppt-skill (1,286, 更新 +756) — 逆向 Kimi Slides→PPT Skill，第三日爆发 +142%，fork 149→343，Score 83
+- 🏭 disler/super-simple-software-factory (459, 新增) — 软件工厂 Skill，Python 控制平面 + agent 有界节点，Score 82
+- 📄 genspark-ai/genoffice (2,034, 更新 +279) — AI-native 办公套件，稳健 +15%，跨入 2K，Score 85
+- 💠 FareedKhan-dev/kimi-k3-in-c (2,801, 更新 +257) — 便携 C99 跑全量 K3，逼近 3K 关口，Score 83
+- 🎥 microsoft/skill-recorder (2,127, 更新 +183) — Microsoft 录屏→Skill，跨入 2K，稳定增长，Score 84
+- 🦫 criptogus/HermesOffice (388, 更新 +61) — genoffice fork + Hermes Agent，验证架构可 fork 性，Score 80
+- 🗂️ magicrew/doc7 (465, 更新 +11) — 本地 VLM 文档解析，关注度低，云路线碾压本地路线，Score 80
+
+---
+
 ## 2026-08-06
 
 **核心主题：** anydoc 爆发式跃迁（1,086→4,688，单日 +3,602/+331%，5 天连发 6 个版本），agent 文档摄入层从"新品类"变为"最热赛道"，doc7（本地 VLM 解析）与之构成"云 vs 本地"路线分化 · 应用层第五日结构性降温——qm 增速骤降（+1,634→+561，+17%→+5%）但仍守万星量级，crm 反超为增速第一（+1,569/+34%，连续两日领先），genoffice 稳健（+482/+38%），"分化"进入"crm 领跑、qm 守量"格局 · 中文 agent skill 品类出现——human-writing（1,006⭐，"活人感"写作）+ open-kimi-ppt-skill（530⭐，逆向 Kimi Slides→PPT），中文社区从"用 agent"进入"造 skill" · 长程 agent benchmark 品类出现——阿里 Accio RealReplicaBench（1,017⭐，107 任务，状态化评测，OpenClaw harness）

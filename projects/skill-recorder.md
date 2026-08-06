@@ -2,11 +2,11 @@
 title: "microsoft/skill-recorder"
 slug: skill-recorder
 date_added: "2026-08-03"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "工具型"
 emoji: "🎥"
-stars: "1,944 stars"
-stars_delta: "7/29创建→8/06 1,944⭐（第五日 +193/+11%），fork 177→193"
+stars: "2,127 stars"
+stars_delta: "7/29创建→8/07 2,127⭐（第六日 +183/+9%，跨入 2K），fork 193→220"
 language: "TypeScript"
 license: "MIT"
 score: 84
@@ -83,3 +83,9 @@ Microsoft 官方桌面应用：录屏捕获一次真实工作会话（点击、�
 - **第五日 +193（1,751→1,944，+11%），fork 177→193**：增速从 +385 衰减到 +193，但仍维持正增长。作为 agent 三层质量栈的"技能提取层"稳定增长，未出现爆发或骤降。
 - **三层栈稳定**：skill-recorder（技能提取，事前）→ ratchet（执行约束，事中）→ numbat（可观测/取证/阻断，事中+事后）。今日 human-writing/open-kimi-ppt-skill 等中文 skill 出现，说明 skill 生态在横向扩张——skill-recorder 作为"制造 skill 的工具"定位进一步巩固。
 - **待观察（不变）**：强绑 Microsoft 生态（需 Copilot 访问权限），33 open issues（较昨日 29 上升，早期质量问题待收敛）。
+
+## 最近动态（2026-08-07）
+
+- **第六日 +183（+9%），跨入 2K 关口**：1,944 → 2,127，fork 193 → 220（+27）。增速稳定衰减（+11%→+9%），但仍维持正增长。
+- **三层栈稳定**：skill-recorder（技能提取，事前）+ 今日发现的"去 AI 腔"写作治理三层谱系（ratchet 事前约束 / human-writing 事中改写 / humanizer-cli 事后检测）共同构成 agent 写作/技能质量基础设施。skill-recorder 是"制造 skill 的工具"，与 humanizer 谱系是"改善 skill 输出质量的工具"互补。
+- **判断**：score 维持 84。稳定增长 + 品类定位巩固。pushed_at 08-06（活跃开发）。open_issues 30（略降，健康的 issue 处理）。

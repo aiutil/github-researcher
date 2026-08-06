@@ -2,14 +2,14 @@
 title: "magicrew/doc7"
 slug: "doc7"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "观察型"
 emoji: "🗂️"
-stars: "454 stars"
-stars_delta: "8/02创建→8/06观测 454⭐ / 9 fork / 0 subscribers（API 未返回），pushed 08-04"
+stars: "465 stars"
+stars_delta: "8/02创建→8/07观测 465⭐ / 10 fork，第六日 +11（+2%），关注度低，pushed 08-04"
 language: "Go"
 license: "MIT"
-score: 81
+score: 80
 tags: ["document-ai", "pdf-to-markdown", "docx-to-markdown", "local-ai", "multimodal", "vision-language-model", "go"]
 url: "https://github.com/magicrew/doc7"
 ---
@@ -65,3 +65,9 @@ doc7 的设计哲学是 **"用 VLM 替代专用 OCR + 格式解析"**——不�
 
 ---
 *首次记录：2026-08-06* · *数据来源: GitHub API + 仓库 README*
+
+## 最近动态（2026-08-07）
+
+- **第六日 +11（+2%），关注度低**：454 → 465，fork 9 → 10（+1）。增量极低，说明本地化路线（本地 VLM 文档解析）当前是边缘场景而非主流需求。
+- **与 anydoc 的路线竞争——云路线碾压本地路线**：anydoc 同期从 4,688 → 8,069（+3,381），doc7 仅 +11。云路线（anydoc，Firecrawl Parse hosted API）以 300 倍的增量优势碾压本地路线（doc7）。
+- **判断修正**：score 81 → 80。关注度低 + 增量极低。本地化路线可能需要等待私有化需求成熟（如企业数据合规场景），当前非主流。pushed_at 仍停在 08-04（无新代码）。

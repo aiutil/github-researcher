@@ -2,14 +2,14 @@
 title: "Binaryify/open-kimi-ppt-skill"
 slug: "open-kimi-ppt-skill"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "工具型"
 emoji: "🎞️"
-stars: "530 stars"
-stars_delta: "8/05创建→8/06观测 530⭐ / 149 fork / 0 subscribers（API 未返回）"
+stars: "1,286 stars"
+stars_delta: "8/05创建→8/07观测 1,286⭐ / 343 fork，第三日 +756（+142%），爆发"
 language: "Python"
 license: "MIT"
-score: 82
+score: 83
 tags: ["ppt-generation", "kimi-slides", "reverse-engineering", "agent-skill", "pptx", "python"]
 url: "https://github.com/Binaryify/open-kimi-ppt-skill"
 ---
@@ -67,3 +67,9 @@ open-kimi-ppt-skill 的设计哲学是 **"逆向官方格式以获得可编辑�
 
 ---
 *首次记录：2026-08-06* · *数据来源: GitHub API + 仓库 README*
+
+## 最近动态（2026-08-07）
+
+- **第三日爆发 +756（+142%），fork 149→343（+194）**：530 → 1,286，fork 增量 +194 是强部署意愿信号（fork/star 比 26.7%，极高）。增速从首日爆发后不降反升（+142%），说明话题性爆发有持续放大。
+- **判断修正**：score 82 → 83。爆发持续 + fork 高增长。但 +142% 增速不可持续，关键看 08-08 回落斜率。
+- **风险（不变）**：逆向工程路径有法律/稳定性风险（README 自述非官方，可能随 Kimi 更新失效）。pushed_at 08-06（活跃维护）。

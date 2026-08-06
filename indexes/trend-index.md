@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-06'
+last_updated: '2026-08-07'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,43 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-07（第九十二版）
+
+### anydoc 延续爆发（4,688→8,069，+3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入"高增量+减速"阶段 · "去 AI 腔"写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端检测）+ ratchet（435⭐，事前约束）构成"写作治理三层谱系"（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量级固化），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），"crm 领跑、qm 守量"格局从分化进入固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | anydoc 延续爆发（4,688→8,069，+3,381/+72%），跨入 8K 关口，fork 205→370——增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入"高增量+减速"阶段，接近稳态的回落速度是关键观察点 | anydoc | 90 |
+| 2 | "去 AI 腔"写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文活人感）+ humanizer-cli（581⭐，208 watchers，英文终端检测）+ ratchet（435⭐，事前约束）构成"写作治理三层谱系"（事前约束→事中去 AI 腔→事后检测） | human-writing, humanizer-cli, ratchet, humanizer | 87 |
+| 3 | 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量级固化），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），"crm 领跑、qm 守量"格局从分化进入固化 | qm, crm, genoffice | 85 |
+| 4 | 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers），"Python 拥有控制平面、agent 为有界节点"，用确定性代码负责编排/重试/验收，agent 只做需要阅读和判断的环节，与 sol-advisor（1,694⭐，Codex-native 编排）呼应"agent 编排层"主题 | super-simple-software-factory, sol-advisor | 82 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| firecrawl/anydoc | 8,069 | 工具型 | 90 | 更新（4,688→8,069，+3,381/+72%，跨入 8K，爆发进入减速阶段） |
+| trycompai/crm | 7,156 | 平台候选 | 88 | 更新（6,138→7,156，+1,018/+16%，连续三日增速第一，但增速回落） |
+| yc-software/qm | 12,022 | 平台候选 | 88 | 更新（11,653→12,022，+369/+3%，接近停滞，score 89→88） |
+| KKKKhazix/human-writing | 1,552 | 工具型 | 85 | 更新（1,006→1,552，+546/+54%，溯源 humanizer 谱系，score 84→85） |
+| 0xwilliamortiz/humanizer-cli | 581 | 工具型 | 83 | 新增（终端去 AI 腔检测，208 watchers，溯源 blader/humanizer） |
+| Binaryify/open-kimi-ppt-skill | 1,286 | 工具型 | 83 | 更新（530→1,286，+756/+142%，爆发，fork 149→343，score 82→83） |
+| disler/super-simple-software-factory | 459 | 观察型 | 82 | 新增（软件工厂 Skill，Python 控制平面 + agent 有界节点） |
+| genspark-ai/genoffice | 2,034 | 平台候选 | 85 | 更新（1,755→2,034，+279/+15%，跨入 2K） |
+| FareedKhan-dev/kimi-k3-in-c | 2,801 | 观察型 | 83 | 更新（2,544→2,801，+257/+10%，逼近 3K） |
+| microsoft/skill-recorder | 2,127 | 工具型 | 84 | 更新（1,944→2,127，+183/+9%，跨入 2K） |
+| criptogus/HermesOffice | 388 | 观察型 | 80 | 更新（327→388，+61/+18%） |
+| magicrew/doc7 | 465 | 观察型 | 80 | 更新（454→465，+11/+2%，关注度低，score 81→80） |
+
+#### 趋势观察
+
+- **anydoc 的爆发正在走典型"真实需求驱动的热度曲线"**：首日 → +331% → +72%。增速回落但绝对增量仍居首（+3,381），区别于脉冲项目（zhuzhiliao 等）。fork 持续增长（370）+ 官方投入（5 天 6 版）佐证持续性。下一关键看 08-08 增速是否健康收敛（+30-40%）。
+- **"去 AI 腔"写作治理是被 34K⭐ 源头验证的真实品类**：blader/humanizer（34,004⭐）证明需求真实。今日发现的是其多语言、多接口、多阶段扩展——human-writing（中文，事中改写）、humanizer-cli（英文，事后检测）、ratchet（事前约束）。谱系关系为基于功能同构的推断（humanizer-cli 明确溯源，human-writing 未明确声明）。
+- **应用层格局固化**：qm（+3%，接近停滞）、crm（+16%，减速但仍领先）、genoffice（+15%，稳健）三个项目都在收敛。整个应用层主题可能在 2-3 日内进入尾声（除非有新垂直变体爆发）。
+- **软件工厂 Skill 代表"agent 编排工程化"主题**：与 sol-advisor 共同信号——"agent 编排"从 ad-hoc prompt 进入工程化结构。super-simple-software-factory 的"Python 拥有控制平面"是可操作的范式参考。
 
 ## 2026-08-06（第九十一版）
 

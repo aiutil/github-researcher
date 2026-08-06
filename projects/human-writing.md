@@ -2,15 +2,15 @@
 title: "KKKKhazix/human-writing"
 slug: "human-writing"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-06"
+last_seen_date: "2026-08-07"
 category: "工具型"
 emoji: "✍️"
-stars: "1,006 stars"
-stars_delta: "8/05创建→8/06观测 1,006⭐ / 98 fork / 9 subscribers，1 天破千星"
+stars: "1,552 stars"
+stars_delta: "8/05创建→8/07观测 1,552⭐ / 134 fork / 0 subscribers，第三日 +546（+54%）"
 language: "Python"
 license: "MIT"
-score: 84
-tags: ["agent-skills", "chinese-writing", "creative-writing", "writing-skill", "python"]
+score: 85
+tags: ["agent-skills", "chinese-writing", "creative-writing", "writing-skill", "humanizer-lineage", "python"]
 url: "https://github.com/KKKKhazix/human-writing"
 ---
 
@@ -64,3 +64,10 @@ human-writing 的设计哲学是 **"规则约束而非风格替代"**——skill
 
 ---
 *首次记录：2026-08-06* · *数据来源: GitHub API + 仓库 README*
+
+## 最近动态（2026-08-07）
+
+- **第三日 +546（+54%），溯源为 blader/humanizer 谱系中文分支**：1,006 → 1,552，fork 98 → 134（+36）。增速仍强劲（+54%），说明中文创作者社区对"去 AI 腔"有持续需求，非单日话题爆发。
+- **谱系溯源发现**：今日发现 blader/humanizer（34,004⭐）是"去 AI 写作痕迹"的源头 Agent skill，humanizer-cli（581⭐）是其终端化封装。human-writing 的"去 AI 腔"目标与 humanizer 一致，被推断为该谱系的中文分支（未明确声明溯源，但功能同构）。
+- **写作治理三层谱系**：human-writing（事中去 AI 腔，中文）+ humanizer-cli（事后检测，英文 CLI）+ ratchet（事前约束）构成完整的"写作治理三层谱系"。
+- **判断修正**：score 84 → 85。被 34K⭐ 源头项目验证的品类 + 持续增长。但谱系关系为推断（功能同构），human-writing 未明确声明溯源 humanizer。
