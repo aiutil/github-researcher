@@ -2,14 +2,14 @@
 title: "yc-software/qm"
 slug: "qm"
 date_added: "2026-08-01"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "平台候选"
 emoji: "👥"
-stars: "12,022 stars"
-stars_delta: "7/29创建→8/07 12,022⭐（第六日 +369，+3%，接近停滞），fork 1,290→1,349，六日累计 +10,655"
+stars: "12,274 stars"
+stars_delta: "7/29创建→8/08 12,274⭐（第七日 +252，+2%，连续两日停滞通道），fork 1,349→1,395，万星量级稳态确认"
 language: "TypeScript"
 license: "MIT"
-score: 88
+score: 87
 tags: ["agent-harness", "multiplayer", "slack", "collaboration", "sandbox", "typescript", "multi-agent"]
 url: "https://github.com/yc-software/qm"
 ---

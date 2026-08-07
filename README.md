@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-07.md">Latest report</a> ·
+  <a href="daily/2026-08-08.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-07
+## Latest report · 2026-08-08
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 12 | 309 | 4 | 12k+ |
+| 13 | 439 | 4 | 15k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 8,069 stars | 工具型 |
-| [trycompai/crm](projects/crm.md) | 7,156 stars | 平台候选 |
-| [yc-software/qm](projects/qm.md) | 12,022 stars | 平台候选 |
-| [KKKKhazix/human-writing](projects/human-writing.md) | 1,552 stars | 工具型 |
-| [0xwilliamortiz/humanizer-cli](projects/humanizer-cli.md) | 581 stars | 工具型 |
-| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,286 stars | 工具型 |
-| [disler/super-simple-software-factory](projects/super-simple-software-factory.md) | 459 stars | 观察型 |
-| [genspark-ai/genoffice](projects/genoffice.md) | 2,034 stars | 平台候选 |
+| [firecrawl/anydoc](projects/anydoc.md) | 10,866 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,070 stars | 观察型 |
+| [0xwilliamortiz/claude-red](projects/claude-red.md) | 555 stars | 工具型 |
+| [AMAP-ML/LongHorizon-Harness](projects/longhorizon-harness.md) | 384 stars | 观察型 |
+| [trycompai/crm](projects/crm.md) | 7,471 stars | 平台候选 |
+| [yc-software/qm](projects/qm.md) | 12,274 stars | 平台候选 |
+| [KKKKhazix/human-writing](projects/human-writing.md) | 1,867 stars | 工具型 |
+| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,587 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: anydoc
-2. **Signal 2** · score 87 · repositories: human-writing, humanizer-cli, ratchet, humanizer
-3. **Signal 3** · score 85 · repositories: qm, crm, genoffice
-4. **Signal 4** · score 82 · repositories: super-simple-software-factory, sol-advisor
+1. **Signal 1** · score 88 · repositories: minimax-h3
+2. **Signal 2** · score 90 · repositories: anydoc
+3. **Signal 3** · score 84 · repositories: claude-red
+4. **Signal 4** · score 83 · repositories: longhorizon-harness, super-simple-software-factory
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-07.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-08.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
 | [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
 | [2026-08-04](daily/2026-08-04.md) | 8 | 4 |
 | [2026-08-03](daily/2026-08-03.md) | 5 | 3 |
 | [2026-08-02](daily/2026-08-02.md) | 5 | 3 |
-| [2026-08-01](daily/2026-08-01.md) | 11 | 3 |
 
 ## Why this repository exists
 

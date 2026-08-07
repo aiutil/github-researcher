@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-07'
+last_updated: '2026-08-08'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,47 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-08（第九十三版）
+
+### MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，"加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器"三层结构一周填满，9 个官方 Skill · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%，非骤降），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率极高）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，AMAP-ML/高德，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，"加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器"三层结构一周填满，9 个官方 Skill（含 prompt-writing + 8 风格化生成），"模型发布即生态"新范式 | minimax-h3 | 88 |
+| 2 | anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速从 +72% 健康收敛到 +35%（非骤降），fork 370→506 破五百，爆发进入"稳态放量"阶段——+35% 印证昨日判断的健康收敛而非触及天花板 | anydoc | 90 |
+| 3 | 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率极高）首个 Claude Skills 攻防安全库，58 skill × 13 攻击面（SQLi→shellcode→EDR 绕过），同 humanizer-cli 作者 0xwilliamortiz 在安全垂直验证 Skill 分发模式 | claude-red | 84 |
+| 4 | 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，AMAP-ML/高德，HF Daily Papers 周榜 #1，arXiv 2608.01964）三角色分离（Manager/Executor/Auditor）+ 持久化可信状态 + fresh-context 执行，与 super-simple-software-factory 共同信号：agent 工程化从 prompt 转向架构 | longhorizon-harness, super-simple-software-factory | 83 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| firecrawl/anydoc | 10,866 | 工具型 | 90 | 更新（8,069→10,866，+2,797/+35%，跨入万星，fork 破 500，增速健康收敛） |
+| MiniMax-AI/MiniMax-H3 | 1,070 | 观察型 | 86 | 新增（视频生成模型 + 9 Skill，引爆 265 仓库/3,039 星标 ComfyUI 生态） |
+| 0xwilliamortiz/claude-red | 555 | 工具型 | 84 | 新增（首个 Claude Skills 攻防安全库，58 skill × 13 攻击面，169 watchers/30% watch 率） |
+| AMAP-ML/LongHorizon-Harness | 384 | 观察型 | 83 | 新增（长程 agent harness，HF Papers 周榜 #1，三角色分离 + 持久化可信状态） |
+| trycompai/crm | 7,471 | 平台候选 | 87 | 更新（7,156→7,471，+315/+4%，增速从 +16% 骤降，应用层进入衰减尾声，score 88→87） |
+| yc-software/qm | 12,274 | 平台候选 | 87 | 更新（12,022→12,274，+252/+2%，连续两日停滞通道，score 88→87） |
+| KKKKhazix/human-writing | 1,867 | 工具型 | 85 | 更新（1,552→1,867，+315/+20%，增速回落但仍强劲，逼近 2K） |
+| Binaryify/open-kimi-ppt-skill | 1,587 | 工具型 | 82 | 更新（1,286→1,587，+301/+23%，但 fork 异常暴增 343→914，疑似刷量，score 83→82） |
+| FareedKhan-dev/kimi-k3-in-c | 3,247 | 观察型 | 84 | 更新（2,801→3,247，+446/+16%，突破 3K，增速回升，score 83→84） |
+| genspark-ai/genoffice | 2,163 | 平台候选 | 84 | 更新（2,034→2,163，+129/+6%，增速持续衰减，score 85→84） |
+| microsoft/skill-recorder | 2,312 | 工具型 | 84 | 更新（2,127→2,312，+185/+9%，增速稳定） |
+| disler/super-simple-software-factory | 495 | 观察型 | 82 | 更新（459→495，+36/+8%，与 LongHorizon-Harness 共同信号） |
+| magicrew/doc7 | 608 | 观察型 | 81 | 更新（465→608，+143/+31%，增速回升，本地路线补涨，score 80→81） |
+| criptogus/HermesOffice | 412 | 观察型 | 80 | 更新（388→412，+24/+6%，增速衰减） |
+| 0xwilliamortiz/humanizer-cli | 585 | 工具型 | 83 | 更新（581→585，+4/+1%，增速停滞，同作者 claude-red 新增） |
+
+#### 趋势观察
+
+- **MiniMax H3 生态爆发验证"模型发布即生态"新范式：** 厂商同时发布 9 个 Skill + 拥抱 ComfyUI 运行时，265 仓库一周填满三层（加速器/导演/prompt）。视频生成模型落地瓶颈已从"生成质量"转移到"推理成本 + 工作流编排"。需注意生态泡沫风险（265 仓库中大量同质化 Director/Cache 变体）。
+- **anydoc +35% 健康收敛确认真实需求：** 增速序列（+331%→+72%→+35%）衰减率收窄（非骤降），万星量级 + fork 破 500，爆发进入稳态放量阶段。印证昨日"健康收敛"判断。
+- **"领域 Skill 化"趋势明确：** claude-red（安全）+ humanizer-cli/human-writing（写作）+ h3-prompt-writing（视频）+ wshobson/agents（编码）共同验证"领域专家知识 → SKILL.md → 按需注入 agent context"模式。
+- **长程 agent 架构范式浮现：** LongHorizon-Harness（三角色分离）+ super-simple-software-factory（Python 控制平面）共同信号——agent 工程化从 prompt 转向架构。
+- **应用层进入衰减尾声：** qm（+2%）、crm（+4%）、genoffice（+6%）三个项目增速全面下降到低个位数。
 
 ## 2026-08-07（第九十二版）
 

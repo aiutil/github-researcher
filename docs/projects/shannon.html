@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shannon | GitHub 趋势研究</title>
+    <title>Shannon | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,97 +26,68 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
-        <h1 id="shannon">shannon</h1>
-<blockquote>
-<p>Shannon Lite — Autonomous white-box AI pentester</p>
-</blockquote>
-<h2 id="_1">基本信息</h2>
+        <div style="margin-bottom:20px;"><a href="https://github.com/KeygraphHQ/shannon" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="shannon-ai">Shannon — 自主式 AI 渗透测试工具</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Keygraph 出品的自主式 AI 渗透测试工具（Shannon 2.0），分析 Web 应用源码识别攻击向量，然后<strong>真实执行漏洞利用</strong>来证明漏洞存在。区别于传统 SAST 的静态分析，定位是"白盒 + 真实攻击"。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>渗透测试通常一年只做一次，而代码每天都在部署 — 形成"持续部署 vs 年度渗透测试"的安全缺口。Shannon 提供按需自动化渗透测试，可以对每次构建/发布运行。只有存在可工作的 PoC 的漏洞才进入最终报告。</p>
+<h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>仓库：</strong> <a href="https://github.com/KeygraphHQ/shannon">KeygraphHQ/shannon</a></li>
-<li><strong>Star：</strong> 36,634</li>
-<li><strong>今日新增：</strong> ~733（数据可能不完整）</li>
-<li><strong>语言：</strong> TypeScript</li>
-<li><strong>归档状态：</strong> 活跃</li>
+<li><strong>46,504 stars / 5,372 forks</strong>，AGPL-3.0，Trendshift 认证</li>
+<li><strong>Shannon 2.0 已发布</strong>，支持 Web 应用和 API 安全测试</li>
+<li><strong>真实攻击执行</strong>：不是只报告漏洞，而是用浏览器自动化和 CLI 工具执行真实 exploit</li>
+<li>有 sample report（OWASP Juice Shop 20+ 漏洞、c{api}tal 15+ API 漏洞、crAPI 15+ 漏洞）</li>
+<li>双版本：Shannon Open Source（本仓库，本地运行）+ Keygraph 平台（商业版）</li>
+<li>支持 Anthropic/OpenAI/xAI/AWS Bedrock 多家 AI provider</li>
 </ul>
-<h2 id="_2">核心定位</h2>
-<p>KeygraphHQ 出品的<strong>自主式 AI 渗透测试工具</strong>。分析源码识别攻击向量，然后<strong>真实执行漏洞利用</strong>来证明漏洞存在。不同于传统 SAST 的静态分析，shannon 的定位是"白盒 + 真实攻击"。</p>
-<h2 id="_3">技术亮点</h2>
+<h2 id="_4">热度来源判断</h2>
+<ul>
+<li><strong>泡沫指数：高。</strong> 46K stars 主要来自"AI + 安全"的热点效应</li>
+<li>star-to-fork 比（8.6:1）偏低，说明实际使用和深度参与的比例较低</li>
+<li>争议性（"自主执行攻击"）带来的话题关注度</li>
+<li>但 sample report 的质量说明技术上有实际产出</li>
+</ul>
+<h2 id="_5">关键技术亮点</h2>
 <ol>
 <li><strong>Graph RAG 架构</strong>：基于代码知识图谱理解代码结构和依赖关系</li>
-<li><strong>源码级别分析</strong>：不是黑盒扫描，是理解代码语义的渗透测试</li>
-<li><strong>真实攻击执行</strong>：不只是报告漏洞存在，而是真的执行攻击来证明</li>
+<li><strong>源码级别分析</strong>：白盒分析，理解代码语义而非黑盒扫描</li>
+<li><strong>真实攻击执行</strong>：浏览器自动化 + CLI 工具执行真实 exploit，只有 PoC 可复现才报告</li>
+<li><strong>多 AI provider 支持</strong>：Anthropic（推荐）、OpenAI、xAI、AWS Bedrock</li>
+<li><strong>Worker 容器化</strong>：Docker worker 隔离执行环境</li>
+<li><strong>Cyber safeguards 适配</strong>：需先完成 Anthropic/OpenAI 的安全研究者认证流程</li>
 </ol>
-<h2 id="_4">泡沫分析</h2>
-<p><strong>泡沫指数：高</strong></p>
-<p>理由：
-- "真实执行漏洞利用"面临巨大法律和伦理风险
-- 36k stars 的增长主要来自"AI + 安全"的热点效应，大量是看热闹的开发者
-- 2% 的 star-to-fork 比说明实际使用和深度参与的比例较低
-- 自动化漏洞利用在实践中面临巨大社会责任压力</p>
-<h2 id="_5">架构启发</h2>
-<p>Graph RAG 在代码安全分析中的应用值得研究。但从工程角度看，shannon 更像是"AI Code Review + 攻击性输出"的组合，而非真正的渗透测试自动化。</p>
-<h2 id="_6">评分</h2>
-<table>
-<thead>
-<tr>
-<th>维度</th>
-<th>得分</th>
-<th>理由</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>热度质量</td>
-<td>6</td>
-<td>高 star 但增长质量存疑</td>
-</tr>
-<tr>
-<td>技术创新度</td>
-<td>7</td>
-<td>Graph RAG + 安全理解有技术含量</td>
-</tr>
-<tr>
-<td>工程成熟度</td>
-<td>5</td>
-<td>新项目，工程化程度未知</td>
-</tr>
-<tr>
-<td>架构启发价值</td>
-<td>7</td>
-<td>Graph RAG 在代码分析中的应用思路有参考价值</td>
-</tr>
-<tr>
-<td>企业落地潜力</td>
-<td>3</td>
-<td>法律/伦理风险高</td>
-</tr>
-<tr>
-<td>中期趋势概率</td>
-<td>5</td>
-<td>AI 安全是真实方向，但自动化攻击落地困难</td>
-</tr>
-<tr>
-<td>平台化潜力</td>
-<td>4</td>
-<td>更偏工具</td>
-</tr>
-<tr>
-<td>基础设施潜力</td>
-<td>3</td>
-<td>安全工具难以成为基础设施</td>
-</tr>
-<tr>
-<td><strong>总分</strong></td>
-<td><strong>40/80</strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="_7">归类</h2>
-<p><strong>泡沫型/学习型 | 不建议企业落地，持续关注技术思路即可</strong></p>
-<hr />
-<p><em>首次记录：2026-04-07</em></p>
+<h2 id="_6">架构启发</h2>
+<p>Graph RAG 在代码安全分析中的应用值得研究 — 将代码结构化为知识图谱，然后基于图谱推理攻击路径。但从工程角度看，Shannon 更像是"AI Code Review + 攻击性输出"的组合，而非真正的渗透测试自动化。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>泡沫型/学习型。</strong> 不建议企业落地，技术思路（Graph RAG + 自主攻击）有参考价值，但 46K stars 中泡沫成分大。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>"真实执行漏洞利用"面临巨大法律和伦理风险</strong> — 即使在授权环境中，自主攻击链的行为不可预测</li>
+<li>46K stars 的增长主要来自"AI + 安全"的热点效应，大量是看热闹的开发者</li>
+<li>star-to-fork 比低（8.6:1），实际使用比例低</li>
+<li>自动化漏洞利用在实践中面临社会责任压力</li>
+<li>AI provider 的 cyber safeguards 可能中断扫描</li>
+<li>AGPL-3.0 限制商业集成</li>
+<li>需要完整源码访问（白盒），适用场景受限</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>传统 SAST（SonarQube / Semgrep）</strong>：静态分析，Shannon 在其上增加动态攻击</li>
+<li><strong>传统 DAST（Burp Suite / OWASP ZAP）</strong>：黑盒扫描，Shannon 结合白盒源码分析</li>
+<li><strong>AI Code Review 工具</strong>：Shannon 是"AI Code Review + 攻击性输出"</li>
+<li><strong>Keygraph 平台</strong>：Shannon 的商业 SaaS 版本</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>不建议持续跟踪。</strong> 但作为安全态势感知（了解 AI 渗透测试的演进）可以偶尔关注。Graph RAG 在代码分析中的应用思路有技术参考价值。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>法律监管对自动化渗透测试工具的态度</li>
+<li>AI provider 对 cyber security workload 的 safeguard 策略变化</li>
+<li>Shannon 2.0 的实际采用案例（企业安全团队）</li>
+<li>Keygraph 商业平台的增长情况</li>
+<li>是否有竞品采用类似 Graph RAG + 自主攻击架构</li>
+</ol>
     </div>
 </main>
     <footer class="footer">

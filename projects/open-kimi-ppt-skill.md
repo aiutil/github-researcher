@@ -2,14 +2,14 @@
 title: "Binaryify/open-kimi-ppt-skill"
 slug: "open-kimi-ppt-skill"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "工具型"
 emoji: "🎞️"
-stars: "1,286 stars"
-stars_delta: "8/05创建→8/07观测 1,286⭐ / 343 fork，第三日 +756（+142%），爆发"
+stars: "1,587 stars"
+stars_delta: "8/05创建→8/08观测 1,587⭐ / 914 fork，第四日 +301（+23%），但 fork 异常暴增 343→914（+571），fork/star=0.58 异常，疑似刷量或批量部署"
 language: "Python"
 license: "MIT"
-score: 83
+score: 82
 tags: ["ppt-generation", "kimi-slides", "reverse-engineering", "agent-skill", "pptx", "python"]
 url: "https://github.com/Binaryify/open-kimi-ppt-skill"
 ---

@@ -2,14 +2,14 @@
 title: "genspark-ai/genoffice"
 slug: "genoffice"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "平台候选"
 emoji: "📄"
-stars: "2,034 stars"
-stars_delta: "7/31创建→8/07 2,034⭐（第六日 +279/+15%，跨入 2K），fork 335"
+stars: "2,163 stars"
+stars_delta: "7/31创建→8/08 2,163⭐（第七日 +129/+6%，增速持续衰减），fork 335→372，稳态收敛中"
 language: "TypeScript"
 license: "Apache-2.0"
-score: 85
+score: 84
 tags: ["ai-native", "office-suite", "electron", "docx", "xlsx", "pptx", "pdf", "byte-preserving"]
 url: "https://github.com/genspark-ai/genoffice"
 ---

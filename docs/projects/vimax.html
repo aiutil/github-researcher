@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViMax | GitHub 趋势研究</title>
+    <title>HKUDS/ViMax | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -27,13 +27,56 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/HKUDS/ViMax" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="vimax">ViMax</h1>
+        <h1 id="hkudsvimax">HKUDS/ViMax</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Agentic 视频生成系统 — 导演、编剧、制片人和视频生成器 All-in-One，通过多 Agent 协作完成视频制作全流程。</p>
+<p>Agentic 视频生成框架——将视频制作分解为导演、编剧、制片人和视频生成器四个 Agent 角色，通过多 Agent 协作实现从概念到成片的端到端自动化视频生产。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>视频生成缺乏系统化的生产流程管理。ViMax 通过将视频制作分解为多个 Agent 角色（导演、编剧、制片人、生成器），实现了 Agentic 的视频生产流程。</p>
-<h2 id="_3">为什么值得关注</h2>
-<p>HKUDS 出品，Agentic 多模态的代表项目。7.9K stars 表明市场对"AI 导演"概念有认可。</p>
+<p>当前 AI 视频生成工具（如 Sora、Runway）大多只能生成几秒钟的短片段，且面临三大问题：(1) 只能生成短片，无法制作完整叙事视频；(2) 角色/场景在帧间一致性差，频繁变化；(3) 只有视觉层面，缺乏剧本、音频、叙事结构等完整的视频制作要素。ViMax 通过将视频制作流程分解为多个 Agent 角色——导演（规划整体结构）、编剧（编写剧本）、制片人（管理资源和一致性）、视频生成器（调用底层视频模型）——实现了从概念到成片的完整工作流。</p>
+<h2 id="2026-05-26">为什么值得关注（2026-05-26）</h2>
+<ul>
+<li>11,677 stars，1,743 forks——创建于 2025-03-30，一年内增长到 11K+ stars</li>
+<li>MIT 许可证，Python 3.12，已有 v1.2.0 版本，持续活跃开发</li>
+<li>香港大学数据科学实验室 (HKUDS) 出品，有 arXiv 技术报告（2606.07649）</li>
+<li>支持多种工作流：Idea2Video、Script2Video、Novel2Video、AutoCameo</li>
+<li>已接入 Google Omni、MiniMax、OpenRouter GPT Image 2、Seedance 2.0 等多种模型</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>学术声誉 + Agentic 视频概念红利</strong>。ViMax 的热度来自：(1) HKUDS 的学术声誉——港大数据科学实验室在 Agent 研究领域有持续产出，其项目质量有学术背书；(2) "Agentic 视频"是 2025-2026 年的多模态热点——将视频生成从"单次 prompt"升级为"多 Agent 流程"是自然的技术演进方向；(3) Trendshift 持续推荐，增加了曝光度。11K stars 反映了市场对"AI 导演"概念的认可，但需要关注实际使用深度。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>四角色 Agent 架构</strong>：Director（导演）负责整体创意规划和场景分解，Screenwriter（编剧）负责编写剧本和对话，Producer（制片人）负责管理角色一致性、场景连贯性和资源协调，Video Generator（视频生成器）负责调用底层视频模型生成实际画面。这种分工模拟了真实影视制作流程。</li>
+<li><strong>多种工作流模式</strong>：Idea2Video（从概念到视频）、Script2Video（从剧本到可控的多场景视频，保留创作意图）、Novel2Video（将长篇小说改编为分集视觉叙事，包含叙事压缩和角色追踪）、AutoCameo（将参考照片中的人物/宠物放入生成故事并保持一致外观）。</li>
+<li><strong>一致性生产管线</strong>：协调参考图像、首帧、镜头连续性和最终合成，解决 AI 视频最大的痛点——跨帧角色/场景一致性。</li>
+<li><strong>并行化生成</strong>：并发生成兼容的镜头和媒体素材，加速多镜头视频制作。这对长视频生成至关重要——串行生成会非常慢。</li>
+<li><strong>Agent Loop + TUI + Web UI</strong>：v1.2.0 引入了 Web UI（命名项目、Agent Loop 对话、Artifact 和故事板预览、渲染检查点、文件上传、提供商设置、暗黑模式）以及 TUI 交互式工作流，支持会话复用和上下文压缩。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>ViMax 的核心启发是"用 Agent 分工解决复杂创意任务"。传统 AI 视频生成将所有复杂性压在一个 prompt 上，而 ViMax 将制作流程分解为多个专业 Agent，每个 Agent 专注一个维度。这与真实影视制作的分工逻辑一致。另一个值得学习的设计是"渐进式工作流"——从 Idea2Video（最简单）到 Novel2Video（最复杂），覆盖了从灵感到成片的不同输入阶段。</p>
+<h2 id="_6">定位判断</h2>
+<p>ViMax 定位为<strong>Agentic 多模态创作的学术先锋项目</strong>。在视频生成生态中，它不与底层视频模型（Sora、Kling、Seedance）竞争，而是在这些模型之上构建"Agent 编排层"。与 MoneyPrinterTurbo（素材拼接自动化）不同，ViMax 更侧重于"创意叙事的 Agent 化"，学术性更强。11K stars 使其成为 Agentic 视频方向的代表性项目。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>底层视频模型质量的瓶颈</strong>：ViMax 的输出质量上限完全取决于底层视频生成模型（Google Omni、Seedance 等）的能力。如果底层模型生成的片段质量差，Agent 编排也无法弥补。这是所有编排层项目的共同局限。</li>
+<li><strong>学术项目的产品化风险</strong>：HKUDS 是学术实验室，项目可能优先服务于论文发表而非长期产品维护。学术项目在 GitHub 上经常出现"论文发表后维护放缓"的现象。</li>
+<li><strong>视频生成成本和速度</strong>：多 Agent + 多模型调用的端到端视频生成流程在计算成本和时间上可能非常昂贵，实际可用性受限。</li>
+<li><strong>长视频一致性的技术挑战</strong>：虽然声称解决一致性问题，但跨多个场景、多分钟的角色一致性仍然是 AI 视频的未解难题，实际效果需要验证。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>MoneyPrinterTurbo (harry0703)</strong>：102K stars，AI 短视频生成。两者方向相似但实现路径不同——MoneyPrinterTurbo 以素材拼接和文本→视频工作流为主，ViMax 更侧重于 Agent 分工和叙事结构。</li>
+<li><strong>OpenAI Sora / Google Veo</strong>：底层视频生成模型。ViMax 是这些模型的"上层应用"——调用它们生成片段，自己负责编排和一致性管理。</li>
+<li><strong>ComfyUI 视频工作流</strong>：节点式视频生成工作流工具。更灵活但门槛更高，ViMax 的 Agent 模式更用户友好。</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得作为 Agentic 多模态方向的学术标杆跟踪</strong>。ViMax 代表了视频生成从"单 prompt"向"多 Agent 流程"演进的前沿方向。其学术产出（arXiv 报告）和工程实现都值得关注。但需要注意区分"学术 demo"和"可用产品"。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li><strong>底层视频模型的升级效果</strong>：当 Sora 2、Veo 3 等新一代视频模型发布后，ViMax 的输出质量是否有质的飞跃</li>
+<li><strong>产品化进展</strong>：是否会推出托管 SaaS 版本或更易用的桌面应用，降低使用门槛</li>
+<li><strong>一致性技术的论文突破</strong>：HKUDS 是否会发表关于跨场景角色一致性的技术论文，推动领域发展</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-26</em></p>
     </div>
 </main>
     <footer class="footer">

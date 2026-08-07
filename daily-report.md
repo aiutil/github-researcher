@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-08-08
+
+**核心主题：** MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，"加速器×导演×prompt 构建器"三层结构一周填满，"模型发布即生态"新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离 + 持久化可信状态
+
+**关键项目：**
+- 📑 firecrawl/anydoc (10,866, 更新 +2,797) — Firecrawl 文档解析，跨入万星，增速健康收敛 +35%，fork 破 500，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (1,070, 新增) — 视频生成模型 + 9 Skill，引爆 265 仓库/3,039 星标 ComfyUI 生态，Score 86
+- 🔴 0xwilliamortiz/claude-red (555, 新增) — 首个 Claude Skills 攻防安全库，58 skill × 13 攻击面，169 watchers/30% watch 率，Score 84
+- 🧭 AMAP-ML/LongHorizon-Harness (384, 新增) — 长程 agent harness，HF Papers 周榜 #1，三角色分离 + 持久化可信状态，Score 83
+- 📋 trycompai/crm (7,471, 更新 +315) — Agentic-first CRM，增速骤降到 +4%，应用层进入衰减尾声，Score 87
+- 👥 yc-software/qm (12,274, 更新 +252) — 多人协作 agent harness，+2% 连续停滞，万星稳态确认，Score 87
+- ✍️ KKKKhazix/human-writing (1,867, 更新 +315) — 中文"活人感"写作 Skill，+20% 增速回落但仍强劲，逼近 2K，Score 85
+- 🎞️ Binaryify/open-kimi-ppt-skill (1,587, 更新 +301) — 逆向 Kimi Slides→PPT，fork 异常暴增 343→914 疑似刷量，Score 82
+- 💠 FareedKhan-dev/kimi-k3-in-c (3,247, 更新 +446) — 便携 C99 K3，突破 3K 关口，增速回升 +16%，Score 84
+- 📄 genspark-ai/genoffice (2,163, 更新 +129) — AI-native 办公套件，+6% 增速持续衰减，Score 84
+- 🎥 microsoft/skill-recorder (2,312, 更新 +185) — Microsoft 录屏→Skill，+9% 增速稳定，Score 84
+- 🏭 disler/super-simple-software-factory (495, 更新 +36) — 软件工厂 Skill，与 LongHorizon-Harness 共同信号，Score 82
+- 🗂️ magicrew/doc7 (608, 更新 +143) — 本地 VLM 文档解析，+31% 增速回升，本地路线补涨，Score 81
+
+---
+
 ## 2026-08-07
 
 **核心主题：** anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入"高增量+减速"阶段 · "去 AI 腔"写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成"写作治理三层谱系"（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），"crm 领跑、qm 守量"格局从分化进入固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）

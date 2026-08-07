@@ -2,11 +2,11 @@
 title: "microsoft/skill-recorder"
 slug: skill-recorder
 date_added: "2026-08-03"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "工具型"
 emoji: "🎥"
-stars: "2,127 stars"
-stars_delta: "7/29创建→8/07 2,127⭐（第六日 +183/+9%，跨入 2K），fork 193→220"
+stars: "2,312 stars"
+stars_delta: "7/29创建→8/08 2,312⭐（第七日 +185/+9%，增速稳定），fork 220→245"
 language: "TypeScript"
 license: "MIT"
 score: 84

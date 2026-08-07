@@ -2,14 +2,14 @@
 title: "magicrew/doc7"
 slug: "doc7"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "观察型"
 emoji: "🗂️"
-stars: "465 stars"
-stars_delta: "8/02创建→8/07观测 465⭐ / 10 fork，第六日 +11（+2%），关注度低，pushed 08-04"
+stars: "608 stars"
+stars_delta: "8/02创建→8/08观测 608⭐ / 16 fork，第七日 +143（+31%），增速回升（昨日 +2%→今日 +31%），本地路线获补涨"
 language: "Go"
 license: "MIT"
-score: 80
+score: 81
 tags: ["document-ai", "pdf-to-markdown", "docx-to-markdown", "local-ai", "multimodal", "vision-language-model", "go"]
 url: "https://github.com/magicrew/doc7"
 ---

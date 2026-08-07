@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>freedomains | GitHub 趋势研究</title>
+    <title>stackryze/FreeDomains | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,27 +26,61 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+        <div style="margin-bottom:20px;"><a href="https://github.com/stackryze/FreeDomains" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="stackryzefreedomains">stackryze/FreeDomains</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Stackryze Domains: Free Domain for Everyone, Claim yours today.</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-06-18 的趋势数据。</p>
+<p>免费域名注册服务——面向开发者、Homelab 爱好者和开源项目，提供零成本二级域名，降低个人项目上线的门槛。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>独立开发者和小型项目在部署时面临一个尴尬：云服务（Vercel、Cloudflare Pages）大多免费，但自定义域名却需要年费（.com 约 $10/年，优质 TLD 更贵）。对于 Homelab、个人博客、作品集、MVP 原型等非商业项目，域名成本成为不必要的门槛。FreeDomains 通过提供免费的二级域名（如 <code>yourname.stackryze.com</code> 或自有 TLD 下的子域名），让开发者无需购买域名即可获得专业的访问地址。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 8,230 stars</li>
-<li><strong>分类:</strong> 工具型</li>
-<li><strong>标签:</strong> developer-tools, dns, domain, freedomain, homelab</li>
+<li><strong>Stars:</strong> 9,307 stars，对于一个域名服务来说热度异常高</li>
+<li><strong>Homelab 生态:</strong> 精准切入 Homelab/Self-hosted 社区的刚需</li>
+<li><strong>增长速度:</strong> 创建于 2025 年 12 月，6 个月内近万星，增速显著</li>
+<li><strong>开源 + 免费:</strong> AGPL-3.0 许可证，代码完全开放，社区可自部署</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>热度来自 Homelab/Self-hosted 社区的强力传播。Reddit r/homelab、r/selfhosted、Hacker News、以及中文技术社区（V2EX、NodeSeek）对免费资源有天然的传播动力。Stackryze 品牌在域名社区已有积累，FreeDomains 作为其免费层产品获得了品牌势能的加持。</p>
+<h2 id="_5">关键技术亮点</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li>自动化域名分配系统：API 驱动，支持 DNS 记录自动配置</li>
+<li>支持 A/AAAA/CNAME/MX/TXT 等主流记录类型</li>
+<li>基于 Cloudflare DNS 的后端（推测），利用其免费 DNS 托管</li>
+<li>JavaScript/Node.js 实现，轻量可自部署</li>
+<li>社区贡献模式：用户可贡献自己的域名到免费池</li>
+</ul>
+<h2 id="_6">架构启发</h2>
+<p>FreeDomains 代表了一种"基础设施免费化"的趋势——当底层资源（DNS 解析、CDN、TLS）的成本趋近于零时，聚合和分发这些资源本身就是有价值的社区服务。对架构师的启发是：<strong>在云原生时代，"免费层"是最有效的用户获取渠道</strong>，但需要清晰的商业化路径来支撑长期运营。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型（社区服务）。</strong> 本质是一个社区运营的基础设施服务，而非技术密集型产品。其价值在于服务可用性和社区信任，而非代码复杂度。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>可持续性风险最大:</strong> 免费服务的运营成本（DNS 查询、管理面板、滥用防护）需要持续投入，无明确盈利模式</li>
+<li>域名滥用风险：免费域名容易被钓鱼、垃圾邮件利用，可能导致 TLD 被拉黑</li>
+<li>依赖第三方基础设施：底层 DNS 服务商变更政策时可能影响可用性</li>
+<li>AGPL-3.0 许可证可能限制企业使用和商业化</li>
+<li>9k stars 中"收藏未使用"的比例可能很高</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li>与 <strong>DuckDNS</strong>、<strong>FreeDNS (afraid.org)</strong>、<strong>No-IP</strong> 是直接竞品</li>
+<li>与 <strong>is-a.dev</strong>、<strong>js.org</strong> 等 GitHub 管理的免费域名项目模式相似</li>
+<li>在 Homelab 生态中，与 Cloudflare Tunnel、Tailscale 等网络工具互补</li>
+<li>与 Nginx Proxy Manager、Traefik 等反向代理配合使用</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>选择性跟踪。</strong> 作为实用工具值得了解和使用，但作为研究对象价值有限。建议关注其可持续性——如果服务能稳定运营 2 年以上，说明商业模式成立。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>服务可用性和 SLA 表现</li>
+<li>是否引入付费层或增值服务（如自定义 TLD、API 高级功能）</li>
+<li>域名滥用治理策略和效果</li>
+<li>社区贡献的域名池规模变化</li>
+<li>是否面临 DNS 服务商的政策风险</li>
 </ul>
 <hr />
 <blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-06-18</p>
+<p>数据来源: GitHub API (stackryze/FreeDomains) | 星标: 9,307 | 语言: JavaScript | 许可证: AGPL-3.0</p>
 </blockquote>
     </div>
 </main>

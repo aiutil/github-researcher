@@ -27,54 +27,66 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/CITGuru/openduck" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="openduck-duckdb">openduck — 分布式 DuckDB</h1>
+        <h1 id="openduck-duckdb">openduck — 开源分布式 DuckDB</h1>
 <h2 id="_1">一句话定位</h2>
-<p>分布式 DuckDB 实现，双执行引擎 + 差分存储，Rust 编写。</p>
-<h2 id="_2">解决的问题</h2>
-<p>DuckDB 已经成为分析领域的「SQLite」——单进程、零配置、高性能 OLAP。但它不支持分布式查询。openduck 尝试在 DuckDB 之上构建分布式能力，让分析工作负载可以按需扩展。</p>
+<p>开源分布式 DuckDB 实现，DuckDB 扩展 + Rust gateway/worker，通过开放 gRPC + Arrow IPC 协议实现差分存储（differential storage）和混合双执行（dual execution），让 DuckDB 像 MotherDuck 一样工作但完全自托管。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>DuckDB 已成为分析领域的「SQLite」—— 单进程、零配置、高性能 OLAP。但它不支持分布式查询。MotherDuck 提供了商业云方案但不开源。openduck 用开源协议和开放后端重新实现 MotherDuck 的核心能力（差分存储 + 双执行 + <code>ATTACH</code> 方案），一行 <code>ATTACH 'openduck:mydb'</code> 即可透明挂载远程数据库。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li>DuckDB 生态位空白：单机分析有 DuckDB，分布式分析缺一个轻量方案</li>
-<li>差分存储（differential storage）思路新颖，可能降低分布式分析的存储开销</li>
-<li>Rust 实现，性能基础好</li>
+<li><strong>565 stars / 27 forks</strong>，MIT 许可证，C++ + Rust 实现</li>
+<li><strong>差分存储 + 双执行</strong>：复刻 MotherDuck 的核心架构（MotherDuck 博客引用），但完全开源</li>
+<li><strong>开放协议</strong>：gRPC + Arrow IPC，任何能返回 Arrow 的服务都可作为后端</li>
+<li><strong>DuckDB 原生集成</strong>：实现 DuckDB 的 <code>StorageExtension</code> 和 <code>Catalog</code> 接口，远程表是一等公民</li>
+<li><strong>一行 attach</strong>：<code>ATTACH 'openduck:mydb?endpoint=http://localhost:7878&amp;token=xxx' AS cloud</code></li>
 </ul>
 <h2 id="_4">热度来源判断</h2>
-<p>447⭐，4/14 创建。在 DuckDB 热度持续攀升的背景下，分布式扩展有天然吸引力。</p>
+<ul>
+<li><strong>DuckDB 生态位空白驱动。</strong> 单机分析有 DuckDB，分布式分析缺一个轻量开源方案</li>
+<li>565 stars 不高但方向正确，在 DuckDB 热度持续攀升的背景下有天然吸引力</li>
+<li>MotherDuck 商业成功的验证了差分存储 + 双执行方向</li>
+</ul>
 <h2 id="_5">关键技术亮点</h2>
-<ul>
-<li>双执行引擎：本地查询走 DuckDB 原生，跨节点走分布式引擎</li>
-<li>差分存储：只存储变化部分，减少数据传输</li>
-<li>Rust 实现，与 DuckDB 的 C++ 核心通过 FFI 交互</li>
-</ul>
+<ol>
+<li><strong>差分存储（Differential Storage）</strong>：append-only 分层 + PostgreSQL 元数据，不可变 sealed layers + 对象存储，快照提供一致性读取</li>
+<li><strong>混合双执行（Dual Execution）</strong>：单条查询可在本地和远程 worker 间拆分，gateway 分割计划、标注 LOCAL/REMOTE 算子、插入 bridge 算子</li>
+<li><strong>开放协议</strong>：两个数据面 RPC（执行查询 + 取消）+ 两个生命周期 RPC（注册 + 心跳），任何 gRPC + Arrow 服务可作后端</li>
+<li><strong>DuckDB 原生 Catalog</strong>：远程表参与 JOIN、CTE、优化器，如同本地表</li>
+<li><strong>Rust gateway</strong>：token 认证、worker 注册、亲和路由、计划分割、背压</li>
+</ol>
 <h2 id="_6">架构启发</h2>
-<pre class="mermaid">graph TD
-    Q[SQL Query] --> R{Router}
-    R -->|本地数据| D1[DuckDB Engine]
-    R -->|跨节点| D2[Distributed Engine]
-    D2 --> N1[Node 1]
-    D2 --> N2[Node 2]
-    D2 --> N3[Node N]
-    N1 --> DS[Diff Store]
-    N2 --> DS
-</pre>
-<p>核心启发：<strong>分析数据库的「本地优先 → 按需分布式」演进路径</strong>，与 SQLite → LiteFS 的思路类似。</p>
+<p><code>DuckDB Client → OpenDuckCatalog → [gRPC + Arrow IPC] → Gateway (Rust) → Workers (DuckDB)
+                                                                              ↓
+                                                                    Differential Storage
+                                                                    (append-only layers)</code></p>
+<p><strong>核心启发：分析数据库的「本地优先 → 按需分布式」演进路径</strong>，与 SQLite → LiteFS 的思路类似。开放协议设计（4 个 RPC）让后端可替换，是数据基础设施的好实践。差分存储的 append-only + snapshot 模式与 lakehouse 架构（Iceberg/Delta）思路一致。</p>
 <h2 id="_7">定位判断</h2>
-<p>工具型，有基础设施候选潜力。如果成熟，可以成为轻量级分析管道的核心组件。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<p><strong>工具型，有基础设施候选潜力。</strong> 如果成熟，可以成为轻量级分析管道的核心组件 — DuckDB 版的 "LiteFS for analytics"。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>非常早期（565 stars）</strong>，功能完整度未知</li>
+<li><strong>DuckDB Labs 官方可能有自己的分布式方案规划</strong> — 被官方吞并的风险</li>
+<li><strong>双执行引擎的查询优化复杂性高</strong> — plan splitting 的正确性和性能</li>
+<li><strong>社区规模小</strong>，非知名团队</li>
+<li>最后 push 2026-05-06，需关注是否持续维护</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
-<li>非常早期（447⭐），功能完整度未知</li>
-<li>DuckDB Labs 官方可能有自己的分布式方案规划</li>
-<li>双执行引擎的查询优化复杂性高</li>
-<li>社区规模小，非知名团队</li>
+<li><strong>MotherDuck</strong>：商业闭源，openduck 是其核心能力的开源复刻</li>
+<li><strong>DuckDB</strong>：底层引擎，openduck 是其分布式扩展</li>
+<li><strong>LiteFS（SQLite 分布式）</strong>：架构思路类似（本地优先 + 按需分布式）</li>
+<li><strong>Apache Iceberg / Delta Lake</strong>：差分存储思路类似，但 openduck 更轻量</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
-<p>✅ 是。DuckDB 分布式化是刚需，此项目方向正确。</p>
-<h2 id="_10">后续观察点</h2>
-<ul>
-<li>性能基准测试是否发布</li>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>是。</strong> DuckDB 分布式化是刚需，此项目方向正确且实现了 MotherDuck 级别的核心能力（差分存储 + 双执行 + 开放协议）。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>性能基准测试是否发布（对比单机 DuckDB 和 MotherDuck）</li>
 <li>DuckDB Labs 官方是否推出竞争方案</li>
-<li>生产场景验证</li>
-</ul>
+<li>生产场景验证和企业采用</li>
+<li>开放协议的生态（第三方后端实现）</li>
+<li>项目维护活跃度（2026-05 后是否继续更新）</li>
+</ol>
     </div>
 </main>
     <footer class="footer">

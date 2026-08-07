@@ -29,30 +29,60 @@
         <div style="margin-bottom:20px;"><a href="https://github.com/lightseekorg/tokenspeed" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="tokenspeed">TokenSpeed</h1>
 <h2 id="_1">一句话定位</h2>
-<p>LightSeek Foundation 维护的 LLM 推理引擎，重点优化生产环境中的 Agent
-负载，并在易用性、调度器和 GPU Kernel 之间建立完整运行时。</p>
-<h2 id="_2">为什么值得关注</h2>
-<p>TokenSpeed 不只包装模型服务接口。它公开的架构包含静态编译建模层、C++
-控制面与 Python 执行面、有限状态机调度器、KV Cache 生命周期管理和可插拔
-Kernel。对推理基础设施研究而言，值得观察的是这些组件能否在真实并发和长
-上下文 Agent 工作负载中形成可复现优势。</p>
-<h2 id="_3">当前边界</h2>
-<p>项目 README 明确把当前版本标为 Preview，并提示不要用于生产部署。模型覆盖、
-运行时功能以及不同 GPU 平台的优化仍在持续合并。因此本仓库将它归为
-“基础设施候选”，不把项目自身的性能声明当成已独立验证的生产结论。</p>
-<h2 id="_4">后续观察点</h2>
-<ol>
-<li>是否发布稳定版本与兼容性承诺。</li>
-<li>是否出现可复现的第三方端到端基准。</li>
-<li>调度、KV Cache 和 Kernel 优化在多轮 Agent 负载中的实际收益。</li>
-<li>Hopper、Blackwell 与其他硬件平台之间的行为差异。</li>
-</ol>
-<h2 id="_5">来源</h2>
+<p>LightSeek Foundation 维护的 "speed-of-light" LLM 推理引擎，专为 Agent 工作负载优化，目标性能对标 TensorRT-LLM，易用性对标 vLLM。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>当前 LLM 推理引擎要么性能强但难用（TensorRT-LLM），要么易用但性能不够（vLLM）。TokenSpeed 试图在两者之间找到平衡，特别针对 Agent 工作负载（多轮、长上下文、高并发）进行优化。已在 Qwen3.5-397B-A17B 上实现 580 TPS。</p>
+<h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><a href="https://github.com/lightseekorg/tokenspeed">项目仓库</a></li>
-<li>本仓库 2026-05-08、2026-05-10、2026-05-11、2026-05-12 与
-  2026-05-17 日报中的连续记录</li>
+<li><strong>已加入 PyTorch Ecosystem</strong>（2026/08），说明得到官方认可</li>
+<li><strong>Day 0 支持 Kimi K3 和 TML Inkling</strong>（FP4 推理，NVIDIA + AMD），与前沿模型团队有合作</li>
+<li>公开架构包含静态编译建模层、C++ 控制面 + Python 执行面、有限状态机调度器、可插拔 Kernel</li>
+<li>拥有 Blackwell 上最快的 MLA（Multi-head Latent Attention）实现之一</li>
+<li>580 TPS on Qwen3.5-397B-A17B for agentic workloads（2026/05 公布）</li>
 </ul>
+<h2 id="_4">热度来源判断</h2>
+<ul>
+<li><strong>技术实力驱动。</strong> 1,823 stars 不算高，但 PyTorch Ecosystem 认可 + 前沿模型 Day 0 支持说明技术实力</li>
+<li>热度来自推理基础设施社区和 Agent 工作负载优化的实际需求</li>
+<li>LightSeek Foundation 的运营模式（开源 + 模型合作）带来持续关注</li>
+</ul>
+<h2 id="_5">关键技术亮点</h2>
+<ol>
+<li><strong>静态编译建模层</strong>：local-SPMD 设计，从模块边界放置标注自动生成集合通信，用户无需手写并行逻辑</li>
+<li><strong>FSM 调度器</strong>：C++ 控制面 + Python 执行面，请求生命周期/KV Cache 所有权/重叠时序编码为有限状态机，编译时类型系统保证 KV 资源安全复用</li>
+<li><strong>可插拔 Kernel 系统</strong>：分层 Kernel 架构 + 集中注册表 + 可移植公共 API</li>
+<li><strong>Blackwell 最快 MLA 实现之一</strong>：针对 Agent 工作负载优化</li>
+<li><strong>SMG 集成 AsyncLLM</strong>：低开销 CPU 侧请求处理</li>
+</ol>
+<h2 id="_6">架构启发</h2>
+<p>TokenSpeed 的架构对推理基础设施研究有参考价值：<strong>FSM 化的调度器设计</strong>（将 KV Cache 生命周期管理编码为类型安全的有限状态机）和<strong>静态编译的并行策略</strong>（从标注自动生成集合通信）是两个值得借鉴的工程模式。对 Agent 推理基础设施而言，多轮长上下文场景下的 KV Cache 管理是核心瓶颈。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>基础设施候选。</strong> README 明确标注当前版本为 Preview，不建议用于生产。但技术方向正确，已获 PyTorch Ecosystem 认可。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>Preview 阶段</strong> — README 明确提示不要用于生产部署</li>
+<li><strong>性能声明未独立验证</strong> — 580 TPS 等数据来自项目自身，需第三方复现</li>
+<li><strong>模型覆盖和 GPU 平台优化仍在持续合并</strong></li>
+<li><strong>竞争激烈</strong> — vLLM、TensorRT-LLM、SGLang 都在快速演进</li>
+<li>1,823 stars 相对较低，社区规模待增长</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vLLM</strong>：易用性标杆，TokenSpeed 以同等易用性 + 更高性能为目标</li>
+<li><strong>TensorRT-LLM</strong>：性能标杆，TokenSpeed 以同等性能 + 更好易用性为目标</li>
+<li><strong>SGLang</strong>：同为 Agent 工作负载优化的推理引擎，直接竞争</li>
+<li><strong>PyTorch Ecosystem</strong>：TokenSpeed 已加入，获得生态背书</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>是。</strong> Agent 工作负载专用推理引擎是确定性需求，TokenSpeed 技术方向和生态合作（PyTorch、Kimi、TML）都值得关注。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>是否发布稳定版本与兼容性承诺</li>
+<li>是否出现可复现的第三方端到端基准（对比 vLLM / TensorRT-LLM / SGLang）</li>
+<li>调度器、KV Cache 和 MLA Kernel 在多轮 Agent 负载中的实际收益</li>
+<li>Hopper、Blackwell 与 AMD 平台之间的行为差异</li>
+<li>更多前沿模型的 Day 0 支持</li>
+</ol>
     </div>
 </main>
     <footer class="footer">

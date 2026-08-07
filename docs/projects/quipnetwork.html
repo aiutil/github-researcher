@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quipnetwork | GitHub 趋势研究</title>
+    <title>QuipNetwork/quip-miner | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,27 +26,66 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
-        <h1 id="quipnetwork">QuipNetwork</h1>
+        <div style="margin-bottom:20px;"><a href="https://github.com/QuipNetwork/quip-miner" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="quipnetworkquip-miner">QuipNetwork/quip-miner</h1>
 <h2 id="_1">一句话定位</h2>
-<p>量子虚拟机协议 + Rust/Python 实现，star/fork 比异常</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-05-02 的趋势数据。</p>
+<p>Quip 网络的官方挖矿协议栈，基于伊辛模型（Ising Model）的量子退火仿真进行"有用工作量证明"挖矿——将算力用于量子模拟而非无意义的哈希碰撞。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统加密货币（比特币）的挖矿本质是"浪费电力的 SHA-256 哈希竞赛"，被广泛批评为能源浪费和环境破坏。Quip Network 试图将挖矿算力引导到<strong>有科学价值的计算</strong>上：通过分布式网络模拟量子伊辛模型的退火过程，这些计算可用于材料科学、药物发现、组合优化等真实问题。挖矿不再是"无意义工作"，而是"分布式科学计算"。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 5.8k stars</li>
-<li><strong>分类:</strong> 观察型</li>
-<li><strong>标签:</strong> quantum, rust, substrate, blockchain, suspicious</li>
+<li><strong>Stars:</strong> 11,602（截至 2026-08-07），增长快速</li>
+<li><strong>Forks:</strong> 160，核心协议控制较紧</li>
+<li><strong>License:</strong> AGPL-3.0（强 copyleft，强制开源衍生）</li>
+<li><strong>活跃度:</strong> pushed_at 2026-08-07（当日更新），极度活跃</li>
+<li><strong>创建时间:</strong> 2026-01-16，半年内达到 11K stars</li>
+<li><strong>Topics 命中:</strong> quantum / ising-model / quantum-annealing / mining</li>
+<li><strong>技术新颖性:</strong> "有用 PoW"方向最受关注的实现之一</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>QuipNetwork 的热度是<strong>"有用工作量证明"叙事 + 量子计算概念热度 + 加密货币投机</strong>三重叠加。它精准踩中三个风口：(1) 反对比特币能源浪费的环保叙事；(2) 量子计算的科幻感；(3) 加密货币的财富效应。当前 11K stars 增速极快（半年），但需警惕<strong>叙事泡沫</strong>——"量子挖矿"的实际科学价值和代币经济可持续性都待验证。</p>
+<h2 id="_5">关键技术亮点</h2>
+<ol>
+<li><strong>伊辛模型挖矿:</strong> 用分布式计算模拟 Ising 自旋模型的退火过程，解组合优化问题</li>
+<li><strong>Quantum Annealing Simulation:</strong> 经典硬件上模拟量子退火（非真实量子计算）</li>
+<li><strong>Coordinator-Miner 架构:</strong> Coordinator 分配任务，Miners 竞争求解，类似传统矿池</li>
+<li><strong>CPU + GPU 支持:</strong> 支持 CPU（CPU mining）和 CUDA GPU 加速</li>
+<li><strong>AGPL 强制开源:</strong> 所有衍生必须开源，防止商业闭源 fork</li>
+</ol>
+<h2 id="_6">架构启发</h2>
+<p>QuipNetwork 的启发是 <strong>"Proof of Useful Work"可以落地</strong>。传统 PoW 的浪费本质是"问题无意义"——如果能将挖矿算力对齐到真实科学问题（如蛋白质折叠、气候模拟、量子模拟），挖矿就从"负外部性"变为"正外部性"。Foldit（蛋白质折叠游戏）、Folding@Home 等项目早已证明分布式科学计算可行，Quip 的创新是用"代币激励"代替"志愿精神"。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>高风险观察型项目。</strong> QuipNetwork 属于"叙事驱动 + 技术实验"型加密项目。它的科学价值（量子模拟）和商业价值（代币经济）都尚未被验证。建议以<strong>观察者</strong>而非<strong>参与者</strong>视角跟踪，尤其警惕代币投机风险。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li><strong>泡沫风险极高:</strong> 11K stars 半年内达成，加密叙事热度 &gt; 技术实质</li>
+<li><strong>"量子"是概念借用:</strong> 实际是经典硬件模拟量子模型，非真实量子计算</li>
+<li><strong>代币经济存疑:</strong> "有用 PoW"的代币是否能形成正循环，未见可信经济模型</li>
+<li><strong>中心化风险:</strong> Coordinator 分配任务的架构存在中心化控制点</li>
+<li><strong>科学价值待验证:</strong> Ising 模型模拟的实际科研产出是否显著，需独立评估</li>
+<li><strong>AGPL 限制:</strong> 强 copyleft 可能阻碍企业采用</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs 比特币:</strong> 比特币是"无意义 PoW"（哈希）；Quip 是"有用 PoW"（科学计算）</li>
+<li><strong>vs Folding@Home:</strong> Folding@Home 是志愿科学计算（无代币）；Quip 是代币激励</li>
+<li><strong>vs Primecoin:</strong> Primecoin 早期尝试"找素数"作为有用 PoW，但科学价值有限；Quip 更进一步</li>
+<li><strong>vs Filecoin:</strong> Filecoin 的"有用 PoW"是存储证明；Quip 是计算证明</li>
+<li><strong>vs 其他量子概念币:</strong> 多数"量子币"是纯营销，Quip 至少有真实算法</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>以风险观察视角跟踪，不建议参与代币。</strong> 关注点是："有用 PoW"作为一种理念是否会持续影响加密行业；以及量子模拟这种具体计算形式的科学产出是否被独立验证。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否有独立科学家评估其量子模拟的实际科研价值</li>
+<li>代币价格与 Star 增速的关联度（判断是否纯投机驱动）</li>
+<li>是否被监管机构关注（加密合规风险）</li>
+<li>"有用 PoW"理念是否被更主流的区块链项目借鉴</li>
+<li>是否有真实科研成果（论文）基于 Quip 网络产出</li>
 </ul>
 <hr />
 <blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-05-02</p>
+<p>数据来源: GitHub API (2026-08-07) | Stars: 11,602 | Forks: 160 | License: AGPL-3.0</p>
 </blockquote>
     </div>
 </main>

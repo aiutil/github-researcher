@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-07.md">最新日报</a> ·
+  <a href="daily/2026-08-08.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-07
+## 最新研究 · 2026-08-08
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 12 | 309 | 4 | 12k+ |
+| 13 | 439 | 4 | 15k+ |
 
-**今日核心判断：** anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段 · '去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，'crm 领跑、qm 守量'格局固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）
+**今日核心判断：** MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器×导演×prompt 构建器'三层结构在一周内填满，'模型发布即生态'新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 8,069 stars | 工具型 |
-| [trycompai/crm](projects/crm.md) | 7,156 stars | 平台候选 |
-| [yc-software/qm](projects/qm.md) | 12,022 stars | 平台候选 |
-| [KKKKhazix/human-writing](projects/human-writing.md) | 1,552 stars | 工具型 |
-| [0xwilliamortiz/humanizer-cli](projects/humanizer-cli.md) | 581 stars | 工具型 |
-| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,286 stars | 工具型 |
-| [disler/super-simple-software-factory](projects/super-simple-software-factory.md) | 459 stars | 观察型 |
-| [genspark-ai/genoffice](projects/genoffice.md) | 2,034 stars | 平台候选 |
+| [firecrawl/anydoc](projects/anydoc.md) | 10,866 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,070 stars | 观察型 |
+| [0xwilliamortiz/claude-red](projects/claude-red.md) | 555 stars | 工具型 |
+| [AMAP-ML/LongHorizon-Harness](projects/longhorizon-harness.md) | 384 stars | 观察型 |
+| [trycompai/crm](projects/crm.md) | 7,471 stars | 平台候选 |
+| [yc-software/qm](projects/qm.md) | 12,274 stars | 平台候选 |
+| [KKKKhazix/human-writing](projects/human-writing.md) | 1,867 stars | 工具型 |
+| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,587 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **anydoc 延续爆发（4,688→8,069，+3,381/+72%），跨入 8K 关口，fork 205→370——增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段，接近稳态的回落速度是关键观察点** · 相关项目：anydoc · 强度：90
-2. **'去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文活人感）+ humanizer-cli（581⭐，208 watchers，英文终端检测）+ ratchet（435⭐，事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）** · 相关项目：human-writing, humanizer-cli, ratchet, humanizer · 强度：87
-3. **应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量级固化），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），'crm 领跑、qm 守量'格局从分化进入固化** · 相关项目：qm, crm, genoffice · 强度：85
-4. **软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers），'Python 拥有控制平面、agent 为有界节点'，用确定性代码负责编排/重试/验收，agent 只做需要阅读和判断的环节，与 sol-advisor（1,694⭐，Codex-native 编排）呼应'agent 编排层'主题** · 相关项目：super-simple-software-factory, sol-advisor · 强度：82
+1. **MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器'三层结构一周填满，9 个官方 Skill（含 prompt-writing + 8 风格化生成）** · 相关项目：minimax-h3 · 强度：88
+2. **anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速从 +72% 健康收敛到 +35%（非骤降），fork 370→506 破五百，爆发进入'稳态放量'阶段——+35% 印证昨日判断的健康收敛而非触及天花板** · 相关项目：anydoc · 强度：90
+3. **安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率极高）首个 Claude Skills 攻防安全库，58 skill × 13 攻击面（SQLi→shellcode→EDR 绕过），同 humanizer-cli 作者 0xwilliamortiz 在安全垂直验证 Skill 分发模式** · 相关项目：claude-red · 强度：84
+4. **长程 agent harness 架构范式——LongHorizon-Harness（384⭐，AMAP-ML/高德，HF Daily Papers 周榜 #1，arXiv 2608.01964）三角色分离（Manager/Executor/Auditor）+ 持久化可信状态 + fresh-context 执行，与 super-simple-software-factory 共同信号：agent 工程化从 prompt 转向架构** · 相关项目：longhorizon-harness, super-simple-software-factory · 强度：83
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
 | [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
 | [2026-08-04](daily/2026-08-04.md) | 8 | 4 |
 | [2026-08-03](daily/2026-08-03.md) | 5 | 3 |
 | [2026-08-02](daily/2026-08-02.md) | 5 | 3 |
-| [2026-08-01](daily/2026-08-01.md) | 11 | 3 |
 
 ## 为什么做这个项目
 

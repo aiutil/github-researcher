@@ -2,14 +2,14 @@
 title: "FareedKhan-dev/kimi-k3-in-c"
 slug: kimi-k3-in-c
 date_added: "2026-08-03"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "观察型"
 emoji: "💠"
-stars: "2,801 stars"
-stars_delta: "8/01创建→8/07 2,801⭐（第六日 +257/+10%，逼近 3K），fork 424→466"
+stars: "3,247 stars"
+stars_delta: "8/01创建→8/08 3,247⭐（第七日 +446/+16%，突破 3K），fork 466→534，增速回升"
 language: "C"
 license: "Apache-2.0"
-score: 83
+score: 84
 tags: ["kimi-k3", "moe", "local-inference", "c99", "zero-dependencies", "cpu-inference", "trillion-parameter", "mxfp4"]
 url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 ---

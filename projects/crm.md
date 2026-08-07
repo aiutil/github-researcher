@@ -2,14 +2,14 @@
 title: "trycompai/crm"
 slug: crm
 date_added: "2026-08-03"
-last_seen_date: "2026-08-07"
+last_seen_date: "2026-08-08"
 category: "平台候选"
 emoji: "📋"
-stars: "7,156 stars"
-stars_delta: "7/31创建→8/07 7,156⭐（第六日 +1,018/+16%，连续三日增速第一），fork 627→738"
+stars: "7,471 stars"
+stars_delta: "7/31创建→8/08 7,471⭐（第七日 +315/+4%，增速从 +16% 骤降到 +4%），fork 738→800，应用层进入衰减尾声"
 language: "TypeScript"
 license: "MIT"
-score: 88
+score: 87
 tags: ["agentic-crm", "eve", "vertical-agent", "evidence-ledger", "typescript", "bun", "deny-all-egress"]
 url: "https://github.com/trycompai/crm"
 ---

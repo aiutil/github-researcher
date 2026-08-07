@@ -29,49 +29,61 @@
         <div style="margin-bottom:20px;"><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="anthropicsskills">anthropics/skills</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Anthropic 官方 Agent Skills 公共仓库，为 Claude Code 等 Agent 提供标准化的 Skills 目录。</p>
+<p>Anthropic 官方 Agent Skills 公共仓库，包含 Skills 规范（spec）、技能模板（template）和示例技能集（创意设计、开发技术、企业通讯、文档技能），是 Claude/Claude Code/Claude.ai/API 的 Skills 标准来源。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>Agent Skills 生态碎片化：每个社区项目有自己的 Skills 格式和安装方式，缺少官方标准。anthropics/skills 提供了 Anthropic 官方的 Skills 标准和目录。</p>
-<h2 id="2026-05-29">为什么值得关注（2026-05-29）</h2>
+<p>Agent Skills 生态碎片化：每个社区项目有自己的 Skills 格式和安装方式，缺少官方标准。anthropics/skills 提供了 Anthropic 官方的 Skills 规范（agentskills.io）、模板和示例，同时包含驱动 Claude 文档能力的 docx/pdf/pptx/xlsx 技能（source-available）。</p>
+<h2 id="_3">为什么值得关注</h2>
 <ol>
-<li><strong>Anthropic 官方出品</strong>，代表 Claude 生态的 Skills 标准化方向</li>
-<li>与 openai/skills（OpenAI 官方 Skills）同时出现在 Trending，标志着 Skills 成为 Agent 生态一等公民</li>
-<li>与 anthropics/claude-plugins-official（28.4K）和 anthropics/knowledge-work-plugins（17.7K）形成完整生态</li>
+<li><strong>166,829 stars / 19,873 forks</strong>，GitHub Star Top 10 级别</li>
+<li><strong>Anthropic 官方出品</strong>，定义了 Agent Skills 标准（agentskills.io spec）</li>
+<li>包含 4 大技能集：Creative &amp; Design、Development &amp; Technical、Enterprise &amp; Communication、Document Skills</li>
+<li><strong>文档技能（docx/pdf/pptx/xlsx）source-available</strong>：这些技能驱动 Claude 的文档创建功能，展示了生产级 Skill 的复杂度</li>
+<li>可作为 Claude Code Plugin marketplace 安装：<code>/plugin marketplace add anthropics/skills</code></li>
+<li>在 Claude.ai（付费版）、Claude API 中原生可用</li>
 </ol>
-<h2 id="_3">热度来源判断</h2>
+<h2 id="_4">热度来源判断</h2>
 <ul>
-<li><strong>官方背书驱动。</strong> Anthropic 官方仓库自带信任度</li>
-<li>与 Claude Cowork / Claude Code 的深度集成预期</li>
-<li>Agent Skills 标准化是确定性趋势</li>
+<li><strong>官方背书驱动。</strong> Anthropic 官方仓库自带信任度，166K stars 是 Claude 生态规模的直接体现</li>
+<li>Agent Skills 标准化是确定性趋势 — Skills 成为 Agent 生态一等公民</li>
+<li>与 anthropics/knowledge-work-plugins（23K）、anthropics/claude-plugins-official 形成完整生态</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_5">关键技术亮点</h2>
 <ol>
-<li>标准化的 Skills 格式和安装流程</li>
-<li>与 Claude Code 的原生集成</li>
-<li>官方维护的品质保证</li>
+<li><strong>Skills 规范（agentskills.io）</strong>：定义 Skills 的标准格式（<code>SKILL.md</code> + YAML frontmatter）</li>
+<li><strong>Claude Code Plugin marketplace 集成</strong>：<code>/plugin marketplace add</code> + <code>/plugin install</code></li>
+<li><strong>Skills = 文件夹 + SKILL.md</strong>：纯文件架构，无代码，Claude 动态加载</li>
+<li><strong>文档技能 source-available</strong>：docx/pdf/pptx/xlsx 技能展示生产级 Skill 设计模式</li>
+<li><strong>Skills API</strong>：通过 Claude API 上传和使用自定义 Skills</li>
 </ol>
-<h2 id="_5">架构启发</h2>
-<ul>
-<li><strong>Skills 作为 Agent 生态的一等公民</strong>：从附属功能到独立生态组件</li>
-<li><strong>标准化胜于碎片化</strong>：官方目录的价值在于统一入口</li>
-</ul>
-<h2 id="_6">定位判断</h2>
-<ul>
-<li><strong>平台候选</strong>。Skills 目录是 Agent 平台的核心组件。</li>
-</ul>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_6">架构启发</h2>
+<p><strong>Skills 作为 Agent 生态的一等公民</strong>：从附属功能到独立生态组件。Skills 的设计模式（文件夹 + SKILL.md + YAML frontmatter）简洁而强大 — 用文件系统组织 Agent 能力，类似 Unix 的"一切皆文件"哲学。标准化胜于碎片化：官方目录的价值在于统一入口和规范。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选。</strong> Skills 目录是 Agent 平台的核心组件。166K stars 说明生态规模巨大。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
-<li>新增仓库，内容和质量待观察</li>
-<li>仅服务于 Anthropic/Claude 生态，通用性有限</li>
-<li>与 openai/skills、cursor/plugins 的标准竞争</li>
+<li><strong>文档技能是 source-available 非开源</strong> — 商业限制</li>
+<li><strong>仅服务于 Anthropic/Claude 生态</strong>，通用性有限</li>
+<li><strong>与 openai/skills、cursor/plugins 的标准竞争</strong> — Skills 标准尚未统一</li>
+<li>示例 Skills 是"演示和教育用途"，实际效果可能与 Claude 中有所不同</li>
+<li>166K stars 中有 Anthropic 品牌效应的放大</li>
 </ol>
-<h2 id="_8">是否值得持续跟踪</h2>
-<p><strong>是。</strong> 官方 Skills 仓库的方向性意义大于内容本身。</p>
-<h2 id="_9">后续观察点</h2>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>anthropics/knowledge-work-plugins</strong>（23K stars）：面向知识工作者的官方插件</li>
+<li><strong>ECC</strong>（238K stars）：第三方 Harness，使用 anthropics/skills 标准</li>
+<li><strong>wshobson/agents</strong>（38K stars）：社区多 Harness 插件市场</li>
+<li><strong>mukul975/Anthropic-Cybersecurity-Skills</strong>（27K stars）：安全领域社区 Skills</li>
+<li><strong>openai/skills / cursor/plugins</strong>：竞争标准</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 官方 Skills 仓库的方向性意义大于内容本身 — 它定义了 Agent Skills 的标准。</p>
+<h2 id="_11">后续观察点</h2>
 <ol>
-<li>Skills 数量和质量增长</li>
-<li>是否会形成跨平台 Skills 标准</li>
-<li>与 Claude Code / Claude Cowork 的集成深度</li>
+<li>Skills 数量和质量增长（特别是企业级技能）</li>
+<li>agentskills.io 标准是否会成为跨平台 Skills 标准</li>
+<li>文档技能（docx/pdf/pptx/xlsx）的演进和开放程度</li>
+<li>与 Claude Code / Claude Cowork / Claude API 的集成深度</li>
+<li>社区贡献的 Skills 增长趋势</li>
 </ol>
     </div>
 </main>

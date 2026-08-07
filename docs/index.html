@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-08-07 GitHub 趋势研究简报 | GitHub Researcher</title>
+    <title>2026-08-08 GitHub 趋势研究简报 | GitHub Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📊</text></svg>">
-    <meta name="description" content="anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段 · '去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，'crm 领跑、qm 守量'格局固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）">
+    <meta name="description" content="MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器×导演×prompt 构建器'三层结构在一周内填满，'模型发布即生态'新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -27,14 +27,14 @@
         <section class="hero">
             <div class="hero-meta">
                 <span class="hero-meta-dot"></span>
-                <span class="hero-meta-date">2026-08-07</span>
+                <span class="hero-meta-date">2026-08-08</span>
                 <span class="hero-meta-sep">·</span>
-                <span class="hero-meta-status">2026-08-07</span>
+                <span class="hero-meta-status">2026-08-08</span>
             </div>
             <h1 class="hero-title">GitHub 趋势研究</h1>
             <p class="hero-subtitle">每日从 GitHub Trending 中筛选真正值得架构师关注的项目——不只是搬运 star 数，而是判断它属于玩具、工具、平台还是未来基础设施。</p>
             <div class="hero-actions">
-                <a href="/daily/2026-08-07.html" class="btn-dark">
+                <a href="/daily/2026-08-08.html" class="btn-dark">
                     阅读今日简报
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -46,30 +46,30 @@
         <section class="stats-row">
             <div class="stat-card stat-card-primary">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                <div class="stat-number">12k+</div>
+                <div class="stat-number">15k+</div>
                 <div class="stat-label">本周总 Star 增速</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                <div class="stat-number">468</div>
+                <div class="stat-number">499</div>
                 <div class="stat-label">深度分析项目</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div class="stat-number">123</div>
+                <div class="stat-number">124</div>
                 <div class="stat-label">日更日报</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                <div class="stat-number">515</div>
+                <div class="stat-number">519</div>
                 <div class="stat-label">核心跟踪方向</div>
             </div>
         </section>
         <section class="brief-card">
-            <div class="brief-date">📅 2026-08-07 · 今日核心判断</div>
-            <h2 class="brief-title">anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段 · '去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，'crm 领跑、qm 守量'格局固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点）</h2>
-            <p class="brief-text">anydoc 延续爆发（4,688→8,069，单日 +3,381/+72%，跨入 8K 关口，fork 205→370），增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段 · '去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文）+ humanizer-cli（581⭐，208 watchers，英文终端 CLI）+ ratchet（435⭐，agent 事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）· 应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，'crm 领跑、qm 守量'格局固化 · 软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers，Python 拥有控制平面、agent 为有界节点） 今日头条趋势:anydoc 延续爆发（4,688→8,069，+3,381/+72%），跨入 8K 关口，fork 205→370——增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段，接近稳态的回落速度是关键观察点。</p>
-            <a href="/daily/2026-08-07.html" class="brief-cta">阅读完整简报 →</a>
+            <div class="brief-date">📅 2026-08-08 · 今日核心判断</div>
+            <h2 class="brief-title">MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器×导演×prompt 构建器'三层结构在一周内填满，'模型发布即生态'新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态</h2>
+            <p class="brief-text">MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器×导演×prompt 构建器'三层结构在一周内填满，'模型发布即生态'新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态 今日头条趋势:MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器'三层结构一周填满，9 个官方 Skill（含 prompt-writing + 8 风格化生成）。</p>
+            <a href="/daily/2026-08-08.html" class="brief-cta">阅读完整简报 →</a>
         </section>
         <section>
             <div class="section-header">
@@ -83,32 +83,32 @@
                 <div class="card" onclick="window.location='/projects/anydoc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📑</div>
-                        <div class="card-stars">8,069 stars</div>
+                        <div class="card-stars">10,866 stars</div>
                     </div>
                     <div class="card-title">firecrawl/anydoc</div>
-                    <div class="card-desc">Firecrawl 官方 Rust 文档解析库，第六日延续爆发 +3,381（4,688→8,069，+72%），跨入 8K 关口，fork 205→370（+165），增速从 +331% 回落但绝对增量仍居首</div>
+                    <div class="card-desc">Firecrawl 官方 Rust 文档解析库，第七日 +2,797（8,069→10,866，+35%），跨入万星，fork 370→506 破五百，增速从 +72% 健康收敛到 +35%，爆发进入稳态放量阶段</div>
                     <div class="card-tags"><span class="tag tag-purple">document-parsing</span><span class="tag tag-purple">markdown</span><span class="tag tag-purple">rust</span></div>
                     <div class="card-actions"><a href="https://github.com/firecrawl/anydoc" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/crm.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/minimax-h3.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">📋</div>
-                        <div class="card-stars">7,156 stars</div>
+                        <div class="card-emoji">🎬</div>
+                        <div class="card-stars">1,070 stars</div>
                     </div>
-                    <div class="card-title">trycompai/crm</div>
-                    <div class="card-desc">Agentic-first 开源 CRM，第六日 +1,018（6,138→7,156，+16%），增速从 +34% 回落但仍为应用层增速第一，fork 627→738（+111），连续三日增速领先</div>
-                    <div class="card-tags"><span class="tag tag-purple">agentic-crm</span><span class="tag tag-purple">eve</span><span class="tag tag-purple">vertical-agent</span></div>
-                    <div class="card-actions"><a href="https://github.com/trycompai/crm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">MiniMax-AI/MiniMax-H3</div>
+                    <div class="card-desc">MiniMax 官方视频生成模型仓库 + 9 个 Agent Skill，引爆 265 仓库/3,039 星标 ComfyUI 插件生态，'加速器×导演×prompt'三层一周填满</div>
+                    <div class="card-tags"><span class="tag tag-purple">video-generation</span><span class="tag tag-purple">minimax</span><span class="tag tag-purple">comfyui</span></div>
+                    <div class="card-actions"><a href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/qm.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/claude-red.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">👥</div>
-                        <div class="card-stars">12,022 stars</div>
+                        <div class="card-emoji">🔴</div>
+                        <div class="card-stars">555 stars</div>
                     </div>
-                    <div class="card-title">yc-software/qm</div>
-                    <div class="card-desc">多人协作 agent harness，第六日 +369（11,653→12,022，+3%），增速连续五日衰减（+250%→+47%→+35%→+17%→+5%→+3%），接近停滞，万星量级为最终稳态</div>
-                    <div class="card-tags"><span class="tag tag-purple">agent-harness</span><span class="tag tag-purple">multiplayer</span><span class="tag tag-purple">slack</span></div>
-                    <div class="card-actions"><a href="https://github.com/yc-software/qm" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">0xwilliamortiz/claude-red</div>
+                    <div class="card-desc">首个 Claude Skills 攻防安全库，58 skill × 13 攻击面，169 watchers（30% watch 率极高），SQLi→shellcode→EDR 绕过全覆盖，同 humanizer-cli 作者</div>
+                    <div class="card-tags"><span class="tag tag-purple">security</span><span class="tag tag-purple">redteam</span><span class="tag tag-purple">claude-skills</span></div>
+                    <div class="card-actions"><a href="https://github.com/0xwilliamortiz/claude-red" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
             </div>
         </section>
@@ -124,34 +124,34 @@
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>
                     <div class="trend-content">
-                        <div class="trend-title">anydoc 延续爆发（4,688→8,069，+3,381/+72%），跨入 8K 关口，fork 205→370——增速从 +331% 回落到 +72% 但绝对增量仍居首，爆发进入'高增量+减速'阶段，接近稳态的回落速度是关键观察点</div>
+                        <div class="trend-title">MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器'三层结构一周填满，9 个官方 Skill（含 prompt-writing + 8 风格化生成）</div>
+                        <div class="trend-meta">minimax-h3</div>
+                    </div>
+                    <div class="trend-score high">88/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank top">2</div>
+                    <div class="trend-content">
+                        <div class="trend-title">anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速从 +72% 健康收敛到 +35%（非骤降），fork 370→506 破五百，爆发进入'稳态放量'阶段——+35% 印证昨日判断的健康收敛而非触及天花板</div>
                         <div class="trend-meta">anydoc</div>
                     </div>
                     <div class="trend-score high">90/80</div>
                 </div>
                 <div class="trend-item">
-                    <div class="trend-rank top">2</div>
-                    <div class="trend-content">
-                        <div class="trend-title">'去 AI 腔'写作治理品类浮现——溯源发现 blader/humanizer（34,004⭐）为源头 Skill，human-writing（1,552⭐，+54%，中文活人感）+ humanizer-cli（581⭐，208 watchers，英文终端检测）+ ratchet（435⭐，事前约束）构成'写作治理三层谱系'（事前约束→事中去 AI 腔→事后检测）</div>
-                        <div class="trend-meta">human-writing · humanizer-cli · ratchet</div>
-                    </div>
-                    <div class="trend-score high">87/80</div>
-                </div>
-                <div class="trend-item">
                     <div class="trend-rank ">3</div>
                     <div class="trend-content">
-                        <div class="trend-title">应用层第六日——qm 增速骤降到 +3%（+369，接近停滞/守量级固化），crm 增速从 +34% 回落到 +16%（+1,018）但仍为增速第一，genoffice 稳健（+279/+15%），'crm 领跑、qm 守量'格局从分化进入固化</div>
-                        <div class="trend-meta">qm · crm · genoffice</div>
+                        <div class="trend-title">安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率极高）首个 Claude Skills 攻防安全库，58 skill × 13 攻击面（SQLi→shellcode→EDR 绕过），同 humanizer-cli 作者 0xwilliamortiz 在安全垂直验证 Skill 分发模式</div>
+                        <div class="trend-meta">claude-red</div>
                     </div>
-                    <div class="trend-score high">85/80</div>
+                    <div class="trend-score high">84/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">4</div>
                     <div class="trend-content">
-                        <div class="trend-title">软件工厂 Skill 品类出现——super-simple-software-factory（459⭐，14 watchers），'Python 拥有控制平面、agent 为有界节点'，用确定性代码负责编排/重试/验收，agent 只做需要阅读和判断的环节，与 sol-advisor（1,694⭐，Codex-native 编排）呼应'agent 编排层'主题</div>
-                        <div class="trend-meta">super-simple-software-factory · sol-advisor</div>
+                        <div class="trend-title">长程 agent harness 架构范式——LongHorizon-Harness（384⭐，AMAP-ML/高德，HF Daily Papers 周榜 #1，arXiv 2608.01964）三角色分离（Manager/Executor/Auditor）+ 持久化可信状态 + fresh-context 执行，与 super-simple-software-factory 共同信号：agent 工程化从 prompt 转向架构</div>
+                        <div class="trend-meta">longhorizon-harness · super-simple-software-factory</div>
                     </div>
-                    <div class="trend-score high">82/80</div>
+                    <div class="trend-score high">83/80</div>
                 </div>
             </div>
         </section>

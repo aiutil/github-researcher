@@ -659,7 +659,7 @@ def aggregate_all_projects():
 def generate_projects_list():
     all_projects = aggregate_all_projects()
     # Sort by last_seen_date desc
-    all_projects.sort(key=lambda p: p.get('last_seen_date', ''), reverse=True)
+    all_projects.sort(key=lambda p: str(p.get('last_seen_date', '') or ''), reverse=True)
 
     # Collect unique languages and categories for filter options
     languages_set = set()

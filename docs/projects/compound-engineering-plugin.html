@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compound Engineering Plugin | GitHub 趋势研究</title>
+    <title>EveryInc/compound-engineering-plugin | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -27,13 +27,55 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/EveryInc/compound-engineering-plugin" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="compound-engineering-plugin">Compound Engineering Plugin</h1>
+        <h1 id="everyinccompound-engineering-plugin">EveryInc/compound-engineering-plugin</h1>
 <h2 id="_1">一句话定位</h2>
-<p>EveryInc 官方复合工程插件，支持 Claude Code、Codex、Cursor 等多平台，提供复合工程方法论的最佳实践。</p>
+<p>Every.to 官方"复合工程"（Compound Engineering）插件——一套 AI Skills，让每一单位工程工作都比上一个更容易，支持 Claude Code、Codex、Cursor 等多平台原生安装。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>Coding Agent 缺乏系统化的工程方法论支撑。Compound Engineering Plugin 将复合工程原则打包为可复用的插件。</p>
-<h2 id="_3">为什么值得关注</h2>
-<p>17K+ stars，跨平台兼容。代表了 Agent 工程方法论从理论到工具化的转变。</p>
+<p>Coding Agent（Claude Code、Codex、Cursor）虽然能写代码，但缺乏系统化的工程方法论指导——如何做代码审查、如何管理技术债务、如何确保安全性、如何协调并行工作。结果是 Agent 生成的代码质量参差不齐，缺乏一致性和可维护性。Compound Engineering Plugin 将 Every.to 团队总结的工程方法论打包为一组可复用的 Skills，让 Agent 在写代码时遵循更成熟的工作流程——每次工程工作都在前一次的基础上积累，形成"复合增长"效应。</p>
+<h2 id="2026-05-24">为什么值得关注（2026-05-24）</h2>
+<ul>
+<li>24,091 stars，1,977 forks——创建于 2025-10-09，约 10 个月内达到 24K stars</li>
+<li>MIT 许可证，TypeScript 实现，有 CI 构建</li>
+<li>跨平台原生支持：Claude Code（<code>/plugin marketplace add</code>）、Cursor（<code>/add-plugin</code>）、Codex App（自定义 marketplace）、Codex CLI（<code>codex plugin marketplace add</code>）</li>
+<li>145 个 subscribers（订阅者），社区关注度高</li>
+<li>Homepage 指向 every.to/guides/compound-engineering，有配套的方法论文档</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>方法论品牌 + Skills 生态爆发</strong>。compound-engineering-plugin 的热度由三重因素驱动：(1) Every.to 的品牌效应——Every.to 是知名科技写作/教育平台，其工程方法论内容有忠实读者群；(2) "复合工程"概念的新颖性——"让每一单位工作比上一个更容易"的理念直击开发者痛点（重复劳动、缺乏积累）；(3) Skills/Plugin 生态爆发——2025-2026 年 Claude Code Plugins、Cursor Plugins、Codex Plugins 机制相继推出，compound-engineering-plugin 是最早跨平台支持的项目之一。24K stars 中相当一部分来自 Every.to 读者的品牌追随。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>多平台原生安装</strong>：为每个平台提供了专门的安装路径——Claude Code 的 <code>/plugin marketplace add</code>、Cursor 的 <code>/add-plugin</code>（Agent 聊天中搜索）、Codex App 的自定义 marketplace 添加、Codex CLI 的 <code>codex plugin marketplace add</code>。还支持 Codex 多 profile 安装（通过 <code>CODEX_HOME</code> 指定 profile）。这种全覆盖策略最大化了可及性。</li>
+<li><strong>Root-native 布局</strong>：从旧版迁移到了 root-native 布局， Specialist reviewer 和 research 行为作为 local prompt assets 内置于 Skills 中，无需单独的 custom-agent 安装步骤。这简化了安装流程。</li>
+<li><strong>复合工程方法论内核</strong>："AI skills that make each unit of engineering work easier than the last"——核心理念是让工程工作产生可复用的积累。具体实现可能包括：自动记忆更新、工程模板积累、代码审查 rubric 等。</li>
+<li><strong>版本管理和迁移机制</strong>：为已有用户提供了从旧版迁移到 root-native 布局的详细指南，包括清理 legacy Codex tool map 的步骤。这显示了项目对向后兼容性的重视。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>compound-engineering-plugin 展示了"方法论产品化"的趋势——将工程最佳实践从文章/视频转化为可执行的 Agent Skills。其设计哲学是：Agent 不需要被教导如何写代码（模型本身已有这个能力），但需要被教导如何有方法论地工作。多平台原生支持策略也值得学习——不为任何单一平台绑定，而是适配每个平台的原生插件机制。这种"方法论 + 工具化"的组合可能是 AI 时代知识产品的新形态。</p>
+<h2 id="_6">定位判断</h2>
+<p>compound-engineering-plugin 定位为<strong>Agent 工程方法论的标准插件</strong>。在 Skills/Plugin 生态中，它属于"方法论/流程优化"类别——不提供具体功能（如数据库操作或 API 集成），而是改变 Agent 的工作方式。与 taste-skill（设计品味）、stop-slop（写作质量）类似，都是通过 Skills 提升 AI 输出的"元层面"质量。24K stars 使其成为 2025-2026 年最具影响力的工程方法论插件之一。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>方法论有效性的验证</strong>：compound-engineering 的理念很吸引人（"让工作越来越容易"），但实际效果高度依赖 Skills 的具体内容质量。如果 Skills 只是泛泛的最佳实践建议，实际价值有限。需要验证其是否真正带来可度量的效率提升。</li>
+<li><strong>Every.to 品牌的双刃剑</strong>：Every.to 作为内容/教育公司，其工程方法论的可信度取决于其工程团队的实际实力。读者可能因为品牌信任而 star，但实际工程效果需要独立验证。</li>
+<li><strong>多平台维护成本</strong>：同时支持 Claude Code、Cursor、Codex 四种平台意味着每次更新都需要同步适配。如果团队精力不足，某些平台的更新可能滞后。</li>
+<li><strong>与 Agent 自身能力演进的重叠</strong>：随着 Claude Code、Cursor 自身内置更多的工程方法论功能，外部插件的价值可能被稀释。</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>cursor/plugins (官方)</strong>：Cursor 自己的官方插件仓库，其中 <code>thermos</code>（安全审计）、<code>orchestrate</code>（并行任务分配）等插件也涉及工程方法论。compound-engineering-plugin 是第三方方法论插件。</li>
+<li><strong>wshobson/agents</strong>：38K stars 的多平台 Agent Skills 市场，提供大量功能型 Skills。compound-engineering-plugin 更聚焦于方法论。</li>
+<li><strong>Leonxlnx/taste-skill</strong>：73K stars，前端设计品味 Skill。理念相似（用 Skills 提升 AI 输出质量），但领域不同（前端设计 vs 工程方法论）。</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，作为"方法论产品化"趋势的代表项目</strong>。compound-engineering-plugin 预示着一个新赛道——将工程方法论、设计哲学、写作风格等领域知识打包为 Agent Skills。如果这个趋势持续发展，可能会出现更多垂直领域的方法论插件。建议关注其 Skill 内容的深度更新和效果反馈。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li><strong>Skill 内容的实际效果</strong>：是否有用户反馈或案例研究证明 compound engineering 方法论确实提升了 Agent 的工程效率</li>
+<li><strong>复合工程概念的演进</strong>：Every.to 是否会围绕这个概念推出更多内容（课程、书籍、咨询服务），形成知识产品矩阵</li>
+<li><strong>与其他方法论插件的整合</strong>：是否会与 taste-skill、stop-slop 等其他质量优化插件组合使用，形成"全方位质量 Skill 包"</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-05-24</em></p>
     </div>
 </main>
     <footer class="footer">

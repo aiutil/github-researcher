@@ -2,32 +2,82 @@
 title: "Anthropic-Cybersecurity-Skills"
 slug: "anthropic-cybersecurity-skills"
 date_added: "2026-05-25"
+last_seen_date: "2026-08-07"
 category: "工具型"
 emoji: "🔐"
-stars: "21,152 stars"
-stars_delta: "6月15日 11.4K → 6月26日 21.2K（+9.8K/11天），日增约 890"
+stars: "27,424 stars"
+stars_delta: "forks 3,317，持续高速增长"
 language: "Python"
+license: "Apache-2.0"
 score: 87
-tags: ["安全", "Agent-Skills", "MITRE ATT&CK", "NIST", "MCP", "Agent", "F3", "supply-chain", "AI-security"]
+tags: ["安全", "Agent-Skills", "MITRE ATT&CK", "NIST", "MCP", "Agent", "supply-chain", "AI-security"]
 url: "https://github.com/mukul975/Anthropic-Cybersecurity-Skills"
-last_seen_date: "2026-06-26"
+homepage: "https://mahipal.engineer/Anthropic-Cybersecurity-Skills/"
 ---
 
 # Anthropic-Cybersecurity-Skills
 
 ## 一句话定位
+
 817 个结构化网络安全 Skills，映射 MITRE ATT&CK v19.1、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF 和 MITRE F3（Fight Fraud）六大框架，兼容 Claude Code、Copilot、Codex、Cursor、Gemini CLI 等 26+ 平台。
 
 ## 它解决的问题
-Agent 安全能力碎片化。本仓库将安全技能标准化、模块化，Agent 可以按需加载特定安全能力。
 
-## 为什么值得关注（2026-06-23 更新）
-安全 Skills 模块化的代表性项目。映射行业标准框架 + 跨平台兼容，是 Agent 安全能力从"安全产品"到"安全技能"转变的标志。
+Agent 安全能力碎片化。本仓库将安全技能标准化、模块化，覆盖 29 个安全领域，Agent 可以按需加载特定安全能力。采用 agentskills.io 标准，支持跨平台安装。
 
-### 最近动态（2026-06-23）
-- 技能数从 762 → **817**（+55 skills）
-- 新增 3 个安全领域：**AI Security**（12 skills，LLM 红队/提示注入/MCP 工具中毒/模型提取）、**Supply Chain Security**（5 skills，SBOM/依赖混淆/typosquatting）、**Hardware & Firmware Security**（4 skills，CHIPSEC/UEFI/Secure Boot/TPM）
-- 新增 **MITRE F3（Fight Fraud Framework）v1.1** 映射——94 个欺诈相关技能，覆盖 Positioning（FA0001）和 Monetization（FA0002）两大欺诈战术
-- 从 11.4K（6月15日）增长到 **18.6K**（6月23日），8 天 +7.2K
-- 日增约 900 stars，在 GitHub Trending 持续出现
+## 为什么值得关注
+
+- **27,424 stars / 3,317 forks**，Apache-2.0，是 Agent Skills 经济中安全领域的代表性项目
+- **817 个 Skills** 覆盖 29 个安全领域：渗透测试、事件响应、威胁狩猎、恶意软件分析、OSINT、云安全、DevSecOps 等
+- **六大框架映射**：MITRE ATT&CK v19.1、NIST CSF 2.0、MITRE ATLAS、D3FEND、NIST AI RMF、MITRE F3 v1.1
+- 兼容 26+ 平台（Claude Code、Copilot、Codex、Cursor、Gemini CLI 等）
+- 新增 AI Security（12 skills）、Supply Chain Security（5 skills）、Hardware & Firmware Security（4 skills）等前沿领域
+
+## 热度来源判断
+
+- **安全 Skills 模块化是确定性趋势。** Agent 安全能力从"安全产品"到"安全技能"的转变
+- 27K stars 来自安全社区 + Agent 社区的交叉需求
 - 与 gstack 113K + mattpocock/skills 141K 并列 Agent Skills 经济三大代表
+- GitHub Trending 持续出现，日增约 900 stars
+
+## 关键技术亮点
+
+1. **6 大行业标准框架映射**：不是散乱技能集合，而是结构化映射到 MITRE/NIST 标准
+2. **agentskills.io 标准兼容**：跨 26+ Agent 平台安装使用
+3. **29 个安全领域覆盖**：从传统网络安全到 AI Security、供应链安全、硬件固件安全
+4. **MITRE F3 欺诈框架映射**：94 个欺诈相关技能，覆盖 Positioning 和 Monetization 两大欺诈战术
+5. Apache-2.0 许可证，利于企业采用
+
+## 架构启发
+
+**安全能力模块化 = 安全产品的 Agent 化重构。** 传统安全产品是 monolithic 的，Anthropic-Cybersecurity-Skills 把安全能力拆解为可按需加载的 Skills，每个 Skill 对应一个具体安全任务。这种"安全能力即技能"的模式可以复制到其他专业领域（法务、合规、财务等）。
+
+## 定位判断
+
+**工具型 → 平台候选。** 安全 Skills 模块化的代表性项目，映射行业标准框架 + 跨平台兼容，是 Agent 安全能力标准化的标志。
+
+## 风险 / 局限 / 泡沫点
+
+1. **817 个 Skills 的质量一致性待验证** — 数量大不等于质量高
+2. **仅提供 Skills 定义，实际执行依赖 Agent + 工具链**
+3. 与官方安全产品的差距：Skills 是"说明书"，不是"执行器"
+4. 安全领域的特殊性：错误的安全建议可能导致严重后果
+5. 27K stars 中有 Agent Skills 热潮的泡沫成分
+
+## 与同类项目的关系
+
+- **gstack（113K）/ mattpocock/skills（141K）**：Agent Skills 经济三大代表，分别覆盖通用和安全领域
+- **anthropics/skills**：官方 Skills 仓库，本仓库是社区安全领域的补充
+- **传统安全工具（Burp/Nessus/Metasploit）**：Skills 是对这些工具的 Agent 化封装层
+
+## 是否值得持续跟踪
+
+**是。** Agent 安全能力标准化是确定性趋势，本项目是该方向的标杆。
+
+## 后续观察点
+
+1. Skills 数量和质量增长（从 817 扩展到多少）
+2. 企业实际采用案例（DevSecOps pipeline 集成）
+3. 是否出现针对 Skills 质量的第三方评测
+4. AI Security 领域 Skills 的深度（提示注入、MCP 中毒等前沿威胁）
+5. 与 MITRE/NIST 框架版本的同步更新

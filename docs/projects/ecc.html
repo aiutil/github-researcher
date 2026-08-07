@@ -29,11 +29,56 @@
         <div style="margin-bottom:20px;"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="ecc">ECC</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Agent Harness 性能优化系统，为 Claude Code、Codex、OpenCode、Cursor 等 Coding Agent 提供 Skills、Instincts、Memory、Security 和 Research-First Development。</p>
+<p>Agent Harness 性能优化系统（官方自称 "agent harness operating system"），为 Claude Code、Codex、OpenCode、Cursor 等 Coding Agent 提供 Skills、Instincts、Memory、Security 和 Research-First Development。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>Coding Agent 缺乏统一的性能优化框架 — 从技能管理到记忆持久化到安全约束，ECC 提供了一站式解决方案。</p>
+<p>Coding Agent 缺乏统一的性能优化框架 — 从技能管理到记忆持久化到安全约束，开发者需要为不同 Agent 各自拼装配置。ECC 提供了一套跨 Harness 的配置/技能/记忆层，支持 Claude Code、Codex、OpenCode、Cursor 等主流 Coding Agent，并发布为 npm 包（<code>ecc-universal</code>、<code>ecc-agentshield</code>）和 GitHub App。</p>
 <h2 id="_3">为什么值得关注</h2>
-<p>长期稳居 GitHub Star Top 5，是 Agent Harness 赛道三强之一（ECC/OpenCode/Hermes Agent）。代表了 Agent 性能优化方向的最佳实践。</p>
+<ul>
+<li><strong>238,427 stars / 36,207 forks</strong>，长期稳居 GitHub Star Top 5，是 Agent Harness 赛道头部项目</li>
+<li>自称 "Agent Harness Operating System"，定位为 Agent 外围配置与优化的统一层</li>
+<li>提供商业版本（ECC Pro，私有仓库 $19/seat/mo）+ GitHub App，已商业化</li>
+<li>支持 11 种语言（含简繁中文、日韩、俄越泰德西），社区全球化程度高</li>
+</ul>
+<h2 id="_4">热度来源判断</h2>
+<ul>
+<li><strong>真实需求驱动为主。</strong> Agent Harness 配置/优化是 2026 年 Coding Agent 赛道刚需</li>
+<li>238K stars 中有明显的社区传播效应（多语言 README、Discord 社区），但核心需求真实</li>
+<li>npm 包有实际下载量（README 展示 npm 下载数 badge），说明存在真实安装使用</li>
+</ul>
+<h2 id="_5">关键技术亮点</h2>
+<ol>
+<li><strong>跨 Harness 抽象</strong>：单一配置/技能层覆盖多个 Coding Agent（Claude Code/Codex/OpenCode/Cursor）</li>
+<li><strong>Skills + Instincts + Memory 三层架构</strong>：技能库 + 行为本能 + 持久化记忆</li>
+<li><strong>AgentShield 安全模块</strong>：npm 包 <code>ecc-agentshield</code>，Agent 安全约束层</li>
+<li><strong>Research-First Development</strong>：将研究优先作为 Agent 工作流的内置范式</li>
+<li>以 GitHub App + npm 包分发，支持私有仓库</li>
+</ol>
+<h2 id="_6">架构启发</h2>
+<p>ECC 代表了 "Agent Harness 作为独立软件层" 的产品化思路 — 模型层（Claude/GPT）+ Harness 层（ECC）+ Agent 运行时（Claude Code 等）的三段式抽象。Harness 层负责技能调度、记忆管理、安全约束，类似操作系统的内核服务。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选。</strong> 已商业化（ECC Pro + GitHub App），238K stars 说明生态位稳固。代表 Agent Harness 赛道头部实践。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>Star 数 vs 实际深度使用比例</strong>：238K stars 但 open issues 仅 118，需验证真实生产采用率</li>
+<li><strong>多语言 README 的传播放大效应</strong>：11 种语言 README 会显著放大 star 增速，需区分传播效应与真实价值</li>
+<li><strong>依赖模型厂商策略</strong>：Claude Code / Codex 的 Skills 标准变化会影响 ECC 的兼容层价值</li>
+<li>商业版 $19/seat/mo 的定价在 Agent 工具赛道偏高，留存待验证</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>OpenCode / Hermes Agent</strong>：同为 Agent Harness 赛道，ECC 以跨 Harness 兼容性为差异化</li>
+<li><strong>anthropics/skills</strong>（166K stars）：官方 Skills 仓库，ECC 是第三方 Skills/配置生态</li>
+<li><strong>wshobson/agents</strong>：多 Harness 插件市场，与 ECC 的 Skills 层有功能重叠</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>是。</strong> Agent Harness 赛道头部项目，已商业化，代表该方向的最佳实践。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>ECC Pro 付费用户留存率和 ARR 增长</li>
+<li>Skills 标准化（agentskills.io）对 ECC 兼容层的影响</li>
+<li>模型厂商（Anthropic/OpenAI）是否会吞并 Harness 层功能</li>
+<li>npm 包下载量趋势和 GitHub App 安装数</li>
+</ol>
     </div>
 </main>
     <footer class="footer">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>plfm-radar | GitHub 趋势研究</title>
+    <title>NawfalMotii79/PLFM_RADAR | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,27 +26,57 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+        <div style="margin-bottom:20px;"><a href="https://github.com/NawfalMotii79/PLFM_RADAR" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="nawfalmotii79plfm_radar">NawfalMotii79/PLFM_RADAR</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Open-source, low-cost 10.5 GHz PLFM phased array RADAR system</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-06-16 的趋势数据。</p>
+<p>开源的 10.5 GHz PLFM（调频连续波）相控阵雷达系统，提供从硬件设计到信号处理的完整低成本雷达方案。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>相控阵雷达传统上属于军事和高端工业领域，成本动辄数万美元，普通研究者、创客和小型机构完全无法接触。PLFM_RADAR 面向硬件爱好者、RF 工程师、学术研究者，提供了一个成本极低（数百美元级）的开源相控阵雷达参考设计，包含完整的硬件原理图、PCB 设计、FPGA 固件和信号处理软件。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 23,067 stars</li>
-<li><strong>分类:</strong> 工具型</li>
-<li><strong>标签:</strong> PLSQL</li>
+<li><strong>Stars:</strong> 23,427 stars，在开源硬件项目中属于极高关注度</li>
+<li><strong>技术门槛突破:</strong> 将相控阵雷达的成本从数万美元降至数百美元级别</li>
+<li><strong>完整开源方案:</strong> 从硬件到软件的完整技术栈，不只是代码而是完整的系统设计</li>
+<li><strong>交叉领域价值:</strong> 连接 RF 硬件、FPGA、信号处理和机器学习多个领域</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>热度来自开源硬件社区对「高端技术平民化」的持续热情——类似于 HackRF 和 BladeRF 当年降低 SDR 门槛建立的热度。PLFM 相控阵雷达是雷达技术中最实用的波形之一，将其开源化具有技术和教育双重价值。23K stars 中包含大量硬件爱好者和教育机构的关注，具有真实需求基础。但也需注意开源硬件项目中实际能完成组装和使用的人数远少于 stars 数。</p>
+<h2 id="_5">关键技术亮点</h2>
+<ol>
+<li><strong>10.5 GHz PLFM 波形:</strong> 使用调频连续波（FMCW）技术，兼顾距离分辨率和探测范围，适合短中程探测</li>
+<li><strong>相控阵波束成形:</strong> 多天线阵列配合数字波束成形，实现电子扫描而非机械旋转</li>
+<li><strong>完整设计文件开源:</strong> 包含 PCB Gerber 文件、BOM 清单、FPGA HDL 代码和 DSP 处理算法</li>
+<li><strong>低成本 COTS 器件:</strong> 核心器件使用市售通用芯片（而非定制 RF 芯片），降低采购门槛</li>
+<li><strong>信号处理软件栈:</strong> 提供从原始 ADC 数据到目标检测/跟踪的完整信号处理流程</li>
+</ol>
+<h2 id="_6">架构启发</h2>
+<p>PLFM_RADAR 的架构体现了「用数字处理弥补模拟硬件不足」的设计思路——传统雷达依赖昂贵的模拟器件保证信号质量，而低成本方案通过更强的数字信号处理算法来补偿硬件性能不足。这种「数字补偿」的思路在软件定义无线电（SDR）领域已被广泛验证。</p>
+<h2 id="_7">定位判断</h2>
+<p>属于开源硬件/创客生态的高端项目。在雷达技术领域，PLFM_RADAR 定位为「教育级和原型级」方案，无法与专业雷达系统竞争性能，但填补了入门和教育市场的空白。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>实际组装门槛高:</strong> 即使有完整设计文件，PCB 制造、器件焊接和系统调试仍需要专业 RF 技能</li>
+<li><strong>法规合规风险:</strong> 10.5 GHz 频段的主动发射在多数国家需要许可证，实际使用面临法规障碍</li>
+<li><strong>性能限制明显:</strong> 低成本方案的探测距离、角度分辨率和抗干扰能力远不如专业雷达</li>
+<li><strong>维护活跃度:</strong> 个人项目性质，长期维护和技术支持不确定</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li><strong>HackRF/BladeRF:</strong> 开源 SDR 平台，可接收雷达信号但不具备发射和波束成形能力</li>
+<li><strong>MIT OpenRADAR:</strong> 麻省理工的开源雷达教育项目，定位类似但技术路线不同</li>
+<li><strong>krakenrf/krakenSDR:</strong> 开源 RF 方向查找系统，同属低成本 RF 开源生态</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>选择性跟踪。</strong> 对于 RF/硬件领域的观察者，PLFM_RADAR 代表了开源硬件向高端技术延伸的趋势。但对于软件/AI 方向的研究者，相关性较低。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>关注项目是否衍生出商业产品或教育套件</li>
+<li>观察是否有基于此平台的应用研究（如无人机探测、汽车辅助感知）</li>
+<li>跟踪相关法规对开源雷达设备的态度变化</li>
 </ul>
 <hr />
 <blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-06-16</p>
+<p>数据来源: GitHub API (gh cli) | 更新: 2026-08-07 | Stars: 23,427 | Language: PLSQL | Forks: 5,422</p>
 </blockquote>
     </div>
 </main>

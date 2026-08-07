@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chartdb | GitHub 趋势研究</title>
+    <title>chartdb/chartdb | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,27 +26,57 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+        <div style="margin-bottom:20px;"><a href="https://github.com/chartdb/chartdb" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="chartdbchartdb">chartdb/chartdb</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Database diagrams editor that allows you to visualize and design your DB with a single query.</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-07-15 的趋势数据。</p>
+<p>基于单条 SQL 查询即可可视化数据库结构的免费在线/本地数据库图表编辑器，支持 MySQL、PostgreSQL、MariaDB、MSSQL、SQLite 等主流数据库。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>数据库 Schema 可视化的痛点：传统的 ERD（实体关系图）工具要么价格昂贵（如 dbdiagram.io Pro、Navicat），要么需要手动维护。ChartDB 通过直接连接数据库或执行单条查询即可自动生成可编辑的 ERD，实现了"零成本、即时、可编辑"的数据库结构可视化。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 22,655 stars</li>
-<li><strong>分类:</strong> 工具型</li>
-<li><strong>标签:</strong> database, db, db-migration, editor, erd</li>
+<li><strong>22,692 stars</strong>，数据库工具领域增长最快的开源项目之一</li>
+<li><strong>隐私优先</strong>：可在本地运行，数据不离开用户的机器；也支持仅通过一条 SQL 导出即可生成图表</li>
+<li><strong>基于 React Flow</strong>：现代化的交互式画布体验</li>
+<li><strong>AGPL-3.0</strong>：强 copyleft 许可，保护开源属性</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>热度来自数据库开发者的普遍痛点——"拿到一个陌生数据库时想快速理解其结构"。传统工具（如 MySQL Workbench、pgAdmin）的 ERD 功能笨重且难用。ChartDB 填补了"轻量、美观、即时"这一空白市场。</p>
+<h2 id="_5">关键技术亮点</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li><strong>单查询模式</strong>：不需要直连数据库，只需执行一条预生成的 SQL 即可导出完整 Schema</li>
+<li><strong>React Flow 画布</strong>：流畅的拖拽、缩放、自动布局</li>
+<li><strong>多数据库支持</strong>：MySQL、PostgreSQL、MariaDB、MSSQL、SQLite 统一界面</li>
+<li><strong>Schema 迁移</strong>：支持可视化编辑 Schema 并生成迁移 SQL</li>
+<li><strong>纯前端</strong>：无需后端服务，可部署为静态站点</li>
+</ul>
+<h2 id="_6">架构启发</h2>
+<p>ChartDB 的"单查询导出"模式是一个巧妙设计——用户不需要开放数据库连接权限给外部工具，只需在本地执行一条 SQL，将结果粘贴到 Web 界面即可。这种"数据在用户侧，处理在前端"的架构兼顾了安全性和易用性。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>开发工具型</strong>，定位为数据库开发者的日常工具。不是平台，不是框架，而是"小而美"的单功能工具。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>功能边界</strong>：ERD 可视化是相对窄的场景，扩展空间有限</li>
+<li><strong>竞品压力</strong>：drawSQL、dbdiagram.io、Prisma Studio 都在争夺同一市场</li>
+<li><strong>AGPL 限制</strong>：强 copyleft 可能阻止部分企业采用</li>
+<li><strong>大库性能</strong>：超大型数据库（数千表）的渲染性能可能成为瓶颈</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>竞品</strong>：dbdiagram.io（商业）、drawSQL（商业）、prisma/studio（开源但更偏 ORM）</li>
+<li><strong>底层依赖</strong>：React Flow（画布引擎）</li>
+<li><strong>互补</strong>：可与 Prisma、Drizzle ORM 等工具配合使用</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得适度跟踪</strong>。作为数据库工具链中有价值的补充工具，其产品设计（特别是单查询模式）值得借鉴。但项目本身的技术深度有限。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否会扩展到 NoSQL（MongoDB、Redis）的可视化</li>
+<li>Schema 迁移功能能否与 Flyway/Liquibase 集成</li>
+<li>是否会有商业化路径（如团队协作、版本管理）</li>
 </ul>
 <hr />
 <blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-07-15</p>
+<p>数据来源: GitHub API (2026-08-07) | Stars: 22,692 | Forks: 1,458 | 语言: TypeScript | License: AGPL-3.0 | 首次发现: 2026-06-17</p>
 </blockquote>
     </div>
 </main>

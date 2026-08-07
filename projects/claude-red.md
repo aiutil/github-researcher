@@ -1,0 +1,75 @@
+---
+title: "0xwilliamortiz/claude-red"
+slug: claude-red
+date_added: 2026-08-08
+last_seen_date: 2026-08-08
+category: "工具型"
+emoji: "🔴"
+stars: "555 stars"
+score: 84
+tags: ["security", "redteam", "claude-skills", "offensive-security", "pentesting", "skill", "exploit-development", "edr-evasion"]
+url: "https://github.com/0xwilliamortiz/claude-red"
+---
+
+# 0xwilliamortiz/claude-red
+
+## 一句话定位
+首个 Claude Skills 体系的攻防安全技能库——58 个结构化 SKILL.md 文件，覆盖 13 个攻击面（从 SQLi 到 shellcode、从 EDR 绕过到漏洞开发），把 Claude 变成"按需加载的专家级红队操作员"。
+
+## 它解决的问题
+安全攻防（红队/渗透测试）的知识高度专业化且分散——不同攻击面（Web 应用、AD、云、移动、IoT、漏洞开发）各有方法论、工具链和边界条件。传统方式是安全工程师手动调用工具或记忆流程。claude-red 把这些专业知识编码为结构化 Skill 文件，Claude 在对话中按需加载对应攻击面的方法论——相当于给 AI 一个"红队专家知识库"。解决的是**"安全攻防专业知识难以被 AI agent 快速准确调用"**的问题。
+
+## 为什么值得关注
+- **Stars:** 555（截至 2026-08-08），创建 2026-08-05，3 天破 500
+- **Forks:** 69
+- **Watchers/Subscribers:** 169（极高比例，169/555 = 30%，通常 <5%）
+- **Open Issues:** 1
+- **License:** MIT
+- **语言:** JavaScript
+- **活跃度:** created 2026-08-05，pushed_at 2026-08-06
+- **规模:** 58 个 skill，13 个分类（Web Application / Auth & Identity / AD / Wireless / Cloud / Mobile / IoT & Embedded / Infrastructure & Red Team / Exploit Development / Fuzzing & VR / Reconnaissance / AI Security / Utility）
+- **作者:** 0xwilliamortiz（同时也是 humanizer-cli 作者，持续生产高质量 Skill 生态）
+
+## 热度来源判断
+claude-red 的热度来自**"安全赛道刚需 × Claude Skills 生态红利 × 同作者前作口碑"**的叠加。169 watchers（30% 的 star/watcher 比）是极强的信号——这说明安全从业者（而非普通开发者）在深度关注，"watch"意味着"我在工作中要用/在跟踪"。58 个 skill × 13 分类的覆盖广度也是关键——这不是玩具，而是试图覆盖完整红队方法论。热度**真实且指向专业用户群体**。需注意：作者 0xwilliamortiz 此前 humanizer-cli（585⭐/208 watchers）已建立口碑，claude-red 的初期热度有"同作者粉丝迁移"成分，但 169 watchers 独立验证了安全赛道需求。
+
+## 关键技术亮点
+1. **按需加载（on-demand loading）:** Skill 基于对话触发自动加载，不占用全局 context（Claude Skills 体系的核心机制）
+2. **SKILL.md 结构化:** 每个 skill 是结构化文件，含方法论/工具/边界条件/升级路径
+3. **13 个攻击面全覆盖:** 从 Web 应用（SQLi/XSS）到 Exploit Development（shellcode）、从 EDR 绕过到 ADCS 滥用，覆盖红队完整 kill chain
+4. **AI Security 分类:** 包含针对 AI 系统的攻击 skill，反映了"AI 安全"从理论进入实操
+5. **Windows companion UI:** 在 Windows 上可启动 companion UI binary
+6. **明确的使用边界:** README 声明用于"authorized red team engagements, bug bounty, security research, CTF"
+
+## 架构启发
+claude-red 的核心启发是**"专业领域知识正在被编码为 Agent Skill"**。这与 humanizer（去 AI 腔写作）、h3-prompt-writing（视频 prompt）、wshobson/agents（编码 agent 插件）共同构成一个趋势：**"领域专家知识 → SKILL.md → 按需注入 agent context"**正在成为知识分发的标准模式。安全领域尤其适合——攻防知识高度结构化（有明确方法论和工具链），且人类专家稀缺。更深层的启发：**Skill 生态正在沿"能力维度"而非"工具维度"组织**——claude-red 不是"一个渗透测试工具"，而是"一个红队专家的完整知识体系"。
+
+## 定位判断
+**品类定义型项目（安全 Skill 生态）。** claude-red 是首个系统化覆盖 Claude Skills 体系的攻防安全技能库（58 skill × 13 分类）。它的定位不是工具，而是**"安全专业知识在 Agent 时代的分发载体"**。169 watchers 说明它已触及专业用户群体。若 Claude Skills 生态持续增长，claude-red 有潜力成为安全领域的默认 Skill 来源（类似 wshobson/agents 之于编码）。关键变量：Skill 质量是否经得起真实红队检验、社区贡献是否扩展覆盖面、各 Agent 平台是否推出竞争性安全 Skill。
+
+## 风险/局限/泡沫点
+- **安全/法律风险:** 攻防安全 skill 的分发天然敏感，可能面临平台政策限制（Claude/Anthropic 是否允许此类 skill 在官方渠道分发待观察）
+- **质量未独立验证:** 58 个 skill 的实际效果未经公开红队验证，"expert-level methodology"为 README 自述
+- **作者集中:** 0xwilliamortiz 个人维护，58 个 skill 的质量一致性需观察
+- **平台依赖:** 完全依赖 Claude Skills 体系，若 Anthropic 改变 Skill 机制或政策，影响重大
+- **双重用途风险:** 攻防 skill 可被恶意使用，README 的"authorized use"声明是软约束
+- **69 fork vs 555 star:** fork 比例正常，但说明使用者更多是"直接用 skill"而非"二次开发"
+
+## 与同类项目的关系
+- **vs humanizer-cli（同作者）:** humanizer-cli 是"写作治理"，claude-red 是"安全攻防"——同一作者在不同领域验证 Skill 分发模式
+- **vs wshobson/agents:** wshobson 覆盖编码通用 skill，claude-red 深耕安全垂直——互补关系
+- **vs Metasploit/Burp Suite:** 传统安全工具是"工具调用"，claude-red 是"方法论注入"——不同层次
+- **vs awesome-pentest 等列表:** 列表是资源索引，claude-red 是可执行 skill——更高一层抽象
+
+## 是否值得持续跟踪
+**值得跟踪（Skill 生态安全垂直头部）。** claude-red 代表了"安全专业知识被编码为 Agent Skill"的趋势，169 watchers 验证了专业用户需求。无论其本身成败，"领域 Skill 化"是明确方向。建议关注：Skill 质量的独立验证（是否有安全团队公开使用反馈）、Anthropic 对安全类 Skill 的政策态度、社区贡献是否扩展覆盖面、同作者后续项目（0xwilliamortiz 似乎在系统化生产 Skill 生态）。
+
+## 后续观察点
+- Anthropic/平台对安全 Skill 的政策态度（关键风险变量）
+- 是否有安全团队公开使用反馈或 case study
+- 社区贡献是否扩展 skill 数量和攻击面覆盖
+- 是否出现竞品安全 Skill 库
+- 0xwilliamortiz 的下一个 Skill 项目（判断是否在系统化构建 Skill 生态矩阵）
+
+---
+> 数据来源: GitHub API (2026-08-08) | Stars: 555 | Forks: 69 | Watchers: 169 | License: MIT | 语言: JavaScript | 创建: 2026-08-05 | Skill: 58 个 / 13 分类

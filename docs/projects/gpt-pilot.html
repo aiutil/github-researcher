@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gpt-pilot | GitHub 趋势研究</title>
+    <title>Pythagora-io/gpt-pilot | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,27 +26,55 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+        <div style="margin-bottom:20px;"><a href="https://github.com/Pythagora-io/gpt-pilot" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="pythagora-iogpt-pilot">Pythagora-io/gpt-pilot</h1>
 <h2 id="_1">一句话定位</h2>
-<p>The first real AI developer</p>
-<h2 id="_2">解决的问题</h2>
-<p>本项目在 GitHub 趋势研究中被识别为值得关注的项目。详细信息基于 2026-06-17 的趋势数据。</p>
+<p>早期"真正 AI 开发者"概念的开创性项目——不止补全代码，而是端到端构建完整应用，但<strong>目前已停止维护</strong>并曾遭受供应链投毒攻击。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统 AI 编程工具（如早期 Copilot）只做代码补全或生成片段。GPT Pilot 试图解决更深层的问题：让 AI 像真正的开发者一样工作——理解需求、规划架构、编写完整功能、调试、请求代码审查。它是最早探索"AI 作为全栈开发者"范式的开源项目之一，启发了后续大量 AI 编程 Agent 项目。</p>
 <h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 33,727 stars</li>
-<li><strong>分类:</strong> 平台候选</li>
-<li><strong>标签:</strong> ai, codegen, coding-assistant, developer-tools, gpt-4</li>
+<li><strong>历史地位</strong>：33,714 stars，Y Combinator 孵化项目，是"AI 开发者"概念的早期标杆</li>
+<li><strong>安全警示价值</strong>：该项目在 2025-08 至 2026-06 期间遭遇供应链蠕虫攻击（Shai-Hulud 蠕虫），是开源供应链安全的教科书级案例</li>
+<li><strong>技术遗产</strong>：其 Agent 架构（规格驱动 → 任务分解 → 增量开发 → 自我调试）被后续项目广泛借鉴</li>
 </ul>
-<h2 id="_4">后续观察点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>Stars 数来自 2023-2024 年 AI 编程浪潮的红利期。项目已明确声明"This repo is not being maintained anymore"，官方产品已迁移至 <a href="https://www.pythagora.ai/">Pythagora.ai</a> 商业化 VS Code 扩展。当前热度属于历史惯性，非活跃增长。</p>
+<h2 id="_5">关键技术亮点</h2>
 <ul>
-<li>持续跟踪 Star 增速与社区活跃度</li>
-<li>关注是否从工具型向平台型演进</li>
-<li>验证是否有真实生产使用场景</li>
+<li><strong>规格驱动开发</strong>：从用户描述生成开发规格，再分解为可执行任务步骤</li>
+<li><strong>增量式 Agent 循环</strong>：每个任务步骤包含"编写 → 运行 → 检查 → 修复"的自我闭环</li>
+<li><strong>对话式调试</strong>：遇到问题时主动向用户提问，而非盲目重试</li>
+<li><strong>上下文管理</strong>：通过任务压缩和历史摘要管理长项目的上下文窗口</li>
+</ul>
+<h2 id="_6">架构启发</h2>
+<p>GPT Pilot 的核心启发在于"开发者模拟"架构：将人类开发者的工作流程（规划→编码→测试→调试→评审）映射为 AI Agent 的步骤序列。这种"角色模拟"范式比纯代码生成更具系统性和可控性。其失败教训同样重要——开源项目缺乏安全审计时的供应链风险。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>已归档的历史参考项目</strong>。作为概念验证和技术遗产有价值，但不适合新项目采用。官方维护已转移到商业产品 Pythagora.ai。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>已停止维护</strong>：不再接收功能更新或安全补丁</li>
+<li><strong>供应链安全事件</strong>：恶意代码在仓库中潜伏近 10 个月，窃取云密钥、GitHub Token、SSH 密钥</li>
+<li><strong>竞争淘汰</strong>：已被 Cursor、Claude Code、Codex 等新一代工具全面超越</li>
+<li><strong>泡沫风险</strong>：33k stars 中大部分是历史积累，当前社区已不活跃</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>继承者</strong>：Pythagora.ai（商业化产品）、Cursor、GitHub Copilot Workspace</li>
+<li><strong>同期竞品</strong>：Aider、Sweep.dev、Devika（均已不同程度衰退）</li>
+<li><strong>影响</strong>：其 Agent 架构理念影响了 OpenHands、SWE-agent 等学术项目</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>不值得</strong>。项目已停止维护。唯一值得跟踪的是其安全事件的后续影响分析和开源供应链安全的行业反思。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>供应链攻击事件是否引发更广泛的开源安全审计标准变化</li>
+<li>Pythagora.ai 商业产品的市场表现</li>
+<li>受影响用户的凭据泄露后续追踪</li>
 </ul>
 <hr />
 <blockquote>
-<p>数据来源: GitHub Search API | 首次发现: 2026-06-17</p>
+<p>数据来源: GitHub API (2026-08-07) | Stars: 33,714 | Forks: 3,477 | 语言: Python | 首次发现: 2026-06-17</p>
 </blockquote>
     </div>
 </main>
