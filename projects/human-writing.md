@@ -2,14 +2,14 @@
 title: "KKKKhazix/human-writing"
 slug: "human-writing"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-08"
+last_seen_date: "2026-08-09"
 category: "工具型"
 emoji: "✍️"
-stars: "1,867 stars"
-stars_delta: "8/05创建→8/08观测 1,867⭐ / 165 fork / 0 subscribers，第四日 +315（+20%），增速回落但仍强劲，逼近 2K"
+stars: "1,985 stars"
+stars_delta: "8/05创建→8/09观测 1,985⭐ / 173 fork / 0 subscribers，第五日 +118（+6%），增速从 +20% 骤降到 +6%，逼近 2K 但增长明显放缓"
 language: "Python"
 license: "MIT"
-score: 85
+score: 84
 tags: ["agent-skills", "chinese-writing", "creative-writing", "writing-skill", "humanizer-lineage", "python"]
 url: "https://github.com/KKKKhazix/human-writing"
 ---
@@ -71,3 +71,13 @@ human-writing 的设计哲学是 **"规则约束而非风格替代"**——skill
 - **谱系溯源发现**：今日发现 blader/humanizer（34,004⭐）是"去 AI 写作痕迹"的源头 Agent skill，humanizer-cli（581⭐）是其终端化封装。human-writing 的"去 AI 腔"目标与 humanizer 一致，被推断为该谱系的中文分支（未明确声明溯源，但功能同构）。
 - **写作治理三层谱系**：human-writing（事中去 AI 腔，中文）+ humanizer-cli（事后检测，英文 CLI）+ ratchet（事前约束）构成完整的"写作治理三层谱系"。
 - **判断修正**：score 84 → 85。被 34K⭐ 源头项目验证的品类 + 持续增长。但谱系关系为推断（功能同构），human-writing 未明确声明溯源 humanizer。
+
+## 最近动态（2026-08-08）
+
+- **第四日 +315（+20%），增速回落但仍强劲**：1,552 → 1,867，fork 134 → 165（+31）。逼近 2K 关口。
+
+## 最近动态（2026-08-09）
+
+- **第五日 +118（+6%），增速骤降**：1,867 → 1,985，fork 165 → 173（+8）。增速从 +20%（08-08）骤降到 +6%（08-09），逼近 2K 但增长明显放缓。今日无新 commit（pushed_at 仍为 08-05），增长来自曝光惯性。
+- **判断修正**：score 85 → 84。增速骤降（+20%→+6%）可能是品类早期爆发后的自然回落，也可能是需求天花板。subscribers 仍为 0，深度跟踪意愿极低。
+- **与 anydoc 的对比**：anydoc 增速序列是单调健康收敛（+331%→+72%→+35%→+11%），human-writing 是骤降（+54%→+20%→+6%），收敛模式不同。下一观察点：+6% 是否企稳（如 anydoc 般收敛到非零稳态），还是继续衰减到 +2% 以下。

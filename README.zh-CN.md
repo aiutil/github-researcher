@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-08.md">最新日报</a> ·
+  <a href="daily/2026-08-09.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-08
+## 最新研究 · 2026-08-09
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 13 | 439 | 4 | 15k+ |
+| 12 | 441 | 4 | 14k+ |
 
-**今日核心判断：** MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器×导演×prompt 构建器'三层结构在一周内填满，'模型发布即生态'新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 0xwilliamortiz · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离（管理/执行/审计）+ 持久化可信状态
+**今日核心判断：** MiniMax-H3 反而加速（1,070→1,769，+699/+65%），生态仓库 265→314，模型仓库自身增速超过衍生生态，'生成质量瓶颈'让位于'推理成本+工作流'瓶颈的判断被市场继续确认 · anydoc 进入稳态（10,866→12,055，+1,189/+11%，增速序列 +331%→+72%→+35%→+11%，五日衰减率单调收窄，教科书式真实需求曲线收敛完成） · open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日 fork 异常暴增（343→914）后的可疑信号今天落地为归档，刷量/弃坑判断被验证 · Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B MoE，峰值 2.6GB RAM）——本地 MoE 流式加载路线从 C99（kimi-k3-in-c）扩展到 Apple/Swift 原生栈
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 10,866 stars | 工具型 |
-| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,070 stars | 观察型 |
-| [0xwilliamortiz/claude-red](projects/claude-red.md) | 555 stars | 工具型 |
-| [AMAP-ML/LongHorizon-Harness](projects/longhorizon-harness.md) | 384 stars | 观察型 |
-| [trycompai/crm](projects/crm.md) | 7,471 stars | 平台候选 |
-| [yc-software/qm](projects/qm.md) | 12,274 stars | 平台候选 |
-| [KKKKhazix/human-writing](projects/human-writing.md) | 1,867 stars | 工具型 |
-| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,587 stars | 工具型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 12,055 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,769 stars | 观察型 |
+| [0xwilliamortiz/claude-red](projects/claude-red.md) | 681 stars | 工具型 |
+| [leonickson1/Swiftlet](projects/swiftlet.md) | 456 stars | 观察型 |
+| [jd-opensource/JoyAI-Video-Edit](projects/joyai-video-edit.md) | 512 stars | 观察型 |
+| [trycompai/crm](projects/crm.md) | 7,751 stars | 平台候选 |
+| [yc-software/qm](projects/qm.md) | 12,525 stars | 平台候选 |
+| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,588 stars (archived) | 观察型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，'加速器（Spectrum 353⭐/TE-Speed 179⭐）× 导演（Director 341⭐/多变体）× prompt 构建器'三层结构一周填满，9 个官方 Skill（含 prompt-writing + 8 风格化生成）** · 相关项目：minimax-h3 · 强度：88
-2. **anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速从 +72% 健康收敛到 +35%（非骤降），fork 370→506 破五百，爆发进入'稳态放量'阶段——+35% 印证昨日判断的健康收敛而非触及天花板** · 相关项目：anydoc · 强度：90
-3. **安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率极高）首个 Claude Skills 攻防安全库，58 skill × 13 攻击面（SQLi→shellcode→EDR 绕过），同 humanizer-cli 作者 0xwilliamortiz 在安全垂直验证 Skill 分发模式** · 相关项目：claude-red · 强度：84
-4. **长程 agent harness 架构范式——LongHorizon-Harness（384⭐，AMAP-ML/高德，HF Daily Papers 周榜 #1，arXiv 2608.01964）三角色分离（Manager/Executor/Auditor）+ 持久化可信状态 + fresh-context 执行，与 super-simple-software-factory 共同信号：agent 工程化从 prompt 转向架构** · 相关项目：longhorizon-harness, super-simple-software-factory · 强度：83
+1. **MiniMax-H3 反而加速——官方仓库增速从 +0 跃到 +65%（1,070→1,769），生态仓库 265→314，模型仓库自身增速反超衍生生态，视频生成赛道'生成质量瓶颈'让位于'推理成本+工作流编排'瓶颈的判断被市场继续确认，加速器类（Spectrum/Turbo）持续领跑衍生生态** · 相关项目：minimax-h3 · 强度：88
+2. **anydoc 进入稳态放量（10,866→12,055，+1,189/+11%，fork 506→575）——增速序列 +331%→+72%→+35%→+11%，五日衰减率单调收窄（衰减率本身在收敛），教科书式真实需求曲线收敛完成；稳态增量 +1K/日，万星量级头部位置巩固** · 相关项目：anydoc · 强度：90
+3. **open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日报告的 fork 异常暴增（343→914 单日+571，fork/star=0.58 异常）今天落地为归档，'疑似刷量或批量部署'判断被验证；同日 anydoc 稳态、claude-red 稳健增长（+23%）形成对比，验证'分清热度与价值'的方法论价值** · 相关项目：open-kimi-ppt-skill · 强度：78
+4. **本地 MoE 推理路线扩展到 Apple 原生栈——Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B Qwen3.6 MoE，峰值 2.6GB RAM，按需流式加载 expert），与 kimi-k3-in-c（C99，今日继续 +16% 加速）构成'本地大模型推理'赛道的多语言/多平台覆盖** · 相关项目：swiftlet, kimi-k3-in-c · 强度：83
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-09](daily/2026-08-09.md) | 12 | 4 |
 | [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
 | [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
 | [2026-08-04](daily/2026-08-04.md) | 8 | 4 |
 | [2026-08-03](daily/2026-08-03.md) | 5 | 3 |
-| [2026-08-02](daily/2026-08-02.md) | 5 | 3 |
 
 ## 为什么做这个项目
 

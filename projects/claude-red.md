@@ -2,10 +2,13 @@
 title: "0xwilliamortiz/claude-red"
 slug: claude-red
 date_added: 2026-08-08
-last_seen_date: 2026-08-08
+last_seen_date: "2026-08-09"
 category: "工具型"
 emoji: "🔴"
-stars: "555 stars"
+stars: "681 stars"
+stars_delta: "8/05创建→8/09观测 681⭐ / 86 fork / 208 watchers（30% watch 率极高），第八日 +126（+23%），安全 Skill 品类定义者地位巩固"
+language: "JavaScript"
+license: "MIT"
 score: 84
 tags: ["security", "redteam", "claude-skills", "offensive-security", "pentesting", "skill", "exploit-development", "edr-evasion"]
 url: "https://github.com/0xwilliamortiz/claude-red"
@@ -72,4 +75,10 @@ claude-red 的核心启发是**"专业领域知识正在被编码为 Agent Skill
 - 0xwilliamortiz 的下一个 Skill 项目（判断是否在系统化构建 Skill 生态矩阵）
 
 ---
-> 数据来源: GitHub API (2026-08-08) | Stars: 555 | Forks: 69 | Watchers: 169 | License: MIT | 语言: JavaScript | 创建: 2026-08-05 | Skill: 58 个 / 13 分类
+> 数据来源: GitHub API (2026-08-09) | Stars: 681 | Forks: 86 | Watchers: 208 | License: MIT | 语言: JavaScript | 创建: 2026-08-05 | Skill: 58 个 / 13 分类
+
+## 最近动态（2026-08-09）
+
+- **稳健增长 +126（+23%），208 watchers 持续高位**：555 → 681，fork 69 → 86（+17），watchers 169 → 208（+39，30% watch 率持续）。今日无新 commit（GitHub API 可核验：pushed_at 08-06），增长来自曝光惯性。
+- **安全 Skill 品类定义者地位巩固**：watchers 持续高位（208），说明安全从业者在持续关注而非一次性 star。同作者 humanizer-cli（586⭐，208 watchers）维持，0xwilliamortiz 在"专业垂直 Skill"赛道的能力进一步验证。
+- **判断（维持 score 84）**：+23% 稳健增长 + 30% watch 率持续，品类定义者地位巩固。今日无代码活动，增长来自曝光惯性，需关注后续是否有 skill 扩展或独立红队验证。

@@ -2,14 +2,14 @@
 title: "Binaryify/open-kimi-ppt-skill"
 slug: "open-kimi-ppt-skill"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-08"
+last_seen_date: "2026-08-09"
 category: "工具型"
 emoji: "🎞️"
-stars: "1,587 stars"
-stars_delta: "8/05创建→8/08观测 1,587⭐ / 914 fork，第四日 +301（+23%），但 fork 异常暴增 343→914（+571），fork/star=0.58 异常，疑似刷量或批量部署"
+stars: "1,588 stars (archived)"
+stars_delta: "⚠️ 已归档（archived=true）。8/05创建→8/09观测 1,588⭐ / 1,113 fork，fork/star=0.70 极端异常，昨日判断被验证，降级案例库"
 language: "Python"
 license: "MIT"
-score: 82
+score: 70
 tags: ["ppt-generation", "kimi-slides", "reverse-engineering", "agent-skill", "pptx", "python"]
 url: "https://github.com/Binaryify/open-kimi-ppt-skill"
 ---
@@ -73,3 +73,15 @@ open-kimi-ppt-skill 的设计哲学是 **"逆向官方格式以获得可编辑�
 - **第三日爆发 +756（+142%），fork 149→343（+194）**：530 → 1,286，fork 增量 +194 是强部署意愿信号（fork/star 比 26.7%，极高）。增速从首日爆发后不降反升（+142%），说明话题性爆发有持续放大。
 - **判断修正**：score 82 → 83。爆发持续 + fork 高增长。但 +142% 增速不可持续，关键看 08-08 回落斜率。
 - **风险（不变）**：逆向工程路径有法律/稳定性风险（README 自述非官方，可能随 Kimi 更新失效）。pushed_at 08-06（活跃维护）。
+
+## 最近动态（2026-08-08）
+
+- **第四日 +301（+23%），但 fork 异常暴增 343→914（+571）**：1,286 → 1,587，fork/star=0.58 异常（正常项目 <0.3）。单日 fork +571 远超 star +301，疑似刷量或批量部署。降级观察。
+- **判断修正**：score 83 → 82。fork 异常比值是可疑信号。
+
+## 最近动态（2026-08-09）
+
+- **⚠️ 仓库已被作者归档（archived=true，GitHub API 可核验）**：1,588⭐ / 1,113 fork。昨日报告的"fork 异常暴增 343→914（单日+571），fork/star=0.58 异常，疑似刷量或批量部署"判断今天落地为归档。
+- **fork 异常持续但 star 几乎不动**：fork 914→1,113（+199，异常持续），star 1,587→1,588（+1，几乎无增长）。fork/star=0.70 极端异常。
+- **方法论验证案例**：这是一个"异常 fork 增速 → 提前标记 → 落地归档"的完整案例。fork 增速远超 star 增速（fork/star 比从 0.27→0.58→0.70 持续恶化）是"刷量/批量部署/弃坑前兆"的可靠信号。
+- **判断修正**：score 82 → 70。降级为案例库，不再跟踪。归档后 star/fork 基本冻结。

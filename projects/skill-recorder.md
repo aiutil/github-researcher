@@ -2,11 +2,11 @@
 title: "microsoft/skill-recorder"
 slug: skill-recorder
 date_added: "2026-08-03"
-last_seen_date: "2026-08-08"
+last_seen_date: "2026-08-09"
 category: "工具型"
 emoji: "🎥"
-stars: "2,312 stars"
-stars_delta: "7/29创建→8/08 2,312⭐（第七日 +185/+9%，增速稳定），fork 220→245"
+stars: "2,509 stars"
+stars_delta: "7/29创建→8/09 2,509⭐（第八日 +197/+9%，增速稳定），fork 245→266"
 language: "TypeScript"
 license: "MIT"
 score: 84
@@ -89,3 +89,12 @@ Microsoft 官方桌面应用：录屏捕获一次真实工作会话（点击、�
 - **第六日 +183（+9%），跨入 2K 关口**：1,944 → 2,127，fork 193 → 220（+27）。增速稳定衰减（+11%→+9%），但仍维持正增长。
 - **三层栈稳定**：skill-recorder（技能提取，事前）+ 今日发现的"去 AI 腔"写作治理三层谱系（ratchet 事前约束 / human-writing 事中改写 / humanizer-cli 事后检测）共同构成 agent 写作/技能质量基础设施。skill-recorder 是"制造 skill 的工具"，与 humanizer 谱系是"改善 skill 输出质量的工具"互补。
 - **判断**：score 维持 84。稳定增长 + 品类定位巩固。pushed_at 08-06（活跃开发）。open_issues 30（略降，健康的 issue 处理）。
+
+## 最近动态（2026-08-08）
+
+- **第七日 +185（+9%），增速稳定**：2,127 → 2,312，fork 220 → 245（+25）。增速维持 +9%，是应用层中最稳定的项目。
+
+## 最近动态（2026-08-09）
+
+- **第八日 +197（+9%），增速稳定，fork 245→266（+21）**：2,312 → 2,509，连续两日 +9%，是应用层中唯一增速稳定（非衰减）的项目。今日有新提交（pushed_at 08-07）。open_issues 32（略升）。
+- **判断（维持 score 84）**：连续两日 +9% 稳定增长，三层栈"技能提取层"定位巩固。对比 qm（+2%）、crm（+4%）、genoffice（+4%）的衰减，skill-recorder 的稳定性说明"录屏→Skill 生成"有持续需求。

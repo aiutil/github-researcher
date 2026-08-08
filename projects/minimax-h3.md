@@ -2,11 +2,11 @@
 title: "MiniMax-AI/MiniMax-H3"
 slug: minimax-h3
 date_added: 2026-08-08
-last_seen_date: 2026-08-08
+last_seen_date: "2026-08-09"
 category: "观察型"
 emoji: "🎬"
-stars: "1,070 stars"
-score: 86
+stars: "1,769 stars"
+score: 88
 tags: ["video-generation", "minimax", "comfyui", "audio-video", "h3", "prompt-skill", "t2v", "i2v"]
 url: "https://github.com/MiniMax-AI/MiniMax-H3"
 ---
@@ -71,4 +71,12 @@ MiniMax-H3 的最大启发是**"模型发布的竞争已从'模型本身'延伸�
 - Skill 分发模式是否被其他模型厂商效仿
 
 ---
-> 数据来源: GitHub API (2026-08-08) | Stars: 1,070 | Forks: 56 | License: 自定义 | 语言: Python | 创建: 2026-07-30 | 生态: 265 衍生仓库 / 3,039 累计星标（GitHub Search 可核验）
+> 数据来源: GitHub API (2026-08-09) | Stars: 1,769 | Forks: 97 | License: 自定义(未明确标注) | 语言: Python | 创建: 2026-07-30 | 生态: 314 衍生仓库（GitHub Search "minimax h3" created:>2026-08-01 可核验）
+
+## 最近动态（2026-08-09）
+
+- **反而加速 +699（+65%），模型仓库增速反超衍生生态**：1,070 → 1,769，fork 56 → 97（+41），subscribers 9 → 12。衍生生态仓库从 265 增至 314（+49）。**关键反转**：前几日衍生生态增速领先，今天官方仓库自身增速（+65%）反超衍生生态增量。
+- **加速器类持续领跑衍生生态**：Spectrum 353→382⭐（+29），Turbo 为新进入者（291⭐），Director 341→406⭐（+65）。加速器类（Spectrum/Turbo）领跑说明**推理成本仍是首要瓶颈**。
+- **生态从"插件爆发期"进入"主路径集成期"**：当加速器（解决"太慢"）和导演（解决"难控"）填满后，用户开始回到官方仓库做主路径集成。模型仓库 +65% vs 衍生生态 +49 仓库，印证昨日"瓶颈在推理成本+工作流编排而非生成质量"的判断。
+- **判断修正**：score 86 → 88。官方仓库加速 + 生态主路径集成期 + 加速器类持续领跑，共同提升 score。
+- **风险（更新）**：官方仓库仍无 license 标注（license=null，GitHub API 可核验），是法律采用风险变量。314 仓库中大量同质化（Director 变体、Cache 变体），淘汰期后可能大幅萎缩。模型质量未独立基准测试。

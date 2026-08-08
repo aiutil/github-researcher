@@ -2,14 +2,14 @@
 title: "FareedKhan-dev/kimi-k3-in-c"
 slug: kimi-k3-in-c
 date_added: "2026-08-03"
-last_seen_date: "2026-08-08"
+last_seen_date: "2026-08-09"
 category: "观察型"
 emoji: "💠"
-stars: "3,247 stars"
-stars_delta: "8/01创建→8/08 3,247⭐（第七日 +446/+16%，突破 3K），fork 466→534，增速回升"
+stars: "3,751 stars"
+stars_delta: "8/01创建→8/09观测 3,751⭐ / 582 fork / 38 subscribers，第八日 +504（+16%），继续加速，fork 466→582，与 Swiftlet 形成'多平台本地推理'共振"
 language: "C"
 license: "Apache-2.0"
-score: 84
+score: 85
 tags: ["kimi-k3", "moe", "local-inference", "c99", "zero-dependencies", "cpu-inference", "trillion-parameter", "mxfp4"]
 url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 ---
@@ -93,3 +93,15 @@ url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 - **"极限低内存"叙事延续**：作为"2.78T 参数在 8.24GB RAM 跑"的可行性证明，持续吸引注意力。fork 466 说明有人在尝试复现/学习。
 - **判断**：score 维持 83。叙事热度收敛中，价值仍在可行性证明（RAM 极限），非日常可用。pushed_at 08-06（有新代码推送）。open_issues 2（低）。
 - **待验证（不变）**：8.24GB RSS、32s/token、字节一致输出仍为作者自述，未见独立第三方复现。
+
+## 最近动态（2026-08-08）
+
+- **突破 3K 关口 +446（+16%），增速回升**：2,801 → 3,247，fork 466 → 534（+68）。增速从 +10%（08-07）回升到 +16%（08-08），打破收敛趋势。
+- **判断修正**：score 83 → 84。增速回升 + 突破 3K 关口。
+
+## 最近动态（2026-08-09）
+
+- **继续加速 +504（+16%），fork 534→582（+48）**：3,247 → 3,751，连续两日 +16%。与 Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B MoE）形成"多平台本地推理"共振——"本地大模型推理"赛道从 C99 单点扩展到多平台覆盖（C99 + Apple Swift 原生栈）。
+- **技术路线同构验证**：kimi-k3-in-c（dense core 驻留 + 按需流式加载 MoE expert）与 Swiftlet 的技术策略同构，但面向不同平台。两者共同信号："本地 MoE 流式推理"正成为独立赛道。
+- **判断修正**：score 84 → 85。连续两日 +16% 加速 + 多平台共振 + 38 subscribers（深度跟踪意愿维持）。
+- **待验证（不变）**：8.24GB RSS、32s/token、字节一致输出仍为作者自述，未见独立第三方复现。今日有新提交（pushed_at 08-07）。

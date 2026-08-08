@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-08-09
+
+**核心主题：** MiniMax-H3 反而加速（1,070→1,769，+699/+65%），生态仓库 265→314，模型仓库自身增速反超衍生生态，"生成质量瓶颈"让位于"推理成本+工作流"瓶颈的判断被市场继续确认 · anydoc 进入稳态（10,866→12,055，+1,189/+11%，增速序列 +331%→+72%→+35%→+11% 单调收敛，教科书式真实需求曲线收敛完成） · open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日 fork 异常暴增（343→914）后的可疑信号今天落地为归档，刷量/弃坑判断被验证 · 本地 MoE 推理路线扩展到 Apple 原生栈——Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B Qwen3.6 MoE，峰值 2.6GB RAM）
+
+**关键项目：**
+- 📑 firecrawl/anydoc (12,055, 更新 +1,189) — Firecrawl 文档解析，稳态放量 +11%，增速序列单调收敛，fork 破 575，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (1,769, 更新 +699) — 视频生成模型，反而加速 +65%，模型仓库增速反超衍生生态（265→314），Score 86→88
+- 🔴 0xwilliamortiz/claude-red (681, 更新 +126) — Claude Skills 攻防安全库，+23%，208 watchers 持续高位，Score 84
+- 🍎 leonickson1/Swiftlet (456, 新增) — Swift+Metal 在 iPhone 17 上跑 35B MoE，本地推理路线扩展到 Apple 栈，Score 83
+- 🎞️ jd-opensource/JoyAI-Video-Edit (512, 新增) — 京东实时流式视频编辑，720p 30 FPS，因果 VAE，Score 82
+- 📋 trycompai/crm (7,751, 更新 +280) — Agentic-first CRM，+4% 连续四日衰减尾声，应用层进入衰减尾声，Score 87
+- 👥 yc-software/qm (12,525, 更新 +251) — 多人协作 agent harness，+2% 连续三日停滞，万星稳态确认，Score 87
+- 🔇 Binaryify/open-kimi-ppt-skill (1,588, 更新 归档) — 已被作者归档，昨日 fork 异常判断被验证，降级案例库，Score 82→70
+- ✍️ KKKKhazix/human-writing (1,985, 更新 +118) — 中文"活人感"写作 Skill，+6% 增速骤降，逼近 2K 但增长明显放缓，Score 85→84
+- 💠 FareedKhan-dev/kimi-k3-in-c (3,751, 更新 +504) — 便携 C99 K3，继续加速 +16%，与 Swiftlet 多平台共振，Score 84→85
+- 📄 genspark-ai/genoffice (2,249, 更新 +86) — AI-native 办公套件，+4% 增速持续衰减，Score 85→84
+- 🎥 microsoft/skill-recorder (2,509, 更新 +197) — Microsoft 录屏→Skill，+9% 增速稳定，应用层唯一非衰减项目，Score 84
+
+---
+
 ## 2026-08-08
 
 **核心主题：** MiniMax H3 视频生成模型引爆 ComfyUI 插件生态——官方仓库 1,070⭐ + 265 个衍生仓库 + 3,039 累计生态星标，"加速器×导演×prompt 构建器"三层结构一周填满，"模型发布即生态"新范式 · anydoc 跨入万星（8,069→10,866，+2,797/+35%），增速健康收敛（+72%→+35%），fork 破 500 · 安全 Skill 品类出现——claude-red（555⭐/169 watchers，30% watch 率）首个 Claude Skills 攻防库，58 skill × 13 攻击面，同 humanizer-cli 作者 · 长程 agent harness 架构范式——LongHorizon-Harness（384⭐，HF Daily Papers 周榜 #1）三角色分离 + 持久化可信状态
