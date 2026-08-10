@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-09.md">最新日报</a> ·
+  <a href="daily/2026-08-11.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-09
+## 最新研究 · 2026-08-11
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 12 | 441 | 4 | 14k+ |
+| 12 | 444 | 4 | 16k+ |
 
-**今日核心判断：** MiniMax-H3 反而加速（1,070→1,769，+699/+65%），生态仓库 265→314，模型仓库自身增速超过衍生生态，'生成质量瓶颈'让位于'推理成本+工作流'瓶颈的判断被市场继续确认 · anydoc 进入稳态（10,866→12,055，+1,189/+11%，增速序列 +331%→+72%→+35%→+11%，五日衰减率单调收窄，教科书式真实需求曲线收敛完成） · open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日 fork 异常暴增（343→914）后的可疑信号今天落地为归档，刷量/弃坑判断被验证 · Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B MoE，峰值 2.6GB RAM）——本地 MoE 流式加载路线从 C99（kimi-k3-in-c）扩展到 Apple/Swift 原生栈
+**今日核心判断：** 0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，'安全 Skill 品类定义者'一夜蒸发（可核验：API 返回 404；原因待观察） · MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），Redis 创始人 antirez 发布 h3.c 原生 Metal 推理引擎（129⭐，M5 Max 端到端视频生成），'推理成本瓶颈'判断获最高信誉背书 · anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 稳定在 600-700 区间两日，真实需求曲线进入成熟期） · phone-harness 加速（789→1,282，+493/+62.5%，'phone-as-tool'赛道验证加强）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 12,055 stars | 工具型 |
-| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,769 stars | 观察型 |
-| [0xwilliamortiz/claude-red](projects/claude-red.md) | 681 stars | 工具型 |
-| [leonickson1/Swiftlet](projects/swiftlet.md) | 456 stars | 观察型 |
-| [jd-opensource/JoyAI-Video-Edit](projects/joyai-video-edit.md) | 512 stars | 观察型 |
-| [trycompai/crm](projects/crm.md) | 7,751 stars | 平台候选 |
-| [yc-software/qm](projects/qm.md) | 12,525 stars | 平台候选 |
-| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,588 stars (archived) | 观察型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 13,399 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 4,164 stars | 观察型 |
+| [antirez/h3.c](projects/h3c.md) | 129 stars | 观察型 |
+| [ShawnPana/phone-harness](projects/phone-harness.md) | 1,282 stars | 观察型 |
+| [0xwilliamortiz/claude-red](projects/claude-red.md) | deleted (404) | 观察型 |
+| [FareedKhan-dev/kimi-k3-in-c](projects/kimi-k3-in-c.md) | 4,649 stars | 观察型 |
+| [oil-oil/oil-motion](projects/oil-motion.md) | 1,142 stars | 工具型 |
+| [trycompai/crm](projects/crm.md) | 8,102 stars | 平台候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **MiniMax-H3 反而加速——官方仓库增速从 +0 跃到 +65%（1,070→1,769），生态仓库 265→314，模型仓库自身增速反超衍生生态，视频生成赛道'生成质量瓶颈'让位于'推理成本+工作流编排'瓶颈的判断被市场继续确认，加速器类（Spectrum/Turbo）持续领跑衍生生态** · 相关项目：minimax-h3 · 强度：88
-2. **anydoc 进入稳态放量（10,866→12,055，+1,189/+11%，fork 506→575）——增速序列 +331%→+72%→+35%→+11%，五日衰减率单调收窄（衰减率本身在收敛），教科书式真实需求曲线收敛完成；稳态增量 +1K/日，万星量级头部位置巩固** · 相关项目：anydoc · 强度：90
-3. **open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日报告的 fork 异常暴增（343→914 单日+571，fork/star=0.58 异常）今天落地为归档，'疑似刷量或批量部署'判断被验证；同日 anydoc 稳态、claude-red 稳健增长（+23%）形成对比，验证'分清热度与价值'的方法论价值** · 相关项目：open-kimi-ppt-skill · 强度：78
-4. **本地 MoE 推理路线扩展到 Apple 原生栈——Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B Qwen3.6 MoE，峰值 2.6GB RAM，按需流式加载 expert），与 kimi-k3-in-c（C99，今日继续 +16% 加速）构成'本地大模型推理'赛道的多语言/多平台覆盖** · 相关项目：swiftlet, kimi-k3-in-c · 强度：83
+1. **0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，安全 Skill 品类定义者一夜蒸发。可核验事实：GitHub API 对用户和两个仓库均返回 404。原因无法从 API 确定（可能是自删/强制措施/改名），标记为待观察。这是本周第二个'高关注度项目突然消失'案例（前一个是 open-kimi-ppt-skill 归档），凸显 Skill 生态的脆弱性** · 相关项目：claude-red · 强度：86
+2. **MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），衍生生态 351→379。Redis 创始人 antirez（Salvatore Sanfilippo，30.7k followers）发布 h3.c——原生 Metal 推理引擎，在 M5 Max 上端到端 prompt→video/audio，含 int8 量化/首尾帧条件/Ref2VA 引用。这是'推理成本是瓶颈'判断的最高信誉背书** · 相关项目：minimax-h3, h3c · 强度：90
+3. **anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 连续两日稳定在 600-700 区间），真实需求曲线进入成熟期。增速序列 +331%→+72%→+35%→+11%→+5%→+5.7%，衰减率本身已收敛到低个位数稳态** · 相关项目：anydoc · 强度：90
+4. **phone-harness 加速（789→1,282，+493/+62.5%），fork 60→100，'phone-as-tool' agent 终端赛道验证加强。同一窗口期出现 sv-number/mcp-server（542⭐，phone number MCP）和 Klepton（104⭐，visionOS APK 兼容层），'手机/设备作为 agent 工具'信号扩散** · 相关项目：phone-harness · 强度：85
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-11](daily/2026-08-11.md) | 12 | 4 |
+| [2026-08-10](daily/2026-08-10.md) | 12 | 4 |
 | [2026-08-09](daily/2026-08-09.md) | 12 | 4 |
 | [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
 | [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
-| [2026-08-04](daily/2026-08-04.md) | 8 | 4 |
-| [2026-08-03](daily/2026-08-03.md) | 5 | 3 |
 
 ## 为什么做这个项目
 

@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-09'
+last_updated: '2026-08-11'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,58 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-11（第九十六版）
+
+### 0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，安全 Skill 品类定义者一夜蒸发（可核验：API 返回 404；原因待观察） · MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），Redis 创始人 antirez 发布 h3.c 原生 Metal 推理引擎（129⭐），"推理成本是瓶颈"判断获最高信誉背书 · anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 稳定在 600-700 区间两日，真实需求曲线进入成熟期） · phone-harness 加速（789→1,282，+493/+62.5%，"phone-as-tool"赛道验证加强）
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | 0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，安全 Skill 品类定义者一夜蒸发。可核验事实：GitHub API 对用户和两个仓库均返回 404。原因无法从 API 确定，标记为待观察 | claude-red | 86 |
+| 2 | MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），衍生生态 351→379。Redis 创始人 antirez（Salvatore Sanfilippo，30.7k followers）发布 h3.c——原生 Metal 推理引擎，在 M5 Max 上端到端 prompt→video/audio | minimax-h3, h3c | 90 |
+| 3 | anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 连续两日稳定在 600-700 区间），真实需求曲线进入成熟期，增速序列 +331%→+72%→+35%→+11%→+5%→+5.7% 衰减率已收敛到低个位数 | anydoc | 90 |
+| 4 | phone-harness 加速（789→1,282，+493/+62.5%），fork 60→100，"phone-as-tool" agent 终端赛道验证加强 | phone-harness | 85 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| firecrawl/anydoc | 13,399 | 工具型 | 90 | 更新（12,680→13,399，+719/+5.7%，delta 稳定 600-700 区间，成熟稳态） |
+| MiniMax-AI/MiniMax-H3 | 4,164 | 观察型 | 90 | 更新（2,693→4,164，+1,471/+55%，连续三日高位，衍生生态 351→379，score 89→90） |
+| antirez/h3.c | 129 | 观察型 | 86 | 新增（Redis 创始人的 H3 原生 Metal 推理引擎，Apple Silicon 端到端 video/audio） |
+| ShawnPana/phone-harness | 1,282 | 观察型 | 85 | 更新（789→1,282，+493/+62.5%，加速，fork 60→100，score 84→85） |
+| 0xwilliamortiz/claude-red | deleted | 观察型 | 70 | 更新（全账号 404，安全 Skill 品类定义者消失，score 84→70） |
+| oil-oil/oil-motion | 1,142 | 工具型 | 83 | 新增（Agent 交互动画 Skill，AI 视频帧→滚动/鼠标映射，品类开创者） |
+| FareedKhan-dev/kimi-k3-in-c | 4,649 | 观察型 | 85 | 更新（4,162→4,649，+487/+11.7%，持续放量） |
+| trycompai/crm | 8,102 | 平台候选 | 86 | 更新（7,955→8,102，+147/+1.8%，连续六日衰减尾声，score 87→86） |
+| yc-software/qm | 12,950 | 平台候选 | 86 | 更新（12,757→12,950，+193/+1.5%，停滞通道确认，score 87→86） |
+| KKKKhazix/human-writing | 2,266 | 工具型 | 84 | 更新（2,092→2,266，+174/+8.3%，增速稳定在 +5-8% 区间） |
+| Binaryify/open-kimi-ppt-skill | 1,607 | 观察型 | 70 | 更新（archived，star +1，fork 1,152→1,182 仍异常增长） |
+| genspark-ai/genoffice | 2,469 | 平台候选 | 84 | 更新（2,344→2,469，+125/+5.3%，增速持续衰减） |
+
+#### 趋势观察
+
+- **Skill 生态单点脆弱性暴露：** claude-red 全账号 404 是本周第二个"高关注度 Skill 项目异变"案例（前一个是 open-kimi-ppt-skill 归档）。品类定义者可一夜蒸发，Skill 分发无去中心化保障。攻防类内容尤其脆弱（可能触发 TOS 审查）。
+- **H3 原生推理层出现：** antirez/h3.c 将 H3 优化从"ComfyUI 插件层"推进到"原生 Metal 层"。Redis 之父的参与是"推理成本是真问题"的最高信誉背书。衍生生态从插件（Spectrum/Director/Turbo）延伸到原生推理引擎。
+- **anydoc 进入成熟稳态：** delta 连续两日稳定在 600-700 区间，衰减率已收敛到低个位数。日均 +600-700 可能是该赛道的自然需求水位。
+- **应用层全面进入稳态尾声：** crm（+1.8%）、qm（+1.5%）、genoffice（+5.3%）增速全面下降到低个位数。
+- **"设备即工具"赛道扩散：** phone-harness 加速 + sv-number/mcp-server（phone number MCP）+ Klepton（visionOS APK 兼容层），信号扩散中。
+
+## 2026-08-10（第九十五版）
+
+### MiniMax-H3 继续加速（1,769→2,693，+924/+52%，连续两日高位，衍生生态仓库 314→351） · anydoc 正式进入收敛尾声（12,055→12,680，+625/+5%，恰好落在预测的稳态区间） · phone-harness（789⭐，"phone-as-tool" agent 终端赛道出现） · open-kimi-ppt-skill 归档后 fork 仍异常增长
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| firecrawl/anydoc | 12,680 | 工具型 | 90 | 更新（12,055→12,680，+625/+5%，收敛尾声） |
+| MiniMax-AI/MiniMax-H3 | 2,693 | 观察型 | 89 | 更新（1,769→2,693，+924/+52%，连续两日高位） |
+| ShawnPana/phone-harness | 789 | 观察型 | 84 | 新增（agent 通过 macOS iPhone Mirroring 控制真实 iPhone） |
+| 0xwilliamortiz/claude-red | 701 | 工具型 | 84 | 更新（681→701，+20/+3%，增速放缓） |
+| FareedKhan-dev/kimi-k3-in-c | 4,162 | 观察型 | 85 | 更新（3,751→4,162，+411/+11%，继续加速） |
 
 ## 2026-08-09（第九十四版）
 

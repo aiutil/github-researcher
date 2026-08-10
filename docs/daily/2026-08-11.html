@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-11 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-11">GitHub 趋势研究简报 - 2026-08-11</h1>
+<blockquote>
+<p>本报基于 GitHub API + 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-08-11。所有 star/fork/created_at/pushed_at/license/language/archived 均来自 GitHub API（可核验事实），推断与待观察项会显式标注。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天最重要的信号是一个<strong>可核验的消失事件</strong>和一个<strong>最高信誉级别的技术背书</strong>：</p>
+<ol>
+<li>
+<p><strong>0xwilliamortiz 全账号 404——claude-red + humanizer-cli 双双消失。</strong> 今日对 <code>0xwilliamortiz/claude-red</code>（昨日 701⭐）和 <code>0xwilliamortiz/humanizer-cli</code>（此前跟踪）发起 GitHub API 请求，<strong>用户账号和两个仓库均返回 404 Not Found</strong>（可核验）。<code>/users/0xwilliamortiz</code> 也返回 404，说明不是单个仓库被删，而是<strong>整个账号级别的事件</strong>。<strong>原因无法从 API 确定</strong>——可能是作者主动删除、GitHub 强制措施（TOS 违规）、账号被盗后清除、或改名迁移。标记为<strong>待观察</strong>。这是本周第二个"高关注度项目突然消失"案例（前一个是 open-kimi-ppt-skill 归档），凸显 Skill 生态的<strong>单点脆弱性</strong>：一个作者掌握的品类定义项目可以一夜蒸发。</p>
+</li>
+<li>
+<p><strong>MiniMax-H3 再加速（+55%），连续三日高位放量，Redis 创始人发布 h3.c。</strong> <code>MiniMax-AI/MiniMax-H3</code>（4,164⭐ / 264 fork / 33 subscribers，Python，license 未标注，创建 07-30）今日 +1,471（2,693→4,164，+55%），<strong>连续三日增速 +65%→+52%→+55%</strong>，绝对增量 +699→+924→+1,471 持续上升。衍生生态仓库从 351 增至 379（GitHub Search API）。更重要的是：<strong>antirez（Salvatore Sanfilippo，Redis 创始人，30,742 followers）发布了 <code>antirez/h3.c</code></strong>（129⭐ / 7 fork，C，MIT，创建 08-09）——MiniMax-H3 的原生 Metal 推理引擎，在 Apple Silicon 上端到端 prompt→video/audio。这是"<strong>视频生成落地瓶颈在推理成本而非生成质量</strong>"判断的<strong>最高信誉级别背书</strong>——当 Redis 之父亲自写 C/Metal 推理引擎时，说明推理优化确实是真问题。</p>
+</li>
+<li>
+<p><strong>anydoc 收敛持续——delta 稳定在 600-700 区间两日。</strong> <code>firecrawl/anydoc</code>（13,399⭐ / 675 fork / 35 subscribers，Rust，MIT，创建 08-03）第十日 +719（12,680→13,399，+5.7%）。<strong>关键观察</strong>：绝对增量连续两日稳定在 +625→+719 区间（不再持续下降），增速序列 +331%→+72%→+35%→+11%→+5%→+5.7%——衰减率本身已收敛到低个位数。<strong>推断</strong>：真实需求曲线可能已进入"成熟稳态"阶段，日均 +600-700 是 anydoc 在文档解析赛道的自然需求水位。</p>
+</li>
+<li>
+<p><strong>phone-harness 加速（+62.5%），"phone-as-tool"赛道验证加强。</strong> <code>ShawnPana/phone-harness</code>（1,282⭐ / 100 fork / 5 subscribers，Python，MIT，创建 08-07）今日 +493（789→1,282，+62.5%），fork 60→100（+67%）。subscribers 从 1→5。同一窗口期出现相关信号：sv-number/mcp-server（542⭐，phone number MCP for AI agents）和 shinyquagsire23/Klepton（104⭐，visionOS 上跑 Android XR APK 的兼容层）。<strong>推断</strong>：把手机/物理设备作为 agent 工具的赛道正在从单点扩散。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>证据边界声明</strong>：所有 star/fork/created_at/pushed_at/license/language/archived 均来自 GitHub API（可核验事实）。0xwilliamortiz 账号及仓库 404 为 GitHub API 可核验事实；<strong>404 的原因（自删/强制/改名）无法从 API 确定，标记为待观察</strong>。MiniMax-H3 衍生仓库计数 379 来自 GitHub Search API（可核验）。antirez 身份（Salvatore Sanfilippo, Redis creator）来自其 GitHub bio 和 public_repos/followers 数据（可核验）。h3.c 的技术能力（Metal 推理、int8 量化、首尾帧）来自 README（可核验）；"M5 Max 性能数据"为 README 自述，未独立复现。anydoc "delta 稳定"为基于连续七日 API 数据的推断。所有增速百分比为基于 GitHub API 连续观测的计算值（可核验）。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-0xwilliamortiz-404-skill-86">1. 0xwilliamortiz 全账号 404——安全 Skill 品类定义者一夜蒸发（评分 86）</h3>
+<p><strong>可核验事实：</strong>
+- <code>GET /repos/0xwilliamortiz/claude-red</code> → 404 Not Found
+- <code>GET /users/0xwilliamortiz</code> → 404 Not Found
+- <code>GET /users/0xwilliamortiz/repos</code> → 返回空数组 <code>[]</code>
+- 昨日（08-10）claude-red 数据：701⭐ / 208 watchers / 58 skill × 13 攻击面</p>
+<p><strong>无法确定（待观察）：</strong>
+- 消失原因：主动删除 / GitHub TOS 强制 / 账号被盗 / 改名迁移——API 无法区分
+- 是否会以新账号/新仓库名重新出现
+- humanizer-cli（此前也由该作者维护）同样消失</p>
+<p><strong>架构师判断：</strong> 无论原因如何，这暴露了 Skill 生态的<strong>单点脆弱性</strong>。claude-red 是"安全 Skill 品类"的品类定义者（58 个攻击 Skill × 13 攻击面），被 208 个 watchers 深度关注——这样一个高影响力项目可以一夜蒸发，说明：
+- Skill 分发仍依赖单作者/单仓库，无去中心化备份
+- 攻防类 Skill 尤其脆弱——可能触发平台 TOS 审查（含攻击性内容）
+- "品类定义者消失"后，该品类可能断档或被 fork 继承（fork 是否仍存在取决于是否有人在消失前 fork）</p>
+<p>本周已出现两个"高关注度 Skill 项目异变"案例：open-kimi-ppt-skill（归档，fork 仍异常增长）和 claude-red（全账号 404）。<strong>Skill 生态的"消失风险"值得作为独立跟踪维度。</strong></p>
+<h3 id="2-minimax-h3-antirez-h3c-90">2. MiniMax-H3 再加速 + antirez 发布 h3.c——推理成本瓶颈获最高信誉背书（评分 90）</h3>
+<p>H3 生态连续四日追踪，加速趋势不改：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>08-08</th>
+<th>08-09</th>
+<th>08-10</th>
+<th>08-11</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官方仓库 stars</td>
+<td>1,070</td>
+<td>1,769</td>
+<td>2,693</td>
+<td>4,164</td>
+<td>+699 → +924 → +1,471</td>
+</tr>
+<tr>
+<td>增速%</td>
+<td>—</td>
+<td>+65%</td>
+<td>+52%</td>
+<td>+55%</td>
+<td>连续三日 50%+</td>
+</tr>
+<tr>
+<td>衍生生态仓库数</td>
+<td>265</td>
+<td>314</td>
+<td>351</td>
+<td>379</td>
+<td>+49 → +37 → +28</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>56</td>
+<td>97</td>
+<td>160</td>
+<td>264</td>
+<td>+41 → +63 → +104</td>
+</tr>
+</tbody>
+</table>
+<p><strong>今日最大新增信号——antirez/h3.c（129⭐）：</strong>
+- 作者：<strong>Salvatore Sanfilippo（antirez）</strong>，Redis 创始人，30,742 followers，109 个公开仓库（API 可核验）
+- 定位：MiniMax-H3 的<strong>原生 Metal 推理引擎</strong>，专为 Apple Silicon 优化
+- 能力（README 可核验）：端到端 prompt→video/audio、首尾帧条件（<code>!first</code>/<code>!last</code>）、Ref2VA 图像/视频/音频引用、交互式会话
+- 性能优化：int8 量化（M5 Metal 4 TensorOps）、QKV/MLP 融合核、core-resuse/token-reduction，M5 Max 上峰值 25.9 GiB
+- 质量方法学：README 提供了 SSIM 对照（4-step vs 29-step reference = 0.556）、速度对照（4-step ~3.5s vs 29-step ~26.4s on M5 Max）——<strong>这些是作者自述，未独立复现</strong></p>
+<p><strong>架构师判断：</strong> antirez 的参与是"推理成本是瓶颈"判断的<strong>最高信誉级别背书</strong>。Redis 之父以系统编程和极致性能优化闻名，他亲自为 H3 写 C/Metal 推理引擎，说明：
+1. H3 的推理成本确实高到值得顶级系统工程师投入
+2. "模型发布→社区推理优化"已成为视频生成模型落地的标准路径
+3. 衍生生态从"ComfyUI 插件层"（Spectrum/Director/Turbo）延伸到"原生推理层"（h3.c），瓶颈攻关进入更深栈层</p>
+<p>需注意：h3.c 仍极早期（129⭐ / 7 fork / 1 subscriber），且绑定 Apple Silicon（macOS only）。H3 官方仓库仍无 license 标注（license=null，API 可核验）。</p>
+<h3 id="3-anydoc-delta-600-700-90">3. anydoc 收敛持续——delta 稳定在 600-700 区间（评分 90）</h3>
+<p>连续七日追踪，增速序列完成收敛到稳态：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>08-05</th>
+<th>08-06</th>
+<th>08-07</th>
+<th>08-08</th>
+<th>08-09</th>
+<th>08-10</th>
+<th>08-11</th>
+<th>七日累计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anydoc stars</td>
+<td>1,086</td>
+<td>4,688</td>
+<td>8,069</td>
+<td>10,866</td>
+<td>12,055</td>
+<td>12,680</td>
+<td>13,399</td>
+<td>+12,313</td>
+</tr>
+<tr>
+<td>anydoc forks</td>
+<td>40</td>
+<td>205</td>
+<td>370</td>
+<td>506</td>
+<td>575</td>
+<td>628</td>
+<td>675</td>
+<td>+635</td>
+</tr>
+<tr>
+<td>增速%</td>
+<td>—</td>
+<td>+331%</td>
+<td>+72%</td>
+<td>+35%</td>
+<td>+11%</td>
+<td>+5%</td>
+<td>+5.7%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>绝对增量</td>
+<td>—</td>
+<td>+3,602</td>
+<td>+3,381</td>
+<td>+2,797</td>
+<td>+1,189</td>
+<td>+625</td>
+<td>+719</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键观察——delta 可能已进入稳态：</strong> 绝对增量从 +625（08-10）微升到 +719（08-11），<strong>连续两日稳定在 600-700 区间</strong>。增速 +5%→+5.7% 也趋于平稳。<strong>推断</strong>：anydoc 的真实需求曲线可能已到达"成熟稳态水位"——日均 +600-700 是文档解析赛道对该工具的自然需求增量。fork 628→675（+47）仍在稳定增长，集成意愿持续。</p>
+<p><strong>架构师判断：</strong> 与脉冲项目（open-kimi-ppt-skill 归档后 fork 仍异常增长）的对比仍在：anydoc star/fork 同步健康增长（star +719 / fork +47），脉冲项目 star 几乎不动（+1）但 fork 持续异常增长（+30）。这一对比继续验证"分清真实需求与批量部署"的方法论。</p>
+<h3 id="4-phone-harness-phone-as-tool-85">4. phone-harness 加速——"phone-as-tool"赛道信号扩散（评分 85）</h3>
+<p><code>ShawnPana/phone-harness</code>（1,282⭐ / 100 fork / 5 subscribers，Python，MIT，创建 08-07）第二日追踪：+493（789→1,282，+62.5%），fork +67%（60→100），subscribers 1→5。</p>
+<p>同一窗口期的相关信号：
+- <code>sv-number/mcp-server</code>（542⭐ / 0 fork，JavaScript，创建 08-07）——为 AI agent 提供 phone number 的 MCP server，可在 200+ 国家订购私有号码
+- <code>shinyquagsire23/Klepton</code>（104⭐ / 5 fork，C，创建 08-09）——JIT-less relinker，在 visionOS 上运行 Quest/Android XR APK 的兼容层
+- <code>MengMengCode/VoCat</code>（148⭐ / 56 fork，Go，创建 08-09）——Quectel EC25 蜂窝模块的开源控制面板</p>
+<p><strong>架构师判断：</strong> phone-harness 的加速 + 相关项目同时出现，说明"手机/物理设备作为 agent 工具"正在从单点项目扩散为赛道信号。phone-harness 解决"agent 控制手机"（通过 macOS Mirroring），sv-number/mcp-server 解决"agent 拥有手机号"（通过虚拟号 API），VoCat 解决"agent 控制蜂窝模块"——三者构成"agent ↔ 移动通信"的不同层面。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- <strong>H3 原生推理层出现：</strong> antirez/h3.c 将 H3 推理优化从"ComfyUI 插件层"推进到"原生 Metal 层"，Apple Silicon 用户可能获得端到端本地视频生成能力。若 antirez 持续投入（他以长期维护大型 C 项目著称），这可能成为 H3 生态的核心推理引擎之一。
+- <strong>"设备即工具"赛道扩散：</strong> phone-harness 加速 + 相关项目同时出现，"agent 控制物理设备"赛道信号加强。
+- <strong>anydoc 稳态确认：</strong> delta 稳定在 600-700 区间，文档解析赛道头部位置进入成熟维护期，fork 持续增长说明集成生态在扩展。</p>
+<p><strong>风险：</strong>
+- <strong>Skill 生态单点脆弱性：</strong> claude-red 全账号 404 是本周第二个"高关注度 Skill 项目异变"案例。品类定义者可一夜蒸发，Skill 分发无去中心化保障。
+- <strong>H3 官方仓库无 license：</strong> license=null（API 可核验），是生态采用的法律风险变量。antirez/h3.c 用 MIT，但上游模型 license 不明确。
+- <strong>应用层全面进入稳态尾声：</strong> crm（+1.8%）、qm（+1.5%）、genoffice（+5.3%）三个应用层项目增速全面下降到低个位数，应用层红利期基本结束。
+- <strong>open-kimi-ppt-skill 归档后 fork 仍异常增长（第四日）：</strong> fork 1,152→1,182（+30），star +1，fork/star=0.74，批量部署信号持续，说明归档无法阻止自动化流程。</p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>📑 firecrawl/anydoc — 文档解析赛道头部，稳态收敛（详见 projects/anydoc.md）</li>
+<li>🎬 MiniMax-AI/MiniMax-H3 — 视频生成生态催化剂，连续三日加速（详见 projects/minimax-h3.md）</li>
+<li>⚡ antirez/h3.c — Redis 创始人的 H3 原生 Metal 推理引擎（详见 projects/h3c.md）</li>
+<li>📱 ShawnPana/phone-harness — agent 控制真实 iPhone，加速中（详见 projects/phone-harness.md）</li>
+<li>🔴 0xwilliamortiz/claude-red — 全账号 404，安全 Skill 品类定义者消失（详见 projects/claude-red.md）</li>
+<li>🌊 oil-oil/oil-motion — AI 视频帧→交互动画 Skill（详见 projects/oil-motion.md）</li>
+<li>💠 FareedKhan-dev/kimi-k3-in-c — 便携 C99 本地推理头部（详见 projects/kimi-k3-in-c.md）</li>
+<li>🔇 Binaryify/open-kimi-ppt-skill — 已归档，异常信号案例库（详见 projects/open-kimi-ppt-skill.md）</li>
+</ul>
+<hr />
+<p><em>数据来源：GitHub API（2026-08-11）+ 仓库 README。所有 star/fork/watchers/created_at/pushed_at/license/language/archived 为可核验事实；0xwilliamortiz 404 为可核验事实，消失原因待观察；"持续加速""收敛稳态""phone-as-tool 赛道扩散"等为基于可核验数据的推断，已显式标注。h3.c 性能数据为 README 自述，未独立复现。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

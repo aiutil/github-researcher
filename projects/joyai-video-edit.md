@@ -2,11 +2,11 @@
 title: "jd-opensource/JoyAI-Video-Edit"
 slug: "joyai-video-edit"
 date_added: "2026-08-09"
-last_seen_date: "2026-08-09"
+last_seen_date: "2026-08-10"
 category: "观察型"
 emoji: "🎞️"
-stars: "512 stars"
-stars_delta: "8/04创建→8/09观测 512⭐ / 20 fork / 3 subscribers，京东开源实时流式视频编辑，16B 多模态扩散 transformer，720p 端到端 30.19 FPS"
+stars: "710 stars"
+stars_delta: "8/04创建→8/10观测 594⭐ / 24 fork / 5 subscribers，第十日 +82（+16%），小幅加速，京东开源实时流式视频编辑"
 language: "Python"
 license: "Apache-2.0"
 score: 82
@@ -67,4 +67,10 @@ JoyAI-Video-Edit 的核心启发是 **"视频编辑可以因果地、逐帧地�
 3. **实时编辑的采用度：** 是否被直播/流媒体场景实际采用，还是停留在论文 demo。
 
 ---
-*首次记录：2026-08-09* · *数据来源: GitHub API (2026-08-09) | Stars: 512 | Forks: 20 | License: Apache-2.0 | 语言: Python*
+*首次记录：2026-08-09* · *数据来源: GitHub API (2026-08-10) | Stars: 594 | Forks: 24 | License: Apache-2.0 | 语言: Python*
+
+## 最近动态（2026-08-10）
+
+- **小幅加速 +82（+16%）**：512 → 594，fork 20 → 24（+4），subscribers 3 → 5。增速从 +7%（08-09 推算）回升到 +16%（08-10），可能是实时流式视频编辑概念获得二次曝光。今日无新 commit（pushed_at 仍为 08-07），增长来自曝光惯性。
+- **与 MiniMax-H3 生态的对比**：H3（生成）今日 +924/+52%，JoyAI（编辑）今日 +82/+16%。两者同属视频赛道但定位不同——H3 是音视频联合生成 + ComfyUI 生态，JoyAI 是实时流式编辑 + 论文驱动。JoyAI 的增速远低于 H3，说明"编辑"赛道当前关注度低于"生成"。
+- **判断（维持 score 82）**：小幅加速但绝对增量仍低。30.19 FPS @ 720p 仍为论文声明（arXiv 2608.03974），未独立复现。

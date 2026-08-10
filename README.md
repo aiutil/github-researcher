@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-09.md">Latest report</a> ·
+  <a href="daily/2026-08-11.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-09
+## Latest report · 2026-08-11
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 12 | 441 | 4 | 14k+ |
+| 12 | 444 | 4 | 16k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 12,055 stars | 工具型 |
-| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 1,769 stars | 观察型 |
-| [0xwilliamortiz/claude-red](projects/claude-red.md) | 681 stars | 工具型 |
-| [leonickson1/Swiftlet](projects/swiftlet.md) | 456 stars | 观察型 |
-| [jd-opensource/JoyAI-Video-Edit](projects/joyai-video-edit.md) | 512 stars | 观察型 |
-| [trycompai/crm](projects/crm.md) | 7,751 stars | 平台候选 |
-| [yc-software/qm](projects/qm.md) | 12,525 stars | 平台候选 |
-| [Binaryify/open-kimi-ppt-skill](projects/open-kimi-ppt-skill.md) | 1,588 stars (archived) | 观察型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 13,399 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 4,164 stars | 观察型 |
+| [antirez/h3.c](projects/h3c.md) | 129 stars | 观察型 |
+| [ShawnPana/phone-harness](projects/phone-harness.md) | 1,282 stars | 观察型 |
+| [0xwilliamortiz/claude-red](projects/claude-red.md) | deleted (404) | 观察型 |
+| [FareedKhan-dev/kimi-k3-in-c](projects/kimi-k3-in-c.md) | 4,649 stars | 观察型 |
+| [oil-oil/oil-motion](projects/oil-motion.md) | 1,142 stars | 工具型 |
+| [trycompai/crm](projects/crm.md) | 8,102 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: minimax-h3
-2. **Signal 2** · score 90 · repositories: anydoc
-3. **Signal 3** · score 78 · repositories: open-kimi-ppt-skill
-4. **Signal 4** · score 83 · repositories: swiftlet, kimi-k3-in-c
+1. **Signal 1** · score 86 · repositories: claude-red
+2. **Signal 2** · score 90 · repositories: minimax-h3, h3c
+3. **Signal 3** · score 90 · repositories: anydoc
+4. **Signal 4** · score 85 · repositories: phone-harness
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-09.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-11.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-11](daily/2026-08-11.md) | 12 | 4 |
+| [2026-08-10](daily/2026-08-10.md) | 12 | 4 |
 | [2026-08-09](daily/2026-08-09.md) | 12 | 4 |
 | [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
 | [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
-| [2026-08-04](daily/2026-08-04.md) | 8 | 4 |
-| [2026-08-03](daily/2026-08-03.md) | 5 | 3 |
 
 ## Why this repository exists
 

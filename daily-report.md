@@ -4,6 +4,39 @@
 
 ---
 
+## 2026-08-11
+
+**核心主题：** 0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，安全 Skill 品类定义者一夜蒸发（可核验：API 返回 404；原因待观察） · MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），Redis 创始人 antirez 发布 h3.c 原生 Metal 推理引擎（129⭐，M5 Max 端到端视频生成），"推理成本瓶颈"判断获最高信誉背书 · anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 稳定在 600-700 区间两日，真实需求曲线进入成熟期） · phone-harness 加速（789→1,282，+493/+62.5%，"phone-as-tool"赛道验证加强）
+
+**关键项目：**
+- 📑 firecrawl/anydoc (13,399, 更新 +719) — Firecrawl 文档解析，+5.7%，delta 稳定 600-700 区间，成熟稳态，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (4,164, 更新 +1,471) — 视频生成模型，+55% 连续三日高位，衍生生态 351→379，获 antirez 原生实现背书，Score 89→90
+- ⚡ antirez/h3.c (129, 新增) — Redis 创始人 Salvatore Sanfilippo 的 H3 原生 Metal 推理引擎，Apple Silicon 端到端，Score 86
+- 📱 ShawnPana/phone-harness (1,282, 更新 +493) — agent 控制 iPhone，+62.5% 加速，fork 60→100，Score 84→85
+- 🔴 0xwilliamortiz/claude-red (deleted, 更新 404) — 全账号消失，安全 Skill 品类定义者一夜蒸发，Score 84→70
+- 🌊 oil-oil/oil-motion (1,142, 新增) — Agent 交互动画 Skill，AI 视频帧→滚动/鼠标映射，品类开创者，Score 83
+- 💠 FareedKhan-dev/kimi-k3-in-c (4,649, 更新 +487) — 便携 C99 K3，+11.7% 持续放量，Score 85
+- 📋 trycompai/crm (8,102, 更新 +147) — Agentic-first CRM，+1.8% 连续六日衰减尾声，Score 87→86
+- 👥 yc-software/qm (12,950, 更新 +193) — 多人协作 agent harness，+1.5% 停滞通道，Score 87→86
+- ✍️ KKKKhazix/human-writing (2,266, 更新 +174) — 中文"活人感"写作 Skill，+8.3% 增速稳定，Score 84
+- 🔇 Binaryify/open-kimi-ppt-skill (1,607, 更新 +1) — 已归档，fork 仍异常增长 1,152→1,182，Score 70
+- 📄 genspark-ai/genoffice (2,469, 更新 +125) — AI-native 办公套件，+5.3% 持续衰减，Score 84
+
+---
+
+## 2026-08-10
+
+**核心主题：** MiniMax-H3 继续加速（1,769→2,693，+924/+52%，连续两日高位） · anydoc 正式进入收敛尾声（12,055→12,680，+625/+5%，恰好落在预测的稳态区间） · phone-harness（789⭐，"phone-as-tool" agent 终端赛道出现） · open-kimi-ppt-skill 归档后 fork 仍异常增长
+
+**关键项目：**
+- 📑 firecrawl/anydoc (12,680, 更新 +625) — Firecrawl 文档解析，+5% 收敛尾声，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (2,693, 更新 +924) — 视频生成模型，+52% 连续两日高位，Score 89
+- 📱 ShawnPana/phone-harness (789, 新增) — agent 控制真实 iPhone，Score 84
+- 🔴 0xwilliamortiz/claude-red (701, 更新 +20) — Claude Skills 攻防安全库，+3% 增速放缓，Score 84
+- 💠 FareedKhan-dev/kimi-k3-in-c (4,162, 更新 +411) — 便携 C99 K3，+11% 继续加速，Score 85
+
+---
+
 ## 2026-08-09
 
 **核心主题：** MiniMax-H3 反而加速（1,070→1,769，+699/+65%），生态仓库 265→314，模型仓库自身增速反超衍生生态，"生成质量瓶颈"让位于"推理成本+工作流"瓶颈的判断被市场继续确认 · anydoc 进入稳态（10,866→12,055，+1,189/+11%，增速序列 +331%→+72%→+35%→+11% 单调收敛，教科书式真实需求曲线收敛完成） · open-kimi-ppt-skill 被作者归档（archived=true，1588⭐/1113 fork）——昨日 fork 异常暴增（343→914）后的可疑信号今天落地为归档，刷量/弃坑判断被验证 · 本地 MoE 推理路线扩展到 Apple 原生栈——Swiftlet（456⭐，Swift+Metal 在 iPhone 17 上跑 35B Qwen3.6 MoE，峰值 2.6GB RAM）

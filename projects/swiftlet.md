@@ -2,11 +2,11 @@
 title: "leonickson1/Swiftlet"
 slug: "swiftlet"
 date_added: "2026-08-09"
-last_seen_date: "2026-08-09"
+last_seen_date: "2026-08-10"
 category: "观察型"
 emoji: "🍎"
-stars: "456 stars"
-stars_delta: "8/03创建→8/09观测 456⭐ / 20 fork / 3 subscribers，Swift+Metal 运行时，在 iPhone 17 上跑 35B Qwen3.6 MoE（峰值 2.6GB RAM），80B 模型 4.3GB RAM"
+stars: "479 stars"
+stars_delta: "8/03创建→8/10观测 469⭐ / 20 fork / 3 subscribers，第七日 +13（+3%），增速放缓，与 kimi-k3-in-c 形成'多平台本地推理'共振但增速远低于后者"
 language: "Swift"
 license: "Apache-2.0"
 score: 83
@@ -67,4 +67,10 @@ Swiftlet 的设计哲学是 **"MoE 模型的内存占用不等于总参数量，
 3. **与 kimi-k3-in-c 的共振：** "本地 MoE 流式推理"是否成为独立赛道，出现更多平台覆盖（如 Android 原生、Windows 原生）。
 
 ---
-*首次记录：2026-08-09* · *数据来源: GitHub API (2026-08-09) | Stars: 456 | Forks: 20 | License: Apache-2.0 | 语言: Swift*
+*首次记录：2026-08-09* · *数据来源: GitHub API (2026-08-10) | Stars: 469 | Forks: 20 | License: Apache-2.0 | 语言: Swift*
+
+## 最近动态（2026-08-10）
+
+- **增速放缓 +13（+3%）**：456 → 469，fork 20 持平，subscribers 3 持平。今日无新 commit（pushed_at 仍为 08-07），增长来自曝光惯性。
+- **与 kimi-k3-in-c 的增速差距拉大**：kimi-k3-in-c 今日 +411（+11%），Swiftlet 仅 +13（+3%）。两者技术路线同构（dense core 驻留 + 按需流式加载 MoE expert），但 kimi-k3-in-c 是 C99 跨平台、K3 模型；Swiftlet 是 Apple 原生、Qwen3.6 模型。**Swiftlet 的 Apple 生态锁定 + iPhone 17 上 1 tok/s 的不实用性**限制了增速。
+- **判断（维持 score 83）**：增速放缓符合极早期 + Apple 锁定的预期。重点仍是 iPhone 17 实际可用性是否提升。

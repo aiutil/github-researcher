@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-10 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-10">GitHub 趋势研究简报 - 2026-08-10</h1>
+<blockquote>
+<p>本报基于 GitHub API + 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-08-10。所有 star/fork/created_at/pushed_at/license/language 均来自 GitHub API（可核验事实），推断与待观察项会显式标注。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天最重要的信号是<strong>多个连续判断被市场继续验证</strong>，且出现一个新概念项目：</p>
+<ol>
+<li>
+<p><strong>MiniMax-H3 继续加速（+52%），连续两日高位，衍生生态 314→351。</strong> <code>MiniMax-AI/MiniMax-H3</code>（2,693⭐ / 160 fork / 21 subscribers，Python，license 未标注，创建 07-30）今日 +924（1,769→2,693，+52%），衍生生态仓库从 314 增至 351（GitHub 搜索 "minimax h3" created:&gt;2026-08-01，可核验，total_count=351）。<strong>增速从昨日 +65% 回落到 +52%，但绝对增量 +924 略高于昨日 +699</strong>——这是"持续高位放量"而非衰减。关键判断继续被验证：<strong>视频生成模型落地瓶颈已从"生成质量"转移到"推理成本+工作流编排"</strong>——衍生生态仍在持续填充加速器（Spectrum/Turbo）、导演（Director）、prompt 构建器三层。</p>
+</li>
+<li>
+<p><strong>anydoc 正式进入收敛尾声（+5%，昨日 +11%→今日 +5%），昨日预测被验证。</strong> <code>firecrawl/anydoc</code>（12,680⭐ / 628 fork / 32 subscribers，Rust，MIT，创建 08-03）第九日 +625。<strong>关键验证</strong>：昨日报告预测"下一观察点：+11% 是否维持，还是继续衰减到 +5% 以下"。今日 +5% <strong>恰好落在衰减区间</strong>，增速序列 +331%→+72%→+35%→+11%→+5% 的收敛判断被第三次连续验证。但需注意：<strong>稳态增量从昨日 +1,189/日回落到今日 +625/日</strong>，说明真实需求曲线仍在继续衰减，尚未到达真正的"稳态平台"。fork 575→628 仍在增长（+53），说明集成意愿持续。</p>
+</li>
+<li>
+<p><strong>phone-harness（789⭐）——"phone-as-tool" agent 终端赛道出现。</strong> <code>ShawnPana/phone-harness</code>（789⭐ / 60 fork / 1 subscriber，Python，MIT，创建 08-07）是一个新概念项目：<strong>让 agent 通过 macOS 的 iPhone Mirroring 窗口控制真实 iPhone</strong>，无需越狱、无需 Xcode、无需 WebDriverAgent。核心技术：<code>screencapture</code> + Apple Vision 框架 OCR 做"眼睛"，HID 级 CGEvents 做"手"。<strong>架构启发</strong>：这是继 browser-harness（agent 控制浏览器）、computer-use（agent 控制桌面）之后，"agent 控制物理设备"赛道的延伸——把 iPhone 当作 agent 的工具。需注意：subscribers 仅 1，极早期，且绑定 macOS（iPhone Mirroring 是 macOS Sequoia+ 功能）。</p>
+</li>
+<li>
+<p><strong>open-kimi-ppt-skill 归档后 fork 仍异常增长——批量部署信号未停。</strong> <code>Binaryify/open-kimi-ppt-skill</code>（1,606⭐ / 1,152 fork，archived=true）昨日被归档，但今日 fork 从 1,113→1,152（+39）仍在增长，star 仅 +18。<strong>关键观察</strong>：归档（archived=true）只阻止新的 commit/issue，不阻止 fork 操作。fork/star=0.72（持续极端异常，正常项目 &lt;0.3）。<strong>案例价值</strong>：这进一步验证"fork 增速远超 star 增速是刷量/批量部署前兆"的方法论——即便归档，批量 fork 的自动化流程仍在运行。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>证据边界声明</strong>：所有 star/fork/created_at/pushed_at/license/language/archived 均来自 GitHub API（可核验事实）。MiniMax-H3 衍生仓库计数 351 来自 GitHub Search API 搜索 "minimax h3" created:&gt;2026-08-01（可核验）。anydoc "+331%→+72%→+35%→+11%→+5% 收敛"为基于连续六日 GitHub API 数据的可核验趋势推断；"稳态增量回落"为基于今日数据的推断。phone-harness 的"iPhone Mirroring + Vision OCR + CGEvents"为 README 明确描述的架构（可核验），"无越狱/无 Xcode/无 WDA"为 README 自述；"phone-as-tool 是 agent 控制物理设备赛道"为研究推断，待更多同类项目验证。所有增速百分比为基于 GitHub API 连续观测的计算值（可核验）。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-minimax-h3-89">1. MiniMax-H3 继续加速——连续两日高位放量（评分 89）</h3>
+<p>今日 H3 生态最显著的变化是<strong>官方仓库绝对增量再创新高</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>08-08</th>
+<th>08-09</th>
+<th>08-10</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官方仓库 stars</td>
+<td>1,070</td>
+<td>1,769</td>
+<td>2,693</td>
+<td>08-09: +699 → 08-10: +924</td>
+</tr>
+<tr>
+<td>增速%</td>
+<td>—</td>
+<td>+65%</td>
+<td>+52%</td>
+<td>增速回落但绝对增量上升</td>
+</tr>
+<tr>
+<td>衍生生态仓库数</td>
+<td>265</td>
+<td>314</td>
+<td>351</td>
+<td>+49 → +37（增量放缓）</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>56</td>
+<td>97</td>
+<td>160</td>
+<td>+41 → +63</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断：</strong> 增速从 +65% 回落到 +52%，但<strong>绝对增量 +924 略高于昨日 +699</strong>——这是"持续高位放量"而非衰减的信号。衍生生态仓库增量从 +49 放缓到 +37，但官方仓库增量仍在上升，说明<strong>用户从"插件爆发期"进一步进入"主路径集成期"</strong>——更多人在用官方仓库做端到端集成，而非只玩 ComfyUI 插件。这与昨日判断完全一致：视频生成模型落地瓶颈已从"生成质量"转移到"推理成本+工作流编排"，加速器类（Spectrum/Turbo）和导演类（Director）持续填充说明这两类痛点仍在被解决。</p>
+<p>需注意：官方仓库仍无 license 标注（license=null，GitHub API 可核验），是生态采用的法律风险变量。351 个衍生仓库中大量同质化（Director 变体、Cache 变体），淘汰期后可能大幅萎缩。</p>
+<h3 id="2-anydoc-90">2. anydoc 正式进入收敛尾声——昨日预测被验证（评分 90）</h3>
+<p>连续六日追踪，增速序列完成收敛到尾声：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>08-05</th>
+<th>08-06</th>
+<th>08-07</th>
+<th>08-08</th>
+<th>08-09</th>
+<th>08-10</th>
+<th>六日累计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anydoc stars</td>
+<td>1,086</td>
+<td>4,688</td>
+<td>8,069</td>
+<td>10,866</td>
+<td>12,055</td>
+<td>12,680</td>
+<td>+11,594 (+1068%)</td>
+</tr>
+<tr>
+<td>anydoc forks</td>
+<td>40</td>
+<td>205</td>
+<td>370</td>
+<td>506</td>
+<td>575</td>
+<td>628</td>
+<td>+588</td>
+</tr>
+<tr>
+<td>anydoc 增速%</td>
+<td>—</td>
+<td>+331%</td>
+<td>+72%</td>
+<td>+35%</td>
+<td>+11%</td>
+<td>+5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>anydoc 绝对增量</td>
+<td>—</td>
+<td>+3,602</td>
+<td>+3,381</td>
+<td>+2,797</td>
+<td>+1,189</td>
+<td>+625</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键验证——昨日预测被今日数据第三次连续证实：</strong> 昨日报告明确预测"下一观察点：+11% 是否维持，还是继续衰减到 +5% 以下"。今日 +5% <strong>正是衰减区间</strong>。<strong>但需注意</strong>：稳态增量从昨日 +1,189/日回落到今日 +625/日，说明真实需求曲线仍在继续衰减，<strong>尚未到达真正的"稳态平台"</strong>——下一观察点是 +5% 是否维持，还是继续衰减到 +2% 以下（接近尾声）。</p>
+<p><strong>架构师判断：</strong> anydoc 六日增速序列（+331%→+72%→+35%→+11%→+5%）是教科书式的"真实需求驱动的热度曲线"完整生命周期：爆发→持续放量减速→健康收敛→收敛尾声。与脉冲项目（open-kimi-ppt-skill）的鲜明对比仍在：anydoc fork 稳定增长（575→628），脉冲项目 fork 异常增长但归档后仍在异常增长。万星量级（12,680⭐）已是文档解析赛道头部。</p>
+<h3 id="3-phone-harnessphone-as-tool-agent-84">3. phone-harness——"phone-as-tool" agent 终端赛道出现（评分 84）</h3>
+<p><code>ShawnPana/phone-harness</code>（789⭐ / 60 fork / 1 subscriber，Python，MIT，创建 08-07）核心技术（README 可核验）：</p>
+<ul>
+<li><strong>传输层：macOS iPhone Mirroring 窗口</strong>——iPhone Mirroring（macOS Sequoia+）把 iPhone 渲染为 Mac 窗口，转发鼠标/键盘输入为触摸。这给 agent 提供了完整的"看+操作"通道，无需越狱、无需 Xcode、无需 WebDriverAgent。</li>
+<li><strong>眼睛：<code>screencapture</code> + Vision 框架 OCR</strong>——只截取 Mirroring 窗口，用 Apple Vision 框架 OCR 识别所有可见文本及其坐标。README 称之为"the poor man's DOM"。</li>
+<li><strong>手：HID 级 CGEvents</strong>——在 HID tap 层投递事件：tap、长按、拖拽/滑动、滚动手势、unicode 输入、app 快捷键（Cmd+1 Home、Cmd+2 App Switcher、Cmd+3 Spotlight）。</li>
+<li><strong>验证：再截图</strong>——"No DOM means the capture is the ground truth"（README 原文）。</li>
+<li><strong>架构</strong>：<code>SKILL.md</code>（agent 面向的产品面）+ <code>install.md</code>（权限引导）+ <code>src/phone_harness/</code>（约 500 行保护核心：mirror.py / ocr.py / helpers.py / admin.py / run.py）+ <code>agent-workspace/agent_helpers.py</code>（agent 编辑的 helper，自动加载）。传输无状态（无 daemon），每次调用自包含。</li>
+</ul>
+<p><strong>架构启发：</strong> 这是继 browser-harness（agent 控制浏览器）、computer-use（agent 控制桌面）之后，"agent 控制物理设备"赛道的延伸。核心思想是<strong>用 OS 级的"无障碍/镜像"能力替代专用自动化框架</strong>——iPhone Mirroring 提供了"把手机变成 Mac 窗口"的官方通道，agent 不需要专门的移动端自动化（如 Appium/WDA），只需要"截图+OCR+点击"这个最原始的 GUI 自动化循环。README 明确列出了"踩坑"：AppleScript <code>click at</code> 被忽略（窗口是视频流，无 accessibility tree）、unicode key payload 无效（Mirroring 转发 HID keycodes）、慢速 touch-drag 几乎不动 iOS 列表（要用 wheel scroll）。这些是真实的工程经验。</p>
+<p><strong>局限（README 自述 + 观察）：</strong> 仅 macOS（iPhone Mirroring 是 macOS Sequoia+ 功能）；单机单会话；无多点触控（无 pinch）、无相机/Face ID 流程、DRM 视频渲染为黑色；OCR 看文本不看语义（无标签图标需截图+vision 模型）。subscribers 仅 1，极早期。</p>
+<h3 id="4-moe-85">4. 本地 MoE 推理多平台共振持续（评分 85）</h3>
+<p><code>FareedKhan-dev/kimi-k3-in-c</code>（4,162⭐ / 652 fork / 43 subscribers，C99，Apache-2.0，创建 08-01）今日 +411（3,751→4,162，+11%），fork +70。<strong>增速从昨日 +16% 略降到 +11%，但绝对增量 +411 与昨日 +504 基本持平</strong>——持续放量。与 Swiftlet（456→469，+13，Apple 原生栈）共同信号：<strong>本地大模型推理赛道从单点（C99）扩展到多平台覆盖</strong>，kimi-k3-in-c 仍是该赛道绝对头部。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- <strong>视频生成生态进入"主路径集成期"</strong>：H3 衍生生态（351 仓库）从"插件爆发"转向"端到端集成"，加速器/导演/prompt 构建器三层持续填充，推理成本+工作流编排是真痛点，有持续投资机会。
+- <strong>agent 控制物理设备赛道</strong>：phone-harness 验证了"用 OS 镜像能力替代专用自动化框架"的可行性，可能催生更多"agent + 物理设备"项目。
+- <strong>本地大模型推理多平台覆盖</strong>：kimi-k3-in-c（C99）+ Swiftlet（Apple）共振，"本地 MoE 流式加载"成为独立技术方向。</p>
+<p><strong>风险：</strong>
+- <strong>anydoc 收敛尾声</strong>：稳态增量从 +1K/日回落到 +625/日，真实需求曲线仍在衰减，可能继续放缓。但 fork 持续增长说明集成意愿真实。
+- <strong>H3 官方仓库无 license</strong>：license=null 是生态采用的法律风险变量。
+- <strong>open-kimi-ppt-skill 归档后 fork 仍异常增长</strong>：批量部署信号未停，说明归档不能阻止自动化刷 fork 流程。</p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>📑 firecrawl/anydoc — 文档解析赛道头部，万星量级稳态收敛（详见 projects/anydoc.md）</li>
+<li>🎬 MiniMax-AI/MiniMax-H3 — 视频生成生态催化剂，连续两日加速（详见 projects/minimax-h3.md）</li>
+<li>📱 ShawnPana/phone-harness — agent 控制真实 iPhone 的新概念项目（详见 projects/phone-harness.md）</li>
+<li>🔴 0xwilliamortiz/claude-red — Claude Skills 攻防安全库，品类定义者（详见 projects/claude-red.md）</li>
+<li>💠 FareedKhan-dev/kimi-k3-in-c — 便携 C99 本地推理头部（详见 projects/kimi-k3-in-c.md）</li>
+<li>🔇 Binaryify/open-kimi-ppt-skill — 已归档，异常信号案例库（详见 projects/open-kimi-ppt-skill.md）</li>
+</ul>
+<hr />
+<p><em>数据来源：GitHub API（2026-08-10）+ 仓库 README。所有 star/fork/watchers/created_at/pushed_at/license/language/archived 为可核验事实；"持续加速""收敛尾声""phone-as-tool 赛道"等为基于可核验数据的推断，已显式标注。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
