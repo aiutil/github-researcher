@@ -31,7 +31,7 @@ url: "https://github.com/digimata/quill"
 - **工程品质是加分项**：README 细致（CAF 格式选择理由、双轨设计理由、queue/offset/merge 机制），说明作者有真实使用场景驱动。
 - **话题性成分**：local-first AI 是持续热点，quill 受益但不依赖——它的价值在实用工具属性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **双轨录制 = 免费话者分离**：麦克风和系统音频分别录为两个 track（`mic.caf` + `system.caf`），speech models 在干净单源音频上表现更好，且 mic-vs-system 天然实现 `me` vs `them` 的两方话者分离，无需 speaker-ID 模型。
 2. **CAF 格式的容错设计**：刻意选 CAF 而非 m4a，因为 CAF 不需要 finalization pass——"if the process dies mid-meeting, everything already written is still readable"。这对长会议场景（进程可能崩溃）是关键设计。

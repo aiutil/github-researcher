@@ -29,7 +29,7 @@ url: "https://github.com/hardikpandya/stop-slop"
 ## 热度来源判断
 **真实需求 + Skills 生态爆发**。stop-slop 的热度来自两个驱动力：(1) AI 写作去味是真实痛点——随着 AI 生成内容泛滥，"去 AI 味"成为内容创作者、营销人员、开发者的共同需求；(2) Agent Skills 生态的爆发——2026 年初 Claude Code Skills、Cursor Plugins 等机制普及后，Skill 文件成为新的"prompt 工程"载体，stop-slop 恰好乘上了这波浪潮。但需注意，15K stars 对于一个纯 Markdown 文件来说有泡沫成分——使用价值取决于用户是否真正将其集成到工作流中。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **三层检测框架**：将"AI 味"分解为三个维度——(a) Banned phrases（禁用短语：废话开头、强调填充词、商业术语）；(b) Structural clichés（结构套路：二元对比、否定列举、戏剧性碎片化）；(c) Sentence-level rules（句子级规则：禁止 Wh- 句首、禁止 em dash、要求主动语态）。这种分层设计让 AI 能从词汇、句式到段落结构全方位自检。
 2. **量化评分系统**：设计了 5 维评分（Directness 直接性、Rhythm 节奏、Trust 信任读者智慧、Authenticity 人味、Density 信息密度），每维 1-10 分，总分低于 35/50 则需要重写。这提供了可量化的质量标准，而非模糊的"写得更好"。
 3. **Before/After 示例库**：references/examples.md 提供了改造前后的对比示例，让 AI 通过 few-shot learning 理解什么是"slop"以及如何改写。这种基于示例的教学方式比纯规则更有效。

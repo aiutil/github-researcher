@@ -19,7 +19,7 @@ url: "https://github.com/elder-plinius/T3MP3ST"
 ## 一句话定位
 多 Agent 攻击性安全元框架——把你已有的编码 Agent（Claude Code/Codex/Hermes/Ollama）变成零日漏洞猎人，kill chain 全自动：recon → exploit → report。
 
-## 解决的问题
+## 它解决的问题
 攻击性安全（Offensive Security）通常需要多年专业经验和昂贵工具。T3MP3ST 的赌注是：一个协调的 Agent 集群可以让真正的能力进入从未收到邀请的人手中。它不是又一个安全扫描器，而是让已有 AI 编码 Agent 拥有完整攻击工具链的**元框架**。
 
 ## 为什么值得关注（2026-07-10）
@@ -38,7 +38,7 @@ url: "https://github.com/elder-plinius/T3MP3ST"
 - 实际基准成绩（90.1%）过硬——贡献约 20%
 - 热度有真实工程支撑，非纯营销
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **8-operator kill chain 架构**：Recon → Exploiter → Infiltrator → Exfiltrator → Ghost，每个 operator 运行相同的 tool-backed ReAct loop
 2. **Egress-scope containment**：目标设定后，网络工具拒绝访问域外主机（含 loopback/private），默认开启
 3. **Keyless warfare**：通过本地 Agent 驱动，无需额外 API key 或云租户

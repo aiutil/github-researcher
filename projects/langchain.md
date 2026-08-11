@@ -31,7 +31,7 @@ ChatGPT 出现后，开发者发现"调用 LLM API"远不等于"构建有用的 
 ## 热度来源判断
 LangChain 的热度是**真实先发优势 + LLM 应用爆发**双重驱动。它是 LLM 应用框架的"事实标准"，2023 年几乎每个 AI demo 都基于它。虽然 2024 年后出现"反 LangChain"声音（批评其抽象过度、不够 Pythonic），但通过 LangGraph 转型 Agent 编排，成功延续了热度。当前热度真实但分化：初学者爱其开箱即用，资深工程师转向更轻量方案（LlamaIndex、直接用 OpenAI SDK）。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **LangGraph:** 基于图的有状态 Agent 编排引擎，支持循环、分支、人机协同（Human-in-the-loop）
 2. **LCEL（LangChain Expression Language）:** 用管道符 `|` 组合 Prompt | Model | Parser，声明式构建 Chain
 3. **工具调用标准化:** 统一封装 OpenAI/Anthropic/Google 的 function calling，跨模型兼容

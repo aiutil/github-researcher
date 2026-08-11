@@ -27,7 +27,7 @@ Agent 沙箱是 Agent 从开发走向生产的关键基础设施。70 天内从 
 ## 热度来源判断
 热度真实。腾讯背书 + Rust 实现 + Agent 安全刚需，三重驱动。Fork 数（250）与 Star 比例健康。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **KVM+RustVMM microVM**：亚 60ms 冷启动（bare metal benchmark），<5MB 内存开销
 2. **E2B SDK 兼容**：零代码改动迁移，swap 一个 URL 环境变量即可
 3. **凭据保险库**：API keys 不进入沙箱/model context/logs，通过安全代理注入

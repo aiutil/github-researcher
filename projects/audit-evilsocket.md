@@ -38,7 +38,7 @@ last_seen_date: "2026-05-28"
 
 不是泡沫 — 安全审计是真实需求，且设计有理论支撑。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 1. 8 阶段流水线
 Recon → Hunt → Triage → Disprove → Reachability → Feedback → Report → Summary。每个阶段由专门的 Agent 负责一个窄任务。

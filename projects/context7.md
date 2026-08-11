@@ -32,7 +32,7 @@ LLM 训练数据有截止日期，对快速迭代的软件库（如 React 19、N
 ## 热度来源判断
 Context7 的热度是**"Vibe Coding"浪潮 + MCP 生态爆发 + 真实开发者痛点**三重驱动。2025 年 Cursor、Windsurf、Claude Code 等 AI 编辑器爆发，开发者发现"AI 写的代码用了旧 API"是最高频痛点。Context7 精准解决此问题，且通过 MCP 标准协议无缝集成到所有 AI 编辑器。60K stars 增速极快，是真实需求驱动，非纯炒作。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **MCP 原生:** 作为 MCP Server 实现，任何支持 MCP 的客户端（Cursor、Claude、Windsurf）即插即用
 2. **版本感知:** 不仅提供文档，还提供特定版本的 API 差异
 3. **预处理文档:** 文档经过 LLM 友好的预处理（提取代码示例、API 签名），而非原始 Markdown 灌入

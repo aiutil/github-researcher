@@ -19,7 +19,7 @@ url: "https://github.com/BuilderIO/agent-native"
 
 Agent 原生应用框架——UI 和 Agent 是同一系统的平等公民，每个 action 既能点击也能对话，支持 CRDT 实时多人协作。
 
-## 解决的问题
+## 它解决的问题
 
 当前 Agent 应用和 UI 是割裂的：Agent 在聊天窗口里，UI 在另一边。开发者需要分别维护 Agent 的 action 和 UI 的 handler。agent-native 把它们统一——`defineAction` 定义一次，从 UI 按钮、Agent 对话、HTTP API、MCP、A2A 到 CLI 全部复用。
 
@@ -31,7 +31,7 @@ BuilderIO 出品（Steve Sewell 团队），1,002 stars 日增 210。核心理�
 
 **BuilderIO 品牌 + 范式创新。** "Agent 和 UI 共享 action"是一个真正的架构创新。日增 210 虽然不高，但 BuilderIO 在前端开发者社区的影响力意味着一旦开发者理解这个概念，增长会加速。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **defineAction 统一接口：** 一次定义，UI / Agent / HTTP / MCP / A2A / CLI 全部复用。这是"action 即 API 即 Agent 能力"的范式创新。
 

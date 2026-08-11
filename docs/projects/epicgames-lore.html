@@ -42,7 +42,7 @@
 <li><strong>Rust 实现</strong>：技术社区的"好品味"信号</li>
 <li><strong>Pre-1.0 的早期红利</strong>：早期参与者可以影响设计方向</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>内容寻址存储 + Merkle Tree</strong>：每个文件、目录、提交都通过内容哈希引用，天然支持去重和完整性验证。分支比较变成图比较，O(1) 级别。</li>
 <li><strong>大二进制优先设计</strong>：不同于 git 的 delta 存储，Lore 的 chunking 策略专门为大型 binary 文件优化，按内容分块存储，修改二进制文件时只存储变化的数据块。</li>

@@ -32,7 +32,7 @@ url: "https://github.com/makecindy/cindy"
 - **商业化路径清晰**：开源客户端 + 付费托管服务（Cindy cloud）+ BYO API key/Claude Code Codex Coding Plan 三种模式。但这种"客户端开源 + 服务收费"的模式可持续性取决于服务体验。
 - **话题性成分**：harness 应用化是本周热点，cindy 受品类热度加持。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **多 harness 混合驱动 + 中途切换**：首个支持 Claude Code 和 Codex 两个 harness，models 和 harnesses 自由组合、可在任务中途切换，而 workspace/memory/skills/tools 保持连续。一个任务甚至可以由不同 harness×model 组合分别完成 plan/execute/review。原生 harness 开发中。
 2. **本地优先 + 真实环境**：在用户自己的机器上运行，用真实文件和已登录的应用（可驱动浏览器、电脑和手机，从 IM 和日历取任务）。

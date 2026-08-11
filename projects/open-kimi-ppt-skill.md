@@ -2,11 +2,11 @@
 title: "Binaryify/open-kimi-ppt-skill"
 slug: "open-kimi-ppt-skill"
 date_added: "2026-08-06"
-last_seen_date: "2026-08-09"
-category: "工具型"
+last_seen_date: "2026-08-12"
+category: "观察型"
 emoji: "🎞️"
-stars: "1,607 stars (archived)"
-stars_delta: "⚠️ 已归档（archived=true）。8/05创建→8/09观测 1,588⭐ / 1,113 fork，fork/star=0.70 极端异常，昨日判断被验证，降级案例库"
+stars: "1,603 stars (archived)"
+stars_delta: "⚠️ 已归档（archived=true）。8/05创建→8/12观测 1,603⭐ / 1,194 fork，fork/star=0.75 极端异常持续，star -4，fork +12 第五日，批量部署信号持续"
 language: "Python"
 license: "MIT"
 score: 70
@@ -31,7 +31,7 @@ url: "https://github.com/Binaryify/open-kimi-ppt-skill"
 - **话题性成分**：逆向 Kimi Slides 有话题性（"破解官方能力"），首日数据可能含话题爆发成分。
 - **风险成分**：逆向工程项目依赖公开前端资源，**README 明确声明非官方项目，可能随 Kimi 更新失效**。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **逆向 PPTD 格式**：通过逆向分析 Kimi Slides Skill、PPTD 格式和公开网页编辑器的前端行为与通信协议实现。PPTD 是可编辑的项目格式（非最终成品）。
 2. **双产物交付**：每次生成默认同时交付 PPTD（可继续编辑）和 PPTX（开箱即用，自动嵌入字体+淡入淡出动画）。

@@ -4,7 +4,7 @@ slug: "microsoft-fastcontext"
 date_added: "2026-06-19"
 category: "基础设施候选"
 emoji: "⚡"
-stars: "587 stars"
+stars: "deleted (404) — 原 9,802 stars"
 stars_delta: "17天+587"
 language: "Python"
 score: 84
@@ -29,7 +29,7 @@ Microsoft Research 出品的仓库探索子模型——用专用小模型（4B-3
 ## 热度来源判断
 学术论文驱动 + 微软品牌背书。587 stars 不算爆发，但 context engineering 是 Coding Agent 的刚需，引用率会持续增长。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **探索-解决分离** — FastContext 只做探索（read-only），主 Agent 只做编辑
 2. **并行工具调用** — 独立的 Read/Glob/Grep 可在同一 turn 并行发起
 3. **Compact evidence** — 返回 `<final_answer>` 块，只有 file path + line range

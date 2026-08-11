@@ -30,7 +30,7 @@ AI Coding Agent（Claude Code、Codex、Cursor）在企业中规模化使用后�
 ## 热度来源判断
 真实需求驱动。AI Coding 的 token 成本是每个重度使用者都会遇到的痛点，尤其是企业场景。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **TypeScript + Ink（React for CLI）** — 组件化 TUI 开发，代码可维护
 2. **跨 Agent 统一接口** — 抽象了不同 Agent 的 token 数据格式差异
 3. **实时仪表盘** — 不依赖日志文件解析，实时捕获 token 使用

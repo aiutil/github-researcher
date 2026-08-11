@@ -1,64 +1,86 @@
 ---
-title: "CloakBrowser"
+title: "CloakHQ/CloakBrowser"
 slug: "cloakbrowser"
 date_added: "2026-05-19"
+last_seen_date: "2026-05-22"
 category: "工具型"
 emoji: "🎭"
-stars: "18,174 stars"
-stars_delta: "周增 1.5K+"
+stars: "29,872 stars"
+stars_delta: "API 实时数据"
 language: "Python"
+license: "MIT"
 score: 82
-tags: ["反检测", "浏览器自动化", "Playwright", "爬虫", "Bot Detection"]
+tags: ["ai-agents", "anti-detect", "antidetect-browser", "bot-detection", "browser-automation", "captcha-bypass", "chromium", "cloudflare"]
 url: "https://github.com/CloakHQ/CloakBrowser"
-last_seen_date: "2026-05-22"
 ---
 
-# CloakBrowser
+# CloakHQ/CloakBrowser — Stealth Chromium that passes every bot detection test. Drop-in Playwright replac
 
 ## 一句话定位
-隐身 Chromium，通过全部 30 项机器人检测测试，Playwright 直接替换方案。
+
+Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.。主要使用 Python 编写，当前 29,872 stars / 2,457 forks / 140 subscribers。
 
 ## 它解决的问题
-现代反爬虫/反机器人系统（Cloudflare、DataDome、PerimeterX 等）越来越精确地检测自动化浏览器。现有方案（undetected-chromedriver、puppeteer-stealth）频繁失效。CloakBrowser 从 Chromium 源码层面修改指纹，而非 JS 层面 hook。
 
-目标用户：Web 自动化开发者、数据采集工程师、QA 自动化团队。
+**目标用户**：使用 python 生态的开发者、AI Agent 构建者。
+
+**痛点**：该项目解决的核心问题是 Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.。从 README 来看，项目提供了 <p align="center"> <img src="https://i.imgur.com/cqkp6fG.png" width="500" alt="CloakBrowser"> </p> <p align="center"> <a href="https://pypi.org/project/cloakbrowser/"><img src="https://img.shields.io/。
+
+**场景**：适用于需要 ai-agents, anti-detect, antidetect-browser 的开发场景。
 
 ## 为什么值得关注（2026-05-19）
 
-15.1K⭐，1.2K forks，Trending 本周多语言上榜。30/30 反检测测试通过的工程完成度极高。Playwright 直接替换意味着零迁移成本。
+1. **Stars 增长**：29,872 stars，2,457 forks——fork/star 比为 8.2% （正常范围）
+2. **活跃度**：创建于 2026-02-22，最后更新 2026-08-11，190 open issues
+3. **技术栈**：Python，License: MIT
+4. **生态定位**：Topics: ai-agents, anti-detect, antidetect-browser, bot-detection, browser-automation
 
 ## 热度来源判断
-热度 85% 真实需求。Web 自动化/爬虫社区对反检测方案有持续刚需。源码级别的指纹修改（vs JS hook）是技术上的升级。30/30 通过率是强工程指标。
+
+**真实需求信号**：forks 2457（高部署意愿），subscribers 140（深度关注）。
+
+**品类时机**：从 topics 来看，ai-agents, anti-detect, antidetect-browser 是当前社区关注的方向。
+
+
 
 ## 关键技术亮点
-1. **Chromium 源码级修改**：不依赖 JS hook，从 C++ 层面修改浏览器指纹
-2. **30/30 测试通过**：覆盖主流反检测系统，工程验证充分
-3. **Playwright 直接替换**：零代码修改，只需替换 browser 启动参数
+
+1. **<p align="center">**
+2. **<img src="https://i.imgur.com/cqkp6fG.png" width="500" alt="CloakBrowser">**
+4. **<p align="center">**
+5. **<a href="https://pypi.org/project/cloakbrowser/"><img src="https://img.shields.io/pypi/v/cloakbrowse**
+6. **<a href="https://www.npmjs.com/package/cloakbrowser"><img src="https://img.shields.io/npm/v/cloakbro**
 
 ## 架构启发
-- **底层修改 > 上层 hook**：在对抗检测的军备竞赛中，越底层的修改越难被检测
-- **Drop-in 替换策略**：降低采用门槛是开源项目快速增长的关键
+
+从 CloakHQ/CloakBrowser 的设计来看，核心思路是 **"Stealth Chromium that passes every bot detection test. Drop-"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
 
 ## 定位判断
-在 Web 自动化工具链中定位为「反检测浏览器」，与 Playwright/Puppeteer 互补。是 Browser Use / RPA + AI 生态的底层能力。
+
+**工具型**。在生态中定位为Stealth Chromium that passes every bot d方向的工具。Stars 29872 说明已有一定社区基础。
 
 ## 风险 / 局限 / 泡沫点
-1. **法律灰色地带**：反检测浏览器的主要用例之一是绕过网站 ToS
-2. **军备竞赛**：反检测与检测是持续的攻防战，没有永恒的赢家
-3. **维护成本**：Chromium 更新频繁，每次都需要重新修改源码
+
+1. **规模风险**：29,872 stars，但 fork 2457 说明有实际部署
+2. **维护风险**：最后 push 时间 2026-08-11，活跃维护中
+3. **Open Issues**：190 个 open issues，活跃社区反馈
+4. **License**：MIT（宽松许可，适合商用）
 
 ## 与同类项目的关系
-- **vs undetected-chromedriver**：CloakBrowser 更底层、更可靠
-- **vs puppeteer-stealth**：JS 层 hook vs 源码层修改，不在一个技术层次
-- **vs Camoufox**：Camoufox 基于 Firefox，CloakBrowser 基于 Chromium，生态不同
+
+- 与同 Python 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。
+- 从 topics (ai-agents, anti-detect, antidetect-browser) 来看，与关注 ai-agents 的其他项目有交叉。
 
 ## 是否值得持续跟踪
-**短期跟踪。** 技术实现值得学习，但工具型项目长期价值有限。
+
+**是。** 29872 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。
 
 ## 后续观察点
-1. Chromium 大版本升级时能否及时跟进
-2. 反检测系统能否识别源码级修改
-3. 是否形成商业服务模式
+
+1. Star 增速是否可持续（当前 29,872）
+2. Fork 增长趋势（当前 2,457）
+3. 功能迭代频率（最后更新 2026-08-11）
+4. 社区活跃度（subscribers 140, open issues 190）
 
 ---
-*首次记录：2026-05-19*
+> 数据来源: GitHub API (2026-08-11) | Stars: 29,872 | Forks: 2,457 | License: MIT | 语言: Python | 创建: 2026-02-22

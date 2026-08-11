@@ -29,7 +29,7 @@ Lottie 动画是现代 UI 设计的标准组件（加载动画、引导动画、
 ## 热度来源判断
 热度来自设计师和前端开发者对"AI 替代重复性设计工作"的需求。Twitter/X 上的设计社区、Product Hunt 的推广、以及 Claude Code 社区的使用分享是主要传播渠道。"用一句话生成动画"的 demo 效果极具传播力。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - Lottie JSON 直接生成：不经过中间格式，直接输出 Lottie 兼容的 JSON 结构
 - Claude Code/Codex 集成：作为 AI 编程助手的 Skill/Plugin 运行
 - 动画参数化：支持缓动函数、时间轴、关键帧等 Lottie 核心特性

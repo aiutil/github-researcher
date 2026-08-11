@@ -31,7 +31,7 @@ OpenWorker 把「最后一步执行」也交给 AI，但所有有后果的动作
 ## 热度来源判断
 热度来自三重叠加：① Andrew Ng 的个人号召力；② 「交付成品」击中用户对 chat-only AI 的疲劳；③ 本地优先 + 数据不出域击中企业合规刚需。这是**真实需求驱动**而非纯炒作——但 1307 fork 也意味着大量人想自己改/学，未必都是生产使用。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **审批门控架构（approval-gated）**：写操作、发送、shell 命令执行前必须用户批准；无人值守任务把待批准项暂存 inbox。这是 Agent 信任建模的工程化设计。
 2. **本地 agent server（Python）+ aisuite**：引擎/工具/连接器构建在 Andrew Ng 自家的多模型抽象层 aisuite 之上，模型可随时切换。
 3. **25+ 连接器 + MCP**：GitHub/Slack/Jira/Notion/Linear/HubSpot/Outlook/monday.com/Gmail/Google Calendar + 终端和本地文件；任何 MCP 工具可插入，且 per-tool 控制。

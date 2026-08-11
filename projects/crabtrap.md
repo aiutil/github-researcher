@@ -26,7 +26,7 @@ LLM-as-a-Judge HTTP 代理，为生产环境的 AI Agent 提供请求/响应安�
 ## 热度来源判断
 424 stars，热度不高但来源可靠。Brex 背书增加了可信度。Agent 安全是企业刚需，不需要 viral 增长。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **LLM-as-a-Judge 模式**：用 AI 理解 AI 的意图，比规则引擎更适应 Prompt Injection 的多变手法
 2. **HTTP 代理零侵入**：不改 Agent 代码，加一层代理即可
 3. **Brex 生产验证**：金融场景的安全要求极高，通过验证说明方案可行

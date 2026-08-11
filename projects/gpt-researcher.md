@@ -29,7 +29,7 @@ url: "https://github.com/assafelovic/gpt-researcher"
 ## 热度来源判断
 热度来自"深度研究"（Deep Research）在 2025-2026 年成为 AI 的杀手级应用。OpenAI Deep Research、Perplexity Pro 的成功验证了市场需求。GPT Researcher 作为开源替代方案获得了大量关注——开发者和研究人员需要可控、可定制、无使用限制的研究 Agent。MCP 集成使其在 2026 年获得了新的增长动力。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 多阶段研究流程：规划→搜索→抓取→分析→综合→报告生成
 - 自适应搜索策略：根据初始结果动态调整后续搜索方向
 - 信息冲突检测：识别来源间的矛盾信息并标注

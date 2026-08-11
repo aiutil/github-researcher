@@ -30,7 +30,7 @@ Kubernetes 原生的机器学习工具包——将机器学习全流程（训练
 ## 热度来源判断
 **企业需求驱动 + 大厂背书**。Kubeflow 的热度来自两条线：(1) Google 品牌背书——作为 Google 发起的项目，Kubeflow 天然获得了企业用户的信任；(2) Kubernetes 在 ML 领域的真实需求——GPU 资源调度、分布式训练编排确实是 ML 工程化的痛点。但需要注意到，Kubeflow 的热度近年来增长放缓（从 2021 年的高速增长趋于平稳），部分原因是 MLOps 工具链碎片化（每个环节都有更专业的替代品）以及 Kubeflow 本身部署复杂度高。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Kubernetes 原生 ML 工作流**：所有 ML 组件（训练、调参、服务）都以 Kubernetes Operator 和 Custom Resource Definition (CRD) 形式部署，实现声明式的 ML 工作流管理。这意味着 ML 任务可以像 Kubernetes Pod 一样被调度、监控和弹性伸缩。
 2. **Jupyter Notebook 即服务**：Kubeflow Notebooks 允许每个数据科学家在 Kubernetes 集群中启动隔离的 Jupyter 环境，动态分配 GPU 资源，解决了本地 GPU 不足的问题。支持多用户隔离和团队共享。
 3. **Katib 超参数调优**：内置的分布式超参数调优系统，支持贝叶斯优化、网格搜索、随机搜索等策略，可在 Kubernetes 集群上并行运行大量试验。

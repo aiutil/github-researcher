@@ -37,7 +37,7 @@ Anthropic 官方开源的知识工作者插件仓库，面向 Claude Cowork 和 
 - 与 Claude Cowork 产品深度绑定，代表 Anthropic 企业市场的插件战略
 - Apache-2.0 许可证利于企业采用和二次开发
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **标准化插件结构**：`plugin.json` manifest + `.mcp.json` connectors + `commands/` + `skills/`
 2. **MCP 集成**：每个插件通过 MCP server 连接外部工具（Slack、HubSpot、Linear、Jira、Snowflake、BigQuery 等）

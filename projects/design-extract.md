@@ -4,7 +4,7 @@ slug: "design-extract"
 date_added: "2026-04-20"
 category: "工具型"
 emoji: "🎨"
-stars: "1138 stars"
+stars: "deleted (404) — 原 1,138 stars"
 stars_delta: "6天 1138⭐，增速 ~190⭐/天"
 language: "JavaScript"
 score: 78
@@ -31,7 +31,7 @@ url: "https://github.com/Manavarya09/design-extract"
 ## 热度来源判断
 50% 真实痛点（设计系统提取确实是高频需求）+ 30% Agent Skill 热潮 + 20% 多平台 emitter 的完整度。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **DTCG 标准 tokens**：输出符合 Design Tokens Community Group 标准的 tokens
 2. **三层 token 体系**：primitive + semantic + composite，符合现代设计系统最佳实践
 3. **MCP Server 集成**：作为 MCP server 运行，AI agent 可直接调用

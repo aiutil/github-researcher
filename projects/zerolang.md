@@ -30,7 +30,7 @@ Vercel Labs 连续推出 zerolang + zero-native 两个 Agent 基础设施项目�
 - 43 issues + 88 PRs 反映社区积极参与
 - C 语言实现暗示高性能取向
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent 原生设计**：从零开始为 Agent 场景设计，非通用语言加 Agent 库
 2. **C 语言实现**：性能优先，可嵌入其他运行时
 3. **Vercel Labs 背景**：Vercel 的前端 + Edge Runtime 经验为 Agent 语言提供了独特视角

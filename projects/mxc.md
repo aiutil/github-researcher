@@ -29,7 +29,7 @@ MXC 填补了 Agent 安全执行基础设施的关键空白。随着 Coding Agen
 - **57 stars/天**：Rust Trending 上榜
 - 早期 preview，但架构设计清晰
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **多后端统一抽象**：
    - Windows: ProcessContainer（默认）/ Windows Sandbox / WSLC / Hyperlight / MicroVM
    - Linux: Bubblewrap（默认）/ LXC / MicroVM / Hyperlight

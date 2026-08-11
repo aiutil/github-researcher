@@ -41,7 +41,7 @@ url: "https://github.com/JustVugg/colibri"
 - **社区讨论质量高**：issue讨论MTP接受率、SSD热管理等实际工程问题
 - **非炒作型增长**：10天2K star对于纯C项目是真实兴趣信号
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 1. MoE 内存分层架构
 - Dense部分（attention + shared experts + embeddings ~17B params）：常驻RAM，int4量化，9.9GB

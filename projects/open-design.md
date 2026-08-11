@@ -31,7 +31,7 @@ Anthropic 发布 Claude Design 后引爆了"AI 做设计"的需求，但 Claude 
 ## 热度来源判断
 **真实需求 + 生态聚合效应**。Claude Design 验证了市场，Open Design 满足了"我也要但不想被锁定"的需求。增速中部分来自关联项目的 Star 互带。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **71 个品牌级 Design Systems**：涵盖 Linear、Stripe、Vercel、Airbnb、Tesla、Notion、Apple 等，基于 awesome-design-md 导入。
 2. **19 个 Composable Skills**：prototype、deck、mobile、dashboard、pricing、docs、blog、SaaS landing 等，按需组合。

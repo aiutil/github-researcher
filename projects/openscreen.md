@@ -33,7 +33,7 @@ Screen Studio 等商业屏幕录制工具提供了精美的录制效果（自动
 - **开源社区推崇（高）**：免费+开源+可商用的组合极具吸引力
 - **跨平台需求（中高）**：Screen Studio 仅 macOS，OpenScreen 覆盖全平台
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **PixiJS 动画引擎**：用 WebGL 渲染实现流畅缩放/平移/高亮动画
 2. **Electron 跨平台**：一套代码覆盖 macOS/Windows/Linux
 3. **自动缩放跟随**：录制时自动聚焦鼠标区域，类似 Screen Studio

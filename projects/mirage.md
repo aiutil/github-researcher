@@ -37,7 +37,7 @@ Mirage 的解法：用文件系统语义统一所有后端，Agent 只需要 `ca
 - 有一定跟风成分（VFS + AI 是性感概念），但项目本身工程品质不低
 - Python + TypeScript 双 SDK 同时发布，说明准备充分
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **统一文件系统抽象**：S3 / Google Drive / Slack / Gmail / GitHub / Linear / Notion / Redis / MongoDB / SSH 等 15+ 后端统一挂载
 2. **命令可扩展**：支持注册自定义命令（`ws.command('summarize', ...)`），支持按 resource + filetype 覆写命令行为
 3. **可嵌入运行时**：Python SDK（`mirage-ai`）和 TypeScript SDK 都可嵌入 FastAPI / Express，无需独立进程

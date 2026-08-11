@@ -39,7 +39,7 @@ oh-my-codex（OMX）在 Codex CLI 之上构建了一层编排能力，解决了�
 - **与 oh-my-claudecode 的协同**：同一作者/团队的双平台策略，降低了用户的学习成本
 - **TypeScript 生态**：Web/JS 开发者群体庞大，TypeScript 工具更容易被采纳
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Staged Team Pipeline**：将任务分解为多个 Agent 角色（如 Planner、Coder、Reviewer），按阶段执行
 2. **Role Keywords**：用 `@role` 语法快速激活特定 Agent 角色，使角色切换成为工作流的一部分

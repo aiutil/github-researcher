@@ -26,7 +26,7 @@ Agent（尤其 Claude Code）运行时 token 消耗巨大，成本高昂。Cavem
 ## 热度来源判断
 50% meme 效应（"原始人"概念有传播力），50% 真实痛点（token 成本是 Agent 用户的核心焦虑）。meme 属性大于技术属性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. Prompt 表述压缩：通过简化语言结构减少 token 数
 2. 质量保持：声称在压缩 65% token 的同时保持输出质量
 3. Claude Code Skill 格式：即插即用

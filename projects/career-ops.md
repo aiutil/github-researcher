@@ -26,7 +26,7 @@ url: "https://github.com/santifer/career-ops"
 ## 热度来源判断
 混合驱动。真实需求（求职是普遍痛点）+ AI Agent 炒作热度 + 社交媒体传播。51.5K stars 对于一个垂直场景的 Claude Code Skill 封装来说增速过快，可能包含大量被动关注。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **14 种 Skill 模式**：从简历优化到面试准备的全流程覆盖
 2. **Go Dashboard**：提供 Web 界面管理求职状态
 3. **PDF 生成**：自动生成格式化的求职文档

@@ -29,7 +29,7 @@ url: "https://github.com/HKUDS/Vibe-Trading"
 - HKUDS（香港大学数据科学实验室）学术背景带来信任
 - 社区贡献活跃：近期 PR 涵盖印度市场引擎、A 股因子、Docker 修复等
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **多市场引擎**：美股 + 港股 + A股 + 印度 NSE/BSE，每个市场有独立的交易规则引擎（T+1、涨跌停、费用结构）
 2. **460 个 Alpha 因子**：包含 Alpha101、Qlib158、SEC 基本面因子，PIT-safe（Point-in-Time 安全）
 3. **Swarm 多 Agent 辩论**：多角色 Agent 各自分析后辩论决策，降低单一模型偏见

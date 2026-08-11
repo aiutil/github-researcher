@@ -32,7 +32,7 @@ AI 原生可观测性平台：OpenTelemetry + ClickHouse + AI Agent 自愈，从
 - YC 品牌效应 + 可观测性 + AI 自愈是真需求 + 技术栈现代
 - 持续增长，非爆发式
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **OTLP 原生** — 支持 traces/logs/metrics 统一接入
 - **ClickHouse 查询引擎** — 海量遥测数据高性能查询
 - **AI 事件聚合** — 将噪声信号自动聚合为事件

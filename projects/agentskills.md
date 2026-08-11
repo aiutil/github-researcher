@@ -26,7 +26,7 @@ Agent 生态的碎片化问题：每个 Agent 平台（Claude Code/Codex/Cursor/
 ## 热度来源判断
 生态驱动。不是单个项目的热度，而是整个行业的标准化趋势。Anthropic 发起+多巨头采纳，网络效应已经启动。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **极简格式**——一个 Skill = 一个文件夹 + SKILL.md（元数据+指令），无复杂依赖
 2. **三阶段渐进加载**——Discovery（名称+描述）→ Activation（完整指令）→ Execution（执行+脚本），精巧的 context 管理设计
 3. **Progressive Disclosure**——只在需要时加载完整指令，大量 skills 可共存而 context 开销极小

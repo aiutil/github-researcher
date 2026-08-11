@@ -34,7 +34,7 @@ Agentic Coding（智能体编程）是 2025-2026 年最热的开发工具赛道�
 ## 热度来源判断
 kimi-cli 的热度是 **"国产 Claude Code 替代"刚需 + Moonshot 品牌 + Coding Agent 赛道红利** 三重驱动。Claude Code 在国内因网络和付费门槛，大量开发者寻找替代品；Kimi 作为国产头部模型，其 CLI 自然承接这波需求。Moonshot AI 的品牌（Kimi 智能助手已有庞大 C 端用户）带来初始流量。833 个 Open Issues 说明采用者众但 bug 也多——这是快速增长的副作用。热度**部分真实（确实填补国产空白），部分品牌驱动**。需警惕的是：Coding Agent 的核心壁垒是模型编码能力，而 Kimi 模型在编程基准上的表现仍落后于 Claude Sonnet/Opus 系列，这决定了 kimi-cli 的能力天花板。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **单二进制/简易安装:** 对标 Claude Code 的"一行命令安装"体验，降低使用门槛
 2. **多模态输入:** 支持图片甚至视频输入（早期差异化），可"给 Agent 看截图/UI 改 bug"
 3. **MCP 原生配置:** 内置 Model Context Protocol 客户端，原生支持接入外部工具服务器

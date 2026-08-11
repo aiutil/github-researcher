@@ -34,7 +34,7 @@ React 元框架，专注构建内部工具（internal tools）、管理后台（
 ## 热度来源判断
 refine 的热度是 **"内部工具刚需 × headless 趋势 × 多生态兼容"** 的稳健组合。企业内部工具市场庞大——每个中大型公司都需要大量 admin panel，这是被低估的赛道。refine 的 headless 哲学（不强制 UI 库）迎合了 2022 年后前端"无头化"趋势（headless CMS、headless UI 普及），给了团队选择自由。对 Ant Design（国内主流）和 Material UI（国际主流）的双重一等支持，让它横跨中外市场。3.5 万 stars 的增长曲线平缓扎实，反映真实企业采用而非炒作。商业化（refine.dev enterprise）的存在也侧面验证了市场需求真实。整体**热度真实、健康，无明显泡沫**。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Headless 架构:** 提供 hooks（useTable/useForm/useShow 等）封装数据逻辑，UI 完全由你选的组件库渲染
 2. **数据源无关（Data Provider）:** 通过 Data Provider 抽象，统一支持 REST/GraphQL/NestJS/Supabase/Airtable/Strapi 等
 3. **认证/权限内建:** authProvider 抽象处理登录、RBAC/ABAC 权限，开箱即用

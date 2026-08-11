@@ -29,7 +29,7 @@ Go 微服务开发的"框架选择困难"：标准库 net/http 太底层，grpc-
 ## 热度来源判断
 热度来自中国市场对 Go 微服务框架的巨大需求，以及 B 站的技术品牌背书。Kratos 在国内 Go 社区有很高的认知度，Trendshift 和 Product Hunt 等平台的推荐也带来了国际流量。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **Protobuf 驱动**：一个 .proto 文件生成 HTTP 和 gRPC 双协议代码
 - **统一传输层**：HTTP 和 gRPC 接口共用同一套业务逻辑
 - **可组合中间件**：Recovery、Logging、Validation、Tracing、Metrics、Auth 等开箱即用

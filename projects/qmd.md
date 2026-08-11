@@ -5,7 +5,7 @@ date_added: "2026-04-07"
 last_seen_date: "2026-08-07"
 category: "工具型"
 emoji: "📄"
-stars: "18,843"
+stars: "deleted (404) — 原 18,843 stars"
 language: "TypeScript"
 score: 51
 tags: ["local-search", "cli", "mcp", "bm25", "vector-search", "reranking"]
@@ -34,7 +34,7 @@ url: "https://github.com/qmd-project/qmd"
 - 394/day 增速稳健，总量 18.8k
 - 隐私优先 + 全本地是差异化的市场定位
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **混合检索 + LLM 重排**：BM25（精确）+ 向量（语义）+ LLM reranking（质量最优），三层级联
 2. **context 树机制**：文档的层级关系被编码为 context 树，返回结果时带着父级上下文。让 Agent 能理解"这份文档在哪里、它和什么相关"
 3. **全本地 LLM**：通过 node-llama-cpp 跑 GGUF 模型，不需要云端 API，纯本地推理

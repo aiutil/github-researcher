@@ -33,7 +33,7 @@ url: "https://github.com/RightNow-AI/openfang"
 ## 热度来源判断
 openfang 的热度是 **"Agent OS"概念红利 + Rust 生态信任 + OpenClaw 生态联动** 三重驱动。2026 年"Agent OS"成为行业热词——业界意识到 Agent 需要操作系统级抽象，而非又一个框架。openfang 抢占了"开源 Agent OS"的命名和定位。Rust 语言带来的"高性能、内存安全"标签在基础设施项目中有天然信任加成。与 OpenClaw 生态的关联（topics 中含 openclaw）也带来了协同流量。需要注意的是，项目仅 4 个月历史，1.8 万 stars 中存在概念炒作成分——"Agent OS"仍处于定义阶段，openfang 的实际采用率尚待验证。这是**概念先于成熟度**的典型早期项目。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent 即进程:** 将每个 Agent 封装为受 OS 管理的"进程"，拥有独立 PID、资源配额、生命周期，可被调度、暂停、终止
 2. **权限隔离模型:** 基于 OS 权限体系，限制 Agent 可访问的文件、网络、工具，防止失控 Agent 造成破坏
 3. **MCP 原生集成:** 将 Model Context Protocol 作为一等公民，Agent 通过统一协议接入工具，而非各自实现

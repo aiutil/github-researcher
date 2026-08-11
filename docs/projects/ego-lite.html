@@ -27,55 +27,82 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/citrolabs/ego-lite" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="citrolabsego-lite">citrolabs/ego-lite</h1>
+        <h1 id="ego-lite">ego (lite) — 人机并行浏览器</h1>
 <h2 id="_1">一句话定位</h2>
-<p>人机并行浏览器——Agent 在独立 Space 中工作，共享你的登录态但不干扰你的标签页。</p>
+<p>专为 AI Agent 设计的浏览器——Agent 在独立 Space（并行工作区）中运行浏览器自动化任务，共享你的 Chrome 登录态但不干扰你的标签页，代码驱动而非 CLI 驱动，复杂任务快 2.5 倍且消耗更少 Token。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>现有 Agent 浏览器工具（browser-use / agent-browser）需要单独启动浏览器实例，登录态无法继承，Agent 和人抢同一个浏览器。Agent 完成多步任务时频繁在"调用命令 → 看结果 → 调用下一条"的循环中浪费时间。</p>
-<h2 id="2026-07-24">为什么值得关注（2026-07-24）</h2>
-<p>ego-lite 代表了 Agent 浏览器的范式转变：从"驱动浏览器"到"共享浏览器"。Agent 在你的浏览器里有自己的隔离 Space，能看到你的登录状态但不干扰你。代码驱动而非 CLI 驱动的设计让复杂任务快 2.5x。</p>
-<h2 id="_3">热度来源判断</h2>
+<p>现有 Agent 浏览器工具（browser-use、agent-browser）存在三大痛点：</p>
+<ol>
+<li><strong>登录态无法继承</strong>：需要单独启动浏览器实例，Agent 不得不重新登录每个网站，Cookie/Session/扩展全部丢失</li>
+<li><strong>标签冲突</strong>：Agent 和人争抢同一个浏览器窗口，Agent 操作时用户无法继续浏览</li>
+<li><strong>CLI 循环效率低</strong>：Agent 在"调用命令 → 看结果 → 调用下一条"的串行循环中浪费时间。复杂多步任务（如填表+截图+提交）需要多轮往返</li>
+</ol>
+<p>ego lite 的解法：<strong>一个浏览器，从一开始就为人机共享而设计</strong>。Agent 有自己的 Space（隔离工作区），继承你的真实登录状态，通过 JavaScript 函数直接调用浏览器 API，多步任务一次执行。</p>
+<h2 id="2026-08-11">为什么值得关注（2026-08-11）</h2>
 <ul>
-<li><strong>真实痛点</strong>：Agent 浏览器自动化中的登录态和标签冲突是普遍痛点</li>
-<li><strong>范式创新</strong>：从 CLI 驱动到代码驱动的效率提升是实打实的</li>
-<li><strong>Chrome 迁移</strong>：一键继承 Chrome 数据降低了试用门槛</li>
-<li><strong>早期阶段</strong>：2K stars，日增 247，仍在快速增长</li>
+<li><strong>Stars:</strong> 9,566（7 月底 2K，2.5 周爆发到 9.6K），Forks 470，Watchers 25</li>
+<li><strong>范式转变</strong>：从"驱动浏览器"到"共享浏览器"，从 CLI 到 Code</li>
+<li><strong>实测快 2.5 倍</strong>：复杂工作流比传统 CLI 方式快 2.5 倍，工具调用次数更少，任务成功率更高</li>
+<li><strong>内核级 Snapshot</strong>：号称市场上最强的页面快照，可靠处理深层嵌套 iframe（其他方案的通用断点）</li>
+<li><strong>跨 Agent 兼容</strong>：<code>ego-browser</code> Skill 兼容 Claude Code、Codex、Cursor 等所有主流 Agent CLI</li>
+<li><strong>Chrome 一键迁移</strong>：首次启动迁移登录态/Cookie/扩展/书签，零配置试用</li>
+<li><strong>持续活跃</strong>：pushed_at 2026-08-11（今日），几乎每日更新</li>
 </ul>
+<h2 id="_3">热度来源判断</h2>
+<p>ego lite 的热度是 <strong>"Agent 浏览器自动化的真实痛点 × 范式创新 × Chrome 迁移降低门槛"</strong> 的组合。Agent 操控浏览器是 2026 年 Agent 应用最大场景之一（数据抓取、表单填写、端到端测试、Lead Enrichment），但现有方案的登录态和标签冲突是开发者每天面对的麻烦。ego lite 的"共享浏览器 + 独立 Space"设计直击痛点。日增 400+ 的增速说明口碑传播正在加速。470 forks 显示社区在积极尝试集成。<strong>热度真实，痛点验证充分</strong>——但闭源核心浏览器是长期信任的变量。</p>
 <h2 id="_4">关键技术亮点</h2>
 <ol>
-<li><strong>Code-based 非 CLI-based</strong>：Agent 写 JavaScript 函数直接调用浏览器 API，多步任务一次执行，比 CLI 循环快 2.5x</li>
-<li><strong>Space 隔离</strong>：每个 Agent / 任务有独立 Space（并行工作区），10 个 Space 同时运行互不干扰</li>
-<li><strong>最强 Page Snapshot</strong>：内核级定制，高质量页面快照，可靠处理深层 iframe</li>
-<li><strong>Chrome 数据迁移</strong>：首次启动可选择迁移 Chrome 登录态/cookies/扩展/书签</li>
-<li><strong>ego-browser Skill</strong>：标准 Skill 安装方式（<code>npx skills add</code>），兼容 Claude Code / Codex / Cursor</li>
+<li><strong>Code-based 非 CLI-based（核心差异）</strong>：Agent 写 JavaScript 函数直接调用浏览器 API（snapshot/fill/click/wait/navigate/capture），多步任务一次输出而非多轮 CLI 循环。复杂工作流快 2.5 倍，Token 消耗更少</li>
+<li><strong>Space 隔离架构</strong>：每个 Agent / 任务有独立 Space（并行工作区），10 个 Space 同时运行互不干扰。用户可随时查看哪个 Space 在运行、接管或停止</li>
+<li><strong>最强 Page Snapshot</strong>：内核级定制产出高质量页面快照（文本模型"看"页面的依据），可靠处理深层嵌套 iframe——这是 browser-use 等方案的通用断点</li>
+<li><strong>Chrome 数据迁移</strong>：首次启动可选择迁移 Chrome 登录态/Cookie/扩展/书签，Agent 直接继承用户的真实身份</li>
+<li><strong><code>ego-browser</code> Skill 协议</strong>：标准 Skill 安装（<code>npx skills add citrolabs/ego-lite</code>），将浏览器暴露为一组页内 JavaScript 工具</li>
+<li><strong>本地优先</strong>：浏览数据留在设备上，仅记录是否选择 Chrome 迁移</li>
 </ol>
 <h2 id="_5">架构启发</h2>
-<pre class="mermaid">graph TB
-    subgraph "browser-use 范式（1.0）"
-        Agent1["🤖 Agent"] -->|CLI 驱动| Browser1["🌐 独立浏览器"]
-        Browser1 -->|无登录态| Problem1["❌ 需要重新登录"]
-        Agent1 -->|串行循环| Slow["🐢 速度慢"]
-    end
-    
-    subgraph "ego-lite 范式（2.0）"
-        User["👤 用户"] --> Browser2["🌐 共享浏览器"]
-        Agent2["🤖 Agent"] --> Space1["🔒 Space A"]
-        Agent3["🤖 Agent"] --> Space2["🔒 Space B"]
-        Space1 --> Browser2
-        Space2 --> Browser2
-        Browser2 -->|共享登录态| OK["✅ 无需重新登录"]
-        Agent2 -->|代码驱动| Fast["⚡ 并行快速"]
-    end
-</pre>
+<p>ego lite 代表了 Agent 浏览器自动化的<strong>范式迭代</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>1.0 范式（browser-use）</th>
+<th>2.0 范式（ego-lite）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浏览器</td>
+<td>独立实例，需重登</td>
+<td>共享浏览器，继承登录态</td>
+</tr>
+<tr>
+<td>驱动</td>
+<td>CLI 串行循环</td>
+<td>JavaScript 函数，一次执行</td>
+</tr>
+<tr>
+<td>并行</td>
+<td>❌ 单线程</td>
+<td>✅ 多 Space 并行</td>
+</tr>
+<tr>
+<td>页面理解</td>
+<td>DOM 抓取（脆弱）</td>
+<td>内核级 Snapshot（精确）</td>
+</tr>
+</tbody>
+</table>
+<p>更深层启发：<strong>Agent 工具的效率瓶颈不在模型能力，而在交互范式</strong>。CLI 循环每轮消耗一次 LLM 推理，而 Code 驱动让 Agent 把多步操作编译为一段代码一次执行——这本质上是"把推理成本从 N 次降到 1 次"。</p>
 <h2 id="_6">定位判断</h2>
-<p>工具型——当前阶段是 Agent 浏览器自动化工具的有力竞争者，但其长期价值取决于是否能从"工具"升级为"平台"（如开放 Space API 供第三方编排）。</p>
+<p><strong>工具型，有平台化潜力。</strong> 当前是 Agent 浏览器自动化工具的有力竞争者。长期价值取决于能否从"工具"升级为"平台"——开放 Space API 供第三方编排、构建经验积累系统。如果成功，可能成为"Agent 的浏览器层"。Trendshift 已收录（#42334），表明已进入趋势雷达。</p>
 <h2 id="_7">风险 / 局限 / 泡沫点</h2>
 <ol>
-<li><strong>仅 macOS</strong>：Windows 和 Linux 仍在 roadmap，限制了采用范围</li>
-<li><strong>闭源核心</strong>：浏览器本身闭源，仅 Skill 层开源，社区信任度有限</li>
-<li><strong>早期阶段</strong>：2K stars，部分功能（体验积累）仍在 coming soon</li>
-<li><strong>安全考量</strong>：Agent 可访问用户登录态，企业场景需要额外控制层</li>
-<li><strong>竞争激烈</strong>：browser-use、ChatGPT Atlas、Perplexity Comet 都在同一赛道</li>
+<li><strong>仅 macOS</strong>：Windows 和 Linux 仍在 roadmap，限制了采用范围。macOS 优先策略降低了初期工程负担但收窄了用户基数</li>
+<li><strong>闭源核心</strong>：浏览器本身闭源，仅 Skill 层（<code>ego-browser</code>）开源。社区对闭源核心的信任度有限，也无法审计安全关键路径</li>
+<li><strong>安全考量</strong>：Agent 可访问用户登录态（银行、邮箱、企业 SaaS），企业场景需要额外的权限 Scope 和数据隔离控制。目前缺乏细粒度权限模型</li>
+<li><strong>竞争激烈</strong>：browser-use、ChatGPT Atlas、Perplexity Comet 都在同一赛道。大厂产品的分发优势可能挤压独立项目空间</li>
+<li><strong>"体验积累"功能未落地</strong>：声称可加速 5 倍的 Experience Accumulation 仍是 coming soon</li>
+<li><strong>Chrome 迁移风险</strong>：迁移完整的登录态意味着安全敏感凭据暴露给 Agent，需要谨慎评估</li>
 </ol>
 <h2 id="_8">与同类项目的关系</h2>
 <table>
@@ -86,6 +113,7 @@
 <th>browser-use</th>
 <th>ChatGPT Atlas</th>
 <th>Perplexity Comet</th>
+<th>agent-browser (Vercel)</th>
 </tr>
 </thead>
 <tbody>
@@ -95,49 +123,81 @@
 <td>驱动浏览器</td>
 <td>独立浏览器</td>
 <td>独立浏览器</td>
+<td>驱动浏览器</td>
 </tr>
 <tr>
-<td>并行</td>
-<td>✅ 多 Space</td>
-<td>❌ 单线程</td>
+<td>并行 Space</td>
+<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
+<td>❌</td>
 </tr>
 <tr>
-<td>登录态</td>
-<td>✅ Chrome 迁移</td>
-<td>❌ 需重登</td>
+<td>继承 Chrome 数据</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>可复用 Skill</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
 <td>❌</td>
 <td>❌</td>
 </tr>
 <tr>
-<td>驱动方式</td>
-<td>代码（JS）</td>
-<td>CLI</td>
+<td>代码驱动</td>
+<td>✅ JS</td>
+<td>❌ CLI</td>
 <td>内置 Agent</td>
 <td>内置 Agent</td>
+<td>✅</td>
 </tr>
 <tr>
-<td>开源</td>
+<td>外部 Agent 可控</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>数据本地</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>开源程度</td>
 <td>Skill 层开源</td>
 <td>✅ 完全开源</td>
 <td>❌ 闭源</td>
 <td>❌ 闭源</td>
+<td>✅</td>
 </tr>
 </tbody>
 </table>
 <h2 id="_9">是否值得持续跟踪</h2>
-<p><strong>建议跟踪。</strong> "共享浏览器"范式如果能被验证，将成为 Agent 浏览器自动化的主流方式。重点关注跨平台支持进度和企业采用情况。</p>
+<p><strong>建议持续跟踪。</strong> "共享浏览器"范式如果能被验证，将成为 Agent 浏览器自动化的主流方式。对 Agent 应用开发者，ego lite 是当前最高效的浏览器自动化方案。对生态观察者，它代表了 Agent 工具从"CLI 循环"向"Code 编译"的范式跃迁。重点关注跨平台支持进度、安全控制成熟度和企业采用情况。</p>
 <h2 id="_10">后续观察点</h2>
 <ol>
-<li>Windows/Linux 版本发布时间表</li>
-<li>浏览器内核是否开源（当前仅 Skill 层开源）</li>
-<li>企业级安全控制（Agent 权限 scope、数据隔离）</li>
-<li>与 Claude Code / Codex 的深度集成质量</li>
-<li>"体验积累"功能的落地效果（声称可加速 5x）</li>
+<li><strong>Windows/Linux 版本发布时间表</strong>——跨平台是规模化的前提</li>
+<li><strong>浏览器内核是否开源</strong>——当前仅 Skill 层开源，闭源核心限制社区信任</li>
+<li><strong>企业级安全控制</strong>——Agent 权限 Scope、数据隔离、操作审计</li>
+<li><strong>"体验积累"功能落地效果</strong>——声称可加速 5 倍</li>
+<li><strong>与 Claude Code / Codex 的深度集成质量</strong>——是否成为默认浏览器 Skill</li>
+<li><strong>Space API 开放</strong>——是否从工具升级为编排平台</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-07-24</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-08-11) | Stars: 9,566 | Forks: 470 | License: MIT | 语言: JavaScript | 创建: 2026-04-16 | pushed: 2026-08-11</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

@@ -28,7 +28,7 @@ url: "https://github.com/NotPBShaw/burner-agents"
 ## 热度来源判断
 隐私议题热度 + Agent swarm 概念热度。但使用场景和用户群体不够明确。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Fresh identity per task** — 每个任务独立的浏览器上下文 + 指纹 + 设备特征 + 网络出口
 2. **Orchestration in trust boundary** — 协调逻辑只在本地，对外不可见
 3. **Reasoning agent** — 不是脚本，是 LLM 驱动的动态页面理解

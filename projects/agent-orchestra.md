@@ -5,7 +5,7 @@ date_added: "2026-04-10"
 last_seen_date: "2026-04-10"
 category: "工具型"
 emoji: "🎼"
-stars: "678 stars"
+stars: "deleted (404) — 原 678 stars"
 stars_delta: "新晋热榜"
 language: "Python"
 score: 55
@@ -31,7 +31,7 @@ url: "https://github.com/multi-ai-labs/agent-orchestra"
 - 678 stars 说明尚未大规模验证，处于早期探索阶段
 - 编排模式新颖但实用性有待验证
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **交响乐编排模型**：用音乐编排的隐喻设计 Agent 协作流程，支持独奏、合奏、变奏等模式
 2. **角色化 Agent 管理**：每个 Agent 有明确的角色定义和任务边界
 3. **动态协调机制**：支持运行时动态调整编排策略

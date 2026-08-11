@@ -69,7 +69,7 @@ stars 从 8K 增长到 10K（日增 1,029）。持续稳定增长表明这不是
 
 高性能代码智能 MCP Server——用 tree-sitter 将代码库索引为持久化知识图谱，158 语言、sub-ms 查询、120x token 削减，单个静态二进制零依赖。
 
-## 解决的问题
+## 它解决的问题
 
 Coding Agent（Claude Code、Codex 等）在理解大型代码库时依赖 `grep` + `read` 暴力搜索。这种方式 token 消耗巨大（Linux 内核级代码库需要 ~412K tokens），速度慢，且无法理解代码结构（调用链、类型关系、路由定义）。codebase-memory-mcp 用知识图谱将这个成本降低 120 倍。
 
@@ -81,7 +81,7 @@ Coding Agent（Claude Code、Codex 等）在理解大型代码库时依赖 `grep
 
 **真实需求 + 极致工程。** Coding Agent 的代码理解效率是行业核心痛点。codebase-memory-mcp 不只是做了（tree-sitter 索引），还做到了极致（158 语言、Hybrid LSP 类型推断、Cypher 查询、3D 可视化）。arXiv 论文提供了学术可信度。日增 1,055 不是泡沫——是真实需求的映射。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **tree-sitter 知识图谱：** 158 种语言的 vendored grammar 编译进二进制，索引 Linux 内核（28M LOC, 75K 文件）仅需 3 分钟。产出包含 CALLS / IMPORTS / DEFINES / IMPLEMENTS / INHERITS / HTTP_CALLS / DATA_FLOWS / EMITS 等边的持久化图。
 

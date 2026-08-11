@@ -30,7 +30,7 @@ url: "https://github.com/masterking32/MasterHttpRelayVPN"
 ## 热度来源判断
 热度来源于**特定地缘政治需求驱动**。项目创建于 2026-04-20，短时间内获得近 4K stars，反映了某些地区网络审查收紧后对新型翻墙工具的迫切需求。技术上属于"对抗性创新"——每次审查升级都会催生新的对抗工具。Rust 版本的出现说明社区认可度较高，形成了事实标准。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Google Apps Script 中继:** 利用 Google 免费提供的 GAS 运行时作为代理服务器，零基础设施成本
 2. **Domain Fronting（域前置）:** 流量目标地址显示为 google.com，实际转发到 Apps Script，DPI 难以区分
 3. **MITM TLS 拦截:** 在中继层对 TLS 流量进行解密-重加密，支持 HTTP/1-2 多路复用

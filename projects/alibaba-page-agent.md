@@ -30,7 +30,7 @@ GitHub Trending 日榜连续出现，19.2K stars 且持续增长。代表了一�
 - **browser-use 生态延伸**：DOM 处理组件 derived from browser-use，有技术传承
 - **阿里巴巴品牌**：大厂开源增加可信度
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **纯文本 DOM 操作**：不截图、不多模态——基于 tree-sitter 式 DOM 解析，将页面结构化为文本传给 LLM，LLM 返回操作指令
 2. **零依赖注入**：`<script src="cdn.../page-agent.js"></script>` 一行代码，无需浏览器扩展/Python/headless browser
 3. **BYO LLM**：支持任何 OpenAI-compatible API（qwen3.5-plus、GPT 等），无供应商锁定

@@ -28,7 +28,7 @@ GitHub Trending Daily 上榜。在 Agent 安全生态中填补了"自动化攻�
 ## 热度来源判断
 真实需求驱动。DevSecOps 从"安全扫描"到"安全测试"的演进是行业趋势。Docker 沙箱+本地运行降低了使用门槛。GitHub Actions 集成使其可直接进入 CI/CD 流水线。AI Agent 模拟攻击行为是比静态分析更有价值的能力。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **多 Agent 协作架构**：recon（侦察）→ attack（攻击）→ validate（验证）→ report（报告），每个阶段由不同 Agent 角色
 2. **完整黑客工具箱**：HTTP Proxy（请求/响应操纵）、Browser Automation（XSS/CSRF/Auth 测试）、Terminal（命令执行）、Python Runtime（exploit 开发）
 3. **Docker 沙箱隔离**：所有 Agent 行为在容器内执行，首次运行自动拉取沙箱镜像

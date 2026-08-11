@@ -30,7 +30,7 @@ url: "https://github.com/Accio-Lab/RealReplicaBench"
 - **真实需求信号**：69 fork（相对 1,017⭐）说明有团队在尝试运行/适配。阿里国际 Accio 团队背书（非学生/个人项目），有 live leaderboard 和 mock showcase。任务覆盖面（107 任务、8 类业务流）说明是认真构建的 benchmark。
 - **话题性成分**：agent benchmark 是当前热点（SWE-bench 衍生项目多），RealReplicaBench 受益于品类热度。subscribers 数据 API 未返回（可能为 0 或私有），深度关注度待验证。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **107 任务三层切片**：65 纯文本 + 20 browser-text-capable + 22 vision-required，覆盖 CLI（53）/browser（28）/file（16）/API-MCP（10）。任务覆盖浏览器操作、native-style CLI 工具、API/MCP 工作流、文档/表格生成、公开网络研究、供应商分析、产品发布、物流、电商运营。
 2. **状态化本地 mock 服务**：用本地容器模拟 SaaS（阿里发布表单、Freightos、Shopify、消息、文档系统），agent 必须操作界面并改变状态——不是回答"关于业务的问题"，而是"完成业务操作"。不要求生产账号，降低评测门槛。

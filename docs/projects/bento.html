@@ -41,7 +41,7 @@
 </ul>
 <h2 id="_3">热度来源判断</h2>
 <p>热度来自<strong>对云文档锁定疲劳的真实情绪</strong> + 「单文件即应用」的技术新鲜感 + AI 可编辑性的叙事。2.8K 星、175 fork，分布健康。注意它当前主要是幻灯片（slides）品类，并非完整 office suite——「office suite that fits in a file」是愿景，落地先从 slides 切入。</p>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>自重写保存</strong>：文件用 File System Access API 重写自己的数据块（保存时把 deck 写回文件顶部），旧文件保留为回滚；下载 fallback 兜底。</li>
 <li><strong>文档即纯 JSON + AI 可编辑</strong>：数据是文件顶部一个可读 JSON 块，无二进制格式。Agent 直接原地编辑文件，chatbot round-trip JSON——<code>window.bento.loadDoc</code>。</li>

@@ -30,7 +30,7 @@ WASTE（Weight-Aware Streaming Tensor Engine）——纯 C、零运行时依赖�
 - **话题性成分**："在 Macbook 上跑 2.78 万亿参数"的叙事有极强传播性；652⭐ 来自"把不可能变可能"的话题性。
 - **价值定位**：作者明确把价值定位为"**可行性证明**"（万亿级可达单台消费机），而非"实用速度"（0.62 tok/s 是可用性下限）。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Trunk 驻内存 + expert 磁盘流式 + RAM 有界 cache**：模型 trunk 保持在内存；每 token 需要的 selected experts 从 NVMe 直接读取（一个 expert = 一次读取）；剩余 RAM 全部用作 expert cache（有界）。实测命令显示 "expert cache 17.56 GB"，"experts 9038 hit / 14514 miss = 38%"。
 2. **纯 C、零运行时依赖**：可嵌入。对比 deltafin（Python + 依赖），waste 追求极致的依赖控制与可移植性。

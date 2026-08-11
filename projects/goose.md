@@ -17,7 +17,7 @@ last_seen_date: "2026-04-14"
 
 Block（Square 母公司）开源的本地 AI Coding Agent，模型无关，支持 3000+ MCP 工具，Apache 2.0 完全免费。
 
-## 解决的问题
+## 它解决的问题
 
 1. **AI Coding 工具成本高**：Claude Code $200/月，企业成本压力
 2. **代码离开本地**：云端 Agent 意味着代码需上传到第三方
@@ -38,7 +38,7 @@ Block（Square 母公司）开源的本地 AI Coding Agent，模型无关，支�
 - **MCP 生态红利**：3000+ 工具连接是可量化价值
 - **Block 品牌**：Square/Block 在开发者工具领域的声望
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **MCP 原生架构**：通过 MCP 协议连接工具，标准化扩展
 2. **模型无关设计**：统一的 Agent 接口适配不同 LLM 后端

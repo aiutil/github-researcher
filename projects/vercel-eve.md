@@ -36,7 +36,7 @@ Vercel 出品的 filesystem-first AI Agent 框架——agent 的能力（tools/s
 ## 热度来源判断
 Vercel 品牌效应 + filesystem-first 理念优雅 + TypeScript 开发者基数大。热度有真实需求支撑，但也包含 Vercel 粉丝效应。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Filesystem as API** — agent.ts（配置）、instructions.md（系统提示）、tools/（函数）、skills/（按需加载）、channels/（消息）、schedules/（定时）
 2. **Skills 按需加载** — 不是一次性灌入所有 context，而是根据需要加载 skill
 3. **Channels 抽象** — HTTP、Slack、Discord 消息通道统一管理

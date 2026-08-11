@@ -34,7 +34,7 @@ url: "https://github.com/ersinkoc/project-architect"
 - 40+ 编码代理兼容降低了 adoption 门槛
 - 文档驱动方法与 AGENTS.md 等标准趋势一致
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **文档优先设计**：基于文档的项目规划方法，输出结构化的规格说明
 2. **多代理兼容**：通过兼容适配器支持 Claude Code、Cursor、Codex 等 40+ 工具
 3. **生成式规划**：AI 驱动的项目规划生成，从需求到任务清单的完整闭环

@@ -31,7 +31,7 @@ url: "https://github.com/vadimdemedes/ink"
 ## 热度来源判断
 Ink 的热度是**真实开发者体验提升 + React 范式扩展**驱动。它让"React 开发者"无需学习新概念就能构建 CLI，降低了 CLI 开发门槛。同时，Ink 证明了 React 的"声明式 UI"范式不限于浏览器——它可以渲染到任何"目标"（终端、邮件、PDF）。这种"React everywhere"理念本身就是技术热度的一部分。当前为成熟期，增速稳定。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **React Reconciler:** 基于 `react-reconciler` 实现，将 React 组件树渲染为终端文本
 2. **Yoga 布局引擎:** 使用 Facebook 的 Yoga（Flexbox 跨平台实现）做终端布局
 3. **Hooks 兼容:** useState、useEffect 等 React Hooks 完全可用

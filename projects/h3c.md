@@ -2,14 +2,14 @@
 title: "antirez/h3.c"
 slug: "h3c"
 date_added: "2026-08-11"
-last_seen_date: "2026-08-11"
+last_seen_date: "2026-08-12"
 category: "观察型"
 emoji: "⚡"
-stars: "129 stars"
-stars_delta: "+129 (新建项目首日观测)"
+stars: "1,201 stars"
+stars_delta: "+1,072 (129→1,201，+831%，三日破千；fork 7→57，subscribers 1→10)"
 language: "C"
 license: "MIT"
-score: 86
+score: 92
 tags: ["minimax-h3", "metal", "apple-silicon", "native-inference", "video-generation", "redis-creator", "int8-quantization"]
 url: "https://github.com/antirez/h3.c"
 ---
@@ -30,7 +30,7 @@ MiniMax-H3 视频生成模型虽然质量高，但推理成本极高（需要云
 ## 热度来源判断
 **判断：真实需求驱动，但极早期。** 129⭐ / 7 fork / 1 subscriber 的数据说明项目刚起步（创建于 08-09），热度主要来自 antirez 的个人影响力（30.7k followers 中极小比例已关注）。这不是泡沫——antirez 的项目历史（Redis、disque、litelog）证明他只做有真实工程价值的系统项目。但当前 star 数仍很低，尚未进入大规模采用阶段。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **原生 Metal Compute：** 不依赖 PyTorch/MLX/MPS，直接用 Metal Compute Shaders 实现 H3 transformer 的所有计算。针对 M5 Max 的 Metal 4 TensorOps 硬件专门优化。
 2. **int8 量化（M5 专属）：** 动态量化激活值，per-output-channel weight scales，FC2 输入每 1,024 通道一个 scale。README 称 BF16→int8 将 50-layer 19-transition 渲染从 36.30s 降到 25.80s（M5 Max，作者自述，未独立复现）。
 3. **深度 kernel 融合：** QKV 投影 + Q/K RMS 归一化 + RoPE 融合为单一 kernel；gated AdaLN 融合量化；MLP 的 fc1→SwiGLU→fc2 融合为单个缓存图。每个融合都声称 byte-identical（可回退到非融合版本验证）。
@@ -68,3 +68,11 @@ h3.c 的核心启发是**"模型落地的最后一公里是推理引擎工程，
 
 ---
 > 数据来源: GitHub API (2026-08-11) | Stars: 129 | Forks: 7 | Subscribers: 1 | License: MIT | 语言: C | 创建: 2026-08-09 | 作者: antirez (Salvatore Sanfilippo, Redis creator, 30,742 followers)
+
+## 最近动态（2026-08-12）
+
+- **三日破千 +1,072（+831%），score 86→92。** 129 → 1,201，fork 7→57（+50），subscribers 1→10（+9），open issues 13。这是 h3.c 从"极早期"跃迁到"千星项目"的关键转折。
+- **市场二次确认"推理成本是瓶颈"。** 昨日判断"antirez 的参与是最高信誉级别背书"，今日 +831% 证明开发者社区高度认同——三日破千的速度远超一般原生推理引擎项目。
+- **README 能力深度进一步可核验：** prompt→video/audio 端到端、首尾帧（`!first`/`!last`）、Ref2VA 引用（`!ref-image`→`<Picture N>`）、core-reuse（`--reuse` 外推跳过 transitions）、跳层（`--layers` 运行部分 transformer blocks）、终端内预览（`--show` 支持 Kitty/Ghostty/iTerm2）。vertical-slice 增量构建方法学（每步可独立验证）值得借鉴。
+- **H3 生态共振：** 官方仓库 +1,030（4,164→5,194）、h3.c +1,072、衍生生态搜索 379→448，三者共振确认 H3 是本周最强生态级信号。
+- **风险（不变）：** M5 Max 性能为作者自述未独立复现；仅 macOS（Metal）；上游 H3 license=null（API 可核验）。

@@ -33,7 +33,7 @@ AI agent 需要连接各种外部系统（数据库、API、SaaS 服务、文件
 - **中间件理念回归（中）**：类似 ESB/API Gateway，但为 agent 设计
 - **企业 AI 落地推动（中）**：企业需要标准化 agent 与内部系统连接
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **统一集成接口**：抽象各类外部系统的连接方式为统一模式
 2. **Agent-native 设计**：为 AI agent 的请求模式（非确定性、多步推理）优化
 3. **TypeScript 实现**：与主流 agent 框架（LangChain.js/Mastra）同语言栈

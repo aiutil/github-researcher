@@ -30,7 +30,7 @@ url: "https://github.com/VictorTaelin/OptMem"
 - **话题性成分**：作者声誉（HVM 作者）带来初始关注度；"426-token + 单脚本"的极简叙事有传播性。
 - **不推荐点**：license 未声明（README 无 LICENSE 文件提及），采用上有法律不确定性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Position-is-identity**：记忆记录定长（≤280B/条），位置即身份，每次 lookup 是一次磁盘 seek。1M 记忆（608MB）时 `wake` 仅 0.03s。这是把"数据格式即索引"做到极致——无需 B-tree、无需哈希索引。
 2. **Append-only log + 重建式树摘要**：`LOG.txt` 是所有记忆的 append-only 单行记录（永不编辑），`TREE/` 是从 log 派生的摘要缓存——**可随时删除重建**。这是"事实源（log）与派生物（缓存）分离"的经典工程思想。

@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-08-12
+
+**核心主题：** antirez/h3.c 爆发（129→1,201，+831%/+1,072），Redis 之父原生推理引擎三日破千，"推理成本是瓶颈"判断被市场二次确认（可核验：API star/fork/subscribers；README 能力描述可核验；M5 Max 性能为作者自述未复现） · anydoc 昨日"稳态"判断被逆转——delta 从 +719 反弹到 +957（13,399→14,356，+7.1%），"基于有限数据过早下稳态结论"的方法论修正案例 · SMNETSTUDIO/WeChat-AI 疑似刷量样本（1,406⭐/1,040 fork/1 subscriber/0 issue/无描述/2天），继 open-kimi-ppt-skill 后又一个"热度≠价值"对照案例 · MiniMax-H3 持续高位（4,164→5,194，+1,030/+24.7%），衍生生态 379→448
+
+**关键项目：**
+- ⚡ antirez/h3.c (1,201, 更新 +1,072) — Redis 创始人 H3 原生 Metal 推理引擎，三日破千 +831%，fork 7→57，score 86→92
+- 📑 firecrawl/anydoc (14,356, 更新 +957) — 文档解析头部，+7.1%，delta 反弹，昨日"稳态"判断被逆转，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (5,194, 更新 +1,030) — 视频生成模型，+24.7% 连续四日千级增量，衍生生态 379→448，Score 90
+- 🤖 SMNETSTUDIO/WeChat-AI (1,406, 新增) — 疑似刷量样本，fork/star=0.74，1 subscriber，0 issue，"热度≠价值"对照案例，Score 68
+- 📱 ShawnPana/phone-harness (1,488, 更新 +206) — agent 控制 iPhone，+16.1%，fork 100→129，Score 85
+- 🌊 oil-oil/oil-motion (1,475, 更新 +333) — Agent 交互动画 Skill，+29.2% 加速中，Score 84
+- 💠 FareedKhan-dev/kimi-k3-in-c (4,891, 更新 +242) — 便携 C99 K3，+5.2% 持续，Score 85
+- 📋 trycompai/crm (8,217, 更新 +115) — Agentic-first CRM，+1.4% 连续七日衰减尾声，Score 87→86
+- 👥 yc-software/qm (13,092, 更新 +142) — 多人协作 agent harness，+1.1% 停滞通道，Score 87→86
+
 ## 2026-08-11
 
 **核心主题：** 0xwilliamortiz 全账号 404——claude-red（701⭐）+ humanizer-cli 双双消失，安全 Skill 品类定义者一夜蒸发（可核验：API 返回 404；原因待观察） · MiniMax-H3 再加速（2,693→4,164，+1,471/+55%，连续三日高位放量），Redis 创始人 antirez 发布 h3.c 原生 Metal 推理引擎（129⭐，M5 Max 端到端视频生成），"推理成本瓶颈"判断获最高信誉背书 · anydoc 收敛持续（12,680→13,399，+719/+5.7%，delta 稳定在 600-700 区间两日，真实需求曲线进入成熟期） · phone-harness 加速（789→1,282，+493/+62.5%，"phone-as-tool"赛道验证加强）

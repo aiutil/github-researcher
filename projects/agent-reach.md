@@ -43,7 +43,7 @@ GitHub Trending 持续在榜，42,263⭐（日增 1,164），从 6 月 14 日的
 - **中文平台覆盖**（Bilibili/XiaoHongShu）打开了中文开发者市场
 - **Claude Code / Cursor 生态红利**：作为 Agent skill 分发
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **统一接口覆盖异构平台**：10+ 平台用同一 CLI 接口（Web/YouTube/Twitter/Reddit/B站/小红书/GitHub/LinkedIn/V2EX/雪球/RSS/小宇宙），输出统一格式
 2. **多后端路由架构**：每个平台有"首选 + 备选"后端，某个失效自动切换（2026-06 实例：B站 yt-dlp 被风控 412 封死 → 切换 bili-cli，用户零操作）
 3. **结构化输出**：直接产出 Agent 可消费的 JSON/Markdown，无需二次解析

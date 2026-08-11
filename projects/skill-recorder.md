@@ -31,7 +31,7 @@ Microsoft 官方桌面应用：录屏捕获一次真实工作会话（点击、�
 - **品类热度成分**：受益于本周 agent skill 生态整体热度（Superpowers/ECC/mattpocock skills 等）；但"录屏→重建→生成"是独立差异化路径。
 - **官方背书权重**：`microsoft/` org 的项目天然有更高关注度，726⭐ 含品牌溢价成分。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **录屏 → Copilot CLI 重建意图+步骤**：捕获屏幕活动（点击、应用/窗口切换、页面、可选语音），用 GitHub Copilot CLI 重建为"一个整体意图 + 有序列表"。强调优先用 agent 的**原生工具**（如 `gh` CLI、`web_fetch`）而非重放 UI 点击，并从单次示例泛化（录一次提交表单 → 教 agent 提交所有同类表单）。
 2. **两种输出产物**：(a) **Skill**——`SKILL.md` 过程文档，agent 按需运行；(b) **Automation**——同样过程但按计划/触发器运行。

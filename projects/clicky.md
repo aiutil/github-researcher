@@ -10,7 +10,7 @@ stars_delta: "新上榜"
 language: "Swift"
 score: 55
 tags: ["AI教育", "Screen AI", "macOS", "Voice AI"]
-url: "https://github.com/nicepkg/clicky"
+url: "https://github.com/farzaa/clicky"
 ---
 
 # clicky
@@ -32,7 +32,7 @@ AI 老师住在光标旁，能看屏幕、语音对话、指向引导，专为�
 - **Screen AI 浪潮**：2026 年 Screen Understanding 是热门方向
 - **教育赛道热度**：AI + 教育始终是高关注度领域
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Screen AI 融合**：实时屏幕内容理解 + AI 推理
 2. **Voice AI 交互**：语音对话教学，降低学习摩擦
 3. **光标跟随**：AI 始终在光标附近，上下文感知自然

@@ -30,7 +30,7 @@ MOSI.AI 和 OpenMOSS 团队推出的开源语音与音效生成模型家族，�
 ## 热度来源判断
 **学术声誉 + 开源 TTS 市场需求**。MOSS-TTS 的热度来自：(1) OpenMOSS 团队的学术声誉——复旦 OpenMOSS 实验室此前推出的 MOSS 对话模型在中文开源 AI 社区有高知名度；(2) 开源 TTS 的真实需求——随着 AI 应用（视频配音、虚拟人、有声读物）爆发，高质量开源 TTS 是刚需；(3) 多后端推理支持降低了部署门槛——从 llama.cpp（CPU 推理）到 vLLM（GPU 高性能推理），覆盖了不同场景。4K stars 虽不及头部项目，但在 TTS 细分领域已属领先。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **模型家族覆盖全场景**：MOSS-TTS（基础长语音）、MOSS-TTSD（多说话人对话）、MOSS-VoiceGenerator（语音/角色设计）、MOSS-SoundEffect（环境音效，DiT backbone + Flow Matching）、MOSS-TTS-Realtime（实时流式）、MOSS-TTS-Nano（~100M 参数轻量版）。v1.5 版本引入了语言标签、更稳定的克隆、显式停顿控制（`[pause X.Ys]`）。
 2. **48kHz 立体声原生支持**：配合 MOSS-Audio-Tokenizer-v2，原生支持 48kHz 立体声输入输出——远超多数开源 TTS 的 16kHz/22kHz 单声道。这对音频质量至关重要的场景（播客、有声读物）意义重大。
 3. **多后端推理支持**：(a) llama.cpp + ONNX Runtime 实现 PyTorch-free 推理，8B 模型可在 8GB GPU 上运行；(b) SGLang-Omni 提供约 3x 吞吐加速；(c) vLLM-Omni 支持全系列模型。GGUF 量化权重已发布。

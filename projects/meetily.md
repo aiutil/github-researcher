@@ -32,7 +32,7 @@ url: "https://github.com/Zackriya-Solutions/meetily"
 - **真实需求驱动**（80%）：隐私法规收紧 + 本地模型成熟（Ollama 176K⭐ 支持 GLM-5.1/Kimi-K2.6）+ 消费级硬件够用（M3 Pro 16GB 可实时转录）
 - **Trending 效应**（20%）：GitHub 首页推荐带来的曝光增益
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Rust 全栈**——从音频采集（cpal）到推理引擎（whisper-rs/parakeet-rs）到 UI（Tauri），全链路 Rust，零 GC 延迟
 2. **Parakeet 加速**——NVIDIA Parakeet TDT 模型，速度是标准 Whisper 的 4 倍，准确率持平
 3. **说话人分离（Diarization）**——基于 pyannote 模型的 Rust 移植，纯本地运行

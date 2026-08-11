@@ -34,7 +34,7 @@ DeepSeek 开源的推测解码（Speculative Decoding）draft model 训练+评�
 - 训练工具链的空白市场（推理引擎多，训练框架少）
 - 完整的开源（MIT License + 论文 + checkpoint + 数据集指引）
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **DSpark 算法**：DeepSeek 自有推测解码算法，论文随代码发布
 2. **三算法统一框架**：DSpark、DFlash、Eagle3 在同一代码库中实现，便于对比研究
 3. **38TB Target Cache**：训练数据准备阶段缓存目标模型全部中间状态，训练时直接读取

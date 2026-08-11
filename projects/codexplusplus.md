@@ -29,7 +29,7 @@ OpenAI CodexApp（Codex CLI）作为 coding agent 能力强大，但使用体验
 - **Rust 重写的性能优势**：相比 Electron/Node 方案，启动快、内存低
 - **痛点评级高**：coding agent 的使用体验直接影响开发效率
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Rust 实现**：单二进制、低内存、快启动
 2. **Codex 工作流深度集成**：会话管理、配置优化、快捷操作
 3. **跨平台支持**：macOS / Linux / Windows

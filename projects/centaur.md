@@ -29,7 +29,7 @@ Paradigm（以太坊生态知名开发公司）出品的自托管 Agent 平台�
 - 安全设计（沙箱 + 凭据隔离）直击企业痛点
 - 718 stars + 116 forks = 活跃的早期社区
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Slack 原生对话**：@mention 发起对话，线程级进度更新和结果回复
 2. **K8s 隔离沙箱**：每个对话独立沙箱，default-deny NetworkPolicy，k3s 即可部署
 3. **iron-proxy 凭据隔离**：Agent 只看到占位符字符串，真实凭据由 iron-proxy 在出站请求时替换到指定 host + header

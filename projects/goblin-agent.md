@@ -30,7 +30,7 @@ Hermes Agent 的性格层插件，将 AI Agent 转变为一个淘气、爱囤积
 ## 热度来源判断
 热度部分来自猎奇和梗文化，但背后反映的 Agent 人格化趋势是真实的。437 stars 适度。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **三文件人格系统**：SOUL.md（性格）+ MEMORY.md（知识）+ AGENTS.md（行为），与 OpenClaw 的人格框架类似
 2. **CLI 工具**：`goblin status`、`goblin hoard`、`goblin riddle`、`goblin appraise` — 性格即接口
 3. **可安装到 Hermes**：`goblin install --hermes-dir ~/.hermes` 一键集成

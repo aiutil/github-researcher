@@ -2,11 +2,11 @@
 title: "FareedKhan-dev/kimi-k3-in-c"
 slug: kimi-k3-in-c
 date_added: "2026-08-03"
-last_seen_date: "2026-08-10"
+last_seen_date: "2026-08-12"
 category: "观察型"
 emoji: "💠"
-stars: "4,649 stars"
-stars_delta: "8/01创建→8/10观测 4,162⭐ / 652 fork / 43 subscribers，第九日 +411（+11%），继续加速（fork 582→652），本地 MoE 推理赛道绝对头部"
+stars: "4,891 stars"
+stars_delta: "8/01创建→8/12观测 4,891⭐ / 774 fork / 48 subscribers，第十一日 +242（+5.2%），fork 727→774，本地 MoE 推理赛道头部"
 language: "C"
 license: "Apache-2.0"
 score: 85
@@ -31,7 +31,7 @@ url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 - **话题性成分**："2.78T 模型在 8GB RAM / 0 GPU 上跑"有极强传播性；218⭐ 主要来自"把内存下限推到极限"的话题性。
 - **价值定位**：与 waste 一样，价值在**可行性证明**（RAM 下限的极限在哪），而非日常使用（32 s/token）。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Peak RSS 8.24GB（实测命令输出）**：README 展示 `./bin/k3 ... --preset laptop` 实测：`8 tokens in 261.5 s, 32.69 s/token average, PEAK RSS for the whole run: 8.24 GB`。给更多内存（`--preset server`，127.92GB RSS）则 10.69 s/token——**答案不变，只变时钟**。
 2. **176KB 引擎 + 0 依赖**：纯 C99，no BLAS, no framework, no GPU。可移植（Linux x86-64），Makefile 构建。

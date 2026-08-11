@@ -29,7 +29,7 @@ Cursor 作为当前最流行的 AI 编码工具之一，其能力扩展方式此
 ## 热度来源判断
 **平台战略驱动 + Cursor 生态红利**。cursor/plugins 的热度直接与 Cursor 平台的成功挂钩——Cursor 作为增长最快的 AI IDE，其官方插件规范天然获得开发者关注。2.5K stars 对于一个纯规范仓库来说不算低，说明开发者社区对 Cursor 插件生态的期待。但需要注意，这个仓库的价值在于"标准定义"而非"代码量"——真正的生态繁荣取决于第三方插件的数量和质量。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **标准化的插件目录结构**：每个插件遵循统一结构——`.cursor-plugin/plugin.json`（manifest）、`skills/`（SKILL.md 带 frontmatter）、`rules/`（.mdc Cursor 规则文件）、`mcp.json`（MCP 服务器定义）、`README.md`、`CHANGELOG.md`。这种结构将 Skills、Rules、MCP 三种扩展方式统一到一个插件框架中。
 2. **Marketplace 机制**：根目录的 `marketplace.json` 作为插件市场清单，用户可以通过 Cursor 界面浏览和安装。每个插件在清单中有 name、author、category、description 元数据。这是标准的插件市场架构设计。
 3. **高质量官方插件**：已提供的官方插件设计精良，如 `thermos`（深度安全/正确性审计 + 并行子代理）、`orchestrate`（将大任务分配给并行 Cursor 云 Agent）、`continual-learning`（增量记忆更新到 AGENTS.md）。这些插件本身就是 Agent 工程的最佳实践示例。

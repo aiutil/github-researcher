@@ -34,7 +34,7 @@ LangChain 出品的 CLI 工具，用 Agent 自动生成和维护代码库文档�
 - AGENTS.md 标准的推广让 Agent 消费文档有了标准接口
 - GitHub Action 的 CI/CD 集成降低了 adoption 门槛
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **CLI 优先**：`npm install -g openwiki` → `openwiki --init` → 文档生成，极简流程
 2. **GitHub Action 持续更新**：每日自动 PR，文档与代码同步
 3. **AGENTS.md/CLAUDE.md 自动注入**：无需手动配置，Coding Agent 自动发现文档

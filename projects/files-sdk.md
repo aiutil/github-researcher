@@ -29,7 +29,7 @@ last_seen_date: "2026-05-18"
 ## 热度来源判断
 热度适中。642 stars 在 6 天内不算爆发，但方向正确。统一存储 API 本身不新鲜（aws-sdk 本身就统一了 S3 兼容接口），但 AI Agent 工具封装增加了新价值。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **统一 API**：upload / download / head / delete / copy / list / url / signedUploadUrl，所有后端一致
 2. **AI SDK 封装**：一行代码让 Agent 读写你的存储桶
 3. **Tree-shakeable**：每个 adapter 独立入口点，不引入无用代码

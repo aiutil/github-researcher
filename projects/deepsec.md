@@ -29,7 +29,7 @@ Vercel Labs 出品，Apache 2.0 许可证。用 Agent 做安全审计是 DevSecO
 - **方向正确**：安全审计 Agent 化是 DevSecOps 的确定趋势
 - **早期阶段**：1K stars，尚未爆发
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent 驱动审计**：用 Coding Agent 模拟安全研究员审计代码
 2. **语义理解**：比传统 SAST 工具更能理解代码意图
 3. **Apache 2.0**：开源友好，便于集成

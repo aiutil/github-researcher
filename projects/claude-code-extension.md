@@ -5,7 +5,7 @@ date_added: "2026-04-10"
 last_seen_date: "2026-08-07"
 category: "平台候选"
 emoji: "🔌"
-stars: "8,942"
+stars: "deleted (404) — 原 8,942 stars"
 language: "TypeScript"
 score: 68
 tags: ["claude-code", "extension", "plugin", "ecosystem", "ai-coding"]
@@ -33,7 +33,7 @@ Claude Code 作为 AI 编程工具，核心能力需要通过扩展机制来满�
 - 官方支持带来的稳定性和信任度
 - 企业级开发场景需求明确
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Extension Manager**：统一管理扩展的加载、卸载、更新
 2. **Extension API**：标准化的扩展开发接口，支持多语言和多框架
 3. **安全沙箱机制**：权限检查 + 沙箱执行 + 资源限制 + 行为监控 + 结果验证

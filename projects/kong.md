@@ -29,7 +29,7 @@ url: "https://github.com/Kong/kong"
 ## 热度来源判断
 热度来自 API 网关作为微服务基础设施的刚性需求——几乎每个中大型企业都需要 API 网关。Kong 作为该领域的顶级开源方案，43K stars 是十年积累的稳定结果。新增的 AI 网关功能带来了新一轮关注——LLM API 管理、MCP 网关等能力踩中了 AI 基础设施建设的浪潮。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **OpenResty/Nginx 高性能核心:** 基于 Nginx 事件驱动架构，单实例可处理数十万 QPS 的 API 请求
 2. **Lua 插件系统:** 使用 Lua 编写插件，在请求处理管道的各个阶段（access、header filter、body filter）插入自定义逻辑
 3. **AI 网关能力:** 支持 LLM API 代理（OpenAI、Anthropic、Azure 等）、请求缓存、Token 限流、多模型路由负载均衡

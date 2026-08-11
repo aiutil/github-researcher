@@ -31,7 +31,7 @@ Agent-Native 全栈应用框架——定义"UI 与 Agent 等公民"的架构模�
 ## 热度来源判断
 BuilderIO 品牌背书 + Agent-Native 概念新颖 + 完整模板降低试用门槛。增速合理，不是泡沫型暴涨。但总量还小（2.7K），处于早期采纳者阶段。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Action-first 架构：** `defineAction` 定义一次业务逻辑，UI 点击、Agent 命令、HTTP API、MCP tool、A2A 调用、CLI 命令全部复用。消除了"业务逻辑在 UI 和 Agent 中各写一遍"的问题。
 2. **SQL-backed shared state：** 一个数据库，UI 和 Agent 的修改实时互相同步。基于 Drizzle ORM，支持任何 SQL 数据库。
 3. **Real-time multiplayer：** 人类和 Agent 同时编辑同一文档，Agent 作为 first-class peer。这比"Agent 做完给人类审核"模式更紧密。

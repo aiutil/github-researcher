@@ -35,7 +35,7 @@ NousResearch 出品的自进化 AI Agent——"The agent that grows with you"，
 - 跨会话记忆 + Skill 自进化是开源中少见的能力
 - 多平台 Gateway 降低了 adoption 门槛
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **自进化 Skill 系统**：不同于 RAG 的"检索已有知识"，这是"从经验中生成新能力"，Skill 在后续使用中自动优化
 2. **FTS5 + LLM Summarization 长期记忆**：SQLite FTS5 全文检索保证召回速度，LLM 摘要压缩历史
 3. **Honcho 用户画像建模**：跨会话建立用户偏好模型

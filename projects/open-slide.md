@@ -33,7 +33,7 @@ url: "https://github.com/1weiho/open-slide"
 - **真实需求** — 自动化 PPT 生成在企业场景有应用
 - **竞争激烈** — 同时存在多个 PPT Skill 项目，赛道拥挤
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent-First 设计** — API 专为 Agent 调用优化，结构化输入输出
 2. **React 组件系统** — 基于 React 的幻灯片渲染，可定制性强
 3. **多格式输出** — 支持网页、PDF 等多格式导出

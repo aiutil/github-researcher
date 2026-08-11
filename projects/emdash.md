@@ -17,7 +17,7 @@ url: "https://github.com/emdash-cms/emdash"
 
 全栈 TypeScript CMS，基于 Astro 6.0 + Cloudflare Workers，用沙箱化 Worker Isolate 运行插件，从架构层面解决 WordPress 四十年的安全顽疾。
 
-## 解决的问题
+## 它解决的问题
 
 WordPress 是全球最大的 CMS（43% 网站使用），但其核心安全问题是**插件运行在进程内**——一个恶意或漏洞插件可以影响整个站点。EmDash 用 Cloudflare Worker Isolate 实现了操作系统级的插件隔离，从根本上消除了这个风险。
 
@@ -36,7 +36,7 @@ WordPress 是全球最大的 CMS（43% 网站使用），但其核心安全问�
 - 话题性：4 月 1 日发布 + "WordPress 继任者"叙事
 - 行业讨论：WordPress 创始人的公开评论引发广泛讨论
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 插件沙箱架构
 ```mermaid

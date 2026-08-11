@@ -30,13 +30,13 @@
         <h1 id="google-timesfm">Google TimesFM</h1>
 <h2 id="_1">一句话定位</h2>
 <p>Google Research 开发的时间序列基础模型（decoder-only），200M 参数、16K context、已在 BigQuery ML / Google Sheets / Vertex Model Garden 生产部署。</p>
-<h2 id="_2">解决的问题</h2>
+<h2 id="_2">它解决的问题</h2>
 <p>传统时间序列预测（ARIMA、Prophet 等）需要为每个场景单独训练模型，泛化能力差。Foundation Model 范式（一个预训练模型适配多种时间序列）大大降低了预测门槛。TimesFM 是 Google 的方案——decoder-only 架构，类似 LLM 但面向数值序列。</p>
 <h2 id="2026-06-20">为什么值得关注（2026-06-20）</h2>
 <p>日增 1,516 stars 达到 24,043。v2.5 发布（200M 参数从 500M 降下来，16K context 从 2048 提上去），且 Google 已经在三个产品线生产部署——这证明模型已经过了工程验证。ICML 2024 论文 + HuggingFace 模型 + LoRA 微调示例 + Flax/Torch 双后端 + AGENTS.md/SKILL.md 支持。</p>
 <h2 id="_3">热度来源判断</h2>
 <p><strong>Google 品牌 + 生产部署 + 论文背书。</strong> 这三点叠加使 TimesFM 成为时间序列基础模型的事实标杆。日增 1,516 反映的是企业和研究者对"超越 LLM 的基础模型"的兴趣。</p>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li>
 <p><strong>Decoder-only 架构：</strong> 与 GPT 类似的自回归架构，但面向时间序列。这意味着 LLM 的 scaling law 可能也适用于时间序列。</p>

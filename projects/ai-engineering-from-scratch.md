@@ -30,7 +30,7 @@ AI 工程师需求爆发但教育供给碎片化——学习者需要在论文�
 ## 热度来源判断
 **AI 工程师培训需求爆发 + 创新分发模式**。ai-engineering-from-scratch 的爆发式增长（5 个月 46K stars）由多重因素驱动：(1) AI 工程师是全球最热门的职业方向，系统化学习资源严重短缺；(2) "Agent 作为教师"的创新模式——通过 `npx skills add` 安装后，Coding Agent 成为交互式私人教师，这比传统视频教程更高效；(3) 四语言并行（Python/TS/Rust/Julia）和 11 语言 README 翻译覆盖了全球开发者；(4) 作者此前的 agentmemory 项目（#1 持久记忆 Skill）带来了初始粉丝。这是 2026 年教育赛道的现象级项目。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent-as-Tutor 模式**：通过 `npx skills add rohitg00/ai-engineering-from-scratch` 安装后，在 Agent 中执行 `/start-learning` 会先进行 10 题分班测验，映射已有知识到起始阶段，生成个性化学习计划保存到 `LEARNING.md`。然后 `/learn` 每次教授一节课（概念 → 数学 → 代码 → 测验），`/course-guide <topic>` 跳转到特定知识点。兼容任何读取 SKILL.md 目录的 Agent。
 2. **系统化课程结构**：20 个阶段从基础到高级层层递进——从 Python/数学基础，到深度学习、Transformer、LLM，再到 Agent、MCP、强化学习、群体智能。每节课都产出可复用的 Artifact。503 节课的规模覆盖了 AI 工程的完整知识图谱。
 3. **四语言并行教学**：同一概念在 Python、TypeScript、Rust、Julia 四种语言中实现，学习者可以选择主力语言，同时对比不同语言的实现差异。这在 AI 教育项目中极为罕见。

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-12 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-12">GitHub 趋势研究简报 - 2026-08-12</h1>
+<blockquote>
+<p>本报基于 GitHub API + 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-08-12。所有 star/fork/created_at/pushed_at/license/language/archived/subscribers 均来自 GitHub API（可核验事实），推断与待观察项会显式标注。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天最重要的信号是<strong>一个爆发事件、一个判断修正、和一个对照样本</strong>：</p>
+<ol>
+<li>
+<p><strong>antirez/h3.c 三日破千（129→1,201，+831%）。</strong> <code>antirez/h3.c</code>（1,201⭐ / 57 fork / 10 subscribers，C，MIT，创建 08-09）第二日追踪，单日 <strong>+1,072（129→1,201，+831%）</strong>，fork 7→57（+50），subscribers 1→10。README 能力描述完整且可核验：prompt→video/audio 端到端、首尾帧条件（<code>!first</code>/<code>!last</code>）、Ref2VA 图像/视频/音频引用（<code>!ref-image</code>）、core-reuse/token-reduction（<code>--reuse</code>）、跳层（<code>--layers</code>）。<strong>M5 Max 性能数据为作者自述，未独立复现。</strong> 这是\"推理成本是瓶颈\"判断的<strong>市场二次确认</strong>——antirez（Salvatore Sanfilippo，Redis 创始人，30,742 followers）亲自写 C/Metal 推理引擎并在三日获得千星，说明瓶颈攻关已从\"ComfyUI 插件层\"进入\"原生推理层\"，且获得开发者社区广泛认同。</p>
+</li>
+<li>
+<p><strong>anydoc 昨日\"稳态\"判断被逆转——delta 从 +719 反弹到 +957。</strong> <code>firecrawl/anydoc</code>（14,356⭐ / 751 fork / 35 subscribers，Rust，MIT）第十一日 <strong>+957（13,399→14,356，+7.1%）</strong>，fork 675→751（+76）。<strong>明确修正</strong>：昨日（08-11）报告判断\"delta 连续两日稳定在 600-700 区间，真实需求曲线进入成熟稳态\"，今日数据<strong>打破该判断</strong>——绝对增量不降反升（+625→+719→+957），增速 +5%→+5.7%→+7.1% 也回升。<strong>这是一个\"基于有限数据过早下稳态结论\"的方法论修正案例</strong>。反弹原因<strong>待观察</strong>：推断可能与 H3 生态热度外溢到文档摄入赛道、周末曝光累积、或某集成事件有关，但 <code>pushed_at</code> 仍为 08-10（无新 commit），增长来自曝光惯性。关键教训：<strong>七日数据不足以确认\"稳态\"，尤其当外生热度事件（H3 生态）可能扰动相邻赛道时。</strong></p>
+</li>
+<li>
+<p><strong>SMNETSTUDIO/WeChat-AI 疑似刷量样本（1,406⭐/1,040 fork/1 subscriber/0 issue/无描述/2天）。</strong> <code>SMNETSTUDIO/WeChat-AI</code>（1,406⭐ / 1,040 fork / <strong>1 subscriber</strong> / <strong>0 open issue</strong> / <strong>description=null</strong> / 创建 08-10 / TypeScript / Apache-2.0 / size=819KB）。fork≈star（fork/star=0.74）且<strong>零参与度</strong>（1 subscriber、0 issue）是典型的自动化批量部署/刷量信号。README 在 main 分支 404（可核验）。<strong>与 open-kimi-ppt-skill 归档后 fork 异常增长同构</strong>——两者都是\"热度指标与真实参与度严重背离\"。作为\"热度≠价值\"对照案例入库，与 anydoc（真实需求：star/fork 同步增长、subscribers 35、fork/star=0.05）形成方法论对照。</p>
+</li>
+<li>
+<p><strong>H3 生态共振确认。</strong> MiniMax-H3 官方仓库 +1,030（4,164→5,194，+24.7%），衍生生态搜索 379→448（'minimax-h3'），antirez/h3.c +1,072。三者共振——<strong>H3 是本周最强生态级信号</strong>。kimi-k3-in-c 同步 +242（+5.2%），本地 MoE 推理赛道头部双项目并行放量。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>证据边界声明</strong>：所有 star/fork/created_at/pushed_at/license/language/archived/subscribers 为 GitHub API 可核验事实。h3.c 的能力描述（首尾帧/Ref2VA/core-reuse/--layers）来自 README（可核验）；M5 Max 性能数据为作者自述，未独立复现。anydoc \"delta 反弹\"为基于连续八日 API 数据的计算值（可核验）；反弹\"原因\"为推断，标记为待观察。WeChat-AI \"疑似刷量\"为基于 API 字段（fork≈star、1 subscriber、0 issue、无 description、README 404）的推断——<strong>无法从 API 确证\"刷量\"行为本身</strong>，只能记录指标异常作为对照样本。H3 衍生生态计数 448 来自 GitHub Search API（可核验，但搜索结果数受 GitHub 索引延迟影响）。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-antirezh3c-redis-92">1. antirez/h3.c 爆发——Redis 之父原生推理引擎三日破千（评分 92）</h3>
+<p>连续两日追踪，h3.c 从\"极早期\"跃迁到\"千星项目\"：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>08-11</th>
+<th>08-12</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars</td>
+<td>129</td>
+<td>1,201</td>
+<td>+1,072（+831%）</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>7</td>
+<td>57</td>
+<td>+50</td>
+</tr>
+<tr>
+<td>subscribers</td>
+<td>1</td>
+<td>10</td>
+<td>+9</td>
+</tr>
+<tr>
+<td>open issues</td>
+<td>—</td>
+<td>13</td>
+<td>—</td>
+</tr>
+<tr>
+<td>pushed_at</td>
+<td>08-11 13:53</td>
+<td>08-11 13:53</td>
+<td>无新 push（增长来自曝光）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>README 能力深度（均可核验）：</strong>
+- <strong>端到端 prompt→video/audio</strong>：<code>./h3 -d ./MiniMax-H3 -p "prompt"</code> 直接生成视频
+- <strong>交互式会话</strong>：无 <code>-p</code> 时进入 Iris-style 交互模式，支持 <code>!status</code>/<code>!seed</code>/<code>!seconds</code>/<code>!show</code>/<code>!save</code>/<code>!cache</code>
+- <strong>首尾帧条件</strong>：<code>!first opening.png</code> / <code>!last ending.png</code>，持久化在会话中
+- <strong>Ref2VA 引用</strong>：<code>!ref-image person.png</code> → <code>&lt;Picture 1&gt;</code>，支持图像/视频/音频有序引用，<code>!refs</code>/<code>!ref-remove N</code>/<code>!refs clear</code>
+- <strong>core-reuse / token reduction</strong>：<code>--reuse 2</code> 计算 11 个 fresh denoiser velocities 而非全部 20 个，外推跳过的 transitions
+- <strong>跳层</strong>：<code>--layers 45</code> 运行 50 个 transformer block 中的 45 个，降低时间和统一内存占用
+- <strong>终端内预览</strong>：<code>--show</code> 支持 Kitty/Ghostty/iTerm2/WezTerm/Konsole，每个 Euler transition 后显示中间帧</p>
+<p><strong>架构师判断：</strong> h3.c 三日破千的意义超越项目本身——它证明\"视频生成模型的推理优化\"已从\"可选优化\"变为<strong>吸引顶级系统工程师全职投入的真问题</strong>。antirez 以 Redis（~67K⭐）和持久化系统编程闻名，他选择为 H3 写原生 Metal 引擎，是\"推理成本是瓶颈\"判断的<strong>最高信誉级别 + 市场二次确认</strong>。衍生生态从\"ComfyUI 插件层\"（Spectrum/Director/Turbo）延伸到\"原生推理层\"（h3.c），瓶颈攻关进入更深栈层。h3.c 的工程方法学也值得关注：<strong>vertical-slice 增量构建</strong>（确定性元数据→Metal block parity→prompt encoding→prompt-to-media→条件控制），每一步都可独立验证。</p>
+<p>需注意：h3.c 仍绑定 Apple Silicon（macOS only），M5 Max 性能为作者自述。H3 官方仓库 license 仍为 null（API 可核验），是生态采用的法律风险变量。</p>
+<h3 id="2-anydoc-delta-957-90">2. anydoc \"稳态\"判断被逆转——delta 反弹 +957（评分 90，维持但修正判断）</h3>
+<p>连续八日追踪，今日数据<strong>打破昨日稳态判断</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>08-05</th>
+<th>08-06</th>
+<th>08-07</th>
+<th>08-08</th>
+<th>08-09</th>
+<th>08-10</th>
+<th>08-11</th>
+<th>08-12</th>
+<th>八日累计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars</td>
+<td>1,086</td>
+<td>4,688</td>
+<td>8,069</td>
+<td>10,866</td>
+<td>12,055</td>
+<td>12,680</td>
+<td>13,399</td>
+<td>14,356</td>
+<td>+13,270</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>40</td>
+<td>205</td>
+<td>370</td>
+<td>506</td>
+<td>575</td>
+<td>628</td>
+<td>675</td>
+<td>751</td>
+<td>+711</td>
+</tr>
+<tr>
+<td>增速%</td>
+<td>—</td>
+<td>+331%</td>
+<td>+72%</td>
+<td>+35%</td>
+<td>+11%</td>
+<td>+5%</td>
+<td>+5.7%</td>
+<td>+7.1%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>绝对增量</td>
+<td>—</td>
+<td>+3,602</td>
+<td>+3,381</td>
+<td>+2,797</td>
+<td>+1,189</td>
+<td>+625</td>
+<td>+719</td>
+<td>+957</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键修正：</strong> 昨日报告判断\"delta 连续两日稳定在 600-700 区间（+625→+719），真实需求曲线进入成熟稳态\"。今日 <strong>+957</strong> 打破该判断——绝对增量序列 +625→+719→<strong>+957</strong>，不仅未继续衰减，反而<strong>回升到八日中的第三高位</strong>（仅次于爆发期 +3,602/+3,381）。增速 +5%→+5.7%→<strong>+7.1%</strong> 也同步回升。</p>
+<p><strong>方法论修正：</strong> 这是一个\"<strong>基于有限数据过早下稳态结论</strong>\"的案例。七日数据（08-05→08-11）看似单调收敛，但第八日（08-12）即反转。教训：
+1. <strong>\"稳态\"判断需要更长观测窗口</strong>——至少两周，尤其当赛道可能受外生热度事件扰动时
+2. <strong>相邻赛道热度可外溢</strong>——H3 生态本周爆发（衍生仓库 379→448），视频生成赛道热度可能外溢到文档摄入（同为\"agent 摄入层\"）
+3. <strong>周末效应待排除</strong>——08-10/08-11 为周末，08-12 为周二，工作日回归可能带来增量回升</p>
+<p><strong>待观察：</strong> +957 是单日反弹还是趋势反转？下一观察点：08-13 delta 是否维持 800+，还是回落到 600-700（确认反弹为噪声）或继续上升（确认趋势反转）。</p>
+<h3 id="3-smnetstudiowechat-ai-68">3. SMNETSTUDIO/WeChat-AI 疑似刷量样本——\"热度≠价值\"对照案例（评分 68）</h3>
+<p><code>SMNETSTUDIO/WeChat-AI</code> 全字段（API 可核验）：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+<th>异常信号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars</td>
+<td>1,406</td>
+<td>—</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>1,040</td>
+<td><strong>fork≈star（fork/star=0.74），异常高</strong></td>
+</tr>
+<tr>
+<td>subscribers</td>
+<td>1</td>
+<td><strong>极低，与 1.4K⭐ 严重不匹配</strong></td>
+</tr>
+<tr>
+<td>open issues</td>
+<td>0</td>
+<td><strong>零参与度</strong></td>
+</tr>
+<tr>
+<td>description</td>
+<td>null</td>
+<td><strong>无描述</strong></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>2026-08-10</td>
+<td>2 天</td>
+</tr>
+<tr>
+<td>language</td>
+<td>TypeScript</td>
+<td>—</td>
+</tr>
+<tr>
+<td>license</td>
+<td>Apache-2.0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>size</td>
+<td>819 KB</td>
+<td>—</td>
+</tr>
+<tr>
+<td>README (main)</td>
+<td>404</td>
+<td><strong>README 缺失</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>对照分析（可核验指标）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>stars</th>
+<th>forks</th>
+<th>fork/star</th>
+<th>subscribers</th>
+<th>open issues</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firecrawl/anydoc</td>
+<td>14,356</td>
+<td>751</td>
+<td>0.05</td>
+<td>35</td>
+<td>52</td>
+<td>真实需求（健康）</td>
+</tr>
+<tr>
+<td>SMNETSTUDIO/WeChat-AI</td>
+<td>1,406</td>
+<td>1,040</td>
+<td><strong>0.74</strong></td>
+<td><strong>1</strong></td>
+<td><strong>0</strong></td>
+<td>疑似刷量/批量部署</td>
+</tr>
+<tr>
+<td>Binaryify/open-kimi-ppt-skill</td>
+<td>1,603</td>
+<td>1,194</td>
+<td>0.74</td>
+<td>2</td>
+<td>6</td>
+<td>归档后异常（对照）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师判断：</strong> WeChat-AI 的指标结构与 open-kimi-ppt-skill（归档后 fork 异常增长）<strong>高度同构</strong>——fork/star≈0.74、subscribers 极低、零 issue。区别在于 open-kimi-ppt-skill 曾有真实使用（归档前），而 WeChat-AI 从创建起即呈现异常（2 天 1.4K⭐ 但 1 subscriber）。<strong>\"刷量\"行为本身无法从 API 确证</strong>，只能记录指标异常。入库价值在于：作为\"热度≠价值\"方法论的教学样本，与 anydoc（真实需求）形成鲜明对照。WeChat-AI 的 <code>fork/star=0.74</code> vs anydoc 的 <code>fork/star=0.05</code>，是<strong>区分真实需求与自动化部署的关键比例</strong>。</p>
+<h3 id="4-h3-moe-90">4. H3 生态共振 + 本地 MoE 双头部（评分 90）</h3>
+<p>H3 生态三个层面同步放量：</p>
+<table>
+<thead>
+<tr>
+<th>层面</th>
+<th>项目</th>
+<th>08-11</th>
+<th>08-12</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官方模型</td>
+<td>MiniMax-AI/MiniMax-H3</td>
+<td>4,164</td>
+<td>5,194</td>
+<td>+1,030（+24.7%）</td>
+</tr>
+<tr>
+<td>原生推理</td>
+<td>antirez/h3.c</td>
+<td>129</td>
+<td>1,201</td>
+<td>+1,072（+831%）</td>
+</tr>
+<tr>
+<td>衍生生态</td>
+<td>search 'minimax-h3'</td>
+<td>379</td>
+<td>448</td>
+<td>+69</td>
+</tr>
+</tbody>
+</table>
+<p>本地 MoE 推理另一头部同步：<code>FareedKhan-dev/kimi-k3-in-c</code> +242（4,649→4,891，+5.2%），fork 727→774。H3（视频生成 MoE）+ K3（语言 MoE）双项目并行放量，\"本地大模型推理\"赛道整体加速。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>机遇：</strong>
+- <strong>H3 原生推理层获得市场验证：</strong> antirez/h3.c 三日破千证明\"推理优化\"不是小众需求。vertical-slice 增量构建方法学（每步可独立验证）值得其他推理引擎项目借鉴。若 antirez 持续投入（他以长期维护大型 C 项目著称），h3.c 可能成为 H3 生态的核心推理引擎之一。
+- <strong>anydoc 反弹暗示需求尚未见顶：</strong> 昨日\"稳态\"判断被逆转，说明文档摄入赛道的真实需求可能高于此前估计。fork 675→751（+76）持续增长，集成生态在扩展。
+- <strong>\"设备即工具\"赛道持续：</strong> phone-harness +206（1,282→1,488，+16.1%），fork 100→129，\"phone-as-tool\"赛道从单点扩散为持续信号。</p>
+<p><strong>风险：</strong>
+- <strong>Skill 生态单点脆弱性（持续）：</strong> 0xwilliamortiz 全账号仍 404（claude-red + humanizer-cli 双双消失），第三日无恢复。Skill 分发无去中心化保障。
+- <strong>H3 官方仓库无 license：</strong> license=null（API 可核验），是生态采用的法律风险变量。antirez/h3.c 用 MIT，但上游模型 license 不明确。
+- <strong>刷量/批量部署信号扩散：</strong> WeChat-AI（fork/star=0.74）+ open-kimi-ppt-skill 归档后 fork 仍增长（+12 第五日），说明自动化部署行为在生态中持续存在。研究者需常态化区分真实热度与刷量。
+- <strong>应用层全面稳态尾声：</strong> crm（+1.4%）、qm（+1.1%）、genoffice（+3.6%）增速全面低个位数，应用层红利期基本结束。
+- <strong>anydoc 稳态判断的可重复性：</strong> 若 +957 是趋势反转而非单日噪声，文档摄入赛道的\"天花板\"判断需上修。但需至少 2-3 日确认。</p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>⚡ antirez/h3.c — Redis 创始人 H3 原生 Metal 推理引擎，三日破千（详见 projects/h3c.md）</li>
+<li>📑 firecrawl/anydoc — 文档解析头部，稳态判断被逆转（详见 projects/anydoc.md）</li>
+<li>🎬 MiniMax-AI/MiniMax-H3 — 视频生成生态催化剂，连续四日千级增量（详见 projects/minimax-h3.md）</li>
+<li>🤖 SMNETSTUDIO/WeChat-AI — 疑似刷量对照样本（详见 projects/wechat-ai.md）</li>
+<li>📱 ShawnPana/phone-harness — agent 控制 iPhone，持续（详见 projects/phone-harness.md）</li>
+<li>💠 FareedKhan-dev/kimi-k3-in-c — 便携 C99 本地推理头部（详见 projects/kimi-k3-in-c.md）</li>
+<li>🌊 oil-oil/oil-motion — AI 视频帧→交互动画 Skill（详见 projects/oil-motion.md）</li>
+<li>🔇 Binaryify/open-kimi-ppt-skill — 已归档，异常信号案例库（详见 projects/open-kimi-ppt-skill.md）</li>
+</ul>
+<hr />
+<p><em>数据来源：GitHub API（2026-08-12）+ 仓库 README。所有 star/fork/watchers/created_at/pushed_at/license/language/archived/subscribers 为可核验事实；h3.c 能力描述来自 README（可核验），M5 Max 性能为作者自述未独立复现；anydoc \"delta 反弹\"为可核验计算值，反弹\"原因\"为推断待观察；WeChat-AI \"疑似刷量\"为基于 API 指标异常的推断，无法从 API 确证刷量行为本身。今日对昨日 anydoc \"稳态\"判断做了明确修正。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

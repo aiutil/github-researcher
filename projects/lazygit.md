@@ -28,7 +28,7 @@ Git 命令行虽然强大，但操作复杂、记忆负担重——尤其是 reb
 ## 热度来源判断
 热度完全来自真实需求——Git 是每个开发者的日常工具，降低 Git 操作复杂度是普遍痛点。81K stars 经过 8 年积累，年均约 10K stars，增长曲线稳定无泡沫。lazygit 已经成为终端开发者的「基础设施级」工具，与 bat、fzf、ripgrep 等并列。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **精心设计的 TUI 交互:** 基于 Go 的 gocui 库构建，键盘快捷键布局经过深思熟虑，学习曲线平缓且操作高效
 2. **交互式 Rebase:** 最强大的功能之一——可视化地 rebase、reorder、squash commits，比命令行直观一个数量级
 3. **可视化 Diff 查看:** 支持 line-level diff 查看，可以精确选择文件的部分变更进行 staging（patch mode）

@@ -28,7 +28,7 @@ url: "https://github.com/stackryze/FreeDomains"
 ## 热度来源判断
 热度来自 Homelab/Self-hosted 社区的强力传播。Reddit r/homelab、r/selfhosted、Hacker News、以及中文技术社区（V2EX、NodeSeek）对免费资源有天然的传播动力。Stackryze 品牌在域名社区已有积累，FreeDomains 作为其免费层产品获得了品牌势能的加持。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 自动化域名分配系统：API 驱动，支持 DNS 记录自动配置
 - 支持 A/AAAA/CNAME/MX/TXT 等主流记录类型
 - 基于 Cloudflare DNS 的后端（推测），利用其免费 DNS 托管

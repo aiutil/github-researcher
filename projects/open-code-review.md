@@ -30,7 +30,7 @@ url: "https://github.com/alibaba/open-code-review"
 - Go 语言实现，跨平台分发
 - 2754 stars + 130 forks 增长稳健
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **确定性 + Agent 混合架构**：文件选择、规则匹配、评论定位由工程代码保证；语义分析、上下文检索由 Agent 动态决策
 2. **智能文件捆绑**：关联文件自动分组（如 message_en.properties 和 message_zh.properties），分组隔离审查 + 并发执行
 3. **外部定位 + 反思模块**：独立的评论行号定位器和评论内容反思器，系统性提升准确率

@@ -2,14 +2,14 @@
 title: "yc-software/qm"
 slug: "qm"
 date_added: "2026-08-01"
-last_seen_date: "2026-08-09"
+last_seen_date: "2026-08-12"
 category: "平台候选"
 emoji: "👥"
-stars: "12,950 stars"
-stars_delta: "7/29创建→8/09 12,525⭐（第八日 +251，+2%，连续三日停滞通道），fork 1,395→1,434，万星量级稳态确认"
+stars: "13,092 stars"
+stars_delta: "7/29创建→8/12 13,092⭐（第十一日 +142/+1.1%，fork 1,527），连续六日 +1-2% 停滞通道，万星量级稳态确认"
 language: "TypeScript"
 license: "MIT"
-score: 87
+score: 86
 tags: ["agent-harness", "multiplayer", "slack", "collaboration", "sandbox", "typescript", "multi-agent"]
 url: "https://github.com/yc-software/qm"
 ---
@@ -30,7 +30,7 @@ url: "https://github.com/yc-software/qm"
 - **真实需求信号**：fork 125（高于同期 star 量级项目），说明有团队在尝试部署；README 详细的安全策略（Strict/Auto/Dangerous 三档）和部署目录架构说明这是认真做的产品而非 demo。
 - **话题性成分**：harness 应用化是本周热点，qm 受益于品类热度；但"multiplayer"和"Slack 集成"是独立差异化，非纯蹭热度。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Per-scope durable sandbox**：每人/每房间有独立的文件、工具、已登录服务——这是隔离的核心。README 架构图显示 agent 通过 `execute` 工具在 scope 自己的沙箱里运行命令，"installed tools stay installed"。
 2. **Harness 无关的 core**：中央 core 用 TypeScript + Fastify，agent loop 支持多种 harness（Pi/OpenCode/Claude Code），所有 substrate（harness/session store/sandbox/memory）都在接口后面，生产实现通过一个 wiring 文件替换。

@@ -37,7 +37,7 @@ Bumblebee 首次将 MCP 配置文件纳入供应链扫描范围。随着 MCP 成
 
 热度合理但有限 — 工具定位明确，受众是安全团队。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 1. 全生态覆盖
 npm/pnpm/yarn/bun/PyPI/Go/RubyGems/Composer/MCP/编辑器扩展/浏览器扩展 — 11 个包管理器生态。

@@ -29,7 +29,7 @@ url: "https://github.com/OpenCut-app/OpenCut"
 - Rust 重写 + MCP Server 的技术路线吸引开发者关注
 - fal.ai 等生成式 AI 公司赞助，暗示与 AI 内容生成的深度整合
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Rust 核心重写**：桌面、移动、浏览器共享同一代码库，性能与可维护性大幅提升
 2. **MCP Server 内建**：Agent 可通过 MCP 协议直接操作视频编辑流程（剪辑/转场/字幕/导出）
 3. **Headless 批渲染模式**：无需 GUI，支持自动化批量视频生产

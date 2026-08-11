@@ -43,7 +43,7 @@ superpowers 解决的核心问题：
 - **Anthropic 背书**：被 Anthropic Marketplace 官方收录，增加了可信度和可见度
 - **承诺明确**：85-95% 测试覆盖率承诺，直击 AI 编码的痛点
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **brainstorm → spec → TDD → review 强制工作流**：Agent 必须先思考再编码，先测试再实现，非协商式流程
 2. **技能组合化设计**：每个技能独立可复用，支持跨 Agent 平台使用，技能即约束

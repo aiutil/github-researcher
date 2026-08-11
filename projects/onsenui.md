@@ -29,7 +29,7 @@ url: "https://github.com/OnsenUI/OnsenUI"
 ## 热度来源判断
 热度主要来自历史积累——OnsenUI 是早期混合应用开发的主要框架之一，与 Ionic 并称。但随着 React Native、Flutter 等更现代的跨平台方案崛起，OnsenUI 的关注度逐年下降。当前的 stars 维持主要来自存量用户和 Cordova/Capacitor 生态的补充需求。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - Web Components 核心：框架无关的 UI 组件，可嵌入任何前端框架
 - 平台自适应主题：自动检测 iOS/Android 并应用对应设计语言
 - 丰富的移动 UI 组件：导航、标签栏、轮播、列表、表单等

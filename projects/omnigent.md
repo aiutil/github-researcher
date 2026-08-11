@@ -40,7 +40,7 @@ url: "https://github.com/omnigent-ai/omnigent"
 ## 热度来源判断
 真实需求驱动。多 agent 管理是每个重度 AI 开发者已经遇到的痛点。热度不是炒作，但 alpha 阶段（212 issue）说明工程成熟度还有距离。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Transport 抽象层** — Claude Code、Codex、Cursor 的差异被封装在 adapter 中，上层 API 统一
 2. **Policy 引擎** — 可在 server/agent/chat 三个粒度配置审批、预算上限、工具限制
 3. **Session 持久化** — 终端 → 浏览器 → 手机，会话状态完整同步

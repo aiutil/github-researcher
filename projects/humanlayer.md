@@ -28,7 +28,7 @@ AI 编程 Agent 的"信任边界"问题：完全自主的 Agent 容易在不理�
 ## 热度来源判断
 热度来自 AI 编程 Agent 从"全自动"到"可控自主"的范式转变。早期 Agent（如 AutoGPT）追求完全自主但频频失败，市场逐渐认识到 Human-in-the-Loop 的必要性。HumanLayer 是这一转变中的代表项目。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **Human-in-the-Loop 基础设施**：为 Agent 提供标准化的"请求人类输入"接口
 - **多 Agent 适配**：支持 Claude Code、Codex、OpenCode、Amp 等不同 Agent 框架
 - **审批工作流**：关键操作前的审批门控

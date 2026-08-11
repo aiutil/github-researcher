@@ -17,7 +17,7 @@ url: "https://github.com/WeaveMindAI/weft"
 
 专为 AI 系统设计的编程语言，Rust 实现，探索 Agent 系统的编译层抽象。
 
-## 解决的问题
+## 它解决的问题
 
 现有的 AI Agent 系统主要用 Python/TypeScript 构建，这些通用语言在 Agent 系统的并发控制、类型安全、形式化验证方面存在天然不足。weft 试图从语言层面解决这些问题。
 
@@ -31,7 +31,7 @@ url: "https://github.com/WeaveMindAI/weft"
 
 638 stars，增速温和。来自编译器/AI 基础设施社区的关注，非大众热点。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 - Rust 实现，兼顾性能和安全性
 - 面向 AI 系统的类型系统和并发模型（具体设计文档待补充）

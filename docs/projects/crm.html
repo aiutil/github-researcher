@@ -40,7 +40,7 @@
 <li><strong>品类热度成分</strong>："agentic-first CRM"踩中本周应用层 + 垂直 SaaS 重写双热点；但"证据账本""deny-all egress 沙箱""eve 底座"是独立的设计深度，非纯蹭热度。</li>
 <li><strong>价值定位</strong>：核心价值不在"又一个 CRM"，而在于它示范了<strong>"agent 作为产品本体"的工程范式</strong>——可迁移到其他垂直领域。</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>证据账本取代置信度</strong>：agent 的工具<strong>不接受置信度分数</strong>。README 原文论证——"a model asked to grade its own certainty will, and it will be wrong in the direction that makes it look useful"。工具只报告观察到的事实（<code>crm.signature-block</code>、<code>github.account-identity</code>），一个账本对证据定价：强证据写记录，弱证据变成人类裁决的建议。"A confidently wrong fact about a customer is worse than a blank field, because nobody can tell it is wrong."</li>
 <li><strong>deny-all egress 沙箱</strong>：agent 的 bash 沙箱<strong>无网络、无数据库</strong>。<code>web_fetch</code> 在 app 运行时跑、<code>web_search</code> 在 model provider 跑，沙箱 shell 只做文本处理。沙箱<strong>永不获得 <code>DATABASE_URL</code></strong>。论证："A shell with credentials and egress is exfiltration-shaped even in an internal tool; a shell with neither is a text processor."</li>

@@ -27,7 +27,7 @@ GitHub Trending Weekly 上榜，周增 8,673 stars（从 16.2K → 27.9K），�
 ## 热度来源判断
 成本驱动 + Coding Agent 生态红利 + 多模型格局确认。当 LLM Provider 超过 500 个时，路由/聚合/降级/压缩自然成为基础设施层（类比微服务时代的 Kong/Nginx）。500+ 贡献者说明社区对 LLM 路由有强烈需求。免费层堆叠（90+ Provider）+ Token 压缩（15-95%）是核心价值主张。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **160+ Provider 聚合**：50+ 免费层 Provider，统一 API 端点
 2. **RTK + Caveman 堆叠压缩**：声称节省 15-95% token（RTK 压缩重复模式，Caveman 压缩冗余语法）
 3. **智能自动故障转移**：Provider 不可用时自动切换到下一个

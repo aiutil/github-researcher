@@ -33,7 +33,7 @@ url: "https://github.com/liguodongiot/llm-action"
 - **SEO 优势（中高）**：GitHub 和搜索引擎排名高
 - **Datawhale/社区推荐（中）**：中文 AI 社区互相推荐效应
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **全链路覆盖**：预训练→微调（LoRA/QLoRA/全参）→RLHF/DPO→量化→推理（vLLM/TensorRT-LLM）→部署
 2. **原理+代码**：不只有理论讲解，配套可运行代码
 3. **工程视角**：关注生产环境问题（性能、成本、监控）

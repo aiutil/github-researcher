@@ -19,7 +19,7 @@ url: "https://github.com/withastro/flue"
 
 Astro 团队出品的可编程 TypeScript Agent harness——内置沙箱、持久执行、CRDT 多人协作，目标是让任何模型获得 Claude Code 级别的自主工作能力。
 
-## 解决的问题
+## 它解决的问题
 
 构建自主 Agent 需要 sessions、tools、skills、instructions、filesystem access 和安全沙箱——这些能力每个开发者都在重复实现。flue 把这些打包成一个可编程的 TypeScript harness，让 Agent 开发从"raw LLM API 调用"升级到"Claude Code 级别的自主工作"。
 
@@ -31,7 +31,7 @@ Astro 团队（Fred K. Schott + cpojer 等）出品的框架自带品牌信誉�
 
 **Astro 品牌红利 + 真实需求。** Astro 是最成功的前端框架之一，开发者信任其团队的工程能力。flue 解决的"Agent 从 chatbot 升级到自主工作者"问题是行业刚需。日增 305 不算爆发，但质量高——这说明深度用户在关注。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **可编程沙箱：** `local()` / `virtual()` / `remote()` 三种沙箱模式。Agent 可以在沙箱中安全地使用工具、修改文件、执行代码。
 

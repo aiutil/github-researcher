@@ -39,7 +39,7 @@ Coding Agent 的本地会话分析与用量统计工具，支持 Claude Code、C
 ## 热度来源判断
 **小众但真实。** 1.6K stars 不是爆发式增长，但用户群体精准——重度 Agent 用户。作为 ccusage 的替代品切入，定位清晰。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **20+ Agent 支持：** 不仅支持 Claude Code，还支持 Codex、OpenCode 等 20+ Agent
 2. **Local-first：** 数据完全本地化，不依赖云服务
 3. **会话智能分析：** 不只是统计 token，还分析会话质量

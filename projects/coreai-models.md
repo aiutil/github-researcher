@@ -32,7 +32,7 @@ Apple 端侧 AI 模型导出/运行时/Skills 全栈开源生态，Core AI 框�
 - Apple 品牌效应 + 端侧 AI 是确定性趋势 + 开发者苦工具链久矣
 - 3 天 605⭐ 对于 Apple 项目来说增速正常
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **模型导出管线** — HuggingFace 模型到 Core AI `.aimodel` 格式的一键导出
 - **Python 原语** — PyTorch 模型到端侧的构建块（BC1S 布局、算子兼容、KV Cache 模式）
 - **Swift 运行时** — 与 Core AI 框架无缝集成的 Swift 包

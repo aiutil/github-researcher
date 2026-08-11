@@ -33,7 +33,7 @@ DeepClaude 代表了一个重要趋势：**Agent 前端和后端的解耦**。�
 - **时机好** — DeepSeek V4 Pro 刚发布不久，"性价比替代" 话题热度高
 - **炒作成分约 30%** — 17x 降本在简单任务上成立，复杂任务差距明显
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **协议兼容层** — 实现 Anthropic API 兼容层，让 Claude Code CLI 无感知地使用其他后端
 2. **多后端路由** — 支持 DeepSeek V4 Pro、OpenRouter、任意 Anthropic 兼容端点
 3. **零侵入集成** — 不修改 Claude Code 本身，通过代理层实现后端替换

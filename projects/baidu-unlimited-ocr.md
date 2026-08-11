@@ -39,7 +39,7 @@ Unlimited-OCR 实现了 one-shot long-horizon parsing——单次推理处理整
 - **Demo 可验证**：HuggingFace Spaces 让任何人立即验证效果
 - **生态协同**：transformers 库直接加载，降低试用门槛
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **One-shot Long-horizon Parsing**：单次推理处理超长文档，不再需要切段拼接
 2. **Gundam 模式**：base_size=1024 + image_size=640 + crop_mode=True，自动分块处理超长文档但保持全局上下文
 3. **DeepSeek-OCR 架构演进**：在 DeepSeek-OCR 基础上优化长程推理

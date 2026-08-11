@@ -29,7 +29,7 @@ url: "https://github.com/public-api-lists/public-api-lists"
 ## 热度来源判断
 **实用刚需 + 替代品效应**。public-api-lists 的热度来自三个因素：(1) 开发者对公共 API 的持续需求——这是学习和原型开发的刚需；(2) 它是 public-apis/public-apis 的社区分叉版本，后者因维护停滞和审核积压（数千个 PR 未处理）导致社区寻求替代品；(3) JSON API 的差异化——不仅仅是一个静态 Markdown 文件，还提供了可编程查询的 API 端点。但需注意，列表型项目的 stars 往往高于其"技术价值"——因为用户 star 更多是作为"书签"而非代码使用。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **社区维护机制**：采用 GitHub 原生的 PR + Review 流程，任何开发者都可以提交新 API。标记 `hacktoberfest` 和 `beginner-friendly` 吸引新贡献者，形成持续更新的良性循环。
 2. **免费 JSON API 端点**：除了人类可读的 Markdown 和 Web 界面，还提供机器可读的 JSON API，开发者可以直接在代码中 `fetch` 获取 API 列表数据。这是相比原版 public-apis 的核心差异化。
 3. **结构化分类系统**：API 按类别（Animals、Anime、Anti-Malware、Art & Design、Books 等）和子类别组织，支持按 Auth 方式（apiKey、OAuth、无认证）、HTTPS 支持、CORS 支持等维度筛选。

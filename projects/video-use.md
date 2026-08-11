@@ -31,7 +31,7 @@ browser-use 团队出品（browser-use 本身是知名的 Browser Automation 项
 - 功能完整度高，不是 demo
 - 视频编辑是真实需求场景
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent 自评估**：在每个切点边界自评估渲染结果，质量门控
 2. **会话记忆持久化**：project.md 记录编辑历史，下次会话可续接
 3. **并行子 Agent 调度**：Manim/Remotion/PIL 动画通过并行子 Agent 生成

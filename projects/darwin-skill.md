@@ -17,7 +17,7 @@ url: "https://github.com/alchaincyf/darwin-skill"
 
 让你的 Skill 无限进化的系统：评估 → 改进 → 测试 → 保留或回滚。
 
-## 解决的问题
+## 它解决的问题
 
 当前的 Agent Skill 一旦创建就基本静态，缺少系统化的质量评估和迭代改进机制。darwin-skill 引入了"自然选择"式的 Skill 优化循环。
 
@@ -31,7 +31,7 @@ url: "https://github.com/alchaincyf/darwin-skill"
 
 热度合理。952 stars / 4天，增速健康。来自 AI Agent 社区对 Skill 质量管控的真实需求，非刷量。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 - 自动评估 Skill 执行效果
 - 基于评估结果的自动改进

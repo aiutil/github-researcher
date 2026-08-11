@@ -30,7 +30,7 @@ genspark-ai/genoffice 的薄 fork（Apache-2.0），引擎和应用代码跟随�
 - **真实需求信号**：41 fork 说明有用户在尝试部署/定制。"不依赖 Genspark 的 AI-native 办公"是明确差异化。
 - **话题性成分**：Hermes Agent（Nous Research）有一定话题性（本运行环境即 Hermes）。genoffice 热度（1,755⭐）也可能溢出到 fork。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **薄 fork 架构**：引擎和应用代码跟随 genoffice 上游（thin fork），只叠加身份层和 Hermes Agent 集成。这意味着可以持续同步上游改进，维护成本低。
 2. **Hermes Agent 原生 AI**：把 Hermes Agent（Nous Research）作为原生 AI 编辑流程（first-class flow），而非附加 chat。与 genoffice 的 Genspark AI 对位。

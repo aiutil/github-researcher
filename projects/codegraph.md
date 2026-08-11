@@ -1,64 +1,87 @@
 ---
-title: "CodeGraph"
+title: "colbymchenry/codegraph"
 slug: "codegraph"
 date_added: "2026-05-19"
+last_seen_date: "2026-06-09"
 category: "工具型"
 emoji: "🕸️"
-stars: "44.8K stars"
-stars_delta: "周增 +8,661 stars"
-language: "TypeScript"
+stars: "65,850 stars"
+stars_delta: "API 实时数据"
+language: "C"
+license: "MIT"
 score: 88
-tags: ["代码图谱", "知识图谱", "Coding Agent", "Token优化", "代码理解"]
+tags: ["c"]
 url: "https://github.com/colbymchenry/codegraph"
-last_seen_date: "2026-06-09"
 ---
 
-# CodeGraph
+# colbymchenry/codegraph — Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, C
 
 ## 一句话定位
-预索引代码知识图谱，为 Claude Code/Codex/Cursor/OpenCode 减少 token 消耗和工具调用次数，100% 本地运行。
+
+Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, and Hermes Agent — fewer tokens, fewer tool calls, 100% local。主要使用 C 编写，当前 65,850 stars / 4,146 forks / 149 subscribers。
 
 ## 它解决的问题
-Coding Agent 在大型代码库中工作时，每次请求都需要重新理解代码结构，消耗大量 token 和工具调用。CodeGraph 预先构建代码的知识图谱，让 Agent 直接查询结构化的代码关系，而非反复读取源文件。
 
-目标用户：Coding Agent 重度用户、大型代码库维护者、AI 编程效率优化者。
+**目标用户**：使用 c 生态的开发者、工程师。
+
+**痛点**：该项目解决的核心问题是 Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, and Hermes Agent — fewer tokens, fewer tool calls, 100% local。从 README 来看，项目提供了 <div align="center"> # CodeGraph Already installed? Run `codegraph upgrade` Follow [@getcodegraph](https://x.com/getcodegraph) on X for updates. ### Supercharge Claude Code, Cursor, Codex, OpenCode, H。
+
+**场景**：适用于需要 该类型工具 的开发场景。
 
 ## 为什么值得关注（2026-05-19）
 
-4.8K⭐，GitHub Trending 本周 TypeScript 榜。「减少 Coding Agent token 消耗」直击痛点。知识图谱 + 代码理解的方向正确。
+1. **Stars 增长**：65,850 stars，4,146 forks——fork/star 比为 6.3% （正常范围）
+2. **活跃度**：创建于 2026-01-18，最后更新 2026-08-08，407 open issues
+3. **技术栈**：C，License: MIT
+4. **生态定位**：无 topics 标注
 
 ## 热度来源判断
-热度 70% 真实需求。Coding Agent 的 token 消耗是实际成本问题。但 Star 数不算特别高，属于细分工具。
+
+**真实需求信号**：forks 4146（高部署意愿），subscribers 149（深度关注）。
+
+
+
+
 
 ## 关键技术亮点
-1. **预索引**：提前构建代码图谱，Agent 查询时零等待
-2. **跨 Agent 兼容**：支持 Claude Code、Codex、Cursor、OpenCode 等多种 Agent
-3. **100% 本地**：不发送代码到外部服务，隐私友好
+
+1. **<div align="center">**
+2. **# CodeGraph**
+3. **Already installed? Run `codegraph upgrade`**
+4. **Follow [@getcodegraph](https://x.com/getcodegraph) on X for updates.**
+5. **### Supercharge Claude Code, Cursor, Codex, OpenCode, Hermes Agent, Gemini, Antigravity, Kiro, and G**
+6. ****The fastest complete code graph · surgical context · built for how agents actually work · 100% loc**
 
 ## 架构启发
-- 代码知识图谱是 Coding Agent 基础设施的缺失层
-- 预计算 vs 实时计算的 trade-off 在 Agent 场景中偏向预计算
-- 跨 Agent 兼容的策略值得学习：做基础设施而不是绑定平台
+
+从 colbymchenry/codegraph 的设计来看，核心思路是 **"Pre-indexed code knowledge graph, auto syncs on code changes"**。这反映了 C 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
 
 ## 定位判断
-在 Coding Agent 工具链中定位为「代码理解加速层」，是 Agent 和代码库之间的中间件。
+
+**工具型**。在生态中定位为Pre-indexed code knowledge graph, auto s方向的工具。Stars 65850 说明已有一定社区基础。
 
 ## 风险 / 局限 / 泡沫点
-1. **增量更新**：代码频繁变化时，图谱的增量更新效率待验证
-2. **图谱质量**：代码图谱的构建质量直接影响 Agent 输出质量
-3. **与 IDE 内置索引竞争**：JetBrains/VS Code 都有内置代码索引
+
+1. **规模风险**：65,850 stars，但 fork 4146 说明有实际部署
+2. **维护风险**：最后 push 时间 2026-08-08，活跃维护中
+3. **Open Issues**：407 个 open issues，活跃社区反馈
+4. **License**：MIT（宽松许可，适合商用）
 
 ## 与同类项目的关系
-- **vs Sourcegraph**：Sourcegraph 做代码搜索，CodeGraph 做代码图谱，互补关系
-- **vs Aider 的 repo map**：Aider 有类似的代码地图功能，但更轻量
+
+- 与同 C 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。
+- 从 topics () 来看，与关注 该领域 的其他项目有交叉。
 
 ## 是否值得持续跟踪
-**是。** Coding Agent 效率优化是确定性需求。
+
+**是。** 65850 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。
 
 ## 后续观察点
-1. 大型代码库（100K+ 文件）的索引性能
-2. Agent 集成后的 token 节省实测数据
-3. 是否被主流 Agent 平台集成
+
+1. Star 增速是否可持续（当前 65,850）
+2. Fork 增长趋势（当前 4,146）
+3. 功能迭代频率（最后更新 2026-08-08）
+4. 社区活跃度（subscribers 149, open issues 407）
 
 ---
-*首次记录：2026-05-19*
+> 数据来源: GitHub API (2026-08-08) | Stars: 65,850 | Forks: 4,146 | License: MIT | 语言: C | 创建: 2026-01-18

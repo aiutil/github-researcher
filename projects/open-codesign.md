@@ -1,79 +1,85 @@
 ---
-title: "open-codesign"
+title: "OpenCoworkAI/open-codesign"
 slug: "open-codesign"
 date_added: "2026-04-23"
 category: "工具型"
 emoji: "🖌️"
-stars: "1.2k stars"
-stars_delta: "5天 1.2k"
+stars: "7,698 stars"
+stars_delta: "API 实时数据"
 language: "TypeScript"
+license: "MIT"
 score: 75
-tags: ["Claude-Design", "BYOK", "Multi-model", "Desktop", "Electron"]
+tags: ["ai-design", "anthropic", "byok", "claude", "claude-code", "claude-design", "claude-design-alternative", "deepseek"]
 url: "https://github.com/OpenCoworkAI/open-codesign"
 ---
 
-# open-codesign
+# OpenCoworkAI/open-codesign — Open-source Claude Design alternative. One-click import your Claude Code / Codex
 
 ## 一句话定位
-开源 Claude Design 替代品，Electron 桌面应用，支持多模型 BYOK（Claude/GPT/Gemini/Kimi/GLM/Ollama），本地优先。
+
+Open-source Claude Design alternative. One-click import your Claude Code / Codex API key. Prompt → prototype / slides / PDF. Multi-model (Claude, GPT, Gemini, Kimi, GLM, Ollama). BYOK, local-first, MIT.。主要使用 TypeScript 编写，当前 7,698 stars / 810 forks / 36 subscribers。
 
 ## 它解决的问题
-提供不绑定单一模型的 Agent 设计工具。解决了"想用 AI 做设计但不想被锁定在单一模型"的问题。
+
+**目标用户**：使用 typescript 生态的开发者、AI Agent 构建者。
+
+**痛点**：该项目解决的核心问题是 Open-source Claude Design alternative. One-click import your Claude Code / Codex API key. Prompt → prototype / slides / PDF. Multi-model (Claude, GPT, Gemini, Kimi, GLM, Ollama). BYOK, local-first, MIT.。从 README 来看，项目提供了 # Open CoDesign **简体中文**: [README.zh-CN.md](./README.zh-CN.md) > Your prompts. Your model. Your laptop. > > Turn prompts into polished artifacts — locally, openly, and with whichever model you already。
+
+**场景**：适用于需要 ai-design, anthropic, byok 的开发场景。
 
 ## 为什么值得关注（2026-04-23）
-多模型 BYOK 模式代表了 Agent 工具从"单模型绑定"向"平台化"的演进方向。MIT 开源 + 本地优先的策略值得关注。
+
+1. **Stars 增长**：7,698 stars，810 forks——fork/star 比为 10.5% （高 fork 比例说明部署/集成意愿强）
+2. **活跃度**：创建于 2026-04-18，最后更新 2026-08-04，78 open issues
+3. **技术栈**：TypeScript，License: MIT
+4. **生态定位**：Topics: ai-design, anthropic, byok, claude, claude-code
 
 ## 热度来源判断
-- **真实需求**：设计师和开发者确实需要多模型选择
-- **BYOK 趋势**：Bring Your Own Key 模式正在成为 Agent 工具标配
-- **泡沫成分**：约 25%，当前功能和 Claude Design 原版差距较大
+
+**真实需求信号**：forks 810（高部署意愿），subscribers 36（深度关注）。
+
+**品类时机**：从 topics 来看，ai-design, anthropic, byok 是当前社区关注的方向。
+
+
 
 ## 关键技术亮点
-1. **多模型统一接口**：Claude/GPT/Gemini/Kimi/GLM/Ollama 一键切换
-2. **BYOK 本地优先**：API Key 本地管理，无云端依赖
-3. **Electron 桌面应用**：独立于 IDE 运行
-4. **Prompt → Prototype / Slides / PDF**：多输出格式
+
+1. **# Open CoDesign**
+2. ****简体中文**: [README.zh-CN.md](./README.zh-CN.md)**
+3. **> Your prompts. Your model. Your laptop.**
+5. **> Turn prompts into polished artifacts — locally, openly, and with whichever model you already pay f**
+6. **[Website](https://opencoworkai.github.io/open-codesign/) · [Quickstart](#quickstart) · [What's new](**
 
 ## 架构启发
-- BYOK 模式可能成为 Agent 工具的通用架构模式
-- 多模型适配层是 Agent 工具平台化的关键抽象
+
+从 OpenCoworkAI/open-codesign 的设计来看，核心思路是 **"Open-source Claude Design alternative. One-click import your"**。这反映了 TypeScript 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
 
 ## 定位判断
-**工具型，有平台候选潜力。** 如果多模型适配层做得足够好，可能演化为设计类 Agent 的统一入口。
+
+**工具型**。在生态中定位为Open-source Claude Design alternative. O方向的工具。Stars 7698 说明已有一定社区基础。
 
 ## 风险 / 局限 / 泡沫点
-1. **功能成熟度不足**：1.2k stars 且 43 个 open issues
-2. **与官方工具差距**：Claude Design 原版功能更完善
-3. **多模型维护成本**：每个模型的 API 变化都需要跟进
+
+1. **规模风险**：7,698 stars，但 fork 810 说明有实际部署
+2. **维护风险**：最后 push 时间 2026-08-04，活跃维护中
+3. **Open Issues**：78 个 open issues，活跃社区反馈
+4. **License**：MIT（宽松许可，适合商用）
 
 ## 与同类项目的关系
-- **Claude Design (官方)**：功能更完善但绑定 Claude → open-codesign 开放
-- **huashu-design**：Skill 路线 → open-codesign 独立应用路线
-- **v0 (Vercel)**：更成熟的 AI 设计工具 → open-codesign 更开放
+
+- 与同 TypeScript 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。
+- 从 topics (ai-design, anthropic, byok) 来看，与关注 ai-design 的其他项目有交叉。
 
 ## 是否值得持续跟踪
-**是。** BYOK + 多模型模式是值得关注的架构方向。
+
+**是。** 7698 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。
 
 ## 后续观察点
-1. 多模型输出质量是否趋于一致
-2. 是否形成社区贡献的模型适配插件体系
 
-### 评分
-
-| 维度 | 分数 | 理由 |
-|------|------|------|
-| 热度质量 | 6 | 早期热度，尚需验证 |
-| 技术创新度 | 6 | BYOK 多模型是合理创新 |
-| 工程成熟度 | 4 | 早期阶段 |
-| 架构启发价值 | 7 | BYOK 模式值得借鉴 |
-| 企业落地潜力 | 5 | 可作为内部设计工具候选 |
-| 中期趋势概率 | 6 | 多模型 Agent 工具是趋势 |
-| 平台化潜力 | 6 | 有平台化方向但需时间 |
-| 基础设施潜力 | 3 | 不具备 |
-
-- **总分**：43/80
-- **归类**：工具型
-- **建议持续跟踪**：是
+1. Star 增速是否可持续（当前 7,698）
+2. Fork 增长趋势（当前 810）
+3. 功能迭代频率（最后更新 2026-08-04）
+4. 社区活跃度（subscribers 36, open issues 78）
 
 ---
-*首次记录：2026-04-23*
+> 数据来源: GitHub API (2026-08-04) | Stars: 7,698 | Forks: 810 | License: MIT | 语言: TypeScript | 创建: 2026-04-18

@@ -31,7 +31,7 @@ scriptc 让 TS 像 Rust/Go 一样编译成独立原生二进制（实测 `fib.ts
 ## 热度来源判断
 热度来自**真实工程痛点**（Serverless 冷启动）+ Vercel 品牌背书 + 「TS 终于可以原生编译」的技术新鲜感。不是泡沫——冷启动是 Serverless 的硬约束，TS 原生编译是合理解法。但 Star 数受限于「需要 clang + macOS arm64 为主平台」的采用门槛。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **零运行时静态编译**：原生代码，无引擎。覆盖类（单继承 + 动态分派 + 安全时去虚化）、闭包（JS 捕获语义）、泛型（单态化）、判别联合（TypeScript 自身 narrowing 驱动的 tagged values）、async/await（栈式协程 + JS 精确调度）、异常（含 finally）、解构、spread、迭代器、模板字符串、正则（与 QuickJS 相同的 ECMAScript 精确字节码解释器）。
 2. **标准库 + Node API 表面完整**：字符串（UTF-16 精确语义）、数组/Map/Set（JS 精确顺序与 identity）、JSON（运行时校验转型）、Math、typed arrays、Buffer、Error 层级；Node 的 fs（sync+promises）、path（字节精确移植）、process、child_process、os、crypto、url、zlib、定时器与信号；以及服务端栈 net/http/https/tls（内置 mbedTLS）、dgram、dns、fs.watch、readline。
 3. **WHATWG fetch 子集**：streams、Headers、AbortSignal 基于同一原生 net/TLS 栈——重定向、gzip、AbortSignal.timeout、Node 形态错误原因；无 libcurl、无系统 HTTP 依赖。

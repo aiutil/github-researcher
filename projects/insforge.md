@@ -36,7 +36,7 @@ Coding Agent（Claude Code、Cursor、Codex）能写前端代码，但部署全�
 - 解决真实痛点：Agent 能写代码但不能部署，缺少可调用的后端原语
 - Supabase / Firebase 没有原生 MCP 支持，留出了差异化空间
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **双接口架构**：MCP Server（self-hosted + cloud）供 Agent 调用，CLI + Skills 供终端使用
 2. **Agent 操作语义**：Agent 可以读取后端上下文（schema、metadata、runtime logs）、配置原语（部署函数、创建 bucket、设置 auth provider）

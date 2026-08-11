@@ -30,7 +30,7 @@ AI Agent 的能力边界长期受限于"训练时知识"和"通用 Prompt"。要
 ## 热度来源判断
 Skills 的热度是**Anthropic 官方背书 + Agent 生态刚需 + Claude 爆发**三重驱动。2025 年 Claude Code 和 Claude Desktop 火爆，Skills 作为"扩展 Claude 能力的标准方式"自然成为生态焦点。16 万 stars 中包含大量企业用户和开发者。这是**真实生态价值**，但也存在 Anthropic 品牌效应带来的"光环加成"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **声明式 Skill 定义:** 每个 Skill 是 `SKILL.md`（YAML frontmatter + Markdown 指令），Agent 读即会
 2. **按需加载:** Agent 根据任务匹配 Skill 描述（trigger），自动加载对应指令和资源
 3. **资源丰富:** 每个 Skill 目录可含 `references/`（参考文档）、`templates/`（模板）、`scripts/`（脚本）、`assets/`（资源）

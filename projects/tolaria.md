@@ -28,7 +28,7 @@ Git-first / Offline-first 的跨平台 Markdown 知识管理桌面应用，为�
 ## 热度来源判断
 真实需求驱动。作者 Luca Ronin（Refactoring.fm）基于管理自己 10,000+ 笔记的真实需求构建。Tauri 技术栈吸引 Rust/TypeScript 开发者。Git-first 路线吸引注重数据主权的用户。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Tauri 2 架构**：Rust 后端 + WebView 前端，安装包小（~10MB）、启动快、内存占用低
 2. **纯 Markdown + YAML frontmatter**：无专有格式，任何编辑器可打开，数据完全可迁移
 3. **Git 原生集成**：每个 Vault 都是 Git 仓库，自动版本历史，支持任何 Git 远端

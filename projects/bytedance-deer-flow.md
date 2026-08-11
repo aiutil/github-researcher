@@ -30,7 +30,7 @@ DeerFlow 2.0 曾在 2026 年 2 月 28 日登上 GitHub Trending #1。今天重�
 - **多模型支持**：Doubao-Seed-2.0-Code、DeepSeek v3.2、Kimi 2.5、vLLM 部署
 - **InfoQuest 集成**：字节自研搜索爬虫工具集，增强研究能力
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **长周期任务编排**：分钟到小时级，通过 subagents + sandbox + memory + skills 组合处理
 2. **Subagents 并行**：生成隔离子代理做并行工作流，Python RPC 调用工具
 3. **Sandbox 隔离**：安全执行环境，Agent 代码在沙箱中运行

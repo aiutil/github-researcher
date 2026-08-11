@@ -30,7 +30,7 @@ LLM 后训练正从单轮问答转向多轮 Agent RL：模型与长生命周期�
 ## 热度来源判断
 **真实技术需求主导，热度温和。** Agent RL 后训练是前沿但小众领域，569⭐（7 天）对一个纯框架项目健康。热度来自真正做大模型后训练的团队的需求，而非话题性。风险：规模与效果为官方声称，缺乏独立大规模复现案例。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **rollout-trainer 一致性工程化**：提供 mismatch 分析、routing replay 检查、spike replay，把 rollout 与 trainer 间隐秘的差异变成可观测、可复现调试的问题。
 2. **多策略目标**：PPO、GRPO/GRPO2、GSPO、TOPR、TIS 等可配置，覆盖主流 RL 后训练算法。
 3. **降低 idle 时间**：partial rollout + 轻量控制面调度，减少长尾轨迹与工具延迟导致的 rollout/training 资源闲置。

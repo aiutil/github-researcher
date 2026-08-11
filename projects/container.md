@@ -33,7 +33,7 @@ macOS 开发者长期面临容器困境：Docker Desktop（最流行）商业收
 ## 热度来源判断
 apple/container 的热度是 **"Apple 官方背书 + 真实基础设施刚需 + Docker Desktop 替代叙事"** 三重强劲驱动。Apple 官方开源任何项目都自带巨大流量（参考 SwiftUI Foundation、MLX），而 container 触碰的是**每个 Mac 开发者都要用容器**的超高频需求。Docker Desktop 的收费政策（大企业需付费）催生了大量"寻找官方替代"的需求，Apple 亲自提供方案，天然成为焦点。热度**高度真实**——近 5 万 stars 对应的是全球数千万 Mac 开发者的真实痛点。活跃度极高（当日更新）说明 Apple 在认真投入，非"扔过墙"式开源。这是 2025-2026 年 Apple 开源生态最重要的基础设施项目之一。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Swift 原生:** 用 Apple 原生语言编写，与 macOS/Virtualization.framework 深度集成，非跨平台移植
 2. **轻量 VM 架构:** 基于 Apple Virtualization.framework 运行极简 Linux VM，在 VM 内托管容器，兼顾隔离性与性能
 3. **Apple Silicon 优化:** 针对 M 系列芯片优化，利用硬件虚拟化加速，容器启动快、资源占用低

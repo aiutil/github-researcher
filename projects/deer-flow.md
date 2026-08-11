@@ -29,7 +29,7 @@ url: "https://github.com/bytedance/deer-flow"
 ## 热度来源判断
 DeerFlow 的热度来自三层：(1) 字节跳动品牌效应——字节在 AI 领域的声誉（豆包、Coze）带来初始关注；(2) Deep Research 赛道爆发——2026 年初，"AI 深度研究"成为热点，DeerFlow v1 是这一赛道的早期开源方案；(3) 2.0 重写的架构创新——从"Deep Research 工具"升级为"Super Agent Harness"，定位跃迁带来第二波热度。GitHub Trending #1 是真实社区关注度，非刷量。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **Super Agent 架构:** 主 Agent 负责任务分解和子 Agent 调度，子 Agent 负责具体执行，形成层级化编排
 - **沙盒环境:** 内置代码执行沙盒（Docker / gVisor），Agent 可以安全地运行代码、操作文件
 - **记忆系统:** 短期记忆（当前任务上下文）+ 长期记忆（跨任务知识），支持记忆检索和更新

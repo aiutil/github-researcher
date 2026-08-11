@@ -30,7 +30,7 @@ url: "https://github.com/Leonxlnx/taste-skill"
 ## 热度来源判断
 **多重趋势叠加 + 社交传播驱动**。taste-skill 的爆发（半年 73K stars）由多重因素驱动：(1) vibecoding 浪潮——大量非专业开发者使用 AI 生成应用，他们迫切需要"设计品味"的帮助；(2) Skills 生态红利——作为 agent-skills 标准的明星项目，被广泛推荐；(3) 社交媒体传播——tasteskill.dev 的精美展示和前后对比图在 Twitter/X 上引发病毒式传播；(4) 赞助商背书——Kimi、Vercel 等知名品牌的赞助增加了可信度。但也需要注意：73K stars 对于一个 Skill 文件集来说可能有泡沫——需要区分"收藏 stars"和"实际安装使用"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **代码生成 Skill + 图像生成 Skill 双轨设计**：代码 Skill 用于约束 AI Agent 生成更高质量的前端代码（布局、排版、动效、间距规则）；图像 Skill 用于生成参考板（reference boards），覆盖 Web、移动端和品牌设计包。两者配合——先用图像 Skill 生成视觉参考，再用代码 Skill 指导实现。
 2. **Anti-slop 哲学**：明确反对 AI 默认的"slop"输出——千篇一律的布局、缺乏设计感的配色和排版。通过具体的规则约束（如间距比例、字体搭配、动效曲线等）替代模糊的"做得好看"指令。
 3. **跨 Agent 兼容**：通过 `npx skills add` CLI 一键安装到 Claude Code、Cursor、Codex 或任何读取 SKILL.md 目录的 Agent。不绑定特定平台，最大化覆盖面。

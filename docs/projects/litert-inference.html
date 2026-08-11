@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>litert-inference | GitHub 趋势研究</title>
+    <title>google-ai-edge/LiteRT | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,86 +26,79 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        <div style="margin-bottom:20px;"><a href="https://github.com/google-ai-edge/litert-inference" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="litert-inference">litert-inference</h1>
+        <div style="margin-bottom:20px;"><a href="https://github.com/google-ai-edge/LiteRT" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="google-ai-edgelitert-google-ai-tensorflow-lite">google-ai-edge/LiteRT — Google 端侧 AI 推理引擎，TensorFlow Lite 继任者</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Google 生产级端侧 LLM 推理引擎，TFLite 继任者，让移动设备实现接近服务器性能的 AI 推理，支持 GPU、NPU、DSP 多硬件加速。</p>
+<p>LiteRT 是 Google 官方的端侧高性能 ML &amp; GenAI 部署运行时——TensorFlow Lite 的正式继任者，支持 LLM、扩散模型等生成式 AI 在移动设备、嵌入式和浏览器上的高效推理，覆盖 GPU/NPU/TPU 多硬件加速。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>移动端 AI 推理面临性能瓶颈：模型部署复杂度高、推理速度慢、内存占用大。litert-inference 提供完整的端侧部署工具链，将云端 AI 能力下沉到设备端，解决延迟、隐私、离线三大问题。这是端侧 AI 从概念验证走向生产落地的关键基础设施。</p>
-<h2 id="_3">为什么值得关注</h2>
+<p>端侧 AI 推理面临三大瓶颈：模型部署复杂度高、推理速度慢、内存占用大。同时，TensorFlow Lite 生态老旧，无法很好支持现代 GenAI 工作负载。LiteRT 提供完整的端侧部署工具链（转换 → 量化 → 运行时 → 加速），将云端 AI 能力下沉到设备端，解决延迟、隐私、离线三大核心问题。LiteRT V2 引入了全新的编译模型 API 和统一 NPU 加速。</p>
+<h2 id="2026-08-11">为什么值得关注（2026-08-11）</h2>
 <ul>
-<li><strong>Google 官方产品</strong>：已大规模生产落地，代表端侧 AI 新标准</li>
-<li><strong>接近服务器性能</strong>：在移动设备上实现接近服务器的推理速度</li>
-<li><strong>多硬件加速</strong>：支持 GPU、NPU、DSP 多种加速方案</li>
-<li><strong>完整工具链</strong>：模型压缩、量化、部署端到端覆盖</li>
-<li><strong>TFLite 继任者</strong>：承载 Google 端侧 AI 战略的下一代引擎</li>
+<li><strong>3,285 stars</strong>（截至 2026-08-11），Apache-2.0 许可</li>
+<li><strong>415 forks</strong>，社区贡献活跃</li>
+<li><strong>Google 官方产品</strong>：google-ai-edge 团队维护，代表 Google 端侧 AI 战略</li>
+<li><strong>C++ 实现</strong>，361MB 代码库，规模庞大且工程严谨</li>
+<li><strong>持续高活跃</strong>：pushed_at 2026-08-11（当天推送），几乎每日更新</li>
+<li><strong>跨平台覆盖</strong>：Android、iOS、Linux、macOS、Windows、Web、IoT 全平台支持</li>
+<li><strong>全硬件加速</strong>：GPU（OpenCL/OpenGL/Metal/WebGPU）、NPU（Google Tensor/Intel/MediaTek/Qualcomm/S.LSI）、TPU</li>
+<li><strong>GenAI 支持</strong>：通过 LiteRT-LM 在端侧部署量化 LLM 和扩散模型</li>
+<li><strong>Web 推理</strong>：通过 WebGPU + WASM 在浏览器中运行安全客户端 ML</li>
+<li><strong>CI/CD 完善</strong>：Linux/macOS/Windows Nightly + Continuous 构建</li>
 </ul>
-<h2 id="_4">热度来源判断</h2>
-<ul>
-<li>Google 官方背书，已在多个 Google 产品中验证</li>
-<li>端侧 AI 是 2026 年必然趋势，所有需要 AI 功能的移动应用都有需求</li>
-<li>隐私保护与离线能力是企业级刚需</li>
-<li>开发者社区对端侧推理性能的持续关注</li>
-</ul>
-<h2 id="_5">关键技术亮点</h2>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>Google 官方背书 + 端侧 AI 必然趋势。</strong> Stars 数不高（3.3K）是因为 LiteRT 面向企业级和嵌入式开发者，不是面向个人开发者的"酷工具"。但它是 TFLite 的正式继任者——所有使用 TFLite 的产品（数以百万计的移动应用）都有迁移需求。热度来自产业基础设施更替而非社区炒作。所有需要 AI 功能的移动/嵌入式应用都有端侧推理需求，隐私保护和离线能力是企业级刚需。</p>
+<h2 id="_4">关键技术亮点</h2>
 <ol>
-<li><strong>优化的模型压缩和量化技术</strong>：在移动端支持更大模型</li>
-<li><strong>多硬件加速</strong>：GPU、NPU、DSP 三路加速，适配不同设备能力</li>
-<li><strong>端云协同架构</strong>：本地推理 + 云端模型更新同步</li>
-<li><strong>完整端侧部署工具链</strong>：从模型优化到部署的端到端流程</li>
-<li><strong>资源受限环境推理优化</strong>：内存、计算、能耗三维优化</li>
+<li><strong>LiteRT V2 Compiled Model API</strong>：自动化加速器选择（无需显式 delegates）、真异步执行、NPU 分布式调度、高效 I/O 缓冲管理</li>
+<li><strong>统一 NPU 加速</strong>：通过单一 API 接入所有主流芯片厂商的 NPU（Google Tensor/Intel/MediaTek/Qualcomm）</li>
+<li><strong>ML Drift GPU 加速</strong>：新一代 GPU 加速后端，支持 GenAI 推理，最小化跨 GPU 缓冲区延迟</li>
+<li><strong>Tensor API（C++）</strong>：轻量级 tensor-centric C++ 库，用于高性能张量操作</li>
+<li><strong>全链路工具支持</strong>：PyTorch/TF/JAX 模型 → LiteRT Torch 转换 → AI-Edge Quantizer 量化 → LiteRT-LM 部署 → LiteRT Runtime 推理</li>
+<li><strong>LiteRT-CLI</strong>：支持 Coding Agent 集成（<code>litert --help</code>），可在 AI 编程工作流中使用</li>
+<li><strong>模型生态</strong>：Hugging Face LiteRT Community 提供预转换模型（Gemma 4、ASR、图像分类等）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_5">架构启发</h2>
 <ul>
-<li><strong>端云协同设计</strong>：移动设备本地推理，结果同步到云端，云端模型更新后下发</li>
-<li><strong>模型-硬件协同优化</strong>：针对不同硬件能力选择最优加速路径</li>
-<li><strong>资源受限环境优化策略</strong>：对内存、能耗、计算的精细控制</li>
+<li><strong>端云协同设计</strong>：设备本地推理，云端模型更新后下发——隐私 + 性能 + 可更新的平衡</li>
+<li><strong>模型-硬件协同优化</strong>：针对不同硬件能力（CPU/GPU/NPU）自动选择最优加速路径</li>
+<li><strong>V2 架构升级</strong>：从 V1 的"手动 delegate"升级到 V2 的"自动加速器选择"——降低开发者心智负担</li>
+<li><strong>Runtime + Tools 分离</strong>：LiteRT Runtime（C++/Kotlin/JS）与转换工具（LiteRT Torch/Quantizer）解耦</li>
+<li><strong>端侧 GenAI 路线</strong>：不是只有小模型才能端侧，通过量化（4-bit）可以在手机上跑 LLM</li>
 </ul>
-<h2 id="_7">定位判断</h2>
-<p><strong>基础设施候选</strong> — 端侧 AI 推理的标准基础设施，可能演化为端侧 AI 标准平台。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_6">定位判断</h2>
+<p><strong>基础设施级</strong>——端侧 AI 推理的标准基础设施。不是"候选"，而是"已是"。作为 TFLite 的继任者，承载 Google 端侧 AI 战略的下一代引擎。所有需要端侧 ML 推理的应用都会（或应该）迁移到 LiteRT。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>硬件依赖性强</strong>：NPU 支持碎片化严重，不同芯片厂商的 NPU 行为不一致</li>
+<li><strong>模型大小限制</strong>：复杂 LLM 在端侧仍受限（Gemma 4 等需重度量化）</li>
+<li><strong>2,449 Open Issues</strong>：大量未解决问题，反映端侧 AI 工程复杂度</li>
+<li><strong>生态迁移成本</strong>：从 TFLite 迁移到 LiteRT V2 需要代码改造，部分团队可能观望</li>
+<li><strong>与 PyTorch Mobile/ExecuTorch 竞争</strong>：Meta 推 ExecuTorch 争抢端侧推理标准</li>
+<li><strong>文档门槛</strong>：361MB C++ 代码库，入门门槛较高</li>
+</ol>
+<h2 id="_8">与同类项目的关系</h2>
 <ul>
-<li><strong>硬件依赖性强</strong>：跨平台兼容性挑战，NPU/DSP 支持碎片化</li>
-<li><strong>模型大小限制</strong>：复杂模型在端侧的支持有限</li>
-<li><strong>生态成熟度待提升</strong>：第三方框架集成情况需要时间验证</li>
-<li><strong>技术更新快</strong>：端侧 AI 硬件迭代迅速，框架需频繁适配</li>
+<li><strong>vs TFLite</strong>：LiteRT 是其正式继任者，提供迁移指南</li>
+<li><strong>vs Core ML</strong>：Apple 端侧推理，不同生态（Apple vs Google）</li>
+<li><strong>vs ONNX Runtime</strong>：微软跨平台推理运行时，通用性强但 GenAI 支持弱于 LiteRT</li>
+<li><strong>vs ExecuTorch (Meta)</strong>：PyTorch 生态的端侧推理，直接竞争</li>
+<li><strong>vs llama.cpp</strong>：llama.cpp 专注 LLM CPU 推理，LiteRT 覆盖全 ML 模型类型 + 全硬件</li>
+<li><strong>vs MLX (Apple)</strong>：Apple 的端侧 ML 框架，仅限 Apple Silicon</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>定位</th>
-<th>关系</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TFLite</td>
-<td>前代端侧推理</td>
-<td>litert 是其继任者</td>
-</tr>
-<tr>
-<td>Core ML</td>
-<td>Apple 端侧推理</td>
-<td>不同生态：Apple vs Google</td>
-</tr>
-<tr>
-<td>ONNX Runtime</td>
-<td>通用推理运行时</td>
-<td>跨平台竞争</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_10">是否值得持续跟踪</h2>
-<p><strong>是</strong> — 端侧 AI 必然趋势，Google 官方背书使其成为基础设施级项目。</p>
-<h2 id="_11">后续观察点</h2>
-<ul>
-<li>开发者社区活跃度与第三方贡献</li>
-<li>第三方框架（PyTorch Mobile、Flutter 等）的集成情况</li>
-<li>企业级应用案例积累</li>
-<li>NPU 生态标准化进展</li>
-</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>是。</strong> 端侧 AI 是确定性趋势，Google 官方背书使其成为基础设施级项目。移动/嵌入式开发者必须关注。</p>
+<h2 id="_10">后续观察点</h2>
+<ol>
+<li>NPU 标准化进展（是否能形成统一抽象层）</li>
+<li>LiteRT V2 的企业级迁移率（TFLite → LiteRT V2）</li>
+<li>第三方框架（Flutter/React Native）的集成情况</li>
+<li>端侧 GenAI 的实际性能基准（LLM tokens/s 在不同设备上）</li>
+<li>与 ExecuTorch 的市场份额竞争</li>
+</ol>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-11) | Stars: 3,285 | Forks: 415 | License: Apache-2.0 | 语言: C++ | 创建: 2024-09-04</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

@@ -33,7 +33,7 @@ Agentic Coding 工具（Claude Code、Codex CLI、Cursor）正各自构建封闭
 ## 热度来源判断
 codex-plugin-cc 的热度是 **"OpenAI 官方背书 + 跨厂商互操作的象征意义 + Claude Code 生态红利"** 三重驱动。OpenAI 主动为竞争对手（Anthropic 的 Claude Code）写插件，本身具有巨大话题性——这传递了一个信号：**Agent 互操作是大势所趋，连 OpenAI 都在拥抱**。Claude Code 庞大的用户基数（2026 年最火的 Coding Agent）为这个插件提供了天然分发渠道——每个 Claude Code 用户都是潜在用户。热度**真实且象征意义重大**，但也需清醒：158KB 的插件体量说明它是个"薄桥接"，技术深度有限，3 万 stars 中有不少是"围观事件"而非重度使用。真正的价值在于它开启的"Agent 互操作"范式。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Claude Code 插件机制:** 利用 Claude Code 的插件/MCP 接口，将 Codex 作为"外部工具"注入 Claude Code 工作流
 2. **任务委派:** Claude Code 主 Agent 可将子任务（如"审查这段代码"、"独立实现这个函数"）委派给 Codex 执行并回收结果
 3. **双 Agent 协作:** 形成 Claude（主控）+ Codex（执行/审查）的双模型协作模式，结合两家所长

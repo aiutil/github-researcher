@@ -37,7 +37,7 @@ OpenCLI 的解法：把网站交互抽象为 CLI 命令，确定性执行，复�
 - **Agent Skill 集成** — 可直接被 Claude Code/Cursor 等 Agent 使用
 - **多入口分发** — npm CLI + Chrome 扩展 + 桌面 App（OpenCLIApp）
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Browser Bridge 架构** — Chrome 扩展 + 本地 daemon，Agent 通过 CLI 命令操作浏览器
 2. **三层抽象** — 内置适配器（确定性）/ Agent Browser Use（灵活性）/ 适配器开发（可扩展）
 3. **已登录浏览器复用** — 不需要传递 credentials，直接用用户的浏览器 session

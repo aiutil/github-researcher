@@ -29,7 +29,7 @@ AI 编程助手（Claude Code / Cursor / Codex 等）在 code review 时反复�
 - **数据说话**：monorepo 27,700+ 文件排除，实际只读 ~15 文件
 - **生态集成**：Claude Code / Cursor / Codex / Gemini CLI / Copilot / Kiro 全覆盖
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Tree-sitter AST 解析**：40+ 语言的函数/类/导入/调用/继承/测试覆盖的结构化图谱，不依赖向量
 2. **Blast Radius 分析**：文件变更时自动追踪所有调用方、依赖方、测试——"爆炸半径"精确定义上下文边界
 3. **增量索引**：SHA-256 hash diff 只重解析变更文件，2900 文件项目 < 2 秒

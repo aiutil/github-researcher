@@ -17,7 +17,7 @@ url: "https://github.com/coleam00/Archon"
 
 用 YAML 工作流让 AI 编程可确定、可重复——Dockerfile 标准化了基础设施，GitHub Actions 标准化了 CI/CD，Archon 标准化了 AI 编程。
 
-## 解决的问题
+## 它解决的问题
 
 AI Coding Agent 的核心痛点不是能力不足，而是**输出不可控**。同一条 prompt 跑两次，结果可能天差地别。对企业而言，不可重复 = 不可信赖 = 不可用。
 
@@ -38,7 +38,7 @@ Archon 把开发流程编码为 YAML harness：plan → implement → validate �
 - 创作者影响力：coleam00 在 AI Coding 社区有知名度
 - 社区验证：MapoDev、ByteIota、PyShine 等多渠道覆盖
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### YAML 工作流引擎
 ```yaml

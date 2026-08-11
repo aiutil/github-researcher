@@ -31,7 +31,7 @@ AI 推理模型产出的数学"发现"面临一个根本信任问题：**怎么�
 - **OpenAI 品牌效应**：官方仓库本身带来基线关注度，但内容（十个 Lean 文件 + 论文 PDF + reasoning walkthroughs）是实质性的，非空壳。
 - **无刷星特征**：39 fork / 5 watchers，fork 数合理，无 fork=0 的诈骗特征。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **十个独立形式化模块**：SpherePacking.lean、MetricCodes.lean、NonSoficGroup.lean、ConnesRigidity.lean、Permanent.lean、QuantumParallelRepetition.lean、GapCVP.lean、EhrhartVolumeInequality.lean、MulticolorTriangleRamsey.lean、CompactnessAndDegeneracy.lean——每个对应论文一个定理，可单独 `lake build <Module>`。
 2. **独立证明检查**：仓库含 `ComparatorChallenges/`，README 指向独立检查流程，声明这些形式化可被外部 Comparator 验证（这是可核验性的关键——任何人可复现）。
 3. **依赖 Lean 4.32.0 + mathlib + Lake**：用 elan 管理工具链，`lake exe cache get` 拉 mathlib 缓存后 `lake build All`。

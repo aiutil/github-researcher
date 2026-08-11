@@ -28,7 +28,7 @@ Agent 在 Google Cloud 上的部署、评估和运维缺乏标准化工具。开
 2. 与 Agent Skills 规范兼容——降低了采用门槛
 3. Google Cloud AI 部署的真实痛点
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Skills 架构**——不只是 CLI，而是让任何编码助手变成 Google Cloud 专家
 2. **创建→评估→部署**全链路覆盖
 3. **Google Cloud 原生集成**——Vertex AI、Cloud Run、Cloud Functions 等

@@ -29,7 +29,7 @@ Block（原 Square）官方开源项目，首日 2,162 stars。这不是社区�
 - **协议创新**：Nostr + Git Events (NIP-34) 的组合在协作领域是全新思路
 - **非炒作型**：README 诚实标注功能成熟度（✅ Works today / 🚧 Being wired / 💭 Pending），没有过度承诺
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **统一事件模型**：消息、反应、代码审查、CI 结果、工作流审批、git 事件——全部是同一种 Nostr 签名事件。一种数据结构、一种身份模型、一条审计链
 2. **Agent 身份 = 密钥对**：Agent 的权限由密钥对定义，和人类同事一样 scoped by identity。不是 permission flags，不是 API token
 3. **buzz-cli（JSON in/JSON out）**：专为 LLM 工具调用设计的 CLI，支持 Goose / Codex / Claude Code 等 Agent harness

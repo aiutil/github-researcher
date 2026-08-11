@@ -31,7 +31,7 @@ url: "https://github.com/jd-opensource/JoyAI-Video-Edit"
 - **品类时机信号**：视频生成是当前热点（MiniMax-H3 生态 314 仓库），但"实时流式编辑"是比"生成"更具体的落地场景。
 - **话题性成分**：subscribers 仅 3（极低），说明目前是"收藏/关注论文"为主。30 FPS 声明有话题性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **因果视频 VAE（causal video VAE）：** 帧到达即编码编辑，不等待未来帧。这是从"批处理"到"流式"的关键架构差异。
 2. **16B 多模态扩散 transformer（MMDiT）：** 主干是 16B 参数的多模态扩散 transformer，结合 MLLM 条件编码器。

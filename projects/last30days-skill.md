@@ -31,7 +31,7 @@ AI Agent 无法同时访问多个社交/内容平台的数据孤岛。Google 不
 - **病毒性案例**：README 中的"/last30days Peter Steinberger"案例极具说服力
 - GitHub Trending 首日上榜，趋势信号强
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **实体感知路由（v3 核心）**：输入"Peter Steinberger"自动解析为 @steipete (X) + steipete (GitHub) + r/ClaudeCode，双向映射 person→company→product
 2. **多平台信号融合**：Reddit upvotes + X likes + YouTube transcripts + TikTok engagement + Polymarket 真金白银预测，不是简单的搜索聚合而是**加权评分**
 3. **竞争分析模式**：`--competitors` 参数自动发现竞品并并行运行多 pipeline

@@ -29,7 +29,7 @@ Chat-driven AI 开发团队——在 Telegram/VK 中描述需求，Flock 自动�
 ## 热度来源判断
 真实使用场景驱动。Claude Pro/Max 订阅制消除了 API 成本焦虑，Telegram 入口极低。但 698 stars 说明仍在早期采用者阶段。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Conversation-as-Task** — 聊天即任务源，PR 即结果
 2. **沙箱隔离** — 每个聊天独立容器工作区
 3. **PR 轮询** — 不需要 inbound webhook，主动轮询 git host 获取 review 评论

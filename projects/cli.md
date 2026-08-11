@@ -33,7 +33,7 @@ Google Workspace 统一命令行工具——一个 CLI 操作 Drive、Gmail、Ca
 - **Gemini 生态推动（中高）**：Google 在推 Gemini CLI 生态
 - **Rust 重写趋势（中）**：CLI 工具用 Rust 重写是行业趋势
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Discovery API 动态生成**：从 Google API Discovery 服务自动生成子命令，新增 API 即自动支持
 2. **统一 OAuth 认证**：一次认证覆盖所有 Google 服务，降低配置复杂度
 3. **Rust 单二进制**：无运行时依赖，跨平台部署简单

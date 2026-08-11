@@ -40,7 +40,7 @@ Model harness 直接影响 coding agent 的效果 — 同样的基座模型，�
 - 社区衍生项目（Harness Forge、SuperagenticAI/metaharness 等）说明思路被认可和采纳
 - 解决的是 Agent 层的核心问题：外围代码的设计空间搜索
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Harness = 可优化层**：memory system、retrieval strategy、display format 构成搜索空间
 2. **自动搜索循环**：proposer agent（Claude Code）生成 harness 变体 → evaluate → 反馈 → 迭代

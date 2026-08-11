@@ -30,7 +30,7 @@ url: "https://github.com/stablyai/orca"
 ## 热度来源判断
 热度来自多 Agent 编程范式的兴起。2026 年开发者普遍认识到"一个 Agent 不够用"——需要多个 Agent 并行处理不同任务。Orca 作为"多 Agent 管理环境"的先行者获得了大量关注。YC 的品牌背书和"使用自己的订阅"（无中间商加价）的定位吸引了成本敏感的开发者。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - Git Worktree 原生集成：每个 Agent 绑定独立 worktree，代码变更天然隔离
 - Agent 抽象层：统一接口适配 30+ 编码 Agent
 - 并行调度：多个 Agent 同时工作，资源互不冲突

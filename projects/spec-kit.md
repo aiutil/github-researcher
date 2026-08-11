@@ -37,7 +37,7 @@ Spec Kit 让"规格说明"成为开发流程的第一等公民：
 **60% 真实需求 + 30% GitHub 官方惯性关注 + 10% 新范式炒作**。
 Spec-Driven Dev 确实解决了 prompt engineering 的根本缺陷（模糊、不可管理），但 97K 中有大量"先 star 再看"的成分。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Spec 文件结构化**：YAML/Markdown 格式，可版本管理、可 diff、可 code review
 2. **Spec → Code → Test 全链路**：Spec 驱动代码生成，Spec 驱动测试生成，Spec 驱动验证
 3. **与 GitHub Copilot 深度集成**：Spec 成为 Copilot 的输入，减少 AI 编码的随机性

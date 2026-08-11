@@ -32,7 +32,7 @@ YC CEO Garry Tan 的 Claude Code 工具栈——23 个角色化 slash commands �
 2. 实际使用证明——不是 demo，是自己每天用的工具开源
 3. 完整流程覆盖——23 工具覆盖从产品思考到部署的全链路
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **角色化认知注入** — /cso 不是运行安全扫描脚本，是让 Claude 以 CISO 视角审查代码。/plan-ceo-review 让 Claude 以产品 CEO 视角重新思考功能设计
 2. **团队模式 auto-update** — git hook 自动同步，零版本漂移。`./setup --team` + `gstack-team-init required` 让整个团队自动获得最新工具
 3. **gstack-detach** — 长时间 eval/benchmark（30-60 min）在独立 session 运行，通过 setsid + caffeinate 保护不受 SIGTERM 和 idle-sleep 影响

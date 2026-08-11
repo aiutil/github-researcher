@@ -40,7 +40,7 @@ WhatsApp Business API 官方接入门槛高、费用贵，且依赖 Meta 平台�
 - 12.5K stars / 2.8K forks 的高 fork/star 比说明实际部署量大
 - README 诚实披露封号风险和双引擎权衡，增加信任度
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **双引擎架构**：whatsapp-web.js（headless Chromium，流量像真实 WhatsApp Web）vs baileys（WebSocket 直连，资源低但易被指纹）
 2. **Integration Fabric**：插件化集成系统，官方插件包括 Chatwoot（客服）和 Typebot（聊天机器人）

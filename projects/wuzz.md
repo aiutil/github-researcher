@@ -28,7 +28,7 @@ url: "https://github.com/asciimoo/wuzz"
 ## 热度来源判断
 热度来自终端工具控的真实需求——API 调试是开发者的日常高频操作。wuzz 作为 curl 的交互式升级，解决了 curl「不可交互」的核心痛点。10K stars 是稳定项目的典型水平，无泡沫成分。但需要注意，wuzz 的更新频率近年有所放缓，部分用户已转向更新的替代品。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **交互式 TUI 编辑器:** 可直接在界面中编辑 URL、method、headers、body，支持 vim 快捷键
 2. **实时响应渲染:** 发送请求后即时显示响应 body、headers、状态码，支持 JSON/HTML 格式化
 3. **请求历史管理:** 支持保存和回溯之前的请求，类似 Postman 的 collection 功能

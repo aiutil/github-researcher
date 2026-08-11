@@ -32,7 +32,7 @@ gbrain、gbrain-evals、darwin-skill 已宣布集成 SkillOpt。
 - 487 forks 反映开发者不只是收藏，在积极实验
 - MIT 协议消除了商用障碍
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **文本空间优化**：不修改 LLM 权重，只优化自然语言技能描述。这意味着任何冻结的 LLM 都可以使用
 2. **轨迹驱动编辑（Trajectory-Driven Edits）**：从 Agent 执行轨迹中提取优化信号，自动编辑技能描述
 3. **验证门控更新（Validation-Gated Updates）**：每次技能修改必须通过验证才能合并，防止优化方向跑偏

@@ -36,7 +36,7 @@ stars 从 26K 飙升到 38K（日增 3,938）。判断升级为"生产可用"阶
 
 AI Agent 与 LLM 之间的 Token 压缩中间件，60-95% Token 节省，支持 Library/Proxy/MCP 三模式接入。
 
-## 解决的问题
+## 它解决的问题
 
 AI Agent 在处理 tool output、日志、RAG 结果、文件内容时，大量 Token 被浪费在冗余信息上。随着 Agent 系统复杂度增加，上下文窗口和成本成为硬约束。
 
@@ -51,11 +51,11 @@ AI Agent 在处理 tool output、日志、RAG 结果、文件内容时，大量 
 
 - **2026-06-08 爆发**：16.8K stars，一周从 4.1K 增至 16.8K（+300%！），周增量 +13.3K
 - 爆发触发因素：Agent Skill 生态核聚变，Token 压缩从可选优化变为标配基础设施
-- 解决的问题具有普适性——Token 是 Agent 时代的计算成本单位
+- 它解决的问题具有普适性——Token 是 Agent 时代的计算成本单位
 - MCP 原生支持让集成门槛极低
 - GitHub 周榜 #1 位置
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **CCR（Compress-Cache-Retrieve）可逆架构**：原始数据本地存储，LLM 需要时可 retrieve，这是与简单截断的关键差异
 2. **ContentRouter**：自动检测内容类型（JSON/代码/文本），选择最优压缩策略

@@ -29,7 +29,7 @@ url: "https://github.com/ScrapeGraphAI/Scrapegraph-ai"
 ## 热度来源判断
 热度来自数据采集需求与 AI 降本增效叙事的结合。RAG 应用需要大量网页数据 → 传统爬虫太贵太慢 → AI 爬虫承诺"一句话搞定"的叙事极具吸引力。开发者社区（尤其是 AI 应用开发者）将 ScrapeGraphAI 视为快速获取训练/RAG 数据的工具。与 Firecrawl 的开源 vs 商业对比也推动了讨论。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 基于图的爬取架构：将爬取任务建模为有向图（节点=页面，边=链接），LLM 在图上执行提取
 - 多 LLM 支持：OpenAI、Anthropic、Ollama 本地模型
 - 智能选择器：LLM 理解页面语义，自动定位数据位置

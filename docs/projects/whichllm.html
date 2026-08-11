@@ -27,52 +27,69 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/Andyyyy64/whichllm" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="whichllm">WhichLLM</h1>
+        <h1 id="andyyyy64whichllm-llm">Andyyyy64/whichllm — 证据驱动的本地 LLM 硬件匹配工具</h1>
 <h2 id="_1">一句话定位</h2>
-<p>证据驱动的本地 LLM 硬件匹配工具 — 一条命令找到最适合你硬件的模型，基于真实基准测试而非参数量。</p>
+<p>一条命令自动检测你的 GPU/CPU/RAM，基于真实基准数据（非参数量）排名最适合你硬件的本地 LLM，并支持买卡前模拟、模型对比、一键启动聊天——本地 LLM 选型的"入口级"工具。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>本地 LLM 数量爆发后，用户面临"哪个模型能在我的硬件上跑且效果最好"的选择困难。现有工具（如 ollama list）只告诉你哪些模型能装下，不告诉你哪个效果最好。whichllm 解决的是"硬件适配 + 质量排名"的交叉问题。</p>
-<p>目标用户：想跑本地 LLM 但不确定选哪个模型的开发者、考虑买 GPU 跑模型的用户。</p>
-<h2 id="2026-06-10">为什么值得关注（2026-06-10）</h2>
-<p>今日日增 631 stars。本地 LLM 生态正在从"能跑就行"进入"选最好的跑"阶段。whichllm 的证据驱动 + 时效性感知方法代表了模型选型工具的进化方向。</p>
+<p>本地 LLM 生态在 2026 年迎来爆发：HuggingFace 上有数万个 GGUF 模型，Ollama 模型库也在快速扩张。但用户面临严重的信息不对称——<strong>"哪个模型能在我的硬件上跑且效果最好"</strong> 这个问题极难回答。现有工具各有缺陷：Ollama 只告诉你能不能装下，不告诉你效果排名；在线排行榜（Artificial Analysis、Chatbot Arena）只评模型质量，不做硬件匹配；LM Studio 有硬件检测但无智能排名。更糟的是，基准数据常过时或不可靠，VRAM 估算精度差（尤其 MoE 模型的 active/total 参数区分）。whichllm 解决的是 <strong>"硬件适配 × 质量排名 × 数据可信度"</strong> 三维交叉的选型难题，且通过一条 <code>uvx whichllm@latest</code> 命令实现零安装即用。</p>
+<h2 id="2026-08-11">为什么值得关注（2026-08-11）</h2>
+<ul>
+<li><strong>Stars:</strong> 6,206（从 6 月的 4,747 增长 30%+），持续上升</li>
+<li><strong>Forks:</strong> 328，社区贡献活跃</li>
+<li><strong>Watchers:</strong> 24，本地 LLM 用户深度关注</li>
+<li><strong>License:</strong> MIT</li>
+<li><strong>活跃度:</strong> created 2026-03-04，pushed 2026-08-05，持续高活跃</li>
+<li><strong>分发:</strong> PyPI 发布、Homebrew 支持、uvx 一键运行，分发渠道完善</li>
+<li><strong>Trendshift 上榜:</strong> 获 Trendshift 推荐徽章</li>
+<li><strong>Topics:</strong> 覆盖 apple-silicon, benchmarks, gguf, gpu, huggingface, vram 等 15 个标签</li>
+</ul>
 <h2 id="_3">热度来源判断</h2>
-<p>真实需求驱动。本地 LLM 用户快速增长，但模型选型信息严重不对称。whichllm 的 <code>--gpu</code> 模拟功能对买卡决策有直接价值。</p>
+<p>热度来自 <strong>"本地 LLM 刚需爆发 × 证据驱动差异化 × 极致易用性"</strong> 的组合。2025-2026 年本地 LLM 用户基数激增（隐私、成本、离线需求驱动），但选型工具严重缺位。whichllm 用"一条命令出结果"的极致体验切入，且其"证据分级"机制（标记 direct/variant/base/interpolated/self-reported 分数，拒绝伪造数据）建立了可信度差异。GPU 模拟功能（<code>--gpu "RTX 4090"</code>）直击买卡决策痛点，极具实用价值。热度<strong>真实且具可持续性</strong>——只要本地 LLM 生态持续扩张，选型需求就持续存在。风险在于壁垒不高，可能被 Ollama/LM Studio 内建功能吸收。</p>
 <h2 id="_4">关键技术亮点</h2>
 <ol>
-<li><strong>多源基准融合</strong>：LiveBench + Artificial Analysis + Aider + Chatbot Arena ELO + Open LLM Leaderboard</li>
-<li><strong>时效性感知</strong>：过时基准分数自动降权，按模型 lineage 跟踪</li>
-<li><strong>证据分级</strong>：每个分数标记 direct / variant / base / interpolated / self-reported，伪造分数被主动拒绝</li>
-<li><strong>架构感知 VRAM 估算</strong>：权重 + GQA KV Cache + 激活 + 开销，MoE 模型区分 active/total 参数</li>
-<li><strong>GPU 模拟</strong>：<code>whichllm --gpu "RTX 4090"</code> 买卡前先测试</li>
-<li><strong>一条命令</strong>：<code>uvx whichllm@latest</code> 无需安装</li>
+<li><strong>多源基准融合:</strong> 聚合 LiveBench + Artificial Analysis + Aider + Chatbot Arena ELO + Open LLM Leaderboard 五大来源</li>
+<li><strong>时效性感知:</strong> 过时基准分数自动降权，按模型 lineage（继承关系）跟踪知识时效</li>
+<li><strong>证据分级体系:</strong> 每个分数标记 direct/variant/base/interpolated/self-reported，伪造分数被主动拒绝——这是核心差异化</li>
+<li><strong>架构感知 VRAM 估算:</strong> 权重 + GQA KV Cache + 激活 + 开销四层估算，MoE 模型区分 active/total 参数</li>
+<li><strong>GPU 模拟:</strong> <code>whichllm --gpu "RTX 4090"</code> 或 <code>--gpu "2x RTX 4090"</code> 买卡前测试，支持多 GPU 工作站</li>
+<li><strong>多模式推荐:</strong> 默认激进（含 partial RAM offload），<code>--gpu-only --speed usable --vram-headroom 1GB</code> 保守模式</li>
+<li><strong>丰富工作流:</strong> <code>whichllm upgrade</code> 对比升级候选、<code>whichllm plan</code> 查找所需 GPU、<code>whichllm run</code> 一键启动聊天、<code>--markdown</code> 输出可粘贴格式</li>
 </ol>
 <h2 id="_5">架构启发</h2>
-<p>whichllm 的"证据分级"机制值得借鉴 — 在 AI 工具生态中，很多数据来源不可靠，需要一套置信度评估体系。这种"不信任数据，但利用数据"的工程哲学适用于更广泛的场景。</p>
+<p>whichllm 的核心启发是 <strong>"不信任数据，但利用数据"</strong> 的工程哲学。在 AI 工具生态中，数据来源（基准分数、模型信息）常不可靠或有意操纵。whichllm 不回避这一问题，而是建立一套<strong>置信度评估体系</strong>——给每个数据点打标签，让用户自行判断。这种思路适用于更广泛场景：任何依赖外部数据的 AI 工具（模型评测、Agent 评估、推荐系统）都应考虑引入类似的证据分级机制。另一个启发是 <strong>CLI 工具的极致易用性范式</strong>：<code>uvx</code> 零安装 + Homebrew + pip 多渠道分发，让"一条命令解决复杂问题"成为标准。</p>
 <h2 id="_6">定位判断</h2>
-<p>本地 LLM 工具链的"入口级"工具 — 用户决策链的起点。与 ollama（运行时）、llama.cpp（推理引擎）互补而非竞争。</p>
+<p><strong>工具型（入口级）。</strong> whichllm 是本地 LLM 工具链的"入口"——用户决策链的起点。与 Ollama（运行时）、llama.cpp（推理引擎）、LM Studio（GUI）互补而非竞争。定位精准但壁垒不高：核心逻辑（硬件检测 + VRAM 估算 + 基准排名）可被现有平台内建。关键问题是被吸收还是保持独立——若保持独立，它可能成为本地 LLM 领域的"GPU Benchmark"式标准工具。</p>
 <h2 id="_7">风险 / 局限 / 泡沫点</h2>
-<ol>
-<li><strong>基准测试偏差</strong>：所有基准都有偏差，多源融合不能完全消除</li>
-<li><strong>HuggingFace API 依赖</strong>：实时数据依赖 HF API，离线模式使用缓存的冻结数据</li>
-<li><strong>功能边界有限</strong>：不做推理、不做服务，只是选型工具</li>
-<li><strong>竞争壁垒低</strong>：核心逻辑可被 ollama / lm-studio 等平台内建替代</li>
-</ol>
+<ul>
+<li><strong>竞争壁垒低:</strong> 核心逻辑可被 Ollama/LM Studio 在 1-2 个版本内内建替代</li>
+<li><strong>基准测试偏差:</strong> 多源融合不能完全消除系统性偏差（某些基准本身就有问题）</li>
+<li><strong>HuggingFace API 依赖:</strong> 实时数据依赖 HF API，离线模式使用冻结缓存</li>
+<li><strong>功能边界有限:</strong> 不做推理、不做服务，只是选型工具——用户用完就走</li>
+<li><strong>Apple Silicon 优先:</strong> 虽支持多平台但 Apple Silicon 用户场景最完善，Windows/Linux GPU 覆盖待加强</li>
+<li><strong>个人项目属性:</strong> 单人维护，可持续性取决于作者投入</li>
+</ul>
 <h2 id="_8">与同类项目的关系</h2>
 <ul>
-<li><strong>ollama</strong>：模型运行时，有 list/show 但无智能排名</li>
-<li><strong>lm-studio</strong>：GUI 工具，有硬件检测但无基准排名</li>
-<li><strong>Artificial Analysis</strong>：在线排行榜，无硬件匹配能力</li>
+<li><strong>vs Ollama:</strong> 运行时引擎，有 list/show 但无智能排名——互补关系，whichllm 推荐后用 Ollama 运行</li>
+<li><strong>vs LM Studio:</strong> GUI 工具，有硬件检测但无基准排名——潜在竞争者，可能内建类似功能</li>
+<li><strong>vs Artificial Analysis:</strong> 在线排行榜，模型质量评估权威但无硬件匹配</li>
+<li><strong>vs Chatbot Arena:</strong> 众包评测，质量信号源之一，不做硬件适配</li>
+<li><strong>vs llama.cpp:</strong> 推理引擎，whichllm 可通过 <code>whichllm run</code> 调用</li>
 </ul>
 <h2 id="_9">是否值得持续跟踪</h2>
-<p>中等优先级。工具本身实用但壁垒不高，关键是观察它是否被更大平台内建或收购。</p>
+<p><strong>值得跟踪（中高优先级）。</strong> 本地 LLM 是确定性增长赛道，选型工具是刚需。关注 whether it gets absorbed（被平台吸收意味着方向被验证）还是 stays independent（保持独立则可能成为标准工具）。对本地 LLM 用户，这是当前最好用的选型工具，值得直接采用。</p>
 <h2 id="_10">后续观察点</h2>
 <ol>
-<li>是否被 ollama / llama.cpp 等平台内建为推荐引擎</li>
-<li>基准测试数据源的扩展和更新频率</li>
+<li>是否被 Ollama / LM Studio / llama.cpp 内建为推荐引擎（被吸收的信号）</li>
+<li>基准数据源的扩展和更新频率（是否支持 MMLU-Pro、GPQA 等新基准）</li>
 <li>多模态模型（视觉、音频）的支持进度</li>
+<li>是否推出 Web UI 或 API 服务（从 CLI 向平台演进）</li>
+<li>社区贡献的基准数据补充机制（众包数据源）</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-06-10</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-08-11) | Stars: 6,206 | Forks: 328 | License: MIT | 语言: Python | 创建: 2026-03-04</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

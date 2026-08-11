@@ -28,7 +28,7 @@ Google 官方的设备端 AI 推理运行时，前身为 TensorFlow Lite，支�
 ## 热度来源判断
 LiteRT 的 GitHub stars（3,263）远低于其真实影响力——因为其核心用户群（Android/iOS 移动开发者）主要通过 Google 的 Maven/Gradle 包管理获取，而非直接从 GitHub clone。stars 数不反映真实使用量。LiteRT 的战略价值远超其 GitHub 关注度——它是全球数十亿移动设备上 AI 推理的底层运行时。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **极小运行时体积:** 解释器核心库可压缩到约 1MB（含优化），适合移动端 APK 嵌入
 2. **多硬件后端 Delegate:** 通过 Delegate 机制支持 GPU（OpenCL/Vulkan）、NPU（高通Hexagon、三星 NPU）、CoreML（iOS）等加速后端
 3. **FlatBuffer 模型格式:** 使用 FlatBuffer 而非 Protocol Buffers 实现零拷贝反序列化，大幅减少模型加载时间和内存占用

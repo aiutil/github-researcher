@@ -40,7 +40,7 @@
 <li><strong>Claude Code 生态红利</strong>：作为 PostToolUse hook，它直接受益于 Claude Code 用户基数增长。</li>
 <li><strong>无刷星特征</strong>：85 fork / 285 watchers / 3 open issues，数据形态健康。</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>PostToolUse 闭环测量</strong>：每次 Edit/MultiEdit/Write 经 detectors，测量结果回灌同一会话——不依赖模型"被 system prompt 说服"，而是客观测量 + 实时反馈。</li>
 <li><strong>六类探测器</strong>：<code>dep</code>（package.json/requirements.txt 等新增依赖）、<code>exists</code>（归一化同名符号已存在）、<code>stdlib</code>（手写标准库已有的东西）、<code>native</code>（依赖/代码做了平台已做的事）、<code>wrapper</code>（函数体只转发给同参函数）、<code>yagni</code>（只有一个实现的接口/抽象类）。</li>

@@ -33,7 +33,7 @@ url: "https://github.com/browser-use/browser-harness"
 ## 热度来源判断
 60% 真实需求 + 30% browser-use 品牌效应 + 10% 社区对 "agent 自修改代码" 概念的兴奋。Self-healing 是真创新，不是包装。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **裸 CDP 协议**：不用 Playwright/Selenium，直接 WebSocket 连 Chrome DevTools Protocol，agent 获得最大自由度
 2. **Self-healing 机制**：`helpers.py` 提供 base tool calls，agent 在运行时发现缺失函数时自动编辑文件添加，下次运行自动可用
 3. **Domain Skills 自生成**：agent 完成任务后自动生成 `domain-skills/<site>/` 目录下的持久化技能文件

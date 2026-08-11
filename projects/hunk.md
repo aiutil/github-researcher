@@ -29,7 +29,7 @@ AI Agent 编码的审查痛点：当 Claude Code、Codex、Cursor 等 Agent 自�
 ## 热度来源判断
 热度直接来自 AI Agent 编码工具（Claude Code、Codex CLI）的爆发式增长。当越来越多开发者使用 Agent 编写代码时，"如何审查 Agent 的产出"成为一个新的刚需场景。Hunk 精准切入了这个"Agent 编码后的审查环节"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **Review-First 设计**：界面设计以代码审查为核心，而非通用 Diff 查看
 - **多文件审查流**：侧边栏导航 + 主视图的布局，高效处理大量文件变更
 - **内联 AI 标注**：在 Diff 旁边显示 AI/Agent 的注释和说明

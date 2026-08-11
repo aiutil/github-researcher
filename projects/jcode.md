@@ -30,7 +30,7 @@ url: "https://github.com/1jehuang/jcode"
 - **语义记忆系统**：自动提取+向量嵌入+余弦检索的记忆图谱，不是简单的 session history
 - **独立开发者作品**：单人项目（1jehuang），但有产品质量
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Rust 运行时**：从零用 Rust 实现，无 Node.js/TypeScript 依赖。PSS（Proportional Set Size）在 10 会话下仅 117 MB
 2. **本地嵌入语义记忆**：每个 turn/response 自动向量化并存储到记忆图谱。对话时通过余弦相似度自动检索相关历史。可选 Memory Sideagent 验证相关性
 3. **Memory Consolidation**：后台 Ambient Mode 自动整理记忆——重组、检查过期、检测冲突

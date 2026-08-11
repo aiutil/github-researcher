@@ -31,7 +31,7 @@ Bento 让文档回归「单文件、永久可读、本地优先」——2026 年
 ## 热度来源判断
 热度来自**对云文档锁定疲劳的真实情绪** + 「单文件即应用」的技术新鲜感 + AI 可编辑性的叙事。2.8K 星、175 fork，分布健康。注意它当前主要是幻灯片（slides）品类，并非完整 office suite——「office suite that fits in a file」是愿景，落地先从 slides 切入。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **自重写保存**：文件用 File System Access API 重写自己的数据块（保存时把 deck 写回文件顶部），旧文件保留为回滚；下载 fallback 兜底。
 2. **文档即纯 JSON + AI 可编辑**：数据是文件顶部一个可读 JSON 块，无二进制格式。Agent 直接原地编辑文件，chatbot round-trip JSON——`window.bento.loadDoc`。
 3. **Morph 演示**：共享 id 的元素在幻灯片间动画（位置/尺寸/颜色/渐变），复制幻灯片重排即可自动生成动效。

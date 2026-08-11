@@ -31,7 +31,7 @@ url: "https://github.com/jamiepine/voicebox"
 ## 热度来源判断
 真实需求 + 品牌效应（jamiepine 是知名开发者）+ ElevenLabs 替代需求。34.9K 的体量说明已过早期采纳者阶段。MCP 集成为 Agent 生态提供了新的使用场景。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **7 TTS 引擎集成：** 不是单一引擎 wrapper，而是统一 7 个引擎到一致 API，各有优势（Qwen3-TTS 多语言、LuxTTS 轻量、Chatterbox Turbo 表达力强）。
 2. **Voice cloning 零样本：** 几秒音频即可克隆声音。加上 50+ 预设声音。
 3. **Global dictation hotkey：** 全局热键，任何文本框都能用语音输入。Whisper-based STT。

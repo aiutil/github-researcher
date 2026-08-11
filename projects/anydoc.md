@@ -2,11 +2,11 @@
 title: "firecrawl/anydoc"
 slug: "anydoc"
 date_added: "2026-08-05"
-last_seen_date: "2026-08-11"
+last_seen_date: "2026-08-12"
 category: "工具型"
 emoji: "📑"
-stars: "13,399 stars"
-stars_delta: "8/03创建→8/11观测 13,399⭐ / 675 fork / 35 subscribers，第十日 +719（+5.7%），delta 连续两日稳定在 600-700 区间，真实需求曲线进入成熟稳态"
+stars: "14,356 stars"
+stars_delta: "8/03创建→8/12观测 14,356⭐ / 751 fork / 35 subscribers，第十一日 +957（+7.1%），delta 从 +719 反弹，昨日'稳态'判断被逆转"
 language: "Rust"
 license: "MIT"
 score: 90
@@ -31,7 +31,7 @@ Firecrawl 官方的 Rust 库，把 Word/PowerPoint/Excel/OpenDocument/RTF/EPUB/C
 - **品类时机信号**：agent 进入办公场景（genoffice 1.3K⭐、qm 11K⭐ 都在谈生产力），文档摄入是 agent 进入真实办公的前置基础设施。
 - **话题性成分**：subscribers 仅 2（极低），说明目前是"收藏/试用"为主，深度使用尚少。2 天 1K⭐ 含 Firecrawl 品牌导流成分。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **多格式统一输出**：Word（.docx）、PowerPoint（.pptx）、Excel（.xlsx）、OpenDocument（.odt/.odp/.ods）、RTF、EPUB、CSV、PDF——八种格式转成统一的 GitHub-Flavored Markdown。README 声称"one consistent output no matter which format goes in"。
 2. **Rust 单数毫秒**：用 Rust 实现，README 声称"single-digit milliseconds"。提供 Node.js（`@firecrawl/anydoc`）和 Python（`firecrawl-anydoc`）绑定，以及 `npx` CLI。
@@ -100,3 +100,11 @@ anydoc 的设计哲学是 **"格式无关的输出统一"**——无论输入是
 - **fork 持续增长（+53）**：说明集成意愿真实，尽管 star 增速放缓。今日无新 commit/release（GitHub API 可核验：pushed_at 08-07），增长来自曝光惯性。
 - **判断（维持 score 90）**：万星量级（12,680⭐）头部位置巩固，但增速进入收敛尾声。score 维持 90（头部地位不变，但增速放缓已在预期内）。
 - **风险（不变）**："单数毫秒""格式无关一致性"仍为 README 设计声明，未独立基准测试。扫描 PDF 仍依赖 Firecrawl 付费 OCR。
+
+## 最近动态（2026-08-12）
+
+- **⚠️ 昨日"稳态"判断被逆转——delta 从 +719 反弹到 +957（+7.1%），明确修正。** 13,399 → 14,356，fork 675 → 751（+76），subscribers 32 → 35。**昨日（08-11）报告判断"delta 连续两日稳定在 600-700 区间，真实需求曲线进入成熟稳态"，今日 +957 打破该判断**——绝对增量序列 +625→+719→**+957**，不仅未继续衰减，反而回升到八日中的第三高位。增速 +5%→+5.7%→**+7.1%** 同步回升。
+- **方法论修正**：这是"基于有限数据过早下稳态结论"的案例。七日数据（08-05→08-11）看似单调收敛，但第八日即反转。教训：(1) "稳态"判断需更长观测窗口（至少两周）；(2) 相邻赛道热度可外溢（H3 生态本周爆发，视频生成热度可能外溢到文档摄入）；(3) 周末效应待排除（08-10/11 周末，08-12 周二工作日回归）。
+- **反弹原因待观察**：推断可能与 H3 生态热度外溢、周末曝光累积、或某集成事件有关，但 pushed_at 仍为 08-10（无新 commit），增长来自曝光惯性。
+- **判断（维持 score 90）**：头部地位不变。下一观察点：08-13 delta 是否维持 800+（趋势反转），还是回落到 600-700（反弹为噪声）。
+- **与刷量样本的对照持续**：anydoc（真实需求）star/fork 同步增长、fork/star=0.05、subscribers 35；WeChat-AI（今日新增疑似刷量样本）fork/star=0.74、subscribers 1。对照验证"分清真实需求与刷量"的方法论。

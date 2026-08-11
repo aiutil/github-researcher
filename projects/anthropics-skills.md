@@ -39,7 +39,7 @@ Agent Skills 生态碎片化：每个社区项目有自己的 Skills 格式和�
 - Agent Skills 标准化是确定性趋势 — Skills 成为 Agent 生态一等公民
 - 与 anthropics/knowledge-work-plugins（23K）、anthropics/claude-plugins-official 形成完整生态
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Skills 规范（agentskills.io）**：定义 Skills 的标准格式（`SKILL.md` + YAML frontmatter）
 2. **Claude Code Plugin marketplace 集成**：`/plugin marketplace add` + `/plugin install`

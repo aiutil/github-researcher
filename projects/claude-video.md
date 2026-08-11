@@ -29,7 +29,7 @@ Claude（以及大多数 LLM）无法直接"看"视频。用户如果想让 AI �
 - **视频 AI 分析需求**：内容创作者、教育者、研究者都有需求
 - **泡沫风险中等**：技术壁垒低，容易被复制或被上游吸收
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **流水线设计**：download → extract frames → transcribe → feed to Claude，每步可替换
 2. **Claude Code Skill 集成**：符合 Agent Skills 标准，一键安装
 3. **帧抽取策略**：不是每帧都抽，而是智能采样关键帧

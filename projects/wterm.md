@@ -32,7 +32,7 @@ Vercel Labs 出品，4天破 1,310 星。技术栈组合（Zig + WASM + DOM 渲�
 - React 组件生态降低了采用门槛
 - 真实工程创新，非泡沫
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Zig 编写的 VT100/VT220/xterm 转义序列解析器**，编译为 ~12KB WASM 二进制
 2. **DOM 渲染 + 脏行追踪**：仅重绘变更行，requestAnimationFrame 驱动
 3. **Monorepo 包体系**：@wterm/core、@wterm/dom、@wterm/react、@wterm/just-bash、@wterm/markdown

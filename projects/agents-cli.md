@@ -28,7 +28,7 @@ Google 官方 Agent CLI——将任何编程助手转化为 Google Cloud 上 AI 
 ## 热度来源判断
 热度核心来自 Google 官方背书带来的可信度溢出。Google Cloud 开发者社区、Gemini 早期用户、以及关注 Agent 部署基础设施的团队是主要传播节点。与 Anthropic Claude Code、OpenAI Codex 的 CLI 工具形成"大厂 CLI 三国杀"的叙事也助推了关注度。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 基于 Agent Development Kit (ADK)，支持声明式 Agent 定义
 - 内置 Agent 评估框架：自动生成测试用例、回归测试、性能评分
 - 一键部署到 Google Cloud Run / Cloud Functions / Vertex AI

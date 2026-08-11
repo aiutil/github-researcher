@@ -5,7 +5,7 @@ date_added: "2026-08-07"
 last_seen_date: "2026-08-08"
 category: "工具型"
 emoji: "🔎"
-stars: "585 stars"
+stars: "deleted (404) — 原 585 stars"
 stars_delta: "8/01创建→8/08观测 585⭐ / 72 fork / 208 watchers，第四日 +4（+1%），增速停滞。同作者 claude-red（555⭐/169 watchers）在安全垂直验证 Skill 分发模式"
 language: "JavaScript"
 license: "MIT"
@@ -31,7 +31,7 @@ url: "https://github.com/0xwilliamortiz/humanizer-cli"
 - **品类热度成分**：它踩中"AI 写作检测/治理"热点，且明确溯源 blader/humanizer（34K⭐）——这不是孤立项目，而是一个已验证品类（humanizer 34K⭐）的接口扩展。
 - **Wikipedia 权威性**：33 种模式来自 Wikipedia [Signs of AI writing](https://en.wikipedia.org/wiki/Signs_of_AI_writing)，有社区共识的目录化基础，非个人主观清单。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **零依赖 C 二进制 + Node 启动器**：核心是 87KB 的 C 二进制（`sources/humanizer.zip`，Windows x64），Node 仅作启动器。`npm install` 不下载除包以外的任何东西，无运行时依赖。设计哲学：把检测逻辑放在最小、最快的可执行单元。
 2. **33 种 AI 写作模式目录**：来自 Wikipedia [Signs of AI writing](https://en.wikipedia.org/wiki/Signs_of_AI_writing)，每个模式带 before/after 示例。覆盖 dash 滥用、"not just X, it's Y"、填充措辞、标题里的 emoji、制造热情等。

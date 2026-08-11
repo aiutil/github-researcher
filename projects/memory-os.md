@@ -30,7 +30,7 @@ AI Agent 的「失忆症」：每次对话重新开始，无法积累用户偏�
 - Hacker News / Reddit 技术社区传播
 - 869 stars 对基础设施项目来说是严肃信号
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **7 层分层架构**：Workspace（系统提示注入）→ Sessions（FTS5 全文搜索）→ Structured Facts（信任评分 + 实体消解）→ Fabric（跨会话提取）→ Vector DB（Qdrant 混合检索）→ LLM Wiki（自动策展）→ Context Injection（token 预算控制）
 2. **4 级检索回退**：hybrid（向量+词频）→ dense（纯向量）→ lexical（BM25）→ SQLite（精确匹配），确保任何情况都能检索到
 3. **信任评分系统**：结构化事实带有信任分数，通过用户反馈自动校准

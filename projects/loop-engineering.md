@@ -34,7 +34,7 @@ url: "https://github.com/cobusgreyling/loop-engineering"
 - 实际可用的 npm 工具（不只是 README 项目）
 - 持续活跃（最近 push: 2026-07-05）
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **loop-init**：脚手架工具，自动创建 skills/state/budget 文件，输出 Loop Ready 分数
 2. **loop-audit**：审计现有 loop 配置，输出质量评分和改进建议
 3. **loop-cost**：追踪 Agent 运行的 token 消耗和成本

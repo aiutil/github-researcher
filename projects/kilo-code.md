@@ -19,7 +19,7 @@ url: "https://github.com/Kilo-Org/kilocode"
 
 开源多平台 Coding Agent——VS Code / JetBrains / CLI 三端覆盖，500+ 模型中途切换，零加价按 provider 原价计费。
 
-## 解决的问题
+## 它解决的问题
 
 商业 Coding Agent（Cursor、Copilot）锁定单一厂商和模型生态。开源 Coding Agent（Continue、Aider）覆盖面有限。Kilo Code 试图在开源 + 多平台 + 多模型 + 零加价之间找到平衡。
 
@@ -31,7 +31,7 @@ url: "https://github.com/Kilo-Org/kilocode"
 
 **多平台 + 开源 + 零加价。** 这三点组合对价格敏感的开发者有强吸引力。日增 1,217 说明 Cursor/Copilot 的替代需求旺盛。CLI 是 OpenCode 的 fork（Kilo 承认），但 VS Code 和 JetBrains 扩展是原创。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **三端覆盖：** VS Code 扩展（Marketplace）+ JetBrains 插件（原生）+ CLI（npm/curl/pnpm/bun/homebrew/AUR）。同一个 Agent 跨平台。
 

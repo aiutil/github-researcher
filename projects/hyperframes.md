@@ -29,7 +29,7 @@ url: "https://github.com/heygen-com/hyperframes"
 - **真实用例驱动**：产品发布视频、PR walkthrough、数据可视化、社交媒体视频
 - 25K stars 说明不只是开发者好奇
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **HTML 原生**：composition 就是带 data 属性的 HTML 文件，无 React 依赖
 2. **确定性渲染**：Headless Chrome 逐帧 seek + FFmpeg 编码 = same input → same output
 3. **多动画适配器**：GSAP、CSS animations、Lottie、Three.js、Anime.js、WAAPI

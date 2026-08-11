@@ -5,7 +5,7 @@ date_added: 2026-06-15
 last_seen_date: 2026-06-18
 category: "工具型"
 emoji: "🔄"
-stars: "8,662 stars"
+stars: "deleted (404) — 原 8,662 stars"
 score: 82
 tags: ["cli", "json", "parsing", "sysadmin", "devops", "command-line"]
 url: "https://github.com/kellyjonbrazil/jc"
@@ -33,7 +33,7 @@ Unix/Linux 命令输出大多是纯文本格式，难以程序化处理。传统
 - **Unix 哲学回归（中）**：结构化管道是对传统文本管道的升级
 - **长期积累（高）**：项目运营多年，stars 是稳定增长
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **200+ 解析器**：覆盖网络（ifconfig/netstat/dig）、系统（ps/ls/df/mount）、安全（iptables/openssl）、文件格式（csv/xml/yaml/ini）等
 2. **统一接口**：`command | jc --parser` 或 `jc lib` 调用，学习成本低
 3. **Python 库模式**：可作为 Python 库集成到任何自动化脚本

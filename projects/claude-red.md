@@ -36,7 +36,7 @@ url: "https://github.com/0xwilliamortiz/claude-red"
 ## 热度来源判断
 claude-red 的热度来自**"安全赛道刚需 × Claude Skills 生态红利 × 同作者前作口碑"**的叠加。169 watchers（30% 的 star/watcher 比）是极强的信号——这说明安全从业者（而非普通开发者）在深度关注，"watch"意味着"我在工作中要用/在跟踪"。58 个 skill × 13 分类的覆盖广度也是关键——这不是玩具，而是试图覆盖完整红队方法论。热度**真实且指向专业用户群体**。需注意：作者 0xwilliamortiz 此前 humanizer-cli（585⭐/208 watchers）已建立口碑，claude-red 的初期热度有"同作者粉丝迁移"成分，但 169 watchers 独立验证了安全赛道需求。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **按需加载（on-demand loading）:** Skill 基于对话触发自动加载，不占用全局 context（Claude Skills 体系的核心机制）
 2. **SKILL.md 结构化:** 每个 skill 是结构化文件，含方法论/工具/边界条件/升级路径
 3. **13 个攻击面全覆盖:** 从 Web 应用（SQLi/XSS）到 Exploit Development（shellcode）、从 EDR 绕过到 ADCS 滥用，覆盖红队完整 kill chain

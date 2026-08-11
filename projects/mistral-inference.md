@@ -31,7 +31,7 @@ Mistral AI 官方的模型推理库，提供 Mistral 系列 LLM（Mistral 7B、M
 ## 热度来源判断
 mistral-inference 的热度来自 **Mistral AI 作为欧洲 AI 冠军的品牌效应 + 开源 LLM 浪潮早期红利**。2023 年 Mistral 7B 发布时是当时最强的小参数开源模型，推理库自然获得关注。但**仓库已 archive**——这标志着它的历史使命已完成，被更新的官方方案（vLLM 集成、Mistral SDK）取代。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Mistral 架构原生支持:** 正确实现 Sliding Window Attention、GQA（Grouped Query Attention）
 2. **Mixtral MoE 支持:** 支持 Mixture-of-Experts 架构的正确推理路由
 3. **Function Calling:** 支持 Mistral 的原生 function calling 格式

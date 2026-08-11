@@ -33,7 +33,7 @@ url: "https://github.com/bytedance/UI-TARS-desktop"
 - **Doubao 模型生态（中高）**：与字节内部模型形成联动
 - **多模态 agent 刚需（高）**：RPA、测试自动化、辅助操作等场景需求明确
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **端到端 VLM 驱动**：视觉语言模型直接从截图生成操作指令，无需 DOM/API 访问
 2. **跨平台桌面操作**：支持 macOS、Windows、Linux 的鼠标键盘控制
 3. **Cowork 模式**：人与 agent 可协同操作，agent 不独占控制权

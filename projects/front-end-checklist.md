@@ -33,7 +33,7 @@ url: "https://github.com/thedaviddias/Front-End-Checklist"
 - **长期 SEO 优势（高）**：运营多年，搜索引擎排名极高
 - **AI agent 新角度（中）**：为 AI 工具消费优化的版本带来新流量
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **全维度覆盖**：HEAD/HTML/CSS/JS/可访问性/性能/SEO/安全/测试
 2. **优先级分级**：每项标记为 High/Medium/Low，帮助聚焦
 3. **MDX 结构化**：内容可被工具解析和自动化检查

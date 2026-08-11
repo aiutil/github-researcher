@@ -5,7 +5,7 @@ date_added: "2026-07-30"
 last_seen_date: "2026-07-30"
 category: "观察型"
 emoji: "🍎"
-stars: "308 stars"
+stars: "deleted (404) — 原 308 stars"
 stars_delta: "2 天 308⭐（2026-07-28 创建）"
 language: "Python"
 score: 84
@@ -29,7 +29,7 @@ url: "https://github.com/gavamedia/deltafin"
 ## 热度来源判断
 **好奇心 + 话题驱动，非实用需求。** "在你的 Mac 上跑 2.8T 模型"是极强的标题党，但 14.6s/token 无法用于任何交互场景。热度（2 天 308⭐）合理——它是一个引人注目的工程实验，而非生产工具。项目方对性能局限的诚实标注是加分项。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **MXFP4 专家按需流式加载**：专家权重经 HTTP 流式下载到本地磁盘缓存，磁盘做有界缓存（可超磁盘容量），重复专家命中本地。
 2. **融合 NEON 内核 + Metal/MPS 计算**：Apple Silicon 上用 MPS 做 resident 模型路径，配合原生 MXFP4 专家内核。
 3. **跨平台自动选择**：macOS arm64 选 MPS，Linux x86-64/aarch64 选 CUDA 或 CPU，自动匹配兼容内核。

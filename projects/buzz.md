@@ -30,7 +30,7 @@ Block Inc.（Square/Cash App 母公司）出品，日增 2,162 stars，Rust 实�
 - **Rust + 自托管**：隐私优先、可自托管，满足企业需求
 - **ACP 接入**：支持 Goose/Codex/Claude Code，不锁定 Agent 框架
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Nostr 协议底座**：所有交互（消息、反应、工作流、Git 事件）都是签名 Nostr 事件。同一身份模型（NIP-42 Schnorr 认证），同一审计轨迹，无论作者是人还是 Agent
 2. **Git NIP-34 原生支持**：Patch、Repo 公告、Status 作为标准 Nostr 事件流转。Feature branch 可以自动成为一个"房间"
 3. **buzz-cli（agent-first）**：JSON in / JSON out，专为 LLM 工具调用设计。ACP harness 支持 Goose、Codex、Claude Code

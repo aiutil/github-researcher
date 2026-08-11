@@ -2,11 +2,11 @@
 title: "ShawnPana/phone-harness"
 slug: phone-harness
 date_added: "2026-08-10"
-last_seen_date: "2026-08-11"
+last_seen_date: "2026-08-12"
 category: "观察型"
 emoji: "📱"
-stars: "1,282 stars"
-stars_delta: "8/07创建→8/11观测 1,282⭐ / 100 fork / 5 subscribers，第四日 +493（+62.5%），加速中，'phone-as-tool'赛道验证加强"
+stars: "1,488 stars"
+stars_delta: "8/07创建→8/12观测 1,488⭐ / 129 fork / 7 subscribers，第五日 +206（+16.1%），fork 100→129，'phone-as-tool'赛道持续"
 language: "Python"
 license: "MIT"
 score: 85
@@ -32,7 +32,7 @@ url: "https://github.com/ShawnPana/phone-harness"
 - **话题性成分**：subscribers 仅 1（极低），说明目前是"收藏/好奇"为主，深度使用尚少。789⭐ 在 3 天内积累，可能含"agent 控制手机"的话题性成分。
 - **作者**：ShawnPana（需观察持续投入）。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **iPhone Mirroring 作为传输层（README 可核验）：** macOS Sequoia+ 的 iPhone Mirroring 把 iPhone 渲染为 Mac 窗口，转发真实鼠标/键盘输入为触摸。phone-harness 把这个窗口作为唯一传输通道——不需要在 iPhone 上装任何东西。
 2. **眼睛：`screencapture` + Vision 框架 OCR：** 只截取 Mirroring 窗口，用 Apple Vision 框架 OCR 识别所有可见文本及其 tap-ready 坐标。README 称之为"the poor man's DOM"——因为 iOS 窗口是视频流，没有 accessibility tree，OCR 文本坐标是唯一的"可点击目标"来源。

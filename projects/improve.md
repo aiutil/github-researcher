@@ -30,7 +30,7 @@ AI 编码 Agent 普遍存在"用贵模型做所有事"的问题——审计代�
 ## 热度来源判断
 shadcn 个人品牌是主要加速器（shadcn/ui 80K+⭐），但项目本身的设计理念——成本梯度利用——击中了企业 Agent 应用的核心痛点。不是纯品牌泡沫，有真实工程价值。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **9 类并行子 Agent 审计**：correctness / security / performance / test coverage / tech debt / dependencies / DX / docs / direction，每个发现携带 `file:line` 证据
 2. **Advisor 重读验证**：子 Agent 会过度报告，Advisor 模型重读每个引用位置，过滤误报
 3. **计划即产品**：不直接实现，而是生成 `plans/001-*.md` 格式的自包含计划，可由任何 Agent 执行

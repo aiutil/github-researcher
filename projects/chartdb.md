@@ -28,7 +28,7 @@ url: "https://github.com/chartdb/chartdb"
 ## 热度来源判断
 热度来自数据库开发者的普遍痛点——"拿到一个陌生数据库时想快速理解其结构"。传统工具（如 MySQL Workbench、pgAdmin）的 ERD 功能笨重且难用。ChartDB 填补了"轻量、美观、即时"这一空白市场。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **单查询模式**：不需要直连数据库，只需执行一条预生成的 SQL 即可导出完整 Schema
 - **React Flow 画布**：流畅的拖拽、缩放、自动布局
 - **多数据库支持**：MySQL、PostgreSQL、MariaDB、MSSQL、SQLite 统一界面

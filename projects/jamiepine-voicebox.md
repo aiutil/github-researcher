@@ -29,7 +29,7 @@ AI 语音工具被两个云服务垄断：ElevenLabs（语音生成）和 WisprF
 - **MCP 生态协同**：Claude Code、Cursor 等 Agent 可以直接调用 voicebox.speak
 - **Tauri 技术选型**：Rust + 原生性能 vs Electron 的重量级方案
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **7 TTS 引擎可切换**：Qwen3-TTS（0.6B/1.7B）、Qwen CustomVoice（9 预设）、LuxTTS、Chatterbox Multilingual/Turbo、HumeAI TADA、Kokoro
 2. **语音克隆**：几秒音频零样本克隆 + 50+ Kokoro 预设声音
 3. **23 语言** + 副语言标签（[laugh]、[sigh]、[gasp] via Chatterbox Turbo）

@@ -30,7 +30,7 @@ Rust 实现，Apache 2.0，由 Rivet（游戏后端基础设施公司）开发�
 - **ACP 支持**：内置 Pi、Claude Code、OpenCode Agent，统一 API
 - **npm 生态友好**：只是一个 npm 包，不需要改造部署基础设施
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **进程内 VM**：在进程内运行一个微型 OS 内核——虚拟文件系统、进程表、管道、PTY、虚拟网络栈。Agent 在 VM 内执行，宿主机完全隔离
 2. **WebAssembly + V8 Isolates**：与 Cloudflare Workers 同源技术。每个 Agent 是一个 V8 Isolate，启动代价极低
 3. **Bindings**：Agent 可通过 VM 内的 CLI 命令直接调用宿主函数，无需网络跳。定义 JavaScript 函数 → Agent 在 VM 内作为命令调用

@@ -29,7 +29,7 @@ url: "https://github.com/VoltAgent/awesome-design-md"
 ## 热度来源判断
 awesome-design-md 的热度来自两个趋势交汇：(1) Design Tokens 范式成熟——W3C Design Tokens Format Module 正在标准化，社区工具（Style Dictionary、Tokens Studio）已可用；(2) AI 编码 Agent 需要设计规范输入——Agent 生成 UI 代码时需要 DESIGN.md 作为"设计约束"，这创造了新的需求。Star 数从 2025 年快速攀升，与 AI 编码工具的普及节奏吻合。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **DESIGN.md 规范:** 以 Markdown 格式定义颜色、字体、间距、圆角、阴影等设计令牌，机器可读
 - **Design Tokens 链路:** DESIGN.md → Tokens (JSON) → 多平台输出（CSS Variables / Tailwind Config / Swift / Kotlin）
 - **Figma 集成:** Tokens Studio / Figma Tokens 插件实现 Figma ↔ 代码双向同步

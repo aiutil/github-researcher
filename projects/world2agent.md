@@ -27,7 +27,7 @@ AI Agent 目前对真实世界的信息获取是碎片化的：每个 Agent 需�
 ## 热度来源判断
 概念新颖 + 开发者对 Agent 标准化协议的期待。但当前 588 stars 更多反映的是概念吸引力而非实际落地。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Sensor Protocol**：统一的感知层协议 — Sensor 观测数据源，按 W2A schema 输出结构化数据
 2. **Schema-First 设计**：所有信号遵循统一 schema，Agent 不需要知道数据源的具体实现
 3. **Agent Runtime 插件**：原生支持 Claude Code、Hermes、OpenClaw 的插件集成

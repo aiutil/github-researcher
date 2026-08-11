@@ -27,7 +27,7 @@ url: "https://github.com/XiaomiMiMo/MiMo-Code"
 ## 热度来源判断
 **品牌驱动为主。** 小米在中国开发者社区的品牌号召力是主要增长引擎。421 个 open issues 说明很多人在尝试但遇到问题。实际工程质量需要更多时间验证。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **TypeScript 实现：** 与多数 Python 实现的 Coding Agent 不同，可能反映了小米的 Web 技术栈偏好
 2. **高 Fork 数：** 528 forks 说明社区有较强的二次开发意愿
 3. **小米生态整合潜力：** 未来可能与小米的 IoT 生态、MIUI 开发者工具整合

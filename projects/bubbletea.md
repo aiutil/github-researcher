@@ -33,7 +33,7 @@ url: "https://github.com/charmbracelet/bubbletea"
 ## 热度来源判断
 bubbletea 的热度是 **"真实工程价值 × 时间积累 × 生态效应"** 的稳健组合，几乎无泡沫。6 年时间、4.4 万 stars 的增长曲线说明它不是靠炒作，而是靠一代代开发者的实际采用积累口碑。Elm 架构带来的代码可维护性是实打实的——用过的人普遍认可。charmbracelet 工作室围绕 bubbletea 构建的生态（lipgloss 样式引擎、bubbles 组件库）进一步巩固了其地位，形成"用 bubbletea = 获得整套 TUI 工具链"的网络效应。2025-2026 年终端复兴（AI CLI 工具、lazygit 式 TUI 应用爆发）也为 bubbletea 带来新一轮关注。这是**经得起时间检验的成熟基础设施**。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Elm 架构:** 严格的 Model-Update-View 单向数据流，状态可预测、可测试、无副作用地狱
 2. **消息（Msg）驱动:** 所有输入（按键、鼠标、定时器、自定义事件）统一为 Msg，Update 函数处理，架构一致
 3. **命令（Cmd）与异步:** 用 Cmd 处理副作用（网络、IO），保持 Update 纯函数特性，优雅处理异步

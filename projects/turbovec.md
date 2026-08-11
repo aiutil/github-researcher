@@ -35,7 +35,7 @@ last_seen_date: "2026-06-15"
 - 纯本地、无外部依赖，适合隐私敏感场景
 - API 简洁，drop-in 替换现有方案
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **TurboQuant 量化**：达到 Shannon 下界的无训练量化器，无需 codebook 训练
 2. **SIMD 优化**：手写 NEON (ARM) 和 AVX-512BW (x86) 内核
 3. **Allowlist 过滤**：搜索时直接在 SIMD kernel 内过滤，不 over-fetch

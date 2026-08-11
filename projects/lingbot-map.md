@@ -40,7 +40,7 @@ homepage: "https://technology.robbyant.com/lingbot-map"
 - Robbyant（地平线机器人旗下）的工业背景为项目带来信任度
 - 有完整论文、模型权重、评估基准，工程质量高于纯学术项目
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Geometric Context Transformer**：单一流式框架内统一坐标对齐、密集几何线索、长程漂移校正
 2. **Anchor Context + Pose-Reference Window + Trajectory Memory**：三层机制解决流式重建的关键问题

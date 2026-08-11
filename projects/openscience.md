@@ -19,7 +19,7 @@ url: "https://github.com/synthetic-sciences/openscience"
 ## 一句话定位
 开源 AI 科研工作台——给它一个研究目标，自动完成文献阅读、假设生成、代码编写、实验执行、数据库查询、数据分析和论文撰写全循环。
 
-## 解决的问题
+## 它解决的问题
 科学研究中的重复性工作——文献综述、实验代码编写、数据库查询、数据可视化、论文排版——耗费研究者大量时间。现有工具（如 Copilot）只解决碎片化问题。OpenScience 的赌注是：一个能跑完整个研究循环的 Agent，可以把研究者从重复劳动中释放出来，专注于真正的创新思考。
 
 ## 为什么值得关注（2026-07-10）
@@ -38,7 +38,7 @@ url: "https://github.com/synthetic-sciences/openscience"
 - Bun/TypeScript 技术栈吸引前端开发者跨界科研工具
 - 热度有真实产品支撑，非纯概念
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **全循环自动化**：Literature → Hypothesis → Code → Experiment → Database → Analysis → Write-up
 2. **30+ 科学数据库作为工具**：Agent 可直接查询 UniProt/PDB/Ensembl/ChEMBL/PubChem/arXiv/OpenAlex/Semantic Scholar
 3. **290+ Skills 系统**：训练（DeepSpeed/PEFT/TRL）、评估、数据集处理、分子/临床生物学、化学信息学、论文排版、云计算（Modal/Tinker）

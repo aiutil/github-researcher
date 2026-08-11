@@ -36,7 +36,7 @@
 <p>5,937 stars 日增 21。虽然日增不高，但技术指标极其硬核：<strong>11µs overhead at 5k RPS</strong>（t3.xlarge），100% success rate。这不是概念验证——是经过严肃 benchmark 验证的生产级网关。Apache 2.0 开源。支持 MCP gateway（Agent 工具调用也走网关），semantic caching，cluster mode，governance（budget + virtual keys + rate limiting）。</p>
 <h2 id="_3">热度来源判断</h2>
 <p>技术指标驱动而非营销驱动。11µs overhead + 100% success rate 的 benchmark 数据有说服力。Go 生态对高性能网关有天然需求——Python 实现的 LiteLLM 在高并发场景下确实有性能瓶颈。Bifrost 抓住了这个缺口。</p>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>极致性能</strong>：Go 实现，11µs overhead@5k RPS（t3.xlarge），59µs on t3.medium，零失败请求</li>
 <li><strong>23+ Provider 统一接口</strong>：OpenAI-compatible API，一行代码替换 base_url 即可迁移</li>

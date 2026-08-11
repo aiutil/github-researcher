@@ -5,7 +5,7 @@ date_added: "2026-08-04"
 last_seen_date: "2026-08-05"
 category: "工具型"
 emoji: "🔧"
-stars: "430 stars"
+stars: "deleted (404) — 原 430 stars"
 stars_delta: "7/31创建→8/04观测 423⭐→8/05观测 430⭐（+7），285 watchers 保持异常比例"
 language: "JavaScript"
 license: "MIT"
@@ -31,7 +31,7 @@ url: "https://github.com/0xwilliamortiz/ratchet"
 - **Claude Code 生态红利**：作为 PostToolUse hook，它直接受益于 Claude Code 用户基数增长。
 - **无刷星特征**：85 fork / 285 watchers / 3 open issues，数据形态健康。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **PostToolUse 闭环测量**：每次 Edit/MultiEdit/Write 经 detectors，测量结果回灌同一会话——不依赖模型"被 system prompt 说服"，而是客观测量 + 实时反馈。
 2. **六类探测器**：`dep`（package.json/requirements.txt 等新增依赖）、`exists`（归一化同名符号已存在）、`stdlib`（手写标准库已有的东西）、`native`（依赖/代码做了平台已做的事）、`wrapper`（函数体只转发给同参函数）、`yagni`（只有一个实现的接口/抽象类）。
 3. **四档模式 + budget**：advise（仅 findings）/ guard（findings + budget 警告，默认）/ strict（超 budget 直接阻断编辑）/ off。budget 维度：新文件数/新依赖数/净增行数。

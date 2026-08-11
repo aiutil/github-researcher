@@ -29,7 +29,7 @@ Vercel 官方维护的开源 Next.js AI 聊天机器人模板，基于 AI SDK �
 ## 热度来源判断
 **生态绑定驱动**。vercel/chatbot 的高热度有三个来源：(1) Vercel 品牌背书——作为 Next.js 的创建者，Vercel 的模板天然获得开发者信任；(2) AI SDK 的官方参考实现——所有学习 AI SDK 的人都会被引导到这里；(3) 2023-2025 年 AI 应用开发的爆发潮。20K stars 中相当一部分来自"想要搭一个 ChatGPT 竞品"的开发者，fork 数（6.7K）远超同级别项目，证明它是真正被使用（而不仅仅是被 star）的模板。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **AI SDK 统一接口**：通过 Vercel AI Gateway 统一接入多家模型，`lib/ai/models.ts` 中集中配置，切换模型只需改一行代码。这种抽象层设计让应用层逻辑与模型提供商完全解耦。
 2. **React Server Components + Server Actions**：充分利用 Next.js App Router 的最新范式，聊天 UI 通过 RSC 渲染，消息保存通过 Server Actions 执行，减少了客户端 JS 体积和 API 端点数量。
 3. **流式渲染 UI**：使用 AI SDK 的 `useChat` hook 实现流式消息传输，支持在流式过程中渲染 Generative UI（如代码高亮、表格、图表等结构化输出）。

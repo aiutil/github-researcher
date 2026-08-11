@@ -27,54 +27,71 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/coder/boo" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="coder-boo">Coder Boo</h1>
+        <h1 id="coderboo-libghostty">coder/boo — 基于 libghostty 的终端会话复用器</h1>
 <h2 id="_1">一句话定位</h2>
-<p>基于 libghostty 的终端多路复用器（GNU screen 替代品），用 Zig 实现——每个 session 的完整屏幕状态可被 AI agent 精确读取。</p>
+<p>Coder 公司出品的 GNU screen 风格终端会话管理器，用 Zig 编写，基于 libghostty 终端模拟核心——每个会话的完整屏幕状态被解析保存，支持断线重连后精确恢复，且为 AI Agent 提供 <code>send</code>/<code>peek</code>/<code>wait</code>/<code>--json</code> 等自动化原语。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>tmux/screen 的 detach/reattach 只恢复终端的"显示"内容，不保留完整终端状态（styles、cursor position、scrolling regions、terminal modes）。对于 AI agent 来说，无法准确读取另一个 session 的屏幕状态。</p>
-<h2 id="2026-06-19">为什么值得关注（2026-06-19）</h2>
+<p>传统终端复用器（screen、tmux）解决了会话持久化问题（SSH 断线不丢失进程），但在 AI Agent 时代暴露了新短板：<strong>Agent 无法可靠地"读取"终端屏幕状态</strong>。tmux 的 capture-pane 只能拿到原始文本流，丢失了颜色、光标位置、滚动区域等关键信息——AI Agent 无法准确理解"终端现在显示什么"。此外，传统复用器在重连后的重绘不够精确（SGR 样式、光标位置等可能丢失）。boo 解决的问题核心是：<strong>让每个终端会话都有完整的屏幕状态镜像，既服务于人类的精确重绘，也服务于 Agent 的可靠读取</strong>。通过 libghostty 的 VT 模拟核心，boo 始终知道每个会话的确切屏幕状态——内容、样式、光标、scrollback、终端模式——这些状态用于重连时的精确重建，以及让脚本和 AI Agent 像人类一样"看"屏幕。</p>
+<h2 id="2026-08-11">为什么值得关注（2026-08-11）</h2>
 <ul>
-<li>Coder 公司出品（知名开发者工具公司）</li>
-<li>Zig + libghostty，技术栈前沿</li>
-<li><code>boo peek</code> / <code>boo wait</code> / <code>--json</code> 输出，专为 AI agent 自动化设计</li>
-<li>libghostty 的终端模拟核心保证屏幕状态精确</li>
+<li><strong>Stars:</strong> 755，两个月稳步增长</li>
+<li><strong>Forks:</strong> 23，核心用户群体参与</li>
+<li><strong>Watchers:</strong> 5</li>
+<li><strong>License:</strong> MIT</li>
+<li><strong>语言:</strong> Zig（高性能系统编程语言，Ghostty 同款）</li>
+<li><strong>背书:</strong> Coder 公司（知名云开发环境公司，code-server 的创造者），有企业支撑</li>
+<li><strong>活跃度:</strong> created 2026-06-10，pushed 2026-07-05</li>
+<li><strong>技术栈:</strong> 基于 libghostty（ghostty-org 出品的高质量终端模拟器核心）</li>
+<li><strong>Discord 社区:</strong> 活跃的开发者社区</li>
 </ul>
 <h2 id="_3">热度来源判断</h2>
-<p>Coder 品牌效应 + AI agent 自动化场景热度。661 stars 对于终端工具体量已属不错。</p>
+<p>热度来自 <strong>"Coder 品牌背书 × libghostty 技术先进性 × AI Agent 时代新需求"</strong> 的组合。Coder 是云开发领域的知名公司，其出品自带信任。libghostty 是当前最先进的开源终端模拟核心之一（Ghostty 终端的引擎），用它做复用器是技术降维打击。关键差异化在于 <strong>Agent 友好的自动化原语</strong>——<code>send</code>（发送输入）、<code>peek</code>（读取屏幕）、<code>wait</code>（等待模式）、<code>--json</code>（结构化输出）——这些 API 让 AI Agent 能像操作浏览器一样操作终端，是 Agent 自动化基础设施的关键拼图。Star 数不高但技术含量极高，关注者画像精准：终端工具开发者、DevOps 工程师、Agent 基础设施团队。</p>
 <h2 id="_4">关键技术亮点</h2>
 <ol>
-<li><strong>libghostty 终端模拟</strong> — 不是截屏，而是解析所有终端序列，维护精确状态</li>
-<li><strong>Agent-friendly API</strong> — send/peek/wait + JSON 输出，无需 TTY</li>
-<li><strong>Faithful redraw</strong> — SGR styles、cursor、scrollback 完整恢复</li>
-<li><strong>Zig 实现</strong> — 低内存占用、高性能</li>
+<li><strong>libghostty 终端核心:</strong> 每个会话的输出通过 Ghostty 的 VT 模拟核心解析，始终维护完整的屏幕状态——内容、SGR 样式、光标位置、scrollback、终端模式</li>
+<li><strong>精确重绘:</strong> 断线重连后从保存的终端状态恢复，包含样式、光标、滚动区域、窗口标题——而非简单的文本流重放</li>
+<li><strong>Agent 自动化原语:</strong> <code>boo send</code>（向会话发送输入）、<code>boo peek</code>（读取当前屏幕状态）、<code>boo wait</code>（等待特定输出模式）、全部支持 <code>--json</code> 输出，无需 TTY 即可使用</li>
+<li><strong>GNU screen 操作模型:</strong> <code>Ctrl-A d</code> 分离，<code>boo attach</code> 重连——经典且高效</li>
+<li><strong>全屏会话管理器:</strong> <code>boo ui</code> 提供侧边栏式会话管理界面</li>
+<li><strong>命名与自动化:</strong> 会话按目录名命名（回退到 PID），支持 <code>boo new work -d -- make</code> 创建分离的命名会话</li>
+<li><strong>Zig 性能:</strong> 系统级语言，内存安全且高性能，与 libghostty 技术栈一致</li>
 </ol>
 <h2 id="_5">架构启发</h2>
-<p>boo 代表了 <strong>Terminal as Agent Interface</strong> 趋势——终端不再只是人的工具，也是 AI agent 的工具。如果 AI agent 能可靠地读取和操作终端，就拥有了一个通用的系统交互接口。</p>
+<p>boo 揭示了一个重要趋势：<strong>终端复用器正在从"人类的会话管理工具"演化为"Agent 的终端操作基础设施"</strong>。传统复用器面向人类（分离/重连/多窗口），boo 在此基础上增加了 Agent 友好的 API 层（send/peek/wait/json），让终端成为 Agent 可编程的接口。这与 Browser Agent（如 Playwright 之于浏览器）的逻辑一致：<strong>为 AI Agent 提供可靠的程序化操作接口</strong>。libghostty 的复用是另一个启发——<strong>高质量的终端模拟核心应该作为库被复用</strong>，而非每个终端工具各自重写 VT 解析器。boo、wterm 都基于 libghostty，形成了围绕 ghostty-org 生态的技术共同体。</p>
 <h2 id="_6">定位判断</h2>
-<p>工具型项目，但可能成为 AI agent 工具链的重要组件。如果 Coder 将其与 remote development 产品线整合，价值更大。</p>
+<p><strong>工具型（Agent 基础设施候选）。</strong> boo 首先是优秀的终端复用器（替代 screen/tmux），但其 Agent 友好的 API 层使它具有"Agent 终端基础设施"的潜力。若 send/peek/wait/json API 成为 Agent 操作终端的事实标准，boo 可从工具升级为基础设施。但当前仍处于早期阶段（755 stars），需观察生态采用情况。Coder 公司的企业支撑增加了可持续性保障。</p>
 <h2 id="_7">风险 / 局限 / 泡沫点</h2>
-<ol>
-<li><strong>Zig 小众</strong> — 贡献者门槛高于 Go/Rust</li>
-<li><strong>libghostty 依赖</strong> — 绑定 Ghostty 生态</li>
-<li><strong>tmux 已有统治地位</strong> — 切换成本高</li>
-<li><strong>AI agent 场景尚未验证</strong> — 哪些 agent 真的需要读终端屏幕？</li>
-</ol>
+<ul>
+<li><strong>早期阶段:</strong> 功能仍在快速开发中，稳定性待验证</li>
+<li><strong>Zig 生态小众:</strong> 贡献者门槛较高（需会 Zig），社区规模受限</li>
+<li><strong>竞争激烈:</strong> tmux 生态成熟且用户基数大，迁移成本高</li>
+<li><strong>libghostty 依赖:</strong> 与 Ghostty 项目深度绑定，若 Ghostty 方向调整可能受影响</li>
+<li><strong>Agent API 未标准化:</strong> send/peek/wait 是 boo 自定义接口，缺乏跨工具标准化</li>
+<li><strong>平台支持:</strong> 目前聚焦 Linux/macOS，Windows 支持不明</li>
+</ul>
 <h2 id="_8">与同类项目的关系</h2>
 <ul>
-<li><strong>vs tmux</strong> — tmux 更成熟，boo 更 AI-friendly</li>
-<li><strong>vs screen</strong> — screen 已过时，boo 是精神继任者</li>
-<li><strong>vs Claude Code terminal</strong> — Claude Code 内置终端是内嵌的，boo 是外部多路复用器</li>
+<li><strong>vs tmux:</strong> 生态最成熟的复用器，但无 Agent 友好 API；boo 差异化在 Agent 自动化</li>
+<li><strong>vs GNU screen:</strong> 经典但维护缓慢；boo 是 screen 理念的现代复兴</li>
+<li><strong>vs Ghostty:</strong> Ghostty 是终端模拟器（面向人类交互）；boo 是复用器（面向会话管理+Agent），共享 libghostty 核心</li>
+<li><strong>vs wterm (vercel-labs):</strong> wterm 是 Web 终端模拟器，也用 libghostty；boo 是本地复用器，不同场景但共享技术栈</li>
+<li><strong>vs Zellij:</strong> 现代化复用器（Rust），有插件系统但无 Agent API</li>
+<li><strong>vs Coder code-server:</strong> 同公司产品，code-server 是云端 VS Code；boo 是终端层工具</li>
 </ul>
 <h2 id="_9">是否值得持续跟踪</h2>
-<p><strong>是。</strong> Terminal-as-Agent-Interface 是值得关注的新范式。</p>
+<p><strong>值得跟踪（中优先级）。</strong> boo 代表了终端工具的 Agent 化趋势——为 AI Agent 提供可靠的终端操作接口。即使 boo 本身不成为主流，其 send/peek/wait/json 的设计理念会被更多工具借鉴。对 Agent 基础设施开发者，这是研究"终端如何成为 Agent 可编程接口"的优质参考。对终端工具用户，boo 的精确重绘和会话管理已具实用价值。</p>
 <h2 id="_10">后续观察点</h2>
 <ol>
-<li>是否被主流 Coding Agent 集成</li>
-<li>Coder 是否推出基于 boo 的商业产品</li>
-<li>社区贡献活跃度</li>
+<li>Agent API（send/peek/wait）是否被其他终端工具或 Agent 框架采纳</li>
+<li>是否被 Coder 的云开发平台集成（企业验证信号）</li>
+<li>libghostty 生态是否形成更大的技术共同体（boo + wterm + ghostty）</li>
+<li>是否推出 Agent 集成示例或 SDK（降低 Agent 开发者采用门槛）</li>
+<li>Windows 支持和跨平台成熟度</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-06-19</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-08-11) | Stars: 755 | Forks: 23 | License: MIT | 语言: Zig | 创建: 2026-06-10</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

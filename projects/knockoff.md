@@ -29,7 +29,7 @@ Chrome/Firefox/Safari 扩展——过滤亚马逊上的伪品牌商品，在搜�
 - **零摩擦** — Chrome Web Store 一键安装
 - **非 AI 概念** — 在 AI 饱和的信息环境中，朴素工具反而引人注目
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **品牌检测管线**（first-match-wins）：用户 allowlist → 用户 blocklist → 已知伪品牌数据库 → 商标注册时间+品牌名熵分析 → 可疑标记
 2. **全本地运行** — 内容脚本执行在浏览器内，无服务器往返、无追踪、无账号
 3. **三平台覆盖** — Chrome、Firefox、Safari（Safari 需 Xcode 包装为原生 App）

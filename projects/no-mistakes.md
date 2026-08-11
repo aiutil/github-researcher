@@ -31,7 +31,7 @@ AI Coding Agent 产出代码速度快但质量不可控。直接 push 到 origin
 ## 热度来源判断
 真实需求驱动。AI Coding Agent 产出量暴增，代码质量把控成为瓶颈。开发者需要一种不降低速度的质量保障机制。no-mistakes 的"非阻塞 + AI 验证"模式精准命中这个需求。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Disposable worktree 隔离：** 在独立的 git worktree 中做验证，开发者可以继续在原分支工作。验证完成后 worktree 被丢弃。这是非常精妙的架构选择。
 2. **分级处理策略：** 安全的机械修复（formatting/import/lint）自动修复；涉及意图的问题升级给人类。这比全自动化或全人工都更合理。
 3. **Agent-native 设计：** `/no-mistakes` skill 让 Coding Agent 自己触发验证流程，无需人类切换工具。

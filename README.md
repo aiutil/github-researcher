@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-11.md">Latest report</a> ·
+  <a href="daily/2026-08-12.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-11
+## Latest report · 2026-08-12
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 12 | 444 | 4 | 16k+ |
+| 12 | 445 | 4 | 15k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [firecrawl/anydoc](projects/anydoc.md) | 13,399 stars | 工具型 |
-| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 4,164 stars | 观察型 |
-| [antirez/h3.c](projects/h3c.md) | 129 stars | 观察型 |
-| [ShawnPana/phone-harness](projects/phone-harness.md) | 1,282 stars | 观察型 |
-| [0xwilliamortiz/claude-red](projects/claude-red.md) | deleted (404) | 观察型 |
-| [FareedKhan-dev/kimi-k3-in-c](projects/kimi-k3-in-c.md) | 4,649 stars | 观察型 |
-| [oil-oil/oil-motion](projects/oil-motion.md) | 1,142 stars | 工具型 |
-| [trycompai/crm](projects/crm.md) | 8,102 stars | 平台候选 |
+| [antirez/h3.c](projects/h3c.md) | 1,201 stars | 观察型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 14,356 stars | 工具型 |
+| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 5,194 stars | 观察型 |
+| [SMNETSTUDIO/WeChat-AI](projects/wechat-ai.md) | 1,406 stars | 观察型 |
+| [ShawnPana/phone-harness](projects/phone-harness.md) | 1,488 stars | 观察型 |
+| [FareedKhan-dev/kimi-k3-in-c](projects/kimi-k3-in-c.md) | 4,891 stars | 观察型 |
+| [oil-oil/oil-motion](projects/oil-motion.md) | 1,475 stars | 工具型 |
+| [KKKKhazix/human-writing](projects/human-writing.md) | 2,405 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 86 · repositories: claude-red
-2. **Signal 2** · score 90 · repositories: minimax-h3, h3c
-3. **Signal 3** · score 90 · repositories: anydoc
-4. **Signal 4** · score 85 · repositories: phone-harness
+1. **Signal 1** · score 92 · repositories: h3c, minimax-h3
+2. **Signal 2** · score 90 · repositories: anydoc
+3. **Signal 3** · score 68 · repositories: wechat-ai
+4. **Signal 4** · score 90 · repositories: minimax-h3, kimi-k3-in-c
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-11.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-12.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-12](daily/2026-08-12.md) | 12 | 4 |
 | [2026-08-11](daily/2026-08-11.md) | 12 | 4 |
 | [2026-08-10](daily/2026-08-10.md) | 12 | 4 |
 | [2026-08-09](daily/2026-08-09.md) | 12 | 4 |
 | [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
 | [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
 | [2026-08-06](daily/2026-08-06.md) | 11 | 4 |
-| [2026-08-05](daily/2026-08-05.md) | 10 | 4 |
 
 ## Why this repository exists
 

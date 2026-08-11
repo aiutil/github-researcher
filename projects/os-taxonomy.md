@@ -39,7 +39,7 @@ url: "https://github.com/withmarbleapp/os-taxonomy"
 - **Marble 商业背景**——教育科技公司开放核心数据，表明其壁垒在产品体验而非数据锁
 - 真实需求，非 AI 炒作泡沫
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **DAG 前置依赖图**：3221 条有向边，区分 hard/soft 依赖，每条边有一行理由
 2. **多标准对齐**：NGSS（美国科学）、Common Core（美国数学+英语）、UK NC（英国国家课程），用 `curriculum-slug:code` 格式交叉引用
 3. **微主题粒度**：1590 个节点不是"章节"级别，而是"一个可教学概念"级别

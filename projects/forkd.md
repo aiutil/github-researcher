@@ -30,7 +30,7 @@ fork() for AI agents 是当前最正确的 Agent 隔离抽象。1.3K stars 虽�
 - Rust + KVM 组合在性能和安全性上是最佳选择
 - 97 forks 高于普通 1.3K stars 项目，说明技术深度吸引核心开发者
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **热启动 fork**：预热父 VM，fork 100 个子进程只需 ~100ms。对比 Docker 容器启动 ~300-500ms
 2. **KVM 隔离**：硬件级虚拟化隔离，比 namespace/seccomp 更强
 3. **Copy-on-Write 快照**：分支一个活动 VM 只需 ~150ms，内存共享直到写入

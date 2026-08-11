@@ -30,7 +30,7 @@ LLM Agent 的表现高度依赖 Prompt / Skill 的质量，但人工编写和调
 ## 热度来源判断
 SkillOpt 的热度来自"Agent 自我进化"这一前沿概念的落地。2026 年 Agent 领域的热点正从"手动写 Skill"转向"自动优化 Skill"，SkillOpt 是这一方向的标杆项目。微软研究院的品牌 + arXiv 论文 + Trendshift #1 的曝光共同驱动了 Star 增长。社区中出现了多个衍生项目（SkillOpt-Lite、Hermes-SkillOpt），说明这一范式正在被广泛采纳和验证。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **文本空间训练:** 将神经网络训练概念（epoch、batch size、learning rate）迁移到文本/Prompt 空间
 - **轨迹驱动编辑（Trajectory-Driven Edits）:** 基于 Agent 执行轨迹中的失败模式，自动定位并修改 Skill 中需要改进的部分
 - **验证门控（Validation-Gated Updates）:** 每次修改后必须通过验证集测试，只有确认提升才接受修改，防止退化

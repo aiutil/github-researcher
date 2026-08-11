@@ -38,7 +38,7 @@ Coding Agent 缺乏统一的性能优化框架 — 从技能管理到记忆持�
 - 238K stars 中有明显的社区传播效应（多语言 README、Discord 社区），但核心需求真实
 - npm 包有实际下载量（README 展示 npm 下载数 badge），说明存在真实安装使用
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **跨 Harness 抽象**：单一配置/技能层覆盖多个 Coding Agent（Claude Code/Codex/OpenCode/Cursor）
 2. **Skills + Instincts + Memory 三层架构**：技能库 + 行为本能 + 持久化记忆

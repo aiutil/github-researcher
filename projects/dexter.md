@@ -28,7 +28,7 @@ url: "https://github.com/virattt/dexter"
 ## 热度来源判断
 热度来自 2025-2026 年 Agentic AI 在金融领域的爆发性需求。随着 LLM 推理能力增强，金融机构迫切希望将研究流程自动化。Dexter 恰好踩中这个时间窗口，且作为开源项目降低了技术验证门槛。27K stars 对于一个金融垂直 Agent 来说是真实的社区需求反映，而非纯炒作——金融 AI 是少数几个有明确付费意愿和使用场景的 AI 落地方向。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **多步推理链:** 使用 LangGraph/LangChain 框架构建的多步 Agent 工作流，能将复杂金融问题分解为可执行的子任务序列
 2. **多源数据集成:** 支持 SEC EDGAR、Yahoo Finance、News API、社交媒体等多个金融数据源的自动检索和整合
 3. **TypeScript 实现:** 相比纯 Python 方案，TypeScript 带来了更好的类型安全性和开发体验，利于前端集成

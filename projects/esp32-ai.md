@@ -31,7 +31,7 @@ url: "https://github.com/slvDev/esp32-ai"
 - **技术诚实性是加分项**：作者在 README 明确声明模型仅能写 TinyStories 级别短故事，不能问答/指令/编码，且保留了参数计数 bug 的修正历史——这种诚实降低了"夸大宣传"的嫌疑，反而增强了技术可信度。
 - **真实需求有限**：28.9M 模型的实际输出价值极低，热度主要来自架构启发性而非实用性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Per-Layer Embeddings 下沉到微控制器**：Google Gemma 3n/4 的 Per-Layer Embeddings 设计原用于手机/GPU，本项目建设性地把它适配到微控制器的内存布局（SRAM/PSRAM/Flash 三级）。25M 参数的 embedding 表留在 flash，每 token 只读约 6 行（~450B），"大部分参数从不被加载"。
 2. **三级内存布局**：SRAM（512KB，快/小）放"思考核心"（每 token 实际计算的参数）→ PSRAM（8MB，中速）放输出头和工作内存 → FLASH（16MB，大/慢）放 25M 参数表。这和 colibri 的 VRAM/RAM/NVMe 三级是同一原理的不同尺度实现。

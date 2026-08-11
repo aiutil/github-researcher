@@ -17,7 +17,7 @@ url: "https://github.com/OpenBMB/VoxCPM"
 
 OpenBMB 出品的 Tokenizer-Free TTS 模型，支持多语言语音生成、创意声音设计和真实语音克隆。
 
-## 解决的问题
+## 它解决的问题
 
 传统 TTS 系统依赖语音 Tokenizer 将语音编码为离散 Token，导致韵律不自然、跨语言迁移困难。VoxCPM 直接跳过 Tokenizer，端到端建模语音生成。
 
@@ -34,7 +34,7 @@ OpenBMB 出品的 Tokenizer-Free TTS 模型，支持多语言语音生成、创�
 - OpenBMB 品牌背书
 - 语音 AI 是当前热门赛道
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Tokenizer-Free 架构**：直接从文本到语音波形，跳过中间 Token 表示
 2. **多语言语音生成**：跨语言迁移更自然

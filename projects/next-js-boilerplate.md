@@ -34,7 +34,7 @@ Next.js 全栈应用脚手架——同时支持 App Router 和 Page Router，集
 - **维护活跃（高）**：持续跟进 Next.js 最新版本
 - **企业采用（中高）**：大量企业用此模板快速启动项目
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **App + Page Router 双支持**：平滑迁移过渡
 2. **完整认证方案**：NextAuth/Auth.js 集成
 3. **数据库 ORM**：Prisma 或 Drizzle 可选

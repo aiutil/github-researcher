@@ -39,7 +39,7 @@ url: "https://github.com/stablyai/orca"
 
 真实需求驱动。多 Agent 并行工作是 AI 编程生产力的下一阶段——从"一个 AI 助手"到"一个 AI 团队"。Orca 解决的是协调和管理问题，不是造另一个 agent。star 增长稳定而非爆发式，说明用户留存好。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Parallel Worktrees**：一个 prompt 扇出到 5 个 agent，每个在独立 git worktree，结果对比后合并 winner
 2. **Terminal Splits**：Ghostty-class 终端 + WebGL 渲染 + 无限分屏 + scrollback 跨重启存活

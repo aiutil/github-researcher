@@ -2,11 +2,11 @@
 title: "genspark-ai/genoffice"
 slug: "genoffice"
 date_added: "2026-08-04"
-last_seen_date: "2026-08-09"
+last_seen_date: "2026-08-12"
 category: "平台候选"
 emoji: "📄"
-stars: "2,469 stars"
-stars_delta: "7/31创建→8/09 2,249⭐（第八日 +86/+4%，增速持续衰减），fork 372→389，稳态收敛中"
+stars: "2,558 stars"
+stars_delta: "7/31创建→8/12 2,558⭐（第十一日 +89/+3.6%，fork 478），增速持续衰减，稳态收敛中"
 language: "TypeScript"
 license: "Apache-2.0"
 score: 84
@@ -31,7 +31,7 @@ macOS/Windows 桌面办公套件：五个 Electron 应用（Docs/Sheets/Slides/P
 - **genspark-ai 品牌**：发行方 genspark-ai 有产品背景（Genspark 搜索），带来基线关注。
 - **无刷星特征**：74 fork / 4 open issues / 5 watchers，数据形态正常。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **字节保真往返（docx）**：打开 docx → 按哈希归档原件（永不触碰）→ docx-engine 解析 word/document.xml 为 block tree（每个 block 带 docxIndex + 原始 XML 切片）→ TipTap 流式编辑（脏块追踪）→ 保存时只把脏块转成 OOXML fragment 拼回，其余条目逐字节复制。"编辑器没碰的一切在往返中原样存活"。
 2. **共享 agent-core**：`packages/agent-core` 是所有 app 共用的 AI agent loop 和 skill 组合层——docs 用块级 AI 编辑 + 版本快照/diff，sheets/slides/pdf 用 tool-calling agent 操作文档状态。AI 行为通过统一引擎而非每 app 各写一套。
 3. **Sheets 的 Rust sidecar**：xlsx 导入/导出走 Rust sidecar（calamine + IronCalc），图表用 Konva 自渲染，含透视表/切片器/条件格式/公式追踪——非简单套壳 Univer。

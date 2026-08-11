@@ -33,7 +33,7 @@ React 无障碍组件原语库——用于构建简单、灵活、WAI-ARIA 合�
 - **Headless 组件理念（中）**：成为现代 UI 库设计范式
 - **历史积累（高）**：长期运营的老项目
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Headless 架构**：只提供行为逻辑（useCombobox、useSelect 等 hooks），不提供 UI
 2. **WAI-ARIA 自动管理**：自动处理 aria-* 属性、焦点管理、键盘导航
 3. **Prop getters 模式**：`getInputProps`、`getMenuProps` 等让连接 DOM 更简单

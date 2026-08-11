@@ -40,7 +40,7 @@ LiteRT 已从实验项目进入**生产环境**：Chrome 浏览器、Pixel Watch
 - **端侧 LLM 浪潮**：Gemma-4 等小模型使端侧 LLM 推理成为现实，催生对运行时的需求
 - **生产验证**：Chrome + Pixel Watch 的生产部署证明了框架的可靠性
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Model Conversion Pipeline**：支持从 TensorFlow、PyTorch、JAX 等框架高效转换为 LiteRT 格式
 2. **多后端运行时**：自动选择最优执行后端（CPU、GPU、NPU），开发者无需手动配置

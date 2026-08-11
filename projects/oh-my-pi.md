@@ -35,7 +35,7 @@ last_seen_date: "2026-06-08"
 - Fork 自 Mario Zechner 的 Pi，在 Pi 基础上做了大量工程创新
 - 解决的是终端 Agent 用户的真实痛点（编辑精度、代码理解、调试能力）
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Hash-Anchored Edits**：基于文件内容 hash 的精准定位编辑，不依赖 diff/patch，对弱模型（如 Grok Code Fast 1）效果显著
 2. **持久 Python + Bun Worker**：Agent 内部有持久运行时，可回调 read/search/task，形成工具使用闭环
 3. **LSP/DAP 内置**：13 LSP ops + 27 DAP ops，Rename 走 workspace/willRenameFiles，调试支持 lldb/dlv/debugpy

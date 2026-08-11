@@ -19,7 +19,7 @@ url: "https://github.com/jmerelnyc/Talos"
 ## 一句话定位
 分布式 GPU 推理网络 worker 客户端——连接 Talos 网络执行开源模型推理任务，通过 WebSocket 报告 uptime 获取奖励。
 
-## 解决的问题
+## 它解决的问题
 LLM 推理算力供给高度集中在云厂商（AWS/GCP/Azure）。Talos 的赌注是：全球有大量闲置 GPU 资源（游戏显卡、工作站、矿机），如果能把它们组织成推理网络，可以提供去中心化的算力替代方案。
 
 ## 为什么值得关注（2026-07-10）
@@ -33,7 +33,7 @@ LLM 推理算力供给高度集中在云厂商（AWS/GCP/Azure）。Talos 的赌
 - 极简 README 和设计吸引极客社区
 - 体量小（815 Star），更多是方向信号而非产品成熟度信号
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **WebSocket 心跳**：worker 通过 WebSocket 连接 Talos 网络，报告 uptime 和能力
 - **Open-model 推理**：执行开放模型推理任务（非闭源 API 代理）
 - **奖励机制**：uptime 报告 → 获取 payouts（经济激励）

@@ -39,7 +39,7 @@ Coding Agent 和开发者理解大型代码库时 token 消耗巨大且理解不
 - 17 个 topics 涵盖 claude-skills、codex-skills、gemini-cli-skills、opencode-skills 等，跨平台兼容带来流量
 - Live demo 降低体验门槛，促进 star 转化
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **多 Agent 分析管线**：不是静态索引，而是 Agent 驱动的代码语义理解
 2. **双层图谱**：结构图（文件/函数/类/依赖）+ 领域图（业务流程/领域/步骤）

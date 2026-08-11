@@ -29,7 +29,7 @@ Review-first terminal diff viewer——为 Agentic Coders 重新设计的代码�
 ## 热度来源判断
 **真实需求驱动。** Agentic coding 的直接后果是 code review 需求暴增。当你用 Claude Code 写了 200 行代码，你需要一个高效的工具来审查 Agent 的输出。hunk 正好填补了这个空白。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Review-first 设计** — 界面从"展示 diff"转变为"辅助审查"：变更分类、风险标注、上下文扩展
 2. **Terminal-native** — 不离开终端的代码审查，与 CLI Agent 工作流无缝衔接
 3. **Agentic coder 定位** — 明确针对"AI Agent 辅助编程"场景设计，而非传统 git diff 工具

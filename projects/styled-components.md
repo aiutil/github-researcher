@@ -29,7 +29,7 @@ url: "https://github.com/styled-components/styled-components"
 ## 热度来源判断
 热度来自 CSS-in-JS 范式在 2017-2020 年的流行。styled-components 是这一范式的代表，与 Emotion 并列双子星。Star 数的增长在 2019 年达到峰值后趋缓，原因是社区对 CSS-in-JS 的性能开销产生质疑（运行时 CSS 注入），零运行时方案（CSS Modules、Tailwind CSS、vanilla-extract）开始分流。当前热度趋于稳定，维护重心转向 RSC 兼容和性能优化。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **Tagged Template Literals:** 使用反引号模板语法编写 CSS，类型安全且有语法高亮
 - **Automatic Critical CSS:** 仅注入当前页面用到的样式，优化首屏加载
 - **动态样式:** 通过 props 动态计算样式（`${props => props.primary ? 'red' : 'blue'}`）

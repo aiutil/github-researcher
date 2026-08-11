@@ -17,7 +17,7 @@ url: "https://github.com/dograh-hq/dograh"
 
 开源语音 AI 平台，Vapi/Retell 的自托管替代，支持 STT/TTS/LLM 工作流可视化构建器，MCP 原生，电话集成。
 
-## 解决的问题
+## 它解决的问题
 
 语音 AI 部署目前依赖 Vapi/Retell 等闭源 SaaS，数据隐私、成本、定制能力都受限。企业需要自托管方案。
 
@@ -34,7 +34,7 @@ url: "https://github.com/dograh-hq/dograh"
 - 语音 AI 赛道热度 + 自托管需求
 - BYOK（Bring Your Own Key）模式吸引企业用户
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **可视化工作流构建器**：拖拽式构建语音 AI 流程
 2. **MCP 原生**：与 AI Agent 生态无缝集成

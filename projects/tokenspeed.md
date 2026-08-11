@@ -40,7 +40,7 @@ LightSeek Foundation 维护的 "speed-of-light" LLM 推理引擎，专为 Agent 
 - 热度来自推理基础设施社区和 Agent 工作负载优化的实际需求
 - LightSeek Foundation 的运营模式（开源 + 模型合作）带来持续关注
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **静态编译建模层**：local-SPMD 设计，从模块边界放置标注自动生成集合通信，用户无需手写并行逻辑
 2. **FSM 调度器**：C++ 控制面 + Python 执行面，请求生命周期/KV Cache 所有权/重叠时序编码为有限状态机，编译时类型系统保证 KV 资源安全复用

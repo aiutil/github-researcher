@@ -27,7 +27,7 @@ url: "https://github.com/Pythagora-io/gpt-pilot"
 ## 热度来源判断
 Stars 数来自 2023-2024 年 AI 编程浪潮的红利期。项目已明确声明"This repo is not being maintained anymore"，官方产品已迁移至 [Pythagora.ai](https://www.pythagora.ai/) 商业化 VS Code 扩展。当前热度属于历史惯性，非活跃增长。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **规格驱动开发**：从用户描述生成开发规格，再分解为可执行任务步骤
 - **增量式 Agent 循环**：每个任务步骤包含"编写 → 运行 → 检查 → 修复"的自我闭环
 - **对话式调试**：遇到问题时主动向用户提问，而非盲目重试

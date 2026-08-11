@@ -69,7 +69,7 @@ herdr 解决的是多 Agent 并行开发的 DevEx 问题。
 
 不是泡沫。工具型项目，切中真实痛点。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Agent 状态感知**：通过进程名和终端输出检测 Agent 状态（blocked/working/done/idle）
 2. **Server-Client 架构**：detach 关闭客户端，server 和 pane 进程继续运行
 3. **Handoff 模式**：实验性支持将活跃 pane 从旧 server 迁移到新 server

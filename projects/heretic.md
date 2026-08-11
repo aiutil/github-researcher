@@ -38,7 +38,7 @@ homepage: "https://heretic-project.org"
 - LocalLLaMA 社区广泛讨论和评测，用户反馈正面
 - 4000+ HuggingFace 模型说明实际使用量可观，不纯是看热闹
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **方向消融（abliteration）+ TPE 自动优化**：Optuna 驱动，自动搜索最优消融参数
 2. **双目标优化**：同时最小化拒绝率（refusals）和 KL 散度（保持原模型能力）

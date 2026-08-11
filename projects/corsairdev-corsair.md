@@ -29,7 +29,7 @@ Agent 集成的核心矛盾：你需要给 Agent 权限（Gmail、Slack、GitHub
 ## 热度来源判断
 **真实需求驱动。** 当 Agent 从"个人 coding 助手"走向"接入企业系统的自动化 Agent"，权限和集成是必经之路。corsair 出现的时机精准——Agent 框架已经很多了（LangChain/CrewAI/AutoGen），但"Agent 安全接入企业系统"这一层还没有标准答案。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **四档权限模式** — open（全自动）/ cautious（读自动 + 写审批）/ strict（读自动 + 写审批 + 破坏性阻止）/ readonly。每个 API endpoint 可单独 override，例如 Slack 设为 open 但发消息需要审批
 2. **Multi-tenancy 原生** — `multiTenancy: true` 后每个租户独立凭证/数据/权限，零交叉污染。`withTenant('org-456')` scope 隔离
 3. **Webhook 全覆盖** — 每个 plugin 自带类型化、签名验证的 webhook handler。单一端点处理所有 webhook

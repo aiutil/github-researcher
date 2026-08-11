@@ -30,7 +30,7 @@ Generative UI 框架——让 AI 根据自然语言提示生成动态界面，�
 ## 热度来源判断
 **Vercel 品牌效应 + Generative UI 趋势红利**。15K stars 在半年内达成，有两重驱动：(1) Vercel Labs 的品牌效应——开发者对 Vercel 出品的前端工具有天然信任；(2) Generative UI 是 2025-2026 年的前端热点方向，json-render 是这个方向上第一个成熟的框架级方案。需要注意的是，Vercel Labs 项目的特点是"快速验证概念"——有些项目最终成为正式产品，有些则停留在实验阶段。json-render 的长期定位还需观察。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Guardrailed Catalog 设计**：通过 `defineCatalog()` 定义可用的组件和 actions，每个组件用 Zod schema 约束 props。AI 只能输出目录中已定义的组件组合，从架构层面消除了"AI 生成不安全代码"的风险。这是比"让 AI 输出 HTML"安全得多的方案。
 2. **跨平台统一 Catalog**：同一个组件目录定义可以渲染到 React、Vue、Svelte、Solid、React Native、Remotion（视频）、PDF、Email、Ink（终端）、3D 等多种目标。这意味着一次定义，处处渲染——一个 AI 生成的仪表盘可以同时呈现在 Web、移动端和 PDF 中。
 3. **渐进式流式渲染**：支持流式传输和渐进式渲染——随着模型响应逐步到达，UI 逐步渲染，不需要等待完整响应。这对用户体验至关重要（避免了长时间等待）。

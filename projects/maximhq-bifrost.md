@@ -31,7 +31,7 @@ url: "https://github.com/maximhq/bifrost"
 
 技术指标驱动而非营销驱动。11µs overhead + 100% success rate 的 benchmark 数据有说服力。Go 生态对高性能网关有天然需求——Python 实现的 LiteLLM 在高并发场景下确实有性能瓶颈。Bifrost 抓住了这个缺口。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **极致性能**：Go 实现，11µs overhead@5k RPS（t3.xlarge），59µs on t3.medium，零失败请求
 2. **23+ Provider 统一接口**：OpenAI-compatible API，一行代码替换 base_url 即可迁移

@@ -9,7 +9,7 @@ stars: "25,133"
 language: "TypeScript"
 score: 58
 tags: ["multi-agent", "claude-code", "orchestration", "team-based", "devtools"]
-url: "https://github.com/tycrek/oh-my-claudecode"
+url: "https://github.com/Yeachan-Heo/oh-my-claudecode"
 ---
 
 # oh-my-claudecode
@@ -34,7 +34,7 @@ url: "https://github.com/tycrek/oh-my-claudecode"
 - 团队化抽象相比单 Agent 编排有直观差异，容易引发讨论
 - MIT License 开源，Discord 社区活跃
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **团队即编排单元**：将角色（executor/reviewer/architect）组合为一个"团队"，系统自动编排团队行为
 2. **多 Provider 路由**：Claude、Codex、Gemini 并行执行，Claude 负责结果合成
 3. **流水线自愈**：`team-fix` 阶段检测失败并自动修复，不静默失败

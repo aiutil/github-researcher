@@ -34,7 +34,7 @@ Node.js 开发者工具链碎片化严重：运行 TS 需要 tsx/ts-node，运�
 - colinhacks（Zod 作者）的影响力
 - 对 Bun 策略的差异化（不替换 runtime）
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Rust 核心**：所有子命令用 Rust 实现，启动开销极低
 2. **透明 runtime 层**：TS 文件直接通过 Node.js 运行，不做 runtime hack
 3. **Corepack shim**：`nub pm shim` 自动配置 pnpm/yarn 等包管理器

@@ -2,10 +2,10 @@
 title: "MiniMax-AI/MiniMax-H3"
 slug: minimax-h3
 date_added: 2026-08-08
-last_seen_date: "2026-08-10"
+last_seen_date: "2026-08-12"
 category: "观察型"
 emoji: "🎬"
-stars: "4,164 stars"
+stars: "5,194 stars"
 score: 90
 tags: ["video-generation", "minimax", "comfyui", "audio-video", "h3", "prompt-skill", "t2v", "i2v"]
 url: "https://github.com/MiniMax-AI/MiniMax-H3"
@@ -33,7 +33,7 @@ MiniMax 官方视频生成模型 H3 的模型仓库 + 九个配套 Agent Skill�
 ## 热度来源判断
 MiniMax-H3 的热度来自**"官方模型发布 × ComfyUI 生态天然适配 × 视频生成赛道高关注"**。官方仓库本身 1,070⭐ 并不算极高（对比 DeepSeek-V3 同期），但关键在于它**引爆了一个 265 仓库的衍生生态**——这是"模型发布即生态爆发"的信号。生态热度集中在三个方向：**加速器**（Spectrum 353⭐ Chebyshev 回归预测 / TE-Speed 179⭐ 超级缓存 / FirstBlockCache / blockcache）、**导演/timeline 编辑器**（ComfyUI_MiniMaxH3_Director 341⭐ / 多个 Director 变体）、**prompt 构建器**（Promptor / PromptBuilder / Prompt-AgentSkill）。这种"加速器 × 导演 × prompt"的三层生态结构与此前视频模型（如 SVD、CogVideoX）的生态爆发模式高度同构。热度**真实且具结构性**——265 个仓库不是刷量能制造的。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **音频-视频联合生成:** H3 是 audio-video 模型（从 README 和衍生项目描述可核验），音频与视频同步生成
 2. **Ref2VA 模式:** 全参考模式（full-reference），与 text/keyframe 模式并列，说明支持多种输入条件
 3. **官方 Skill 分发:** 9 个 SKILL.md 可通过 `npx skills add` 安装，是"模型厂商主动拥抱 Agent Skill 生态"的案例

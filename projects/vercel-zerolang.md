@@ -29,7 +29,7 @@ url: "https://github.com/vercel-labs/zerolang"
 ## 热度来源判断
 热度来自"Agent 专用基础设施"叙事和 Vercel 品牌的双重加持。Vercel Labs 的每个项目都会获得开发者社区的关注。ZeroLang 的概念——"为 AI 设计的编程语言"——本身具有强话题性，在 Twitter/X、Hacker News 上引发了大量讨论。与 MCP 协议、Agent OS 等概念形成"Agent 基础设施"的热点集群。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 确定性执行：相同输入产生相同输出，利于 Agent 行为可复现和调试
 - 沙箱安全：默认无文件系统、网络、进程访问权限，按需授权
 - 最小化运行时：C 语言实现，内存占用极低，适合嵌入各种环境

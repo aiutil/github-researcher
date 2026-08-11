@@ -35,7 +35,7 @@ url: "https://github.com/AMAP-ML/LongHorizon-Harness"
 ## 热度来源判断
 LongHorizon-Harness 的热度来自**"长程 agent 是公认瓶颈 × 学术论文背书 × HuggingFace Daily Papers 周榜 #1 的曝光"**。HuggingFace Daily Papers 周榜 #1（可核验）是最强信号——这带来了学术和工程社区的双重关注。384⭐ / 40 fork 说明关注者中有实际部署意愿。但 **2 watchers 偏低**——与 star 数不匹配，说明热度更多来自论文曝光的"一次性关注"，深度跟踪意愿有限。这与 super-simple-software-factory（14 watchers / 459⭐）的模式类似：关注 > 深度跟踪。热度**真实但有论文驱动的脉冲成分**——需观察论文曝光红利消退后的留存。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **三角色分离（Manager / Executor / Auditor）:** Manager 维护原始目标+已验证进度+下一步；Executor 每轮 fresh context 只做一个明确任务；Auditor 独立检查文件/接口/日志/测试。只有通过独立验证的结果才进入持久化状态。
 2. **持久化可信状态（durable verified state）:** 即使 context 刷新、action 失败、deliverable 未通过检查，系统仍保留已验证的进度并从剩余部分继续
 3. **Fresh-context 执行:** 每轮执行从全新 context 开始，避免长程 context 膨胀

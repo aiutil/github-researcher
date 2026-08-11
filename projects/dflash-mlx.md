@@ -17,7 +17,7 @@ url: "https://github.com/bstnxbt/dflash-mlx"
 
 Apple Silicon 上 MLX 的无损 DFlash 推测解码，端侧 LLM 推理加速。
 
-## 解决的问题
+## 它解决的问题
 
 端侧 LLM 推理速度是最大瓶颈。推测解码（Speculative Decoding）是一种在不损失精度的情况下加速推理的技术，dflash-mlx 将其带到了 MLX（Apple Silicon ML 框架）。
 
@@ -31,7 +31,7 @@ Apple Silicon 上 MLX 的无损 DFlash 推测解码，端侧 LLM 推理加速。
 
 443 stars，适度。来自 ML/编译器社区的技术关注。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 - DFlash 推测解码算法实现
 - MLX 框架集成

@@ -30,7 +30,7 @@ Coding Agent（Claude Code、Codex、Cursor）虽然能写代码，但缺乏系�
 ## 热度来源判断
 **方法论品牌 + Skills 生态爆发**。compound-engineering-plugin 的热度由三重因素驱动：(1) Every.to 的品牌效应——Every.to 是知名科技写作/教育平台，其工程方法论内容有忠实读者群；(2) "复合工程"概念的新颖性——"让每一单位工作比上一个更容易"的理念直击开发者痛点（重复劳动、缺乏积累）；(3) Skills/Plugin 生态爆发——2025-2026 年 Claude Code Plugins、Cursor Plugins、Codex Plugins 机制相继推出，compound-engineering-plugin 是最早跨平台支持的项目之一。24K stars 中相当一部分来自 Every.to 读者的品牌追随。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **多平台原生安装**：为每个平台提供了专门的安装路径——Claude Code 的 `/plugin marketplace add`、Cursor 的 `/add-plugin`（Agent 聊天中搜索）、Codex App 的自定义 marketplace 添加、Codex CLI 的 `codex plugin marketplace add`。还支持 Codex 多 profile 安装（通过 `CODEX_HOME` 指定 profile）。这种全覆盖策略最大化了可及性。
 2. **Root-native 布局**：从旧版迁移到了 root-native 布局， Specialist reviewer 和 research 行为作为 local prompt assets 内置于 Skills 中，无需单独的 custom-agent 安装步骤。这简化了安装流程。
 3. **复合工程方法论内核**："AI skills that make each unit of engineering work easier than the last"——核心理念是让工程工作产生可复用的积累。具体实现可能包括：自动记忆更新、工程模板积累、代码审查 rubric 等。

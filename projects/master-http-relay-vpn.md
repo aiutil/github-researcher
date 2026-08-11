@@ -38,7 +38,7 @@ homepage: "https://t.me/masterdnsvpn"
 - 主要在受限网络地区（如伊朗 — 有波斯语 README）传播
 - Telegram 频道（@MasterDnsVPN）运营活跃
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Google Apps Script 域前置**：利用 Google 可信域名做流量伪装
 2. **MITM + Domain Fronting 双技术**：中间人拦截 + 域前置组合

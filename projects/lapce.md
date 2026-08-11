@@ -31,7 +31,7 @@ VS Code 虽功能丰富但基于 Electron，内存占用大、启动慢、大型
 ## 热度来源判断
 Lapce 的热度是**"反 Electron"情绪 + Rust 生态崛起**双重驱动。开发者对 Electron 应用（VS Code、Slack、Discord）的内存占用长期不满，而 Rust 在系统编程领域的信誉持续提升。Lapce 作为"Rust 写的编辑器"自带话题性。但需注意：当前热度部分来自"概念期待"——它仍在积极开发中，功能成熟度尚未达到 VS Code 级别。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **纯 Rust 实现:** 从 UI 框架（Floem）到核心逻辑全部 Rust，无 GC 停顿
 2. **WASI 插件系统:** 插件用 WASM 运行，安全沙箱 + 跨语言支持（可用任何能编译 WASM 的语言写插件）
 3. **内置 Vim 模式:** 原生 modal editing，无需安装插件

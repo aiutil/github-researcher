@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloakBrowser | GitHub 趋势研究</title>
+    <title>CloakHQ/CloakBrowser | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -27,51 +27,60 @@
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/CloakHQ/CloakBrowser" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
-        <h1 id="cloakbrowser">CloakBrowser</h1>
+        <h1 id="cloakhqcloakbrowser-stealth-chromium-that-passes-every-bot-detection-test-drop-in-playwright-replac">CloakHQ/CloakBrowser — Stealth Chromium that passes every bot detection test. Drop-in Playwright replac</h1>
 <h2 id="_1">一句话定位</h2>
-<p>隐身 Chromium，通过全部 30 项机器人检测测试，Playwright 直接替换方案。</p>
+<p>Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.。主要使用 Python 编写，当前 29,872 stars / 2,457 forks / 140 subscribers。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>现代反爬虫/反机器人系统（Cloudflare、DataDome、PerimeterX 等）越来越精确地检测自动化浏览器。现有方案（undetected-chromedriver、puppeteer-stealth）频繁失效。CloakBrowser 从 Chromium 源码层面修改指纹，而非 JS 层面 hook。</p>
-<p>目标用户：Web 自动化开发者、数据采集工程师、QA 自动化团队。</p>
+<p><strong>目标用户</strong>：使用 python 生态的开发者、AI Agent 构建者。</p>
+<p><strong>痛点</strong>：该项目解决的核心问题是 Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.。从 README 来看，项目提供了 <p align="center"> <img src="https://i.imgur.com/cqkp6fG.png" width="500" alt="CloakBrowser"> </p> <p align="center"> <a href="https://pypi.org/project/cloakbrowser/">&lt;img src="https://img.shields.io/。</p>
+<p><strong>场景</strong>：适用于需要 ai-agents, anti-detect, antidetect-browser 的开发场景。</p>
 <h2 id="2026-05-19">为什么值得关注（2026-05-19）</h2>
-<p>15.1K⭐，1.2K forks，Trending 本周多语言上榜。30/30 反检测测试通过的工程完成度极高。Playwright 直接替换意味着零迁移成本。</p>
+<ol>
+<li><strong>Stars 增长</strong>：29,872 stars，2,457 forks——fork/star 比为 8.2% （正常范围）</li>
+<li><strong>活跃度</strong>：创建于 2026-02-22，最后更新 2026-08-11，190 open issues</li>
+<li><strong>技术栈</strong>：Python，License: MIT</li>
+<li><strong>生态定位</strong>：Topics: ai-agents, anti-detect, antidetect-browser, bot-detection, browser-automation</li>
+</ol>
 <h2 id="_3">热度来源判断</h2>
-<p>热度 85% 真实需求。Web 自动化/爬虫社区对反检测方案有持续刚需。源码级别的指纹修改（vs JS hook）是技术上的升级。30/30 通过率是强工程指标。</p>
+<p><strong>真实需求信号</strong>：forks 2457（高部署意愿），subscribers 140（深度关注）。</p>
+<p><strong>品类时机</strong>：从 topics 来看，ai-agents, anti-detect, antidetect-browser 是当前社区关注的方向。</p>
 <h2 id="_4">关键技术亮点</h2>
 <ol>
-<li><strong>Chromium 源码级修改</strong>：不依赖 JS hook，从 C++ 层面修改浏览器指纹</li>
-<li><strong>30/30 测试通过</strong>：覆盖主流反检测系统，工程验证充分</li>
-<li><strong>Playwright 直接替换</strong>：零代码修改，只需替换 browser 启动参数</li>
+<li><strong><p align="center"></strong></li>
+<li><strong><img src="https://i.imgur.com/cqkp6fG.png" width="500" alt="CloakBrowser"></strong></li>
+<li><strong><p align="center"></strong></li>
+<li><strong><a href="https://pypi.org/project/cloakbrowser/">&lt;img src="https://img.shields.io/pypi/v/cloakbrowse</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/cloakbrowser">&lt;img src="https://img.shields.io/npm/v/cloakbro</strong></li>
 </ol>
 <h2 id="_5">架构启发</h2>
-<ul>
-<li><strong>底层修改 &gt; 上层 hook</strong>：在对抗检测的军备竞赛中，越底层的修改越难被检测</li>
-<li><strong>Drop-in 替换策略</strong>：降低采用门槛是开源项目快速增长的关键</li>
-</ul>
+<p>从 CloakHQ/CloakBrowser 的设计来看，核心思路是 <strong>"Stealth Chromium that passes every bot detection test. Drop-"</strong>。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。</p>
 <h2 id="_6">定位判断</h2>
-<p>在 Web 自动化工具链中定位为「反检测浏览器」，与 Playwright/Puppeteer 互补。是 Browser Use / RPA + AI 生态的底层能力。</p>
+<p><strong>工具型</strong>。在生态中定位为Stealth Chromium that passes every bot d方向的工具。Stars 29872 说明已有一定社区基础。</p>
 <h2 id="_7">风险 / 局限 / 泡沫点</h2>
 <ol>
-<li><strong>法律灰色地带</strong>：反检测浏览器的主要用例之一是绕过网站 ToS</li>
-<li><strong>军备竞赛</strong>：反检测与检测是持续的攻防战，没有永恒的赢家</li>
-<li><strong>维护成本</strong>：Chromium 更新频繁，每次都需要重新修改源码</li>
+<li><strong>规模风险</strong>：29,872 stars，但 fork 2457 说明有实际部署</li>
+<li><strong>维护风险</strong>：最后 push 时间 2026-08-11，活跃维护中</li>
+<li><strong>Open Issues</strong>：190 个 open issues，活跃社区反馈</li>
+<li><strong>License</strong>：MIT（宽松许可，适合商用）</li>
 </ol>
 <h2 id="_8">与同类项目的关系</h2>
 <ul>
-<li><strong>vs undetected-chromedriver</strong>：CloakBrowser 更底层、更可靠</li>
-<li><strong>vs puppeteer-stealth</strong>：JS 层 hook vs 源码层修改，不在一个技术层次</li>
-<li><strong>vs Camoufox</strong>：Camoufox 基于 Firefox，CloakBrowser 基于 Chromium，生态不同</li>
+<li>与同 Python 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。</li>
+<li>从 topics (ai-agents, anti-detect, antidetect-browser) 来看，与关注 ai-agents 的其他项目有交叉。</li>
 </ul>
 <h2 id="_9">是否值得持续跟踪</h2>
-<p><strong>短期跟踪。</strong> 技术实现值得学习，但工具型项目长期价值有限。</p>
+<p><strong>是。</strong> 29872 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。</p>
 <h2 id="_10">后续观察点</h2>
 <ol>
-<li>Chromium 大版本升级时能否及时跟进</li>
-<li>反检测系统能否识别源码级修改</li>
-<li>是否形成商业服务模式</li>
+<li>Star 增速是否可持续（当前 29,872）</li>
+<li>Fork 增长趋势（当前 2,457）</li>
+<li>功能迭代频率（最后更新 2026-08-11）</li>
+<li>社区活跃度（subscribers 140, open issues 190）</li>
 </ol>
 <hr />
-<p><em>首次记录：2026-05-19</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-08-11) | Stars: 29,872 | Forks: 2,457 | License: MIT | 语言: Python | 创建: 2026-02-22</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

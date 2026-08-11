@@ -1,63 +1,85 @@
 ---
-title: "Shadowbroker"
+title: "BigBodyCobain/Shadowbroker"
 slug: "shadowbroker"
 date_added: "2026-05-19"
+last_seen_date: "2026-05-19"
 category: "工具型"
 emoji: "🔍"
-stars: "7,676 stars"
-stars_delta: "周增 800+"
+stars: "10,735 stars"
+stars_delta: "API 实时数据"
 language: "Python"
+license: "AGPL-3.0"
 score: 78
-tags: ["OSINT", "AI Agent", "情报分析", "数据聚合", "卫星追踪"]
+tags: ["ads-b", "adsb", "aircraft", "aircraft-tracking", "asdb", "cctv", "cctv-cameras", "cctv-surveillance"]
 url: "https://github.com/BigBodyCobain/Shadowbroker"
-last_seen_date: "2026-05-19"
 ---
 
-# Shadowbroker
+# BigBodyCobain/Shadowbroker — Open-source intelligence for the global theater. Track everything from the corpo
 
 ## 一句话定位
-开源全球情报聚合平台：私人飞机轨迹、间谍卫星轨道、地震数据统一接口，可接 AI Agent 做关联分析。
+
+Open-source intelligence for the global theater. Track everything from the corporate/private jets of the wealthy, and spy satellites, to seismic events in one unified interface. Hook an AI agent up to have it parse through data and find previously unseen correlations. The knowledge is available to all but rarely aggregated in the open, until now.。主要使用 Python 编写，当前 10,735 stars / 1,708 forks / 89 subscribers。
 
 ## 它解决的问题
-全球公开数据（飞机轨迹、卫星轨道、地震信息）散落在不同来源，缺乏统一接口。Shadowbroker 聚合这些数据源，并提供 AI Agent 可调用的分析接口，帮助发现跨领域的相关性。
 
-目标用户：OSINT 研究者、数据记者、安全分析师、地缘政治研究者。
+**目标用户**：使用 python 生态的开发者、AI Agent 构建者。
+
+**痛点**：该项目解决的核心问题是 Open-source intelligence for the global theater. Track everything from the corporate/private jets of the wealthy, and spy satellites, to seismic events in one unified interface. Hook an AI agent up to have it parse through data and find previously unseen correlations. The knowledge is available to all but rarely aggregated in the open, until now.。从 README 来看，项目提供了 <p align="center"> <h1 align="center">🛰️ S H A D O W B R O K E R</h1> <p align="center"><strong>Global Threat Intercept — Real-Time Geospatial Intelligence Platform</strong></p> <p align="center"> </p。
+
+**场景**：适用于需要 ads-b, adsb, aircraft 的开发场景。
 
 ## 为什么值得关注（2026-05-19）
 
-7.7K⭐，Trending 上榜。「让 AI 发现未被发现的相关性」的叙事极具传播力。OSINT + AI Agent 的结合方向正确。
+1. **Stars 增长**：10,735 stars，1,708 forks——fork/star 比为 15.9% （高 fork 比例说明部署/集成意愿强）
+2. **活跃度**：创建于 2026-03-05，最后更新 2026-08-10，无 open issues
+3. **技术栈**：Python，License: AGPL-3.0
+4. **生态定位**：Topics: ads-b, adsb, aircraft, aircraft-tracking, asdb
 
 ## 热度来源判断
-热度 50% 眎奇驱动 + 50% 真实需求。私人飞机和间谍卫星的数据聚合有传播噱头，但 OSINT 工具确实有真实用户群体。
+
+**真实需求信号**：forks 1708（高部署意愿），subscribers 89（深度关注）。
+
+**品类时机**：从 topics 来看，ads-b, adsb, aircraft 是当前社区关注的方向。
+
+
 
 ## 关键技术亮点
-1. **多源数据统一接口**：ADS-B 飞机数据、卫星轨道数据、USGS 地震数据聚合
-2. **AI Agent 可调用**：提供结构化 API 供 Agent 做关联分析
-3. **完全开源**：数据源均为公开数据，无版权争议
+
+1. **<p align="center">**
+2. **<h1 align="center">🛰️ S H A D O W B R O K E R</h1>**
+3. **<p align="center"><strong>Global Threat Intercept — Real-Time Geospatial Intelligence Platform</stro**
+4. **<p align="center">**
 
 ## 架构启发
-- OSINT 工具 + AI Agent 是「数据聚合 → 智能分析」的标准范式
-- 公开数据的价值在于聚合和关联，而非单一来源
+
+从 BigBodyCobain/Shadowbroker 的设计来看，核心思路是 **"Open-source intelligence for the global theater. Track every"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (AGPL-3.0) 降低了采用门槛。
 
 ## 定位判断
-工具型项目，偏向特定领域（OSINT/安全研究）。不具备平台化或基础设施化的潜力。
+
+**工具型**。在生态中定位为Open-source intelligence for the global 方向的工具。Stars 10735 说明已有一定社区基础。
 
 ## 风险 / 局限 / 泡沫点
-1. **数据源可持续性**：公开数据源可能随时关闭或收费
-2. **法律风险**：虽然数据公开，但大规模聚合某些数据可能面临法律挑战
-3. **市场规模有限**：OSINT 研究者群体不大
+
+1. **规模风险**：10,735 stars，但 fork 1708 说明有实际部署
+2. **维护风险**：最后 push 时间 2026-08-10，活跃维护中
+3. **Open Issues**：无 open issues
+4. **License**：AGPL-3.0
 
 ## 与同类项目的关系
-- **vs Maltego**：Maltego 是商业 OSINT 平台，Shadowbroker 开源且更轻量
-- **vs Shodan**：Shodan 专注网络设备扫描，Shadowbroker 更偏物理世界数据
+
+- 与同 Python 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。
+- 从 topics (ads-b, adsb, aircraft) 来看，与关注 ads-b 的其他项目有交叉。
 
 ## 是否值得持续跟踪
-**低优先级。** 方向有趣但市场规模有限，非架构师关注的核心方向。
+
+**是。** 10735 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。
 
 ## 后续观察点
-1. 是否出现有影响力的调查报告产出
-2. AI Agent 关联分析的实际效果验证
-3. 数据源的法律合规性
+
+1. Star 增速是否可持续（当前 10,735）
+2. Fork 增长趋势（当前 1,708）
+3. 功能迭代频率（最后更新 2026-08-10）
+4. 社区活跃度（subscribers 89, open issues 0）
 
 ---
-*首次记录：2026-05-19*
+> 数据来源: GitHub API (2026-08-10) | Stars: 10,735 | Forks: 1,708 | License: AGPL-3.0 | 语言: Python | 创建: 2026-03-05

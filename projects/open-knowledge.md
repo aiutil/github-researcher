@@ -29,7 +29,7 @@ Inkeep（AI搜索公司）从搜索工具延伸到知识管理，代表着"AI-na
 - **WYSIWYG Markdown**：真正做到像Notion一样编辑.md文件
 - **MCP生态红利**：随着MCP成为Agent工具调用标准，支持MCP的知识库自然受关注
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 1. 真正的 WYSIWYG Markdown
 不是分屏预览，而是直接在编辑区看到渲染结果（像Google Doc/Notion），底层文件仍然是纯.md。这意味着你可以同时用VSCode和OpenKnowledge编辑同一批文件。

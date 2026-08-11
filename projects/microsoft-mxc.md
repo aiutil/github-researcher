@@ -32,7 +32,7 @@ url: "https://github.com/microsoft/mxc"
 - **Rust 生态红利（中）**：Rust 在基础设施领域的热度持续
 - **尚未破圈（当前）**：1.2k stars 说明还在早期采用者阶段
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **策略驱动（Policy-driven）**：用声明式策略文件定义隔离规则，类似 OPA/Kubernetes admission controller 的模式
 2. **分层隔离（Layered isolation）**：非单一隔离机制，而是组合 namespace、seccomp、capabilities 等多种 Linux 安全机制
 3. **Containment 设计理念**：强调"遏制"而非仅"隔离"，包含行为监控和异常响应

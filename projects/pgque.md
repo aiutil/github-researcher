@@ -26,7 +26,7 @@ url: "https://github.com/NikolayS/pgque"
 ## 热度来源判断
 真实需求驱动。PLpgSQL 项目能到 900+ star 说明切中了大量中小团队"不想多引入一个中间件"的痛点。不是泡沫，是务实主义。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **单 SQL 文件安装**：`psql -f pgque.sql` 即完成部署，零外部依赖
 2. **pg_cron 驱动**：利用 Postgres 原生定时任务机制驱动队列消费
 3. **SQL-only 接口**： enqueue/dequeue/ack 都是 SQL 函数调用，与现有事务天然一致

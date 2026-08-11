@@ -48,7 +48,7 @@
 </ul>
 <h2 id="_4">热度来源判断</h2>
 <p>LongHorizon-Harness 的热度来自<strong>"长程 agent 是公认瓶颈 × 学术论文背书 × HuggingFace Daily Papers 周榜 #1 的曝光"</strong>。HuggingFace Daily Papers 周榜 #1（可核验）是最强信号——这带来了学术和工程社区的双重关注。384⭐ / 40 fork 说明关注者中有实际部署意愿。但 <strong>2 watchers 偏低</strong>——与 star 数不匹配，说明热度更多来自论文曝光的"一次性关注"，深度跟踪意愿有限。这与 super-simple-software-factory（14 watchers / 459⭐）的模式类似：关注 &gt; 深度跟踪。热度<strong>真实但有论文驱动的脉冲成分</strong>——需观察论文曝光红利消退后的留存。</p>
-<h2 id="_5">关键技术亮点</h2>
+<h2 id="_5">关键技术亮点亮点</h2>
 <ol>
 <li><strong>三角色分离（Manager / Executor / Auditor）:</strong> Manager 维护原始目标+已验证进度+下一步；Executor 每轮 fresh context 只做一个明确任务；Auditor 独立检查文件/接口/日志/测试。只有通过独立验证的结果才进入持久化状态。</li>
 <li><strong>持久化可信状态（durable verified state）:</strong> 即使 context 刷新、action 失败、deliverable 未通过检查，系统仍保留已验证的进度并从剩余部分继续</li>

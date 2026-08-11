@@ -34,7 +34,7 @@ url: "https://github.com/docker-mailserver/docker-mailserver"
 - **Docker 简化复杂系统（高）**：将最难的系统容器化
 - **长期积累（高）**：运营多年，口碑稳定
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **一体化容器**：Postfix+Dovecot+SpamAssassin+ClamAV+OpenDKIM+Fail2ban 在一个镜像
 2. **环境变量配置**：通过 .env 和 docker-compose 统一配置
 3. **setup.sh 管理**：命令行工具管理用户、别名、SSL 证书

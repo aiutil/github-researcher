@@ -30,7 +30,7 @@ Soul-Driven AI Agent — 权限硬化、Token 预算管理、Second Brain 记忆
 ## 热度来源判断
 **真实需求驱动**。"AI Agent 不该静默执行危险操作"是社区共识，Mercury 给出了具体实现。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Permission-Hardened**：Shell 命令黑名单（sudo、rm -rf / 等永远不执行），文件夹级读写限制，待审批流程。
 2. **Second Brain Memory**：SQLite + FTS5 全文搜索，10 种记忆类型，自动提取、冲突解决、自动整合。

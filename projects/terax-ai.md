@@ -32,7 +32,7 @@ last_seen_date: "2026-05-13"
 **50% 真实需求 + 30% Rust/Tauri 生态关注 + 20% "7MB" 标题效应**。
 轻量 AI 终端是真实需求，但 2.6K 的增速说明市场还没有爆发。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **7MB 极致体积**：Rust 后端 + Tauri 框架 + React 前端的极致压缩
 2. **AIDE（AI Development Environment）**：不只是终端，是 AI 原生开发环境
 3. **跨平台**：Rust + Tauri 天然支持 Windows/macOS/Linux

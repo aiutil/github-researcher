@@ -17,7 +17,7 @@ url: "https://github.com/msitarzewski/agency-agents"
 
 开箱即用的 AI Agent 工具箱——从前端专家到 Reddit 社区运营，从"趣味注入器"到"现实检验器"，每个 Agent 都是一个有个性、有流程、有交付物的专家。
 
-## 解决的问题
+## 它解决的问题
 
 个人和小团队想要部署专业化 AI Agent，但不想从零构建。agency-agents 提供了一系列预设的 Agent 模板，Shell 脚本即可部署。
 
@@ -35,7 +35,7 @@ url: "https://github.com/msitarzewski/agency-agents"
 - Star 质量需要验证：是否存在 star farming 行为
 - Shell 脚本作为 Agent 载体，工程深度有限
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 - 预设多个专业化 Agent 模板
 - 每个Agent有个性（personality）、流程（processes）、交付物（deliverables）

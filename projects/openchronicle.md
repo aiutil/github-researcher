@@ -30,7 +30,7 @@ AI Agent 无状态，每次对话从零开始。OpenAI 推出了 Chronicle（闭
 ## 热度来源判断
 **真实需求驱动**。Agent 记忆是公认的痛点，OpenAI Chronicle 的发布验证了市场需求，OpenChronicle 乘势而起。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **AX Tree 优先策略**：使用无障碍树（Accessibility Tree）而非截图作为主要上下文信号。优势：成本更低、意图捕获更准、去重更容易、更小更清洁的记忆。
 

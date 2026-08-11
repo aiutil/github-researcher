@@ -31,7 +31,7 @@ Claude Code 技能集合，包含工程/生产力/调试/审查等分类技能�
 ## 热度来源判断
 1.5K stars / 3 天。热度来自 Claude Skills 生态的整体热度。属于「蹭生态热度」型项目，但内容有一定价值。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 ### 1. 标准化技能结构
 每个技能有独立的 SKILL.md（含 YAML frontmatter：name、description）和配套脚本。

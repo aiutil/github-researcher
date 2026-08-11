@@ -30,7 +30,7 @@ Vercel 出品的 filesystem-first durable agent 框架（TypeScript / Apache-2.0
 ## 热度来源判断
 **官方品牌 + 范式红利双驱动。** Vercel 在前端与开发者工具领域的声誉贡献了首发流量；filesystem-first 的设计哲学迎合了"agent 应该可检视、可版本控制、可协作"的真实工程诉求。但 framework 类项目的高 star 不等于高生产采纳——需看真实部署案例。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **目录即能力**：agent 能力以约定文件结构存在（instructions.md / tools/ / skills/ / channels/ / schedules/），项目因此更易检视、扩展、运维。
 2. **durable 定位**：面向持久化、可恢复的 agent，而非无状态的一次性调用。
 3. **多通道**：channels 支持 HTTP / Slack / Discord，agent 可接入真实消息面。

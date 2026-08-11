@@ -33,7 +33,7 @@ url: "https://github.com/wshobson/agents"
 ## 热度来源判断
 wshobson/agents 的热度是 **"Agent 生态碎片化刚需 × 六大平台全覆盖 × 贡献友好"** 的强劲组合。Coding Agent 是 2026 年最热赛道，但插件碎片化是真痛点——每个 Agent 都要单独配规则，开发者苦不堪言。一个"通用插件市场"直击痛点，自然爆火。4,119 个 forks 反映社区高度参与——这正是"插件市场"类项目的网络效应（贡献者越多，价值越大，吸引更多用户）。310 个 subscribers 说明核心开发者群体深度关注。热度**真实且具网络效应潜力**——但需警惕：跨平台兼容的维护成本极高（六大 Agent 格式各异且持续变化），长期同步是巨大挑战。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **六平台适配:** 单一插件尽量同时兼容 Claude Code、Codex CLI、Cursor、OpenCode、Copilot、Gemini CLI
 2. **Skills/Plugins/Rules 统一:** 将不同平台的"能力定义"（Skills/plugins/.cursorrules/copilot-instructions）抽象为统一来源
 3. **Markdown 驱动:** 核心是结构化 Markdown 指令文件，与 Anthropic Skills 理念一致，低门槛贡献

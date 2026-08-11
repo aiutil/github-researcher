@@ -40,7 +40,7 @@ Agent 安全能力碎片化。本仓库将安全技能标准化、模块化，�
 - 与 gstack 113K + mattpocock/skills 141K 并列 Agent Skills 经济三大代表
 - GitHub Trending 持续出现，日增约 900 stars
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **6 大行业标准框架映射**：不是散乱技能集合，而是结构化映射到 MITRE/NIST 标准
 2. **agentskills.io 标准兼容**：跨 26+ Agent 平台安装使用

@@ -40,7 +40,7 @@ last_seen_date: "2026-06-27"
 - **合规讨论引发关注**：ToS 灰色地带本身也是话题传播点
 - **17 倍增长验证需求**：不是一日热点，持续 2 个月高增长
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **三协议兼容**——OpenAI `/v1/chat/completions` + Anthropic `/v1/messages` + Responses API（`/v1/responses`）
 2. **智能路由 + 自动 failover**——429/5xx 自动跳到下一个 Provider，每 key RPM/RPD/TPM/TPD 计数，最多 20 次重试
 3. **Sticky sessions**——多轮对话 30 分钟内保持同一模型，避免中途切换的幻觉

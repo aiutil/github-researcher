@@ -33,7 +33,7 @@ Chromex 代表了 Browser Agent 的轻量化路线：不模拟浏览器操作，
 - **Codex 生态加持** — 挂在 Codex 引擎上获得社区关注
 - **技术门槛适中** — Chrome Extension + Side-Panel API 是成熟技术栈
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Chrome Side-Panel API** — 不需要独立窗口，与浏览器深度整合
 2. **页面上下文感知** — 自动提取当前页面的 DOM/文本内容作为 AI 上下文
 3. **多模态输入** — 支持语音输入和图片工作流，不局限于文本

@@ -1,64 +1,86 @@
 ---
-title: "Kami"
+title: "tw93/Kami"
 slug: "kami"
 date_added: "2026-04-30"
 category: "工具型"
 emoji: "kami"
-stars: "3.8k stars"
-stars_delta: "10天3.8K，快速稳定增长"
+stars: "10,480 stars"
+stars_delta: "API 实时数据"
 language: "HTML"
+license: "MIT"
 score: 74
-tags: ["content", "typography", "html", "design", "reading"]
+tags: ["html"]
 url: "https://github.com/tw93/Kami"
 ---
 
-# Kami
+# tw93/Kami — 👩‍🚒 Good content deserves good paper.
 
 ## 一句话定位
-"好内容值得好纸张" — 将内容转化为精美排版页面的工具。
+
+👩‍🚒 Good content deserves good paper.。主要使用 HTML 编写，当前 10,480 stars / 482 forks / 24 subscribers。
 
 ## 它解决的问题
-长内容在网页上的阅读体验差。Kami 让内容获得"纸张"般的阅读体验。
 
-目标用户：内容创作者、技术博客作者、文档维护者。
+**目标用户**：使用 html 生态的开发者、工程师。
+
+**痛点**：该项目解决的核心问题是 👩‍🚒 Good content deserves good paper.。从 README 来看，项目提供了 <div align="center"> <img src="assets/images/logo.svg" width="120" /> <h1>Kami</h1> <p><b>Good content deserves good paper.</b></p> <a href="https://github.com/tw93/kami/stargazers"><img src="https://。
+
+**场景**：适用于需要 该类型工具 的开发场景。
 
 ## 为什么值得关注（2026-04-30）
-- tw93（阿里系前端工程师）出品，设计直觉准确
-- 10 天 3.8K stars，稳定增长
-- 极简定位，一句话说清价值
+
+1. **Stars 增长**：10,480 stars，482 forks——fork/star 比为 4.6% （正常范围）
+2. **活跃度**：创建于 2026-04-20，最后更新 2026-08-08，无 open issues
+3. **技术栈**：HTML，License: MIT
+4. **生态定位**：无 topics 标注
 
 ## 热度来源判断
-**真实需求 + 个人品牌效应**。tw93 在前端社区有影响力，Kami 解决的排版问题确实存在。
+
+**真实需求信号**：forks 482（高部署意愿），subscribers 24（深度关注）。
+
+
+
+
 
 ## 关键技术亮点
-1. HTML 原生实现，不依赖重型框架
-2. 专注于内容排版，非设计系统
-3. 简洁的产品定位："好内容 + 好纸张"
+
+1. **<div align="center">**
+2. **<img src="assets/images/logo.svg" width="120" />**
+3. **<h1>Kami</h1>**
+4. **<p><b>Good content deserves good paper.</b></p>**
+5. **<a href="https://github.com/tw93/kami/stargazers"><img src="https://img.shields.io/github/stars/tw93**
+6. **<a href="https://github.com/tw93/kami/releases"><img src="https://img.shields.io/github/v/tag/tw93/k**
 
 ## 架构启发
-产品直觉胜过技术复杂度。Kami 证明了在 Agent Skill 生态中，最简单、最聚焦的工具往往获得最好的用户共鸣。
+
+从 tw93/Kami 的设计来看，核心思路是 **"👩‍🚒 Good content deserves good paper."**。这反映了 HTML 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
 
 ## 定位判断
-**工具型**。定位清晰但不具备平台化或基础设施潜力。
+
+**工具型**。在生态中定位为👩‍🚒 Good content deserves good paper.方向的工具。Stars 10480 说明已有一定社区基础。
 
 ## 风险 / 局限 / 泡沫点
-1. 功能单一，长期护城河有限
-2. 与 Open Design 等 Skill 生态的关系不明确
-3. 依赖 tw93 个人维护
+
+1. **规模风险**：10,480 stars，但 fork 482 说明有实际部署
+2. **维护风险**：最后 push 时间 2026-08-08，活跃维护中
+3. **Open Issues**：无 open issues
+4. **License**：MIT（宽松许可，适合商用）
 
 ## 与同类项目的关系
-| 项目 | 定位 | 差异 |
-|------|------|------|
-| Open Design | 完整设计 Skill 框架 | Kami 更聚焦内容排版 |
-| guizang-ppt-skill | PPT Skill | Kami 不做演示文稿 |
+
+- 与同 HTML 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。
+- 从 topics () 来看，与关注 该领域 的其他项目有交叉。
 
 ## 是否值得持续跟踪
-**是，低优先级**。产品直觉值得关注，但工具型项目天花板有限。
+
+**是。** 10480 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。
 
 ## 后续观察点
-1. 是否被 Open Design 等框架整合
-2. 用户实际使用场景反馈
-3. 是否出现企业级内容排版需求
+
+1. Star 增速是否可持续（当前 10,480）
+2. Fork 增长趋势（当前 482）
+3. 功能迭代频率（最后更新 2026-08-08）
+4. 社区活跃度（subscribers 24, open issues 0）
 
 ---
-*首次记录：2026-04-30*
+> 数据来源: GitHub API (2026-08-08) | Stars: 10,480 | Forks: 482 | License: MIT | 语言: HTML | 创建: 2026-04-20

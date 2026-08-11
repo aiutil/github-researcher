@@ -28,7 +28,7 @@ url: "https://github.com/evilsocket/audit"
 ## 热度来源判断
 热度主要来自 evilsocket 的个人影响力和安全社区的口碑传播。作为 HackTheBox/BetterCap 的作者，evilsocket 的每个新项目都会受到安全社区的高度关注。Cloudflare Project Glasswing 论文的影响（8 阶段架构的灵感来源）也为项目提供了理论背书。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 8 阶段流水线：范围定义 → 表面分析 → 深度分析 → 漏洞假设 → 对抗验证 → 可达性分析 → 利用验证 → 报告生成
 - 多窄 Agent 并行：每个阶段由专门化的 Agent 处理，避免上下文窗口溢出
 - 对抗式验证（adversarial validation）：故意构建"反对者"Agent 挑战其他 Agent 的发现

@@ -17,7 +17,7 @@ url: "https://github.com/fikrikarim/parlor"
 
 完全本地运行的实时多模态 AI 对话系统，基于 Gemma 4 E2B + Kokoro，Apple Silicon 原生。
 
-## 解决的问题
+## 它解决的问题
 
 在设备端实现自然的语音+视觉 AI 对话，不依赖云端 API，保护隐私。
 
@@ -31,7 +31,7 @@ url: "https://github.com/fikrikarim/parlor"
 
 1,551 stars，热度合理。端侧 AI 是当前明确趋势，项目技术栈选型合理。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 - Gemma 4 E2B 多模态模型
 - Kokoro TTS 语音合成

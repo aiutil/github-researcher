@@ -38,7 +38,7 @@ DuckDB 已成为分析领域的「SQLite」—— 单进程、零配置、高性
 - 565 stars 不高但方向正确，在 DuckDB 热度持续攀升的背景下有天然吸引力
 - MotherDuck 商业成功的验证了差分存储 + 双执行方向
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **差分存储（Differential Storage）**：append-only 分层 + PostgreSQL 元数据，不可变 sealed layers + 对象存储，快照提供一致性读取
 2. **混合双执行（Dual Execution）**：单条查询可在本地和远程 worker 间拆分，gateway 分割计划、标注 LOCAL/REMOTE 算子、插入 bridge 算子

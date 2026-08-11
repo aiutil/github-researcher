@@ -29,7 +29,7 @@ url: "https://github.com/baidu/Unlimited-OCR"
 ## 热度来源判断
 真实需求驱动。OCR 是企业刚需（财务、法律、教育、政务），而长文档 OCR 一直是痛点。Baidu 在 OCR 领域有长期积累（PaddleOCR），技术可信度高。同时受益于 DeepSeek-OCR 建立的关注基础。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **One-shot Long-horizon Parsing**：单次推理处理整篇文档，不需要分页→拼接
 2. **双配置模式**：gundam（base_size=1024, image_size=640, crop_mode=True，高吞吐）和 base（base_size=1024, image_size=1024, crop_mode=False，全分辨率）
 3. **双推理引擎**：vLLM（高性能批量推理）+ Transformers（通用兼容）

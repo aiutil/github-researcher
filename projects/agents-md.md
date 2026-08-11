@@ -16,7 +16,7 @@ url: "https://github.com/TheRealSeanDonahoe/agents-md"
 ## 一句话定位
 即插即用的 AGENTS.md 文件，让任何 Coding Agent 表现如资深工程师——反谄媚、反无脑重构、强制验证循环。
 
-## 解决的问题
+## 它解决的问题
 当前 Coding Agent 普遍存在"谄媚"（过度迎合用户）、"无脑重构"（不必要的代码改动）和"缺乏验证"（不测就提交）三大行为问题。agents-md 通过精心设计的指令注入来解决这些问题。
 
 ## 为什么值得关注
@@ -29,7 +29,7 @@ url: "https://github.com/TheRealSeanDonahoe/agents-md"
 - "让 Agent 表现如资深工程师"的定位精准击中需求
 - 轻量级（单文件），低门槛试用
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - Kills sycophancy：反谄媚机制
 - Stops drive-by refactors：约束不必要的重构
 - Forces verification loops：强制验证循环

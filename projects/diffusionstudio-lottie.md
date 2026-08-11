@@ -41,7 +41,7 @@ Lottie 动画是移动端和 Web 的工业标准格式，但制作 Lottie 需要
 - 从 2K 增至 5K+，增速持续
 - 有实际 demo GIF 展示生成效果
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Skill 化分发**：`npx skills add diffusionstudio/lottie`，符合 agentskills.io 标准
 2. **Scene + Project 架构**：每个动画是 project 下的 scene，从 `public/projects/<project>/<scene>/lottie.json` 自动加载

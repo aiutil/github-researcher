@@ -29,7 +29,7 @@ Hugging Face 出品的深度学习模型库，提供数万种预训练模型（N
 ## 热度来源判断
 热度来自三个不可替代性：(1) Hugging Face Hub 已成为开源模型的中央仓库，Transformers 是消费这些模型的原生客户端，地位类似 npm 之于 Node 生态；(2) 大模型浪潮使得"加载预训练模型"成为高频操作，Transformers 是默认入口；(3) 社区贡献机制成熟——模型作者提交 PR 集成新架构，形成自增长飞轮。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - **AutoClass 体系:** `AutoModel`、`AutoTokenizer`、`AutoProcessor` 根据 config 自动选择正确的类，用户无需关心架构细节
 - **Pipeline API:** 高级封装，一行代码完成推理（`pipeline("text-generation", model="...")`）
 - **Trainer / TrainingArguments:** 标准化训练循环，支持分布式、混合精度、梯度累积，减少样板代码

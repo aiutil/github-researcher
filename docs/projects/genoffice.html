@@ -40,7 +40,7 @@
 <li><strong>genspark-ai 品牌</strong>：发行方 genspark-ai 有产品背景（Genspark 搜索），带来基线关注。</li>
 <li><strong>无刷星特征</strong>：74 fork / 4 open issues / 5 watchers，数据形态正常。</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>字节保真往返（docx）</strong>：打开 docx → 按哈希归档原件（永不触碰）→ docx-engine 解析 word/document.xml 为 block tree（每个 block 带 docxIndex + 原始 XML 切片）→ TipTap 流式编辑（脏块追踪）→ 保存时只把脏块转成 OOXML fragment 拼回，其余条目逐字节复制。"编辑器没碰的一切在往返中原样存活"。</li>
 <li><strong>共享 agent-core</strong>：<code>packages/agent-core</code> 是所有 app 共用的 AI agent loop 和 skill 组合层——docs 用块级 AI 编辑 + 版本快照/diff，sheets/slides/pdf 用 tool-calling agent 操作文档状态。AI 行为通过统一引擎而非每 app 各写一套。</li>

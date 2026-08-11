@@ -30,7 +30,7 @@ MindsDB 推出的 AI 统一工作空间（MindsHub Cowork）——一个将数�
 ## 热度来源判断
 **品牌惯性 + 平台战略驱动**。MindsDB 本身在 GitHub 上已有大量 star 积累（mindsdb/minds 仓库历史 star 数很高），MindsHub 作为其新品牌仓库继承了部分关注度。39K stars 中需要注意：这个仓库用 Makefile 作为主语言（因为它是 superproject，实际代码在各子模块中），这意味着 stars 更多反映的是对 MindsDB 品牌/平台愿景的认可，而非对这个具体代码仓库的使用。存在一定的"品牌转移"效应。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Superproject 架构**：仓库采用 git submodule 超级项目结构，整合 `frontend`、`backend/core_api`、`backend/core_agent`、`backend/data-vault` 四个子模块。每个模块可独立开发、测试，通过 Makefile 编排构建流程（`make setup`、`make dev`、`make build`、`make dist-mac`）。
 2. **模型路由层（Model Router）**：无需为每个 provider 配置 API key，通过统一接口在 Claude、GPT、Gemini（商业模型）和 DeepSeek、Qwen、Kimi（开源模型）之间切换。这是"模型无关"架构的核心。
 3. **可替换 Agent 后端**：支持 Anton（默认）和 Hermes Agent，通过下拉菜单切换。这种设计将 Agent 从"内置黑箱"变为"可替换组件"，是平台型产品的重要特征。

@@ -30,7 +30,7 @@ url: "https://github.com/facebook/react"
 ## 热度来源判断
 React 的热度是**真实的行业统治力体现**。247K stars 不是短期炒作，而是 13 年持续积累的结果。它是前端开发者的"必修课"，也是企业前端技术选型的默认选项。热度来源包括：庞大的就业市场需求、丰富的第三方生态（Next.js、React Native、Remix）、以及 Meta 持续的技术投入（React Server Components、Suspense、Concurrent Features）。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Virtual DOM:** 通过内存中的轻量 DOM 副本进行 diff，批量最小化真实 DOM 操作
 2. **JSX:** 将 HTML 模板与 JavaScript 逻辑统一，开创了"UI 即函数"范式
 3. **Hooks（2019）:** useState/useEffect 等函数式 API，取代 class 组件，极大简化状态逻辑复用

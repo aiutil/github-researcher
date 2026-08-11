@@ -16,7 +16,7 @@ url: "https://github.com/MoonshotAI/FlashKDA"
 ## 一句话定位
 Moonshot AI 出品的 Kimi Delta Attention 高性能推理内核。
 
-## 解决的问题
+## 它解决的问题
 Delta Attention 是 Kimi 模型中使用的新型注意力机制，需要专用 GPU 内核才能高效推理。FlashKDA 提供了这种专用优化。
 
 ## 为什么值得关注
@@ -29,7 +29,7 @@ Delta Attention 是 Kimi 模型中使用的新型注意力机制，需要专用 
 - 技术前沿性：Delta Attention 是较新的注意力变体
 - Star 数尚低但关注者为推理系统工程师
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 针对Delta Attention 的专用 Flash 内核
 - 高性能 CUDA 实现
 - Moonshot Kimi 模型推理的核心组件

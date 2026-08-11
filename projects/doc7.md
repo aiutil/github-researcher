@@ -30,7 +30,7 @@ url: "https://github.com/magicrew/doc7"
 - **真实需求信号**：私有化/离线文档解析是企业刚需（合规/隐私）。"no cloud, no OCR stack"的定位明确切中这个痛点。fork 仅 9（vs anydoc 205）说明目前关注度低，可能因为本地 VLM 门槛（需 GPU/本地模型）高于 anydoc 的 npm install。
 - **话题性成分**：doc7 热度（454⭐）远低于 anydoc（4,688⭐），没有爆发性话题成分。更像"稳定但小众"的项目。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **本地 OpenAI 兼容多模态模型**：通过 OpenAI 兼容 API 调用本地 VLM（LM Studio/Ollama 部署），数据完全本地。"No required OCR stack"——VLM 直接理解文档视觉内容。
 2. **覆盖扫描页/截图/图表/公式/图表**：PDF/Office/扫描/截图/图表/公式/diagrams 都能处理——VLM 的视觉理解能力覆盖传统 OCR 难处理的复杂视觉元素。

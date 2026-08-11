@@ -41,7 +41,7 @@ claw-code 的增长速度创造了 GitHub 历史：**发布 2 小时即破 50K s
 - **自主维护叙事**：项目声称由 AI（lobsters/claws）而非人类维护，引发巨大好奇
 - **Clean-room 法律叙事**：作为 Claude Code 的"重写"而非"fork"，避免法律争议的同时提供功能替代
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Rust 原生实现**：所有核心组件（Tool calling、Context 管理、Sub-agent 编排）均为 Rust 实现，启动速度和内存占用远优于 Node.js/Python 方案
 2. **Claude Code 架构复刻**：保持了 Claude Code 的核心设计——Tool protocol、Permission system、Session management——但完全重写，不依赖任何 Anthropic 代码

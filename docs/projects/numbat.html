@@ -40,7 +40,7 @@
 <li><strong>品类时机信号</strong>：agent 在企业端点的使用量正在增长（qm 11K⭐、Claude Code/Codex 等大规模采用），"agent 做了什么"的审计需求自然浮现。numbat 出现在这个需求上升期。</li>
 <li><strong>话题性成分</strong>：subscribers 仅 5（相对 684⭐ 偏低），说明目前更多是"收藏/试用"而非"深度使用"——热度部分来自品类话题性。</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>三类输入归一到统一事件模型</strong>：本地 hooks/plugins（同步生命周期钩子或生成的 agent 插件/扩展）、OTLP/HTTP 日志导出器、磁盘会话产物（on-disk artifacts）。所有输入产生相同的归一化事件，使用相同的 CEL 规则引擎。这意味着 numbat 既能实时捕获（hooks/logs），也能对<strong>未被 numbat 预先埋点的 agent 会话做事后取证重建</strong>（读 on-disk artifacts）。</li>
 <li><strong>CEL 规则引擎 + 多步序列规则</strong>：内置 CEL（Common Expression Language）规则，支持多步序列规则（检测跨多步的可疑行为模式），以及自定义 YAML 规则。规则分 monitor-only（所有 shipped 规则）和 enforce（可选，需显式标记 <code>enforce: true</code>）。</li>

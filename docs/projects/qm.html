@@ -39,7 +39,7 @@
 <li><strong>真实需求信号</strong>：fork 125（高于同期 star 量级项目），说明有团队在尝试部署；README 详细的安全策略（Strict/Auto/Dangerous 三档）和部署目录架构说明这是认真做的产品而非 demo。</li>
 <li><strong>话题性成分</strong>：harness 应用化是本周热点，qm 受益于品类热度；但"multiplayer"和"Slack 集成"是独立差异化，非纯蹭热度。</li>
 </ul>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">关键技术亮点亮点</h2>
 <ol>
 <li><strong>Per-scope durable sandbox</strong>：每人/每房间有独立的文件、工具、已登录服务——这是隔离的核心。README 架构图显示 agent 通过 <code>execute</code> 工具在 scope 自己的沙箱里运行命令，"installed tools stay installed"。</li>
 <li><strong>Harness 无关的 core</strong>：中央 core 用 TypeScript + Fastify，agent loop 支持多种 harness（Pi/OpenCode/Claude Code），所有 substrate（harness/session store/sandbox/memory）都在接口后面，生产实现通过一个 wiring 文件替换。</li>

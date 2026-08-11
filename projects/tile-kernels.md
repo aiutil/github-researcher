@@ -32,7 +32,7 @@ LLM 训练和推理中的 GPU 算子优化一直是黑箱 — 要么用 cuBLAS/c
 ## 热度来源判断
 真实技术价值驱动。DeepSeek 品牌效应 + 实际有用的算子 + TileLang 新范式 = 三重吸引力。1.4K stars / 117 forks 的比例健康。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **TileLang DSL** — 用 Python 语法写 GPU kernel，自动优化，降低算子开发门槛
 2. **MoE 全栈算子** — 从 Top-k 专家选择到 Token-to-expert 映射到融合扩展/约减，覆盖 MoE 推理全链路

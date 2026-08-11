@@ -30,7 +30,7 @@ url: "https://github.com/MoonshotAI/MoonEP"
 ## 热度来源判断
 **真实技术需求主导。** EP 通信是 MoE 训练的硬骨头，DeepEP（DeepSeek 开源）已建立该赛道认知。MoonEP 作为"完美均衡"新方案切入，对训练大规模 MoE 的团队有直接实用价值。热度（4 天 858⭐）对纯基础设施库而言健康。风险：benchmark 为项目方自报，需独立复现。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **动态冗余专家（dynamic redundant experts）**：在线从当前 router 输出规划冗余专家、预取权重，使每 rank 计算量恒定；梯度在反向传播时 reduce 回原 rank。
 2. **零拷贝 + 静态形状**：融合 permute/unpermute，token 直接写到远程 rank 的专家分组位置，返回 buffer view 给计算层，消除 comm-buffer→user-buffer 拷贝。固定 `S × K` buffer，静态形状。
 3. **近最优 GPU 规划内核**：在线规划冗余专家的开销可忽略（near-optimal planning kernel）。

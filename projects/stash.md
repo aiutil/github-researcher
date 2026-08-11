@@ -27,7 +27,7 @@ AI Agent 缺乏结构化的持久记忆能力。每次对话都是从零开始�
 ## 热度来源判断
 增长来自 AI Memory 赛道的整体热度溢出。502 stars 增长适中，不算泡沫。定位清晰（self-hosted, single binary），吸引不想依赖云服务的开发者。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **三层记忆模型**：Episodes（事件流）、Facts（事实知识）、Working Context（当前上下文），结构清晰
 2. **MCP Server 内置**：直接暴露 MCP 接口，无需额外适配层
 3. **Go 单二进制**：部署极简，无运行时依赖，Self-hosted 友好

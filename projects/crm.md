@@ -2,14 +2,14 @@
 title: "trycompai/crm"
 slug: crm
 date_added: "2026-08-03"
-last_seen_date: "2026-08-10"
+last_seen_date: "2026-08-12"
 category: "平台候选"
 emoji: "📋"
-stars: "8,102 stars"
-stars_delta: "7/31创建→8/10 7,955⭐（第九日 +204/+3%，增速连续五日衰减尾声），fork 840→876，应用层进入尾声"
+stars: "8,217 stars"
+stars_delta: "7/31创建→8/12 8,217⭐（第十一日 +115/+1.4%，fork 935），增速连续七日衰减，应用层稳态尾声"
 language: "TypeScript"
 license: "MIT"
-score: 87
+score: 86
 tags: ["agentic-crm", "eve", "vertical-agent", "evidence-ledger", "typescript", "bun", "deny-all-egress"]
 url: "https://github.com/trycompai/crm"
 ---
@@ -31,7 +31,7 @@ url: "https://github.com/trycompai/crm"
 - **品类热度成分**："agentic-first CRM"踩中本周应用层 + 垂直 SaaS 重写双热点；但"证据账本""deny-all egress 沙箱""eve 底座"是独立的设计深度，非纯蹭热度。
 - **价值定位**：核心价值不在"又一个 CRM"，而在于它示范了**"agent 作为产品本体"的工程范式**——可迁移到其他垂直领域。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **证据账本取代置信度**：agent 的工具**不接受置信度分数**。README 原文论证——"a model asked to grade its own certainty will, and it will be wrong in the direction that makes it look useful"。工具只报告观察到的事实（`crm.signature-block`、`github.account-identity`），一个账本对证据定价：强证据写记录，弱证据变成人类裁决的建议。"A confidently wrong fact about a customer is worse than a blank field, because nobody can tell it is wrong."
 2. **deny-all egress 沙箱**：agent 的 bash 沙箱**无网络、无数据库**。`web_fetch` 在 app 运行时跑、`web_search` 在 model provider 跑，沙箱 shell 只做文本处理。沙箱**永不获得 `DATABASE_URL`**。论证："A shell with credentials and egress is exfiltration-shaped even in an internal tool; a shell with neither is a text processor."

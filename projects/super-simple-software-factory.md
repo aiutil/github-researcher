@@ -31,7 +31,7 @@ url: "https://github.com/disler/super-simple-software-factory"
 - **架构主张的吸引力**："Python 拥有控制平面"这个主张击中了 agent 工程化的真实痛点——prompt 即控制平面的不可复现性。
 - **话题性成分**：14 watchers 偏低（vs 459⭐），说明关注度高于深度跟踪意愿，但 fork 高说明有人愿意"试用"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Python 控制平面 + agent 有界节点**：ADW（AI Developer Workflow）脚本拥有 sequencing、retries、acceptance。agent 工作在命名的 phase 内。代码失败时，failure 作为 envelope 通过与 agent report 相同的通道返回给 builder，修复循环相同。核心理念：**"agent proposes, code disposes"**。
 2. **类型化 JSON envelope 跨阶段传递上下文**：每个 phase 有明确边界，envelope 是 context 跨接缝的唯一方式，gate 成为"done"的定义。这让 failure 可定位（哪个 phase 失败），且 correction 比 restart 便宜（session 仍活着）。

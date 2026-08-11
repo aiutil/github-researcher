@@ -30,7 +30,7 @@ React 应用的状态管理长期面临"简单与可扩展不可兼得"的困境
 ## 热度来源判断
 MobX 的热度是**真实的技术选型偏好**沉淀。它在 2016-2019 年与 Redux 形成"双雄格局"，凭借"写更少代码做更多事"的理念吸引了大量开发者。虽然 2020 年后 Zustand、Jotai、Recoil 等轻量方案崛起分流，但 MobX 在**中大型复杂应用**（多实体关联、表单密集、实时数据）场景仍有不可替代性。当前 Star 增速稳定，属于成熟期工具。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Transparent Reactive Programming:** 通过 ES Proxy / 装饰器自动拦截属性访问，开发者无需手动声明依赖
 2. **细粒度订阅:** 只有真正读取了某 observable 的组件才会在该值变化时 re-render，性能优于 Redux 的全树对比
 3. **MobX 6 API:** 放弃装饰器依赖，改为 `makeObservable/makeAutoObservable`，更易配置

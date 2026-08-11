@@ -29,7 +29,7 @@ url: "https://github.com/koala73/worldmonitor"
 - **本地 AI 支持**：Ollama 集成意味着完全离线运行，隐私友好
 - **多平台覆盖**：桌面（macOS/Windows/Linux）+ Web + PWA
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **500+ 新闻源 × 15 分类**：AI 合成摘要，跨流关联分析（军事/经济/灾难/升级信号）
 2. **双地图引擎**：3D globe.gl（Three.js）+ WebGL deck.gl（MapLibre GL），56 种图层类型
 3. **Country Instability Index (CII) v8**：31 个 Tier-1 国家的不稳定性压力评分，服务端权威计算

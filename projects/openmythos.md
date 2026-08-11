@@ -30,7 +30,7 @@ url: "https://github.com/kyegomez/OpenMythos"
 ## 热度来源判断
 **真实需求 + 社区好奇心驱动**。Anthropic 的 Claude 在推理质量上与竞品明显不同，社区对"它到底怎么做到的"有强烈求知欲。OpenMythos 满足了这个需求。但需注意：star 增长中相当部分来自"围观"而非"使用"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **Recurrent-Depth Transformer (RDT)**：三层架构（Prelude → Recurrent Block × N → Coda），推理时计算深度可变。核心洞察：不是所有 token 都需要相同深度的计算。
 

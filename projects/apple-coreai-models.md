@@ -29,7 +29,7 @@ Apple 端侧 AI 开发者基础设施——模型导出配方（HuggingFace → 
 ## 热度来源判断
 Apple 品牌效应 + 开发者对端侧 AI 的真实需求。1,064 stars 对于 Apple 官方仓库来说不算爆发，但这是基础设施层，不是应用层——长期价值远高于 star 数暗示的。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **模型导出配方** — 从 HuggingFace 模型到 Core AI `.aimodel` 格式的标准化流水线
 2. **Python 构建块** — PyTorch 模型作者可以直接用 Python 写 Core AI 兼容模型
 3. **Swift 运行时** — `coreai-models` Swift Package，直接集成到 iOS/macOS App

@@ -33,7 +33,7 @@ OpenClaw Skills 精选合集——从官方 OpenClaw Skills Registry 中筛选�
 - **awesome-list 模式威力（高）**：精选+分类=高传播性
 - **VoltAgent 维护（中高）**：专业团队运营质量有保障
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **5,400+ 技能索引**：从 OpenClaw Registry 系统化整理
 2. **分类体系**：按功能/场景/平台分类（开发/设计/数据/自动化等）
 3. **质量筛选**：不是简单搬运 registry，而是精选优质技能

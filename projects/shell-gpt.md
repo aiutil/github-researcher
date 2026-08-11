@@ -29,7 +29,7 @@ url: "https://github.com/TheR1D/shell_gpt"
 ## 热度来源判断
 热度来自开发者对"终端原生 AI"的需求。2023 年 ChatGPT 爆发后，开发者希望在不动终端工作流的情况下使用 AI。Shell-GPT 是最早满足这个需求的工具之一。随着 Claude Code、GitHub Copilot CLI 等大厂方案的出现，Shell-GPT 的定位转向"轻量、多模型、可定制"的差异化方向。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 - 多模型抽象层：统一 API 调用 OpenAI/Anthropic/Ollama 等
 - 角色系统：预定义不同用途的 AI 人格（Shell 专家、代码审查者、翻译器）
 - Shell 命令生成：`sgpt -s` 直接生成可执行的 Shell 命令

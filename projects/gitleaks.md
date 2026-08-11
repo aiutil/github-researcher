@@ -31,7 +31,7 @@ url: "https://github.com/gitleaks/gitleaks"
 ## 热度来源判断
 Gitleaks 的热度是**真实安全刚需 + DevSecOps 文化普及**双重驱动。随着云原生普及和供应链安全事件频发（如 Codecov 供应链攻击），密钥扫描从"可选项"变成"必选项"。Gitleaks 因其 Go 单二进制部署、速度快、规则丰富，成为 GitHub/GitLab CI 的默认选择。热度持续走高，非泡沫。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Go 单二进制:** 编译为单一可执行文件，无运行时依赖，CI 集成极简
 2. **正则规则引擎:** 内置 100+ 规则覆盖 AWS、GCP、Stripe、GitHub Token 等主流密钥格式
 3. **熵检测（Entropy Detection）:** 对高熵字符串（可能为随机生成的密钥）进行补充检测，覆盖未知格式

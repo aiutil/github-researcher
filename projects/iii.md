@@ -33,7 +33,7 @@ last_seen_date: "2026-06-03"
 - Agent 运行时扩展能力的概念新颖
 - Rust 性能保障 + 多语言 SDK 覆盖面广
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **Worker/Function/Trigger 三原语**：统一所有后端能力的抽象模型
 2. **Agent 可编排**：Agent 用同一套接口发现和调用 Function
 3. **实时可观测**：所有调用自动 trace，无需额外集成

@@ -30,7 +30,7 @@ url: "https://github.com/MoonshotAI/Kimi-K3"
 ## 热度来源判断
 **真实需求主导，但叠加品牌效应。** Moonshot AI（月之暗面）是国内头部模型团队，Kimi 系列已有用户基础；"首个开源 3T"的话题性放大了传播。但 397 fork + 有可下载权重说明不只是围观。风险在于：跑分对标为厂商自报，需独立复现才能区分"前沿能力"与"营销叙事"。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **KDA + Attention Residuals（AttnRes）新注意力架构**：93 层中 69 层用 KDA、24 层用 Gated MLA，官方称这是 scaling 效率提升的关键（2.5× over K2，待验证）。
 2. **Stable LatentMoE**：896 专家选 16 + 2 共享专家，SiTU-GLU 激活，3584 Latent MoE 维度。稀疏度设计旨在稳定大规模 MoE 训练。
 3. **1M token 上下文 + 原生多模态**：同一模型理解文本与图像（MoonViT-V2，401M 参数视觉编码器），上下文窗口 1,048,576。

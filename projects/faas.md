@@ -30,7 +30,7 @@ AWS Lambda 等 Serverless 平台虽然便利，但存在严重的供应商锁定
 ## 热度来源判断
 OpenFaaS 的热度是**真实的云原生需求 + CNCF 生态背书**驱动。它是 CNCF（Cloud Native Computing Foundation）SANDBOX 项目，由 Alex Ellis 创立并商业化运营（OpenFaaS Ltd）。热度来源包括：企业私有云 Serverless 需求、边缘计算场景（IoT、5G）、以及 GitOps 流水线整合。当前增速放缓，进入成熟期。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **函数即容器:** 每个函数构建为标准 Docker 镜像，语言无关，依赖完整
 2. **Kubernetes 原生:** 通过 CRD（Custom Resource Definition）管理函数生命周期
 3. **watchdog 模式:** 经典模式（of-watchdog）和流模式，适配不同性能需求

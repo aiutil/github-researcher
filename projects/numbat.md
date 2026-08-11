@@ -31,7 +31,7 @@ Perplexity 官方的单二进制端点 agent 可见性工具：通过本地 hook
 - **品类时机信号**：agent 在企业端点的使用量正在增长（qm 11K⭐、Claude Code/Codex 等大规模采用），"agent 做了什么"的审计需求自然浮现。numbat 出现在这个需求上升期。
 - **话题性成分**：subscribers 仅 5（相对 684⭐ 偏低），说明目前更多是"收藏/试用"而非"深度使用"——热度部分来自品类话题性。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **三类输入归一到统一事件模型**：本地 hooks/plugins（同步生命周期钩子或生成的 agent 插件/扩展）、OTLP/HTTP 日志导出器、磁盘会话产物（on-disk artifacts）。所有输入产生相同的归一化事件，使用相同的 CEL 规则引擎。这意味着 numbat 既能实时捕获（hooks/logs），也能对**未被 numbat 预先埋点的 agent 会话做事后取证重建**（读 on-disk artifacts）。
 2. **CEL 规则引擎 + 多步序列规则**：内置 CEL（Common Expression Language）规则，支持多步序列规则（检测跨多步的可疑行为模式），以及自定义 YAML 规则。规则分 monitor-only（所有 shipped 规则）和 enforce（可选，需显式标记 `enforce: true`）。

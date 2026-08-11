@@ -37,7 +37,7 @@ KV Cache 磁盘持久化是一个被忽视但极具价值的创新：MoE 模型�
 - GPT 5.5 辅助开发的透明声明引发讨论
 - 2.3K stars 在 3 天内，增速超出预期，说明本地推理需求强烈
 
-## 关键技术亮点
+## 关键技术亮点亮点
 1. **非对称 2-bit 量化**：只量化 MoE 路由专家（up/gate 用 IQ2_XXS，down 用 Q2_K），共享专家和投影层保持原始精度
 2. **KV Cache 磁盘持久化**：利用 DeepSeek V4 的压缩 KV Cache + 现代 MacBook SSD 速度，KV Cache 作为磁盘一等公民
 3. **Metal 专用实现**：不做通用 GGUF 加载器，Metal 图执行器专门为 DeepSeek V4 Flash 优化

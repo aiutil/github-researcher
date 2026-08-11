@@ -31,7 +31,7 @@ url: "https://github.com/leonickson1/Swiftlet"
 - **品类时机信号**：本地大模型推理是持续热点（kimi-k3-in-c 8 天 3,751⭐，持续增长）。Apple 原生栈角度填补了 C99/llama.cpp 之外的位置。
 - **话题性成分**：作者 followers=6（GitHub API 可核验），知名度极低，热度可能含"iPhone 跑大模型"的话题性成分。iPhone 17 上 1 tok/s 尚不实用。
 
-## 关键技术亮点
+## 关键技术亮点亮点
 
 1. **MoE 流式加载（dense core 驻留 + expert 按需加载）：** README 表格声明（可核验但未独立复现）：Qwen3.6-35B-A3B 4-bit，磁盘 18GB，峰值 RAM 2.6GB，M5 Mac 上 7-11 tok/s；80B 4-bit，磁盘 42GB，峰值 RAM 4.3GB，4.5-5 tok/s。策略是只把约 3B 活跃参数的 dense core 驻留，按需从存储加载路由命中的 expert。
 2. **iPhone 17 可运行：** 35B 模型在 iPhone 17 上约 2.5GB RAM，约 1 tok/s（README 声明，待验证）。README 引用 ANEMLL 先例（397B MoE 在 iPhone 17 Pro 上流式推理的概念验证）说明这不是孤例。
