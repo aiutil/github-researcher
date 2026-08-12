@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-12'
+last_updated: '2026-08-13'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,47 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-13（第九十八版）
+
+### H3 生态全面减速——h3.c +377（1,201→1,578，+31.4%，从 +831% 回落），MiniMax-H3 官方 +234（5,194→5,428，+4.5%），爆发期结束进入长尾 · guillaumemeyer/watermarks-remover 两日破 2k（2,008⭐/187 fork/0 issue），AI 来源水印剥离作为独立 Skill 品类出现（Microsoft MVP 作者，双重用途风险） · sohaibdevv/youtube-music 疑似恶意软件投递样本（848⭐/0 fork/0 issue + 密码 ZIP），与 WeChat-AI 刷量模式本质不同，"投递型"风险新样本 · Coding Agent 治理工具群涌现（anti-slop/claudish-to-english/HERO-Anti-OverDefense），从"能写"到"写得靠谱"
+
+#### 今日四大趋势
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|------|----------|----------|--------|
+| 1 | H3 生态全面减速——h3.c +377（1,201→1,578，+31.4%，从 +831% 断崖式回落），MiniMax-H3 官方 +234（5,194→5,428，+4.5%，从 +24.7% 回落），衍生生态 448→505。增速序列 h3.c: +831%→+31.4%，MiniMax-H3: +55%→+24.7%→+4.5%。爆发期明确结束。fork/subscribers 仍在增长（h3.c 57→86、subs 10→15），深度开发者仍在进入。"推理成本是瓶颈"核心判断不受减速影响 | h3c, minimax-h3 | 88 |
+| 2 | guillaumemeyer/watermarks-remover 两日破 2k（2,008⭐/187 fork/0 issue/Python/MIT/创建 08-11）——AI 来源水印剥离作为独立 Skill 品类出现。多层架构（Layer A Unicode 清除/B 统计水印重写/C2PA 元数据剥离），覆盖 Claude/SynthID/OpenAI/Kirchenbauer。作者 Microsoft MVP（API 可核验）。双重用途风险需标注 | watermarks-remover | 86 |
+| 3 | sohaibdevv/youtube-music 疑似恶意软件投递样本（848⭐/0 fork/0 issue + 密码 ZIP 'ytm4all'）。与 WeChat-AI 刷量模式不同——0 fork + 密码 ZIP 是经典恶意软件投递特征。848 star / 0 fork 极端背离。推断未下载验证载荷。作为"投递型"风险新样本入库 | youtube-music | 65 |
+| 4 | Coding Agent 治理工具群涌现——anti-slop（290⭐，Oxlint 规则拒绝低证据 TS/JS 模式）、claudish-to-english（598⭐，本地 LLM 翻译 AI 术语）、HERO-Anti-OverDefense（118⭐，约束 Agent 过度防御）。从代码质量/可读性/行为约束三维度切入，暗示 Agent 进入"写得靠谱"成熟阶段。单日数据待后续验证 | anti-slop | 82 |
+
+#### 今日新增/更新项目
+
+| 项目 | Stars | 分类 | Score | 变化 |
+|------|-------|------|-------|------|
+| antirez/h3.c | 1,578 | 观察型 | 92 | 更新（1,201→1,578，+377/+31.4%，从 +831% 断崖回落，爆发期结束，fork 57→86，subs 10→15） |
+| guillaumemeyer/watermarks-remover | 2,008 | 工具型 | 86 | 新增（AI 来源水印剥离品类定义者，Microsoft MVP 作者，双重用途风险） |
+| firecrawl/anydoc | 15,040 | 工具型 | 90 | 更新（14,356→15,040，+684/+4.8%，delta 从 +957 回落，收敛持续） |
+| MiniMax-AI/MiniMax-H3 | 5,428 | 观察型 | 88 | 更新（5,194→5,428，+234/+4.5%，增速序列 +55%→+24.7%→+4.5%，爆发期结束，score 90→88） |
+| sohaibdevv/youtube-music | 848 | 观察型 | 65 | 新增（疑似恶意软件投递样本，0 fork + 密码 ZIP，投递型风险新样本） |
+| ShawnPana/phone-harness | 1,630 | 观察型 | 85 | 更新（1,488→1,630，+142/+9.5%，fork 129→143） |
+| FareedKhan-dev/kimi-k3-in-c | 5,168 | 观察型 | 85 | 更新（4,891→5,168，+277/+5.7%，fork 774→834） |
+| dmmulroy/anti-slop | 290 | 工具型 | 82 | 新增（Oxlint 证据治理规则，Agent 治理工具群代表） |
+| oil-oil/oil-motion | 1,606 | 工具型 | 84 | 更新（1,475→1,606，+131/+8.9%） |
+| KKKKhazix/human-writing | 2,546 | 工具型 | 84 | 更新（2,405→2,546，+141/+5.9%） |
+| trycompai/crm | 8,317 | 平台候选 | 86 | 更新（8,217→8,317，+100/+1.2%，连续八日低个位数） |
+| yc-software/qm | 13,233 | 平台候选 | 86 | 更新（13,092→13,233，+141/+1.1%，停滞通道） |
+| SMNETSTUDIO/WeChat-AI | 1,519 | 观察型 | 68 | 更新（1,406→1,519，+113/+8.0%，fork 1,123，刷量持续） |
+| genspark-ai/genoffice | 2,668 | 平台候选 | 84 | 更新（2,558→2,668，+110/+4.3%） |
+| Binaryify/open-kimi-ppt-skill | 1,602 | 观察型 | 70 | 更新（archived，star -1，fork 1,194→1,204 仍异常增长第六日） |
+
+#### 趋势观察
+
+- **H3 爆发期结束——长尾扩散期开始：** h3.c +831%→+31.4% 断崖式回落，MiniMax-H3 +55%→+24.7%→+4.5% 连续衰减。但 fork（57→86）和 subscribers（10→15）仍在增长，深度开发者持续进入。核心判断"推理成本是瓶颈"不受减速影响。
+- **AI provenance 管理品类出现：** watermarks-remover 两日破 2k 开创"AI 来源标记管理"品类（检测/审查/清除）。随 C2PA/SynthID 普及和 AI 内容标识法规推进，"来源管理"可能成为基础设施层。双重用途风险需持续标注。
+- **"投递型"风险新样本：** youtube-music（0 fork + 密码 ZIP）与 WeChat-AI（刷量型）、open-kimi-ppt-skill（归档后异常增长型）构成三类"热度≠价值"风险模式。密码 ZIP + 高 star 低参与度是新的检测信号。
+- **Coding Agent 治理工具群：** anti-slop + claudish-to-english + HERO 从代码质量/可读性/行为约束切入 Agent 输出治理，暗示 Agent 进入"写得靠谱"成熟阶段。单日数据待验证。
+- **应用层全面停滞确认：** crm（+1.2%）、qm（+1.1%）、genoffice（+4.3%）增速持续低个位数，应用层红利期基本结束。
 
 ## 2026-08-12（第九十七版）
 

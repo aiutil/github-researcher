@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-08-13
+
+**核心主题：** H3 生态全面减速——h3.c +377（1,201→1,578，+31.4%，从 +831% 断崖回落），MiniMax-H3 官方 +234（5,194→5,428，+4.5%），爆发期结束进入长尾，但 fork/subs 仍在增长（深度开发者持续进入） · guillaumemeyer/watermarks-remover 两日破 2k（2,008⭐/187 fork/0 issue），AI 来源水印剥离作为独立 Skill 品类出现（Microsoft MVP 作者可核验，双重用途风险标注） · sohaibdevv/youtube-music 疑似恶意软件投递样本（848⭐/0 fork/0 issue + 密码 ZIP），与 WeChat-AI 刷量模式本质不同，"投递型"风险新样本 · Coding Agent 治理工具群涌现（anti-slop/claudish-to-english/HERO），从"能写"到"写得靠谱"
+
+**关键项目：**
+- ⚡ antirez/h3.c (1,578, 更新 +377) — Redis 创始人 H3 原生推理引擎，从 +831% 断崖回落到 +31.4%，爆发期结束，fork 57→86，subs 10→15，Score 92
+- 🧹 guillaumemeyer/watermarks-remover (2,008, 新增) — AI 来源水印剥离品类定义者，多层架构（Unicode/统计/C2PA），Microsoft MVP 作者，双重用途风险，Score 86
+- 📑 firecrawl/anydoc (15,040, 更新 +684) — 文档解析头部，+4.8%，delta 从 +957 回落，收敛持续，Score 90
+- 🎬 MiniMax-AI/MiniMax-H3 (5,428, 更新 +234) — 视频生成模型，+4.5%，增速序列 +55%→+24.7%→+4.5%，爆发期结束，衍生生态 505，Score 90→88
+- ⚠️ sohaibdevv/youtube-music (848, 新增) — 疑似恶意软件投递样本，0 fork + 密码 ZIP，投递型风险新样本，Score 65
+- 📱 ShawnPana/phone-harness (1,630, 更新 +142) — agent 控制 iPhone，+9.5%，fork 129→143，Score 85
+- 💠 FareedKhan-dev/kimi-k3-in-c (5,168, 更新 +277) — 便携 C99 K3，+5.7% 持续，Score 85
+- 🛡️ dmmulroy/anti-slop (290, 新增) — Oxlint 证据治理规则，Agent 治理工具群代表，Score 82
+- 📋 trycompai/crm (8,317, 更新 +100) — Agentic-first CRM，+1.2% 连续八日低个位数，Score 86
+- 👥 yc-software/qm (13,233, 更新 +141) — 多人协作 agent harness，+1.1% 停滞通道，Score 86
+
 ## 2026-08-12
 
 **核心主题：** antirez/h3.c 爆发（129→1,201，+831%/+1,072），Redis 之父原生推理引擎三日破千，"推理成本是瓶颈"判断被市场二次确认（可核验：API star/fork/subscribers；README 能力描述可核验；M5 Max 性能为作者自述未复现） · anydoc 昨日"稳态"判断被逆转——delta 从 +719 反弹到 +957（13,399→14,356，+7.1%），"基于有限数据过早下稳态结论"的方法论修正案例 · SMNETSTUDIO/WeChat-AI 疑似刷量样本（1,406⭐/1,040 fork/1 subscriber/0 issue/无描述/2天），继 open-kimi-ppt-skill 后又一个"热度≠价值"对照案例 · MiniMax-H3 持续高位（4,164→5,194，+1,030/+24.7%），衍生生态 379→448

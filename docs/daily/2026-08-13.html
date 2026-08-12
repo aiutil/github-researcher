@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-13 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-13">GitHub 趋势研究简报 - 2026-08-13</h1>
+<blockquote>
+<p>本报基于 GitHub API + 仓库 README 深度阅读，聚焦架构师视角的真问题。数据采集时间：2026-08-13。所有 star/fork/created_at/pushed_at/license/language/archived 均来自 GitHub API（可核验事实），推断与待观察项会显式标注。</p>
+</blockquote>
+<h2 id="_1">今日核心判断</h2>
+<p>今天最重要的信号是<strong>一个生态减速、一个新品类出现、和一个新型风险样本</strong>：</p>
+<ol>
+<li>
+<p><strong>H3 生态全面减速——爆发期结束。</strong> <code>antirez/h3.c</code>（1,578⭐ / 86 fork / 15 subscribers，C，MIT，创建 08-09）第四日追踪，单日 <strong>+377（1,201→1,578，+31.4%）</strong>——增速从昨日 +831% 断崖式回落。fork 57→86（+29），subscribers 10→15（+5），open issues 13→18。<code>MiniMax-AI/MiniMax-H3</code> 官方仓库同步减速：<strong>+234（5,194→5,428，+4.5%）</strong>，从连续四日的 +55%→+24.7%→+4.5% 衰减序列可见爆发期明确结束。衍生生态搜索 448→505（+57）。<strong>减速本身不含价值判断</strong>——注意力饱和后的自然回归。关键在于：h3.c 的 fork 和 subscribers 仍在增长（57→86、10→15），说明<strong>深度开发者仍在进入</strong>，只是"围观者红利"已释放完毕。昨日报告判断"H3 是本周最强生态级信号"仍然成立，但需要修正：<strong>爆发期已过，进入长尾扩散期。</strong></p>
+</li>
+<li>
+<p><strong>guillaumemeyer/watermarks-remover 两日破 2k——AI 来源水印剥离作为独立 Skill 品类出现。</strong> <code>guillaumemeyer/watermarks-remover</code>（2,008⭐ / 187 fork / <strong>0 open issue</strong> / Python / MIT / 创建 08-11 / pushed 08-12）。README 显示完整的多层剥离架构：<strong>Layer A</strong> 确定性 Python 脚本清除 Unicode 隐藏字符/bidi/标签字符；<strong>Layer B</strong> 统计水印重写（针对 SynthID-Text / Kirchenbauer 式 token-sampling 标记）通过 Agent rewrite + 可选 <code>rewrite_text.py</code> 钩子；<strong>Files 层</strong> 清除 PNG/JPEG/SVG/PDF/DOCX/ODT/HTML 中的 C2PA/EXIF/XMP 元数据。覆盖 Claude、Gemini/SynthID、OpenAI provenance、open-LLM Kirchenbauer 等多厂商。作者 guillaumemeyer 为 <strong>Microsoft MVP</strong>（GitHub 账号 2012 年注册，36 公开仓库，43 followers——API 可核验），信誉较高。<strong>热度来源判断：</strong> "AI 来源检测 vs 个人隐私"的张力是真实需求——当 AI 生成内容被广泛标记来源（C2PA 标准、SynthID 等），用户对"自己拥有的内容上的元数据"有合法清除需求。但<strong>"双重用途"风险需显式标注</strong>：同一工具也可被用于绕过来源验证、使 AI 生成内容冒充人类创作。README 已用 "for privacy and hygiene on content you own" 做合规边界声明，但实际使用无法约束。</p>
+</li>
+<li>
+<p><strong>sohaibdevv/youtube-music 疑似恶意软件投递样本——新型风险案例。</strong> <code>sohaibdevv/youtube-music</code>（848⭐ / <strong>0 fork</strong> / <strong>0 open issue</strong> / TypeScript / MIT / 创建 08-11）。README 明确提供<strong>密码保护 ZIP 下载</strong>（<code>youtube-music-free.zip</code>，Password: <code>ytm4all</code>）。这与 <code>SMNETSTUDIO/WeChat-AI</code> 的刷量模式（fork≈star、1 subscriber）<strong>本质不同</strong>：WeChat-AI 是"热度数据异常"，youtube-music 是"<strong>分发模式异常</strong>"——合法开源项目以源码 + 构建 CI 分发，而密码保护 ZIP 是经典恶意软件投递向量。848 stars / 0 forks 的极端背离进一步支持"非自然热度"判断（一个有 848 人 star 的项目不可能 0 fork）。作者 sohaibdevv（2024-10 注册，95 公开仓库，9 followers）。<strong>可核验事实：</strong> API 0 fork/0 issue + README 密码 ZIP 模式。<strong>推断但未验证：</strong> 实际 ZIP 是否含恶意载荷——<strong>未下载、未分析</strong>，标记为待观察。作为"恶意软件投递伪装开源项目"的新对照案例入库，与 WeChat-AI（刷量）构成两类不同的"热度≠价值"风险样本。</p>
+</li>
+<li>
+<p><strong>Coding Agent 治理工具群涌现。</strong> 今日出现三个从不同角度治理 Coding Agent 输出的工具：<code>dmmulroy/anti-slop</code>（290⭐，Oxlint 规则拒绝 15 种低证据 TS/JS 模式）、<code>gvzdv/claudish-to-english</code>（598⭐，本地 LLM 将 AI 术语翻译为通俗英语）、<code>wanshuiyin/HERO-Anti-OverDefense</code>（118⭐，约束 Agent 过度防御的粘贴式合约）。三者从代码质量、可读性、行为约束三个维度切入，暗示 Coding Agent 已从"能写代码"进入"写得靠谱"的成熟阶段。<strong>可核验：</strong> 三者 README 能力描述 + star/fork 数据。<strong>推断：</strong> 是否形成持久品类待观察（当前均为单日数据，需后续验证）。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>证据边界声明</strong>：所有 star/fork/created_at/pushed_at/license/language/archived 为 GitHub API 可核验事实。h3.c/MiniMax-H3 增速序列为基于连续多日 API 数据的计算值（可核验）；"爆发期结束"为基于增速衰减曲线的推断。watermarks-remover 的多层剥离能力来自 README（可核验）；作者 Microsoft MVP 身份可核验；"双重用途风险"为推断。youtube-music "疑似恶意软件"为基于 API 字段（0 fork + 密码 ZIP 模式）的推断——<strong>未下载 ZIP、未分析实际载荷</strong>，只能记录分发模式异常。anti-slop/claudish-to-english/HERO 的能力描述来自各自 README（可核验）。H3 衍生生态计数 505 来自 GitHub Search API（可核验，但受索引延迟影响）。</p>
+</blockquote>
+<hr />
+<h2 id="_2">今日重点趋势</h2>
+<h3 id="1-h3-88">1. H3 生态全面减速——爆发期结束，进入长尾扩散（评分 88）</h3>
+<p>连续四日追踪 h3.c + 连续十二日追踪 MiniMax-H3，增速序列完整呈现爆发→衰减曲线：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>08-10</th>
+<th>08-11</th>
+<th>08-12</th>
+<th>08-13</th>
+<th>趋势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h3.c stars</td>
+<td>129</td>
+<td>129</td>
+<td>1,201</td>
+<td>1,578</td>
+<td>+377（+31.4%）</td>
+</tr>
+<tr>
+<td>h3.c 增速</td>
+<td>—</td>
+<td>—</td>
+<td>+831%</td>
+<td>+31.4%</td>
+<td>断崖式回落</td>
+</tr>
+<tr>
+<td>h3.c forks</td>
+<td>—</td>
+<td>7</td>
+<td>57</td>
+<td>86</td>
+<td>+29（仍在增长）</td>
+</tr>
+<tr>
+<td>h3.c subs</td>
+<td>—</td>
+<td>1</td>
+<td>10</td>
+<td>15</td>
+<td>+5（仍在增长）</td>
+</tr>
+<tr>
+<td>MiniMax-H3 stars</td>
+<td>2,693</td>
+<td>4,164</td>
+<td>5,194</td>
+<td>5,428</td>
+<td>+234（+4.5%）</td>
+</tr>
+<tr>
+<td>MiniMax-H3 增速</td>
+<td>+52%</td>
+<td>+55%</td>
+<td>+24.7%</td>
+<td>+4.5%</td>
+<td>连续衰减</td>
+</tr>
+<tr>
+<td>衍生生态</td>
+<td>351</td>
+<td>379</td>
+<td>448</td>
+<td>505</td>
+<td>+57（仍在增长）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键修正与延续：</strong></p>
+<ul>
+<li><strong>延续：</strong> "推理成本是瓶颈"的核心判断不受减速影响。h3.c 的存在本身就是证据——antirez 选择写 C/Metal 推理引擎，说明 H3 推理成本问题真实存在。fork（57→86）和 subscribers（10→15）持续增长说明<strong>深度开发者仍在进入</strong>。</li>
+<li><strong>修正：</strong> 昨日报告的"H3 是本周最强生态级信号"仍成立，但需追加判断：<strong>爆发期已过</strong>。注意力增速（+831%→+31.4%）已回归常态。衍生生态仍在扩张（+57），但增量也在收窄。</li>
+<li><strong>教训强化：</strong> 08-12 报告中对 anydoc "稳态"判断被逆转的教训在此再次验证——<strong>有限窗口的增速序列不足以预测拐点</strong>。h3.c 的 +831%→+31.4% 断崖证明爆发期持续时间难以预判。</li>
+</ul>
+<h3 id="2-watermarks-removerai-skill-86">2. watermarks-remover——AI 来源水印剥离作为独立 Skill 品类（评分 86）</h3>
+<p><code>guillaumemeyer/watermarks-remover</code> 在两天内获得 2,008 stars（创建 08-11），是今日新增项目中 star 数最高的。</p>
+<p><strong>架构亮点（README 可核验）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>目标</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer A</td>
+<td>不可见 Unicode / 异形空格 / bidi / 标签字符</td>
+<td>确定性 Python 脚本（stdlib only）</td>
+</tr>
+<tr>
+<td>Layer B</td>
+<td>统计水印（SynthID-Text / Kirchenbauer token-sampling）</td>
+<td>Agent rewrite + 可选 <code>rewrite_text.py</code> 钩子</td>
+</tr>
+<tr>
+<td>Files 层</td>
+<td>C2PA / EXIF / XMP / doc props</td>
+<td>PNG, JPEG, SVG, PDF, DOCX, ODT, HTML, Markdown</td>
+</tr>
+</tbody>
+</table>
+<p>覆盖厂商：Claude、Gemini/SynthID、OpenAI provenance、open-LLM Kirchenbauer 式标记。</p>
+<p><strong>为什么值得关注：</strong>
+- <strong>品类定义者：</strong> 此前 AI 来源检测/移除散落在各个工具中（exiftool 清元数据、各 watermark detector 等），watermarks-remover 首次将其系统化为多层、多厂商、Agent Skill 格式的统一工具。
+- <strong>作者信誉：</strong> guillaumemeyer，Microsoft MVP，GitHub 账号 2012 年注册，36 公开仓库——API 可核验，非新建账号。
+- <strong>合规边界声明：</strong> README 明确 "for privacy and hygiene on content you own"，且 Layer B 默认 <code>--backend print-prompt</code>（仅打印提示词，不实际调用模型），需用户显式开启重写。</p>
+<p><strong>风险/待观察：</strong>
+- <strong>双重用途：</strong> 同一工具可被用于绕过 AI 来源验证系统（C2PA 标准、SynthID），使 AI 生成内容冒充人类创作。这是"隐私保护"与"来源可追溯性"之间的根本张力。
+- <strong>法律/政策风险：</strong> 多国正在推进 AI 内容标识法规（如欧盟 AI Act），主动移除 AI 来源标记可能面临法律风险。
+- <strong>0 open issues：</strong> 2k stars / 0 issues 可能意味着项目尚早期（社区反馈未形成），也可能是热度泡沫信号——待后续观察。</p>
+<h3 id="3-youtube-music-65">3. youtube-music——疑似恶意软件投递伪装开源项目（评分 65）</h3>
+<p><code>sohaibdevv/youtube-music</code>（848⭐ / 0 fork / 0 issue / TypeScript / MIT / 创建 08-11）呈现<strong>与 WeChat-AI 本质不同的风险模式</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>WeChat-AI（刷量型）</th>
+<th>youtube-music（投递型）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fork/star</td>
+<td>0.74（fork≈star）</td>
+<td>0/848 = <strong>0</strong>（极端背离）</td>
+</tr>
+<tr>
+<td>分发方式</td>
+<td>仓库代码（README 404）</td>
+<td><strong>密码保护 ZIP</strong>（Password: ytm4all）</td>
+</tr>
+<tr>
+<td>参与度</td>
+<td>1 subscriber, 0 issue</td>
+<td>0 issue</td>
+</tr>
+<tr>
+<td>风险类型</td>
+<td>数据刷量（热度造假）</td>
+<td><strong>疑似恶意软件投递</strong></td>
+</tr>
+<tr>
+<td>可核验</td>
+<td>API 字段全部可核验</td>
+<td>API 0 fork + README 密码模式可核验</td>
+</tr>
+<tr>
+<td>未验证</td>
+<td>"刷量"行为本身</td>
+<td><strong>ZIP 实际载荷</strong>（未下载）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键判断（推断，标记为待观察）：</strong></p>
+<p>密码保护 ZIP 下载是经典恶意软件投递向量——合法开源项目以源码仓库 + CI/CD 构建分发，而非密码保护的二进制压缩包。README 声称"No install, no registry, no leftovers"和"Streams audio like a browser – no downloading, no DRM bypass"，但分发模式（密码 ZIP + 可执行文件）与声明内容矛盾。</p>
+<p><strong>证据边界：</strong> 以上为基于 API 字段和 README 分发模式的推断。<strong>未下载 ZIP、未分析实际载荷</strong>——标记为待观察。记录此案例的价值在于：GitHub 作为开源分发平台的信任正在被利用，密码 ZIP + 高 star 低参与度的组合是新的风险信号模式。</p>
+<h3 id="4-coding-agent-82">4. Coding Agent 治理工具群——从"能写"到"写得靠谱"（评分 82）</h3>
+<p>今日三个项目从不同角度切入 Coding Agent 输出治理：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>治理维度</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dmmulroy/anti-slop</td>
+<td>290</td>
+<td>代码质量</td>
+<td>Oxlint 规则拒绝 15 种低证据 TS/JS 模式（no-chained-type-assertions, no-runtime-typeof 等）</td>
+</tr>
+<tr>
+<td>gvzdv/claudish-to-english</td>
+<td>598</td>
+<td>可读性</td>
+<td>本地 LLM（ollama）将 AI 术语翻译为通俗英语，display-only 不修改原文</td>
+</tr>
+<tr>
+<td>wanshuiyin/HERO-Anti-OverDefense</td>
+<td>118</td>
+<td>行为约束</td>
+<td>粘贴式合约约束 Agent 在 Hashing/Edge cases/Rubrics/Overbuild 四个场景的过度防御</td>
+</tr>
+</tbody>
+</table>
+<p><strong>趋势判断（推断，待观察）：</strong> Coding Agent 已进入成熟阶段的标志不是"更多 Agent"，而是"治理 Agent 输出的工具"出现。这与 2025 年 Agent 框架爆发后 2026 年转向 Agent 治理/评估的大趋势一致。但当前均为单日数据，是否形成持久品类需后续验证。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ul>
+<li><strong>H3 生态长尾期机会：</strong> 爆发期结束意味着注意力红利消退，但对真正构建 H3 生态的开发者（如 antirez）反而是"噪音减少、信号集中"的机会。fork 持续增长说明工程参与度仍在。</li>
+<li><strong>AI 来源管理品类：</strong> watermarks-remover 开创的"AI provenance 管理"品类（检测/标记/清除）有持久需求——随着 AI 内容标识法规推进，"来源管理"可能成为基础设施层。</li>
+</ul>
+<h3 id="_5">风险</h3>
+<ul>
+<li><strong>开源平台信任侵蚀：</strong> youtube-music（疑似恶意软件投递）+ WeChat-AI（刷量）+ open-kimi-ppt-skill（归档后 fork 异常增长）构成"GitHub 作为可信分发平台正在被滥用"的证据链。密码保护 ZIP + 高 star 低参与度是新的风险信号模式。</li>
+<li><strong>AI 来源移除的法律灰区：</strong> watermarks-remover 的双重用途特性使其可能面临法律/平台政策风险——随着各国 AI 内容标识法规落地，主动移除来源标记的合法性将受到挑战。</li>
+<li><strong>应用层全面停滞：</strong> crm（+1.2%）、qm（+1.1%）、genoffice（+4.3%）增速持续低个位数，应用层红利期基本结束。</li>
+</ul>
+<hr />
+<h2 id="_6">重点项目档案</h2>
+<h3 id="_7">更新项目</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>今日 delta</th>
+<th>累计增速序列</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>antirez/h3.c</td>
+<td>1,578</td>
+<td>+377 (+31.4%)</td>
+<td>+831%→+31.4%</td>
+<td>爆发期结束，长尾扩散</td>
+</tr>
+<tr>
+<td>firecrawl/anydoc</td>
+<td>15,040</td>
+<td>+684 (+4.8%)</td>
+<td>+331%→+72%→+35%→+11%→+5%→+5.7%→+7.1%→+4.8%</td>
+<td>delta 回落，收敛持续</td>
+</tr>
+<tr>
+<td>MiniMax-AI/MiniMax-H3</td>
+<td>5,428</td>
+<td>+234 (+4.5%)</td>
+<td>+52%→+55%→+24.7%→+4.5%</td>
+<td>爆发期结束</td>
+</tr>
+<tr>
+<td>ShawnPana/phone-harness</td>
+<td>1,630</td>
+<td>+142 (+9.5%)</td>
+<td>+62.5%→+16.1%→+9.5%</td>
+<td>持续增长，赛道验证</td>
+</tr>
+<tr>
+<td>FareedKhan-dev/kimi-k3-in-c</td>
+<td>5,168</td>
+<td>+277 (+5.7%)</td>
+<td>持续 +5-12%</td>
+<td>稳定增长</td>
+</tr>
+<tr>
+<td>oil-oil/oil-motion</td>
+<td>1,606</td>
+<td>+131 (+8.9%)</td>
+<td>+29.2%→+8.9%</td>
+<td>加速放缓</td>
+</tr>
+<tr>
+<td>KKKKhazix/human-writing</td>
+<td>2,546</td>
+<td>+141 (+5.9%)</td>
+<td>+5-8% 稳定</td>
+<td>稳态增长</td>
+</tr>
+<tr>
+<td>trycompai/crm</td>
+<td>8,317</td>
+<td>+100 (+1.2%)</td>
+<td>连续八日低个位数</td>
+<td>稳态尾声</td>
+</tr>
+<tr>
+<td>yc-software/qm</td>
+<td>13,233</td>
+<td>+141 (+1.1%)</td>
+<td>连续七日 +1-2%</td>
+<td>停滞通道</td>
+</tr>
+<tr>
+<td>genspark-ai/genoffice</td>
+<td>2,668</td>
+<td>+110 (+4.3%)</td>
+<td>持续衰减</td>
+<td>收敛中</td>
+</tr>
+<tr>
+<td>SMNETSTUDIO/WeChat-AI</td>
+<td>1,519</td>
+<td>+113 (+8.0%)</td>
+<td>fork 1,123（fork/star=0.74）</td>
+<td>刷量样本持续</td>
+</tr>
+<tr>
+<td>Binaryify/open-kimi-ppt-skill</td>
+<td>1,602</td>
+<td>-1</td>
+<td>归档第六日，fork 1,194→1,204</td>
+<td>异常增长持续</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">新增项目</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>分类</th>
+<th>核心判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>guillaumemeyer/watermarks-remover</td>
+<td>2,008</td>
+<td>工具型</td>
+<td>AI 来源水印剥离品类定义者，双重用途风险</td>
+</tr>
+<tr>
+<td>sohaibdevv/youtube-music</td>
+<td>848</td>
+<td>观察型</td>
+<td>疑似恶意软件投递样本，密码 ZIP + 0 fork</td>
+</tr>
+<tr>
+<td>dmmulroy/anti-slop</td>
+<td>290</td>
+<td>工具型</td>
+<td>Oxlint 证据治理规则，Agent 治理工具群</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_9">项目档案链接</h2>
+<ul>
+<li><a href="projects/h3c.html">⚡ antirez/h3.c</a> — H3 原生 Metal 推理引擎</li>
+<li><a href="projects/watermarks-remover.html">🧹 guillaumemeyer/watermarks-remover</a> — AI 来源水印剥离 Skill</li>
+<li><a href="projects/anydoc.html">📑 firecrawl/anydoc</a> — Rust 文档解析</li>
+<li><a href="projects/minimax-h3.html">🎬 MiniMax-AI/MiniMax-H3</a> — 视频生成模型</li>
+<li><a href="projects/youtube-music.html">⚠️ sohaibdevv/youtube-music</a> — 疑似恶意软件投递样本</li>
+<li><a href="projects/phone-harness.html">📱 ShawnPana/phone-harness</a> — Agent 控制 iPhone</li>
+<li><a href="projects/kimi-k3-in-c.html">💠 FareedKhan-dev/kimi-k3-in-c</a> — 便携 C99 K3 推理</li>
+<li><a href="projects/anti-slop.html">🛡️ dmmulroy/anti-slop</a> — Oxlint 证据治理规则</li>
+<li><a href="projects/crm.html">📋 trycompai/crm</a> — Agentic-first CRM</li>
+<li><a href="projects/qm.html">👥 yc-software/qm</a> — 多人协作 agent harness</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

@@ -2,11 +2,11 @@
 title: "antirez/h3.c"
 slug: "h3c"
 date_added: "2026-08-11"
-last_seen_date: "2026-08-12"
+last_seen_date: "2026-08-13"
 category: "观察型"
 emoji: "⚡"
-stars: "1,201 stars"
-stars_delta: "+1,072 (129→1,201，+831%，三日破千；fork 7→57，subscribers 1→10)"
+stars: "1,578 stars"
+stars_delta: "+377 (1,201→1,578，+31.4%，从 +831% 断崖回落；fork 57→86，subscribers 10→15)"
 language: "C"
 license: "MIT"
 score: 92
@@ -76,3 +76,10 @@ h3.c 的核心启发是**"模型落地的最后一公里是推理引擎工程，
 - **README 能力深度进一步可核验：** prompt→video/audio 端到端、首尾帧（`!first`/`!last`）、Ref2VA 引用（`!ref-image`→`<Picture N>`）、core-reuse（`--reuse` 外推跳过 transitions）、跳层（`--layers` 运行部分 transformer blocks）、终端内预览（`--show` 支持 Kitty/Ghostty/iTerm2）。vertical-slice 增量构建方法学（每步可独立验证）值得借鉴。
 - **H3 生态共振：** 官方仓库 +1,030（4,164→5,194）、h3.c +1,072、衍生生态搜索 379→448，三者共振确认 H3 是本周最强生态级信号。
 - **风险（不变）：** M5 Max 性能为作者自述未独立复现；仅 macOS（Metal）；上游 H3 license=null（API 可核验）。
+
+## 最近动态（2026-08-13）
+
+- **爆发期结束 +377（+31.4%），从 +831% 断崖式回落。** 1,201 → 1,578，fork 57→86（+29），subscribers 10→15（+5），open issues 13→18。增速序列 +831%→+31.4%，爆发期明确结束。
+- **长尾扩散期开始：** fork 和 subscribers 仍在增长（57→86、10→15），说明深度开发者仍在进入，只是"围观者红利"已释放。衍生生态搜索 448→505（+57），仍在扩张但增量收窄。
+- **MiniMax-H3 官方同步减速：** +234（5,194→5,428，+4.5%），增速序列 +55%→+24.7%→+4.5%。三者（h3.c + 官方 + 衍生生态）共振减速确认爆发期结束。
+- **核心判断不变：** "推理成本是瓶颈"不受减速影响——h3.c 的存在本身就是证据。减速是注意力饱和的自然结果。

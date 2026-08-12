@@ -2,11 +2,11 @@
 title: "MiniMax-AI/MiniMax-H3"
 slug: minimax-h3
 date_added: 2026-08-08
-last_seen_date: "2026-08-12"
+last_seen_date: "2026-08-13"
 category: "观察型"
 emoji: "🎬"
-stars: "5,194 stars"
-score: 90
+stars: "5,428 stars"
+score: 88
 tags: ["video-generation", "minimax", "comfyui", "audio-video", "h3", "prompt-skill", "t2v", "i2v"]
 url: "https://github.com/MiniMax-AI/MiniMax-H3"
 ---
