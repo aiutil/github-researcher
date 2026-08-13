@@ -610,11 +610,17 @@ def aggregate_all_projects():
         if not fm:
             continue
         key = fm.get('name', fm.get('title', os.path.basename(pf).replace('.md', '')))
+        # Detail pages are emitted from the archive filename, not the display
+        # name.  The two differ for many GitHub projects (for example,
+        # ``facebook/react`` is archived as ``projects/react.md``).
+        profile_slug = make_slug(os.path.basename(pf).replace('.md', ''))
         fm['_has_profile'] = True
-        fm['_profile_slug'] = make_slug(key)
+        fm['_profile_slug'] = profile_slug
         merged[key] = fm
-        # Also register by slug for cross-matching
-        merged_by_slug[fm['_profile_slug']] = fm
+        # Match daily records by their display name while retaining the actual
+        # emitted page slug for navigation.
+        merged_by_slug[make_slug(key)] = fm
+        merged_by_slug[profile_slug] = fm
 
     # 2. Walk daily/*.md newest-first, merge key_projects
     for df in sorted(glob.glob(os.path.join(DAILY_DIR, '*.md')), reverse=True):
@@ -715,7 +721,7 @@ def generate_projects_list():
 
         # Build href: link to profile page if exists, else to the daily page where last seen
         if has_profile:
-            slug = make_slug(name)
+            slug = p.get('_profile_slug', make_slug(name))
             href = f"projects/{slug}.html"
         else:
             href = f"daily/{last_seen}.html"
@@ -942,26 +948,30 @@ def generate_minimal_project_page(name, data, date_str):
 def generate_trends():
     daily_files = sorted(glob.glob(os.path.join(DAILY_DIR, '*.md')), reverse=True)
 
-    # Build set of existing project slugs from projects/*.md
-    existing_slugs = set()
-    for pf in glob.glob(os.path.join(PROJECTS_DIR, '*.md')):
-        existing_slugs.add(make_slug(os.path.basename(pf).replace('.md', '')))
-
-    # Also check docs/projects/*.html for already-generated minimal pages
-    existing_html_slugs = set()
-    for pf in glob.glob(os.path.join(DOCS_DIR, 'projects', '*.html')):
-        existing_html_slugs.add(make_slug(os.path.basename(pf).replace('.html', '')))
-
-    # Build slug -> url lookup from project profiles
+    # Resolve every display-name variant to the slug actually emitted from the
+    # project archive filename.  GitHub's ``owner/repo`` display names often
+    # differ from the short archive filename.
+    profile_page_slugs = {}
     profile_url_map = {}
     for pf in glob.glob(os.path.join(PROJECTS_DIR, '*.md')):
         with open(pf, 'r') as f:
             c = f.read()
         fm_p, _ = parse_frontmatter(c)
-        p_slug = make_slug(fm_p.get('title', fm_p.get('slug', os.path.basename(pf).replace('.md', ''))))
+        page_slug = make_slug(os.path.basename(pf).replace('.md', ''))
+        name_variants = [
+            page_slug,
+            fm_p.get('title', ''),
+            fm_p.get('name', ''),
+            fm_p.get('slug', ''),
+        ]
         p_url = fm_p.get('url', fm_p.get('github_url', None))
-        if p_url:
-            profile_url_map[p_slug] = p_url
+        for name_variant in name_variants:
+            if not name_variant:
+                continue
+            lookup_slug = make_slug(str(name_variant))
+            profile_page_slugs[lookup_slug] = page_slug
+            if p_url:
+                profile_url_map[lookup_slug] = p_url
 
     date_sections = ''
     idx = 0
@@ -1015,15 +1025,16 @@ def generate_trends():
             for p in key_projects:
                 pname = p.get('name', 'Unknown')
                 slug = make_slug(pname)
+                profile_slug = profile_page_slugs.get(slug)
                 desc = (p.get('description', p.get('desc', '')) or '')[:80]
                 language = p.get('language', '')
                 stars = p.get('stars', p.get('stars_delta', ''))
                 verdict = p.get('verdict', '')
 
-                # Check if project page exists
-                if slug not in existing_slugs and slug not in existing_html_slugs:
-                    generate_minimal_project_page(pname, p, date_str)
-                    existing_html_slugs.add(slug)
+                # Only route to a dedicated detail page when a full project
+                # archive exists.  Otherwise the daily research is the source
+                # of truth; do not manufacture a thin pseudo-profile.
+                href = f"/projects/{profile_slug}.html" if profile_slug else f"/daily/{date_str}.html"
 
                 tags = []
                 if language:
@@ -1043,7 +1054,7 @@ def generate_trends():
                     github_btn = f'<a href="{github_url}" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a>'
 
                 date_sections += f'''
-                <div class="card" onclick="window.location='/projects/{slug}.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='{href}'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">{stars}</div>

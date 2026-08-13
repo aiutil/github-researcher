@@ -193,7 +193,22 @@ for html_file in glob.glob(os.path.join(DOCS, '*.html')):
         results["errors"].append(f"{page}: 发现嵌套 <a> 标签（card wrapper 是 <a>），会导致 GitHub 链接变形")
         results["pass"] = False
 
-# === 7. 首页 stats 动态计算验证 ===
+# === 7. 内部卡片跳转完整性 ===
+# Project cards use JS navigation so ordinary anchor checks miss broken detail
+# pages.  Every generated internal target must exist in docs/ before a push.
+card_target_pattern = re.compile(r"window\.location\s*=\s*['\"]/?([^'\"?#]+\.html)")
+for html_file in glob.glob(os.path.join(DOCS, '**', '*.html'), recursive=True):
+    with open(html_file) as f:
+        content = f.read()
+    for target in card_target_pattern.findall(content):
+        target_path = os.path.join(DOCS, target.lstrip('/'))
+        if not os.path.isfile(target_path):
+            page = os.path.relpath(html_file, DOCS)
+            results["errors"].append(f"{page}: 卡片跳转目标不存在 docs/{target}")
+            results["gaps"].append({"type": "broken_card_target", "page": page, "target": target})
+            results["pass"] = False
+
+# === 8. 首页 stats 动态计算验证 ===
 index_html = os.path.join(DOCS, 'index.html')
 if os.path.exists(index_html):
     with open(index_html) as f:
