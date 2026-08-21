@@ -6,7 +6,7 @@
     <title>jeecgboot/JeecgBoot | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -61,15 +61,65 @@
 <li><strong>微服务架构</strong>：Spring Cloud 支持，支持大规模部署</li>
 <li><strong>多模型兼容</strong>：对接国内外主流大模型</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<p>一张 4 行的 Markdown 表格，列为“决策问题 | 研究判断 | 证据边界”。四行依次是系统边界、主路径、关键权衡、最小 PoC。判断必须针对项目，不得泛泛而谈。</p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>JeecgBoot v2.0 是一个面向企业内部系统开发的 AI 低代码平台，定位为前端 Vue + 后端 Spring Boot 的全栈生成与配置平台（基于标签 low-code、codegenerator、java、antd）</td>
+<td>是否为前后端分离微服务、是否支持多租户等细节未在档案中确认，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>自然语言需求 → AI Skills 代码生成 → 在线表单/流程/报表/大屏配置 → 一键部署（含 Activiti 流程引擎和 CRUD 模板生成）</td>
+<td>具体编排协议（如 MCP 接入细节）、模型对接接口、持久化层未在档案中展开，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"一句话生成系统"营销叙事的开发速度优势 vs 生成代码质量、可控性、迁移成本与企业级稳定性之间的平衡</td>
+<td>档案明确指出存在"生成质量、锁定风险、性能、学习曲线"风险，但未提供量化指标</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议在一个非核心业务场景中，固定一个大模型供应商，使用默认 CRUD 生成 + 单流程（Activiti），验证生成产物可读性、权限边界与审计日志后再扩大</td>
+<td>是否支持 SaaS 版、是否对接特定云厂商（阿里云/华为云）等合作状态未确认，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>AI+低代码融合</strong>：AI 补足了低代码"最后一公里"（定制化困难）</li>
 <li><strong>企业应用的新范式</strong>：从"配置"到"对话生成"再到"微调"</li>
 <li><strong>MCP 进入企业应用</strong>：低代码平台接入 MCP 说明 agent 生态向企业渗透</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者输入自然语言需求] --> I[AI Skills 代码生成与编排层]
+    I --> A[在线配置层 表单 报表 大屏]
+    A --> D[一键部署与运行时 Spring Boot 微服务]
+    I --> W[Activiti 工作流引擎]
+    D --> W
+    I --> M[外部大模型供应商 待核验 对接协议]
+    M --> I
+    I --> P[MCP 插件与外部 Agent 工具]
+    P --> I
+    D --> S[会话 状态 审计 日志]
+    W --> S
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟平台型项目</strong>。国内低代码领域的重要玩家，v2.0 的 AI 集成是重要升级。有真实的企业用户基础和商业化路径。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>"一句话生成系统"需打折理解</strong>：复杂系统不可能真正一句话生成</li>
 <li><strong>生成质量</strong>：AI 生成的代码/配置可能需要大量调整</li>
@@ -78,7 +128,7 @@
 <li><strong>学习曲线</strong>：虽然"低代码"，但掌握平台本身需要时间</li>
 <li><strong>竞争激烈</strong>：钉钉宜搭、飞书多维表格、Retool、Appsmith 等竞争</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Appsmith/ToolJet</strong>：开源低代码国际竞品，JeecgBoot 更偏中国企业管理需求</li>
 <li><strong>vs 钉钉宜搭/飞书</strong>：SaaS 低代码 vs 可私有部署</li>
@@ -86,9 +136,9 @@
 <li><strong>vs 若依 (RuoYi)</strong>：若依更轻量（脚手架），JeecgBoot 更重（平台）</li>
 <li><strong>vs Bolt.new/v0</strong>：AI 前端生成工具，JeecgBoot 更偏后端+全栈</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪（企业架构师/Java 开发者）。</strong> 作为国内低代码标杆，其 AI 集成方向值得参考。如果有企业内部系统开发需求，值得评估采用。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>AI 代码生成的实际质量和用户反馈</li>
 <li>v2.0 AI 功能的企业采用率</li>

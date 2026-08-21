@@ -6,7 +6,7 @@
     <title>Orca | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,48 +55,122 @@
 <li><strong>Orca CLI</strong>：agent 也可以驱动 Orca——<code>orca worktree create/snapshot/click/fill</code></li>
 <li><strong>Computer Use</strong>：让 agent 操作桌面应用和可见 UI</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Orca 是桌面 + 移动 + SSH 三入口的编排/管理工作环境，向上接 30+ CLI agent，向下委托 git worktree 做并行隔离；不替代源码/CLI/IDE，也不充当模型网关</td>
+<td>边界基于档案中的 mobile/SSH/worktree/agent-ide 标签与公开描述，部署形态与协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入 prompt → Orca 编排层扇出到 N 个 agent → 每个 agent 在独立 git worktree 中执行 → 结果可视对比 → 选定 winner 合并；移动端仅做监控/指导，不在档案内说明是否触发执行</td>
+<td>路径来源为档案"Parallel Worktrees"亮点与官方 mermaid 图；具体持久化/状态机未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 30+ agent 兼容性广度 与 各 agent CLI 快速变化导致的维护负担/版本耦合 之间取平衡；其次是桌面分发（下载安装）与 Web 即开即用之间的增长曲线差异</td>
+<td>权衡判断综合档案"风险/局限"段与 stars_delta/日增数据；不构成对生产稳定性的背书</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地单仓库创建 ≥3 个 worktree，分别挂载 Claude Code / Codex / Cursor CLI 任选三个，验证 prompt 扇出→独立 worktree→diff 对比→winner 合并；同步在 iOS/Android 伴侣上做只读监控验证</td>
+<td>PoC 步骤仅复刻档案中明示的 Parallel Worktrees 与 Mobile 能力；性能、SLO、安全模型均未在档案内量化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Orca 的核心架构哲学是<strong>"Agent 作为一等公民的开发资源"</strong>——和代码、分支、issue 同等重要。它重新定义了开发环境的组成要素：不再只是编辑器 + 终端 + 调试器，而是 <strong>编辑器 + 终端 + Agent 管理器</strong>。Worktree 隔离是多 Agent 并行的关键技术选择——它利用了 git 原生能力而非自建隔离机制。</p>
-<pre class="mermaid">graph LR
-    A[Orca ADE] --> B[Agent 1 - Claude Code]
-    A --> C[Agent 2 - Codex]
-    A --> D[Agent 3 - Cursor CLI]
-    A --> E[Agent 4 - OpenCode]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    subgraph 入口[入口边界]
+        Desk[桌面端 Orca ADE<br/>TypeScript]
+        Mob[移动端伴侣<br/>iOS / Android]
+        SSH[SSH 远程 Worktree<br/>强机算力]
+    end
 
-    B --> F[Worktree 1]
-    C --> G[Worktree 2]
-    D --> H[Worktree 3]
-    E --> I[Worktree 4]
+    subgraph 编排[编排核心 - 项目核心]
+        Orca[Orca 编排层<br/>parallel-agents / ade]
+        Worktree[Git Worktree 隔离<br/>per-agent 分支]
+        Diff[结果/Diff 可视化与对比]
+        Annotate[Annotate AI Diffs<br/>行级批注回发 agent]
+    end
 
-    F --> J[结果对比]
-    G --> J
-    H --> J
-    I --> J
+    subgraph 外部Agent[外部边界 - 30+ CLI Agent]
+        A1[Claude Code]
+        A2[Codex]
+        A3[Cursor CLI]
+        A4[OpenCode / 其他<br/>待核验]
+    end
 
-    J --> K[Merge Winner]
+    subgraph 外部数据[外部边界 - 数据源]
+        GH[GitHub PR / Issue]
+        Lin[Linear 看板]
+        CU[Computer Use<br/>桌面应用操作]
+    end
 
-    A -.->|Mobile| L[iOS / Android]
-    A -.->|Remote| M[SSH Worktree]
+    subgraph 风险边界[状态/控制/风险边界]
+        Acct[Account Switcher<br/>& Usage / Rate-limit]
+        Merge[Merge Winner<br/>人工/待核验]
+        Compat[30+ Agent 兼容性维护<br/>版本耦合风险]
+    end
+
+    Desk --> Orca
+    Mob -.监控/指导.-> Orca
+    SSH --> Worktree
+
+    Orca --> A1
+    Orca --> A2
+    Orca --> A3
+    Orca --> A4
+
+    A1 --> Worktree
+    A2 --> Worktree
+    A3 --> Worktree
+    A4 --> Worktree
+
+    Orca --> GH
+    Orca --> Lin
+    Orca --> CU
+
+    Worktree --> Diff
+    Diff --> Annotate
+    Diff --> Merge
+
+    Orca --> Acct
+    Orca -.兼容性压力.-> Compat
+</mermaid>
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 生态中，Orca 占据了 <strong>ADE（Agent Development Environment）</strong> 这个全新品类。它不是 agent（不生成代码），不是框架（不提供 SDK），不是 gateway（不路由请求）——它是让开发者高效管理多个 agent 的<strong>工作环境</strong>。类比：Orca 之于 Agent，就像 VS Code 之于编程。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>CLI Agent 快速迭代风险</strong>：30+ agent 兼容是优势也是维护负担——每个 agent 的接口和行为都在变化</li>
 <li><strong>桌面应用分发壁垒</strong>：非 Web 应用，需要用户下载安装——增长受限于分发能力</li>
 <li><strong>竞争激烈</strong>：herdr（Rust 终端 multiplexer）、claude-squad（Go 管理器）从终端切入，可能分流用户</li>
 <li><strong>开源可持续性</strong>：MIT 开源，但有明确的商业意图（onorca.dev）——开源核心 + 商业增强的平衡需要观察</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>herdr</strong>（6.6K Rust）：终端 agent multiplexer，更轻量但没有 IDE 级体验</li>
 <li><strong>claude-squad</strong>（7.8K Go）：专注 Claude Code/Codex/OpenCode 管理，生态更窄</li>
 <li><strong>jcode</strong>（7.5K Rust）：coding agent harness，偏框架而非 IDE</li>
 <li><strong>ruflo</strong>（60.7K TS）：Claude multi-agent swarm meta-harness，更偏编排框架</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Orca 代表了 Agent 时代开发环境的演进方向。如果多 Agent 并行成为主流开发模式，ADE 品类将和 IDE 一样重要。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>移动端使用数据——是否真的有人从手机指导 agent 工作</li>
 <li>30+ agent 兼容的维护成本——哪些 agent 被实际使用最多</li>

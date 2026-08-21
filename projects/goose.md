@@ -45,18 +45,31 @@ Block（Square 母公司）开源的本地 AI Coding Agent，模型无关，支�
 3. **本地优先**：所有操作在本地执行，零数据外泄
 4. **Desktop + CLI + API**：三种使用模式覆盖不同场景
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本地编排层，桥接 Desktop/CLI/API 三类入口与可插拔 LLM 后端及 MCP 工具生态 | 基于"工具型 + 本地Agent + MCP"标签与架构启发图抽象，源码细节待核验 |
+| 主路径 | 开发者 → Goose Agent 运行时 → 统一模型/工具接口 → 本地 LLM 与 3000+ MCP 工具 → 会话与执行回写 | 仅复述档案描述的流程，具体协议、持久化与状态机未在档案中给出 |
+| 关键权衡 | 跨模型可扩展性 vs. 复杂任务能力上限；MCP 工具广度 vs. 权限/可观测/质量治理；本地数据驻留 vs. Block 单点持续投入 | 来自档案明示的"复杂任务不足""MCP 碎片化""Block 战略依赖"，非生产证据 |
+| 最小 PoC | 在 Desktop 或 CLI 单一入口下，接入 1 个本地 Ollama 模型与受控最小 MCP 工具集，验证权限边界、日志可审计性与回退 Claude/GPT 的路径 | 范围受限于档案已披露的接入与运行模式，部署与安全细则待核验 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    U[开发者] -->|Desktop/CLI/API| G[Goose Agent]
-    G -->|统一接口| L[LLM Backend<br/>Claude/GPT/Ollama]
-    G -->|MCP Protocol| T1[文件系统]
-    G -->|MCP Protocol| T2[数据库]
-    G -->|MCP Protocol| T3[浏览器]
-    G -->|MCP Protocol| T4[3000+ Tools...]
-    L -->|决策| G
-    G -->|执行| U
+graph LR
+  U[开发者] -->|Desktop/CLI/API 待核验| G[Goose Agent 运行时<br/>编排层]
+  G -->|统一接口 待核验| L[LLM Backend<br/>Claude / GPT / Ollama]
+  G -->|MCP 协议| T1[文件系统]
+  G -->|MCP 协议| T2[数据库]
+  G -->|MCP 协议| T3[3000+ 工具连接<br/>生态碎片化]
+  L -->|决策/工具调用| G
+  G -->|会话与执行回写<br/>状态/控制边界| S[本地会话与日志<br/>可观测性 待核验]
+  G -->|可持续性与资源投入<br/>风险边界| B[Block 持续投入<br/>战略依赖]
 ```
 
 - "模型无关 + MCP 标准化" 可能是 AI Coding Agent 的正确架构方向

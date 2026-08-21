@@ -6,7 +6,7 @@
     <title>oh-my-codex | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,30 +55,76 @@
 <li><strong><code>.omx/</code> 目录</strong>：存储计划、日志、记忆和运行时状态，实现跨会话持久化</li>
 <li><strong>MCP Server 集成</strong>：通过 MCP 协议接入外部工具和数据源</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>oh-my-codex 是构建于 Codex CLI 之上的多 Agent 编排层，职责包括角色化任务编排、持久化状态、可复用工作流和 MCP 外部工具接入；不替代 Codex CLI，也不是独立 Agent 框架。</td>
+<td>仅明确 Codex CLI、Staged Team Pipeline、Role Keywords、OMX Skills、<code>.omx/</code> 和 MCP Server；入口渠道、权限控制、部署形态与具体协议未明确。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者或上游系统进入编排层；Staged Team Pipeline 按 Planner、Coder、Reviewer 等角色分阶段执行，通过 Codex CLI 使用模型能力，并经 MCP 接入外部工具和数据源；计划、日志、记忆与运行时状态写入 <code>.omx/</code>。</td>
+<td>角色仅为示例；CLI 交互细节、MCP 传输方式、状态回写粒度及任务失败处理均未给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>采用薄编排层可降低对 Codex 内部实现的依赖并复用编排逻辑，但无法深度控制底层 Agent；扩展 MCP 与角色工作流还会增加权限、可观测性、状态一致性和 Codex 接口兼容风险。</td>
+<td>档案未提供权限模型、日志审计、SLO、成本指标、故障恢复或兼容适配机制，均待源码与文档核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选择一个可拆分且可验收的编码任务，验证 Planner、Coder、Reviewer 分阶段协作、一个 OMX Skill 的复用、<code>.omx/</code> 跨会话状态，以及一个只读 MCP 数据源；验收应覆盖接口变化、工具权限、日志审计、退出方式和失败回退。</td>
+<td>PoC 只能验证档案已声明能力；是否支持多模型、具体只读工具、隔离与回滚机制均为“待核验”，不得在 PoC 设计中预设存在。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>oh-my-codex 的核心架构是 <strong>薄编排层</strong>——不替代 Codex，而是在其之上添加编排能力。这是一个明智的架构选择：</p>
 <ul>
 <li><strong>低耦合</strong>：不依赖 Codex 内部实现，只通过 CLI 接口交互</li>
 <li><strong>高复用</strong>：编排逻辑与底层 Agent 解耦，理论上可以适配任何 CLI Agent</li>
 <li><strong>Trade-off</strong>：薄层意味着无法深度优化底层行为，但换来了灵活性和可维护性</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> C[oh-my-codex 项目编排与运行时]
+    C --> P[Staged Team Pipeline<br/>Planner、Coder、Reviewer 角色待核验]
+    C --> S[.omx/<br/>计划、日志、记忆、运行时状态]
+    C --> M[Codex CLI]
+    M --> L[模型或推理服务<br/>供应商与协议待核验]
+    C --> T[MCP Server]
+    T --> X[外部工具与数据源]
+    C --> R[权限、可观测性与 Codex 兼容性风险<br/>控制措施待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具层</strong>。oh-my-codex 是 Codex CLI 的增强工具，不是独立框架。它的价值依赖于 Codex CLI 的存在。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>Codex CLI 依赖</strong>：如果 OpenAI 改变 Codex CLI 的接口或方向，oh-my-codex 可能一夜失效</li>
 <li><strong>与 Claude Code 生态的竞争</strong>：oh-my-claudecode 和 oh-my-codex 的双平台策略分散了精力</li>
 <li><strong>增长泡沫</strong>：14K/week 的增速部分来自 oh-my-claudecode 的引流，自然增长可能没那么快</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Claude Code</strong>：oh-my-claudecode 覆盖 Claude Code 生态，oh-my-codex 覆盖 Codex 生态</li>
 <li><strong>claw-code</strong>：claw-code 是全栈 Rust 实现，oh-my-codex 是 TypeScript 编排层，定位不同</li>
 <li><strong>Aider</strong>：Aider 是独立的 AI 编码工具，不依赖 Codex CLI</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>持续跟踪。</strong> 作为 AI Coding Agent 编排层的代表，oh-my-codex 的演进方向值得关注，尤其是其跨 LLM 平台的编排抽象。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Codex CLI 兼容性</strong>：OpenAI 更新 Codex CLI 后 oh-my-codex 的适配速度</li>
 <li><strong>Skill 生态</strong>：社区贡献的 OMX Skills 数量和质量</li>

@@ -6,7 +6,7 @@
     <title>agents-md | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,18 +52,69 @@
 <li>综合 Karpathy 四原则和 Boris Cherny 工作流</li>
 <li>零依赖，纯 markdown 配置</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单一 Markdown 配置文件作为约束层，注入 Claude Code / Codex / Gemini CLI / Cursor 等 Coding Agent 运行时，由模型自身负责解读与执行</td>
+<td>组件边界仅来自档案列出的跨 Agent 兼容范围；具体注入点与运行时协议未在档案中说明</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>读取 AGENTS.md → 附加到 Coding Agent 的提示上下文 → Agent 按指令约束行为（反谄媚、抑制无脑重构、强制验证）</td>
+<td>仅“跨 Agent 兼容”这句描述了分发路径；提示注入机制、文件挂载方式待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>行为约束的可表达性 vs. 依赖模型指令遵循能力；零依赖易采用 vs. 跨模型遵从度差异大、缺乏量化评估</td>
+<td>权衡判断直接引用档案“风险/局限”章节；未量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Coding Agent（如 Cursor）项目根目录放置 AGENTS.md，配置最小工具权限与可审计日志，观察三个目标行为是否被触发</td>
+<td>档案未提供现成 PoC 脚本或验收指标；验收项需自行定义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>"配置即行为约束"范式。用 markdown 文件定义 Agent 行为，轻量、可版本控制、可组合。这是 AgentOps 工具链中的"约束层"。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A[AGENTS.md 配置文件] --> B[Coding Agent 运行时待核验]
+  B --> C[Claude Code]
+  B --> D[Codex]
+  B --> E[Gemini CLI]
+  B --> F[Cursor]
+  C --> G[模型推理服务]
+  D --> G
+  E --> G
+  F --> G
+  G --> H[工具调用与外部系统待核验]
+  G --> I[会话 状态 审计待核验]
+  H --> J[验证循环 反谄媚 抑制无脑重构]
+  I --> J
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>学习型 + 工具型。</strong> 理念先进但高度依赖 LLM 的指令遵循能力。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>效果高度依赖底层模型的指令遵循能力</li>
 <li>不同模型对同一 AGENTS.md 的遵从度差异大</li>
 <li>缺乏量化评估：难以衡量"资深程度"提升</li>
 <li>本质是高级 prompt engineering，技术壁垒不高</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>agentic-stack：解决 Agent 的可移植性（跨平台配置）</li>
 <li>skills-manage：解决 Skill 的管理问题</li>
@@ -71,15 +122,15 @@
 <li>agents-md：解决 Agent 行为约束问题</li>
 </ul>
 <p>三者构成 AgentOps 的完整工具链。</p>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 行为治理是独立且重要的方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>是否产生量化效果对比数据</li>
 <li>社区是否贡献针对不同模型的变体</li>
 <li>是否被 Agent 平台原生集成</li>
 </ol>
-<h2 id="_12">评分</h2>
+<h2 id="_13">评分</h2>
 <table>
 <thead>
 <tr>

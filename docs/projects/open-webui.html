@@ -6,7 +6,7 @@
     <title>open-webui/open-webui | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,11 +54,60 @@
 <li><strong>模型管理:</strong> 可从 Ollama/HuggingFace 一键拉取模型，管理多模型版本</li>
 <li><strong>插件生态:</strong> 社区插件扩展功能（图像生成、语音、Web 搜索）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口渠道、模型供应商、工具/数据源之间的编排层，基于标签 ai/llm/llm-webui/ollama/openai/mcp/rag 与内置多用户、RBAC 描述抽象</td>
+<td>公开资料未明确语言、协议与部署形态，须以源码/文档核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 编排与运行时 → 模型与工具调用 → 会话或状态回写，含 RAG 文档检索、MCP 工具调用、Pipelines 预处理/后处理</td>
+<td>Pipelines 协议细节、MCP 传输方式、向量库选型未在档案中证实</td>
+</tr>
+<tr>
+<td>核心权衡</td>
+<td>扩展速度（多后端/插件/Pipelines）与权限、审计、合规耦合之间的平衡；License 为自定义（NOASSERTION），企业法务审查为必要项</td>
+<td>资源消耗、性能基准未给出；商业版差异化不清</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 Docker 实例，接入 Ollama 或一个 OpenAI 兼容端点，开启 RAG 与最小 MCP 工具权限，验证身份、审计日志与回退路径</td>
+<td>具体镜像、端口、向量库、SSO 等企业特性须读官方文档</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Open WebUI 的核心启发是 <strong>"LLM 应用的核心价值在 UI/UX/管理，而非模型本身"</strong>。模型是可替换的（Ollama/OpenAI/任意 API），但"好的对话界面 + RAG + 多用户 + 工具调用"这套组合才是用户真正需要的。它将"模型后端"与"应用前端"彻底解耦，证明了 AI 时代的"应用层"机会——模型是 commodity，体验是 differentiator。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>多用户与 RBAC]
+    I --> C[编排与运行时<br/>Pipelines 预处理/后处理]
+    C --> M[模型后端<br/>Ollama 或 OpenAI 兼容 API 等 待核验]
+    C --> R[RAG 知识库<br/>文档上传与向量检索 向量库待核验]
+    C --> T[工具与外部系统<br/>MCP 集成 待核验]
+    C --> P[插件生态<br/>图像生成/语音/搜索等 待核验]
+    C --> S[会话 状态 审计<br/>模型管理 会话持久化 待核验]
+    M --> C
+    R --> C
+    T --> C
+    P --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型头部项目。</strong> Open WebUI 已成为"自部署 AI 对话平台"的事实标准。它不只是 UI，而是包含 RAG、用户管理、模型管理、工具调用的完整平台。对于任何想部署"私有 ChatGPT"的组织，它是默认首选。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>License 争议:</strong> 自定义许可证（非标准 OSI 许可）限制商业使用，需法务审查</li>
 <li><strong>重量级:</strong> 功能膨胀导致部署资源需求增长，轻量场景可能用更简单方案</li>
@@ -67,7 +116,7 @@
 <li><strong>模型依赖:</strong> 体验质量部分取决于后端模型能力</li>
 <li><strong>安全责任:</strong> 自部署意味着安全更新由用户承担</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs LibreChat:</strong> LibreChat 更轻量、更早期；Open WebUI 功能更全、社区更大</li>
 <li><strong>vs LobeChat:</strong> LobeChat 设计更精美，插件生态强；Open WebUI 更偏"平台"</li>
@@ -76,9 +125,9 @@
 <li><strong>vs Ollama:</strong> Ollama 是模型运行时；Open WebUI 是其前端界面，两者互补</li>
 <li><strong>vs AnythingLLM:</strong> AnythingLLM 更偏 RAG/知识库；Open WebUI 更通用</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>必须跟踪。</strong> Open WebUI 是"AI 私有化部署"赛道的代表，反映企业 AI 采用的真实趋势。它的功能演进直接影响"私有 ChatGPT"的能力边界。建议关注其 Pipelines/Agent 能力深化、企业版商业化。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否推出官方企业版（商业化路径）</li>
 <li>Agent/Workflow 能力是否深化（与 Dify/LangFlow 竞争）</li>

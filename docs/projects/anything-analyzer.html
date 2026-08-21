@@ -6,7 +6,7 @@
     <title>Anything Analyzer | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,72 @@
 <li><strong>AI 智能分析</strong>：一键生成协议逆向 / 安全审计 / 加密分析报告</li>
 <li><strong>内置 MCP Server</strong>：分析结果直接对接 AI Agent，形成自动化闭环</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Electron 桌面应用统一浏览器 CDP 与 MITM 代理（8888）双通道抓包，分析结果通过内置 MCP Server 对外暴露给 AI Agent</td>
+<td>仅来自档案"关键技术亮点"与分类/标签，未含源码组件清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>流量来源（浏览器/桌面/终端/脚本/手机）→ 统一 Session 模型 → AI 智能分析（协议逆向/安全审计/加密分析）→ MCP Server 输出</td>
+<td>报告生成与 Session 落地细节未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>MITM 合规风险与扩展速度 vs. AI 分析质量尚未经独立验证；Electron 体积不利于轻量化部署</td>
+<td>风险条目来自档案"风险/局限"，无具体权限模型</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在受控环境用 MITM 代理捕捉单一应用流量，验证 AI 报告生成与 MCP 接入单一 Agent 的闭环可用性，再扩量与审计</td>
+<td>协议解析能力、模型供应商、退出路径档案未明示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"AI 原生工具链"的好案例——不是给传统工具加 AI，而是以 AI 为核心重新设计工具链。MCP Server 作为输出接口，使得工具从"人看结果"进化为"Agent 消费结果"。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界]
+  I --> B[双通道抓包:<br/>内嵌浏览器 CDP / MITM 代理 8888]
+  B --> S[统一 Session 模型<br/>网页/桌面/终端/脚本/手机]
+  S --> A[AI 智能分析:<br/>协议逆向/安全审计/加密分析<br/>准确性与供应商待核验]
+  A --> R[分析报告]
+  R --> MCP[内置 MCP Server]
+  MCP --> AG[下游 AI Agent<br/>如 Claude Code]
+  S --> AU[审计与合规边界<br/>MITM 合规风险待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>AI 驱动的协议分析平台。MCP 集成使其有可能成为自动化测试和安全审计的基础设施组件。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>MITM 合规风险</strong>：中间人代理在企业环境使用可能违反安全策略</li>
 <li><strong>Electron 体积</strong>：桌面应用较重，不利于轻量化部署</li>
 <li><strong>AI 分析准确性</strong>：协议逆向的 AI 分析质量尚需验证</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Charles/Fiddler</strong>：传统 MITM 代理，无 AI 分析</li>
 <li><strong>mitmproxy</strong>：Python 命令行 MITM 工具，更偏开发者</li>
 <li><strong>Postman</strong>：API 测试，不做协议逆向</li>
 <li><strong>ZAP (OWASP)</strong>：安全测试，更偏企业级</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。MCP + 协议分析是 Agent 工具链的重要方向。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>MCP Server 的标准化程度和扩展性</li>
 <li>AI 分析报告的准确性和实用性</li>

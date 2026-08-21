@@ -6,7 +6,7 @@
     <title>superpowers | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,7 +57,39 @@
 <li><strong>内置代码审查循环</strong>：确保代码质量，强制执行 review 环节</li>
 <li><strong>行为优先设计</strong>：定义 Agent 的行为模式而非工具集，从根本上约束 Agent 输出质量</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>superpowers 是叠加在 Claude Code / Cursor / Codex 等 40+ 编码 Agent 之上的技能/约束层，不替代宿主 Agent，也不直连模型与工具</td>
+<td>边界判断基于语言为 Markdown/Config、定位为"技能框架"、与 Cursor Rules/Codex Tasks 的对比表述；具体加载机制、宿主注入点未在档案中说明</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>一次编码任务被强制走 brainstorm → spec → TDD → review 四段流程，技能作为可组合约束介入各阶段</td>
+<td>流程顺序与技能组合化在档案中明确；状态如何持久化、跨会话如何回写未描述，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>工作流刚性与创造性 / 原型速度之间的取舍，以及"多平台兼容"声明与 Claude Code 生态最深耦合现实之间的张力</td>
+<td>"适合高质量项目、不适合探索性编程"和"与 Claude Code 绑定最深"均在档案中显式提及；具体耦合深度未量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一宿主 Agent（如 Claude Code）启用 superpowers，跑一个带 TDD 与 review 的小任务，比对覆盖率与返工率</td>
+<td>85-95% 测试覆盖率承诺、Anthropic Marketplace 收录在档案中明确；实际覆盖率达成度、企业级落地证据待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>superpowers 的核心设计哲学是 <strong>技能即约束</strong>：</p>
 <ul>
 <li><strong>行为定义</strong>：不是告诉 Agent 用什么工具，而是定义 Agent 必须遵循的行为流程</li>
@@ -66,25 +98,42 @@
 <li><strong>从"让 AI 写代码"到"让 AI 遵循工程实践"的范式转变</strong></li>
 </ul>
 <p>Trade-off：过于刚性的工作流可能限制 Agent 的创造性和灵活性，适合对质量有严格要求的项目，不太适合快速原型和探索性编程。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与宿主 Agent 边界<br/>Claude Code / Cursor / Codex 等 40+ 待核验]
+    I --> C[superpowers 技能编排层<br/>brainstorm → spec → TDD → review 强制流程]
+    C --> S[技能约束库<br/>可组合技能]
+    C --> R[代码审查循环<br/>内置 review]
+    C --> M[模型推理服务<br/>具体供应商待核验]
+    C --> T[工具与外部系统<br/>文件 / 测试运行器 / 待核验]
+    S --> C
+    R --> C
+    M --> C
+    T --> C
+    C --> O[会话 状态 审计<br/>持久化方式待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>方法论层 / 基础设施候选</strong>。superpowers 不是应用，不是平台，而是 AI Agent 的行为规范框架。它的价值在于定义了 Agent 应该如何工作，而非 Agent 能做什么。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>方法论过度强制</strong>：过于刚性的工作流可能限制创造性，不适合所有场景</li>
 <li><strong>技能生态不成熟</strong>：技能库仍在建设中，覆盖场景有限</li>
 <li><strong>121K stars 的泡沫成分</strong>：大量关注来自概念认同而非实际使用</li>
 <li><strong>平台耦合风险</strong>：虽然声称多平台兼容，但与 Claude Code 生态绑定最深</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Claude Code 原生指令</strong>：superpowers 是其上的结构化技能层，增强而非替代</li>
 <li><strong>Cursor Rules</strong>：类似概念但更轻量，superpowers 更偏完整方法论</li>
 <li><strong>Codex Tasks</strong>：OpenAI 的任务编排机制，定位类似但方式不同</li>
 <li><strong>skill-chain</strong>：技能链管理系统，是 superpowers 技能组合的底层基础设施</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>⭐ <strong>必须跟踪。</strong> superpowers 代表了 AI 编程从"代码生成"到"工程实践"的范式转变。无论最终产品形态如何，其方法论将对 AI Agent 生态产生深远影响。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>企业级应用案例</strong>：85-95% 测试覆盖率承诺在实际项目中的兑现度</li>
 <li><strong>技能生态丰富度</strong>：社区贡献的技能数量和质量</li>

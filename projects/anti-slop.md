@@ -45,8 +45,34 @@ Coding Agent（Claude Code、Codex、Cursor 等）能快速生成代码，但生
 3. **Vendored 设计：** 鼓励复制修改而非依赖更新，规则成为团队内部资产。
 4. **Agent Skill 自动安装：** 一条命令完成插件安装、配置合并、规则启用、结果验证。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | anti-slop 是 Oxlint 自定义规则插件（TypeScript），以 Agent Skill 形态安装；外部边界为 Oxlint 引擎与下游 Agent CLI（Claude Code/Codex/Cursor 等使用方）。 | 边界仅来自 README 列出的 Oxlint 依赖与 Agent Skill 安装方式，未审计源码。 |
+| 主路径 | Coding Agent 生成 TS/JS 代码 → Oxlint 引擎加载 anti-slop 15 条规则 → 静态分析拒绝低证据模式（链式断言、typeof 窄化、Reflect.apply、模块 mock 等） → 在 Agent 或人类编辑流程中强制重写。 | 路径基于 README 描述的规则集与"在 lint 阶段拒绝"的定位；具体拦截点与 IDE/Agent hook 集成方式未在档案中证实。 |
+| 关键权衡 | "证据强度"的强约束 vs 团队既有 TS 编码习惯的兼容性；vendored（鼓励复制改）vs 上游同步更新；Oxlint 性能红利 vs Oxlint 生态覆盖未成熟。 | 权衡仅基于 README 中"vendored, not fixed dependency"、15 条规则枚举与 Oxlint 插件架构描述，无性能基准或采用率数据。 |
+| 最小 PoC | 在一个 TS 项目中通过 `npx skills add dmmulroy/anti-slop` 安装插件，跑一次 Oxlint，验证 `no-chained-type-assertions`、`no-runtime-typeof`、`no-reflect-apply` 三条代表性规则是否触发预期报错并阻断构建。 | PoC 步骤直接引自 README 的 Agent Skill 安装命令与 15 条规则清单；具体配置合并与冲突解决行为以安装后实际输出为准。 |
+
 ## 架构启发
 anti-slop 的核心启发是 **"Agent 生成代码需要新的静态分析维度——'证据强度'"**。传统 lint 规则关注"代码风格"和"常见错误"，而 anti-slop 关注"类型证据的强度"——代码是否用类型断言伪造了不存在的安全性？是否用 Reflect 绕过了类型系统？这种"证据导向"的 lint 理念是 Agent 时代的新需求：当大量代码由 Agent 生成时，"代码是否经得起类型推敲"比"代码风格是否一致"更重要。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Coding Agent 或开发者生成 TS/JS 代码] --> B[Oxlint 引擎 外部边界 待核验]
+    B --> C[anti-slop 15 条规则插件 核心 vendored]
+    C --> D{规则判定 类型证据强度}
+    D -->|低证据 拒绝| E[Agent 或开发者重写]
+    D -->|通过| F[代码进入后续流程]
+    C --> G[团队本地规则副本 待核验]
+    G --> C
+    A --> H[风险边界 规则过严 可能误伤既有 TS 习惯 待核验]
+    H -.-> C
+```
 
 ## 定位判断
 **工具型（Agent 输出治理品类，极早期）。** anti-slop 代表"Coding Agent 治理工具群"的代码质量维度。其价值取决于 Agent 生成代码占比的增长——若 Agent 生成的代码成为主流，"证据导向 lint"可能成为标配。当前定位是"Agent 时代 lint 规则的早期探索者"。

@@ -83,6 +83,15 @@ components:
 ```
 组件由 token 引用组成，lint 会验证引用是否解析。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | DESIGN.md 是一个"规范 + 本地 CLI"产物：YAML tokens + Markdown 语义由 design.md 文件承载，CLI（npx lint/diff/export）在本地对文件做校验与格式转换，不直连模型或 IDE 运行时 | 档案仅描述文件格式与 CLI 子命令，未描述任何与 Claude Code/Cursor/Codex 的集成实现、传输协议或服务端组件；Agent 端的实际读取方式属"待核验" |
+| 主路径 | 人类/Agent 编写 DESIGN.md → 本地 CLI 执行 lint（9 条规则）/diff（两版回归）/export（json-tailwind、css-tailwind、dtcg）→ 生成 tailwind 配置或 DTCG JSON，供下游 UI 代码消费 | 仅档案列出的三条 CLI 命令与三种导出格式可视为已证实；"被 Agent 自动读取并据此生成 UI"在档案中只是目标描述，未给出集成证据 |
+| 关键权衡 | 表达力 vs 稳定性：alpha 阶段同时追求可立即被 Agent 采用（需简洁、贴近 Figma 心智）和可演进（spec、token schema 可能变化），且用 Markdown 承载"设计理由"在 lint 中无法机器校验，引入人类语义层的不可验证风险 | 风险条目 1、4 直接承认 alpha 与动态设计语义未覆盖；Markdown body 是否被任何 lint 规则校验，档案未说明 |
+| 最小 PoC | 取一份小型 DESIGN.md（含 colors、typography、1 个 components 示例），跑 `lint` 验证 broken-ref/contrast-ratio/orphaned-tokens，再 `export --format css-tailwind` 与 `--format dtcg`，对比 Tailwind v4 `@theme` 与 W3C DTCG 输出差异，确认 CLI 在本地 Node 环境可复现 | 档案给出 CLI 命令与导出格式清单，但未提供 Node 版本要求、依赖体积、性能基准；能否在 CI 中稳定运行属"待核验" |
+
 ## 架构启发
 DESIGN.md 的核心架构思想是**"契约文件"模式**——为 Agent 与外部系统（设计系统、安全策略、数据模型等）的交互定义结构化接口。
 
@@ -98,6 +107,26 @@ DESIGN.md 的核心架构思想是**"契约文件"模式**——为 Agent 与外
 - `ARCHITECTURE.md`：系统架构契约（分层、边界、依赖规则）
 - `SECURITY.md`：安全策略契约（权限、审计、合规）
 - `DATA.md`：数据模型契约（schema、关系、约束）
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A["设计者 / 开发者"] --> B["DESIGN.md 文件<br/>YAML tokens + Markdown 理由"]
+    B --> C["本地 CLI<br/>npx design.md"]
+    C --> D["lint<br/>9 条规则<br/>(broken-ref / contrast-ratio /<br/>orphaned-tokens 等)"]
+    C --> E["diff<br/>两版 token 变更 + 回归标记<br/>(待核验: 回归判定阈值)"]
+    C --> F["export<br/>json-tailwind / css-tailwind / dtcg"]
+    F --> G["Tailwind 配置或 DTCG JSON<br/>供下游 UI 代码消费"]
+    D --> H["Lint 报告<br/>(error / warning)"]
+    E --> H
+    H --> A
+    B -. "Agent 读取<br/>(Claude Code / Cursor / Codex)<br/>机制待核验" .-> I["AI Coding Agent<br/>外部边界"]
+    I -. "生成 UI 是否回写 DESIGN.md<br/>待核验" .-> B
+    B -. "spec alpha、token schema<br/>可能演进" .-> J["规范稳定性风险<br/>alpha → stable 状态边界<br/>待核验"]
+```
 
 ## 定位判断
 **Agent × Design System 标准化层的先行者。** 目前在 Agent 生态栈中处于"规范层"，类似于 TypeScript 之于 JavaScript——不改变底层能力，但提供了结构化的理解和验证框架。

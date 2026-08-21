@@ -6,7 +6,7 @@
     <title>alirezarezvani/claude-skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,25 +53,72 @@
 <li><strong>[^hermes]: Hermes Agent is </strong>BYO-sync tier<strong>: the repo ships a pre-generated `.hermes/skills/claude-</strong></li>
 <li><strong>[^vibe]: Mistral Vibe is also </strong>BYO-sync tier<strong>: the repo ships a pre-generated `.vibe/skills/claude</strong></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>这是一个面向 Claude Code / Codex / Gemini CLI / Cursor 等 13+ AI 编码工具的资源型 skill 库（345 skills、30+ Agents、70+ custom commands），自身定位是"插件/技能集合"，而非独立运行时；其外延覆盖工程、营销、合规、C 级顾问等多业务领域。</td>
+<td>边界判断基于 README 自述的数量与覆盖范围；未声明其内部是否有独立调度内核或仅作为静态 skill 文件分发，待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>路径为：宿主编码 Agent（Claude Code 等）→ 加载本仓库的 skill/command/agent 定义 → 调用对应工具或脚本执行 → 回写结果到宿主会话。Python 是实现脚本与 references 的主要语言。</td>
+<td>主路径来自 README 的"skills, custom commands, customizable references, scripts"描述；具体加载协议（如是否走 MCP / Skills 标准）未在档案中给出，待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨 13+ 工具兼容性 vs. 各工具原生能力差异：覆盖广意味着需为每家维护映射层；此外脚本默认权限边界、BYO-sync tier（Hermes / Mistral Vibe）的预生成 skills 是否安全需评估。</td>
+<td>权衡结论仅依据 README 列出的覆盖工具与脚注中的 BYO-sync 提示；权限模型、可观测性细节档案未证实，待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定 1 个官方支持的宿主（优先 Claude Code），挑选 1 个领域 skill（例如工程类）与 1 个 custom command，在受限工作目录、关闭网络工具的前提下跑通端到端，验证 skill 加载、脚本执行与审计可见性后再扩展。</td>
+<td>PoC 步骤基于"先单一渠道、最小权限、可审计日志"的通用建议与 README 的多工具声明；具体 skill 标识符、依赖与执行入口待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>从 alirezarezvani/claude-skills 的设计来看，核心思路是 <strong>"345 Claude Code skills &amp; agent skills &amp; plugins (30+ Agents,"</strong>。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游编码任务] --> H[宿主 AI 编码 Agent<br/>Claude Code / Codex / Gemini CLI / Cursor 等 13+ 工具]
+    H --> L[Skill 与 Command 加载层<br/>345 skills · 70+ custom commands · customizable references]
+    L --> P[Python 脚本与 References 执行<br/>scripts + refs]
+    P --> T[外部工具与数据源<br/>待核验：MCP / 文件系统 / API]
+    L --> A[30+ Agent 角色定义<br/>工程 营销 合规 C 级顾问 等]
+    A --> H
+    P --> S[会话结果回写到宿主<br/>待核验：状态 审计日志 持久化]
+    S --> H
+    H -. BYO-sync tier .-> X[Hermes / Mistral Vibe 预生成 skills<br/>.hermes/skills · .vibe/skills]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>资源型</strong>。在生态中定位为345 Claude Code skills &amp; agent skills &amp; 方向的工具。Stars 24268 说明已有一定社区基础。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规模风险</strong>：24,268 stars，但 fork 3416 说明有实际部署</li>
 <li><strong>维护风险</strong>：最后 push 时间 2026-08-09，活跃维护中</li>
 <li><strong>Open Issues</strong>：24 个 open issues，活跃社区反馈</li>
 <li><strong>License</strong>：MIT（宽松许可，适合商用）</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>与同 Python 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。</li>
 <li>从 topics (agent-plugins, agent-skills, agentic-ai) 来看，与关注 agent-plugins 的其他项目有交叉。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 24268 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Star 增速是否可持续（当前 24,268）</li>
 <li>Fork 增长趋势（当前 3,416）</li>

@@ -39,10 +39,38 @@ url: "https://github.com/microsoft/fastcontext"
 4. **Context 压缩**：将海量代码压缩为关键上下文片段
 5. **论文驱动开发**：方法论有学术验证
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | FastContext 处于"主 coding agent 与代码仓库"之间，是微软研究院提出的"专用小模型 + RL 探索"子代理层，职责是把仓库探索结果压缩回写到主模型 context；输入是大型仓库，输出是关键代码片段 | 档案未给出 API 形态、协议、模型规模、训练数据细节；具体边界以原 repo/论文为准 |
+| 主路径 | 主 agent 发起请求 → FastContext 子模型用 RL 策略导航/搜索仓库 → 压缩/筛选关键上下文 → 反馈给主模型用于后续生成 | 档案只描述"专用探索模型 + RL 训练 + subagent 架构 + context 压缩"职责链，未给出推理协议、缓存、索引构建方式 |
+| 关键权衡 | 用"小模型 + RL 探索"换取主模型 context 预算与 token 成本，但代价是额外的推理调用、模型分发门槛、泛化性未知，且原 repo 不可访问 | 档案明确指出"repo 不可访问""学术 vs 生产""模型获取门槛""泛化性"四项风险，未提供任何具体性能或 ROI 数字 |
+| 最小 PoC | 优先以论文 + 社区 fork（如 Cirius1792/fastcontext、fastcontext-agent-tools MCP server）做最小复现：单仓库、固定任务集、对比"无探索 / 启发式 repo-map / FastContext"在主模型 context 占用与答案质量上的差异 | 档案未提供具体基准、模型权重、许可证与部署形态；"是否可生产"判定必须以源码/模型卡核验 |
+
 ## 架构启发
 - **模型分工而非全能**：主模型做推理，小模型做探索，各司其职
 - **RL for tool use**：强化学习不只用于对齐，也可训练工具使用策略
 - **Context 是稀缺资源**：需要像管理内存一样管理 context 窗口
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[主 Coding Agent] -->|探索请求| FC[FastContext 子代理]
+    FC -->|RL 策略导航| REPO[(代码仓库 待核验)]
+    FC -->|压缩关键上下文| U
+    FC -->|RL 训练奖励信号| RL[RL 训练流程 待核验]
+    RL -->|更新策略| FC
+    FC -->|论文/研究输出| PAPER[arXiv 论文]
+    FC -.不可访问.-> REPO_ORIG[原始 GitHub Repo 当前不可访问]
+    FC -.派生.-> FORK[社区 fork 如 Cirius1792/fastcontext 待核验]
+    FASTCONTEXT_MCP[fastcontext-agent-tools MCP server] -.封装.-> FC
+    U -->|写入| CTX[主模型 Context 窗口]
+
+```
 
 ## 定位判断
 **前沿研究型项目**。属于 context engineering 领域的学术探索，不是生产级工具但有方向指引价值。注意：repo 当前可能已转为私有或迁移，以下社区衍生项目仍在活跃（如 Cirius1792/fastcontext fork）。

@@ -36,8 +36,36 @@ AI 推理模型产出的数学"发现"面临一个根本信任问题：**怎么�
 2. **独立证明检查**：仓库含 `ComparatorChallenges/`，README 指向独立检查流程，声明这些形式化可被外部 Comparator 验证（这是可核验性的关键——任何人可复现）。
 3. **依赖 Lean 4.32.0 + mathlib + Lake**：用 elan 管理工具链，`lake exe cache get` 拉 mathlib 缓存后 `lake build All`。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Lean 4.32.0 + mathlib 单仓编译的十个独立形式化模块（SpherePacking / MetricCodes / NonSoficGroup / ConnesRigidity / Permanent / QuantumParallelRepetition / GapCVP / EhrhartVolumeInequality / MulticolorTriangleRamsey / CompactnessAndDegeneracy），通过 `lake build All` 产出可复现的机器可检查证据 | 模块职责与依赖见"关键技术亮点"；是否含辅助背景文件、commit 粒度等未在档案核实 |
+| 主路径 | 论文中的非形式证明 → 翻译为 Lean 4 形式化 → `lake exe cache get` 拉 mathlib 缓存 → `lake build <Module>` 独立检查 → `ComparatorChallenges/` 提供外部 Comparator 二次校验 | `ComparatorChallenges` 实际可执行性、formalization.yaml 是否承担 claim-mapping 仅在档案中"提及但未深入验证" |
+| 关键权衡 | 形式化编译通过 ≠ 原始数学结论正确——Lean 内部自洽与"形式化对象是否真为论文所宣称的定理"是两件事，前者机器可验，后者仍需领域专家复核 | 风险点 1 明确指出此落差；社区独立审查信号尚未在档案中出现 |
+| 最小 PoC | `elan` 配置 Lean 4.32.0 工具链 → `lake exe cache get` 取 mathlib 缓存 → 选取单一模块（如 SpherePacking.lean）执行 `lake build <Module>` 验证编译与声明一致性，再扩展到 All | 构建命令与依赖在档案中可证；makepath、CI 配置、失败回滚策略未在档案中描述 |
+
 ## 架构启发
 这个仓库的哲学是 **"claim → formalize → independently check"** 的闭环。AI 推理产出一个非形式断言，形式化层把它翻译成 Lean，验证层确认 Lean 编译通过。这与"AI 写代码跑测试"同构，但处在更高的抽象层（数学真理而非程序正确性）。对架构师的启发是：**当 AI 系统的输出需要高可信度时，形式化验证层是比人工 review 更强的保证机制**——前提是领域有可用的 proof assistant。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    P[论文 Ten advances in mathematics and theoretical computer science] --> F[十个 Lean 4 形式化模块]
+    F --> L[Lean 4.32.0 工具链 via elan]
+    L --> M[mathlib 依赖 lake exe cache get]
+    M --> B[lake build 单模块或 All]
+    B --> R[编译结果 机器可检查]
+    F --> C[ComparatorChallenges 独立检查流程 待核验]
+    C --> R
+    R --> A[领域专家对形式化与原定理声称的对应性复核 待核验]
+    A -.人工 review.-> F
+    B -.工具链升级风险.-> W[mathlib 演进 与 Lean 版本漂移]
+    W -.读.-> F
+```
 
 ## 定位判断
 这属于 **L0 基础研究/范式信号**，不在应用产品分层内。它的价值不是作为可集成的工具，而是作为 **AI 能力边界的一个可核验坐标点**：证明 AI 推理已能在前沿数学产生可验证贡献。在趋势跟踪中，它标志"AI + 形式化"交叉品类的出现。

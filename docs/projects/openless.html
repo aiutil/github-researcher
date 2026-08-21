@@ -6,7 +6,7 @@
     <title>OpenLess | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,31 +47,78 @@
 <li><strong>Rust + Tauri</strong>：轻量跨平台，macOS 和 Windows 双支持</li>
 <li><strong>Prompt Engineering</strong>：润色质量依赖 prompt 设计，这是核心竞争力所在</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Rust + Tauri 桌面应用，按住全局快捷键触发，覆盖 macOS 与 Windows；本地 ASR + LLM 润色输出到系统剪贴板/输入法，定位为 Wispr Flow 的开源、BYOK、本地优先替代</td>
+<td>平台仅声明 macOS/Windows，Linux 列为"后续观察"未交付；具体 ASR 引擎类型、LLM 调用方式未在档案中明确</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>按住快捷键 → 全局快捷键监听 → ASR 识别 → LLM 润色 → 通过剪贴板/输入法注入到目标应用光标处</td>
+<td>剪贴板注入还是输入法层注入未在档案中区分；全局快捷键的具体键位、Tauri 系统级 API 使用细节未说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>体验与隐私 vs 润色质量的取舍：ASR 可走本地 Whisper（隐私优先），LLM 仍依赖云端 API（质量优先），构成混合架构；核心竞争力押注在 Prompt Engineering 而非模型层</td>
+<td>"LLM 可调用任何 API"为定性描述，BYOK 具体接入哪些供应商、是否支持本地 LLM 未在档案中证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 macOS 渠道、固定快捷键、单一 LLM 供应商 API Key、启用可审计日志，验证"按住说话→松开出文"端到端时延与润色可用性；将安全、成本、退出路径作为验收项后再扩到 Windows 与多供应商</td>
+<td>345 stars/6 天增速与维护节奏仅作热度参考，不作为生产可用证据；功能迭代速度"不快"为定性判断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><code>用户语音 → ASR（Whisper/本地模型）→ LLM 润色 → 系统剪贴板/输入法 → 目标应用</code></p>
 <p>架构师的启发：
 - 语音输入的瓶颈不在 ASR（Whisper 已足够好），而在 LLM 润色的上下文理解
 - "按住说话松开出文"的交互模式可以泛化到更多场景：代码补全、文档编辑、翻译
 - 本地优先的 ASR + 云端 LLM 是合理的混合架构</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者按住快捷键] --> K[全局快捷键监听 Tauri 桌面端]
+    K --> A[ASR 识别 待核验 本地 Whisper 或远程 API]
+    A --> L[LLM 润色 BYOK 待核验 供应商未明]
+    L --> P[Prompt Engineering 润色核心]
+    P --> O[系统剪贴板或输入法 待核验 注入方式未明]
+    O --> T[任意目标应用光标]
+    K -. macOS / Windows .-> T
+    L -. 待核验 隐私边界 .-> X[本地优先 vs 云端 LLM 混合架构]
+</mermaid>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>实用工具。Wispr Flow 的开源替代，面向注重隐私的开发者。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>核心护城河浅</strong>：ASR 可以用 Whisper，LLM 可以调用任何 API，技术门槛不高</li>
 <li><strong>润色质量依赖 Prompt</strong>：目前看起来是简单的 ASR → LLM 串联，上下文理解能力有限</li>
 <li><strong>平台支持有限</strong>：目前只有 macOS 和 Windows，缺少 Linux</li>
 <li><strong>维护能力存疑</strong>：最近 commit 主要是 PR-Agent 配置更新，功能迭代速度不快</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Wispr Flow</strong>：商业产品，体验成熟，$15/月</li>
 <li><strong>Superwhisper</strong>：macOS 原生语音输入，$10/月</li>
 <li><strong>Typeless</strong>：AI 驱动的输入法，更偏输入法层面</li>
 </ul>
 <p>OpenLess 的差异化在于开源 + 本地优先 + BYOK（自带 LLM API Key）。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>有限跟踪</strong>。关注润色质量提升和上下文理解能力增强。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否支持更多 ASR 引擎（本地 Whisper、远程 API）</li>
 <li>润色 prompt 的复杂度和上下文理解深度</li>

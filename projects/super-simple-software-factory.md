@@ -39,8 +39,35 @@ url: "https://github.com/disler/super-simple-software-factory"
 4. **`kind="code"` phase vs agent phase**：已知调用（`bun test`、`ruff check`）用 `kind="code"` phase，不需要 agent。只有需要"阅读和判断"的环节才用 agent。这避免了 agent 做"算术"（浪费 token + context window）。
 5. **Skill 分发模式**：复制 `.claude/skills/sssf/` 到目标 repo，在 Claude Code 内 `/sssf install`。skill 名为 sssf。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Python 控制平面拥有 SDLC 编排/重试/验收；agent 是有界 phase 节点；分发形式为 `.claude/skills/sssf/` skill，绑定 Claude Code 入口 | 仅基于 README 与档案标签，未审计源码；其他模型/平台兼容性"待核验" |
+| 主路径 | 入口(Claude Code `/sssf install`) → ADW 脚本(sequencing/retries/acceptance) → `kind="code"` phase（确定性调用）与 agent phase（读与判断） → 类型化 JSON envelope 跨 phase → SQLite trace 持久化 | phase 具体协议、envelope schema、SQLite 表结构"待核验" |
+| 关键权衡 | "agent proposes, code disposes"：把已知调用交给确定性代码换取 token/context 节省与可复现性；代价是 phase 划分、envelope 设计、gate 标准的额外工程开销，且当前绑定 Claude Code | README 设计主张；trace 可读性、acceptance gate 实际捕获率"待核验" |
+| 最小 PoC | 在单 repo 内复制 `.claude/skills/sssf/`，在 Claude Code 中 `/sssf install`，运行 example branch，对比同一任务两次运行的结果差异与 SQLite trace 中 phase 边界的可读性 | 验收项含：可复现性、phase 失败定位能力、Claude Code 外平台兼容性、退出路径 |
+
 ## 架构启发
 核心启发是 **"谁拥有循环"** 的重新分配。传统：一个 agent 拥有自己的循环（无 phase 边界、无 acceptance）。super-simple-software-factory：代码拥有循环（sequencing/retries/acceptance），agent 只拥有一个有界 phase 内的工作。这把"prompt 即控制平面"重构为"代码即控制平面"。对架构师的启发：**agent 的价值在"读和判断"，不在"编排自己"**——编排应交给确定性代码，因为代码零成本、光速运行、你完全拥有它。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者与上游系统] --> I[入口与身份边界<br/>Claude Code + /sssf install<br/>待核验:跨平台分发]
+    I --> C[Python ADW 编排与运行时<br/>sequencing retries acceptance]
+    C --> P1[phase kind=code<br/>bun test / ruff check<br/>确定性调用]
+    C --> P2[phase kind=agent<br/>读与判断 有界节点]
+    P1 --> E[类型化 JSON envelope<br/>跨 phase 上下文]
+    P2 --> E
+    E --> C
+    C --> T[SQLite trace + 事件流<br/>待核验:表结构]
+    C --> R[验收 gate<br/>待核验:实际捕获率]
+    R --> C
+```
 
 ## 定位判断
 属于 **agent 编排/工程化层**，是"agent 工作流可复现性"的范式参考。不与应用层（qm/crm）竞争，而是为它们提供"如何工程化 agent 工作流"的方法论。与 skill-recorder（技能提取）、ratchet（执行约束）不在同一层——它是"如何编排 agent 完成完整开发任务"的范式。

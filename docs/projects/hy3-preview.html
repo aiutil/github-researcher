@@ -6,7 +6,7 @@
     <title>Hy3 Preview | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -60,31 +60,77 @@
 <li><strong>Agent 优化</strong>：在 Agent 任务上做了专门优化，不只是通用 LLM</li>
 <li><strong>256K Context</strong>：超长上下文支持，适合代码理解和长文档处理</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Hy3 Preview 是一个 295B/21B 激活 MoE LLM（Python 项目，标签 llm/moe/tencent/open-source-model/agent），通过 GitHub、HuggingFace、ModelScope 三仓分发；系统边界止于模型权重与调用入口，下游需自建编排/工具/会话层。</td>
+<td>仓库元数据与一句话定位，未公开推理服务器、SDK 或 API 网关实现。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为：使用者 → 入口渠道（GitHub/HF/ModelScope） → 模型权重（295B 总参 / 21B 激活 / 3.8B MTP 层 / 256K 上下文） → 调用方侧工具与 Agent 编排。</td>
+<td>仅由 README 架构启发推断，无任何推理协议、部署形态或工具调用接口的档案证据。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>总参数 295B 撑能力 vs 仅 21B 激活控成本；256K 长上下文利好代码/长文档 vs 增加显存与延迟；MoE 已是 2026 事实标准，但 Preview 阶段能力未验证、社区 262 stars 偏早。</td>
+<td>权衡结论来自参数结构与定位判断；推理显存、token/s、定价 RMB 1.2/M 之外的真实成本与延迟未在档案中给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议最小 PoC 限定在单渠道（任选 HF 或 ModelScope）、单卡/A100 范围推理、最小工具白名单、可审计日志、设定 GA 触发与退出路径；现阶段不宜生产接入。</td>
+<td>基于 Preview 状态、社区热度偏低、档案明确建议"等到正式 GA 后再做 PoC 评估"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Hy3 Preview 的核心架构决策是 <strong>重建基础设施 + MoE + Agent 优化</strong>：</p>
 <ul>
 <li><strong>重建的意义</strong>：腾讯拆毁旧基础设施重建，说明他们认为之前的技术债已不可持续。90 天从拆到建到交付，体现的是工程组织能力，不只是模型能力</li>
 <li><strong>MoE 的选择</strong>：在 2026 年，MoE 已成为大模型的事实标准架构。21B 活跃参数意味着单张 A100 可推理</li>
 <li><strong>Trade-off</strong>：Preview 阶段，能力尚未完全验证；但腾讯生态内的快速迭代能力是优势</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[使用者或上游系统] --> B[入口渠道：GitHub 或 HuggingFace 或 ModelScope]
+    B --> C[模型权重：295B 总参 / 21B 激活 / 3.8B MTP / 256K Context]
+    C --> D[调用方侧 Agent 编排与工具调用]
+    D --> E[会话 状态 审计 边界]
+    E --> D
+    D --> F[腾讯产品生态 分发渠道：微信 QQ 腾讯云 待核验]
+    C --> G[定价边界：RMB 1.2 每 M input token]
+    G -.价格信号.-> A
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>国产 MoE 大模型第二梯队领跑者</strong>。与 Kimi K2.6 相比，Hy3 更侧重通用能力和腾讯生态集成，而非极致的 Agentic Coding。两者互补而非直接竞争。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Preview 阶段</strong>：目前只是 Preview，非正式 GA，能力和稳定性尚未完全验证</li>
 <li><strong>社区接受度低</strong>：262 stars 说明开源社区尚未形成共识</li>
 <li><strong>腾讯生态绑定</strong>：优势（分发渠道）也是风险（感知上偏"内部工具"）</li>
 <li><strong>与 Kimi K2.6 对比压力大</strong>：后者 SWE-Bench Pro 58.6% 的成绩是硬指标</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Kimi K2.6</strong>：K2.6 在 Agentic Coding 上更强（SWE-Bench Pro 58.6%），Hy3 在通用能力上可能更均衡</li>
 <li><strong>vs DeepSeek-V4</strong>：DeepSeek 在推理和数学上更强，但在 Agent 任务上可能不如 Hy3</li>
 <li><strong>vs Qwen 3</strong>：阿里 Qwen 系列在中文场景更强，但 Hy3 的 MoE 架构更高效</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 腾讯混元团队的投入力度大，姚顺雨的加入是重要信号。建议等到正式 GA 后再做 PoC 评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>正式 GA 版本的 benchmark 成绩（尤其是 Agent 相关 benchmark）</li>
 <li>腾讯产品生态内的集成速度（微信、QQ、腾讯云）</li>

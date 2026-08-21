@@ -6,7 +6,7 @@
     <title>humanlayer/humanlayer | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,72 @@
 <li><strong>审批工作流</strong>：关键操作前的审批门控</li>
 <li><strong>上下文路由</strong>：根据任务复杂度自动决定是否需要人类介入</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>HumanLayer 定位于"入口渠道 / 编码 Agent / 人类审批"之间的 HITL 编排层；档案明确支持 Claude Code、Codex、OpenCode、Amp 等多 Agent 适配</td>
+<td>组件边界与适配 Agent 列表来自档案；部署形态、传输协议、持久化方案未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 在关键决策点发起请求 → 编排层路由至人类 → 人类审批/输入回写 → Agent 继续执行；侧挂会话、审计与可观测</td>
+<td>审批工作流、上下文路由在"关键技术亮点"中明确；具体实现机制（如 channel、channel 分发）须以源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>受控自主 vs 完全自主：引入人类门控换可控性，代价是延迟与流程摩擦；GitHub 仓库已 deprecated，理念可能落入 Agent 框架原生集成</td>
+<td>"仓库废弃/产品迁移"在档案"风险/局限"明确；原生集成的演进属观察点，非已证事实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 单渠道接入，启用关键操作前的审批门控并记录审计日志，再评估是否扩到 Codex/OpenCode/Amp</td>
+<td>渠道与审批语义由档案支持；具体 SDK/CLI 调用面、权限模型未在档案中给出，需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>HumanLayer 的核心启发是"Agent 不需要完全自主才有价值"——在关键决策点引入人类判断，比追求 100% 自主更实际、更安全。这种"受控自主"模式可能是 AI 编程 Agent 走向生产的必经之路。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游任务] --> A[编码 Agent<br/>Claude Code Codex OpenCode Amp]
+    A --> R[Human-in-the-Loop 编排层<br/>请求 路由 状态]
+    R --> H[人类审批 输入 边界]
+    H --> R
+    R --> S[会话 状态 审计<br/>待核验]
+    A --> X[外部系统 待核验<br/>源码/工具/部署形态未证实]
+    R --> X
+    note["GitHub 仓库已 deprecated<br/>产品迁移 humanlayer.com"]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>已商业化的工具型项目</strong>。开源仓库已标记 deprecated，核心产品迁移到 humanlayer.com。其理念价值大于代码价值。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>⚠️ 仓库已废弃</strong>：GitHub README 明确说"the code here is pretty much all deprecated"</li>
 <li><strong>产品迁移</strong>：已转型为 humanlayer.com 商业产品</li>
 <li><strong>理念可复制</strong>：Human-in-the-Loop 的概念容易被 Agent 框架原生集成</li>
 <li><strong>竞争</strong>：Claude Code 本身已有权限审批机制，可能减少对外部工具的需求</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>竞品/集成对象</strong>：Claude Code（内置审批）、Cursor（人在环路审查）、GitHub Copilot Workspace</li>
 <li><strong>概念先驱</strong>：AutoGPT 的失败教训推动了 Human-in-the-Loop 的发展</li>
 <li><strong>关联</strong>：与 12-factor agents 等理念一致</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>跟踪理念，不跟踪仓库</strong>。HumanLayer 的 Human-in-the-Loop 理念值得关注，但开源仓库已废弃，应关注 humanlayer.com 商业产品的进展。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Human-in-the-Loop 是否会被主流 Agent 框架原生集成（减少独立工具的需求）</li>
 <li>humanlayer.com 商业产品的市场表现</li>

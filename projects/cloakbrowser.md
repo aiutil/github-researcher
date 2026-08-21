@@ -51,9 +51,31 @@ Stealth Chromium that passes every bot detection test. Drop-in Playwright replac
 5. **<a href="https://pypi.org/project/cloakbrowser/"><img src="https://img.shields.io/pypi/v/cloakbrowse**
 6. **<a href="https://www.npmjs.com/package/cloakbrowser"><img src="https://img.shields.io/npm/v/cloakbro**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 仅明确入口为 Python PyPI 与 npm 双分发，构建于 Chromium 之上的隐身浏览器自动化客户端，无服务端组件记录。 | 证据仅来自简介、tags（chromium / browser-automation / anti-detect）、PyPI/npm 徽章；具体补丁范围、依赖未在档案披露。 |
+| 主路径 | 调用方（如 Playwright 代码）→ CloakBrowser 客户端（Python/Node）→ 经源码级指纹补丁的 Chromium → 目标站点/反检测测试。30/30 测试通过为档案中唯一量化结果。 | 路径节点均依简介"sourse-level fingerprint patches""Playwright replacement"推导；无会话管理、无外部模型编排节点，档案未证实的不得写入。 |
+| 关键权衡 | 作为开源隐身浏览器客户端，在反 bot 检测能力（30/30）与法务/合规风险（绕过 captcha、云防护）之间的取舍；MIT 许可降低采用门槛但无力兜底合规。 | 档案仅给出 MIT、tags（captcha-bypass / cloudflare / bot-detection）；性能、对抗强度、维护频率无量化指标。 |
+| 最小 PoC | 在隔离环境以最小脚本替换 Playwright 启动入口，跑同一组 30 项 bot 检测用例复现"30/30 通过"，并对照原 Playwright 基线差异——以验证补丁实际生效而非依赖默认行为。 | PoC 步骤基于"drop-in Playwright replacement""30/30 tests passed"文字；具体测试集来源与脚本结构在档案中未见，需待核验。 |
+
 ## 架构启发
 
 从 CloakHQ/CloakBrowser 的设计来看，核心思路是 **"Stealth Chromium that passes every bot detection test. Drop-"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  Caller[Playwright 调用方 Python 或 Node] --> Client[CloakBrowser 客户端 MIT Python npm 双分发]
+  Client --> Patched[源码级指纹补丁的 Chromium 30 30 bot 测试通过 待核验 具体补丁面]
+  Patched --> Targets[目标站点与反检测 CF Captcha 等标签外边界]
+  Client -. 状态回写 .-> Client
+  Targets --> Adversary[对抗强度演进 检测方持续升级 风险边界 档案无时间序列]
+```
 
 ## 定位判断
 

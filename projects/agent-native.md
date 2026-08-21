@@ -38,6 +38,15 @@ BuilderIO 品牌背书 + Agent-Native 概念新颖 + 完整模板降低试用门
 4. **Agent 自改进：** Agent 可以给应用添加功能、修 bug、改进 UI——因为 Agent 能直接调用 defineAction 修改应用代码。
 5. **A2A 协作：** Tag 另一个 Agent，跨应用协调。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | agent-native 是 TypeScript 全栈框架，承担 UI/Agent/HTTP/MCP/A2A/CLI 六端共享业务逻辑的编排层；持久化基于 Drizzle ORM 与 SQL 数据库；归属 BuilderIO 团队 | 具体传输协议、部署形态、模型供应商适配须以源码核验 |
+| 主路径 | defineAction 定义业务逻辑 → UI 点击 / Agent 命令 / HTTP / MCP tool / A2A / CLI 任一入口触发 → 调用同一 Action → 写入共享 SQL 状态 → 实时多端同步 | "一次定义六端复用"宣称来自档案，真实一致性保证与冲突策略未公开 |
+| 关键权衡 | Action-first 统一抽象带来开发效率与跨端一致性，但会引入框架锁定（Action API 绑定）、迁移成本高、模板生态仅 6 个（Mail/Plans/Design/Content/Slides/Analytics），且与 Vercel AI SDK、Mastra 存在定义权竞争 | 企业采纳案例、生产部署证据尚未给出 |
+| 最小 PoC | 优先复用一个 cloneable 模板（如 Mail），验证单渠道 + 最小工具权限 + 可审计日志下的 defineAction 复用程度与多端同步延迟；将安全边界、成本、SLO 与退出路径作为验收项 | PoC 中实测的同步一致性、Agent 自改代码的权限模型需现场验证 |
+
 ## 架构启发
 agent-native 的核心启发是"Action 作为通用原语"：
 
@@ -46,6 +55,22 @@ Agent 架构：Agent → Tool → Service → DB（Agent 是入口）
 agent-native：Action → DB（UI/Agent/HTTP 都是 Action 的消费者）
 
 这种设计让 Action 成为单一真实来源（Single Source of Truth），所有消费方式都是等价的。对架构师的启发是：在设计 Agent 时代应用时，先定义 Action 再考虑消费方式。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界: UI Agent HTTP MCP A2A CLI 六端]
+  I --> A[defineAction: 业务逻辑单一原语 Action-first]
+  A --> D[共享状态层: SQL Drizzle ORM]
+  A --> M[模型或推理服务: 待核验供应商]
+  A --> T[工具与外部系统: MCP tool A2A 协作]
+  D --> R[实时多端同步 multiplayer]
+  A --> S[Agent 自改进与可审计日志: 待核验权限模型]
+  R --> I
+```
 
 ## 定位判断
 处于 L4 框架层，试图定义 Agent 时代全栈应用的默认架构。如果成功，可能类似 Rails 之于 MVC、Next.js 之于 React SSR。但目前仍处于早期（2.7K），需要观察生态发展。

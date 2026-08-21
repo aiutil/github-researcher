@@ -52,9 +52,35 @@ url: "https://github.com/alirezarezvani/claude-skills"
 5. **[^hermes]: Hermes Agent is **BYO-sync tier**: the repo ships a pre-generated `.hermes/skills/claude-**
 6. **[^vibe]: Mistral Vibe is also **BYO-sync tier**: the repo ships a pre-generated `.vibe/skills/claude**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 这是一个面向 Claude Code / Codex / Gemini CLI / Cursor 等 13+ AI 编码工具的资源型 skill 库（345 skills、30+ Agents、70+ custom commands），自身定位是"插件/技能集合"，而非独立运行时；其外延覆盖工程、营销、合规、C 级顾问等多业务领域。 | 边界判断基于 README 自述的数量与覆盖范围；未声明其内部是否有独立调度内核或仅作为静态 skill 文件分发，待核验。 |
+| 主路径 | 路径为：宿主编码 Agent（Claude Code 等）→ 加载本仓库的 skill/command/agent 定义 → 调用对应工具或脚本执行 → 回写结果到宿主会话。Python 是实现脚本与 references 的主要语言。 | 主路径来自 README 的"skills, custom commands, customizable references, scripts"描述；具体加载协议（如是否走 MCP / Skills 标准）未在档案中给出，待核验。 |
+| 关键权衡 | 跨 13+ 工具兼容性 vs. 各工具原生能力差异：覆盖广意味着需为每家维护映射层；此外脚本默认权限边界、BYO-sync tier（Hermes / Mistral Vibe）的预生成 skills 是否安全需评估。 | 权衡结论仅依据 README 列出的覆盖工具与脚注中的 BYO-sync 提示；权限模型、可观测性细节档案未证实，待核验。 |
+| 最小 PoC | 选定 1 个官方支持的宿主（优先 Claude Code），挑选 1 个领域 skill（例如工程类）与 1 个 custom command，在受限工作目录、关闭网络工具的前提下跑通端到端，验证 skill 加载、脚本执行与审计可见性后再扩展。 | PoC 步骤基于"先单一渠道、最小权限、可审计日志"的通用建议与 README 的多工具声明；具体 skill 标识符、依赖与执行入口待核验。 |
+
 ## 架构启发
 
 从 alirezarezvani/claude-skills 的设计来看，核心思路是 **"345 Claude Code skills & agent skills & plugins (30+ Agents,"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游编码任务] --> H[宿主 AI 编码 Agent<br/>Claude Code / Codex / Gemini CLI / Cursor 等 13+ 工具]
+    H --> L[Skill 与 Command 加载层<br/>345 skills · 70+ custom commands · customizable references]
+    L --> P[Python 脚本与 References 执行<br/>scripts + refs]
+    P --> T[外部工具与数据源<br/>待核验：MCP / 文件系统 / API]
+    L --> A[30+ Agent 角色定义<br/>工程 营销 合规 C 级顾问 等]
+    A --> H
+    P --> S[会话结果回写到宿主<br/>待核验：状态 审计日志 持久化]
+    S --> H
+    H -. BYO-sync tier .-> X[Hermes / Mistral Vibe 预生成 skills<br/>.hermes/skills · .vibe/skills]
+```
 
 ## 定位判断
 

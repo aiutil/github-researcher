@@ -6,7 +6,7 @@
     <title>RuView | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,29 +43,81 @@
 <li><strong>Rust 全栈实现</strong>：信号采集、处理、推理全链路 Rust，保证实时性和安全性</li>
 <li><strong>边缘部署友好</strong>：无需 GPU，普通 WiFi 硬件即可运行，适合嵌入式和边缘场景</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界落在「WiFi AP（CSI 采集）→ Rust 信号处理/推理 → 应用服务接口」，消费级路由器/特定芯片组（Intel/Atheros）支持度未在档案中实证</td>
+<td>仅依档案明示的 CSI、802.11n/ac/ax、Rust 全栈、边缘部署等描述，不含实测兼容清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>WiFi AP 采集 CSI → Rust 端做信号处理与生命体征/存在/活动推理 → 对外暴露服务 API 给智能家居/医疗/安防/IoT 集成方</td>
+<td>主路径来自「关键技术亮点」与「目标用户」描述，具体协议、API 形态、持久化方式须核源码</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>隐私与成本优势 vs 精度上限受 WiFi 带宽/环境干扰限制，且硬件兼容性是隐性门槛</td>
+<td>权衡判断基于档案「风险/局限」与「vs 毫米波雷达/蓝牙/摄像头」对比节，未含量化指标</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用一台档案点名支持的 WiFi AP（如 Intel/Atheros）跑生命体征监测 demo，验证 CSI 采集、推理实时性、与至少一个下游应用（智能家居或监护）的 API 对接</td>
+<td>PoC 范围限于档案描述的能力子集；真实部署 SLO、合规、安全验收项未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>感知范式转变</strong>：从「看见」到「感知」，非视觉传感是未来智能空间的底层范式</li>
 <li><strong>复用现有基础设施</strong>：不增加新硬件，利用已有 WiFi AP 实现感知，部署成本趋近于零</li>
 <li><strong>隐私 by design</strong>：零摄像头 = 零隐私争议，天然适合医疗、养老、儿童场景</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  AP[WiFi AP 与 CSI 采集 802.11n/ac/ax]:::ext
+  CHIP[Intel 或 Atheros 芯片组 支持度待核验]:::ext
+  AP --> CHIP
+  CHIP --> CORE[Rust 核心 CSI 信号处理与推理]
+  CORE --> EDGE[边缘部署 无需 GPU]:::edge
+  CORE --> API[对外服务 API 形态待核验]
+  API --> HOME[智能家居集成]
+  API --> MED[医疗监护系统]
+  API --> SEC[安防系统集成]
+  API --> IOT[IoT 平台]
+  CORE --> RISK[精度与法规风险 边界]
+  classDef ext fill:#eef,stroke:#88a
+  classDef edge fill:#efe,stroke:#8a8
+  RISK:::edge
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 IoT/智能空间生态中定位为「感知基础设施层」，类似于计算机视觉领域的 OpenCV，但面向非视觉信号。如果成功，会成为智能空间应用的标配感知组件。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>硬件兼容性</strong>：WiFi CSI 数据采集需要特定芯片组支持（如 Intel/Atheros），消费级路由器兼容性存疑</li>
 <li><strong>精度边界</strong>：非视觉感知的精度上限受限于 WiFi 带宽和环境干扰，复杂场景可能不够准确</li>
 <li><strong>法规灰色地带</strong>：虽然不采集视频，但通过 WiFi 信号推断人体活动在部分地区可能面临法律审查</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 毫米波雷达</strong>：精度更高但成本也更高，RuView 成本优势明显</li>
 <li><strong>vs 蓝牙信标</strong>：蓝牙仅能定位，RuView 能做生命体征监测</li>
 <li><strong>vs 传统摄像头</strong>：隐私完全无争议，但空间分辨率远低于视觉方案</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 非视觉感知是 IoT/边缘计算的中期趋势，RuView 是该方向目前最成熟的开源实现。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>实际部署案例是否从 demo 走向生产（智能家居/医疗场景）</li>
 <li>WiFi 芯片厂商是否跟进提供更好的 CSI 接口支持</li>

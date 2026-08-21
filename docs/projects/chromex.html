@@ -6,7 +6,7 @@
     <title>Chromex | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,34 +51,82 @@
 <li><strong>多模态输入</strong> — 支持语音输入和图片工作流，不局限于文本</li>
 <li><strong>标签页管理</strong> — 跨标签页的上下文整合</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Chromex 是 Chrome Side-Panel Extension 形态的 Browser Agent，编排层位于扩展内，对外向 Codex 引擎、当前页面 DOM/文本、语音/图片输入和标签页状态开放</td>
+<td>仅据档案标签与定位描述，未见源码层级的组件清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 Side-Panel 发起请求 → 扩展运行时聚合页面上下文与多模态输入 → 调用 Codex 推理 → 回写会话与标签页状态</td>
+<td>"Codex 驱动、页面上下文、多模态、标签页管理"为档案原文，协议、持久化与部署形态待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>嵌入式 Side-Panel 路线（轻、与浏览器深度整合）换取对 Chrome Side-Panel API 与 Codex 的强耦合，平台策略与模型窗口构成天花板</td>
+<td>档案明确点出平台依赖、Codex 绑定、上下文长度与 Google 原生竞品风险</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单标签页场景：固定 Chrome 侧边栏 + 单一 Codex 调用 + 页面 DOM/文本上下文 + 语音/图片各一条路径 + 可审计日志，先验证再扩展多标签页与多模态</td>
+<td>仅据档案建议与亮点反推，未含 PoC 性能/合规基准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Browser Agent 存在两条清晰路线：<strong>嵌入式（Side-Panel）</strong> vs <strong>自动化（Playwright）</strong></li>
 <li>嵌入式路线更适合"AI 辅助人类"场景，自动化路线更适合"AI 替代人类"场景</li>
 <li>Chrome Extension 是分发 Browser Agent 的天然渠道</li>
 <li>Side-Panel 的空间限制（窄面板）倒逼更精炼的 UI 设计</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者] --> I[Chrome Side-Panel 入口]
+    I --> C[扩展运行时与编排]
+    C --> P[页面上下文: DOM/文本]
+    C --> V[语音与图片输入 待核验]
+    C --> T[多标签页上下文聚合 待核验]
+    C --> M[Codex 推理引擎]
+    M --> C
+    C --> S[会话 标签页状态 审计日志 待核验]
+    S --> I
+    C -.平台策略风险.-> R[Chrome Side-Panel API 边界 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Browser Agent 生态中，Chromex 是一个 <strong>效率工具</strong>：
 - 不是基础设施，不是平台
 - 但它验证了 "Side-Panel 作为 Browser Agent 载体" 的可行性
 - 如果 Chrome Extension 生态集成 AI 能力成为趋势，Chromex 可能成为早期模板</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>平台依赖</strong> — 完全依赖 Chrome Side-Panel API，平台策略变更风险</li>
 <li><strong>Codex 绑定</strong> — 当前使用 Codex 引擎，模型能力决定产品天花板</li>
 <li><strong>上下文长度</strong> — 复杂页面的上下文可能超出模型窗口</li>
 <li><strong>竞品空间</strong> — Google 自身可能在 Chrome 中原生集成类似功能</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>trycua/cua（15.6K stars）</strong> — 重量级 Browser Agent，全桌面自动化，Chromex 是其轻量级替代</li>
 <li><strong>Browser Use</strong> — Playwright 路线的 Browser Agent，自动化导向</li>
 <li><strong>Monica / Sider</strong> — 商业化浏览器 AI 助手，Chromex 是其开源替代</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>有限跟踪。</strong> 产品本身是工具型，但 "Side-Panel Browser Agent" 范式值得观察是否形成趋势。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Chrome Side-Panel AI Extension 生态是否会形成独立赛道</li>
 <li>Google 官方是否推出原生 Side-Panel AI 功能（可能直接碾压）</li>

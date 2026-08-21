@@ -43,8 +43,37 @@ DeepSeek-AI 出品的高性能 GPU 内核库，使用 tilelang DSL 编写，专�
 6. **高层建模层:** 提供 `torch.autograd.Function` 封装，将底层内核组合成可训练的 PyTorch 层（engram gate、mHC pipeline）
 7. **接近硬件极限:** README 明确指出"大部分内核接近计算强度和内存带宽的极限"
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | TileKernels 是用 tilelang DSL 编写的 GPU 内核库，覆盖 MoE 路由、FP8/FP4 量化、Engram 门控、mHC 等 DeepSeek 专用算子，通过 `torch.autograd.Function` 暴露给 PyTorch；运行时绑定 tilelang + CUDA 13.1+，仅支持 SM90/SM100 | 算子集合、autograd 封装与硬件要求见 README 关键技术亮点与门槛段；具体模块路径与编译产物须源码核验 |
+| 主路径 | 上游 PyTorch 模型调用 autograd Function → tilelang DSL 描述的 tile 级计算 → 编译器生成 CUDA 内核 → 在 Hopper/Blackwell 上执行算子（MoE 路由 / 量化 / 注意力变体 / Engram / mHC） | DSL→CUDA 编译链由 tilelang 承担；性能数字、调度策略与具体 tile 参数 README 未给出，需基准核验 |
+| 关键权衡 | DSL 可维护性 vs tilelang 生态不成熟；硬件极限性能 vs 仅限 SM90/SM100 的高门槛；DeepSeek 架构专用算子丰富度 vs 通用性不足（Triton/cuDNN 覆盖更广） | 维护活跃度"初始发布密集，后续节奏较慢"、tilelang 深度绑定、硬件门槛均来自档案风险段；与 Triton/FA 的具体性能差异档案未提供实测 |
+| 最小 PoC | 在单卡 Hopper/Blackwell 环境上跑通：tilelang + CUDA 13.1+ 安装 → 加载仓库中 MoE 路由或 FP8 量化内核示例 → 以 `torch.autograd.Function` 接入 PyTorch 最小模型 → 验证前向/反向数值正确性与吞吐基线 | PoC 步骤基于 README "torch.autograd.Function 封装"与门槛段推断；具体示例脚本、依赖版本号、benchmark 命令档案未列，须以源码核验 |
+
 ## 架构启发
 TileKernels 代表了 GPU 内核开发的**DSL 化趋势**：从手写 CUDA → Triton → tilelang，抽象层逐步提升，让开发者聚焦算法定义而非微架构细节。更深层的是，它揭示了一个产业现实：**顶级 AI 公司的竞争力已不仅在于模型架构，更在于为自有架构定制的内核生态**。DeepSeek 开源这些内核，既是技术分享，也是在定义其架构的"事实标准"——当 MLA、MoE 的优化内核以 DeepSeek 的实现为参照系时，整个推理生态都会向其靠拢。tilelang 作为承载这些内核的 DSL，也在借势扩大自己的影响力，形成"模型架构→专用内核→编程 DSL"的闭环飞轮。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[PyTorch 模型与上游调用方] --> B[torch.autograd.Function 封装层]
+    B --> C[tilelang DSL 描述的 tile 级计算]
+    C --> D[tilelang 编译器]
+    D --> E[CUDA 内核 SM90 SM100]
+    E --> F[GPU 硬件 Hopper Blackwell]
+    A -- 权重梯度 反向 --> B
+    B --> G[算子集合 MoE 路由 FP8 FP4 量化 Engram 门控 mHC 注意力变体 待核验]
+    G --> C
+    D --> H[tilelang 生态与维护节奏 风险边界 待核验]
+    H --> C
+    E --> I[硬件门槛 限 SM90 SM100 风险边界]
+    I --> F
+```
 
 ## 定位判断
 **基础设施候选。** 推理内核是 LLM 推理栈最底层的基础设施。TileKernels 目前专注于 DeepSeek 系列架构的算子优化，若 tilelang 生态成熟，它有望从"DeepSeek 专用内核库"演化为"通用 GPU 内核开发平台"——类似 cuDNN 之于 NVIDIA 的定位，但以开源、DSL 驱动的方式。平台化潜力取决于 tilelang 能否吸引更多模型架构的贡献。

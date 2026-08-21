@@ -6,7 +6,7 @@
     <title>Alibaba Open Code Review | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,22 +50,73 @@
 <li><strong>生产调优工具集</strong>：基于大规模工具调用轨迹分析（调用频率、重复率、调用链影响）提炼场景化工具集</li>
 <li><strong>内置规则引擎</strong>：NPE、线程安全、XSS、SQL 注入，模板引擎规则匹配，可扩展</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>阿里 Open Code Review 是一个面向企业级代码审查的混合架构工具：确定性工程流水线负责文件选择、规则匹配、评论行号定位；Agent 负责语义分析与上下文检索。Go 实现，Apache 2.0，NPM 一键安装，混合架构是其本质边界特征。</td>
+<td>来自项目标签（hybrid-architecture, agent, llm, deterministic-pipeline）与一句话定位；具体模块拆分以源码为准。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>代码变更 → 文件选择与捆绑分组 → 规则引擎预筛（NPE/线程安全/XSS/SQL 注入） → Agent 语义分析 → 行号定位器与反思器修正 → 行级评论回写。确定性步骤保证覆盖与定位，Agent 步骤提供语义判断。</td>
+<td>来自"关键技术亮点"五条描述；调用链细节、并发模型、持久化未在档案中展开。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>确定性 vs Agent 的职责切分：确定性强但僵化，Agent 灵活但不稳定。该项目选择"不该出错的部分用代码，需要判断的部分用 LLM"。另一权衡是内置规则覆盖（当前偏 Java/Go）vs 多语言扩展速度。</td>
+<td>基于"架构启发"与"风险/局限"中"规则引擎初期覆盖有限"得出；具体规则集与扩展机制以仓库为准。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一个真实 Git 仓库的小型 PR（最好为 Java 或 Go），启用内置规则引擎，配置一个 LLM 供应商，跑一次行级评论；验收项：评论行号偏差、漏报率、规则命中率、LLM 调用成本。</td>
+<td>"后续观察点"建议从单一渠道起步；LLM 供应商、行号精度验证方式需自行确认。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心设计哲学：<strong>不该出错的部分用代码，需要判断的部分用 LLM</strong>。</p>
 <p>这个模式适用于所有 Agent 落地生产场景：
 - 自动化测试：确定性 fixture 生成 + Agent 探索性测试
 - 数据管道：确定性 schema 校验 + Agent 数据质量判断
 - 安全审计：确定性扫描规则 + Agent 语义级威胁分析</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[开发者 / 上游系统] --> I[入口与接入层<br/>CLI 或服务入口]
+    I --> C[编排与运行时 Go]
+    C --> FB[智能文件捆绑与分组隔离]
+    FB --> RE[规则引擎<br/>NPE/线程安全/XSS/SQL 注入]
+    RE --> AG[Agent 动态决策<br/>语义分析 + 上下文检索]
+    AG --> LR[外部定位器与反思器<br/>行号修正 + 评论反思]
+    LR --> OUT[行级评论回写]
+    C --> S[状态 / 审计 / 会话回写]
+    C --> M[模型或推理服务<br/>外部供应商 待核验]
+    C --> T[场景化工具集<br/>调用轨迹调优 待核验]
+    RE --> C
+    LR --> C
+    OUT --> U
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>生产可用的 DevTools。</strong> 在 AI Code Review 赛道中，是目前工程成熟度最高的开源方案。混合架构范式可能演化为审查平台的基础框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规则引擎初期覆盖有限</strong>：内置规则主要面向 Java/Go，Python/TS 生态覆盖待补全</li>
 <li><strong>LLM 依赖</strong>：审查质量上限受限于配置的 LLM 能力</li>
 <li><strong>阿里维护承诺不确定</strong>：内部工具开源后的社区响应速度有待观察</li>
 <li><strong>定位精度依赖 diff 格式</strong>：对于极端重构场景（大段移动），行号定位可能仍有偏差</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -92,9 +143,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 混合架构范式 + 生产验证 + 阿里背书，是 AI Code Review 赛道的标杆项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>规则引擎扩展速度：Python / TypeScript / Rust 规则何时上线</li>
 <li>社区采纳：forks 是否从 130 持续增长</li>

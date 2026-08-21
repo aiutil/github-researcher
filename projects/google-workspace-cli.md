@@ -43,12 +43,38 @@ Google Workspace CLI 的热度是**"Google 官方背书 × 企业自动化刚需
 5. **Gemini CLI Extension:** 作为 Gemini CLI 的扩展——Google 将 Workspace CLI 与 Gemini AI 深度集成
 6. **全覆盖:** Drive、Gmail、Calendar、Sheets、Docs、Chat、Admin 一套工具搞定
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 一份 Google 官方维护的 Rust 二进制 CLI，前端为人类用户与脚本/Gemini CLI Extension 等 Agent 调用方，后端经 OAuth2 对接 Google Discovery Service 与 Drive/Gmail/Calendar/Sheets/Docs/Chat/Admin 等 Workspace 服务 | 档案明示“官方二进制 / OAuth2 内置 / Discovery Service 动态构建 / 全套 Workspace 服务”，未给出具体 OAuth 流程字段与服务清单条目级映射 |
+| 主路径 | CLI 调用 → OAuth2 鉴权 → Discovery Service 拉取 API 定义 → 生成/适配命令 → 调用对应 Workspace API → JSON 等结构化输出回流到调用方（含 Agent） | 主路径以档案公开描述为准；具体鉴权模式、命令生成机制、缓存策略未在档案中给出 |
+| 关键权衡 | 用 Discovery Service 动态发现换取“CLI 永远与最新 API 同步”，代价是受制于 Google API 可用性与 Discovery 更新节奏，并与 OAuth/服务账户权限模型紧耦合 | 权衡来源于档案“Discovery Service 动态构建”与“依赖 Google API 可用性/企业级权限管理”两点；未量化 SLA 与版本兼容窗口 |
+| 最小 PoC | 单一 Google 账户 + 最小 OAuth 作用域，先验证只读类命令（如 Drive/Calendar 列表），核对 JSON 输出与 Agent 集成路径，再扩展到写操作与多账户 | 档案仅指出“个人账户和服务账户均支持”与 Agent/JSON 输出场景；具体命令集、性能数据与作用域清单需以源码/官方文档核验 |
+
 ## 架构启发
 Google Workspace CLI 的核心启发是**"平台厂商正在提供 CLI 优先接口"**。这标志着 Agent-Native 基础设施正在从"社区倡议"变为"平台官方标配"。当 Google 这样的平台厂商主动为 Agent 场景设计 CLI 时，说明行业已经认识到：**Agent 调用 SaaS 的标准方式是 CLI/API，而非浏览器自动化**。
 
 Discovery Service 动态构建的设计也值得借鉴——**CLI 不应硬编码 API 列表，而应从源头动态发现**。这使得 CLI 永远与最新 API 保持同步，消除了"CLI 落后于 API"的常见问题。
 
 企业架构师应认识到：**所有对内对外服务都应提供 CLI 接口**，这是 Agent-Native 基础设施的基本要求。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 Agent 待核验] --> I[OAuth2 鉴权入口]
+    I --> C[Rust CLI 编排与运行时]
+    C --> D[Google Discovery Service 动态拉取 API 定义]
+    D --> C
+    C --> W[Workspace 服务 Drive Gmail Calendar Sheets Docs Chat Admin]
+    C --> G[Gemini CLI Extension 与 AI Agent Skills 集成 待核验]
+    C --> S[会话 状态 审计 持久化方式待核验]
+    W --> C
+    G --> C
+```
 
 ## 定位判断
 **生产可用（官方产品）。** Google Workspace CLI 是 Google 官方产品，可直接用于生产自动化场景。它不是实验项目——Google 选择 Rust、持续维护、覆盖全套服务、适配 Agent 场景，都说明这是长期投入。定位为 **Agent 调用 Google Workspace 的标准入口**，也是 Gemini CLI 生态的核心组件。

@@ -33,8 +33,33 @@ Agent 生态的碎片化问题：每个 Agent 平台（Claude Code/Codex/Cursor/
 4. **可组合**——scripts/references/assets 等可选目录，从纯指令到含代码的完整工作流
 5. **跨平台设计**——规范本身不绑定任何 Agent 平台
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 该项目（agentskills/agentskills）是 SKILL.md 格式规范的说明文档（Markdown），本身不实现编排运行时，落地需依赖 Claude Code/Codex/Cursor/Copilot 等外部 Agent 平台 | 仅基于档案中"语言: Markdown"、"Anthropic 发起的开放标准"与"跨平台设计，不绑定任何 Agent 平台"的事实；具体 SDK/运行时组件待源码核验 |
+| 主路径 | 技能编写（文件夹+SKILL.md）→ 三阶段渐进加载（Discovery→Activation→Execution）→ Agent 平台加载并按需执行 scripts/references/assets | 路径完全取自档案"关键技术亮点"与"架构启发"两节；具体触发匹配机制与 token 预算未在档案中给出 |
+| 关键权衡 | 扩展速度（极简格式、低门槛） vs. 安全供应链（恶意脚本风险）、质量参差（低门槛）、中立性（Anthropic 主导，可能产生不兼容私有扩展） | 权衡项均直接引自档案"风险/局限"节；各厂商实际扩展差异未在档案中具名披露 |
+| 最小 PoC | 单一渠道（如 Claude Code）+ 最小工具权限 + 可审计日志的环境下，编写一个纯指令型 Skill（仅 SKILL.md，无 scripts），验证 Discovery 加载与指令注入 | PoC 设计来自档案"架构师速览-采用建议"；实际可验证的运行时行为、context 占用与权限模型均"待核验" |
+
 ## 架构启发
 三阶段渐进加载是 Agent context 管理的优秀设计模式。Agent 的根本约束是 context window——不可能把所有能力都塞进去。Skills 的 Discovery 阶段只加载 name+description（几百 token），匹配后才加载完整指令（几千 token），执行时才运行脚本。这种"懒加载"模式值得所有 Agent 架构借鉴。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[技能作者<br/>编写 SKILL.md] --> B[Skill 包<br/>文件夹+元数据]
+    B --> C{外部 Agent 平台<br/>待核验: Claude Code/Codex/Cursor/Copilot}
+    C -->|Discovery| D[加载 name+description<br/>极小 context]
+    D -->|匹配激活| E[Activation<br/>加载完整指令]
+    E -->|按需执行| F[Execution<br/>运行 scripts/references/assets]
+    F --> G[状态/审计边界<br/>待核验: 风险与权限控制]
+    F --> H[工具与外部系统<br/>待核验: MCP 连接]
+    G -.供应链与中立性风险.-> C
+```
 
 ## 定位判断
 基础设施候选。如果 Agent 生态类比 Web 生态，Skills 规范就是 Agent 的 npm/pip——能力分发的标准层。

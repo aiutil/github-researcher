@@ -38,10 +38,41 @@ AI Agent 无法同时访问多个社交/内容平台的数据孤岛。Google 不
 4. **HTML brief 输出**：生成自包含的暗色模式 HTML 报告，可直接拖入 Slack/Notion
 5. **Humor/wit 评分**：v3 第二个 judge 专门评分幽默感和病毒性
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | last30days-skill 是一个 Agent 原生 Skill 桥接层，向上承接 Claude Code 这类 agent 运行时与用户，向下桥接 Reddit/X/YouTube/TikTok/Polymarket 等 10+ 外部平台 API/Cookie 数据源；自身不建搜索引擎，也不持有平台账户 | 平台清单与"Agent Skill 层"定位来自档案与 README 摘录；具体 API/协议、Cookie 注入方式未在档案中证实 |
+| 主路径 | 用户查询 → 实体感知路由（v3，先解析人/公司/产品，再映射到各平台账号与社区）→ 多 pipeline 并行检索与加权评分（互动量、转录、Polymarket 真金白银信号）→ HTML brief 合成输出；竞争分析走 `--competitors` 多 pipeline 并行 | 实体路由、加权评分、HTML 报告、`--competitors` 均来自档案；评分权重公式、并行度上限、缓存与重试策略档案未披露 |
+| 关键权衡 | BYOK 模式下扩展性 vs 合规与稳定性：易接入 14+ 平台（"快"），但把 Cookie、反爬与平台 ToS 风险全部下沉到用户侧；单人维护带来 bus factor 风险；跨平台适配数与维护成本正相关增长 | 风险条目来自档案"风险/局限"小节；实际 Cookie 失效频率、封禁率、单人维护属实性需以仓库贡献者与 issue 节奏核验 |
+| 最小 PoC | 单一封闭查询（如仅 Reddit+YouTube 两个低风险源）、最小 Cookie/API key 权限、全程审计日志、HTML brief 输出可复现；验收需含平台 ToS 合规检查、退出路径（关闭 Cookie 与 key ）、单平台失败隔离三条 | PoC 边界为架构推断，档案未给出官方示例查询或测试集，组件细节须以源码/文档核验 |
+
 ## 架构启发
 - **Agent Skill 作为桥接层**：不是建新搜索引擎，而是用 Agent 桥接现有平台 API
 - **BYOK 模式**：用户自带 API key 和 Cookie，基础设施不承担平台合规风险
 - **预研究 → 并行搜索 → 合成** 三阶段流水线，比串行搜索快 3x
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[用户或上游 Agent 调用方] --> I[入口与会话边界 BYOK API key 与 Cookie 注入]
+  I --> R[实体感知路由 v3 解析 person company product]
+  R --> P[多平台并行 pipeline 待核验调度器]
+  P --> S1[Reddit]
+  P --> S2[X 推特]
+  P --> S3[YouTube 转录]
+  P --> S4[TikTok 互动]
+  P --> S5[Polymarket 预测市场]
+  P --> S6[其他 9+ 平台 待核验清单]
+  P --> J[加权评分与 humor judge]
+  J --> O[HTML brief 自包含暗色报告]
+  O --> U
+  R -. 实体→账号映射 .- P
+  P -. 平台 API 与反爬不稳定 .- W[风险边界 待核验 ToS 与 Cookie 失效]
+```
 
 ## 定位判断
 **Agent Skill 层** — 不是平台也不是基础设施，而是 Agent 生态中的垂直能力插件。类比：last30days-skill 之于 Agent，相当于 Raycast Extensions 之于 Raycast。

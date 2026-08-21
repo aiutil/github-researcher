@@ -51,24 +51,39 @@ Anthropic 的可解释性研究一直是行业标杆。这篇论文提出了"全
 - walkthrough.ipynb 端到端示例
 - 支持预拟合 lens 加载和自定义拟合
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目是 Anthropic 论文《Verbalizable Representations Form a Global Workspace in Language Models》的参考实现，自标注"Not maintained, not accepting contributions"，定位为研究/学习型工具而非生产系统，外部边界限定在 HuggingFace decoder transformer 模型与用户提供的拟合语料 | 档案明确其为"参考实现性质"，未声明生产部署形态 |
+| 主路径 | 拟合期：语料(1000 条 128 token 序列，约 100 条饱和) → 每层计算平均雅可比 J_l；推理期：任意层/位置残差流 h_l → J_l @ h_l 线性传输 → unembed 解码 → token 排名；支持 disjoint slices 并行拟合后再 merge | 档案给出公式 `lens_l(h)=unembed(J_l @ h_l)`、拟合规模与并行方式 |
+| 关键权衡 | 在忠实性（线性雅可比近似的理论支撑）与可读性（直接产出 token 排名）之间取舍；放弃 encoder/encoder-decoder 架构、非线性方法（如 SAE）以换取数学简洁与跨模型适配 | 档案明确"雅可比是线性近似，对强非线性区域可能不忠实"，且"仅支持 decoder transformer" |
+| 最小 PoC | 加载预拟合 lens，运行 walkthrough.ipynb 端到端读出某一层/位置的 token 列表；用约 100 条短序列对单层 lens 做饱和度验证，确认 decoder transformer 上的可复现性 | 档案提到"提供完整代码 + 预拟合 lens + walkthrough notebook"，但未给出具体依赖、硬件要求与许可证细节，需源码核验 |
+
 ## 架构启发
 
 **可解释性工具的设计哲学：忠实 vs 可读。** 很多可解释性工具追求"好看"但不忠实。Jacobian Lens 的设计原则是"有理论基础的线性方法"——雅可比矩阵是输入到输出的真实传输关系的线性近似，而非训练一个额外的黑箱变换。
 
 对架构师的启发：在需要"理解模型内部状态"的场景（如安全审计、行为预测、对齐研究），Jacobian Lens 提供了一种比 attention visualization 更有信息量的工具。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    subgraph "Jacobian Lens 工作流"
-        A["输入文本"] --> B["模型前向传播"]
-        B --> C["提取残差流 h_l<br/>（任意层/位置）"]
-        C --> D["雅可比传输<br/>J_l @ h_l"]
-        D --> E["Unembedding 解码"]
-        E --> F["Token 排名列表<br/>（模型'想说的'）"]
-    end
-    
-    G["1000条文本语料<br/>~100条即可饱和"] --> H["拟合 J_l<br/>（每层一个）"]
-    H --> D
+flowchart LR
+    A["输入文本"] --> B["模型前向传播<br/>HuggingFace decoder transformer"]
+    B --> C["提取残差流 h_l<br/>任意层/位置"]
+    D["平均输入-输出雅可比 J_l<br/>≈ 1000 条 128 token 序列拟合<br/>~100 条饱和"]
+    C --> E["线性传输<br/>J_l @ h_l"]
+    D --> E
+    E --> F["Unembedding 解码"]
+    F --> G["Token 排名列表<br/>模型'想说的'"]
+    H["项目状态边界<br/>Not maintained<br/>Not accepting contributions<br/>参考实现/学习型"]
+    A -.-> H
+    G -.-> H
+    I["架构适用边界<br/>仅 decoder transformer<br/>encoder/encoder-decoder 待核验"] -.-> B
+    J["拟合方式<br/>disjoint slices + merge<br/>支持并行"] -.-> D
 ```
 
 ## 定位判断

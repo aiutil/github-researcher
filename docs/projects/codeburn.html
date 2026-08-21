@@ -6,7 +6,7 @@
     <title>Codeburn | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,35 +47,81 @@
 <li><strong>跨 Agent 统一接口</strong> — 抽象了不同 Agent 的 token 数据格式差异</li>
 <li><strong>实时仪表盘</strong> — 不依赖日志文件解析，实时捕获 token 使用</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Codeburn 定位为 AI Coding Agent 的 Token 可观测性层，跨越 Claude Code / Codex / Cursor 等多种 Agent 来源，向开发者提供 TUI 仪表盘</td>
+<td>基于标签与定位描述，跨 Agent 接口的协议与实现细节未在档案中披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据来源（Claude Code/Codex/Cursor） → 跨 Agent 统一接口抽象 → TypeScript + Ink（React for CLI）TUI 实时仪表盘 → 终端呈现 token/成本视图</td>
+<td>TUI 技术栈明确，实时数据捕获是否依赖日志解析或 hook 机制未说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>TUI 形态 vs 企业 Web Dashboard 需求；依赖上游 Agent 数据暴露 vs 被上游框架内置替代</td>
+<td>档案已点明"壁垒不高""依赖上游数据暴露""TUI 形态限制企业部署"等风险</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 Agent 渠道（如 Claude Code）单用户场景，验证 token 分类口径与成本估算口径，再扩展到多 Agent 并行接入</td>
+<td>跨 Agent 抽象的具体数据 schema 与成本计算模型未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Agent Infra 需要一个独立的可观测性层：
 - Token 消耗度量（Codeburn 做的）
 - API 调用链追踪
 - 模型选择策略监控
 - 成本告警和预算控制</p>
 <p>这类似于 K8s 生态中 Prometheus 之于容器的定位。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者终端使用者] --> TUI[Codeburn TUI 仪表盘<br/>TypeScript + Ink]
+    TUI --> AB[跨 Agent 统一接口抽象<br/>Claude Code / Codex / Cursor]
+    AB --> CC[Claude Code 数据源<br/>待核验]
+    AB --> CX[Codex 数据源<br/>待核验]
+    AB --> CR[Cursor 数据源<br/>待核验]
+    TUI --> V[实时 Token 与成本视图]
+    V -.依赖.-> UP[上游 Agent 框架数据暴露<br/>风险边界]
+    UP -.可能被内置替代.-> TUI
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>短期：工具型 — 实用的终端工具
 中期：有潜力成为 Agent 可观测性标准组件，但风险在于上游 Agent 框架可能内置类似功能</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>壁垒不高</strong> — 核心功能（token 统计 + TUI 展示）技术难度有限</li>
 <li><strong>依赖上游数据暴露</strong> — 需要各 Agent 框架提供 token 使用数据</li>
 <li><strong>容易被内置</strong> — Anthropic/OpenAI 可能在自家产品中直接加入成本监控</li>
 <li><strong>企业场景受限</strong> — TUI 形态不适合企业级 Web Dashboard 需求</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <p>目前几乎没有直接竞品。间接竞品是各 Agent 框架自带的 token 统计功能。</p>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 可观测性是一个正在形成的基础设施需求，Codeburn 是该方向的早期信号。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>是否能扩展到 Web Dashboard 形态</li>
 <li>是否支持更多 Agent（OpenCode、OpenClaw 等）</li>
 <li>是否能做成本预测和预算告警</li>
 <li>上游 Agent 框架是否内置竞品功能</li>
 </ol>
-<h2 id="_12">评分</h2>
+<h2 id="_13">评分</h2>
 <table>
 <thead>
 <tr>

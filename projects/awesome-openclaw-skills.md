@@ -40,10 +40,35 @@ OpenClaw Skills 精选合集——从官方 OpenClaw Skills Registry 中筛选�
 4. **持续同步**：跟踪 Registry 更新保持新鲜度
 5. **社区贡献**：接受 PR 推荐新技能
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 资源型发现/策展项目：上游是 OpenClaw Skills Registry（官方数据源），下游是使用者/上游系统；本项目本身为人工精选与分类层，不承担 agent 运行时职责 | 档案明确为"awesome-list"与"skill-registry"精选层；是否含运行时、SDK、API 网关等组件未在档案中证实 |
+| 主路径 | OpenClaw Skills Registry → 本项目筛选/分类 → 分类目录（开发/设计/数据/自动化等）→ 使用者按需选用 → 引入下游 agent 平台（Claude Code、Codex、Cursor 等） | 档案仅描述"筛选并分类的 5,400+ 个 AI agent 技能"，未提供自动化同步链路、PR 审核流程或索引管线细节 |
+| 关键权衡 | 覆盖广度（5,400+ 技能）与人工策展质量/时效性之间的张力；社区贡献入口与恶意技能（prompt injection 等）风险防控之间的张力；对 OpenClaw 生态的单点依赖 | 风险条目由档案"风险/局限"明确列出；缓解措施（如安全审计、评分）档案归入"待观察"，未证实已落地 |
+| 最小 PoC | 拉取本项目仓库，按目标场景（如开发/数据）在分类目录中抽样 3–5 个技能，逐一核验来源、最后更新日期与维护活跃度，挑选 1 个在沙箱环境中以最小权限接入现有 agent 链路试运行，记录失败率与副作用 | 档案未提供具体技能示例、许可证字段或下载量数据；实际可用性须以仓库原文与技能自述核验 |
+
 ## 架构启发
 - **Agent 时代的"应用商店"**：技能索引和发现是生态关键基础设施
 - **策展即价值**：在海量内容中筛选优质内容本身就是高价值服务
 - **Registry + Awesome 双层**：Registry 是完整数据源，Awesome 是人工精选层
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> A[awesome-openclaw-skills 精选与分类目录]
+    A --> R[OpenClaw Skills Registry 官方数据源]
+    R --> A
+    A --> V[待核验 技能安全审计或评分机制]
+    A --> D[下游 agent 平台 Claude Code Codex Cursor 等]
+    V -.未证实.-> A
+    A -.社区贡献 PR.-> P[待核验 社区贡献与审核流程]
+</mermaid>
+```
 
 ## 定位判断
 **关键生态资源型项目**。是 OpenClaw/Agent 生态的重要发现入口。类似 npm search 之于 npm，awesome-openclaw-skills 之于 agent 技能生态。

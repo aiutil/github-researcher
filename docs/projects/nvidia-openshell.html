@@ -6,7 +6,7 @@
     <title>NVIDIA OpenShell | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -44,32 +44,86 @@
 <li><strong>安全优先设计</strong>：默认最小权限，Agent 只能访问明确授权的资源</li>
 <li><strong>NVIDIA 生态集成潜力</strong>：可能与其 GPU、CUDA、容器生态深度集成</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为 Agent 与上游调用方、模型服务、工具/数据源之间的安全运行时层，由 NVIDIA 以 Rust 实现，承担四层策略隔离与会话级沙箱</td>
+<td>仅基于档案描述的分类、标签与定位；具体入口协议、模型适配层与外部工具接入清单未在档案中给出，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 会话进入运行时 → 经 Filesystem/Network/Process/Inference 四层 YAML 策略校验 → 在隔离会话中执行工具与推理调用 → 状态/审计回写；GPU 直通为可选推理路径</td>
+<td>路径由档案中“四层策略隔离 + YAML 热加载 + 会话级隔离 + GPU 直通”抽象得出，私有协议与持久化实现细节未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>会话级隔离强度（Rust + GPU 直通） vs 跨硬件可移植性与生态锁定风险；热加载 YAML 策略带来的运维敏捷性 vs 默认最小权限的策略维护成本</td>
+<td>权衡来自档案明确列出的“NVIDIA 锁定风险”“非 NVIDIA 硬件支持不足”等局限；未给出量化对比</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一 Agent 渠道、最小工具白名单、开启审计日志的会话，部署于档案所述的 Helm K8s 或 OpenShift 形态上，验证 GPU 直通推理路径与策略热加载生效</td>
+<td>PoC 形态仅引用档案“新增 Helm K8s 部署 + OpenShift 支持 + GPU 直通”与“最小权限”原则；具体镜像、Chart 与 GPU 设备插件配置未在档案中提供，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent 安全不应是"附加层"而应是"运行时层" — 这与操作系统安全模型一致</li>
 <li>Rust 在安全运行时领域的优势（内存安全 + 零成本抽象）正在被越来越多基础设施项目认可</li>
 <li>"安全会话运行时"可能是 Agent 基础设施的新品类，类似于容器运行时之于微服务</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Agent 或上游编排器] --> B[OpenShell 入口与会话边界]
+    B --> C{四层策略校验 YAML 热加载}
+    C -->|放行| D[Rust 沙箱 会话级隔离]
+    C -->|拒绝| E[审计 拒绝事件]
+    D --> F[Filesystem 隔离]
+    D --> G[Network 隔离]
+    D --> H[Process 隔离]
+    D --> I[Inference 隔离 含 GPU 直通 待核验]
+    D --> J[工具与外部系统调用]
+    D --> K[会话状态 审计日志]
+    F --> K
+    G --> K
+    H --> K
+    I --> K
+    J --> K
+    K --> A
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 基础设施栈中定位为「安全运行时层」，位于 Agent 编排器和操作系统之间。类似于：
 - 容器运行时（containerd）之于容器编排（Kubernetes）
 - 浏览器沙箱之于 Web 应用</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>NVIDIA 锁定风险</strong>：可能深度绑定 NVIDIA GPU/CUDA 生态，对非 NVIDIA 硬件支持不足</li>
 <li><strong>成熟度</strong>：6.9K stars 的新项目，生产环境使用尚早</li>
 <li><strong>与 Docker/容器方案竞争</strong>：已有容器隔离方案可能满足部分需求</li>
 <li><strong>标准缺失</strong>：Agent 安全运行时缺乏行业标准，NVIDIA 的方案可能不是最终形态</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Anthropic sandbox-runtime</strong>：Anthropic 用 TypeScript 实现，更轻量，面向进程级隔离；OpenShell 用 Rust 实现，更底层，面向会话级隔离。两者互补。</li>
 <li><strong>vs Docker/gVisor</strong>：传统容器隔离方案，功能更全面但更重。OpenShell 专为 Agent 场景优化。</li>
 <li><strong>vs Firecracker</strong>：AWS 的 MicroVM 方案，偏 VM 级隔离。OpenShell 更轻量。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> NVIDIA + Anthropic 同周入场，Agent 安全运行时是一个确定性新赛道。OpenShell 的 Rust 选型和 NVIDIA 背书使其值得持续关注。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否发布详细的架构文档和安全模型说明</li>
 <li>与 NVIDIA GPU/CUDA 生态的集成深度</li>
@@ -78,7 +132,7 @@
 <li>是否被主流 Agent 框架（LangChain、CrewAI 等）集成</li>
 <li>生产环境使用案例和安全审计结果</li>
 </ol>
-<h2 id="_11">评分</h2>
+<h2 id="_12">评分</h2>
 <table>
 <thead>
 <tr>

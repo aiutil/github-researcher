@@ -49,9 +49,35 @@ Lottie 动画是移动端和 Web 的工业标准格式，但制作 Lottie 需要
 4. **生成标准 Lottie JSON**：兼容 lottie-web、React Native Skia（Skottie）、After Effects
 5. **Prompt guide 工程化**：5 条原则（grounding、motion 术语、camera 思维、controls 请求、FPS/duration）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 以 npx skills 形式分发给 Claude Code / Codex 等 Skills 兼容 Agent，在 Agent 流程内调用，内置播放器提供实时预览，落盘到 `public/projects/<project>/<scene>/lottie.json` | 入口与目录结构来自档案"关键技术亮点"，运行宿主仅限定为"Claude Code、Codex 或任何支持 Skills 的 Coding Agent"，其余边界待核验 |
+| 主路径 | Agent 通过 Skill 加载 → 读取 prompt guide 约束 → 生成标准 Lottie JSON → 写入 scene 路径 → 内置播放器实时刷新预览 → 兼容 lottie-web、Skottie、After Effects | 生成格式兼容列表来自档案，prompt guide 5 条原则作为生成约束引用，模型推理细节与 Skill 协议实现待核验 |
+| 关键权衡 | 标准 Lottie 格式带来的跨播放器复用收益 vs. 对 LLM 理解 motion/SVG 的能力依赖以及 grounding 素材（SVG/截图）输入门槛 | 权衡判断基于档案"风险/局限"与"prompt guide 工程化"段，具体生成质量上限与可观测性细节待核验 |
+| 最小 PoC | 通过 `npx skills add diffusionstudio/lottie` 安装到 Claude Code/Codex，提供 SVG/截图 grounding，按 prompt guide 5 条原则输出单 scene Lottie JSON，验证内置播放器预览与跨播放器（lottie-web、Skottie）回放一致 | 安装命令与目录约定来自档案，单一 scene 范围来自"Scene + Project 架构"描述，更复杂场景、API 形态与生产化部署细节待核验 |
+
 ## 架构启发
 
 **AI 生成设计资产的关键不是「能生成」，而是「生成的东西能直接进产品」。** Lottie 格式的标准化使得 AI 输出可以直接进入产品流程。Scene + Project 的文件组织模式让 Agent 可以增量编辑而非每次全量重生成。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Claude Code / Codex 等 Skills 兼容 Agent] -->|npx skills add| B[Skill 加载与 prompt guide 约束]
+    B --> C[场景生成逻辑 Scene + Project]
+    C --> D[LLM 推理 推理细节待核验]
+    C --> E[public/projects/project/scene/lottie.json 落盘]
+    D --> C
+    E --> F[内置播放器 实时预览]
+    F --> A
+    E --> G[外部播放器生态 lottie-web / Skottie / After Effects 兼容性待核验]
+    C --> H[Grounding 素材 SVG / 截图 输入门槛待核验]
+```
 
 ## 定位判断
 

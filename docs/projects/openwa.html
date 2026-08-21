@@ -6,7 +6,7 @@
     <title>OpenWA | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,58 @@
 <li><strong>完整 Dashboard</strong>：React UI 管理会话、webhook、API key</li>
 <li>内置速率限制器（<code>RATE_LIMIT_*</code> 环境变量）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenWA 作为自托管 WhatsApp API 网关，向上对调用方暴露 REST API，向下封装 whatsap [... 截断]</td>
+<td>文档明确双引擎、多会话、Plugin、可插拔适配器；缺少源码级接口清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>调用方 → REST API → 控制面/调度 → 执行数据面（whatsapp-web.js 或 baileys 引擎）→ 持久化/外部集成</td>
+<td>未含已验证的字段表、错误码与 SLA；插件运行时隔离机制档案未具名</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>whatsap [...]</td>
+<td>双引擎权衡、内存开销（300-500MB/会话）由档案给出；封号率无量化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单实例 Docker 部署一个 WhatsApp 会话（推荐 wa [...]</td>
+<td>部署路径、Docker 原生来自档案；具体资源配额、容器镜像标签待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><strong>自托管消息网关是企业通讯基础设施的重要组件。</strong> OpenWA 的 Integration Fabric 设计（插件化 + 适配器模式）可以复制到其他消息平台（Telegram、Signal、微信等）。双引擎架构的"安全 vs 密度"权衡是逆向工程消息平台的经典设计决策。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  User[调用方/集成方] --> Api[REST API 网关]
+  Api --> Ctrl[控制面: 调度/生命周期/速率限制]
+  Ctrl --> Exec[执行数据面: 双引擎 whatsap[-web.js 或 baileys]]
+  Exec --> WA[WhatsApp 平台 / 外部边界: Meta 服务器]
+  Exec --> Data[可插拔适配器: DB/存储/缓存]
+  Ctrl --> Plg[Integration Fabric 插件: Chatwoot/Typebot/n8n 节点]
+  Exec --> Risk[风险边界: 封号 / 协议逆向变化 / 数据中心 IP 标记]
+  Plg --> Obs[Dashboard / 审计 / 指标 / 日志]
+  Data --> Obs
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型。</strong> 依赖 WhatsApp 平台政策，存在不确定性。但 12.5K stars + 高 fork 比说明有大量实际部署。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>WhatsApp 政策风险（最大风险）</strong>：Meta 反滥用系统主动检测非官方自动化，封号风险永远不为零</li>
 <li><strong>逆向工程依赖</strong>：稳定性依赖 WhatsApp Web 的逆向工程，协议变化可能导致失效</li>
@@ -68,16 +115,16 @@
 <li>baileys 引擎封号风险高，whatsapp-web.js 内存开销大（300-500MB/会话）</li>
 <li>数据中心 IP 更易被标记</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>whatsapp-web.js / baileys</strong>：OpenWA 的底层引擎，OpenWA 是它们的封装层</li>
 <li><strong>Meta 官方 WhatsApp Cloud API</strong>：OpenWA 的"官方替代"</li>
 <li><strong>wppconnect</strong>：同类 WhatsApp 自动化项目</li>
 <li><strong>OpenWA-plugins</strong>：官方插件仓库（Chatwoot、Typebot 集成）</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>观察型。</strong> 需求真实但风险较高（平台政策），适合轻量观察。Integration Fabric 的架构设计有参考价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>WhatsApp 是否会调整 API 政策（降低非官方 API 的封号风险）</li>
 <li>项目稳定性（最后 push 2026-08-07，持续维护中）</li>

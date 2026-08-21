@@ -6,7 +6,7 @@
     <title>AiSOC | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,30 +53,81 @@
 <li><strong>MITRE ATT&amp;CK 框架深度集成</strong> — 告警映射到 ATT&amp;CK 战术和技术</li>
 <li><strong>告警融合引擎</strong> — 多源告警聚合，减少告警疲劳</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AiSOC 是覆盖"告警融合 → AI 分诊 → 紫队演练 → ATT&amp;CK 映射"的 AI 编排层；前端 Next.js，后端 FastAPI（Python），MIT 许可可自部署</td>
+<td>数据源/告警接入器、模型供应商、持久化层未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>告警接入 → 融合引擎聚合 → Agent 分诊与威胁情报关联 → ATT&amp;CK 战术/技术映射 → 紫队演练闭环回写检测规则</td>
+<td>协议、消息队列、数据库选型与状态存储未在档案中说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>SOC 效果 vs 数据质量/集成广度；AI 自动化深度 vs 可审计与合规可解释性；开源灵活 vs 与 Splunk/Elastic 等既有 SIEM 集成成熟度</td>
+<td>性能基准、模型选型、合规认证均未披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单源告警接入 + 单 ATT&amp;CK 映射 + Agent 最小权限分诊 + 全审计日志；验收项：分诊准确率基线、与目标 SIEM 集成接口、成本与 SLO、回滚路径</td>
+<td>项目生产案例、基准测试、与商业 SIEM 集成深度均待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>安全运营平台需要 AI Agent 作为"虚拟分析师"层</li>
 <li>紫队演练自动化是安全验证的关键方向</li>
 <li>FastAPI + Next.js 的前后端分离架构适合安全工具的快速迭代</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[使用者或上游系统<br/>安全分析师] --> I[入口与身份边界<br/>Next.js 前端]
+    I --> C[项目编排与运行时<br/>FastAPI Python]
+    A_src[多源告警接入<br/>SIEM/EDR/日志] --> C
+    C --> F[告警融合引擎]
+    F --> C
+    C --> Ag[AI Agent 分诊<br/>待核验 模型供应商]
+    Ag --> TI[威胁情报关联<br/>待核验 数据源]
+    TI --> Ag
+    Ag --> M[MITRE ATT&CK<br/>战术/技术映射]
+    C --> PT[紫队演练<br/>攻防自动化闭环]
+    PT --> DR[检测规则回写<br/>待核验 写入目标]
+    C --> S[会话 / 状态 / 审计<br/>待核验 持久化]
+    C --> E[外部边界<br/>Splunk/Elastic SIEM 集成 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>工具型产品，有潜力向平台型演进。目前适合中小企业安全团队使用，但与商业 SOC（Splunk SOAR）相比功能深度还有差距。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>SOC 效果高度依赖数据质量</strong> — 缺乏足够训练数据时 AI 分诊准确率有限</li>
 <li><strong>安全合规要求</strong> — 不同行业的合规要求差异大，开源方案需要大量定制</li>
 <li><strong>与现有 SIEM 集成有限</strong> — 需要与 Splunk/Elastic 等已有工具链集成才能真正落地</li>
 <li><strong>971 stars，项目较新</strong> — 生产环境使用案例不足</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>vs <strong>Splunk SOAR</strong>：AiSOC 开源免费但功能深度不足</li>
 <li>vs <strong>Shuffle SOAR</strong>：同为开源 SOAR，AiSOC 更偏 AI 驱动</li>
 <li>vs <strong>TheHive</strong>：TheHive 偏事件响应，AiSOC 更偏 AI 分析</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> AI 安全运营是一个确定性趋势，AiSOC 的架构方向正确。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有真实安全团队在生产环境使用</li>
 <li>AI 分诊的准确率是否有公开基准测试</li>

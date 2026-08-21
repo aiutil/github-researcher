@@ -35,8 +35,35 @@ AI 编程工具碎片化：开发者同时使用 Claude Code、Codex、Gemini CL
 3. **Skills 集中管理**：跨工具的 Skill 安装、更新、卸载
 4. **WSL 支持**：Windows Subsystem for Linux 完整支持
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 桌面端"元工具"层：管理 Claude Code、Codex、OpenCode、OpenClaw、Gemini CLI、Hermes Agent 的 Provider、Skill、MCP 配置，本身不替代这些编程工具 | 依据档案"支持工具列表"与"工具管理器，不是编程工具"判断；具体接入协议与配置文件格式未在档案中给出 |
+| 主路径 | 用户 → Tauri(Rust+Web) 桌面入口 → 统一 Provider/Skill/MCP 配置读写 → 触发被管理 CLI 工具执行 → 状态与日志回显 | 路径依据"Tauri 架构"+"统一 Provider 管理"+"Skills 集中管理"组合推导；调用时序与持久化方案待源码核验 |
+| 关键权衡 | 多工具并行收益 vs 单一工具厂商内置化风险（IDE/CLI 内置管理功能）；快速扩展工具数 vs 703 Open Issues 反映的稳定性债 | 权衡基于档案"风险/局限"章节与 Open Issues 数；具体崩溃率、SLO 无数据 |
+| 最小 PoC | 在 Windows+WSL 环境，单一 Provider（如 Claude Code）+ 最小 Skill 集 + 启用审计日志，验证配置切换与 CLI 触发正确性，再扩展到 Codex/Gemini | 依据"WSL 支持"与"采用建议"中"先在单一渠道、最小工具权限和可审计日志下验证"；性能与多工具并发场景未实测 |
+
 ## 架构启发
 AI 编程工具正在经历"浏览器大战"式的碎片化阶段。cc-switch 代表了"超级管理器"方向——不做 AI 编程本身，做所有 AI 编程工具的管理层。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者] --> I[Tauri 桌面入口 Rust+Web 前端]
+  I --> P[统一 Provider 管理 API Key 模型选择]
+  I --> K[Skills 集中管理 跨工具安装 更新 卸载]
+  I --> M[MCP 配置管理 待核验协议]
+  P --> C[被管理 CLI 工具 Claude Code Codex OpenCode OpenClaw Gemini CLI Hermes Agent]
+  K --> C
+  M --> C
+  C --> S[会话状态与日志回写 待核验持久化]
+  C --> R[703 Open Issues 工程稳定性风险 待核验]
+  W[WSL 适配 Windows 侧] --> I
+```
 
 ## 定位判断
 工具管理器，不是编程工具。在 AI 编程生态中处于"元工具层"。

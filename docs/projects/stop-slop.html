@@ -6,7 +6,7 @@
     <title>hardikpandya/stop-slop | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,26 +47,74 @@
 <li><strong>量化评分系统</strong>：设计了 5 维评分（Directness 直接性、Rhythm 节奏、Trust 信任读者智慧、Authenticity 人味、Density 信息密度），每维 1-10 分，总分低于 35/50 则需要重写。这提供了可量化的质量标准，而非模糊的"写得更好"。</li>
 <li><strong>Before/After 示例库</strong>：references/examples.md 提供了改造前后的对比示例，让 AI 通过 few-shot learning 理解什么是"slop"以及如何改写。这种基于示例的教学方式比纯规则更有效。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>stop-slop 本身是一个纯 Markdown 资产（SKILL.md + references/），无自有运行时；系统边界由宿主 Claude/Claude Code 或自定义指令环境划定，stop-slop 仅作为约束型 Skill 文件被加载</td>
+<td>未在档案中给出宿主侧 API、权限模型或部署方式；具体加载机制以 Anthropic Skills 文档为准</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文本生成请求 → 宿主代理加载 Skill → 在系统提示层应用禁用短语/结构/句级规则与 5 维评分 → 生成结果与 Before/After 示例参考回灌</td>
+<td>5 维评分（Directness/Rhythm/Trust/Authenticity/Density，1-10，总分 35/50 阈值）见档案；实际注入顺序与 token 消耗未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>规则刚性 vs 写作多样性：禁副词、禁 em dash、禁 Wh- 句首等硬规则在新闻/技术写作中收益显著，但在文学创作、学术论文等场景可能压制风格</td>
+<td>"规则主观性、时效性"已列在档案风险段；具体跨场景失效数据未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Projects 或 Claude Code 中挂载 SKILL.md，向其提交已知含 slop 的段落，验证 (1) 是否检出 banned phrases/structural clichés；(2) 5 维自评是否触发低于 35/50 的重写；(3) Before/After 示例是否被 few-shot 引用</td>
+<td>档案未提供具体 prompt 模板、token 成本或评分重现性数据，验证指标须自行定义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>stop-slop 代表了 Agent Skills 的一种重要形态——"约束型 Skill"。它不教 AI 做新事情，而是教 AI 不要做某些事情（不要使用特定短语、不要使用特定结构）。这种"减法设计"在 prompt 工程中非常实用。其 SKILL.md + references/ 的目录结构也成为了 Agent Skill 的标准格式——核心指令在 SKILL.md 中，详细的短语列表和示例放在 references/ 子目录中按需加载。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界 待核验]
+  I --> H[宿主代理 Claude Code 或 Projects]
+  H --> S[stop-slop SKILL.md 约束型 Skill]
+  S --> R[references 禁用短语 结构套路 句级规则]
+  S --> E[references examples.md Before After]
+  H --> M[LLM 推理服务]
+  M --> O[生成文本]
+  O --> Q[5 维自评 Directness Rhythm Trust Authenticity Density]
+  Q -->|低于 35 50| H
+  Q -->|通过| U
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>stop-slop 定位为<strong>AI 写作质量优化的工具型 Skill</strong>。它不解决"写什么"的问题（那是创作），只解决"怎么写得更不像 AI"的问题（那是风格优化）。在 Skills 生态中，它属于"输出质量控制"类别，与 taste-skill（前端设计质量）形成互补。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规则刚性 vs 写作多样性</strong>：stop-slop 的规则相当严格（禁止所有副词、禁止 em dash、禁止 Wh- 句首），这些规则在新闻写作中可能适用，但在文学创作、学术论文等场景中可能过于限制。好文章不一定要遵循这些规则。</li>
 <li><strong>"去 AI 味"的定义主观性</strong>：什么是"slop"、什么是"人味"本质上是主观判断。stop-slop 的规则反映了作者个人的写作审美偏好，不一定普适。</li>
 <li><strong>LLM 能力的自然演进</strong>：随着新一代 LLM（如 GPT-5、Claude 4.x）自身的写作风格改善，stop-slop 中的某些规则可能变得不再必要。Skill 的时效性是一个风险。</li>
 <li><strong>15K stars 的泡沫评估</strong>：作为纯内容文件，15K stars 中多少来自"收藏备用"而非实际集成使用，值得谨慎评估。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Leonxlnx/taste-skill</strong>：73K stars，同属 Skills 生态。taste-skill 侧重于前端 UI 设计质量（布局、排版、动效），stop-slop 侧重于文本写作质量。两者互补。</li>
 <li><strong>EveryInc/compound-engineering-plugin</strong>：24K stars，复合工程方法论插件。更侧重于代码工程方法论而非写作风格。</li>
 <li><strong>Anthropic 官方 Skills</strong>：Anthropic 提供的官方 Claude Code Skills，其中可能包含类似的写作优化指令，但 stop-slop 是社区驱动的更细化版本。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得关注，但作为"微赛道"而非独立项目跟踪</strong>。stop-slop 和 taste-skill 共同定义的"AI 输出质量控制"赛道是一个有趣的现象——它反映了用户对 AI 默认输出质量的不满。这个赛道的长期走向取决于 LLM 自身能力的提升速度——如果 LLM 原生输出质量足够好，这类 Skill 的价值会下降。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>LLM 原生写作能力的提升</strong>：新一代模型（GPT-5、Claude 5）是否原生减少了 stop-slop 所针对的"slop"模式，从而降低这类 Skill 的必要性</li>
 <li><strong>Skill 的演进和社区贡献</strong>：是否会有更多场景化的规则变体（如学术写作版、技术文档版、创意写作版）</li>

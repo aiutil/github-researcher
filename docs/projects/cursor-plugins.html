@@ -6,7 +6,7 @@
     <title>cursor/plugins | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,91 @@
 <li><strong>高质量官方插件</strong>：已提供的官方插件设计精良，如 <code>thermos</code>（深度安全/正确性审计 + 并行子代理）、<code>orchestrate</code>（将大任务分配给并行 Cursor 云 Agent）、<code>continual-learning</code>（增量记忆更新到 AGENTS.md）。这些插件本身就是 Agent 工程的最佳实践示例。</li>
 <li><strong>第三方插件目录</strong>：<code>third_party/</code> 目录用于集成外部服务（Gmail、Google Drive、Google Calendar 通过 Google MCP server；Gong、Salesforce 通过各自的 MCP），展示了插件系统与 MCP 生态的融合。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Cursor 官方插件规范仓库，定义 <code>.cursor-plugin/plugin.json</code> manifest、<code>marketplace.json</code> 清单与 Skills/Rules/MCP 三件套目录约定，作为 Cursor IDE 与 Agent 平台的扩展基础设施层</td>
+<td>边界仅来自档案描述的目录结构与 manifest 字段；具体加载器、安装协议、运行时权限模型未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>官方插件与第三方插件通过 <code>marketplace.json</code> 声明 → 经 Cursor 界面被安装 → 由 Cursor 运行时加载 skills（SKILL.md）、rules（.mdc）、mcp.json 三类资产并用于 Agent 调用</td>
+<td>主路径基于档案对插件结构与官方插件（如 thermos、orchestrate、continual-learning）的功能描述推断；具体加载顺序与调度细节未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>(1) 标准化降低扩展门槛 vs Skills/Rules/MCP 三类资产是否真正统一；(2) Marketplace 借鉴 VS Code 模式带来的生态速度 vs 平台商业策略调整风险；(3) 与 Claude Plugins、Vercel agent-skills 等并行规范并存的碎片化成本</td>
+<td>权衡为基于档案“关键技术亮点”与“风险/局限”的研究判断；具体 API 兼容性、性能数据未在档案中出现</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取一个官方插件（如 <code>continual-learning</code> 更新 AGENTS.md，或 <code>thermos</code> 审计模式）在本地 Cursor 中安装，验证 manifest 字段、skill frontmatter 与 MCP 配置被正确解析；记录插件加载行为与可审计日志，作为后续第三方插件与最小工具权限的验收基线</td>
+<td>PoC 设计仅依赖档案列出的官方插件清单与目录约定；插件的真实运行行为、依赖版本、权限范围须在源码或运行时中核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>cursor/plugins 的架构设计反映了 Coding Agent 平台的演进方向——从单一工具向可扩展平台转变。其关键设计决策包括：(1) 将 Skills（知识/指令）、Rules（行为约束）、MCP（工具能力）统一到"插件"概念下，而非各自独立；(2) 使用标准的目录约定而非复杂配置文件，降低了开发门槛；(3) marketplace + plugin 的两层架构与 VS Code Extensions Marketplace 类似，借鉴了成熟 IDE 生态的经验。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    A["Cursor 平台运行时<br/>(待核验：加载与执行机制)"]
+    B["marketplace.json<br/>插件市场清单"]
+    C["plugin.json<br/>(.cursor-plugin/) 插件 manifest"]
+    D["Skills 资产<br/>SKILL.md + frontmatter"]
+    E["Rules 资产<br/>.mdc 规则文件"]
+    F["MCP 工具定义<br/>mcp.json"]
+    G["外部边界<br/>Google MCP / Gong / Salesforce<br/>(待核验：协议与认证)"]
+    H["第三方插件目录<br/>third_party/"]
+
+    A --> B
+    B --> C
+    C --> D
+    C --> E
+    C --> F
+    F --> G
+    H --> C
+
+    D -. "知识/指令" .-> A
+    E -. "行为约束" .-> A
+    F -. "工具调用" .-> A
+
+    classDef boundary fill:#fdecea,stroke:#c0392b,stroke-width:1px;
+    classDef control fill:#eaf3fb,stroke:#2980b9,stroke-width:1px;
+    classDef ext fill:#f4ecf7,stroke:#7d3c98,stroke-width:1px,stroke-dasharray:4 2;
+    class A control
+    class G ext
+    class H ext
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>cursor/plugins 定位为<strong>Cursor 平台的插件基础设施层</strong>。它本身不是产品，而是"标准的载体"——定义了 Cursor 插件应该长什么样。2.5K stars 处于早期阶段，但方向意义重大。如果 Cursor 的插件生态繁荣（类似 VS Code Extensions），这个规范将成为事实标准。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>生态冷启动问题</strong>：插件标准的价值完全取决于生态规模——有多少第三方开发者创建插件、有多少用户安装使用。当前仅 16 个官方插件和少量第三方插件，距离繁荣的生态还很远。</li>
 <li><strong>与 Claude Plugins 规范的竞争</strong>：Claude Code 有自己的插件规范，Cursor 有自己的，其他 Coding Agent 可能还会推出各自的规范。如果标准不统一，开发者需要为多个平台重复适配。</li>
 <li><strong>Cursor 商业策略的影响</strong>：Cursor 是商业产品，其插件策略可能随时调整（如限制第三方插件、引入付费分成等），这给开源插件生态带来不确定性。</li>
 <li><strong>MCP 的替代效应</strong>：如果 MCP（Model Context Protocol）成为统一的 Agent 工具协议标准，专门的 Cursor 插件规范可能被 MCP 吸收或边缘化。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Claude Code Plugins</strong>：Anthropic 的 Claude Code 也有插件/扩展机制。两者的规范不同但理念相似——都是将 Agent 能力打包为可分发的单元。Cursor plugins 的 marketplace + plugin.json 设计更接近 VS Code Extensions 模式。</li>
 <li><strong>VS Code Extensions</strong>：最成熟的 IDE 插件生态。Cursor 基于 VS Code fork，其插件系统在某种程度上是对 VS Code Extensions 的 AI-native 重新设计。</li>
 <li><strong>vercel-labs/agent-skills</strong>：Vercel 提出的跨 Agent Skill 标准（<code>npx skills add</code>），试图统一不同 Coding Agent 的 Skill 安装方式。Cursor plugins 可能与此标准互补或竞争。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>高度关注，作为 Coding Agent 平台化趋势的核心信号</strong>。cursor/plugins 代表了 AI 编码工具从"产品"向"平台"转变的关键一步。插件生态的繁荣程度将直接决定 Cursor 的长期竞争力。建议每月关注新插件发布和第三方贡献情况。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>第三方插件数量增长</strong>：非 Cursor 官方贡献的插件数量和活跃度，是判断生态健康的关键指标</li>
 <li><strong>跨平台插件标准的演进</strong>：Cursor、Claude Code、Codex 的插件规范是否会走向统一，或各平台维持独立标准</li>

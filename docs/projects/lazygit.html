@@ -6,7 +6,7 @@
     <title>jesseduffield/lazygit | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,72 @@
 <li><strong>自定义命令系统:</strong> 支持用户定义快捷键绑定到自定义 Git 命令，扩展性极强</li>
 <li><strong>集成编辑器支持:</strong> 可与 Neovim、VS Code 等编辑器深度集成，实现终端内的完整开发工作流</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>lazygit 是终端内 TUI 应用，边界落在「用户键盘输入 → 本地 gocui 渲染层 → Git 命令封装与仓库状态同步 → 本地文件系统/外部编辑器」，不涉及服务端或网络服务</td>
+<td>档案未给出具体依赖清单与外部 API；外部能力以"集成编辑器/自定义命令"描述，具体协议未证</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户按键 → gocui TUI 渲染 → 内部状态/命令层调用本地 <code>git</code> 二进制 → 解析仓库状态后回写 UI；rebase/diff/staging/patch 等功能均沿此闭环</td>
+<td>档案提及 gocui 与 Git 封装，未公开具体模块划分，命令调度细节需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>「终端原生体验 vs GUI 可视化能力」与「gocui 单进程状态同步 vs Git 命令外部副作用」之间的张力；自定义命令体系是核心可扩展点也是潜在风险面</td>
+<td>三路合并、Git 版本差异、bus factor 已在档案"风险"段标注；具体快捷键集与自定义命令语法未列</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地仓库用 lazygit 完成「分支切换 → patch staging → 交互式 rebase（reorder/squash）→ 触发自定义命令」一条主路径，并记录快捷键学习成本、版本兼容与编辑器联动行为</td>
+<td>档案未提供版本兼容性矩阵与 PoC 验收指标，需在测试中自行定义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>lazygit 的成功证明了一个设计原则：对于复杂命令行工具，TUI 比纯 CLI 或 GUI 更适合开发者——它保持了终端的原生体验（可嵌入 tmux、可 SSH 使用），同时提供了 GUI 的可视化便利。其架构上的关键是「状态管理」——Git 仓库状态变化频繁，lazygit 需要高效地同步文件系统状态和 TUI 渲染。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户键盘输入] --> UI[gocui TUI 渲染层]
+    UI --> S[内部状态与命令调度]
+    S --> G[本地 git 二进制封装]
+    G --> R[本地 Git 仓库文件系统]
+    R --> S
+    S --> C[自定义命令系统 待核验绑定语法]
+    S --> E[外部编辑器集成 Neovim VS Code 等 待核验协议]
+    S --> Rf[风险边界 Git 版本差异与三路合并可视化局限]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于终端开发者工具生态的核心组件。在 Git 工具链中，lazygit 是「终端 TUI」赛道的绝对王者，与 GUI 类工具（GitKraken、SourceTree）服务不同用户群体。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>TUI 的天然局限:</strong> 对于复杂的三路合并冲突，TUI 的可视化能力仍然不如图形化工具</li>
 <li><strong>Git 命令依赖:</strong> lazygit 是 Git 的封装层，Git 的行为变化（如版本更新导致的命令差异）可能影响稳定性</li>
 <li><strong>学习曲线存在:</strong> 虽然比 Git CLI 易用，但 lazygit 自身也有大量快捷键需要记忆</li>
 <li><strong>维护者依赖:</strong> 项目高度依赖 jesseduffield 个人维护，bus factor 较低</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>GitUI (extrawurst/gitui):</strong> 同为 Rust TUI Git 客户端，性能更好但功能覆盖不如 lazygit 全面</li>
 <li><strong>Tig:</strong> 更老牌的 TUI Git 浏览器，但偏只读浏览，操作能力远不如 lazygit</li>
 <li><strong>Fork/GitKraken:</strong> 图形化 Git 客户端，功能更丰富但需要离开终端</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得持续跟踪但优先级中等。</strong> lazygit 已是成熟的基础工具，后续演进主要在新功能优化和适配 Git 新特性。对于终端工具生态的观察者，它仍是 TUI 设计模式的标杆参考。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 lazygit 是否支持 Git 的新特性（如 --filter=blob:none 部分克隆的可视化）</li>
 <li>观察是否有与 LSP/AI 工具集成的计划（如 AI 辅助 commit message 生成）</li>

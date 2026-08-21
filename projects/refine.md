@@ -42,8 +42,45 @@ refine 的热度是 **"内部工具刚需 × headless 趋势 × 多生态兼容"
 5. **实时（Realtime）:** 支持 liveProvider，订阅数据变更，适合协作型后台
 6. **CRUD 自动化:** 列表（筛选/排序/分页）、创建/编辑表单、详情，核心 CRUD 逻辑高度自动化
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | refine 是 React 端"逻辑 headless"框架，边界落在 Data Provider / Auth Provider / Live Provider 三类 Provider 与上层 hooks（useTable/useForm/useShow），向下对接 REST/GraphQL/NestJS/Supabase/Airtable/Strapi 等后端，向上不绑定 UI 库（Ant Design、Material UI、Chakra 等可选）；路由层支持 Next.js、Remix、React Router | 边界来自档案"关键技术亮点"与 tags；具体 Provider 接口契约、hooks 数量、SSR 适配深度未在档案中证实 |
+| 主路径 | 消费应用 → refine hooks（useTable/useForm 等）→ Data/Auth/Live Provider 抽象 → 后端数据源（REST/GraphQL/NestJS/Supabase 等）；列表/筛选/分页/CRUD/认证/权限沿此路径完成，实时路径通过 liveProvider 订阅变更 | 主路径来自"Headless 架构 + Data Provider + 实时"描述；具体请求生命周期、缓存策略、错误处理细节档案未证 |
+| 关键权衡 | 在"UI 自由（headless）"与"框架学习成本（Provider/hooks 抽象）"之间取舍；在"开发效率（CRUD 自动化）"与"被低代码平台（Retool/Appsmith）挤压"之间竞争；在"生态广度（多 UI/多后端）"与"文档与示例导航复杂（8GB 仓库）"之间承压 | 权衡基于"为什么值得关注""风险/局限"两节；商业化 ARR、竞品市场份额数据档案未提供 |
+| 最小 PoC | 用 Ant Design + REST Data Provider 搭一个单页 CRUD（列表+表单+详情），验证 useTable/useForm 与认证流跑通；再换 Material UI 渲染同一数据，验证 headless 解耦；最后接入 liveProvider 做一次变更推送，验证实时边界 | PoC 范围仅基于档案明示能力；性能基准、生产部署形态（SSR/SSG）、RSC 兼容状态档案未证 |
+
 ## 架构启发
 refine 的核心启发是 **"框架的终极形态是 headless——只管逻辑，不管 UI"**。传统 admin 框架（如 adminjs、react-admin）绑定特定 UI 组件，灵活度受限。refine 把"数据与交互逻辑"和"视觉呈现"彻底分离——它管 hooks/状态/路由/权限，UI 随你搭配。这与"headless CMS"（只提供 API，前端自由）异曲同工。更深层的启发是：**企业工具框架的护城河在于"数据层抽象的完备性"而非 UI**。refine 的 Data Provider/Auth Provider/Live Provider 三件套，把内部工具的核心逻辑抽象得干净且可扩展。这种"逻辑 headless + UI 自由"会成为企业工具框架的标准范式。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    UI["UI 渲染层<br/>Ant Design / Material UI / Chakra"]
+    HOOKS["hooks 层<br/>useTable / useForm / useShow<br/>(档案已述)"]
+    AUTH["authProvider<br/>认证 + RBAC/ABAC 抽象<br/>(档案已述)"]
+    DATA["dataProvider<br/>REST / GraphQL / NestJS / Supabase / Airtable / Strapi<br/>(档案已述)"]
+    LIVE["liveProvider<br/>实时订阅<br/>(档案已述)"]
+    ROUTE["路由适配<br/>Next.js / Remix / React Router<br/>(档案已述)"]
+    BACK["外部后端数据源<br/>(待核验：具体协议与部署形态)"]
+    RISK["风险/治理边界<br/>学习曲线 · 低代码挤压 · 8GB 仓库文档导航 · RSC/Next.js App Router 适配进度<br/>(档案已述，RSC 适配深度待核验)"]
+
+    UI --> HOOKS
+    HOOKS --> AUTH
+    HOOKS --> DATA
+    HOOKS --> LIVE
+    ROUTE --> HOOKS
+    DATA --> BACK
+    LIVE --> BACK
+    AUTH --> BACK
+    RISK -. 观察 .-> HOOKS
+    RISK -. 观察 .-> ROUTE
+</mermaid>
+```
 
 ## 定位判断
 **工具型框架（企业内部工具赛道头部）。** refine 是 React 内部工具框架的头部选择之一（与 react-admin、AdminJS 竞争）。它不是平台候选（专注框架层），但其商业化（refine.dev）有产品化潜力。定位清晰：服务"需要灵活度的企业内部工具开发"——比 Retool 灵活，比裸 React 高效。3.5 万 stars + 5 年沉淀使其地位稳固。生命周期与企业 React 应用绑定，中短期内需求持续。headless 哲学是其差异化护城河。

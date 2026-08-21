@@ -6,7 +6,7 @@
     <title>Browser Harness | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,29 +51,77 @@
 <li><strong>Daemon 架构</strong>：<code>admin.py</code> + <code>daemon.py</code> 管理 CDP websocket 和 socket bridge</li>
 <li><strong>远程浏览器支持</strong>：免费 tier 3 并发，适合 sub-agent 和部署场景</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Browser Harness 是 Python 编写的 agent-native 浏览器控制层：LLM 经 CDP WebSocket 控制 Chrome，并由 <code>admin.py</code>、<code>daemon.py</code>、socket bridge 管理连接；<code>helpers.py</code> 与 <code>domain-skills/&lt;site&gt;/</code> 属于运行时自修改和知识持久化边界。远程浏览器免费 tier 提供 3 并发。</td>
+<td>档案明确提到裸 CDP WebSocket、<code>admin.py</code>、<code>daemon.py</code>、socket bridge、辅助函数和 Domain Skills；未给出完整模块依赖、进程拓扑、认证方式或远程服务实现，需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>任务进入 agent 运行时后，通过 CDP WebSocket 直接控制浏览器；遇到缺失功能时由 agent 自动编辑 <code>helpers.py</code>，任务完成后生成并持久化 <code>domain-skills/&lt;site&gt;/</code> 技能文件，供后续运行复用。</td>
+<td>主路径依据项目定位及“self-healing”“Domain Skills 自生成”描述；自动编辑的触发条件、错误恢复、并发写入与技能格式均未披露。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>相比 Playwright、Selenium、Puppeteer 的预定义 selector 和 action sequence，Browser Harness 以 CDP 直接控制换取更高自由度，但同时承担 agent 修改本地文件、浏览器操作权限、CDP 兼容性及可观测性风险；扩展能力尚不能以生产稳定性或自愈错误率证明。</td>
+<td>已知自由度、self-healing、远程浏览器 3 并发、Chrome/CDP 限制和安全风险；未见权限模型、审计日志、隔离机制、版本兼容、故障率或性能数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Chrome 浏览器环境中启用最小 agent 能力，验证三件事：缺失工具是否自动写入 <code>helpers.py</code>、任务后是否生成 <code>domain-skills/&lt;site&gt;/</code>、以及通过 CDP WebSocket 的控制链路是否可重复运行；同步记录文件变更、失败任务和运行时权限。</td>
+<td>PoC 只能覆盖这些明确能力；Chrome 版本、测试网站、LLM 供应商、并发方式、部署方式、安全验收指标和退出机制均为“待核验”，不得预设。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>从框架到协议</strong>：传统 browser automation 是框架封装 → 预定义 API → 人类编排。browser-harness 走了反方向：给 agent 最原始的能力，让它自己构建工具</li>
 <li><strong>代码作为记忆</strong>：helpers.py 既是工具库也是 agent 的记忆——agent 写的每个函数都是对未来任务的准备</li>
 <li><strong>Domain skill 持久化</strong>：把 agent 学到的知识以文件形式沉淀，类似人类的 SOP 文档</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[LLM agent] --> B[Browser Harness Python 运行时]
+    B <--> C[Chrome DevTools Protocol WebSocket]
+    C --> D[Chrome 浏览器]
+    B --> E[admin.py 与 daemon.py]
+    E --> C
+    B --> F[helpers.py<br/>运行时自修改工具边界]
+    F -->|生成工具函数| B
+    B --> G[domain-skills/&lt;site&gt;/<br/>持久化技能边界]
+    H[远程浏览器免费 tier<br/>3 并发] -. CDP 连接 .-> C
+    I[生产安全性与可靠性<br/>待核验] -. 控制风险 .-> B
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Browser Use 生态中的位置：browser-use 是框架层，browser-harness 是 agent-native 的薄层。两者互补而非替代。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Self-healing 可靠性</strong>：agent 自动编辑代码在生产环境中的稳定性未经验证</li>
 <li><strong>安全风险</strong>：agent 直接操作浏览器 + 编辑本地文件，攻击面较大</li>
 <li><strong>CDP 兼容性</strong>：依赖 Chrome DevTools Protocol，浏览器兼容性受限</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>browser-use</strong>（同一团队）：框架层，更成熟但自由度更低</li>
 <li><strong>Playwright</strong>（Microsoft）：传统 browser automation，适合人类编排的测试</li>
 <li><strong>LaVague</strong>：另一个 AI browser agent，但更偏框架封装</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是</strong>。Self-healing 机制如果稳定运行，将改变浏览器自动化的基本范式。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Self-healing 机制在生产场景中的实际表现和错误率</li>
 <li>Domain skill 生态是否能形成社区贡献飞轮</li>

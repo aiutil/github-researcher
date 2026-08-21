@@ -41,8 +41,32 @@ Node.js 开发者工具链碎片化严重：运行 TS 需要 tsx/ts-node，运�
 4. **内置版本管理**：`nub node install 26` 替代 nvm，无需额外工具
 5. **Watch 模式**：原生文件监听，替代 nodemon
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Nub 是 Rust 编写的 Node.js 工具链统一体，替代 tsx/npx/nodemon/nvm/corepack，但 stock Node.js runtime 不被替换；边界停在工具链层 | 仅基于档案"Rust + 替换 node/tsx/npx/nodemon/nvm/corepack，不替换 runtime"叙述；未含 IPC/CLI 协议与内部模块细节 |
+| 主路径 | 调用方或 CI → `nub` CLI（Rust 子命令）→ 复用 stock Node.js runtime 执行（TS 直跑经 Node）→ 资源/包/版本管理由内置能力处理 | 档案只明示"TS 文件直接通过 Node.js 运行"与"Rust 核心极低启动开销"；调度、watch、shim 实现细节待核验 |
+| 关键权衡 | 不替换 runtime 换取零兼容性风险，代价是放弃 Bun 式端到端运行时加速，性能上限受 Node 约束；24×/19×/2.5× 数字按档案标注为"特定场景"待独立验证 | 档案已自陈"项目极早期、生产稳定性未经验证、性能数据基于特定场景"，证据止于 benchmark 原文未在档案中给出 |
+| 最小 PoC | 在 CI 与本地分别跑三组对照：① `nub run` vs `tsx`/`node` 跑 TS 脚本 ② `nub`（npx 子命令）vs `npx` 执行临时包 ③ `nub node install`/`nub pm shim` 替代 nvm/corepack；以启动耗时、稳态耗时、错误信息完整性、Node 上游变更冲击为验收项 | 安装/分发表与 CI 接入方式档案已列（Homebrew/Nix/mise/npm、`nubjs/setup-nub`）；具体基准方法学与样本待核验 |
+
 ## 架构启发
 JavaScript 工具链的 Rust/Zig 化已成定局。Nub 的独特之处是找到了一个甜蜜点：用 Rust 加速工具链，但保留 Node.js runtime 的兼容性。这是企业最安全的加速路径。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Caller[调用方或 CI runner] --> CLI[nub CLI Rust 子命令]
+    CLI --> Corepack[nub pm shim 替代 corepack 待核验]
+    CLI --> NodeMgr[nub node 替代 nvm fnm]
+    CLI --> Watch[Watch 模式替代 nodemon 待核验]
+    CLI --> Node[stock Node.js runtime 未替换]
+    Node --> Run[TS 脚本与 npx 临时包执行]
+    CLI --> Risk[风险边界 项目极早期 33 天 bus factor 性能数字待独立验证]
+```
 
 ## 定位判断
 **工具型** — 优秀的开发者体验工具，企业 adoption 门槛极低。不是新 runtime，不是包管理器替代品，是 Node.js 开发者工具链的统一加速层。

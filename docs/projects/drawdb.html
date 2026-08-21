@@ -48,27 +48,76 @@
 <li><strong>主题切换:</strong> 浅色 / 深色 + 自定义配色</li>
 <li><strong>JSON 导入导出:</strong> 支持 schema 序列化与恢复</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>浏览器端单层 JS 应用，无服务端；数据仅落 IndexedDB / localStorage，外部边界只有用户浏览器与可选的 JSON/SQL 导入导出文件</td>
+<td>档案明列"100% 浏览器、IndexedDB 存储、无后端"，未披露 PWA Service Worker、网络协议或同步机制</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户拖拽 → React 表/关系编辑器 → 内部 schema 模型 → 多方言 SQL 渲染器 → 导出（SQL/JSON）或 IndexedDB 落盘</td>
+<td>主路径四段在档案中均有字面支撑；关系自动外键生成、主题切换、JSON 序列化属于确认点，迁移/diff 路径档案未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>(1) AGPL-3.0 copyleft vs 企业内嵌；(2) IndexedDB 容量上限 vs 大型 schema；(3) 离线零成本 vs 缺协作/版本控制；(4) 跨方言广度 vs 单方言深度</td>
+<td>前两条档案明列；后两条由"无后端 + 零账号 + 跨方言"定位可推断，但同步/协作机制档案未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>离线打开 drawdb.app，拖拽建 3~5 张表 + 1 对多关系，导出 PostgreSQL 与 SQLite 双方言 SQL 并在各自 CLI 中执行；再用 JSON 导入恢复，验证 IndexedDB 与序列化闭环</td>
+<td>PoC 步骤均在档案"SQL 多方言导出""JSON 导入导出""IndexedDB 本地存储"覆盖范围内；协作、migration、SQL 兼容性深度未验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"无后端 + IndexedDB + Web 即应用"的取向展示了一个反 SaaS 路线——把工具完全交给浏览器，通过 PWA 完成分发，未来不依赖任何服务器即可永久运行。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[用户浏览器] --> E[React 拖拽式表与关系编辑器<br/>React + Tailwind]
+  E --> M[内部 schema 数据模型<br/>表 字段 关系]
+  M --> R[多方言 SQL 渲染器<br/>MySQL PostgreSQL SQLite MSSQL MariaDB Oracle MongoDB]
+  R --> X[SQL 文本导出]
+  M --> J[JSON 序列化]
+  J --> Y[JSON 导入导出文件<br/>外部边界]
+  M --> D[(IndexedDB localStorage<br/>本地持久化)]
+  L[主题切换 浅色 深色 自定义配色] --> E
+  W[AGPL-3.0 许可风险<br/>控制边界] -.约束.-> E
+  S[PWA 离线分发 待核验] -.分发.-> U
+  N[migration diff 能力 待核验] -.扩展.-> R
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 / 可视化建表工具标杆（Web 端）。</strong> 39k stars 反映开发者社区对"轻量前端 ER 工具"的真实需求。它不太可能挑战 Prisma Studio / DBeaver 等专业工具，但会稳定占据"快速画图"场景。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>AGPL-3.0 严格 copyleft:</strong> 自托管 fork 后对外服务也需开源</li>
 <li><strong>深度有限:</strong> 数据库迁移、复杂关系/索引管理仍需专业工具</li>
 <li><strong>同质化压力:</strong> 与 draw.io / Excalidraw 等通用画图工具功能重叠</li>
 <li><strong>IndexedDB 容量:</strong> 大型 schema（100+ 表）可能超 IndexedDB 配额</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs draw.io:</strong> draw.io 通用画图；drawdb 专做数据库 ER，自动生成 SQL 更高效</li>
 <li><strong>vs Prisma Studio:</strong> Prisma Studio 绑定 Prisma；drawdb 跨方言跨 ORM</li>
 <li><strong>vs DBeaver:</strong> DBeaver 是桌面端重型工具；drawdb 浏览器轻量</li>
 <li><strong>vs dbdiagram.io:</strong> dbdiagram 是 DSL 文本式；drawdb 拖拽更直观</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得日常使用（轻量 Web ER 工具），跟踪价值中等。</strong> 推荐给前后端开发者用于快速建表。其增长曲线稳定，不太可能成为下一波热点，但也不会衰退——典型"长青"型工具。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>是否增加 migration / diff 能力（覆盖更深的 schema 工作流）</li>
 <li>PWA 离线模式是否被更多用户采纳</li>

@@ -6,7 +6,7 @@
     <title>cathrynlavery/diagram-design | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,25 +52,70 @@
 <li><strong><em>New in 2.0 — the Loop: flywheels with a shared-memory hub. The dashed lines are the write-backs.</em></strong></li>
 <li><strong>27 types. One Claude Code skill. Your brand in 60 seconds — the skill reads your website and maps co</strong></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目是面向 Claude Code 的 29 种"editorial"图表生成工件集，自包含 HTML+SVG 输出，不依赖阴影或 Mermaid 渲染链路；边界止于"Claude Code skill 输入 + 浏览器/文档渲染 SVG/HTML"</td>
+<td>档案仅确认 HTML、SVG 自包含、29 种类型与"one Claude Code skill"，未列出 skill 协议细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户调用 Claude Code skill → skill 读取用户素材（网站/品牌） → 映射为预设图表模板 → 输出自包含 HTML/SVG</td>
+<td>"skill reads your website and maps co" 在档案中截断，映射规则与模板编排机制待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>设计一致性（editorial 美学、固定无阴影风格）与模板覆盖广度（29 种类型）之间的取舍；以自包含交付换取运行时不依赖 Mermaid</td>
+<td>风格约束明确为 "No shadows, no Mermaid-slop"，但可定制深度、版本兼容性与 CSS 主题机制档案未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取 1–2 种图表类型（如 architecture、loop），用最小品牌素材驱动 skill 生成 HTML/SVG，核验：是否真正自包含、能否在普通浏览器/文档中正确渲染、是否复用同一视觉系统</td>
+<td>输出是否完全离线自包含、skill 调用接口与失败回退路径档案未证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>从 cathrynlavery/diagram-design 的设计来看，核心思路是 <strong>"29 editorial diagram types for Claude Code. Self-contained H"</strong>。这反映了 HTML 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户调用 Claude Code skill] --> S[Claude Code skill 解析品牌/素材 待核验]
+    S --> M[模板映射 29 种 editorial 图表类型]
+    M --> O[生成 Self-contained HTML + SVG]
+    O --> R[浏览器或文档渲染 无 Mermaid 依赖]
+    O --> B[外部边界 第三方素材/网站读取 待核验]
+    M --> C[控制边界 风格约束 No shadows No Mermaid-slop]
+    O --> X[风险边界 模板覆盖与定制深度 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型</strong>。在生态中定位为29 editorial diagram types for Claude Co方向的工具。Stars 5299 说明已有一定社区基础。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规模风险</strong>：5,299 stars，但 fork 365 说明有实际部署</li>
 <li><strong>维护风险</strong>：最后 push 时间 2026-08-11，活跃维护中</li>
 <li><strong>Open Issues</strong>：2 个 open issues，问题量可控</li>
 <li><strong>License</strong>：MIT（宽松许可，适合商用）</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>与同 HTML 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。</li>
 <li>从 topics () 来看，与关注 该领域 的其他项目有交叉。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 5299 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Star 增速是否可持续（当前 5,299）</li>
 <li>Fork 增长趋势（当前 365）</li>

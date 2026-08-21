@@ -6,7 +6,7 @@
     <title>nvidia-skillspector | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -26,7 +26,7 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+
         <h1 id="nvidia-skillspector">NVIDIA SkillSpector</h1>
 <h2 id="_1">一句话定位</h2>
 <p>AI Agent 技能的安全扫描器，检测技能中的漏洞、恶意模式和安全风险。</p>
@@ -43,30 +43,77 @@
 <li><strong>漏洞检测：</strong> 静态分析 Skills 代码中的安全漏洞</li>
 <li><strong>Python 实现：</strong> 低门槛集成到 CI/CD 流水线</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SkillSpector 是面向 Agent Skills 的 SAST 扫描器，边界覆盖 Skills 文件/包、64 类漏洞检测（16 分类）、SARIF 输出；与外部 LLM 提供方（OpenAI / Anthropic / NVIDIA Build / Ollama 本地）解耦</td>
+<td>漏洞分类与 LLM 供应商在档案中明确；Skills 格式契约、目标 Agent 平台兼容性未在档案中给出，需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Skills 输入 → 静态+语义扫描（YARA/AST/Taint Tracking 等规则 + 多 LLM 语义评估）→ SARIF 报告 → CI/CD 消费</td>
+<td>路径描述基于档案中的检测类别与 SARIF 提法；具体调度器、内部流水线阶段、LLM 评估触发条件未在档案中确认</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>检测覆盖广度（64 类、含 MCP 最小权限与工具投毒）与 Skills 格式不统一、误报未验证之间的张力；NVIDIA 品牌背书与潜在平台绑定风险</td>
+<td>覆盖度、SARIF、多 LLM、CVE 化分类来自档案；格式碎片化、误报率、绑定深度仅以风险章节列示，无量化证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一组已知 Skills（含档案统计的 26.1% 含漏洞、5.2% 疑似恶意样本子集），接入 CI/CD 跑 SARIF，对比 64 类命中与人工复核；LLM 评估侧先用本地 Ollama 以隔离外部成本与数据外泄</td>
+<td>样本规模、CI 接入方式、Ollama 模型选择、阈值与“疑似恶意”判定方法档案均未给出，需以源码/文档确认</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Agent 供应链安全是一个被严重忽视的领域。类比：
 - npm 生态的 security audit → Agent Skills 的 SkillSpector
 - Docker 镜像扫描（Trivy）→ Agent Skills 扫描
 - SAST/DAST → Agent Skills SAST</p>
 <p>未来 Agent 的安全架构需要：Skills 来源认证 + Skills 安全扫描 + 运行时权限控制 + 行为审计。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Agent Skills 输入<br/>Skills 包/文件] --> B[SkillSpector 扫描器<br/>Apache 2.0 / Python]
+    B --> C[静态规则引擎<br/>YARA YR1-YR4<br/>AST1-AST8<br/>Taint TT1-TT5]
+    B --> D[语义评估<br/>多 LLM: OpenAI / Anthropic / NVIDIA Build / Ollama]
+    C --> E[SARIF 报告]
+    D --> E
+    E --> F[CI/CD 流水线]
+    F --> G[修复/阻断<br/>待核验]
+    H[Agent 平台<br/>Claude Code / Cursor 等<br/>待核验] --> A
+    B -.风险边界.- I[NVIDIA 平台绑定<br/>Skills 格式碎片化<br/>误报率未验证]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>Agent 安全工具链中的"静态扫描"组件。是 Agent 安全防御体系的第一道防线。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>标准缺失：</strong> 还没有公认的 Skills 安全标准，扫描规则可能不够全面</li>
 <li>** Skills 格式不统一：** 不同 Agent 平台的 Skills 格式不同，难以通用扫描</li>
 <li><strong>NVIDIA 战略绑定风险：</strong> 可能和 NVIDIA 的 Agent 平台深度绑定</li>
 <li><strong>误报率：</strong> 新工具的误报率需要时间验证</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs. trivy（ Aqua Security）：</strong> trivy 扫描容器/镜像，SkillSpector 扫描 Agent Skills，领域不同</li>
 <li><strong>vs. Snyk：</strong> Snyk 做通用代码安全，SkillSpector 聚焦 Agent Skills 特有风险</li>
 <li><strong>vs. Socket.dev：</strong> Socket 做 npm 供应链安全，SkillSpector 做 Skills 供应链安全</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 安全是确定性增长赛道，SkillSpector 是目前唯一的 Skills 安全扫描工具。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否被主流 Agent 平台（Claude Code、Cursor）集成</li>
 <li>Skills 安全标准是否开始形成</li>

@@ -6,7 +6,7 @@
     <title>perplexityai/bumblebee | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,60 @@
 <li><strong>Go 单二进制:</strong> 编译为单文件，下载即用，无依赖，适合在开发机快速运行</li>
 <li><strong>报告导向:</strong> 输出清晰的风险报告，便于安全团队据此整改</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>bumblebee 划在"本地开发端点（包管理器元数据、IDE 扩展、CLI 工具配置）"与"已知供应链威胁情报"之间，只读扫描器形态，单 Go 二进制分发</td>
+<td>档案明示"只读、本地磁盘、Go 单二进制"；CI/CD、生产镜像、SBOM 流程未提及</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>本地元数据采集 → 与已知恶意包/被劫持扩展情报比对 → 输出风险报告（无自动修复/隔离）</td>
+<td>档案列出"扫描→比对→报告"，未提阻断、自动修复或闭环执行</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>检测覆盖度（多包管理器/IDE 扩展） vs 217KB 工具体量下的实现深度；读取丰富度 vs "只读不执行"的安全边界</td>
+<td>档案明确"有覆盖深度 vs 工具体积"矛盾与"只读设计"取舍</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单台开发机运行 <code>bumblebee</code> 二进制，针对 npm+VS Code 扩展做一次扫描，对照输出与人工已知威胁清单验证信噪比；不接 CI、不接阻断</td>
+<td>档案给出"只读工具+报告导向"特性，部署/接入 CI/远端聚合未证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>bumblebee 的核心启发是 <strong>"供应链安全的盲区在'开发端点'，而非仅仅是'生产依赖'"</strong>。传统供应链安全工具聚焦 CI/CD（扫描依赖树、SBOM）或生产环境（容器镜像扫描），但忽略了开发者的本地机器——那里堆积着更多元、更少审计的"开发端点"（IDE 扩展、CLI 工具、本地包）。bumblebee 把防御边界扩展到开发机，这是对供应链安全视角的重要补充。更深层的启发是 <strong>"只读设计是安全扫描器的最佳实践"</strong>——扫描器若有写/执行能力，本身就成为攻击面；只读从架构上消除了这类风险。这一原则值得所有安全工具借鉴。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[本地开发端点 元数据 包管理器 IDE扩展 CLI工具] --> B[只读扫描器 bumblebee Go二进制]
+    B --> C{与已知供应链威胁情报比对}
+    C --> D[风险报告 输出]
+    C --> E[审计证据 报告]
+    subgraph 外部边界
+        F[威胁情报源 恶意包名 被劫持扩展] -. 离线/在线更新 待核验 .-> C
+    end
+    subgraph 风险边界
+        G[只读不执行 不修改系统] --> B
+        H[无自动修复 闭环待核验] --> D
+    end
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型安全产品（细分品类开创者）。</strong> bumblebee 定位于"开发端点供应链扫描"这一细分安全品类，目前无直接同规模竞品，有品类开创者优势。作为工具，它的价值取决于威胁情报质量与扫描覆盖度。Perplexity 背书提供了初始可信度，但长期需证明其在安全领域的持续投入（Perplexity 主业是 AI 搜索，安全是跨界）。4.9k stars 显示早期成功，是否会从"工具"成长为"平台"（如云端聚合、企业版）取决于 Perplexity 的战略。目前是值得关注的安全工具新星。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>威胁情报依赖:</strong> 扫描价值取决于已知威胁数据库的覆盖与时效，情报滞后则漏报</li>
 <li><strong>Perplexity 跨界投入:</strong> Perplexity 主业是 AI 搜索，安全工具是否长期维护存疑</li>
@@ -69,7 +118,7 @@
 <li><strong>覆盖度:</strong> 217KB 体量说明功能聚焦，对冷门包管理器/扩展的覆盖可能不足</li>
 <li><strong>采用门槛:</strong> 开发者安全意识参差，"主动跑扫描"的用户基数有限</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Trivy/Grype（漏洞扫描）:</strong> 那些扫描依赖漏洞（CVE）；bumblebee 聚焦供应链威胁（恶意包/劫持），维度不同</li>
 <li><strong>vs Snyk/Dependabot:</strong> 云端依赖安全管理平台；bumblebee 是本地端点扫描，更轻量</li>
@@ -77,9 +126,9 @@
 <li><strong>vs osquery:</strong> 通用端点查询框架；bumblebee 专精供应链，开箱即用</li>
 <li><strong>vs socket.dev:</strong> npm 供应链分析平台；bumblebee 扩展到多语言+IDE 扩展，本地优先</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（安全视角 + 新品类）。</strong> bumblebee 开创了"开发端点供应链扫描"这一细分视角，无论其本身成败，该方向值得重视。建议关注：威胁情报的覆盖广度与更新频率、Perplexity 对安全工具线的持续投入信号、以及是否演化出企业版（团队开发机统一盘点）。对安全意识强的开发团队，bumblebee 值得纳入开发机安全基线。对安全工具观察者，它是"供应链安全从 CI/CD 延伸到开发端点"趋势的代表。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>威胁情报库的规模与更新频率（决定检测有效性）</li>
 <li>Perplexity 是否将安全工具产品化（独立产品线信号）</li>

@@ -40,23 +40,44 @@ url: "https://github.com/kyegomez/OpenMythos"
 
 4. **pip install 即可运行**：`pip install open-mythos` 即可实验，门槛极低。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenMythos 是 Python 项目，边界由 `pip install open-mythos` 入口、RDT 三层（Prelude→Recurrent Block×N→Coda）、可切换的 MLA/GQA 注意力、Routing+Shared Sparse MoE FFN 组成；宿主运行时为 Python ML 栈，扩展通过配置文件切换注意力变体 | 组件名/层级关系来自档案；具体模块文件、依赖清单与外部接口签名未在档案中给出，须源码核验 |
+| 主路径 | 开发者或 CI 调用 CLI/Python API → 进入 RDT Core Loop（Prelude→循环 N 次的 Recurrent Block→Coda）→ 经稀疏 MoE FFN 与 MLA/GQA 注意力输出 → 回到调用方 | 流程基于档案"架构启发"图与 pip 入口描述；CLI 子命令、API 协议、序列化格式待核验 |
+| 关键权衡 | 推理时变深度循环带来的尾延迟不确定性（循环上限）与准确率/算力成正比设计哲学之间的平衡，叠加"理论重建 vs 实际 Claude 架构"的认知风险 | 权衡描述直接取自档案；定量延迟、显存、训练成本基准未提供 |
+| 最小 PoC | 在沙箱/CI 中 `pip install open-mythos`，用最小配置构造短序列，验证 RDT 循环次数上限切换与 MLA/GQA 路由，再以单元测试覆盖 Recurrent Block 的自适应计算分支 | 仅基于档案"pip install 即可运行"与架构师速览建议；具体测试样例、benchmark 套件、参考权重均待核验 |
+
 ## 架构启发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 graph TB
-    subgraph "RDT Core Loop"
-        IN[Input] --> PRE[Prelude Layers]
-        PRE --> REC[Recurrent Block]
-        REC --> |"loop iter 1..N"| REC
-        REC --> CODA[Coda Layers]
-        CODA --> OUT[Output]
-    end
-    
-    subgraph "Key Innovation"
-        ADAPT["Adaptive Compute<br/>简单问题: 少循环<br/>复杂问题: 多循环"]
-    end
-    
-    REC --- ADAPT
+    DEV["开发者 / CI 触发器"]
+    CLI["CLI 或 Python API 入口<br/>(pip install open-mythos)"]
+    CFG["配置开关<br/>MLA / GQA"]
+    RDT["RDT Core Loop<br/>Prelude → Recurrent Block × N → Coda"]
+    MOE["Sparse MoE FFN<br/>路由专家 + 共享专家"]
+    ATT["注意力变体<br/>MLA(DeepSeek 风格 KV 压缩) 或 GQA"]
+    ADAPT["自适应计算<br/>循环次数随问题复杂度变化(待核验上限策略)"]
+    OUT["Output / 调用方返回"]
+    EXT["外部边界<br/>Anthropic Claude Mythos 实际架构(未公开, 仅论文推测)"]
+    RISK["风险边界<br/>无预训练权重 / 理论重建 vs 真实架构"]
+
+    DEV --> CLI
+    CLI --> CFG
+    CFG --> ATT
+    CLI --> RDT
+    RDT --> MOE
+    RDT --> ATT
+    RDT --- ADAPT
+    RDT --> OUT
+    RDT -.对照.-> EXT
+    RDT -.暴露.-> RISK
 ```
 
 **设计哲学**：推理成本应该与问题复杂度成正比。这打破了"每个 token 固定计算量"的传统范式。

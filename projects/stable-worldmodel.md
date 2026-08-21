@@ -51,9 +51,33 @@ A platform for reproducible world model research and evaluation。主要使用 P
 5. **<a href="https://github.com/galilai-group/stable-worldmodel"><img alt="Tests" src="https://img.shiel**
 6. **<a href="https://pypi.python.org/pypi/stable-worldmodel/#history"><img alt="PyPI" src="https://img.s**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | stable-worldmodel 是一个面向 **JEPA / World Model / MPC** 的 Python 研究平台，边界落在"环境/env + 模型 + 规划/控制回路"层面，而非完整机器人栈 | 标签 `jepa / model-predictive-control / world-model / pytorch`；定位"reproducible research"；具体 env、obs/action 接口形状需源码核验 |
+| 主路径 | 研究脚本 → 注册的环境与数据集 → 训练/评估流程 → 复现性产物（checkpoint、指标）。README 暴露 Documentation / Tests / PyPI 三个外链，说明交付链路到文档与发布 | 仅确认三大外链存在；训练、checkpoint 格式、评估协议未在档案中证实 |
+| 关键权衡 | 可复现性 vs. 算法自由度；JEPA 表征学习 vs. MPC 在线规划的成本；以及缺乏 LICENSE 标注带来的采用合规风险 | 权衡来自定位与标签的合理推断；License 风险来自"未标注"事实 |
+| 最小 PoC | 先复现 README 文档站 / PyPI 页面给出的最小 demo 一次跑通，再以单一环境评测 JEPA 表征与 MPC 控制回路，记录延迟、稳定性、未标注许可三项 | 文档站与 PyPI 已证实；评测协议、可执行 demo 入口需源码核验 |
+
 ## 架构启发
 
 从 galilai-group/stable-worldmodel 的设计来看，核心思路是 **"A platform for reproducible world model research and evaluat"**。这反映了 Python 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Research Scripts / 用户代码] --> B[Environment & Dataset Registry<br/>待核验: env 集合与 obs/action 接口]
+    B --> C[JEPA / World Model Core<br/>Python + PyTorch<br/>待核验: 训练管线]
+    C --> D[Model Checkpoints & Eval Metrics<br/>待核验: 存储格式]
+    C --> E[MPC 规划 / 控制回路]
+    E --> F[外部仿真或物理执行环境<br/>待核验: 支持范围]
+    C --> G[可复现性产物: Documentation / Tests / PyPI]
+    G --> H[采用风险: LICENSE 未标注<br/>合规边界]
+```
 
 ## 定位判断
 

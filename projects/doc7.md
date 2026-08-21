@@ -37,8 +37,32 @@ url: "https://github.com/magicrew/doc7"
 3. **Go 实现**：单二进制部署，install 脚本（curl | bash）。与 anydoc 的 Rust 不同，doc7 用 Go。
 4. **Benchmark 示例**：README 含 benchmarks/attention-is-all-you-need 示例，展示对学术论文（含公式/图表）的解析效果。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | doc7 是本地编排层：消费端为上游文档摄入调用方，模型侧依赖用户自建的 LM Studio/Ollama OpenAI 兼容端点，无 OCR/无云服务依赖。 | 仅基于档案中"local-ai/multimodal/vision-language-model"标签与"LM Studio/Ollama"描述，端口、鉴权与传输协议未披露。 |
+| 主路径 | 入口接收文档 → Go 编排调用本地 VLM（OpenAI 兼容接口）→ VLM 直接产出 AI-ready Markdown → 写回调用方。 | 档案未公开解析器内部状态机、并发模型与重试策略；"OpenAI 兼容"调用细节属待核验。 |
+| 关键权衡 | 通用性/隐私（VLM 看一切、本地运行、数据不离机）换速度/可控性（秒级推理 vs anydoc 单数毫秒；输出质量受本地 VLM 能力制约）。 | 性能对比来自 anydoc↔doc7 路线分化叙述，未含 doc7 实测吞吐；模型兼容性差异未披露。 |
+| 最小 PoC | 单机 GPU + LM Studio/Ollama 跑本地 VLM → 用 README 示例 benchmarks/attention-is-all-you-need（含公式/图表）端到端验证 Markdown 质量，再扩到 PDF/Office/扫描页/截图。 | 示例路径见 README 引用，硬件门槛、显存需求与模型选型未在档案中给出量化值。 |
+
 ## 架构启发
 doc7 的设计哲学是 **"用 VLM 替代专用 OCR + 格式解析"**——不针对每种格式（docx/pdf/扫描）写专用解析器，而是用通用 VLM"看"文档统一输出。这与 anydoc 的"专用 Rust 解析器 + 格式无关输出"是两种范式：anydoc 追求**速度和确定性**（专用解析器，单数毫秒，格式无关），doc7 追求**通用性和私有化**（VLM 看一切，本地运行）。对架构师的启发：文档解析的"速度/确定性 vs 通用性/隐私"是核心 trade-off。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界<br/>待核验:协议与鉴权]
+  I --> C[doc7 Go 编排与运行时<br/>本地二进制]
+  C --> M[本地 VLM 推理服务<br/>LM Studio 或 Ollama<br/>OpenAI 兼容 API]
+  C --> S[输出与状态回写<br/>AI-ready Markdown<br/>审计与日志 待核验]
+  M --> C
+  C -. 调用本地多模态模型 .-> M
+  C -. 处理 PDF/Office/扫描/截图/图表/公式/diagrams .-> S
+```
 
 ## 定位判断
 属于 **L1 基础设施/工具层**，是 agent 文档摄入层的**本地私有化路线代表**。与 anydoc（云路线）互补，覆盖不同场景（敏感文档/离线 vs 快速/集成友好）。

@@ -6,7 +6,7 @@
     <title>microsoft/VibeVoice | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,82 @@
 <li><strong>微软研究级质量:</strong> 基于微软研究院的语音 AI 技术积累，在自然度和韵律方面达到开源模型领先水平</li>
 <li><strong>模块化设计:</strong> ASR、TTS 模块可独立使用或组合部署，灵活性高</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>微软开源的语音 AI 模型家族，覆盖 ASR、TTS 与流式 TTS 三个能力域，面向本地化部署与隐私可控场景</td>
+<td>档案仅声明能力分类（ASR/TTS/Streaming TTS）与 Python 标签；具体入口形态、推理后端与模型服务边界未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文本/语音输入 → ASR 或 TTS/流式 TTS 模型推理 → 音频输出，多模型变体可独立或组合使用</td>
+<td>档案仅描述能力与"模块化设计"；推理链路、采样率、编解码、流式分块策略等实现细节均未说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>端到端神经 TTS 在自然度与表现力上优于传统声学模型+声码器两段式，但带来模型体积与 GPU 推理成本上升；服务侧部署 vs 边缘部署未在档案中给出量化依据</td>
+<td>档案明确"高质量、研究级"定位与"CPU 部署性能可能不达标"风险；量化版本（GGUF/ONNX）尚属"后续观察点"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 ASR 或 TTS 能力上做最小闭环：固定输入语料 → 选定一个模型变体 → 录制输出并对比自然度、延迟与显存占用，验收项含许可证审查与退出路径</td>
+<td>档案未给出模型权重、推理硬件门槛、许可证类型（仅提示"可能附带商业使用限制"）与版本号；这些必须在 PoC 前核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>VibeVoice 的架构体现了「端到端 vs 模块化」的权衡。传统语音系统使用独立的声学模型 + 声码器两段式架构，而前沿方案（如 VibeVoice）倾向于端到端神经 TTS，减少中间损失。代价是模型体积增大和训练复杂度提升。微软选择在开源版本中同时提供多种模型变体，让开发者根据部署条件灵活选择。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> ASR[ASR 识别模块]
+    I --> TTS[TTS 合成模块]
+    I --> STTS[流式 TTS 模块]
+    ASR --> O1[文本输出]
+    TTS --> O2[音频输出]
+    STTS --> O3[流式音频输出]
+    TTS --> R[模型变体选择 待核验]
+    STTS --> R
+    ASR --> R
+    R -.GPU 推理依赖.-> G[推理硬件门槛 待核验]
+    R -.许可审查.-> L[商业使用许可 待核验]
+    TTS --> E[情感与韵律表现力 表现力与停顿]
+    STTS --> E
+    E -.长段对话式合成.-> M[多语言覆盖 待核验]
+    L --> X[退出与替换路径]
+    G --> X
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于语音 AI 开源生态的第一梯队。与 Whisper（ASR）、Piper（轻量 TTS）形成互补关系。VibeVoice 的定位偏向「高质量、研究级」，而非「极致轻量」，因此更适合服务端部署场景。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>模型体积与推理成本:</strong> 高质量语音模型需要 GPU 推理，CPU 部署性能可能不达标</li>
 <li><strong>许可证限制:</strong> 微软开源项目可能附带商业使用限制，企业采用前需仔细审查许可条款</li>
 <li><strong>社区生态不成熟:</strong> 52K stars 中有多少转化为真实使用者有待验证，社区贡献和工具链建设仍处早期</li>
 <li><strong>更新频率不确定:</strong> 微软研究院项目有时会出现维护断档，长期路线图不清晰</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>OpenAI Whisper:</strong> 专注 ASR 领域，VibeVoice 覆盖面更广（ASR+TTS），但 Whisper 在 ASR 精度上可能更优</li>
 <li><strong>Coqui TTS / XTTS:</strong> 开源 TTS 先驱，VibeVoice 在模型质量和微软工程化方面可能更胜一筹</li>
 <li><strong>ElevenLabs (闭源):</strong> 商业 TTS 标杆，VibeVoice 是开源阵营缩小差距的尝试</li>
 <li><strong>Fish Speech:</strong> 另一个高质量开源 TTS，侧重零样本声音克隆</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 语音 AI 是 AI 应用层最确定的增长方向之一，微软开源方案的出现将显著降低技术门槛。需要持续关注模型迭代质量和社区生态发展。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 VibeVoice 模型是否推出量化版本（GGUF/ONNX），以支持边缘设备部署</li>
 <li>观察社区是否围绕 VibeVoice 构建完整的语音应用工具链（音频后处理、实时流式服务框架等）</li>

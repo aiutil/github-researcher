@@ -6,7 +6,7 @@
     <title>OpenMOSS/MOSS-TTS | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,74 @@
 <li><strong>多后端推理支持</strong>：(a) llama.cpp + ONNX Runtime 实现 PyTorch-free 推理，8B 模型可在 8GB GPU 上运行；(b) SGLang-Omni 提供约 3x 吞吐加速；(c) vLLM-Omni 支持全系列模型。GGUF 量化权重已发布。</li>
 <li><strong>MOSS-TTS-Local-Transformer-v1.5</strong>：4B 参数检查点，从 Qwen3-1.7B 扩展到 Qwen3-4B 骨干，继承 v1.5 全部特性，获得 SGLang-Omni Day-0 支持。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MOSS-TTS 是覆盖长语音、多说话人对话、声音设计、环境音效、流式 TTS 与轻量版共 7+ 变体的开源 TTS 模型家族，通过 MOSS-Audio-Tokenizer-v2 提供 48kHz 立体声能力，对外发布于 HuggingFace/ModelScope 与 HuggingFace Spaces 在线试用。</td>
+<td>仅基于档案“关键技术亮点”与发布渠道描述；具体各模型 checkpoint 命名、license 细则在 README 中未列出，须逐权重核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文本输入 → MOSS-Audio-Tokenizer-v2 编码 → Qwen3（1.7B 或 4B）骨干 TTS 模型推理 → 多后端（llama.cpp/ONNX、SGLang-Omni、vLLM-Omni）部署 → 48kHz 立体声输出。Nano(~100M) 走 4 核 CPU 流式子路径。</td>
+<td>后端加速比（SGLang “约 3x”）、CPU 4 核流式、8GB GPU 跑 8B 等说法源自档案引用的公开资料，未在 README 给出复现脚本或基准。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>“多场景模型家族 vs 维护成本”以及“48kHz 立体声/大骨干 vs 部署门槛”：全场景覆盖与音质上限换来了 7+ 变体的持续维护负担，且除 Nano 外需 Qwen3 级 GPU 资源；中文优势明显，英文/多语言生产可用性未证实。</td>
+<td>权衡判断只来自档案“风险/局限”与“同类项目”两节；具体多语言质量基准、模型权重单独许可条款未给出原文。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>优先在 HuggingFace Spaces 试用 v1.5 验证中文长语音与 <code>[pause X.Ys]</code>、语言标签基本能力，再以 MOSS-TTS-Nano + llama.cpp/ONNX 在 4 核 CPU 环境跑流式 PoC；GGUF 量化权重已发布可作低门槛入口。</td>
+<td>试用入口来自档案；Nano 4 核 CPU 流式、GGUF 量化等说法均需在 README 与对应推理后端文档中再核验，acceptance 项须自定 SLO 与许可证复核。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>MOSS-TTS 的设计哲学是"模型家族覆盖全场景"而非"一个模型做所有事"。这种设计让每个模型可以针对特定场景优化（如 Nano 追求轻量、Realtime 追求低延迟、SoundEffect 追求音效保真），而不是在一个模型中做 trade-off。另一个值得学习的是多后端推理策略——通过 llama.cpp/vLLM/SGLang 适配不同的部署环境，最大化模型的可及性。基于 LLM 骨干（Qwen3）的 TTS 架构也代表了"TTS as LLM"的趋势——用语言模型的框架统一语音生成。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游应用<br/>视频配音/虚拟人/有声读物] --> I[入口与分发边界<br/>GitHub + HuggingFace Spaces 试用]
+  I --> C[项目编排与运行时]
+  C --> M[模型家族与推理后端<br/>MOSS-TTS/TSD/VoiceGenerator/<br/>SoundEffect/Realtime/Nano + v1.5<br/>骨干 Qwen3-1.7B ~ 4B · 待核验]
+  C --> Tk[音频编解码边界<br/>MOSS-Audio-Tokenizer-v2<br/>48kHz 立体声 · 协议/接口待核验]
+  C --> Tb[工具与外部系统<br/>HuggingFace / ModelScope<br/>权重分发]
+  C --> S[会话 状态 审计 许可证<br/>Apache 2.0 代码 · 权重许可待核验<br/>v2.0 反馈收集 · 多语言质量 待核验]
+  M --> C
+  Tk --> C
+  Tb --> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>MOSS-TTS 定位为<strong>开源 TTS 的全能型方案</strong>。在开源 TTS 生态中，它与 ChatTTS、CosyVoice（阿里）、GPT-SoVITS 等竞争。差异化在于全场景覆盖（从基础 TTS 到音效生成）和 48kHz 立体声支持。OpenMOSS 的学术背景使其在中文学术社区有较强影响力。3.9K stars 说明还在增长期，尚未达到 ChatTTS（30K+）或 CosyVoice 的热度水平。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>模型家族的维护复杂度</strong>：7+ 个模型变体意味着维护成本高。如果团队精力不足，部分模型可能停止更新。学术实验室项目尤其面临"论文发表后维护放缓"的风险。</li>
 <li><strong>中文为主的多语言能力</strong>：虽然支持多语言合成，但 OpenMOSS 团队的优势在中文。英文和其他语言的质量可能不如 ElevenLabs 等英文为主的商业方案。</li>
 <li><strong>模型参数量较大</strong>：除 Nano（~100M）外，主模型基于 Qwen3-1.7B 到 4B，部署门槛比轻量 TTS（如 Piper TTS）高得多。虽然 llama.cpp 支持降低了门槛，但仍需一定的技术能力。</li>
 <li><strong>许可证风险</strong>：虽然代码是 Apache 2.0，但模型权重可能有额外的使用限制（特别是商业使用）。需仔细检查每个模型的许可条款。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>CosyVoice (阿里)</strong>：阿里的开源 TTS，同样基于 LLM 骨干，支持声音克隆和多语言。与 MOSS-TTS 定位相似，是中国开源 TTS 的主要竞争者。</li>
 <li><strong>ChatTTS</strong>：对话式 TTS，在中文社区有 30K+ stars。更专注于对话场景，而 MOSS-TTS 覆盖更广。</li>
 <li><strong>GPT-SoVITS</strong>：社区驱动的声音克隆 TTS，约 40K+ stars。用户群体更大但学术性不如 MOSS-TTS。</li>
 <li><strong>ElevenLabs</strong>：商业 TTS 标杆。开源方案在音质和稳定性上仍在追赶。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪，特别是 TTS/语音技术方向</strong>。MOSS-TTS 代表了中国学术开源 TTS 的前沿水平。其模型家族策略和多后端推理支持是值得学习的工程实践。建议关注 v2.0 版本发布和模型能力的跃升。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>MOSS-TTS 2.0 的发布</strong>：README 已宣布 2.0 即将到来，正在收集反馈——大版本更新是否带来质的飞跃</li>
 <li><strong>多语言能力的提升</strong>：v1.5 已支持语言标签，但英文/多语言合成质量是否达到生产可用水平</li>

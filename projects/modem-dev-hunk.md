@@ -35,10 +35,34 @@ Review-first terminal diff viewer——为 Agentic Coders 重新设计的代码�
 3. **Agentic coder 定位** — 明确针对"AI Agent 辅助编程"场景设计，而非传统 git diff 工具
 4. **137 forks** — 说明开发者不仅在看，还在改造适配自己的工作流
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 独立 terminal diff 工具，作为人类审查者与 AI Agent 生成 diff 之间的展示+辅助层；无证据表明其内嵌 agent 运行时，仅依赖 git/CLI 输出来源 | 档案未给出 API、内部协议或数据源细节，外部边界以"git 变更来源 + Agent 生成代码"为隐含输入 |
+| 主路径 | Git 变更/Agent 输出 → TUI 视图（分类、风险标注、上下文扩展）→ 审查者交互 → 不离开终端 | 档案仅描述"diff 展示 + review-first"与 terminal-native，调度/持久化路径未证 |
+| 关键权衡 | Terminal-first 体验 vs 复杂多文件审查场景的可交互性上限；个人提效 vs 团队 PR 工作流接入面 | 档案明确点出 terminal 限制，但未量化场景边界 |
+| 最小 PoC | 在单一 repo 的本地 git 工作流下接入，验证分类与风险标注准确性、TUI 可用性、issue 关闭率 | 档案给出 59 open issues 与企业落地 5 分，但缺真实 DAU/MAU 数据 |
+
 ## 架构启发
 **核心设计哲学：** 当代码是 Agent 写的，review 的重心从"这段代码对不对"变成"这个 Agent 的决策链路合不合理"。diff viewer 需要从"展示变更"进化到"解释变更意图 + 标注风险"。
 
 **Trade-off：** Terminal 界面限制了可交互性——复杂的多文件 review 可能还是需要 IDE 界面。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Git 变更或 Agent 生成输出] --> B[hunk TUI 入口]
+    B --> C[Diff 分类与上下文扩展]
+    C --> D[风险标注模块]
+    D --> E[审查者终端交互]
+    E --> F[本地会话审计日志 待核验]
+    F -.待核验.-> G[多 Agent 输出对比 待核验]
+    E -. 退出 .-> A
+```
 
 ## 定位判断
 **工具型。** 填补了 Agentic Code Review 工具链中的空白，但不太可能演化为平台或基础设施。更可能被更大的工具栈（如 gstack）集成或内建。

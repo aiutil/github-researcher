@@ -55,18 +55,36 @@ Recon → Hunt → Triage → Disprove → Reachability → Feedback → Report 
 ### 5. 利用 Claude Agent SDK
 直接利用 Claude Pro/Max 订阅，无需额外 API key。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | audit 是一个编排型 Agent 工具：Python 实现，通过 Claude Agent SDK 调用 Claude 模型，对目标代码库执行 Recon→Hunt→Triage→Disprove→Reachability→Feedback→Report→Summary 的 8 阶段流水线，依赖 Claude Pro/Max 订阅，无 API key。 | 阶段名称与 SDK 来源档案已确认；具体调度实现、并发模型、持久化与会话管理须核源码。 |
+| 主路径 | 单次审计主路径：Recon 收集代码上下文 → Hunt 定向搜索疑似漏洞 → Triage 分类 → Disprove 用另一模型反驳 → Reachability 门控过滤不可达项 → Feedback 在同模式上扩散搜索 → Report/Summary 输出。 | 阶段名与职责来自档案"关键技术亮点"；阶段间数据契约、是否并行、是否可重入未在档案中给出。 |
+| 关键权衡 | 误报率 vs. 阶段数与速度：8 阶段 + 对抗验证显著压低误报，但在大代码库上运行慢；多窄 Agent 提高聚焦度却提高了对单模型（Claude）可用性与订阅成本的耦合。 | 误报来源与 Claude-only 限制档案明确；8 阶段耗时、并行度、token 成本缺数据。 |
+| 最小 PoC | 在单一中小型代码库上启用 Claude Pro/Max，跑通完整 8 阶段流水线；以"Disprove 反驳数"和"Reachability 过滤前后数量比"作为误报压低的验收指标，以单审计端到端耗时作为性能基线，并预设切换其他 LLM 的退出路径。 | 验收指标源自档案描述的设计动机；切换其他 LLM 的可行性档案未证实，属推断。 |
+
 ## 架构启发
 这展示了 Agent 在安全领域的最佳实践：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    A[Recon<br/>代码侦察] --> B[Hunt<br/>定向搜索]
-    B --> C[Triage<br/>分类筛选]
-    C --> D[Disprove<br/>故意反对]
-    D --> E[Reachability<br/>可达性验证]
-    E --> F[Feedback<br/>模式扩散]
-    F --> G[Report<br/>报告生成]
-    G --> H[Summary<br/>摘要总结]
+  codeRepo[目标代码库<br/>待核验入口] --> recon[Recon<br/>代码侦察]
+  recon --> hunt[Hunt<br/>定向搜索]
+  hunt --> triage[Triage<br/>分类筛选]
+  triage --> disprove[Disprove<br/>故意反对]
+  disprove --> reach[Reachability<br/>可达性门控]
+  reach --> feedback[Feedback<br/>模式扩散]
+  feedback --> report[Report<br/>报告生成]
+  report --> summary[Summary<br/>摘要总结]
+  claude[Claude 模型<br/>via Agent SDK] -. 服务 .-> hunt
+  claude -. 服务 .-> disprove
+  cloudflare[Cloudflare Project Glasswing 论文<br/>外部理论背书] -. 参考 .-> summary
+  risk[风险边界<br/>仅 Claude Pro/Max / 8 阶段慢 / 早期项目] -. 约束 .-> feedback
 ```
 
 关键设计原则：

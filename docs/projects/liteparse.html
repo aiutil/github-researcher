@@ -6,7 +6,7 @@
     <title>liteparse | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,7 +43,39 @@
 <li><strong>轻量级设计</strong>：无需重型依赖，适合嵌入 RAG 管线</li>
 <li><strong>LlamaIndex 生态集成</strong>：与 LlamaIndex RAG 管线无缝对接</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>liteparse 位于"原始文档（PDF/DOCX/PPTX/HTML）→ 结构化文本"边界，向下不接触存储与索引，向上对接 LlamaIndex RAG 管线，由 LlamaIndex 团队出品</td>
+<td>边界来自档案中的格式清单、LlamaIndex 生态集成描述与"工具型"定位，未声明独立服务/部署形态</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文档输入 → liteparse 解析（Rust，零拷贝解析） → Markdown/Text → LlamaIndex 管线 → 后续索引/消费</td>
+<td>路径完全来自档案中的架构启发图与"第一公里"叙述；零拷贝为档案原话，未给基准数据</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>轻量/快 vs 复杂文档覆盖度（表格、扫描件、OCR、多语言待核验）；Rust 性能门槛 vs 社区贡献门槛；与 marker/docling 的差异化尚未明确</td>
+<td>仅引用档案中"7.2K 星，功能覆盖度需验证"、"复杂表格/扫描件解析质量待观察"、"OCR 与多语言待观察"等原话，未引入外部对比</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取代表性 PDF/DOCX/PPTX/HTML 各 1 类小样本，验证：解析吞吐与延迟、Markdown 输出质量、LlamaIndex 接入成本；将复杂文档（表格/扫描件/公式）与失败可恢复性纳入验收；不立即扩展来源</td>
+<td>验证项对应档案"先测质量、延迟与失败可恢复性再扩展来源"建议；OCR/多语言列为"待核验"，不作为 PoC 通过条件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><code>┌─────────────┐
 │  Documents   │
 │ PDF/DOCX/... │
@@ -61,24 +93,36 @@
 - 文档解析是 RAG 管线的"第一公里"，性能直接影响整体吞吐
 - Rust 在 I/O 密集型解析场景有天然优势
 - 轻量化设计符合"RAG Infra 组件化"趋势</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    DOC[文档输入 PDF/DOCX/PPTX/HTML] --> LP[liteparse 解析层 Rust 零拷贝解析]
+    LP --> OUT[输出 Markdown 或 Text 待核验]
+    OUT --> LMI[LlamaIndex RAG 管线 外部边界]
+    LP --> Q[质量与覆盖度边界 复杂表格 扫描件 OCR 多语言 待核验]
+    LP --> R[风险边界 社区贡献门槛 与 marker docling 差异化 待核验]
+    LMI --> DOWN[后续索引 存储 消费 不属于本项目范围]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型</strong>。RAG 管线的基础组件，定位清晰，不追求平台化。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li>7.2K 星，功能覆盖度需要验证（复杂表格、扫描件等）</li>
 <li>Rust 实现虽然快但社区贡献门槛高</li>
 <li>与 marker、docling 等同类项目的差异化需要持续观察</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>marker</strong>：PDF→Markdown，Python 实现，偏 PDF 场景</li>
 <li><strong>docling</strong>（IBM）：文档解析，Python，更重但功能更全</li>
 <li><strong>Unstructured</strong>：最全但最重的方案</li>
 <li><strong>liteparse</strong>：轻量快速，Rust，定位"够用就好"</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是</strong>。文档解析是 RAG Infra 刚需，Rust 实现有性能优势，LlamaIndex 生态加持。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>复杂文档（表格/公式/扫描件）的解析质量</li>
 <li>与 LlamaIndex 的集成深度</li>

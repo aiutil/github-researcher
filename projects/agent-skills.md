@@ -32,12 +32,38 @@ AI Coding Agent 缺乏标准化的工程能力——每个 Agent 都在重复造
 3. **跨 Agent 兼容：** Shell 语言编写，理论上兼容所有支持 Shell 执行的 Agent（Claude Code、Codex、Cursor 等）
 4. **技能组合能力：** 支持多个技能组合使用，形成复杂工程工作流
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | agent-skills 定位在 AI Coding Agent 之上的"技能标准化层"：以 Shell 脚本为载体，向下接入 Claude Code、Codex、Cursor 等支持 Shell 执行的 Agent，向上暴露工程技能（审查、重构、测试等）的统一调用接口，本身不包含模型推理与外部工具实现。 | 边界来源：语言=Shell、标签=agent-skills/coding-agent/engineering/standardization/skill-marketplace；具体接口协议、注册中心、版本与依赖模型未在 README 证实。 |
+| 主路径 | 宿主 Agent 触发技能 → 加载 Shell 技能包 → 执行工程任务（代码审查/重构/测试）→ 返回结果给 Agent；多技能可组合形成工作流。 | "技能组合能力"与"跨 Agent 兼容"为档案明确描述；技能加载、组合与返回协议细节（IPC、stdio、Skill manifest 字段）未在档案中给出。 |
+| 关键权衡 | (1) 标准化通用性 vs. 复杂技能表达能力（Shell 模型受限）；(2) 社区贡献速度 vs. 技能质量一致性；(3) 第三方标准 vs. 平台内置技能被绕过（OpenAI/Anthropic 内置风险）。 | 档案直接列出 Shell 局限、质量挑战、被大厂平台内置取代风险；未给出性能基准、权限模型、可观测性等数据。 |
+| 最小 PoC | 选取一个高频工程任务（如代码审查），在单一宿主 Agent（待选定Claude Code / Codex / Cursor）与最小工具权限、可审计日志下，验证技能加载、调用与结果回写 3 个动作；验收项纳入权限边界、日志可审计性、退出路径。 | 验收项来自档案"采用建议"；具体目标 Agent、Skill manifest 字段、性能与兼容性数据需源码核验。 |
+
 ## 架构启发
 Agent 架构正在从"单体 Prompt"向"技能注册 + 能力调度"演进。这和微服务架构从单体到服务拆分的路径惊人相似：
 - 单体 Prompt → 技能拆分 → 技能注册 → 技能市场 → 技能编排
 - 类似：单体应用 → 微服务 → 服务注册 → API Gateway → 编排引擎
 
 技能市场可能成为 Agent 生态的平台层机会，类似 npm 对 JavaScript 生态的意义。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 Agent] --> A[宿主 Coding Agent<br/>Claude Code / Codex / Cursor 等]
+    A --> B[agent-skills 标准化层<br/>Shell 技能包集合]
+    B --> S[技能组合与工作流]
+    B --> R[工程任务执行<br/>代码审查 / 重构 / 测试]
+    R --> A
+    A --> O[外部工具与数据源<br/>代码仓库 / CI / 测试框架]
+    X[状态/控制/风险边界<br/>权限、可观测性、审计、质量一致性] -.约束.-> B
+    X -.约束.-> A
+    Y[平台内置技能风险<br/>OpenAI / Anthropic 等] -.竞争.-> B
+```
 
 ## 定位判断
 在 Agent 生态中处于"技能标准制定者"的位置。如果成功建立标准，将成为 Agent 时代的"npm"。但目前仍处于早期阶段，标准尚未固化。

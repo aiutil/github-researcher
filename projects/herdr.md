@@ -75,10 +75,37 @@ herdr 解决的是多 Agent 并行开发的 DevEx 问题。
 3. **Handoff 模式**：实验性支持将活跃 pane 从旧 server 迁移到新 server
 4. **Agent 会话恢复**：配合官方集成，server 重启后 Agent 可从上次会话继续
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | herdr 是面向多 AI Coding Agent 的终端多路复用器，边界为"用户终端 ↔ herdr server（持 pane 与 Agent 进程）↔ 各 Agent CLI"，对模型与工具层不可见。 | 基于"tmux for agents"定位、Server-Client 架构、Agent 状态感知功能推断；具体 CLI 边界与 Agent 探测方式需源码核验。 |
+| 主路径 | 用户操作 → herdr server 管理 workspace/tab/pane → 启动并托管 Agent 子进程 → 通过进程名与终端输出推断 Agent 状态 → 用户 detach/reattach 或经 Socket API 触发。 | Socket API、状态感知、Server-Client 分离有档案佐证；状态检测算法、Handoff 模式实现在档案中标记为"实验性"。 |
+| 关键权衡 | 长跑 Agent 留存（detach + Agent 会话恢复）vs 状态判定精度（依赖进程名/输出的启发式）；插件/marketplace 平台化 vs Rust 终端工具受众天然较窄。 | 档案明示"Agent 集成深度有限——状态检测依赖进程名和输出，不够精确"；插件系统成熟度仅有 mentions，无细节。 |
+| 最小 PoC | 在本机用 Homebrew/mise 安装 herdr，并行托管 Claude Code + Codex 两个 Agent pane，验证 detach 后 server 与 Agent 仍存活、状态切换正确、Socket API 可被外部脚本读写 pane。 | 安装渠道、Socket API 能力有档案佐证；"Agent 会话恢复"依赖官方集成，需以实测确认覆盖范围。 |
+
 ## 架构启发
 - tmux 的架构模式在 AI Agent 时代仍然有效
 - Agent 状态检测是一个新的终端工具能力维度
 - Server-Client 分离是长时运行 Agent 的必要架构
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> C[herdr Server 编排与运行时]
+  C --> P[Workspace Tab Pane 管理]
+  C --> A[托管的 Agent 子进程 Claude Code Codex Cursor 等]
+  C --> St[Agent 状态感知 blocked working done idle]
+  C --> So[Socket API 供 Agent 调用 待核验]
+  C --> Pl[插件系统与 Marketplace 待核验]
+  A --> C
+  St --> C
+  C --> H[Handoff 模式 实验性 待核验]
+  C --> R[Agent 会话恢复 依赖官方集成 待核验]
+```
 
 ## 定位判断
 工具型。解决特定 DevEx 痛点，不易平台化或基础设施化。但在多 Agent 工作流中是不可或缺的"螺丝刀"。

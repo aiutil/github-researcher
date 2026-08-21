@@ -36,8 +36,33 @@ Generative UI 框架——让 AI 根据自然语言提示生成动态界面，�
 3. **渐进式流式渲染**：支持流式传输和渐进式渲染——随着模型响应逐步到达，UI 逐步渲染，不需要等待完整响应。这对用户体验至关重要（避免了长时间等待）。
 4. **36 个预构建 shadcn/ui 组件**：内置 Card、Metric、Button、Table、Chart 等常用组件，开发者可以直接使用或扩展，无需从零构建组件库。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | json-render 是一个 Generative UI 框架，处于"LLM 结构化输出"与"多端 UI 渲染"之间的中间层；它本身不调用 LLM，也不替代 shadcn/ui 组件库。 | 基于档案定位"Generative UI 基础设施层框架"及与 AI SDK、v0、shadcn/ui 的关系陈述；未审计源码。 |
+| 主路径 | defineCatalog（Zod schema 定义组件与 props）→ LLM 输出受限 JSON → defineRegistry + Renderer 把 JSON 渲染到目标平台（React/Vue/Svelte/Solid/RN/Remotion/PDF/Email/Ink/3D）。 | 档案明列的 catalog→registry→renderer 三层架构与跨平台目标清单；具体协议、序列化格式与流式传输实现需源码核验。 |
+| 关键权衡 | 用"约束换安全与可预测性"——AI 只能选择 catalog 内组件并按 schema 填充，代价是表达力被锁在预定义目录内，复杂交互场景（编辑器、设计工具）尚不适用。 | 档案明列"约束即自由"设计与"实际应用场景成熟度"风险；性能与 schema 违规率无量化数据。 |
+| 最小 PoC | 选单一 Web 渠道（React + 内置 36 个 shadcn/ui 组件），用 defineCatalog 限定最小组件集，接入一家支持 structured output 的模型，记录 schema 违规率与渲染时延，再决定是否扩到 PDF/RN 等端。 | 档案建议"先在单一渠道、最小工具权限和可审计日志下验证"；具体模型供应商、PoC 验收阈值与部署形态待核验。 |
+
 ## 架构启发
 json-render 的核心设计哲学是"约束即自由"——通过将 AI 的输出空间限制在一个预定义的组件目录中，反而获得了更好的生成质量（AI 不需要处理布局逻辑、样式、安全性，只需选择和配置组件）。这与传统的"让 AI 写代码"方案形成鲜明对比。Zod schema 约束确保了类型安全，defineRegistry + Renderer 的分离设计则让组件实现与 AI 接口完全解耦。这种"catalog → registry → renderer"的三层架构非常值得借鉴。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目核心: defineCatalog 编排与运行时]
+    C --> M[外部边界: LLM 结构化输出]
+    C --> T[外部边界: 工具与外部系统]
+    C --> S[状态/控制/风险边界: 组件目录与 Zod schema 约束]
+    M --> C
+    T --> C
+    S --> R[Renderer: React 或 Vue 或 Svelte 或 Solid 或 RN 或 Remotion 或 react-pdf 或 react-email 或 Ink 或 R3F 待核验]
+```
 
 ## 定位判断
 json-render 定位为 **Generative UI 基础设施层框架**。它不做 AI 模型调用（那是 AI SDK 的职责），也不做 UI 组件库（那是 shadcn/ui 的职责），而是定义了"AI 如何安全地生成结构化 UI"的中间层协议。如果 Generative UI 成为前端的主流范式（类似 Tailwind 之于 CSS），json-render 有望成为这个领域的标准框架。

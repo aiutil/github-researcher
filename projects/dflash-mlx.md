@@ -37,19 +37,34 @@ Apple Silicon 上 MLX 的无损 DFlash 推测解码，端侧 LLM 推理加速。
 - MLX 框架集成
 - 针对 Apple Silicon GPU 优化
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MLX 之上的推测解码加速层，依赖 Apple Silicon 硬件与 MLX 运行时，外部边界为上游 LLM（draft / target）模型 | 仅由标签与定位表述推导；具体入口、模型供应、上下游协议未在档案中说明 |
+| 主路径 | 候选生成（Draft）→ 候选发送 → Target 并行验证 → 接受/截断回写 | 基于"架构启发"中的序列图描述；具体 K 值、验证策略与回写位置以源码为准 |
+| 关键权衡 | 端侧加速收益 vs Apple Silicon 独占、tokenizer 兼容性约束、声称无损的边界条件 | "无损"声明与平台限制来自档案；偏差阈值、兼容性矩阵未提供实测数据 |
+| 最小 PoC | 单一 Apple Silicon 设备、tokenizer 兼容的一对小/大模型、最小权限与可审计日志，验收加速比与输出一致性 | 加速比基准、模型兼容清单、企业场景适配均列为"后续观察点"，档案未给出实测 |
+
 ## 架构启发
 
 推测解码模式：一个小模型（draft model）快速生成候选 token，大模型并行验证。这是一种用计算换延迟的经典架构模式。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-sequenceDiagram
-    participant D as Draft Model (小)
-    participant T as Target Model (大)
-    D->>D: 快速生成 K 个候选 token
-    D->>T: 发送候选序列
-    T->>T: 并行验证 K 个 token
-    T->>D: 返回接受/拒绝结果
-    Note over D,T: 接受的 token 直接输出<br/>拒绝的从第一个错误处截断
+flowchart LR
+  Client[推理调用方] --> Orch[dflash-mlx 编排层]
+  Orch --> Draft[Draft Model 小模型]
+  Draft -->|候选 token 序列| Orch
+  Orch -->|并行验证请求| Target[Target Model 大模型]
+  Target -->|接受/拒绝结果| Orch
+  Orch -->|接受 token 输出 / 拒绝处截断| Client
+  Orch -.依赖.-> MLX[MLX 运行时 待核验]
+  MLX -.仅支持.-> AS[Apple Silicon GPU 待核验]
+  Orch -.风险边界.-> Risk{tokenizer 兼容性<br/>与无损声明验证 待核验}
 ```
 
 ## 定位判断

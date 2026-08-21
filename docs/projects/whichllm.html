@@ -6,7 +6,7 @@
     <title>WhichLLM | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,62 @@
 <li><strong>多模式推荐:</strong> 默认激进（含 partial RAM offload），<code>--gpu-only --speed usable --vram-headroom 1GB</code> 保守模式</li>
 <li><strong>丰富工作流:</strong> <code>whichllm upgrade</code> 对比升级候选、<code>whichllm plan</code> 查找所需 GPU、<code>whichllm run</code> 一键启动聊天、<code>--markdown</code> 输出可粘贴格式</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>whichllm 是位于 HuggingFace / Ollama / lm-studio 等模型与运行时之上的 Python 编排层，自身不实现推理，只做硬件探测 + 基准聚合 + 选型推荐，并通过 <code>whichllm run</code> 委托给 Ollama/lm.cpp 等运行时</td>
+<td>档案未给出 CLI 子命令到进程间调用的具体协议；入口边界仅来自 <code>uvx</code>、<code>pip</code>、<code>Homebrew</code> 三种分发方式的描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>硬件探测（GPU/CPU/RAM/VRAM）→ 五源基准融合（LiveBench/Artificial Analysis/Aider/Chatbot Arena/Open LLM Leaderboard）→ 架构感知 VRAM 估算（权重 + GQA KV Cache + 激活 + 开销，区分 MoE active/total）→ 证据分级排序 → 选型输出或 <code>run</code> 启动会话</td>
+<td>排序权重、超时降权算法、KV Cache 系数与 MoE 估算公式均未在档案中给出具体数值或伪代码</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>数据时效性与覆盖广度的权衡：聚合多源可缓解单源偏差但放大系统基准偏差，且 HuggingFace API 实时依赖与冻结缓存离线模式构成可靠 / 时效取舍；MoE 的 active vs total 参数区分是另一条质量/精度张力</td>
+<td>档案承认"多源融合不能完全消除系统性偏差"，未披露对各基准权重设置或对 MoE 模型是否做过实测校验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台已知配置的开发机上，分别用默认模式与 <code>--gpu-only --speed usable --vram-headroom 1GB</code> 保守模式运行一次 <code>--markdown</code> 导出，比对推荐 Top-N 的 VRAM 占用；再用 <code>--gpu "RTX 4090"</code> 模拟一张未持有的卡，确认"买卡前模拟"流程闭环</td>
+<td>何时触发现实设备 vs 模拟设备的逻辑、<code>upgrade</code>/<code>plan</code> 子命令的输入输出契约档案未提供，须以源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>whichllm 的核心启发是 <strong>"不信任数据，但利用数据"</strong> 的工程哲学。在 AI 工具生态中，数据来源（基准分数、模型信息）常不可靠或有意操纵。whichllm 不回避这一问题，而是建立一套<strong>置信度评估体系</strong>——给每个数据点打标签，让用户自行判断。这种思路适用于更广泛场景：任何依赖外部数据的 AI 工具（模型评测、Agent 评估、推荐系统）都应考虑引入类似的证据分级机制。另一个启发是 <strong>CLI 工具的极致易用性范式</strong>：<code>uvx</code> 零安装 + Homebrew + pip 多渠道分发，让"一条命令解决复杂问题"成为标准。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者 上游脚本] --> I[入口与身份边界 uvx pip Homebrew]
+    I --> C[whichllm CLI 编排器 Python]
+    C --> H[硬件探测 GPU CPU RAM VRAM]
+    C --> B[基准聚合 LiveBench AA Aider Arena OLLM 待核验]
+    B --> E[证据分级评分 direct variant base interpolated self reported]
+    H --> V[VRAM 估算 权重 GQA KV Cache 激活 开销 MoE active vs total 待核验]
+    E --> R[推荐 Top N 默认或保守模式]
+    V --> R
+    R --> O[输出 终端 或 Markdown]
+    R --> S[whichllm run 委托 Ollama llama.cpp 会话]
+    O --> X[外部边界 HF API 实时 或 冻结缓存离线]
+    C --> X
+    C --> A[审计 日志 子命令 upgrade plan run 等 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（入口级）。</strong> whichllm 是本地 LLM 工具链的"入口"——用户决策链的起点。与 Ollama（运行时）、llama.cpp（推理引擎）、LM Studio（GUI）互补而非竞争。定位精准但壁垒不高：核心逻辑（硬件检测 + VRAM 估算 + 基准排名）可被现有平台内建。关键问题是被吸收还是保持独立——若保持独立，它可能成为本地 LLM 领域的"GPU Benchmark"式标准工具。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>竞争壁垒低:</strong> 核心逻辑可被 Ollama/LM Studio 在 1-2 个版本内内建替代</li>
 <li><strong>基准测试偏差:</strong> 多源融合不能完全消除系统性偏差（某些基准本身就有问题）</li>
@@ -68,7 +119,7 @@
 <li><strong>Apple Silicon 优先:</strong> 虽支持多平台但 Apple Silicon 用户场景最完善，Windows/Linux GPU 覆盖待加强</li>
 <li><strong>个人项目属性:</strong> 单人维护，可持续性取决于作者投入</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Ollama:</strong> 运行时引擎，有 list/show 但无智能排名——互补关系，whichllm 推荐后用 Ollama 运行</li>
 <li><strong>vs LM Studio:</strong> GUI 工具，有硬件检测但无基准排名——潜在竞争者，可能内建类似功能</li>
@@ -76,9 +127,9 @@
 <li><strong>vs Chatbot Arena:</strong> 众包评测，质量信号源之一，不做硬件适配</li>
 <li><strong>vs llama.cpp:</strong> 推理引擎，whichllm 可通过 <code>whichllm run</code> 调用</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（中高优先级）。</strong> 本地 LLM 是确定性增长赛道，选型工具是刚需。关注 whether it gets absorbed（被平台吸收意味着方向被验证）还是 stays independent（保持独立则可能成为标准工具）。对本地 LLM 用户，这是当前最好用的选型工具，值得直接采用。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否被 Ollama / LM Studio / llama.cpp 内建为推荐引擎（被吸收的信号）</li>
 <li>基准数据源的扩展和更新频率（是否支持 MMLU-Pro、GPQA 等新基准）</li>

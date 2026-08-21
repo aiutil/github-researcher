@@ -39,25 +39,26 @@ WordPress 是全球最大的 CMS（43% 网站使用），但其核心安全问�
 ## 关键技术亮点亮点
 
 ### 插件沙箱架构
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "传统 CMS（WordPress）"
-        A1[主进程] --> B1[插件 1<br>共享内存]
-        A1 --> C1[插件 2<br>共享内存]
-        A1 --> D1[插件 N<br>共享内存]
-        B1 -.->|可直接访问| C1
-    end
-    
-    subgraph "EmDash"
-        A2[主服务<br>Cloudflare Worker] --> B2[Worker Isolate<br>插件 1]
-        A2 --> C2[Worker Isolate<br>插件 2]
-        A2 --> D2[Worker Isolate<br>插件 N]
-        B2 -.->|隔离| C2
-    end
-    
-    style B2 fill:#00cc66,color:#000
-    style C2 fill:#00cc66,color:#000
-    style D2 fill:#00cc66,color:#000
+flowchart LR
+    A[HTTP 请求] --> B[主 Worker<br/>Cloudflare Workers]
+    B --> C[Astro 6.0 SSR + Islands]
+    B --> D[Worker Isolate<br/>插件 1<br/>待核验: IPC 与 API 边界]
+    B --> E[Worker Isolate<br/>插件 N<br/>待核验: 资源配额]
+    C --> F[D1<br/>SQLite 持久化]
+    D --> F
+    E --> F
+    C --> G[R2<br/>对象存储]
+    D --> G
+    E --> G
+    H[模板库<br/>blog/marketing/portfolio/starter/blank] --> C
+    I[插件生态<br/>档案标注为零] -.-> D
+    J[Cloudflare 平台锁定风险<br/>Matt Mullenweg 指出] -.-> B
+    K[状态/控制边界<br/>Beta 阶段<br/>待核验: SLA/配额] -.-> B
 ```
 
 ### 技术栈
@@ -67,6 +68,15 @@ graph TB
 - **对象存储**：R2（S3 兼容）
 - **插件隔离**：Worker Isolate（操作系统级隔离）
 - **类型安全**：全栈 TypeScript
+
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | EmDash = Astro 6.0 前端 + Cloudflare Workers 运行时 + D1 数据库 + R2 对象存储，插件以 Worker Isolate 形式与主 Worker 隔离；沙箱与持久化、对象存储之间构成执行面与数据面边界 | 仅基于档案列出的技术栈；具体协议、Workers 之间 IPC 形式未在档案证实 |
+| 主路径 | HTTP 请求进入主 Worker → Astro 6.0 SSR/Islands 渲染 → 插件逻辑在独立 Worker Isolate 内调用 → 写 D1 / 读 R2 | 渲染模型与持久化路径未在档案给出细节；D1/R2 的具体调用契约待核验 |
+| 关键权衡 | 插件进程级隔离带来的安全收益 vs Cloudflare Workers 运行时锁定与迁移成本；边缘 Serverless 的弹性/成本 vs 模板覆盖仅 blog/marketing/portfolio/starter/blank 的功能面收窄 | 锁定风险由档案明确点名（Matt Mullenweg 评论）；模板范围与"插件生态为零"由档案明确陈述 |
+| 最小 PoC | 选取一个非核心 marketing 类页面，先验证 Worker Isolate 插件隔离 + D1/R2 读写，再观察启动时延、失败隔离、冷启动与成本曲线 | 8,500+ stars、Beta 阶段、76 分均来自档案元数据，不构成生产就绪证据；模板与插件 API 具体能力需源码核验 |
 
 ## 架构启发
 

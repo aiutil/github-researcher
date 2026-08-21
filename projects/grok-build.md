@@ -36,8 +36,41 @@ SpaceXAI 官方开源的 coding agent harness 与全屏 TUI（Rust），理解�
 3. **headless 模式**：可在脚本与 CI 中运行，意味着 agent 任务可被编排进自动化流水线。
 4. **monorepo 周期同步**：README 明确说明此仓库的 Rust 源码"periodically synced from the SpaceXAI monorepo"，根目录有 `SOURCE_REV` 文件记录对应的 monorepo commit SHA——这是一个公开的、可追溯的同步机制。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 由 Rust 编写的 coding agent harness 与全屏 TUI 本体，承担入口、模型调用、工具执行、状态会话与审计的编排；ACP 把它暴露为可被外部编辑器嵌入的能力层。 | 基于自述定位与 Rust/ACP 标签；具体入口协议、模型供应商、工具适配器以源码为准。 |
+| 主路径 | 上游/编辑器 → ACP 或 TUI 入口 → 编排运行时 → 模型 API + 工具/数据源 → 会话状态与审计回写；monorepo 经 `SOURCE_REV` 周期同步。 | 主路径来自 README 与 tags 描述；具体协议字段与持久化方式未在档案中给出。 |
+| 关键权衡 | 官方实验室背书的扩展速度 vs. 贡献者规模与 release tag 缺失（仅 1 contributor、releases=null）所暗示的版本治理未成熟；harness 本体优先 vs. 模型/订阅仍耦合于 xAI。 | 均为 GitHub API 可观测事实；不引申性能、可用性或合规判断。 |
+| 最小 PoC | 在 macOS/Linux 上启用全屏 TUI 跑一次理解代码库+编辑文件+执行 shell 的闭环；若走嵌入路径，准备一个 ACP 客户端最小握手；headless 路径建议在 CI 中跑一条非交互任务。所有 PoC 须记录 `SOURCE_REV` 与所用模型/订阅，便于回溯与退出。 | PoC 形态源自 README 自述的三种运行模式；具体命令、鉴权、SOURCE_REV 取值需以仓库当前文档/源码核验。 |
+
 ## 架构启发
 grok-build 的设计取向是"harness 本体优先 + 协议化嵌入"：它既是一个可独立使用的全屏 TUI，又通过 ACP 把自己变成可被编辑器调用的能力。这与 omniscent 的 meta-harness（编排多个 harness）、Vercel eve 的 filesystem-first（用文件定义 agent）形成三层互补。harness 正在从"一个工具"分化为"本体 / 定义范式 / 编排层"三个抽象层次。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统]
+    A[ACP 客户端入口 待核验]
+    T[全屏 TUI 入口 macOS/Linux/Windows]
+    R[项目核心 grok-build Rust harness]
+    M[模型或推理服务 耦合 xAI]
+    X[工具与外部系统 shell/文件/网页搜索]
+    S[会话 状态 审计 持久化 待核验]
+    N[SpaceXAI monorepo 经 SOURCE_REV 周期同步 待核验]
+    U --> A
+    U --> T
+    A --> R
+    T --> R
+    R --> M
+    R --> X
+    R --> S
+    N --> R
+```
 
 ## 定位判断
 在 coding agent 生态中，grok-build 是**官方实验室开源的 harness 基准**之一。它不试图编排其他 agent（那是 omnigent 的层），也不重新定义 agent 的开发范式（那是 eve 的层），而是提供一个可被直接使用、也可经协议被嵌入的本体。

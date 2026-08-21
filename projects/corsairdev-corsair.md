@@ -35,34 +35,45 @@ Agent 集成的核心矛盾：你需要给 Agent 权限（Gmail、Slack、GitHub
 3. **Webhook 全覆盖** — 每个 plugin 自带类型化、签名验证的 webhook handler。单一端点处理所有 webhook
 4. **Agent 永不见凭证** — Corsair 持有所有 API token，Agent 只看到操作结果。凭证不暴露给 Agent 的 context window
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Corsair 定位为 Agent（含 Claude/Cursor/Codex）与外部插件（Gmail/Slack/GitHub/Drive 等）之间的统一编排/权限层，凭证隔离在该层之下 | 档案仅声明 TypeScript 实现、MCP 连接、tag=agent-integration/permissions/multi-tenancy/mcp/security/gateway/webhooks；网络协议、部署形态、持久化未给出 |
+| 主路径 | Agent MCP 调用 → Corsair MCP Server → Permission Manager（open/cautious/strict/readonly + per-endpoint override）→ 自动执行或 10 分钟过期的人工审批链接 → Plugin 调用 API → 结果回传 Agent；凭证由 Vault 注入 Plugin，Agent 不可见 | 来自档案关键技术亮点；审批 SLA、签名机制、回调具体协议未披露 |
+| 关键权衡 | 多一层 indirection 带来延迟与运维复杂度，换取凭证隔离、四档权限、人类审批、租户隔离；与 MCP 存在边界重叠风险（MCP 未来可能原生引入权限层） | 文档明示"trade-off: indirection vs 安全边界"；bus factor=5、生态规模小、Plugin 覆盖长尾不足已记录 |
+| 最小 PoC | 单租户运行 Corsair，仅接入 1 个低风险 plugin（如 readonly 类 GitHub 读操作），开启 cautious 模式 + 审计日志，验证 MCP 调用、审批链接、凭证不泄露三条断言后再扩展 | 档案未给出具体部署步骤、CLI、Docker 镜像、版本号，PoC 落地需以源码核验 |
+
 ## 架构启发
 **核心设计哲学：** Agent 不应该直接持有凭证。Agent 发出意图（"给 Sarah 发邮件"），Corsair 负责执行（认证、权限检查、审批、调用 API、返回结果）。这是 Agent 时代的"零信任"实践。
 
 **Trade-off：** 增加了一层 indirection（延迟 + 复杂度），但换来的是安全边界。对于个人项目可能过重，对于团队/企业部署是必需。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "Corsair 架构"
-        Agent["AI Agent<br/>(Claude/Cursor/Codex)"] -->|"MCP Call"| MCP["Corsair MCP Server"]
-        MCP -->|"Permission Check"| PM["Permission Manager<br/>open/cautious/strict/readonly"]
-        PM -->|"Auto-execute"| Plugins["Plugins<br/>(Gmail/Slack/GitHub/Drive)"]
-        PM -->|"Need approval"| Human["Human Approval<br/>10min expiry link"]
-        Human -->|"Approved"| Plugins
-        Plugins -->|"Result"| MCP --> Agent
-    end
-    
-    subgraph "凭证隔离"
-        Vault["🔐 Credential Vault<br/>Agent 永不可见"]
-        Vault -.->|"Token injection"| Plugins
-    end
-    
-    subgraph "Multi-tenancy"
-        T1["Tenant A<br/>独立凭证/数据/权限"]
-        T2["Tenant B<br/>独立凭证/数据/权限"]
-        T3["Tenant C<br/>独立凭证/数据/权限"]
-    end
-    
-    PM -.-> T1 & T2 & T3
+graph LR
+    Agent["AI Agent<br/>(Claude/Cursor/Codex)"]
+    MCP["Corsair MCP Server<br/>统一编排入口"]
+    PM["Permission Manager<br/>open/cautious/strict/readonly<br/>+ per-endpoint override"]
+    Vault["🔐 Credential Vault<br/>Agent 永不可见"]
+    Plugins["Plugins<br/>(Gmail/Slack/GitHub/Drive 等)"]
+    Human["Human Approval<br/>10min 过期审批链接"]
+    Tenants["Tenant A / B / C<br/>独立凭证·数据·权限"]
+    MCPBoundary["MCP 规范演化风险<br/>(待核验：是否原生权限层)"]
+
+    Agent -->|"MCP Call"| MCP
+    MCP -->|"Permission Check"| PM
+    PM -->|"Auto-execute"| Plugins
+    PM -->|"Need approval"| Human
+    Human -->|"Approved"| Plugins
+    Plugins -->|"执行结果"| MCP
+    MCP -->|"结果回传"| Agent
+    Vault -.->|"Token injection<br/>Agent 不可见"| Plugins
+    PM -.->|"scope 隔离"| Tenants
+    PM -.->|"边界重叠"| MCPBoundary
 ```
 
 ## 定位判断

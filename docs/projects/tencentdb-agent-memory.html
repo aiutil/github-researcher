@@ -6,7 +6,7 @@
     <title>TencentDB-Agent-Memory | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -60,7 +60,39 @@
 <li>与 Claude Code、Cursor 等 TS 生态 Agent 无缝集成</li>
 <li>npm 安装即可使用</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为 Agent 框架侧的本地长期记忆组件，运行于 Agent 运行时进程内，对外不依赖任何云端 API；与 Claude Code、Cursor、Codex 等 Agent 客户端同级集成。</td>
+<td>基于 "零外部 API 依赖""全本地""npm 安装即可使用"等 README 表述；4 层管线的具体持久化介质（文件/SQLite/向量库）档案未给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>采集 → 提取/摘要 → 长期固化 → 检索注入，记忆全生命周期保持在本地；不存在云端回写或外部模型调用环节。</td>
+<td>档案仅以"层级 1–4"概述了职责分层，未公开各层使用的算法、存储格式或协议。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>隐私与零网络依赖 vs. 检索精度、可观测性与生态扩展能力；本地化路线意味着无法借助云端模型增强摘要质量，也无法使用托管向量服务。</td>
+<td>档案明确"零外部 API 依赖"是核心差异化，但未提供基准测试、错误率、token 消耗等量化数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Agent（如 Claude Code）中以最小工具权限接入，仅记录会话级记忆，验证跨会话持久性与检索准确性；将腾讯云账号绑定、二次依赖引入、性能基准作为准入门槛。</td>
+<td>档案提示存在"腾讯云导流风险"与"生态封闭风险"，但未披露当前是否已强制或可选接入腾讯云。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>Agent 记忆层的品类分化：</strong>
 - 通用会话记忆（TencentDB-Agent-Memory）：对话上下文、用户偏好、决策历史
 - 代码结构记忆（codebase-memory-mcp）：函数调用链、类继承、路由、依赖</p>
@@ -68,16 +100,31 @@
 - 会话记忆 → 信息检索 + 摘要 + 时间衰减
 - 结构记忆 → 静态分析 + 图数据库 + 符号查询</p>
 <p>Agent 框架需要同时支持两种记忆类型。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A[Agent 客户端<br/>Claude Code / Cursor / Codex] --> B[TencentDB-Agent-Memory<br/>本地记忆组件]
+  B --> C[层级1 采集<br/>原始会话与用户输入]
+  C --> D[层级2 提取与摘要<br/>信息加工]
+  D --> E[层级3 长期固化<br/>持久化存储 待核验]
+  B --> F[层级4 检索与注入]
+  F --> A
+  B -.零外部API.-> X[外部边界<br/>不调用任何云端API 待核验]
+  B --> G[状态与风险边界<br/>本地存储 审计 权限]
+  B -.潜在耦合.-> Y[腾讯云生态<br/>导流风险 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent 记忆基础设施的早期竞争者。</strong> 与 codebase-memory-mcp 形成互补关系，但技术细节公开度不足，需要持续观察。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>技术细节不足</strong>：4 层管线的具体架构未完全公开，无法深度评估工程创新</li>
 <li><strong>腾讯云导流风险</strong>：可能是 TencentDB 云服务的入口产品，未来可能需要腾讯云账号</li>
 <li><strong>社区活跃度待验证</strong>：contributors 数量少，主要是内部团队</li>
 <li><strong>生态封闭风险</strong>：如果深度绑定腾讯云生态，可能限制开源社区 adoption</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -114,9 +161,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>✅ 建议跟踪，但需更多信息。</strong> 等 4 层管线架构详情公开后重新评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>4 层管线的具体技术架构是否公开</li>
 <li>是否真正保持"零外部依赖"还是后续接入腾讯云服务</li>

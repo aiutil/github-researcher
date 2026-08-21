@@ -6,7 +6,7 @@
     <title>Kong/kong | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,75 @@
 <li><strong>MCP 网关:</strong> 支持 Model Context Protocol 的网关代理，统一管理 Agent 工具调用</li>
 <li><strong>多数据库后端:</strong> 支持 PostgreSQL、Cassandra、Redis 等多种数据存储，适应不同部署规模</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Kong 是位于上游调用方、模型供应商、工具与数据源之间的流量编排与策略层，自身不提供模型或工具实现</td>
+<td>基于 tags（api-gateway / ai-gateway / kubernetes）与档案"API/AI 网关"定位推断；其协议面与权威/未授权子集未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>入站请求经 Nginx+OpenResty 核心与 Lua 插件管道处理，再被代理到上游 API、LLM 端点或 MCP 工具，状态与会话由所配置后端承担</td>
+<td>路径上"数十万 QPS""插件阶段 access/header filter/body filter"来自档案亮点；QPS 数字未独立验证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 OpenResty/Lua 的高性能与扩展速度 vs. 插件开发人才稀缺、集群运维复杂度上升之间取舍；同时承担传统 API 与 AI 流量会使插件与配置面迅速变大</td>
+<td>权衡基于档案"Lua 门槛""部署复杂度""企业/社区版本差异"；版本功能差异未提供具体清单</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用单一路由 + 一项鉴权/限流插件覆盖一条传统 API 链路，并复用同一网关开一条只读、低配额的 LLM 代理，日志与可观测性先于横向扩展上线</td>
+<td>PoC 所需 PostgreSQL/Redis 等依赖清单与 Kubernetes 控制器细节未在档案中核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Kong 的核心设计是「Nginx + Lua 插件」——利用 Nginx 的高性能事件循环作为核心，通过 Lua 插件系统实现灵活的功能扩展。这种架构的权衡是：获得了极致性能，但 Lua 语言相对小众，增加了开发门槛。近年 Kong 也在探索基于 Go 的数据平面（Kong 模式），以降低插件开发门槛。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    C[上游调用方或 Agent] --> I[入口与身份边界]
+    I --> K[Nginx + OpenResty 内核与 Lua 插件管道]
+    K --> A[传统上游 API]
+    K --> L[LLM 端点 OpenAI Anthropic Azure 等 具体清单待核验]
+    K --> P[MCP 工具与外部系统]
+    K --> D[数据后端 PostgreSQL 或 Cassandra 或 Redis 选其一待核验]
+    D --> K
+    K --> O[日志 指标 审计]
+    K --> R[企业版与社区版功能差异 待核验]
+</mmid>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于 API 网关生态的第一梯队。与 APISIX（Apache，同为 OpenResty）、Tyk（Go）、Envoy（C++/代理）形成竞争格局。Kong 的差异化在于企业级成熟度和 AI 网关先发优势。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Lua 语言门槛:</strong> 插件开发需要掌握 Lua，对很多团队来说是小众语言，人才稀缺</li>
 <li><strong>部署复杂度:</strong> 完整的 Kong 集群部署需要数据库、DNS、证书管理等多个组件，运维门槛不低</li>
 <li><strong>AI 网关竞争加剧:</strong> 专精 AI 网关的新方案（如 Portkey、LiteLLM）在 AI 场景可能更轻量灵活</li>
 <li><strong>商业化压力:</strong> Kong 有商业版本，社区版和企业版的功能差异可能影响开源社区的信任</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>Apache APISIX:</strong> 同为 OpenResty 方案，直接竞品，在中国市场更强</li>
 <li><strong>Envoy + Istio:</strong> 服务网格方案，功能覆盖更广但复杂度更高</li>
 <li><strong>Tyk:</strong> Go 实现的 API 网关，更轻量但生态不如 Kong</li>
 <li><strong>LiteLLM:</strong> 专注 LLM API 管理的开源代理，在 AI 场景更轻量</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> API 网关是基础设施的核心组件，Kong 向 AI 网关的扩展代表了基础设施适应 AI 时代的重要趋势。尤其需要关注其 AI 网关功能在实际企业中的采用情况。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 Kong AI 网关功能的企业采用案例和真实价值验证</li>
 <li>观察与 APISIX 在全球市场和中国市场的竞争态势</li>

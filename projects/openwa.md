@@ -49,9 +49,35 @@ WhatsApp Business API 官方接入门槛高、费用贵，且依赖 Meta 平台�
 5. **完整 Dashboard**：React UI 管理会话、webhook、API key
 6. 内置速率限制器（`RATE_LIMIT_*` 环境变量）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenWA 作为自托管 WhatsApp API 网关，向上对调用方暴露 REST API，向下封装 whatsap [... 截断] | 文档明确双引擎、多会话、Plugin、可插拔适配器；缺少源码级接口清单 |
+| 主路径 | 调用方 → REST API → 控制面/调度 → 执行数据面（whatsapp-web.js 或 baileys 引擎）→ 持久化/外部集成 | 未含已验证的字段表、错误码与 SLA；插件运行时隔离机制档案未具名 |
+| 关键权衡 | whatsap [...] | 双引擎权衡、内存开销（300-500MB/会话）由档案给出；封号率无量化数据 |
+| 最小 PoC | 单实例 Docker 部署一个 WhatsApp 会话（推荐 wa [...] | 部署路径、Docker 原生来自档案；具体资源配额、容器镜像标签待核验 |
+
 ## 架构启发
 
 **自托管消息网关是企业通讯基础设施的重要组件。** OpenWA 的 Integration Fabric 设计（插件化 + 适配器模式）可以复制到其他消息平台（Telegram、Signal、微信等）。双引擎架构的"安全 vs 密度"权衡是逆向工程消息平台的经典设计决策。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+  User[调用方/集成方] --> Api[REST API 网关]
+  Api --> Ctrl[控制面: 调度/生命周期/速率限制]
+  Ctrl --> Exec[执行数据面: 双引擎 whatsap[-web.js 或 baileys]]
+  Exec --> WA[WhatsApp 平台 / 外部边界: Meta 服务器]
+  Exec --> Data[可插拔适配器: DB/存储/缓存]
+  Ctrl --> Plg[Integration Fabric 插件: Chatwoot/Typebot/n8n 节点]
+  Exec --> Risk[风险边界: 封号 / 协议逆向变化 / 数据中心 IP 标记]
+  Plg --> Obs[Dashboard / 审计 / 指标 / 日志]
+  Data --> Obs
+```
 
 ## 定位判断
 

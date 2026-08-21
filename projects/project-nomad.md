@@ -51,9 +51,33 @@ Project NOMAD is an offline-first knowledge and education server. Wikipedia, tho
 5. **[![Website](https://img.shields.io/badge/Website-projectnomad.us-blue)](https://www.projectnomad.us)**
 6. **[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2)](https://discord.com/invit**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目定位为离线优先的本地知识与教育服务器，承载 Wikipedia、图书、课程、地图、可选本地 AI 等内容，运行在用户自有硬件上；用户/客户端、UI、领域核心、服务运行时与本地内容/数据依赖构成应用边界。 | 档案明确为"offline-first knowledge and education server"及内容集合，但具体进程模型、端口、存储引擎未在档案中披露，需源码核验。 |
+| 主路径 | 客户端 → 本地 UI 与状态层 → 领域核心（知识/教育服务）→ 本地服务/运行时 → 本地数据资产（Wikipedia 快照、图书、课程、地图、可选本地 AI）。 | 主路径由档案"用户自有硬件、无需联网"与内容清单推断；协议、同步机制、AI 模型接入方式未证实。 |
+| 关键权衡 | 完全离线可用 vs 内容规模/新鲜度；本地硬件承载 vs 资源占用；可选本地 AI vs 离线一致性；开箱即用 vs 可扩展性。 | 权衡判断来自档案描述的功能集合与"可选 local AI"措辞；性能、容量与硬件门槛未给出数据。 |
+| 最小 PoC | 在一台标准 x86 笔记本或迷你主机上，下载镜像后冷启动服务，验证 Wikipedia 检索、图书/课程离线阅读、地图渲染三条用户路径，并测试断网下的功能完整性与可选本地 AI 的启用/关闭。 | 档案未提供官方硬件要求、镜像大小或 AI 模型规格；具体验收指标"待核验"。 |
+
 ## 架构启发
 
 从 Crosstalk-Solutions/project-nomad 的设计来看，核心思路是 **"Project NOMAD is an offline-first knowledge and education se"**。这反映了 TypeScript 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (Apache-2.0) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或客户端] --> UI[本地 UI 与交互层]
+    UI --> Core[知识与教育领域核心]
+    Core --> Runtime[本地服务运行时]
+    Runtime --> Content[(本地内容资产 Wikipedia 图书 课程 地图)]
+    Core -.可选.-> LocalAI[本地 AI 模型 待核验]
+    Core --> Boundary[状态控制与风险边界 待核验]
+    Runtime --> Boundary
+```
 
 ## 定位判断
 

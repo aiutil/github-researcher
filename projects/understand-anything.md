@@ -47,9 +47,34 @@ Coding Agent 和开发者理解大型代码库时 token 消耗巨大且理解不
 4. **知识库图谱化**：支持 LLM wiki 模式，确定性解析器提取 wikilinks + LLM 发现隐含关系
 5. 作为 Claude Code Plugin 原生集成，跨 8+ Agent 平台兼容
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 以 TypeScript 实现的 Agent 编排层为核心，对外暴露 Claude Code、Codex、Cursor、Copilot、Gemini CLI、OpenCode、Vibe CLI、Trae 等 8+ Coding Agent 插件入口；后台构建结构图与领域图双层知识图谱（节点含文件/函数/类/依赖），并对接 Karpathy-pattern LLM wiki 作为知识库输入 | 仅基于分类"平台候选"、tags、Claude Code Plugin 描述与官网/仓库链接，具体协议、传输层、鉴权、部署形态未在档案中证实 |
+| 主路径 | 入口渠道（插件/CLI/dashboard）→ 多 Agent 分析管线 → 知识图谱生成（结构图+领域图+Guided Tours）→ 交互式仪表板（探索/搜索/问答）→ 可视化输出（live demo） | "多 Agent 分析管线"与"Guided Tours 自动生成"为档案所述，具体调度框架、模型路由、状态机、持久化均待核验 |
+| 关键权衡 | Agent 驱动语义理解的图谱质量 vs 大型代码库的 token 成本与耗时；跨 8+ Agent 平台扩展速度 vs 实现一致性；视觉冲击力驱动传播 vs 实际生产可用性；开源（MIT）vs Egonex-AI 商业化（"Understand Anyone"）边界 | 档案仅声明 MIT、Egonex 商业化路径与 token 成本"可能很高"的风险，性能基准、SLA、收费模式未列 |
+| 最小 PoC | 单一入口渠道（建议 Claude Code Plugin）→ 接入一个中型代码库 + 一份 LLM wiki → 启用最小 Agent 权限与可审计日志 → 验收项：图谱节点覆盖率、Guided Tours 顺序合理性、token 单次成本、跨 Agent 复现一致性、退出/卸载路径 | PoC 范围由档案推导，未给出具体指标阈值或推荐代码库规模 |
+
 ## 架构启发
 
 **从"读取代码"到"交互式图谱理解"的范式转换。** 传统代码理解工具做静态索引，Understand-Anything 用 Agent 管线做语义理解并输出可探索的图谱。对 Agent 工具链设计有启发：Agent 的分析结果应该可视化和可交互，而非仅文本输出。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界待核验]
+    I --> P[插件与CLI适配层<br/>Claude Code Codex Cursor Copilot<br/>Gemini CLI OpenCode Vibe CLI Trae]
+    P --> O[多Agent分析管线<br/>编排与运行时]
+    O --> KG[知识图谱构建<br/>结构图+领域图]
+    KG --> D[交互式仪表板<br/>探索 搜索 问答 Guided Tours]
+    KW[LLM Wiki输入<br/>Karpathy-pattern] --> O
+    O -.状态 控制 风险边界.-> S[会话 状态 审计 日志<br/>待核验]
+    B[Egonex-AI商业化<br/>Understand Anyone] -.开源vs商业边界.-> O
+```
 
 ## 定位判断
 

@@ -38,23 +38,34 @@ Paradigm（以太坊生态知名开发公司）出品的自托管 Agent 平台�
 6. **持久工作流**：Python 函数 + durable steps，支持 sleep/resume/子 Agent/定时触发
 7. **可重放状态**：Postgres 存储消息、执行、事件，客户端断线重连不丢结果
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Centaur 是自托管团队 Agent 编排层：入口为 Slack（@mention 发起线程式对话），Agent 引擎可插拔（Claude Code / Codex / Amp / 自定义），工具以 Python 包形式注册，状态由 Postgres 持久化；外部边界仅描述到 GitHub/Jira 一类出站服务。 | 仅档案明列的 Slack 入口、Python 工具插件、可插拔 harness 列表；未提及其他 IM、Web UI、API-first 入口——视为规划中而非已交付。 |
+| 主路径 | Slack 线程 → Centaur API → 沙箱分配器 → K8s 沙箱内 Agent → Python 工具调用 → iron-proxy 凭据替换 → 外部服务；消息/执行/事件回写 Postgres，客户端断线重连可恢复。 | 主路径基于档案"关键技术亮点"1–7 条串联；具体消息协议、工具注册协议、Postgres schema 未在档案中描述。 |
+| 关键权衡 | 核心权衡在 Agent 能力与凭据安全之间：iron-proxy 用 host+header 粒度做占位符替换以防密钥泄露，但代价是引入 K8s 运维负担（即使 k3s）与出站代理的额外一跳，同时 Agent 引擎可插拔带来版本/能力分散风险。 | 权衡仅为档案描述的设计选择；性能损耗、可观测性指标、具体 NetworkPolicy 规则未给出。 |
+| 最小 PoC | 单 Slack 工作区 + k3s 单节点 + Postgres + iron-proxy，仅注册 1 个 Python 工具、1 个 Agent harness（Claude Code），验收项：占位符不出沙箱、线程级结果回写、对话中断后可重放。 | k3s 部署、Postgres 持久化、iron-proxy 替换逻辑可由档案支持；具体 helm chart、镜像、版本号——待核验。 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    U["Slack / API"] --> API["Centaur API"]
-    API --> PG["Postgres<br/>持久状态"]
-    API --> TR["工具注册表"]
+flowchart LR
+    U["Slack 用户<br/>@mention 触发线程"] --> API["Centaur API<br/>编排入口"]
+    API --> PG["Postgres<br/>消息/执行/事件<br/>可重放状态"]
     API --> SB["沙箱分配器"]
-    SB --> K8S["Kubernetes 沙箱"]
-    K8S --> AGENT["Agent<br/>Claude Code / Codex / Amp"]
-    K8S --> IP["iron-proxy<br/>凭据替换"]
-    AGENT -->|工具调用| TOOLS["Python 工具插件"]
-    TOOLS -->|出站| IP
-    IP -->|替换占位符| EXT["外部服务<br/>（GitHub/Jira/...）"]
-    
-    style IP fill:#ff6b6b,color:#fff
-    style K8S fill:#4ecdc4,color:#fff
+    SB --> K8S["Kubernetes 沙箱<br/>default-deny NetworkPolicy<br/>k3s 可部署 — 待核验"]
+    K8S --> AGENT["可插拔 Agent 引擎<br/>Claude Code / Codex / Amp / 自定义"]
+    K8S --> IP["iron-proxy<br/>凭据边界<br/>按 host+header 替换占位符"]
+    AGENT --> TOOLS["Python 工具插件<br/>公共方法→API 端点"]
+    TOOLS --> IP
+    IP --> EXT["外部服务<br/>GitHub / Jira / …"]
+    EXT -.占位符出站仅经 IP.-> K8S
+    PG -.断线重连回放.-> U
 ```
 
 **核心设计模式：凭据边界**

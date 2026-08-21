@@ -6,7 +6,7 @@
     <title>google-ai-edge/LiteRT | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,7 +57,39 @@
 <li><strong>LiteRT-CLI</strong>：支持 Coding Agent 集成（<code>litert --help</code>），可在 AI 编程工作流中使用</li>
 <li><strong>模型生态</strong>：Hugging Face LiteRT Community 提供预转换模型（Gemma 4、ASR、图像分类等）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>端侧推理运行时 + 转换/量化工具链 + 跨平台覆盖（Android/iOS/Linux/macOS/Windows/Web/IoT）+ 多硬件加速（CPU/GPU OpenCL/Metal/WebGPU/NPU Google Tensor/Intel/MediaTek/Qualcomm/TPU），作为 TFLite 正式继任者承载模型供应与硬件调度边界</td>
+<td>组件名/平台/加速器清单见档案；具体 API 边界与硬件抽象层实现未在档案中给出，待源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>模型源（PyTorch/TF/JAX 或 Hugging Face LiteRT Community 预转换模型）→ LiteRT Torch 转换 → AI-Edge Quantizer 量化 → LiteRT-LM/Compiled Model (V2) 运行时 → GPU(ML Drift)/NPU/TPU 加速执行；浏览器路径另经 WebGPU+WASM</td>
+<td>工具链顺序与组件名取自档案；V2 Compiled Model 自动加速器选择机制细节未描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>全模型类型覆盖 vs 各芯片厂商 NPU 行为不一致（碎片化）、自动加速降低心智负担 vs 切换 TFLite 需代码改造、端云协同（隐私+离线）vs 端侧 LLM 仍受模型大小限制（Gemma 4 等需重度量化）</td>
+<td>权衡来自档案"风险/局限"与"架构启发"；具体 NPU 厂商差异矩阵与量化阈值未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Android 上用预转换模型（Gemma 4/ASR/图像分类之一）经 AI-Edge Quantizer 量化后接入 LiteRT V2 Compiled Model API，对比 CPU 与设备 NPU 的延迟/内存，并保留 TFLite 回退路径作为退出选项；将 2,449 Open Issues 与 NPU 碎片化列为验收风险项</td>
+<td>PoC 步骤基于档案明示组件编排；具体设备/模型选型、基准指标、CI 产物均待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>端云协同设计</strong>：设备本地推理，云端模型更新后下发——隐私 + 性能 + 可更新的平衡</li>
 <li><strong>模型-硬件协同优化</strong>：针对不同硬件能力（CPU/GPU/NPU）自动选择最优加速路径</li>
@@ -65,9 +97,27 @@
 <li><strong>Runtime + Tools 分离</strong>：LiteRT Runtime（C++/Kotlin/JS）与转换工具（LiteRT Torch/Quantizer）解耦</li>
 <li><strong>端侧 GenAI 路线</strong>：不是只有小模型才能端侧，通过量化（4-bit）可以在手机上跑 LLM</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界]
+  I --> C[LiteRT 编排与运行时]
+  C --> M[模型源 PyTorch TF JAX 或 Hugging Face LiteRT Community 预转换模型 Gemma 4 ASR 图像分类等 待核验具体版本]
+  C --> Q[AI-Edge Quantizer 量化 4-bit 等 待核验精度档位]
+  C --> R[LiteRT V2 Compiled Model 运行时 自动加速器选择 异步执行]
+  C --> H[硬件加速层 GPU ML Drift 后端 OpenCL Metal WebGPU NPU Google Tensor Intel MediaTek Qualcomm TPU]
+  C --> T[LiteRT-CLI 与工具集成 含 Coding Agent 入口 待核验协议]
+  C --> S[会话 状态 审计 2,449 Open Issues 与 NPU 碎片化 风险边界]
+  H --> C
+  M --> Q
+  Q --> R
+  R --> H
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施级</strong>——端侧 AI 推理的标准基础设施。不是"候选"，而是"已是"。作为 TFLite 的继任者，承载 Google 端侧 AI 战略的下一代引擎。所有需要端侧 ML 推理的应用都会（或应该）迁移到 LiteRT。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>硬件依赖性强</strong>：NPU 支持碎片化严重，不同芯片厂商的 NPU 行为不一致</li>
 <li><strong>模型大小限制</strong>：复杂 LLM 在端侧仍受限（Gemma 4 等需重度量化）</li>
@@ -76,7 +126,7 @@
 <li><strong>与 PyTorch Mobile/ExecuTorch 竞争</strong>：Meta 推 ExecuTorch 争抢端侧推理标准</li>
 <li><strong>文档门槛</strong>：361MB C++ 代码库，入门门槛较高</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs TFLite</strong>：LiteRT 是其正式继任者，提供迁移指南</li>
 <li><strong>vs Core ML</strong>：Apple 端侧推理，不同生态（Apple vs Google）</li>
@@ -85,9 +135,9 @@
 <li><strong>vs llama.cpp</strong>：llama.cpp 专注 LLM CPU 推理，LiteRT 覆盖全 ML 模型类型 + 全硬件</li>
 <li><strong>vs MLX (Apple)</strong>：Apple 的端侧 ML 框架，仅限 Apple Silicon</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 端侧 AI 是确定性趋势，Google 官方背书使其成为基础设施级项目。移动/嵌入式开发者必须关注。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>NPU 标准化进展（是否能形成统一抽象层）</li>
 <li>LiteRT V2 的企业级迁移率（TFLite → LiteRT V2）</li>

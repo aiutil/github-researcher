@@ -6,7 +6,7 @@
     <title>Harmonist | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,30 +57,76 @@
 <li><strong>186 预置 Agent</strong>：大量预置 Agent 覆盖常见场景</li>
 <li><strong>协议层抽象</strong>：编排逻辑在协议层而非代码层</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Harmonist 作为 Python 编排框架位于入口/上游系统与模型推理服务、工具/外部系统之间，自身仅依赖 Python 标准库，不引入外部框架运行时</td>
+<td>依据项目分类、tags 与“一句话定位”；是否还包含独立 Sidecar/进程外组件未在档案中说明，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求自上游进入项目编排与运行时，按预定义机械协议调用模型与工具，并将结果回写到会话/状态/审计节点</td>
+<td>协议具体格式（消息 schema、状态机）未在档案中描述，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用“协议层替换框架层”换取零依赖与可调试性，但需自行承担扩展机制、可观测性与权限控制，放弃外部框架的现成能力</td>
+<td>判断来自档案“风险/局限”与“架构启发”；实际扩展点与权限模型未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一入口、最小工具权限与可审计日志下接入 1 个预置 Agent，跑通一次“编排→模型→工具→回写”闭环，再评估是否扩展到 186 个 Agent</td>
+<td>186 个 Agent 的实际可用率、协议执行可观测程度与持久化方式均未在档案中证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Harmonist 的核心思路是 <strong>协议优于框架</strong>。这与 Service Mesh 的理念一致——不改变应用代码，而是通过协议层（Sidecar）实现服务间协调。</p>
 <p>Agent 编排可能正在经历类似微服务的演进路径：
 - 第一阶段：单体 Agent（GPT 调 API）
 - 第二阶段：框架编排（LangChain/CrewAI）
 - 第三阶段：协议编排（Harmonist 代表的趋势）</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时 纯 Python 标准库]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> S[会话 状态 审计 待核验]
+    M --> C
+    T --> C
+</M>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent 编排赛道的概念验证项目</strong>。当前 741 stars，距离生产可用还有距离，但思路值得关注。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>零依赖的代价</strong>：放弃外部框架意味着需要自行实现大量基础设施</li>
 <li><strong>机械协议的灵活性</strong>：预定义协议在复杂场景中可能不够灵活</li>
 <li><strong>186 Agent 的质量</strong>：数量多不代表质量高，需要逐一验证</li>
 <li><strong>社区规模小</strong>：741 stars，贡献者少，长期维护不确定</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs LangChain/CrewAI</strong>：更轻量但功能也更少</li>
 <li><strong>vs Mercury Agent</strong>：Mercury 走的是"Soul-driven"路线，更偏 Agent 本体设计</li>
 <li><strong>vs n8n</strong>：n8n 更成熟但更重，Harmonist 更适合嵌入式场景</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，但低优先级。</strong> 概念有趣但需要更多验证。建议关注其协议设计的演进。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有真实项目使用 Harmonist 做生产级编排</li>
 <li>协议设计是否会形成标准或规范</li>
@@ -88,7 +134,7 @@
 </ol>
 <hr />
 <p><em>首次记录：2026-04-28</em></p>
-<h2 id="_11">最近动态</h2>
+<h2 id="_12">最近动态</h2>
 <h3 id="2026-05-12">2026-05-12</h3>
 <ul>
 <li>连续第三天无外部数据，Star 推演为最后有效轮次</li>

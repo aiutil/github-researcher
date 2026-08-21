@@ -6,7 +6,7 @@
     <title>auto-deep-researcher-24x7 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,15 +57,62 @@
 <li><strong>监控面板</strong>：实时研究进度和结果展示</li>
 <li><strong>基于 Claude Code</strong>：利用 Claude Code 的 Agent 能力驱动研究流程</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>作为编排层，串联 Claude Code Agent、实验执行/超参数调优工具、知识库与监控面板，主入口形态未在档案中给出</td>
+<td>入口协议、鉴权方式、模型供应商接入细节均未描述，需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>问题理解 → 路径规划 → 实验执行（含 GPU 加速超参优化）→ 结果分析 → 知识沉淀，并配有实时监控面板</td>
+<td>“完全自主”与“24/7”仅为定位表述，无 SLA、调度、恢复机制证据</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自主性与可控性、成本与算力、领域适用范围与跨域迁移、自动化质量与人工核验之间的张力</td>
+<td>GPU 资源需求量仅定性提及，缺乏基准/成本数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一研究任务/最小工具权限下跑通“问题→实验→结果→知识沉淀”闭环，并启用审计日志与人工复核</td>
+<td>仓库内是否存在示例脚本、Docker 入口或测试用例，未在档案中说明</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ol>
 <li><strong>智能体架构设计</strong>：可扩展的自主智能体架构，研究-实验-验证闭环</li>
 <li><strong>研究-实验-验证闭环</strong>：完整的自动化研究流程，减少人工干预</li>
 <li><strong>知识积累机制</strong>：研究过程中的经验自动沉淀，形成可持续优化的知识库</li>
 </ol>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时 Python]
+    C --> M[模型或推理服务 Claude Code Agent]
+    C --> T[工具与外部系统 实验与超参调优 待核验具体框架]
+    C --> K[知识库与监控面板 待核验持久化与展示方式]
+    C --> S[会话 状态 审计]
+    M --> C
+    T --> C
+    K --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施候选</strong> — 具备底层基础设施的特征，未来可能演化为研究自动化平台。底层研究基础设施具有支撑能力。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>质量依赖</strong>：研究质量依赖系统设计能力和模型能力</li>
 <li><strong>数据依赖</strong>：需要大量高质量训练数据</li>
@@ -74,7 +121,7 @@
 <li><strong>领域限制</strong>：主要适用于机器学习领域</li>
 <li><strong>验证局限</strong>：研究结果需要人工验证，创意突破能力有限</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -101,9 +148,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是，强烈建议</strong> — 代表研究自动化的重要突破，具有重要的技术价值和商业潜力。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>实际研究效果的质量和可信度验证</li>
 <li>从机器学习领域扩展到其他研究领域的进展</li>

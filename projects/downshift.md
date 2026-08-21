@@ -40,10 +40,36 @@ React 无障碍组件原语库——用于构建简单、灵活、WAI-ARIA 合�
 4. **极简 API**：少量配置即可构建复杂的组合框/选择器
 5. **组合而非配置**：通过组合多个 hooks 构建复杂组件，而非一个巨型配置
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Downshift 是 React 无头组件原语库，边界在「调用方 UI 渲染层」与「其提供的 headless hooks 行为层」之间；不持有业务数据，不直连后端 | 仅基于"headless 架构、useCombobox/useSelect hooks、不提供 UI"的档案描述，未审计源码 |
+| 主路径 | 调用方传入状态 → Downshift hooks 管理焦点/键盘/ARIA → 调用方通过 getInputProps/getMenuProps 等 prop getters 绑定 DOM → 用户交互驱动受控状态循环 | 路径基于 prop getters 模式与 WAI-ARIA 自动管理两条档案事实；具体状态机细节未核验 |
+| 关键权衡 | 行为/样式彻底解耦（最大灵活度） vs 需调用方自行承担渲染与样式一致性成本；JavaScript 无依赖轻量 vs 在 React 19/RSC 与现代竞品（Radix/Headless UI/React Aria）面前的适配压力 | 仅依据档案中"headless 先驱""React 19/RSC 兼容""竞品对比"段，未引实测 |
+| 最小 PoC | 以 useCombobox 实现单列表自动补全：覆盖键盘上下/Enter/Esc、aria-activedescendant、选中项回填输入框三项验收；以同构 React 19 项目跑通即达标 | 仅以档案明确的 hooks 与 ARIA 属性为验收点，RSC/SSR 表现为待核验 |
+
 ## 架构启发
 - **Headless > 有头**：分离行为和样式是组件库的正确架构
 - **可访问性默认而非可选**：ARIA 合规应该是组件库的基本要求
 - **Hooks 作为原语**：用自定义 hooks 暴露组件逻辑，组合性强
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或客户端] --> UI[调用方 UI 渲染层]
+    UI --> H[Downshift hooks 行为层<br/>useCombobox useSelect 等]
+    H --> P[prop getters 绑定 DOM<br/>getInputProps getMenuProps 等]
+    P --> UI
+    H --> A[ARIA 与焦点键盘管理]
+    UI --> S[受控状态 选中项 输入值]
+    S --> H
+    H -. 待核验 .-> R[React 19 RSC 适配]
+</mermaid>
+```
 
 ## 定位判断
 **成熟工具型项目**。React 生态中无障碍组件的标准底层库之一。不是热点项目，但是稳定可靠的基础设施。

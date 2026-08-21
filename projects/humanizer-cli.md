@@ -38,8 +38,31 @@ url: "https://github.com/0xwilliamortiz/humanizer-cli"
 3. **交互式终端查询**：`humanizer show 14`（看第 14 号模式）、`humanizer check draft.md`（检查草稿）、`humanizer search hedging`（搜索相关模式）、`humanizer patterns`（分组列出所有模式）。
 4. **离线优先**：程序读取旁边的 `SKILL.md` 并打印，数据不离开本机。无网络、无 API key。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单机 CLI，核心是 87KB Windows x64 的 C 二进制，Node 仅作启动器；运行时零依赖、离线、零网络/零 API key；Skill 数据源为本地 `SKILL.md`，无外部服务编排层 | 具体 C 源码、Node 启动器与二进制之间的调用协议未在档案中给出，待核验 |
+| 主路径 | 用户终端调用 → Node 启动器装载 C 二进制 → 读取本地 `SKILL.md`/pattern 数据 → 在终端输出模式说明（`show`/`search`/`patterns`）或扫描草稿命中模式（`check`）→ 结果回写到 stdout | `check draft.md` 的扫描算法、精确率/召回率档案未独立验证 |
+| 关键权衡 | C 二进制带来的极致小体积与启动速度 vs 仅 Windows x64 的平台受限；零依赖、可离线分发 vs 缺少跨平台原生二进制导致 macOS/Linux 用户覆盖缺口；catalog-style 33 模式 vs 非穷尽检测能力 | 二进制内部检测实现、跨平台是否仅有 Node fallback 启动器而非完整检测能力，档案未说明 |
+| 最小 PoC | 单台 Windows x64 机器 `npm install` + `humanizer patterns` 列出 33 模式，再以一段已知含 dash 滥用/`not just X, it's Y` 的英文草稿跑 `humanizer check draft.md`，验收：模式分组输出可读、check 命中是否覆盖档案提到的几类典型痕迹 | 验收门槛（命中率阈值、误报率）档案未给基线 |
+
 ## 架构启发
 humanizer-cli 的设计是 **"skill → CLI"的封装模式**——把一个 Agent skill（blader/humanizer 的 SKILL.md）转成一个独立的终端工具，脱离 agent 运行时。这代表了 skill 生态的一种演进：skill 不一定只能在 agent 内用，也可以被"提取"成独立工具。对架构师的启发：**skill 是可移植的知识载体**，同一份模式库可以同时服务于 agent（skill 内）和人类（CLI 内）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[写作者或编辑 在终端输入命令] --> I[CLI 入口 Node 启动器]
+    I --> C[C 二进制 core 87KB Windows x64]
+    C --> D[本地 SKILL.md 与 33 种 AI 写作模式目录 来源 blader humanizer skill Wikipedia Signs of AI writing]
+    C --> O[stdout 终端输出 show search patterns check draft.md]
+    S[check 模式的检测效果 未独立基准验证 待核验] -.审计与风险边界.-> C
+    P[跨平台原生二进制 仅 Windows x64 待核验] -.部署边界.-> C
+```
 
 ## 定位判断
 在"去 AI 腔"写作治理品类中占据 **"事后检测 + 终端接口"** 位置。与 human-writing（事中改写，中文）、ratchet（事前约束，agent 规则）互补。它是 blader/humanizer（34K⭐，通用 skill）的终端化分支——把 skill 从 agent 上下文里拿出来，变成写作者可在任何终端随时调用的参考工具。

@@ -36,8 +36,33 @@ AI 助手碎片化问题：用户在不同平台使用不同的 AI（ChatGPT 网
 - **Daemon 模式**：后台常驻 Gateway，随时响应消息渠道的事件
 - **Plugin/Skill 生态**：支持通过 Skills 和 Plugins 扩展能力
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenClaw 是部署在自有设备上的 Gateway 控制面，作为消息渠道、模型 Provider、工具/数据源之间的编排层，不替代 LLM 也不替代消息平台 | 仅基于档案中"Gateway 架构""Channel 适配层""Companion Nodes""Plugin/Skill 生态"表述；具体协议、IPC 与持久化未披露 |
+| 主路径 | 使用者经 WhatsApp/Telegram/Slack/Discord 等渠道入口进入本地 Gateway，Gateway 编排调用选定 LLM 与 Skills/Plugins，回写会话与状态，并可能联动 Companion Nodes（语音/Canvas/摄像头/屏幕） | 渠道列表、Companion Nodes 能力、Daaemon 模式明确；模型调用协议、工具调用协议与会话存储格式均待核验 |
+| 关键权衡 | 渠道广度（9+ 平台覆盖）与单渠道深度 / 供应商耦合之间的取舍；扩展速度 vs 凭据管理、权限隔离、可观测性 | 渠道列表与"渠道 API 政策变化可能影响核心功能"为档案明示；安全模型成熟度被列为后续观察点，本档案未给出实现证据 |
+| 最小 PoC | 单设备单渠道（如 Telegram），关闭其他入口，最小工具权限 + 可审计日志，跑通 Gateway Daemon + 单一 LLM Provider + 1 个 Skill，验证延迟、成本与凭据隔离后再扩面 | 档案仅给出"先在单一渠道、最小工具权限和可审计日志下验证"的采用建议；安装命令原文、性能基线、SLO 指标待核验 |
+
 ## 架构启发
 OpenClaw 的核心启发在于"Gateway as Control Plane"——不试图替代 LLM 模型，而是成为模型能力的"路由器"和"编排器"。这种定位让它可以同时利用所有主流模型的优势，而不受限于单一供应商。消息渠道的统一抽象也是重要设计——将 AI 助手带入用户已有的沟通场景，而非要求用户迁移到新平台。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>WhatsApp/Telegram/Slack/Discord<br/>Google Chat/Signal/iMessage 等]
+    I --> C[项目核心:openclaw Gateway<br/>Daemon 模式 + 编排/运行时<br/>CLI / TUI / Web Control UI]
+    C --> M[模型或推理服务<br/>多 LLM Provider 对接]
+    C --> T[工具与外部系统<br/>Skills / Plugins 扩展]
+    C --> N[Companion Nodes<br/>语音 / Canvas / 摄像头 / 屏幕<br/>— 待核验]
+    C --> S[会话 / 状态 / 审计<br/>— 持久化方案 待核验]
+    R[风险与控制边界<br/>凭据管理 / 权限隔离 / 审计日志<br/>5,547 open issues / 渠道 API 政策]
+    C -.受限于.-> R
+```
 
 ## 定位判断
 **个人 AI 助手基础设施平台**，定位为"自托管版 ChatGPT + Zapier + IFTTT"。是当前最完整的开源个人 AI 助手方案。

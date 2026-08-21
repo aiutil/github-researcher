@@ -36,9 +36,33 @@ HTML 原生的 Claude Code 设计 Skill，支持高保真原型、幻灯片、�
 4. **MP4 导出**：支持动画导出为视频
 5. **Agent-agnostic**：不绑定特定 Agent 实现
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | huashu-design 是 Claude Code 之上的 Skill 形态设计生产力工具，入口为 Claude Code 调用方，输出为 HTML 原生原型/SVG/动画/MP4，对外不依赖特定模型供应商或后端服务 | 边界基于"工具型"分类、HTML 语言、Agent-agnostic 描述；具体入口协议、Skill 加载机制未在档案中说明 |
+| 主路径 | Claude Code 用户发起请求 → 加载 huashu-design Skill（20 设计哲学 + 5 维评审）→ Claude Code 编排生成 HTML/CSS/SVG 原型 → 可选 MP4 动画导出 | 路径依赖"HTML 原生设计输出""MP4 导出"等明文特性；Skill 在 Claude Code 内部的注入与执行机制档案未叙述 |
+| 关键权衡 | 设计专业度（builtin 哲学/评审体系） vs 通用 Agent 框架的耦合深度；产出高保真度 vs 模板化导致的同质化风险 | 权衡来自"差异化=20 哲学+5 维评审"与"同质化竞争激烈""约 20% 泡沫"两条档案判断的对照 |
+| 最小 PoC | 在受控的 Claude Code 会话中加载该 Skill，限定单一设计场景（如一张幻灯片或一个组件），验证 HTML 输出保真度、评审体系一致性、动画/MP4 导出可用性，并审查 prompt 模板与依赖文件 | PoC 范围受限于档案未公开 Skill 清单、依赖项、权限边界，需以源码核验 |
+
 ## 架构启发
 - 将"设计能力"编码为 Skill 而非代码，是 Agent 能力扩展的轻量模式
 - HTML/CSS/SVG 作为 Agent 输出格式正在成为事实标准
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[Claude Code 用户] --> CC[Claude Code 运行时]
+    CC --> SK[huashu-design Skill<br/>20 设计哲学 + 5 维评审]
+    SK --> HTML[HTML 原生原型输出<br/>SVG + 动画]
+    HTML --> MP4[MP4 导出]
+    CC -. 依赖生态 .-> ECO[Claude Code Skill 生态<br/>待核验: 协议/版本]
+    SK -. 维护风险 .-> MAINT[个人维护持续性<br/>待核验]
+    CC --> AUD[会话与审计日志<br/>待核验]
+```
 
 ## 定位判断
 **工具型。** 是 Claude Code Skill 生态中的专业设计工具。不构成平台或基础设施。

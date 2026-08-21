@@ -47,9 +47,34 @@ Agent Skills 生态碎片化：每个社区项目有自己的 Skills 格式和�
 4. **文档技能 source-available**：docx/pdf/pptx/xlsx 技能展示生产级 Skill 设计模式
 5. **Skills API**：通过 Claude API 上传和使用自定义 Skills
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | anthropics/skills 是 Anthropic 官方的 Agent Skills 目录与规范来源，由 SKILL.md + YAML frontmatter 组成；通过 Claude Code Plugin marketplace、`/plugin marketplace add anthropics/skills` 命令、Claude.ai 与 Claude API 等渠道接入 | 仅基于档案描述的入口与目录结构，未审计仓库源码 |
+| 主路径 | 用户/Claude 产品 → Skills 加载（动态读取文件夹与 YAML）→ Claude 模型按需调用 Skill 能力（含 docx/pdf/pptx/xlsx 等文档技能）→ 会话回写 | "动态加载"与"按需调用"为档案措辞，未提供具体协议或时序证据 |
+| 关键权衡 | 官方统一标准（agentskills.io）的生态红利 vs. 锁闭 Claude、文档技能 source-available 商业限制、与 openai/skills / cursor/plugins 标准之争 | 商业限制与标准竞争见档案"风险"段；性能/权限/可观测性细节未给出 |
+| 最小 PoC | 在 Claude Code 中以 `/plugin marketplace add anthropics/skills` 安装一个非文档示例 Skill，验证目录结构、YAML frontmatter 与模型加载行为，审计日志与权限边界 | 安装命令见档案；具体权限模型、审计日志实现待核验 |
+
 ## 架构启发
 
 **Skills 作为 Agent 生态的一等公民**：从附属功能到独立生态组件。Skills 的设计模式（文件夹 + SKILL.md + YAML frontmatter）简洁而强大 — 用文件系统组织 Agent 能力，类似 Unix 的"一切皆文件"哲学。标准化胜于碎片化：官方目录的价值在于统一入口和规范。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或 Claude 产品入口] --> I[入口边界: Claude Code / Claude.ai / Claude API]
+    I --> R[Skills 目录: SKILL.md + YAML frontmatter]
+    R --> M[Claude 模型动态加载与调用]
+    M --> D[文档技能: docx / pdf / pptx / xlsx]
+    M --> T[其他示例技能集: Creative / Development / Enterprise]
+    M --> S[会话状态与回写]
+    D -.source-available 限制.-> X[商业使用边界: 待核验]
+    R -.标准之争.-> Y[竞争标准: openai/skills / cursor/plugins 待核验]
+```
 
 ## 定位判断
 

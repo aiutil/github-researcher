@@ -6,7 +6,7 @@
     <title>no-mistakes | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,30 +50,84 @@
 <li><strong>多入口：</strong> git push（命令行）、TUI（交互界面）、/no-mistakes（Agent skill）三种触发方式。</li>
 <li><strong>Fork 友好：</strong> 支持 <code>--fork-url</code> 让贡献者验证后再推到上游。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地 git push 与远程仓库之间、由 disposable worktree 隔离驱动的一次性验证层，触发入口含 git push 命令行、TUI、<code>/no-mistakes</code> Agent skill 三种</td>
+<td>入口清单见档案；后端 LLM 供应商、验证流水线具体步骤、远程触发协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者主分支保持工作 → 触发入口拉起 disposable worktree → 在 worktree 中编排验证流水线（机械修复 vs 人工升级 两级）→ 全绿才放行 push，结果回写主流程</td>
+<td>disposable worktree 与分级策略来自档案；具体编排器、状态存储、消息协议未给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>验证深度 vs 开发者等待时间：选 disposable worktree 保证非阻塞，但深度审查（并发/性能/安全）超出其能力</td>
+<td>验证深度有限、Agent 验证者可靠性、Go 二进制本地安装门槛均在档案风险段列出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单仓库单分支安装 Go 二进制，启用 git push 钩子触发，TUI 复核默认验证流水线，确认分级策略（自动 fix vs 人工升级）行为符合预期，再扩展到 <code>--fork-url</code> 贡献流程</td>
+<td>PoC 步骤仅为架构师速览建议，真实流水线条目与默认规则集尚需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>no-mistakes 的核心启发是"验证左移 + 非阻塞"：
 - 传统 CI 是 push 后验证（post-push）→ 错误已经在远程
 - no-mistakes 是 push 前验证（pre-push）→ 错误在本地拦截
 - 用 disposable worktree 做到非阻塞 → 开发者不等待</p>
 <p>这种模式可以推广到更多场景：pre-merge 验证、pre-deploy 验证、pre-release 验证。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[开发者主分支工作区] --> Trigger{触发入口}
+    Trigger -->|git push| Hook[git push 钩子]
+    Trigger -->|TUI| UI[TUI 交互入口]
+    Trigger -->|/no-mistakes skill| AgentSkill[Agent Skill 入口]
+    Hook --> Orch[验证编排器]
+    UI --> Orch
+    AgentSkill --> Orch
+    Orch --> WT[Disposable Worktree 隔离层]
+    WT --> Pipe[验证流水线<br/>含机械自动修复 / 意图升级两级]
+    Pipe -->|全绿| Allow[放行 push]
+    Pipe -->|未通过| Block[拦截并升级给人类]
+    Allow --> Remote[远程 origin 仓库]
+    Block --> Dev
+    Pipe -.->|调用| Agent[AI Coding Agent 验证者<br/>待核验]
+    Agent -.->|供应商| LLM[外部 LLM 供应商<br/>待核验]
+    Orch -.->|日志| Audit[审计/状态日志<br/>待核验]</mermaid>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 工具链中处于 L3 编排/治理层。不是 CI 的替代品，而是 CI 的补充——更前置、更轻量、更 Agent 友好。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>验证深度有限：</strong> 真正复杂的问题（并发 bug、性能回归、安全漏洞）不是 pre-push 阶段能发现的。</li>
 <li><strong>Agent 依赖：</strong> 需要 AI Agent 做验证，Agent 本身可能犯错。验证者的可靠性是被验证者的前提。</li>
 <li><strong>采用门槛：</strong> 团队需要统一工作流才能发挥价值。个人开发者可能觉得"多此一举"。</li>
 <li><strong>Go 二进制 + 本地 git：</strong> 需要本地安装，不如云端方案易部署。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 传统 CI（GitHub Actions/GitLab CI）：</strong> 传统 CI 是 post-push，no-mistakes 是 pre-push。互补关系。</li>
 <li><strong>vs Husky/pre-commit hooks：</strong> pre-commit hooks 做格式/lint 检查，no-mistakes 做 AI 驱动的深度验证。不同层级。</li>
 <li><strong>vs OpenSpec：</strong> OpenSpec 从规格出发约束 Agent（上游），no-mistakes 从验证把关 Agent 产出（下游）。可以组合。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 安全治理是新兴赛道，no-mistakes 的 disposable worktree 模式有架构创新性。建议每两周跟踪一次。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>企业团队采纳案例——是否有人在中大型团队全面推广</li>
 <li>验证流水线的可扩展性——是否支持自定义验证步骤</li>

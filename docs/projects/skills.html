@@ -6,7 +6,7 @@
     <title>anthropics/skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,11 +52,57 @@
 <li><strong>跨平台:</strong> 同一 Skill 可用于 Claude Code、Claude Desktop、API 调用、第三方 Agent</li>
 <li><strong>社区驱动:</strong> 任何人可贡献 Skill，形成"技能市场"</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Skills 是 Claude Code/Claude Desktop/API 与第三方 Agent 之上、能力之下的"声明式技能分发层"，由 SKILL.md（YAML frontmatter + Markdown 指令）+ 可选 references/templates/scripts/assets 目录构成</td>
+<td>档案明确 SKILL.md 结构与四种资源目录；具体加载触发器（trigger）匹配机制、版本化方式、签名机制均未描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>任务进入 → Agent 按 Skill 描述匹配 → 加载 SKILL.md 指令与对应资源 → 调用模型/工具 → 输出或会话回写；多 Skill 可同时激活并由 Agent 编排</td>
+<td>档案描述"按需加载""组合性""Agent 自主编排"；编排算法、并发控制、回滚机制未给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>模块化复用与 Anthropic 生态锁定、Skill 质量长尾、Prompt Injection 类安全风险之间的平衡；跨厂商兼容尚不明确</td>
+<td>档案列出锁定、质量参差、安全与替代方案四项风险；未给出具体权限模型、沙箱边界、审计机制</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一个低风险场景（如代码审查或 SVG 生成），在 Claude Code/Desktop 单渠道内加载单一官方 Skill，开启结构化日志，验证加载条件、组合行为与回退路径后再扩面</td>
+<td>档案只承诺"声明式、按需加载、跨平台、社区驱动"；性能、token 成本、PoC 验收指标均未提供</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Skills 的核心启发是 <strong>"Agent 能力应该模块化，而非巨型 Prompt"</strong>。这是对"Prompt Engineering 走向极限"的反思——当 Prompt 长到数万 token，成本、注意力、维护都成问题。Skills 提供了"Prompt 即代码"的范式：每个能力是独立、版本化、可测试的单元。这类似于软件工程从"单体脚本"走向"模块化库"的进化，AI Agent 领域正在重演这一进程。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[Agent 编排与运行时 待核验]
+    C --> M[Claude 模型服务 Anthropic]
+    C --> T[工具与外部系统 待核验]
+    C --> S[会话 状态 审计 待核验]
+    SK[Skill 包 SKILL.md + references templates scripts assets] -.按需加载 待核验.-> C
+    M --> C
+    T --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型基础设施。</strong> Skills 正在成为 AI Agent 生态的"包管理"层——类似 npm 之于 Node.js、PyPI 之于 Python。它的战略价值不在于单个 Skill，而在于"标准化能力分发"这一平台位置。Anthropic 通过 Skills 锁定了 Agent 生态的一个关键节点。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>Anthropic 锁定:</strong> Skills 标准由 Anthropic 主导，跨厂商兼容性存疑</li>
 <li><strong>质量参差:</strong> 16 万 stars + 2 万 forks 意味着 Skill 质量极度不均</li>
@@ -64,7 +110,7 @@
 <li><strong>替代方案:</strong> OpenAI、Google 都可能推出自己的"Skills"标准，导致碎片化</li>
 <li><strong>依赖 Claude:</strong> Skills 当前主要为 Claude 服务，跨 Agent 兼容性是推广瓶颈</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs OpenAI Custom GPTs/Instructions:</strong> 类似理念但更结构化；GPTs 更偏消费端，Skills 更偏开发者</li>
 <li><strong>vs MCP (Model Context Protocol):</strong> MCP 是"工具连接"标准，Skills 是"知识/工作流"标准，互补</li>
@@ -72,9 +118,9 @@
 <li><strong>vs Plugin（ChatGPT Plugins，已停用）:</strong> OpenAI 插件已下线；Skills 是更轻量、更声明式的方案</li>
 <li><strong>vs Hermes Agent Skills:</strong> Hermes Agent 等第三方平台也采用类似 Skills 架构，形成多生态</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>必须跟踪。</strong> Skills 代表了 AI Agent 能力分发的标准化方向。无论最终标准由谁主导，"模块化 Skill"这一范式已被验证。建议关注跨厂商标准化进展、Skill 质量评估机制、以及恶意 Skill 防御。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否出现跨厂商 Skill 标准（OpenAI/Google 是否跟进）</li>
 <li>Skill 质量评估和认证机制（避免劣质/恶意 Skill）</li>

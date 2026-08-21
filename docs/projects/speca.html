@@ -6,7 +6,7 @@
     <title>SPECA | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,32 +54,80 @@
 <li><strong>可控的跨实现比较</strong>：同一属性词汇表应用于 N 个实现，可做跨实现的系统化比较</li>
 <li><strong>误报可解释</strong>：误报分解为 3 个根因（信任边界误解 50%、代码阅读错误 37.5%、规约误解 12.5%），每个映射到具体管道阶段</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SPECA 是规约→属性→代码证明尝试的审计 Agent 框架，定位在传统 SAST/DAST 之上、完整 DevSecOps 平台之下，专为规约驱动系统（智能合约、密码学、共识）设计</td>
+<td>基于定位描述与同类对比（Slither/CodeQL/Deepsec）推断；具体入口、模型供应商、部署形态未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>自然语言规约 → 推导 INV-* 类型化安全属性 → 在代码上做 Proof-attempt（证明尝试） → 失败者即候选漏洞，带完整溯源链（属性→子图→规约章节→标签）</td>
+<td>仅来自档案"关键技术亮点"段；运行时编排、工具调用协议、持久化方式均未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>学术新颖性（Sherlock 竞赛 15/15 召回、独立发现 4 漏洞、RepoAudit P=88.9%） vs 生产化短板（345 stars、社区关注度低、LLM 成本未量化、适用范围限于规约驱动系统）</td>
+<td>数字来自档案；"成本可控""可生产"等结论超出档案证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Sherlock Fusaka / RepoAudit C/C++ 基准或自有智能合约仓库上复现规约→属性→证明尝试闭环，重点核验：误报三类根因占比是否成立、溯源链是否完整、单次 run 的 token 消耗</td>
+<td>基准名与准确率来自档案；CLI/部署细节、模型依赖、token 量需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>SPECA 的核心洞察：<strong>安全审计应该从"代码模式匹配"升级为"规约属性验证"</strong>。</p>
 <p>对架构师的启发：
 - 在设计规约驱动系统（协议、共识、密码学模块）时，可以将安全属性显式编码为规约的一部分
 - SPECA 的"属性推导 + 证明尝试"管道可以嵌入 CI/CD，实现持续安全验证
 - 误报可解释性是企业落地的关键——安全团队需要知道为什么报了这个问题</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  SPEC["规约(NL文本)"] --> PROP["属性推导<br/>生成 INV-* 类型化安全属性"]
+  PROP --> PA["Proof-attempt<br/>要求代码证明属性"]
+  CODE["代码实现"] --> PA
+  PA -->|未通过| FIND["候选漏洞 + 溯源链<br/>属性→子图→规约章节→标签"]
+  PA -->|通过| OK["属性满足"]
+  FIND --> AN["误报根因分类<br/>信任边界/代码阅读/规约误解"]
+  AN -.待核验.-> OUT["审计结论"]
+  FIND -.待核验.-> OUT
+  OK -.待核验.-> OUT
+  OUT -.待核验.-> CI["CI/CD 嵌入(架构启发,未证实)"]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>学术化但可用的安全审计平台。定位在：
 - 高于传统 SAST/DAST 工具（因为从规约出发）
 - 低于全功能 DevSecOps 平台（因为聚焦规约驱动系统）
 - 适合金融、区块链、密码学等领域的安全审计</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>适用范围窄</strong>：规约驱动系统是安全审计的子集，不是所有代码都适合这种范式</li>
 <li><strong>LLM 成本高</strong>：完整的规约推导 + 属性验证需要大量 LLM 调用，成本不低</li>
 <li><strong>Star 数低</strong>：345 stars 说明社区关注度有限，可能影响长期维护</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Deepsec (Vercel)</strong>：工业化 Agent 安全扫描，从代码出发。SPECA 从规约出发。互补。</li>
 <li><strong>Slither (Trail of Bits)</strong>：Solidity 静态分析框架。SPECA 可以在 Slither 输出之上做规约层分析</li>
 <li><strong>CodeQL (GitHub)</strong>：通用代码查询框架。SPECA 的规约锚定是 CodeQL 不覆盖的能力</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 规约锚定审计是有学术验证的创新方法。特别适合金融/区块链企业做 PoC。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有金融/区块链企业采用并公开案例</li>
 <li>对非 EVM 协议（如 Cosmos、Solana）的适配进度</li>

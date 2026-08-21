@@ -6,7 +6,7 @@
     <title>anthropics/financial-services | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,75 @@
 <li><strong>Prompt 工程最佳实践:</strong> 针对金融场景的 prompt 模板，包括准确性校验、引用溯源等防幻觉机制</li>
 <li><strong>Python 参考实现:</strong> 提供可运行的 Python 代码，企业可以在此基础上快速适配到自己的系统</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>该项目是 Anthropic 官方金融行业参考方案库，定位为 Claude 之上、入口渠道/合规/文档处理工具/数据源之间的编排与示例层（Apache-2.0，Python）。</td>
+<td>具体入口组件、KYC/AML 实现位置、XBRL 工具的代码结构未在档案中给出；需源码核实。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文档解析 → Claude 模型调用（含工具调用与引用溯源）→ 结构化输出（如 XBRL）→ 合规/审计回写。</td>
+<td>长上下文处理 SEC/招股书的窗口规模、工具调用协议、prompt 模板细节未披露。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Claude API 深度耦合 vs. 跨模型可迁移性；参考方案快捷性 vs. 生产级安全/性能加固；美国市场合规范式 vs. 多区域适配成本。</td>
+<td>风险条目来自档案描述，具体耦合点与适配工作量需阅读参考实现核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取单一入口（如财报解析），启用最小工具权限与可审计日志，跑通"文档→Claude→结构化输出→人工复核"闭环，验收项含安全、成本、SLO、退出路径。</td>
+<td>Claude 模型版本、调用成本、上下文长度等关键参数档案未提供，须以官方文档为准（待核验）。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>该仓库的架构思路体现了「AI 作为增强而非替代」的理念——不是试图让 AI 完全取代分析师，而是将 AI 嵌入到现有的金融工作流中，处理文档摘要、初步筛选、数据提取等重复性任务，由人类完成最终判断。这种「人机协作」的架构模式在合规要求严格的行业是务实的路径。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目编排与运行时 参考实现]
+    C --> D[金融文档源 SEC 招股书 财报]
+    C --> M[Claude 模型服务 API 深度耦合]
+    C --> T[工具与外部系统 含 XBRL 等结构化输出]
+    C --> S[会话 状态 审计 KYC AML 参考]
+    C --> R[合规与监管边界 主要美国市场]
+    M --> C
+    T --> C
+    S --> C
+    R -.约束.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于 AI 行业应用生态的「参考方案」层。不是独立产品，而是降低企业 AI 采用门槛的加速器。在 Anthropic 的生态战略中，此类行业方案库是推动 Claude 企业采用的重要手段，与 OpenAI 的 cookbook 仓库形成对标。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>依赖 Claude API:</strong> 所有方案深度绑定 Anthropic 的 API，迁移到其他 LLM 需要大量适配工作</li>
 <li><strong>参考方案非生产代码:</strong> 仓库定位是教学和参考，不能直接用于生产环境，安全加固和性能优化需要企业自行完成</li>
 <li><strong>合规场景覆盖有限:</strong> 金融监管在全球各区域差异巨大，此仓库主要针对美国市场，其他区域需要额外适配</li>
 <li><strong>维护频率不确定:</strong> 仓库创建于 2026 年 2 月，长期更新节奏取决于 Anthropic 的战略投入</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>OpenAI Cookbook:</strong> 通用 AI 应用参考库，覆盖面更广但缺少金融垂直深度</li>
 <li><strong>virattt/dexter:</strong> 开源金融 AI Agent，偏工具实现而非参考方案</li>
 <li><strong>LangChain 金融模板:</strong> 框架级的金融应用模板，但缺少 Claude 特有的能力优化</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 作为 Anthropic 官方金融方案库，它代表了 Claude 在金融领域的最佳实践风向。即使不使用 Claude，其架构设计和工作流编排思路也具有跨模型参考价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 Anthropic 是否扩展到保险、证券、财富管理等更多金融子行业</li>
 <li>观察是否有金融机构公开分享基于此仓库的实际部署案例</li>

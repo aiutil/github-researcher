@@ -6,7 +6,7 @@
     <title>clicky | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,29 +52,81 @@
 <li><strong>光标跟随</strong>：AI 始终在光标附近，上下文感知自然</li>
 <li><strong>Swift 原生</strong>：macOS 原生体验，系统集成度高</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>clicky 是 macOS 原生 Swift 桌面应用，核心边界在「本地屏幕捕获 + 视觉/语音推理 + 光标跟随 UI」之间，外部依赖仅有屏幕与音频系统服务</td>
+<td>档案仅声明 macOS/Swift/Screen AI/Voice AI，未列出具体推理服务、屏幕捕获 API、语音引擎或网络远端依赖</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户光标触发 → 屏幕画面截取 → 视觉/语音模型推理 → 语音播报 + 指向引导回传至光标旁 UI</td>
+<td>路径为档案描述的功能抽象，未确认是否本地推理、是否调用云端 LLM、是否流式输出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>「始终在侧」的体验创新 vs. 仅限 macOS、单学习场景、Screen+Voice 组合可被快速复制的低技术壁垒</td>
+<td>权衡基于档案「风险/局限」一节的明确陈述，未引用第三方对比或性能数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台 macOS 沙箱机上验证：屏幕采样频率、语音唤醒/对话延迟、是否有离线模式、是否上传屏幕帧、退出/卸载是否残留后台进程</td>
+<td>档案未给出采样率、模型来源、网络行为、隐私策略等实现细节，全部需在源码或运行中核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>桌面端 AI 的最佳形态可能是「始终在旁边」而非「打开一个窗口」</li>
 <li>Screen AI + Voice 的组合比纯文字交互更适合教育场景</li>
 <li>工具型产品的用户体验创新可以弥补技术深度的不足</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户学习者] --> C[光标事件与鼠标位置]
+    C --> S[屏幕画面捕获 macOS]
+    S --> V[视觉推理 Screen AI]
+    A[麦克风音频] --> W[语音识别与对话 Voice AI]
+    V --> R[推理结果融合]
+    W --> R
+    R --> T[语音播报 + 光标旁 UI 指向引导]
+    T --> U
+    M[macOS 宿主运行时 系统服务] -.提供能力.-> S
+    M -.提供能力.-> W
+    F[外部 AI 模型来源 待核验] -.调用.-> V
+    F -.调用.-> W
+    P[隐私与数据上传边界 待核验] -.约束.-> S
+    P -.约束.-> A
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（中等质量）</strong> — 体验创新明显，但非基础设施或平台级项目。定位为学习辅助工具，教育场景有潜力，但普适性有限。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>仅限 macOS</strong>：Swift 原生意味着无法覆盖 Windows/Linux 用户</li>
 <li><strong>教育场景窄</strong>：非学习场景的需求不明确</li>
 <li><strong>技术壁垒不高</strong>：Screen AI + Voice 的技术组合可被快速复制</li>
 <li><strong>商业模型不明</strong>：免费工具的可持续性存疑</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>各类 Screen AI 工具</strong>：clicky 更聚焦教育场景，通用性不如其他 Screen AI 工具</li>
 <li><strong>AI 教学助手</strong>：相比 chatbot 式教学，clicky 的屏幕感知是差异化优势</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>观望</strong>。体验创新值得关注，但技术壁垒和场景局限性意味着需要观察后续发展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否扩展到 Windows/Linux 平台</li>
 <li>教育场景的用户留存数据</li>

@@ -6,7 +6,7 @@
     <title>Kilo Code | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,26 +54,72 @@
 <p><strong>MIT 开源：</strong> 完全开源，包括 CLI（fork of OpenCode）。</p>
 </li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Kilo Code 是 TypeScript 实现的多平台 Coding Agent 编排层，三入口（VS Code 扩展 + JetBrains 原生插件 + CLI，CLI 明确为 OpenCode fork）共享同一 Agent，支持 500+ 模型与多 Agent 模式（Code/Plan/Ask/Debug/Review），并附带 Cloud Agent、Code Review、KiloClaw 等 SaaS 组件。</td>
+<td>入口与 Agent 形态来自项目标签与档案描述；Cloud Agent / Code Review / KiloClaw 的实现细节未在档案中给出，待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求从三入口之一进入 → 项目编排/运行时（管理多 Agent 模式与中途切模型）→ 调用模型与工具/外部系统 → 会话状态/审计回写；<code>--auto</code> 模式声称可无人值守运行。</td>
+<td>路径为档案所描述的职责抽象；具体协议、持久化与会话模型需源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展速度与权限/可观测性/供应商耦合的平衡：500+ 模型与多入口扩大覆盖面但放大选型与上下文丢失风险；CLI 依赖 OpenCode fork 引入上游 license/治理风险；"零加价"使收入必须来自 Cloud/Review/KiloClaw 等服务，文档中未披露定价。</td>
+<td>权衡基于档案风险段；商业模式与 fork 治理细节未证实。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单入口（建议先 CLI，便于隔离）启用最小 Agent 模式（如 Ask 或 Code），关闭高权限工具，接入审计/日志，对单个 provider/model 做会话级回放与退出路径验证；再扩到 VS Code/JetBrains。</td>
+<td>PoC 步骤仅依据档案给出的入口与模式描述；具体工具权限列表与日志接口待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Kilo Code 的设计哲学是"Coding Agent 应该是开发者主权的"：
 - 模型选择权 → 500+ 模型
 - 平台选择权 → VS Code / JetBrains / CLI
 - 价格透明 → provider 原价零加价
 - 可自主运行 → <code>--auto</code> 模式无需人工干预</p>
 <p>这与 Cursor/Copilot 的"平台锁定"形成鲜明对比。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界<br/>VS Code 扩展 / JetBrains 原生插件 / CLI]
+  I --> C[项目编排与运行时<br/>多 Agent 模式：Code / Plan / Ask / Debug / Review<br/>支持中途切模型<br/>--auto 自主模式<br/>CLI 为 OpenCode fork]
+  C --> M[模型或推理服务<br/>500+ 模型<br/>GPT-5.5 / Claude Opus 4.7 / Gemini 3.1 Pro 等<br/>provider 原价计费]
+  C --> T[工具与外部系统<br/>待核验：具体工具列表与权限模型]
+  C --> S[会话 状态 审计<br/>MIT 开源<br/>会话回写能力待核验]
+  K[KiloClaw / Cloud Agent / Code Review<br/>SaaS 组件 收入来源<br/>定价与部署方式待核验] -.绑定.-> C
+  M --> C
+  T --> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>开源 Coding Agent 平台。</strong> 在 Coding Agent 光谱中：
 - Cursor / Copilot = 商业 SaaS（锁定）
 - Continue = 开源但功能有限
 - Kilo Code = 开源 + 全功能 + 多平台</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>CLI 是 fork：</strong> Kilo CLI 基于 OpenCode fork。如果 OpenCode 限制 fork 或改变 license，有风险。</li>
 <li><strong>商业模式不清：</strong> "零加价"意味着 Kilo 不从模型调用赚钱。收入来源可能是 Cloud Agent / Code Review / KiloClaw 等 SaaS 服务。</li>
 <li><strong>质量参差：</strong> 500+ 模型中大部分质量平庸，中途切换可能导致上下文丢失。</li>
 <li><strong>社区维护成本：</strong> 多语言 README（20+ 语言）、多平台适配需要大量维护投入。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -116,9 +162,9 @@
 </tbody>
 </table>
 <p>Kilo Code 与 Continue 是直接竞争——都是开源多平台 Coding Agent。Kilo 的差异化是 Cloud Agent 和 KiloClaw 等 SaaS 功能。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，但需谨慎。</strong> 22.9K stars 和日增 1,217 说明市场需求旺盛。但 CLI fork 来源和商业模式需要持续观察。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>JetBrains 插件的稳定性和用户反馈</li>
 <li>商业模式演化（Cloud Agent / KiloClaw 定价）</li>

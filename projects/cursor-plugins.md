@@ -35,8 +35,52 @@ Cursor 作为当前最流行的 AI 编码工具之一，其能力扩展方式此
 3. **高质量官方插件**：已提供的官方插件设计精良，如 `thermos`（深度安全/正确性审计 + 并行子代理）、`orchestrate`（将大任务分配给并行 Cursor 云 Agent）、`continual-learning`（增量记忆更新到 AGENTS.md）。这些插件本身就是 Agent 工程的最佳实践示例。
 4. **第三方插件目录**：`third_party/` 目录用于集成外部服务（Gmail、Google Drive、Google Calendar 通过 Google MCP server；Gong、Salesforce 通过各自的 MCP），展示了插件系统与 MCP 生态的融合。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Cursor 官方插件规范仓库，定义 `.cursor-plugin/plugin.json` manifest、`marketplace.json` 清单与 Skills/Rules/MCP 三件套目录约定，作为 Cursor IDE 与 Agent 平台的扩展基础设施层 | 边界仅来自档案描述的目录结构与 manifest 字段；具体加载器、安装协议、运行时权限模型未在档案中给出 |
+| 主路径 | 官方插件与第三方插件通过 `marketplace.json` 声明 → 经 Cursor 界面被安装 → 由 Cursor 运行时加载 skills（SKILL.md）、rules（.mdc）、mcp.json 三类资产并用于 Agent 调用 | 主路径基于档案对插件结构与官方插件（如 thermos、orchestrate、continual-learning）的功能描述推断；具体加载顺序与调度细节未披露 |
+| 关键权衡 | (1) 标准化降低扩展门槛 vs Skills/Rules/MCP 三类资产是否真正统一；(2) Marketplace 借鉴 VS Code 模式带来的生态速度 vs 平台商业策略调整风险；(3) 与 Claude Plugins、Vercel agent-skills 等并行规范并存的碎片化成本 | 权衡为基于档案“关键技术亮点”与“风险/局限”的研究判断；具体 API 兼容性、性能数据未在档案中出现 |
+| 最小 PoC | 选取一个官方插件（如 `continual-learning` 更新 AGENTS.md，或 `thermos` 审计模式）在本地 Cursor 中安装，验证 manifest 字段、skill frontmatter 与 MCP 配置被正确解析；记录插件加载行为与可审计日志，作为后续第三方插件与最小工具权限的验收基线 | PoC 设计仅依赖档案列出的官方插件清单与目录约定；插件的真实运行行为、依赖版本、权限范围须在源码或运行时中核验 |
+
 ## 架构启发
 cursor/plugins 的架构设计反映了 Coding Agent 平台的演进方向——从单一工具向可扩展平台转变。其关键设计决策包括：(1) 将 Skills（知识/指令）、Rules（行为约束）、MCP（工具能力）统一到"插件"概念下，而非各自独立；(2) 使用标准的目录约定而非复杂配置文件，降低了开发门槛；(3) marketplace + plugin 的两层架构与 VS Code Extensions Marketplace 类似，借鉴了成熟 IDE 生态的经验。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    A["Cursor 平台运行时<br/>(待核验：加载与执行机制)"]
+    B["marketplace.json<br/>插件市场清单"]
+    C["plugin.json<br/>(.cursor-plugin/) 插件 manifest"]
+    D["Skills 资产<br/>SKILL.md + frontmatter"]
+    E["Rules 资产<br/>.mdc 规则文件"]
+    F["MCP 工具定义<br/>mcp.json"]
+    G["外部边界<br/>Google MCP / Gong / Salesforce<br/>(待核验：协议与认证)"]
+    H["第三方插件目录<br/>third_party/"]
+
+    A --> B
+    B --> C
+    C --> D
+    C --> E
+    C --> F
+    F --> G
+    H --> C
+
+    D -. "知识/指令" .-> A
+    E -. "行为约束" .-> A
+    F -. "工具调用" .-> A
+
+    classDef boundary fill:#fdecea,stroke:#c0392b,stroke-width:1px;
+    classDef control fill:#eaf3fb,stroke:#2980b9,stroke-width:1px;
+    classDef ext fill:#f4ecf7,stroke:#7d3c98,stroke-width:1px,stroke-dasharray:4 2;
+    class A control
+    class G ext
+    class H ext
+```
 
 ## 定位判断
 cursor/plugins 定位为**Cursor 平台的插件基础设施层**。它本身不是产品，而是"标准的载体"——定义了 Cursor 插件应该长什么样。2.5K stars 处于早期阶段，但方向意义重大。如果 Cursor 的插件生态繁荣（类似 VS Code Extensions），这个规范将成为事实标准。

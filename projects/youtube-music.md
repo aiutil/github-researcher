@@ -40,8 +40,34 @@ url: "https://github.com/sohaibdevv/youtube-music"
 ## 关键技术亮点
 **不适用。** 本档案的价值在于风险分析而非技术评估。README 描述的"功能"（无广告、后台播放等）为声称内容，未验证。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 这是一个以"开源 YouTube Music 客户端"为外壳、通过密码保护 ZIP 分发可执行文件的疑似投递样本；真正的系统边界不在源码，而在于 README 声明（TypeScript 客户端）与分发通道（密码 ZIP + EXE）之间的断裂——仓库侧与投递侧是两个互不验证的边界。 | 边界判断基于分类标签（case-study, suspected-malware, password-zip, zero-fork-anomaly）与 README 描述的 `youtube-music-free.zip` / `Password: ytm4all` 分发模式；未读取 TypeScript 源码，未下载 ZIP 验证 EXE 载荷。 |
+| 主路径 | 若按 README 字面：用户 → 下载密码 ZIP → 解压运行 `youtube-music-free.exe` → 单文件客户端 → 调用 YouTube Music 服务；若按风险观察：README（信任建立）→ star 灌入 → 密码 ZIP（规避扫描）→ EXE 执行 → 未知 C2/载荷落地，主路径在第二步被劫持。 | 主路径前半段（README 声称的功能）来自项目自身描述，未运行时验证；后半段（投递/载荷行为）来自对 848 stars / 0 forks / 0 issues 异常数据的推断，ZIP 与 EXE 内容均未核验。 |
+| 关键权衡 | 不是工程权衡，而是"信任信号 vs 分发模式"的权衡：848 stars 的开源信誉背书 vs 密码 ZIP + 0 fork + 0 issue 的非自然参与度——前者被设计用于掩护后者，决策不能依赖 star/license/tag 等 GitHub 表层信号。 | 权衡基于仓库 API 字段（stars=848, forks=0, open_issues=0, license=MIT, language=TypeScript）与 README 分发描述；MIT license 为声称、未核验 license 文件；"恶意"判断为推断而非扫描结论。 |
+| 最小 PoC | 不建议对该项目做功能性 PoC；最小可行验证应在隔离沙箱中做三项取证——(1) README 与仓库实际内容是否一致，(2) ZIP + 密码 `ytm4all` 解压后 EXE 的静态特征（签名、哈希、字符串），(3) 沙箱内动态行为（网络连接、持久化、加载项）。任何 PoC 不得在生产或日常主机执行。 | PoC 范围由档案"ZIP 载荷未下载验证"明确限定；具体哈希、签名、IOC、依赖、协议均未在档案中出现，全部须以沙箱取证核验，档案不提供任何已确认技术细节。 |
+
 ## 架构启发
 （不适用——风险样本，非技术参考项目）
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  R[README 声称 TS YouTube Music 客户端] --> S[848 stars 信任建立 待核验]
+  S --> D[密码 ZIP youtube-music-free.zip Password ytm4all]
+  D --> E[EXE youtube-music-free.exe 载荷未验证]
+  E --> X[实际行为 C2 持久化 未知 待核验]
+  R -.声称未验证.-> A[后台播放 搜索 媒体键 暗色主题]
+  A -.功能面.-> H[YouTube Music 服务调用 未验证]
+  M[作者 sohaibdevv 95 repos 9 followers] --> R
+  M --> Y[同作者其他仓库是否同模式 待核验]
+  G[GitHub 安全团队处置 待核验] --> R
+```
 
 ## 定位判断
 **观察型（疑似恶意软件投递样本，证据账本对照案例）。** youtube-music 的核心价值是作为"开源平台信任滥用"的证据样本。它与 WeChat-AI（刷量型）、open-kimi-ppt-skill（归档后异常增长型）构成三类不同的"热度≠价值"风险模式。研究者可基于此建立检测规则：**密码 ZIP + 高 star 低参与度（0 fork/0 issue）= 投递型风险信号。**

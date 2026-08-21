@@ -44,11 +44,41 @@ Claude Code Skills/Plugins 生态正在碎片化爆发，大量社区和个人 S
 5. **不可变 slug + 自动迁移**：插件名一旦发布不可更改，通过 `renames` map 自动迁移旧名到新名
 6. **外部插件提交流程**：通过 plugin-directory-submission 表单提交，需通过质量和安全审核
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 官方插件目录定位为 Claude Code Agent 插件的"注册-发现-安装"分发层与质量管控入口，自身不直接托管模型与工具，仅编排 marketplace.json 与插件源仓库 | 档案仅描述结构（plugin.json / .mcp.json / commands / agents / skills）与安装命令；运行时协议、服务器实现未在档案中证实 |
+| 主路径 | 用户 `plugin install {name}@claude-plugins-official` → marketplace 拉取插件源 → Claude Code 加载 plugin.json 与 .mcp.json → 调用 MCP 工具 / Skills / Agents → 结果回写会话 | `install` 与 MCP 配置来自档案；具体解析顺序、版本协商、状态持久化方式待源码核验 |
+| 关键权衡 | 官方双层（/plugins 内部 vs /external_plugins 第三方）+ `strict:false` Skill-bundle 与 `renames` 不可变 slug 机制，体现"生态扩张速度 vs 命名/质量稳定性"的取舍；安全审计靠 plugin-directory-submission 表单，覆盖度有限 | 双层目录与重命名映射来自档案；审核 SLA、签名机制、沙箱策略档案未给出 |
+| 最小 PoC | 以单一 Skill-bundle 插件（无 manifest 的 SKILL.md 集合）接入 `claude-plugins-official`，最小工具权限下验证 `/plugin install`、MCP 加载与会话回写，再扩展到带 plugin.json 的标准插件 | 提交流程与命令来自档案；执行环境、权限模型、退出路径需结合 code.claude.com 文档与源码核验 |
+
 ## 架构启发
 - **注册-发现-安装三段式架构**：这是所有插件市场的标准模式（npm/PyPI/VS Code Marketplace），Anthropic 在 Claude 生态中复现了它
 - **官方目录 vs 社区市场的双轨模式**：官方保证质量底线，社区保证创新自由度——类似 Apple App Store vs TestFlight
 - **Marketplace 作为分发协议**：插件不存储在 Anthropic 服务器，而是通过 marketplace.json 描述源仓库地址，运行时拉取——去中心化分发
 - **MCP 作为工具协议**：插件通过 `.mcp.json` 接入 MCP Server，实现工具调用标准化
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者或 Claude Code 用户] -->|/plugin install 或 marketplace add| MP[claude-plugins-official marketplace.json]
+    MP --> PR[external_plugins 第三方插件源仓库 去中心化分发]
+    MP --> PO[/plugins 内部插件 Anthropic 官方维护]
+    PR --> P[plugin.json 元数据 不可变 slug renames 映射 待核验]
+    PO --> P
+    P --> M[.mcp.json MCP Server 配置]
+    P --> SK[skills/ SKILL.md 集合 strict false 可打包]
+    P --> AG[agents/ 与 commands/ 定义]
+    M --> RT[Claude Code 运行时 编排层]
+    SK --> RT
+    AG --> RT
+    RT --> ST[会话 状态 审计 待核验]
+    RT --> RS[插件安全审核 plugin-directory-submission 表单 916 Open Issues 风险边界]
+```
 
 ## 定位判断
 **平台候选**——如果 Anthropic 持续投入，它将成为 Claude 生态的「npm registry」。控制了插件目录就控制了生态入口。目前已具备平台的所有要素：标准结构、提交流程、发现机制、安装命令。商业化潜力在于付费插件、企业私有市场、插件认证。

@@ -6,7 +6,7 @@
     <title>Memory OS | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,16 +51,67 @@
 <li><strong>每周衰减扫描</strong>：过期信息自动降权，保持记忆库新鲜</li>
 <li><strong>Provider 无关</strong>：OpenRouter / OpenAI / Anthropic / Ollama / 本地模型全兼容</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Memory OS 是 Hermes Agent 上的记忆编排层，通过 7 层分层结构衔接 workspace、向量库与会话状态，并向 OpenRouter / OpenAI / Anthropic / Ollama / 本地模型开放</td>
+<td>依赖档案明示的 7 层结构、Qdrant 与 Provider 列表；与 Hermes 之外的集成面未证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据由 Workspace→Sessions(FTS5)→Structured Facts→Fabric→Qdrant 混合检索→LLM Wiki，检索采用 hybrid→dense→lexical→SQLite 四级回退，Context Injection 做 token 预算控制后回写会话</td>
+<td>路径与回退顺序来自档案概述；各层调度协议与并发模型未在档案中描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>分层细化带来的记忆丰富度，与首次记录指出的运维复杂度（Docker+Qdrant+Redis+ARQ ≥4 服务）、token 消耗、信任评分冷启动之间的张力</td>
+<td>权衡判断仅基于档案列出的风险项；性能数据、扩展性基准、部署形态待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Hermes 单渠道下以最小工具权限启动 Docker + Qdrant + Redis + ARQ 四服务，跑通 4 级检索回退与一次 Context Injection，并记录 token 占用、信任评分与相似记忆去重（cosine&gt;0.92）日志</td>
+<td>PoC 组件全部来自档案；具体安装步骤、配置参数、退出路径需以 v0.2.0 安装说明核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Memory OS 的分层设计是 Agent OS 记忆子系统的参考架构：
 - <strong>短期记忆</strong>（Layer 1-2）：毫秒级，注入 + 全文搜索
 - <strong>中期记忆</strong>（Layer 3-4）：结构化事实 + 跨会话关联
 - <strong>长期记忆</strong>（Layer 5-6）：语义检索 + 自动知识图谱
 - <strong>调度层</strong>（Layer 7）：根据上下文窗口预算智能注入</p>
 <p>这个分层思路可以迁移到任何 Agent 系统（不限于 Hermes）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游 Hermes Agent] --> WP[Layer 1 Workspace 系统提示注入]
+  WP --> SE[Layer 2 Sessions SQLite FTS5 全文搜索]
+  SE --> SF[Layer 3 Structured Facts 信任评分 + 实体消解]
+  SF --> FA[Layer 4 Fabric 跨会话提取]
+  FA --> VD[Layer 5 Vector DB Qdrant 混合检索]
+  VD --> WK[Layer 6 LLM Wiki 自动策展]
+  WK --> CI[Layer 7 Context Injection token 预算控制]
+  CI --> U
+  VD -. 四级回退 hybrid→dense→lexical→SQLite .-> SE
+  SF -. cosine>0.92 语义去重 待核验 .-> FA
+  CI -. 信任评分反馈校准 待核验 .-> SF
+  PR[模型 Provider OpenRouter OpenAI Anthropic Ollama 本地 待核验] -. 提供推理 .-> CI
+  OP[运维边界 Docker + Qdrant + Redis + ARQ ≥4 服务] -. 部署依赖 待核验 .-> VD
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> Agent 记忆基础设施的早期参考实现。如果 7 层架构被验证有效，可能成为 Agent OS 记忆层的标准设计。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Hermes Agent 绑定</strong>：当前只为 Hermes 设计，迁移到其他 Agent 框架需要适配</li>
 <li><strong>运维复杂度</strong>：Docker + Qdrant + Redis + ARQ Worker = 最小 4 个服务</li>
@@ -68,7 +119,7 @@
 <li><strong>信任评分冷启动</strong>：新用户缺乏反馈数据，初期评分不准</li>
 <li><strong>竞品压力</strong>：MemPalace 53.8K stars 是更热门的竞品</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -95,9 +146,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 7 层架构是最系统的 Agent 记忆设计，值得作为参考架构长期跟踪。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否从 Hermes 专属走向框架无关（SDK / API 抽象）</li>
 <li>信任评分的效果在大规模使用中是否成立</li>

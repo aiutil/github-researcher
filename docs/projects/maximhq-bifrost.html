@@ -6,7 +6,7 @@
     <title>Bifrost | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,45 +47,82 @@
 <li><strong>Governance</strong>：virtual keys + budget management + rate limiting + usage tracking</li>
 <li><strong>Plugin 架构</strong>：governance/jsonparser/logging/mocker/semanticcache/telemetry 全部模块化</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为客户端/Agent、模型供应商与工具/数据源之间的统一 AI 网关层（Go 实现，OpenAI 兼容协议），插件以旁路方式介入请求链</td>
+<td>边界来源于标签与定位描述；具体入站协议细节、插件挂载点需核源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>客户端 → Bifrost Gateway → Router/Load Balancer → Provider Pool（OpenAI/Anthropic/Bedrock/Vertex 等 23+）→ 回写响应，并经 Semantic Cache 命中旁路；MCP Gateway、Governance、Logging、Telemetry 作为插件链</td>
+<td>路径来自项目自述与架构示意；语义缓存命中率、MCP 实现细节未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Go 极致低开销 vs 相对 LiteLLM 较弱的生态与社区；Plugin 解耦 vs Gateway 单点故障；OpenAI 兼容易迁移 vs 与特定 provider 高级特性耦合</td>
+<td>性能数据（11µs@5k RPS、100% 成功率）仅在 t3.xlarge/t3.medium 自家 benchmark 给出，跨环境复现性未证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道 + 单供应商接入，启用 Semantic Cache 与 Logging/Telemetry，关闭 Cluster Mode 与高敏治理项，验证延迟增量、缓存命中行为与回退路径</td>
+<td>部署形态、HA 配置、密钥治理流程文档未读，以“待核验”标注；不替代生产评估</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Bifrost 的架构是经典的<strong>Gateway + Plugin</strong>模式应用于 AI 领域。和 API Gateway（Kong/APISIX）的相似度极高：</p>
-<pre class="mermaid">graph TD
-    A[Client / Agent] -->|OpenAI-compatible| B[Bifrost Gateway]
-    B --> C[Router / Load Balancer]
-    C --> D[Semantic Cache]
-    C --> E[Provider Pool]
-    E --> F[OpenAI]
-    E --> G[Anthropic]
-    E --> H[Bedrock]
-    E --> I[Vertex]
-    E --> J[23+ more]
-
-    B --> K[Plugin Chain]
-    K --> L[Governance]
-    K --> M[Logging]
-    K --> N[Telemetry]
-    K --> O[MCP Gateway]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Client[Client / Agent] -->|OpenAI-compatible 请求| Gateway[Bifrost Gateway - Go]
+    Gateway --> Router[Router / Adaptive Load Balancer]
+    Router --> Cache[Semantic Cache - 命中旁路]
+    Router --> Pool[Provider Pool]
+    Pool --> P1[OpenAI]
+    Pool --> P2[Anthropic]
+    Pool --> P3[Bedrock]
+    Pool --> P4[Vertex]
+    Pool --> Pmore["待核验：其余 23+ provider"]
+    Gateway --> Plugins[Plugin Chain]
+    Plugins --> Gov[Governance - virtual keys / budget / rate limit]
+    Plugins --> Log[Logging]
+    Plugins --> Tel[Telemetry]
+    Plugins --> MCP[MCP Gateway - Agent 工具调用入口]
+    Gateway -. 单点故障风险 .-> Risk["待核验：HA / Cluster Mode 生产稳定性"]
+    Gateway -. 退出路径 .-> Fallback["待核验：provider 故障转移策略"]
 </pre>
 <p>关键架构决策：Go 而非 Python/Rust——兼顾性能和可维护性；plugin 架构而非 monolith——企业可以按需启用；Web UI 配置——降低运维门槛。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>在 AI 平台架构中，Bifrost 占据 <strong>AI Gateway</strong> 层——所有 LLM 请求的统一入口。类比：Bifrost 之于 LLM，就像 Kong/APISIX 之于微服务 API。这个位置决定了它有潜力成为企业 AI 平台的核心基础设施。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>LiteLLM 生态护城河</strong>：LiteLLM 社区更大、provider 覆盖更广、已有大量生产部署——纯性能优势可能不足以切换</li>
 <li><strong>Gateway 单点风险</strong>：引入网关意味着新的故障点——如果 Gateway 挂了，所有 AI 请求都受影响</li>
 <li><strong>企业级功能验证不足</strong>：cluster mode、governance 等功能在实际生产中的稳定性需要更多验证</li>
 <li><strong>日增 21 stars 偏低</strong>：说明社区认知仍在早期，需要更多传播</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>LiteLLM</strong>：Python 实现的 LLM proxy，生态最大，但性能瓶颈明显。Bifrost 直接对标。</li>
 <li><strong>freellmapi</strong>（11.3K TS）：聚合 16 个 LLM 免费层——面向个人开发者，定位完全不同</li>
 <li><strong>Headroom</strong>：虽然不是 gateway，但 proxy 模式有交集——Headroom 做压缩，Bifrost 做路由</li>
 <li><strong>OpenRouter</strong>：闭源 SaaS 网关，Bifrost 是开源自部署替代</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> AI Gateway 是企业 AI 平台的必选组件。Bifrost 在性能维度领先，如果后续能补齐生态和治理能力，有潜力成为这个品类的标准选择。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Provider 覆盖度增长——是否能快速跟上新 model/provider 上线速度</li>
 <li>Cluster mode 在大规模生产中的表现</li>

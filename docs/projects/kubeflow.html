@@ -6,7 +6,7 @@
     <title>kubeflow/kubeflow | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,25 +49,74 @@
 <li><strong>Katib 超参数调优</strong>：内置的分布式超参数调优系统，支持贝叶斯优化、网格搜索、随机搜索等策略，可在 Kubernetes 集群上并行运行大量试验。</li>
 <li><strong>KServe 模型服务</strong>：基于 Knative 的模型推理服务（原 KFServing），支持自动伸缩、金丝雀发布、GPU 推理等生产级 serving 能力。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Kubeflow 是一个 Kubernetes 原生的 MLOps 编排层，核心职责是把训练、调参、Serving、Notebook 四类 ML 工作负载以 CRD/Operator 形式落到 K8s 集群上，不替代底层 K8s 也不替代上游业务</td>
+<td>边界划分来自"Kubernetes 原生 ML 工具包"的定位与四大亮点（Notebooks、Katib、KServe、Pipeline）；具体组件是否仍归此仓库未核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据科学家/ML 工程师 → K8s 集群上的 Notebook/Operator → 分布式训练与 Katib 调优 → KServe 推理服务，全程声明式 CRD 驱动</td>
+<td>主路径仅依据档案明确列出的四个组件；Pipeline 与训练 Operator 的耦合关系、TFX 集成未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>云原生深度集成（复用 K8s 监控/日志/网络/存储）与极高部署门槛、全栈耦合之间的权衡；与 Ray、BentoML、MLflow、Metaflow 等轻量化替代品之间存在功能交叠但定位差异</td>
+<td>权衡论断仅源自档案"架构启发""风险/局限"段；各替代品优劣对比未在档案中量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 GKE 或 Minikube 单集群上最小化部署 Notebooks + Katib + KServe 三个子组件，跑通"开发→调参→Serving"闭环，验收点为部署耗时、GPU 调度、CRD 兼容性</td>
+<td>部署目标平台（GKE、Minikube）来自档案；最小化范围与验收指标为研究建议，未在档案中证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Kubeflow 的核心架构决策是"将 ML 工作负载 Kubernetes 化"。这个决策有利有弊：好处是与云原生生态深度集成（监控、日志、网络、存储都复用 K8s 基础设施）；坏处是部署门槛极高——需要先有一个可用的 Kubernetes 集群，然后部署大量 Operator 和 CRD。Kubeflow 的经验教训是：ML 平台不能只做 K8s 原生，还需要降低入门门槛。后来的项目（如 Ray、Modal）选择了更简化的路径。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[ML 工程师与数据科学家] --> I[Kubernetes 集群与身份边界 待核验]
+    I --> N[Kubeflow Notebooks Jupyter 即服务]
+    I --> P[Training Pipelines Operator 与 CRD 待核验]
+    N --> K[Katib 超参数调优]
+    P --> K
+    K --> S[KServe 模型服务 基于 Knative]
+    S --> M[模型与推理产物]
+    P --> M
+    N -.托管分散.-> R[子仓库活跃度与维护者风险]
+    S -.托管分散.-> R
+    R --> X[Kubeflow 1.x 是否演进至 2.0 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>Kubeflow 在 MLOps 生态中定位为<strong>重量级 ML 平台基础设施</strong>。它适合有 Kubernetes 运维能力的大型企业团队，对于中小团队来说过于复杂。在 GitHub 趋势研究中，Kubeflow 是"老牌项目重新被关注"的典型案例——它出现在趋势榜上可能是因为企业 AI 基础设施投资的回暖，而非技术突破。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>部署复杂度极高</strong>：Kubeflow 的安装和维护需要深厚的 Kubernetes 专业知识。即使是官方文档也承认部署是主要痛点。一个常见的说法是"需要一个全职的 Kubeflow 运维工程师"。</li>
 <li><strong>项目碎片化与维护分散</strong>：Kubeflow 已拆分为多个子项目（Notebooks、Pipelines、Katib、KServe 等），核心仓库（kubeflow/kubeflow）的 open_issues 为 0 说明活跃开发已迁移到子仓库。这导致"Kubeflow"作为整体项目的协调成本很高。</li>
 <li><strong>被更轻量工具侵蚀</strong>：训练编排方面受到 Ray 的挑战，模型服务受到 BentoML、Modal 的挑战，Pipeline 受到 Airflow/Dagster 的挑战。每个环节都有更专业、更轻量的替代品。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Ray (Anyscale)</strong>：分布式计算框架，也支持 ML 训练和服务。Ray 比 Kubeflow 轻量得多，可以在单机启动，也能扩展到集群。近年来越来越多的 ML 团队从 Kubeflow 转向 Ray。</li>
 <li><strong>MLflow</strong>：ML 实验跟踪和模型注册，功能更聚焦（不做训练编排），但部署简单得多。很多团队选择 MLflow + 其他工具的组合而非 Kubeflow 全家桶。</li>
 <li><strong>Metaflow (Netflix)</strong>：数据科学工作流框架，Python 原生设计，不需要 Kubernetes。更受数据科学家（而非 ML 工程师）欢迎。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>以 MLOps 生态视角持续跟踪，但降低优先级</strong>。Kubeflow 不太可能有爆发性增长，但它是企业 ML 基础设施的重要风向标。如果关注"大企业如何做 MLOps"，Kubeflow 仍然是参考标准之一。建议每半年检查一次社区动态和子项目进展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Kubeflow 2.0 的方向</strong>：社区是否在规划重大架构简化（如降低 Kubernetes 耦合度、简化安装流程）</li>
 <li><strong>与 LLM 训练/推理的融合</strong>：Kubeflow 是否会原生支持 LLM 微调和推理工作流（当前主要面向传统 ML），以及与 vLLM、Ray Serve 的集成</li>

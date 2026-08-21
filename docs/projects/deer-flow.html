@@ -6,7 +6,7 @@
     <title>bytedance/deer-flow | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,59 @@
 <li><strong>Skill 体系:</strong> SKILL.md 格式的可复用技能，类似 Claude Code 的 Skill 机制</li>
 <li><strong>Python 3.12+ / Node.js 22+:</strong> 现代技术栈，前后端分离</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>DeerFlow 是 Agent 编排层，介于入口渠道（使用者/上游系统）与模型供应商、工具/外部系统之间，并以会话/状态/审计作为控制边界</td>
+<td>基于"super-agent, subagents, sandbox, orchestration"标签与 Super Agent Harness 定位做的抽象，未替代源码审计</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者/上游系统 → 入口与身份边界 → 项目编排与运行时（超级 Agent + 子 Agent + Skill 体系） → 模型/推理服务 与 工具/外部系统（含 Docker/gVisor 沙盒） → 会话/状态/审计（含短/长期记忆）回写</td>
+<td>主路径来源于"层级化编排 + 沙盒 + 记忆"描述；具体协议、传输与持久化实现待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展速度（Skill/子 Agent 数量）与沙盒权限隔离、可观测性、模型供应商耦合之间的平衡；Super Agent 模式的可靠性与 LLM 成本尚未在大规模长时任务中验证</td>
+<td>权衡来源于"Skill 驱动 + 沙盒 + 成本高昂 + 可靠性待验证"表述；2.0 重写成熟度有限</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一入口渠道 + 最少工具权限 + 可审计日志下，先验证短/长期记忆与子 Agent 调度可达，再逐步扩接入面与沙盒类型</td>
+<td>PoC 步骤基于"先最小化验证 + 验收安全/成本/SLO/退出路径"建议；小时/天级长周期稳定性待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>DeerFlow 的核心架构启发是"Agent 层级化编排"——不是让一个 Agent 做所有事，而是让超级 Agent 充当"项目经理"，将子任务分派给专门的子 Agent。这种模式映射了人类组织的管理结构（经理 → 执行者），在复杂任务上比扁平的多 Agent 对话更可控。其沙盒设计也值得借鉴——Agent 执行代码必须在隔离环境中，防止宿主系统被破坏。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目编排与运行时 Super Agent Harness]
+    C --> M[模型或推理服务 供应商待核验]
+    C --> T[工具与外部系统 沙盒 Docker/gVisor 待核验]
+    C --> SK[Skill 体系 SKILL.md 可扩展]
+    C --> S[会话 状态 审计 含短/长期记忆 待核验]
+    M --> C
+    T --> C
+    SK --> C
+    S --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型项目（快速成长期）。</strong> DeerFlow 正从"Deep Research 工具"向"通用 Super Agent Platform"转型。2.0 版本的完全重写表明团队有长期野心——不只是做一个研究工具，而是要做 Agent 时代的基础设施。竞争对手包括 OpenAI Deep Research、Google Gemini Deep Research，以及开源的 LangGraph、CrewAI。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>成本高昂:</strong> 长周期复杂任务需要大量 LLM 调用，API 成本可能非常高</li>
 <li><strong>可靠性待验证:</strong> Super Agent 编排子 Agent 的模式在真实复杂场景中的可靠性尚需验证</li>
@@ -62,7 +110,7 @@
 <li><strong>字节开源承诺:</strong> 字节跳动的开源项目有"突然停更"的风险（参考部分历史项目）</li>
 <li><strong>与 Coze 的关系:</strong> 字节同时维护 Coze（闭源 Agent 平台）和 DeerFlow（开源），资源分配可能矛盾</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs OpenAI Deep Research:</strong> 闭源 SaaS vs 开源框架，DeerFlow 可私有化部署</li>
 <li><strong>vs LangGraph:</strong> LangGraph 是代码优先的编排库，DeerFlow 是完整的 Agent 平台</li>
@@ -70,9 +118,9 @@
 <li><strong>vs Coze:</strong> Coze 是字节的闭源 Agent 平台，DeerFlow 是开源版，可能存在内部竞争</li>
 <li><strong>vs Claude Code / Codex:</strong> 这些是编码专用 Agent，DeerFlow 面向更通用的研究和工作任务</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是，高优先级。</strong> DeerFlow 代表了 Agent 编排的前沿方向——Super Agent + 子 Agent + 沙盒 + 记忆的完整架构。其 2.0 重写后的架构设计值得深入研究。尤其关注：子 Agent 编排的可靠性、沙盒安全机制、Skill 生态的形成。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>2.0 版本的真实使用案例和可靠性反馈</li>
 <li>Skill 生态是否形成（社区贡献的 SKILL.md 数量和质量）</li>

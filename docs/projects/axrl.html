@@ -6,7 +6,7 @@
     <title>XYZ-AI-Lab/axrl | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,73 @@
 <li><strong>降低 idle 时间</strong>：partial rollout + 轻量控制面调度，减少长尾轨迹与工具延迟导致的 rollout/training 资源闲置。</li>
 <li><strong>handle-based 数据移动 + 上下文打包</strong>：重负载数据（routing replay、多模态 artifact）按需读取，trainer worker 按需消费，控制面保持轻量。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Agentic RL 后训练框架，定位于 SGLang（rollout）与 Megatron（trainer）之间的系统契约层，不替代底层引擎</td>
+<td>依据 README 明示的"SGLang rollout + Megatron 训练"组合与"系统层框架"自定位；具体进程边界与 RPC 协议未公开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>多轮 rollout（300+ 轮）→ rollout-trainer 一致性校验（tokenization/logprobs/routing/packing/weight sync）→ 训练样本构建 → Megatron 训练</td>
+<td>多轮规模与一致性维度来自档案；训练样本构造与权重同步实现细节需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多算法可配（PPO/GRPO/GRPO2/GSPO/TOPR/TIS）换取与 SGLang+Megatron 的强绑定，扩展性受限于引擎组合</td>
+<td>算法列表与引擎绑定来自档案；其他引擎（vLLM/DeepSpeed）的迁移成本未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 SGLang+Megatron 最小 GPU 配置上跑通 PPO 单环境短轨迹，对齐 tokenization/logprobs/routing 三项一致性，再引入 GRPO 与长轨迹</td>
+<td>官方声称支持该子集；具体硬件门槛、SGLang/Megatron 版本兼容性与部署形态"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>AxisRL 的核心启发是：<strong>在多轮 Agent RL 中，系统层的"一致性契约"比算法本身更决定成败。</strong> 算法（PPO/GRPO）是已知的，但 tokenization 偏差一个 token、weight sync 晚一版、logprobs 计算路径不同，都会在多轮累积后放大为 reward 不稳定。AxisRL 把这些边界显式化并提供调试工具，是从"炼丹"走向"工程"的关键。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Agent 环境与工具调用] --> B[SGLang rollout<br>多轮轨迹 300+]
+    B --> C{rollout-trainer<br>一致性边界<br>待核验协议}
+    C -- mismatch 分析 / spike replay --> D[Megatron trainer<br>PPO GRPO GRPO2 GSPO TOPR TIS]
+    D -- weight sync 频率待核验 --> B
+    C --> E[控制面调度<br>partial rollout · handle 化数据移动]
+    E --> B
+    E --> D
+    F[外部环境层<br>如 AgentENV Firecracker microVM] -.待核验集成路径.-> A
+    D --> G[奖励与样本构建<br>多轮奖励聚合方式待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent RL 后训练框架赛道，AxisRL 定位为<strong>系统层框架</strong>——它不替代 SGLang/Megatron，而是处理它们之间的系统契约。与 AgentENV（环境实例层）互补：AxisRL 管 rollout↔trainer 一致性，AgentENV 管 Agent↔环境交互实例。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规模与效果为官方声称</strong>：300+ 轮、数百亿参数规模需独立复现案例佐证，当前 0 open issues 可能说明社区使用尚浅。</li>
 <li><strong>部署门槛高</strong>：依赖 SGLang + Megatron + 大规模 GPU 集群，非一般团队能复现。</li>
 <li><strong>文档/教程成熟度未知</strong>：作为新框架，上手成本与社区生态待观察。</li>
 <li><strong>强绑定 SGLang/Megatron</strong>：若团队用其他引擎（vLLM/DeepSpeed），集成成本未知。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs OpenRLHF / TRL</strong>：通用 RL 后训练框架，单轮任务成熟；AxisRL 专注多轮 Agent RL 的系统层一致性。</li>
 <li><strong>vs AgentENV（昨日）</strong>：互补关系——AgentENV 提供环境实例（Firecracker microVM），AxisRL 处理 rollout-trainer 一致性。</li>
 <li><strong>vs veRL</strong>（字节）：同为 Agent RL 框架，设计哲学与引擎选择不同。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent RL 后训练是确定性方向，rollout-trainer 一致性是真实痛点。跟踪重点：独立大规模复现案例、与 AgentENV/veRL 等的组合实践、社区采用度。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>独立团队在真实 Agent RL 任务中的复现案例与稳定性报告。</li>
 <li>是否支持非 SGLang/Megatron 引擎组合（如 vLLM + DeepSpeed）。</li>

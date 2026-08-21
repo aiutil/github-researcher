@@ -35,8 +35,35 @@ LiteRT 的 GitHub stars（3,263）远低于其真实影响力——因为其核�
 4. **量化推理:** 支持 INT8/INT4 量化推理，在精度损失可控的前提下大幅提升推理速度和降低内存
 5. **WebAssembly 支持:** 通过 LiteRT Web 版本，可在浏览器中高效运行 ML 模型
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 移动端/嵌入式/Web 设备上的本地推理运行时，与 MediaPipe、ML Kit 等 Google AI 工具链共生，覆盖 Android、iOS、嵌入式 Linux 与 WebAssembly 四类运行时 | 平台与生态整合描述来自档案；具体集成接口、SDK 边界、Maven/Gradle 坐标未在档案中给出 |
+| 主路径 | 模型（FlatBuffer）→ LiteRT 解释器/运行时 → Delegate 选定的硬件后端（GPU/NPU/DSP/CoreML/WASM）→ 量化推理结果回写 | FlatBuffer、Delegate、量化、约 1MB 核心库在档案中有明确描述；各 Delegate 的具体协议与算子覆盖度未核验 |
+| 关键权衡 | 跨平台 API 一致性 vs 各端硬件加速最优（Delegate 可插拔后端抽象是核心杠杆） | Delegate 机制在档案中明确；各硬件后端成熟度、厂商私有扩展未在档案中证实 |
+| 最小 PoC | 用单段量化模型（如 MobileNet）在 Android 上验证 GPU/NPU Delegate 的推理延迟、APK 体积增量与冷启动时间，再扩到 iOS 与 WebAssembly | 量化等级、具体性能数字、APK 体积基线未在档案中给出；标注"待核验" |
+
 ## 架构启发
 LiteRT 的架构体现了「跨平台抽象」的设计挑战——需要在 Android（Java/Kotlin）、iOS（Swift）、Linux（C++）和 Web（JS/WASM）四个截然不同的运行时环境中保持统一的 API 和一致的推理行为。其 Delegate 机制是关键创新——将硬件加速抽象为可插拔的后端，允许不同设备的芯片厂商各自实现最优 delegate。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    M[FlatBuffer 模型文件 待核验具体格式] --> R[LiteRT 运行时 C++ 核心]
+    R --> D{Delegate 路由 待核验默认策略}
+    D --> GPU[GPU 后端 OpenCL/Vulkan 待核验覆盖]
+    D --> NPU[NPU 后端 Hexagon 等 待核验厂商列表]
+    D --> CMS[CoreML 后端 iOS]
+    D --> WASM[WebAssembly 后端 浏览器]
+    R --> Q[INT8/INT4 量化推理 待核验精度损失数据]
+    R -.生态整合.-> MP[MediaPipe / ML Kit Google 工具链]
+    U[Android iOS 嵌入式 浏览器 调用方] --> R
+    Q --> U
+```
 
 ## 定位判断
 属于设备端 AI 推理生态的核心基础设施。在边缘 AI 运行时赛道中，LiteRT（Google）与 CoreML（Apple）、ONNX Runtime（Microsoft）、ExecuTorch（Meta/PyTorch）形成四方竞争格局。LiteRT 在 Android 生态拥有统治地位。

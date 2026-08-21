@@ -48,6 +48,15 @@ ego lite 的热度是 **"Agent 浏览器自动化的真实痛点 × 范式创新
 5. **`ego-browser` Skill 协议**：标准 Skill 安装（`npx skills add citrolabs/ego-lite`），将浏览器暴露为一组页内 JavaScript 工具
 6. **本地优先**：浏览数据留在设备上，仅记录是否选择 Chrome 迁移
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 以用户现有 Chrome 为共享底座，Agent 通过独立 Space 复用登录态/Cookie/扩展；Skill 层开源但浏览器核心闭源，macOS only | 档案明确 Skill 层开源、核心闭源、仅 macOS；跨平台与内核审计状态标注"待核验" |
+| 主路径 | Agent 写 JS 函数 → `ego-browser` Skill 暴露页内工具（snapshot/fill/click/wait/navigate/capture）→ 多步任务一次执行而非 CLI 多轮 | 工具名与"code-driven"标签有据；具体 RPC/协议未在档案披露，标注"待核验" |
+| 关键权衡 | 多 Space 并行 + 登录态继承带来的效率收益 vs. Agent 持有银行/邮箱凭据的权限风险 | 并行 Space 与 Chrome 迁移有明文；细粒度权限 Scope 档案明示缺失 |
+| 最小 PoC | 在 macOS 单 Space 内用 Claude Code 或 Codex 安装 `ego-browser` Skill，跑一次需登录态的表单/抓取任务，验收指标：完成步骤数、Token 消耗、是否成功继承登录态 | Skill 安装命令 `npx skills add citrolabs/ego-lite` 有据；性能倍数（2.5x）属官方自述，未独立验证 |
+
 ## 架构启发
 ego lite 代表了 Agent 浏览器自动化的**范式迭代**：
 
@@ -59,6 +68,27 @@ ego lite 代表了 Agent 浏览器自动化的**范式迭代**：
 | 页面理解 | DOM 抓取（脆弱） | 内核级 Snapshot（精确） |
 
 更深层启发：**Agent 工具的效率瓶颈不在模型能力，而在交互范式**。CLI 循环每轮消耗一次 LLM 推理，而 Code 驱动让 Agent 把多步操作编译为一段代码一次执行——这本质上是"把推理成本从 N 次降到 1 次"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者 Chrome 会话与登录态] --> M[首次启动 Chrome 数据迁移 Cookie 扩展 书签]
+  M --> B[共享浏览器内核 闭源 待核验]
+  B --> S1[Space 1 Agent 工作区]
+  B --> S2[Space 2 Agent 工作区]
+  B --> SN[Space N 并行隔离]
+  S1 --> K[ego-browser Skill 层 开源 JS 工具集]
+  S2 --> K
+  SN --> K
+  K --> A[Claude Code 或 Codex 或 Cursor 等 Agent CLI]
+  A --> J[页内 JS 函数 一次执行多步任务]
+  J --> S1
+  K --> R[风险边界 Agent 持有用户凭据 缺少细粒度权限 Scope]
+  B --> P[平台边界 macOS only Windows Linux 待核验]
+```
 
 ## 定位判断
 **工具型，有平台化潜力。** 当前是 Agent 浏览器自动化工具的有力竞争者。长期价值取决于能否从"工具"升级为"平台"——开放 Space API 供第三方编排、构建经验积累系统。如果成功，可能成为"Agent 的浏览器层"。Trendshift 已收录（#42334），表明已进入趋势雷达。

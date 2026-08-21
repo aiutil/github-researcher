@@ -52,20 +52,33 @@ SELECT df.start(
 );
 ```
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | pg_durable 是 PostgreSQL 扩展形态的容错工作流运行时，承载数据层内 DAG 编排；其外部边界是 PG 客户端/应用调用方，内含 SQL 定义、检查点持久化、后台 worker。 | 仅基于 Rust 实现、`shared_preload_libraries` 加载、SQL DAG 操作符、PostgreSQL 检查点描述；具体系统表、外部协议未在档案中给出。 |
+| 主路径 | SQL 工作流定义 → 后台 worker 取出 → 分步执行（含并行 fan-out）→ 每步 checkpoint → 崩溃后从检查点恢复；状态完全位于 PG 内。 | 基于“自动 checkpoint 到 PG 系统表”、“崩溃/重启后自动恢复”、“后台 worker 异步执行”描述；具体恢复协议、锁模型未在档案中给出。 |
+| 关键权衡 | 用 SQL-shaped 控制流换取零外部编排基础设施；代价是表达力受限于 SQL 包装（如循环/分支/错误处理）、无法在云托管 PG 装扩展、对 PG 内核版本耦合。 | 基于“SQL-shaped 限制”、“无法安装 PG 扩展的云托管环境”、“与 Temporal 定位差异”描述；性能基准、扩展性上限未在档案中给出。 |
+| 最小 PoC | 选一条现有 ETL/embedding 管道（chunk → embed → upsert），用 `~>` 与 `|=>` 在同一 PG 实例内复刻，验证：崩溃注入后从检查点续跑、与原 cron+worker+status table 方案对比延迟与运维面。 | 基于示例 SQL、`df.start()` 入口、嵌入管道适用场景描述；具体 PoC 拓扑、崩溃注入方法、量化指标未在档案中给出，待核验。 |
+
 ## 架构启发
 
 pg_durable 代表了 **data-compute convergence**（数据-计算收敛）趋势：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    subgraph "传统 3 层架构"
-        A1[Orchestrator<br/>Airflow/Temporal] --> A2[Worker Pool]
-        A2 --> A3[(PostgreSQL)]
-    end
-    subgraph "pg_durable 单层架构"
-        B1[SQL Workflow Definition] --> B2[pg_durable Runtime]
-        B2 --> B3[(PostgreSQL<br/>执行 + 检查点 + 状态)]
-    end
+graph TB
+    Client[应用调用方<br/>SQL 客户端] -->|提交工作流 SQL| Runtime[pg_durable Runtime<br/>PG extension / 后台 worker]
+    Runtime -->|step 执行| Exec[分步执行<br/>sequential ~> / parallel |=>]
+    Exec -->|每步 checkpoint| Checkpoint[(PostgreSQL 系统表<br/>检查点 + 状态)]
+    Checkpoint -->|崩溃后恢复| Runtime
+    Exec -->|读/写业务数据| Data[(PostgreSQL 业务表)]
+    HorizonDB[Azure HorizonDB<br/>外部商业化部署形态<br/>待核验] -.托管.-> Runtime
+    Limitation[SQL-shaped 控制流上限<br/>复杂分支/循环/错误处理<br/>待核验] -.约束.-> Exec
+    Risk[云托管 PG 不可装扩展<br/>早期 52 open issues<br/>微软投入优先级不确定] -.风险.-> Runtime
 ```
 
 **核心洞察**：当工作流本质是数据转换（chunk → embed → upsert），把编排逻辑放在数据旁边比维护一个独立编排集群更简洁。这不是取代 Temporal（跨系统编排仍需要），而是**消除不必要的编排器**。

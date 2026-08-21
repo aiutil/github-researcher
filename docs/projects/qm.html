@@ -6,7 +6,7 @@
     <title>yc-software/qm | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,26 +46,73 @@
 <li><strong>Slack + Web 统一身份</strong>：同一身份和配置在 Slack 和 Web 间无缝切换；Slack 是可选的 in-process plugin，由 core 启动和监督。</li>
 <li><strong>Org 级安全策略</strong>：Strict（每次工具调用需人工审批）/ Auto（默认，分类器筛外部数据）/ Dangerous（无筛选无暂停）三档，且 scope 只能收紧不能放松 org 策略。预声明命令策略（审批规则 + 硬拒绝递归删除/破坏性 SQL）在所有 posture 下生效。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>qm 是 TypeScript + Fastify 写的 headless core，向上承接 Slack 插件（in-process）与 Web 入口、同一身份配置跨渠道复用，向下按 scope 分隔独立 sandbox/工具/已登录服务/记忆，再通过统一执行接口驱 Pi/OpenCode/Claude Code/Codex 等 harness；位于 L5 应用产品层</td>
+<td>边界来自档案描述的"core 无关 harness、一切通过接口"分层与 per-scope sandbox 定义；具体持久化、部署拓扑、网络协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 Slack 或 Web 触发 → core 身份/策略/scheduler/agent loop 接管 → 在该 scope 的 sandbox 中以 <code>execute</code> 工具运行命令并使用 harness → 结果回写至 session store/memory 与组织审计</td>
+<td>路径基于"Slack + Web 统一身份"与"通过 execute 工具在 scope 沙箱中运行"两条档案陈述；harness 内部具体 prompt/工具调用协议待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>选择"harness 无关 core + per-scope sandbox"换来对上游 harness 演进的韧性，代价是结构性的上游 breaking-change 适配成本；安全策略三档（Strict/Auto/Dangerous）+ scope 只能收紧意味着用权限/可观测性换人力审批摩擦</td>
+<td>权衡论据直接引自档案"架构启发"与安全策略段落；Strict 模式可行性与 Auto 分类器效果档案明示未经安全审计</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以 Web 单入口 + 单一 Claude Code harness + Auto posture 启动一个三人 scope，先验证 sandbox 隔离强度与审计回放，再决定是否启用 Slack in-process 插件与扩展 scope 数</td>
+<td>依据为档案给出的"先单一渠道、最小权限、可审计日志"采用建议与 Slack in-process 插件"稳定性待核验"的风险提示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>qm 的分层很清晰：headless core（API/identity/policy/scheduler + agent loop）→ per-scope sandbox → 可选插件（web UI/admin panel/Slack）。这种"core 无关 harness、一切通过接口"的设计让它在 harness 快速迭代时有一定韧性。但也意味着它对上游 harness 的依赖是结构性的——如果 Claude Code/Codex 的 API 发生 breaking change，qm 的适配成本会很高。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[Slack 或 Web 用户] --> I[统一身份与策略入口]
+    I --> C[headless core: 身份 策略 调度 agent loop]
+    C --> X[per-scope sandbox 执行环境]
+    X --> H[harness 接口层: Pi OpenCode Claude Code Codex — 具体协议待核验]
+    H --> M[模型或推理服务]
+    H --> T[工具与已登录服务]
+    C --> S[session store memory 审计日志]
+    C --> R[组织策略 Strict Auto Dangerous]
+    R -.收紧不可放松.-> S
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 agent 生态分层中，qm 占据 <strong>L5 应用产品层</strong>——在 harness 本体（L1）、编排层（L3）、开发范式（L2）之上的产品化。它与 cindy（开箱即用单机客户端）的差异在于：qm 面向<strong>团队协同</strong>（多人 scope + Slack），cindy 面向<strong>个人异构组合</strong>（多 harness 混合驱动）。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>极早期项目</strong>：创建于 2026-07-29（3 天），1.4K⭐，生产部署案例未见。README 虽详细但"deploy it for your org"的承诺未经大规模验证。</li>
 <li><strong>上游 harness 依赖</strong>：Pi/OpenCode/Claude Code/Codex 都在快速迭代，qm 的 multi-harness 抽象层维护成本可能随上游 breaking change 线性增长。</li>
 <li><strong>Slack 集成深度待验证</strong>：Slack 作为 in-process plugin 的稳定性、并发会话处理、消息一致性在实际团队场景下未经检验。</li>
 <li><strong>安全模型依赖人工策略</strong>：Strict 模式下"每次工具调用暂停审批"在真实团队场景可能不可持续；Auto 模式的分类器筛外部数据的效果未经安全审计。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs omnigent（7.9K⭐）</strong>：omnigent 是 meta-harness 编排层（L3），qm 是应用平台（L5）。omnigent 更偏"管理多个 agent"，qm 更偏"让团队用 agent 协同"。抽象层次不同，但 qm 的 harness 无关 core 与 omnigent 的 transport 抽象层有概念重叠。</li>
 <li><strong>vs cindy（1.3K⭐）</strong>：cindy 是单机客户端（桌面+移动），qm 是团队平台（Slack+Web）。cindy 强调"多 harness 混合驱动 + 中途切换"，qm 强调"多人 scope + 协同"。</li>
 <li><strong>vs openworker（11.3K⭐）</strong>：openworker（Andrew Ng）是"本地优先 AI Coworker 交付成品"，更偏个人/审批门控；qm 更偏团队协作。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"harness 应用层产品化"趋势的代表项目跟踪。</strong> 关注其 per-scope sandbox 的实际隔离强度和 Slack 集成的生产稳定性。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>fork 增速 vs star 增速</strong>：如果 fork 持续高于同期项目，说明真实部署在增加；如果只有 star 涨，则可能只是品类热度。</li>
 <li><strong>上游 harness breaking change 的影响</strong>：观察 Claude Code/Codex 下一次大版本更新后 qm 的适配速度和 issue 数变化。</li>

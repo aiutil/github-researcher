@@ -38,8 +38,34 @@ Microsoft 官方桌面应用：录屏捕获一次真实工作会话（点击、�
 3. **源码发布模式**：不提供预编译二进制，而是 pin 一个 release commit + 本地构建（`curl install.sh | bash`，下载 pinned Node.js runtime + 构建精确 commit），添加"Skill Recorder (Source)"应用。不全局安装。这是可审计的发布方式，但对非技术用户有门槛。
 4. **跨平台**：macOS 为主目标，Windows 11（x64 + ARM64）支持，Ubuntu 也有应用条目。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | skill-recorder 是 Microsoft 官方桌面应用（Electron + TypeScript），捕获屏幕活动后调用 GitHub Copilot CLI 重建意图/步骤，面向 Scout/Copilot Cowork/Copilot Studio 输出 Skill 或 Automation | 强绑 Microsoft Copilot 生态，对 Claude Code/Codex 等 SKILL.md 格式的适用性未在档案中证实 |
+| 主路径 | 录屏事件流 → Electron 应用侧重建 → 提交 Copilot CLI（意图 + 有序步骤）→ 生成 SKILL.md（Skill）或计划触发器（Automation），强调优先调用 agent 原生工具（如 `gh` CLI）而非重放 UI 点击 | 实际协议、持久化、错误处理路径未披露，须源码核验 |
+| 关键权衡 | 录屏范式（"录一次教所有同类任务"的可泛化性）vs Copilot CLI 的意图重建质量：README 已承认复杂任务需人工审阅编辑；源码发布模式可审计但抬高业务用户门槛 | 复杂多步骤任务的意图重建准确率无公开评测；29→32 个 open issues 反映早期质量问题 |
+| 最小 PoC | 在 macOS 上 pin 一个 release commit 本地构建，跑一次"提交表单"类单步骤任务，验证 (a) Skill 输出可被 Copilot Cowork 复用，(b) 录屏→重建时间是否低于手写 SKILL.md；(c) 鉴权、退出路径与人工审阅成本 | 跨平台行为、Windows ARM64/Ubuntu 实际可用性、复杂任务失败模式未在档案中证实 |
+
 ## 架构启发
 核心启发是 **"观察→重建→泛化"的 skill 提取范式**。传统 skill 创作是"人写步骤文档"，skill-recorder 是"人做一次，模型重建步骤"。这与 Ponytail（约束输出）、loop-engineering（设计循环）从不同角度共同指向：**agent 的能力获取正在从"手写 prompt/skill"走向"从人类行为提取/约束生成"**。trade-off 是：重建质量依赖 Copilot CLI 的理解能力，复杂任务的意图重建可能不准确，需人工审阅编辑（README 也强调"Review and edit until it reads right"）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者 上游系统] --> I[入口与身份边界 须 Copilot 访问权限]
+    I --> C[项目编排与运行时 Electron 桌面应用]
+    C --> R[录屏捕获 点击 应用切换 页面 可选语音]
+    R --> M[GitHub Copilot CLI 重建意图与有序步骤]
+    M --> P[产物分支 SKILL.md Skill 或 计划触发器 Automation]
+    P --> T[目标运行时 Scout Copilot Cowork Copilot Studio]
+    C --> S[会话 状态 审计 需人工审阅编辑]
+    M -.Copilot CLI 依赖 待核验.-> C
+    P -.跨生态 SKILL.md 兼容性 待核验.-> T
+```
 
 ## 定位判断
 在 agent skill 生态中占据**"skill 创作入口工具"**位置——在 Superpowers/ECC/mattpocock skills（成品 skill 库）与 Ponytail/loop-engineering（skill 设计方法论）之间，提供"从人类执行到 skill"的低门槛入口。强绑定 Microsoft Copilot 生态（Scout/Copilot Cowork/Copilot Studio），跨生态适用性有限。

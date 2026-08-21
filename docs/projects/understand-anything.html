@@ -6,7 +6,7 @@
     <title>Understand-Anything | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,26 +54,72 @@
 <li><strong>知识库图谱化</strong>：支持 LLM wiki 模式，确定性解析器提取 wikilinks + LLM 发现隐含关系</li>
 <li>作为 Claude Code Plugin 原生集成，跨 8+ Agent 平台兼容</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>以 TypeScript 实现的 Agent 编排层为核心，对外暴露 Claude Code、Codex、Cursor、Copilot、Gemini CLI、OpenCode、Vibe CLI、Trae 等 8+ Coding Agent 插件入口；后台构建结构图与领域图双层知识图谱（节点含文件/函数/类/依赖），并对接 Karpathy-pattern LLM wiki 作为知识库输入</td>
+<td>仅基于分类"平台候选"、tags、Claude Code Plugin 描述与官网/仓库链接，具体协议、传输层、鉴权、部署形态未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>入口渠道（插件/CLI/dashboard）→ 多 Agent 分析管线 → 知识图谱生成（结构图+领域图+Guided Tours）→ 交互式仪表板（探索/搜索/问答）→ 可视化输出（live demo）</td>
+<td>"多 Agent 分析管线"与"Guided Tours 自动生成"为档案所述，具体调度框架、模型路由、状态机、持久化均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Agent 驱动语义理解的图谱质量 vs 大型代码库的 token 成本与耗时；跨 8+ Agent 平台扩展速度 vs 实现一致性；视觉冲击力驱动传播 vs 实际生产可用性；开源（MIT）vs Egonex-AI 商业化（"Understand Anyone"）边界</td>
+<td>档案仅声明 MIT、Egonex 商业化路径与 token 成本"可能很高"的风险，性能基准、SLA、收费模式未列</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一入口渠道（建议 Claude Code Plugin）→ 接入一个中型代码库 + 一份 LLM wiki → 启用最小 Agent 权限与可审计日志 → 验收项：图谱节点覆盖率、Guided Tours 顺序合理性、token 单次成本、跨 Agent 复现一致性、退出/卸载路径</td>
+<td>PoC 范围由档案推导，未给出具体指标阈值或推荐代码库规模</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><strong>从"读取代码"到"交互式图谱理解"的范式转换。</strong> 传统代码理解工具做静态索引，Understand-Anything 用 Agent 管线做语义理解并输出可探索的图谱。对 Agent 工具链设计有启发：Agent 的分析结果应该可视化和可交互，而非仅文本输出。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界待核验]
+    I --> P[插件与CLI适配层<br/>Claude Code Codex Cursor Copilot<br/>Gemini CLI OpenCode Vibe CLI Trae]
+    P --> O[多Agent分析管线<br/>编排与运行时]
+    O --> KG[知识图谱构建<br/>结构图+领域图]
+    KG --> D[交互式仪表板<br/>探索 搜索 问答 Guided Tours]
+    KW[LLM Wiki输入<br/>Karpathy-pattern] --> O
+    O -.状态 控制 风险边界.-> S[会话 状态 审计 日志<br/>待核验]
+    B[Egonex-AI商业化<br/>Understand Anyone] -.开源vs商业边界.-> O
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选。</strong> 77.8K stars 说明需求强烈，已形成 "Agent 代码理解工具链" 赛道的定义性项目。有商业化（Egonex AI）路径。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>图谱质量依赖 Agent 分析深度</strong> — 大型代码库的分析 token 成本可能很高</li>
 <li><strong>视觉传播效应</strong>：交互式图谱天然利于传播，star 数可能高于实际生产使用</li>
 <li>已迁移到 Egonex-AI 组织，开源 vs 商业化的平衡需观察</li>
 <li>知识库模式依赖 LLM wiki 的特定格式，通用性待验证</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>CodeGraph / 其他代码图谱工具</strong>：Understand-Anything 以交互式 + Agent 驱动为差异化</li>
 <li><strong>Sourcegraph / code2flow</strong>：静态分析工具，Understand-Anything 是 Agent 时代的同类</li>
 <li><strong>Karpathy LLM Wiki</strong>：Understand-Anything 的知识库模式直接支持该模式</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 77.8K stars + 交互式图谱 + 跨平台兼容，是代码理解赛道的代表性项目。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>在超大型代码库（100万行+）中的分析成本和质量</li>
 <li>Egonex AI 商业化产品的形态（"Understand Anyone"）</li>

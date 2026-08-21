@@ -40,10 +40,36 @@ url: "https://github.com/qmd-project/qmd"
 3. **全本地 LLM**：通过 node-llama-cpp 跑 GGUF 模型，不需要云端 API，纯本地推理
 4. **MCP Server 原生集成**：query、get、multi_get、status 四个工具直接暴露为 MCP 工具
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | qmd 是 TypeScript CLI + MCP Server，节点为 CLI 用户与 MCP 客户端（如 Claude Desktop、Claude Code），运行依赖本地文档集合与 GGUF 模型（node-llama-cpp），离线无云端 API。 | 边界仅依据档案"一句话定位""MCP 协议集成""全本地 LLM"；未列具体文档格式、模型族、文件监听机制。 |
+| 主路径 | 主路径为：本地文档 → BM25 全文检索 + 向量语义搜索 → LLM reranking（三层级联）→ context 树（含父级层级）→ MCP 工具（query / get / multi_get / status）或 CLI 输出（`--json`、`--all --files --min-score 0.3`）。 | 组件顺序与工具集合为档案明文；context 树内部编码方式、reranker 与向量索引的耦合细节档案未给。 |
+| 关键权衡 | 隐私/离线（全本地 GGUF）↔ 模型质量与索引成本（每次文档变化需重新 embed，大库成本高）；单用户简洁 ↔ 不支持多用户协作。 | 权衡点均来自档案"风险/局限"与"为什么值得关注"；未给出量化性能、索引时延、模型基准。 |
+| 最小 PoC | 在单机 Node 环境 `npm install -g @tobilu/qmd`，接入一份本地文档集合与一个 GGUF 模型，对 Claude Desktop 或 Claude Code 暴露 MCP 四个工具，以小语料验证 BM25+向量+rerank 端到端返回与 context 树形态。 | 安装命令、MCP 工具名、CLI flag 取自档案；未列模型下载来源、具体配置项与最低硬件门槛，待核验。 |
+
 ## 架构启发
 1. **context 树设计**：检索结果不只是"相关文档列表"，而是带着层级上下文的树状结构
 2. **Agent 记忆系统的本地化路径**：qmd 是"个人知识库 + AI Agent"的轻量级解法
 3. **MCP 工具暴露**：把搜索能力通过 MCP 暴露给 AI Agent，比 API 更规范，比插件更通用
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[本地文档集合<br/>Notes/Meeting/Work docs/KB] --> D[索引与检索层<br/>BM25 + 向量语义]
+    D --> E[LLM Reranking<br/>node-llama-cpp / GGUF<br/>模型细节待核验]
+    E --> F[Context 树构建<br/>层级上下文编码方式待核验]
+    F --> G[MCP Server<br/>query / get / multi_get / status]
+    F --> H[CLI 输出<br/>--json / --all --files --min-score 0.3]
+    G --> I[MCP 客户端<br/>Claude Desktop / Claude Code 等<br/>具体清单待核验]
+    H --> J[CLI 用户]
+    K[文档变更触发重 embed<br/>触发机制与成本待核验] --> D
+</brief>
+```
 
 ## 定位判断
 **工具型** — 目前是 CLI 工具，但定位是"Agent 的本地记忆系统"。如果 AI Agent 的本地上下文管理成为标配，有从工具演化为基础设施组件的潜力。

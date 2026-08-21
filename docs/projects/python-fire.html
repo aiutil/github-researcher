@@ -6,7 +6,7 @@
     <title>google/python-fire | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,11 +53,56 @@
 <li><strong>交互模式:</strong> <code>fire.Fire()</code> 无参数调用进入交互式 REPL，自动暴露所有变量</li>
 <li><strong>Help 自动生成:</strong> 基于 docstring 自动生成 <code>--help</code> 输出</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>google/python-fire 是一个纯客户端 Python 库，位于"Python 脚本 ↔ Shell 调用方"边界：通过 <code>inspect</code> 与 <code>__dict__</code> 对任意 Python 对象做运行时内省，把对象结构投影为 argv 解析结果；不引入独立服务、不连外部模型或工具源。</td>
+<td>基于档案"它解决的问题 / 自动内省 / 任意对象支持"段；未含网络协议、部署形态。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Shell argv → Fire 入口 → 对象内省（函数签名 / 类方法 / dict 键）→ 类型转换 → 调用目标对象 → 打印返回值；交互模式下进入 REPL 暴露当前变量。</td>
+<td>基于档案"嵌套命令 / 自动类型转换 / 交互模式 / Help 自动生成"；未涉及异步或持久化路径。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>内省隐式性 vs CLI 可控性：Fire 换取零样板与上手速度，但牺牲了精细的子命令分组、参数校验 hook 与显式错误信息，复杂 CLI 场景应改用 Click/Typer。</td>
+<td>基于档案"风险/局限"与"vs Click / vs Typer"段；类型推导的具体边界以源码为准。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>对一个已有的 Python 类执行 <code>fire.Fire(MyClass)</code>，验证方法自动成为子命令、基础类型（int/float/bool）可被字符串自动转换、<code>--help</code> 由 docstring 生成；以此确认隐式行为可控后再纳入内部脚本工具链。</td>
+<td>可达项来自档案"关键技术亮点"六条；未证实的异步、类型注解支持标为待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Python Fire 的核心启发是 <strong>"CLI 是 Python 对象的投影"</strong>。传统思维是"为脚本设计 CLI"；Fire 的思维是"Python 对象本身就是 CLI 的数据模型"。这种"对象即接口"思想影响了后续项目（如 Typer、Click 的部分设计）。更深层的启发是：<strong>最佳的工具是让开发者忘记工具存在的工具</strong>——Fire 让开发者只写普通 Python，CLI 自动出现。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Shell[Shell argv 调用方] --> Entry[fire.Fire 入口]
+  Entry --> Inspect[对象内省: inspect 与 dict]
+  Inspect --> Convert[自动类型转换 int/float/bool]
+  Convert --> Invoke[调用目标 Python 对象 函数 类 字典 模块]
+  Invoke --> Return[返回值打印与 Help 输出 docstring 派生]
+  Entry -. 交互模式 .-> REPL[REPL 暴露当前变量]
+  Invoke -. 复杂 CLI 校验 hook .-> Risk[待核验: 参数校验与异步支持]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟工具型项目。</strong> Python Fire 是快速脚本 CLI 化的首选工具，适合内部工具、数据脚本、原型。对于需要精细控制 CLI 体验（复杂子命令、参数验证）的正式产品，Typer 或 Click 更合适。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>隐式行为:</strong> 自动内省的"魔法"在某些场景不够可控，错误信息可能晦涩</li>
 <li><strong>类型推导局限:</strong> 复杂类型（自定义类、Union）可能推导失败</li>
@@ -65,16 +110,16 @@
 <li><strong>维护节奏较慢:</strong> Google 内部项目，外部贡献活跃度有限</li>
 <li><strong>Typer 竞争:</strong> Typer（基于类型注解）更现代，逐渐成为新项目首选</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Typer:</strong> Typer 基于 Python 类型注解，类型安全 + 自动文档；Fire 基于内省，更"魔法"但类型不安全</li>
 <li><strong>vs Click:</strong> Click 是显式装饰器风格，控制力强但样板多；Fire 是隐式自动，最简洁</li>
 <li><strong>vs argparse (stdlib):</strong> 标准库，无依赖但样板代码多</li>
 <li><strong>vs Docopt:</strong> Docopt 从 docstring 解析，风格独特但灵活度低</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> Python Fire 已高度成熟，演进缓慢。建议关注是否集成类型注解（向 Typer 靠拢），否则将逐步被 Typer 替代。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否支持 Python 类型注解（追赶 Typer 趋势）</li>
 <li>是否推出异步 CLI 支持</li>

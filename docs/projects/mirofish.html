@@ -6,7 +6,7 @@
     <title>MiroFish | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,36 +52,72 @@
 <li>预测 + 优化 + 协作一体化设计</li>
 <li>声称支持多种应用场景（预测、调度、优化等）</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MiroFish 定位于"算法层"——位于编排层（CrewAI/LangGraph 等）与模型层之间，提供群体智能算法封装；并非完整 Agent 应用框架</td>
+<td>边界由档案"与同类项目的关系"和分层图推断；具体入口协议、SDK 形态、依赖模型供应商清单未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>业务请求 → 编排框架调用 MiroFish API → 群体智能算法（PSO/ACO/蜂群等）在多 Agent 协作中产出优化结果 → 回写会话状态</td>
+<td>算法名称来自档案；调用方式、状态回写通道、是否真有"预测+优化+协作一体化"实现待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>群体智能算法适用于连续空间参数优化，与 LLM 离散 token 输出之间存在适配鸿沟；抽象层过高会落入"通用陷阱"</td>
+<td>风险点由档案"风险/局限"明示；具体如何桥接连续-离散空间在档案中未描述</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一个具体多 Agent 协作场景，与传统优化基线（如随机搜索/贪心）对比收敛速度与解质量；同步验证 API 稳定性、文档完整度与 license</td>
+<td>档案明确"暂不建议企业 PoC"，"无 benchmark 数据"；算法种类、应用场景的工程化成熟度均待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>群体智能如果成功工程化，可能成为多 Agent 框架的"算法层"：</p>
-<pre class="mermaid">graph TB
-    subgraph "多 Agent 系统分层"
-        A[应用层<br>具体业务场景]
-        B[编排层<br>CrewAI / LangGraph]
-        C[算法层<br>MiroFish?<br>群体智能]
-        D[模型层<br>GPT / Claude / Gemma]
-    end
-    A --> B --> C --> D
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[业务场景<br>应用层] --> B[编排框架<br>CrewAI / LangGraph<br>待核验具体集成方式]
+    B --> C[MiroFish<br>群体智能引擎 API]
+    C --> D1[PSO 算法]
+    C --> D2[ACO 算法]
+    C --> D3[蜂群算法<br>其他算法待核验]
+    C -->|风险边界：连续参数 vs 离散 token| E[LLM 模型层<br>GPT / Claude / Gemma<br>待核验供应商清单]
+    C -->|状态/控制边界| F[会话状态回写<br>持久化方式待核验]
 </pre>
-<h2 id="_7">定位判断</h2>
+<h2 id="_8">定位判断</h2>
 <p><strong>学习型 → 平台候选的过渡阶段</strong>。目前缺乏足够的工程验证，但概念方向正确。如果 API 设计得当且有 benchmark 数据支撑，可能升级为平台候选。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>"通用"的陷阱</strong>：抽象层过高可能什么都做不好</li>
 <li><strong>Benchmark 缺失</strong>：缺乏与传统优化方法的对比数据</li>
 <li><strong>群体智能在 LLM Agent 中的适用性存疑</strong>：群体智能优化的是连续空间参数，LLM 输出是离散的 token 序列，两者之间的适配不直观</li>
 <li><strong>泡沫风险中等</strong>：概念吸睛但落地案例不足</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs agency-agents</strong>：agency-agents 是 Agent 模板集合（应用层），MiroFish 是算法引擎（底层）。理论上 MiroFish 可以为 agency-agents 提供优化能力。</li>
 <li><strong>vs CrewAI / LangGraph</strong>：MiroFish 是这些编排框架的潜在依赖，而非竞争者。</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>⚠️ 观望</strong>。概念方向正确但工程验证不足。需要等待 benchmark 数据和真实使用案例。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>暂不建议</strong>。除非企业有明确的多 Agent 优化需求且有研究团队可以评估。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>是否发布 benchmark 数据——与经典优化方法的对比</li>
 <li>是否被主流 Agent 框架集成</li>

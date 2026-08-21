@@ -6,7 +6,7 @@
     <title>OpenCLI | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,31 +56,82 @@
 <li><strong>适配器生态</strong> — 覆盖社交媒体、内容平台、桌面 App（Cursor/Trae/Codex/ChatGPT 等 Electron 应用）</li>
 <li><strong><code>opencli doctor</code> 诊断</strong> — 环境检查工具，降低配置摩擦</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenCLI 由 npm CLI + Chrome 扩展 + 本地 daemon + 桌面 App 组成，对外暴露 CLI 与 <code>opencli-browser</code>/<code>opencli-adapter-author</code> 两个 Agent Skill，作用面是"已登录 Chrome 中被打开的网站"。</td>
+<td>档案明确列出三类入口与两个 skill；daemon 与扩展之间的协议未描述，标为待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent/人类下发 CLI 命令 → 扩展在已登录 Chrome 中定位目标网站 → 由 Bilibili/知乎/小红书/Reddit/HackerNews/Twitter-X 等内置适配器或 <code>opencli-browser</code> 原语执行导航/点击/输入/提取 → 结果回写，可经 <code>opencli doctor</code> 排错。</td>
+<td>路径与适配器名单来自档案；具体编排、回传协议与状态存储未描述，标为待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>复用登录态换取零 credential 管理 vs. 拿到用户在该站的全量会话权限；确定性内置适配器 vs. 浏览器改版后的脆弱性；Playwright 底层能力上限 vs. 跨站覆盖速度。</td>
+<td>权衡基于档案"风险/局限"段；扩展↔daemon 安全模型、隐私隔离细节未在档案中给出，标为待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台装有 Chrome + Node 的机器上安装扩展与 CLI，跑一条针对单一内置适配器（如 HackerNews）的只读命令，再用 <code>opencli doctor</code> 校验环境；验证登录态复用与改版对抗两条线后再引入 Agent Skill。</td>
+<td>验收项来自档案"doctor""已登录浏览器复用""网站改版对抗"三条断言；具体命令、版本与依赖未在档案给出，标为待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>"把网站变成 CLI"</strong> — 这是一个重要的抽象层次。不是做通用 Browser Use（不确定性高），而是为每个网站定义确定性接口，再用 Browser Use 做兜底</li>
 <li><strong>确定性 + 灵活性分层</strong> — 内置适配器提供确定性（已知网站），Browser Use 提供灵活性（未知网站），适配器开发工具链提供可扩展性（新网站）</li>
 <li><strong>本地浏览器作为 Agent 的执行环境</strong> — 复用用户登录态避免了 credential 管理问题，但也引入了安全考量</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者 或 AI Agent] --> CMD[npm CLI 命令]
+    CMD --> EXT[Chrome 扩展 Browser Bridge]
+    EXT <--> DAEMON[本地 daemon 待核验 协议待核验]
+    DAEMON --> SK[opencli-browser skill 或 opencli-adapter-author skill]
+    SK --> ADP{目标网站}
+    ADP --> A1[内置适配器 Bilibili 知乎 小红书 Reddit HackerNews Twitter X 等]
+    ADP --> A2[Electron 桌面应用适配器 Cursor Trae Codex ChatGPT 等]
+    ADP --> FALL[通用 Browser Use 兜底 依赖 Playwright]
+    A1 --> BS[用户已登录 Chrome 会话 权限范围待核验]
+    A2 --> BS
+    FALL --> BS
+    BS --> EXT
+    EXT --> DOC[opencli doctor 环境诊断]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>工具型（有平台候选潜力）。当前是 Agent 浏览器交互层的实用工具，但 adapter 生态有平台化空间——如果能成为 Agent 操作网站的标准接口层，将升维为平台候选。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>登录态安全风险</strong> — 使用已登录浏览器意味着 Agent 拥有用户的全部会话权限</li>
 <li><strong>网站改版对抗</strong> — 与 Knockoff 类似，适配器依赖页面结构</li>
 <li><strong>维护成本</strong> — 每个网站适配器需要持续维护，覆盖面与维护成本的 trade-off</li>
 <li><strong>Playwright 依赖</strong> — 底层依赖 Playwright，受限于其能力和性能特征</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Agent-Reach（54K⭐）</strong> — 偏数据获取（读），OpenCLI 偏交互（读+写）</li>
 <li><strong>Firecrawl（149K⭐）</strong> — 大规模 Web 数据抓取，非交互</li>
 <li><strong>Browser Use</strong> — 通用浏览器自动化，OpenCLI 在其上提供结构化封装</li>
 <li><strong>Playwright MCP</strong> — 更底层的浏览器自动化 MCP，OpenCLI 提供更高层抽象</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。Browser Use 赛道正在上升，OpenCLI 的"网站→CLI"抽象有独特价值。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>适配器生态的增长速度——是否能形成社区驱动的适配器市场</li>
 <li>企业场景适用性——登录态管理在 enterprise 环境中如何解决</li>

@@ -50,23 +50,34 @@ url: "https://github.com/MoonshotAI/Kimi-K2"
 4. **1T MoE + 32B 活跃**：用总参数量撑起能力，用稀疏激活控制成本
 5. **Kimi Code CLI**：配套的命令行工具，可直接在终端中使用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | K2.6 作为 LLM/MoE 底座模型（1T 总参 / 32B 活跃），由 Kimi Code CLI、Agent Swarm 编排与外部工具/数据源共同构成 Agentic Coding 入口；本档案未给出 300 子 Agent 的部署拓扑与持久化方案 | 仅基于 README 自述与 benchmark 数字，未做源码审计；编排协议、状态存储、部署形态均"待核验" |
+| 主路径 | 用户任务 → 主 Agent 任务分解 → Agent Swarm（300 子 Agent 并行）+ 协调层（4000 协调步）→ 结果汇总与验证 → Kimi Code CLI 回写；附带 12 小时自主运行与原生多模态 | 路径为档案明确描述；Agent 间通信协议、错误恢复机制、上下文窗口管理等实现细节档案未披露 |
+| 关键权衡 | 扩展性（300 Agent / 4000 协调步 / 12 小时自主） vs 协调可靠性、token 成本、可观测性、SWE-Bench Pro 之外的通用与数学能力不足；Modified MIT License 限制条款为合规边界 | 权衡基于档案"风险/局限"段落；具体单位 token 成本、License 限制条款原文未在档案中给出，需查 LICENSE 文件 |
+| 最小 PoC | 在单一渠道接入，启用 Kimi Code CLI + 受限工具权限 + 可审计日志，先复现 SWE-Bench Pro 类任务，验收项含 Agent Swarm 协调一致性、单任务 token 成本、SLO 与 License 合规 | 最低 PoC 形态由档案"采用建议"与"后续观察点"提炼；具体硬件需求、推理框架（vLLM/TGI/SGLang 等）档案未明示 |
+
 ## 架构启发
 
 K2.6 的核心架构创新是 **Agent Swarm**：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TD
-    A[用户任务] --> B[主 Agent<br/>任务分解]
-    B --> C[Agent Swarm<br/>300 子 Agent]
-    C --> D[Agent 1: 代码分析]
-    C --> E[Agent 2: 测试生成]
-    C --> F[Agent 3: 文档更新]
-    C --> G[Agent N: ...]
-    D --> H[协调层<br/>4000 协调步]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[结果汇总 + 验证]
+graph TB
+    A[用户任务<br/>Coding Agent 入口] --> B[主 Agent<br/>任务分解]
+    B --> C[Agent Swarm<br/>300 子 Agent 并行<br/>协调步 ≤ 4000]
+    C --> D[协调层<br/>结果汇总与验证]
+    D --> E[Kimi Code CLI<br/>终端回写]
+    C -.协调错误/冲突风险.-> F[可靠性边界<br/>待核验]
+    C -.12 小时长 Horizon.-> G[成本与可观测性边界<br/>待核验]
+    H[原生多模态 / 1T MoE 32B 激活<br/>底座模型] --> C
+    I[外部工具与数据源<br/>Git Repo / 测试 / 文档<br/>协议待核验] --> C
+    J[Modified MIT License<br/>商业使用限制条款待核验] -.合规约束.-> E
 ```
 
 **关键洞察**：Agentic Coding 的未来可能不是"一个超级 Agent 做所有事"，而是"一群专业 Agent 协作"。这与微服务架构的演进逻辑一致——单体 → 服务拆分 → 编排。

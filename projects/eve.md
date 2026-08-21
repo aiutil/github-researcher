@@ -36,8 +36,34 @@ Vercel 出品的 filesystem-first durable agent 框架（TypeScript / Apache-2.0
 3. **多通道**：channels 支持 HTTP / Slack / Discord，agent 可接入真实消息面。
 4. **schedules 原生**：recurring cron jobs 作为一等公民，agent 可被定时驱动。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | eve 是一个 TypeScript 的 agent 定义与运行时框架，位于入口渠道（HTTP/Slack/Discord）、模型/推理服务与外部工具/数据源之间的编排层；不是多 agent meta-harness | 结论基于档案分类、tags（agent-framework, durable-agents, workflows）与"filesystem-first"定位；运行时内部组件命名仅作抽象边界，具体模块以源码为准 |
+| 主路径 | agent/ 目录约定（instructions.md / tools / skills / channels / schedules）→ npm CLI `npx eve@latest init` → channels 触发 → 编排调用模型与工具 → 会话/状态写回 | 目录名、CLI 命令、channels 类型来自档案；编排细节、持久化存储、协议与部署形态未在档案中给出 |
+| 关键权衡 | "约定优于配置"换取可读性/可运维/可版本化，但牺牲跨语言互操作（仅 TypeScript）且 framework 赛道拥挤，差异化护城河未证 | 仅基于档案"TS 单语言""framework 竞争激烈"两条风险描述，未含性能、benchmark 或生产指标 |
+| 最小 PoC | `npx eve@latest init my-agent` 生成 agent/ 骨架，先挂单一 HTTP channel、最小 tools 集合与本地状态，验证 durable 恢复与 schedules 触发后再扩面 | 仅有 CLI 安装命令与目录约定被档案证实；durable 恢复机制、schedules 后端、状态存储介质均待核验 |
+
 ## 架构启发
 eve 的核心 trade-off 是"约定优于配置"：用文件系统约定换取 agent 的可读性与可运维性。这与 omnigent 的"runtime-first 编排"、grok-build 的"harness 本体"形成层次划分——eve 回答"agent 怎么被定义"，omnigent 回答"多个 agent 怎么被编排"，grok-build 回答"一个 agent harness 长什么样"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> CH[channels: HTTP / Slack / Discord]
+  SCH[schedules: cron 定时任务] --> R
+  CH --> R[项目编排与运行时 待核验]
+  FS[agent/ 文件约定: instructions.md / tools / skills] --> R
+  R --> M[模型或推理服务 待核验]
+  R --> T[工具与外部系统]
+  R --> ST[会话 状态 审计 持久化 待核验]
+  M --> R
+  T --> R
+```
 
 ## 定位判断
 在 Agent 生态中，eve 是 **filesystem-first 的 agent 开发范式**候选。它不试图编排多个外部 agent，而是提供一种用文件结构定义 durable agent 的方法论。若该范式被社区采纳，它将成为 agent 项目的脚手架标准之一。

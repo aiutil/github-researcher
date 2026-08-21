@@ -39,16 +39,30 @@ Coding Agent 需要安全的执行环境来运行代码、安装依赖、预览�
 - **一条命令** — 极简的使用体验
 - **Agent 友好** — API 设计面向 Agent 调用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 自托管沙箱入口 + Docker 容器隔离 + Preview URL 反馈，外部边界为 Coding Agent 调用方与 Docker 容器内执行的代码 | 基于"Go/Docker + Agent 隔离环境 + Preview URL + 一条命令启动"档案描述；具体 API 协议、容器配置、端口模型未在档案中确认 |
+| 主路径 | Coding Agent → sandboxd API → 创建 Docker 容器 → 容器内执行代码 → 生成 Preview URL → 结果回传 Agent | 流程方向由档案明示；编排器内部模块、会话存储、认证机制等细节未描述 |
+| 关键权衡 | 自托管合规收益 vs Docker 隔离强度上限；轻量部署门槛 vs 大规模并发性能；Agent 易用性 vs 权限与可观测性 | 档案显式列出了 Docker 安全局限、规模瓶颈、功能简单等风险，但未提供基准数据或具体安全加固路径 |
+| 最小 PoC | 单二进制启动 + 创建一个容器执行样例脚本 + 验证 Preview URL 可达 + 收集容器/网络审计日志 | "一条命令启动"与"Agent 友好 API"档案可证；具体安装介质、CLI 子命令、URL 域名方案均为"待核验" |
+
 ## 架构启发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 flowchart LR
-    A[Coding Agent] -->|API| B[sandboxd<br/>Go 服务]
-    B -->|创建| C[Docker 容器]
-    C -->|生成| D[Preview URL]
-    D -->|反馈| A
-    C -->|隔离执行| E[代码运行]
-    E -->|结果| A
+    A[Coding Agent<br/>外部调用方] -->|API 调用<br/>协议待核验| B[sandboxd<br/>Go 二进制服务]
+    B -->|docker run<br/>隔离策略待核验| C[Docker 容器<br/>每沙箱独立]
+    C -->|执行| D[沙箱内代码/依赖安装]
+    C -->|暴露端口<br/>映射方式待核验| E[Preview URL<br/>生成方式待核验]
+    D -->|结果回写| B
+    E -->|HTTP 回链| A
+    B -.->|状态/会话<br/>持久化方案待核验| F[(本地状态/日志<br/>存储介质待核验)]
 ```
 
 **启发 1：** Agent 时代的开发环境需要「即用即弃」的沙箱能力，类似 CI Runner 但更轻量。

@@ -43,6 +43,15 @@ Astro 团队（Fred K. Schott + cpojer 等）出品的框架自带品牌信誉�
 
 5. **多部署目标：** Node.js / Cloudflare Workers / GitHub Actions / GitLab CI / Daytona / Render。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | flue 是位于入口渠道、模型供应商与工具/数据源之间的 TypeScript Agent 编排与运行时层，自身封装 sandbox（local/virtual/remote）、durable execution 与 CRDT 多人协作 | 基于标签与定位陈述的抽象；具体协议、进程模型与外部依赖须查源码 |
+| 主路径 | 上游事件 → 入口与身份边界 → 编排/运行时（含 session、skills、tools）→ 调用模型与工具 → 状态/会话/审计回写，CRDT 与 live presence 作为协作状态通道 | 主路径来自档案对 harness 职责的描述；具体控制面与数据面协议未在档案中给出 |
+| 关键权衡 | 扩展能力（多渠道、多沙箱模式、多部署目标）与权限/可观测性/供应商耦合之间的平衡；TypeScript 限定带来 AI/ML 生态采用面收窄 | 权衡源自档案明示的能力集与"TypeScript 限定"风险条目；性能基准与生产案例未在档案中 |
+| 最小 PoC | 建议先在单一渠道（如 GitHub 或 Slack）接入、采用 local/virtual 沙箱、最小工具权限与 OpenTelemetry/Braintrust/Sentry 日志，跑通 durable recovery 后再扩大接入面 | PoC 范围依据档案"可观测性/沙箱三模式/多渠道"表述；具体 API 与 SDK 形态以源码/文档核验 |
+
 ## 架构启发
 
 flue 的核心设计理念是"harness 而非 SDK"：
@@ -50,6 +59,28 @@ flue 的核心设计理念是"harness 而非 SDK"：
 - Harness 模式：harness 提供完整的运行环境（sessions、tools、skills、sandbox），你只需要定义 Agent 的行为
 
 这种设计与 Vercel eve 的 "filesystem-first" 和 omnigent 的 "meta-harness" 在哲学上接近——都认为 Agent 需要的是"运行环境"而非"函数库"。但 flue 更强调"可编程性"（TypeScript harness）和"可部署性"（多目标）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游渠道: Slack/Teams/Discord/GitHub] --> I[入口与身份边界: verified events + MCP]
+    I --> C[项目核心: TypeScript Agent 编排与运行时]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> SB[沙箱: local / virtual / remote container]
+    C --> D[持久执行: durable recovery]
+    C --> CR[会话与协作状态: CRDT + live presence]
+    SB --> C
+    D --> C
+    CR --> C
+    M --> C
+    T --> C
+    C --> O[可观测性: OpenTelemetry / Braintrust / Sentry, 待核验接入方式]
+    C --> DEP[部署目标: Node.js / Cloudflare Workers / GitHub Actions / GitLab CI / Daytona / Render, 待核验各自支持度]
+```
 
 ## 定位判断
 

@@ -6,7 +6,7 @@
     <title>Cursor Cookbook | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,29 +46,74 @@
 <li><strong>Cookbook 格式</strong>：按场景组织，易于查找和应用</li>
 <li><strong>TypeScript 示例</strong>：覆盖主流前端技术栈</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界落在"Cursor 客户端/规则加载器 ↔ Cookbook 模式与示例库 ↔ 宿主编辑器运行时"之间，Cookbook 本身定位为知识与范式资产而非独立运行时</td>
+<td>项目档案明示类别为"学习型"、语言 TypeScript、README 为空；具体规则加载机制、示例执行路径未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者查询场景 → Cookbook 模式索引 → TypeScript 示例片段 → 在 Cursor 编辑器中应用</td>
+<td>档案仅说明"按场景组织"与"TypeScript 示例"，未描述检索协议、版本绑定或更新机制</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>范式抽象的可复用性与 Cursor 特定工具链深度绑定之间的张力；标准化收益 vs. 内容时效性风险</td>
+<td>档案明示"最佳实践可能仅适用于 Cursor"与"AI 编辑器快速迭代，Cookbook 可能很快过时"两项风险</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取 1–2 个高频场景（待核验）的 TypeScript 示例，验证其在当前 Cursor 版本中的可复现性；将"内容是否随版本过期"作为核心验收项</td>
+<td>项目档案未给出具体场景清单与版本依赖，场景选择须以仓库实际目录核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>AI 工具的使用方法本身就是一种"元知识"，值得系统化沉淀</li>
 <li>Cookbook 模式适合 AI 工具的文档形态——场景驱动、示例丰富</li>
 <li>AI 编辑器的"最佳实践"可能演化为新的编程范式</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Dev[开发者查询场景] --> Cookbook[Cursor Cookbook 模式与示例库<br/>TypeScript / 场景驱动]
+  Cookbook --> Cursor[Cursor 编辑器运行时<br/>宿主边界 待核验]
+  Cookbook --> Examples[TypeScript 示例片段<br/>最佳实践模式]
+  Examples --> Cursor
+  Cursor --> Risk[时效性与供应商绑定风险<br/>内容是否随 Cursor 版本过期 待核验]
+  State[状态/控制边界<br/>更新频率与社区贡献机制 待核验] --> Cookbook
+  External[外部边界<br/>Cursor 官方发行渠道与版本同步 待核验] --> Cookbook
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>AI 编辑器生态中的"知识基础设施"。不是代码工具，而是使用方法论的标准化。</p>
-<h2 id="_7">风险 / 屏限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屏限 / 泡沫点</h2>
 <ol>
 <li><strong>内容时效性</strong>：AI 编辑器快速迭代，Cookbook 可能很快过时</li>
 <li><strong>Cursor 绑定</strong>：最佳实践可能仅适用于 Cursor，不具备通用性</li>
 <li><strong>无描述信息</strong>：README 为空，信息密度不足</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Dictionary of AI Coding</strong>（1K stars）：AI 编程术语标准化，互补关系</li>
 <li><strong>Everything Claude Code</strong>（173K stars）：Claude Code 的最佳实践合集</li>
 <li><strong>Oh My Codex</strong>：Codex 的技能增强框架</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。作为 AI 编辑器使用范式标准化的里程碑，值得持续关注内容更新。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>内容更新频率是否能跟上 Cursor 版本迭代</li>
 <li>社区是否贡献高质量实践</li>

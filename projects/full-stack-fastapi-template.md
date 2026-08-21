@@ -38,8 +38,36 @@ FastAPI 官方出品全栈 Web 应用模板——FastAPI (Python) + React + SQLM
 4. **部署:** 支持传统部署 + FastAPI Cloud 一键部署
 5. **完整 CI/CD:** Playwright E2E + GitHub Actions + Alembic 迁移
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 这是一个全栈 starter，后端 FastAPI+Python、前端 Vite+React+TS、数据 PostgreSQL+SQLModel、容器化 Docker Compose，含 GitHub Actions 与 Playwright E2E | 边界以档案明示组件为准；具体中间件、反代、可观测组件未在档案中列出 |
+| 主路径 | 前端 (Vite+React+TS+shadcn/ui+Tailwind) 通过 REST/OAuth2-JWT 调用 FastAPI，FastAPI 经 SQLModel 访问 PostgreSQL，Alembic 管理迁移，Docker Compose 编排部署 | 主路径中的具体路由、网关、CI 工作流文件未在档案中给出 |
+| 关键权衡 | 一体化便利（官方栈开箱即用） vs 替换成本（SQLModel 替 SQLAlchemy、React 替 Next.js 均需重写）；FastAPI Cloud 一键部署 vs 厂商绑定 | 权衡判断基于档案的"stack 偏耦合"与"FastAPI Cloud 是新平台"两条风险陈述 |
+| 最小 PoC | clone 模板 → docker compose up 拉起 Postgres+后端+前端 → 用 OAuth2-JWT 走通登录与一条 CRUD → 跑通 Playwright E2E 与 Alembic 迁移 | 档案未给出最小可运行子集所需的具体 compose 服务名与启动命令，须源码核验 |
+
 ## 架构启发
 "官方团队亲自出模板"是开源项目成功要素——fastapi 自己出完整 starter 远比让社区维护 star 数最高的 fork 更有持续性。这种模式值得所有框架学习：作者亲自下场维护，避免孵化期 fork 跑偏。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> FE[前端 Vite+React+TS+shadcn/ui+Tailwind]
+    FE -- REST + OAuth2 JWT --> BE[后端 FastAPI Python]
+    BE -- SQLModel --> DB[(PostgreSQL)]
+    BE -. Alembic 迁移 .- DB
+    DC[Docker Compose 编排] --> FE
+    DC --> BE
+    DC --> DB
+    CI[GitHub Actions CI 含 Playwright E2E] -. 验证 .-> BE
+    CI -. 验证 .-> FE
+    FC[FastAPI Cloud 一键部署 待核验] -. 部署目标 .-> BE
+    BE --> AUD[审计日志 凭据 待核验]
+```
 
 ## 定位判断
 **工具型 / 全栈 starter 标杆（Python + React 路线）。** 与 gin-vue-admin、react-boilerplate 等同类模板并列，但其官方组织身份最具可信度。

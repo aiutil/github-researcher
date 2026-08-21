@@ -34,30 +34,46 @@ GitHub Trending Weekly 上榜，周增 8,673 stars（从 16.2K → 27.9K），�
 4. **多协议支持**：MCP（Model Context Protocol）+ A2A（Agent-to-Agent）
 5. **多端覆盖**：Desktop 应用 + PWA + Docker + npm 包
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 类型为 AI 网关（TypeScript），聚合 290+ Provider、500+ 模型，覆盖 Claude Code/Codex/Cursor/Cline/Copilot 等 Agent 端点 | 标签 ai-gateway/llm-routing/proxy/mcp；实际适配范围以源码为准 |
+| 主路径 | 客户端 Agent → 统一端点 → RTK+Caveman 压缩 → 故障转移路由 → Provider（免费 90+ / 付费 110+） | 出自档案"关键技术亮点"；性能、压缩比、协议细节未在档案中给出量化数据 |
+| 关键权衡 | 覆盖广度（290+ Provider，含 90+ 免费层）与 Provider 政策变动、ToS 合规、压缩质量、自身可用性之间的张力 | 风险段直接列出 5 项；供应商稳定性、压缩对 Agent 理解的实际影响缺少量化证据 |
+| 最小 PoC | 在单一 Agent（如 Claude Code）、少量免费 Provider 接入下验证：用量统计、压缩前后 token、故障转移触发、人工审计日志 | 档案未给出部署形态与文档链接，部署方式与可审计日志实现需以源码核验 |
+
 ## 架构启发
 OmniRoute 代表了 Agent 技术栈中的"路由层"：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph "Agent 层"
+flowchart LR
+    subgraph "Agent 端"
         A1[Claude Code]
         A2[Codex CLI]
         A3[Cursor]
         A4[Cline]
     end
-    
-    subgraph "路由层 (OmniRoute)"
+
+    subgraph "路由层 OmniRoute"
         R1[统一端点]
         R2[RTK+Caveman 压缩]
-        R3[智能故障转移]
-        R4[用量追踪]
+        R3[自动故障转移]
+        R4[用量追踪 待核验]
     end
-    
-    subgraph "Provider 层"
-        P1[免费 Provider ×50+]
-        P2[付费 Provider ×110+]
+
+    subgraph "外部边界 - Provider"
+        P1[免费 Provider 90+]
+        P2[付费 Provider 110+]
     end
-    
+
+    S1[Provider 政策/ToS 风险]:::risk
+    S2[服务中断 单点依赖]:::risk
+
     A1 --> R1
     A2 --> R1
     A3 --> R1
@@ -66,6 +82,10 @@ flowchart TB
     R2 --> R3
     R3 --> P1
     R3 --> P2
+    P1 -. 受 S1 影响 .-> R3
+    R3 -. 触发 .-> S2
+
+    classDef risk fill:#ffe5e5,stroke:#c33,stroke-width:1px
 ```
 
 ## 定位判断

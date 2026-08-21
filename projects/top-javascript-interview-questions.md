@@ -42,8 +42,32 @@ url: "https://github.com/greatfrontend/top-javascript-interview-questions"
 5. **涵盖 React 生态:** 除纯 JS 外覆盖 React 相关面试题，适应前端岗位实际需求
 6. **难度标注:** 每题标注 Basic/Intermediate/Advanced，帮助候选人评估自身水平
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 作为 MDX 内容仓库，本项目边界即"GitHub 静态内容托管层"，无独立运行时服务、后端或数据库；外部边界仅有 GitHub 平台与 GreatFrontEnd 付费平台导流。 | 档案仅声明语言 MDX、Stars 9.9K、Forks 517、未声明 License；未提供源码模块划分、构建工具链或部署形态。 |
+| 主路径 | 主路径为"求职者访问仓库 → 阅读 MDX 题库（按 Top/All/Difficulty 三维度）→ 跳转 GreatFrontEnd 付费课程"，无用户态、交易态或领域状态机。 | "三维度组织"与"免费引流→付费订阅"闭环见档案"架构启发"段；具体跳转链路、UTM 与转化漏斗未披露。 |
+| 关键权衡 | 内容质量/审核深度 vs 更新频率/覆盖广度的权衡；JavaScript/React 纵深 vs 多维度（CSS/系统设计/行为面）广度的权衡。 | 权衡结论来自档案"风险/局限"段中"答案主观性""覆盖范围有限""时效性挑战"三项；无量化数据。 |
+| 最小 PoC | 最小验证为"抽取 5 道 Basic/Advanced 题目，用 ES2024+/React 19 现行规范人工核对答案准确性"，而非 PoC 服务或部署。 | 档案无构建/运行命令、无 CI 配置；PoC 仅能在内容质量维度定义，架构 PoC 待核验。 |
+
 ## 架构启发
 作为一个资源型项目，其核心架构价值不在代码而在**内容组织策略**。三维度分类（重要性 × 全面性 × 难度）是一种高效的知识管理范式，可迁移到任何"知识库"类项目。更深层的是，它展示了**开源内容项目的商业模式**：高质量免费内容获取流量和信任 → 引导到 GreatFrontEnd 付费平台（premium 订阅）→ 形成商业闭环。这是 GitHub 开源 + SaaS 商业化的经典路径。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[求职者 用户] --> R[GitHub 仓库 top-javascript-interview-questions]
+    R --> T[MDX 题库 三维度: Top / All / Difficulty]
+    T --> A[题目与答案 Basic Intermediate Advanced]
+    A --> P[GreatFrontEnd 付费课程平台 导流 待核验]
+    A --> C[内容审核: 前 FAANG 面试官 待核验]
+    R -.更新频率.-> S[持续维护 2026-08-11 last_seen]
+    T -.局限.-> L[仅覆盖 JS React 不含 CSS 系统设计 待核验]
+```
 
 ## 定位判断
 **资源型项目。** 作为前端面试准备的参考知识库，定位清晰且有价值。不具平台化或基础设施潜力，但在其垂直领域（前端面试教育）是头部资源。商业价值在于为 GreatFrontEnd 平台导流。对个人开发者而言是实用工具，对前端教育市场而言是竞争性内容资产。

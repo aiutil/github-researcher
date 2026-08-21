@@ -36,8 +36,39 @@ awesome-design-md 的热度来自两个趋势交汇：(1) Design Tokens 范式�
 - **AI 友好:** DESIGN.md 是纯文本，AI Agent 可以直接读取并作为生成代码的约束条件
 - **主题系统:** 支持明暗主题、品牌变体的令牌管理
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | awesome-design-md 是一个 awesome-list 资源集合，非运行时系统；其倡导的边界是"DESIGN.md 规范 → Tokens (JSON) → 多平台代码产物"，横跨 Figma 插件、令牌转换器与前端/移动端代码 | 档案未提供 DESIGN.md 的官方规范文本或令牌分层字段定义；Tokens Studio、Style Dictionary 等具体组件的接口未在档案中详述 |
+| 主路径 | 主路径是"设计决策 → DESIGN.md（Markdown 规范） → Tokens（JSON）→ CSS Variables / Tailwind Config / Swift / Kotlin 等多端代码"，Figma 通过 Tokens Studio 插件介入"双向同步" | 档案仅列出多平台输出名称，未给出具体同步协议（如 Figma Plugin API 调用方式、Token 字段命名规范） |
+| 关键权衡 | 核心权衡是"框架无关的规范抽象（DESIGN.md）"vs"W3C Design Tokens Format 等竞品标准化路径"；次级权衡是"设计师+开发者跨角色协作门槛"与"生态工具链成熟度"之间的互锁 | 档案明确指出 DESIGN.md 尚无官方标准、与 W3C DT Format 的关系待核验；未量化协作门槛数据 |
+| 最小 PoC | PoC 应聚焦"选定一个 Figma 设计文件 → 用 Tokens Studio 导出为 DESIGN.md/Tokens JSON → 生成至少 CSS Variables 与 Tailwind Config 两份产物 → 用 AI 编码 Agent（Claude Code/Cursor）读取 DESIGN.md 生成 UI 代码，验证设计一致性" | 档案提到 AI Agent 可读 DESIGN.md，但未给出具体 Agent 是否已原生支持 DESIGN.md（标注为待核验）；工具链具体版本与兼容矩阵档案未覆盖 |
+
 ## 架构启发
 awesome-design-md 背后的核心思想是"设计即数据"——将设计决策从人类的直觉和 Figma 文件，转化为机器可读的结构化数据。这使得设计变更可以自动传播到代码层（修改令牌 → 自动更新所有 UI），也为 AI 生成 UI 代码提供了"设计约束"。其 Token 分层架构（Global Tokens → Alias Tokens → Component Tokens）是一种良好的抽象设计。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    D["设计决策（颜色/字体/间距/圆角/阴影）"] --> DM["DESIGN.md 规范（机器可读 Markdown，待核验官方文本）"]
+    DM --> TJ["Design Tokens JSON（Global → Alias → Component 分层）"]
+    F["Figma 设计文件"] --> TS["Tokens Studio / Figma Tokens 插件"]
+    TS -- 双向同步，待核验协议 --> TJ
+    TJ -- 转换，待核验工具 --> CSS["CSS Variables 产物"]
+    TJ -- 转换，待核验工具 --> TW["Tailwind Config 产物"]
+    TJ -- 转换，待核验工具 --> SW["Swift 产物"]
+    TJ -- 转换，待核验工具 --> KT["Kotlin 产物"]
+    AI["AI 编码 Agent（Claude Code / Cursor / Copilot，原生支持状态待核验）"] -- 读取 DESIGN.md 作为设计约束 --> DM
+    CSS --> UI["多端 UI 实现"]
+    TW --> UI
+    SW --> UI
+    KT --> UI
+    W3C["W3C Design Tokens Format Module（竞品/协同关系待核验）"] -. 标准化竞争 .-> TJ
+```
 
 ## 定位判断
 **知识资源 + 生态推动型项目。** awesome-design-md 本身是一个 awesome-list（资源集合），但它推动的 DESIGN.md 规范有潜力成为设计-开发协作的行业标准。其价值在于：(1) 汇集工具和资源降低采用门槛；(2) 通过社区力量推动 DESIGN.md 标准化。

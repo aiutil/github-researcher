@@ -46,25 +46,41 @@ url: "https://github.com/omnigent-ai/omnigent"
 3. **Session 持久化** — 终端 → 浏览器 → 手机，会话状态完整同步
 4. **Cloud Sandbox** — 支持 Modal/Daytona/Islo，disposable 环境隔离
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | omnigent 是位于终端用户（CLI/浏览器/macOS 桌面/移动端）、被编排的 Coding Agent（Claude Code、Codex、Cursor、OpenCode、Hermes、Pi + YAML 自定义）以及云沙箱后端（Modal/Daytona/Islo/E2B/CoreWeave/Kubernetes/OpenShell/Boxlite/Databricks）之间的 Python 编写的 meta-harness 编排层，承担协议适配、策略治理与会话持久化职责。 | 基于档案"meta-harness 编排层"定位、标签（agent-orchestration/meta-harness/multi-agent/policy/sandbox）、语言（Python）及 README 描述的能力组合；未做源码审计，协议细节与部署形态待核验。 |
+| 主路径 | 请求从入口渠道进入 Omnigent Server，由 Policy Engine 做审批/预算/工具限制判定，Session Manager 通过 Adapter 路由到目标 Agent 会话，必要时调度 Cloud Sandbox 隔离执行，状态回写到 Session Manager 以支撑跨设备继续。 | 基于档案"关键技术亮点"四节与架构启发 mermaid 图；具体协议、消息格式、持久化存储与传输细节均待核验。 |
+| 关键权衡 | 抽象层次（统一编排 5+ 类 Agent）与适配脆弱性之间的张力：任一被编排 Agent 的协议 breaking change 都可能冲击 Omnigent；项目仍处 alpha（212 issue），且 Python 3.12+ 限定带来部署门槛。 | 基于档案"风险/局限/泡沫点"四条与"架构启发"段落对 meta-harness trade-off 的描述；issue 关闭速度、beta 时间线、Adapter 维护活跃度列为后续观察点，未给出具体 SLA。 |
+| 最小 PoC | 在单一入口渠道（CLI 或 macOS 桌面）接入 1 种成熟 Agent（如 Claude Code），绑定 1 种云沙箱（如 Modal 或 Daytona），启用 Policy Engine 的审批与预算上限，开启跨设备 Session 同步日志；以安全、成本、SLO、退出路径为验收项，再扩大接入面。 | 基于档案"采用建议"行与"为什么值得关注"中"macOS 桌面应用已可下载""支持 Modal/Daytona/Islo 云沙箱"的描述；具体配置项、性能基准、CLI/桌面/移动端 SDK 稳定性待核验。 |
+
 ## 架构启发
 meta-harness 模式的核心 trade-off：**抽象层次越高，兼容性越脆弱**。omnigent 需要追踪 5+ 个 agent 的协议变化，任何一个 agent 的 breaking change 都可能破坏编排层。这与 Kubernetes 管理 CRD 的挑战类似。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TD
-    U["User<br/>CLI / Browser / Mobile"] --> O["Omnigent Server"]
-    O --> P["Policy Engine"]
-    O --> S["Session Manager"]
-    O --> CS["Cloud Sandbox<br/>Modal / Daytona / Islo"]
+graph LR
+    U["User<br/>CLI / Browser / macOS Desktop / Mobile"]
+    SVR["Omnigent Server<br/>(Python, alpha)"]
+    POL["Policy Engine<br/>审批/预算/工具限制"]
+    SES["Session Manager<br/>跨设备持久化"]
+    ADP["Agent Adapters<br/>Claude Code / Codex / Cursor / OpenCode / Hermes / Pi / YAML 自定义"]
+    SBX["Cloud Sandbox 后端<br/>Modal / Daytona / Islo / E2B / CoreWeave / K8s / OpenShell / Boxlite / Databricks"]
+    EXT["被编排 Agent 运行时<br/>(各 Agent 原生会话)"]
 
-    S --> A1["Claude Code Adapter"]
-    S --> A2["Codex Adapter"]
-    S --> A3["Cursor Adapter"]
-    S --> A4["Pi Adapter"]
-    S --> A5["Custom Agent (YAML)"]
+    U --> SVR
+    SVR --> POL
+    SVR --> SES
+    SES --> ADP
+    ADP --> SBX
+    ADP --> EXT
+    SES -. "状态回写 (待核验协议)" .-> U
 
-    A1 --> R1["Claude Code Session"]
-    A2 --> R2["Codex Session"]
-    A3 --> R3["Cursor Session"]
+    POL -. "风险边界: 越权调用/预算失控 (待核验默认值)" .-> ADP
 ```
 
 ## 定位判断

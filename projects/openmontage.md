@@ -64,34 +64,37 @@ stars 从 8,487（6/22）暴涨到 21,941（6/26），4天 +158%。重要新增�
 4. **AI Coding Assistant 作为执行引擎**：Claude Code/Codex 作为"工厂工人"执行生产任务
 5. **Agentic 编排**：不是脚本式自动化，而是 Agent 自主决策执行路径
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口渠道、模型供应商、工具/数据源之间的编排层 | 基于项目分类、语言（Python）、标签（agentic-video, content-production, pipeline, agent-skills, video, automation）及本档案引用的公开资料做的架构抽象，不替代源码审计。 |
+| 主路径 | 请求 → 编排/运行时 → 模型与工具调用 → 会话或状态回写 | 图中组件表达职责与边界；具体协议、部署形态和持久化实现须以项目源码/文档核验。 |
+| 核心权衡 | 扩展速度与权限、可观测性、供应商耦合之间的平衡 | 这是技术决策观察，不将 GitHub 热度或评分当成生产可用性证据。 |
+| 最小 PoC | 先在单一渠道、最小工具权限和可审计日志下验证，再扩大接入面 | 先做最小 PoC，并把安全、成本、SLO 与退出路径作为验收项。 |
+
 ## 架构启发
 
 OpenMontage 的核心架构思想是**"将领域工作流编码为 Agent Skills"**：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TD
-    A[Video Request] --> B[Pipeline Router]
-    B --> C[Pipeline: Short Drama]
-    B --> D[Pipeline: Tutorial]
-    B --> E[Pipeline: News]
-
-    C --> F[Agent Orchestrator]
-    F --> G[52 Tools Pool]
-    F --> H[500+ Skills Library]
-
-    G --> I[Tool: Cut]
-    G --> J[Tool: Transition]
-    G --> K[Tool: Voiceover]
-    G --> L[Tool: Subtitle]
-
-    H --> M[Skill: Pacing Rules]
-    H --> N[Skill: Color Grading]
-    H --> O[Skill: Audio Mix]
-
-    I --> P[Final Video Output]
-    J --> P
-    K --> P
-    L --> P
+graph LR
+  A[Video Request] --> B[Pipeline Router]
+  B --> C[Agent Orchestrator]
+  C --> D[500+ Skills Library]
+  C --> E[52 Tools Pool]
+  D --> F[Render Engine: Remotion or HyperFrames]
+  E --> F
+  E --> G[TTS: Piper 离线路径]
+  E --> H[素材源: Archive.org / NASA / Wikimedia 待核验]
+  F --> I[Final Video Output]
+  G --> I
+  H --> I
+  C -.权限/可观测性边界.-> J[审计日志与工具调用配额 待核验]
 ```
 
 这个模式可以迁移到任何领域——关键是把领域最佳实践拆解为 tool（原子能力）+ skill（编排知识）。

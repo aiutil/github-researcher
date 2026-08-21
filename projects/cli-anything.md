@@ -45,12 +45,40 @@ CLI-Anything 的热度是**"Agent-Native 接口标准化的确定性趋势 × �
 6. **Click 框架 + Python ≥3.10:** 基于成熟的 Click CLI 框架，代码质量和可维护性有保障
 7. **多工具兼容:** 生成的 CLI 可被 Pi、OpenClaw、nanobot、Cursor、Claude Code 等 Agent 直接使用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | CLI-Anything 是位于 AI Agent（Claude Code/Codex/Cursor/OpenClaw）与 GUI 软件（Blender/Godot/FreeCAD/Inkscape/Kdenlive/Zotero/Obsidian/n8n/QGIS 等 18+）之间的 CLI 适配生成层 + CLI-Hub 分发渠道，外部边界包含目标 Agent 运行时、pip/npm/brew 安装源、底层 GUI 软件版本 | 适配清单与 Agent 列表来自档案；MCP/平台供应商协议未在档案中给出 |
+| 主路径 | 目标 GUI 软件 → CLI-Anything 自动发现可操作入口并生成 Click 框架 CLI + SKILL.md（AI 可发现）+ HARNESS.md（渐进式披露） → 经 CLI-Hub 安装到 Agent → Agent 通过 JSON/Human-readable 双模式输出调用 → 标准输出回传 | Click、SKILL.md/HARNESS.md、双模式输出在档案中明确；具体编排协议与会话持久化未描述 |
+| 关键权衡 | 扩展速度（46.9K stars、4.3K forks、周级新增适配） vs GUI 软件 UI/API 频繁变更的维护成本、状态依赖操作（Blender 编辑模式/Godot 场景树）覆盖不完整、社区贡献 CLI 的测试与安全审查、HKUDS 学术项目的可持续性、与 Anthropic MCP 工具协议的潜在重叠 | 权衡论点来自档案"风险/局限"段；具体维护 SLA、版本兼容矩阵未在档案中给出 |
+| 最小 PoC | 在 Claude Code/Codex/Cursor/OpenClaw 任一 Agent 中，通过 `pip install cli-anything-hub` + `cli-hub install` 拉取一款已适配 GUI（如 Blender 或 Godot）的 CLI，对一个非状态依赖命令做端到端 JSON 输出验证，并核对 SKILL.md/HARNESS.md 是否可被 Agent 自主发现 | 18+ 适配列表、CLI-Hub 安装命令、Agent 兼容性在档案中明确；具体 CLI 名称是否覆盖目标场景需逐项核验 |
+
 ## 架构启发
 CLI-Anything 的核心启发是**"适配器模式在 AI 时代的重大应用"**。经典软件工程中，适配器模式用于让不兼容的接口协同工作。CLI-Anything 将其提升到生态级别——**为所有 GUI 软件生成统一的 CLI 适配层**，让 Agent 获得一个标准化的"操作系统级 API"。
 
 更深层的启发是**CLI 作为 Agent 与软件交互的标准协议**。当前 Agent 与软件交互的方式极其碎片化（浏览器自动化、API 调用、MCP 工具、屏幕操作），而 CLI-Anything 提出了一种统一范式：**所有软件都应暴露 CLI 接口**。这与 Google Workspace CLI 的思路一致——平台厂商和学术界都在向 CLI 优先靠拢。
 
 企业架构师应认真考虑：**所有内部工具都应提供 CLI 接口**，这是 Agent-Native 基础设施的基本要求。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[AI Agent: Claude Code / Codex / Cursor / OpenClaw] --> B[CLI-Hub 包管理器<br/>pip install cli-anything-hub]
+    B --> C[CLI-Anything 适配生成框架<br/>Click + Python ≥3.10]
+    C --> D[SKILL.md<br/>AI 可发现技能定义]
+    C --> E[HARNESS.md<br/>渐进式披露操作指南]
+    C --> F[生成的 CLI 包装<br/>JSON + Human-readable 双模式输出]
+    F --> G[已适配 GUI 软件<br/>Blender / Godot / FreeCAD / Inkscape / Kdenlive / Zotero / Obsidian / n8n / QGIS 等 18+]
+    G --> H[输出回传 Agent]
+    H --> A
+    C -.风险边界.-> I[GUI UI/API 频繁变更<br/>维护成本与状态依赖操作覆盖度待核验]
+    C -.竞争边界.-> J[Anthropic MCP 工具协议<br/>吸收/互补/竞争关系待核验]
+    C -.可持续性边界.-> K[HKUDS 学术项目<br/>核心维护者随学生毕业变动风险]
+```
 
 ## 定位判断
 **基础设施候选（强）。** CLI-Anything 试图成为 **Agent 与软件之间的标准适配层**——类似 MCP（工具协议）但面向完整应用而非单个工具。如果 CLI 成为 Agent 调用软件的标准接口（这是确定性趋势），CLI-Anything 就是这个转换层的头部实现。CLI-Hub 包管理器赋予了它平台化潜力——社区贡献的 CLI 越多，它就越接近"Agent 的应用商店"。46K stars + 4.3K forks + 18+ 真实应用已显示飞轮雏形。

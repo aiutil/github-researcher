@@ -6,7 +6,7 @@
     <title>Unlimited-OCR | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,30 +49,78 @@
 <li><strong>多平台部署</strong>：HuggingFace Spaces 在线 Demo + Baidu Cloud + ModelScope</li>
 <li><strong>基于 DeepSeek-OCR 架构推进</strong>：继承视觉-语言模型的端到端识别能力</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Unlimited-OCR 应作为企业长文档解析流水线的端到端解析组件，与上游入口（HF Spaces / Baidu Cloud / ModelScope）和下游 RAG / 文档处理系统对接，而非独立产品</td>
+<td>档案明确其为"底层组件"而非终端产品；具体 API 契约、SDK 范围未在档案中披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 入口（HuggingFace Spaces / Baidu Cloud / ModelScope）→ 推理引擎（vLLM 高吞吐 或 Transformers 通用）→ 模型（gundam 模式或 base 模式）→ 输出；本地路径无外部服务依赖</td>
+<td>档案列出三种部署渠道与两种推理引擎，但内部流水线细节、prompt/控制协议未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>gundam 模式（base_size=1024, image_size=640, crop_mode=True，高吞吐、牺牲分辨率） vs base 模式（image_size=1024, crop_mode=False，全分辨率、保版面）；vLLM 性能 vs Transformers 兼容性</td>
+<td>双模式参数由档案明确给出；各模式在 100+ 页、表格跨页、公式连续性的实测准确率未在档案中给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一渠道（HF Spaces 或 ModelScope）→ gundam 模式 → Transformers 引擎 → 内部基准文档集，验收项含准确率、显存占用、页数上限与退出路径</td>
+<td>推理引擎与渠道来自档案；38TB 训练数据、显存门槛、页数稳定性等运营指标仍需源码/部署实测</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>OCR 的演进路径与 LLM 一致：短上下文→长上下文。传统 OCR 的 "切分→识别→拼接" pipeline 正在被 Vision-Language Model 的长序列处理能力吃掉。这不仅是技术升级，而是架构范式的简化——从多阶段 pipeline 走向端到端模型。</p>
 <p>关键 trade-off：
 - gundam 模式牺牲分辨率换取吞吐（适合批量处理）
 - base 模式保持全分辨率（适合复杂版面）
 - 38TB 级别的训练数据量说明长程 OCR 的数据门槛很高</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游文档系统] --> I[入口与渠道边界<br/>HF Spaces / Baidu Cloud / ModelScope<br/>待核验:具体接入协议]
+    I --> C[项目编排与运行时<br/>Python]
+    C --> E{推理引擎选择}
+    E -->|高性能批量| V[vLLM 引擎]
+    E -->|通用兼容| T[Transformers 引擎]
+    V --> M[模型与配置<br/>gundam: 高吞吐 crop_mode=True<br/>base: 全分辨率 crop_mode=False<br/>待核验:权重细节]
+    T --> M
+    M --> C
+    C --> S[状态 审计 输出回写<br/>待核验:持久化与日志规范]
+    C -.风险边界.-> R[长文档可靠性边界<br/>100+ 页 表格跨页 公式连续性<br/>档案未给实测数据]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 OCR/VLM 生态中定位为 "基础设施级长文档解析能力"。不是终端用户产品，而是企业文档处理 pipeline 的底层组件。与 PaddleOCR 形成互补——PaddleOCR 覆盖通用 OCR，Unlimited-OCR 攻克长文档端到端解析。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>极端长文档可靠性未验证</strong>：One-shot 解析在 100+ 页文档上的准确率、表格跨页、公式连续性仍需独立验证</li>
 <li><strong>算力门槛高</strong>：长序列 VLM 推理对 GPU 显存要求显著高于传统 OCR</li>
 <li><strong>竞争对手多</strong>：DeepSeek-OCR、GPT-5 Vision、Claude Vision 都在做类似方向，技术壁垒可能快速被追平</li>
 <li><strong>训练数据量巨大</strong>（38TB 级别）：限制了复现和改进的可能性</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs DeepSeek-OCR</strong>：Unlimited-OCR 明确定位为 DeepSeek-OCR 的推进版，核心突破在长文档</li>
 <li><strong>vs PaddleOCR</strong>：PaddleOCR 是百度成熟的通用 OCR 框架，Unlimited-OCR 聚焦 VLM 端到端长文档解析，互补关系</li>
 <li><strong>vs GPT-5 Vision / Claude Vision</strong>：闭源 API 也支持长文档解析，Unlimited-OCR 的优势在可私有化部署+中文优化</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> OCR 长程解析是确定性技术趋势，Baidu 有工程能力持续推进。关注其企业落地案例和独立基准测试结果。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>独立基准测试</strong>：等待第三方在标准数据集上与 DeepSeek-OCR / GPT-5 Vision 的对比评测</li>
 <li><strong>极端长文档表现</strong>：100+ 页文档的准确率、表格跨页处理、多栏排版</li>

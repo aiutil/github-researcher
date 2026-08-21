@@ -6,7 +6,7 @@
     <title>vadimdemedes/ink | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,11 +53,60 @@
 <li><strong>组件生态:</strong> <code>ink-text-input</code>、<code>ink-select-input</code>、<code>ink-spinner</code>、<code>ink-table</code> 等丰富组件库</li>
 <li><strong>测试友好:</strong> 提供 <code>render</code> 测试工具，可断言输出</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Ink 的边界由"React 组件树 → Reconciler → 终端文本输出 + stdin 输入"构成；调用方是 CLI 应用开发者，外部依赖为 react-reconciler 与 Yoga 布局引擎，运行时为 Node.js 终端进程</td>
+<td>仅依据档案"React Reconciler""Yoga 布局引擎""stdin raw mode"；具体 Node 版本、依赖版本未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者用 JSX 声明 UI → Ink 通过 react-reconciler 协调组件树 → Yoga 计算 Flexbox 布局 → 输出 ANSI 转义序列到 stdout → 监听 stdin 键盘事件回灌到 Hooks 状态</td>
+<td>档案明确 React Reconciler、Yoga、stdin 处理；输出协议、刷新策略等实现细节属待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"React 全量运行时带来的体积与依赖" vs "组件化/可复用/DevX 提升"；"统一抽象跨终端" vs "ANSI/终端兼容性差异"；"复杂 UI 能力" vs "极简 CLI 场景过重"</td>
+<td>档案风险段已列出 React 依赖、终端兼容、性能闪烁、学习曲线四项；性能数字未给</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 ink + ink-text-input + ink-spinner 构建一个带输入框与加载指示的交互式 CLI 脚本，验证：JSX 写法、布局渲染、键盘输入回流、测试工具 render 的输出断言</td>
+<td>档案给出 ink-text-input、ink-spinner、render 测试工具；具体 API 签名、版本以仓库文档为准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Ink 的核心启发是 <strong>"UI 范式的可移植性"</strong>。React 的本质是 <code>f(state) = UI</code>，"UI"可以是 DOM、可以是终端文本、可以是 Native 视图。Ink 证明了：<strong>只要实现了 Reconciler，任何介质都可以是 React 的渲染目标</strong>。这种思想后来被 React Three Fiber（3D）、React Terminal（其他终端方案）等项目进一步推广。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[CLI 应用开发者 JSX 组件树] --> Ink[Ink 运行时]
+    Ink --> Rec[react-reconciler 协调器 待核验具体版本]
+    Ink --> Yoga[Yoga Flexbox 布局引擎]
+    Ink --> Stdin[stdin raw mode 键盘输入]
+    Yoga --> Ansi[ANSI 转义序列 stdout]
+    Rec --> Ansi
+    Stdin --> Hooks[Hooks 状态回灌 useState useEffect]
+    Hooks --> Rec
+    Ink --> Eco[组件生态 ink-text-input ink-select-input ink-spinner ink-table]
+    Ink --> Test[render 测试工具 输出断言]
+    Ansi --> Term[外部终端边界 Windows CMD 等兼容性差异 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟工具型项目。</strong> Ink 是 CLI 开发领域的"React for Terminal"事实标准。它适合需要复杂交互（菜单、表单、实时更新）的 CLI 工具。对于简单脚本，可能过重；对于企业级 CLI（如 DevOps 工具、脚手架），是极佳选择。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>React 依赖:</strong> 引入完整 React 运行时，对"极简 CLI"是过度设计</li>
 <li><strong>终端兼容性:</strong> 不同终端（Windows CMD、旧版终端）的 ANSI 支持差异</li>
@@ -65,7 +114,7 @@
 <li><strong>学习曲线:</strong> 对不熟悉 React 的开发者，反而比传统 CLI 库更难</li>
 <li><strong>替代方案:</strong> <code>clack</code>、<code>prompts</code>、<code>enquirer</code> 等更轻量的方案分流</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs blessed/blessed-contrib:</strong> blessed 是老牌"终端 UI 库"（非 React），功能全但 API 陈旧；Ink 更现代</li>
 <li><strong>vs clack (Vercel):</strong> clack 更轻量、专注 prompts；Ink 更全面、适合复杂 UI</li>
@@ -73,9 +122,9 @@
 <li><strong>vs Textual (Python):</strong> Textual 是 Python 的终端 UI 框架（非 React 范式），生态不同</li>
 <li><strong>vs Bubbletea (Go):</strong> Bubbletea 是 Go 的 TUI 框架（Elm 架构），与 Ink 跨语言竞争</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>中等优先级跟踪。</strong> Ink 已是成熟工具，技术突破性降低。建议关注其与新终端技术（如 Kitty 图形协议、终端 GPU 渲染）的结合，以及是否扩展到 WebContainers 等新运行时。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否支持更丰富的终端能力（图片、图形、鼠标）</li>
 <li>React 19/20 新特性（Server Components 等）对 Ink 的影响</li>

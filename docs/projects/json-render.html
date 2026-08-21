@@ -6,7 +6,7 @@
     <title>vercel-labs/json-render | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,25 +49,71 @@
 <li><strong>渐进式流式渲染</strong>：支持流式传输和渐进式渲染——随着模型响应逐步到达，UI 逐步渲染，不需要等待完整响应。这对用户体验至关重要（避免了长时间等待）。</li>
 <li><strong>36 个预构建 shadcn/ui 组件</strong>：内置 Card、Metric、Button、Table、Chart 等常用组件，开发者可以直接使用或扩展，无需从零构建组件库。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>json-render 是一个 Generative UI 框架，处于"LLM 结构化输出"与"多端 UI 渲染"之间的中间层；它本身不调用 LLM，也不替代 shadcn/ui 组件库。</td>
+<td>基于档案定位"Generative UI 基础设施层框架"及与 AI SDK、v0、shadcn/ui 的关系陈述；未审计源码。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>defineCatalog（Zod schema 定义组件与 props）→ LLM 输出受限 JSON → defineRegistry + Renderer 把 JSON 渲染到目标平台（React/Vue/Svelte/Solid/RN/Remotion/PDF/Email/Ink/3D）。</td>
+<td>档案明列的 catalog→registry→renderer 三层架构与跨平台目标清单；具体协议、序列化格式与流式传输实现需源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用"约束换安全与可预测性"——AI 只能选择 catalog 内组件并按 schema 填充，代价是表达力被锁在预定义目录内，复杂交互场景（编辑器、设计工具）尚不适用。</td>
+<td>档案明列"约束即自由"设计与"实际应用场景成熟度"风险；性能与 schema 违规率无量化数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选单一 Web 渠道（React + 内置 36 个 shadcn/ui 组件），用 defineCatalog 限定最小组件集，接入一家支持 structured output 的模型，记录 schema 违规率与渲染时延，再决定是否扩到 PDF/RN 等端。</td>
+<td>档案建议"先在单一渠道、最小工具权限和可审计日志下验证"；具体模型供应商、PoC 验收阈值与部署形态待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>json-render 的核心设计哲学是"约束即自由"——通过将 AI 的输出空间限制在一个预定义的组件目录中，反而获得了更好的生成质量（AI 不需要处理布局逻辑、样式、安全性，只需选择和配置组件）。这与传统的"让 AI 写代码"方案形成鲜明对比。Zod schema 约束确保了类型安全，defineRegistry + Renderer 的分离设计则让组件实现与 AI 接口完全解耦。这种"catalog → registry → renderer"的三层架构非常值得借鉴。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目核心: defineCatalog 编排与运行时]
+    C --> M[外部边界: LLM 结构化输出]
+    C --> T[外部边界: 工具与外部系统]
+    C --> S[状态/控制/风险边界: 组件目录与 Zod schema 约束]
+    M --> C
+    T --> C
+    S --> R[Renderer: React 或 Vue 或 Svelte 或 Solid 或 RN 或 Remotion 或 react-pdf 或 react-email 或 Ink 或 R3F 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>json-render 定位为 <strong>Generative UI 基础设施层框架</strong>。它不做 AI 模型调用（那是 AI SDK 的职责），也不做 UI 组件库（那是 shadcn/ui 的职责），而是定义了"AI 如何安全地生成结构化 UI"的中间层协议。如果 Generative UI 成为前端的主流范式（类似 Tailwind 之于 CSS），json-render 有望成为这个领域的标准框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Vercel Labs 项目的不确定性</strong>：vercel-labs 是实验性仓库，项目可能被合并到正式产品中、独立发展、或被放弃。与 vercel/ai 那样的正式仓库相比，长期投入不确定。</li>
 <li><strong>LLM 结构化输出能力的依赖</strong>：json-render 依赖 LLM 可靠地输出符合 schema 的 JSON。虽然当前的 structured output / function calling 能力已大幅提升，但在复杂 catalog 场景下仍可能出现幻觉或 schema 违规。</li>
 <li><strong>实际应用场景的成熟度</strong>：Generative UI 当前主要适合仪表盘、报告、简单工具等场景，对于复杂交互式应用（编辑器、设计工具）尚不适用。市场接受度有待验证。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Vercel AI SDK (ai-sdk.dev)</strong>：json-render 的自然上游——AI SDK 负责调用 LLM 并生成结构化输出，json-render 负责将结构化输出渲染为 UI。两者协同形成完整的 Generative UI 技术栈。</li>
 <li><strong>v0.dev (Vercel)</strong>：Vercel 的商业 AI UI 生成产品。json-render 可能是 v0 底层技术的开源化，或者是 v0 理念的框架化。</li>
 <li><strong>LangChain / LCEL</strong>：LangChain 的 structured output + tool calling 也能实现类似的"AI 输出结构化数据"能力，但缺乏专门的 UI 渲染层。json-render 更专注于 UI 场景。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>高度值得关注，Generative UI 赛道的核心项目</strong>。json-render 在半年内达到 15K stars 说明市场对这个方向有强烈需求。如果 Vercel 将其提升为正式产品（从 vercel-labs 迁移到 vercel 组织），则标志着 Generative UI 进入主流。建议每月关注更新。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>是否从 vercel-labs "毕业"到正式仓库</strong>：这是判断 Vercel 对此项目投入程度的关键信号</li>
 <li><strong>生产案例的涌现</strong>：是否有知名产品公开使用 json-render 构建核心功能，验证其在真实场景中的可行性</li>

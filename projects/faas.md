@@ -38,8 +38,40 @@ OpenFaaS 的热度是**真实的云原生需求 + CNCF 生态背书**驱动。�
 5. **GitOps 集成:** 与 ArgoCD/Flux 整合，函数部署通过 Git 仓库驱动
 6. **CLI 友好:** `faas-cli` 提供完整的 build/push/deploy/invoke 工作流
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenFaaS = 自托管 FaaS 平台，边界由 Kubernetes 集群与 Docker 镜像仓库共同界定；函数即容器，CRD 管理生命周期，watchdog 进程托管函数执行 | 组件名来自档案"关键技术亮点"与"架构师速览"，但具体 CRD 字段、watchdog 协议版本未在档案中给出 |
+| 主路径 | HTTP/事件入口 → Gateway/Provider → watchdog → 函数容器 → Prometheus 指标反馈 HPA → 扩缩容（可缩容到零） | 主路径基于档案第 1–5 条亮点推断；具体 Gateway 实现、事件源组件名（如 NATS/Kafka 是否默认接入）未核实 |
+| 关键权衡 | 自托管可控性 vs K8s 运维负担；容器通用性 vs 冷启动延迟（数百毫秒–数秒，逊于 Firecracker）；社区版 vs OpenFaaS Pro 的商业分裂风险 | 权衡均出自档案"风险/局限"段；冷启动量级与 Pro/社区版功能差异未量化 |
+| 最小 PoC | 在单节点 K8s 上用 faas-cli build/push/deploy 一个 HTTP 函数，启用 HPA 到零，验证 Prometheus 自动伸缩与 GitOps（ArgoCD/Flux）回滚路径 | PoC 工具链（faas-cli、ArgoCD/Flux）来自档案，但具体版本、GitOps 模板是否开箱即用未在档案中确认 |
+
 ## 架构启发
 OpenFaaS 的核心架构启发是 **"Serverless 不等于公有云"**。它证明了 Serverless 的核心价值（按需伸缩、运维零负担）可以在私有基础设施上实现。函数即容器的抽象，让 Serverless 从"特殊运行时"回归为"普通微服务的极简形态"。这与后来的 Knative（Google）、Firecracker（AWS）等思路一致——Serverless 是一种部署模式，而非特定平台。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[客户端或事件源] --> G[Gateway 入口 待核验]
+    G --> P[Provider 调度与 CRD 管理]
+    P --> W[watchdog of-watchdog/stream 待核验]
+    W --> F[函数容器 Docker 镜像]
+    F --> W
+    W --> G
+    P <--> M[Prometheus 指标 QPS CPU]
+    M --> P
+    P --> H[HPA 自动伸缩 含缩容到零]
+    P -.GitOps.-> A[ArgoCD 或 Flux 待核验]
+    A -.回滚/同步.-> P
+    F -.状态 审计 日志.-> S[会话 状态 审计边界]
+    P -.边界.-> R[OpenFaaS Pro 商业版差异 待核验]
+    K[Kubernetes 集群 强依赖] --- P
+    K --- H
+```
 
 ## 定位判断
 **成熟基础设施型项目。** OpenFaaS 已渡过爆发期，进入稳定的企业采用阶段。它是私有 Serverless 场景的可靠选择，但不再是"创新前沿"。适合已投资 Kubernetes 的中大型企业作为内部函数平台。

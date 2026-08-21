@@ -6,7 +6,7 @@
     <title>codebase-memory-mcp | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -90,22 +90,70 @@
 <p><strong>单静态二进制：</strong> macOS / Linux / Windows 三平台，无 Docker / 无运行时 / 无 API key。<code>curl install | bash</code> 即用。</p>
 </li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>codebase-memory-mcp 是 Coding Agent 与代码仓库之间的 MCP 知识层；入口为 14 个 MCP 工具，产出持久化图（<code>.codebase-memory/graph.db.zst</code>），本地静态二进制运行，无 API key、无 Docker。</td>
+<td>边界由档案中"14 个 MCP 工具 + 单静态二进制 + <code>.codebase-memory/graph.db.zst</code>"明示；网络协议、鉴权方式未在档案中证实。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游 Agent 调用 MCP 工具 → tree-sitter 解析（158 语言）→ 写入知识图（含 CALLS/IMPORTS/DEFINES/IMPORTS/INHERITS/HTTP_CALLS/DATA_FLOWS/EMITS 等边）→ Hybrid LSP 语义增强 → Cypher/BM25/语义搜索返回结果，团队可通过提交图文件跳过 reindex。</td>
+<td>路径基于"tree-sitter 知识图谱 + Hybrid LSP + Cypher 查询 + 可提交图文件"档案条目；增量索引、watcher 实现细节未披露。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>158 语言广度 + 极致 token 削减（120x）↔ Hybrid LSP 类型推断为 C 重写的近似（动态类型/Ruby monkey patch 可能不准）；单二进制零依赖 ↔ 单一维护者（DeusData）风险；MCP 标准早期 ↔ 14 工具接口可能需重写。</td>
+<td>权衡点全部来自档案"风险/局限"段及亮点段；性能数字（412K→~3.4K tokens、3 分钟索引 Linux 内核）来自档案评测，未独立复现。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Linux/macOS 单机上 <code>curl install | bash</code> 启动 MCP Server，接入一种主流 Coding Agent（Claude Code/Codex），对一个 ≤1M LOC 的真实仓库跑架构概览 + 调用图两个工具，比对 grep+read 的 token 消耗；将 <code>.codebase-memory/graph.db.zst</code> 提交验证团队协作链路；验收含增量索引延迟、Hybrid LSP 类型准确率人工抽检、退出/卸载路径。</td>
+<td>PoC 设计仅引用档案明示能力（安装方式、3D UI localhost:9749、可提交图文件、Hybrid LSP 11 语言覆盖）；企业级部署、监控、SLO 指标档案未给出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>codebase-memory-mcp 的核心设计哲学是"结构化索引替代暴力搜索"。这不仅是性能优化，而是范式转变：
 - 传统方式：Agent → grep → read file → LLM 分析 → 重复（大量 token）
 - 知识图谱方式：Agent → 一次图查询 → 精确结果（极少量 token）</p>
 <p>CacheAligner-like 的思路：稳定 prefix 让 provider KV cache 命中率最大化。这种"为下游系统优化"的设计意识是基础设施级思维。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A["上游 Coding Agent<br/>(Claude Code / Codex 等)"] --> B["MCP 入口与 14 个工具<br/>待核验:协议与鉴权"]
+    B --> C["tree-sitter 解析器<br/>158 语言 vendored grammar"]
+    C --> D["持久化知识图<br/>CALLS / IMPORTS / DEFINES /<br/>IMPLEMENTS / INHERITS /<br/>HTTP_CALLS / DATA_FLOWS / EMITS"]
+    D --> E["Hybrid LSP 语义增强<br/>覆盖 11 语言<br/>待核验:与原生 LSP 一致性"]
+    D --> F["查询层<br/>Cypher / BM25 / 语义搜索<br/>(bundled Nomic embeddings)"]
+    E --> F
+    F --> G["结果返回 Agent"]
+    D --> H["团队协作文件<br/>.codebase-memory/graph.db.zst<br/>提交后跳过 reindex"]
+    D --> I["3D 图谱可视化 UI<br/>localhost:9749<br/>待核验:暴露范围"]
+    B -.状态/风险边界.-> J["单静态二进制 / 零运行时依赖<br/>单一维护者 DeusData<br/>MCP 标准早期风险<br/>待核验:增量索引 watcher"]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Coding Agent 的知识层。</strong> 如果 headroom 是 LLM 的"压缩层"，codebase-memory-mcp 就是 LLM 的"索引层"。两者互补——headroom 压缩内容，codebase-memory-mcp 减少需要压缩的内容量。</p>
 <p>在 MCP 生态中，这是"code intelligence"赛道的标杆项目。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>单一维护者风险：</strong> DeusData 是个人/小团队。企业依赖需评估可持续性。</li>
 <li><strong>索引时效性：</strong> 文件变更后的增量索引质量取决于 watcher 的可靠性。大型 monorepo 的增量更新可能滞后。</li>
 <li><strong>Hybrid LSP ≠ 真正 LSP：</strong> C 实现的类型推断是近似方案，复杂场景（如 Python 动态类型、Ruby monkey patching）可能不准。</li>
 <li><strong>MCP 生态早期：</strong> 如果 MCP 标准变化，14 个工具接口可能需要重写。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -143,9 +191,9 @@
 </tbody>
 </table>
 <p>codebase-memory-mcp 与 headroom 是互补关系——前者减少查询次数，后者压缩每次查询的内容。与 FastContext 是竞争关系——一个用规则和 AST，一个用 ML 模型。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，重点跟踪。</strong> codebase-memory-mcp 代表了 Coding Agent 基础设施的另一个关键层。如果它持续发展，可能成为 MCP 生态中 code intelligence 的标准组件。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>企业采用情况：是否有大公司在内部部署 codebase-memory-mcp</li>
 <li>MCP 工具接口稳定性：14 个工具是否在真实使用中演化</li>

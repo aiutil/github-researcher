@@ -43,12 +43,42 @@ Google Research 开发的时间序列基础模型（decoder-only），200M 参�
 
 5. **LoRA 微调：** HuggingFace Transformers + PEFT 的 LoRA 微调示例。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | TimesFM v2.5（200M 参数，16K context，decoder-only 时间序列基础模型）的接入面由 BigQuery ML、Google Sheets、Vertex Model Garden 三条 Google 产品线以及 HuggingFace 模型权重 + LoRA（PEFT）微调示例构成；外部协变量通过 XReg 接入。 | 来源仅为档案正文，未列具体 API、SDK、endpoint URL；Vertex 的 Docker 镜像、BigQuery UDF 名称均待核验。 |
+| 主路径 | 数值序列输入 → TimesFM 推理（HuggingFace Transformers，可选 Flax/Torch 后端）→ 可选 continuous quantile head（30M）→ 输出点预测/分位数 → 写入 Google Sheets 或 BigQuery 表 / Vertex 端点响应。微调路径：基础权重 + PEFT LoRA → 微调后适配自有序列。 | 推理时序、tokenizer 细节、context-16K 分桶策略、quantile head 触发条件均需源码确认。 |
+| 关键权衡 | 参数效率（200M）相对竞品 Chronos（710M）/Moirai（311M）的取舍，换取更长 context（16K vs 5K/1K）；同时承担 Google 闭源生产版本与开源版本的能力差距风险（README 明示非官方支持产品）。 | 推理延迟、显存占用、QPS、quantile head 训练成本均未在档案中量化。 |
+| 最小 PoC | 取 HuggingFace 上的 TimesFM 2.5 权重，固定单条渠道（如 BigQuery ML 或本地 Python），以单变量序列走端到端推理，接入 LoRA 微调示例验证协变量（XReg）与 16K context；不引入 Vertex 或 Sheets。 | LoRA 微调脚本路径、所需最低硬件、数据 schema 要求需查仓库 examples/ 目录核验。 |
+
 ## 架构启发
 
 TimesFM 证明了"基础模型"范式可以从文本扩展到数值序列。这对架构师的启发是：
 - "预训练 + 微调" 不只是 LLM 的专利
 - 时间序列预测的"模型即服务"正在成为现实
 - 企业可以跳过训练步骤，直接用 foundation model 做预测
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界 待核验]
+  I --> C[项目编排与运行时]
+  C --> M[TimesFM v2.5 200M decoder-only HF Transformers 可选 Flax 或 Torch]
+  C --> Q[可选 30M 分位数头 待核验触发条件]
+  M --> Q
+  C --> X[XReg 外部协变量入口]
+  X --> M
+  C --> L[PEFT LoRA 微调 示例]
+  L --> M
+  C --> P[Google 生产部署 BigQuery ML 与 Google Sheets 与 Vertex Model Garden]
+  C --> S[会话 状态 审计]
+  M --> C
+  P --> C
+```
 
 ## 定位判断
 

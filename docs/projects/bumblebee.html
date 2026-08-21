@@ -6,7 +6,7 @@
     <title>Perplexity bumblebee | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,30 +48,81 @@
 <li><strong>元数据分析</strong>：不只是检测包是否存在，分析包的元数据是否有风险信号</li>
 <li><strong>Go 实现</strong>：单二进制部署，无运行时依赖，CI/CD 集成友好</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为本地开发者机器上运行的只读扫描器，扫描对象是 npm/pip 包、浏览器扩展、IDE 插件、CLI 工具等元数据暴露面，非网络服务、非运行时沙箱</td>
+<td>"只读开发者端点扫描器——检测本地包、扩展、开发工具元数据暴露的软件供应链安全风险"；覆盖范围、不含运行时检测、不含阻断能力均见原文</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>单二进制本地扫描 → 元数据采集与风险信号分析 → 只读报告输出；不修改系统、不上传数据</td>
+<td>"不修改系统，不收集数据，安全可重复运行"；Go 单二进制部署；但具体数据源格式与规则引擎细节未在档案中说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>只读安全 vs 无阻断能力；广覆盖（多包管理器/扩展/IDE）vs 规则深度；Apache 2.0 与早期阶段（4.3K stars、10 issues、16 PRs）之间的成熟度落差</td>
+<td>"只读设计是正确选择"+"只读扫描 = 只告警不阻断，需要与 CI/CD 策略结合"；"早期阶段：检测规则库需要持续扩充"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单台开发者机器或 CI runner 上以单二进制方式运行扫描，对 npm/pip/扩展三类目标分别验证检测项与误报率，并验证"不修改系统/不上传数据"的承诺</td>
+<td>档案明确 Go 单二进制、无运行时依赖、CI/CD 集成友好；具体检测规则条目、CLI 参数、退出码语义档案未提供</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>AI Agent = 新的供应链入口。每次 Agent 安装一个 npm 包，就扩大了攻击面</li>
 <li>只读设计是正确选择：安全工具不应该引入新的安全风险</li>
 <li>启发：未来需要「Agent 运行时安全基线」——定义 Agent 可以安装什么、执行什么</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者机器或 CI Runner] --> B[bumblebee 单二进制 Go]
+    B --> N[npm 包元数据 本地]
+    B --> P[pip 包元数据 本地]
+    B --> E[浏览器扩展元数据 本地]
+    B --> I[IDE 插件与 CLI 工具元数据 本地]
+    N --> R[风险信号分析 规则库 待核验]
+    P --> R
+    E --> R
+    I --> R
+    R --> O[只读报告 不修改系统 不上传数据]
+    O --> U
+    S[外部 CI/CD 策略阻断 互补边界] -.联动.-> O
+    A[Agent 运行时沙箱 如 NVIDIA OpenShell 互补边界] -.互补.-> B
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型。</strong> 解决特定场景的安全工具，定位清晰。Perplexity 出品增加可信度，但不是平台级产品。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>覆盖范围有限</strong>：只检测本地暴露面，不检测运行时行为</li>
 <li><strong>无阻断能力</strong>：只读扫描 = 只告警不阻断，需要与 CI/CD 策略结合</li>
 <li><strong>早期阶段</strong>：检测规则库需要持续扩充</li>
 <li><strong>Perplexity 主营业务是搜索</strong>：安全工具可能不是战略重点</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Snyk / Dependabot</strong>：传统依赖安全扫描，bumblebee 更聚焦 AI Agent 场景</li>
 <li><strong>Socket.dev</strong>：npm 供应链安全，bumblebee 范围更广（多语言、多工具）</li>
 <li><strong>NVIDIA OpenShell</strong>：Agent 运行时沙箱（隔离），bumblebee 是检测层，两者互补</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>建议跟踪。</strong> AI Agent 供应链安全是确定性增长赛道，bumblebee 是早期标杆项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否集成到主流 CI/CD（GitHub Actions / GitLab CI）</li>
 <li>检测规则的增长速度和覆盖面</li>

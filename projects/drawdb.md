@@ -40,8 +40,36 @@ homepage: "https://drawdb.app"
 4. **主题切换:** 浅色 / 深色 + 自定义配色
 5. **JSON 导入导出:** 支持 schema 序列化与恢复
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 浏览器端单层 JS 应用，无服务端；数据仅落 IndexedDB / localStorage，外部边界只有用户浏览器与可选的 JSON/SQL 导入导出文件 | 档案明列"100% 浏览器、IndexedDB 存储、无后端"，未披露 PWA Service Worker、网络协议或同步机制 |
+| 主路径 | 用户拖拽 → React 表/关系编辑器 → 内部 schema 模型 → 多方言 SQL 渲染器 → 导出（SQL/JSON）或 IndexedDB 落盘 | 主路径四段在档案中均有字面支撑；关系自动外键生成、主题切换、JSON 序列化属于确认点，迁移/diff 路径档案未证实 |
+| 关键权衡 | (1) AGPL-3.0 copyleft vs 企业内嵌；(2) IndexedDB 容量上限 vs 大型 schema；(3) 离线零成本 vs 缺协作/版本控制；(4) 跨方言广度 vs 单方言深度 | 前两条档案明列；后两条由"无后端 + 零账号 + 跨方言"定位可推断，但同步/协作机制档案未证实 |
+| 最小 PoC | 离线打开 drawdb.app，拖拽建 3~5 张表 + 1 对多关系，导出 PostgreSQL 与 SQLite 双方言 SQL 并在各自 CLI 中执行；再用 JSON 导入恢复，验证 IndexedDB 与序列化闭环 | PoC 步骤均在档案"SQL 多方言导出""JSON 导入导出""IndexedDB 本地存储"覆盖范围内；协作、migration、SQL 兼容性深度未验证 |
+
 ## 架构启发
 "无后端 + IndexedDB + Web 即应用"的取向展示了一个反 SaaS 路线——把工具完全交给浏览器，通过 PWA 完成分发，未来不依赖任何服务器即可永久运行。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[用户浏览器] --> E[React 拖拽式表与关系编辑器<br/>React + Tailwind]
+  E --> M[内部 schema 数据模型<br/>表 字段 关系]
+  M --> R[多方言 SQL 渲染器<br/>MySQL PostgreSQL SQLite MSSQL MariaDB Oracle MongoDB]
+  R --> X[SQL 文本导出]
+  M --> J[JSON 序列化]
+  J --> Y[JSON 导入导出文件<br/>外部边界]
+  M --> D[(IndexedDB localStorage<br/>本地持久化)]
+  L[主题切换 浅色 深色 自定义配色] --> E
+  W[AGPL-3.0 许可风险<br/>控制边界] -.约束.-> E
+  S[PWA 离线分发 待核验] -.分发.-> U
+  N[migration diff 能力 待核验] -.扩展.-> R
+```
 
 ## 定位判断
 **工具型 / 可视化建表工具标杆（Web 端）。** 39k stars 反映开发者社区对"轻量前端 ER 工具"的真实需求。它不太可能挑战 Prisma Studio / DBeaver 等专业工具，但会稳定占据"快速画图"场景。

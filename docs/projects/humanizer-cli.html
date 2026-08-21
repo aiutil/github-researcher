@@ -6,7 +6,7 @@
     <title>0xwilliamortiz/humanizer-cli | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,26 +47,70 @@
 <li><strong>交互式终端查询</strong>：<code>humanizer show 14</code>（看第 14 号模式）、<code>humanizer check draft.md</code>（检查草稿）、<code>humanizer search hedging</code>（搜索相关模式）、<code>humanizer patterns</code>（分组列出所有模式）。</li>
 <li><strong>离线优先</strong>：程序读取旁边的 <code>SKILL.md</code> 并打印，数据不离开本机。无网络、无 API key。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单机 CLI，核心是 87KB Windows x64 的 C 二进制，Node 仅作启动器；运行时零依赖、离线、零网络/零 API key；Skill 数据源为本地 <code>SKILL.md</code>，无外部服务编排层</td>
+<td>具体 C 源码、Node 启动器与二进制之间的调用协议未在档案中给出，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户终端调用 → Node 启动器装载 C 二进制 → 读取本地 <code>SKILL.md</code>/pattern 数据 → 在终端输出模式说明（<code>show</code>/<code>search</code>/<code>patterns</code>）或扫描草稿命中模式（<code>check</code>）→ 结果回写到 stdout</td>
+<td><code>check draft.md</code> 的扫描算法、精确率/召回率档案未独立验证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>C 二进制带来的极致小体积与启动速度 vs 仅 Windows x64 的平台受限；零依赖、可离线分发 vs 缺少跨平台原生二进制导致 macOS/Linux 用户覆盖缺口；catalog-style 33 模式 vs 非穷尽检测能力</td>
+<td>二进制内部检测实现、跨平台是否仅有 Node fallback 启动器而非完整检测能力，档案未说明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单台 Windows x64 机器 <code>npm install</code> + <code>humanizer patterns</code> 列出 33 模式，再以一段已知含 dash 滥用/<code>not just X, it's Y</code> 的英文草稿跑 <code>humanizer check draft.md</code>，验收：模式分组输出可读、check 命中是否覆盖档案提到的几类典型痕迹</td>
+<td>验收门槛（命中率阈值、误报率）档案未给基线</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>humanizer-cli 的设计是 <strong>"skill → CLI"的封装模式</strong>——把一个 Agent skill（blader/humanizer 的 SKILL.md）转成一个独立的终端工具，脱离 agent 运行时。这代表了 skill 生态的一种演进：skill 不一定只能在 agent 内用，也可以被"提取"成独立工具。对架构师的启发：<strong>skill 是可移植的知识载体</strong>，同一份模式库可以同时服务于 agent（skill 内）和人类（CLI 内）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[写作者或编辑 在终端输入命令] --> I[CLI 入口 Node 启动器]
+    I --> C[C 二进制 core 87KB Windows x64]
+    C --> D[本地 SKILL.md 与 33 种 AI 写作模式目录 来源 blader humanizer skill Wikipedia Signs of AI writing]
+    C --> O[stdout 终端输出 show search patterns check draft.md]
+    S[check 模式的检测效果 未独立基准验证 待核验] -.审计与风险边界.-> C
+    P[跨平台原生二进制 仅 Windows x64 待核验] -.部署边界.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在"去 AI 腔"写作治理品类中占据 <strong>"事后检测 + 终端接口"</strong> 位置。与 human-writing（事中改写，中文）、ratchet（事前约束，agent 规则）互补。它是 blader/humanizer（34K⭐，通用 skill）的终端化分支——把 skill 从 agent 上下文里拿出来，变成写作者可在任何终端随时调用的参考工具。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>208 watchers vs 72 fork——关注度 &gt; 部署意愿</strong>：watchers 高说明被关注，但 fork 低说明实际部署/修改的人少。可能是"收藏了但还没用"的状态，实际使用率需观察。</li>
 <li><strong>Windows x64 限制</strong>：C 二进制仅提供 Windows x64 版本（<code>sources/humanizer.zip</code>），跨平台支持有限。macOS/Linux 用户依赖 Node 启动器但核心检测可能受限（README 标注 Windows x64）。</li>
 <li><strong>33 种模式为 Wikipedia 目录，非完整检测方案</strong>：这些模式是"AI 写作的常见迹象"，但不是穷尽的检测算法。复杂/微妙的 AI 写作痕迹可能不被这 33 种模式覆盖。</li>
 <li><strong>检查模式（check）的效果未独立验证</strong>：<code>humanizer check draft.md</code> 的检测准确率、误报率未独立基准测试。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs blader/humanizer（34,004⭐）</strong>：humanizer 是源头 skill（通用，agent 内用），humanizer-cli 是其终端化封装（脱离 agent，人类直接用）。README 明确声明"the humanizer skill 的终端参考"。</li>
 <li><strong>vs KKKKhazix/human-writing（1,552⭐）</strong>：human-writing 是事中改写（让 AI 写的中文有活人感，中文），humanizer-cli 是事后检测（检查已有文本的 AI 痕迹，英文）。阶段和语言不同，互补。</li>
 <li><strong>vs 0xwilliamortiz/ratchet（435⭐，同一作者）</strong>：ratchet 是事前约束（agent 写作前的规则检查），humanizer-cli 是事后检测。同一作者的"写作治理"产品线，覆盖事前→事后。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"去 AI 腔"写作治理品类的"终端检测"节点跟踪。</strong> 208 watchers 是强关注信号，且它明确溯源 blader/humanizer（34K⭐ 已验证品类）。重点验证 check 模式的实际检测效果，以及跨平台支持是否扩展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>watchers 持续性</strong>：208 watchers 是否增长，还是停滞——增长说明品类有持续吸引力。</li>
 <li><strong>跨平台扩展</strong>：是否增加 macOS/Linux 的原生二进制支持，扩大用户群。</li>

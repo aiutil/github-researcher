@@ -39,8 +39,35 @@ url: "https://github.com/trycompai/crm"
 4. **工作队列语义**：`lib/tasks.ts` 用 `claimDue` + `FOR UPDATE SKIP LOCKED` 租约行——两个 dispatcher 取不相交的工作，死掉的 run 在租约过期时释放行。"每隔 N 分钟最旧的 10 个联系人"属于 task 的 `dueAt` 而非 cron 表达式。
 5. **单租户内部设计**：Google 登录 + 一个环境变量的 allow-list，进去的人能看到一切。这是有意的安全边界（见 SECURITY.md），非多租户 SaaS。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | trycompai/crm 是单租户内部 CRM，agent 跑在自有部署、调度、工作队列上；agent 沙箱 deny-all egress，DB 凭据不下发到 shell；入口为 Google 登录 + 环境变量 allow-list。 | 仅档案中的设计声明（README、SECURITY.md 引用）支持，未做源码审计。 |
+| 主路径 | Google 登录 → 入口/身份边界 → NestJS API 层（无智能，仅记账+入队）→ agent 运行时（基于 Vercel eve）→ 模型与"报告事实"的工具 → 证据账本/状态写回。 | 主路径组件齐全，但持久化、会话恢复实现细节须源码核验。 |
+| 关键权衡 | "agent 作为产品本体"倒置 API 层，代价是 agent 决策质量成系统性瓶颈；扩展性受单租户+沙箱 deny-all 主动收紧；以尚在快速迭代的 eve（4.2K⭐）为底座承担 breaking change 风险。 | 风险/局限条目直接来自档案；生产级证据定价准确性与 agent 决策质量档案明确"未经规模验证"。 |
+| 最小 PoC | 单渠道（一个外部数据源）、最小工具权限、开启审计日志；用 `claimDue` + `FOR UPDATE SKIP LOCKED` 跑一个简单 lead-enrichment 队列；先验证弱证据→人类裁决机制是否真减少"自信错误"。 | PoC 框架由档案中工作队列语义直接给出；具体栈（bun/TypeScript 版本）与部署形态待核验。 |
+
 ## 架构启发
 核心启发是 **"agent 是产品，数据库是笔记"** 的倒置。传统架构是 API 层含智能（调富化 API、打分），agent 在旁边辅助；trycompai/crm 反过来——API 层（NestJS）刻意"无智能"，只报告"发生了某事"并写队列，**智能全部在 agent 侧**。这种倒置使 agent 的决策可审计（证据账本）、可隔离（deny-all 沙箱）、可独立调度（自己的工作队列）。代价是 agent 的决策质量成为产品的核心瓶颈——若 agent 判断差，整个产品差。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界:Google 登录 + 环境变量 allow-list 单租户内部设计]
+    I --> C[NestJS API 层 刻意无智能 仅记账与入队]
+    C --> Q[工作队列 lib/tasks.ts: claimDue 与 FOR UPDATE SKIP LOCKED 租约]
+    Q --> A[Agent 运行时 apps/agent 基于 Vercel eve filesystem-first durable 框架]
+    A --> S[deny-all egress bash 沙箱 无网络无 DB 仅文本处理]
+    A --> M[模型与推理服务 web_search 在 model provider 侧运行]
+    A --> T[工具与外部系统 工具只报告观察到的事实 不接受置信度分数]
+    T --> L[证据账本 evidence-ledger 强证据写记录 弱证据变人类裁决建议]
+    L --> S2[会话 状态 审计 证据账本与 NestJS 回写 待核验:具体持久化与 schema]
+    A -. eve 上游 breaking change 风险 .- A
+```
 
 ## 定位判断
 在应用层生态中占据**垂直 SaaS 以 agent 为核心重写**的位置。与 qm（通用 harness 平台）、cindy（个人客户端）不是竞争，而是**不同抽象层次的互补**——qm 是"让团队用 agent 协同"，crm 是"让 agent 重写一个垂直领域"。它是 Vercel eve 框架的首个生产级采用者，也反向验证了 eve 的 filesystem-first 范式。

@@ -6,7 +6,7 @@
     <title>dailydotdev/daily | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,76 @@
 <li><strong>全平台统一代码库</strong>：单一 JavaScript 代码库支持浏览器扩展（Chrome/Edge）、PWA Web 应用、iOS/Android 原生应用（通过 WebView 或 React Native），这是少见的全平台开源项目架构。</li>
 <li><strong>Squads 社区系统</strong>：开发者可以围绕特定话题组建社区（类似 Discord 频道），在社区内分享和讨论内容，将单向的信息消费升级为双向的社区互动。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>客户端覆盖 Web（PWA）、Chrome/Edge 扩展、iOS/Android；后端、推荐引擎、2,000+ 数据源管理为闭源，仅客户端 JavaScript 代码库以 AGPLv3 开源</td>
+<td>档案明示"半开源"模式，具体后端 API、协议、部署形态未披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户开启新标签 → 客户端入口 → 后端编排 → 从 2,000+ 来源聚合并基于标签/阅读行为个性化推荐 → 展示内容并回写用户交互（Squads、评论、书签、搜索）</td>
+<td>"新标签页劫持"和推荐路径有档案描述，但具体数据流/协议属"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展高触达 vs 浏览器权限/隐私边界；闭源后端 vs AGPLv3 客户端的"半开源"张力；个性化分发 vs 信息茧房与内容质量</td>
+<td>档案直接点出四项风险/局限；具体权限清单、推荐算法、SLO 无披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>先验证单渠道（仅 PWA 或单一扩展）的入口行为、推荐相关度与数据回写审计，不引入 Squads 等社区模块</td>
+<td>入口策略和推荐机制有档案内文支撑；后端依赖及成本/退出路径"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>daily.dev 展示了"开源 + 商业化"的一种模式：核心客户端代码开源（AGPLv3），但后端服务、推荐算法、数据源管理是闭源的。这意味着用户可以查看和修改客户端代码，但无法自建一个完整的 daily.dev 实例（因为缺少后端）。这种"半开源"模式在内容/社区类产品中较常见，但对于纯粹的技术工具来说可能不太适用。另一个启发是"高频入口策略"——通过占据浏览器新标签页这个高频入口，daily.dev 获得了近乎原生的留存能力。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者用户] --> NB[新标签页扩展 Chrome/Edge]
+    U --> PWA[PWA Web 入口]
+    U --> MOB[iOS/Android 应用 WebView 形态]
+    NB --> C[JavaScript 客户端 代码库 AGPLv3 开源]
+    PWA --> C
+    MOB --> C
+    C --> API[后端服务 个性化推荐 闭源 待核验]
+    API --> SRC[2,000+ 内容来源 Hacker News Reddit 博客等 待核验]
+    API --> REC[推荐引擎 标签 阅读行为 闭源 待核验]
+    C -.写入.-> SQ[Squads 社区 评论 书签 搜索 客户端组件]
+    REC --> C
+    SRC --> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>daily.dev 定位为<strong>开发者社区/媒体平台</strong>，而非技术工具或框架。它的竞品不是 GitHub 项目，而是 Hacker News、Dev.to、Hashnode 等开发者内容平台。在 GitHub 上开源主要是为了品牌透明度和社区参与，而非技术复用——几乎没有开发者会 fork 这个项目来搭建自己的 daily.dev。20K stars 更多反映的是其用户社区的规模和忠诚度。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>商业化与开源的张力</strong>：daily.dev 本质上是一家 VC 支持的创业公司，开源代码的维护优先级取决于商业利益。如果公司战略调整或融资困难，开源项目可能被边缘化。</li>
 <li><strong>信息茧房风险</strong>：个性化推荐可能导致开发者只看到自己已经关注领域的内容，错过跨领域的技术趋势。这对一个定位为"发现"工具来说是一个根本性矛盾。</li>
 <li><strong>内容质量把控</strong>：2,000+ 来源的内容质量参差不齐，如何避免标题党和低质内容是一个持续挑战。</li>
 <li><strong>GitHub Stars 不代表技术价值</strong>：20K stars 中大部分来自终端用户（而非开发者），不能直接与 jq、yq 等技术工具的 stars 比较。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Hacker News (Y Combinator)</strong>：daily.dev 的直接灵感来源和参照对象。HN 是纯 Web 论坛形式，daily.dev 用浏览器扩展 + 个性化推荐做了差异化。</li>
 <li><strong>Dev.to (forem)</strong>：另一个开源开发者社区平台，约 22K stars。Forem 更侧重于"博客/论坛"形态，daily.dev 更侧重于"信息流/聚合器"形态。</li>
 <li><strong>Hashnode</strong>：面向开发者的博客平台（闭源），与 daily.dev 的信息流定位不同，但在开发者受众上有重叠。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得以"开发者媒体生态"的角度跟踪，而非作为技术项目跟踪</strong>。daily.dev 的价值在于它代表了开发者信息消费方式的演变趋势。如果研究范围包括开发者社区和媒体产品，它是重要样本。如果纯看技术项目，则价值有限。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>AI 驱动的内容推荐演进</strong>：daily.dev 是否会引入 LLM 做内容总结、个性化学习路径推荐等 AI 功能</li>
 <li><strong>商业化路径的健康度</strong>：开发者营销广告的天花板有多高，是否能支撑长期独立运营（而非被收购）</li>

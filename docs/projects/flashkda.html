@@ -6,7 +6,7 @@
     <title>FlashKDA | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,31 +50,77 @@
 <li>高性能 CUDA 实现</li>
 <li>Moonshot Kimi 模型推理的核心组件</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界位于推理栈底层：FlashKDA 是 Moonshot Kimi 模型上 Delta Attention 机制的专用 CUDA 内核实现，向上对接推理调用方，向下绑定 Kimi/Delta-Attention 模型权重与 NVIDIA GPU。</td>
+<td>仅有"针对 Delta Attention 的专用 Flash 内核 / 高性能 CUDA 实现 / Kimi 推理核心组件"等高层描述，未公开算子列表、支持 GPU 型号、依赖的 CUDA / cuDNN 版本。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Kimi 模型推理请求 → 调用 Delta Attention 计算路径 → 触发 FlashKDA CUDA 内核 → 输出注意力结果回流推理框架。</td>
+<td>路径中推理框架、KV 缓存管理、调度层均未在档案中描述；"待核验"。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"专用内核带来的 Kimi/Delta-Attention 高性能"与"仅适用单一注意力变体、生态窄"之间取舍；专用化换通用性。</td>
+<td>Star 383、文档和示例较少、通用性"待验证"为档案明确表述；性能对比数据未给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Kimi Delta Attention 模型上以单 GPU 跑通一次推理链路，跑通前向 + 一次 Delta-Attention 调用即可。</td>
+<td>缺乏对硬件要求、构建步骤、依赖矩阵的描述，需查源码/官方文档补齐。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>与 TileKernels 类似，反映了"模型架构创新→专用内核跟进"的链路。注意力机制仍在持续演进，每种新机制都需要配套的 GPU 内核优化。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Kimi Delta Attention 模型权重 待核验] --> B[推理框架调用入口 待核验]
+    B --> C[FlashKDA 专用 CUDA 内核]
+    C --> D[NVIDIA GPU 执行单元 待核验]
+    D --> C
+    C --> E[注意力结果回流推理框架 待核验]
+    E --> F[会话/审计/状态边界 待核验]
+    G[外部同类内核 FlashAttention/Triton] -. 范式参考 .-> C
+    C --> H{风险边界: 仅限 Kimi Delta Attention, 文档少}
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施候选。</strong> 推理内核是 LLM 栈最底层。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>Star 数低（383），仍在极早期</li>
 <li>仅针对 Kimi Delta Attention，通用性待验证</li>
 <li>文档和示例较少</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>TileKernels (DeepSeek)：同日出现，另一家国产 AI 公司的内核库</li>
 <li>FlashAttention：注意力优化的先驱范式</li>
 <li>Triton (OpenAI)：通用 GPU 编程抽象</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 作为 Moonshot AI 的推理工程输出，反映其技术方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>Delta Attention 机制是否被其他模型采用</li>
 <li>FlashKDA 是否扩展到更多算子</li>
 <li>性能数据对比</li>
 </ol>
-<h2 id="_12">评分</h2>
+<h2 id="_13">评分</h2>
 <table>
 <thead>
 <tr>

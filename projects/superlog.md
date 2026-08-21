@@ -40,31 +40,36 @@ AI 原生可观测性平台：OpenTelemetry + ClickHouse + AI Agent 自愈，从
 - **社区 Agent** — 默认 agent 自动记录事件摘要
 - **Postgres 元数据** — 事件、配置等元数据存储
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OTLP 入口 + ClickHouse 遥测存储 + Postgres 元数据 + AI Agent Runner 编排的 AI-native 可观测性平台；处于数据接入、聚合、推理三层之间的边界 | 组件基于档案明列（OTLP、ClickHouse、Postgres、AI 事件聚合、Agent Runner、社区 Agent）；Agent Runner 的协议与部署形态未在档案中描述 |
+| 主路径 | OTLP 接入 → ClickHouse/Postgres 落库 → AI 事件聚合降噪 → Agent Runner 根因分析 → 修复建议/事件摘要输出 | 路径由档案「关键技术亮点」与「架构启发」图直接给出；具体查询语言、Agent 调用协议、对外 API 未证实 |
+| 关键权衡 | AI 自愈差异化能力 vs 修复可靠性与权限风险；ClickHouse 高性能查询 vs 自托管运维门槛；开源核心获客 vs 与 Grafana/Datadog/SigNoz 的同质化竞争 | 权衡源自档案「风险/局限/泡沫点」与「与同类项目的关系」；市场份额与商业转化数据档案未提供 |
+| 最小 PoC | 用 OTLP 单一 trace 信号源接入社区版，启用默认社区 Agent，在最小工具权限与可审计日志下验证事件聚合→根因→建议闭环 | PoC 范围仅基于档案已确认的「社区版含完整可观测性功能」「社区 Agent 自动记录事件摘要」；生产级权限模型、SLO 验收项未在档案中描述 |
+
 ## 架构启发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 flowchart LR
-    subgraph 数据接入["数据接入"]
-        A[OTLP Traces] --> D[OTLP 代理]
-        B[OTLP Logs] --> D
-        C[OTLP Metrics] --> D
+    A[OTLP 接入<br/>Traces/Logs/Metrics] --> B[ClickHouse<br/>遥测存储]
+    A --> C[Postgres<br/>元数据存储]
+    B --> D[AI 事件聚合<br/>降噪]
+    C --> D
+    D --> E[Agent Runner<br/>可插拔 AI 调查运行时]
+    E --> F[社区 Agent<br/>事件摘要]
+    E --> G[修复建议<br/>待核验: 自动化程度与权限边界]
+    subgraph 外部边界["外部依赖/边界"]
+        A
+        B
     end
-    
-    D --> E[ClickHouse<br/>遥测存储]
-    D --> F[Postgres<br/>元数据]
-    
-    E --> G[AI 事件聚合<br/>降噪]
-    F --> G
-    G --> H[Agent Runner<br/>根因分析]
-    H --> I[修复建议<br/>事件摘要]
-    
-    subgraph 开源版["社区版"]
-        D
-        E
-        F
+    subgraph 风险边界["风险/控制边界"]
         G
-        H
-        I
     end
 ```
 

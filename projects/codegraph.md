@@ -52,9 +52,33 @@ Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, C
 5. **### Supercharge Claude Code, Cursor, Codex, OpenCode, Hermes Agent, Gemini, Antigravity, Kiro, and G**
 6. ****The fastest complete code graph · surgical context · built for how agents actually work · 100% loc**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | codegraph 是一只面向编码 Agent 的本地代码知识图谱层，介于本地代码仓库与外部 Agent（Claude Code/Codex/Cursor/OpenCode/AntiGravity/Kiro/Hermes Agent/Gemini 等）之间，承担索引、上下文裁剪与同步职责 | 档案明确其"Pre-indexed code knowledge graph, auto syncs on code changes, …100% local"；协议、传输方式、存储引擎未在档案中说明 |
+| 主路径 | 用户/Agent 触发 → codegraph 入口（`codegraph upgrade` 等 CLI）→ 本地索引/图谱 → 按需返回外科手术式上下文（surgical context）→ Agent 消费；变更时自动同步索引 | 仅基于档案中"pre-indexed / auto syncs on code changes / surgical context / 100% local"的事实拼接，未涉及具体同步机制 |
+| 关键权衡 | 由 C 实现的本地化处理以换更少 token 与更少 tool call，与此对应的是首次索引与持续同步成本、Agent 适配面广带来的兼容性维护压力 | 权衡判断只引用档案中的 "fewer tokens, fewer tool calls, 100% local"；C 选择与性能/部署形态未在档案中证实 |
+| 最小 PoC | 在单仓库、单一 Agent（如 Claude Code）下启用 codegraph，验证 token/tool call 降幅、增量同步正确性、失败回滚路径；验收前不接入多 Agent、不放权多工具 | 仅依据"100% local"与多 Agent 适配声明做边界划定；具体安装/升级路径、PoC 步骤需以 README/源码核验 |
+
 ## 架构启发
 
 从 colbymchenry/codegraph 的设计来看，核心思路是 **"Pre-indexed code knowledge graph, auto syncs on code changes"**。这反映了 C 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者与编码 Agent<br/>Claude Code/Codex/Cursor/OpenCode/Kiro/Hermes Agent/Gemini/AntiGravity] --> CLI[codegraph CLI<br/>codegraph upgrade 等本地入口]
+    CLI --> IDX[本地代码知识图谱索引<br/>Pre-indexed · 100% local]
+    REPO[本地代码仓库] -- 文件变更 --> IDX
+    IDX -- 同步触发 待核验 --> IDX
+    CLI -- surgical context --> U
+    IDX -. 存储/同步机制 待核验 .-> IDX
+    AGENT[外部 Agent 适配边界] --> U
+```
 
 ## 定位判断
 

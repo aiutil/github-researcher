@@ -43,8 +43,34 @@ LongHorizon-Harness 的热度来自**"长程 agent 是公认瓶颈 × 学术论�
 5. **可恢复进度（recoverable progress）:** 故障后从验证状态恢复，非冷启动
 6. **v0.1.3 快速迭代:** 每轮以自然语言回复（基于验证状态），按启动目录操作，实时报告
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | LongHorizon-Harness 是在 Claude Code / Codex / OpenClaw 之上构建的可靠性 harness 层，入口、使用者与底层 agent 三方在档案中明确；具体协议与持久化存储后端未在档案中描述，属待核验。 | 基于分类、标签与档案"兼容"段；具体 SDK、RPC、数据库等档案未给出 |
+| 主路径 | 档案明确的主路径为：Manager 维护目标与验证进度 → Executor 以 fresh-context 单步执行 → Auditor 独立审计，仅验证通过的产物写入持久化状态。 | 来自档案"三角色分离 / 持久化可信状态 / fresh-context 执行 / 独立审计"四项亮点 |
+| 关键权衡 | 架构权衡是"三角色分离 + fresh-context 恢复"换得长程可验证性，但代价是引入 Auditor 额外的算力与时延，并完全依赖底层 agent（Claude Code/Codex/OpenClaw）的能力与稳定性。 | 来自档案"风险/局限"段对依赖底层 agent 的传导风险与三角色设计的描述 |
+| 最小 PoC | 先用 Claude Code 接入跑 WeaveBench / OSWorld 2.0 / Terminal-Bench 2.1 中的单一基准，验证"故障恢复 + 独立审计"两个最小闭环，再扩大工具权限与渠道。 | benchmark 名称来自档案；"measured gains"为论文自报，独立复现情况待核验 |
+
 ## 架构启发
 LongHorizon-Harness 的核心启发是**"长程 agent 的可靠性不是模型问题，而是架构问题"**——README 明确声明"模型决定 agent 单轮能做什么，harness 决定这些工作能否被验证、保留和持续直到任务真正完成"。这与 super-simple-software-factory（"Python 拥有控制平面"）和 RealReplicaBench（"状态化评测"）共同构成一个主题：**"agent 工程化"从 prompt 工程转向架构工程**。三角色分离（规划/执行/验证）是经典的分离关注点原则在 agent 领域的应用——人类组织中这三个角色也总是分离的（项目经理/执行者/QA）。更深层的启发：**"fresh context"可能是长程 agent 的必然选择**——与其维护一个不断膨胀的 context，不如每轮重置并从持久化状态恢复，这与"无状态服务"的云原生理念同构。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[Manager 编排与可信状态]
+    C -->|分配单步任务| E[Executor fresh-context 执行]
+    E -->|产出待核验| A[Auditor 独立审计]
+    A -->|通过则回写| S[持久化可信状态 durable verified state]
+    A -->|未通过回退| C
+    E -->|调用| T[Claude Code 或 Codex 或 OpenClaw]
+    T -->|工具结果| E
+    C -.故障恢复.-> S
+```
 
 ## 定位判断
 **架构参考型项目（长程 agent harness）。** LongHorizon-Harness 的价值在于提出了一个**可复现的长程 agent 架构范式**（三角色分离 + 持久化可信状态 + fresh-context 执行），而非具体工具。HuggingFace Daily Papers 周榜 #1 + arXiv 论文提供了学术可信度。它不替代任何 agent（明确声明 runs on top of Claude Code/Codex），而是为长程任务提供可靠性层。定位类似 super-simple-software-factory 但更学术化——后者是"实用工程范式"，前者是"学术验证的架构模式"。若论文的 benchmark 结果（WeaveBench/OSWorld 2.0/Terminal-Bench 2.1）经独立复现，会成为长程 agent 的参考架构。

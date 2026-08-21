@@ -44,8 +44,32 @@ claude-red 的热度来自**"安全赛道刚需 × Claude Skills 生态红利 ×
 5. **Windows companion UI:** 在 Windows 上可启动 companion UI binary
 6. **明确的使用边界:** README 声明用于"authorized red team engagements, bug bounty, security research, CTF"
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 档案明示的边界仅包括：作者已删除的 GitHub 仓库、58 个 SKILL.md 文件、13 个攻击面分类、可选的 Windows companion UI binary；其余组件不可访问 | 因账号与仓库自 2026-08-11 起 404，源码无法核验 |
+| 主路径 | 入口与权限读取 → 58 个 SKILL.md 按对话上下文按需加载到 Claude Skills 体系 → Claude 按 skill 方法论调用工具/产出结果 | 路径来源于档案"按需加载""SKILL.md 结构化"自述，未由源码证实 |
+| 关键权衡 | 攻防知识覆盖广度（58 skill × 13 分类） vs. 单作者维护质量一致性、平台政策风险、Skill 机制变更依赖 | star/watch 比例仅是关注度信号，不能当作攻防有效性证据 |
+| 最小 PoC | 在受控授权环境，单一攻击面（例如 Web Application SQLi skill）跑通：触发加载 → 按方法论执行 → 输出可审计日志，且具备随时禁用/退出路径 | 不应外推到全部 58 skill；建议把厂商政策与法律合规列为前置验收 |
+
 ## 架构启发
 claude-red 的核心启发是**"专业领域知识正在被编码为 Agent Skill"**。这与 humanizer（去 AI 腔写作）、h3-prompt-writing（视频 prompt）、wshobson/agents（编码 agent 插件）共同构成一个趋势：**"领域专家知识 → SKILL.md → 按需注入 agent context"**正在成为知识分发的标准模式。安全领域尤其适合——攻防知识高度结构化（有明确方法论和工具链），且人类专家稀缺。更深层的启发：**Skill 生态正在沿"能力维度"而非"工具维度"组织**——claude-red 不是"一个渗透测试工具"，而是"一个红队专家的完整知识体系"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或操作员] --> I[入口与身份边界<br/>授权范围声明]
+  I --> C[Skill 编排与运行时<br/>Claude Skills 加载机制]
+  C --> S1[SKILL.md 知识库 58 文件 13 分类<br/>待核验:具体加载协议]
+  C --> S2[Windows companion UI binary<br/>待核验:通讯方式]
+  C --> A[平台政策与合规边界<br/>Anthropic Skill 政策 风险未知]
+  C --> O[工具与外部系统调用<br/>边界条件见各 SKILL.md]
+  S2 -.不可访问.-> X[2026-08-11 仓库 404<br/>账号级消失 原因待核验]
+```
 
 ## 定位判断
 **品类定义型项目（安全 Skill 生态）。** claude-red 是首个系统化覆盖 Claude Skills 体系的攻防安全技能库（58 skill × 13 分类）。它的定位不是工具，而是**"安全专业知识在 Agent 时代的分发载体"**。169 watchers 说明它已触及专业用户群体。若 Claude Skills 生态持续增长，claude-red 有潜力成为安全领域的默认 Skill 来源（类似 wshobson/agents 之于编码）。关键变量：Skill 质量是否经得起真实红队检验、社区贡献是否扩展覆盖面、各 Agent 平台是否推出竞争性安全 Skill。

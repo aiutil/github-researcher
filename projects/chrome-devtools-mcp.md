@@ -35,21 +35,35 @@ AI Coding Agent 可以写代码，但不能直接看到代码在浏览器中的�
 3. **双向通信**：Agent 既能读取 DevTools 数据，也能执行调试操作
 4. **安全边界**：需要用户授权的敏感操作设计
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 由 AI Agent 经 MCP 协议接入，前端侧以 Puppeteer 驱动 Chrome DevTools；Agent 与浏览器运行时之间存在明确的进程/协议边界 | 基于 TypeScript 语言 + MCP/Puppeteer/Chrome DevTools 标签判定，未核验是否内置 sandbox、多租户隔离、远程浏览器方案 |
+| 主路径 | Agent 发起请求 → MCP Server 编排 → Puppeteer → Chrome DevTools Protocol → DOM/Console/Network/Performance 回读 | 双向通信与四大调试能力来自档案"关键技术亮点"，具体 MCP 工具清单、传输层（stdio/Streamable HTTP）和鉴权流未在档案中证实 |
+| 关键权衡 | 浏览器调试能力扩展 vs. 敏感数据暴露面、Chrome 版本/Puppeteer 兼容耦合、常驻 Server 的资源开销 | 风险条目（敏感信息泄露、兼容性、性能开销）出自档案"风险/局限"，未给出量化数据 |
+| 最小 PoC | 单 Agent 客户端 + 本地 Chrome 实例 + 最小工具权限集 + 可审计日志，先验证 DOM 读取与 Console 拉取两个工具，再扩展到 Network/Performance | 采用建议与验收项源自档案"架构师速览·采用建议"，真实 PoC 步骤需结合官方文档核验 |
+
 ## 架构启发
 MCP 协议的扩展方向清晰：文件系统 → 数据库 → API → 浏览器/DevTools。Agent 的感知边界正在从"代码编辑"扩展到"运行时调试"。
 
 **关键图示：**
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    A[AI Agent] --> B[MCP Protocol]
-    B --> C[文件系统]
-    B --> D[数据库]
-    B --> E[API/GitHub]
-    B --> F[Chrome DevTools<br/>新增!]
-    F --> G[DOM/CSS]
-    F --> H[Console/Network]
-    F --> I[Performance]
+flowchart LR
+    A[AI Coding Agent] -->|MCP 协议 请求/响应| B[MCP Server<br/>chrome-devtools-mcp]
+    B -->|Puppeteer 驱动| C[Chrome DevTools Protocol]
+    C --> D[DOM/CSS]
+    C --> E[Console/Network]
+    C --> F[Performance]
+    B -->|用户授权的敏感操作| G[安全边界<br/>待核鉴权粒度]
+    B -.常驻运行.-> H[资源开销风险<br/>待核验量化数据]
+    G --> A
+    H --> B
 ```
 
 ## 定位判断

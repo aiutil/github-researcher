@@ -6,7 +6,7 @@
     <title>harry0703/MoneyPrinterTurbo | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,71 @@
 <li><strong>WebUI + API 双模式</strong>：WebUI 提供可视化操作界面（脚本参数配置、视频预览、任务管理），API 提供程序化调用接口（可集成到其他系统、批量生成）。两种模式覆盖了个人创作者和平台化运营两种场景。</li>
 <li><strong>FFmpeg 深度集成</strong>：使用 FFmpeg 进行视频合成，支持高清输出、字幕叠加、音频混合、转场效果等。FFmpeg 是视频处理的工业标准，保证了输出的专业级质量。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口层（WebUI / API 双模式）→ 编排与运行时（Python 3.11+）→ 模型供应商（OpenAI、Kimi K3、DeepSeek、Moonshot、Azure、Qwen、GLM-5.2）→ 工具与数据源（Azure TTS、edge-tts、ElevenLabs、Pexels、Pixabay、FFmpeg）→ 会话/状态/审计边界（项目侧未给出明确实现细节）</td>
+<td>模型清单与工具清单来自档案；编排层内部组件、状态存储与审计落点待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主题/关键词 → LLM 生成文案 → 关键词提取 → 素材库匹配画面 → TTS 生成配音 → 自动字幕 → FFmpeg 合成高清短视频；WebUI 与 API 共享同一编排路径</td>
+<td>步骤顺序与 FFmpeg 合成在档案中明确；各步骤的可配置项、错误处理与重试机制待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>编排优先 vs. 自研视频生成：迭代快、成本低、模块可替换，但画面原创性与相关性受限于免费素材库（Pexels/Pixabay）；同时存在 TTS/素材版权与平台同质化风险</td>
+<td>素材库限制与版权风险由档案明说；具体的素材匹配精度、平台限流阈值、视频生成模型集成进度待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道（WebUI 或 API 二选一）+ 单 LLM（如 DeepSeek）+ edge-tts + Pexels + FFmpeg，产出 1 条端到端短视频；验收项：版权溯源、成本/条、SLO（生成耗时）、可审计日志、退出路径</td>
+<td>最低依赖组合可由档案组件拼出；具体部署形态、依赖版本、硬件要求与日志/成本基线待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>MoneyPrinterTurbo 的设计哲学是"编排而非自研"——它不自己训练视频生成模型，而是编排现有的 AI 服务（LLM、TTS、素材库）和工具（FFmpeg）来完成端到端工作流。这种策略的优势是迭代快、成本低、灵活度高——每当有新的更好的 LLM 或 TTS 出现，只需更新配置即可。劣势是输出质量受限于各环节工具的能力——特别是素材匹配环节，由于依赖免费素材库（Pexels/Pixabay），画面与文案的相关性可能不够精确。这也是它与 ViMax（调用视频生成模型而非素材库）的本质区别。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>WebUI 与 API 双模式]
+    I --> C[项目编排与运行时<br/>Python 3.11+]
+    C --> M[模型供应商边界<br/>OpenAI / Kimi K3 / DeepSeek / Moonshot / Azure / Qwen / GLM-5.2]
+    C --> T[工具与外部系统边界<br/>Azure TTS / edge-tts / ElevenLabs / Pexels / Pixabay / FFmpeg]
+    C --> S[会话 状态 审计<br/>待核验]
+    M --> C
+    T --> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>MoneyPrinterTurbo 定位为<strong>AI 短视频自动化的工程标杆</strong>。在 AI 视频生成生态中，它不与底层视频生成模型（Sora、Kling）竞争，而是在应用层提供"主题→成片"的自动化工具。10 万 stars 使其成为 AI 内容生产赛道的绝对头部项目。与学术性更强的 ViMax 相比，MoneyPrinterTurbo 更偏工程实用主义——快速、可用、可部署。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>素材匹配的精度天花板</strong>：依赖免费素材库（Pexels/Pixabay）进行画面匹配，素材覆盖范围有限且与文案的相关性不够精确。"AI 生成视频"实际上是"AI 拼接素材"，与真正的视频生成（如 Sora）有本质区别。对于要求原创画面的场景，MoneyPrinterTurbo 不适用。</li>
 <li><strong>版权和原创性风险</strong>：使用免费素材库的画面、TTS 生成的配音、AI 生成的文案，组合后的成品在版权和原创性上存在灰色地带。用于商业发布（特别是 YouTube 变现）可能面临版权问题或平台的内容质量惩罚。</li>
 <li><strong>内容同质化</strong>：大量用户使用同一工具生成短视频，可能导致内容高度同质化，平台算法可能降低这类内容的推荐权重。</li>
 <li><strong>对免费服务/模型的依赖</strong>：edge-tts（免费 TTS）和免费素材库可能随时变更服务条款或限制，影响项目的持续可用性。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>HKUDS/ViMax</strong>：11K stars，Agentic 视频生成。ViMax 调用视频生成模型（Google Omni、Seedance）生成原创画面，MoneyPrinterTurbo 使用素材库拼接。前者更"原创"但更慢更贵，后者更快更便宜但画面非原创。</li>
 <li><strong>OpenAI Sora / Google Veo</strong>：底层视频生成模型。MoneyPrinterTurbo 是这些模型的上层应用——未来可能集成这些模型作为素材来源，但目前主要依赖免费素材库。</li>
 <li><strong>Fliki / InVideo</strong>：商业 AI 视频生成 SaaS。功能类似但收费。MoneyPrinterTurbo 是其开源替代。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得持续跟踪，作为 AI 内容生产赛道的标杆</strong>。10 万 stars 的项目在 GitHub 上极为罕见，MoneyPrinterTurbo 的持续增长反映了 AI 视频自动化赛道的巨大需求。虽然技术上不是"生成式视频"，但其编排层的工程实践和用户基数使其成为该赛道的必看项目。建议关注其是否会集成真正的视频生成模型。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>是否集成视频生成模型</strong>：是否会接入 Sora API、Kling、Seedance 等视频生成模型，从"素材拼接"升级为"AI 生成画面"，这将是质的飞跃</li>
 <li><strong>平台内容政策的影响</strong>：YouTube/TikTok 等平台是否会对 AI 自动生成的短视频进行限制或降权，影响 MoneyPrinterTurbo 的实际使用价值</li>

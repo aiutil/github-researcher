@@ -36,8 +36,38 @@ url: "https://github.com/TheRealSeanDonahoe/agents-md"
 - 综合 Karpathy 四原则和 Boris Cherny 工作流
 - 零依赖，纯 markdown 配置
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单一 Markdown 配置文件作为约束层，注入 Claude Code / Codex / Gemini CLI / Cursor 等 Coding Agent 运行时，由模型自身负责解读与执行 | 组件边界仅来自档案列出的跨 Agent 兼容范围；具体注入点与运行时协议未在档案中说明 |
+| 主路径 | 读取 AGENTS.md → 附加到 Coding Agent 的提示上下文 → Agent 按指令约束行为（反谄媚、抑制无脑重构、强制验证） | 仅“跨 Agent 兼容”这句描述了分发路径；提示注入机制、文件挂载方式待核验 |
+| 关键权衡 | 行为约束的可表达性 vs. 依赖模型指令遵循能力；零依赖易采用 vs. 跨模型遵从度差异大、缺乏量化评估 | 权衡判断直接引用档案“风险/局限”章节；未量化 |
+| 最小 PoC | 在单一 Coding Agent（如 Cursor）项目根目录放置 AGENTS.md，配置最小工具权限与可审计日志，观察三个目标行为是否被触发 | 档案未提供现成 PoC 脚本或验收指标；验收项需自行定义 |
+
 ## 架构启发
 "配置即行为约束"范式。用 markdown 文件定义 Agent 行为，轻量、可版本控制、可组合。这是 AgentOps 工具链中的"约束层"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  A[AGENTS.md 配置文件] --> B[Coding Agent 运行时待核验]
+  B --> C[Claude Code]
+  B --> D[Codex]
+  B --> E[Gemini CLI]
+  B --> F[Cursor]
+  C --> G[模型推理服务]
+  D --> G
+  E --> G
+  F --> G
+  G --> H[工具调用与外部系统待核验]
+  G --> I[会话 状态 审计待核验]
+  H --> J[验证循环 反谄媚 抑制无脑重构]
+  I --> J
+```
 
 ## 定位判断
 **学习型 + 工具型。** 理念先进但高度依赖 LLM 的指令遵循能力。

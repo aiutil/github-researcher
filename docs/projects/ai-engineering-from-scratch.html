@@ -6,7 +6,7 @@
     <title>rohitg00/ai-engineering-from-scratch | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,75 @@
 <li><strong>四语言并行教学</strong>：同一概念在 Python、TypeScript、Rust、Julia 四种语言中实现，学习者可以选择主力语言，同时对比不同语言的实现差异。这在 AI 教育项目中极为罕见。</li>
 <li><strong>数据驱动的读者统计</strong>：README 中嵌入了实时统计数据（150,639 读者、近 30 天 24 万页面浏览），通过 build.js 自动生成。这为课程改进提供了量化反馈。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本项目是一个面向个人学习者的"课程内容仓库 + Agent Skill 加载包"，经 <code>npx skills add</code> 分发到本地 Coding Agent，不是独立 SaaS 运行时；外部边界为 Agent 宿主与可选模型/工具调用</td>
+<td>无独立部署形态、无后端服务描述，所有运行依赖外部 Agent 解析 SKILL.md；具体 Agent 兼容性以源码为准</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习者 → <code>npx skills add</code> 安装 Skill → Agent 解析 SKILL.md → <code>/start-learning</code> 分班测验 → 写入 <code>LEARNING.md</code> → <code>/learn</code> 按节授课 → 产出 Artifact（prompt/skill/agent/MCP server）</td>
+<td>"Artifact 实际写出的存储位置"、"LEARNING.md 持久化机制"未在档案中给出实现细节，属待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>课程广度（503 节 × 四语言 × 20 阶段）与单节深度、师资维护成本之间的张力；并存在"Agent 能力天花板 = 教学质量上限"的耦合风险</td>
+<td>课程质量方差、完成率与 Agent 依赖天花板仅作为风险陈述被提及，档案未提供测评数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 <code>npx skills add rohitg00/ai-engineering-from-scratch</code> 在 Claude Code/Cursor 中初始化，验证 <code>/start-learning</code> 分班输出、<code>LEARNING.md</code> 生成与单节 <code>/learn</code> 端到端跑通一节 Python 课</td>
+<td>最小 PoC 步骤未在档案中给出，需以 SKILL.md 实际命令为准；跨 Agent 兼容性、测验题库来源属待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>ai-engineering-from-scratch 的核心创新是"用 AI Agent 重新定义编程教育"。传统的编程教育（MOOC、书籍、视频）是单向的——内容固定、节奏固定、无法个性化。而 Agent-as-Tutor 模式实现了：(1) 个性化分班（10 题测验映射起始点）；(2) 交互式教学（每节课都有测验和即时反馈）；(3) 知识检索（<code>/course-guide</code> 随时跳转到需要的知识点）。这种模式可能是 AI 时代编程教育的范式转变。另一个启发是"Skills 作为教育内容的载体"——课程内容存储在 SKILL.md 文件中，Agent 按需加载，这比传统 LMS 系统更轻量。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    L[学习者] --> A1[npx skills add 安装]
+    A1 --> SK[SKILL.md 课程包 待核验: 实际目录结构与版本]
+    SK --> AG[外部 Coding Agent 边界 Claude Code / Cursor / Codex / OpenClaw / Hermes]
+    AG --> CL[/start-learning 10题分班测验]
+    CL --> LG[LEARNING.md 个性化学习计划]
+    LG --> LN[/learn 单节课 概念→数学→代码→测验]
+    LN --> AR[Artifact 输出 prompt / skill / agent / MCP server 待核验: 落地位置]
+    AG -. 依赖 .-> M[底层 LLM 待核验: 模型供应商与计费]
+    AR -. 风险边界 .-> Q[内容质量方差 与 完成率未验证]
+    M -. 风险边界 .-> Q
+]<]minimax[>[</mmd>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>ai-engineering-from-scratch 定位为<strong>AI 时代系统化编程教育的新标杆</strong>。在 GitHub 教育项目中，46K stars 使其成为 2026 年最热门的学习资源之一。与传统教程仓库（如 ml-algorithms、handson-ml）不同，它的核心竞争力不是内容本身（503 节课可以持续更新），而是"Agent 作为私人教师"的交互模式。这预示着编程教育从"看教程"到"和 AI 学"的转变。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>内容质量的方差</strong>：503 节课的规模意味着内容质量可能有较大方差——前 100 节可能精心编写，后面的课程是否保持同等质量需要验证。课程"广而全"可能导致某些主题深度不足。</li>
 <li><strong>依赖 Agent 能力的天花板</strong>：Agent-as-Tutor 的效果完全取决于底层 LLM 的能力。如果 Agent 无法准确回答学生的追问或无法理解学生的错误模式，教学体验会大打折扣。</li>
 <li><strong>完成率的挑战</strong>：320 小时的课程对于绝大多数学习者来说太长。传统 MOOC 的完成率不到 10%，这个项目可能面临类似的挑战。Agent 交互是否能显著提升完成率有待验证。</li>
 <li><strong>商业化路径不明确</strong>：MIT 开源 + 免费网站的模型如何可持续？如果靠赞助或 Pro 版本，可能影响内容的开放性。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>mlabonne/llm-course</strong>：约 40K stars 的 LLM 课程，结构化路径学习 LLM。更聚焦 LLM 领域，ai-engineering-from-scratch 范围更广（覆盖整个 AI 工程）。</li>
 <li><strong>e2b-dev/awesome-ai-agents</strong>：Agent 项目列表/资源汇总。不是课程，而是索引。</li>
 <li><strong>karpathy/nn-zero-to-hero</strong>：Karpathy 的神经网络从零到英雄系列。教学风格更个人化、更深入，但课程数量远少于 503 节。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪，作为 AI 教育范式转变的标志性项目</strong>。ai-engineering-from-scratch 的 Agent-as-Tutor 模式可能是编程教育的未来方向。46K stars 的爆发性增长验证了市场需求。建议关注其完成率数据、课程质量反馈和商业化路径。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>学习者完成率数据</strong>：503 节课中有多少学习者真正完成，Agent 交互模式是否比传统 MOOC 显著提升了完成率</li>
 <li><strong>课程质量的持续维护</strong>：随着 AI 领域快速演进（新模型、新框架），503 节课是否持续更新以保持时效性</li>

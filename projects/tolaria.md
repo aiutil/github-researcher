@@ -35,10 +35,33 @@ Git-first / Offline-first 的跨平台 Markdown 知识管理桌面应用，为�
 4. **AI Agent 集成**：内置 AGENTS 文件，支持 Claude Code / Codex CLI / Gemini CLI 配置路径
 5. **跨平台**：macOS / Windows / Linux，Homebrew / 安装包双分发
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Tolaria 是跨平台桌面知识管理应用：TypeScript 前端与 Rust 后端依托 Tauri 2；数据以纯 Markdown 和 YAML frontmatter 保存，每个 Vault 均为 Git 仓库，并支持 AGENTS 文件及多个 AI Agent CLI 配置路径。 | 档案明确记载 Tauri 2、Rust、TypeScript、Markdown、YAML frontmatter、Git、AGENTS、Claude Code、Codex CLI、Gemini CLI；未提供具体模块、进程间通信、同步机制或 AI 工具调用实现。 |
+| 主路径 | 用户在桌面端管理本地 Markdown 知识库；内容进入 Git 仓库以形成版本历史，并可由支持的 AI Agent CLI 借助 AGENTS 文件理解和操作知识库。 | 档案明确给出 Git-first、Offline-first、AGENTS 文件和配置路径；未描述 Agent 与应用之间的接口、自动化触发方式、冲突解决及 Git 远端同步流程。 |
+| 关键权衡 | 核心取舍是本地数据主权、可迁移性和 Git 工作流，相对于缺少实时协作、插件生态有限、依赖 WebView 兼容性及单人维护风险。 | 档案明确指出无实时协作、插件生态有限、Linux 可能遇到 WebKit2GTK 渲染不一致、单人开发；未提供并发编辑、插件机制、测试覆盖或维护承诺证据。 |
+| 最小 PoC | 在单一平台创建一个最小 Vault，以 Markdown/YAML frontmatter 写入笔记，初始化 Git 并验证版本历史，再从 AGENTS 文件触发档案已列出的一个 AI Agent CLI；验收数据可读、Git 可追溯、无云服务依赖。 | “无云服务依赖”由 Offline-first 与纯 Markdown/Git 路由推导；“触发一个 AI Agent CLI”仅由支持配置路径推导；实际 Agent 可用性、权限与命令均待核验。 |
+
 ## 架构启发
 Tolaria 的设计哲学是"类型是透镜而非约束"（Types as lenses, not schemas）— 不强制字段验证，只提供分类导航。这与传统 CMS 的 schema-first 设计形成对比，更符合个人知识管理的灵活性需求。
 
 Git-first 意味着团队可以用 Git 的 branch/PR/review 工作流来管理知识库，将 DevOps 实践延伸到知识管理领域。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者] --> D[Tolaria 桌面应用<br/>Tauri 2：TypeScript + Rust]
+    D --> V[每个 Vault 为 Git 仓库]
+    V --> M[纯 Markdown + YAML frontmatter]
+    M --> A[AGENTS 文件]
+    A --> C[Claude Code / Codex CLI / Gemini CLI<br/>具体 Agent 接口待核验]
+    D --> R[风险边界<br/>无实时协作 · 插件生态有限<br/>WebView 兼容性 · 单人维护]
+```
 
 ## 定位判断
 在生态中处于 Obsidian（闭源 + 插件生态）和 Logseq（开源 + 大纲模式）之间的"文件优先"路线。与 Notion 形成云端 vs 本地的对立。

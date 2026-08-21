@@ -6,7 +6,7 @@
     <title>ai-berkshire | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -45,23 +45,62 @@
 <li><strong>Claude Code / Codex 原生集成</strong>：直接在 Coding Agent 环境中运行，降低使用门槛</li>
 <li><strong>结构化输出</strong>：研究报告而非简单的买卖信号</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>编排层覆盖 Claude Code 与 Codex 两类 Coding Agent 入口，依赖 Python 与外部 LLM；不内置交易/经纪执行通道</td>
+<td>来自分类、tags（claude-code, codex, llm）、language=Python；具体数据源/合规边界未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>目标公司 → 四大师 Agent 并行分析 → 综合研究 → 输出研究/决策参考（无交易回写）</td>
+<td>仅源自档案"四大师方法论并行研究"与定位为"研究辅助而非交易系统"；执行层与持久化细节须以源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多视角对抗分析带来的洞察增益 vs. 方法论编码本身的回测偏差、幸存者偏差与监管不确定性</td>
+<td>风险条目（方法论≠能力、回测偏差、AI 投顾牌照）来自档案定性陈述，无回测或合规实证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一公司、单一 Agent 视角（如巴菲特视角）、公开信息源、可审计日志，验证输出一致性与可解释性</td>
+<td>采用建议引自档案"先在单一渠道、最小工具权限和可审计日志下验证"；性能/成本/SLO 数据档案未给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"角色化多 Agent 对抗"模式值得学习：</p>
-<pre class="mermaid">flowchart TB
-    T[目标公司] --> A1[巴菲特 Agent<br/>护城河/管理层/估值]
-    T --> A2[芒格 Agent<br/>多元思维模型/反转思维]
-    T --> A3[段永平 Agent<br/>本分/简单/不做不懂的]
-    T --> A4[李录 Agent<br/>中国视角/长期价值/产业变迁]
-    A1 --> S[综合研究]
-    A2 --> S
-    A3 --> S
-    A4 --> S
-    S --> R[投资决策参考]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  T[目标公司]
+  T --> A1[巴菲特 Agent<br/>护城河/管理层/估值]
+  T --> A2[芒格 Agent<br/>多元思维模型]
+  T --> A3[段永平 Agent<br/>本分/简单]
+  T --> A4[李录 Agent<br/>中国视角/长期价值]
+  A1 --> S[综合研究]
+  A2 --> S
+  A3 --> S
+  A4 --> S
+  S --> R[投资决策参考<br/>不含交易执行]
+  C[外部边界: 监管/牌照<br/>待核验] -.约束.-> R
+  X[风险边界: 回测偏差<br/>方法论≠能力] -.约束.-> S
 </pre>
 <p>这种模式可推广到其他需要"多视角分析"的场景：技术选型、竞品分析、架构决策。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>观察型。有创意的多 Agent 应用，但核心价值是"研究辅助"而非"交易系统"。距离生产级金融工具还有很大距离。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>投资方法论 ≠ 投资能力</strong>：将大师理念编码为 Agent 工作流不等于复制了大师的投资能力</li>
 <li><strong>回测偏差</strong>：幸存者偏差+过拟合——大师方法论之所以流传是因为成功案例被记住</li>
@@ -69,15 +108,15 @@
 <li><strong>信息来源质量</strong>：框架依赖公开信息，缺乏非公开数据的竞争优势</li>
 <li><strong>市场非理性</strong>：价值投资方法论在非理性市场（如 meme stock）中可能完全失效</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs daily_stock_analysis（51K⭐）</strong>：daily_stock 更偏技术面+数据驱动，ai-berkshire 更偏基本面+方法论驱动</li>
 <li><strong>vs TradingAgents</strong>：TradingAgents 是多 Agent 交易框架（含执行层），ai-berkshire 是研究框架（不含执行）</li>
 <li><strong>vs Vibe-Trading（HKUDS）</strong>：Vibe-Trading 是个人交易 Agent，更偏产品化</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>有限跟踪。</strong> 作为"多 Agent 垂直应用"的案例研究跟踪其架构演进，但不建议作为投资工具使用。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有实盘验证数据（即使是模拟盘的长期回测）</li>
 <li>多 Agent 对抗分析是否真的减少了偏见（还是只是平均值）</li>

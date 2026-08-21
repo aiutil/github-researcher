@@ -34,15 +34,32 @@ GitHub Trending Daily 上榜，日增 491 stars。结合了两个趋势：本地
 4. **Write Mode**：在任意应用的文本框中直接写入或重写文本
 5. **多模型架构**：Nemotron Speech 3.5、Parakeet Flash/TDT v3&v2、Cohere Transcribe、Apple Speech、Whisper——按语言和延迟需求选择
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 桌面端 macOS 应用（Swift），边界由四块构成：语音采集/输入、Parakeet 本地 STT、Fluid Intelligence 本地后处理（闭源私有运行时）、可选云端 Provider（OpenAI/Groq 待核验）。 | 档案明列组件：Parakeet 模型族、Nemotron、Cohere、Apple Speech、Whisper；Fluid Intelligence 明确为“私有运行时”，开源范围仅基础听写层，具体云端接入清单档案未点名。 |
+| 主路径 | 麦克风音频 → Parakeet 本地转写（零延迟）→ Fluid Intelligence 本地格式化（大小写/数字/标点）→ 文本写入目标应用；Command Mode 分支将语音映射到 macOS 应用/快捷指令。 | 档案描述了零延迟流与 Write/Command Mode 语义，但 IPC、音频管线、线程模型、模型加载策略档案未描述，待核验。 |
+| 关键权衡 | “本地优先 + 可选云端”分层 vs macOS 单一平台封闭性；Fluid Intelligence 后处理价值 vs 闭源带来的可控性/审计风险；Parakeet 速度收益 vs 上游许可与更新节奏。 | 档案直接给出本地分层示意和四项风险；具体许可条款、量化延迟/准确率指标未提供。 |
+| 最小 PoC | 装 Homebrew 包，跑一次英文短句 Write Mode + 一次 Command Mode（启动应用），验证：是否真正离线、UI 响应延迟、Fluid Intelligence 是否可关闭或透明、云端是否被默认拉起。 | 安装/分发方式档案已述（Homebrew 一键）；其余验收项需源码核验。 |
+
 ## 架构启发
 FluidVoice 的"本地推理 + 可选云端增强"分层架构值得学习：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    V[语音输入] --> P[Parakeet 本地模型<br/>零延迟转录]
-    P --> FI[Fluid Intelligence<br/>本地 AI 后处理]
-    FI --> O[格式化文本输出]
-    FI -.->|可选| C[云端 Provider<br/>OpenAI/Groq]
+flowchart LR
+  Mic[麦克风音频输入] --> STT[Parakeet 本地 STT<br/>零延迟转录]
+  STT --> FI[Fluid Intelligence<br/>本地 AI 后处理 - 闭源运行时]
+  FI --> Out[Write Mode<br/>写入任意应用文本框]
+  STT -. Command Mode .-> Cmd[语音触发 macOS 应用/快捷指令/自动化]
+  FI -. 可选增强 .-> Cloud[云端 Provider<br/>OpenAI/Groq 待核验]
+  Models[多模型池<br/>Nemotron 3.5 / Parakeet Flash/TDT v3-v2 / Cohere / Apple Speech / Whisper] -. 加载 .-> STT
+  Apple[Apple Intelligence<br/>原生听写竞争] -. 外部风险边界 .-> STT
+  License[Parakeet 上游许可与更新] -. 外部依赖风险 .-> STT
 ```
 
 这种模式——核心能力本地化，增强能力可选云端——是隐私敏感场景的通用架构模式。

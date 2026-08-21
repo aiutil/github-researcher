@@ -37,18 +37,38 @@ url: "https://github.com/heygen-com/hyperframes"
 5. **AWS Lambda 分布式渲染**：可部署分布式 render stack
 6. **frame.md 设计系统**：将 web design tokens 转换为视频适用的规格
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 由 Agent/CLI 入口、HTML composition 文件、Headless Chrome 逐帧渲染器与 FFmpeg 编码器组成的离线渲染流水线，输出确定性 MP4 | 组件名称、功能与关系见档案"关键技术亮点"；具体进程/线程模型、IPC 与产物落盘路径待核验 |
+| 主路径 | Agent 描述需求 → 编写 HTML+CSS composition → 通过 GSAP/CSS/Lottie/Three.js/Anime.js/WAAPI 等适配器挂载可 seek 动画 → 注入视频/音频媒体 → 本地预览 → Headless Chrome seek + FFmpeg 编码 → MP4 | 流程引自档案架构图与亮点列表；各适配器的实际接入面、API 兼容性细节待核验 |
+| 关键权衡 | "无 build step、Agent 用 HTML 即可生成视频"的低门槛 vs Headless Chrome 高 CPU/内存开销、视觉上限低于 AE/Premiere，且方向受 HeyGen 商业利益牵引 | 矛盾点来自档案"风险/局限"与"vs Remotion"对比；具体性能基准、Lambda 渲染 SLA、HeyGen 商业化路径未在档案中给出 |
+| 最小 PoC | 单页 index.html（带 data 属性）→ 本地 CLI 预览 → 用 Headless Chrome + FFmpeg 渲染一段短视频验证"同输入同输出"确定性，再评估向 AWS Lambda 渲染栈扩展的收益 | 档案描述了渲染管线与 `npx skills add` 接入方式；Lambda 部署参数、并发、配额、社区 Catalog 复用方式待核验 |
+
 ## 架构启发
 HyperFrames 的核心赌注：**Agent 写 HTML 比写 React 容易得多**。这个赌注如果成立，意味着所有 Agent 友好的工具都应该向"最简输入格式"靠拢。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    A[Agent 描述视频需求] --> B[Plan: 分镜 + 时长]
-    B --> C[Write HTML + CSS]
-    C --> D[Wire seekable animations]
-    D --> E[Add media: video/audio]
-    E --> F[Lint + Preview browser]
-    F --> G[Render: Headless Chrome → FFmpeg]
-    G --> H[MP4 输出]
+    A[Agent / CLI 调用方] --> B[Plan: 分镜与时长]
+    B --> C[HTML composition<br/>index.html + data 属性]
+    C --> D{动画适配器<br/>GSAP / CSS / Lottie<br/>Three.js / Anime.js / WAAPI<br/>待核验覆盖范围}
+    D --> E[媒体注入<br/>video / audio]
+    E --> F[本地 Lint + Browser 预览]
+    F --> G[Headless Chrome 逐帧 seek]
+    G --> H[FFmpeg 编码]
+    H --> I[确定性 MP4 输出]
+
+    J[frame.md 设计系统<br/>Catalog 复用组件] -. 待核验集成方式 .-> C
+
+    K[外部渲染后端<br/>AWS Lambda 分布式渲染] -. 待核验部署形态 .-> G
+
+    L[HeyGen 云服务<br/>商业化路径] -. 风险边界:开源引流 .-> A
 ```
 
 ## 定位判断

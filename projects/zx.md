@@ -36,8 +36,36 @@ Google 出品的 JavaScript 化 shell 脚本工具——用 JS 写 shell 脚本�
 4. **npm 生态复用:** 可直接 `import` 任何 Node 包，结合 chalk、yaml 等做复杂编排
 5. **远程脚本支持:** `zx https://example.com/script.mjs` 可执行远程脚本
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | zx 是一个 Node 生态内的脚本 DSL 增强层，边界在"JS 文件 ↔ 子进程 + npm 包"，外部依赖是 Node 运行时与可选的 esbuild 编译 | 仅基于档案明示的 `$`/`glob`/`chmod`/`fetch`/`import` 能力与 esbuild 编译，部署/分发形态未给出 |
+| 主路径 | 用户写 `.mjs` → `zx script.mjs` 入口 → 自动 esbuild 编译 → `await $` 触发子进程 → stdout/stderr/exitCode 回流 → 可 `import` 的 npm 生态辅助（chalk/yaml 等） | 主路径来自档案"关键技术亮点"1–4；远程脚本分支 `zx https://...` 属另一入口 |
+| 关键权衡 | JS 异步表达力 + npm 复用 vs 远程脚本执行的攻击面、跨平台（Windows）差异、与 Bun/Deno Shell 的运行时重叠 | 权衡依据档案"风险/局限"与"vs 同类"小节，无性能/基准数据 |
+| 最小 PoC | 单一 `.mjs` 脚本，限定本地文件路径与最小 npm 依赖，开启审计日志；暂不启用远程 `zx https://...`，并将退出路径与 PowerShell 兼容性列为验收项 | PoC 范围受限于档案未披露的协议/部署细节，需源码核验 |
+
 ## 架构启发
 "复用主流语言生态包装底层接口"的设计哲学值得借鉴。zx 没有发明新协议，而是让 JS 开发者用熟悉的语法写 shell，把 Node 的进程模型 + 包生态 + 语言能力顺势注入 shell 场景。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  A[用户 编写的 .mjs 脚本] --> B[zx CLI 入口 zx script.mjs]
+  B --> C{本地脚本 or 远程 URL}
+  C -->|本地| D[esbuild 自动编译]
+  C -->|远程 https| E[远程脚本执行 待核验]
+  D --> F[await $ 子进程 Promise 化]
+  E --> F
+  F --> G[stdout stderr exitCode 回流]
+  F --> H[npm 生态 import chalk yaml 等]
+  H --> I[chmod glob fetch fs 等内置 API]
+  F --> J[会话与审计日志 待核验]
+  I --> K[Windows PowerShell 兼容边界 待核验]
+```
 
 ## 定位判断
 **脚本工具标准库型项目（DSL 增强层）。** 不是平台，但已成为"Node 写 shell"的事实标准。在 Coding Agent 推动 npm 工具泛化的 2026 年，zx 重新获得了关注，但其天花板较低——它解决的是"脚本语言选型"，而非底层协议。

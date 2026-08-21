@@ -37,6 +37,15 @@ WASTE（Weight-Aware Streaming Tensor Engine）——纯 C、零运行时依赖�
 3. **作者自验对齐**：每层与 PyTorch 参考对齐，最终 logits 一致到 3.6e-06，vision tower 与自身 oracle 一致到 2.3e-06。**注意这是作者自验，非第三方独立复现。**
 4. **多模型支持**：除 K3 2.78T，还跑 Kimi-Linear 48B（19 GiB 容器，1.87 GiB 最小 RAM，10.7 tok/s）。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 纯 C 零运行时依赖的可嵌入推理引擎，CLI/API 入口直接调用核心库，宿主仅依赖 OS 与本地 NVMe 文件，无外部服务/网络协议/插件总线 | 基于"dependency-free" 与 C 单语言事实；CLI/插件适配器等具体外延未在档案中描述，标注"待核验" |
+| 主路径 | 开发者/CI → CLI(API) → 核心引擎 → 内存 trunk + NVMe expert 流式 + RAM 有界 cache，单机消费硬件闭环 | trunk/expert/cache 三段职责见档案；具体协议、I/O 调度、磁盘格式由"待核验"覆盖 |
+| 关键权衡 | 速度 vs 规模：trunk 驻内存 + expert 离线换 2.78T 单机可跑；代价是 0.62 tok/s、982 GiB 磁盘、≈64GB RAM 硬门槛 | 0.62 tok/s、982 GiB、≈64GB、hit 38% 来自作者实测命令；未含第三方复现 |
+| 最小 PoC | 在 64GB RAM + ≥1TB NVMe 主机上克隆仓库、以 CLI 加载 K3 容器，先验证 expert cache 命中率与稳态 tok/s，再对照作者自报 logits 偏差 3.6e-06 | 模型容器路径、CLI 调参、cgroup-aware 预算(0.6.2) 等具体接入步骤需读源码核验 |
+
 ## 架构启发
 核心启发是 **"idle weight 不需要在内存，只需要 reachable in time"**。这与 colibri（VRAM/RAM/NVMe 三级）、esp32-ai（SRAM/PSRAM/FLASH 三级 + Per-Layer Embeddings）是同一原理家族的不同表现——**"推理瓶颈是内存放置策略而非算力"**。waste 的取舍是：trunk（高频访问）驻内存换速度，expert（低频/按需）放磁盘换容量，RAM 做 cache 桥接两者。作者诚实指出"两个看起来最大的杠杆（每 token 读更少字节、RAM 里放更多）都被榨干了，接下来是工程优化而非新原理"。
 
@@ -47,6 +56,23 @@ WASTE（Weight-Aware Streaming Tensor Engine）——纯 C、零运行时依赖�
                     ↑
               RAM 有界 expert cache（剩余空间，17.56GB）
               hit 9038 / miss 14514 = 38%
+```
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Dev[开发者或 CI] --> CLI[CLI 入口]
+    CLI --> Core[核心推理引擎 纯 C 零依赖]
+    Core --> Trunk[Trunk 驻内存 高频]
+    Core --> NVMe[NVMe 流式读取 selected experts]
+    NVMe --> Cache[RAM 有界 expert cache 命中 38%]
+    Core --> OS[宿主 OS 仅本地资源]
+    Core --> Align[对齐校核 自验 logits 3.6e-06 待第三方复现]
+    Speed[生成速度 0.62 tok/s 可用性下限] -.约束.-> Core
+    Cost[硬件门槛 982 GiB 磁盘 64GB RAM] -.约束.-> Core
 ```
 
 ## 定位判断

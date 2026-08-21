@@ -44,27 +44,76 @@
 <li><strong>npm 生态复用:</strong> 可直接 <code>import</code> 任何 Node 包，结合 chalk、yaml 等做复杂编排</li>
 <li><strong>远程脚本支持:</strong> <code>zx https://example.com/script.mjs</code> 可执行远程脚本</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>zx 是一个 Node 生态内的脚本 DSL 增强层，边界在"JS 文件 ↔ 子进程 + npm 包"，外部依赖是 Node 运行时与可选的 esbuild 编译</td>
+<td>仅基于档案明示的 <code>$</code>/<code>glob</code>/<code>chmod</code>/<code>fetch</code>/<code>import</code> 能力与 esbuild 编译，部署/分发形态未给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户写 <code>.mjs</code> → <code>zx script.mjs</code> 入口 → 自动 esbuild 编译 → <code>await $</code> 触发子进程 → stdout/stderr/exitCode 回流 → 可 <code>import</code> 的 npm 生态辅助（chalk/yaml 等）</td>
+<td>主路径来自档案"关键技术亮点"1–4；远程脚本分支 <code>zx https://...</code> 属另一入口</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>JS 异步表达力 + npm 复用 vs 远程脚本执行的攻击面、跨平台（Windows）差异、与 Bun/Deno Shell 的运行时重叠</td>
+<td>权衡依据档案"风险/局限"与"vs 同类"小节，无性能/基准数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一 <code>.mjs</code> 脚本，限定本地文件路径与最小 npm 依赖，开启审计日志；暂不启用远程 <code>zx https://...</code>，并将退出路径与 PowerShell 兼容性列为验收项</td>
+<td>PoC 范围受限于档案未披露的协议/部署细节，需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"复用主流语言生态包装底层接口"的设计哲学值得借鉴。zx 没有发明新协议，而是让 JS 开发者用熟悉的语法写 shell，把 Node 的进程模型 + 包生态 + 语言能力顺势注入 shell 场景。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A[用户 编写的 .mjs 脚本] --> B[zx CLI 入口 zx script.mjs]
+  B --> C{本地脚本 or 远程 URL}
+  C -->|本地| D[esbuild 自动编译]
+  C -->|远程 https| E[远程脚本执行 待核验]
+  D --> F[await $ 子进程 Promise 化]
+  E --> F
+  F --> G[stdout stderr exitCode 回流]
+  F --> H[npm 生态 import chalk yaml 等]
+  H --> I[chmod glob fetch fs 等内置 API]
+  F --> J[会话与审计日志 待核验]
+  I --> K[Windows PowerShell 兼容边界 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>脚本工具标准库型项目（DSL 增强层）。</strong> 不是平台，但已成为"Node 写 shell"的事实标准。在 Coding Agent 推动 npm 工具泛化的 2026 年，zx 重新获得了关注，但其天花板较低——它解决的是"脚本语言选型"，而非底层协议。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>安全风险:</strong> <code>zx https://...</code> 远程执行是巨大攻击面；官方有警告但实际生产慎用</li>
 <li><strong>跨平台差异:</strong> Windows 兼容仍依赖 PowerShell 兼容性测试，部分 bash 特有语法无法使用</li>
 <li><strong>AI 时代价值存疑:</strong> 当 Agent 直接生成 Python 而非脚本时，zx 的角色会被稀释</li>
 <li><strong>门槛低但上限也低:</strong> 学习曲线平滑但表达能力受限于 JS 异步语义</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs shelljs:</strong> shelljs 是同步命令模拟器；zx 走原生 Promise/await，更现代</li>
 <li><strong>vs Node 原生 child_process:</strong> zx 提供 bash 风格 API，封装 child_process 的样板</li>
 <li><strong>vs Bun Shell:</strong> Bun 内置 shell 体验类似，但 zx 跨 runtime（Node/Bun/Deno）</li>
 <li><strong>vs Deno subprocess API:</strong> Deno 用 import + 同源策略；zx 兼容性更广</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪但优先级中等。</strong> zx 是稳定的基础工具，问题不是它火不火，而是 AI Coding 时代是否需要更多 shell 抽象。对实际做 CLI 工具、CI/CD 编排、Coding Agent 脚本生成的开发者，zx 仍是首选之一。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>是否进入 Coding Agent 的"标准脚本入口"清单（如 Claude Code 内置推荐）</li>
 <li>是否发布 v8/v9 适配 Node 22+ 内置 fetch/glob</li>

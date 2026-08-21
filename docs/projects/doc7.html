@@ -6,7 +6,7 @@
     <title>magicrew/doc7 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,26 +46,71 @@
 <li><strong>Go 实现</strong>：单二进制部署，install 脚本（curl | bash）。与 anydoc 的 Rust 不同，doc7 用 Go。</li>
 <li><strong>Benchmark 示例</strong>：README 含 benchmarks/attention-is-all-you-need 示例，展示对学术论文（含公式/图表）的解析效果。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>doc7 是本地编排层：消费端为上游文档摄入调用方，模型侧依赖用户自建的 LM Studio/Ollama OpenAI 兼容端点，无 OCR/无云服务依赖。</td>
+<td>仅基于档案中"local-ai/multimodal/vision-language-model"标签与"LM Studio/Ollama"描述，端口、鉴权与传输协议未披露。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>入口接收文档 → Go 编排调用本地 VLM（OpenAI 兼容接口）→ VLM 直接产出 AI-ready Markdown → 写回调用方。</td>
+<td>档案未公开解析器内部状态机、并发模型与重试策略；"OpenAI 兼容"调用细节属待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>通用性/隐私（VLM 看一切、本地运行、数据不离机）换速度/可控性（秒级推理 vs anydoc 单数毫秒；输出质量受本地 VLM 能力制约）。</td>
+<td>性能对比来自 anydoc↔doc7 路线分化叙述，未含 doc7 实测吞吐；模型兼容性差异未披露。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单机 GPU + LM Studio/Ollama 跑本地 VLM → 用 README 示例 benchmarks/attention-is-all-you-need（含公式/图表）端到端验证 Markdown 质量，再扩到 PDF/Office/扫描页/截图。</td>
+<td>示例路径见 README 引用，硬件门槛、显存需求与模型选型未在档案中给出量化值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>doc7 的设计哲学是 <strong>"用 VLM 替代专用 OCR + 格式解析"</strong>——不针对每种格式（docx/pdf/扫描）写专用解析器，而是用通用 VLM"看"文档统一输出。这与 anydoc 的"专用 Rust 解析器 + 格式无关输出"是两种范式：anydoc 追求<strong>速度和确定性</strong>（专用解析器，单数毫秒，格式无关），doc7 追求<strong>通用性和私有化</strong>（VLM 看一切，本地运行）。对架构师的启发：文档解析的"速度/确定性 vs 通用性/隐私"是核心 trade-off。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界<br/>待核验:协议与鉴权]
+  I --> C[doc7 Go 编排与运行时<br/>本地二进制]
+  C --> M[本地 VLM 推理服务<br/>LM Studio 或 Ollama<br/>OpenAI 兼容 API]
+  C --> S[输出与状态回写<br/>AI-ready Markdown<br/>审计与日志 待核验]
+  M --> C
+  C -. 调用本地多模态模型 .-> M
+  C -. 处理 PDF/Office/扫描/截图/图表/公式/diagrams .-> S
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>属于 <strong>L1 基础设施/工具层</strong>，是 agent 文档摄入层的<strong>本地私有化路线代表</strong>。与 anydoc（云路线）互补，覆盖不同场景（敏感文档/离线 vs 快速/集成友好）。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>本地 VLM 门槛高</strong>：需 GPU + 本地多模态模型（LM Studio/Ollama），部署门槛远高于 anydoc 的 <code>npm install</code>。这可能解释 fork 仅 9。</li>
 <li><strong>VLM 解析质量依赖模型</strong>：输出质量完全取决于本地 VLM 的能力，弱模型会导致 Markdown 质量差。不同模型（Qwen-VL/Llama-Vision 等）的效果差异未披露。</li>
 <li><strong>速度劣势</strong>：VLM 推理（秒级）远慢于 anydoc 的专用解析器（单数毫秒），不适合大批量处理。</li>
 <li><strong>关注度低</strong>：454⭐ / 9 fork 远低于 anydoc，本地化路线可能是边缘场景而非主流需求。需观察是否放量。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs anydoc（4,688⭐）</strong>：核心路线分化——anydoc 云/Rust/专用解析器/单数毫秒 vs doc7 本地/Go/VLM/秒级。anydoc 不读扫描页（需 Firecrawl Parse OCR），doc7 用 VLM 覆盖扫描页。两者是"云 vs 本地"的路线分化。</li>
 <li><strong>vs Unstructured/LlamaParse</strong>：同为文档解析，doc7 的差异化是纯本地 VLM（无云依赖）。Unstructured 也有本地模式但架构不同。</li>
 <li><strong>vs Marker（PDF→Markdown）</strong>：Marker 专注 PDF，doc7 覆盖更多格式 + 用 VLM 处理复杂视觉。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"agent 文档摄入层本地化路线"的代表项目跟踪。</strong> 与 anydoc（云路线）互补，观察本地化路线是否从边缘场景变为主流需求。重点验证 VLM 解析质量和部署门槛的影响。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>放量情况</strong>：fork 是否从 9 增长——如果持续低，说明本地化是边缘场景；如果放量，说明私有化需求真实。</li>
 <li><strong>VLM 模型兼容性</strong>：不同本地 VLM（Qwen-VL/Llama-Vision 等）的解析质量差异。</li>

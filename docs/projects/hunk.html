@@ -6,7 +6,7 @@
     <title>modem-dev/hunk | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,26 +51,75 @@
 <li><strong>Git difftool 集成</strong>：可作为 Git 的默认 difftool 使用</li>
 <li><strong>键盘 + 鼠标</strong>：完整的键盘快捷键和鼠标交互支持</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>终端侧 Diff/审查 CLI，以 Git working tree 为输入面，调用 Git 与 OpenTUI、Pierre diffs 等本地组件；不接入模型供应商或外部 SaaS</td>
+<td>档案明示 Git difftool 集成、OpenTUI 与 Pierre diffs 依赖；未提及模型/网络调用，需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Git 变更集 → OpenTUI 渲染 → 多文件分屏/堆叠视图 → 键盘/鼠标与可选 <code>--watch</code> 触发刷新 → 内联 AI/Agent 标注并排显示</td>
+<td>流程基于档案"多文件审查流、watch 模式、内联 AI 标注"特性拼出；标注来源协议未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>场景聚焦（仅 Agent 代码审查）换取体验纵深，但与 IDE 内置 Source Control 的功能重叠带来替代风险；watch 模式的可靠性与 104 个 open issues 形成维护压力</td>
+<td>取舍与维护压力均为档案原文；实际稳定性、权限模型、并发安全无档案证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在非主仓库跑 <code>hunk</code> 接入 Git difftool，对一次 Agent 生成的多文件变更做分屏审查，启用 <code>--watch</code> 验证实时刷新与渲染正确性；验收包括键鼠交互、布局自适应、无外部网络请求</td>
+<td>启动方式、watch 行为来自档案；具体 CLI 语法、配置项与二进制分发须以仓库 README/源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Hunk 代表了"AI 编码工作流工具链"的新方向：传统开发工具（Diff 查看器、Code Review 工具）正在被重新设计以适应 Agent 编码的新范式。关键变化是从"偶尔审查大变更"到"持续审查 Agent 的增量变更"，这要求工具支持 watch 模式和实时反馈。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[开发者] --> H[hunk CLI 待核验]
+  H --> G[Git working tree / difftool 集成]
+  H --> OT[OpenTUI TUI 框架]
+  H --> PD[Pierre diffs 渲染]
+  H --> W[--watch 实时刷新]
+  H --> AI[内联 AI/Agent 标注 来源待核验]
+  OT --> V[分屏/堆叠/响应式布局]
+  PD --> V
+  V --> U
+  W --> H
+  AI --> V
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>AI 编码工作流工具型</strong>，定位为 Agent 编码场景的标配审查工具。不是平台，而是工作流中"审查环节"的专门工具。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>场景窄</strong>：仅适用于 AI Agent 编码的 Diff 审查，非通用 Diff 工具</li>
 <li><strong>竞品替代</strong>：IDE 插件（如 VSCode 的 Source Control）在不断改进，可能压缩 Hunk 的空间</li>
 <li><strong>依赖生态</strong>：价值高度依赖 AI Agent 编码工具的持续增长</li>
 <li><strong>104 open issues</strong>：快速增长中的维护压力</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>上游场景</strong>：Claude Code、Codex CLI、Cursor、OpenCode 等 Agent 编码工具</li>
 <li><strong>竞品</strong>：lazygit（通用 Git TUI）、tig（Git TUI）、Delta（Diff 美化）</li>
 <li><strong>底层依赖</strong>：OpenTUI（终端 UI 框架）、Pierre diffs（Diff 渲染）</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪</strong>。作为 AI 编码工作流工具链的早期项目，其"Review-First for Agent Changes"的定位精准。如果 AI Agent 编码持续增长，这类工具将成为标配。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否会扩展到完整的 Code Review 工作流（如 PR 审批、评论）</li>
 <li>IDE 集成深度（是否会有 VSCode 插件版本）</li>

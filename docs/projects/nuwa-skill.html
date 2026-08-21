@@ -6,7 +6,7 @@
     <title>nuwa-skill | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,16 +59,62 @@
 <li><strong>跨 Runtime 标准</strong>：基于 Agent Skills 协议（agentskills.io），<code>skills.sh</code> 兼容，55+ runtime 通用安装器支持</li>
 <li><strong>多语言</strong>：中/英/日/韩/西五语言 README</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>作为"人格蒸馏"品类定义者，处于 Agent Skills 生态内的生成层；与入口（使用者/上游系统）、Agent Skills 协议兼容的 50+ Runtime、模型/推理服务、工具与外部系统之间构成编排边界。</td>
+<td>基于分类、Python 语言与"跨 runtime"标签抽象；具体上游协议、模型供应商、数据源均未在档案中点名。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>输入人名 → 编排/运行时执行"调研→提炼→验证"三段式流水线 → 调用模型与外部资料工具 → 输出可被 50+ Runtime 加载的 Skill（心智模型/决策启发式/表达 DNA 三层结构）。</td>
+<td>流水线阶段与三层心智模型来自档案叙述；其内部调度顺序、缓存与重试策略未在档案中说明。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>概念传播速度（30K stars、4200+ forks、衍生仓库涌现）与严肃任务可验证性之间的张力：架构上把"人格"做成可组合 Skill 提升了生态扩张力，但缺乏客观 ground truth 的验证机制，伦理边界也未在档案中给出答案。</td>
+<td>Stars/Forks 与衍生生态数量来自档案；蒸馏质量评估、伦理合规框架在档案中被列为风险/观察点而非已实现特性。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一受控 Runtime（如 Claude Code）下、以最小工具权限与可审计日志，挑选一名公开人物做端到端蒸馏，验收项聚焦于：(1) 三层结构是否可被外部解析、(2) 跨 Runtime 安装一次成功率、(3) 成本与 SLO 上限、(4) 退出/卸载路径。</td>
+<td>"一行安装 <code>npx skills add alchaincyf/nuwa-skill</code>"与跨 Runtime 列表来自档案；具体 PoC 工具链、计费模型、安全模型均需源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>"人格即 Skill"的范式</strong>：女娲把"人格"从 prompt 模板升级为结构化的 Skill——有心智模型层、决策启发式层、表达 DNA 层，而非简单的"你扮演 XX"提示词</li>
 <li><strong>认知框架的可迁移性</strong>：核心洞察是——专家的价值不在具体答案，而在思考框架。蒸馏乔布斯的"聚焦即说不"，比蒸馏他的具体产品决策更有迁移价值</li>
 <li><strong>自动化 Pipeline 的威力</strong>：从"手写 prompt 模拟名人"到"自动化调研+提炼+验证"，Pipeline 匪提升了人格模拟的深度和一致性</li>
 <li><strong>局限</strong>：当前实现本质仍是对公开资料的 LLM 加工。真正的心智模型需要认知科学层面的建模，而非文本模式提取</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[编排与运行时 调研→提炼→验证]
+    C --> M[模型或推理服务 待核验]
+    C --> T[公开资料与外部工具 待核验]
+    C --> S[Skill 输出 三层心智模型 决策启发式 表达 DNA]
+    S --> R[Agent Skills 协议兼容的 50+ Runtime]
+    R --> U
+    C --> A[审计 可观测性 伦理边界 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型/观察型——概念创新的早期实现。</strong> 女娲开创了"人格蒸馏"赛道，30K stars 证明了市场需求的存在。但当前技术深度有限——本质是对公开资料的 prompt 模板化（虽然比手写 prompt 好很多）。距离"真正模拟一个人的认知过程"还有很长的路。价值在于：验证了市场需求、建立了 Skill 标准、提供了可迭代的框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>伦理边界模糊</strong>：未经授权蒸馏他人的思维方式存在法律和伦理风险。公众人物的公开内容虽可引用，但将其"人格"商品化分发存在灰色地带</li>
 <li><strong>技术深度有限</strong>：本质是对公开资料的 LLM 加工 + prompt 模板化。蒸馏出的"认知框架"在复杂、新颖问题上的表现未经验证</li>
@@ -77,7 +123,7 @@
 <li><strong>验证机制缺失</strong>：蒸馏出的"人格"与真实人物的认知差异无法客观衡量。"乔布斯会怎么想"这个问题本身就没有 ground truth</li>
 <li><strong>生态质量风险</strong>：衍生 Skill 仓库可能含低质或误导性内容</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 手动 prompt 模拟</strong>：女娲自动化了调研→提炼→验证流程，比手写 prompt 深度和一致性更好</li>
 <li><strong>vs Character.AI / Persona AI</strong>：那些是角色扮演聊天娱乐；女娲是认知框架工具，目标不同</li>
@@ -85,9 +131,9 @@
 <li><strong>vs Agent Skills 生态</strong>：女娲是这个生态中的一个垂直品类（人格类 Skill 的生成器）</li>
 <li><strong>vs Hermes Agent Skill 自进化</strong>：Hermes 关注 Skill 生命周期管理，女娲关注人格类 Skill 的生成</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>建议观察型跟踪。</strong> 女娲的核心价值在于验证了"可迁移 AI 人格"的市场需求（30K stars），以及建立了人格类 Skill 的标准格式。关注重点不是这个项目本身，而是"人格蒸馏"赛道是否出现更深度的实现——如基于认知科学的心智建模、基于交互数据的动态人格学习。对 Agent Skill 开发者，女娲的自动化 Pipeline 设计和跨 Runtime 兼容策略值得参考。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>是否出现更深入的人格建模方法</strong>——不只是文本模式提取，而是基于认知科学/行为数据的心智建模</li>
 <li><strong>实际使用效果验证</strong>——蒸馏出的"人格"在复杂决策场景中是否真正提供有价值的认知视角</li>

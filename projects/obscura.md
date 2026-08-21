@@ -44,10 +44,35 @@ Obscura 的热度是**"AI Agent 爆发 × Rust 性能优势 × 反检测刚需 �
 5. **原生渲染（无 Chromium）:** 可直接截图、屏幕录制、PDF 导出，不依赖 Chromium 渲染引擎——这是与 Chrome Headless 架构的根本区别
 6. **跨平台:** Linux x86_64/ARM64、macOS Intel/Apple Silicon、Arch Linux (AUR)、NixOS 原生支持
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Obscura 是一个用 Rust 从零构建的轻量无头浏览器引擎（30MB 内存 / 70MB 二进制），原生渲染支持截图、录屏、PDF，对外以 CDP 接口暴露，定位为 Puppeteer/Playwright 的 drop-in 替代层 | 性能指标来自档案叙述，非独立基准；引擎内部子模块（DOM/CSS/网络栈）档案未展开，无法逐项核验 |
+| 主路径 | 上游 Agent/脚本通过 CDP 接入 → Obscura 运行时执行渲染与 JS（V8）→ 通过内置反检测栈发起对目标站点的请求 → 会话结果（页面 DOM、截图、PDF）回写调用方 | CDP 协议本身是档案明确列出的；具体网络栈、TLS 指纹处理实现细节档案未给出，待核验 |
+| 关键权衡 | 在 Chrome Headless 的"全 Web 兼容性 / 200MB+ 资源"与 Obscura 的"30MB / 内置反检测 / 可能 WebGL 与复杂 CSS 覆盖不足"之间取舍；同时承受个人维护者（h4ckf0r0day）长期可持续性与反爬军备升级带来的不确定性 | WebGL、媒体播放等覆盖度仅以"可能不支持"描述，未见官方兼容矩阵；维护风险属档案给出的明确风险点 |
+| 最小 PoC | 在 Linux x86_64 单节点上以 Apache-2.0 二进制启动 Obscura，替换现有 Puppeteer/Playwright 调用 CDP 端点，跑通一个含 Cloudflare 防护的目标站点截图与 PDF 导出用例，对比 30MB 内存上限与页面加载 85ms 的复现度，并把法律与反检测合规作为验收门槛 | 跨平台清单（Linux/macOS/ARM64/NixOS）档案明确；85ms 加载为厂商数据，需在自有目标站上重测；Cloudflare/DataDome 对抗效果档案仅有定性描述 |
+
 ## 架构启发
 Obscura 代表了**"Agent 专用基础设施正在从通用工具中分化"**的深刻趋势。当前 AI Agent 操作浏览器的主流方案是"Playwright/Puppeteer + stealth 插件 + Chrome Headless"，这是一种**补丁式架构**——用插件修补一个本非为 Agent 设计的工具。Obscura 的架构启发是：**Agent 需要原生设计的基础设施**。这和 AI 领域的通用规律一致——从"通用模型 + 提示工程"到"专用模型"，从"通用 CLI + wrapper"到"Agent-Native CLI"。基础设施层的分化意味着：**每一个被 Agent 高频调用的通用工具，都可能催生一个 Agent 专用替代品**。
 
 更深层的启发是 Rust 在系统级 AI 基础设施中的优势——内存安全 + 零成本抽象 + 无 GC 暂停，对于需要高并发、低延迟的 Agent 运行时是理想选择。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[AI Agent 或爬虫脚本] --> B[CDP 接口 Puppeteer Playwright 兼容]
+    B --> C[Obscura 运行时 Rust + V8]
+    C --> D[反检测栈 TLS 指纹 navigator.webdriver 等 待核验]
+    C --> E[原生渲染 截图 录屏 PDF 无 Chromium]
+    C --> F[目标站点 Cloudflare DataDome 等]
+    C --> G[会话状态与审计 待核验]
+    H[Obscura Cloud 商业托管] -.商业边界.- C
+    I[社区贡献者与个人维护者 h4ckf0r0day] -.维护风险.- C
+```
 
 ## 定位判断
 **基础设施候选（强）。** Obscura 已经不是概念——21K stars + 可用二进制 + 明确性能优势 + 商业化路径（Obscura Cloud）。它定位为 AI Agent 浏览器自动化的**轻量高性能替代层**。如果 Agent 生态持续爆发（这是确定性趋势），Agent 专用浏览器的市场空间巨大。Obscura 有成为**Agent 基础设施栈标准组件**的潜力——类似 Playwright 之于测试自动化。

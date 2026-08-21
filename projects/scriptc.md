@@ -37,18 +37,35 @@ scriptc 让 TS 像 Rust/Go 一样编译成独立原生二进制（实测 `fib.ts
 3. **WHATWG fetch 子集**：streams、Headers、AbortSignal 基于同一原生 net/TLS 栈——重定向、gzip、AbortSignal.timeout、Node 形态错误原因；无 libcurl、无系统 HTTP 依赖。
 4. **动态模式的安全边界**：嵌入式 quickjs-ng（~620KB）执行无法静态化的代码（npm 依赖 JS、any 类型）。跨回静态代码的每个值运行时校验——撒谎的类型抛可捕获 TypeError 而非损坏内存。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | TypeScript → 原生二进制编译器（无 Node/V8/JS 引擎），输入是普通 TS 源文件，输出是 ~178KB 独立可执行文件；输出形态与 Deno compile/Node SEA 处于不同层次 | 实测仅来自 README 中 `fib.ts` 与 4481 语句样本，未含 benchmark 方法学 |
+| 主路径 | TS 源码 → 真实类型检查 → 逐构造静态分析 → 三档决策（静态原生码 / 动态 quickjs-ng / 拒绝并报错）；动态回退时跨静态边界值做运行时转型校验 | 三档语义与 quickjs-ng ~620KB 嵌入来自 README；编译管线内部阶段名为档案重构 |
+| 关键权衡 | 启动/体积收益 vs 平台门槛（macOS arm64 优先，依赖 clang）与动态 npm 依赖下 quickjs-ng 兜底性能上限；显式静态度 vs 99% 静态覆盖率在大型项目中的退化 | 平台支持、动态部分性能基准在档案中均未给出实测数据 |
+| 最小 PoC | 一个无 npm 依赖、仅用 stdlib + 内置 net/http 的 CLI/服务型 TS 脚本，在 macOS arm64 + clang 环境下编译并对比冷启动与体积，启用 `scriptc coverage` 报告观察三档分布 | 覆盖率工具与 Node API 表面覆盖度在档案中以"精确字节码/字节精确移植"措辞声明，缺逐 API 列表 |
+
 ## 架构启发
 核心启发是**「显式静态度（explicit staticness）」优于「隐式假设」**。scriptc 不假装所有 TS 都能静态编译，而是逐构造决定并明确告诉你：`scriptc coverage` 报告哪些静态、哪些动态、哪些拒绝。这种**「可观测的编译边界」**思想对 Agent 生成代码尤其重要——Agent 生成的代码可静态化部分直接编译，不可静态化部分降级到动态引擎，边界清晰可审计。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    TS["普通 TypeScript<br/>无需注解/方言"] --> TC["TypeScript 编译器<br/>真实类型检查"]
-    TC --> ANA["逐构造静态分析"]
-    ANA --> S1{"档位 1<br/>可静态编译?"}
-    S1 -->|是, 默认| NAT["原生代码<br/>无引擎 / 178KB / 2ms"]
-    S1 -->|否| S2{"档位 2<br/>--dynamic?"}
-    S2 -->|是| QJS["quickjs-ng ~620KB<br/>运行时校验转型<br/>撒谎类型抛 TypeError"]
-    S2 -->|否| REJ["档位 3 拒绝<br/>错误码+代码帧+重写提示<br/>永不静音错误编译"]
+  TS[普通 TypeScript 源文件<br/>无注解/无方言] --> TC[TypeScript 类型检查<br/>真实类型检查]
+  TC --> ANA[逐构造静态分析]
+  ANA --> D1{档位 1<br/>可静态编译?}
+  D1 -->|是 默认| NAT[原生二进制<br/>~178KB / 2ms 启动<br/>无 Node 无 V8 无 JS 引擎]
+  D1 -->|否| D2{档位 2<br/>--dynamic 模式?}
+  D2 -->|是| QJS[嵌入 quickjs-ng ~620KB<br/>跨静态边界做运行时转型校验<br/>类型不符抛 TypeError]
+  D2 -->|否| REJ[档位 3 拒绝<br/>错误码 + 代码帧 + 重写提示<br/>永不静默错误编译]
+  NAT -.冷启动敏感场景.-> EDGE[Edge / Serverless / CLI / 嵌入式<br/>外部部署边界]
+  QJS -.动态 npm 依赖 / any 类型.-> NPM[外部 npm 生态<br/>待核验: 实际覆盖率与性能]
+  NAT -. TLS / HTTP / DNS .-> MBED[内置 mbedTLS net 栈<br/>无 libcurl 无系统 HTTP 依赖]
+  REJ -. 可观测的编译边界 .-> AUDIT[架构审计面<br/>静态 vs 动态 vs 拒绝 三档显式]
 ```
 
 ## 定位判断

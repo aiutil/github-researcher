@@ -6,7 +6,7 @@
     <title>Deepsec | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,29 +46,75 @@
 <li><strong>语义理解</strong>：比传统 SAST 工具更能理解代码意图</li>
 <li><strong>Apache 2.0</strong>：开源友好，便于集成</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口渠道 → 项目编排/运行时 → 模型推理 + 工具/外部系统 + 会话/状态/审计四向边界，TypeScript 实现的 Coding Agent 安全审计工具</td>
+<td>档案仅给出语言、标签与一句定位，未披露具体入口协议、模型供应商与工具清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者或上游 → 入口与身份边界 → 编排与运行时（双向调用模型与工具）→ 会话/状态/审计回写</td>
+<td>节点均为职责抽象，消息协议、持久化与部署形态须以源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Agent 语义理解的覆盖力 vs. 审计场景下幻觉代价与性能开销；当前 2.4K stars 表明关注度但非生产可用性证据</td>
+<td>档案给出三个风险点（早期项目、Agent 幻觉、性能开销），未提供基准数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单仓库 + 最小工具权限 + 可审计日志下做 PR 级审计验证，并将准确率/误报率/成本/退出路径列为验收项</td>
+<td>集成形态、CICD 钩子位置与权限模型在档案中未证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>安全审计从"规则匹配"到"Agent 理解"的范式转变</li>
 <li>Agent 作为安全研究员的"超级助手"模式</li>
 <li>CI/CD 集成潜力——每次 PR 自动安全审计</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界 待核验]
+  I --> C[项目编排与运行时 TypeScript]
+  C --> M[模型或推理服务 待核验]
+  C --> T[工具与外部系统 SAST/代码源 待核验]
+  C --> S[会话 状态 审计 待核验]
+  M --> C
+  T --> C
+  S -.误报与性能风险.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>安全工具链中的"Agent 化"先驱。当前偏工具型，有潜力发展为 DevSecOps 平台组件。</p>
-<h2 id="_7">风险 / 屏限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屏限 / 泡沫点</h2>
 <ol>
 <li><strong>早期项目</strong>：1K stars，功能可能不完整</li>
 <li><strong>Agent 幻觉</strong>：安全审计中误判的代价很高</li>
 <li><strong>性能开销</strong>：Agent 审计可能比传统 SAST 慢很多</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Snyk / SonarQube</strong>：传统 SAST 工具，规则驱动</li>
 <li><strong>CVE-2026-31431</strong>：说明安全审计仍有盲区，Agent 有价值</li>
 <li><strong>Semgrep</strong>：半语义 SAST 工具，Deepsec 的潜在补充或竞争者</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。Vercel 出品 + DevSecOps Agent 化方向正确，值得早期跟踪。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>漏洞发现准确率和误报率</li>
 <li>是否集成到 Vercel 平台成为原生功能</li>

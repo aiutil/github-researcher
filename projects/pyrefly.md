@@ -52,9 +52,36 @@ A fast type checker and language server for Python。主要使用 Rust 编写，
 5. **[![Open VSX](https://img.shields.io/open-vsx/dt/meta/pyrefly?color=blue&label=Open%20VSX)](https://o**
 6. **[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?logo=discord&logoColor=white)](https:**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 边界为：开发者/CI → Pyrefly CLI/库（核心引擎，Rust 实现）→ Python 源码与 LSP 客户端（如 VS Code / Open VSX 扩展），外加 PyPI 分发与 Discord 社区反馈通道。 | 仅依据 tags（lsp、language-server-protocol、python）、分发徽标（PyPI、VS Code Marketplace、Open VSX）与一句话定位；具体协议字段、传输层未在档案中证实。 |
+| 主路径 | 开发者/CI 调用 Pyrefly（CLI 或 LSP）→ Rust 核心类型检查/语言服务引擎 → 向 IDE 返回诊断或在 CI 中产出报告。 | 主路径依赖"type checker and language server"的定位与 lsp 标签；性能数字、并发模型、增量检查策略档案未提供。 |
+| 关键权衡 | 用 Rust 换取检查速度与 IDE 响应性，代价是放弃 CPython/C 扩展生态的灵活性；需权衡与现有 Python 类型检查工具链的共存/迁移成本。 | Rust 实现与性能倾向可由语言与定位推断；具体基准、覆盖度、迁移路径档案未提供。 |
+| 最小 PoC | 在一个小型 Python 项目中：通过 PyPI 安装 pyrefly、以 CLI 跑一次类型检查，并在 VS Code（或 Open VSX 兼容编辑器）中启用扩展验证 LSP 诊断，再接入一条 CI 流水线复现结果。 | 安装/分发渠道有徽标佐证；CI 接入方式、配置项语义、失败模式档案未描述，须以官方文档核验。 |
+
 ## 架构启发
 
 从 facebook/pyrefly 的设计来看，核心思路是 **"A fast type checker and language server for Python"**。这反映了 Rust 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者 CI 上游任务] --> CLI[Pyrefly CLI]
+    U --> IDE[IDE 客户端 VS Code Open VSX 待核验]
+    IDE -->|LSP 待核验| CORE[Pyrefly 核心引擎 Rust 类型检查与语言服务]
+    CLI --> CORE
+    CORE --> PY[Python 源码与类型注解]
+    CORE --> DIAG[诊断 报告 配置]
+    PYPI[PyPI 分发] --> CLI
+    PYPI --> IDE
+    DISC[Discord 社区与 678 个 open issues] -.反馈.-> CORE
+    CORE --> RISK[维护与供应链边界 MIT 许可 待核验 SLO]
+```
 
 ## 定位判断
 

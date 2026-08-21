@@ -6,7 +6,7 @@
     <title>gitleaks/gitleaks | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,11 +53,57 @@
 <li><strong>自定义规则:</strong> 支持 YAML 配置自定义规则和 allowlist，适应私有密钥格式</li>
 <li><strong>基线扫描:</strong> 支持 baseline 功能，只报告新增的泄露，避免历史遗留噪音</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>CLI/库形态的密钥扫描器：使用方/CI → gitleaks 进程 → go-git 遍历的本地 Git 历史 → 正则+熵规则输出</td>
+<td>档案未披露是否含守护进程、server 模式或中心化管控入口；"外部系统"按 Unix 工具管道描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>加载 YAML 规则与 allowlist → 调用 go-git 遍历 commit 并取 patch diff → 正则匹配 + 熵检测 + baseline 过滤 → stdout/退出码/报告产出，供 CI 判定</td>
+<td>协议、报告 schema、CI 集成适配器实现均未在档案中给出，需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>速度/可移植性（Go 单二进制）与检测深度（仅静态匹配、不主动验证）的取舍；通用正则覆盖广 vs 语义理解弱（已知格式 vs 熵补充）</td>
+<td>缺少在 Monorepo/超大仓库下的性能数据；AI 降低误报仅为待观察方向</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 CI 流水线加一条 gitleaks detect --baseline --redact --exit-code N，对历史建基线后再用同一 YAML 规则集+allowlist 验证新增 commit 行为与误报率</td>
+<td>是否支持 server mode、远端 Git 协议、增量扫描策略未在档案中证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Gitleaks 的架构是经典的 <strong>"规则引擎 + Git 底层操作"</strong> 组合。它直接调用 <code>go-git</code> 库遍历 commit 树，无需依赖外部 git 命令。启发是：<strong>安全扫描工具要"快、轻、可集成"</strong>——单二进制 + 标准输入输出 + 退出码约定，使它像 Unix 工具一样可无缝嵌入任何 CI/CD 流水线。这种"管道友好"设计是它击败 Python 竞品（如 TruffleHog 的某些版本）的关键。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用方: 本地/CI 流水线] --> I[入口: CLI argv 与 YAML 配置 / allowlist / baseline]
+    I --> C[编排: gitleaks Go 进程]
+    C --> G[外部边界: go-git 库遍历本地 Git 历史 commit 与 patch diff - 待核验]
+    C --> R[规则引擎: 内置 100+ 正则 + 自定义 YAML 规则]
+    R --> E[检测边界: 熵检测补充高熵字符串 - 待核验]
+    E --> O[报告: stdout / 退出码 / 报告产物 - 待核验]
+    C --> A[风险边界: 误报与历史污染 - 仅扫描不 rotate, 需 git filter-branch/BFG]
+    O --> U
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施级工具。</strong> Gitleaks 已成为 DevSecOps 的事实标准之一，与 Dependabot、Snyk 并列。它不是"创新项目"，而是"必须部署的基础设施"。任何使用 Git 的团队都应在 CI 中集成密钥扫描。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>误报率:</strong> 正则匹配无法理解语义，对变量名、文档示例容易误报</li>
 <li><strong>格式依赖:</strong> 只能检测已知格式的密钥，新型密钥（无固定前缀）需要熵检测补充</li>
@@ -65,16 +111,16 @@
 <li><strong>历史污染:</strong> 即使扫描发现，Git 历史中的密钥需要 rewrite（git filter-branch / BFG），操作复杂</li>
 <li><strong>AI 密钥挑战:</strong> LLM 时代的 API Key 格式更多样，规则更新需持续跟进</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs TruffleHog:</strong> TruffleHog 也是主流选择，支持"验证密钥是否有效"（主动调用 API）；Gitleaks 更轻快但只做静态扫描</li>
 <li><strong>vs GitGuardian:</strong> 商业 SaaS 产品，检测能力更强但要付费；Gitleaks 是开源首选</li>
 <li><strong>vs GitHub Secret Scanning:</strong> GitHub 原生功能，但仅限公开仓库（私有仓库需付费）；Gitleaks 补齐私有仓库需求</li>
 <li><strong>vs detect-secrets (Yelp):</strong> Python 实现，规则体系类似，性能不如 Go</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 作为 DevSecOps 基础设施，Gitleaks 的演进直接反映安全工程实践趋势。建议关注 AI 辅助规则生成（利用 LLM 理解代码语义减少误报）方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否集成 AI 降低误报率（Topics 中已有 "ai-powered"、"llm" 标签）</li>
 <li>对 Monorepo 和大仓库的性能优化</li>

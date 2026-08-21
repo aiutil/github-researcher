@@ -41,8 +41,37 @@ LangChain 出品的 CLI 工具，用 Agent 自动生成和维护代码库文档�
 4. **多 Provider 架构**：OpenRouter/Fireworks/Baseten/OpenAI/Anthropic 全覆盖
 5. **LangSmith 集成**：文档生成过程可视化，支持成本和质量追踪
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口 CLI（npm install -g openwiki + openwiki --init）与 GitHub Action 双入口；模型层横跨 OpenAI、Anthropic、OpenRouter、Fireworks、Baseten、GLM 5.2、Kimi K2.6、Sonnet 5；产物为 AGENTS.md/CLAUDE.md 注入到仓库。 | 仅以档案列出的 provider 名为准；CLI 命令、Action 触发频率与产物文件名来自档案描述，组件实现细节未审计。 |
+| 主路径 | 代码仓库 → CLI/Action 触发 → LangChain Agent 编排 → 调用多 Provider LLM → 读取源码生成文档 → 自动开 PR 注入 AGENTS.md，过程中走 LangSmith 做 tracing。 | LangSmith 仅在档案中作为"可视化/追踪"提及，trace 字段与采样策略未在档案中描述。 |
+| 关键权衡 | 文档新鲜度（每日自动 PR） vs API 成本与文档质量；通用多 Provider 接入 vs 各 Provider 行为差异导致的不可控；AGENTS.md 自动注入 vs 用户对仓库文件的写权限扩大。 | 风险点属档案明确列出的"局限"，成本量级、权限模型、Provider 差异未量化。 |
+| 最小 PoC | 在单一小型仓库上启用 GitHub Action，限定单 Provider（如 OpenAI），关闭/限制每日触发，仅启用 LangSmith tracing 比对文档质量与 token 成本，验收项：PR 可审计、成本可解释、AGENTS.md 被目标 Agent 实际读取。 | PoC 步骤基于档案的"CLI 优先 + GitHub Action + 多 Provider + LangSmith"四项特征组合，不引入档案未提及的网关或中间件。 |
+
 ## 架构启发
 文档不再是一次性产物，而是持续更新的 Agent 基础设施。文档的消费者从人变成 Agent，文档的生成者从人变成 Agent——人只需要审查 PR。这种范式转变对内部文档平台有直接参考价值。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[代码仓库与开发者] --> A[GitHub Action 每日触发]
+  U --> B[CLI 入口 npm install -g openwiki + openwiki --init]
+  A --> C[LangChain Agent 编排运行时]
+  B --> C
+  C --> D[多 Provider LLM 调用 OpenAI Anthropic OpenRouter Fireworks Baseten GLM 5.2 Kimi K2.6 Sonnet 5]
+  C --> E[工具与外部系统 源码读取 待核验]
+  C --> F[LangSmith tracing 可观测性边界]
+  C --> G[生成文档 AGENTS.md CLAUDE.md 自动注入]
+  G --> H[自动开 PR 仓库写权限边界]
+  F --> C
+  classDef risk fill:#fdd,stroke:#900;
+  class H risk;
+```
 
 ## 定位判断
 **工具型** — 实用工具，与 codebase-memory-mcp（代码理解）形成互补。不是通用文档生成器，不是代码搜索工具，是 Agent 时代的代码库文档基础设施。

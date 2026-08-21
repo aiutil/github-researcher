@@ -6,7 +6,7 @@
     <title>Microsoft MXC | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,52 +52,79 @@
 <li><strong>TypeScript SDK</strong>：<code>@microsoft/mxc-sdk</code> npm 包，一行代码创建沙箱</li>
 <li><strong>版本化 Schema</strong>：0.5.0-alpha（stable）→ 0.6.0-alpha（current）→ 0.7.0-dev（experimental）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
-<pre class="mermaid">graph TB
-    subgraph "SDK 层"
-        SDK["TypeScript SDK<br/>spawnSandboxFromConfig()"]
-    end
-    subgraph "配置层"
-        JSON["JSON Policy Schema<br/>filesystem + network + ui"]
-    end
-    subgraph "原生执行层 Rust"
-        WIN["wxc-exec.exe<br/>(Windows)"]
-        LNX["lxc-exec<br/>(Linux)"]
-        MAC["mxc-exec-mac<br/>(macOS)"]
-    end
-    subgraph "隔离后端"
-        PC["ProcessContainer"]
-        BW["Bubblewrap"]
-        SB["Seatbelt"]
-        VM["MicroVM"]
-        HL["Hyperlight"]
-    end
-    SDK --> JSON
-    JSON --> WIN & LNX & MAC
-    WIN --> PC & VM & HL
-    LNX --> BW & VM
-    MAC --> SB
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MXC 是本地跨平台代码执行沙箱的统一配置与编排层，向上暴露 TypeScript SDK，向下驱动 Windows/Linux/macOS 三类原生执行器与隔离后端（ProcessContainer、Bubblewrap、Seatbelt、MicroVM、Hyperlight 等）；不替代单一后端实现，也不提供云端托管</td>
+<td>后端清单来自档案"关键技术亮点"第 1 条；是否覆盖 Linux/macOS 全部能力尚未在档案中量化</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>业务代码经 <code>@microsoft/mxc-sdk</code> 调用 → 加载版本化 JSON Policy Schema → 调用对应平台原生可执行（wxc-exec.exe / lxc-exec / mxc-exec-mac）→ 选定隔离后端落地 → 走 provision→start→exec→stop→deprovision 生命周期</td>
+<td>生命周期阶段来自档案"关键技术亮点"第 3 条；具体 IPC/协议格式档案未给</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多后端统一抽象带来的扩展面收益 vs 各 OS 后端成熟度不一对齐（Windows 优先、Linux/macOS 支持较弱）；且档案明示"no MXC profiles should be treated as security boundaries currently"，意味着策略层尚不可当安全边界用</td>
+<td>权衡结论来自"风险/局限/泡沫点"第 1、2 条</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 TS SDK + 单一平台默认后端（Windows: ProcessContainer；Linux: Bubblewrap；macOS: Seatbelt）+ 最小 JSON 策略（仅文件读写白名单 + 网络出站过滤）+ 端到端审计日志，验证配置→启动→执行→回收闭环</td>
+<td>默认后端与策略维度出自档案"关键技术亮点"第 1、2 条；SDK 包名来自第 4 条</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    SDK["@microsoft/mxc-sdk<br/>spawnSandboxFromConfig()"] --> POLICY["JSON Policy Schema<br/>v0.5/0.6/0.7（filesystem+network+ui）"]
+    POLICY --> ROUTER["平台路由<br/>（OS 探测，待核验）"]
+    ROUTER --> WIN["wxc-exec.exe<br/>Windows 原生执行器"]
+    ROUTER --> LNX["lxc-exec<br/>Linux 原生执行器"]
+    ROUTER --> MAC["mxc-exec-mac<br/>macOS 原生执行器"]
+    WIN --> BACKENDS["隔离后端<br/>ProcessContainer / MicroVM / Hyperlight / Windows Sandbox / WSLC"]
+    LNX --> BACKENDS2["隔离后端<br/>Bubblewrap（默认）/ LXC / MicroVM / Hyperlight"]
+    MAC --> BACKENDS3["隔离后端<br/>Seatbelt"]
+    BACKENDS --> LC["生命周期状态机<br/>provision → start → exec → stop → deprovision"]
+    BACKENDS2 --> LC
+    BACKENDS3 --> LC
+    LC --> RISK["安全边界状态<br/>⚠ 当前不可作为安全边界（preview）"]
+    classDef risk fill:#fee,stroke:#c00,stroke-width:1px
+    class RISK risk
 </pre>
 <p>核心设计哲学：<strong>不是发明新沙箱，而是统一现有沙箱的接口</strong>。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选</strong> — 如果成熟起来，可能成为 Agent 代码执行沙箱的事实标准配置层。当前处于早期 preview，策略可能过于宽松。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>明确声明不可作为安全边界</strong>："no MXC profiles should be treated as security boundaries currently"——当前是 preview，不是生产可用</li>
 <li><strong>Windows 优先</strong>：Linux/macOS 支持存在但不如 Windows 完善</li>
 <li><strong>生态依赖</strong>：需要各后端工具（bwrap/lxc/hyperlight）已安装</li>
 <li><strong>竞品成熟度</strong>：Firecracker（microVM）、gVisor 等已有生产验证</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Firecracker</strong>：Firecracker 是一个具体的 microVM 实现，MXC 是<strong>多后端的统一配置层</strong>，可以包含 Firecracker 类的后端</li>
 <li><strong>vs gVisor</strong>：gVisor 是 Linux syscall 拦截层，MXC 是更高层的策略管理</li>
 <li><strong>vs E2B</strong>：E2B 是云端沙箱服务，MXC 是本地跨平台方案</li>
 <li><strong>vs Docker</strong>：Docker 是容器运行时，MXC 更关注<strong>策略驱动的安全隔离</strong></li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 微软在 Agent 安全基础设施方向的战略投入，即使当前 preview 也有很高的学习价值。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>安全策略何时达到"可作为安全边界"的承诺</li>
 <li>Agent 框架（Claude Code/Cursor/MCP）是否原生集成 MXC</li>

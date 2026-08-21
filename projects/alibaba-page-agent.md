@@ -37,8 +37,35 @@ GitHub Trending 日榜连续出现，19.2K stars 且持续增长。代表了一�
 4. **MCP Server（Beta）**：外部 Agent 可通过 MCP 控制浏览器中的 page-agent
 5. **Chrome 扩展（可选）**：支持跨页面多标签任务
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口为一段 CDN 注入的 JS（in-page），模型侧为 OpenAI-compatible 文本 LLM（BYO），工具与外部系统通过 MCP Server（Beta）与可选 Chrome 扩展接入跨标签页 | DOM 解析源自 browser-use；MCP 为 Beta；Chrome 扩展为可选组件——三者具体协议/接口形态未在档案中给出 |
+| 主路径 | "Page → DOM text → text LLM → DOM operation"（档案原文），不使用截图与多模态 LLM | 仅给出哲学层链路；具体编排器、状态机、错误处理与会话持久化实现未在档案中描述 |
+| 关键权衡 | 轻量、低成本、零部署 vs DOM 注入安全风险、Canvas/WebGL/Video 与复杂 iframe 场景失效、CDN 依赖需自行替换 | 风险点来自档案"风险/局限"段；沙箱隔离、多租户隔离、审计能力在档案中均未证实 |
+| 最小 PoC | 单一渠道嵌入 demo CDN JS、配置自有 OpenAI-compatible LLM、限定最小工具权限与可审计日志，验证后逐步扩大接入面 | 验收项（安全/成本/SLO/退出路径）由档案"采用建议"给出；具体指标阈值需在 PoC 内自行定义 |
+
 ## 架构启发
 page-agent 的核心设计哲学是**"在页面内部解决，不绕道外部"**。传统 GUI agent 的链路是 `Agent → screenshot → multimodal LLM → coordinates → click`。page-agent 的链路是 `Page → DOM text → text LLM → DOM operation`。前者重、贵、慢；后者轻、快、便宜。trade-off 是复杂 Canvas/WebGL/视频内容无法通过 DOM 文本理解。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[script src 注入 入口与身份边界]
+    I --> P[page-agent JS 运行时]
+    P --> D[tree-sitter 风格 DOM 文本化 待核验]
+    P --> M[外部 OpenAI-compatible 文本 LLM]
+    M --> P
+    P --> O[DOM 操作 执行与回写]
+    P --> T[Chrome 扩展 跨标签页 可选]
+    P --> X[MCP Server Beta 外部 Agent 控制]
+    S[DOM 注入安全 沙箱隔离 缺失] -.约束.-> P
+    F[Canvas WebGL Video 复杂 iframe 失效] -.约束.-> P
+```
 
 ## 定位判断
 **平台候选。** page-agent 定义了"In-page Agent"这一新品类。如果 SaaS 产品普遍嵌入 page-agent，它就成为了 Web 端 Agent 交互的标准层——类似 Stripe 之于支付、Auth0 之于认证。

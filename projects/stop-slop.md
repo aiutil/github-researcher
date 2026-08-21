@@ -34,8 +34,35 @@ url: "https://github.com/hardikpandya/stop-slop"
 2. **量化评分系统**：设计了 5 维评分（Directness 直接性、Rhythm 节奏、Trust 信任读者智慧、Authenticity 人味、Density 信息密度），每维 1-10 分，总分低于 35/50 则需要重写。这提供了可量化的质量标准，而非模糊的"写得更好"。
 3. **Before/After 示例库**：references/examples.md 提供了改造前后的对比示例，让 AI 通过 few-shot learning 理解什么是"slop"以及如何改写。这种基于示例的教学方式比纯规则更有效。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | stop-slop 本身是一个纯 Markdown 资产（SKILL.md + references/），无自有运行时；系统边界由宿主 Claude/Claude Code 或自定义指令环境划定，stop-slop 仅作为约束型 Skill 文件被加载 | 未在档案中给出宿主侧 API、权限模型或部署方式；具体加载机制以 Anthropic Skills 文档为准 |
+| 主路径 | 文本生成请求 → 宿主代理加载 Skill → 在系统提示层应用禁用短语/结构/句级规则与 5 维评分 → 生成结果与 Before/After 示例参考回灌 | 5 维评分（Directness/Rhythm/Trust/Authenticity/Density，1-10，总分 35/50 阈值）见档案；实际注入顺序与 token 消耗未披露 |
+| 关键权衡 | 规则刚性 vs 写作多样性：禁副词、禁 em dash、禁 Wh- 句首等硬规则在新闻/技术写作中收益显著，但在文学创作、学术论文等场景可能压制风格 | "规则主观性、时效性"已列在档案风险段；具体跨场景失效数据未给出 |
+| 最小 PoC | 在 Claude Projects 或 Claude Code 中挂载 SKILL.md，向其提交已知含 slop 的段落，验证 (1) 是否检出 banned phrases/structural clichés；(2) 5 维自评是否触发低于 35/50 的重写；(3) Before/After 示例是否被 few-shot 引用 | 档案未提供具体 prompt 模板、token 成本或评分重现性数据，验证指标须自行定义 |
+
 ## 架构启发
 stop-slop 代表了 Agent Skills 的一种重要形态——"约束型 Skill"。它不教 AI 做新事情，而是教 AI 不要做某些事情（不要使用特定短语、不要使用特定结构）。这种"减法设计"在 prompt 工程中非常实用。其 SKILL.md + references/ 的目录结构也成为了 Agent Skill 的标准格式——核心指令在 SKILL.md 中，详细的短语列表和示例放在 references/ 子目录中按需加载。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界 待核验]
+  I --> H[宿主代理 Claude Code 或 Projects]
+  H --> S[stop-slop SKILL.md 约束型 Skill]
+  S --> R[references 禁用短语 结构套路 句级规则]
+  S --> E[references examples.md Before After]
+  H --> M[LLM 推理服务]
+  M --> O[生成文本]
+  O --> Q[5 维自评 Directness Rhythm Trust Authenticity Density]
+  Q -->|低于 35 50| H
+  Q -->|通过| U
+```
 
 ## 定位判断
 stop-slop 定位为**AI 写作质量优化的工具型 Skill**。它不解决"写什么"的问题（那是创作），只解决"怎么写得更不像 AI"的问题（那是风格优化）。在 Skills 生态中，它属于"输出质量控制"类别，与 taste-skill（前端设计质量）形成互补。

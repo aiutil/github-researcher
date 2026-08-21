@@ -37,32 +37,48 @@ Block Inc.（Square/Cash App 母公司）出品，日增 2,162 stars，Rust 实�
 4. **多租户架构**：单 Relay 托管一个社区，Hosted 模式通过 host-derived community 做租户隔离，共享 Postgres/Redis/S3
 5. **Rust workspace 设计**：buzz-core（零 I/O 类型）、buzz-relay（Axum WS+REST）、buzz-db（Postgres）、buzz-auth（NIP-42/98 认证+限流）、buzz-pubsub（Redis）、buzz-search（Postgres FTS）、buzz-audit（哈希链日志）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 一个 Nostr Relay 协议之上的人机协同工作空间，前端覆盖 Buzz Desktop / buzz-cli / 第三方 Agent（Goose、Codex、Claude Code），后端由 buzz-core、buzz-relay、buzz-db、buzz-auth、buzz-pubsub、buzz-search、buzz-audit 七个 Rust crate 组成，存储落在 Postgres+Redis+S3/MinIO。 | 来源仅为 README 摘要与架构师速览表；各 crate 的实际接口与边界未源码核验。 |
+| 主路径 | 客户端走 WebSocket / REST 接入 buzz-relay，经 NIP-42 认证后写入签名 Nostr 事件，由 buzz-db 持久化、buzz-pubsub 扇出、buzz-search 提供 FTS、buzz-audit 追加哈希链日志；Agent 通过 ACP harness 与 buzz-cli 以 JSON 进出。 | "待核验"：NIP-34 Git 事件流转、buzz-pubsub 的扇出语义、ACP↔MCP 桥接细节。 |
+| 关键权衡 | 共享身份/Schnorr 签名与审计带来可解释性，但需在多租户（host-derived community）与 NIP-42 单密钥泄露风险之间取舍；Buzz-as-protocol 的野心（替代 Forge+Chat+CI+搜索）摊薄了每个领域与成熟方案（Slack、Zulip、Mattermost）正面对抗的胜算。 | 竞争格局与治理风险基于档案描述，无跑分或采用率数据支撑。 |
+| 最小 PoC | 单社区自托管：部署 buzz-relay + Postgres + Redis + MinIO，用 buzz-cli 跑通 NIP-42 认证 → 频道消息 → buzz-audit 日志回放；接入一种 Agent（Goose/Codex/Claude Code）走 ACP，验证 buzz-cli 的 JSON 进出与权限边界。 | Mobile、Push、Git 托管后端 README 标注"开发中"，不得纳入 MVP 验收。 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph Clients
-        H[Human Client<br/>Buzz Desktop]
-        A[AI Agent<br/>Goose/Codex/Claude Code]
-        C[CLI/Scripts<br/>buzz-cli]
-    end
-
-    subgraph "buzz-relay (Rust)"
-        R[NIP-01 · NIP-42 Auth<br/>Channel/DM/Media/Workflow/Git REST<br/>Audit Log]
-    end
-
-    subgraph Storage
-        PG[(Postgres<br/>Events + FTS)]
-        RD[(Redis<br/>Pub/Sub)]
-        S3[(S3/MinIO<br/>Blossom)]
-    end
+flowchart LR
+    H[Human Client<br/>Buzz Desktop]:::user
+    C[CLI/Scripts<br/>buzz-cli]:::user
+    AG[AI Agent<br/>Goose/Codex/Claude Code<br/>via ACP]:::user
+    R[buzz-relay<br/>Axum WS + REST<br/>NIP-01 / NIP-42 Auth]:::core
+    AUTH[buzz-auth<br/>NIP-42 / NIP-98<br/>Rate-limit]:::core
+    DB[buzz-db<br/>Postgres + FTS]:::store
+    PS[buzz-pubsub<br/>Redis]:::store
+    AU[buzz-audit<br/>Hash-chained log]:::core
+    S3[(S3 / MinIO<br/>Blobs 待核验)]:::ext
+    EXT[External Nostr Relays<br/>Network effect 待核验]:::ext
 
     H -->|WebSocket| R
-    A -->|ACP ↔ MCP| R
     C -->|WS + REST| R
-    R --> PG
-    R --> RD
-    R --> S3
+    AG -->|ACP / MCP 桥接| R
+    R --> AUTH
+    R --> DB
+    R --> PS
+    R --> AU
+    R -.待核验.-> S3
+    R -.待核验.-> EXT
+
+    classDef user fill:#fff7e6,stroke:#d48806;
+    classDef core fill:#e6f4ff,stroke:#1677ff;
+    classDef store fill:#f6ffed,stroke:#389e0d;
+    classDef ext fill:#f5f5f5,stroke:#8c8c8c,stroke-dasharray:3 3;
 ```
 
 **设计哲学：** 一个协议替代七个 tab。人类和 Agent 的 affordance 完全对等——同样的频道、画布、工作流、语音室，不同的只是密钥对。

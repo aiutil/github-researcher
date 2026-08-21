@@ -6,7 +6,7 @@
     <title>Knockoff | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,30 +48,79 @@
 <li><strong>三平台覆盖</strong> — Chrome、Firefox、Safari（Safari 需 Xcode 包装为原生 App）</li>
 <li><strong>品牌名熵分析</strong> — 用信息熵识别随机生成的品牌名（如 SZHLUX 熵值高于 Apple）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>浏览器扩展形态的客户端工具，职责落在 content script 解析亚马逊 DOM、本地品牌判定管线、用户 allow/blocklist 管理；不包含后端服务、账号体系或外部 API 调用</td>
+<td>边界基于 JavaScript 语言、browser-extension / local-first / amazon / brand-detection 标签及档案描述的"全本地运行，无服务器往返、无追踪、无账号"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>内容脚本抓取搜索结果 → 品牌检测管线（first-match-wins：allowlist → blocklist → 已知伪品牌库 → 熵+注册时间启发式）→ DOM 改写（隐藏/变暗/标记）</td>
+<td>管线顺序与三档处理（隐藏/变暗/标记）来自档案；具体正则匹配、熵阈值、注册时间抓取来源未在档案中给出，视为待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>确定性列表（allow/blocklist、伪品牌库）与启发式熵分析互补，构成"快路径 vs 误判风险"的取舍；全本地隐私与伪品牌库持续维护成本是一对结构性张力</td>
+<td>"确定性管线 + 启发式判断"在档案中有原文表述；熵分析是否回退、人工审核回路未在档案中说明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Chrome/Firefox 上加载扩展，构造含已知真伪品牌的亚马逊搜索查询，验证 DOM 改写三档行为与离线工作；评估亚马逊改版后的失效模式</td>
+<td>档案仅承诺三平台覆盖（Chrome/Firefox/Safari，Safari 需 Xcode 包装），未给出更新机制、社区贡献模式或灰度策略</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>全本地隐私架构</strong> — 在数据隐私敏感的消费场景中，"无服务器"本身就是产品卖点</li>
 <li><strong>确定性管线 + 启发式判断</strong> — allowlist/blocklist 提供确定性，熵分析提供启发式判断，两者互补</li>
 <li><strong>浏览器扩展作为轻量交付</strong> — 无需后端、无需 App Store 审核、直接触达用户</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[用户浏览器] --> CS[内容脚本:解析亚马逊搜索DOM]
+  CS --> P[品牌检测管线 first-match-wins]
+  P --> AL[用户 allowlist]
+  P --> BL[用户 blocklist]
+  P --> DB[已知伪品牌数据库 本地]
+  P --> HE[商标注册时间+品牌名熵分析 启发式]
+  P --> DOM[DOM 改写:隐藏/变暗/标记]
+  DOM --> U
+  CS -. 失效风险:亚马逊改版 .-> R[(待核验:页面结构变更对抗)]
+  DB -. 维护成本:持续更新 .-> R
+  Safari[Safari 交付:需 Xcode 包装为原生App 待核验] --> CS
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>单一功能消费工具。不涉及企业场景、不涉及基础设施。但作为"小工具解决大问题"的范例值得记录。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>亚马逊对抗风险</strong> — 扩展依赖亚马逊页面 DOM 结构，亚马逊随时可能改版</li>
 <li><strong>伪品牌数据库维护成本</strong> — 需要持续更新已知伪品牌列表</li>
 <li><strong>增长可持续性存疑</strong> — 媒体驱动增长可能在报道热度消退后放缓</li>
 <li><strong>单平台依赖</strong> — 只服务于亚马逊，其他电商平台（eBay/Wish/Temu）未覆盖</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>BuyMinusBlock / Fakespot</strong> — 类似的亚马逊评价质量工具，但 Knockoff 更聚焦品牌维度</li>
 <li><strong>uBlock Origin</strong> — 通用广告拦截，不针对品牌质量</li>
 <li>无直接竞品在"伪品牌检测"这个精确切口上</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>否。一次性关注即可。除非扩展到更多电商平台或演化为品牌质量 API。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否被亚马逊以技术手段对抗（页面改版、检测扩展等）</li>
 <li>伪品牌数据库的增长速度和社区贡献模式</li>

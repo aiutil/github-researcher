@@ -6,7 +6,7 @@
     <title>OrcaSlicer-bambulab | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,29 +47,76 @@
 <li><strong>AGPL 合规分叉</strong>：基于开源许可证的合法社区行为</li>
 <li><strong>跨平台支持</strong>：Windows (WSL2) / Linux 原生 / macOS 开发中</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OrcaSlicer-bambulab 是面向 Bambu Lab 打印机用户的工具型社区分叉，核心是恢复 BambuNetwork 互联网能力；系统外侧是 Bambu Lab 固件/云端，边界由厂商策略与 AGPL-3.0 合规分叉共同界定</td>
+<td>档案未给出源码模块切分，边界判断仅基于"恢复 BambuNetwork / 跨平台 WSL2·Linux·macOS / AGPL-3.0 分叉"等公开描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户/开发者通过 CLI 或 GUI 调用切片与 BambuNetwork 通信能力，触达 Bambu Lab 打印机（局域网 + 互联网模式），并受固件版本与服务条款约束</td>
+<td>协议、云通信细节、Bambu Lab API 形态均未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用户体验完整性（云端功能、远程打印、模型库、OTA）vs 厂商封锁风险（固件检测、ToS）与社区分叉的长期维护不确定性</td>
+<td>厂商回应、固件对抗手段、社区活跃持续度均为待核验的预测</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在隔离测试环境中拉取分叉、构建 C++ 产物，对比原版 OrcaSlicer 在同一 Bambu Lab 固件下的 LAN/Internet 行为差异，并把厂商后续固件变更作为回归验收项</td>
+<td>档案未提供具体构建命令、CI 配置、依赖锁定清单与 SLA 指标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>硬件厂商通过软件限制控制生态的模式越来越受到社区挑战</li>
 <li>开源许可证是用户保护自己权益的法律工具</li>
 <li>社区分叉是开源治理中"用户主权"的体现</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  U[开发者 CI 或上游应用] --> CLI[OrcaSlicer-bambulab CLI 或 GUI 入口]
+  CLI --> CORE[切片引擎 与 BambuNetwork 恢复层 待核验]
+  CORE --> LAN[局域网 Bambu Lab 打印机]
+  CORE --> CLOUD[Bambu Lab 云端 模型库 OTA 远程打印]
+  CLOUD -.厂商策略与固件封锁.-> CORE
+  LAN -.固件版本兼容.-> CORE
+  U --> CFG[配置 日志 诊断]
+  CORE --> RISK[AGPL 合规 与 BambuNetwork 协议逆向风险]
+  RISK -.社区维护热度.-> CORE
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>工具型。面向 Bambu Lab 打印机用户的实用工具，不是平台或基础设施。</p>
-<h2 id="_7">风险 / 屧限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屧限 / 泡沫点</h2>
 <ol>
 <li><strong>厂商可能通过固件更新封锁</strong>：Bambu Lab 可能在固件层面检测和阻止第三方客户端</li>
 <li><strong>法律风险</strong>：虽然 AGPL 合规，但 BambuNetwork 的 API 使用可能违反服务条款</li>
 <li><strong>维护持续性</strong>：社区分叉的长期维护依赖于社区热情</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>OrcaSlicer（原版）：上游项目</li>
 <li>Bambu Studio：Bambu Lab 官方切片软件</li>
 <li>PrusaSlicer：另一个开源切片软件</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>短期跟踪</strong>。关注厂商回应和社区持续度。如果 Bambu Lab 修改策略，这个分叉的历史意义大于实际价值。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Bambu Lab 的官方回应（法律/技术/商业策略）</li>
 <li>分叉社区的持续活跃度</li>

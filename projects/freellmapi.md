@@ -48,35 +48,37 @@ last_seen_date: "2026-06-27"
 5. **Embeddings family-based 路由**——failover 只在同模型 Provider 间发生（不同模型向量不兼容）
 6. **16 Provider 覆盖**——Google/Groq/Cerebras/NVIDIA/Mistral/OpenRouter/GitHub Models/Cloudflare/Z.ai/Cohere/HuggingFace/Ollama Cloud/Kilo/Pollinations/LLM7/OVH
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 客户端（Claude Code / Codex CLI 等 Agent 工具）↔ FreeLLMAPI 代理层 ↔ 16 家外部免费 Provider 的三层编排层 | 边界由三协议端点（`/v1/chat/completions`、`/v1/messages`、`/v1/responses`）与 Provider 列表（Google/Groq/Cerebras/NVIDIA/Mistral/OpenRouter/GitHub Models/Cloudflare/Z.ai/Cohere/HuggingFace/Ollama Cloud/Kilo/Pollinations/LLM7/OVH）描述；具体鉴权流、容器化形态与企业级 Gateway 差异需源码核验 |
+| 主路径 | 客户端请求 → Smart Router（按 key 计 RPM/RPD/TPM/TPD）→ 单 Provider 尝试 → 遇 429/5xx 触发 Fallback Chain（≤20 次重试）→ 命中后维持 30 分钟 Sticky Session；模型切换时注入 compact system message；Embeddings 仅在同模型 family 内 failover | 路径由档案「关键技术亮点」描述；compact system message 内容、fallover 调度算法、KV/上下文压缩实现均未在档案披露 |
+| 关键权衡 | 16 Provider 覆盖面与 ToS 灰区耦合度的权衡：聚合得越广，攻击面（加密 key 库）、政策依赖（单 Provider 改 ToS 即影响全局）、商用合规风险越高；Sticky Session 与模型切换 Context Handoff 体现"稳定性 vs 路由灵活性"取舍 | 权衡基于「风险/局限」段与 sticky sessions、context handoff 描述；各 Provider ToS 细节、实测可用额度未在档案给出量化 |
+| 最小 PoC | 在 `/v1/chat/completions` 与 `/v1/messages` 两端点分别跑 1 个 Provider（如 Google），验证 sticky session、fallback、加密 key 落盘；优先核对 NVIDIA 等带 eval-only 限制的 Provider ToS，再决定是否扩到多 Provider 与 images/audio/embeddings 端点 | PoC 范围由端点清单、加密存储声明与风险段推导；实际可用 token 配额、QPS、延迟 P99 须实测，档案未提供 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TD
-    subgraph "FreeLLMAPI 路由架构"
-        C[Client Request<br/>/v1/chat/completions<br/>/v1/messages<br/>/v1/responses]
-        R[Smart Router<br/>RPM/RPD/TPM/TPD tracking]
-        F[Fallback Chain<br/>up to 20 attempts]
-        K[Encrypted Key Store<br/>AES-256-GCM]
-    end
-
-    subgraph "16 Free Providers"
-        P1[Google Gemini]
-        P2[Groq]
-        P3[Cerebras]
-        P4[NVIDIA NIM]
-        P5[Mistral]
-        P6[Cloudflare]
-        P7[Z.ai/Zhipu]
-        P8[...9 more]
-    end
-
-    C --> R
-    K --> R
-    R -->|"1st try"| P1
-    P1 -->|"429/5xx"| F
-    F -->|"failover"| P2
-    F -->|"failover"| P3
-    F -->|"failover"| P4
+flowchart LR
+    A[客户端: Claude Code / Codex CLI / 其他 OpenAI 兼容工具]
+    B[FreeLLMAPI 入口: /v1/chat/completions<br/>/v1/messages<br/>/v1/responses<br/>/v1/images/generations<br/>/v1/audio/speech<br/>/v1/embeddings]
+    C[Smart Router + Sticky Session 30min<br/>RPM/RPD/TPM/TPD 计数<br/>Context Handoff on model switch]
+    D[Fallback Chain: 最多 20 次重试<br/>遇 429/5xx 跳下一 Provider<br/>Embeddings 仅同 family 内 failover]
+    E[加密 Key 存储: AES-256-GCM over SQLite]
+    F[外部边界: 16 家免费 Provider<br/>Google / Groq / Cerebras / NVIDIA / Mistral / OpenRouter / GitHub Models / Cloudflare / Z.ai / Cohere / HuggingFace / Ollama Cloud / Kilo / Pollinations / LLM7 / OVH]
+    G[风险/合规边界: Provider ToS 灰区<br/>无 SLA / 政策可单方变更 / 聚合触发审查]
+    A --> B --> C --> D --> F
+    E --> C
+    F -.触发策略变更.-> G
+    D -.失败耗尽.-> G
+    F -->|响应| D -->|响应| A
+    H[桌面 App + Docker 部署形态 - 待核验]
+    B -.打包方式.-> H
 ```
 
 FreeLLMAPI 的架构本质上是一个 **LLM Gateway 的免费版**。企业级 LLM Gateway（如 Portkey、LiteLLM）做的是多 Provider 路由 + 可观测性 + 成本控制，FreeLLMAPI 聚焦在免费 tier 的最大化利用。

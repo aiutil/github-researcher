@@ -6,7 +6,7 @@
     <title>Goblin Agent | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,29 +47,74 @@
 <li><strong>CLI 工具</strong>：<code>goblin status</code>、<code>goblin hoard</code>、<code>goblin riddle</code>、<code>goblin appraise</code> — 性格即接口</li>
 <li><strong>可安装到 Hermes</strong>：<code>goblin install --hermes-dir ~/.hermes</code> 一键集成</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Goblin Agent 是 Hermes Agent 之上的纯人格层插件（SOUL.md + MEMORY.md + AGENTS.md 三文件），边界在 Hermes 内核之外，不触及模型与工具的编排</td>
+<td>档案仅声明其为"性格层插件"与三文件框架，未给出 Hermes 实际接口协议</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>调用 Hermes Agent → Goblin 人格层重写/包装提示与回应 → 通过 CLI（status / hoard / riddle / appraise / install --hermes-dir）暴露给用户</td>
+<td>CLI 子命令来自档案描述，具体调用链与持久化机制未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"可组合人格"体验 vs. 行为不可预测性、不可审计性；娱乐价值 vs. 企业场景合规与可控性</td>
+<td>档案明示"本质是娱乐项目"且"不可预测行为在商业场景中是风险"，无生产化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地 Hermes 环境执行 <code>goblin install --hermes-dir ~/.hermes</code>，仅启用 status / riddle 子命令，无外部工具授权，启用会话日志后人工抽检回应偏移</td>
+<td>档案仅给出 install 命令语法与 CLI 列表，权限模型与日志格式"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent 的人格/性格正在成为可组合、可替换的模块</li>
 <li>SOUL.md 模式正在被更广泛地采用</li>
 <li>Agent 的"性格"可能影响用户对其输出质量的感知</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或上游渠道] --> CLI[goblin CLI: status hoard riddle appraise]
+    CLI --> PL[Goblin 人格层 SOUL.md 加 MEMORY.md 加 AGENTS.md]
+    PL --> H[Hermes Agent 宿主运行时]
+    H --> M[模型或推理服务 待核验]
+    H --> T[工具与外部系统 待核验]
+    H --> S[会话 记忆 审计日志 待核验]
+    R[梗热度衰退与不可预测行为风险] -.约束.-> PL
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>观察型。技术价值有限，但作为 Agent 文化演进的标本值得关注。</p>
-<h2 id="_7">风险 / 屧限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屧限 / 泡沫点</h2>
 <ol>
 <li><strong>本质是娱乐项目</strong>：没有解决实际问题</li>
 <li><strong>Agent 人格化的企业风险</strong>：不可预测的行为在商业场景中是风险而非特性</li>
 <li><strong>文化热度消退</strong>：梗的热度通常短暂</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Hermes Agent</strong>：宿主框架</li>
 <li><strong>OpenClaw SOUL.md</strong>：类似的人格框架，但更务实</li>
 <li><strong>ChatGPT Custom Instructions</strong>：官方的人格定制方案</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>短期关注</strong>。Agent 人格化的趋势值得跟踪，但这个具体项目可能随梗热度消退。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Agent 人格化是否出现更多实用型项目</li>
 <li>企业级 Agent 是否需要可控的"性格参数"</li>

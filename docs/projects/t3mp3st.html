@@ -6,7 +6,7 @@
     <title>T3MP3ST | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,16 +59,71 @@
 <li><strong>完全离线运行</strong>：支持 Ollama/LM Studio/vLLM/llama.cpp，tool-calling 通过文本驱动，不依赖原生 function-calling</li>
 <li><strong>War Room 浏览器 UI</strong>：实时可视化 kill chain 进展</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>T3MP3ST 是介于"已存在的编码 Agent 推理引擎"与"攻击性安全工具链（35/83 内置，含 metasploit/hydra 等）"之间的元编排层，自身不绑定模型供应商；含 War Room 浏览器 UI 与 verify-claims 复现脚本。</td>
+<td>基于档案中"meta-harness / keyless / 35 of 83 tools / War Room UI / verify-claims"事实，不含具体协议与部署形态。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 → 入口/身份边界 → 8-operator kill chain 编排（Recon→Exploiter→Infiltrator→Exfiltrator→Ghost，含 Egress-scope containment）→ 调用本地 Agent 引擎 + 工具集 → OSV novelty 检测 + CVSS 报告回写。</td>
+<td>kill chain 名与顺序、scope containment、报告管道均见档案；其中 Exploiter/Infiltrator/Exfiltrator/Ghost 标注 Experimental，证据仅至 README 声明。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>安全边界（默认域外网络拒绝 + human-approval gate 隔离危险工具）与攻击能力覆盖（8 攻击领域、83 工具）的平衡；以及 AGPL-3.0 + 攻击性安全双重合规门槛对商业集成的抑制。</td>
+<td>权衡来自档案明示条款；具体 gate 触发条件、审计日志格式未在档案中描述。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>隔离环境单 Agent 模式跑 XBOW 104-challenge 复现（90.1% pass@1，verify-claims 24/24 绿），暂不启用 swarm/cloud/mobile/binary/persistence/cognition 这类仍为 stub 的高级模块。</td>
+<td>PoC 输入指标与脚本名来自档案；具体运行环境配置待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>Meta-harness 模式</strong>：不绑定特定 Agent，而是作为已有 Agent 的能力扩展层。这与 Omnigent（元编排）理念一致，验证了 Agent 生态从"单工具"向"元层"演进</li>
 <li><strong>Reproducible claims</strong>：<code>verify-claims</code> 模式值得所有有性能声明的开源项目学习——信任不是给的，是验证的</li>
 <li><strong>Scope containment</strong>：安全 Agent 的默认安全设计是关键工程决策</li>
 <li><strong>Keyless</strong>：降低采纳门槛的极致——零额外成本试用</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> O[8-operator kill chain 编排<br/>Recon→Exploiter→Infiltrator→Exfiltrator→Ghost<br/>Egress-scope containment 默认开启]
+    O --> A[外部 Agent 推理引擎<br/>Claude Code / Codex / Hermes / Ollama 等]
+    O --> T[内置 35/83 工具<br/>Burp / metasploit / hydra 等<br/>危险工具过 human-approval gate]
+    O --> R[协调披露与报告<br/>OSV novelty + live PoC + refuter + CVSS]
+    A --> O
+    T --> O
+    O --> W[War Room 浏览器 UI<br/>实时 kill chain 可视化]
+    O --> V[verify-claims 复现脚本<br/>committed JSON 重算 24/24]
+    R --> S[审计与状态回写<br/>具体持久化 待核验]
+    subgraph 风险边界[风险/稳定度边界]
+        E[Exploiter / Infiltrator / Exfiltrator / Ghost<br/>标注 Experimental]
+        M[cloud / persistence / swarm / cognition<br/>当前 interface-only 待核验]
+    end
+    O -.受限于.-> E
+    O -.受限于.-> M
+    O -.法务边界.-> L[AGPL-3.0 + 攻击性安全合规约束]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 → 平台候选</strong>。当前是高级安全工具，但 meta-harness 架构（任意 Agent + 可扩展工具集 + 基准验证）有平台化潜力。如果 T3MP3ST 能建立 Agent 驱动安全的基准生态，可能成为攻击性安全 AI 的基础设施层。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>Swarm 未验证</strong>：Exploiter/Infiltrator/Exfiltrator/Ghost 标注 Experimental，协调 swarm 端到端不可靠——当前基准成绩来自单 Agent</li>
 <li><strong>AGPL-3.0 限制</strong>：商业集成门槛高</li>
@@ -77,18 +132,18 @@
 <li><strong>Pliny 依赖</strong>：高度依赖个人品牌，如果核心维护者退出，项目可持续性存疑</li>
 <li><strong>高级模块仍为 stub</strong>：cloud/persistence/swarm/cognition 模块目前仅 interface-only</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 传统 Pentest 工具</strong>（Burp/Metasploit）：T3MP3ST 不替代，而是编排它们——35 个内置工具中有对 Burp/metasploit 的适配</li>
 <li><strong>vs XBOW</strong>：XBOW 是商业 AI 安全平台，T3MP3ST 是开源对标的 meta-harness</li>
 <li><strong>vs ECC</strong>（228K⭐）：ECC 是通用 Agent 性能优化系统，T3MP3ST 是安全领域特化</li>
 <li><strong>vs Omnigent</strong>（6.9K⭐）：Omnigent 编排编码 Agent，T3MP3ST 编排安全 Agent——都是 meta-harness 但领域不同</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 安全 Agent 是独立赛道，T3MP3ST 是该赛道第一个有实质工程深度的开源项目。关注：①真实 CVE 发现能力 ②swarm 协调是否成熟 ③社区贡献者增长 ④是否催生商业产品</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>谨慎评估。</strong> AGPL-3.0 + 攻击性安全属性意味着法务审批门槛高。但内部安全团队可用作授权范围内的自动化渗透测试工具，在隔离环境运行。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>[ ] swarm 协调端到端是否进入 Stable</li>
 <li>[ ] 真实 CVE 发现数量是否增长</li>

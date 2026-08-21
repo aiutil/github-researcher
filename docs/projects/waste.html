@@ -6,7 +6,7 @@
     <title>sqliteai/waste | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,7 +47,39 @@
 <li><strong>作者自验对齐</strong>：每层与 PyTorch 参考对齐，最终 logits 一致到 3.6e-06，vision tower 与自身 oracle 一致到 2.3e-06。<strong>注意这是作者自验，非第三方独立复现。</strong></li>
 <li><strong>多模型支持</strong>：除 K3 2.78T，还跑 Kimi-Linear 48B（19 GiB 容器，1.87 GiB 最小 RAM，10.7 tok/s）。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>纯 C 零运行时依赖的可嵌入推理引擎，CLI/API 入口直接调用核心库，宿主仅依赖 OS 与本地 NVMe 文件，无外部服务/网络协议/插件总线</td>
+<td>基于"dependency-free" 与 C 单语言事实；CLI/插件适配器等具体外延未在档案中描述，标注"待核验"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者/CI → CLI(API) → 核心引擎 → 内存 trunk + NVMe expert 流式 + RAM 有界 cache，单机消费硬件闭环</td>
+<td>trunk/expert/cache 三段职责见档案；具体协议、I/O 调度、磁盘格式由"待核验"覆盖</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>速度 vs 规模：trunk 驻内存 + expert 离线换 2.78T 单机可跑；代价是 0.62 tok/s、982 GiB 磁盘、≈64GB RAM 硬门槛</td>
+<td>0.62 tok/s、982 GiB、≈64GB、hit 38% 来自作者实测命令；未含第三方复现</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 64GB RAM + ≥1TB NVMe 主机上克隆仓库、以 CLI 加载 K3 容器，先验证 expert cache 命中率与稳态 tok/s，再对照作者自报 logits 偏差 3.6e-06</td>
+<td>模型容器路径、CLI 调参、cgroup-aware 预算(0.6.2) 等具体接入步骤需读源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心启发是 <strong>"idle weight 不需要在内存，只需要 reachable in time"</strong>。这与 colibri（VRAM/RAM/NVMe 三级）、esp32-ai（SRAM/PSRAM/FLASH 三级 + Per-Layer Embeddings）是同一原理家族的不同表现——<strong>"推理瓶颈是内存放置策略而非算力"</strong>。waste 的取舍是：trunk（高频访问）驻内存换速度，expert（低频/按需）放磁盘换容量，RAM 做 cache 桥接两者。作者诚实指出"两个看起来最大的杠杆（每 token 读更少字节、RAM 里放更多）都被榨干了，接下来是工程优化而非新原理"。</p>
 <p><code>[模型权重 982 GiB]
    ├── trunk → 驻内存（高频）
@@ -55,22 +87,37 @@
                     ↑
               RAM 有界 expert cache（剩余空间，17.56GB）
               hit 9038 / miss 14514 = 38%</code></p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[开发者或 CI] --> CLI[CLI 入口]
+    CLI --> Core[核心推理引擎 纯 C 零依赖]
+    Core --> Trunk[Trunk 驻内存 高频]
+    Core --> NVMe[NVMe 流式读取 selected experts]
+    NVMe --> Cache[RAM 有界 expert cache 命中 38%]
+    Core --> OS[宿主 OS 仅本地资源]
+    Core --> Align[对齐校核 自验 logits 3.6e-06 待第三方复现]
+    Speed[生成速度 0.62 tok/s 可用性下限] -.约束.-> Core
+    Cost[硬件门槛 982 GiB 磁盘 64GB RAM] -.约束.-> Core
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在"超大模型本地推理"品类里，waste 与 deltafin（Python）、colibri（C）并立。waste 的差异化是<strong>纯 C 零依赖 + 万亿级单机消费硬件</strong>。定位为观察型——价值在可行性与工程启发，0.62 tok/s 尚不实用。与 colibri（744B 多 GPU、21K⭐）相比，waste 瞄准更大模型（2.78T）但单机，是规模/便携的不同权衡。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>0.62 tok/s 是可用性下限</strong>：26 秒答一句话，价值在可行性证明而非日常使用。作者诚实承认，但<strong>容易被读者误读为"K3 可日常本地跑"</strong>——不能。</li>
 <li><strong>自验非第三方复现</strong>：logits 一致到 3.6e-06 是作者自报，未经独立团队复现；"未发现其他万亿级消费机磁盘流式公开演示"是作者的搜索结果，<strong>非系统性调研，作者声明无对比表、欢迎反例</strong>。</li>
 <li><strong>需要 982 GiB 磁盘 + 64GB RAM</strong>：模型容器 982 GiB，最低 RAM 29.05 GiB——仍是高门槛，非普通消费机。</li>
 <li><strong>单点实现早期</strong>：创建于 2026-07-28，5 天 652⭐，生产/长期维护承诺待验证。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs deltafin（589⭐，Python）</strong>：同跑全量 K3，deltafin 用 Python + OpenAI 兼容 API server（易用/API 优先），waste 用纯 C 零依赖（极致依赖控制/可嵌入）。语言与策略分化。</li>
 <li><strong>vs colibri（21K⭐，C）</strong>：同为纯 C 零依赖，但 colibri 跑 GLM-5.2 744B 多 GPU（VRAM/RAM/NVMe 三级），waste 跑 K3 2.78T 单机（trunk/expert 分离）。规模与便携性的不同权衡。</li>
 <li><strong>vs esp32-ai（2.7K⭐）</strong>：esp32-ai 把 28.9M 跑上 8 美元微控制器（512KB SRAM），waste 把 2.78T 跑上 64GB Mac——同一原理（内存放置策略）的两个极端规模。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"超大模型本地推理三极"之一跟踪。</strong> 关注其 expert cache 命中率优化、是否出现第三方对齐复现、以及能否从 0.62 tok/s 工程优化到"日常可用"速度（如 5+ tok/s）。</p>
 <h2 id="2026-08-03">最近动态（2026-08-03）</h2>
 <ul>
@@ -79,7 +126,7 @@
 <li><strong>K3 本地推理第四极出现</strong>：FareedKhan-dev/kimi-k3-in-c（218⭐）用便携 C99 把 peak RSS 压到 8.24GB（waste 要求 ~64GB）。waste 不再是纯 C K3 推理的唯一实现，但两者在 Pareto 前沿占据不同点——waste 求接近可用速度（0.62 tok/s），kimi-k3-in-c 求内存下限（8.24GB / 32s·token⁻¹）。</li>
 <li><strong>判断</strong>：score 82 → 83。品类成熟（四极并立）提升整体关注度，waste 作为"接近可用速度"的代表持续受益。</li>
 </ul>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>expert cache 命中率优化</strong>：当前 38%（9038/14514），命中率提升直接提速；关注作者的工程优化进展。</li>
 <li><strong>第三方对齐复现</strong>：logits 3.6e-06 一致性是否被独立团队复现，是验证可行性的关键。</li>

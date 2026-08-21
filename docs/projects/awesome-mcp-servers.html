@@ -6,7 +6,7 @@
     <title>punkpeye/awesome-mcp-servers | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,73 @@
 <li><strong>社区驱动更新:</strong> 通过 Issue 和 PR 机制让社区贡献新的 MCP Server 条目，保持时效性</li>
 <li><strong>标准化元数据:</strong> 每个条目遵循统一的描述格式，便于机器解析和索引</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本项目是 awesome-list 类型资源仓库，本身不实现协议，边界落在"目录条目（README）↔ 外部 MCP Server 仓库↔ Glama.ai 托管市场↔ 上游使用者"之间</td>
+<td>仅依据 README/awesome-list 模式与档案描述推断；未核验其运行时组件</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>社区 PR/Issue → 仓库维护者（punkpeye）审核分类并写入 README → 终端用户检索条目 → 跳转至各 MCP Server 仓库或经 Glama.ai 安装运行</td>
+<td>路径节点均出自档案明文，其他执行细节（如 CI/Crawler）待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>收录覆盖面与条目质量/可维护性之间的平衡，以及与配套商业平台 Glama.ai 之间的中立性张力</td>
+<td>权衡为档案明确指出的风险点；量化取舍指标未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>仅消费侧验证：克隆仓库，按目录筛选 1–2 个标注活跃的 MCP Server，按其各自 README 在隔离环境接入 Claude/Cursor，记录可用性、维护状态与权限范围</td>
+<td>项目本身无可运行主干，PoC 落在"条目消费与外部服务联动"的最小闭环，具体接入流程待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>awesome-mcp-servers 本质上是一个「生态索引」——它的价值不在于自身的技术实现，而在于作为生态信息枢纽的角色。其设计启示是：在新兴技术生态中，最先建立高质量信息聚合的仓库往往能获得指数级的网络效应——越来越多的项目希望被收录，越来越多的用户依赖它来发现项目，形成正反馈。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者: 开发者或下游系统] --> I[入口: 仓库 README 检索]
+    I --> P[控制边界: punkpeye 审核与社区 PR/Issue]
+    P --> A[awesome 列表条目]
+    A --> S[外部 Server 仓库: anthropics/mcp, modelcontextprotocol/servers 等 待核验]
+    A --> G[外部边界: Glama.ai 市场与托管服务]
+    U --> G
+    G --> R[运行回路: MCP Server 被 LLM 客户端调用 待核验]
+    P -. "风险边界: bus factor, 商业中立性, 收录质量" .-> P
+</mermaid>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于 MCP 生态的「信息基础设施」。不是技术产品而是生态目录，类似于 npm 之于 Node.js 生态的角色——虽然本身不生产功能，但作为发现和导航的枢纽具有不可替代的战略价值。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>内容质量控制难:</strong> 随着收录数量增长，大量低质量、重复或未维护的 MCP Server 会稀释列表价值</li>
 <li><strong>MCP 生态泡沫风险:</strong> 如果 MCP 协议本身未能成为行业标准（可能被 OpenAI 的 function calling 生态取代），整个生态将萎缩</li>
 <li><strong>商业利益冲突:</strong> 配套的 Glama.ai 平台有商业利益，可能影响收录的客观性</li>
 <li><strong>维护可持续性:</strong> 单一维护者（punkpeye）承担大量审核和更新工作，存在 bus factor 风险</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>anthropics/mcp:</strong> MCP 协议的官方仓库和参考实现，awesome-mcp-servers 是其生态的社区聚合层</li>
 <li><strong>modelcontextprotocol/servers:</strong> 官方维护的 MCP Server 参考实现，数量少但质量高</li>
 <li><strong>smithery (smithery.ai):</strong> 另一个 MCP Server 市场平台，与 Glama.ai 形成竞争</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 作为 MCP 生态的核心信息节点，awesome-mcp-servers 是观察 MCP 生态发展趋势的最佳窗口。通过追踪其收录的 Server 类型和增长速度，可以判断 MCP 在哪些场景获得了真实落地。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注收录的 MCP Server 类型分布变化，识别 MCP 落地最快的应用领域</li>
 <li>观察是否有质量评估机制引入，以应对低质量内容涌入</li>

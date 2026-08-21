@@ -45,8 +45,37 @@ url: "https://github.com/codejunkie99/agentic-stack"
 7. **Mission Control (v0.17):** 任务管理和 lesson retraction 机制
 8. **安全升级:** `agentic-stack upgrade` 支持项目安全升级，处理路径变更
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 以 `.agent/` 文件夹为载体的跨 Harness 数据层（记忆 + 技能 + 协议），位于使用者与 12+ Coding Agent（Claude Code、Cursor、Windsurf、OpenCode、OpenClaw、Hermes、Codex、Gemini CLI、Copilot CLI、Antigravity 等）之间，本地看板与飞轮作为内部边界 | 项目档案明确该范围；具体目录结构与读写契约待核验 |
+| 主路径 | 使用者 → 任意 Harness 读取 `.agent/`（记忆/技能）→ 执行任务 → 产生运行记录 → 经脱敏审批后由飞轮产出 trace / eval cases / training JSONL | 飞轮机制在档案中明文描述；触发条件、审批门槛与产出格式待核验 |
+| 关键权衡 | 跨平台覆盖广度（12+ Harness）vs 单人维护的可持续性、与各 Harness 演进的耦合；本地可移植数据 vs 跨 Harness 共享带来的敏感信息泄露面 | 风险条目来自档案"风险/局限"段，未给定量指标 |
+| 最小 PoC | 在单一 Harness（如 Claude Code）下初始化 `.agent/`，写入一条 lesson 与一条 skill，跨 Harness 切换后验证可读；再触发一次 bounded loop 并核对飞轮是否生成 trace/eval 制品 | 档案未给出 CLI 入口、文件 schema 与 verifier/checker 实现细节 |
+
 ## 架构启发
 agentic-stack 的核心启发是 **"Agent 的价值在于积累的知识，而非执行的环境"**——正如开发者的价值在于技能而非用哪个 IDE。当前 Agent 生态正在重蹈移动应用的覆辙：每个平台建封闭生态，数据不互通。agentic-stack 试图建立 **Agent 数据的"通用文件系统"**，类似 POSIX 之于操作系统——让上层应用（Agent）和底层数据（记忆/技能）解耦。更深层的启发是其**飞轮设计**：将 Agent 运行数据自动转化为 eval cases 和 training JSONL，形成"用得越多→数据越好→Agent 越强"的正循环，这是从"工具"向"平台"演进的关键路径。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者 / 开发者] --> AG[".agent/ 文件夹<br/>记忆 + 技能 + 协议"]
+    H1[Claude Code] -.读写.-> AG
+    H2[Cursor] -.读写.-> AG
+    H3[Windsurf / OpenCode /<br/>OpenClaw / Hermes /<br/>Codex / Gemini CLI<br/>等 12+ Harness（待核验）] -.读写.-> AG
+    AG --> D[本地数据看板<br/>活动 · token 成本 · KPI]
+    RUN[Agent 运行记录] --> FW[飞轮机制<br/>脱敏 + 审批]
+    FW --> T1[trace 记录]
+    FW --> T2[eval cases]
+    FW --> T3[training-ready JSONL]
+    RUN --> BL[Bounded Agentic Loops v0.19<br/>maker / verifier / checker<br/>Git worktree 隔离 · 预算 · deny-path<br/>checkpoint（实现细节待核验）]
+    BL --> FW
+    AG -.跨 Harness 记忆共享.-> R[风险边界<br/>敏感信息泄露 · 单人维护<br/>Harness 演进耦合]
+```
 
 ## 定位判断
 **基础设施候选。** 若 `.agent/` 格式被广泛采用，它将成为 Agent 生态的"数据标准层"——类似 `.git` 之于版本控制。但与 git 不同的是，它需要各 Agent 平台主动配合（读写 `.agent/` 文件夹），这对平台厂商缺乏激励（封闭生态是护城河）。因此更可能的定位是"跨平台适配工具"而非"标准协议"——除非有强大的社区共识推动标准化。数据层和飞轮机制增加了平台化可能性。

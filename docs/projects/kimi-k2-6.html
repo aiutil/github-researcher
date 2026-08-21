@@ -6,7 +6,7 @@
     <title>Kimi K2.6 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -61,41 +61,75 @@
 <li><strong>1T MoE + 32B 活跃</strong>：用总参数量撑起能力，用稀疏激活控制成本</li>
 <li><strong>Kimi Code CLI</strong>：配套的命令行工具，可直接在终端中使用</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>K2.6 作为 LLM/MoE 底座模型（1T 总参 / 32B 活跃），由 Kimi Code CLI、Agent Swarm 编排与外部工具/数据源共同构成 Agentic Coding 入口；本档案未给出 300 子 Agent 的部署拓扑与持久化方案</td>
+<td>仅基于 README 自述与 benchmark 数字，未做源码审计；编排协议、状态存储、部署形态均"待核验"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户任务 → 主 Agent 任务分解 → Agent Swarm（300 子 Agent 并行）+ 协调层（4000 协调步）→ 结果汇总与验证 → Kimi Code CLI 回写；附带 12 小时自主运行与原生多模态</td>
+<td>路径为档案明确描述；Agent 间通信协议、错误恢复机制、上下文窗口管理等实现细节档案未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展性（300 Agent / 4000 协调步 / 12 小时自主） vs 协调可靠性、token 成本、可观测性、SWE-Bench Pro 之外的通用与数学能力不足；Modified MIT License 限制条款为合规边界</td>
+<td>权衡基于档案"风险/局限"段落；具体单位 token 成本、License 限制条款原文未在档案中给出，需查 LICENSE 文件</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一渠道接入，启用 Kimi Code CLI + 受限工具权限 + 可审计日志，先复现 SWE-Bench Pro 类任务，验收项含 Agent Swarm 协调一致性、单任务 token 成本、SLO 与 License 合规</td>
+<td>最低 PoC 形态由档案"采用建议"与"后续观察点"提炼；具体硬件需求、推理框架（vLLM/TGI/SGLang 等）档案未明示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>K2.6 的核心架构创新是 <strong>Agent Swarm</strong>：</p>
-<pre class="mermaid">graph TD
-    A[用户任务] --> B[主 Agent<br/>任务分解]
-    B --> C[Agent Swarm<br/>300 子 Agent]
-    C --> D[Agent 1: 代码分析]
-    C --> E[Agent 2: 测试生成]
-    C --> F[Agent 3: 文档更新]
-    C --> G[Agent N: ...]
-    D --> H[协调层<br/>4000 协调步]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[结果汇总 + 验证]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">graph TB
+    A[用户任务<br/>Coding Agent 入口] --> B[主 Agent<br/>任务分解]
+    B --> C[Agent Swarm<br/>300 子 Agent 并行<br/>协调步 ≤ 4000]
+    C --> D[协调层<br/>结果汇总与验证]
+    D --> E[Kimi Code CLI<br/>终端回写]
+    C -.协调错误/冲突风险.-> F[可靠性边界<br/>待核验]
+    C -.12 小时长 Horizon.-> G[成本与可观测性边界<br/>待核验]
+    H[原生多模态 / 1T MoE 32B 激活<br/>底座模型] --> C
+    I[外部工具与数据源<br/>Git Repo / 测试 / 文档<br/>协议待核验] --> C
+    J[Modified MIT License<br/>商业使用限制条款待核验] -.合规约束.-> E
 </pre>
 <p><strong>关键洞察</strong>：Agentic Coding 的未来可能不是"一个超级 Agent 做所有事"，而是"一群专业 Agent 协作"。这与微服务架构的演进逻辑一致——单体 → 服务拆分 → 编排。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agentic Coding 领域的开源基础设施候选</strong>。如果 Agent Swarm 被验证可靠，K2.6 可能成为 Coding Agent 领域的"标准底座模型"，就像 Linux 之于服务器。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Agent Swarm 的可靠性</strong>：300 Agent 并行听起来壮观，但协调错误、Agent 间冲突、结果一致性都是硬挑战</li>
 <li><strong>12 小时运行的经济性</strong>：长时间自主运行意味着高 token 消耗，成本可能远超预期</li>
 <li><strong>纯数学能力偏弱</strong>：报告明确指出"trails on pure math"，不适合数学推理场景</li>
 <li><strong>Modified MIT License 限制</strong>：虽商业友好，但有使用限制条款</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs GPT-5.4</strong>：K2.6 在 Agentic Coding benchmark 上领先，但通用能力可能不及</li>
 <li><strong>vs Claude Opus 4.6</strong>：Opus 在推理深度上更强，K2.6 在 Agent 编排上更强</li>
 <li><strong>vs Hy3 Preview</strong>：Hy3 更通用，K2.6 更专精于 Coding</li>
 <li><strong>vs DeepSeek-V4</strong>：DeepSeek 在推理和数学上更强，Agentic Coding 上 K2.6 领先</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，强烈建议。</strong> 这是目前 Agentic Coding 赛道最有潜力的开源模型。建议立即启动 PoC 评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Agent Swarm 在真实项目中的可靠性和经济性</li>
 <li>社区基于 K2.6 的 fine-tune 和部署方案</li>

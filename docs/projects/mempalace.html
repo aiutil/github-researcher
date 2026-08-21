@@ -6,7 +6,7 @@
     <title>MemPalace | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,28 +53,64 @@
 <li><strong>MCP Server 集成</strong>：通过 MCP 协议与任何 AI Agent 对接</li>
 <li><strong>ChromaDB + SQLite 双引擎</strong>：ChromaDB 存储向量嵌入，SQLite 存储实体关系图</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MemPalace 是运行在用户本地的 Python 记忆层：ChromaDB 存向量、SQLite 存实体关系，通过宫殿结构（Wings→Halls→Rooms→Closets→Drawers）建索引，对外暴露 MCP Server 给 Agent；模型供应商、Agent 框架、对话入口均由调用方注入。</td>
+<td>边界描述来自档案"ChromaDB + SQLite 双引擎""MCP Server 集成"与"完全本地运行"；未描述具体网络端口、鉴权或多租户机制。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>原始对话逐字写入 → 并行落入 ChromaDB（向量）与 SQLite（实体关系图） → 宫殿索引层组织检索入口 → 语义搜索返回结果（无压缩 96.6% R@5）或经 AAAK 压缩层返回（84.2% R@5） → MCP Server 输出给 Agent。</td>
+<td>主路径基于档案"原始逐字存储"与已有 Mermaid 抽象重组；AAAK 的压缩算法细节与延迟数据档案未给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"召回完整性 vs Token 成本"上选前者：禁用摘要/提取以保住 96.6% 召回，代价是存储与上下文体积增长；AAK 压缩可降本但已自报 -12.4pp 回归，目前不可作为生产默认。</td>
+<td>权衡判断紧扣档案"存一切，让它可搜索"及"AAAK 回归 12.4 个百分点"；未量化存储增长曲线或单位成本。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用单进程本地部署固定一段会话集，走 ChromaDB + SQLite 双写与宫殿索引，按 96.6% R@5 的 500 题子集复测语义搜索；AAAK 通路默认关闭，MCP Server 只对最小权限的本地 Agent 开放，并记录 shell 注入面（Issue #110）下的输入清洗验证。</td>
+<td>PoC 设计以档案显式事实为锚（LongMemEval 500 题、Issue #110、MCP 集成、AAAK 实验性）；安全修复状态、ARM64 稳定性（Issue #74）需在源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>"存一切"策略 &gt; "智能筛选"策略</strong>：在记忆系统中，不丢数据比节省空间更重要。摘要/提取会丢失上下文</li>
 <li><strong>分层架构</strong>：原始存储层 + 元数据索引层 + 可选压缩层，各层独立演进</li>
 <li><strong>诚实是最强的技术品牌</strong>：README 中的公开勘误（AAAK 回归、"30x lossless" 不实、"contradiction detection" 未集成）反而增强了可信度</li>
 <li><strong>宫殿隐喻的工程化</strong>：将古代记忆术转化为可计算的数据结构</li>
 </ul>
-<pre class="mermaid">graph TB
-    subgraph "MemPalace 架构"
-        A[原始对话数据] --> B[ChromaDB<br>向量嵌入存储]
-        A --> C[SQLite<br>实体关系图谱]
-        B --> D[宫殿结构索引<br>Wings → Halls → Rooms]
-        C --> D
-        D --> E[语义搜索<br>96.6% R@5]
-        D --> F[AAAK 压缩层<br>实验性，84.2% R@5]
-        E --> G[MCP Server<br>Agent 集成]
-        F --> G
-    end
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">graph LR
+    A[Agent / 调用方] -->|MCP 协议| B[MCP Server 边界<br>待核验：鉴权与端口]
+    B --> C[宫殿结构索引<br>Wings → Halls → Rooms → Closets → Drawers]
+    C --> D[语义搜索<br>LongMemEval 96.6% R@5]
+    C --> E[AAAK 压缩层<br>实验性，84.2% R@5<br>默认建议关闭]
+    D --> F[ChromaDB<br>向量嵌入存储]
+    D --> G[SQLite<br>实体关系图谱]
+    E --> F
+    H[原始逐字对话<br>不做摘要/提取] --> F
+    H --> G
+    I[风险边界<br>Issue #110 shell 注入<br>Issue #74 macOS ARM64 段错误] -.威胁面.-> B
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选</strong> — Agent 记忆层是确定性需求，MemPalace 的"存一切 + 宫殿索引"模式有成为标准的潜力。但需要修复安全漏洞并验证大规模性能后才能成为生产基础设施。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>名人效应 Star 膨胀</strong>：大量非技术 Star，实际开发者基数需验证</li>
 <li><strong>安全漏洞</strong>：Issue #110 报告 hooks 中的 shell 注入，#74 报告 macOS ARM64 段错误</li>
@@ -82,16 +118,16 @@
 <li><strong>AAAK 回归</strong>：压缩模式降低 12.4 个百分点，核心卖点之一尚未兑现</li>
 <li><strong>"30x lossless compression" 不实</strong>：已公开承认，AAAK 是有损压缩</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>GBrain</strong>：不同层次——MemPalace 是存储/检索层，GBrain 是知识组织层，互补关系</li>
 <li><strong>Zep/Graphiti</strong>：商业产品，MemPalace 的本地免费定位是差异化优势</li>
 <li><strong>LangChain Memory</strong>：通用框架内置记忆，MemPalace 更专注、性能更高</li>
 <li><strong>claude-memory-compiler</strong>：互补——memory compiler 负责从会话中提取知识，MemPalace 负责存储和检索</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，强烈建议持续跟踪</strong>。Agent 记忆是 2026 年确定性的基础设施需求，MemPalace 的技术路线（原始存储 + 宫殿索引）有创新性。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>安全漏洞修复进度（Shell 注入 #110、ARM64 段错误 #74）</li>
 <li>企业级应用案例是否出现</li>
@@ -101,7 +137,7 @@
 </ol>
 <hr />
 <p><em>首次记录：2026-04-12</em></p>
-<h2 id="_11">最近动态</h2>
+<h2 id="_12">最近动态</h2>
 <h3 id="2026-05-12">2026-05-12</h3>
 <ul>
 <li>连续第三天无外部数据，Star 推演为最后有效轮次</li>

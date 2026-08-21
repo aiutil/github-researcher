@@ -43,6 +43,15 @@ AI Agent 技能的安全扫描器，检测技能中的漏洞、恶意模式和�
 3. **漏洞检测：** 静态分析 Skills 代码中的安全漏洞
 4. **Python 实现：** 低门槛集成到 CI/CD 流水线
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | SkillSpector 是面向 Agent Skills 的 SAST 扫描器，边界覆盖 Skills 文件/包、64 类漏洞检测（16 分类）、SARIF 输出；与外部 LLM 提供方（OpenAI / Anthropic / NVIDIA Build / Ollama 本地）解耦 | 漏洞分类与 LLM 供应商在档案中明确；Skills 格式契约、目标 Agent 平台兼容性未在档案中给出，需源码核验 |
+| 主路径 | Skills 输入 → 静态+语义扫描（YARA/AST/Taint Tracking 等规则 + 多 LLM 语义评估）→ SARIF 报告 → CI/CD 消费 | 路径描述基于档案中的检测类别与 SARIF 提法；具体调度器、内部流水线阶段、LLM 评估触发条件未在档案中确认 |
+| 关键权衡 | 检测覆盖广度（64 类、含 MCP 最小权限与工具投毒）与 Skills 格式不统一、误报未验证之间的张力；NVIDIA 品牌背书与潜在平台绑定风险 | 覆盖度、SARIF、多 LLM、CVE 化分类来自档案；格式碎片化、误报率、绑定深度仅以风险章节列示，无量化证据 |
+| 最小 PoC | 取一组已知 Skills（含档案统计的 26.1% 含漏洞、5.2% 疑似恶意样本子集），接入 CI/CD 跑 SARIF，对比 64 类命中与人工复核；LLM 评估侧先用本地 Ollama 以隔离外部成本与数据外泄 | 样本规模、CI 接入方式、Ollama 模型选择、阈值与“疑似恶意”判定方法档案均未给出，需以源码/文档确认 |
+
 ## 架构启发
 Agent 供应链安全是一个被严重忽视的领域。类比：
 - npm 生态的 security audit → Agent Skills 的 SkillSpector
@@ -50,6 +59,23 @@ Agent 供应链安全是一个被严重忽视的领域。类比：
 - SAST/DAST → Agent Skills SAST
 
 未来 Agent 的安全架构需要：Skills 来源认证 + Skills 安全扫描 + 运行时权限控制 + 行为审计。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Agent Skills 输入<br/>Skills 包/文件] --> B[SkillSpector 扫描器<br/>Apache 2.0 / Python]
+    B --> C[静态规则引擎<br/>YARA YR1-YR4<br/>AST1-AST8<br/>Taint TT1-TT5]
+    B --> D[语义评估<br/>多 LLM: OpenAI / Anthropic / NVIDIA Build / Ollama]
+    C --> E[SARIF 报告]
+    D --> E
+    E --> F[CI/CD 流水线]
+    F --> G[修复/阻断<br/>待核验]
+    H[Agent 平台<br/>Claude Code / Cursor 等<br/>待核验] --> A
+    B -.风险边界.- I[NVIDIA 平台绑定<br/>Skills 格式碎片化<br/>误报率未验证]
+```
 
 ## 定位判断
 Agent 安全工具链中的"静态扫描"组件。是 Agent 安全防御体系的第一道防线。

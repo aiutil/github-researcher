@@ -68,17 +68,51 @@ harness:
 - GitHub：CI/CD 集成
 
 ### 架构设计
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    A[Harness YAML<br>定义工作流] --> B[Archon Engine<br>解析+调度]
-    B --> C{Agent 选择}
-    C -->|编码| D[Claude Code]
-    C -->|编码| E[Codex]
-    C -->|验证| F[自定义验证器]
-    D --> G[Output Pipeline<br>validate → review → PR]
-    E --> G
-    F --> G
+flowchart LR
+    subgraph Entry[入口边界 - 待核鉴权与配额]
+        CLI[CLI 客户端 - 待核]
+        WEB[Web UI]
+        SLACK[Slack 接入]
+        DISCORD[Discord 接入]
+        GH[GitHub 集成]
+    end
+    HARNESS[Harness YAML<br>plan → implement → validate → review → pr]
+    ENGINE[Archon Engine<br>解析与调度 - 持久化与状态机待核]
+    ROUTE{Agent 路由}
+    CLAUDE[Claude Code]
+    CODEX[Codex]
+    VALID[自定义验证器<br>例如 npm test]
+    OUT[Output Pipeline<br>validate → review → PR]
+    PR[自动创建 PR - 权限边界待核]
+    HARNESS --> ENGINE
+    CLI --> ENGINE
+    WEB --> ENGINE
+    SLACK --> ENGINE
+    DISCORD --> ENGINE
+    GH --> ENGINE
+    ENGINE --> ROUTE
+    ROUTE --> CLAUDE
+    ROUTE --> CODEX
+    ROUTE --> VALID
+    CLAUDE --> OUT
+    CODEX --> OUT
+    VALID --> OUT
+    OUT --> PR
 ```
+
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Archon 是 YAML harness 编排层，向上对接 CLI/Web/Slack/Discord/GitHub 多入口，向下路由到 Claude Code、Codex 与自定义验证器 | 入口与 Agent 名单以档案"多入口执行""Claude Code + Codex"为准；具体鉴权、租户隔离与配额策略未在档案中给出 |
+| 主路径 | Harness YAML → Archon Engine 解析与调度 → 按步骤分派 Agent/命令 → 进入 plan→implement→validate→review→pr 的输出流水线 → 可选自动创建 PR | 步骤序列取自档案示例 YAML；引擎内部持久化、状态机与失败重试策略未描述 |
+| 关键权衡 | 用确定性 YAML 流程封装非确定性 LLM 输出，与 YAML 复杂度膨胀、Agent 深度绑定带来的切换成本之间的取舍 | 权衡分析来自档案"风险/局限"章节；可观测性、审计、限流、模型路由细节缺乏源码级证据 |
+| 最小 PoC | 选一条真实 feature 任务，用单一 harness（plan → implement → validate → review → pr）在 CLI 入口跑通，并对输出差异率、PR 成功率与失败模式建表 | 指标定义基于档案"确定性"承诺与示例 YAML；缺少 CLI 安装/部署方式、token 计费模型与日志格式等运行前提，待核验 |
 
 ## 架构启发
 

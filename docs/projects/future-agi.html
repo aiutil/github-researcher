@@ -6,7 +6,7 @@
     <title>Future-AGI | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,35 +43,84 @@
 <li><strong>Simulations</strong>：模拟用户场景，测试 Agent 行为</li>
 <li><strong>Gateway + Guardrails</strong>：API 网关 + 安全护栏，防止 Agent 产生有害输出</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为 LLM/Agent 可观测性开源全栈平台，承担 Tracing + Evals + Simulations + Datasets + Gateway + Guardrails 六类职责的编排层</td>
+<td>仅基于档案中标签与定位描述，模块边界与对内/对外接口未由源码/文档证实，具体形态"待核验"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据流为请求进入 → 编排/运行时分发 → 模型与工具调用 → Tracing/Evals 评估 → Guardrails 输出控制 → 会话/审计回写</td>
+<td>路径方向来自档案摘要，主路径上每个节点的协议、持久化与控制点实现细节"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"全栈覆盖"与"单模块深度"之间取舍：六类能力并行铺开 vs. 任一专业工具（Langfuse/Promptfoo/Portkey）的纵深；自托管 Apache 2.0 vs. 团队规模与迭代稳定性风险</td>
+<td>权衡结论由档案"风险/局限"段直接给出；stars 增长、issue 数等指标不构成生产可用性证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单渠道、最小工具权限、可审计日志条件下验证一条 Tracing→Evals→Guardrails 闭环；验收项含安全、成本、SLO 与退出路径，并以 stars≥2K 作为是否深入评估的触发条件</td>
+<td>PoC 范围与触发阈值由档案"采用建议"与"是否值得持续跟踪"段明示；具体指标阈值与产品能力成熟度"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent 可观测性需要 Tracing（知道发生了什么）+ Evals（知道做得好不好）+ Guardrails（防止出错）三位一体</li>
 <li>Self-hostable 是企业场景的刚需，LLM 数据不应离开企业网络</li>
 <li>Apache 2.0 许可说明团队认真做开源，不是为了引流</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时]
+    C --> T[Tracing 全链路追踪]
+    C --> E[Evals 自动化评估 待核验]
+    C --> S[Simulations 场景模拟 待核验]
+    C --> G[Gateway 加 Guardrails 安全护栏]
+    C --> M[模型或推理服务]
+    C --> X[工具与外部系统]
+    T -.观测数据回写.-> S2[会话 状态 审计 待核验]
+    E -.评估结果回写.-> S2
+    G -.拒绝或放行.-> U
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 可观测性生态中定位为「开源全栈方案」。对标 Langfuse（Tracing）、Promptfoo（Evals）、Portkey（Gateway）。差异化在于三位一体。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li>701 stars 太少，与 Langfuse（10K+）差距大</li>
 <li>40 个 open issues 说明仍在快速迭代中，API 可能不稳定</li>
 <li>「全栈方案」往往意味着每个模块都不够深，可能被专业工具逐个超越</li>
 <li>团队背景和资金状况不明确</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Langfuse</strong>：LLM Tracing 领导者，10K+ stars，更成熟</li>
 <li><strong>Promptfoo</strong>：专注 LLM Evals，更专业</li>
 <li><strong>Portkey</strong>：AI Gateway，更聚焦网关层</li>
 <li><strong>CodeBurn</strong>：Token 消耗可观测，更轻量，无侵入</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。作为 Agent 可观测性的全栈方案代表，如果 stars 突破 2K 值得深入评估。</p>
-<h2 id="_10">最近动态</h2>
+<h2 id="_11">最近动态</h2>
 <ul>
 <li>2026-05-05: 从观察型升级为平台候选。822 stars，12 天持续增长。功能覆盖 Tracing + Evals + Simulations + Gateway + Guardrails 全栈。Apache 2.0 协议对企业友好。在 Agent 可观测性赛道中与 LangSmith（闭源）、Phoenix（偏 ML）形成差异化。</li>
 </ul>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>是否有企业用户公开使用案例</li>
 <li>Evals 和 Simulations 模块是否真正可用（非 toy implementation）</li>

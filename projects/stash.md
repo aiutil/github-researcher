@@ -33,10 +33,36 @@ AI Agent 缺乏结构化的持久记忆能力。每次对话都是从零开始�
 3. **Go 单二进制**：部署极简，无运行时依赖，Self-hosted 友好
 4. **Postgres 后端**：成熟可靠，适合生产环境
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Stash 是面向 AI Agent 的持久化记忆层：客户端（Claude Code 等 MCP 客户端）→ MCP 入口 → Stash 单二进制 → Postgres；自身不托管模型推理 | 档案仅明列"Go 单二进制 + Postgres + 内置 MCP server"，未列出模型供应商适配器或多租户隔离机制 |
+| 主路径 | MCP 客户端写入 Episodes/Facts/Working Context 三类记忆 → Stash 服务落库 → 后续 Agent 通过同一 MCP 接口回取 | "三层记忆模型"与"MCP 内置"为档案事实；写路径细节、索引策略、检索协议档案未证实 |
+| 关键权衡 | 三层结构化记忆 vs 单一向量库（MemPalace 路线）：换来可解释性与 Postgres 复用，但牺牲语义召回能力 | 仅有概念性比较，无基准数据；性能/召回指标档案未涉及 |
+| 最小 PoC | 单实例 Go 二进制 + 本地 Postgres；用 Claude Code 作为唯一 MCP 客户端；仅启用 Working Context 写入与按 ID 回取，验证记忆持久化与 MCP 握手；验收项含退出路径、数据导出、Postgres 备份恢复 | 部署形态、鉴权方式、审计日志能力均未在档案中描述，PoC 需先核验 |
+
 ## 架构启发
 - Agent Memory 不一定需要向量数据库，结构化存储 + 语义索引可以是另一种路径
 - MCP 作为 Memory 接口标准正在成为事实标准
 - 单二进制 + Postgres 的组合在基础设施工具中越来越流行（参考 Ditto, Litestream）
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[MCP 客户端，如 Claude Code] --> I[MCP 入口（内置，待核鉴权/限流）]
+    I --> C[Stash Go 单二进制 编排]
+    C --> M[Episodes 事件流]
+    C --> F[Facts 事实知识]
+    C --> W[Working Context 当前上下文]
+    M --> DB[(Postgres)]
+    F --> DB
+    W --> DB
+    C --> R[风险/控制边界 单维护人 alash3al，待核企业采用与SLA]
+```
 
 ## 定位判断
 在 AI Memory 生态中处于「轻量级自托管方案」的位置。对标 mem0（云服务）、MemPalace（Python + ChromaDB）。适合已用 Postgres 的团队。

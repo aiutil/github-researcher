@@ -36,8 +36,36 @@ Claude Code 是 Anthropic 闭源的旗舰 Coding Agent，外界难以学习其�
 4. **子 Agent 调度:** 示范 Plan-Execute-Review 多 agent 工作流
 5. **TUI 渲染:** 仿 Claude Code 终端 UI
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | learn-claude-code 是单 Python 文件实现的 Agent Harness 教学样本，边界为"入口/身份 → 编排运行时 → 模型 + 工具 + 会话/状态/审计"，不替代生产级 Claude Code | 仅基于档案描述；未审计源码，未确认模型供应商与工具协议 |
+| 主路径 | 使用者 → 入口 → 项目编排与运行时 → 模型/工具调用 → 会话或状态回写；章节按 tools → memory → sub-agents → MCP → TUI/streaming/interrupt 渐进扩展 | 主路径来自档案"关键技术亮点"；MCP/记忆系统的实现细节未在档案中证实 |
+| 关键权衡 | 教学可读性（单文件、零框架） vs 生产级鲁棒性、安全权限、可观测性；并高度依赖"Claude Code"标签，Anthropic 路径变动会同步冲击教程 | 权衡为档案明确指出的"教程 ≠ 生产"与标签依赖；性能/SLA 数据档案未提供 |
+| 最小 PoC | 先在最小工具权限、可审计日志的本地 Python 环境跑通单文件示例（最简单循环→tools→memory→sub-agents 渐进章节），把安全、成本、SLO、退出路径作为验收项 | PoC 步骤源自档案"采用建议"；具体运行命令、依赖版本、模型接入方式均待核验 |
+
 ## 架构启发
 "用 1000 行代码教一个百万美元产品" 是个高密度教学样本。其核心思想是：**Agent Harness 不是黑魔法，而是工具调用 + 记忆管理 + 控制流的组合**。这降低了对 Agent 框架的迷信，让中级开发者也能写自己的 agent loop。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[单文件 Python 编排与运行时]
+    C --> M[模型或推理服务 待核验供应商与协议]
+    C --> T[工具 Bash 文件 搜索 MCP 集成 待核验]
+    C --> S[会话 记忆 状态 审计 TUI streaming interrupt]
+    C --> R[Sub Agent 调度 Plan Execute Review]
+    R --> C
+    M --> C
+    T --> C
+    S --> C
+    C --> E[外部边界 Claude Code 标签依赖 Anthropic 路径变动]
+```
 
 ## 定位判断
 **工具型 / AI 教育标杆（中文 Agent 教学路线）。** 与 karpathy-autoresearch 同处"理解 AI Agent 内部"教学第一梯队。中文社区里，其影响力已经在 shareAI 实验室多场演讲中被引用。

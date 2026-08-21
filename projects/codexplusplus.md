@@ -34,8 +34,32 @@ OpenAI CodexApp（Codex CLI）作为 coding agent 能力强大，但使用体验
 2. **Codex 工作流深度集成**：会话管理、配置优化、快捷操作
 3. **跨平台支持**：macOS / Linux / Windows
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | CodexPlusPlus 是 CodexApp 的体验增强壳层（Rust 单二进制），自身不是 agent 平台；价值在 UI/UX、会话管理、配置优化三处 | 档案明列"工具型""CodexApp 增强工具"，未给出内部模块清单 |
+| 主路径 | 用户 → CodexPlusPlus 入口 → 调用/封装 CodexApp 会话与配置 → 回写本地状态与配置 | 档案仅描述"会话管理、配置优化、快捷操作"，具体协议/CLI 交互未证实 |
+| 关键权衡 | 跨平台分发与启动性能优势 vs. 对 CodexApp 上游变更的强耦合与 664 个 open issue 暴露的维护债务 | stars/issue 数与"Rust 重写"为公开事实；无源码审计支撑架构细节 |
+| 最小 PoC | 在单一桌面平台（macOS/Linux/Windows 三选一）、只读最小 CodexApp 配置、启用日志审计下做端到端会话管理验证 | 跨平台支持已在档案声明，具体安装/部署形态需源码核验 |
+
 ## 架构启发
 CodexPlusPlus 体现了一个重要的生态信号：**coding agent 的"壳层"（shell/wrapper）是独立的价值层**。Agent 本身（Codex/Claude Code）提供能力，但用户日常交互的 UI/UX/工作流管理需要专门优化。这和 VS Code 之于编辑器、 iTerm2 之于终端是同一个模式。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者] --> I[入口与本地配置边界]
+    I --> C[CodexPlusPlus Rust 编排壳层]
+    C --> X[CodexApp CLI 待核验]
+    X --> C
+    C --> S[本地会话 配置 审计状态]
+    C --> R[工程债务风险 664 open issue 待核验]
+    C --> L[许可证缺失风险 待核验]
+```
 
 ## 定位判断
 **工具型。** 为特定 coding agent（CodexApp）提供体验增强。不是平台，不是基础设施，是用户工具。

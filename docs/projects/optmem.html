@@ -6,7 +6,7 @@
     <title>VictorTaelin/OptMem | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,7 +47,39 @@
 <li><strong>Merges 一次一个、无后台进程</strong>：摘要合并在 <code>note</code> 的输出里逐个到来，由 agent 在正常输出里处理。没有后台 daemon、没有定时任务——降低运维复杂度。</li>
 <li><strong>426-token prompt 即全部集成</strong>：installer 打印一段 markdown，贴到 agent 的 <code>AGENTS.md</code>/<code>CLAUDE.md</code> 顶部即完成。工具 <code>~/.optmem/memo</code> 是单个无依赖 Python 3 文件。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OptMem 是一个无依赖的 Python 单文件 CLI（<code>~/.optmem/memo</code>），配 426-token prompt 作为 agent 集成契约；外部边界是 agent 的 <code>AGENTS.md</code>/<code>CLAUDE.md</code>，内部边界是 append-only <code>LOG.txt</code> + 可重建 <code>TREE/</code> 缓存。</td>
+<td>基于档案"~/.optmem/"目录结构与"单 Python 3 文件无依赖"描述；并发写、跨平台文件系统语义未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径：<code>note</code> 追加到 <code>LOG.txt</code> → agent 在正常输出中接收 <code>merge</code> 指令 → <code>wake</code> 通过位置 seek 重建索引（1M 条约 0.03s）→ <code>recall &lt;regex&gt;</code> 精确匹配回读。可派生节点：摘要 / 整合 / 备份。</td>
+<td>证据来自档案"关键技术亮点"四条与 <code>memo zoom</code>/<code>memo forget</code> 命令；查询仅支持 regex 无语义检索，事实写在风险段。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极简与可审计（position-is-identity、append-only、缓存可删重建）换掉了语义检索、并发写隔离、声明式 license——后者对需要模糊回忆或多 agent 写入的生产场景是硬限制。</td>
+<td>档案"风险 / 局限"四条已显式列出；权衡的"何时够用"未给出基准数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单 agent、单进程、对 <code>~/.optmem/memory/</code> 拥有独占写入的前提下，复制 426-token prompt 到 <code>AGENTS.md</code>/<code>CLAUDE.md</code> 顶部，用 <code>note</code>/<code>wake</code>/<code>recall</code> 跑 1k 条记忆验证延迟与重建正确性；不引入多 agent 并发。</td>
+<td>仅依据档案"集成成本极低（贴一段 prompt 即完成）"与"<code>memo forget</code> 删坏摘要下次 nap 重建"的可观察行为；吞吐量、召回准确率指标档案未提供，记为待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心启发是<strong>"把记忆从基础设施降维到数据格式"</strong>。传统记忆方案假设"需要数据库/向量库/索引服务"，OptMem 通过定长记录 + append-only log + 可重建缓存，把记忆变成"一个文件 + 一个 prompt"。这种<strong>"可观测的最小化"</strong>（<code>memo zoom</code> 把树节点展开成两半、<code>memo forget</code> 删坏摘要让下次 nap 重建）让 agent 的记忆行为可审计。对 agent 生成代码的部署（结合 scriptc 的"显式静态度"）也有呼应——都是"让系统的边界可观测、可降级"。</p>
 <p><code>~/.optmem/
   memo          单个 Python 3 文件，无依赖
@@ -55,24 +87,51 @@
     LOG.txt     所有记忆，append-only，永不编辑
     TREE/       摘要缓存，可从 LOG 重建
     config      尺寸配置</code></p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    AGENT[agent 运行时<br/>任意 harness]:::core
+    PROMPT[426-token prompt<br/>AGENTS.md / CLAUDE.md]:::core
+    MEMO[~/.optmem/memo<br/>单 Python 3 无依赖]:::core
+    LOG[(LOG.txt<br/>append-only 定长记录)]:::core
+    TREE[(TREE/<br/>可重建摘要缓存)]:::core
+    EXT[外部接口<br/>note / wake / recall / forget / zoom]:::ctrl
+    CONC[多 agent 并发写<br/>行为待核验]:::risk
+    SEM[语义检索能力<br/>当前未提供]:::risk
+
+    AGENT -->|读取 prompt 协议| PROMPT
+    PROMPT -->|声明工具调用| MEMO
+    MEMO -->|append 追加| LOG
+    MEMO -->|派生 可删重建| TREE
+    MEMO --> EXT
+    CONC -. 风险边界 .-> LOG
+    SEM -. 能力缺口 .-> MEMO
+
+    classDef core fill:#e6f3ff,stroke:#333,stroke-width:1px;
+    classDef ctrl fill:#fff4e1,stroke:#333,stroke-width:1px;
+    classDef risk fill:#fde2e2,stroke:#333,stroke-width:1px,stroke-dasharray:4 3;
+</mermaid>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 agent 生态中占据<strong>横向工具层</strong>——不绑定具体 harness/平台，可接入任意 agent（只要有 AGENTS.md/CLAUDE.md）。与 qm（记忆内嵌在平台 per-scope）、cindy（跨会话记忆内嵌）形成对比：OptMem 把记忆<strong>拆出来做独立可插拔单元</strong>。定位为工具型，但若集成模式被验证，有成为 agent 记忆层事实标准的潜力。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>并发写边界未验</strong>：append-only log 的单进程设计在多 agent 并发写场景下的一致性未说明；多人/多 agent 场景需额外协调。</li>
 <li><strong>长上下文压缩效率待验</strong>：树摘要在极长记忆历史下的压缩质量、召回精度未经规模评测；<code>recall &lt;regex&gt;</code> 是精确匹配而非语义检索，对模糊记忆需求支持有限。</li>
 <li><strong>单人项目 + license 未声明</strong>：作者虽有声望，但 OptMem 是单人极简实现，license 未声明带来采用不确定性。</li>
 <li><strong>无语义检索</strong>：position-is-identity 的代价是查询只能是 regex 精确匹配，不能"语义相近"——这是刻意的 trade-off，但对需要模糊回忆的 agent 场景是局限。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs mem0（若存在同类）</strong>：传统记忆框架多用向量库 + 语义检索，OptMem 用 append-only log + regex，定位为"无依赖最小单元"，不追求语义检索能力。</li>
 <li><strong>vs qm 的 per-scope memory</strong>：qm 把记忆绑定在团队平台里（与 scope/sandbox 绑定），OptMem 做成独立工具——集成度 vs 独立性的取舍。</li>
 <li><strong>vs Claude Code/Codex 内建记忆</strong>：内建记忆是 harness 私有的，OptMem 跨 harness/跨厂商——模型/厂商切换后仍可用。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"agent 记忆独立成品类"的代表跟踪。</strong> 关注其集成模式（426-token prompt）是否被其他 agent 项目采用、并发写与长上下文压缩的实际边界。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>license 声明</strong>：若作者补充 LICENSE，采用障碍消除；若长期未声明，可能限制企业采用。</li>
 <li><strong>语义检索扩展</strong>：是否在 position-is-identity 基础上补充可选语义层，或坚持纯精确匹配。</li>

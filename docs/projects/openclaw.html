@@ -6,7 +6,7 @@
     <title>openclaw/openclaw | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,57 @@
 <li><strong>Daemon 模式</strong>：后台常驻 Gateway，随时响应消息渠道的事件</li>
 <li><strong>Plugin/Skill 生态</strong>：支持通过 Skills 和 Plugins 扩展能力</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenClaw 是部署在自有设备上的 Gateway 控制面，作为消息渠道、模型 Provider、工具/数据源之间的编排层，不替代 LLM 也不替代消息平台</td>
+<td>仅基于档案中"Gateway 架构""Channel 适配层""Companion Nodes""Plugin/Skill 生态"表述；具体协议、IPC 与持久化未披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者经 WhatsApp/Telegram/Slack/Discord 等渠道入口进入本地 Gateway，Gateway 编排调用选定 LLM 与 Skills/Plugins，回写会话与状态，并可能联动 Companion Nodes（语音/Canvas/摄像头/屏幕）</td>
+<td>渠道列表、Companion Nodes 能力、Daaemon 模式明确；模型调用协议、工具调用协议与会话存储格式均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>渠道广度（9+ 平台覆盖）与单渠道深度 / 供应商耦合之间的取舍；扩展速度 vs 凭据管理、权限隔离、可观测性</td>
+<td>渠道列表与"渠道 API 政策变化可能影响核心功能"为档案明示；安全模型成熟度被列为后续观察点，本档案未给出实现证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单设备单渠道（如 Telegram），关闭其他入口，最小工具权限 + 可审计日志，跑通 Gateway Daemon + 单一 LLM Provider + 1 个 Skill，验证延迟、成本与凭据隔离后再扩面</td>
+<td>档案仅给出"先在单一渠道、最小工具权限和可审计日志下验证"的采用建议；安装命令原文、性能基线、SLO 指标待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>OpenClaw 的核心启发在于"Gateway as Control Plane"——不试图替代 LLM 模型，而是成为模型能力的"路由器"和"编排器"。这种定位让它可以同时利用所有主流模型的优势，而不受限于单一供应商。消息渠道的统一抽象也是重要设计——将 AI 助手带入用户已有的沟通场景，而非要求用户迁移到新平台。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>WhatsApp/Telegram/Slack/Discord<br/>Google Chat/Signal/iMessage 等]
+    I --> C[项目核心:openclaw Gateway<br/>Daemon 模式 + 编排/运行时<br/>CLI / TUI / Web Control UI]
+    C --> M[模型或推理服务<br/>多 LLM Provider 对接]
+    C --> T[工具与外部系统<br/>Skills / Plugins 扩展]
+    C --> N[Companion Nodes<br/>语音 / Canvas / 摄像头 / 屏幕<br/>— 待核验]
+    C --> S[会话 / 状态 / 审计<br/>— 持久化方案 待核验]
+    R[风险与控制边界<br/>凭据管理 / 权限隔离 / 审计日志<br/>5,547 open issues / 渠道 API 政策]
+    C -.受限于.-> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>个人 AI 助手基础设施平台</strong>，定位为"自托管版 ChatGPT + Zapier + IFTTT"。是当前最完整的开源个人 AI 助手方案。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>运维门槛</strong>：自托管 Gateway 需要一定的技术能力，普通用户难以使用</li>
 <li><strong>star 泡沫质疑</strong>：385k stars 在 8 个月内达成，增速异常，可能存在营销驱动或机器人 star</li>
@@ -62,15 +108,15 @@
 <li><strong>渠道 API 依赖</strong>：WhatsApp/iMessage 等平台 API 政策变化可能影响核心功能</li>
 <li><strong>安全风险</strong>：自托管 AI 助手拥有消息渠道访问权，一旦被入侵影响面极大</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>概念先驱</strong>：受 Goose（Block）、Jan 等本地 AI 助手项目启发，但渠道覆盖更广</li>
 <li><strong>竞品</strong>：Jan（本地模型优先）、Ollama（推理引擎层）、Mycroft/OpenVoiceOS（语音优先）</li>
 <li><strong>生态关系</strong>：上游依赖各 LLM Provider API，下游连接消息渠道</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>高度值得跟踪</strong>。作为个人 AI 助手领域 star 数最高的项目，其 Gateway 架构和渠道适配设计代表了这一赛道的技术方向。无论其 star 数是否有泡沫，项目本身的架构设计值得深入研究。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>385k stars 的活跃度（fork、issue、PR 的质量 vs 数量）</li>
 <li>Gateway 架构能否支撑企业级多人协作场景</li>

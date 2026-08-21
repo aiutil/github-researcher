@@ -6,7 +6,7 @@
     <title>mikefarah/yq | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,25 +49,78 @@
 <li><strong>Go 单二进制 + 跨平台</strong>：零依赖编译，支持 Linux/macOS/Windows/ARM，Docker 镜像 <code>mikefarah/yq</code> 可直接在流水线中使用。</li>
 <li><strong>多文件合并与 globs</strong>：<code>yq ea</code> 支持同时处理多个文件（Helm values 合并场景），<code>load()</code> 函数支持引用外部文件。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>yq 是一个独立 CLI 工具，外部边界是用户/CI 流水线、输入文件（YAML/JSON/XML/CSV/TOML/HCL/properties/INI）以及被引用或原地修改的目标文件；不涉及模型推理或外部 SaaS。</td>
+<td>仅依据档案中"多格式统一处理""原地编辑 -i""多文件合并与 globs"的描述；具体 I/O 协议、文件监听机制、并发模型未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户或上游脚本 → <code>yq</code> 单二进制 CLI → 解析器（按格式分发到 YAML/JSON/XML/CSV/TOML/HCL/properties 解析路径）→ jq 兼容表达式求值 → 输出（stdout 或 <code>-i</code> 原地写回，或 <code>-Poy</code> 等格式转换）。</td>
+<td>基于"jq 语法兼容""格式间互转 <code>-Poy</code>""-i 原地修改""load() 引用外部文件"等明示特性；表达式引擎内部实现、数据结构、错误恢复路径档案未描述。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>一是"jq 语法覆盖广度 vs 不完全兼容"的取舍（README 自承尚未覆盖全部 jq 特性）；二是"单二进制零依赖、跨平台部署"与"单人核心维护（mikefarah）"的可持续性风险；三是"格式覆盖广度"与"边界 case 复杂度"（open_issues 279 个）的张力。</td>
+<td>权衡判断直接来自档案"语法覆盖率不及 jq""单人维护风险""格式覆盖广度带来的复杂度"三段；其它如性能基准、安全审计结果、许可证合规细节未在档案中给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 CI/CD 流水线中选取一个 Helm values 或 Kubernetes manifest，使用 <code>yq</code> 做一次只读查询（如 <code>.spec.replicas</code>），再以 <code>-i</code> 做一次原地修改并提交，观察格式保真度、表达式覆盖范围与错误信息是否满足日常运维需求；通过 brew/snap/docker/wget 任一渠道安装验证"单二进制零依赖"假设。</td>
+<td>PoC 设计仅使用档案中明确列出的特性（jq 兼容路径语法、<code>-i</code>、<code>-Poy</code>、<code>load()</code>、<code>yq ea</code>）；不引入档案未证实的插件机制、远程数据源或并发能力。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>yq 的设计哲学是"做好一件事"——它不试图成为通用配置管理平台，而是专注于命令行数据处理这一垂直场景。将 jq 的设计理念（声明式查询语言 + 流式处理管道）扩展到多格式，是一个非常聪明的产品决策：既复用了已有的心智模型，又扩大了适用范围。单二进制、无运行时依赖的 Go 部署模型，也是 CLI 工具的最佳实践——用户安装即用，无需配 Python 环境或 Node.js。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[用户 或 CI/CD 流水线] --> B[yq 单二进制 CLI Go]
+    B --> C{输入格式分发}
+    C -->|YAML| D[YAML 解析路径]
+    C -->|JSON| E[JSON 解析路径]
+    C -->|XML/CSV/TSV/TOML/HCL/properties/INI| F[其它格式解析路径 待核验]
+    D --> G[jq 兼容表达式求值器]
+    E --> G
+    F --> G
+    G --> H{输出策略}
+    H -->|stdout| I[结果输出 含格式转换 如 -Poy]
+    H -->|-i 原地编辑| J[原地写回目标文件]
+    H -->|yq ea 多文件| K[多文件合并 输出]
+    G --> L[load 引用外部文件 待核验]
+    L --> G
+    B -.单人核心维护 风险.-> M[维护与可持续性边界 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>yq 在 DevOps 工具链中处于<strong>基础设施级刚需工具</strong>的位置，与 jq、kubectl、helm 并列。它不是"创新项目"而是"成熟工具"——15K stars 的增长已经趋稳，但渗透率仍在提高。对于 GitHub 趋势研究而言，yq 更像是"常青树"而非"新发现"——它出现在趋势榜上往往是因为某个新版本发布或某个热门教程引用。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>语法覆盖率不及 jq</strong>：README 明确说明"doesn't yet support everything jq does"，对于复杂 jq 用户来说，某些高级函数可能不可用。</li>
 <li><strong>单人维护风险</strong>：主要由 mikefarah 一人维护，虽然社区活跃但核心开发依赖单人是长期隐患（相比之下 jq 有更广泛的贡献者基础）。</li>
 <li><strong>格式覆盖广度带来的复杂度</strong>：支持如此多格式意味着边界 case 处理复杂，从 open_issues（279 个）可以看出用户经常遇到各种边缘问题。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>jq (stedolan/jq)</strong>：yq 的精神前辈和语法来源。jq 是 JSON 处理的黄金标准，但只支持 JSON。yq 在 jq 的基础上扩展了格式支持。两者是互补而非竞争关系。</li>
 <li><strong>dasel (TomWright/dasel)</strong>：另一个多格式数据选择器，支持 JSON/YAML/TOML/XML/CSV，但语法设计不同于 jq。dasel 约 7K stars，yq 在社区规模和生态成熟度上领先。</li>
 <li><strong>ytt (vmware-tanzu/carvel-ytt)</strong>：VMware 的 YAML 模板工具，专注于 Kubernetes 配置的模板化渲染，语法更接近 Python，适合复杂模板场景但学习成本更高。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>持续关注但不作为"新趋势"跟踪</strong>。yq 已经是成熟的生产工具，不需要像新兴 AI 项目那样密切跟踪。但如果研究范围涵盖 DevOps 工具生态，yq 是不可或缺的标杆项目。建议每季度检查一次版本更新和功能演进。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>v4 → v5 是否有重大架构变更</strong>：yq 目前处于 v4，未来大版本可能重构表达式引擎或引入新格式支持</li>
 <li><strong>与 AI 工具链的融合</strong>：yq 是否会被用于 AI/LLM 配置管理（如 model card YAML 处理、prompt 配置管理等新场景）</li>

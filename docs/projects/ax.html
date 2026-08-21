@@ -6,7 +6,7 @@
     <title>google/ax | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,60 @@
 <li><strong>Go 实现:</strong> 高并发、低开销，天然适合云原生基础设施，与 K8s 生态同源</li>
 <li><strong>AgentExecutor 定位:</strong> 从域名看，可能强调"执行器"抽象——将 Agent 执行与业务逻辑解耦</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>位于入口/身份层与模型、工具/外部系统之间的"Agent 运行时"层，承载持久化、审计与策略执行，独立于 Agent 框架</td>
+<td>仅依据项目分类、标签（agent-runtime, distributed, kubernetes）与档案定位描述；具体接口协议、持久化后端、K8s CRD/Operator 形态未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游触发 → 入口与身份 → 编排与运行时 → 调用模型与工具 → 会话/状态/审计回写</td>
+<td>依据档案"关键技术亮点"四项能力与"架构启发"中"运行时层"抽象；具体控制流、API、序列化格式均为待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>把"智能编排"与"运行治理"解耦带来的框架无关收益，对比 Go/Python 跨语言生态集成的现实成本与 Temporal/Restate 已成熟方案的竞争压力</td>
+<td>基于档案"与同类项目的关系"与"风险/局限"；缺乏 ax 自身基准、采用案例与维护活跃度的硬数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单入口渠道 + 最小工具白名单 + 全量审计日志接入，验证崩溃恢复断点、策略拦截、分布式调度三项核心能力，再决定扩展接入面</td>
+<td>档案未给出官方示例与文档指引；PoC 范围需以 ax 源码/官方文档二次核验，agentexecutor.io 是否提供接入规范属待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>ax 的核心启发是 <strong>"Agent 的生产化需要独立的运行时层，不能依赖框架"</strong>。当前主流 Agent 框架（LangGraph、CrewAI）把"智能编排"和"运行治理"耦合在一起，这在 demo 阶段没问题，但在生产中暴露问题：框架的重启无法恢复 Agent 状态、框架的崩溃会丢失审计记录。ax 主张把这些"治理"能力下沉到独立的 Runtime 层，框架只管"智能逻辑"。这呼应了微服务领域"业务代码 vs 服务网格（Service Mesh）"的分离——<strong>Agent 也需要自己的"服务网格"</strong>。Google 用 Go（而非 Python）实现，也暗示它瞄准的是基础设施层而非应用层。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[Agent 编排与运行时 ax]
+    C --> M[模型或推理服务 待核验供应商]
+    C --> T[工具与外部系统]
+    C --> A[策略执行点]
+    C --> S[会话 状态 审计]
+    S --> C
+    A -.拒绝/拦截.-> U
+    M --> C
+    T --> C
+</mermaid>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施候选型项目。</strong> ax 定位于 Agent 技术栈的"运行时/平台层"，比框架更底层，比 OS（如 openfang）更聚焦于分布式执行治理。它最有价值的部分是"durable execution + audit + policy"这组企业级能力。Google 背书使其有潜力成为 Agent 基础设施的事实标准之一，但目前仍处早期（&lt;2k stars）。定位类似 Temporal（工作流引擎）之于微服务——ax 可能成为"Agent 的工作流引擎"。是否会演进为平台取决于 Google 的产品化决心。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>早期阶段:</strong> 2k stars、112 forks，生态尚未形成，采用风险高</li>
 <li><strong>文档与示例:</strong> 作为底层基础设施，若缺乏清晰的"如何接入我的 Agent"示例， adoption 会受阻</li>
@@ -69,7 +118,7 @@
 <li><strong>竞争:</strong> Temporal、Restate 等成熟工作流引擎已具备 durable execution，ax 需证明"Agent 专属"的增量价值</li>
 <li><strong>定位模糊:</strong> "Agent Runtime"与"工作流引擎""Agent 框架"边界不清，可能让用户困惑</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Temporal:</strong> Temporal 是通用 durable execution 引擎；ax 聚焦 Agent 场景，更"懂"Agent 的工具调用/MCP</li>
 <li><strong>vs openfang（Agent OS）:</strong> openfang 更宏大（OS 级），ax 更聚焦（执行治理）；ax 由 Google 背书更稳</li>
@@ -77,9 +126,9 @@
 <li><strong>vs Restate:</strong> Restate 是新型 durable execution，同样瞄准 Agent 场景；ax 有 Google 优势</li>
 <li><strong>vs Kubernetes Operator 模式:</strong> K8s Operator 可托管 Agent，但缺乏 Agent 语义；ax 提供原生 Agent 抽象</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（尤其平台工程视角）。</strong> ax 代表了大厂对"Agent 基础设施层"的官方思考，其设计决策（如何做 durable execution、如何定义策略）会影响行业标准。建议关注：Google 是否在内部大规模使用 ax、与主流 Agent 框架的集成方案、以及 agentexecutor.io 的产品化进展。对于构建 Agent 平台的团队，ax 的设计文档和实现值得研习。若 Google 持续投入，它有潜力成为 Agent 基础设施的标杆。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Google 是否在 Cloud Next 等场合正式推介 ax（产品化信号）</li>
 <li>与 Python Agent 框架（LangGraph/CrewAI）的官方集成是否出现</li>

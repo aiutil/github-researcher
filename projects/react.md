@@ -38,8 +38,37 @@ React 的热度是**真实的行业统治力体现**。247K stars 不是短期�
 5. **React Server Components（RSC）:** 服务端组件，将"在服务端渲染"提升到组件粒度，与 Next.js App Router 深度整合
 6. **React Native:** 跨平台延伸，同一套 React 编程模型覆盖 iOS/Android
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | React 是前端 UI 库，边界在浏览器侧：用户/客户端 → UI 与状态 → 服务/数据依赖，自身不提供路由、SSR 运行时、服务端持久化或构建系统 | 基于"frontend, javascript, library, ui"标签与定位描述；具体包结构、API 形态未由 README 确认 |
+| 主路径 | 声明式渲染：UI = f(state) → 通过 Virtual DOM diff 落到真实 DOM；状态以单向数据流驱动，可选 Hooks（useState/useEffect）封装 | 档案明示 Virtual DOM、JSX、Hooks、单向数据流；具体 diff 算法与 Scheduler 实现未在档案中给出 |
+| 关键权衡 | 声明式 + 运行时 diff 换开发效率与心智一致性；代价是约 40KB+ 基础体积、学习曲线因 RSC/Suspense/Concurrent 抬高，与 Next.js 深度绑定带来 SSR 生态锁定 | bundle size、RSC、并发特性、Next.js 耦合均档案明示；性能数字（如 RSC 收益、Compiler 收益）档案未给实测值 |
+| 最小 PoC | 以一个真实用户路径验证：状态边界划分、错误恢复（如 Suspense 边界降级）、与服务 API 的依赖契约；不在缺乏 RSC/Compiler 文档证据前将其作为默认承诺 | 档案建议先 PoC 验证状态边界、错误恢复与外部依赖降级；RSC 协议细节与 React 19+ Compiler 行为"待核验" |
+
 ## 架构启发
 React 的核心架构启发是 **"声明优于命令，函数优于对象"**。Virtual DOM 的本质是将 UI 状态视为 `f(state) = UI` 的纯函数映射，让开发者只需描述"UI 应该是什么样"，框架负责高效地将其转化为 DOM 操作。这种"声明式渲染 + diff 优化"范式已被几乎所有现代前端框架借鉴（Vue、Svelte、Solid 都在变体上使用）。RSC 更进一步，将"渲染边界"从浏览器扩展到服务器，模糊了前后端界限。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或客户端 待核验:具体设备形态] --> UI[UI 与交互层 JSX 声明式]
+    UI --> VDOM[Virtual DOM diff 渲染引擎 待核验:具体调度实现]
+    VDOM --> DOM[真实 DOM 输出]
+    UI --> HK[Hooks 状态层 useState useEffect 等]
+    HK --> VDOM
+    HK --> SSE[Suspense 与 Concurrent 渲染 待核验:启用条件与边界]
+    VDOM --> API[服务 API 或运行时]
+    API --> D[数据与外部依赖]
+    SSE --> ER[错误 边界 降级路径]
+    ER --> UI
+    HK --> RSC[React Server Components 边界 待核验:与 Next.js 的协议细节]
+    RSC --> API
+```
 
 ## 定位判断
 **基础设施级头部项目。** React 已超越"库"范畴，成为前端开发的**平台和标准**。它不是"值得关注的新秀"，而是"必须了解的行业基线"。任何前端技术决策都需要以 React 为参照系。

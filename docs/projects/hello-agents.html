@@ -6,7 +6,7 @@
     <title>datawhalechina/hello-agents | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,59 @@
 <li>多 Agent 协作框架对比：LangChain、CrewAI、AutoGen 的实践教程</li>
 <li>配套在线学习平台 (hello-agents.datawhale.cc) 提供交互式学习体验</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本项目是教程型仓库，真实边界在学习者、配套在线学习平台 (hello-agents.datawhale.cc) 与章节配套的 Python/Notebook 代码三者之间；本身不构成对外服务运行时。</td>
+<td>系统边界判断基于档案"配套在线学习平台"与"配套可运行的 Python 代码和 Notebook"两条事实；未对平台架构、API、部署形态做任何断言。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习路径：理论章节 → 原理讲解 → Python/Notebook 代码实现 → 练习题；技术覆盖主线为 LLM 基础 → Agent 架构（ReAct、Plan-and-Execute、工具调用、记忆管理）→ RAG 全流程 → 多 Agent 协作（LangChain、CrewAI、AutoGen）。</td>
+<td>主路径仅复述档案"关键技术亮点"列出的概念清单；未声称某种编排协议、消息格式或运行时拓扑。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>教程广度（覆盖 ReAct/RAG/多框架）vs. 单一框架的工程深度；中文生态聚焦 vs. 国际化覆盖；高频内容更新 vs. 半衰期短带来的"过时"风险。</td>
+<td>"集中度风险""商业化挑战""深度与前沿性差距"均直接引自档案"风险/局限"段；不引入未证实的性能或稳定性数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>克隆仓库，运行单章节的 Python/Notebook 示例（如 RAG 全流程或工具调用章节），用最小模型/工具依赖在本地完成端到端跑通；将"内容是否仍可运行""依赖版本是否仍可用""练习题是否能闭环"作为验收项。</td>
+<td>PoC 范围严格限定为档案承诺的"配套可运行的 Python 代码和 Notebook"；不预设任何生产部署、网关、鉴权或 SLA。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>hello-agents 体现了"教育即基础设施"的理念。对架构师/技术管理者的启发是：<strong>在新技术扩散阶段，优质教育内容的战略价值不亚于技术框架本身</strong>——Datawhale 通过教育内容建立了巨大的社区影响力，这种影响力可以转化为人才管道、技术标准和商业机会。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    L[学习者或高校课程使用者] --> B[配套在线学习平台 hello-agents.datawhale.cc 待核验]
+    B --> R[仓库 datawhalechina/hello-agents]
+    R --> C1[章节理论讲解 原理]
+    R --> C2[Python 代码与 Notebook 示例]
+    R --> C3[练习题与答案]
+    C1 --> C2
+    C2 --> C3
+    C3 --> S[学习进度与社区反馈 状态]
+    R --> E[外部框架对比 LangChain CrewAI AutoGen 待核验版本]
+    E -. 受限于框架迭代 .-> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选（教育生态）。</strong> 虽然本质是教程内容，但 Datawhale 围绕它构建了完整的学习生态——课程、社区、认证、就业连接。其平台性不在于代码，而在于社区网络效应。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>技术迭代极快——教程内容可能半年后就过时（Agent 框架变化巨大）</li>
 <li>中文社区热度的"集中度风险"——大部分 stars 来自中文开发者，国际化程度低</li>
@@ -62,16 +110,16 @@
 <li>教育内容的商业化挑战——高质量免费内容如何持续维护</li>
 <li>与英文社区的资源相比，深度和前沿性可能有差距</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>Datawhale</strong> 其他教程（如《机器学习西瓜书》《动手学深度学习》配套资料）形成学习矩阵</li>
 <li>与 <strong>LangChain 官方教程</strong>、<strong>DeepLearning.AI 课程</strong> 在英文生态中竞争</li>
 <li>在中文 AI 教育赛道，与 <strong>showmeai</strong>、<strong>机器之心</strong> 等形成互补</li>
 <li>作为入门教程，与 <strong>gpt-researcher</strong>、<strong>TradingAgents</strong> 等实战项目形成"学习→应用"的上下游</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐持续跟踪。</strong> 作为中文 Agent 技术的教育标杆，其内容更新频率和方向选择反映了中文社区对 Agent 技术的理解演进。对关注中国 AI 人才市场和技术趋势的人有重要参考价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否推出进阶课程（如 Agent 部署、多 Agent 系统、Agent 安全）</li>
 <li>内容更新速度能否跟上技术迭代（如 MCP、Agent OS 等新概念）</li>

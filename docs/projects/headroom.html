@@ -6,7 +6,7 @@
     <title>headroom | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -26,7 +26,7 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
+
         <h1 id="headroom-ai-agent">Headroom — AI Agent 上下文压缩层</h1>
 <h2 id="_1">一句话定位</h2>
 <p>AI Agent 与 LLM 之间的 Token 压缩中间件，60-95% Token 节省，支持 Library/Proxy/MCP 三模式接入。</p>
@@ -55,7 +55,39 @@
 <li><strong>CacheAligner</strong>：稳定前缀使 Provider KV Cache 命中，不仅压缩还优化缓存</li>
 <li><strong>多 Agent 跨进程共享记忆</strong>：Claude/Codex/Gemini 之间自动去重</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Headroom 处于 Agent ↔ LLM Provider 之间，作为 Token 压缩中间件；外部边界含 LLM Provider、工具/数据源、以及 OpenClaw（以 ContextEngine 插件形式集成，待核验集成深度）。</td>
+<td>"OpenClaw 兼容" 仅声明插件形式，契约细节未在档案给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>内容输入 → ContentRouter 内容分类 → SmartCrusher/CodeCompressor/Kompress-v2-base/CacheAligner/CCR/Image 多策略处理 → LLM；输出侧经 verbosity steering + effort routing 削减 token；CCR 保留原始数据供按需 retrieve。</td>
+<td>"Image" 压缩器与 Kompress-v2-base 的具体调用条件未在档案给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>可逆性（CCR）换取存储成本与 retrieve 延迟；CacheAligner 用稳定前缀换 Provider KV Cache 命中率；输出侧 verbosity 学习偏好与 holdout 对照组（10% 不压缩）换统计可信度。</td>
+<td>端到端延迟、SLO、存储介质未披露。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 Library 或 MCP 模式接入单渠道、最小工具权限，启用 <code>HEADROOM_OUTPUT_HOLDOUT=0.1</code> 做 A/B，观测 token 节省率、CCR retrieve 命中率、KV Cache 命中率三项指标。</td>
+<td>基准数字 60-95%、31.7% 仅源自档案自述，未给测试集。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><code>Agent → [Headroom 压缩层] → LLM Provider
          ├─ ContentRouter (内容分类)
          ├─ SmartCrusher / CodeCompressor / Kompress-base (压缩)
@@ -65,25 +97,48 @@
 - <strong>索引层</strong>（codegraph）→ 减少搜索范围
 - <strong>压缩层</strong>（Headroom）→ 减少每次传输量
 - <strong>缓存层</strong>（CacheAligner）→ 减少重复计算</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[上游Agent或渠道] --> I[入口边界:Library/Proxy/MCP]
+    I --> R[ContentRouter 内容分类]
+    R --> S1[SmartCrusher JSON压缩]
+    R --> S2[CodeCompressor AST压缩]
+    R --> S3[Kompress-v2-base HF模型文本压缩]
+    R --> A[CacheAligner 稳定前缀对齐]
+    R --> C[CCR 可逆压缩与原始数据存储]
+    R --> IM[Image 压缩 待核验]
+    A --> O[输出侧:verbosity steering + effort routing]
+    O --> M[LLM Provider]
+    C -.按需retrieve.-> M
+    I --> H[holdout对照组 10% 不压缩]
+    H -.环境变量热同步.-> O
+    M --> P[OpenClaw ContextEngine插件 待核验集成深度]
+    S1 --> T[工具与外部系统]
+    S2 --> T
+    S3 --> T
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>当前：<strong>基础设施候选</strong>（26K stars，持续 10K+/周增速验证了基础设施级需求）
 趋势：<strong>Agent Skills 压缩层标准组件</strong> — Token 压缩已是 Agent 栈标配</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>压缩质量依赖内容类型识别准确性，边界 case 可能出错</li>
 <li>单人/小团队项目，长期维护风险</li>
 <li>LLM Provider 可能原生支持类似能力（如 extended thinking + caching），挤压空间</li>
 <li>「60-95% 压缩」的最佳 case 与平均 case 可能有差距</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 codegraph/Understand-Anything 互补：索引层减少搜索次数，压缩层减少 Token</li>
 <li>与 markitdown 不同维度：markitdown 是格式转换，headroom 是信息压缩</li>
 <li>与 cc-switch 不同层级：cc-switch 是模型切换，headroom 是上下文优化</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 上下文管理是基础设施级问题。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>企业用户采用情况</li>
 <li>是否能保持压缩质量在更多场景下的一致性</li>
@@ -92,7 +147,7 @@
 <li>16.8K 之后是否进入稳定使用阶段还是 star farming</li>
 </ol>
 <hr />
-<h2 id="_12">更新记录</h2>
+<h2 id="_13">更新记录</h2>
 <h3 id="2026-06-08">2026-06-08</h3>
 <ul>
 <li>Stars: 4.1K → 16.8K（+300%，周增量 +13.3K）</li>

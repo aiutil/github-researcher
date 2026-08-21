@@ -41,8 +41,34 @@ apple/container 的热度是 **"Apple 官方背书 + 真实基础设施刚需 + 
 5. **CLI 友好:** 提供类似 docker 的命令行接口，降低迁移成本
 6. **原生集成:** 与 macOS 文件系统、网络、资源管理原生协作，体验优于第三方方案
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | apple/container 是面向 macOS（含 Apple Silicon）开发者的官方容器运行时，分层为：macOS 调用方 → 项目 CLI/API（控制面）→ Swift 编写的执行单元 → 基于 Virtualization.framework 的轻量 Linux VM（容器宿主）。外部边界为 OCI 镜像源（如 Docker Hub）拉取标准镜像。 | 档案仅明确 Swift 语言、Virtualization.framework、OCI 兼容；未公开具体进程间协议、API 形态与控制面组件拆分，需源码核验。 |
+| 主路径 | 调用方发起容器请求 → CLI/控制面解析与调度 → 启动轻量 Linux VM（每容器一 VM 候选模型）→ 在 VM 内运行 Linux 容器并挂载 OCI 镜像。 | 档案仅说明"轻量 VM 架构"与"VM-per-container 启发"，未直接证实每容器一 VM 的实现细节；持久化、网络与卷管理路径待核验。 |
+| 关键权衡 | 在隔离强度（VM 级隔离优于共享内核）与桌面资源效率之间取舍；同时平衡 macOS 原生集成体验与跨平台生态覆盖不足（仅 macOS/Apple Silicon）的代价。 | 档案明示权衡方向（平台原住民、VM 隔离重塑容器安全模型），但未提供性能基准、内存占用或与 Docker Desktop 的量化对比数据。 |
+| 最小 PoC | 在 Apple Silicon Mac 上：拉取一个 OCI 标准镜像（如 nginx/alpine），启动并暴露端口，观察启动延迟、内存占用、与 macOS 文件系统/网络的集成行为；同步验证是否兼容现有 Docker Compose 工作流（待核验）。 | 档案未列出已验证的 Compose 支持、网络模式覆盖范围或 Intel Mac 支持矩阵，验收须以官方文档与实际测试为准。 |
+
 ## 架构启发
 apple/container 的核心启发是 **"平台厂商亲自下场做基础设施，能带来量级体验提升"**。第三方容器方案（Docker Desktop、Colima、OrbStack）受限于"非系统级"身份，无法深度利用 macOS 能力。Apple 用自家 Virtualization.framework + Swift，做到了第三方做不到的系统级优化——这是平台原住民的优势。更深层的启发是：**容器运行时的未来可能基于轻量 VM 而非传统 namespace/cgroup**。Apple 的方案本质是"VM-per-container"（每个容器一个轻量 VM），在安全隔离上优于共享内核方案，而硬件虚拟化让性能开销可接受。这与 AWS Firecracker、Google gVisor 的思路殊途同归——**用 VM 隔离重塑容器安全模型**。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    U[macOS 开发者或 CI 调用方] --> CLI[CLI 与控制面（Swift）]
+    CLI --> IMG[拉取 OCI 标准镜像 外部边界]
+    IMG --> CLI
+    CLI --> P[策略 调度 生命周期]
+    P --> VML[轻量 Linux VM 基于 Virtualization.framework]
+    VML --> C[Linux 容器内执行进程]
+    P --> OBS[审计 指标 日志 可观测边界]
+    VML --> R[macOS 计算 网络 文件系统资源]
+    P -.待核验.- NET[网络模式与卷管理细节]
+```
 
 ## 定位判断
 **平台候选型基础设施（Apple 生态容器标准）。** apple/container 有潜力成为 macOS 上容器运行的"官方标准"，取代 Docker Desktop 在 Apple 生态的默认地位。Apple 官方 + 原生 Swift + 持续高活跃，构成了强大的平台化基础。它不会取代 Docker（跨平台生态），但会**主导 Apple 平台的容器体验**。作为基础设施，其生命周期与 Apple 硬件/系统绑定，极为长久。这是 Apple 开源战略的重要一环——让 Mac 对开发者更友好，巩固 Apple Silicon 在开发市场的地位。

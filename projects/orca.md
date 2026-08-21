@@ -38,8 +38,42 @@ url: "https://github.com/stablyai/orca"
 - SSH 远程：从任何设备连接到 VPS 上的 Agent 运行环境
 - Ghostty 终端：高性能终端渲染（tags 中提及 ghostty）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Orca 是 30+ 编码 Agent 之上的统一编排/管理环境，边界覆盖桌面、移动、VPS 三端，并以 Git Worktree 作为 Agent 间的隔离单元；BYO 订阅使其不持有模型凭据。 | 仅基于档案描述的"Agent IDE、并行 Agent、worktree、多端、YC"标签与定位陈述；具体进程模型、IPC、部署形态未在档案中确认。 |
+| 主路径 | 入口（桌面/移动/SSH）→ 编排与运行时（多 Agent 调度 + Agent 抽象层）→ 各编码 Agent（Claude Code、Codex、Cursor Agent、OpenCode、Copilot 等）在独立 Worktree 中执行 → 状态/进度回写到统一会话与审计面（移动端审批/回复）。 | 顺序与组件对应档案"关键技术亮点"与"架构师速览·主路径"；协议、消息格式、持久化机制未在档案中给出。 |
+| 关键权衡 | 扩展速度（30+ Agent 适配、快速多端覆盖）与一致性治理（3,265 open issues 暗示的兼容性/质量负担、BYO 模式下的可观测性与权限边界、终端/Ghostty 渲染等终端耦合）之间的平衡。 | 权衡来源于档案明确点出的"Agent 兼容性维护负担""BYO 订阅无中间收入""移动端体验天花板"；不含未证实的性能/成本数据。 |
+| 最小 PoC | 单台桌面 + 一个 Git 仓库，启用 Worktree 隔离并行运行 2 个 Agent（如 Claude Code 与 Codex），仅开放最小工具权限，启用审计日志与移动端只读监控，验证隔离、并行回写与审批闭环后再放量。 | 仅复述档案可支持的要素（worktree 隔离、并行 Agent、移动端监控、BYO 订阅、最小权限与审计作为通用建议）；具体工具白名单、SLO、回滚路径须以项目文档/源码核验。 |
+
 ## 架构启发
 Orca 的核心启发是"Git Worktree 是多 Agent 并行编程的天然隔离单元"。对架构师的启发是：**在代码协作场景中，Git 分支/worktree 比容器/沙箱更适合作为 Agent 的隔离边界**——它既是技术隔离（不同工作目录），又是流程隔离（不同 PR/分支），还天然支持代码审查和合并。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者:桌面或移动设备] --> I[入口与身份边界:桌面客户端或移动端或SSH远程]
+  I --> C[项目编排与运行时:多Agent调度与Agent抽象层]
+  C --> W[Git Worktree 隔离单元:每Agent独立worktree与分支]
+  C --> A1[编码Agent:Claude Code]
+  C --> A2[编码Agent:Codex]
+  C --> A3[编码Agent:Cursor Agent]
+  C --> AN[编码Agent:其它30+适配项 待核验]
+  W --> A1
+  W --> A2
+  W --> A3
+  W --> AN
+  A1 --> S[会话 状态 审计:进度回写与日志]
+  A2 --> S
+  A3 --> S
+  AN --> S
+  S --> I
+  S --> R[风险与质量边界:3265 open issues 与BYO订阅治理 待核验]
+```
 
 ## 定位判断
 **平台候选（强）。** 已具备 Agent IDE 的核心特征：多 Agent 管理、并行执行、多端支持。39k stars + YC 背景 + 快速增长使其成为 Agent IDE 赛道的领跑者之一。定位为"并行 Agent 的统一工作台"。

@@ -37,8 +37,39 @@ macOS/Windows 桌面办公套件：五个 Electron 应用（Docs/Sheets/Slides/P
 3. **Sheets 的 Rust sidecar**：xlsx 导入/导出走 Rust sidecar（calamine + IronCalc），图表用 Konva 自渲染，含透视表/切片器/条件格式/公式追踪——非简单套壳 Univer。
 4. **AI provider 不存本地 key**：模型调用经 Genspark 服务端路由，本地不存 API key（安全模型设计，也意味着强绑定 Genspark 账号）。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 五个 Electron 应用（Docs/Sheets/Slides/PDF/Shell）共享 `packages/agent-core` 与 docx/pptx 等引擎层；AI 调用经 Genspark 服务端路由，客户端不持 API key | 仅基于档案中列出的应用清单与共享层描述；具体 RPC 协议、auth 流程、shell/各 app 边界未在档案中给出 |
+| 主路径 | 用户块级编辑 → docx-engine 解析为 block tree → TipTap 流式编辑（脏块追踪）→ 仅脏块转 OOXML fragment 回写，其余字节从原归档按哈希复制 → sheets/slides/pdf 走 tool-calling agent 操作文档状态 | 路径描述仅来自档案"关键技术亮点"段落；xlsx Rust sidecar（calamine + IronCalc）、图表 Konva 渲染、PDF 引擎细节未在档案中展开 |
+| 关键权衡 | 字节保真 patch 模型（最小化、可审计的局部修改）vs 引擎复杂度（docx-engine/pptx-engine 解析-patch 管线 + Rust sidecar + 5 个 Electron app 维护面），且 AI 能力与 Genspark 服务强耦合 | 权衡判断依据档案"架构启发"与"风险/局限"两节；维护力评估基于档案所列 contributors=2 的事实声明，未做源码核验 |
+| 最小 PoC | 取一个含真实样式的 docx 做打开→小块 AI 编辑→保存→重新打开的往返比对；同步在 Sheets 跑通 xlsx 导入/导出与公式追踪，验证 Rust sidecar 可调用；并测试无 Genspark 账号时 AI 功能降级范围 | PoC 步骤仅来自档案描述的能力清单；具体示例 docx 选型、回归指标、AI 离线行为档案未给出，须自行设计 |
+
 ## 架构启发
 genoffice 的核心 trade-off 是 **"原件是真理来源（original file is source of truth），编辑作为窄 patch 应用"**。这与 crm 的"数据库只是 agent 的笔记"异曲同工——两者都拒绝"AI 全量重写"，转而让 AI 做最小化、可审计的局部修改。对架构师的启发：**AI-native 不等于 AI-rewrite-everything；字节保真的 patch 模型是 AI 进入高保真格式（Office/PDF）的更稳健路径**。代价是引擎复杂度（docx-engine/pptx-engine 的解析-patch 管线很重）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者] --> Shell[Electron Shell 应用五端 Docs/Sheets/Slides/PDF/Shell 待核验]
+    Shell --> DocxEngine[docx-engine block tree 解析与脏块追踪]
+    Shell --> PptxEngine[pptx-engine 待核验]
+    Shell --> SheetsEngine[Sheets Univer core + 自研扩展]
+    SheetsEngine --> RustSidecar[Rust sidecar calamine + IronCalc]
+    Shell --> PdfEngine[PDF 引擎 待核验]
+    DocxEngine --> Original[原 docx 按哈希归档 字节级只读]
+    DocxEngine --> TipTap[TipTap 流式编辑器]
+    TipTap --> Diff[版本快照与 diff]
+    Shell --> AgentCore[packages/agent-core 共享 agent loop 与 skill 组合]
+    AgentCore --> Genspark[Genspark 服务端 AI 路由 本地无 API key]
+    AgentCore --> ForkAI[第三方 AI 后端 经 HermesOffice 等 fork 替换 待核验]
+    AgentCore --> Audit[会话 状态 审计 待核验]
+    Diff --> Original
+```
 
 ## 定位判断
 属于 **L5 应用产品层**，是 qm（团队 agent 协同）/ crm（垂直 agentic SaaS）之外的第三条应用层路线：**通用桌面生产力套件的 AI-native 重写**。与 qm 的差异：qm 是 agent harness 产品化，genoffice 是生产力软件重写。与 MS Office Copilot 的差异：Copilot 是"给 Office 加 AI"，genoffice 是"以 AI 为核心重建 Office"。

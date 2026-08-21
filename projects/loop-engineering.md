@@ -41,8 +41,34 @@ url: "https://github.com/cobusgreyling/loop-engineering"
 4. **loop-sync**：多 Agent 状态同步
 5. **loop-context**：Agent 上下文窗口管理
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Loop Engineering 是位于 Coding Agent（Claude Code/Codex/Cursor/OpenCode 等）与开发者/CI 之间的方法论 + CLI 工具链层，5 个 npm 包覆盖脚手架→评分→成本→同步→上下文管理全链路 | 系统边界基于档案"五件套"描述与标签 `agent-orchestration`、`devtools`、`ci-cd` 推导，未在档案中给出具体 npm 包名边界清单 |
+| 主路径 | 用户/CI 触发 → loop-init 脚手架或 loop-audit 审计 → loop-context 管理上下文 → 编排 Agent 调用模型与工具 → loop-cost 计费/loop-sync 同步 → loop-audit 回写 Loop Ready 分数 | 主路径映射到档案"关键技术亮点"五件套；具体协议、持久化与传输层档案未给出 |
+| 关键权衡 | 扩展速度（多 Agent 兼容 + 方法论易复制）vs 评分权威性、bus factor 单一维护者、主观评分标准；可观测性/成本追踪（loop-cost）与供应商耦合之间的取舍 | 权衡基于档案"风险/局限/泡沫点"章节；未提供实际性能或生产部署数据 |
+| 最小 PoC | 在单一 Coding Agent、最小工具权限与可审计日志下，部署 loop-init 生成工程骨架 → 用 loop-audit 获得基线 Loop Ready 分 → 用 loop-cost 追踪 token 成本 → 接入 GitHub Actions 跑 CI 评分；验收项必须包含评分复现性、维护者活跃度、退出路径 | PoC 路径仅基于档案明确列出的五个 CLI 与 GitHub Actions 集成点；具体命令、配置 schema 与评分公式档案未提供 |
+
 ## 架构启发
 Agent 编排质量可以像代码质量一样被度量和自动化。传统软件工程有 lint/test/coverage 来度量代码质量，Loop Engineering 用 loop-audit 度量 Agent 编排质量。五件套对应软件工程的五个阶段：loop-init=脚手架、loop-audit=lint+test、loop-cost=profiling、loop-sync=CI/CD、loop-context=依赖管理。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或 CI 流水线] --> I[loop-init 脚手架与入口边界]
+    I --> C[Agent 编排层 Claude Code Codex Cursor OpenCode 待核验]
+    C --> X[loop-context 上下文管理]
+    C --> S[loop-sync 多 Agent 状态同步]
+    C --> K[loop-cost 成本与 token 追踪 待核验]
+    A[loop-audit Loop Ready 分数 10→100] --> C
+    C --> R[模型或推理服务]
+    C --> W[工具与外部系统]
+    A -.审计回写.-> U
+```
 
 ## 定位判断
 **平台候选** — 不是 Agent 框架，不是 Agent 运行时，是 Agent 工程方法论 + 开发者工具链。如果 Agent 工程标准化持续推进，有潜力成为 Agent 开发的标准方法论框架。

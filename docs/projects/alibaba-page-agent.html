@@ -6,7 +6,7 @@
     <title>alibaba/page-agent | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,75 @@
 <li><strong>MCP Server（Beta）</strong>：外部 Agent 可通过 MCP 控制浏览器中的 page-agent</li>
 <li><strong>Chrome 扩展（可选）</strong>：支持跨页面多标签任务</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口为一段 CDN 注入的 JS（in-page），模型侧为 OpenAI-compatible 文本 LLM（BYO），工具与外部系统通过 MCP Server（Beta）与可选 Chrome 扩展接入跨标签页</td>
+<td>DOM 解析源自 browser-use；MCP 为 Beta；Chrome 扩展为可选组件——三者具体协议/接口形态未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>"Page → DOM text → text LLM → DOM operation"（档案原文），不使用截图与多模态 LLM</td>
+<td>仅给出哲学层链路；具体编排器、状态机、错误处理与会话持久化实现未在档案中描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>轻量、低成本、零部署 vs DOM 注入安全风险、Canvas/WebGL/Video 与复杂 iframe 场景失效、CDN 依赖需自行替换</td>
+<td>风险点来自档案"风险/局限"段；沙箱隔离、多租户隔离、审计能力在档案中均未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一渠道嵌入 demo CDN JS、配置自有 OpenAI-compatible LLM、限定最小工具权限与可审计日志，验证后逐步扩大接入面</td>
+<td>验收项（安全/成本/SLO/退出路径）由档案"采用建议"给出；具体指标阈值需在 PoC 内自行定义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>page-agent 的核心设计哲学是<strong>"在页面内部解决，不绕道外部"</strong>。传统 GUI agent 的链路是 <code>Agent → screenshot → multimodal LLM → coordinates → click</code>。page-agent 的链路是 <code>Page → DOM text → text LLM → DOM operation</code>。前者重、贵、慢；后者轻、快、便宜。trade-off 是复杂 Canvas/WebGL/视频内容无法通过 DOM 文本理解。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[script src 注入 入口与身份边界]
+    I --> P[page-agent JS 运行时]
+    P --> D[tree-sitter 风格 DOM 文本化 待核验]
+    P --> M[外部 OpenAI-compatible 文本 LLM]
+    M --> P
+    P --> O[DOM 操作 执行与回写]
+    P --> T[Chrome 扩展 跨标签页 可选]
+    P --> X[MCP Server Beta 外部 Agent 控制]
+    S[DOM 注入安全 沙箱隔离 缺失] -.约束.-> P
+    F[Canvas WebGL Video 复杂 iframe 失效] -.约束.-> P
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> page-agent 定义了"In-page Agent"这一新品类。如果 SaaS 产品普遍嵌入 page-agent，它就成为了 Web 端 Agent 交互的标准层——类似 Stripe 之于支付、Auth0 之于认证。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>DOM 注入安全风险</strong>：恶意页面可以构造陷阱 DOM 欺骗 Agent 执行危险操作</li>
 <li><strong>复杂页面失效</strong>：Canvas、WebGL、Video、复杂的 iframe 嵌套场景下 DOM 文本方案可能无效</li>
 <li><strong>平台竞争</strong>：browser-use 生态更大（截图方案），MCP 模式可能被浏览器原生 Agent 取代</li>
 <li><strong>CDN 依赖</strong>：demo CDN 使用阿里云测试 API，生产环境需要自行配置</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>browser-use</strong>：page-agent 的 DOM 处理组件 derived from browser-use，但路线不同（文本 vs 截图）</li>
 <li><strong>Playwright/Selenium</strong>：传统 Web 自动化，需要编程，不是 Agent</li>
 <li><strong>Anthropic Computer Use</strong>：全桌面截图方案，更通用但更重</li>
 <li><strong>firecrawl</strong>：抓取层（Web → Data），page-agent 是操作层（Instruction → DOM Action）</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> page-agent 代表了 GUI Agent 的"轻量级路线"，如果成功，将定义 Web 端 Agent 嵌入的标准模式。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>SaaS 厂商是否开始在生产环境嵌入 page-agent</li>
 <li>MCP Server 从 Beta 到稳定的时间线</li>

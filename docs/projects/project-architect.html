@@ -6,7 +6,7 @@
     <title>project-architect | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,61 @@
 <li><strong>任务分解器</strong>：将项目分解为可执行的细粒度任务</li>
 <li><strong>模板系统</strong>：项目规划模板库，支持快速启动</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>作为文档驱动的代理技能（Markdown 形态），介于需求输入与下游 40+ 编码代理之间，承担规格说明/实施计划/任务清单/单次提示的生成与转译</td>
+<td>边界仅依据"agent-skill、documentation、specification、project-planning"标签与"兼容 Claude Code、Cursor、Codex 等 40+ 编码代理"描述，未描述运行容器、模型供应商、工具调用协议</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户需求 → 模板系统/任务分解器 → 规格说明 + 实施计划 + 任务清单 → 输出给目标编码代理执行</td>
+<td>组件名称（文档优先、模板系统、任务分解器、生成式规划）来自档案"关键技术亮点"；持久化、状态回写、模型调用细节档案未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨 40+ 代理的覆盖面与各代理私有格式/权限模型之间的兼容深度，后者决定真实可用性而非声称数量</td>
+<td>均为档案陈述，未列出具体兼容适配器、协议层或权限边界；"40+"为档案原话，单独渠道的字段映射未核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取 1 个目标编码代理（如 Claude Code 或 Cursor），用单次提示输入一组固定需求，验证 spec/plan/tasklist/提示四件套可被下游代理直接消费，并比对结果一致性</td>
+<td>缺乏示例产物、模板库清单、token/成本数据，无法预设 SLO 或退出路径</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ol>
 <li><strong>文档驱动架构</strong>：文档作为项目规划的单一事实来源</li>
 <li><strong>跨代理协作机制</strong>：不同 Coding Agent 工具间的兼容适配层设计</li>
 <li><strong>规划-开发一体化</strong>：从规划到开发的无缝衔接，规划产物直接被 Coding Agent 消费</li>
 </ol>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者输入需求] --> S[模板系统 任务分解器]
+    S --> P[生成式规划引擎]
+    P --> O[输出:规格说明 实施计划 任务清单 单次提示]
+    O --> A1[Claude Code 待核验]
+    O --> A2[Cursor 待核验]
+    O --> A3[Codex 待核验]
+    O --> A4[其他 40+ 编码代理 待核验]
+    P -. 仅文档驱动 无持久化 .-> X[状态与审计层 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型</strong> — 作为实用的项目规划工具，提升项目启动效率。无特定编程语言，基于代理技术和 Markdown 文档。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>质量依赖</strong>：规划质量依赖提示工程，复杂项目支持有限</li>
 <li><strong>领域知识</strong>：需要大量领域知识支撑，垂直领域适配成本高</li>
@@ -72,7 +118,7 @@
 <li><strong>规模限制</strong>：大型项目支持有限，高度个性化需求支持有限</li>
 <li><strong>动态调整</strong>：项目变更时的动态调整能力有限</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -99,9 +145,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong> — AI 辅助项目管理工具是重要的软件开发演进方向，文档驱动方法值得关注。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>支持代理工具的数量增长与兼容质量</li>
 <li>企业级项目管理场景的采纳情况</li>

@@ -6,7 +6,7 @@
     <title>ECC | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,26 +53,71 @@
 <li><strong>Research-First Development</strong>：将研究优先作为 Agent 工作流的内置范式</li>
 <li>以 GitHub App + npm 包分发，支持私有仓库</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>ECC 是面向 Claude Code / Codex / OpenCode / Cursor 等 Coding Agent 的统一 Harness 编排层，负责 Skills、Instincts、Memory、Security 与 Research-First 工作流配置，通过 npm 包（<code>ecc-universal</code>、<code>ecc-agentshield</code>）和 GitHub App 分发，不替代底层 Agent 运行时与模型供应商。</td>
+<td>基于档案"跨 Harness 抽象"与标签（Agent、Harness、Claude Code、Skills、Memory、Security）推断；具体组件边界与协议未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>入口渠道（GitHub App / npm 安装）→ 跨 Harness 配置加载 → Skills/Instincts/Memory 调度 → Agent 运行时调用模型与工具 → AgentShield 安全约束与 Memory 持久化回写。</td>
+<td>主路径由档案描述的"跨 Harness 抽象 + Skills/Instincts/Memory 三层 + AgentShield"重构；状态/审计落点和传输协议未提供。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨 Harness 兼容性 vs 单一 Agent 深度优化：覆盖 Claude Code/Codex/OpenCode/Cursor 摊薄了边际投入，但 238K stars 与仅 118 open issues 的反差，加上依赖模型厂商 Skills 标准变化（agentskills.io），构成扩展性与供应商耦合的核心权衡。</td>
+<td>来自档案"风险/局限"段；具体耦合点与缓解措施未在档案中说明。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一 Coding Agent（建议 Claude Code）+ 最小工具权限 + 单一 Skills 包 + 启用 <code>ecc-agentshield</code> + 可审计日志，验证 Skills 注入、Memory 持久化与安全拦截路径，再扩展至多 Harness 与 ECC Pro（$19/seat/mo）。</td>
+<td>PoC 形态由档案"采用建议"模板化推得；ECC Pro 实际功能边界与免费版差异未提供。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>ECC 代表了 "Agent Harness 作为独立软件层" 的产品化思路 — 模型层（Claude/GPT）+ Harness 层（ECC）+ Agent 运行时（Claude Code 等）的三段式抽象。Harness 层负责技能调度、记忆管理、安全约束，类似操作系统的内核服务。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游 Coding Agent<br/>Claude Code / OpenCode / Cursor / Codex] --> I[入口与身份边界<br/>GitHub App + npm ecc-universal]
+    I --> C[跨 Harness 编排层<br/>Skills + Instincts + Memory]
+    C --> S[AgentShield 安全模块<br/>npm ecc-agentshield]
+    C --> M[模型或推理服务<br/>待核验]
+    C --> T[工具与外部系统<br/>待核验]
+    S --> A[审计与状态回写<br/>Memory 持久化 边界 待核验]
+    A --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选。</strong> 已商业化（ECC Pro + GitHub App），238K stars 说明生态位稳固。代表 Agent Harness 赛道头部实践。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Star 数 vs 实际深度使用比例</strong>：238K stars 但 open issues 仅 118，需验证真实生产采用率</li>
 <li><strong>多语言 README 的传播放大效应</strong>：11 种语言 README 会显著放大 star 增速，需区分传播效应与真实价值</li>
 <li><strong>依赖模型厂商策略</strong>：Claude Code / Codex 的 Skills 标准变化会影响 ECC 的兼容层价值</li>
 <li>商业版 $19/seat/mo 的定价在 Agent 工具赛道偏高，留存待验证</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>OpenCode / Hermes Agent</strong>：同为 Agent Harness 赛道，ECC 以跨 Harness 兼容性为差异化</li>
 <li><strong>anthropics/skills</strong>（166K stars）：官方 Skills 仓库，ECC 是第三方 Skills/配置生态</li>
 <li><strong>wshobson/agents</strong>：多 Harness 插件市场，与 ECC 的 Skills 层有功能重叠</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent Harness 赛道头部项目，已商业化，代表该方向的最佳实践。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>ECC Pro 付费用户留存率和 ARR 增长</li>
 <li>Skills 标准化（agentskills.io）对 ECC 兼容层的影响</li>

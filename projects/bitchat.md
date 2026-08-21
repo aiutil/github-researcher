@@ -38,8 +38,33 @@ url: "https://github.com/permissionlesstech/bitchat"
 4. **Swift 原生:** iOS / macOS 全功能，性能与系统集成度优于 Flutter/RN
 5. **频道（IRC 风格）:** 公开频道、群聊、私聊三模
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 边界为 iOS/macOS 宿主运行时 ↔ Swift 核心（BLE mesh + X25519/AES-GCM）↔ Nostr 兼容层 ↔ 频道（公开/群/私）。外部边界是 BLE 邻近设备与 Nostr relay；目前仅 iOS/macOS 原生，Android 端状态未在档案中确认（待核验）。 | 基于档案语言/标签与"技术亮点"四条；具体协议细节、持久化、SDK 结构未在档案给出。 |
+| 主路径 | 设备启动 App → BLE 扫描/广播 → 邻节点 mesh 多跳转发 → X25519 派生 AES-GCM 会话密钥 → 频道/私聊投递；可经 Nostr 公钥桥接至 Nostr relay（具体中继策略待核验）。 | 主路径由档案"一句话定位+技术亮点 1/2/3"得出；消息路由/丢包重传/TTL 等策略档案未证实。 |
+| 关键权衡 | 抗审查/离线可用性 vs 平台与法规风险：iOS App Store 审核、Unlicense 无版权约束、距离/设备密度对 BLE mesh 的强依赖、名人效应带来的流量≠技术成熟度。 | 来自档案"风险/局限"段；缺少实测吞吐、跳数上限、SLO 数据。 |
+| 最小 PoC | 在两台同网 iOS/macOS 设备上验证：BLE 自动发现 → 私聊建立 → 消息可达；再扩展三跳验证频道广播；不接入 Nostr relay，先确认核心 mesh+e2e 子系统。 | 档案未给出推荐测试矩阵或基准，"500+ 节点"为待核验项；建议先小规模重复验证接口与失败语义。 |
+
 ## 架构启发
 "用现成的、低功耗硬件能力（BLE）做去中心化通讯" 验证了一条软硬件结合路线——Mesh 网络在 mesh router、LoRa、低功耗设备间持续有应用，而 bitchat 把它推到了消费者 IM 级别。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[开发者/CI 或用户终端] --> App[bitchat iOS/macOS App Swift]
+  App --> Core[核心库 BLE mesh + X25519/AES-GCM E2E]
+  Core --> BLE[(外部边界 BLE 邻近节点 mesh 多跳 待核验路由策略)]
+  Core --> Crypto[密钥派生 X25519 + AES-GCM]
+  Core --> Chan[频道引擎 公开 群 私 IRC 风格]
+  App --> Nostr[Nostr 兼容层 公钥身份 桥接 relay 待核验]
+  Nostr --> Relay[(外部边界 Nostr relay 中继策略 待核验)]
+  App --> Risk[状态 风险边界 iOS App Store 审核 + Unlicense 无版权 + BLE 距离 设备密度瓶颈]
+```
 
 ## 定位判断
 **工具型 / 抗审查通讯工具（明星项目）。** 与 Session、Briar、Matrix 等同处去中心化通讯赛道，但 bitchat 独特定位是"无网络可用"——这让它在极端场景下不可替代。但日常场景用户仍更倾向 WhatsApp/Signal 等有 UX 优势的应用。

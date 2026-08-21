@@ -6,7 +6,7 @@
     <title>multica-ai/multica | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,58 @@
 <li>GitHub 集成：Issue → Agent 分配 → PR 创建的自动化流水线</li>
 <li>沙箱隔离：每个 Agent 在独立环境中运行，防止互相干扰</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>自托管 Agent 编排平台，作为 GitHub Issue/外部使用者与 20+ 编码 Agent 之间的中间层，含 Agent 抽象、任务编排、沙箱隔离与审计</td>
+<td>组件名称来自档案"关键技术亮点"；协议、API 形态、部署细节未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Issue/任务 → 任务分配与编排 → 适配后的 Agent 执行（含沙箱） → 进度回写与 PR/复合输出 → 审计与状态持久化</td>
+<td>流程依据档案"Issue 驱动"与"复合输出"描述；具体消息协议与存储未注明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多 Agent 适配广度（20+ Agent）vs 单 Agent 稳定耦合；团队协作上下文共享 vs 沙箱隔离；自托管数据本地化 vs Agent 厂商 API/行为变更的维护成本</td>
+<td>"厂商依赖""Agent 间通信复杂性"由档案明确指出；性能/SLO 数据缺失</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选 1 个编码 Agent（如 Claude Code）+ 单一 GitHub 仓库 + 1 类任务，验证 Issue→Agent→PR 主路径、沙箱隔离、可审计日志与 Agent 升级时的回归</td>
+<td>档案未给出官方示例或安装指引，部署细节需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Multica 的核心启发是"Agent 管理层"的必要性。对架构师的启发是：<strong>当系统中 Agent 数量超过 3 个时，Agent 间的协调成本会超过单个 Agent 的执行成本</strong>——需要专门的编排层来管理。Multica 将这个编排层产品化，类似于 Kubernetes 之于容器——管理大量自治工作单元的基础设施。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者/团队] --> I[入口与身份边界<br/>GitHub Issue 等渠道]
+  I --> C[任务编排与运行时<br/>串行/并行/条件分支]
+  C --> A[Agent 抽象层<br/>适配 Claude Code/Codex/Cursor 等 20+ Agent]
+  A --> S1[沙箱隔离环境<br/>每 Agent 独立运行]
+  S1 --> O[复合输出与冲突解决<br/>PR 创建]
+  O --> R[进度追踪与状态回写]
+  R --> C
+  C --> AU[审计/可观测性边界<br/>待核验：日志与指标方案]
+  EXT[外部 Agent 厂商<br/>API 与行为可能变化] -.适配维护.-> A
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选（强）。</strong> 已具备平台的核心特征：多 Agent 统一管理、任务编排、团队协作、自托管。44k stars + 快速增长表明市场认可度高。定位为"编码 Agent 的 Kubernetes"。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>Agent 间通信复杂性:</strong> 多 Agent 协作时的上下文同步和冲突解决是技术难题</li>
 <li><strong>厂商依赖:</strong> 各 Agent 的 API 和行为可能随时变化，适配维护成本高</li>
@@ -63,7 +110,7 @@
 <li><strong>商业模式不明:</strong> 自托管 + 开源，如何盈利？可能与 Linear/Height 等项目管理工具竞争</li>
 <li><strong>1,230 open issues:</strong> 数量偏高，可能反映快速迭代中的质量挑战</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>wshobson/agents</strong>（Agent 技能市场）在 Agent 生态维度互补——Multica 做平台，agents 做内容</li>
 <li>与 <strong>Orca</strong>（并行 Agent ADE）在多 Agent 管理维度竞争——Orca 聚焦个人开发者，Multica 聚焦团队</li>
@@ -71,9 +118,9 @@
 <li>与 <strong>Codex Plugin CC</strong>（跨 Agent 桥接）在 Agent 互通维度互补</li>
 <li>与 <strong>Daytona</strong>（Agent 基础设施）在运行环境维度互补</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪。</strong> 作为编码 Agent 管理层的先行者，Multica 的架构设计和市场验证对理解 AI 编程工作流的演进至关重要。建议每月关注版本更新和 Agent 兼容性。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Agent 间协作的实际效果（代码合并成功率、任务完成质量）</li>
 <li>商业化路径（企业版功能、定价模型）</li>

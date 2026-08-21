@@ -6,7 +6,7 @@
     <title>Paperclip | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -58,13 +58,61 @@
 <li><strong>Skill Studio:</strong> 设计、训练、评估 AI 员工——技能评估、测试运行、主动学习循环</li>
 <li><strong>Mobile Ready:</strong> 手机端管理和监控自主业务</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口渠道、多 Agent 运行时（OpenClaw/Claude Code/Codex/Cursor）与工具/数据源之间的编排与治理层，TypeScript/Node.js + React，MIT</td>
+<td>仅基于档案分类、标签与文字描述，未审计源码；具体进程边界与部署形态待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>心跳调度 → 组织架构内任务委派 → Agent 运行时执行 → 预算/审批/审计回写</td>
+<td>"Heartbeats / Org Chart / 预算控制 / Ticket System + 审计链"为档案明确条目；消息协议与持久化方案待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多 Agent 兼容性广度（OpenClaw/Claude Code/Codex/Cursor/Bash/HTTP） vs 各运行时接口差异带来的持续维护成本；自主性 vs 审批/合规兜底</td>
+<td>维护成本与合规风险由档案明示，性能/可靠性指标无公开数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 Agent（建议 OpenClaw 或 Claude Code）+ 单一工具权限 + 月度预算上限 + 审计日志开启，验证心跳委派、预算熔断、审计可追溯三条最小路径</td>
+<td>5,093 个 open issues 表明复杂度高；缺真实生产案例，PoC 须把退出路径与 SLO 列为验收项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Paperclip 的核心启发是<strong>"把组织管理概念应用到 Agent 编排"</strong>。传统 Agent 框架（CrewAI、LangGraph）关注 Agent 间的任务流转，而 Paperclip 引入了<strong>组织架构、预算、治理、审计</strong>等企业级管理概念。这是从"Agent 框架"到"Agent 组织"的范式跃迁。</p>
 <p>更深层的启发是<strong>"审批"应建模为 Agent 间的消息传递，而非人类 UI 操作</strong>。Paperclip 不是模拟人类在 UI 上点击"审批"按钮，而是将审批建模为组织架构中的消息流——这从根本上重新定义了企业流程自动化。</p>
 <p>对企业的直接启发：<strong>如果要让 Agent 参与业务流程，先建立组织架构和治理框架，而非先选 Agent 框架</strong>。管理框架比执行框架更重要。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统<br/>含 Mobile 端] --> I[入口与身份边界<br/>Multi-Company 隔离]
+    I --> C[项目核心:Paperclip 编排与运行时<br/>四支柱:任务管理/组织架构/员工训练/Agentic OS<br/>TypeScript + React]
+    C --> H[心跳调度 Heartbeats<br/>支持 24/7 自主运行]
+    H --> A[多 Agent 运行时<br/>OpenClaw / Claude Code / Codex / Cursor / Bash / HTTP<br/>状态:待核验接口规范]
+    C --> G[组织架构 Org Chart<br/>角色 权限 汇报线 委派]
+    C --> B[预算控制<br/>月度上限 超限自动停止]
+    C --> S[Ticket System + 审计链<br/>不可变日志 工具调用追踪]
+    A --> C
+    A -.执行业务操作.-> R[风险边界:Agent 自主调用工具/API<br/>沙箱与权限隔离:待核验]
+    C -.审批/治理.-> P[控制边界:治理审批 + Goal Alignment<br/>合规兜底:档案明示监管行业需人工审批]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选（强）。</strong> Paperclip 试图成为<strong>AI Agent 组织的管理平台</strong>——类似 Jira/Linear 之于人类团队，但面向 Agent。76K stars + 14K forks 已显示强劲需求。如果"Agent 组织"成为企业标配（这是 AI 深度采纳的必然结果），Paperclip 有成为标准管理平台的潜力。四支柱架构（任务管理 + 组织架构 + 员工训练 + 基础设施）覆盖完整，Mobile Ready 说明产品化程度高。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>"零人类"合规风险:</strong> 在金融/医疗/法律等监管行业，完全自主的 Agent 决策多数不合规——仍需人工审批兜底</li>
 <li><strong>5093 个 open issues:</strong> 反映项目复杂度极高，bug 和功能请求积压严重</li>
@@ -73,7 +121,7 @@
 <li><strong>概念泡沫:</strong> "零人类公司"在实际商业中极为罕见，多数场景是"Agent 辅助人类"而非"Agent 替代人类"</li>
 <li><strong>安全边界:</strong> Agent 自主执行业务操作（如发送邮件、修改数据、调用 API）的风险极高，需要强大的沙箱和审计</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs OpenClaw:</strong> OpenClaw 是单个 Agent 运行时（员工）；Paperclip 是多 Agent 管理平台（公司）——互补关系，Paperclip 明确定位为 OpenClaw 的上层</li>
 <li><strong>vs n8n:</strong> n8n 是通用工作流自动化（连接 API）；Paperclip 专注 Agent 组织编排——不同抽象层级</li>
@@ -81,9 +129,9 @@
 <li><strong>vs Langflow / Flowise:</strong> 偏 Agent 构建和流程设计；Paperclip 偏组织管理和治理</li>
 <li><strong>vs Mercury Agent:</strong> Mercury 是单 Agent 运行时；Paperclip 是多 Agent 编排——不同层级</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是（高优先级）。</strong> Paperclip 代表了"Agent 组织管理"这一新方向，无论其本身成败，这个方向是 AI 深度采纳的必然需求。建议：对探索 Agent 自动化的企业，做 PoC 验证在合规框架下的半自动化流程。对 Agent 生态观察者，它是"Agent 管理平台"赛道的头部样本。14K forks 的工程采纳信号不应忽视。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>真实企业案例:</strong> 是否有公开的企业生产使用案例（超越 demo 级别）</li>
 <li><strong>合规/审计能力:</strong> 是否推出满足金融/医疗监管要求的审计和合规插件</li>

@@ -41,8 +41,32 @@ ShellCheck 的热度是 **"无可替代的事实标准 × 14 年口碑积累 × 
 5. **多 shell 支持:** 支持 bash/sh/dash/ksh，检测跨 shell 可移植性问题
 6. **嵌入式注释控制:** 支持 `# shellcheck disable=SC2086` 行内禁用，灵活集成
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 档案中明确边界：bash/sh 脚本静态分析入口、Haskell 实现的核心分析器、面向开发者与 CI 的 CLI/在线版界面、以及嵌入到编辑器/CI 的扩展点 | 具体的协议、持久化、规则分发机制未描述，"核心库/引擎"内部组件未证 |
+| 主路径 | 主路径为：Shell 源文件 → CLI（shellcheck.net 在线版或本地 CLI）→ Haskell 静态分析核心 → 分级诊断（error/warning/info/style）→ 修复建议 | 内部解析器、规则加载顺序、诊断输出格式未细述 |
+| 关键权衡 | 正确性（语义级分析、可移植性覆盖） vs Haskell 贡献门槛与 GPL-3.0 商业集成限制；分级建议 vs 行内禁用带来的"逃逸通道"风险 | 性能数字、规则数量、依赖体积等档案未给出 |
+| 最小 PoC | 选取 1 个含 SC2086/SC2154 等典型 footgun 的 bash 脚本样本，在 CI 沙箱中跑本地 CLI，验证分级、退出码与 `# shellcheck disable=` 行内控制行为 | 沙箱化运行、LSP、编辑器插件联动效果档案未实测 |
+
 ## 架构启发
 ShellCheck 的核心启发是 **"用正确的语言做正确的事"**。作者选择 Haskell（一门小众函数式语言）来写 Shell 分析器，看似出人意料，实则精妙：Shell 语法的复杂性（引号、展开、替换）用 Haskell 的代数数据类型和 monadic 解析能优雅处理，而命令式语言会陷入状态地狱。这证明了 **工具的内部实现语言不必追随流行，而应匹配问题域**。更深层的启发是 **"静态分析是动态语言的安全网"**：Shell（动态）+ ShellCheck（静态）的组合，让弱类型语言获得了类似强类型语言的安全保障。这一思路适用于所有动态脚本语言生态。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+U[开发者或 CI 调用方 待核验] --> CLI[CLI 命令或 shellcheck.net 在线入口]
+CLI --> CORE[Haskell 静态分析核心 语义级 AST 与规则]
+CORE --> DIAG[分级诊断 error warning info style]
+CORE --> DISABLE[行内禁用 # shellcheck disable=SC 待核验]
+CORE --> PORT[跨 shell 可移植性判断 bash sh dash ksh 待核验]
+DIAG --> OUT[修复建议与解释 输出给调用方]
+CORE --> ED[编辑器与 CI 适配层 VS Code JetBrains vim GitHub Actions]
+```
 
 ## 定位判断
 **成熟的事实标准工具（不可替代）。** ShellCheck 在 Shell lint 领域没有真正意义上的竞争者，是绝对的事实标准。它的地位不是"候选"，而是"既定"。14 年历史、全行业渗透、无一替代品——这构成了最强的护城河。作为工具，它的生命周期与 Shell 脚本本身绑定；只要 bash/sh 还在运行（至少未来几十年），ShellCheck 就有价值。GPL-3.0 许可证略限商业集成，但 CLI 工具场景影响很小。这是**最稳健的工具型投资**之一。

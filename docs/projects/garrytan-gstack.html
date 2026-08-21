@@ -6,7 +6,7 @@
     <title>gstack | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,35 +52,81 @@
 <li><strong>Hermetic E2E</strong> — 本地测试与 CI 一致的密封环境：allowlist scrub env + seeded config + --strict-mcp-config</li>
 <li><strong>GBrowser 反检测</strong> — Layer C stealth：chrome.* shape 恢复 + Function.toString Proxy + per-install hardware spoof + UA 去标识 + Selenium/Playwright 痕迹清理</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>gstack 是 Claude Code 之上的编排/技能层：23 个 slash commands + Markdown 形式的角色化技能 + team-mode git hook 同步 + detach 会话隔离，运行在 Claude Code runtime 内</td>
+<td>项目标签（agent-skills, claude-code, tooling）、TypeScript 语言、Karpathy 背书与目录事实；具体 slash command 数量与 detach 实现细节源自档案描述，未经源码逐条核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户触发 slash command → Claude Code 解析 → gstack 加载角色化提示（CSO/CEO-review 等视角）→ 必要时调用外部工具或 detachable session → 结果回写会话/审计</td>
+<td>档案"角色化认知注入""team auto-update""gstack-detach""Hermetic E2E"四点为证据；模型协议、MCP 细节、状态持久化方式未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>角色化表达力 vs Claude Code slash command 体系深度绑定；团队同步便利 vs 权限/审计边界外溢；stealth/反检测（GBrowser）能力 vs 合规与平台 ToS 风险</td>
+<td>档案明示"高度 Claude Code 绑定"与"GBrowser 反检测"；未给出权限模型、日志规范、ToS 评估结论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单人开发环境启用 1 个只读 skill（如 /plan-ceo-review 或 /cso），验证角色化提示效果、可审计日志与退出路径，再评估 team-mode 与 detach 的扩展</td>
+<td>档案采用建议栏目给出"先单一渠道、最小权限、可审计日志"的指引；具体 slash 列表、安装命令与 hermetic 配置细节须以仓库 README/源码为准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>核心设计哲学：</strong> Agent 工具不是"给 Agent 用的工具"，而是"让 Agent 扮演特定角色的认知框架"。</p>
 <p><strong>Trade-off：</strong> 高度 Claude Code 绑定。23 个工具都是 slash commands + Markdown，依赖 Claude Code 的 slash command 解析能力。如果 Agent runtime 变化（如切换到 Codex/Gemini），工具需要重新适配。</p>
 <p><strong>架构启发：</strong> Skills 不应该是"做什么"的指令（"扫描这段代码的安全漏洞"），而应该是"以谁的视角思考什么"的角色注入（"你是一个 CISO，用 OWASP + STRIDE 框架审查这个 PR"）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>Claude Code slash command 触发]
+    I --> C[gstack 编排与运行时<br/>23 个角色化技能 + TypeScript]
+    C --> P[角色化认知注入<br/>CSO / CEO-review 等视角 - 待核验具体命令清单]
+    C --> T[工具与外部系统<br/>GBrowser 反检测 + Hermetic E2E - 待核验组件清单]
+    C --> D[gstack-detach<br/>setsid + caffeinate 长时任务隔离 - 待核验实现]
+    D --> S[会话 状态 审计<br/>team-mode git hook 自动同步 + 248+ 测试]
+    P --> S
+    T --> S
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> gstack 正在定义"Agent 工具栈应该长什么样"。如果 Claude Code 是 Agent 时代的操作系统，gstack 就是预装的 iWork 套件。关键问题是：它会成为行业标准，还是仍然是 Garry Tan 的个人工具？</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>个人品牌依赖</strong> — Garry Tan 是 YC CEO，如果精力转移（YC 工作、投资、其他），项目维护可能放缓</li>
 <li><strong>Claude Code 绑定</strong> — 工具设计深度依赖 Claude Code 的 slash command 体系，跨 Agent 兼容性存疑</li>
 <li><strong>MIT 开源但无商业化</strong> — 113K⭐ 的项目完全免费，长期可持续性存疑</li>
 <li><strong>722 open issues</strong> — 社区活跃但也意味着维护压力大</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs mattpocock/skills（141K⭐）</strong>：更通用、更轻量，是个人 .claude 目录开源。gstack 更系统化，是完整工具栈</li>
 <li><strong>vs Anthropic-Cybersecurity-Skills（18.6K⭐）</strong>：安全领域垂直深度 vs gstack 的全流程宽度</li>
 <li><strong>vs Claude Code 原生</strong>：gstack 是 Claude Code 之上的"能力增强包"，不替代而是增强</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>强烈建议持续跟踪。</strong> gstack 是 Agent Skills 经济的风向标项目，它的增长曲线直接反映"Agent 工具栈品类"的成熟度。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否出现非 Garry Tan 的核心贡献者（标志：从个人项目 → 社区项目）</li>
 <li>是否被其他 Agent runtime（Codex/Gemini CLI）兼容或适配</li>
 <li>是否出现企业版或商业化路径</li>
 <li>23 工具是否会标准化为 agentskills.io 格式</li>
 </ol>
-<h2 id="_11">评分</h2>
+<h2 id="_12">评分</h2>
 <table>
 <thead>
 <tr>

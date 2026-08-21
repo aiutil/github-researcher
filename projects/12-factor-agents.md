@@ -49,11 +49,37 @@ Agent 开发目前处于「每个人都在摸索」的阶段。大量 Agent 项�
 11. **Factor 11**：从任何地方触发，在用户所在的地方响应（Trigger from Anywhere）
 12. **Factor 12**：让 Agent 成为无状态 reducer（Make Your Agent a Stateless Reducer）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目是 Agent 工程方法论 + TypeScript 参考实现，定位为评估框架而非运行基础设施 | 档案明确给出 12 条原则名称，但具体编排组件、消息协议、部署形态未在档案中证实 |
+| 主路径 | 事件/请求 → 编排运行时（Stateless Reducer） → LLM 结构化输出 → 确定性工具执行 → 上下文回写 → 会话/审计 | 路径来自档案描述的"Agent 循环三步模型"与 Factor 5/12；具体持久化与传输协议未描述 |
+| 关键权衡 | 灵活编排（Own Your Control Flow、Own Your Prompts） 与 工程可控性（无状态 reducer、可审计）之间的张力；多 Agent 协作场景未被覆盖 | 权衡来自档案"架构启发"与"风险/局限"段；实际性能/可观测性指标档案未提供 |
+| 最小 PoC | 用 `npx/uvx create-12-factor-agent` 脚手架起单 Agent、单渠道、单工具，验证 Factor 1/2/3/5/8 并记录审计日志后再扩面 | 脚手架工具在档案中明确；其余验收项（安全/成本/SLO）需结合内部场景补充 |
+
 ## 架构启发
 - **从 DAG 到 Agent Loop**：传统 DAG 编排（Airflow/Prefect/Dagster）需要编码每个步骤；Agent 模式让 LLM 在运行时决定路径，但好的 Agent 仍然是"大部分是确定性代码 + 少量 LLM 决策点"
 - **Agent 循环的三步模型**：(1) LLM 决定下一步（输出结构化 JSON）；(2) 确定性代码执行工具调用；(3) 结果追加到上下文窗口
 - **Stateless Reducer 模式**：Agent 应该是无状态的 reducer——输入是事件 + 当前状态，输出是新状态，而非有状态的长连接进程
 - **原则先行，实现跟进**：与 12-Factor App 一脉相承，工程原则的价值在于团队对齐而非技术实现本身
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游渠道] --> I[入口与身份边界<br/>Factor 11: Trigger from Anywhere]
+  I --> C[项目编排与控制流<br/>Factor 8: Own Your Control Flow<br/>Factor 12: Stateless Reducer]
+  C --> M[模型或推理服务<br/>Factor 2: Own Your Prompts<br/>Factor 3: Own Your Context Window]
+  C --> T[工具与外部系统<br/>Factor 4: Tools as Structured Outputs<br/>Factor 1: NL → Tool Calls]
+  C --> H[人类参与工具调用<br/>Factor 7: Contact Humans via Tool Calls]
+  C --> S[会话 执行态 业务态 审计<br/>Factor 5: Unify Execution State<br/>Factor 9: Compact Errors]
+  M --> C
+  T --> C
+  H --> C
+```
 
 ## 定位判断
 **基础设施候选**——虽然不是代码级基础设施，但作为工程原则，它是 Agent 架构的「基础设施」。类似于 12-Factor App 对云原生应用的影响：不提供代码，但提供评估和指导框架。可作为团队内部 Agent 项目的评估标准。

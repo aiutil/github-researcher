@@ -6,7 +6,7 @@
     <title>Odysseus | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,31 +48,77 @@
 <li><strong>自托管架构</strong>：数据完全在本地，不依赖外部 SaaS</li>
 <li><strong>346 issues / 498 PRs</strong>：社区活跃度极高，说明有大量真实用户在参与</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Odysseus 定位为自托管 AI 工作空间的 Python 编排层，介于使用者、模型推理与本地工具/数据源之间，职责是本地化集成而非替代模型本身</td>
+<td>边界依据仅为项目分类（观察型）、tags（self-hosted / ai-workspace / privacy）与一行描述 "Self-hosted AI workspace."，无 README 详述，模型/工具接入细节待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>在档案所给抽象下：使用者 → 入口与身份 → 项目编排与运行时 → 模型/工具调用 → 会话/状态/审计回写</td>
+<td>主路径来自档案"架构师速览"的研究抽象，具体的协议、传输方式、持久化与并发模型均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在数据隐私与本地化收益 vs. 扩展速度、可观测性、供应商耦合之间的平衡；Python+MIT 降低门槛但也带来依赖治理与维护可持续性风险</td>
+<td>权衡判断仅基于 MIT、Python、self-hosted、privacy 标签与 stars/fork 增速；缺乏性能基准、安全模型与运维要求数据，证据边界有限</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一入口渠道、关闭外部工具权限、开启可审计日志的前提下验证自托管推理回路、会话持久化与回退路径</td>
+<td>PoC 形态为档案"采用建议"的研究推断，未给出具体硬件栈、模型规格、部署形态；项目元数据不规范（组织名异常、无 topics）需先做信任核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>自托管 AI 工作空间是 AI 工具市场的重要细分</li>
 <li>Python 生态在 AI 工具领域仍有压倒性优势</li>
 <li>5.9K forks 提示：用户不只是想「尝试」，更想「拥有」自己的 AI 工作空间</li>
 <li>启发：私有部署 + 本地推理 + 开源协议 是 AI 工具的差异化竞争优势</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界]
+  I --> C[Odysseus 编排与运行时]
+  C --> M[本地或外部模型与推理服务 待核验]
+  C --> T[工具与外部系统接入 待核验]
+  C --> S[会话 状态 审计]
+  M --> C
+  T --> C
+  S -.审计与回写边界.-> I
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>观察型。</strong> 50K+ stars 足够亮眼，但项目元数据不规范、组织名异常、无 topics 标记。需要观察 6 月后续增长和技术演进，确认是否为可持续项目。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>项目元数据不规范</strong>：组织名 pewdiepie-archdaemon，无 topics，描述仅 "Self-hosted AI workspace."</li>
 <li><strong>可能是泡沫</strong>：50K stars 的集中式增长可能由社交媒体驱动，而非技术社区自然增长</li>
 <li><strong>技术深度不明</strong>：缺乏架构文档、设计哲学等技术内容</li>
 <li><strong>维护风险</strong>：如果是个体开发者项目，长期维护能力存疑</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Open WebUI (社区)</strong>：浏览器端 AI 界面，Odysseus 定位更偏工作空间</li>
 <li><strong>LibreChat</strong>：开源 ChatGPT 克隆，功能更专一</li>
 <li><strong>OpenBMB PilotDeck (3.0K)</strong>：任务导向 AI Agent 生产力平台，更专业但用户群更窄</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>谨慎跟踪。</strong> 需确认项目正规性后再决定是否升级为「持续跟踪」级别。重点观察 6 月第二周 stars 增速是否可持续。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>项目是否发布详细架构文档和技术博客</li>
 <li>6 月第二周 stars 增速（是否从集中爆发转为持续增长）</li>

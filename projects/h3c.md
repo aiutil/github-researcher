@@ -37,8 +37,34 @@ MiniMax-H3 视频生成模型虽然质量高，但推理成本极高（需要云
 4. **首尾帧 + Ref2VA 引用：** 支持 first-frame/last-frame 条件生成（视觉 VAE 编码 + Qwen3-VL vision tower）、Ref2VA 图像/视频/音频引用（有序 `<Picture N>` / `<Video N>` 呈现）。
 5. **交互式会话：** 无 `-p` 参数时启动 Iris-style 交互会话，保持 BF16 prompt conditioning 在内存中，重复 prompt 只需换 seed，避免重新编码。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单 macOS 客户端边界：用户/Iris 交互会话 → C 项目核心 → Metal Compute 运行时 → MiniMax-H3 模型权重；不含服务端、不含 NVIDIA/AMD 后端 | 档案明示"绑定 Apple Silicon，仅 macOS（Metal）"，未给出 Linux/Windows 路径 |
+| 主路径 | 用户输入(prompt/ref) → 交互会话维持 BF16 conditioning → 原生 Metal kernel 推理（fused QKV+RoPE、SwiGLU 融合、int8 量化、SDPA）→ video/audio 输出；可走 `--reuse`/`--layers`/`--show` 等控制分支 | 路径来自 README 自述，kernel 级性能数字属作者自测，未独立复现 |
+| 关键权衡 | Metal 原生极致性能（fused kernels、int8、M5 TensorOps） vs 平台覆盖收窄与单作者维护风险；byte-identical 可回退保证数值正确性换取工程复杂度 | 仅 README 与档案可证；上游 H3 license=null 已在档案中标注 |
+| 最小 PoC | 在 M3/M5 Mac 上以 BF16 默认路径跑一段 prompt→video 端到端，核对与 README 数值偏差，并验证首尾帧/Ref2VA/`--reuse`/`--layers`/`--show` 控制边界 | 缺独立基准；M5 Max 是 2026 新硬件，复现样本量待核验 |
+
 ## 架构启发
 h3.c 的核心启发是**"模型落地的最后一公里是推理引擎工程，而非模型本身"**。H3 模型已开源（HuggingFace checkpoint），但让它在消费级硬件上高效运行需要大量 Metal kernel 级优化——这正是 antirez 擅长的领域。更深层的是：**当一个模型的推理成本高到值得顶级系统工程师投入时，说明该模型有真实落地需求**。h3.c 的存在本身验证了 H3 的实用价值，比 star 数更有说服力。另一个启发是 Apple Silicon 作为本地推理平台的潜力——M5 Max 的 128GB 统一内存 + Metal 4 TensorOps 让端到端视频生成（峰值 25.9 GiB）成为可能。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+  U[用户/终端会话] --> S[交互会话与 BF16 prompt conditioning 缓存]
+  S --> K[原生 Metal Compute kernels：fused QKV+RMS+RoPE / SwiGLU / SDPA]
+  K --> Q[int8 量化路径 M5 专属 per-output-channel scales 待核验]
+  Q --> O[video/audio 端到端输出 含 --show Kitty/Ghostty/iTerm2 预览]
+  S --> R[Ref2VA 引用 Picture Video Audio 引用解析 待核验]
+  K --> W[MiniMax-H3 模型权重 上游 license=null 仅 API 可核验]
+  S --> C[控制边界 --reuse --layers --first --last 字节等价回退]
+  C --> K
+  O --> E[错误/监测/反馈 仅仓库 issue 渠道 待核验]
+```
 
 ## 定位判断
 **观察型（极早期，高潜力）。** h3.c 目前是 antirez 的个人项目，129⭐ 说明社区刚开始关注。但考虑到作者信誉和技术深度，若持续迭代，它有潜力成为 H3 在 Apple 生态的**首选推理引擎**——类似于他之前写的 litelog（Redis 替代品）最终可能独立成生态。定位是"H3 原生推理层的零号项目"。

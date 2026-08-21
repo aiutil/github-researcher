@@ -6,7 +6,7 @@
     <title>nyblnet/bento | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,35 +50,83 @@
 <li><strong>签名自更新</strong>：发布 ECDSA 签名，应用内提示更新；更新写入新文件、旧文件保留为回滚，服务器永不触碰文档。</li>
 <li><strong>无依赖图表引擎</strong>：自研 bar/line/pie/scatter，演示时实时绘制（tooltip/缩放/数据 morph）。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单个 <code>.bento.html</code>（约 560KB）即整个系统：JSON 数据块 + 编辑器/播放器/协作逻辑内嵌于文件，无独立后端服务（盲中继 relay 仅转发密文）。</td>
+<td>边界依赖 File System Access API；非 Chromium 浏览器降级为下载；relay 是否"可读源码验证"未给出具体协议细节。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户双击 <code>.bento.html</code> → 浏览器加载文件 → JS 解析顶部 JSON → 编辑/播放/Morph → 保存时用 FS Access API 重写自身（旧文件留作回滚）；协作走 AES-GCM + 自研 CRDT 经盲中继同步。</td>
+<td>"自研 CRDT"为档案口径；字符级合并算法、relay 协议与并发模型未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单文件永久可读 vs 浏览器能力受限（FS Access API、CRDT 自研正确性、E2EE 密钥随文件分发带来的访问控制两难）；"文件即软件"分发新颖性 vs 失去云协作惯性的采用摩擦。</td>
+<td>密钥"存在文件里"的具体派生/分发方式未说明；File System Access API 在 Chromium 之外的降级体验未量化。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 Chromium 浏览器打开一个 <code>.bento.html</code>，验证：①本地编辑与自重写保存；②断网编辑后联网经 relay 合并；③Agent 经 <code>window.bento.loadDoc</code> 原地改 JSON 渲染生效。</td>
+<td>slides 之外的文档/表格能力档案明确未交付；CRDT 在多人大规模并发下的正确性档案标注"待核验"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心启发是<strong>「为 AI 可编辑性设计的本地优先文档格式，可能成为 Agent 交付物的新载体」</strong>。当文档是纯 JSON 且 Agent 可直接读写文件时，Agent 与文档的交互从「调 API」退化为「读写文件」——摩擦骤降。这对架构师的启发是：<strong>设计交付物格式时，把「机器可读写性」作为一等约束</strong>，而非事后补 API。</p>
-<pre class="mermaid">flowchart TB
-    FILE["单个 .bento.html (~560KB)"]
-    FILE --> DATA["纯 JSON 数据块<br/>文件顶部可读"]
-    FILE --> APP["编辑器/播放器/协作逻辑<br/>随文件分发"]
-    DATA --> AGENT["Agent / Chatbot<br/>直接读写 JSON<br/>window.bento.loadDoc<br/>无需插件/API"]
-    APP --> SAVE["自重写保存<br/>File System Access API<br/>旧文件 = 回滚"]
-    APP --> COLLAB["E2EE 协作<br/>AES-GCM 密钥在文件<br/>CRDT 字符级合并<br/>盲中继 relay"]
-    APP --> PRES["Morph 演示<br/>共享 id 元素自动动画"]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  FILE["单个 .bento.html ~560KB"]
+  JSON["顶部纯 JSON 数据块"]
+  APP["内嵌编辑器/播放器/协作逻辑"]
+  AGENT["Agent/Chatbot<br/>window.bento.loadDoc"]
+  SAVE["自重写保存<br/>File System Access API<br/>旧文件=回滚"]
+  RELAY["盲中继 relay<br/>(仅密文, 协议待核验)"]
+  CRDT["自研 CRDT<br/>字符级合并 (待核验)"]
+  PRES["Morph 演示/自研图表引擎"]
+  LIMIT["当前仅 slides 品类<br/>office suite = 愿景"]
+
+  FILE --> JSON
+  FILE --> APP
+  JSON --> AGENT
+  APP --> SAVE
+  APP --> CRDT
+  APP --> PRES
+  CRDT <--> RELAY
+  RELAY -.仅存密文.-> CRDT
+  LIMIT -.约束.-> APP
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>定位为<strong>工具型</strong>，但其「文件即软件 + AI 可编辑 JSON」范式有演化为文档形态标准的潜力。当前聚焦 slides 品类，向完整 office suite 扩展是既定愿景。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>当前仅 slides</strong>：自称「office suite」但实际落地是幻灯片，文档/表格尚未交付——愿景与现状有差距。</li>
 <li><strong>File System Access API 浏览器兼容</strong>：自重写保存依赖该 API，非 Chromium 浏览器降级为下载。</li>
 <li><strong>CRDT 自研风险</strong>：自研字符级 CRDT 的正确性边界需大规模验证，协作冲突处理是已知难题。</li>
 <li><strong>小团队 / 采用门槛</strong>：作为对抗云文档的范式，需克服用户「习惯云协作」的惯性。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Reveal.js / Slidev</strong>：Reveal.js/Slidev 是幻灯片框架（需构建/部署）；Bento 是<strong>文件即应用</strong>（零安装、自包含），分发模型根本不同。</li>
 <li><strong>vs Notion / Google Slides</strong>：云文档锁定 vs 本地优先永久可读——哲学对立。</li>
 <li><strong>vs 本地优先文档工具（如 Obsidian）</strong>：Obsidian 是笔记工具；Bento 把「文件即软件」推向办公交付物 + AI 可编辑。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，持续跟踪。</strong> 「文件即软件 + AI 可编辑 JSON」范式对 Agent 交付物形态有启发。建议关注其从 slides 向完整 office suite 的扩展，以及 CRDT 在真实协作下的鲁棒性。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否从 slides 扩展到文档/表格，兑现「office suite」愿景。</li>
 <li>自研 CRDT 在多人大规模并发编辑下的正确性与性能。</li>

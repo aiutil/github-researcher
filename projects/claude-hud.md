@@ -41,8 +41,37 @@ claude-hud 的热度是 **"Claude Code 生态红利 × 真实体验痛点 × 可
 5. **Todo 进度:** 将 Agent 的 todo 列表渲染为可视化进度，让长任务的阶段清晰可见
 6. **TypeScript 实现:** 轻量、类型安全，与 Claude Code 插件机制契合
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 终端 statusline 插件，嵌入 Claude Code CLI 的状态栏渲染通道；输入是 Claude Code 运行时事件，输出是终端底部 HUD（上下文用量条、活跃工具、子 Agent 数、todo 进度）。仅作用于 Claude Code 会话，不会独立运行。 | 档案标注 plugin/statusline/typescript；具体接入点（hook/事件总线）未经源码核验。 |
+| 主路径 | Claude Code 运行时 → 插件捕获 Agent 状态（上下文/工具/子 Agent/todo）→ TypeScript 渲染层 → 终端状态栏常驻刷新。无可观测证据表明存在独立编排或模型调用路径。 | 档案描述渲染与状态读取职责；事件协议、重绘频率、持久化均未证实。 |
+| 关键权衡 | 轻量可视化收益 vs 终端渲染能力上限；聚焦可观测性 UI 带来的清晰边界 vs 功能扩展空间窄；MIT/TS 社区友好 vs 强耦合 Claude Code 插件接口（官方化或接口变更即风险）。 | 权衡由档案“风险/局限”条目直接支持；性能、权限模型、接口稳定性未经实测。 |
+| 最小 PoC | 在 Claude Code 内安装插件（待核验安装方式），跑一段含工具调用与子 Agent 的长任务，验证 HUD 实时刷新上下文/工具/todo 四类字段；验收：长任务等待焦虑降低、无明显终端卡顿。 | 安装命令、配置项、性能开销未在档案中给出，需以官方 README/源码核验。 |
+
 ## 架构启发
 claude-hud 的核心启发是 **"Agent 越强大，可观测性 UI 越重要"**。传统 CLI 工具是"用户主动操作"，过程天然可见；而 Agent 是"用户委派、Agent 自主执行"，过程变成黑盒。Agent 的自主性越强，用户对"它在做什么"的焦虑越高。claude-hud 证明：**Agent 时代，状态可视化（HUD/statusline）从"锦上添花"变为"必需品"**。这与自动驾驶汽车需要仪表盘、AI 训练需要 TensorBoard 同理——任何自主系统都需要让人类监督者看见状态。更深层的启发是：Agent 的可观测性 UI 会成为一个独立的细分品类（Agent Observability UI），claude-hud 是终端场景的早期代表。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[Claude Code 使用者] --> CC[Claude Code CLI 运行时 待核验]
+    CC -->|运行时事件 待核验| P[claude-hud 插件 TypeScript]
+    P -->|读取 待核验| S1[上下文用量]
+    P -->|读取 待核验| S2[活跃工具]
+    P -->|读取 待核验| S3[子 Agent 数量与状态]
+    P -->|读取 待核验| S4[Todo 进度]
+    S1 --> HUD[终端状态栏 HUD]
+    S2 --> HUD
+    S3 --> HUD
+    S4 --> HUD
+    HUD --> U
+    OFF[Claude Code 官方原生 statusline 待核验] -.官方化风险.-> P
+```
 
 ## 定位判断
 **工具型插件（Claude Code 生态增强）。** claude-hud 是 Claude Code 生态的优秀增强插件，定位清晰：让 Agent 执行过程可见。它本身不创造"智能"，而是提升"使用体验与掌控感"。作为插件，其价值高度依赖 Claude Code 生态存续——Claude Code 兴则它兴。2.7 万 stars 显示它已是 Claude Code 插件生态的头部项目之一。不会独立成为平台，但在 Claude Code 生态内有稳固位置。最大风险是官方化（Claude Code 内置 HUD）。

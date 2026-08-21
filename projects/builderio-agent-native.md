@@ -43,6 +43,15 @@ BuilderIO 出品（Steve Sewell 团队），1,002 stars 日增 210。核心理�
 
 5. **Backend agnostic：** 任何 Drizzle 支持的 SQL + 任何 Nitro 兼容的 host。无锁定。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 介于入口渠道、模型与工具/数据源之间的编排层，提供 UI/Agent/HTTP/MCP/A2A/CLI 共用 action 的 TypeScript 框架。 | 基于 TypeScript 语言、agent-native/framework/mcp/a2a 标签与档案描述的协议面抽象，不替代源码审计。 |
+| 主路径 | 入口（UI / 对话 / HTTP / MCP / A2A / CLI）→ defineAction 编排 → 模型推理 + 工具调用 → CRDT 文档/会话状态回写。 | "defineAction 统一接口 + CRDT 实时协作"源于档案；具体持久化、部署与协议实现须以源码核验。 |
+| 关键权衡 | 单一 action 复用到 6 类 surface 带来的开发效率，与权限边界、可观测性、协议耦合之间的张力。 | 档案明示多家协议与 backend-agnostic，但运行时隔离、审计、商用托管路径未证实。 |
+| 最小 PoC | Clone 6 个 SaaS 模板之一，以 UI 按钮与 Agent 对话同源触发同一 action，验证 CRDT 多人协作与日志。 | 模板清单来自档案；具体行为、稳定性与 BuilderIO 商业策略（含 hosted 可能性）需后续核验。 |
+
 ## 架构启发
 
 agent-native 的核心洞察是"action 是 agent-native 应用的原子单位"：
@@ -54,6 +63,25 @@ defineAction → UI button + Agent tool + HTTP endpoint + MCP method + A2A call 
 - 新增 Agent 能力不需要写新代码
 - UI 和 Agent 天然保持同步
 - 产品可以"自进化"（Agent 修改自己的 UI）
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>UI 对话 HTTP MCP A2A CLI]
+    I --> A[defineAction 编排层<br/>一次定义 多 surface 复用]
+    A --> M[模型或推理服务<br/>Claude Agent SDK / Vercel AI SDK]
+    A --> T[工具与外部系统<br/>MCP A2A MCP Apps AG-UI]
+    A --> S[CRDT 文档 会话 状态<br/>live presence 实时协作]
+    M --> A
+    T --> A
+    S --> A
+    R[Backend 边界<br/>Drizzle SQL + Nitro host 待核验]
+    A -.托管与商业化路径.-> R
+</mdd>
+```
 
 ## 定位判断
 

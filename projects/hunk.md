@@ -37,8 +37,36 @@ AI Agent 编码的审查痛点：当 Claude Code、Codex、Cursor 等 Agent 自�
 - **Git difftool 集成**：可作为 Git 的默认 difftool 使用
 - **键盘 + 鼠标**：完整的键盘快捷键和鼠标交互支持
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 终端侧 Diff/审查 CLI，以 Git working tree 为输入面，调用 Git 与 OpenTUI、Pierre diffs 等本地组件；不接入模型供应商或外部 SaaS | 档案明示 Git difftool 集成、OpenTUI 与 Pierre diffs 依赖；未提及模型/网络调用，需源码核验 |
+| 主路径 | Git 变更集 → OpenTUI 渲染 → 多文件分屏/堆叠视图 → 键盘/鼠标与可选 `--watch` 触发刷新 → 内联 AI/Agent 标注并排显示 | 流程基于档案"多文件审查流、watch 模式、内联 AI 标注"特性拼出；标注来源协议未在档案中给出 |
+| 关键权衡 | 场景聚焦（仅 Agent 代码审查）换取体验纵深，但与 IDE 内置 Source Control 的功能重叠带来替代风险；watch 模式的可靠性与 104 个 open issues 形成维护压力 | 取舍与维护压力均为档案原文；实际稳定性、权限模型、并发安全无档案证据 |
+| 最小 PoC | 在非主仓库跑 `hunk` 接入 Git difftool，对一次 Agent 生成的多文件变更做分屏审查，启用 `--watch` 验证实时刷新与渲染正确性；验收包括键鼠交互、布局自适应、无外部网络请求 | 启动方式、watch 行为来自档案；具体 CLI 语法、配置项与二进制分发须以仓库 README/源码核验 |
+
 ## 架构启发
 Hunk 代表了"AI 编码工作流工具链"的新方向：传统开发工具（Diff 查看器、Code Review 工具）正在被重新设计以适应 Agent 编码的新范式。关键变化是从"偶尔审查大变更"到"持续审查 Agent 的增量变更"，这要求工具支持 watch 模式和实时反馈。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[开发者] --> H[hunk CLI 待核验]
+  H --> G[Git working tree / difftool 集成]
+  H --> OT[OpenTUI TUI 框架]
+  H --> PD[Pierre diffs 渲染]
+  H --> W[--watch 实时刷新]
+  H --> AI[内联 AI/Agent 标注 来源待核验]
+  OT --> V[分屏/堆叠/响应式布局]
+  PD --> V
+  V --> U
+  W --> H
+  AI --> V
+```
 
 ## 定位判断
 **AI 编码工作流工具型**，定位为 Agent 编码场景的标配审查工具。不是平台，而是工作流中"审查环节"的专门工具。

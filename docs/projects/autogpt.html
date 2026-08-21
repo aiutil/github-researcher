@@ -6,7 +6,7 @@
     <title>Significant-Gravitas/AutoGPT | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,59 @@
 <li><strong>Forge / Benchmark:</strong> Agent 评测框架和基准测试套件，标准化 Agent 能力评估</li>
 <li><strong>多 Agent 协作:</strong> 支持 Agent 委托子任务给其他 Agent</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AutoGPT 是覆盖"入口→编排/运行时→模型与工具→会话/状态/审计"的 Agent 平台型编排层，介于用户渠道、模型供应商与外部工具/数据源之间</td>
+<td>基于档案分类（agentic-ai/agents/autonomous-agents）、186K Stars 与 Platform 定位描述抽象；具体身份认证、协议与持久化实现未在档案中确认</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求经入口进入项目编排与运行时，按 Thought→Plan→Action→Observation 循环调用模型与工具，过程状态回写至会话/审计层；Agent 可向子 Agent 委托子任务</td>
+<td>循环与工具调用见档案"关键技术亮点"；多 Agent 委托见同节；具体调度协议、消息格式与存储介质未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自主循环带来的扩展能力，与权限治理、可观测性、模型供应商耦合之间的张力；档案明示成本与可靠性风险</td>
+<td>风险点见"风险/局限/泡沫点"；权限/审计细节、限流与回退策略未在档案中说明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单入口渠道、最小工具白名单与可审计日志下，跑通"单一目标→ReAct 循环→工具调用→结果回写"，并以安全、成本、SLO、退出路径作为验收项</td>
+<td>PoC 建议源自档案"架构师速览·采用建议"；工具清单、性能基线与 SLO 阈值需结合实际部署再定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>AutoGPT 的核心架构贡献是"ReAct 循环的产品化"——把 Reasoning（思考）和 Acting（行动）交替执行，让 LLM 在每一步都"想一想"再做。这种模式后来被几乎所有 Agent 框架采用。其 Platform 化转型的思路也值得学习：从"单一产品"转向"平台 + 生态"，通过降低使用门槛（可视化构建）来扩大用户基数。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时 ReAct 循环]
+    C --> M[模型或推理服务 待核验具体供应商]
+    C --> T[工具与外部系统 内置工具与自定义注册]
+    C --> A[多 Agent 委托 子任务]
+    A --> C
+    C --> S[会话 状态 审计 待核验持久化]
+    M --> C
+    T --> C
+    S -.成本与可靠性风险.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型项目（转型期）。</strong> AutoGPT 正处于从"实验性工具"到"Agent 平台"的转型期。它的竞争对手已不是其他 Agent 实验，而是 Dify、Coze、LangGraph 等 Agent 平台。关键问题在于：它能否在平台化转型中保持差异化——即"更自主"的 Agent 体验。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>概念泡沫残留:</strong> 大量 Star 来自 2023 年的概念热度，实际活跃用户远低于 Star 数暗示的规模</li>
 <li><strong>可靠性问题:</strong> 自主 Agent 在复杂任务上成功率仍不稳定，容易陷入循环或偏离目标</li>
@@ -62,7 +110,7 @@
 <li><strong>平台竞争:</strong> Dify / LangGraph / CrewAI 等后起之秀在工程化上更成熟</li>
 <li><strong>商业化不明:</strong> 开源平台的商业模式尚不清晰</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Dify:</strong> Dify 更注重工作流编排和企业级部署，AutoGPT 更注重自主性和易用性</li>
 <li><strong>vs LangGraph:</strong> LangGraph 是代码优先的框架，AutoGPT 是可视化优先的平台</li>
@@ -70,9 +118,9 @@
 <li><strong>vs AgentGPT:</strong> AgentGPT 是 AutoGPT 的 Web 版 clone，功能更简单</li>
 <li><strong>vs OpenAI Assistants API:</strong> 闭源 SaaS 对比开源平台</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> AutoGPT 是 AI Agent 浪潮的起源项目，其平台化转型方向值得关注。尤其关注：Agent 可靠性的提升（是否引入更强的规划 / 验证机制）、平台的用户增长（是否有真实的使用而非仅 Star）、以及多 Agent 协作模式的演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>AutoGPT Platform 的活跃用户数和真实使用案例</li>
 <li>Agent 可靠性是否突破（引入 Tree of Thought / 自我验证 / 外部验证器）</li>

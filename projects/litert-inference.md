@@ -46,12 +46,41 @@ LiteRT 是 Google 官方的端侧高性能 ML & GenAI 部署运行时——Tenso
 6. **LiteRT-CLI**：支持 Coding Agent 集成（`litert --help`），可在 AI 编程工作流中使用
 7. **模型生态**：Hugging Face LiteRT Community 提供预转换模型（Gemma 4、ASR、图像分类等）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 端侧推理运行时 + 转换/量化工具链 + 跨平台覆盖（Android/iOS/Linux/macOS/Windows/Web/IoT）+ 多硬件加速（CPU/GPU OpenCL/Metal/WebGPU/NPU Google Tensor/Intel/MediaTek/Qualcomm/TPU），作为 TFLite 正式继任者承载模型供应与硬件调度边界 | 组件名/平台/加速器清单见档案；具体 API 边界与硬件抽象层实现未在档案中给出，待源码核验 |
+| 主路径 | 模型源（PyTorch/TF/JAX 或 Hugging Face LiteRT Community 预转换模型）→ LiteRT Torch 转换 → AI-Edge Quantizer 量化 → LiteRT-LM/Compiled Model (V2) 运行时 → GPU(ML Drift)/NPU/TPU 加速执行；浏览器路径另经 WebGPU+WASM | 工具链顺序与组件名取自档案；V2 Compiled Model 自动加速器选择机制细节未描述 |
+| 关键权衡 | 全模型类型覆盖 vs 各芯片厂商 NPU 行为不一致（碎片化）、自动加速降低心智负担 vs 切换 TFLite 需代码改造、端云协同（隐私+离线）vs 端侧 LLM 仍受模型大小限制（Gemma 4 等需重度量化） | 权衡来自档案"风险/局限"与"架构启发"；具体 NPU 厂商差异矩阵与量化阈值未给出 |
+| 最小 PoC | 在 Android 上用预转换模型（Gemma 4/ASR/图像分类之一）经 AI-Edge Quantizer 量化后接入 LiteRT V2 Compiled Model API，对比 CPU 与设备 NPU 的延迟/内存，并保留 TFLite 回退路径作为退出选项；将 2,449 Open Issues 与 NPU 碎片化列为验收风险项 | PoC 步骤基于档案明示组件编排；具体设备/模型选型、基准指标、CI 产物均待核验 |
+
 ## 架构启发
 - **端云协同设计**：设备本地推理，云端模型更新后下发——隐私 + 性能 + 可更新的平衡
 - **模型-硬件协同优化**：针对不同硬件能力（CPU/GPU/NPU）自动选择最优加速路径
 - **V2 架构升级**：从 V1 的"手动 delegate"升级到 V2 的"自动加速器选择"——降低开发者心智负担
 - **Runtime + Tools 分离**：LiteRT Runtime（C++/Kotlin/JS）与转换工具（LiteRT Torch/Quantizer）解耦
 - **端侧 GenAI 路线**：不是只有小模型才能端侧，通过量化（4-bit）可以在手机上跑 LLM
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界]
+  I --> C[LiteRT 编排与运行时]
+  C --> M[模型源 PyTorch TF JAX 或 Hugging Face LiteRT Community 预转换模型 Gemma 4 ASR 图像分类等 待核验具体版本]
+  C --> Q[AI-Edge Quantizer 量化 4-bit 等 待核验精度档位]
+  C --> R[LiteRT V2 Compiled Model 运行时 自动加速器选择 异步执行]
+  C --> H[硬件加速层 GPU ML Drift 后端 OpenCL Metal WebGPU NPU Google Tensor Intel MediaTek Qualcomm TPU]
+  C --> T[LiteRT-CLI 与工具集成 含 Coding Agent 入口 待核验协议]
+  C --> S[会话 状态 审计 2,449 Open Issues 与 NPU 碎片化 风险边界]
+  H --> C
+  M --> Q
+  Q --> R
+  R --> H
+```
 
 ## 定位判断
 **基础设施级**——端侧 AI 推理的标准基础设施。不是"候选"，而是"已是"。作为 TFLite 的继任者，承载 Google 端侧 AI 战略的下一代引擎。所有需要端侧 ML 推理的应用都会（或应该）迁移到 LiteRT。

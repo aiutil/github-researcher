@@ -49,9 +49,37 @@ homepage: "https://technology.robbyant.com/lingbot-map"
 5. **多后端支持**：FlashInfer（推荐）和 SDPA，torch.compile 加速
 6. 在多项基准上超越现有流式和迭代优化方法
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 系统由"模型权重分发 + Python 库/CLI + 推理后端（FlashInfer/SDPA）+ 评估基准套件"四块构成，外部边界是 7 个公开数据集（KITTI/Oxford Spires/VBR/Droid-W/TUM-D/7-scenes/ETH3D）和 HuggingFace/ModelScope | 具体 CLI 名称、API 签名、依赖锁定未在档案中给出，待核验 |
+| 主路径 | 上游调用方加载权重 → Geometric Context Transformer 单次前馈 → Paged KV Cache Attention 处理长序列 → 输出 3D 场景重建；Anchor Context / Pose-Reference Window / Trajectory Memory 在网络内闭环 | 推理图的算子级细节、数据流张量形状未在档案中给出，待核验 |
+| 关键权衡 | 前馈单次推理（~20 FPS @ 518×378，10,000+ 帧）换掉多视角迭代优化，但代价是训练需大量 GPU，边缘部署可行性未验证 | "大量 GPU"未量化，20 FPS 是否包含预处理/后处理未说明，待核验 |
+| 最小 PoC | 在 518×378 分辨率、固定帧率输入下复现一个公开基准（如 7-scenes 或 ETH3D）的指标，对比 SDPA 与 FlashInfer 后端的吞吐与显存，并验证 1,000+ 帧无漂移 | 项目是否提供开箱即用的推理脚本与权重许可未在档案中给出，待核验 |
+
 ## 架构启发
 
 对架构师而言，lingbot-map 的启发是：**从「迭代优化」到「前馈推理」的范式转换**。不仅是 3D 重建，很多需要迭代优化的场景都可能被前馈基础模型替代。Paged KV Cache Attention 处理超长序列的思路也适用于其他需要长上下文的模型。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U["上游应用 / 机器人感知管道"] --> API["Python 库或 CLI 入口"]
+  W["HuggingFace / ModelScope 权重"] --> API
+  API --> C["Geometric Context Transformer 前馈核心"]
+  C --> KV["Paged KV Cache Attention 后端 FlashInfer 或 SDPA"]
+  KV --> C
+  C --> A["Anchor Context"]
+  C --> P["Pose-Reference Window"]
+  C --> T["Trajectory Memory 长程漂移校正"]
+  C --> OUT["3D 场景重建输出"]
+  BENCH["七大数据集 KITTI Oxford Spires VBR Droid-W TUM-D 7-scenes ETH3D"] -.评估。-> C
+  OUT --> HOST["宿主运行时 GPU/CUDA 待核验"]
+```
 
 ## 定位判断
 

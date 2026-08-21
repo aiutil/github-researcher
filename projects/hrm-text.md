@@ -51,10 +51,43 @@ HRM-Text 用层级循环架构（非 Transformer）展示了 130-600x 更少算�
 ### 4. 完整预训练框架
 不只是模型权重，而是完整的预训练工具链：数据准备（data_io）→ tokenization → stratified sampling → 预训练 → 评估 → checkpoint 转换。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | HRM-Text 是一个以 PyTorch + FSDP2 + FlashAttention 3 为底座的层级循环（HRM）预训练框架，对外只暴露数据准备→tokenization→分层采样→预训练→评估→checkpoint 转换的工具链；不在 vLLM / TensorRT-LLM 现有 Transformer 推理生态内。 | 仅来自档案中的 tags 与“完整预训练框架”描述，未审计源码以确认具体接口。 |
+| 主路径 | 数据准备（data_io）→ tokenization → 分层采样 → HRM 层级循环模型预训练 → 评估（GSM8k 84.7% 等）→ checkpoint 转换；1B 模型由 8–16 张 H100 在约 $1000 量级训练得到。 | GSM8k 84.7% 与成本量级来自档案“值得关注”段落，训练硬件前提见“风险”段。 |
+| 关键权衡 | 在“算力/数据极致压缩（130–600x 算力、150–900x 数据）”与“架构新颖、但与 Transformer 推理生态不兼容、规模上限未验证”之间取舍；FlashAttention 3 + FSDP2 是已知的性能/扩展杠杆。 | O(n) vs O(n²)、生态兼容性、规模外推风险均出自档案文字，无独立基准复核。 |
+| 最小 PoC | 单机 8×H100 环境复现 1B HRM-Text GSM8k 评估；只接入一条分层采样数据管线，跑通预训练→checkpoint 转换→评估回路，并记录训练成本、token 数与 GSM8k 复现分数。 | 8–16 H100 与 $1000 成本来自档案“风险”段，复现门槛与硬件前提尚未在源码中独立验证。 |
+
 ## 架构启发
 HRM 架构挑战了 Transformer 在语言模型中的统治地位。如果层级循环架构被证明在小规模上优于 Transformer，可能催生新的模型设计方向。
 
 关键问题：这种优势是否能在更大规模（10B+）上保持？
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    D["数据准备 data_io（待核验）"]
+    K["tokenization"]
+    S["stratified sampling"]
+    P["HRM 层级循环模型预训练<br/>1B 模型 · 8-16×H100 · ≈$1000"]
+    E["评估（GSM8k 84.7%）"]
+    C["checkpoint 转换"]
+    FA["FlashAttention 3 内核"]
+    FS["PyTorch FSDP2"]
+    EXT["vLLM / TensorRT-LLM 等 Transformer 推理生态<br/>当前不支持 HRM（待核验）"]
+
+    D --> K --> S --> P --> E
+    P --> C
+    FA -. 加速 .-> P
+    FS -. 分布式 .-> P
+    P -. 不可直接接入 .-> EXT
+</mermaid>
+```
 
 ## 定位判断
 **学习型。** 主要是学术研究和技术演示。短期内不会成为生产可用模型，但其架构思路值得关注。

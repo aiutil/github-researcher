@@ -40,8 +40,35 @@ autoresearch 的热度几乎完全由 **"Karpathy 个人品牌 + 命题前瞻性
 5. **极简实现:** Karpathy 一贯风格——用最少代码说清核心思想，便于理解和复现
 6. **可扩展性:** 虽基于 nanochat，但其"Agent 驱动研究循环"架构可迁移到其他实验场景
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单 GPU 实验场（nanochat）上的 AI Agent 自循环系统，入口是 GitHub 仓库，外部依赖仅为本地 GPU 与 nanochat 训练库 | 无 README 中的协议/部署描述；编排层组件来自档案推断 |
+| 主路径 | Agent 决策 → 自动训练实验（基于 nanochat）→ 基准评估 → 结果/曲线解读 → 假设回写 → 下一轮实验 | 训练-评估闭环源自档案"关键技术亮点 4"；Agent 自主假设来自亮点 3 |
+| 关键权衡 | "研究自动化"概念广度 vs 530KB 代码实现深度的极度不对称；单 GPU 可及性 vs 突破性 ML 研究对算力的真实需求 | 规模/算力数据来自档案；Agent 假设质量未在档案中验证 |
+| 最小 PoC | 在单 GPU 环境下 fork 仓库，跑通 nanochat 一次完整训练-评估闭环，并审计 Agent 输出假设的可重复性 | License 缺失（档案明示）会限制复用；pushed_at 停在 2026-03 意味着上游不再演进 |
+
 ## 架构启发
 autoresearch 的核心启发是 **"AI 研究本身可以被 AI 自动化"**，哪怕只是在极小尺度上。这触及了 AI 领域最深刻的命题之一：递归自我改进（recursive self-improvement）。Karpathy 用一个朴实的小实验，把"AI 自动做研究"从科幻拉到可运行的代码。更深层的启发是：**研究自动化不一定要从"通用 AI 科学家"起步，可以从"特定训练实验的自动化"这种窄场景验证**。autoresearch 选择 nanochat（已知、可控）作为实验场，是务实的——先证明"窄域研究自动化"可行，再逐步扩展。这种"小处着手、严肃验证"的方法论，比宏大的"AI Scientist"叙事更有工程价值。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    U[使用者或研究者] --> Repo[autoresearch 仓库 530KB Python]
+    Repo --> Agent[AI Agent 自主决策层]
+    Agent --> Nano[nanochat 训练库 Karpathy 极简 LLM]
+    Nano --> GPU[单 GPU 实验场]
+    GPU --> Nano
+    Nano --> Eval[基准评估与训练曲线]
+    Eval --> Agent
+    Agent --> Hypoth[新假设与下一轮实验 参数]
+    Hypoth --> Agent
+    Note[License 未声明 待核验 协议与部署形态] -.-> Repo
+```
 
 ## 定位判断
 **学习型/启发型项目（非生产工具）。** autoresearch 不是要被部署到生产环境的产品，而是一个**概念验证与思想实验**。它的价值在于激发社区对"AI 自动化研究"的讨论与实践。定位类似 micrograd、nanoGPT——用极简代码传递深刻思想。它不会成为平台或基础设施，但会影响一批研究者去认真探索"AI 研究自动化"。Karpathy 在这里扮演的是"思想发起者"角色，项目本身是引子。

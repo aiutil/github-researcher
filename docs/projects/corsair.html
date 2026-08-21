@@ -6,7 +6,7 @@
     <title>corsairdev/corsair | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,62 @@
 <li><strong>中间件架构</strong>：支持拦截器模式做认证、日志、转换</li>
 <li><strong>连接器生态</strong>：可能支持常见 SaaS（Slack/Notion/数据库等）的预置连接器</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>位于上游渠道、模型推理与外部系统/数据源之间的集成中间件层，统一抽象各类异构连接</td>
+<td>仅基于档案"AI Agent 集成层"定位与 middleware/agent-integration 标签推导；具体协议（如 MCP/HTTP/gRPC）、部署形态与运行时细节未在档案中确认</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 入口与身份 → 编排运行时 → 调用模型与工具 → 会话/状态/审计回写</td>
+<td>路径结构来自档案架构师速览与架构启发节；连接器清单、鉴权方式与持久化方案待源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展速度（连接器广度）vs 权限治理、可观测性与供应商耦合之间的平衡；与 MCP/通用 API 网关的边界划分</td>
+<td>仅由"Agent-native 设计""中间件架构""与 MCP 关系不清"等表述推导；缺乏基准或生产案例量化证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单入口 + 单模型 + 1~2 个最小权限工具，启用拦截器做认证/日志/审计，验证可观测与退出路径后再扩面</td>
+<td>来自档案"采用建议"；具体连接器、权限模型与 SLO 指标在档案中未列，属待核验项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>Agent 需要专用集成层</strong>：传统 ESB/iPaaS 不适合 agent 的动态请求模式</li>
 <li><strong>中间件分离关注点</strong>：将集成逻辑从 agent 逻辑中分离，两者独立演进</li>
 <li><strong>Agent 时代的 API Gateway</strong>：类似 Web 时代的 API Gateway，但为 agent 交互模式设计</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统 待核验具体渠道] --> I[入口与身份边界 鉴权方式待核验]
+    I --> C[项目编排与运行时 TypeScript]
+    C --> M[模型或推理服务 供应商耦合度待核验]
+    C --> T[工具与外部系统 连接器生态待核验]
+    C --> S[会话 状态 审计 持久化方案待核验]
+    M --> C
+    T --> C
+    E[外部边界 与 MCP LangChain Zapier API Gateway 的关系未明] -.-> C
+    R[风险边界 213 forks 社区参与有限 文档深度待核验] -.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>早期基础设施候选</strong>。定位独特（agent 集成层），方向符合 agent 生态演进趋势。目前处于成长期，需要更多采用案例验证。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>信息不透明</strong>：描述简短，技术细节文档可能不足</li>
 <li><strong>与 MCP 的关系不清</strong>：MCP 已经在做 agent 工具连接标准，Corsair 的差异化需明确</li>
@@ -72,16 +119,16 @@
 <li><strong>企业采用门槛</strong>：中间件类产品需要深度集成，试错成本高</li>
 <li><strong>小团队维护</strong>：213 forks 说明社区参与度有限</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs MCP</strong>：MCP 是协议标准，Corsair 可能是 MCP 的实现层/管理层</li>
 <li><strong>vs LangChain Tools</strong>：LangChain Tools 嵌入框架，Corsair 独立部署</li>
 <li><strong>vs Zapier AI Actions</strong>：Zapier 更偏 SaaS 集成平台，Corsair 更偏开发者基础设施</li>
 <li><strong>vs Kong/APISIX</strong>：通用 API 网关 vs Agent 专用集成层</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得关注。</strong> Agent 集成层是新概念，如果 MCP 生态成熟，这类中间件有存在的必要。但需等待更多技术细节和使用案例。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>与 MCP 协议的关系定位</li>
 <li>连接器生态系统建设情况</li>

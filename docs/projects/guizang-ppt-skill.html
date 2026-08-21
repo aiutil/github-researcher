@@ -6,7 +6,7 @@
     <title>Guizang PPT Skill | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,29 +46,78 @@
 <li><strong>WebGL hero 背景</strong>：用 WebGL 渲染动态背景，视觉效果出众</li>
 <li><strong>单文件 HTML 输出</strong>：所有资源内联，零依赖分发</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Guizang PPT Skill 是 Claude Code 生态内的 Skill 插件，入口为提示词，输出为单文件 HTML 幻灯片（内联资源、WebGL 背景），仅依赖 Claude Code 宿主</td>
+<td>HTML 单文件输出与 WebGL 背景来自档案；运行宿主边界、模型供应商、权限模型未在档案中确认（待核验）</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>提示词 → Claude Code Skill 调用 → 模板/主题/布局选择 → WebGL 背景渲染 → 单文件 HTML 输出</td>
+<td>10 种布局、5 套主题、WebGL 背景、单文件输出均来自档案；编排与渲染管线细节未披露（待核验）</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单文件零依赖分发 vs 传统 PPTX 办公场景接受度；WebGL 视觉差异化 vs 受众设备兼容性与可访问性；模板化快速生成 vs 10 种布局的创造力上限</td>
+<td>档案已点明"HTML vs PPTX"风险与"模板天花板"风险；兼容性与可访问性数据档案未提供（待核验）</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>固定 1 套主题 + 1 种布局，单文件 HTML，关闭外部资源，离线打开验证渲染、WebGL 背景与排版；评估在非 Claude Code 环境中的可移植性</td>
+<td>热度与评分（2 周 5K stars）不作为生产可用性证据；Claude Code 宿主外的运行方式档案未给出（待核验）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent Skill 封装为"输入提示词 → 输出成品"的黑盒模式</li>
 <li>单文件输出设计适合 Agent 生成的无状态特性</li>
 <li>布局模板化 + 渲染引擎分离的架构</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者提示词] --> I[Claude Code Skill 入口 待核验:宿主协议]
+    I --> C[Skill 编排与模板选择 待核验:实现细节]
+    C --> L[布局库 10种 待核验:扩展机制]
+    C --> H[主题库 5套 待核验:扩展机制]
+    C --> W[WebGL 背景渲染]
+    L --> O[单文件 HTML 输出 资源内联]
+    H --> O
+    W --> O
+    O --> V[浏览器/演示环境 待核验:兼容性范围]
+    C --> S[Claude Code 生态绑定 风险边界]
+    V -.受限于.-> S
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>Claude Code Skill 生态中的"内容生成"类工具。不是平台，但有潜力成为 PPT Skill 的标杆实现。</p>
-<h2 id="_7">风险 / 屏限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屏限 / 泡沫点</h2>
 <ol>
 <li><strong>Claude Code 绑定</strong>：完全依赖 Claude Code 生态，可移植性差</li>
 <li><strong>模板天花板</strong>：10 种布局可能很快遇到创造力瓶颈</li>
 <li><strong>HTML vs PPTX</strong>：HTML 输出在传统办公场景中接受度有限</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>PPT Master</strong>（11.6K）：直接竞品，但走原生 PPTX 路线</li>
 <li><strong>Open Slide</strong>（1.3K）：为 Agent 构建的幻灯片框架，更通用</li>
 <li><strong>Open Design</strong>（27.3K）：更大的设计平台，PPT 只是其中一部分</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。作为 Agent Skill 生态的代表项目，值得跟踪其模板扩展和格式支持进展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否增加 PPTX 导出支持</li>
 <li>布局模板的更新频率和社区贡献情况</li>

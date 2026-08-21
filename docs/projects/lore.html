@@ -6,7 +6,7 @@
     <title>EpicGames/lore | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,60 @@
 <li><strong>分布式架构</strong>：保留 Git 的分布式优势</li>
 <li><strong>可能的分支创新</strong>：针对 monorepo 的分支性能优化</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>面向"Git 痛点场景（monorepo / 大文件 / 二进制资产）"的下一代 VCS 客户端与本地仓库运行时，外部边界为 Git 生态（GitHub/GitLab/CI）与现有 VCS（Git、Perforce Helix、Sapling、JJ）；架构档案未给出源码级模块切分。</td>
+<td>仅基于"version-control, vcs, open-source, rust, next-gen"标签与定位描述，不含 README 证实的组件清单。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户/客户端 → Rust 实现的 Lore 核心（内容寻址 + 分支优化）→ 本地仓库对象存储；潜在主路径还包括与 Git/UE 资产的互操作通道，但具体协议与传输方式档案未证实。</td>
+<td>"Rust 实现""下一代数据模型""分布式架构""大文件支持"为定位级描述，未见 API/CLI/传输层细节。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>大文件/分支性能 vs Git 互操作性；Epic 内部驱动 vs 社区通用性；Rust 系统级安全/性能 vs 新 VCS 生态稀缺风险；自建生态 vs 依附 GitHub/CI。</td>
+<td>权衡来自档案"风险/局限/与同类项目的关系"段落，性能基准、与 Git 互操作、UE 集成均列为"待核验"。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用一个含大体积二进制资产（如 UE 资源）的真实 monorepo 路径跑通：提交/分支/合并 → 验证大文件性能、错误恢复、与 Git 的双向互操作 → 把 Git 生态适配（CI、托管平台）作为退出/回滚路径验收项。</td>
+<td>档案未提供 PoC 步骤，需结合待发布的"设计白皮书与技术架构文档"才能落地验证。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>Git 不是终点</strong>：版本控制仍有创新空间，尤其在特定领域</li>
 <li><strong>Rust for system tools</strong>：VCS 这种系统级工具用 Rust 重写是合理选择</li>
 <li><strong>游戏行业驱动</strong>：游戏开发的极端需求催生基础设施创新</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或客户端] --> C[Lore 核心: Rust 实现的下一代 VCS]
+    C --> S[本地仓库与对象存储]
+    C --> B[大文件与二进制资产处理 待核验]
+    C --> I[与 Git 的互操作通道 待核验]
+    I --> G[外部边界: Git 生态 GitHub GitLab CI]
+    S --> P[外部边界: Perforce Helix Sapling JJ 等同类 VCS]
+    C --> R[状态/风险边界: Epic 战略调整与 VCS 迁移成本]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>高潜力基础设施候选</strong>。如果成功，可能成为游戏/媒体行业的标准 VCS，甚至挑战 Git 在某些领域的地位。但 VCS 迁移成本极高，普及需要时间。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>VCS 迁移成本极高</strong>：生态（GitHub/GitLab/CI）都围绕 Git 构建</li>
 <li><strong>Epic 项目维护风险</strong>：Epic 可能因战略调整放弃项目</li>
@@ -72,16 +117,16 @@
 <li><strong>社区采用门槛</strong>：没有 GitHub 等平台支持，新 VCS 难以推广</li>
 <li><strong>与 Git 的互操作</strong>：如果不能与 Git 无缝互操作，采用难度极大</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Git</strong>：Git 通用性强，Lore 专攻大规模/大文件场景</li>
 <li><strong>vs Perforce (Helix)</strong>：Perforce 是闭源付费的游戏行业标准，Lore 是开源替代</li>
 <li><strong>vs Sapling (Meta)</strong>：Meta 的 Sapling 也解决 monorepo 问题，定位接近</li>
 <li><strong>vs JJ (Jujutsu)</strong>：JJ 是 Git 兼容的新 VCS，Lore 可能不完全兼容</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪。</strong> 新 VCS 极其罕见且影响深远。Epic 的投入说明有真实需求。即使不取代 Git，也可能成为特定行业的标准。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>设计白皮书和技术架构文档</li>
 <li>与 Git 的互操作能力（关键采用因素）</li>

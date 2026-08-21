@@ -35,8 +35,36 @@ LLM 应用开发的"冷启动"难题：开发者知道 RAG、Agent、Function Ca
 - **Agent 模式**：包含多 Agent 协作的示例应用
 - **部署友好**：Docker 支持，Streamlit 一键启动
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | awesome-llm-apps 是一个由 100+ 独立 LLM 应用模板组成的"集合库"（collection/awesome list），定位为参考实现而非单一可部署系统；真正被部署的边界落在使用者挑选的具体子应用上。 | 档案"它解决的问题""定位判断"明确为模板集合；仓库语言虽标 Python，但子应用可能跨语言，标签 agents/llms/python/rag 不构成完整系统边界证据。 |
+| 主路径 | 子应用入口（Streamlit UI/Docker） → 应用编排（基于 LangChain/LlamaIndex） → 模型 Provider（OpenAI/Anthropic/Ollama，待核验具体分布）+ 向量库（Pinecone/ChromaDB/Weaviate） → 状态/会话回写。 | 档案"关键技术亮点""上游依赖"直接列出 Provider 与向量库组合，但每个子应用的依赖矩阵差异未核验；具体编排框架占比未披露。 |
+| 关键权衡 | 模板"数量覆盖广度" vs "单应用生产可用性深度"之间的取舍；并且子应用天然与上游 LangChain/API 紧耦合，API 变更即破坏。 | 档案"风险/局限/泡沫点"明确点名"质量参差""深度不足""维护压力"；但未给出子应用版本管理或 SLA 数据。 |
+| 最小 PoC | 选 1 个 RAG 子应用 → 单 Provider（Ollama 本地）+ ChromaDB → Streamlit 本地启动 → 增加审计日志与退出路径 → 通过后再扩面。 | "采用建议"已建议"单一渠道、最小工具权限、可审计日志"；具体子应用列表、依赖矩阵、Docker 入口是否齐全须以仓库子目录核验。 |
+
 ## 架构启发
 该项目证明了一个重要的产品洞察：在 AI 应用层，"应用模板"的价值可能高于"开发框架"。开发者更倾向于从一个完整可运行的应用开始裁剪，而非从框架开始构建。这与传统软件的"脚手架工具"（如 create-react-app）形成有趣对比。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 Streamlit UI Docker 启动]
+    I --> C[应用编排层 基于 LangChain 或 LlamaIndex 待核验具体子应用依赖]
+    C --> M[模型 Provider OpenAI Anthropic Ollama 待核验分布]
+    C --> V[向量数据库 Pinecone ChromaDB Weaviate 待核验子应用覆盖]
+    C --> T[外部工具与数据源 模板内嵌工具 调用方式待核验]
+    C --> S[会话与状态回写 持久化与审计方案待核验]
+    M --> C
+    V --> C
+    T --> C
+    S --> R[维护与版本风险 API 变更导致模板过时 待核验版本策略]
+</mermaid>
+```
 
 ## 定位判断
 **LLM 应用开发的学习资源和启动模板库**。不是框架，不是平台，而是"可运行的参考实现集合"。对初学者是最佳起点，对资深开发者可作为快速原型的基础。

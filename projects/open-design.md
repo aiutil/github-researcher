@@ -38,11 +38,39 @@ Anthropic 发布 Claude Design 后引爆了"AI 做设计"的需求，但 Claude 
 3. **5 种视觉方向**（Editorial Monocle / Modern Minimal / Tech Utility / Brutalist / Soft Warm），每种自带 OKLch 色板 + 字体栈。
 4. **Agent Runtime 架构**：本地 daemon 启动 CLI，Agent 获得真实的 Read/Write/Bash/WebFetch 能力，操作真实文件系统。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Open Design 是覆盖 Coding Agent（Claude Code/Codex/Cursor/Gemini CLI/OpenCode/Qwen/Copilot）、本地 Runtime daemon、71 个 Design Systems 与 19 个 Composable Skills 的编排层，本身不造 Agent | 边界由 TypeScript 语言、BYOK 标签、Agent Runtime 架构描述与多 CLI 支持列表共同界定；具体守护进程通信协议未在档案中给出 |
+| 主路径 | 使用者经 Coding Agent 调用 → 本地 daemon 暴露 Read/Write/Bash/WebFetch 真实文件系统能力 → Skill + Design System 组合 → 返回设计产物（原型/PPT/页面/Dashboard 等） | 路径依据"Agent 获得真实的 Read/Write/Bash/WebFetch 能力，操作真实文件系统"及 19 个 Skill 列表；会话持久化、错误恢复机制未披露 |
+| 关键权衡 | 以"不造 Agent，只做 Skill+Design System+Runtime 层"换取上线速度与生态广度，代价是设计质量上限受底层 LLM 视觉理解力制约，且 71 个 Design Systems 的持续维护成长期负担 | 权衡直接取自"架构启发"段；可观测性、安全沙箱、模型供应商耦合度档案未提 |
+| 最小 PoC | 选定单一 Coding Agent（建议 Cursor 或 Claude Code），固定 1 套 Design System（如 Linear）+ 1 个 Skill（如 dashboard），在受控目录开启 daemon，开启审计日志，验证产物可复现与权限可回收 | PoC 设计依据 Agent Runtime + BYOK + 19 Skills/71 DS 事实；具体审计日志接口、最小权限粒度需源码核验 |
+
 ## 架构启发
 
 **设计哲学**：不造 Agent，利用现有最强的 Coding Agent。Open Design 只做 Skill 层 + Design System 层 + Runtime 层。
 
 **Trade-off**：依赖外部 Agent 的能力上限，设计质量受限于底层 LLM 的设计"品味"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> CA[外部 Coding Agent<br/>Claude Code / Codex / Cursor /<br/>Gemini CLI / OpenCode / Qwen / Copilot]
+    CA --> OD[Open Design 编排层<br/>TypeScript]
+    OD --> RT[本地 Agent Runtime daemon<br/>Read/Write/Bash/WebFetch]
+    RT --> FS[真实文件系统<br/>本地目录]
+    OD --> SK[19 个 Composable Skills<br/>prototype/deck/mobile/dashboard/...]
+    OD --> DS[71 个品牌级 Design Systems<br/>Linear/Stripe/Vercel/Airbnb/Tesla/Notion/Apple/...]
+    DS --> VS[5 种视觉方向<br/>OKLch 色板 + 字体栈<br/>待核验]
+    OD --> M[BYOK 模型层<br/>支持多供应商<br/>具体协议待核验]
+    RT --> AUD[审计与可观测边界<br/>具体日志接口待核验]
+    SK -.天花板受限于底层 LLM 视觉理解力.-> OD
+    DS -.71 套持续维护负担.-> OD
+```
 
 ## 定位判断
 **工具型**，有平台化潜力。目前是高质量工具，如果 Skill 生态持续繁荣，可能成为 Agent 设计工作流的标准框架。

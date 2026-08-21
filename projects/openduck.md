@@ -46,6 +46,15 @@ DuckDB 已成为分析领域的「SQLite」—— 单进程、零配置、高性
 4. **DuckDB 原生 Catalog**：远程表参与 JOIN、CTE、优化器，如同本地表
 5. **Rust gateway**：token 认证、worker 注册、亲和路由、计划分割、背压
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 客户端 DuckDB 进程 → OpenDuckCatalog（StorageExtension/Catalog 抽象）→ [gRPC + Arrow IPC] → Rust Gateway → Worker（DuckDB 实例）+ Differential Storage（append-only 分层 + PostgreSQL 元数据 + 对象存储 sealed layers） | 边界描述基于档案引用的公开资料，4 个 RPC（2 数据面 + 2 生命周期）、worker 亲和路由、背压等具体机制需源码核验 |
+| 主路径 | 一行 `ATTACH 'openduck:mydb?endpoint=http://localhost:7878&token=xxx'` → Catalog 暴露远程表 → Gateway 分割计划、标注 LOCAL/REMOTE 算子、插入 bridge → Worker 执行 → 快照一致性读取返回 Arrow | 计划分割算法的正确性、性能、双执行拆分边界在档案中未给出基准 |
+| 关键权衡 | 开放协议可替换后端（任何 Arrow 返回服务）vs 早期阶段功能完整度未知；DuckDB 原生 Catalog 一等公民体验 vs 双执行引擎计划分割的优化复杂度；MIT 自托管 vs 社区规模小、DuckDB Labs 可能推出竞争方案 | 性能、稳定性、查询优化正确性档案中均未提供基准或案例 |
+| 最小 PoC | 单机部署 Gateway + 一个 Worker，挂载 PostgreSQL 元数据 + 本地对象存储，跑 JOIN/CTE 验证远程表参与本地优化器的能力；验收项含 token 认证链路、取消 RPC、快照一致性、失败恢复、SLO 退出路径 | 生产部署形态、HA 配置、多 worker 亲和策略细节档案未述，需源码/文档核验 |
+
 ## 架构启发
 
 ```
@@ -56,6 +65,23 @@ DuckDB Client → OpenDuckCatalog → [gRPC + Arrow IPC] → Gateway (Rust) → 
 ```
 
 **核心启发：分析数据库的「本地优先 → 按需分布式」演进路径**，与 SQLite → LiteFS 的思路类似。开放协议设计（4 个 RPC）让后端可替换，是数据基础设施的好实践。差分存储的 append-only + snapshot 模式与 lakehouse 架构（Iceberg/Delta）思路一致。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Client[DuckDB Client 一行 ATTACH] --> Catalog[OpenDuckCatalog StorageExtension and Catalog]
+    Catalog -->|gRPC + Arrow IPC 待核验| Gateway[Rust Gateway token 认证 计划分割 亲和路由 背压]
+    Gateway -->|2 数据面 RPC 执行 取消| Workers[Worker DuckDB 实例]
+    Gateway -->|2 生命周期 RPC 注册 心跳| Workers
+    Workers --> DiffStore[Differential Storage append-only 分层 sealed layers 快照一致性]
+    DiffStore --> ObjStore[对象存储 待核验]
+    DiffStore --> PGMeta[PostgreSQL 元数据 待核验]
+    Catalog -.本地优先 双执行.-> Workers
+    Workers -.LOCAL REMOTE bridge 算子.-> Gateway
+```
 
 ## 定位判断
 

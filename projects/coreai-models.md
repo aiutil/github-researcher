@@ -40,30 +40,33 @@ Apple 端侧 AI 模型导出/运行时/Skills 全栈开源生态，Core AI 框�
 - **Agent Skills** — working-with-coreai、model-authoring、model-compression-exploration 三个官方 Skill
 - **CLI 工具** — 命令行直接在 Mac 上运行导出的模型
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 该项目是 Apple 端侧 AI 模型从 HuggingFace 导出到 Core AI Framework 推理之间的"导出 + 压缩 + Swift 运行时 + Agent Skills"工具链层，外部边界包含 HuggingFace 模型源、macOS/iOS App 与 Apple Core AI Framework；不覆盖训练、跨平台运行时与服务器推理。 | 仅依据档案列出的 Python/Swift 双语言、`.aimodel` 格式、Core AI Framework、Agent Skills 三件套；具体编排协议与持久化方式未在档案中给出。 |
+| 主路径 | HuggingFace 模型 → `coreai-torch` 导出原语 → `.aimodel` → `coreai-opt` 量化/调色板压缩 → Swift 运行时对接 Core AI Framework → macOS/iOS App 端侧推理；Agent Skills 作为开发者侧辅助而非推理请求主路径。 | 主路径来自档案"模型导出管线—Python 原语—Swift 运行时"三段描述与架构图；推理时延、KV Cache 实现细节未证实。 |
+| 关键权衡 | 在 Apple 生态专精（统一 `.aimodel` 格式与 Core AI 集成）与跨平台可移植性之间，Apple 选择前者；性能/调优收益换取对 macOS/iOS 27+ 与 Xcode 27+ 的硬绑定。 | 由"Apple 生态锁定""版本要求高"两条风险条目得出；权衡中的可观测性、供应商耦合细节档案未涉及。 |
+| 最小 PoC | 取一个 HuggingFace 模型，经 `coreai-torch` 导出与 `coreai-opt` 压缩得到 `.aimodel`，通过 Swift 包集成在 macOS 27+ 上用 CLI 跑通推理；验收点必须包含模型兼容性、量化后精度/体积、所需系统版本三项。 | PoC 步骤由档案明示的导出/压缩/CLI/Swift 运行时四件套组合而成；精度损失、SLO 与退出路径档案未提供，需以源码/文档核验。 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph 导出层["模型导出 (Python)"]
-        A[HuggingFace 模型] --> B[coreai-torch<br/>导出原语]
-        B --> C[.aimodel 格式]
-    end
-    
-    subgraph 优化层["模型压缩 (coreai-opt)"]
-        C --> D[量化/调色板压缩]
-        D --> E[优化后 .aimodel]
-    end
-    
-    subgraph 运行时层["Swift 运行时"]
-        E --> F[Core AI Framework]
-        F --> G[macOS / iOS App]
-    end
-    
-    subgraph 开发者工具["Agent Skills"]
-        H[working-with-coreai] --> D
-        I[model-authoring] --> B
-        J[model-compression] --> D
-    end
+flowchart LR
+    HF["HuggingFace 模型<br/>(外部边界)"] --> Torch["coreai-torch 导出原语<br/>Python 原语 / BC1S / KV Cache 模式<br/>(待核验:具体算子清单)"]
+    Torch --> AIModel[".aimodel 格式"]
+    AIModel --> Opt["coreai-opt<br/>量化 / 调色板压缩"]
+    Opt --> AIModel2["优化后 .aimodel"]
+    AIModel2 --> Runtime["Swift 运行时<br/>(Swift 包)"]
+    Runtime --> CoreAI["Core AI Framework<br/>(外部边界:Apple 平台组件)"]
+    CoreAI --> App["macOS / iOS App<br/>(需 macOS 27+/iOS 27+)"]
+    Skills["Agent Skills<br/>working-with-coreai<br/>model-authoring<br/>model-compression-exploration"] -.辅助.-> Torch
+    Skills -.辅助.-> Opt
+    Risk["风险边界:Apple 生态锁定<br/>License 未明确<br/>生态早期 / 模型种类有限"] -.约束.-> Runtime
 ```
 
 **启发 1：** 端侧 AI 的关键不仅是推理性能，更是从训练到部署的完整工具链。

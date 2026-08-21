@@ -51,9 +51,33 @@ url: "https://github.com/cathrynlavery/diagram-design"
 5. ***New in 2.0 — the Loop: flywheels with a shared-memory hub. The dashed lines are the write-backs.***
 6. **27 types. One Claude Code skill. Your brand in 60 seconds — the skill reads your website and maps co**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目是面向 Claude Code 的 29 种"editorial"图表生成工件集，自包含 HTML+SVG 输出，不依赖阴影或 Mermaid 渲染链路；边界止于"Claude Code skill 输入 + 浏览器/文档渲染 SVG/HTML" | 档案仅确认 HTML、SVG 自包含、29 种类型与"one Claude Code skill"，未列出 skill 协议细节 |
+| 主路径 | 用户调用 Claude Code skill → skill 读取用户素材（网站/品牌） → 映射为预设图表模板 → 输出自包含 HTML/SVG | "skill reads your website and maps co" 在档案中截断，映射规则与模板编排机制待核验 |
+| 关键权衡 | 设计一致性（editorial 美学、固定无阴影风格）与模板覆盖广度（29 种类型）之间的取舍；以自包含交付换取运行时不依赖 Mermaid | 风格约束明确为 "No shadows, no Mermaid-slop"，但可定制深度、版本兼容性与 CSS 主题机制档案未给出 |
+| 最小 PoC | 选取 1–2 种图表类型（如 architecture、loop），用最小品牌素材驱动 skill 生成 HTML/SVG，核验：是否真正自包含、能否在普通浏览器/文档中正确渲染、是否复用同一视觉系统 | 输出是否完全离线自包含、skill 调用接口与失败回退路径档案未证实 |
+
 ## 架构启发
 
 从 cathrynlavery/diagram-design 的设计来看，核心思路是 **"29 editorial diagram types for Claude Code. Self-contained H"**。这反映了 HTML 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户调用 Claude Code skill] --> S[Claude Code skill 解析品牌/素材 待核验]
+    S --> M[模板映射 29 种 editorial 图表类型]
+    M --> O[生成 Self-contained HTML + SVG]
+    O --> R[浏览器或文档渲染 无 Mermaid 依赖]
+    O --> B[外部边界 第三方素材/网站读取 待核验]
+    M --> C[控制边界 风格约束 No shadows No Mermaid-slop]
+    O --> X[风险边界 模板覆盖与定制深度 待核验]
+```
 
 ## 定位判断
 

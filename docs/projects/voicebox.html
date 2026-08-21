@@ -6,7 +6,7 @@
     <title>voicebox | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,29 +51,77 @@
 <li><strong>Voice personas：</strong> 给声音附加人格描述，bundled LLM 做语气调整。Agent 不只是说话，而是"有性格地说话"。</li>
 <li><strong>Stories editor：</strong> 多轨时间线编辑，可以做播客/对话/叙事类内容。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地桌面端语音 I/O 编排层，统一 7 个 TTS 引擎（含 Qwen3-TTS/LuxTTS/Chatterbox/Kokoro 等）+ Whisper 类 STT + 零样本 voice cloning，通过内置 MCP server 向 Agent 暴露 <code>voicebox.speak</code> 类 tool</td>
+<td>仅依据档案列出的引擎名称、tags（local-first/mcp/tauri）与"7 TTS 引擎可切换"等描述；具体引擎协议、模型权重来源与硬件后端（MLX/CUDA）细节未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游 Agent/用户 → MCP tool call 或本地 UI（Tauri） → 编排层选引擎 → 本地推理 → 音频回写到会话/全局 dictation 热键或 stories 多轨时间线</td>
+<td>路径中的"编排层/会话/审计"是按 tags 与架构启发做的抽象，源码级别的模块边界、持久化与 IPC 协议未提供</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>7 引擎统一 API 的可扩展性 vs 引擎质量参差；本地隐私/成本优势 vs 本地 GPU 依赖与 Linux 需从源码构建；MCP/Agent 接入红利 vs 单一维护者（jamiepine）的 bus factor 风险</td>
+<td>权衡判断基于档案中"引擎水平不一"、"Linux 支持不完整"、"商业模式不明"三条风险描述；未量化性能/成本数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS/Windows 桌面（GPU 可用）跑通：1) 加载一个 TTS 引擎生成短音频；2) 用 Whisper STT + 全局热键做一次 dictation；3) 启动 MCP server 由 Claude Code/Cursor 触发一次 <code>speak</code> tool call</td>
+<td>PoC 步骤由档案中"Global dictation hotkey/Whisper-based STT/MCP server"直接推导；具体热键、引擎默认顺序、MCP 客户端兼容矩阵需以源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>voicebox 的启发是"Voice I/O 的统一"：
 - 传统方案：TTS 一家 + STT 一家 + Voice Cloning 一家 = 三套 API、三次付费
 - voicebox：输入输出一体化，本地运行，MCP 接入 Agent</p>
 <p>对架构师的意义是：Voice I/O 正在成为 Agent 技术栈的标准组件，不再是"特殊功能"。设计 Agent 应用时应该考虑语音输入和输出。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游 Agent] --> I[MCP tool call 或桌面 UI 入口]
+    I --> C[voicebox 编排层 Tauri/TS]
+    C --> M[TTS 引擎池 Qwen3-TTS LuxTTS Chatterbox Turbo Kokoro HumeAI TADA 等 7 选 1 待核验]
+    C --> STT[Whisper 类 STT + 全局 dictation 热键 待核验]
+    C --> CL[零样本 voice cloning 几秒音频 待核验]
+    M --> C
+    STT --> C
+    CL --> C
+    C --> O[音频输出 多轨 stories 编辑器]
+    C --> R[风险边界 本地 GPU 依赖 Linux 需从源码构建 bus factor 低 商业模式未明]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>L5 应用层的工具型产品。不是基础设施（不提供 voice API 平台），而是开发者工具。但 MCP server 让它具有了 Agent 生态接入能力。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>本地资源需求：</strong> Voice cloning 和 TTS 需要本地 GPU（MLX/CUDA），低端设备体验受限。</li>
 <li><strong>TTS 引擎质量参差：</strong> 7 个引擎水平不一，用户需要了解各引擎优劣才能选对。</li>
 <li><strong>Linux 支持不完整：</strong> 需要从源码构建，没有预编译二进制。</li>
 <li><strong>商业模式不明：</strong> 纯开源，如何持续维护？jamiepine 个人项目，bus factor 低。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs ElevenLabs：</strong> ElevenLabs 是云端 SaaS（按月付费），voicebox 是本地免费。质量上 ElevenLabs 仍领先，但隐私和成本 voicebox 优势明显。</li>
 <li><strong>vs WisprFlow：</strong> WisprFlow 专注语音输入（dictation），voicebox 输入输出都做。</li>
 <li><strong>vs Piper TTS：</strong> Piper 是纯 TTS 引擎，voicebox 是完整工作室（TTS+STT+cloning+editing）。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Voice I/O 是 Agent 交互的重要方向，voicebox 是目前最完整的开源方案。建议每月跟踪。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>TTS 引擎生态扩展——是否有新引擎加入</li>
 <li>MCP server 采纳情况——是否成为 Agent 语音输出的标准方案</li>

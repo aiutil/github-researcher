@@ -6,7 +6,7 @@
     <title>shadcn/improve | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,46 +53,90 @@
 <li><strong>隔离执行</strong> — <code>execute</code> 模式在 worktree 隔离中派发便宜模型，审查 diff 后报告</li>
 <li><strong>对账机制</strong> — <code>reconcile</code> 命令验证已完成、刷新漂移、解除阻塞</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>shadcn/improve 是位于入口渠道、模型供应商、工具/数据源之间的 Markdown/Skill 类编排层：文档化"顾问模型（昂贵）"与"执行模型（便宜）"分层，并经 plans/*.md 计划文件做交接</td>
+<td>仅基于档案中语言/标签/架构启发图与文本描述，具体协议、运行时、部署形态"待核验"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>顾问模型串联 Recon→Audit（9 维并行）→Vet→Prioritize→Plan；执行模型读取 plans/*.md，在 worktree 隔离中实现并跑测试/lint；最后由顾问审查 diff，通过则合并，失败回退到执行</td>
+<td>主路径由档案"关键技术亮点"与"架构启发"图明示，但子 Agent 并发调度器、测试/lint 命令集、worktree 持久化"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>计划质量与模型能力耦合（昂贵模型审计 + 便宜模型执行） vs. 误报剔除与对账成本；自包含计划提升可审计性 vs. 计划漂移风险（reconcile 仅作缓解）</td>
+<td>权衡由档案"风险/局限"与亮点推断；具体错误率、模型成本、吞吐数据"待核验"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一代码库 + 单一执行渠道 + 最少工具权限；仅启用 Recon→Audit→Plan→execute→reconcile 主链；关键验收：审计 finding 带 file:line、计划可独立执行、worktree 隔离可回退、停止条件与对账生效</td>
+<td>验证门禁取自档案"自包含计划/对账机制"；许可证缺位、缺乏大规模使用数据须在 PoC 前澄清</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
 <pre class="mermaid">flowchart TB
     subgraph 顾问模型["顾问模型 (昂贵)"]
-        A[Recon: 仓库映射] --> B[Audit: 9维并行审计]
-        B --> C[Vet: 验证发现]
+        A[Recon: 仓库映射] --> B[Audit: 9维并行审计<br/>正确性/安全/性能/测试/技术债/依赖/DX/文档/方向]
+        B --> C[Vet: 验证发现 去误报]
         C --> D[Prioritize: 影响力排序]
-        D --> E[Plan: 生成计划文件]
+        D --> E[Plan: 生成 plans/*.md 自包含计划]
     end
-    
     subgraph 执行模型["执行模型 (便宜)"]
-        F[读取计划] --> G[隔离 worktree 实现]
-        G --> H[运行测试/ lint]
+        F[读取 plans/*.md] --> G[隔离 worktree 实现]
+        G --> H[运行测试/lint]
     end
-    
+    subgraph 风险边界["风险与治理边界"]
+        R1[Reconcile: 验证已完成/刷新漂移/解除阻塞]
+        R2[许可证与品牌风险: 无 License<br/>热度由 shadcn 品牌驱动]
+    end
+    入口["入口渠道/请求<br/>(agent-skills 调用)"] --> A
     E -->|plans/*.md| F
-    H -->|diff| I[顾问审查]
+    H -->|diff| I{顾问审查 diff}
     I -->|通过| J[合并]
     I -->|失败| F
+    I --> R1
+    R1 -.漂移/阻断反馈.-> E
+    外部边界["外部: 模型供应商 + 工具/数据源<br/>(协议/SDK 待核验)"] --- 顾问模型
+    外部边界 --- 执行模型
+    R2 -.治理约束.-> 顾问模型
 </pre>
 <p><strong>启发 1：</strong> Agent 工作流应该区分「需要智能的环节」和「需要执行的环节」，用不同模型处理。
 <strong>启发 2：</strong> 「计划是产品」的哲学意味着 Agent 的产出不一定都是代码，高质量的规格说明本身就是价值。
 <strong>启发 3：</strong> 验证门禁和对账机制是保证 Agent 工作流可靠性的关键。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> 这不仅是一个工具，而是一个编排模式的参考实现。如果「顾问-执行者」模式成为 Agent 工作流标准，improve 就是这个标准的基础。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>品牌驱动 &gt; 技术验证</strong> — 首日热度很大程度来自 shadcn 品牌，缺乏大规模使用验证</li>
 <li><strong>计划质量依赖模型</strong> — 如果模型能力不足，审计和计划质量会严重下降</li>
 <li><strong>Agent Skill 生态碎片化</strong> — 目前各项目各自为战，缺乏统一标准</li>
 <li><strong>无 License</strong> — 目前没有明确开源协议</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>guard-skills</strong> — 互补关系，guard-skills 做质量门禁，improve 做审计编排</li>
 <li><strong>ECC</strong> — 竞争/互补，ECC 是完整的 Agent Harness，improve 聚焦审计-计划环节</li>
 <li><strong>superpowers</strong> — 互补，superpowers 是方法论框架，improve 是具体工作流实现</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>✅ 是。这是 Agent 编排范式的重要实验。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否形成 agent-skills.io 生态的标准模式</li>
 <li>计划质量在不同类型项目上的表现</li>

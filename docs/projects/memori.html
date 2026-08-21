@@ -6,7 +6,7 @@
     <title>Memori | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,29 +43,74 @@
 <li><strong>结构化状态</strong>：不是简单的文本存储，将对话和执行转化为结构化、可查询的状态</li>
 <li><strong>Agent 原生 API</strong>：接口设计围绕 Agent 执行模式（而非 CRUD），符合 Agent 开发心智模型</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Memori 定位于 LLM 无关的 Agent 记忆基础设施，承接 Agent 执行与对话，并向上提供结构化、可检索的持久状态；入口渠道、模型供应商、工具或数据源的具体编排方式待核验。</td>
+<td>依据其“Agent 原生记忆基础设施”“LLM 无关”“结构化持久状态层”定位；未确认具体入口组件、权限模型、存储后端、向量数据库或部署形态。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>档案给出的研究主路径是：请求进入编排或运行时，发起模型与工具调用，再将会话或状态回写至记忆层；实际 API、调用协议和状态回写机制待核验。</td>
+<td>“请求→编排/运行时→模型与工具调用→会话或状态回写”为架构抽象，并非已审计的源码实现；未确认执行时采用何种检索、存储或同步协议。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>重点权衡结构化记忆带来的跨会话、跨用户、跨 LLM 持久化收益，与抽象层复杂度、读写延迟、权限治理、可观测性及供应商耦合风险。</td>
+<td>风险来自项目定位、分类和架构师速览；没有性能基准、权限设计、审计机制、存储实现或生产 SLO 证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>固定单一入口渠道、一个受控工具和一个 LLM 后端，验证会话状态能否跨调用持久化、结构化查询是否正确、结果是否可审计，并记录权限、成本、退出路径及任何读写延迟。</td>
+<td>PoC 仅验证状态持久化与查询基本链路；具体数据库、部署方式、协议、检索质量、并发规模和生产可用性均待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>记忆即基础设施</strong>：类似数据库在 Web 应用中的地位，记忆层将成为 Agent 应用的标配基础设施</li>
 <li><strong>结构化 &gt; 非结构化</strong>：纯向量检索的幻觉问题通过结构化状态可以缓解</li>
 <li><strong>LLM 无关是正确方向</strong>：Multi-LLM 策略正在成为企业标配，记忆层不应绑定 LLM</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[使用者或上游系统] --> B[入口与身份边界]
+    B --> C[Memori Agent 原生记忆层]
+    C --> D[模型或推理服务]
+    C --> E[工具与外部系统]
+    C --> F[结构化持久状态]
+    G[权限 可观测性 性能与供应商耦合风险] -.控制与风险.-> C
+    H[具体 API 协议 存储实现 部署方式] -.待核验.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 基础设施栈中定位为「通用记忆基础设施」，类似于数据库领域的 PostgreSQL（通用存储 vs Redis 专用缓存）。与 agentmemory 形成互补而非竞争。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>抽象层过重</strong>：在简单场景下可能过度设计，直接用向量数据库更轻量</li>
 <li><strong>性能开销</strong>：结构化记忆的读写延迟需要与原始 LLM 调用延迟做权衡</li>
 <li><strong>标准化风险</strong>：如果 OpenAI/Anthropic 在平台层内置记忆，第三方方案空间被压缩</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs agentmemory</strong>：agentmemory 专注 Coding Agent，Memori 更通用；类似 Redis vs PostgreSQL 的关系</li>
 <li><strong>vs 向量数据库（Pinecone/Weaviate）</strong>：Memori 是更高层的抽象，底层可能使用向量数据库</li>
 <li><strong>vs LangChain Memory</strong>：Memori 更底层、更生产级，LangChain Memory 更偏向原型</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 记忆基础设施是中期确定性趋势。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否出现大型生产部署案例</li>
 <li>记忆检索质量在真实 Agent 场景中的表现</li>

@@ -6,7 +6,7 @@
     <title>langgenius/dify | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,74 @@
 <li><strong>LLM 微调数据集导出:</strong> 可将平台日志直接导出为 Fine-tuning 数据集，形成"标注 → 训练 → 回归部署"闭环</li>
 <li><strong>后端架构:</strong> Python (Flask) + Celery 异步任务 + PostgreSQL / Redis / 向量库分离，容器化部署</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口/身份层、编排运行时、外部模型与工具、会话/状态/审计四类职责的分层边界</td>
+<td>基于档案中的"入口渠道、模型供应商、工具/数据源之间的编排层"抽象，具体组件命名（API Gateway、Web UI、向量库类型等）档案未披露，须源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 编排运行时 → 模型/工具调用 → 状态回写，闭环由会话与审计承载</td>
+<td>档案明示"Python (Flask) + Celery + PostgreSQL/Redis/向量库分离"为主路径后端实现，协议与接口细节未列</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>可视化低代码扩展速度 vs 多租户权限、可观测性、模型供应商耦合之间的张力</td>
+<td>档案明确列出开源/商业版分层、Celery 调度上限、模型依赖等权衡点；具体性能阈值与计费边界档案未给</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一入口渠道 + 最小工具权限 + 可审计日志下跑通一条可视化工作流</td>
+<td>档案给出"先单一渠道、最小权限、可审计"建议，但 DSL 字段、向量库选型、部署形态（私有化/SaaS）档案未细化为可执行步骤</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Dify 的核心架构启发在于"编排即数据"——工作流定义被序列化为 DSL（JSON），运行时由引擎解释执行，而非硬编码。这使得工作流可以版本管理、导入导出、跨环境迁移。其 Agent 节点设计将"策略"（ReAct vs Function Calling）与"工具集"解耦，用户可以灵活组合。RAG 管道的"配置化"思路也值得借鉴——把 chunk_size、overlap、top_k、rerank 等参数全部暴露为可调选项，而非黑盒。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>SSO 多租户 待核验]
+    I --> C[项目编排与运行时<br/>可视化工作流 DSL Agent 节点]
+    C --> M[模型或推理服务<br/>OpenAI Anthropic Gemini DeepSeek Qwen]
+    C --> T[工具与外部系统<br/>插件市场 待核验]
+    C --> S[会话 状态 审计<br/>PostgreSQL Redis 向量库]
+    M --> C
+    T --> C
+    S -.日志与微调数据集回写.-> C
+    R[风险边界<br/>Celery 调度上限 供应商耦合] -.约束.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型项目。</strong> Dify 已从单纯的 Prompt 管理工具演化为完整的 AI 应用开发平台，具备工作流引擎、RAG、Agent、监控、多租户等平台级能力。它是开源生态中少数同时面向开发者（API/DSL）和非开发者（可视化编排）的产品，目标是成为 AI 时代的"Heroku for AI Apps"。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>性能瓶颈:</strong> 复杂工作流在高并发下可能成为瓶颈，Celery 异步队列的调度能力有上限</li>
 <li><strong>插件生态尚浅:</strong> 虽有插件机制，但插件数量和质量与成熟平台（如 Zapier）差距大</li>
 <li><strong>开源 vs 商业版:</strong> 社区版与企业版功能分层可能导致核心功能"锁"在付费层</li>
 <li><strong>模型依赖:</strong> 深度依赖外部模型 API，自身不提供推理能力，利润空间受上游挤压</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs LangChain / LangGraph:</strong> LangChain 是代码优先的框架，Dify 是可视化优先的平台；两者可互补，Dify 内部实际也用到 LangChain 组件</li>
 <li><strong>vs Coze / FastGPT:</strong> Coze 是字节跳动的闭源产品，FastGPT 更偏知识库问答；Dify 在 Agent 编排上更灵活</li>
 <li><strong>vs Flowise / n8n:</strong> Flowise 是 LangChain 的可视化壳，n8n 是通用自动化；Dify 更专注于 AI 场景</li>
 <li><strong>vs Dify 商业版:</strong> 开源版已足够强大，企业版主要增加 SSO、审计、SLA</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Dify 是当前开源 Agent 平台中工程化程度最高、社区最活跃的项目之一，其工作流编排思路和多模型适配策略对整个 AI 应用开发领域有标杆意义。尤其关注其插件市场和 Agent 编排能力的演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>插件市场生态是否形成正向飞轮（开发者上传 → 用户使用 → 反馈迭代）</li>
 <li>工作流引擎是否支持更复杂的分布式 / 长任务编排（如数小时运行的研究任务）</li>

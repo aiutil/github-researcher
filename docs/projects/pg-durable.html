@@ -6,7 +6,7 @@
     <title>pg_durable | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,17 +59,53 @@ SELECT df.start(
     'SELECT id FROM documents WHERE processed = false LIMIT 100' |=&gt; 'batch'
     ~&gt; 'UPDATE documents SET processed = true WHERE id = ANY($batch)'
 );</code></p>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>pg_durable 是 PostgreSQL 扩展形态的容错工作流运行时，承载数据层内 DAG 编排；其外部边界是 PG 客户端/应用调用方，内含 SQL 定义、检查点持久化、后台 worker。</td>
+<td>仅基于 Rust 实现、<code>shared_preload_libraries</code> 加载、SQL DAG 操作符、PostgreSQL 检查点描述；具体系统表、外部协议未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>SQL 工作流定义 → 后台 worker 取出 → 分步执行（含并行 fan-out）→ 每步 checkpoint → 崩溃后从检查点恢复；状态完全位于 PG 内。</td>
+<td>基于“自动 checkpoint 到 PG 系统表”、“崩溃/重启后自动恢复”、“后台 worker 异步执行”描述；具体恢复协议、锁模型未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用 SQL-shaped 控制流换取零外部编排基础设施；代价是表达力受限于 SQL 包装（如循环/分支/错误处理）、无法在云托管 PG 装扩展、对 PG 内核版本耦合。</td>
+<td>基于“SQL-shaped 限制”、“无法安装 PG 扩展的云托管环境”、“与 Temporal 定位差异”描述；性能基准、扩展性上限未在档案中给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一条现有 ETL/embedding 管道（chunk → embed → upsert），用 <code>~&gt;</code> 与 <code>|=&gt;</code> 在同一 PG 实例内复刻，验证：崩溃注入后从检查点续跑、与原 cron+worker+status table 方案对比延迟与运维面。</td>
+<td>基于示例 SQL、<code>df.start()</code> 入口、嵌入管道适用场景描述；具体 PoC 拓扑、崩溃注入方法、量化指标未在档案中给出，待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>pg_durable 代表了 <strong>data-compute convergence</strong>（数据-计算收敛）趋势：</p>
-<pre class="mermaid">graph LR
-    subgraph "传统 3 层架构"
-        A1[Orchestrator<br/>Airflow/Temporal] --> A2[Worker Pool]
-        A2 --> A3[(PostgreSQL)]
-    end
-    subgraph "pg_durable 单层架构"
-        B1[SQL Workflow Definition] --> B2[pg_durable Runtime]
-        B2 --> B3[(PostgreSQL<br/>执行 + 检查点 + 状态)]
-    end
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">graph TB
+    Client[应用调用方<br/>SQL 客户端] -->|提交工作流 SQL| Runtime[pg_durable Runtime<br/>PG extension / 后台 worker]
+    Runtime -->|step 执行| Exec[分步执行<br/>sequential ~> / parallel |=>]
+    Exec -->|每步 checkpoint| Checkpoint[(PostgreSQL 系统表<br/>检查点 + 状态)]
+    Checkpoint -->|崩溃后恢复| Runtime
+    Exec -->|读/写业务数据| Data[(PostgreSQL 业务表)]
+    HorizonDB[Azure HorizonDB<br/>外部商业化部署形态<br/>待核验] -.托管.-> Runtime
+    Limitation[SQL-shaped 控制流上限<br/>复杂分支/循环/错误处理<br/>待核验] -.约束.-> Exec
+    Risk[云托管 PG 不可装扩展<br/>早期 52 open issues<br/>微软投入优先级不确定] -.风险.-> Runtime
 </pre>
 <p><strong>核心洞察</strong>：当工作流本质是数据转换（chunk → embed → upsert），把编排逻辑放在数据旁边比维护一个独立编排集群更简洁。这不是取代 Temporal（跨系统编排仍需要），而是<strong>消除不必要的编排器</strong>。</p>
 <h3 id="vs">适用场景 vs 不适用场景</h3>
@@ -99,12 +135,12 @@ SELECT df.start(
 </tr>
 </tbody>
 </table>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <ul>
 <li>当前：<strong>观察型</strong>（1.4K stars，早期 preview）</li>
 <li>趋势：<strong>基础设施候选</strong> — 如果微软持续投入，将成为 PG 生态标配</li>
 </ul>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>早期阶段</strong>：52 个 open issues，README 明确标注 limitations</li>
 <li><strong>SQL-shaped 限制</strong>：复杂控制流需要包装成 SQL 函数或 HTTP 端点</li>
@@ -112,16 +148,16 @@ SELECT df.start(
 <li><strong>与 Temporal 的竞争定位</strong>：pg_durable 解决的是数据层内编排，不是通用编排，但市场教育可能混淆</li>
 <li><strong>PostgreSQL 扩展安装门槛</strong>：很多云 PG 服务不支持自定义扩展</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Temporal</strong>：Temporal 是跨系统通用编排器，pg_durable 是数据层内编排器</li>
 <li><strong>vs Airflow</strong>：Airflow 是 Python 生态 + 独立调度，pg_durable 是 SQL 生态 + 内嵌执行</li>
 <li><strong>vs pg_cron</strong>：pg_cron 只是定时执行，pg_durable 是 DAG + 检查点 + 容错恢复</li>
 <li><strong>vs DBOS</strong>：DBOS（MIT）提出过类似理念，pg_durable 是微软的工程化实现</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 微软官方 + 数据层编排新范式 + Rust 实现，三个因素叠加使其成为高价值观察对象。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>微软是否在 Azure HorizonDB 之外持续维护开源版本</li>
 <li>生产环境用户的反馈（特别是 embedding 管道场景）</li>

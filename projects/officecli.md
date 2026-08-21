@@ -39,6 +39,15 @@ AI Agent 在处理企业文档时面临巨大障碍：
 4. **跨平台**——Windows/Linux/macOS 全支持
 5. **MCP 兼容**——可作为 MCP 工具集成到 Claude Code/Cursor/Copilot 等 Agent
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OfficeCLI 是一个面向 Agent 调用的 CLI 工具（C# 单二进制，跨 Win/Linux/macOS），提供 Word/Excel/PowerPoint 的读写与转换，并通过 MCP 接入 Claude Code/Cursor/Copilot 等 Agent；不依赖 Office 安装 | "单二进制""C#""跨平台""MCP 兼容"均来自档案；具体协议、CLI 参数面、输出格式细节须核验源码 |
+| 主路径 | Agent 指令 → CLI 解析与指令路由 → 各格式处理器（DOCX/XLSX/PPTX 解析与渲染）→ 文件输出 | 档案"架构启发"明确列出此四层；内部引擎实现、是否内置 NL→操作映射为"待核验" |
+| 关键权衡 | "零依赖、Agent 优先 CLI"换取跨平台与无 Office 部署，但需以高级功能（宏、嵌入对象、邮件合并、动画、复杂排版）兼容性与长期 OOXML 维护成本为代价，且面临 Microsoft Copilot 原生集成的竞争风险 | 取舍基于档案"风险/局限"一节；功能深度具体支持范围"不明" |
+| 最小 PoC | 选取单一 Agent 渠道（如 Claude Code via MCP）、单一格式（如 DOCX 创建+转换）、最小权限与可审计日志，验证 CLI 调用链路与输出文件可用性；将宏/嵌入对象/复杂排版兼容性纳入验收 | PoC 范围严格限定在档案声明的能力范围内；具体 CLI 命令、MCP 配置、性能基线须核验 |
+
 ## 架构启发
 OfficeCLI 展示了"Agent 原生工具"的设计模式：
 
@@ -56,6 +65,25 @@ CLI 解析层（参数解析 + 指令路由）
 - **CLI first**——所有功能通过 CLI 暴露，天然适配 Agent 调用
 - **零依赖**——不依赖任何 Office 安装或运行时
 - **Agent 原生**——API 设计从 Agent 视角出发，不是从人类用户视角出发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Agent 平台:Claude Code 或 Cursor 或 Copilot] --> B[CLI 解析与指令路由 待核验]
+    B --> C[Word 处理器 DOCX 读写与转换]
+    B --> D[Excel 处理器 XLSX 读写 公式 图表]
+    B --> E[PowerPoint 处理器 PPTX 创建 编辑 模板]
+    C --> F[文件输出 DOCX 或 XLSX 或 PPTX]
+    D --> F
+    E --> F
+    A -.MCP 工具协议 待核验.-> B
+    F -.企业文档自动化需求.-> G[企业用户与文档工作流 外部边界]
+    B -.权限 审计 可观测性.-> H[安全与运维边界 待核验]
+    C -.宏 嵌入对象 复杂排版.-> I[格式兼容性风险 待核验]
+```
 
 ## 定位判断
 OfficeCLI 在 Agent 工具生态中定位为**企业文档操作的标准接口**。它不是 Office 替代品——它是 Agent 操作 Office 文件的桥梁。如果 Agent 平台（Claude Code/Cursor/Copilot）是"大脑"，OfficeCLI 就是"手"。

@@ -39,23 +39,65 @@ AI Agent 没有持久记忆，每次对话都是全新开始。GBrain 为 Agent 
 4. **SkillPack 模式**：将 Agent 行为规范（brain-first lookup、entity detection、back-linking）打包为可分发的 Skill Pack
 5. **多数据源集成**：meetings、emails、tweets、calendar、voice calls、original ideas
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | GBrain 是介于多源数据（meetings/emails/tweets/calendar/voice calls/original ideas）与上游 Agent 之间的编排与知识管理层，本地依托 PGLite（WASM Postgres 17.5）运行，可迁 Supabase | PGLite、Postgres 17.5、混合搜索 37 种操作、SkillPack 等术语见档案；具体通信协议、Agent SDK 接口形态未在档案中给出 |
+| 主路径 | 数据源 → 导入管道 → 知识页面（顶部"编译真相"+ 底部"证据时间线"只追加）→ 混合搜索（向量 + 全文 + 元数据）→ Agent 查询获取最新结论与原始证据 | 知识页双段结构、混合搜索三类来源、数据源清单均有据；编排运行时、检索调用链细节未在档案展开 |
+| 关键权衡 | 模型依赖（必须 Claude Opus 4.6 或 GPT-5.4 Thinking，小模型会出错）与本地优先（PGLite 个人级，团队/企业需验证规模上限）之间的张力，以及个人项目长期维护风险 | 模型门槛、PGLite→Supabase 渐进路径、个人项目风险均在档案明示；性能基准、并发上限、成本数据档案未提供 |
+| 最小 PoC | 在单一渠道（如仅 meetings）接入、限定最小工具权限、启用混合搜索与 SkillPack（brain-first lookup / entity detection / back-linking），以"编译真相重写 + 证据时间线追加"是否成立为验收，30 分钟内跑通本地 PGLite | Agent-first 安装、30 分钟部署、SkillPack 名称见档案；安全模型、SLO、退出路径档案未给出，需另行核验 |
+
 ## 架构启发
 - **情报分析模型用于知识管理**：借鉴情报领域方法论，将知识分为"当前最佳理解"和"原始证据"，非常适合 Agent 知识更新场景
 - **嵌入式数据库作为 Agent 存储**：PGLite 的 WASM 方案让 Agent 存储无需服务器，是边缘计算的思路
 - **Agent-first 部署**：安装和配置全由 Agent 完成，人类只负责 API Key，这是 Agent 产品化的正确方向
 - **渐进式架构**：从本地 PGLite 到 Supabase 的迁移路径，适配不同规模
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "GBrain 知识模型"
-        A[数据源<br>邮件/会议/文档/推特] --> B[导入管道]
-        B --> C[知识页面]
-        C --> D["顶部：编译真相<br>当前最佳理解<br>证据变化时重写"]
-        C --> E["底部：证据时间线<br>只追加，永不修改<br>完整变更历史"]
-        D --> F[混合搜索<br>向量+全文+元数据]
-        E --> F
-        F --> G[Agent 查询<br>最新结论 + 原始证据]
-    end
+flowchart LR
+  subgraph SRC["外部数据源"]
+    S1[meetings]
+    S2[emails]
+    S3[tweets]
+    S4[calendar]
+    S5[voice calls]
+    S6[original ideas]
+  end
+
+  subgraph GB["GBrain 核心（待核验运行时）"]
+    P[导入管道]
+    KP[知识页面]
+    CT["顶部：编译真相<br>（证据变化时重写）"]
+    ET["底部：证据时间线<br>（只追加，永不修改）"]
+    HS["混合搜索<br>向量 + 全文 + 元数据<br>37 种操作"]
+    SP[SkillPack<br>brain-first lookup / entity detection / back-linking]
+  end
+
+  subgraph ST["存储边界"]
+    PG[PGLite WASM Postgres 17.5<br>本地，2 秒初始化]
+    SB[Supabase<br>1000+ 文件时迁移，待核验触发条件]
+  end
+
+  subgraph EXT["外部执行边界"]
+    AG[上游 AI Agent<br>必须 Claude Opus 4.6 或 GPT-5.4 Thinking<br>小模型会出错]
+    USR[Garry Tan 个人维护<br>长期承诺未明确]
+  end
+
+  SRC --> P --> KP
+  KP --> CT
+  KP --> ET
+  CT --> HS
+  ET --> HS
+  HS --> AG
+  SP --> AG
+  KP -.持久化.-> PG
+  PG -.迁移路径.-> SB
+  USR -.维护风险.-> GB
 ```
 
 ## 定位判断

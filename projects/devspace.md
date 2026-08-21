@@ -54,22 +54,48 @@ DevSpace 提出了一个重要的架构问题：**Agent 的终态是独立应用
 - GitHub Actions CI pipeline
 - 版本管理规范
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本机自托管 MCP server，介于 ChatGPT/Claude Web 浏览器端与本地文件系统/终端之间，作为唯一能力暴露面，不替代 IDE 也不替代模型 | 边界由档案"自托管 MCP server + 读写/搜索/执行 + 用户控制隧道"描述界定；具体隧道实现、鉴权强度与会话隔离未在档案中给出 |
+| 主路径 | 浏览器 Web UI → 用户控制隧道 → 本机 MCP server（TypeScript）→ 文件读写/代码搜索/命令执行 → 本地 FS/Shell 结果回写 | 档案明确给出"文件读写、代码搜索、命令执行"三类工具；协议握手细节、传输格式、鉴权流程未证实 |
+| 关键权衡 | 扩展速度（MCP 工具面、Claude Code 一键导入） vs 本机文件/终端暴露的攻击面与单维护者（bus factor=1）风险；赞助商广告（Rebates）暗示的商业化路径与用户体验的张力 | 权衡基于档案明示的安全/维护/商业化风险点；具体权限粒度、审计日志、可观测性能力未在档案中描述 |
+| 最小 PoC | 在单机隔离环境安装 `@waishnav/devspace`，仅放开最小目录读权限与白名单命令，关闭隧道公网暴露，先用 ChatGPT Web 跑一次只读代码搜索用例，记录隧道凭据、会话生命周期与日志可审计性后再决定扩大工具面 | PoC 设计受限于档案描述的安装方式（npm 全局安装）与"密码认证 + 用户控制隧道"约束；具体 CLI 参数、最小权限配置项需源码核验 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph "传统 Coding Agent"
-        A1["AI 模型"] --> A2["专用 IDE<br/>(Cursor/Copilot)"]
-        A2 --> A3["本地文件系统"]
-    end
-    
-    subgraph "DevSpace 模式"
-        B1["AI 模型<br/>(ChatGPT/Claude Web)"] --> B2["MCP 协议"]
-        B2 --> B3["自托管 MCP Server"]
-        B3 --> B4["本地文件系统"]
-    end
-    
-    A2 -.->|"锁定在特定编辑器"| B2
+flowchart LR
+  subgraph "外部边界（浏览器侧）"
+    WebUI["ChatGPT Web / Claude Web UI<br/>（档案：Web 聊天端）"]
+  end
+  subgraph "项目核心（本机）"
+    Tunnel["用户控制隧道<br/>（档案：自托管隧道，密码认证）"]
+    Server["@waishnav/devspace<br/>MCP Server（TypeScript，npm 分发）"]
+    Tools["MCP 工具集<br/>read/write/搜索/命令执行<br/>（档案明示）"]
+  end
+  subgraph "本地资源"
+    FS["本地文件系统<br/>（档案：读写代码）"]
+    Shell["本地 Shell<br/>（档案：执行命令）"]
+  end
+  subgraph "状态/控制/风险边界"
+    Auth["鉴权与会话<br/>（档案：密码机制，强度/会话管理待核验）"]
+    Bus["维护者风险<br/>（档案：bus factor=1，单人 Waishnav）"]
+    Sponsor["赞助商影响<br/>（档案：Rebates 终端广告）"]
+  end
+  WebUI -->|"请求（协议待核验）"| Tunnel
+  Tunnel --> Server
+  Server --> Tools
+  Tools --> FS
+  Tools --> Shell
+  Server -.审计面.-> Auth
+  Server -.可持续性.-> Bus
+  Server -.商业化张力.-> Sponsor
 ```
 
 **核心 insight：Agent = 能力层（MCP tools）+ UI 层（Web Chat）。** 这两层可以解耦。DevSpace 让你用喜欢的 Web AI UI + 自托管能力层 = 完整的 Coding Agent。

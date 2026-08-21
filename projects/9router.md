@@ -36,8 +36,31 @@ Coding Agent 用户普遍痛点：官方 LLM API 价格高昂、区域受限、�
 4. **自动 failover + 重试:** provider 失败时无缝切换，自带限速/重试策略
 5. **CLI 安装:** 一行命令启动，支持 docker/裸进程
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 9router 是 Coding Agent 与 40+ LLM provider 之间的自托管 HTTP/SSE 代理网关，承担多 provider 路由、token 压缩（RTK）、failover/重试三类职责 | 边界由其"自托管 AI 网关"定位与 JavaScript 实现确立；具体监听端口、协议转换、持久化形态档案未给 |
+| 主路径 | Coding Agent 客户端 → 9router 代理（路由 + RTK 压缩 + 重试/failover）→ 选定 provider → 回传响应；失败时切换下一 provider | 路径来源是其"透明代理 + 自动 failover"自述；RTK 算法与权重策略细节待核验 |
+| 关键权衡 | 跨 provider 解耦带来的成本/可用性收益 vs 对 provider ToS 的合规暴露、协议变更跟随成本、被上游原生集成功能替代的风险 | 基于 1,718 issues、MIT 自托管、OpenRouter 同赛道等档案事实；具体 ToS 风险等级与替代概率未量化 |
+| 最小 PoC | 单机 docker/CLI 起 9router，对接单一 Coding Agent（如 Claude Code），固定 1–2 个 provider，开启 RTK 与日志审计，跑固定 prompt 集对比 token 用量与成功率，再扩面 | 仅依据"一行命令启动，支持 docker/裸进程"与 Coding Agent 列表；RTK -40% 数据需独立基准复测 |
+
 ## 架构启发
 "把分裂的 LLM API 在网关层屏蔽"是经典反向代理模式，但 9router 把它做成了 Coding Agent 友好版本。其架构启发是：**当生态碎片化时，中间层是真实商业机会**——但同时中间层也最易被标准化（如 OpenRouter 也瞄准同一赛道）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Coding Agent 客户端<br/>Claude Code / Codex / Cursor / Cline / Copilot] --> B[9router HTTP/SSE 网关<br/>路由 + RTK 压缩 + failover/重试]
+    B --> C[Provider 池<br/>40+ 免费/付费 LLM 供应商<br/>协议细节: 待核验]
+    C -- 失败 --> B
+    B --> A
+    B --> D[本地日志/审计<br/>持久化与可观测性: 待核验]
+    B -. 绕过部分 provider ToS .-> E[合规风险边界<br/>封号概率: 待核验]
+```
 
 ## 定位判断
 **工具型 / 中间件候选项目。** 是自托管 LLM 网关的代表性新项目，处于"被 AI Agent 基础设施生态消化"的风险与机会并存区间。25k stars 反映早期采用热度，但能否长期留存取决于：(a) RTK 实际收益是否被独立验证，(b) 上游 Coding Agent 是否原生集成类似能力。

@@ -6,7 +6,7 @@
     <title>autoresearch | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -42,24 +42,69 @@
 <li>自动实验编排、参数搜索、结果记录</li>
 <li>Nanochat 训练作为示范场景</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>autoresearch 是单 GPU 上运行 nanochat 训练实验的编排层，介于使用者与 nanochat 训练流程之间</td>
+<td>仅 Python 语言、nanochat 示范场景在档案内明确；具体入口协议、依赖服务未在档案内描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者提交实验意图 → 编排层调度 → nanochat 训练执行 → 结果回写到记录/日志</td>
+<td>主路径基于"自动实验编排、参数搜索、结果记录"与 Nanochat 训练作为示范场景两处描述拼接；具体编排实现未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在单 GPU 资源约束下，实验广度（多组消融/超参）与每组实验深度（步数/模型规模）的取舍</td>
+<td>"单 GPU 即可运行"与"研究自动化对 GPU 资源消耗大"在档案内直接矛盾，需以源码判定默认上限</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单 GPU 节点上固定 nanochat 基础配置运行一次端到端训练，记录编排耗时、GPU 占用与产出物</td>
+<td>最小 PoC 仅依据"单 GPU 即可运行的轻量级研究自动化 + Nanochat 训练示范场景"；指标阈值、终止条件均"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>研究工作的自动化分层：人类负责提出问题和评估，Agent 负责实验编排和执行。这个分工模型可以推广到其他知识工作领域。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目编排与运行时]
+    C --> N[Nanochat 训练流程]
+    C --> S[会话 状态 审计]
+    N --> R[实验结果记录 待核验]
+    R --> S
+    C -.单 GPU 资源约束.-> N
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>学习型。目前更多是示范项目，但研究自动化方向值得持续关注。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li>Star 数严重受 Karpathy 个人品牌影响，不代表工程成熟度</li>
 <li>仅支持 nanochat 场景，通用性待验证</li>
 <li>研究自动化对 GPU 资源消耗大，单 GPU 能做的有限</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>vs <strong>OpenGame</strong>：OpenGame 用 Agent 写游戏，autoresearch 用 Agent 跑实验，都是"Agent 渗透专业知识工作"</li>
 <li>vs <strong>SWE-bench</strong>：SWE-bench 做评估，autoresearch 做执行</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。作为研究自动化方向的标杆项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>是否扩展到更多研究场景</li>
 <li>社区是否基于此构建更多自动化工具</li>

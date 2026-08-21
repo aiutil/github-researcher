@@ -6,7 +6,7 @@
     <title>kellyjonbrazil/jc | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,62 @@
 <li><strong>JSON/YAML 输出</strong>：支持多种输出格式，兼容不同消费者</li>
 <li><strong>Magical 管道</strong>：<code>jc</code> 能自动识别命令类型选择解析器</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>jc 是"Unix 命令输出 → 结构化数据"的本地转换层，无 LLM、无远端编排；边界为"被包装的 200+ CLI 命令"与"JSON/YAML/字典消费者"之间</td>
+<td>仅基于档案所述"CLI 工具和 Python 库""200+ 解析器""JSON/YAML/字典输出"；具体解析器清单、命令版本兼容范围未给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><code>command \| jc --parser</code> 或 <code>jc lib</code> 调用 → 内部选择/调度对应解析器 → 输出 JSON/YAML/字典；可作为 Python 库被脚本直接 import</td>
+<td>档案明确"command | jc --parser 或 jc lib 调用""Python 库模式"；"自动识别命令类型选择解析器"为描述，但识别机制细节未证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>覆盖面（200+ 命令）vs 各发行版/版本命令输出差异导致的解析脆弱性；精度与稳定性 vs LLM 直解析的灵活度</td>
+<td>档案显式列出"命令版本兼容""长尾命令覆盖""维护负担""AI 替代风险"四项权衡；具体失败模式、性能基准未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在受控节点上对 1–2 个目标命令（如 <code>ls</code>、<code>df</code>）做 <code>… \| jc --parser</code> 输出对比手工解析/JSON Schema 校验，验证 Python 库 import 与管道两种用法</td>
+<td>档案仅说明两种调用方式与多输出格式；吞吐、内存、依赖、Python 版本范围未在档案中确认</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>CLI 输出结构化</strong>：将非结构化的 Unix 世界带入结构化数据时代</li>
 <li><strong>解析即接口</strong>：每种命令输出都有对应的 schema，agent 可以按 schema 理解</li>
 <li><strong>渐进式采用</strong>：不需要改变现有命令，只是在输出端加一层解析</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U["使用者或上游脚本"] --> P["管道入口<br/>command | jc --parser"]
+    U --> L["库调用入口<br/>jc lib / Python import"]
+    P --> D["解析器分发器<br/>选择或自动识别解析器"]
+    L --> D
+    D --> R["200+ 解析器集合<br/>(ifconfig/ps/ls/df/dig/netstat/...)<br/>覆盖范围待核验"]
+    R --> O["输出层<br/>JSON / YAML / dict"]
+    O --> C["下游消费者<br/>shell 脚本 / 自动化 / 待核验：AI agent"]
+    S["外部边界：被包装的 Unix 命令<br/>版本/发行差异可能导致解析失败"]
+    S -. 影响 .-> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟工具型项目</strong>。是 DevOps 工具链中"默默无闻但不可或缺"的基础设施。不追求成为平台，但解决了真实的日常痛点。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>命令版本兼容</strong>：不同发行版/版本的命令输出格式可能不同，解析器可能失效</li>
 <li><strong>长尾命令覆盖</strong>：小众或新命令可能没有解析器</li>
@@ -72,16 +119,16 @@
 <li><strong>AI 替代风险</strong>：LLM 可以直接解析文本输出，部分场景下可替代 jc</li>
 <li><strong>增长天花板</strong>：工具型项目，用户基数有限</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs awk/sed/grep</strong>：传统文本处理 vs 结构化解析，jc 更可靠但覆盖面有限</li>
 <li><strong>vs jq</strong>：jq 处理 JSON，jc 生成 JSON，互补</li>
 <li><strong>vs struct/logfmt</strong>：结构化日志格式，jc 处理命令输出，定位不同</li>
 <li><strong>vs LLM 解析</strong>：LLM 更灵活但不稳定，jc 更精确但需预置解析器</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得定期关注。</strong> 作为 DevOps 日常工具值得直接采用。技术跟踪方面关注新解析器添加和 AI 集成动向即可。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否增加 AI 辅助解析（LLM fallback 处理无解析器的命令）</li>
 <li>新型云原生命令（kubectl、docker、helm）的解析器覆盖</li>

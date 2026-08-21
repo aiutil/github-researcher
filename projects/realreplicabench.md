@@ -38,8 +38,35 @@ url: "https://github.com/Accio-Lab/RealReplicaBench"
 4. **双 harness 参考结果**：OpenClaw（12 模型族）和 Accio（13 模型族），12 个共有模型可直接比较。judge 为 `gemini-3.1-pro-preview`，公开路径用 bring-your-own credentials。
 5. **live leaderboard 为 source of record**：实时更新，README 中的表格为快照。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 评测入口（agent/参赛者）→ 编排运行时 → 本地 mock SaaS（阿里发布表单/Freightos/Shopify/消息/文档）→ 验证器（确定性 + LLM judge `gemini-3.1-pro-preview`），四者与 fresh container 审计边界耦合 | 边界来源于档案"状态化本地 mock 服务"与"107 任务"描述；mock 保真度、验证器混合比例未独立披露 |
+| 主路径 | fresh container 起评 → agent 经 CLI(53)/browser(28)/file(16)/API-MCP(10) 调用 mock SaaS 改变状态 → 保存 resolved config/trajectory/verifier result/artifacts/logs → 由 live leaderboard 上榜 | 任务切片数字与审计项来自档案；具体运行时协议/持久化实现须以源码核验 |
+| 关键权衡 | mock 保真度 vs 评测门槛（无生产账号但真实性下降）；LLM judge 覆盖面 vs 确定性校验（judge 偏差风险）；OpenClaw harness 生态成熟度 vs 双 harness 参考可信度 | 三组权衡均显式见于档案"风险/局限"节；OpenClaw 采用度、验证器比例仍"待核验" |
+| 最小 PoC | 选取 1 个文本类（65 纯文本）+ 1 个 browser 类（28 browser）任务，OpenClaw harness 接入，跑通轨迹/产物/日志归档并对账 leaderboard 快照 | 仅档案明确支持的子集；模型族接入数与公开路径凭据策略须现场核验 |
+
 ## 架构启发
 RealReplicaBench 的设计哲学是 **"用状态化副本评测真实业务流"**——不问"agent 知道什么"（知识问答），问"agent 能改变什么系统状态"（业务操作）。这对架构师的启发：**agent 的生产价值在于改变系统状态**（下单、发布、配置），而非回答问题。评测 agent 时应优先关注状态改变能力。本地 mock 服务的保真度是关键 trade-off——保真度越高越接近真实但成本越高。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[使用者或参赛 agent] --> B[评测编排与运行时 fresh container]
+    B --> C[本地 mock SaaS 阿里发布表单/Freightos/Shopify/消息/文档 待核验保真度]
+    B --> D[工具通道 CLI 53 / browser 28 / file 16 / API-MCP 10]
+    C --> E[系统状态改变]
+    D --> E
+    E --> F[审计与产物 resolved config/trajectory/verifier result/artifacts/logs]
+    F --> G[验证器 确定性规则 + LLM judge gemini-3.1-pro-preview 待核验混合比例]
+    G --> H[live leaderboard 快照 + 双 harness OpenClaw 12 族 / Accio 13 族]
+    H --> A
+    F -.风险.-> R[judge 偏差与 mock 保真度边界 待核验]
+```
 
 ## 定位判断
 属于 **L0 评测基础设施层**，是 agent 生态的基础设施（没有可信评测就无法比较 agent 能力）。与 SWE-bench（代码单轮）、GAIA（知识问答）互补，填补"长程状态化业务流"维度。

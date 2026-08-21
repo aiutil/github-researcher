@@ -37,8 +37,48 @@ url: "https://github.com/0xwilliamortiz/ratchet"
 3. **四档模式 + budget**：advise（仅 findings）/ guard（findings + budget 警告，默认）/ strict（超 budget 直接阻断编辑）/ off。budget 维度：新文件数/新依赖数/净增行数。
 4. **基线机制**：`ratchet` 接受当前代码为基线（mark at 1284 lines），只对新发现触发——"复杂性只降不升，除非有人明确写下理由反向拧"。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 边界即 Claude Code `PostToolUse` hook：监听本会话内的 Edit/MultiEdit/Write，不接管模型、不接管编排；外部仅触及被测仓库（dep 读 manifest、其余 detector 读 AST/源码） | 标签与文档明确为 claude-code / posttooluse-hook；六类 detector 的实现细节、hook 配置 schema 须以源码核验 |
+| 主路径 | Claude Code 触发 hook → ratchet 解析工具入参 → 六类 detector 测量本次编辑 → 按当前模式（advise/guard/strict/off）与 budget（新文件/新依赖/净增行）裁决 → findings 回灌同一会话；mark-as-baseline 将当时代码状态固化为基线，新增量触发 | 路径由档案明示；预算阈值默认值、detector 之间的优先级与回写格式未在档案中给出 |
+| 关键权衡 | detector 误报面（合法的 wrapper/native/yagni） vs strict 模式对真实编辑流的可用性；以及"以 Claude Code 为单一宿主"换来的 hook 闭环收益 vs 跨 agent 可移植性损失 | 档案仅给出风险描述，无量化误报率或 strict 采用率数据 |
+| 最小 PoC | 在一个非生产小仓库上启用 guard（默认），关闭 strict 与 baseline 标记；以一次"加新依赖 + 包一层 wrapper + 写新抽象类"的编辑验证六个 detector 是否触发、findings 是否回到同一会话、budget 是否报警；验收项：误报清单、退出到 off 的开关、strict 阻断时的绕过路径 | 档案未给出 PoC 步骤与回滚细节；ratchetui.exe 与 Windows 路径示例提示跨平台一致性需在 PoC 内一并核验 |
+
 ## 架构启发
 ratchet 的哲学是 **"ratchet turns one way"（棘轮单向转动）**——复杂性是单调递减或持平的，除非显式反转并记录理由。这是把**软件度量理论**（复杂度度量、依赖治理）注入 agent 工作流的尝试。对架构师的启发：**agent 代码质量的治理不能只靠 prompt 规则，必须有客观测量层 + 闭环反馈**。这与 crm 的"证据账本取代置信度"异曲同工——都拒绝"让模型自评"，转而用客观证据。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    CC[Claude Code 会话] -->|PostToolUse: Edit/MultiEdit/Write| H[ratchet hook 入口 待核验]
+    H --> D{detector 矩阵}
+    D --> D1[dep 探测器 待核验]
+    D --> D2[exists 探测器 待核验]
+    D --> D3[stdlib 探测器 待核验]
+    D --> D4[native 探测器 待核验]
+    D --> D5[wrapper 探测器 待核验]
+    D --> D6[yagni 探测器 待核验]
+    D1 --> R[裁决: mode 4 档 + budget 3 维]
+    D2 --> R
+    D3 --> R
+    D4 --> R
+    D5 --> R
+    D6 --> R
+    R -->|advise| F[findings 回灌会话]
+    R -->|guard| F
+    R -->|strict| X[阻断编辑 待核验]
+    B[baseline 标记: mark at 1284 lines] --> D
+    Repo[(被测仓库: manifest + AST/源码)] --> D1
+    Repo --> D3
+    Repo --> D4
+    Repo --> D5
+    Repo --> D6
+```
 
 ## 定位判断
 属于 **L2 开发范式/工具层**，是 agent 工程治理工具。与 skill-recorder（从观察到技能）正交：skill-recorder 解决"技能从哪来"，ratchet 解决"技能/编辑执行后是否守住质量底线"。两者共同构成 agent 工作流的质量基础设施。

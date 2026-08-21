@@ -6,7 +6,7 @@
     <title>gstack | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,29 +54,73 @@
 <li><strong>角色切换机制</strong>：同一 Agent 在不同上下文切换认知模式</li>
 <li><strong>可复用工作流</strong>：将个人最佳实践固化为可分享的配置</li>
 </ol>
-<h2 id="_6">架构启发</h2>
-<pre class="mermaid">graph LR
-    D[开发者] -->|触发任务| G[gstack]
-    G -->|角色选择| R1[CEO角色<br/>产品决策]
-    G -->|角色选择| R2[设计师<br/>UI/UX]
-    G -->|角色选择| R3[工程经理<br/>任务拆解]
-    G -->|角色选择| R4[QA<br/>测试验证]
-    R1 & R2 & R3 & R4 -->|输出| C[Claude Code]
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>gstack 是 Claude Code 之上的工作流配置层，不替代模型与运行时；通过 23 个角色（CEO、设计师、工程经理、QA、文档工程师等）在同一 Agent 内切换上下文模式，由用户触发后回流到 Claude Code</td>
+<td>仅依据档案"角色切换机制 / 23 个专化角色 / 强绑定 Claude Code"；运行机制、配置格式、存储介质未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者发起任务 → gstack 依据任务选择/注入角色上下文 → 调用 Claude Code 完成推理与工具调用 → 输出回写至开发会话；不涉及独立模型服务或外部工具编排</td>
+<td>仅复述档案"启发"图与"角色切换"表述；编排协议、是否含工具调用层、状态持久化均未披露，须源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单一 Agent + 角色切换 vs 多 Agent 编排：实现简单、上手快、配置可分享，但与 Claude Code 强耦合、可观测性与权限边界依赖宿主；相比多 Agent 编排（oh-my-claudecode）扩展性更弱、护城河更浅</td>
+<td>来自档案"架构启发 / 风险局限 / 与同类项目关系"；性能、可观测性、权限模型无量化证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一开发渠道、关闭外部工具权限、开启可审计日志的前提下，选取 1–2 个角色（如工程经理 + QA）跑通"任务拆解→验证"闭环；验收项含成本、SLO、可回滚与退出 Claude Code 的迁移路径</td>
+<td>档案仅给出"先做最小 PoC"的抽象建议；具体部署形态、日志接入点、迁移成本无项目内证据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[开发者] -->|触发任务与上下文| GS[gstack<br/>角色编排/配置层]
+    GS -->|角色：CEO 产品决策| R1[CEO 角色<br/>产品与需求决策]
+    GS -->|角色：设计师| R2[设计师 角色<br/>UI/UX 视角]
+    GS -->|角色：工程经理| R3[工程经理 角色<br/>任务拆解]
+    GS -->|角色：QA| R4[QA 角色<br/>测试验证]
+    R1 & R2 & R3 & R4 -->|统一回写至| CC[Claude Code<br/>推理与代码生成]
+    CC -->|产出| Out[代码/文档/任务结果]
+    subgraph 外部边界
+    CC
+    end
+    subgraph 风险与控制边界<br/>待核验：权限/可观测性/持久化
+    GS
+    end
+    Out --> Dev
 </pre>
 <ul>
 <li>"单 Agent + 角色切换" 可能比 "多 Agent 编排" 更务实</li>
 <li>最佳实践可配置化是 AI Coding 工具的演进方向</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型偏平台候选</strong>。本质是配置文件集合，但揭示的"AI Coding 工作流标准化"趋势有平台化潜力。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>技术门槛低</strong>：核心是一组 prompt 配置，护城河很浅</li>
 <li><strong>过度炒作</strong>：60 天 60 万行代码的数据缺乏验证</li>
 <li><strong>Cargo Cult 风险</strong>：开发者可能照搬而非理解背后的方法论</li>
 <li><strong>强绑定 Claude Code</strong>：限制了适用范围</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -107,11 +151,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong>，但关注重点不是项目本身，而是它代表的"AI Coding 工作流标准化"趋势。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>谨慎评估</strong>。思路值得借鉴，但直接采用需要适配团队实际情况。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>社区是否涌现更多 gstack 风格的工作流配置</li>
 <li>Claude Code 是否原生支持类似角色系统</li>

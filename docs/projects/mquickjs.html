@@ -6,7 +6,7 @@
     <title>bellard/mquickjs | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,71 @@
 <li><strong>C API 简洁:</strong> 提供清晰的嵌入式集成接口，几行代码即可在宿主程序中嵌入 JS 执行引擎</li>
 <li><strong>基于成熟 QuickJS:</strong> 继承了 QuickJS 多年的稳定性积累和标准合规性测试</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>mquickjs 的核心是面向资源受限设备的精简 JavaScript 引擎，通过 C API 嵌入宿主程序并执行 ES2020 JavaScript；外部边界包括宿主、待执行脚本及具体集成方式。</td>
+<td>档案未提供 C API 接口定义、宿主集成示例或设备侧外设模型；数十 MB 起、KB 级执行等比较性数据未给出测试方法。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>宿主程序加载脚本 → mquickjs 解释执行 → 返回执行结果；模块、async/await 与 Proxy 属于被明确支持的语言能力路径。</td>
+<td>档案未说明模块加载实现、异步调度、错误返回格式、对象跨边界规则及 API 生命周期。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>mquickjs 以解释执行取代 JIT，以引用计数和循环回收换取较低资源占用与可移植性；该取向适合资源受限场景，但不应据此推断计算密集型任务性能。</td>
+<td>“无 JIT、解释执行、引用计数+循环回收、无多线程”未附源码依据；V8 体积、mquickjs 体积和内存数字也缺少构建配置、编译选项及测量基准。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选择一项真实嵌入式配置逻辑，分别核验编译后体积、运行期内存、目标脚本执行、宿主 C API 集成及错误恢复；性能、工具链、RTOS 集成、WASM 与 NEON 均列为后续核验项。</td>
+<td>档案未提供可复现构建命令、目标平台、测试脚本、测量工具或验收阈值；不得将 Stars、作者声誉或定位描述视为生产适用性证据。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>mquickjs 的核心设计哲学是「极致做减法」——它没有 JIT 编译器（解释执行），没有垃圾回收器的复杂分代设计（使用引用计数+循环回收），也没有多线程支持。这种「功能最小化换取可移植性最大化」的权衡，是嵌入式系统设计的经典范式。对比 V8 的「功能最大化换取性能最大化」，两者代表了截然不同的架构取向。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    H[宿主程序] --> A[mquickjs C API：接口细节待核验]
+    S[JavaScript 脚本] --> A
+    A --> E[ES2020 执行：解释执行]
+    E --> M[import/export]
+    E --> Y[async/await]
+    E --> P[Proxy]
+    A --> R[资源与运行风险：体积、内存、性能及恢复能力待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于嵌入式 JavaScript 运行时生态的核心基础设施。在更广阔的运行时生态中，mquickjs 是「超轻量」赛道的标杆，与 Node.js（服务端）、Deno（现代化）、Bun（高性能）形成互补而非竞争关系。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>维护节奏不确定:</strong> Bellard 的项目更新频率不固定，mquickjs 的 issue 响应和 bugfix 周期可能较长</li>
 <li><strong>无 JIT 导致性能瓶颈:</strong> 纯解释执行模式下，计算密集型 JS 代码性能远低于 V8，不适合高性能场景</li>
 <li><strong>生态工具链匮乏:</strong> 没有 npm 包管理集成，调试工具和性能分析工具极度有限</li>
 <li><strong>文档相对稀少:</strong> 主要依赖源码和少量示例，新手上手成本较高</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>QuickJS（原始版）:</strong> mquickjs 的前身，功能更完整但体积更大；mquickjs 是其精简分支</li>
 <li><strong>Espruino:</strong> 另一个嵌入式 JS 引擎，但使用自定义的 ES 子集而非完整标准，生态偏向微控制器教育市场</li>
 <li><strong>Microvium:</strong> 极致轻量的 JS 引擎（目标 &lt;30KB），但牺牲了更多语言特性，兼容性不如 mquickjs</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 作为嵌入式 JS 赛道的标杆项目，且由顶级系统程序员维护，其技术演进方向具有风向标意义。尤其需要关注其在边缘 AI 推理编排、智能硬件脚本化等新兴场景的落地情况。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 mquickjs 是否被主流嵌入式 RTOS（如 Zephyr、FreeRTOS）集成为标准组件</li>
 <li>观察是否有针对 mquickjs 的 WASM 编译流程，以实现跨平台嵌入式部署</li>

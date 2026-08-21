@@ -46,6 +46,15 @@ Graph wiki link viewer——可视化Markdown文件间的`[[]]`链接关系。
 ### 5. 团队共享 + Git同步
 基于Git/GitHub的no-code团队共享和自动同步。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenKnowledge 是面向 Markdown 知识库的人类/Agent 协同编辑器，边界包含 WYSIWYG 编辑器（人类界面）、MCP Server（Agent 界面）、Agentic Search、Graph Viewer 与本地 Markdown 文件存储；外部 Agent 通过 MCP 接入。 | 基于档案"关键技术亮点"与"架构启发"中给出的组件列表；具体进程边界、协议版本、部署形态未在档案中给出，须以源码核验。 |
+| 主路径 | 用户在 WYSIWYG 编辑器编辑 → 落盘为 Markdown 文件（与 VSCode 共写同一批文件）→ Agent（Claude Code/Codex/Cursor/OpenCode/OpenClaw）通过 MCP Server 读取并调用 Agentic Search（语义+图链接）→ 回写到 Markdown 文件 → Graph Viewer 展示 `[[]]` 链接关系。 | 主路径中的每一步在档案"关键技术亮点"均有描述；Git/GitHub 同步的具体工作流与冲突策略未详述，标为待核验。 |
+| 关键权衡 | GPL-3.0 与商用分发的张力；macOS 原生优先与 Linux/Windows 仅 Web/CLI 的体验差距；与 Obsidian（插件生态）、Notion（用户规模）、Continue（代码侧重）相比的差异化压力；Inkeep 公司主导方向的风险。 | 档案"风险/局限/泡沫点"明确列出前四点；性能、权限模型、可观测性等档案未提及，须以源码/文档核验。 |
+| 最小 PoC | 在 macOS 上用 `ok init` 让本地 Markdown 目录接入 MCP，验证 Claude Code 或 Codex 能通过 MCP 检索与编辑文档；用 VSCode 同步打开同一目录确认双端一致；用 Graph Viewer 检查 `[[]]` 链接渲染；将验收项设为 GPL-3.0 合规、跨平台降级体验、Git 同步冲突处理。 | 步骤均来自档案"关键技术亮点"与"采用建议"；Agent 实际可调用的工具集合、鉴权方式、搜索质量等档案未量化，标为待核验。 |
+
 ## 架构启发
 
 **"AI-native"不是功能，而是架构。** 传统工具加AI功能（如Notion AI）是"功能层AI"。OpenKnowledge从MCP协议层接入Agent，意味着：
@@ -53,19 +62,49 @@ Graph wiki link viewer——可视化Markdown文件间的`[[]]`链接关系。
 - 知识库是Agent的第二大脑（second brain），不是被动存储
 - 编辑器是Agent和人类的共同界面
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    subgraph "OpenKnowledge 架构"
-        A["WYSIWYG Editor<br/>（人类界面）"] --> D[("Markdown Files<br/>（本地存储）")]
-        B["MCP Server<br/>（Agent界面）"] --> D
-        C["Agentic Search<br/>（语义检索）"] --> D
-        E["Graph Viewer<br/>（链接可视化）"] --> D
+    subgraph "OpenKnowledge 本体"
+        Editor["WYSIWYG Markdown Editor<br/>（人类界面，待核验：底层引擎）"]
+        MCPSrv["MCP Server<br/>（Agent 接口）"]
+        Search["Agentic Search<br/>（语义检索+图链接，待核验：索引机制）"]
+        Graph["Graph Viewer<br/>（[[]] 链接可视化）"]
+        Store[("本地 Markdown 文件<br/>（与 VSCode 共写）")]
     end
-    
-    F["Claude Code"] --> B
-    G["Codex"] --> B
-    H["Cursor"] --> B
-    I["OpenCode"] --> B
+
+    Editor --> Store
+    MCPSrv --> Store
+    Search --> Store
+    Graph --> Store
+    Editor -.触发检索.-> Search
+
+    subgraph "外部 Agent（边界）"
+        Claude["Claude Code"]
+        Codex["Codex"]
+        Cursor["Cursor"]
+        OpenCode["OpenCode"]
+        OpenClaw["OpenClaw（待核验：档案仅一笔带过）"]
+    end
+
+    Claude --> MCPSrv
+    Codex --> MCPSrv
+    Cursor --> MCPSrv
+    OpenCode --> MCPSrv
+    OpenClaw --> MCPSrv
+
+    subgraph "控制/风险边界"
+        GitSync["Git/GitHub 同步<br/>（no-code 团队共享，待核验：冲突策略）"]
+        License["GPL-3.0<br/>商用边界"]
+        Platform["平台覆盖<br/>macOS 原生 / Linux+Windows 仅 Web CLI"]
+    end
+
+    Store <--> GitSync
+    License -.约束.-> Editor
+    Platform -.约束.-> Editor
 ```
 
 ## 定位判断

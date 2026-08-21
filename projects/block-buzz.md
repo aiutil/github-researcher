@@ -37,33 +37,30 @@ Block（原 Square）官方开源项目，首日 2,162 stars。这不是社区�
 5. **YAML 工作流引擎**：消息/反应/调度/webhook 四种触发器，Agent 可执行编排
 6. **搜索 = 事件查询**：对话、补丁、工作流运行、审批记录搜索合一，因为它们是同一种事件
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Block/Buzz 是一个自托管的 Nostr relay 协作层，把人类与 AI Agent 统一为签名事件的发布者；外部边界是 buzz-cli（对接 Agent harness）与 NIP-34 Git 事件源 | 档案明确列为基础设施候选、Rust、Nostr、self-hosted、agent-protocol；具体 relay 协议字段、加密方案、存储后端未在档案中证实 |
+| 主路径 | 人类/Agent 用密钥对身份 → 在 relay 上签名发布事件（消息、patch、review、CI、审批）→ YAML 工作流引擎订阅并驱动 Agent 编排 | 仅档案中列出的六类事件、YAML 四类触发器、buzz-cli JSON-in/JSON-out 可证；review/merge 协议细节、调度实现未细化 |
+| 关键权衡 | 用 Nostr + 统一签名事件换取跨工具审计与 Agent 一等公民身份，代价是自托管门槛高（Rust 1.88+/Node 24+/Docker/Hermit）、依赖单一公司维护、移动端缺失 | "Branch as Room"、Agent=密钥对、单核贡献者风险均有档案原文；具体性能、吞吐量、可扩展性指标档案未提供 |
+| 最小 PoC | 单 relay + 单 Agent 密钥对 + buzz-cli 跑 NIP-34 patch/review 流，验证事件可签名可检索；关闭外部模型与多渠道，仅留 JSON 日志做审计回归 | 档案只承诺 "✅ Works today" 类功能可用；🚧/💭 项及生产部署形态须源码核验 |
+
 ## 架构启发
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "传统协作（7个tab互不知情）"
-        Chat1["💬 聊天"]
-        Forge["🔧 代码托管"]
-        CI["📊 CI 面板"]
-        Bots["🤖 Bot 集成"]
-        Release["📦 发布工具"]
-    end
-    
-    subgraph "Buzz（一种协议统一）"
-        Relay["📋 Nostr Relay<br/>签名事件日志"]
-        Human["👤 人类<br/>密钥对 A"]
-        Agent["🤖 Agent<br/>密钥对 B"]
-        Event["事件：消息/反应/<br/>patch/CI/审批/工作流"]
-        
-        Human -->|签名| Event
-        Agent -->|签名| Event
-        Event --> Relay
-    end
-    
-    Chat1 -.->|被替代| Relay
-    Forge -.->|被替代| Relay
-    CI -.->|被替代| Relay
-    Bots -.->|被替代| Relay
-    Release -.->|被替代| Relay
+flowchart LR
+    Human["👤 人类<br/>密钥对 A<br/>(权限由密钥定义)"] -->|签名事件| Relay["📋 Nostr Relay<br/>Block/Buzz 自托管<br/>统一事件日志"]
+    Agent["🤖 Agent<br/>密钥对 B<br/>一等公民身份"] -->|签名事件| Relay
+    CLI["🖥️ buzz-cli<br/>JSON in / JSON out<br/>对接 Goose/Codex/Claude Code<br/>(状态/控制边界)"] -->|编排调用| Agent
+    Git["🔧 Git 源<br/>NIP-34 patch / branch<br/>Branch as Room"] -->|git 事件| Relay
+    WF["⚙️ YAML 工作流引擎<br/>触发器:消息/反应/调度/webhook"] -->|订阅事件| Relay
+    Mobile["📱 iOS/Android 客户端<br/>Flutter — 待核验<br/>(风险边界)"] -.->|尚未发布| Human
+
+    Relay --> Audit["🧾 审计链<br/>消息/反应/patch/CI/审批/工作流<br/>(风险边界: 单公司维护)"]
 ```
 
 核心设计哲学：**一种协议、一种身份模型、一条事件日志**。不是集成了 7 个工具，是替代了 7 个工具的数据层。

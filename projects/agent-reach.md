@@ -51,6 +51,15 @@ GitHub Trending 持续在榜，42,263⭐（日增 1,164），从 6 月 14 日的
 5. **自诊断系统**：`agent-reach doctor` 一条命令告诉你每个渠道的状态、当前走哪条路
 6. **能力层定位**：不负责底层读取本身，负责选型 + 安装 + 体检 + 路由
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Agent-Reach 定位为 Agent 技术栈中的"感知层 / capability layer"，负责多平台选型、安装、体检与路由，不替代 LLM、Tool 执行与持久化层 | 基于项目分类"基础设施候选"、标签 capability-layer 与一句话定位推断；具体与其他层（Planning/Action）的接口协议未在档案中给出 |
+| 主路径 | CLI 入口 → 多后端路由（首选 + 备选，如 B 站 yt-dlp → bili-cli）→ 各平台零 API 开源后端 → 结构化 JSON/Markdown 输出供 Agent 消费；`doctor` 子命令提供渠道/路由状态 | 平台清单、bili-cli 切换实例、`agent-reach doctor` 见档案；具体统一 CLI 接口字段、输出 schema 未在档案中描述 |
+| 关键权衡 | 覆盖广度与零 API 成本 vs 合规灰区与反爬脆弱性；架构上靠"多后端自动切换"分散单点失效风险，但未在档案中提及缓存/速率限制/合规检查 | 反爬高风险、ToS 灰区已在档案风险章节列出；合规层、缓存、调度是否为内建组件未证实 |
+| 最小 PoC | 单一渠道（如 GitHub 或 RSS）、`--safe` + `--dry-run` 开启，验证输出结构、doctor 自诊断结果与一个后端失效时的自动切换行为，再据此评估扩展渠道 | `--safe`、`--dry-run`、`doctor` 来自档案"最近动态"；切换行为仅以 B 站 yt-dlp→bili-cli 一例佐证，其他平台是否具备同等切换能力待核验 |
+
 ## 架构启发
 Agent 技术栈正在分化出明确的"感知层"：
 - 传统爬虫 → 给人看的数据
@@ -58,16 +67,21 @@ Agent 技术栈正在分化出明确的"感知层"：
 
 这一分层与自动驾驶架构类似：Perception → Planning → Action。Agent-Reach 占据的就是 Perception 层位置。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    subgraph "Agent 技术栈"
-        P["感知层 Perception<br/>Agent-Reach / last30days-skill"]
-        PL["规划层 Planning<br/>LLM Core (GPT/Claude)"]
-        A["执行层 Action<br/>Tool calls / Code execution"]
-    end
-    P -->|"结构化数据"| PL
-    PL -->|"动作指令"| A
-    A -->|"执行结果"| PL
+    A["Agent 调用方<br/>(Claude Code / Cursor 等 Agent skill)"] --> B["Agent-Reach CLI 入口<br/>--safe / --dry-run"]
+    B --> C{"多后端路由<br/>首选 + 备选"}
+    C -->|首选| D["平台后端群<br/>yt-dlp / bili-cli / 其他开源抓取器<br/>(Twitter, Reddit, YouTube, GitHub,<br/>B 站, 小红书, LinkedIn, V2EX,<br/>雪球, 小宇宙, RSS 等)"]
+    C -->|备选| D
+    D --> E["结构化输出<br/>JSON / Markdown"]
+    E --> F["Agent 消费层<br/>(LLM Planning / Tool Execution)"]
+    B --> G["agent-reach doctor<br/>渠道与路由自诊断"]
+    G -->|"状态/控制边界"| C
+    D -.->|"反爬风控高风险<br/>合规灰区<br/>数据质量不稳<br/>待核验：缓存/速率限制/合规层"| H(("平台 ToS 与反爬<br/>外部边界"))
 ```
 
 ## 定位判断

@@ -6,7 +6,7 @@
     <title>Upsonic/Upsonic | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,26 +50,74 @@
 <li><strong>UCP（通用商业协议）</strong>：探索 Agent 与商业系统的标准化交互协议</li>
 <li><strong>IDE 集成</strong>：提供文档索引，可集成到 Cursor/VSCode/Windsurf</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Upsonic 是 Python 编写的 Agent 编排层：AutonomousAgent + Task 双抽象，对外对接模型供应商、工具/MCP 源与 Computer Use 能力，对内负责会话、日志、权限与重试；处于“上游入口—编排—模型/工具—状态回写”链路中段</td>
+<td>边界由“agent-framework / autonomous-agent / mcp / computer-use / llms”标签与项目分类推断；具体鉴权/租户/部署形态未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><code>agent.print_do(task)</code> 触发 Task → AutonomousAgent 运行时调度 → 模型调用与工具/MCP/Computer Use 调用 → 内置重试/超时/错误恢复 → 任务结果与会话/日志/审计回写</td>
+<td>主路径基于“Task 模式 + AutonomousAgent 抽象 + 可靠性工程”描述；具体协议、序列化格式与持久化方式在档案中未证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>“简洁双抽象+开箱即用可靠性” 与“生态广度/供应商耦合/可观测深度”之间的取舍；UCP 试图把商业协议标准化，但档案未给出已落地的协议规范</td>
+<td>取舍描述来自档案的“简洁优于复杂”“定位介于 LangChain 与轻量工具之间”“竞品生态差异”；UCP 与可靠性机制的具体实现、性能数字档案均未提供</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一渠道（如 CLI 或 IDE 插件）+ 最小工具权限 + 可审计日志；选用一个标准 Task 跑通模型调用与一次 MCP/工具调用，验证重试/超时/错误恢复行为，再扩展接入面</td>
+<td>PoC 建议来自“架构师速览—采用建议”行；具体的最小代码样例、SLO 阈值与退出路径档案未给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Upsonic 的设计哲学是"简洁优于复杂"——<code>AutonomousAgent</code> + <code>Task</code> 两个核心抽象覆盖大部分用例，避免了 LangChain 式的过度抽象。这反映了 Agent 框架设计的一种回归趋势：从"乐高积木式组合"回到"开箱即用的完整方案"。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统 待核验:具体入口形态] --> I[入口与身份边界 待核验:鉴权与多租户实现]
+    I --> C[AutonomousAgent 编排与运行时 内含重试 超时 错误恢复]
+    C --> T[Task 模式 可序列化任务描述]
+    T --> M[模型或推理服务 上游:Anthropic Claude OpenAI GPT 等 待核鉴:具体供应商接口]
+    C --> N[MCP 接入 与 Computer Use 能力 待核鉴:支持的 MCP 服务器与 CU 模型范围]
+    C --> S[会话 状态 日志 审计 回写]
+    N --> C
+    M --> C
+    S --> C
+    C --> O[UCP 通用商业协议 待核鉴:协议规范与采纳情况]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>Agent 开发框架</strong>，定位在 LangChain（太重）和单一 Agent 工具（太轻）之间。适合构建需要可靠性保证的生产级自主 Agent。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>竞争激烈</strong>：Agent 框架赛道极度拥挤（LangChain、CrewAI、AutoGen、LlamaIndex 等）</li>
 <li><strong>差异化不足</strong>：UCP 和可靠性理念尚未形成公认的技术壁垒</li>
 <li><strong>文档和生态</strong>：相比 LangChain 的庞大生态，Upsonic 的集成和工具数量有限</li>
 <li><strong>验证不足</strong>：7k stars 说明有一定关注，但缺乏标志性成功案例</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>竞品</strong>：LangChain（生态最大）、CrewAI（多 Agent 协作）、AutoGen（微软背景）</li>
 <li><strong>生态关联</strong>：与 OpenClaw 在 tags 中互相关联，可能是互补关系</li>
 <li><strong>上游依赖</strong>：Anthropic Claude、OpenAI GPT 等模型 API</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得适度跟踪</strong>。其"可靠性优先"的设计理念值得关注，但需要在更多生产案例中验证其差异化优势。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>UCP 通用商业协议是否会获得行业采纳</li>
 <li>可靠性工程的具体实现细节和效果</li>

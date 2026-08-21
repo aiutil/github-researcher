@@ -6,7 +6,7 @@
     <title>greatfrontend/top-javascript-interview-questions | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,11 +53,56 @@
 <li><strong>涵盖 React 生态:</strong> 除纯 JS 外覆盖 React 相关面试题，适应前端岗位实际需求</li>
 <li><strong>难度标注:</strong> 每题标注 Basic/Intermediate/Advanced，帮助候选人评估自身水平</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>作为 MDX 内容仓库，本项目边界即"GitHub 静态内容托管层"，无独立运行时服务、后端或数据库；外部边界仅有 GitHub 平台与 GreatFrontEnd 付费平台导流。</td>
+<td>档案仅声明语言 MDX、Stars 9.9K、Forks 517、未声明 License；未提供源码模块划分、构建工具链或部署形态。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为"求职者访问仓库 → 阅读 MDX 题库（按 Top/All/Difficulty 三维度）→ 跳转 GreatFrontEnd 付费课程"，无用户态、交易态或领域状态机。</td>
+<td>"三维度组织"与"免费引流→付费订阅"闭环见档案"架构启发"段；具体跳转链路、UTM 与转化漏斗未披露。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>内容质量/审核深度 vs 更新频率/覆盖广度的权衡；JavaScript/React 纵深 vs 多维度（CSS/系统设计/行为面）广度的权衡。</td>
+<td>权衡结论来自档案"风险/局限"段中"答案主观性""覆盖范围有限""时效性挑战"三项；无量化数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>最小验证为"抽取 5 道 Basic/Advanced 题目，用 ES2024+/React 19 现行规范人工核对答案准确性"，而非 PoC 服务或部署。</td>
+<td>档案无构建/运行命令、无 CI 配置；PoC 仅能在内容质量维度定义，架构 PoC 待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>作为一个资源型项目，其核心架构价值不在代码而在<strong>内容组织策略</strong>。三维度分类（重要性 × 全面性 × 难度）是一种高效的知识管理范式，可迁移到任何"知识库"类项目。更深层的是，它展示了<strong>开源内容项目的商业模式</strong>：高质量免费内容获取流量和信任 → 引导到 GreatFrontEnd 付费平台（premium 订阅）→ 形成商业闭环。这是 GitHub 开源 + SaaS 商业化的经典路径。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[求职者 用户] --> R[GitHub 仓库 top-javascript-interview-questions]
+    R --> T[MDX 题库 三维度: Top / All / Difficulty]
+    T --> A[题目与答案 Basic Intermediate Advanced]
+    A --> P[GreatFrontEnd 付费课程平台 导流 待核验]
+    A --> C[内容审核: 前 FAANG 面试官 待核验]
+    R -.更新频率.-> S[持续维护 2026-08-11 last_seen]
+    T -.局限.-> L[仅覆盖 JS React 不含 CSS 系统设计 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>资源型项目。</strong> 作为前端面试准备的参考知识库，定位清晰且有价值。不具平台化或基础设施潜力，但在其垂直领域（前端面试教育）是头部资源。商业价值在于为 GreatFrontEnd 平台导流。对个人开发者而言是实用工具，对前端教育市场而言是竞争性内容资产。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>商业引流属性:</strong> 本质是 GreatFrontEnd 付费产品的引流内容，免费部分可能是有意截断的"钩子"</li>
 <li><strong>答案主观性:</strong> 面试题答案无唯一正确解，"高质量"取决于审核者个人判断</li>
@@ -65,7 +110,7 @@
 <li><strong>时效性挑战:</strong> 前端技术迭代快，题库需持续更新否则过时（目前维护良好）</li>
 <li><strong>可替代性高:</strong> 类似题库众多（Yangshun 的 tech-interview-handbook 等），差异化主要靠品牌</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Yangshun/tech-interview-handbook:</strong> 更全面（覆盖算法、系统设计），但 JS 深度不如本项目</li>
 <li><strong>vs yangshun/front-end-interview-handbook:</strong> 同作者的姊妹项目，本项目是其 JavaScript 部分的升级版</li>
@@ -73,9 +118,9 @@
 <li><strong>vs 牛客/掘金面经:</strong> 中文社区面经更贴近国内市场，本项目更偏国际/FAANG 视角</li>
 <li><strong>vs GreatFrontEnd 付费课程:</strong> 本仓库是免费引流内容，付费课程提供更系统的视频+练习</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>中等优先级。</strong> 作为实用资源值得收藏使用，但作为研究对象其技术含量有限。值得关注的是其内容运营策略——如何通过 GitHub 开源内容构建品牌和引流。对前端教育创业者，这是值得研究的开源内容营销样本。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Star 数是否突破 10K 里程碑（即将达成）</li>
 <li>是否扩展到 CSS、系统设计、算法等其他面试维度</li>

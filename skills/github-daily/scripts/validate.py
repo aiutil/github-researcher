@@ -26,42 +26,42 @@ for df in daily_files:
     basename = os.path.basename(df)
     with open(df) as f:
         content = f.read()
-    
+
     if not content.startswith('---'):
         results["errors"].append(f"{basename}: 缺少 YAML frontmatter")
         results["pass"] = False
         continue
-    
+
     parts = content.split('---', 2)
     if len(parts) < 3:
         results["errors"].append(f"{basename}: frontmatter 格式错误")
         results["pass"] = False
         continue
-    
+
     try:
         fm = yaml.safe_load(parts[1]) or {}
     except:
         results["errors"].append(f"{basename}: frontmatter YAML 解析失败")
         results["pass"] = False
         continue
-    
+
     # 必填字段检查
     required = ['title', 'date', 'summary']
     for field in required:
         if not fm.get(field):
             results["errors"].append(f"{basename}: frontmatter 缺少必填字段 '{field}'")
             results["pass"] = False
-    
+
     # summary 是核心主题，不能太短
     summary = fm.get('summary', '')
     if summary and len(summary) < 10:
         results["warnings"].append(f"{basename}: summary 过短 ({len(summary)} chars)")
-    
+
     # 检查 trends 和 key_projects
     trends = fm.get('trends', [])
     if not trends:
         results["warnings"].append(f"{basename}: 没有 trends 数据")
-    
+
     key_projects = fm.get('key_projects', [])
     if not key_projects:
         results["warnings"].append(f"{basename}: 没有 key_projects")
@@ -101,24 +101,45 @@ for pf in project_files:
     size = os.path.getsize(pf)
     if size < 500:
         results["warnings"].append(f"{basename}: 文件过小 ({size} bytes)，可能是空壳")
-    
+
     with open(pf) as f:
         content = f.read()
     if not content.startswith('---'):
         results["errors"].append(f"{basename}: 缺少 frontmatter")
         results["pass"] = False
         continue
-    
+
     parts = content.split('---', 2)
     try:
         fm = yaml.safe_load(parts[1]) or {}
     except:
         continue
-    
+
     # 检查关键字段
     for field in ['title', 'category']:
         if not fm.get(field):
             results["warnings"].append(f"{basename}: 缺少 '{field}' 字段")
+
+    for heading in ['## 架构师速览', '## 架构启发']:
+        if heading not in content:
+            results["errors"].append(f"{basename}: 缺少 {heading}")
+            results["pass"] = False
+    marker = chr(96) * 3 + 'mermaid'
+    blocks = re.findall(re.escape(marker) + r"\n(.*?)" + re.escape(chr(96) * 3), content, re.S)
+    if not blocks:
+        results["errors"].append(f"{basename}: 缺少 Mermaid 架构图")
+        results["pass"] = False
+    else:
+        diagram = blocks[-1]
+        if not re.search(r"^(?:flowchart|graph)\s+(?:LR|RL|TB|BT)\b", diagram, re.M):
+            results["errors"].append(f"{basename}: Mermaid 图缺少支持的方向声明")
+            results["pass"] = False
+        if len(re.findall(r"\[[^\]]+\]", diagram)) < 4:
+            results["errors"].append(f"{basename}: Mermaid 图节点不足 4 个")
+            results["pass"] = False
+    if '证据边界' not in content:
+        results["errors"].append(f"{basename}: 缺少证据边界")
+        results["pass"] = False
 
 # === 3. HTML 同步 ===
 

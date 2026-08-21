@@ -36,8 +36,35 @@ url: "https://github.com/Leonxlnx/taste-skill"
 3. **跨 Agent 兼容**：通过 `npx skills add` CLI 一键安装到 Claude Code、Cursor、Codex 或任何读取 SKILL.md 目录的 Agent。不绑定特定平台，最大化覆盖面。
 4. **与 ChatGPT Images / 参考生成器配合**：图像生成 Skill 可以配合 ChatGPT Images 或类似生成器使用，生成参考帧后交给 Codex/Cursor/Claude Code 实现，形成完整的"AI 设计 → AI 编码"工作流。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | taste-skill 是一个面向 Claude Code / Cursor / Codex 等 Agent 的 Skill 文件集合（JavaScript，MIT），通过 `npx skills add` 安装到兼容 agent-skills 标准的 Agent 运行环境中；不内置模型推理或前端运行时，只约束 Agent 行为 | 具体安装路径、SKILL.md 目录结构与 agent-skills 标准的字段映射未在档案中给出 |
+| 主路径 | 用户 → Agent（Claude Code / Cursor / Codex）→ 加载 taste-skill 的代码 Skill 与图像 Skill → 在生成前端代码或参考板时套用 Anti-slop 规则 → 输出 UI 代码 / 参考图 | Agent 实际如何注入 Skill、提示词组装顺序未在档案中描述 |
+| 关键权衡 | Skill 规则代表的“现代极简”审美与项目实际设计需求的匹配度 vs. 强制约束带来的灵活性损失；以及 LLM 前端原生能力提升后 Skill 边际价值的衰减 | 规则条目、覆盖的设计语言范围、是否支持定制化均未在档案中证实 |
+| 最小 PoC | 在 Claude Code 或 Cursor 中以 `npx skills add Leonxlnx/taste-skill` 安装后，给出同一前端需求分别开启/关闭 Skill 生成两版界面，对比布局、字体、动效、间距差异 | 安装命令完整语法、Skill 子集选择方式、是否需额外配置 token 或赞助商凭证未在档案中确认 |
+
 ## 架构启发
 taste-skill 代表了 Agent Skills 的一个重要进化方向——从"教 AI 做事"到"教 AI 有品味地做事"。它的设计哲学是：AI 的默认输出反映了训练数据中的"平均水平"，要超越平均水平需要显式的品味约束。Skills 作为这种约束的载体，比在每次对话中重复指令更高效。其代码 Skill + 图像 Skill 的双轨设计也很有启发——视觉设计问题既需要代码层面的约束，也需要参考图像层面的引导。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者/前端开发者] --> A[Agent 运行时 - Claude Code 或 Cursor 或 Codex]
+  A --> R[读取 SKILL.md 目录 - 待核验具体路径]
+  R --> CS[代码生成 Skill - 布局 字体 动效 间距规则]
+  R --> IS[图像生成 Skill - 参考板 Web 移动 品牌]
+  CS --> OUT[AI 生成的前端代码]
+  IS --> REF[参考图像 - 配合 ChatGPT Images 或同类 - 待核验]
+  REF --> A
+  OUT --> A
+  A -.Anti-slop 约束.-> A
+  S[赞助商节点 Kimi Vercel Novamira IMG.LY - 待核验其在 Skill 中的实际角色] -.背书.-> R
+```
 
 ## 定位判断
 taste-skill 定位为 **vibecoding/低代码时代的 AI 设计品味基础设施**。它填补了一个关键空白——AI 生成代码的能力已经很强，但生成"好看的"代码的能力很弱。在 Skills 生态中，taste-skill 是前端设计质量的标杆项目，与 stop-slop（文本质量）形成互补。73K stars 使其成为 2026 年最具影响力的 Agent Skill 项目之一。

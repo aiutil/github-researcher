@@ -6,7 +6,7 @@
     <title>anthropics/jacobian-lens | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,24 +59,62 @@
 <li>walkthrough.ipynb 端到端示例</li>
 <li>支持预拟合 lens 加载和自定义拟合</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目是 Anthropic 论文《Verbalizable Representations Form a Global Workspace in Language Models》的参考实现，自标注"Not maintained, not accepting contributions"，定位为研究/学习型工具而非生产系统，外部边界限定在 HuggingFace decoder transformer 模型与用户提供的拟合语料</td>
+<td>档案明确其为"参考实现性质"，未声明生产部署形态</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>拟合期：语料(1000 条 128 token 序列，约 100 条饱和) → 每层计算平均雅可比 J_l；推理期：任意层/位置残差流 h_l → J_l @ h_l 线性传输 → unembed 解码 → token 排名；支持 disjoint slices 并行拟合后再 merge</td>
+<td>档案给出公式 <code>lens_l(h)=unembed(J_l @ h_l)</code>、拟合规模与并行方式</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在忠实性（线性雅可比近似的理论支撑）与可读性（直接产出 token 排名）之间取舍；放弃 encoder/encoder-decoder 架构、非线性方法（如 SAE）以换取数学简洁与跨模型适配</td>
+<td>档案明确"雅可比是线性近似，对强非线性区域可能不忠实"，且"仅支持 decoder transformer"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>加载预拟合 lens，运行 walkthrough.ipynb 端到端读出某一层/位置的 token 列表；用约 100 条短序列对单层 lens 做饱和度验证，确认 decoder transformer 上的可复现性</td>
+<td>档案提到"提供完整代码 + 预拟合 lens + walkthrough notebook"，但未给出具体依赖、硬件要求与许可证细节，需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>可解释性工具的设计哲学：忠实 vs 可读。</strong> 很多可解释性工具追求"好看"但不忠实。Jacobian Lens 的设计原则是"有理论基础的线性方法"——雅可比矩阵是输入到输出的真实传输关系的线性近似，而非训练一个额外的黑箱变换。</p>
 <p>对架构师的启发：在需要"理解模型内部状态"的场景（如安全审计、行为预测、对齐研究），Jacobian Lens 提供了一种比 attention visualization 更有信息量的工具。</p>
-<pre class="mermaid">graph LR
-    subgraph "Jacobian Lens 工作流"
-        A["输入文本"] --> B["模型前向传播"]
-        B --> C["提取残差流 h_l<br/>（任意层/位置）"]
-        C --> D["雅可比传输<br/>J_l @ h_l"]
-        D --> E["Unembedding 解码"]
-        E --> F["Token 排名列表<br/>（模型'想说的'）"]
-    end
-    
-    G["1000条文本语料<br/>~100条即可饱和"] --> H["拟合 J_l<br/>（每层一个）"]
-    H --> D
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A["输入文本"] --> B["模型前向传播<br/>HuggingFace decoder transformer"]
+    B --> C["提取残差流 h_l<br/>任意层/位置"]
+    D["平均输入-输出雅可比 J_l<br/>≈ 1000 条 128 token 序列拟合<br/>~100 条饱和"]
+    C --> E["线性传输<br/>J_l @ h_l"]
+    D --> E
+    E --> F["Unembedding 解码"]
+    F --> G["Token 排名列表<br/>模型'想说的'"]
+    H["项目状态边界<br/>Not maintained<br/>Not accepting contributions<br/>参考实现/学习型"]
+    A -.-> H
+    G -.-> H
+    I["架构适用边界<br/>仅 decoder transformer<br/>encoder/encoder-decoder 待核验"] -.-> B
+    J["拟合方式<br/>disjoint slices + merge<br/>支持并行"] -.-> D
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>学习型/研究工具。</strong> 是论文配套参考实现，明确标注"Not maintained, not accepting contributions"。价值在于理论和方法的可复现性，不适合生产使用。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>明确标注不维护</strong>："Not maintained and not accepting contributions"，参考实现性质</li>
 <li><strong>拟合成本</strong>：虽然 ~100 prompts 可用，但精确拟合需要模型自身的 backward pass</li>
@@ -84,7 +122,7 @@
 <li><strong>仅支持 decoder transformer</strong>：不适用于 encoder、encoder-decoder 架构</li>
 <li><strong>学术性质</strong>：没有生产化计划，社区贡献被拒绝</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -116,9 +154,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>轻量跟踪。</strong> 作为 LLM 可解释性方向的参考工具。关注论文引用量和社区是否出现维护 fork。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有社区 fork 添加更多模型支持和维护</li>
 <li>论文的引用量和"全局工作空间"理论的接受度</li>

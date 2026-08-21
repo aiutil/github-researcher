@@ -42,10 +42,37 @@ last_seen_date: "2026-06-08"
 4. **TTSR（Think-Then-Steer-and-Resume）**：规则注入不打断对话流，regex 匹配后 mid-token 中断注入
 5. **Subagents**：task 可 fan-out 到隔离 worktree，每个 worker 独立工具面
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | oh-my-pi 是一个终端 Coding Agent，自身承担 IDE 级能力（内置 LSP/DAP、持久 Python+Bun Worker、Hash-Anchored Edits），而非依赖外部 IDE 的 CLI wrapper；系统边界在“Agent 运行时 + 内置工具面” | 仅基于档案所述 13 LSP ops / 27 DAP ops、持久 Worker、TTSR、Subagents 等描述；具体协议、传输与进程模型未在档案给出 |
+| 主路径 | 用户在终端发起请求 → Agent 编排（Pi fork 上的扩展层）→ 调用模型与内置工具（LSP/DAP/Python/Bun）→ 通过 Hash-Anchored Edits 与状态/会话回写完成编辑闭环 | “请求 → 编排 → 模型与工具 → 状态回写”来自档案引用的架构抽象；具体调度协议、并发模型、IPC 方式档案未披露 |
+| 关键权衡 | 在“内置 IDE 能力带来的精度/能力增益”（如 Grok 6.7%→68.3%）与“LSP server 自行管理、Pi fork 维护负担、与 Claude Code/Codex 官方迭代竞争”之间取舍 | 收益数字与权衡点仅出自档案摘要；性能数据样本、用户规模分布、官方竞品动态未给出独立验证 |
+| 最小 PoC | 在受控本地仓库启 Agent，仅挂单一 LSP/DAP、最小 Python+Bun Worker、最小权限，验证 Hash-Anchored Edits 精度与子任务 fan-out 行为，记录可审计日志与回滚路径 | 档案未提供安装方式、依赖版本、可复现评测脚本；PoC 步骤为基于风险点（fork 依赖、369 open issues、LSP 自管复杂度）的推导 |
+
 ## 架构启发
 - **Agent 即 IDE**：将 IDE 能力内置到 Agent 而非让 Agent 调用外部 IDE，这是方向性创新
 - **编辑格式的重要性**：Hash-Anchored Edits 证明了编辑格式对模型表现的影响远超预期
 - **持久运行时的价值**：Agent 内部持久运行时使复杂工作流（数据分析 → 可视化 → 报告）成为可能
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    U[终端使用者 / SSH 远程开发] --> E[入口与身份边界]
+    E --> O[项目核心: Agent 编排层 / Pi fork 扩展]
+    O --> M[外部边界: 模型推理服务]
+    O --> L[外部边界: 内置 LSP 服务器]
+    O --> D[外部边界: 内置 DAP 调试器 lldb dlv debugpy]
+    O --> W[持久 Python + Bun Worker / 可回调自身工具]
+    O --> H[Hash Anchored Edits 编辑写入路径]
+    O --> S[状态/控制/风险边界: 会话 状态 审计 TTSR 注入 子任务 fan out worktree]
+    H --> FS[(待核验: 文件系统与编辑目标)]
+    S --> R[风险节点: 369 open issues Pi fork 维护负担 与 Claude Code Codex 竞争 待核验]
+```
 
 ## 定位判断
 - 更偏**工具型**，但有**平台候选**潜力

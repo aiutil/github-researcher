@@ -6,7 +6,7 @@
     <title>Reversa | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,33 +52,76 @@
 <li><strong>Agent 兼容格式</strong> — 输出格式专门针对 AI Coding Agent 优化</li>
 <li><strong>渐进式转换</strong> — 支持部分转换，不需要一次性重构整个系统</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Reversa 是"遗留代码 → AI Agent 可执行规格"的单向转换桥梁，不替代 Agent 或重构工具</td>
+<td>仅有"一句话定位"与三项关键技术亮点；内部组件、数据流、模型依赖、输出格式规范均未在档案中披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>遗留源码输入 → 规格化提取 → 输出面向 AI Coding Agent 优化的规格文档；强调渐进式/部分转换</td>
+<td>档案仅描述输入输出语义，未披露解析器类型、LLM 是否介入、是否调用外部模型、是否有中间表示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自动化提取覆盖度与规格可信度之间的取舍；增量价值需对冲"LLM 已能直接读旧代码"的替代风险</td>
+<td>"准确率存疑""意大利面条式代码效果有限""竞品空间"均为定性判断，无 benchmark、无准确率指标</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取一份结构较清晰的遗留模块，跑通"代码→规格→交给下游 Agent 重写"的端到端小闭环</td>
+<td>档案未给出支持语言范围、CLI/库形态、集成方式或示例仓库，PoC 选型与验收口径需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>"规格即接口" —— 如果 AI Agent 是新的开发者，那么规格文档就是新的 API</li>
 <li>遗留系统现代化的新路径：<strong>代码 → 规格 → Agent 重写</strong>，而非传统的 <strong>代码 → 人工重构</strong></li>
 <li>这种"中间层"思路可以扩展到更多场景：API 文档生成、测试用例生成等</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    LegacySrc[遗留系统源码] --> Reversa[Reversa 规格转换器]
+    Reversa --> Spec[可执行规格文档]
+    Spec --> Agent[下游 AI Coding Agent 待核验]
+    Reversa -. 准确性 / 覆盖率风险 .-> Risk[未验证规格质量待核验]
+    Reversa -. 部分转换控制 .-> Scope[渐进式转换边界待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 AI Agent 工具链中，Reversa 是一个 <strong>桥梁工具</strong>：
 - 不是平台，不是基础设施
 - 但它占据了一个重要的生态位：<strong>遗留系统 → Agent 可理解格式</strong> 的转换层
 - 如果做得好，可能成为企业 AI 迁移工作流中的标准组件</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>准确率挑战</strong> — 遗留系统的歧义性极高，自动化规格提取的准确率存疑</li>
 <li><strong>场景限制</strong> — 可能只适用于结构较好的代码，对"意大利面条式代码"效果有限</li>
 <li><strong>验证困难</strong> — 生成的规格是否正确？如何自动化验证？</li>
 <li><strong>竞品空间</strong> — LLM 本身已经可以理解代码，Reversa 的增量价值需要验证</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>GPT-Engineer</strong> — 从自然语言生成代码，Reversa 是反向操作（从代码生成规格）</li>
 <li><strong>Codex / Claude Code</strong> — AI Coding Agent 本身具备代码理解能力，Reversa 是其前置工具</li>
 <li><strong>各种代码分析工具（SonarQube 等）</strong> — 传统静态分析，Reversa 增加了 AI 理解层</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>有限跟踪。</strong> 方向有价值但产品尚早。关键观察点是：生成的规格质量是否达到"Agent 可以直接使用"的水平。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>生成的规格在实际 Agent 重写场景中的成功率</li>
 <li>是否扩展到更多语言和框架</li>

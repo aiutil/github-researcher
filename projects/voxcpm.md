@@ -41,6 +41,15 @@ OpenBMB 出品的 Tokenizer-Free TTS 模型，支持多语言语音生成、创�
 3. **创意声音设计**：不只是 TTS，还能创造性地合成声音特征
 4. **真实语音克隆**：少量样本即可复制说话人特征
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 开发者/上游应用经由 CLI 或 API 触发项目核心，由其生成端到端语音波形；扩展点位于插件/适配器/外部服务 | 边界划分基于"开发者/自动化入口 → CLI/API → 项目核心 → 宿主运行时或外部集成"的档案抽象，未在 README 中指明具体接口协议、SDK 或外部适配器 |
+| 主路径 | Text 输入 → End-to-End Model → Waveform 输出，绕过传统 Tokenizer/Acoustic Model/Vocoder 三段式 | "Text → End-to-End Model → Waveform" 与"Tokenizer-Free"在档案中明确给出，但 End-to-End Model 的内部子模块、采样率、波形格式未证 |
+| 核心权衡 | 在获得更低误差累积与跨语言迁移收益的同时，承担推理成本、伦理合规与多语言质量的额外代价 | 档案明确点出"大模型推理成本可能较高""语音克隆存在伦理/法律风险""多语言质量"为待观察项，但具体延迟/吞吐/许可条款未证 |
+| 最小 PoC | 在沙箱中以离线文本与参考音频验证：(1) 单语言与跨语言合成音质；(2) 少量样本语音克隆一致性；(3) 推理时延/显存基线；(4) 退出路径与依赖锁定 | 上述 PoC 维度来自档案"先做最小 PoC"的建议与"创意声音设计、真实语音克隆、多语言"三项核心能力声明；具体基准阈值未给 |
+
 ## 架构启发
 
 传统 TTS 流水线：Text → Tokenizer → Acoustic Model → Vocoder → Waveform
@@ -48,6 +57,23 @@ OpenBMB 出品的 Tokenizer-Free TTS 模型，支持多语言语音生成、创�
 VoxCPM 流水线：Text → End-to-End Model → Waveform
 
 简化的流水线意味着更少的误差累积和更自然的输出。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者 CI 或上游应用 待核验] --> API[项目 CLI 或 API 待核验]
+    API --> C[VoxCPM 核心 End-to-End Model Tokenizer-Free]
+    C --> W[Waveform 输出]
+    C --> X[语音克隆 少量样本输入 待核验]
+    C --> H[宿主运行时 操作系统 待核验]
+    API --> O[配置 日志 诊断 待核验]
+    C --> R[风险边界 推理成本 伦理合规 多语言质量]:::risk
+
+    classDef risk fill:#fee,stroke:#c66,stroke-width:1px
+```
 
 ## 定位判断
 

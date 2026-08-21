@@ -36,8 +36,36 @@ Kubernetes 原生的机器学习工具包——将机器学习全流程（训练
 3. **Katib 超参数调优**：内置的分布式超参数调优系统，支持贝叶斯优化、网格搜索、随机搜索等策略，可在 Kubernetes 集群上并行运行大量试验。
 4. **KServe 模型服务**：基于 Knative 的模型推理服务（原 KFServing），支持自动伸缩、金丝雀发布、GPU 推理等生产级 serving 能力。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Kubeflow 是一个 Kubernetes 原生的 MLOps 编排层，核心职责是把训练、调参、Serving、Notebook 四类 ML 工作负载以 CRD/Operator 形式落到 K8s 集群上，不替代底层 K8s 也不替代上游业务 | 边界划分来自"Kubernetes 原生 ML 工具包"的定位与四大亮点（Notebooks、Katib、KServe、Pipeline）；具体组件是否仍归此仓库未核验 |
+| 主路径 | 数据科学家/ML 工程师 → K8s 集群上的 Notebook/Operator → 分布式训练与 Katib 调优 → KServe 推理服务，全程声明式 CRD 驱动 | 主路径仅依据档案明确列出的四个组件；Pipeline 与训练 Operator 的耦合关系、TFX 集成未核验 |
+| 关键权衡 | 云原生深度集成（复用 K8s 监控/日志/网络/存储）与极高部署门槛、全栈耦合之间的权衡；与 Ray、BentoML、MLflow、Metaflow 等轻量化替代品之间存在功能交叠但定位差异 | 权衡论断仅源自档案"架构启发""风险/局限"段；各替代品优劣对比未在档案中量化 |
+| 最小 PoC | 在 GKE 或 Minikube 单集群上最小化部署 Notebooks + Katib + KServe 三个子组件，跑通"开发→调参→Serving"闭环，验收点为部署耗时、GPU 调度、CRD 兼容性 | 部署目标平台（GKE、Minikube）来自档案；最小化范围与验收指标为研究建议，未在档案中证实 |
+
 ## 架构启发
 Kubeflow 的核心架构决策是"将 ML 工作负载 Kubernetes 化"。这个决策有利有弊：好处是与云原生生态深度集成（监控、日志、网络、存储都复用 K8s 基础设施）；坏处是部署门槛极高——需要先有一个可用的 Kubernetes 集群，然后部署大量 Operator 和 CRD。Kubeflow 的经验教训是：ML 平台不能只做 K8s 原生，还需要降低入门门槛。后来的项目（如 Ray、Modal）选择了更简化的路径。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[ML 工程师与数据科学家] --> I[Kubernetes 集群与身份边界 待核验]
+    I --> N[Kubeflow Notebooks Jupyter 即服务]
+    I --> P[Training Pipelines Operator 与 CRD 待核验]
+    N --> K[Katib 超参数调优]
+    P --> K
+    K --> S[KServe 模型服务 基于 Knative]
+    S --> M[模型与推理产物]
+    P --> M
+    N -.托管分散.-> R[子仓库活跃度与维护者风险]
+    S -.托管分散.-> R
+    R --> X[Kubeflow 1.x 是否演进至 2.0 待核验]
+```
 
 ## 定位判断
 Kubeflow 在 MLOps 生态中定位为**重量级 ML 平台基础设施**。它适合有 Kubernetes 运维能力的大型企业团队，对于中小团队来说过于复杂。在 GitHub 趋势研究中，Kubeflow 是"老牌项目重新被关注"的典型案例——它出现在趋势榜上可能是因为企业 AI 基础设施投资的回暖，而非技术突破。

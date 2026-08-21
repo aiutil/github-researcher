@@ -6,7 +6,7 @@
     <title>alibaba/open-code-review | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,59 @@
 <li><strong>Harness / Skill 集成:</strong> 基于 Agent Skill 架构，可扩展自定义审查规则</li>
 <li><strong>Go 实现:</strong> 高性能、低资源消耗，适合 CI/CD 管线集成</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口渠道（PR 源）、LLM 供应商（OpenAI/Anthropic 兼容）、审查规则/工具数据之间的编排层；档案未证实的具体协议与部署形态</td>
+<td>仅基于档案描述的"混合架构 + 行级评论 + 多语言规则集 + Agent Skill 扩展"，未给出源码级实现</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>PR diff 与仓库上下文 → 确定性规则管线（AST + 模式匹配）→ LLM Agent 补充上下文问题 → 行级评论输出</td>
+<td>档案明确给出该顺序，但具体编排、并发模型与持久化方式"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>确定性规则（精确、低成本、覆盖面有限）vs LLM Agent（智能、上下文感知、成本/延迟高、幻觉风险）的分工与边界</td>
+<td>档案明确指出此权衡；具体误报率、成本数据未披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单仓库单语言（优先 Java 或 Go）、单一 LLM 供应商、最小规则集、可审计日志，验收项含误报率、PR 延迟、LLM 成本与退出路径</td>
+<td>档案给出"先在单一渠道、最小工具权限和可审计日志下验证"建议，未给出基准数字</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>OpenCodeReview 的核心架构启发是"混合智能"——不要让 LLM 做所有事，而是让它做擅长的事（理解上下文、发现逻辑错误），确定性规则做它们擅长的事（精确模式匹配）。这种分工避免了 LLM 的幻觉问题，同时保持了智能性。其"仓库级上下文"的思路也值得借鉴——代码审查不能只看 diff，需要理解整个代码库的上下文才能给出有意义的建议。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    PR[PR 与仓库上下文] --> IN[入口与权限边界 待核验]
+    IN --> ORCH[项目编排与运行时]
+    ORCH --> RULES[确定性规则管线 AST 与模式匹配 内置 Java Python Go JavaScript 等]
+    ORCH --> LLM[LLM Agent 上下文与逻辑审查 OpenAI 或 Anthropic 兼容 API 待核验]
+    RULES --> OUT[行级评论输出]
+    LLM --> OUT
+    ORCH --> STATE[会话 状态 审计 待核验]
+    ORCH --> SKILL[Agent Skill 自定义规则扩展 待核验]
+    OUT --> CI[CI/CD 审查节点]
+    OUT --> HUMAN[人工确认 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型项目（成长期）。</strong> OpenCodeReview 是一个面向 DevOps / 平台工程的代码审查工具。其定位是"CI/CD 管线中的 AI 审查节点"，而非独立的审查产品。与 CodeRabbit（SaaS）不同，它强调私有化部署和数据安全。有潜力成为开源 AI 代码审查的标准方案。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>规则集覆盖:</strong> 确定性规则的覆盖面有限，新类型的漏洞需要手动添加规则</li>
 <li><strong>LLM 成本:</strong> 大型 PR 的 LLM 审查成本较高，可能影响 CI 速度</li>
@@ -63,7 +111,7 @@
 <li><strong>语言覆盖:</strong> 虽然支持多语言，但深度规则可能仅覆盖 Java / Go（阿里的主语言）</li>
 <li><strong>竞争激烈:</strong> CodeRabbit、GitHub Copilot Review、Cursor 等都在做类似功能</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs CodeRabbit:</strong> CodeRabbit 是 SaaS 产品（闭源），OpenCodeReview 是开源自部署</li>
 <li><strong>vs GitHub Copilot Review:</strong> Copilot Review 绑定 GitHub，OpenCodeReview 可对接任意 Git 平台</li>
@@ -71,9 +119,9 @@
 <li><strong>vs Greptile:</strong> Greptile 也是 AI 代码审查，但更偏"代码库问答"，OpenCodeReview 更专注 PR 审查</li>
 <li><strong>vs Cursor:</strong> Cursor 是 AI IDE（编码工具），OpenCodeReview 是 CI/CD 审查工具</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> AI 代码审查是 DevOps 领域的高价值场景，OpenCodeReview 的混合架构是当前最优解。值得关注的是：规则集的扩展速度、LLM 审查质量的提升、以及与主流 Git 平台（GitHub / GitLab / Gerrit）的集成深度。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>阿里内部的真实使用数据（采纳率、误报率）是否公开</li>
 <li>确定性规则集的社区贡献活跃度</li>

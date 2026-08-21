@@ -6,7 +6,7 @@
     <title>code-review-graph | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,32 +49,65 @@
 <li><strong>MCP 原生集成</strong>：一行 <code>code-review-graph install</code> 自动写入所有支持平台的 MCP 配置</li>
 <li><strong>对称卸载</strong>：<code>code-review-graph uninstall</code> 原子化清理，不残留</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>CRG 是一个本地 Python CLI，通过 <code>code-review-graph install</code> 写入 Claude Code / Cursor / Codex / Gemini CLI / Copilot / Kiro 的 MCP 配置，作为这些 AI 编程工具的上下文供给侧。它只触达被分析代码库与受支持 IDE/CLI 端点，不替代 LLM 与代码仓库本身。</td>
+<td>边界来自 README「生态集成」「一行 install」描述；未公开具体 MCP server 进程模型与通信协议。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>源码 → Tree-sitter AST(40+ 语言) → 知识图谱(函数/类/导入/调用/继承/测试覆盖) → Blast Radius 图遍历 → 经 MCP 暴露给 AI 客户端 → LLM 仅消费精确上下文。</td>
+<td>路径见档案「技术亮点」与「架构启发」图；增量索引 &lt; 2s 仅在 2900 文件项目上证实，10K+ 文件属待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用 AST 精确结构关系换取对动态语言隐式依赖（反射、monkey patch）的覆盖盲区；用 <code>pip install</code> + 自动改写 MCP 配置换取采用速度，代价是配置写入对宿主环境的隐式副作用。</td>
+<td>风险点由档案「风险/局限」直接列出；tree-sitter 各语种 grammar 质量在 40+ 语言完整列表上未核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在受限目录跑 <code>code-review-graph install</code> 接入单一 CLI（如 Gemini CLI），以一个 2900 文件级项目对比传统 RAG 读取文件数与 token 消耗；同时用 <code>uninstall</code> 验证配置可逆性。</td>
+<td>基准数字仅在 README 描述的 27,700→15 文件场景得到；其它规模、其它 LLM 成本/SLO 属待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
 <pre class="mermaid">flowchart LR
-    subgraph "传统 RAG 路径"
-        Code1["💻 代码库"] --> Embed["🔢 向量嵌入"]
-        Embed --> Search["🔍 语义搜索"]
-        Search --> LLM1["🤖 LLM<br/>近似上下文"]
-    end
-    
-    subgraph "CRG 图谱路径"
-        Code2["💻 代码库"] --> TS["🌳 Tree-sitter AST"]
-        TS --> Graph["📊 知识图谱<br/>节点：函数/类/导入<br/>边：调用/继承/测试"]
-        Graph --> Traverse["🔎 图遍历<br/>Blast Radius"]
-        Traverse --> LLM2["🤖 LLM<br/>精确上下文"]
-    end
+    User["👤 开发者"] --> IDE["🖥️ AI 编程客户端<br/>Claude Code / Cursor / Codex<br/>Gemini CLI / Copilot / Kiro"]
+    IDE -- "MCP 请求" --> CRG["🐍 code-review-graph<br/>Python CLI · MCP server"]
+    CRG -- "Tree-sitter AST 解析" --> TS["🌳 Tree-sitter<br/>40+ 语言 grammar"]
+    TS --> Graph["📊 知识图谱<br/>节点: 函数/类/导入<br/>边: 调用/继承/测试覆盖"]
+    Graph --> Blast["🔎 Blast Radius 遍历<br/>SHA-256 增量索引"]
+    Blast -- "精确上下文" --> IDE
+    CRG -. "install / uninstall<br/>自动改写 MCP 配置" .-> IDE
+    IDE -- "上下文 + 代码" --> LLM["🤖 LLM<br/>供应商待核验"]
+    CRG -. "动态依赖盲区<br/>反射 / monkey patch" .-> Risk["⚠️ 风险边界<br/>覆盖率待核验"]
 </pre>
 <p><strong>核心差异：</strong> RAG 回答"哪些代码语义相似"，CRG 回答"哪些代码有真实依赖关系"。前者是近似，后者是精确。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>处于 <strong>AI 编程工具上下文管理层</strong>，正在从"新兴方案"向"事实标准"过渡。与 Graphify 属于同一范式但定位不同——Graphify 更偏平台化/通用知识图谱，CRG 更聚焦 code review 工程场景。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Tree-sitter 依赖</strong>：语言覆盖取决于 tree-sitter grammar 质量，非主流语言支持可能不完整</li>
 <li><strong>动态类型语言</strong>：Python/JS 的隐式依赖可能遗漏（如反射、猴子补丁）</li>
 <li><strong>与 Graphify 竞争</strong>：两个项目在同一赛道，可能分散社区精力</li>
 <li><strong>单语言（Python）实现</strong>：对非 Python 项目的集成可能增加摩擦</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -117,9 +150,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>强烈建议。</strong> 代码知识图谱正在从"创新概念"变为"工程标配"。CRG 和 Graphify 谁先达到生产级稳定性，谁就可能成为 Agent 上下文管理的事实标准。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>与 Graphify 是否会合并或互操作</li>
 <li>企业级 monorepo（10K+ 文件）的性能表现</li>

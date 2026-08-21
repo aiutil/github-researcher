@@ -41,8 +41,32 @@ DeepSeek 开源的推测解码（Speculative Decoding）draft model 训练+评�
 4. **多 GPU 训练**：默认 8 GPU 单节点配置，每 GPU 一个 worker
 5. **9 个评测基准**：gsm8k/math500/aime25/humaneval/mbpp/livecodebench/mt-bench/alpaca/arena-hard-v2
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | DeepSpec 是 DeepSeek 出品的推测解码 draft model 训练+评估代码库，覆盖 DSpark/DFlash/Eagle3 三种算法，配套论文与 checkpoint，而非通用推理引擎或通用训练框架 | 边界来自档案"定位判断""关键技术亮点"；三算法命名及论文/checkpoint 配套未在源码中核验 |
+| 主路径 | Data Prep（38TB Target Cache 缓存目标模型中间态）→ Training（8 GPU 单节点，每 GPU 一个 worker）→ Evaluation（9 个评测基准：gsm8k/math500/aime25/humaneval/mbpp/livecodebench/mt-bench/alpaca/arena-hard-v2）→ 输出可用于 vLLM 等推理引擎的 draft model | 路径节点及评测集列表来自档案"关键技术亮点"；与 vLLM 的集成形态未在源码核验 |
+| 关键权衡 | 训练门槛（~38TB 存储 + 默认 8 GPU）与可复现性/算法覆盖面（DSpark 自有 + DFlash + Eagle3 统一实现）的取舍；推测解码算法快速迭代 vs 框架稳定性的张力 | 取舍依据档案"风险/局限"与"关键技术亮点"；具体资源开销与算法稳定性数据未核验 |
+| 最小 PoC | 用 Qwen3-4B/8B/14B 或 Gemma-4-12B 中的最小模型，在 8 GPU 单节点上跑通 Data Prep→Training→Evaluation 完整 pipeline，对比 DSpark/DFlash/Eagle3 在选定基准上的加速比 | 模型清单与硬件配置来自档案；最小模型名称、数据子集选择与加速比指标需 PoC 自验 |
+
 ## 架构启发
 推理加速不是推理时才做的事，而是需要独立的训练流程。这是「推理优化」从运行时技巧走向训练时工程的标志。Data Preparation → Training → Evaluation 的三段式 pipeline 为推理优化提供了标准化路径。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者与上游系统] --> I[入口与配置边界]
+    I --> DP[Data Prep 38TB Target Cache]
+    DP --> TR[Training 8 GPU 单节点每 GPU 一个 worker]
+    TR --> EV[Evaluation 9 个基准 gsm8k math500 aime25 humaneval mbpp livecodebench mt-bench alpaca arena-hard-v2]
+    EV --> DM[Draft Model Checkpoint DSpark DFlash Eagle3 待核验]
+    DM --> OE[vLLM 等推理引擎 待核验]
+    TR -. 算法快速迭代 .-> RK[框架稳定性风险 待核验]
+```
 
 ## 定位判断
 **基础设施候选** — 不是推理引擎，不是通用训练框架，是推测解码领域的专项训练基础设施。如果推测解码成为推理标配（趋势明确），DeepSpec 就是训练侧的标准化工具。

@@ -6,7 +6,7 @@
     <title>Dograh | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,7 +53,39 @@
 <li><strong>电话集成</strong>：真实业务场景（客服、外呼）</li>
 <li><strong>BYOK</strong>：自带模型 API Key，成本可控</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Dograh 是一个自托管的编排平台，在用户呼入、电话渠道、外部 LLM/STT/TTS 供应商与 MCP 工具/数据源之间做流程串联与状态管理</td>
+<td>档案仅证实 voice-ai / self-hosted / speech-to-speech / telephony / mcp 标签及"工作流构建器 + 电话集成 + BYOK"表述；具体运行时、数据库、传输协议未披露</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>语音输入 → 入口/身份 → 可视化工作流编排 → STT/LLM/TTS 或 S2S 模型调用 → 可选 MCP 工具调用 → TTS 回放/电话通道 → 会话/审计日志</td>
+<td>路径顺序来自档案"语音 AI 典型架构"与亮点描述；具体节点失败处理、重试与回退机制、状态持久化方案档案未说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展性/易用性（拖拽工作流、MCP 生态） vs. 抽象泄漏（依赖第三方 STT/TTS、电话运营商、LLM 供应商，BYOK 意味着账号/成本/合规跟随供应商）</td>
+<td>权衡基于档案"语音质量依赖底层 STT/TTS""电话集成需要运营商合作""BYOK 模式"等定性表述；无性能、可用性或耦合度量化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单路电话/网页入口 + 1 个 LLM + 1 个 STT + 1 个 TTS + 1 个 MCP 工具，启用可审计日志与额度告警，验证延迟、成本、退出路径与电话通道稳定性</td>
+<td>PoC 选型来自档案"先在单一渠道、最小工具权限和可审计日志下验证"；具体通道 SIP/WebRTC、模型清单、监控指标档案未给出，需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>语音 AI 平台的典型架构：
 <code>用户语音 → STT → LLM → TTS → 语音输出
               ↓
@@ -61,24 +93,47 @@
               ↓
           MCP Tools</code></p>
 <p>Dograh 把这条链路产品化了，加上可视化编辑和电话集成。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[Dograh 编排与运行时<br/>可视化工作流构建器]
+    C --> P[电话集成通道<br/>具体协议待核验]
+    C --> M[模型或推理服务<br/>STT/LLM/TTS 或 S2S<br/>BYOK 供应商]
+    C --> T[工具与外部系统<br/>MCP 原生集成]
+    C --> S[会话 状态 审计<br/>持久化方案待核验]
+    M --> C
+    T --> C
+    P --> S
+    M --> S
+    T --> S
+    M -.成本与合规跟随.-> R[外部供应商耦合风险<br/>STT/TTS质量依赖第三方]
+    P -.运营商合作门槛.-> R
+    C -.状态机可靠性.-> S
+    I -.权限与多租户边界.-> S
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+    style R fill:#fee,stroke:#c33,stroke-width:1px
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型 → 平台候选。</strong> 如果能建立语音 AI 开源生态，有平台化潜力。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>Vapi/Retell 功能更成熟，Dograh 需要快速追赶</li>
 <li>语音质量依赖底层 STT/TTS 模型</li>
 <li>电话集成需要运营商合作，门槛不低</li>
 <li>4K stars 规模还小，需要验证可持续性</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>直接对标 Vapi/Retell（闭源 SaaS）</li>
 <li>与 VoxCPM 互补：VoxCPM 提供模型，Dograh 提供平台</li>
 <li>与 FunASR 不同层：FunASR 是 ASR 引擎，Dograh 是完整平台</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 企业语音 AI 部署的刚需，自托管趋势明确。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>工作流构建器的易用性和灵活性</li>
 <li>电话集成的稳定性和覆盖范围</li>

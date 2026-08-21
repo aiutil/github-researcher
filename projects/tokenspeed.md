@@ -48,9 +48,36 @@ LightSeek Foundation 维护的 "speed-of-light" LLM 推理引擎，专为 Agent 
 4. **Blackwell 最快 MLA 实现之一**：针对 Agent 工作负载优化
 5. **SMG 集成 AsyncLLM**：低开销 CPU 侧请求处理
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | LightSeek 维护的 LLM 推理引擎（Python），公开组件含 C++ 控制面、Python 执行面、FSM 调度器、可插拔 Kernel、Blackwell MLA 路径；外部边界涉及上游模型（Qwen3.5-397B-A17B、Kimi K3、TML Inkling）与硬件（NVIDIA Blackwell、AMD FP4）。Preview 阶段，不建议用于生产。 | 组件名取自档案"关键技术亮点"与定位描述；具体接口与部署形态未由本档案证实。 |
+| 主路径 | 请求进入 → C++ 控制面/FSM 调度器（管理请求生命周期与 KV Cache 所有权）→ Python 执行面调用可插拔 Kernel（含 Blackwell MLA Kernel）→ 通过 SMG 集成 AsyncLLM 做低开销 CPU 侧处理 → 输出结果；静态编译建模层（local-SPMD）从标注自动生成集合通信。 | 主路径基于"FSM 调度器 + 可插拔 Kernel + 静态编译建模层"叙述重组；时序与协议细节须源码核验。 |
+| 关键权衡 | 在 vLLM 式易用性与 TensorRT-LLM 式性能之间取舍，并选择以 Agent 工作负载（多轮、长上下文、高并发）为一阶约束；代价是 Preview 阶段风险、模型/GPU 覆盖仍在合并、580 TPS 等性能数字未独立验证。 | 权衡取自档案"它解决的问题""风险/局限"两节；具体 SLO 与成本数据未提供。 |
+| 最小 PoC | 限定单模型（优先 Qwen3.5-397B-A17B，单卡 Blackwell）、单 Agent 多轮会话、固定工具集；验收项：可复现 580 TPS 量级（待第三方复现对比 vLLM/TensorRT-LLM/SGLang）、KV Cache 复用正确性、FP4 路径在 AMD/NVIDIA 行为差异、退出路径与稳定性观察。 | PoC 范围受"Preview 不建议生产""性能未独立验证""Hopper/Blackwell/AMD 行为差异待观察"约束；具体基准方法未在档案中给出。 |
+
 ## 架构启发
 
 TokenSpeed 的架构对推理基础设施研究有参考价值：**FSM 化的调度器设计**（将 KV Cache 生命周期管理编码为类型安全的有限状态机）和**静态编译的并行策略**（从标注自动生成集合通信）是两个值得借鉴的工程模式。对 Agent 推理基础设施而言，多轮长上下文场景下的 KV Cache 管理是核心瓶颈。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[C++ 控制面 + Python 执行面]
+    C --> S[FSM 调度器 编码 KV Cache 生命周期与重叠时序]
+    C --> K[可插拔 Kernel 集中注册表 含 Blackwell MLA Kernel]
+    C --> M[模型路径 Qwen3.5-397B-A17B / Kimi K3 / TML Inkling FP4]
+    C --> A[SMG 集成 AsyncLLM 低开销 CPU 侧请求处理]
+    S --> K
+    K --> M
+    M --> O[输出与审计边界 待核验]
+    A --> C
+```
 
 ## 定位判断
 

@@ -6,7 +6,7 @@
     <title>Orchestra-Research/AI-Research-SKILLs | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,63 @@
 <li><strong>模块化设计</strong>：技能可独立使用或组合</li>
 <li><strong>TeX/学术风格</strong>：适合学术研究场景的格式</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>位于 Claude Code、Codex CLI、Gemini CLI、GPT-5 等 agent 平台之间的技能适配层，输入为多平台插件/技能规范，输出为打包后可移植的技能集合</td>
+<td>仅依据档案中"跨平台打包、统一技能库、适配 Claude Code/Codex/Gemini/GPT-5"等表述；具体适配格式、转换规则未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>技能源 → 跨平台打包器 → 各 agent 运行时 → 用户调用研究/工程技能</td>
+<td>档案未描述具体打包器、运行时接口或调用协议，主路径为基于定位的合理抽象</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"写一次到处用"的复用收益与四大平台技能格式独立演化、多平台同步漂移导致的维护成本之间取舍</td>
+<td>档案明确列出"平台 API 变动风险""维护成本"与"官方技能市场可能蚕食"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一个高频技能（如文献综述或代码审查）在 Claude Code 与 Codex CLI 上分别加载，验证同一源文件是否在两个平台行为一致，并观察版本同步延迟</td>
+<td>档案未提供任何具体技能清单或加载示例，须以仓库实际技能目录核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>Agent 技能需要标准化</strong>：跨平台兼容是减少碎片化的关键</li>
 <li><strong>研究方法论可编码</strong>：科研流程可以通过 agent 技能自动化</li>
 <li><strong>技能可移植性</strong>：不绑定单一平台降低锁定风险</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> C[跨平台技能库<br/>AI-Research-SKILLs]
+    C --> P1[Claude Code 适配层<br/>待核验]
+    C --> P2[Codex CLI 适配层<br/>待核验]
+    C --> P3[Gemini CLI 适配层<br/>待核验]
+    C --> P4[GPT-5 适配层<br/>待核验]
+    P1 --> R1[Claude Code 运行时<br/>待核验]
+    P2 --> R2[Codex CLI 运行时<br/>待核验]
+    P3 --> R3[Gemini CLI 运行时<br/>待核验]
+    P4 --> R4[GPT-5 运行时<br/>待核验]
+    C -. 平台技能格式演化 .-> X[风险边界<br/>格式漂移与官方市场蚕食]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>有价值的资源型项目</strong>。在 agent 技能碎片化时代，提供跨平台兼容方案。同时填补了 AI 研究方法论技能化的空白。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>平台 API 变动风险</strong>：各平台技能格式可能频繁变动</li>
 <li><strong>质量参差</strong>：大量技能的质量控制困难</li>
@@ -72,16 +120,16 @@
 <li><strong>维护成本</strong>：跨平台适配意味着更多维护工作</li>
 <li><strong>竞争</strong>：各平台官方技能市场可能蚕食</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs awesome-openclaw-skills</strong>：后者是技能索引，此项目是技能本身</li>
 <li><strong>vs Anthropic Skills</strong>：官方技能 vs 社区跨平台技能</li>
 <li><strong>vs DSPy</strong>：DSPy 偏 LM 程序框架，此项目偏 agent 技能</li>
 <li><strong>vs各平台官方插件市场</strong>：跨平台 vs 单平台</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐关注（AI 研究者/R&amp;D）。</strong> 如果做 AI 研究且使用多个 agent 平台，这个技能库有实用价值。关注其跨平台适配的进展。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>各平台技能格式变动后的适配速度</li>
 <li>研究类技能的质量和实用性反馈</li>

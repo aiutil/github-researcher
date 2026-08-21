@@ -6,7 +6,7 @@
     <title>chartdb/chartdb | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,70 @@
 <li><strong>Schema 迁移</strong>：支持可视化编辑 Schema 并生成迁移 SQL</li>
 <li><strong>纯前端</strong>：无需后端服务，可部署为静态站点</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>浏览器端 ERD 工具；输入为一条 SQL 或直连数据库，输出为可编辑 Schema 与迁移 SQL</td>
+<td>档案明示“纯前端”“无需后端服务”，但具体直连驱动、本地运行形态、构建产物未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据源 → 一条 SQL 导出 / 直连 → 浏览器内解析 → React Flow 渲染 → 编辑后导出迁移 SQL</td>
+<td>路径节点基于档案描述；解析器、迁移生成器在内部还是调用外部库无档案证据</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>AGPL-3.0 强 copyleft 与“隐私优先本地化”之间的取舍：大库渲染性能 vs 当前画布实现的可扩展性</td>
+<td>权衡项均来自档案“风险/局限”章节；具体性能阈值、许可证兼容性案例未提供</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>任选一个 MySQL/PostgreSQL/MariaDB/MSSQL/SQLite 真实库，启用单查询模式导出 → 在 ChartDB 中编辑一张表 → 生成迁移 SQL 并 dry-run</td>
+<td>档案未给出迁移 SQL 方言覆盖率、回滚支持及与 Flyway/Liquibase 的集成方式，列为待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>ChartDB 的"单查询导出"模式是一个巧妙设计——用户不需要开放数据库连接权限给外部工具，只需在本地执行一条 SQL，将结果粘贴到 Web 界面即可。这种"数据在用户侧，处理在前端"的架构兼顾了安全性和易用性。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[数据库<br/>MySQL/PostgreSQL/MariaDB/MSSQL/SQLite] -->|执行一条 SQL 导出 或 直连| B[ChartDB 浏览器端<br/>纯前端 · 待核验直连驱动]
+    B -->|解析 Schema| C[React Flow 画布<br/>可编辑 ERD]
+    C -->|编辑表与关系| D[迁移 SQL 生成器<br/>待核验方言与回滚]
+    D --> E[导出 DDL / 迁移脚本]
+    C -.渲染性能瓶颈.-> F[风险边界<br/>超大库数千表表现 待核验]
+    B -.许可证边界.-> G[AGPL-3.0<br/>强 copyleft 影响企业采用]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>开发工具型</strong>，定位为数据库开发者的日常工具。不是平台，不是框架，而是"小而美"的单功能工具。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>功能边界</strong>：ERD 可视化是相对窄的场景，扩展空间有限</li>
 <li><strong>竞品压力</strong>：drawSQL、dbdiagram.io、Prisma Studio 都在争夺同一市场</li>
 <li><strong>AGPL 限制</strong>：强 copyleft 可能阻止部分企业采用</li>
 <li><strong>大库性能</strong>：超大型数据库（数千表）的渲染性能可能成为瓶颈</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>竞品</strong>：dbdiagram.io（商业）、drawSQL（商业）、prisma/studio（开源但更偏 ORM）</li>
 <li><strong>底层依赖</strong>：React Flow（画布引擎）</li>
 <li><strong>互补</strong>：可与 Prisma、Drizzle ORM 等工具配合使用</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得适度跟踪</strong>。作为数据库工具链中有价值的补充工具，其产品设计（特别是单查询模式）值得借鉴。但项目本身的技术深度有限。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否会扩展到 NoSQL（MongoDB、Redis）的可视化</li>
 <li>Schema 迁移功能能否与 Flyway/Liquibase 集成</li>

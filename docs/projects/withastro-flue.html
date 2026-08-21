@@ -6,7 +6,7 @@
     <title>Astro flue | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,26 +54,78 @@
 <p><strong>多部署目标：</strong> Node.js / Cloudflare Workers / GitHub Actions / GitLab CI / Daytona / Render。</p>
 </li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>flue 是位于入口渠道、模型供应商与工具/数据源之间的 TypeScript Agent 编排与运行时层，自身封装 sandbox（local/virtual/remote）、durable execution 与 CRDT 多人协作</td>
+<td>基于标签与定位陈述的抽象；具体协议、进程模型与外部依赖须查源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游事件 → 入口与身份边界 → 编排/运行时（含 session、skills、tools）→ 调用模型与工具 → 状态/会话/审计回写，CRDT 与 live presence 作为协作状态通道</td>
+<td>主路径来自档案对 harness 职责的描述；具体控制面与数据面协议未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展能力（多渠道、多沙箱模式、多部署目标）与权限/可观测性/供应商耦合之间的平衡；TypeScript 限定带来 AI/ML 生态采用面收窄</td>
+<td>权衡源自档案明示的能力集与"TypeScript 限定"风险条目；性能基准与生产案例未在档案中</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议先在单一渠道（如 GitHub 或 Slack）接入、采用 local/virtual 沙箱、最小工具权限与 OpenTelemetry/Braintrust/Sentry 日志，跑通 durable recovery 后再扩大接入面</td>
+<td>PoC 范围依据档案"可观测性/沙箱三模式/多渠道"表述；具体 API 与 SDK 形态以源码/文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>flue 的核心设计理念是"harness 而非 SDK"：
 - SDK 模式：你写代码调用 LLM API，SDK 提供辅助函数
 - Harness 模式：harness 提供完整的运行环境（sessions、tools、skills、sandbox），你只需要定义 Agent 的行为</p>
 <p>这种设计与 Vercel eve 的 "filesystem-first" 和 omnigent 的 "meta-harness" 在哲学上接近——都认为 Agent 需要的是"运行环境"而非"函数库"。但 flue 更强调"可编程性"（TypeScript harness）和"可部署性"（多目标）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游渠道: Slack/Teams/Discord/GitHub] --> I[入口与身份边界: verified events + MCP]
+    I --> C[项目核心: TypeScript Agent 编排与运行时]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> SB[沙箱: local / virtual / remote container]
+    C --> D[持久执行: durable recovery]
+    C --> CR[会话与协作状态: CRDT + live presence]
+    SB --> C
+    D --> C
+    CR --> C
+    M --> C
+    T --> C
+    C --> O[可观测性: OpenTelemetry / Braintrust / Sentry, 待核验接入方式]
+    C --> DEP[部署目标: Node.js / Cloudflare Workers / GitHub Actions / GitLab CI / Daytona / Render, 待核验各自支持度]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>通用 Agent 应用框架。</strong> 在框架光谱中：
 - Kilo Code / Cursor = IDE-bound Coding Agent
 - omnigent / vercel eve = Agent 编排/定义层
 - Astro flue = 通用 Agent 应用运行时
 - BuilderIO agent-native = Agent 原生 SaaS 应用框架</p>
 <p>flue 更接近"Agent 版的 Next.js"——一个让你快速构建和部署 Agent 应用的全栈框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>TypeScript 限定：</strong> 不支持 Python，限制了在 AI/ML 社区的采用。</li>
 <li><strong>早期阶段：</strong> API 可能不稳定，文档可能不完整。</li>
 <li><strong>Astro 团队精力分配：</strong> Astro 框架本身仍在活跃开发，flue 是否会获得持续投入存疑。</li>
 <li><strong>竞争激烈：</strong> Vercel eve、BuilderIO agent-native、Inngest、Temporal 等都在争夺类似生态位。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -116,9 +168,9 @@
 </tbody>
 </table>
 <p>flue 与 vercel eve 是竞争关系（同为 TS Agent 框架），但 flue 更完整（沙箱 + 持久执行 + 多人协作）。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> flue 的沙箱 + 持久执行 + CRDT 多人协作组合在 Agent 框架中独一无二。如果 Astro 团队全力投入，有潜力成为 TypeScript Agent 应用的默认框架。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有真实生产应用基于 flue 构建</li>
 <li>npm 包下载量趋势</li>

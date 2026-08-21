@@ -35,8 +35,38 @@ url: "https://github.com/TabbyML/tabby"
 - **模型注册表**：内置 CodeLlama、CodeQwen、CodeGemma、StarCoder 等模型，一键切换
 - **Pochi Agent**：最新的 Agent 化尝试，可从 GitHub Issue 直接生成 PR
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 自托管 AI 编程平台，承担入口 IDE 插件、模型推理、代码/文档知识库与团队管理之间的编排职责，单二进制自包含交付 | 档案未明确列出 API/网络协议、是否内嵌 DBMS、SSO/LDAP 模块位置，需源码核验 |
+| 主路径 | IDE 补全/问答请求 → Tabby 编排层 → Rust 推理引擎加载开源代码模型 + RAG 检索（仓库/MR/文档） → 流式补全或回答 | 模型清单、RAG 索引范围（仓库、MR）已标注；Agent (Pochi) 从 Issue 生成 PR 的实现细节未充分披露 |
+| 关键权衡 | 本地化/隐私与开源代码模型质量、RAG 上下文完整度、Agent 自动化（Issue→PR）三者之间的取舍；自部署运维成本与商业竞品（Copilot/Cursor）迭代速度的压力 | 性能数字、GPU 显存基线、消费级 GPU 型号仅来自档案描述，未含 benchmark 来源 |
+| 最小 PoC | 单台 RTX 3060 级 GPU 节点拉起单二进制，启用 IDE 补全 + 内置模型（CodeLlama/CodeQwen/CodeGemma/StarCoder）+ 仓库 RAG，对齐延迟与补全采纳率；暂不启用 SSO、MR 索引、Pochi Agent | 部署拓扑、CUDA/Metal/ROCm 支持矩阵、模型切换工作流需以官方文档核验 |
+
 ## 架构启发
 Tabby 的架构启发在于"自包含企业级设计"——一个二进制文件即可启动完整服务（推理引擎 + Web UI + API + 管理后台），无需外部数据库。这种"电池全包"哲学降低了企业部署门槛。Rust 选择保证了内存安全和性能基线。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    IDE[IDE 插件 VSCode/Vim/IntelliJ] --> GW[入口与身份边界 SSO/LDAP 待核验]
+    GW --> ORC[Tabby 编排与运行时 Rust 核心 单二进制]
+    ORC --> ENG[Rust 推理引擎 CUDA/Metal/ROCm 待核验]
+    ORC --> RAG[RAG 仓库/MR 文档上下文 仓库+GitLab MR 索引已支持]
+    ORC --> REG[模型注册表 CodeLlama/CodeQwen/CodeGemma/StarCoder]
+    ENG --> OUT[补全与回答 流式响应]
+    RAG --> OUT
+    REG --> ENG
+    ORC --> AGENT[Pochi Agent Issue→PR 早期 待核验]
+    ORC --> STATE[会话 状态 审计 自包含 无外部 DBMS 待核验]
+    GH[GitHub/GitLab 仓库] --> RAG
+    DOCS[企业文档] --> RAG
+</mermaid>
+```
 
 ## 定位判断
 **企业级 AI 编程平台**，介于纯开源工具（如 Continue.dev）和商业产品（Copilot、Cursor）之间。适合对数据隐私有硬性要求的中大型团队。

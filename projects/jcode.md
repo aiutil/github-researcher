@@ -38,29 +38,37 @@ url: "https://github.com/1jehuang/jcode"
 5. **侧面板系统**：辅助信息（文件预览、diff 查看器等）不占用主屏幕，通过负空间利用展示 Info Widgets
 6. **多会话优化**：每新增会话仅增加 ~9.9 MB（vs Claude Code ~212.7 MB）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | jcode 是位于终端入口、外部 LLM（Claude/GPT 等）与工具/数据源之间的 Rust 编写的 Agent Harness，承担多会话编排与本地语义记忆职责，本身不做模型 | 仅基于档案语言、分类与标签；具体协议、持久化与部署形态待源码核验 |
+| 主路径 | TUI 渲染 → 语义记忆检索注入上下文 → 调用外部 LLM 与工具 → turn/response 自动嵌入并写回记忆图谱，后台 Ambient Mode 异步整理 | 主路径组件来自档案；向量库、嵌入模型、工具协议细节未披露 |
+| 关键权衡 | 用 Rust 重写换取内存/启动延迟的数量级优势，代价是 bus factor=1、benchmark 由作者自测、生态成熟度低于 Claude Code/Cursor | 性能数字（27.8 MB / 117 MB / 14ms）为作者自测，方法论未独立验证 |
+| 最小 PoC | 单渠道接入、最小工具权限、可审计日志下验证多会话内存曲线、启动延迟与记忆检索相关性；把第三方 benchmark 复现、安全与退出路径作为验收 | PoC 仅依据档案建议项；具体权限模型、SLO 与日志落点需核验 |
+
 ## 架构启发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 flowchart TB
-    subgraph "jcode Rust 进程"
-        UI[TUI 渲染引擎<br/>14ms 首帧]
-        MEM[语义记忆引擎<br/>本地嵌入 + 余弦检索]
-        SIDE[侧面板系统<br/>文件/Diff/Widget]
-        MERM[mermaid-rs-renderer<br/>内联图表]
+    USER[开发者/终端用户] --> TUI[TUI 渲染引擎<br/>首帧 ~14ms 作者自测]
+    TUI --> HARNESS[Rust Agent Harness<br/>单会话 PSS 27.8 MB 自测]
+    HARNESS --> MEM[语义记忆引擎<br/>本地嵌入 + 余弦检索]
+    HARNESS --> EXTLLM[外部 LLM<br/>Claude/GPT 等]
+    HARNESS --> TOOLS[工具/数据源<br/>权限边界 待核验]
+    MEM --> MG[记忆图谱<br/>向量存储]
+    MG -->|Ambient Mode| CON[记忆整理/冲突检测]
+    MEM -.相关性验证.-> SIDE[Memory Sideagent]
+    HARNESS --> SESSION[(多会话状态<br/>每会话 ~9.9 MB 自测)]
+    subgraph RISK[风险/控制边界]
+        BUS[Bus Factor=1<br/>单人维护]
+        BENCH[Benchmark 可信度<br/>作者自测 待核验]
     end
-
-    subgraph "记忆流水线"
-        T1[Turn/Response] -->|自动嵌入| VEC[向量存储]
-        VEC -->|余弦相似度| RET[相关记忆检索]
-        RET -->|注入上下文| CTX[对话]
-        T1 -->|定期提取| EXT[Memory Sideagent]
-        EXT -->|存入| MG[记忆图谱]
-        MG -->|Ambient Mode| CON[整理/去冲突]
-    end
-
-    UI --> MEM
-    UI --> SIDE
-    UI --> MERM
+    HARNESS --- RISK
 ```
 
 **核心 insight：** 当 Agent 从"单会话交互"走向"多会话并行 fleet"，运行时的内存和启动延迟不是性能优化——是可用性的硬约束。Rust 不是锦上添花，是让 fleet 模式从理论可行到日常可用的关键。

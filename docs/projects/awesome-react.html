@@ -6,7 +6,7 @@
     <title>enaqx/awesome-react | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,27 +48,72 @@
 <li>Markdown 格式，易于消费和贡献</li>
 <li>与 awesome 列表生态（sindresorhus/awesome）的标准兼容</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单一 GitHub Markdown 仓库（74.2k stars，2014–至今）作为策展型信息资产，无运行时、无服务端、无 SDK 依赖；GitHub 即唯一托管与协作边界</td>
+<td>仅基于档案 stars/日期/分类与描述，未审计 README 实际目录结构</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>贡献者/维护者 → Markdown 分类目录 → 读者（搜索/直访）→ 跳转到外部 React 资源；无应用层主路径</td>
+<td>档案未提供 README 章节顺序与具体分类清单，具体链接清单不可断言</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>人工策展质量与收录覆盖率、更新时效之间的权衡；与官方文档（react.dev）互补但存在收录滞后风险</td>
+<td>档案明确列出“收录 ≠ 推荐”“更新滞后”局限，但量化数据缺失</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>拉取仓库→按分类关键词检索（如 RSC、AI/LLM、状态管理）→比对 React 官方文档与生态更新→季度回归</td>
+<td>无运行时可部署；所谓 PoC 仅为“低频观察流程”，不构成软件原型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>awesome-react 体现了一个重要的知识管理架构：<strong>在信息爆炸的环境中，策展（curation）本身就是一种基础设施</strong>。它不是技术架构，而是信息架构——通过分类、排序、过滤将混沌的生态转化为可导航的知识图谱。这种模式可迁移到任何技术生态（awesome-go、awesome-python 等已证明其可复制性）。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Cnt["贡献者/维护者"] --> Repo["Markdown 策展仓库<br/>(enaqx/awesome-react)"]
+  Repo --> Cat["分类目录<br/>组件库 状态管理 SSR 测试 待核验"]
+  Cat --> Reader["读者 开发者"]
+  Reader --> Ext["外部 React 资源<br/>react.dev npm 包 待核验"]
+  Ext -.收录滞后.-> Repo
+  Repo -.AI 搜索替代风险.-> Risk["模式风险边界<br/>待核验"]
+  Repo --> Maint["维护活跃度<br/>单一维护者 待核验"]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型（资源导航）。</strong> 它不是软件项目，而是知识资产。其价值在于信息密度和时效性，而非代码逻辑。定位为"React 生态的 Wikipedia 入口"。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>内容更新可能滞后于生态实际变化——热门新工具未被收录是常态</li>
 <li>无质量评分机制——收录 ≠ 推荐，部分条目质量参差不齐</li>
 <li>awesome-list 的"星标泡沫"：大量 stars 来自一次性收藏，而非持续使用</li>
 <li>商业化能力有限——纯公益项目，维护动力依赖个人热情</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>是 <strong>sindresorhus/awesome</strong> 生态的组成部分</li>
 <li>与 <strong>awesome-vue</strong>、<strong>awesome-angular</strong>、<strong>awesome-svelte</strong> 等形成前端框架 awesome-list 矩阵</li>
 <li>在 React 生态内，与 React 官方文档（react.dev）形成互补——官方文档讲"怎么用"，awesome-react 讲"有哪些选择"</li>
 <li>与 Refine、Slate 等具体项目形成"导航→使用"的上下游关系</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得低频跟踪。</strong> 作为参考资源具有长期价值，但不需要每日关注。建议每季度检查一次分类结构的变化，以感知 React 生态的趋势演变（如新增 AI 相关分类、移除过时的构建工具等）。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否新增 AI/LLM 相关的 React 资源分类（如 AI 组件库、AI UI 框架）</li>
 <li>React Server Components 相关资源的收录情况</li>

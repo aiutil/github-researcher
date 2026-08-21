@@ -37,8 +37,34 @@ SkillOpt 的热度来自"Agent 自我进化"这一前沿概念的落地。2026 �
 - **冻结 LLM:** 不需要修改或微调模型权重，适用于任何黑盒 LLM（GPT-4、Claude、DeepSeek）
 - **best_skill.md 产物:** 输出可直接部署的 Markdown 技能文件
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | SkillOpt 是位于冻结 LLM Agent 之上的"Skill 训练优化器"，输入为任务数据集 + 初始 `SKILL.md`，输出为可部署的 `best_skill.md`，不修改模型权重 | 边界基于档案"冻结 LLM"与"`best_skill.md` 产物"两项表述；具体 CLI/SDK 形态、并发模型未在档案中描述，待源码核验 |
+| 主路径 | 数据集 + 初始 Skill → 轨迹执行 → 轨迹驱动编辑 → 验证门控筛选 → 接受/拒绝 → 迭代至 `best_skill.md` | 路径来自"轨迹驱动编辑"与"验证门控（Validation-Gated Updates）"表述；epoch/batch size/learning rate 的具体实现未述，待核验 |
+| 关键权衡 | 自动化 Skill 改写收益 vs. 验证集过拟合风险、黑盒可解释性下降、多次 LLM 调用带来的成本 | 权衡依据档案"风险/局限"小节；具体成本量级、跨 LLM 迁移效果待核验 |
+| 最小 PoC | 在单一任务、最小数据集与受控 LLM（如固定版本 GPT-4/DeepSeek）下跑通训练循环，验收项：泛化性、成本、可审计日志、模型切换后重训路径 | PoC 形态由"冻结 LLM"与"PyPI `pip install skillopt`"推出；具体接口、训练超参、数据格式未在档案中描述，待核验 |
+
 ## 架构启发
 SkillOpt 的核心架构启发是"文本即参数"——将自然语言指令（Skill/Prompt）视为可优化的参数，用训练循环来搜索最优文本。这打破了"模型训练"与"Prompt 编写"的界限。其验证门控机制借鉴了神经网络训练中的"early stopping"和"验证集评估"，将严谨的训练方法论引入了 Prompt 工程。轨迹驱动编辑的思路也值得借鉴——从失败中学习，而非随机搜索。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 Agent] --> I[入口: 任务数据集 + 初始 SKILL.md]
+    I --> C[SkillOpt 编排与训练循环]
+    C --> E[轨迹执行 Trajectory-Driven Edits]
+    E --> M[冻结 LLM 推理 黑盒可调用]
+    E --> V[验证门控 Validation-Gated Updates]
+    V --> C
+    C --> O[产物: best_skill.md 待核验部署形态]
+    C --> S[状态/审计: 接受与拒绝的回写 待核验持久化]
+    M -.绑定特定 LLM 版本.-> C
+```
 
 ## 定位判断
 **AI 基础设施型项目（前沿探索期）。** SkillOpt 定义了一个新的技术子领域——文本空间优化。它不是通用 Agent 框架，而是 Agent 生态中的"训练工具"。其定位类似于神经网络训练中的优化器——不直接做任务，而是提升做任务的 Agent 的能力。这一领域正处于从学术研究到工程实践的转化期。

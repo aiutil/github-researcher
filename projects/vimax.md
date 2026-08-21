@@ -37,8 +37,35 @@ Agentic 视频生成框架——将视频制作分解为导演、编剧、制片
 4. **并行化生成**：并发生成兼容的镜头和媒体素材，加速多镜头视频制作。这对长视频生成至关重要——串行生成会非常慢。
 5. **Agent Loop + TUI + Web UI**：v1.2.0 引入了 Web UI（命名项目、Agent Loop 对话、Artifact 和故事板预览、渲染检查点、文件上传、提供商设置、暗黑模式）以及 TUI 交互式工作流，支持会话复用和上下文压缩。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | HKUDS/ViMax 是一个 Python 3.12 的 Agentic 视频生成编排框架，在底层视频模型（Google Omni、Seedance 2.0、OpenRouter GPT Image 2 等）之上构建四角色 Agent（Director、Screenwriter、Producer、Video Generator），输入覆盖 Idea / Script / Novel / 参考照片（AutoCameo），交付物为含剧本、镜头、参考图像、合成视频的多场景成片；上层接入形态已明确有 TUI 与 v1.2.0 引入的 Web UI（Artifact、Storyboard 预览、渲染检查点）。 | 仅基于档案中描述的四 Agent 角色、四类工作流与模型名单；底层模型协议、API 配额、私有化部署形态未在档案中给出。 |
+| 主路径 | 使用者/上游系统 → 入口（CLI/TUI/Web UI） → 四角色 Agent 编排 → 模型与工具调用 → 会话/状态/一致性产物回写；档案明确支持并行化镜头生成、会话复用与上下文压缩。 | "并行化""会话复用""上下文压缩"为档案原话；具体调度实现、消息协议、持久化介质需源码核验。 |
+| 关键权衡 | 创作表达力与一致性约束之间的取舍：Agent 分工 + 工作流分级（Idea2Video→Script2Video→Novel2Video→AutoCameo）换取跨镜头/跨场景一致性与叙事结构，但代价是深度耦合多家外部模型供应商，成本、速度、可观测性由编排层统一承担。 | 档案承认成本/速度、一致性是已知风险，但未给出量化指标（每分钟视频成本、SLO、token 预算）。 |
+| 最小 PoC | 在单一工作流（建议 Script2Video）+ 单一视频模型供应商 + 最小工具权限 + Web UI 会话复用 + 渲染检查点审计日志 下，跑通一个 ≤60 秒多镜头样片，并验证角色/场景一致性、生成时长、退出路径；验收需覆盖成本上限、模型替换回退与一致性回归。 | 供应商接入细节、权限模型、检查点格式以项目源码/文档为准；MIT 许可证已明确。 |
+
 ## 架构启发
 ViMax 的核心启发是"用 Agent 分工解决复杂创意任务"。传统 AI 视频生成将所有复杂性压在一个 prompt 上，而 ViMax 将制作流程分解为多个专业 Agent，每个 Agent 专注一个维度。这与真实影视制作的分工逻辑一致。另一个值得学习的设计是"渐进式工作流"——从 Idea2Video（最简单）到 Novel2Video（最复杂），覆盖了从灵感到成片的不同输入阶段。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U["使用者或上游系统"] --> I["入口与身份边界<br/>(CLI / TUI / Web UI v1.2.0)"]
+    I --> C["四角色 Agent 编排<br/>Director / Screenwriter / Producer / Video Generator"]
+    C --> W["工作流选择<br/>Idea2Video / Script2Video / Novel2Video / AutoCameo"]
+    W --> C
+    C --> M["外部视频/图像模型供应商<br/>Google Omni / Seedance 2.0 / OpenRouter GPT Image 2 / 待核验其他"]
+    C --> R["并行化镜头与媒体生成<br/>(档案原话: 并发生成)"]
+    C --> S["会话 / 状态 / 审计<br/>会话复用 · 上下文压缩 · 渲染检查点 · Artifact 与 Storyboard 预览"]
+    M -.->|"输出质量上限受限于底层模型<br/>(档案风险点 1、4)"| R
+    R -.->|"成本与时长风险<br/>(档案风险点 3)"| S
+</mdd>
+```
 
 ## 定位判断
 ViMax 定位为**Agentic 多模态创作的学术先锋项目**。在视频生成生态中，它不与底层视频模型（Sora、Kling、Seedance）竞争，而是在这些模型之上构建"Agent 编排层"。与 MoneyPrinterTurbo（素材拼接自动化）不同，ViMax 更侧重于"创意叙事的 Agent 化"，学术性更强。11K stars 使其成为 Agentic 视频方向的代表性项目。

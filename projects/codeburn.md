@@ -35,6 +35,15 @@ AI Coding Agent（Claude Code、Codex、Cursor）在企业中规模化使用后�
 2. **跨 Agent 统一接口** — 抽象了不同 Agent 的 token 数据格式差异
 3. **实时仪表盘** — 不依赖日志文件解析，实时捕获 token 使用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Codeburn 定位为 AI Coding Agent 的 Token 可观测性层，跨越 Claude Code / Codex / Cursor 等多种 Agent 来源，向开发者提供 TUI 仪表盘 | 基于标签与定位描述，跨 Agent 接口的协议与实现细节未在档案中披露 |
+| 主路径 | 数据来源（Claude Code/Codex/Cursor） → 跨 Agent 统一接口抽象 → TypeScript + Ink（React for CLI）TUI 实时仪表盘 → 终端呈现 token/成本视图 | TUI 技术栈明确，实时数据捕获是否依赖日志解析或 hook 机制未说明 |
+| 关键权衡 | TUI 形态 vs 企业 Web Dashboard 需求；依赖上游 Agent 数据暴露 vs 被上游框架内置替代 | 档案已点明"壁垒不高""依赖上游数据暴露""TUI 形态限制企业部署"等风险 |
+| 最小 PoC | 单 Agent 渠道（如 Claude Code）单用户场景，验证 token 分类口径与成本估算口径，再扩展到多 Agent 并行接入 | 跨 Agent 抽象的具体数据 schema 与成本计算模型未在档案中给出 |
+
 ## 架构启发
 Agent Infra 需要一个独立的可观测性层：
 - Token 消耗度量（Codeburn 做的）
@@ -43,6 +52,22 @@ Agent Infra 需要一个独立的可观测性层：
 - 成本告警和预算控制
 
 这类似于 K8s 生态中 Prometheus 之于容器的定位。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者终端使用者] --> TUI[Codeburn TUI 仪表盘<br/>TypeScript + Ink]
+    TUI --> AB[跨 Agent 统一接口抽象<br/>Claude Code / Codex / Cursor]
+    AB --> CC[Claude Code 数据源<br/>待核验]
+    AB --> CX[Codex 数据源<br/>待核验]
+    AB --> CR[Cursor 数据源<br/>待核验]
+    TUI --> V[实时 Token 与成本视图]
+    V -.依赖.-> UP[上游 Agent 框架数据暴露<br/>风险边界]
+    UP -.可能被内置替代.-> TUI
+```
 
 ## 定位判断
 短期：工具型 — 实用的终端工具

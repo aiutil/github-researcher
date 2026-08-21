@@ -6,7 +6,7 @@
     <title>VoltAgent/awesome-openclaw-skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,61 @@
 <li><strong>持续同步</strong>：跟踪 Registry 更新保持新鲜度</li>
 <li><strong>社区贡献</strong>：接受 PR 推荐新技能</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>资源型发现/策展项目：上游是 OpenClaw Skills Registry（官方数据源），下游是使用者/上游系统；本项目本身为人工精选与分类层，不承担 agent 运行时职责</td>
+<td>档案明确为"awesome-list"与"skill-registry"精选层；是否含运行时、SDK、API 网关等组件未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>OpenClaw Skills Registry → 本项目筛选/分类 → 分类目录（开发/设计/数据/自动化等）→ 使用者按需选用 → 引入下游 agent 平台（Claude Code、Codex、Cursor 等）</td>
+<td>档案仅描述"筛选并分类的 5,400+ 个 AI agent 技能"，未提供自动化同步链路、PR 审核流程或索引管线细节</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>覆盖广度（5,400+ 技能）与人工策展质量/时效性之间的张力；社区贡献入口与恶意技能（prompt injection 等）风险防控之间的张力；对 OpenClaw 生态的单点依赖</td>
+<td>风险条目由档案"风险/局限"明确列出；缓解措施（如安全审计、评分）档案归入"待观察"，未证实已落地</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>拉取本项目仓库，按目标场景（如开发/数据）在分类目录中抽样 3–5 个技能，逐一核验来源、最后更新日期与维护活跃度，挑选 1 个在沙箱环境中以最小权限接入现有 agent 链路试运行，记录失败率与副作用</td>
+<td>档案未提供具体技能示例、许可证字段或下载量数据；实际可用性须以仓库原文与技能自述核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>Agent 时代的"应用商店"</strong>：技能索引和发现是生态关键基础设施</li>
 <li><strong>策展即价值</strong>：在海量内容中筛选优质内容本身就是高价值服务</li>
 <li><strong>Registry + Awesome 双层</strong>：Registry 是完整数据源，Awesome 是人工精选层</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> A[awesome-openclaw-skills 精选与分类目录]
+    A --> R[OpenClaw Skills Registry 官方数据源]
+    R --> A
+    A --> V[待核验 技能安全审计或评分机制]
+    A --> D[下游 agent 平台 Claude Code Codex Cursor 等]
+    V -.未证实.-> A
+    A -.社区贡献 PR.-> P[待核验 社区贡献与审核流程]
+</mermaid>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>关键生态资源型项目</strong>。是 OpenClaw/Agent 生态的重要发现入口。类似 npm search 之于 npm，awesome-openclaw-skills 之于 agent 技能生态。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>质量评估主观</strong>："精选"标准可能不一致</li>
 <li><strong>时效性挑战</strong>：5,400+ 技能中很多可能快速失效或弃维</li>
@@ -72,16 +118,16 @@
 <li><strong>依赖 OpenClaw 生态</strong>：如果 OpenClaw 衰落，此项目价值归零</li>
 <li><strong>维护负担</strong>：5,400+ 条目的维护和更新工作量巨大</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs OpenClaw Skills Registry</strong>：Registry 是完整数据源，此项目是精选层</li>
 <li><strong>vs awesome-mcp-servers</strong>：MCP servers 偏工具连接，Skills 偏 agent 能力</li>
 <li><strong>vs Claude Code 插件市场</strong>：官方市场 vs 社区精选</li>
 <li><strong>vs npm/PyPI</strong>：代码包管理 vs AI agent 技能管理</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪（agent 生态参与者）。</strong> 作为 agent 技能生态的发现入口，是使用任何 OpenClaw 兼容 agent 的必备参考。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否增加技能安全审计/评分</li>
 <li>是否推出自动化工具（如技能安装器/验证器）</li>

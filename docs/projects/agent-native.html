@@ -6,7 +6,7 @@
     <title>agent-native | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,30 +50,76 @@
 <li><strong>Agent 自改进：</strong> Agent 可以给应用添加功能、修 bug、改进 UI——因为 Agent 能直接调用 defineAction 修改应用代码。</li>
 <li><strong>A2A 协作：</strong> Tag 另一个 Agent，跨应用协调。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>agent-native 是 TypeScript 全栈框架，承担 UI/Agent/HTTP/MCP/A2A/CLI 六端共享业务逻辑的编排层；持久化基于 Drizzle ORM 与 SQL 数据库；归属 BuilderIO 团队</td>
+<td>具体传输协议、部署形态、模型供应商适配须以源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>defineAction 定义业务逻辑 → UI 点击 / Agent 命令 / HTTP / MCP tool / A2A / CLI 任一入口触发 → 调用同一 Action → 写入共享 SQL 状态 → 实时多端同步</td>
+<td>"一次定义六端复用"宣称来自档案，真实一致性保证与冲突策略未公开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Action-first 统一抽象带来开发效率与跨端一致性，但会引入框架锁定（Action API 绑定）、迁移成本高、模板生态仅 6 个（Mail/Plans/Design/Content/Slides/Analytics），且与 Vercel AI SDK、Mastra 存在定义权竞争</td>
+<td>企业采纳案例、生产部署证据尚未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>优先复用一个 cloneable 模板（如 Mail），验证单渠道 + 最小工具权限 + 可审计日志下的 defineAction 复用程度与多端同步延迟；将安全边界、成本、SLO 与退出路径作为验收项</td>
+<td>PoC 中实测的同步一致性、Agent 自改代码的权限模型需现场验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>agent-native 的核心启发是"Action 作为通用原语"：</p>
 <p>传统架构：UI → Controller → Service → DB（UI 是入口）
 Agent 架构：Agent → Tool → Service → DB（Agent 是入口）
 agent-native：Action → DB（UI/Agent/HTTP 都是 Action 的消费者）</p>
 <p>这种设计让 Action 成为单一真实来源（Single Source of Truth），所有消费方式都是等价的。对架构师的启发是：在设计 Agent 时代应用时，先定义 Action 再考虑消费方式。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界: UI Agent HTTP MCP A2A CLI 六端]
+  I --> A[defineAction: 业务逻辑单一原语 Action-first]
+  A --> D[共享状态层: SQL Drizzle ORM]
+  A --> M[模型或推理服务: 待核验供应商]
+  A --> T[工具与外部系统: MCP tool A2A 协作]
+  D --> R[实时多端同步 multiplayer]
+  A --> S[Agent 自改进与可审计日志: 待核验权限模型]
+  R --> I
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>处于 L4 框架层，试图定义 Agent 时代全栈应用的默认架构。如果成功，可能类似 Rails 之于 MVC、Next.js 之于 React SSR。但目前仍处于早期（2.7K），需要观察生态发展。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>概念超前于市场：</strong> 大多数团队还在"给现有应用加 Chat"阶段，"Agent-Native 应用"需要从零设计。</li>
 <li><strong>框架锁定风险：</strong> 采用 agent-native 意味着全面拥抱其 Action 体系，迁移成本高。</li>
 <li><strong>模板生态尚薄：</strong> 6 个模板不够覆盖企业常见场景（CRM/ERP/Ops），需要社区贡献。</li>
 <li><strong>与 Vercel AI SDK / Mastra 等竞争：</strong> 虽然定位不同，但都在争夺"Agent 应用框架"定义权。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Vercel AI SDK：</strong> Vercel AI SDK 偏向"Chat UI + Tool calling"，agent-native 定义完整的 Action-first 应用架构。不同层级。</li>
 <li><strong>vs Mastra：</strong> Mastra 是 Agent 框架（定义 Agent 行为），agent-native 是应用框架（定义应用如何 Agent-native）。互补。</li>
 <li><strong>vs OpenSpec：</strong> OpenSpec 从规格约束 Agent 行为，agent-native 从架构层面让 Agent 原生集成。可以组合。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> BuilderIO 团队有框架设计基因，agent-native 的架构理念值得深入研究。建议每月跟踪一次，重点关注模板生态和企业采纳信号。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>模板生态发展——是否有社区贡献新模板</li>
 <li>企业采纳案例——是否有公司在生产环境构建 agent-native 应用</li>

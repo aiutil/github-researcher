@@ -6,7 +6,7 @@
     <title>PaddlePaddle/PaddleOCR | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,18 +50,64 @@
 <li><strong>SLM（小语言模型）增强:</strong> 2024-2025 版本引入 LLM/VLM 进行文档理解和纠错</li>
 <li><strong>训练 / 评估 / 推理工具链:</strong> 完善的数据标注 → 训练 → 部署工具链</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>PaddleOCR 是文档数字化的 OCR 工具库，覆盖检测→识别→版面分析→KIE→文档翻译全链路；输入是图像/PDF，输出结构化文本与版面；本地部署为主</td>
+<td>边界由档案"全链路覆盖"与"本地部署，数据不出企业"得出；具体输入输出 schema、API 协议档案未给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>图像输入 → PP-OCR 检测+识别两阶段管线 → PP-Structure 版面/表格还原 → KIE（GCN/LayoutLM 类）抽取字段 → 翻译/SLM 纠错</td>
+<td>主路径基于档案"关键技术亮点"；SLM/VLM 增强仅在 2024-2025 版本被提及，具体接入方式未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>中文准确率与 PaddlePaddle 框架深度绑定的代价；轻量部署优势 vs 多模型链路运维复杂度；本地化数据可控 vs 多模态大模型（GPT-4V/Qwen-VL）一体化替代风险</td>
+<td>权衡来自档案"风险/局限"与"与同类项目的关系"；PaddlePaddle 耦合程度、量化后精度损失档案未量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单语种（中文）+ 单场景（票据或证件）+ PP-OCR 轻量模型 + CPU 推理；验收项含准确率、推理时延、模型体积，并预设多模态 LLM 备选路径</td>
+<td>PoC 设计基于档案"轻量模型&lt;10MB""发票/合同/证件 OCR 场景"；具体硬件吞吐、量化方案细节档案未提供</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>PaddleOCR 的架构启发在于"工具链思维"——不只是一个模型，而是一套从数据准备到部署的完整工具链。其"检测 + 识别"两阶段管线设计已成为 OCR 领域的标准架构。PP-Structure 将版面分析从"仅提取文字"升级为"理解文档结构"，这一思路在文档 AI 领域影响深远。其模型压缩策略（剪枝 + 量化 + 蒸馏）使大模型能在移动端运行。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[图像或PDF输入] --> B[PP-OCR检测+识别两阶段管线]
+    B --> C[PP-Structure版面分析与表格还原 待核验具体模型]
+    C --> D[关键信息提取KIE GCN或LayoutLM类模型]
+    D --> E[结构化输出或文档翻译]
+    B -.LLM或VLM纠错增强.-> E
+    E --> F[企业本地部署 数据不出域]
+    F -.外部替代风险.-> G[多模态大模型 GPT-4V或Qwen-VL 待核验能力对比]
+    D -.风险边界.-> H[手写中文准确率局限 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型项目（成熟期）。</strong> PaddleOCR 是一个成熟的 OCR 工具库，在开源 OCR 领域占据主导地位。它的定位是"OCR 基础设施"，而非端到端文档 AI 平台。当前演进方向是向文档理解（PP-Structure + LLM）扩展，从"识别文字"升级为"理解文档"。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>PaddlePaddle 依赖:</strong> 深度绑定百度 PaddlePaddle 框架，PyTorch 用户使用不便（虽有 ONNX 导出）</li>
 <li><strong>手写体局限:</strong> 对手写中文的识别准确率仍有较大提升空间</li>
 <li><strong>部署复杂度:</strong> 完整工具链部署涉及多个模型，对运维有要求</li>
 <li><strong>LLM 时代挑战:</strong> 多模态大模型（GPT-4V、Qwen-VL）可以直接做 OCR + 理解，可能侵蚀部分场景</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Tesseract:</strong> Tesseract 是传统 OCR（基于模板匹配），PaddleOCR 是深度学习 OCR，准确率差距巨大</li>
 <li><strong>vs EasyOCR:</strong> EasyOCR 基于 PyTorch，更易安装但中文准确率不如 PaddleOCR</li>
@@ -69,9 +115,9 @@
 <li><strong>vs 商业 API（百度云 / 腾讯云 OCR）:</strong> PaddleOCR 提供本地部署能力，数据安全可控</li>
 <li><strong>vs 多模态 LLM:</strong> GPT-4V / Qwen-VL 可以做 OCR + 理解，但成本高、速度慢</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> PaddleOCR 在文档 AI 领域仍有重要地位。值得关注的是：与多模态 LLM 的融合（LLM 增强 OCR vs OCR 喂给 LLM）、PP-Structure 的版面理解能力提升、以及是否提供 PyTorch 原生支持以降低使用门槛。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>与多模态大模型的融合策略（VLM 直接 OCR vs 传统 OCR + LLM 理解）</li>
 <li>是否提供 PyTorch 原生版本以扩大用户群</li>

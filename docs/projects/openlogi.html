@@ -6,7 +6,7 @@
     <title>OpenLogi | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,16 +51,63 @@
 <li><strong>按键重映射</strong>：自定义按键功能，不依赖云端配置同步</li>
 <li><strong>完全离线</strong>：无账号、无遥测、无自动更新检查</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>桌面端本地工具，边界落在用户进程内：UI/交互层、配置/HID++ 协议驱动层、本地配置文件；不触达云端或账号系统</td>
+<td>仅基于 Rust、local-first、HID、隐私、GPUI 标签与档案"无账号/无遥测/无云端"陈述；具体模块切分需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户按键/手势输入 → GPUI UI → 状态与重映射逻辑 → HID++ 直发至罗技设备；DPI/SmartShift/按键映射通过本地配置驱动</td>
+<td>档案列出 HID++、SmartShift、DPI、按键重映射等能力点，但内部数据流与 IPC 细节属"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>完全离线与设备覆盖广度的取舍：牺牲跨平台/全型号覆盖，换取无云、无遥测、无账号</td>
+<td>档案明确 macOS/Linux 为主、Windows 不确定、设备兼容性受限；bus factor=1；HID++ 协议逆向风险</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一款档案已点名的罗技鼠标，在 macOS/Linux 跑通"DPI 切换 + 单键重映射 + SmartShift 自动滚轮"三项本地配置闭环，验证固件升级后是否失效</td>
+<td>设备型号支持矩阵、固件兼容窗口、Windows 支持、错误恢复路径在档案中均未给出，属"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>本地优先硬件驱动的设计模式：
 - <strong>协议层</strong>：HID++ 直通，绕过厂商 SDK
 - <strong>驱动层</strong>：Rust 内存安全 + 低延迟
 - <strong>UI 层</strong>：GPUI GPU 加速，原生体验
 - <strong>配置层</strong>：本地配置文件，版本可控</p>
 <p>这个模式可以迁移到其他硬件外设领域（键盘、手柄、显示器）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户输入 键鼠手势] --> UI[GPUI UI 与交互层 待核验]
+    UI --> C[状态与按键映射核心]
+    C --> CFG[本地配置文件 版本可控]
+    CFG --> C
+    C --> HID[HID++ 协议驱动层 Rust]
+    HID --> DEV[罗技 HID++ 设备 仅特定型号 待核验]
+    C --> OFF[离线边界 无账号 无遥测 无云端]
+    HID --> RISK[兼容性风险 固件更新可能破坏 待核验]
+    C --> WIN[Windows 支持 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型。</strong> 面向特定用户群体的优质工具。不演变为平台或基础设施，但在本地优先运动中有标志性价值。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>设备兼容性</strong>：当前只支持特定型号，全罗技产品线覆盖需要大量工作</li>
 <li><strong>HID++ 协议逆向</strong>：依赖逆向工程，罗技固件更新可能破坏兼容</li>
@@ -68,7 +115,7 @@
 <li><strong>平台覆盖</strong>：目前主要支持 macOS/Linux，Windows 支持不确定</li>
 <li><strong>法律风险</strong>：虽然不使用官方 SDK，但 HID++ 协议使用可能面临厂商挑战</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -95,9 +142,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 本地优先硬件运动的标杆项目。如果成功，可能激励更多硬件外设的本地替代项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>设备支持范围扩展速度</li>
 <li>Windows 平台支持是否出现</li>

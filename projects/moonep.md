@@ -36,8 +36,35 @@ url: "https://github.com/MoonshotAI/MoonEP"
 3. **近最优 GPU 规划内核**：在线规划冗余专家的开销可忽略（near-optimal planning kernel）。
 4. **训练/推理分离配置**：训练必须 `B = E/R`（每 rank 复制 ≤ E/R 个专家）；推理允许 `B < E/R`（推荐 B=3–4），溢出时通过对称内存映射直读远程权重。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 边界位于"MoE 训练框架（上游路由/Token 分配）— MoonEP 的 EP 通信核心（动态冗余专家 + 静态 S×K buffer）— NVIDIA GPU 宿主运行时（依赖对称内存/NVLink）"三段之间；外部侧必须满足 B=E/R 的专家分组约束 | 边界由 README 关于训练/推理分离配置与对称内存要求直接得出；"振武 PPU 在审"为待核验事项 |
+| 主路径 | 上游训练循环 → MoonEP 规划内核（在线冗余专家分配）→ 零拷贝 permute/unpermute → 静态 S×K 远程 buffer → 专家计算 → 反向梯度 reduce 回原 rank | 主路径完全基于 README 的"动态冗余专家 + 零拷贝 + 静态形状 + 梯度 reduce 回原 rank"四步描述 |
+| 关键权衡 | 以"冗余专家的额外正向计算 + 静态 buffer 内存占用"换取"恒定 S×K 负载（消除最热 rank 瓶颈）+ 零碎片 + 免主机同步"；硬件被锁定在 NVIDIA | 权衡三要素均来自 README；推理 B=3–4 的推荐值仅适用于推理场景，训练不可用 |
+| 最小 PoC | 在 H20/H100 单节点、≥8 rank 上复现官方 benchmark：固定路由不均衡率（1×~4×），对照 DeepEP v2 测量 EP 通信耗时与峰值显存；并验证 B=E/R 约束下 OOM 边界 | PoC 复现目标直接对应 README 的"H20 EP=8 自报 benchmark"与"高不均衡下不 OOM"声明，属项目方自报，需独立复现 |
+
 ## 架构启发
 MoonEP 的核心启发是**把"不均衡"从不可避免变为可工程消除**。冗余专家用少量额外计算换全局恒定负载 + 静态内存，这是一个清晰的工程权衡——以可预测的计算开销换取消除最热 rank 瓶颈与内存碎片。静态形状还顺带解决主机同步开销。这种"主动均衡"思想对任何大规模 MoE 训练系统都有借鉴价值，不限于 K3。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  A[MoE 训练框架 上游路由] --> B[MoonEP 核心 动态冗余专家]
+  B --> C[规划内核 在线分配 预取权重]
+  C --> D[零拷贝 permute unpermute 静态 S×K buffer]
+  D --> E[专家计算 各 rank 恒定 S×K tokens]
+  E --> F[反向梯度 reduce 回原 rank]
+  B --> G[训练约束 B 等于 E 比 R 每 rank 专家复制]
+  B --> H[推理配置 B 小于 E 比 R 对称内存直读远程权重 待核验]
+  D --> I[NVIDIA GPU + 对称内存 拓扑依赖 待核验 跨节点]
+  F --> J[输出 buffer view 回上游训练循环]
+  K[DeepEP v2 同赛道竞品 接受不均衡] -.对比.- B
+```
 
 ## 定位判断
 在 MoE 训练基础设施赛道中，MoonEP 是 DeepEP 的**直接竞争与补充方案**。DeepEP 由 DeepSeek 开源、已有社区基础；MoonEP 由 Moonshot 开源、主打"完美均衡"差异化。两者可能共存：不同 MoE 配置（专家数/路由策略）下各有优势。

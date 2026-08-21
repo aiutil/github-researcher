@@ -37,6 +37,15 @@ url: "https://github.com/VictorTaelin/OptMem"
 3. **Merges 一次一个、无后台进程**：摘要合并在 `note` 的输出里逐个到来，由 agent 在正常输出里处理。没有后台 daemon、没有定时任务——降低运维复杂度。
 4. **426-token prompt 即全部集成**：installer 打印一段 markdown，贴到 agent 的 `AGENTS.md`/`CLAUDE.md` 顶部即完成。工具 `~/.optmem/memo` 是单个无依赖 Python 3 文件。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OptMem 是一个无依赖的 Python 单文件 CLI（`~/.optmem/memo`），配 426-token prompt 作为 agent 集成契约；外部边界是 agent 的 `AGENTS.md`/`CLAUDE.md`，内部边界是 append-only `LOG.txt` + 可重建 `TREE/` 缓存。 | 基于档案"~/.optmem/"目录结构与"单 Python 3 文件无依赖"描述；并发写、跨平台文件系统语义未在档案中给出。 |
+| 主路径 | 主路径：`note` 追加到 `LOG.txt` → agent 在正常输出中接收 `merge` 指令 → `wake` 通过位置 seek 重建索引（1M 条约 0.03s）→ `recall <regex>` 精确匹配回读。可派生节点：摘要 / 整合 / 备份。 | 证据来自档案"关键技术亮点"四条与 `memo zoom`/`memo forget` 命令；查询仅支持 regex 无语义检索，事实写在风险段。 |
+| 关键权衡 | 极简与可审计（position-is-identity、append-only、缓存可删重建）换掉了语义检索、并发写隔离、声明式 license——后者对需要模糊回忆或多 agent 写入的生产场景是硬限制。 | 档案"风险 / 局限"四条已显式列出；权衡的"何时够用"未给出基准数据。 |
+| 最小 PoC | 在单 agent、单进程、对 `~/.optmem/memory/` 拥有独占写入的前提下，复制 426-token prompt 到 `AGENTS.md`/`CLAUDE.md` 顶部，用 `note`/`wake`/`recall` 跑 1k 条记忆验证延迟与重建正确性；不引入多 agent 并发。 | 仅依据档案"集成成本极低（贴一段 prompt 即完成）"与"`memo forget` 删坏摘要下次 nap 重建"的可观察行为；吞吐量、召回准确率指标档案未提供，记为待核验。 |
+
 ## 架构启发
 核心启发是**"把记忆从基础设施降维到数据格式"**。传统记忆方案假设"需要数据库/向量库/索引服务"，OptMem 通过定长记录 + append-only log + 可重建缓存，把记忆变成"一个文件 + 一个 prompt"。这种**"可观测的最小化"**（`memo zoom` 把树节点展开成两半、`memo forget` 删坏摘要让下次 nap 重建）让 agent 的记忆行为可审计。对 agent 生成代码的部署（结合 scriptc 的"显式静态度"）也有呼应——都是"让系统的边界可观测、可降级"。
 
@@ -47,6 +56,35 @@ url: "https://github.com/VictorTaelin/OptMem"
     LOG.txt     所有记忆，append-only，永不编辑
     TREE/       摘要缓存，可从 LOG 重建
     config      尺寸配置
+```
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    AGENT[agent 运行时<br/>任意 harness]:::core
+    PROMPT[426-token prompt<br/>AGENTS.md / CLAUDE.md]:::core
+    MEMO[~/.optmem/memo<br/>单 Python 3 无依赖]:::core
+    LOG[(LOG.txt<br/>append-only 定长记录)]:::core
+    TREE[(TREE/<br/>可重建摘要缓存)]:::core
+    EXT[外部接口<br/>note / wake / recall / forget / zoom]:::ctrl
+    CONC[多 agent 并发写<br/>行为待核验]:::risk
+    SEM[语义检索能力<br/>当前未提供]:::risk
+
+    AGENT -->|读取 prompt 协议| PROMPT
+    PROMPT -->|声明工具调用| MEMO
+    MEMO -->|append 追加| LOG
+    MEMO -->|派生 可删重建| TREE
+    MEMO --> EXT
+    CONC -. 风险边界 .-> LOG
+    SEM -. 能力缺口 .-> MEMO
+
+    classDef core fill:#e6f3ff,stroke:#333,stroke-width:1px;
+    classDef ctrl fill:#fff4e1,stroke:#333,stroke-width:1px;
+    classDef risk fill:#fde2e2,stroke:#333,stroke-width:1px,stroke-dasharray:4 3;
+</mermaid>
 ```
 
 ## 定位判断

@@ -6,7 +6,7 @@
     <title>apple/coreai-models | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,74 @@
 <li><strong>Swift 运行时</strong> — <code>coreai-models</code> Swift Package，直接集成到 iOS/macOS App</li>
 <li><strong>Agent Skills 集成</strong> — 3 个官方 Skill 让 Coding Agent 像专家一样使用 Core AI</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>端侧 AI 工具链：HuggingFace 模型源 → 导出为 <code>.aimodel</code> → Python 构建块 → Swift Package 运行时 → iOS/macOS App；仅服务 Apple 平台</td>
+<td>平台范围（macOS/iOS 27.0+）、<code>.aimodel</code> 闭环、Swift/Python 双语言见档案；模型覆盖数量、AGENTS/Skill 内部结构未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>模型作者路径：HuggingFace → coreai-models 导出配方 → <code>.aimodel</code> 资产 → 通过 Swift Package 集成到 App → 在 Core AI framework 上运行；Agent Skills 作为辅助开发路径</td>
+<td><code>.aimodel</code> 格式、HuggingFace 来源、Swift Package 集成、Core AI framework 依赖均见档案；具体 API、推理调度、量化流水线在档案中未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>平台锁定（仅 Apple）与端侧体验/性能/官方支持之间的取舍；同时与跨平台方案（MLX、ONNX、llama.cpp）在覆盖广度上的取舍</td>
+<td>锁定、Apple 官方、Agent Skills、MLX/ONNX/llama.cpp 关系均见档案；性能、量化水平、能耗等基准未在档案中给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS 27.0+ 上选一个 HuggingFace 模型，按导出配方生成 <code>.aimodel</code>，通过 Swift Package 集成到最小 App，验证加载与推理；同步在 Claude Code 接入三个 Agent Skills 评估开发体验</td>
+<td>HuggingFace 入口、Python 构建块、Swift Package、Agent Skills 名称见档案；具体 PoC 跑通标准（延迟、内存、模型清单）需以源码/文档为准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Apple 的端侧 AI 策略是 <strong>全栈控制</strong>：芯片（Apple Silicon）→ OS（macOS/iOS 27 Core AI framework）→ 工具链（coreai-models）→ 开发体验（Agent Skills）。这种垂直整合是 Apple 一贯的策略，但在 AI 时代意味着开发者如果绑定 Core AI，就绑定了整个 Apple 生态。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    HF[HuggingFace 模型源] --> EX[coreai-models 导出配方 HF 转 aimodel 待核验]
+    EX --> AIM[.aimodel 模型资产]
+    PY[Python 构建块 作者侧] --> EX
+    AIM --> SP[Swift Package 运行时 coreai-models]
+    SP --> APP[iOS macOS App 27.0+]
+    SK[Agent Skills working-with-coreai model-authoring model-compression] -.辅助.-> PY
+    SK -.辅助.-> SP
+    OS[Apple Core AI framework OS 27.0+] -.依赖.-> SP
+    APP --> OS
+    R[风险边界 平台锁定 27.0+ 版本门槛] -.约束.-> APP
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>coreai-models 是 <strong>Apple 端侧 AI 的 Xcode</strong>——不是模型本身，而是让开发者能高效使用模型的工具链。如果 Apple 端侧 AI 生态成熟，coreai-models 将成为不可或缺的基础设施。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>平台锁定</strong> — <code>.aimodel</code> 格式只支持 Apple 平台</li>
 <li><strong>macOS/iOS 27.0+ 要求</strong> — 需要最新系统版本，用户覆盖率有限</li>
 <li><strong>模型覆盖</strong> — 目前支持的模型数量未知，可能有限</li>
 <li><strong>与 ONNX/MLX 竞争</strong> — 已有跨平台方案</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs MLX</strong> — MLX 是 Apple 的机器学习框架，coreai-models 是部署工具链，互补关系</li>
 <li><strong>vs ONNX Runtime</strong> — ONNX 跨平台，Core AI 只支持 Apple 但体验更好</li>
 <li><strong>vs llama.cpp</strong> — llama.cpp 通用但需要自己管理模型格式，Core AI 标准化但锁定 Apple</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Apple 官方出品 + Agent Skills 集成 = 端侧 AI 基础设施的重要变量。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>支持的模型列表增长速度</li>
 <li>是否有企业级使用案例</li>

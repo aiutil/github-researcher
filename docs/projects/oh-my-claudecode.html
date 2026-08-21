@@ -6,7 +6,7 @@
     <title>oh-my-claudecode | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,17 +56,63 @@
 <li><strong>Marketplace 插件机制</strong>：Claude Code 原生插件安装流程</li>
 <li><strong>多种执行模式</strong>：Team（推荐）、Autopilot、Ultrawork、Ralph</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>oh-my-claudecode 是位于 Claude Code 之上的编排层，向上承接用户/上游系统，向下路由 Claude/Codex/Gemini 三路模型与外部工具，并依赖 Claude Code 原生 Marketplace 插件机制进行分发</td>
+<td>仅基于档案"多 Provider 路由 + Claude 合成 + Marketplace 插件"的描述；具体 API 边界与权限模型未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>团队流水线 <code>team-plan → team-prd → team-exec → team-verify → team-fix</code>，由 executor/reviewer/architect 角色协作推进，team-fix 负责失败自愈并回写状态</td>
+<td>阶段名与角色名取自档案；阶段间的输入输出契约、并发模型未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>团队化抽象带来的工程直觉 vs 对 Claude Code 内部 API 与插件机制的深度耦合风险（尤其在官方推出 <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</code> 后）</td>
+<td>档案明确将"平台绑定风险"列为局限，但耦合的具体接口面与可替换性未说明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选择 Team 模式，单一非关键任务，配置最小工具权限，开启可审计日志，验证 team-fix 自愈是否触发及失败处理路径</td>
+<td>档案未给出部署形态、所需凭据、CLI/SDK 入口细节，需在 PoC 前从源码/文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>以"团队"为原子的设计模式值得在企业内部 Copilot 平台中借鉴。这种设计让复杂任务可以自然地拆解为多个角色的协作，而非在一个 Prompt 里堆叠复杂指令。多 Provider 路由 + 合成结果的模式也为降低单一模型依赖提供了参考。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[团队编排运行时 plan→prd→exec→verify→fix]
+    C --> M[模型路由 Claude Codex Gemini 并发 Claude 合成]
+    C --> T[工具与外部系统 待核验]
+    C --> S[会话 状态 审计 待核验]
+    M --> C
+    T --> C
+    R[Claude Code 官方 Teams 能力 风险边界] -. 差异化稀释 .-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选</strong> — 依赖 Claude Code 生态，但团队化编排抽象有独立价值。如果官方能力追平，差异化价值会稀释。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>与 Claude Code 官方能力的关系</strong>：Claude Code 官方正在引入原生 Teams 功能（<code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</code>），一旦官方能力追平，差异化价值会快速稀释</li>
 <li><strong>平台绑定风险</strong>：严重依赖 Claude Code 的内部 API 和插件机制</li>
 <li><strong>企业定制化成本高</strong>：依赖 Claude Code，企业内部定制化需要额外工程投入</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -88,9 +134,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong> — Multi-Agent 团队化编排是真实方向。关注官方 Teams 功能的演进速度与 oh-my-claudecode 的差异化能力。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Claude Code 官方 Teams 功能何时追平现有能力</li>
 <li>团队化抽象是否能迁移到其他 Coding Agent 平台</li>

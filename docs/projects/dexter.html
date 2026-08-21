@@ -6,7 +6,7 @@
     <title>virattt/dexter | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,75 @@
 <li><strong>结构化输出:</strong> 研究报告以 Markdown + 结构化数据的形式输出，便于后续处理和二次分析</li>
 <li><strong>可扩展 Agent 架构:</strong> 支持自定义工具和数据源接入，开发者可以添加自己的金融数据 API</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>编排层位于入口渠道、模型供应商（LangGraph/LangChain 链路的 LLM）、外部金融数据源（SEC EDGAR、Yahoo Finance、News API、社交媒体）之间，输出 Markdown + 结构化数据</td>
+<td>数据源名称与框架来自档案"关键技术亮点"；具体鉴权、速率限制、数据契约未在档案中描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户入口 → 规划子任务 → 并行检索/工具调用 → 多步推理 → 结构化报告生成与状态回写</td>
+<td>子任务粒度、状态机实现、持久化层在档案中未给出，仅有"规划-执行-综合"三段式抽象</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>推理深度（数十次 LLM 调用）与 token 成本、幻觉风险、合规边界的三角平衡；扩展工具带来的供应商耦合与安全审计成本</td>
+<td>权衡来自档案"风险/局限"与"架构启发"；具体成本数字、SLO、限流策略均未披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道入口、最小工具权限（仅 1 个数据源）、开启审计日志、跑通"规划-执行-综合"端到端生成本地报告</td>
+<td>报告形态（Markdown + 结构化数据）来自档案；日志/审计能力本身在档案中仅为"建议性"表述，未证实内置</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Dexter 的核心架构是「规划-执行-综合」三段式 Agent 设计：先由 LLM 规划研究步骤，再并行执行数据检索和分析，最后综合为结构化报告。这种模式证明，对于需要多轮检索和推理的复杂任务，显式的 Agent 工作流编排优于单次 prompt 调用。代价是延迟和 token 消耗增加——一次深度研究可能需要数十次 LLM 调用。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[LangGraph 与 LangChain 编排运行时]
+    C --> P[规划子任务 LLM]
+    C --> E[执行 并行检索与工具调用]
+    P --> C
+    E --> C
+    E --> D[金融数据源 SEC EDGAR 和 Yahoo Finance 和 News API 和社交媒体 待核验]
+    E --> C
+    C --> R[结构化报告 Markdown 与结构化数据]
+    C --> S[会话 状态 审计 待核验]
+    R --> U
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于 AI 金融研究工具生态的早期探索者。在更广阔的 AI Agent 生态中，Dexter 代表了「垂直领域 Agent」的方向——不追求通用性，而是在特定领域做到深度和可靠性。与通用 Agent 框架（如 AutoGPT）形成差异化竞争。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>数据准确性风险:</strong> LLM 在处理金融数字和事实时可能产生幻觉，这在金融场景下是不可接受的风险</li>
 <li><strong>合规与责任边界:</strong> 自动生成的金融研究报告可能涉及投资建议的合规问题，实际部署需要法律框架支持</li>
 <li><strong>LLM 成本高昂:</strong> 每次深度研究调用消耗大量 token，高频使用场景下成本可能不可控</li>
 <li><strong>数据源依赖:</strong> 核心功能依赖外部 API（SEC、Yahoo 等），这些 API 的变更或限流会直接影响可用性</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>FinGPT (AI4Finance):</strong> 同属金融 AI 开源生态，但 FinGPT 偏向模型层（微调金融 LLM），Dexter 偏向应用层（Agent 工作流）</li>
 <li><strong>BloombergGPT:</strong> 闭源商业方案，覆盖范围更广但不可及；Dexter 提供了开源替代的探索路径</li>
 <li><strong>Camel-AI/OWL:</strong> 通用 Agent 框架，可以用于金融场景但缺少领域特化，Dexter 在金融垂直场景的深度更深</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 金融 AI Agent 是 Agentic AI 最有商业落地潜力的方向之一，Dexter 作为该赛道的早期开源标杆，其架构设计和工作流模式具有重要的参考价值。尤其需要关注其在真实金融机构的落地案例。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 Dexter 是否增加实时市场数据流处理能力（而非仅批量检索）</li>
 <li>观察项目是否建立金融数据的准确性验证机制（如交叉校验、引用溯源）</li>

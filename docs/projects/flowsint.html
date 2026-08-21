@@ -6,7 +6,7 @@
     <title>Flowsint | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,28 +52,74 @@
 <li><strong>多维度关联</strong>：域名→IP→ASN→CIDR→组织 的自动链条</li>
 <li><strong>N8n 集成</strong>：可接入自动化工作流</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Flowsint 是本地化 OSINT 图谱平台，外部边界是 Doppler/Gravatar/AbuseIPDB 等第三方数据源（N8n 仅作为工作流接入点，待核验）；内部边界为 Core/Types/Enrichers/API/App 四层模块</td>
+<td>数据源具体清单与协议未在档案中列出，仅能确认 N8n 集成与丰富器模式</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>分析师交互 → App 前端 → API → Core 调度 Enricher → 拉取外部数据源 → 返回实体写入图谱 → 千级节点无卡顿可视化</td>
+<td>"千级节点无卡顿"为档案单方面描述，未给出版本/硬件基准</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>隐私/数据驻留（本地部署）vs Enricher 对外部 API 的强依赖（含 API 失效/质量参差风险），以及模块扩展性 vs 早期测试覆盖不完整</td>
+<td>未提供具体 Enricher 数量、测试覆盖率或外部 API SLA</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在隔离环境用 Docker 一键部署，对单一域名执行 Enricher 链路（域名→IP→ASN→CIDR→组织）验证图谱可视化与外部 API 抖动容忍度</td>
+<td>Docker Compose 内容、未声明的依赖与资源占用未给出，需以仓库核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Enricher 模式可以推广到其他需要多源数据关联的场景（如供应链风险分析）</li>
 <li>图谱 + 自动关联的交互模式比传统表格更适合探索性调查</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[分析师前端交互] --> B[App 可视化层]
+    B --> C[API 网关]
+    C --> D[Core 调度与图谱存储 待核验持久化方案]
+    D --> E[Enrichers 丰富器模块]
+    E --> F[外部数据源 Doppler Gravatar AbuseIPDB 等 待核验具体协议]
+    D --> G[图谱视图 千级节点浏览 待核验]
+    E --> H[N8n 自动化工作流接入 待核验集成边界]
+    E --> I{Enricher 质量与外部 API 可用性风险}
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型。</strong> 面向安全分析师的专业工具，非通用基础设施。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li>早期开发阶段，测试覆盖不完整</li>
 <li>社区贡献者较少，可持续性待验证</li>
 <li>Enricher 质量参差不齐（部分依赖外部 API）</li>
 <li>非架构师日常关注范畴，偏安全专业领域</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Maltego</strong>：商业 OSINT 平台，Flowsint 是开源替代</li>
 <li><strong>Shrek/Sherlock</strong>：单项工具，Flowsint 做平台化整合</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>观察。</strong> 安全垂直领域工具，非核心关注方向，但 Enricher 架构模式值得借鉴。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Enricher 生态的丰富度和质量</li>
 <li>社区活跃度和贡献者增长</li>

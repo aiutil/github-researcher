@@ -6,7 +6,7 @@
     <title>Snailclimb/JavaGuide | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,74 @@
 <li><strong>面试场景化:</strong> "面试官问 X，你应该怎么回答"的模式，贴近真实面试</li>
 <li><strong>多格式输出:</strong> GitHub Markdown + 在线网站（javaguide.cn）+ PDF 电子书</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>JavaGuide 是面向 Java 学习与面试准备的知识资源项目，核心边界是结构化内容及其组织方式；GitHub Markdown、在线网站和 PDF 是已明确的输出渠道，官方知识星球、面试辅导和小程序属于已描述的生态扩展。</td>
+<td>档案未提供源码、具体内容模型、搜索机制、更新流程、访问控制或付费服务实现，不能据此确认其平台技术架构。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者从 Java 基础、JVM、并发、Spring、数据库和系统设计等模块学习，并结合代码示例与面试真题准备面试；内容通过 GitHub Markdown、在线网站和 PDF 提供。</td>
+<td>档案没有说明推荐算法、检索流程、内容生成链路、接口协议或部署拓扑；AI 标签所对应的具体实现未获证实。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>项目的核心权衡是面试覆盖广度与知识深度、体系化整理与内容同质化、持续更新与维护依赖个人，以及免费知识资源与社区/教育服务生态之间的平衡。</td>
+<td>档案没有提供内容审查、版本发布、贡献治理、性能、SLO、安全或商业化指标；GitHub stars 和评分不能作为生产可用性证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>PoC 应验证从 Java 基础到系统设计的主题导航、代码示例可运行性、面试题覆盖范围，以及 GitHub Markdown、在线网站和 PDF 三种内容渠道的可用性；如评估生态，再单独验证知识星球、面试辅导或小程序。</td>
+<td>PoC 不应预设模型、工具调用、协议、持久化或部署方案；AI 辅助学习、Spring AI、RAG、向量数据库等均列为待核验项。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>JavaGuide 本质是一个"知识工程项目"——将非结构化的技术知识（散落在博客、论坛、书籍中）结构化为可导航、可搜索、可持续更新的知识库。其内容组织方式（模块 → 章节 → 主题 → 面试题）是一种有效的知识管理范式。开源社区的贡献模式（PR 提交知识点纠错 / 补充）也值得学习。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[Java 学习者与面试者] --> K[JavaGuide 知识工程]
+    K --> M[模块化知识体系]
+    M --> E[代码示例与面试真题]
+    K --> O[GitHub Markdown]
+    K --> W[在线网站]
+    K --> P[PDF 电子书]
+    K --> X[社区与教育服务生态]
+    R[知识准确性 时效性 维护可持续性风险] -.控制边界.-> K
+    A[AI 辅助学习与 Spring AI RAG 等能力] --> T[待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>知识资源型项目。</strong> JavaGuide 不是代码工具或平台，而是知识内容库。其价值在于知识的准确性、体系性和时效性。它的"平台"属性体现在：围绕核心内容延伸出社区（知识星球）、工具（面试刷题小程序）、教育服务（付费课程），形成"内容 + 社区 + 服务"的生态。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>内容同质化:</strong> 大量 Java 面试内容在中文社区重复，JavaGuide 的差异化在于体系化而非独创</li>
 <li><strong>深度天花板:</strong> 面试导向的内容以"够用"为目标，对底层原理（如 JVM 源码）覆盖不深</li>
 <li><strong>维护可持续性:</strong> 高度依赖创始人 Snailclimb 个人，团队化程度不足</li>
 <li><strong>技术趋势风险:</strong> 如果 Java 在中国就业市场份额下降（被 Go/Rust 蚕食），JavaGuide 的热度会受影响</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs advanced-java:</strong> hollischuang/advanced-java 更注重高级主题和源码分析，JavaGuide 更注重面试覆盖面</li>
 <li><strong>vs CS-Notes:</strong> CS-Notes 覆盖更广（含算法、操作系统），JavaGuide 更专注 Java 生态</li>
 <li><strong>vs 小林 coding:</strong> 小林 coding（xiaolincoding.com）以图解见长，JavaGuide 以全面见长</li>
 <li><strong>vs LeetCode:</strong> LeetCode 是刷题平台，JavaGuide 是知识体系</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级。</strong> JavaGuide 已是高度成熟的知识库，内容稳定。值得关注的是：是否新增 AI 时代的 Java 相关内容（如 Spring AI、Java + LLM 集成）、内容形式的升级（视频 / AI 辅助学习）、以及知识付费模式的演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否引入 AI 辅助学习功能（AI 面试官、个性化学习路径）</li>
 <li>Java 在 AI 时代的新内容（Spring AI、向量数据库、RAG 框架）</li>

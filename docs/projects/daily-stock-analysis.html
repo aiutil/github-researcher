@@ -6,7 +6,7 @@
     <title>ZhuLinsen/daily_stock_analysis | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,15 +59,63 @@
 <li><strong>GitHub Actions 定时运行</strong>：零服务器成本</li>
 <li><strong>多市场支持</strong>：统一的接口适配不同市场数据源</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目是入口渠道、模型供应商、行情/新闻/公告数据源之间的编排层，对外暴露 Web 决策看板与多渠道推送</td>
+<td>档案明示"多源数据聚合"、Web 仪表盘、多渠道推送；具体入口协议、模型供应商名单、数据源 API 未在档案中列出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>编排运行时按定时触发拉取行情+新闻→LLM 情绪分析与判断→回写看板/会话→推送渠道</td>
+<td>档案明示 GitHub Actions 定时执行、LLM 情绪分析、决策看板、自动推送；具体调度链路与会话存储方式未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>零成本运行（GitHub Actions）与数据准确性、LLM 幻觉、监管合规之间的张力</td>
+<td>档案列出"免费行情延迟"、"LLM 幻觉"、"监管红线"、"数据源使用条款"等风险；未给出量化对比</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Fork→配置 GitHub Actions 与单一推送渠道（如邮件）→单市场（A股）→加入风险免责与日志审计再扩展</td>
+<td>档案仅证明"fork 即部署"门槛低与多市场支持；具体配置文件、Secrets 字段、调度频率需核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>LLM 做信息综合而非预测</strong>：AI 价值在于信息聚合和摘要，而非直接选股</li>
 <li><strong>零成本自动化</strong>：GitHub Actions 是个人项目的理想运行平台</li>
 <li><strong>Fork 即部署</strong>：用户 fork 后修改配置即可运行，极低采用门槛</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[个人投资者使用者] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时 Python]
+    C --> G[GitHub Actions 定时触发]
+    G --> C
+    C --> D[多源数据聚合 行情/新闻/公告]
+    C --> M[LLM 情绪与决策分析]
+    M --> C
+    C --> B[Web 决策看板 可视化]
+    C --> P[多渠道推送 邮件/微信/Telegram 等 待核验]
+    C --> R[合规与免责边界 风险提示 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>爆款工具型项目</strong>。精准命中个人投资者信息焦虑痛点。但注意：<strong>这是信息工具不是投资工具</strong>，LLM 分析仅供参考，不构成投资建议。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>⚠️ 投资风险警示</strong>：LLM 分析不等于投资建议，用户可能过度依赖</li>
 <li><strong>数据准确性</strong>：免费行情数据源可能延迟或不准确</li>
@@ -77,16 +125,16 @@
 <li><strong>合规问题</strong>：数据源 API 的使用条款需确认</li>
 <li><strong>个人项目可持续性</strong>：60k stars 对个人维护者压力巨大</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs TradingView</strong>：TradingView 是专业图表工具，此项目是 AI 分析工具</li>
 <li><strong>vs 同花顺/东方财富</strong>：传统炒股软件 vs AI 驱动分析</li>
 <li><strong>vs 专业量化平台</strong>：量化平台需编程，此项目门槛更低</li>
 <li><strong>vs FinGPT</strong>：FinGPT 偏金融大模型研发，此项目偏应用工具</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪（技术角度），谨慎使用（投资角度）。</strong> 技术架构（LLM+GitHub Actions+多源数据）值得学习。但作为投资工具必须保持批判性。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>⚠️ 是否增加充分的风险免责声明</li>
 <li>LLM 分析的历史准确率回测</li>

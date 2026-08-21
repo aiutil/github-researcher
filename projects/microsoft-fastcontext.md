@@ -35,22 +35,45 @@ Microsoft Research 出品的仓库探索子模型——用专用小模型（4B-3
 3. **Compact evidence** — 返回 `<final_answer>` 块，只有 file path + line range
 4. **RL 训练** — SFT + task-grounded RL 训练探索策略，不是简单蒸馏
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | FastContext 作为只读探索子模型嵌入主 Coding Agent 旁路，推理边界在主 Agent 与 Repo 之间，由 FastContext 独占 Read/Glob/Grep，主 Agent 仅消费 final_answer | 边界依据项目分类（context-engineering / subagent）与"探索-解决分离"原则；具体协议（如 MCP/HTTP）、工具供应商、权重分发渠道未在档案中给出 |
+| 主路径 | 主 Agent 委托查询 → FastContext 子模型并行调用 Read/Glob/Grep → 汇总为 file:line 引用 → 回写主 Agent 上下文用于编辑 | 路径来自档案中的 sequenceDiagram 与"并行工具调用"描述；并行度、token 计费单位、history 回写策略在档案中未量化 |
+| 关键权衡 | 上下文节省与小模型推理成本/质量上限的权衡：4B–30B 探索模型额外占用算力，且仅适用有明确 file:line 答案的查询，复杂跨文件依赖可能遗漏 | 权衡依据"风险/局限"小节与"RL 训练"亮点；具体能耗、QPS、token 单价、SWE-bench 具体分值档案未披露 |
+| 最小 PoC | 在单一仓库、单渠道（如内部 Coding Agent 接入）下挂载一个 4B FastContext 模型，限定最小工具权限（read-only），记录 final_answer 命中率与上下文节省比例，再决定是否扩展到多仓库或多模型尺寸 | PoC 形态由"采用建议"与"4B–30B 多个尺寸"推导；具体接入接口、checkpoint 来源、推理框架（vLLM/TGI 等）档案未说明 |
+
 ## 架构启发
 FastContext 定义了 **Context 委托模式（Context Delegation Pattern）**：主 Agent 把 context 获取委托给专用子模型，就像资深工程师让实习生先做代码调研。这种分离降低了主模型的 context 压力，也使探索可复用。
 
-```mermaid
-sequenceDiagram
-    participant Main as 主 Agent<br/>(expensive)
-    participant FC as FastContext<br/>(4B-30B)
-    participant Repo as Repository
+## 架构图（MMD）
 
-    Main->>FC: "哪里处理用户认证？"
-    FC->>Repo: Glob: **/*.py
-    FC->>Repo: Grep: "auth"
-    FC->>Repo: Read: src/auth.py
-    FC->>Repo: Read: tests/test_auth.py
-    FC-->>Main: final_answer:<br/>src/auth.py:42-58<br/>tests/test_auth.py:101-119
-    Main->>Repo: 编辑 src/auth.py:42-58
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    MainAgent["主 Coding Agent<br/>(昂贵模型，仅编辑)"]:::core
+    FastCtx["FastContext 子模型<br/>(4B–30B, SFT + task-grounded RL)<br/>只读探索"]:::core
+    Repo[("Repository<br/>文件系统")]:::external
+    Tools["Read / Glob / Grep 工具调用<br/>(同 turn 并行)"]:::risk
+    Answer["Compact Evidence<br/>file:line 引用块<br/>(final_answer)"]:::core
+    Competitor["竞品边界<br/>Claude Code subagent /<br/>headroom / turbovec"]:::external
+    Audit["可观测/审计边界<br/>(待核验:<br/>推理框架、checkpoint 来源)"]:::risk
+    ScoreCheck["效果边界<br/>SWE-bench 具体分值<br/>(待核验: 论文 2606.14066)"]:::risk
+
+    MainAgent -- "委托探索查询" --> FastCtx
+    FastCtx -- "并行调用" --> Tools
+    Tools -- "读路径/匹配" --> Repo
+    FastCtx -- "聚合为 file:line" --> Answer
+    Answer -- "回填上下文" --> MainAgent
+    FastCtx -. "竞品对照" .-> Competitor
+    FastCtx -. "日志/成本/退出路径" .-> Audit
+    FastCtx -. "效果验证" .-> ScoreCheck
+
+    classDef core fill:#e6f3ff,stroke:#1f6feb,color:#0b3d91
+    classDef external fill:#fff4e6,stroke:#b06d00,color:#6a3a00
+    classDef risk fill:#fde2e2,stroke:#c0392b,color:#7a1f1a
 ```
 
 ## 定位判断

@@ -39,8 +39,36 @@ Ink 的热度是**真实开发者体验提升 + React 范式扩展**驱动。它
 5. **组件生态:** `ink-text-input`、`ink-select-input`、`ink-spinner`、`ink-table` 等丰富组件库
 6. **测试友好:** 提供 `render` 测试工具，可断言输出
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Ink 的边界由"React 组件树 → Reconciler → 终端文本输出 + stdin 输入"构成；调用方是 CLI 应用开发者，外部依赖为 react-reconciler 与 Yoga 布局引擎，运行时为 Node.js 终端进程 | 仅依据档案"React Reconciler""Yoga 布局引擎""stdin raw mode"；具体 Node 版本、依赖版本未在档案中给出 |
+| 主路径 | 开发者用 JSX 声明 UI → Ink 通过 react-reconciler 协调组件树 → Yoga 计算 Flexbox 布局 → 输出 ANSI 转义序列到 stdout → 监听 stdin 键盘事件回灌到 Hooks 状态 | 档案明确 React Reconciler、Yoga、stdin 处理；输出协议、刷新策略等实现细节属待核验 |
+| 关键权衡 | "React 全量运行时带来的体积与依赖" vs "组件化/可复用/DevX 提升"；"统一抽象跨终端" vs "ANSI/终端兼容性差异"；"复杂 UI 能力" vs "极简 CLI 场景过重" | 档案风险段已列出 React 依赖、终端兼容、性能闪烁、学习曲线四项；性能数字未给 |
+| 最小 PoC | 用 ink + ink-text-input + ink-spinner 构建一个带输入框与加载指示的交互式 CLI 脚本，验证：JSX 写法、布局渲染、键盘输入回流、测试工具 render 的输出断言 | 档案给出 ink-text-input、ink-spinner、render 测试工具；具体 API 签名、版本以仓库文档为准 |
+
 ## 架构启发
 Ink 的核心启发是 **"UI 范式的可移植性"**。React 的本质是 `f(state) = UI`，"UI"可以是 DOM、可以是终端文本、可以是 Native 视图。Ink 证明了：**只要实现了 Reconciler，任何介质都可以是 React 的渲染目标**。这种思想后来被 React Three Fiber（3D）、React Terminal（其他终端方案）等项目进一步推广。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Dev[CLI 应用开发者 JSX 组件树] --> Ink[Ink 运行时]
+    Ink --> Rec[react-reconciler 协调器 待核验具体版本]
+    Ink --> Yoga[Yoga Flexbox 布局引擎]
+    Ink --> Stdin[stdin raw mode 键盘输入]
+    Yoga --> Ansi[ANSI 转义序列 stdout]
+    Rec --> Ansi
+    Stdin --> Hooks[Hooks 状态回灌 useState useEffect]
+    Hooks --> Rec
+    Ink --> Eco[组件生态 ink-text-input ink-select-input ink-spinner ink-table]
+    Ink --> Test[render 测试工具 输出断言]
+    Ansi --> Term[外部终端边界 Windows CMD 等兼容性差异 待核验]
+```
 
 ## 定位判断
 **成熟工具型项目。** Ink 是 CLI 开发领域的"React for Terminal"事实标准。它适合需要复杂交互（菜单、表单、实时更新）的 CLI 工具。对于简单脚本，可能过重；对于企业级 CLI（如 DevOps 工具、脚手架），是极佳选择。

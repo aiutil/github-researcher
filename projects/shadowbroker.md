@@ -50,9 +50,38 @@ Open-source intelligence for the global theater. Track everything from the corpo
 3. **<p align="center"><strong>Global Threat Intercept — Real-Time Geospatial Intelligence Platform</stro**
 4. **<p align="center">**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目以 Python 构建统一地理空间 OSINT 前端，档案明确覆盖 ADS-B 飞机、私人/企业公务机、间谍卫星、地震事件、CCTV 五类情报域，定位为面向全局态势的聚合与可视化层，而非单一数据源。 | 仅基于 README 一句话定位、tags（ads-b、adsb、aircraft、aircraft-tracking、asdb、cctv、cctv-cameras、cctv-surveillance）与"Global Threat Intercept — Real-Time Geospatial Intelligence Platform"标题；具体数据接入协议、卫星接口、震源 API 未经源码核实。 |
+| 主路径 | 数据采集（多源 ADS-B/卫星/地震/CCTV）→ 统一聚合层 → 实时地理空间可视化界面 → 可选 AI Agent 挂钩用于关联解析。 | 路径由定位描述与"unified interface"措辞推导；ADS-B 接收链路、地震事件源、CCTV 来源、Agent 接入方式在档案中均无实现细节。 |
+| 关键权衡 | 跨域数据汇聚带来的合规与版权风险（AGPL-3.0 强 copyleft、私人飞行数据与 CCTV 数据的采集合法性），以及多源异构数据实时性与覆盖广度之间的取舍。 | License (AGPL-3.0) 与多类敏感数据源已确认；具体合规策略、数据更新频率、延迟指标档案未给出。 |
+| 最小 PoC | 克隆仓库 → 启动 Python 入口 → 接通单一 ADS-B 数据源（如 dump1090）→ 验证飞机轨迹在地图界面实时呈现 → 再逐步接入地震/CCTV/卫星任一异构源验证聚合层。 | 部署形态（CLI/服务/Docker）、依赖清单、地图组件、配置文件结构档案未列出，均需源码核验；以下步骤属"待核验"。 |
+
 ## 架构启发
 
 从 BigBodyCobain/Shadowbroker 的设计来看，核心思路是 **"Open-source intelligence for the global theater. Track every"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (AGPL-3.0) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或 OSINT 分析师] --> UI[统一地理空间可视化界面<br/>unified interface]
+  UI --> AG[AI Agent 挂钩层<br/>解析与关联 待核验]
+  UI --> CORE[Shadowbroker 核心聚合层<br/>Python]
+  CORE --> ADS[ADS-B / 飞机追踪<br/>ads-b aircraft 待核验]
+  CORE --> SAT[间谍卫星数据源<br/>待核验]
+  CORE --> EQ[地震事件源<br/>seismic 待核验]
+  CORE --> CCTV[CCTV / 监控摄像头源<br/>cctv-surveillance 待核验]
+  CORE --> LIC[许可证边界<br/>AGPL-3.0 强 copyleft]:::risk
+  SAT --> EXT[外部机构 / 商业卫星服务]:::ext
+  CCTV --> EXT2[公开 / 第三方摄像头源]:::ext
+  classDef risk fill:#fee,stroke:#c33,stroke-width:1px;
+  classDef ext fill:#eef,stroke:#669,stroke-width:1px,stroke-dasharray:4 2;
+```
 
 ## 定位判断
 

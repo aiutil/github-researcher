@@ -35,21 +35,43 @@ Agent 沙箱是 Agent 从开发走向生产的关键基础设施。70 天内从 
 5. **Web Console**：浏览器管理沙箱、模板、节点（:12088）
 6. **模板系统**：OCI 镜像一键转模板，支持 Template Store
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 介于 Agent 调用入口与外部工具/凭据/网络之间的执行隔离层，自带 Web Console (:12088) 与 Template Store，前提是宿主提供 KVM | 基于档案 "KVM+RustVMM microVM" 与 "Web Console" 等标签与描述，未审计源码 |
+| 主路径 | Agent 触发沙箱创建 → RustVMM/KVM microVM 冷启动（亚 60ms）→ 凭据保险库注入密钥 → 工具/代码在沙箱内执行 → Snapshot/Clone/Rollback 状态回写 | 性能数字仅来自 "bare metal benchmark"，E2B 兼容通过 "swap URL 环境变量" 实现，具体协议待核验 |
+| 关键权衡 | 冷启动速度与 <5MB 内存开销 vs 必须依赖 KVM（x86_64 Linux）、与 NVIDIA OpenShell 的赛道竞争、腾讯维护投入波动风险 | 风险点来自档案 "风险/局限" 章节，非生产数据 |
+| 最小 PoC | 单节点 x86_64 Linux 启用 KVM → 用 E2B SDK 替换 URL 环境变量接入 → 启用 AutoPause 与 ARM64（v0.5）→ 在 Web Console 验证 Snapshot/Rollback 与凭据保险库注入 | 凭据保险库与 Egress 控制机制细节、ARM64 实际可用性均需源码验证 |
+
 ## 架构启发
 CubeSandbox 代表了 Agent Runtime 的隔离层。与 Docker（重隔离）、WebAssembly（语言限制）形成差异化定位：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TD
-    subgraph "Agent 执行隔离方案对比"
-        A[Agent 执行请求] --> B{选择隔离方案}
-        B --> C[CubeSandbox<br/>轻量·即时·并发<br/>Rust 原生]
-        B --> D[Docker<br/>重·通用·生态丰富]
-        B --> E[WASM<br/>安全·语言限制·生态小]
-        B --> F[gVisor<br/>安全·重·Google 维护]
+flowchart LR
+    Agent["Agent 调用入口"] --> Orch["CubeSandbox 编排层 (Rust)"]
+    Orch --> MicroVM["KVM + RustVMM microVM<br/>亚 60ms 冷启动 / 待核验: 资源配额"]
+    Orch --> Cred["凭据保险库<br/>API keys 不入沙箱 / 待核验: 注入协议"]
+    Orch --> Snap["Snapshot / Clone / Rollback<br/>百毫秒级检查点 / 待核验: 持久化后端"]
+    MicroVM --> Egress["Egress 控制 (v0.5)"]
+    MicroVM --> Template["OCI 模板 → Template Store"]
+    Orch --> Console["Web Console :12088<br/>沙箱/模板/节点管理"]
+    subgraph External["外部边界"]
+        E2B["E2B SDK 兼容<br/>通过 URL 环境变量切换"]
+        NVD["NVIDIA OpenShell<br/>竞争项目"]
     end
-    
-    C --> G[适合: Agent 代码执行<br/>工具调用隔离]
-    D --> H[适合: 服务部署<br/>复杂环境]
+    Orch --- E2B
+    Orch -.竞争压力.-> NVD
+    subgraph Risk["风险/控制边界"]
+        KVMDep["宿主依赖: x86_64 Linux + KVM"]
+        Tencent["腾讯维护投入波动"]
+    end
+    MicroVM --- KVMDep
+    Orch --- Tencent
 ```
 
 ## 定位判断

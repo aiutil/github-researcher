@@ -72,25 +72,59 @@ url: "https://github.com/JustVugg/colibri"
 - KV持久化崩溃安全（.coli_kv, ~182KB/token）
 - RAM自动预算（MemAvailable → expert cache auto-size），不触发OOM killer
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单进程 C 运行时：CPU/CUDA/Metal/NUMA 多后端共享 runtime，对外暴露 Web dashboard 实时展示 VRAM/RAM/disk 三级条与专家路由热度；输入为 GLM-5.2 744B MoE（仅 glm_moe_dsa 架构），输出为 token 流 | 多后端列表、Web dashboard、模型架构名称均在 README/档案中明列；具体 dashboard 协议、端口、鉴权未证 |
+| 主路径 | 启动期将 Dense（attention + shared experts + embeddings ~17B，int4 ≈9.9GB）载入 RAM，将 21,504 个路由专家（每 ~19MB int4，共 ~370GB）置于磁盘；推理期按 token 激活 ~40B 参数，LRU + page cache 命中 RAM，缺失专家异步 fadvise WILLNEED 预读；decode 阶段由 GLM-5.2 自带 MTP 头（int8，39–59% 接受率）做投机，MLA weight-absorption 跳过 per-token k/v 重建，DSA（lightning indexer，per-layer top-2048）可选关停 | 路径节点均为档案明示的组件与数字；异步 I/O 线程模型与 page cache 行为细节需源码核验 |
+| 关键权衡 | 以 I/O 取代 FLOPS 为瓶颈前提，用磁盘流式 + 预取换取 GPU 缺席的可行性；代价是冷启动 0.05–0.1 tok/s、370GB 磁盘与 NVMe 级随机读依赖、bus factor=1 的单人维护、以及 MTP 头被强制 int8（int4 接受率 0–4%） | 速度、磁盘、维护性、MTP 量化敏感性均在档案中明列；功耗、延迟抖动、SSD 寿命未测 |
+| 最小 PoC | 在 6×RTX 5090 节点上拉取 v1.1.0，按 README 加载 GLM-5.2 int4 模型，观察 4 tok/s、TTFT 1.6s、disk≈0 的稳态；随后降至 25GB RAM + NVMe 单机配置，量化冷启动 tok/s 与磁盘随机读 iops 关系，再压降 MTP 关停、DSA 关停观察退化曲线 | 6×5090 数字与三项指标来自 README 自测；25GB RAM “可运行”仅档案定性，无官方基准；其余组合未在档案中给出 |
+
 ## 架构启发
 
 **核心insight：MoE推理瓶颈是I/O不是FLOPS。** 当每token仅激活5%参数时，GPU算力大量闲置，真正的瓶颈变成"如何快速从磁盘读取需要的专家"。Colibri的I/O-first设计——专家流式加载 + LRU cache + OS page cache L2 + 异步预读 + router预取——是这个新范式的工程参考。
 
 **对架构师的价值：** 随着MoE成为大模型主流架构（GLM-5.2、DeepSeek-V3等），推理基础设施的设计哲学需要从"算力优先"转向"I/O优先"。Colibri是这个转向的极端示例。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph "传统推理范式"
-        A1["全部参数 → GPU VRAM"] --> A2["瓶颈：FLOPS"]
-        A2 --> A3["优化：更多GPU/更快CUDA kernel"]
-    end
-    
-    subgraph "Colibri MoE范式"
-        B1["Dense → RAM常驻<br/>Expert → 磁盘流式"] --> B2["瓶颈：随机I/O"]
-        B2 --> B3["优化：LRU+预读+page cache<br/>+MTP投机+router预取"]
-    end
-    
-    A3 -.->|"MoE激活率5%时<br/>GPU大量闲置"| B1
+flowchart LR
+  A["用户请求"] --> B["Colibri C runtime<br/>(v1.1.0)"]
+  subgraph 外部边界
+    M1["GLM-5.2 744B MoE<br/>(int4 ~370GB on disk)"]
+    M2["Web dashboard<br/>(VRAM/RAM/disk + 路由热度)"]
+  end
+  subgraph 核心
+    D["Dense 常驻 RAM<br/>int4 ~9.9GB"]
+    E["21,504 路由专家<br/>int4 ~19MB each"]
+    H["MLA 注意力<br/>576 floats/token"]
+    T["MTP 投机头<br/>int8 (待核验)"]
+    S["DSA lightning indexer<br/>top-2048 (待核验)"]
+    P["异步 I/O 预读 + Router 预取<br/>WILLNEED"]
+  end
+  B --> D
+  B --> E
+  B --> H
+  B --> T
+  B --> S
+  P --> E
+  P --> S
+  B --> M1
+  B --> M2
+  subgraph 风险边界
+    R1["磁盘随机读 I/O 瓶颈"]
+    R2["bus factor=1"]
+    R3["MTP int4 不可用"]
+    R4["OOM 防护: MemAvailable"]
+  end
+  E --> R1
+  B --> R2
+  T --> R3
+  D --> R4
 ```
 
 ## 定位判断

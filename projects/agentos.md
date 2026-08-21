@@ -39,35 +39,49 @@ Rust 实现，Apache 2.0，由 Rivet（游戏后端基础设施公司）开发�
 6. **Sandbox Extension**：需要浏览器/原生编译时，按需启动 E2B/Daytona 全 Sandbox，挂载文件系统
 7. **Cron + Webhooks + Workflows**：内置定时任务、外部事件接收、可恢复的工作流编排
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 进程内 Agent 运行时，介于宿主后端应用与 Agent（Pi/Claude Code/OpenCode）之间，对外通过 npm 包/SDK 嵌入，对内以 in-process VM 形式承载 Agent | 仅基于档案"Rust 实现、npm 嵌入、ACP 内置 Pi/Claude Code/OpenCode"，VFS/进程表/Pipe/PTY/虚拟网络栈等子模块细节未在档案中给出，需源码核验 |
+| 主路径 | 应用调用 → agentOS VM 内核 → 通过 Bindings（CLI 命令暴露宿主函数）执行 Agent → 状态/产物经可组合存储（S3/GDrive/宿主目录/overlay）回写 | 存储后端、API 协议、错误处理路径档案未明确，标注待核验 |
+| 关键权衡 | V8 Isolates + Wasm 的低冷启动（4.8ms p50）/低内存（~131MB）换取弱于 KVM/Firecracker 的隔离强度，复杂负载需回退到 E2B/Daytona Sandbox Extension | 隔离强度对比、E2B/Daytona 回退触发条件未给具体阈值，"6x/32x/92x"成本性能数据来源档案未注明 |
+| 最小 PoC | 以 npm 包嵌入单宿主服务，启用 deny-by-default 权限策略与单一 S3 兼容存储挂载，验证 Cron+Webhooks+Workflows 中的至少一条路径，并以 Sandbox Extension 为浏览器/编译场景的退出路径 | SDK 非 JS 后端可用性、Rivet Cloud 绑定程度、V8 Isolates 对不可信代码安全边界档案未给出结论 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph "宿主进程 (Node.js/Rust)"
-        APP[你的后端应用]
-        BIND[Bindings<br/>Agent 可调用的宿主函数]
-    end
-
-    subgraph "agentOS VM (进程内)"
-        KERN[微型 OS 内核<br/>VFS/进程表/Pipe/PTY/Net]
-        AG1[Agent 1<br/>Pi/Claude Code]
-        AG2[Agent 2<br/>OpenCode]
-        AG3[Agent N]
-    end
-
-    subgraph "可选 Sandbox Extension"
-        E2B[E2B/Daytona<br/>浏览器/编译场景]
-    end
-
-    APP -->|npm 包| KERN
-    BIND <-->|CLI 命令| AG1
-    KERN --> AG1
-    KERN --> AG2
-    KERN --> AG3
-    KERN -.->|按需| E2B
-
-    style KERN fill:#48a,color:#fff
-    style BIND fill:#e74,color:#fff
+flowchart LR
+  subgraph Host["宿主进程 (Node.js/npm)"]
+    App["你的后端应用"]
+    Bind["Bindings<br/>宿主函数 → CLI 命令"]
+  end
+  subgraph VM["agentOS VM (进程内, Rust)"]
+    Kern["微型 OS 内核<br/>VFS / 进程表 / Pipe / PTY / 虚拟网络<br/>(待核验)"]
+    Ag1["Agent: Pi"]
+    Ag2["Agent: Claude Code"]
+    Ag3["Agent: OpenCode"]
+  end
+  subgraph Storage["可组合存储 (挂载为 VFS)"]
+    S3["S3 兼容 / GDrive / 宿主目录 / overlay<br/>具体后端待核验"]
+  end
+  subgraph Ext["Sandbox Extension (按需)"]
+    Sb["E2B / Daytona<br/>浏览器/原生编译场景"]
+  end
+  App -->|npm 调用| Kern
+  Bind <-.->|in-VM CLI| Ag1
+  Bind <-.->|in-VM CLI| Ag2
+  Bind <-.->|in-VM CLI| Ag3
+  Kern --> Ag1
+  Kern --> Ag2
+  Kern --> Ag3
+  Kern --- S3
+  Kern -. 按需回退 .-> Sb
+  Sb -. 文件系统挂载 .-> Kern
 ```
 
 **核心 insight：** Agent 运行时不一定需要容器。WebAssembly + V8 Isolates 提供了"足够好的隔离"和"足够好的性能"的平衡点。对于不需要完整 Linux 环境的 Agent 工作负载（代码生成、数据处理、API 调用），进程内 VM 是更高效的部署模式。

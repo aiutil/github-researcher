@@ -44,9 +44,37 @@ Anthropic 官方开源的知识工作者插件仓库，面向 Claude Cowork 和 
 3. **纯文件架构**：markdown + JSON，Claude 自动加载 skills，slash commands 显式触发
 4. **可定制性**：企业可以 swap connectors、添加公司上下文、调整工作流
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 仓库定位为 Claude Cowork 与 Claude Code 的职能插件集合，由 Anthropic 官方维护，承载 11 个职能插件并通过 MCP 接入外部业务系统 | 仅依赖档案与简介信息，未审计源码 |
+| 主路径 | 用户调用 → 插件 manifest 加载 → slash command / skill 触发 → 通过 `.mcp.json` 连接器调用 Slack、HubSpot、Linear、Jira、Snowflake、BigQuery 等外部工具 | 文档未公开具体协议与时序 |
+| 关键权衡 | “纯文件 + 通用起点”带来的低定制门槛，与企业场景中权限、上下文、可观测性、供应商锁定之间的平衡 | 档案明示“需大量定制才能真正可用”，无生产案例佐证 |
+| 最小 PoC | 选取单一职能插件（如 enterprise-search 或 sales），最小 MCP 连接器集合、最小权限与可审计日志下跑通一个工作流，验证后再扩面 | 档案未给出部署形态与验收指标，需源码补齐 |
+
 ## 架构启发
 
 **插件 = 技能 + 连接器 + 命令的三合一打包**。这比单一的 skills 目录更完整 — 一个插件就是一个完整的"数字员工角色"。对 Agent 平台设计有参考价值：面向职能而非面向功能的插件粒度。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[知识工作者 用户] --> CMD[slash command 显式触发]
+    U --> SK[skill 自动加载]
+    CMD --> PLG[plugin.json manifest 插件编排]
+    SK --> PLG
+    PLG --> MCP[.mcp.json MCP 连接器]
+    MCP --> EXT[外部业务系统 Slack HubSpot Linear Jira Snowflake BigQuery 待核验]
+    PLG --> CC[Claude Cowork Claude Code 运行时 待核验]
+    CC --> MODEL[Anthropic Claude 模型 待核验]
+    MODEL --> CC
+    PLG --> STATE[会话 状态 审计 待核验]
+    PLG --> RISK[权限 可观测性 供应商锁定风险边界]
+```
 
 ## 定位判断
 

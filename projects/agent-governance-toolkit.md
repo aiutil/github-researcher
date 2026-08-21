@@ -49,11 +49,40 @@ AGT 的热度来自 **"企业 Agent 安全合规的刚性需求 × Microsoft 品
 6. **审计日志**：防篡改的决策记录，记录策略版本、请求内容、决策原因，满足合规审计
 7. **零信任身份**：每个 Agent 有独立身份，解决多 Agent 共享 API key 的追溯问题
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 定位为 Agent 调用链中的策略执行/审计中间层，处于入口渠道、模型供应商与工具/数据源之间的编排层；与 IAM、SIEM、运行时沙箱是互补而非替代关系。 | 仅基于标签"Agent治理/安全/OWASP/合规/零信任/policy-engine"与定位表述；具体拦截位置、SDK 内部结构需源码核验。 |
+| 主路径 | 工具调用/消息发送/委托操作 → `govern()` 确定性代码拦截 → YAML 策略（`apiVersion: governance.toolkit/v1`）评估 → 允许执行或抛 `GovernanceDenied` → 防篡改审计日志落库。 | `govern()` 接入方式、策略 DSL、`GovernanceDenied`、审计日志来自档案描述；其执行线程、持久化与签名机制未在档案中给出。 |
+| 关键权衡 | 确定性安全控制 vs 每次调用的性能开销；声明式策略可审计但复杂场景编写门槛高；多语言 SDK（Python/npm/NuGet）降低集成成本但仍处 Public Preview，存在 breaking changes 风险（`agent_os` → `agentmesh`、v4→v5）。 | Public Preview 状态与迁移项来自档案；性能基准、breaking changes 频次、与 Okta/Azure AD/Splunk 集成深度均未在档案中量化。 |
+| 最小 PoC | 选一条低风险渠道（如只读工具），用 `govern(tool, policy="policy.yaml")` 接入并验证拒绝路径可触发 `GovernanceDenied`、审计日志可被外部读取；将策略与审计纳入 GitOps 版本化；预留回退到无治理版本的退出路径。 | PoC 形态基于档案"两行接入"与架构启发；具体 SDK 版本、策略最小集与审计 schema 须以官方文档/源码核验。 |
+
 ## 架构启发
 - **安全不是功能，是架构**：Agent 安全需要在架构层面设计（工具调用拦截层），而非事后加 prompt 规则。这与零信任网络的设计哲学一脉相承
 - **确定性 > 概率性**：对于安全场景，模型层的概率性防御（prompt guardrails）永远不够，需要代码层的确定性控制。AGT 的设计基于一个清醒认知：**模型会犯错，但 Runtime 不应该**
 - **治理即基础设施**：Agent 治理应该像 IAM 一样成为基础设施层——每次 API 调用经过认证授权，每次 Agent 操作经过策略检查和审计记录
 - **声明式策略优于硬编码**：YAML 策略文件让安全规则可版本化、可审计、可 diff，符合 GitOps 理念
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游Agent] --> I[入口与零信任身份边界]
+    I --> C[项目编排与运行时 govern 拦截层]
+    C --> P[YAML策略引擎 apiVersion governance.toolkit/v1]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统 send_email drop_table 等]
+    C --> A[防篡改审计日志 待核验 存储与签名机制]
+    P -->|allow| T
+    P -->|deny| X[抛出 GovernanceDenied 结构上不可能执行]
+    X --> A
+    T --> A
+    M --> C
+    A --> R[合规审计 SOC2 ISO27001 等 待核验 导出格式]
+```
 
 ## 定位判断
 **基础设施候选——企业 Agent 落地的必经之路。** AGT 不是工具库，而是 Agent 安全治理的**控制面**。它的定位类比：IAM 之于云服务、OPA 之于 Kubernetes 策略、WAF 之于 Web 应用。如果 Agent 成为企业的标准计算单元，那么 Agent 操作的认证/授权/审计将成为合规基础设施。AGT 有潜力成为这个层面的事实标准——Microsoft 出品 + OWASP 全覆盖 + 多语言 SDK 构成了标准制定者的初始条件。5,867 stars 和 1,017 forks 显示企业社区已经开始采用。

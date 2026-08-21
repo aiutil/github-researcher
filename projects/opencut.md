@@ -36,8 +36,33 @@ url: "https://github.com/OpenCut-app/OpenCut"
 4. **插件优先架构**：第三方插件作为一等公民，支持扩展功能生态
 5. **编辑器内建脚本面板**：直接在编辑器中写脚本控制视频生产
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenCut 本期定位为视频编辑器（GUI 侧），同时把 MCP Server、Headless 渲染和插件系统列入路线图；本期可视为"创作端 UI + 计划中的 Agent 接口"的复合边界 | 系统边界须以源码核验；MCP Server / Headless 在档案中只描述为路线图，未给出协议细节 |
+| 主路径 | 创作者 → 编辑器 UI → Rust 重写中的核心 → 导出/批渲染（计划中无 GUI）；Agent 调用路径仅在路线图中描述，尚未验证 | 主路径中 Rust 核心内模块边界、Rust↔TS 桥接未在档案中给出 |
+| 关键权衡 | 现处于重写期：旧版（opencut.app）仍承载流量，新版（new.opencut.app）暂不接受外部贡献，因此稳定可扩展的外部接口 vs. 重写完成度之间的权衡不可回避 | 风险条目仅来自档案"风险/局限"段，未量化日期或里程碑 |
+| 最小 PoC | 在确认 MCP Server 可用前，PoC 只能停留在"本地跑通旧版 + 评估新版 UI/导出能力"层面；接入 Agent/批渲染链路须等 README 中所述组件落地 | 档案明确指出"MCP Server 是路线图而非现实"，故 PoC 不应预设这些能力 |
+
 ## 架构启发
 OpenCut 的重写路线图揭示了一个重要趋势：**创作工具正在从 GUI-first 转为 API-first + GUI-optional**。当工具内建 MCP Server，它就从"人用的工具"变成了"Agent 用的平台"。这种架构模式可推广到所有创作工具领域（图片/音频/3D/文档）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    User[创作者或上游 Agent] --> UI[编辑器 UI 桌面 移动 Web]
+    UI --> Core[Rust 核心 重写中 共享代码库 待核验]
+    Core --> Export[导出与渲染 当前 GUI 路线]
+    Core --> Plugin[插件系统 计划中 第三方插件 待核验]
+    Core -. MCP Server 路线图 未实现 .-> Agent[Agent / MCP 客户端]
+    Core -. Headless 批渲染 路线图 未实现 .-> Batch[无 GUI 自动化批量渲染]
+    User -. 社区贡献 当前不接受 .-> Contrib[外部贡献边界 重写期内关闭]
+    Risk[状态边界 重写未完成 API 不稳定] -. 影响 .-> Core
+```
 
 ## 定位判断
 在 Agent 创作工具生态中，OpenCut 占据"视频编辑基础设施"的位置。如果 MCP Server 落地，它将成为 Agent 视频生产流水线的标准后端。

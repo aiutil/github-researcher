@@ -42,8 +42,38 @@ url: "https://github.com/ShawnPana/phone-harness"
 6. **作为 Agent Skill 分发：** `phone-harness skill` 打印 skill body，可注册为 Claude Code/Codex 的 agent skill，让 agent 自动 reach for it。
 7. **架构分层（README 可核验）：** `SKILL.md`（agent 面向的产品面）+ `install.md`（权限引导）+ `src/phone_harness/`（约 500 行保护核心：mirror.py 窗口发现/聚焦/截图/CGEvent 输入、ocr.py Vision 文本识别、helpers.py 预导入原语、admin.py `--doctor`、run.py CLI）+ `agent-workspace/agent_helpers.py`（agent 编辑的 helper，自动加载到每个脚本 namespace）。传输无状态（无 daemon），每次调用自包含。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 编排与运行时仅在 macOS 侧，iPhone 侧零 agent；传输通道完全依赖 macOS Sequoia+ 的 iPhone Mirroring 窗口 | 档案明确 macOS 绑定，iPhone 侧不安装任何组件；其他 OS 支持待核验 |
+| 主路径 | agent/CLI → mirror.py（窗口发现/聚焦/截图/CGEvent）↔ iPhone Mirroring 窗口；ocr.py Vision OCR 出 tap-ready 坐标 → 再截图校验 | 来自档案对 src/phone_harness/（mirror.py、ocr.py、run.py、admin.py）的描述，具体协议与接口以源码为准 |
+| 关键权衡 | 零 iOS 依赖 vs 无 accessibility tree/DOM：观察通道只能靠 screencapture+OCR，DRM 黑屏、纯图标按钮、多点触控均受限；单机会话不可并发 | 档案自述局限：OCR 看文本不看语义、无多点触控/相机/Face ID、解锁即暂停、单设备单会话 |
+| 最小 PoC | 在 macOS Sequoia+ 上 `phone-harness --doctor` 校验权限，通过 `phone-harness skill` 注册为 Claude Code/Codex skill，跑通“截图→OCR→tap→再截图”单一闭环 | 命令与 skill 注册名来自档案描述；权限清单、稳定性、退出路径须实机验证 |
+
 ## 架构启发
 phone-harness 的核心启发是 **"用 OS 级的镜像/无障碍能力替代专用自动化框架"**。传统移动端自动化（Appium、WebDriverAgent、XCUITest）都需要在 iOS 侧安装 agent 或用 Xcode 签名，门槛高且易被系统更新破坏。phone-harness 完全绕过 iOS 侧——只靠 macOS 的 iPhone Mirroring（官方功能）+ macOS 的截图/Vision/CGEvent API，实现了对 iPhone 的 GUI 自动化。这与 browser-harness（用浏览器 DevTools/CDP）是不同层次的思路：browser-harness 用浏览器原生协议，phone-harness 用 OS 级 GUI 原语。更深层的启发：**当 OS 提供"镜像/无障碍"能力时，专用自动化框架的壁垒会被降低**——agent 不需要"懂 iOS"，只需要"看屏幕+点坐标"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[Agent 或 CLI 调用 run.py] --> B[mirror.py 窗口发现 聚焦 截图]
+    B <--> M[iPhone Mirroring 窗口 macOS Sequoia+]
+    M -- 视频流 --> B
+    M -- HID 触摸 反馈 --> B
+    B --> C[ocr.py Apple Vision OCR tap-ready 坐标]
+    C --> D[CGEvent tap drag flick wheel scroll unicode]
+    D --> M
+    B --> E[再截图 校验 ground truth]
+    E --> A
+    A --> S[agent_helpers.py 自动加载 namespace 待核验]
+    A --> K[phone-harness skill 注册 Claude Code Codex 待核验]
+    M -. 受限 .-> R[DRM 黑屏 无多点触控 解锁暂停 多点触控不可用 待核验]
+</mermaid>
+```
 
 ## 定位判断
 属于 **agent 终端/harness 层**，是"agent 控制物理设备"赛道在 iOS 的代表。与 browser-harness（浏览器）、computer-use（桌面）、qm（协作 harness）不在同一层——它是"如何让 agent 操作手机"的范式参考。定位是概念验证型项目：验证了"用 iPhone Mirroring 做 agent 控制通道"的可行性。

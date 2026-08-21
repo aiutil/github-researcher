@@ -6,7 +6,7 @@
     <title>docker-mailserver/docker-mailserver | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -58,15 +58,66 @@
 <li><strong>安全加固</strong>：Fail2ban 防暴力破解，自动 SSL（Let's Encrypt）</li>
 <li><strong>LDAP 支持</strong>：企业级身份认证集成</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单一 Docker 镜像承载 Postfix/Dovecot/SpamAssassin/ClamAV/OpenDKIM/Fail2ban，配合 setup.sh 与 .env；对外暴露 SMTP/IMAP/管理面，对内依赖 LDAP、Let's Encrypt 等可选外部身份与证书源</td>
+<td>组件清单来自档案"关键技术亮点"；具体端口、镜像分层与 LDAP/ACME 流程未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>邮件流入：SMTP 接收 → OpenDKIM 签名校验/签发 → SpamAssassin + ClamAV 过滤 → Dovecot 投递；管理面：setup.sh/.env → 容器内配置重生成 → Postfix/Dovecot 重载</td>
+<td>主链路来自档案组件枚举；DKIM 私钥管理、Quarantine 与 LDAP 绑定细节属待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"一体化镜像降低运维门槛" vs "多组件耦合使升级/扩容粒度变粗"，并叠加 IP 信誉、合规(GDPR)与 Fail2ban 默认策略带来的安全责任自负</td>
+<td>权衡描述基于档案"风险/局限"与"架构启发"；未涉及具体资源占用、SLO、HA 拓扑</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单节点 docker-compose 拉起镜像，跑通 SMTP 发送/IMAP 接收、DKIM 签发、SpamAssassin/ClamAV 扫描与 Let's Encrypt 自动证书；验收包含 DNS(MX/SPF/DKIM/DMARC)、IP 信誉观测、备份/恢复与升级路径</td>
+<td>起步范围限定在档案明确列出的能力；k8s/Helm 部署、多节点与 LDAP 全量集成属下一阶段，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>容器化复杂系统</strong>：多组件系统可以通过精心设计的镜像简化部署</li>
 <li><strong>配置即代码</strong>：所有邮件服务器配置通过文件管理，可版本化</li>
 <li><strong>安全默认</strong>：Fail2ban/SSL/反垃圾默认开启</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Client[邮件客户端或MTA] --> SMTP[Postfix SMTP入口]
+    SMTP --> DKIM[OpenDKIM 签名与校验]
+    DKIM --> Filter[SpamAssassin 反垃圾]
+    Filter --> AV[ClamAV 反病毒]
+    AV --> Dovecot[Dovecot 投递与IMAP]
+    Dovecot --> Mailbox[本地邮箱或LDAP用户目录]
+    Mgmt[setup.sh 与.env配置] --> SMTP
+    Mgmt --> Dovecot
+    Mgmt --> DKIM
+    LE[Let's Encrypt 外部CA 待核验] --> SMTP
+    ExtID[外部LDAP 待核验] --> Dovecot
+    F2B[Fail2ban 入侵防护] -.监控.-> SMTP
+    F2B -.监控.-> Dovecot
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟基础设施型项目</strong>。自建邮件服务器的事实标准。不是热点项目，但是基础设施领域的稳定赢家。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>IP 信誉问题</strong>：自建邮件服务器最大挑战是 IP 被标记为垃圾邮件源</li>
 <li><strong>维护复杂度</strong>：虽然简化了部署，但邮件服务器运维仍然复杂</li>
@@ -74,16 +125,16 @@
 <li><strong>安全责任</strong>：自建意味着安全漏洞自己承担</li>
 <li><strong>合规要求</strong>：GDPR 等法规对邮件服务器有额外要求</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Mailcow</strong>：Mailcow 更重（含 Web 界面和 SOGo），docker-mailserver 更轻量</li>
 <li><strong>vs Mailu</strong>：Mailu 也是 Docker 邮件服务器，功能类似</li>
 <li><strong>vs Poste.io</strong>：Poste.io 有商业版，docker-mailserver 纯开源</li>
 <li><strong>vs AWS SES/Google Workspace</strong>：托管服务 vs 自托管，各有适用场景</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐关注（运维/架构师）。</strong> 作为自建邮件基础设施的标杆，值得了解其架构设计。日常使用直接采用即可。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>DMARC/ARC 等新邮件安全标准的支持</li>
 <li>是否增加 AI 驱动的反垃圾能力</li>

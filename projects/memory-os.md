@@ -38,6 +38,15 @@ AI Agent 的「失忆症」：每次对话重新开始，无法积累用户偏�
 5. **每周衰减扫描**：过期信息自动降权，保持记忆库新鲜
 6. **Provider 无关**：OpenRouter / OpenAI / Anthropic / Ollama / 本地模型全兼容
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Memory OS 是 Hermes Agent 上的记忆编排层，通过 7 层分层结构衔接 workspace、向量库与会话状态，并向 OpenRouter / OpenAI / Anthropic / Ollama / 本地模型开放 | 依赖档案明示的 7 层结构、Qdrant 与 Provider 列表；与 Hermes 之外的集成面未证实 |
+| 主路径 | 数据由 Workspace→Sessions(FTS5)→Structured Facts→Fabric→Qdrant 混合检索→LLM Wiki，检索采用 hybrid→dense→lexical→SQLite 四级回退，Context Injection 做 token 预算控制后回写会话 | 路径与回退顺序来自档案概述；各层调度协议与并发模型未在档案中描述 |
+| 关键权衡 | 分层细化带来的记忆丰富度，与首次记录指出的运维复杂度（Docker+Qdrant+Redis+ARQ ≥4 服务）、token 消耗、信任评分冷启动之间的张力 | 权衡判断仅基于档案列出的风险项；性能数据、扩展性基准、部署形态待核验 |
+| 最小 PoC | 在 Hermes 单渠道下以最小工具权限启动 Docker + Qdrant + Redis + ARQ 四服务，跑通 4 级检索回退与一次 Context Injection，并记录 token 占用、信任评分与相似记忆去重（cosine>0.92）日志 | PoC 组件全部来自档案；具体安装步骤、配置参数、退出路径需以 v0.2.0 安装说明核验 |
+
 ## 架构启发
 Memory OS 的分层设计是 Agent OS 记忆子系统的参考架构：
 - **短期记忆**（Layer 1-2）：毫秒级，注入 + 全文搜索
@@ -46,6 +55,27 @@ Memory OS 的分层设计是 Agent OS 记忆子系统的参考架构：
 - **调度层**（Layer 7）：根据上下文窗口预算智能注入
 
 这个分层思路可以迁移到任何 Agent 系统（不限于 Hermes）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游 Hermes Agent] --> WP[Layer 1 Workspace 系统提示注入]
+  WP --> SE[Layer 2 Sessions SQLite FTS5 全文搜索]
+  SE --> SF[Layer 3 Structured Facts 信任评分 + 实体消解]
+  SF --> FA[Layer 4 Fabric 跨会话提取]
+  FA --> VD[Layer 5 Vector DB Qdrant 混合检索]
+  VD --> WK[Layer 6 LLM Wiki 自动策展]
+  WK --> CI[Layer 7 Context Injection token 预算控制]
+  CI --> U
+  VD -. 四级回退 hybrid→dense→lexical→SQLite .-> SE
+  SF -. cosine>0.92 语义去重 待核验 .-> FA
+  CI -. 信任评分反馈校准 待核验 .-> SF
+  PR[模型 Provider OpenRouter OpenAI Anthropic Ollama 本地 待核验] -. 提供推理 .-> CI
+  OP[运维边界 Docker + Qdrant + Redis + ARQ ≥4 服务] -. 部署依赖 待核验 .-> VD
+```
 
 ## 定位判断
 **平台候选。** Agent 记忆基础设施的早期参考实现。如果 7 层架构被验证有效，可能成为 Agent OS 记忆层的标准设计。

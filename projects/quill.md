@@ -38,8 +38,36 @@ url: "https://github.com/digimata/quill"
 3. **文件系统即队列**：每个 session 一个目录（`~/Recordings/<yyyy.MM.dd-HHmm>/`），含 `meta.json`（时间戳/偏移）但无 `transcript.json` 的 session 即为 pending。未完成的转录任务在下次启动时自动恢复。失败只 append 到 `transcribe.log`，不阻塞后续任务。
 4. **端侧转录 + 引擎协议化**：默认 Parakeet TDT 0.6B v2（经 FluidAudio 的 Core ML 移植），模型约 600MB 首次下载；WhisperKit large-v3-turbo 作为计划中的 fallback。引擎在 protocol 后面，可替换。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单 Swift 二进制 macOS 菜单栏应用；入口仅菜单栏，无 GUI/无服务；依赖 macOS 15+ Core Audio process taps 取系统音频；ASR 通过 protocol 抽象，默认 Parakeet TDT 0.6B v2 经 FluidAudio Core ML 移植，约 600MB 首次下载，WhisperKit 列为计划中 fallback | 模型规模、WhisperKit 集成进度、macOS 版本下界均需源码核验 |
+| 主路径 | 启动 → 菜单栏触发 → 双轨录制（mic.caf + system.caf）写入 `~/Recordings/<yyyy.MM.dd-HHmm>/` 并落 `meta.json` → Core ML 引擎（默认 Parakeet TDT）转录 → 产物回写 transcript.json；缺 transcript.json 的 session 在下次启动自动恢复，失败 append 到 transcribe.log 不阻塞队列 | "queue/offset/merge 机制"在 README 中仅是名词提及，具体调度未证 |
+| 关键权衡 | 隐私 vs 协作/搜索/跨设备（纯本地 = 数据只在本机文件）；CAF vs m4a（用容错换取可分发性）；双轨天然二分离 vs 真实多人 speaker diarization；0.6B 英文模型速度 vs 多语种/口音/术语准确率；小团队 bus factor 与模型迭代速度 | 多说话人 >2 场景的实际表现、Intel Mac 体验阈值未评测 |
+| 最小 PoC | 一台 macOS 15+ Apple Silicon 机；下载 600MB Core ML 模型；菜单栏建一次会议录 30–60 分钟双轨；检查目录产物、transcribe.log、中断后重启是否续跑、英文转录可用率；把 verdict 框在"单用户隐私会议"用例，团队协作明确排除 | 评估局限于个人单语种环境，多人/多语/长会议需扩样本 |
+
 ## 架构启发
 quill 的设计哲学是"filesystem is the interface"——录音、元数据、转录结果、日志都是普通文件，没有数据库、没有后台服务、没有 GUI 窗口（只有菜单栏图标）。这与本周 vercel/eve 的"filesystem-first agent 框架"异曲同工：**把状态和接口简化为文件系统操作，降低复杂度和故障面**。CAF 的"无需 finalization"选择体现了对失败场景的工程敬畏。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户] --> MB[菜单栏入口]
+    MB --> RT[quill 运行时 Swift 二进制]
+    RT --> AT[Core Audio process taps macOS15+ 待核验]
+    AT --> FS[/~/Recordings/session 目录/]
+    RT --> FS
+    FS --> Q[文件系统队列 meta.json 缺 transcript.json 即 pending]
+    Q --> ASR[ASR 引擎 protocol 默认 Parakeet TDT 0.6B v2 经 FluidAudio Core ML 约600MB首次下载]
+    ASR --> FS
+    FS --> TK[双轨产物 mic.caf + system.caf 作为 me vs them 二分信号]
+    RT -.失败 append.-> LG[transcribe.log 不阻塞后续]
+    ASR -.计划 fallback 待核验.-> WK[WhisperKit large-v3-turbo]
+```
 
 ## 定位判断
 在边缘推理范式家族中，quill 是**已可交付的端侧工具**——介于 esp32-ai（纯架构验证）和 colibri（高性能引擎）之间。它不是基础设施，而是直接面向终端用户的实用工具。归类为"工具型"。

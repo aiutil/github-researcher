@@ -38,20 +38,35 @@ gbrain、gbrain-evals、darwin-skill 已宣布集成 SkillOpt。
 3. **验证门控更新（Validation-Gated Updates）**：每次技能修改必须通过验证才能合并，防止优化方向跑偏
 4. **可部署工件**：产出 best_skill.md，直接可部署到 Claude Code / Codex / Copilot 等 Agent
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | SkillOpt 是位于「冻结 LLM Agent」与「Skill 工件（best_skill.md）」之间的离线优化器，外部边界为 Claude Code / Codex / Copilot 等目标 Agent 运行时及上游 Agent 轨迹数据源。 | 基于 README/档案标签（agent-skills、self-evolving-agents、text-space-optimization、skill-training）与定位句推断；输入数据 schema、目标 Agent 适配层接口未在档案中证实。 |
+| 主路径 | Agent 执行产出轨迹 → SkillOpt 轨迹驱动编辑 → 候选技能描述 → 验证门控（通过/拒绝回退） → 产出 best_skill.md → 部署至冻结 LLM Agent；Sleep 模块（preview）承担夜间离线重放与再训练旁路。 | 主路径仅描述到「门控」与「best_skill.md 工件」级别；门控具体实现（规则/模型/人工）、轨迹格式、Sleep 模块触发条件与持久化均未在档案中证实。 |
+| 关键权衡 | 文本空间优化（不改权重）换取冻结 LLM 可用性与低接入成本，代价是依赖高质量轨迹数据与门控有效性；Sleep 自动进化带来可用性增益，但引入 skill 被静默改写的安全风险。 | 「不改权重」「轨迹驱动」「验证门控」「Sleep preview」来自档案明确描述；冷启动门槛、Sleep 安全机制、自动修改的副作用面档案未提供量化证据。 |
+| 最小 PoC | 在单一目标 Agent（如 Claude Code）上固定 prompt/工具子集，用最小轨迹集触发 SkillOpt 训练，跑通「轨迹 → best_skill.md → 同一 Agent 回放」闭环，并独立审计 Sleep 模块在受控环境下的 skill 变更。 | PoC 形态与验收项由档案「采用建议」与「风险/局限」推导；具体 benchmark 选型、轨迹采集方式、回放指标需以源码与官方文档核验。 |
+
 ## 架构启发
 - Skill = 文本空间的「模型参数」。SkillOpt = 文本空间的「训练器」
 - 验证门控是关键设计：等同于 ML 训练中的 evaluation set
 - 轨迹数据 = 训练数据。谁掌握了 Agent 执行轨迹，谁就能训练更好的 Skill
 - 启发：未来可能出现「Skill 训练数据市场」和「Skill 评估基准」
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    A["Agent 执行<br/>产生轨迹"] --> B["SkillOpt<br/>轨迹分析"]
-    B --> C["候选编辑<br/>技能描述"]
-    C --> D{"验证门控"}
+    A["目标 Agent<br/>（Claude Code / Codex / Copilot 等）"] -->|执行轨迹| B["SkillOpt 核心<br/>轨迹驱动编辑"]
+    B --> C["候选技能描述<br/>（自然语言 Skill）"]
+    C --> D{"验证门控<br/>（实现待核验）"}
     D -->|通过| E["best_skill.md<br/>可部署工件"]
     D -->|拒绝| B
-    E --> F["Agent 部署<br/>冻结 LLM"]
+    E --> A
+    F["Sleep 模块（preview）<br/>夜间离线重放与再训练"] -->|异步触发| B
+    G["外部轨迹数据源<br/>（上游 Agent 执行，待核验）"] -->|历史会话| F
     style B fill:#00bcf2,color:#fff
     style D fill:#f59e0b,color:#fff
     style E fill:#76b900,color:#fff

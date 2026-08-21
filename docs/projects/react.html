@@ -6,7 +6,7 @@
     <title>facebook/react | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,11 +52,61 @@
 <li><strong>React Server Components（RSC）:</strong> 服务端组件，将"在服务端渲染"提升到组件粒度，与 Next.js App Router 深度整合</li>
 <li><strong>React Native:</strong> 跨平台延伸，同一套 React 编程模型覆盖 iOS/Android</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>React 是前端 UI 库，边界在浏览器侧：用户/客户端 → UI 与状态 → 服务/数据依赖，自身不提供路由、SSR 运行时、服务端持久化或构建系统</td>
+<td>基于"frontend, javascript, library, ui"标签与定位描述；具体包结构、API 形态未由 README 确认</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>声明式渲染：UI = f(state) → 通过 Virtual DOM diff 落到真实 DOM；状态以单向数据流驱动，可选 Hooks（useState/useEffect）封装</td>
+<td>档案明示 Virtual DOM、JSX、Hooks、单向数据流；具体 diff 算法与 Scheduler 实现未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>声明式 + 运行时 diff 换开发效率与心智一致性；代价是约 40KB+ 基础体积、学习曲线因 RSC/Suspense/Concurrent 抬高，与 Next.js 深度绑定带来 SSR 生态锁定</td>
+<td>bundle size、RSC、并发特性、Next.js 耦合均档案明示；性能数字（如 RSC 收益、Compiler 收益）档案未给实测值</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以一个真实用户路径验证：状态边界划分、错误恢复（如 Suspense 边界降级）、与服务 API 的依赖契约；不在缺乏 RSC/Compiler 文档证据前将其作为默认承诺</td>
+<td>档案建议先 PoC 验证状态边界、错误恢复与外部依赖降级；RSC 协议细节与 React 19+ Compiler 行为"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>React 的核心架构启发是 <strong>"声明优于命令，函数优于对象"</strong>。Virtual DOM 的本质是将 UI 状态视为 <code>f(state) = UI</code> 的纯函数映射，让开发者只需描述"UI 应该是什么样"，框架负责高效地将其转化为 DOM 操作。这种"声明式渲染 + diff 优化"范式已被几乎所有现代前端框架借鉴（Vue、Svelte、Solid 都在变体上使用）。RSC 更进一步，将"渲染边界"从浏览器扩展到服务器，模糊了前后端界限。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或客户端 待核验:具体设备形态] --> UI[UI 与交互层 JSX 声明式]
+    UI --> VDOM[Virtual DOM diff 渲染引擎 待核验:具体调度实现]
+    VDOM --> DOM[真实 DOM 输出]
+    UI --> HK[Hooks 状态层 useState useEffect 等]
+    HK --> VDOM
+    HK --> SSE[Suspense 与 Concurrent 渲染 待核验:启用条件与边界]
+    VDOM --> API[服务 API 或运行时]
+    API --> D[数据与外部依赖]
+    SSE --> ER[错误 边界 降级路径]
+    ER --> UI
+    HK --> RSC[React Server Components 边界 待核验:与 Next.js 的协议细节]
+    RSC --> API
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施级头部项目。</strong> React 已超越"库"范畴，成为前端开发的<strong>平台和标准</strong>。它不是"值得关注的新秀"，而是"必须了解的行业基线"。任何前端技术决策都需要以 React 为参照系。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>复杂度增长:</strong> RSC、Suspense、Concurrent 等新特性显著提升了学习曲线，新开发者上手门槛变高</li>
 <li><strong>bundle size:</strong> React + ReactDOM 基础体积约 40KB+，轻量项目可能用 Preact/Solid 替代</li>
@@ -64,7 +114,7 @@
 <li><strong>SSR 碎片化:</strong> RSC 生态尚在成熟中，Next.js 独大带来供应商锁定风险</li>
 <li><strong>Meta 维护不确定性:</strong> 公司层面战略变化可能影响投入（历史上已有过专利条款争议）</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Vue:</strong> Vue 更易上手（模板语法），React 更灵活（JSX）；市场份额 React 全球领先，Vue 在中国/日本强势</li>
 <li><strong>vs Svelte:</strong> Svelte 编译时优化、零运行时开销，React 运行时更大但生态碾压</li>
@@ -72,9 +122,9 @@
 <li><strong>vs Angular:</strong> Angular 是全功能框架（含路由/HTTP/表单），React 是轻量库（需搭配生态）</li>
 <li><strong>vs Next.js:</strong> Next.js 是基于 React 的元框架，React 是底层引擎</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>必须跟踪。</strong> React 是前端领域不可绕过的基础设施。建议关注其 RSC 生态成熟度、与 Next.js 的整合走向、以及 React Native 的新架构（Fabric/TurboModules）落地情况。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>React Server Components 是否成为 SSR 新标准</li>
 <li>React 19+ 的 Compiler（自动优化）是否兑现"无需手写 useMemo/useCallback"承诺</li>

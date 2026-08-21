@@ -6,7 +6,7 @@
     <title>OnsenUI/OnsenUI | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,60 @@
 <li>Cordova/Capacitor 集成：打包为原生应用，访问设备 API</li>
 <li>PWA 支持：同一套代码可部署为渐进式 Web 应用</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OnsenUI 是以 Web Components 为核心、面向移动端的 UI 框架，通过 Cordova/Capacitor 把 Web 产物打包为 iOS/Android 原生壳，并保留 PWA 部署形态；与之并列的 React/Vue/Angular 绑定是消费侧适配，不构成独立运行时。</td>
+<td>来自档案"关键技术亮点"与标签 android/ios/cordova/pwa；具体打包链路与插件清单需源码/文档核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>业务代码（React/Vue/Angular 或原生 Web）→ OnsenUI Web Components 渲染层 → 平台自适应主题（iOS / Material）→ Cordova 或 Capacitor → 设备 API；同一份产物可旁路出 PWA。</td>
+<td>来自档案"它解决的问题"与"关键技术亮点"；Cordova vs Capacitor 的官方推荐度未在档案中明确，属待核验项。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>框架无关与长期可维护性 vs WebView 性能上限及与现代跨平台方案（React Native/Flutter/Expo）的代际差；存量 Cordova 生态适配价值 vs 新项目招采的劣势。</td>
+<td>取舍描述基于档案"风险/局限"与"热度来源判断"；性能基准与维护节奏细节需查证 pushed_at 历史与第三方基准。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定一个已有 Web 端的轻量业务页（如表单/列表），用 OnsenUI 组件重写 UI 层，分别跑通三种出口——浏览器（PWA）、Cordova 包壳、Capacitor 包壳——以验证组件一致性、设备 API 调用与主题切换。</td>
+<td>PoC 框架来自档案支持的形态；具体 CLI、模板与设备 API 列表需以 OnsenUI 官方文档核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>OnsenUI 的核心启发是"Web Components 作为跨框架抽象层"。通过将 UI 组件实现为 Web Components，OnsenUI 实现了真正的框架无关性。对架构师的启发是：<strong>在多前端框架并存的环境中，Web Components 是唯一能被所有框架消费的标准</strong>。这种设计使 OnsenUI 在 React/Vue/Angular 的兴衰更替中保持了可用性。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[业务代码:React/Vue/Angular 或原生 Web] --> WC[OnsenUI Web Components 渲染层]
+    WC --> Theme{平台自适应主题}
+    Theme -->|iOS| iOSUI[iOS 设计语言]
+    Theme -->|Android| MatUI[Material Design]
+    iOSUI --> Shell{打包路径}
+    MatUI --> Shell
+    Shell -->|Cordova| Cordova[Cordova 打包壳: 设备 API 待核验]
+    Shell -->|Capacitor| Cap[Capacitor 打包壳: 集成深度待核验]
+    Shell -->|浏览器部署| PWA[PWA 形态]
+    WC -.历史兼容存量.- Legacy[存量 Cordova 生态用户]
+    Modern[React Native / Flutter / Expo] -.代际竞争压力.- WC
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型（成熟但衰退中）。</strong> 作为混合应用框架，OnsenUI 在技术上仍然可靠，但市场份额已被 React Native、Flutter、Expo 等更现代的方案大幅侵蚀。定位为"Cordova 生态的 UI 层"，服务于特定的存量市场。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>市场份额持续下降:</strong> React Native/Flutter 成为跨平台主流，Cordova/Capacitor 生态萎缩</li>
 <li><strong>维护节奏放缓:</strong> pushed_at 2026-06-17，更新频率低于竞争对手</li>
@@ -62,7 +111,7 @@
 <li><strong>社区活力:</strong> 新项目采用率低，主要靠存量用户维持</li>
 <li><strong>AI 时代适配不足:</strong> 未看到与 AI/LLM 集成的明显方向</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>Ionic</strong> 是最直接的历史竞品——两者都是 Cordova 生态的 UI 框架</li>
 <li>与 <strong>React Native</strong>、<strong>Flutter</strong> 形成跨平台方案的代际竞争</li>
@@ -70,9 +119,9 @@
 <li>与 <strong>Expo</strong>（React Native 生态）在开发者体验维度有差距</li>
 <li>在前端框架支持上，与 <strong>Refine</strong>（React 专用）定位不同</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> 除非你的项目已经在使用 OnsenUI 或 Cordova 生态，否则不建议新项目采用。作为技术趋势观察，建议更多关注 React Native/Expo/Flutter 的演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否有重大版本更新以应对现代跨平台竞争</li>
 <li>与 Capacitor 生态的集成深度</li>

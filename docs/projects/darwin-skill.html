@@ -6,7 +6,7 @@
     <title>darwin-skill | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,40 +47,80 @@
 <li>A/B 测试机制（保留或回滚）</li>
 <li>版本化 Skill 管理</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>darwin-skill 是一个 Skill 生命周期引擎，覆盖"评估→改进→测试→保留/回滚"闭环；与 Claude Code Skill 生态对接，与 nuwa-skill（同作者）互补</td>
+<td>入口渠道、运行时、模型与工具调用边界未在档案中给出源码级说明</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>初始 Skill → 执行任务 → 自动评估 → 质量判定 → 自动改进 → 测试验证 → 保留发布或回滚</td>
+<td>评估指标、A/B 测试实现、版本管理细节均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自动化进化收益 vs 评估标准不透明、回滚可靠性、复杂多步骤 Skill 上的泛化风险</td>
+<td>档案明确列出"评估标准不透明"与"泛化能力未知"两点局限</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Claude Code 渠道、固定评估集、最小工具权限和可审计日志下跑通"评估→改进→回滚"闭环，再决定是否扩大</td>
+<td>档案未给出生产部署形态、持久化层、协议等具体实现细节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Skill 生命周期管理（Create → Evaluate → Improve → Test → Keep/Revert）可能成为 Agent 平台的标准能力。类似 CI/CD 之于代码，Skill 需要自己的持续集成和质量门控。</p>
-<pre class="mermaid">flowchart TD
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
     A[初始 Skill] --> B[执行任务]
     B --> C[自动评估]
     C --> D{质量达标?}
     D -->|是| E[保留并发布]
     D -->|否| F[自动改进]
-    F --> G[测试验证]
+    F --> G[测试验证 - 待核验]
     G --> H{改进有效?}
     H -->|是| E
-    H -->|否| I[回滚上一版本]
+    H -->|否| I[回滚上一版本 - 待核验]
     I --> B
+    E --> J[(版本化 Skill 管理 - 待核验)]
+    K[Claude Code Skill 生态<br/>外部边界] --> A
+    L[nuwa-skill<br/>同作者互补项目] --> A
+    M[评估指标合理性<br/>风险边界 - 待核验] -. 约束 .-> C
 </pre>
-<h2 id="_7">定位判断</h2>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选</strong>。Skill 自进化引擎可以成为 Skill Marketplace 或 Agent 平台的核心质量管控组件。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>"进化"效果存疑</strong>：自动化改进的质量上限取决于评估指标的合理性</li>
 <li><strong>与 nuwa-skill 同作者</strong>：alchaincyf 产出多个 xxx-skill 项目，需警惕概念包装</li>
 <li><strong>评估标准不透明</strong>：Skill "好不好"的度量本身是一个开放问题</li>
 <li><strong>泛化能力未知</strong>：在复杂、多步骤 Skill 上的效果尚未验证</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs nuwa-skill</strong>：同作者，互补关系——nuwa 蒸馏人的思维模型，darwin 让 Skill 自动进化</li>
 <li><strong>vs superpowers</strong>：superpowers 提供静态的 Skill 框架和方法论，darwin 提供动态的 Skill 改进机制</li>
 <li><strong>vs oh-my-codex</strong>：oh-my-codex 是 Skill 集合，darwin 是 Skill 生命周期引擎</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Skill 自优化方向是 Agent 系统工程化的必经之路。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>可以小规模验证。</strong> 评估-改进-回滚的闭环思路值得借鉴，但需要自建评估指标体系。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>是否有真实的 Skill 改进案例（改进前后对比）</li>
 <li>评估指标的透明度和合理性</li>

@@ -39,6 +39,15 @@ last_seen_date: "2026-05-04"
 3. **TLS SNI 隐藏** — 通过域前置使 TLS 握手中的 SNI 字段指向合法域名
 4. **零基础设施** — 不需要自建服务器，完全利用免费平台
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 客户端 → GAS 中继 → Cloudflare Workers 转发 → 真实目标；依赖 Google 与 Cloudflare 两层受信任基础设施作为代理边界 | 档案明确 GAS、CF Workers、TLS SNI 域前置三层结构；无协议、部署形态、鉴权方式细节（待核验） |
+| 主路径 | 客户端流量经 GAS 中继改写为对 Google 信任域的正常请求，再由 CF Workers 转发至真实目标，TLS 握手中 SNI 指向合法域名 | 主路径来自档案"关键技术亮点"；请求编码、中继 endpoint、Workers 路由规则均未给出（待核验） |
+| 关键权衡 | 零基础设施成本与运维负担 vs 对 Google/Cloudflare 政策的高度依赖；个人场景可用 vs 不保证稳定性与合规风险 | 档案明示"零基础设施"与"平台依赖风险/不适合生产/合规风险"；性能、延迟、SLO 缺数据（待核验） |
+| 最小 PoC | 单客户端 + GAS Web App 中继脚本 + 一个 CF Workers 转发路由 + 一个被测目标域名，验证 TLS SNI 是否成功伪装以及两端连通性 | 仅指出 PoC 应包含的组件类别；具体 GAS 代码、Workers 脚本、超时与重试策略档案未证（待核验） |
+
 ## 架构启发
 
 从架构角度，这是一个典型的"利用合法基础设施作为代理"的设计模式：
@@ -47,6 +56,23 @@ last_seen_date: "2026-05-04"
 - **核心机制**：TLS SNI 域前置
 
 这种架构的巧妙之处在于每一层都是合法的、广泛使用的基础设施，单独看无法区分正常流量和代理流量。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    C[客户端] -->|HTTPS 请求| GAS[Google Apps Script 中继]
+    GAS -->|伪造为 Google 信任域请求| CF[Cloudflare Workers 转发]
+    CF -->|TLS SNI 指向合法域名| T[真实目标站点]
+    GAS -.平台政策封堵.- R[(风险边界:Google 策略变化])
+    CF -.平台政策封堵.- R
+    GAS -.合规风险.- L[(法律/政策边界:各地法规待核验)]
+    W[Workers 路由与脚本配置]:::待核验 --> CF
+    S[GAS Web App endpoint]:::待核验 --> GAS
+    classDef 待核验 stroke-dasharray: 5 5
+```
 
 ## 定位判断
 特定场景下的实用工具。不属于平台或基础设施，生命周期受制于 Google/Cloudflare 的政策。

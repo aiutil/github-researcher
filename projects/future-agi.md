@@ -34,10 +34,38 @@ Agent 从「个人工具」走向「团队基础设施」，可观测性是刚�
 3. **Simulations**：模拟用户场景，测试 Agent 行为
 4. **Gateway + Guardrails**：API 网关 + 安全护栏，防止 Agent 产生有害输出
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 定位为 LLM/Agent 可观测性开源全栈平台，承担 Tracing + Evals + Simulations + Datasets + Gateway + Guardrails 六类职责的编排层 | 仅基于档案中标签与定位描述，模块边界与对内/对外接口未由源码/文档证实，具体形态"待核验" |
+| 主路径 | 数据流为请求进入 → 编排/运行时分发 → 模型与工具调用 → Tracing/Evals 评估 → Guardrails 输出控制 → 会话/审计回写 | 路径方向来自档案摘要，主路径上每个节点的协议、持久化与控制点实现细节"待核验" |
+| 关键权衡 | 在"全栈覆盖"与"单模块深度"之间取舍：六类能力并行铺开 vs. 任一专业工具（Langfuse/Promptfoo/Portkey）的纵深；自托管 Apache 2.0 vs. 团队规模与迭代稳定性风险 | 权衡结论由档案"风险/局限"段直接给出；stars 增长、issue 数等指标不构成生产可用性证据 |
+| 最小 PoC | 在单渠道、最小工具权限、可审计日志条件下验证一条 Tracing→Evals→Guardrails 闭环；验收项含安全、成本、SLO 与退出路径，并以 stars≥2K 作为是否深入评估的触发条件 | PoC 范围与触发阈值由档案"采用建议"与"是否值得持续跟踪"段明示；具体指标阈值与产品能力成熟度"待核验" |
+
 ## 架构启发
 - Agent 可观测性需要 Tracing（知道发生了什么）+ Evals（知道做得好不好）+ Guardrails（防止出错）三位一体
 - Self-hostable 是企业场景的刚需，LLM 数据不应离开企业网络
 - Apache 2.0 许可说明团队认真做开源，不是为了引流
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时]
+    C --> T[Tracing 全链路追踪]
+    C --> E[Evals 自动化评估 待核验]
+    C --> S[Simulations 场景模拟 待核验]
+    C --> G[Gateway 加 Guardrails 安全护栏]
+    C --> M[模型或推理服务]
+    C --> X[工具与外部系统]
+    T -.观测数据回写.-> S2[会话 状态 审计 待核验]
+    E -.评估结果回写.-> S2
+    G -.拒绝或放行.-> U
+```
 
 ## 定位判断
 在 Agent 可观测性生态中定位为「开源全栈方案」。对标 Langfuse（Tracing）、Promptfoo（Evals）、Portkey（Gateway）。差异化在于三位一体。

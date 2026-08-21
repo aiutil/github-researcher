@@ -45,11 +45,37 @@ Coding Agent 在大型代码库中工作时，每次请求都需要重新理解�
 6. **查询命令**：`graphify explain "APIRouter"`（解释节点）、`graphify path "FastAPI" "ModelField"`（追溯路径）、`graphify query "问题"`（自然语言子图）
 7. **超越代码**：文档、PDF、图片、视频/音频都可映射到同一个图中（语义层使用 LLM，可选）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | graphify 是位于 Coding Agent（Claude Code、Cursor、Codex、Gemini CLI 等 20+ 平台）与本地代码库之间的 Skill 层，向上提供 `explain`/`path`/`query` 命令，向下用 tree-sitter 直接读源码产出 `graph.html`/`GRAPH_REPORT.md`/`graph.json`，代码不离开机器。语义层（非代码文档、PDF、图片、视频/音频）需另行接模型。 | 仅依据档案中"tree-sitter 本地解析""三文件输出""20+ Agent 平台 Skill 分发"等表述；未审计源码，不能确认其对外接口协议、IPC 形式或 CLI 实际参数。 |
+| 主路径 | 本地源码 → tree-sitter AST 解析（确定性，零 LLM）→ 知识图谱（含 `EXTRACTED`/`INFERRED` 边、Leiden 社区划分）→ 三文件输出 → Agent 端 Skill 调用做图遍历/路径/查询；非代码资产走可选的 LLM 语义层注入同一图。 | 主干在 README/档案中显式描述；增量更新机制、并发解析能力、跨语言混合解析顺序等未在档案中给出，标注为待核验。 |
+| 关键权衡 | 用确定性 AST + 图遍历替代概率性 embedding 检索，牺牲对注释/语义模糊查询的覆盖，换取可解释、可追溯、零向量成本与代码不出本机；Skill 多平台分发换 YC 商业化压力下开源版功能可能被收窄的风险。 | 档案明确给出"LOCOMO recall@10=0.497 vs mem0/supermemory""EXTRACTED/INFERRED 边标记""882 Open Issues""YC S26"等事实；商业版与开源版的具体边界未披露，待核验。 |
+| 最小 PoC | 单仓库 Python 项目，`pip install graphifyy`，在本机运行一次 `/graphify`，核对 `GRAPH_REPORT.md` 中的 Leiden 社区、`EXTRACTED`/`INFERRED` 边比例，以及 `graphify explain`/`graphify path` 在 Claude Code（或单一 Agent 平台）中的响应，再以 100K+ 文件规模粗测图规模与查询延迟。 | 档案列出 PyPI 包名、命令名、输出文件与 LOCOMO benchmark；但安装路径、命令实际签名、性能基准、企业案例等均未在档案中证实，需以官方文档与源码核验。 |
+
 ## 架构启发
 - **确定性 > 概率性**：代码结构是确定的，不该用概率性 embedding 来表示——tree-sitter AST 是正确选择
 - **图遍历 > 向量近邻**：查"A 调用了 B 吗"和"从 A 到 B 的路径"这类问题，图遍历比向量检索精准得多
 - **Skill 即分发渠道**：Graphify 不卖工具，而是作为 Skill 分发到 20+ Agent 平台——这是 Agent 生态的新型分发模式
 - **知识图谱作为 Agent 基础设施层**：Agent = Base Model + Skill Layer + Knowledge Graph + Memory Layer，Graphify 锁定 Knowledge Graph 层
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A["本地代码库"] --> B["tree-sitter AST 解析<br/>(确定性, 零 LLM, 本机)"]
+    B --> C["知识图谱构建<br/>EXTRACTED/INFERRED 边 + Leiden 社区"]
+    C --> D["三文件输出<br/>graph.html / GRAPH_REPORT.md / graph.json"]
+    D --> E["Agent 平台 Skill 调用<br/>graphify explain / path / query<br/>(Claude Code, Cursor, Codex, Gemini CLI 等 20+)"]
+    F["非代码资产<br/>文档 / PDF / 视频 / 音频"] -. "可选 LLM 语义层" .-> C
+    E -. "返回图遍历结果" .-> G["Agent 会话上下文"]
+    G -. "反馈查询 / 待核验增量更新" .-> C
+    H["graphify.com 平台 (always-on)<br/>商业模式与定价 — 待核验"] -. "托管路径" .-> E
+    I["882 Open Issues / 增量更新性能<br/>100K+ 文件图规模 — 待核验"] -. "风险边界" .-> C
+```
 
 ## 定位判断
 **平台候选**，且平台化路径已明确。Graphify 已从单一工具升级为知识图谱平台（graphify.com），目标是从 on-demand 查询升级为 always-on 的背景知识服务。在 Agent 生态五层架构中，锁定知识图谱/代码理解层。若成功，可能成为代码知识图谱的"npm"。

@@ -45,6 +45,15 @@ claw-code 本身已是 168K stars 的现象级项目，而 claw-code-parity 作�
 4. **LLM-to-Tool Wiring**：深入研究 LLM 如何与本地工具连接、管理长期对话上下文、编排 sub-agent
 5. **与 oh-my-ecosystem 的集成**：与 oh-my-openagent、oh-my-claudecode、oh-my-codex 形成生态
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口、模型、工具三方通过 Rust 编排层解耦，定位为 claw-code 的 clean-room 重写，集成 oh-my-ecosystem 多 Agent 体系 | 边界划分基于 README 抽象描述；具体协议、I/O 接口与子 Agent 边界"待核验" |
+| 主路径 | 使用者经入口/身份 → 编排运行时 → LLM 调用 + 工具调用 → 会话/状态/审计回写，AI Agent（lobsters/claws）自主完成编码、测试、推送 | 主流程为档案明示；CI/CD 触发器、状态持久化格式、工具清单"待核验" |
+| 关键权衡 | 自主开发闭环的速度收益，与人类审核缺位下的代码质量、可观测性、安全边界之间的张力；clean-room 重写 vs. 与原版共享心智模型 | 权衡为观察性判断；性能基准、PR 质量、测试覆盖率"待核验"，无第三方实测数据 |
+| 最小 PoC | 单一入口 + 最少工具权限 + 可审计日志下验证 LLM-to-Tool 接线与会话上下文管理，再评估 oh-my-openagent/claudecode/codex 接入 | PoC 范围仅可由档案中"集成生态"与"LLM-to-Tool Wiring"研究主题推导；具体部署形态、模型供应商、SLO 指标"待核验" |
+
 ## 架构启发
 
 claw-code-parity 最有价值的启发不是代码本身，而是**开发模式**：
@@ -52,6 +61,23 @@ claw-code-parity 最有价值的启发不是代码本身，而是**开发模式*
 - **AI 自主开发闭环**：AI Agent 写代码 → 自动测试 → 自动修复 → 自动推送，人类只负责设定目标和审核
 - **Trade-off**：这种模式的速度极快，但代码质量、架构一致性和安全性需要额外保障
 - **实验性质**：这是一个"能否做到"的实验，而非"应该这样做"的最佳实践
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[Rust 编排与运行时<br/>claw-code clean-room 重写]
+    C --> M[模型或推理服务<br/>供应商 待核验]
+    C --> T[工具与外部系统<br/>清单 待核验]
+    C --> A[AI Agent 自治闭环<br/>lobsters/claws 编码 测试 推送]
+    A --> C
+    C --> S[会话 状态 审计<br/>持久化 待核验]
+    S --> I
+    E[oh-my-ecosystem<br/>openagent claudecode codex] -. 集成边界 .-> C
+```
 
 ## 定位判断
 

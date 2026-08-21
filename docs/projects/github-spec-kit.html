@@ -6,7 +6,7 @@
     <title>github/spec-kit | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,57 @@
 <li><strong>Agent 协议:</strong> 与主流 AI 编码 Agent 的集成协议，让 Agent 理解 Spec 格式</li>
 <li><strong>模板系统:</strong> 提供不同类型项目（Web 应用、API、CLI 工具）的规格模板</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>spec-kit 自身是一个本地化的 Spec 编制与组织层（Python CLI + Markdown 模板），不内置模型推理；模型与代码生成由外部 AI 编码 Agent 提供，spec-kit 仅作为其上游输入契约</td>
+<td>档案明确其为 Python CLI 与 Markdown Spec，未给出独立后端/部署形态</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户编写 Spec → spec-kit 模板/流程组织结构化规格 → 交付给第三方 AI 编码 Agent（Copilot / Claude Code / Cursor / Codex）→ 由 Agent 完成代码生成</td>
+<td>档案未描述 Spec→Agent 的具体传输协议、CLI 子命令或文件结构，需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>范式通用性（Agent 无关、多模板覆盖） vs 转换质量完全外移给 Agent（spec-kit 不生成代码，质量依赖下游 Agent）</td>
+<td>档案明确"Spec Kit 本身不生成代码"，但未给出 Spec→代码转换成功率/质量度量</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单项目内用 spec-kit CLI 生成 Web 应用 Spec 模板 → 对接单一 Agent（如 Copilot）→ 比对"有 Spec"与"无 Spec"的产出差异，限定权限与可审计日志</td>
+<td>档案未提供 CLI 安装命令、模板目录结构、Agent 集成协议细节，PoC 步骤需以仓库 README 核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Spec Kit 的核心架构启发是"规格即契约"——将非正式的需求描述（口语化、模糊）转化为正式的规格文档（结构化、可验证），使得 AI Agent 有明确的"执行目标"。这与传统的"需求文档 → 设计文档 → 代码"流程本质相同，但被压缩为"Spec → AI 生成代码"的快速循环。其"Spec 是代码的上游"思想，类似于"类型是实现的约束"。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者] --> SK[spec-kit Python CLI 与 Markdown Spec 模板]
+    SK --> SP[结构化规格文档 待核验: 文件结构与模板细节]
+    SP --> AG[外部 AI 编码 Agent Copilot 或 Claude Code 或 Cursor 或 Codex]
+    AG --> CODE[生成的项目骨架 接口与测试 待核验: 生成范围与深度]
+    SP --> VER[验收标准与迭代细化]
+    VER --> SP
+    SK -.不内置模型推理.-> AG
+    AG -.代码质量依赖 Agent 能力.-> SK
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施型项目（范式定义期）。</strong> Spec Kit 正在定义一种新的开发范式。它不是"又一个 AI 编码工具"，而是"AI 编码的前提条件"。其基础设施属性体现在：如果 Spec-Driven Development 成为标准实践，Spec Kit（或其定义的格式）将成为所有 AI 编码工作流的入口。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>概念新鲜度风险:</strong> "Spec-Driven Development"是否能真正取代传统敏捷开发，尚需时间验证</li>
 <li><strong>学习曲线:</strong> 编写高质量 Spec 本身需要技能，可能比直接写代码更难</li>
@@ -62,7 +108,7 @@
 <li><strong>依赖 AI 能力:</strong> Spec → Code 的转换质量依赖 AI Agent 的能力，Spec Kit 本身不生成代码</li>
 <li><strong>与传统需求工程的重复:</strong> 软件工程早有"需求规格说明（SRS）"，Spec Kit 是否只是换了个名字</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs GitHub Copilot:</strong> Copilot 是"代码生成工具"，Spec Kit 是"代码生成的前提条件"</li>
 <li><strong>vs Cursor / Claude Code:</strong> 这些是 AI 编码 Agent，Spec Kit 可以作为它们的输入</li>
@@ -70,9 +116,9 @@
 <li><strong>vs Test-Driven Development:</strong> TDD 是"测试驱动"，Spec-Driven 是"规格驱动"，两者可互补</li>
 <li><strong>vs Prompts:</strong> Prompt 是临时指令，Spec 是持久化、版本化的规格文档</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是，高优先级。</strong> Spec-Driven Development 可能是 AI 编码时代的核心方法论。如果这一范式成立，Spec Kit（或其衍生标准）将成为所有 AI 辅助开发的入口。值得关注的是：Spec 格式是否标准化、主流 AI 工具的集成深度、以及真实项目中的效果验证。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Spec 格式是否成为行业标准（W3C / IEEE 标准化）</li>
 <li>主流 AI 编码工具（Copilot、Cursor、Claude Code）的原生支持程度</li>

@@ -6,7 +6,7 @@
     <title>masterking32/MasterHttpRelayVPN | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,55 @@
 <li><strong>DPI 规避:</strong> 流量特征完全融入 Google 正常流量，SNI 和证书均指向 Google</li>
 <li><strong>SOCKS5 支持:</strong> 支持标准 SOCKS5 协议，兼容各类客户端</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地代理入口、第三方云服务中继与目标网络之间的高风险通信链路；项目把客户端连接和中继服务作为主要边界。</td>
+<td>来自档案的 Browser/Local proxy/Google front/Apps Script relay/Target 路径；不对实际流量处理或安全性作源码级结论。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>客户端 → 本地代理 → 第三方云服务中继 → 目标服务；可选出口节点属于外部依赖。</td>
+<td>仅为高层数据流，不包含部署、配置、规避或可操作步骤。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>可达性依赖第三方服务政策与网络环境；隐私、安全、合法性和长期稳定性是同等重要的约束。</td>
+<td>档案列出 MITM、平台政策和法律风险；没有独立安全审计证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>不建议将其接入组织生产网络；如需安全研究，应在合规、隔离和授权的测试环境中仅验证可观测性与风险处置流程。</td>
+<td>这是防御/治理建议，不是使用说明。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>本项目展示了一种"寄生式架构"——利用大型云服务商的免费服务（GAS）构建隐蔽通信通道。启发是：<strong>任何提供 serverless 执行能力的平台都可能被用作代理跳板</strong>。这对于网络防御方也具参考价值：审查者需要关注的不仅是 VPN 协议，还包括对合法云服务 API 的异常调用模式。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图仅表示档案已记录的高层信任与数据边界；不包含部署、配置、规避或操作步骤。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    C[客户端与本地代理] --> G[第三方云服务中继边界]
+    G --> R[项目中继逻辑]
+    R --> T[目标服务边界]
+    R --> X[可选外部出口 待核验]
+    C --> A[用户授权与本地信任边界]
+    G --> P[平台政策 合法性 风险]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>特定场景工具型项目。</strong> 这不是通用 VPN，而是专门针对高审查环境的对抗性工具。其存在价值完全取决于目标地区的审查策略——审查放松则需求锐减。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>法律风险:</strong> 在某些司法管辖区使用此类工具可能违法</li>
 <li><strong>Google 政策风险:</strong> Google 随时可能修改 GAS 使用条款或封锁此类用法</li>
@@ -63,16 +107,16 @@
 <li><strong>对抗脆弱性:</strong> 一旦审查方针对性封锁 GAS 端点，方案即失效</li>
 <li><strong>安全审计:</strong> MITM 设计意味着中继层理论上可见明文，信任假设强</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs V2Ray/Xray:</strong> V2Ray 是成熟的多协议框架；本项目利用 Google 基础设施，隐蔽性更强但功能单一</li>
 <li><strong>vs Shadowsocks:</strong> SS 是加密代理，本项目是域前置隧道，技术路线完全不同</li>
 <li><strong>vs Rust 版本:</strong> therealaleph/MasterHttpRelayVPN-RUST 是性能优化重写，功能对等</li>
 <li><strong>vs Cloudflare Workers 方案:</strong> 类似思路用 CF Workers 做中继，各有优劣</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>中等优先级跟踪。</strong> 作为反审查技术风向标有参考价值，但高度依赖地缘政治环境变化。建议关注 Google 是否收紧 GAS 策略，以及审查方的技术应对。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Google 是否修改 Apps Script 限制以封锁此类用法</li>
 <li>是否被更多地区用户采纳（Star 增速的地理分布）</li>

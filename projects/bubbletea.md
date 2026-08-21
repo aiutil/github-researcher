@@ -41,8 +41,38 @@ bubbletea 的热度是 **"真实工程价值 × 时间积累 × 生态效应"** 
 5. **与 lipgloss 样式协同:** charmbracelet 的 lipgloss 提供终端 CSS 式样式，bubbletea + lipgloss = 终端版 HTML+CSS
 6. **组合性:** 多个组件（程序）可嵌套组合，构建复杂 TUI 而不失架构清晰
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | bubbletea 是 Go 语言 TUI 框架，处于"终端输入事件 ↔ Model-Update-View 单向数据流 ↔ 终端输出渲染"之间，与 lipgloss（样式）、bubbles（组件）、cobra（CLI）同属 charmbracelet 生态 | 仅依据档案描述的 Elm 架构三要素与生态成员名称，未涉源码 API |
+| 主路径 | 终端输入事件 → 统一为 Msg → Update 函数处理 → Cmd 派生异步副作用 → View 渲染 → 终端输出；跨平台终端兼容性由框架承担 | 档案明确列出 Model/Update/View、Msg、Cmd、跨终端处理；具体事件循环实现未核验 |
+| 关键权衡 | Elm 架构的"纯函数 + 单向数据流"带来的可维护性/可测试性，与 Go 命令式习惯及终端原生交互局限之间的取舍；同时受限于 Go 生态独占 | 档案直接陈述学习曲线、终端天花板、Go 专属限制 |
+| 最小 PoC | 一个最小 Bubble Tea 程序：定义 Model、Init、Update、View，挂载 lipgloss 样式，用 `tea.NewProgram` 运行；验收项为跨终端渲染一致与退出路径可审计 | 框架最小用法基于档案提到的三函数 + lipgloss 协同，未给出代码与依赖版本 |
+
 ## 架构启发
 bubbletea 的核心启发是 **"Elm/TEA 架构是终端 UI 的最佳范式"**。在前端世界，Elm 架构被 React/Redux 借鉴并发扬光大，证明了"单向数据流 + 不可变状态"的价值。bubbletea 把这套成熟范式移植到终端，取得了同样好的效果——TUI 代码变得可维护、可测试。更深层的启发是：**好的架构能跨越平台**。Elm 架构在 Web、终端、甚至 GUI（如 Iced）都适用，说明它抓住了"用户界面状态管理"的本质。bubbletea 还证明了一个反直觉的点：**函数式范式在 Go（命令式语言）中同样高效**——只要框架封装得当，开发者用起来毫无违和感。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[终端使用者 输入 键盘 鼠标 定时器] --> M[Msg 统一事件层 待核验]
+    M --> P[Program 运行时 事件循环]
+    P --> U
+    P --> D[Model 不可变状态]
+    D --> P
+    P --> UPD[Update 函数 处理 Msg 派生 Cmd]
+    UPD --> P
+    CMD[Cmd 异步副作用 网络 IO 文件] --> P
+    P --> V[View 纯函数 渲染为字符串]
+    V --> L[lipgloss 样式层 同生态 待核验]
+    L --> R[终端输出 xterm tmux Windows Terminal]
+    R --> U
+    P -.嵌套组合.-> P
+```
 
 ## 定位判断
 **成熟的基础设施工具（事实标准）。** bubbletea 已是 Go TUI 领域的事实标准，地位类似 React 之于前端组件化。它不是"候选"，而是"已坐稳"。4.4 万 stars、6 年迭代、完整生态（charmbracelet 工作室）共同构成了坚固的护城河。作为基础设施，它的增长会随 Go TUI 生态整体增长而稳步上升，不会暴涨暴跌。唯一需要关注的是新技术（如 Web-based TUI、AI 驱动终端交互）是否动摇其根基，但目前看威胁很小。

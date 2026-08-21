@@ -36,8 +36,35 @@ url: "https://github.com/Kong/kong"
 4. **MCP 网关:** 支持 Model Context Protocol 的网关代理，统一管理 Agent 工具调用
 5. **多数据库后端:** 支持 PostgreSQL、Cassandra、Redis 等多种数据存储，适应不同部署规模
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Kong 是位于上游调用方、模型供应商、工具与数据源之间的流量编排与策略层，自身不提供模型或工具实现 | 基于 tags（api-gateway / ai-gateway / kubernetes）与档案"API/AI 网关"定位推断；其协议面与权威/未授权子集未在档案中给出 |
+| 主路径 | 入站请求经 Nginx+OpenResty 核心与 Lua 插件管道处理，再被代理到上游 API、LLM 端点或 MCP 工具，状态与会话由所配置后端承担 | 路径上"数十万 QPS""插件阶段 access/header filter/body filter"来自档案亮点；QPS 数字未独立验证 |
+| 关键权衡 | 在 OpenResty/Lua 的高性能与扩展速度 vs. 插件开发人才稀缺、集群运维复杂度上升之间取舍；同时承担传统 API 与 AI 流量会使插件与配置面迅速变大 | 权衡基于档案"Lua 门槛""部署复杂度""企业/社区版本差异"；版本功能差异未提供具体清单 |
+| 最小 PoC | 用单一路由 + 一项鉴权/限流插件覆盖一条传统 API 链路，并复用同一网关开一条只读、低配额的 LLM 代理，日志与可观测性先于横向扩展上线 | PoC 所需 PostgreSQL/Redis 等依赖清单与 Kubernetes 控制器细节未在档案中核验 |
+
 ## 架构启发
 Kong 的核心设计是「Nginx + Lua 插件」——利用 Nginx 的高性能事件循环作为核心，通过 Lua 插件系统实现灵活的功能扩展。这种架构的权衡是：获得了极致性能，但 Lua 语言相对小众，增加了开发门槛。近年 Kong 也在探索基于 Go 的数据平面（Kong 模式），以降低插件开发门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    C[上游调用方或 Agent] --> I[入口与身份边界]
+    I --> K[Nginx + OpenResty 内核与 Lua 插件管道]
+    K --> A[传统上游 API]
+    K --> L[LLM 端点 OpenAI Anthropic Azure 等 具体清单待核验]
+    K --> P[MCP 工具与外部系统]
+    K --> D[数据后端 PostgreSQL 或 Cassandra 或 Redis 选其一待核验]
+    D --> K
+    K --> O[日志 指标 审计]
+    K --> R[企业版与社区版功能差异 待核验]
+</mmid>
+```
 
 ## 定位判断
 属于 API 网关生态的第一梯队。与 APISIX（Apache，同为 OpenResty）、Tyk（Go）、Envoy（C++/代理）形成竞争格局。Kong 的差异化在于企业级成熟度和 AI 网关先发优势。

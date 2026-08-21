@@ -6,7 +6,7 @@
     <title>NawfalMotii79/PLFM_RADAR | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,71 @@
 <li><strong>低成本 COTS 器件:</strong> 核心器件使用市售通用芯片（而非定制 RF 芯片），降低采购门槛</li>
 <li><strong>信号处理软件栈:</strong> 提供从原始 ADC 数据到目标检测/跟踪的完整信号处理流程</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界在 RF 硬件阵列（10.5 GHz PLFM/FMCW 相控阵）与 FPGA 固件 + DSP 软件之间；硬件层输出原始 ADC 数据，软件栈负责波束成形、检测与跟踪</td>
+<td>档案仅描述组件类别，未给出具体接口协议、采样率或数据格式</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上位机/PC → FPGA HDL（ADC 采集与预处理） → DSP/信号处理软件（波束成形、目标检测） → PCB 天线阵列（10.5 GHz 收发）</td>
+<td>协议、链路层与传输介质（USB/Ethernet/自定义）未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>低成本 COTS 器件 vs RF 性能；数字信号处理补偿 vs 模拟硬件精度；开源完整栈 vs 组装/调试门槛与法规合规</td>
+<td>性能指标（距离、角分辨率）未量化，权衡仅为档案定性描述</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单通道 FMCW 收发链路回环 + FPGA 数据采集 + 离线 DSP 处理，验证探测距离/角分辨率基线，再扩展为多通道相控阵</td>
+<td>档案未给出参考 BOM 替代、调试流程与合规许可要求，需进一步核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>PLFM_RADAR 的架构体现了「用数字处理弥补模拟硬件不足」的设计思路——传统雷达依赖昂贵的模拟器件保证信号质量，而低成本方案通过更强的数字信号处理算法来补偿硬件性能不足。这种「数字补偿」的思路在软件定义无线电（SDR）领域已被广泛验证。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[开发者 PC 上位机] --> SW[信号处理软件栈 DSP 检测与跟踪]
+    SW --> FPGA[FPGA HDL 固件 ADC 采集与预处理]
+    FPGA --> RF[10.5 GHz PLFM 相控阵 RF 前端 COTS 器件]
+    RF -. 法规边界 频谱许可待核验 .-> REG[外部监管 10.5 GHz 发射许可]
+    RF --> ANT[天线阵列 多通道 待核验通道数]
+    FPGA -. 调试门槛 RF 焊接与系统集成 .-> SKILL[专业 RF 技能依赖]
+    SW --> OUT[目标检测/跟踪输出 待核验接口格式]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于开源硬件/创客生态的高端项目。在雷达技术领域，PLFM_RADAR 定位为「教育级和原型级」方案，无法与专业雷达系统竞争性能，但填补了入门和教育市场的空白。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>实际组装门槛高:</strong> 即使有完整设计文件，PCB 制造、器件焊接和系统调试仍需要专业 RF 技能</li>
 <li><strong>法规合规风险:</strong> 10.5 GHz 频段的主动发射在多数国家需要许可证，实际使用面临法规障碍</li>
 <li><strong>性能限制明显:</strong> 低成本方案的探测距离、角度分辨率和抗干扰能力远不如专业雷达</li>
 <li><strong>维护活跃度:</strong> 个人项目性质，长期维护和技术支持不确定</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>HackRF/BladeRF:</strong> 开源 SDR 平台，可接收雷达信号但不具备发射和波束成形能力</li>
 <li><strong>MIT OpenRADAR:</strong> 麻省理工的开源雷达教育项目，定位类似但技术路线不同</li>
 <li><strong>krakenrf/krakenSDR:</strong> 开源 RF 方向查找系统，同属低成本 RF 开源生态</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>选择性跟踪。</strong> 对于 RF/硬件领域的观察者，PLFM_RADAR 代表了开源硬件向高端技术延伸的趋势。但对于软件/AI 方向的研究者，相关性较低。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注项目是否衍生出商业产品或教育套件</li>
 <li>观察是否有基于此平台的应用研究（如无人机探测、汽车辅助感知）</li>

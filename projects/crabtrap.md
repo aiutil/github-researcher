@@ -31,25 +31,35 @@ LLM-as-a-Judge HTTP 代理，为生产环境的 AI Agent 提供请求/响应安�
 2. **HTTP 代理零侵入**：不改 Agent 代码，加一层代理即可
 3. **Brex 生产验证**：金融场景的安全要求极高，通过验证说明方案可行
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | CrabTrap 是位于 Agent 与上游 LLM API 之间的 HTTP 代理层，承担请求/响应语义审查职能，不侵入 Agent 代码 | 边界形态由"LLM-as-a-Judge HTTP 代理"与 Go 语言实现推出；具体监听端口、TLS 终止、上下游协议未在档案中确认 |
+| 主路径 | 用户请求 → CrabTrap 代理(LLM-as-Judge 审查请求) → 转发至 LLM API → CrabTrap 审查响应 → 放行或拦截给 Agent | 主路径以档案"sequenceDiagram"为依据；审查用的 LLM 是否同上游、是否流式审查、是否异步均属"待核验" |
+| 关键权衡 | 在 Agent 安全语义覆盖度 vs 每请求额外一次 LLM 调用带来的延迟与成本上升、误报漏报风险之间的权衡 | 权衡来源于档案"风险/局限"第 1、2 项；未涉及具体 P95 延迟、单次审查 token 消耗或 SLA |
+| 最小 PoC | 在单一非关键渠道接入 CrabTrap 作为出站 HTTP 代理，限定最小工具权限，开启审计日志，以延迟、误报率、审查 LLM 注入风险作为验收项 | PoC 建议来自档案"架构师速览·采用建议"；具体部署形态、回滚机制、审查 LLM 选型档案未给出 |
+
 ## 架构启发
 CrabTrap 代表了 Agent 安全链路中的"内容审查层"。与 ThinkWatch（身份层）、CubeSandbox（执行层）形成完整的安全架构：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-sequenceDiagram
-    participant A as Agent
-    participant C as CrabTrap
-    participant L as LLM API
-    
-    A->>C: 用户请求
-    C->>C: LLM-as-a-Judge 审查
-    alt 安全
-        C->>L: 转发请求
-        L-->>C: LLM 响应
-        C->>C: 审查响应
-        C-->>A: 安全响应
-    else 不安全
-        C-->>A: 拦截 + 告警
-    end
+flowchart LR
+    A[Agent 客户端] -->|HTTP 请求| B[CrabTrap HTTP 代理<br/>Go 实现]
+    B -->|请求语义审查<br/>LLM-as-Judge| C{审查判定}
+    C -->|判定为不安全| D[拦截 + 告警<br/>不下游转发]
+    C -->|判定为安全| E[上游 LLM API<br/>具体供应商:待核验]
+    E -->|模型响应| B
+    B -->|响应语义审查<br/>LLM-as-Judge| F{响应判定}
+    F -->|不安全内容| D
+    F -->|安全| G[放行至 Agent]
+    H[审计/可观测日志<br/>落点:待核验] -.-> B
+    I[审查 LLM 自身<br/>注入风险边界<br/>待核验] -.-> C
+    I -.-> F
 ```
 
 ## 定位判断

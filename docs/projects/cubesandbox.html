@@ -6,7 +6,7 @@
     <title>CubeSandbox | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -45,38 +45,83 @@
 <li><strong>Web Console</strong>：浏览器管理沙箱、模板、节点（:12088）</li>
 <li><strong>模板系统</strong>：OCI 镜像一键转模板，支持 Template Store</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>介于 Agent 调用入口与外部工具/凭据/网络之间的执行隔离层，自带 Web Console (:12088) 与 Template Store，前提是宿主提供 KVM</td>
+<td>基于档案 "KVM+RustVMM microVM" 与 "Web Console" 等标签与描述，未审计源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 触发沙箱创建 → RustVMM/KVM microVM 冷启动（亚 60ms）→ 凭据保险库注入密钥 → 工具/代码在沙箱内执行 → Snapshot/Clone/Rollback 状态回写</td>
+<td>性能数字仅来自 "bare metal benchmark"，E2B 兼容通过 "swap URL 环境变量" 实现，具体协议待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>冷启动速度与 &lt;5MB 内存开销 vs 必须依赖 KVM（x86_64 Linux）、与 NVIDIA OpenShell 的赛道竞争、腾讯维护投入波动风险</td>
+<td>风险点来自档案 "风险/局限" 章节，非生产数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单节点 x86_64 Linux 启用 KVM → 用 E2B SDK 替换 URL 环境变量接入 → 启用 AutoPause 与 ARM64（v0.5）→ 在 Web Console 验证 Snapshot/Rollback 与凭据保险库注入</td>
+<td>凭据保险库与 Egress 控制机制细节、ARM64 实际可用性均需源码验证</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>CubeSandbox 代表了 Agent Runtime 的隔离层。与 Docker（重隔离）、WebAssembly（语言限制）形成差异化定位：</p>
-<pre class="mermaid">graph TD
-    subgraph "Agent 执行隔离方案对比"
-        A[Agent 执行请求] --> B{选择隔离方案}
-        B --> C[CubeSandbox<br/>轻量·即时·并发<br/>Rust 原生]
-        B --> D[Docker<br/>重·通用·生态丰富]
-        B --> E[WASM<br/>安全·语言限制·生态小]
-        B --> F[gVisor<br/>安全·重·Google 维护]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Agent["Agent 调用入口"] --> Orch["CubeSandbox 编排层 (Rust)"]
+    Orch --> MicroVM["KVM + RustVMM microVM<br/>亚 60ms 冷启动 / 待核验: 资源配额"]
+    Orch --> Cred["凭据保险库<br/>API keys 不入沙箱 / 待核验: 注入协议"]
+    Orch --> Snap["Snapshot / Clone / Rollback<br/>百毫秒级检查点 / 待核验: 持久化后端"]
+    MicroVM --> Egress["Egress 控制 (v0.5)"]
+    MicroVM --> Template["OCI 模板 → Template Store"]
+    Orch --> Console["Web Console :12088<br/>沙箱/模板/节点管理"]
+    subgraph External["外部边界"]
+        E2B["E2B SDK 兼容<br/>通过 URL 环境变量切换"]
+        NVD["NVIDIA OpenShell<br/>竞争项目"]
     end
-    
-    C --> G[适合: Agent 代码执行<br/>工具调用隔离]
-    D --> H[适合: 服务部署<br/>复杂环境]
+    Orch --- E2B
+    Orch -.竞争压力.-> NVD
+    subgraph Risk["风险/控制边界"]
+        KVMDep["宿主依赖: x86_64 Linux + KVM"]
+        Tencent["腾讯维护投入波动"]
+    end
+    MicroVM --- KVMDep
+    Orch --- Tencent
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>基础设施候选。Agent 沙箱是 Agent Runtime 的核心组件，如果质量过关可能成为事实标准。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>腾讯开源维护风险</strong>：腾讯开源项目历史上维护投入波动较大</li>
 <li><strong>生产环境验证不足</strong>：虽然有 SWE-Bench RL demo，但缺乏大规模生产案例</li>
 <li><strong>需要 KVM 支持</strong>：要求 x86_64 Linux + KVM，限制了部署场景（云 VM 需要 PVM 或嵌套虚拟化）</li>
 <li><strong>与 OpenShell 的竞争</strong>：NVIDIA 入局可能分流开发者注意力</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>E2B Sandbox</strong>：商业化的 AI Agent 沙箱，云服务模式</li>
 <li><strong>Modal</strong>：Serverless 执行平台，可做 Agent 沙箱但更通用</li>
 <li><strong>gVisor</strong>：Google 的容器沙箱，更重但更成熟</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。Agent 沙箱是确定性基础设施需求，腾讯的投入增加了可信度。需要观察隔离性 benchmark 和社区活跃度。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>与 Docker/gVisor 的隔离性和性能对比 benchmark</li>
 <li>是否有非腾讯用户的生产环境使用案例</li>

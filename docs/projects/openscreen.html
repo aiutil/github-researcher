@@ -6,7 +6,7 @@
     <title>siddharthvaddem/openscreen | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,15 +57,60 @@
 <li><strong>光标美化</strong>：自定义光标样式和点击动画</li>
 <li><strong>可定制</strong>：开源代码允许用户自定义录制效果</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>桌面端录制工具，UI 层（Electron）与渲染/动画层（PixiJS）耦合于同一进程；输出为本地视频文件，无档案中可证的网络服务依赖</td>
+<td>仅基于标签 electron / pixijs / screen-capture 与定位描述，未见 README 中的实际 IPC、文件编码或持久化细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户启动 → 屏幕捕获（Electron 桌面捕获 API）→ 鼠标/焦点跟踪 → PixiJS 合成缩放、光标、背景层 → 编码输出</td>
+<td>主路径末段编码器、容器格式在档案中未证实，标注待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>WebGL 动画效果 vs Electron 内存/CPU 开销；跨平台一致体验 vs 各 OS 捕获 API 差异；本地离线 vs 未来可能的云托管演进</td>
+<td>性能数据未给出；云托管属“后续观察点”，当前档案无服务化证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS/Win/Linux 上分别录制一段含鼠标交互的 1080p 视频，对比自动缩放跟随准确性、CPU/内存峰值、导出文件大小与画质</td>
+<td>输出格式、码率上限、AI 集成等均未在档案中确认，须以源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>PixiJS for UI</strong>：不只做游戏，PixiJS 可用于精美 UI 动画</li>
 <li><strong>开源替代策略</strong>：选一个贵的商业工具做免费开源替代，是高增长策略</li>
 <li><strong>Electron 仍是跨平台桌面首选</strong>：对于需要丰富动画的工具，Electron 比 Tauri 更合适</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户启动录制] --> CAP[Electron 桌面捕获层<br/>屏幕流与 OS 捕获 API]
+    CAP --> TRK[鼠标与焦点跟踪<br/>自动缩放输入源]
+    TRK --> PIX[PixiJS 渲染合成<br/>WebGL 缩放 平移 光标美化 背景层]
+    PIX --> ENC[编码与导出<br/>格式 容器 待核验]
+    ENC --> OUT[本地视频文件]
+    ENC -.失败/降级.-> ERR[错误处理与用户反馈<br/>监测点 待核验]
+    OUT -.未来演进.-> CLD[云端托管 分享<br/>状态 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>爆款工具型项目</strong>。精准命中"免费 Screen Studio 替代"需求，39k stars 说明市场认可度高。有潜力成为内容创作者的标准工具。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>性能开销</strong>：Electron 应用内存和 CPU 占用较高</li>
 <li><strong>录制质量</strong>：可能不及 Screen Studio 精致（自动优化算法）</li>
@@ -73,16 +118,16 @@
 <li><strong>功能差距</strong>：Screen Studio 有成熟的后期编辑功能，OpenScreen 可能不完整</li>
 <li><strong>竞品涌现</strong>：Cap、Loom 等免费/免费增值工具竞争</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Screen Studio</strong>：直接对标，免费开源 vs 付费闭源</li>
 <li><strong>vs OBS Studio</strong>：OBS 偏直播/专业录制，OpenScreen 偏精美演示</li>
 <li><strong>vs Cap</strong>：Cap 也是开源录制工具，定位接近</li>
 <li><strong>vs Loom</strong>：Loom 偏异步视频沟通（含托管），OpenScreen 偏本地录制</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪。</strong> 作为开源录制工具标杆，其技术实现（PixiJS 动画）和产品策略（免费替代商业工具）都值得学习。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否推出云端托管/分享功能（向 Loom 模式演进）</li>
 <li>Windows/Linux 版本的稳定性和录制质量</li>

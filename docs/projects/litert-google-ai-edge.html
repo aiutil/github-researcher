@@ -6,7 +6,7 @@
     <title>google-ai-edge/LiteRT | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,75 @@
 <li><strong>量化推理:</strong> 支持 INT8/INT4 量化推理，在精度损失可控的前提下大幅提升推理速度和降低内存</li>
 <li><strong>WebAssembly 支持:</strong> 通过 LiteRT Web 版本，可在浏览器中高效运行 ML 模型</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>移动端/嵌入式/Web 设备上的本地推理运行时，与 MediaPipe、ML Kit 等 Google AI 工具链共生，覆盖 Android、iOS、嵌入式 Linux 与 WebAssembly 四类运行时</td>
+<td>平台与生态整合描述来自档案；具体集成接口、SDK 边界、Maven/Gradle 坐标未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>模型（FlatBuffer）→ LiteRT 解释器/运行时 → Delegate 选定的硬件后端（GPU/NPU/DSP/CoreML/WASM）→ 量化推理结果回写</td>
+<td>FlatBuffer、Delegate、量化、约 1MB 核心库在档案中有明确描述；各 Delegate 的具体协议与算子覆盖度未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨平台 API 一致性 vs 各端硬件加速最优（Delegate 可插拔后端抽象是核心杠杆）</td>
+<td>Delegate 机制在档案中明确；各硬件后端成熟度、厂商私有扩展未在档案中证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用单段量化模型（如 MobileNet）在 Android 上验证 GPU/NPU Delegate 的推理延迟、APK 体积增量与冷启动时间，再扩到 iOS 与 WebAssembly</td>
+<td>量化等级、具体性能数字、APK 体积基线未在档案中给出；标注"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>LiteRT 的架构体现了「跨平台抽象」的设计挑战——需要在 Android（Java/Kotlin）、iOS（Swift）、Linux（C++）和 Web（JS/WASM）四个截然不同的运行时环境中保持统一的 API 和一致的推理行为。其 Delegate 机制是关键创新——将硬件加速抽象为可插拔的后端，允许不同设备的芯片厂商各自实现最优 delegate。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    M[FlatBuffer 模型文件 待核验具体格式] --> R[LiteRT 运行时 C++ 核心]
+    R --> D{Delegate 路由 待核验默认策略}
+    D --> GPU[GPU 后端 OpenCL/Vulkan 待核验覆盖]
+    D --> NPU[NPU 后端 Hexagon 等 待核验厂商列表]
+    D --> CMS[CoreML 后端 iOS]
+    D --> WASM[WebAssembly 后端 浏览器]
+    R --> Q[INT8/INT4 量化推理 待核验精度损失数据]
+    R -.生态整合.-> MP[MediaPipe / ML Kit Google 工具链]
+    U[Android iOS 嵌入式 浏览器 调用方] --> R
+    Q --> U
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于设备端 AI 推理生态的核心基础设施。在边缘 AI 运行时赛道中，LiteRT（Google）与 CoreML（Apple）、ONNX Runtime（Microsoft）、ExecuTorch（Meta/PyTorch）形成四方竞争格局。LiteRT 在 Android 生态拥有统治地位。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>品牌迁移的混乱期:</strong> 从 TensorFlow Lite 重命名为 LiteRT 可能导致社区文档碎片化和短期认知混乱</li>
 <li><strong>模型生态依赖:</strong> 主要支持 TensorFlow/Keras 导出的模型，PyTorch 生态模型需要转换流程</li>
 <li><strong>自定义算子支持弱:</strong> 对于使用非标准算子的模型，LiteRT 的支持需要手动编写自定义 op，门槛高</li>
 <li><strong>竞品挤压:</strong> ONNX Runtime 正在快速覆盖跨平台场景，ExecuTorch 在 PyTorch 生态中有原生优势</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>ONNX Runtime (Microsoft):</strong> 跨平台推理引擎，支持更广泛的模型格式，在 PC 和服务器端更强</li>
 <li><strong>ExecuTorch (PyTorch):</strong> Meta 的设备端推理方案，原生集成 PyTorch 工作流</li>
 <li><strong>MLC-LLM:</strong> 通用设备端 LLM 推理引擎，在 LLM 场景更灵活</li>
 <li><strong>NCNN (Tencent):</strong> 腾讯开源的移动端推理框架，在中国移动开发者中有一定份额</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 设备端 AI 推理是确定的增长方向——隐私保护和延迟要求推动更多 AI 推理从云端迁移到设备。LiteRT 作为 Android 生态的事实标准，其演进方向直接影响数十亿设备。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 LiteRT 对大语言模型（LLM）在设备端推理的支持进展（目前仍是弱项）</li>
 <li>观察品牌迁移后社区文档和教程的完善程度</li>

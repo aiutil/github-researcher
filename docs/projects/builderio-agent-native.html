@@ -6,7 +6,7 @@
     <title>BuilderIO agent-native | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,27 +54,76 @@
 <p><strong>Backend agnostic：</strong> 任何 Drizzle 支持的 SQL + 任何 Nitro 兼容的 host。无锁定。</p>
 </li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>介于入口渠道、模型与工具/数据源之间的编排层，提供 UI/Agent/HTTP/MCP/A2A/CLI 共用 action 的 TypeScript 框架。</td>
+<td>基于 TypeScript 语言、agent-native/framework/mcp/a2a 标签与档案描述的协议面抽象，不替代源码审计。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>入口（UI / 对话 / HTTP / MCP / A2A / CLI）→ defineAction 编排 → 模型推理 + 工具调用 → CRDT 文档/会话状态回写。</td>
+<td>"defineAction 统一接口 + CRDT 实时协作"源于档案；具体持久化、部署与协议实现须以源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单一 action 复用到 6 类 surface 带来的开发效率，与权限边界、可观测性、协议耦合之间的张力。</td>
+<td>档案明示多家协议与 backend-agnostic，但运行时隔离、审计、商用托管路径未证实。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Clone 6 个 SaaS 模板之一，以 UI 按钮与 Agent 对话同源触发同一 action，验证 CRDT 多人协作与日志。</td>
+<td>模板清单来自档案；具体行为、稳定性与 BuilderIO 商业策略（含 hosted 可能性）需后续核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>agent-native 的核心洞察是"action 是 agent-native 应用的原子单位"：
 <code>defineAction → UI button + Agent tool + HTTP endpoint + MCP method + A2A call + CLI command</code></p>
 <p>这类似于 12-Factor App 把 config 和 code 分离——agent-native 把"做什么"和"谁来做（人/Agent/API）"分离。这在架构上意味着：
 - 新增 Agent 能力不需要写新代码
 - UI 和 Agent 天然保持同步
 - 产品可以"自进化"（Agent 修改自己的 UI）</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>UI 对话 HTTP MCP A2A CLI]
+    I --> A[defineAction 编排层<br/>一次定义 多 surface 复用]
+    A --> M[模型或推理服务<br/>Claude Agent SDK / Vercel AI SDK]
+    A --> T[工具与外部系统<br/>MCP A2A MCP Apps AG-UI]
+    A --> S[CRDT 文档 会话 状态<br/>live presence 实时协作]
+    M --> A
+    T --> A
+    S --> A
+    R[Backend 边界<br/>Drizzle SQL + Nitro host 待核验]
+    A -.托管与商业化路径.-> R
+</mdd>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent 原生 SaaS 的框架层。</strong> 在应用框架光谱中：
 - Next.js = Web 应用框架（无 Agent）
 - Astro flue = 通用 Agent 应用框架
 - BuilderIO agent-native = Agent 原生 SaaS 框架（含 UI + Agent + 多人协作）</p>
 <p>agent-native 比 flue 更偏应用层，比传统 SaaS 框架更偏 Agent。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>概念教育成本高：</strong> "Agent 原生"是新概念，开发者需要理解 action/UI/Agent 统一的范式。</li>
 <li><strong>TypeScript 限定：</strong> 不支持 Python。</li>
 <li><strong>BuilderIO 商业策略：</strong> 可能从开源走向商业 hosted（类似 BuilderIO Qwik 的商业化路径）。</li>
 <li><strong>早期阶段：</strong> 6 个模板虽然好，但核心框架的稳定性需验证。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -107,9 +156,9 @@
 </tbody>
 </table>
 <p>agent-native 和 flue 是互补的——agent-native 做应用层，flue 做运行时层。但两者也有重叠（都做 Agent 应用框架）。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> "UI 和 Agent 是同一系统的平等公民"这个理念值得长期跟踪。如果 BuilderIO 全力推动，agent-native 有潜力定义"Agent 原生应用"这个新品类。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>6 个 SaaS 模板的 fork 和使用数据</li>
 <li>defineAction 在真实项目中的开发体验</li>

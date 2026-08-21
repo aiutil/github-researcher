@@ -6,7 +6,7 @@
     <title>Zero Native | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,45 +48,100 @@
 <li><strong>快速原生重建</strong>：Zig 编译速度快，原生层修改后秒级重编译</li>
 <li><strong>WebViewSource 抽象</strong>：支持内联 HTML、URL 或打包前端资源</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Zero Native 由 Zig 原生壳（平台 SDK 调用 + 安全策略边界）承载不可信 WebView，并按 macOS WKWebView / Linux WebKitGTK / Windows CEF 三套引擎拆分子边界</td>
+<td>边界划分依据项目标签（webview/native/cef）与"双引擎策略"陈述；具体 IPC 协议、权限清单与平台 SDK 覆盖面未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Web 前端（Next.js/React/Svelte）通过 WebView 渲染层发起调用 → Zig Shell 的 Bridge/Event Loop 执行显式策略 → 落入平台 API 或原生能力</td>
+<td>路径基于档案描述的"opt-in 原生命令 + WebViewSource 抽象 + 快速原生重建"拼接；调用协议、序列化格式、桥接 API 集合待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 Electron（全 Chromium，重）与 Tauri（Rust + 系统 WebView，成曲线）之间，押注 Zig 的 C 互操作 + 编译速度换取"轻量且能力更宽"，代价是 Zig 生态与 pre-release API 不稳定</td>
+<td>权衡依据项目定位文与"Zig 而非 Rust"卖点；性能/内存对比数字未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一个非关键桌面工作负载，启用系统 WebView 路径（macOS/Linux）做打包体积、启动耗时与权限策略验收；Windows CEF 路径仅作旁路验证</td>
+<td>验收项限于档案中已声明的能力（系统 WebView 优先、CEF 待完善）；不涉及未声明的部署、SLO 与生产安全声明</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Web UI + 轻量原生壳的架构模式正在被重新定义</li>
 <li>Zig 在系统编程领域的定位：不是替代 Rust，而是替代 C 的场景中更具竞争力</li>
 <li>Vercel 的技术版图从 Web 延伸到桌面，全栈开发的"全"在扩大</li>
 </ul>
-<pre class="mermaid">graph LR
-    A[Zero Native] --> B[Zig Shell]
-    A --> C[Web Frontend]
-    B --> D[Runtime]
-    B --> E[Platform APIs]
-    C --> F[Next.js / React / Svelte]
-    D --> G[Event Loop + Bridge]
-    E --> H[macOS WKWebView]
-    E --> I[Linux WebKitGTK]
-    E --> J[Windows CEF]
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style C fill:#e8f5e9
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Frontend["Web 前端层（待核验具体框架）"]
+    FE["Next.js / React / Svelte 等 UI"]
+  end
+  subgraph WebView["WebView 渲染层（不可信，按 OS 分引擎）"]
+    WVmac["macOS WKWebView"]
+    WVlin["Linux WebKitGTK"]
+    WVcef["Windows CEF（成熟度待核验）"]
+  end
+  subgraph Shell["Zig 原生壳"]
+    Source["WebViewSource 抽象<br/>（内联 HTML / URL / 打包资源，待核验）"]
+    Bridge["Event Loop + Bridge"]
+    Policy["opt-in 原生命令 / 权限 / 导航 / 外链策略"]
+    Native["Zig → C 互操作 → 平台 SDK 与原生库（待核验覆盖面）"]
+  end
+  subgraph Risk["状态 / 风险边界"]
+    R1["Pre-release：API 不稳定"]
+    R2["Zig 生态与 CEF 打包成熟度"]
+    R3["Vercel Labs 项目存续风险"]
+  end
+  FE --> Source
+  Source --> WVmac
+  Source --> WVlin
+  Source --> WVcef
+  WVmac --> Bridge
+  WVlin --> Bridge
+  WVcef -. "CEF 路径待核验" .-> Bridge
+  Bridge --> Policy
+  Policy --> Native
+  R1 -.影响.-> Shell
+  R2 -.影响.-> WVcef
+  R3 -.影响.-> Shell
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>基础设施候选。如果成熟，可能成为 Electron/Tauri 的替代方案。但当前仍为 pre-release。</p>
-<h2 id="_7">风险 / 屧限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屧限 / 泡沫点</h2>
 <ol>
 <li><strong>Pre-release 状态</strong>：API 不稳定，不建议生产使用</li>
 <li><strong>Zig 生态不成熟</strong>：相比 Rust，Zig 的库生态和社区较小</li>
 <li><strong>Vercel Labs 项目风险</strong>：Labs 项目可能被放弃或大幅修改方向</li>
 <li><strong>CEF 路径尚未完全成熟</strong>：系统 WebView 路径可用，但 CEF 打包体验还不完善</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Electron</strong>：重量级方案，打包 Chromium，内存占用大</li>
 <li><strong>Tauri</strong>：Rust + WebView，更成熟但 Rust 学习曲线陡峭</li>
 <li><strong>WRY</strong>：Rust WebView 库，Tauri 的底层</li>
 <li><strong>Neutralinojs</strong>：轻量级 Web 桌面框架，但社区较小</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是</strong>。Vercel Labs 的技术判断力值得信任，Zig 在桌面开发的应用是值得关注的新方向。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Vercel 是否将此项目从 Labs 毕业到正式产品</li>
 <li>Zig 生态中桌面应用框架的成熟速度</li>

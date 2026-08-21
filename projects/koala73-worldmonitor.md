@@ -39,10 +39,38 @@ url: "https://github.com/koala73/worldmonitor"
 7. **Protocol Buffers**：276 protos / 34 services / sebuf HTTP annotations
 8. **本地 AI**：Ollama + Groq + OpenRouter + Transformers.js（浏览器端推理）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单一 TypeScript 代码库同时输出 Web/PWA 与 Tauri 2 桌面端，对外交付边界由 6 个站点变体（world/tech/finance/commodity/happy/energy）共同承担 | 桌面端具体打包链路、Tauri sidecar 进程通信细节未在档案中给出，需源码核验 |
+| 主路径 | 新闻源采集 → AI 聚合（Ollama/Groq/OpenRouter/Transformers.js）→ Protocol Buffers API 契约 → globe.gl / deck.gl 可视化 → 终端 UI 呈现 | 276 protos / 34 services 的服务拓扑、刷新频率、缓存策略档案未描述 |
+| 关键权衡 | "多产品单代码库 + 多 AI provider + 500+ 源"的扩展速度，对冲的是 CII v8 算法不透明、AGPL 商业传染性、AI 摘要幻觉与新闻源质量波动 | CII v8 评分公式、聚合权重、AI 摘要评估方法档案未披露 |
+| 最小 PoC | 单一站点变体 + 单一 AI provider（Ollama 离线）+ 受限新闻源 + 关闭金融雷达，验证地图渲染与 PB 契约后再扩展 | Railway relay、Vercel Edge Functions(60+) 的部署拓扑与配额档案未列 |
+
 ## 架构启发
 worldmonitor 展示了一种优雅的"多产品单代码库"架构——通过 Protocol Buffers 定义统一 API 契约，同一个前端切换数据源和主题即可生成不同站点。这对需要做 white-label 或多市场的团队非常有启发。
 
 Vercel Edge Functions（60+）+ Railway relay + Tauri + PWA 的部署策略也值得学习——一个代码库覆盖 Web、桌面、移动端。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者 分析师] --> E[入口边界<br/>Web PWA Tauri 2 桌面端<br/>macOS Windows Linux]
+  E --> V[站点变体选择<br/>world tech finance commodity happy energy]
+  V --> R[项目核心 编排运行时<br/>TypeScript 单代码库]
+  R --> A[AI 聚合层<br/>Ollama Groq OpenRouter Transformers.js]
+  R --> N[500+ 新闻源 × 15 分类]
+  R --> M[可视化层<br/>globe.gl Three.js deck.gl MapLibre GL 56 图层]
+  R --> P[Protocol Buffers API 契约<br/>276 protos 34 services 待核验]
+  R --> C[Country Instability Index CII v8<br/>31 Tier-1 国家 待核验]
+  A -. 幻觉与准确性风险 .-> R
+  N -. 源质量与可用性 .-> R
+  C -. 算法透明度待核验 .-> R
+```
 
 ## 定位判断
 **工具型（偏平台化）。** 当前是高质量的情报工具，但单代码库 6 站点变体的架构本质上是"情报聚合 white-label 平台"。如果开放 API 和自定义站点生成能力，可演化为平台。

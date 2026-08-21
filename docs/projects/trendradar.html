@@ -6,7 +6,7 @@
     <title>sansan0/TrendRadar | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,15 +59,63 @@
 <li><strong>Docker 一键部署</strong>：降低自托管门槛</li>
 <li><strong>定时任务调度</strong>：内置或对接 GitHub Actions</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TrendRadar 是一个聚合多平台热点（微博/知乎/B站/GitHub/HN 等）与 RSS，用 LLM 筛选后经邮件/Bark/Webhook/Telegram 推送的编排层；MCP 协议使其可被外部 AI agent 调用</td>
+<td>数据源具体列表、推送渠道覆盖度以源码为准</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>配置→多平台/RSS 采集→LLM 智能筛选与摘要→多渠道推送→可选 MCP 暴露给 agent；支持 GitHub Actions 等零成本定时调度</td>
+<td>调度器内置还是外置、LLM 接口形态未在档案中明说，须读 README</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨平台反爬封锁与平台 ToS 合规 vs 多源覆盖广度；LLM 持续 API 成本 vs 筛选准确性收益；61k stars 高热度下单一维护者的可持续性</td>
+<td>Fork 数异常（24k）已被档案标记为可疑，活跃度需独立核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以单一低风险来源（如 GitHub Trending 或 HN）+ 一种推送渠道（邮件或 Bark）+ 一个 LLM 关键词筛选规则在 Docker 中跑通，再接入 MCP</td>
+<td>部署形态、依赖服务、默认调度周期未在档案中证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>AI + 信息聚合 = 新型信息消费方式</strong>：不是更多数据而是更少但更准</li>
 <li><strong>自托管信息管道</strong>：用户掌控自己的信息过滤规则</li>
 <li><strong>MCP 作为信息接口</strong>：让 agent 主动获取热点信息</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    SRC["数据源<br/>微博/知乎/B站/GitHub HN/RSS"] --> AGG["聚合层<br/>多平台与RSS统一接口"]
+    RSSIN["RSS 订阅输入<br/>(待核验)"] --> AGG
+    AGG --> LLM["LLM 智能筛选与摘要<br/>(供应商接口待核验)"]
+    LLM --> PUSH["多渠道推送<br/>邮件/Bark/Webhook/Telegram"]
+    PUSH --> USER["最终用户"]
+    AGG -.-> MCP["MCP 协议暴露<br/>(供 Claude/Cursor 等 agent 调用)"]
+    LLM -.-> MCP
+    SCH["定时调度<br/>(内置或 GitHub Actions 待核验)"] -.-> AGG
+    AGG -.-> AUDIT["会话 状态 审计<br/>(实现待核验)"]
+    PUSH -.-> AUDIT
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>爆款工具型项目</strong>。精准命中信息过载痛点，用 AI 筛选+多平台聚合+零成本部署的组合拳，实现了病毒式增长。有从工具向个人 AI 信息助手演进的潜力。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>平台反爬风险</strong>：微博/知乎/B站等平台可能封堵数据采集</li>
 <li><strong>LLM 成本</strong>：大量内容筛选需要 API 调用，有持续成本</li>
@@ -76,16 +124,16 @@
 <li><strong>维护可持续性</strong>：61k stars 项目对个人维护者是巨大压力</li>
 <li><strong>平台 ToS 合规</strong>：聚合平台数据可能违反用户协议</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs RSSHub</strong>：RSSHub 做数据源（生成 RSS），TrendRadar 做消费端（筛选+推送）</li>
 <li><strong>vs RSS 阅读器（Feedly/Inoreader）</strong>：传统 RSS 是被动订阅，TrendRadar 是主动 AI 筛选</li>
 <li><strong>vs即刻/今日头条</strong>：算法推荐是平台控制，TrendRadar 是用户自控</li>
 <li><strong>vs AI 摘要工具</strong>：TrendRadar 不只摘要还做筛选和推送</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪。</strong> 61k stars 的增速说明精准命中痛点。作为个人 AI 信息助手的基础设施，值得关注其架构和产品迭代方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>平台反爬对策和数据源稳定性</li>
 <li>是否推出托管 SaaS 版本（降低部署门槛）</li>

@@ -6,7 +6,7 @@
     <title>hermes-agent | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,17 +57,68 @@
 <li><strong>多平台 Messaging Gateway</strong>：一个 Gateway 对接 Telegram/Discord/Slack/WhatsApp/Signal/Email</li>
 <li><strong>OpenClaw 迁移路径</strong>：明确提供从 OpenClaw 一键迁移，降低迁移门槛</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>hermes-agent 是横跨入口渠道、模型供应商、工具/数据源三侧的 Python 编排层，自身提供 Skill 系统、长期记忆、用户画像与多平台 Gateway，不替代模型推理与外部 SaaS</td>
+<td>边界判断基于档案"category=基础设施候选"、language=Python、tags=multi-platform/mcp/skill-system/memory；未审计源码，不含实际进程/端口/接口契约</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>多平台 Gateway 接收请求 → 项目运行时编排 → 调用 OpenRouter/OpenAI/Kimi/GLM/MiniMax 等 Provider 与工具 → FTS5+LLM 摘要回写长期记忆/Honcho 用户画像/Skill 库 → Cron 调度与 OpenClaw 迁移作为控制面</td>
+<td>节点取自档案明示能力；具体协议、Skill 写入 schema、Honcho 调用方式均未在档案中给出，须源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展性（200+ Provider、6 种渠道、5+ 部署形态） vs 供应商耦合、Skill 自进化质量、权限与可观测性</td>
+<td>权衡为档案"风险/局限"段的直接复述；不引入未列出的成本/延迟/SLO 数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一渠道（如 Telegram）+ 最小工具权限 + OpenRouter 单 Provider + 开启可审计日志，先验证 Skill 自动生成与 FTS5 记忆的可用性，再扩面</td>
+<td>步骤由档案"采用建议"与"后续观察点"推出；Stars=146,768 标注含推算成分，不作为生产可用性证据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Skill 自进化机制是最值得深度研究的工程问题。如果能在企业内部落地，会是真正的差异化竞争力。核心思路：从"让 Agent 检索知识"升级到"让 Agent 从经验中创造知识"。Skill 系统、Memory 系统是多 Agent 平台必需的底层能力。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者] --> GW[Messaging Gateway: Telegram/Discord/Slack/WhatsApp/Signal/Email]
+  GW --> ORC[项目运行时与编排: Python Agent]
+  ORC --> PROV[多 Provider 路由: OpenRouter/OpenAI/Kimi/GLM/MiniMax 待核验协议]
+  ORC --> MCP[MCP 工具与外部系统]
+  ORC --> SK[Skill 系统: 自进化生成与优化 待核验 schema]
+  ORC --> MEM[长期记忆: SQLite FTS5 + LLM Summarization 待核验]
+  ORC --> HC[Honcho 用户画像: 跨会话偏好建模]
+  CRON[Cron 调度: 自然语言编排] --> ORC
+  MIG[OpenClaw 一键迁移路径] --> ORC
+  ORC --> LOG[会话/状态/审计边界]
+  SK --> LOG
+  MEM --> LOG
+  HC --> LOG
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施候选</strong> — Skill 系统 + Memory 系统 + 多平台 Gateway 具备多 Agent 平台底层能力特征。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>Skill 自进化的质量边界不明确</strong>："自我优化"在实践中能走多远有待验证</li>
 <li><strong>OpenClaw 迁移功能</strong>说明它正在蚕食 OpenClaw 生态，但迁移本身可能带来用户对供应商锁定风险的担忧</li>
 <li><strong>Stars 数据存在推算成分</strong>（网络受限日的分析），需网络恢复后验证</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -89,9 +140,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是，深度跟踪 + 值得做 PoC</strong> — 触及 Agent 核心问题（记忆+学习），对企业平台有直接参考价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Skill 自进化质量的实际边界：复杂任务中自动生成的 Skill 是否可用</li>
 <li>企业内部 PoC 的落地效果与反馈</li>

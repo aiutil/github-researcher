@@ -41,12 +41,40 @@ AI Agent 普遍存在"过度工程"倾向——让它做个日期选择器，它
 4. **多 Agent 平台支持**：Claude Code `/plugin install`、Codex `codex plugin add`、Copilot CLI 等均原生支持
 5. **Lifecycle Hooks**：Claude Code 和 Codex 插件运行两个微型 Node.js 生命周期钩子，实现 always-on 激活
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | ponytail 作为 Agent Skill 插件层，介于 Agent 运行时（Claude Code/Codex/Copilot CLI/Cursor）与模型推理之间，承担"决策前置"职责 | 边界判断基于项目分类=工具型、语言=JavaScript、标签=agent-skill/yagni/code-quality/claude-code 及"支持 20+ Agent 平台"的官方说法；具体插件协议、manifest 格式与持久化机制未在档案中给出，需源码核验 |
+| 主路径 | 用户请求 → Agent 运行时加载 Skill → 触发七级决策阶梯 → 仅在所有简化路径失败后调用模型生成最小实现 → `ponytail:` 注释标记升级路径 | 主路径描述来自档案中"七级决策阶梯"与"可升级性标记"两段；生命周期钩子（Claude Code/Codex 的两个微型 Node.js 钩子实现 always-on 激活）描述具体，但模型调用协议、上下文注入机制未述 |
+| 关键权衡 | "必要代码量"最小化 vs 信任边界/安全/可访问性硬约束——档案明确 100% 安全评分成立，但 benchmark 仅 12 任务 × Haiku 4.5 × FastAPI+React 单代码库，且作者承认 GPT-5.5 等推理模型上效果可能反转 | 权衡分析综合档案"为什么值得关注"、"懒惰但非疏忽"、"风险/局限"三段；除上述 benchmark 维度外的泛化结论缺乏证据 |
+| 最小 PoC | 在 Claude Code 单渠道、固定 Haiku 4.5 模型、单一 FastAPI+React 子模块中复现 12 任务 agentic benchmark（n=4），对比 LOC/tokens/cost/time 与安全评分；同步验证两个 Node.js 生命周期钩子的 always-on 行为与 `ponytail:` 注释回溯 | PoC 设计依据档案"严谨的 Agentic Benchmark"段与"Lifecycle Hooks"段；具体 hook 文件名、注入点、模型切换成本均未披露，标注"待核验" |
+
 ## 架构启发
 ponytail 本质上实现了一种"决策前置层"——在代码实现之前先做"要不要做"和"做多少"的决策。这与 Agent 领域的 Advisor-Executor 分离模式形成互补：
 - **improve 类工具**：在架构层面做决策（"哪些问题值得修复"）
 - **ponytail**：在代码层面做决策（"这个功能需要多少代码"）
 
 两者结合可能形成更完整的 Agent 决策栈。更深层的启发是：Agent 的输出质量不仅取决于"写得对"，还取决于"写得少"——而"写得少"是可以被规则化训练的。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界<br/>Claude Code / Codex / Copilot CLI / Cursor 等 20+ Agent 平台]
+  I --> C[项目编排与运行时<br/>Agent Skill 加载层]
+  H[Lifecycle Hooks<br/>两个微型 Node.js always-on 钩子<br/>待核验: 具体文件名与注入点] --> C
+  C --> D[七级决策阶梯<br/>需存在 → 已有 → stdlib → 平台原生 → 已有依赖 → 一行 → 最小实现]
+  D -->|全部简化失败| M[模型或推理服务<br/>档案默认 Claude Code + Haiku 4.5<br/>待核验: 是否支持其他模型路由]
+  D -->|简化命中| K[标注 ponytail: 注释的 shortcut<br/>待核验: 注释语法与升级回溯机制]
+  M --> C
+  C --> T[工具与外部系统<br/>npm @dietrichgebert/ponytail 安装包]
+  C --> S[会话 状态 审计<br/>100% 安全评分 = 信任边界/数据丢失/可访问性硬保留]
+  T --> C
+  M --> C
+```
 
 ## 定位判断
 **工具型，单一但精致。** 不太可能平台化，但作为 Agent Skill 生态中的高质量组件，有持续价值。官方网站 ponytail.dev 和 waitlist 暗示作者有商业化计划。在 Agent Skill 赛道，ponytail 代表了从"能做"到"做精"的演进方向。

@@ -6,7 +6,7 @@
     <title>microsoft/fastcontext | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,15 +55,64 @@
 <li><strong>Context 压缩</strong>：将海量代码压缩为关键上下文片段</li>
 <li><strong>论文驱动开发</strong>：方法论有学术验证</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>FastContext 处于"主 coding agent 与代码仓库"之间，是微软研究院提出的"专用小模型 + RL 探索"子代理层，职责是把仓库探索结果压缩回写到主模型 context；输入是大型仓库，输出是关键代码片段</td>
+<td>档案未给出 API 形态、协议、模型规模、训练数据细节；具体边界以原 repo/论文为准</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主 agent 发起请求 → FastContext 子模型用 RL 策略导航/搜索仓库 → 压缩/筛选关键上下文 → 反馈给主模型用于后续生成</td>
+<td>档案只描述"专用探索模型 + RL 训练 + subagent 架构 + context 压缩"职责链，未给出推理协议、缓存、索引构建方式</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用"小模型 + RL 探索"换取主模型 context 预算与 token 成本，但代价是额外的推理调用、模型分发门槛、泛化性未知，且原 repo 不可访问</td>
+<td>档案明确指出"repo 不可访问""学术 vs 生产""模型获取门槛""泛化性"四项风险，未提供任何具体性能或 ROI 数字</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>优先以论文 + 社区 fork（如 Cirius1792/fastcontext、fastcontext-agent-tools MCP server）做最小复现：单仓库、固定任务集、对比"无探索 / 启发式 repo-map / FastContext"在主模型 context 占用与答案质量上的差异</td>
+<td>档案未提供具体基准、模型权重、许可证与部署形态；"是否可生产"判定必须以源码/模型卡核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>模型分工而非全能</strong>：主模型做推理，小模型做探索，各司其职</li>
 <li><strong>RL for tool use</strong>：强化学习不只用于对齐，也可训练工具使用策略</li>
 <li><strong>Context 是稀缺资源</strong>：需要像管理内存一样管理 context 窗口</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[主 Coding Agent] -->|探索请求| FC[FastContext 子代理]
+    FC -->|RL 策略导航| REPO[(代码仓库 待核验)]
+    FC -->|压缩关键上下文| U
+    FC -->|RL 训练奖励信号| RL[RL 训练流程 待核验]
+    RL -->|更新策略| FC
+    FC -->|论文/研究输出| PAPER[arXiv 论文]
+    FC -.不可访问.-> REPO_ORIG[原始 GitHub Repo 当前不可访问]
+    FC -.派生.-> FORK[社区 fork 如 Cirius1792/fastcontext 待核验]
+    FASTCONTEXT_MCP[fastcontext-agent-tools MCP server] -.封装.-> FC
+    U -->|写入| CTX[主模型 Context 窗口]
+
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>前沿研究型项目</strong>。属于 context engineering 领域的学术探索，不是生产级工具但有方向指引价值。注意：repo 当前可能已转为私有或迁移，以下社区衍生项目仍在活跃（如 Cirius1792/fastcontext fork）。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>Repo 不可访问</strong>：原始仓库当前通过 GitHub API 无法获取，可能已私有化/迁移/归档</li>
 <li><strong>学术 vs 生产</strong>：研究代码通常不适合直接生产使用</li>
@@ -71,16 +120,16 @@
 <li><strong>RL 训练成本</strong>：复现训练需要算力和数据</li>
 <li><strong>泛化性</strong>：针对特定仓库类型训练的探索策略可能不通用</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Claude Code 的探索功能</strong>：Claude Code 内置类似机制，FastContext 是研究验证</li>
 <li><strong>vs Aider/Repo-map</strong>：Aider 的 repo-map 做类似事情，用启发式而非 RL</li>
 <li><strong>vs Cursor 的 indexing</strong>：Cursor 做代码索引，FastContext 做 RL 驱动探索</li>
 <li><strong>vs CAMV1234/fastcontext</strong>：社区复现版，基于论文</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪（研究方向）。</strong> Context engineering 是 coding agent 的核心课题。即使原 repo 不可访问，论文和社区衍生仍在推进。关注论文引用和后续工作。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否有论文后续版本（v2/v3）</li>
 <li>社区复现项目（Cirius1792/fastcontext 等）的成熟度</li>

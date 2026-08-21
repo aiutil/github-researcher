@@ -36,8 +36,31 @@ Coding Agent（Claude Code、Codex、Cursor）虽然能写代码，但缺乏系�
 3. **复合工程方法论内核**："AI skills that make each unit of engineering work easier than the last"——核心理念是让工程工作产生可复用的积累。具体实现可能包括：自动记忆更新、工程模板积累、代码审查 rubric 等。
 4. **版本管理和迁移机制**：为已有用户提供了从旧版迁移到 root-native 布局的详细指南，包括清理 legacy Codex tool map 的步骤。这显示了项目对向后兼容性的重视。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 插件市场与 Claude Code、Codex、Cursor 等 Agent 宿主之间的“工程方法论资产层”；核心交付物是 Skills 和本地 prompt assets，不是独立执行平台。 | 来自档案的多平台安装路径、root-native 布局与 Skills 描述；各宿主的加载协议须以官方文档核验。 |
+| 主路径 | 开发者选择宿主 → 原生 marketplace/插件入口安装 → Skills 与 review/research assets 被 Agent 运行时加载 → 代码变更与工程反馈进入下一轮工作。 | 档案明确安装入口和 asset 布局；记忆写入或反馈持久化机制没有源码级证据。 |
+| 关键权衡 | 跨宿主覆盖扩大可达性，但增加兼容性维护面；把方法论固化为 prompt assets 易分发，却难以独立量化产出质量。 | 多平台与迁移机制有资料支持；实际效率提升尚缺独立基准。 |
+| 最小 PoC | 仅在一个非关键仓库启用一组 review/research Skills，对比启用前后的审查覆盖、返工率与误报；保留无插件回退路径。 | 这是采用建议，不表示项目已证明该指标改善。 |
+
 ## 架构启发
 compound-engineering-plugin 展示了"方法论产品化"的趋势——将工程最佳实践从文章/视频转化为可执行的 Agent Skills。其设计哲学是：Agent 不需要被教导如何写代码（模型本身已有这个能力），但需要被教导如何有方法论地工作。多平台原生支持策略也值得学习——不为任何单一平台绑定，而是适配每个平台的原生插件机制。这种"方法论 + 工具化"的组合可能是 AI 时代知识产品的新形态。
+
+## 架构图（MMD）
+
+> 证据边界：此高层图仅采用本档案已有的插件、宿主和本地 asset 描述；不推断未公开的模型调用或遥测实现。
+
+```mermaid
+flowchart LR
+    D[开发者与代码仓库] --> M[宿主原生 Marketplace]
+    M --> P[Compound Engineering Plugin]
+    P --> S[Skills 与本地 Prompt Assets]
+    S --> A[Claude Code Codex Cursor 等 Agent 宿主]
+    A --> R[代码审查 研究 工程工作流]
+    R --> F[工程反馈与版本化资产 待核验]
+```
 
 ## 定位判断
 compound-engineering-plugin 定位为**Agent 工程方法论的标准插件**。在 Skills/Plugin 生态中，它属于"方法论/流程优化"类别——不提供具体功能（如数据库操作或 API 集成），而是改变 Agent 的工作方式。与 taste-skill（设计品味）、stop-slop（写作质量）类似，都是通过 Skills 提升 AI 输出的"元层面"质量。24K stars 使其成为 2025-2026 年最具影响力的工程方法论插件之一。

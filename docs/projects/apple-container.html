@@ -6,7 +6,7 @@
     <title>apple-container | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,29 +43,76 @@
 <li><strong>Swift 实现：</strong> 和 Apple 生态深度集成，不是"移植"方案</li>
 <li><strong>非 Docker 兼容路线：</strong> 选择了自己的容器规范，而非兼容 OCI 标准</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界为：调用方（开发者/CI） → 控制面（API、策略、调度） → 执行单元（轻量 VM） → Apple Silicon 资源（虚拟化框架）；非 Linux/Windows、非 OCI 兼容路径明确排除。</td>
+<td>基于档案明示的 Swift 实现、Apple Silicon 优化、虚拟化框架、非 OCI 路线；具体 IPC/RPC 协议、控制面接口契约未在档案中给出，需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>调用方发起请求 → API/控制面接收 → 策略与调度决定生命周期 → 轻量 VM 执行单元承载 Linux 工作负载 → 写入 macOS 主机资源；旁路审计/指标/日志、持久化与外部服务。</td>
+<td>路径节点与档案“架构启发”“主路径”描述一致；具体镜像格式、镜像拉取协议、卷/网络插件机制档案未述，待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>放弃 OCI/Docker 生态兼容以换取 Apple Silicon 原生性能与生态整合，对应代价是跨平台能力丧失与生态惯性风险。</td>
+<td>权衡来自档案“非 Docker 兼容路线”“macOS only”“封闭路线风险”；未提供基准性能数据，性能优势未量化。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Apple Silicon macOS 上以单一 Linux 工作负载验证：启动延迟、冷启动开销、隔离边界（VM 级隔离）、资源占用、CLI 体验、可观测出口，并预留退出路径以保留切换 OrbStack/Docker Desktop 的能力。</td>
+<td>PoC 范围对齐档案“采用建议”最小执行单元压测；SLO、安全模型、镜像兼容性矩阵档案未给出，须先小规模验证。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Apple 正在构建从芯片→OS→运行时→容器的完整开发者基础设施栈。这种垂直整合策略和 Apple 在 GPU→Metal→SwiftUI 的路径一致。对架构师而言：
 - macOS 上的开发环境配置将更简单
 - CI/CD 中 macOS runner 的容器化方案将更成熟
 - 但跨平台容器方案仍是 Docker 的天下</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[调用方或 CI 作业 macOS only] --> API[项目 API 与控制面 Swift]
+    API --> P[策略 调度 生命周期]
+    P --> W[执行单元 轻量 VM 基于 Apple 虚拟化框架]
+    W --> R[Apple Silicon 计算 网络 存储资源]
+    P --> O[审计 指标 日志 协议待核验]
+    R --> S[持久化或外部服务 接口待核验]
+    W -. 非 OCI 兼容 .- X[跨平台边界 Linux/Windows 与 Docker 生态不互通]
+    P -. 封闭规范风险 .- X
+
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>macOS 开发环境的容器化标准。不是 Docker 的替代品，而是 Apple 生态内的容器运行时。定位类似于 Apple Silicon 上的 Rosetta 2——不是通用方案，但在 Apple 生态内体验最好。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>macOS only：</strong> 不支持 Linux 和 Windows，无法成为跨平台容器标准</li>
 <li><strong>生态惯性：</strong> Docker 生态（compose、registry、swarm）的惯性极强</li>
 <li><strong>非 OCI 兼容：</strong> 可能和现有容器工具链不兼容</li>
 <li><strong>封闭路线风险：</strong> Apple 的容器规范可能保持封闭</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs. Docker Desktop：</strong> Docker Desktop 跨平台但重，apple/container 轻但 macOS only</li>
 <li><strong>vs. OrbStack：</strong> OrbStack 是第三方轻量替代，apple/container 是官方方案</li>
 <li><strong>vs. colima：</strong> colima 是社区方案，apple/container 有原生性能优势</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 作为 Apple 官方容器方案，对 macOS 开发环境的影响是长期的。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否支持 OCI 标准镜像格式</li>
 <li>与 Xcode Cloud 的集成程度</li>

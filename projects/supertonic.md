@@ -43,10 +43,35 @@ Supertonic 的热度是**"端侧 AI 大趋势 × ONNX 跨平台推理 × 31 语�
 6. **OpenAI 兼容服务器:** `supertonic serve` 提供本地 HTTP 服务，暴露 `/v1/audio/speech` OpenAI 兼容端点，可与任何 OpenAI 客户端无缝对接
 7. **Voice Builder 语音克隆:** 在线克隆自定义声音，生成可部署的边缘端 TTS 声音配置
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Supertonic 是单一 ONNX 模型（99M 参数）配合 ONNX Runtime 在 13+ 运行时（Python / Node.js / 浏览器 WebGPU / Swift / iOS / C++ / Go / Rust / Java / C# / Flutter）做端侧 TTS 推理，无云侧推理依赖，仅 `supertonic serve` 暴露 OpenAI 兼容 HTTP 端点作为可选本地控制面 | Voice Builder 服务为外部依赖，2026-08-31 下线；其余运行时边界来自档案明列清单 |
+| 主路径 | 文本输入 → ONNX Runtime 端侧推理（无需 Vocoder/上采样器）→ 44.1kHz 16-bit WAV 输出；可选 `supertonic serve` 暴露 `/v1/audio/speech` 供 OpenAI 兼容客户端调用 | 内部模型结构（声学模型 + 声码器是否一体化）档案未细化，待核验 |
+| 关键权衡 | 极小参数（99M）+ 31 语言覆盖 + 跨 13+ 运行时 vs 官方已宣布 2026-07-23 归档、停止开发和支持；质量与 ElevenLabs / VoxCPM 等大模型仍有差距；仅推理不可微调 | 模型效能对比、未微调限制、归档可持续性均为档案明确陈述 |
+| 最小 PoC | 选定一个目标运行时（如 Python 或浏览器 WebGPU）跑通 31 语言中 2-3 种语言的合成，验证 Expression Tags（`<laugh>` `<breath>` 等）与 `lang="na"` 模式；同时建立迁移路径（VoxCPM 端侧变体 / Kokoro / Piper）作为退出验收 | Voice Builder 克隆流程官方下线中，最小 PoC 不应依赖该服务 |
+
 ## 架构启发
 Supertonic 的核心架构启发是**"ONNX 作为模型部署的通用中间层"**。传统 AI 模型部署往往被框架锁定（PyTorch → TorchServe，TF → TF Serving），但 ONNX Runtime 提供了一个跨框架、跨语言、跨平台的推理抽象层。Supertonic 充分利用了这一点——**一个 ONNX 模型文件，13 种语言直接调用**。这对端侧 AI 部署有直接参考价值：所有需要在多平台部署的 AI 模型，都应优先考虑 ONNX 作为发布格式。
 
 更深层的启发是**模型小型化的价值**。99M 参数在 TTS 领域是"极小"的——但它的多语言覆盖和质量已经"够用"。这暗示端侧 AI 的竞争维度正在从"模型大小"转向"单位参数的效能"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    C[调用方：App 脚本 OpenAI 兼容客户端] --> S[supertonic serve 本地 HTTP 端点 /v1/audio/speech]
+    C --> R[ONNX Runtime 13+ 运行时：Python Node WebGPU Swift iOS C++ Go Rust Java C# Flutter]
+    S --> R
+    R --> M[99M 参数 ONNX TTS 模型 31 语言 lang=na 自动识别]
+    M --> A[Expression Tags 注入：laugh breath sigh 等]
+    M --> O[44.1kHz 16-bit WAV 输出 无需 Vocoder]
+    VB[Voice Builder 在线克隆服务 2026-08-31 下线] -. 已下线 .-> M
+    RISK[风险边界：2026-07-23 官方宣布归档 停止开发 仅推理不可微调] -. 约束 .-> R
+```
 
 ## 定位判断
 **工具型（已进入归档期）。** Supertonic 是一个优秀的垂直 TTS 工具，技术完成度高（31 语言、13 运行时、OpenAI 兼容），但**官方已宣布停止开发**。定位上它是一个"成熟的工具级产品"而非平台——没有插件生态、没有模型市场、不可扩展。归档后社区 fork 可能继续维护，但官方支持停止意味着它更适合作为"参考实现"而非长期生产依赖。

@@ -6,7 +6,7 @@
     <title>knowledge-work-plugins | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,26 +52,75 @@
 <li><strong>纯文件架构</strong>：markdown + JSON，Claude 自动加载 skills，slash commands 显式触发</li>
 <li><strong>可定制性</strong>：企业可以 swap connectors、添加公司上下文、调整工作流</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>仓库定位为 Claude Cowork 与 Claude Code 的职能插件集合，由 Anthropic 官方维护，承载 11 个职能插件并通过 MCP 接入外部业务系统</td>
+<td>仅依赖档案与简介信息，未审计源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户调用 → 插件 manifest 加载 → slash command / skill 触发 → 通过 <code>.mcp.json</code> 连接器调用 Slack、HubSpot、Linear、Jira、Snowflake、BigQuery 等外部工具</td>
+<td>文档未公开具体协议与时序</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>“纯文件 + 通用起点”带来的低定制门槛，与企业场景中权限、上下文、可观测性、供应商锁定之间的平衡</td>
+<td>档案明示“需大量定制才能真正可用”，无生产案例佐证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取单一职能插件（如 enterprise-search 或 sales），最小 MCP 连接器集合、最小权限与可审计日志下跑通一个工作流，验证后再扩面</td>
+<td>档案未给出部署形态与验收指标，需源码补齐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><strong>插件 = 技能 + 连接器 + 命令的三合一打包</strong>。这比单一的 skills 目录更完整 — 一个插件就是一个完整的"数字员工角色"。对 Agent 平台设计有参考价值：面向职能而非面向功能的插件粒度。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[知识工作者 用户] --> CMD[slash command 显式触发]
+    U --> SK[skill 自动加载]
+    CMD --> PLG[plugin.json manifest 插件编排]
+    SK --> PLG
+    PLG --> MCP[.mcp.json MCP 连接器]
+    MCP --> EXT[外部业务系统 Slack HubSpot Linear Jira Snowflake BigQuery 待核验]
+    PLG --> CC[Claude Cowork Claude Code 运行时 待核验]
+    CC --> MODEL[Anthropic Claude 模型 待核验]
+    MODEL --> CC
+    PLG --> STATE[会话 状态 审计 待核验]
+    PLG --> RISK[权限 可观测性 供应商锁定风险边界]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选。</strong> 这是 Anthropic 企业市场的插件基础设施，与 Claude Cowork 形成产品 + 插件生态的飞轮。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>仅服务于 Claude 生态</strong>，通用性受限于 Anthropic 平台</li>
 <li>插件内容是通用起点（generic starting points），企业需要大量定制才能真正可用</li>
 <li>依赖 MCP 连接器生态成熟度 — 如果 MCP server 不可用，插件价值大打折扣</li>
 <li>11 个插件覆盖面有限，长尾职能（HR、运维、供应链）尚未覆盖</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>anthropics/skills</strong>（166K stars）：同为 Anthropic 官方，但面向开发者/通用 Skills</li>
 <li><strong>ECC</strong>：第三方 Harness，knowledge-work-plugins 是官方插件标准</li>
 <li><strong>wshobson/agents</strong>：社区多 Harness 插件市场，定位类似但非官方</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 官方知识工作者插件仓库，代表 Anthropic 企业 Agent 市场的插件战略方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>插件数量和质量增长（从 11 个扩展到多少）</li>
 <li>企业实际采用案例和定制模式</li>

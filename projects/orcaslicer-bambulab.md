@@ -35,10 +35,36 @@ Bambu Lab 限制第三方切片软件（如 OrcaSlicer）只能通过局域网�
 2. **AGPL 合规分叉**：基于开源许可证的合法社区行为
 3. **跨平台支持**：Windows (WSL2) / Linux 原生 / macOS 开发中
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OrcaSlicer-bambulab 是面向 Bambu Lab 打印机用户的工具型社区分叉，核心是恢复 BambuNetwork 互联网能力；系统外侧是 Bambu Lab 固件/云端，边界由厂商策略与 AGPL-3.0 合规分叉共同界定 | 档案未给出源码模块切分，边界判断仅基于"恢复 BambuNetwork / 跨平台 WSL2·Linux·macOS / AGPL-3.0 分叉"等公开描述 |
+| 主路径 | 用户/开发者通过 CLI 或 GUI 调用切片与 BambuNetwork 通信能力，触达 Bambu Lab 打印机（局域网 + 互联网模式），并受固件版本与服务条款约束 | 协议、云通信细节、Bambu Lab API 形态均未在档案中证实 |
+| 关键权衡 | 用户体验完整性（云端功能、远程打印、模型库、OTA）vs 厂商封锁风险（固件检测、ToS）与社区分叉的长期维护不确定性 | 厂商回应、固件对抗手段、社区活跃持续度均为待核验的预测 |
+| 最小 PoC | 在隔离测试环境中拉取分叉、构建 C++ 产物，对比原版 OrcaSlicer 在同一 Bambu Lab 固件下的 LAN/Internet 行为差异，并把厂商后续固件变更作为回归验收项 | 档案未提供具体构建命令、CI 配置、依赖锁定清单与 SLA 指标 |
+
 ## 架构启发
 - 硬件厂商通过软件限制控制生态的模式越来越受到社区挑战
 - 开源许可证是用户保护自己权益的法律工具
 - 社区分叉是开源治理中"用户主权"的体现
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+  U[开发者 CI 或上游应用] --> CLI[OrcaSlicer-bambulab CLI 或 GUI 入口]
+  CLI --> CORE[切片引擎 与 BambuNetwork 恢复层 待核验]
+  CORE --> LAN[局域网 Bambu Lab 打印机]
+  CORE --> CLOUD[Bambu Lab 云端 模型库 OTA 远程打印]
+  CLOUD -.厂商策略与固件封锁.-> CORE
+  LAN -.固件版本兼容.-> CORE
+  U --> CFG[配置 日志 诊断]
+  CORE --> RISK[AGPL 合规 与 BambuNetwork 协议逆向风险]
+  RISK -.社区维护热度.-> CORE
+```
 
 ## 定位判断
 工具型。面向 Bambu Lab 打印机用户的实用工具，不是平台或基础设施。

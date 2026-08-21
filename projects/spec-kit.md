@@ -42,6 +42,15 @@ Spec-Driven Dev 确实解决了 prompt engineering 的根本缺陷（模糊、�
 2. **Spec → Code → Test 全链路**：Spec 驱动代码生成，Spec 驱动测试生成，Spec 驱动验证
 3. **与 GitHub Copilot 深度集成**：Spec 成为 Copilot 的输入，减少 AI 编码的随机性
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目作为 TypeScript 实现的编排层，处于"使用者/上游系统 → 入口与身份边界 → 编排与运行时 → 模型/工具/会话"四段边界之间；GitHub 官方出品意味着 GitHub 平台生态（含 Copilot）是默认上游/下游假设。 | 依据项目档案中的 language=TypeScript、标签 copilot/github-official 与定位描述；具体进程边界、身份协议、运行时形态未在档案中给出，需源码核验。 |
+| 主路径 | 主路径为：Spec（YAML/Markdown）→ 编排运行时 → Copilot/Agent 按 Spec 生成代码与测试 → 验证回写 Spec。该路径把"可版本管理、可 review、可 CI/CD 的 Spec"作为驱动源。 | 档案明确提到 Spec→Code→Test 全链路与 Copilot 集成；具体 agent 协议、CI 触发点、验证机制在档案中未细化，待核验。 |
+| 关键权衡 | 核心权衡在"Spec 结构化带来的可治理性"与"Spec 维护成本/适用范围收窄"之间：收益是降幻觉、可审计；代价是 Spec 本身成为新的技术债，且对探索性开发帮助有限。 | 风险章节直接列出 Spec 维护成本与适用范围有限两条局限；性能、权限模型、供应商耦合等权衡在档案中无量化数据。 |
+| 最小 PoC | 建议以单一团队、单一仓库为边界，选取一个"明确定义、可 CI 验证"的小型需求（如一个 API 端点），跑通 Spec 起草→Copilot 生成→CI 校验→人工 review 的闭环，再评估是否扩大接入面。 | 档案未给出官方 PoC 步骤或最小示例；该建议基于定位、风险条目与采用建议章节抽象，具体工具链细节须以项目文档核验。 |
+
 ## 架构启发
 **设计文档即代码的终极形态**。传统架构设计文档是写完就扔的静态文档。Spec Kit 让设计文档变成可执行、可验证、可演进的活文档。
 
@@ -49,6 +58,24 @@ Spec-Driven Dev 确实解决了 prompt engineering 的根本缺陷（模糊、�
 - 架构决策可以用 Spec 格式记录，并自动验证代码是否遵守
 - Spec 之间可以建立依赖关系，形成架构决策图
 - Spec 的变更历史就是架构演进的历史
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统 待核验] --> I[入口与身份边界 待核验]
+    I --> C[项目核心 编排与运行时 TypeScript]
+    C --> S[Spec 存储 YAML Markdown 可版本管理 可 review 可 CI CD]
+    S --> C
+    C --> M[GitHub Copilot 集成 待核验协议]
+    C --> T[工具与外部系统 代码与测试生成 待核验]
+    C --> A[会话 状态 审计 待核验]
+    M --> C
+    T --> C
+    A -.风险边界 Spec 维护成本 适用范围有限 Star 虚高.-> C
+```
 
 ## 定位判断
 **基础设施候选**。如果 Spec-Driven Dev 成为主流，Spec Kit 就是开发流程的基础设施层——类似 CI/CD 在 DevOps 中的地位。

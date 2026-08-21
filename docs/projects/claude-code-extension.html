@@ -6,7 +6,7 @@
     <title>claude-code-extension | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,58 @@
 <li><strong>多类型扩展</strong>：语言支持、框架支持、DevOps 工具、代码质量、用户体验</li>
 <li><strong>扩展市场</strong>：官方/社区/企业三层扩展生态</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>claude-code-extension 是 Claude Code 之上的插件编排层,负责扩展的加载、卸载、更新与权限沙箱,不直接承担模型推理</td>
+<td>仅有“Extension Manager / Extension API / 沙箱机制”等架构性描述,具体进程边界、IPC 协议未公开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者编写的扩展 → Extension Manager 加载 → 经权限检查与沙箱执行 → 接入 Claude Code Core 的 Extension API 供会话调用</td>
+<td>“Extension API 标准化、支持多语言多框架”已记载,但 API 形态(RPC/HTTP/进程内)待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展生态丰富度(类型覆盖语言/框架/DevOps)与沙箱安全(权限、行为监控、资源限制)之间的张力,叠加官方/社区/企业三层治理</td>
+<td>沙箱四要素(权限、执行、资源、监控)已列,具体隔离技术与资源限额待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以单一官方扩展(如某语言支持)按最小权限接入 Claude Code,验证加载、调用、卸载闭环与日志审计</td>
+<td>沙箱与 API 稳定性档案未给出,可观测性指标、退出路径未证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>插件化 AI 编程平台架构是 AI 编程工具演进的必然方向。Extension Manager + Extension API + 沙箱执行的架构模式，与传统 IDE（如 VSCode、IntelliJ）的扩展生态高度相似，验证了"平台 + 生态"模式在 AI 编程领域的适用性。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Dev[扩展开发者] --> EM[Extension Manager]
+  EM --> SB[安全沙箱:权限检查 执行隔离 资源限制 行为监控]
+  SB --> API[Extension API 待核验:协议与版本策略]
+  API --> Core[Claude Code Core 待核验]
+  Core --> Sess[会话与状态 回写]
+  Sess --> Audit[审计与结果验证]
+  Core -.官方/社区/企业三层扩展生态.-> EM
+  EM -.扩展质量参差不齐 依赖 API 稳定性.-> Risk[风险边界:生态碎片化 官方维护节奏]
+</mmd>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选</strong> — 官方扩展机制的建立标志着 AI 编程从单一工具向完整平台演进，可能演化为 AI 编程标准平台。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>扩展质量参差不齐</strong>：社区扩展缺乏统一的质量审核标准</li>
 <li><strong>安全性和隐私保护挑战</strong>：扩展执行代码的安全边界需要严格控制</li>
@@ -67,7 +114,7 @@
 <li><strong>依赖性增强</strong>：深度依赖 Claude Code 的 API 稳定性</li>
 <li><strong>Anthropic 官方维护节奏</strong>：扩展生态的繁荣取决于官方投入</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -94,9 +141,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong> — AI 编程平台化的标志性项目，关注扩展生态的繁荣程度与质量治理。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>扩展数量增长与质量审核机制建立</li>
 <li>企业级扩展的采纳情况（安全合规需求）</li>

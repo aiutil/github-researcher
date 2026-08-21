@@ -36,6 +36,15 @@ url: "https://github.com/baidu/Unlimited-OCR"
 4. **多平台部署**：HuggingFace Spaces 在线 Demo + Baidu Cloud + ModelScope
 5. **基于 DeepSeek-OCR 架构推进**：继承视觉-语言模型的端到端识别能力
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Unlimited-OCR 应作为企业长文档解析流水线的端到端解析组件，与上游入口（HF Spaces / Baidu Cloud / ModelScope）和下游 RAG / 文档处理系统对接，而非独立产品 | 档案明确其为"底层组件"而非终端产品；具体 API 契约、SDK 范围未在档案中披露 |
+| 主路径 | 请求 → 入口（HuggingFace Spaces / Baidu Cloud / ModelScope）→ 推理引擎（vLLM 高吞吐 或 Transformers 通用）→ 模型（gundam 模式或 base 模式）→ 输出；本地路径无外部服务依赖 | 档案列出三种部署渠道与两种推理引擎，但内部流水线细节、prompt/控制协议未证实 |
+| 关键权衡 | gundam 模式（base_size=1024, image_size=640, crop_mode=True，高吞吐、牺牲分辨率） vs base 模式（image_size=1024, crop_mode=False，全分辨率、保版面）；vLLM 性能 vs Transformers 兼容性 | 双模式参数由档案明确给出；各模式在 100+ 页、表格跨页、公式连续性的实测准确率未在档案中给出 |
+| 最小 PoC | 单一渠道（HF Spaces 或 ModelScope）→ gundam 模式 → Transformers 引擎 → 内部基准文档集，验收项含准确率、显存占用、页数上限与退出路径 | 推理引擎与渠道来自档案；38TB 训练数据、显存门槛、页数稳定性等运营指标仍需源码/部署实测 |
+
 ## 架构启发
 OCR 的演进路径与 LLM 一致：短上下文→长上下文。传统 OCR 的 "切分→识别→拼接" pipeline 正在被 Vision-Language Model 的长序列处理能力吃掉。这不仅是技术升级，而是架构范式的简化——从多阶段 pipeline 走向端到端模型。
 
@@ -43,6 +52,24 @@ OCR 的演进路径与 LLM 一致：短上下文→长上下文。传统 OCR 的
 - gundam 模式牺牲分辨率换取吞吐（适合批量处理）
 - base 模式保持全分辨率（适合复杂版面）
 - 38TB 级别的训练数据量说明长程 OCR 的数据门槛很高
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游文档系统] --> I[入口与渠道边界<br/>HF Spaces / Baidu Cloud / ModelScope<br/>待核验:具体接入协议]
+    I --> C[项目编排与运行时<br/>Python]
+    C --> E{推理引擎选择}
+    E -->|高性能批量| V[vLLM 引擎]
+    E -->|通用兼容| T[Transformers 引擎]
+    V --> M[模型与配置<br/>gundam: 高吞吐 crop_mode=True<br/>base: 全分辨率 crop_mode=False<br/>待核验:权重细节]
+    T --> M
+    M --> C
+    C --> S[状态 审计 输出回写<br/>待核验:持久化与日志规范]
+    C -.风险边界.-> R[长文档可靠性边界<br/>100+ 页 表格跨页 公式连续性<br/>档案未给实测数据]
+```
 
 ## 定位判断
 在 OCR/VLM 生态中定位为 "基础设施级长文档解析能力"。不是终端用户产品，而是企业文档处理 pipeline 的底层组件。与 PaddleOCR 形成互补——PaddleOCR 覆盖通用 OCR，Unlimited-OCR 攻克长文档端到端解析。

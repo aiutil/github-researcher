@@ -42,8 +42,34 @@ Claude Code 技能集合，包含工程/生产力/调试/审查等分类技能�
 ### 3. 自动化链接脚本
 link-skills.sh 将所有可发布的技能自动链接到 ~/.claude/skills/。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本质是 Claude Code 客户端侧的技能包仓库（Shell 脚本 + SKILL.md），运行边界位于 `~/.claude/skills/` 链接目录，与 Claude Code 运行时/模型供应商的边界由 Claude Code 自身定义 | 档案未给出 Claude Code 运行时内部接口、加载协议或权限模型 |
+| 主路径 | 用户在 Claude Code 会话中按 description 命中技能 → 读取对应 SKILL.md（YAML frontmatter） → 加载配套 Shell 脚本执行 → 结果回会话 | 实际触发匹配机制、frontmatter 字段集、脚本执行隔离方式档案未证实 |
+| 关键权衡 | 个人化脚本集合的复用价值 vs. 与 Claude Code 版本/官方技能规范的耦合风险；`link-skills.sh` 全量链接到全局 skills 目录意味着粒度控制有限 | 无版本管理、作用域控制、更新回滚机制的描述 |
+| 最小 PoC | 克隆仓库 → 运行 `link-skills.sh` → 在 Claude Code 中按分类（debug-mantra/post-mortem/scrutinize 等）逐个触发 → 验证 frontmatter 解析与脚本副作用 | 未实测；脚本内容、YAML 字段、是否含网络/写操作均待核验 |
+
 ## 架构启发
 展示了 Claude Code Skills 的标准组织方式，可以作为企业内部技能管理的参考。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者] --> CC[Claude Code 运行时 待核验]
+  CC --> SK[skills 目录 ~/.claude/skills/]
+  Repo[9arm-skills 仓库] --> LS[link-skills.sh]
+  LS --> SK
+  SK --> MD[SKILL.md 含 YAML frontmatter 待核验字段]
+  MD --> SH[配套 Shell 脚本 待核验内容]
+  SH --> Ext[外部副作用 待核验 网络/文件]
+  CC --> Risk[风险边界 个人脚本 全局链接 无版本控制]:::risk
+  classDef risk stroke-dasharray:5 5,stroke:#b00
+```
 
 ## 定位判断
 **学习型 / 工具型。** 个人技能集合，质量参差不齐。主要价值是提供技能组织结构的参考。

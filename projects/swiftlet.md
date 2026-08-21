@@ -39,8 +39,36 @@ url: "https://github.com/leonickson1/Swiftlet"
 4. **诚实质量分层：** 提供 4-bit（速度优先，有重复伪影）和 8-bit（质量优先，消除重复伪影但慢）两档，README 明确权衡。明确披露 "only about 3B parameters are active per token, so these models chat and write like large models but recall facts like small ones"。
 5. **Built with Claude Code：** README badge 标注用 Claude Code 构建，本身就是 AI Coding Agent 的产出案例。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 以 Swiftlet 运行时为编排核心，上接 Apple 平台入口（macOS/iOS 应用，含 App Store "Priv AI"），下接 Qwen3-Next / Qwen3.5/3.6 MoE 模型权重（35B/80B，4-bit 与 8-bit 两档），侧接 ANEMLL 等先例与 kimi-k3-in-c 同类项目；边界限于 Apple 原生栈（Swift+Metal），不可跨平台 | 语言/标签（swift, metal, iphone, apple）与 README 描述可证；具体分发形态与模型供应商协议未在档案中披露 |
+| 主路径 | 请求 → 入口与身份边界（macOS/iOS 应用，App Store "Priv AI"）→ Swiftlet 编排/运行时 → dense core 驻留 + 按需流式加载路由命中的 MoE expert → Metal GPU 推理 → 结果回写会话；4-bit 与 8-bit 为两档质量/速度分支 | "MoE 流式加载（dense core 驻留 + expert 按需加载）" 与 4-bit/8-bit 双档来自 README 声明；性能数字（7–11 tok/s @ M5、~1 tok/s @ iPhone 17）为自报未独立复现 |
+| 关键权衡 | 速度 vs 质量：4-bit 快但存在重复伪影，8-bit 去伪影但更慢；峰值 RAM（~2.6GB / ~4.3GB）vs 磁盘（18GB / 42GB）；Apple GPU 原生性能 vs 跨平台不可移植；MoE 活跃参数仅 ~3B（"chat like large, recall like small"）的事实召回能力受限 | README 表格与"诚实披露局限"段落可证；具体 kernel 优化、能耗、续航影响未披露 |
+| 最小 PoC | 单台 M5 Mac + 4-bit Qwen3.6-35B-A3B：核对 README 声明的 ~2.6GB 峰值 RAM 与 7–11 tok/s，并复验 8-bit 是否消除重复伪影；目标变量是解码速度而非磁盘 IO（"dispatch bound, not IO bound"） | 待核验项：iPhone 17 上 ~1 tok/s 的实际可用性、App Store "Priv AI" 安装留存、4-bit 重复伪影是否在所有 prompt 下出现、kernel 优化进度 |
+
 ## 架构启发
 Swiftlet 的设计哲学是 **"MoE 模型的内存占用不等于总参数量，而等于 dense core + 单个 expert"**。传统推理加载全部权重，MoE 流式加载只加载实际激活的部分。这对架构师的启发：**MoE 架构天然适合按需加载**——如果模型是 MoE，推理基础设施可以大幅降低峰值内存。这与 kimi-k3-in-c（C99）的"极限低内存"叙事技术同构，但 Swiftlet 把它带到 Apple GPU 原生栈。两者共同信号："本地大模型推理"正从单点突破扩展到多平台覆盖。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U["使用者或上游应用"] --> I["入口与身份边界<br/>macOS/iOS 应用<br/>App Store 'Priv AI' (待核验安装量)"]
+    I --> C["Swiftlet 运行时<br/>Swift + Metal<br/>4-bit / 8-bit 双档"]
+    C --> D["Dense Core 驻留<br/>~3B 活跃参数<br/>峰值 RAM ~2.6GB (35B)"]
+    C --> E["MoE Expert 按需流式加载<br/>磁盘 18GB / 42GB<br/>路由命中后从存储加载"]
+    D --> G["Apple GPU 推理<br/>M5: 7-11 tok/s (待核验)<br/>iPhone 17: ~1 tok/s (待核验)"]
+    E --> G
+    G --> C
+    C --> S["会话/状态回写<br/>事实召回受限于 ~3B 活跃参数"]
+    C --> R["风险边界<br/>作者 followers=6 (待核验持续投入)<br/>Apple 生态锁定, 不可跨平台"]
+    C -.同构路线.-> K["kimi-k3-in-c (C99 跨平台, 待核验)"]
+    C -.先例.-> A["ANEMLL iPhone 17 Pro 397B PoC (待核验)"]
+```
 
 ## 定位判断
 属于 **L1 基础设施/工具层**，是"本地大模型推理"赛道在 Apple 生态的代表。与 kimi-k3-in-c（C99 跨平台）、ANEMLL（先例）同赛道不同平台。不直接与应用层竞争，而是为应用层（端侧 AI 应用）提供本地推理底座。

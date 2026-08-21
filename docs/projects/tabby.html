@@ -6,7 +6,7 @@
     <title>TabbyML/tabby | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,77 @@
 <li><strong>模型注册表</strong>：内置 CodeLlama、CodeQwen、CodeGemma、StarCoder 等模型，一键切换</li>
 <li><strong>Pochi Agent</strong>：最新的 Agent 化尝试，可从 GitHub Issue 直接生成 PR</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>自托管 AI 编程平台，承担入口 IDE 插件、模型推理、代码/文档知识库与团队管理之间的编排职责，单二进制自包含交付</td>
+<td>档案未明确列出 API/网络协议、是否内嵌 DBMS、SSO/LDAP 模块位置，需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>IDE 补全/问答请求 → Tabby 编排层 → Rust 推理引擎加载开源代码模型 + RAG 检索（仓库/MR/文档） → 流式补全或回答</td>
+<td>模型清单、RAG 索引范围（仓库、MR）已标注；Agent (Pochi) 从 Issue 生成 PR 的实现细节未充分披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>本地化/隐私与开源代码模型质量、RAG 上下文完整度、Agent 自动化（Issue→PR）三者之间的取舍；自部署运维成本与商业竞品（Copilot/Cursor）迭代速度的压力</td>
+<td>性能数字、GPU 显存基线、消费级 GPU 型号仅来自档案描述，未含 benchmark 来源</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单台 RTX 3060 级 GPU 节点拉起单二进制，启用 IDE 补全 + 内置模型（CodeLlama/CodeQwen/CodeGemma/StarCoder）+ 仓库 RAG，对齐延迟与补全采纳率；暂不启用 SSO、MR 索引、Pochi Agent</td>
+<td>部署拓扑、CUDA/Metal/ROCm 支持矩阵、模型切换工作流需以官方文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Tabby 的架构启发在于"自包含企业级设计"——一个二进制文件即可启动完整服务（推理引擎 + Web UI + API + 管理后台），无需外部数据库。这种"电池全包"哲学降低了企业部署门槛。Rust 选择保证了内存安全和性能基线。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    IDE[IDE 插件 VSCode/Vim/IntelliJ] --> GW[入口与身份边界 SSO/LDAP 待核验]
+    GW --> ORC[Tabby 编排与运行时 Rust 核心 单二进制]
+    ORC --> ENG[Rust 推理引擎 CUDA/Metal/ROCm 待核验]
+    ORC --> RAG[RAG 仓库/MR 文档上下文 仓库+GitLab MR 索引已支持]
+    ORC --> REG[模型注册表 CodeLlama/CodeQwen/CodeGemma/StarCoder]
+    ENG --> OUT[补全与回答 流式响应]
+    RAG --> OUT
+    REG --> ENG
+    ORC --> AGENT[Pochi Agent Issue→PR 早期 待核验]
+    ORC --> STATE[会话 状态 审计 自包含 无外部 DBMS 待核验]
+    GH[GitHub/GitLab 仓库] --> RAG
+    DOCS[企业文档] --> RAG
+</mermaid>
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>企业级 AI 编程平台</strong>，介于纯开源工具（如 Continue.dev）和商业产品（Copilot、Cursor）之间。适合对数据隐私有硬性要求的中大型团队。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>模型质量瓶颈</strong>：开源代码模型（即使最新 CodeQwen）与 GPT-4o/Claude 在复杂推理上仍有差距</li>
 <li><strong>维护成本</strong>：企业自部署需要 GPU 服务器和运维投入</li>
 <li><strong>竞争压力</strong>：Cursor 和 Copilot 的快速迭代持续侵蚀差异化空间</li>
 <li><strong>Pochi Agent 仍在早期</strong>：Agent 化方向尚未形成成熟产品</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>直接竞品</strong>：GitHub Copilot（商业）、Continue.dev（开源）、CodeGeeX（开源）</li>
 <li><strong>互补关系</strong>：可作为 Ollama 的上层应用，但 Tabby 更专注编程场景</li>
 <li><strong>模型依赖</strong>：依赖开源代码模型的持续进步（CodeLlama → CodeQwen → 未来模型）</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得</strong>。作为企业 AI 编程私有化部署的标杆项目，其技术路线（Rust 推理 + RAG + Agent 化）值得持续关注。特别是 Pochi Agent 的演进方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Pochi Agent 能否成为 Tabby 的第二增长曲线</li>
 <li>开源代码模型质量何时接近闭源模型水平</li>

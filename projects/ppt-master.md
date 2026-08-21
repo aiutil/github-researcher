@@ -51,9 +51,37 @@ AI turns documents or topics into real, native PowerPoint decks—with native sh
 5. **[![AtomGit stars](https://atomgit.com/hugohe3/ppt-master/star/badge.svg)](https://atomgit.com/hugohe**
 6. **[![The Agentic Leaderboard](https://www.theagenticleaderboard.com/badges/ppt-master.svg)](https://ww**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | ppt-master 是一个面向 ai-agent / office 场景的生成式工具，README 表明其核心能力为「由文档或主题生成原生 PowerPoint」，包含原生形状、转场动画、按需的数据图表与表格、speaker notes 音频旁白、自定义 .pptx 模板支持；外部边界至少涵盖：用户/上游输入、自定义 .pptx 模板、TTS 音频合成、数据源（用于 chart/table）以及最终输出 .pptx 文件 | 档案只描述了 README 标题与功能描述，未给出模块拆分、依赖矩阵或部署形态；具体组件划分须以源码核验 |
+| 主路径 | 主体流程推断为：输入（文档/主题）→ 内容规划/结构生成 → 原生 PPTX 元素装配（shape、chart、table、animation、transition）→ speaker notes 生成 → 可选音频旁白（TTS）→ 输出 .pptx；模板与数据源作为配置注入而非必经主路径 | 档案未明确各阶段实现方式，所列步骤均为 README 描述能力的合理映射，非源码确认 |
+| 关键权衡 | 主要权衡集中在「原生 PowerPoint 表达力」与「实现复杂度/可控性」之间：选择 native shapes + animations + transitions 而非图片/HTML 截图，可保留可编辑性但增加对 OOXML/python-pptx 能力的依赖；引入 TTS 与按需 chart/table 又带来外部服务依赖与版权/数据真实性风险 | 文档/主题生成质量、TTS 供应商、数据图表面向何种后端（pandas? 自建?）均未在档案中说明 |
+| 最小 PoC | 建议以「单文档 → 单主题模板 → 输出 1 页含 1 个原生 shape + 1 张 chart + speaker notes（不开 TTS）」作为最小验收，关闭音频与动画以隔离风险；优先验证 python-pptx 兼容性与模板占位符契约 | 模板占位符约定、chart 数据接入方式、TTS 是否可选等关键 PoC 参数在档案中均未证实 |
+
 ## 架构启发
 
 从 hugohe3/ppt-master 的设计来看，核心思路是 **"AI turns documents or topics into real, native PowerPoint de"**。这反映了 Python 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游Agent] --> I[输入：文档或主题 待核验]
+    I --> P[内容规划与结构生成 待核验]
+    P --> A[原生PPTX装配：shape chart table animation transition 待核验]
+    Tmpl[自定义.pptx模板] --> A
+    DS[数据源 用于chart/table 待核验] --> A
+    A --> N[speaker notes生成 待核验]
+    N --> V[可选TTS音频旁白 供应商待核验]
+    V --> O[输出 .pptx 文件]
+    A --> O
+    N --> O
+    O --> R[风险边界：编辑可控性 vs OOXML复杂度 外部TTS与数据真实性依赖 待核验]
+```
 
 ## 定位判断
 

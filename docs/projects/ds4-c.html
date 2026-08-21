@@ -6,7 +6,7 @@
     <title>antirez/ds4 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,59 @@
 <li><strong>轻量部署:</strong> 编译即用，无需 Docker/K8s/重型依赖，与 vLLM 等服务化方案形成对比</li>
 <li><strong>Redis 作者的工程品味:</strong> 代码精炼、可读性高、注重实际可用而非论文指标</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单一 C 代码库本地推理引擎，对外暴露 GPU 三后端（Metal/CUDA/ROCm）与 DeepSeek V4 模型文件，无 server/API 边界</td>
+<td>档案仅声明三后端与纯 C 实现；具体入口形态（CLI 参数、socket/HTTP）未在档案中给出，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>模型文件 → C 加载/量化路径 → GPU 后端（Metal/CUDA/ROCm 任一）→ 本进程输出 token；无服务化中间层</td>
+<td>档案描述"编译即用""无需 Docker/K8s""与 vLLM 服务化对比"，未给出请求-响应协议细节，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极简 C 与零依赖 vs 三平台碎片化适配、量化收益 vs 精度损失、V4 专用优化 vs 单一模型绑定风险</td>
+<td>权衡来自档案明示定位与局限章节；具体量化位宽、显存阈值、性能数字均未给出，待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Apple Silicon（M-series）与单卡消费级 NVIDIA（具体型号待核验）上各跑一次 DeepSeek V4 Flash，验证加载、量化与首 token 延迟，验收项：编译命令、模型权重来源、显存占用、退出路径</td>
+<td>档案支持"消费级硬件""Flash 轻量版""三后端"主张；具体硬件门槛、量化方案、token/s 基准未给出，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>ds4 的核心启发是 <strong>"对性能敏感的基础设施，C 语言仍是不可替代的选择"</strong>。在大模型推理领域，Python（PyTorch）主导了研究与原型，但生产级推理引擎最终多回到 C/C++（llama.cpp、TensorRT）。antirez 用纯 C 写 ds4，再次验证：<strong>要榨干硬件性能、要极致轻量、要无依赖部署，C 是最优解</strong>。更深层的启发是 antirez 的"少即是多"哲学——他不做"全功能推理平台"，只做"轻量跑 V4"这一件事，做到极致。这与 Redis 的成功逻辑一脉相承。在框架越来越重的趋势下，这种"用极简 C 解决明确问题"的路径，始终有不可替代的价值。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者] --> I[本地 CLI 入口 待核验]
+    I --> C[ds4 C 推理运行时]
+    C --> Q[V4 专用量化路径 待核验]
+    Q --> G{GPU 后端}
+    G --> M1[Metal Apple Silicon]
+    G --> M2[CUDA NVIDIA]
+    G --> M3[ROCm AMD]
+    C --> K[DeepSeek V4 模型文件 Flash / PRO]
+    C --> O[本地 token 输出 无服务化层]
+    C -.状态/风险.-> R[模型绑定 V4 单一 边缘 issue 421 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型精品（特定模型本地推理）。</strong> ds4 定位清晰：轻量、高效、多平台的 DeepSeek V4 本地推理引擎。它不是通用推理平台（那是 vLLM/llama.cpp 的领域），而是针对 V4 的"专用利器"。作为工具，它的价值取决于 DeepSeek V4 的生命周期——只要 V4 被广泛使用，ds4 就有用。antirez 的品牌保证了项目的质量下限。不会成为平台，但会是"想本地跑 V4 的开发者的首选之一"。与 llama.cpp（通用）形成"专精 vs 通用"的互补关系。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>模型绑定:</strong> 仅支持 DeepSeek V4 系列，若 V4 被 V5 取代且未跟进，价值衰减</li>
 <li><strong>品牌溢价:</strong> antirez 名声带来 stars，但部分用户可能因品牌而非实际需求关注</li>
@@ -68,7 +116,7 @@
 <li><strong>功能范围:</strong> 缺少 server/API 模式、批处理等服务化能力，纯本地推理场景</li>
 <li><strong>Open Issues 高:</strong> 421 个反映多平台适配的边缘问题，维护负荷大</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs llama.cpp（ggml）:</strong> llama.cpp 是通用本地推理引擎，支持数百模型；ds4 专精 DeepSeek V4，更轻更专</li>
 <li><strong>vs vLLM/SGLang:</strong> 那些是服务化推理框架，面向生产部署；ds4 是本地单机推理，场景不同</li>
@@ -76,9 +124,9 @@
 <li><strong>vs Ollama:</strong> Ollama 是封装层（基于 llama.cpp），易用但抽象重；ds4 更底层更直接</li>
 <li><strong>vs MLX（Apple）:</strong> MLX 是 Apple 官方 ML 框架；ds4 在 Metal 上是独立实现，更专精 V4</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（本地推理 + 系统编程视角）。</strong> ds4 代表了"用极简 C 做高性能推理"的工程美学，其代码值得系统程序员学习。建议关注：实际推理 token/s 与 llama.cpp 的对比、对 DeepSeek 后续版本（V5）的跟进速度、以及 antirez 是否扩展到其他模型。对于想在 Apple Silicon / 消费级 NVIDIA 上跑 DeepSeek V4 的开发者，ds4 是值得尝试的轻量方案。其热度部分依赖 antirez 品牌，需用实际性能数据验证价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>与 llama.cpp 在同硬件上的推理性能基准对比</li>
 <li>对 DeepSeek V5/V6 的适配速度（决定生命周期）</li>

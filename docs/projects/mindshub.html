@@ -6,7 +6,7 @@
     <title>mindsdb/mindshub | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,26 +50,75 @@
 <li><strong>数据保险库（Data Vault）</strong>：安全连接 BigQuery、Postgres、Gmail、Drive、HubSpot、Notion、Linear 等系统，凭据按连接范围隔离，Agent 永远看不到原始密钥。这对企业场景的安全性至关重要。</li>
 <li><strong>Artifact 发布</strong>：将 Agent 输出转化为文档、仪表盘、应用和代码，并发布到可分享的 URL。这使 AI 工作成果从"聊天记录"升级为"可交付物"。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>mindshub 是 Makefile 主导的 superproject，由 frontend、backend/core_api、backend/core_agent、backend/data-vault 四个 git submodule 组成，定位为编排层而非实现层</td>
+<td>仅基于档案的 submodule 列表与 Makefile 编排命令；具体子模块接口与部署产物未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者通过桌面/Web 入口进入 Cowork 工作空间，请求经编排层路由至模型层（Claude/GPT/Gemini/DeepSeek/Qwen/Kimi）与可替换 Agent（Anton/Hermes），凭据隔离的 Data Vault 访问 BigQuery/Postgres/Gmail/Drive/HubSpot/Notion/Linear 等外部系统，结果以 Artifact 形式发布</td>
+<td>模型与数据源列表、MCP 标签、Artifact 发布均见于档案；具体调用协议、状态回写与持久化方式待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>模型无关与 Agent 可换来换取速度，但代价是需在凭据隔离、Agent 质量依赖外部项目、scope 过宽（数据+路由+Agent+Artifact 全栈）之间平衡；Makefile 主语言意味着部署门槛高于常规应用</td>
+<td>凭据隔离、Agent 替换与 Artifact 由档案描述；性能、SLO、观测、vendor lock-in 细节未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以源码构建（<code>make setup</code>/<code>make dev</code>）拉取四个 submodule，单一外部数据源、最小工具权限，验证模型路由切换、Anton↔Hermes 替换与 Data Vault 凭据隔离三项；记录安全、成本、退出路径</td>
+<td>构建命令与四项组件来自档案；macOS/Windows 桌面包构建（<code>make dist-mac</code>）与 Web 部署形态待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>MindsHub 代表了 AI 工具从"单一功能"向"统一工作空间"演变的趋势。它的设计哲学是：用户不应关心底层用哪个模型或哪个 Agent，只需描述要做什么，平台负责编排一切。这与 Notion AI、Microsoft Copilot 的愿景类似，但 MindsHub 选择了开源 + 自托管的路线。值得关注的架构决策包括：通过 submodule 实现模块化（而非 monorepo）、Agent 可替换设计（而非绑定单一 Agent）、凭据隔离的安全模型。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者 知识工作者] --> I[桌面或 Web 入口 Cowork]
+  I --> C[项目编排层 Mindshub superproject<br/>Makefile 编排]
+  C --> M[模型路由层<br/>Claude GPT Gemini DeepSeek Qwen Kimi]
+  C --> A[可替换 Agent 后端<br/>Anton 默认 Hermes]
+  C --> D[Data Vault 凭据隔离<br/>BigQuery Postgres Gmail Drive HubSpot Notion Linear]
+  C --> P[Artifact 发布<br/>Web 应用 文档 仪表盘 待核验]
+  A --> C
+  M --> C
+  D --> C
+  P --> C
+  C --> S[会话 状态 审计 边界<br/>Agent 不可见原始密钥 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>MindsHub 定位为<strong>AI 统一工作空间平台</strong>，直接竞品是商业化的 AI 生产力工具（如 Notion AI、Microsoft Copilot、Google Gemini Workspace）。它的差异化在于开源和自托管能力。在 GitHub 生态中，它处于"平台候选"阶段——愿景宏大但需要验证用户留存和商业化可行性。39K stars 说明市场对"AI 统一工作空间"概念有高度期待，但实际使用深度有待验证。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>范围过大的风险</strong>：从数据连接到模型路由到 Agent 执行到 Artifact 发布，MindsHub 试图覆盖太多环节。每个环节都有专业竞品（数据：Fivetran；模型路由：OpenRouter；Agent：各种 Agent 框架），"大而全"可能在每个环节都做不到最好。</li>
 <li><strong>Stars 与实际使用的鸿沟</strong>：39K stars 中有多少来自实际部署使用 vs 品牌关注，需要谨慎评估。Makefile 作为主语言说明这不是一个典型的"clone 即用"项目，部署门槛较高。</li>
 <li><strong>MindsDB 公司的商业化压力</strong>：MindsDB 是 VC 支持的公司，商业化压力下可能调整开源策略（如核心功能转向闭源/付费），这给项目的开源承诺带来不确定性。</li>
 <li><strong>Agent 质量依赖外部项目</strong>：Agent 后端（Anton、Hermes）来自外部项目，MindsHub 本身的竞争力更多在于编排层而非 Agent 智能。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Open Interpreter / AutoGPT / CrewAI</strong>：通用 AI Agent 框架，更侧重于 Agent 逻辑本身。MindsHub 更侧重于"工作空间"（数据连接、Artifact 发布、用户交互）。</li>
 <li><strong>Dify.ai</strong>：开源 LLMOps 平台，约 80K+ stars，覆盖 RAG、Agent、工作流编排。功能范围与 MindsHub 有重叠，但 Dify 更偏开发者工具，MindsHub 更偏知识工作者产品。</li>
 <li><strong>Every.to Compound Engineering</strong>：方法论层面与 MindsHub 的"让 AI 做实际工作"理念相似，但形态不同（插件 vs 平台）。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得作为"AI 统一工作空间"赛道的核心观察对象跟踪</strong>。这个赛道正在成为 AI 应用的下一个战场（Microsoft、Google、Notion 都在布局），MindsHub 的开源策略是否能撬动市场值得关注。但需要注意区分"平台愿景"和"实际产品力"。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>用户留存与活跃度</strong>：39K stars 中有多少转化为实际活跃用户（Web/桌面应用月活），以及免费到 Pro 的转化率</li>
 <li><strong>Agent 生态扩展</strong>：除了 Anton 和 Hermes，是否会接入更多 Agent（如 Claude Code、Cursor 等），形成更开放的 Agent 市场</li>

@@ -6,7 +6,7 @@
     <title>OpenCut | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,72 @@
 <li><strong>插件优先架构</strong>：第三方插件作为一等公民，支持扩展功能生态</li>
 <li><strong>编辑器内建脚本面板</strong>：直接在编辑器中写脚本控制视频生产</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenCut 本期定位为视频编辑器（GUI 侧），同时把 MCP Server、Headless 渲染和插件系统列入路线图；本期可视为"创作端 UI + 计划中的 Agent 接口"的复合边界</td>
+<td>系统边界须以源码核验；MCP Server / Headless 在档案中只描述为路线图，未给出协议细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>创作者 → 编辑器 UI → Rust 重写中的核心 → 导出/批渲染（计划中无 GUI）；Agent 调用路径仅在路线图中描述，尚未验证</td>
+<td>主路径中 Rust 核心内模块边界、Rust↔TS 桥接未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>现处于重写期：旧版（opencut.app）仍承载流量，新版（new.opencut.app）暂不接受外部贡献，因此稳定可扩展的外部接口 vs. 重写完成度之间的权衡不可回避</td>
+<td>风险条目仅来自档案"风险/局限"段，未量化日期或里程碑</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在确认 MCP Server 可用前，PoC 只能停留在"本地跑通旧版 + 评估新版 UI/导出能力"层面；接入 Agent/批渲染链路须等 README 中所述组件落地</td>
+<td>档案明确指出"MCP Server 是路线图而非现实"，故 PoC 不应预设这些能力</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>OpenCut 的重写路线图揭示了一个重要趋势：<strong>创作工具正在从 GUI-first 转为 API-first + GUI-optional</strong>。当工具内建 MCP Server，它就从"人用的工具"变成了"Agent 用的平台"。这种架构模式可推广到所有创作工具领域（图片/音频/3D/文档）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    User[创作者或上游 Agent] --> UI[编辑器 UI 桌面 移动 Web]
+    UI --> Core[Rust 核心 重写中 共享代码库 待核验]
+    Core --> Export[导出与渲染 当前 GUI 路线]
+    Core --> Plugin[插件系统 计划中 第三方插件 待核验]
+    Core -. MCP Server 路线图 未实现 .-> Agent[Agent / MCP 客户端]
+    Core -. Headless 批渲染 路线图 未实现 .-> Batch[无 GUI 自动化批量渲染]
+    User -. 社区贡献 当前不接受 .-> Contrib[外部贡献边界 重写期内关闭]
+    Risk[状态边界 重写未完成 API 不稳定] -. 影响 .-> Core
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 创作工具生态中，OpenCut 占据"视频编辑基础设施"的位置。如果 MCP Server 落地，它将成为 Agent 视频生产流水线的标准后端。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>重写尚未完成</strong>：当前 opencut.app 仍运行旧版，新版在 new.opencut.app 开发中，不接受外部贡献——架构未稳定</li>
 <li><strong>社区热度可能流失</strong>：重写期间无法让社区参与开发，星标增长≠实际使用</li>
 <li><strong>MCP Server 是路线图而非现实</strong>：目前仅在 README 中提及，尚无实现</li>
 <li><strong>与专业工具差距大</strong>：DaVinci Resolve、Final Cut Pro 的专业能力远超 OpenCut</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>CapCut（闭源）</strong>：OpenCut 直接对标，但 CapCut 有字节跳动的资源投入</li>
 <li><strong>Augani/openreel-video（4.2K⭐）</strong>：另一个开源视频编辑器，纯浏览器端，无 MCP/Agent 定位</li>
 <li><strong>heygen-com/hyperframes（34.8K⭐）</strong>：写 HTML 渲染视频，面向 Agent，但路线完全不同</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> MCP Server + Headless 渲染的组合如果落地，将开创 Agent 驱动视频生产的范式。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>MCP Server 的具体实现——什么时候可用、API 设计如何</li>
 <li>Rust 重写完成度——new.opencut.app 何时取代旧版</li>

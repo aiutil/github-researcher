@@ -38,6 +38,15 @@ Epic Games（Fortnite、Unreal Engine 母公司）正式开源了他们内部的
 5. **可验证的防篡改历史链**：revision chain 是 immutable 的，任何篡改都会导致哈希不匹配。
 6. **全语言 API**：C/C++/C#/Rust/Go/Python/JavaScript——可以集成到任何工具链中。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Lore 是中心化 VCS 服务（Server + Merkle Tree + Chunking Engine + On-demand Hydration），通过 CLI/多语言 API 面向开发者/CI；UEFN 是其商业宿主，UE 是潜在集成对象。 | 架构图为档案抽象，组件命名取自档案，未在源码核验；"Server/Merkle/Chunking/Hydration"四个内部模块的接口契约待核验。 |
+| 主路径 | 开发者/CI → CLI 或 C/C++/C#/Rust/Go/Python/JS API → Lore 中心化存储 → 内容寻址+二进制分块 → 工作站按需 hydration。 | API 语言覆盖来自档案事实；具体传输协议、鉴权方式、持久化后端（本地？对象存储？）档案未披露，待核验。 |
+| 关键权衡 | 中心化换来大二进制高效传输、权限管理与跨历史去重，但牺牲离线完整性与去中心化冗余；Pre-1.0 下格式/接口不稳定放大迁移成本。 | "中心化 vs 去中心化"为档案明述权衡；接口稳定性、压缩格式现状来自风险章节，未给出 1.0 时间表或分布式模式确认。 |
+| 最小 PoC | 在沙箱/CI 中验证 CLI/所选 API 的 checkout、提交、binary diff 与按需 hydration 行为，比对 500GB 假设下 clone 体量与 UEFN 压缩互通性，再决定是否进入关键路径。 | 500GB clone 数字为档案举例，非实测；UEFN 与开源版压缩格式"正在统一"尚未完成，互通测试属必做项。 |
+
 ## 架构启发
 Lore 的核心设计选择是**中心化架构 + 内容寻址**，而不是 git 的去中心化模型。这意味着：
 - 权限管理更自然（中心化服务控制）
@@ -47,26 +56,22 @@ Lore 的核心设计选择是**中心化架构 + 内容寻址**，而不是 git 
 
 这个 trade-off 对游戏/媒体行业是合理的——他们的二进制资产太大，去中心化模型的 clone/clone 成本不可接受。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    subgraph "Lore 架构"
-        SERVER[Lore Server<br/>中心化存储]
-        MERKLE[Merkle Tree<br/>内容寻址]
-        CHUNK[Chunking Engine<br/>二进制分块]
-        HYDRATE[On-demand Hydration<br/>按需下载]
-        
-        SERVER --> MERKLE
-        MERKLE --> CHUNK
-        CHUNK --> HYDRATE
-        
-        HYDRATE --> LOCAL1[工作站 A<br/>仅下载所需文件]
-        HYDRATE --> LOCAL2[工作站 B<br/>仅下载所需文件]
-    end
-    
-    subgraph "对比 Git"
-        GIT[Git LFS<br/>补丁方案]
-        GIT --> |全文件存储| PAIN[clone 膨胀<br/>LFS 指针 + 全量文件]
-    end
+flowchart LR
+    DEV[开发者或 CI 自动化] --> CLI[CLI 多语言 API<br/>C C++ C# Rust Go Python JS]
+    CLI --> SERVER[Lore Server<br/>中心化存储 待核验]
+    SERVER --> MERKLE[Merkle Tree<br/>内容寻址]
+    MERKLE --> CHUNK[Chunking Engine<br/>二进制分块]
+    CHUNK --> HYDRATE[On-demand Hydration<br/>按需下载]
+    HYDRATE --> WS_A[工作站 A<br/>仅工作目录数据]
+    HYDRATE --> WS_B[工作站 B<br/>仅工作目录数据]
+    SERVER -.商业宿主.-> UEFN[UEFN 内置 Lore<br/>压缩格式待统一]
+    SERVER -.潜在集成.-> UE[Unreal Engine<br/>原生集成待核验]
+    SERVER -.竞争边界.-> PERF[Perforce Helix Core<br/>商业封闭替代]
 ```
 
 ## 定位判断

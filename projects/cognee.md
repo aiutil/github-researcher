@@ -38,6 +38,15 @@ AI Agent 的核心痛点之一是"健忘"——每次对话从零开始，无法
 4. **自动路由搜索：** recall API 自动选择最佳搜索策略（向量/图遍历/混合）。
 5. **MCP Server 内置：** 任何 MCP 兼容 Agent 可直接使用。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | cognee 定位为自托管记忆层，介于"上游 Agent / 用户"与"模型供应商、向量库、知识图谱后端、多模态数据源"之间的编排层；自带 MCP Server 是对外接口边界。 | 基于"自托管、AI Agent 记忆平台、知识图谱+向量索引、MCP Server 内置"等档案描述，不含具体后端选型与网络协议。 |
+| 主路径 | remember → 多模态摄入 → 基于认知科学本体的图谱构建（异步）→ recall 自动路由（向量 / 图遍历 / 混合）→ forget 精确删除 / improve 反馈优化。 | 来自档案"四原语"与"自动路由搜索"描述；图谱构建、向量/图遍历的具体算法与持久化未在档案中证实。 |
+| 关键权衡 | 表达力（图谱+本体+多模态） vs 质量风险（依赖 LLM 抽取，会累积错误）与运维成本（去重、合并、冲突解决）以及与 Mem0/Zep/Letta 的生态重叠。 | 权衡结论来自档案"风险/局限/泡沫点"与"与同类项目的关系"段落；improve 机制的成熟度被档案明确标为"待验证"。 |
+| 最小 PoC | 单一渠道（如 Python 客户端）→ 最小数据源（小文档集）→ MCP Server 暴露四项原语 → 关闭高权限工具，开启可审计日志 → 验收：图谱构建质量、recall 路由准确性、forget 删除正确性、性能基线。 | 采纳建议源自档案"架构师速览·采用建议"；具体性能 SLO、向量库/图谱库选型、安全模型属"待核验"。 |
+
 ## 架构启发
 cognee 的 remember/recall/forget/improve 四原语设计非常精妙：
 - **remember** = 摄入 + 图谱构建（异步）
@@ -46,6 +55,40 @@ cognee 的 remember/recall/forget/improve 四原语设计非常精妙：
 - **improve** = 基于反馈优化图谱
 
 这种设计将"记忆"从简单的 CRUD 提升为有认知科学基础的系统。对架构师的启发是：Agent 记忆系统不应该只是"存取"，而应该有"遗忘"和"改进"机制。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U["使用者或上游 Agent"]
+    MCP["MCP Server 对外接口边界"]
+    PY["Python 客户端"]
+    TS["TypeScript 客户端"]
+    RUST["Rust 客户端"]
+    CC["Claude Code 插件"]
+    OC["OpenClaw 插件"]
+    CORE["cognee 核心四原语 remember / recall / forget / improve"]
+    KG["知识图谱 + 本体生成（认知科学）"]
+    VEC["向量索引（向量搜索）"]
+    MULTI["多模态摄入：文档/对话/代码/图片"]
+    STATE["会话/状态/审计边界（含待核验：持久化与去重合并）"]
+
+    U --> MCP
+    PY --> CORE
+    TS --> CORE
+    RUST --> CORE
+    CC --> CORE
+    OC --> CORE
+    MCP --> CORE
+    CORE --> MULTI
+    CORE --> KG
+    CORE --> VEC
+    KG --> STATE
+    VEC --> STATE
+    CORE --> STATE
+```
 
 ## 定位判断
 在 Agent 技术栈中，cognee 处于 L2 智能/记忆层，与 codebase-memory-mcp 互补：

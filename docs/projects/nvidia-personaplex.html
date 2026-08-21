@@ -6,7 +6,7 @@
     <title>NVIDIA PersonaPlex | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,11 +49,60 @@
 <li>多 Agent 人格网络：支持定义多个 Persona 之间的交互关系和协作模式</li>
 <li>GPU 加速推理：利用 NVIDIA GPU 生态实现端到端语音管线优化</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>PersonaPlex 是定位在"AI 人格层"的编排基础设施，覆盖入口渠道、模型供应商（含 NVIDIA Riva/NeMo）、工具/数据源之间的人格抽象与全双工语音管线；GitHub 资料未给出明确的 API 边界与部署形态。</td>
+<td>仅档案描述的 Persona 抽象、全双工语音、模型/工具调用回路；具体协议、接口面待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为：使用者/上游 → 入口与身份边界 → PersonaPlex 编排与运行时 → 模型推理（Riva/NeMo）+ 工具/外部系统 → 会话/状态/审计回写。</td>
+<td>路径基于档案"关键技术亮点亮点"与"架构师速览"表推断；具体管线组件、消息格式与持久化策略待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>核心权衡是 NVIDIA GPU/Riva/NeMo 生态耦合带来的性能/一致性收益，与跨平台可移植性、供应商锁定、生态活跃度风险之间的平衡；MLX 社区移植侧面印证跨平台诉求。</td>
+<td>权衡基于"风险/局限"段及 personaplex-mlx 移植记录；活跃度判断依赖 pushed_at 2026-03-02 后是否更新。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议先在单入口渠道、声明式 Persona 配置、最小工具权限与可审计日志下验证全双工语音延迟与一致性，再扩展到多 Persona/多 Agent 网络；安全、成本、SLO、退出路径作为验收项。</td>
+<td>来自"采用建议"与"后续观察点"中关于延迟/成本/Persona 标准化等条目；具体阈值与基线待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>PersonaPlex 的核心架构启发是"人格层的抽象与解耦"。传统 AI 应用的"模型 + Prompt"耦合在一起，难以独立管理和复用人格。将 Persona 提升为一级架构对象——就像微服务架构中的"服务定义"——使得人格成为可版本化、可组合、可分发的独立资产。对架构师的启发是：<strong>AI 系统中"软"属性（人格、记忆、偏好）应该像"硬"属性（模型、数据）一样有明确的管理边界</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[PersonaPlex 编排与运行时]
+    C --> P[Persona 声明式配置 定义语气 风格 知识 声音]
+    C --> M[NVIDIA Riva 与 NeMo 推理服务 待核验部署形态]
+    C --> T[工具与外部系统 调用回路]
+    C --> S[会话 状态 审计 回写]
+    M --> C
+    T --> C
+    P --> C
+    S -. 风险边界 停滞 2026-03-02 待核验 .-> C
+    M -. 外部边界 NVIDIA GPU 生态耦合 .-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选（战略卡位）。</strong> PersonaPlex 本身是工具型框架，但 NVIDIA 的战略意图是建立"AI 人格标准"——如果 Persona 定义格式成为行业标准，NVIDIA 就掌握了 AI 人格层的话语权。定位为"AI 人格基础设施的参考实现"。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>强绑定 NVIDIA 硬件生态:</strong> 核心依赖 Riva/NeMo，非 NVIDIA GPU 用户使用门槛高</li>
 <li><strong>更新停滞:</strong> pushed_at 停留在 2026-03-02，之后无更新（4 个月），活跃度存疑</li>
@@ -61,7 +110,7 @@
 <li>Persona 标准化面临生态碎片化——行业标准需要多方共识，单方推动困难</li>
 <li>10k stars 可能反映 NVIDIA 品牌效应而非实际采用</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>OpenAI Realtime API</strong> 在全双工语音能力上竞争——PersonaPlex 开源但绑定 NVIDIA，OpenAI 闭源但通用</li>
 <li>与 <strong>Google Gemini Live</strong> 在实时语音 Agent 维度竞争</li>
@@ -69,9 +118,9 @@
 <li>在 NVIDIA 生态内，与 NeMo、Riva、NIM 微服务形成 AI 基础设施栈</li>
 <li>MLX 社区有 personaplex-mlx 移植版本，说明跨平台需求存在</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>选择性跟踪。</strong> 如果使用 NVIDIA 硬件构建语音 Agent，PersonaPlex 是重要参考。但从项目活跃度和生态广度来看，建议同时关注 OpenAI 和 Google 的语音 API 演进。NVIDIA 的更新节奏是关键信号。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>项目是否恢复活跃更新（2026-03 后停滞值得关注）</li>
 <li>Persona 定义格式是否被其他框架采纳</li>

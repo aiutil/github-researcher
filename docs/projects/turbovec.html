@@ -6,7 +6,7 @@
     <title>turbovec | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,18 +56,63 @@
 <li><strong>在线 Ingest</strong>：添加向量即索引，无重建步骤</li>
 <li><strong>多框架集成</strong>：LangChain / LlamaIndex / Haystack / Agno 的 drop-in 替换</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>turbovec 是 Rust 实现的向量索引库，依赖 TurboQuant 量化与手写 SIMD 内核，Python 侧提供 LangChain / LlamaIndex / Haystack / Agno 的 drop-in 集成；属于 RAG 检索侧的内存/计算密集组件，不含完整向量数据库能力</td>
+<td>档案明示"索引库"、仅 IVF + PQ 索引、缺少 HNSW 等图索引，与 Milvus / Qdrant 的差距在档案"风险/局限"段列出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据源 → 在线 ingest（无需训练/重建） → TurboQuant 量化 + SIMD（NEON / AVX-512BW）内核 → 索引驻留内存（10M 文档 31GB → 4GB） → 框架消费层做带 allowlist 过滤的检索</td>
+<td>ingest/量化/SIMD/内存压缩均来自档案"关键技术亮点"；具体协议、持久化、部署形态未在档案中描述，须源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>内存与延迟收益（~87% 压缩、ARM 上对 FAISS IndexPQFastScan +12–20%）换的是覆盖度（仅 IVF + PQ）、生产验证不足（7K stars、单人维护）以及纯本地部署的扩展性上限</td>
+<td>性能数字来自档案"为什么值得关注"段；生产可用性、稳定性、召回基准在档案中均未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选可审计数据集，验证三条：① TurboQuant 量化前后召回/精度 ② ARM/x86 目标平台上的 SIMD 加速与延迟 ③ LangChain / LlamaIndex / Haystack / Agno drop-in 替换路径及 allowlist 过滤行为；把单维护者风险、退出路径与 SLO 写入验收项</td>
+<td>框架集成清单与 allowlist 过滤来自档案；具体 API、版本兼容、构建产物与平台要求档案未列，需以仓库文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>量化是向量索引的未来</strong>：TurboQuant 证明了无训练量化可以达到接近原始精度</li>
 <li><strong>SIMD 内核的关键性</strong>：在量化基础上，手写 SIMD 是性能差异的关键</li>
 <li><strong>API 简洁性的价值</strong>：drop-in 替换使迁移成本极低</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  D[公开或私有数据源] --> I[在线 Ingest 无需训练 无重建]
+  I --> Q[TurboQuant 量化 无 codebook 达 Shannon 下界]
+  Q --> S[IVF + PQ 索引 仅此一种 缺 HNSW 待核验]
+  S --> K[手写 SIMD 内核 NEON ARM 与 AVX-512BW x86]
+  K --> F[Allowlist 过滤在 SIMD kernel 内 不过度拉取]
+  F --> A[LangChain LlamaIndex Haystack Agno drop-in 消费者]
+  S --> R[风险边界 单人维护 7K stars 生产验证不足 部署形态待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <ul>
 <li><strong>基础设施候选</strong>。向量索引是 RAG 栈的核心组件</li>
 <li>目前是索引库，但有潜力发展为完整的向量数据库</li>
 </ul>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li>7K 规模仍较小，生产验证不足</li>
 <li>单人项目（RyanCodrai），维护风险</li>
@@ -75,15 +120,15 @@
 <li>与 Milvus / Qdrant 等完整向量数据库功能差距大</li>
 <li>日增 1,533 stars 可能含趋势追逐成分，需观察留存</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs FAISS</strong>：turbovec 更轻量、更省内存，但功能覆盖少</li>
 <li><strong>vs Qdrant</strong>：Qdrant 是完整向量数据库，turbovec 是索引库</li>
 <li><strong>vs Milvus</strong>：Milvus 面向企业级，turbovec 面向嵌入式场景</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>建议评估。</strong> 如果你的 RAG 系统有内存或延迟瓶颈，turbovec 值得评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>生产环境中的稳定性和准确性</li>
 <li>是否会发展出更多索引类型（HNSW 等）</li>
@@ -92,7 +137,7 @@
 <li>7K→10K 增速是否可持续</li>
 </ol>
 <hr />
-<h2 id="_11">更新记录</h2>
+<h2 id="_12">更新记录</h2>
 <h3 id="2026-06-08_1">2026-06-08</h3>
 <ul>
 <li>Stars: 3.4K → 7K（翻倍，+1,533/天 全网日增速第一）</li>

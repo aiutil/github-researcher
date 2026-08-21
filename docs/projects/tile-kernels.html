@@ -6,7 +6,7 @@
     <title>TileKernels | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,22 +50,69 @@
 <li><strong>Engram 门控</strong> — 融合 RMSNorm 的门控内核，前向/后向传播全覆盖</li>
 <li><strong>Manifold HyperConnection</strong> — Sinkhorn 归一化 + 混合拆分/应用，暗示新架构探索</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TileKernels 是 DeepSeek 维护的 LLM 底层 GPU 算子库，基于 TileLang DSL，定位在框架开发者与硬件之间，目标硬件为 SM90/SM100（CUDA 13.1+）。</td>
+<td>项目自述、tags（gpu-kernels、tilelang）、风险段；具体入口 API 与构建产物未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>TileLang DSL（Python 语法）→ 编译生成 GPU kernel → 覆盖 MoE 路由、FP8/FP4/E5M6 量化、Engram 门控（含 RMSNorm 融合）、Manifold HyperConnection（Sinkhorn 归一化）等算子，供 LLM 训练/推理框架调用。</td>
+<td>项目"关键技术亮点"与"架构启发"段；运行时调用关系、调度与持久化细节档案未证。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三组权衡：在 TileLang 表达力 vs. 成熟 CUDA 生态之间；在 DeepSeek 内部特化（MoE/Engram/MHC）vs. 通用算子覆盖之间；在 SM90/SM100 高门槛 vs. 下一代硬件前置优化之间。</td>
+<td>自述硬件要求、DeepSeek 特化、DSL 依赖；性能数据档案未提供。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 SM90/SM100 + CUDA 13.1+ 环境下，编译 TileLang DSL 子集，验证单类算子（建议优先量化或 MoE 路由），确认可被 PyTorch/推理框架调用并产出与参考实现一致的数值。</td>
+<td>档案未提供 benchmark 数字或示例代码，"待核验"具体接口与版本。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>TileKernels 揭示了一个重要趋势：LLM 底层算子正在从"通用库 + 手写 kernel"的两极分化，走向"DSL 表达 + 自动优化"的中间路线。TileLang 就是这个中间路线的载体。</p>
 <p>对架构师的启发：
 - <strong>算子即架构</strong> — 从 TileKernels 提供的算子类型（Engram、MHC）可以反推 DeepSeek 的模型架构方向
 - <strong>DSL &gt; CUDA</strong> — 用 Python 级别的表达力写 GPU kernel，开发效率远超手写 CUDA
 - <strong>硬件约束前置</strong> — SM90/SM100 要求说明这些算子是为下一代 GPU 设计的</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    DSL[TileLang DSL Python 语法] --> K[TileKernels 算子库]
+    K --> MoE[MoE 路由 与 Token 映射]
+    K --> Q[FP8 FP4 E5M6 量化 融合 SwiGLU]
+    K --> E[Engram 门控 融合 RMSNorm]
+    K --> M[Manifold HyperConnection Sinkhorn]
+    K --> H[目标硬件 SM90 SM100 CUDA 13.1+ 待核验]
+    K --> C[上游 LLM 推理 训练框架 PyTorch vLLM SGLang 待核验]
+    R[生态风险 TileLang 成熟度 与 DeepSeek 特化] -.-> K
+    F[文档与代码成熟度 自述不代表最佳实践] -.-> K
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>LLM 底层算子生态的基础设施层。如果 TileLang 生态成熟，TileKernels 可以成为类似 cuDNN 之于深度学习的角色 — 不是面向最终用户的，而是面向框架开发者的。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>硬件门槛高</strong> — SM90（H100）/ SM100（B200）+ CUDA 13.1+，绝大多数开发者无法直接使用</li>
 <li><strong>生态锁定</strong> — 依赖 TileLang DSL，如果 TileLang 生态不成熟则价值受限</li>
 <li><strong>DeepSeek 特化</strong> — 算子设计可能偏向 DeepSeek 自家模型架构（MoE/Engram），通用性存疑</li>
 <li><strong>文档质量</strong> — 自述"不代表最佳实践"，文档和代码质量仍在改进中</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -102,9 +149,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，高优先级。</strong> TileKernels 和 TileLang 代表了 LLM 底层算子开发的新范式。关注它不仅能了解 DeepSeek 的技术方向，还能把握 GPU 算子生态的演进。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>TileLang 生态发展 — 是否有更多项目基于 TileLang 构建</li>
 <li>社区贡献 — 是否有第三方为非 DeepSeek 模型贡献算子</li>

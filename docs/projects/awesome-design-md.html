@@ -6,7 +6,7 @@
     <title>VoltAgent/awesome-design-md | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,79 @@
 <li><strong>AI 友好:</strong> DESIGN.md 是纯文本，AI Agent 可以直接读取并作为生成代码的约束条件</li>
 <li><strong>主题系统:</strong> 支持明暗主题、品牌变体的令牌管理</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>awesome-design-md 是一个 awesome-list 资源集合，非运行时系统；其倡导的边界是"DESIGN.md 规范 → Tokens (JSON) → 多平台代码产物"，横跨 Figma 插件、令牌转换器与前端/移动端代码</td>
+<td>档案未提供 DESIGN.md 的官方规范文本或令牌分层字段定义；Tokens Studio、Style Dictionary 等具体组件的接口未在档案中详述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径是"设计决策 → DESIGN.md（Markdown 规范） → Tokens（JSON）→ CSS Variables / Tailwind Config / Swift / Kotlin 等多端代码"，Figma 通过 Tokens Studio 插件介入"双向同步"</td>
+<td>档案仅列出多平台输出名称，未给出具体同步协议（如 Figma Plugin API 调用方式、Token 字段命名规范）</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>核心权衡是"框架无关的规范抽象（DESIGN.md）"vs"W3C Design Tokens Format 等竞品标准化路径"；次级权衡是"设计师+开发者跨角色协作门槛"与"生态工具链成熟度"之间的互锁</td>
+<td>档案明确指出 DESIGN.md 尚无官方标准、与 W3C DT Format 的关系待核验；未量化协作门槛数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>PoC 应聚焦"选定一个 Figma 设计文件 → 用 Tokens Studio 导出为 DESIGN.md/Tokens JSON → 生成至少 CSS Variables 与 Tailwind Config 两份产物 → 用 AI 编码 Agent（Claude Code/Cursor）读取 DESIGN.md 生成 UI 代码，验证设计一致性"</td>
+<td>档案提到 AI Agent 可读 DESIGN.md，但未给出具体 Agent 是否已原生支持 DESIGN.md（标注为待核验）；工具链具体版本与兼容矩阵档案未覆盖</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>awesome-design-md 背后的核心思想是"设计即数据"——将设计决策从人类的直觉和 Figma 文件，转化为机器可读的结构化数据。这使得设计变更可以自动传播到代码层（修改令牌 → 自动更新所有 UI），也为 AI 生成 UI 代码提供了"设计约束"。其 Token 分层架构（Global Tokens → Alias Tokens → Component Tokens）是一种良好的抽象设计。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    D["设计决策（颜色/字体/间距/圆角/阴影）"] --> DM["DESIGN.md 规范（机器可读 Markdown，待核验官方文本）"]
+    DM --> TJ["Design Tokens JSON（Global → Alias → Component 分层）"]
+    F["Figma 设计文件"] --> TS["Tokens Studio / Figma Tokens 插件"]
+    TS -- 双向同步，待核验协议 --> TJ
+    TJ -- 转换，待核验工具 --> CSS["CSS Variables 产物"]
+    TJ -- 转换，待核验工具 --> TW["Tailwind Config 产物"]
+    TJ -- 转换，待核验工具 --> SW["Swift 产物"]
+    TJ -- 转换，待核验工具 --> KT["Kotlin 产物"]
+    AI["AI 编码 Agent（Claude Code / Cursor / Copilot，原生支持状态待核验）"] -- 读取 DESIGN.md 作为设计约束 --> DM
+    CSS --> UI["多端 UI 实现"]
+    TW --> UI
+    SW --> UI
+    KT --> UI
+    W3C["W3C Design Tokens Format Module（竞品/协同关系待核验）"] -. 标准化竞争 .-> TJ
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>知识资源 + 生态推动型项目。</strong> awesome-design-md 本身是一个 awesome-list（资源集合），但它推动的 DESIGN.md 规范有潜力成为设计-开发协作的行业标准。其价值在于：(1) 汇集工具和资源降低采用门槛；(2) 通过社区力量推动 DESIGN.md 标准化。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>标准竞争:</strong> DESIGN.md 尚无官方标准，可能有竞争格式（如 W3C Design Tokens Format）</li>
 <li><strong>采用门槛:</strong> 需要 设计师 + 开发者 同时采用，跨角色协作推广难度大</li>
 <li><strong>awesome-list 泡沫:</strong> GitHub 上 awesome-list 泛滥，部分 Star 来自"收藏但不使用"行为</li>
 <li><strong>依赖工具链:</strong> DESIGN.md 需要配套工具（Token 转换器、Figma 插件）才有价值，工具链不完善时体验差</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Style Dictionary:</strong> Style Dictionary 是 Token 转换工具，awesome-design-md 是生态集合</li>
 <li><strong>vs Tokens Studio:</strong> Tokens Studio 是 Figma 插件产品，awesome-design-md 推广其使用</li>
 <li><strong>vs Tailwind Config:</strong> Tailwind Config 是特定框架的设计令牌，DESIGN.md 是框架无关的规范层</li>
 <li><strong>vs Material Design / Design Systems:</strong> 传统设计系统是文档 + 组件库，DESIGN.md 是机器可读的规范</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> DESIGN.md + Design Tokens 是设计-开发协作的未来方向，尤其在 AI 编码 Agent 时代意义更大——Agent 需要机器可读的设计规范。值得关注的是：DESIGN.md 是否走向标准化、AI 工具的集成深度、以及与 W3C Design Tokens Format 的关系。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>DESIGN.md 是否被主流 AI 编码工具（Claude Code、Cursor、Copilot）原生支持</li>
 <li>W3C Design Tokens Format 标准化进展及与 DESIGN.md 的关系</li>

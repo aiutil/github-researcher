@@ -6,7 +6,7 @@
     <title>diffusionstudio/lottie | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,27 +56,74 @@
 <li><strong>生成标准 Lottie JSON</strong>：兼容 lottie-web、React Native Skia（Skottie）、After Effects</li>
 <li><strong>Prompt guide 工程化</strong>：5 条原则（grounding、motion 术语、camera 思维、controls 请求、FPS/duration）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>以 npx skills 形式分发给 Claude Code / Codex 等 Skills 兼容 Agent，在 Agent 流程内调用，内置播放器提供实时预览，落盘到 <code>public/projects/&lt;project&gt;/&lt;scene&gt;/lottie.json</code></td>
+<td>入口与目录结构来自档案"关键技术亮点"，运行宿主仅限定为"Claude Code、Codex 或任何支持 Skills 的 Coding Agent"，其余边界待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 通过 Skill 加载 → 读取 prompt guide 约束 → 生成标准 Lottie JSON → 写入 scene 路径 → 内置播放器实时刷新预览 → 兼容 lottie-web、Skottie、After Effects</td>
+<td>生成格式兼容列表来自档案，prompt guide 5 条原则作为生成约束引用，模型推理细节与 Skill 协议实现待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>标准 Lottie 格式带来的跨播放器复用收益 vs. 对 LLM 理解 motion/SVG 的能力依赖以及 grounding 素材（SVG/截图）输入门槛</td>
+<td>权衡判断基于档案"风险/局限"与"prompt guide 工程化"段，具体生成质量上限与可观测性细节待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>通过 <code>npx skills add diffusionstudio/lottie</code> 安装到 Claude Code/Codex，提供 SVG/截图 grounding，按 prompt guide 5 条原则输出单 scene Lottie JSON，验证内置播放器预览与跨播放器（lottie-web、Skottie）回放一致</td>
+<td>安装命令与目录约定来自档案，单一 scene 范围来自"Scene + Project 架构"描述，更复杂场景、API 形态与生产化部署细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><strong>AI 生成设计资产的关键不是「能生成」，而是「生成的东西能直接进产品」。</strong> Lottie 格式的标准化使得 AI 输出可以直接进入产品流程。Scene + Project 的文件组织模式让 Agent 可以增量编辑而非每次全量重生成。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Claude Code / Codex 等 Skills 兼容 Agent] -->|npx skills add| B[Skill 加载与 prompt guide 约束]
+    B --> C[场景生成逻辑 Scene + Project]
+    C --> D[LLM 推理 推理细节待核验]
+    C --> E[public/projects/project/scene/lottie.json 落盘]
+    D --> C
+    E --> F[内置播放器 实时预览]
+    F --> A
+    E --> G[外部播放器生态 lottie-web / Skottie / After Effects 兼容性待核验]
+    C --> H[Grounding 素材 SVG / 截图 输入门槛待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型。</strong> 有明确的单一用途（生成 Lottie），不会演化为平台。但代表了设计工具链 AI 化的趋势。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>动画质量上限待验证</strong> — AI 生成的动画创意和复杂度可能受限</li>
 <li><strong>单一用途</strong> — 只做 Lottie，扩展性有限</li>
 <li><strong>依赖模型能力</strong> — 动画生成质量高度依赖 LLM 理解设计意图和 SVG 路径的能力</li>
 <li><strong>需要 grounding 素材</strong> — prompt guide 明确建议提供 SVG/截图，纯文本生成效果较差</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>LottieFiles / lottie-web</strong>：播放器生态，Text-to-Lottie 生成兼容这些播放器的文件</li>
 <li><strong>After Effects</strong>：传统 Lottie 制作工具，Text-to-Lottie 可导入 AE 进一步精修</li>
 <li><strong>其他 AI 设计工具（Galileo AI 等）</strong>：AI 生成 UI/设计资产，Text-to-Lottie 聚焦动画格式</li>
 <li><strong>diffusion.studio</strong>：出品公司的商业产品</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>观察。</strong> 工具型但增速快，代表设计资产 AI 化趋势。关注其是否能扩展到更多设计资产格式。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>生成动画的复杂度和质量提升（从简单图标动画到复杂场景）</li>
 <li>在实际产品中的使用情况</li>

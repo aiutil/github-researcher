@@ -43,10 +43,37 @@ AI 驱动的舆情监控与热点筛选工具——聚合多平台热点和 RSS 
 6. **Docker 一键部署**：降低自托管门槛
 7. **定时任务调度**：内置或对接 GitHub Actions
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | TrendRadar 是一个聚合多平台热点（微博/知乎/B站/GitHub/HN 等）与 RSS，用 LLM 筛选后经邮件/Bark/Webhook/Telegram 推送的编排层；MCP 协议使其可被外部 AI agent 调用 | 数据源具体列表、推送渠道覆盖度以源码为准 |
+| 主路径 | 配置→多平台/RSS 采集→LLM 智能筛选与摘要→多渠道推送→可选 MCP 暴露给 agent；支持 GitHub Actions 等零成本定时调度 | 调度器内置还是外置、LLM 接口形态未在档案中明说，须读 README |
+| 关键权衡 | 跨平台反爬封锁与平台 ToS 合规 vs 多源覆盖广度；LLM 持续 API 成本 vs 筛选准确性收益；61k stars 高热度下单一维护者的可持续性 | Fork 数异常（24k）已被档案标记为可疑，活跃度需独立核验 |
+| 最小 PoC | 以单一低风险来源（如 GitHub Trending 或 HN）+ 一种推送渠道（邮件或 Bark）+ 一个 LLM 关键词筛选规则在 Docker 中跑通，再接入 MCP | 部署形态、依赖服务、默认调度周期未在档案中证实 |
+
 ## 架构启发
 - **AI + 信息聚合 = 新型信息消费方式**：不是更多数据而是更少但更准
 - **自托管信息管道**：用户掌控自己的信息过滤规则
 - **MCP 作为信息接口**：让 agent 主动获取热点信息
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    SRC["数据源<br/>微博/知乎/B站/GitHub HN/RSS"] --> AGG["聚合层<br/>多平台与RSS统一接口"]
+    RSSIN["RSS 订阅输入<br/>(待核验)"] --> AGG
+    AGG --> LLM["LLM 智能筛选与摘要<br/>(供应商接口待核验)"]
+    LLM --> PUSH["多渠道推送<br/>邮件/Bark/Webhook/Telegram"]
+    PUSH --> USER["最终用户"]
+    AGG -.-> MCP["MCP 协议暴露<br/>(供 Claude/Cursor 等 agent 调用)"]
+    LLM -.-> MCP
+    SCH["定时调度<br/>(内置或 GitHub Actions 待核验)"] -.-> AGG
+    AGG -.-> AUDIT["会话 状态 审计<br/>(实现待核验)"]
+    PUSH -.-> AUDIT
+```
 
 ## 定位判断
 **爆款工具型项目**。精准命中信息过载痛点，用 AI 筛选+多平台聚合+零成本部署的组合拳，实现了病毒式增长。有从工具向个人 AI 信息助手演进的潜力。

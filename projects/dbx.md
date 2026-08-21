@@ -49,9 +49,35 @@ url: "https://github.com/t8y2/dbx"
 2. **<p style="font-size: 18px; white-space: nowrap;"><strong>70+ databases in 20 MB. Desktop, Docker, CL**
 4. **<img src="https://dl.dbxio.com/assets/readme-hero-20260806.png" alt="DBX screenshot" width="820" />**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | dbx（Rust，Apache-2.0）作为面向 70+ 数据库的统一客户端，提供桌面端、Docker、CLI、内置 AI 助手与 MCP Server 入口；边界落在 dbx 进程与外部数据库驱动、AI 模型供应商、MCP 客户端之间 | 档案列出入口形态与数据库覆盖范围；协议栈、驱动实现、模型供应商对接方式未在档案中说明，待核验 |
+| 主路径 | 用户 → dbx 入口（桌面/Docker/CLI） → 多数据库适配层 → AI 助手 / MCP Server 输出；MCP Server 作为 AI Agent 侧的访问面 | 档案点名了入口形态与 AI/MCP 组件；具体调用链、会话管理、缓存与凭据流未在档案中说明 |
+| 关键权衡 | “20 MB 体积 + 70+ 数据库覆盖 + 内置 AI/MCP”的集成速度，与各数据库方言一致性、凭据安全、MCP 协议兼容性之间的取舍 | 体积、口径、组件名为档案事实；性能基准、SQL 方言覆盖深度、权限模型档案未给出 |
+| 最小 PoC | 在 Docker 方式下以只读账号接入 1 个 PostgreSQL 与 1 个 ClickHouse，验证 CLI 与 MCP Server 两条入口的连通性与最小 SQL 执行；其余 68+ 数据库与 AI 助手功能暂不纳入验收 | 档案支持 Docker、CLI、ClickHouse 与 AI/MCP 描述；具体镜像参数、配置项与 MCP 协议细节待核验 |
+
 ## 架构启发
 
 从 t8y2/dbx 的设计来看，核心思路是 **"20 MB lightweight cross-platform database client for 70+ dat"**。这反映了 Rust 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (Apache-2.0) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或 AI Agent] --> I[入口边界：桌面 / Docker / CLI]
+    I --> C[dbx 核心：Rust 实现的统一客户端]
+    C --> D[多数据库适配层：MySQL PostgreSQL SQLite Redis MongoDB DuckDB SQL Server Dameng 等 70+]
+    C --> A[内置 AI 助手]
+    C --> M[MCP Server 接口]
+    D --> E[(外部数据库实例)]
+    A --> L[模型供应商：待核验]
+    M --> X[外部 MCP 客户端 / Agent：待核验]
+    C --> S[会话 状态 审计：待核验]
+```
 
 ## 定位判断
 

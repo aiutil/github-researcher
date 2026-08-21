@@ -35,18 +35,39 @@ GitHub Trending Daily 上榜。在 Agent 安全生态中填补了"自动化攻�
 4. **20+ 漏洞类别覆盖**：IDOR/权限提升、SQL/NoSQL/命令注入、SSRF/XXE、XSS、业务逻辑/竞态条件
 5. **CI/CD 原生集成**：GitHub Actions 自动扫描 PR，阻止不安全代码合并
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 编排层位于 Python 主体与 Docker 沙箱之间，向下隔离 Agent 行为（Recon/Attack/Validate/Report + HTTP Proxy/Browser/Terminal/Python Runtime），向上对 CI/CD 入口（GitHub Actions PR 拦截）与本地使用者负责 | 沙箱镜像与编排接口未在档案中给出具体协议；模型供应商可插拔性仅为推断 |
+| 主路径 | 目标输入 → Docker 沙箱内多 Agent 流水线（recon → attack → validate → report）→ 验证通过的 PoC 触发 Auto-fix PR；任一阶段失败可回退到 attack 重试 | 未给出实际状态机、消息队列与持久化层；"Auto-fix PR"机制细节缺失 |
+| 关键权衡 | 攻击覆盖广度（20+ 漏洞类别+完整工具箱）↔ 沙箱逃逸与 prompt injection 风险；CI/CD 原生拦截 ↔ 误报阻断合法合并；多 Agent 自治 ↔ LLM 质量依赖（GPT-5.4/Claude/Gemini 结果不稳） | 沙箱逃逸具体防护措施、误报率/漏报率基准、可观测性能力均未披露 |
+| 最小 PoC | 取一个 PR/小型靶场，在最小权限沙箱+审计日志下跑一次端到端扫描，关注 PoC 真实性、沙箱 CPU/内存基线、PR 拦截阈值误报率三项可度量项 | 沙箱资源画像、模型成本、退出路径未提供；结果稳定性只能凭多次重跑观察 |
+
 ## 架构启发
 strix 的"Agent 团队模拟攻击链"架构值得学习：不是单个 Agent 做所有事，而是按攻击阶段分角色。这种模式可推广到其他"多步骤专家协作"场景（如代码审查、数据分析）。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    A[输入: 目标代码] --> B[Recon Agent<br/>侦察+OSINT]
-    B --> C[Attack Agent<br/>漏洞利用]
-    C --> D[Validate Agent<br/>PoC 验证]
-    D --> E{验证通过?}
-    E -->|是| F[Report Agent<br/>报告生成]
-    E -->|否| C
-    F --> G[Auto-fix PR]
+A[目标输入: 代码/PR] --> B[编排层 Python]
+B --> C[Docker 沙箱]
+C --> D[Recon Agent]
+D --> E[Attack Agent + 工具箱<br/>HTTP Proxy / Browser / Terminal / Python Runtime]
+E --> F[Validate Agent<br/>PoC 验证]
+F --> G{验证通过?}
+G -->|是| H[Report Agent]
+G -->|否| E
+H --> I[GitHub Actions: Auto-fix PR / 拦截合并]
+C -.运行任意代码.-> J[(风险边界: 沙箱逃逸 / prompt injection<br/>待核验防护机制)]
+B -.模型调用.-> K[(外部边界: LLM 供应商<br/>GPT-5.4 / Claude / Gemini 等<br/>待核验接口)]
+subgraph 合规与法律
+L[司法管辖区合规风险<br/>待核验]
+end
+I -.触发.-> L
 ```
 
 ## 定位判断

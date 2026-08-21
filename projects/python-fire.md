@@ -39,8 +39,32 @@ Python Fire 的热度是**真实开发效率需求 + Google 背书**驱动。Pyt
 5. **交互模式:** `fire.Fire()` 无参数调用进入交互式 REPL，自动暴露所有变量
 6. **Help 自动生成:** 基于 docstring 自动生成 `--help` 输出
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | google/python-fire 是一个纯客户端 Python 库，位于"Python 脚本 ↔ Shell 调用方"边界：通过 `inspect` 与 `__dict__` 对任意 Python 对象做运行时内省，把对象结构投影为 argv 解析结果；不引入独立服务、不连外部模型或工具源。 | 基于档案"它解决的问题 / 自动内省 / 任意对象支持"段；未含网络协议、部署形态。 |
+| 主路径 | Shell argv → Fire 入口 → 对象内省（函数签名 / 类方法 / dict 键）→ 类型转换 → 调用目标对象 → 打印返回值；交互模式下进入 REPL 暴露当前变量。 | 基于档案"嵌套命令 / 自动类型转换 / 交互模式 / Help 自动生成"；未涉及异步或持久化路径。 |
+| 关键权衡 | 内省隐式性 vs CLI 可控性：Fire 换取零样板与上手速度，但牺牲了精细的子命令分组、参数校验 hook 与显式错误信息，复杂 CLI 场景应改用 Click/Typer。 | 基于档案"风险/局限"与"vs Click / vs Typer"段；类型推导的具体边界以源码为准。 |
+| 最小 PoC | 对一个已有的 Python 类执行 `fire.Fire(MyClass)`，验证方法自动成为子命令、基础类型（int/float/bool）可被字符串自动转换、`--help` 由 docstring 生成；以此确认隐式行为可控后再纳入内部脚本工具链。 | 可达项来自档案"关键技术亮点"六条；未证实的异步、类型注解支持标为待核验。 |
+
 ## 架构启发
 Python Fire 的核心启发是 **"CLI 是 Python 对象的投影"**。传统思维是"为脚本设计 CLI"；Fire 的思维是"Python 对象本身就是 CLI 的数据模型"。这种"对象即接口"思想影响了后续项目（如 Typer、Click 的部分设计）。更深层的启发是：**最佳的工具是让开发者忘记工具存在的工具**——Fire 让开发者只写普通 Python，CLI 自动出现。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  Shell[Shell argv 调用方] --> Entry[fire.Fire 入口]
+  Entry --> Inspect[对象内省: inspect 与 dict]
+  Inspect --> Convert[自动类型转换 int/float/bool]
+  Convert --> Invoke[调用目标 Python 对象 函数 类 字典 模块]
+  Invoke --> Return[返回值打印与 Help 输出 docstring 派生]
+  Entry -. 交互模式 .-> REPL[REPL 暴露当前变量]
+  Invoke -. 复杂 CLI 校验 hook .-> Risk[待核验: 参数校验与异步支持]
+```
 
 ## 定位判断
 **成熟工具型项目。** Python Fire 是快速脚本 CLI 化的首选工具，适合内部工具、数据脚本、原型。对于需要精细控制 CLI 体验（复杂子命令、参数验证）的正式产品，Typer 或 Click 更合适。

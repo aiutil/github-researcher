@@ -45,18 +45,33 @@ last_seen_date: "2026-05-18"
 3. **Telegram 交互**：原生 Telegram Bot 集成，移动端随时可用
 4. **自托管设计**：Docker 一键部署，数据完全本地化
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | trustclaw 是 Telegram↔模型↔Composio 工具三者之间的编排层，记忆由本地向量库承担，部署形态由用户自托管 | 边界来自档案中"向量记忆 + Composio 工具集成 + Telegram 交互"与 Docker 一键部署表述；具体模型供应商、向量库选型、部署拓扑未在档案中给出 |
+| 主路径 | 用户 Telegram 消息 → trustclaw 编排/运行时 → 向量记忆读写 + Composio 工具调用 → 会话状态回写 | 路径由档案"记忆持久化：向量存储确保 Agent 记住历史交互"和"Composio 集成：250+ 应用的工具调用能力"推导；具体协议、上下文窗口策略、并发模型未披露 |
+| 关键权衡 | 扩展性来自 Composio 250+ 应用，代价是工具层耦合单一供应商；自托管换得数据本地化，代价是缺少 Web UI、多渠道、可观测性与记忆高级治理 | 档案明确点名"Composio 依赖""Telegram 单一入口""向量记忆是基础方案，缺乏记忆优先级、遗忘机制、上下文窗口管理"；性能、权限模型、审计能力未给出 |
+| 最小 PoC | 在单 Telegram 账号下仅接入 1–2 个低权限 Composio 工具（如读类），开启向量记忆，验收数据是否留本地、可观测日志是否完整、Composio API 变更时退出路径是否清晰 | 档案已给出"单一渠道、最小工具权限、可审计日志"的采用建议与"自托管设计：Docker 一键部署"前提；SLA、限流、成本曲线未披露 |
+
 ## 架构启发
 trustclaw 代表了"个人 AI Agent = 记忆 + 工具 + 交互"的三层架构：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TD
-    U[用户] -->|Telegram| TC[trustclaw Agent]
-    TC -->|向量存储| VM[记忆层]
-    TC -->|工具调用| CO[Composio 工具层]
+flowchart LR
+    U[用户] -->|Telegram 消息| TG[Telegram Bot 入口]
+    TG --> ORC[trustclaw 编排/运行时<br/>TypeScript]
+    ORC -->|读写| VM[向量记忆层<br/>待核验: 具体向量库选型]
+    ORC -->|工具调用协议<br/>待核验| CO[Composio 工具层<br/>250+ 应用]
     CO --> G[GitHub]
     CO --> E[Gmail]
     CO --> N[Notion]
-    CO --> M[更多...]
+    ORC -->|回写会话/状态| ST[本地状态<br/>自托管边界: Docker 部署]
+    ORM[模型供应商<br/>待核验: 提供方与协议] --> ORC
 ```
 
 这个架构模式清晰，可复用于其他自托管 Agent 项目。

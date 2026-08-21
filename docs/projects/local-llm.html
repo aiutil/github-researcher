@@ -6,7 +6,7 @@
     <title>jamesob/local-llm | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -70,32 +70,62 @@
 <li>Batch size 调优</li>
 <li>磁盘 I/O 优化（尤其 MoE 模型）</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>这是一份"本地 LLM 工程化"的知识库/手册，由 Shell 脚本组织的 README/文档构成，不提供可集成到生产系统的运行时或 SDK；外部边界是硬件层、模型来源、推理引擎三类。</td>
+<td>仅基于分类"学习型"、语言"Shell"、tags（local-llm, llm-ops, knowledge-base, self-hosted, inference）及"不是代码项目、是工程手册"的自我定位；未审计仓库源码。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>阅读者按"硬件预算 → 模型规模 → 量化方案 → 推理后端（llama.cpp / Ollama / vLLM / LM Studio / MLX）→ 性能调优"这条决策路径消费内容，附带可执行 Shell 脚本作为操作载体。</td>
+<td>路径来自档案列出的四个关键技术亮点；脚本具体执行流程、依赖、副作用未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>知识的"覆盖面与新鲜度"（硬件/推理后端迭代极快） vs "单人维护的主观性与组织非标"；并非运行时层面的扩展性/可观测性权衡。</td>
+<td>风险章节明确"时效性、单人维护、非标准化、主观性强"；缺少量化指标（如更新频率、贡献者数）。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>克隆仓库后，在单台目标硬件（Apple Silicon 或 NVIDIA GPU 或纯 CPU）上挑一个 README 推荐的"RAM 预算→模型→量化→后端"组合，跑通对应 Shell 脚本，对照手册记录实测 KV cache / batch size / 磁盘 I/O 表现。</td>
+<td>档案未列出具体脚本名、依赖安装步骤、模型下载来源；需以源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>local-llm 的存在本身就是一个架构信号：</p>
-<pre class="mermaid">mindmap
-  root((Local LLM 工程化))
-    硬件层
-      RAM 预算 → 模型规模
-      GPU VRAM → 量化方案
-      磁盘 I/O → MoE 可行性
-    模型层
-      模型选择 → 场景匹配
-      量化策略 → 质量-性能平衡
-      上下文长度 → KV cache 配置
-    推理引擎层
-      llama.cpp → 最大兼容性
-      Ollama → 最佳体验
-      vLLM → 服务端场景
-      MLX → Apple Silicon
-    运维层
-      性能监控
-      成本计算
-      安全隔离
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A[读者/架构师] --> B[local-llm 知识库<br/>Shell 脚本 + 文档]
+  B --> C[硬件层<br/>RAM/GPU/磁盘 预算决策树]
+  B --> D[模型与量化层<br/>int4/int8/fp16 · GPTQ/AWQ/GGUF/exl2]
+  B --> E[推理后端<br/>llama.cpp · Ollama · vLLM · LM Studio · MLX]
+  C --> F[本地运行环境<br/>Apple Silicon / NVIDIA GPU / CPU-only]
+  D --> F
+  E --> F
+  F --> G[性能与运维状态<br/>KV cache · batch size · 磁盘 I/O]
+  G -.待核验.-> H[监控/成本/安全隔离<br/>档案仅列标题，未给组件]
+  B -.时效性 / 单人维护风险.-> I[知识陈旧风险边界<br/>待核验：更新频率与贡献者]
+  classDef boundary fill:#fff,stroke:#999,stroke-dasharray:4 2;
+  class H,I boundary;
 </pre>
 <p>local-llm 的价值在于把这张思维导图展开为可操作的决策树。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>学习型项目。</strong> 不是工具，不是平台。但它填补了 local LLM 工程化的知识空白。对于正在评估"是否在内部部署 local LLM"的架构师，这是很好的起点参考。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>时效性风险</strong>：LLM 硬件和推理引擎更新极快，知识库可能快速过时</li>
 <li><strong>单人维护</strong>：jamesob 个人经验有限，覆盖面有边界</li>
@@ -103,7 +133,7 @@
 <li><strong>主观性强</strong>：推荐基于个人经验，可能与社区共识有偏差</li>
 <li><strong>非工具非框架</strong>：不能直接集成到系统中，参考价值为主</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -130,9 +160,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是（低频）。</strong> 每 2-3 个月检查一次更新即可。关注硬件推荐和推理后对比是否有大更新。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否被更大的社区知识库吸收（如 Awesome lists）</li>
 <li>是否有社区贡献扩展覆盖面</li>

@@ -40,10 +40,35 @@ JavaScript in-page GUI agent——零依赖注入式 DOM 控制，用自然语�
 4. **动作空间设计**：将网页操作抽象为有限的 JS 函数集（click、type、scroll、extract），比自由坐标点击更可靠
 5. **无障碍树优化**：利用 ARIA 树做元素定位，天然兼容无障碍场景
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | page-agent 是 TypeScript 编写的 in-page GUI agent，定位为浏览器内 JS 注入层，向上游 LLM/agent 提供 DOM 级执行能力，通过 MCP 协议被消费；不托管模型，也不替代浏览器本身 | 证据：标签 in-page-agent/gui-agent/mcp、语言 TypeScript、定位"零依赖注入式 DOM 控制"；具体入口形态（扩展 vs 一次性脚本）与持久化机制未在档案中给出 |
+| 主路径 | 用户自然语言指令 → MCP 入口 → 编排层用 DOM MutationObserver/accessibility tree 感知页面 → 调用受限 JS 动作集（click/type/scroll/extract） → DOM 改写结果回写到页面 | 证据来自"关键技术亮点"条目；动作集的完整 API 表面、是否含等待/重试、会话是否被持久化属于"待核验" |
+| 关键权衡 | 走 DOM/无障碍树而非多模态视觉路线，牺牲 SPA/Canvas/WebGL/登录墙场景的覆盖率，换取无需视觉模型、token 与延迟更低的部署门槛 | 证据：风险/局限条目直接列出 SPA/Canvas/WebGL、验证码、JS 注入被站点拦截等失效边界；多模态对比在"vs UI-TARS-desktop/Browser Use"段落 |
+| 最小 PoC | 在单浏览器扩展形态下，对一个静态/服务端渲染的表单页（如简单登录后 CRUD 表单）跑通"自然语言 → 点击/输入/提取"端到端，并把 DOM MutationObserver 触发频率、动作失败率、token 消耗作为验收指标 | 证据：双模式（扩展+注入）、MCP server、有限动作集均来自档案；具体部署形态、SLO 阈值、撤销路径在档案中未给出 |
+
 ## 架构启发
 - **"非视觉"GUI agent 路线被验证**：证明了纯 DOM/语义驱动可以覆盖大量网页自动化场景，不必走多模态重路线
 - **agent 能力下沉到浏览器**：将 agent 逻辑注入页面而非远程控制浏览器，减少网络往返
 - **MCP 作为标准接口**：page-agent 的 MCP server 模式是 agent-native 工具的典型范例
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 LLM/Agent] -->|自然语言指令| MCP[MCP 协议入口]
+    MCP --> C[项目编排与运行时 TypeScript]
+    C -->|读取 DOM 文本与 ARIA 树| DOM[页面 DOM 与无障碍树]
+    C -->|调用受限动作集 click/type/scroll/extract| ACT[JS 动作空间]
+    ACT --> DOM
+    C --> S[会话与审计日志 待核验]
+    C --> R[风险边界 SPA Canvas WebGL 验证码 站点 CSP 拦截注入]
+    DOM -.不可观测.-> R
+```
 
 ## 定位判断
 **差异化工具型项目**。不是通用 agent 平台，而是网页操作这个垂直场景的专用执行器。在 MCP 生态中扮演"手"的角色，与负责"看"和"想"的 LLM 形成互补。

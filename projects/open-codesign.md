@@ -50,9 +50,40 @@ Open-source Claude Design alternative. One-click import your Claude Code / Codex
 5. **> Turn prompts into polished artifacts — locally, openly, and with whichever model you already pay f**
 6. **[Website](https://opencoworkai.github.io/open-codesign/) · [Quickstart](#quickstart) · [What's new](**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | open-codesign 是一个 TypeScript 实现的 BYOK 编排层，位于用户提示词与多模型供应商（Claude/GPT/Gemini/Kimi/GLM/Ollama）之间，本地优先，输出 prototype/slides/PDF | 基于分类"工具型"、标签 byok/ai-design/anthropic 与一句话定位推断；具体入口、密钥注入路径与产物渲染管线未在档案中描述，待核验 |
+| 主路径 | 提示词 → 本地应用入口（CLI/Web 待核验）→ BYOK 密钥读取 → 多模型路由调用 → 产物（原型/幻灯片/PDF）落盘 | 档案仅明确"prompt → prototype / slides / PDF"与多模型支持；运行时形态、协议（HTTP/MCP/CLI）与会话状态机制未披露 |
+| 关键权衡 | BYOK + local-first 降低厂商耦合与数据外泄面，但换来多供应商适配成本与密钥本地管理责任；TypeScript/MIT 利于集成但 78 open issues 与较新创建时间（2026-04-18）提示成熟度风险 | 推断自 byok/local-first 定位与 78 open issues 计数；性能、协议、安全细节均未给出 |
+| 最小 PoC | 用单一模型（如本地 Ollama）导入 BYOK 密钥生成一份 prototype + 一份 PDF，验证密钥管理、产物格式、可审计日志与卸载/换模成本后再扩展多模型与团队接入 | 由定位与"local-first、BYOK、可换模型"反推；具体命令、产物 schema 与日志方案档案未提供 |
+
 ## 架构启发
 
 从 OpenCoworkAI/open-codesign 的设计来看，核心思路是 **"Open-source Claude Design alternative. One-click import your"**。这反映了 TypeScript 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[用户提示词] --> I[本地应用入口 形态待核验]
+  I --> K[BYOK 密钥本地存储 路径待核验]
+  K --> R[项目编排层 TypeScript]
+  R --> M1[Claude API]
+  R --> M2[GPT API]
+  R --> M3[Gemini API]
+  R --> M4[Kimi GLM Ollama 等]
+  R --> O[产物 prototype slides PDF]
+  R --> S[会话 状态 审计日志 实现待核验]
+  M1 --> R
+  M2 --> R
+  M3 --> R
+  M4 --> R
+  O -.导出.-> U
+```
 
 ## 定位判断
 

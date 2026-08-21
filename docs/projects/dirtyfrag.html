@@ -6,7 +6,7 @@
     <title>Dirty Frag | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,29 +48,75 @@
 <li><strong>影响范围极广</strong>：从 2017 年（cac2661c53f3）至今的主流内核全部受影响</li>
 <li><strong>已验证多发行版</strong>：Ubuntu 24.04、RHEL 10.1、openSUSE Tumbleweed、Fedora 44 等</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目本质是 Linux 内核漏洞利用 PoC，作用面是 Linux 内核 Page-Cache 子系统（xfrm-ESP + RxRPC），而非数据/检索系统；外部边界为内核页缓存与受影响发行版</td>
+<td>档案明确为"安全研究""C""exploit/CVE"项目，未给出非漏洞利用组件</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户态利用代码 → xfrm-ESP Page-Cache Write → RxRPC Page-Cache Write → 本地提权 / 不可信文件覆写；触发链路无竞态</td>
+<td>仅基于档案"链式利用 xfrm-ESP + RxRPC Page-Cache Write，确定性触发无需竞态"描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>攻击确定性 vs. 防御窗口：确定性漏洞压缩了防御响应时间；同时 xfrm 已修补、RxRPC 无补丁，补丁覆盖不均衡</td>
+<td>仅有"xfrm 已修补、RxRPC 尚无补丁"事实，具体补丁版本与回溯范围未在档案中</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在未打 RxRPC CVE-2026-43500 补丁的内核上（如档案列出的 Ubuntu 24.04 / RHEL 10.1 / openSUSE Tumbleweed / Fedora 44 之一）复现链式提权；验收应包含受影响内核版本核验与回滚路径</td>
+<td>档案仅确认多发行版"已验证"与 PoC 已公开，未给出具体复现步骤与版本号范围</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Linux 内核 Page-Cache 管理的权限模型存在结构性缺陷</li>
 <li>Dirty Pipe → Copy Fail → Dirty Frag 表明这是一个 bug class，不是孤立事件</li>
 <li>内核审计对基础文件系统代码路径的投入严重不足</li>
 <li>确定性漏洞比竞态漏洞更危险——攻击可靠性高，防御窗口小</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[用户态利用入口 PoC 已公开] --> X[xfrm-ESP Page-Cache Write CVE-2026-43284]
+    X --> R[RxRPC Page-Cache Write CVE-2026-43500]
+    R --> K[Linux 内核 Page-Cache 子系统 cac2661c53f3 起受影响]
+    K --> P[本地提权 LPE 不可信文件覆写]
+    X --> S[补丁状态 xfrm 已修补]
+    R --> N[补丁状态 RxRPC 尚无补丁 待核验]
+    K --> D[受影响发行版 Ubuntu 24.04 RHEL 10.1 openSUSE Tumbleweed Fedora 44 等]
+    P --> E[Dirty Pipe 家族 bug class Copy Fail CVE-2026-31431 Dirty Pipe CVE-2022-0847]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>安全研究型项目。不属于基础设施，但对所有 Linux 运维架构有重大影响。短期高热度，中长期作为安全审计参考。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>RxRPC 部分尚无补丁</strong>，企业环境仍处于暴露状态</li>
 <li>PoC 公开意味着攻击门槛极低，可能被恶意利用</li>
 <li>此类漏洞可能还有同族未发现的其他实例</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Copy Fail (CVE-2026-31431)</strong>：同周披露，同为 9 年老洞，Dirty Pipe 家族</li>
 <li><strong>Dirty Pipe (CVE-2022-0847)</strong>：2022 年的原始漏洞，开启了 Page-Cache Write 这个 bug class</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>短期持续关注补丁状态。作为 bug class 的研究参考，中长期也值得关注是否出现更多同族漏洞。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>CVE-2026-43500（RxRPC 部分）的补丁进度</li>
 <li>是否有更多同族 Page-Cache Write 漏洞被披露</li>

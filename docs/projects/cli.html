@@ -6,7 +6,7 @@
     <title>googleworkspace/cli | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,59 @@
 <li><strong>Gemini CLI Extension 架构</strong>：设计为 Gemini CLI 的原生扩展，无缝集成 AI 工作流</li>
 <li><strong>JSON 原生输出</strong>：所有命令支持 JSON 输出，管道友好，适合脚本和 agent 消费</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>googleworkspace/cli 是单一 Rust 二进制入口，向上承接使用者与上游系统（含 Gemini CLI 扩展调用方），向下通过 Google OAuth 统一认证调用 Workspace 各服务 API。</td>
+<td>边界划分依据档案"统一 OAuth 认证""Rust 单二进制""Discovery API 动态构建"；具体 OAuth 范围、token 存储方式未在档案中说明。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户→CLI 入口→Discovery API 动态生成子命令→OAuth 认证→调用目标 Workspace 服务（Drive/Gmail/Calendar/Sheets/Docs/Chat/Admin）→以 JSON 输出回写。</td>
+<td>主路径各环节均见档案"关键技术亮点"和"它解决的问题"；具体协议（gRPC/REST）、分页策略未述。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>动态发现带来的扩展速度 vs Google API 变更/限流导致的命令失效与不稳定；本地 CLI 灵活性 vs 企业 OAuth 配置与权限管控复杂度。</td>
+<td>权衡两端在档案"风险/局限"和"架构启发"中均被明确点名；具体的限流配额数值、企业 SSO 流程未提供。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取单一 Workspace 服务（如 Drive 或 Gmail）在最小 OAuth scope 下完成一次读操作 JSON 输出的端到端验证，并确认 Gemini CLI Extension 接入路径可用。</td>
+<td>PoC 范围对应档案强调的"JSON 原生输出""Gemini CLI Extension 架构"；具体 scope 列表与扩展协议须以项目文档核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>CLI 作为 agent 接口</strong>：将 API 操作封装为 CLI 命令，是让 agent 使用工具最简洁的架构</li>
 <li><strong>动态发现模式</strong>：基于 API discovery 自动生成能力，而非手动逐个封装，扩展性极强</li>
 <li><strong>一个工具一个认证</strong>：统一认证层大幅降低企业工具链复杂度</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或 Gemini CLI Extension] --> I[CLI 入口与统一 OAuth 边界]
+    I --> D[Discovery API 动态生成子命令]
+    D --> C[项目核心: googleworkspace/cli Rust 二进制]
+    C --> A[Google Workspace 服务: Drive Gmail Calendar Sheets Docs Chat Admin]
+    C --> J[JSON 原生输出 回写管道]
+    C --> R[风险边界: Google API 限流与变更 待核验企业 OAuth 配置复杂度]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>高价值工具型项目</strong>。是 Google Workspace 生态和 AI agent 之间的关键桥梁。定位清晰，不是平台而是工具，但工具本身的杠杆效应很大。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>Google 项目维护风险</strong>：Google 有砍项目的传统，需关注长期承诺</li>
 <li><strong>企业认证复杂</strong>：Workspace 企业版的 OAuth 配置可能复杂</li>
@@ -72,16 +116,16 @@
 <li><strong>API 限流</strong>：Google API 有配额限制，大规模批量操作受限</li>
 <li><strong>依赖 Google API 稳定性</strong>：API 变更可能导致命令失效</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Google Apps Script</strong>：Apps Script 是云端脚本，此 CLI 是本地工具，互补</li>
 <li><strong>vs 各类 Google API SDK</strong>：SDK 需要写代码，CLI 直接命令行操作</li>
 <li><strong>vs Microsoft Graph CLI</strong>：微软生态的等价物，各有生态壁垒</li>
 <li><strong>vs zapier/Make</strong>：自动化平台更可视化但更重，CLI 更灵活更轻量</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪。</strong> 如果 Google 持续投入，这会成为 AI agent 操作 Google 生态的标准接口。对做 Google Workspace 自动化的开发者来说是必备工具。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否覆盖所有 Google API（不只 Workspace）</li>
 <li>企业版功能支持（Admin SDK、Audit logs 等）</li>

@@ -14,7 +14,7 @@ tags: ["agent-skills", "agentic", "ai-agents", "ai-design", "ai-editor", "byok",
 url: "https://github.com/nexu-io/html-anything"
 ---
 
-# nexu-io/html-anything — ✨ The agentic HTML editor — your local AI agent writes the HTML, you ship it. 🚀 
+# nexu-io/html-anything — ✨ The agentic HTML editor — your local AI agent writes the HTML, you ship it. 🚀
 
 ## 一句话定位
 
@@ -47,9 +47,36 @@ url: "https://github.com/nexu-io/html-anything"
 
 1. **✨ The agentic HTML editor — your local AI agent writes the HTML, you ship it. 🚀 75 Skills × 9 Surfaces (magazine · deck · poster · XHS / tweet · prototype · data report · Hyperframes) 🛡️ Sandboxed preview · 📤 1-click to WeChat / X / Zhihu / HTML / PNG 🔑 Zero API key — Claude Code / Cursor / Codex / Gemini / Copilot / OpenCode / Qwen / Aider.**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本地 AI Agent（Claude Code / Cursor / Codex / Gemini / Copilot / OpenCode / Qwen / Aider 等）写入 HTML，配套 75 Skills × 9 Surfaces（magazine / deck / poster / XHS-tweet / prototype / data report / Hyperframes）输出形态，附带沙箱预览与一键导出（WeChat / X / Zhihu / HTML / PNG）。 | 仅 README 描述，未含源码级模块拆分；表面（Surface）与 Skill 内部组成未披露。 |
+| 主路径 | 本地 Agent 生成 HTML → 沙箱预览 → 一键发布/导出到外部平台或本地文件（HTML/PNG）。BYOK 标签暗示凭据由用户侧管理，但未在档案中给出模型调用细节。 | "主路径"由 README 措辞推断；缺少协议、调用栈与渲染实现说明。 |
+| 关键权衡 | 多 IDE/Agent 适配广度（8 家客户端） vs. 单一 HTML 中介产物的稳定性、可移植性；"零 API Key"宣称与 BYOK 标签之间存在口径不一致，需在采用前澄清。 | 档案同时出现 "Zero API key" 与 "byok" topic，未提供计费与代理方式证据。 |
+| 最小 PoC | 选一种主流 Agent（如 Claude Code）+ 一种 Surface（如 deck 或 poster）+ 一个导出目标（如 HTML），跑通 Agent→沙箱预览→导出最小链路；将"零 API Key"含义、凭据归属与沙箱隔离强度列为验收项。 | 项目未公开沙箱实现细节与凭据流，"待核验"项需读源码或文档确认。 |
+
 ## 架构启发
 
 从 nexu-io/html-anything 的设计来看，核心思路是 **"✨ The agentic HTML editor — your local AI agent writes the H"**。这反映了 HTML 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (Apache-2.0) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[本地 AI Agent<br/>Claude Code / Cursor / Codex / Gemini<br/>Copilot / OpenCode / Qwen / Aider] --> B[Agentic HTML Editor 核心<br/>75 Skills × 9 Surfaces<br/>magazine · deck · poster · XHS-tweet<br/>prototype · data report · Hyperframes]
+    B --> C[沙箱预览<br/>Sandboxed Preview 待核验]
+    B --> D[一键导出<br/>WeChat / X / Zhihu / HTML / PNG]
+    B --> E[凭据与模型接入<br/>Zero API Key 与 BYOK 口径 待核验]
+    A --> E
+    E --> F[模型或推理服务<br/>供应商与协议 待核验]
+    F --> A
+    C --> G[用户审阅与发布]
+    D --> G
+    G --> H[外部平台或本地文件<br/>WeChat · X · Zhihu · HTML · PNG]
+```
 
 ## 定位判断
 

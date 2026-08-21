@@ -52,24 +52,41 @@ AI Agent 在执行任务时需要访问文件系统、网络、API 密钥等敏�
 - Claude Code / Codex / Copilot / OpenCode / OpenClaw / Ollama / Pi
 - 社区可贡献新 Agent 镜像
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | OpenShell 是 Agent 与外部资源（文件系统、网络、进程、LLM 后端）之间的隔离编排层，NVIDIA 官方 + Rust 实现，目前仍为 Alpha 阶段。 | 仅依据档案中的项目描述、标签、热度数据；具体组件实现、协议、部署形态未在档案中给出源码级证据。 |
+| 主路径 | Agent 启动 → Gateway/Sandbox 受理 → 四层策略引擎静态层（FS/进程）锁定 + 动态层（网络/推理）热重载放行 → 凭证通过 Provider 抽象运行时注入 → 可选 GPU 直通（CDI 优先，回退 NVIDIA Container Toolkit）执行推理。 | 路径描述来自档案"策略引擎/凭证管理/GPU 直通/Agent 支持"章节；未含具体协议、API 形态或会话持久化细节。 |
+| 关键权衡 | 隔离强度（GPU 直通、四层策略、凭证不落盘）与灵活性（动态层热重载、多 Agent 镜像生态）之间的取舍；同时受 ELv2 引擎许可与 Alpha 阶段多租户缺位的商业化约束。 | 权衡判断基于档案"风险/局限"与"关键技术亮点"段落；性能数据、生产案例、可观测性细节档案未提供。 |
+| 最小 PoC | 单租户本地部署，固定一个 Agent（Claude Code 或 Codex）+ 一组受限文件系统/网络 YAML 策略 + 仅启用静态层 + 走本地 Ollama 路径（关闭 GPU 直通），以验证沙箱拦截、凭证注入、热重载三个最小能力。 | PoC 设计仅引用档案中明示的 Agent 列表、策略分层、GPU 模式开关与 Docker/Podman/MicroVM 依赖；具体编排、监控、退出路径须自行核验。 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "OpenShell 架构"
-        Gateway["Gateway<br/>控制面 API<br/>Auth 边界"]
-        Sandbox["Sandbox<br/>容器隔离<br/>策略路由"]
-        Policy["Policy Engine<br/>四层策略执行"]
-        Privacy["Privacy Router<br/>凭证剥离<br/>推理路由"]
-    end
-    
-    Agent["AI Agent<br/>Claude/Codex/..."] --> Sandbox
-    Sandbox --> Policy
-    Policy -->|允许| Internet["外部服务"]
-    Policy -->|拒绝| Block["🚫 拦截"]
-    Policy -->|推理路由| Privacy
-    Privacy --> LLM["LLM 后端"]
+flowchart LR
+    Agent["AI Agent<br/>Claude Code / Codex / Copilot /<br/>OpenCode / OpenClaw / Ollama / Pi<br/>（待核验：实际接入清单）"]
+    Gateway["Gateway<br/>控制面 API / Auth 边界<br/>（待核验：协议与鉴权细节）"]
+    Sandbox["Sandbox<br/>容器隔离（Docker / Podman / MicroVM）<br/>Alpha 阶段 / 单租户"]
+    Policy["Policy Engine<br/>声明式 YAML<br/>静态层：FS 锁定 + 进程锁定<br/>动态层：网络热重载 + 推理热重载"]
+    Cred["Credential Provider<br/>运行时注入，不落盘<br/>覆盖 Claude/Codex/Copilot/OpenCode 凭证<br/>（待核验：Provider 抽象接口）"]
+    Ext["外部资源边界<br/>L7 HTTP 方法+路径粒度 / 拒绝拦截"]
+    GPU["GPU 直通<br/>CDI 优先 → 回退 NVIDIA Container Toolkit<br/>实验性 / NVIDIA 硬件绑定"]
+    Risk["风险与状态边界<br/>ELv2 引擎许可（商业受限）<br/>SDK Apache 2.0<br/>Alpha / 多租户缺失 / K8s Helm 待开发"]
+
+    Agent --> Gateway
     Gateway --> Sandbox
+    Sandbox --> Policy
+    Policy -->|允许 + 凭证剥离| Ext
+    Policy -->|拒绝| Ext
+    Cred --> Sandbox
+    Sandbox --> GPU
+    Sandbox --> Risk
+    Policy --> Risk
 ```
 
 **架构师启发：**

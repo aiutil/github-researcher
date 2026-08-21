@@ -6,7 +6,7 @@
     <title>TileKernels | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,11 +54,61 @@
 <li><strong>高层建模层:</strong> 提供 <code>torch.autograd.Function</code> 封装，将底层内核组合成可训练的 PyTorch 层（engram gate、mHC pipeline）</li>
 <li><strong>接近硬件极限:</strong> README 明确指出"大部分内核接近计算强度和内存带宽的极限"</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TileKernels 是用 tilelang DSL 编写的 GPU 内核库，覆盖 MoE 路由、FP8/FP4 量化、Engram 门控、mHC 等 DeepSeek 专用算子，通过 <code>torch.autograd.Function</code> 暴露给 PyTorch；运行时绑定 tilelang + CUDA 13.1+，仅支持 SM90/SM100</td>
+<td>算子集合、autograd 封装与硬件要求见 README 关键技术亮点与门槛段；具体模块路径与编译产物须源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游 PyTorch 模型调用 autograd Function → tilelang DSL 描述的 tile 级计算 → 编译器生成 CUDA 内核 → 在 Hopper/Blackwell 上执行算子（MoE 路由 / 量化 / 注意力变体 / Engram / mHC）</td>
+<td>DSL→CUDA 编译链由 tilelang 承担；性能数字、调度策略与具体 tile 参数 README 未给出，需基准核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>DSL 可维护性 vs tilelang 生态不成熟；硬件极限性能 vs 仅限 SM90/SM100 的高门槛；DeepSeek 架构专用算子丰富度 vs 通用性不足（Triton/cuDNN 覆盖更广）</td>
+<td>维护活跃度"初始发布密集，后续节奏较慢"、tilelang 深度绑定、硬件门槛均来自档案风险段；与 Triton/FA 的具体性能差异档案未提供实测</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单卡 Hopper/Blackwell 环境上跑通：tilelang + CUDA 13.1+ 安装 → 加载仓库中 MoE 路由或 FP8 量化内核示例 → 以 <code>torch.autograd.Function</code> 接入 PyTorch 最小模型 → 验证前向/反向数值正确性与吞吐基线</td>
+<td>PoC 步骤基于 README "torch.autograd.Function 封装"与门槛段推断；具体示例脚本、依赖版本号、benchmark 命令档案未列，须以源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>TileKernels 代表了 GPU 内核开发的<strong>DSL 化趋势</strong>：从手写 CUDA → Triton → tilelang，抽象层逐步提升，让开发者聚焦算法定义而非微架构细节。更深层的是，它揭示了一个产业现实：<strong>顶级 AI 公司的竞争力已不仅在于模型架构，更在于为自有架构定制的内核生态</strong>。DeepSeek 开源这些内核，既是技术分享，也是在定义其架构的"事实标准"——当 MLA、MoE 的优化内核以 DeepSeek 的实现为参照系时，整个推理生态都会向其靠拢。tilelang 作为承载这些内核的 DSL，也在借势扩大自己的影响力，形成"模型架构→专用内核→编程 DSL"的闭环飞轮。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[PyTorch 模型与上游调用方] --> B[torch.autograd.Function 封装层]
+    B --> C[tilelang DSL 描述的 tile 级计算]
+    C --> D[tilelang 编译器]
+    D --> E[CUDA 内核 SM90 SM100]
+    E --> F[GPU 硬件 Hopper Blackwell]
+    A -- 权重梯度 反向 --> B
+    B --> G[算子集合 MoE 路由 FP8 FP4 量化 Engram 门控 mHC 注意力变体 待核验]
+    G --> C
+    D --> H[tilelang 生态与维护节奏 风险边界 待核验]
+    H --> C
+    E --> I[硬件门槛 限 SM90 SM100 风险边界]
+    I --> F
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选。</strong> 推理内核是 LLM 推理栈最底层的基础设施。TileKernels 目前专注于 DeepSeek 系列架构的算子优化，若 tilelang 生态成熟，它有望从"DeepSeek 专用内核库"演化为"通用 GPU 内核开发平台"——类似 cuDNN 之于 NVIDIA 的定位，但以开源、DSL 驱动的方式。平台化潜力取决于 tilelang 能否吸引更多模型架构的贡献。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>硬件门槛极高:</strong> 仅支持 SM90/SM100（Hopper/Blackwell），大量 A100/4090 用户无法直接使用</li>
 <li><strong>维护节奏偏慢:</strong> 初始发布后 push 活跃度下降，内核更新频率不确定</li>
@@ -67,7 +117,7 @@
 <li><strong>受众极窄:</strong> 受益者限于具备高端 GPU + 内核工程能力的团队</li>
 <li><strong>竞争激烈:</strong> Triton（OpenAI）生态成熟，FlashAttention 3 已覆盖主流注意力，tilelang 需证明差异化优势</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs FlashAttention 2/3:</strong> FA 聚焦注意力；TileKernels 覆盖 MoE/量化/Engram/mHC 等更广算子，且用 DSL 而非 C++/CUDA</li>
 <li><strong>vs Triton (OpenAI):</strong> 都是 GPU 编程抽象，Triton 更成熟（被 vLLM 等广泛采用），tilelang 更新但专注于 tile 级表达力</li>
@@ -75,9 +125,9 @@
 <li><strong>vs cuDNN/cuBLAS:</strong> NVIDIA 官方闭源库覆盖通用算子，TileKernels 补充前沿架构专用算子</li>
 <li><strong>vs DeepGEMM:</strong> 同为 DeepSeek 开源的高性能库，GEMM 聚焦矩阵乘法，TileKernels 聚焦更广算子</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，高优先级。</strong> DeepSeek 的内核工程能力是其核心壁垒，TileKernels 直接展示了其最前沿的算子优化实践。对 AI Infra 团队，这是研究 FP8/FP4 量化内核、MoE 路由优化的稀有开源参考。对推理框架开发者，关注哪些算子被纳入、性能数据如何，有助于提前布局适配。对 GPU 编程语言研究者，tilelang 的 DSL 设计理念值得学习。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>tilelang 社区是否独立发展壮大，吸引非 DeepSeek 架构的贡献</li>
 <li>是否发布与 Triton/FlashAttention 的性能基准对比数据</li>

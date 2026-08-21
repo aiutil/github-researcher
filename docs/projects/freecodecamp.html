@@ -6,7 +6,7 @@
     <title>freeCodeCamp/freeCodeCamp | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,74 @@
 <li><strong>认证项目:</strong> 每个认证需要完成 5 个真实项目（如构建响应式 Web 应用），强调实践</li>
 <li><strong>技术栈:</strong> React / Node.js / MongoDB 后端，D3.js 数据可视化，全部现代技术</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>freeCodeCamp 是面向学习者的教育平台入口，GitHub 仓库承载课程 JSON/Markdown 与平台代码（React / Node.js / MongoDB / D3.js），不是模型/工具编排型系统</td>
+<td>档案未给出具体部署形态、API 边界与第三方依赖清单，源码未审计</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习者浏览器内编码 → 提交项目 → 自动化测评（Chai.js）运行测试用例 → 反馈与认证进度累积 → 论坛社区补充</td>
+<td>档案仅描述"提交项目后自动运行测试用例"，未给出请求链路、持久化与认证颁发流程细节</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>课程内容（JSON/Markdown）与平台代码分离，利于 PR 驱动的内容更新；但内容更新速度滞后于技术迭代，AI/LLM 课程覆盖不足</td>
+<td>档案仅说明内容与平台分离的工程化思路，未提供版本/发布节奏与课程覆盖率量化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地拉取仓库，复现单条 curriculum challenge 的浏览器内编码 → Chai.js 测试用例 → 通过/失败的反馈闭环</td>
+<td>档案未给出具体运行命令、依赖版本与测试框架配置，需以源码与 docs 核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>freeCodeCamp 的技术架构服务于教育目标而非炫技。课程内容以 JSON / Markdown 结构化存储，配合客户端渲染，实现了"内容与平台分离"——任何人可以提交课程改进 PR。其自动化测评系统（curriculum challenges）将"学习目标"转化为"可测试的行为"，这是一个很好的教育工程化范式：把抽象的"学会 X"拆解为具体的"能完成 Y 任务"。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[学习者浏览器] --> I[入口与身份边界<br/>认证/会话 待核验]
+    I --> C[课程编排与运行时<br/>客户端渲染 待核验]
+    C --> M[课程内容存储<br/>JSON / Markdown]
+    C --> T[自动化测评<br/>Chai.js 测试用例]
+    T --> C
+    C --> S[认证进度与论坛<br/>状态/社区边界]
+    M --> C
+    S --> R[风险边界<br/>内容更新滞后 维护集中 待核验]
+    S --> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>教育资源型项目。</strong> freeCodeCamp 的核心价值不是代码技术，而是教育内容和社区。它是一个"产品化的开源项目"——代码开源，但实际运营由非营利组织执行。GitHub 仓库更多是课程内容的载体，而非传统意义上的"开发者工具库"。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>课程更新滞后:</strong> 技术迭代快，但课程更新速度跟不上（如 AI / LLM 相关课程较少）</li>
 <li><strong>深度不足:</strong> 课程以入门到中级为主，高级主题覆盖薄弱</li>
 <li><strong>认证认可度:</strong> 虽有认证，但在求职市场的认可度仍不及科班学位或 Bootcamp</li>
 <li><strong>维护集中:</strong> 核心维护团队较小，高度依赖创始人 Quincy Larson</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs The Odin Project:</strong> TOP 更注重项目驱动和社区学习，fCC 更注重课程体系和认证</li>
 <li><strong>vs Codecademy:</strong> Codecademy 是商业产品（Freemium），fCC 完全免费</li>
 <li><strong>vs CS50:</strong> CS50 是哈佛课程（学术深度），fCC 是自学平台（覆盖广度）</li>
 <li><strong>vs Scrimba:</strong> Scrimba 交互式视频教学，fCC 是纯文本 + 编码</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级。</strong> freeCodeCamp 作为教育平台已高度成熟，技术架构变化不大。值得关注的是：是否新增 AI / LLM 相关课程（反映市场趋势）、认证体系是否升级、以及开源教育模式的可持续性。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>AI / 机器学习课程体系的完善程度</li>
 <li>是否引入 AI 辅助教学（如 AI 导师 / 代码审查）</li>

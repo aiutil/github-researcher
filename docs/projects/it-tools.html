@@ -48,27 +48,75 @@
 <li><strong>i18n 支持:</strong> 多语言（英、法、中等），适配全球用户</li>
 <li><strong>单页即开:</strong> 单页 route 切换，无刷新体验</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>it-tools 是纯前端聚合站点（Vue + TS + Vite + Naive UI），不含模型供应商或后端 API；边界止于浏览器端 100+ 工具路由与 PWA 离线缓存</td>
+<td>档案仅明示前端栈与 PWA/Docker 部署；后端服务、构建产物管线、CI/CD 组成未在档案中描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户访问 → SPA 路由切换加载对应工具组件 → 工具在浏览器本地完成编解码/格式化/解析 → 可选通过 Docker 自托管由 Nginx/静态服务对外暴露</td>
+<td>档案仅说明"单页 route 切换"与"官方提供 docker-compose"；反向代理、CDN、HTTPS 终止点未述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>GPL-3.0 强 copyleft 与"自托管无追踪"定位：商业 fork 必须开源，但换来免广告/免追踪与企业内网部署自由；广度优先导致单工具深度有限，专业场景仍需专项工具替代</td>
+<td>档案明示 GPL-3.0 与"广度×贡献活跃度"壁垒；具体工具覆盖深度、企业内 fork 合规案例未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单机 <code>docker-compose up</code> 拉起官方镜像，浏览器访问验证 Base64/JSON/Crontab 等 3 个常用工具与 PWA 离线安装，重点验收：①无外部追踪请求；②离线可用性；③版本升级回滚路径</td>
+<td>档案仅声明官方提供 docker-compose 与 PWA 离线；镜像名、端口、数据卷、升级策略等部署细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"通用工具站的 GitHub-first 模式"已被多个项目验证可行——it-tools 把"在线工具站"从 Web 2.0 时代的流量生意重新拉回到开源社区产品，是值得借鉴的开源运营样本。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者/开发者浏览器] --> I[入口与身份边界<br/>HTTPS + PWA manifest<br/>待核验: 反代/鉴权]
+    I --> R[SPA 路由层<br/>Vue Router 单页切换]
+    R --> T1[工具组件 A<br/>如 Base64 编解码]
+    R --> T2[工具组件 B<br/>如 JWT 解析]
+    R --> T3[工具组件 C<br/>如 Crontab 生成器<br/>...100+ 路由]
+    T1 --> S[会话与离线状态<br/>Service Worker + 待核验: IndexedDB]
+    T2 --> S
+    T3 --> S
+    S --> D[自托管部署边界<br/>Docker Compose + 静态资源<br/>待核验: 镜像/端口/卷]
+    D --> I
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 / 开发者聚合工具站标杆。</strong> 在 Devtoys 等桌面替代品出现后，it-tools 仍稳居 Web 端第一。其生态位不易被替代——聚合工具的真正壁垒是"广度 × 社区贡献活跃度"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>GPL-3.0 严格 copyleft:</strong> 商业 fork 必须开源，对企业自家"私有工具集 fork"有限制</li>
 <li><strong>同质化竞争:</strong> devtoys、omlet 等桌面端瓜分市场份额</li>
 <li><strong>功能扩展瓶颈:</strong> 工具数量虽多但深度有限，专业用户仍依赖各自专项工具</li>
 <li><strong>维护成本:</strong> 100+ 工具需长期兼容 Web 平台变化（CSS 引擎/安全策略）</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs DevToys:</strong> DevToys 是桌面/Win/macOS app；it-tools 是 Web/PWA，跨平台</li>
 <li><strong>vs omlet:</strong> omlet 走 desktop，it-tools 走 web/PWA</li>
 <li><strong>vs jsonformatter.org 等 SaaS:</strong> SaaS 跑广告 + 追踪；it-tools 自托管</li>
 <li><strong>vs uTools 等桌面工具:</strong> uTools 桌面应用 + 插件；it-tools 网页 + 离线</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得长期使用，但跟踪价值有限（成熟期工具集）。</strong> 对个人开发者建议直接采用自托管版本作为日常工具。它不太可能成为下一波技术热点，但也不会衰退——属于"长青"型工具集项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>是否新增 AI 类工具（如 prompt 模板编辑、模型比较器）</li>
 <li>PWA 离线工具能力是否扩展（IndexedDB 容量、本地 LLM）</li>

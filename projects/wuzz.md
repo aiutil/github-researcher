@@ -35,8 +35,34 @@ url: "https://github.com/asciimoo/wuzz"
 4. **curl 互操作:** 可以将 wuzz 中的请求导出为 curl 命令，也可以从 curl 命令导入
 5. **单二进制部署:** 纯 Go 实现，无依赖，一个可执行文件即可使用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | wuzz 是一个 Go 单二进制 TUI 工具，运行时边界为：本地 termbox 终端 UI + 用户态 HTTP 客户端 + 可选的外部命令管道（curl、jq 等），无独立服务进程或服务端依赖 | 档案明示"纯 Go 实现、无依赖、单可执行文件"，未描述守护进程/服务端/持久化层 |
+| 主路径 | 终端 UI（URL/Method/Headers/Body 可编辑）→ 本地领域状态与请求构造 → HTTP 客户端发出请求 → 响应回灌至 TUI 渲染（状态码/Headers/Body） | 档案提及 TUI 编辑、实时响应渲染、curl 互操作；具体 HTTP 库、termbox 以外依赖及持久化均未证实 |
+| 关键权衡 | 简单性 vs 功能丰富度：放弃 Postman 风格的测试脚本、环境变量管理、GraphQL/gRPC/WebSocket 等能力，换取单二进制 + 终端原生 + 管道协作 | 档案"架构启发"与"风险/局限"段落明确陈述此取舍 |
+| 最小 PoC | 在本地终端安装 wuzz 二进制 → 用真实 API 路径验证 URL/Header/Body 实时编辑、保存与回溯历史请求、响应 JSON/HTML 格式化、导出/导入 curl 命令 | 仅覆盖档案列举的 5 项关键技术亮点；活跃度、TLS/代理、认证、性能等须以源码与文档核验 |
+
 ## 架构启发
 wuzz 的设计体现了 Unix 哲学——做好一件事（HTTP 调试），且与其他工具协作而非封闭。它的 TUI 架构基于 Go 的 termbox 库，虽然界面简单但功能完备。其核心设计权衡是「简单性 vs 功能丰富度」——wuzz 选择了极简路线，牺牲了 Postman 的测试脚本、环境变量管理等高级功能换取了终端原生体验。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[终端用户] --> UI[TUI 编辑层<br/>URL Method Headers Body<br/>vim 快捷键]
+    UI --> S[本地领域状态<br/>请求历史 / 当前请求]
+    S --> H[HTTP 客户端请求执行<br/>协议与代理:待核验]
+    H --> R[响应渲染<br/>状态码 Headers Body<br/>JSON/HTML 格式化]
+    R --> UI
+    S <--> Curl[curl 互操作边界<br/>导出/导入 curl 命令]
+    S <--> Pipe[外部管道边界<br/>与 jq 等终端工具协作<br/>具体接口:待核验]
+    H --> Net[外部网络目标 API<br/>协议与超时:待核验]
+    S --> Risk[风险边界<br/>维护活跃度下降<br/>功能天花板 待核验]
+```
 
 ## 定位判断
 属于终端 API 工具生态的经典项目。在 API 调试工具链中，wuzz 是「终端轻量方案」的代表，与 Postman（重量级 GUI）、Insomnia（中等 GUI）服务不同场景。

@@ -54,11 +54,58 @@
 <li><strong>MIT 开放:</strong> 友好协议，便于二次开发</li>
 <li><strong>官方维护:</strong> 长期可持续性比社区 fork 项目更强</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>deepseek-harness 是位于"使用者/上游系统、模型供应商、工具/数据源"之间的编排层，自身不替代模型与外部系统</td>
+<td>档案明示其为"AI Agent Harness""编排层"，TypeScript 实现；档案未给出具体入口协议、传输层与持久化方案</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求经入口与身份边界进入"项目编排与运行时（Cordis + DSH-Plugin）"，分发到模型推理与工具/外部系统，再回写会话、状态、审计</td>
+<td>路径节点来自档案"关键技术亮点"与"架构启发"；具体调用协议、插件加载机制与会话存储未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"Everything is a Plugin"带来的扩展速度，与 Cordis 自研 DI 学习曲线、权限/可观测性、模型供应商耦合之间的平衡</td>
+<td>档案直接列出"核心权衡"与"Cordis 学习曲线""DSH-Plugin 生态未成型"等风险；插件互操作、权限模型细节未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以单一入口渠道、最小工具权限与可审计日志接入 Cordis 运行时，编写一个最小 DSH-Plugin 验证加载、调用与卸载闭环，再评估扩展</td>
+<td>档案"采用建议"明确该路径；DSH-Plugin API 形态、Cordis 生命周期与审计落点仍需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"Everything is a Plugin" 的 Agent Harness 设计哲学与 Hermes Agent、Claude Code、Codex CLI 等主流 Agent Harness 路线一致。这暗示了 2026 年 AI Coding 的收敛方向——<strong>插件化、可互操作、Harness 即平台</strong>。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[Cordis 编排与运行时]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> S[会话 状态 审计]
+    P[DSH-Plugin 生态 待核验] --> C
+    M --> C
+    T --> C
+    R[风险边界 Cordis 学习曲线 供应商耦合 插件生态未成型] -.约束.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选型 / 中国版 Claude Code 对标。</strong> 与 Hermes Agent、ECC、Claude Code 同处"AI Coding Harness 第一梯队"。DeepSeek 官方身份给予其在中国市场巨大分发优势，长期看有可能成为中文 Coding Agent 基础设施层。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>品牌热度占比:</strong> 175k stars 中 DeepSeek 品牌效应占比较高，需独立评估产品质量</li>
 <li><strong>Cordis 学习曲线:</strong> 自研 DI 框架要求开发者学习新抽象，社区贡献门槛上升</li>
@@ -66,16 +113,16 @@
 <li><strong>与 Claude Code / Hermes 直接竞争:</strong> 国际市场的话语权竞争激烈</li>
 <li><strong>许可证细节:</strong> MIT 大方向清晰，但若 plugin 含闭源模型部分需阅读细则</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Claude Code / Hermes Agent:</strong> 同一"插件化 Harness"赛道</li>
 <li><strong>vs ECC:</strong> ECC 强调性能优化与 Skills/Instincts；deepseek-harness 强调 plugin 标准</li>
 <li><strong>vs Cordis 自身:</strong> Cordis 与 Spring/Koa 中间件生态对应，Agent Harness 是新场景</li>
 <li><strong>vs Karpathy autoresearch:</strong> 都偏 Agent Harness；教学 vs 平台区别</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>强烈推荐持续跟踪（中文 AI Coding 基础设施层）。</strong> 175k stars 周级涨在数据上属实，但产品质量需在 30 天后判断。建议开发者：试用 DSH-Plugin 标准写一个简单插件验证易用性。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>30 日留存 / 月级活动曲线（判断品牌 vs 真实热度）</li>
 <li>DSH-Plugin 三方生态扩张（npm ecosystem）</li>

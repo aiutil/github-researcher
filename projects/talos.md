@@ -39,10 +39,41 @@ LLM 推理算力供给高度集中在云厂商（AWS/GCP/Azure）。Talos 的赌
 - **奖励机制**：uptime 报告 → 获取 payouts（经济激励）
 - **与 Ollama 集成**：worker 可使用 Ollama 作为本地推理引擎
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单一 Python worker 客户端，连接外部"Talos 网络"执行开源模型推理，并通过 WebSocket 上报 uptime；本地推理引擎标注为可与 Ollama 集成，未证实其它供应商 | 仅基于 README 与标签（distributed-computing, gpu, inference, decentralized, websocket）的描述；网络侧协议、调度中心、计费/奖励结算方的实现细节未公开 |
+| 主路径 | worker 持有闲置 GPU → 经 WebSocket 接入 Talos 网络 → 由网络下发开源模型推理任务 → worker 调用本地推理（如 Ollama）执行 → 通过 WebSocket 回传结果并上报 uptime → 凭 uptime 获取 payouts | 主路径中的"任务下发方、奖励来源、SLA/鉴权机制"在档案中均为推断，源码/协议未核验 |
+| 关键权衡 | 极简架构（Python + WebSocket）带来的低门槛 vs 缺少服务质量和安全隔离能力；去中心化弹性供给 vs 无法保证延迟/可用性/数据隐私；经济激励吸引贡献者 vs 商业模式与付费方未明 | 权衡判断仅引用档案中"风险/局限"段；具体加密、签名、沙箱隔离方案档案未提及 |
+| 最小 PoC | 单台带 GPU 的机器，安装 worker，按 README 配置 WebSocket 端点，加入网络上报 uptime 并承接一次开源模型推理任务，验证连通性、uptime 报送与 payouts 落账 | 端点地址、注册/鉴权流程、奖励结算单元与最低接入门槛等档案未给出，按 README 实际部署时再核验 |
+
 ## 架构启发
 - **CDN → GPU-CDN**：如果 CDN 模式可以用于 GPU 推理供给，算力市场可能被重塑
 - **矿机转型**：后加密货币挖矿时代，闲置 GPU 的再利用是真实需求
 - **推理去中心化**：模型推理（vs 训练）对延迟和带宽的要求更灵活，适合分布式
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游系统<br/>请求推理] --> N[Talos 网络<br/>任务下发与奖励结算 待核验]
+  W[Python Worker 客户端<br/>Talos] -->|WebSocket 心跳与任务| N
+  W --> O[本地推理引擎<br/>Ollama 集成]
+  O --> W
+  W --> R[Uptime 与结果回报<br/>获取 Payouts]
+  N -->|Payouts| W
+  subgraph 风险边界
+    S1[SLA 延迟可用性 待核验]
+    S2[数据安全隔离 待核验]
+    S3[监管合规 待核验]
+  end
+  W -.暴露于.-> S1
+  W -.暴露于.-> S2
+  N -.暴露于.-> S3
+```
 
 ## 定位判断
 **学习型**。当前是早期概念验证。去中心化推理网络要成为基础设施，需要解决：①服务质量保证 ②延迟一致性 ③安全隔离 ④经济模型可持续性 ⑤监管合规。这些都不是 MIT + WebSocket 能单独解决的。

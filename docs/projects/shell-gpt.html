@@ -6,7 +6,7 @@
     <title>TheR1D/shell_gpt | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,58 @@
 <li>REPL 模式：支持多轮对话</li>
 <li>缓存机制：减少重复 API 调用</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>CLI 入口 <code>sgpt</code> 作为编排层，统一对接 OpenAI / Anthropic / Azure OpenAI / Ollama 等模型供应商，对外向 Shell 与 Unix 管道暴露</td>
+<td>供应商列表、CLI 命令与管道用法见档案；具体协议、SDK 细节未在档案中给出，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在终端发起 <code>sgpt</code> 调用 → 角色预设与缓存命中判断 → 调用模型 API → 必要时生成 Shell 命令或经管道回写 → REPL/会话与本地缓存回写</td>
+<td>REPL、缓存、<code>sgpt -s</code>、管道组合均有档案描述；持久化与缓存后端实现细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多模型可扩展性 vs 对各供应商 API 的耦合深度；轻量 CLI 体验 vs Shell 命令直接执行带来的权限与误执行风险；本地 Ollama 隐私优势 vs 本地模型使用门槛</td>
+<td>权衡来源于档案定位描述；具体权限模型、沙箱与审计能力未在档案中说明，待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道（OpenAI）＋单角色（Shell 命令生成 <code>sgpt -s</code>）＋本地缓存关闭＋日志全开，先验证命令生成的可用性与误执行风险，再扩展到 Anthropic/Ollama</td>
+<td>PoC 范围由档案已声明能力（多模型、Shell 生成、管道、缓存）推导；具体安全/成本/SLO 指标档案未提供</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Shell-GPT 体现了 Unix 哲学在 AI 时代的延伸——"做一件事并做好"。它不试图成为完整的 IDE 或 Agent 框架，而是专注于"在终端使用 AI"这一场景。对架构师的启发是：<strong>AI 工具不需要总是大而全，符合现有工作流的小工具往往比全能平台更有粘性</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[终端入口 sgpt 与角色预设]
+    I --> C[项目编排与运行时]
+    C --> M[模型供应商 OpenAI Anthropic Azure OpenAI Ollama 待核验]
+    C --> T[Shell 执行与 Unix 管道]
+    C --> S[REPL 会话 本地缓存 审计日志 待核验]
+    M --> C
+    T --> C
+    S --> C
+    T -.直接执行风险 待核验.-> U
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型（终端生产力）。</strong> 经典的 CLI 工具定位，不追求平台化。在 Claude Code、Cursor 等 Agent IDE 普及的背景下，Shell-GPT 的价值转向"轻量、快速、多模型"的快速查询场景。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>功能被大厂方案覆盖:</strong> Claude Code、GitHub Copilot CLI 提供了更强的终端 AI 体验</li>
 <li><strong>增长放缓:</strong> 相比 2023 年的爆发期，当前 stars 增速减缓</li>
@@ -63,7 +110,7 @@
 <li><strong>Ollama 集成:</strong> 本地模型支持是差异化优势但使用门槛仍高</li>
 <li><strong>开源 vs 商业:</strong> 免费工具难以持续投入，维护依赖社区</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>Claude Code</strong>、<strong>GitHub Copilot CLI</strong> 形成竞争——大厂方案更强大但更重</li>
 <li>与 <strong>aichat</strong>、<strong>llm</strong>（Simon Willison）等 CLI AI 工具是同类竞品</li>
@@ -71,9 +118,9 @@
 <li>与 <strong>Ollama</strong> 生态深度集成——作为 Ollama 的前端使用</li>
 <li>在 AI 工具链中，定位为"轻量查询层"，与 Agent 框架互补</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>选择性跟踪。</strong> 作为实用工具有即用价值，但作为研究对象价值有限。建议关注其在多模型支持和本地模型集成方面的演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否进化为更完整的终端 Agent（超越单次查询）</li>
 <li>Ollama/本地模型集成的深度</li>

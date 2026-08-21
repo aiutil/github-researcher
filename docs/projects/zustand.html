@@ -48,27 +48,73 @@
 <li><strong>中间件:</strong> persist、immer、devtools、subscribeWithSelector 等</li>
 <li><strong>TS 支持:</strong> 类型推导友好</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界落在 React 组件层与领域 store 之间：组件用 hook 选择性订阅单 store，store 内部即状态+actions，不引入 Provider/Context 树</td>
+<td>仅依据档案中"单 store API、无 Provider、selector 优化"事实，未审计源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><code>create((set)=&gt;({...}))</code> 定义 store → 组件 <code>useStore(selector)</code> 订阅 → set 触发更新 → 可选中间件（persist/immer/devtools/subscribeWithSelector）落地</td>
+<td>中间件名单与 API 名称取自档案"关键技术亮点"段</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极简（无 boilerplate、无 Provider）vs 大型应用可观测性/调试能力（devtools 非默认，需自行补 build pipeline）</td>
+<td>权衡描述源自档案"风险/局限"与"核心权衡"行；未给出性能基准</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 create 建一个带 count/inc 的 store，经 useStore(s=&gt;s.count) 在组件中渲染并触发更新，验证 re-render 范围与 selector 行为</td>
+<td>PoC 仅复述档案给出的 API 形态；不补写未列出的部署/持久化细节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"用 React 原生 hook 抽象状态" 是 zustand 的核心哲学——它不引入新概念（action/reducer），而是用 React 函数式思路重写 store。这一模式值得借鉴：<strong>用宿主语言已有概念做最小封装</strong>，比强制新思维框架的项目更长寿。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或客户端] --> UI[React 组件与 UI 层]
+    UI -->|useStore selector| S[(单 store: state + actions)]
+    S -->|set| S
+    S --> M[中间件: persist / immer / devtools / subscribeWithSelector]
+    M --> S
+    S --> E[外部依赖: 服务 API / 持久化存储 / 调试工具]
+    S -. RSC 协作模式 待核验 .-> R[React Server Components 边界]
+    S -. 大型项目调试链路 待核验 .-> O[错误 监测 反馈]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 / React 状态管理长青树。</strong> 与 Redux Toolkit 共同占据 React 状态管理 Top 2，60k stars 量级稳定。预期未来 5-10 年仍是 React 状态管理主流选项之一。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>大型项目调试:</strong> 缺乏 devtools 标准（虽支持但非默认），大型团队需要补 build pipeline</li>
 <li><strong>与 React Server Components 协作:</strong> RSC 下纯客户端 store 架构需要重新思考，未来或需调整</li>
 <li><strong>同质化压力:</strong> Redux Toolkit 已大幅简化，新 RTK Query 进一步覆盖 zustand 部分场景</li>
 <li><strong>维护风险:</strong> pmndrs 是社区组织，无大公司背书</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Redux Toolkit:</strong> RTK 仍是企业首选；zustand 偏现代 / 极简</li>
 <li><strong>vs Jotai:</strong> Jotai 是 atom 化（细粒度）；zustand 是单 store</li>
 <li><strong>vs Valtio:</strong> Valtio 是 Proxy 化（mutate 友好）；zustand 是显式 set</li>
 <li><strong>vs React Context:</strong> Context 不分选择器，zustand 性能更优</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>对 React 项目强烈推荐使用。</strong> 跟踪价值中等（已进入成熟期）。其长期稳定性足以作为基础依赖，无需为同期替代品（如 Signal Store）频繁切换。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>React Server Components 下的最佳实践演进</li>
 <li>与 TanStack Query / Router 的搭配模式</li>

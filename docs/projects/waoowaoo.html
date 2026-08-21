@@ -6,7 +6,7 @@
     <title>waooAI/waoowaoo | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,25 +48,71 @@
 <ol>
 <li><strong>首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent platform for controllable film &amp; video production. From shorts to live-action with Hollywood-standard workflows.</strong></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>waoowaoo 是 TypeScript 编写的 AI 影视生产 Agent 平台，承担从短剧到真人拍摄、好莱坞级工作流的编排入口职责；系统面向上游使用者，落到模型供应商与影视类外部工具/数据源</td>
+<td>仅基于档案"一句话定位"、tags（ai-agent, film-production, generative-ai, short-drama, storyboard, video-production）做的抽象，模型/工具具体协议与清单未给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者/上游系统 → 入口与身份 → 编排与运行时 → 并行调用模型推理与影视工具/外部数据源 → 会话/状态/审计回写</td>
+<td>节点仅复述档案"架构师速览"中的职责描述；具体协议、持久化、部署形态未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>工业级可控影视流程带来的扩展速度，与 NOASSERTION License、143 open issues、供应商耦合、可观测性之间的张力</td>
+<td>License 与 issues 数为档案事实；"工业级、可控、Hollywood-standard"为仓库自述，未见独立基准</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一入口、最小工具权限与可审计日志下，验证短剧→分镜→视频这一条主路径，再扩大模型/工具接入面</td>
+<td>档案未给出具体模型、工具或部署方式，PoC 细节均"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>从 waooAI/waoowaoo 的设计来看，核心思路是 <strong>"首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent plat"</strong>。这反映了 TypeScript 生态中 Agent / AI 工具链 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (NOASSERTION) 降低了采用门槛。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统 待核验] --> I[入口与身份边界 待核验]
+    I --> C[编排与运行时 TypeScript 核心]
+    C --> M[模型与推理服务 供应商待核验]
+    C --> T[影视工具与外部数据源 分镜 视频生成 待核验]
+    C --> S[会话 状态 审计 日志待核验]
+    M --> C
+    T --> C
+    R[NOASSERTION License 143 open issues 风险边界] -.约束.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选</strong>。在生态中定位为首家工业级全流程 AI 影视生产平台。Industry-first profes方向的工具。Stars 13555 说明已有一定社区基础。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规模风险</strong>：13,555 stars，但 fork 3007 说明有实际部署</li>
 <li><strong>维护风险</strong>：最后 push 时间 2026-08-11，活跃维护中</li>
 <li><strong>Open Issues</strong>：143 个 open issues，活跃社区反馈</li>
 <li><strong>License</strong>：NOASSERTION</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>与同 TypeScript 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。</li>
 <li>从 topics (ai-agent, ai-agents, automation) 来看，与关注 ai-agent 的其他项目有交叉。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 13555 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Star 增速是否可持续（当前 13,555）</li>
 <li>Fork 增长趋势（当前 3,007）</li>

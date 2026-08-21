@@ -6,7 +6,7 @@
     <title>upstash/context7 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,11 +54,56 @@
 <li><strong>实时更新:</strong> 文档源跟随官方仓库/文档站自动同步</li>
 <li><strong>检索优化:</strong> 针对"AI 查询"优化的检索（按 API 名称、功能场景），而非全文搜索</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Context7 是面向 AI 编辑器（Cursor、Claude Code、Windsurf）的 MCP 文档上下文服务，提供库文档的实时检索；档案未给出源码级组件命名与部署形态。</td>
+<td>仅基于 README 与公开描述中的"mcp-server / documentation / code-context"标签及"MCP Server"实现声明；内部模块名、传输协议、存储栈未披露。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为：AI 客户端经 MCP 拉取 → Context7 检索版本化文档 → 返回经 LLM 友好预处理的代码示例与 API 签名给客户端注入到 LLM 上下文。</td>
+<td>路径描述仅来自项目自述"版本感知""预处理文档""实时更新"等表述；具体检索算法、缓存层、预处理管线待源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨编辑器标准覆盖（MCP） vs MCP 协议演进不确定性；长尾/私有库覆盖广度 vs 文档质量受制于源头站点。</td>
+<td>权衡源自档案"风险/局限"段中 MCP 生态不确定性、文档覆盖广度、质量依赖源头三点；性能、成本、供应商耦合未量化。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用支持 MCP 的客户端（Cursor / Claude Code / Windsurf 任一）接入 Context7，针对 React 19 或 Next.js 15 等档案点名的高迭代库验证：能否返回当前版本 API、是否含代码示例与签名、是否随源站更新。</td>
+<td>接入方式、客户端配置细节、是否需 API key 均未在档案中说明，标为"待核验"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Context7 的核心启发是 <strong>"LLM 的知识应该外置，且按需检索"</strong>。这本质上是"RAG for Code Docs"，但关键是：(1) 走 MCP 标准而非私有 API；(2) 文档经过"LLM 友好预处理"而非原始灌入。这种"AI 时代的 DevDocs"模式正在成为 AI 编程工具链的基础设施层。启发是：<strong>任何"易过时"的领域知识，都值得做一层"实时上下文服务"</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[AI 客户端: Cursor 或 Claude Code 或 Windsurf] --> B[MCP 接入层]
+    B --> C[Context7 MCP Server]
+    C --> D[文档检索与版本匹配: 覆盖 JS/TS, Python, Go, Rust 等 待核验检索算法]
+    C --> E[LLM 友好预处理: 提取代码示例与 API 签名 待核验管线]
+    D --> F[外部文档源: 官方仓库与文档站 实时同步 待核验刷新策略]
+    E --> G[结构化文档片段 回注到 LLM 上下文]
+    C --> H[会话与审计: 状态 限流 成本 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台型基础设施候选。</strong> Context7 定位为"AI 编程工具链的文档上下文层"。它不与 Cursor/Claude 竞争，而是作为它们的"文档后端"。这是经典的"平台化"定位——成为 AI 编辑器生态的共享基础设施。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>MCP 生态不确定性:</strong> MCP 标准仍在演进，版本变化可能影响兼容</li>
 <li><strong>文档覆盖广度:</strong> 长尾库/私有库文档覆盖有限</li>
@@ -67,7 +112,7 @@
 <li><strong>成本:</strong> 实时文档预处理和检索需要基础设施投入</li>
 <li><strong>"最新"≠"正确":</strong> 最新版文档也可能有 bug，AI 需结合判断</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Cursor 内置索引:</strong> Cursor 自建文档索引是私有方案；Context7 通过 MCP 成为跨编辑器标准</li>
 <li><strong>vs DevDocs (freeCodeCamp):</strong> DevDocs 是人类用的文档聚合；Context7 为 AI 优化</li>
@@ -75,9 +120,9 @@
 <li><strong>vs Mendable:</strong> Mendable 做"AI 文档问答"，偏企业；Context7 偏开发者工具链</li>
 <li><strong>vs RAG (通用):</strong> 通用 RAG 需自建；Context7 是"文档领域的专用 RAG 服务"</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得重点跟踪。</strong> Context7 是 MCP 生态中最成功的应用之一，也是"AI 编程工具链基础设施"的代表。它的发展反映 MCP 标准的采用情况和 AI 编程工具的演进方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否被主流 AI 编辑器（Cursor、GitHub Copilot）默认集成</li>
 <li>MCP 协议标准化进展对 Context7 的影响</li>

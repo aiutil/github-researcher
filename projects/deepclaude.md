@@ -38,11 +38,38 @@ DeepClaude 代表了一个重要趋势：**Agent 前端和后端的解耦**。�
 2. **多后端路由** — 支持 DeepSeek V4 Pro、OpenRouter、任意 Anthropic 兼容端点
 3. **零侵入集成** — 不修改 Claude Code 本身，通过代理层实现后端替换
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | DeepClaude 是一个 JavaScript 编写的本地代理/编排层，夹在 Claude Code CLI（前端）与 Anthropic 兼容后端（DeepSeek V4 Pro / OpenRouter / 其他端点）之间，不修改 Claude Code 本体。 | 基于标签 `agent-backend, claude-code, backend-swap` 与"零侵入集成"描述；具体 API 表面、请求体格式未在档案中给出。 |
+| 主路径 | Claude Code 客户端 → 协议兼容层（Anthropic API 兼容） → 后端路由（DeepSeek V4 Pro / OpenRouter / 其他） → 响应回写到 Claude Code。 | 档案仅描述"协议兼容层 + 多后端路由"职责，未给出流式、超时、工具调用协议细节。 |
+| 关键权衡 | 17× 成本下降 vs 复杂任务能力下降（DeepSeek V4 Pro < Claude Opus）；同时存在 Anthropic ToS 违规与协议变更（Claude Code 更新）导致的失效风险。 | 数字与风险来自档案"风险/局限"段；未提供基准测试或 ToS 条款原文。 |
+| 最小 PoC | 在单一渠道（如 OpenRouter）用受限权限、单会话、可审计日志跑通 Claude Code → DeepClaude → 后端的端到端请求，把成本、行为差异与回滚路径作为验收项。 | 项目本身已声明需"源码/文档核验"，本表不替代源码审查。 |
+
 ## 架构启发
 - Agent 系统的 **前端-后端解耦** 是一个被低估的架构趋势
 - 类似于浏览器的搜索引擎可切换，Agent 的模型后端也应可插拔
 - 代理层模式（Proxy Pattern）在这里非常适用
 - Trade-off：节省成本 vs 能力损失，这是一个连续的光谱而非二元选择
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者 终端开发者] --> CC[Claude Code CLI 前端]
+    CC --> P[协议兼容层 Anthropic API 兼容代理]
+    P --> R[后端路由 多供应商选择]
+    R --> D[DeepSeek V4 Pro DeepSeek API]
+    R --> O[OpenRouter 聚合网关]
+    R --> X[其他 Anthropic 兼容端点 待核验]
+    P --> S[会话 状态 审计日志 持久化方式待核验]
+    S --> CC
+    D -.能力边界待核验.-> R
+    O -.成本与配额待核验.-> R
+```
 
 ## 定位判断
 在 Agent 生态中，DeepClaude 是一个 **"降本补丁"**：

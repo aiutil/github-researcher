@@ -6,7 +6,7 @@
     <title>meta-harness | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,12 +57,65 @@
 <li><strong>ONBOARDING.md 驱动</strong>：指向 ONBOARDING.md 让 coding assistant 对话式生成 domain_spec.md</li>
 <li><strong>可适配不同 proposer agent</strong>：需编写 wrapper 脚本（如 claude_wrapper.py）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>meta-harness 是一个 Python 编写的优化框架，处于任务域与 coding-agent 之间的 harness 自动搜索层：用户/上游 → proposer agent（基于 Claude Code，需 wrapper）→ harness 候选生成与评估循环 → 最优 harness 配置。</td>
+<td>基于项目语言（Python）、标签（harness/optimization/auto-search/coding-agent/llm-agents）、"proposer agent = Claude Code"描述与"harness = memory system / retrieval strategy / display format"定义。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为：Task + 基座模型 → Search Loop（proposer 生成 harness 变体 → 在文本分类或 Terminal-Bench 2.0 等任务上 evaluate → 反馈给 proposer）→ 输出最优 harness 配置；ONBOARDING.md 驱动 domain_spec.md 生成，wrapper 脚本（如 claude_wrapper.py）对接不同 proposer。</td>
+<td>基于"迭代搜索最优 harness 配置"、"两个参考实验：文本分类 memory-system 搜索 + Terminal-Bench 2.0 scaffold 演化"、"ONBOARDING.md"、"需编写 wrapper 脚本"等档案表述。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>权衡在四方面：(1) 搜索空间表达力 vs. 每次搜索大量 agent 运行的算力开销；(2) 自动化的可优化层 vs. domain_spec.md 必须人工编写的人工介入；(3) 端到端自动优化 vs. 搜索结果在跨任务间的可迁移性未知；(4) 学术研究代码（作者声明"仅验证能运行"）vs. 长期维护不确定性（作者毕业/转向可能停滞）。</td>
+<td>基于"搜索空间定义需要人工介入"、"计算开销大"、"搜索结果的可迁移性未知"、"研究代码…仅验证能运行，未做更多测试"、"学术项目，长期维护不确定"。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议最小 PoC：在 Terminal-Bench 2.0 或一个文本分类子任务上，固定单一基座模型 + 单一 proposer（Claude Code via wrapper），固定评估指标，先跑 1 轮搜索循环验证 domain_spec.md → harness 候选 → evaluate → 反馈的闭环是否成立；验收项包含算力消耗、结果可复现性、跨任务迁移留观窗口。</td>
+<td>基于"两个参考实验"、"proposer agent（Claude Code）迭代搜索"、"需编写 wrapper 脚本"以及档案中关于算力开销与迁移性未知的局限说明。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><code>Task → Search Loop → [Harness v1, v2, ... vN] → Evaluate → Feedback → Optimal Harness</code></p>
 <p><strong>核心启发：Harness 是模型与任务之间的可优化层</strong>。这和编译器的优化 pass 有类似的抽象 — 给定输入，搜索最优的中间表示。meta-harness 把这种思路应用到了 Agent 外围代码的设计上。对 Agent 平台设计者而言，这意味着 harness 优化可能成为标准 pipeline，而非人工调参。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界]
+  I --> D[domain_spec.md 任务规约 需人工编写]
+  D --> C[Search Loop 编排与运行时]
+  P[Proposer Agent Claude Code] --> C
+  C --> H[Harness 候选 memory system retrieval strategy display format]
+  H --> E[Evaluate 文本分类 / Terminal-Bench 2.0 待核验评分协议]
+  E --> F[反馈信号]
+  F --> P
+  E --> S[会话 状态 审计]
+  C --> S
+  C --> M[基座模型 调用边界]
+  M --> C
+  C --> W[wrapper 脚本 如 claude_wrapper.py 适配不同 proposer 待核验]
+  W --> P
+  C --> R[风险边界 算力开销大 可迁移性未知 长期维护不确定]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>学习型/研究工具。</strong> 短期是学术参考，中期可能启发商业 Agent 的 harness 优化产品。社区衍生项目涌现说明思路有生命力。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>研究代码</strong>，作者声明"仅验证能运行，未做更多测试"</li>
 <li><strong>搜索空间定义需要人工介入</strong> — domain_spec.md 需要人工编写</li>
@@ -70,16 +123,16 @@
 <li><strong>学术项目</strong>，长期维护不确定（作者毕业/转向后可能停滞）</li>
 <li>搜索结果的可迁移性未知（在 A 任务上优化的 harness 在 B 任务上表现如何）</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>ECC / OpenCode / Hermes Agent</strong>：生产级 Harness，meta-harness 是其优化的方法论</li>
 <li><strong>社区衍生</strong>：Harness Forge（Claude Code skill 版）、SuperagenticAI/metaharness（CLI 库）、dkhanal/meta-harness（独立实现）</li>
 <li><strong>DSPy</strong>：同为"自动优化 LM 程序"思路，DSPy 优化 prompt，meta-harness 优化 harness</li>
 <li><strong>编译器优化 pass</strong>：架构思路类似</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Harness 优化是 coding agent 质量的关键瓶颈。meta-harness 是该方向的学术开创性工作，社区衍生项目涌现说明思路被采纳。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>工业界是否采纳 meta-harness 思路（ECC、OpenCode 等是否引入自动 harness 优化）</li>
 <li>是否有更轻量的 harness 优化方案出现（降低计算开销）</li>

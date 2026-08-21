@@ -6,7 +6,7 @@
     <title>Graphify-Labs/graphify | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,16 +56,63 @@
 <li><strong>查询命令</strong>：<code>graphify explain "APIRouter"</code>（解释节点）、<code>graphify path "FastAPI" "ModelField"</code>（追溯路径）、<code>graphify query "问题"</code>（自然语言子图）</li>
 <li><strong>超越代码</strong>：文档、PDF、图片、视频/音频都可映射到同一个图中（语义层使用 LLM，可选）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>graphify 是位于 Coding Agent（Claude Code、Cursor、Codex、Gemini CLI 等 20+ 平台）与本地代码库之间的 Skill 层，向上提供 <code>explain</code>/<code>path</code>/<code>query</code> 命令，向下用 tree-sitter 直接读源码产出 <code>graph.html</code>/<code>GRAPH_REPORT.md</code>/<code>graph.json</code>，代码不离开机器。语义层（非代码文档、PDF、图片、视频/音频）需另行接模型。</td>
+<td>仅依据档案中"tree-sitter 本地解析""三文件输出""20+ Agent 平台 Skill 分发"等表述；未审计源码，不能确认其对外接口协议、IPC 形式或 CLI 实际参数。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>本地源码 → tree-sitter AST 解析（确定性，零 LLM）→ 知识图谱（含 <code>EXTRACTED</code>/<code>INFERRED</code> 边、Leiden 社区划分）→ 三文件输出 → Agent 端 Skill 调用做图遍历/路径/查询；非代码资产走可选的 LLM 语义层注入同一图。</td>
+<td>主干在 README/档案中显式描述；增量更新机制、并发解析能力、跨语言混合解析顺序等未在档案中给出，标注为待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用确定性 AST + 图遍历替代概率性 embedding 检索，牺牲对注释/语义模糊查询的覆盖，换取可解释、可追溯、零向量成本与代码不出本机；Skill 多平台分发换 YC 商业化压力下开源版功能可能被收窄的风险。</td>
+<td>档案明确给出"LOCOMO recall@10=0.497 vs mem0/supermemory""EXTRACTED/INFERRED 边标记""882 Open Issues""YC S26"等事实；商业版与开源版的具体边界未披露，待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单仓库 Python 项目，<code>pip install graphifyy</code>，在本机运行一次 <code>/graphify</code>，核对 <code>GRAPH_REPORT.md</code> 中的 Leiden 社区、<code>EXTRACTED</code>/<code>INFERRED</code> 边比例，以及 <code>graphify explain</code>/<code>graphify path</code> 在 Claude Code（或单一 Agent 平台）中的响应，再以 100K+ 文件规模粗测图规模与查询延迟。</td>
+<td>档案列出 PyPI 包名、命令名、输出文件与 LOCOMO benchmark；但安装路径、命令实际签名、性能基准、企业案例等均未在档案中证实，需以官方文档与源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>确定性 &gt; 概率性</strong>：代码结构是确定的，不该用概率性 embedding 来表示——tree-sitter AST 是正确选择</li>
 <li><strong>图遍历 &gt; 向量近邻</strong>：查"A 调用了 B 吗"和"从 A 到 B 的路径"这类问题，图遍历比向量检索精准得多</li>
 <li><strong>Skill 即分发渠道</strong>：Graphify 不卖工具，而是作为 Skill 分发到 20+ Agent 平台——这是 Agent 生态的新型分发模式</li>
 <li><strong>知识图谱作为 Agent 基础设施层</strong>：Agent = Base Model + Skill Layer + Knowledge Graph + Memory Layer，Graphify 锁定 Knowledge Graph 层</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A["本地代码库"] --> B["tree-sitter AST 解析<br/>(确定性, 零 LLM, 本机)"]
+    B --> C["知识图谱构建<br/>EXTRACTED/INFERRED 边 + Leiden 社区"]
+    C --> D["三文件输出<br/>graph.html / GRAPH_REPORT.md / graph.json"]
+    D --> E["Agent 平台 Skill 调用<br/>graphify explain / path / query<br/>(Claude Code, Cursor, Codex, Gemini CLI 等 20+)"]
+    F["非代码资产<br/>文档 / PDF / 视频 / 音频"] -. "可选 LLM 语义层" .-> C
+    E -. "返回图遍历结果" .-> G["Agent 会话上下文"]
+    G -. "反馈查询 / 待核验增量更新" .-> C
+    H["graphify.com 平台 (always-on)<br/>商业模式与定价 — 待核验"] -. "托管路径" .-> E
+    I["882 Open Issues / 增量更新性能<br/>100K+ 文件图规模 — 待核验"] -. "风险边界" .-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选</strong>，且平台化路径已明确。Graphify 已从单一工具升级为知识图谱平台（graphify.com），目标是从 on-demand 查询升级为 always-on 的背景知识服务。在 Agent 生态五层架构中，锁定知识图谱/代码理解层。若成功，可能成为代码知识图谱的"npm"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>增量更新效率</strong>：代码频繁变化时，图谱的增量更新性能待验证（当前需重新运行 <code>/graphify</code>）</li>
 <li><strong>882 个 Open Issues</strong>：社区问题处理压力较大，可能影响质量口碑</li>
@@ -74,7 +121,7 @@
 <li><strong>graph.json 规模</strong>：大型代码库（100K+ 文件）的图可能过大，影响查询效率</li>
 <li><strong>105K stars 的增速异常</strong>：fork 比近 10% 可能含营销驱动成分</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs LlamaIndex</strong>：LlamaIndex 更偏通用 RAG 框架，Graphify 专注代码知识图谱</li>
 <li><strong>vs codegraph (65.8K⭐)</strong>：codegraph 也做代码图谱但偏 token 优化，Graphify 更偏知识图谱查询和可视化</li>
@@ -82,9 +129,9 @@
 <li><strong>vs mem0</strong>：mem0 做 Memory 层，Graphify 做 Knowledge 层，互补</li>
 <li><strong>vs garden-skills</strong>：garden-skills 是 Skill 合集，Graphify 是 Skill 编排框架</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 知识图谱作为 Agent 基础设施层是确定性趋势，Graphify 是该方向目前最成熟的开源实现，且已进入商业化（YC S26）。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>graphify.com 平台的 always-on 功能发布和定价模式</li>
 <li>增量更新能力的实现（代码变更后自动同步图谱）</li>

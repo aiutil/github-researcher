@@ -46,9 +46,35 @@ homepage: "https://heretic-project.org"
 4. **内置评估功能**：`heretic --evaluate-model` 可复现拒绝率和 KL 散度指标
 5. 完全无监督运行，生成质量可媲美人工专家调参的 abliteration
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Heretic 本身是离线模型权重改造工具（directional ablation + Optuna TPE），依赖 HuggingFace 作为模型源和发布渠道，无服务侧运行时 | 档案未描述其作为在线服务的部署形态、未描述 API/SDK 接口边界 |
+| 主路径 | 输入 HF 模型 → 内置 abliteration 流程 + Optuna 双目标搜索 → 输出去审查权重，可选 `--evaluate-model` 复测 refusals/KL | 路径止于权重输出，未描述配套推理栈或应用层守卫 |
+| 关键权衡 | 拒绝率（refusals）与 KL 散度（保真度）的双目标 Pareto，由 Optuna 自动权衡，无人工干预 | 档案未披露具体搜索空间、损失函数细节、采样策略实现 |
+| 最小 PoC | `pip install -U heretic-llm` 后对单一开源指令模型（如 Qwen3-4B-Instruct）执行一次完整消融并跑 `--evaluate-model` 校验两指标 | 档案未提供硬件需求、显存下限、端到端耗时与失败回退路径 |
+
 ## 架构启发
 
 从安全研究角度，Heretic 证明了当前 LLM 对齐技术的脆弱性 — 方向消融可以无损移除安全限制。对 Agent 安全设计有警示意义：prompt-based safety 不够，对齐需要在更深层面（如 constitutional AI）实现。这也说明 model-layer safety 可被工程化移除，应用层确定性拦截（如 AGT）更可靠。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者] --> CLI[heretic CLI 入口]
+    CLI --> HF_IN[HuggingFace 模型源]
+    CLI --> CORE[directional ablation + Optuna TPE 双目标搜索]
+    CORE --> WEIGHTS[输出去审查模型权重]
+    WEIGHTS --> HF_OUT[HuggingFace 发布 heretic 模型]
+    CORE --> EVAL[--evaluate-model 拒绝率 KL 散度]
+    EVAL --> CORE
+    CLI -. 待核验 .-> RISK[伦理 法律 许可证 AGPL-3.0 风险边界]
+    WEIGHTS -. 待核验 .-> DEF[Model Provider 对策演进 未描述]
+```
 
 ## 定位判断
 

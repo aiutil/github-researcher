@@ -42,10 +42,34 @@ last_seen_date: "2026-06-15"
 4. **在线 Ingest**：添加向量即索引，无重建步骤
 5. **多框架集成**：LangChain / LlamaIndex / Haystack / Agno 的 drop-in 替换
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | turbovec 是 Rust 实现的向量索引库，依赖 TurboQuant 量化与手写 SIMD 内核，Python 侧提供 LangChain / LlamaIndex / Haystack / Agno 的 drop-in 集成；属于 RAG 检索侧的内存/计算密集组件，不含完整向量数据库能力 | 档案明示"索引库"、仅 IVF + PQ 索引、缺少 HNSW 等图索引，与 Milvus / Qdrant 的差距在档案"风险/局限"段列出 |
+| 主路径 | 数据源 → 在线 ingest（无需训练/重建） → TurboQuant 量化 + SIMD（NEON / AVX-512BW）内核 → 索引驻留内存（10M 文档 31GB → 4GB） → 框架消费层做带 allowlist 过滤的检索 | ingest/量化/SIMD/内存压缩均来自档案"关键技术亮点"；具体协议、持久化、部署形态未在档案中描述，须源码核验 |
+| 关键权衡 | 内存与延迟收益（~87% 压缩、ARM 上对 FAISS IndexPQFastScan +12–20%）换的是覆盖度（仅 IVF + PQ）、生产验证不足（7K stars、单人维护）以及纯本地部署的扩展性上限 | 性能数字来自档案"为什么值得关注"段；生产可用性、稳定性、召回基准在档案中均未给出 |
+| 最小 PoC | 选可审计数据集，验证三条：① TurboQuant 量化前后召回/精度 ② ARM/x86 目标平台上的 SIMD 加速与延迟 ③ LangChain / LlamaIndex / Haystack / Agno drop-in 替换路径及 allowlist 过滤行为；把单维护者风险、退出路径与 SLO 写入验收项 | 框架集成清单与 allowlist 过滤来自档案；具体 API、版本兼容、构建产物与平台要求档案未列，需以仓库文档核验 |
+
 ## 架构启发
 - **量化是向量索引的未来**：TurboQuant 证明了无训练量化可以达到接近原始精度
 - **SIMD 内核的关键性**：在量化基础上，手写 SIMD 是性能差异的关键
 - **API 简洁性的价值**：drop-in 替换使迁移成本极低
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  D[公开或私有数据源] --> I[在线 Ingest 无需训练 无重建]
+  I --> Q[TurboQuant 量化 无 codebook 达 Shannon 下界]
+  Q --> S[IVF + PQ 索引 仅此一种 缺 HNSW 待核验]
+  S --> K[手写 SIMD 内核 NEON ARM 与 AVX-512BW x86]
+  K --> F[Allowlist 过滤在 SIMD kernel 内 不过度拉取]
+  F --> A[LangChain LlamaIndex Haystack Agno drop-in 消费者]
+  S --> R[风险边界 单人维护 7K stars 生产验证不足 部署形态待核验]
+```
 
 ## 定位判断
 - **基础设施候选**。向量索引是 RAG 栈的核心组件

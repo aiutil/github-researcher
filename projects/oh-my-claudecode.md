@@ -41,8 +41,33 @@ url: "https://github.com/Yeachan-Heo/oh-my-claudecode"
 4. **Marketplace 插件机制**：Claude Code 原生插件安装流程
 5. **多种执行模式**：Team（推荐）、Autopilot、Ultrawork、Ralph
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | oh-my-claudecode 是位于 Claude Code 之上的编排层，向上承接用户/上游系统，向下路由 Claude/Codex/Gemini 三路模型与外部工具，并依赖 Claude Code 原生 Marketplace 插件机制进行分发 | 仅基于档案"多 Provider 路由 + Claude 合成 + Marketplace 插件"的描述；具体 API 边界与权限模型未在档案中给出 |
+| 主路径 | 团队流水线 `team-plan → team-prd → team-exec → team-verify → team-fix`，由 executor/reviewer/architect 角色协作推进，team-fix 负责失败自愈并回写状态 | 阶段名与角色名取自档案；阶段间的输入输出契约、并发模型未披露 |
+| 关键权衡 | 团队化抽象带来的工程直觉 vs 对 Claude Code 内部 API 与插件机制的深度耦合风险（尤其在官方推出 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` 后） | 档案明确将"平台绑定风险"列为局限，但耦合的具体接口面与可替换性未说明 |
+| 最小 PoC | 选择 Team 模式，单一非关键任务，配置最小工具权限，开启可审计日志，验证 team-fix 自愈是否触发及失败处理路径 | 档案未给出部署形态、所需凭据、CLI/SDK 入口细节，需在 PoC 前从源码/文档核验 |
+
 ## 架构启发
 以"团队"为原子的设计模式值得在企业内部 Copilot 平台中借鉴。这种设计让复杂任务可以自然地拆解为多个角色的协作，而非在一个 Prompt 里堆叠复杂指令。多 Provider 路由 + 合成结果的模式也为降低单一模型依赖提供了参考。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[团队编排运行时 plan→prd→exec→verify→fix]
+    C --> M[模型路由 Claude Codex Gemini 并发 Claude 合成]
+    C --> T[工具与外部系统 待核验]
+    C --> S[会话 状态 审计 待核验]
+    M --> C
+    T --> C
+    R[Claude Code 官方 Teams 能力 风险边界] -. 差异化稀释 .-> C
+```
 
 ## 定位判断
 **平台候选** — 依赖 Claude Code 生态，但团队化编排抽象有独立价值。如果官方能力追平，差异化价值会稀释。

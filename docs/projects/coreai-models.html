@@ -6,7 +6,7 @@
     <title>apple/coreai-models | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,35 +53,61 @@
 <li><strong>Agent Skills</strong> — working-with-coreai、model-authoring、model-compression-exploration 三个官方 Skill</li>
 <li><strong>CLI 工具</strong> — 命令行直接在 Mac 上运行导出的模型</li>
 </ul>
-<h2 id="_5">架构启发</h2>
-<pre class="mermaid">flowchart TB
-    subgraph 导出层["模型导出 (Python)"]
-        A[HuggingFace 模型] --> B[coreai-torch<br/>导出原语]
-        B --> C[.aimodel 格式]
-    end
-    
-    subgraph 优化层["模型压缩 (coreai-opt)"]
-        C --> D[量化/调色板压缩]
-        D --> E[优化后 .aimodel]
-    end
-    
-    subgraph 运行时层["Swift 运行时"]
-        E --> F[Core AI Framework]
-        F --> G[macOS / iOS App]
-    end
-    
-    subgraph 开发者工具["Agent Skills"]
-        H[working-with-coreai] --> D
-        I[model-authoring] --> B
-        J[model-compression] --> D
-    end
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>该项目是 Apple 端侧 AI 模型从 HuggingFace 导出到 Core AI Framework 推理之间的"导出 + 压缩 + Swift 运行时 + Agent Skills"工具链层，外部边界包含 HuggingFace 模型源、macOS/iOS App 与 Apple Core AI Framework；不覆盖训练、跨平台运行时与服务器推理。</td>
+<td>仅依据档案列出的 Python/Swift 双语言、<code>.aimodel</code> 格式、Core AI Framework、Agent Skills 三件套；具体编排协议与持久化方式未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>HuggingFace 模型 → <code>coreai-torch</code> 导出原语 → <code>.aimodel</code> → <code>coreai-opt</code> 量化/调色板压缩 → Swift 运行时对接 Core AI Framework → macOS/iOS App 端侧推理；Agent Skills 作为开发者侧辅助而非推理请求主路径。</td>
+<td>主路径来自档案"模型导出管线—Python 原语—Swift 运行时"三段描述与架构图；推理时延、KV Cache 实现细节未证实。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 Apple 生态专精（统一 <code>.aimodel</code> 格式与 Core AI 集成）与跨平台可移植性之间，Apple 选择前者；性能/调优收益换取对 macOS/iOS 27+ 与 Xcode 27+ 的硬绑定。</td>
+<td>由"Apple 生态锁定""版本要求高"两条风险条目得出；权衡中的可观测性、供应商耦合细节档案未涉及。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一个 HuggingFace 模型，经 <code>coreai-torch</code> 导出与 <code>coreai-opt</code> 压缩得到 <code>.aimodel</code>，通过 Swift 包集成在 macOS 27+ 上用 CLI 跑通推理；验收点必须包含模型兼容性、量化后精度/体积、所需系统版本三项。</td>
+<td>PoC 步骤由档案明示的导出/压缩/CLI/Swift 运行时四件套组合而成；精度损失、SLO 与退出路径档案未提供，需以源码/文档核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    HF["HuggingFace 模型<br/>(外部边界)"] --> Torch["coreai-torch 导出原语<br/>Python 原语 / BC1S / KV Cache 模式<br/>(待核验:具体算子清单)"]
+    Torch --> AIModel[".aimodel 格式"]
+    AIModel --> Opt["coreai-opt<br/>量化 / 调色板压缩"]
+    Opt --> AIModel2["优化后 .aimodel"]
+    AIModel2 --> Runtime["Swift 运行时<br/>(Swift 包)"]
+    Runtime --> CoreAI["Core AI Framework<br/>(外部边界:Apple 平台组件)"]
+    CoreAI --> App["macOS / iOS App<br/>(需 macOS 27+/iOS 27+)"]
+    Skills["Agent Skills<br/>working-with-coreai<br/>model-authoring<br/>model-compression-exploration"] -.辅助.-> Torch
+    Skills -.辅助.-> Opt
+    Risk["风险边界:Apple 生态锁定<br/>License 未明确<br/>生态早期 / 模型种类有限"] -.约束.-> Runtime
 </pre>
 <p><strong>启发 1：</strong> 端侧 AI 的关键不仅是推理性能，更是从训练到部署的完整工具链。
 <strong>启发 2：</strong> Apple 通过 Agent Skills 让 AI 开发工具直接支持 Core AI，这是开发者体验的降维打击。
 <strong>启发 3：</strong> <code>.aimodel</code> 格式可能是 Apple 生态的「AI 模型标准格式」，类似 <code>.app</code> 之于应用。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选。</strong> 这是 Apple 端侧 AI 生态的基石项目，如果端侧 AI 成为主流，coreai-models 就是底座。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>Apple 生态锁定</strong> — 只服务于 Apple 平台，跨平台团队需谨慎</li>
 <li><strong>版本要求高</strong> — macOS/iOS 27.0+、Xcode 27.0+，目前仅支持最新系统</li>
@@ -89,15 +115,15 @@
 <li><strong>生态成熟度</strong> — 刚发布，文档和社区都处于早期</li>
 <li><strong>无明确 License</strong> — 目前没有明确开源协议</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>ollama</strong> — 不同赛道，ollama 做本地推理，coreai-models 做端侧部署工具链</li>
 <li><strong>CoreML</strong> — 演进关系，Core AI 是 CoreML 的 AI-native 升级</li>
 <li><strong>GGUF/llama.cpp</strong> — 竞争格式，.aimodel vs GGUF</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>✅ 是。Apple 端侧 AI 生态的基础设施项目。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>支持的模型种类扩展速度</li>
 <li>社区贡献的导出配方数量</li>

@@ -6,7 +6,7 @@
     <title>sharkdp/bat | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,76 @@
 <li><strong>主题系统:</strong> 支持自定义颜色主题，适配不同终端配色方案</li>
 <li><strong>管道友好:</strong> 可以作为其他命令的管道过滤器，只做语法高亮而不分页</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>bat 是一个终端用户态 CLI 工具，作为 cat 的替代进程被调用；侧边界在操作系统终端宿主（TTY/文件/Git repo）一侧，前端边界由分页器 less 与管道消费者构成</td>
+<td>档案仅描述"cat 替代 + 语法高亮 + Git 标记 + 分页"，未提供进程模型、IPC、配置加载路径等细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户/上游管道 → bat CLI（命令行参数 + 文件/stdin 输入）→ syntect 语法高亮 + 行号/Git diff 标记 + 主题渲染 → 标准输出或 less 分页器</td>
+<td>具体协议、配置项、主题文件格式未在档案中确认</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>启动速度（"毫秒级"被档案明确为必要条件） vs. 语法高亮对大文件的内存/CPU 开销（档案列为明确风险）</td>
+<td>缺少具体延迟与内存基线，无法量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 CI/沙箱中替换 cat 比对：1) 大文件 GB 级内存与耗时；2) 二进制文件识别边界；3) Git 集成行号标记正确性；4) 与 less/管道的交互语义</td>
+<td>阈值需以实际基准为准，档案未给出具体数字</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>bat 的成功诠释了「做好一件简单事」的力量——它不试图取代 less 或 more，只专注改善 cat 的体验。其 Rust 实现保证了启动速度（毫秒级）和内存效率，这是替代系统级工具的必要条件——如果 bat 比 cat 慢一个数量级，用户就不会使用它。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[开发者终端会话或上游管道命令] --> CLI[bat CLI 入口]
+  CLI --> S[文件与 stdin 输入适配]
+  CLI --> GIT[Git 仓库变更探测 待核验]
+  S --> CORE[syntect 语法高亮核心]
+  GIT --> CORE
+  CORE --> THEME[主题与颜色配置]
+  CORE --> OUT{输出路由}
+  OUT -- 短输出 --> STDOUT[直接写标准输出]
+  OUT -- 长输出 --> PAGER[分页器 less 进程交互]
+  STDOUT --> TTY[终端宿主 TTY 与管道消费者]
+  PAGER --> TTY
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于现代终端工具生态（"Modern Unix"）的核心组件，与 ripgrep（grep 替代）、fd（find 替代）、exa/eza（ls 替代）并列。在这些工具中，bat 是普及度最高的之一。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>大文件性能:</strong> 对于非常大的文件（GB 级），语法高亮的内存和 CPU 开销可能成为瓶颈</li>
 <li><strong>二进制文件处理:</strong> 作为 cat 的替代，bat 需要正确识别和处理二进制文件，这方面偶尔出现问题</li>
 <li><strong>功能趋同风险:</strong> 基本功能已完善，后续迭代空间有限，项目可能进入维护模式</li>
 <li><strong>主题兼容性:</strong> 不同终端模拟器的颜色支持差异可能导致主题显示问题</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>cat (coreutils):</strong> bat 的基础替代对象，bat 在几乎所有方面都优于 cat</li>
 <li><strong>highlight (CLI):</strong> 更早的语法高亮工具，但功能和体验不如 bat</li>
 <li><strong>ccat:</strong> Go 实现的 cat 语法高亮工具，bat 在生态和功能上更胜一筹</li>
 <li><strong>glow:</strong> 终端 Markdown 渲染工具，专精 Markdown 而非通用文件查看</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> bat 已是成熟的终端基础设施工具，后续演进主要是语法库更新和 bugfix。作为现代终端工具生态的标杆仍有参考价值，但不期待突破性变化。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 bat 是否增加 AI 驱动的代码摘要或解释功能（与现代 AI 工作流整合）</li>
 <li>观察是否有更激进的 cat 替代者出现（如内置搜索、过滤等增强功能）</li>

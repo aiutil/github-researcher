@@ -6,7 +6,7 @@
     <title>AccumulateMore/CV | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,60 @@
 <li><strong>中文注释</strong>：降低英文阅读门槛</li>
 <li><strong>持续扩展</strong>：从 CV 扩展到大模型 Agent 主题</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目本质是 Jupyter Notebook 形式的笔记仓库，编排边界在"课程源笔记 ↔ 学习者本地 Notebook 运行"，不涉及生产级模型服务编排</td>
+<td>档案明确为"资源型"、Jupyter Notebook 格式，无部署/服务化证据</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习者 clone 仓库 → 打开对应课程的 Notebook → 本地执行代码与注释 → 完成 CV/DL/Agent 主题学习</td>
+<td>档案未涉及云端运行、API 网关或模型调用链路</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>内容广度（多课程整合）vs 单课程深度（仅笔记，无论文级展开）；中文可读性 vs 版权灰区</td>
+<td>档案自述"笔记适合入门，进阶需原始论文和代码"，并标注版权灰色地带、维护已完结</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>clone 仓库 → 选择一门课程（如土堆 PyTorch）→ 本地 Jupyter 运行首章 Notebook → 验证代码可复现</td>
+<td>无 GPU/CI/Docker 部署要求，验证门槛仅为本地 Notebook 执行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>笔记即课程</strong>：优质的学习笔记本身可以作为独立的学习材料</li>
 <li><strong>多源整合优于单一来源</strong>：不同课程有不同优势，整合后取长补短</li>
 <li><strong>Jupyter 作为知识载体</strong>：交互式笔记本是技术教育的理想格式</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[学习者] --> C[课程源:李沐/吴恩达/土堆等]
+    C --> N[Jupyter Notebook 笔记库<br>本项目核心]
+    N --> R[本地 Jupyter 运行与代码复现]
+    N --> A[大模型与 Agent 主题笔记]
+    N --> S[已完结状态:可能不再更新]
+    S -.待核验.-> M[版权与时效风险边界]
+    R -.待核验.-> D[依赖环境:PyTorch 等<br>待核验具体版本]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>优质资源型项目</strong>。中文深度学习教育领域的标杆笔记库。非工具非框架，是知识传播的重要载体。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>版权灰色地带</strong>：基于他人课程的笔记可能涉及版权问题</li>
 <li><strong>时效性</strong>：深度学习技术迭代快，部分内容可能过时</li>
@@ -72,16 +117,16 @@
 <li><strong>维护状态</strong>：标注"已完结"，可能不再更新</li>
 <li><strong>CV vs 通用深度学习</strong>：标题含 CV 但实际覆盖范围更广，分类不够清晰</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs datawhalechina/self-llm</strong>：self-llm 专注大模型部署微调，此项目更全面含 CV 基础</li>
 <li><strong>vs d2l-ai</strong>：《动手学深度学习》官方版，此项目是其笔记+扩展</li>
 <li><strong>vs各类课程官方 repo</strong>：官方 repo 只有代码，此项目有详细笔记</li>
 <li><strong>vs Lilian Weng 博客</strong>：Lilian 偏研究综述，此项目偏教学笔记</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>一般关注。</strong> 作为学习资源直接使用即可。技术跟踪方面意义不大，关注是否有大模型/Agent 新内容更新即可。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否新增大模型/多模态/Agent 相关笔记</li>
 <li>是否有出版计划或商业化</li>

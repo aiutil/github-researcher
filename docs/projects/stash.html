@@ -6,7 +6,7 @@
     <title>Stash | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,30 +43,77 @@
 <li><strong>Go 单二进制</strong>：部署极简，无运行时依赖，Self-hosted 友好</li>
 <li><strong>Postgres 后端</strong>：成熟可靠，适合生产环境</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Stash 是面向 AI Agent 的持久化记忆层：客户端（Claude Code 等 MCP 客户端）→ MCP 入口 → Stash 单二进制 → Postgres；自身不托管模型推理</td>
+<td>档案仅明列"Go 单二进制 + Postgres + 内置 MCP server"，未列出模型供应商适配器或多租户隔离机制</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>MCP 客户端写入 Episodes/Facts/Working Context 三类记忆 → Stash 服务落库 → 后续 Agent 通过同一 MCP 接口回取</td>
+<td>"三层记忆模型"与"MCP 内置"为档案事实；写路径细节、索引策略、检索协议档案未证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三层结构化记忆 vs 单一向量库（MemPalace 路线）：换来可解释性与 Postgres 复用，但牺牲语义召回能力</td>
+<td>仅有概念性比较，无基准数据；性能/召回指标档案未涉及</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单实例 Go 二进制 + 本地 Postgres；用 Claude Code 作为唯一 MCP 客户端；仅启用 Working Context 写入与按 ID 回取，验证记忆持久化与 MCP 握手；验收项含退出路径、数据导出、Postgres 备份恢复</td>
+<td>部署形态、鉴权方式、审计日志能力均未在档案中描述，PoC 需先核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent Memory 不一定需要向量数据库，结构化存储 + 语义索引可以是另一种路径</li>
 <li>MCP 作为 Memory 接口标准正在成为事实标准</li>
 <li>单二进制 + Postgres 的组合在基础设施工具中越来越流行（参考 Ditto, Litestream）</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[MCP 客户端，如 Claude Code] --> I[MCP 入口（内置，待核鉴权/限流）]
+    I --> C[Stash Go 单二进制 编排]
+    C --> M[Episodes 事件流]
+    C --> F[Facts 事实知识]
+    C --> W[Working Context 当前上下文]
+    M --> DB[(Postgres)]
+    F --> DB
+    W --> DB
+    C --> R[风险/控制边界 单维护人 alash3al，待核企业采用与SLA]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 AI Memory 生态中处于「轻量级自托管方案」的位置。对标 mem0（云服务）、MemPalace（Python + ChromaDB）。适合已用 Postgres 的团队。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li>502 stars 仍太小，社区验证不足</li>
 <li>只有两个 open issues，要么代码极简，要么用户群体太小</li>
 <li>与 MemPalace 的 50K stars 相比差距过大，可能被边缘化</li>
 <li>单人项目（alash3al），维护可持续性存疑</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>MemPalace</strong>（50K stars）：Python + ChromaDB，更重的方案，基准测试领先</li>
 <li><strong>mem0</strong>（云服务）：托管方案，API-first</li>
 <li><strong>Zep</strong>：另一个 Agent Memory 方案，更偏企业级</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。作为 AI Memory 赛道的 Go 路线代表，如果 stars 突破 2K 则值得关注。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否吸引企业用户采用（Postgres 生态优势）</li>
 <li>MCP 接口是否被主流 Agent 框架集成</li>

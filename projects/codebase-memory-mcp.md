@@ -93,6 +93,15 @@ Coding Agent（Claude Code、Codex 等）在理解大型代码库时依赖 `grep
 
 5. **单静态二进制：** macOS / Linux / Windows 三平台，无 Docker / 无运行时 / 无 API key。`curl install | bash` 即用。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | codebase-memory-mcp 是 Coding Agent 与代码仓库之间的 MCP 知识层；入口为 14 个 MCP 工具，产出持久化图（`.codebase-memory/graph.db.zst`），本地静态二进制运行，无 API key、无 Docker。 | 边界由档案中"14 个 MCP 工具 + 单静态二进制 + `.codebase-memory/graph.db.zst`"明示；网络协议、鉴权方式未在档案中证实。 |
+| 主路径 | 上游 Agent 调用 MCP 工具 → tree-sitter 解析（158 语言）→ 写入知识图（含 CALLS/IMPORTS/DEFINES/IMPORTS/INHERITS/HTTP_CALLS/DATA_FLOWS/EMITS 等边）→ Hybrid LSP 语义增强 → Cypher/BM25/语义搜索返回结果，团队可通过提交图文件跳过 reindex。 | 路径基于"tree-sitter 知识图谱 + Hybrid LSP + Cypher 查询 + 可提交图文件"档案条目；增量索引、watcher 实现细节未披露。 |
+| 关键权衡 | 158 语言广度 + 极致 token 削减（120x）↔ Hybrid LSP 类型推断为 C 重写的近似（动态类型/Ruby monkey patch 可能不准）；单二进制零依赖 ↔ 单一维护者（DeusData）风险；MCP 标准早期 ↔ 14 工具接口可能需重写。 | 权衡点全部来自档案"风险/局限"段及亮点段；性能数字（412K→~3.4K tokens、3 分钟索引 Linux 内核）来自档案评测，未独立复现。 |
+| 最小 PoC | 在 Linux/macOS 单机上 `curl install | bash` 启动 MCP Server，接入一种主流 Coding Agent（Claude Code/Codex），对一个 ≤1M LOC 的真实仓库跑架构概览 + 调用图两个工具，比对 grep+read 的 token 消耗；将 `.codebase-memory/graph.db.zst` 提交验证团队协作链路；验收含增量索引延迟、Hybrid LSP 类型准确率人工抽检、退出/卸载路径。 | PoC 设计仅引用档案明示能力（安装方式、3D UI localhost:9749、可提交图文件、Hybrid LSP 11 语言覆盖）；企业级部署、监控、SLO 指标档案未给出。 |
+
 ## 架构启发
 
 codebase-memory-mcp 的核心设计哲学是"结构化索引替代暴力搜索"。这不仅是性能优化，而是范式转变：
@@ -100,6 +109,24 @@ codebase-memory-mcp 的核心设计哲学是"结构化索引替代暴力搜索"�
 - 知识图谱方式：Agent → 一次图查询 → 精确结果（极少量 token）
 
 CacheAligner-like 的思路：稳定 prefix 让 provider KV cache 命中率最大化。这种"为下游系统优化"的设计意识是基础设施级思维。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A["上游 Coding Agent<br/>(Claude Code / Codex 等)"] --> B["MCP 入口与 14 个工具<br/>待核验:协议与鉴权"]
+    B --> C["tree-sitter 解析器<br/>158 语言 vendored grammar"]
+    C --> D["持久化知识图<br/>CALLS / IMPORTS / DEFINES /<br/>IMPLEMENTS / INHERITS /<br/>HTTP_CALLS / DATA_FLOWS / EMITS"]
+    D --> E["Hybrid LSP 语义增强<br/>覆盖 11 语言<br/>待核验:与原生 LSP 一致性"]
+    D --> F["查询层<br/>Cypher / BM25 / 语义搜索<br/>(bundled Nomic embeddings)"]
+    E --> F
+    F --> G["结果返回 Agent"]
+    D --> H["团队协作文件<br/>.codebase-memory/graph.db.zst<br/>提交后跳过 reindex"]
+    D --> I["3D 图谱可视化 UI<br/>localhost:9749<br/>待核验:暴露范围"]
+    B -.状态/风险边界.-> J["单静态二进制 / 零运行时依赖<br/>单一维护者 DeusData<br/>MCP 标准早期风险<br/>待核验:增量索引 watcher"]
+```
 
 ## 定位判断
 

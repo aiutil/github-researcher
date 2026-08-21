@@ -6,7 +6,7 @@
     <title>antirez/h3.c | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,11 +48,58 @@
 <li><strong>首尾帧 + Ref2VA 引用：</strong> 支持 first-frame/last-frame 条件生成（视觉 VAE 编码 + Qwen3-VL vision tower）、Ref2VA 图像/视频/音频引用（有序 <code>&lt;Picture N&gt;</code> / <code>&lt;Video N&gt;</code> 呈现）。</li>
 <li><strong>交互式会话：</strong> 无 <code>-p</code> 参数时启动 Iris-style 交互会话，保持 BF16 prompt conditioning 在内存中，重复 prompt 只需换 seed，避免重新编码。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单 macOS 客户端边界：用户/Iris 交互会话 → C 项目核心 → Metal Compute 运行时 → MiniMax-H3 模型权重；不含服务端、不含 NVIDIA/AMD 后端</td>
+<td>档案明示"绑定 Apple Silicon，仅 macOS（Metal）"，未给出 Linux/Windows 路径</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入(prompt/ref) → 交互会话维持 BF16 conditioning → 原生 Metal kernel 推理（fused QKV+RoPE、SwiGLU 融合、int8 量化、SDPA）→ video/audio 输出；可走 <code>--reuse</code>/<code>--layers</code>/<code>--show</code> 等控制分支</td>
+<td>路径来自 README 自述，kernel 级性能数字属作者自测，未独立复现</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Metal 原生极致性能（fused kernels、int8、M5 TensorOps） vs 平台覆盖收窄与单作者维护风险；byte-identical 可回退保证数值正确性换取工程复杂度</td>
+<td>仅 README 与档案可证；上游 H3 license=null 已在档案中标注</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 M3/M5 Mac 上以 BF16 默认路径跑一段 prompt→video 端到端，核对与 README 数值偏差，并验证首尾帧/Ref2VA/<code>--reuse</code>/<code>--layers</code>/<code>--show</code> 控制边界</td>
+<td>缺独立基准；M5 Max 是 2026 新硬件，复现样本量待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>h3.c 的核心启发是<strong>"模型落地的最后一公里是推理引擎工程，而非模型本身"</strong>。H3 模型已开源（HuggingFace checkpoint），但让它在消费级硬件上高效运行需要大量 Metal kernel 级优化——这正是 antirez 擅长的领域。更深层的是：<strong>当一个模型的推理成本高到值得顶级系统工程师投入时，说明该模型有真实落地需求</strong>。h3.c 的存在本身验证了 H3 的实用价值，比 star 数更有说服力。另一个启发是 Apple Silicon 作为本地推理平台的潜力——M5 Max 的 128GB 统一内存 + Metal 4 TensorOps 让端到端视频生成（峰值 25.9 GiB）成为可能。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  U[用户/终端会话] --> S[交互会话与 BF16 prompt conditioning 缓存]
+  S --> K[原生 Metal Compute kernels：fused QKV+RMS+RoPE / SwiGLU / SDPA]
+  K --> Q[int8 量化路径 M5 专属 per-output-channel scales 待核验]
+  Q --> O[video/audio 端到端输出 含 --show Kitty/Ghostty/iTerm2 预览]
+  S --> R[Ref2VA 引用 Picture Video Audio 引用解析 待核验]
+  K --> W[MiniMax-H3 模型权重 上游 license=null 仅 API 可核验]
+  S --> C[控制边界 --reuse --layers --first --last 字节等价回退]
+  C --> K
+  O --> E[错误/监测/反馈 仅仓库 issue 渠道 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>观察型（极早期，高潜力）。</strong> h3.c 目前是 antirez 的个人项目，129⭐ 说明社区刚开始关注。但考虑到作者信誉和技术深度，若持续迭代，它有潜力成为 H3 在 Apple 生态的<strong>首选推理引擎</strong>——类似于他之前写的 litelog（Redis 替代品）最终可能独立成生态。定位是"H3 原生推理层的零号项目"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>极早期：</strong> 129⭐ / 1 subscriber，尚无社区验证，README 的所有性能数据均为作者自述（未独立复现）。</li>
 <li><strong>绑定 Apple Silicon：</strong> 仅 macOS（Metal），不覆盖 NVIDIA/AMD GPU 用户。M5 Max 是 2026 新硬件，覆盖面有限。</li>
@@ -60,16 +107,16 @@
 <li><strong>单作者项目：</strong> 虽然是 antirez，但核心维护仍集中在一个人。antirez 同时维护多个项目（litelog 等），精力分散风险存在。</li>
 <li><strong>质量未验证：</strong> README 的 SSIM 对照（4-step=0.556 vs 29-step reference）是自测，无第三方复现。</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs MiniMax-AI/MiniMax-H3 官方仓库：</strong> 官方提供 Python/SGLang 推理；h3.c 是第三方原生 Metal 实现，性能可能更高但覆盖面更窄。</li>
 <li><strong>vs ComfyUI-MiniMax-H3 插件（Spectrum/Director/Turbo）：</strong> 那些是工作流编排层（在 ComfyUI 内调度推理）；h3.c 是推理引擎层（直接跑模型），互补而非竞争。</li>
 <li><strong>vs MLX（Apple 官方 ML 框架）：</strong> h3.c 不用 MLX，直接写 Metal kernel。README 多次提到与 MLX oracle 的数值对照，说明定位是"比 MLX 更极致优化"。</li>
 <li><strong>vs FareedKhan-dev/kimi-k3-in-c（C99 本地推理）：</strong> k3-in-c 是语言模型推理；h3.c 是视频生成推理。两者共享"用 C 从零写推理引擎"的哲学，但模型类型不同。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（高信誉背书的原生推理层项目）。</strong> antirez 的参与使 h3.c 成为观察"H3 生态成熟度"的关键指标。若它持续迭代并达到生产可用，将验证"本地视频生成"在 Apple 生态的可行性。建议关注：迭代频率（antirez 的投入程度）、性能基准的第三方复现、是否被 ComfyUI 生态集成为后端。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>star/fork 增速是否加速（从 129 起步，antirez 影响力扩散需要时间）</li>
 <li>是否有第三方独立复现 README 的性能数据（尤其 int8 量化的 36.3→25.8s 改进）</li>

@@ -6,7 +6,7 @@
     <title>Talos | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,15 +52,67 @@
 <li><strong>奖励机制</strong>：uptime 报告 → 获取 payouts（经济激励）</li>
 <li><strong>与 Ollama 集成</strong>：worker 可使用 Ollama 作为本地推理引擎</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单一 Python worker 客户端，连接外部"Talos 网络"执行开源模型推理，并通过 WebSocket 上报 uptime；本地推理引擎标注为可与 Ollama 集成，未证实其它供应商</td>
+<td>仅基于 README 与标签（distributed-computing, gpu, inference, decentralized, websocket）的描述；网络侧协议、调度中心、计费/奖励结算方的实现细节未公开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>worker 持有闲置 GPU → 经 WebSocket 接入 Talos 网络 → 由网络下发开源模型推理任务 → worker 调用本地推理（如 Ollama）执行 → 通过 WebSocket 回传结果并上报 uptime → 凭 uptime 获取 payouts</td>
+<td>主路径中的"任务下发方、奖励来源、SLA/鉴权机制"在档案中均为推断，源码/协议未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极简架构（Python + WebSocket）带来的低门槛 vs 缺少服务质量和安全隔离能力；去中心化弹性供给 vs 无法保证延迟/可用性/数据隐私；经济激励吸引贡献者 vs 商业模式与付费方未明</td>
+<td>权衡判断仅引用档案中"风险/局限"段；具体加密、签名、沙箱隔离方案档案未提及</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单台带 GPU 的机器，安装 worker，按 README 配置 WebSocket 端点，加入网络上报 uptime 并承接一次开源模型推理任务，验证连通性、uptime 报送与 payouts 落账</td>
+<td>端点地址、注册/鉴权流程、奖励结算单元与最低接入门槛等档案未给出，按 README 实际部署时再核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>CDN → GPU-CDN</strong>：如果 CDN 模式可以用于 GPU 推理供给，算力市场可能被重塑</li>
 <li><strong>矿机转型</strong>：后加密货币挖矿时代，闲置 GPU 的再利用是真实需求</li>
 <li><strong>推理去中心化</strong>：模型推理（vs 训练）对延迟和带宽的要求更灵活，适合分布式</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统<br/>请求推理] --> N[Talos 网络<br/>任务下发与奖励结算 待核验]
+  W[Python Worker 客户端<br/>Talos] -->|WebSocket 心跳与任务| N
+  W --> O[本地推理引擎<br/>Ollama 集成]
+  O --> W
+  W --> R[Uptime 与结果回报<br/>获取 Payouts]
+  N -->|Payouts| W
+  subgraph 风险边界
+    S1[SLA 延迟可用性 待核验]
+    S2[数据安全隔离 待核验]
+    S3[监管合规 待核验]
+  end
+  W -.暴露于.-> S1
+  W -.暴露于.-> S2
+  N -.暴露于.-> S3
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>学习型</strong>。当前是早期概念验证。去中心化推理网络要成为基础设施，需要解决：①服务质量保证 ②延迟一致性 ③安全隔离 ④经济模型可持续性 ⑤监管合规。这些都不是 MIT + WebSocket 能单独解决的。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>体量过小</strong>：815 Star、13 Fork——可能只是概念验证阶段</li>
 <li><strong>经济模型不明</strong>：奖励从哪来？谁付费购买推理？商业模式不清晰</li>
@@ -69,17 +121,17 @@
 <li><strong>监管风险</strong>：去中心化算力可能面临出口管制、数据合规等监管问题</li>
 <li><strong>与云厂商竞争</strong>：AWS/GCP 的规模效应和 SLA 保证极难被 P2P 网络超越</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Ollama</strong>（175K⭐）：Ollama 是本地推理，Talos 是让本地推理能力服务他人</li>
 <li><strong>vs vLLM/TGI</strong>：vLLM/TGI 是推理引擎，Talos 是推理网络——不同层</li>
 <li><strong>vs Folding@Home</strong>：理念类似（分布式计算 + 志愿者算力），但面向 LLM 推理</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>谨慎关注。</strong> 方向有启发性，但体量太小，不确定是否能跨过"概念验证 → 可用产品"的鸿沟。如果 6 个月内增长到 5K+ Star 并有清晰的代币/积分经济模型出现，则升级跟踪级别。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>否。</strong> 当前阶段不适合企业使用。安全、合规、可靠性均未验证。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>[ ] 经济模型是否清晰化（谁付费、谁奖励、如何结算）</li>
 <li>[ ] 是否出现真实使用场景和用户</li>

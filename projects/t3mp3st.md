@@ -46,11 +46,45 @@ url: "https://github.com/elder-plinius/T3MP3ST"
 5. **完全离线运行**：支持 Ollama/LM Studio/vLLM/llama.cpp，tool-calling 通过文本驱动，不依赖原生 function-calling
 6. **War Room 浏览器 UI**：实时可视化 kill chain 进展
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | T3MP3ST 是介于"已存在的编码 Agent 推理引擎"与"攻击性安全工具链（35/83 内置，含 metasploit/hydra 等）"之间的元编排层，自身不绑定模型供应商；含 War Room 浏览器 UI 与 verify-claims 复现脚本。 | 基于档案中"meta-harness / keyless / 35 of 83 tools / War Room UI / verify-claims"事实，不含具体协议与部署形态。 |
+| 主路径 | 用户 → 入口/身份边界 → 8-operator kill chain 编排（Recon→Exploiter→Infiltrator→Exfiltrator→Ghost，含 Egress-scope containment）→ 调用本地 Agent 引擎 + 工具集 → OSV novelty 检测 + CVSS 报告回写。 | kill chain 名与顺序、scope containment、报告管道均见档案；其中 Exploiter/Infiltrator/Exfiltrator/Ghost 标注 Experimental，证据仅至 README 声明。 |
+| 关键权衡 | 安全边界（默认域外网络拒绝 + human-approval gate 隔离危险工具）与攻击能力覆盖（8 攻击领域、83 工具）的平衡；以及 AGPL-3.0 + 攻击性安全双重合规门槛对商业集成的抑制。 | 权衡来自档案明示条款；具体 gate 触发条件、审计日志格式未在档案中描述。 |
+| 最小 PoC | 隔离环境单 Agent 模式跑 XBOW 104-challenge 复现（90.1% pass@1，verify-claims 24/24 绿），暂不启用 swarm/cloud/mobile/binary/persistence/cognition 这类仍为 stub 的高级模块。 | PoC 输入指标与脚本名来自档案；具体运行环境配置待核验。 |
+
 ## 架构启发
 - **Meta-harness 模式**：不绑定特定 Agent，而是作为已有 Agent 的能力扩展层。这与 Omnigent（元编排）理念一致，验证了 Agent 生态从"单工具"向"元层"演进
 - **Reproducible claims**：`verify-claims` 模式值得所有有性能声明的开源项目学习——信任不是给的，是验证的
 - **Scope containment**：安全 Agent 的默认安全设计是关键工程决策
 - **Keyless**：降低采纳门槛的极致——零额外成本试用
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> O[8-operator kill chain 编排<br/>Recon→Exploiter→Infiltrator→Exfiltrator→Ghost<br/>Egress-scope containment 默认开启]
+    O --> A[外部 Agent 推理引擎<br/>Claude Code / Codex / Hermes / Ollama 等]
+    O --> T[内置 35/83 工具<br/>Burp / metasploit / hydra 等<br/>危险工具过 human-approval gate]
+    O --> R[协调披露与报告<br/>OSV novelty + live PoC + refuter + CVSS]
+    A --> O
+    T --> O
+    O --> W[War Room 浏览器 UI<br/>实时 kill chain 可视化]
+    O --> V[verify-claims 复现脚本<br/>committed JSON 重算 24/24]
+    R --> S[审计与状态回写<br/>具体持久化 待核验]
+    subgraph 风险边界[风险/稳定度边界]
+        E[Exploiter / Infiltrator / Exfiltrator / Ghost<br/>标注 Experimental]
+        M[cloud / persistence / swarm / cognition<br/>当前 interface-only 待核验]
+    end
+    O -.受限于.-> E
+    O -.受限于.-> M
+    O -.法务边界.-> L[AGPL-3.0 + 攻击性安全合规约束]
+```
 
 ## 定位判断
 **工具型 → 平台候选**。当前是高级安全工具，但 meta-harness 架构（任意 Agent + 可扩展工具集 + 基准验证）有平台化潜力。如果 T3MP3ST 能建立 Agent 驱动安全的基准生态，可能成为攻击性安全 AI 的基础设施层。

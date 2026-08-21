@@ -6,7 +6,7 @@
     <title>aidenybai/react-scan | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,61 @@
 <li><strong>渲染成本分析:</strong> 量化每次渲染的耗时与频率，聚焦真正昂贵的渲染</li>
 <li><strong>与 millis 生态协同:</strong> 可与作者的性能监控库配合，从"开发时检测"延伸到"生产时监控"</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>仅限 React 应用开发期的运行时检测：在浏览器/DevTools 中识别重渲染、给出修复建议；不涉及生产监控、跨框架与构建期优化</td>
+<td>档案明确"专为 React 设计"、Vue/Svelte 不可用；接入方式含浏览器扩展/script/npm，但具体宿主与权限边界未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>React 应用挂载 → react-scan 注入运行时拦截渲染 → 组件树扫描与重渲染标记 → 给出 memo/useMemo/useCallback 类修复建议</td>
+<td>档案描述了"扫描整个组件树、自动识别不必要重渲染、红框高亮、可执行修复建议"；底层拦截机制（fiber hook/patch）未在档案中说明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自动化建议 vs 建议正确性：把 Profiler 简化为"一键+可执行修复"，但建议基于经验规则，过度 memo 化可能反向损害性能；同时受 React Compiler 官方化和 React 19+ API 演进的威胁</td>
+<td>档案明确点出"建议质量依赖经验规则"与"React 官方化/React Compiler 适配风险"</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一个真实 React 项目中接入 react-scan，对比接入前后 Profiler 记录的渲染次数与耗时；验证建议项改写后是否真的降低重渲染；同时验证与 React Compiler 的兼容性以评估长期价值</td>
+<td>档案仅提供能力声明与定位描述；具体性能数字、版本兼容矩阵、API 表面均需源码/Demo 核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>react-scan 的核心启发是 <strong>"开发者工具应该自动化到给出可执行建议，而非只呈现原始数据"</strong>。传统 Profiler 是"诊断仪器"——给你数据，你自己判断病情。react-scan 是"家庭医生"——直接告诉你哪里有问题、怎么治。这反映了一个趋势：<strong>开发者工具正从"信息呈现"走向"建议驱动"</strong>。用户要的不是火焰图，而是"改哪行代码能让页面快 50ms"。这种"建议式工具"理念值得所有 DevTools 借鉴。此外，react-scan 证明了一个垂直工具可以靠"把一件事做到极致"获得巨大成功，不必做大而全的平台。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[React 应用用户交互] --> R[React 组件树渲染]
+    R --> S[react-scan 运行时拦截与扫描]
+    S --> D{是否为不必要重渲染?}
+    D -- 否 --> N[正常渲染路径]
+    D -- 是 --> H[红框/边框可视化高亮问题组件]
+    H --> A[给出 memo/useMemo/useCallback 类修复建议]
+    A --> U
+    S --> M[渲染耗时与频率量化]
+    M --> Mnote["待核验:量化口径与采样方式"]
+    A --> Anote["待核验:建议生成规则与覆盖边界"]
+    S --> RC[外部边界:React 19+/React Compiler 适配风险]
+    RC --> RCnote["待核验:具体兼容版本与降级策略"]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型精品（非平台）。</strong> react-scan 是一个聚焦、好用的 React 性能检测工具，定位清晰：React DevTools Profiler 的自动化、易用化替代。它不会演变成平台，也不需要——它的价值就在于"专一且极致"。作为工具，它的生命周期取决于 React 生态的存续；只要 React 还在主流使用，react-scan 就有持续价值。2 万 stars 的工具型项目已属成功。风险在于 React 官方是否在 DevTools 中内置类似功能（官方化威胁）。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>React 官方化风险:</strong> 若 React 团队在 DevTools 中内置自动检测+建议，react-scan 的差异化将被削弱</li>
 <li><strong>React 19+ 适配:</strong> React Compiler（自动优化重渲染）若成熟，部分 react-scan 的检测场景会失效</li>
@@ -68,7 +118,7 @@
 <li><strong>建议质量依赖经验规则:</strong> 自动给出的修复建议不一定总是最优，过度 memo 化可能适得其反</li>
 <li><strong>Vue/Svelte 不可用:</strong> 专为 React 设计，无法服务其他前端框架用户</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs React DevTools Profiler:</strong> 官方工具，功能全但门槛高；react-scan 更易用、更自动化、给建议</li>
 <li><strong>vs millis（同作者）:</strong> millis 偏生产环境性能监控；react-scan 偏开发时诊断，互补</li>
@@ -76,9 +126,9 @@
 <li><strong>vs React Compiler:</strong> 官方自动优化方案，若成熟则减少手动优化需求；react-scan 仍可用于诊断 Compiler 未覆盖的问题</li>
 <li><strong>vs Bundle Analyzer（webpack/vite）:</strong> 那些分析包体积；react-scan 分析运行时渲染，不同维度</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（React 开发者必备）。</strong> react-scan 是当前最实用的 React 性能工具之一，几乎每个 React 项目都应集成。建议关注：React 19/Compiler 普及后 react-scan 的演进方向（是否转向更深层的性能分析）、是否扩展到 Next.js/Remix 等框架特定问题、以及作者的持续投入。对工具型项目，"是否仍在活跃维护"是最关键指标——目前看 react-scan 维护良好。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>React Compiler 普及后，react-scan 的功能定位调整</li>
 <li>是否被 React 官方"招安"或内置（双刃剑）</li>

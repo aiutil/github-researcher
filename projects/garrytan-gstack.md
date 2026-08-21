@@ -39,12 +39,37 @@ YC CEO Garry Tan 的 Claude Code 工具栈——23 个角色化 slash commands �
 4. **Hermetic E2E** — 本地测试与 CI 一致的密封环境：allowlist scrub env + seeded config + --strict-mcp-config
 5. **GBrowser 反检测** — Layer C stealth：chrome.* shape 恢复 + Function.toString Proxy + per-install hardware spoof + UA 去标识 + Selenium/Playwright 痕迹清理
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | gstack 是 Claude Code 之上的编排/技能层：23 个 slash commands + Markdown 形式的角色化技能 + team-mode git hook 同步 + detach 会话隔离，运行在 Claude Code runtime 内 | 项目标签（agent-skills, claude-code, tooling）、TypeScript 语言、Karpathy 背书与目录事实；具体 slash command 数量与 detach 实现细节源自档案描述，未经源码逐条核验 |
+| 主路径 | 用户触发 slash command → Claude Code 解析 → gstack 加载角色化提示（CSO/CEO-review 等视角）→ 必要时调用外部工具或 detachable session → 结果回写会话/审计 | 档案"角色化认知注入""team auto-update""gstack-detach""Hermetic E2E"四点为证据；模型协议、MCP 细节、状态持久化方式未在档案中给出 |
+| 关键权衡 | 角色化表达力 vs Claude Code slash command 体系深度绑定；团队同步便利 vs 权限/审计边界外溢；stealth/反检测（GBrowser）能力 vs 合规与平台 ToS 风险 | 档案明示"高度 Claude Code 绑定"与"GBrowser 反检测"；未给出权限模型、日志规范、ToS 评估结论 |
+| 最小 PoC | 在单人开发环境启用 1 个只读 skill（如 /plan-ceo-review 或 /cso），验证角色化提示效果、可审计日志与退出路径，再评估 team-mode 与 detach 的扩展 | 档案采用建议栏目给出"先单一渠道、最小权限、可审计日志"的指引；具体 slash 列表、安装命令与 hermetic 配置细节须以仓库 README/源码为准 |
+
 ## 架构启发
 **核心设计哲学：** Agent 工具不是"给 Agent 用的工具"，而是"让 Agent 扮演特定角色的认知框架"。
 
 **Trade-off：** 高度 Claude Code 绑定。23 个工具都是 slash commands + Markdown，依赖 Claude Code 的 slash command 解析能力。如果 Agent runtime 变化（如切换到 Codex/Gemini），工具需要重新适配。
 
 **架构启发：** Skills 不应该是"做什么"的指令（"扫描这段代码的安全漏洞"），而应该是"以谁的视角思考什么"的角色注入（"你是一个 CISO，用 OWASP + STRIDE 框架审查这个 PR"）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>Claude Code slash command 触发]
+    I --> C[gstack 编排与运行时<br/>23 个角色化技能 + TypeScript]
+    C --> P[角色化认知注入<br/>CSO / CEO-review 等视角 - 待核验具体命令清单]
+    C --> T[工具与外部系统<br/>GBrowser 反检测 + Hermetic E2E - 待核验组件清单]
+    C --> D[gstack-detach<br/>setsid + caffeinate 长时任务隔离 - 待核验实现]
+    D --> S[会话 状态 审计<br/>team-mode git hook 自动同步 + 248+ 测试]
+    P --> S
+    T --> S
+```
 
 ## 定位判断
 **平台候选。** gstack 正在定义"Agent 工具栈应该长什么样"。如果 Claude Code 是 Agent 时代的操作系统，gstack 就是预装的 iWork 套件。关键问题是：它会成为行业标准，还是仍然是 Garry Tan 的个人工具？

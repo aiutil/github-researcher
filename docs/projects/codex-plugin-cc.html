@@ -6,7 +6,7 @@
     <title>openai/codex-plugin-cc | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,56 @@
 <li><strong>Apache-2.0 开源:</strong> OpenAI 以宽松许可开源，鼓励社区扩展（如反向插件、多模型桥接）</li>
 <li><strong>官方维护:</strong> OpenAI 维护而非第三方，保证与 Codex API/CLI 的及时同步</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 158KB 的 Apache-2.0 JavaScript 插件，定位为 Claude Code 与 Codex 之间的桥接层（plugin / bridge / interoperability），非独立运行时</td>
+<td>仅来自档案描述的体量、许可与标签；具体进程边界、IPC、宿主注入方式未在档案中说明</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Claude Code 主 Agent 通过插件/MCP 接口，把"代码审查/子任务委派"作为外部工具调用路由至 Codex，回收结果后回写到 Claude Code 工作流</td>
+<td>档案未给出协议细节、消息格式、调用栈；"MCP 接口"为档案用词，未指明 MCP 版本或传输层</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>互操作开放姿态 vs 双方竞合关系；极简桥接 vs 依赖 Claude Code 与 Codex 任一方 API 变动；通用 Agent 协议（如 MCP 扩展）可能取代专用桥接</td>
+<td>权衡为档案明确提示的风险点（竞合悖论、依赖双方稳定、可能被 MCP 吸收），无实测性能或耦合度数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 内启用该插件，仅开放"代码审查"单一委派能力，开启可审计日志（会话/状态/审计节点），验证 Codex 子任务委派—结果回写闭环</td>
+<td>档案未提供安装方式、所需 Codex 凭据、CLI/API 版本要求；审计与日志能力仅为研究抽象，未在档案中证实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>codex-plugin-cc 的核心启发是 <strong>"Agent 的未来是可组合的，而非各自封闭"</strong>。当前每个 Coding Agent（Claude Code、Codex、Cursor）都试图成为"全能单体"，但模型各有所长、工具各有专精，封闭意味着能力浪费。OpenAI 为 Claude Code 写插件，实质上承认了：<strong>没有单一 Agent/模型能满足所有需求，互操作是必然</strong>。这预示着一个趋势：Coding Agent 将走向"插件化、可组合"的架构，类似 IDE 的插件生态——主 Agent 协调，专业插件（其他模型/工具）执行子任务。codex-plugin-cc 是这个趋势的早期信号，其范式意义大于当前功能。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[Claude Code 主 Agent 编排与运行时]
+    C --> P[codex-plugin-cc 桥接插件 158KB JavaScript]
+    P --> X[Codex CLI 或模型服务 待核验调用形态]
+    C --> S[会话 状态 审计 待核验日志能力]
+    P --> S
+    X -. 结果回写 .-> P
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型插件（战略意义大于功能本身）。</strong> codex-plugin-cc 作为单独插件，功能明确而有限（桥接 Claude Code 与 Codex）。但其战略意义突出：①OpenAI 拥抱互操作的姿态；②验证"Agent 可组合"范式；③抢占 Claude Code 生态的协同位。作为工具，它是 Claude Code 用户的锦上添花（可选用 Codex 做审查）；作为信号，它预示 Agent 互操作时代的开启。不会成为平台，但会启发更多跨厂商桥接。OpenAI 维护保证了可靠性。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>功能单薄:</strong> 158KB 插件，核心是桥接，深度依赖双方 Agent 能力，自身价值有限</li>
 <li><strong>象征 &gt; 实用:</strong> 大量 stars 来自"围观 OpenAI 给 Anthropic 写插件"的事件性关注</li>
@@ -68,7 +113,7 @@
 <li><strong>更优方案:</strong> 若出现统一 Agent 协议（如 MCP 扩展），专用桥接插件可能被通用方案取代</li>
 <li><strong>使用场景窄:</strong> 仅服务"同时用 Claude Code 和 Codex 的用户"，受众有上限</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 反向桥接（Anthropic 为 Codex 写插件）:</strong> 理论上对称，目前 OpenAI 率先出手</li>
 <li><strong>vs MCP（通用协议）:</strong> MCP 是通用工具协议；codex-plugin-cc 是专用模型桥接，未来可能被 MCP 标准化吸收</li>
@@ -76,9 +121,9 @@
 <li><strong>vs Aider/OpenCode（模型无关 Agent）:</strong> 那些天然支持多模型；codex-plugin-cc 是特定厂商间的桥</li>
 <li><strong>vs Claude Code 插件生态:</strong> 本插件是 Claude Code 插件体系的一个官方示范案例</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（作为 Agent 互操作的信号）。</strong> codex-plugin-cc 的价值不在于它当下做什么，而在于它预示什么——Agent 走向可组合。建议关注：是否出现反向插件（Anthropic 为 Codex 写）、是否演化出通用 Agent 互操作协议、Claude Code 插件生态的整体繁荣程度。对 Claude Code 重度用户，这个插件值得安装试用（用 Codex 做第二意见审查）。对行业观察者，它是 Agent 生态从封闭走向开放的里程碑事件之一。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>Anthropic 是否对等推出"Claude for Codex CLI"插件（互操作对称化）</li>
 <li>是否出现统一的"Agent 间委派协议"（标准化 codex-plugin-cc 的模式）</li>

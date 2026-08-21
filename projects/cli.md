@@ -40,10 +40,33 @@ Google Workspace 统一命令行工具——一个 CLI 操作 Drive、Gmail、Ca
 4. **Gemini CLI Extension 架构**：设计为 Gemini CLI 的原生扩展，无缝集成 AI 工作流
 5. **JSON 原生输出**：所有命令支持 JSON 输出，管道友好，适合脚本和 agent 消费
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | googleworkspace/cli 是单一 Rust 二进制入口，向上承接使用者与上游系统（含 Gemini CLI 扩展调用方），向下通过 Google OAuth 统一认证调用 Workspace 各服务 API。 | 边界划分依据档案"统一 OAuth 认证""Rust 单二进制""Discovery API 动态构建"；具体 OAuth 范围、token 存储方式未在档案中说明。 |
+| 主路径 | 用户→CLI 入口→Discovery API 动态生成子命令→OAuth 认证→调用目标 Workspace 服务（Drive/Gmail/Calendar/Sheets/Docs/Chat/Admin）→以 JSON 输出回写。 | 主路径各环节均见档案"关键技术亮点"和"它解决的问题"；具体协议（gRPC/REST）、分页策略未述。 |
+| 关键权衡 | 动态发现带来的扩展速度 vs Google API 变更/限流导致的命令失效与不稳定；本地 CLI 灵活性 vs 企业 OAuth 配置与权限管控复杂度。 | 权衡两端在档案"风险/局限"和"架构启发"中均被明确点名；具体的限流配额数值、企业 SSO 流程未提供。 |
+| 最小 PoC | 选取单一 Workspace 服务（如 Drive 或 Gmail）在最小 OAuth scope 下完成一次读操作 JSON 输出的端到端验证，并确认 Gemini CLI Extension 接入路径可用。 | PoC 范围对应档案强调的"JSON 原生输出""Gemini CLI Extension 架构"；具体 scope 列表与扩展协议须以项目文档核验。 |
+
 ## 架构启发
 - **CLI 作为 agent 接口**：将 API 操作封装为 CLI 命令，是让 agent 使用工具最简洁的架构
 - **动态发现模式**：基于 API discovery 自动生成能力，而非手动逐个封装，扩展性极强
 - **一个工具一个认证**：统一认证层大幅降低企业工具链复杂度
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或 Gemini CLI Extension] --> I[CLI 入口与统一 OAuth 边界]
+    I --> D[Discovery API 动态生成子命令]
+    D --> C[项目核心: googleworkspace/cli Rust 二进制]
+    C --> A[Google Workspace 服务: Drive Gmail Calendar Sheets Docs Chat Admin]
+    C --> J[JSON 原生输出 回写管道]
+    C --> R[风险边界: Google API 限流与变更 待核验企业 OAuth 配置复杂度]
+```
 
 ## 定位判断
 **高价值工具型项目**。是 Google Workspace 生态和 AI agent 之间的关键桥梁。定位清晰，不是平台而是工具，但工具本身的杠杆效应很大。

@@ -44,26 +44,73 @@
 <li><strong>广泛覆盖:</strong> 应用卸载、遥测关闭、Cortana 禁用、Bing 集成关闭、Xbox 应用等</li>
 <li><strong>win10/win11 通用:</strong> 同一份脚本兼容两个系统版本</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>边界位于用户运行的单文件 PowerShell 脚本与 Windows 10/11 系统配置（注册表、Group Policy、预装应用、后台服务）之间；脚本以管理员权限直接修改本机系统状态，无网络组件、无服务端</td>
+<td>档案明确"单文件 PowerShell 脚本""无需安装任何依赖""应用卸载、遥测关闭、Cortana 禁用、Bing 集成关闭、Xbox 应用等"；网络行为、签名机制未在档案中描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户运行 <code>.ps1</code> → 选择 GUI 或 CLI 模式 → 对预装应用执行卸载、对注册表/组策略执行遥测与广告相关修改 → 必要时重跑脚本回退</td>
+<td>档案明确"提供 GUI/CLI 模式任选""大部分修改可通过重新运行脚本回退"；具体注册表键值、卸载 API 调用、错误处理细节均未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极简零依赖（单 .ps1）换取"PowerShell 执行策略需用户手动绕过"以及"微软大版本升级时清单可能失效"的代价；覆盖面广（含 Edge 关联类设置）换取"误关可能影响正常使用"</td>
+<td>档案明确"默认 Windows 禁止运行未签名脚本""微软更新可能让部分清单失效""关闭 Edge 关联等操作可能影响正常使用"；性能数据、API 版本要求未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在隔离虚拟机中以 Win10 与 Win11 各一份镜像，分别用 GUI 与 CLI 两种模式运行脚本，验证：① PowerShell 执行策略绕过方式；② 卸载清单命中数与残留；③ 重跑脚本的回退有效性；④ 26H2/24H2 等近期版本兼容性</td>
+<td>档案明确"win10/win11 通用""建议在隔离环境验证"；具体脚本版本号、hash、参数清单需在 PoC 阶段自 README/源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"以最小依赖封装高频操作"是值得借鉴的设计原则——脚本项目不应该引入额外运行时，PowerShell 的优点恰恰是 Windows 自带。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户 装机或隐私优化需求] --> M[Win11Debloat 单 .ps1 脚本 GUI 或 CLI 模式]
+    M --> APP[预装应用卸载 Candy Crush Clipchamp Teams 等]
+    M --> TEL[遥测与后台服务关闭 待核验具体注册表与 GP 键]
+    M --> ADS[系统广告与集成关闭 Cortana Bing Xbox]
+    M --> REV[重跑脚本回退 大部分修改]
+    M --> PS[PowerShell 执行策略绕过 默认禁止未签名脚本 待核验签名状态]
+    WIN[Windows 10 或 11 系统 26H2 24H2 兼容性待核验] --> M
+    MAINT[维护者 Raphire 独立维护 长期可持续性未知] -.-> M
+    M --> RISK[副作用风险 Edge 关联等可能影响正常使用]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 / Windows 清理脚本标杆。</strong> 不是平台，但已成为 Windows 社区装机"事实标准"。在 Win12 推出前预计稳定运行，长期属于开发者 / 极客装机必备。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>PowerShell 安全策略:</strong> 默认 Windows 禁止运行未签名脚本，部分用户首次需绕过</li>
 <li><strong>大版本升级风险:</strong> 微软更新可能让部分清单失效，需持续同步</li>
 <li><strong>极简 ≠ 无副作用:</strong> 关闭 Edge 关联等操作可能影响正常使用</li>
 <li><strong>个人项目属性:</strong> 维护者 Raphire 独立维护，长期维护可持续性未知</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs ChrisTitusTech/winutil:</strong> winutil 用 WinGet 路径，更"现代"；Win11Debloat 更轻</li>
 <li><strong>vs Sycnex/Windows10Debloater:</strong> 同类项目的最直接前辈，Win11Debloat 是其精神继承</li>
 <li><strong>vs 开箱即用 clean install:</strong> 企业 baseline 仍优先 LTSC/Server Core，Win11Debloat 偏个人/中小团队</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得长期跟踪（装机工具刚需）。</strong> 任何新 Windows 版本发布时都建议 review 此项目，建议个人装机 + 中小企业 baseline 一并使用。其更新模式不会指数增长，但衰退风险也极低。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>对 Windows 12 / Win11 24H2 的兼容性更新节奏</li>
 <li>是否新增 AI/Recall 类新功能的关闭项</li>

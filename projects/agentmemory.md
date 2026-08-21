@@ -47,11 +47,38 @@ Agent 最大的工程缺陷是**无状态**：每次对话从零开始，不记�
 6. **零外部数据库依赖**：内置存储，部署门槛极低（`npm install -g @agentmemory/agentmemory`）
 7. **Karpathy LLM Wiki 扩展**：在原模式上增加置信度评分、生命周期、知识图谱、混合搜索
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | agentmemory = 跨 Agent 的统一记忆服务层：10+ Agent 通过 MCP Server / Hooks / Native Plugin 三路接入，运行在 :3111 的 agentmemory 进程；底层是 iii-engine v0.11.2，零外部数据库；驻留组件含 54 MCP 工具、12 自动 Hooks、15 原生 Skills 与 iii Console Viewer；知识图谱 + 向量混合搜索 | 接入方式、端口、工具/Hook/Skill 数量与零外部 DB 来自档案；具体存储实现与图谱 schema 未在档案中给出 |
+| 主路径 | Agent 客户端 → MCP / Hooks / Native Plugin → agentmemory 服务（基于 iii 引擎） → 知识图谱 + 向量索引（混合搜索） → 置信度评分 + 生命周期衰减 → 跨 Agent 共享记忆回写到各客户端 | 检索 R@5=95.2% 与 92% token 节省来自档案自我声明的 benchmark；评分/衰减算法细节未披露 |
+| 关键权衡 | 跨 Agent 互通的收益 vs iii 引擎强耦合（锁定 iii-engine v0.11.2）；集中式记忆 vs 隐私/数据隔离；零依赖部署易用性 vs 企业级合规缺失；27K stars vs 75 subscribers（采纳深度偏低） + 单人主导 + 432 Open Issues | 耦合与依赖关系来自档案明示；stars/subscribers 与 issues 数为档案给定的统计快照 |
+| 最小 PoC | 单 Agent 接入：单一 Claude Code/Cursor 实例 → MCP 方式安装 `@agentmemory/agentmemory`（全局 npm） → 验证记忆跨会话持久化、置信度变化与 Viewer（iii Console）可观测 → 验收：1）记忆在重启后保留；2）召回与 token 复现档案水平；3）评估隐私/退出路径 | PoC 步骤由档案中接入方式与 npm 包推导；性能/安全数值仅可与档案声明对齐，源码级实现待核验 |
+
 ## 架构启发
 - **记忆即服务（Memory as a Service）**：Agent 记忆应该是独立服务，而非嵌入在 Agent 内部——与微服务架构理念一致
 - **MCP 作为统一接入协议**：通过 MCP 实现跨平台兼容，是 Agent 基础设施设计的正确方向
 - **置信度评分的必要性**：不是所有记忆都等价，需要质量评估机制——这解决了 Agent 记忆"越用越糊"的问题
 - **Agent = Base Model + Skill Layer + Knowledge Layer + Memory Layer**：agentmemory 锁定 Memory Layer
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者与上游系统] --> A[Agent 客户端<br/>Claude Code / Codex / Cursor / Gemini CLI / Hermes / OpenClaw / pi / OpenCode / Cline / Goose]
+  A -->|MCP Server 协议| M[agentmemory 服务<br/>:3111 基于 iii 引擎 v0.11.2]
+  A -->|Hooks 事件驱动| M
+  A -->|Native Plugin| M
+  M --> S[54 MCP 工具 + 12 自动 Hooks + 15 原生 Skills]
+  M --> G[知识图谱与向量索引<br/>混合搜索 召回 R@5 95.2% 待核验]
+  M --> C[置信度评分与生命周期衰减]
+  M --> V[iii Console Viewer<br/>记忆可视化 待核验]
+  C --> A
+  G --> A
+```
 
 ## 定位判断
 **基础设施候选**。记忆层是 Agent 的"水电煤"——所有 Agent 都需要，但目前缺失。如果记忆服务标准化，agentmemory 可能成为 Agent 生态的基础组件。已有官方网站和 npm 包，具备从开源工具向 SaaS 演进的条件。

@@ -6,7 +6,7 @@
     <title>Supertonic | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,12 +55,58 @@
 <li><strong>OpenAI 兼容服务器:</strong> <code>supertonic serve</code> 提供本地 HTTP 服务，暴露 <code>/v1/audio/speech</code> OpenAI 兼容端点，可与任何 OpenAI 客户端无缝对接</li>
 <li><strong>Voice Builder 语音克隆:</strong> 在线克隆自定义声音，生成可部署的边缘端 TTS 声音配置</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Supertonic 是单一 ONNX 模型（99M 参数）配合 ONNX Runtime 在 13+ 运行时（Python / Node.js / 浏览器 WebGPU / Swift / iOS / C++ / Go / Rust / Java / C# / Flutter）做端侧 TTS 推理，无云侧推理依赖，仅 <code>supertonic serve</code> 暴露 OpenAI 兼容 HTTP 端点作为可选本地控制面</td>
+<td>Voice Builder 服务为外部依赖，2026-08-31 下线；其余运行时边界来自档案明列清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>文本输入 → ONNX Runtime 端侧推理（无需 Vocoder/上采样器）→ 44.1kHz 16-bit WAV 输出；可选 <code>supertonic serve</code> 暴露 <code>/v1/audio/speech</code> 供 OpenAI 兼容客户端调用</td>
+<td>内部模型结构（声学模型 + 声码器是否一体化）档案未细化，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极小参数（99M）+ 31 语言覆盖 + 跨 13+ 运行时 vs 官方已宣布 2026-07-23 归档、停止开发和支持；质量与 ElevenLabs / VoxCPM 等大模型仍有差距；仅推理不可微调</td>
+<td>模型效能对比、未微调限制、归档可持续性均为档案明确陈述</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定一个目标运行时（如 Python 或浏览器 WebGPU）跑通 31 语言中 2-3 种语言的合成，验证 Expression Tags（<code>&lt;laugh&gt;</code> <code>&lt;breath&gt;</code> 等）与 <code>lang="na"</code> 模式；同时建立迁移路径（VoxCPM 端侧变体 / Kokoro / Piper）作为退出验收</td>
+<td>Voice Builder 克隆流程官方下线中，最小 PoC 不应依赖该服务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Supertonic 的核心架构启发是<strong>"ONNX 作为模型部署的通用中间层"</strong>。传统 AI 模型部署往往被框架锁定（PyTorch → TorchServe，TF → TF Serving），但 ONNX Runtime 提供了一个跨框架、跨语言、跨平台的推理抽象层。Supertonic 充分利用了这一点——<strong>一个 ONNX 模型文件，13 种语言直接调用</strong>。这对端侧 AI 部署有直接参考价值：所有需要在多平台部署的 AI 模型，都应优先考虑 ONNX 作为发布格式。</p>
 <p>更深层的启发是<strong>模型小型化的价值</strong>。99M 参数在 TTS 领域是"极小"的——但它的多语言覆盖和质量已经"够用"。这暗示端侧 AI 的竞争维度正在从"模型大小"转向"单位参数的效能"。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    C[调用方：App 脚本 OpenAI 兼容客户端] --> S[supertonic serve 本地 HTTP 端点 /v1/audio/speech]
+    C --> R[ONNX Runtime 13+ 运行时：Python Node WebGPU Swift iOS C++ Go Rust Java C# Flutter]
+    S --> R
+    R --> M[99M 参数 ONNX TTS 模型 31 语言 lang=na 自动识别]
+    M --> A[Expression Tags 注入：laugh breath sigh 等]
+    M --> O[44.1kHz 16-bit WAV 输出 无需 Vocoder]
+    VB[Voice Builder 在线克隆服务 2026-08-31 下线] -. 已下线 .-> M
+    RISK[风险边界：2026-07-23 官方宣布归档 停止开发 仅推理不可微调] -. 约束 .-> R
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（已进入归档期）。</strong> Supertonic 是一个优秀的垂直 TTS 工具，技术完成度高（31 语言、13 运行时、OpenAI 兼容），但<strong>官方已宣布停止开发</strong>。定位上它是一个"成熟的工具级产品"而非平台——没有插件生态、没有模型市场、不可扩展。归档后社区 fork 可能继续维护，但官方支持停止意味着它更适合作为"参考实现"而非长期生产依赖。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>⚠️ 即将归档（最大风险）:</strong> 官方已宣布停止开发和官方支持，Voice Builder 2026-08-31 下线。作为生产依赖的可持续性严重存疑</li>
 <li><strong>仅限推理，不支持微调:</strong> 99M 模型是预训练发布，用户无法在自己的数据上微调（除非 fork 后自行训练）</li>
@@ -68,7 +114,7 @@
 <li><strong>与系统自带 TTS的差异化收窄:</strong> iOS/macOS 系统 TTS 持续改进（如 Apple Personal Voice），Supertonic 的优势可能被侵蚀</li>
 <li><strong>克隆伦理:</strong> Voice Builder 语音克隆功能存在被滥用的伦理风险</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs VoxCPM (OpenBMB, 35.2K⭐):</strong> VoxCPM 是 2B 参数 Tokenizer-Free TTS，质量更高但需 GPU；Supertonic 是 99M 端侧轻量，适合资源受限场景。互补关系</li>
 <li><strong>vs Piper TTS:</strong> Piper 是另一个端侧 TTS，ONNX 模型 + C++ 推理，定位类似但语言覆盖和活跃度不如 Supertonic</li>
@@ -76,9 +122,9 @@
 <li><strong>vs Kokoro TTS:</strong> 另一个轻量端侧 TTS（82M 参数），与 Supertonic 直接竞争，但语言覆盖更少</li>
 <li><strong>vs Apple AVSpeechSynthesizer:</strong> 系统级 TTS，无需额外依赖，但质量和自定义能力受限</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>短期参考，不作为长期生产依赖。</strong> Supertonic 的技术方案（ONNX 跨平台 + 极小模型 + 31 语言）值得学习和参考，但<strong>归档公告意味着不应将其纳入新的生产系统</strong>。如果已经在使用，建议评估迁移路径（VoxCPM 的端侧变体、Kokoro、Piper 是潜在替代）。对端侧 AI 架构师，Supertonic 的 ONNX 部署模式仍是优秀参考案例。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>社区 fork 是否接手维护:</strong> 归档后是否有活跃 fork 继续开发</li>
 <li><strong>模型权重是否持续可用:</strong> HuggingFace 上的 ONNX 模型是否长期保留</li>

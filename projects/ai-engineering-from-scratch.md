@@ -36,8 +36,36 @@ AI 工程师需求爆发但教育供给碎片化——学习者需要在论文�
 3. **四语言并行教学**：同一概念在 Python、TypeScript、Rust、Julia 四种语言中实现，学习者可以选择主力语言，同时对比不同语言的实现差异。这在 AI 教育项目中极为罕见。
 4. **数据驱动的读者统计**：README 中嵌入了实时统计数据（150,639 读者、近 30 天 24 万页面浏览），通过 build.js 自动生成。这为课程改进提供了量化反馈。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本项目是一个面向个人学习者的"课程内容仓库 + Agent Skill 加载包"，经 `npx skills add` 分发到本地 Coding Agent，不是独立 SaaS 运行时；外部边界为 Agent 宿主与可选模型/工具调用 | 无独立部署形态、无后端服务描述，所有运行依赖外部 Agent 解析 SKILL.md；具体 Agent 兼容性以源码为准 |
+| 主路径 | 学习者 → `npx skills add` 安装 Skill → Agent 解析 SKILL.md → `/start-learning` 分班测验 → 写入 `LEARNING.md` → `/learn` 按节授课 → 产出 Artifact（prompt/skill/agent/MCP server） | "Artifact 实际写出的存储位置"、"LEARNING.md 持久化机制"未在档案中给出实现细节，属待核验 |
+| 关键权衡 | 课程广度（503 节 × 四语言 × 20 阶段）与单节深度、师资维护成本之间的张力；并存在"Agent 能力天花板 = 教学质量上限"的耦合风险 | 课程质量方差、完成率与 Agent 依赖天花板仅作为风险陈述被提及，档案未提供测评数据 |
+| 最小 PoC | 用 `npx skills add rohitg00/ai-engineering-from-scratch` 在 Claude Code/Cursor 中初始化，验证 `/start-learning` 分班输出、`LEARNING.md` 生成与单节 `/learn` 端到端跑通一节 Python 课 | 最小 PoC 步骤未在档案中给出，需以 SKILL.md 实际命令为准；跨 Agent 兼容性、测验题库来源属待核验 |
+
 ## 架构启发
 ai-engineering-from-scratch 的核心创新是"用 AI Agent 重新定义编程教育"。传统的编程教育（MOOC、书籍、视频）是单向的——内容固定、节奏固定、无法个性化。而 Agent-as-Tutor 模式实现了：(1) 个性化分班（10 题测验映射起始点）；(2) 交互式教学（每节课都有测验和即时反馈）；(3) 知识检索（`/course-guide` 随时跳转到需要的知识点）。这种模式可能是 AI 时代编程教育的范式转变。另一个启发是"Skills 作为教育内容的载体"——课程内容存储在 SKILL.md 文件中，Agent 按需加载，这比传统 LMS 系统更轻量。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    L[学习者] --> A1[npx skills add 安装]
+    A1 --> SK[SKILL.md 课程包 待核验: 实际目录结构与版本]
+    SK --> AG[外部 Coding Agent 边界 Claude Code / Cursor / Codex / OpenClaw / Hermes]
+    AG --> CL[/start-learning 10题分班测验]
+    CL --> LG[LEARNING.md 个性化学习计划]
+    LG --> LN[/learn 单节课 概念→数学→代码→测验]
+    LN --> AR[Artifact 输出 prompt / skill / agent / MCP server 待核验: 落地位置]
+    AG -. 依赖 .-> M[底层 LLM 待核验: 模型供应商与计费]
+    AR -. 风险边界 .-> Q[内容质量方差 与 完成率未验证]
+    M -. 风险边界 .-> Q
+]<]minimax[>[</mmd>
+```
 
 ## 定位判断
 ai-engineering-from-scratch 定位为**AI 时代系统化编程教育的新标杆**。在 GitHub 教育项目中，46K stars 使其成为 2026 年最热门的学习资源之一。与传统教程仓库（如 ml-algorithms、handson-ml）不同，它的核心竞争力不是内容本身（503 节课可以持续更新），而是"Agent 作为私人教师"的交互模式。这预示着编程教育从"看教程"到"和 AI 学"的转变。

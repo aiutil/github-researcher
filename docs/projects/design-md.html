@@ -6,7 +6,7 @@
     <title>design.md | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -91,7 +91,39 @@ components:
     rounded: "{rounded.sm}"
     padding: 12px</code>
 组件由 token 引用组成，lint 会验证引用是否解析。</p>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>DESIGN.md 是一个"规范 + 本地 CLI"产物：YAML tokens + Markdown 语义由 design.md 文件承载，CLI（npx lint/diff/export）在本地对文件做校验与格式转换，不直连模型或 IDE 运行时</td>
+<td>档案仅描述文件格式与 CLI 子命令，未描述任何与 Claude Code/Cursor/Codex 的集成实现、传输协议或服务端组件；Agent 端的实际读取方式属"待核验"</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>人类/Agent 编写 DESIGN.md → 本地 CLI 执行 lint（9 条规则）/diff（两版回归）/export（json-tailwind、css-tailwind、dtcg）→ 生成 tailwind 配置或 DTCG JSON，供下游 UI 代码消费</td>
+<td>仅档案列出的三条 CLI 命令与三种导出格式可视为已证实；"被 Agent 自动读取并据此生成 UI"在档案中只是目标描述，未给出集成证据</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>表达力 vs 稳定性：alpha 阶段同时追求可立即被 Agent 采用（需简洁、贴近 Figma 心智）和可演进（spec、token schema 可能变化），且用 Markdown 承载"设计理由"在 lint 中无法机器校验，引入人类语义层的不可验证风险</td>
+<td>风险条目 1、4 直接承认 alpha 与动态设计语义未覆盖；Markdown body 是否被任何 lint 规则校验，档案未说明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>取一份小型 DESIGN.md（含 colors、typography、1 个 components 示例），跑 <code>lint</code> 验证 broken-ref/contrast-ratio/orphaned-tokens，再 <code>export --format css-tailwind</code> 与 <code>--format dtcg</code>，对比 Tailwind v4 <code>@theme</code> 与 W3C DTCG 输出差异，确认 CLI 在本地 Node 环境可复现</td>
+<td>档案给出 CLI 命令与导出格式清单，但未提供 Node 版本要求、依赖体积、性能基准；能否在 CI 中稳定运行属"待核验"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>DESIGN.md 的核心架构思想是<strong>"契约文件"模式</strong>——为 Agent 与外部系统（设计系统、安全策略、数据模型等）的交互定义结构化接口。</p>
 <p>这与以下模式同构：
 - <code>ROBOTS.TXT</code>：为爬虫定义访问规则
@@ -103,9 +135,27 @@ components:
 - <code>ARCHITECTURE.md</code>：系统架构契约（分层、边界、依赖规则）
 - <code>SECURITY.md</code>：安全策略契约（权限、审计、合规）
 - <code>DATA.md</code>：数据模型契约（schema、关系、约束）</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A["设计者 / 开发者"] --> B["DESIGN.md 文件<br/>YAML tokens + Markdown 理由"]
+    B --> C["本地 CLI<br/>npx design.md"]
+    C --> D["lint<br/>9 条规则<br/>(broken-ref / contrast-ratio /<br/>orphaned-tokens 等)"]
+    C --> E["diff<br/>两版 token 变更 + 回归标记<br/>(待核验: 回归判定阈值)"]
+    C --> F["export<br/>json-tailwind / css-tailwind / dtcg"]
+    F --> G["Tailwind 配置或 DTCG JSON<br/>供下游 UI 代码消费"]
+    D --> H["Lint 报告<br/>(error / warning)"]
+    E --> H
+    H --> A
+    B -. "Agent 读取<br/>(Claude Code / Cursor / Codex)<br/>机制待核验" .-> I["AI Coding Agent<br/>外部边界"]
+    I -. "生成 UI 是否回写 DESIGN.md<br/>待核验" .-> B
+    B -. "spec alpha、token schema<br/>可能演进" .-> J["规范稳定性风险<br/>alpha → stable 状态边界<br/>待核验"]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent × Design System 标准化层的先行者。</strong> 目前在 Agent 生态栈中处于"规范层"，类似于 TypeScript 之于 JavaScript——不改变底层能力，但提供了结构化的理解和验证框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Alpha 版本风险</strong>：文件明确标注 "version: alpha"，spec、token schema、CLI 可能变化</li>
 <li><strong>Google Labs ≠ Google 官方</strong>：Labs 项目可能被放弃或方向调整</li>
@@ -113,7 +163,7 @@ components:
 <li><strong>仅覆盖静态设计 tokens</strong>：动态主题（dark mode）、响应式断点、动画时序等复杂设计语义暂不覆盖</li>
 <li><strong>与 Figma 的关系未定义</strong>：DESIGN.md 是 Figma 的补充还是替代？</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -145,9 +195,9 @@ components:
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>✅ 强烈建议持续跟踪。</strong> 如果被主流 coding agent 默认支持，将成为 Agent 前端开发的事实标准。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Claude Code / Cursor / Codex 是否原生支持 DESIGN.md 读取</li>
 <li>社区是否出现 DESIGN.md 模板库（类似 shadcn/ui 的组件库模式）</li>

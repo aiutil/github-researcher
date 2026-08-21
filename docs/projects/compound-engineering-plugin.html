@@ -6,7 +6,7 @@
     <title>EveryInc/compound-engineering-plugin | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,70 @@
 <li><strong>复合工程方法论内核</strong>："AI skills that make each unit of engineering work easier than the last"——核心理念是让工程工作产生可复用的积累。具体实现可能包括：自动记忆更新、工程模板积累、代码审查 rubric 等。</li>
 <li><strong>版本管理和迁移机制</strong>：为已有用户提供了从旧版迁移到 root-native 布局的详细指南，包括清理 legacy Codex tool map 的步骤。这显示了项目对向后兼容性的重视。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>插件市场与 Claude Code、Codex、Cursor 等 Agent 宿主之间的“工程方法论资产层”；核心交付物是 Skills 和本地 prompt assets，不是独立执行平台。</td>
+<td>来自档案的多平台安装路径、root-native 布局与 Skills 描述；各宿主的加载协议须以官方文档核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者选择宿主 → 原生 marketplace/插件入口安装 → Skills 与 review/research assets 被 Agent 运行时加载 → 代码变更与工程反馈进入下一轮工作。</td>
+<td>档案明确安装入口和 asset 布局；记忆写入或反馈持久化机制没有源码级证据。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨宿主覆盖扩大可达性，但增加兼容性维护面；把方法论固化为 prompt assets 易分发，却难以独立量化产出质量。</td>
+<td>多平台与迁移机制有资料支持；实际效率提升尚缺独立基准。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>仅在一个非关键仓库启用一组 review/research Skills，对比启用前后的审查覆盖、返工率与误报；保留无插件回退路径。</td>
+<td>这是采用建议，不表示项目已证明该指标改善。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>compound-engineering-plugin 展示了"方法论产品化"的趋势——将工程最佳实践从文章/视频转化为可执行的 Agent Skills。其设计哲学是：Agent 不需要被教导如何写代码（模型本身已有这个能力），但需要被教导如何有方法论地工作。多平台原生支持策略也值得学习——不为任何单一平台绑定，而是适配每个平台的原生插件机制。这种"方法论 + 工具化"的组合可能是 AI 时代知识产品的新形态。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此高层图仅采用本档案已有的插件、宿主和本地 asset 描述；不推断未公开的模型调用或遥测实现。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    D[开发者与代码仓库] --> M[宿主原生 Marketplace]
+    M --> P[Compound Engineering Plugin]
+    P --> S[Skills 与本地 Prompt Assets]
+    S --> A[Claude Code Codex Cursor 等 Agent 宿主]
+    A --> R[代码审查 研究 工程工作流]
+    R --> F[工程反馈与版本化资产 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>compound-engineering-plugin 定位为<strong>Agent 工程方法论的标准插件</strong>。在 Skills/Plugin 生态中，它属于"方法论/流程优化"类别——不提供具体功能（如数据库操作或 API 集成），而是改变 Agent 的工作方式。与 taste-skill（设计品味）、stop-slop（写作质量）类似，都是通过 Skills 提升 AI 输出的"元层面"质量。24K stars 使其成为 2025-2026 年最具影响力的工程方法论插件之一。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>方法论有效性的验证</strong>：compound-engineering 的理念很吸引人（"让工作越来越容易"），但实际效果高度依赖 Skills 的具体内容质量。如果 Skills 只是泛泛的最佳实践建议，实际价值有限。需要验证其是否真正带来可度量的效率提升。</li>
 <li><strong>Every.to 品牌的双刃剑</strong>：Every.to 作为内容/教育公司，其工程方法论的可信度取决于其工程团队的实际实力。读者可能因为品牌信任而 star，但实际工程效果需要独立验证。</li>
 <li><strong>多平台维护成本</strong>：同时支持 Claude Code、Cursor、Codex 四种平台意味着每次更新都需要同步适配。如果团队精力不足，某些平台的更新可能滞后。</li>
 <li><strong>与 Agent 自身能力演进的重叠</strong>：随着 Claude Code、Cursor 自身内置更多的工程方法论功能，外部插件的价值可能被稀释。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>cursor/plugins (官方)</strong>：Cursor 自己的官方插件仓库，其中 <code>thermos</code>（安全审计）、<code>orchestrate</code>（并行任务分配）等插件也涉及工程方法论。compound-engineering-plugin 是第三方方法论插件。</li>
 <li><strong>wshobson/agents</strong>：38K stars 的多平台 Agent Skills 市场，提供大量功能型 Skills。compound-engineering-plugin 更聚焦于方法论。</li>
 <li><strong>Leonxlnx/taste-skill</strong>：73K stars，前端设计品味 Skill。理念相似（用 Skills 提升 AI 输出质量），但领域不同（前端设计 vs 工程方法论）。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪，作为"方法论产品化"趋势的代表项目</strong>。compound-engineering-plugin 预示着一个新赛道——将工程方法论、设计哲学、写作风格等领域知识打包为 Agent Skills。如果这个趋势持续发展，可能会出现更多垂直领域的方法论插件。建议关注其 Skill 内容的深度更新和效果反馈。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Skill 内容的实际效果</strong>：是否有用户反馈或案例研究证明 compound engineering 方法论确实提升了 Agent 的工程效率</li>
 <li><strong>复合工程概念的演进</strong>：Every.to 是否会围绕这个概念推出更多内容（课程、书籍、咨询服务），形成知识产品矩阵</li>

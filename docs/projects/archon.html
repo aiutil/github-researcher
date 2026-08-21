@@ -6,7 +6,7 @@
     <title>Archon | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -77,42 +77,99 @@
 <li>GitHub：CI/CD 集成</li>
 </ul>
 <h3 id="_7">架构设计</h3>
-<pre class="mermaid">graph TB
-    A[Harness YAML<br>定义工作流] --> B[Archon Engine<br>解析+调度]
-    B --> C{Agent 选择}
-    C -->|编码| D[Claude Code]
-    C -->|编码| E[Codex]
-    C -->|验证| F[自定义验证器]
-    D --> G[Output Pipeline<br>validate → review → PR]
-    E --> G
-    F --> G
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    subgraph Entry[入口边界 - 待核鉴权与配额]
+        CLI[CLI 客户端 - 待核]
+        WEB[Web UI]
+        SLACK[Slack 接入]
+        DISCORD[Discord 接入]
+        GH[GitHub 集成]
+    end
+    HARNESS[Harness YAML<br>plan → implement → validate → review → pr]
+    ENGINE[Archon Engine<br>解析与调度 - 持久化与状态机待核]
+    ROUTE{Agent 路由}
+    CLAUDE[Claude Code]
+    CODEX[Codex]
+    VALID[自定义验证器<br>例如 npm test]
+    OUT[Output Pipeline<br>validate → review → PR]
+    PR[自动创建 PR - 权限边界待核]
+    HARNESS --> ENGINE
+    CLI --> ENGINE
+    WEB --> ENGINE
+    SLACK --> ENGINE
+    DISCORD --> ENGINE
+    GH --> ENGINE
+    ENGINE --> ROUTE
+    ROUTE --> CLAUDE
+    ROUTE --> CODEX
+    ROUTE --> VALID
+    CLAUDE --> OUT
+    CODEX --> OUT
+    VALID --> OUT
+    OUT --> PR
 </pre>
-<h2 id="_8">架构启发</h2>
+<h2 id="_8">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Archon 是 YAML harness 编排层，向上对接 CLI/Web/Slack/Discord/GitHub 多入口，向下路由到 Claude Code、Codex 与自定义验证器</td>
+<td>入口与 Agent 名单以档案"多入口执行""Claude Code + Codex"为准；具体鉴权、租户隔离与配额策略未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Harness YAML → Archon Engine 解析与调度 → 按步骤分派 Agent/命令 → 进入 plan→implement→validate→review→pr 的输出流水线 → 可选自动创建 PR</td>
+<td>步骤序列取自档案示例 YAML；引擎内部持久化、状态机与失败重试策略未描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>用确定性 YAML 流程封装非确定性 LLM 输出，与 YAML 复杂度膨胀、Agent 深度绑定带来的切换成本之间的取舍</td>
+<td>权衡分析来自档案"风险/局限"章节；可观测性、审计、限流、模型路由细节缺乏源码级证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一条真实 feature 任务，用单一 harness（plan → implement → validate → review → pr）在 CLI 入口跑通，并对输出差异率、PR 成功率与失败模式建表</td>
+<td>指标定义基于档案"确定性"承诺与示例 YAML；缺少 CLI 安装/部署方式、token 计费模型与日志格式等运行前提，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">架构启发</h2>
 <ol>
 <li><strong>确定性封装模式</strong>：对非确定性系统（LLM）用确定性框架（YAML 工作流）封装，是工程化的正确思路</li>
 <li><strong>分离关注点</strong>：harness 只管流程，Agent 只管执行——职责清晰</li>
 <li><strong>多入口统一执行</strong>：同一个 harness 可以从不同入口触发，说明核心引擎设计合理</li>
 </ol>
-<h2 id="_9">定位判断</h2>
+<h2 id="_10">定位判断</h2>
 <p><strong>平台候选</strong>。如果 harness 概念被广泛接受，Archon 有潜力成为 AI Coding 工作流的事实标准层。类似于 GitHub Actions 之于 CI/CD。</p>
-<h2 id="_10">风险/局限/泡沫点</h2>
+<h2 id="_11">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>LLM 不确定性是根本性的</strong>：harness 可以约束流程，但不能约束 LLM 输出。对"可确定性"的承诺可能过高</li>
 <li><strong>YAML 复杂度膨胀</strong>：真实开发流程远比 plan→implement→validate 复杂，YAML 可能很快变得难以维护</li>
 <li><strong>Agent 绑定风险</strong>：目前深度绑定 Claude Code 和 Codex，模型切换成本可能较高</li>
 <li><strong>竞品风险</strong>：harness 概念容易被复制，护城河不深</li>
 </ol>
-<h2 id="_11">与同类项目的关系</h2>
+<h2 id="_12">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Superpowers</strong>：Superpowers 侧重技能（Skill），Archon 侧重流程（Harness）。互补而非竞争。</li>
 <li><strong>vs oh-my-codex</strong>：oh-my-codex 是 Agent 增强框架，Archon 是工作流引擎。不同层。</li>
 <li><strong>vs agency-agents</strong>：agency-agents 是 Agent 模板集合，Archon 是执行引擎。agency-agents 的 harness 可以用 Archon 来运行。</li>
 </ul>
-<h2 id="_12">是否值得持续跟踪</h2>
+<h2 id="_13">是否值得持续跟踪</h2>
 <p><strong>✅ 是</strong>。Harness 工程是 AI Agent 工业化的关键环节，Archon 目前是这个赛道的领先者。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>✅ 是</strong>。如果团队正在使用 AI Coding Agent 且被不确定性困扰，Archon 提供了一个低成本的标准化尝试。</p>
-<h2 id="_13">后续观察点</h2>
+<h2 id="_14">后续观察点</h2>
 <ol>
 <li>Harness 模板生态是否丰富——这将决定是否值得长期投入</li>
 <li>是否支持自定义 Agent（不限于 Claude Code/Codex）</li>

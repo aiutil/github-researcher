@@ -6,7 +6,7 @@
     <title>microsoft/SkillOpt | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,58 @@
 <li><strong>冻结 LLM:</strong> 不需要修改或微调模型权重，适用于任何黑盒 LLM（GPT-4、Claude、DeepSeek）</li>
 <li><strong>best_skill.md 产物:</strong> 输出可直接部署的 Markdown 技能文件</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SkillOpt 是位于冻结 LLM Agent 之上的"Skill 训练优化器"，输入为任务数据集 + 初始 <code>SKILL.md</code>，输出为可部署的 <code>best_skill.md</code>，不修改模型权重</td>
+<td>边界基于档案"冻结 LLM"与"<code>best_skill.md</code> 产物"两项表述；具体 CLI/SDK 形态、并发模型未在档案中描述，待源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据集 + 初始 Skill → 轨迹执行 → 轨迹驱动编辑 → 验证门控筛选 → 接受/拒绝 → 迭代至 <code>best_skill.md</code></td>
+<td>路径来自"轨迹驱动编辑"与"验证门控（Validation-Gated Updates）"表述；epoch/batch size/learning rate 的具体实现未述，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自动化 Skill 改写收益 vs. 验证集过拟合风险、黑盒可解释性下降、多次 LLM 调用带来的成本</td>
+<td>权衡依据档案"风险/局限"小节；具体成本量级、跨 LLM 迁移效果待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一任务、最小数据集与受控 LLM（如固定版本 GPT-4/DeepSeek）下跑通训练循环，验收项：泛化性、成本、可审计日志、模型切换后重训路径</td>
+<td>PoC 形态由"冻结 LLM"与"PyPI <code>pip install skillopt</code>"推出；具体接口、训练超参、数据格式未在档案中描述，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>SkillOpt 的核心架构启发是"文本即参数"——将自然语言指令（Skill/Prompt）视为可优化的参数，用训练循环来搜索最优文本。这打破了"模型训练"与"Prompt 编写"的界限。其验证门控机制借鉴了神经网络训练中的"early stopping"和"验证集评估"，将严谨的训练方法论引入了 Prompt 工程。轨迹驱动编辑的思路也值得借鉴——从失败中学习，而非随机搜索。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游 Agent] --> I[入口: 任务数据集 + 初始 SKILL.md]
+    I --> C[SkillOpt 编排与训练循环]
+    C --> E[轨迹执行 Trajectory-Driven Edits]
+    E --> M[冻结 LLM 推理 黑盒可调用]
+    E --> V[验证门控 Validation-Gated Updates]
+    V --> C
+    C --> O[产物: best_skill.md 待核验部署形态]
+    C --> S[状态/审计: 接受与拒绝的回写 待核验持久化]
+    M -.绑定特定 LLM 版本.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>AI 基础设施型项目（前沿探索期）。</strong> SkillOpt 定义了一个新的技术子领域——文本空间优化。它不是通用 Agent 框架，而是 Agent 生态中的"训练工具"。其定位类似于神经网络训练中的优化器——不直接做任务，而是提升做任务的 Agent 的能力。这一领域正处于从学术研究到工程实践的转化期。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>学术与工程差距:</strong> 研究环境中验证的效果，在真实复杂任务上是否可复现尚需验证</li>
 <li><strong>计算成本高:</strong> 每次迭代需要多次 LLM 调用（执行轨迹 + 编辑 + 验证），成本不低</li>
@@ -63,7 +110,7 @@
 <li><strong>黑盒可解释性:</strong> 自动修改的 Skill 文本人类不一定理解，调试困难</li>
 <li><strong>模型依赖:</strong> 优化的 Skill 可能绑定特定 LLM 版本，模型更新后需重新优化</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Prompt Engineering 手动调优:</strong> SkillOpt 是自动化版本，手动是手工版本</li>
 <li><strong>vs DSPy:</strong> DSPy 也是自动优化 Prompt，但更侧重编译器范式（声明式 → 编译），SkillOpt 更侧重训练范式（epoch → 验证）</li>
@@ -71,9 +118,9 @@
 <li><strong>vs Fine-tuning:</strong> Fine-tuning 修改模型权重，SkillOpt 修改文本指令，前者更重但效果可能更好</li>
 <li><strong>vs EvolvingLMMs-Lab/SkillOpt-Lite:</strong> 轻量化版本，更易使用</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是，高优先级。</strong> SkillOpt 代表了 Agent 时代的"训练"范式——不是训练模型，而是训练 Skill。如果这一范式成立，它将成为 Agent 开发的标准工具链组件。值得关注的是：训练效果的泛化性、与不同 LLM 的兼容性、以及从学术到生产的转化进度。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>arXiv 论文的同行评议反馈和引用情况</li>
 <li>真实生产任务中 SkillOpt 优化的效果是否可复现</li>

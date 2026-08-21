@@ -35,8 +35,35 @@ Apple 品牌效应 + 开发者对端侧 AI 的真实需求。1,064 stars 对于 
 3. **Swift 运行时** — `coreai-models` Swift Package，直接集成到 iOS/macOS App
 4. **Agent Skills 集成** — 3 个官方 Skill 让 Coding Agent 像专家一样使用 Core AI
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 端侧 AI 工具链：HuggingFace 模型源 → 导出为 `.aimodel` → Python 构建块 → Swift Package 运行时 → iOS/macOS App；仅服务 Apple 平台 | 平台范围（macOS/iOS 27.0+）、`.aimodel` 闭环、Swift/Python 双语言见档案；模型覆盖数量、AGENTS/Skill 内部结构未在档案中给出 |
+| 主路径 | 模型作者路径：HuggingFace → coreai-models 导出配方 → `.aimodel` 资产 → 通过 Swift Package 集成到 App → 在 Core AI framework 上运行；Agent Skills 作为辅助开发路径 | `.aimodel` 格式、HuggingFace 来源、Swift Package 集成、Core AI framework 依赖均见档案；具体 API、推理调度、量化流水线在档案中未证实 |
+| 关键权衡 | 平台锁定（仅 Apple）与端侧体验/性能/官方支持之间的取舍；同时与跨平台方案（MLX、ONNX、llama.cpp）在覆盖广度上的取舍 | 锁定、Apple 官方、Agent Skills、MLX/ONNX/llama.cpp 关系均见档案；性能、量化水平、能耗等基准未在档案中给出 |
+| 最小 PoC | 在 macOS 27.0+ 上选一个 HuggingFace 模型，按导出配方生成 `.aimodel`，通过 Swift Package 集成到最小 App，验证加载与推理；同步在 Claude Code 接入三个 Agent Skills 评估开发体验 | HuggingFace 入口、Python 构建块、Swift Package、Agent Skills 名称见档案；具体 PoC 跑通标准（延迟、内存、模型清单）需以源码/文档为准 |
+
 ## 架构启发
 Apple 的端侧 AI 策略是 **全栈控制**：芯片（Apple Silicon）→ OS（macOS/iOS 27 Core AI framework）→ 工具链（coreai-models）→ 开发体验（Agent Skills）。这种垂直整合是 Apple 一贯的策略，但在 AI 时代意味着开发者如果绑定 Core AI，就绑定了整个 Apple 生态。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    HF[HuggingFace 模型源] --> EX[coreai-models 导出配方 HF 转 aimodel 待核验]
+    EX --> AIM[.aimodel 模型资产]
+    PY[Python 构建块 作者侧] --> EX
+    AIM --> SP[Swift Package 运行时 coreai-models]
+    SP --> APP[iOS macOS App 27.0+]
+    SK[Agent Skills working-with-coreai model-authoring model-compression] -.辅助.-> PY
+    SK -.辅助.-> SP
+    OS[Apple Core AI framework OS 27.0+] -.依赖.-> SP
+    APP --> OS
+    R[风险边界 平台锁定 27.0+ 版本门槛] -.约束.-> APP
+```
 
 ## 定位判断
 coreai-models 是 **Apple 端侧 AI 的 Xcode**——不是模型本身，而是让开发者能高效使用模型的工具链。如果 Apple 端侧 AI 生态成熟，coreai-models 将成为不可或缺的基础设施。

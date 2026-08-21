@@ -6,7 +6,7 @@
     <title>supermemory | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,29 +51,74 @@
 <li>TypeScript 实现，易集成</li>
 <li>定位为 AI 时代的 Memory 基础设施</li>
 </ul>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为 Agent Memory 中间层，向下屏蔽底层存储、向上暴露标准化 API；项目档案未确认其内部是否自研向量索引或仅封装第三方向量库</td>
+<td>仅依据标签（memory, ai-memory, agent-infrastructure, api, vector-database）与 TypeScript 语言事实推断，存储实现待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>外部请求经 API 入口进入，调用 Memory 引擎完成写入与检索，再回写会话/状态；是否包含模型推理与工具调用环节档案未明示</td>
+<td>档案自述"Memory API + 可扩展"但未给出请求处理的具体控制流</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>作为独立层需要在"通用接口覆盖广度"与"独立于 LangChain/LlamaIndex 等框架"之间取舍；同时面临 Mem0/Zep 同类方案与向量数据库自身的双向竞争</td>
+<td>档案明确点出竞争关系，但未提供性能、协议、权限模型等可量化证据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道接入 + 最小工具权限 + 审计日志开启的小流量验证，重点验证 API 通用性、跨会话持久化效果与退出路径</td>
+<td>档案给出采用建议方向，但未提供官方 SDK、鉴权方式、部署形态等 PoC 所需的具体接入细节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Memory 层可能成为 Agent 架构的标准组件，位于 LLM 和工具层之间</li>
 <li>标准化 Memory 接口可以让不同 Agent 共享记忆上下文</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游Agent] --> I[API入口与身份边界 待核验]
+    I --> C[supermemory Memory 引擎 TypeScript]
+    C --> S[会话与状态回写 待核验]
+    C --> V[底层向量存储 Pinecone/Weaviate/Chroma 等 待核验]
+    C --> A[审计与可观测日志 待核验]
+    L[LangChain LlamaIndex 等框架内置Memory] -.竞争.- C
+    M[Mem0 Zep 等同类Memory方案] -.竞争.- C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> Memory API 如果设计得当，可以成为 Agent 基础设施层。但标准定义权尚未确立。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li>「Memory API」标准定义权尚未统一，多个竞争方案可能并存</li>
 <li>需观察：是否只是向量数据库 wrapper，还是有更深层的架构创新</li>
 <li>24.6K stars 的热度可能部分来自 AI Agent 概念炒作</li>
 <li>与 LangChain/LlamaIndex 等框架内置 Memory 功能竞争</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Mem0 / Zep</strong>：同类 Memory 方案，竞争关系</li>
 <li><strong>向量数据库（Pinecone/Weaviate/Chroma）</strong>：底层存储，supermemory 可能构建其上</li>
 <li><strong>LangChain Memory</strong>：框架内置方案，supermemory 尝试做框架无关的独立层</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Memory 标准化是中期趋势，具体项目需持续观察技术深度。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>API 设计是否足够通用，能否适配不同 LLM 后端</li>
 <li>是否只是向量数据库的简单封装，还是有独特架构</li>

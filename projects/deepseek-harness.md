@@ -47,8 +47,34 @@ DeepSeek 官方开源的 AI Agent Harness——"Everything is a Plugin"，用 Co
 4. **MIT 开放:** 友好协议，便于二次开发
 5. **官方维护:** 长期可持续性比社区 fork 项目更强
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | deepseek-harness 是位于"使用者/上游系统、模型供应商、工具/数据源"之间的编排层，自身不替代模型与外部系统 | 档案明示其为"AI Agent Harness""编排层"，TypeScript 实现；档案未给出具体入口协议、传输层与持久化方案 |
+| 主路径 | 请求经入口与身份边界进入"项目编排与运行时（Cordis + DSH-Plugin）"，分发到模型推理与工具/外部系统，再回写会话、状态、审计 | 路径节点来自档案"关键技术亮点"与"架构启发"；具体调用协议、插件加载机制与会话存储未在档案中证实 |
+| 关键权衡 | "Everything is a Plugin"带来的扩展速度，与 Cordis 自研 DI 学习曲线、权限/可观测性、模型供应商耦合之间的平衡 | 档案直接列出"核心权衡"与"Cordis 学习曲线""DSH-Plugin 生态未成型"等风险；插件互操作、权限模型细节未证实 |
+| 最小 PoC | 以单一入口渠道、最小工具权限与可审计日志接入 Cordis 运行时，编写一个最小 DSH-Plugin 验证加载、调用与卸载闭环，再评估扩展 | 档案"采用建议"明确该路径；DSH-Plugin API 形态、Cordis 生命周期与审计落点仍需源码核验 |
+
 ## 架构启发
 "Everything is a Plugin" 的 Agent Harness 设计哲学与 Hermes Agent、Claude Code、Codex CLI 等主流 Agent Harness 路线一致。这暗示了 2026 年 AI Coding 的收敛方向——**插件化、可互操作、Harness 即平台**。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[Cordis 编排与运行时]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> S[会话 状态 审计]
+    P[DSH-Plugin 生态 待核验] --> C
+    M --> C
+    T --> C
+    R[风险边界 Cordis 学习曲线 供应商耦合 插件生态未成型] -.约束.-> C
+```
 
 ## 定位判断
 **平台候选型 / 中国版 Claude Code 对标。** 与 Hermes Agent、ECC、Claude Code 同处"AI Coding Harness 第一梯队"。DeepSeek 官方身份给予其在中国市场巨大分发优势，长期看有可能成为中文 Coding Agent 基础设施层。

@@ -6,7 +6,7 @@
     <title>dflash-mlx | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,35 +46,73 @@
 <li>MLX 框架集成</li>
 <li>针对 Apple Silicon GPU 优化</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MLX 之上的推测解码加速层，依赖 Apple Silicon 硬件与 MLX 运行时，外部边界为上游 LLM（draft / target）模型</td>
+<td>仅由标签与定位表述推导；具体入口、模型供应、上下游协议未在档案中说明</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>候选生成（Draft）→ 候选发送 → Target 并行验证 → 接受/截断回写</td>
+<td>基于"架构启发"中的序列图描述；具体 K 值、验证策略与回写位置以源码为准</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>端侧加速收益 vs Apple Silicon 独占、tokenizer 兼容性约束、声称无损的边界条件</td>
+<td>"无损"声明与平台限制来自档案；偏差阈值、兼容性矩阵未提供实测数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一 Apple Silicon 设备、tokenizer 兼容的一对小/大模型、最小权限与可审计日志，验收加速比与输出一致性</td>
+<td>加速比基准、模型兼容清单、企业场景适配均列为"后续观察点"，档案未给出实测</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>推测解码模式：一个小模型（draft model）快速生成候选 token，大模型并行验证。这是一种用计算换延迟的经典架构模式。</p>
-<pre class="mermaid">sequenceDiagram
-    participant D as Draft Model (小)
-    participant T as Target Model (大)
-    D->>D: 快速生成 K 个候选 token
-    D->>T: 发送候选序列
-    T->>T: 并行验证 K 个 token
-    T->>D: 返回接受/拒绝结果
-    Note over D,T: 接受的 token 直接输出<br/>拒绝的从第一个错误处截断
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Client[推理调用方] --> Orch[dflash-mlx 编排层]
+  Orch --> Draft[Draft Model 小模型]
+  Draft -->|候选 token 序列| Orch
+  Orch -->|并行验证请求| Target[Target Model 大模型]
+  Target -->|接受/拒绝结果| Orch
+  Orch -->|接受 token 输出 / 拒绝处截断| Client
+  Orch -.依赖.-> MLX[MLX 运行时 待核验]
+  MLX -.仅支持.-> AS[Apple Silicon GPU 待核验]
+  Orch -.风险边界.-> Risk{tokenizer 兼容性<br/>与无损声明验证 待核验}
 </pre>
-<h2 id="_7">定位判断</h2>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型/基础设施候选</strong>。如果成熟，可以成为 MLX 生态的标准推理加速组件。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ol>
 <li><strong>平台限制</strong>：仅 Apple Silicon</li>
 <li><strong>无损声明需验证</strong>：推测解码在某些场景下可能引入微小偏差</li>
 <li><strong>模型兼容性</strong>：需要 draft model 和 target model 的 tokenizer 兼容</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs vLLM / TensorRT-LLM</strong>：服务端推理加速，dflash-mlx 是端侧对标</li>
 <li><strong>vs MLX 官方</strong>：dflash-mlx 是 MLX 之上的优化层</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 端侧推理加速是明确趋势，推测解码是关键技术路径。</p>
 <h2 id="poc">是否值得企业 PoC</h2>
 <p><strong>可以评估。</strong> 如果企业有 Apple Silicon 端侧 AI 部署场景，值得测试加速效果。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>加速比的基准测试数据</li>
 <li>与不同模型的兼容性</li>

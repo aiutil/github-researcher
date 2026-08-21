@@ -53,6 +53,15 @@ AX 填补的是 Agent 的**"操作系统"层**——不是框架（怎么写 Age
 6. **计算层无关**：虽然瞄准 K8s，但不绑定具体计算平台。可在 Agent Substrate、本地、云端运行
 7. **Antigravity Harness**：内置支持 Gemini（Google AI Studio / Vertex AI），`ax --input` 即可启动
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 客户端到 Actor 的全链路可恢复执行层（入口→Server→Controller→Actor→事件日志/快照），Agent/工具/MCP/环境作为隔离 Actor 运行 | 仅基于档案"架构启发"图与亮点描述抽象，具体协议、存储后端、K8s 集成方式需源码核验 |
+| 主路径 | 客户端请求→AX Server（多租户）→Actor Controller（单写者）→通过 Event Log 重放/Snapshot 恢复 Actor→模型/MCP/环境调用→状态回写事件日志 | 主路径组件在档案中明确列出；但"单写控制器"一致性协议、事件日志的持久化介质未描述 |
+| 关键权衡 | 确定性 Runtime（Event Sourcing + 可恢复流）与可变性 Agent 行为的隔离；分布式扩展性与 Google 单方维护/暂不接 PR 的集中化风险；与 K8s/Agent Substrate 亲和与计算层无关设计之间的张力 | "Google Graveyard 风险""active early development""暂不接受外部 PR"为档案原文；性能、协议、部署形态档案未提供 |
+| 最小 PoC | 以 `ax --input` 启动 Antigravity Harness 对接 Gemini；在单一工具、最小权限与可审计日志下验证 Agent 崩溃后从 Event Log/Snapshot 恢复续跑，再扩展多 Actor 与 K8s 部署 | 启动命令、内置 Gemini 支持（Google AI Studio/Vertex AI）为档案明文；MCP、恢复协议细节、退出路径待核验 |
+
 ## 架构启发
 
 ```
@@ -72,6 +81,24 @@ Client ←→ AX Server (multi-tenant)
 - **Event Sourcing**：所有状态变更通过事件日志记录，天然可审计、可重放、可恢复。这与数据库的 WAL 异曲同工
 - **关注点分离**：Controller 管"怎么跑"（调度/恢复/一致性），Harness 管"做什么"（模型推理），Skill/Tool 管"执行什么"
 - **从单体到分布式**：Agent 从单体应用走向"分布式 Harness + 隔离 Actor"架构，AX 提供了这个架构的 Runtime 底座
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Client[客户端调用方] --> Server[AX Server 多租户入口 待核验协议]
+    Server --> Controller[Actor Controller 单写者 单一协调点]
+    Controller --> EventLog[Event Log 事件日志 可审计可重放 待核验持久化后端]
+    Controller --> Snapshot[Snapshots Actor 状态快照]
+    Controller --> Actor[Actor 隔离执行单元 可挂起/恢复]
+    Actor --> Model[模型推理 Gemini AI Studio Vertex AI]
+    Actor --> MCP[MCP Server 作为独立 Actor]
+    Actor --> Env[Environment 隔离运行环境]
+    Actor -.崩溃/挂起.-> Controller
+    EventLog -.重放恢复.-> Controller
+```
 
 ## 定位判断
 **Agent 领域的 Kubernetes 候选。** 不是框架，是 Runtime。如果成功，会成为 Agent 部署的标准基础设施层——正如 K8s 之于微服务。AX 管的是"Agent 怎么可靠地跑"，Microsoft AGT 管的是"Agent 不能做什么"，两者组合可能构成企业 Agent 基础设施的核心栈。当前仍处于 active early development，明确标注 breaking changes，暂不接受外部 PR——这是负责任的早期开源态度。

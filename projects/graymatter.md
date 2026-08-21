@@ -31,19 +31,38 @@ Agent 每次对话都需要把完整历史上下文发送给 LLM，Token 消耗�
 2. **Token 消耗优化**：通过智能压缩历史上下文而非简单截断
 3. **Go 嵌入式实现**：零外部依赖，可直接编译进 Agent 二进制
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Go 编写的嵌入式 Agent Memory 组件，作为 Agent 进程内依赖运行，与模型供应商、Agent 运行时并列于 Agent 内部 | 依据为档案中的语言(Go)、标签(Embedded)、"零外部依赖、可直接编译进 Agent 二进制"，未涉及网络协议或独立部署形态 |
+| 主路径 | Agent 调用 Graymatter 三行 API → 本地压缩/持久化历史 → 输出优化后上下文给 Agent → Agent 再调用 LLM | 基于"三行 Go 代码为 AI Agent 添加持久记忆""智能压缩历史上下文"抽象而成，未指明压缩算法、存储格式或调用协议 |
+| 关键权衡 | 嵌入式零部署成本与低复用性、单进程隔离的权衡；Token 节省与回答质量损失的权衡；早期项目(277 stars)社区验证不足与理念吸引力的权衡 | 仅来自档案明示，未给出 benchmark 数据、压缩算法细节、质量评估方法 |
+| 最小 PoC | 单 Agent + 单一 LLM 渠道 + 最小工具权限，在受控会话上对比"开/关 Graymatter"的 Token 量与回答质量，验收项含安全、退出路径与质量回归阈值 | 档案仅给出"先在单一渠道、最小工具权限和可审计日志下验证"的抽象建议，具体指标与压测方法需在源码/文档中核验 |
+
 ## 架构启发
 Graymatter 代表了 Memory 层的嵌入式路线，与 MemPalace 的服务化路线形成对比：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    subgraph "Memory 路线对比"
-        direction TB
-        A[Agent Memory] --> B[嵌入式路线<br/>Graymatter<br/>零依赖·极简·Go]
-        A --> C[服务化路线<br/>MemPalace<br/>API·Benchmark·Python]
-    end
-    
-    B --> D[适合: 中小规模<br/>单 Agent·嵌入式集成]
-    C --> E[适合: 大规模部署<br/>多 Agent·服务化架构]
+flowchart LR
+    AgentCore["Agent 核心<br/>(待核验运行时)"]
+    Gray["Graymatter<br/>Go 嵌入式组件"]
+    LLM["LLM 模型供应商<br/>(待核验具体协议)"]
+    MemStore["持久化存储<br/>(待核验后端)"]
+    AgentCore -->|"三行 API 调用<br/>写入历史"| Gray
+    Gray -->|"压缩后上下文"| AgentCore
+    AgentCore -->|"Prompt + 压缩上下文"| LLM
+    LLM -->|"响应"| AgentCore
+    Gray -.->|"本地持久化"| MemStore
+    RiskGuard{"风险边界<br/>社区验证 277 stars<br/>90% Token 降低待核验"}
+    Gray -.-> RiskGuard
+    ExtBoundary["外部边界<br/>MemPalace 服务化路线对比"]
+    RiskGuard -.-> ExtBoundary
+</mermaid>
 ```
 
 ## 定位判断

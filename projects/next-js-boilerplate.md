@@ -44,10 +44,36 @@ Next.js 全栈应用脚手架——同时支持 App Router 和 Page Router，集
 7. **i18n + SEO**：国际化和搜索引擎优化预配置
 8. **监控集成**：Sentry 等错误监控
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Next.js 全栈脚手架（TypeScript 原生），双路由（App Router + Page Router）、Tailwind CSS 4、认证、ORM、测试、CI/CD、Docker、i18n/SEO、监控均为模板内可选项 | 档案"关键技术亮点"逐条列出；具体文件结构、默认 ORM 选型（Prisma/Drizzle 二选一哪一项为默认）、Sentry 配置范围未在档案中证实 |
+| 主路径 | fork 模板 → 按需裁剪不需要的模块（认证/DB/测试/Docker 等）→ 编写业务路由与页面 → 通过 GitHub Actions 构建 → Docker 镜像部署 | 主路径基于"脚手架"定位推导；CI 工作流具体阶段、Docker 镜像基线、部署目标（Vercel/Netlify/自托管）档案未指明 |
+| 关键权衡 | 启动速度/功能完备性 vs. 依赖膨胀与定制化清理成本；App Router + Page Router 并存 vs. 长期维护双套约定的认知负担；ORM 二选一（Prisma vs Drizzle）等固化选型 vs. 业务适配性 | 权衡来自档案"风险/局限"章节；未涉及具体依赖数量、bundle 体积或构建耗时 |
+| 最小 PoC | 单一页面（仅启用 App Router + TypeScript + Tailwind 4），关闭认证/DB/Docker，跑通 `next build` 与 Vitest 基础测试，验证 CI 通过 | PoC 范围仅引用档案明确列出的能力；性能基线、测试覆盖率门槛、Next.js 版本兼容性需以源码核验 |
+
 ## 架构启发
 - **脚手架即基础设施**：好的脚手架能让团队节省数天配置时间
 - **开发者体验是核心竞争力**：DX 优先的设计理念
 - **全栈一体化**：前后端+DevOps+测试一体化模板
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者 fork 模板] --> I[入口边界: App Router 与 Page Router 双入口 待核验]
+  I --> C[项目编排与运行时: Next.js + TypeScript]
+  C --> A[认证模块 NextAuth/Auth.js 待核验默认方案]
+  C --> D[数据层 ORM Prisma 或 Drizzle 二选一 待核验默认]
+  C --> F[前端样式 Tailwind CSS 4]
+  C --> T[测试层 Playwright E2E 与 Vitest 单元]
+  C --> P[CI/CD 边界: GitHub Actions 流水线 待核验阶段]
+  C --> K[部署边界: Docker 镜像 目标平台待核验]
+  C --> S[可观测边界: Sentry 等错误监控 待核验接入范围]
+```
 
 ## 定位判断
 **成熟工具型项目**。Next.js 生态中最重要的脚手架之一。不是技术热点但实用价值高，被大量项目作为起点。

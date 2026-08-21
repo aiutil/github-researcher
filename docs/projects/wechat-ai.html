@@ -6,7 +6,7 @@
     <title>SMNETSTUDIO/WeChat-AI | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,29 +48,75 @@
 <p><strong>无法从 API 确证"刷量"行为本身</strong>——只能记录指标异常。结论标记为"疑似"，而非"确证"。</p>
 <h2 id="_4">关键技术亮点</h2>
 <p>无技术亮点可评估——README 缺失，description 为空，无法核验任何技术声明。size=819KB，TypeScript，Apache-2.0。</p>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>无可核验技术边界；仅可观察到 Apache-2.0 / TypeScript / size=819KB 的仓库外壳，与 fork≈star 的异常参与度结构</td>
+<td>description=null、README(main) 404、零 issue，无法从档案核验任何运行组件或接口</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>不可建立主路径；缺乏 README/源码支持，只能以"开发者/CI → 仓库"作为最弱假设</td>
+<td>档案未声明任何 CLI、API、引擎或外部集成；只能写"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>不是技术权衡，而是指标异常下的研究判断权衡：在 fork/star=0.74、subscribers=1、issues=0 的情况下，把该仓库存为"疑似刷量"对照样本而非技术候选</td>
+<td>异常比例来自 GitHub API 可核验字段；"刷量"本身无法被 API 确证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>不建议做技术 PoC；建议做指标观察 PoC——监测 fork/star、subscribers、issues 演变与是否被归档/改名</td>
+<td>观测点（存活状态、指标结构、README 是否填充）已在档案后续观察点列出；具体实现脚本未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>方法论启发大于技术启发。</strong> WeChat-AI 的价值在于它让"热度≠价值"的判断变得可量化。关键比例是 <strong>fork/star</strong>：
 - <strong>&lt;0.15</strong>：健康（用户多、贡献者少，符合幂律）——anydoc 0.05、qm 0.12
 - <strong>0.15-0.4</strong>：需关注（可能处于早期或特定社区）——crm 0.11、kimi-k3-in-c 0.16
 - <strong>&gt;0.6</strong>：高度异常（fork 动作被自动化执行的可能性高）——WeChat-AI 0.74、open-kimi-ppt-skill 0.74</p>
 <p><strong>结合 subscribers 和 open_issues 交叉验证</strong>：若 fork/star&gt;0.6 且 subscribers&lt;5 且 issues&lt;3，则"疑似刷量"判断的置信度显著提升。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U["开发者或自动化脚本（待核验）"] -->|"fork / star（疑似批量）"| R["SMNETSTUDIO/WeChat-AI 仓库（TypeScript / Apache-2.0 / 819KB）"]
+  R -->|"README(main) 404"| D["文档与描述（待核验）"]
+  R -->|"0 open issue / 1 subscriber"| S["社区参与度（fork≈star=0.74，待核验机制）"]
+  R -->|"代码内容未知"| C["核心实现（待核验）"]
+  C --> H["宿主运行时（待核验）"]
+  S --> O{"风险边界：疑似刷量 vs 集体学习行为"}
+  O -->|"持续异常 / 归档"| E1["案例样本：非自然热度证据链"]
+  O -->|"指标回归健康 + README 填充"| E2["重新评估为早期项目（待核验）"]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>观察型——案例库样本。</strong> WeChat-AI 不作为可采用的技术项目跟踪，而是作为"指标异常检测"方法论的教学样本。与 open-kimi-ppt-skill 共同构成"生态中的非自然热度"证据链。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>"刷量"判断无法从 API 确证</strong>：只能记录 fork≈star + 零参与度的指标异常，不能断言具体刷量机制（付费刷量/自动化部署/教程引导批量 fork 等）。</li>
 <li><strong>可能是新兴社区行为</strong>：不排除某些中文社区/课程存在"集体 fork+star"的协作学习行为（非恶意刷量），但这同样意味着 star 数不反映独立采用度。</li>
 <li><strong>项目内容未知</strong>：README 404、description 为空，无法评估是否有实际代码价值。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Binaryify/open-kimi-ppt-skill</strong>：同构——fork/star=0.74、subscribers 极低。open-kimi-ppt-skill 归档后 fork 持续异常增长；WeChat-AI 创建即异常。两者是"非自然热度"的不同阶段。</li>
 <li><strong>vs firecrawl/anydoc</strong>：对照——anydoc fork/star=0.05、subscribers 35、issues 52，是真实需求的标杆。</li>
 <li><strong>vs ShawnPana/phone-harness</strong>：对照——相近 star 量级（1,488 vs 1,406）、相近创建时间（08-07 vs 08-10），但 phone-harness subscribers 7、fork/star=0.09，结构健康。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>作为案例样本跟踪，不作为技术项目跟踪。</strong> 关注点：是否被删除/归档（如 claude-red 404 模式）、fork/star 比例是否进一步恶化、是否出现 description/README 填充（可能意味着从"刷量"转向"真实维护"）。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>存活状态</strong>：是否被删除/归档/改名（与 claude-red 404 模式对照）。</li>
 <li><strong>指标结构演变</strong>：fork/star 比例、subscribers、issues 是否改善（从异常回归健康），还是持续恶化。</li>

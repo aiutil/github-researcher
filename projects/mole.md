@@ -41,8 +41,34 @@ Mole 一条命令进入交互式菜单，支持 clean（应用残留、缓存、
 4. **安全默认:** 默认不删系统文件，所有清理操作可逆（提供 restore 路径）
 5. **中英双语 README:** 中文社区友好的工具站
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 面向 macOS 单机的 CLI/TUI 工具，边界限于本机用户态文件系统与 launchd/DNS 等系统服务，不涉及服务端或跨平台抽象 | 档案仅声明 macOS-only、Shell 实现、标签含 macos；无 Linux/Windows/服务端部署事实 |
+| 主路径 | 交互菜单分流到 clean/uninstall/analyze/optimize 四大本地模块，全部由 shell 脚本直接调用系统命令完成，无中间服务 | 档案明确"纯 shell + 标准 macOS 命令、零二进制安装"；具体子命令实现细节未在档案中给出 |
+| 关键权衡 | "零依赖 shell + 交互 TUI"换取跨机器零安装成本，代价是 GPL-3.0 copyleft 风险、单作者维护脆弱性、误删用户配置可能 | 权衡基于档案明确字段：语言 Shell、License GPL-3.0、"单一大版本演进"、清理风险段落；性能/协议细节未证实 |
+| 最小 PoC | 在一台真实 macOS 机器跑 analyze 一次、再跑一次 uninstall 走完完整路径，验证可逆性（restore）与默认安全行为，再纳入装机清单 | 档案指出"提供 restore 路径""默认不删系统文件"；具体 restore 命令、覆盖范围未在档案中给出，待核验 |
+
 ## 架构启发
 "用 shell 模拟 GUI 体验"是 mole 的最大启发——TUI 把复杂决策抽象成菜单，让高级工具对普通用户也安全可用。这一模式值得借鉴到任何系统工具：减少学习曲线不等于降低功能。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[macOS 用户] --> TUI[交互式 TUI 菜单]
+    TUI --> CORE[领域核心: clean/uninstall/analyze/optimize 分发 待核验]
+    CORE --> FS[本地文件系统扫描与清理]
+    CORE --> APP[App 卸载与配置溯源 待核验]
+    CORE --> OPT[系统优化: DNS 缓存/launchd/日志轮转 待核验]
+    FS --> SAFE[安全边界: 默认不删系统文件 + restore 路径 待核验]
+    APP --> SAFE
+    OPT --> RISK[外部系统服务边界: launchd 等 待核验]
+    CORE --> STATE[状态/风险边界: 错误处理与可逆性 待核验]
+```
 
 ## 定位判断
 **工具型 / macOS 系统清理标杆（中文社区）。** 在 DaisyDisk / AppCleaner 商业版之外，mole 是开源长尾替代之一。GPL-3.0 与"零依赖 shell" 立场清晰，但企业自用 fork 需注意 copyleft。

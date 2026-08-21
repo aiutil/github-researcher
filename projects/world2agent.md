@@ -34,22 +34,32 @@ AI Agent 目前对真实世界的信息获取是碎片化的：每个 Agent 需�
 4. **SensorHub**：传感器市场/hub，社区可贡献新的 Sensor
 5. **Apache 2.0 开源**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | World2Agent 定位为"真实世界 → Sensor → Agent"的感知层编排边界，对外通过 W2A Schema 对接天气/股市/新闻/IoT 等异构数据源，对内为 Claude Code、Hermes、OpenClaw 提供 Agent Runtime 插件。 | 边界基于档案"关键技术亮点"与"架构启发"段；协议字段、版本、传输方式未在档案中给出，源码未审计。 |
+| 主路径 | 数据源 → Sensor 适配器（按 W2A schema 结构化）→ Agent Runtime 插件（Claude Code / Hermes / OpenClaw）→ Agent 决策与行动。SensorHub 作为社区 Sensor 贡献与发现入口。 | 主路径由档案架构图与亮点 1/2/3/4 推导；运行时线程模型、持久化、重试机制均待核验。 |
+| 关键权衡 | 协议通用性 vs. Sensor 实现数量与质量的"鸡生蛋"问题；标准化收益 vs. 与 MCP 工具层的边界不清；社区开放 vs. Sensor 数据质量不可控。 | 权衡来自档案"风险/局限"四条；尚无生态采用度、SensorHub 贡献数等量化证据。 |
+| 最小 PoC | 选 1 个数据源（如天气）、接 1 个 Agent 运行时（如 Claude Code 插件）、验证 W2A schema 端到端解析；同时把权限最小化、可审计日志、退出路径列为验收项。 | PoC 设计依据档案"采用建议"与 Apache 2.0 许可；具体部署形态、依赖、SLO 未在档案中给出。 |
+
 ## 架构启发
 W2A 的架构模式是 **World → Sensor → Agent**，这是一个经典的分层抽象：
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    W[真实世界] --> S1[天气 Sensor]
-    W --> S2[股市 Sensor]
-    W --> S3[新闻 Sensor]
-    W --> S4[IoT Sensor]
-    
-    S1 --> |"W2A Protocol"| AGENT[AI Agent]
-    S2 --> |"W2A Protocol"| AGENT
-    S3 --> |"W2A Protocol"| AGENT
-    S4 --> |"W2A Protocol"| AGENT
-    
-    AGENT --> R[决策与行动]
+flowchart LR
+  W[真实世界数据源<br/>天气/股市/新闻/IoT] --> S[Sensor 实现层<br/>按 W2A Schema 结构化]
+  S --> H[SensorHub<br/>社区贡献与发现]
+  S --> P[W2A Protocol / Schema<br/>统一感知协议]
+  P --> R[Agent Runtime 插件<br/>Claude Code / Hermes / OpenClaw]
+  R --> A[AI Agent 决策与行动]
+  A -.状态/风险边界.-> Q[权限与可观测性边界<br/>Sensor 质量不可控 / 与 MCP 边界待核验]
+  H -.待核验.-> S
+  P -.待核验.-> M[MCP 工具层<br/>互补/竞争关系待核验]
 ```
 
 这个模式与 MCP（Model Context Protocol）形成互补：MCP 解决 Agent 如何使用工具，W2A 解决 Agent 如何感知世界。

@@ -44,27 +44,76 @@
 <li><strong>TS/JS 混用:</strong> 允许渐进迁移 TS，团队上手门槛低</li>
 <li><strong>完善文档 + 演示站:</strong> 官方 demo 在线可查，社区文档完整</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>gin-vue-admin 是 Vite+Vue3 前端 + Gin/Go 后端分离的后台脚手架，自带 JWT 鉴权、casbin 权限、gorm 持久化、Element Plus UI 与 MCP/Skills/AI 辅助模块；输入是 Web 端使用者或上游系统，输出是后台 CRUD/权限/AI 辅助能力</td>
+<td>来自档案"关键技术亮点"与 tags（gin, gorm, jwt, casbin, vue3, mcp, skills）；具体鉴权/权限协议与 MCP 工具清单未在档案展开，<strong>待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 前端入口（Vite+Vue3+Element Plus）→ 后端 Gin 路由 → JWT/casbin 中间件 → gorm 业务逻辑 → 可选 MCP/Skills AI 辅助与代码生成器 → 持久化与动态路由回写</td>
+<td>"主路径"由档案"前后端分离"+"企业级组件库"推导；中间件顺序、动态路由生成规则、代码生成器产出形态<strong>待核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>TS/JS 混用降低迁移成本但牺牲类型一致；6 年成熟生态与 Element Plus 强绑定，UI 切换成本高；AI 叙事（MCP/Skills/Vibe Coding）扩展能力但与仓库"License 不明"、AI 模块原生可用性未验证并存，是扩展性与合规/可维护性的核心权衡</td>
+<td>取自档案"TS/JS 混用""版本耦合""AI 集成深度有限""License 不明"；License 商用可行性、AI 模块实操效果均<strong>待核验</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用官方 demo（demo.gin-vue-admin.com）跑通登录→角色→casbin 权限→一张 CRUD 表，关闭/不启用 MCP/Skills 模块以隔离 AI 风险，验证后再评估 AI 集成与 Vue 4/Vite 7 适配</td>
+<td>demo 链接取自档案 frontmatter；MCP/Skills 是否可禁用、依赖外部模型服务与否、生产部署形态<strong>待核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>"以脚手架作为 AI 场景入口"的探索值得关注——把传统 CRUD 模板升级为 MCP/Skills 友好的协作平台，验证"AI 不是替代代码而是替代工作流"。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> FE[前端 Vite 加 Vue3 加 Element Plus TS JS 混用]
+  FE --> BE[后端 Gin 路由 编排层]
+  BE --> AUTH[JWT 鉴权 中间件]
+  AUTH --> RBAC[casbin 权限 控制]
+  RBAC --> ORM[gorm 业务逻辑 与 持久化]
+  BE --> AI[MCP 服务 与 Skills 管理 与 AI 辅助 与代码生成器 待核验]
+  AI --> BE
+  ORM --> DR[动态路由 表单生成器 回写前端 待核验]
+  BE --> LOG[会话 状态 审计 边界 待核验]
+  ORM --> LOG
+  DR --> FE
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 / 中文后台脚手架龙头之一。</strong> 与 ruoyi-vue-pro 并列中文后台脚手架 Top 2，但加了 AI 概念后开始向"AI 友好脚手架"演进。<strong>局限</strong>：license 为 NOASSERTION（自述 MIT 但仓库根目录无 LICENSE 文件），企业用户需要核实可商用性。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>License 不明:</strong> 仓库根目录未提供 LICENSE 文件，NOASSERTION 标签 = 法律未明确，企业商用有风险，<strong>需向作者确认</strong> 或在 fork 时增加 LICENSE</li>
 <li><strong>AI 集成深度有限:</strong> 内置 MCP/Skills 模块的"AI 辅助"是否真的原生可用需运行验证</li>
 <li><strong>版本耦合:</strong> 通常与 Element Plus 强绑定，UI 层切换成本高</li>
 <li><strong>生态竞争:</strong> RuoYi-Go、go-admin 等同类项目在分食其份额</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs ruoyi-vue-pro:</strong> 基于 Spring Boot/TypeScript，更偏企业级；gin-vue-admin 基于 Go/JS，更轻量</li>
 <li><strong>vs go-admin:</strong> Go 单体版 admin，gin-vue-admin 前后端分离</li>
 <li><strong>vs vue-vben-admin:</strong> 仅前端模板，gin-vue-admin 包含完整后端</li>
 <li><strong>vs fastapi/full-stack-fastapi-template:</strong> Python + React 路线，与 Go + Vue 路线平行竞争</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得参考但不建议核心项目使用其作为唯一栈。</strong> 对 Go + Vue 后台开发仍是国内首选，对 AI 集成路线有兴趣者可关注 MCP/Skills 模块的实操效果。License 不明是落地障碍，建议复制时单独核验。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>LICENSE 文件是否补充（决定商用可行性）</li>
 <li>MCP/Skills 模块的实际依赖与可用性</li>

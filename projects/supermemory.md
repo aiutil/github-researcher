@@ -37,9 +37,33 @@ AI Agent 缺乏跨会话的持久记忆能力。每次对话都是全新的，�
 - TypeScript 实现，易集成
 - 定位为 AI 时代的 Memory 基础设施
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 定位为 Agent Memory 中间层，向下屏蔽底层存储、向上暴露标准化 API；项目档案未确认其内部是否自研向量索引或仅封装第三方向量库 | 仅依据标签（memory, ai-memory, agent-infrastructure, api, vector-database）与 TypeScript 语言事实推断，存储实现待核验 |
+| 主路径 | 外部请求经 API 入口进入，调用 Memory 引擎完成写入与检索，再回写会话/状态；是否包含模型推理与工具调用环节档案未明示 | 档案自述"Memory API + 可扩展"但未给出请求处理的具体控制流 |
+| 关键权衡 | 作为独立层需要在"通用接口覆盖广度"与"独立于 LangChain/LlamaIndex 等框架"之间取舍；同时面临 Mem0/Zep 同类方案与向量数据库自身的双向竞争 | 档案明确点出竞争关系，但未提供性能、协议、权限模型等可量化证据 |
+| 最小 PoC | 单渠道接入 + 最小工具权限 + 审计日志开启的小流量验证，重点验证 API 通用性、跨会话持久化效果与退出路径 | 档案给出采用建议方向，但未提供官方 SDK、鉴权方式、部署形态等 PoC 所需的具体接入细节 |
+
 ## 架构启发
 - Memory 层可能成为 Agent 架构的标准组件，位于 LLM 和工具层之间
 - 标准化 Memory 接口可以让不同 Agent 共享记忆上下文
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游Agent] --> I[API入口与身份边界 待核验]
+    I --> C[supermemory Memory 引擎 TypeScript]
+    C --> S[会话与状态回写 待核验]
+    C --> V[底层向量存储 Pinecone/Weaviate/Chroma 等 待核验]
+    C --> A[审计与可观测日志 待核验]
+    L[LangChain LlamaIndex 等框架内置Memory] -.竞争.- C
+    M[Mem0 Zep 等同类Memory方案] -.竞争.- C
+```
 
 ## 定位判断
 **平台候选。** Memory API 如果设计得当，可以成为 Agent 基础设施层。但标准定义权尚未确立。

@@ -6,7 +6,7 @@
     <title>liguodongiot/llm-action | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,60 @@
 <li><strong>行业方案</strong>：包含 RAG、Agent、多模态等应用层实践</li>
 <li><strong>HTML 格式</strong>：在线可读，比纯 README 更友好</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>仓库是 HTML 形态的中文 LLM 学习资源，覆盖原理讲解、代码实践与工程化整理；本质为知识载体，不是可部署运行时</td>
+<td>仅有"HTML 格式""语言: HTML"和标签集合（llm/llm-training/llm-inference/llm-serving/llmops/chinese/tutorial）支持此判断</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习者沿"原理→训练微调→RLHF/DPO→量化→推理（vLLM/TensorRT-LLM）→部署→应用（RAG/Agent/多模态）"线性推进</td>
+<td>档案明示的技术亮点清单支持该路径；具体章节索引与目录顺序未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>覆盖面广 vs 单一主题深度有限；持续追踪 vs 个人维护者瓶颈；中文亲和 vs 信息时效性衰减</td>
+<td>档案"风险/局限"段已显式列出这些权衡，未提供量化对比或基准</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>抽取一个具体主题（如 LoRA 微调或 vLLM 推理）的原理页+配套代码样例，验证内容可复现性与工程化深度，再扩展到全链路学习</td>
+<td>档案未提供任何具体章节、代码链接或可运行示例，PoC 形态只能定位到主题层级</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>知识系统化优于碎片化</strong>：在信息过载时代，系统性整理的价值巨大</li>
 <li><strong>中文技术内容生态</strong>：中文开发者需要母语的高质量技术资源</li>
 <li><strong>开源知识库模式</strong>：个人维护的高质量技术仓库可以成为行业标准参考</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[学习者或工程师] --> P[llm-action 知识库 HTML 文档]
+    P --> A[原理与基础:模型架构 预训练]
+    P --> B[训练微调:LoRA QLoRA 全参 RLHF DPO]
+    P --> D[推理与部署:vLLM TensorRT-LLM 量化]
+    P --> E[应用层:RAG Agent 多模态 待核验]
+    B -. 个人维护者依赖 .-> R[时效性与可持续性风险 待核验]
+    D -. 快速迭代 .-> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>头部资源型项目</strong>。中文 LLM 工程化领域最有影响力的学习资源之一。不是技术工具而是知识载体，但在技术传播和人才培养方面价值巨大。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>时效性挑战</strong>：LLM 技术迭代极快，内容可能快速过时</li>
 <li><strong>个人维护风险</strong>：依赖单一维护者的持续投入</li>
@@ -72,16 +117,16 @@
 <li><strong>竞品增多</strong>：越来越多的中文 LLM 教程和书籍涌现</li>
 <li><strong>AI 辅助学习替代</strong>：ChatGPT 可直接回答 LLM 技术问题</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs datawhalechina/self-llm</strong>：self-llm 更偏操作教程（部署微调），llm-action 更偏原理+工程</li>
 <li><strong>vs Hugging Face 课程</strong>：HF 课程更体系化但英文，llm-action 更接地气</li>
 <li><strong>vs各种 LLM 博客/公众号</strong>：系统性更强，可作为入口资源</li>
 <li><strong>vs魔搭社区文档</strong>：魔搭偏平台使用，llm-action 偏通用知识</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐跟踪（中文开发者）。</strong> 作为 LLM 工程化知识库有持续参考价值。建议关注其对新技术的跟进速度。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>对最新技术（如推理时计算 scaling、agentic training）的覆盖速度</li>
 <li>是否有书籍出版计划</li>

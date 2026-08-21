@@ -6,7 +6,7 @@
     <title>makecindy/cindy | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,11 +48,60 @@
 <li><strong>pnpm monorepo 架构</strong>：<code>apps/desktop</code>（Electron）+ <code>apps/mobile</code>（Expo/React Native）+ <code>packages/*</code>（共享能力：auth/device-link/agent orchestration/model providers）+ <code>cindy-protocol/</code>（与服务端共享的 wire protocol，git submodule）。后端服务在独立 repo 不含在此 monorepo。</li>
 <li><strong>工具二进制按需下载</strong>：claude-code、codex、ripgrep 等工具二进制不提交到 repo，由 <code>pnpm install</code> 按平台下载；Android platform-tools 按 pinned 版本 + sha256 校验后获取。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>cindy 是 TypeScript 的 pnpm monorepo 客户端（apps/desktop Electron + apps/mobile Expo/React Native + packages/* 共享层 + cindy-protocol git submodule），后端服务在独立 repo 不含此 monorepo，工具二进制按平台由 <code>pnpm install</code> 下载并带 sha256 校验</td>
+<td>仓库语言为 TypeScript，monorepo 结构与 cindy-protocol 子模块描述来自档案；具体子包粒度需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户→入口与身份→项目编排/运行时→模型与工具调用→会话/状态/审计回写；中途可在 claude-code 与 codex 两个 harness 间切换，workspace/memory/skills/tools 由共享 packages 维持连续</td>
+<td>harness 切换语义、协议格式、持久化后端细节均未在档案中给出，须读源码或 cindy-protocol</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多 harness 混合驱动 vs 上游 API breaking change 适配成本；本地优先+真实环境 vs 工具二进制/平台组件供应链风险；开源客户端+付费托管服务 vs 闭源后端削弱可评估性</td>
+<td>权衡基于档案描述的运行时职责与商业化路径；具体性能、SLO、权限模型未披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一桌面渠道（Electron），最小工具权限，开启可审计日志，先跑通"Claude Code + Codex 中途切换且 workspace/memory 连续"一条主路径，再评估移动端与协议</td>
+<td>工具链依赖、协议握手和后端离线行为均属“待核验”，不建议在本 PoC 中纳入生产化判断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>cindy 的"多 harness 中途切换且上下文连续"暗示了一种新的 agent 编排模式——不是把多个 agent 的输出拼接，而是让<strong>同一个持续的工作流在不同 harness 间迁移</strong>。这要求 workspace/memory/skills/tools 与 harness 解耦，cindy 通过共享 packages 层实现。但也意味着它是"重客户端"——需要管理多个 harness 的安装、版本、兼容性。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目编排与运行时]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统]
+    C --> S[会话 状态 审计]
+    M --> C
+    T --> C
+    C --> H[harness 适配层 claude-code 与 codex]
+    H -. 中途切换且上下文连续 .-> I
+    C --> D[闭源后端服务 待核验]
+    C --> P[cindy-protocol wire 协议 submodule]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 agent 生态分层中，cindy 与 qm 同处 L5 应用产品层，但方向不同：qm 面向<strong>团队协同</strong>（多人 scope + Slack），cindy 面向<strong>个人异构组合</strong>（多 harness 混合驱动 + 跨设备）。cindy 更接近"个人 AI 助理"的产品形态，qm 更接近"团队工作平台"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>极早期项目</strong>：创建于 2026-07-22（10 天），1.3K⭐，客户端刚开源，后端服务不开源。实际使用体验依赖闭源后端，社区无法完整评估。</li>
 <li><strong>上游 harness 依赖严重</strong>：Claude Code 和 Codex 都在快速迭代，cindy 的"多 harness 混合驱动"需要持续适配上游变化。README 提到工具二进制按需下载，但 harness API 的 breaking change 影响更深。</li>
@@ -60,15 +109,15 @@
 <li><strong>商业化模式的不确定性</strong>：开源客户端 + 付费服务的模式下，如果服务体验不佳，开源客户端的吸引力会下降；如果服务太强，又可能变成事实上的闭源产品。</li>
 <li><strong>跨设备一致性</strong>：桌面（Electron）和移动（React Native）共享 agent 能力，但移动端的 agent 执行能力（文件系统访问、工具链）天然受限，"同样的 agent 在手机和电脑上都能干活"的承诺在实际场景中会打折。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs qm（1.4K⭐）</strong>：qm 是团队协作平台（Slack+Web），cindy 是个人客户端（桌面+移动）。qm 强调多人 scope，cindy 强调多 harness 混合。</li>
 <li><strong>vs openworker（11.3K⭐）</strong>：openworker（Andrew Ng）是"交付成品 + 审批门控 + BYO 模型"的本地 AI Coworker，偏个人生产力；cindy 也偏个人但强调多 harness 和跨设备。</li>
 <li><strong>vs omnigent（7.9K⭐）</strong>：omnigent 是编排层（L3），cindy 是客户端（L5）。omnigent 管理 agent，cindy 把 agent 交付给最终用户。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"harness 应用层客户端化"趋势的代表。</strong> 关注其多 harness 中途切换的实际稳定性和闭源后端的服务质量。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Claude Code/Codex 上游 breaking change 后的适配速度</strong>：这是 cindy 最大的工程风险。</li>
 <li><strong>社区是否fork 出纯本地方案</strong>：如果有人 fork cindy 去掉闭源后端依赖、纯本地运行，能验证"开箱即用 + 多 harness"在无托管服务下的可行性。</li>

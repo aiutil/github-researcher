@@ -6,7 +6,7 @@
     <title>Obscura | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,12 +56,58 @@
 <li><strong>原生渲染（无 Chromium）:</strong> 可直接截图、屏幕录制、PDF 导出，不依赖 Chromium 渲染引擎——这是与 Chrome Headless 架构的根本区别</li>
 <li><strong>跨平台:</strong> Linux x86_64/ARM64、macOS Intel/Apple Silicon、Arch Linux (AUR)、NixOS 原生支持</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Obscura 是一个用 Rust 从零构建的轻量无头浏览器引擎（30MB 内存 / 70MB 二进制），原生渲染支持截图、录屏、PDF，对外以 CDP 接口暴露，定位为 Puppeteer/Playwright 的 drop-in 替代层</td>
+<td>性能指标来自档案叙述，非独立基准；引擎内部子模块（DOM/CSS/网络栈）档案未展开，无法逐项核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游 Agent/脚本通过 CDP 接入 → Obscura 运行时执行渲染与 JS（V8）→ 通过内置反检测栈发起对目标站点的请求 → 会话结果（页面 DOM、截图、PDF）回写调用方</td>
+<td>CDP 协议本身是档案明确列出的；具体网络栈、TLS 指纹处理实现细节档案未给出，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 Chrome Headless 的"全 Web 兼容性 / 200MB+ 资源"与 Obscura 的"30MB / 内置反检测 / 可能 WebGL 与复杂 CSS 覆盖不足"之间取舍；同时承受个人维护者（h4ckf0r0day）长期可持续性与反爬军备升级带来的不确定性</td>
+<td>WebGL、媒体播放等覆盖度仅以"可能不支持"描述，未见官方兼容矩阵；维护风险属档案给出的明确风险点</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Linux x86_64 单节点上以 Apache-2.0 二进制启动 Obscura，替换现有 Puppeteer/Playwright 调用 CDP 端点，跑通一个含 Cloudflare 防护的目标站点截图与 PDF 导出用例，对比 30MB 内存上限与页面加载 85ms 的复现度，并把法律与反检测合规作为验收门槛</td>
+<td>跨平台清单（Linux/macOS/ARM64/NixOS）档案明确；85ms 加载为厂商数据，需在自有目标站上重测；Cloudflare/DataDome 对抗效果档案仅有定性描述</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Obscura 代表了<strong>"Agent 专用基础设施正在从通用工具中分化"</strong>的深刻趋势。当前 AI Agent 操作浏览器的主流方案是"Playwright/Puppeteer + stealth 插件 + Chrome Headless"，这是一种<strong>补丁式架构</strong>——用插件修补一个本非为 Agent 设计的工具。Obscura 的架构启发是：<strong>Agent 需要原生设计的基础设施</strong>。这和 AI 领域的通用规律一致——从"通用模型 + 提示工程"到"专用模型"，从"通用 CLI + wrapper"到"Agent-Native CLI"。基础设施层的分化意味着：<strong>每一个被 Agent 高频调用的通用工具，都可能催生一个 Agent 专用替代品</strong>。</p>
 <p>更深层的启发是 Rust 在系统级 AI 基础设施中的优势——内存安全 + 零成本抽象 + 无 GC 暂停，对于需要高并发、低延迟的 Agent 运行时是理想选择。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[AI Agent 或爬虫脚本] --> B[CDP 接口 Puppeteer Playwright 兼容]
+    B --> C[Obscura 运行时 Rust + V8]
+    C --> D[反检测栈 TLS 指纹 navigator.webdriver 等 待核验]
+    C --> E[原生渲染 截图 录屏 PDF 无 Chromium]
+    C --> F[目标站点 Cloudflare DataDome 等]
+    C --> G[会话状态与审计 待核验]
+    H[Obscura Cloud 商业托管] -.商业边界.- C
+    I[社区贡献者与个人维护者 h4ckf0r0day] -.维护风险.- C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选（强）。</strong> Obscura 已经不是概念——21K stars + 可用二进制 + 明确性能优势 + 商业化路径（Obscura Cloud）。它定位为 AI Agent 浏览器自动化的<strong>轻量高性能替代层</strong>。如果 Agent 生态持续爆发（这是确定性趋势），Agent 专用浏览器的市场空间巨大。Obscura 有成为<strong>Agent 基础设施栈标准组件</strong>的潜力——类似 Playwright 之于测试自动化。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>功能完整性差距:</strong> 与 Chrome 的完整 Web API 支持相比，Obscura 可能不支持所有复杂网页特性（WebGL、特定 CSS、媒体播放等）</li>
 <li><strong>JS 兼容性:</strong> 虽然 V8 运行真实 JS，但某些网站的复杂交互链可能无法完全复现</li>
@@ -70,7 +116,7 @@
 <li><strong>商业化与开源的平衡:</strong> Obscura Cloud 是商业产品，需警惕开源引擎功能被逐步限制以推动商业化</li>
 <li><strong>法律灰色地带:</strong> 反检测浏览器的主要用途之一是绕过反爬系统，可能面临法律风险</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Chrome Headless / Puppeteer:</strong> 通用测试工具，Obscura 是 Agent 专用替代——更轻、更快、内置反检测</li>
 <li><strong>vs Playwright:</strong> 功能更全的通用浏览器自动化框架，但依赖 Chrome，资源消耗大</li>
@@ -78,9 +124,9 @@
 <li><strong>vs Crawlee / Scrapy:</strong> 爬虫框架，偏数据提取；Obscura 偏 JS 渲染和交互自动化</li>
 <li><strong>vs Browserless / Apify:</strong> 商业化的 headless Chrome 托管服务，Obscura 是自托管的开源替代</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是（高优先级）。</strong> 作为 Agent 专用浏览器方向的头部项目，Obscura 值得重点跟踪。它不仅是一个工具，更是<strong>"Agent 基础设施分化"</strong>趋势的标志性项目。对于构建 Agent 系统的团队，Obscura 可以直接评估采用（Apache-2.0 + Puppeteer/Playwright 兼容，迁移成本低）。对于 AI 基础设施观察者，它是"通用工具→Agent 专用工具"演进路线的重要样本。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Agent 框架集成:</strong> LangChain / CrewAI / AutoGPT 等是否开始原生集成 Obscura</li>
 <li><strong>功能完整性:</strong> 复杂网站（WebGL、SPA、媒体）的支持覆盖率</li>

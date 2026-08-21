@@ -6,7 +6,7 @@
     <title>agent-skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -43,29 +43,76 @@
 <li><strong>跨 Agent 兼容：</strong> Shell 语言编写，理论上兼容所有支持 Shell 执行的 Agent（Claude Code、Codex、Cursor 等）</li>
 <li><strong>技能组合能力：</strong> 支持多个技能组合使用，形成复杂工程工作流</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>agent-skills 定位在 AI Coding Agent 之上的"技能标准化层"：以 Shell 脚本为载体，向下接入 Claude Code、Codex、Cursor 等支持 Shell 执行的 Agent，向上暴露工程技能（审查、重构、测试等）的统一调用接口，本身不包含模型推理与外部工具实现。</td>
+<td>边界来源：语言=Shell、标签=agent-skills/coding-agent/engineering/standardization/skill-marketplace；具体接口协议、注册中心、版本与依赖模型未在 README 证实。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>宿主 Agent 触发技能 → 加载 Shell 技能包 → 执行工程任务（代码审查/重构/测试）→ 返回结果给 Agent；多技能可组合形成工作流。</td>
+<td>"技能组合能力"与"跨 Agent 兼容"为档案明确描述；技能加载、组合与返回协议细节（IPC、stdio、Skill manifest 字段）未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>(1) 标准化通用性 vs. 复杂技能表达能力（Shell 模型受限）；(2) 社区贡献速度 vs. 技能质量一致性；(3) 第三方标准 vs. 平台内置技能被绕过（OpenAI/Anthropic 内置风险）。</td>
+<td>档案直接列出 Shell 局限、质量挑战、被大厂平台内置取代风险；未给出性能基准、权限模型、可观测性等数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选取一个高频工程任务（如代码审查），在单一宿主 Agent（待选定Claude Code / Codex / Cursor）与最小工具权限、可审计日志下，验证技能加载、调用与结果回写 3 个动作；验收项纳入权限边界、日志可审计性、退出路径。</td>
+<td>验收项来自档案"采用建议"；具体目标 Agent、Skill manifest 字段、性能与兼容性数据需源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Agent 架构正在从"单体 Prompt"向"技能注册 + 能力调度"演进。这和微服务架构从单体到服务拆分的路径惊人相似：
 - 单体 Prompt → 技能拆分 → 技能注册 → 技能市场 → 技能编排
 - 类似：单体应用 → 微服务 → 服务注册 → API Gateway → 编排引擎</p>
 <p>技能市场可能成为 Agent 生态的平台层机会，类似 npm 对 JavaScript 生态的意义。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游 Agent] --> A[宿主 Coding Agent<br/>Claude Code / Codex / Cursor 等]
+    A --> B[agent-skills 标准化层<br/>Shell 技能包集合]
+    B --> S[技能组合与工作流]
+    B --> R[工程任务执行<br/>代码审查 / 重构 / 测试]
+    R --> A
+    A --> O[外部工具与数据源<br/>代码仓库 / CI / 测试框架]
+    X[状态/控制/风险边界<br/>权限、可观测性、审计、质量一致性] -.约束.-> B
+    X -.约束.-> A
+    Y[平台内置技能风险<br/>OpenAI / Anthropic 等] -.竞争.-> B
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 生态中处于"技能标准制定者"的位置。如果成功建立标准，将成为 Agent 时代的"npm"。但目前仍处于早期阶段，标准尚未固化。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>被大厂平台内置取代的风险：</strong> OpenAI、Anthropic 等 Agent 平台可能直接内置技能系统，绕过第三方标准</li>
 <li><strong>标准碎片化：</strong> 多个"skill"项目各自为政，可能无法形成统一标准</li>
 <li><strong>Shell 语言的局限性：</strong> 复杂技能可能需要更丰富的编程模型</li>
 <li><strong>质量一致性挑战：</strong> 社区贡献的技能质量参差不齐</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs. taste-skill：</strong> taste-skill 更偏概念营销（"给 AI 好品味"），agent-skills 更偏工程落地</li>
 <li><strong>vs. pm-skills：</strong> pm-skills 聚焦产品管理领域，agent-skills 聚焦工程能力，互补关系</li>
 <li><strong>vs. harness (revfactory)：</strong> harness 是"元技能"——自动生成技能，agent-skills 是技能本身</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，强烈建议持续跟踪。</strong> 这是 Agent 技能标准化方向最核心的项目，将直接影响 Agent 架构的演进方向。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>技能标准是否被主流 Agent 平台（Claude Code、Cursor、Copilot）采纳</li>
 <li>社区技能贡献的质量和增速</li>

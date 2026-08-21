@@ -6,7 +6,7 @@
     <title>improve | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,30 +51,82 @@
 <li><strong>上下文感知</strong>：读取 ADR/PRD/CONTEXT.md/DESIGN.md 等设计文档，避免对已决定 tradeoff 重复报告</li>
 <li><strong>丰富子命令</strong>：<code>/improve quick|deep|security|perf|branch|next|plan|review-plan|execute|reconcile</code></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>shadcn/improve 是一个 Agent Skill，由 9 类并行子 Agent（correctness/security/performance/test coverage/tech debt/dependencies/DX/docs/direction）做审计，再由 Advisor 模型重读过滤误报，输出 <code>plans/001-*.md</code> 自包含计划文档；执行通过 <code>/improve execute 001</code> 在隔离 worktree 中委派便宜模型。</td>
+<td>边界来自档案"关键技术亮点"列举的子 Agent 与子命令；不同模型间切换的接口协议、模型供应商、Skill 安装/分发机制未在档案中描述，待核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者→Skill 入口（<code>/improve quick\|deep\|security\|perf\|branch\|next\|plan\|review-plan\|execute\|reconcile</code>）→并行子 Agent 审计（含 <code>file:line</code> 证据）→Advisor 重读验证→产出计划文档→worktree 委派执行→diff vs plan 回写。</td>
+<td>路径由档案明确描述；具体的编排运行时、状态持久化、上下文注入方式（除 ADR/PRD/CONTEXT.md/DESIGN.md 外）未披露，待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"贵模型规划 + 便宜模型执行"的成本梯度利用是核心权衡：规划质量依赖顶级模型的判断力，但执行可下沉到便宜模型；中间的计划文档必须自包含、可审查、可由任意 Agent 重放。审计覆盖广度（9 类别）vs 子 Agent 过度报告的过滤成本，是另一层权衡。</td>
+<td>权衡描述来自档案"技术亮点"与"架构启发"段；具体的 token 用量、计划长度上限、各子 Agent 的边界规则未量化，待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定一个非关键中型仓库，启用 <code>/improve deep</code> 子命令，不接 CI，跑一遍审计-计划闭环，人工 review 计划质量与误报率；先验证 9 类审计覆盖完整性与 Advisor 过滤可信度两项验收指标，再决定是否接 CI 与 execute 子命令。</td>
+<td>仓库大小、模型选择与验收阈值未在档案中给出，需在 PoC 中自行确定；<code>/improve execute</code> 在复杂场景下的可靠性档案明确标注"待验证"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>LLM 成本梯度利用的关键不在"用什么模型"，而在"如何分解任务"。</strong> improve 的设计揭示了：
 - 审计/规划需要全局视野+判断力 → 贵模型
 - 实现/测试只需要局部上下文+执行力 → 便宜模型
 - 中间的"计划文档"是两者之间的接口，必须自包含、可审查</p>
 <p>这个模式与企业架构中的"架构师设计→工程师执行"完全同构，只是执行者变成了便宜模型。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者] --> CMD[Skill 子命令入口<br/>quick deep security perf branch next plan review-plan execute reconcile]
+  CMD --> ORCH[项目编排与运行时<br/>上下文读取: ADR PRD CONTEXT.md DESIGN.md]
+  ORCH --> A1[子 Agent: correctness]
+  ORCH --> A2[子 Agent: security]
+  ORCH --> A3[子 Agent: performance]
+  ORCH --> A4[子 Agent: 其余审计类别<br/>待核验]
+  A1 --> ADV[Advisor 模型: 重读 file:line 过滤误报]
+  A2 --> ADV
+  A3 --> ADV
+  A4 --> ADV
+  ADV --> PLAN[plans/001-*.md<br/>自包含可审查计划]
+  PLAN --> EXE[/improve execute/<br/>隔离 worktree + 便宜模型]
+  EXE --> DIFF[diff vs plan]
+  DIFF -.回写风险待核验.-> ORCH
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent Skill 生态中定位为 "成本优化型审计工具"。不是通用 Agent Skill（不增强代码生成能力），而是约束型 Skill（约束成本+提升审计质量）。与 Ponytail（约束代码量）和 loop-engineering（约束流程）形成互补。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>shadcn 依赖度高</strong>：目前由 shadcn 一人维护，bus factor 低</li>
 <li><strong>审计质量依赖模型能力</strong>：如果贵模型本身审计能力不足，计划质量无法保证</li>
 <li><strong>计划执行闭环尚未成熟</strong>：<code>/improve execute</code> 是新功能，在复杂场景下的可靠性待验证</li>
 <li><strong>与 CI/CD 集成深度不足</strong>：当前偏交互式使用，与企业 CI pipeline 集成需要额外工程</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Ponytail</strong>：Ponytail 约束代码输出量，improve 约束成本和审计流程，互补关系</li>
 <li><strong>vs loop-engineering</strong>：loop-engineering 是 Agent 编排方法论（5 件套），improve 是审计+规划工具，可被 loop-engineering 编排</li>
 <li><strong>vs GitHub Copilot Autofix</strong>：Copilot Autofix 是闭源 SaaS 功能，improve 是开源可安装 Skill</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> LLM 成本优化是中期刚需，shadcn 有产品化能力，9 类并行审计的设计理念会影响后续 Agent Skill 设计。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>企业采用案例</strong>：是否有中大型团队在生产中使用 improve 的审计→执行闭环</li>
 <li><strong>CI/CD 集成</strong>：是否会发展出 GitHub Actions / GitLab CI 自动化审计模式</li>

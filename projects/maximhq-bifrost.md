@@ -42,27 +42,41 @@ url: "https://github.com/maximhq/bifrost"
 7. **Governance**：virtual keys + budget management + rate limiting + usage tracking
 8. **Plugin 架构**：governance/jsonparser/logging/mocker/semanticcache/telemetry 全部模块化
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 定位为客户端/Agent、模型供应商与工具/数据源之间的统一 AI 网关层（Go 实现，OpenAI 兼容协议），插件以旁路方式介入请求链 | 边界来源于标签与定位描述；具体入站协议细节、插件挂载点需核源码 |
+| 主路径 | 客户端 → Bifrost Gateway → Router/Load Balancer → Provider Pool（OpenAI/Anthropic/Bedrock/Vertex 等 23+）→ 回写响应，并经 Semantic Cache 命中旁路；MCP Gateway、Governance、Logging、Telemetry 作为插件链 | 路径来自项目自述与架构示意；语义缓存命中率、MCP 实现细节未证实 |
+| 关键权衡 | Go 极致低开销 vs 相对 LiteLLM 较弱的生态与社区；Plugin 解耦 vs Gateway 单点故障；OpenAI 兼容易迁移 vs 与特定 provider 高级特性耦合 | 性能数据（11µs@5k RPS、100% 成功率）仅在 t3.xlarge/t3.medium 自家 benchmark 给出，跨环境复现性未证 |
+| 最小 PoC | 单渠道 + 单供应商接入，启用 Semantic Cache 与 Logging/Telemetry，关闭 Cluster Mode 与高敏治理项，验证延迟增量、缓存命中行为与回退路径 | 部署形态、HA 配置、密钥治理流程文档未读，以“待核验”标注；不替代生产评估 |
+
 ## 架构启发
 
 Bifrost 的架构是经典的**Gateway + Plugin**模式应用于 AI 领域。和 API Gateway（Kong/APISIX）的相似度极高：
 
-```mermaid
-graph TD
-    A[Client / Agent] -->|OpenAI-compatible| B[Bifrost Gateway]
-    B --> C[Router / Load Balancer]
-    C --> D[Semantic Cache]
-    C --> E[Provider Pool]
-    E --> F[OpenAI]
-    E --> G[Anthropic]
-    E --> H[Bedrock]
-    E --> I[Vertex]
-    E --> J[23+ more]
+## 架构图（MMD）
 
-    B --> K[Plugin Chain]
-    K --> L[Governance]
-    K --> M[Logging]
-    K --> N[Telemetry]
-    K --> O[MCP Gateway]
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Client[Client / Agent] -->|OpenAI-compatible 请求| Gateway[Bifrost Gateway - Go]
+    Gateway --> Router[Router / Adaptive Load Balancer]
+    Router --> Cache[Semantic Cache - 命中旁路]
+    Router --> Pool[Provider Pool]
+    Pool --> P1[OpenAI]
+    Pool --> P2[Anthropic]
+    Pool --> P3[Bedrock]
+    Pool --> P4[Vertex]
+    Pool --> Pmore["待核验：其余 23+ provider"]
+    Gateway --> Plugins[Plugin Chain]
+    Plugins --> Gov[Governance - virtual keys / budget / rate limit]
+    Plugins --> Log[Logging]
+    Plugins --> Tel[Telemetry]
+    Plugins --> MCP[MCP Gateway - Agent 工具调用入口]
+    Gateway -. 单点故障风险 .-> Risk["待核验：HA / Cluster Mode 生产稳定性"]
+    Gateway -. 退出路径 .-> Fallback["待核验：provider 故障转移策略"]
 ```
 
 关键架构决策：Go 而非 Python/Rust——兼顾性能和可维护性；plugin 架构而非 monolith——企业可以按需启用；Web UI 配置——降低运维门槛。

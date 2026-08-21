@@ -36,8 +36,35 @@ Agent 框架的可靠性问题：现有 Agent 框架（LangChain、CrewAI 等）
 - **UCP（通用商业协议）**：探索 Agent 与商业系统的标准化交互协议
 - **IDE 集成**：提供文档索引，可集成到 Cursor/VSCode/Windsurf
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Upsonic 是 Python 编写的 Agent 编排层：AutonomousAgent + Task 双抽象，对外对接模型供应商、工具/MCP 源与 Computer Use 能力，对内负责会话、日志、权限与重试；处于“上游入口—编排—模型/工具—状态回写”链路中段 | 边界由“agent-framework / autonomous-agent / mcp / computer-use / llms”标签与项目分类推断；具体鉴权/租户/部署形态未在档案中给出 |
+| 主路径 | `agent.print_do(task)` 触发 Task → AutonomousAgent 运行时调度 → 模型调用与工具/MCP/Computer Use 调用 → 内置重试/超时/错误恢复 → 任务结果与会话/日志/审计回写 | 主路径基于“Task 模式 + AutonomousAgent 抽象 + 可靠性工程”描述；具体协议、序列化格式与持久化方式在档案中未证 |
+| 关键权衡 | “简洁双抽象+开箱即用可靠性” 与“生态广度/供应商耦合/可观测深度”之间的取舍；UCP 试图把商业协议标准化，但档案未给出已落地的协议规范 | 取舍描述来自档案的“简洁优于复杂”“定位介于 LangChain 与轻量工具之间”“竞品生态差异”；UCP 与可靠性机制的具体实现、性能数字档案均未提供 |
+| 最小 PoC | 单一渠道（如 CLI 或 IDE 插件）+ 最小工具权限 + 可审计日志；选用一个标准 Task 跑通模型调用与一次 MCP/工具调用，验证重试/超时/错误恢复行为，再扩展接入面 | PoC 建议来自“架构师速览—采用建议”行；具体的最小代码样例、SLO 阈值与退出路径档案未给出 |
+
 ## 架构启发
 Upsonic 的设计哲学是"简洁优于复杂"——`AutonomousAgent` + `Task` 两个核心抽象覆盖大部分用例，避免了 LangChain 式的过度抽象。这反映了 Agent 框架设计的一种回归趋势：从"乐高积木式组合"回到"开箱即用的完整方案"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统 待核验:具体入口形态] --> I[入口与身份边界 待核验:鉴权与多租户实现]
+    I --> C[AutonomousAgent 编排与运行时 内含重试 超时 错误恢复]
+    C --> T[Task 模式 可序列化任务描述]
+    T --> M[模型或推理服务 上游:Anthropic Claude OpenAI GPT 等 待核鉴:具体供应商接口]
+    C --> N[MCP 接入 与 Computer Use 能力 待核鉴:支持的 MCP 服务器与 CU 模型范围]
+    C --> S[会话 状态 日志 审计 回写]
+    N --> C
+    M --> C
+    S --> C
+    C --> O[UCP 通用商业协议 待核鉴:协议规范与采纳情况]
+```
 
 ## 定位判断
 **Agent 开发框架**，定位在 LangChain（太重）和单一 Agent 工具（太轻）之间。适合构建需要可靠性保证的生产级自主 Agent。

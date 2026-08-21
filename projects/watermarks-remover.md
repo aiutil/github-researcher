@@ -39,8 +39,48 @@ url: "https://github.com/guillaumemeyer/watermarks-remover"
 4. **安全默认值：** Layer B 默认 `print-prompt` 后端（仅展示提示词，不执行重写），需用户显式配置模型后端才实际运行。文件层支持 dry-run 检查。
 5. **外部工具集成：** 可选集成 `c2patool`（C2PA manifest 检查）和 `exiftool`（残留元数据清除，尤其 PDF）。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 项目是 Agent Skill 格式的本地编排入口，通过 `.grok/skills/remove-ai-marks/` 接入 Claude Code / Grok Build，分发 Layer A（Unicode 隐藏字符）、Layer B（SynthID/Kirchenbauer 统计重写）、Files 层（C2PA/EXIF/XMP）三个独立剥离通道 | Python 3.10+ stdlib、c2patool/exiftool 可选外部依赖；模型后端未在档案中列出 |
+| 主路径 | agent 调用 Skill → Layer A 确定性清理 → Layer B 默认仅打印提示词（print-prompt）→ Files 元数据剥离（PNG/JPEG/SVG/PDF/DOCX/ODT/HTML/Markdown） | Layer B 实际重写钩子 `rewrite_text.py` 在档案中仅为“可选”，未含调用链细节；多厂商映射（Claude/Gemini/OpenAI/open-LLM）未经源码核验 |
+| 关键权衡 | 隐私合法清除 vs 绕过来源验证的双重用途风险；stdlib-only 简化部署 vs 统计水印重写效果未独立验证；Agent Skill 分发 vs 平台政策合规约束 | README 合规声明“content you own” 仅为文字承诺，无法覆盖实际使用；统计水印清除效果无第三方基准 |
+| 最小 PoC | 在自有内容上 dry-run Files 层清元数据 + 启用 Layer A；Layer B 仅验证 print-prompt 输出，不接模型后端；记录 c2patool / exiftool 残留项 | 残留元数据清除效果与 Layer B 实际重写效果需第三方基准核验；接入 agent 平台的最小权限与审计路径档案未描述 |
+
 ## 架构启发
 watermarks-remover 的核心启发是 **"AI provenance 管理正在从'检测'扩展为'全生命周期管理'"**。当前行业聚焦"如何检测 AI 内容"（detector 类工具），但用户端的需求是"管理我内容上的来源标记"——包括检测、审查、选择性清除。这是一个从"被动检测"到"主动管理"的范式转变。另一个启发是 **Agent Skill 作为工具分发格式的趋势**——watermarks-remover 不是独立 CLI，而是嵌入 Agent（Grok/Claude）的 Skill，说明"工具即 Skill"的模式正在普及。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户自有内容] --> I[Agent 入口
+.grok/skills/remove-ai-marks/]
+    I --> A[Layer A
+确定性 Unicode/隐藏字符清除
+stdlib only]
+    I --> B[Layer B
+统计水印重写钩子
+默认 print-prompt 后端]
+    I --> F[Files 层
+PNG/JPEG/SVG/PDF/DOCX/ODT/HTML/MD
+元数据剥离]
+    A --> S[审计与 dry-run 回写]
+    B --> S
+    F --> S
+    F -.可选外部依赖.-> E1[c2patool
+C2PA manifest 检查
+待核验]
+    F -.可选外部依赖.-> E2[exiftool
+残留元数据清除
+待核验]
+    B -.需显式配置模型后端
+(档案未列供应商).-> E3[模型后端
+待核验]
+```
 
 ## 定位判断
 **工具型（品类定义者，双重用途风险）。** watermarks-remover 是"AI provenance 管理"品类的首个系统化工具。其价值取决于"AI 来源标识"生态的发展——随着 C2PA 标准和各国 AI 内容法规推进，"来源管理"（包括合法清除）可能成为基础设施需求。但双重用途特性（可被用于绕过来源验证）使其定位始终处于"隐私工具 vs 伪造工具"的张力中。

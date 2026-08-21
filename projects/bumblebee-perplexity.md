@@ -54,10 +54,39 @@ baseline（快速）/ project（项目级）/ deep（深度）三种扫描 profi
 ### 5. 暴露匹配
 给定 CVE catalog，可以快速匹配开发者设备上的受影响组件。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 一款只读、本地运行的 Go 单二进制 CLI，面向开发者设备，包管理器元数据（npm/pnpm/yarn/bun/PyPI/Go/RubyGems/Composer）与 MCP/编辑器/浏览器扩展配置是其扫描面，不联网执行包管理器命令 | 项目明确定位"只读设计"、"Go 单二进制"、"零依赖"；CVE catalog 作为输入匹配项；是否上传数据未在档案中说明 |
+| 主路径 | 输入（CVE catalog 或默认基线）→ profile 选择（baseline/project/deep）→ 多生态元数据文件解析（含 mcp.json、claude_desktop_config.json）→ 受影响组件匹配 → 输出受影响包/扩展清单 | 三级 profile 与 11 个生态在档案中明确列出；具体匹配算法、输出格式、是否输出 SBOM 未说明 |
+| 关键权衡 | 覆盖广度（11 个生态 + MCP/扩展）vs 只读带来的运行时盲区；定位为 Perplexity side project vs 与 Snyk/FOSSA/Trivy 等成熟 SCA 竞争；MCP 凭证扫描价值 vs 工具仍处早期（251 stars/3 天） | 档案明确指出只读限制、早期阶段、Perplexity 持续投入存疑、与企业 SCA 竞争四项权衡 |
+| 最小 PoC | 在一台开发机上跑 deep profile，扫描含 MCP host 配置（mcp.json、claude_desktop_config.json）的目录，对照一份已知 CVE 验证受影响组件报告的字段、误报率与是否触及 env block 中的凭证 | PoC 验收需以源码核验输出 schema、对 env 凭证的处理策略及离线运行边界 |
+
 ## 架构启发
 Bumblebee 展示了「开发者设备安全」这个被忽视的领域。SBOM 管的是制品，EDR 管的是运行时，但开发者设备上散落的 lockfile、包管理器元数据、编辑器扩展是安全盲区。
 
 特别是 MCP 配置扫描 — 随着 Agent 生态爆发，MCP 配置可能成为新的攻击面。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者: 安全响应 DevSecOps] --> I[CLI 入口与 profile 选择 baseline project deep 待核验]
+  I --> C[扫描编排器 Go 单二进制]
+  C --> P1[npm pnpm yarn bun 元数据 只读解析]
+  C --> P2[PyPI Go RubyGems Composer 元数据 只读解析]
+  C --> P3[MCP 与编辑器扩展配置 mcp.json claude_desktop_config.json]
+  C --> P4[浏览器扩展配置 待核验]
+  P1 --> M[CVE catalog 受影响组件匹配]
+  P2 --> M
+  P3 --> M
+  P4 --> M
+  M --> O[受影响清单 输出格式待核验]
+  O --> R[风险边界: 只读不执行 运行时动态依赖不可见 MCP env 凭证处理策略待核验]
+```
 
 ## 定位判断
 **工具型。** 专用安全扫描工具，定位明确，不会成为平台。

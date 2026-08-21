@@ -6,7 +6,7 @@
     <title>anthropics/skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,57 @@
 <li><strong>文档技能 source-available</strong>：docx/pdf/pptx/xlsx 技能展示生产级 Skill 设计模式</li>
 <li><strong>Skills API</strong>：通过 Claude API 上传和使用自定义 Skills</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>anthropics/skills 是 Anthropic 官方的 Agent Skills 目录与规范来源，由 SKILL.md + YAML frontmatter 组成；通过 Claude Code Plugin marketplace、<code>/plugin marketplace add anthropics/skills</code> 命令、Claude.ai 与 Claude API 等渠道接入</td>
+<td>仅基于档案描述的入口与目录结构，未审计仓库源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户/Claude 产品 → Skills 加载（动态读取文件夹与 YAML）→ Claude 模型按需调用 Skill 能力（含 docx/pdf/pptx/xlsx 等文档技能）→ 会话回写</td>
+<td>"动态加载"与"按需调用"为档案措辞，未提供具体协议或时序证据</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>官方统一标准（agentskills.io）的生态红利 vs. 锁闭 Claude、文档技能 source-available 商业限制、与 openai/skills / cursor/plugins 标准之争</td>
+<td>商业限制与标准竞争见档案"风险"段；性能/权限/可观测性细节未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 中以 <code>/plugin marketplace add anthropics/skills</code> 安装一个非文档示例 Skill，验证目录结构、YAML frontmatter 与模型加载行为，审计日志与权限边界</td>
+<td>安装命令见档案；具体权限模型、审计日志实现待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p><strong>Skills 作为 Agent 生态的一等公民</strong>：从附属功能到独立生态组件。Skills 的设计模式（文件夹 + SKILL.md + YAML frontmatter）简洁而强大 — 用文件系统组织 Agent 能力，类似 Unix 的"一切皆文件"哲学。标准化胜于碎片化：官方目录的价值在于统一入口和规范。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或 Claude 产品入口] --> I[入口边界: Claude Code / Claude.ai / Claude API]
+    I --> R[Skills 目录: SKILL.md + YAML frontmatter]
+    R --> M[Claude 模型动态加载与调用]
+    M --> D[文档技能: docx / pdf / pptx / xlsx]
+    M --> T[其他示例技能集: Creative / Development / Enterprise]
+    M --> S[会话状态与回写]
+    D -.source-available 限制.-> X[商业使用边界: 待核验]
+    R -.标准之争.-> Y[竞争标准: openai/skills / cursor/plugins 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选。</strong> Skills 目录是 Agent 平台的核心组件。166K stars 说明生态规模巨大。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>文档技能是 source-available 非开源</strong> — 商业限制</li>
 <li><strong>仅服务于 Anthropic/Claude 生态</strong>，通用性有限</li>
@@ -67,7 +113,7 @@
 <li>示例 Skills 是"演示和教育用途"，实际效果可能与 Claude 中有所不同</li>
 <li>166K stars 中有 Anthropic 品牌效应的放大</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>anthropics/knowledge-work-plugins</strong>（23K stars）：面向知识工作者的官方插件</li>
 <li><strong>ECC</strong>（238K stars）：第三方 Harness，使用 anthropics/skills 标准</li>
@@ -75,9 +121,9 @@
 <li><strong>mukul975/Anthropic-Cybersecurity-Skills</strong>（27K stars）：安全领域社区 Skills</li>
 <li><strong>openai/skills / cursor/plugins</strong>：竞争标准</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 官方 Skills 仓库的方向性意义大于内容本身 — 它定义了 Agent Skills 的标准。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>Skills 数量和质量增长（特别是企业级技能）</li>
 <li>agentskills.io 标准是否会成为跨平台 Skills 标准</li>

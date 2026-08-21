@@ -6,7 +6,7 @@
     <title>Shannon | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,11 +57,60 @@
 <li><strong>Worker 容器化</strong>：Docker worker 隔离执行环境</li>
 <li><strong>Cyber safeguards 适配</strong>：需先完成 Anthropic/OpenAI 的安全研究者认证流程</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Shannon 是一个本地运行的 TypeScript 编排层，把白盒源码接入 Graph RAG、浏览器自动化与 CLI 工具，对外调用 Anthropic/OpenAI/xAI/AWS Bedrock 等模型；AGPL-3.0 约束商业集成边界。</td>
+<td>基于 tags（AI-pentester、Graph-RAG、automated-exploitation、white-box）、license 与档案正文，未引用具体源码模块路径。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>源码输入 → Graph RAG 代码知识图谱 → 模型推理攻击向量 → Docker worker 隔离的浏览器/CLI 工具执行真实 exploit → 仅当 PoC 可复现才写入报告（OWASP Juice Shop、c{api}tal、crAPI 三类样本报告佐证）。</td>
+<td>主路径由"白盒 + 真实攻击 + worker 容器化"等档案要点拼接；具体协议、状态机、持久化方式未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>真实 exploit 执行 vs 法律/伦理与 AI provider safeguard 中断风险；Graph RAG 语义深度 vs 需完整源码访问带来的适用面收窄；AGPL-3.0 vs 商业平台（Keygraph SaaS）双轨。</td>
+<td>取自档案"风险/局限/泡沫点"小节；性能与检出指标档案未给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在授权靶场（OWASP Juice Shop 或 crAPI 之类开源易受攻击应用）上以单一 AI provider、关闭对外网络广播的 Docker worker 配置跑通端到端 PoC 生成；将"cyber safeguards 认证完成、可审计日志、可回滚 worker 镜像"列为验收项。</td>
+<td>PoC 选型来自档案"sample report"小节；具体执行命令、worker 镜像标签、provider 认证流程档案未细化，须读 README/源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Graph RAG 在代码安全分析中的应用值得研究 — 将代码结构化为知识图谱，然后基于图谱推理攻击路径。但从工程角度看，Shannon 更像是"AI Code Review + 攻击性输出"的组合，而非真正的渗透测试自动化。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[授权 Web 应用源码 白盒输入] --> B[Graph RAG 代码知识图谱]
+    B --> C[编排与运行时 TypeScript]
+    C --> D[模型或推理服务 Anthropic OpenAI xAI AWS Bedrock 待核验]
+    C --> E[Docker worker 浏览器自动化 + CLI 工具执行真实 exploit]
+    E --> F{PoC 可复现?}
+    F -- 是 --> G[漏洞报告 仅有可工作 PoC 才入报告]
+    F -- 否 --> H[丢弃 不入报告]
+    E -. 失控或滥用 .-> R[法律与伦理风险 自主 exploit 不可预测]
+    D -. safeguard 中断 .-> R
+    C -. 审计与状态 .-> S[会话 状态 审计日志 待核验]
+    G --> S
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>泡沫型/学习型。</strong> 不建议企业落地，技术思路（Graph RAG + 自主攻击）有参考价值，但 46K stars 中泡沫成分大。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>"真实执行漏洞利用"面临巨大法律和伦理风险</strong> — 即使在授权环境中，自主攻击链的行为不可预测</li>
 <li>46K stars 的增长主要来自"AI + 安全"的热点效应，大量是看热闹的开发者</li>
@@ -71,16 +120,16 @@
 <li>AGPL-3.0 限制商业集成</li>
 <li>需要完整源码访问（白盒），适用场景受限</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>传统 SAST（SonarQube / Semgrep）</strong>：静态分析，Shannon 在其上增加动态攻击</li>
 <li><strong>传统 DAST（Burp Suite / OWASP ZAP）</strong>：黑盒扫描，Shannon 结合白盒源码分析</li>
 <li><strong>AI Code Review 工具</strong>：Shannon 是"AI Code Review + 攻击性输出"</li>
 <li><strong>Keygraph 平台</strong>：Shannon 的商业 SaaS 版本</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>不建议持续跟踪。</strong> 但作为安全态势感知（了解 AI 渗透测试的演进）可以偶尔关注。Graph RAG 在代码分析中的应用思路有技术参考价值。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ol>
 <li>法律监管对自动化渗透测试工具的态度</li>
 <li>AI provider 对 cyber security workload 的 safeguard 策略变化</li>

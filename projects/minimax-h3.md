@@ -40,8 +40,40 @@ MiniMax-H3 的热度来自**"官方模型发布 × ComfyUI 生态天然适配 ×
 4. **风格化预设:** 8 个风格化视频生成 skill（产品广告/3D动画/纸艺停格/品牌宣传片/MV字幕/游戏介绍/纸拼贴等），降低创意门槛
 5. **生态加速技术:** Spectrum 用 Chebyshev ridge regression 预测 post-transformer 特征跳过部分 transformer 计算；Sol-Attn（Saganaki22）用 Triton kernel 在 SM89-120 上实现 memory-efficient attention；多个 FirstBlockCache/Cache 变体
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MiniMax-H3 官方仓库 + 9 个 SKILL.md（prompt-writing + 8 风格化）作为分发入口，价值落在"模型→生态"引爆层；衍生生态（265→351 仓库）才是真正的运行时承接面，依赖 ComfyUI 作为执行基底 | 仓库定位、Skill 数量、ComfyUI 依赖与生态规模有档案可证；具体协议、权重结构、Ref2VA 内部实现未在档案核验 |
+| 主路径 | 安装 Skill（`npx skills add`）→ 生成结构化 prompt → ComfyUI 加载 H3 节点 → 加挂衍生加速器/缓存/Director 插件 → 产出音视频；官方仓库只覆盖 prompt 工程化一环 | `npx skills add`、ComfyUI 适配、音视频联合生成有档案可证；加速器（如 Spectrum、Sol-Attn）技术声明仅为 README，未独立复现 |
+| 关键权衡 | 采用方需在"生态绑定 ComfyUI 的快速复用"与"独立性/可复现性/许可证明确性"之间取舍——许可证经 API 核验为 null，商业条款未明 | ComfyUI 绑定、Spectrum 1.14–1.44× 与 Sol-Attn -37% VRAM 等性能声明来自各自 README；License null、watchers 仅 9 反映深度关注度不足 |
+| 最小 PoC | 单渠道、单权限范围内：① `npx skills add` 装 H3 prompt skill；② ComfyUI 内最小工作流（t2v 或 i2v 单节点）跑通；③ 接一个缓存/Director 插件对比基线 latency；④ 审计日志 + 退出路径齐全后再扩面 | 9 个 Skill、ComfyUI 节点、Director / Cache 插件目录均为档案列出的可访问组件；具体 latency 数字与 VRAM 收益须实测 |
+
 ## 架构启发
 MiniMax-H3 的最大启发是**"模型发布的竞争已从'模型本身'延伸到'生态可达性'"**。官方仓库不只是放权重，而是同时发布 9 个 Skill（prompt 工程化），降低使用门槛；衍生生态在一周内填满加速器、导演、prompt 构建器三层。这与 DeepSeek/SiliconFlow 等只放权重的传统模式形成对比。更深层的启发：**视频生成模型的落地瓶颈已从"生成质量"转移到"推理成本 + 工作流编排"**——265 个衍生仓库中加速器和 timeline 编辑器占绝大多数，说明开发者的真实痛点不是"能不能生成"而是"生成太慢 + 难以精确控制"。这是基础设施投资信号。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> S[npx skills add 安装入口]
+    S --> P[H3 Prompt Skill 与 8 个风格化 Skill]
+    P --> W[ComfyUI 工作流与 keyframe timeline]
+    W --> M[H3 音视频联合生成 待核验]
+    W --> A[衍生生态: Spectrum / Sol-Attn / Cache 类加速器 待核验]
+    W --> D[衍生生态: Director / Timeline 编辑器]
+    M --> O[音视频产物]
+    D --> O
+    A --> W
+    O --> L[会话 状态 审计]
+    W --> L
+    R{{风险边界: License null 模型质量未独立基准 同质化仓库淘汰待验}}
+    W -.受 R 约束.-> M
+    E{{外部边界: ComfyUI 运行时与 HuggingFace LICENSE}}
+    W -.依赖 E.-> M
+```
 
 ## 定位判断
 **生态催化剂型项目。** MiniMax-H3 官方仓库本身不是最终价值载体——它的价值在于作为生态引爆点。1,070⭐ + 265 衍生仓库 + 3,039 累计生态星标的结构，说明它已成功激活开发者生态。定位类似 ComfyUI 之于 Stable Diffusion：模型是种子，生态是果实。是否值得长期跟踪取决于 H3 模型本身的质量（目前为 README/官方声明，未独立基准测试）和生态的可持续性（265 仓库中有多少能存活过淘汰期）。

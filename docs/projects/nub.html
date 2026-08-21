@@ -6,7 +6,7 @@
     <title>Nub | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,56 @@
 <li><strong>内置版本管理</strong>：<code>nub node install 26</code> 替代 nvm，无需额外工具</li>
 <li><strong>Watch 模式</strong>：原生文件监听，替代 nodemon</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Nub 是 Rust 编写的 Node.js 工具链统一体，替代 tsx/npx/nodemon/nvm/corepack，但 stock Node.js runtime 不被替换；边界停在工具链层</td>
+<td>仅基于档案"Rust + 替换 node/tsx/npx/nodemon/nvm/corepack，不替换 runtime"叙述；未含 IPC/CLI 协议与内部模块细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>调用方或 CI → <code>nub</code> CLI（Rust 子命令）→ 复用 stock Node.js runtime 执行（TS 直跑经 Node）→ 资源/包/版本管理由内置能力处理</td>
+<td>档案只明示"TS 文件直接通过 Node.js 运行"与"Rust 核心极低启动开销"；调度、watch、shim 实现细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>不替换 runtime 换取零兼容性风险，代价是放弃 Bun 式端到端运行时加速，性能上限受 Node 约束；24×/19×/2.5× 数字按档案标注为"特定场景"待独立验证</td>
+<td>档案已自陈"项目极早期、生产稳定性未经验证、性能数据基于特定场景"，证据止于 benchmark 原文未在档案中给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 CI 与本地分别跑三组对照：① <code>nub run</code> vs <code>tsx</code>/<code>node</code> 跑 TS 脚本 ② <code>nub</code>（npx 子命令）vs <code>npx</code> 执行临时包 ③ <code>nub node install</code>/<code>nub pm shim</code> 替代 nvm/corepack；以启动耗时、稳态耗时、错误信息完整性、Node 上游变更冲击为验收项</td>
+<td>安装/分发表与 CI 接入方式档案已列（Homebrew/Nix/mise/npm、<code>nubjs/setup-nub</code>）；具体基准方法学与样本待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>JavaScript 工具链的 Rust/Zig 化已成定局。Nub 的独特之处是找到了一个甜蜜点：用 Rust 加速工具链，但保留 Node.js runtime 的兼容性。这是企业最安全的加速路径。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Caller[调用方或 CI runner] --> CLI[nub CLI Rust 子命令]
+    CLI --> Corepack[nub pm shim 替代 corepack 待核验]
+    CLI --> NodeMgr[nub node 替代 nvm fnm]
+    CLI --> Watch[Watch 模式替代 nodemon 待核验]
+    CLI --> Node[stock Node.js runtime 未替换]
+    Node --> Run[TS 脚本与 npx 临时包执行]
+    CLI --> Risk[风险边界 项目极早期 33 天 bus factor 性能数字待独立验证]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型</strong> — 优秀的开发者体验工具，企业 adoption 门槛极低。不是新 runtime，不是包管理器替代品，是 Node.js 开发者工具链的统一加速层。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>项目极早期</strong>（33 天）：生产稳定性未经验证</li>
 <li><strong>维护团队小</strong>：bus factor 风险</li>
@@ -68,7 +113,7 @@
 <li><strong>竞争激烈</strong>：Bun 生态在扩展，pnpm 在加速，nx 等 monorepo 工具也在演进</li>
 <li><strong>性能数据需独立验证</strong>：24× 等数字可能基于特定场景</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -100,9 +145,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong> — JS 工具链 Rust 化趋势的重要数据点，关注生产环境稳定性反馈。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>生产环境稳定性反馈（24× 等性能数据的独立验证）</li>
 <li>Bun 生态扩展对 Nub 差异化空间的影响</li>

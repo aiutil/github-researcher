@@ -6,7 +6,7 @@
     <title>abhigyanpatwari/GitNexus | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,26 +49,73 @@
 <li><strong>多 Git 平台集成:</strong> 直接从 GitHub、GitLab、Azure DevOps 拉取仓库，也支持本地文件和 ZIP 上传</li>
 <li><strong>TypeScript/WebAssembly 实现:</strong> 浏览器端代码解析使用高性能技术栈，处理大型仓库时仍保持流畅</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>客户端入口（GitHub/GitLab/Azure DevOps/本地/ZIP）→ 浏览器内知识图谱构建 → 浏览器内 Graph RAG Agent；无自有服务器，所有解析与可视化在浏览器内完成</td>
+<td>输入源与"零服务器"在档案中明示；具体协议、认证方式、传输加密未在档案中描述，待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>仓库拉取/导入 → 浏览器端代码解析 → 函数调用/类继承/模块依赖图谱构建 → 交互式可视化 → 基于图谱的语义查询与问答</td>
+<td>"客户端知识图谱构建"与"Graph RAG Agent"在档案中明示；具体解析器覆盖语言、图存储格式、WebAssembly 边界未在档案中描述，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>隐私优先（代码不出本地）vs 大型仓库的浏览器内存/CPU 天花板；图谱准确性 vs 动态语言语义建模难度；调用 LLM 提升语义推理 vs 隐私张力</td>
+<td>"浏览器性能瓶颈""Graph RAG 准确性""LLM 成本与隐私矛盾"在档案中明示为已知风险；百万行级上限与企业部署形态仅为推测，待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用一个中型本地仓库（数千文件、十万行级以下）经 ZIP/本地导入跑通知识图谱构建、可视化与图谱查询；记录浏览器内存峰值、解析耗时、问答准确率，作为浏览器方案可行性的下限验证</td>
+<td>"多源支持""交互式可视化"在档案中明示；具体内存基线与性能数据档案未给出，待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>GitNexus 的核心创新是「零服务器」——将复杂的代码分析和 AI 推理全部放在浏览器端执行。这种架构选择带来了显著的隐私优势（代码不离开本地），但也引入了浏览器资源限制的挑战（大型仓库可能超出浏览器内存能力）。这是「隐私优先 vs 性能优先」的典型架构权衡。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者] --> SRC[仓库输入源<br/>GitHub / GitLab / Azure DevOps / 本地 / ZIP]
+    SRC --> PARSE[浏览器端代码解析<br/>TypeScript + WebAssembly 实现]
+    PARSE --> KG[知识图谱构建<br/>函数调用 / 类继承 / 模块依赖]
+    KG --> VIZ[交互式可视化<br/>缩放 / 过滤 / 高亮]
+    KG --> RAG[Graph RAG Agent<br/>图谱语义查询与问答]
+    RAG --> LLM[LLM 推理服务<br/>云端调用方式待核验]
+    RAG --> RES[回答与影响面分析]
+    LIM[浏览器资源上限<br/>大型仓库内存瓶颈] -.制约.-> PARSE
+    RISK[隐私张力<br/>代码是否外发 LLM] -.风险.-> LLM
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于代码智能工具生态的新兴力量。在 AI 代码工具链中，GitNexus 偏向「代码理解」而非「代码生成」（Copilot）或「代码搜索」（Sourcegraph）。其独特的「知识图谱 + RAG」组合在生态中暂无直接竞品。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>浏览器性能瓶颈:</strong> 对于超大型仓库（百万行级），浏览器端处理可能不可行，存在硬性规模天花板</li>
 <li><strong>Graph RAG 准确性:</strong> 基于图谱的语义推理质量依赖图谱构建的准确性，复杂的动态语言（如 Python 的鸭子类型）可能构建出不准确的图谱</li>
 <li><strong>LLM 成本与隐私矛盾:</strong> Graph RAG Agent 需要调用 LLM，但用户可能不希望代码发送到云端 LLM——存在架构上的隐私张力</li>
 <li><strong>快速涨星的可持续性:</strong> 短时间获得 45K stars 的项目需要验证是否有持续的用户留存和社区贡献</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>Sourcegraph:</strong> 服务器端代码搜索和智能平台，功能更全面但需要部署；GitNexus 是轻量客户端方案</li>
 <li><strong>GitHub Copilot:</strong> 专注代码生成，GitNexus 专注代码理解和导航，互补关系</li>
 <li><strong>aider/traveler:</strong> AI 代码编辑工具，偏向代码修改而非理解</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得跟踪。</strong> 代码理解是 AI 开发者工具的下一个战场，GitNexus 的「图谱 + RAG」方法论具有创新性。需要持续关注其技术成熟度和商业化路径。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 GitNexus 是否能处理百万行级别的超大型仓库（验证浏览器方案的天花板）</li>
 <li>观察是否有企业级部署案例（可能需要推出服务器版本突破浏览器限制）</li>

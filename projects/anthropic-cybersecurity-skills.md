@@ -48,9 +48,33 @@ Agent 安全能力碎片化。本仓库将安全技能标准化、模块化，�
 4. **MITRE F3 欺诈框架映射**：94 个欺诈相关技能，覆盖 Positioning 和 Monetization 两大欺诈战术
 5. Apache-2.0 许可证，利于企业采用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 该项目是面向 26+ Agent 平台的 Skill 定义层（agentskills.io 标准），覆盖 29 个安全域，映射六大框架（MITRE ATT&CK v19.1 / NIST CSF 2.0 / MITRE ATLAS / D3FEND / NIST AI RMF / MITRE F3 v1.1），本身不内置执行器 | 档案仅声明 Skills 定义与框架映射，未提供运行时与工具权限边界，需源码核验 |
+| 主路径 | Skill 选择 → Agent 运行时加载 → 调用外部安全工具/Burp/Nessus/Metasploit 等 → 结果回写会话；Python 作为 Skill 描述与脚本载体 | 主路径中"执行依赖 Agent + 工具链"为档案表述，具体协议、持久化与认证未披露 |
+| 关键权衡 | 817 个 Skills 的覆盖广度（包含 AI Security、Supply Chain、Hardware/Firmware 等前沿域）与单 Skill 质量、权限边界、可观测性之间的平衡；Apache-2.0 利于采用但 27K stars 含 Agent Skills 热潮泡沫 | 数量、领域分布来自档案；质量一致性、权限模型无量化数据 |
+| 最小 PoC | 在单一 Agent 渠道（如 Claude Code）下加载 1 个 ATT&CK 战术 Skill + 1 个 AI Security Skill，限定最小工具权限与可审计日志，验证框架映射准确性与调用延迟 | 仅建议性质，未提供官方示例或基准 |
+
 ## 架构启发
 
 **安全能力模块化 = 安全产品的 Agent 化重构。** 传统安全产品是 monolithic 的，Anthropic-Cybersecurity-Skills 把安全能力拆解为可按需加载的 Skills，每个 Skill 对应一个具体安全任务。这种"安全能力即技能"的模式可以复制到其他专业领域（法务、合规、财务等）。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>26+ Agent 平台 入口 待核验]
+    I --> C[Skill 编排与加载层<br/>agentskills.io 标准]
+    C --> M[Skill 定义库<br/>817 个 Skills / 29 个安全域]
+    M --> F[框架映射层<br/>MITRE ATT&CK v19.1 / NIST CSF 2.0<br/>MITRE ATLAS / D3FEND<br/>NIST AI RMF / MITRE F3 v1.1]
+    F --> E[外部安全工具<br/>Burp / Nessus / Metasploit 等 待核验]
+    C --> S[状态 控制 审计边界<br/>Skill 质量一致性 待核验<br/>权限与可观测性 待核验]
+    E --> S
+```
 
 ## 定位判断
 

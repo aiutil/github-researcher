@@ -39,8 +39,45 @@ Firecrawl 官方的 Rust 库，把 Word/PowerPoint/Excel/OpenDocument/RTF/EPUB/C
 4. **三种 API 入口**：`toMarkdown(path)`（从文件路径）、`toMarkdownBytes(bytes, format?)`（从字节，格式检测或显式命名）、`toDocument(bytes)`（停在文档模型，携带嵌入资产）。
 5. **Firecrawl Parse 产品线支撑**：anydoc 是 Firecrawl Parse（hosted API）的开源底层，"如果不想自跑，hosted API 给同样的转换 + OCR 模型（处理 anydoc 无法读取的扫描页）"。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | anydoc 是 Firecrawl 生态的文档摄入层（office/PDF→GFM Markdown），定位介于上游 agent runtime 与下游 LLM 之间；与 Firecrawl 主线（web→Markdown）互补但不同仓库，与 Firecrawl Parse hosted API（OCR/扫描页）存在商业耦合。 | 边界以 README "eight formats → unified GFM Markdown"、Agent Skill 分发方式 (`npx skills add firecrawl/anydoc`)、"if you don't want to self-host → Firecrawl Parse OCR" 三处声明为依据；具体 API 协议、CLI flag、错误码未在档案中覆盖。 |
+| 主路径 | 用户/agent → 三入口 API (`toMarkdown` / `toMarkdownBytes` / `toDocument`) → Rust 内核按格式分派解析器 → 输出 GFM Markdown（嵌入资产走 `toDocument` 文档模型）→ 上游 agent 消费；扫描页 bypass 到 Firecrawl Parse OCR。 | 主路径由 README 列出的三种 API 入口 + 八种格式列表 + "doesn't read scanned pages" 声明拼接；分派逻辑、错误传播、SLA 未披露。 |
+| 关键权衡 | (1) Rust 单数毫秒性能与复杂文档（宏/嵌入对象/修订追踪/大表格）实际质量的取舍——README 声称延迟与一致性，未见独立基准；(2) 开源本地解析与扫描 PDF OCR 之间的云依赖（Firecrawl 付费）形成功能分裂。 | "单数毫秒"与"one consistent output"均为 README 设计声明，无独立 benchmark；扫描 PDF→hosted OCR 出自 README 风险条目，OCR 调用细节未披露。 |
+| 最小 PoC | 在单一格式（建议 docx 小文件）上同时跑 `toMarkdown` 与 `toDocument`，对照输出 GFM 是否稳定；用 npx CLI 接 Claude Code/Codex 验证 Agent Skill 加载链路；复杂度与扫描页回退路径留到第二步。 | PoC 范围依据档案列出的三种 API、Agent Skill (`skills/convert-documents-to-markdown/SKILL.md`) 与 Node.js/Python 包名 (`@firecrawl/anydoc`、`firecrawl-anydoc`)；无源码审计下"格式无关一致性"作待核验项。 |
+
 ## 架构启发
 anydoc 的设计哲学是 **"格式无关的输出统一"**——无论输入是 docx 还是 pdf，输出都是结构一致的 Markdown。这与 Firecrawl 主线（web→Markdown）形成自然延伸：web 和 office 文档都流向同一 LLM-ready 文本格式。对架构师的启发：**agent 的摄入层应该向调用者隐藏格式差异**——agent 不应关心"这是 docx 还是 pdf"，只应看到统一的结构化文本。这也是 Graphify（代码 AST→图谱）的同类思路在不同领域（文档→Markdown）的体现。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[Agent 或开发者] --> SK{npx skills add 或库调用}
+    SK --> I[三种 API 入口 toMarkdown / toMarkdownBytes / toDocument]
+    I --> R[Rust 内核格式分派器]
+    R --> P1[docx 解析器]
+    R --> P2[pptx 解析器]
+    R --> P3[xlsx 解析器]
+    R --> P4[odt odp ods 解析器]
+    R --> P5[RTF EPUB CSV 解析器]
+    R --> P6[PDF 解析器]
+    P1 --> O[统一 GFM Markdown 输出]
+    P2 --> O
+    P3 --> O
+    P4 --> O
+    P5 --> O
+    P6 --> S{是否扫描页 待核验}
+    S -->|否| O
+    S -->|是| FP[Firecrawl Parse hosted API 含 OCR 模型 商业耦合]
+    FP --> O
+    O --> C[调用方消费 含嵌入资产 via toDocument]
+    O -.-> RSK[风险边界 单数毫秒与一致性为 README 设计声明 未经独立基准]
+```
 
 ## 定位判断
 属于 **L1 基础设施/工具层**，是 agent 文档摄入基础设施。与 Firecrawl 主线（web 抓取）互补，共同覆盖 agent 的"读外部世界"能力。不直接与应用层竞争，而是为应用层（如 genoffice、qm）提供摄入底座。

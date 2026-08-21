@@ -6,7 +6,7 @@
     <title>QuipNetwork/quip-miner | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,11 +52,60 @@
 <li><strong>CPU + GPU 支持:</strong> 支持 CPU（CPU mining）和 CUDA GPU 加速</li>
 <li><strong>AGPL 强制开源:</strong> 所有衍生必须开源，防止商业闭源 fork</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Quip-miner 是 Coordinator-Miner 架构：Coordinator 分配伊辛模型任务，Miners（CPU/CUDA）在经典硬件上完成量子退火仿真，成果打包上链。系统边界落在"分布式仿真计算 + 区块链账本"，而不是真实量子硬件。</td>
+<td>AGPL-3.0、Coordinator-Miner、CPU+CUDA、经典硬件模拟量子退火均明确；任务协议、链上账本结构、奖励结算细则未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径：Coordinator 派发伊辛模型实例 → Miners 跑模拟退火求解 → 回传最优自旋构型 → 共识/账本记录工作量。Narrative 上的下游用途声称可服务材料、药物、组合优化，但档案未给出真实科研产出。</td>
+<td>主路径第一段有原文支持；下游"科学价值"为项目主张，未见独立验证。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三个互相牵制的权衡必须正视：(1) 科学计算价值 vs 算力可信度（"量子"是经典仿真，叙事与实现存在落差）；(2) 有用 PoW vs 代币可持续性（经济模型待证）；(3) AGPL-3.0 强 copyleft 保护开源 vs 阻碍企业 fork 与落地。Coordinator 派单模式带来一个中心化控制点，与分布式信任假设张力明显。</td>
+<td>五项均在档案"关键技术亮点"或"风险/局限"中明列；具体奖励曲线、惩罚机制、Coordinator 治理方式档案未给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议 PoC 只做一件事：跑通一条提交-验证闭环——本地 Miner 接入公开 Coordinator（若存在）、完成若干伊辛实例、把回传结果与项目方公布的参考解对比，计算误差/延迟，再据此评估真实科研价值与代币经济是否成立。验收项至少包含：算法是否真为量子退火仿真、回传协议是否可审计、AGPL 是否影响二次分发。</td>
+<td>PoC 设计以档案"关键亮点"和"待验证项"为基础；Coordinator 端点、参考解、回传协议细节均"待核验"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>QuipNetwork 的启发是 <strong>"Proof of Useful Work"可以落地</strong>。传统 PoW 的浪费本质是"问题无意义"——如果能将挖矿算力对齐到真实科学问题（如蛋白质折叠、气候模拟、量子模拟），挖矿就从"负外部性"变为"正外部性"。Foldit（蛋白质折叠游戏）、Folding@Home 等项目早已证明分布式科学计算可行，Quip 的创新是用"代币激励"代替"志愿精神"。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  U[用户或 Miner 节点] --> M[Miner 客户端 待核验]
+  M -->|接收伊辛模型任务| CO[Coordinator 任务分发器]
+  CO -->|派发实例与参数| M
+  M -->|回传模拟结果| CO
+  CO --> CH[链上共识与账本 待核验]
+  CH --> CO
+  CO -->|奖励/惩罚| U
+  M -. CPU 路径 .-> CPU[CPU 挖矿执行]
+  M -. GPU 路径 .-> GPU[CUDA GPU 加速]
+  CO -. 中心化控制点 .-> R[风险边界 Coordinator 单点]
+  CH -. 经济模型 .-> R2[风险边界 代币经济可持续性 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>高风险观察型项目。</strong> QuipNetwork 属于"叙事驱动 + 技术实验"型加密项目。它的科学价值（量子模拟）和商业价值（代币经济）都尚未被验证。建议以<strong>观察者</strong>而非<strong>参与者</strong>视角跟踪，尤其警惕代币投机风险。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>泡沫风险极高:</strong> 11K stars 半年内达成，加密叙事热度 &gt; 技术实质</li>
 <li><strong>"量子"是概念借用:</strong> 实际是经典硬件模拟量子模型，非真实量子计算</li>
@@ -65,7 +114,7 @@
 <li><strong>科学价值待验证:</strong> Ising 模型模拟的实际科研产出是否显著，需独立评估</li>
 <li><strong>AGPL 限制:</strong> 强 copyleft 可能阻碍企业采用</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 比特币:</strong> 比特币是"无意义 PoW"（哈希）；Quip 是"有用 PoW"（科学计算）</li>
 <li><strong>vs Folding@Home:</strong> Folding@Home 是志愿科学计算（无代币）；Quip 是代币激励</li>
@@ -73,9 +122,9 @@
 <li><strong>vs Filecoin:</strong> Filecoin 的"有用 PoW"是存储证明；Quip 是计算证明</li>
 <li><strong>vs 其他量子概念币:</strong> 多数"量子币"是纯营销，Quip 至少有真实算法</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>以风险观察视角跟踪，不建议参与代币。</strong> 关注点是："有用 PoW"作为一种理念是否会持续影响加密行业；以及量子模拟这种具体计算形式的科学产出是否被独立验证。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否有独立科学家评估其量子模拟的实际科研价值</li>
 <li>代币价格与 Star 增速的关联度（判断是否纯投机驱动）</li>

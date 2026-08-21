@@ -46,12 +46,39 @@ Paperclip 的热度是**"'零人类公司'概念击中市场想象 × 多 Agent 
 8. **Skill Studio:** 设计、训练、评估 AI 员工——技能评估、测试运行、主动学习循环
 9. **Mobile Ready:** 手机端管理和监控自主业务
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口渠道、多 Agent 运行时（OpenClaw/Claude Code/Codex/Cursor）与工具/数据源之间的编排与治理层，TypeScript/Node.js + React，MIT | 仅基于档案分类、标签与文字描述，未审计源码；具体进程边界与部署形态待核验 |
+| 主路径 | 心跳调度 → 组织架构内任务委派 → Agent 运行时执行 → 预算/审批/审计回写 | "Heartbeats / Org Chart / 预算控制 / Ticket System + 审计链"为档案明确条目；消息协议与持久化方案待核验 |
+| 关键权衡 | 多 Agent 兼容性广度（OpenClaw/Claude Code/Codex/Cursor/Bash/HTTP） vs 各运行时接口差异带来的持续维护成本；自主性 vs 审批/合规兜底 | 维护成本与合规风险由档案明示，性能/可靠性指标无公开数据 |
+| 最小 PoC | 单 Agent（建议 OpenClaw 或 Claude Code）+ 单一工具权限 + 月度预算上限 + 审计日志开启，验证心跳委派、预算熔断、审计可追溯三条最小路径 | 5,093 个 open issues 表明复杂度高；缺真实生产案例，PoC 须把退出路径与 SLO 列为验收项 |
+
 ## 架构启发
 Paperclip 的核心启发是**"把组织管理概念应用到 Agent 编排"**。传统 Agent 框架（CrewAI、LangGraph）关注 Agent 间的任务流转，而 Paperclip 引入了**组织架构、预算、治理、审计**等企业级管理概念。这是从"Agent 框架"到"Agent 组织"的范式跃迁。
 
 更深层的启发是**"审批"应建模为 Agent 间的消息传递，而非人类 UI 操作**。Paperclip 不是模拟人类在 UI 上点击"审批"按钮，而是将审批建模为组织架构中的消息流——这从根本上重新定义了企业流程自动化。
 
 对企业的直接启发：**如果要让 Agent 参与业务流程，先建立组织架构和治理框架，而非先选 Agent 框架**。管理框架比执行框架更重要。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统<br/>含 Mobile 端] --> I[入口与身份边界<br/>Multi-Company 隔离]
+    I --> C[项目核心:Paperclip 编排与运行时<br/>四支柱:任务管理/组织架构/员工训练/Agentic OS<br/>TypeScript + React]
+    C --> H[心跳调度 Heartbeats<br/>支持 24/7 自主运行]
+    H --> A[多 Agent 运行时<br/>OpenClaw / Claude Code / Codex / Cursor / Bash / HTTP<br/>状态:待核验接口规范]
+    C --> G[组织架构 Org Chart<br/>角色 权限 汇报线 委派]
+    C --> B[预算控制<br/>月度上限 超限自动停止]
+    C --> S[Ticket System + 审计链<br/>不可变日志 工具调用追踪]
+    A --> C
+    A -.执行业务操作.-> R[风险边界:Agent 自主调用工具/API<br/>沙箱与权限隔离:待核验]
+    C -.审批/治理.-> P[控制边界:治理审批 + Goal Alignment<br/>合规兜底:档案明示监管行业需人工审批]
+```
 
 ## 定位判断
 **平台候选（强）。** Paperclip 试图成为**AI Agent 组织的管理平台**——类似 Jira/Linear 之于人类团队，但面向 Agent。76K stars + 14K forks 已显示强劲需求。如果"Agent 组织"成为企业标配（这是 AI 深度采纳的必然结果），Paperclip 有成为标准管理平台的潜力。四支柱架构（任务管理 + 组织架构 + 员工训练 + 基础设施）覆盖完整，Mobile Ready 说明产品化程度高。

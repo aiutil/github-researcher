@@ -53,9 +53,37 @@ Keygraph 出品的自主式 AI 渗透测试工具（Shannon 2.0），分析 Web 
 5. **Worker 容器化**：Docker worker 隔离执行环境
 6. **Cyber safeguards 适配**：需先完成 Anthropic/OpenAI 的安全研究者认证流程
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Shannon 是一个本地运行的 TypeScript 编排层，把白盒源码接入 Graph RAG、浏览器自动化与 CLI 工具，对外调用 Anthropic/OpenAI/xAI/AWS Bedrock 等模型；AGPL-3.0 约束商业集成边界。 | 基于 tags（AI-pentester、Graph-RAG、automated-exploitation、white-box）、license 与档案正文，未引用具体源码模块路径。 |
+| 主路径 | 源码输入 → Graph RAG 代码知识图谱 → 模型推理攻击向量 → Docker worker 隔离的浏览器/CLI 工具执行真实 exploit → 仅当 PoC 可复现才写入报告（OWASP Juice Shop、c{api}tal、crAPI 三类样本报告佐证）。 | 主路径由"白盒 + 真实攻击 + worker 容器化"等档案要点拼接；具体协议、状态机、持久化方式未在档案中给出。 |
+| 关键权衡 | 真实 exploit 执行 vs 法律/伦理与 AI provider safeguard 中断风险；Graph RAG 语义深度 vs 需完整源码访问带来的适用面收窄；AGPL-3.0 vs 商业平台（Keygraph SaaS）双轨。 | 取自档案"风险/局限/泡沫点"小节；性能与检出指标档案未给出。 |
+| 最小 PoC | 在授权靶场（OWASP Juice Shop 或 crAPI 之类开源易受攻击应用）上以单一 AI provider、关闭对外网络广播的 Docker worker 配置跑通端到端 PoC 生成；将"cyber safeguards 认证完成、可审计日志、可回滚 worker 镜像"列为验收项。 | PoC 选型来自档案"sample report"小节；具体执行命令、worker 镜像标签、provider 认证流程档案未细化，须读 README/源码核验。 |
+
 ## 架构启发
 
 Graph RAG 在代码安全分析中的应用值得研究 — 将代码结构化为知识图谱，然后基于图谱推理攻击路径。但从工程角度看，Shannon 更像是"AI Code Review + 攻击性输出"的组合，而非真正的渗透测试自动化。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[授权 Web 应用源码 白盒输入] --> B[Graph RAG 代码知识图谱]
+    B --> C[编排与运行时 TypeScript]
+    C --> D[模型或推理服务 Anthropic OpenAI xAI AWS Bedrock 待核验]
+    C --> E[Docker worker 浏览器自动化 + CLI 工具执行真实 exploit]
+    E --> F{PoC 可复现?}
+    F -- 是 --> G[漏洞报告 仅有可工作 PoC 才入报告]
+    F -- 否 --> H[丢弃 不入报告]
+    E -. 失控或滥用 .-> R[法律与伦理风险 自主 exploit 不可预测]
+    D -. safeguard 中断 .-> R
+    C -. 审计与状态 .-> S[会话 状态 审计日志 待核验]
+    G --> S
+```
 
 ## 定位判断
 

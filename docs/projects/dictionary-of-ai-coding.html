@@ -6,7 +6,7 @@
     <title>Dictionary of AI Coding | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,73 @@
 <li><strong>通俗解释</strong> — 面向非专家的通俗英语，降低理解门槛</li>
 <li><strong>TypeScript 构建</strong> — 自动化发布流程</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>这是一个面向读者侧的解释性内容仓库，不是 AI Coding 系统本体；"边界"在贡献者（PR 提交者）与读者（消费通俗术语解释的人）之间</td>
+<td>档案将其归类为"学习型/字典/术语解释"，未描述任何运行时编排、模型调用或工具链</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>内容主路径为：术语条目（Markdown/TypeScript 源码）→ 构建/发布流程 → 静态站点供读者查阅；不含模型推理或工具调用路径</td>
+<td>仅指出"TypeScript 构建"与"社区驱动 PR"，自动化发布与站点的具体形态未在档案中证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>通俗性与准确性之间的权衡：面向非专家的英语解释 vs. 与社区主流用法的一致性</td>
+<td>档案自陈"非官方定义，可能与主流理解有偏差"；无机制保证术语审校</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>最小验证是"读一条新术语条目 → 确认通俗解释是否被社区接受（PR/讨论）"，而非系统集成 PoC</td>
+<td>档案未声明任何 API、SDK 或可编程接口，仅适合作为静态参考材料试用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>元认知工具的价值：当技术生态快速演化时，"解释性基础设施"（词典、教程、地图）有独立价值</li>
 <li>开源词典模式：类似 MDN Web Docs，但聚焦于 AI Coding 领域</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  C[贡献者 PR 提交] --> R[术语条目源文件 待核验格式]
+  R --> B[TypeScript 构建与发布流程]
+  B --> S[静态术语站点]
+  S --> U[读者查阅者]
+  U --> F[反馈与争议 术语准确性边界]
+  F --> C
+  S -.无运行时编排.-> X[AI Coding 实际系统 外部边界]
+  X -.术语需求反向流入.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>学习型。</strong> 是 AI Coding 生态的"元工具"——帮助理解其他工具的工具。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>维护挑战</strong> — 术语更新快，项目容易过时</li>
 <li><strong>权威性</strong> — 非官方定义，可能与主流理解有偏差</li>
 <li><strong>替代方案多</strong> — LLM 本身就是最好的"术语解释器"</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>MDN Web Docs</strong> — Web 技术的官方文档，Dictionary 是其 AI Coding 领域的民间版本</li>
 <li><strong>Awesome Lists</strong> — 资源列表，Dictionary 更聚焦于概念解释</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>无需持续跟踪。</strong> 有用但非战略性项目。可作为参考工具偶尔查阅。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>术语覆盖率是否跟上 AI Coding 领域的演化速度</li>
 <li>是否被更大的文档项目（如 Agent 框架的官方文档）吸收</li>

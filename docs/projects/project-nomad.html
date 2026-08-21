@@ -6,7 +6,7 @@
     <title>Crosstalk-Solutions/project-nomad | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,25 +52,70 @@
 <li><strong><a href="https://www.projectnomad.us"><img alt="Website" src="https://img.shields.io/badge/Website-projectnomad.us-blue" /></a></strong></li>
 <li><strong>[<img alt="Discord" src="https://img.shields.io/badge/Discord-Join%20Community-5865F2" />](https://discord.com/invit</strong></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目定位为离线优先的本地知识与教育服务器，承载 Wikipedia、图书、课程、地图、可选本地 AI 等内容，运行在用户自有硬件上；用户/客户端、UI、领域核心、服务运行时与本地内容/数据依赖构成应用边界。</td>
+<td>档案明确为"offline-first knowledge and education server"及内容集合，但具体进程模型、端口、存储引擎未在档案中披露，需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>客户端 → 本地 UI 与状态层 → 领域核心（知识/教育服务）→ 本地服务/运行时 → 本地数据资产（Wikipedia 快照、图书、课程、地图、可选本地 AI）。</td>
+<td>主路径由档案"用户自有硬件、无需联网"与内容清单推断；协议、同步机制、AI 模型接入方式未证实。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>完全离线可用 vs 内容规模/新鲜度；本地硬件承载 vs 资源占用；可选本地 AI vs 离线一致性；开箱即用 vs 可扩展性。</td>
+<td>权衡判断来自档案描述的功能集合与"可选 local AI"措辞；性能、容量与硬件门槛未给出数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台标准 x86 笔记本或迷你主机上，下载镜像后冷启动服务，验证 Wikipedia 检索、图书/课程离线阅读、地图渲染三条用户路径，并测试断网下的功能完整性与可选本地 AI 的启用/关闭。</td>
+<td>档案未提供官方硬件要求、镜像大小或 AI 模型规格；具体验收指标"待核验"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>从 Crosstalk-Solutions/project-nomad 的设计来看，核心思路是 <strong>"Project NOMAD is an offline-first knowledge and education se"</strong>。这反映了 TypeScript 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (Apache-2.0) 降低了采用门槛。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户或客户端] --> UI[本地 UI 与交互层]
+    UI --> Core[知识与教育领域核心]
+    Core --> Runtime[本地服务运行时]
+    Runtime --> Content[(本地内容资产 Wikipedia 图书 课程 地图)]
+    Core -.可选.-> LocalAI[本地 AI 模型 待核验]
+    Core --> Boundary[状态控制与风险边界 待核验]
+    Runtime --> Boundary
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型</strong>。在生态中定位为Project NOMAD is an offline-first knowle方向的工具。Stars 35695 说明已有一定社区基础。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>规模风险</strong>：35,695 stars，但 fork 3578 说明有实际部署</li>
 <li><strong>维护风险</strong>：最后 push 时间 2026-08-11，活跃维护中</li>
 <li><strong>Open Issues</strong>：64 个 open issues，活跃社区反馈</li>
 <li><strong>License</strong>：Apache-2.0（宽松许可，适合商用）</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>与同 TypeScript 生态的同类工具形成竞争/互补关系。具体竞品对比需参考社区讨论。</li>
 <li>从 topics () 来看，与关注 该领域 的其他项目有交叉。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 35695 stars + 活跃更新说明项目有持续价值。建议关注后续版本迭代和社区增长。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Star 增速是否可持续（当前 35,695）</li>
 <li>Fork 增长趋势（当前 3,578）</li>

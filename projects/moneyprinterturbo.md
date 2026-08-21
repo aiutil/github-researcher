@@ -36,8 +36,32 @@ url: "https://github.com/harry0703/MoneyPrinterTurbo"
 3. **WebUI + API 双模式**：WebUI 提供可视化操作界面（脚本参数配置、视频预览、任务管理），API 提供程序化调用接口（可集成到其他系统、批量生成）。两种模式覆盖了个人创作者和平台化运营两种场景。
 4. **FFmpeg 深度集成**：使用 FFmpeg 进行视频合成，支持高清输出、字幕叠加、音频混合、转场效果等。FFmpeg 是视频处理的工业标准，保证了输出的专业级质量。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口层（WebUI / API 双模式）→ 编排与运行时（Python 3.11+）→ 模型供应商（OpenAI、Kimi K3、DeepSeek、Moonshot、Azure、Qwen、GLM-5.2）→ 工具与数据源（Azure TTS、edge-tts、ElevenLabs、Pexels、Pixabay、FFmpeg）→ 会话/状态/审计边界（项目侧未给出明确实现细节） | 模型清单与工具清单来自档案；编排层内部组件、状态存储与审计落点待核验。 |
+| 主路径 | 主题/关键词 → LLM 生成文案 → 关键词提取 → 素材库匹配画面 → TTS 生成配音 → 自动字幕 → FFmpeg 合成高清短视频；WebUI 与 API 共享同一编排路径 | 步骤顺序与 FFmpeg 合成在档案中明确；各步骤的可配置项、错误处理与重试机制待核验。 |
+| 关键权衡 | 编排优先 vs. 自研视频生成：迭代快、成本低、模块可替换，但画面原创性与相关性受限于免费素材库（Pexels/Pixabay）；同时存在 TTS/素材版权与平台同质化风险 | 素材库限制与版权风险由档案明说；具体的素材匹配精度、平台限流阈值、视频生成模型集成进度待核验。 |
+| 最小 PoC | 单渠道（WebUI 或 API 二选一）+ 单 LLM（如 DeepSeek）+ edge-tts + Pexels + FFmpeg，产出 1 条端到端短视频；验收项：版权溯源、成本/条、SLO（生成耗时）、可审计日志、退出路径 | 最低依赖组合可由档案组件拼出；具体部署形态、依赖版本、硬件要求与日志/成本基线待核验。 |
+
 ## 架构启发
 MoneyPrinterTurbo 的设计哲学是"编排而非自研"——它不自己训练视频生成模型，而是编排现有的 AI 服务（LLM、TTS、素材库）和工具（FFmpeg）来完成端到端工作流。这种策略的优势是迭代快、成本低、灵活度高——每当有新的更好的 LLM 或 TTS 出现，只需更新配置即可。劣势是输出质量受限于各环节工具的能力——特别是素材匹配环节，由于依赖免费素材库（Pexels/Pixabay），画面与文案的相关性可能不够精确。这也是它与 ViMax（调用视频生成模型而非素材库）的本质区别。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>WebUI 与 API 双模式]
+    I --> C[项目编排与运行时<br/>Python 3.11+]
+    C --> M[模型供应商边界<br/>OpenAI / Kimi K3 / DeepSeek / Moonshot / Azure / Qwen / GLM-5.2]
+    C --> T[工具与外部系统边界<br/>Azure TTS / edge-tts / ElevenLabs / Pexels / Pixabay / FFmpeg]
+    C --> S[会话 状态 审计<br/>待核验]
+    M --> C
+    T --> C
+```
 
 ## 定位判断
 MoneyPrinterTurbo 定位为**AI 短视频自动化的工程标杆**。在 AI 视频生成生态中，它不与底层视频生成模型（Sora、Kling）竞争，而是在应用层提供"主题→成片"的自动化工具。10 万 stars 使其成为 AI 内容生产赛道的绝对头部项目。与学术性更强的 ViMax 相比，MoneyPrinterTurbo 更偏工程实用主义——快速、可用、可部署。

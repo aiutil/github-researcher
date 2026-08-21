@@ -41,8 +41,32 @@ codex-plugin-cc 的热度是 **"OpenAI 官方背书 + 跨厂商互操作的象�
 5. **Apache-2.0 开源:** OpenAI 以宽松许可开源，鼓励社区扩展（如反向插件、多模型桥接）
 6. **官方维护:** OpenAI 维护而非第三方，保证与 Codex API/CLI 的及时同步
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 一个 158KB 的 Apache-2.0 JavaScript 插件，定位为 Claude Code 与 Codex 之间的桥接层（plugin / bridge / interoperability），非独立运行时 | 仅来自档案描述的体量、许可与标签；具体进程边界、IPC、宿主注入方式未在档案中说明 |
+| 主路径 | Claude Code 主 Agent 通过插件/MCP 接口，把"代码审查/子任务委派"作为外部工具调用路由至 Codex，回收结果后回写到 Claude Code 工作流 | 档案未给出协议细节、消息格式、调用栈；"MCP 接口"为档案用词，未指明 MCP 版本或传输层 |
+| 关键权衡 | 互操作开放姿态 vs 双方竞合关系；极简桥接 vs 依赖 Claude Code 与 Codex 任一方 API 变动；通用 Agent 协议（如 MCP 扩展）可能取代专用桥接 | 权衡为档案明确提示的风险点（竞合悖论、依赖双方稳定、可能被 MCP 吸收），无实测性能或耦合度数据 |
+| 最小 PoC | 在 Claude Code 内启用该插件，仅开放"代码审查"单一委派能力，开启可审计日志（会话/状态/审计节点），验证 Codex 子任务委派—结果回写闭环 | 档案未提供安装方式、所需 Codex 凭据、CLI/API 版本要求；审计与日志能力仅为研究抽象，未在档案中证实 |
+
 ## 架构启发
 codex-plugin-cc 的核心启发是 **"Agent 的未来是可组合的，而非各自封闭"**。当前每个 Coding Agent（Claude Code、Codex、Cursor）都试图成为"全能单体"，但模型各有所长、工具各有专精，封闭意味着能力浪费。OpenAI 为 Claude Code 写插件，实质上承认了：**没有单一 Agent/模型能满足所有需求，互操作是必然**。这预示着一个趋势：Coding Agent 将走向"插件化、可组合"的架构，类似 IDE 的插件生态——主 Agent 协调，专业插件（其他模型/工具）执行子任务。codex-plugin-cc 是这个趋势的早期信号，其范式意义大于当前功能。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[Claude Code 主 Agent 编排与运行时]
+    C --> P[codex-plugin-cc 桥接插件 158KB JavaScript]
+    P --> X[Codex CLI 或模型服务 待核验调用形态]
+    C --> S[会话 状态 审计 待核验日志能力]
+    P --> S
+    X -. 结果回写 .-> P
+```
 
 ## 定位判断
 **工具型插件（战略意义大于功能本身）。** codex-plugin-cc 作为单独插件，功能明确而有限（桥接 Claude Code 与 Codex）。但其战略意义突出：①OpenAI 拥抱互操作的姿态；②验证"Agent 可组合"范式；③抢占 Claude Code 生态的协同位。作为工具，它是 Claude Code 用户的锦上添花（可选用 Codex 做审查）；作为信号，它预示 Agent 互操作时代的开启。不会成为平台，但会启发更多跨厂商桥接。OpenAI 维护保证了可靠性。

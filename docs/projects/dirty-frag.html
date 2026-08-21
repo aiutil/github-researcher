@@ -6,7 +6,7 @@
     <title>Dirty Frag | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,85 @@
 <li>通用 offset 自动检测：支持多内核版本，自动适配地址布局</li>
 <li>检测器组件：非侵入式扫描系统是否打了对应补丁</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>漏洞影响边界在 Linux 内核网络协议栈（xfrm-ESP、RxRPC）与内存管理子系统（页缓存）之间；项目交付边界为 Detector（检测器）与 PoC（利用代码），不含内核修复</td>
+<td>具体子系统交互代码路径、补丁 commit、内核版本适用范围须以源码/CVE 公告核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>内核网络子系统交互缺陷 → 页缓存任意写入 → 文件覆写 → 本地权限提升；项目以 PoC 确定性触发该路径，Detector 以非侵入方式判定系统是否已修补</td>
+<td>"成功率接近 100%"为档案叙事描述，未经独立复现统计验证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>利用稳定性（无需竞态窗口）vs. 利用代码需针对不同内核版本调整 offset；项目热度与叙事价值 vs. 补丁普及后威胁快速收敛</td>
+<td>offset 自动检测的具体内核版本覆盖范围、PoC 变体间能力差异均未在档案中证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在受控 VM 中以受影响内核版本运行 Detector 验证检测逻辑，再以同版本内核执行 PoC 评估提权成功率与可观测痕迹（页缓存写入、文件覆写、内核日志），验证后立即销毁快照</td>
+<td>适用内核版本范围、KaraZajac/DIRTYFAIL 仓库的 26 stars 与 2.8k 聚合星标的来源构成均待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Dirty Frag 暴露了一个深层架构问题：Linux 内核中网络协议栈（xfrm、RxRPC）与内存管理子系统（page cache）之间存在隐式耦合，这种跨子系统交互难以通过模块化设计完全隔离。对架构师的启发是：<strong>高性能子系统的零拷贝优化往往是安全漏洞的温床</strong>，性能与隔离之间的权衡需要显式架构决策。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    subgraph Kernel["Linux 内核（受影响组件）"]
+        XFRM["xfrm-ESP 子系统"]
+        RXRPC["RxRPC 子系统"]
+        PC["页缓存 / 内存管理"]
+        XFRM -- 协议栈交互缺陷 --> PC
+        RXRPC -- 协议栈交互缺陷 --> PC
+    end
+    PC -- 任意文件覆写 --> PRIV["本地权限提升（LPE）"]
+    subgraph Project["Dirty Frag 项目交付"]
+        DET["Detector：非侵入式补丁检测（待核验覆盖内核版本）"]
+        POC["PoC：链式利用触发器"]
+        OFFSET["通用 offset 自动检测模块"]
+    end
+    DET -. 扫描 .- Kernel
+    POC --> XFRM
+    POC --> RXRPC
+    OFFSET -. 适配 .- POC
+    POC --> PRIV
+    PATCH["主线内核补丁（已合并，待核验发行版回填进度）"] -. 收敛威胁 .- PRIV
+    RISK["风险边界：需针对目标内核调整 offset；补丁普及后项目价值下降"] -. 影响 .- POC
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>安全研究 + 工具型。</strong> 这是一个高质量的安全研究项目，兼具检测和利用双重用途。其价值在于推动漏洞修复进程和提升安全意识，而非作为持续维护的产品。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li>项目规模较小（26 stars on KaraZajac/DIRTYFAIL），但社区有多个 PoC 变体（Percivalll/Dirty-Frag-Kubernetes-PoC 等）</li>
 <li>漏洞补丁已进入主线内核，随发行版更新威胁将快速收敛</li>
 <li>利用代码需要针对目标内核版本调整 offset</li>
 <li>"Dirty Frag" 命名借鉴了经典漏洞命名传统（DirtyCow/DirtyPipe），叙事热度可能略高于技术独创性</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>CVE-2026-31431 (Copy Fail)</strong> 是"姊妹漏洞"，经常被合并讨论</li>
 <li>命名上延续了 DirtyCow（CVE-2016-5195）、DirtyPipe（CVE-2022-0847）的"Dirty 系列"传统</li>
 <li>多个社区 PoC 项目围绕同一漏洞展开，形成碎片化生态</li>
 <li>与 Linux 内核安全邮件列表、KSPP（内核自我保护项目）形成攻防两端</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得短期跟踪。</strong> 漏洞修复周期内（预计 3-6 个月）值得密切关注补丁状态和变体发现。长期来看，当补丁普及时项目价值将下降。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>补丁是否引入新的回归或绕过路径</li>
 <li>是否出现针对容器逃逸场景的武器化利用</li>

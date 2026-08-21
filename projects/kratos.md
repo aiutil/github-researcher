@@ -37,8 +37,36 @@ Go 微服务开发的"框架选择困难"：标准库 net/http 太底层，grpc-
 - **CLI 代码生成**：`kratos new` 一键创建项目骨架，`kratos upgrade` 更新工具链
 - **OpenTelemetry 集成**：contrib 包提供完整的分布式追踪支持
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Kratos 是一个面向 Go 微服务的全栈框架边界，覆盖传输层（HTTP+gRPC）、中间件、服务注册发现、配置中心、日志追踪与代码生成；不构成编排/模型/工具平台本身 | 边界仅依据档案"它解决的问题"与"关键技术亮点"段；与 AI Agent/编排平台的边界未在档案中证实 |
+| 主路径 | Protobuf → 代码生成（HTTP/gRPC 双协议）→ 统一传输层 → 可组合中间件（Recovery/Logging/Validation/Tracing/Metrics/Auth）→ 可插拔组件（Consul/etcd/Nacos、配置中心、OpenTelemetry） | 路径基于档案亮点列举的组件串联；具体启动顺序、依赖注入与运行时拓扑未在档案中描述，需源码核验 |
+| 关键权衡 | "显式优于隐式"、Protobuf single source of truth 带来的协议一致性收益 vs. Protobuf+gRPC+Kratos 的较高学习曲线与对简单项目的"过度框架化"风险；可插拔组件灵活性 vs. 与国内同类（go-zero、Kitex）竞争下的生态选择压力 | 权衡仅来自档案"架构启发"与"风险/局限"段；性能基准、生产案例细节、版本兼容性未给出 |
+| 最小 PoC | 用 `kratos new` 生成骨架，写一个 .proto，验证 HTTP/gRPC 双协议出口与基础中间件链路，在单一服务注册/配置后端（如 etcd 或 Nacos）下跑通请求 → 中间件 → 业务逻辑回路 | PoC 步骤依据档案提到的 `kratos new`/升级 CLI、Protobuf 代码生成、OpenTelemetry contrib；具体依赖版本与部署形态"待核验" |
+
 ## 架构启发
 Kratos 的核心设计理念是"显式优于隐式"——每个组件都有清晰的接口定义，不过度使用反射和魔法。Protobuf 作为协议层的 single source of truth 是重要设计——一份协议定义驱动接口文档、客户端 SDK、服务端实现，消除了协议层的不一致。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  P[Proto 定义 single source of truth] --> G[kratos CLI 代码生成 HTTP+gRPC 双协议]
+  G --> T[统一传输层 HTTP + gRPC]
+  T --> MW[可组合中间件 Recovery / Logging / Validation / Tracing / Metrics / Auth 待核验]
+  MW --> B[业务逻辑接口]
+  B --> REG[可插拔服务注册 Consul / etcd / Nacos 待核验]
+  B --> CFG[可插拔配置中心 待核验]
+  B --> OTEL[OpenTelemetry contrib 分布式追踪]
+  EXT[外部系统 业务上游与下游] --> T
+  OTEL --> OBS[可观测性后端 待核验]
+  MCP[MCP Model Context Protocol 集成 待核验] --> T
+  RISK[风险与控制边界 学习曲线 过度框架化 竞品 go-zero Kitex] -.-> B
+```
 
 ## 定位判断
 **Go 微服务基础框架**，定位类似于 Spring Cloud 之于 Java，但更轻量、更聚焦云原生。适合中大型后端团队的微服务体系建设。

@@ -6,7 +6,7 @@
     <title>Microsoft MXC | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -54,15 +54,60 @@
 <li><strong>Containment 设计理念</strong>：强调"遏制"而非仅"隔离"，包含行为监控和异常响应</li>
 <li><strong>Rust 实现</strong>：避免 C/C++ 的内存安全漏洞，同时保持系统级性能</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MXC 的对外边界是"策略层 + 分层隔离执行点"；对外暴露策略声明接口与受保护工作负载（agent 脚本/第三方 MCP server/上传插件等），对内依赖 Linux 内核机制（namespace、seccomp、capabilities）。Windows/macOS 兼容性未在档案中证实。</td>
+<td>仅依据档案"策略驱动 / 分层隔离 / Rust / Linux 容器与进程级"描述，外内核边界组件未经源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>策略文件 → 编排/运行时按策略组合 Linux 隔离机制 → 启动受限进程或容器 → 行为监控与异常响应 → 审计与状态回写。</td>
+<td>主路径描述来自档案"Containment 设计理念 + 分层隔离 + 策略驱动"提炼，未指明具体 IPC、持久化与日志格式。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"组合多种 Linux 安全机制带来的防御深度"与"策略复杂度、运维成本、内核兼容性依赖"之间取舍；同时需权衡其与 Firecracker/gVisor/Kata/WASM 沙箱的边界（自身定位偏策略层、OS 级、轻量）。</td>
+<td>权衡引自档案"分层而非单一 / vs Firecracker-gVisor-Kata-WASM"段；性能与基准未提供。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用一条声明式策略定义单进程沙箱边界（namespace + seccomp + capability 裁剪），跑一个不可信脚本；验收项：行为/系统调用可观测、日志可审计、回退路径明确；只在一个 Linux 环境验证。</td>
+<td>验收项来自档案"最小工具权限 / 可审计日志 / 退出路径"建议；具体 API 与策略语法未在档案中给出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>安全即策略</strong>：将安全边界从代码配置提升为独立策略层，可审计、可版本化</li>
 <li><strong>分层而非单一</strong>：单一隔离机制（如只用容器）存在逃逸风险，组合多层防御更健壮</li>
 <li><strong>为 AI agent 时代设计</strong>：agent 执行代码的安全沙箱是新兴刚需</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    P[策略文件 声明式策略] --> R[编排与运行时 MXC Core Rust]
+    R --> K[Linux 内核机制 namespace seccomp capabilities 待核验]
+    R --> W[受限工作负载 进程或容器 agent 脚本 第三方 MCP server 上传插件]
+    W --> M[行为监控与异常响应 待核验]
+    M --> A[审计与状态回写 待核验]
+    A --> R
+    X[外部隔离栈 Firecracker gVisor Kata Wasmtime] -. 互补与竞品 .-> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>早期基础设施候选项目</strong>。定位在容器安全和 agent 代码执行安全之间，目前还在概念验证和小规模采用阶段，但方向符合趋势。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>文档可能不足</strong>：1.2k stars 阶段的项目通常文档和最佳实践尚不完善</li>
 <li><strong>竞争激烈</strong>：Firecracker、gVisor、Kata Containers、WASM 沙箱都在抢占"轻量隔离"赛道</li>
@@ -70,16 +115,16 @@
 <li><strong>微软项目维护风险</strong>：微软有砍项目的习惯（如多个实验性项目被归档）</li>
 <li><strong>Linux 专精</strong>：可能不支持 Windows/macOS，限制了适用范围</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Firecracker（AWS）</strong>：Firecracker 是 microVM，MXC 更偏策略层和进程级隔离</li>
 <li><strong>vs gVisor（Google）</strong>：gVisor 做系统调用拦截，MXC 做策略编排</li>
 <li><strong>vs Kata Containers</strong>：Kata 走 VM 路线，MXC 更轻量</li>
 <li><strong>vs WASM 沙箱（Wasmtime）</strong>：WASM 是语言级隔离，MXC 是 OS 级隔离，可互补</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>值得关注但需谨慎。</strong> 微软安全项目方向正确，但需观察是否有真实大规模生产部署案例。建议半年后复查采用情况。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否有 Azure 服务基于 MXC 构建（内部采用信号）</li>
 <li>企业落地案例和安全评估报告</li>

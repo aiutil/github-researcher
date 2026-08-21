@@ -6,7 +6,7 @@
     <title>agentOS | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,38 +52,75 @@
 <li><strong>Sandbox Extension</strong>：需要浏览器/原生编译时，按需启动 E2B/Daytona 全 Sandbox，挂载文件系统</li>
 <li><strong>Cron + Webhooks + Workflows</strong>：内置定时任务、外部事件接收、可恢复的工作流编排</li>
 </ol>
-<h2 id="_5">架构启发</h2>
-<pre class="mermaid">flowchart TB
-    subgraph "宿主进程 (Node.js/Rust)"
-        APP[你的后端应用]
-        BIND[Bindings<br/>Agent 可调用的宿主函数]
-    end
-
-    subgraph "agentOS VM (进程内)"
-        KERN[微型 OS 内核<br/>VFS/进程表/Pipe/PTY/Net]
-        AG1[Agent 1<br/>Pi/Claude Code]
-        AG2[Agent 2<br/>OpenCode]
-        AG3[Agent N]
-    end
-
-    subgraph "可选 Sandbox Extension"
-        E2B[E2B/Daytona<br/>浏览器/编译场景]
-    end
-
-    APP -->|npm 包| KERN
-    BIND <-->|CLI 命令| AG1
-    KERN --> AG1
-    KERN --> AG2
-    KERN --> AG3
-    KERN -.->|按需| E2B
-
-    style KERN fill:#48a,color:#fff
-    style BIND fill:#e74,color:#fff
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>进程内 Agent 运行时，介于宿主后端应用与 Agent（Pi/Claude Code/OpenCode）之间，对外通过 npm 包/SDK 嵌入，对内以 in-process VM 形式承载 Agent</td>
+<td>仅基于档案"Rust 实现、npm 嵌入、ACP 内置 Pi/Claude Code/OpenCode"，VFS/进程表/Pipe/PTY/虚拟网络栈等子模块细节未在档案中给出，需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>应用调用 → agentOS VM 内核 → 通过 Bindings（CLI 命令暴露宿主函数）执行 Agent → 状态/产物经可组合存储（S3/GDrive/宿主目录/overlay）回写</td>
+<td>存储后端、API 协议、错误处理路径档案未明确，标注待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>V8 Isolates + Wasm 的低冷启动（4.8ms p50）/低内存（~131MB）换取弱于 KVM/Firecracker 的隔离强度，复杂负载需回退到 E2B/Daytona Sandbox Extension</td>
+<td>隔离强度对比、E2B/Daytona 回退触发条件未给具体阈值，"6x/32x/92x"成本性能数据来源档案未注明</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以 npm 包嵌入单宿主服务，启用 deny-by-default 权限策略与单一 S3 兼容存储挂载，验证 Cron+Webhooks+Workflows 中的至少一条路径，并以 Sandbox Extension 为浏览器/编译场景的退出路径</td>
+<td>SDK 非 JS 后端可用性、Rivet Cloud 绑定程度、V8 Isolates 对不可信代码安全边界档案未给出结论</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Host["宿主进程 (Node.js/npm)"]
+    App["你的后端应用"]
+    Bind["Bindings<br/>宿主函数 → CLI 命令"]
+  end
+  subgraph VM["agentOS VM (进程内, Rust)"]
+    Kern["微型 OS 内核<br/>VFS / 进程表 / Pipe / PTY / 虚拟网络<br/>(待核验)"]
+    Ag1["Agent: Pi"]
+    Ag2["Agent: Claude Code"]
+    Ag3["Agent: OpenCode"]
+  end
+  subgraph Storage["可组合存储 (挂载为 VFS)"]
+    S3["S3 兼容 / GDrive / 宿主目录 / overlay<br/>具体后端待核验"]
+  end
+  subgraph Ext["Sandbox Extension (按需)"]
+    Sb["E2B / Daytona<br/>浏览器/原生编译场景"]
+  end
+  App -->|npm 调用| Kern
+  Bind <-.->|in-VM CLI| Ag1
+  Bind <-.->|in-VM CLI| Ag2
+  Bind <-.->|in-VM CLI| Ag3
+  Kern --> Ag1
+  Kern --> Ag2
+  Kern --> Ag3
+  Kern --- S3
+  Kern -. 按需回退 .-> Sb
+  Sb -. 文件系统挂载 .-> Kern
 </pre>
 <p><strong>核心 insight：</strong> Agent 运行时不一定需要容器。WebAssembly + V8 Isolates 提供了"足够好的隔离"和"足够好的性能"的平衡点。对于不需要完整 Linux 环境的 Agent 工作负载（代码生成、数据处理、API 调用），进程内 VM 是更高效的部署模式。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>基础设施候选。如果 In-Process Agent 模式被验证，agentOS 可能成为 Agent 后端的标准运行时——就像 V8 之于 Node.js 后端。但需验证在复杂工作负载（需要浏览器、原生编译）下的表现。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>V8 Isolates 隔离强度</strong>：V8 Isolates 的安全性依赖 V8 引擎自身的沙箱能力。对于运行不可信代码的场景，隔离强度不如 KVM/Firecracker</li>
 <li><strong>生态初期</strong>：4K stars，registry 中包数量有限，社区采纳规模小</li>
@@ -91,16 +128,16 @@
 <li><strong>Rivet 绑定</strong>：与 Rivet Cloud 生态有一定绑定，需确认开源版本的独立性</li>
 <li><strong>Node.js 依赖</strong>：虽然 VM 是 Rust 实现，但 SDK 层是 TypeScript/Node.js，对于非 JS 后端不够友好</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs E2B</strong>：E2B 是 Sandbox-as-a-Service，每个 Agent 一个容器。agentOS 是进程内 VM，快 92x，便宜 6x</li>
 <li><strong>vs Daytona</strong>：Daytona 提供开源开发环境管理。agentOS 更轻量，内存开销低 47x（简单命令）</li>
 <li><strong>vs CubeSandbox（腾讯）</strong>：CubeSandbox 基于 KVM，隔离更强但更重。agentOS 更适合轻量级 Agent 工作负载</li>
 <li><strong>vs Firecracker</strong>：Firecracker 是 microVM（AWS Lambda 底层），隔离最强但启动慢（125ms）。agentOS 适合更低延迟场景</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> In-Process Agent OS 是一个新的基础设施范式。如果 Agent 后端从"容器池"模式迁移到"进程内 VM"模式，agentOS 有先发优势。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>生产环境部署案例和稳定性报告</li>
 <li>V8 Isolates 在运行不可信/半不可信代码时的安全事件</li>

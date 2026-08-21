@@ -36,8 +36,40 @@ LLM 生成的 UI 普遍存在"AI-slop"问题：千篇一律的卡片布局、紫
 4. **Study 模式**：从截图/URL 提取设计 DNA（宏观结构/字体配对/色彩锚点），生成可移植的 design.md
 5. **跨平台 Skill**：支持 Claude Code、Cursor、Codex、Gemini CLI 等
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Hallmark 是面向 Claude Code / Cursor / Codex / Gemini CLI 等 Agent 终端的"设计质量门禁"Skill 编排层，本身为 CSS/JS 资源 + Skill 描述，未自托管推理或后端服务 | 模型供应商、Skill 运行时归属、是否含服务端组件均未在档案中证实 |
+| 主路径 | 用户触发 build/audit/redesign/study 之一 → 57 道 slop-test 门禁校验 → pre-emit 自批评 → 输出 UI（从 20 个预设主题或 Custom 模式生成） | 各阶段是否含额外工具调用、是否回写真实状态、审计日志落点档案未说明 |
+| 关键权衡 | 用硬编码的反 slop 规则（57 道门禁 + 自批评）保证设计同质化抑制，但牺牲审美多样性并把规则权威性绑定在 LLM 自评上 | 门禁具体内容、自批评能否被绕过、Custom 模式与预设的切换阈值，档案无源码级证据 |
+| 最小 PoC | 在单一 Agent（建议 Claude Code）以 `npx skills add nutlope/hallmark` 安装后，挑 1 个落地页场景跑 build；验收点：是否触发 slop-test、是否执行 pre-emit 自批评、能否输出 study 模式的 design.md | 安装命令、运行机制仅来自档案摘要，实际 CLI 参数、权限范围、网络出站待核验 |
+
 ## 架构启发
 Hallmark 代表了 Agent 质量保障的新范式：**不是后处理修正，而是前置门禁**。这种"pre-emit 自批评"模式可以推广到其他领域——代码质量、安全合规、内容审核都可以建立类似的"生成前门禁"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者/开发者] --> A[Agent 终端: Claude Code / Cursor / Codex / Gemini CLI]
+    A --> S[Hallmark Skill: npx skills add nutlope/hallmark]
+    S --> V{选择动词: build / audit / redesign / study}
+    V -->|build 或 redesign| T[主题选择: 20 个预设主题 或 Custom 模式]
+    V -->|study| D[截图/URL 提取设计 DNA -> design.md（待核验细节）]
+    V -->|audit| R[审计已有代码的反 slop 程度（待核验输出形式）]
+    T --> G[57 道 slop-test 门禁]
+    D --> G
+    R --> G
+    G --> P[pre-emit 自批评]
+    P -->|不通过| G
+    P -->|通过| O[输出 UI / design.md]
+    O --> A
+    A -.风险边界: LLM 自评可被绕过.-> P
+    O -.外部边界: 仅营销页/落地页.-> E[适用范围标记: 复杂应用 UI 不适用（待核验）]
+```
 
 ## 定位判断
 在 Agent Skill 生态中，Hallmark 占据"设计质量守卫"的位置。它不生成内容，而是确保生成的内容达到设计标准。类似于编译器的 lint，但是面向设计审美。

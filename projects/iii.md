@@ -40,23 +40,39 @@ last_seen_date: "2026-06-03"
 4. **SDK 多语言**：Node.js/Python/Rust 三端支持
 5. **iii-console**：开发运维控制台，Worker/Function/Trigger 全可视
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | iii 定位为后端能力组合/扩展/可观测平台，通过 Worker/Function/Trigger 三原语统一 HTTP、队列、定时、Agent 等入口，将调度与可观测内置在引擎中（Rust 引擎 + Node/Python/Rust SDK + iii-console 控制台 + workers.iii.dev 预构建生态） | 边界与原语仅来自档案引用的公开资料；具体持久化、部署形态与多语言 SDK 范围须源码核验 |
+| 主路径 | 外部请求或 Agent 命中 Trigger → 调度到所属 Worker 内的 Function 执行 → 自动埋点进入 iii-console/Live Catalog → Agent 通过 Catalog 发现并在运行时 `iii worker add` 扩展新 Worker | 协议、传输、状态写回机制未在档案中证实，路径细节待核验 |
+| 关键权衡 | (1) Agent 自主 `iii worker add` 带来的能力膨胀与权限失控风险；(2) Elastic License 2.0 对引擎商业使用的限制；(3) 三原语抽象对 Kubernetes/Dapr/Temporal 已覆盖场景的差异化收益尚需生产验证；(4)「零集成可观测」对已有埋点体系的侵入程度 | 权衡判断基于项目定位描述与风险段落，未引用任何基准或生产案例数据 |
+| 最小 PoC | 用单一 HTTP Worker + 一个 Function 暴露内部接口，接入 iii-console 验证自动 trace，再让 Agent 通过 Catalog 调用该 Function，最后尝试 `iii worker add` 一个新 Worker 验证动态扩展；验收项应包含 License 边界、退出路径、调用链完整性与最小权限 | 许可证条款原文、SDK 实际可用语言与 console 自托管方式均待核验 |
+
 ## 架构启发
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 graph LR
-    subgraph "iii 三原语模型"
-        W1["Worker A<br/>HTTP API"] --> F1["Function: handler"]
-        W1 --> T1["Trigger: HTTP /api/*"]
-        W2["Worker B<br/>Queue"] --> F2["Function: process"]
-        W2 --> T2["Trigger: queue.subscribe"]
-        W3["Worker C<br/>Agent"] --> F3["Function: decide"]
-        W3 --> T3["Trigger: state.change"]
-    end
-    
-    Agent["AI Agent"] -->|发现| Catalog["Live Catalog"]
-    Catalog -->|调用| F1
-    Catalog -->|调用| F2
-    Agent -->|动态添加| W4["Worker D<br/>新能力"]
+    Client["外部请求 / 调度方"] --> T1["Trigger: HTTP/Queue/State 等<br/>(待核验: 协议与队列实现)"]
+    Agent["AI Agent"] -->|"发现/调用"| Cat["Live Catalog<br/>workers.iii.dev 生态"]
+    Agent -->|"iii worker add"| Risk["风险边界: 运行时动态扩展<br/>(待核验: 权限与审计)"]
+    T1 --> W1["Worker A: HTTP API<br/>(Rust 引擎)"]
+    W1 --> F1["Function: handler"]
+    W2["Worker B: Queue/Schedule"] --> F2["Function: process"]
+    W3["Worker C: Agent 接入"] --> F3["Function: decide"]
+    Cat --> F1
+    Cat --> F2
+    F1 --> Console["iii-console<br/>自动 trace / 可观测"]
+    F2 --> Console
+    F3 --> Console
+    Engine["Rust 引擎 + 多语言 SDK<br/>(Node/Python/Rust, 其余待核验)"] -.托管.-> W1
+    Engine -.托管.-> W2
+    Engine -.托管.-> W3
+    License["外部边界: Elastic License 2.0<br/>商业使用受限"] -.约束.-> Engine
 ```
 
 **架构师启发：**

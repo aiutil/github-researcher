@@ -44,8 +44,38 @@ url: "https://github.com/Andyyyy64/whichllm"
 6. **多模式推荐:** 默认激进（含 partial RAM offload），`--gpu-only --speed usable --vram-headroom 1GB` 保守模式
 7. **丰富工作流:** `whichllm upgrade` 对比升级候选、`whichllm plan` 查找所需 GPU、`whichllm run` 一键启动聊天、`--markdown` 输出可粘贴格式
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | whichllm 是位于 HuggingFace / Ollama / lm-studio 等模型与运行时之上的 Python 编排层，自身不实现推理，只做硬件探测 + 基准聚合 + 选型推荐，并通过 `whichllm run` 委托给 Ollama/lm.cpp 等运行时 | 档案未给出 CLI 子命令到进程间调用的具体协议；入口边界仅来自 `uvx`、`pip`、`Homebrew` 三种分发方式的描述 |
+| 主路径 | 硬件探测（GPU/CPU/RAM/VRAM）→ 五源基准融合（LiveBench/Artificial Analysis/Aider/Chatbot Arena/Open LLM Leaderboard）→ 架构感知 VRAM 估算（权重 + GQA KV Cache + 激活 + 开销，区分 MoE active/total）→ 证据分级排序 → 选型输出或 `run` 启动会话 | 排序权重、超时降权算法、KV Cache 系数与 MoE 估算公式均未在档案中给出具体数值或伪代码 |
+| 关键权衡 | 数据时效性与覆盖广度的权衡：聚合多源可缓解单源偏差但放大系统基准偏差，且 HuggingFace API 实时依赖与冻结缓存离线模式构成可靠 / 时效取舍；MoE 的 active vs total 参数区分是另一条质量/精度张力 | 档案承认"多源融合不能完全消除系统性偏差"，未披露对各基准权重设置或对 MoE 模型是否做过实测校验 |
+| 最小 PoC | 在一台已知配置的开发机上，分别用默认模式与 `--gpu-only --speed usable --vram-headroom 1GB` 保守模式运行一次 `--markdown` 导出，比对推荐 Top-N 的 VRAM 占用；再用 `--gpu "RTX 4090"` 模拟一张未持有的卡，确认"买卡前模拟"流程闭环 | 何时触发现实设备 vs 模拟设备的逻辑、`upgrade`/`plan` 子命令的输入输出契约档案未提供，须以源码核验 |
+
 ## 架构启发
 whichllm 的核心启发是 **"不信任数据，但利用数据"** 的工程哲学。在 AI 工具生态中，数据来源（基准分数、模型信息）常不可靠或有意操纵。whichllm 不回避这一问题，而是建立一套**置信度评估体系**——给每个数据点打标签，让用户自行判断。这种思路适用于更广泛场景：任何依赖外部数据的 AI 工具（模型评测、Agent 评估、推荐系统）都应考虑引入类似的证据分级机制。另一个启发是 **CLI 工具的极致易用性范式**：`uvx` 零安装 + Homebrew + pip 多渠道分发，让"一条命令解决复杂问题"成为标准。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者 上游脚本] --> I[入口与身份边界 uvx pip Homebrew]
+    I --> C[whichllm CLI 编排器 Python]
+    C --> H[硬件探测 GPU CPU RAM VRAM]
+    C --> B[基准聚合 LiveBench AA Aider Arena OLLM 待核验]
+    B --> E[证据分级评分 direct variant base interpolated self reported]
+    H --> V[VRAM 估算 权重 GQA KV Cache 激活 开销 MoE active vs total 待核验]
+    E --> R[推荐 Top N 默认或保守模式]
+    V --> R
+    R --> O[输出 终端 或 Markdown]
+    R --> S[whichllm run 委托 Ollama llama.cpp 会话]
+    O --> X[外部边界 HF API 实时 或 冻结缓存离线]
+    C --> X
+    C --> A[审计 日志 子命令 upgrade plan run 等 待核验]
+```
 
 ## 定位判断
 **工具型（入口级）。** whichllm 是本地 LLM 工具链的"入口"——用户决策链的起点。与 Ollama（运行时）、llama.cpp（推理引擎）、LM Studio（GUI）互补而非竞争。定位精准但壁垒不高：核心逻辑（硬件检测 + VRAM 估算 + 基准排名）可被现有平台内建。关键问题是被吸收还是保持独立——若保持独立，它可能成为本地 LLM 领域的"GPU Benchmark"式标准工具。

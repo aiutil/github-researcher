@@ -6,7 +6,7 @@
     <title>Club 3090 | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,7 +47,39 @@
 <li><strong>版本化管理</strong>：从 v7.65 快速迭代到 v7.69，每个版本都有明确的变更记录</li>
 <li><strong>Cliff 2 Closure Recipes</strong>：Balanced MTP + Max-context 的量化策略</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>消费级 GPU（RTX 3090）本地 LLM 部署的 recipe 集，非通用框架；入口为 GitHub 仓库，输出为可复用的 Shell 配置，配套三类推理引擎（vLLM、llama.cpp、SGLang）</td>
+<td>依据语言=Shell、tags 列表与定位描述；具体目录结构、脚本数量、CI/CD 未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者按 recipe 选择引擎 → 加载针对 RTX 3090 调优的量化与 KV Cache 配置 → 在 24GB（单卡）或 48GB（双卡）VRAM 上运行 Qwen3.6-27B</td>
+<td>档案明确提到 1×/2× 3090 配置与"Cliff 2 Closure"量化策略；具体量化位宽、上下文长度参数未提供</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多引擎可对比性 vs recipe 碎片化；极致硬件/模型优化 vs 硬件/模型绑定导致的复用面窄；社区活跃度 vs bus factor=1 的可持续性</td>
+<td>档案明示硬件绑定、模型绑定、单一维护者三点局限</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单卡 RTX 3090 上挑选一份 recipe（如 v7.69 中 Qwen3.6-27B 的 llama.cpp 配置），按仓库说明拉取并加载，验证 24GB VRAM 下的推理吞吐与可复现性，作为评估入口</td>
+<td>具体 recipe 文件、量化档位、依赖版本需在仓库源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><code>用户需求：在消费级硬件上运行大模型
          ↓
 传统方案：需要 ML 工程师逐个调优
@@ -56,16 +88,33 @@ Club 3090 方案：Recipe As Code
          ↓
 启示：部署知识可以（也应该）被版本化管理</code></p>
 <p>对架构师的启发是：企业内部的 LLM 部署知识也应该沉淀为可版本化、可复用的 recipe，而不是散落在 Wiki 和 Slack 消息中。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统] --> I[入口与身份边界:GitHub 仓库与 Recipe 索引 待核验]
+  I --> C[项目编排与运行时:Shell Recipe 集]
+  C --> M1[vLLM 推理配置]
+  C --> M2[llama.cpp 推理配置]
+  C --> M3[SGLang 推理配置]
+  C --> T[工具与外部系统:RTX 3090 1x 或 2x 硬件边界]
+  C --> S[会话 状态 审计:Recipe 版本化 v7.65 至 v7.69]
+  M1 --> Q[模型:Qwen3.6-27B 量化与 KV Cache 配置 待核验]
+  M2 --> Q
+  M3 --> Q
+  T --> Q
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>实用工具。面向 AI 爱好者和独立开发者的 LLM 部署 recipe 集。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>硬件绑定</strong>：极度依赖 RTX 3090，受众天然有限</li>
 <li><strong>模型绑定</strong>：当前主打 Qwen3.6-27B，如果模型更新导致配置失效，维护压力大</li>
 <li><strong>一人维护</strong>：主要贡献者只有 @noonghunna，bus factor = 1</li>
 <li><strong>绝对 Star 不高</strong>：354 stars 说明仍处于早期社区阶段</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Ollama</strong>：开箱即用的 LLM 运行时，更通用但不针对特定硬件优化</li>
 <li><strong>vLLM</strong>：高性能推理引擎，Club 3090 是其消费者级配置集</li>
@@ -73,9 +122,9 @@ Club 3090 方案：Recipe As Code
 <li><strong>LocalAI</strong>：一体化本地 AI 引擎，更偏平台方向</li>
 </ul>
 <p>Club 3090 的差异化在于"特定硬件 + 特定模型"的极致优化，而非通用方案。</p>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>有限跟踪</strong>。作为本地 LLM 部署的 recipe 参考，关注其引擎对比结果和模型覆盖扩展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否扩展到 4090、5090 等其他消费级 GPU</li>
 <li>是否覆盖更多模型（DeepSeek、GLM 等）</li>

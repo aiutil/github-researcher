@@ -6,7 +6,7 @@
     <title>datawhalechina/self-llm | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -59,15 +59,60 @@
 <li><strong>Jupyter 可复现</strong>：每步都有可运行代码</li>
 <li><strong>中国环境优化</strong>：考虑国内网络/镜像源等问题</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目是 Jupyter Notebook 教程合集，覆盖 Llama3/ChatGLM/InternLM2/Qwen/Gemma 等模型的部署、微调与多模态延伸，无独立运行时边界</td>
+<td>边界以"Notebook + 模型权重 + 训练/推理脚本"组合描述；具体硬件需求、镜像源、依赖版本未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学习者沿"环境搭建 → 模型下载/部署 → LoRA 或全参数微调 → 推理/应用"线性推进，单条 Notebook 即端到端</td>
+<td>路径来自"全链路覆盖"与"Linux 环境完整流程"描述；具体训练框架、加速库、推理引擎未指明</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>教程广度（多模型、多方式）与每条 Notebook 的原理深度之间取舍明显；社区维护可持续性与模型迭代速度存在张力</td>
+<td>判断基于"覆盖全参数+LoRA""偏操作，底层原理覆盖较少""时效性压力"三条档案描述</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单卡 GPU 环境下跑通一条 Llama3 或 Qwen 的 LoRA 微调 Notebook，验证中文数据集下的可复现性，再扩展到 InternLM2 等其他模型</td>
+<td>建议依据"Jupyter 可复现""每步都有可运行代码""中国环境优化"，硬件型号与最低配置未列明</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>教程即基础设施</strong>：高质量教程是大模型普及的关键基础设施</li>
 <li><strong>中文技术社区力量</strong>：Datawhale 等社区在技术传播中起关键作用</li>
 <li><strong>可复现 &gt; 理论</strong>：开发者需要可运行的代码而非理论讲解</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[学习者或中文开发者] --> I[Jupyter Notebook 教程入口 待核验: 章节导航与目录结构]
+    I --> E[环境搭建 国内镜像源与依赖 待核验: 具体硬件与驱动]
+    E --> D[模型下载与部署 Llama3 / Qwen / ChatGLM / InternLM2 / Gemma]
+    D --> F[微调训练 LoRA 或全参数微调 待核验: 训练框架与加速库]
+    F --> R[推理与应用 多模态扩展 待核验: 推理引擎与服务化方式]
+    R --> S[学习者产出与社区反馈 Issues / PR / Star]
+    S -.维护压力.-> I
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>头部资源型项目</strong>。中文开源大模型教程的事实标准。对推动中国开发者使用开源大模型有重要意义。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>时效性压力</strong>：新模型/新方法层出不穷，维护更新压力大</li>
 <li><strong>环境差异</strong>：不同硬件（GPU 型号）环境可能有差异</li>
@@ -75,16 +120,16 @@
 <li><strong>竞品增多</strong>：越来越多的中文大模型教程涌现</li>
 <li><strong>社区维护可持续性</strong>：依赖志愿者贡献</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs liguodongiot/llm-action</strong>：llm-action 更偏原理+工程，self-llm 更偏操作部署</li>
 <li><strong>vs Hugging Face 课程</strong>：HF 课程英文且偏理论，self-llm 中文且偏实操</li>
 <li><strong>vs魔搭社区教程</strong>：魔搭偏自家平台，self-llm 更通用</li>
 <li><strong>vs ModelScope 文档</strong>：平台文档 vs 社区教程</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪（中文大模型开发者）。</strong> 如果在中国环境做开源大模型部署/微调，这是最好的入门和参考资源。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>对最新模型（Llama4/Qwen3 等）的覆盖速度</li>
 <li>是否增加 Agent/RAG 等应用层教程</li>

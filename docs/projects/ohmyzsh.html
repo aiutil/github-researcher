@@ -6,7 +6,7 @@
     <title>ohmyzsh/ohmyzsh | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,74 @@
 <li><strong>completions 增强:</strong> 集成大量命令行工具的 Tab 补全规则</li>
 <li><strong>跨平台:</strong> macOS / Linux / WSL / BSD 全平台支持</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本质是 Zsh 脚本集合 + 一个加载器（<code>oh-my-zsh.sh</code>），由 <code>plugins/</code> 目录约定承载扩展点；运行边界绑定宿主 Zsh 与 OS 文件系统，配置入口为 <code>$ZSH_CUSTOM</code>。</td>
+<td>档案明确"目录即插件"与 <code>$ZSH_CUSTOM</code> 覆盖机制；未列出具体 CLI 命令签名或 IPC 接口。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者/CI → 调用 Zsh 入口 → <code>oh-my-zsh.sh</code> 加载器按需 source 主题与插件 → 接管 PROMPT/RPROMPT 与补全 → 输出至终端宿主。</td>
+<td>档案描述了按需/lazy 加载与 PROMPT 主题渲染路径；未提供具体 source 顺序或优先级策略。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>易用性、跨平台覆盖、插件生态广度 vs. 启动延迟、Zsh 单语言绑定、外部插件供应链（Git 拉取）风险。</td>
+<td>档案明示"启动变慢（数百毫秒到数秒）"与"仅支持 Zsh"；未给出实测数据或具体插件审计机制。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS/Linux/WSL 任一宿主安装 Zsh + Oh My Zsh，仅启用 1 个主题与 1 个插件，记录启动时间、内存与交互回归，再评估是否扩展 CI 接入。</td>
+<td>档案支持该最小验证范围；未声明 SLO、安全策略或离线部署形态，须另行核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Oh My Zsh 的架构极简——本质是一个 Zsh 脚本集合 + 一个加载器（<code>oh-my-zsh.sh</code>）。其设计哲学是"约定优于代码"：插件只需放在 <code>plugins/</code> 目录下，包含 <code>_plugin_name</code> 补全文件和 <code>plugin_name.plugin.zsh</code> 脚本即可被自动识别。这种"目录即插件"的模式简单但有效，降低了贡献门槛。其 <code>$ZSH_CUSTOM</code> 机制允许用户在不修改核心代码的情况下覆盖和扩展。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者 CI 或上游应用 待核验具体调用形态] --> Z[Zsh 入口]
+    Z --> L[oh-my-zsh.sh 加载器]
+    L --> P[plugins 目录 约定式扩展点]
+    L --> T[主题 PROMPT RPROMPT 渲染 待核验异步机制]
+    P -. 覆盖与扩展 .-> CUST[ZSH_CUSTOM 用户覆盖层]
+    L --> OS[宿主运行时 macOS Linux WSL BSD 待核验边界]
+    L --> R[自更新与远程拉取 供应链风险边界]
+    T --> TERM[终端输出]
+    P --> TERM
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型项目（成熟期）。</strong> Oh My Zsh 是一个高度成熟的开发者工具，功能已趋稳定，迭代主要是新插件和兼容性修复。它不追求技术前沿，而是追求"稳定可靠、开箱即用"。在 AI 时代，它依然有存在价值——终端是开发者最常用的界面，而 Oh My Zsh 让这个界面更好用。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>启动速度:</strong> 加载大量插件时 Zsh 启动可能变慢（数百毫秒到数秒），影响体验</li>
 <li><strong>Shell 局限:</strong> 仅支持 Zsh，不支持 Fish / Nushell 等现代 Shell</li>
 <li><strong>现代替代:</strong> Starship（跨 Shell）、Fish（开箱即用）正在分流用户</li>
 <li><strong>维护放缓:</strong> 核心功能已固化，新功能开发节奏明显放缓</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Starship:</strong> Starship 跨 Shell、Rust 实现、更快；Oh My Zsh 更成熟、插件更多</li>
 <li><strong>vs Fish Shell:</strong> Fish 自带智能补全和语法高亮，无需框架；Oh My Zsh 需额外安装但更灵活</li>
 <li><strong>vs zinit / antidote:</strong> 新一代 Zsh 插件管理器，更快的并行加载；Oh My Zsh 更简单但更慢</li>
 <li><strong>vs prezto:</strong> Oh My Zsh 的早期 fork，更注重性能，但社区更小</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> Oh My Zsh 已进入维护成熟期，重大变化概率低。值得偶尔关注的是：是否有性能优化（启动速度）、是否适配新的开发工作流（如 AI CLI 工具的集成插件）、以及与现代 Shell（Nushell）的关系。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>启动性能优化进展（是否引入并行加载或延迟加载机制）</li>
 <li>AI 开发工具相关插件（如 Claude Code、Cursor 的终端集成）</li>

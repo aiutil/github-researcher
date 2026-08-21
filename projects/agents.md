@@ -41,8 +41,41 @@ wshobson/agents 的热度是 **"Agent 生态碎片化刚需 × 六大平台全�
 5. **多 Agent 编排（orchestration）:** Topics 含 orchestration，可能含多 Agent 协作的预设编排
 6. **社区贡献友好:** MIT 许可 + 结构化贡献模板，降低提交新插件门槛
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 跨六平台 Coding Agent 的技能/规则/插件聚合分发层，仓库是适配产物而非运行时 | 仅基于档案描述的六大平台适配、Markdown 驱动、MCP 集成；具体适配层实现、插件目录结构、版本管理未在档案中给出 |
+| 主路径 | 贡献者插件 → 适配/统一层 → 各 Coding Agent Harness 调用 → 可选 MCP 工具接入 | 主路径为档案语义抽象；适配层是否独立服务进程、CI 校验流程、插件安装机制均待核验 |
+| 关键权衡 | 跨平台覆盖广度 vs 各平台格式演进带来的同步维护成本 vs 插件质量与安全治理 | 档案明示维护成本、质量参差、安全风险三点权衡；治理流程（评审、签名、扫描）是否落地未证实 |
+| 最小 PoC | 在单 Agent Harness（建议 Claude Code 或 Cursor）上安装 1 个非破坏性技能，开启审计日志，验证一次端到端调用后再扩展到第二平台 | PoC 范围、退出路径由档案"先单渠道、最小权限、可审计"建议推导；具体技能列表、SLO 指标待核验 |
+
 ## 架构启发
 wshobson/agents 的核心启发是 **"Agent 能力应该跨平台可移植，正如代码库跨 runtime"**。当前每个 Coding Agent 平台都在建自己的封闭插件生态（类比早期移动应用的 iOS/Android 割裂），但这违背开发者利益——没人想为六个平台写六遍同一功能。wshobson/agents 尝试做"Agent 插件的跨平台标准层"，类似 React Native 之于移动开发。更深层的启发是：**插件市场类项目的价值在于网络效应（贡献者×用户）而非技术复杂度**。38k stars + 4k forks 的结构，说明它已初步形成飞轮。能否持续，取决于能否在六大平台格式分化中维持兼容。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  Contributor[社区贡献者] --> Repo[wshobson agents 仓库<br/>Markdown 技能与插件集合]
+  Repo --> Adapter[跨平台适配层<br/>六 Harness 格式映射 待核验]
+  Adapter --> CC[Claude Code]
+  Adapter --> CX[Codex CLI]
+  Adapter --> CUR[Cursor]
+  Adapter --> OC[OpenCode]
+  Adapter --> COP[GitHub Copilot]
+  Adapter --> GC[Gemini CLI]
+  CC --> Runtime[用户 IDE 与终端 Harness]
+  CX --> Runtime
+  CUR --> Runtime
+  OC --> Runtime
+  COP --> Runtime
+  GC --> Runtime
+  Runtime -.可选 MCP 集成.-> MCP[MCP 工具与外部系统]
+  Runtime --> Risk[质量与安全风险边界<br/>Prompt Injection 治理 待核验]
+```
 
 ## 定位判断
 **平台候选型项目（Agent 插件分发中心）。** wshobson/agents 不仅是工具集合，更试图成为 Agent 生态的"插件分发枢纽"——类似 npm 之于 Node 包。若成功，它会成为开发者获取 Agent 能力的默认入口，具有平台级价值。38k stars + 4k forks 已显示网络效应雏形。但"平台化"取决于一个关键问题：跨平台兼容能否持续——若六大 Agent 格式持续分化，维护成本可能压垮项目。目前定位是"最有影响力的社区 Agent 插件市场"，向平台演进是合理路径。

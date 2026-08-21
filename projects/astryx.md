@@ -34,6 +34,15 @@ Meta 内部 8 年打磨的最大设计系统开源——150+ 组件、StyleX 构
 5. **"Guidance over enforcement"**——组件提供能力而非设护栏，传入值就渲染，不做对抗
 6. **7 套预制主题**——neutral/butter/chocolate/matcha/stone/gothic/y2k
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 入口为 React 项目；核心由 @astryxdesign/cli 统一编排，产出 150+ 组件与 7 套主题，样式层基于 StyleX 但对消费者透明 | 组件数量、主题清单、CLI 名称来自档案；StyleX 角色"对消费者透明"为档案原话 |
+| 主路径 | 消费方安装 → CLI 提供组件/模板/codemods/主题 → 组件源码可通过 swizzle 弹出到项目 → 主题通过 CSS 自定义属性覆盖 | swizzle、codemods、CSS 自定义属性覆盖、CLI 子命令清单均见档案；运行时行为未核验 |
+| 关键权衡 | "Guidance over enforcement"：组件不做输入护栏以最大化组合与 Agent 可预测性，代价是把校验成本转嫁给消费方 | 档案明确指出"传入值就渲染，不做对抗"；风险后果未在档案中给出量化数据 |
+| 最小 PoC | 在单一 React 应用中通过 CLI 引入若干组件，验证：(1) Tailwind/CSS Modules/原生 CSS 三种覆盖路径、(2) swizzle 后源码可独立演进、(3) 7 套主题切换成本 | 上述能力均在档案中声明；具体 API、版本兼容与构建链路在档案外，须以源码/文档核验 |
+
 ## 架构启发
 Astryx 的"agent-ready"不是噱头。它从三个维度统一考虑 AI 和人类：
 1. **API 设计**——一致的命名/prop/组合规则，AI 学会几个组件就能预测其他
@@ -41,6 +50,26 @@ Astryx 的"agent-ready"不是噱头。它从三个维度统一考虑 AI 和人�
 3. **文档结构**——组件文档与代码同构，AI 和人查到的是同一份参考
 
 这种"One system for humans and AI"的设计哲学值得所有组件库学习。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[消费方 React 应用] --> B[astryxdesign/cli]
+    B --> C[150+ 组件库]
+    B --> D[7 套主题 neutral/butter/chocolate/matcha/stone/gothic/y2k]
+    C --> E[StyleX 样式层 对消费者透明]
+    A --> F[CSS 自定义属性覆盖]
+    F --> D
+    C --> G[swizzle 弹出的源码副本 待核验]
+    H[AI Agent] --> A
+    H --> B
+    subgraph 待核验边界
+        G
+    end
+```
 
 ## 定位判断
 平台候选。有潜力成为 Agent 时代前端开发的默认组件库之一。与 shadcn/ui 形成竞争——shadcn 是"复制粘贴"哲学，Astryx 是"安装+弹出"哲学。

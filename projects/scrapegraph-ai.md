@@ -37,8 +37,33 @@ url: "https://github.com/ScrapeGraphAI/Scrapegraph-ai"
 - 反爬应对：内置 Playwright 支持，处理 JavaScript 渲染页面
 - 管道化设计：single scrape / smart scraper / search scraper / script generator
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | ScrapeGraphAI 是位于"入口请求↔外部模型/工具"之间的编排层，向上承接使用者或上游管道（API/CLI），向下对接 LLM 提供商与 Playwright 等渲染/抓取工具，不自建采集端到端基础设施 | 入口与边界由标签 ai-crawler/ai-scraping/data-extraction 与 Firecrawl 替代物定位推断；具体鉴权、部署形态未在档案中证实 |
+| 主路径 | 请求 → 入口与身份 → 编排/运行时（含 single/smart/search/script 模式）→ LLM 语义解析 + Playwright 渲染 → Markdown/JSON 输出落回调用方 | 图式爬取与管道化模式来自档案描述；图节点数据结构、会话状态、并发模型未在档案中证实，标"待核验" |
+| 关键权衡 | 扩展性与抗页面变更能力（LLM 替代 CSS/XPath）vs LLM 调用成本、推理延迟、幻觉风险与 ToS/反爬对抗——本质是用算力换脆弱规则的维护成本 | 档案明确列出成本、速度、准确性、反爬、法律五项风险；具体的速率限制、缓存、重试策略未在档案中证实 |
+| 最小 PoC | 在单页/单一模型供应商（如 OpenAI 或本地 Ollama）下，对一个静态站点跑 smart scraper，验收：抽取准确率、成本/页、延迟、Playwright 是否必需、可观测日志 | 档案给出管道模式与多 LLM、Playwright 支持；但 token 用量基准、模型路由策略、并发上限未在档案中证实 |
+
 ## 架构启发
 ScrapeGraphAI 的核心启发是"用 AI 替代脆弱的规则系统"。传统爬虫用 CSS 选择器/XPath 定义数据位置——这些规则对页面变化极度敏感。LLM 理解页面语义后，数据提取从"位置匹配"升级为"语义理解"，鲁棒性大幅提升。对架构师的启发是：**当规则系统的维护成本超过其执行成本时，应该用 AI 替代规则层**。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统 RAG 管道] --> I[入口与身份边界 待核鉴权方式]
+    I --> C[ScrapeGraphAI 编排运行时 single smart search script generator]
+    C --> M[LLM 推理服务 OpenAI Anthropic Ollama 待核路由与缓存]
+    C --> P[Playwright 浏览器渲染 处理 JS 页面]
+    C --> O[Markdown JSON 输出 供 RAG 消费]
+    C --> R[风险与状态边界 成本 延迟 幻觉 反爬 ToS 待核可观测性]
+    M --> C
+    P --> C
+```
 
 ## 定位判断
 **工具型（数据采集基础设施）。** 精准定位为"AI 驱动的爬虫框架"，处于数据管道的采集端。不是平台，但作为 RAG/数据团队的核心工具有长期价值。定位为"开源版 Firecrawl"。

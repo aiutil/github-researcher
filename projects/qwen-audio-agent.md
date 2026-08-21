@@ -37,6 +37,15 @@ url: "https://github.com/QwenAudio/qwen-audio-agent"
 3. **ACP 多 harness 编排**：后台 Agent 经 Agent Communication Protocol 接入 OpenCode（原生 ACP/五星）、OpenClaw（内置 ACP 桥接）、Qoder/Kimi Code（原生 ACP）、Hermes/CodeBuddy/Codex/Claude Code（部分外部 ACP 适配/四星）。同一语音助理可调度多种 coding agent。
 4. **多端形态**：WebUI、终端 TUI、macOS 桌面悬浮球；本地用户档案与跨会话个人记忆。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | qwen-audio-agent 是一个前台语音运行时与后台 ACP 编排层的组合，前台负责全双工语音与打断，后台经 ACP 接入 9 个 coding harness；它不自建 coding 能力，也不替代底层 harness。 | 边界判定基于档案"前台/后台解耦 + ACP 多 harness"叙述以及 stars/license/CI/npm 等信号，未做源码审计；具体网络端口、鉴权方式、持久化存储未在档案中证实。 |
+| 主路径 | 用户语音 → 全双工语音运行时（VAD/打断/Echo）→ 编排分流 → 直接答 vs. 后台 Agent（ACP）→ 结果回到前台会话。 | 路径来自档案"前台对话与后台任务并行"与架构启发图；ACP 协议字段、消息格式、回写机制未公开。 |
+| 关键权衡 | 扩展性（接入多 harness/多端形态） vs. 供应商耦合（依赖 DashScope/百炼） 与 可观测性（v1.0.0 仅 3 天、9 接入成熟度不一）。 | 权衡点直接取自档案"风险/局限"小节；语音延迟、打断准确率、嘈杂环境鲁棒性均标注"待独立验证"。 |
+| 最小 PoC | 在 macOS/WebUI 单一入口、单一 harness（如 OpenCode 原生 ACP 五星）、最小工具权限与可审计日志下，验证双工延迟、打断行为与后台任务回写；验收项含安全、成本、SLO、退出路径。 | PoC 设计遵循档案"采用建议"与"后续观察点"；不预设具体协议细节或部署形态。 |
+
 ## 架构启发
 核心启发是**"语音层与任务执行层解耦，经 ACP 桥接"**。qwen-audio-agent 不自建 coding 能力，而是把"语音在场"做成前台，把"任务执行"委托给后台已有的 harness——前台是 voice runtime，后台是多 harness 编排。这与 qm（把团队协同做前台、harness 做后台）是同一个"应用层编排底层 harness"模式的语音变体。ACP 作为协议层让前后台解耦，使语音层可独立演进。
 
@@ -47,6 +56,27 @@ url: "https://github.com/QwenAudio/qwen-audio-agent"
                                       ├── OpenCode（原生 ACP）
                                       ├── Claude Code（外部适配）
                                       └── ...任务结果回到前台对话
+```
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者语音输入] --> V[全双工语音运行时: VAD/打断/Echo 待核验]
+    V --> R[编排与运行时: 前台对话]
+    R --> D{能直接回答?}
+    D -- 是 --> A[立即语音回复]
+    D -- 否 --> P[ACP 协议层 待核验]
+    P --> H1[OpenCode 原生ACP 五星]
+    P --> H2[Claude Code 外部ACP适配 四星]
+    P --> H3[其他harness Codex/Hermes/Kimi Code 等 待核验]
+    H1 --> R
+    H2 --> R
+    H3 --> R
+    R --> DS[依赖 DashScope/百炼 API Key 待核验]
+    R --> S[会话状态/本地档案/审计 待核验]
 ```
 
 ## 定位判断

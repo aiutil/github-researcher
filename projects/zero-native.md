@@ -36,25 +36,57 @@ Electron 太重（打包 Chromium），Tauri 太复杂（Rust 学习曲线），
 3. **快速原生重建**：Zig 编译速度快，原生层修改后秒级重编译
 4. **WebViewSource 抽象**：支持内联 HTML、URL 或打包前端资源
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Zero Native 由 Zig 原生壳（平台 SDK 调用 + 安全策略边界）承载不可信 WebView，并按 macOS WKWebView / Linux WebKitGTK / Windows CEF 三套引擎拆分子边界 | 边界划分依据项目标签（webview/native/cef）与"双引擎策略"陈述；具体 IPC 协议、权限清单与平台 SDK 覆盖面未在档案中给出 |
+| 主路径 | Web 前端（Next.js/React/Svelte）通过 WebView 渲染层发起调用 → Zig Shell 的 Bridge/Event Loop 执行显式策略 → 落入平台 API 或原生能力 | 路径基于档案描述的"opt-in 原生命令 + WebViewSource 抽象 + 快速原生重建"拼接；调用协议、序列化格式、桥接 API 集合待核验 |
+| 关键权衡 | 在 Electron（全 Chromium，重）与 Tauri（Rust + 系统 WebView，成曲线）之间，押注 Zig 的 C 互操作 + 编译速度换取"轻量且能力更宽"，代价是 Zig 生态与 pre-release API 不稳定 | 权衡依据项目定位文与"Zig 而非 Rust"卖点；性能/内存对比数字未给出 |
+| 最小 PoC | 取一个非关键桌面工作负载，启用系统 WebView 路径（macOS/Linux）做打包体积、启动耗时与权限策略验收；Windows CEF 路径仅作旁路验证 | 验收项限于档案中已声明的能力（系统 WebView 优先、CEF 待完善）；不涉及未声明的部署、SLO 与生产安全声明 |
+
 ## 架构启发
 - Web UI + 轻量原生壳的架构模式正在被重新定义
 - Zig 在系统编程领域的定位：不是替代 Rust，而是替代 C 的场景中更具竞争力
 - Vercel 的技术版图从 Web 延伸到桌面，全栈开发的"全"在扩大
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    A[Zero Native] --> B[Zig Shell]
-    A --> C[Web Frontend]
-    B --> D[Runtime]
-    B --> E[Platform APIs]
-    C --> F[Next.js / React / Svelte]
-    D --> G[Event Loop + Bridge]
-    E --> H[macOS WKWebView]
-    E --> I[Linux WebKitGTK]
-    E --> J[Windows CEF]
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style C fill:#e8f5e9
+flowchart LR
+  subgraph Frontend["Web 前端层（待核验具体框架）"]
+    FE["Next.js / React / Svelte 等 UI"]
+  end
+  subgraph WebView["WebView 渲染层（不可信，按 OS 分引擎）"]
+    WVmac["macOS WKWebView"]
+    WVlin["Linux WebKitGTK"]
+    WVcef["Windows CEF（成熟度待核验）"]
+  end
+  subgraph Shell["Zig 原生壳"]
+    Source["WebViewSource 抽象<br/>（内联 HTML / URL / 打包资源，待核验）"]
+    Bridge["Event Loop + Bridge"]
+    Policy["opt-in 原生命令 / 权限 / 导航 / 外链策略"]
+    Native["Zig → C 互操作 → 平台 SDK 与原生库（待核验覆盖面）"]
+  end
+  subgraph Risk["状态 / 风险边界"]
+    R1["Pre-release：API 不稳定"]
+    R2["Zig 生态与 CEF 打包成熟度"]
+    R3["Vercel Labs 项目存续风险"]
+  end
+  FE --> Source
+  Source --> WVmac
+  Source --> WVlin
+  Source --> WVcef
+  WVmac --> Bridge
+  WVlin --> Bridge
+  WVcef -. "CEF 路径待核验" .-> Bridge
+  Bridge --> Policy
+  Policy --> Native
+  R1 -.影响.-> Shell
+  R2 -.影响.-> WVcef
+  R3 -.影响.-> Shell
 ```
 
 ## 定位判断

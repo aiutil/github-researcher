@@ -6,7 +6,7 @@
     <title>OpenMontage | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -60,36 +60,62 @@
 <li><strong>AI Coding Assistant 作为执行引擎</strong>：Claude Code/Codex 作为"工厂工人"执行生产任务</li>
 <li><strong>Agentic 编排</strong>：不是脚本式自动化，而是 Agent 自主决策执行路径</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口渠道、模型供应商、工具/数据源之间的编排层</td>
+<td>基于项目分类、语言（Python）、标签（agentic-video, content-production, pipeline, agent-skills, video, automation）及本档案引用的公开资料做的架构抽象，不替代源码审计。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求 → 编排/运行时 → 模型与工具调用 → 会话或状态回写</td>
+<td>图中组件表达职责与边界；具体协议、部署形态和持久化实现须以项目源码/文档核验。</td>
+</tr>
+<tr>
+<td>核心权衡</td>
+<td>扩展速度与权限、可观测性、供应商耦合之间的平衡</td>
+<td>这是技术决策观察，不将 GitHub 热度或评分当成生产可用性证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>先在单一渠道、最小工具权限和可审计日志下验证，再扩大接入面</td>
+<td>先做最小 PoC，并把安全、成本、SLO 与退出路径作为验收项。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>OpenMontage 的核心架构思想是<strong>"将领域工作流编码为 Agent Skills"</strong>：</p>
-<pre class="mermaid">graph TD
-    A[Video Request] --> B[Pipeline Router]
-    B --> C[Pipeline: Short Drama]
-    B --> D[Pipeline: Tutorial]
-    B --> E[Pipeline: News]
-
-    C --> F[Agent Orchestrator]
-    F --> G[52 Tools Pool]
-    F --> H[500+ Skills Library]
-
-    G --> I[Tool: Cut]
-    G --> J[Tool: Transition]
-    G --> K[Tool: Voiceover]
-    G --> L[Tool: Subtitle]
-
-    H --> M[Skill: Pacing Rules]
-    H --> N[Skill: Color Grading]
-    H --> O[Skill: Audio Mix]
-
-    I --> P[Final Video Output]
-    J --> P
-    K --> P
-    L --> P
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">graph LR
+  A[Video Request] --> B[Pipeline Router]
+  B --> C[Agent Orchestrator]
+  C --> D[500+ Skills Library]
+  C --> E[52 Tools Pool]
+  D --> F[Render Engine: Remotion or HyperFrames]
+  E --> F
+  E --> G[TTS: Piper 离线路径]
+  E --> H[素材源: Archive.org / NASA / Wikimedia 待核验]
+  F --> I[Final Video Output]
+  G --> I
+  H --> I
+  C -.权限/可观测性边界.-> J[审计日志与工具调用配额 待核验]
 </pre>
 <p>这个模式可以迁移到任何领域——关键是把领域最佳实践拆解为 tool（原子能力）+ skill（编排知识）。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>OpenMontage 是<strong>Agentic 内容生产</strong>领域的先行者。它不是视频编辑器（不能替代 Premiere），而是<strong>视频生产的 Agent 编排层</strong>——类比：OpenMontage 之于视频生产，就像 n8n 之于工作流自动化。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>视频质量未经验证</strong>：star 数高但缺乏高质量输出案例的广泛验证</li>
 <li><strong>500+ skills 的可维护性</strong>：大量 skill 文档的维护成本高，且视频制作最佳实践在不断进化</li>
@@ -97,16 +123,16 @@
 <li><strong>营销标签风险</strong>："世界首个"标签需要更多实际验证</li>
 <li><strong>内容创作的主观性</strong>：视频制作不是纯流程化工作，创意判断很难完全 Agent 化</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>Premiere / DaVinci Resolve</strong>：传统专业视频编辑器——完全不同的定位</li>
 <li><strong>Runway / Pika</strong>：AI 视频生成——单点能力，OpenMontage 是编排层</li>
 <li><strong>n8n / Temporal</strong>：通用工作流编排——OpenMontage 是垂直化的视频领域编排</li>
 <li><strong>Palmier-Pro</strong>（4.9K macOS 视频编辑器）：更偏桌面工具</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，但有保留。</strong> OpenMontage 的 Agent 编排架构有跨领域参考价值，但作为视频生产工具本身需要更多质量验证。重点跟踪的是它的"tool + skill 编排"模式是否可迁移。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>实际视频输出质量——是否有令人信服的生产级案例</li>
 <li>500+ skills 的演进——是持续增长还是逐渐废弃</li>

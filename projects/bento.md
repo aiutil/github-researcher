@@ -39,18 +39,43 @@ Bento 让文档回归「单文件、永久可读、本地优先」——2026 年
 5. **签名自更新**：发布 ECDSA 签名，应用内提示更新；更新写入新文件、旧文件保留为回滚，服务器永不触碰文档。
 6. **无依赖图表引擎**：自研 bar/line/pie/scatter，演示时实时绘制（tooltip/缩放/数据 morph）。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单个 `.bento.html`（约 560KB）即整个系统：JSON 数据块 + 编辑器/播放器/协作逻辑内嵌于文件，无独立后端服务（盲中继 relay 仅转发密文）。 | 边界依赖 File System Access API；非 Chromium 浏览器降级为下载；relay 是否"可读源码验证"未给出具体协议细节。 |
+| 主路径 | 用户双击 `.bento.html` → 浏览器加载文件 → JS 解析顶部 JSON → 编辑/播放/Morph → 保存时用 FS Access API 重写自身（旧文件留作回滚）；协作走 AES-GCM + 自研 CRDT 经盲中继同步。 | "自研 CRDT"为档案口径；字符级合并算法、relay 协议与并发模型未在档案中给出。 |
+| 关键权衡 | 单文件永久可读 vs 浏览器能力受限（FS Access API、CRDT 自研正确性、E2EE 密钥随文件分发带来的访问控制两难）；"文件即软件"分发新颖性 vs 失去云协作惯性的采用摩擦。 | 密钥"存在文件里"的具体派生/分发方式未说明；File System Access API 在 Chromium 之外的降级体验未量化。 |
+| 最小 PoC | 单 Chromium 浏览器打开一个 `.bento.html`，验证：①本地编辑与自重写保存；②断网编辑后联网经 relay 合并；③Agent 经 `window.bento.loadDoc` 原地改 JSON 渲染生效。 | slides 之外的文档/表格能力档案明确未交付；CRDT 在多人大规模并发下的正确性档案标注"待核验"。 |
+
 ## 架构启发
 核心启发是**「为 AI 可编辑性设计的本地优先文档格式，可能成为 Agent 交付物的新载体」**。当文档是纯 JSON 且 Agent 可直接读写文件时，Agent 与文档的交互从「调 API」退化为「读写文件」——摩擦骤降。这对架构师的启发是：**设计交付物格式时，把「机器可读写性」作为一等约束**，而非事后补 API。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-flowchart TB
-    FILE["单个 .bento.html (~560KB)"]
-    FILE --> DATA["纯 JSON 数据块<br/>文件顶部可读"]
-    FILE --> APP["编辑器/播放器/协作逻辑<br/>随文件分发"]
-    DATA --> AGENT["Agent / Chatbot<br/>直接读写 JSON<br/>window.bento.loadDoc<br/>无需插件/API"]
-    APP --> SAVE["自重写保存<br/>File System Access API<br/>旧文件 = 回滚"]
-    APP --> COLLAB["E2EE 协作<br/>AES-GCM 密钥在文件<br/>CRDT 字符级合并<br/>盲中继 relay"]
-    APP --> PRES["Morph 演示<br/>共享 id 元素自动动画"]
+flowchart LR
+  FILE["单个 .bento.html ~560KB"]
+  JSON["顶部纯 JSON 数据块"]
+  APP["内嵌编辑器/播放器/协作逻辑"]
+  AGENT["Agent/Chatbot<br/>window.bento.loadDoc"]
+  SAVE["自重写保存<br/>File System Access API<br/>旧文件=回滚"]
+  RELAY["盲中继 relay<br/>(仅密文, 协议待核验)"]
+  CRDT["自研 CRDT<br/>字符级合并 (待核验)"]
+  PRES["Morph 演示/自研图表引擎"]
+  LIMIT["当前仅 slides 品类<br/>office suite = 愿景"]
+
+  FILE --> JSON
+  FILE --> APP
+  JSON --> AGENT
+  APP --> SAVE
+  APP --> CRDT
+  APP --> PRES
+  CRDT <--> RELAY
+  RELAY -.仅存密文.-> CRDT
+  LIMIT -.约束.-> APP
 ```
 
 ## 定位判断

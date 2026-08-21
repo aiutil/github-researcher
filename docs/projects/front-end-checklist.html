@@ -6,7 +6,7 @@
     <title>thedaviddias/Front-End-Checklist | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,15 +56,60 @@
 <li><strong>AI agent 可消费</strong>：设计为 AI 工具能读取和执行的检查规则</li>
 <li><strong>国际化</strong>：多语言版本（含中文）</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>这是一个以 MDX 文档形式承载的检查清单资源，覆盖 HTML/CSS/JS、可访问性、性能、SEO、安全等前端交付维度；其"系统边界"实质是内容覆盖面与优先级分级（High/Medium/Low），而非软件组件边界</td>
+<td>档案明确为"资源型"，仓库语言标注 MDX；未描述任何运行时、API、数据库或服务组件</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者的使用路径是：查阅清单条目 → 按维度逐项核对（HEAD → HTML → CSS → JS → 可访问性 → 性能 → SEO → 安全 → 测试）→ 标记完成；AI agent 消费路径是：解析 MDX 结构 → 自动化执行可机器检查的条目</td>
+<td>档案明确提及"AI agent 可消费"和"MDX 结构化"两点，但未提供具体解析 schema 或 CLI 实现</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>通用覆盖广度 vs. 项目特异性的取舍：清单越全则越通用，但对具体技术栈的深度指导越弱；同时面临被 Lighthouse/axe-core 等自动化工具功能重叠的替代风险</td>
+<td>档案在"风险/局限"段直接列出"工具碎片化"与"表面化"两条权衡依据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在现有前端项目中选 1–2 个维度（如可访问性、SEO），人工对照清单逐项核对完成度，验证清单条目对实际项目的适用性和冗余度</td>
+<td>档案未提供 CLI、CI 插件或程序化消费接口的证据，故最小 PoC 仅限人工核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>Checklist 即标准</strong>：将最佳实践固化为可执行的清单</li>
 <li><strong>面向 AI 的文档设计</strong>：不仅写给人看，也写给 AI 消费</li>
 <li><strong>MDX 作为知识载体</strong>：结构化文档格式让工具化成为可能</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统 待核验] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时 待核验]
+    C --> M[模型或推理服务 待核验]
+    C --> T[工具与外部系统 待核验]
+    C --> S[会话 状态 审计 待核验]
+    M --> C
+    T --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>经典资源型项目</strong>。前端领域的事实标准清单。不是技术工具但影响力巨大，是前端工程文化的组成部分。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>AI 自动化替代</strong>：AI 工具可能自动检测这些问题，降低手动清单价值</li>
 <li><strong>技术迭代</strong>：前端技术快速变化，部分检查项可能过时</li>
@@ -72,16 +117,16 @@
 <li><strong>工具碎片化</strong>：Lighthouse、axe-core 等工具覆盖部分检查项</li>
 <li><strong>表面化</strong>：Checklist 只能覆盖通用问题，项目特殊需求需额外处理</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Lighthouse</strong>：Lighthouse 自动检测，Front-End-Checklist 提供全面人工清单</li>
 <li><strong>vs axe-core</strong>：axe-core 专注可访问性，Front-End-Checklist 覆盖全维度</li>
 <li><strong>vs Web.dev</strong>：Google 的 Web.dev 提供学习和检测，此项目更聚焦清单</li>
 <li><strong>vs前端面试清单</strong>：面试清单偏知识考核，此清单偏工程实践</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>一般关注。</strong> 作为参考工具直接使用即可。关注 AI agent 版本的进展和自动化检测能力。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>AI agent 消费模式的实际应用（是否有工具集成此清单自动检查）</li>
 <li>是否推出自动化检测工具（CLI/CI 集成）</li>

@@ -36,8 +36,39 @@ Hugging Face 出品的深度学习模型库，提供数万种预训练模型（N
 - **Flash Attention 集成:** 自动检测并启用 Flash Attention / SDPA，提升推理速度
 - **量化支持:** 内置 bitsandbytes (4-bit/8-bit)、GPTQ、AWQ 量化加载
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Transformers 在 Hugging Face Hub（模型来源）、Datasets/Tokenizers/Accelerate/PEFT（配套工具）、PyTorch/TensorFlow/JAX（计算后端）之间充当"模型消费层 + 编排层"，对外通过 AutoClass 与 Pipeline API 暴露统一接口 | 档案明确列出 AutoModel、Pipeline、Trainer、Flash Attention、bitsandbytes/GPTQ/AWQ 等组件；多框架承诺与配套生态有提及，但部署形态与持久化细节需源码核验 |
+| 主路径 | 入口（from_pretrained / pipeline）→ AutoClass 按 config.json 派发 → 具体模型类 forward → 训练侧走 Trainer/TrainingArguments（分布式、混合精度、梯度累积），推理侧可启用 Flash Attention/SDPA 或量化路径 | 主路径来自 AutoClass、Trainer、Flash Attention 集成、量化支持等档案事实；具体协议、调度实现未在档案中描述 |
+| 关键权衡 | 覆盖广度（100+ 架构、新模型数天内集成）vs 代码膨胀与维护负担；多框架承诺 vs 实际以 PyTorch 为主；统一易用 vs 推理性能不足（生产常需迁 vLLM/TGI） | 全部权衡直接来自档案"风险/局限"与"为什么值得关注"章节；不引入未证实的性能数据 |
+| 最小 PoC | 用 `pipeline("text-generation", model=...)` 或 `AutoModel.from_pretrained()` 加载一个开源权重（如 DeepSeek/Qwen/GLM/Gemma 任一），跑通推理；再叠加 Trainer 做一次小规模微调，验证 AutoClass、Trainer、Accelerate/PEFT 联动 | PoC 基于 Pipeline、AutoClass、Trainer 三项已确认 API；具体模型 ID、量化方案、硬件要求未在档案中声明，需另行核验 |
+
 ## 架构启发
 Transformers 的架构核心是"约定优于配置"——所有模型遵循统一的接口契约（`forward()` 输入输出格式一致），通过 `config.json` 声明模型参数，权重以标准格式存储。这种设计使得模型成为可互换的组件，配合 Hub 实现了"模型即数据"的范式。其 `add_new_model.py` 模板和 CONTRIBUTING 指南也值得学习——它们将"集成新架构"标准化为可重复的流程。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游应用] --> I[Pipeline 或 AutoClass 入口 待核验具体API形态]
+    I --> C[AutoClass 派发与配置加载 config.json]
+    C --> M[具体模型类 forward 涵盖NLP CV 音频 多模态 100+架构]
+    C --> T[Trainer TrainingArguments 分布式 混合精度 梯度累积 待核验调度细节]
+    C --> Q[量化路径 bitsandbytes 4/8bit GPTQ AWQ 待核验硬件要求]
+    C --> F[Flash Attention 或 SDPA 推理加速 待核验启用条件]
+    C --> H[Hugging Face Hub 模型仓库 外部边界]
+    C --> E[生态依赖 Datasets Tokenizers Accelerate PEFT TRL 外部边界]
+    M --> S[模型权重与状态回写 代码膨胀与维护风险 控制边界]
+    T --> S
+    Q --> S
+    F --> S
+    H --> S
+    E --> S
+```
 
 ## 定位判断
 **基础设施型项目。** Transformers 是 AI 生态的底层依赖库，地位类似于 React 之于前端、Linux 之于服务器。它不是一个"应用"或"平台"，而是支撑上层应用的基石。其价值在于生态锁定——一旦模型格式、API 约定形成标准，迁移成本极高。

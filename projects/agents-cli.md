@@ -35,8 +35,35 @@ Google 官方 Agent CLI——将任何编程助手转化为 Google Cloud 上 AI 
 - Skills 系统：可复用的 Agent 能力包，支持社区分发
 - 与 Gemini 模型深度集成，支持多模态输入输出
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | google/agents-cli 是 Google 官方 CLI，作为本地编程助手与 Google Cloud（Cloud Run / Cloud Functions / Vertex AI / Gemini Enterprise Agent Platform）之间的编排层，承载 Agent 定义、评估与部署流程 | 部署目标平台与集成面来自档案"关键技术亮点"与"为什么值得关注"段；内部模块拆分、CLI 子命令、权限模型档案未给出 |
+| 主路径 | 终端开发者 → agents-cli → Agent Development Kit (ADK) 运行时 → Gemini 模型调用 + 工具/数据源 → 一键部署到 Cloud Run / Cloud Functions / Vertex AI，并经内置评估框架回写评分 | 主路径四要素来自档案描述；评估框架的具体协议、Skills 注册机制、CI/CD 触发方式档案未给出 |
+| 关键权衡 | 一是 Google Cloud / Gemini 深度耦合带来的供应商锁定与跨云迁移成本；二是 ADK 早期生态与有限 Skills 数量对扩展速度的限制；三是 CLI 优先对权限边界、审计与可观测性的弱约束 | 锁定与生态阶段判断来自"风险/局限"段；权限/审计能力仅在档案"采用建议"中抽象提及，未见具体实现 |
+| 最小 PoC | 用 agents-cli 定义一个最小 Gemini Agent，单工具+最小权限，部署到 Cloud Run，开启评估框架回归测试，以部署耗时、评估分、跨云迁移改造成本作为验收项 | 部署目标与评估框架是档案明示能力；具体 CLI 命令、PoC 步骤、退出路径档案未提供，须以官方文档核验 |
+
 ## 架构启发
 agents-cli 体现了"Agent 即代码"的设计哲学——Agent 的定义、测试、部署全部版本化在代码库中。这种模式让 Agent 开发回归到软件工程的最佳实践（CI/CD、代码审查、环境隔离），而非停留在 prompt 工程的黑箱阶段。对架构师的启发是：**Agent 的核心竞争力不在模型能力，而在工程化基础设施**。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者或上游编程助手] --> CLI[agents-cli 终端入口]
+    CLI --> ADK[Agent Development Kit 运行时]
+    ADK --> GEM[Gemini 模型 调用]
+    ADK --> TOOL[工具与数据源 待核验]
+    ADK --> EVAL[内置评估框架 自动用例与评分 待核验]
+    ADK --> DEPLOY[一键部署 Cloud Run / Cloud Functions / Vertex AI]
+    DEPLOY --> GCP[(Google Cloud 边界)]
+    EVAL --> CLI
+    DEPLOY -.强耦合锁定.-> GCP
+</> 数据来源: GitHub API (google/agents-cli) | 星标: 5,500 | 语言: Python | 许可证: Apache-2.0
+```
 
 ## 定位判断
 **工具型 + 生态绑定。** 它是一个优秀的 CLI 工具，但本质上是 Google Cloud 生态的入口。其价值高度依赖 Google Cloud 的市场份额和 Gemini 模型的竞争力。与云厂商锁定的关系使其更像"销售工具"而非纯粹的开源基础设施。

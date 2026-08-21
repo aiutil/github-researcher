@@ -6,7 +6,7 @@
     <title>oh-my-pi | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,18 +55,66 @@
 <li><strong>TTSR（Think-Then-Steer-and-Resume）</strong>：规则注入不打断对话流，regex 匹配后 mid-token 中断注入</li>
 <li><strong>Subagents</strong>：task 可 fan-out 到隔离 worktree，每个 worker 独立工具面</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>oh-my-pi 是一个终端 Coding Agent，自身承担 IDE 级能力（内置 LSP/DAP、持久 Python+Bun Worker、Hash-Anchored Edits），而非依赖外部 IDE 的 CLI wrapper；系统边界在“Agent 运行时 + 内置工具面”</td>
+<td>仅基于档案所述 13 LSP ops / 27 DAP ops、持久 Worker、TTSR、Subagents 等描述；具体协议、传输与进程模型未在档案给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在终端发起请求 → Agent 编排（Pi fork 上的扩展层）→ 调用模型与内置工具（LSP/DAP/Python/Bun）→ 通过 Hash-Anchored Edits 与状态/会话回写完成编辑闭环</td>
+<td>“请求 → 编排 → 模型与工具 → 状态回写”来自档案引用的架构抽象；具体调度协议、并发模型、IPC 方式档案未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在“内置 IDE 能力带来的精度/能力增益”（如 Grok 6.7%→68.3%）与“LSP server 自行管理、Pi fork 维护负担、与 Claude Code/Codex 官方迭代竞争”之间取舍</td>
+<td>收益数字与权衡点仅出自档案摘要；性能数据样本、用户规模分布、官方竞品动态未给出独立验证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在受控本地仓库启 Agent，仅挂单一 LSP/DAP、最小 Python+Bun Worker、最小权限，验证 Hash-Anchored Edits 精度与子任务 fan-out 行为，记录可审计日志与回滚路径</td>
+<td>档案未提供安装方式、依赖版本、可复现评测脚本；PoC 步骤为基于风险点（fork 依赖、369 open issues、LSP 自管复杂度）的推导</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>Agent 即 IDE</strong>：将 IDE 能力内置到 Agent 而非让 Agent 调用外部 IDE，这是方向性创新</li>
 <li><strong>编辑格式的重要性</strong>：Hash-Anchored Edits 证明了编辑格式对模型表现的影响远超预期</li>
 <li><strong>持久运行时的价值</strong>：Agent 内部持久运行时使复杂工作流（数据分析 → 可视化 → 报告）成为可能</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[终端使用者 / SSH 远程开发] --> E[入口与身份边界]
+    E --> O[项目核心: Agent 编排层 / Pi fork 扩展]
+    O --> M[外部边界: 模型推理服务]
+    O --> L[外部边界: 内置 LSP 服务器]
+    O --> D[外部边界: 内置 DAP 调试器 lldb dlv debugpy]
+    O --> W[持久 Python + Bun Worker / 可回调自身工具]
+    O --> H[Hash Anchored Edits 编辑写入路径]
+    O --> S[状态/控制/风险边界: 会话 状态 审计 TTSR 注入 子任务 fan out worktree]
+    H --> FS[(待核验: 文件系统与编辑目标)]
+    S --> R[风险节点: 369 open issues Pi fork 维护负担 与 Claude Code Codex 竞争 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <ul>
 <li>更偏<strong>工具型</strong>，但有<strong>平台候选</strong>潜力</li>
 <li>如果继续发展，可能成为 Agent 运行时标准</li>
 </ul>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ol>
 <li>依赖 Pi 的 fork，维护负担</li>
 <li>11K 对终端 Agent 来说仍不够大，需要更多真实用户验证</li>
@@ -74,15 +122,15 @@
 <li>与 Cursor / VS Code 的 Agent 集成竞争，市场空间可能有限</li>
 <li>Claude Code 官方快速迭代可能查食其差异化优势</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Claude Code CLI</strong>：oh-my-pi 更底层，内置更多 IDE 能力</li>
 <li><strong>vs Codex CLI</strong>：Codex 是 OpenAI 官方，oh-my-pi 更灵活</li>
 <li><strong>vs Pi（原始项目）</strong>：Pi 是基础框架，oh-my-pi 是面向开发者的完整 Agent</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 终端 Agent IDE 化是明确趋势，oh-my-pi 的技术深度足够，值得关注其发展。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Hash-Anchored Edits 是否会被其他 Agent 采用</li>
 <li>LSP/DAP 内置的稳定性</li>
@@ -91,7 +139,7 @@
 <li>11K 后的增长趋势和商业化路径</li>
 </ol>
 <hr />
-<h2 id="_11">更新记录</h2>
+<h2 id="_12">更新记录</h2>
 <h3 id="2026-06-08_1">2026-06-08</h3>
 <ul>
 <li>Stars: 8.7K → 11K（+2.3K/week）</li>

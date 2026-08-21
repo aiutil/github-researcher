@@ -6,7 +6,7 @@
     <title>bytedance/UI-TARS-desktop | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -57,15 +57,62 @@
 <li><strong>GUI Operator 抽象</strong>：将操作系统交互抽象为统一接口</li>
 <li><strong>Agent infra 完整</strong>：含记忆、规划、执行、反馈循环</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>由入口/身份层、项目编排运行时、模型推理服务、工具与外部系统、会话/状态/审计五大职责构成，跨 macOS/Windows/Linux 三端桌面。</td>
+<td>仅基于档案中"完整技术栈：VLM 模型 + agent 框架 + 桌面应用"、"跨平台桌面操作"、"MCP 协议接入外部工具"等公开描述抽象；具体模块名、目录结构、持久化方案未在档案中给出。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>截图输入 → 端到端 VLM 直接生成鼠标/键盘操作指令 → 通过 MCP 协议调用外部工具 → 反馈回写到会话与状态（corkwork 模式下人类可介入）。</td>
+<td>路径来自"端到端 VLM 驱动：从截图生成操作指令"、"MCP 工具集成"、"Cowork 模式：人与 agent 可协同操作"；具体推理框架、调度器、记忆实现待源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>视觉路线带来跨应用通用性，但付出秒级延迟与高推理成本，并伴随 AI 直接操控 OS 的安全风险；MCP 扩展能力同时加深对外部工具的权限耦合。</td>
+<td>权衡依据档案"风险/局限"段明确列举的延迟、成本、准确性、安全风险；未量化指标，benchmark 数据未在档案中提供。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定单一桌面平台，固定 1 款 VLM + 最小 MCP 工具集，启用可审计日志与人类审批（corkwork）回路，先验证截图→操作闭环成功率与单步延迟，再扩接入面。</td>
+<td>建议来自档案"先做最小 PoC"原则与"cowork 范式降低失控风险"论点；具体模型版本、PoC 准入指标、SLO 阈值档案未给出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>VLM-native agent 架构</strong>：以视觉模型为核心而非以 API 为核心，更接近人类操作方式</li>
 <li><strong>cowork 范式</strong>：人机协作而非完全自动化，降低 agent 失控风险</li>
 <li><strong>模型+框架+应用三层开源</strong>：降低 computer-use 技术的复现和定制门槛</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[项目编排与运行时]
+    C --> M[VLM 视觉语言模型 端到端生成操作指令]
+    C --> T[外部工具与数据源 MCP 协议接入]
+    C --> S[会话 状态 审计 日志]
+    M --> C
+    T --> C
+    H[Cowork 人类协同介入 审批回路] --> C
+    S -.延迟与成本风险.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台级开源项目</strong>。不只是工具，而是 computer-use agent 的完整技术基础设施。字节试图通过开源建立 GUI agent 生态标准。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>延迟问题</strong>：截图→VLM 推理→执行的全链路延迟较高（秒级），实时性不足</li>
 <li><strong>成本问题</strong>：VLM 推理成本远高于纯文本/DOM 方案</li>
@@ -74,16 +121,16 @@
 <li><strong>竞争白热化</strong>：OpenAI Operator、Anthropic computer use、Google Project Mariner 都在做</li>
 <li><strong>字节项目维护不确定性</strong>：字节历史上对开源项目的长期投入参差不齐</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Anthropic computer use</strong>：闭源 API vs 开源全栈</li>
 <li><strong>vs OpenAI Operator</strong>：Operator 走产品化路线，UI-TARS 走开发者基础设施路线</li>
 <li><strong>vs alibaba/page-agent</strong>：page-agent 走 DOM 路线（轻量），UI-TARS 走视觉路线（通用），互补</li>
 <li><strong>vs OS-Copilot / Open Interpreter</strong>：同为开源 computer-use agent，UI-TARS 有字节模型加持</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪。</strong> computer-use 是 AI agent 落地最核心的能力之一，UI-TARS-desktop 是开源阵营的标杆。其架构设计和模型迭代方向对整个行业有指引意义。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>模型推理速度和成本优化进展</li>
 <li>是否出现杀手级应用场景（如全自动化办公流程）</li>

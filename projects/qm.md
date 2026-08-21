@@ -37,8 +37,34 @@ url: "https://github.com/yc-software/qm"
 3. **Slack + Web 统一身份**：同一身份和配置在 Slack 和 Web 间无缝切换；Slack 是可选的 in-process plugin，由 core 启动和监督。
 4. **Org 级安全策略**：Strict（每次工具调用需人工审批）/ Auto（默认，分类器筛外部数据）/ Dangerous（无筛选无暂停）三档，且 scope 只能收紧不能放松 org 策略。预声明命令策略（审批规则 + 硬拒绝递归删除/破坏性 SQL）在所有 posture 下生效。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | qm 是 TypeScript + Fastify 写的 headless core，向上承接 Slack 插件（in-process）与 Web 入口、同一身份配置跨渠道复用，向下按 scope 分隔独立 sandbox/工具/已登录服务/记忆，再通过统一执行接口驱 Pi/OpenCode/Claude Code/Codex 等 harness；位于 L5 应用产品层 | 边界来自档案描述的"core 无关 harness、一切通过接口"分层与 per-scope sandbox 定义；具体持久化、部署拓扑、网络协议未在档案中给出 |
+| 主路径 | 用户在 Slack 或 Web 触发 → core 身份/策略/scheduler/agent loop 接管 → 在该 scope 的 sandbox 中以 `execute` 工具运行命令并使用 harness → 结果回写至 session store/memory 与组织审计 | 路径基于"Slack + Web 统一身份"与"通过 execute 工具在 scope 沙箱中运行"两条档案陈述；harness 内部具体 prompt/工具调用协议待核验 |
+| 关键权衡 | 选择"harness 无关 core + per-scope sandbox"换来对上游 harness 演进的韧性，代价是结构性的上游 breaking-change 适配成本；安全策略三档（Strict/Auto/Dangerous）+ scope 只能收紧意味着用权限/可观测性换人力审批摩擦 | 权衡论据直接引自档案"架构启发"与安全策略段落；Strict 模式可行性与 Auto 分类器效果档案明示未经安全审计 |
+| 最小 PoC | 以 Web 单入口 + 单一 Claude Code harness + Auto posture 启动一个三人 scope，先验证 sandbox 隔离强度与审计回放，再决定是否启用 Slack in-process 插件与扩展 scope 数 | 依据为档案给出的"先单一渠道、最小权限、可审计日志"采用建议与 Slack in-process 插件"稳定性待核验"的风险提示 |
+
 ## 架构启发
 qm 的分层很清晰：headless core（API/identity/policy/scheduler + agent loop）→ per-scope sandbox → 可选插件（web UI/admin panel/Slack）。这种"core 无关 harness、一切通过接口"的设计让它在 harness 快速迭代时有一定韧性。但也意味着它对上游 harness 的依赖是结构性的——如果 Claude Code/Codex 的 API 发生 breaking change，qm 的适配成本会很高。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[Slack 或 Web 用户] --> I[统一身份与策略入口]
+    I --> C[headless core: 身份 策略 调度 agent loop]
+    C --> X[per-scope sandbox 执行环境]
+    X --> H[harness 接口层: Pi OpenCode Claude Code Codex — 具体协议待核验]
+    H --> M[模型或推理服务]
+    H --> T[工具与已登录服务]
+    C --> S[session store memory 审计日志]
+    C --> R[组织策略 Strict Auto Dangerous]
+    R -.收紧不可放松.-> S
+```
 
 ## 定位判断
 在 agent 生态分层中，qm 占据 **L5 应用产品层**——在 harness 本体（L1）、编排层（L3）、开发范式（L2）之上的产品化。它与 cindy（开箱即用单机客户端）的差异在于：qm 面向**团队协同**（多人 scope + Slack），cindy 面向**个人异构组合**（多 harness 混合驱动）。

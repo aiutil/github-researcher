@@ -43,6 +43,15 @@ url: "https://github.com/SMNETSTUDIO/WeChat-AI"
 ## 关键技术亮点
 无技术亮点可评估——README 缺失，description 为空，无法核验任何技术声明。size=819KB，TypeScript，Apache-2.0。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 无可核验技术边界；仅可观察到 Apache-2.0 / TypeScript / size=819KB 的仓库外壳，与 fork≈star 的异常参与度结构 | description=null、README(main) 404、零 issue，无法从档案核验任何运行组件或接口 |
+| 主路径 | 不可建立主路径；缺乏 README/源码支持，只能以"开发者/CI → 仓库"作为最弱假设 | 档案未声明任何 CLI、API、引擎或外部集成；只能写"待核验" |
+| 关键权衡 | 不是技术权衡，而是指标异常下的研究判断权衡：在 fork/star=0.74、subscribers=1、issues=0 的情况下，把该仓库存为"疑似刷量"对照样本而非技术候选 | 异常比例来自 GitHub API 可核验字段；"刷量"本身无法被 API 确证 |
+| 最小 PoC | 不建议做技术 PoC；建议做指标观察 PoC——监测 fork/star、subscribers、issues 演变与是否被归档/改名 | 观测点（存活状态、指标结构、README 是否填充）已在档案后续观察点列出；具体实现脚本未在档案中给出 |
+
 ## 架构启发
 **方法论启发大于技术启发。** WeChat-AI 的价值在于它让"热度≠价值"的判断变得可量化。关键比例是 **fork/star**：
 - **<0.15**：健康（用户多、贡献者少，符合幂律）——anydoc 0.05、qm 0.12
@@ -50,6 +59,22 @@ url: "https://github.com/SMNETSTUDIO/WeChat-AI"
 - **>0.6**：高度异常（fork 动作被自动化执行的可能性高）——WeChat-AI 0.74、open-kimi-ppt-skill 0.74
 
 **结合 subscribers 和 open_issues 交叉验证**：若 fork/star>0.6 且 subscribers<5 且 issues<3，则"疑似刷量"判断的置信度显著提升。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U["开发者或自动化脚本（待核验）"] -->|"fork / star（疑似批量）"| R["SMNETSTUDIO/WeChat-AI 仓库（TypeScript / Apache-2.0 / 819KB）"]
+  R -->|"README(main) 404"| D["文档与描述（待核验）"]
+  R -->|"0 open issue / 1 subscriber"| S["社区参与度（fork≈star=0.74，待核验机制）"]
+  R -->|"代码内容未知"| C["核心实现（待核验）"]
+  C --> H["宿主运行时（待核验）"]
+  S --> O{"风险边界：疑似刷量 vs 集体学习行为"}
+  O -->|"持续异常 / 归档"| E1["案例样本：非自然热度证据链"]
+  O -->|"指标回归健康 + README 填充"| E2["重新评估为早期项目（待核验）"]
+```
 
 ## 定位判断
 **观察型——案例库样本。** WeChat-AI 不作为可采用的技术项目跟踪，而是作为"指标异常检测"方法论的教学样本。与 open-kimi-ppt-skill 共同构成"生态中的非自然热度"证据链。

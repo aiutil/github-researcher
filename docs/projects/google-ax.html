@@ -6,7 +6,7 @@
     <title>google/ax | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -63,7 +63,39 @@
 <li><strong>计算层无关</strong>：虽然瞄准 K8s，但不绑定具体计算平台。可在 Agent Substrate、本地、云端运行</li>
 <li><strong>Antigravity Harness</strong>：内置支持 Gemini（Google AI Studio / Vertex AI），<code>ax --input</code> 即可启动</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>客户端到 Actor 的全链路可恢复执行层（入口→Server→Controller→Actor→事件日志/快照），Agent/工具/MCP/环境作为隔离 Actor 运行</td>
+<td>仅基于档案"架构启发"图与亮点描述抽象，具体协议、存储后端、K8s 集成方式需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>客户端请求→AX Server（多租户）→Actor Controller（单写者）→通过 Event Log 重放/Snapshot 恢复 Actor→模型/MCP/环境调用→状态回写事件日志</td>
+<td>主路径组件在档案中明确列出；但"单写控制器"一致性协议、事件日志的持久化介质未描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>确定性 Runtime（Event Sourcing + 可恢复流）与可变性 Agent 行为的隔离；分布式扩展性与 Google 单方维护/暂不接 PR 的集中化风险；与 K8s/Agent Substrate 亲和与计算层无关设计之间的张力</td>
+<td>"Google Graveyard 风险""active early development""暂不接受外部 PR"为档案原文；性能、协议、部署形态档案未提供</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以 <code>ax --input</code> 启动 Antigravity Harness 对接 Gemini；在单一工具、最小权限与可审计日志下验证 Agent 崩溃后从 Event Log/Snapshot 恢复续跑，再扩展多 Actor 与 K8s 部署</td>
+<td>启动命令、内置 Gemini 支持（Google AI Studio/Vertex AI）为档案明文；MCP、恢复协议细节、退出路径待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><code>Client ←→ AX Server (multi-tenant)
                ↕
           Event Log Storage
@@ -78,9 +110,25 @@
 - <strong>Event Sourcing</strong>：所有状态变更通过事件日志记录，天然可审计、可重放、可恢复。这与数据库的 WAL 异曲同工
 - <strong>关注点分离</strong>：Controller 管"怎么跑"（调度/恢复/一致性），Harness 管"做什么"（模型推理），Skill/Tool 管"执行什么"
 - <strong>从单体到分布式</strong>：Agent 从单体应用走向"分布式 Harness + 隔离 Actor"架构，AX 提供了这个架构的 Runtime 底座</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Client[客户端调用方] --> Server[AX Server 多租户入口 待核验协议]
+    Server --> Controller[Actor Controller 单写者 单一协调点]
+    Controller --> EventLog[Event Log 事件日志 可审计可重放 待核验持久化后端]
+    Controller --> Snapshot[Snapshots Actor 状态快照]
+    Controller --> Actor[Actor 隔离执行单元 可挂起/恢复]
+    Actor --> Model[模型推理 Gemini AI Studio Vertex AI]
+    Actor --> MCP[MCP Server 作为独立 Actor]
+    Actor --> Env[Environment 隔离运行环境]
+    Actor -.崩溃/挂起.-> Controller
+    EventLog -.重放恢复.-> Controller
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent 领域的 Kubernetes 候选。</strong> 不是框架，是 Runtime。如果成功，会成为 Agent 部署的标准基础设施层——正如 K8s 之于微服务。AX 管的是"Agent 怎么可靠地跑"，Microsoft AGT 管的是"Agent 不能做什么"，两者组合可能构成企业 Agent 基础设施的核心栈。当前仍处于 active early development，明确标注 breaking changes，暂不接受外部 PR——这是负责任的早期开源态度。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Google Graveyard 风险</strong>：Google 有大量开源项目半途而废的历史（Stadia、Jacquard、大量 AI 实验项目）。AX 的长期投入承诺需要持续验证</li>
 <li><strong>早期不接受 PR</strong>："Temporary Policy"——暂停外部 Pull Request，过度依赖 Google 内部投入。社区参与受限可能影响生态建设</li>
@@ -89,7 +137,7 @@
 <li><strong>观测性和调试工具缺失</strong>：分布式 Agent 的调试比单体 Agent 复杂得多，AX 需要配套的 tracing/debugging 工具链</li>
 <li><strong>竞争格局不明</strong>：Temporal、Restate 等通用 durable execution 框架是否能覆盖 Agent 场景</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -131,9 +179,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>✅ 强烈建议。</strong> 这是 Agent 基础设施层最重要的项目之一。即使 AX 本身成败未定，它定义的"分布式 Agent Runtime + Event Sourcing + Resumable Stream"架构模式将成为行业标准。对平台架构师，AX 是理解 Agent 生产部署需求的最佳参考；对 Agent 生态观察者，它是"Agent 的 Kubernetes"赛道的标杆。建议同时跟踪 Microsoft AGT——两者构成 Agent 基础设施的完整栈（Runtime + Governance）。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Google 投入持续性</strong>：commit frequency、核心团队规模、Google 内部使用情况（Google Cloud 是否在产品中集成 AX）</li>
 <li><strong>社区工具链</strong>：是否出现围绕 AX 的 monitoring/debugging/CI 工具</li>

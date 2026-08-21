@@ -38,6 +38,15 @@ AI 语音工具被两个云服务垄断：ElevenLabs（语音生成）和 WisprF
 6. **Stories 编辑器**：多轨时间线，支持对话/播客/叙事制作
 7. **Tauri (Rust)**：原生性能，macOS MLX/Metal、Windows CUDA、Linux、Docker、AMD ROCm
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本地优先的语音 I/O 编排层，前端 Tauri 应用对接 7 个 TTS 引擎、Whisper STT 与 MCP Server，向 Agent 生态暴露 `voicebox.speak` 工具；不属于云端语音 SaaS，也不替代 LLM 推理 | 引擎清单、STT 选型、MCP 暴露面来自档案"关键技术亮点"；具体模型版本、网络协议、IPC 细节未在档案中给出 |
+| 主路径 | 语音输入走全局热键 → Whisper STT → 文本进入项目运行时；语音输出由 MCP Agent 或 Stories 编辑器触发 → 在 7 个 TTS 引擎中切换 → 本地推理后回写音频；Stories 编辑器作为内容生产侧的旁路 | "全局听写"、"MCP Server `voicebox.speak`"、"Stories 编辑器多轨时间线"均有档案依据；编排与持久化细节待核验 |
+| 关键权衡 | 多 TTS 引擎可扩展性与模型资源占用、本地隐私与 Whisper/克隆模型 GPU 需求的矛盾、单人维护与多平台（macOS MLX/Metal、Windows CUDA、Linux、Docker、AMD ROCm）覆盖广度之间的张力 | 取自档案"风险/局限"与"热度来源判断"；具体硬件门槛与平台稳定性数字未给出 |
+| 最小 PoC | 在 macOS 上启用 MCP Server 给一个 Agent（如 Claude Code）调用 `voicebox.speak`，跑通 Whisper 全局听写热键与单一 TTS 引擎（如 Kokoro 或 Chatterbox），验证克隆声音与小语种输出；以本地日志/审计作为验收 | 组件存在性可证；性能指标、延迟、克隆样本上限、审计能力均待核验 |
+
 ## 架构启发
 voicebox 的核心设计是**"语音 I/O 双向闭环"**——ElevenLabs 只做输出，WisprFlow 只做输入，voicebox 做两者并用本地 LLM 桥接。MCP Server 让 Agent 获得语音能力，这意味着 Agent 可以：
 - 听用户说话（STT）
@@ -45,6 +54,26 @@ voicebox 的核心设计是**"语音 I/O 双向闭环"**——ElevenLabs 只做�
 - 用克隆的声音回复（TTS）
 
 这种"语音 I/O 作为 Agent 工具"的模式正在成为标配。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 Agent] --> I[入口:Stories 编辑器 / 全局听写热键 / MCP voicebox.speak]
+    I --> C[voicebox 编排运行时 Tauri Rust + TS]
+    C --> M[STT:Whisper 本地推理]
+    C --> N[TTS 引擎池:Qwen3-TTS / Qwen CustomVoice / LuxTTS / Chatterbox / HumeAI TADA / Kokoro / 待核验 第七引擎]
+    C --> O[语音克隆:零样本 + 50+ Kokoro 预设]
+    C --> S[会话 状态 审计]
+    S --> C
+    M --> C
+    N --> A[音频输出:本地扬声器 / 故事时间线]
+    O --> N
+    C --> P[MCP Server 暴露给 Agent 生态]
+    P --> U
+```
 
 ## 定位判断
 **工具型。** voicebox 是 Agent 语音 I/O 的基础设施。当前定位为开发者/创作者工具，不追求平台化。但 MCP Server 接口使它天然成为 Agent 技术栈的一环。

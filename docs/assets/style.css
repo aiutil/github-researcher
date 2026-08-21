@@ -778,7 +778,17 @@ a:hover { text-decoration: underline; }
 /* =========================================================================
    Mermaid diagrams
    ========================================================================= */
-.mermaid { background: var(--canvas-default); text-align: center; margin: 16px 0; }
+.content-card .mermaid {
+  background: var(--canvas-subtle);
+  border: 1px solid var(--border-default);
+  border-left: 3px solid var(--accent-fg);
+  border-radius: var(--radius-sm);
+  padding: 20px 16px;
+  overflow-x: auto;
+  text-align: center;
+  margin: 16px 0 24px;
+}
+.content-card .mermaid svg { max-width: 100%; height: auto; }
 
 /* =========================================================================
    Responsive

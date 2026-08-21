@@ -39,8 +39,33 @@ Gitleaks 的热度是**真实安全刚需 + DevSecOps 文化普及**双重驱动
 5. **自定义规则:** 支持 YAML 配置自定义规则和 allowlist，适应私有密钥格式
 6. **基线扫描:** 支持 baseline 功能，只报告新增的泄露，避免历史遗留噪音
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | CLI/库形态的密钥扫描器：使用方/CI → gitleaks 进程 → go-git 遍历的本地 Git 历史 → 正则+熵规则输出 | 档案未披露是否含守护进程、server 模式或中心化管控入口；"外部系统"按 Unix 工具管道描述 |
+| 主路径 | 加载 YAML 规则与 allowlist → 调用 go-git 遍历 commit 并取 patch diff → 正则匹配 + 熵检测 + baseline 过滤 → stdout/退出码/报告产出，供 CI 判定 | 协议、报告 schema、CI 集成适配器实现均未在档案中给出，需源码核验 |
+| 关键权衡 | 速度/可移植性（Go 单二进制）与检测深度（仅静态匹配、不主动验证）的取舍；通用正则覆盖广 vs 语义理解弱（已知格式 vs 熵补充） | 缺少在 Monorepo/超大仓库下的性能数据；AI 降低误报仅为待观察方向 |
+| 最小 PoC | 在 CI 流水线加一条 gitleaks detect --baseline --redact --exit-code N，对历史建基线后再用同一 YAML 规则集+allowlist 验证新增 commit 行为与误报率 | 是否支持 server mode、远端 Git 协议、增量扫描策略未在档案中证实 |
+
 ## 架构启发
 Gitleaks 的架构是经典的 **"规则引擎 + Git 底层操作"** 组合。它直接调用 `go-git` 库遍历 commit 树，无需依赖外部 git 命令。启发是：**安全扫描工具要"快、轻、可集成"**——单二进制 + 标准输入输出 + 退出码约定，使它像 Unix 工具一样可无缝嵌入任何 CI/CD 流水线。这种"管道友好"设计是它击败 Python 竞品（如 TruffleHog 的某些版本）的关键。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用方: 本地/CI 流水线] --> I[入口: CLI argv 与 YAML 配置 / allowlist / baseline]
+    I --> C[编排: gitleaks Go 进程]
+    C --> G[外部边界: go-git 库遍历本地 Git 历史 commit 与 patch diff - 待核验]
+    C --> R[规则引擎: 内置 100+ 正则 + 自定义 YAML 规则]
+    R --> E[检测边界: 熵检测补充高熵字符串 - 待核验]
+    E --> O[报告: stdout / 退出码 / 报告产物 - 待核验]
+    C --> A[风险边界: 误报与历史污染 - 仅扫描不 rotate, 需 git filter-branch/BFG]
+    O --> U
+```
 
 ## 定位判断
 **基础设施级工具。** Gitleaks 已成为 DevSecOps 的事实标准之一，与 Dependabot、Snyk 并列。它不是"创新项目"，而是"必须部署的基础设施"。任何使用 Git 的团队都应在 CI 中集成密钥扫描。

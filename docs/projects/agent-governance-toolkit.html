@@ -6,7 +6,7 @@
     <title>agent-governance-toolkit | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -60,16 +60,66 @@
 <li><strong>审计日志</strong>：防篡改的决策记录，记录策略版本、请求内容、决策原因，满足合规审计</li>
 <li><strong>零信任身份</strong>：每个 Agent 有独立身份，解决多 Agent 共享 API key 的追溯问题</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>定位为 Agent 调用链中的策略执行/审计中间层，处于入口渠道、模型供应商与工具/数据源之间的编排层；与 IAM、SIEM、运行时沙箱是互补而非替代关系。</td>
+<td>仅基于标签"Agent治理/安全/OWASP/合规/零信任/policy-engine"与定位表述；具体拦截位置、SDK 内部结构需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>工具调用/消息发送/委托操作 → <code>govern()</code> 确定性代码拦截 → YAML 策略（<code>apiVersion: governance.toolkit/v1</code>）评估 → 允许执行或抛 <code>GovernanceDenied</code> → 防篡改审计日志落库。</td>
+<td><code>govern()</code> 接入方式、策略 DSL、<code>GovernanceDenied</code>、审计日志来自档案描述；其执行线程、持久化与签名机制未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>确定性安全控制 vs 每次调用的性能开销；声明式策略可审计但复杂场景编写门槛高；多语言 SDK（Python/npm/NuGet）降低集成成本但仍处 Public Preview，存在 breaking changes 风险（<code>agent_os</code> → <code>agentmesh</code>、v4→v5）。</td>
+<td>Public Preview 状态与迁移项来自档案；性能基准、breaking changes 频次、与 Okta/Azure AD/Splunk 集成深度均未在档案中量化。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选一条低风险渠道（如只读工具），用 <code>govern(tool, policy="policy.yaml")</code> 接入并验证拒绝路径可触发 <code>GovernanceDenied</code>、审计日志可被外部读取；将策略与审计纳入 GitOps 版本化；预留回退到无治理版本的退出路径。</td>
+<td>PoC 形态基于档案"两行接入"与架构启发；具体 SDK 版本、策略最小集与审计 schema 须以官方文档/源码核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>安全不是功能，是架构</strong>：Agent 安全需要在架构层面设计（工具调用拦截层），而非事后加 prompt 规则。这与零信任网络的设计哲学一脉相承</li>
 <li><strong>确定性 &gt; 概率性</strong>：对于安全场景，模型层的概率性防御（prompt guardrails）永远不够，需要代码层的确定性控制。AGT 的设计基于一个清醒认知：<strong>模型会犯错，但 Runtime 不应该</strong></li>
 <li><strong>治理即基础设施</strong>：Agent 治理应该像 IAM 一样成为基础设施层——每次 API 调用经过认证授权，每次 Agent 操作经过策略检查和审计记录</li>
 <li><strong>声明式策略优于硬编码</strong>：YAML 策略文件让安全规则可版本化、可审计、可 diff，符合 GitOps 理念</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游Agent] --> I[入口与零信任身份边界]
+    I --> C[项目编排与运行时 govern 拦截层]
+    C --> P[YAML策略引擎 apiVersion governance.toolkit/v1]
+    C --> M[模型或推理服务]
+    C --> T[工具与外部系统 send_email drop_table 等]
+    C --> A[防篡改审计日志 待核验 存储与签名机制]
+    P -->|allow| T
+    P -->|deny| X[抛出 GovernanceDenied 结构上不可能执行]
+    X --> A
+    T --> A
+    M --> C
+    A --> R[合规审计 SOC2 ISO27001 等 待核验 导出格式]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选——企业 Agent 落地的必经之路。</strong> AGT 不是工具库，而是 Agent 安全治理的<strong>控制面</strong>。它的定位类比：IAM 之于云服务、OPA 之于 Kubernetes 策略、WAF 之于 Web 应用。如果 Agent 成为企业的标准计算单元，那么 Agent 操作的认证/授权/审计将成为合规基础设施。AGT 有潜力成为这个层面的事实标准——Microsoft 出品 + OWASP 全覆盖 + 多语言 SDK 构成了标准制定者的初始条件。5,867 stars 和 1,017 forks 显示企业社区已经开始采用。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>Public Preview 阶段</strong>：明确标注可能有 breaking changes，<code>agent_os</code> 模块已废弃（迁移到 <code>agentmesh</code>），v4→v5 策略迁移需要手动执行。不适合未经评估直接进生产</li>
 <li><strong>策略编写复杂度</strong>：YAML 策略虽声明式，但复杂场景（条件授权、委托链、多 Agent 协作）的策略编写需要专业知识</li>
@@ -78,7 +128,7 @@
 <li><strong>Microsoft 锁定风险</strong>：虽 MIT 开源，但深度依赖 Microsoft 生态（Azure Monitor、Application Insights）可能引入隐性锁定</li>
 <li><strong>社区生态规模</strong>：1K forks 中有多少转化为实际生产部署尚不清楚</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Prompt 级安全（Claude Guardrails / NeMo Guardrails）</strong>：AGT 是确定性代码拦截，在工具调用层而非文本生成层。两者互补——prompt 级过滤输入，AGT 拦截执行</li>
 <li><strong>vs Agent 沙箱（E2B / Daytona）</strong>：E2B 是运行时隔离（Agent 在沙箱内执行代码），AGT 是策略治理（决定 Agent 能否执行某操作）。正交互补</li>
@@ -86,9 +136,9 @@
 <li><strong>vs OPA（Open Policy Agent）</strong>：OPA 是通用策略引擎，AGT 是 Agent 专用。OPA 更通用但缺乏 Agent 领域的原语（工具调用、委托链等）</li>
 <li><strong>vs OWASP LLM Top 10 指南</strong>：OWASP 是指南文档，AGT 是工程实现。AGT 把指南变成了可运行的代码</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>强烈建议持续跟踪。</strong> 企业 Agent 安全是刚需——没有可审计的安全控制，Agent 永远无法进入生产环境。AGT 是目前最系统性的开源解决方案，Microsoft 出品增加了标准化可能性。对安全工程师和平台架构师，AGT 是直接可用的工具；对 Agent 生态观察者，它是"Agent 安全治理"赛道的标杆项目。建议同时关注 google/ax（Agent Runtime）——两者组合可能构成企业 Agent 基础设施的核心栈。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>GA 时间线和稳定性承诺</strong>：何时从 Public Preview 到 GA，breaking changes 何时收敛</li>
 <li><strong>主流 Agent 框架的官方集成</strong>：是否被 LangChain、CrewAI、Claude Code、Codex 等默认集成</li>

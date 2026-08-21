@@ -46,12 +46,42 @@ Xata 的热度是**"数据库分支是开发工作流刚需 × 开源填补 Neon
 8. **REST API + CLI:** 完整的控制面 API，API Keys 支持细粒度 RBAC
 9. **架构清晰:** CloudNativePG（Postgres operator）+ OpenEBS（存储）+ 自研 SQL Gateway / Branch Operator / Auth Service
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Xata 是构建于 Kubernetes 之上的自托管 Postgres 平台，由 CloudNativePG（Postgres operator）+ OpenEBS（存储）+ 自研 SQL Gateway / Branch Operator / Auth Service 组成，对外暴露 REST API、CLI 与 SQL over HTTP/WebSockets；不属于单一 Postgres 实例替代品。 | 边界由档案"关键技术亮点 9"与"定位判断"明确给出；多租户安全细节由档案"风险/局限"提示开源版缺位，具体范围未细化。 |
+| 主路径 | 数据源 → 计算节点（CloudNativePG 托管 Postgres，读写副本 + 自动 failover）→ 存储层（OpenEBS 提供 copy-on-write 分支与 PITR 至对象存储）→ SQL Gateway（HTTP/WS 入口，含 scale-to-zero 唤醒）→ 消费侧（应用/Serverless/边缘、CI 预览环境、CLI/API 控制面）。 | 主路径以档案明示组件串联；控制面细粒度 RBAC 由"关键技术亮点 8"提及，鉴权落地范围未在档案中详述。 |
+| 关键权衡 | (1) 存算分离带来 scale-to-zero 与分支弹性，但以引入完整 K8s（+ Docker/Kind/Tilt）运维门槛为代价；(2) CoW 分支降低开发/测试环境存储成本，却要求存储层共享数据块，开源版缺少对抗性多租户加固；(3) 自动扩缩容 + bin-packing 优化成本，但 SLA/响应时间数据档案未给出。 | 权衡项均来自档案"风险/局限"与"关键技术亮点 3/5"；性能数字、分支秒级与唤醒延迟属档案原文表述，未经第三方基准核验。 |
+| 最小 PoC | 单 K8s 集群（Kind/Tilt）部署 Xata，通过 CLI/REST 创建 TB 级源库 → 创建 CoW 分支 → 验证秒级可用与读写隔离 → 闲置后观察 scale-to-zero 与唤醒时延 → 以 PITR 校验备份恢复路径；安全/多租户与退出路径列入验收项。 | PoC 步骤基于档案"定位判断""关键技术亮点 1/2/6"组合得出；具体时延基线、SLO 与多租户安全验证手段档案未提供，需源码/文档核验。 |
+
 ## 架构启发
 Xata 的核心启发是**"数据库分支正在从锦上添花变成开发工作流标配"**。正如 Git 分支改变了代码协作方式，数据库分支正在改变数据协作方式——每个 PR 可以有自己的数据库分支，CI 测试在真实数据上运行。Neon（商业 Serverless Postgres）已经验证了这个方向的市场需求，Xata 开源了同样的能力。
 
 更深层的启发是**"存算分离 + Copy-on-Write 是 Serverless 数据库的基础"**。传统 Postgres 的存储和计算紧耦合，无法弹性扩展。Xata 通过 CloudNativePG + OpenEBS 实现存算分离，使 scale-to-zero 和分支成为可能。
 
 对于自建数据库即服务的团队，Xata 的架构（SQL Gateway 路由 + Branch Operator + Scale-to-zero 插件）是直接可参考的蓝图。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  A[Postgres 主库 与 读写副本<br/>由 CloudNativePG 托管] --> B[OpenEBS 存储层<br/>Copy-on-Write 分支 + PITR]
+  B --> A
+  A --> C[SQL Gateway<br/>SQL over HTTP/WS · scale-to-zero 唤醒]
+  D[Branch Operator<br/>管理分支生命周期] --> B
+  E[Auth Service<br/>API Keys · RBAC] --> C
+  E --> F[REST API 与 CLI 控制面]
+  C --> G[应用 Serverless 边缘 · CI 预览/测试环境]
+  F --> G
+  H[Xata Cloud 同源代码生产验证<br/>外部边界] -.参照.-> F
+  I[开源版多租户安全加固<br/>待核验] -.风险.-> C
+  J[Kubernetes 集群 Docker Kind Tilt<br/>部署前置] --> A
+  J --> D
+  J --> E
+```
 
 ## 定位判断
 **基础设施候选。** Xata 定位为**自托管 Postgres-as-a-Service 平台**——让企业在自己的 Kubernetes 集群上运行类似 Neon/Supabase 的数据库服务。两个核心场景：(1) 企业内部 Postgres 即服务（比直接用 K8s operator 更功能丰富）；(2) 创建预览/测试/开发环境（利用 CoW 分支 + scale-to-zero 实现极致成本效率）。如果数据库分支成为开发标配（这是趋势），Xata 有成为标准工具的潜力。

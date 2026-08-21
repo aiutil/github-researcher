@@ -39,8 +39,35 @@ url: "https://github.com/Binaryify/open-kimi-ppt-skill"
 4. **多 Agent 兼容**：兼容 Codex、Claude Code、Cursor、WorkBuddy 等任何兼容 SKILL.md 规范的 agent。
 5. **npm 分发**：`open-kimi-ppt-skills` npm 包，`npx open-kimi-ppt-skills` 或 Agent 安装命令。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Skill 形态的本地编排层：入口为 `npx open-kimi-ppt-skills` 或 Agent 内 SKILL.md 装载，运行在用户本地机器；输出为 PPTD（逆向自 Kimi Slides 的私有项目格式）+ PPTX 成品，不调用 Kimi 在线服务。 | 边界由 README 自述的"非官方/逆向/未获 Moonshot 认可"与 npm 分发方式确定；具体 Agent 加载协议、PPTD 结构、PPTX 嵌入字体与淡入淡出动画的实现细节未在档案中给出。 |
+| 主路径 | Agent Prompt → SKILL.md 触发 → 本地运行时解析 PPTD 模板 → 生成 PPTD 项目 + 渲染/导出 PPTX（含字体嵌入与淡入淡出切换）→ 本地浏览器编辑器可再次打开 PPTD 手动导出。 | 主路径中的"本地浏览器编辑器"仅在 README 中被点名存在；所用的浏览器技术栈、与运行时的通信方式未在档案中描述（待核验）。 |
+| 关键权衡 | 复用 Kimi Slides 排版/动画能力（快速可用） vs. 强耦合 Kimi 私有 PPTD 格式与公开前端资源（Kimi 任何更新都可能 break，且 README 自称非官方、有法律与稳定性风险）。 | trade-off 由档案中"依赖的公开前端资源和兼容协议可能随 Kimi 更新而失效"陈述支持；具体断裂点与作者修复 SLA 未在档案中给出。 |
+| 最小 PoC | 在隔离环境（无生产数据）用 `npx open-kimi-ppt-skills` 装载 skill，向兼容 SKILL.md 规范的 Agent（如 Codex / Claude Code / Cursor / WorkBuddy 任一）提交一次最小 PPT 需求，核验三件事：(1) 是否同时产出 PPTD 与 PPTX；(2) PPTX 是否真嵌入字体并含淡入淡出切换；(3) 本地浏览器编辑器能否重打开 PPTD 并导出。 | PoC 范围受仓库已归档（archived=true）影响：主分支维护已停，后续 Kimi 变更可能随时让上述三件事失效，验收必须包含"失效即弃"的退出路径。 |
+
 ## 架构启发
 open-kimi-ppt-skill 的设计哲学是 **"逆向官方格式以获得可编辑性"**——与其从零构建 PPT 生成（复杂、质量不稳定），不如逆向已有成熟产品（Kimi Slides）的格式，复用其排版/动画能力。对架构师的启发：**逆向成熟产品的格式/协议可以快速获得可用性**，但代价是依赖上游稳定性（官方更新可能 break）。双产物交付（可编辑 + 可用）是降低用户迁移成本的设计。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或上游 Agent] --> S[SKILL.md 触发 兼容 Codex/Claude Code/Cursor/WorkBuddy]
+    S --> R[本地运行时 open-kimi-ppt-skills npm 包]
+    R --> P[生成 PPTD 项目 逆向自 Kimi Slides 私有格式]
+    R --> X[导出 PPTX 成品 自动嵌入字体 淡入淡出切换]
+    P --> E[本地浏览器 PPTD 编辑器 README 自述存在 技术栈待核验]
+    E --> X
+    X --> O[PPTX 交付]
+    P --> O
+    R -. 依赖 .-> K[(外部边界 Kimi Slides 公开前端资源与 PPTD 格式 已归档仓库公式上游任一更新即可能 break)]
+    R -. 风险边界 .-> A[archived=true 仓库已归档 维护停止 逆向法律与稳定性风险 未获 Moonshot 认可]
+```
 
 ## 定位判断
 属于 **L5 应用层/skill 层**，是中文 agent skill 生态中的**办公演示 skill**。与 human-writing（写作）共同构成中文垂直 skill 首批代表。

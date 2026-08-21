@@ -6,7 +6,7 @@
     <title>trycompai/crm | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,26 +48,74 @@
 <li><strong>工作队列语义</strong>：<code>lib/tasks.ts</code> 用 <code>claimDue</code> + <code>FOR UPDATE SKIP LOCKED</code> 租约行——两个 dispatcher 取不相交的工作，死掉的 run 在租约过期时释放行。"每隔 N 分钟最旧的 10 个联系人"属于 task 的 <code>dueAt</code> 而非 cron 表达式。</li>
 <li><strong>单租户内部设计</strong>：Google 登录 + 一个环境变量的 allow-list，进去的人能看到一切。这是有意的安全边界（见 SECURITY.md），非多租户 SaaS。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>trycompai/crm 是单租户内部 CRM，agent 跑在自有部署、调度、工作队列上；agent 沙箱 deny-all egress，DB 凭据不下发到 shell；入口为 Google 登录 + 环境变量 allow-list。</td>
+<td>仅档案中的设计声明（README、SECURITY.md 引用）支持，未做源码审计。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Google 登录 → 入口/身份边界 → NestJS API 层（无智能，仅记账+入队）→ agent 运行时（基于 Vercel eve）→ 模型与"报告事实"的工具 → 证据账本/状态写回。</td>
+<td>主路径组件齐全，但持久化、会话恢复实现细节须源码核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"agent 作为产品本体"倒置 API 层，代价是 agent 决策质量成系统性瓶颈；扩展性受单租户+沙箱 deny-all 主动收紧；以尚在快速迭代的 eve（4.2K⭐）为底座承担 breaking change 风险。</td>
+<td>风险/局限条目直接来自档案；生产级证据定价准确性与 agent 决策质量档案明确"未经规模验证"。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单渠道（一个外部数据源）、最小工具权限、开启审计日志；用 <code>claimDue</code> + <code>FOR UPDATE SKIP LOCKED</code> 跑一个简单 lead-enrichment 队列；先验证弱证据→人类裁决机制是否真减少"自信错误"。</td>
+<td>PoC 框架由档案中工作队列语义直接给出；具体栈（bun/TypeScript 版本）与部署形态待核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心启发是 <strong>"agent 是产品，数据库是笔记"</strong> 的倒置。传统架构是 API 层含智能（调富化 API、打分），agent 在旁边辅助；trycompai/crm 反过来——API 层（NestJS）刻意"无智能"，只报告"发生了某事"并写队列，<strong>智能全部在 agent 侧</strong>。这种倒置使 agent 的决策可审计（证据账本）、可隔离（deny-all 沙箱）、可独立调度（自己的工作队列）。代价是 agent 的决策质量成为产品的核心瓶颈——若 agent 判断差，整个产品差。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界:Google 登录 + 环境变量 allow-list 单租户内部设计]
+    I --> C[NestJS API 层 刻意无智能 仅记账与入队]
+    C --> Q[工作队列 lib/tasks.ts: claimDue 与 FOR UPDATE SKIP LOCKED 租约]
+    Q --> A[Agent 运行时 apps/agent 基于 Vercel eve filesystem-first durable 框架]
+    A --> S[deny-all egress bash 沙箱 无网络无 DB 仅文本处理]
+    A --> M[模型与推理服务 web_search 在 model provider 侧运行]
+    A --> T[工具与外部系统 工具只报告观察到的事实 不接受置信度分数]
+    T --> L[证据账本 evidence-ledger 强证据写记录 弱证据变人类裁决建议]
+    L --> S2[会话 状态 审计 证据账本与 NestJS 回写 待核验:具体持久化与 schema]
+    A -. eve 上游 breaking change 风险 .- A
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在应用层生态中占据<strong>垂直 SaaS 以 agent 为核心重写</strong>的位置。与 qm（通用 harness 平台）、cindy（个人客户端）不是竞争，而是<strong>不同抽象层次的互补</strong>——qm 是"让团队用 agent 协同"，crm 是"让 agent 重写一个垂直领域"。它是 Vercel eve 框架的首个生产级采用者，也反向验证了 eve 的 filesystem-first 范式。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>极早期 + 极少 contributors</strong>：创建于 2026-07-31（3 天），仅 2 名 contributors（carhartlewis 34 commits / ripgrim 14 commits）。"证据账本""deny-all egress"是设计声明，生产环境下的 agent 决策质量、证据定价准确性未经规模验证。</li>
 <li><strong>单租户内部设计限制适用场景</strong>：明确"single-tenant and internal by design"，非多租户 SaaS。这意味着它更适合作为<strong>范式参考</strong>而非直接商业化产品。</li>
 <li><strong>agent 决策质量是产品核心瓶颈</strong>：整个产品逻辑依赖 agent 的研究/判断质量。若底层模型（GPT-5.6 等）在某些 CRM 场景判断差，产品直接差——这是"agent 是产品"架构的结构性风险。</li>
 <li><strong>eve 依赖</strong>：以 Vercel eve 为底座，eve 本身仍在快速迭代（07-31 追踪时 4.2K⭐），上游 breaking change 风险存在。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs qm（7,015⭐）</strong>：qm 是通用 agent 协同平台（团队多人 scope），crm 是垂直 SaaS 重写（CRM 领域 agent 为本体）。不同抽象层次，qm 更宽，crm 更深。</li>
 <li><strong>vs openworker（9,965⭐，Andrew Ng）</strong>：openworker 是通用本地优先 AI Coworker（审批门控/BYO 模型/25+ 连接器），crm 是垂直领域（CRM）的 agent-native 重写。openworker 更通用，crm 更聚焦。</li>
 <li><strong>vs 传统 CRM（开源/商业）</strong>：传统 CRM 是数据库+表单+可选 AI 助手；crm 把这个范式倒置。它不与 Salesforce 直接竞争（单租户内部），而是示范一种新架构范式。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"垂直 SaaS 以 agent 为核心重写"的范式参考跟踪。</strong> 关注其证据账本在生产数据上的表现、eve 底座的稳定性、以及"agent 决策质量"在真实 CRM 场景的边界。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>证据账本在生产数据的准确性</strong>：弱证据→人类裁决的建议机制是否真的减少了"自信但错误"的事实，还是增加了人工裁决负担。</li>
 <li><strong>eve 底座的稳定性</strong>：eve 下一次大版本更新对 crm 的影响，是否出现 breaking change。</li>

@@ -6,7 +6,7 @@
     <title>eip-work/kuboard-press | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -58,15 +58,61 @@
 <li><strong>监控集成</strong>：内置 Prometheus/Grafana 监控</li>
 <li><strong>权限管理</strong>：多租户/多团队 RBAC</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Kuboard 同时承担两层职责：Web 形态的可视化 K8s 管理面板（控制面代理/聚合层），以及与项目同仓托管的中文 K8s 教程（HTML 文档资源）。</td>
+<td>档案明确"语言: HTML"，标注 HTML 在线可读；管理面板与教程是否同进程、是否共用后端，公开资料未说明。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户浏览器 → Kuboard Web 控制台 → 目标 K8s 集群 API（按档案所述管理 Deployment/Service/Ingress 等对象）。教程路径则独立于集群控制平面。</td>
+<td>协议、认证方式、是否 in-cluster 部署均未在档案中描述，属待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Web GUI 易用性 vs 功能深度：档案自承相比 Rancher 功能有限，与 K9s/Lens/官方 Dashboard 存在差异化竞争；多集群能力与教程跟随 K8s 新版本(1.30+)的更新速度是核心变量。</td>
+<td>具体安全模型、RBAC 边界、教程覆盖率与版本对齐进度均无公开数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议在隔离的测试 K8s 集群上部署 Kuboard，验证多集群接入、RBAC/多租户隔离、Prometheus/Grafana 监控集成，以及教程内容对目标版本的覆盖度；把商业模式（免费版 vs Kuboard Pro）边界列为验收项。</td>
+<td>是否支持多集群由档案列举为"亮点"，但具体集群接入方式、监控集成深度、RBAC 粒度均未给出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <ul>
 <li><strong>本地化教程的力量</strong>：在非英语市场，本地化高质量教程是关键流量入口</li>
 <li><strong>工具+教程双轮驱动</strong>：管理工具吸引使用，教程吸引学习，相互促进</li>
 <li><strong>可视化降低门槛</strong>：复杂系统（K8s）需要好的可视化</li>
 </ul>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[浏览器用户或运维人员] --> WEB[Kuboard Web 管理面板 控制面聚合 待核验后端实现]
+    WEB --> CLUSTERS[目标 K8s 集群 Deployment Service Ingress 等对象 待核验接入协议]
+    CLUSTERS --> R[计算 网络 存储 节点资源]
+    WEB --> OBS[Prometheus Grafana 监控集成 集成深度待核验]
+    WEB --> AUTH[多租户 多团队 RBAC 鉴权策略]
+    WEB --> DOC[同仓托管的中文 K8s 教程 HTML 文档]
+    DOC --> VER[K8s 1.30+ 版本覆盖情况待核验]
+    WEB --> BIZ[商业化边界 免费版 vs Kuboard Pro 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟工具型+资源型项目</strong>。在国内 K8s 生态中扮演重要角色，既是管理工具又是学习资源。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>与 K9s/Lens 竞争</strong>：K9s（TUI）和 Lens（GUI）是更强竞品</li>
 <li><strong>功能深度</strong>：相比 Rancher 等企业级方案，Kuboard 功能有限</li>
@@ -74,7 +120,7 @@
 <li><strong>教程时效性</strong>：K8s 版本迭代快，教程需持续更新</li>
 <li><strong>商业模式不明</strong>：免费版 vs 专业版的功能划分</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs K9s</strong>：K9s 是 TUI 工具，Kuboard 是 Web GUI</li>
 <li><strong>vs Lens</strong>：Lens 是桌面客户端，Kuboard 是 Web 服务</li>
@@ -82,9 +128,9 @@
 <li><strong>vs K8s Dashboard</strong>：官方 Dashboard 功能基础，Kuboard 功能丰富</li>
 <li><strong>vs Kubernetes 中文社区</strong>：社区偏论坛，Kuboard 偏系统教程</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>推荐关注（国内 K8s 用户）。</strong> 如果在国内使用 K8s，Kuboard 教程是最好的中文学习资源之一。管理工具按需采用。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>K8s 新版本（1.30+）的教程更新速度</li>
 <li>是否增加云原生 AI 工作负载管理</li>

@@ -34,18 +34,34 @@ Claude（以及大多数 LLM）无法直接"看"视频。用户如果想让 AI �
 2. **Claude Code Skill 集成**：符合 Agent Skills 标准，一键安装
 3. **帧抽取策略**：不是每帧都抽，而是智能采样关键帧
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | claude-video 是 Claude Code 技能形态的编排层，串联 yt-dlp、ffmpeg、Whisper 三个外部工具，并把多模态结果交回 Claude；自身不提供模型、不做存储抽象 | 仅基于档案中明示的流水线组件（yt-dlp/ffmpeg/Whisper）与"Skill"形态；未声明鉴权、持久化、部署形态 |
+| 主路径 | `/watch` 命令 → 下载视频（yt-dlp）→ ffmpeg 抽取关键帧 → Whisper 转录音频 → 帧图+转录文本提交 Claude → 视频内容理解回写 | 路径与组件来自档案"关键技术亮点"与 mermaid 段；具体协议（HTTP/MCP/Skill manifest）、会话模型未在档案中说明 |
+| 关键权衡 | 在"零学习成本/易集成"与"Token 消耗、版权风险、上游吸收风险"之间取舍；技术壁垒低、扩展性依赖外部工具替换能力 | 权衡判断来自档案"风险/局限"与"泡沫风险中等"；未提供量化数据（如帧数/分钟、单视频成本） |
+| 最小 PoC | 单一公开短视频 URL → 固定目录输出关键帧+转录 → 提交 Claude 校验摘要准确度；验收项：成本上限、版权规避、可审计日志、退出路径 | PoC 边界仅依据档案定位"工具型 Skill"与"采用建议"段；具体验收阈值、SLO、权限模型待核验 |
+
 ## 架构启发
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 flowchart LR
-    A["/watch URL"] --> B[下载视频<br/>yt-dlp]
-    B --> C[抽取关键帧<br/>ffmpeg]
-    C --> D[转录音频<br/>Whisper]
-    D --> E[帧图片 + 转录文本<br/>全部交给 Claude]
-    E --> F[Claude 多模态理解<br/>视频内容分析]
-    
-    style A fill:#58d,stroke:#333,color:#fff
-    style E fill:#f80,stroke:#333,color:#fff
-    style F fill:#a5f,stroke:#333,color:#fff
+  U["用户<br/>/watch &lt;url&gt;"] --> S["claude-video Skill 编排层"]
+  S --> Y["yt-dlp<br/>下载视频（待核验：站点/版权策略）"]
+  Y --> F["ffmpeg<br/>抽取关键帧（待核验：采样策略）"]
+  F --> A["Whisper<br/>转录音频"]
+  A --> P["帧图 + 转录文本<br/>组装为 Prompt"]
+  P --> C["Claude<br/>多模态理解"]
+  C --> R["结果回写<br/>（待核验：会话/状态持久化）"]
+  S -.版权/合规风险.-> X["外部边界：视频平台 ToS"]
+  S -.Token 成本与上游吸收.-> X
+  style S fill:#58d,stroke:#333,color:#fff
+  style C fill:#a5f,stroke:#333,color:#fff
+  style P fill:#f80,stroke:#333,color:#fff
 ```
 
 **启发**：Agent 多模态感知不需要复杂的端到端模型——"拆解 + 组合"式的流水线设计在工程上更实用。

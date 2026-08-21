@@ -6,7 +6,7 @@
     <title>f/prompts.chat | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,73 @@
 <li><strong>Markdown 结构:</strong> 提示词以 Markdown 表格组织，便于浏览、搜索和贡献</li>
 <li><strong>社区筛选机制:</strong> 通过 GitHub Issues 和 PR 进行提示词的提交、讨论和合并</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本项目是 GitHub 上的 Markdown 提示词集合，无独立运行时；以 README/awesome-list 形式承载内容，配套网站 prompts.chat 提供浏览与复制入口</td>
+<td>档案仅描述其作为"知识库项目"和 Markdown 表格组织结构，未证实自有 API、数据库或后端服务</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>访问者 → 仓库 Markdown / 网站搜索 → 浏览提示词条目 → 复制粘贴至外部 LLM 客户端使用；贡献者 → GitHub Issue/PR → 社区筛选 → 合并入库</td>
+<td>流程基于"awesome-list + 配套网站 + PR 流程"的档案描述，具体网站实现与评审规则未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>作为静态资源型知识库，权衡集中在"内容广度 vs 提示词质量/时效性"与"社区贡献低门槛 vs 缺乏统一评估标准"之间；非传统系统级架构权衡</td>
+<td>档案明确提到质量参差、面向 GPT-3.5 时代优化、维护更新滞后，但无性能/扩展性数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>无需 PoC 即可采用——直接 fork 仓库或访问 prompts.chat 即可消费提示词；唯一验证动作是抽样若干"Act as X"条目在目标 LLM 上回归输出质量</td>
+<td>档案定位为"知识资源型项目"，未提供任何部署、集成或测试脚本可作 PoC 依据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>prompts.chat 本质上是一个"知识库"项目，其架构启发在于"众包 + 版本控制"的知识管理范式——用 Git 管理 Prompt 内容，用 PR 流程保证质量，用 Issues 讨论改进。这种模式适用于任何"社区共建知识库"场景。其"Act as X"模式也成为 Prompt Engineering 的基础范式之一。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> W[prompts.chat 网站 搜索与一键复制 待核验]
+    U --> R[GitHub 仓库 README 与 Markdown 表格]
+    R --> P[提示词模板集合 Act as X 等]
+    W --> P
+    P --> L[外部 LLM 客户端 由用户粘贴执行 待核验]
+    R --> C[贡献者 提交 Issue 或 PR]
+    C --> Q[社区筛选机制 无统一评估标准]
+    Q --> P
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>知识资源型项目。</strong> prompts.chat 不是工具或平台，而是 Prompt 知识的集合。它的价值在于：(1) 作为 Prompt Engineering 的入门教材；(2) 作为 AI 时代的"写作模板库"。随着 AI 能力增强（用户不需要精心设计 Prompt），这类项目的增量价值在下降，但作为历史文档和教育资源仍有意义。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>时效性风险:</strong> 提示词针对 GPT-3.5 时代优化，在 GPT-4 / Claude 时代可能不是最优</li>
 <li><strong>Agent 时代挑战:</strong> AI Agent 可以自主生成和优化 Prompt，人工编写 Prompt 的需求减少</li>
 <li><strong>内容陈旧:</strong> 部分提示词已过时，但维护更新速度跟不上</li>
 <li><strong>质量参差不齐:</strong> 社区提交的提示词质量差异大，缺乏统一评估标准</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Prompt Engineering 指南 (DAIR.AI):</strong> 更学术化、系统性，prompts.chat 更实用导向</li>
 <li><strong>vs OpenAI Cookbook:</strong> OpenAI 官方示例更技术化（API 调用），prompts.chat 更面向终端用户</li>
 <li><strong>vs Learn Prompting:</strong> Learn Prompting 是完整课程，prompts.chat 是参考列表</li>
 <li><strong>vs Agent 时代的 Skill 库:</strong> Skill 库（如 Claude Skills）是"Prompt + 工具"的组合，比纯 Prompt 更强大</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级。</strong> prompts.chat 作为 Prompt Engineering 的先驱已完成其历史使命。当前增量价值有限。值得关注的是：是否演进为更动态的 Prompt 平台（如支持版本化、A/B 测试、效果评分），或被 Agent / Skill 体系取代。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否针对 GPT-4 / Claude / DeepSeek 等新模型优化提示词</li>
 <li>是否引入提示词效果评分 / 社区投票机制</li>

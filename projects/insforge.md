@@ -44,30 +44,66 @@ Coding Agent（Claude Code、Cursor、Codex）能写前端代码，但部署全�
 4. **AI Gateway**：统一 LLM 调用入口
 5. **Realtime WebSockets**：支持实时应用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | InsForge 自身是面向 Coding Agent 的全栈后端平台；外部边界含三类 Agent 客户端（Claude Code / Cursor / Codex CLI）、外部 LLM 供应商（经 AI Gateway）、外部 OAuth2 提供方（经 Auth）。 | 依据项目档案的 Agent 交互层清单、Auth 与 AI Gateway 描述；具体供应商名单与协议未在档案中给出，标"待核验"。 |
+| 主路径 | Agent（Claude Code / Cursor / Codex）→ MCP Server 或 CLI/Skills → InsForge 能力层（PostgreSQL+pgvector / OAuth2 Auth / Storage / Deno Edge Functions / AI Gateway / Compute / Deployment）→ Realtime WebSockets 回写状态。 | 主路径来自"双接口架构 + 五大能力 + Realtime WebSockets"描述；执行编排、事务边界、持久化细节均待源码核验。 |
+| 关键权衡 | MCP-first 重新定义后端原语粒度（高层"操作"而非 CRUD）换取 Agent 友好性；代价是初期复杂度高、依赖专属操作语义、迁移成本大，且面临 Supabase 等对手补齐 MCP 后被挤压的风险。 | 权衡论点引自档案"核心洞察"与"风险/局限"章节；Supabase 是否已原生 MCP、AI Gateway 路由能力等均标"待核验"。 |
+| 最小 PoC | 选 Claude Code / Cursor / Codex 中任一（先 1 个渠道），只暴露最小工具权限，仅启用 PostgreSQL + OAuth2 Auth + 一条 Deno Edge Function，本地自托管 MCP Server，开启可审计日志与 Realtime WebSocket 观测；验收项含安全、成本、SLO 与退出路径。 | PoC 范围基于档案能力清单与"采用建议"；具体工具权限模型、日志格式、部署形态未在档案中给出，标"待核验"。 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "Agent 交互层"
-        A1[Claude Code]
-        A2[Cursor]
-        A3[Codex CLI]
-    end
-    subgraph "InsForge 接口层"
-        B1[MCP Server<br/>工具接口]
-        B2[CLI + Skills<br/>命令行接口]
-    end
-    subgraph "InsForge 能力层"
-        C1[Database<br/>PostgreSQL + pgvector]
-        C2[Auth<br/>OAuth2]
-        C3[Storage]
-        C4[Edge Functions<br/>Deno]
-        C5[AI Gateway]
-        C6[Compute]
-        C7[Deployment]
-    end
-    A1 & A2 & A3 --> B1 & B2
-    B1 & B2 --> C1 & C2 & C3 & C4 & C5 & C6 & C7
+graph LR
+  A1["Claude Code<br/>(待核验客户端版本)"]
+  A2["Cursor"]
+  A3["Codex CLI"]
+  B1["MCP Server<br/>工具接口"]
+  B2["CLI + Skills<br/>命令行接口"]
+  C1["Database<br/>PostgreSQL + pgvector"]
+  C2["Auth<br/>OAuth2"]
+  C3["Storage"]
+  C4["Edge Functions<br/>Deno"]
+  C5["AI Gateway<br/>(待核验 LLM 供应商)"]
+  C6["Compute"]
+  C7["Deployment"]
+  D1["Realtime WebSockets<br/>(状态/控制回写)"]
+  E1["外部 OAuth2 提供方<br/>(待核验)"]
+  E2["外部 LLM 供应商<br/>(待核验)"]
+
+  A1 --> B1
+  A2 --> B1
+  A3 --> B1
+  A1 --> B2
+  A2 --> B2
+  A3 --> B2
+
+  B1 --> C1
+  B1 --> C2
+  B1 --> C3
+  B1 --> C4
+  B1 --> C5
+  B1 --> C6
+  B1 --> C7
+  B2 --> C1
+  B2 --> C4
+  B2 --> C7
+
+  C2 --> E1
+  C5 --> E2
+
+  C1 --> D1
+  C4 --> D1
+  C3 --> D1
+  D1 --> A1
+  D1 --> A2
+  D1 --> A3
 ```
 
 **核心洞察**：BaaS 的 Agent 化不是简单加 MCP 接口，而是**重新定义后端原语的粒度**。Agent 不需要 CRUD API，它需要的是"部署一个函数""创建一个用户表""设置 OAuth"这样的高层操作。

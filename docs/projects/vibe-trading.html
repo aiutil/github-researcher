@@ -6,7 +6,7 @@
     <title>Vibe-Trading | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,59 @@
 <li><strong>Docker 一键部署</strong>：FastAPI 服务化，支持本地/云端部署</li>
 <li><strong>API Server 模块化</strong>：从 1,103 行重构为 371 行，工程质量持续提升</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>多市场个人交易 Agent 系统，Python 实现，承担多 LLM Provider（OpenAI/Claude/Kimi/GLM/Codex）与多市场（美股/港股/A股/印度 NSE·BSE）之间的编排层，封装 460 个 Alpha 因子与多 Agent 辩论（Swarm）；具体入口形态、鉴权与持久化实现以源码核验为准。</td>
+<td>档案给出分类、语言、标签与组件名称；未提供 API 协议、数据库选型、部署拓扑细节。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>客户端请求 → 入口与身份边界 → 项目核心编排/运行时（含多 Agent Swarm 辩论） → 模型推理 + 市场特定交易规则引擎与数据源 → 决策回写到会话/状态/审计；交易执行链路具体形态（手动、半自动、自动）档案未直接描述。</td>
+<td>仅档案明列的组件名可入图；执行是否触达券商通道、是否含实盘下单未在档案中确认。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多市场广度 vs 单市场深度（4 市场覆盖 vs 单市场专业度）、Agent 自治速度 vs 风控拦截能力（档案承认后果不可逆却未列具体止损/仓位/异常拦截实现）、LLM 多 Provider 灵活性 vs token 成本与供应商耦合、学术实验室信任 vs 生产可审计性。</td>
+<td>权衡判断基于档案风险段与定位比较；具体风控模块、token 预算控制、可解释性实现均待核验。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一市场（如美股）、单一 LLM Provider、最小工具权限、可审计日志四项约束下验证；验收须包含决策可追溯、成本/SLO 边界与退出路径；与同类（ai-hedge-fund / TradingAgents）做特性差异回归。</td>
+<td>档案建议但未给出 Docker 内部端口、镜像签名、依赖矩阵；最小 PoC 所需参数以官方仓库 README/Dockerfile 核验为准。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Vibe-Trading 的多市场引擎设计揭示了一个重要架构模式：<strong>市场规则作为可插拔模块</strong>。每个市场的交易规则（T+1/T+0、涨跌停板、费用结构、数据源）封装为独立引擎，Agent 核心逻辑保持不变。这种模式可推广到其他"规则驱动的多场景 Agent"领域。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>FastAPI API Server Docker 一键部署 待核验]
+    I --> C[项目核心编排与运行时<br/>Python]
+    C --> M[模型或推理服务<br/>OpenAI Claude Kimi GLM Codex]
+    C --> T[工具与外部系统<br/>460 Alpha 因子 美股 港股 A股 印度 NSE BSE 数据源 待核验]
+    C --> R[多市场交易规则引擎<br/>T+1 涨跌停 费用结构 待核验]
+    C --> S[会话 状态 审计<br/>API Server 模块化重构 待核验]
+    M --> C
+    R --> C
+    T --> C
+    S --> A[风控与可解释性边界<br/>止损 仓位 异常拦截 实盘通道 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在交易 Agent 生态中，Vibe-Trading 占据"多市场个人交易 Agent"的位置。它比 ai-hedge-fund 更完整（覆盖更多市场），比 TradingAgents 更产品化（有 API Server 和 Docker 部署）。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>回测 ≠ 实盘</strong>：历史因子表现不代表未来收益，市场 regime 切换会导致因子失效</li>
 <li><strong>交易是后果不可逆场景</strong>：Agent 决策错误会直接导致资金损失，可解释性和风控比收益更重要</li>
@@ -62,15 +110,15 @@
 <li><strong>LLM 推理成本</strong>：Swarm 多 Agent 辩论每次决策都消耗大量 token</li>
 <li><strong>监管风险</strong>：AI 驱动交易在多国面临日益严格的监管审查</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>virattt/ai-hedge-fund</strong>：AI 对冲基金团队，偏研究型，Vibe-Trading 更产品化</li>
 <li><strong>TauricResearch/TradingAgents</strong>：多 Agent LLM 金融交易框架，Vibe-Trading 在其基础上扩展了多市场覆盖</li>
 <li><strong>simonlin1212/TradingAgents-astock（2.1K⭐）</strong>：A 股多 Agent 投研框架，深度适配 A 股规则，Vibe-Trading 更广但 A 股深度可能不如</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>谨慎跟踪。</strong> 作为技术研究对象（多 Agent 辩论架构、多市场引擎设计）值得跟踪，但不建议用于实盘交易。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有实盘交易记录和业绩追踪</li>
 <li>Swarm 辩论的可解释性——Agent 决策逻辑是否可审计</li>

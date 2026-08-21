@@ -6,7 +6,7 @@
     <title>open-notebook | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,42 +52,80 @@
 <li><strong>灵活的 AI Pipeline</strong>：可自定义 RAG 策略、模型选择和 Prompt</li>
 <li><strong>自托管架构</strong>：数据完全可控，适合企业知识管理场景</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>编排层位于多模态入口、可配置 LLM 与笔记/问答/摘要交互层之间，承担 RAG 策略与 Pipeline 自定义；属于应用层，非基础设施</td>
+<td>基于 TypeScript 全栈、knowledge-management/notebook/rag/ai-enhanced 标签及"开源 NotebookLM 替代"定位的推断，未含源码确认的模块清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>多模态输入 → 处理 Pipeline（RAG+自定义策略）→ 存储（向量库+原始素材）→ 可配置 LLM → 交互层（笔记/问答/摘要），并以反馈回灌 Pipeline</td>
+<td>来自档案"架构启发"流程图的主链路描述；具体协议、向量库选型、持久化实现未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>扩展速度（多模态接入、Pipeline 可定制） vs 权限/可观测性/供应商耦合——档案明确指出 SSO、审计、权限等企业功能"未见"，且 AI 推理成本由用户承担</td>
+<td>直接引用档案"风险/局限"四条；未含许可证、依赖与合规细节</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一文本渠道 + 最小工具权限 + 可审计日志下做端到端验证，验收项含数据主权、成本、SLO 与退出路径，再扩到音频/视频/网页</td>
+<td>沿用档案"采用建议"思路；PoC 工具链与部署形态需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>open-notebook 代表了 RAG 从"技术"到"产品"的转变——它不是在做一个更好的 RAG 库，而是在做一个更好的知识管理工具，RAG 只是底层能力。这对架构师的启发是：用户不关心 RAG，用户关心的是知识管理体验。</p>
-<pre class="mermaid">flowchart TB
-    subgraph "open-notebook 架构"
-        IS["📥 多模态输入<br/>文本/音频/视频/网页"]
-        PR["⚙️ 处理 Pipeline<br/>RAG + 自定义策略"]
-        ST["💾 存储<br/>向量库 + 原始素材"]
-        AI["🧠 AI 层<br/>可配置 LLM"]
-        UI["💡 交互层<br/>笔记/问答/摘要"]
-    end
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A["多模态输入<br/>文本/音频/视频/网页"]
+  B["处理 Pipeline<br/>RAG + 自定义策略"]
+  C["存储<br/>向量库 + 原始素材<br/>(待核验：向量库选型)"]
+  D["可配置 LLM<br/>(待核验：供应商/协议)"]
+  E["交互层<br/>笔记 / 问答 / 摘要"]
+  F["企业边界<br/>SSO · 权限 · 审计日志<br/>(档案标注：未见)"]
+  G["运维/成本边界<br/>自托管推理成本 · 退出路径<br/>(待核验：部署形态)"]
 
-    IS --> PR --> ST --> AI --> UI
-    UI -.->|"反馈优化"| PR
+  A --> B --> C --> D --> E
+  E -.->|"反馈回灌"| B
+  E -.-> F
+  D -.-> G
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <ul>
 <li><strong>生产可用</strong>：功能完整，可自托管，适合个人和小团队使用</li>
 <li>非基础设施候选——更偏应用层</li>
 <li>有潜力成为企业知识管理平台的底座</li>
 </ul>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li>⚠️ <strong>竞争激烈</strong>：NotebookLM 本身免费且持续迭代，开源替代需要持续保持差异化</li>
 <li>⚠️ <strong>维护可持续性</strong>：个人主导项目（lfnovo），社区规模需持续扩大</li>
 <li>⚠️ <strong>企业功能缺失</strong>：SSO、权限管理、审计日志等企业功能未见</li>
 <li>⚠️ <strong>模型成本</strong>：自托管后 AI 推理成本由用户承担</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Google NotebookLM</strong>：开源可控 vs 免费但数据在 Google。目标用户不同。</li>
 <li><strong>vs tolaria（16K⭐）</strong>：open-notebook 偏 AI 知识管理，tolaria 偏 Markdown 知识库管理。前者 AI 更强，后者结构化更强。</li>
 <li><strong>vs Obsidian</strong>：Obsidian 是笔记工具，open-notebook 是 AI 增强知识管理。层级不同但可互补。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>✅ 是。AI 增强知识管理是一个持续增长的赛道，open-notebook 是开源侧的领先者。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>企业功能路线图——是否引入 SSO/权限/审计</li>
 <li>多模态能力扩展——是否支持更多非文本格式</li>

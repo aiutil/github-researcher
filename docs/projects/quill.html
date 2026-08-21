@@ -6,7 +6,7 @@
     <title>digimata/quill | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,26 +47,75 @@
 <li><strong>文件系统即队列</strong>：每个 session 一个目录（<code>~/Recordings/&lt;yyyy.MM.dd-HHmm&gt;/</code>），含 <code>meta.json</code>（时间戳/偏移）但无 <code>transcript.json</code> 的 session 即为 pending。未完成的转录任务在下次启动时自动恢复。失败只 append 到 <code>transcribe.log</code>，不阻塞后续任务。</li>
 <li><strong>端侧转录 + 引擎协议化</strong>：默认 Parakeet TDT 0.6B v2（经 FluidAudio 的 Core ML 移植），模型约 600MB 首次下载；WhisperKit large-v3-turbo 作为计划中的 fallback。引擎在 protocol 后面，可替换。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单 Swift 二进制 macOS 菜单栏应用；入口仅菜单栏，无 GUI/无服务；依赖 macOS 15+ Core Audio process taps 取系统音频；ASR 通过 protocol 抽象，默认 Parakeet TDT 0.6B v2 经 FluidAudio Core ML 移植，约 600MB 首次下载，WhisperKit 列为计划中 fallback</td>
+<td>模型规模、WhisperKit 集成进度、macOS 版本下界均需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>启动 → 菜单栏触发 → 双轨录制（mic.caf + system.caf）写入 <code>~/Recordings/&lt;yyyy.MM.dd-HHmm&gt;/</code> 并落 <code>meta.json</code> → Core ML 引擎（默认 Parakeet TDT）转录 → 产物回写 transcript.json；缺 transcript.json 的 session 在下次启动自动恢复，失败 append 到 transcribe.log 不阻塞队列</td>
+<td>"queue/offset/merge 机制"在 README 中仅是名词提及，具体调度未证</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>隐私 vs 协作/搜索/跨设备（纯本地 = 数据只在本机文件）；CAF vs m4a（用容错换取可分发性）；双轨天然二分离 vs 真实多人 speaker diarization；0.6B 英文模型速度 vs 多语种/口音/术语准确率；小团队 bus factor 与模型迭代速度</td>
+<td>多说话人 &gt;2 场景的实际表现、Intel Mac 体验阈值未评测</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>一台 macOS 15+ Apple Silicon 机；下载 600MB Core ML 模型；菜单栏建一次会议录 30–60 分钟双轨；检查目录产物、transcribe.log、中断后重启是否续跑、英文转录可用率；把 verdict 框在"单用户隐私会议"用例，团队协作明确排除</td>
+<td>评估局限于个人单语种环境，多人/多语/长会议需扩样本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>quill 的设计哲学是"filesystem is the interface"——录音、元数据、转录结果、日志都是普通文件，没有数据库、没有后台服务、没有 GUI 窗口（只有菜单栏图标）。这与本周 vercel/eve 的"filesystem-first agent 框架"异曲同工：<strong>把状态和接口简化为文件系统操作，降低复杂度和故障面</strong>。CAF 的"无需 finalization"选择体现了对失败场景的工程敬畏。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户] --> MB[菜单栏入口]
+    MB --> RT[quill 运行时 Swift 二进制]
+    RT --> AT[Core Audio process taps macOS15+ 待核验]
+    AT --> FS[/~/Recordings/session 目录/]
+    RT --> FS
+    FS --> Q[文件系统队列 meta.json 缺 transcript.json 即 pending]
+    Q --> ASR[ASR 引擎 protocol 默认 Parakeet TDT 0.6B v2 经 FluidAudio Core ML 约600MB首次下载]
+    ASR --> FS
+    FS --> TK[双轨产物 mic.caf + system.caf 作为 me vs them 二分信号]
+    RT -.失败 append.-> LG[transcribe.log 不阻塞后续]
+    ASR -.计划 fallback 待核验.-> WK[WhisperKit large-v3-turbo]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在边缘推理范式家族中，quill 是<strong>已可交付的端侧工具</strong>——介于 esp32-ai（纯架构验证）和 colibri（高性能引擎）之间。它不是基础设施，而是直接面向终端用户的实用工具。归类为"工具型"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>macOS 15+ 限定</strong>：依赖 Core Audio process taps 做系统音频录制（无虚拟设备/无内核扩展），macOS 15 以下不可用。Apple Silicon recommended for transcription speed（Intel Mac 体验会差）。</li>
 <li><strong>小团队</strong>：2 contributors，单 Swift 二进制，bus factor 低。sibling 项目 parrot（同 skeleton）暗示作者是个人/小团队持续维护多个工具。</li>
 <li><strong>模型能力边界</strong>：Parakeet TDT 0.6B 是英文模型，非英语会议需等 Whisper fallback；0.6B 参数量在嘈杂/口音/专业术语场景的准确率未经大规模评测。</li>
 <li><strong>纯本地 = 无协作</strong>：转录结果在本地文件，团队共享/搜索/标注需要额外工具。这对个人用户够用，但团队场景需要配合其他系统。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Whisper（OpenAI）</strong>：Whisper 是通用 ASR 模型/库，quill 是基于端侧 ASR（Parakeet/计划支持 Whisper）的完整会议工具。quill 的价值在"双轨录制 + 文件系统队列 + 菜单栏 UX"的工程整合，而非模型本身。</li>
 <li><strong>vs Otter.ai / 云端转录</strong>：核心差异是隐私——quill 全本地，云端方案数据出机器。quill 牺牲了云端的协作/搜索/跨设备能力。</li>
 <li><strong>vs esp32-ai</strong>：同为"边缘推理范式家族"，但 quill 是可用的产品（端侧 ASR），esp32-ai 是架构验证（微控制器 LLM）。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"本地优先 AI 实用工具"的范本。</strong> 关注其引擎协议化设计是否吸引更多 ASR 模型接入，以及 macOS 系统能力（Core Audio taps）的演进。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Whisper fallback 的落地</strong>：多语言支持是扩大用户群的关键，观察 WhisperKit 集成的完成度和性能。</li>
 <li><strong>社区是否扩展到团队场景</strong>：有人基于 quill 的文件格式（transcript.json）构建共享/搜索/标注层吗？</li>

@@ -6,7 +6,7 @@
     <title>DeepSpec | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,56 @@
 <li><strong>多 GPU 训练</strong>：默认 8 GPU 单节点配置，每 GPU 一个 worker</li>
 <li><strong>9 个评测基准</strong>：gsm8k/math500/aime25/humaneval/mbpp/livecodebench/mt-bench/alpaca/arena-hard-v2</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>DeepSpec 是 DeepSeek 出品的推测解码 draft model 训练+评估代码库，覆盖 DSpark/DFlash/Eagle3 三种算法，配套论文与 checkpoint，而非通用推理引擎或通用训练框架</td>
+<td>边界来自档案"定位判断""关键技术亮点"；三算法命名及论文/checkpoint 配套未在源码中核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Data Prep（38TB Target Cache 缓存目标模型中间态）→ Training（8 GPU 单节点，每 GPU 一个 worker）→ Evaluation（9 个评测基准：gsm8k/math500/aime25/humaneval/mbpp/livecodebench/mt-bench/alpaca/arena-hard-v2）→ 输出可用于 vLLM 等推理引擎的 draft model</td>
+<td>路径节点及评测集列表来自档案"关键技术亮点"；与 vLLM 的集成形态未在源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>训练门槛（~38TB 存储 + 默认 8 GPU）与可复现性/算法覆盖面（DSpark 自有 + DFlash + Eagle3 统一实现）的取舍；推测解码算法快速迭代 vs 框架稳定性的张力</td>
+<td>取舍依据档案"风险/局限"与"关键技术亮点"；具体资源开销与算法稳定性数据未核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 Qwen3-4B/8B/14B 或 Gemma-4-12B 中的最小模型，在 8 GPU 单节点上跑通 Data Prep→Training→Evaluation 完整 pipeline，对比 DSpark/DFlash/Eagle3 在选定基准上的加速比</td>
+<td>模型清单与硬件配置来自档案；最小模型名称、数据子集选择与加速比指标需 PoC 自验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>推理加速不是推理时才做的事，而是需要独立的训练流程。这是「推理优化」从运行时技巧走向训练时工程的标志。Data Preparation → Training → Evaluation 的三段式 pipeline 为推理优化提供了标准化路径。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者与上游系统] --> I[入口与配置边界]
+    I --> DP[Data Prep 38TB Target Cache]
+    DP --> TR[Training 8 GPU 单节点每 GPU 一个 worker]
+    TR --> EV[Evaluation 9 个基准 gsm8k math500 aime25 humaneval mbpp livecodebench mt-bench alpaca arena-hard-v2]
+    EV --> DM[Draft Model Checkpoint DSpark DFlash Eagle3 待核验]
+    DM --> OE[vLLM 等推理引擎 待核验]
+    TR -. 算法快速迭代 .-> RK[框架稳定性风险 待核验]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>基础设施候选</strong> — 不是推理引擎，不是通用训练框架，是推测解码领域的专项训练基础设施。如果推测解码成为推理标配（趋势明确），DeepSpec 就是训练侧的标准化工具。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>38TB 数据集门槛</strong>：默认配置需要 ~38TB 存储，绝大多数团队无法承担</li>
 <li><strong>8 GPU 配置</strong>：训练门槛高，短期只有大算力团队受益</li>
@@ -68,7 +113,7 @@
 <li><strong>维护风险</strong>：DeepSeek 的开源项目维护节奏不确定</li>
 <li><strong>算法迭代快</strong>：推测解码领域论文更新极快，框架可能频繁 breaking change</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -95,9 +140,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>是</strong> — 推测解码训练工具链的标杆项目，关注企业级适用性演进。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>38TB 存储门槛是否能降低（如分布式缓存或采样策略）</li>
 <li>算法迭代对框架稳定性的影响</li>

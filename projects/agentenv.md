@@ -37,8 +37,21 @@ AgentENV 把 Firecracker microVM + 快照语义 + 分布式调度做成平台，
 3. **原生 snapshot + fork**：增量快照内存和文件系统变更（< 100ms，即使重度磁盘修改）；运行中的环境可 fork 成多个独立沙箱用于并行 agent 工作流；快照持久化到 S3 兼容存储或共享分布式文件系统。
 4. **高性能 I/O + 密度保持**：ublk 高性能 I/O，跨存储和内存快照数据共享主机页缓存；内存 ballooning 回收可回收 guest 内存，支撑高 overcommit，环境运行越久越分散仍保密度。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 分布式 microVM 编排平台：Rust 控制平面调度 Firecracker 实例，对接 S3/共享 FS 提供快照持久化，依赖 `/dev/kvm` 与 Linux 6.8+ | 组件与依赖以 README/档案为准；具体调度协议、API 形态、控制平面内部模块未披露 |
+| 主路径 | 调度器按需拉起 microVM → overlaybd 按需装入 OCI 镜像 → ublk 处理 I/O → 快照管理器生成增量快照并写 S3/分布式 FS → fork 出子环境用于并行轨迹 | 延迟数字（启动 <50ms、暂停 <100ms、增量快照 <100ms）来自档案；调度细节、客户端协议未公开 |
+| 关键权衡 | microVM 强隔离 + 快照/fork 极低开销 vs. KVM/Linux 6.8+ 强宿主依赖、缺失鉴权、运维栈复杂度显著高于容器编排 | 鉴权缺失由 README 警告明确；性能数字未给出基准条件 |
+| 最小 PoC | 单台 Linux 6.8+ 裸金属/嵌套虚拟化云主机 → 部署控制平面 + 一份基准 OCI 镜像 → 验证启动/暂停/恢复/fork 时延与 S3 快照往返 → 接入一份最小 Agent RL 回路核对环境生命周期语义 | 实施细节（镜像选择、checkpoint 协议、与 RL 框架对接方式）均需源码核验 |
+
 ## 架构启发
 核心启发是**「环境即快照、即 fork、即迁移」是 Agent RL 训练的正确抽象**。传统容器的「启动一个新实例」语义对 RL 太重；AgentENV 把环境做成**可暂停/恢复/分叉的快照对象**，让 RL 的「并行探索 N 条轨迹」「从检查点回滚重探索」变成低成本操作。这对架构师的启发是：**当你需要大规模、可分叉、可回滚的隔离执行单元时，microVM + 快照 > 容器 > 进程**。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
 
 ```mermaid
 flowchart TB
@@ -47,24 +60,29 @@ flowchart TB
         SNAP["快照管理器<br/>增量 < 100ms"]
     end
     subgraph HOST["主机节点 (需 /dev/kvm, Linux 6.8+)"]
-        FC1["Firecracker microVM<br/>启动 < 50ms"]
-        FC2["Firecracker microVM<br/>fork 自 FC1"]
-        FCN["Firecracker microVM N"]
-        FC1 -.->|"fork"| FC2
+        FC1["Firecracker microVM<br/>启动/恢复 < 50ms"]
+        FC2["Firecracker microVM (fork 自 FC1)"]
         UBLK["ublk 高性能 I/O"]
-        BAL["内存 ballooning<br/>回收空闲内存"]
+        BAL["内存 ballooning"]
     end
     subgraph STORE["持久化"]
         S3["S3 兼容对象存储<br/>或共享分布式 FS"]
         OBD["overlaybd 按需加载<br/>本地有界缓存"]
     end
+    subgraph RISK["风险/控制边界"]
+        AUTH["鉴权缺失<br/>(README 警告: 勿暴露公网)"]
+        HOSTDEP["宿主依赖<br/>/dev/kvm + Linux 6.8+"]
+    end
     SCHED --> FC1
+    FC1 -.->|"fork"| FC2
     SNAP --> FC1
     SNAP --> S3
-    FC1 --> UBLK
-    FC1 --> BAL
     S3 --> OBD
     OBD --> FC1
+    FC1 --> UBLK
+    FC1 --> BAL
+    AUTH -.->|"前置阻塞"| CTRL
+    HOSTDEP -.->|"环境约束"| HOST
     NOTE["为 Kimi K3 Agent RL 训练提供环境实例"]:::note
     classDef note fill:#fff3cd,stroke:#856404
 ```

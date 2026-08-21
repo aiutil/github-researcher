@@ -36,24 +36,40 @@ Vercel Labs 连续推出 zerolang + zero-native 两个 Agent 基础设施项目�
 3. **Vercel Labs 背景**：Vercel 的前端 + Edge Runtime 经验为 Agent 语言提供了独特视角
 4. **88 PRs**：社区贡献活跃，语言生态可能在快速构建中
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | zerolang 作为 Agent 专用编程语言，由 Vercel Labs 以 C 语言实现、Apache 2.0 开源，定位于 Agent 运行时/编程语言层，与 zero-native、forkd、rmux 等同厂项目构成潜在全栈 | 仅基于分类（学习型）、语言（C）、标签（agent-language / agent-runtime）、姊妹项目名（zero-native、forkd、rmux）推断；具体入口协议、模型/工具接入形态未在档案中描述 |
+| 主路径 | 源码以 zerolang 编写 → 编译/嵌入到 zero-native 等目标运行时 → 在 forkd（microVM 隔离）上运行 → 由 rmux 进程多路复用管理 | 主路径来自档案中给出的启发图（zerolang → zero-native → forkd → rmux）；编译产物形式、隔离实现细节、IPC/调度协议均为待核验 |
+| 关键权衡 | 专用语言的差异化收益 vs 新语言生态建设成本；C 实现的高性能/可嵌入性 vs Agent 场景对工具生态（Python/TS 库）的依赖；Vercel Labs 实验性定位 vs 生产可采用性 | 权衡描述属档案原话；性能基准、互操作能力、稳定性数据档案中均未给出 |
+| 最小 PoC | 选择单一渠道（如 CLI 入口）与最小工具集，用 zerolang 写一个隔离、可审计的 Agent 任务，跑在 zero-native/forkd 栈上，验证语言特性、隔离边界与可观测性 | PoC 形态为建议性；zero-native、forkd、rmux 与 zerolang 的集成方式、API 表面均属待核验 |
+
 ## 架构启发
 - Agent 语言 vs Agent 框架：从「用 Python 写 Agent」到「用 Agent 语言写 Agent」
 - 如果成立，将形成新的编译层：zerolang → 目标运行时（V8/WASM/native）
 - 与 zero-native（Zig + WebUI）形成 Agent 全栈：语言 + UI + 运行时
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
 graph LR
-    Z["zerolang<br/>Agent 编程语言"]
-    N["zero-native<br/>Zig + WebUI 运行时"]
-    F["forkd<br/>microVM 隔离"]
-    R["rmux<br/>进程多路复用"]
-    
-    Z -->|编译到| N
-    N -->|运行在| F
-    F -->|管理| R
-    
-    style Z fill:#ff6b6b,color:#fff
-    style N fill:#4ecdc4,color:#fff
+  A["zerolang<br/>Agent 编程语言 (C)"]
+  B["zero-native<br/>Zig + WebUI 运行时"]
+  C["forkd<br/>microVM 隔离"]
+  D["rmux<br/>进程多路复用"]
+  E["Agent 工具 / 数据源<br/>(接入范围 待核验)"]
+  F["社区生态<br/>(学习曲线 / 库成熟度)"]
+  G["生产采用风险<br/>(Labs 实验性定位)"]
+
+  A -->|编译到| B
+  B -->|运行在| C
+  C -->|管理| D
+  A -->|调用| E
+  F --> A
+  G --> A
 ```
 
 ## 定位判断

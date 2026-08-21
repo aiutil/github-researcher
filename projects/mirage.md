@@ -43,6 +43,15 @@ Mirage 的解法：用文件系统语义统一所有后端，Agent 只需要 `ca
 3. **可嵌入运行时**：Python SDK（`mirage-ai`）和 TypeScript SDK 都可嵌入 FastAPI / Express，无需独立进程
 4. **跨 Agent 框架兼容**：支持 OpenAI Agents SDK、LangChain、Pydantic AI、CAMEL、OpenHands
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Mirage 位于 AI Agent 与异构后端（S3/Slack/GitHub/Gmail/Redis/MongoDB/SSH 等 15+）之间，用统一虚拟文件系统树代替多 SDK / 多 MCP Server 适配；提供 Python（mirage-ai）与 TypeScript 双 SDK，可嵌入 FastAPI/Express。 | 后端清单、双 SDK、嵌入运行方式来自档案；具体接口边界与认证机制未在档案中给出。 |
+| 主路径 | Agent 以 bash 语义（cat/ls/grep/cp/mkdir 等）调用 Mirage VFS，Mirage 经 Dispatcher（含 Cache）分发至对应后端；支持按 resource + filetype 覆写命令与注册自定义命令（如 `summarize`）。 | 调度与缓存节点来自档案内 Mermaid 图；未给出协议、序列化格式与鉴权链路细节。 |
+| 关键权衡 | "薄抽象层"换取 Agent 学习成本与跨后端 pipe 能力，代价是文件系统语义表达力受限（如 Slack 发消息、GitHub PR+review 难以自然映射），并引入权限、可观测性、供应商耦合面扩大等风险。 | 语义限制与权衡来自档案"架构启发"与"风险/局限"小节；性能基准、错误处理模型档案未给出。 |
+| 最小 PoC | 选单一后端（如 S3 或 GitHub）+ 单一 Agent 框架（OpenAI Agents SDK / LangChain / Pydantic AI / CAMEL / OpenHands 任一），以只读最小权限跑 cat/ls/grep，确认延迟、错误传播与可审计日志，再扩展到写操作与跨后端管道。 | 接入步骤与 SLO 来自架构师速览建议；具体性能基线、退出路径与成本核算档案未提供，需源码核验。 |
+
 ## 架构启发
 Mirage 的核心架构选择是"用最小公共语义（文件系统）统一最大异构后端"。这是一个经典的"薄抽象层"策略：
 - 优点：Agent 学习成本极低，跨后端管道（pipe）天然可用
@@ -51,15 +60,20 @@ Mirage 的核心架构选择是"用最小公共语义（文件系统）统一最
 
 与 MCP 的关系：Mirage 是对 MCP "一个后端一个协议适配器"范式的另一种回答。两者可以共存——Mirage 可以作为 MCP Server 的底层实现。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
+flowchart LR
     Agent[AI Agent] --> Mirage[Mirage VFS]
     Mirage --> Dispatcher[Dispatcher & Cache]
-    Dispatcher --> S3[S3/R2/GCS]
-    Dispatcher --> Slack[Slack/Discord]
-    Dispatcher --> GitHub[GitHub/Linear/Notion]
-    Dispatcher --> DB[MongoDB/Redis]
+    Dispatcher --> S3[S3 / R2 / GCS]
+    Dispatcher --> Slack[Slack / Discord]
+    Dispatcher --> GitHub[GitHub / Linear / Notion]
+    Dispatcher --> DB[MongoDB / Redis]
     Dispatcher --> SSH[SSH]
+    Mirage -.权限/可观测性边界.-> Risk[语义表达力与权限边界<br/>待核验: 鉴权/审计方案]
 ```
 
 ## 定位判断

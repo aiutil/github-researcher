@@ -49,6 +49,15 @@ claw-code 的增长速度创造了 GitHub 历史：**发布 2 小时即破 50K s
 4. **Terminal-native**：深度集成终端操作，不是 Web IDE 插件，而是直接在终端中运行的 Agent
 5. **多 LLM Provider 支持**：通过 Provider 抽象层支持 OpenAI、Anthropic、Google 等多种 LLM
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | claw-code 作为终端原生 Rust 运行时，处于"用户/上游 → 入口与身份 → 编排/运行时 → 多 LLM Provider + 工具/数据源 + 会话/状态/审计"的中间层，不绑定单一供应商 | 基于"Terminal-native"、"Provider 抽象层支持 OpenAI、Anthropic、Google"、"Session management、Permission system"等档案陈述；具体 Provider 接口契约、权限模型、存储后端未在档案中证实 |
+| 主路径 | 用户终端输入 → 编排与 sub-agent 拆分（独立 context/tool set 并行执行）→ Tool calling + Context 管理 → 结果回写会话与状态 | 仅档案明确写出 sub-agent、Tool protocol、Session、Context 管理；sub-agent 间通信协议、并行调度策略、持久化方式待源码核验 |
+| 关键权衡 | Rust "写一次、运行百万次"的运行效率 vs 开发效率及贡献门槛；Clean-room 重写换取供应商中立与规避 fork 法律风险 vs 永远追赶 Claude Code 功能更新；多 Agent 编排带来的扩展速度 vs 权限/可观测性/成本控制复杂度 | 仅档案中所述"trade-off 是合理的"、"功能追赶"、"自主维护叙事存疑"等定性判断；无性能基准、可观测性指标、生产案例可证 |
+| 最小 PoC | 在单一 LLM Provider、单一工具权限、终端会话下跑通：sub-agent 并行执行 + 会话/审计日志可回放，作为后续扩大接入面、安全/成本/SLO 与退出路径验收的基线 | 仅档案"Sub-agent 编排"、"Tool calling、Context 管理"为证据；具体 CLI 形态、工具注册方式、日志结构、最小硬件需求均"待核验" |
+
 ## 架构启发
 
 claw-code 的核心架构决策是 **Rust + Clean-room**。这个组合的含义是：
@@ -56,6 +65,23 @@ claw-code 的核心架构决策是 **Rust + Clean-room**。这个组合的含义
 - **Rust 选择**：AI Agent 是一个 I/O 密集 + 内存密集的场景。Rust 的零成本抽象和所有权模型使其在处理大型代码库时具备天然优势
 - **Clean-room 重写**：避免了 fork 带来的法律风险和代码债，但也意味着需要大量工程投入来复现已有功能
 - **Trade-off**：Rust 的开发效率低于 TypeScript/Python，但运行效率显著更高。对于 Agent 框架这种"写一次、运行百万次"的基础设施，这个 trade-off 是合理的
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界]
+    I --> C[项目编排与运行时<br/>Rust + Sub-agent 编排]
+    C --> M[LLM Provider 抽象层<br/>OpenAI / Anthropic / Google 等<br/>具体接口契约待核验]
+    C --> T[工具与外部系统<br/>Tool calling 协议待核验]
+    C --> S[会话 状态 审计<br/>Session Permission 存储后端待核验]
+    M --> C
+    T --> C
+    S -.风险边界.<!-- 168.7k stars 中含好奇成分 实际活跃用户待核验 --> C
+</mermaid>
+```
 
 ## 定位判断
 

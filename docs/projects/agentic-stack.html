@@ -6,7 +6,7 @@
     <title>Agentic Stack | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,11 +56,61 @@
 <li><strong>Mission Control (v0.17):</strong> 任务管理和 lesson retraction 机制</li>
 <li><strong>安全升级:</strong> <code>agentic-stack upgrade</code> 支持项目安全升级，处理路径变更</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>以 <code>.agent/</code> 文件夹为载体的跨 Harness 数据层（记忆 + 技能 + 协议），位于使用者与 12+ Coding Agent（Claude Code、Cursor、Windsurf、OpenCode、OpenClaw、Hermes、Codex、Gemini CLI、Copilot CLI、Antigravity 等）之间，本地看板与飞轮作为内部边界</td>
+<td>项目档案明确该范围；具体目录结构与读写契约待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者 → 任意 Harness 读取 <code>.agent/</code>（记忆/技能）→ 执行任务 → 产生运行记录 → 经脱敏审批后由飞轮产出 trace / eval cases / training JSONL</td>
+<td>飞轮机制在档案中明文描述；触发条件、审批门槛与产出格式待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨平台覆盖广度（12+ Harness）vs 单人维护的可持续性、与各 Harness 演进的耦合；本地可移植数据 vs 跨 Harness 共享带来的敏感信息泄露面</td>
+<td>风险条目来自档案"风险/局限"段，未给定量指标</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Harness（如 Claude Code）下初始化 <code>.agent/</code>，写入一条 lesson 与一条 skill，跨 Harness 切换后验证可读；再触发一次 bounded loop 并核对飞轮是否生成 trace/eval 制品</td>
+<td>档案未给出 CLI 入口、文件 schema 与 verifier/checker 实现细节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>agentic-stack 的核心启发是 <strong>"Agent 的价值在于积累的知识，而非执行的环境"</strong>——正如开发者的价值在于技能而非用哪个 IDE。当前 Agent 生态正在重蹈移动应用的覆辙：每个平台建封闭生态，数据不互通。agentic-stack 试图建立 <strong>Agent 数据的"通用文件系统"</strong>，类似 POSIX 之于操作系统——让上层应用（Agent）和底层数据（记忆/技能）解耦。更深层的启发是其<strong>飞轮设计</strong>：将 Agent 运行数据自动转化为 eval cases 和 training JSONL，形成"用得越多→数据越好→Agent 越强"的正循环，这是从"工具"向"平台"演进的关键路径。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者 / 开发者] --> AG[".agent/ 文件夹<br/>记忆 + 技能 + 协议"]
+    H1[Claude Code] -.读写.-> AG
+    H2[Cursor] -.读写.-> AG
+    H3[Windsurf / OpenCode /<br/>OpenClaw / Hermes /<br/>Codex / Gemini CLI<br/>等 12+ Harness（待核验）] -.读写.-> AG
+    AG --> D[本地数据看板<br/>活动 · token 成本 · KPI]
+    RUN[Agent 运行记录] --> FW[飞轮机制<br/>脱敏 + 审批]
+    FW --> T1[trace 记录]
+    FW --> T2[eval cases]
+    FW --> T3[training-ready JSONL]
+    RUN --> BL[Bounded Agentic Loops v0.19<br/>maker / verifier / checker<br/>Git worktree 隔离 · 预算 · deny-path<br/>checkpoint（实现细节待核验）]
+    BL --> FW
+    AG -.跨 Harness 记忆共享.-> R[风险边界<br/>敏感信息泄露 · 单人维护<br/>Harness 演进耦合]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选。</strong> 若 <code>.agent/</code> 格式被广泛采用，它将成为 Agent 生态的"数据标准层"——类似 <code>.git</code> 之于版本控制。但与 git 不同的是，它需要各 Agent 平台主动配合（读写 <code>.agent/</code> 文件夹），这对平台厂商缺乏激励（封闭生态是护城河）。因此更可能的定位是"跨平台适配工具"而非"标准协议"——除非有强大的社区共识推动标准化。数据层和飞轮机制增加了平台化可能性。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>标准采用不确定:</strong> 各 Agent 平台缺乏动机支持第三方标准，可能推出自己的跨设备同步</li>
 <li><strong>兼容性维护成本高:</strong> 12+ Harness 各自迭代，持续适配是巨大工程负担</li>
@@ -69,7 +119,7 @@
 <li><strong>单人维护:</strong> codejunkie99 个人项目，可持续性取决于作者投入和社区贡献</li>
 <li><strong>竞争加剧:</strong> wshobson/agents 等项目也在做跨平台 Agent 能力，可能分流</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs wshobson/agents:</strong> 跨平台插件集合（能力分发）；agentic-stack 跨平台数据层（记忆/技能持久化），互补但部分重叠</li>
 <li><strong>vs Anthropic Skills:</strong> 官方标准但仅服务 Claude；agentic-stack 是跨平台的超集适配</li>
@@ -77,9 +127,9 @@
 <li><strong>vs OpenAI Codex CLI 配置:</strong> 单平台配置；agentic-stack 做跨平台抽象</li>
 <li><strong>vs skills.sh 生态:</strong> skills.sh 是技能分发平台；agentic-stack 包含技能管理但更偏记忆层</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（高优先级）。</strong> Agent 数据可移植性是被忽视的关键问题，agentic-stack 是该方向的先行者。无论其本身成败，"Agent 记忆跨平台同步"是确定性需求。建议关注其是否被任何主流 Agent 平台官方采纳（决定性信号），以及飞轮机制的实际效果。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否有任何主流 Agent 平台（Claude Code/Cursor/Codex）官方支持 <code>.agent/</code> 格式</li>
 <li>Bounded loops 功能的安全性和实际使用效果</li>

@@ -6,7 +6,7 @@
     <title>ollama | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -56,7 +56,39 @@
 <li><strong>多模态支持</strong>：支持 LLaVA 等多模态模型，本地推理不限于文本</li>
 <li><strong>Modelfile 自定义</strong>：支持自定义模型配置，类似 Dockerfile 的体验</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>面向桌面/边缘硬件的本地 LLM 推理运行时，作为模型供应、本地算力与调用方之间的编排层；上层暴露 OpenAI 兼容 API，下层调用 llama.cpp/GGUF 等底层引擎</td>
+<td>基于"OpenAI 兼容 API""GGUF 格式优化""llama.cpp 是底层推理引擎"；具体引擎版本、进程模型、端口与持久化未在档案中确认</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户一行命令（如 <code>ollama run</code>）→ 入口与本地 API → 编排/运行时 → 本地推理与量化模型 → 会话/状态回写，并可通过同套 API 触发外部工具</td>
+<td>由"极简模型管理""运行时抽象屏蔽 llama.cpp/GGUF""API 标准化"等档案条目归纳；多模态、Modelfile 触发链路未给出源码细节</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在零门槛体验与本地硬件性能/合规性之间取舍：消费级硬件速度低于云端 GPU，量化加速带来精度损失，且缺少企业级 RBAC/审计</td>
+<td>档案明确指出"推理速度无法与云端 GPU 集群相比""硬件门槛""企业级功能缺失"；量化档位与精度损失的量化数据未提供</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单机 macOS/Linux/Windows 安装 ollama，<code>ollama pull</code> 一个主流模型，以 OpenAI 兼容端点接入一个内部应用，验证本地延迟、显存占用、量化档位与日志可审计性</td>
+<td>由"跨平台支持""一行命令开始对话""OpenAI 兼容 API"可推导；具体基准、显存阈值与日志字段需在 PoC 中实测，档案未给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>ollama 的核心设计哲学是 <strong>LLM 的 Docker 化</strong>：</p>
 <ul>
 <li><strong>镜像管理</strong>：模型 = 镜像，pull/run/rm 语义与 Docker 一致</li>
@@ -65,25 +97,39 @@
 <li><strong>量化自动化</strong>：根据硬件自动选择最佳量化级别</li>
 </ul>
 <p>Trade-off：消费级硬件上推理速度仍远低于云端，适合非实时场景和开发测试，不适合高并发生产环境。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游应用 待核验:具体客户端类型] --> I[入口与本地 API OpenAI 兼容端点 待核验:鉴权与端口]
+    I --> C[项目编排与运行时 Go 实现 ollama run pull rm]
+    C --> M[本地推理与 GGUF 量化模型 依赖 llama.cpp 作为底层引擎 待核验:具体引擎版本与进程模型]
+    C --> T[工具与外部系统 Modelfile 自定义 多模态 LLaVA 等 待核验:工具调用协议]
+    C --> S[会话 状态 审计 档案明确缺少企业级 RBAC 多用户 审计]
+    M --> C
+    T --> C
+    S -.缺失企业级能力.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施</strong>。ollama 是本地 LLM 推理的基础设施层，所有需要本地运行大模型的工具和应用都可以基于 ollama 构建。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>硬件门槛</strong>：高质量推理仍需要足够的 GPU/内存，并非所有人都能流畅运行</li>
 <li><strong>推理速度</strong>：消费级硬件上的推理速度无法与云端 GPU 集群相比</li>
 <li><strong>模型更新延迟</strong>：新模型发布后，GGUF 量化版本通常有几天延迟</li>
 <li><strong>企业级功能缺失</strong>：缺少企业需要的 RBAC、审计、多用户管理等</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>llama.cpp</strong>：ollama 的底层推理引擎，ollama 在其上提供了更友好的用户体验</li>
 <li><strong>LM Studio</strong>：竞品，提供 GUI 但非开源</li>
 <li><strong>vLLM / TGI</strong>：面向生产环境的推理引擎，ollama 面向开发和边缘场景</li>
 <li><strong>litert-inference</strong>：Google 端侧推理方案，面向移动端，ollama 面向桌面端</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>⭐ <strong>必须跟踪。</strong> 167.7K stars 已经证明了市场地位。本地推理是 AI 基础设施的确定性趋势，ollama 是这个赛道的标准工具。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>企业版功能</strong>：是否会推出面向企业的管理功能</li>
 <li><strong>硬件加速进展</strong>：对 Apple Silicon、NVIDIA、AMD 等硬件的优化深度</li>

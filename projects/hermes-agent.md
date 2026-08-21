@@ -42,8 +42,38 @@ NousResearch 出品的自进化 AI Agent——"The agent that grows with you"，
 4. **多平台 Messaging Gateway**：一个 Gateway 对接 Telegram/Discord/Slack/WhatsApp/Signal/Email
 5. **OpenClaw 迁移路径**：明确提供从 OpenClaw 一键迁移，降低迁移门槛
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | hermes-agent 是横跨入口渠道、模型供应商、工具/数据源三侧的 Python 编排层，自身提供 Skill 系统、长期记忆、用户画像与多平台 Gateway，不替代模型推理与外部 SaaS | 边界判断基于档案"category=基础设施候选"、language=Python、tags=multi-platform/mcp/skill-system/memory；未审计源码，不含实际进程/端口/接口契约 |
+| 主路径 | 多平台 Gateway 接收请求 → 项目运行时编排 → 调用 OpenRouter/OpenAI/Kimi/GLM/MiniMax 等 Provider 与工具 → FTS5+LLM 摘要回写长期记忆/Honcho 用户画像/Skill 库 → Cron 调度与 OpenClaw 迁移作为控制面 | 节点取自档案明示能力；具体协议、Skill 写入 schema、Honcho 调用方式均未在档案中给出，须源码核验 |
+| 关键权衡 | 扩展性（200+ Provider、6 种渠道、5+ 部署形态） vs 供应商耦合、Skill 自进化质量、权限与可观测性 | 权衡为档案"风险/局限"段的直接复述；不引入未列出的成本/延迟/SLO 数据 |
+| 最小 PoC | 单一渠道（如 Telegram）+ 最小工具权限 + OpenRouter 单 Provider + 开启可审计日志，先验证 Skill 自动生成与 FTS5 记忆的可用性，再扩面 | 步骤由档案"采用建议"与"后续观察点"推出；Stars=146,768 标注含推算成分，不作为生产可用性证据 |
+
 ## 架构启发
 Skill 自进化机制是最值得深度研究的工程问题。如果能在企业内部落地，会是真正的差异化竞争力。核心思路：从"让 Agent 检索知识"升级到"让 Agent 从经验中创造知识"。Skill 系统、Memory 系统是多 Agent 平台必需的底层能力。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者] --> GW[Messaging Gateway: Telegram/Discord/Slack/WhatsApp/Signal/Email]
+  GW --> ORC[项目运行时与编排: Python Agent]
+  ORC --> PROV[多 Provider 路由: OpenRouter/OpenAI/Kimi/GLM/MiniMax 待核验协议]
+  ORC --> MCP[MCP 工具与外部系统]
+  ORC --> SK[Skill 系统: 自进化生成与优化 待核验 schema]
+  ORC --> MEM[长期记忆: SQLite FTS5 + LLM Summarization 待核验]
+  ORC --> HC[Honcho 用户画像: 跨会话偏好建模]
+  CRON[Cron 调度: 自然语言编排] --> ORC
+  MIG[OpenClaw 一键迁移路径] --> ORC
+  ORC --> LOG[会话/状态/审计边界]
+  SK --> LOG
+  MEM --> LOG
+  HC --> LOG
+```
 
 ## 定位判断
 **基础设施候选** — Skill 系统 + Memory 系统 + 多平台 Gateway 具备多 Agent 平台底层能力特征。

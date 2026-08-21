@@ -6,7 +6,7 @@
     <title>Microsoft SkillOpt | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,27 +49,65 @@
 <li><strong>验证门控更新（Validation-Gated Updates）</strong>：每次技能修改必须通过验证才能合并，防止优化方向跑偏</li>
 <li><strong>可部署工件</strong>：产出 best_skill.md，直接可部署到 Claude Code / Codex / Copilot 等 Agent</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SkillOpt 是位于「冻结 LLM Agent」与「Skill 工件（best_skill.md）」之间的离线优化器，外部边界为 Claude Code / Codex / Copilot 等目标 Agent 运行时及上游 Agent 轨迹数据源。</td>
+<td>基于 README/档案标签（agent-skills、self-evolving-agents、text-space-optimization、skill-training）与定位句推断；输入数据 schema、目标 Agent 适配层接口未在档案中证实。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 执行产出轨迹 → SkillOpt 轨迹驱动编辑 → 候选技能描述 → 验证门控（通过/拒绝回退） → 产出 best_skill.md → 部署至冻结 LLM Agent；Sleep 模块（preview）承担夜间离线重放与再训练旁路。</td>
+<td>主路径仅描述到「门控」与「best_skill.md 工件」级别；门控具体实现（规则/模型/人工）、轨迹格式、Sleep 模块触发条件与持久化均未在档案中证实。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>文本空间优化（不改权重）换取冻结 LLM 可用性与低接入成本，代价是依赖高质量轨迹数据与门控有效性；Sleep 自动进化带来可用性增益，但引入 skill 被静默改写的安全风险。</td>
+<td>「不改权重」「轨迹驱动」「验证门控」「Sleep preview」来自档案明确描述；冷启动门槛、Sleep 安全机制、自动修改的副作用面档案未提供量化证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一目标 Agent（如 Claude Code）上固定 prompt/工具子集，用最小轨迹集触发 SkillOpt 训练，跑通「轨迹 → best_skill.md → 同一 Agent 回放」闭环，并独立审计 Sleep 模块在受控环境下的 skill 变更。</td>
+<td>PoC 形态与验收项由档案「采用建议」与「风险/局限」推导；具体 benchmark 选型、轨迹采集方式、回放指标需以源码与官方文档核验。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Skill = 文本空间的「模型参数」。SkillOpt = 文本空间的「训练器」</li>
 <li>验证门控是关键设计：等同于 ML 训练中的 evaluation set</li>
 <li>轨迹数据 = 训练数据。谁掌握了 Agent 执行轨迹，谁就能训练更好的 Skill</li>
 <li>启发：未来可能出现「Skill 训练数据市场」和「Skill 评估基准」</li>
 </ul>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
 <pre class="mermaid">flowchart LR
-    A["Agent 执行<br/>产生轨迹"] --> B["SkillOpt<br/>轨迹分析"]
-    B --> C["候选编辑<br/>技能描述"]
-    C --> D{"验证门控"}
+    A["目标 Agent<br/>（Claude Code / Codex / Copilot 等）"] -->|执行轨迹| B["SkillOpt 核心<br/>轨迹驱动编辑"]
+    B --> C["候选技能描述<br/>（自然语言 Skill）"]
+    C --> D{"验证门控<br/>（实现待核验）"}
     D -->|通过| E["best_skill.md<br/>可部署工件"]
     D -->|拒绝| B
-    E --> F["Agent 部署<br/>冻结 LLM"]
+    E --> A
+    F["Sleep 模块（preview）<br/>夜间离线重放与再训练"] -->|异步触发| B
+    G["外部轨迹数据源<br/>（上游 Agent 执行，待核验）"] -->|历史会话| F
     style B fill:#00bcf2,color:#fff
     style D fill:#f59e0b,color:#fff
     style E fill:#76b900,color:#fff
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选。</strong> 如果 Skill 训练范式成立，SkillOpt 将成为 Agent Skill 生命周期的核心工具——从编写、训练、验证到部署的基础设施。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li>~~<strong>实验性项目</strong>~~：已发布 v0.1.0 到 PyPI，但 Sleep 模块仍是 preview</li>
 <li><strong>52 cell 全第一的泛化性</strong>：benchmark 覆盖面虽广但仍有领域局限，真实生产场景效果待验证</li>
@@ -77,15 +115,15 @@
 <li><strong>Sleep 模块安全风险</strong>：夜间自动进化 Agent skill 的安全性需要独立验证——自动修改 skill 可能引入意外行为</li>
 <li><strong>评估标准缺失</strong>：什么是「更好的 Skill」？缺乏行业统一评估基准</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>html-anything (6.1K)</strong>：Skill 的消费者/应用层（75 种 Skill 的 agentic HTML 编辑器），与 SkillOpt 是上下游关系</li>
 <li><strong>gsd-core (2.7K)</strong>：Spec-driven Agent 开发流程，关注 Skill 的组织和管理，与 SkillOpt 的训练能力互补</li>
 <li><strong>9arm-skills (2.7K)</strong>：Shell 技能集合，SkillOpt 可以用来训练优化这些 Skill</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>强烈建议持续跟踪。</strong> Agent Skill 训练是 Agent 自主演化能力的基础设施级能力。如果 SkillOpt 的方法论成立，将深刻影响整个 Agent Skill 生态。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>验证门控的具体实现：是基于规则、模型评估、还是人工审查？</li>
 <li>社区是否开始贡献轨迹数据集</li>

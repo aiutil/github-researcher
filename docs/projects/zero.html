@@ -6,7 +6,7 @@
     <title>Zero | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,30 +53,78 @@
 <li><strong>结构化编译输出</strong> — 编译器输出 JSON 格式的结构化数据，可被 Agent 解析和推理</li>
 <li><strong>多目标支持</strong> — <code>zero build --target linux-musl-x64</code>，生成静态链接原生二进制</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Zero 是面向 Agent 生成原生工具的系统编程语言；档案仅明确其语言、编译器、显式 effect、可预测内存管理、结构化编译输出和静态链接原生二进制能力。</td>
+<td>未证实 Agent 框架、模型供应商、工具协议、身份、沙箱、状态存储或部署拓扑，相关边界待源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 生成 Zero 代码后，经编译输出结构化 JSON，再构建为指定目标静态链接原生二进制并执行。</td>
+<td><code>zero build --target linux-musl-x64</code> 获明确记录；代码生成、审核、执行时序及运行时接口均未证实。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>可在语言层追踪并限制副作用，同时提供无 GC 的可预测内存行为和可解析编译结果；代价是新语言的生态、工具链成熟度及长期维护风险尚无验证。</td>
+<td>不得据此推断已提供完整沙箱、内存安全证明、跨平台目标、生态兼容性或生产可靠性。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用一个权限最小、无隐式外部依赖的确定性小工具，验证编译、JSON 输出、linux-musl-x64 静态链接及显式 effect 行为，并保留拒绝和审计记录。</td>
+<td>档案未给出 effect 声明语法、工具接口、测试方法或审计机制；PoC 应聚焦这些待核验项并设置明确退出条件。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li>Agent 生成代码的安全性问题需要语言层面解决，不能只靠沙箱</li>
 <li>显式 effect 与 Rust 的类型系统异曲同工，但面向不同的消费者（Agent vs 人类）</li>
 <li>编译器输出结构化是 Agent 与工具链交互的新模式</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Agent 生成 Zero 代码] --> B[Zero 编译器]
+    B --> C[JSON 结构化编译输出]
+    C --> D[静态链接原生二进制]
+    D --> E[小型原生工具]
+    B --> F[显式 effect 限制]
+    F --> E
+    G[外部系统与工具调用]:::risk -.具体协议待核验.-> E
+    H[运行状态与审计]:::risk -.实现方式待核验.-> E
+    E --> H
+    classDef risk fill:#fff3cd,stroke:#b58105,color:#3d2c00;
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 生态中处于"语言层"的探索位置。如果成功，可能成为 Agent Runtime 的基础组件。但编程语言的成功率极低，Zero 更可能作为概念验证影响后续语言设计。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>语言存活率低</strong> — 绝大多数新编程语言在 2-3 年内消亡</li>
 <li><strong>Vercel 长期投入存疑</strong> — Vercel 的核心业务是前端部署，Zero 与核心业务的关联度不明确</li>
 <li><strong>916 stars，社区极早期</strong> — 没有真实用户和应用场景验证</li>
 <li><strong>与现有 Agent 生态的集成路径不清晰</strong> — Agent 目前主要生成 Python/JS 代码</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li>vs <strong>Python/JavaScript</strong>：Zero 更安全但生态为零，短期不可能替代</li>
 <li>vs <strong>WebAssembly</strong>：WASM 在 Agent 沙箱方向已有进展，Zero 需要证明独特价值</li>
 <li>vs <strong>DSL/配置语言</strong>：Zero 更接近系统语言而非 DSL</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，但低优先级。</strong> 每月检查一次，关注 star 增速和 Vercel 的投入信号。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Vercel 是否在 Vercel AI SDK 中集成 Zero</li>
 <li>是否有真实 Agent 使用 Zero 生成代码的案例</li>

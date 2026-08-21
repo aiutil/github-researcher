@@ -6,7 +6,7 @@
     <title>HyperFrames | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,35 +50,78 @@
 <li><strong>AWS Lambda 分布式渲染</strong>：可部署分布式 render stack</li>
 <li><strong>frame.md 设计系统</strong>：将 web design tokens 转换为视频适用的规格</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>由 Agent/CLI 入口、HTML composition 文件、Headless Chrome 逐帧渲染器与 FFmpeg 编码器组成的离线渲染流水线，输出确定性 MP4</td>
+<td>组件名称、功能与关系见档案"关键技术亮点"；具体进程/线程模型、IPC 与产物落盘路径待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 描述需求 → 编写 HTML+CSS composition → 通过 GSAP/CSS/Lottie/Three.js/Anime.js/WAAPI 等适配器挂载可 seek 动画 → 注入视频/音频媒体 → 本地预览 → Headless Chrome seek + FFmpeg 编码 → MP4</td>
+<td>流程引自档案架构图与亮点列表；各适配器的实际接入面、API 兼容性细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"无 build step、Agent 用 HTML 即可生成视频"的低门槛 vs Headless Chrome 高 CPU/内存开销、视觉上限低于 AE/Premiere，且方向受 HeyGen 商业利益牵引</td>
+<td>矛盾点来自档案"风险/局限"与"vs Remotion"对比；具体性能基准、Lambda 渲染 SLA、HeyGen 商业化路径未在档案中给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单页 index.html（带 data 属性）→ 本地 CLI 预览 → 用 Headless Chrome + FFmpeg 渲染一段短视频验证"同输入同输出"确定性，再评估向 AWS Lambda 渲染栈扩展的收益</td>
+<td>档案描述了渲染管线与 <code>npx skills add</code> 接入方式；Lambda 部署参数、并发、配额、社区 Catalog 复用方式待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>HyperFrames 的核心赌注：<strong>Agent 写 HTML 比写 React 容易得多</strong>。这个赌注如果成立，意味着所有 Agent 友好的工具都应该向"最简输入格式"靠拢。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
 <pre class="mermaid">flowchart LR
-    A[Agent 描述视频需求] --> B[Plan: 分镜 + 时长]
-    B --> C[Write HTML + CSS]
-    C --> D[Wire seekable animations]
-    D --> E[Add media: video/audio]
-    E --> F[Lint + Preview browser]
-    F --> G[Render: Headless Chrome → FFmpeg]
-    G --> H[MP4 输出]
+    A[Agent / CLI 调用方] --> B[Plan: 分镜与时长]
+    B --> C[HTML composition<br/>index.html + data 属性]
+    C --> D{动画适配器<br/>GSAP / CSS / Lottie<br/>Three.js / Anime.js / WAAPI<br/>待核验覆盖范围}
+    D --> E[媒体注入<br/>video / audio]
+    E --> F[本地 Lint + Browser 预览]
+    F --> G[Headless Chrome 逐帧 seek]
+    G --> H[FFmpeg 编码]
+    H --> I[确定性 MP4 输出]
+
+    J[frame.md 设计系统<br/>Catalog 复用组件] -. 待核验集成方式 .-> C
+
+    K[外部渲染后端<br/>AWS Lambda 分布式渲染] -. 待核验部署形态 .-> G
+
+    L[HeyGen 云服务<br/>商业化路径] -. 风险边界:开源引流 .-> A
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型 → 平台候选</strong> — 当前是工具（CLI），但 frame.md 设计系统 + Catalog 复用组件 + AWS Lambda 渲染 + Playground 社区，正在向平台演化。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>视频质量上限</strong>：HTML 动画能做到的视觉效果远不如 After Effects/专业视频工具</li>
 <li><strong>Headless Chrome 资源消耗</strong>：逐帧捕获对 CPU/内存要求高，长视频渲染慢</li>
 <li><strong>HeyGen 商业利益冲突</strong>：HyperFrames 是 HeyGen 的开源战略，长期方向可能偏向引流到 HeyGen 云服务</li>
 <li><strong>Remotion 生态壁垒</strong>：Remotion 已有成熟的 Lambda 渲染、Studio 编辑器、丰富社区</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Remotion</strong>：HTML 原生 vs React 组件；无 build vs 需要 bundler；Apache 2.0 vs Source-available</li>
 <li><strong>vs FFmpeg 直接使用</strong>：HyperFrames 在 FFmpeg 之上增加了 HTML composition 层</li>
 <li><strong>vs AI 视频生成模型（Sora 等）</strong>：确定性 HTML 渲染 vs 概率性 AI 生成，不同维度</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Agent 友好的视频生成是一个全新品类，HTML 原生路线降低了 Agent 做视频的门槛。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>frame.md 设计系统是否会成为 Agent 视频生成的标准</li>
 <li>社区 Catalog 组件的增长速度</li>

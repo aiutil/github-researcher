@@ -6,7 +6,7 @@
     <title>avajs/ava | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,75 @@
 <li><strong>快照测试:</strong> 内置 Snapshot Testing，与 Jest API 类似但并发执行</li>
 <li><strong>TypeScript 支持:</strong> 通过 <code>ts-node</code> 或 <code>esbuild</code> 原生支持 TS 测试</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AVA 作为 CLI 工具型测试运行器，边界落在"测试文件（输入）→ 独立 Node.js 进程（执行）→ IPC 通道（结果回流）→ 报告/快照（输出）"之间，外部依赖仅为 Node.js 运行时与可选 <code>ts-node</code>/<code>esbuild</code> 转译器</td>
+<td>档案仅给出"每测试文件独立进程 + IPC 收集结果"概述，进程间协议、IPC 格式、报告器接口未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者 <code>ava</code> CLI 调用 → 文件发现 → 为每个测试文件 fork 独立 Node.js 进程 → 进程内执行 async/await 测试 → IPC 回传结果 → 聚合输出/快照；TS 通过 <code>ts-node</code> 或 <code>esbuild</code> 透传</td>
+<td>档案仅确认"零配置 + 原生 async + TS 支持 + 快照测试"，文件匹配规则、watch 模式、并发上限未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>进程级隔离换启动开销：单文件隔离彻底消除状态污染，但在大规模套件下 fork 进程成本显著；零配置换扩展深度：开箱即用但生态规模与可定制性弱于 Jest/Mocha</td>
+<td>档案明确指出"启动开销显著"与"生态收缩"，但未给出具体基准数值</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单仓库装 <code>ava</code> 后直接 <code>ava</code> 跑通一份含 async 测试 + TS 测试 + Snapshot 的小型套件，验证：零配置启动、独立进程并发执行（多核占用）、快照生成与比对、<code>ts-node</code>/<code>esbuild</code> 转译路径</td>
+<td>档案未证实具体并发度、watch 行为、CI 集成细节与插件机制，需在 PoC 中核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>AVA 的"进程隔离并发"架构是对 Node.js 单线程限制的一种突破方式。它启发了后续框架对"测试并行度"的重视——Vitest 在某些方面借鉴了其思路。核心启发是：<strong>在 I/O 密集型测试场景下，进程级隔离比线程级更安全，比串行执行更高效</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Dev[开发者] --> CLI[ava CLI 入口]
+    CLI --> Disc[测试文件发现]
+    Disc --> Fork[为每个文件 fork 独立 Node 进程]
+    Fork --> Run[进程内执行 async/await 测试]
+    Run --> IPC[IPC 通道回传结果]
+    IPC --> Agg[结果聚合与报告]
+    Agg --> Snap[快照测试比对]
+    Run -.通过 ts-node/esbuild转译.-> TS[TypeScript 测试源]
+    Fork --> Risk[风险边界：进程启动开销与生态规模收缩]
+    Agg --> Verdict[待核验：并发上限与报告器接口]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>成熟工具型项目。</strong> AVA 不再是高速增长的"新星"，而是进入稳定维护期的工具。它适合对测试速度有极致要求、且偏好极简配置的中小型项目。大型企业更倾向 Jest/Vitest（生态更大），AVA 在特定场景仍有价值。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>生态收缩:</strong> 社区活跃度下降，插件和教程数量远少于 Jest/Vitest</li>
 <li><strong>Vitest 替代:</strong> Vitest 兼容 Jest API 且更快，直接蚕食 AVA 的目标用户</li>
 <li><strong>Node 原生测试:</strong> Node.js 内置 <code>node:test</code> 模块日趋成熟，长期看挤压第三方测试框架空间</li>
 <li><strong>启动开销:</strong> 每文件独立进程在大规模测试下启动开销显著</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Jest:</strong> Jest 生态最大但串行为主；AVA 并发更快但生态小</li>
 <li><strong>vs Vitest:</strong> Vitest = Vite 原生 + Jest 兼容 + 并发，是当前最大威胁</li>
 <li><strong>vs node:test:</strong> Node 原生测试模块零依赖，适合轻量项目</li>
 <li><strong>vs Mocha:</strong> Mocha 灵活但需大量配置，AVA 主张零配置</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> AVA 作为工具型项目已进入稳定期，技术演进放缓。建议关注其是否向 Vite/ESM 生态深度迁移，否则将逐步边缘化。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否推出 Vite 原生集成以应对 Vitest 竞争</li>
 <li>Star 趋势是否出现加速下滑（被 Vitest 完全替代的信号）</li>

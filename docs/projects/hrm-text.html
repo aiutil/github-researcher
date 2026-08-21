@@ -6,7 +6,7 @@
     <title>HRM-Text | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,19 +53,73 @@
 <p>使用最新的 FlashAttention 3 内核和 FSDP2 分布式训练框架。</p>
 <h3 id="4">4. 完整预训练框架</h3>
 <p>不只是模型权重，而是完整的预训练工具链：数据准备（data_io）→ tokenization → stratified sampling → 预训练 → 评估 → checkpoint 转换。</p>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>HRM-Text 是一个以 PyTorch + FSDP2 + FlashAttention 3 为底座的层级循环（HRM）预训练框架，对外只暴露数据准备→tokenization→分层采样→预训练→评估→checkpoint 转换的工具链；不在 vLLM / TensorRT-LLM 现有 Transformer 推理生态内。</td>
+<td>仅来自档案中的 tags 与“完整预训练框架”描述，未审计源码以确认具体接口。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据准备（data_io）→ tokenization → 分层采样 → HRM 层级循环模型预训练 → 评估（GSM8k 84.7% 等）→ checkpoint 转换；1B 模型由 8–16 张 H100 在约 $1000 量级训练得到。</td>
+<td>GSM8k 84.7% 与成本量级来自档案“值得关注”段落，训练硬件前提见“风险”段。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在“算力/数据极致压缩（130–600x 算力、150–900x 数据）”与“架构新颖、但与 Transformer 推理生态不兼容、规模上限未验证”之间取舍；FlashAttention 3 + FSDP2 是已知的性能/扩展杠杆。</td>
+<td>O(n) vs O(n²)、生态兼容性、规模外推风险均出自档案文字，无独立基准复核。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单机 8×H100 环境复现 1B HRM-Text GSM8k 评估；只接入一条分层采样数据管线，跑通预训练→checkpoint 转换→评估回路，并记录训练成本、token 数与 GSM8k 复现分数。</td>
+<td>8–16 H100 与 $1000 成本来自档案“风险”段，复现门槛与硬件前提尚未在源码中独立验证。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>HRM 架构挑战了 Transformer 在语言模型中的统治地位。如果层级循环架构被证明在小规模上优于 Transformer，可能催生新的模型设计方向。</p>
 <p>关键问题：这种优势是否能在更大规模（10B+）上保持？</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    D["数据准备 data_io（待核验）"]
+    K["tokenization"]
+    S["stratified sampling"]
+    P["HRM 层级循环模型预训练<br/>1B 模型 · 8-16×H100 · ≈$1000"]
+    E["评估（GSM8k 84.7%）"]
+    C["checkpoint 转换"]
+    FA["FlashAttention 3 内核"]
+    FS["PyTorch FSDP2"]
+    EXT["vLLM / TensorRT-LLM 等 Transformer 推理生态<br/>当前不支持 HRM（待核验）"]
+
+    D --> K --> S --> P --> E
+    P --> C
+    FA -. 加速 .-> P
+    FS -. 分布式 .-> P
+    P -. 不可直接接入 .-> EXT
+</mermaid>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>学习型。</strong> 主要是学术研究和技术演示。短期内不会成为生产可用模型，但其架构思路值得关注。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>$1000 预训练的前提是 8-16 张 H100</strong>：对大多数组织仍不现实</li>
 <li><strong>1B 规模的参考价值有限</strong>：从 1B 到 10B+ 的扩展性未验证</li>
 <li><strong>HRM 架构未经大规模验证</strong>：可能在更大规模时遇到 Transformer 没有的问题</li>
 <li><strong>与 Transformer 生态不兼容</strong>：现有工具链（vLLM、TensorRT-LLM 等）不支持 HRM</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -96,9 +150,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>中性。</strong> 作为学术项目值得关注其后续发展，但短期内不会影响企业技术决策。如果 HRM 架构在更大规模上验证成功，则需要重新评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>HRM 架构在更大规模（10B+）上的表现</li>
 <li>学术社区对 HRM 架构的反馈和复现结果</li>

@@ -6,7 +6,7 @@
     <title>ianstormtaylor/slate | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,56 @@
 <li>不绑定具体 DOM 结构：可在 SSR/非浏览器环境运行</li>
 <li>协同编辑就绪：通过 Yjs 等库可实现实时协同</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Slate 处于 React 富文本编辑的基础设施层，边界止于浏览器端编辑器框架；不内置后端协议、存储、协同传输或服务端渲染策略</td>
+<td>档案仅描述其为 React 编辑器框架，未列出后端组件、部署形态或持久化方式</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入 → React 组件渲染层 → 基于 JSON 的文档模型与 transforms 命令式转换 → 插件机制覆盖渲染、快捷键与序列化</td>
+<td>路径来自档案明确提到的 JSON 节点树、transforms API、插件架构、React 渲染同步</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>灵活性（任意自定义节点/渲染/快捷键）与 API 稳定性、学习成本之间的权衡——长期 Beta 状态、需自研协同与移动端支持是这一权衡的代价</td>
+<td>权衡依据限于档案中"长期 Beta""学习曲线陡峭""协同需额外集成 Yjs""移动端支持有限"等已陈述事实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 React 应用中接入 Slate 编辑器，验证自定义块节点渲染、键盘快捷键扩展、撤销重做与 HTML/Markdown 序列化四条最小路径</td>
+<td>仅基于档案列出的插件覆盖范围（渲染、快捷键、序列化）与 transforms 支持撤销重做；具体序列化格式、性能基线未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>Slate 的核心架构启发是"将编辑器视为数据而非 DOM"。传统编辑器（如 contentEditable）的复杂性源于直接操作 DOM——Slate 将文档抽象为 JSON 数据树，DOM 只是数据的视图层渲染。这种"数据驱动"设计使得自定义渲染、序列化、协同编辑变得自然。对架构师的启发是：<strong>复杂交互系统的核心是将状态从视图中解耦</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户交互 输入与选区] --> V[React 组件渲染层 基于 Slate]
+    V --> M[JSON 文档模型 嵌套节点树]
+    M --> T[Transforms 命令式转换 支持撤销重做]
+    T --> P[插件机制 渲染 快捷键 序列化]
+    P --> S[序列化输出 HTML 或 Markdown 待核验]
+    Y[外部协同能力 Yjs 集成] -.可选扩展.-> M
+    R[风险边界 长期 Beta 移动端有限 协同非原生] -.约束.-> V
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型（基础设施）。</strong> 定位为"富文本编辑器的 React 框架"，处于前端技术栈的基础设施层。虽然仍是 beta 状态，但已被大量生产环境采用。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>长期 Beta:</strong> 创建 10 年仍是 beta，API 稳定性存在担忧</li>
 <li><strong>学习曲线陡峭:</strong> 虽然比 Draft.js 简单，但自定义插件仍需深入理解内部架构</li>
@@ -63,7 +108,7 @@
 <li><strong>协同编辑非原生:</strong> 需要额外集成 Yjs/Automerge，增加复杂性</li>
 <li><strong>移动端支持有限:</strong> 桌面浏览器优化为主，移动端体验需要额外工作</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>Tiptap</strong>（基于 ProseMirror）是最直接的竞争对手——Tiptap 更易用，Slate 更灵活</li>
 <li>与 <strong>Draft.js</strong>（Facebook/Meta）是历史对标——Draft.js 已停止维护，Slate 成为其精神继承者</li>
@@ -71,9 +116,9 @@
 <li>与 <strong>Quill</strong>、<strong>CKEditor</strong> 形成"框架 vs 成品"的定位差异</li>
 <li>在 React 生态内，是 Refine、Notion-like 产品的基础组件</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>选择性跟踪。</strong> 如果你构建富文本编辑产品，Slate 是必研究的框架。但作为通用技术跟踪，建议更多关注 Tiptap/Lexical 的演进方向。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否从 Beta 正式发布（1.0 版本）</li>
 <li>与 Tiptap、Lexical 的市场份额变化</li>

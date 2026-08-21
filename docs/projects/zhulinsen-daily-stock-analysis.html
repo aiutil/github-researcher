@@ -6,7 +6,7 @@
     <title>daily_stock_analysis | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,12 +53,59 @@
 <li><strong>零成本定时运行</strong> — GitHub Actions cron + 免费层，不需要服务器</li>
 <li><strong>自动推送</strong> — 分析结果自动推送到微信/钉钉/Telegram等渠道</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>daily_stock_analysis 是 LLM 编排层，处于多源行情/新闻数据、LLM 推理服务、推送渠道（微信/钉钉/Telegram）与 GitHub Actions 定时调度之间，职责是把数据压缩后回写为决策建议</td>
+<td>边界由"一句话定位"+"关键技术亮点"推导；具体数据源、模型供应商、推送协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>定时触发 → 拉取多源行情/新闻/财报 → LLM 结构化解读（买/持/卖+理由）→ 决策看板渲染 → 自动推送至即时通讯渠道</td>
+<td>路径由档案"关键技术亮点"1-5 拼合；调度细节、看板实现、推送 SDK 未具名</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>零成本部署（GitHub Actions + 免费层 / 免费 API）换取数据深度与实时性，与 Wind/Bloomberg 存在量级差距；LLM 决策链路放大幻觉与合规风险</td>
+<td>权衡来自"风险/局限"1-5 与"vs 专业终端"对比；LLM 准确率、合规边界均为档案声明，非实测</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单市场（如 A 股）+ 单数据源 + 单推送渠道 + 单 LLM 供应商，跑通 GitHub Actions cron 与审计日志，验收项含数据延迟、幻觉样本、API 限额、监管提示</td>
+<td>PoC 范围由"采用建议"+"风险/局限"收敛；具体股票池、数据源接入方式仍需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>核心设计哲学：</strong> LLM 在金融分析中的最佳角色不是"替代人类判断"，而是"信息压缩 + 结构化呈现 + 辅助决策"。daily_stock_analysis 把 LLM 放在数据和人之间的"翻译层"位置。</p>
 <p><strong>架构启发：</strong> 这个项目验证了"LLM + 定时任务 + 自动推送"作为个人自动化基础设施的模式。同样的模式可以应用到：新闻摘要、天气提醒、舆情监控、竞品追踪等领域。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统<br/>个人投资者] --> I[入口与身份边界<br/>GitHub Actions cron 调度 待核验]
+    I --> C[项目编排与运行时<br/>daily_stock_analysis Python 主程序]
+    C --> M[模型或推理服务<br/>LLM 结构化分析 供应商待核验]
+    C --> T1[工具与外部系统 A<br/>多源行情/新闻/财报 免费数据源待核验]
+    C --> T2[工具与外部系统 B<br/>推送渠道 微信/钉钉/Telegram]
+    C --> S[会话 状态 审计<br/>决策看板 渲染方式待核验]
+    M --> C
+    T1 --> C
+    R[风险与合规边界<br/>LLM 幻觉 监管资质 数据延迟 API 稳定性] -.约束.-> C
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型产品。</strong> 虽然星数很高，但这是一个"开箱即用的工具"而非"可扩展的平台"。41.8K forks 说明用户在直接使用而非二次开发。issue 率低也印证了这一点——用户不关心代码贡献，只关心"能不能跑起来给我出报告"。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>金融合规风险</strong> — 45.7K 用户依赖 LLM 做投资决策，一旦 LLM 幻觉导致错误建议，影响面巨大</li>
 <li><strong>监管风险</strong> — 中国对证券投资建议有严格资质要求，未经授权的"投资建议"可能触碰监管红线</li>
@@ -66,15 +113,15 @@
 <li><strong>数据延迟</strong> — 免费数据源存在延迟，对短线交易影响显著</li>
 <li><strong>不可持续性</strong> — 如果数据源限制免费访问（如东方财富、新浪财经 API 变更），系统会失效</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 专业终端（Wind/Bloomberg）</strong>：零成本 vs 年费数万，数据深度和实时性差距大</li>
 <li><strong>vs TradingView/雪球</strong>：LLM 分析 + 自动推送 vs 人工分析</li>
 <li><strong>vs 其他 AI 金融项目</strong>：多市场 + 多源数据 + 决策看板 + 零成本的组合是差异化优势</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>建议观察（非技术维度跟踪）。</strong> 这个项目的技术价值有限，但它对"LLM 在金融决策领域的实际采用率"是一个重要指标。如果它持续增长，说明 LLM 金融分析已经进入主流。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>监管反应——中国证监会是否会对"AI 投资建议"出台规范</li>
 <li>用户留存——forks 数增长 vs 实际日活（GitHub Actions 运行频率）</li>
@@ -82,7 +129,7 @@
 <li>数据源稳定性——免费 API 是否持续可用</li>
 <li>是否从"工具"演进为"社区/平台"（如用户分享策略）</li>
 </ol>
-<h2 id="_11">评分</h2>
+<h2 id="_12">评分</h2>
 <table>
 <thead>
 <tr>

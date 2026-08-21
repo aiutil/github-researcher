@@ -49,31 +49,82 @@ url: "https://github.com/stablyai/orca"
 6. **Orca CLI**：agent 也可以驱动 Orca——`orca worktree create/snapshot/click/fill`
 7. **Computer Use**：让 agent 操作桌面应用和可见 UI
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Orca 是桌面 + 移动 + SSH 三入口的编排/管理工作环境，向上接 30+ CLI agent，向下委托 git worktree 做并行隔离；不替代源码/CLI/IDE，也不充当模型网关 | 边界基于档案中的 mobile/SSH/worktree/agent-ide 标签与公开描述，部署形态与协议未在档案中给出 |
+| 主路径 | 用户输入 prompt → Orca 编排层扇出到 N 个 agent → 每个 agent 在独立 git worktree 中执行 → 结果可视对比 → 选定 winner 合并；移动端仅做监控/指导，不在档案内说明是否触发执行 | 路径来源为档案"Parallel Worktrees"亮点与官方 mermaid 图；具体持久化/状态机未披露 |
+| 关键权衡 | 在 30+ agent 兼容性广度 与 各 agent CLI 快速变化导致的维护负担/版本耦合 之间取平衡；其次是桌面分发（下载安装）与 Web 即开即用之间的增长曲线差异 | 权衡判断综合档案"风险/局限"段与 stars_delta/日增数据；不构成对生产稳定性的背书 |
+| 最小 PoC | 在本地单仓库创建 ≥3 个 worktree，分别挂载 Claude Code / Codex / Cursor CLI 任选三个，验证 prompt 扇出→独立 worktree→diff 对比→winner 合并；同步在 iOS/Android 伴侣上做只读监控验证 | PoC 步骤仅复刻档案中明示的 Parallel Worktrees 与 Mobile 能力；性能、SLO、安全模型均未在档案内量化 |
+
 ## 架构启发
 
 Orca 的核心架构哲学是**"Agent 作为一等公民的开发资源"**——和代码、分支、issue 同等重要。它重新定义了开发环境的组成要素：不再只是编辑器 + 终端 + 调试器，而是 **编辑器 + 终端 + Agent 管理器**。Worktree 隔离是多 Agent 并行的关键技术选择——它利用了 git 原生能力而非自建隔离机制。
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph LR
-    A[Orca ADE] --> B[Agent 1 - Claude Code]
-    A --> C[Agent 2 - Codex]
-    A --> D[Agent 3 - Cursor CLI]
-    A --> E[Agent 4 - OpenCode]
+flowchart LR
+    subgraph 入口[入口边界]
+        Desk[桌面端 Orca ADE<br/>TypeScript]
+        Mob[移动端伴侣<br/>iOS / Android]
+        SSH[SSH 远程 Worktree<br/>强机算力]
+    end
 
-    B --> F[Worktree 1]
-    C --> G[Worktree 2]
-    D --> H[Worktree 3]
-    E --> I[Worktree 4]
+    subgraph 编排[编排核心 - 项目核心]
+        Orca[Orca 编排层<br/>parallel-agents / ade]
+        Worktree[Git Worktree 隔离<br/>per-agent 分支]
+        Diff[结果/Diff 可视化与对比]
+        Annotate[Annotate AI Diffs<br/>行级批注回发 agent]
+    end
 
-    F --> J[结果对比]
-    G --> J
-    H --> J
-    I --> J
+    subgraph 外部Agent[外部边界 - 30+ CLI Agent]
+        A1[Claude Code]
+        A2[Codex]
+        A3[Cursor CLI]
+        A4[OpenCode / 其他<br/>待核验]
+    end
 
-    J --> K[Merge Winner]
+    subgraph 外部数据[外部边界 - 数据源]
+        GH[GitHub PR / Issue]
+        Lin[Linear 看板]
+        CU[Computer Use<br/>桌面应用操作]
+    end
 
-    A -.->|Mobile| L[iOS / Android]
-    A -.->|Remote| M[SSH Worktree]
+    subgraph 风险边界[状态/控制/风险边界]
+        Acct[Account Switcher<br/>& Usage / Rate-limit]
+        Merge[Merge Winner<br/>人工/待核验]
+        Compat[30+ Agent 兼容性维护<br/>版本耦合风险]
+    end
+
+    Desk --> Orca
+    Mob -.监控/指导.-> Orca
+    SSH --> Worktree
+
+    Orca --> A1
+    Orca --> A2
+    Orca --> A3
+    Orca --> A4
+
+    A1 --> Worktree
+    A2 --> Worktree
+    A3 --> Worktree
+    A4 --> Worktree
+
+    Orca --> GH
+    Orca --> Lin
+    Orca --> CU
+
+    Worktree --> Diff
+    Diff --> Annotate
+    Diff --> Merge
+
+    Orca --> Acct
+    Orca -.兼容性压力.-> Compat
+</mermaid>
 ```
 
 ## 定位判断

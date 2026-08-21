@@ -6,7 +6,7 @@
     <title>Corsair | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,35 +48,69 @@
 <li><strong>Webhook 全覆盖</strong> — 每个 plugin 自带类型化、签名验证的 webhook handler。单一端点处理所有 webhook</li>
 <li><strong>Agent 永不见凭证</strong> — Corsair 持有所有 API token，Agent 只看到操作结果。凭证不暴露给 Agent 的 context window</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Corsair 定位为 Agent（含 Claude/Cursor/Codex）与外部插件（Gmail/Slack/GitHub/Drive 等）之间的统一编排/权限层，凭证隔离在该层之下</td>
+<td>档案仅声明 TypeScript 实现、MCP 连接、tag=agent-integration/permissions/multi-tenancy/mcp/security/gateway/webhooks；网络协议、部署形态、持久化未给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent MCP 调用 → Corsair MCP Server → Permission Manager（open/cautious/strict/readonly + per-endpoint override）→ 自动执行或 10 分钟过期的人工审批链接 → Plugin 调用 API → 结果回传 Agent；凭证由 Vault 注入 Plugin，Agent 不可见</td>
+<td>来自档案关键技术亮点；审批 SLA、签名机制、回调具体协议未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多一层 indirection 带来延迟与运维复杂度，换取凭证隔离、四档权限、人类审批、租户隔离；与 MCP 存在边界重叠风险（MCP 未来可能原生引入权限层）</td>
+<td>文档明示"trade-off: indirection vs 安全边界"；bus factor=5、生态规模小、Plugin 覆盖长尾不足已记录</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单租户运行 Corsair，仅接入 1 个低风险 plugin（如 readonly 类 GitHub 读操作），开启 cautious 模式 + 审计日志，验证 MCP 调用、审批链接、凭证不泄露三条断言后再扩展</td>
+<td>档案未给出具体部署步骤、CLI、Docker 镜像、版本号，PoC 落地需以源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>核心设计哲学：</strong> Agent 不应该直接持有凭证。Agent 发出意图（"给 Sarah 发邮件"），Corsair 负责执行（认证、权限检查、审批、调用 API、返回结果）。这是 Agent 时代的"零信任"实践。</p>
 <p><strong>Trade-off：</strong> 增加了一层 indirection（延迟 + 复杂度），但换来的是安全边界。对于个人项目可能过重，对于团队/企业部署是必需。</p>
-<pre class="mermaid">graph TB
-    subgraph "Corsair 架构"
-        Agent["AI Agent<br/>(Claude/Cursor/Codex)"] -->|"MCP Call"| MCP["Corsair MCP Server"]
-        MCP -->|"Permission Check"| PM["Permission Manager<br/>open/cautious/strict/readonly"]
-        PM -->|"Auto-execute"| Plugins["Plugins<br/>(Gmail/Slack/GitHub/Drive)"]
-        PM -->|"Need approval"| Human["Human Approval<br/>10min expiry link"]
-        Human -->|"Approved"| Plugins
-        Plugins -->|"Result"| MCP --> Agent
-    end
-    
-    subgraph "凭证隔离"
-        Vault["🔐 Credential Vault<br/>Agent 永不可见"]
-        Vault -.->|"Token injection"| Plugins
-    end
-    
-    subgraph "Multi-tenancy"
-        T1["Tenant A<br/>独立凭证/数据/权限"]
-        T2["Tenant B<br/>独立凭证/数据/权限"]
-        T3["Tenant C<br/>独立凭证/数据/权限"]
-    end
-    
-    PM -.-> T1 & T2 & T3
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">graph LR
+    Agent["AI Agent<br/>(Claude/Cursor/Codex)"]
+    MCP["Corsair MCP Server<br/>统一编排入口"]
+    PM["Permission Manager<br/>open/cautious/strict/readonly<br/>+ per-endpoint override"]
+    Vault["🔐 Credential Vault<br/>Agent 永不可见"]
+    Plugins["Plugins<br/>(Gmail/Slack/GitHub/Drive 等)"]
+    Human["Human Approval<br/>10min 过期审批链接"]
+    Tenants["Tenant A / B / C<br/>独立凭证·数据·权限"]
+    MCPBoundary["MCP 规范演化风险<br/>(待核验：是否原生权限层)"]
+
+    Agent -->|"MCP Call"| MCP
+    MCP -->|"Permission Check"| PM
+    PM -->|"Auto-execute"| Plugins
+    PM -->|"Need approval"| Human
+    Human -->|"Approved"| Plugins
+    Plugins -->|"执行结果"| MCP
+    MCP -->|"结果回传"| Agent
+    Vault -.->|"Token injection<br/>Agent 不可见"| Plugins
+    PM -.->|"scope 隔离"| Tenants
+    PM -.->|"边界重叠"| MCPBoundary
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选。</strong> Agent 安全接入企业系统的必经层。如果 MCP 标准化了 Agent 与工具的连接，Corsair 正在标准化 Agent 与工具之间的权限和审计。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>生态规模小</strong> — 2.8K⭐ vs Agent 框架动辄 10K+，采用率还很低</li>
 <li><strong>Plugin 依赖</strong> — 只有内置 plugin 覆盖的 API 才能用，长尾 API 需要自己写 plugin</li>
@@ -84,22 +118,22 @@
 <li><strong>5 个核心贡献者</strong> — 团队还很小，bus factor 风险</li>
 <li><strong>与 MCP 的边界模糊</strong> — MCP 定义了 Agent 与工具的连接，Corsair 在 MCP 之上加了权限——但 MCP 规范本身可能演化出权限层</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs MCP（Model Context Protocol）</strong>：MCP 是连接层标准，Corsair 是连接层之上的权限/审计/multi-tenancy 层。互补而非竞争</li>
 <li><strong>vs API Gateway（Kong/APISIX）</strong>：传统 API Gateway 管理 machine-to-machine 权限，Corsair 管理 Agent-to-API 权限 + 人类审批</li>
 <li><strong>vs OAuth</strong>：OAuth 管理用户授权，Corsair 管理 Agent 授权 + 执行</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>建议持续跟踪。</strong> Agent 权限层是企业 Agent 部署的必选项，corsair 是目前最完整的设计。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>Plugin 数量增长——当前内置多少 plugin，社区 plugin 生态是否形成</li>
 <li>是否有企业客户 case study</li>
 <li>MCP 规范是否会原生集成权限层（如果会，Corsair 需要转型）</li>
 <li>是否出现竞品（LangChain 等框架可能内建类似功能）</li>
 </ol>
-<h2 id="_11">评分</h2>
+<h2 id="_12">评分</h2>
 <table>
 <thead>
 <tr>

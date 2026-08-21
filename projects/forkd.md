@@ -36,20 +36,29 @@ fork() for AI agents 是当前最正确的 Agent 隔离抽象。1.3K stars 虽�
 3. **Copy-on-Write 快照**：分支一个活动 VM 只需 ~150ms，内存共享直到写入
 4. **Rust 实现**：内存安全 + 零开销抽象，适合系统级项目
 
-```mermaid
-sequenceDiagram
-    participant Agent
-    participant forkd
-    participant Parent VM
-    participant Children
+## 架构图（MMD）
 
-    Agent->>forkd: fork(100)
-    forkd->>Parent VM: 触发 CoW 快照
-    Parent VM-->>forkd: ~150ms 快照就绪
-    forkd->>Children: 100x KVM 子进程
-    Note over Children: ~100ms 热启动<br/>内存 CoW 共享
-    Children-->>Agent: 100 个隔离环境就绪
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Agent["AI Agent 调用方"] --> forkd["forkd 守护进程 (Rust)"]
+    forkd --> ParentVM["Parent VM（预热，KVM 客户机）"]
+    ParentVM --> CoW["CoW 快照 (~150ms，待核验)"]
+    CoW --> ChildVMs["100x KVM 子 VM (~100ms 热启动)"]
+    ChildVMs --> Agent
+    forkd -.需要.-> KVM["Linux KVM / /dev/kvm（外部边界，仅 Linux）"]
+    ChildVMs -.状态/控制边界.-> State["隔离执行环境（待核验：IPC、日志、回收）"]
 ```
+
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | forkd 定位为 AI Agent 运行时侧的 microVM 管理器，外部依赖 Linux KVM 硬件虚拟化与宿主 `/dev/kvm` 访问；上游调用方为 AI Agent，上游编排/模型/工具层未在档案中给出 | 仅档案中"KVM 隔离"、"/dev/kvm 访问权限"、tags(microvm, kvm, sandbox)；未给出 API 表面、网络协议、持久化路径 |
+| 主路径 | Agent 触发 fork(100) → forkd 在预热 Parent VM 上做 CoW 快照 → 派生 100 个 KVM 子进程 → 返回隔离执行环境；序列图已明示该四跳流程 | 来自档案 sequenceDiagram；具体 fork 触发方式、进程间通信、控制平面未描述 |
+| 关键权衡 | 用 KVM 硬件隔离 + CoW 写时复制换取毫秒级热启动，代价是强耦合 Linux/`/dev/kvm`、缺失编排/监控/日志运维链、API 早期可能频繁变动 | 来自"风险/局限"与"关键技术亮点"；性能数字(~100ms、~150ms)为档案自述，非独立基准 |
+| 最小 PoC | 在具备 `/dev/kvm` 的 Linux 主机上以最小 Agent 用例启动 Parent VM、执行一次 fork(100) 并采集子进程启动时延、内存占用、API 表面稳定性；同步验收回滚与退出路径 | 档案仅给出架构抽象与对比 Firecracker/Docker 的定性差异，缺部署形态、SLO 与安全模型细节，需源码核验 |
 
 ## 架构启发
 - **fork() 是 Agent 的正确抽象**：Unix 哲学在 AI Agent 时代的复兴

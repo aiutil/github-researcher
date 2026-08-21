@@ -6,7 +6,7 @@
     <title>Pythagora-io/gpt-pilot | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -47,26 +47,80 @@
 <li><strong>对话式调试</strong>：遇到问题时主动向用户提问，而非盲目重试</li>
 <li><strong>上下文管理</strong>：通过任务压缩和历史摘要管理长项目的上下文窗口</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>项目是一个编排 Agent，串联用户入口、外部 LLM、工具/系统与会话状态四类边界；Python 实现，但具体接口、部署形态、模型供应商适配层未在档案中给出</td>
+<td>边界划分基于档案描述的"开发者模拟"职责；具体协议、持久化与运行容器须读源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>规格生成 → 任务分解 → 增量开发循环（写码→运行→检查→修复）→ 对话式调试 → 上下文压缩/历史摘要</td>
+<td>主路径来自档案"关键技术亮点"；每步内部实现、提示词结构、上下文窗口策略未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"早期 AI 全栈开发者"理念与工程可控性之间的失衡：增量自调试与对话式追问提高了覆盖面，却以牺牲可观测性、安全审计和供应商解耦为代价，并最终在供应链攻击中暴露代价</td>
+<td>权衡判断基于档案的安全事件描述与维护状态；未量化失败率、成本、SLO</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>不要再做新功能 PoC；如必须复用，建议限定在只读沙箱、可审计日志、最小工具权限、固定模型版本下复现规格→任务→循环三步骤，验收项必须包含供应链完整性核验与凭据隔离</td>
+<td>PoC 设计基于档案"采用建议"与"风险"段；具体环境、依赖锁定策略、退出路径未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>GPT Pilot 的核心启发在于"开发者模拟"架构：将人类开发者的工作流程（规划→编码→测试→调试→评审）映射为 AI Agent 的步骤序列。这种"角色模拟"范式比纯代码生成更具系统性和可控性。其失败教训同样重要——开源项目缺乏安全审计时的供应链风险。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[使用者或上游系统 待核验具体入口] --> I[入口与身份边界 对话式追问]
+  I --> C[项目编排与运行时 Python Agent]
+  C --> S1[规格生成 需求到规格 待核验]
+  S1 --> S2[任务分解 步骤序列 待核验]
+  S2 --> L[增量开发循环 编写 运行 检查 修复]
+  L --> D[对话式调试 失败时向用户提问]
+  D --> L
+  L --> CTX[上下文管理 任务压缩 历史摘要 待核验]
+  CTX --> S3[会话 状态 审计]
+  C --> M[模型或推理服务 gpt-4 等供应商耦合 待核验]
+  C --> T[工具与外部系统 文件 执行 环境 待核验权限面]
+  C --> S3
+  M --> C
+  T --> C
+  R[风险边界 已停止维护 供应链投毒 Shai Hulud 蠕虫] -.影响.-> C
+  A[外部边界 Pythagora.ai 商业 VS Code 扩展 已迁移] -.承接.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>已归档的历史参考项目</strong>。作为概念验证和技术遗产有价值，但不适合新项目采用。官方维护已转移到商业产品 Pythagora.ai。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>已停止维护</strong>：不再接收功能更新或安全补丁</li>
 <li><strong>供应链安全事件</strong>：恶意代码在仓库中潜伏近 10 个月，窃取云密钥、GitHub Token、SSH 密钥</li>
 <li><strong>竞争淘汰</strong>：已被 Cursor、Claude Code、Codex 等新一代工具全面超越</li>
 <li><strong>泡沫风险</strong>：33k stars 中大部分是历史积累，当前社区已不活跃</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>继承者</strong>：Pythagora.ai（商业化产品）、Cursor、GitHub Copilot Workspace</li>
 <li><strong>同期竞品</strong>：Aider、Sweep.dev、Devika（均已不同程度衰退）</li>
 <li><strong>影响</strong>：其 Agent 架构理念影响了 OpenHands、SWE-agent 等学术项目</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>不值得</strong>。项目已停止维护。唯一值得跟踪的是其安全事件的后续影响分析和开源供应链安全的行业反思。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>供应链攻击事件是否引发更广泛的开源安全审计标准变化</li>
 <li>Pythagora.ai 商业产品的市场表现</li>

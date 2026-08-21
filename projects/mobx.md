@@ -37,8 +37,34 @@ MobX 的热度是**真实的技术选型偏好**沉淀。它在 2016-2019 年与
 4. **MobX-State-Tree (MST):** 可选的"有 Schema"版本，提供快照、时间旅行、类型安全，类似 Immutable.js + Redux 的能力
 5. **Derivation + Action + Reaction:** 清晰区分"派生值"（computed）、"变更"（action）、"副作用"（reaction），代码意图明确
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MobX 作为前端状态管理库，边界落在"React UI 层 ↔ Observable 领域状态 ↔ 外部服务/数据依赖"之间，运行时基于 ES Proxy 与 makeObservable/makeAutoObservable 做拦截与追踪 | 档案未给出源码级模块划分，未标注运行时最低版本 |
+| 主路径 | 用户交互 → React UI 组件读取 observable → MobX 自动建立细粒度订阅 → 仅相关组件 re-render → action 修改状态触发 reaction/computed 派生 | 档案未描述具体订阅协议与调度实现细节 |
+| 关键权衡 | "零样板开发效率 vs 缺乏强制单向数据流"；细粒度响应式性能 vs 依赖图难以可视化调试；功能完备性 vs 轻量替代（Zustand/Jotai/Valtio）蚕食新项目首选地位 | 权衡判断来自档案定性表述，未提供基准性能数据 |
+| 最小 PoC | 用一个含对象图关联与 computed 派生的真实页面（如表单+列表过滤）验证 observable 边界、action 一致性、组件重渲染范围，再评估 RSC 兼容与团队约定成本 | 档案未提供官方 PoC 示例或基准，需以源码与官方文档核验 |
+
 ## 架构启发
 MobX 的核心启发是 **"让框架理解数据依赖，而非让开发者手动 wire"**。这与 Vue 的响应式系统异曲同工。在 Redux 世界，开发者必须显式写 `mapStateToProps` 和 `useSelector`；MobX 则通过 Proxy 自动建立追踪。这种"零样板"思路影响了后续所有轻量状态库（Zustand、Valtio、Jotai）的设计——它们都在试图"比 Redux 更简单，比 MobX 更轻量"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户交互入口] --> UI[React UI 组件层]
+    UI -->|读取 observable| OBS[MobX Observable 状态 基于 Proxy/装饰器 自动依赖追踪 待核验实现细节]
+    OBS -->|细粒度订阅| UI
+    ACT[Action 显式变更入口] --> OBS
+    CMP[Computed 派生值] -->|依赖| OBS
+    REA[Reaction 副作用 跨组件/外部同步] -->|订阅| OBS
+    OBS -.未强制单向数据流.-> RISK[风险边界 大团队易出现面条状态 依赖图难可视化]
+    OBS --> EXT[外部服务或数据依赖]
+    EXT -.RSC 范式张力.-> RISK
+```
 
 ## 定位判断
 **成熟工具型项目。** MobX 是状态管理领域的经典选择，适合中大型 React 应用。它不是"创新新星"，而是"经过验证的成熟工具"。技术路线已基本定型，未来增量主要在生态适配（React 18/19、RSC 兼容）。

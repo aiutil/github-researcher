@@ -6,7 +6,7 @@
     <title>CrabTrap | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -42,41 +42,74 @@
 <li><strong>HTTP 代理零侵入</strong>：不改 Agent 代码，加一层代理即可</li>
 <li><strong>Brex 生产验证</strong>：金融场景的安全要求极高，通过验证说明方案可行</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>CrabTrap 是位于 Agent 与上游 LLM API 之间的 HTTP 代理层，承担请求/响应语义审查职能，不侵入 Agent 代码</td>
+<td>边界形态由"LLM-as-a-Judge HTTP 代理"与 Go 语言实现推出；具体监听端口、TLS 终止、上下游协议未在档案中确认</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户请求 → CrabTrap 代理(LLM-as-Judge 审查请求) → 转发至 LLM API → CrabTrap 审查响应 → 放行或拦截给 Agent</td>
+<td>主路径以档案"sequenceDiagram"为依据；审查用的 LLM 是否同上游、是否流式审查、是否异步均属"待核验"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 Agent 安全语义覆盖度 vs 每请求额外一次 LLM 调用带来的延迟与成本上升、误报漏报风险之间的权衡</td>
+<td>权衡来源于档案"风险/局限"第 1、2 项；未涉及具体 P95 延迟、单次审查 token 消耗或 SLA</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一非关键渠道接入 CrabTrap 作为出站 HTTP 代理，限定最小工具权限，开启审计日志，以延迟、误报率、审查 LLM 注入风险作为验收项</td>
+<td>PoC 建议来自档案"架构师速览·采用建议"；具体部署形态、回滚机制、审查 LLM 选型档案未给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>CrabTrap 代表了 Agent 安全链路中的"内容审查层"。与 ThinkWatch（身份层）、CubeSandbox（执行层）形成完整的安全架构：</p>
-<pre class="mermaid">sequenceDiagram
-    participant A as Agent
-    participant C as CrabTrap
-    participant L as LLM API
-    
-    A->>C: 用户请求
-    C->>C: LLM-as-a-Judge 审查
-    alt 安全
-        C->>L: 转发请求
-        L-->>C: LLM 响应
-        C->>C: 审查响应
-        C-->>A: 安全响应
-    else 不安全
-        C-->>A: 拦截 + 告警
-    end
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[Agent 客户端] -->|HTTP 请求| B[CrabTrap HTTP 代理<br/>Go 实现]
+    B -->|请求语义审查<br/>LLM-as-Judge| C{审查判定}
+    C -->|判定为不安全| D[拦截 + 告警<br/>不下游转发]
+    C -->|判定为安全| E[上游 LLM API<br/>具体供应商:待核验]
+    E -->|模型响应| B
+    B -->|响应语义审查<br/>LLM-as-Judge| F{响应判定}
+    F -->|不安全内容| D
+    F -->|安全| G[放行至 Agent]
+    H[审计/可观测日志<br/>落点:待核验] -.-> B
+    I[审查 LLM 自身<br/>注入风险边界<br/>待核验] -.-> C
+    I -.-> F
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>基础设施候选。Agent 安全链路的语义审查层。Go 实现适合代理场景。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>LLM 审查延迟</strong>：每次请求额外调用一次 LLM 做安全审查，增加延迟和成本</li>
 <li><strong>误判风险</strong>：LLM-as-a-Judge 可能产生误报/漏报，尤其是面对精心构造的 Prompt Injection</li>
 <li><strong>审查本身的安全</strong>：审查用的 LLM 也可能被注入攻击</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>ThinkWatch</strong>：互补关系。ThinkWatch 做身份/限流/审计，CrabTrap 做语义审查</li>
 <li><strong>NeMo Guardrails</strong>：NVIDIA 的 LLM 安全框架，规则+模型混合，更重</li>
 <li><strong>LLM Guard</strong>：Protect AI 的 LLM 安全扫描器，规则为主</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。LLM-as-a-Judge 安全审查是 Agent 安全的新范式，值得关注其在生产环境中的表现。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>延迟和成本在生产环境中的实际表现</li>
 <li>面对 Prompt Injection 变种的拦截率</li>

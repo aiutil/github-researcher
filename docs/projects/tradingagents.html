@@ -6,7 +6,7 @@
     <title>TauricResearch/TradingAgents | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -51,11 +51,64 @@
 <li>回测框架：历史数据验证策略有效性</li>
 <li>风险评估模块：交易决策必须通过风控 Agent 审查</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TradingAgents 是一个以多 Agent 编排为核心、围绕金融决策场景组织的项目，位于"上游系统/使用者 → 入口与身份边界 → 编排运行时 → 模型/工具/会话状态"的中间层，把分析师、研究员、交易员、风控等角色建模为可协作的 Agent。</td>
+<td>边界与角色分工来源于档案"真实公司架构模拟"与 Agent 拓扑描述；具体入口形态、鉴权方式、部署单元未在档案中给出，需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主路径为：使用者发起请求 → 入口/身份层 → 编排与多 Agent 运行时 → 调用 LLM 后端与外部数据/工具（Yahoo Finance、Google News、Reddit、SEC 等）→ 经多头/空头研究员辩论与风控审查 → 生成交易决策并回写会话、状态与审计。</td>
+<td>主路径基于档案"关键技术亮点"中的角色链、辩论机制、数据集成、风控模块描述串联；具体消息协议、状态存储格式、回测管线未在档案中给出。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三个最关键的权衡是：(1) 多 Agent 辩论带来的分析深度 vs. 决策延迟，档案已显式指出"不适合高频交易"；(2) 可插拔 LLM 后端（OpenAI/Anthropic/本地）带来的扩展性 vs. 输出稳定性与幻觉风险，档案强调金融容错率极低；(3) 多源实时数据接入（Yahoo/News/Reddit/SEC）的覆盖面 vs. 数据时效性与合规风险，档案已列出监管审查风险。</td>
+<td>权衡判断直接引用档案"风险/局限/泡沫点"中的延迟、幻觉、数据时效性、监管风险条目；具体的延迟量级、SLO、合规要求未给出。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>建议以"单标的、单数据源（Yahoo Finance）、单 LLM 后端、关闭辩论/风控旁路"的最小配置复现一次端到端决策流，并在沙箱环境回测，把决策时延、幻觉样本、可审计日志与退出路径作为验收项，再决定是否扩展到多 Agent 辩论、风控审查与多源数据接入。</td>
+<td>PoC 设计仅依据档案给出的角色链与可插拔后端/数据源特性；具体的最小工具集、回测框架 API、风控 Agent 接口细节"待核验"。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>TradingAgents 的核心启发是"用组织架构设计 Agent 拓扑"。对架构师的启发是：<strong>复杂决策问题的多 Agent 分工不应随意设计，而应参考成熟的人类组织结构</strong>——交易公司经过数百年演化出的分工模式（分析师→研究员→交易员→风控）本身就是经过验证的最优架构。将这种"社会工程"迁移到 AI 系统是一种务实的架构策略。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界 待核验]
+    I --> C[多Agent编排与运行时]
+    C --> A[分析师团队 Agent 基本面/技术/情绪/新闻]
+    C --> R[研究员对抗辩论 多头 vs 空头]
+    C --> TR[交易员 Agent]
+    C --> RM[风控经理 Agent 审查门]
+    A --> R
+    R --> TR
+    TR --> RM
+    C --> LLM[可插拔LLM后端 OpenAI/Anthropic/本地 待核验]
+    C --> DS[外部数据源 Yahoo Finance/Google News/Reddit/SEC]
+    RM --> OUT[交易决策输出]
+    C --> S[会话 状态 审计 日志 待核验]
+    DS --> C
+    LLM --> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选（强）。</strong> 已超越框架定位，成为金融 AI Agent 领域的事实标准。96k stars + 论文 + 活跃维护构成强大的生态势能。但其作为"投资决策工具"的实际有效性仍需长期验证——stars 高不等于投资回报高。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>金融泡沫风险最大:</strong> 96k stars 中大量来自"AI 炒股"幻想者，实际投资效果未经验证</li>
 <li><strong>LLM 幻觉:</strong> 金融决策容错率极低，LLM 的任何幻觉都可能导致重大损失</li>
@@ -64,16 +117,16 @@
 <li><strong>监管风险:</strong> AI 驱动的金融交易面临日益严格的监管审查</li>
 <li><strong>幸存者偏差:</strong> 开源成功的案例被放大，失败的交易策略不会被公开</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>FinGPT</strong>（AI4Finance）在金融 LLM 维度互补——FinGPT 做模型，TradingAgents 做架构</li>
 <li>与 <strong>Qlib</strong>（微软量化平台）形成"AI Agent vs 传统量化"的对比</li>
 <li>与 <strong>CrewAI</strong>、<strong>AutoGen</strong> 在多 Agent 框架维度是上下层关系——TradingAgents 基于通用框架构建</li>
 <li>在学术维度，与 Stanford STORM、MetaGPT 在"多 Agent 系统模拟人类组织"方向上同源</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>强烈推荐跟踪。</strong> 无论作为多 Agent 架构的参考实现还是金融 AI 的风向标，TradingAgents 都具有高研究价值。但需注意区分"架构价值"（高）和"投资价值"（待验证）。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否有真实的量化基金采用此框架（而非仅学术/个人使用）</li>
 <li>多 Agent 辩论机制是否能有效降低 LLM 幻觉</li>

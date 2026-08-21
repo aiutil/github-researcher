@@ -42,10 +42,40 @@ url: "https://github.com/docker-mailserver/docker-mailserver"
 5. **安全加固**：Fail2ban 防暴力破解，自动 SSL（Let's Encrypt）
 6. **LDAP 支持**：企业级身份认证集成
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单一 Docker 镜像承载 Postfix/Dovecot/SpamAssassin/ClamAV/OpenDKIM/Fail2ban，配合 setup.sh 与 .env；对外暴露 SMTP/IMAP/管理面，对内依赖 LDAP、Let's Encrypt 等可选外部身份与证书源 | 组件清单来自档案"关键技术亮点"；具体端口、镜像分层与 LDAP/ACME 流程未在档案中给出 |
+| 主路径 | 邮件流入：SMTP 接收 → OpenDKIM 签名校验/签发 → SpamAssassin + ClamAV 过滤 → Dovecot 投递；管理面：setup.sh/.env → 容器内配置重生成 → Postfix/Dovecot 重载 | 主链路来自档案组件枚举；DKIM 私钥管理、Quarantine 与 LDAP 绑定细节属待核验 |
+| 关键权衡 | "一体化镜像降低运维门槛" vs "多组件耦合使升级/扩容粒度变粗"，并叠加 IP 信誉、合规(GDPR)与 Fail2ban 默认策略带来的安全责任自负 | 权衡描述基于档案"风险/局限"与"架构启发"；未涉及具体资源占用、SLO、HA 拓扑 |
+| 最小 PoC | 单节点 docker-compose 拉起镜像，跑通 SMTP 发送/IMAP 接收、DKIM 签发、SpamAssassin/ClamAV 扫描与 Let's Encrypt 自动证书；验收包含 DNS(MX/SPF/DKIM/DMARC)、IP 信誉观测、备份/恢复与升级路径 | 起步范围限定在档案明确列出的能力；k8s/Helm 部署、多节点与 LDAP 全量集成属下一阶段，待核验 |
+
 ## 架构启发
 - **容器化复杂系统**：多组件系统可以通过精心设计的镜像简化部署
 - **配置即代码**：所有邮件服务器配置通过文件管理，可版本化
 - **安全默认**：Fail2ban/SSL/反垃圾默认开启
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Client[邮件客户端或MTA] --> SMTP[Postfix SMTP入口]
+    SMTP --> DKIM[OpenDKIM 签名与校验]
+    DKIM --> Filter[SpamAssassin 反垃圾]
+    Filter --> AV[ClamAV 反病毒]
+    AV --> Dovecot[Dovecot 投递与IMAP]
+    Dovecot --> Mailbox[本地邮箱或LDAP用户目录]
+    Mgmt[setup.sh 与.env配置] --> SMTP
+    Mgmt --> Dovecot
+    Mgmt --> DKIM
+    LE[Let's Encrypt 外部CA 待核验] --> SMTP
+    ExtID[外部LDAP 待核验] --> Dovecot
+    F2B[Fail2ban 入侵防护] -.监控.-> SMTP
+    F2B -.监控.-> Dovecot
+```
 
 ## 定位判断
 **成熟基础设施型项目**。自建邮件服务器的事实标准。不是热点项目，但是基础设施领域的稳定赢家。

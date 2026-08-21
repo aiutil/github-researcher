@@ -48,6 +48,15 @@ LiteRT 已从实验项目进入**生产环境**：Chrome 浏览器、Pixel Watch
 4. **AOT 编译**：Ahead-of-Time 编译消除运行时开销，适合资源受限设备
 5. **HuggingFace 集成**：通过 google-ai-edge/gallery 提供开箱即用的模型库
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | LiteRT 是 TFLite 的官方继任者，覆盖端侧 ML 与 GenAI 推理的运行时层级，定位为底层基础设施 | 基于档案"它是 TensorFlow Lite 的官方继任者"及"基础设施层"定位判断，未含源码层级组件清单 |
+| 主路径 | 上游框架（TF/PyTorch/JAX）经 Model Conversion Pipeline 进入 LiteRT Runtime，由其自动调度 CPU/GPU/NPU 后端执行推理 | 仅来自档案"关键技术亮点"四条描述，未涉及具体 API、线程模型或内存管理 |
+| 关键权衡 | 通用多后端覆盖 vs 单后端优化深度；Google 全权主导的开源策略稳定性；C++ 实现对 Web/移动贡献者的门槛 | 直接引用档案"Trade-off"段及"风险/局限"四条；未提供 ONNX Runtime 对比基准数据 |
+| 最小 PoC | 在 Pixel Watch 或 Chrome（生产已集成）上跑通 google-ai-edge/gallery 中一个 Gemma-4 模型，对比档案所述的 KV Cache、Speculative Decoding 行为 | 依赖档案提到的"Chrome + Pixel Watch 生产部署"与"gallery 示例应用"事实，具体延迟/吞吐/内存指标未在档案中给出 |
+
 ## 架构启发
 
 LiteRT 的架构设计体现了 Google 在端侧 AI 上的长期思考：
@@ -55,6 +64,25 @@ LiteRT 的架构设计体现了 Google 在端侧 AI 上的长期思考：
 - **统一运行时**：用单个运行时覆盖传统 ML 和 GenAI，避免碎片化
 - **编译器 + 运行时分离**：Conversion Pipeline 负责优化，Runtime 负责执行，关注点清晰分离
 - **Trade-off**：通用性 vs 性能——LiteRT 选择了通用性，通过多后端支持覆盖所有硬件，但单个后端的优化深度可能不如专用方案（如 ONNX Runtime 对特定硬件的优化）
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart TB
+    A[TF / PyTorch / JAX] --> B[Model Conversion Pipeline]
+    B --> C[LiteRT Runtime]
+    C --> D[CPU 后端]
+    C --> E[GPU 后端]
+    C --> F[NPU 后端]
+    C --> G[GenAI 优化器: KV Cache / Speculative Decoding 待核验]
+    H[google-ai-edge/gallery 模型库] --> C
+    I[Chrome / Pixel Watch / Android 集成方] --> C
+    C --> J[边缘设备推理产物]
+    K[ONNX Runtime 等竞品 边界外] -.竞争.-> C
+</mmer>
+```
 
 ## 定位判断
 

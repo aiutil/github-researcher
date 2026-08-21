@@ -40,8 +40,33 @@ Redux 学习曲线陡峭（reducer / action / store / middleware 样板多）；
 4. **中间件:** persist、immer、devtools、subscribeWithSelector 等
 5. **TS 支持:** 类型推导友好
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 边界落在 React 组件层与领域 store 之间：组件用 hook 选择性订阅单 store，store 内部即状态+actions，不引入 Provider/Context 树 | 仅依据档案中"单 store API、无 Provider、selector 优化"事实，未审计源码 |
+| 主路径 | `create((set)=>({...}))` 定义 store → 组件 `useStore(selector)` 订阅 → set 触发更新 → 可选中间件（persist/immer/devtools/subscribeWithSelector）落地 | 中间件名单与 API 名称取自档案"关键技术亮点"段 |
+| 关键权衡 | 极简（无 boilerplate、无 Provider）vs 大型应用可观测性/调试能力（devtools 非默认，需自行补 build pipeline） | 权衡描述源自档案"风险/局限"与"核心权衡"行；未给出性能基准 |
+| 最小 PoC | 用 create 建一个带 count/inc 的 store，经 useStore(s=>s.count) 在组件中渲染并触发更新，验证 re-render 范围与 selector 行为 | PoC 仅复述档案给出的 API 形态；不补写未列出的部署/持久化细节 |
+
 ## 架构启发
 "用 React 原生 hook 抽象状态" 是 zustand 的核心哲学——它不引入新概念（action/reducer），而是用 React 函数式思路重写 store。这一模式值得借鉴：**用宿主语言已有概念做最小封装**，比强制新思维框架的项目更长寿。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[用户或客户端] --> UI[React 组件与 UI 层]
+    UI -->|useStore selector| S[(单 store: state + actions)]
+    S -->|set| S
+    S --> M[中间件: persist / immer / devtools / subscribeWithSelector]
+    M --> S
+    S --> E[外部依赖: 服务 API / 持久化存储 / 调试工具]
+    S -. RSC 协作模式 待核验 .-> R[React Server Components 边界]
+    S -. 大型项目调试链路 待核验 .-> O[错误 监测 反馈]
+```
 
 ## 定位判断
 **工具型 / React 状态管理长青树。** 与 Redux Toolkit 共同占据 React 状态管理 Top 2，60k stars 量级稳定。预期未来 5-10 年仍是 React 状态管理主流选项之一。

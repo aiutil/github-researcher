@@ -6,7 +6,7 @@
     <title>World2Agent | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -44,40 +44,73 @@
 <li><strong>SensorHub</strong>：传感器市场/hub，社区可贡献新的 Sensor</li>
 <li><strong>Apache 2.0 开源</strong></li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>World2Agent 定位为"真实世界 → Sensor → Agent"的感知层编排边界，对外通过 W2A Schema 对接天气/股市/新闻/IoT 等异构数据源，对内为 Claude Code、Hermes、OpenClaw 提供 Agent Runtime 插件。</td>
+<td>边界基于档案"关键技术亮点"与"架构启发"段；协议字段、版本、传输方式未在档案中给出，源码未审计。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据源 → Sensor 适配器（按 W2A schema 结构化）→ Agent Runtime 插件（Claude Code / Hermes / OpenClaw）→ Agent 决策与行动。SensorHub 作为社区 Sensor 贡献与发现入口。</td>
+<td>主路径由档案架构图与亮点 1/2/3/4 推导；运行时线程模型、持久化、重试机制均待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>协议通用性 vs. Sensor 实现数量与质量的"鸡生蛋"问题；标准化收益 vs. 与 MCP 工具层的边界不清；社区开放 vs. Sensor 数据质量不可控。</td>
+<td>权衡来自档案"风险/局限"四条；尚无生态采用度、SensorHub 贡献数等量化证据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选 1 个数据源（如天气）、接 1 个 Agent 运行时（如 Claude Code 插件）、验证 W2A schema 端到端解析；同时把权限最小化、可审计日志、退出路径列为验收项。</td>
+<td>PoC 设计依据档案"采用建议"与 Apache 2.0 许可；具体部署形态、依赖、SLO 未在档案中给出。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>W2A 的架构模式是 <strong>World → Sensor → Agent</strong>，这是一个经典的分层抽象：</p>
-<pre class="mermaid">graph LR
-    W[真实世界] --> S1[天气 Sensor]
-    W --> S2[股市 Sensor]
-    W --> S3[新闻 Sensor]
-    W --> S4[IoT Sensor]
-    
-    S1 --> |"W2A Protocol"| AGENT[AI Agent]
-    S2 --> |"W2A Protocol"| AGENT
-    S3 --> |"W2A Protocol"| AGENT
-    S4 --> |"W2A Protocol"| AGENT
-    
-    AGENT --> R[决策与行动]
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  W[真实世界数据源<br/>天气/股市/新闻/IoT] --> S[Sensor 实现层<br/>按 W2A Schema 结构化]
+  S --> H[SensorHub<br/>社区贡献与发现]
+  S --> P[W2A Protocol / Schema<br/>统一感知协议]
+  P --> R[Agent Runtime 插件<br/>Claude Code / Hermes / OpenClaw]
+  R --> A[AI Agent 决策与行动]
+  A -.状态/风险边界.-> Q[权限与可观测性边界<br/>Sensor 质量不可控 / 与 MCP 边界待核验]
+  H -.待核验.-> S
+  P -.待核验.-> M[MCP 工具层<br/>互补/竞争关系待核验]
 </pre>
 <p>这个模式与 MCP（Model Context Protocol）形成互补：MCP 解决 Agent 如何使用工具，W2A 解决 Agent 如何感知世界。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>协议层 / 基础设施候选。W2A 不是产品而是协议，它的价值取决于能否建立生态。</p>
-<h2 id="_7">风险 / 屺限 / 泡沫点</h2>
+<h2 id="_8">风险 / 屺限 / 泡沫点</h2>
 <ol>
 <li><strong>鸡生蛋问题</strong>：协议需要足够多的 Sensor 实现才能吸引 Agent 开发者，反之亦然</li>
 <li><strong>与 MCP 的关系不明确</strong>：MCP 已经在工具接入层建立了标准，W2A 需要明确与 MCP 的边界</li>
 <li><strong>Sensor 质量不可控</strong>：社区贡献的 Sensor 数据质量如何保证？</li>
 <li><strong>早期阶段</strong>：目前仅 8 天历史，生态几乎为零</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>MCP (Model Context Protocol)</strong>：MCP 解决工具调用标准化，W2A 解决感知标准化，理论上互补</li>
 <li><strong>OpenAI Plugin/Action</strong>：闭源方案，功能覆盖但非标准</li>
 <li><strong>Home Assistant</strong>：IoT 领域的感知标准化，但局限于智能家居</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是</strong>。Agent 感知层的标准化是一个真实需求，即使 W2A 本身不能成功，这个方向会出现赢家。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>SensorHub 是否出现高质量社区贡献</li>
 <li>是否被主流 Agent 框架采纳</li>

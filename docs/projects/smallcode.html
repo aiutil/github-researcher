@@ -6,7 +6,7 @@
     <title>SmallCode | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -53,23 +53,76 @@
 <p>将大任务分解为 TODO 文件中的小步骤，每次只处理一步。避免小模型在多步推理中丢失上下文。</p>
 <h3 id="4-search-and-replace-patch-editing">4. Search-and-replace patch editing</h3>
 <p>不做全文件重写（小模型容易出错），用精确搜索替换方式编辑代码。</p>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>SmallCode 是面向 8B-35B 本地小模型的终端编码 Agent 编排层，承担"工具补偿模型"职责</td>
+<td>边界来自档案"关键技术亮点"四条；项目体量仅 1.2K stars/5 天、JavaScript 实现，组件稳定性未审计</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>终端输入 → Budget-managed 上下文加载与摘要 → TODO-file 拆步 → 多格式 tool calling 解析 → search-and-replace patch 回写</td>
+<td>路径仅基于档案四条亮点串联，缺少 LLM 推理后端、持久化、协议细节描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在"小模型能力上限 vs 工具补偿力度"与"多格式 tool calling 容错度 vs 输出可审计性"之间取舍；另需权衡 TODO 文件化分步 vs 单步内上下文利用率</td>
+<td>权衡为档案"风险/局限"项 #1、#3 的直接推论，benchmark 87 分可信度未独立验证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地 8B 模型 + 受限工作目录 + 单文件 patch 场景下，验证 TODO-file 拆步、搜索替换编辑、多格式 tool calling 三条主路径能否闭环；评估上下文摘要触发频次与多步丢失率</td>
+<td>档案未给出基准测试集、失败率、上下文窗口默认值等可测量阈值，PoC 需自行设定验收指标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>SmallCode 展示了一个重要的设计哲学：<strong>工具应该适应模型，而不是要求模型适应工具</strong>。</p>
 <ul>
 <li>前沿模型 Agent 的设计假设：模型能力强 → 工具可以做更复杂的事</li>
 <li>SmallCode 的设计假设：模型能力有限 → 工具必须补偿模型弱点</li>
 </ul>
 <p>这种「工具补偿模型」的思路对架构师有启发 — 在企业内部署 Agent 时，不一定需要最贵的模型，好的工具链可以让小模型也做有用的事。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> I[终端入口与权限边界]
+    I --> C[项目编排与运行时]
+    C --> R[Budget-managed 上下文与摘要 待核验]
+    R --> C
+    C --> P[TODO-file 分步规划]
+    P --> C
+    C --> TC[Forgiving tool calling 多格式解析]
+    TC --> C
+    C --> PE[Search-and-replace patch 编辑]
+    PE --> FS[工作目录与文件系统]
+    PE --> C
+    C --> M[本地 8B-35B 推理模型 待核验供应商]
+    M --> C
+    C --> S[会话 状态 审计日志]
+    C --> RSK[模型能力上限与工具补偿边界 风险]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>当前是<strong>工具型</strong>，但如果小模型 Agent 生态爆发，有可能演化为<strong>平台候选</strong> — 成为小模型 Agent 的标准工具层。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>小模型能力上限</strong>：8B-35B 模型在复杂推理上仍有明显局限，工具补偿不能突破模型天花板</li>
 <li><strong>87% benchmark 声称值待验证</strong>：可能存在 cherry-picking 或特定场景优化</li>
 <li><strong>生态碎片化风险</strong>：如果每个模型规模都需要专门的 Agent 工具，工具链会极度碎片化</li>
 <li><strong>与大模型 Agent 的体验差距</strong>：无论如何优化，小模型 Agent 的体验仍与大模型有差距</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -101,9 +154,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，建议持续跟踪。</strong> 小模型 Agent 工具链是当前被严重忽视的方向。如果 SmallCode 能持续迭代并建立社区，可能成为小模型 Agent 生态的关键工具。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>SmallCode 在真实项目中的表现（非 benchmark 场景）</li>
 <li>社区是否出现更多针对小模型的 Agent 工具</li>

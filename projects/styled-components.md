@@ -36,8 +36,34 @@ url: "https://github.com/styled-components/styled-components"
 - **Theming:** 通过 `<ThemeProvider>` 实现主题切换，Context 驱动
 - **SSR 支持:** `ServerStyleSheet` 收集服务端样式，避免闪烁
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 运行时 CSS-in-JS 库，绑定 React 组件层；输出 CSS 注入到客户端，不属于后端服务或数据持久层 | 档案将其归类为"工具型"，未提供源码级模块边界 |
+| 主路径 | React 组件渲染 → styled 组件解析 template literal → stylis 解析 CSS → 生成 class 名 + 注入样式 → hydrate 到 DOM | 标注 "stylis" 和 "hydrate 机制" 为底层依赖，但具体数据流未在档案中给出 |
+| 关键权衡 | 组件封装/动态样式能力 vs 运行时注入带来的性能开销与 RSC 兼容风险；与 Tailwind、vanilla-extract 的范式竞争 | 性能争议、RSC 挑战、范式衰退均来自档案定性描述，无基准数据 |
+| 最小 PoC | 在一个 React 页面里通过 `styled.div` + props 动态样式 + `<ThemeProvider>` 切换主题，验证 SSR 下 `ServerStyleSheet` 是否避免闪烁，并度量首屏 CSS 注入耗时 | `ServerStyleSheet`、`ThemeProvider`、动态 props 样式均在档案"关键技术亮点"中明确提及 |
+
 ## 架构启发
 styled-components 的核心架构贡献是"样式即组件"——通过 `styled.div` 创建的不仅是样式规则，而是一个完整的 React 组件。这种设计消除了"组件 HTML"与"组件 CSS"之间的割裂。其底层使用 stylis（CSS 解析器）和 hydrate 机制实现运行时样式注入。但运行时注入也带来了性能争议，这是 CSS-in-JS 范式的内在权衡。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[React 组件渲染] --> SC[styled 组件 - template literal]
+    SC --> S[stylis CSS 解析器]
+    S --> CN[自动生成 class 名 sc-xxxx]
+    CN --> INJ[运行时样式注入到 DOM]
+    INJ --> H[hydrate 机制挂载样式]
+    SC --> TP[ThemeProvider Context 主题驱动]
+    SC --> SS[ServerStyleSheet SSR 样式收集]
+    H --> R[RSC 兼容性 - 待核验]
+    INJ --> P[性能开销 风险边界 - 待核验]
+```
 
 ## 定位判断
 **工具型项目（成熟稳定期）。** styled-components 已是一个成熟的样式解决方案，API 稳定，文档完善。它不是"最前沿"的技术，但在 CSS-in-JS 领域依然是默认选择之一。其定位正受到零运行时方案（Tailwind CSS、vanilla-extract）的挑战，但在已有项目中仍有巨大惯性。

@@ -6,7 +6,7 @@
     <title>apple/container | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,11 +55,58 @@
 <li><strong>CLI 友好:</strong> 提供类似 docker 的命令行接口，降低迁移成本</li>
 <li><strong>原生集成:</strong> 与 macOS 文件系统、网络、资源管理原生协作，体验优于第三方方案</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>apple/container 是面向 macOS（含 Apple Silicon）开发者的官方容器运行时，分层为：macOS 调用方 → 项目 CLI/API（控制面）→ Swift 编写的执行单元 → 基于 Virtualization.framework 的轻量 Linux VM（容器宿主）。外部边界为 OCI 镜像源（如 Docker Hub）拉取标准镜像。</td>
+<td>档案仅明确 Swift 语言、Virtualization.framework、OCI 兼容；未公开具体进程间协议、API 形态与控制面组件拆分，需源码核验。</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>调用方发起容器请求 → CLI/控制面解析与调度 → 启动轻量 Linux VM（每容器一 VM 候选模型）→ 在 VM 内运行 Linux 容器并挂载 OCI 镜像。</td>
+<td>档案仅说明"轻量 VM 架构"与"VM-per-container 启发"，未直接证实每容器一 VM 的实现细节；持久化、网络与卷管理路径待核验。</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在隔离强度（VM 级隔离优于共享内核）与桌面资源效率之间取舍；同时平衡 macOS 原生集成体验与跨平台生态覆盖不足（仅 macOS/Apple Silicon）的代价。</td>
+<td>档案明示权衡方向（平台原住民、VM 隔离重塑容器安全模型），但未提供性能基准、内存占用或与 Docker Desktop 的量化对比数据。</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Apple Silicon Mac 上：拉取一个 OCI 标准镜像（如 nginx/alpine），启动并暴露端口，观察启动延迟、内存占用、与 macOS 文件系统/网络的集成行为；同步验证是否兼容现有 Docker Compose 工作流（待核验）。</td>
+<td>档案未列出已验证的 Compose 支持、网络模式覆盖范围或 Intel Mac 支持矩阵，验收须以官方文档与实际测试为准。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>apple/container 的核心启发是 <strong>"平台厂商亲自下场做基础设施，能带来量级体验提升"</strong>。第三方容器方案（Docker Desktop、Colima、OrbStack）受限于"非系统级"身份，无法深度利用 macOS 能力。Apple 用自家 Virtualization.framework + Swift，做到了第三方做不到的系统级优化——这是平台原住民的优势。更深层的启发是：<strong>容器运行时的未来可能基于轻量 VM 而非传统 namespace/cgroup</strong>。Apple 的方案本质是"VM-per-container"（每个容器一个轻量 VM），在安全隔离上优于共享内核方案，而硬件虚拟化让性能开销可接受。这与 AWS Firecracker、Google gVisor 的思路殊途同归——<strong>用 VM 隔离重塑容器安全模型</strong>。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    U[macOS 开发者或 CI 调用方] --> CLI[CLI 与控制面（Swift）]
+    CLI --> IMG[拉取 OCI 标准镜像 外部边界]
+    IMG --> CLI
+    CLI --> P[策略 调度 生命周期]
+    P --> VML[轻量 Linux VM 基于 Virtualization.framework]
+    VML --> C[Linux 容器内执行进程]
+    P --> OBS[审计 指标 日志 可观测边界]
+    VML --> R[macOS 计算 网络 文件系统资源]
+    P -.待核验.- NET[网络模式与卷管理细节]
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>平台候选型基础设施（Apple 生态容器标准）。</strong> apple/container 有潜力成为 macOS 上容器运行的"官方标准"，取代 Docker Desktop 在 Apple 生态的默认地位。Apple 官方 + 原生 Swift + 持续高活跃，构成了强大的平台化基础。它不会取代 Docker（跨平台生态），但会<strong>主导 Apple 平台的容器体验</strong>。作为基础设施，其生命周期与 Apple 硬件/系统绑定，极为长久。这是 Apple 开源战略的重要一环——让 Mac 对开发者更友好，巩固 Apple Silicon 在开发市场的地位。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>仅限 macOS/Apple Silicon:</strong> 不支持 Linux/Windows，跨平台团队需多方案并存</li>
 <li><strong>生态成熟度:</strong> 相比 Docker 的庞大生态（Compose、Registry、插件），Apple container 仍在追赶</li>
@@ -68,7 +115,7 @@
 <li><strong>Intel Mac 支持:</strong> 是否支持 Intel Mac 还是仅 Apple Silicon，影响存量用户</li>
 <li><strong>企业采用门槛:</strong> 企业已有 Docker/K8s 工具链，切换成本高</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Docker Desktop:</strong> 最流行的 Mac 容器方案，但收费且重；Apple container 官方、轻量、免费</li>
 <li><strong>vs Colima/OrbStack:</strong> 第三方轻量替代，优秀但非官方；Apple container 有系统级优势</li>
@@ -76,9 +123,9 @@
 <li><strong>vs Lima:</strong> 底层 VM 方案；Apple container 基于 Apple 原生框架，集成度更高</li>
 <li><strong>vs Firecracker（AWS）:</strong> 同为轻量 VM，Firecracker 面向云；Apple container 面向桌面</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>必须跟踪（Apple 开发者视角）。</strong> apple/container 是 Apple 平台基础设施的重大事件——官方容器方案的出现会重塑 Mac 开发者的容器工作流。建议关注：功能对齐 Docker 的进度（Compose 支持、网络高级特性）、企业采用案例、与 K8s 工具链的兼容性。对 Mac 开发者，建议尽早试用并评估是否替代 Docker Desktop。对行业观察者，它反映 Apple 持续投资开发者基础设施的战略——从 MLX（AI）到 container（云原生），Apple 正系统性地让 Apple Silicon 成为最佳开发平台。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否支持 Docker Compose（关键迁移门槛）</li>
 <li>与 K8s 工具链（kubectl/minikube）的兼容性</li>

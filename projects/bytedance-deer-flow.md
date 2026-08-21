@@ -42,10 +42,36 @@ DeerFlow 2.0 曾在 2026 年 2 月 28 日登上 GitHub Trending #1。今天重�
 9. **IM 渠道集成**：Message Gateway 支持 IM 消息推送
 10. **MCP Server**：可作为 MCP Server 被外部 Agent 调用
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | DeerFlow 作为 SuperAgent harness，处于入口渠道（IM、CLI、MCP）、模型供应商（API 与 CLI-backed，含 Doubao/DeepSeek/Kimi/vLLM）与工具/数据源（InfoQuest、沙箱、Skills）之间的编排层 | 基于项目分类、标签与档案描述的"subagents + sandbox + memory + skills"做出的抽象；具体模块边界、RPC 协议、持久化格式未在档案中确认 |
+| 主路径 | 用户/上游系统 → 入口与身份 → 编排与运行时（含 subagents、skills） → 并行调用模型/推理与工具/沙箱（含 InfoQuest） → 会话/状态/审计（LangSmith、Langfuse）回写 | 档案明列的组件与"生成隔离子代理做并行工作流"；图中的会话/状态节点覆盖 Long-Term Memory 与双 Tracing，确切存储后端未披露 |
+| 关键权衡 | 扩展能力（CLI-backed provider、MCP Server、IM 渠道） vs. 权限隔离（沙箱、最小工具权限）、可观测性（LangSmith + Langfuse）、供应商耦合（InfoQuest 绑定 BytePlus/Volcengine） | 权衡来自档案"关键技术亮点"与"风险/局限"；不引用未列出的性能或安全数据 |
+| 最小 PoC | 单一入口渠道 + 单一模型 provider（推荐先 vLLM 部署 Qwen3-32B 以规避云绑定）+ 最小工具权限沙箱 + 启用 LangSmith/Langfuse 审计后再扩大接入面 | PoC 步骤仅由档案"架构师速览·采用建议"推导；分钟级 vs 小时级任务成功率、reasoning parser 细节均待核验 |
+
 ## 架构启发
 DeerFlow 2.0 的核心设计是**"SuperAgent + 可扩展能力栈"**——不是单体 Agent，而是一个 harness（编排层），通过组合 sandbox、memory、skills、subagents 来处理复杂任务。
 
 CLI-backed provider 模式特别有启发性：大多数 Agent 框架只支持 API 调用 LLM，DeerFlow 允许通过 CLI（Codex CLI、Claude Code OAuth）使用模型——这意味着你可以在自己的 Agent 中嵌套使用其他 Agent 框架的能力。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游系统] --> I[入口与身份边界<br/>IM Gateway / CLI / MCP Server]
+    I --> C[编排与运行时<br/>subagents 并行 + skills]
+    C --> M[模型或推理服务<br/>API 与 CLI-backed providers<br/>Doubao / DeepSeek / Kimi / vLLM]
+    C --> T[工具与外部系统<br/>InfoQuest 字节搜索爬虫 + Sandbox 隔离<br/>Python RPC]
+    C --> S[会话 状态 审计<br/>Long-Term Memory + LangSmith + Langfuse]
+    M -.回写结果.-> C
+    T -.回写结果.-> C
+    S -.持久化 待核验.-> C
+    R[风险边界<br/>InfoQuest 绑定 BytePlus/Volcengine<br/>2.0 与 v1 不兼容迁移成本] -.约束.-> C
+```
 
 ## 定位判断
 **平台候选。** 字节跳动在 Agent 基础设施层的关键布局。如果 DeerFlow 成为长周期任务编排的标准 harness，它将成为 Agent 时代的"Kubernetes"——编排层标准。

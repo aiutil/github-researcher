@@ -6,7 +6,7 @@
     <title>LiteRT | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,32 +55,81 @@
 <li><strong>AOT 编译</strong>：Ahead-of-Time 编译消除运行时开销，适合资源受限设备</li>
 <li><strong>HuggingFace 集成</strong>：通过 google-ai-edge/gallery 提供开箱即用的模型库</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>LiteRT 是 TFLite 的官方继任者，覆盖端侧 ML 与 GenAI 推理的运行时层级，定位为底层基础设施</td>
+<td>基于档案"它是 TensorFlow Lite 的官方继任者"及"基础设施层"定位判断，未含源码层级组件清单</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>上游框架（TF/PyTorch/JAX）经 Model Conversion Pipeline 进入 LiteRT Runtime，由其自动调度 CPU/GPU/NPU 后端执行推理</td>
+<td>仅来自档案"关键技术亮点"四条描述，未涉及具体 API、线程模型或内存管理</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>通用多后端覆盖 vs 单后端优化深度；Google 全权主导的开源策略稳定性；C++ 实现对 Web/移动贡献者的门槛</td>
+<td>直接引用档案"Trade-off"段及"风险/局限"四条；未提供 ONNX Runtime 对比基准数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Pixel Watch 或 Chrome（生产已集成）上跑通 google-ai-edge/gallery 中一个 Gemma-4 模型，对比档案所述的 KV Cache、Speculative Decoding 行为</td>
+<td>依赖档案提到的"Chrome + Pixel Watch 生产部署"与"gallery 示例应用"事实，具体延迟/吞吐/内存指标未在档案中给出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>LiteRT 的架构设计体现了 Google 在端侧 AI 上的长期思考：</p>
 <ul>
 <li><strong>统一运行时</strong>：用单个运行时覆盖传统 ML 和 GenAI，避免碎片化</li>
 <li><strong>编译器 + 运行时分离</strong>：Conversion Pipeline 负责优化，Runtime 负责执行，关注点清晰分离</li>
 <li><strong>Trade-off</strong>：通用性 vs 性能——LiteRT 选择了通用性，通过多后端支持覆盖所有硬件，但单个后端的优化深度可能不如专用方案（如 ONNX Runtime 对特定硬件的优化）</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    A[TF / PyTorch / JAX] --> B[Model Conversion Pipeline]
+    B --> C[LiteRT Runtime]
+    C --> D[CPU 后端]
+    C --> E[GPU 后端]
+    C --> F[NPU 后端]
+    C --> G[GenAI 优化器: KV Cache / Speculative Decoding 待核验]
+    H[google-ai-edge/gallery 模型库] --> C
+    I[Chrome / Pixel Watch / Android 集成方] --> C
+    C --> J[边缘设备推理产物]
+    K[ONNX Runtime 等竞品 边界外] -.竞争.-> C
+</mmer>
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施层</strong>。LiteRT 是端侧 AI 推理的底层运行时，类似于操作系统中的"虚拟机"角色。所有端侧 AI 应用都需要通过它来执行模型。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>Google 控制风险</strong>：作为 Google 内部项目，开源策略可能随时调整（TFLite 的教训）</li>
 <li><strong>与 ONNX Runtime 竞争</strong>：微软的 ONNX Runtime 在企业端侧部署中已有较大份额</li>
 <li><strong>C++ 门槛</strong>：对 Web/移动开发者来说，C++ 的贡献和学习门槛较高</li>
 <li><strong>Stars 数偏低</strong>：2K stars 对于一个"基础设施"定位的项目来说偏低，社区生态尚未建立</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>TensorFlow Lite</strong>：LiteRT 的前身，正在被逐步替代</li>
 <li><strong>ONNX Runtime（微软）</strong>：最大竞争对手，在企业端有更广泛的硬件支持</li>
 <li><strong>MLC-LLM</strong>：Apache TVM 生态的端侧 LLM 推理方案，更偏学术</li>
 <li><strong>llama.cpp</strong>：纯 CPU 端侧推理，更轻量但功能更少</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>关注端侧推理框架赛道。</strong> LiteRT 本身的价值取决于 Google 的投入力度，但端侧 AI 推理是确定性趋势，值得跟踪整个赛道的演进。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>Chrome 集成深度</strong>：Chrome 中 LiteRT 的使用场景是否从 ML 扩展到 GenAI</li>
 <li><strong>HuggingFace 模型库</strong>：gallery 中可用的模型数量和类型</li>

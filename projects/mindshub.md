@@ -37,8 +37,36 @@ MindsDB 推出的 AI 统一工作空间（MindsHub Cowork）——一个将数�
 4. **数据保险库（Data Vault）**：安全连接 BigQuery、Postgres、Gmail、Drive、HubSpot、Notion、Linear 等系统，凭据按连接范围隔离，Agent 永远看不到原始密钥。这对企业场景的安全性至关重要。
 5. **Artifact 发布**：将 Agent 输出转化为文档、仪表盘、应用和代码，并发布到可分享的 URL。这使 AI 工作成果从"聊天记录"升级为"可交付物"。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | mindshub 是 Makefile 主导的 superproject，由 frontend、backend/core_api、backend/core_agent、backend/data-vault 四个 git submodule 组成，定位为编排层而非实现层 | 仅基于档案的 submodule 列表与 Makefile 编排命令；具体子模块接口与部署产物未在档案中给出 |
+| 主路径 | 使用者通过桌面/Web 入口进入 Cowork 工作空间，请求经编排层路由至模型层（Claude/GPT/Gemini/DeepSeek/Qwen/Kimi）与可替换 Agent（Anton/Hermes），凭据隔离的 Data Vault 访问 BigQuery/Postgres/Gmail/Drive/HubSpot/Notion/Linear 等外部系统，结果以 Artifact 形式发布 | 模型与数据源列表、MCP 标签、Artifact 发布均见于档案；具体调用协议、状态回写与持久化方式待核验 |
+| 关键权衡 | 模型无关与 Agent 可换来换取速度，但代价是需在凭据隔离、Agent 质量依赖外部项目、scope 过宽（数据+路由+Agent+Artifact 全栈）之间平衡；Makefile 主语言意味着部署门槛高于常规应用 | 凭据隔离、Agent 替换与 Artifact 由档案描述；性能、SLO、观测、vendor lock-in 细节未给出 |
+| 最小 PoC | 以源码构建（`make setup`/`make dev`）拉取四个 submodule，单一外部数据源、最小工具权限，验证模型路由切换、Anton↔Hermes 替换与 Data Vault 凭据隔离三项；记录安全、成本、退出路径 | 构建命令与四项组件来自档案；macOS/Windows 桌面包构建（`make dist-mac`）与 Web 部署形态待核验 |
+
 ## 架构启发
 MindsHub 代表了 AI 工具从"单一功能"向"统一工作空间"演变的趋势。它的设计哲学是：用户不应关心底层用哪个模型或哪个 Agent，只需描述要做什么，平台负责编排一切。这与 Notion AI、Microsoft Copilot 的愿景类似，但 MindsHub 选择了开源 + 自托管的路线。值得关注的架构决策包括：通过 submodule 实现模块化（而非 monorepo）、Agent 可替换设计（而非绑定单一 Agent）、凭据隔离的安全模型。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者 知识工作者] --> I[桌面或 Web 入口 Cowork]
+  I --> C[项目编排层 Mindshub superproject<br/>Makefile 编排]
+  C --> M[模型路由层<br/>Claude GPT Gemini DeepSeek Qwen Kimi]
+  C --> A[可替换 Agent 后端<br/>Anton 默认 Hermes]
+  C --> D[Data Vault 凭据隔离<br/>BigQuery Postgres Gmail Drive HubSpot Notion Linear]
+  C --> P[Artifact 发布<br/>Web 应用 文档 仪表盘 待核验]
+  A --> C
+  M --> C
+  D --> C
+  P --> C
+  C --> S[会话 状态 审计 边界<br/>Agent 不可见原始密钥 待核验]
+```
 
 ## 定位判断
 MindsHub 定位为**AI 统一工作空间平台**，直接竞品是商业化的 AI 生产力工具（如 Notion AI、Microsoft Copilot、Google Gemini Workspace）。它的差异化在于开源和自托管能力。在 GitHub 生态中，它处于"平台候选"阶段——愿景宏大但需要验证用户留存和商业化可行性。39K stars 说明市场对"AI 统一工作空间"概念有高度期待，但实际使用深度有待验证。

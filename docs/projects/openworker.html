@@ -6,7 +6,7 @@
     <title>andrewyng/openworker | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,37 +48,78 @@
 <li><strong>25+ 连接器 + MCP</strong>：GitHub/Slack/Jira/Notion/Linear/HubSpot/Outlook/monday.com/Gmail/Google Calendar + 终端和本地文件；任何 MCP 工具可插入，且 per-tool 控制。</li>
 <li><strong>调度自动化</strong>：晨报、周报、频道值守等周期性任务可排程，运行结果带完整 transcript 落回应用。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenWorker 是桌面端 Agent 编排层，外侧为模型供应商（OpenAI/Anthropic/Google/GLM/DeepSeek/Kimi/Qwen/MiniMax/Mistral/Grok + Ollama）与 25+ 连接器/MCP，内侧为审批门控 + 本地文件系统/inbox</td>
+<td>连接器数量、模型清单、MCP 支持来自档案；具体 IPC、持久化、加密落盘策略未在档案中描述</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户意图 → OpenWorker 桌面应用（macOS/Win） → 本地 Python agent server（aisuite） → 分解步骤 → 模型推理 + 工具调用 → 审批门控（写/发/shell） → 执行或在 inbox 暂存 → 交付成品（文档/报告/已发送消息/日历更新）</td>
+<td>调度（晨报/周报/频道值守）以排程方式重入主路径；transcript 回写为档案所述，具体存储后端未描述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>BYO 模型换来的供应商自由度 vs 25+ 连接器与 MCP 在企业环境中的认证/限流/异常鲁棒性风险；本地执行的合规收益 vs Windows 未签名（SmartScreen 警告）与 aisuite 抽象层"最小公分母"导致的跨模型质量退化</td>
+<td>均为档案中的明确风险/权衡；未做实测验证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单用户 macOS + 单连接器（如 GitHub 或 Gmail）+ Ollama 本地模型 + 仅开读权限 + 启用审批门控与 transcript 日志；验收项：审批触发率、日志可审计性、模型切换成本、连接器限流行为、退出路径（清除本地状态）</td>
+<td>PoC 设计基于档案所述能力；连接器认证细节、限流阈值、SLO 指标需源码/文档核实</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>核心启发是<strong>「模型是可换的，信任模型是不可换的」</strong>。OpenWorker 把模型层彻底解耦（BYO key），而把信任与控制层（审批门控、per-tool 权限、本地执行）做成了应用的核心骨架。这与「把某个模型绑死」的产品形成鲜明对比——对企业架构师而言，<strong>模型供应链自主</strong>是比模型能力本身更值得投入的设计决策。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
 <pre class="mermaid">flowchart LR
-    U["用户意图<br/>如'准备客户简报'"] --> APP["OpenWorker 桌面应用<br/>原生 shell + GUI"]
-    APP --> ENG["本地 agent server (Python)<br/>基于 aisuite"]
-    ENG --> DEC{"分解为步骤"}
-    DEC --> TOOLS["25+ 连接器<br/>+ MCP + 终端/文件"]
-    DEC --> GATE{"审批门控<br/>写/发/执行需批准"}
-    GATE -->|批准| EXEC["执行"]
-    GATE -->|无人值守| INBOX["暂存 inbox"]
-    EXEC --> DELIV["成品交付<br/>文档/报告/消息"]
-    TOOLS --> MODEL["你的模型<br/>BYO key / Ollama 本地"]
+    U["用户意图"] --> APP["OpenWorker 桌面应用<br/>macOS 已签名公证 / Windows 未签名(待核验)"]
+    APP --> SCHED{"排程触发?<br/>晨报/周报/频道值守"}
+    SCHED -->|手动| ENG
+    SCHED -->|定时| ENG
+    ENG["本地 agent server (Python)<br/>基于 aisuite 多模型抽象"] --> DEC{"任务分解"}
+    DEC --> MODEL["BYO 模型<br/>OpenAI / Anthropic / Google / GLM / DeepSeek / Kimi / Qwen / MiniMax / Mistral / Grok / Ollama 本地"]
+    DEC --> TOOLS["25+ 连接器<br/>GitHub/Slack/Jira/Notion/Linear/HubSpot/Outlook/Gmail/Calendar/monday.com<br/>+ MCP 工具(per-tool 控制)<br/>+ 终端 / 本地文件"]
+    TOOLS --> GATE{"审批门控<br/>写 / 发 / shell 执行"}
+    GATE -->|用户批准| EXEC["执行动作"]
+    GATE -->|无人值守| INBOX["暂存 inbox<br/>待用户后续批准"]
+    EXEC --> DELIV["交付成品<br/>文档 / 报告 / 已发送消息 / 日历更新"]
+    DELIV --> LOG["完整 transcript 回写<br/>存储后端(待核验)"]
+    LOG --> APP
+    INBOX --> APP
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p>在 Agent 应用层定位为<strong>平台候选</strong>。它不是单一工具，而是一个带连接器生态、调度能力、信任模型的本地 Agent 运行环境。若 25+ 连接器稳定性和 aisuite 成熟度跟上，有平台化潜力。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>工程成熟度仍处 beta</strong>：Windows 版未代码签名（SmartScreen 警告），官方说「actively polishing rough edges」。生产可用性未经验证。</li>
 <li><strong>连接器稳定性未规模化验证</strong>：25+ 连接器的认证、限流、异常处理在真实企业环境下的鲁棒性存疑。</li>
 <li><strong>个人品牌驱动的热度</strong>：Andrew Ng 品牌带来高初始关注，但能否沉淀为长期工程投入需观察（fork 数高也可能是「学习/模仿」而非「使用」）。</li>
 <li><strong>aisuite 抽象层的成熟度</strong>：多模型抽象的「最小公分母」问题——各家模型能力差异可能导致某些连接器/任务在某些模型下退化。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs openclaw（384K⭐）</strong>：同为本地优先 AI 助手，openclaw 更偏通用 assistant 定位、生态更大；OpenWorker 更聚焦「交付成品 + 审批门控」的工作流范式，工程叙事更清晰。</li>
 <li><strong>vs hermes-agent（221K⭐）</strong>：hermes-agent 偏可自进化的 Agent 框架；OpenWorker 偏终端用户桌面产品。一个面向开发者/架构师，一个面向知识工作者。</li>
 <li><strong>vs n8n（198K⭐）</strong>：n8n 是可视化工作流自动化平台；OpenWorker 是对话驱动的 Coworker。两者在「自动化交付」上交集，但交互范式不同。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，深度跟踪 + 建议 PoC。</strong> 它代表 Agent 应用层的正确形态（本地、可换模型、动作授权、交付成品），对企业数据合规和模型供应链自主有直接价值。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>连接器在真实企业环境的稳定性与认证流程成熟度（尤其是 Outlook/Gmail/Calendar 类高频集成）。</li>
 <li>aisuite 抽象层是否暴露「最小公分母」问题——不同模型下任务完成质量差异。</li>

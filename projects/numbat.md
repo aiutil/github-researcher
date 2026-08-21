@@ -39,6 +39,15 @@ Perplexity 官方的单二进制端点 agent 可见性工具：通过本地 hook
 4. **版本化 NDJSON 记录 + JSON Schema**：事件、发现、执行决策、指标、扫描摘要均有版本化 NDJSON wire format，事件和发现保留 source references。密钥脱敏（redaction）——记录输出永远不含完整原始 transcript，原始证据文件加入 case bundle 是 opt-in。
 5. **单二进制 + 跨平台**：macOS/Linux/Windows amd64/arm64，CGO_ENABLED=0 构建。`go install` 可装。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单二进制端点 agent 可观测层；边界在三类输入面（本地 hooks/plugins、OTLP/HTTP 日志、磁盘会话 artifacts）与归一化事件模型之间；外部边界是十余个被覆盖的 agent（Claude Code/Codex/Gemini CLI/Copilot/OpenCode/Grok/Hermes/OpenClaw/Pi/Kimi Code/Qwen/Cline/Kiro/Crush 等），状态/控制边界是 CEL 规则引擎（monitor-only 与 enforce 两档）。 | 基于 README/docs 自述的覆盖矩阵，未逐 agent 验证 hook 深度；enforce 阻断为设计声明（默认关闭），无生产误阻断率公开数据。 |
+| 主路径 | agent 活动（hooks/plugins 同步钩子 或 OTLP/HTTP 日志 或 磁盘 artifacts）→ 归一化为版本化 NDJSON 事件 → CEL 多步序列规则评估 → 事件/发现/执行决策/指标/扫描摘要 NDJSON 输出，可选 pre-action 阻断回到 agent。 | 协议细节（OTLP 端口、HTTP 路径、NDJSON schema 字段、CEL 表达式语法）以源码/文档为准；"待核验"。 |
+| 关键权衡 | 覆盖广度（十余 agent）vs 单 agent 集成深度；实时可观测 vs 事后取证重建；enforce 阻断力度 vs 生产误阻断风险——设计上以默认 monitor-only、密钥脱敏、原始 transcript 仅 opt-in 入 case bundle 表达谨慎姿态。 | shipped 规则全集为 monitor-only 为档案明确事实；enforce 标记需 `enforce: true` 为显式要求；其他权衡项来自架构抽象，待源码确认。 |
+| 最小 PoC | 在单一 macOS/Linux amd64 端点，启用 Go 单二进制（`go install`，CGO_ENABLED=0），先接入一个已有 hooks 的 agent（如 Claude Code），用内置 monitor-only 规则跑 NDJSON 输出至本地文件，验证事件归一化与 CEL 命中；enforce 阻断留待第二阶段单 agent 灰度。 | 具体 agent hook 启用方式、CEL 规则示例、NDJSON 字段名未在档案中给出，需查 README/docs；版本为 v0.1.2，生产可用性早期。 |
+
 ## 架构启发
 numbat 的核心架构选择是 **"输入归一化 + 规则统一"**——不试图重新发明 agent 监控，而是把 agent 已有的可观测表面（hooks、日志、磁盘产物）统一到一个事件模型。这与传统 EDR（端点检测响应）对进程/文件/网络的做法同构，但针对的是 agent 活动。对架构师的启发：**当 agent 生态多极化（十余个 agent 并存），可观测性层必须格式无关**——针对单一 agent 的监控工具无法成为基础设施。
 
@@ -49,6 +58,24 @@ numbat 的核心架构选择是 **"输入归一化 + 规则统一"**——不试
 | 技能提取 | skill-recorder | 录屏→Skill | 事前 |
 | 执行约束 | ratchet | 编辑后测复杂度、回灌 | 事中 |
 | 可观测/取证/阻断 | numbat | 端点活动可见 + 可选阻断 + 事后追溯 | 事中+事后 |
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A[被覆盖的 agent: Claude Code/Codex/Gemini CLI/Copilot/OpenCode/Grok/Hermes/OpenClaw/Pi/Kimi Code/Qwen/Cline/Kiro/Crush 等十余个] -->|本地 hooks/plugins<br/>同步生命周期钩子| B[输入归一化层<br/>三类输入 → 统一事件模型]
+    A -->|OTLP/HTTP 日志导出器| B
+    A -->|磁盘会话 artifacts<br/>on-disk session products| B
+    B -->|版本化 NDJSON 事件| C[CEL 规则引擎<br/>多步序列规则]
+    C -->|monitor-only 规则<br/>shipped 默认| D[事件/发现/执行决策/指标/扫描摘要<br/>版本化 NDJSON 输出 + 密钥脱敏]
+    C -->|enforce: true<br/>需显式标记 默认关闭| E[pre-action 阻断<br/>回到同步 pre-action hook]
+    E -.阻断.-> A
+    D --> F[事后取证 case bundle<br/>原始 transcript opt-in]
+    B -.覆盖质量待核验.-> G[状态/控制边界:<br/>v0.1.2 enforce 误阻断未公开评测<br/>subscribers 5 vs 684⭐]
+    C -.规则生效面.-> G
+```
 
 ## 定位判断
 属于 **L2 开发范式/工具层**，是 agent 安全与可观测性品类。与 ratchet（执行时质量约束）、skill-recorder（技能提取）正交互补，共同构成 agent 工作流的质量基础设施。numbat 独特之处是**覆盖广度**（十余个 agent）和**事后取证能力**（从磁盘 artifacts 重建未被实时监控的会话）。

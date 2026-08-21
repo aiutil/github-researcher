@@ -6,7 +6,7 @@
     <title>Open Design | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -48,18 +48,67 @@
 <li><strong>5 种视觉方向</strong>（Editorial Monocle / Modern Minimal / Tech Utility / Brutalist / Soft Warm），每种自带 OKLch 色板 + 字体栈。</li>
 <li><strong>Agent Runtime 架构</strong>：本地 daemon 启动 CLI，Agent 获得真实的 Read/Write/Bash/WebFetch 能力，操作真实文件系统。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Open Design 是覆盖 Coding Agent（Claude Code/Codex/Cursor/Gemini CLI/OpenCode/Qwen/Copilot）、本地 Runtime daemon、71 个 Design Systems 与 19 个 Composable Skills 的编排层，本身不造 Agent</td>
+<td>边界由 TypeScript 语言、BYOK 标签、Agent Runtime 架构描述与多 CLI 支持列表共同界定；具体守护进程通信协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>使用者经 Coding Agent 调用 → 本地 daemon 暴露 Read/Write/Bash/WebFetch 真实文件系统能力 → Skill + Design System 组合 → 返回设计产物（原型/PPT/页面/Dashboard 等）</td>
+<td>路径依据"Agent 获得真实的 Read/Write/Bash/WebFetch 能力，操作真实文件系统"及 19 个 Skill 列表；会话持久化、错误恢复机制未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>以"不造 Agent，只做 Skill+Design System+Runtime 层"换取上线速度与生态广度，代价是设计质量上限受底层 LLM 视觉理解力制约，且 71 个 Design Systems 的持续维护成长期负担</td>
+<td>权衡直接取自"架构启发"段；可观测性、安全沙箱、模型供应商耦合度档案未提</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>选定单一 Coding Agent（建议 Cursor 或 Claude Code），固定 1 套 Design System（如 Linear）+ 1 个 Skill（如 dashboard），在受控目录开启 daemon，开启审计日志，验证产物可复现与权限可回收</td>
+<td>PoC 设计依据 Agent Runtime + BYOK + 19 Skills/71 DS 事实；具体审计日志接口、最小权限粒度需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p><strong>设计哲学</strong>：不造 Agent，利用现有最强的 Coding Agent。Open Design 只做 Skill 层 + Design System 层 + Runtime 层。</p>
 <p><strong>Trade-off</strong>：依赖外部 Agent 的能力上限，设计质量受限于底层 LLM 的设计"品味"。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[使用者或上游系统] --> CA[外部 Coding Agent<br/>Claude Code / Codex / Cursor /<br/>Gemini CLI / OpenCode / Qwen / Copilot]
+    CA --> OD[Open Design 编排层<br/>TypeScript]
+    OD --> RT[本地 Agent Runtime daemon<br/>Read/Write/Bash/WebFetch]
+    RT --> FS[真实文件系统<br/>本地目录]
+    OD --> SK[19 个 Composable Skills<br/>prototype/deck/mobile/dashboard/...]
+    OD --> DS[71 个品牌级 Design Systems<br/>Linear/Stripe/Vercel/Airbnb/Tesla/Notion/Apple/...]
+    DS --> VS[5 种视觉方向<br/>OKLch 色板 + 字体栈<br/>待核验]
+    OD --> M[BYOK 模型层<br/>支持多供应商<br/>具体协议待核验]
+    RT --> AUD[审计与可观测边界<br/>具体日志接口待核验]
+    SK -.天花板受限于底层 LLM 视觉理解力.-> OD
+    DS -.71 套持续维护负担.-> OD
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型</strong>，有平台化潜力。目前是高质量工具，如果 Skill 生态持续繁荣，可能成为 Agent 设计工作流的标准框架。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>2 天 4K stars 的泡沫风险</strong>：部分增长来自关联项目的 Star 互带，实际活跃用户数需要 2-4 周观察。</li>
 <li><strong>依赖 LLM 设计能力</strong>：设计质量的"天花板"完全取决于底层模型的视觉理解力，Skill 只能引导不能创造。</li>
 <li><strong>维护负担</strong>：71 个 Design Systems 的持续更新是长期挑战。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <table>
 <thead>
 <tr>
@@ -86,9 +135,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，中优先级</strong>。Skill 生态整合方向正确，需要观察用户留存和 Design System 更新节奏。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>2 周后的 star 增速是否回落</li>
 <li>71 个 Design Systems 的实际使用率和反馈</li>
@@ -96,7 +145,7 @@
 </ol>
 <hr />
 <p><em>首次记录：2026-04-30</em></p>
-<h2 id="_11">最近动态</h2>
+<h2 id="_12">最近动态</h2>
 <h3 id="2026-05-13">2026-05-13（实测）</h3>
 <ul>
 <li><strong>Stars 实测 38,354</strong>（forks 4,358）— 断网推演偏差仅 1.1%</li>
@@ -105,7 +154,7 @@
 <li><strong>平台地位确认</strong>：从赛道领跑者进化为 Agent Design 默认平台</li>
 <li>维持</li>
 </ul>
-<h2 id="_12">历史动态</h2>
+<h2 id="_13">历史动态</h2>
 <ul>
 <li>2026-05-08: Stars 32.1K，平台级确认</li>
 <li>2026-05-07: 预估 ~31K，赛道进入整合期</li>

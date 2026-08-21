@@ -63,6 +63,15 @@ AI Agent 在处理 tool output、日志、RAG 结果、文件内容时，大量 
 4. **CacheAligner**：稳定前缀使 Provider KV Cache 命中，不仅压缩还优化缓存
 5. **多 Agent 跨进程共享记忆**：Claude/Codex/Gemini 之间自动去重
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Headroom 处于 Agent ↔ LLM Provider 之间，作为 Token 压缩中间件；外部边界含 LLM Provider、工具/数据源、以及 OpenClaw（以 ContextEngine 插件形式集成，待核验集成深度）。 | "OpenClaw 兼容" 仅声明插件形式，契约细节未在档案给出。 |
+| 主路径 | 内容输入 → ContentRouter 内容分类 → SmartCrusher/CodeCompressor/Kompress-v2-base/CacheAligner/CCR/Image 多策略处理 → LLM；输出侧经 verbosity steering + effort routing 削减 token；CCR 保留原始数据供按需 retrieve。 | "Image" 压缩器与 Kompress-v2-base 的具体调用条件未在档案给出。 |
+| 关键权衡 | 可逆性（CCR）换取存储成本与 retrieve 延迟；CacheAligner 用稳定前缀换 Provider KV Cache 命中率；输出侧 verbosity 学习偏好与 holdout 对照组（10% 不压缩）换统计可信度。 | 端到端延迟、SLO、存储介质未披露。 |
+| 最小 PoC | 用 Library 或 MCP 模式接入单渠道、最小工具权限，启用 `HEADROOM_OUTPUT_HOLDOUT=0.1` 做 A/B，观测 token 节省率、CCR retrieve 命中率、KV Cache 命中率三项指标。 | 基准数字 60-95%、31.7% 仅源自档案自述，未给测试集。 |
+
 ## 架构启发
 
 ```
@@ -77,6 +86,31 @@ Agent 系统的 Token 管理应该分层：
 - **索引层**（codegraph）→ 减少搜索范围
 - **压缩层**（Headroom）→ 减少每次传输量
 - **缓存层**（CacheAligner）→ 减少重复计算
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[上游Agent或渠道] --> I[入口边界:Library/Proxy/MCP]
+    I --> R[ContentRouter 内容分类]
+    R --> S1[SmartCrusher JSON压缩]
+    R --> S2[CodeCompressor AST压缩]
+    R --> S3[Kompress-v2-base HF模型文本压缩]
+    R --> A[CacheAligner 稳定前缀对齐]
+    R --> C[CCR 可逆压缩与原始数据存储]
+    R --> IM[Image 压缩 待核验]
+    A --> O[输出侧:verbosity steering + effort routing]
+    O --> M[LLM Provider]
+    C -.按需retrieve.-> M
+    I --> H[holdout对照组 10% 不压缩]
+    H -.环境变量热同步.-> O
+    M --> P[OpenClaw ContextEngine插件 待核验集成深度]
+    S1 --> T[工具与外部系统]
+    S2 --> T
+    S3 --> T
+```
 
 ## 定位判断
 

@@ -47,11 +47,37 @@ url: "https://github.com/synthetic-sciences/openscience"
 6. **MCP 服务器支持**：可扩展连接外部工具
 7. **会话共享**：研究过程可保存为链接分享
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | TypeScript/Bun 全栈科研 Agent 工作台，作为研究者、模型提供商（Anthropic/OpenAI/Google 等）及 30+ 科学数据库之间的编排层；附带可选 Atlas 商业平台 | 入口渠道、部署形态、隔离模型仅基于项目描述与官方建议（容器/VM 运行），未在档案中给出具体协议或源码实现 |
+| 主路径 | 研究目标 → 编排/运行时（含 research/biology/physics/ml 专家 Agent + critique/literature-review 子 Agent） → 模型与 Skills/工具（含 DeepSpeed/PEFT/TRL 等 290+ Skills 及 UniProt/PDB/arXiv 等数据库） → 浏览器 UI 内会话/文件/状态回写 | LSP、MCP、Plan Mode、模型无关特性来自档案；具体调度协议、持久化、会话序列化机制未披露，须源码核验 |
+| 关键权衡 | 290+ Skills + 多 Agent 带来的扩展速度，与未沙箱化权限、可观测性不足、模型/数据库供应商耦合之间的张力；开源核心 vs Atlas 商业功能差异化风险 | 风险条目均来自档案明示；性能/可靠性/可重复性指标档案未提供 |
+| 最小 PoC | BYOK 单模型 + 单一数据库（如 UniProt 或 arXiv）+ 最少 Skills 权限 + 可审计日志 + 容器隔离，跑通"文献→假设→代码→实验"中的一个子闭环，由领域专家验证产出 | PoC 范围与安全约束由档案"风险/局限"与"企业 PoC"段推导；具体脚本、镜像、计费模型档案未给出 |
+
 ## 架构启发
 - **科研 Agent ≠ 通用 Agent + 科学提示词**：真正的科研 Agent 需要深度工具集成（30+ 数据库）和领域特定技能（分子渲染、基因组分析）
 - **Plan Mode**：read-only 模式让 Agent 先规划再执行——科研场景中"先想清楚再做"的价值远高于编码场景
 - **Critique 子 Agent**：自我批判在科研中的价值比在编码中更高——因为科研的可重复性更脆弱
 - **Atlas 平台 + 开源核心**：开源核心永久免费 + 托管平台增值服务，这是 AI4Science 领域最合理的商业模式
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[研究者或上游系统] --> I[入口与身份边界<br/>BYOK 浏览器 UI]
+    I --> C[编排与运行时<br/>Bun TypeScript]
+    C --> M[模型或推理服务<br/>Anthropic OpenAI Google 本地模型<br/>协议 待核验]
+    C --> T[Skills与外部系统<br/>290+ Skills · 30+ 科学数据库<br/>UniProt PDB Ensembl ChEMBL PubChem arXiv OpenAlex Semantic Scholar]
+    C --> S[会话 状态 审计<br/>会话分享链接 文件树 编辑器 终端]
+    C --> R[控制与风险边界<br/>Plan Mode read-only · critique/literature-review 子 Agent]
+    T --> C
+    M --> C
+    R --> C
+```
 
 ## 定位判断
 **平台候选**。已具备 AI4Science 平台雏形——多领域覆盖、技能可扩展、模型无关。如果能建立起科研 Agent 的技能生态和基准标准，有潜力成为 AI4Science 的基础设施层。

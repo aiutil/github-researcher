@@ -6,7 +6,7 @@
     <title>last30days-skill | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -49,30 +49,82 @@
 <li><strong>HTML brief 输出</strong>：生成自包含的暗色模式 HTML 报告，可直接拖入 Slack/Notion</li>
 <li><strong>Humor/wit 评分</strong>：v3 第二个 judge 专门评分幽默感和病毒性</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>last30days-skill 是一个 Agent 原生 Skill 桥接层，向上承接 Claude Code 这类 agent 运行时与用户，向下桥接 Reddit/X/YouTube/TikTok/Polymarket 等 10+ 外部平台 API/Cookie 数据源；自身不建搜索引擎，也不持有平台账户</td>
+<td>平台清单与"Agent Skill 层"定位来自档案与 README 摘录；具体 API/协议、Cookie 注入方式未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户查询 → 实体感知路由（v3，先解析人/公司/产品，再映射到各平台账号与社区）→ 多 pipeline 并行检索与加权评分（互动量、转录、Polymarket 真金白银信号）→ HTML brief 合成输出；竞争分析走 <code>--competitors</code> 多 pipeline 并行</td>
+<td>实体路由、加权评分、HTML 报告、<code>--competitors</code> 均来自档案；评分权重公式、并行度上限、缓存与重试策略档案未披露</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>BYOK 模式下扩展性 vs 合规与稳定性：易接入 14+ 平台（"快"），但把 Cookie、反爬与平台 ToS 风险全部下沉到用户侧；单人维护带来 bus factor 风险；跨平台适配数与维护成本正相关增长</td>
+<td>风险条目来自档案"风险/局限"小节；实际 Cookie 失效频率、封禁率、单人维护属实性需以仓库贡献者与 issue 节奏核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单一封闭查询（如仅 Reddit+YouTube 两个低风险源）、最小 Cookie/API key 权限、全程审计日志、HTML brief 输出可复现；验收需含平台 ToS 合规检查、退出路径（关闭 Cookie 与 key ）、单平台失败隔离三条</td>
+<td>PoC 边界为架构推断，档案未给出官方示例查询或测试集，组件细节须以源码/文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>Agent Skill 作为桥接层</strong>：不是建新搜索引擎，而是用 Agent 桥接现有平台 API</li>
 <li><strong>BYOK 模式</strong>：用户自带 API key 和 Cookie，基础设施不承担平台合规风险</li>
 <li><strong>预研究 → 并行搜索 → 合成</strong> 三阶段流水线，比串行搜索快 3x</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  U[用户或上游 Agent 调用方] --> I[入口与会话边界 BYOK API key 与 Cookie 注入]
+  I --> R[实体感知路由 v3 解析 person company product]
+  R --> P[多平台并行 pipeline 待核验调度器]
+  P --> S1[Reddit]
+  P --> S2[X 推特]
+  P --> S3[YouTube 转录]
+  P --> S4[TikTok 互动]
+  P --> S5[Polymarket 预测市场]
+  P --> S6[其他 9+ 平台 待核验清单]
+  P --> J[加权评分与 humor judge]
+  J --> O[HTML brief 自包含暗色报告]
+  O --> U
+  R -. 实体→账号映射 .- P
+  P -. 平台 API 与反爬不稳定 .- W[风险边界 待核验 ToS 与 Cookie 失效]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>Agent Skill 层</strong> — 不是平台也不是基础设施，而是 Agent 生态中的垂直能力插件。类比：last30days-skill 之于 Agent，相当于 Raycast Extensions 之于 Raycast。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>平台 API/Cookie 稳定性风险</strong>：X/Twitter 经常改 API 和反爬策略</li>
 <li><strong>合规风险</strong>：Cookie 方式访问平台数据存在灰色地带</li>
 <li><strong>单人维护</strong>：目前主要是 mvanhorn 个人项目，bus factor 低</li>
 <li><strong>功能复杂度高</strong>：14+ 平台适配的维护成本随时间递增</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Agent-Reach</strong>：Agent-Reach 是 CLI 脚手架（装工具+配环境），last30days-skill 是 Skill（Agent 原生能力）。不同层次，互补关系</li>
 <li><strong>vs Perplexity</strong>：Perplexity 做网页搜索，last30days 做<strong>社交信号搜索</strong>，维度不同</li>
 <li><strong>vs Tavily/Exa</strong>：通用搜索 API vs 社交平台深度聚合</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> 跨平台信号聚合是 Agent 生态的关键能力缺口，last30days-skill 的实体感知路由设计有平台化潜力。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否从 skill 演化为独立平台/服务</li>
 <li>商业化路径（目前免费 + BYOK）</li>

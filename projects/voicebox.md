@@ -39,12 +39,39 @@ url: "https://github.com/jamiepine/voicebox"
 5. **Voice personas：** 给声音附加人格描述，bundled LLM 做语气调整。Agent 不只是说话，而是"有性格地说话"。
 6. **Stories editor：** 多轨时间线编辑，可以做播客/对话/叙事类内容。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 本地桌面端语音 I/O 编排层，统一 7 个 TTS 引擎（含 Qwen3-TTS/LuxTTS/Chatterbox/Kokoro 等）+ Whisper 类 STT + 零样本 voice cloning，通过内置 MCP server 向 Agent 暴露 `voicebox.speak` 类 tool | 仅依据档案列出的引擎名称、tags（local-first/mcp/tauri）与"7 TTS 引擎可切换"等描述；具体引擎协议、模型权重来源与硬件后端（MLX/CUDA）细节未在档案中证实 |
+| 主路径 | 上游 Agent/用户 → MCP tool call 或本地 UI（Tauri） → 编排层选引擎 → 本地推理 → 音频回写到会话/全局 dictation 热键或 stories 多轨时间线 | 路径中的"编排层/会话/审计"是按 tags 与架构启发做的抽象，源码级别的模块边界、持久化与 IPC 协议未提供 |
+| 关键权衡 | 7 引擎统一 API 的可扩展性 vs 引擎质量参差；本地隐私/成本优势 vs 本地 GPU 依赖与 Linux 需从源码构建；MCP/Agent 接入红利 vs 单一维护者（jamiepine）的 bus factor 风险 | 权衡判断基于档案中"引擎水平不一"、"Linux 支持不完整"、"商业模式不明"三条风险描述；未量化性能/成本数据 |
+| 最小 PoC | 在 macOS/Windows 桌面（GPU 可用）跑通：1) 加载一个 TTS 引擎生成短音频；2) 用 Whisper STT + 全局热键做一次 dictation；3) 启动 MCP server 由 Claude Code/Cursor 触发一次 `speak` tool call | PoC 步骤由档案中"Global dictation hotkey/Whisper-based STT/MCP server"直接推导；具体热键、引擎默认顺序、MCP 客户端兼容矩阵需以源码核验 |
+
 ## 架构启发
 voicebox 的启发是"Voice I/O 的统一"：
 - 传统方案：TTS 一家 + STT 一家 + Voice Cloning 一家 = 三套 API、三次付费
 - voicebox：输入输出一体化，本地运行，MCP 接入 Agent
 
 对架构师的意义是：Voice I/O 正在成为 Agent 技术栈的标准组件，不再是"特殊功能"。设计 Agent 应用时应该考虑语音输入和输出。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[使用者或上游 Agent] --> I[MCP tool call 或桌面 UI 入口]
+    I --> C[voicebox 编排层 Tauri/TS]
+    C --> M[TTS 引擎池 Qwen3-TTS LuxTTS Chatterbox Turbo Kokoro HumeAI TADA 等 7 选 1 待核验]
+    C --> STT[Whisper 类 STT + 全局 dictation 热键 待核验]
+    C --> CL[零样本 voice cloning 几秒音频 待核验]
+    M --> C
+    STT --> C
+    CL --> C
+    C --> O[音频输出 多轨 stories 编辑器]
+    C --> R[风险边界 本地 GPU 依赖 Linux 需从源码构建 bus factor 低 商业模式未明]
+```
 
 ## 定位判断
 L5 应用层的工具型产品。不是基础设施（不提供 voice API 平台），而是开发者工具。但 MCP server 让它具有了 Agent 生态接入能力。

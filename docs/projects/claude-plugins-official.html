@@ -6,7 +6,7 @@
     <title>anthropics/claude-plugins-official | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -55,16 +55,67 @@
 <li><strong>不可变 slug + 自动迁移</strong>：插件名一旦发布不可更改，通过 <code>renames</code> map 自动迁移旧名到新名</li>
 <li><strong>外部插件提交流程</strong>：通过 plugin-directory-submission 表单提交，需通过质量和安全审核</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>官方插件目录定位为 Claude Code Agent 插件的"注册-发现-安装"分发层与质量管控入口，自身不直接托管模型与工具，仅编排 marketplace.json 与插件源仓库</td>
+<td>档案仅描述结构（plugin.json / .mcp.json / commands / agents / skills）与安装命令；运行时协议、服务器实现未在档案中证实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 <code>plugin install {name}@claude-plugins-official</code> → marketplace 拉取插件源 → Claude Code 加载 plugin.json 与 .mcp.json → 调用 MCP 工具 / Skills / Agents → 结果回写会话</td>
+<td><code>install</code> 与 MCP 配置来自档案；具体解析顺序、版本协商、状态持久化方式待源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>官方双层（/plugins 内部 vs /external_plugins 第三方）+ <code>strict:false</code> Skill-bundle 与 <code>renames</code> 不可变 slug 机制，体现"生态扩张速度 vs 命名/质量稳定性"的取舍；安全审计靠 plugin-directory-submission 表单，覆盖度有限</td>
+<td>双层目录与重命名映射来自档案；审核 SLA、签名机制、沙箱策略档案未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>以单一 Skill-bundle 插件（无 manifest 的 SKILL.md 集合）接入 <code>claude-plugins-official</code>，最小工具权限下验证 <code>/plugin install</code>、MCP 加载与会话回写，再扩展到带 plugin.json 的标准插件</td>
+<td>提交流程与命令来自档案；执行环境、权限模型、退出路径需结合 code.claude.com 文档与源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <ul>
 <li><strong>注册-发现-安装三段式架构</strong>：这是所有插件市场的标准模式（npm/PyPI/VS Code Marketplace），Anthropic 在 Claude 生态中复现了它</li>
 <li><strong>官方目录 vs 社区市场的双轨模式</strong>：官方保证质量底线，社区保证创新自由度——类似 Apple App Store vs TestFlight</li>
 <li><strong>Marketplace 作为分发协议</strong>：插件不存储在 Anthropic 服务器，而是通过 marketplace.json 描述源仓库地址，运行时拉取——去中心化分发</li>
 <li><strong>MCP 作为工具协议</strong>：插件通过 <code>.mcp.json</code> 接入 MCP Server，实现工具调用标准化</li>
 </ul>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[开发者或 Claude Code 用户] -->|/plugin install 或 marketplace add| MP[claude-plugins-official marketplace.json]
+    MP --> PR[external_plugins 第三方插件源仓库 去中心化分发]
+    MP --> PO[/plugins 内部插件 Anthropic 官方维护]
+    PR --> P[plugin.json 元数据 不可变 slug renames 映射 待核验]
+    PO --> P
+    P --> M[.mcp.json MCP Server 配置]
+    P --> SK[skills/ SKILL.md 集合 strict false 可打包]
+    P --> AG[agents/ 与 commands/ 定义]
+    M --> RT[Claude Code 运行时 编排层]
+    SK --> RT
+    AG --> RT
+    RT --> ST[会话 状态 审计 待核验]
+    RT --> RS[插件安全审核 plugin-directory-submission 表单 916 Open Issues 风险边界]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p><strong>平台候选</strong>——如果 Anthropic 持续投入，它将成为 Claude 生态的「npm registry」。控制了插件目录就控制了生态入口。目前已具备平台的所有要素：标准结构、提交流程、发现机制、安装命令。商业化潜力在于付费插件、企业私有市场、插件认证。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>916 Open Issues</strong>：大量未解决问题，说明审核和响应速度跟不上增长</li>
 <li><strong>过度依赖 Anthropic 单一厂商</strong>：Anthropic 政策变化直接影响整个插件生态</li>
@@ -73,7 +124,7 @@
 <li><strong>安全风险</strong>：插件可能包含恶意 MCP Server 或 Prompt Injection，官方审核无法完全覆盖</li>
 <li><strong>可能限制社区创新</strong>：官方目录的存在可能让用户不去探索社区仓库</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs superpowers (201K⭐)</strong>：社区最大技能框架，互补但竞争——官方 vs 社区</li>
 <li><strong>vs wshobson/agents (38.6K⭐)</strong>：跨平台 Agent 插件市场，官方仅服务 Claude</li>
@@ -81,9 +132,9 @@
 <li><strong>vs codegraph / ponytail 等</strong>：这些是具体的插件/技能，可作为此目录的子集</li>
 <li><strong>vs npm / PyPI / VS Code Marketplace</strong>：概念类比，但 Claude 插件生态远小于这些</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是。</strong> Anthropic 官方动作是生态风向标。插件目录的演进直接反映 Claude Code 的平台化进程。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>插件数量增长曲线（目前规模 vs npm/VS Code 等成熟市场）</li>
 <li>是否出现杀手级插件（定义一个品类的插件）</li>

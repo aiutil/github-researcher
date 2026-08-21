@@ -6,7 +6,7 @@
     <title>agentsview | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -52,28 +52,75 @@
 <li><strong>会话智能分析：</strong> 不只是统计 token，还分析会话质量</li>
 <li><strong>Go 实现：</strong> 编译为单二进制，零依赖部署</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>agentsview 是本地化会话分析/可观测层，读取 Claude Code、Codex 等 20+ Agent 的本地会话数据，输出统计与图表，不调度 Agent 也不介入模型调用</td>
+<td>档案明确"Local-first"、Go 单二进制、标签含 session-intelligence/ccusage 替代；2026-06-20 更新提到 LiteLLM 价格匹配、PG_SERVE=1、DuckDB mirror、Quack 协议、Git outcome metrics，未给出源码细节</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>解析本地 Agent 会话日志 → 归一化为统一 schema → 落盘到默认 SQLite（可选 PG/DuckDB） → 计算 token/成本/archetype/heatmap → CLI stats 查询</td>
+<td>更新明确列出 DuckDB mirror + Quack 远程查询、PG_SERVE=1、stats 含 heatmap/tool/model/agent mix；具体协议细节、是否 server-sent、是否嵌入式 HTTP 未在档案确认</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单二进制零依赖的部署简洁性 vs. PG/DuckDB 后端的扩展性；本地隐私优势 vs. 跨机协作(Quack)需要的数据外泄面；功能广度(20+ Agent) vs. 单 Agent 深度</td>
+<td>档案列出"零依赖部署"、"本地化处理"为优势与 Quack 协议并存；star 2,935、生产案例、SLO、计费模型未披露</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS/Linux 单机导入一个 Claude Code 会话目录，启用默认 SQLite 后端，跑 <code>stats</code> 验证 heatmap、archetype、token/cost 统计；再以 PG_SERVE=1 切换 PostgreSQL 验证多机可查询路径</td>
+<td>上述命令/路径名取自档案"stats 命令含 heatmap、tool/model/agent mix"与"PG_SERVE=1"；CLI 子命令全名、配置项、schema 迁移方式属待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Coding Agent 的可观测性是 Agent 工具链中被低估的方向。类似于：
 - APM 对 Web 应用的价值 → 会话分析对 Agent 的价值
 - Datadog/New Relic → agentsview 之于 Agent</p>
 <p>Local-first 设计值得关注——Agent 会话数据可能包含敏感代码，本地化处理是正确选择。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  A[本地 Agent 会话日志<br/>Claude Code / Codex 等 20+ Agent] --> P[agentsview 解析与归一化<br/>Go 单二进制]
+  P --> S[(默认 SQLite<br/>可选 PostgreSQL via PG_SERVE=1)]
+  P --> D[(DuckDB mirror<br/>+ Quack 远程查询)]
+  P --> L[LiteLLM 价格匹配<br/>+ prompt caching 感知成本<br/>待核验: 调用方式]
+  S --> C[stats CLI<br/>heatmap / tool / model / agent mix]
+  S --> H[Session archetype<br/>automation/quick/standard/deep/marathon]
+  S --> G[Git outcome metrics<br/>commit / LOC / PR<br/>可选, 待核验]
+  D --> Q[远程分析消费方<br/>Quack 协议边界<br/>待核验: 鉴权与传输]
+  P --> R[风险/控制边界<br/>本地化 vs. 跨机查询的数据外泄面<br/>盈利模式与功能天花板未证]
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>Coding Agent 工具链中的"可观测性"组件。目前是小工具，但如果扩展到 Agent 性能优化领域，价值会显著提升。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>市场规模有限：</strong> 只有重度 Agent 用户才会付费</li>
 <li><strong>Agent 平台内置分析：</strong> Claude Code 等可能内置类似功能</li>
 <li><strong>功能天花板：</strong> 本地分析的深度受限于本地数据</li>
 <li><strong>盈利模式不明：</strong> 开源免费工具的可持续性存疑</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs. ccusage：</strong> ccusage 只做 Claude Code 用量统计，agentsview 覆盖 20+ Agent 且功能更丰富</li>
 <li><strong>vs. LangSmith：</strong> LangSmith 做 LLM 应用全链路可观测，agentsview 聚焦 Coding Agent 会话分析</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>观察。</strong> 方向正确但 star 数偏低，需要观察增长趋势和功能迭代速度。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>是否扩展到 Agent 性能优化建议（不只是分析）</li>
 <li>月度 star 增速是否加速</li>

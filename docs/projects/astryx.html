@@ -6,7 +6,7 @@
     <title>Facebook Astryx | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -45,30 +45,80 @@
 <li><strong>"Guidance over enforcement"</strong>——组件提供能力而非设护栏，传入值就渲染，不做对抗</li>
 <li><strong>7 套预制主题</strong>——neutral/butter/chocolate/matcha/stone/gothic/y2k</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>入口为 React 项目；核心由 @astryxdesign/cli 统一编排，产出 150+ 组件与 7 套主题，样式层基于 StyleX 但对消费者透明</td>
+<td>组件数量、主题清单、CLI 名称来自档案；StyleX 角色"对消费者透明"为档案原话</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>消费方安装 → CLI 提供组件/模板/codemods/主题 → 组件源码可通过 swizzle 弹出到项目 → 主题通过 CSS 自定义属性覆盖</td>
+<td>swizzle、codemods、CSS 自定义属性覆盖、CLI 子命令清单均见档案；运行时行为未核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"Guidance over enforcement"：组件不做输入护栏以最大化组合与 Agent 可预测性，代价是把校验成本转嫁给消费方</td>
+<td>档案明确指出"传入值就渲染，不做对抗"；风险后果未在档案中给出量化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 React 应用中通过 CLI 引入若干组件，验证：(1) Tailwind/CSS Modules/原生 CSS 三种覆盖路径、(2) swizzle 后源码可独立演进、(3) 7 套主题切换成本</td>
+<td>上述能力均在档案中声明；具体 API、版本兼容与构建链路在档案外，须以源码/文档核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>Astryx 的"agent-ready"不是噱头。它从三个维度统一考虑 AI 和人类：
 1. <strong>API 设计</strong>——一致的命名/prop/组合规则，AI 学会几个组件就能预测其他
 2. <strong>CLI 工具</strong>——<code>astryx component --list</code> 等，AI 可自检可用组件
 3. <strong>文档结构</strong>——组件文档与代码同构，AI 和人查到的是同一份参考</p>
 <p>这种"One system for humans and AI"的设计哲学值得所有组件库学习。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    A[消费方 React 应用] --> B[astryxdesign/cli]
+    B --> C[150+ 组件库]
+    B --> D[7 套主题 neutral/butter/chocolate/matcha/stone/gothic/y2k]
+    C --> E[StyleX 样式层 对消费者透明]
+    A --> F[CSS 自定义属性覆盖]
+    F --> D
+    C --> G[swizzle 弹出的源码副本 待核验]
+    H[AI Agent] --> A
+    H --> B
+    subgraph 待核验边界
+        G
+    end
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>平台候选。有潜力成为 Agent 时代前端开发的默认组件库之一。与 shadcn/ui 形成竞争——shadcn 是"复制粘贴"哲学，Astryx 是"安装+弹出"哲学。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>React 专享</strong>——Vue/Svelte/Solid 生态无法直接使用</li>
 <li><strong>StyleX 绑定</strong>——虽然对消费者透明，但深度定制可能需要理解 StyleX</li>
 <li><strong>竞争激烈</strong>——shadcn/ui（60K+⭐）、MUI（90K+⭐）、Ant Design（90K+⭐）已占据市场</li>
 <li><strong>Agent-ready 声明未经验证</strong>——实际 AI 生成 Astryx 组件的效率尚无独立验证</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>shadcn/ui</strong> — "复制粘贴" vs "安装+弹出"，不同哲学</li>
 <li><strong>google-labs-code/design.md</strong> — 互补关系：design.md 定义描述层，Astryx 提供组件层</li>
 <li><strong>Ant Design</strong> — 企业级 vs Agent-ready，定位差异明显</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p>是。Meta 设计系统开源是低频事件，影响力需要时间释放。关注 npm 下载量和生态采用率。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li>npm 周下载量趋势（@astryxdesign/core）</li>
 <li>非 Meta 项目采用案例</li>

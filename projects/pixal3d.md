@@ -52,9 +52,34 @@ url: "https://github.com/TencentARC/Pixal3D"
 5. **¹Tsinghua University (BNRist) &nbsp;&nbsp; ²Tencent ARC Lab &nbsp;&nbsp; ³Victoria University of Wel**
 6. ***Project lead &nbsp;&nbsp; ✉Corresponding author**
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | Pixal3D 的边界是"2D 输入图像"与"3D 生成输出"之间的像素对齐映射边界，不涉及可信/不可信输入或安全域划分。 | 档案仅明确"Pixel-Aligned 3D Generation from Images"标题与 Python 实现；具体输入模态（单图/多图）、输出形态（网格/点云/NeRF）均未在档案中证实。 |
+| 主路径 | 图像 → 像素对齐特征提取 → 3D 表征生成。档案未给出模型架构分阶段命名。 | 论文级摘要被截断（"[Dong-Yang Li]..."），内部模块拆分与管线细节无档案证据。 |
+| 关键权衡 | 像素对齐精度 vs 3D 一致性/泛化，研究型项目在 SIGGRAPH 发表。 | 来自标题"SIGGRAPH 2026"标注；具体权衡维度（速度、显存、数据规模）档案未提供。 |
+| 最小 PoC | 在隔离环境用 Python 复现论文示例，复用 MIT 许可的开源实现，验证单图到 3D 的最小端到端路径。 | 部署形态、依赖、硬件要求、推理时延均"待核验"，档案未给出。 |
+
 ## 架构启发
 
 从 TencentARC/Pixal3D 的设计来看，核心思路是 **"[SIGGRAPH 2026] Pixal3D: Pixel-Aligned 3D Generation from Im"**。这反映了 Python 生态中 开发者工具 的演进方向——降低集成复杂度、提供开箱即用的能力。开源 License (MIT) 降低了采用门槛。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    A["2D 输入图像<br/>(单图或多图，待核验)"] --> B["像素对齐特征提取<br/>(Pixel-Aligned 模块，待核验)"]
+    B --> C["3D 生成模型<br/>(架构与骨干，待核验)"]
+    C --> D["3D 输出表征<br/>(网格/点云/辐射场，待核验)"]
+    D --> E["评估与可视化<br/>(待核验)"]
+    F["SIGGRAPH 2026 论文<br/>+ MIT 开源实现"] --> B
+    F --> C
+    G["外部边界:训练数据与<br/>预训练权重来源<br/>(待核验)"] --> B
+    H["状态/控制/风险边界:<br/>研究型代码，非生产控制;<br/>26 open issues 待跟踪"] --> C
+```
 
 ## 定位判断
 

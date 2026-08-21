@@ -39,24 +39,37 @@ AI Agent 每次对话都是全新开始，六个月的工作上下文在会话�
 4. **MCP Server 集成**：通过 MCP 协议与任何 AI Agent 对接
 5. **ChromaDB + SQLite 双引擎**：ChromaDB 存储向量嵌入，SQLite 存储实体关系图
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MemPalace 是运行在用户本地的 Python 记忆层：ChromaDB 存向量、SQLite 存实体关系，通过宫殿结构（Wings→Halls→Rooms→Closets→Drawers）建索引，对外暴露 MCP Server 给 Agent；模型供应商、Agent 框架、对话入口均由调用方注入。 | 边界描述来自档案"ChromaDB + SQLite 双引擎""MCP Server 集成"与"完全本地运行"；未描述具体网络端口、鉴权或多租户机制。 |
+| 主路径 | 原始对话逐字写入 → 并行落入 ChromaDB（向量）与 SQLite（实体关系图） → 宫殿索引层组织检索入口 → 语义搜索返回结果（无压缩 96.6% R@5）或经 AAAK 压缩层返回（84.2% R@5） → MCP Server 输出给 Agent。 | 主路径基于档案"原始逐字存储"与已有 Mermaid 抽象重组；AAAK 的压缩算法细节与延迟数据档案未给出。 |
+| 关键权衡 | 在"召回完整性 vs Token 成本"上选前者：禁用摘要/提取以保住 96.6% 召回，代价是存储与上下文体积增长；AAK 压缩可降本但已自报 -12.4pp 回归，目前不可作为生产默认。 | 权衡判断紧扣档案"存一切，让它可搜索"及"AAAK 回归 12.4 个百分点"；未量化存储增长曲线或单位成本。 |
+| 最小 PoC | 用单进程本地部署固定一段会话集，走 ChromaDB + SQLite 双写与宫殿索引，按 96.6% R@5 的 500 题子集复测语义搜索；AAAK 通路默认关闭，MCP Server 只对最小权限的本地 Agent 开放，并记录 shell 注入面（Issue #110）下的输入清洗验证。 | PoC 设计以档案显式事实为锚（LongMemEval 500 题、Issue #110、MCP 集成、AAAK 实验性）；安全修复状态、ARM64 稳定性（Issue #74）需在源码核验。 |
+
 ## 架构启发
 - **"存一切"策略 > "智能筛选"策略**：在记忆系统中，不丢数据比节省空间更重要。摘要/提取会丢失上下文
 - **分层架构**：原始存储层 + 元数据索引层 + 可选压缩层，各层独立演进
 - **诚实是最强的技术品牌**：README 中的公开勘误（AAAK 回归、"30x lossless" 不实、"contradiction detection" 未集成）反而增强了可信度
 - **宫殿隐喻的工程化**：将古代记忆术转化为可计算的数据结构
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "MemPalace 架构"
-        A[原始对话数据] --> B[ChromaDB<br>向量嵌入存储]
-        A --> C[SQLite<br>实体关系图谱]
-        B --> D[宫殿结构索引<br>Wings → Halls → Rooms]
-        C --> D
-        D --> E[语义搜索<br>96.6% R@5]
-        D --> F[AAAK 压缩层<br>实验性，84.2% R@5]
-        E --> G[MCP Server<br>Agent 集成]
-        F --> G
-    end
+graph LR
+    A[Agent / 调用方] -->|MCP 协议| B[MCP Server 边界<br>待核验：鉴权与端口]
+    B --> C[宫殿结构索引<br>Wings → Halls → Rooms → Closets → Drawers]
+    C --> D[语义搜索<br>LongMemEval 96.6% R@5]
+    C --> E[AAAK 压缩层<br>实验性，84.2% R@5<br>默认建议关闭]
+    D --> F[ChromaDB<br>向量嵌入存储]
+    D --> G[SQLite<br>实体关系图谱]
+    E --> F
+    H[原始逐字对话<br>不做摘要/提取] --> F
+    H --> G
+    I[风险边界<br>Issue #110 shell 注入<br>Issue #74 macOS ARM64 段错误] -.威胁面.-> B
 ```
 
 ## 定位判断

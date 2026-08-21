@@ -39,33 +39,37 @@ MXC 填补了 Agent 安全执行基础设施的关键空白。随着 Coding Agen
 4. **TypeScript SDK**：`@microsoft/mxc-sdk` npm 包，一行代码创建沙箱
 5. **版本化 Schema**：0.5.0-alpha（stable）→ 0.6.0-alpha（current）→ 0.7.0-dev（experimental）
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MXC 是本地跨平台代码执行沙箱的统一配置与编排层，向上暴露 TypeScript SDK，向下驱动 Windows/Linux/macOS 三类原生执行器与隔离后端（ProcessContainer、Bubblewrap、Seatbelt、MicroVM、Hyperlight 等）；不替代单一后端实现，也不提供云端托管 | 后端清单来自档案"关键技术亮点"第 1 条；是否覆盖 Linux/macOS 全部能力尚未在档案中量化 |
+| 主路径 | 业务代码经 `@microsoft/mxc-sdk` 调用 → 加载版本化 JSON Policy Schema → 调用对应平台原生可执行（wxc-exec.exe / lxc-exec / mxc-exec-mac）→ 选定隔离后端落地 → 走 provision→start→exec→stop→deprovision 生命周期 | 生命周期阶段来自档案"关键技术亮点"第 3 条；具体 IPC/协议格式档案未给 |
+| 关键权衡 | 多后端统一抽象带来的扩展面收益 vs 各 OS 后端成熟度不一对齐（Windows 优先、Linux/macOS 支持较弱）；且档案明示"no MXC profiles should be treated as security boundaries currently"，意味着策略层尚不可当安全边界用 | 权衡结论来自"风险/局限/泡沫点"第 1、2 条 |
+| 最小 PoC | 用 TS SDK + 单一平台默认后端（Windows: ProcessContainer；Linux: Bubblewrap；macOS: Seatbelt）+ 最小 JSON 策略（仅文件读写白名单 + 网络出站过滤）+ 端到端审计日志，验证配置→启动→执行→回收闭环 | 默认后端与策略维度出自档案"关键技术亮点"第 1、2 条；SDK 包名来自第 4 条 |
+
 ## 架构启发
 
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
 ```mermaid
-graph TB
-    subgraph "SDK 层"
-        SDK["TypeScript SDK<br/>spawnSandboxFromConfig()"]
-    end
-    subgraph "配置层"
-        JSON["JSON Policy Schema<br/>filesystem + network + ui"]
-    end
-    subgraph "原生执行层 Rust"
-        WIN["wxc-exec.exe<br/>(Windows)"]
-        LNX["lxc-exec<br/>(Linux)"]
-        MAC["mxc-exec-mac<br/>(macOS)"]
-    end
-    subgraph "隔离后端"
-        PC["ProcessContainer"]
-        BW["Bubblewrap"]
-        SB["Seatbelt"]
-        VM["MicroVM"]
-        HL["Hyperlight"]
-    end
-    SDK --> JSON
-    JSON --> WIN & LNX & MAC
-    WIN --> PC & VM & HL
-    LNX --> BW & VM
-    MAC --> SB
+flowchart LR
+    SDK["@microsoft/mxc-sdk<br/>spawnSandboxFromConfig()"] --> POLICY["JSON Policy Schema<br/>v0.5/0.6/0.7（filesystem+network+ui）"]
+    POLICY --> ROUTER["平台路由<br/>（OS 探测，待核验）"]
+    ROUTER --> WIN["wxc-exec.exe<br/>Windows 原生执行器"]
+    ROUTER --> LNX["lxc-exec<br/>Linux 原生执行器"]
+    ROUTER --> MAC["mxc-exec-mac<br/>macOS 原生执行器"]
+    WIN --> BACKENDS["隔离后端<br/>ProcessContainer / MicroVM / Hyperlight / Windows Sandbox / WSLC"]
+    LNX --> BACKENDS2["隔离后端<br/>Bubblewrap（默认）/ LXC / MicroVM / Hyperlight"]
+    MAC --> BACKENDS3["隔离后端<br/>Seatbelt"]
+    BACKENDS --> LC["生命周期状态机<br/>provision → start → exec → stop → deprovision"]
+    BACKENDS2 --> LC
+    BACKENDS3 --> LC
+    LC --> RISK["安全边界状态<br/>⚠ 当前不可作为安全边界（preview）"]
+    classDef risk fill:#fee,stroke:#c00,stroke-width:1px
+    class RISK risk
 ```
 
 核心设计哲学：**不是发明新沙箱，而是统一现有沙箱的接口**。

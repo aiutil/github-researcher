@@ -6,7 +6,7 @@
     <title>jarun/nnn | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,27 +50,72 @@
 <li><strong>批量文件操作:</strong> 内置批量选择、重命名、文件类型分析等高级操作</li>
 <li><strong>Vim 风格快捷键:</strong> 键盘操作完全 vim 化，降低学习成本</li>
 </ol>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>nnn 边界为单 C 二进制 + 外部 shell 插件调用，无运行时依赖；外部边界是 OS 文件系统与用户配置的插件脚本</td>
+<td>档案仅说明 C 实现、零依赖、插件系统，具体系统调用与插件协议未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户键入 → vim 风格交互层 → C 核心状态/上下文（最多 4 路） → 触发外部插件脚本 → 文件系统操作回写状态</td>
+<td>档案未披露上下文切换与插件调用的具体协议，待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>极小核心 + 外挂插件换得启动 &lt;1ms 与零依赖，但代价是插件碎片化、UI 朴素、Unicode 兼容性弱</td>
+<td>性能数字与权衡仅来自档案陈述，未做基准复测</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Linux 终端跑通单二进制启动、目录浏览、批量选择、调用一个外部插件重命名，并验证非 ASCII 文件名降级行为</td>
+<td>档案未给出插件接口规范与 Unicode 兼容范围，需源码核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>nnn 的设计哲学是「核心最小化，插件最大化」——文件管理器核心只做最基础的浏览和选择，所有高级功能通过外部脚本插件实现。这种设计让核心保持极小体积和零 bug，同时通过插件系统获得了几乎无限的扩展性。这与 Emacs 的「可编程编辑器」理念异曲同工。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    U[用户 终端键入] --> UI[Vim 风格交互层]
+    UI --> C[C 核心 上下文切换 至多 4 路]
+    C --> FS[文件系统 OS 边界]
+    C --> P[外部插件 脚本 待核验 调用协议]
+    P --> FS
+    C --> R[风险边界 Unicode 兼容 待核验]
+    UI --> R
+</pre>
+<h2 id="_8">定位判断</h2>
 <p>属于终端文件管理器生态的「极致性能」代表。与 ranger（Python，功能丰富但慢）、lf（Go，中间路线）、yazi（Rust，现代新秀）形成梯度竞争。nnn 在「纯性能」维度上无对手。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>插件碎片化:</strong> 丰富的插件系统也意味着功能分散，新用户需要花时间了解和安装各种插件</li>
 <li><strong>UI 极简到粗糙:</strong> 相比 yazi 等现代 TUI 工具，nnn 的视觉设计非常朴素</li>
 <li><strong>非 Unicode 文件名兼容:</strong> 在某些环境下可能遇到特殊字符文件名的显示问题</li>
 <li><strong>竞争加剧:</strong> yazi（Rust）等新工具在保持性能的同时提供了更现代的 UI，可能分流用户</li>
 </ol>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li><strong>ranger:</strong> Python 终端文件管理器，功能更全但性能差一个数量级</li>
 <li><strong>lf:</strong> Go 实现的终端文件管理器，性能和功能的中间路线</li>
 <li><strong>yazi:</strong> Rust 实现的现代终端文件管理器，在性能和 UI 之间取得了更好平衡</li>
 <li><strong>midnight commander (mc):</strong> 老牌双面板终端文件管理器，UI 更丰富但更重</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>低优先级跟踪。</strong> nnn 已是成熟的终端工具，后续演进主要是小功能优化。对于终端工具生态观察者仍有参考价值，但不太可能出现突破性变化。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>关注 nnn 是否受到 yazi 等 Rust 新秀的明显分流</li>
 <li>观察终端文件管理器这一品类的整体演进趋势</li>

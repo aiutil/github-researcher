@@ -36,8 +36,34 @@ MOSI.AI 和 OpenMOSS 团队推出的开源语音与音效生成模型家族，�
 3. **多后端推理支持**：(a) llama.cpp + ONNX Runtime 实现 PyTorch-free 推理，8B 模型可在 8GB GPU 上运行；(b) SGLang-Omni 提供约 3x 吞吐加速；(c) vLLM-Omni 支持全系列模型。GGUF 量化权重已发布。
 4. **MOSS-TTS-Local-Transformer-v1.5**：4B 参数检查点，从 Qwen3-1.7B 扩展到 Qwen3-4B 骨干，继承 v1.5 全部特性，获得 SGLang-Omni Day-0 支持。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | MOSS-TTS 是覆盖长语音、多说话人对话、声音设计、环境音效、流式 TTS 与轻量版共 7+ 变体的开源 TTS 模型家族，通过 MOSS-Audio-Tokenizer-v2 提供 48kHz 立体声能力，对外发布于 HuggingFace/ModelScope 与 HuggingFace Spaces 在线试用。 | 仅基于档案“关键技术亮点”与发布渠道描述；具体各模型 checkpoint 命名、license 细则在 README 中未列出，须逐权重核验。 |
+| 主路径 | 文本输入 → MOSS-Audio-Tokenizer-v2 编码 → Qwen3（1.7B 或 4B）骨干 TTS 模型推理 → 多后端（llama.cpp/ONNX、SGLang-Omni、vLLM-Omni）部署 → 48kHz 立体声输出。Nano(~100M) 走 4 核 CPU 流式子路径。 | 后端加速比（SGLang “约 3x”）、CPU 4 核流式、8GB GPU 跑 8B 等说法源自档案引用的公开资料，未在 README 给出复现脚本或基准。 |
+| 关键权衡 | “多场景模型家族 vs 维护成本”以及“48kHz 立体声/大骨干 vs 部署门槛”：全场景覆盖与音质上限换来了 7+ 变体的持续维护负担，且除 Nano 外需 Qwen3 级 GPU 资源；中文优势明显，英文/多语言生产可用性未证实。 | 权衡判断只来自档案“风险/局限”与“同类项目”两节；具体多语言质量基准、模型权重单独许可条款未给出原文。 |
+| 最小 PoC | 优先在 HuggingFace Spaces 试用 v1.5 验证中文长语音与 `[pause X.Ys]`、语言标签基本能力，再以 MOSS-TTS-Nano + llama.cpp/ONNX 在 4 核 CPU 环境跑流式 PoC；GGUF 量化权重已发布可作低门槛入口。 | 试用入口来自档案；Nano 4 核 CPU 流式、GGUF 量化等说法均需在 README 与对应推理后端文档中再核验，acceptance 项须自定 SLO 与许可证复核。 |
+
 ## 架构启发
 MOSS-TTS 的设计哲学是"模型家族覆盖全场景"而非"一个模型做所有事"。这种设计让每个模型可以针对特定场景优化（如 Nano 追求轻量、Realtime 追求低延迟、SoundEffect 追求音效保真），而不是在一个模型中做 trade-off。另一个值得学习的是多后端推理策略——通过 llama.cpp/vLLM/SGLang 适配不同的部署环境，最大化模型的可及性。基于 LLM 骨干（Qwen3）的 TTS 架构也代表了"TTS as LLM"的趋势——用语言模型的框架统一语音生成。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+  U[使用者或上游应用<br/>视频配音/虚拟人/有声读物] --> I[入口与分发边界<br/>GitHub + HuggingFace Spaces 试用]
+  I --> C[项目编排与运行时]
+  C --> M[模型家族与推理后端<br/>MOSS-TTS/TSD/VoiceGenerator/<br/>SoundEffect/Realtime/Nano + v1.5<br/>骨干 Qwen3-1.7B ~ 4B · 待核验]
+  C --> Tk[音频编解码边界<br/>MOSS-Audio-Tokenizer-v2<br/>48kHz 立体声 · 协议/接口待核验]
+  C --> Tb[工具与外部系统<br/>HuggingFace / ModelScope<br/>权重分发]
+  C --> S[会话 状态 审计 许可证<br/>Apache 2.0 代码 · 权重许可待核验<br/>v2.0 反馈收集 · 多语言质量 待核验]
+  M --> C
+  Tk --> C
+  Tb --> C
+```
 
 ## 定位判断
 MOSS-TTS 定位为**开源 TTS 的全能型方案**。在开源 TTS 生态中，它与 ChatTTS、CosyVoice（阿里）、GPT-SoVITS 等竞争。差异化在于全场景覆盖（从基础 TTS 到音效生成）和 48kHz 立体声支持。OpenMOSS 的学术背景使其在中文学术社区有较强影响力。3.9K stars 说明还在增长期，尚未达到 ChatTTS（30K+）或 CosyVoice 的热度水平。

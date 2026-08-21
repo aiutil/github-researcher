@@ -36,8 +36,33 @@ Spec Kit 的热度来自一个关键洞察的传播："AI 编码的质量上限�
 - **Agent 协议:** 与主流 AI 编码 Agent 的集成协议，让 Agent 理解 Spec 格式
 - **模板系统:** 提供不同类型项目（Web 应用、API、CLI 工具）的规格模板
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | spec-kit 自身是一个本地化的 Spec 编制与组织层（Python CLI + Markdown 模板），不内置模型推理；模型与代码生成由外部 AI 编码 Agent 提供，spec-kit 仅作为其上游输入契约 | 档案明确其为 Python CLI 与 Markdown Spec，未给出独立后端/部署形态 |
+| 主路径 | 用户编写 Spec → spec-kit 模板/流程组织结构化规格 → 交付给第三方 AI 编码 Agent（Copilot / Claude Code / Cursor / Codex）→ 由 Agent 完成代码生成 | 档案未描述 Spec→Agent 的具体传输协议、CLI 子命令或文件结构，需源码核验 |
+| 关键权衡 | 范式通用性（Agent 无关、多模板覆盖） vs 转换质量完全外移给 Agent（spec-kit 不生成代码，质量依赖下游 Agent） | 档案明确"Spec Kit 本身不生成代码"，但未给出 Spec→代码转换成功率/质量度量 |
+| 最小 PoC | 在单项目内用 spec-kit CLI 生成 Web 应用 Spec 模板 → 对接单一 Agent（如 Copilot）→ 比对"有 Spec"与"无 Spec"的产出差异，限定权限与可审计日志 | 档案未提供 CLI 安装命令、模板目录结构、Agent 集成协议细节，PoC 步骤需以仓库 README 核验 |
+
 ## 架构启发
 Spec Kit 的核心架构启发是"规格即契约"——将非正式的需求描述（口语化、模糊）转化为正式的规格文档（结构化、可验证），使得 AI Agent 有明确的"执行目标"。这与传统的"需求文档 → 设计文档 → 代码"流程本质相同，但被压缩为"Spec → AI 生成代码"的快速循环。其"Spec 是代码的上游"思想，类似于"类型是实现的约束"。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    U[开发者] --> SK[spec-kit Python CLI 与 Markdown Spec 模板]
+    SK --> SP[结构化规格文档 待核验: 文件结构与模板细节]
+    SP --> AG[外部 AI 编码 Agent Copilot 或 Claude Code 或 Cursor 或 Codex]
+    AG --> CODE[生成的项目骨架 接口与测试 待核验: 生成范围与深度]
+    SP --> VER[验收标准与迭代细化]
+    VER --> SP
+    SK -.不内置模型推理.-> AG
+    AG -.代码质量依赖 Agent 能力.-> SK
+```
 
 ## 定位判断
 **基础设施型项目（范式定义期）。** Spec Kit 正在定义一种新的开发范式。它不是"又一个 AI 编码工具"，而是"AI 编码的前提条件"。其基础设施属性体现在：如果 Spec-Driven Development 成为标准实践，Spec Kit（或其定义的格式）将成为所有 AI 编码工作流的入口。

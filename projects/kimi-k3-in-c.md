@@ -38,8 +38,34 @@ url: "https://github.com/FareedKhan-dev/kimi-k3-in-c"
 3. **"8GB 与 224GB 字节一致输出"**：dense trunk 驻内存到所选深度并流式其余；1.45TB routed experts 从不驻留，直接从 packed 4-bit（MXFP4）形式相乘。作者的论证——**计算是确定性的，差别只在字节从哪来**（内存 vs 磁盘）以及多快，因此"底部的答案和顶部一样"。
 4. **fit cascade（四级内存预算）**：从 server cluster → laptop 的四步，每步调整字节存放位置，输出在两端字节一致。`--preset laptop/server` 控制 trunk 深度与内存预算。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 纯 C99 单进程推理引擎，无框架无 BLAS 无 GPU，依赖仅 1.56TB NVMe 检查点与宿主 OS；外部边界为 NVMe 上的 MXFP4 packed 检查点 + CPU 内存层级（dense trunk 驻内存 / routed experts 流式）。 | 基于档案"C99、no BLAS、no framework、no GPU、176KB 引擎、peak RSS 8.24GB、1.56TB 检查点、MXFP4"。 |
+| 主路径 | CLI 入口（`./bin/k3 ... --preset laptop/server`）→ fit cascade 按内存预算选择 trunk 驻留深度 → dense trunk 直接矩阵乘、routed expert 从 NVMe 以 4-bit MXFP4 流式直接相乘（不驻留）→ 输出 token；计算路径不依赖外部服务。 | 依据"fit cascade（四级内存预算）"、"dense trunk 驻内存到所选深度并流式其余"、"routed experts 从不驻留，直接从 packed 4-bit 形式相乘"、"计算是确定性的"。 |
+| 关键权衡 | 用吞吐（32.69 s/token，laptop 预设）换取 RAM 下限（8.24 GB），换 server 预设（127.92 GB RSS）才到 10.69 s/token——本质是"内存放置策略 vs 时钟"的取舍，速度不可与 waste（0.62 tok/s）同日而语。 | 仅来自 README 自述的 `--preset laptop` / `--preset server` 实测数据，未经第三方复现；作者明示"价值在可行性证明，非日常使用"。 |
+| 最小 PoC | 在 Linux x86-64 + ≥1.56TB NVMe + ≥8.24GB RAM 机器上克隆仓库、Makefile 构建，跑 `./bin/k3 ... --preset laptop`，对照 docs/data/ 的 8.24GB RSS / 32.69 s/token 复现同一 prompt，并比对相同 prompt 在 `--preset server` 下的字节级输出一致性。 | PoC 形态、C99 工具链、Linux x86-64、Makefile 由档案确认；"字节一致输出"为作者自述断言，需独立验证。 |
+
 ## 架构启发
 核心启发是 **"确定性计算 → 内存预算只影响速度不影响正确性"**。这与 waste 的"trunk 驻内存 + expert 磁盘流式"、esp32-ai 的"Per-Layer Embeddings + flash 存参数表"是同一原理家族——**"推理瓶颈是内存放置策略而非算力"**。kimi-k3-in-c 的独特贡献是把"放置策略"推到极端：几乎全部 expert 都不驻留，只保留最小 trunk，用 32s/token 的极端慢速换 8.24GB 的极端低内存。这定义了 Pareto 前沿的内存端极限点。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    CLI["CLI 入口 ./bin/k3 --preset laptop/server"] --> CAS["fit cascade 四级内存预算（待核验）"]
+    CAS --> TRUNK["dense trunk 驻留内存（深度由 preset 决定）"]
+    TRUNK --> MUL["矩阵乘计算路径"]
+    NVME["NVMe 上 1.56TB MXFP4 packed 检查点（外部边界）"] --> STREAM["routed expert 流式读取（不驻留）"]
+    STREAM --> MUL
+    MUL --> OUT["token 输出"]
+    OUT --> DETER["确定性计算：内存预算只影响速度（待第三方验证）"]
+    DETER -.仅在更高 preset 下逼近可用速度.-> TRUNK
+    RISK["风险/控制边界：8.24GB RSS 与 32.69 s/token 均为作者自述，未经独立复现"] -.约束.-> CLI
+```
 
 ## 定位判断
 在"K3 本地推理四极"里，kimi-k3-in-c 占据**内存下限极限点**。waste（64GB/接近可用）、deltafin（Python/API server/易用）、colibri（多 GPU/744B/4 tok/s）分别占据速度、易用性、多 GPU 端。kimi-k3-in-c 不追求实用，追求"RAM 下限能压到多低"的回答。定位为观察型——价值在可行性证明与 Pareto 前沿定义。

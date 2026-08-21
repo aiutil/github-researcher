@@ -6,7 +6,7 @@
     <title>openai/ten-proofs | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -46,25 +46,74 @@
 <li><strong>独立证明检查</strong>：仓库含 <code>ComparatorChallenges/</code>，README 指向独立检查流程，声明这些形式化可被外部 Comparator 验证（这是可核验性的关键——任何人可复现）。</li>
 <li><strong>依赖 Lean 4.32.0 + mathlib + Lake</strong>：用 elan 管理工具链，<code>lake exe cache get</code> 拉 mathlib 缓存后 <code>lake build All</code>。</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Lean 4.32.0 + mathlib 单仓编译的十个独立形式化模块（SpherePacking / MetricCodes / NonSoficGroup / ConnesRigidity / Permanent / QuantumParallelRepetition / GapCVP / EhrhartVolumeInequality / MulticolorTriangleRamsey / CompactnessAndDegeneracy），通过 <code>lake build All</code> 产出可复现的机器可检查证据</td>
+<td>模块职责与依赖见"关键技术亮点"；是否含辅助背景文件、commit 粒度等未在档案核实</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>论文中的非形式证明 → 翻译为 Lean 4 形式化 → <code>lake exe cache get</code> 拉 mathlib 缓存 → <code>lake build &lt;Module&gt;</code> 独立检查 → <code>ComparatorChallenges/</code> 提供外部 Comparator 二次校验</td>
+<td><code>ComparatorChallenges</code> 实际可执行性、formalization.yaml 是否承担 claim-mapping 仅在档案中"提及但未深入验证"</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>形式化编译通过 ≠ 原始数学结论正确——Lean 内部自洽与"形式化对象是否真为论文所宣称的定理"是两件事，前者机器可验，后者仍需领域专家复核</td>
+<td>风险点 1 明确指出此落差；社区独立审查信号尚未在档案中出现</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><code>elan</code> 配置 Lean 4.32.0 工具链 → <code>lake exe cache get</code> 取 mathlib 缓存 → 选取单一模块（如 SpherePacking.lean）执行 <code>lake build &lt;Module&gt;</code> 验证编译与声明一致性，再扩展到 All</td>
+<td>构建命令与依赖在档案中可证；makepath、CI 配置、失败回滚策略未在档案中描述</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>这个仓库的哲学是 <strong>"claim → formalize → independently check"</strong> 的闭环。AI 推理产出一个非形式断言，形式化层把它翻译成 Lean，验证层确认 Lean 编译通过。这与"AI 写代码跑测试"同构，但处在更高的抽象层（数学真理而非程序正确性）。对架构师的启发是：<strong>当 AI 系统的输出需要高可信度时，形式化验证层是比人工 review 更强的保证机制</strong>——前提是领域有可用的 proof assistant。</p>
-<h2 id="_6">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    P[论文 Ten advances in mathematics and theoretical computer science] --> F[十个 Lean 4 形式化模块]
+    F --> L[Lean 4.32.0 工具链 via elan]
+    L --> M[mathlib 依赖 lake exe cache get]
+    M --> B[lake build 单模块或 All]
+    B --> R[编译结果 机器可检查]
+    F --> C[ComparatorChallenges 独立检查流程 待核验]
+    C --> R
+    R --> A[领域专家对形式化与原定理声称的对应性复核 待核验]
+    A -.人工 review.-> F
+    B -.工具链升级风险.-> W[mathlib 演进 与 Lean 版本漂移]
+    W -.读.-> F
+</pre>
+<h2 id="_7">定位判断</h2>
 <p>这属于 <strong>L0 基础研究/范式信号</strong>，不在应用产品分层内。它的价值不是作为可集成的工具，而是作为 <strong>AI 能力边界的一个可核验坐标点</strong>：证明 AI 推理已能在前沿数学产生可验证贡献。在趋势跟踪中，它标志"AI + 形式化"交叉品类的出现。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ol>
 <li><strong>形式化正确性 ≠ 原始数学结论正确</strong>：Lean 文件能编译只证明"这个 Lean 证明内部自洽"，不证明"它形式化的就是论文宣称的定理"——formalization 与 informal claim 的对应仍需人工对照（README 的 formalization.yaml 可能承担此职责，但未深入验证）。</li>
 <li><strong>极高专业门槛</strong>：受众限于 Lean/mathlib 用户 + 对应数学领域专家，传播天花板远低于应用项目。432⭐ 已是该品类的高位。</li>
 <li><strong>维护承诺未知</strong>：mathlib 持续演进，Lean 工具链更新可能破坏构建；OpenAI 是否长期维护此仓库未声明。</li>
 <li><strong>单一时间点发布</strong>：commits 显示 08-02 后无更新，目前是"发布即冻结"状态，非活跃开发。</li>
 </ol>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs leanprover/mathlib4</strong>：mathlib 是 Lean 数学库本体（基础设施），ten-proofs 是建立在它之上的具体形式化成果（应用层）。ten-proofs 依赖 mathlib 缓存。</li>
 <li><strong>vs 其他 AI 数学成果仓库</strong>：多数 AI 数学发现以论文 + 非形式证明发布，不提供 Lean。ten-proofs 的差异化正是<strong>形式化 + 可独立检查</strong>。目前 GitHub 上 AI+Lean 形式化的同类生产级仓库仍稀少。</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>是，作为"AI + 形式化验证"交叉品类的标杆信号跟踪。</strong> 但跟踪频率可低于应用层项目——此类仓库更新稀疏，重点关注：(a) OpenAI 是否发布更多此类形式化；(b) 社区是否出现对 ten-proofs 具体定理的复现/质疑；(c) formalization.yaml 的 claim-mapping 完整性是否被独立审查。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ol>
 <li><strong>star/fork 比的演化</strong>：若 fork 持续增长（当前 39），说明有人真正在 <code>lake build</code> 验证；若仅 star 涨，则偏展示型关注。</li>
 <li><strong>社区审查信号</strong>：关注是否有 Lean/mathlib 核心贡献者公开 review 这些形式化的 claim 对应准确性。</li>

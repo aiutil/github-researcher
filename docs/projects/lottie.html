@@ -6,7 +6,7 @@
     <title>diffusionstudio/lottie | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
-    
+
 </head>
 <body>
     <nav class="nav">
@@ -50,11 +50,57 @@
 <li>预览和迭代：生成后可在浏览器中即时预览，通过对话微调</li>
 <li>TypeScript 实现，可扩展到其他动画格式</li>
 </ul>
-<h2 id="_6">架构启发</h2>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>以 Claude Code / Codex CLI 为入口的编排层，负责把自然语言意图映射为 Lottie JSON 输出，外部依赖是 AI 编程助手运行时和模型服务</td>
+<td>档案仅声明“Claude Code/Codex 集成、TypeScript、MIT、零 Issue”，未披露入口协议、模型供应商、鉴权方式</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>自然语言描述 → 入口/编排 → 调用模型与可用工具 → 产出 Lottie JSON → 浏览器预览与对话迭代回写</td>
+<td>“Lottie JSON 直接生成、预览和迭代”是档案原话；“状态回写”“工具调用”细节未在 README 证实</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>在 Lottie schema 强约束下提升生成复杂度，与品牌一致性、可解释性、可审计性之间的平衡；同时受 Claude Code/Codex 生态普及度影响</td>
+<td>档案明列“生成质量上限、品牌一致性、依赖 AI 编程助手普及、TypeScript 但 0 Issue”风险；未给出性能或质量基准</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在单一 Claude Code 或 Codex CLI 渠道、用最小工具权限与可审计日志运行一次“弹跳加载圆”描述到 Lottie JSON，并核验产物 schema 合法性</td>
+<td>档案只声明入口是 CLI 类型的 Skill/Plugin；具体鉴权、日志、部署形态、扩展到 SVG/3D 等均为待核验项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">架构启发</h2>
 <p>diffusionstudio/lottie 的架构启发是：<strong>AI 最适合生成"有约束的结构化输出"</strong>。Lottie JSON 有严格的 schema 约束，AI 在约束条件下的生成质量远高于无约束的创意生成。对架构师的启发是：将 AI 应用于"格式确定但内容多变"的场景（配置文件、测试代码、设计资产）比应用于开放式创意更有效。</p>
-<h2 id="_7">定位判断</h2>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+U[使用者] --> I[入口: Claude Code 或 Codex CLI]
+I --> C[项目编排与运行时<br/>TypeScript]
+C --> M[模型或推理服务<br/>供应商待核验]
+C --> T[工具与外部系统<br/>范围待核验]
+C --> J[Lottie JSON 生成<br/>schema 约束]
+J --> P[浏览器预览与对话迭代]
+C --> S[会话 状态 审计<br/>持久化待核验]
+P -.微调回写.-> C
+</pre>
+<h2 id="_8">定位判断</h2>
 <p><strong>工具型（设计辅助）。</strong> 精准定位为"AI Lottie 生成器"，不做更多也不做更少。其价值在于将 Lottie 制作从"设计师技能"降维为"描述能力"，使非设计师也能产出专业动画。</p>
-<h2 id="_8">风险/局限/泡沫点</h2>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>生成质量上限:</strong> AI 生成的动画在复杂度和精细度上仍不及专业设计师手工制作</li>
 <li><strong>品牌一致性:</strong> 生成的动画可能不符合企业的设计系统规范</li>
@@ -62,16 +108,16 @@
 <li><strong>依赖 Claude Code/Codex:</strong> 工具价值部分依赖于 AI 编程助手的普及度</li>
 <li><strong>TypeScript 项目但 open_issues: 0:</strong> 可能意味着用户量还不够大或维护者反应极快</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
 <li>与 <strong>LottieFiles</strong>（Lottie 格式创建者）在工具维度互补——LottieFiles 提供平台和编辑器，本项目提供 AI 生成</li>
 <li>与 <strong>Motion</strong>（Framer Motion）、<strong>GSAP</strong> 等动画库形成"AI 生成 vs 代码编写"的对比</li>
 <li>与 Claude Code、Codex 的 Skill/Plugin 生态深度集成</li>
 <li>在 AI 设计工具赛道，与 v0.dev（UI 生成）、Galileo（设计生成）形成不同维度的"AI 设计工具"矩阵</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
 <p><strong>选择性跟踪。</strong> 作为实用工具有即用价值，但作为研究对象价值有限。建议关注 AI 生成结构化设计资产这一模式的演进——如果从 Lottie 扩展到 SVG、3D 模型等格式，则价值显著提升。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_12">后续观察点</h2>
 <ul>
 <li>是否扩展到更多设计资产格式（SVG 动画、3D、Rive）</li>
 <li>生成质量的提升（复杂度、品牌适配）</li>

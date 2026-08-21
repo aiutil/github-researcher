@@ -34,8 +34,34 @@ url: "https://github.com/public-api-lists/public-api-lists"
 2. **免费 JSON API 端点**：除了人类可读的 Markdown 和 Web 界面，还提供机器可读的 JSON API，开发者可以直接在代码中 `fetch` 获取 API 列表数据。这是相比原版 public-apis 的核心差异化。
 3. **结构化分类系统**：API 按类别（Animals、Anime、Anti-Malware、Art & Design、Books 等）和子类别组织，支持按 Auth 方式（apiKey、OAuth、无认证）、HTTPS 支持、CORS 支持等维度筛选。
 
+## 架构师速览
+
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 纯 Markdown 策展型项目，无运行时；边界 = GitHub 仓库（Markdown 内容 + PR 流程）+ 静态 Web/JSON 端点。 | 基于 language:Markdown、tags、JSON 端点 URL；未审计仓库内部目录。 |
+| 主路径 | 贡献者 PR → 维护者 Review → 合并入 Markdown 列表 → 静态站点构建 → Web/JSON API 端点对外提供。 | 档案描述"社区维护机制（PR+Review）"与"免费 JSON API 端点"；具体构建工具/CI 未证。 |
+| 关键权衡 | 策展广度与时效性/质量之间的平衡；低审核门槛（beginner-friendly）有助于更新速度但牺牲单条质量与时效校验。 | 档案明示"信息时效性风险""API 质量参差不齐""维护者依赖"；具体审核 SLA 未给。 |
+| 最小 PoC | 拉取仓库 + 抓取 JSON 端点，按类别/Auth/HTTPS/CORS 维度过滤，校验若干 API 可用性并记录失效条目。 | 基于档案"结构化分类系统"与 JSON 端点 URL；性能/速率限制未披露。 |
+
 ## 架构启发
 public-api-lists 是"策展型开源项目"（curation-driven open source）的典型案例。它的核心价值不是代码，而是经过人工验证的信息。这类项目的关键挑战是：如何保持信息的新鲜度（API 可能下线、变更认证方式、限制速率）和如何处理大量社区贡献请求。public-api-lists 的策略是保持较低的审核门槛（标记 beginner-friendly）+ 活跃的维护者，与原版 public-apis 的审核积压形成对比。
+
+## 架构图（MMD）
+
+> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+
+```mermaid
+flowchart LR
+    Contributor[社区贡献者 PR] --> Repo[(GitHub 仓库: Markdown 内容)]
+    Maintainer[维护者 Review 与合并] --> Repo
+    Repo --> StaticSite[静态站点与搜索界面 待核验]
+    Repo --> JSONEndpoint[免费 JSON API 端点 public-api-lists.github.io]
+    JSONEndpoint --> Consumer[开发者 fetch 调用]
+    StaticSite --> Reader[人类读者查阅]
+    Consumer --> DownstreamAPI[下游第三方公共 API 待核验可用性]
+    DownstreamAPI -. 失效/限流风险 .-> Consumer
+    Maintainer -. 维护者活跃度下降 .-> Repo
+```
 
 ## 定位判断
 在开发者资源生态中，public-api-lists 定位为**参考型工具资源**——不是被"运行"的项目，而是被"查阅"的资源。它的竞品是各种 awesome-list 和 API 目录网站。15K stars 中绝大多数是"书签式 star"——用户 star 它以便日后查找，而非 fork 或 clone 使用。
