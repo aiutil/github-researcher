@@ -4,6 +4,134 @@
 
 ---
 
+## 2026-08-21
+
+**核心主题：** openclaw（386,933 stars） · ECC（241,489 stars） · hermes-agent（233,600 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 📦 openclaw/openclaw (386,933 stars) — Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ，Score 95
+- 🛠️ affaan-m/ECC (241,489 stars) — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development f，Score 95
+- 🤖 NousResearch/hermes-agent (233,600 stars) — The agent that grows with you，Score 95
+- 🔄 n8n-io/n8n (201,406 stars) — Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host ，Score 95
+- 🐍 Significant-Gravitas/AutoGPT (186,691 stars) — AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so tha，Score 95
+- 📦 ollama/ollama (179,070 stars) — Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.，Score 95
+- 🐍 huggingface/transformers (164,287 stars) — 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and ，Score 95
+- 📦 langgenius/dify (153,074 stars) — Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cl，Score 95
+
+## 2026-08-20
+
+**核心主题：** freeCodeCamp（454,381 stars） · openclaw（386,933 stars） · ECC（241,489 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 📦 freeCodeCamp/freeCodeCamp (454,381 stars) — freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.，Score 95
+- 📦 openclaw/openclaw (386,933 stars) — Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ，Score 95
+- 🛠️ affaan-m/ECC (241,489 stars) — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development f，Score 95
+- 🤖 NousResearch/hermes-agent (233,600 stars) — The agent that grows with you，Score 95
+- 📦 mattpocock/skills (226,873 stars) — Skills for Real Engineers. Straight from my .agents directory.，Score 95
+- 🔄 n8n-io/n8n (201,405 stars) — Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host ，Score 95
+- ⌨️ ohmyzsh/ohmyzsh (189,278 stars) — 🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300，Score 95
+- 🐍 Significant-Gravitas/AutoGPT (186,691 stars) — AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so tha，Score 95
+
+## 2026-08-19
+
+**核心主题：** freeCodeCamp（454,381 stars） · superpowers（275,018 stars） · react（247,446 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 📦 freeCodeCamp/freeCodeCamp (454,381 stars) — freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.，Score 95
+- 📦 obra/superpowers (275,018 stars) — An agentic skills framework & software development methodology that works.，Score 95
+- 🎨 react/react (247,446 stars) — The library for web and native user interfaces.，Score 95
+- 📦 mattpocock/skills (226,873 stars) — Skills for Real Engineers. Straight from my .agents directory.，Score 95
+- ⌨️ ohmyzsh/ohmyzsh (189,278 stars) — 🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300，Score 95
+- ⌨️ yt-dlp/yt-dlp (185,909 stars) — A feature-rich command-line audio/video downloader，Score 95
+- 📦 deepseek-ai/deepseek-harness (175,622 stars) — DeepSeek Harness: Everything is a Plugin.，Score 95
+- 📦 firecrawl/firecrawl (170,148 stars) — The context API to search, scrape, and interact with the web at scale. 🔥，Score 95
+
+## 2026-08-18
+
+**核心主题：** superpowers（275,017 stars） · react（247,446 stars） · deepseek-harness（175,621 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 📦 obra/superpowers (275,017 stars) — An agentic skills framework & software development methodology that works.，Score 95
+- 🎨 react/react (247,446 stars) — The library for web and native user interfaces.，Score 95
+- 📦 deepseek-ai/deepseek-harness (175,621 stars) — DeepSeek Harness: Everything is a Plugin.，Score 95
+- 🐍 anthropics/skills (170,711 stars) — Public repository for Agent Skills，Score 95
+- 📦 Snailclimb/JavaGuide (157,909 stars) — Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发，Score 95
+- 🤖 shareAI-lab/learn-claude-code (74,820 stars) — Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1，Score 95
+- 🧠 datawhalechina/hello-agents (73,987 stars) — 📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程，Score 95
+- ⚛️ pmndrs/zustand (58,590 stars) — 🐻 Bear necessities for state management in React，Score 95
+
+## 2026-08-17
+
+**核心主题：** skills（170,711 stars） · JavaGuide（157,909 stars） · awesome-llm-apps（133,393 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🐍 anthropics/skills (170,711 stars) — Public repository for Agent Skills，Score 95
+- 📦 Snailclimb/JavaGuide (157,909 stars) — Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发，Score 95
+- 🐍 Shubhamsaboo/awesome-llm-apps (133,393 stars) — 100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.，Score 95
+- 🔗 punkpeye/awesome-mcp-servers (92,627 stars) — A collection of MCP servers.，Score 95
+- 📦 Leonxlnx/taste-skill (78,670 stars) — Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop ，Score 95
+- 🤖 shareAI-lab/learn-claude-code (74,819 stars) — Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1，Score 95
+- 🧠 datawhalechina/hello-agents (73,986 stars) — 📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程，Score 95
+- 🐍 666ghj/MiroFish (71,287 stars) — A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物，Score 95
+
+## 2026-08-16
+
+**核心主题：** claw-code（195,087 stars） · awesome-llm-apps（133,393 stars） · awesome-mcp-servers（92,627 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🦀 ultraworkers/claw-code (195,087 stars) — An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human inte，Score 95
+- 🐍 Shubhamsaboo/awesome-llm-apps (133,393 stars) — 100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.，Score 95
+- 🔗 punkpeye/awesome-mcp-servers (92,627 stars) — A collection of MCP servers.，Score 95
+- 📦 Leonxlnx/taste-skill (78,670 stars) — Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop ，Score 95
+- 🐍 666ghj/MiroFish (71,287 stars) — A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物，Score 95
+- 📦 tw93/Mole (64,385 stars) — 🐹 Clean, uninstall, analyze, optimize, and monitor your Mac.，Score 95
+- ⌨️ Raphire/Win11Debloat (55,791 stars) — A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perf，Score 95
+- 📦 fastapi/full-stack-fastapi-template (44,989 stars) — Full-stack web application template with FastAPI, React, SQLModel, PostgreSQL, Vite, Tailwind CSS, shadcn/ui, FastAPI Cl，Score 94
+
+## 2026-08-15
+
+**核心主题：** claw-code（195,087 stars） · Win11Debloat（55,791 stars） · react-bits（45,900 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🦀 ultraworkers/claw-code (195,087 stars) — An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human inte，Score 95
+- ⌨️ Raphire/Win11Debloat (55,791 stars) — A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perf，Score 95
+- 📦 DavidHDev/react-bits (45,900 stars) — An open source collection of animated, interactive & fully customizable React components for building memorable websites，Score 95
+- 📦 Kong/kong (44,014 stars) — 🦍 The API and AI Gateway，Score 94
+- 🛠️ CorentinTh/it-tools (40,301 stars) — Collection of handy online tools for developers, with great UX. ，Score 90
+- 🛠️ freeCodeCamp/devdocs (39,325 stars) — API Documentation Browser，Score 89
+- 📦 drawdb-io/drawdb (39,187 stars) — Free, simple, and intuitive online database diagram editor and SQL generator.，Score 89
+- 📦 permissionlesstech/bitchat (35,716 stars) — bluetooth mesh chat, IRC vibes，Score 85
+
+## 2026-08-14
+
+**核心主题：** agent-skills（88,833 stars） · Front-End-Checklist（73,592 stars） · react-bits（45,900 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；“趋势”是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 📦 addyosmani/agent-skills (88,833 stars) — Production-grade engineering skills for AI coding agents.，Score 95
+- 🤖 thedaviddias/Front-End-Checklist (73,592 stars) — 🗂 The essential checklist for modern web development, for humans and AI agents，Score 95
+- 📦 DavidHDev/react-bits (45,900 stars) — An open source collection of animated, interactive & fully customizable React components for building memorable websites，Score 95
+- ⌨️ google/zx (45,676 stars) — A tool for writing better scripts，Score 95
+- 🔄 JCodesMore/ai-website-cloner-template (32,555 stars) — Clone any website with one command using AI coding agents，Score 82
+- 📦 decolua/9router (25,937 stars) — Unlimited FREE AI coding. Connect Claude Code, Codex, Cursor, Cline, Copilot, Antigravity to FREE Claude/GPT/Gemini via ，Score 75
+- 📦 flipped-aurora/gin-vue-admin (24,953 stars) — 🚀Vite+Vue3+Gin拥有AI辅助的基础开发平台，企业级业务AI+开发解决方案，内置mcp辅助服务，内置skills管理，支持TS和JS混用。它集成了JWT鉴权、权限管理、动态路由、显隐可控组件、分页封装、多点登录拦截、资源权限、上传，Score 74
+- 🤖 TencentCloud/TencentDB-Agent-Memory (23,504 stars) — TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusab，Score 73
+
 ## 2026-08-13
 
 **核心主题：** H3 生态全面减速——h3.c +377（1,201→1,578，+31.4%，从 +831% 断崖回落），MiniMax-H3 官方 +234（5,194→5,428，+4.5%），爆发期结束进入长尾，但 fork/subs 仍在增长（深度开发者持续进入） · guillaumemeyer/watermarks-remover 两日破 2k（2,008⭐/187 fork/0 issue），AI 来源水印剥离作为独立 Skill 品类出现（Microsoft MVP 作者可核验，双重用途风险标注） · sohaibdevv/youtube-music 疑似恶意软件投递样本（848⭐/0 fork/0 issue + 密码 ZIP），与 WeChat-AI 刷量模式本质不同，"投递型"风险新样本 · Coding Agent 治理工具群涌现（anti-slop/claudish-to-english/HERO），从"能写"到"写得靠谱"

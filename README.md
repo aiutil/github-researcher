@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-13.md">Latest report</a> ·
+  <a href="daily/2026-08-21.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-13
+## Latest report · 2026-08-21
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 12 | 448 | 4 | 15k+ |
+| 39 | 463 | 5 | 3863K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [antirez/h3.c](projects/h3c.md) | 1,578 stars | 观察型 |
-| [guillaumemeyer/watermarks-remover](projects/watermarks-remover.md) | 2,008 stars | 工具型 |
-| [firecrawl/anydoc](projects/anydoc.md) | 15,040 stars | 工具型 |
-| [MiniMax-AI/MiniMax-H3](projects/minimax-h3.md) | 5,428 stars | 观察型 |
-| [sohaibdevv/youtube-music](projects/youtube-music.md) | 848 stars | 观察型 |
-| [ShawnPana/phone-harness](projects/phone-harness.md) | 1,630 stars | 观察型 |
-| [FareedKhan-dev/kimi-k3-in-c](projects/kimi-k3-in-c.md) | 5,168 stars | 观察型 |
-| [dmmulroy/anti-slop](projects/anti-slop.md) | 290 stars | 工具型 |
+| [openclaw/openclaw](projects/openclaw.md) | 386,933 stars | 平台候选 |
+| [affaan-m/ECC](projects/ecc.md) | 241,489 stars | 工具型 |
+| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,600 stars | 平台候选 |
+| [n8n-io/n8n](projects/n8n.md) | 201,406 stars | 平台候选 |
+| [Significant-Gravitas/AutoGPT](projects/autogpt.md) | 186,691 stars | 平台候选 |
+| [ollama/ollama](projects/ollama.md) | 179,070 stars | 工具型 |
+| [huggingface/transformers](projects/transformers.md) | 164,287 stars | 工具型 |
+| [langgenius/dify](projects/dify.md) | 153,074 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: h3c, minimax-h3
-2. **Signal 2** · score 86 · repositories: watermarks-remover
-3. **Signal 3** · score 65 · repositories: youtube-music
-4. **Signal 4** · score 82 · repositories: anti-slop
+1. **Signal 1** · score 95 · repositories: n8n, autogpt, hermes-agent, openclaw
+2. **Signal 2** · score 90 · repositories: hermes-agent, ecc, langchain
+3. **Signal 3** · score 90 · repositories: hermes-agent, ecc, langchain
+4. **Signal 4** · score 80 · repositories: hermes-agent, langchain
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-13.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-21.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
-| [2026-08-13](daily/2026-08-13.md) | 12 | 4 |
-| [2026-08-12](daily/2026-08-12.md) | 12 | 4 |
-| [2026-08-11](daily/2026-08-11.md) | 12 | 4 |
-| [2026-08-10](daily/2026-08-10.md) | 12 | 4 |
-| [2026-08-09](daily/2026-08-09.md) | 12 | 4 |
-| [2026-08-08](daily/2026-08-08.md) | 13 | 4 |
-| [2026-08-07](daily/2026-08-07.md) | 12 | 4 |
+| [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
+| [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
+| [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
+| [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
+| [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
+| [2026-08-16](daily/2026-08-16.md) | 45 | 5 |
+| [2026-08-15](daily/2026-08-15.md) | 35 | 5 |
 
 ## Why this repository exists
 

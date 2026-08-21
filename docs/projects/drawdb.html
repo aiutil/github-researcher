@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drawdb | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/drawdb-io/drawdb" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="drawdb">drawdb</h1>
+<h2 id="_1">一句话定位</h2>
+<p>免费的浏览器端数据库 ER 图编辑器与 SQL 生成器——拖拽建表，零依赖、IndexedDB 本地存储，导出 MySQL / PostgreSQL / SQLite / MSSQL / MariaDB / Oracle / MongoDB SQL。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统 ER 图工具（draw.io、DbSchema、MySQL Workbench）要么安装包巨大，要么绑定账号，要么导出有水印，要么离线能力差。drawdb 在浏览器中提供：
+- 全部本地存储，无需后端（IndexedDB / localStorage）
+- 拖拽式建表 + 关系连线
+- 一键生成多方言 SQL
+- 即时导入/导出 JSON / SQL</p>
+<h2 id="2026-08-15">为什么值得关注（2026-08-15）</h2>
+<p>被 daily/2026-08-15.md 选为今日可视化工具重点。在 SQL-first / ORM-first 工具（如 Prisma、Drizzle Studio）流行的同时，drawdb 转向"轻量前端 ER 工具"补位——比 Prisma Studio 更通用，比 DBeaver 轻量。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>热度来源是 <strong>"Web 化工具栈刚需 × 永久免费零账号定位"</strong>。39,187 stars 在约 2 年（2023-07 创建）的周期下成立，属于快速增长的工具型项目。AGPL-3.0 + 完全本地存储明确去 SaaS 化立场，与 SaaS 类 DB 工具形成差异。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>100% 浏览器:</strong> 无服务端，IndexedDB 存储，所有操作离线可用</li>
+<li><strong>SQL 多方言导出:</strong> MySQL / PostgreSQL / SQLite / MSSQL / MariaDB / Oracle / MongoDB</li>
+<li><strong>拖拽关系编辑器:</strong> 一对一、一对多、多对多自动处理外键</li>
+<li><strong>主题切换:</strong> 浅色 / 深色 + 自定义配色</li>
+<li><strong>JSON 导入导出:</strong> 支持 schema 序列化与恢复</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>"无后端 + IndexedDB + Web 即应用"的取向展示了一个反 SaaS 路线——把工具完全交给浏览器，通过 PWA 完成分发，未来不依赖任何服务器即可永久运行。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>工具型 / 可视化建表工具标杆（Web 端）。</strong> 39k stars 反映开发者社区对"轻量前端 ER 工具"的真实需求。它不太可能挑战 Prisma Studio / DBeaver 等专业工具，但会稳定占据"快速画图"场景。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>AGPL-3.0 严格 copyleft:</strong> 自托管 fork 后对外服务也需开源</li>
+<li><strong>深度有限:</strong> 数据库迁移、复杂关系/索引管理仍需专业工具</li>
+<li><strong>同质化压力:</strong> 与 draw.io / Excalidraw 等通用画图工具功能重叠</li>
+<li><strong>IndexedDB 容量:</strong> 大型 schema（100+ 表）可能超 IndexedDB 配额</li>
+</ul>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs draw.io:</strong> draw.io 通用画图；drawdb 专做数据库 ER，自动生成 SQL 更高效</li>
+<li><strong>vs Prisma Studio:</strong> Prisma Studio 绑定 Prisma；drawdb 跨方言跨 ORM</li>
+<li><strong>vs DBeaver:</strong> DBeaver 是桌面端重型工具；drawdb 浏览器轻量</li>
+<li><strong>vs dbdiagram.io:</strong> dbdiagram 是 DSL 文本式；drawdb 拖拽更直观</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得日常使用（轻量 Web ER 工具），跟踪价值中等。</strong> 推荐给前后端开发者用于快速建表。其增长曲线稳定，不太可能成为下一波热点，但也不会衰退——典型"长青"型工具。</p>
+<h2 id="_10">后续观察点</h2>
+<ul>
+<li>是否增加 migration / diff 能力（覆盖更深的 schema 工作流）</li>
+<li>PWA 离线模式是否被更多用户采纳</li>
+<li>与 Drizzle Studio、Prisma Studio 等的差异化（避免同质化）</li>
+<li>AGPL 协议在企业用户中的接受度</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-21) | Stars: 39,187 | Forks: 3,193 | License: AGPL-3.0 | 语言: JavaScript | 创建: 2023-07-16</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

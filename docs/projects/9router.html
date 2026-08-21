@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9router | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/decolua/9router" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="9router">9router</h1>
+<h2 id="_1">一句话定位</h2>
+<p>自托管 AI 网关——把 Claude Code / Codex / Cursor / Cline / Copilot / Antigravity 等 Coding Agent 的 LLM 请求路由到 40+ 免费/付费 provider，自带 RTK（Round-Trip Killer，号称省 40% token）与自动 failover。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Coding Agent 用户普遍痛点：官方 LLM API 价格高昂、区域受限、限速严重；同时手动切换 provider 费时。9router 把多 provider 路由、token 压缩、失败自动重试打包成一个 HTTP/SSE 代理，Agent 本地指向 9router 端口即可无缝跨 provider。</p>
+<h2 id="2026-08-14">为什么值得关注（2026-08-14）</h2>
+<p>被 daily/2026-08-14.md 选为今日 AI 周边工具重点。代表了 "Agent 工具链中间层" 方向——既不是 Agent 本身，也不是单纯模型 API，而是把多 provider 解构成 Agent 可调用的统一接口。在 Coding Agent 内卷的 2026 年，这类中间层服务有真实付费/自助场景。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>热度来源为 <strong>"Coding Agent 成本痛点 × 多 provider 路由刚需"</strong>。25,938 stars 在 8 个月（2026-01 至 2026-08）的实测数据下成立——属于冷启动增长期，是真实的早期采用者效应。open_issues 高达 1,718（远超大多数项目）显示用户基数大、问题反馈密集。但需注意：网关类项目容易被官方或上游替代方案"消化"——一旦 Cursor/Claude Code 官方推出同等功能，价值会被压缩。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>统一 HTTP/SSE 网关:</strong> 透明代理 Coding Agent 的所有 LLM 请求，零侵入</li>
+<li><strong>40+ provider 支持:</strong> 涵盖 Claude / GPT / Gemini / DeepSeek / Qwen 等</li>
+<li><strong>RTK token 压缩:</strong> 自研压缩算法（声称减 40% token，<strong>待独立验证效果</strong>）</li>
+<li><strong>自动 failover + 重试:</strong> provider 失败时无缝切换，自带限速/重试策略</li>
+<li><strong>CLI 安装:</strong> 一行命令启动，支持 docker/裸进程</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>"把分裂的 LLM API 在网关层屏蔽"是经典反向代理模式，但 9router 把它做成了 Coding Agent 友好版本。其架构启发是：<strong>当生态碎片化时，中间层是真实商业机会</strong>——但同时中间层也最易被标准化（如 OpenRouter 也瞄准同一赛道）。</p>
+<h2 id="_6">定位判断</h2>
+<p><strong>工具型 / 中间件候选项目。</strong> 是自托管 LLM 网关的代表性新项目，处于"被 AI Agent 基础设施生态消化"的风险与机会并存区间。25k stars 反映早期采用热度，但能否长期留存取决于：(a) RTK 实际收益是否被独立验证，(b) 上游 Coding Agent 是否原生集成类似能力。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>RTK 效果待验证:</strong> 自称 -40% token 需要独立基准测试，可能存在营销夸大</li>
+<li><strong>OpenRouter 等成熟竞品:</strong> 同一赛道，OpenRouter 体量、品牌、云托管能力更强</li>
+<li><strong>provider 协议变化:</strong> 上游 LLM 协议变更需快速适配，长期维护成本高</li>
+<li><strong>合规/审计盲区:</strong> 自托管网关绕过部分 provider 的 ToS，存在封号风险</li>
+<li><strong>单维护者风险:</strong> 1,718 issues 但核心团队规模未知，社区治理压力大</li>
+</ul>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs OpenRouter:</strong> OpenRouter 是云端路由龙头；9router 强调自托管 + Coding Agent 友好</li>
+<li><strong>vs LiteLLM:</strong> LiteLLM 是 Python 库，9router 是 CLI/网关服务，更易部署</li>
+<li><strong>vs Portkey:</strong> Portkey 偏向网关 + 可观测性；9router 偏 Coding Agent + 成本优化</li>
+<li><strong>vs 各 Coding Agent 自带 provider switch:</strong> 9router 跨 Agent 复用，Agent 内置则单家</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（成本敏感型 Coding Agent 用户的实用工具）。</strong> 对需要多 provider 切换 + 成本控制的自托管用户，9router 是当下少数可选项。建议关注：(a) RTK 独立基准测试，(b) 对 Anthropic / OpenAI / Google 官方 ToS 的合规声明演化，(c) 与 OpenRouter 等的市场份额变化。</p>
+<h2 id="_10">后续观察点</h2>
+<ul>
+<li>RTK 压缩效果是否有第三方对比测试</li>
+<li>是否进入 Coding Agent 官方推荐中间件列表</li>
+<li>自托管 vs 云端模式的产品定位演化</li>
+<li>与 LiteLLM/OpenAI 兼容层的关系（合作或竞争）</li>
+<li>1,718 issues 的关闭率（衡量维护能力）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-21) | Stars: 25,938 | Forks: 4,667 | License: MIT | 语言: JavaScript | 创建: 2026-01-05</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
