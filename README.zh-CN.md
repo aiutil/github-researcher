@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-21.md">最新日报</a> ·
+  <a href="daily/2026-08-22.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-21
+## 最新研究 · 2026-08-22
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 39 | 463 | 5 | 3863K+ |
+| 32 | 467 | 5 | 3871K+ |
 
-**今日核心判断：** openclaw（386,933 stars） · ECC（241,489 stars） · hermes-agent（233,600 stars）
+**今日核心判断：** openclaw（387,044 stars） · hermes-agent（233,967 stars） · ECC（241,753 stars） · ponytail（107,452 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [openclaw/openclaw](projects/openclaw.md) | 386,933 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 241,489 stars | 工具型 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,600 stars | 平台候选 |
-| [n8n-io/n8n](projects/n8n.md) | 201,406 stars | 平台候选 |
-| [Significant-Gravitas/AutoGPT](projects/autogpt.md) | 186,691 stars | 平台候选 |
-| [ollama/ollama](projects/ollama.md) | 179,070 stars | 工具型 |
-| [huggingface/transformers](projects/transformers.md) | 164,287 stars | 工具型 |
-| [langgenius/dify](projects/dify.md) | 153,074 stars | 平台候选 |
+| [openai/codex-security](projects/codex-security.md) | 10,047 stars | 工具型 |
+| [lidge-jun/opencodex](projects/opencodex.md) | 11,667 stars | 工具型 |
+| [img2threejs/img2threejs](projects/img2threejs.md) | 12,579 stars | 工具型 |
+| [cloudflare/computer](projects/computer.md) | 8,465 stars | 平台候选 |
+| [openclaw/openclaw](projects/openclaw.md) | 387,044 stars | 平台候选 |
+| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,967 stars | 平台候选 |
+| [affaan-m/ECC](projects/ecc.md) | 241,753 stars | 平台候选 |
+| [DietrichGebert/ponytail](projects/ponytail.md) | 107,452 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **ai（6 个活跃项目）** · 相关项目：n8n, autogpt, hermes-agent, openclaw · 强度：95
-2. **ai-agents（3 个活跃项目）** · 相关项目：hermes-agent, ecc, langchain · 强度：90
-3. **anthropic（3 个活跃项目）** · 相关项目：hermes-agent, ecc, langchain · 强度：90
-4. **chatgpt（2 个活跃项目）** · 相关项目：hermes-agent, langchain · 强度：80
+1. **ai（6 个活跃项目）** · 相关项目：openclaw, hermes-agent, ecc, grok-build, ponytail, qm · 强度：95
+2. **ai-agents（4 个活跃项目）** · 相关项目：hermes-agent, ecc, codex-security, computer · 强度：92
+3. **agent-clients / harness（3 个活跃项目）** · 相关项目：grok-build, opencodex, openclaw · 强度：88
+4. **anthropic / claude-code（3 个活跃项目）** · 相关项目：ponytail, opencodex, codex-security · 强度：85
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
 | [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
 | [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
 | [2026-08-16](daily/2026-08-16.md) | 45 | 5 |
-| [2026-08-15](daily/2026-08-15.md) | 35 | 5 |
 
 ## 为什么做这个项目
 

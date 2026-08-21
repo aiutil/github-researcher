@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-22 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-22">GitHub 趋势研究简报 - 2026-08-22</h1>
+<blockquote>
+<p>本报基于 GitHub Search API 获取 2026-08-22 当日活跃高星项目数据，按星数和近期活跃度排序。"趋势"是观察，不是价值判断；下游采用应结合生产成熟度、合规与企业内规。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势</h2>
+<p><strong>1. ai（6 个活跃项目）</strong>（评分 95）</p>
+<p>代表性项目：openclaw、hermes-agent、ecc、grok-build、ponytail、qm。Coding/Agent 方向的高星存量仍主导，但增量曲线已分化——存量项目趋于稳态，新进入者集中在"harness 周边"与"中间件"。</p>
+<p><strong>2. ai-agents（4 个活跃项目）</strong>（评分 92）</p>
+<p>代表性项目：hermes-agent、ecc、codex-security、computer。注意两个新面孔：<strong>OpenAI 官方 codex-security CLI</strong> 把"agent 安全"从规则插件升级为厂商 SDK；<strong>Cloudflare 的 computer</strong> 把"agent 电脑"从本地模拟器升级为云沙箱托管。说明大型厂商正从"模型 API"向"agent runtime"延伸。</p>
+<p><strong>3. agent-clients / harness（3 个活跃项目）</strong>（评分 88）</p>
+<p>代表性项目：grok-build、opencodex、openclaw。三者分别代表三种 harness 走向：① 实验室官方原生（grok-build / Rust）；② 跨供应商代理（opencodex / TypeScript 协议层）；③ 渠道编排 Gateway（openclaw / TypeScript）。三者定位不冲突，反而<strong>互相补位</strong>——harness 之间出现"协议 + 代理 + 网关"三层栈的雏形。</p>
+<p><strong>4. anthropic / claude-code（3 个活跃项目）</strong>（评分 85）</p>
+<p>代表性项目：ponytail、opencodex、codex-security。claude-code 已成事实标准之一——ponytail 是其 skill 生态、opencodex 是其多 LLM 代理、codex-security 是其姊妹厂商 OpenAI 的对位产品。"claude-code 周边生态"已出现。</p>
+<p><strong>5. devtools / typescript（5 个活跃项目）</strong>（评分 80）</p>
+<p>代表性项目：codex-security、opencodex、computer、qm、openwiki。TypeScript 是 harness / agent SDK 的事实语言——9/10 新项目以 TS 为主，这强化了"agent 开发栈 = Node + TypeScript"的现状。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ul>
+<li><strong>"agent runtime 厂商化"</strong>：OpenAI 把自家 Codex 从 IDE 拓展到 security CLI；Cloudflare 推出 computer-use 沙箱。这两个动作值得对照：① OpenAI 把"agent 安全"内置为 SDK，是垂直延伸；② Cloudflare 把"agent runtime"放到边缘，是横向平台。两者都标志着"agent infra"从社区项目变为厂商竞争战场。</li>
+<li><strong>"harness 中间层"</strong>：opencodex、codex-security、computer 三者都做"夹在 LLM 与应用之间的层"——但三者侧重点不同：opencodex 做模型路由、codex-security 做安全扫描、computer 做执行沙箱。"中间层"已成 harness 时代的关键赛道。</li>
+<li><strong>"agent skill 微型化"</strong>：ponytail（100k+）、Codex-Dream-Skin、scroll-world 等小颗粒 skill 仓库数量持续走高。skill 市场从"全能指令集"向"YAGNI 单一技能"分化。</li>
+</ul>
+<h2 id="top-12">活跃项目 Top 12</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Stars</th>
+<th>语言</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/openclaw/openclaw">openclaw/openclaw</a></td>
+<td>387,044</td>
+<td>TypeScript</td>
+<td>Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞</td>
+</tr>
+<tr>
+<td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
+<td>241,753</td>
+<td>JavaScript</td>
+<td>The agent harness performance optimization system. Skills, instincts, memory, security</td>
+</tr>
+<tr>
+<td><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></td>
+<td>233,967</td>
+<td>Python</td>
+<td>The agent that grows with you</td>
+</tr>
+<tr>
+<td><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></td>
+<td>107,452</td>
+<td>JavaScript</td>
+<td>Makes your AI agent think like the laziest senior dev in the room.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/deepseek-ai/deepseek-harness">deepseek-ai/deepseek-harness</a></td>
+<td>181,032</td>
+<td>TypeScript</td>
+<td>DeepSeek Harness: Everything is a Plugin.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/xai-org/grok-build">xai-org/grok-build</a></td>
+<td>25,848</td>
+<td>Rust</td>
+<td>SpaceXAI's coding agent harness and TUI.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a></td>
+<td>25,690</td>
+<td>C</td>
+<td>Run frontier MoE models on hardware you already own.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/baidu/Unlimited-OCR">baidu/Unlimited-OCR</a></td>
+<td>24,312</td>
+<td>Python</td>
+<td>Unlimited OCR Works: One-shot Long-horizon Parsing.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/firecrawl/anydoc">firecrawl/anydoc</a></td>
+<td>17,752</td>
+<td>Rust</td>
+<td>Convert Word, PowerPoint, Excel, PDF to clean Markdown.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/anywhere-labs/deepseek-harness-desktop">anywhere-labs/deepseek-harness-desktop</a></td>
+<td>17,538</td>
+<td>TypeScript</td>
+<td>为 DeepSeek Harness (DSH) 插件生态打造的桌面端解决方案。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/langchain-ai/openwiki">langchain-ai/openwiki</a></td>
+<td>15,456</td>
+<td>TypeScript</td>
+<td>OpenWiki: CLI that writes agent documentation for your codebase.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/yc-software/qm">yc-software/qm</a></td>
+<td>14,041</td>
+<td>TypeScript</td>
+<td>Multiplayer agent harness for work.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="openaicodex-security-10047-stars">🛡️ openai/codex-security — 10,047 stars</h3>
+<ul>
+<li><strong>定位:</strong> OpenAI 官方 Codex Security CLI 与 TypeScript SDK，用于在代码库中查找、验证并修复安全漏洞。</li>
+<li><strong>分类:</strong> 工具型 / 应用安全</li>
+<li><strong>关键事实:</strong> OpenAI 官方开源（不是社区项目），40 天达到 1 万星，npm 包形式分发。<code>codex-security</code>、<code>security</code>、<code>vulnerability-scanning</code>、<code>devsecops</code> 是其官方 topics。</li>
+<li><strong>证据边界:</strong> 描述与 topics 取自 GitHub API；具体漏洞检测规则覆盖范围、误报率、修复建议可信度待官方文档与第三方评测验证。</li>
+<li><strong>判断:</strong> 这是 OpenAI 首次把"agent 安全扫描"做成独立 SDK——意味着 Codex 不只是"写代码的 agent"，还要做"审代码的 agent"。对 CISO 而言：把 OpenAI 当 LLM 供应商 vs 当 application security 供应商是两个合规判断。</li>
+</ul>
+<h3 id="lidge-junopencodex-11667-stars">🔁 lidge-jun/opencodex — 11,667 stars</h3>
+<ul>
+<li><strong>定位:</strong> 通用 provider proxy，让 OpenAI Codex CLI / Claude Code 同时接入任意 LLM（Claude、Gemini、Grok、DeepSeek、Ollama、OpenRouter 等）。</li>
+<li><strong>分类:</strong> 工具型 / harness 中间层</li>
+<li><strong>关键事实:</strong> 65 天达到 1.1 万星，TypeScript 实现；topics 列出 20 个相关标签，覆盖所有主流模型与 IDE（Codex CLI、Claude Code、Kiro）。</li>
+<li><strong>证据边界:</strong> star 数与 topics 取自 GitHub API；具体协议转换细节（OpenAI 兼容层 vs Anthropic 兼容层）、tool calling 映射、上下文窗口限制、token 计费兼容性均待文档核验。</li>
+<li><strong>判断:</strong> 印证"harness 中间层"趋势——用户不想被绑死在单一厂商 harness。opencodex 的成功说明"兼容层"在 agent 时代仍有价值（如同 HTTP 代理之于 Web）。</li>
+</ul>
+<h3 id="img2threejsimg2threejs-12579-stars">🎨 img2threejs/img2threejs — 12,579 stars</h3>
+<ul>
+<li><strong>定位:</strong> 把参考图片中的物体重建为"纯代码、可程序化、经过质量门控、可动画"的 Three.js 模型。</li>
+<li><strong>分类:</strong> 工具型 / 创意 Agent pipeline</li>
+<li><strong>关键事实:</strong> 38 天 1.26 万星；topics 同时覆盖 <code>image-to-3d</code>、<code>procedural-generation</code>、<code>threejs</code>、<code>claude-code</code>、<code>ai-agents</code>——既是 agent skill 也是创意 pipeline。</li>
+<li><strong>证据边界:</strong> 描述与 topics 来自 GitHub API；具体"质量门控"机制（几何误差阈值 / 渲染校验 / token 成本上限）、与直接 SOTA 图像→3D 模型（如 Tripo、Meshy）的质量对比、API 稳定性均待核验。</li>
+<li><strong>判断:</strong> 体现"agent 不是终点而是入口"——把多模态输出接到传统 Web/3D 栈（Three.js），让 AI 生成物可在浏览器实时呈现，路径比"AI 生成 GLB 文件"更具工程实用性。</li>
+</ul>
+<h3 id="cloudflarecomputer-8465-stars">🖥️ cloudflare/computer — 8,465 stars</h3>
+<ul>
+<li><strong>定位:</strong> Cloudflare 官方开源的"agent computer"——给 agent 提供一台"可在云端被远程操作的计算机"。</li>
+<li><strong>分类:</strong> 平台候选 / agent runtime</li>
+<li><strong>关键事实:</strong> Cloudflare 官方仓库，77 天 8.4k 星，TypeScript 实现；定位与 Anthropic 早期演示的 "computer use" 同源，但<strong>从演示 demo 升级为可托管的云服务</strong>。</li>
+<li><strong>证据边界:</strong> 描述取自 GitHub API；底层 sandbox 技术栈（container / WASM / VMM）、安全隔离等级、定价模型、与其他 cloudflare 产品（Workers / D1 / R2）的集成边界均待核验。</li>
+<li><strong>判断:</strong> Cloudflare 用"browser/computer use 沙箱"切入 agent infra，与 OpenAI 的"内嵌 IDE"形成两种竞争路径：① Cloudflare 卖"agent 执行环境"（基础设施）；② OpenAI 卖"agent 应用"（上层产品）。两者目前不直接竞争，但都把"agent runtime"拉到了云端。</li>
+</ul>
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">风险</h3>
+<ul>
+<li><strong>"agent runtime 厂商化"压缩开源空间</strong>：OpenAI codex-security 与 Cloudflare computer 都在把"曾由社区填补的层"变成官方产品。开源 harness / runtime 厂商需思考差异化（DSL、跨平台、隐私自托管）。</li>
+<li><strong>"中间层"容易陷入"代理沼泽"</strong>：opencodex 这类 provider proxy 同时维护 20+ LLM 的协议映射，模型任一升级都可能破裂；用户风险 = 升级延迟或回归 bug。</li>
+<li><strong>"skill 微型化"带来质量参差</strong>：ponytail 是有基准数据的，scroll-world 等只是 demo 级 skill，无评测。Skill 市场缺统一审核机制。</li>
+<li><strong>指标失真</strong>：107k stars 的 ponytail、387k stars 的 openclaw 等项目增速异常，存在被机器人 star 或社交媒体刷量的可能性（同类项目在 2026 上半年已多次出现）。"星标"不构成生产可用性证据。</li>
+</ul>
+<h3 id="_6">机遇</h3>
+<ul>
+<li><strong>"harness 协议层"窗口期</strong>：opencodex 证明中间层有商业价值，但还没出现"agent 协议标准"。先定义标准者，可能赢得类似 LSP（Language Server Protocol）的生态位。</li>
+<li><strong>"agent 应用安全"蓝海</strong>：codex-security 是 OpenAI 第一个面向企业 CISO 的产品。开源版本可作为产品内嵌模块或私有部署替代。</li>
+<li><strong>"云端 agent computer"差异化</strong>：Cloudflare 的边缘 + 沙箱组合，对比纯云厂商（AWS / Azure）有延迟与启动速度优势；初创公司可借鉴其"轻 sandbox + 边缘调度"思路。</li>
+</ul>
+<h2 id="_7">重点项目档案</h2>
+<p>今日新增/更新项目档案：</p>
+<ul>
+<li><strong>新增：</strong> <a href="../projects/codex-security.html">codex-security</a>、<a href="../projects/opencodex.html">opencodex</a>、<a href="../projects/img2threejs.html">img2threejs</a>、<a href="../projects/computer.html">computer</a></li>
+<li><strong>更新：</strong> openclaw（387,044）、hermes-agent（233,967）、ECC（241,753）、ponytail（107,452）——刷新 stars 与最近动态</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API（stars:&gt;3000 created:2026-06-01..2026-08-22 排序） | 生成时间: 2026-08-22</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

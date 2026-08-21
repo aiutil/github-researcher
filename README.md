@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-21.md">Latest report</a> ·
+  <a href="daily/2026-08-22.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-21
+## Latest report · 2026-08-22
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 39 | 463 | 5 | 3863K+ |
+| 32 | 467 | 5 | 3871K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [openclaw/openclaw](projects/openclaw.md) | 386,933 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 241,489 stars | 工具型 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,600 stars | 平台候选 |
-| [n8n-io/n8n](projects/n8n.md) | 201,406 stars | 平台候选 |
-| [Significant-Gravitas/AutoGPT](projects/autogpt.md) | 186,691 stars | 平台候选 |
-| [ollama/ollama](projects/ollama.md) | 179,070 stars | 工具型 |
-| [huggingface/transformers](projects/transformers.md) | 164,287 stars | 工具型 |
-| [langgenius/dify](projects/dify.md) | 153,074 stars | 平台候选 |
+| [openai/codex-security](projects/codex-security.md) | 10,047 stars | 工具型 |
+| [lidge-jun/opencodex](projects/opencodex.md) | 11,667 stars | 工具型 |
+| [img2threejs/img2threejs](projects/img2threejs.md) | 12,579 stars | 工具型 |
+| [cloudflare/computer](projects/computer.md) | 8,465 stars | 平台候选 |
+| [openclaw/openclaw](projects/openclaw.md) | 387,044 stars | 平台候选 |
+| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,967 stars | 平台候选 |
+| [affaan-m/ECC](projects/ecc.md) | 241,753 stars | 平台候选 |
+| [DietrichGebert/ponytail](projects/ponytail.md) | 107,452 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 95 · repositories: n8n, autogpt, hermes-agent, openclaw
-2. **Signal 2** · score 90 · repositories: hermes-agent, ecc, langchain
-3. **Signal 3** · score 90 · repositories: hermes-agent, ecc, langchain
-4. **Signal 4** · score 80 · repositories: hermes-agent, langchain
+1. **Signal 1** · score 95 · repositories: openclaw, hermes-agent, ecc, grok-build, ponytail, qm
+2. **Signal 2** · score 92 · repositories: hermes-agent, ecc, codex-security, computer
+3. **Signal 3** · score 88 · repositories: grok-build, opencodex, openclaw
+4. **Signal 4** · score 85 · repositories: ponytail, opencodex, codex-security
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-21.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-22.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
 | [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
 | [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
 | [2026-08-16](daily/2026-08-16.md) | 45 | 5 |
-| [2026-08-15](daily/2026-08-15.md) | 35 | 5 |
 
 ## Why this repository exists
 

@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-13'
+last_updated: '2026-08-22'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,37 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-22
+
+### openclaw（387,044 stars） · hermes-agent（233,967 stars） · ECC（241,753 stars） · ponytail（107,452 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | ai（6 个活跃项目） | openclaw, hermes-agent, ecc, grok-build, ponytail, qm | 95 |
+| 2 | ai-agents（4 个活跃项目） | hermes-agent, ecc, codex-security, computer | 92 |
+| 3 | agent-clients / harness（3 个活跃项目） | grok-build, opencodex, openclaw | 88 |
+| 4 | anthropic / claude-code（3 个活跃项目） | ponytail, opencodex, codex-security | 85 |
+| 5 | devtools / typescript（5 个活跃项目） | codex-security, opencodex, computer, qm, openwiki | 80 |
+
+#### 当日重点项目
+
+- 🛡️ openai/codex-security (10,047 stars) — OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities.，Score 88
+- 🔁 lidge-jun/opencodex (11,667 stars) — Universal provider proxy for OpenAI Codex & Claude Code — use any LLM (Claude, Gemini, Grok, DeepSeek, Ollama…) with Codex CLI.，Score 87
+- 🎨 img2threejs/img2threejs (12,579 stars) — Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model.，Score 82
+- 🖥️ cloudflare/computer (8,465 stars) — Give your agent a computer 👾，Score 83
+- 🦞 openclaw/openclaw (387,044 stars) — Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ，Score 95
+- 🤖 NousResearch/hermes-agent (233,967 stars) — The agent that grows with you，Score 95
+- ⚡ affaan-m/ECC (241,753 stars) — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development f，Score 95
+- 🐴 DietrichGebert/ponytail (107,452 stars) — Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.，Score 93
+
+#### 关键判断
+
+- **"agent runtime 厂商化"加速**：OpenAI codex-security 与 Cloudflare computer 同日进入 Trending，分别代表"agent 安全 SDK" 与"agent 云端 sandbox" 两种厂商动作。
+- **"harness 中间层"成形**：opencodex（cross-harness provider proxy）与 codex-security（harness 安全扫描）共同证明"harness 与应用之间的中间层"是有商业价值的方向。
+- **存量高星项目稳态化**：openclaw / hermes-agent / ECC / ponytail 增速放缓，但仍稳居 Top 5；增量主要来自新进入者。
 
 ## 2026-08-21（补档）
 

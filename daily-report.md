@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-08-22
+
+**核心主题：** openclaw（387,044 stars） · hermes-agent（233,967 stars） · ECC（241,753 stars） · ponytail（107,452 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🛡️ openai/codex-security (10,047 stars) — OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities.，Score 88
+- 🔁 lidge-jun/opencodex (11,667 stars) — Universal provider proxy for OpenAI Codex & Claude Code — use any LLM (Claude, Gemini, Grok, DeepSeek, Ollama…) with Codex CLI.，Score 87
+- 🎨 img2threejs/img2threejs (12,579 stars) — Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model.，Score 82
+- 🖥️ cloudflare/computer (8,465 stars) — Give your agent a computer 👾，Score 83
+- 🦞 openclaw/openclaw (387,044 stars) — Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ，Score 95
+- 🤖 NousResearch/hermes-agent (233,967 stars) — The agent that grows with you，Score 95
+- ⚡ affaan-m/ECC (241,753 stars) — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development f，Score 95
+- 🐴 DietrichGebert/ponytail (107,452 stars) — Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.，Score 93
+
+**关键判断：**
+- **"agent runtime 厂商化"加速**：OpenAI codex-security 与 Cloudflare computer 同日进入 Trending，分别代表"agent 安全 SDK" 与"agent 云端 sandbox" 两种厂商动作。
+- **"harness 中间层"成形**：opencodex（cross-harness provider proxy）与 codex-security（harness 安全扫描）共同证明"harness 与应用之间的中间层"是有商业价值的方向。
+- **存量高星项目稳态化**：openclaw / hermes-agent / ECC / ponytail 增速放缓，但仍稳居 Top 5；增量主要来自新进入者。
+
 ## 2026-08-21
 
 **核心主题：** openclaw（386,933 stars） · ECC（241,489 stars） · hermes-agent（233,600 stars）
