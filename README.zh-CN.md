@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-22.md">最新日报</a> ·
+  <a href="daily/2026-08-23.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-22
+## 最新研究 · 2026-08-23
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 32 | 467 | 5 | 3871K+ |
+| 6 | 473 | 5 | 5K+ |
 
-**今日核心判断：** openclaw（387,044 stars） · hermes-agent（233,967 stars） · ECC（241,753 stars） · ponytail（107,452 stars）
+**今日核心判断：** yetone/cumora（2,899 stars） · CopilotKit/OpenBot（2,308 stars） · s1dashu/ip-as-logo-skill（3,767 stars） · cinderline/northcinder（1,205 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [openai/codex-security](projects/codex-security.md) | 10,047 stars | 工具型 |
-| [lidge-jun/opencodex](projects/opencodex.md) | 11,667 stars | 工具型 |
-| [img2threejs/img2threejs](projects/img2threejs.md) | 12,579 stars | 工具型 |
-| [cloudflare/computer](projects/computer.md) | 8,465 stars | 平台候选 |
-| [openclaw/openclaw](projects/openclaw.md) | 387,044 stars | 平台候选 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,967 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 241,753 stars | 平台候选 |
-| [DietrichGebert/ponytail](projects/ponytail.md) | 107,452 stars | 工具型 |
+| [yetone/cumora](projects/cumora.md) | 2,899 stars | 平台候选 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 2,308 stars | 平台候选 |
+| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 3,767 stars | 工具型 |
+| [cinderline/northcinder](projects/northcinder.md) | 1,205 stars | 工具型 |
+| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 1,243 stars | 观察型 |
+| [joe960913/Jixu](projects/jixu.md) | 107 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **ai（6 个活跃项目）** · 相关项目：openclaw, hermes-agent, ecc, grok-build, ponytail, qm · 强度：95
-2. **ai-agents（4 个活跃项目）** · 相关项目：hermes-agent, ecc, codex-security, computer · 强度：92
-3. **agent-clients / harness（3 个活跃项目）** · 相关项目：grok-build, opencodex, openclaw · 强度：88
-4. **anthropic / claude-code（3 个活跃项目）** · 相关项目：ponytail, opencodex, codex-security · 强度：85
+1. **agent-runtime / 团队协作** · 相关项目：yetone/cumora, CopilotKit/OpenBot · 强度：92
+2. **agent-skills / 单点能力** · 相关项目：s1dashu/ip-as-logo-skill, Spielewoy/autoprompt-skill, JetBrains/benjamin-plus-skill · 强度：90
+3. **MCP / 协议化** · 相关项目：cinderline/northcinder, browser-use/macos-harness, joe960913/Jixu · 强度：88
+4. **agent-governance / 治理** · 相关项目：CopilotKit/OpenBot, azrtydxb/procoder · 强度：85
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
 | [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
 | [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
-| [2026-08-16](daily/2026-08-16.md) | 45 | 5 |
 
 ## 为什么做这个项目
 

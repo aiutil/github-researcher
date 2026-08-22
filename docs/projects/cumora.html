@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yetone/cumora | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/yetone/cumora" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="yetonecumora">yetone/cumora</h1>
+<h2 id="_1">一句话定位</h2>
+<p>跨平台（Electron / PWA / iOS / Android）团队聊天应用，AI agent 作为 first-class 团队成员——可在群聊、私聊、看板、日历里与人类并肩工作，主打"Bring Your Own Agent（BYOA）"让本地 Claude Code / Codex / Grok Build / Cursor Agent CLI 直接成为 agent 的大脑。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统团队协作工具（Slack / Teams / Discord）面向"人与人"设计；当 agent 越来越多地参与实际工作时，① 它们无法像同事一样被 @、被指派任务、参加会议；② 让 agent 直接调用 LLM API 又面临<strong>模型与订阅的强绑定</strong>（如 ChatGPT Plus / Claude Pro / Cursor Pro 各有独立账户与计费）；③ agent 间的协作冲突难以仲裁（同一话题两个 agent 都在回，谁说了算？）。cumora 直击这三点：把 agent 提升为"团队成员"，通过 BYOA 复用用户既有订阅，通过 seen-cursor freshness gate + atomic claims + small-brain triage gate 三层协议做冲突仲裁。</p>
+<h2 id="2026-08-23">为什么值得关注（2026-08-23）</h2>
+<ul>
+<li><strong>5 天 2,899⭐</strong>（GitHub API 可核验）：增速极快，处于 agent 协作赛道头部</li>
+<li><strong>MIT / TypeScript / Electron+PWA+iOS+Android</strong>：跨平台覆盖最完整的开源 agent 协作项目之一</li>
+<li><strong>明确的产品架构文档</strong>：README 直接给出 React UI → App workers → Postgres/Redis/K8s/BYOA 的分层图，并提供 docs/COORDINATION.md 详细说明多 agent 仲裁协议</li>
+<li><strong>BYOA 模型</strong>：用户保留模型与订阅控制权，企业不会被锁死</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>"agent 团队成员化 × BYOA 隐私/成本双优 × 跨平台完整覆盖"三重驱动。</strong> 8-22 趋势简报已识别"harness 中间层"成形；8-23 cumora 把中间层升级为"团队运行时"，承接了大量 agent 协作需求。增速真实但<strong>含品牌流量</strong>——yetone 是国内知名独立开发者（avante.nvim 等项目作者），其个人品牌带来部分早期 star。下游采用需关注：① BYOA 实际覆盖哪些 CLI（README 列了 Claude Code / Codex / Grok Build / Cursor Agent，但未逐一核验）；② 多 agent 冲突仲裁的实战表现；③ K8s 自管的运维成本对中小团队是否可接受。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>BYOA 协议：</strong> <code>npx cumora agent computer</code> 在用户本地启动 agent CLI，cumora 服务器通过 cumora CLI 协议与之通信，服务器不接触用户 LLM 凭据</li>
+<li><strong>冲突仲裁三层协议：</strong> seen-cursor freshness gate（stale reply 被 HELD，让 agent 看到新消息重判）、atomic claims（任务认领原子化）、small-brain triage gate（小模型先筛，大模型再答，节省成本）</li>
+<li><strong>K8s per-agent-pod：</strong> 每个 cloud agent 独占一个 K8s pod，Go FUSE 挂载其服务端工作区，agent 间物理隔离</li>
+<li><strong>统一成本账本：</strong> 所有 LLM 调用（cloud + BYOA）落入同一个 <code>llm_calls</code> 表，便于成本归因</li>
+<li><strong>完整跨平台：</strong> Electron 桌面 / PWA Web / iOS / Android，UI 复用同一 React 组件库</li>
+<li><strong>邮件 / 推送集成：</strong> 通过 Resend（email out）+ APNs/FCM（push）让 agent 能"真实地"对外沟通</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>cumora 是团队协作平台的 agent runtime，承担"agent ↔ 团队成员"映射；BYOA 让用户本地 CLI 成为 agent 大脑；K8s per-agent-pod 隔离 cloud agent</td>
+<td>架构图与 docs/COORDINATION.md 已公开；BYOA CLI 覆盖清单、agent 间冲突仲裁的实战 SLO 待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户消息 → React UI → Express+ws → Postgres/Redis → 调度至对应 agent → BYOA daemon / K8s pod 执行 → 回写 llm_calls → fan-out 至所有客户端</td>
+<td>主路径为 README 架构图与 BYOA 描述；具体消息路由协议、pod 调度策略、push 触发条件均待代码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"BYOA 隐私/订阅保留"vs"cumora 服务器仍是 UI/路由/编排的事实中心"；"agent 协作民主化"vs"企业级责任归属不清"；"per-agent pod 隔离"vs"K8s 运维成本对中小团队是否可接受"</td>
+<td>均为推断；BYOA 模式下高风险操作的责任边界、pod 扩缩容策略、企业版 SKU 是否提供均待官方文档核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>拉起本地 Postgres+Redis，启用 BYOA 接 Claude Code CLI，3 人 + 2 agent 在同一群聊中跑"产品功能讨论"，观察 seen-cursor freshness gate 是否真能阻止 agent 重复回答同一问题</td>
+<td>PoC 范围与退出路径由"BYOA 优先、人工可观察"原则推导；具体命令、版本兼容、SLO 指标待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>cumora 的核心启发是 <strong>"agent 应该被设计成同事，而非功能"</strong>——传统 IDE/CLI 风格让 agent 是"调用后返回结果"的工具；cumora 把 agent 放进团队关系网络（@、回复、私聊、看板），agent 因此获得"上下文随团队演化""身份持久""跨会话记忆"三个特性。它证明：<strong>agent runtime 的下一步不是更强的模型，而是更强的协作协议</strong>——MCP 解决"agent ↔ 工具"，cumora 这类项目解决"agent ↔ 团队"，下一步必然是"agent ↔ 协议"。另一启发：<strong>BYOA 是 agent 进入企业市场的务实入口</strong>——企业不必为每个 agent 单独采购 LLM 订阅，agent 直接复用员工既有账户，绕开了 procurement 的地狱。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[人类用户] --> UI[React UI<br/>Electron / PWA / iOS / Android]
+  UI --> Server[App workers<br/>Express + ws]
+  Server --> DB[(Postgres<br/>Drizzle schema)]
+  Server --> Bus[(Redis<br/>pub/sub + presence)]
+  Server --> CW[Cloudflare Workers<br/>email-gate / r2-gate]
+  CW --> DB
+  Server --> K8s[K8s agent pods<br/>per-agent]
+  Server --> BYOA[BYOA daemons<br/>本地 cumora agent computer]
+  BYOA --> CLI[本地 CLI<br/>Claude Code / Codex / Grok Build / Cursor Agent 待核验]
+  K8s --> CLI2[OpenAI Responses API<br/>bash / files / browser / email / skills]
+  Server --> APNsFCM[APNs / FCM<br/>push 通知]
+  K8s -. llm_calls 账本 .-> DB
+  BYOA -. llm_calls 账本 .-> DB
+  Server -. 三层仲裁 .-> Coord[seen-cursor gate<br/>atomic claims<br/>small-brain triage]
+  Coord --> Server
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选型项目（agent-as-coworker 赛道的开源头号样本）。</strong> cumora 不是另一个 IDE 插件或 CLI 工具，而是一个<strong>完整的团队协作产品</strong>——把 Slack / Linear / Notion 的核心场景搬到了"agent 与人共存"的世界。若成功，它会成为 agent 进入企业团队的"事实标准入口"；5 天近 3k⭐已显示早期势头。但"平台化"取决于三个未知数：① BYOA 模式的实际兼容性边界；② 企业级治理与责任归属是否补齐；③ 跨厂商 CLI 同步维护成本是否可控。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>BYOA 的责任真空：</strong> cumora 服务器承载 UI/路由/编排，但 agent 大脑在用户本地 CLI。如果 agent 在 cumora 上下文内执行高风险操作（转账、发邮件、签合同），cumora 与本地 CLI 各自的责任边界不明</li>
+<li><strong>K8s 运维门槛：</strong> cloud agent 跑在 K8s 上，对中小团队"自托管"的门槛高于普通 SaaS；BYOA 模式可绕过但需本地 CLI 全天候运行</li>
+<li><strong>agent 间的"无人值守"风险：</strong> 多 agent 在同一群聊互相对话时，可能进入"自说自话"循环，需 COORDINATION.md 协议实际验证</li>
+<li><strong>厂商 CLI 同步维护成本：</strong> Claude Code / Codex / Grok Build / Cursor Agent 任一升级都可能破裂 BYOA 兼容性</li>
+<li><strong>yetone 个人项目属性：</strong> 关键决策集中于单个 maintainer，长期可持续性需观察</li>
+<li><strong>早期"品牌 star"：</strong> yetone 个人品牌带来部分早期 star，长期真实需求强度需以 3-6 个月增速再判断</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Slack / Teams / Discord：</strong> 人类为本；cumora agent 是 first-class</li>
+<li><strong>vs LangChain / AutoGen（多 agent 框架）：</strong> 那些是 SDK；cumora 是完整产品</li>
+<li><strong>vs CopilotKit/OpenBot：</strong> 都属"agent 团队化"赛道——cumora 走"团队聊天为先"，OpenBot 走"独立计算机 + AG-UI 治理"</li>
+<li><strong>vs ChatGPT / Claude 客户端：</strong> 闭源、单厂商；cumora 开源、BYOA</li>
+<li><strong>vs Hermes Agent / ECC：</strong> 那些是 harness 优化层；cumora 是 harness 之上的协作层</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得持续跟踪（agent-as-coworker 赛道的开源头号样本）。</strong> 5 天 2.9k⭐的增速说明赛道真实且强烈。建议关注：① BYOA 覆盖 CLI 清单的扩张速度；② 企业版 SKU 是否出现（验证商业化路径）；③ docs/COORDINATION.md 协议的实战稳定性；④ 团队规模与维护者结构变化（去单点风险）。对中小团队 / 独立开发者，cumora 可作为"agent 协作工具箱"直接试用；对企业架构师，它是"agent runtime"竞品对位的关键参考。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>BYOA 覆盖的 CLI 清单（Claude Code / Codex / Grok Build / Cursor Agent 是否完整对接、token 计费是否兼容、tool calling 映射是否准确）</li>
+<li>企业版 SKU 与定价模型（验证"开源 + 商业"双轨是否成型）</li>
+<li>COORDINATION 协议在多 agent 实战中的稳定性（特别是 seen-cursor freshness gate 的"staleness 阈值"如何调优）</li>
+<li>多 agent 冲突解决的边界（是否会出现"agent 自循环对话"等新型问题）</li>
+<li>是否被主流协作平台（Slack / Teams / Notion）收购或对标</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-23) | Stars: 2,899 | Forks: 350 | License: MIT | 语言: TypeScript | 创建: 2026-08-17 | 推送到 main: 2026-08-22</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

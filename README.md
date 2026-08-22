@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-22.md">Latest report</a> ·
+  <a href="daily/2026-08-23.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-22
+## Latest report · 2026-08-23
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 32 | 467 | 5 | 3871K+ |
+| 6 | 473 | 5 | 5K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [openai/codex-security](projects/codex-security.md) | 10,047 stars | 工具型 |
-| [lidge-jun/opencodex](projects/opencodex.md) | 11,667 stars | 工具型 |
-| [img2threejs/img2threejs](projects/img2threejs.md) | 12,579 stars | 工具型 |
-| [cloudflare/computer](projects/computer.md) | 8,465 stars | 平台候选 |
-| [openclaw/openclaw](projects/openclaw.md) | 387,044 stars | 平台候选 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 233,967 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 241,753 stars | 平台候选 |
-| [DietrichGebert/ponytail](projects/ponytail.md) | 107,452 stars | 工具型 |
+| [yetone/cumora](projects/cumora.md) | 2,899 stars | 平台候选 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 2,308 stars | 平台候选 |
+| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 3,767 stars | 工具型 |
+| [cinderline/northcinder](projects/northcinder.md) | 1,205 stars | 工具型 |
+| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 1,243 stars | 观察型 |
+| [joe960913/Jixu](projects/jixu.md) | 107 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 95 · repositories: openclaw, hermes-agent, ecc, grok-build, ponytail, qm
-2. **Signal 2** · score 92 · repositories: hermes-agent, ecc, codex-security, computer
-3. **Signal 3** · score 88 · repositories: grok-build, opencodex, openclaw
-4. **Signal 4** · score 85 · repositories: ponytail, opencodex, codex-security
+1. **Signal 1** · score 92 · repositories: yetone/cumora, CopilotKit/OpenBot
+2. **Signal 2** · score 90 · repositories: s1dashu/ip-as-logo-skill, Spielewoy/autoprompt-skill, JetBrains/benjamin-plus-skill
+3. **Signal 3** · score 88 · repositories: cinderline/northcinder, browser-use/macos-harness, joe960913/Jixu
+4. **Signal 4** · score 85 · repositories: CopilotKit/OpenBot, azrtydxb/procoder
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-22.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-23.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
 | [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
 | [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
-| [2026-08-16](daily/2026-08-16.md) | 45 | 5 |
 
 ## Why this repository exists
 

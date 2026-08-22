@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-22'
+last_updated: '2026-08-23'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,35 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-23
+
+### yetone/cumora（2,899 stars） · CopilotKit/OpenBot（2,308 stars） · s1dashu/ip-as-logo-skill（3,767 stars） · cinderline/northcinder（1,205 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | agent-runtime / 团队协作 | yetone/cumora, CopilotKit/OpenBot | 92 |
+| 2 | agent-skills / 单点能力 | s1dashu/ip-as-logo-skill, Spielewoy/autoprompt-skill, JetBrains/benjamin-plus-skill | 90 |
+| 3 | MCP / 协议化 | cinderline/northcinder, browser-use/macos-harness, joe960913/Jixu | 88 |
+| 4 | agent-governance / 治理 | CopilotKit/OpenBot, azrtydxb/procoder | 85 |
+| 5 | A2A / multi-agent routing | wang2122/sprix-sage-router, joe960913/Jixu | 82 |
+
+#### 当日重点项目
+
+- 💬 yetone/cumora (2,899 stars) — Cross-platform team chat where AI agents are first-class teammates — with cloud or bring-your-own (Claude Code / Codex) brains.，Score 90
+- 🤖 CopilotKit/OpenBot (2,308 stars) — Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after.，Score 88
+- 🎨 s1dashu/ip-as-logo-skill (3,767 stars) — A compact Agent Skill for highly simplified, rounded, subtly neo-skeuomorphic IP mascot logos.，Score 86
+- 🛒 cinderline/northcinder (1,205 stars) — Open-source MCP server for comparing products and asking the buyer before purchase.，Score 84
+- 🛰️ wang2122/sprix-sage-router (1,243 stars) — State-aware SELF/COLLABORATE/HANDOFF routing for A2A agent networks.，Score 80
+- 🧵 joe960913/Jixu (107 stars) — A durable single-Agent Harness for TypeScript with recoverable Threads.，Score 75
+
+#### 关键判断
+
+- **"agent-as-coworker"赛道分化**：cumora（团队聊天为先）与 OpenBot（独立计算机 + AG-UI 治理）从不同路径回答"如何让 agent 进入团队"。
+- **"单点 Skill × 重资产库"模式成型**：ip-as-logo-skill 凭"prompt 规范 + 即用型 logo 库"拿下 3.7k⭐，证明"AI 内容资产化"是 Agent Skills 生态的真实需求。
+- **MCP 进入消费场景**：NorthCinder 让 MCP server 处理"购物比价 + 人工审批"，证明 MCP 不仅是开发工具，也能承担消费场景的治理语义。
 
 ## 2026-08-22
 
