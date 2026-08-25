@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-23.md">Latest report</a> ·
+  <a href="daily/2026-08-25.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-23
+## Latest report · 2026-08-25
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 473 | 5 | 5K+ |
+| 6 | 485 | 5 | 1K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [yetone/cumora](projects/cumora.md) | 2,899 stars | 平台候选 |
-| [CopilotKit/OpenBot](projects/openbot.md) | 2,308 stars | 平台候选 |
-| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 3,767 stars | 工具型 |
-| [cinderline/northcinder](projects/northcinder.md) | 1,205 stars | 工具型 |
-| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 1,243 stars | 观察型 |
-| [joe960913/Jixu](projects/jixu.md) | 107 stars | 工具型 |
+| [rome-os/rome](projects/rome.md) | 278 stars | 平台候选 |
+| [truespar/sentio](projects/sentio.md) | 141 stars | 基础设施候选 |
+| [ShadowAqueduct/watermark-remover](projects/watermark-remover.md) | 768 stars | 工具型 |
+| [TarunTomar122/better-voice](projects/better-voice.md) | 189 stars | 工具型 |
+| [forcewake/hermes-conductor](projects/hermes-conductor.md) | 55 stars | 工具型 |
+| [Wu030616/Triad](projects/triad.md) | 13 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: yetone/cumora, CopilotKit/OpenBot
-2. **Signal 2** · score 90 · repositories: s1dashu/ip-as-logo-skill, Spielewoy/autoprompt-skill, JetBrains/benjamin-plus-skill
-3. **Signal 3** · score 88 · repositories: cinderline/northcinder, browser-use/macos-harness, joe960913/Jixu
-4. **Signal 4** · score 85 · repositories: CopilotKit/OpenBot, azrtydxb/procoder
+1. **Signal 1** · score 92 · repositories: rome-os/rome, Yuan-lab-LLM/NeoWorker
+2. **Signal 2** · score 88 · repositories: truespar/sentio, truespar/sentio-mcp
+3. **Signal 3** · score 86 · repositories: ShadowAqueduct/watermark-remover, oil-oil/oil-skill-creator, mkanat/skills
+4. **Signal 4** · score 84 · repositories: forcewake/hermes-conductor, Wu030616/Triad
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-23.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-25.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
+| [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
-| [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
-| [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
 
 ## Why this repository exists
 

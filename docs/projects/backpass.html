@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kunchenguid/backpass | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/kunchenguid/backpass" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="kunchenguidbackpass">kunchenguid/backpass</h1>
+<h2 id="_1">一句话定位</h2>
+<p>把 <code>AGENTS.md</code> 当作"模型权重"，把每次 agent session 视为"一次 forward pass"，把留在磁盘上的 transcript 视为"loss signal"——backpass 在 token budget 内<strong>自动提议带证据的 AGENTS.md 改动</strong>，闭环"agent 失败 → 记忆文件人工修复"的盲区。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>当前 AGENTS.md / CLAUDE.md 等"agent 记忆文件"普遍存在三个痛点：(1) <strong>作者写不完整</strong>——只有从经验中学习的失败案例才能补全，但人往往想不起来；(2) <strong>更新滞后</strong>——上线一个 prompt 之后才发现遗漏了某条规则，AGENTS.md 还是旧版本；(3) <strong>变更无证据</strong>——LLM 既然"凭空"读 AGENTS.md，更新它也容易"凭空"乱改。backpass 直击这三痛点：<strong>自动读 transcript（harness 原生格式）、基于 token budget 生成"带证据的 diff 提议"、由人 gating</strong>。这与 8-23 cumulative 看到的"agent skills 微型化"是同代产物，但形态截然不同——backpass 切的是"agent meta-layer"。</p>
+<h2 id="2026-08-24">为什么值得关注（2026-08-24）</h2>
+<ul>
+<li><strong>2 天 153⭐</strong>（GitHub API 可核验）：在 agent 基础设施赛道短期增速突出</li>
+<li><strong>License: MIT</strong>：商用 / 企业内分发友好</li>
+<li><strong>完整 Node 工程模板</strong>：release-please、CI、Discord、NPM 完整；表明这是 npm 模块</li>
+<li><strong>AGENTS.md 9095 bytes</strong>：作者自身把 AGENTS.md 作为产品理念的实体（meta 注释显式存在）</li>
+<li><strong>声明支持 7 款主流 harness 的 transcript 格式</strong>：含 Claude Code / Codex——这意味着<strong>用户不用改变 harness 也能用</strong></li>
+<li><strong>token budget 兜底</strong>：自动提议在 token 限额内，杜绝"agent 越改越多"</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>backpass 的热度来自<strong>真痛点 + 极稀缺供给 + 软性 neutrality</strong> 的组合：(1) AGENTS.md 维护的痛点是开发者社群共识但无人系统解决；(2) "transcript → diff" 这一垂直场景在 2026 上半年几乎没有正式产品；(3) backpass 同时支持多 harness、声明"local-first"，对任何已有项目均可低成本接入。三点叠加在 2 天内拿到 153⭐。但需注意：<strong>"agent 自我维护记忆"是一个高风险动作</strong>——automatic diff 提议需要严格 gating，README 声"gated by you" 实际如何仍待核验。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>支持 7 款主流 harness 的 transcript 格式</strong>：无需改变现有 harness 即可集成</li>
+<li><strong>token budget 兜底</strong>：所有改动在限额内，物理上避免"AGENTS.md 越长越乱"</li>
+<li><strong>evidence-backed edits</strong>：每条提议都附"为什么这条该进"的证据链——区别于"LLM 凭感觉改"</li>
+<li><strong>local-first</strong>：所有 transcript / 改动都在本地——不需要外发</li>
+<li><strong>完整的 npm 模块工程模板</strong>：release-please + CI + Discord + NPM，开发者 onboarding 流畅</li>
+<li><strong>AGENTS.md 文件本身就 9KB</strong>：作者以身作则，把"AGENTS.md 的最佳实践"内嵌</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地 npm 模块；读 harness 的 transcript 文件系统位置；写 AGENTS.md 提议（PR 形式或本地 diff），由人 gating</td>
+<td>边界由 README "Local-first"、"Reads the transcript stores of seven agent ha[arness]" 描述确认；7 款 harness 的具体名单需在源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>harness session 结束 → transcript 写入磁盘 → backpass 在 token budget 内解析 transcript → 提取失败 / 教训信号 → 生成 evidence-backed AGENTS.md diff → 用户审查 / 接受</td>
+<td>主路径由 README "closes the loop" 与 "evidence-backed edits" 描述确认；解析 transcript 的具体 schema、diff 提议的格式、gating 形态（PR / 直接写 / 提示）需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自动化 vs 误改风险（自动提议需要严格 gating）；token budget vs recall（限额太严格会漏掉真正值得记录的失败）；本地优先 vs 多用户协作（local-first 对个人OK，对团队需额外协作机制）</td>
+<td>取舍由 README "gated by you"、"token budget" 描述确认；具体失败分类标准、多用户协作能力未在档案中明示</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code / Codex 中故意触发一个失败模式（如"删除文件时未确认"）→ 看到 backpass 提议添加 AGENTS.md diff → 接受 / 拒绝观察建议质量 → 重复几次观察提议稳定性</td>
+<td>PoC 流程由 README "Local-first" + "evidence-backed edits" 描述推导；具体 backpass 启动命令与 harness 集成步骤未在档案中明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仓库公开 metadata + README + 工程模板；transcript schema、diff 提议 gating 机制、具体 7 款 harness 名单均为推断 / 待核验</td>
+<td>仅核验已核验事实，其他来自语义推断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Harness["agent harness<br/>Claude Code / Codex 等"] --> Session["agent session"]
+  Session --> Trans["transcript 落盘<br/>文件系统"]
+  Trans --> Backpass["backpass<br/>本地 npm 模块"]
+  Backpass -->|"token budget 限额内"| Parse["transcript 解析<br/>schema 待核验"]
+  Parse --> Extract["失败 / 教训信号提取"]
+  Extract --> Diff["evidence-backed diff 提议"]
+  Diff --> Gate["gating<br/>人工审查"]
+  Gate -. 接受 .-> AGENTS["AGENTS.md 更新"]
+  Gate -. 拒绝 .-> End["保留"]
+  Backpass -. Local-first .-> Local["本地文件系统"]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>backpass 的核心启发是 <strong>"agent memory 的维护责任应该让 agent 承担（提议）+ 人承担（gating）"</strong>。两者分工清晰：agent 知道在 transcript 里发生了什么，人知道 AGENTS.md 的整体哲学与优先级。<strong>人 / agent 协作的最优解可能不是"完全 agent 自动"或"完全人手工"，而是"agent 提议 + 人 gating"</strong>——这正是 PR 模型在开源协作中证明有效的形态。backpass 把 PR 模型的核心理念搬到 AGENTS.md：让改进成为一个审查事件，而不是静默改动。更深层的启发：<strong>当 AGENTS.md 由 agent 自己维护时，"agent 团队的能力上限"就由 agent 的反思深度决定</strong>——这是一个放大效应显著的杠杆点。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>agent-memory 元层工具候选。</strong> 在 "agent-memory / AGENTS.md 维护" 这条赛道，backpass 是当前开源侧关注度最高的项目（153⭐/2 天，topics 含 agent-memory、agents-md）。它与 Mem0 / Letta / MemPalace 等 "memory system" 形成对照——<strong>后者是"agent 运行时使用的记忆系统"，前者是"agent 记忆文件本身的维护工具"</strong>。两者互补：对做 agent 产品的团队，<strong>backpass 切的是元层空白</strong>，很可能成为"agent-as-coworker"基础设施中的一块拼图。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>首次自动提议噪声可能高</strong>：从 transcript 提取"应当固化的教训" 与 "临时指令" 在 LLM 看来容易混淆，需要数轮迭代才能学得准</li>
+<li><strong>gating 形态依赖用户纪律</strong>：README 声"gated by you"——但如果用户懒得逐条审查，最终仍可能"提案 → 接受"循环形成 drift</li>
+<li><strong>7 款 harness 兼容度的真实性</strong>：声称支持 7 款 harness，但<strong>每款的 transcript schema 解析成熟度</strong>未在档案中明示（早期版本可能仅 1-2 款成熟）</li>
+<li><strong>团队协作能力缺失</strong>：local-first 对个人开发者友好，但团队需要"AGENTS.md 同步 + 提议版本控制"——目前 unaddressed</li>
+<li><strong>评测基准缺失</strong>：automatic diff 提议与人工写 diff 的"提升度"无公开 benchmark</li>
+<li><strong>失败信号判定边界未公开</strong>：何为"应当被记住的失败"、何为"临时外部输入"——这是技术核心</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Mem0 / Letta / MemPalace</strong>：这些是"agent 运行时用的记忆系统"——backpass 切的是"AGENTS.md 文件的维护"，元层高于前者</li>
+<li><strong>vs Anthropic Skills / Agent Skills 仓库</strong>：这些是"skill 集合"，backpass 是"AGENTS.md 自动改进"——不冲突</li>
+<li><strong>vs Cursor / OpenCode / Codex 等内置 AGENTS.md 体验</strong>：商业产品自带，backpass 是"无 vendor lock-in" 路径</li>
+<li><strong>vs SPEC / RFC 驱动开发</strong>：传统的需求-实施分离，backpass 是"agent 自动提取教训"</li>
+<li><strong>vs PR review systems</strong>：backpass 把 PR review 模型搬到 AGENTS.md——这是开源协作范式的延伸</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得高频跟踪（agent-memory 元层基础设施）。</strong> 对所有用 Claude Code / Codex 等 harness 的开发者：<strong>建议立即在最小项目上试运行 backpass</strong>，观察自动提议质量——若建议有效，是巨大杠杆点；对做 agent 产品的团队：<strong>这是判断 agent infrastructure 是否成熟的早期信号</strong>——若 backpass 类项目被多家厂商采纳，"AGENTS.md 由 agent 自己维护"将成为行业默认；对企业 IT：观察 backpass 与 Mem0 / Letta 等 memory system 的协同形态，是 agent 基础设施成熟度的指标。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>7 款 harness 兼容度的成熟度公开化（每款解析精度 / 已知限制）</li>
+<li>团队协作能力（AGENTS.md 同步 / 提议版本化）</li>
+<li>评测基准（与人工 diff 的提升度对比）</li>
+<li>与 Mem0 / Letta 等 memory system 的协同</li>
+<li>是否被主流 agent 框架默认集成</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-24) | Stars: 153 | Forks: 6 | License: MIT | 语言: JavaScript | 创建: 2026-08-21</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

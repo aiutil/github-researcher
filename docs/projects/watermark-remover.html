@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowAqueduct/watermark-remover | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/ShadowAqueduct/watermark-remover" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="shadowaqueductwatermark-remover">ShadowAqueduct/watermark-remover</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>多厂商 AI 来源标记的统一剥离工具</strong>——用三层架构（Layer A 确定性 Python 清 Unicode 隐藏字符 / Layer B agent rewrite 处理 SynthID/Kirchenbauer 等统计 token 签名 / Files 清 C2PA/EXIF/XMP 元数据），覆盖 Claude/Gemini/OpenAI/open-LLM 四大类 AI provenance 标记，以 <strong>agent skill + Python stdlib service</strong> 形态分发，<strong>面向你自己拥有的内容</strong>。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>随着 AI 内容标识技术普及（C2PA 标准、Google SynthID-Text、OpenAI provenance 标记、open-LLM 方案 Kirchenbauer green-list / Aaronson EXP 等），AI 生成内容被嵌入多种来源追踪标记——Unicode 隐藏字符、统计 token 分布签名、文件元数据 manifests。用户对自己拥有的内容上的这些标记有合法清除需求（隐私保护 / 内容再利用 / 跨平台迁移），但现有工具分散在各个厂商的生态中：exiftool 清元数据、各 detector 各自为战、缺乏"agent skill 形态"的统一入口。watermark-remover 解决的是：<strong>提供一个统一的、多层的、Agent Skill 格式的 AI provenance 标记管理工具</strong>。</p>
+<h2 id="2026-08-25">为什么值得关注（2026-08-25）</h2>
+<ul>
+<li><strong>2 天 768⭐</strong>（GitHub API 可核验）：内容卫生 / 隐私赛道短期增速突出</li>
+<li><strong>License: MIT</strong>（依 README CI badge 推断，需源码进一步确认）：开发者友好</li>
+<li><strong>三层架构清晰</strong>：Layer A（确定性 Python）/ Layer B（agent rewrite + <code>rewrite_text.py</code>）/ Files（C2PA / EXIF / XMP）——可针对不同层选择不同处理</li>
+<li><strong>Agent skill 是 thin HTTP client</strong>：agent host 不需要 Python，所有工作运行在 service——降低集成门槛</li>
+<li><strong>覆盖文件类型极广</strong>：PNG / JPEG / WebP / AVIF / HEIC / BMP / GIF / TIFF / SVG / PDF / DOCX / XLSX / PPTX / EPUB / ODT / HTML / Markdown / MP4/MOV/M4A/M4V / WAV / MP3 / FLAC / M4A</li>
+<li><strong>覆盖多厂商标记</strong>：Claude / Gemini-SynthID-Text / OpenAI provenance surfaces / open-LLM schemes (Kirchenbauer / keyed-Gumbel / Aaronson EXP)</li>
+<li><strong>2 天 73 forks</strong>：相对 stars 的高 fork 数表明社区贡献活跃（开源项目 fork 数通常 &lt; 1% stars）</li>
+<li><strong>topics 含 claude-code-plugin / codex-skill</strong>：明确支持主流 harness 的 skill 形态</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>watermark-remover 的热度来自 <strong>"AI 来源标记普及 × 用户反向需求 × agent skill 形态降低门槛"</strong> 的组合：(1) C2PA / SynthID 等来源标记在 2026 年加速普及，用户对自己写过的内容被嵌入隐藏水印的反感情绪强烈；(2) 现有工具分散（exiftool / 各 detector），缺乏统一入口；(3) agent skill 形态让"清除水印"成为一个可被 Claude Code / Codex 直接 install 的 skill，与 8-24 的"skill 单点化 × 完整工作流"趋势一致。三点叠加在 2 天内拿到 768⭐。<strong>主要风险：</strong> "清除来源标记"在某些司法管辖区可能与"内容真实性保护"法规冲突；agent skill 形态降低使用门槛的同时也降低"误用"门槛。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>三层架构</strong>：Layer A（确定性 Python 清 Unicode 隐藏字符 / bidi / tag chars）、Layer B（agent rewrite + <code>rewrite_text.py</code> 处理统计 token 签名）、Files（C2PA / EXIF / XMP 清除）——可针对不同层选择不同处理</li>
+<li><strong>Agent skill = thin HTTP client</strong>：agent host 不需要 Python，所有工作运行在 stdlib Python service——降低集成门槛</li>
+<li><strong>多厂商标记覆盖</strong>：Claude / Gemini-SynthID-Text / OpenAI provenance / open-LLM (Kirchenbauer green-list / Aaronson EXP)——四大类全覆盖</li>
+<li><strong>文件类型极广</strong>：图片（PNG/JPEG/WebP/AVIF/HEIC/BMP/GIF/TIFF/SVG）/ 文档（PDF/DOCX/XLSX/PPTX/EPUB/ODT/HTML/Markdown）/ 音视频（MP4/MOV/M4A/M4V/WAV/MP3/FLAC）</li>
+<li><strong>CI 完备</strong>：CI badge 显示 GitHub Actions 工作流运行</li>
+<li><strong>Disclaimer 清晰</strong>："For privacy and hygiene on content you own"——明示使用边界</li>
+<li><strong>与 2026-08-13 <code>guillaumemeyer/watermarks-remover</code> 关系待核验</strong>：CI badge 引用前者的 actions，可能存在 fork / 命名继承关系</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Python stdlib service（中心化）+ agent skill thin HTTP client（agent host 无 Python）；覆盖文本 + 多媒体文件</td>
+<td>边界由 README "skill is a thin HTTP client — the agent host needs no Python. All work runs in the service." 描述确认；service 的部署形态（单进程？多 worker？）需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>agent 调用 skill → HTTP 请求 → service 处理 → Layer A/B/Files 三层剥离 → 返回结果</td>
+<td>主路径由 README "skill ships no code — it calls the service over HTTP" 描述确认；Layer B 的 agent rewrite 触发条件 / 准确性评估需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三层覆盖广度 vs 各层准确率（Layer B 统计水印的 rewrite 语义保持度）；文件格式广度 vs 实现深度（每种格式的解析成熟度）；agent skill 形态降低门槛 vs 误用风险（合规边界）</td>
+<td>取舍由 README 三层架构 + 文件格式表 + "For privacy and hygiene on content you own" 描述确认；具体每层准确率 / 误报率未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地启动 service → 用 Claude Code 或 Codex install skill → 在一段已知含 Unicode 隐藏字符 / SynthID 标记的文本上调用 skill → 验证 Layer A/B 输出 → 在一个已知含 C2PA 的 PNG 上调用 skill → 验证元数据清除</td>
+<td>PoC 流程由 README "Install" + 三层架构描述推导；具体 install 命令 / skill 配置需 README 进一步核验</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>README + 三层架构表 + topics；具体 Layer B 准确率、文件格式解析成熟度、与 guillaumemeyer/watermarks-remover 的关系均需源码核验</td>
+<td>已核验事实来自 README 与 API；其他来自语义推断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[Agent / 用户] --> Skill[Agent skill<br/>thin HTTP client]
+  Skill -- HTTP --> Service[Python stdlib service<br/>中心化处理]
+  Service --> LayerA[Layer A<br/>确定性 Python<br/>清 Unicode / bidi / tag chars]
+  Service --> LayerB[Layer B<br/>agent rewrite + rewrite_text.py<br/>SynthID / Kirchenbauer / Aaronson]
+  Service --> LayerF[Files<br/>C2PA / EXIF / XMP 清除]
+  LayerA --> Output[剥离后输出]
+  LayerB --> Output
+  LayerF --> Output
+  LayerA -. 覆盖 .-> Claude[Claude 标记]
+  LayerA -. 覆盖 .-> Gemini[Gemini SynthID-Text]
+  LayerA -. 覆盖 .-> OpenAI[OpenAI provenance]
+  LayerA -. 覆盖 .-> OpenLLM[open-LLM 方案]
+  Output -. 仅限自有内容 .-> Boundary[合规边界<br/>README 明示 disclaimer]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>watermark-remover 的核心启发是 <strong>"AI 来源标记需要用户可控的反向工具"</strong>——当 C2PA / SynthID 等标记成为内容标配，用户对自己拥有的内容有合法清除需求；缺乏反向工具意味着用户被单向"标记"。更深层的启发：<strong>agent skill 形态把"内容卫生工具"分发到 agent harness 的生态</strong>——这与 8-24 的"skill 单点化 × 完整工作流"趋势一致，且切入"合规 / 隐私"严肃工具类，标志 skill 市场从"创意资产"扩展到"治理工具"。再深一层：<strong>"内容真实性保护"与"用户对自己内容的所有权"之间的张力</strong>——这是 2026 年下半年 AI 治理的核心议题之一，watermark-remover 选择站在"用户所有权"一侧。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型（agent 时代内容卫生工具）。</strong> watermark-remover 在"AI provenance 标记清除"赛道是当前最完整的开源实现，2 天 768⭐ + 73 forks 显示强烈需求。<strong>与 2026-08-13 的 <code>guillaumemeyer/watermarks-remover</code> 关系待核验</strong>：CI badge 引用前者 actions，可能是 fork / 命名继承 / 重启项目；建议使用前确认两者差异。<strong>主要竞争威胁：</strong> 各大厂商（如 Adobe / Microsoft）的"内容真实性"工具可能在合规压力下推出"官方清除工具"或"官方锁定工具"——届时 watermark-remover 的法律边界将更复杂。<strong>值得 6-12 月高频跟踪</strong>，特别是关注合规边界发展。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>合规边界模糊</strong>：清除 C2PA / SynthID 在某些司法管辖区（特别是欧盟 AI Act、加州 AB-2013 / SB-942 等）可能违反"内容真实性保护"法规——README 的 disclaimer 是必要的，但 distribution 形态容易突破边界</li>
+<li><strong>Layer B 准确率未公开</strong>：统计 token 签名检测的假阳率、rewrite 后的语义保持度（重要：rewrite 可能改变原文意思）需独立 benchmark</li>
+<li><strong>文件格式广度 vs 实现深度</strong>：覆盖 20+ 文件类型，每种格式的解析成熟度 / 已知限制未公开</li>
+<li><strong>与 <code>guillaumemeyer/watermarks-remover</code> 关系待核验</strong>：CI badge 引用前者，可能是 fork / 重启项目——使用前需确认两者差异</li>
+<li><strong>大厂反向整合风险</strong>：Adobe / Microsoft 等可能在合规压力下推出"官方清除工具"或强化"官方锁定"——届时法律边界将更复杂</li>
+<li><strong>agent skill 形态降低误用门槛</strong>：低门槛意味着更容易被滥用——在企业内采用需配置使用 policy</li>
+<li><strong>首次发现的边界</strong>：水印检测算法持续进化，本工具可能对新型水印无效</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>guillaumemeyer/watermarks-remover</code>（2026-08-13）</strong>：可能存在 fork / 命名继承关系（CI badge 引用），需源码核验</li>
+<li><strong>vs exiftool</strong>：exiftool 仅清 EXIF/XMP 元数据，不处理文本水印 / 统计 token 签名</li>
+<li><strong>vs 各厂商 watermark detector</strong>：各 detector 只检测不剥离，且各自为战</li>
+<li><strong>vs C2PA 官方工具</strong>：C2PA 官方工具是"添加标记"为主，反向工具稀缺</li>
+<li><strong>vs agent skill 生态</strong>：与 ip-as-logo-skill / scroll-craft / solo-skills 同代产物（8-23 / 8-24 单点 skill 趋势），切入"合规 / 隐私"严肃工具类</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得高频跟踪（agent 时代内容卫生工具）。</strong> 对所有关注 AI 内容合规的团队：<strong>建议立即在本地测试 service + skill 集成，观察三层剥离的准确率</strong>；对做内容平台的团队：<strong>这是判断"AI 来源标记"合规边界发展的早期信号</strong>；对个人开发者：<strong>强烈建议了解工具的能力边界，但需严格在"自有内容"范围内使用</strong>。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>与 <code>guillaumemeyer/watermarks-remover</code> 的关系（fork / 重启 / 独立项目）</li>
+<li>Layer B 准确率 benchmark 公开化（统计 token 签名检测假阳率、rewrite 语义保持度）</li>
+<li>文件格式解析成熟度（每种格式的已知限制 / 测试覆盖）</li>
+<li>合规法规发展（欧盟 AI Act / 美国 AB-2013 / SB-942）对反向工具的态度</li>
+<li>是否被主流 agent harness 官方收录（Claude Code skill marketplace / Codex skill registry）</li>
+<li>大厂（Adobe / Microsoft）是否推出官方清除 / 锁定工具</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-25) | Stars: 768 | Forks: 73 | 语言: Python | 创建: 2026-08-23</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

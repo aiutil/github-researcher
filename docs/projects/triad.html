@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wu030616/Triad | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Wu030616/Triad" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="wu030616triad">Wu030616/Triad</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>PBA（Planner-Builder-Auditor）方法论 + .NET 实现</strong>——把"干"和"判"拆到三个独立席位：<strong>任何一席都不能给自己签合格</strong>，并把每一步真实运行结果写入 append-only ledger，使整个过程事后可逐条复核。中文社区出品的、有方法论自觉的"agent 治理基础设施"候选样本。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年多 agent 协作"工程活"普遍有 3 个痛点：(1) <strong>agent 自审自签</strong>——agent 自己干活、自己验收，于是它说"已完成"——这不是模型能力问题，是结构问题（"你无法从一个人的自述里判断这份自述的真假"）；(2) <strong>缺乏角色分离</strong>——所有决策集中在一个 agent 上，无相互制衡；(3) <strong>审计 trail 缺失</strong>——任务执行过程没有 append-only log，事后无法逐条复核。Triad 把 PBA 三席位作为结构基础，<strong>"任何一席都不能给自己签合格"是核心约束</strong>，并把 ledger 写入作为审计基础。</p>
+<h2 id="2026-08-25">为什么值得关注（2026-08-25）</h2>
+<ul>
+<li><strong>2 天 13⭐</strong>（GitHub API 可核验）：agent-governance 赛道早期信号，star 数低但结构完整</li>
+<li><strong>C# / .NET 实现</strong>：<code>Triad.sln</code> 12938 bytes，真实可运行的 .NET solution——不是文档级 demo</li>
+<li><strong>七目录对应"设计 / 实现 / 证据"三件事</strong>：methodology（PBA 方法论与角色契约）/ design（界面设计规格 + DesignTokenResourceTests 反向核对）/ src（PBA .NET 实现）/ tests（判据写成可执行形式）/ probe（26 个 CLI 真实输出夹具，构建必需品）/ ledger（一轮真实运行的完整账本切片）/ process（任务书 / 操作单 / 交接件 / QUESTIONS.md 债务册）</li>
+<li><strong>可独立使用的方法论文档</strong>：<code>methodology/PBA_V0_3_1_ROLE_CHARTER.md</code> 明示三席位权责边界，可独立阅读</li>
+<li><strong>真实 ledger 切片</strong>：<code>ledger/</code> 目录存在"一轮真实运行的完整账本切片"——这不是凭空示例</li>
+<li><strong>probe 夹具作为构建必需品</strong>：<code>probe/</code> 内 26 个文件通过 <code>&lt;Content Include&gt;</code> 嵌入 <code>.csproj</code>，少一个 <code>dotnet build</code> 就失败——是构建必需而非附赠样本</li>
+<li><strong>DesignTokenResourceTests 反向核对</strong>：<code>design/observer/</code> 内测试向上找到 <code>Triad.sln</code>，再回头读设计规格，把规格里的配色与对比度表逐条比对代码里的资源字面量——规格不在，测试连被测对象都取不到</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>Triad 的热度来自 <strong>"agent governance 空白 × 中文社区方法论自觉 × 结构完整性"</strong> 的组合：(1) agent governance 在 2026 年下半年被广泛讨论，但"如何真的在工程层实现"仍是空白；(2) 中文社区少见的"理论 + 工程 + 证据"三件套样本，方法论自觉性强；(3) 七目录对应"设计 / 实现 / 证据"的结构完整性在 agent 项目中罕见。<strong>主要风险：</strong> Star 极低（13⭐/0 forks）表明社区关注度尚未形成；中文文档可能限制英文用户采纳；PBA 方法论是否真的能 scale 到 5+ agent 协作仍待观察。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>PBA 三席位结构性分离</strong>：Planner（设计）/ Builder（实现）/ Auditor（判据）——任何一席都不能给自己签合格</li>
+<li><strong>Append-only ledger</strong>：所有任务执行步骤写入 append-only log，事后可逐条复核</li>
+<li><strong>DesignTokenResourceTests 反向核对</strong>：测试向上找到 solution，向下核对代码资源字面量与设计规格——规格驱动实现的硬约束</li>
+<li><strong>probe/ 夹具作为构建必需品</strong>：26 个真实 CLI 输出夹具嵌入 <code>.csproj</code>，少一个 build 就失败——保证测试真实性</li>
+<li><strong>可独立使用的方法论</strong>：<code>methodology/</code> 目录可单独阅读、独立应用，不依赖 .NET 实现</li>
+<li><strong>QUESTIONS.md 债务册</strong>：<code>process/QUESTIONS.md</code> 跟踪判据长什么样 / 哪一步被驳回 / 返工改了什么——过程透明</li>
+<li><strong>真实运行账本切片</strong>：<code>ledger/</code> 不是文档示例，是真实运行的完整账本切片</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>PBA 三席位（Planner/Builder/Auditor）+ append-only ledger；七目录对应"设计/实现/证据"三件事；.NET / C# 实现（Triad.sln 12938 bytes）</td>
+<td>边界由 README 中文描述确认；具体三席位的实现位置（methodology/ vs src/ vs tests/）需源码核验；probe 26 个 CLI 覆盖的具体 harness 需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Planner 设计（含 PBA 项目契约）→ Builder 实现 → Auditor 验收 → append-only ledger 记录每步 → DesignTokenResourceTests 反向核对代码与设计规格</td>
+<td>主路径由 README 七目录描述确认；具体每席位的决策范围 / 互相否决机制 / ledger 写入时机需 <code>methodology/PBA_V0_3_1_ROLE_CHARTER.md</code> 与源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>三席位制 vs 效率（三席位互相制衡会降低速度）；append-only ledger 完整性 vs 体积（长期运行 ledger 膨胀）；方法论独立性 vs 实现耦合（methodology/ 可独立用但与 src/ 强关联）</td>
+<td>取舍由 README "任何一席都不能给自己签合格" + append-only ledger 描述确认；具体三席位效率成本、ledger 压缩策略未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>clone repo → 读 <code>methodology/README_白话版.md</code> → 读 <code>PBA_V0_3_1_ROLE_CHARTER.md</code> → 在一个新项目应用 PBA 三席位 → 参考 <code>ledger/</code> 切片写自己的 append-only ledger → 参考 <code>probe/</code> 准备 CLI 输出夹具</td>
+<td>PoC 流程由 README 中文描述推导；具体 PBA 角色契约细节 / ledger schema 需 <code>methodology/</code> 内核验</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>README + 七目录结构 + topics；具体 PBA 角色权责边界、ledger 真实性、probe 覆盖范围均需在 methodology/ 与源码内进一步核验</td>
+<td>已核验事实来自 README 与 API；其他来自语义推断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Goal[任务目标] --> Planner[Planner 席位<br/>设计 / 项目契约]
+  Planner --> Charter[PBA 角色契约<br/>PBA_V0_3_1_ROLE_CHARTER]
+  Charter --> Builder[Builder 席位<br/>实现]
+  Builder --> Code[.NET / C# 代码<br/>Triad.sln]
+  Builder --> Ledger[append-only ledger<br/>每步写入]
+  Code --> Auditor[Auditor 席位<br/>判据 / 验收]
+  Auditor -. 不能给自己签合格 .-> Builder
+  Auditor --> Ledger
+  Code --> DTT[DesignTokenResourceTests<br/>反向核对规格]
+  DTT --> Spec[设计规格<br/>design/observer/]
+  DTT -. 规格不在测不了 .-> Spec
+  Code --> Probe[probe/ 26 个 CLI 输出夹具<br/>构建必需品]
+  Probe -. 少一个 build 失败 .-> Code
+  Ledger --> Process[process/<br/>任务书 / 操作单 / QUESTIONS.md]
+  Methodology[methodology/<br/>PBA 方法论 可独立使用] -. 指导 .-> Planner
+  Methodology -. 指导 .-> Builder
+  Methodology -. 指导 .-> Auditor
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>Triad 的核心启发是 <strong>"agent 不能给自己签字"应当成为多 agent 协作的默认约束</strong>——这是结构性问题而非模型能力问题，把"互不信任"作为默认假设。更深层的启发：<strong>append-only ledger 是 agent 治理的审计基础</strong>——任何多 agent 协作系统都应保留可逐条复核的过程记录（这与 Git commit history 类似，但更细粒度）。再深一层：<strong>"方法论 + 工程 + 证据"三件套的稀缺性</strong>——大部分 agent 项目只做工程层（demo），少有项目同时具备方法论自觉（methodology/）、真实工程实现（src/）、真实证据（ledger/）。Triad 在这一点上罕见地完整。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型（agent governance 方法论 + 实现）。</strong> Triad 在"agent governance"赛道是中文社区少见的"理论 + 工程 + 证据"三件套样本，2 天 13⭐ / 0 forks 显示早期关注度低。<strong>主要竞争 / 互补关系：</strong> hermes-conductor（forcewake/hermes-conductor）从工程化（worktree lanes + verification gates）切入多 agent 协作；Triad 从结构化分工（PBA 三席位）切入——两个不同方向的方法论。<strong>值得 6-12 月观察</strong>，特别是关注中文技术社区是否采纳 PBA 方法论。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>Star 极低（13⭐ / 0 forks）</strong>：社区关注度尚未形成，是否被广泛采纳待观察</li>
+<li><strong>中文文档可能限制英文用户采纳</strong>：README 与 methodology/ 主体为中文，英文翻译未覆盖——国际化不足</li>
+<li><strong>PBA 方法论 scale 性待观察</strong>：三席位互相制衡会降低效率，5+ agent 协作时是否仍可管理未公开核验</li>
+<li><strong>Auditor 独立性边界未细化</strong>：Auditor 席位是否真的独立于 Planner/Builder？技术上如何保证？需 <code>methodology/PBA_V0_3_1_ROLE_CHARTER.md</code> 内核验</li>
+<li><strong>append-only ledger 长期存储成本</strong>：长期运行 ledger 膨胀，压缩 / 归档策略未公开</li>
+<li><strong>probe 26 个 CLI 覆盖范围未公开</strong>：覆盖哪些主流 agent harness？升级兼容性？README 未明示</li>
+<li><strong>.NET 生态绑定</strong>：依赖 .NET / C#，非 .NET 团队需自行 port 方法论</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs forcewake/hermes-conductor</strong>：hermes-conductor 从工程化（worktree lanes + verification gates）切入，Triad 从结构化分工（PBA 三席位）切入——两个不同方向的方法论</li>
+<li><strong>vs backpass</strong>：backpass 切的是 AGENTS.md 自动改写（memory 元层），Triad 切的是 multi-agent 协作的席位分离（governance 元层）——范围更广</li>
+<li><strong>vs Forsy-AI/biosecurity-agent</strong>：biosecurity-agent 把"已观察 / 已推断 / 已模拟"三类声明显式分离，Triad 把"规划 / 实现 / 审计"三类角色显式分离——同代产物的不同应用</li>
+<li><strong>vs OpenBot / cumora / herdrm</strong>：这些是 runtime 形态，Triad 是 governance 方法论——互补</li>
+<li><strong>vs x64dbg-mcp-server（8-24）</strong>：x64dbg-mcp-server 在调试器侧天然留 audit log，Triad 在 governance 层显式 append-only ledger——同代产物</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得观察（中文社区方法论自觉样本）。</strong> 对所有关注 agent governance 的团队：<strong>强烈建议花 1-2 小时读 <code>methodology/README_白话版.md</code> + <code>PBA_V0_3_1_ROLE_CHARTER.md</code></strong>——这是当前中文社区最完整的多 agent 治理方法论之一；对做 agent 平台的产品经理：<strong>与 hermes-conductor 对照阅读，理解"工程化"与"结构化"两种路径</strong>；对中文技术社区：<strong>这是值得被更多海外项目借鉴与翻译的方法论样本</strong>。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>英文翻译 / 国际化进展</li>
+<li>PBA 方法论在 5+ agent 协作场景的 scale 验证</li>
+<li>Auditor 席位的独立性技术实现</li>
+<li>ledger 长期存储 / 压缩 / 归档策略</li>
+<li>probe 26 个 CLI 覆盖的具体 harness 与升级兼容性</li>
+<li>中文技术社区是否采纳 PBA 方法论</li>
+<li>与 hermes-conductor / 其他多 agent 治理项目的协同 / 整合</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-25) | Stars: 13 | Forks: 0 | License: LICENSE 文件 11338 bytes（许可内容需进一步核对） | 语言: C# | 创建: 2026-08-23</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

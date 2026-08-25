@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-25 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-25">GitHub 趋势研究简报 - 2026-08-25</h1>
+<blockquote>
+<p>本报基于 GitHub Search API（pushed:2026-08-23..2026-08-25 / created:2026-08-23..2026-08-25）与各项目 README 抓取的快照，按当日活跃度与近期增速排序。"趋势"是观察，不是价值判断；下游采用应结合生产成熟度、合规与企业内规。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势</h2>
+<p><strong>1. agentic-OS / agent runtime 操作系统化（2 个活跃项目）</strong>（评分 92）</p>
+<p>代表性项目：rome-os/rome（278⭐，2 天）、Yuan-lab-LLM/NeoWorker（14⭐，2 天）。延续 8-22 / 8-23 / 8-24 三日"agent runtime"判断，但今日视角升一档——<strong>从"agent-as-coworker / agent-as-team-member"升级到"agent-as-OS"</strong>：rome-os/rome 自称"The agentic OS for humans and agents"，把 scaling axis 从模型参数转到<strong>环境</strong>：tools / workflows / memory / interfaces；Rome 试图把"agent harness / SOP / 编排流程"作为可被 agent 自己维护的资产，让每次交互抬高下一次的天花板（README 原话："Every interaction raises the ceiling for the next"）。NeoWorker 走的是"local-first AI work OS"路线，强调 GUI + CLI + Skills + MCP 的同源集成。两条路径的共性：<strong>把"agent runtime"从单一 IDE 嵌入升级为完整 OS / 工作系统层</strong>——这是 OpenBot / cumora / herdrm 等桌面 / 聊天层 harness 之后的下一站。若 Rome 与 NeoWorker 跑通，意味着"agent 操作系统"这一层将出现 2-3 家头部开源候选，与同期 Windows / macOS 上的 Tauri-harness 形成正面对位。</p>
+<p><strong>2. MCP / 邮件 + 通讯基础设施（1 个核心项目 + MCP 扩展）</strong>（评分 88）</p>
+<p>代表性项目：truespar/sentio（141⭐，Rust，2 天）。昨日 MCP 趋势是"垂直长尾（反编译 / 设计 / 生物安全情报）"，今日则跳到<strong>"通讯协议层"</strong>：sentio 把 SMTP 邮件完整实现成 multi-tenant mail server（DKIM / SPF / DMARC / ARC / MTA-STS / DANE / 三级反垃圾），同时提供 webhook + REST 双接口——核心创新是把"邮件"作为一个 agent 原生能力："每一个 agent 都有自己的真实邮箱地址"。项目同时提供 <code>sentio-mcp</code> server 把这层能力暴露为 MCP tool。<strong>意义：</strong>当 agent 能够以邮件身份与人 / 客户 / 其他 agent 双向通信时，"agent 自动化"的边界立刻从"读邮件 / 写草稿"扩展到"收件 → 解析 → 决策 → 站内回复"，而这正是过去 20 年 SaaS 产品（客服 / CRM / 自动外联）的核心场景。Sentio 选 Rust 而非 Go/Python，理由（README）是把"协议正确性 + 性能"作为首要目标——这与 Weaviate / SurrealDB 的"系统级基础设施用 Rust"路径一致。</p>
+<p><strong>3. agent-skills / 隐私与内容卫生（3+ 个活跃项目）</strong>（评分 86）</p>
+<p>代表性项目：ShadowAqueduct/watermark-remover（768⭐，Python，2 天）、oil-oil/oil-skill-creator（25⭐）、mkanat/skills（23⭐）。延续 8-24 "单点 skill × 完整工作流"判断，今日变体是 <strong>"agent skill 解决一件具体的合规 / 隐私问题"</strong>：watermark-remover 把"清除 AI 内容上的来源标记（Unicode 隐藏字符 + SynthID 等统计 token 签名 + C2PA/EXIF 元数据）"做成"agent skill + Python stdlib service"形态，<strong>声明面向你自己拥有的内容</strong>（README 强调"For privacy and hygiene on content you own"），覆盖 Claude / Gemini / OpenAI / open-LLM 四大类 AI provenance 标记。oil-oil/oil-skill-creator 把"skill 的创建 / 评审 / 整改 / 发布"做成产品级流程；mkanat/skills 由 Max Kanat-Alexander（曾主导 GitHub 代码质量）出品，专注"code-quality skills"。三者的共性：<strong>agent skill 市场开始从"prompt 模板 / 创意资产库"扩展到"合规 / 隐私 / 治理 / 质量"等严肃工具类</strong>——这是 8-22 / 8-23 趋势（skill 商品化）的成熟形态。</p>
+<p><strong>4. agent-orchestration / 多 CLI 工作池与审计（2 个活跃项目）</strong>（评分 84）</p>
+<p>代表性项目：forcewake/hermes-conductor（55⭐）、Wu030616/Triad（13⭐）。昨日趋势是"multi-agent runtime / 跨设备 harness"，今日视角是 <strong>"让多个 agent 同时跑且每步都可审计"</strong>：hermes-conductor 自称"One Hermes conductor. Many coding CLIs. Zero trust in self-reports."——把外部 coding agent（Claude Code / OpenCode / Codex CLI / MiMo / agy 等）作为"被编排的 worker"，Hermes Agent 自身只做"路由"，<strong>所有 dispatch 产生的 diff / tests / commits 由 controller 验证而非 agent 自报告</strong>（README 原话："diff/tests/commits — verified by the controller, never trusted from the agent's own report"），并提供 7 种 production-tested pattern（worktree lanes / workspace isolation / MCP swarm / recovery playbooks 等）。Triad 是来自中文社区的项目，提出 PBA（Planner-Builder-Auditor）方法论：把"干"和"判"拆到三个席位，<strong>任何一方都不能给自己签合格</strong>——并把每次真实运行结果写成<strong>append-only ledger</strong>，让事后可逐条复核。两者共同方向：<strong>当 agent 数量上去、协作深度增加，"可审计 + 防自我欺骗"成为下一层基础设施</strong>。hermes-conductor 强调"production multi-harness"的工程化、Triad 强调"结构化分工"的理论化——两条路径互补。</p>
+<p><strong>5. context-aware UI / 语音 + 屏幕上下文（1 个活跃项目）</strong>（评分 80）</p>
+<p>代表性项目：TarunTomar122/better-voice（189⭐，Swift，2 天）。延续前几日判断，<strong>agent 工具的多模态上下文能力持续渗透桌面</strong>——better-voice 是一个原生 macOS menu-bar app，<strong>按住 ⌥ 录语音、画圈圈选屏幕区域，每圈自动捕获该区域完整屏幕</strong>——把语音转写结果与"我指给你看的那部分屏幕"绑定插入选中文本框。换言之：<strong>dictation 不再是孤立语音 → 文字，而是 voice + visual reference 的多模态输入</strong>。这是一个极小但精确的 UX 突破——证明 agent 输入设备仍有大量低垂果实（在 Mac clipboard / 系统 accessibility / 屏幕 OCR 层面的组合，远未被任何 LLM 厂商官方解决）。Star 增速 2 天 189⭐、25 个 fork 显示 macOS 开发者社区的强需求。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ul>
+<li><strong>"Agent runtime → Agent OS" 升维</strong>：rome-os/rome + NeoWorker 把"agent runtime"从 IDE 嵌入 / 聊天层 / 桌面客户端，<strong>推到 OS / 工作系统层</strong>。这是 2026 年下半年 agent 基础设施可能出现的最重要分层。需观察：(a) Rome 的"guardrailed environment + proven capabilities stick"是否真的能让 SOPs 累积；(b) 是否会被 Anthropic / OpenAI 官方工具整合 / 收购；(c) 与 hermes-conductor 的"controller pattern"是否融合。</li>
+<li><strong>"邮件作为 agent 原生能力"可能改写自动化市场</strong>：truespar/sentio 把"完整 SMTP + 多租户 + webhook + REST"做成 agent-ready 基础设施。一旦被 2-3 家 agent 平台默认集成，"agent 自动回复邮件 / agent 自动签合同 / agent 自动 KYC"等场景将从"演示"变"产品"。这是过去 5 年 SaaS 自动化公司（Zapier / Make / n8n）的潜在颠覆点。</li>
+<li><strong>"Skill 走向合规 / 隐私 / 治理"是 Skill 生态成熟信号</strong>：watermark-remover / oil-skill-creator / mkanat/skills 共同证明 Skill 市场已从"prompt 模板 / 创意资产"扩展到"严肃工具类"。对 B 端采购而言，这意味着 <strong>"Skill 合规审计 / Skill 供应链安全"可能成为下一个基础设施空白</strong>（类似于 npm 的 <code>npm audit</code>）。</li>
+<li><strong>"可审计 + 防自我欺骗"成为多 agent 协作的硬约束</strong>：hermes-conductor 用工程化（worktree lanes + 外部 verification），Triad 用结构化（席位分离 + append-only ledger）。两条路径共同方向：<strong>当 agent 协作进入"工程活"范畴，"agent 不可给自己签字"应当成为默认约束</strong>——这与 8-23 的"agent governance" / 8-24 的"可审计现场"形成延续。</li>
+<li><strong>"Voice × Screen Capture"是桌面多模态的低垂果实</strong>：better-voice 的"画圈选区域 + 语音转写"是 LLM 时代之前无法实现的桌面输入范式。值得个人开发者关注：macOS accessibility API + screen capture + Apple Silicon 本地 ASR 三个能力的组合，还有大量 UX 创新空间。</li>
+</ul>
+<h2 id="top-12">活跃项目 Top 12</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">Stars</th>
+<th>语言</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ShadowAqueduct/watermark-remover">ShadowAqueduct/watermark-remover</a></td>
+<td style="text-align: right;">768</td>
+<td>Python</td>
+<td>Agent skill + stdlib service stripping multi-vendor AI provenance marks</td>
+</tr>
+<tr>
+<td><a href="https://github.com/rome-os/rome">rome-os/rome</a></td>
+<td style="text-align: right;">278</td>
+<td>TypeScript</td>
+<td>The agentic OS for humans and agents — scaled environment, not model</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TarunTomar122/better-voice">TarunTomar122/better-voice</a></td>
+<td style="text-align: right;">189</td>
+<td>Swift</td>
+<td>macOS voice dictation with screen context you point at</td>
+</tr>
+<tr>
+<td><a href="https://github.com/truespar/sentio">truespar/sentio</a></td>
+<td style="text-align: right;">141</td>
+<td>Rust</td>
+<td>Multi-tenant email API for AI agents — Rust, DKIM/SPF/DMARC full SMTP</td>
+</tr>
+<tr>
+<td><a href="https://github.com/forcewake/hermes-conductor">forcewake/hermes-conductor</a></td>
+<td style="text-align: right;">55</td>
+<td>Markdown/Docs</td>
+<td>Multi-CLI orchestration: worktree lanes, verification gates, recovery playbooks</td>
+</tr>
+<tr>
+<td><a href="https://github.com/czm15053/write-notes-like-deepseek">czm15053/write-notes-like-deepseek</a></td>
+<td style="text-align: right;">44</td>
+<td>TypeScript</td>
+<td>Agent Notes 沉淀模板：决策、取舍、验证一处留痕</td>
+</tr>
+<tr>
+<td><a href="https://github.com/alchaincyf/huashu-excel">alchaincyf/huashu-excel</a></td>
+<td style="text-align: right;">128</td>
+<td>Python</td>
+<td>数据分析与 Excel 全流程 skill：体检脏表 / 清洗 / 对账</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Jingyi-Wu-Richael/replicate-video-ad">Jingyi-Wu-Richael/replicate-video-ad</a></td>
+<td style="text-align: right;">31</td>
+<td>Python</td>
+<td>Codex skill for evidence-based ecommerce story-ad analysis</td>
+</tr>
+<tr>
+<td><a href="https://github.com/oil-oil/oil-skill-creator">oil-oil/oil-skill-creator</a></td>
+<td style="text-align: right;">25</td>
+<td>Python</td>
+<td>像做产品一样写 Skill：创建、评审、整改、发布</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mkanat/skills">mkanat/skills</a></td>
+<td style="text-align: right;">23</td>
+<td>Docs</td>
+<td>Code-quality skills by Max Kanat-Alexander</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Yuan-lab-LLM/NeoWorker">Yuan-lab-LLM/NeoWorker</a></td>
+<td style="text-align: right;">14</td>
+<td>TypeScript</td>
+<td>Local-first AI work OS — GUI + CLI + Skills + MCP</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Wu030616/Triad">Wu030616/Triad</a></td>
+<td style="text-align: right;">13</td>
+<td>C#</td>
+<td>PBA (Planner-Builder-Auditor) methodology + .NET implementation + ledger</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>备注：以上为 created:2026-08-23..2026-08-25 + stars:&gt;10 的当日活跃项目快照；累计星数较低但当日增速较快的 hermes-conductor / Triad / NeoWorker 也进入观察。</p>
+</blockquote>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="rome-osrome-278-stars">🏛️ rome-os/rome — 278 stars</h3>
+<ul>
+<li><strong>定位:</strong> 自我标榜 "The agentic OS for humans and agents"——把 scaling axis 从模型参数转到环境（tools / workflows / memory / interfaces），让 agent 自己构建 harness、设计 SOP、编排工作流，并在引导下让"已验证的能力"留下累积。</li>
+<li><strong>分类:</strong> 平台候选 / agentic-OS / runtime</li>
+<li><strong>关键事实:</strong> TypeScript / MIT；2 天 278⭐、15 forks；首页 <code>romeos.cc</code> 提供 Cloud Preview；Docker 一键启动脚本（<code>scripts/quickstart-docker.sh</code>）端口默认 <code>7663</code>，<strong>绑定 loopback only</strong>——首次 onboarding "open to whoever reaches it first"（安全语义明示）；包含 Rome / observability / routing / web dev server 的 <code>pnpm dev:all</code> 全栈启动路径；topics 含 agent、agent-os、claude-code、codex、llm。</li>
+<li><strong>证据边界:</strong> README 明示"guardrailed environment" + "Proven capabilities stick. Every interaction raises the ceiling for the next"作为产品哲学；具体 guardrail 实现（如何阻止 agent 越权改 SOP？）、"proven capabilities"如何被版本化、agent 自维护 SOP 的回滚策略均需源码核验；与 Anthropic / OpenAI 官方工具的差异化定位（"我们 scaling environment not model"）的可持续性是产品战略级问题。</li>
+<li><strong>判断:</strong> 这是 8-22 / 8-23 / 8-24 agent runtime 趋势的"OS 层"候选。<strong>关键差异化是"agent 自己维护 SOP"——这与 backpass 的"AGENTS.md 自动改写"是同代产物但更激进</strong>：backpass 只改 AGENTS.md，Rome 改的是整个工作流 / harness 库。如果跑通，意味着"agent 团队的能力上限由其自我维护的 SOP 库决定"——这是 agent-as-coworker 走向"agent-as-organization"的关键拐点。<strong>主要风险：</strong> Rome 是 2 天新项目且单一团队开发，与 Anthropic / OpenAI 官方工具的正面对撞随时可能发生；Docker 模式 + Cloud Preview 表明还在"产品形态探索期"，<strong>生产采用需等待 3-6 月观察</strong>。</li>
+</ul>
+<h3 id="truesparsentio-141-stars">📬 truespar/sentio — 141 stars</h3>
+<ul>
+<li><strong>定位:</strong> 多租户邮件 server（Rust 实现完整 SMTP 协议栈 + DKIM/SPF/DMARC/ARC/MTA-STS/DANE/三级反垃圾），并提供 agent 原生 email API：每个 agent 一个真实邮箱地址 → 入站邮件以结构化 webhook 投递 → agent 通过 REST 同线程回复。</li>
+<li><strong>分类:</strong> 基础设施候选 / 邮件协议 / agent 通讯</li>
+<li><strong>关键事实:</strong> Rust / MIT OR Apache-2.0；2 天 141⭐、10 forks；README 自带 mermaid 图清晰描述"customer → SMTP → inbound (authenticate/scan/score/route) → webhook → agent → REST → outbound (DKIM/queue/deliver) → customer"主路径；提供 sentio-mcp server（README 强调"MCP: give agents email as native tools"），把邮件能力暴露为 MCP tools；"Built for platforms" 段明确把多租户 / 域名 / 速率限制 / 抑制列表 / 垃圾 profile 做到每 tenant 隔离。</li>
+<li><strong>证据边界:</strong> README 给出主路径 + 多租户承诺；具体性能基准（每 tenant 多少 QPS？inbound webhook 投递延迟分布？）、DKIM 签名私钥管理、tenant 隔离的物理边界（进程 / 容器 / 配置隔离）均需源码核验；与现有邮件平台（Postal / Stalwart / Mailcow / Maddy）的功能差异和性能差异未在档案中对照。</li>
+<li><strong>判断:</strong> 这是 <strong>"邮件作为 agent 原生能力"的第一个严肃开源实现</strong>。过去 agent 处理邮件的方案都是"调用 IMAP/SMTP wrapper"（如 LangChain Email Toolkit），底层仍是单租户、不隔离租户、无内置反垃圾。Sentio 把邮件做成 <strong>"每个 agent 一个 inbox"的多租户基础设施</strong>——这一抽象对 agent 平台（Cursor / Codex / OpenCode）意义重大：若平台默认集成 sentio-mcp，则"agent 自动回复 / 自动外联 / 自动签收"等场景的产品形态将完全改变。<strong>主要风险：</strong> Rust 实现的 SMTP 完整协议栈是新代码，安全审计 / CVE 历史需要时间积累；与现有邮件大厂（Postmark / SendGrid）的 agent 化路径竞争，可能在 6-12 月内被大厂反向整合。</li>
+</ul>
+<h3 id="shadowaqueductwatermark-remover-768-stars">🧹 ShadowAqueduct/watermark-remover — 768 stars</h3>
+<ul>
+<li><strong>定位:</strong> Agent skill + Python stdlib service，剥离多厂商 AI 来源标记——Layer A（确定性 Python 清 Unicode 隐藏字符 / bidi / tag chars）、Layer B（agent rewrite + optional <code>rewrite_text.py</code> 处理 SynthID / Kirchenbauer green-list 等统计 token 签名）、Files（C2PA / EXIF / XMP 清除覆盖 PNG/JPEG/SVG/PDF/DOCX/HTML/MD 等）。skill 是 thin HTTP client，agent host 不需要 Python。</li>
+<li><strong>分类:</strong> 工具型 / agent-skill / 隐私卫生</li>
+<li><strong>关键事实:</strong> Python / CI badge（引用 <code>guillaumemeyer/watermarks-remover</code> 的 actions，可能 fork / 重新发布关系，需源码确认）；2 天 768⭐、73 forks（fork 数相对 stars 较高，暗示社区贡献活跃）；topics 含 claude-ai、claude-code、claude-code-plugin、claude-skills、codex、codex-cli、codex-skill、codex-skills、watermark；覆盖 class-level marks from Claude / Gemini-SynthID-Text / OpenAI provenance / open-LLM schemes (Kirchenbauer / Aaronson EXP)。</li>
+<li><strong>证据边界:</strong> README 明确三类 layer 的实现方法；具体反水印准确率（统计 token 签名检测的假阳率、rewrite 后的语义保持度）、与 <code>guillaumemeyer/watermarks-remover</code> 的关系（独立项目 vs fork / 命名空间）、skill 安装路径（plugin marketplace 是否收录）需在源码核验；"For privacy and hygiene on content you own" 的免责声明是 README 唯一明示，与"清除来源标记"的合规边界（特别是非自有内容）需要使用者自行评估。</li>
+<li><strong>判断:</strong> 这是 8-24 "单点 skill × 完整工作流"的合规版本——<strong>把"清除 AI provenance 标记"做成可分发的 agent skill</strong>，且设计成"agent host 无需 Python、纯 HTTP 调用"，降低了集成门槛。2 天 768⭐ + 73 forks 表明强烈需求（开发者对自己写过的内容被嵌入 hidden tag / watermark 的反感情绪是真实痛点）。<strong>与 2026-08-13 的 <code>guillaumemeyer/watermarks-remover</code>（2008⭐）相比</strong>：这是不同 org / repo，但 README 引用了前者的 CI badge——可能存在 fork / 命名继承关系，<strong>建议使用前确认两者差异</strong>。主要风险：合规边界——清除 C2PA / SynthID 在某些司法管辖区可能与"内容真实性保护"法规冲突；agent skill 形态降低使用门槛的同时也降低"误用"门槛。</li>
+</ul>
+<h3 id="taruntomar122better-voice-189-stars">🎙️ TarunTomar122/better-voice — 189 stars</h3>
+<ul>
+<li><strong>定位:</strong> 原生 macOS menu-bar 应用——按住 ⌥ 录语音、画圈圈选屏幕区域，每圈捕获该区域完整屏幕。释放 ⌥ 完成录音：长录音自动把转写文本 + 圈选截图插入选中文本框 + 复制到剪贴板；短录音只插入文本不覆盖剪贴板。</li>
+<li><strong>分类:</strong> 工具型 / macOS / 多模态输入</li>
+<li><strong>关键事实:</strong> Swift / 无显式 License 文件（需仓库确认）；2 天 189⭐、25 forks；README 内置 "BetterVoice onboarding and visual capture preview" 截图；显式标注 "experimental"；提到 "Grammar cleanup (Beta)" 选项，默认关闭。</li>
+<li><strong>证据边界:</strong> README 给出交互细节（⌥ / ⌘⌥ 按键 + 圈选机制）；本地 ASR 模型细节、屏幕 OCR 是否启用、截图保存格式 / 命名策略、剪贴板写入策略（是否每次覆盖？）、与 macOS privacy permission (Accessibility / Screen Recording) 的交互流程均需源码核验；Grammar cleanup 用了哪个 LLM / 模型大小 / 隐私语义需在 README / 配置页确认。</li>
+<li><strong>判断:</strong> 这是 <strong>"桌面多模态输入"的小而美产品</strong>——把语音（自然输入）与视觉指代（"指给你看"）作为同一个交互的左右声道，与过去的"语音 + 文字"双模态相比更接近人类真实表达。Star 增速 2 天 189⭐ 表明 macOS 开发者社区的强需求。<strong>值得个人开发者关注：</strong> macOS accessibility API + 本地 ASR + 屏幕 OCR 三个能力的组合，仍有大量 UX 创新空间。<strong>主要风险：</strong> 无 LICENSE 文件（默认版权封闭）、experimental 标签、不保证持续维护——企业内部采用需自行评估。</li>
+</ul>
+<h3 id="forcewakehermes-conductor-55-stars">🎼 forcewake/hermes-conductor — 55 stars</h3>
+<ul>
+<li><strong>定位:</strong> 在 Hermes Agent 之上做"只路由"profile 的 controller——Claude Code / OpenCode / Codex CLI / MiMo / agy 等外部 coding agent 作为被编排的 worker，每个 worker 跑在自己的 worktree lane 内；<strong>所有 dispatch 产生的 diff / tests / commits 由 controller 验证而非 agent 自报告</strong>——README 原话："verified by the controller, never trusted from the agent's own report"。</li>
+<li><strong>分类:</strong> 工具型 / agent-orchestration / 多 CLI 编排</li>
+<li><strong>关键事实:</strong> 仓库为 docs / patterns / skills / examples / assets（无 LICENSE 文件之外的源码——主要是 orchestration 模式说明）；2 天 55⭐、4 forks；提供 7 种 production-tested pattern（<code>patterns/01</code> 至 <code>07</code> 涵盖 controller-managed-external-worktree-lanes / workspace-isolation / single-repo-mcp-swarm / sequential-epic-finalization / sequential-recovery / production-swarm-recovery / prototype-furnace-daily-digest）；仓库自带 README 11.8KB、含 demo video / SVG / asciicast 多个演示；topics 含 agent-orchestration、claude-code、codex-cli、hermes-agent、kanban、multi-agent、nousresearch、opencode、worktrees。</li>
+<li><strong>证据边界:</strong> README 给出"18 boards, 367 cards, 566 agent dispatches — and every incident that tried to ruin them"作为实战经验背书；具体 controller 实现是否在独立仓库 / 是否要求 Hermes Agent 版本依赖 / recovery playbook 的 SLA 与触发条件是否文档化，均需源码核验；README 自述"Production multi-harness orchestration patterns"——意味着这些是经过生产验证的 patterns，但具体的"production 案例"未在 README 内嵌链接。</li>
+<li><strong>判断:</strong> 这是 8-22 / 8-23 / 8-24 "agent runtime / 编排"趋势的<strong>"硬核工程化版本"</strong>——强调"零信任 agent 自报告"作为默认假设，并用 worktree lanes + 外部 verification gates 实现。Star 较低（55⭐）但作者是 Hermes Agent 同生态（topics 含 nousresearch、hermes-agent），可能被视为"配合官方生态的最佳实践"。<strong>主要风险：</strong> 仓库主要为 docs，缺少可直接运行的 CLI / library（模式说明而非可安装的工具）；"verified by the controller"的具体机制需看 controller 实现（如有）。</li>
+</ul>
+<h3 id="wu030616triad-13-stars">⚖️ Wu030616/Triad — 13 stars</h3>
+<ul>
+<li><strong>定位:</strong> 一套让多个 AI agent 协作干工程活、且<strong>没有任何一方能给自己签合格的设计</strong>——把"干"和"判"拆到 PBA（Planner-Builder-Auditor）三个席位，<strong>任何一席都不能给自己签合格</strong>，并把每一步都写进 append-only ledger，让整个过程事后可逐条复核。</li>
+<li><strong>分类:</strong> 工具型 / agent-governance / 审计</li>
+<li><strong>关键事实:</strong> C# / .NET（Triad.sln 12938 bytes）；2 天 13⭐、0 forks；七目录对应"设计 / 实现 / 证据"三件事：<code>methodology/</code>（PBA 方法论与角色契约，可独立使用）、<code>design/</code>（界面设计规格 + DesignTokenResourceTests 反向核对代码资源字面量）、<code>src/</code>（PBA .NET 实现）、<code>tests/</code>（判据写成可执行形式）、<code>probe/</code>（各家 CLI 真实输出夹具，构建必需品）、<code>ledger/</code>（一轮真实运行的完整账本切片）、<code>process/</code>（任务书 / 操作单 / 交接件 / QUESTIONS.md 债务册）；仓库自带 <code>LICENSE</code> 11338 bytes（许可内容需进一步核对）。</li>
+<li><strong>证据边界:</strong> README 中文给出明确目录结构与角色契约；PBA 方法论的具体角色权责边界（哪一类决策由谁签、谁不能否决谁）需在 <code>methodology/PBA_V0_3_1_ROLE_CHARTER.md</code> 内核验；<code>probe/</code> 26 个 CLI 输出夹具的具体覆盖范围（哪些主流 agent harness？）、<code>ledger/</code> 的真实性（是否来自真实生产运行）需在 README / 仓库 owner 公开记录中确认。</li>
+<li><strong>判断:</strong> 这是一个<strong>中文社区出品的、有方法论自觉的"agent 治理基础设施"候选</strong>。与 hermes-conductor 的"工程化版"相比，Triad 走的是"理论化 + 结构化"路径——把"防自我欺骗"提升到方法论层面，并用 append-only ledger 提供审计证据。Star 极低（13⭐）但<strong>结构完整性（设计 / 实现 / 证据三层 + 真实 ledger 切片）是罕见的</strong>。<strong>主要风险：</strong> 13⭐/0 forks 表明社区关注度尚未形成；中文文档可能限制英文用户采纳；PBA 方法论是否真的能 scale 到 5+ agent 协作仍待观察。</li>
+</ul>
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">风险</h3>
+<ul>
+<li><strong>"Agentic OS"层与官方工具的正面竞争</strong>：rome-os/rome 自定位 "scaling environment not model"——这是对 Anthropic / OpenAI 官方 agent 工具战略的直接挑战。一旦官方推出"官方 Agent OS"或收购类似项目，Rome 的开源生态价值可能被快速吸收。建议：Rome 团队需在 3-6 月内建立足够深的开发者社区与生态绑定。</li>
+<li><strong>"邮件作为 agent 原生能力"的合规边界</strong>：sentio 把 SMTP 完整实现作为 multi-tenant mail server——这意味着每个 agent 都是一个独立"邮件实体"。若 agent 自动化外联 / 自动签合同 / 自动 KYC 等场景跑通，<strong>合规责任（CAN-SPAM / GDPR / 各行业邮件规范）的归属将变得模糊</strong>——是 agent owner / platform owner / sentio 提供方？需要在产品早期明确。</li>
+<li><strong>"Skill 清除 AI provenance"的合规风险</strong>：watermark-remover 把"清除 C2PA / SynthID"做成低门槛 agent skill——这在某些司法管辖区（特别是欧盟 AI Act 加州的来源标记要求）可能违反"内容真实性保护"法规。需在 README / skill 文档明示"仅限自有内容"——目前的 "For privacy and hygiene on content you own" 是必要的免责声明，但 distribution 形态容易突破边界。</li>
+<li><strong>多 agent 协作中"防自我欺骗"的执行难度</strong>：hermes-conductor 与 Triad 都强调"agent 不能给自己签字"——但执行上需要外部 verifier、append-only ledger、role-based access 等组合实现。在"agent 协作完成工程任务"这个相对新的领域，<strong>缺乏统一标准</strong>意味着各项目自造基础设施，跨项目兼容性差。</li>
+<li><strong>小项目 LICENSE 缺失问题</strong>：better-voice / hermes-conductor 等 README 内未明示 LICENSE（或仅有自述 badge）——企业内部正式采用前需向作者求证或寻找带 LICENSE 的 fork。</li>
+</ul>
+<h3 id="_6">机遇</h3>
+<ul>
+<li><strong>"Agent OS"分层机会</strong>：2026 下半年最被低估的产品机会。若 Rome / NeoWorker 在 6 月内积累 5k+ stars 与 3+ 家生态伙伴，"agentic OS"将出现事实标准。<strong>对独立开发者：</strong> 早期贡献者（参与 SOP 库 / harness 模式）可能成为未来 12 月内最稀缺的人力资本。</li>
+<li><strong>"邮件作为 agent 原生能力"的市场空白</strong>：sentio 是当前开源侧最完整的实现。一旦被任何一家 agent 平台默认集成，"agent 自动化邮件处理"将形成新市场——<strong>对 SaaS 自动化公司：</strong> 这是潜在颠覆点，建议在 6 月内评估是否需要构建反向能力。</li>
+<li><strong>"Skill 合规审计 / Skill 供应链安全"是下一个基础设施空白</strong>：watermark-remover / oil-skill-creator / mkanat/skills 把 skill 推向"合规 / 治理 / 质量"严肃工具类，但<strong>缺乏"skill 风险扫描 / skill 来源验证 / skill 版本锁定"的基础设施</strong>。这是一个明确定义的产品机会（类似 <code>npm audit</code> / <code>pip-audit</code> 在 skill 层的等价物）。</li>
+<li><strong>"桌面多模态输入"的小而美机会</strong>：better-voice 证明 macOS accessibility + 本地 ASR + 屏幕 capture 组合仍有大量 UX 空间。<strong>对个人开发者：</strong> Apple Silicon 本地 ASR + 系统级 clipboard 集成的组合，是 2026-2027 年低门槛创业可考虑方向。</li>
+<li><strong>"中文社区方法论自觉"的可贵性</strong>：Triad 的 PBA 方法论 + 完整目录结构 + 真实 ledger 切片，是中文社区少见的"理论 + 工程 + 证据"三件套样本。<strong>对中文技术社区：</strong> 值得被更多海外项目借鉴与翻译；对关注治理 / 合规的团队：值得花 1-2 小时读完方法论文档。</li>
+</ul>
+<h2 id="_7">重点项目档案</h2>
+<p>今日新增项目档案：</p>
+<ul>
+<li><strong>新增：</strong> <a href="../projects/rome.html">rome</a>、<a href="../projects/sentio.html">sentio</a>、<a href="../projects/watermark-remover.html">watermark-remover</a>、<a href="../projects/better-voice.html">better-voice</a>、<a href="../projects/hermes-conductor.html">hermes-conductor</a>、<a href="../projects/triad.html">Triad</a></li>
+<li><strong>持续跟踪（未变化）：</strong> duty1g/x64dbg-mcp-server / nateherkai/scroll-craft / Forsy-AI/biosecurity-agent / missuo/herdrm / kgoedecke/doop / kunchenguid/backpass — 维持前一日档案数据</li>
+</ul>
+<hr />
+<p><em>数据来源：GitHub Search API 快照（pushed:2026-08-23..2026-08-25, created:2026-08-23..2026-08-25）+ 各项目 README 抓取。所有结论基于公开元数据；下游采用应结合生产成熟度、合规与企业内规独立评估。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

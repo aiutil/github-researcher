@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-08-25
+
+**核心主题：** rome-os/rome（278 stars）· truespar/sentio（141 stars）· ShadowAqueduct/watermark-remover（768 stars）· TarunTomar122/better-voice（189 stars）· forcewake/hermes-conductor（55 stars）· Wu030616/Triad（13 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🏛️ rome-os/rome (278 stars) — The agentic OS for humans and agents — scaled environment, not model.，Score 92
+- 📬 truespar/sentio (141 stars) — Multi-tenant email API for AI agents — Rust, full SMTP + DKIM/SPF/DMARC.，Score 88
+- 🧹 ShadowAqueduct/watermark-remover (768 stars) — Agent skill + stdlib service stripping multi-vendor AI provenance marks.，Score 86
+- 🎙️ TarunTomar122/better-voice (189 stars) — macOS voice dictation with screen context you point at.，Score 82
+- 🎼 forcewake/hermes-conductor (55 stars) — Multi-CLI orchestration: worktree lanes, verification gates, recovery playbooks.，Score 80
+- ⚖️ Wu030616/Triad (13 stars) — PBA (Planner-Builder-Auditor) methodology + .NET impl + append-only ledger.，Score 78
+
+**关键判断：**
+- **"Agent runtime → Agent OS" 升维**：rome-os/rome + NeoWorker 把"agent runtime"从 IDE 嵌入 / 聊天层 / 桌面客户端，推到 OS / 工作系统层——这是 2026 下半年最被低估的产品机会
+- **"邮件作为 agent 原生能力"可能改写自动化市场**：truespar/sentio 把完整 SMTP + 多租户 + webhook + REST 做成 agent-ready 基础设施，是 agent 自动化邮件处理赛道的潜在颠覆点
+- **"Skill 走向合规 / 隐私 / 治理"是 Skill 生态成熟信号**：watermark-remover / oil-skill-creator / mkanat/skills 把 skill 推向"合规 / 治理 / 质量"严肃工具类，但缺乏"skill 风险扫描 / 来源验证"基础设施
+- **"可审计 + 防自我欺骗"成为多 agent 协作硬约束**：hermes-conductor 用工程化（worktree lanes + 外部 verification），Triad 用结构化（席位分离 + append-only ledger）——两条互补路径
+- **"Voice × Screen Capture"是桌面多模态的低垂果实**：better-voice 证明 macOS accessibility + 本地 ASR + 屏幕 capture 组合仍有大量 UX 创新空间
+
+## 2026-08-24
+
+**核心主题：** duty1g/x64dbg-mcp-server（779 stars） · nateherkai/scroll-craft（462 stars） · Forsy-AI/biosecurity-agent（356 stars） · missuo/herdrm（610 stars） · kgoedecke/doop（148 stars） · kunchenguid/backpass（153 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧩 duty1g/x64dbg-mcp-server (779 stars) — Native MCP plugin for x64dbg that exposes the debugger's full functionality over HTTP.，Score 90
+- 🎞️ nateherkai/scroll-craft (462 stars) — Claude Code skill for premium scroll-driven websites that self-verifies by screenshotting.，Score 86
+- 🧬 Forsy-AI/biosecurity-agent (356 stars) — AI agent that builds a live biosecurity world around any target.，Score 84
+- 🐂 missuo/herdrm (610 stars) — Native macOS console for herdr — every coding agent and live terminal in one window.，Score 84
+- 🎨 kgoedecke/doop (148 stars) — Open-source multiplayer design canvas for humans + AI agents (Paper.design alt).，Score 80
+- 🧠 kunchenguid/backpass (153 stars) — Gradient descent for AGENTS.md — proposes evidence-backed edits.，Score 78
+
+**关键判断：**
+- **"MCP 走向垂直长尾"**：x64dbg-mcp-server / doop / biosecurity-agent 三条路径证明 MCP 不再只是通用开发协议，而成为"任一垂直领域把 AI 接到自家数据"的事实接口
+- **"Skill 单点化 × 完整工作流"两极分化**：scroll-craft / solo-skills 把"一个 skill 解决一件事"做到产品级（自截图验证 / 真实运行脚本），与聚合仓库（如 wshobson/agents）形成对照
+- **"AGENTS.md 自动改写"成型**：backpass 把 transcript → diff 做成一个带 token budget 的提案流程——"agent 自我维护"从论文概念走向开发者工具
+- **"Agent runtime 桌面化"加速**：herdrm / penguin-harness / happyclaw 三者把 agent runtime 从 IDE 升级到 OS 层 / 跨设备 hub
+- **"高风险垂直领域可审计现场"成新形态**：biosecurity-agent 把"已观察 / 已推断 / 已模拟"三类声明显式分离，是 agent 进入受监管领域的可借鉴形态
+
 ## 2026-08-23
 
 **核心主题：** yetone/cumora（2,899 stars） · CopilotKit/OpenBot（2,308 stars） · s1dashu/ip-as-logo-skill（3,767 stars） · cinderline/northcinder（1,205 stars）

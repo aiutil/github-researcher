@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forcewake/hermes-conductor | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/forcewake/hermes-conductor" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="forcewakehermes-conductor">forcewake/hermes-conductor</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>"One Hermes conductor. Many coding CLIs. Zero trust in self-reports."</strong>——在 Hermes Agent 之上做"只路由"profile 的 controller，把 Claude Code / OpenCode / Codex CLI / MiMo / agy 等外部 coding agent 作为被编排的 worker，每个 worker 跑在自己的 worktree lane 内；<strong>所有 dispatch 产生的 diff / tests / commits 由 controller 验证，而非 agent 自报告</strong>——把 18 个生产 boards、367 张 cards、566 次 agent dispatches 的实战经验提炼为可复用的 orchestration 模式。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年多 agent 协作普遍有 3 个痛点：(1) <strong>agent 自报告不可信</strong>——agent 说"已完成"≠任务真的完成，需要外部 verifier；(2) <strong>worktree 隔离缺失</strong>——多个 agent 同时改一个 repo 容易互相覆盖，需要 worktree lanes；(3) <strong>production pattern 稀缺</strong>——大部分 agent orchestration 教程停留在 demo 级别，缺乏经过生产验证的模式。hermes-conductor 把 Hermes Agent 自身定位为"只路由、不做活"的 controller，让外部 coding agent 在 worktree lane 内执行，<strong>所有 dispatch 产物（diff / tests / commits）由 controller 验证后再合并</strong>——README 原话："diff/tests/commits — verified by the controller, never trusted from the agent's own report"。</p>
+<h2 id="2026-08-25">为什么值得关注（2026-08-25）</h2>
+<ul>
+<li><strong>2 天 55⭐</strong>（GitHub API 可核验）：agent-orchestration 赛道短期增速突出</li>
+<li><strong>仓库结构完整</strong>：README（11.8KB）+ LICENSE + assets（demo video / SVG / asciicast）+ examples + patterns（7 种 production-tested pattern）+ skills（kanban-orchestrator / kanban-worker）——不是 demo 级文档</li>
+<li><strong>7 种 production-tested pattern</strong>：<code>patterns/01-controller-managed-external-worktree-lanes.md</code> 至 <code>patterns/07-prototype-furnace-daily-digest.md</code>，覆盖 controller-managed-external-worktree-lanes / workspace-isolation / single-repo-mcp-swarm / sequential-epic-finalization / sequential-recovery / production-swarm-recovery / prototype-furnace-daily-digest</li>
+<li><strong>实战经验背书</strong>：README 自述"Distilled from 18 production boards, 367 cards, 566 agent dispatches — and every incident that tried to ruin them"</li>
+<li><strong>topics 覆盖全生态</strong>：agent-orchestration / claude-code / codex-cli / hermes-agent / kanban / multi-agent / nousresearch / opencode / worktrees——明确与 Hermes Agent 同生态</li>
+<li><strong>Zero trust in self-reports</strong>：把"agent 自报告不可信"作为默认假设，与 8-24 的"可审计现场"趋势一致</li>
+<li><strong>demo 资源丰富</strong>：assets 含 <code>cc-lane-demo.mp4</code> / <code>conductor-demo-narrated.svg</code> / <code>demo-claude-code.cast</code> / <code>demo.cast</code> 等多模态演示</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>hermes-conductor 的热度来自 <strong>"agent-as-coworker 落地难 × production pattern 稀缺 × Hermes 生态官方化"</strong> 的组合：(1) 8-22 / 8-23 / 8-24 趋势显示 agent-as-coworker 已被广泛讨论，但"如何真在生产环境跑起来"仍是空白；(2) 大部分开源 orchestration 教程停留在 demo 级，缺乏 production-tested pattern；(3) Hermes Agent 生态正在快速扩张（hermes-agent 自身已达 235k+ stars），hermes-conductor 自定位为"配合官方生态的最佳实践"。<strong>主要风险：</strong> Star 较低（55⭐）表明社区关注度尚未形成；仓库以 docs 为主（缺可直接 install 的 CLI / library）；patterns 需结合 Hermes Agent 本身使用——独立价值待评估。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>"Zero trust in self-reports" 作为核心设计原则</strong>：agent dispatch 产物（diff / tests / commits）由 controller 验证而非 agent 自报告</li>
+<li><strong>Worktree lanes 隔离</strong>：每个 worker agent 跑在自己的 worktree 内，避免互相覆盖</li>
+<li><strong>7 种 production-tested pattern</strong>：从 worktree lanes 到 recovery playbooks，覆盖多 agent 协作的常见场景</li>
+<li><strong>Hermes Agent 自身作为 controller</strong>：自定位"route-only profile"——"Don't do the work. Route only."——明确分工</li>
+<li><strong>支持多 harness</strong>：Claude Code / OpenCode / Codex CLI / MiMo / agy 等外部 coding agent 作为 worker</li>
+<li><strong>Kanban 工作流</strong>：配套 skills 含 <code>kanban-orchestrator</code> / <code>kanban-worker</code>，与 kanban 生态对齐</li>
+<li><strong>完整 demo 资源</strong>：asciicast / SVG / MP4 三种格式演示，便于不同场景使用</li>
+<li><strong>README 11.8KB + 实战数据</strong>：18 boards / 367 cards / 566 dispatches——明确标注生产经验背书</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Hermes Agent 作为 controller（route-only profile）；外部 coding agent（Claude Code / OpenCode / Codex CLI / MiMo / agy）作为 worker；每个 worker 跑在自己的 worktree lane 内</td>
+<td>边界由 README "route-only profile" + "worktree lane A/B/C/D" 描述确认；controller 实现是否在独立仓库 / 是否要求 Hermes Agent 特定版本 / worker 与 controller 通信协议均需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>controller 接收任务 → 分解 + fan-out → dispatch 到各 worktree lane 的 worker → worker 执行 → diff/tests/commits 回到 controller → controller 验证 → 集成 / 失败 → recovery playbook</td>
+<td>主路径由 README "decompose / fan-out / verify / integrate" 描述确认；具体 controller 实现（如有）、verification gates 的具体规则、recovery 触发条件需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>controller 自治 vs 外部 verifier（README 强调"verified by the controller, never trusted from the agent's own report"——controller 自己 verify，是否足够独立？）；worktree 隔离 vs 性能开销（每个 worker 独立 worktree 成本）；production pattern 通用性 vs 特定场景适配</td>
+<td>取舍由 README "verified by the controller" 描述确认；具体 verification 规则、worktree 管理机制均需源码核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地 fork 一个测试 repo → 启动 Hermes Agent 作为 controller → install hermes-conductor 的 kanban-orchestrator skill → 派发一个"修改 README"任务给 Claude Code worker → 观察 worktree 创建 → 修改 → diff → controller 验证 → merge 流程</td>
+<td>PoC 流程由 README + 7 patterns 描述推导；具体 install 步骤 / controller 启动命令 / verification 输出格式需 README 进一步核验</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>README + 7 patterns + assets demos；具体 controller 实现（如有）、Hermes Agent 版本依赖、recovery playbook SLA 均未在档案中明示</td>
+<td>已核验事实来自 README 与 API；其他来自语义推断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Task[任务输入] --> Conductor[Hermes Conductor<br/>route-only profile<br/>Don't do the work. Route only.]
+  Conductor --> Decompose[decompose / fan-out]
+  Decompose --> LaneA[worktree lane A<br/>Claude Code]
+  Decompose --> LaneB[worktree lane B<br/>OpenCode]
+  Decompose --> LaneC[worktree lane C<br/>Codex CLI]
+  Decompose --> LaneD[worktree lane D<br/>MiMo / agy]
+  LaneA --> DiffA[diff / tests / commits]
+  LaneB --> DiffB[diff / tests / commits]
+  LaneC --> DiffC[diff / tests / commits]
+  LaneD --> DiffD[diff / tests / commits]
+  DiffA --> Verify[Controller Verification Gates<br/>verified by the controller<br/>never trusted from agent's own report]
+  DiffB --> Verify
+  DiffC --> Verify
+  DiffD --> Verify
+  Verify -. 通过 .-> Integrate[集成 / merge]
+  Verify -. 失败 .-> Recovery[Recovery Playbooks<br/>patterns/05-06]
+  Integrate --> Kanban[Kanban 状态更新<br/>kanban-orchestrator skill]
+  Conductor -. 18 boards / 367 cards / 566 dispatches .-> Experience[生产实战经验背书]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>hermes-conductor 的核心启发是 <strong>"agent-as-coworker 的可信度必须靠外部验证而非 agent 自报告"</strong>——这是 8-24 "可审计现场" / 8-23 "agent governance"趋势的工程化版本。把 "Zero trust in self-reports" 作为默认假设，意味着 agent 完成任务的判定标准从"agent 说完成"转向"controller 验证通过"。更深层的启发：<strong>"controller 自身 verify"是否足够独立</strong>——理想的多 agent 治理需要第三方 verifier（如 hermes-conductor 自身也需要被另一个 verifier 验证），这是"agent 治理的无限递归"问题。再深一层：<strong>Hermes Agent 生态正在形成</strong>——hermes-conductor + Hermes Agent + 各 worker harness 共同构成"Hermes 生态"，类似 Linux 内核 + 各类发行版的关系。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型（agent orchestration 模式库）。</strong> hermes-conductor 在"多 agent 协作"赛道提供 production-tested pattern，2 天 55⭐ + 4 forks 显示早期关注度。<strong>主要竞争威胁：</strong> Triad（Wu030616/Triad）从结构化分工角度切入多 agent 治理；OpenBot / cumora / herdrm 等提供不同层次的 runtime 形态——hermes-conductor 的差异化是"production-tested 模式 + Hermes 生态绑定"。<strong>值得 6-12 月观察</strong>，特别是关注 Hermes Agent 生态扩张速度与 patterns 实际采纳率。</p>
+<h2 id="_8">风险 / 局限 /泡沫点</h2>
+<ul>
+<li><strong>仓库以 docs 为主</strong>：缺可直接 install 的 CLI / library，patterns 需要用户自己实现——独立价值依赖 Hermes Agent 生态</li>
+<li><strong>controller verify 是否足够独立</strong>：README 强调"verified by the controller"——但 controller 自身没有第三方 verifier，存在"controller 被攻破 = 整个系统被攻破"的单点风险</li>
+<li><strong>18 boards / 367 cards / 566 dispatches 数据未公开核验渠道</strong>：README 自述实战数据，但具体的"production 案例"未在 README 内嵌链接——属于自报数据</li>
+<li><strong>Hermes Agent 版本依赖</strong>：是否要求特定版本？升级兼容性？README 未明示</li>
+<li><strong>patterns 通用性 vs 特定场景</strong>：7 种 pattern 覆盖常见场景，但跨场景适配仍需用户自行调整</li>
+<li><strong>Star 较低（55⭐）</strong>：社区关注度尚未形成，是否被广泛采纳待观察</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Wu030616/Triad（PBA 方法论）</strong>：Triad 从结构化分工（Planner-Builder-Auditor 席位分离）切入，hermes-conductor 从工程化（worktree lanes + verification gates）切入——两个不同方向</li>
+<li><strong>vs OpenBot / cumora / herdrm</strong>：这些提供不同形态的 runtime（独立计算机 / 聊天层 / 桌面客户端），hermes-conductor 是 orchestration 模式层</li>
+<li><strong>vs backpass</strong>：backpass 切的是 AGENTS.md 自动改写（memory 元层），hermes-conductor 切的是 worker agent 编排（runtime 元层）</li>
+<li><strong>vs Anthropic Skills / wshobson/agents</strong>：这些是 skill 分发中心，hermes-conductor 是 orchestration 模式库——互补</li>
+<li><strong>vs MCP 生态</strong>：MCP 是 agent 与 tool 的协议，hermes-conductor 是 agent 与 agent 的 orchestration 模式——互补</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得高频跟踪（多 agent orchestration 模式库）。</strong> 对所有用 Claude Code / Codex / OpenCode 的团队：<strong>建议花 1-2 小时读 7 种 pattern，识别与自身工作流的契合点</strong>；对做 agent 平台的产品经理：<strong>这是判断"Hermes 生态"是否会成为 agent orchestration 事实标准的早期信号</strong>；对关注 agent 治理的团队：<strong>与 Triad 对照阅读，理解"工程化"与"结构化"两种路径</strong>。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>controller 实现是否独立仓库发布（目前 patterns 是文档，需用户自己实现 controller）</li>
+<li>Hermes Agent 版本依赖与升级兼容性</li>
+<li>"verified by the controller" 的具体规则与第三方 verifier 引入可能性</li>
+<li>18 boards / 367 cards / 566 dispatches 的生产案例公开化</li>
+<li>与 Triad / 其他多 agent 治理项目的协同 / 竞争</li>
+<li>Hermes 生态扩张速度（hermes-agent 自身 stars 增长、第三方 controller 出现）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-25) | Stars: 55 | Forks: 4 | 语言: Markdown/Docs | 创建: 2026-08-23</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

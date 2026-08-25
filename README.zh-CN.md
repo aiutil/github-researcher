@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-23.md">最新日报</a> ·
+  <a href="daily/2026-08-25.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-23
+## 最新研究 · 2026-08-25
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 473 | 5 | 5K+ |
+| 6 | 485 | 5 | 1K+ |
 
-**今日核心判断：** yetone/cumora（2,899 stars） · CopilotKit/OpenBot（2,308 stars） · s1dashu/ip-as-logo-skill（3,767 stars） · cinderline/northcinder（1,205 stars）
+**今日核心判断：** rome-os/rome（278 stars）· truespar/sentio（141 stars）· ShadowAqueduct/watermark-remover（768 stars）· TarunTomar122/better-voice（189 stars）· forcewake/hermes-conductor（55 stars）· Wu030616/Triad（13 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [yetone/cumora](projects/cumora.md) | 2,899 stars | 平台候选 |
-| [CopilotKit/OpenBot](projects/openbot.md) | 2,308 stars | 平台候选 |
-| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 3,767 stars | 工具型 |
-| [cinderline/northcinder](projects/northcinder.md) | 1,205 stars | 工具型 |
-| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 1,243 stars | 观察型 |
-| [joe960913/Jixu](projects/jixu.md) | 107 stars | 工具型 |
+| [rome-os/rome](projects/rome.md) | 278 stars | 平台候选 |
+| [truespar/sentio](projects/sentio.md) | 141 stars | 基础设施候选 |
+| [ShadowAqueduct/watermark-remover](projects/watermark-remover.md) | 768 stars | 工具型 |
+| [TarunTomar122/better-voice](projects/better-voice.md) | 189 stars | 工具型 |
+| [forcewake/hermes-conductor](projects/hermes-conductor.md) | 55 stars | 工具型 |
+| [Wu030616/Triad](projects/triad.md) | 13 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **agent-runtime / 团队协作** · 相关项目：yetone/cumora, CopilotKit/OpenBot · 强度：92
-2. **agent-skills / 单点能力** · 相关项目：s1dashu/ip-as-logo-skill, Spielewoy/autoprompt-skill, JetBrains/benjamin-plus-skill · 强度：90
-3. **MCP / 协议化** · 相关项目：cinderline/northcinder, browser-use/macos-harness, joe960913/Jixu · 强度：88
-4. **agent-governance / 治理** · 相关项目：CopilotKit/OpenBot, azrtydxb/procoder · 强度：85
+1. **agentic-OS / agent runtime 操作系统化** · 相关项目：rome-os/rome, Yuan-lab-LLM/NeoWorker · 强度：92
+2. **MCP / 邮件 + 通讯基础设施** · 相关项目：truespar/sentio, truespar/sentio-mcp · 强度：88
+3. **agent-skills / 隐私与内容卫生** · 相关项目：ShadowAqueduct/watermark-remover, oil-oil/oil-skill-creator, mkanat/skills · 强度：86
+4. **agent-orchestration / 多 CLI 工作池与审计** · 相关项目：forcewake/hermes-conductor, Wu030616/Triad · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
+| [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 | [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
-| [2026-08-18](daily/2026-08-18.md) | 43 | 5 |
-| [2026-08-17](daily/2026-08-17.md) | 42 | 5 |
 
 ## 为什么做这个项目
 
