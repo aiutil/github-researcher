@@ -8,6 +8,37 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+## 2026-08-26
+
+### HanyuanWang/LiveStream-Agent-Studio（167 stars） · ArihantDeva/heimdall（52 stars） · scarletkc/Perenna（33 stars） · mrpulor-gh/nuphus（32 stars） · 2005selene2005-a11y/susu-phone-agent（28 stars） · josiah-nelson/eidos（124 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | agent-memory / 持久化与跨 repo 检索 | ArihantDeva/heimdall, scarletkc/Perenna | 90 |
+| 2 | agent-runtime / 设备桥与本地优先 | HanyuanWang/LiveStream-Agent-Studio, 2005selene2005-a11y/susu-phone-agent, mrpulor-gh/nuphus | 88 |
+| 3 | local-search / 跨机器与离线索引 | josiah-nelson/eidos | 84 |
+| 4 | agent-skills / 单点工作流 × 真实数据 | HanyuanWang/LiveStream-Agent-Studio, bam-bam-2/solo-skills | 82 |
+| 5 | ambient OS / 写作活动侧写 | dragthelake/ambient-context | 78 |
+
+#### 当日重点项目
+
+- 🎬 HanyuanWang/LiveStream-Agent-Studio (167 stars) — 面向抖音直播电商的 Windows 本地 AI Agent Studio（ASR + 视觉 + Skills + MCP），Score 88
+- 🛡️ ArihantDeva/heimdall (52 stars) — Persistent memory for AI coding agents — cross-repo, CPU-only, zero token spend，Score 86
+- 🌱 scarletkc/Perenna (33 stars) — Lightweight Git-backed permanent memory for AI agents（PyPI + MCP server），Score 84
+- 🦀 mrpulor-gh/nuphus (32 stars) — 本地优先 AI Agent（Rust + Tauri v2 + React + PWA，desktop + mobile 双设备同步），Score 82
+- 📱 2005selene2005-a11y/susu-phone-agent (28 stars) — Android device bridge for Claude Code via MCP + Shizuku，Score 80
+- 🔍 josiah-nelson/eidos (124 stars) — 跨机器的本地优先智能搜索（Rust + Tantivy + NTFS，递归进 VM/archive），Score 78
+
+#### 关键判断
+
+- **"Memory as MCP"成为 coding agent 标配**：heimdall（npm + CPU embedding）/ Perenna（PyPI + git-backed）与 8-24 backpass / spectrum-ts / ctx 共同证明 5 天内 3 个 agent memory 新项目都用 MCP server 形态发布——"memory as MCP" 即将成为 coding agent 标配
+- **"Agent runtime 设备化"是 OpenBot 之后的下一波**：LiveStream-Agent-Studio（直播）/ susu-phone-agent（Android）/ nuphus（mobile-second-screen）证明 agent runtime 从桌面扩展到具体设备形态（SKU 化）
+- **"Local-first 跨机器搜索"是隐私合规刚需**：eidos 的离线 + NTFS + 跨 VM/archive 索引是金融/政府/医疗的合规卖点；AGPL-3.0 阻碍 SaaS 集成但企业内部部署可行
+- **"非英语社区 skill 商品化"被忽视**：bam-bam-2/solo-skills（韩文 296⭐）、HanyuanWang（中文 167⭐）、Jordanwei1/jiaojie-skill（中文 103⭐）共同显示 skill 市场已突破英语文化边界
+- **"个人 agent 日志"是输入端+输出端合并机会**：ambient-context + better-voice 是"输入端"+"输出端"互补，可能在 12 月内形成"个人 agent 日志"产品形态
+
 ## 2026-08-25
 
 ### rome-os/rome（278 stars）· truespar/sentio（141 stars）· ShadowAqueduct/watermark-remover（768 stars）· TarunTomar122/better-voice（189 stars）· forcewake/hermes-conductor（55 stars）· Wu030616/Triad（13 stars）

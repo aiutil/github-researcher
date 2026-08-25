@@ -31,7 +31,7 @@
     <div class="filter-bar">
         <div class="filter-group">
             <label>🔤 语言</label>
-            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option></select>
+            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="Java">Java</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option></select>
         </div>
         <div class="filter-group">
             <label>🏷️ 类型</label>
@@ -55,6 +55,72 @@
     </div>
     <div class="filter-empty" id="filter-empty">😢 没有匹配的项目</div>
     <div class="card-grid" id="project-grid">
+                <div class="card" onclick="window.location='/projects/eidos.html'" style="cursor:pointer" data-language="Rust" data-category="工具型" data-stars="124" data-date="2026-08-26" data-name="josiah-nelson/eidos">
+                    <div class="card-top">
+                        <div class="card-emoji">🔍</div>
+                        <div class="card-stars">124 stars</div>
+                    </div>
+                    <div class="card-title">josiah-nelson/eidos</div>
+                    <div class="card-desc">Private, intelligent search across every machine you own — Systems remain searchable when offline, including files burie</div>
+                    <div class="card-tags"><span class="tag tag-purple">Rust</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/josiah-nelson/eidos" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/heimdall.html'" style="cursor:pointer" data-language="JavaScript" data-category="工具型" data-stars="52" data-date="2026-08-26" data-name="ArihantDeva/heimdall">
+                    <div class="card-top">
+                        <div class="card-emoji">🛡️</div>
+                        <div class="card-stars">52 stars</div>
+                    </div>
+                    <div class="card-title">ArihantDeva/heimdall</div>
+                    <div class="card-desc">Persistent memory for AI coding agents — one verified kb_search replaces the grep/find/ls orientation loop. Cross-repo, </div>
+                    <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/ArihantDeva/heimdall" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/livestream-agent-studio.html'" style="cursor:pointer" data-language="Python" data-category="工具型" data-stars="167" data-date="2026-08-26" data-name="HanyuanWang/LiveStream-Agent-Studio">
+                    <div class="card-top">
+                        <div class="card-emoji">🎬</div>
+                        <div class="card-stars">167 stars</div>
+                    </div>
+                    <div class="card-title">HanyuanWang/LiveStream-Agent-Studio</div>
+                    <div class="card-desc">面向抖音直播电商的 Windows 本地 AI Agent Studio — 主播发现、直播洞察、直播复盘、短视频内容编导的统一智能工作流（ASR + 视觉 + Skills + MCP）。</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/HanyuanWang/LiveStream-Agent-Studio" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/nuphus.html'" style="cursor:pointer" data-language="Rust" data-category="工具型" data-stars="32" data-date="2026-08-26" data-name="mrpulor-gh/nuphus">
+                    <div class="card-top">
+                        <div class="card-emoji">🦀</div>
+                        <div class="card-stars">32 stars</div>
+                    </div>
+                    <div class="card-title">mrpulor-gh/nuphus</div>
+                    <div class="card-desc">Nuphus — 本地优先的 AI Agent：真实桌面执行力 + 手机第二块屏幕（Rust + Tauri v2 + React + PWA，desktop + mobile dual-device real-time sync）。</div>
+                    <div class="card-tags"><span class="tag tag-purple">Rust</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/mrpulor-gh/nuphus" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/perenna.html'" style="cursor:pointer" data-language="Python" data-category="工具型" data-stars="33" data-date="2026-08-26" data-name="scarletkc/Perenna">
+                    <div class="card-top">
+                        <div class="card-emoji">🌱</div>
+                        <div class="card-stars">33 stars</div>
+                    </div>
+                    <div class="card-title">scarletkc/Perenna</div>
+                    <div class="card-desc">A lightweight, Git-backed permanent memory for AI agents — permanent long-horizon memory without locking into one runtim</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/scarletkc/Perenna" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/susu-phone-agent.html'" style="cursor:pointer" data-language="Java" data-category="工具型" data-stars="28" data-date="2026-08-26" data-name="2005selene2005-a11y/susu-phone-agent">
+                    <div class="card-top">
+                        <div class="card-emoji">📱</div>
+                        <div class="card-stars">28 stars</div>
+                    </div>
+                    <div class="card-title">2005selene2005-a11y/susu-phone-agent</div>
+                    <div class="card-desc">Android device bridge for Claude Code via MCP + Shizuku — No root, no model polling. 让 Claude Code 直接控制 Android 设备。</div>
+                    <div class="card-tags"><span class="tag tag-purple">Java</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/2005selene2005-a11y/susu-phone-agent" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-26</div>
+                </div>
                 <div class="card" onclick="window.location='/projects/better-voice.html'" style="cursor:pointer" data-language="Swift" data-category="工具型" data-stars="189" data-date="2026-08-25" data-name="TarunTomar122/better-voice">
                     <div class="card-top">
                         <div class="card-emoji">🎙️</div>

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-25.md">Latest report</a> ·
+  <a href="daily/2026-08-26.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-25
+## Latest report · 2026-08-26
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 485 | 5 | 1K+ |
+| 6 | 491 | 5 | 1.2K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [rome-os/rome](projects/rome.md) | 278 stars | 平台候选 |
-| [truespar/sentio](projects/sentio.md) | 141 stars | 基础设施候选 |
-| [ShadowAqueduct/watermark-remover](projects/watermark-remover.md) | 768 stars | 工具型 |
-| [TarunTomar122/better-voice](projects/better-voice.md) | 189 stars | 工具型 |
-| [forcewake/hermes-conductor](projects/hermes-conductor.md) | 55 stars | 工具型 |
-| [Wu030616/Triad](projects/triad.md) | 13 stars | 工具型 |
+| [HanyuanWang/LiveStream-Agent-Studio](projects/livestream-agent-studio.md) | 167 stars | 工具型 |
+| [ArihantDeva/heimdall](projects/heimdall.md) | 52 stars | 工具型 |
+| [scarletkc/Perenna](projects/perenna.md) | 33 stars | 工具型 |
+| [mrpulor-gh/nuphus](projects/nuphus.md) | 32 stars | 工具型 |
+| [2005selene2005-a11y/susu-phone-agent](projects/susu-phone-agent.md) | 28 stars | 工具型 |
+| [josiah-nelson/eidos](projects/eidos.md) | 124 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: rome-os/rome, Yuan-lab-LLM/NeoWorker
-2. **Signal 2** · score 88 · repositories: truespar/sentio, truespar/sentio-mcp
-3. **Signal 3** · score 86 · repositories: ShadowAqueduct/watermark-remover, oil-oil/oil-skill-creator, mkanat/skills
-4. **Signal 4** · score 84 · repositories: forcewake/hermes-conductor, Wu030616/Triad
+1. **Signal 1** · score 90 · repositories: ArihantDeva/heimdall, scarletkc/Perenna
+2. **Signal 2** · score 88 · repositories: HanyuanWang/LiveStream-Agent-Studio, 2005selene2005-a11y/susu-phone-agent, mrpulor-gh/nuphus
+3. **Signal 3** · score 84 · repositories: josiah-nelson/eidos
+4. **Signal 4** · score 82 · repositories: HanyuanWang/LiveStream-Agent-Studio, bam-bam-2/solo-skills
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-25.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-26.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 | [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
-| [2026-08-19](daily/2026-08-19.md) | 49 | 5 |
 
 ## Why this repository exists
 

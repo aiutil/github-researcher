@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scarletkc/Perenna | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/scarletkc/Perenna" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="scarletkcperenna">scarletkc/Perenna</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>Lightweight, Git-backed permanent memory for AI agents</strong> ——把 agent 长期记忆以 <strong>git commit 形式持久化</strong>，提供 PyPI 包 + MCP server。可 diff / branch / revert / 跨 harness 共享。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Agent 长期记忆的三痛点：(1) <strong>版本化缺失</strong>——传统向量库 / 数据库无法 diff 记忆变化；(2) <strong>跨 harness 不可移植</strong>——Claude Code 写、Cursor 读不了；(3) <strong>可回滚性差</strong>——记忆一旦污染无法 revert。<strong>Perenna 把"agent 记忆 = git commits"作为产品哲学</strong>：天然支持版本化 / 共享 / 审计 / diff / branch / revert。命名"Perenna"（一种能长存的植物）暗示设计哲学：<strong>记忆应该像植物一样在多个季节存活</strong>。</p>
+<h2 id="2026-08-26">为什么值得关注（2026-08-26）</h2>
+<ul>
+<li><strong>4 天 33⭐ / 1 fork</strong>：agent-memory 赛道早期信号，但 star 数仍低</li>
+<li><strong>MIT 许可 / Python</strong>：降低集成门槛</li>
+<li><strong>Git-backed 设计哲学</strong>：与 8-24 backpass 同代但更彻底——backpass 只改 AGENTS.md 一个文件，Perenna 把整个记忆库当 git repo 管</li>
+<li><strong>PyPI package + MCP server</strong>：双重分发形态</li>
+<li><strong>509KB size</strong>（极小）：暗示是简洁实现，可能利用了 git 作为存储引擎</li>
+<li><strong>topic 完整</strong>：agent-memory / ai-memory / git-backed / mcp / self-hosted 全部覆盖</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>热度来自 <strong>"agent 记忆可审计化 × 跨 harness 共享 × Git 作为通用存储"</strong> 的组合：(1) Git 是开发者最熟悉的版本化工具，把 agent 记忆建在 git 上零学习成本；(2) 跨 harness 共享需求真实存在（同一个开发者可能用 Claude Code + Cursor + Codex）；(3) 8-24 backpass 的 AGENTS.md 改写是同方向但单文件，Perenna 把整个记忆库 git 化是更彻底的形态。<strong>主要风险：</strong> 33⭐/1 fork 表明社区关注度尚未形成；git 作为 agent 记忆是否真能 scale 到 10k+ commits 级别（性能 / 体积）需观察。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Git 作为 agent 记忆的存储引擎</strong>：天然支持 diff / branch / revert / merge</li>
+<li><strong>PyPI + MCP server 双重分发</strong>：Python 生态与 Claude Code / Cursor 等 agent 双覆盖</li>
+<li><strong>509KB 极小 size</strong>：利用 git 而非自建存储引擎</li>
+<li><strong>"Perenna"命名哲学</strong>：长存植物暗示设计意图——记忆应该能跨季节存活</li>
+<li><strong>与 8-24 backpass 互补</strong>：backpass 改 AGENTS.md 单文件；Perenna 改整个记忆库</li>
+<li><strong>Self-hosted</strong>：不依赖任何云服务，完全本地优先</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>PyPI package <code>Perenna</code> + MCP server；git-backed 持久化；每个 agent 一个 git repo 还是每个会话一个 branch 未明示</td>
+<td>边界由 README + topic + PyPI 描述确认；具体 git 仓库结构、commit schema、跨 harness 共享协议需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 操作 → Perenna 接收 → git commit 形式持久化记忆 → diff/branch/revert 能力 → MCP server 暴露给其他 harness</td>
+<td>主路径为档案语义抽象；具体每条 commit 的内容 schema、merge 冲突处理、跨 harness 共享协议未公开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Git 作为存储 vs 数据库（diff/branch 是优势但 commit 性能是弱点）；自建 vs 复用 git 基础设施；每 agent 一个 repo vs 每个会话一个 branch</td>
+<td>取舍由 README "Git-backed permanent memory" 描述确认；具体性能基准、commit 频率、merge 策略未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>pip install Perenna → run Perenna init → 让 Claude Code 写入一条记忆 → 验证 git log 显示 commit → 让 Cursor 通过 MCP server 读取 → 验证跨 harness 可访问</td>
+<td>PoC 流程由 PyPI + MCP 描述推导；具体 init 命令、commit schema、跨 harness 协议未公开</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>README + topic + GitHub API；具体 git 结构、commit schema、跨 harness 协议、MCP tool 列表均需源码核验</td>
+<td>已核验事实来自 GitHub API 与 topic；其他来自语义推断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Agent1[Claude Code] --> Perenna[Perenna 核心<br/>Python]
+  Agent2[Cursor] --> Perenna
+  Agent3[Codex CLI] --> Perenna
+  Perenna --> PyPI[PyPI package<br/>Perenna]
+  Perenna --> MCPServer[MCP Server<br/>git-backed memory tools]
+  PyPI --> App[Python 应用直接调用]
+  MCPServer --> Agent1
+  MCPServer --> Agent2
+  MCPServer --> Agent3
+  Perenna --> GitRepo[Git 仓库<br/>记忆 = commits<br/>结构待核验]
+  GitRepo --> Diff[git diff<br/>记忆变化可审计]
+  GitRepo --> Branch[git branch<br/>记忆隔离与并行]
+  GitRepo --> Revert[git revert<br/>记忆可回滚]
+  GitRepo --> Merge[git merge<br/>跨 harness 共享<br/>协议待核验]
+  App --> Perenna
+  GitRepo -. commit schema 待核验 .-> Schema[每条 commit 包含<br/>memory_id / content /<br/>timestamp / harness 等]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>Perenna 的核心启发是 <strong>"Git 是 agent 记忆最被低估的存储引擎"</strong> ——天然支持 diff / branch / revert / merge，与开发者最熟悉的工具链一致，零学习成本。更深层的启发：<strong>"agent 记忆 = git commits" 让记忆可审计化、可版本化、可跨 harness 共享</strong> ——Claude Code 写、Cursor 读、Codex CLI 都能接入同一 git 仓库，相当于 "agent 记忆的 GitHub"。再深一层：<strong>"轻量 + Git-backed + MCP server" 三件套</strong> 是 8-24 backpass（AGENTS.md 改写）方向的更彻底形态 ——backpass 只改单文件，Perenna 改整个记忆库，12 月内可能成为 agent memory 跨 harness 共享的事实标准。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>agent-memory 工具型项目（Git-backed 方向）。</strong> Perenna 是 "agent 记忆 = git commits" 的具体实现，把"agent 长期记忆"从数据库 / 向量库抽象回到 git 仓库。<strong>核心差异化是 "Git 作为天然审计与版本化引擎"</strong>：与所有数据库 / 向量库方案对比，git 提供了开发者最熟悉的 diff / branch / revert / merge 工具。<strong>主要风险：</strong> 33⭐/1 fork 仍属早期；git 在 10k+ commits 时的性能与体积；与 8-24 backpass 的差异化（backpass 改 AGENTS.md，Perenna 改整个记忆库）。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>早期信号弱</strong>：33⭐ / 1 fork / 0 watchers 表明社区关注度尚未形成</li>
+<li><strong>Git 性能边界</strong>：10k+ commits 的 git 仓库性能（log / diff / clone）需观察</li>
+<li><strong>存储体积</strong>：每个 agent 记忆 = git commits，长期运行的体积膨胀需管理策略</li>
+<li><strong>跨 harness 共享协议未明示</strong>：如何让 Claude Code 写、Cursor 读的具体协议需源码核验</li>
+<li><strong>与现有方案竞争</strong>：向量数据库（ChromaDB / Pinecone） / 文件系统（markdown notes） / 8-24 backpass（AGENTS.md 改写）都是同类方案</li>
+<li><strong>PyPI 安全审查</strong>：作为 PyPI 包发布需通过 PyPI 安全审计</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs 8-24 backpass</strong>：backpass 是 "AGENTS.md 自动改写"（单文件）；Perenna 是 "整个记忆库 git 化"——更彻底</li>
+<li><strong>vs 8-24 spectrum-ts / ctx</strong>：spectrum-ts 与 ctx 是其他 agent memory 形态（可能是 graph / KV）</li>
+<li><strong>vs ChromaDB / Pinecone</strong>：向量数据库；Perenna 是 git 仓库——本质不同的存储选择</li>
+<li><strong>vs markdown notes 形态</strong>：开发者手写 .md 笔记；Perenna 是 agent 自动 commit</li>
+<li><strong>vs 8-26 heimdall</strong>：heimdall 是 "跨 repo 检索"（检索层）；Perenna 是 "记忆持久化"（存储层）——互补</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（agent memory Git-backed 方向）。</strong> Perenna 是 5 天内 3 个 agent memory 新项目中<strong>唯一采用 Git 作为存储引擎的形态</strong>——这是显著差异化（其他用向量数据库 / KV / 文件）。<strong>建议关注：</strong> (a) 6-12 月内是否被任何 coding agent 平台默认集成；(b) 与 backpass / heimdall 是否形成 "memory 三件套"（自改进层 + 检索层 + 存储层）；(c) Git 作为 agent 记忆的实际扩展性。<strong>对个人开发者：</strong> 可直接试用 PyPI package。<strong>对关注 agent 基础设施的开发者：</strong> 12 月内持续观察是否跑通。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否被 Claude Code / Cursor / Codex CLI 官方集成</li>
+<li>PyPI 下载量趋势（package 实际采用度）</li>
+<li>Git 仓库结构（每 agent 一个 repo / 每会话一个 branch / 全局 repo）</li>
+<li>跨 harness 共享协议（具体 merge 策略）</li>
+<li>长期运行的 commit 体积管理与压缩策略</li>
+<li>与 backpass / heimdall 的生态整合可能性</li>
+<li>商业模式（开源 + SaaS？纯开源？商业版？）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-26) | Stars: 33 | Forks: 1 | License: MIT | 语言: Python | 创建: 2026-08-21 | Pushed: 2026-08-25 | Homepage: https://pypi.org/project/Perenna</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
