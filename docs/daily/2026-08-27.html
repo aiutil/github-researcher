@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-27 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="github-2026-08-27">GitHub 趋势研究简报 - 2026-08-27</h1>
+<blockquote>
+<p>本报基于 GitHub Search API（created/pushed:2026-08-26..2026-08-27，sort=stars，per_page=100）与各项目 README 抓取的快照。<strong>"趋势"是基于公开元数据的观察，不是价值判断；下游采用应结合生产成熟度、合规与企业内规。</strong> 延续 8-22..8-26 的"agent infrastructure 系列"判断，今日新增主题集中于 <strong>"多模型媒体编排 + 视频 sidecar 缓存 + 订阅制 agent skill（图像/色度学）+ 预测市场信号 Bot + 面试题库结构化"</strong> 五条新趋势，且与之前的"agent memory / device bridge / local-search"形成可观察的同期叠加。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势</h2>
+<p><strong>1. media-studio / 多模型图像视频编排与 sidecar 缓存（2 个核心项目）</strong>（评分 92）</p>
+<p>代表性项目：wide-trace/open-higgsfield（545⭐，TypeScript，1 天）、UditAkhourii/cdaf（63⭐，Python，1 天）。延续 8-25 "agent-skills / 视觉与图像"判断（forcewake/hermes-conductor / Wu030616/Triad / Jordanwei1/jiaojie-skill）的延伸，但视角转向 <strong>"agent 处理视觉资产的两种减负路径"</strong>：</p>
+<ul>
+<li><strong>open-higgsfield</strong> 是一个开源的多模型图像/视频 Studio，<strong>一个 prompt bar 同时调度 40 个模型（12 image + 28 video）</strong>——README 自述 "One composer for Image and Video. A single prompt bar drives both; the model you pick decides image or video"。栈是 Next.js 16 App Router on Vercel + React 19 + Zustand + Vercel Blob 存储，<strong>主路径是"per-model 自描述 settings（aspect / resolution / duration / output format）+ 公共 composer"</strong>——避免为每个模型维护并行的硬编码字段。开源的意义是把"封闭的 Higgsfield AI 订阅服务"映射为"自带 platform key 的可自部署版本"，1 天即达 545⭐ 体现对该品类（高门槛商业订阅）有真实替代需求。</li>
+<li><strong>cdaf</strong> 是视频资产的纯文本时间戳 sidecar 格式——README 自述 "Stop making AI agents watch the same video twice"，<strong>生成一次 <code>.cdaf</code> 文本描述文件（与视频同名同目录），后续 agent 读取文本而非再跑视频理解</strong>。README 自带的可复现 benchmark（gemini-2.5-flash, 20 questions）报告 "20/20 vs 19/20 accuracy（与直接视频分析持平）+ 10.1× 少 prompt tokens / 题（303 vs 3,066）"，并声明 ~50× for 60-second footage、生产环境实测把视频 AI 工作流成本降到约 1/25th。结构上有 SPEC.md + CLI + agent skill（<code>npx cdaf-skill</code>）+ benchmarks + arXiv 草稿 + npm/cdaf skill 双包形态——这是 <strong>"video asset metadata as a first-class file format"</strong> 的早期尝试。</li>
+</ul>
+<p>两者共性：<strong>图像/视频类 agent 工作的"成本/算力"约束正在催生新的资产层标准</strong>——open-higgsfield 走"模型编排层"路径（让一个 UI 跑 40 个模型），cdaf 走"资产元数据层"路径（让 agent 读 1KB 文本而不是 100MB 视频）。这是 <strong>"视觉 agent 的两条减负路径"</strong>：模型编排 + 资产缓存。需观察：cdaf 的 sidecar 是否会被主流视频编辑工具（Remotion、Premiere、DaVinci）或 MLLM SDK 协议（MCP / OpenAI function calling）原生接纳；open-higgsfield 40 个模型的 key 与计费对个人开发者是否真实可用（README 强调"自带 platform key"）。</p>
+<p><strong>2. agent-skills / 视觉与图像生成走订阅而非 API key（3 个项目）</strong>（评分 88）</p>
+<p>代表性项目：GENEXIS-AI/gpt-image-skill（55⭐，JavaScript，1 天）、Ayueh0102/Ronnier-skill（49⭐，PowerShell，1 天）、Aqua-123/pstack-for-codex（37⭐，TypeScript，1 天）。延续 8-26 "agent-skills / 单点工作流 × 真实数据"判断，今日变体是 <strong>"skills 走订阅制 + 显式 install contract + 工程化打包"</strong>：</p>
+<ul>
+<li><strong>gpt-image-skill</strong> 让 Codex / Claude Code 直接调用 <strong>用户的 ChatGPT 订阅</strong> 生成图片——README 强调 "This repository does not call the OpenAI Images API and does not create a separately billed Images API request"（不消耗 OpenAI Images API 独立计费），内置 <code>$imagegen</code> 命令、并行批处理、本地 reference 文件接入。安装流程是 <strong>"粘贴一段引导 prompt → agent 自行 read AGENT_INSTALL.md → bootstrap --target all --yes → 直到 best_practice_pass=true"</strong>，这是 <strong>"agent skill 自描述安装 contract"</strong> 的工程化样本。</li>
+<li><strong>Ronnier-skill</strong> 是色彩科學／色度學完整中文學習筆記（CIEDE2000、CIECAM02、色適應、演色性），<strong>包装为 Claude Code skill + Codex skill 双格式</strong>——延续 8-26 "非英语社区 skill 商品化"判断（bam-bam-2/solo-skills 韩文 / HanyuanWang 中文 / Jordanwei1/jiaojie-skill 中文）。topics 含 agent-md / ciede2000 / cielab / claude-code / claude-skills / codex / codex-skill / color-appearance / color-science / colorimetry，反映 <strong>"领域专业知识 × Claude/Codex 双 harness skill"</strong> 的标准化路径。<strong>这是把"色度学"这种小众硬核专业做成 agent skill 的首次尝试</strong>——若成功，将启发其他垂直学科（法律 / 医学 / 化学）的 skill 化路径。</li>
+<li><strong>pstack-for-codex</strong> 是 Codex 原生衍生品，<strong>45 个 explicit skills + 23 个 Poteto Mode playbook</strong>，来源于 Cursor 的 pstack。README 自述 "Codex stores their full identities under the <code>pstack-for-codex</code> namespace"，且 "$poteto-mode" 是一个上层 orchestration skill——<strong>"agent skill 的 skill"</strong>。37⭐/0 forks 体现 Codex marketplace 的早期冷启动，但 README 写到 0.146.0 不暴露 offline runtime skill-index——说明 Codex skill 发现机制仍依赖 runtime 而非静态索引。</li>
+</ul>
+<p>三者共性：<strong>agent skill 不再是"零散 prompt 模板"，而是"含完整安装 contract + 自描述 frontmatter + 跨 harness 适配 + benchmark/验收" 的工程化制品</strong>。这一波（gpt-image / Ronnier / pstack）共同说明：skill 已从"vibe coding 玩具"走向"产品级发行"。需观察：跨 harness（Claude Code / Codex / Cursor）适配的标准化是否会收敛到单一 frontmatter schema（现各 harness frontmatter 略有差异）。</p>
+<p><strong>3. vertical-bots / 实时信号 + 即时签名（链上/预测市场）</strong>（评分 84）</p>
+<p>代表性项目：techcomet122583/Polymarket-Telegram-Bot（125⭐，JavaScript，1 天）。延续 8-23 "加密 / onchain 类项目持续出现"（computer / img2threejs / opencodex）的同期观察——但今日视角是 <strong>"链上信号 + 即时签名 + 一键跟单"</strong>：</p>
+<ul>
+<li>README 自述 "Catches large whale trades in real time and lets you enter the market in one tap"，<strong>"the wallet lives inside the bot, so a bet signs the moment you tap, with no confirmation popup to wait on or glitch out"</strong>——即绕过 Polymarket 官方 UI 的确认弹窗（README 声称官方确认弹窗会卡顿 / 偶发失败 / 不出现），改为 Bot 内置钱包直连官方 API 签名。<strong>bot 不经代理</strong>—— README 明示 "Balance activation and signing go straight through the official Polymarket API, without extra proxy steps"。</li>
+<li>1 天 125⭐ + 96 forks 体现 <strong>"鲸鱼跟单"赛道的真实交易者刚需</strong>——但 96 forks / 125 stars 的高 fork/star 比（0.77）暗示大量用户进入 fork 模式（可能与"自部署 + 修改信号阈值"的需求有关）。</li>
+</ul>
+<p>判断：<strong>这是"垂直行业 Bot × 一键跟单"模式的链上交易变体</strong>——和传统股票跟单 Bot 的"信号 → 一键下单"逻辑一致，但叠加了"crypto wallet 内置"与"绕过 UI 弹窗"。需观察：bot 内置钱包的私钥托管安全（README 提到 "the wallet in the bot is your real Polymarket account"，但具体是用户自托管还是 bot 托管私钥需代码核验）；信号阈值（minimum $）的配置策略；与 Polymarket 官方 ToS 的兼容性（README 提示 "until 10.10.2026"，暗示 bot 有到期时间，可能是营销限免）。</p>
+<p><strong>4. interview-knowledge / 真实题面与方法论的结构化整理（1 个核心项目）</strong>（评分 80）</p>
+<p>代表性项目：CHENG-LIANG1/real-company-interview-ai-coding-projects（100⭐，1 天）。延续 8-25 "AI Coding 项目复盘 / 工作流沉淀"判断（itshen/source-reading-methodology / yizhiyanhua-ai/fireworks-open-eli5）的进一步样本——但今日是 <strong>"结构化题库 + 通用方法论 + 个人解法"</strong> 三件套：</p>
+<ul>
+<li>README 列出 <strong>三道匿名化题目</strong>：(1) Computer Use Agent Dashboard（Web + Agent + 隔离桌面）；(2) React Native 截图行动 Agent（48h 限时）；(3) Jira 风格任务管理系统（一日 MVP）。<strong>题面经过匿名化与结构化改写，不出现公司名 / 面试官 / 招聘人员</strong>——这是"知识分享 + 隐私保护"的工程化平衡。每题都给出个人解法仓库链接 + 通用方法论（需求澄清 → starter 审计 → 数据/状态设计 → 垂直切片 → 人工 review + 自动化验证 → 限时取舍）。</li>
+<li>1 天 100⭐ 反映 <strong>"AI Coding 面试准备"是中国大陆技术社区的强需求</strong>——但 README 自述是匿名化的真实题目，所以内容可信度较高（非虚构题）。</li>
+</ul>
+<p>判断：<strong>这是"招聘流程知识 × AI Coding 时代"的结构化沉淀</strong>——延续 8-22/8-23 的"AI Coding 是当前独立开发者 / 求职者的核心技能"，但更具体到"如何应对 AI Coding 类 take-home assignment"。需观察：是否有"标准答案库"被官方化（如 Anthropic / OpenAI 发布"AI Coding Engineer"认证）；是否会有面试反作弊系统反向识别"AI Coding 助手使用痕迹"。</p>
+<p><strong>5. agent-workspace / Brief → Web 演示稿 → PPTX 导出（1 个观察项目）</strong>（评分 76）</p>
+<p>代表性项目：seekskyworld/CreatPPT（29⭐，TypeScript，1 天）。延续 8-25/8-26 "agent-skills × 真实工作流"判断的延伸——<strong>agent 接到 brief → 输出可编辑的 Web 演示稿 → 人在浏览器中审阅/编辑 → 按需导出 PPTX</strong>：</p>
+<ul>
+<li>README 自述 "Brief in. Editable workspace out. Give an Agent one command, review the result in the browser, and export PPTX only when it is ready"。架构上分四层：<code>src/domain/</code>（DeckSpec schema、规划、模板）+ <code>src/cli.ts</code>（create/import/plan/validate/serve/health/stop）+ <code>src/components/</code>（Web 编辑器、画布交互、检查器）+ <code>src/editor/</code>（选择 / 历史 / 自动保存）。三种视觉语法 signal/editorial/studio 切换保留用户内容。<strong>核心创新是"PPTX 不是默认产物"</strong>——export PPTX 是显式的人类决策，agent 阶段只输出 deck.json + assets/，人类审阅后再导出。</li>
+<li>1 天 29⭐ 看似不高，但 8 forks 体现 "实际开发者试用"，且项目体量较大（9.7MB，包含完整 npm 包、桌面/移动 E2E、多 OS + Node 20/22 CI 矩阵）。</li>
+</ul>
+<p>判断：<strong>这是"agent 生成内容 → 人类编辑工作流"的标准产品形态</strong>——与"agent 生成代码 → IDE 中审阅"模式同构，把同样的范式从代码搬到演示稿。需观察：能否与 Microsoft PowerPoint / Google Slides 模板生态打通（避免"自有 DeckSpec"成为生态壁垒）；中文 i18n 是否能与 GPT-Image-Skill 等多语言 agent 协同（演示稿场景的中文 vs 英文模板差异）。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ul>
+<li><strong>"视觉 agent 的两条减负路径"正在同步成熟</strong>：open-higgsfield（模型编排层）+ cdaf（资产元数据层）= 视觉 agent 的"运行时 + 数据层"双轨优化。<strong>对独立开发者：</strong> 12 月内评估"自家视频/图像产品是否需要接入 cdaf sidecar"（10× token 节省是真实可量化收益）；"是否使用 open-higgsfield 风格的 multi-model studio 作为内部 UI"（自带 platform key 模型适合团队场景）。</li>
+<li><strong>"Agent skill 订阅制" 打破"agent skill = 玩具"的认知</strong>：gpt-image-skill 直接复用 ChatGPT 订阅、Ronnier-skill 把色度学做成 Claude/Codex skill、pstack-for-codex 把 Cursor 的 pstack 移植到 Codex。共同说明 <strong>skill 已进入"工程化发行"阶段</strong>——含完整 install contract、frontmatter 验证、跨 harness 适配、CI 矩阵。<strong>对 skill 作者：</strong> 这是市场窗口期——12 月内"垂直领域专业知识 × Claude/Codex skill"是最易获得分发渠道的路径。</li>
+<li><strong>"链上信号 Bot" 的私钥安全是被低估的风险</strong>：techcomet122583/Polymarket-Telegram-Bot 的 1 天 125⭐ + 96 forks 体现产品吸引力，但 <strong>bot 内置钱包的私钥归属（用户自托管 vs Bot 服务端托管）是核心未披露细节</strong>。<strong>对开发者采用：</strong> 在源代码 / 文档明确披露私钥管理机制前，不应把大额钱包接入此类 bot。</li>
+<li><strong>"AI Coding 面试题库" 是中国技术社区的结构化资产</strong>：CHENG-LIANG1 把三道匿名化的真实题目 + 通用方法论 + 个人解法打包——这是 <strong>"招聘流程知识 × AI Coding 时代"的稀缺沉淀</strong>。需观察：是否有官方化（Anthropic / OpenAI 发布"AI Coding Engineer"认证）反向冲击个人题库的价值。</li>
+<li><strong>"agent 生成 → 人类编辑"是跨场景的稳定范式</strong>：CreatPPT 把 "Brief → Web → PPTX" 三阶段拆开，agent 不直接生成 PPTX——这是 <strong>"agent 不替代人类判断，只加速中间过程"</strong> 的范式样本。该范式在代码（Cursor / Claude Code）、演示稿（CreatPPT）、设计（Figma AI）领域同步出现。<strong>对产品设计：</strong> 把"export 最终产物"作为人类显式决策节点，比"agent 一键生成最终产物"更易被采纳。</li>
+</ul>
+<h2 id="top-12">活跃项目 Top 12</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">Stars</th>
+<th>语言</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/wide-trace/open-higgsfield">wide-trace/open-higgsfield</a></td>
+<td style="text-align: right;">545</td>
+<td>TypeScript</td>
+<td>多模型图像/视频 Studio（40 个模型，一个 prompt bar，Next.js 16 + React 19 + Zustand）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/techcomet122583/Polymarket-Telegram-Bot">techcomet122583/Polymarket-Telegram-Bot</a></td>
+<td style="text-align: right;">125</td>
+<td>JavaScript</td>
+<td>Polymarket 鲸鱼告警 Telegram Bot（实时大单推送 + 一键签名下单）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/CHENG-LIANG1/real-company-interview-ai-coding-projects">CHENG-LIANG1/real-company-interview-ai-coding-projects</a></td>
+<td style="text-align: right;">100</td>
+<td>-</td>
+<td>三道匿名化真实 AI Coding 面试题 + 通用解题方法论（中文）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ooocooc/open-skill-sunset">ooocooc/open-skill-sunset</a></td>
+<td style="text-align: right;">73</td>
+<td>JavaScript</td>
+<td>审计并安全退役陈旧的通用 AI agent 指令（AGENTS.md / CLAUDE.md / SKILL.md）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/framepipe-dev/media-inference-worker">framepipe-dev/media-inference-worker</a></td>
+<td style="text-align: right;">67</td>
+<td>Python</td>
+<td>媒体模型推理的小型客户端（仓库 README 提示这是一个老 test client）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/UditAkhourii/cdaf">UditAkhourii/cdaf</a></td>
+<td style="text-align: right;">63</td>
+<td>Python</td>
+<td>CDAF：视频纯文本时间戳 sidecar 格式（含 SPEC + CLI + skill + benchmark + arXiv 草稿）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/GENEXIS-AI/gpt-image-skill">GENEXIS-AI/gpt-image-skill</a></td>
+<td style="text-align: right;">55</td>
+<td>JavaScript</td>
+<td>ChatGPT 订阅下的 GPT 图片生成 skill（Codex / Claude Code，不走 Images API）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AustineA/app-landing-seo">AustineA/app-landing-seo</a></td>
+<td style="text-align: right;">52</td>
+<td>JavaScript</td>
+<td>App landing 页 SEO 工具（描述空，待核验功能范围）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Ayueh0102/Ronnier-skill">Ayueh0102/Ronnier-skill</a></td>
+<td style="text-align: right;">49</td>
+<td>PowerShell</td>
+<td>色彩科學／色度學完整中文學習筆記，包装成 Claude Code + Codex skill</td>
+</tr>
+<tr>
+<td><a href="https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Dual-DGX-Sparks">MiaAI-Lab/Qwen3.8-Flash-Next-Dual-DGX-Sparks</a></td>
+<td style="text-align: right;">46</td>
+<td>Shell</td>
+<td>176B 参数 NVFP4 MoE 在 2× DGX Spark 上的 SGLang TP2 生产脚本（带 SM121 内核补丁）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/okooo5km/rembrandt-portrait-lighting">okooo5km/rembrandt-portrait-lighting</a></td>
+<td style="text-align: right;">45</td>
+<td>-</td>
+<td>把普通人物/宠物照片转换为伦勃朗光摄影棚肖像（Claude/Codex skill）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Aqua-123/pstack-for-codex">Aqua-123/pstack-for-codex</a></td>
+<td style="text-align: right;">37</td>
+<td>TypeScript</td>
+<td>pstack 的 Codex 原生衍生（45 explicit skills + 23 Poteto Mode playbook）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>备注：以上为 created:2026-08-26..2026-08-27 + stars:&gt;35 的当日活跃项目快照。framepipe-dev/media-inference-worker README 自述是 "Old test client"，证据强度较弱，保留作为观察样本；AustineA/app-landing-seo 描述为空，本表暂列。</p>
+</blockquote>
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="wide-traceopen-higgsfield-545-stars">🎬 wide-trace/open-higgsfield — 545 stars</h3>
+<ul>
+<li><strong>定位:</strong> 开源的"40 个图像/视频模型统一编排 Studio"——一个 prompt bar 同时调度 12 image + 28 video 模型，README 自述 "The free, open-source alternative to Higgsfield AI"。栈是 Next.js 16 App Router on Vercel + React 19 + plain CSS + Zustand + pnpm。</li>
+<li><strong>分类:</strong> 工具型 / multi-model media studio</li>
+<li><strong>关键事实:</strong> TypeScript / 无 license（README 突出"开源 + 自部署"）；1 天 545⭐、created 2026-08-26T06:09:58Z、pushed 2026-08-26T08:08:20Z、size 472 KB；topics 为空；提供了 hosted 版 <a href="https://openhiggsfield.ai">openhiggsfield.ai</a>（"no install, add your platform key"）。</li>
+<li><strong>证据边界:</strong> README 给出 "40 模型（12 image + 28 video）" 清单与 "Nano Banana 2/Lite/Pro, Soul 2, Soul Cinema, Gemini Omni Flash, Kling 3 系列, Veo 3.1, Wan, Flux, GPT Image 2, Ideogram, Recraft, LTX, MiniMax, PixVerse, Grok, Qwen" 等具体模型名；具体每个模型的 API 兼容层（Replicate / fal / 自部署网关）、平台 key 的接入路径（OpenAI / Anthropic / Google / 各家独立 key）、资产存储（Vercel Blob）的限额与计费、是否支持私有模型（如本地 Stable Diffusion）未在 README 中量化；live run lifecycle 提到"4s 轮询 + 10 分钟 deadline"是单一 provider 的实现，多 provider 并发与失败回退机制未明示。</li>
+<li><strong>判断:</strong> 这是 <strong>"商业订阅类多模型 Studio 的开源替代品"</strong>——Higgsfield AI / Runway / Pika 等高门槛商业订阅服务被映射为"自带 platform key 的可自部署版本"。1 天 545⭐ 反映对该品类有真实替代需求。<strong>核心产品创新</strong>是把每个模型的"per-model settings"声明在模型自身（不是平台硬编码），让 UI 自动渲染对应字段——这是 multi-model UI 的工程化最佳实践。<strong>主要风险：</strong> 无 license（README 没明示 OSI 兼容 license）阻碍企业 fork 与商用；40 个模型的 key 与计费对个人开发者是否真实可用（README 强调 "Your key"）；作为 1 天新项目，维护持续性待观察。</li>
+</ul>
+<h3 id="techcomet122583polymarket-telegram-bot-125-stars">🐋 techcomet122583/Polymarket-Telegram-Bot — 125 stars</h3>
+<ul>
+<li><strong>定位:</strong> Polymarket 鲸鱼告警 Telegram Bot——直连 Polymarket 实时成交流，<strong>"鲸鱼大单 + 一键签名跟单"</strong> 一体化。README 自述 "Catches large whale trades in real time and lets you enter the market in one tap — no clunky confirmation chains, no delays"。</li>
+<li><strong>分类:</strong> 工具型 / onchain-trading bot</li>
+<li><strong>关键事实:</strong> JavaScript / MIT；1 天 125⭐、96 forks、0 watchers、0 open issues；size 73 KB（极小，疑似 bot 内核 + README + 简单脚本）；topics: bot, news, polymarket, predict, telegram, tg；提供官方 Bot 链接（<a href="https://t.me/polyprediction1_bot">t.me/polyprediction1_bot</a>）+ 告警频道（<a href="https://t.me/whalealerts_polymarket">t.me/whalealerts_polymarket</a>），bot 文案提示 "Use the bot for free — until 10.10.2026"（限时免费暗示商业化时间表）。</li>
+<li><strong>证据边界:</strong> README 给出 "实时大单告警 + 内置钱包 + 一键签名 + 直连官方 API" 主路径；<strong>bot 内置钱包的私钥归属（用户自托管 vs Bot 服务端托管）未在 README 显式说明</strong>——这是核心安全风险点；信号阈值（minimum $）与告警频率的具体配置策略未在 README 中明示；Polymarket 官方 ToS 是否允许第三方 Bot 内置钱包未独立核验；bot "until 10.10.2026" 限免的真实商业化路径（订阅费 / 抽佣 / 增值功能）未披露。</li>
+<li><strong>判断:</strong> 这是 <strong>"链上信号 + 一键跟单"模式的预测市场变体</strong>——延续传统股票跟单 Bot 的"信号 → 一键下单"逻辑，但叠加了"crypto wallet 内置"与"绕过官方 UI 确认弹窗"。1 天 125⭐ + 96 forks 体现"鲸鱼跟单"赛道的真实交易者刚需；<strong>96 forks / 125 stars 的高 fork/star 比（0.77）暗示大量用户进入 fork 模式</strong>——可能与"自部署 + 修改信号阈值"的需求有关。<strong>主要风险：</strong> bot 内置钱包的私钥托管安全（最坏情况是私钥泄漏导致用户资产被盗）；与 Polymarket 官方 ToS 的兼容性；"until 10.10.2026" 限免的盈利模式待披露。</li>
+</ul>
+<h3 id="cheng-liang1real-company-interview-ai-coding-projects-100-stars">📚 CHENG-LIANG1/real-company-interview-ai-coding-projects — 100 stars</h3>
+<ul>
+<li><strong>定位:</strong> 三道匿名化的真实 AI Coding 面试项目题 + 一套通用解题方法论。<strong>延续 8-25 的"AI Coding 项目复盘 / 工作流沉淀"判断</strong>（itshen/source-reading-methodology / yizhiyanhua-ai/fireworks-open-eli5）的进一步样本——今日是"结构化题库 + 通用方法论 + 个人解法"三件套。</li>
+<li><strong>分类:</strong> 观察型 / interview knowledge</li>
+<li><strong>关键事实:</strong> 无 language（README 是 Markdown 为主）；无 license；1 天 100⭐、6 forks；size 37 KB；topics: agent, ai-coding, documentation, interview, take-home-assignment；提供了三道题面 + 通用方法论文档 + 三道个人解法仓库链接 + 一份"ForceTrack 从 PRD 到 Repo Wiki 的 24 个真实对话轮次"历史。</li>
+<li><strong>证据边界:</strong> README 给出 "三道题（Computer Use Agent Dashboard / React Native 截图行动 Agent / Jira 风格任务管理系统）+ 六阶段通用方法论"主路径；具体题面的"匿名化程度"（哪些信息被保留、哪些被改写）需要阅读 docs/01-03.md 才能量化；"24 个真实对话轮次"是否真实完整（无删减、无润色）需要核验 docs/05-forcetrack-ai-coding-conversation-history.md；通用方法论的"普适性"需要对照更多面试样本才能评估。</li>
+<li><strong>判断:</strong> 这是 <strong>"招聘流程知识 × AI Coding 时代"的结构化沉淀</strong>——延续 8-22/8-23 的"AI Coding 是当前独立开发者 / 求职者的核心技能"判断，但更具体到"如何应对 AI Coding 类 take-home assignment"。<strong>主要价值</strong>是把"AI Coding 面试"从"零散刷题"升级为"题库 + 方法论 + 个人解法"的结构化知识体系。<strong>主要风险：</strong> 1 天 100⭐ / 6 forks 体现中国大陆技术社区的强需求，但"匿名化的真实题"的可信度依赖作者声誉；如未来官方化（Anthropic / OpenAI 发布"AI Coding Engineer"认证）可能反向冲击个人题库的价值。</li>
+</ul>
+<h3 id="uditakhouriicdaf-63-stars">📼 UditAkhourii/cdaf — 63 stars</h3>
+<ul>
+<li><strong>定位:</strong> CDAF（Cached Descriptive Asset Files）——<strong>"视频资产的纯文本时间戳 sidecar 格式"</strong>。README 自述 "Stop making AI agents watch the same video twice"——生成一次 <code>.cdaf</code> 文本描述文件（与视频同名同目录），后续 agent 读取文本而非再跑视频理解。</li>
+<li><strong>分类:</strong> 基础设施候选 / video metadata format</li>
+<li><strong>关键事实:</strong> Python / MIT；1 天 63⭐、6 forks、size 107 KB、topics: agentic-ai, ai-agents, file-format, gemini, llm, remotion, sidecar, token-optimization, video, video-understanding；提供 SPEC.md（v1.0）+ CLI（<code>cdaf generate/validate/read/status</code>）+ agent skill（<code>npx cdaf-skill</code>，适配 Claude Code / Codex / Cursor 等）+ benchmarks + arXiv preprint 草稿 + npm/cdaf-skill 双包。</li>
+<li><strong>证据边界:</strong> README 自带的可复现 benchmark（gemini-2.5-flash, 20 questions）报告 "20/20 vs 19/20 accuracy + 10.1× 少 prompt tokens / 题（303 vs 3,066）+ ~35% lower latency"，并声明 ~50× for 60-second footage、生产环境实测 ~1/25th 成本——<strong>这些是项目方自报告数据，未独立核验</strong>；sidecar 文件的具体 schema（哪些字段必填、哪些可选）需阅读 SPEC.md 才能量化；与现有视频元数据格式（FFmpeg metadata、EXIF、ID3）的兼容性未在 README 中明示；agent skill 的具体行为（如何检测 sidecar、如何 fallback 到直接视频分析）需阅读 skills/ 才能核验。</li>
+<li><strong>判断:</strong> 这是 <strong>"video asset metadata as a first-class file format"</strong> 的早期尝试——和 cdaf 同类的"sidecar 模式"在 LLM 训练数据（如 parquet metadata sidecar）与游戏引擎（如 UE4 .uasset sidecar）已有实践，但<strong>针对"AI agent 重复处理同一视频资产"的具体痛点</strong>是新的。63⭐ + 完整 SPEC + CLI + skill + benchmark + arXiv 草稿 + npm 包说明这不是一个 demo 项目，而是"想成为标准"的尝试。<strong>主要价值</strong>是 10× token 节省的可量化收益（README 自报告，但未独立核验）。<strong>主要风险：</strong> 作为 1 天新项目，标准制定能力有限（是否会被 OpenAI / Anthropic / Google 等 MLLM 提供商接纳）；与现有视频编辑工具（Remotion、Premiere、DaVinci）的集成路径未在 README 中明示。</li>
+</ul>
+<h3 id="genexis-aigpt-image-skill-55-stars">🖼️ GENEXIS-AI/gpt-image-skill — 55 stars</h3>
+<ul>
+<li><strong>定位:</strong> 让 Codex / Claude Code 通过用户的 <strong>ChatGPT 订阅</strong> 生成与编辑 GPT 图片——<strong>不走 OpenAI Images API、不消耗独立计费</strong>。README 自述 "Generate and edit GPT images from Codex, Claude Code, or another compatible local agent through the user's <strong>ChatGPT subscription</strong>"。</li>
+<li><strong>分类:</strong> 工具型 / image-generation skill</li>
+<li><strong>关键事实:</strong> JavaScript / 无 license；1 天 55⭐、6 forks、size 2.1 MB（含 build 资产）；topics: agent-skills, chatgpt, codex, claude-code, gpt-image, image-generation；提供 <code>$imagegen</code> 内置命令 + 并行批处理 + 本地 reference 文件接入；安装流程是"粘贴一段引导 prompt → agent 自行 read AGENT_INSTALL.md → bootstrap --target all --yes → 直到 best_practice_pass=true"。</li>
+<li><strong>证据边界:</strong> README 给出 "ChatGPT 订阅 + agent skill + 直接 prompt / 委托多概念 prompt + 本地 image 输入 + 并行批处理 + bounded parallelism" 主路径；ChatGPT 订阅的 image generation 配额消耗速率（README 提示 "image generations use included limits 3–5× faster on average than similar non-image turns"，未独立核验）；并行批处理的实际并发数（README 强调 "intentional and small"，未量化）；与 ChatGPT 官方 Image Generation API 的功能差异（是否支持相同的多模态编辑能力）需源码核验；installation contract 的 AGENT_INSTALL.md 是否覆盖 macOS / Linux / Windows 三平台完整流程需进一步核验。</li>
+<li><strong>判断:</strong> 这是 <strong>"agent skill 订阅制"的代表样本</strong>——延续 8-26 "agent-skills / 单点工作流 × 真实数据"判断，但具体到"用 ChatGPT 订阅替代 OpenAI API key"。<strong>核心产品创新</strong>是"agent skill 自描述安装 contract"——通过粘贴一段引导 prompt，让 agent 自己完成 Git clone / Node.js 安装 / Codex CLI 安装 / device authorization 登录 / readiness 验证。这是 <strong>"agent-driven installation"</strong> 的工程化样本。<strong>主要风险：</strong> ChatGPT 订阅条款对第三方 agent 调用的合规性（OpenAI 是否会限制这种用法）；与 Codex / Claude Code 官方 image generation 功能的竞合。</li>
+</ul>
+<h3 id="ayueh0102ronnier-skill-49-stars">🎨 Ayueh0102/Ronnier-skill — 49 stars</h3>
+<ul>
+<li><strong>定位:</strong> 色彩科學／色度學完整中文學習筆記，<strong>包装为 Claude Code skill + Codex skill</strong>。README 自述涵盖 CIE 色度學、CIEDE2000、CIECAM02、色適應與演色性。延续 8-26 "非英语社区 skill 商品化"判断（bam-bam-2/solo-skills 韩文 / HanyuanWang 中文 / Jordanwei1/jiaojie-skill 中文）。</li>
+<li><strong>分类:</strong> 工具型 / domain-knowledge skill</li>
+<li><strong>关键事实:</strong> PowerShell / 无 license；1 天 49⭐、4 forks、size 474 KB；topics: agent-md, ciecam02, ciede2000, cielab, claude-code, claude-skills, codex, codex-skill, color-appearance, color-science, colorimetry；提供 SKILL frontmatter + 双 harness 适配（Claude Code + Codex）。</li>
+<li><strong>证据边界:</strong> 由于 raw.githubusercontent.com 在本地读取时超时，未能抓取完整 README；topics 与 description 给出的"色度学完整笔记 + Claude/Codex skill 形态"是可信的公开元数据；具体 skill 的 frontmatter 结构、内容深度（是否含可运行的色度学计算代码 vs 纯笔记）、是否提供 MCP server 形态等需进一步核验；与其他色彩相关 skill / 工具（如 color-themes-py / culori）的差异化定位需评估。</li>
+<li><strong>判断:</strong> 这是 <strong>"领域专业知识 × Claude/Codex 双 harness skill"的标准化路径样本</strong>——延续 8-26 "非英语社区 skill 商品化"判断，但具体到"色度学"这种小众硬核专业。若成功，将启发其他垂直学科（法律 / 医学 / 化学）的 skill 化路径。<strong>主要价值</strong>是 Claude Code + Codex 双 harness 适配，意味着同一份笔记可以同时被两类 coding agent 加载。<strong>主要风险：</strong> 49⭐ / 4 forks 仍属早期信号；无 license 阻碍企业 fork；色度学 skill 的真实使用场景（"agent 调用色度学计算" vs "人阅读色度学笔记"）需进一步核验。</li>
+</ul>
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">风险</h3>
+<ul>
+<li><strong>"open-higgsfield 无 license"对企业采用是硬障碍</strong>：wide-trace/open-higgsfield 的仓库无 LICENSE 文件，README 仅强调"开源 + 自部署"，但缺少 OSI 标准 license 会阻碍企业 fork 与商用。<strong>对采用者：</strong> 在开源 license 明确前，不建议 fork 用于商业产品。</li>
+<li><strong>"链上 Bot 内置钱包"的安全风险</strong>：techcomet122583/Polymarket-Telegram-Bot 的 README 未明确披露 bot 内置钱包的私钥归属（用户自托管 vs Bot 服务端托管）。<strong>核心未披露风险：</strong> 若 Bot 服务端托管私钥，则单点泄漏可能导致用户资产损失；若用户自托管私钥，则 Bot 不能直接签名。<strong>对开发者采用：</strong> 在源代码明确披露私钥管理机制前，不应把大额钱包接入此类 bot。</li>
+<li><strong>"1 天新项目"的维护持续性</strong>：今日 6 个 key projects 中 open-higgsfield / Polymarket-Telegram-Bot / interview / cdaf / gpt-image-skill / Ronnier-skill <strong>全部都是 1 天内发布</strong>（created 2026-08-26T0X:XX:XX Z）。<strong>核心风险：</strong> 1 天 stars 不代表项目会持续维护——3 个月后是否还在更新、issue 是否有人响应、模型清单是否还覆盖前沿模型都需观察。<strong>建议：</strong> 对关键路径采用，先观察 30 天看作者活跃度。</li>
+<li><strong>"AI Coding 面试题库"的可信度依赖作者声誉</strong>：CHENG-LIANG1/real-company-interview-ai-coding-projects 是匿名化的"真实题目"，但<strong>"真实"的可信度依赖作者个人声誉</strong>——若作者并非真正经历过这些面试流程，则题库价值大打折扣。<strong>对求职者：</strong> 在采用前先验证作者背景（GitHub 历史项目 / 个人博客 / 社区声誉）。</li>
+<li><strong>"sidecar 格式" 的标准化能力有限</strong>：UditAkhourii/cdaf 想把 CDAF 做成"视频 sidecar 标准"，但作为 1 天新项目，标准化能力有限。<strong>核心风险：</strong> 主流 MLLM 提供商（OpenAI / Anthropic / Google）是否接纳 .cdaf 作为原生输入格式、Remotion / Premiere / DaVinci 等视频编辑工具是否原生生成 .cdaf sidecar——这些是 CDAF 能否成为标准的关键变量。</li>
+</ul>
+<h3 id="_6">机遇</h3>
+<ul>
+<li><strong>"视觉 agent 的双轨优化"是 12 月内最大的成本节约窗口</strong>：open-higgsfield（模型编排层）+ cdaf（资产元数据层）共同证明"视觉 agent 工作流的 token 成本" 是真实可量化的优化机会。<strong>对独立开发者：</strong> 12 月内评估自家视频/图像产品是否需要接入 cdaf sidecar（README 自报告 10× token 节省，但需独立核验）；评估自家 multi-model 需求是否用 open-higgsfield 风格的"per-model 自描述 UI"简化前端工程。</li>
+<li><strong>"agent skill 订阅制" 是 Skill 作者的最佳分发路径</strong>：gpt-image-skill + Ronnier-skill 共同证明 <strong>"用现有订阅替代独立 API key" 是降低用户使用门槛的核心策略</strong>。<strong>对 skill 作者：</strong> 12 月内评估自家 skill 是否能复用 ChatGPT / Claude / Cursor 等现有订阅（避免用户被独立 API key 阻挡）。</li>
+<li><strong>"非英语社区 + 垂直专业知识 × 双 harness skill" 是技能分发的最佳窗口</strong>：Ronnier-skill（色度学 / 中文 / Claude+Codex）+ bam-bam-2/solo-skills（一人企业 / 韩文 / Claude）共同证明 <strong>"非英语社区 × 垂直专业知识 × 跨 harness skill" 是当前 skill 生态的稀缺资产</strong>。<strong>对独立开发者：</strong> 12 月内"垂直学科 × 中文/日文/韩文 × Claude/Codex 双适配 skill" 是最低门槛的 skill 创业路径。</li>
+<li><strong>"AI Coding 面试题库" 是中国技术社区的结构化资产</strong>：CHENG-LIANG1 把三道匿名化的真实题目 + 通用方法论 + 个人解法打包——这是 <strong>"招聘流程知识 × AI Coding 时代"的稀缺沉淀</strong>。<strong>对 AI Coding 培训 / 教育机构：</strong> 12 月内评估此类结构化题库的商业化可能性（订阅 / 一对一辅导 / 课程打包）；<strong>对求职者：</strong> 此类题库是"AI Coding 时代"的备考必备。</li>
+<li><strong>"链上信号 Bot" 的"绕过官方 UI"是产品差异化的稀缺卖点</strong>：Polymarket-Telegram-Bot 的核心创新是"绕过官方 UI 确认弹窗的一键签名"。<strong>对链上产品经理：</strong> 这是"Web3 UX 仍比 Web2 慢"的强证据——链上产品仍有 UI 摩擦，第三方 Bot 有"补 UX" 的真实市场。<strong>对链上创业者：</strong> "信号 + 一键签名" 的 Bot 模式可在其他链上资产（Hyperliquid / dYdX / Jupiter）复用。</li>
+</ul>
+<h2 id="_7">重点项目档案</h2>
+<p>今日新增项目档案：</p>
+<ul>
+<li><strong>新增：</strong> <a href="../projects/open-higgsfield.html">open-higgsfield</a>、<a href="../projects/polymarket-telegram-bot.html">polymarket-telegram-bot</a>、<a href="../projects/real-company-interview-ai-coding-projects.html">real-company-interview-ai-coding-projects</a>、<a href="../projects/cdaf.html">cdaf</a>、<a href="../projects/gpt-image-skill.html">gpt-image-skill</a>、<a href="../projects/ronnier-skill.html">ronnier-skill</a></li>
+<li><strong>观察池（未进入 key projects）</strong>：<a href="../projects/open-skill-sunset.html">open-skill-sunset</a>（73⭐，审计陈旧 agent 指令）、<a href="../projects/creatppt.html">CreatPPT</a>（29⭐，agent-first 演示稿）、<a href="../projects/qwen3.8-flash-next-dual-dgx-sparks.html">Qwen3.8-Flash-Next-Dual-DGX-Sparks</a>（46⭐，2× DGX Spark SGLang TP2）、<a href="../projects/rembrandt-portrait-lighting.html">rembrandt-portrait-lighting</a>（45⭐，伦勃朗光肖像 skill）、<a href="../projects/pstack-for-codex.html">pstack-for-codex</a>（37⭐，Codex marketplace）</li>
+<li><strong>持续跟踪（未变化）：</strong> rome-os/rome / truespar/sentio / ShadowAqueduct/watermark-remover / TarunTomar122/better-voice / forcewake/hermes-conductor / Wu030616/Triad / HanyuanWang/LiveStream-Agent-Studio / ArihantDeva/heimdall / scarletkc/Perenna / mrpulor-gh/nuphus / 2005selene2005-a11y/susu-phone-agent / josiah-nelson/eidos — 维持前一日档案数据</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

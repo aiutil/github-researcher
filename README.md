@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-26.md">Latest report</a> ·
+  <a href="daily/2026-08-27.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-26
+## Latest report · 2026-08-27
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 491 | 5 | 1.2K+ |
+| 6 | 497 | 5 | 1.4K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [HanyuanWang/LiveStream-Agent-Studio](projects/livestream-agent-studio.md) | 167 stars | 工具型 |
-| [ArihantDeva/heimdall](projects/heimdall.md) | 52 stars | 工具型 |
-| [scarletkc/Perenna](projects/perenna.md) | 33 stars | 工具型 |
-| [mrpulor-gh/nuphus](projects/nuphus.md) | 32 stars | 工具型 |
-| [2005selene2005-a11y/susu-phone-agent](projects/susu-phone-agent.md) | 28 stars | 工具型 |
-| [josiah-nelson/eidos](projects/eidos.md) | 124 stars | 工具型 |
+| [wide-trace/open-higgsfield](projects/open-higgsfield.md) | 545 stars | 工具型 |
+| [techcomet122583/Polymarket-Telegram-Bot](projects/polymarket-telegram-bot.md) | 125 stars | 工具型 |
+| [CHENG-LIANG1/real-company-interview-ai-coding-projects](projects/real-company-interview-ai-coding-projects.md) | 100 stars | 观察型 |
+| [UditAkhourii/cdaf](projects/cdaf.md) | 63 stars | 基础设施候选 |
+| [GENEXIS-AI/gpt-image-skill](projects/gpt-image-skill.md) | 55 stars | 工具型 |
+| [Ayueh0102/Ronnier-skill](projects/ronnier-skill.md) | 49 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: ArihantDeva/heimdall, scarletkc/Perenna
-2. **Signal 2** · score 88 · repositories: HanyuanWang/LiveStream-Agent-Studio, 2005selene2005-a11y/susu-phone-agent, mrpulor-gh/nuphus
-3. **Signal 3** · score 84 · repositories: josiah-nelson/eidos
-4. **Signal 4** · score 82 · repositories: HanyuanWang/LiveStream-Agent-Studio, bam-bam-2/solo-skills
+1. **Signal 1** · score 92 · repositories: wide-trace/open-higgsfield, UditAkhourii/cdaf
+2. **Signal 2** · score 88 · repositories: GENEXIS-AI/gpt-image-skill, Ayueh0102/Ronnier-skill, Aqua-123/pstack-for-codex
+3. **Signal 3** · score 84 · repositories: techcomet122583/Polymarket-Telegram-Bot
+4. **Signal 4** · score 80 · repositories: CHENG-LIANG1/real-company-interview-ai-coding-projects
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-26.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-27.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
-| [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 
 ## Why this repository exists
 

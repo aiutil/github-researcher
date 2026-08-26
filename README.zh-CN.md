@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-26.md">最新日报</a> ·
+  <a href="daily/2026-08-27.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-26
+## 最新研究 · 2026-08-27
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 491 | 5 | 1.2K+ |
+| 6 | 497 | 5 | 1.4K+ |
 
-**今日核心判断：** HanyuanWang/LiveStream-Agent-Studio（167 stars）· ArihantDeva/heimdall（52 stars）· scarletkc/Perenna（33 stars）· mrpulor-gh/nuphus（32 stars）· 2005selene2005-a11y/susu-phone-agent（28 stars）· josiah-nelson/eidos（124 stars）
+**今日核心判断：** wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [HanyuanWang/LiveStream-Agent-Studio](projects/livestream-agent-studio.md) | 167 stars | 工具型 |
-| [ArihantDeva/heimdall](projects/heimdall.md) | 52 stars | 工具型 |
-| [scarletkc/Perenna](projects/perenna.md) | 33 stars | 工具型 |
-| [mrpulor-gh/nuphus](projects/nuphus.md) | 32 stars | 工具型 |
-| [2005selene2005-a11y/susu-phone-agent](projects/susu-phone-agent.md) | 28 stars | 工具型 |
-| [josiah-nelson/eidos](projects/eidos.md) | 124 stars | 工具型 |
+| [wide-trace/open-higgsfield](projects/open-higgsfield.md) | 545 stars | 工具型 |
+| [techcomet122583/Polymarket-Telegram-Bot](projects/polymarket-telegram-bot.md) | 125 stars | 工具型 |
+| [CHENG-LIANG1/real-company-interview-ai-coding-projects](projects/real-company-interview-ai-coding-projects.md) | 100 stars | 观察型 |
+| [UditAkhourii/cdaf](projects/cdaf.md) | 63 stars | 基础设施候选 |
+| [GENEXIS-AI/gpt-image-skill](projects/gpt-image-skill.md) | 55 stars | 工具型 |
+| [Ayueh0102/Ronnier-skill](projects/ronnier-skill.md) | 49 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **agent-memory / 持久化与跨 repo 检索** · 相关项目：ArihantDeva/heimdall, scarletkc/Perenna · 强度：90
-2. **agent-runtime / 设备桥与本地优先** · 相关项目：HanyuanWang/LiveStream-Agent-Studio, 2005selene2005-a11y/susu-phone-agent, mrpulor-gh/nuphus · 强度：88
-3. **local-search / 跨机器与离线索引** · 相关项目：josiah-nelson/eidos · 强度：84
-4. **agent-skills / 单点工作流 × 真实数据** · 相关项目：HanyuanWang/LiveStream-Agent-Studio, bam-bam-2/solo-skills · 强度：82
+1. **media-studio / 多模型图像视频编排与 sidecar 缓存** · 相关项目：wide-trace/open-higgsfield, UditAkhourii/cdaf · 强度：92
+2. **agent-skills / 视觉与图像生成走订阅而非 API key** · 相关项目：GENEXIS-AI/gpt-image-skill, Ayueh0102/Ronnier-skill, Aqua-123/pstack-for-codex · 强度：88
+3. **vertical-bots / 实时信号 + 即时签名（链上/预测市场）** · 相关项目：techcomet122583/Polymarket-Telegram-Bot · 强度：84
+4. **interview-knowledge / 真实题面与方法论的结构化整理** · 相关项目：CHENG-LIANG1/real-company-interview-ai-coding-projects · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 | [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
-| [2026-08-20](daily/2026-08-20.md) | 46 | 5 |
 
 ## 为什么做这个项目
 

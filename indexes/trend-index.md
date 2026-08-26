@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-25'
+last_updated: '2026-08-27'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,37 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+## 2026-08-27
+
+### wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | media-studio / 多模型图像视频编排与 sidecar 缓存 | wide-trace/open-higgsfield, UditAkhourii/cdaf | 92 |
+| 2 | agent-skills / 视觉与图像生成走订阅而非 API key | GENEXIS-AI/gpt-image-skill, Ayueh0102/Ronnier-skill, Aqua-123/pstack-for-codex | 88 |
+| 3 | vertical-bots / 实时信号 + 即时签名（链上/预测市场） | techcomet122583/Polymarket-Telegram-Bot | 84 |
+| 4 | interview-knowledge / 真实题面与方法论的结构化整理 | CHENG-LIANG1/real-company-interview-ai-coding-projects | 80 |
+| 5 | agent-workspace / Brief → Web 演示稿 → PPTX 导出 | seekskyworld/CreatPPT | 76 |
+
+#### 当日重点项目
+
+- 🎬 wide-trace/open-higgsfield (545 stars) — 开源的多模型图像/视频 Studio（40 模型，一个 prompt bar，Next.js 16 + React 19 + Zustand），Score 92
+- 🐋 techcomet122583/Polymarket-Telegram-Bot (125 stars) — Polymarket 鲸鱼告警 Telegram Bot（实时大单推送 + 一键签名下单），Score 84
+- 📚 CHENG-LIANG1/real-company-interview-ai-coding-projects (100 stars) — 三道匿名化真实 AI Coding 面试题 + 通用解题方法论（中文），Score 80
+- 📼 UditAkhourii/cdaf (63 stars) — CDAF：视频纯文本时间戳 sidecar 格式（含 SPEC + CLI + skill + benchmark + arXiv 草稿），Score 88
+- 🖼️ GENEXIS-AI/gpt-image-skill (55 stars) — ChatGPT 订阅下的 GPT 图片生成 skill（Codex / Claude Code，不走 Images API），Score 84
+- 🎨 Ayueh0102/Ronnier-skill (49 stars) — 色彩科學／色度學完整中文學習筆記，包装成 Claude Code + Codex skill，Score 78
+
+#### 关键判断
+
+- **"视觉 agent 的双轨优化"正在同步成熟**：open-higgsfield（模型编排层）+ cdaf（资产元数据层）= 视觉 agent 的"运行时 + 数据层"双轨优化，10× token 节省是真实可量化收益
+- **"agent skill 订阅制" 打破"agent skill = 玩具"的认知**：gpt-image-skill 复用 ChatGPT 订阅 + Ronnier-skill 把色度学做成 Claude/Codex skill + pstack-for-codex 把 Cursor 的 pstack 移植到 Codex — skill 已进入"工程化发行"阶段
+- **"链上信号 Bot" 的私钥安全是被低估的风险**：techcomet122583 的 96 forks / 125 stars 体现产品吸引力，但 bot 内置钱包的私钥归属未明示 — 采用前需源码核验
+- **"AI Coding 面试题库" 是中国技术社区的结构化资产**：CHENG-LIANG1 把三道匿名化真实题 + 通用方法论 + 个人解法打包，6-12 月内有商业化潜力
+- **"agent 生成 → 人类编辑"是跨场景的稳定范式**：CreatPPT 把"Brief → Web → PPTX"三阶段拆开 — 把"export 最终产物"作为人类显式决策节点，比"agent 一键生成"更易被采纳
+
 ## 2026-08-26
 
 ### HanyuanWang/LiveStream-Agent-Studio（167 stars） · ArihantDeva/heimdall（52 stars） · scarletkc/Perenna（33 stars） · mrpulor-gh/nuphus（32 stars） · 2005selene2005-a11y/susu-phone-agent（28 stars） · josiah-nelson/eidos（124 stars）

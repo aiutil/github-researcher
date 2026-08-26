@@ -31,7 +31,7 @@
     <div class="filter-bar">
         <div class="filter-group">
             <label>🔤 语言</label>
-            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="Java">Java</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option></select>
+            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="Java">Java</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option><option value="无（Markdown 文档为主）">无（Markdown 文档为主）</option></select>
         </div>
         <div class="filter-group">
             <label>🏷️ 类型</label>
@@ -55,6 +55,72 @@
     </div>
     <div class="filter-empty" id="filter-empty">😢 没有匹配的项目</div>
     <div class="card-grid" id="project-grid">
+                <div class="card" onclick="window.location='/projects/cdaf.html'" style="cursor:pointer" data-language="Python" data-category="基础设施候选" data-stars="63" data-date="2026-08-27" data-name="UditAkhourii/cdaf">
+                    <div class="card-top">
+                        <div class="card-emoji">📼</div>
+                        <div class="card-stars">63 stars</div>
+                    </div>
+                    <div class="card-title">UditAkhourii/cdaf</div>
+                    <div class="card-desc">CDAF（Cached Descriptive Asset Files）— 视频的纯文本时间戳 sidecar 格式，让 AI agent 不再重复视频理解；含 SPEC、CLI、agent skill、可复现 benchmark 与 ar</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-green">基础设施候选</span></div>
+                    <div class="card-actions"><a href="https://github.com/UditAkhourii/cdaf" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/gpt-image-skill.html'" style="cursor:pointer" data-language="JavaScript" data-category="工具型" data-stars="55" data-date="2026-08-27" data-name="GENEXIS-AI/gpt-image-skill">
+                    <div class="card-top">
+                        <div class="card-emoji">🖼️</div>
+                        <div class="card-stars">55 stars</div>
+                    </div>
+                    <div class="card-title">GENEXIS-AI/gpt-image-skill</div>
+                    <div class="card-desc">让 Codex / Claude Code 通过用户的 ChatGPT 订阅生成与编辑 GPT 图片（不走 OpenAI Images API），含安装与签名登录的完整引导。</div>
+                    <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/GENEXIS-AI/gpt-image-skill" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/open-higgsfield.html'" style="cursor:pointer" data-language="TypeScript" data-category="工具型" data-stars="545" data-date="2026-08-27" data-name="wide-trace/open-higgsfield">
+                    <div class="card-top">
+                        <div class="card-emoji">🎬</div>
+                        <div class="card-stars">545 stars</div>
+                    </div>
+                    <div class="card-title">wide-trace/open-higgsfield</div>
+                    <div class="card-desc">开源的多模型图像/视频 Studio — 一个 prompt bar 调度 40 个模型（12 image + 28 video），Next.js 16 App Router on Vercel + React 19 + Zustand。</div>
+                    <div class="card-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/wide-trace/open-higgsfield" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/polymarket-telegram-bot.html'" style="cursor:pointer" data-language="JavaScript" data-category="工具型" data-stars="125" data-date="2026-08-27" data-name="techcomet122583/Polymarket-Telegram-Bot">
+                    <div class="card-top">
+                        <div class="card-emoji">🐋</div>
+                        <div class="card-stars">125 stars</div>
+                    </div>
+                    <div class="card-title">techcomet122583/Polymarket-Telegram-Bot</div>
+                    <div class="card-desc">Polymarket 鲸鱼告警 Telegram Bot — 直连 Polymarket 实时成交流，几秒内推送大单告警，并提供一键签名下单（绕开官方 UI 的确认弹窗卡顿）。</div>
+                    <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/techcomet122583/Polymarket-Telegram-Bot" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/real-company-interview-ai-coding-projects.html'" style="cursor:pointer" data-language="无（Markdown 文档为主）" data-category="观察型" data-stars="100" data-date="2026-08-27" data-name="CHENG-LIANG1/real-company-interview-ai-coding-projects">
+                    <div class="card-top">
+                        <div class="card-emoji">📚</div>
+                        <div class="card-stars">100 stars</div>
+                    </div>
+                    <div class="card-title">CHENG-LIANG1/real-company-interview-ai-coding-projects</div>
+                    <div class="card-desc">三道匿名化的真实 AI Coding 面试项目题（Computer Use Agent Dashboard / React Native 截图 Agent / Jira 风格任务系统）+ 一套通用解题方法论。</div>
+                    <div class="card-tags"><span class="tag tag-purple">无（Markdown 文档为主）</span><span class="tag tag-purple">观察型</span></div>
+                    <div class="card-actions"><a href="https://github.com/CHENG-LIANG1/real-company-interview-ai-coding-projects" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/ronnier-skill.html'" style="cursor:pointer" data-language="PowerShell" data-category="工具型" data-stars="49" data-date="2026-08-27" data-name="Ayueh0102/Ronnier-skill">
+                    <div class="card-top">
+                        <div class="card-emoji">🎨</div>
+                        <div class="card-stars">49 stars</div>
+                    </div>
+                    <div class="card-title">Ayueh0102/Ronnier-skill</div>
+                    <div class="card-desc">色彩科學／色度學完整中文學習筆記，包裝成 Claude Code skill，也支援 Codex（CIE 色度學、CIEDE2000、CIECAM02、色適應與演色性）。</div>
+                    <div class="card-tags"><span class="tag tag-purple">PowerShell</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/Ayueh0102/Ronnier-skill" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-08-27</div>
+                </div>
                 <div class="card" onclick="window.location='/projects/eidos.html'" style="cursor:pointer" data-language="Rust" data-category="工具型" data-stars="124" data-date="2026-08-26" data-name="josiah-nelson/eidos">
                     <div class="card-top">
                         <div class="card-emoji">🔍</div>

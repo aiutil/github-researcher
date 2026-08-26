@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-08-27
+
+**核心主题：** wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🎬 wide-trace/open-higgsfield (545 stars) — 开源的多模型图像/视频 Studio（40 模型，一个 prompt bar，Next.js 16 + React 19 + Zustand），Score 92
+- 🐋 techcomet122583/Polymarket-Telegram-Bot (125 stars) — Polymarket 鲸鱼告警 Telegram Bot（实时大单推送 + 一键签名下单），Score 84
+- 📚 CHENG-LIANG1/real-company-interview-ai-coding-projects (100 stars) — 三道匿名化真实 AI Coding 面试题 + 通用解题方法论（中文），Score 80
+- 📼 UditAkhourii/cdaf (63 stars) — CDAF：视频纯文本时间戳 sidecar 格式（含 SPEC + CLI + skill + benchmark + arXiv 草稿），Score 88
+- 🖼️ GENEXIS-AI/gpt-image-skill (55 stars) — ChatGPT 订阅下的 GPT 图片生成 skill（Codex / Claude Code，不走 Images API），Score 84
+- 🎨 Ayueh0102/Ronnier-skill (49 stars) — 色彩科學／色度學完整中文學習筆記，包装成 Claude Code + Codex skill，Score 78
+
+---
+
 ## 2026-08-26
 
 **核心主题：** HanyuanWang/LiveStream-Agent-Studio（167 stars）· ArihantDeva/heimdall（52 stars）· scarletkc/Perenna（33 stars）· mrpulor-gh/nuphus（32 stars）· 2005selene2005-a11y/susu-phone-agent（28 stars）· josiah-nelson/eidos（124 stars）
