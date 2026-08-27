@@ -8,6 +8,48 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-28
+
+### Tencent/WeMM-Embedding（476 stars）· s0xDk/refactoring-ui-skill（290 stars）· oboroge0/hayamimi（282 stars）· mouredev/hello-sdd（223 stars）· leopard627/fire-your-seo-agency（213 stars）· damejan80/tokentab（211 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | multimodal-foundation / 大厂多模态 embedding 模型族正式开源 | Tencent/WeMM-Embedding | 92 |
+| 2 | agent-skills / 垂直领域专业知识 × Claude Code skill 商品化 | s0xDk/refactoring-ui-skill, leopard627/fire-your-seo-agency, ToolMonsters/hand-raisers, saurabhkumar8112/cyclomatic-complexity-skill | 90 |
+| 3 | edge-asr / CPU-only 实时多语种 ASR + 多说话人 | oboroge0/hayamimi | 86 |
+| 4 | codegen-methodology / SDD 与 token-cost 可观测成为 AI Coding 标配 | mouredev/hello-sdd, damejan80/tokentab | 84 |
+| 5 | personal-os / 个人数据操作系统（财务/健康/知识/人脉/AI 决策） | gtlhuyidan-sketch/life-ipo, mreflow/control-center | 80 |
+
+#### 当日重点项目
+
+- 🧬 Tencent/WeMM-Embedding (476 stars) — 腾讯微信视觉团队的通用多模态 Embedding 模型族（2B/4B/9B + Matryoshka + Apache-2.0），Score 92
+- 🎨 s0xDk/refactoring-ui-skill (290 stars) — 把《Refactoring UI》一书逐页转写为 Claude Code skill（约束性 token + 字重/颜色层级 + 症状诊断），Score 90
+- 👂 oboroge0/hayamimi (282 stars) — CPU-only 实时多语种 ASR（5 路由语言目录 + sherpa-onnx + ~100ms 终稿 + <2GB RAM），Score 86
+- 📐 mouredev/hello-sdd (223 stars) — MoureDev 的《Spec-Driven Development》西语课程（AGENTS.md/spec.md/prompts.md 模板 + habits-cli 实践），Score 84
+- 🔥 leopard627/fire-your-seo-agency (213 stars) — 取代 SEO/GEO 代运营的 Claude Code skill（SEO/AEO/GEO/LLMO/NEO 五赛道拆解），Score 84
+- 📊 damejan80/tokentab (211 stars) — 跨 Claude Code/Codex/Gemini CLI 的本地 token-cost CLI + Web dashboard，Score 82
+
+#### 关键判断
+
+- **"大厂下场 × 多模态 embedding 整套开源"是 RAG / 检索基础设施的关键拐点**：Tencent/WeMM-Embedding（Apache-2.0，2B/4B/9B 三档，文本/图像/视频/视觉文档/交错模态，Matryoshka 可选维度）让中文长视频检索 / 视觉文档 RAG / 跨模态问答有了大厂背书的开源基线；音频不支持仍是已知短板
+- **"成熟方法论 × Claude Code skill"已破圈到设计 / 营销 / 销售 / 工程四领域**：refactoring-ui-skill（设计书）+ fire-your-seo-agency（代运营）+ hand-raisers（销售线索）+ cyclomatic-complexity（静态指标）共同证明"已有成熟方法论 → Claude Code skill"是当前 skill 生态最具分发效率的路径
+- **"CPU-only 实时 ASR"开启"端侧字幕 / 会议记录 / 听障辅助"普及窗口**：hayamimi 用 sherpa-onnx + INT8 + 5 路由语言目录 + ~100ms 终稿延迟在 6 核桌面 CPU 上 10-50× realtime — ASR 不再是云服务专属
+- **"AI Coding 课程化 + 成本可观测产品化"是 AI Coding 团队普及的双轨**：mouredev/hello-sdd（西语 SDD 完整课程）+ damejan80/tokentab（跨 Claude Code/Codex/Gemini CLI token-cost CLI）共同证明 AI Coding 已从"个人尝鲜"进入"团队普及"
+- **"个人数据 OS"赛道从知识管理扩展到全维度个人资产**：life-ipo（284⭐ 中文个人 IPO）+ control-center（102⭐ 本地 BI）共同证明"agent 时代个人数据 OS"是 2026 下半年被低估的赛道
+
+#### 排名变化与新晋
+
+- 新入榜（TOP 6）：Tencent/WeMM-Embedding、s0xDk/refactoring-ui-skill、oboroge0/hayamimi、mouredev/hello-sdd、leopard627/fire-your-seo-agency、damejan80/tokentab
+- 持续上榜（≥2 天）：s0xDk/refactoring-ui-skill（8-27 在跟踪观察池中，今日正式进入 key projects）、oboroge0/hayamimi（8-27 在跟踪观察池中）、leopard627/fire-your-seo-agency（8-27 在跟踪观察池中）
+- 滑出 TOP 6：wide-trace/open-higgsfield（仍 810⭐但今日为持续观察，不进入 key projects）、CHENG-LIANG1/real-company-interview-ai-coding-projects、UditAkhourii/cdaf、GENEXIS-AI/gpt-image-skill、Ayueh0102/Ronnier-skill、techcomet122583/Polymarket-Telegram-Bot
+
+#### 异常信号
+
+- **HEJustinSun/my-girlfriend-jingtian-latex（1024⭐/1 天）**：无描述、无 license、TeX 项目，1 天 1024⭐ 远超同期其他项目——可能是社交媒体引流、fork 数异常、或刷量行为。在 README/项目质量未核验前不建议采用
+- **Cleverfuxaqo1668/Polymarket-Telegram-Bot（167⭐/1 天）**：与 8-27 techcomet122583/Polymarket-Telegram-Bot（125⭐）功能描述高度相似（whale 告警 + Telegram Bot + 一键签名），但作者不同——可能是同源代码 fork 重发 / 模板化快速复制
 ## 2026-08-27
 
 ### wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）

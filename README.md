@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-27.md">Latest report</a> ·
+  <a href="daily/2026-08-28.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-27
+## Latest report · 2026-08-28
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 497 | 5 | 1.4K+ |
+| 6 | 503 | 5 | 2.1K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [wide-trace/open-higgsfield](projects/open-higgsfield.md) | 545 stars | 工具型 |
-| [techcomet122583/Polymarket-Telegram-Bot](projects/polymarket-telegram-bot.md) | 125 stars | 工具型 |
-| [CHENG-LIANG1/real-company-interview-ai-coding-projects](projects/real-company-interview-ai-coding-projects.md) | 100 stars | 观察型 |
-| [UditAkhourii/cdaf](projects/cdaf.md) | 63 stars | 基础设施候选 |
-| [GENEXIS-AI/gpt-image-skill](projects/gpt-image-skill.md) | 55 stars | 工具型 |
-| [Ayueh0102/Ronnier-skill](projects/ronnier-skill.md) | 49 stars | 工具型 |
+| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 476 stars | 基础设施候选 |
+| [s0xDk/refactoring-ui-skill](projects/refactoring-ui-skill.md) | 290 stars | 工具型 |
+| [oboroge0/hayamimi](projects/hayamimi.md) | 282 stars | 工具型 |
+| [mouredev/hello-sdd](projects/hello-sdd.md) | 223 stars | 观察型 |
+| [leopard627/fire-your-seo-agency](projects/fire-your-seo-agency.md) | 213 stars | 工具型 |
+| [damejan80/tokentab](projects/tokentab.md) | 211 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: wide-trace/open-higgsfield, UditAkhourii/cdaf
-2. **Signal 2** · score 88 · repositories: GENEXIS-AI/gpt-image-skill, Ayueh0102/Ronnier-skill, Aqua-123/pstack-for-codex
-3. **Signal 3** · score 84 · repositories: techcomet122583/Polymarket-Telegram-Bot
-4. **Signal 4** · score 80 · repositories: CHENG-LIANG1/real-company-interview-ai-coding-projects
+1. **Signal 1** · score 92 · repositories: Tencent/WeMM-Embedding
+2. **Signal 2** · score 90 · repositories: s0xDk/refactoring-ui-skill, leopard627/fire-your-seo-agency, ToolMonsters/hand-raisers, saurabhkumar8112/cyclomatic-complexity-skill
+3. **Signal 3** · score 86 · repositories: oboroge0/hayamimi
+4. **Signal 4** · score 84 · repositories: mouredev/hello-sdd, damejan80/tokentab
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-27.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-28.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
-| [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 
 ## Why this repository exists
 

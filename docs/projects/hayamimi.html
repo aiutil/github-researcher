@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oboroge0/hayamimi | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/oboroge0/hayamimi" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="oboroge0hayamimi">oboroge0/hayamimi</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>CPU-only 实时多语种 ASR</strong> ——早耳 (hayamimi) 用 sherpa-onnx + INT8 量化的 ONNX 模型，在 6 核桌面 CPU 上 10-50× realtime，5 路由语言目录（ja/zh/ko/yue/en+24 EU + ~1600 回退 Omnilingual），部分字幕 + ~100ms 终稿延迟，&lt;2GB RAM。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年实时 ASR 仍面临三类痛点：(1) <strong>GPU/云端依赖</strong>——主流实时 ASR（Whisper-large-v3 / Deepgram / AssemblyAI）需要云端 API 或本地 GPU，部署成本高；(2) <strong>单一模型精度天花板</strong>——Whisper-large-v3-turbo 在日语真实广播音频上仅 13.8% CER，难以满足专业场景；(3) <strong>事后转写体验</strong>——传统 ASR 必须等用户说完才输出，无法做"边说边显"的实时字幕。hayamimi 直击这三点：<strong>CPU-only + 5 路由专科模型 + 部分字幕 + ~100ms 终稿延迟</strong>。</p>
+<h2 id="2026-08-28">为什么值得关注（2026-08-28）</h2>
+<ul>
+<li><strong>3 天 282⭐ + 15 forks</strong>：CPU-only ASR 是本地优先运动的代表性应用</li>
+<li><strong>README 自述 5.8% CER</strong>：在真实广播日语音频上 CER 不到 Whisper-large-v3-turbo（13.8% CER）的一半</li>
+<li><strong>10-50× realtime on 6-core desktop CPU</strong>：CPU-only 不是低性能，是"用专科模型换取的更优精度+延迟"</li>
+<li><strong>5 路由语言目录</strong>：ja/zh/ko/yue/en+24 EU 各自路由到 best-in-class 专科模型；其余 ~1600 语言回退到 Meta Omnilingual ASR</li>
+<li><strong>部分字幕 + ~100ms 终稿延迟</strong>：README 自述"a finalized line typically lands ~100ms after you stop talking"——字幕工具从"事后"变"边说边显"</li>
+<li><strong>&lt;2GB RAM</strong>：轻量部署</li>
+<li><strong>MIT 许可</strong>：商用友好（README badge）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>热度来自 <strong>"CPU-only ASR 刚需 × 5 路由专科模型 × 部分字幕体验 × &lt;2GB RAM 轻量"</strong> 的组合：(1) 字幕 / 会议记录 / 跨语种同传 / 听障辅助 / 播客制作等场景对实时 ASR 的强需求；(2) 云 ASR 服务的延迟 + 隐私 + 成本三痛点；(3) 部分字幕 + ~100ms 终稿延迟是"边说边显"的真实体验突破。<strong>主要风险：</strong> 5.8% CER 是项目方自报告（仅限日语真实广播音频），<strong>未独立核验</strong>；与云 ASR 的功能差距（说话人识别 / 自定义词汇 / 多语种混合）未在 README 中明示；5 路由专科模型的 license 堆叠（涉及 Whisper / Meta Omnilingual / 各专科模型）。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>5 路由语言目录</strong>：根据语言路由到专科模型，避免 Whisper "一刀切"的精度天花板</li>
+<li><strong>sherpa-onnx + INT8 量化</strong>：所有模型以 INT8 ONNX 形式运行，无 PyTorch / CUDA 依赖</li>
+<li><strong>部分字幕</strong>：in-progress draft text 每 ~0.5s 更新，用户还在说话时即显示部分结果</li>
+<li><strong>~100ms 终稿延迟</strong>：用户停止说话后约 100ms 即出现最终行</li>
+<li><strong>CPU-only + &lt;2GB RAM</strong>：可在 6 核桌面 CPU 上 10-50× realtime，无需 GPU</li>
+<li><strong>浏览器 dashboard + speaker labels + on-the-fly translation</strong>：完整 Web UI</li>
+<li><strong>MIT 许可</strong>：商用友好</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Python 客户端 + sherpa-onnx 推理引擎 + 5 路由 ONNX 模型集 + 浏览器 dashboard；不含训练 pipeline</td>
+<td>仅基于 README 的"sherpa-onnx + INT8 + 5 routes + browser dashboard"；具体客户端架构（CLI / lib / server）、浏览器 dashboard 栈（WebSocket？WebRTC？）、说话人识别的实现路径未在档案中量化</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>音频流 → VAD 检测 → 按语种路由到专科 ONNX 模型 → 部分字幕 (~0.5s 更新) → 终稿字幕 (~100ms 后) → 浏览器 dashboard 实时显示 + speaker labels + 翻译</td>
+<td>主路径来自 README 的 "5-route language catalog · partial subtitles · fast finals"；具体 VAD 实现、说话人识别算法、翻译模型是否本地还是云端均未在档案中明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多语种覆盖 vs 单语种精度 vs 推理延迟 vs CPU-only 部署 vs 专科模型 license 堆叠 vs 内存占用</td>
+<td>档案明示 5.8% CER / 10-50× realtime / &lt;2GB RAM；专科模型 license 兼容性、说话人识别准确度、翻译质量、与 Deepgram / AssemblyAI 的功能覆盖差距均待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>下载 sherpa-onnx 权重 → 在 6 核桌面 CPU 跑日语真实广播音频 → 验证 5.8% CER / 10× realtime → 对比 Whisper-large-v3-turbo 的 13.8% CER</td>
+<td>PoC 范围由"先单语种（ja）、可对照"原则推导；具体语种路由准确性、部分字幕延迟实测、说话人识别效果待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>hayamimi 的核心启发是 <strong>"本地优先 × ASR 实时推理"是 2026 年的关键技术拐点</strong> ——把"实时 ASR"从云服务专属能力下沉到 6 核桌面 CPU。<strong>这意味着"本地优先"已从 runtime 扩展到 ML 推理层</strong> ——和 8-25 的 nuphus（Rust + Tauri v2 + 本地优先）形成同期合流，本地优先已是 2026 下半年的明显趋势。<strong>更深层的启发是：</strong> "5 路由专科模型" 比"通用大模型"在精度 / 延迟 / 资源占用上都更优——这与"agent 时代的 small specialist models"判断一致（8-26 的 heimdall 用 CPU embedding、8-27 的 cdaf 用 local 模型选项）。<strong>对开发者：</strong> 评估自家产品是否能用"专科模型组合"替代"通用大模型 API"，在精度 / 延迟 / 成本 / 隐私上可能都有收益。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Audio[音频流] --> VAD[VAD 检测]
+  VAD --> Router[5 路由语种路由<br/>ja/zh/ko/yue/en+24 EU]
+  Router --> JA[日语专科 ONNX<br/>INT8 量化]
+  Router --> ZH[中文专科 ONNX]
+  Router --> KO[韩语专科 ONNX]
+  Router --> YUE[粤语专科 ONNX]
+  Router --> EN[英语 + 24 EU 专科 ONNX]
+  Router --> Fallback[其余 ~1600 语种<br/>Meta Omnilingual ASR]
+  JA --> Partial[部分字幕<br/>~0.5s 更新]
+  ZH --> Partial
+  KO --> Partial
+  YUE --> Partial
+  EN --> Partial
+  Fallback --> Partial
+  Partial --> Final[终稿字幕<br/>~100ms 延迟]
+  Final --> Dash[浏览器 dashboard<br/>speaker labels + 翻译]
+  JA -.自报告.-> CER[5.8% CER<br/>真实广播日语音频<br/>vs Whisper 13.8%]
+  Fallback -.待核验.-> License[专科模型 license 堆叠<br/>商用兼容性]
+  Dash -.待核验.-> Speaker[说话人识别<br/>未明示具体算法]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（edge ASR）。</strong> hayamimi 不做云 ASR 服务，不做 ASR 训练框架，只做"CPU-only 实时多语种 ASR 客户端 + 浏览器 dashboard"——这是工具型定位。<strong>核心竞争壁垒：</strong> sherpa-onnx + INT8 + 5 路由专科模型 + &lt;2GB RAM + MIT 许可。<strong>主要风险：</strong> 自报告 5.8% CER 未独立核验；与云 ASR 的功能差距（说话人识别 / 自定义词汇 / 多语种混合）未明示；5 路由专科模型 license 兼容性未明示。若持续维护 + 精度被独立核验，<strong>12 月内有潜力成为"本地优先 ASR"的开源标杆</strong>。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>自报告 CER 未独立核验</strong>：5.8% CER 仅限日语真实广播音频，<strong>其他语种精度未在 README 中明示</strong></li>
+<li><strong>专科模型 license 兼容性</strong>：5 路由专科模型（ja/zh/ko/yue/en+24 EU）涉及 Whisper / Meta Omnilingual / 各专科模型的 license 堆叠，商用前需逐项核验</li>
+<li><strong>与云 ASR 的功能差距</strong>：说话人识别准确度、自定义词汇、多语种混合、音频质量恢复等功能未在 README 中明示</li>
+<li><strong>NOASSERTION GitHub license</strong>：与 README badge 的 MIT 不一致，需以 LICENSE 文件实际内容为准</li>
+<li><strong>CPU 资源门槛</strong>：10-50× realtime 需 6 核桌面 CPU，低端设备可能无法满足</li>
+<li><strong>部分字幕的体验</strong>：~0.5s 部分字幕更新可能仍有"字幕跳动"问题</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Whisper-large-v3（OpenAI）</strong>：通用 ASR，单模型精度天花板 13.8% CER（ja），hayamimi 专科模型 5.8% CER</li>
+<li><strong>vs Whisper API / Deepgram / AssemblyAI</strong>：云 ASR 服务，hayamimi 是本地替代品</li>
+<li><strong>vs sherpa-onnx 生态（k2-fsa/sherpa-onnx）</strong>：hayamimi 是 sherpa-onnx 的产品化应用</li>
+<li><strong>vs Meta Omnilingual ASR</strong>：hayamimi 的"其余 ~1600 语种"回退到 Omnilingual</li>
+<li><strong>vs 8-25 nuphus（本地优先 runtime）</strong>：同期合流的"本地优先"应用案例</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（本地优先 ASR 的代表性产品）。</strong> hayamimi 3 天 282⭐ 体现"本地优先 ASR"的市场需求，<strong>5.8% CER / 10-50× realtime / &lt;2GB RAM 三指标组合是显著加分项</strong>。<strong>对独立开发者：</strong> 12 月内可把直播字幕 / 会议记录 / 跨语种同传 / 听障辅助 / 播客制作等场景下沉到本地。<strong>对企业 IT：</strong> 评估"本地 ASR"是否能替代部分 Whisper API / Deepgram 采购，<strong>特别在金融 / 政府 / 医疗等强合规场景</strong>。建议关注：(1) 自报告 CER 是否被独立核验；(2) 5 路由专科模型 license 兼容性；(3) 是否会被云 ASR 服务反向冲击（功能差距能否追上）。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>自报告 5.8% CER 是否被独立核验（其他语种精度）</li>
+<li>5 路由专科模型 license 兼容性（商用前需逐项核验）</li>
+<li>与 Deepgram / AssemblyAI 的功能差距（说话人识别 / 自定义词汇 / 多语种混合）</li>
+<li>部分字幕的体验优化（~0.5s 字幕跳动问题）</li>
+<li>是否会被云 ASR 服务反向冲击</li>
+<li>在低端设备（4 核 / 2GB RAM）的可用性</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-08-28) | Stars: 282 | Forks: 15 | License: MIT (README badge) | 语言: Python | 创建: 2026-08-25 | 数据截至 2026-08-28 06:00 UTC</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

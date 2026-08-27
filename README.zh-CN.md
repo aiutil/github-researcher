@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-27.md">最新日报</a> ·
+  <a href="daily/2026-08-28.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-27
+## 最新研究 · 2026-08-28
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 497 | 5 | 1.4K+ |
+| 6 | 503 | 5 | 2.1K+ |
 
-**今日核心判断：** wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）
+**今日核心判断：** Tencent/WeMM-Embedding（476 stars）· s0xDk/refactoring-ui-skill（290 stars）· oboroge0/hayamimi（282 stars）· mouredev/hello-sdd（223 stars）· leopard627/fire-your-seo-agency（213 stars）· damejan80/tokentab（211 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [wide-trace/open-higgsfield](projects/open-higgsfield.md) | 545 stars | 工具型 |
-| [techcomet122583/Polymarket-Telegram-Bot](projects/polymarket-telegram-bot.md) | 125 stars | 工具型 |
-| [CHENG-LIANG1/real-company-interview-ai-coding-projects](projects/real-company-interview-ai-coding-projects.md) | 100 stars | 观察型 |
-| [UditAkhourii/cdaf](projects/cdaf.md) | 63 stars | 基础设施候选 |
-| [GENEXIS-AI/gpt-image-skill](projects/gpt-image-skill.md) | 55 stars | 工具型 |
-| [Ayueh0102/Ronnier-skill](projects/ronnier-skill.md) | 49 stars | 工具型 |
+| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 476 stars | 基础设施候选 |
+| [s0xDk/refactoring-ui-skill](projects/refactoring-ui-skill.md) | 290 stars | 工具型 |
+| [oboroge0/hayamimi](projects/hayamimi.md) | 282 stars | 工具型 |
+| [mouredev/hello-sdd](projects/hello-sdd.md) | 223 stars | 观察型 |
+| [leopard627/fire-your-seo-agency](projects/fire-your-seo-agency.md) | 213 stars | 工具型 |
+| [damejan80/tokentab](projects/tokentab.md) | 211 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **media-studio / 多模型图像视频编排与 sidecar 缓存** · 相关项目：wide-trace/open-higgsfield, UditAkhourii/cdaf · 强度：92
-2. **agent-skills / 视觉与图像生成走订阅而非 API key** · 相关项目：GENEXIS-AI/gpt-image-skill, Ayueh0102/Ronnier-skill, Aqua-123/pstack-for-codex · 强度：88
-3. **vertical-bots / 实时信号 + 即时签名（链上/预测市场）** · 相关项目：techcomet122583/Polymarket-Telegram-Bot · 强度：84
-4. **interview-knowledge / 真实题面与方法论的结构化整理** · 相关项目：CHENG-LIANG1/real-company-interview-ai-coding-projects · 强度：80
+1. **multimodal-foundation / 大厂多模态 embedding 模型族正式开源** · 相关项目：Tencent/WeMM-Embedding · 强度：92
+2. **agent-skills / 垂直领域专业知识 × Claude Code skill 商品化** · 相关项目：s0xDk/refactoring-ui-skill, leopard627/fire-your-seo-agency, ToolMonsters/hand-raisers, saurabhkumar8112/cyclomatic-complexity-skill · 强度：90
+3. **edge-asr / CPU-only 实时多语种 ASR + 多说话人** · 相关项目：oboroge0/hayamimi · 强度：86
+4. **codegen-methodology / SDD 与 token-cost 可观测成为 AI Coding 标配** · 相关项目：mouredev/hello-sdd, damejan80/tokentab · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 | [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
-| [2026-08-21](daily/2026-08-21.md) | 39 | 5 |
 
 ## 为什么做这个项目
 

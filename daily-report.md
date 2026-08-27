@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-08-28
+
+**核心主题：** Tencent/WeMM-Embedding（476 stars）· s0xDk/refactoring-ui-skill（290 stars）· oboroge0/hayamimi（282 stars）· mouredev/hello-sdd（223 stars）· leopard627/fire-your-seo-agency（213 stars）· damejan80/tokentab（211 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧬 Tencent/WeMM-Embedding (476 stars) — 腾讯微信视觉团队的通用多模态 Embedding 模型族（2B/4B/9B + Matryoshka + Apache-2.0），Score 92
+- 🎨 s0xDk/refactoring-ui-skill (290 stars) — 把《Refactoring UI》一书逐页转写为 Claude Code skill（约束性 token + 字重/颜色层级 + 症状诊断），Score 90
+- 👂 oboroge0/hayamimi (282 stars) — CPU-only 实时多语种 ASR（5 路由语言目录 + sherpa-onnx + ~100ms 终稿 + <2GB RAM），Score 86
+- 📐 mouredev/hello-sdd (223 stars) — MoureDev 的《Spec-Driven Development》西语课程（AGENTS.md/spec.md/prompts.md 模板 + habits-cli 实践），Score 84
+- 🔥 leopard627/fire-your-seo-agency (213 stars) — 取代 SEO/GEO 代运营的 Claude Code skill（SEO/AEO/GEO/LLMO/NEO 五赛道拆解），Score 84
+- 📊 damejan80/tokentab (211 stars) — 跨 Claude Code/Codex/Gemini CLI 的本地 token-cost CLI + Web dashboard，Score 82
+
+**关键判断：**
+- **"大厂下场 × 多模态 embedding 整套开源"是 RAG / 检索基础设施的关键拐点**：Tencent/WeMM-Embedding（Apache-2.0，2B/4B/9B 三档，文本/图像/视频/视觉文档/交错模态，Matryoshka 可选维度）让中文长视频检索 / 视觉文档 RAG / 跨模态问答有了大厂背书的开源基线；音频不支持仍是已知短板
+- **"成熟方法论 × Claude Code skill"已破圈到设计 / 营销 / 销售 / 工程四领域**：refactoring-ui-skill（设计书）+ fire-your-seo-agency（代运营）+ hand-raisers（销售线索）+ cyclomatic-complexity（静态指标）共同证明"已有成熟方法论 → Claude Code skill"是当前 skill 生态最具分发效率的路径
+- **"CPU-only 实时 ASR"开启"端侧字幕 / 会议记录 / 听障辅助"普及窗口**：hayamimi 用 sherpa-onnx + INT8 + 5 路由语言目录 + ~100ms 终稿延迟在 6 核桌面 CPU 上 10-50× realtime — ASR 不再是云服务专属
+- **"AI Coding 课程化 + 成本可观测产品化"是 AI Coding 团队普及的双轨**：mouredev/hello-sdd（西语 SDD 完整课程）+ damejan80/tokentab（跨 Claude Code/Codex/Gemini CLI token-cost CLI）共同证明 AI Coding 已从"个人尝鲜"进入"团队普及"
+- **"个人数据 OS"赛道从知识管理扩展到全维度个人资产**：life-ipo（284⭐ 中文个人 IPO）+ control-center（102⭐ 本地 BI）共同证明"agent 时代个人数据 OS"是 2026 下半年被低估的赛道
+
 ## 2026-08-27
 
 **核心主题：** wide-trace/open-higgsfield（545 stars）· techcomet122583/Polymarket-Telegram-Bot（125 stars）· CHENG-LIANG1/real-company-interview-ai-coding-projects（100 stars）· UditAkhourii/cdaf（63 stars）· GENEXIS-AI/gpt-image-skill（55 stars）· Ayueh0102/Ronnier-skill（49 stars）
