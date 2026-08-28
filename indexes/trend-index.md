@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-27'
+last_updated: '2026-08-29'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,52 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-29
+
+### sapientinc/PRAXIST（1451 stars）· crmne/fastpotify（388 stars）· Nanako0129/sepia（245 stars）· XiaoDuoYa/codex-with-chatgpt（239 stars）· acryldev/acryl（219 stars）· buaacyw/code-world-model（205 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | autonomous-research / 可测量的计算机可执行研究系统正式开源（arXiv + PyPI 双发） | sapientinc/PRAXIST | 94 |
+| 2 | native-spotify-client / Rust + egui + librespot 跨平台原生 Spotify 客户端替代 | crmne/fastpotify | 86 |
+| 3 | humanizer-skill / 从表面润色升级到叙事架构层的去 AI 化写作 skill | Nanako0129/sepia | 86 |
+| 4 | harness-economy / ChatGPT 订阅 + Codex Harness 的 MCP 只读桥接 | XiaoDuoYa/codex-with-chatgpt | 84 |
+| 5 | agent-agnostic-ade / 跨多 Agent Harness 的上下文接力 + 持久工作空间 | acryldev/acryl, XiaoDuoYa/codex-with-chatgpt | 82 |
+| 6 | code-world-model / Coding Agent 作为世界大脑的论文 + LoRA 权重开放 | buaacyw/code-world-model | 80 |
+
+#### 当日重点项目
+
+- 🧪 sapientinc/PRAXIST (1451 stars) — Sapient Inc. 的 autonomous research system（并行研究节点 + 多代合成 + evidence lanes + QD/DIG + 中央资源调度 + Codex/Claude Code skill pack + arXiv 2608.25955），Score 94
+- 🎵 crmne/fastpotify (388 stars) — Rust + egui + librespot 跨平台原生 Spotify 客户端（<1s 启动、无浏览器引擎、Connect 双向 + mDNS 反发现），Score 86
+- ✍️ Nanako0129/sepia (245 stars) — narrative architecture 级去 AI 化写作 skill（StoryScope arXiv 2604.03136 测得 93.2% 漏洞驱动；Claude Code/Codex/Grok Build/Antigravity 四平台），Score 86
+- 🧠 XiaoDuoYa/codex-with-chatgpt (239 stars) — 把 ChatGPT 订阅变成 Codex 的规划/审查大脑，OAuth 受保护的只读 MCP 桥接，Score 84
+- 🔗 acryldev/acryl (219 stars) — Agent-agnostic ADE 与 continuity layer（持久工作空间 + 上下文接力 + Claude Code/Codex/OpenCode/Pi/Gemini/DeepSeek Harness 接入），Score 82
+- 🌍 buaacyw/code-world-model (205 stars) — 西湖大学 AGI Lab + 南洋理工的"Code World Model"研究（论文 arXiv 2608.25927 + LoRA + 40 例推理样本 + 一键脚本），Score 80
+
+#### 关键判断
+
+- **"autonomous research system"作为企业研发自动化的下一品类首次完整开源**：PRAXIST 把 research 建模为"长期可监控、可恢复、可重放"进程，通过 Codex/Claude Code skill 集合接入主流 Coding Agent Harness，PyPI `praxist[agents,codex]` + arXiv 2608.25955 + 文档站 + Discord 一体发布；1451⭐/2 天说明这是真实企业痛点
+- **"humanizer / 去 AI 化"赛道正式从表面润色升级到叙事架构层**：StoryScope arXiv 2604.03136 测得 narrative-structure features 单独分类达 93.2% macro-F1、改 surface style 仅 95.5% → 93.9%——sepia 把"主题被叙述者解释 / 单线因果 / 情感只以躯体呈现 / 没有真实指涉 / 没有读者 / 线性时间 / 主角成长收尾"七类叙事架构指纹形式化为可操作三遍协议
+- **"思考 / 执行分离"是 AI Coding 经济学的下一战场**：codex-with-chatgpt 把 ChatGPT 网页订阅（Plus/Pro）闲置 vs Codex API 紧张的真实矛盾用 OAuth 受保护的只读 MCP 桥拼起来——订阅 vs API 成本差异可达 10×
+- **"ADE as Continuity Layer"是 agent harness 经济的护城河**：acryl 把"harness 可替换"做成中间层（持久工作空间 + 项目上下文 + 任务 + 工件 + handoffs），与 8-26 heimdall/Perenna 的"memory as MCP"形成同期合流，是 next step
+- **"Coding Agent × World Model"是软件工程自动化的潜在新范式**：CWM 把 world model 引入 coding 任务（"Coding Agent as World Brain"），论文 + LoRA + 推理样本 + 一键脚本四件套同时开源，是 2026 年 ML 研究发布的"完整可复现"最低标准；但 paper 复现性需独立核验
+
+#### 排名变化与新晋
+
+- 新入榜（TOP 6）：sapientinc/PRAXIST、crmne/fastpotify、Nanako0129/sepia、XiaoDuoYa/codex-with-chatgpt、acryldev/acryl、buaacyw/code-world-model
+- 持续上榜（≥2 天）：无（今日 6 个均为新晋）
+- 滑出 TOP 6：Tencent/WeMM-Embedding（仍持续观察）、s0xDk/refactoring-ui-skill（仍持续观察）、oboroge0/hayamimi（仍持续观察）、mouredev/hello-sdd（仍持续观察）、leopard627/fire-your-seo-agency（仍持续观察）、damejan80/tokentab（仍持续观察）
+
+#### 异常信号
+
+- **PRAXIST 1451⭐/2 天的"虚假峰值"风险**：autonomous research 是真实痛点但需长期采用验证；若 30 天内未在公开 ML 研究团队见到真实采用证据，应回归观察；Fair Source License 的商业边界也需独立核验
+- **ChatGPT ↔ Codex MCP 桥的政策风险**：OpenAI 官方对"第三方桥接 ChatGPT 网页订阅"的政策不透明，若官方封禁此类桥接（类似 Anthropic 对 third-party OAuth 客户端的态度），239⭐/1 天可能归零
+- **sepia 的合规反扑风险**：humanizer 赛道被学校 / 新闻 / 出版视为"绕过 AI 检测"，可能引发监管反扑（特别是 EU AI Act / 中国生成式 AI 服务管理办法对"AI 生成内容标识"的强制要求）
+
+---
 
 ## 2026-08-28
 

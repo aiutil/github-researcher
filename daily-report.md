@@ -4,7 +4,32 @@
 
 ---
 
+## 2026-08-29
+
+**核心主题：** sapientinc/PRAXIST（1451 stars）· crmne/fastpotify（388 stars）· Nanako0129/sepia（245 stars）· XiaoDuoYa/codex-with-chatgpt（239 stars）· acryldev/acryl（219 stars）· buaacyw/code-world-model（205 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧪 sapientinc/PRAXIST (1451 stars) — Sapient Inc. 的 autonomous research system（并行研究节点 + 多代合成 + evidence lanes + QD/DIG + Codex/Claude Code skill pack + arXiv 2608.25955），Score 94
+- 🎵 crmne/fastpotify (388 stars) — Rust + egui + librespot 跨平台原生 Spotify 客户端（<1s 启动、无浏览器引擎、Connect 双向 + mDNS 反发现），Score 86
+- ✍️ Nanako0129/sepia (245 stars) — narrative architecture 级去 AI 化写作 skill（StoryScope 测得 93.2% 漏洞驱动；Claude Code/Codex/Grok Build/Antigravity 四平台），Score 86
+- 🧠 XiaoDuoYa/codex-with-chatgpt (239 stars) — ChatGPT 订阅 + Codex Harness 的只读 MCP 桥（OAuth 受保护、零 API Key），Score 84
+- 🔗 acryldev/acryl (219 stars) — Agent-agnostic ADE 与 continuity layer（持久工作空间 + 上下文接力 + 六大 Harness 接入），Score 82
+- 🌍 buaacyw/code-world-model (205 stars) — 西湖大学 AGI Lab + 南洋理工的"Code World Model"研究（论文 + LoRA + 40 例样本 + 一键脚本），Score 80
+
+**关键判断：**
+- **"autonomous research system"首次完整开源**：PRAXIST 把研究建模为"长期可监控、可恢复、可重放"进程，与 Codex/Claude Code 集成一体发布——1451⭐/2 天说明这是真实企业痛点
+- **"humanizer / 去 AI 化"从表面润色升级到叙事架构层**：StoryScope 测得 narrative-structure 单独分类 93.2%、改 surface style 仅 95.5% → 93.9%；sepia 把七类架构指纹形式化为可操作三遍协议
+- **"思考 / 执行分离"是 AI Coding 经济学的下一战场**：codex-with-chatgpt 把 ChatGPT 订阅闲置与 Codex API 紧张用只读 MCP 桥拼起来——订阅 vs API 成本差异可达 10×
+- **"ADE as Continuity Layer"是 agent harness 经济的护城河**：acryl 把"harness 可替换"做成中间层，与 8-26 heimdall/Perenna "memory as MCP"形成同期合流
+- **"Coding Agent × World Model"是软件工程自动化的潜在新范式**：CWM 把 world model 引入 coding 任务，论文 + LoRA + 样本 + 脚本四件套开源——但 paper 复现性需独立核验
+
+---
+
 ## 2026-08-28
+
+
 
 **核心主题：** Tencent/WeMM-Embedding（476 stars）· s0xDk/refactoring-ui-skill（290 stars）· oboroge0/hayamimi（282 stars）· mouredev/hello-sdd（223 stars）· leopard627/fire-your-seo-agency（213 stars）· damejan80/tokentab（211 stars）
 

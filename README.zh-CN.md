@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-28.md">最新日报</a> ·
+  <a href="daily/2026-08-29.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-28
+## 最新研究 · 2026-08-29
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 503 | 5 | 2.1K+ |
+| 6 | 509 | 5 | 2.7K+ |
 
-**今日核心判断：** Tencent/WeMM-Embedding（476 stars）· s0xDk/refactoring-ui-skill（290 stars）· oboroge0/hayamimi（282 stars）· mouredev/hello-sdd（223 stars）· leopard627/fire-your-seo-agency（213 stars）· damejan80/tokentab（211 stars）
+**今日核心判断：** sapientinc/PRAXIST（1451 stars）· crmne/fastpotify（388 stars）· Nanako0129/sepia（245 stars）· XiaoDuoYa/codex-with-chatgpt（239 stars）· acryldev/acryl（219 stars）· buaacyw/code-world-model（205 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 476 stars | 基础设施候选 |
-| [s0xDk/refactoring-ui-skill](projects/refactoring-ui-skill.md) | 290 stars | 工具型 |
-| [oboroge0/hayamimi](projects/hayamimi.md) | 282 stars | 工具型 |
-| [mouredev/hello-sdd](projects/hello-sdd.md) | 223 stars | 观察型 |
-| [leopard627/fire-your-seo-agency](projects/fire-your-seo-agency.md) | 213 stars | 工具型 |
-| [damejan80/tokentab](projects/tokentab.md) | 211 stars | 工具型 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 1451 stars | 基础设施候选 |
+| [crmne/fastpotify](projects/fastpotify.md) | 388 stars | 生产可用 |
+| [Nanako0129/sepia](projects/sepia.md) | 245 stars | 工具型 |
+| [XiaoDuoYa/codex-with-chatgpt](projects/codex-with-chatgpt.md) | 239 stars | 工具型 |
+| [acryldev/acryl](projects/acryl.md) | 219 stars | 平台候选 |
+| [buaacyw/code-world-model](projects/code-world-model.md) | 205 stars | 基础设施候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **multimodal-foundation / 大厂多模态 embedding 模型族正式开源** · 相关项目：Tencent/WeMM-Embedding · 强度：92
-2. **agent-skills / 垂直领域专业知识 × Claude Code skill 商品化** · 相关项目：s0xDk/refactoring-ui-skill, leopard627/fire-your-seo-agency, ToolMonsters/hand-raisers, saurabhkumar8112/cyclomatic-complexity-skill · 强度：90
-3. **edge-asr / CPU-only 实时多语种 ASR + 多说话人** · 相关项目：oboroge0/hayamimi · 强度：86
-4. **codegen-methodology / SDD 与 token-cost 可观测成为 AI Coding 标配** · 相关项目：mouredev/hello-sdd, damejan80/tokentab · 强度：84
+1. **autonomous-research / 可测量的计算机可执行研究系统正式开源（arXiv + PyPI 双发）** · 相关项目：sapientinc/PRAXIST · 强度：94
+2. **native-spotify-client / Rust + egui + librespot 跨平台原生 Spotify 客户端替代** · 相关项目：crmne/fastpotify · 强度：86
+3. **humanizer-skill / 从表面润色升级到叙事架构层的去 AI 化写作 skill** · 相关项目：Nanako0129/sepia · 强度：86
+4. **harness-economy / ChatGPT 订阅 + Codex Harness 的 MCP 只读桥接** · 相关项目：XiaoDuoYa/codex-with-chatgpt · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 | [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
-| [2026-08-22](daily/2026-08-22.md) | 32 | 5 |
 
 ## 为什么做这个项目
 
