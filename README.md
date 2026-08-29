@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-29.md">Latest report</a> ·
+  <a href="daily/2026-08-30.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-29
+## Latest report · 2026-08-30
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 509 | 5 | 2.7K+ |
+| 6 | 515 | 5 | 3.1K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 1451 stars | 基础设施候选 |
-| [crmne/fastpotify](projects/fastpotify.md) | 388 stars | 生产可用 |
-| [Nanako0129/sepia](projects/sepia.md) | 245 stars | 工具型 |
-| [XiaoDuoYa/codex-with-chatgpt](projects/codex-with-chatgpt.md) | 239 stars | 工具型 |
-| [acryldev/acryl](projects/acryl.md) | 219 stars | 平台候选 |
-| [buaacyw/code-world-model](projects/code-world-model.md) | 205 stars | 基础设施候选 |
+| [tt-a1i/archify](projects/archify.md) | 30833 stars | 工具型 |
+| [bilawalsidhu/gods-eye-view](projects/gods-eye-view.md) | 12518 stars | 工具型 |
+| [tailscale/tailcat](projects/tailcat.md) | 3439 stars | 工具型 |
+| [JetBrains/go-modern-guidelines](projects/go-modern-guidelines.md) | 2854 stars | 工具型 |
+| [Osmantic/ODS](projects/ods.md) | 4864 stars | 工具型 |
+| [workweave/router](projects/router.md) | 2662 stars | 基础设施候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 94 · repositories: sapientinc/PRAXIST
-2. **Signal 2** · score 86 · repositories: crmne/fastpotify
-3. **Signal 3** · score 86 · repositories: Nanako0129/sepia
-4. **Signal 4** · score 84 · repositories: XiaoDuoYa/codex-with-chatgpt
+1. **Signal 1** · score 88 · repositories: tt-a1i/archify
+2. **Signal 2** · score 82 · repositories: bilawalsidhu/gods-eye-view
+3. **Signal 3** · score 78 · repositories: workweave/router
+4. **Signal 4** · score 76 · repositories: JetBrains/go-modern-guidelines
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-29.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-30.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
-| [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 
 ## Why this repository exists
 

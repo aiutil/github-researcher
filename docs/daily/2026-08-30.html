@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-08-30 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-08-30-github">2026-08-30 GitHub 趋势研究简报</h1>
+<blockquote>
+<p>证据边界：本简报基于 2026-08-30 GitHub API 快照与 Trending 页面快照；项目名称、星标、描述和标签为公开元数据，"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。复现项（如宣称指标 / 商业可用性 / 政策合规）需独立核验。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名展开）</h2>
+<h3 id="1-diagram-as-code-agent-skill-score-88">1. diagram-as-code / Agent Skill 级的可验证架构图标准正式破圈（Score 88）</h3>
+<p>tt-a1i/archify 用 4 个月从 0 增长到 30,833⭐（当日截取于 GitHub Trending #1），代表"Agent Skill 已经是新插件格式"。它把"架构图"做成单一 self-contained HTML（含动画 + 干净导出），通过 Claude Code / Codex / OpenCode / DeepSeek Harness 多 Agent 平台适配，把 archify 做成 arch / workflow / sequence / data-flow / lifecycle 五类图的标准 skill；30k⭐ 的爆发力说明"AI 协作时代缺一个'会画可验证架构图'的通用插件"是真痛点。Topics 包含 <code>architecture-as-code</code> / <code>diagram-as-code</code> / <code>mermaid-alternative</code> / <code>dsh-plugin</code>（DeepSeek Harness plugin）四个明确信号：项目自视为"图语法的可执行替代品"，并已接入国产 Agent Harness。</p>
+<p><strong>关键证据 vs 推断</strong>：30,833⭐ 来自 GitHub Trending 当日实时截取；created 2026-04-15，pushed 2026-08-29——4 个月增长曲线健康；但 README 中宣称的"verifiable"具体验证机制（导出格式 / diff 算法 / 与 lint 集成）需独立验证。MIT 许可、Forks 1,922、Size 99 MB（含大量示例图），社区二次使用率可观。</p>
+<h3 id="2-spatial-intelligence-score-82">2. spatial-intelligence / 浏览器内卫星级开源空间情报可视化（Score 82）</h3>
+<p>bilawalsidhu/gods-eye-view 用 12,518⭐ 重回 Trending（2 个月增长 + 当日榜单位），把"间谍卫星模拟器"塞进浏览器——Cesium + WebGL 真实 3D 地球，集成 flight-tracking（ADS-B Exchange / OpenSky）/ satellite-tracking（Celestrak）/ light pollution（VIIRS）/ 地理空间数据流，定位为"开源 OSINT 空间情报"。核心卖点：<strong>真实数据 + 浏览器内零安装</strong>，覆盖 OSINT 研究者 / 飞行爱好者 / 卫星运营 / 地理可视化教育多个真实群体。</p>
+<p><strong>关键证据 vs 推断</strong>：12,518⭐ 来自 GitHub Trending 当日截取；created 2026-06-22，pushed 2026-08-28，2 个月增长稳定；Topics 包含 <code>cesium</code> / <code>osint</code> / <code>geospatial-intelligence</code> / <code>3d-globe</code> / <code>worldview</code> 五个明确领域标签。License NOASSERTION（说明 LICENSE 文件存在但 GitHub 无法自动识别 SPDX），商业采用前需读 LICENSE 文件；Size 82 MB（含 Cesium 资源）。</p>
+<h3 id="3-model-router-agentic-score-78">3. model-router / agentic 系统的多模型路由网关（Score 78）</h3>
+<p>workweave/router 用 2,662⭐ / 4 个月（created 2026-04-27）上榜 Trending，代表"AI Gateway / Model Router"成为 2026 下半年的新基础设施。定位极简——OpenAI 兼容端点切换，&lt;50ms 决定每个 prompt 走哪个模型，宣称节省 40-70% 成本。配合 8-29 acrylic 的"agent-agnostic 上下文接力"形成同期合流，workweave 走的是"模型选择层"的护城河。</p>
+<p><strong>关键证据 vs 推断</strong>：2,662⭐ / Forks 77 / Size 19 MB——GitHub Trending 当日截图；Topics 包含 <code>model-router</code> / <code>ai-gateway</code> / <code>anthropic</code> / <code>claude-code</code> / <code>codex</code> / <code>openai-compatible</code> ——明确指向"agentic coding 路由"细分。License NOASSERTION——商业采用前需读 LICENSE。"40-70%" 与 "&lt;50ms" 是 README 自述宣称，独立 benchmark 复现需第三方测试。</p>
+<h3 id="4-coding-agent-guidelines-ai-coding-score-76">4. coding-agent-guidelines / 大厂下场为 AI Coding 写"语言现代化指南"（Score 76）</h3>
+<p>JetBrains/go-modern-guidelines 用 2,854⭐ 上榜 Trending（created 2025-11-24，9 个月增长 + 当日榜单位），是 JetBrains 官方为 AI Coding Agent 写的"现代 Go"指南——结构化 Markdown 形式把 Go 语言现代化（泛型 / iter 包 / slog / errors.Join / structured concurrency）规则喂给 Claude Code / Cursor / Codex 等 Coding Agent。Apache-2.0 + 115 KB 极小仓库 + 大厂官方背书是清晰信号：<strong>JetBrains 看到 AI Coding 工具链对"语言最佳实践知识"的系统性需求，自己下场填补</strong>。</p>
+<p><strong>关键证据 vs 推断</strong>：2,854⭐ / Forks 81 / Apache-2.0 / 115 KB——GitHub Trending 当日截图；created 2025-11-24，pushed 2026-08-29，近 24 小时活跃。这是 8-27 / 8-28 的 s0xDk/refactoring-ui-skill 等"已有成熟方法论 × AI Coding skill"路线的<strong>大厂官方版本</strong>——证明该路径有可持续的市场需求，且大厂愿意入场。</p>
+<h3 id="5-local-ai-os-ai-server-osscore-74">5. local-ai-os / 把桌面/服务器变成 AI Server 的开源 OS（Score 74）</h3>
+<p>Osmantic/ODS 用 4,864⭐ 上榜 Trending（created 2026-02-09，6 个月增长 + 当日榜单位），把本地 AI Server 标准化——LLM 推理（llama.cpp）+ Chat UI（Open WebUI）+ 语音（TTS/STT）+ Agent + Workflow（n8n）+ RAG + 图像生成（ComfyUI）的"all-in-one"自托管栈，主打 AMD/NVIDIA/Strix Halo 多硬件支持。Apache-2.0。</p>
+<p><strong>关键证据 vs 推断</strong>：4,864⭐ / Forks 741 / Apache-2.0 / 23 MB——GitHub Trending 当日截图；Topics 包含 <code>local-ai</code> / <code>open-webui</code> / <code>comfyui</code> / <code>llama-cpp</code> / <code>rag</code> / <code>n8n</code> / <code>speech-to-text</code> / <code>strix-halo</code>——清晰展示"Open WebUI + ComfyUI + llama.cpp + n8n"四件套打包的本地 AI OS 路径。23 MB 暗示这是"Docker Compose / 配置文件集合"而非源码重型项目——安装门槛低、复用主流组件、生产可用性高。</p>
+<h3 id="6-tailscale-data-plane-tailcat-tailscale-score-70">6. tailscale-data-plane / tailcat 复用 Tailscale 数据平面（Score 70）</h3>
+<p>tailscale/tailcat 用 3,439⭐ 上榜 Trending（created 2024-10-29，老仓库 22 个月 + 当日榜单位），是 Tailscale 官方的小工具——netcat 风格，但走 Tailscale 数据平面，免控制平面。BSD-3-Clause。</p>
+<p><strong>关键证据 vs 推断</strong>：3,439⭐ / Forks 99 / BSD-3-Clause / 32 MB——GitHub Trending 当日截图；created 2024-10-29（远早于本次上榜），22 个月后突然爆量提示<strong>近期发布更新引发 Trending 关注</strong>——pushed 2026-08-29 近 24 小时活跃。Tailcat 的本质是"在已有 Tailscale 网络里做 netcat"，省去 SSH 隧道 / VPN 配置，对 ops/SRE 群体有真实价值。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li>
+<p><strong>"Agent Skill 标准"路径已破圈</strong>——tt-a1i/archify 30k⭐/4 个月 + 8-27 K-Dense-AI/scientific-agent-skills 38k⭐ + 8-29 Nanako0129/sepia 614⭐/2 天 + 8-28 s0xDk/refactoring-ui-skill 419⭐/3 天共同证明："已有方法论 / 已有成熟工具 × Agent Skill 化"是 2026 下半年分发效率最高的项目路径。JetBrains/go-modern-guidelines 是大厂官方入场这一路径。</p>
+</li>
+<li>
+<p><strong>"AI Gateway / Model Router"成为 AI Coding 必备中间层</strong>——workweave/router（2,662⭐）+ 此前的小工具项目共同说明：随着 Claude Code / Codex / Cursor 等 Coding Agent 在企业普及，"按 prompt 选择模型"的省钱 / 提质需求变成必备。这与"按 harness 选择模型"形成上下层栈。</p>
+</li>
+<li>
+<p><strong>"本地 AI OS / Local AI Server"是 2026 下半年被低估的赛道</strong>——Osmantic/ODS（4,864⭐）+ 8-26 heimdall/Perenna + 8-28 control-center 共同证明：随着 Llama 4 / Qwen3 / DeepSeek-V3 等本地可跑模型成熟，把"AI Server"做成一键安装 / 自托管 / 跨硬件 是真实企业需求。</p>
+</li>
+<li>
+<p><strong>"3D / 空间 / 实时数据可视化"作为开源 OSINT 新品类出现</strong>——gods-eye-view 12,518⭐ + 此前多款 OSINT 工具共同证明：Cesium / WebGL / Mapbox 等浏览器内 3D 地球引擎成熟后，"开源 OSINT 空间情报"成为可复制的成功模式。</p>
+</li>
+<li>
+<p><strong>"Tailscale 数据平面"作为 infra pattern 开始进入主流视野</strong>——tailcat 22 个月后爆量说明开发者社区对"轻量 netcat / SSH 替代"有持续需求；这是 wireguard / tailscale 生态成熟后的衍生工具品类。</p>
+</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="tt-a1iarchify30833-score-88">tt-a1i/archify（30833⭐ · Score 88）</h3>
+<ul>
+<li><strong>定位</strong>：Agent Skill 级的可验证架构图标准——self-contained HTML + 动画 + 干净导出；对接 Claude Code / Codex / OpenCode / DeepSeek Harness，4 个月 30k+⭐。</li>
+<li><strong>核心能力</strong>：(a) <code>architecture-as-code</code> 主题——单 HTML 文件输出，含动画 + 高保真导出（PNG / SVG / PDF）；(b) 多图类型覆盖——arch / workflow / sequence / data-flow / lifecycle 五类；(c) 多 Agent Harness 适配——Claude Code skill + Codex + OpenCode + DeepSeek Harness plugin（<code>dsh-plugin</code>）；(d) Topics 明示 <code>mermaid-alternative</code>——自视为 Mermaid 的可执行 / 可验证替代。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Agent Skill 层（输入：用户文本 / 代码）→ 渲染引擎（self-contained HTML 输出）→ 导出层（PNG/SVG/PDF）</td>
+<td>五类图 + 多 Harness 适配是 Topics 明示；"verifiable"具体含义（diff 算法 / lint 集成 / 与架构文档同步）需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户描述架构 → archify 解析 → 渲染 self-contained HTML → 可在浏览器独立查看 + 动画 → 一键导出</td>
+<td>self-contained HTML + 导出是 README 明示；Mermaid alternative 的具体语法差异未公开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自包含 HTML（零外部依赖）vs 文件大小（数十 MB） vs 浏览器渲染性能 vs 跨 Harness 适配的维护成本</td>
+<td>Size 99 MB 来自 API 自述；渲染性能基准未给量化数据</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 上加载 archify skill，描述一个 5 组件的微服务架构 → 验证产出 self-contained HTML 在浏览器可独立打开 → 验证 PNG/SVG 导出可读</td>
+<td>Claude Code skill 安装命令是 Topics 明示；具体 skill 加载方式需 README 独立核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bilawalsidhugods-eye-view12518-score-82">bilawalsidhu/gods-eye-view（12518⭐ · Score 82）</h3>
+<ul>
+<li><strong>定位</strong>：浏览器内运行的卫星级开源空间情报可视化——Cesium + WebGL 真实数据流，覆盖 flight-tracking / satellite-tracking / 光污染 / 地理空间数据。</li>
+<li><strong>核心能力</strong>：(a) 真实 3D 地球（Cesium + WebGL）；(b) 多数据流集成——ADS-B Exchange / OpenSky（飞行）/ Celestrak（卫星）/ VIIRS（光污染）；(c) 浏览器内零安装（前端纯 Web 应用）；(d) OSINT 研究友好——Topics 明示 <code>osint</code> / <code>geospatial-intelligence</code> / <code>gis</code>。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>浏览器前端（Cesium + WebGL） + 数据源 API（飞行 / 卫星 / 光污染）+ 可选后端聚合</td>
+<td>四个数据源是 Topics 明示；后端是否存在 / 数据源限流策略 / API key 要求未公开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>数据源 API → 前端轮询 / 流式 → Cesium 渲染（3D 地球 + 实时轨迹）→ 浏览器交互</td>
+<td>数据流路径抽象自 Topics；具体数据源协议（REST / WebSocket / MQTT）需源码核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>浏览器零安装 vs 数据源 API 限流 vs 实时性 vs 商业数据源授权 vs 数据真实性</td>
+<td>Size 82 MB（含 Cesium 资源）来自 API；License NOASSERTION——商业采用前必须读 LICENSE</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>浏览器打开 README 提供的 demo URL → 验证 3D 地球可加载 → 切换飞行 / 卫星 / 光污染三个数据流 → 验证每个数据流可独立工作</td>
+<td>demo URL 是否公开需 README 独立核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="workweaverouter2662-score-78">workweave/router（2662⭐ · Score 78）</h3>
+<ul>
+<li><strong>定位</strong>：面向 agentic 系统的多模型路由器——OpenAI 兼容端点切换，&lt;50ms 决定每个 prompt 走哪个模型，宣称节省 40-70% 成本。</li>
+<li><strong>核心能力</strong>：(a) OpenAI 兼容协议层——直接替换 base URL；(b) 多模型支持——Anthropic / Claude Code / Codex / OpenAI；(c) 智能路由——按 prompt 复杂度 / 成本 / 延迟动态选择；(d) Agentic Coding 友好——Topics 明示 <code>claude-code</code> / <code>codex</code> / <code>anthropic</code>。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenAI 兼容代理层（输入：用户 prompt）→ 路由决策（按 prompt / 成本 / 延迟）→ 目标模型 API（Anthropic / OpenAI / 其他）</td>
+<td>OpenAI 兼容 + 多模型 + 路由是 Topics 明示；路由决策的具体算法（规则 / ML / embedding 相似度）需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Agent 通过 OpenAI 兼容协议发请求 → router 解析 prompt → 路由决策 → 调目标模型 → 返回响应</td>
+<td>OpenAI 兼容是 Topics 明示；"&lt;50ms" 决策延迟是 README 自述宣称，需独立 benchmark</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>路由开销（&lt;50ms） vs 决策质量 vs 多模型 API 稳定性 vs 缓存策略 vs 商业 license</td>
+<td>"40-70% 节省" 是 README 自述；License NOASSERTION 商业采用前需读 LICENSE</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 或 Codex 中把 base URL 指向 router → 验证简单 prompt 路由到便宜模型 → 验证复杂 prompt 路由到贵模型 → 验证端到端延迟 &lt;50ms + 整体节省比例</td>
+<td>OpenAI 兼容端点切换是 Topics 明示；具体路由规则可配置性需 README 独立核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">风险与机遇</h2>
+<ul>
+<li><strong>风险 1：tt-a1i/archify 4 个月 30k⭐ 的"虚假峰值"风险</strong>——Agent Skill 路径虽火，但 archify 是单点工具，未必能在多 Harness 适配 + 图语法演进的长期维护中保持领先；若 Mermaid / PlantUML 推出 AI Coding 集成版本，可能被吸收</li>
+<li><strong>风险 2：gods-eye-view License NOASSERTION 的商业风险</strong>——OSINT 工具常因数据源合规问题被下架；NOASSERTION 意味着 SPDX 解析失败，下游采用必须读 LICENSE 才能确定是否可商用</li>
+<li><strong>风险 3：workweave/router 的"&lt;50ms / 40-70% 节省"宣称复现风险</strong>——README 自述基准未经独立测试，若实际表现不达宣称，2,662⭐ 的早期采用可能回落；NOASSERTION License 同样需独立核验</li>
+<li><strong>风险 4：JetBrains/go-modern-guidelines 大厂官方指南可能自废武功</strong>——若 JetBrains 推出 AI Coding 插件产品（如 Fleet AI 增强），该独立指南可能并入产品；9 个月 2,854⭐ 的增速表明这是被市场接受的补充，但生态归属未定</li>
+<li><strong>风险 5：Osmantic/ODS 是"Docker Compose 集合"而非自研产品</strong>——技术壁垒低、复用主流组件（Open WebUI / ComfyUI / llama.cpp / n8n）；其优势在"一键安装 + 多硬件支持"的工程整合能力，若上游组件版本变动，整合稳定性受影响</li>
+<li><strong>风险 6：tailscale/tailcat 依赖 Tailscale 数据平面</strong>——若 Tailscale 调整数据平面 API（headscale 兼容性 / 协议变更），tailcat 22 个月老仓库可能需要大改；BSD-3-Clause License 友好，但用户基础限制在 Tailscale 网络内</li>
+<li><strong>机遇 1："Agent Skill 化"是从工具到大厂的标准路径</strong>——8-27..8-30 连续多日 K-Dense-AI / archify / scientific-agent-skills / s0xDk / sepia / JetBrains 共同证明："已有方法论 / 已有成熟工具 → Agent Skill"是 2026 下半年分发效率最高的项目路径，下一波可能是 AWS / Azure / GCP 官方下场</li>
+<li><strong>机遇 2："AI Gateway / Model Router"是企业 AI Coding 必备中间层</strong>——workweave/router + 企业内部省钱 / 提质需求说明"按 prompt 选模型"会与"按 harness 选模型"形成完整栈；下一波可能是云厂商下场</li>
+<li><strong>机遇 3："本地 AI Server 标准化"是企业 AI 部署刚需</strong>——Osmantic/ODS（4,864⭐）+ 多硬件支持说明"all-in-one 自托管栈"是 2026 下半年真实需求；下一波可能是 AMD Strix Halo / Apple Silicon 平台的针对性优化</li>
+<li><strong>机遇 4："浏览器内 3D 空间情报"是 OSINT 新品类</strong>——gods-eye-view 12,518⭐ 证明 Cesium / WebGL 成熟后，"开源 OSINT 3D 地球"是可复制路径；下一波可能是海事 / 频谱 / 电磁信号的开源可视化</li>
+</ul>
+<h2 id="_4">关键发现</h2>
+<ul>
+<li><strong>"Agent Skill 标准"路径从工具到大厂破圈</strong>：tt-a1i/archify 30k⭐/4 个月 + JetBrains/go-modern-guidelines 2,854⭐（JetBrains 官方入场）+ 8-27 K-Dense-AI/scientific-agent-skills 38k⭐ + 8-29 Nanako0129/sepia 614⭐ 共同证明："已有方法论 / 已有成熟工具 → Agent Skill"是 2026 下半年分发效率最高的项目路径，且大厂官方愿意入场</li>
+<li><strong>"Model Router / AI Gateway"是 agentic 系统的必备中间层</strong>：workweave/router 2,662⭐ 与 8-29 acrylic 形成同期合流，分别从"模型选择层"和"harness 选择层"切入 agentic 系统中间件</li>
+<li><strong>"本地 AI Server"是企业 AI 部署的标准化品类</strong>：Osmantic/ODS 4,864⭐ 集成 Open WebUI + ComfyUI + llama.cpp + n8n 四件套，配合多硬件支持（AMD/NVIDIA/Strix Halo），证明"all-in-one 自托管栈"是真实企业需求</li>
+<li><strong>"浏览器内 3D 空间情报"是 OSINT 新品类</strong>：gods-eye-view 12,518⭐ 用 Cesium + WebGL 真实数据流，证明 Cesium 引擎成熟后"开源 OSINT 3D 地球"是可复制成功模式</li>
+<li><strong>"Tailscale 数据平面"作为 infra pattern 进入主流视野</strong>：tailcat 22 个月老仓库当日爆量提示"Tailscale 网络内 netcat 替代"是真实 ops/SRE 需求；这是 wireguard / tailscale 生态成熟的衍生工具品类</li>
+</ul>
+<h2 id="_5">重点项目档案</h2>
+<blockquote>
+<p>当日新增 6 个项目档案（projects/ 目录下新增）：</p>
+<ul>
+<li><a href="../projects/archify.html">archify</a>（tt-a1i/archify）</li>
+<li><a href="../projects/gods-eye-view.html">gods-eye-view</a>（bilawalsidhu/gods-eye-view）</li>
+<li><a href="../projects/tailcat.html">tailcat</a>（tailscale/tailcat）</li>
+<li><a href="../projects/go-modern-guidelines.html">go-modern-guidelines</a>（JetBrains/go-modern-guidelines）</li>
+<li><a href="../projects/ods.html">ods</a>（Osmantic/ODS）</li>
+<li><a href="../projects/router.html">router</a>（workweave/router）</li>
+</ul>
+</blockquote>
+<hr />
+<p><em>生成时间：2026-08-30 · 数据来源：GitHub Trending 页面（since=daily） + GitHub API 快照（created/pushed:2026-04-15..2026-08-30，sort=stars）</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-29.md">最新日报</a> ·
+  <a href="daily/2026-08-30.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-29
+## 最新研究 · 2026-08-30
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 509 | 5 | 2.7K+ |
+| 6 | 515 | 5 | 3.1K+ |
 
-**今日核心判断：** sapientinc/PRAXIST（1451 stars）· crmne/fastpotify（388 stars）· Nanako0129/sepia（245 stars）· XiaoDuoYa/codex-with-chatgpt（239 stars）· acryldev/acryl（219 stars）· buaacyw/code-world-model（205 stars）
+**今日核心判断：** tt-a1i/archify（30833 stars）· bilawalsidhu/gods-eye-view（12518 stars）· tailscale/tailcat（3439 stars）· JetBrains/go-modern-guidelines（2854 stars）· Osmantic/ODS（4864 stars）· workweave/router（2662 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 1451 stars | 基础设施候选 |
-| [crmne/fastpotify](projects/fastpotify.md) | 388 stars | 生产可用 |
-| [Nanako0129/sepia](projects/sepia.md) | 245 stars | 工具型 |
-| [XiaoDuoYa/codex-with-chatgpt](projects/codex-with-chatgpt.md) | 239 stars | 工具型 |
-| [acryldev/acryl](projects/acryl.md) | 219 stars | 平台候选 |
-| [buaacyw/code-world-model](projects/code-world-model.md) | 205 stars | 基础设施候选 |
+| [tt-a1i/archify](projects/archify.md) | 30833 stars | 工具型 |
+| [bilawalsidhu/gods-eye-view](projects/gods-eye-view.md) | 12518 stars | 工具型 |
+| [tailscale/tailcat](projects/tailcat.md) | 3439 stars | 工具型 |
+| [JetBrains/go-modern-guidelines](projects/go-modern-guidelines.md) | 2854 stars | 工具型 |
+| [Osmantic/ODS](projects/ods.md) | 4864 stars | 工具型 |
+| [workweave/router](projects/router.md) | 2662 stars | 基础设施候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **autonomous-research / 可测量的计算机可执行研究系统正式开源（arXiv + PyPI 双发）** · 相关项目：sapientinc/PRAXIST · 强度：94
-2. **native-spotify-client / Rust + egui + librespot 跨平台原生 Spotify 客户端替代** · 相关项目：crmne/fastpotify · 强度：86
-3. **humanizer-skill / 从表面润色升级到叙事架构层的去 AI 化写作 skill** · 相关项目：Nanako0129/sepia · 强度：86
-4. **harness-economy / ChatGPT 订阅 + Codex Harness 的 MCP 只读桥接** · 相关项目：XiaoDuoYa/codex-with-chatgpt · 强度：84
+1. **diagram-as-code / Agent Skill 级的可验证架构图标准（self-contained HTML + motion + export）正式破圈** · 相关项目：tt-a1i/archify · 强度：88
+2. **spatial-intelligence / 浏览器内卫星级开源空间情报可视化（Cesium + WebGL + 真实数据）** · 相关项目：bilawalsidhu/gods-eye-view · 强度：82
+3. **model-router / agentic 系统的多模型路由网关，<50ms 切模型，成本节省 40-70%** · 相关项目：workweave/router · 强度：78
+4. **coding-agent-guidelines / 大厂下场为 AI Coding 写"语言现代化指南"（JetBrains 官方 Go 指南）** · 相关项目：JetBrains/go-modern-guidelines · 强度：76
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 | [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
-| [2026-08-23](daily/2026-08-23.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

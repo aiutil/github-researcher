@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-08-30
+
+**核心主题：** tt-a1i/archify（30833 stars）· bilawalsidhu/gods-eye-view（12518 stars）· tailscale/tailcat（3439 stars）· JetBrains/go-modern-guidelines（2854 stars）· Osmantic/ODS（4864 stars）· workweave/router（2662 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照与 Trending 页面快照；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧭 tt-a1i/archify (30833 stars) — Agent Skill 级的可验证架构图标准（self-contained HTML + 动画 + 干净导出 + Claude Code/Codex/OpenCode/DeepSeek Harness 四平台适配），Score 88
+- 🛰️ bilawalsidhu/gods-eye-view (12518 stars) — 浏览器内卫星级开源空间情报可视化（Cesium + WebGL + 真实数据流），Score 82
+- 🚦 workweave/router (2662 stars) — agentic 系统的多模型路由器（OpenAI 兼容 + <50ms + 40-70% 节省），Score 78
+- 🐹 JetBrains/go-modern-guidelines (2854 stars) — JetBrains 官方的"AI Coding 写现代 Go"指南（泛型/iter/slog/errors.Join），Score 76
+- 🖥️ Osmantic/ODS (4864 stars) — 把 PC/Mac/Linux 变成 AI Server（Open WebUI + ComfyUI + llama.cpp + n8n + 多硬件支持），Score 74
+- 🐾 tailscale/tailcat (3439 stars) — netcat 风格但走 Tailscale 数据平面，免控制平面（22 个月老仓库当日爆量），Score 70
+
+**关键判断：**
+- **"Agent Skill 标准"路径从工具到大厂破圈**：tt-a1i/archify 30k⭐/4 个月 + JetBrains/go-modern-guidelines 2,854⭐（JetBrains 官方入场）+ 8-27 K-Dense-AI/scientific-agent-skills 38k⭐ + 8-29 Nanako0129/sepia 614⭐ 共同证明："已有方法论 / 已有成熟工具 → Agent Skill"是 2026 下半年分发效率最高的项目路径，且大厂官方愿意入场
+- **"Model Router / AI Gateway"是 agentic 系统的必备中间层**：workweave/router 2,662⭐ 与 8-29 acrylic 形成同期合流，分别从"模型选择层"和"harness 选择层"切入 agentic 系统中间件
+- **"本地 AI Server"是企业 AI 部署的标准化品类**：Osmantic/ODS 4,864⭐ 集成 Open WebUI + ComfyUI + llama.cpp + n8n 四件套，配合多硬件支持（AMD/NVIDIA/Strix Halo），证明"all-in-one 自托管栈"是真实企业需求
+- **"浏览器内 3D 空间情报"是 OSINT 新品类**：gods-eye-view 12,518⭐ 用 Cesium + WebGL 真实数据流，证明 Cesium 引擎成熟后"开源 OSINT 3D 地球"是可复制成功模式
+- **"Tailscale 数据平面"作为 infra pattern 进入主流视野**：tailcat 22 个月老仓库当日爆量提示"Tailscale 网络内 netcat 替代"是真实 ops/SRE 需求；这是 wireguard / tailscale 生态成熟的衍生工具品类
+
 ## 2026-08-29
 
 **核心主题：** sapientinc/PRAXIST（1451 stars）· crmne/fastpotify（388 stars）· Nanako0129/sepia（245 stars）· XiaoDuoYa/codex-with-chatgpt（239 stars）· acryldev/acryl（219 stars）· buaacyw/code-world-model（205 stars）
