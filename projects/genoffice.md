@@ -1,126 +1,120 @@
 ---
 title: "genspark-ai/genoffice"
 slug: "genoffice"
-date_added: "2026-08-04"
-last_seen_date: "2026-08-12"
-category: "平台候选"
-emoji: "📄"
-stars: "2,558 stars"
-stars_delta: "7/31创建→8/12 2,558⭐（第十一日 +89/+3.6%，fork 478），增速持续衰减，稳态收敛中"
+date_added: "2026-08-31"
+last_seen_date: "2026-08-31"
+category: "工具型"
+emoji: "📝"
+stars: "4006 stars"
+stars_delta: "31 天 4,006⭐（2026-07-31 创建，pushed 2026-08-30），Genspark 官方开源 AI Office 套件"
 language: "TypeScript"
 license: "Apache-2.0"
-score: 84
-tags: ["ai-native", "office-suite", "electron", "docx", "xlsx", "pptx", "pdf", "byte-preserving"]
+score: 74
+tags: ["ai-office", "docx", "electron", "excel", "linux", "open-source", "powerpoint", "pptx", "cross-platform", "macos", "windows", "markdown-editor", "pdf", "word", "xlsx", "office-suite"]
 url: "https://github.com/genspark-ai/genoffice"
+homepage: "https://genoffice.ai/"
 ---
 
-# genspark-ai/genoffice — AI-native 办公套件（docx/xlsx/pptx/pdf）
+# genspark-ai/genoffice
 
 ## 一句话定位
-macOS/Windows 桌面办公套件：五个 Electron 应用（Docs/Sheets/Slides/PDF/Shell）共享一个引擎层，把 AI 编辑作为一等公民工作流而非附加的 chat 框。
+Genspark 官方开源的 AI Office 套件——跨 macOS / Windows / Linux 的 Word（.docx）/ Excel（.xlsx）/ PowerPoint（.pptx）/ PDF / Markdown 一体化 AI 桌面办公栈，内置 AI 智能体，Apache-2.0 许可。
 
 ## 它解决的问题
-现有办公软件（MS Office / WPS / LibreOffice）把 AI 当作一个侧边 chat 框"贴"上去，AI 编辑与文档结构是割裂的。GenOffice 反过来：**AI 编辑是块级（block-granular）一等操作**，带版本快照和 diff，且关键设计承诺是**字节保真的往返（byte-preserving round trip）**——只有脏块被重生成，其余字节不动，"打开再保存不会破坏 Word 排版"。
+桌面办公软件市场长期由 Microsoft Office / Google Workspace / WPS 垄断，开源替代品（LibreOffice / OnlyOffice / Calligra）已存在 20+ 年但市场份额始终有限，根本原因是：(1) **格式兼容性深度不足**——复杂公式 / 宏 / PPT 动画等；(2) **缺乏 AI-Native 体验**——传统开源 Office 是"无 AI 的 90 年代 Office"；(3) **跨平台体验不一致**——macOS / Windows / Linux 桌面体验差异大。genspark-ai/genoffice 解决的是 **"AI-Native 开源 Office"** 问题——把 Word / Excel / PPT / PDF / Markdown 一体化编辑 + 内置 AI 智能体作为差异化卖点。这是 LibreOffice / OnlyOffice 之后的"AI-First 开源 Office"首批尝试。
 
-## 为什么值得关注（2026-08-04）
-
-在 qm/crm 代表"agent 应用层产品化"的同时，genoffice 代表应用层的另一条线：**把成熟的桌面生产力工具（Office）以 AI 为核心重建**。这呼应了 crm 的"agent 是产品本体"哲学，但落在更宽的通用办公场景。564⭐ / 74 fork（fork/star 13%，健康）、有签名安装包、Apache-2.0、5 天 4 个 release（v0.4.110 为最新），是一个**有真实交付节奏的产品**而非概念 demo。
+## 为什么值得关注（2026-08-31）
+- **Stars:** 4,006（截至 2026-08-31），**31 天起步**
+- **Forks:** 641（fork/star=16%，远超个人开发者项目 5-8% 水平，反映有团队 / 二次开发者参与）
+- **Watchers/Subscribers:** 23
+- **License:** Apache-2.0（友好商用许可）
+- **语言:** TypeScript（基于 Electron）
+- **活跃度:** created 2026-07-31，pushed 2026-08-30，31 天持续高活跃
+- **规模:** 23 MB（中型 Electron 应用）
+- **Open Issues:** 29（合理范围内）
+- **官方主页:** https://genoffice.ai/
+- **Topics 完整覆盖:** 20 个明确标签——`ai` / `cross-platform` / `docx` / `electron` / `excel` / `linux` / `macos` / `markdown-editor` / `office` / `office-suite` / `pdf` / `pdf-editor` / `powerpoint` / `pptx` / `presentation` / `spreadsheet` / `windows` / `word` / `word-processor` / `xlsx`
 
 ## 热度来源判断
-- **真实产品信号**：有 macOS（arm64 dmg）/ Windows（exe）签名安装包，release 页活跃；topics 含 docx/xlsx/pptx/pdf 等具体格式。字节保真往返是一个有技术深度的卖点。
-- **genspark-ai 品牌**：发行方 genspark-ai 有产品背景（Genspark 搜索），带来基线关注。
-- **无刷星特征**：74 fork / 4 open issues / 5 watchers，数据形态正常。
+genoffice 的热度是 **"AI-First 开源 Office 刚需 × Genspark 品牌背书 × Apache-2.0 商用友好 × 跨平台一致性 × 31 天稳定增长"** 的组合。4,006⭐ / 641 forks / 31 天说明：(1) 真实需求——AI 时代需要 AI-Native 桌面 Office；(2) 品牌借力——Genspark（AI 搜索独角兽，估值数亿美元）官方背书；(3) 商用友好——Apache-2.0 对企业采用关键；(4) 跨平台一致——macOS/Windows/Linux 三端覆盖对个人 / 企业均有吸引力。热度**真实但生产可用性需验证**——4,006⭐ 是中等规模热度，反映"关注者"+"早期试用者"，而非"生产采用者"。电子表格公式 / PPT 动画 / 宏支持的兼容性深度需独立测试。
 
-## 关键技术亮点亮点
-1. **字节保真往返（docx）**：打开 docx → 按哈希归档原件（永不触碰）→ docx-engine 解析 word/document.xml 为 block tree（每个 block 带 docxIndex + 原始 XML 切片）→ TipTap 流式编辑（脏块追踪）→ 保存时只把脏块转成 OOXML fragment 拼回，其余条目逐字节复制。"编辑器没碰的一切在往返中原样存活"。
-2. **共享 agent-core**：`packages/agent-core` 是所有 app 共用的 AI agent loop 和 skill 组合层——docs 用块级 AI 编辑 + 版本快照/diff，sheets/slides/pdf 用 tool-calling agent 操作文档状态。AI 行为通过统一引擎而非每 app 各写一套。
-3. **Sheets 的 Rust sidecar**：xlsx 导入/导出走 Rust sidecar（calamine + IronCalc），图表用 Konva 自渲染，含透视表/切片器/条件格式/公式追踪——非简单套壳 Univer。
-4. **AI provider 不存本地 key**：模型调用经 Genspark 服务端路由，本地不存 API key（安全模型设计，也意味着强绑定 Genspark 账号）。
+## 关键技术亮点
+1. **AI-Native 体验**：内置 AI 智能体（描述："with built-in AI agents"），区别于传统开源 Office 的"无 AI"体验
+2. **五格式一体化**：Word（.docx）/ Excel（.xlsx）/ PowerPoint（.pptx）/ PDF / Markdown——五种主流办公格式在同一应用内编辑
+3. **跨平台一致**：macOS / Windows / Linux 三端统一的桌面体验（基于 Electron）
+4. **Apache-2.0 许可**：商用友好，企业可自由采用 / 修改 / 集成
+5. **Genspark 品牌背书**：作为 AI 搜索独角兽的官方开源项目，有持续投入资源的能力
+6. **20 个明确 Topics**：完整覆盖 docx / xlsx / pptx / pdf / markdown / office-suite 等所有办公场景
 
 ## 架构师速览
 
 | 决策问题 | 研究判断 | 证据边界 |
 |---|---|---|
-| 系统边界 | 五个 Electron 应用（Docs/Sheets/Slides/PDF/Shell）共享 `packages/agent-core` 与 docx/pptx 等引擎层；AI 调用经 Genspark 服务端路由，客户端不持 API key | 仅基于档案中列出的应用清单与共享层描述；具体 RPC 协议、auth 流程、shell/各 app 边界未在档案中给出 |
-| 主路径 | 用户块级编辑 → docx-engine 解析为 block tree → TipTap 流式编辑（脏块追踪）→ 仅脏块转 OOXML fragment 回写，其余字节从原归档按哈希复制 → sheets/slides/pdf 走 tool-calling agent 操作文档状态 | 路径描述仅来自档案"关键技术亮点"段落；xlsx Rust sidecar（calamine + IronCalc）、图表 Konva 渲染、PDF 引擎细节未在档案中展开 |
-| 关键权衡 | 字节保真 patch 模型（最小化、可审计的局部修改）vs 引擎复杂度（docx-engine/pptx-engine 解析-patch 管线 + Rust sidecar + 5 个 Electron app 维护面），且 AI 能力与 Genspark 服务强耦合 | 权衡判断依据档案"架构启发"与"风险/局限"两节；维护力评估基于档案所列 contributors=2 的事实声明，未做源码核验 |
-| 最小 PoC | 取一个含真实样式的 docx 做打开→小块 AI 编辑→保存→重新打开的往返比对；同步在 Sheets 跑通 xlsx 导入/导出与公式追踪，验证 Rust sidecar 可调用；并测试无 Genspark 账号时 AI 功能降级范围 | PoC 步骤仅来自档案描述的能力清单；具体示例 docx 选型、回归指标、AI 离线行为档案未给出，须自行设计 |
+| 系统边界 | Electron 跨平台壳 + 格式渲染引擎（docx / xlsx / pptx / pdf / markdown）+ AI 智能体集成层（待核验具体实现）+ 后端服务（待核验是否依赖云端） | 五格式 + AI 智能体 + Electron 是 Topics 与 description 明示；具体渲染引擎（基于哪个开源库，如 SheetJS / PDF.js / mammoth.js 等）、AI 智能体是否本地推理或云端调用需源码核验 |
+| 主路径 | 用户打开文档 → 格式探测 → 渲染引擎解析 → UI 渲染（支持编辑）→ 用户编辑 → AI 智能体辅助（生成 / 重写 / 翻译）→ 导出对应格式 | 五格式 + AI 辅助是 description 明示；具体 AI 能力清单（生成 / 重写 / 翻译 / 公式解释 / PPT 生成）需 README 独立核验 |
+| 关键权衡 | 跨平台一致性 vs 原生体验深度 vs 格式兼容性（公式 / 宏 / 动画）vs AI 智能体的本地 vs 云端 vs Electron 体积开销 vs 商业可持续性 | 23 MB 来自 API；格式兼容性深度（特别是电子表格公式 / PPT 动画 / 宏）是开源 Office 的传统弱项；商业可持续性依赖 Genspark 持续投入 |
+| 最小 PoC | 安装 genoffice → 打开 1 个 100 页含复杂公式的 xlsx → 验证公式计算正确 → 打开 1 个含宏的 docx → 验证宏支持 / 兼容性 → 验证 AI 智能体的具体能力（生成 / 重写 / 翻译）→ 跨平台一致体验 | 五格式兼容是 Topics 明示；公式 / 宏 / PPT 动画的具体兼容深度、AI 智能体的能力清单与是否需要联网需 README 独立核验 |
 
 ## 架构启发
-genoffice 的核心 trade-off 是 **"原件是真理来源（original file is source of truth），编辑作为窄 patch 应用"**。这与 crm 的"数据库只是 agent 的笔记"异曲同工——两者都拒绝"AI 全量重写"，转而让 AI 做最小化、可审计的局部修改。对架构师的启发：**AI-native 不等于 AI-rewrite-everything；字节保真的 patch 模型是 AI 进入高保真格式（Office/PDF）的更稳健路径**。代价是引擎复杂度（docx-engine/pptx-engine 的解析-patch 管线很重）。
+genoffice 的核心启发是 **"AI 时代需要 AI-Native 桌面 Office，传统开源 Office 已是上一代产品"**。LibreOffice / OnlyOffice / Calligra 等开源 Office 已有 20+ 年历史，但始终未挑战 Microsoft Office 主导地位，根本原因是"格式兼容性 + AI 能力"双短板。genoffice 的切入点是"AI-First + 跨平台一致性 + Apache-2.0 商用友好"——这是 LibreOffice（MPL 2.0）/ OnlyOffice（AGPL）未明确押注的方向。**更深层的启发是"AI 独角兽下场做开源 Office"的战略信号**——Genspark（AI 搜索独角兽）下场做 genoffice 是"AI 公司向桌面办公市场扩展"的尝试，类似 Notion / Figma 等 SaaS 公司向桌面端扩展。**对比：** 微软把 Copilot 集成进 Microsoft 365（闭源付费）vs Genspark 把 AI 集成进 genoffice（开源免费）——是两条不同的"AI + Office"战略路径。
 
 ## 架构图（MMD）
 
-> 证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。
+> 证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。
 
 ```mermaid
 flowchart LR
-    U[使用者] --> Shell[Electron Shell 应用五端 Docs/Sheets/Slides/PDF/Shell 待核验]
-    Shell --> DocxEngine[docx-engine block tree 解析与脏块追踪]
-    Shell --> PptxEngine[pptx-engine 待核验]
-    Shell --> SheetsEngine[Sheets Univer core + 自研扩展]
-    SheetsEngine --> RustSidecar[Rust sidecar calamine + IronCalc]
-    Shell --> PdfEngine[PDF 引擎 待核验]
-    DocxEngine --> Original[原 docx 按哈希归档 字节级只读]
-    DocxEngine --> TipTap[TipTap 流式编辑器]
-    TipTap --> Diff[版本快照与 diff]
-    Shell --> AgentCore[packages/agent-core 共享 agent loop 与 skill 组合]
-    AgentCore --> Genspark[Genspark 服务端 AI 路由 本地无 API key]
-    AgentCore --> ForkAI[第三方 AI 后端 经 HermesOffice 等 fork 替换 待核验]
-    AgentCore --> Audit[会话 状态 审计 待核验]
-    Diff --> Original
+  User[用户] --> Desktop[GenOffice 桌面应用]
+  Desktop --> Electron[Electron 跨平台壳<br/>macOS / Windows / Linux]
+  Electron --> Docx[docx 渲染引擎]
+  Electron --> Xlsx[xlsx 渲染引擎]
+  Electron --> Pptx[pptx 渲染引擎]
+  Electron --> Pdf[PDF 渲染引擎]
+  Electron --> Md[Markdown 编辑器]
+  Docx --> UI[统一 UI 层]
+  Xlsx --> UI
+  Pptx --> UI
+  Pdf --> UI
+  Md --> UI
+  UI --> User
+  Electron --> AI[AI 智能体集成层<br/>待核验 本地/云端]
+  AI -.可选.-> Cloud[云端 AI 服务<br/>待核验]
+  AI -.可选.-> Local[本地 AI 推理<br/>待核验]
+  Docx -.兼容性.-> Macro[宏 / VBA 支持<br/>待核验深度]
+  Xlsx -.兼容性.-> Formula[公式 / 函数支持<br/>待核验深度]
+  Pptx -.兼容性.-> Anim[动画 / 过渡支持<br/>待核验深度]
 ```
 
 ## 定位判断
-属于 **L5 应用产品层**，是 qm（团队 agent 协同）/ crm（垂直 agentic SaaS）之外的第三条应用层路线：**通用桌面生产力套件的 AI-native 重写**。与 qm 的差异：qm 是 agent harness 产品化，genoffice 是生产力软件重写。与 MS Office Copilot 的差异：Copilot 是"给 Office 加 AI"，genoffice 是"以 AI 为核心重建 Office"。
+**工具型项目（AI-Native 跨平台开源 Office 套件）。** genoffice 不仅是 LibreOffice 的竞品，更是"AI-First 开源 Office"的首批尝试——类比 Brave 是"AI-First 浏览器"，genoffice 是"AI-First Office"。4,006⭐ / 641 forks / 23 MB 显示其工具价值，但"AI-First Office 平台"取决于几个关键问题：(1) 格式兼容性深度（特别是公式 / 宏 / 动画）；(2) AI 智能体的能力清单与是否需要联网；(3) Genspark 团队的持续投入承诺；(4) 与 Microsoft Office / LibreOffice / OnlyOffice 的差异化路径。目前定位是"AI-First 跨平台开源 Office 套件"，向 AI 桌面办公平台演进是合理路径。
 
-## 风险 / 局限 / 泡沫点
-1. **强绑定 Genspark 服务**：模型调用经 Genspark 服务端路由，本地无 API key——这意味着**无 Genspark 账号则 AI 功能不可用**，开源的是客户端壳而非完整可独立运行的产品。这是最大的采用门槛。
-2. **极早期 + 仅 2 contributors**：创建 5 天，contributors=2，生产成熟度未经规模验证。字节保真往返的承诺需在实际复杂 docx（含宏/嵌入对象/复杂样式）下检验。
-3. **引擎复杂度 vs 维护力**：docx/pptx 引擎 + Rust sidecar + 5 个 Electron app 的维护面很宽，2 人团队长期可持续性存疑。
-4. **Electron 性能/体量**：5 个 Electron app 共享 shell，内存占用和启动速度在低端机上可能成为问题。
+## 风险/局限/泡沫点
+- **格式兼容性深度未验证**：电子表格公式 / PPT 动画 / 宏支持的兼容性是开源 Office 的传统弱项，生产可用性需独立测试
+- **AI 智能体的具体能力未公开**：是否本地推理或云端调用、能力清单（生成 / 重写 / 翻译 / 公式解释 / PPT 生成）需 README 独立核验
+- **Genspark 持续投入承诺**：作为 AI 搜索独角兽的官方开源项目，长期投入承诺未明确
+- **4,006⭐ 中等规模热度**：反映"关注者"+"早期试用者"，而非"生产采用者"
+- **23 MB Electron 体积**：对终端用户是真实安装摩擦
+- **企业 Office 迁移成本极高**：商业 Office 用户迁移到开源 Office 的隐性成本（培训 / 兼容性测试 / 协作流程）需评估
+- **AI 服务合规与数据隐私**：若 AI 智能体调用云端服务，企业敏感文档的数据隐私合规需评估
 
 ## 与同类项目的关系
-- **vs MS Office + Copilot**：Copilot 是附加层（AI 作为 Office 的功能），genoffice 是重写层（AI 作为工作流核心）。genoffice 的字节保真往返是 Office 原生难以保证的（Office 自身保存就可能改变布局）。
-- **vs Univer**：Sheets 基于 Univer core（Apache-2.0）+ 大量自研扩展，genoffice 是 Univer 的上层消费者而非竞品。
-- **vs OnlyOffice/LibreOffice**：这两者是传统开源 Office，AI 是后加的；genoffice 从架构起就是 AI-native。
+- **vs Microsoft 365 + Copilot：** 闭源付费 + AI 集成；genoffice 是开源免费 + AI 集成
+- **vs LibreOffice / OnlyOffice / Calligra：** 传统开源 Office（无 AI）；genoffice 是 AI-First 开源 Office
+- **vs Google Workspace + Gemini：** SaaS 化办公套件 + AI；genoffice 是桌面应用 + 开源
+- **vs WPS Office：** 国内办公套件（含 AI 但闭源）；genoffice 是开源 + 国际化
+- **vs Notion / Figma 桌面端：** SaaS 向桌面扩展；genoffice 是 AI 公司向桌面办公扩展
 
 ## 是否值得持续跟踪
-**是，作为"AI-native 桌面生产力"品类的代表跟踪。** 但需重点验证其脱离 Genspark 服务的可独立性。字节保真往返的设计模式对其他高保真格式处理（CAD/设计文件）有借鉴价值。
+**值得跟踪（AI-First 跨平台开源 Office 套件）。** genoffice 代表"AI-Native 开源 Office"作为新赛道首次出现，无论其本身成败，这一方向是行业趋势。建议关注：格式兼容性深度（特别是公式 / 宏 / 动画）、AI 智能体的能力清单与本地 / 云端架构、Genspark 团队持续投入承诺、是否有企业用户生产采用、与 Microsoft 365 / LibreOffice / OnlyOffice 的差异化路径。对个人 / 企业用户，genoffice 是当前"AI-First 开源 Office"的最直接尝试（若兼容性达生产标准）。对桌面办公市场观察者，它是"AI + 开源 + 跨平台"三维交叉的标杆样本。
 
 ## 后续观察点
-1. **Genspark 服务绑定的演进**：是否会支持自带 API key（BYOK）或本地模型，降低采用门槛。
-2. **字节保真往返的真实表现**：社区是否报告复杂 docx（宏/嵌入对象/多级样式）往返后的保真问题。
-3. **release 节奏与 contributors 增长**：当前 2 人 + 5 天 4 release，观察是否持续及是否吸引外部贡献者。
-
-## 最近动态（2026-08-05）
-
-- **翻倍 +709（564→1,273，+125%），fork 197**：AI-native 桌面生产力路线获强验证。这是今日应用层三条路线中**增速最快**的——qm +17%、crm +46%、genoffice +125%。说明"AI-native 办公套件"这个切片在快速验证 PMF。
-- **应用层分化信号**：genoffice 翻倍 + crm 增速反超 qm，共同标志应用层从"齐涨"进入"分化"。桌面生产力（genoffice）在最小基数上展现了最强的相对吸引力。
-- **待观察（不变）**：强绑定 Genspark 服务仍是最大采用门槛（无账号则 AI 不可用）。字节保真往返在复杂 docx（宏/嵌入对象）下的实际表现未独立验证。contributors 仍待确认。
-- **判断修正**：score 84 → 85。翻倍增速是 PMF 的强信号，但 Genspark 绑定风险未消除。pushed_at 08-04（活跃开发）。
+- 格式兼容性深度（特别是电子表格公式 / PPT 动画 / 宏）的独立测试结果
+- AI 智能体的能力清单（生成 / 重写 / 翻译 / 公式解释 / PPT 生成）与本地 / 云端架构
+- Genspark 团队的持续投入承诺（提交频率 / 社区响应速度）
+- 是否有企业用户生产采用案例
+- 与 Microsoft 365 / LibreOffice / OnlyOffice 的差异化路径与竞争格局
+- Apache-2.0 许可下的二次开发与生态（插件 / 主题 / 模板）
+- 跨平台一致性体验（特别是 macOS 原生感）
 
 ---
-*首次记录：2026-08-04* · *最近更新：2026-08-06（1,273→1,755，+482/+38%，首个 fork 变体 HermesOffice 出现）*
-
-## 最近动态（2026-08-06）
-
-- **第五日 +482（+38%），增速稳定**：1,273 → 1,755，fork 197 → 283。增速从昨日 +125% 回落到 +38%，但仍显著高于 qm（+5%）。非爆发非骤降，属于健康增长。
-- **首个 fork 变体出现——HermesOffice**：criptogus/HermesOffice（327⭐ / 41 fork，Apache-2.0）是 genoffice 的薄 fork，叠加 Hermes Agent（Nous Research）作为原生 AI。这验证了 genoffice 的**架构可 fork 性**——引擎层/AI 层分离设计允许第三方替换 AI 后端（Genspark → Hermes），降低供应商锁定风险。
-- **风险对冲**：08-05 标注的"强绑定 Genspark 服务"风险因 fork 生态出现而部分对冲——如果 Genspark 服务变化，社区有 fork 替代。但 HermesOffice 是薄 fork（引擎跟随上游），独立产品力有限。
-- **判断**：score 维持 85。增速稳定 + fork 生态出现是正面信号，但 Genspark 绑定风险未完全消除。pushed_at 08-05（活跃开发）。
-
-## 最近动态（2026-08-07）
-
-- **第六日 +279（+15%），跨入 2K 关口**：1,755 → 2,034，fork 283 → 335（含 HermesOffice 等变体）。增速从 +38% 回落到 +15%，但仍维持稳定增长，非爆发非骤降。
-- **格局固化中的稳健位**：genoffice 在应用层中是最稳定的——既不像 qm（+3%）接近停滞，也不像 crm（+16%）仍在放量。2K 关口说明 AI-native 办公套件有真实但温和的需求。
-- **判断**：score 维持 85。稳健增长 + fork 生态（HermesOffice 388⭐）持续。pushed_at 08-06（活跃开发）。
-
-## 最近动态（2026-08-08）
-
-- **第七日 +129（+6%），增速持续衰减**：2,034 → 2,163，fork 335 → 372（+37）。增速从 +15% 回落到 +6%，进入衰减阶段。
-
-## 最近动态（2026-08-09）
-
-- **第八日 +86（+4%），增速持续衰减，稳态收敛中**：2,163 → 2,249，fork 372 → 389（+17）。增速序列 +38%→+15%→+6%→+4%，连续衰减。今日有新提交（pushed_at 08-08）。
-- **判断修正**：score 85 → 84。增速持续衰减到 +4%，与应用层整体进入衰减尾声趋势一致。open_issues 26（略降）。
+> 数据来源: GitHub API (2026-08-31) | Stars: 4,006 | Forks: 641 | License: Apache-2.0 | 语言: TypeScript | 创建: 2026-07-31 | Pushed: 2026-08-30

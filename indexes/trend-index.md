@@ -1,6 +1,6 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-29'
+last_updated: '2026-08-31'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
@@ -8,6 +8,69 @@ title: Trend Index — 趋势指数
 # Trend Index — 趋势指数
 
 > 记录项目排名、趋势变化、关键判断修正
+
+## 2026-08-31
+
+### anywhere-labs/dsh-desktop（22077 stars）· guillaumemeyer/watermarks-remover（19466 stars）· firecrawl/anydoc（19386 stars）· yc-software/qm（14368 stars）· awesome-dsh-plugin/awesome-dsh-plugin（13705 stars）· pathwaycom/arc-task-gen（9054 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照（stars:>2k + created:2026-07-15..2026-08-31 sort=stars）；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | deepseek-harness-ecosystem / DSH 插件生态正式破圈，多款官方/社区插件同时登顶 Trending | anywhere-labs/dsh-desktop | 88 |
+| 2 | agent-skill-distribution / "内容所有权工具"以 Agent Skill 形态分发（watermark removal + c2pa provenance） | guillaumemeyer/watermarks-remover | 82 |
+| 3 | agent-document-intake / Rust 实现的办公文档→Markdown 一体化解析，配合 Firecrawl 主线 | firecrawl/anydoc | 80 |
+| 4 | multiplayer-agent-harness / 团队级 AI 协同 harness（Slack + Web 双入口，每员工独立沙箱） | yc-software/qm | 76 |
+| 5 | arc-agi-eval-infra / 开源 ARC-AGI 风格任务生成器，匹配公开评测集分布 | pathwaycom/arc-task-gen | 72 |
+| 6 | open-source-ai-office / 跨平台 AI Office 套件（Genspark 官方，Apache-2.0） | genspark-ai/genoffice | 70 |
+
+#### 当日重点项目
+
+- 🧩 anywhere-labs/dsh-desktop (22077 stars) — DSH 插件生态官方桌面端（万物皆「插件」，桌面本身也是「插件」），Score 88
+- 🧹 guillaumemeyer/watermarks-remover (19466 stars) — 多厂商 AI provenance 标记统一剥离（Agent Skill 形态），Score 82
+- 📑 firecrawl/anydoc (19386 stars) — Rust 办公文档→Markdown 一体化解析，Score 80
+- 👥 yc-software/qm (14368 stars) — 多 player agent harness（Slack + Web 双入口），Score 76
+- 📚 awesome-dsh-plugin/awesome-dsh-plugin (13705 stars) — DeepSeek Harness 插件精选列表（社区维护），Score 78
+- 🧪 pathwaycom/arc-task-gen (9054 stars) — ARC-AGI-1 风格任务生成器（Pathway 官方），Score 72
+- 📝 genspark-ai/genoffice (4006 stars) — 跨平台 AI Office 套件（Genspark 官方，Apache-2.0），Score 70
+
+#### 关键判断
+
+- **DeepSeek Harness 插件生态已具备自组织能力**：6 款 DSH 插件同时进入 GitHub Trending / 高星区间（dsh-desktop 22k⭐ / awesome-dsh-plugin 13.7k⭐ / dsh-routing-suite 7k⭐ / dsh-web 6.5k⭐ / dsh-anchored-standard 3.8k⭐ / dsh-plugin-upgrade-skill），且生态目录由社区而非官方维护——这是 Agent Harness 平台层从单点热度走向生态飞轮的拐点
+- **"AI 内容所有权 / provenance 管理"是 Agent Skill 新品类**：guillaumemeyer/watermarks-remover 18 天从 2,008⭐（8-13）→ 19,466⭐（8-31），增长 8.7 倍；Topics 明示 `agent-skill` / `c2pa` / `anthropic` / `claude` / `chatgpt` ——内容所有权 / 合规工具以 Agent Skill 形态分发成为新分发范式
+- **"团队级 agent harness"的产品化窗口已开**：yc-software/qm 14,368⭐ / 1,736 forks（forks/stars=12%，远超个人开发者项目 5-8% 水平）说明有真实团队在部署；Slack + Web 双入口 + 每员工独立沙箱 + 多 harness 编排构成完整产品定义
+
+#### 排名变化与新晋
+
+- 新入榜（TOP 6）：anywhere-labs/dsh-desktop、guillaumemeyer/watermarks-remover、firecrawl/anydoc、yc-software/qm、awesome-dsh-plugin/awesome-dsh-plugin、pathwaycom/arc-task-gen（genspark-ai/genoffice 替补第 6 位，total 6 项目深度分析）
+- 持续上榜（≥2 天）：firecrawl/anydoc（连续上榜自 8-13）、yc-software/qm（连续上榜自 8-12）
+- 滑出 TOP 6：tt-a1i/archify、bilawalsidhu/gods-eye-view、tailscale/tailcat、JetBrains/go-modern-guidelines、Osmantic/ODS、workweave/router（8-30 全部 6 个项目滑出；仍持续观察）
+
+#### 异常信号
+
+- **DSH 插件生态井喷但地缘风险上升**：deepseek-harness 是 DeepSeek（中国）官方出品，6 款 DSH 插件同时上榜（合计 ~50k⭐）但中美 AI 监管不确定性是潜在风险
+- **watermarks-remover 18 天 8.7 倍增长**：可能放大 AI provenance 剥离的合规误用风险
+- **pathwaycom/arc-task-gen pushed 距今 20 天（8-11）**：提示活跃度近期下降
+
+#### 持续跟踪项目状态
+
+- anydoc（19,386⭐，持续 Agent 摄入基础设施标杆稳态，28 天 +4,346 / +28.9%）
+- qm（14,368⭐，33 天 +1,276 / +9.7%，团队部署规模化）
+- watermarks-remover（19,466⭐，18 天 8.7 倍增长，"AI 内容所有权"新品类标杆）
+- deepseek-harness 主仓库（200k+⭐，作为 DSH 插件生态基础持续观察）
+
+#### 跨日趋势延续性
+
+- **Agent Harness 平台层竞争**（8-18 起 → 8-31）：deepseek-harness 主仓库 → DSH 插件生态（6 款同时上榜）→ dsh-desktop 桌面端载体 → awesome-dsh-plugin 社区目录
+- **Agent Skill 形态分发**（8-22 起 → 8-31）：tt-a1i/archify（架构图）→ K-Dense-AI/scientific-agent-skills（科学）→ s0xDk/refactoring-ui-skill（设计）→ watermarks-remover（内容所有权）——"已有方法论 → Agent Skill"路径已成行业标准
+- **本地 AI Server / AI-First 桌面应用**（8-28 起 → 8-31）：Osmantic/ODS → control-center → genspark-ai/genoffice（AI-First 跨平台开源 Office）
+
+#### 待观察项
+
+- DSH 插件生态是否进入"平台层 + 垂直插件"飞轮稳态
+- watermarks-remover 的合规边界风险是否被行业关注
+- pathwaycom/arc-task-gen 后期是否恢复活跃开发
+- genspark-ai/genoffice 的格式兼容性深度（公式 / 宏 / PPT 动画）独立测试结果
 
 ## 2026-08-30
 

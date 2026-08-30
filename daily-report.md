@@ -4,6 +4,25 @@
 
 ---
 
+## 2026-08-31
+
+**核心主题：** anywhere-labs/dsh-desktop（22077 stars）· guillaumemeyer/watermarks-remover（19466 stars）· firecrawl/anydoc（19386 stars）· yc-software/qm（14368 stars）· awesome-dsh-plugin/awesome-dsh-plugin（13705 stars）· pathwaycom/arc-task-gen（9054 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照（stars:>2k + created:2026-07-15..2026-08-31 sort=stars）；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧩 anywhere-labs/dsh-desktop (22077 stars) — DSH 插件生态官方桌面端（万物皆「插件」，桌面本身也是「插件」），Score 88
+- 🧹 guillaumemeyer/watermarks-remover (19466 stars) — 多厂商 AI provenance 标记统一剥离（Agent Skill 形态），Score 82
+- 📑 firecrawl/anydoc (19386 stars) — Rust 办公文档→Markdown 一体化解析，Score 80
+- 👥 yc-software/qm (14368 stars) — 多 player agent harness（Slack + Web 双入口），Score 76
+- 📚 awesome-dsh-plugin/awesome-dsh-plugin (13705 stars) — DeepSeek Harness 插件精选列表（社区维护），Score 78
+- 🧪 pathwaycom/arc-task-gen (9054 stars) — ARC-AGI-1 风格任务生成器（Pathway 官方），Score 72
+
+**关键判断：**
+- **DeepSeek Harness 插件生态已具备自组织能力**：6 款 DSH 插件同时进入 GitHub Trending / 高星区间（dsh-desktop 22k⭐ / awesome-dsh-plugin 13.7k⭐ / dsh-routing-suite 7k⭐ / dsh-web 6.5k⭐ / dsh-anchored-standard 3.8k⭐ / dsh-plugin-upgrade-skill），且生态目录由社区而非官方维护——这是 Agent Harness 平台层从单点热度走向生态飞轮的拐点
+- **"AI 内容所有权 / provenance 管理"是 Agent Skill 新品类**：guillaumemeyer/watermarks-remover 18 天从 2,008⭐（8-13）→ 19,466⭐（8-31），增长 8.7 倍；Topics 明示 `agent-skill` / `c2pa` / `anthropic` / `claude` / `chatgpt` ——内容所有权 / 合规工具以 Agent Skill 形态分发成为新分发范式
+- **"团队级 agent harness"的产品化窗口已开**：yc-software/qm 14,368⭐ / 1,736 forks（forks/stars=12%，远超个人开发者项目 5-8% 水平）说明有真实团队在部署；Slack + Web 双入口 + 每员工独立沙箱 + 多 harness 编排构成完整产品定义
+
 ## 2026-08-30
 
 **核心主题：** tt-a1i/archify（30833 stars）· bilawalsidhu/gods-eye-view（12518 stars）· tailscale/tailcat（3439 stars）· JetBrains/go-modern-guidelines（2854 stars）· Osmantic/ODS（4864 stars）· workweave/router（2662 stars）

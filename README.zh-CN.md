@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-30.md">最新日报</a> ·
+  <a href="daily/2026-08-31.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-30
+## 最新研究 · 2026-08-31
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 515 | 5 | 3.1K+ |
+| 6 | 518 | 5 | 5.4K+ |
 
-**今日核心判断：** tt-a1i/archify（30833 stars）· bilawalsidhu/gods-eye-view（12518 stars）· tailscale/tailcat（3439 stars）· JetBrains/go-modern-guidelines（2854 stars）· Osmantic/ODS（4864 stars）· workweave/router（2662 stars）
+**今日核心判断：** anywhere-labs/dsh-desktop（22077 stars）· guillaumemeyer/watermarks-remover（19466 stars）· firecrawl/anydoc（19386 stars）· yc-software/qm（14368 stars）· awesome-dsh-plugin/awesome-dsh-plugin（13705 stars）· pathwaycom/arc-task-gen（9054 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [tt-a1i/archify](projects/archify.md) | 30833 stars | 工具型 |
-| [bilawalsidhu/gods-eye-view](projects/gods-eye-view.md) | 12518 stars | 工具型 |
-| [tailscale/tailcat](projects/tailcat.md) | 3439 stars | 工具型 |
-| [JetBrains/go-modern-guidelines](projects/go-modern-guidelines.md) | 2854 stars | 工具型 |
-| [Osmantic/ODS](projects/ods.md) | 4864 stars | 工具型 |
-| [workweave/router](projects/router.md) | 2662 stars | 基础设施候选 |
+| [anywhere-labs/dsh-desktop](projects/dsh-desktop.md) | 22077 stars | 平台候选 |
+| [awesome-dsh-plugin/awesome-dsh-plugin](projects/awesome-dsh-plugin.md) | 13705 stars | 工具型 |
+| [pathwaycom/arc-task-gen](projects/arc-task-gen.md) | 9054 stars | 工具型 |
+| [genspark-ai/genoffice](projects/genoffice.md) | 4006 stars | 工具型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 19386 stars | 工具型 |
+| [yc-software/qm](projects/qm.md) | 14368 stars | 平台候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **diagram-as-code / Agent Skill 级的可验证架构图标准（self-contained HTML + motion + export）正式破圈** · 相关项目：tt-a1i/archify · 强度：88
-2. **spatial-intelligence / 浏览器内卫星级开源空间情报可视化（Cesium + WebGL + 真实数据）** · 相关项目：bilawalsidhu/gods-eye-view · 强度：82
-3. **model-router / agentic 系统的多模型路由网关，<50ms 切模型，成本节省 40-70%** · 相关项目：workweave/router · 强度：78
-4. **coding-agent-guidelines / 大厂下场为 AI Coding 写"语言现代化指南"（JetBrains 官方 Go 指南）** · 相关项目：JetBrains/go-modern-guidelines · 强度：76
+1. **deepseek-harness-ecosystem / DSH 插件生态正式破圈，多款官方/社区插件同时登顶 Trending** · 相关项目：anywhere-labs/dsh-desktop, awesome-dsh-plugin/awesome-dsh-plugin, yjh051108/dsh-routing-suite · 强度：88
+2. **agent-skill-distribution / "内容所有权工具"以 Agent Skill 形态分发（watermark removal + c2pa provenance）** · 相关项目：guillaumemeyer/watermarks-remover · 强度：82
+3. **agent-document-intake / Rust 实现的办公文档→Markdown 一体化解析，配合 Firecrawl 主线** · 相关项目：firecrawl/anydoc · 强度：80
+4. **multiplayer-agent-harness / 团队级 AI 协同 harness（Slack + Web 双入口，每员工独立沙箱）** · 相关项目：yc-software/qm · 强度：76
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
-| [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

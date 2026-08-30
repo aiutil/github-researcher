@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-30.md">Latest report</a> ·
+  <a href="daily/2026-08-31.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-30
+## Latest report · 2026-08-31
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 515 | 5 | 3.1K+ |
+| 6 | 518 | 5 | 5.4K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [tt-a1i/archify](projects/archify.md) | 30833 stars | 工具型 |
-| [bilawalsidhu/gods-eye-view](projects/gods-eye-view.md) | 12518 stars | 工具型 |
-| [tailscale/tailcat](projects/tailcat.md) | 3439 stars | 工具型 |
-| [JetBrains/go-modern-guidelines](projects/go-modern-guidelines.md) | 2854 stars | 工具型 |
-| [Osmantic/ODS](projects/ods.md) | 4864 stars | 工具型 |
-| [workweave/router](projects/router.md) | 2662 stars | 基础设施候选 |
+| [anywhere-labs/dsh-desktop](projects/dsh-desktop.md) | 22077 stars | 平台候选 |
+| [awesome-dsh-plugin/awesome-dsh-plugin](projects/awesome-dsh-plugin.md) | 13705 stars | 工具型 |
+| [pathwaycom/arc-task-gen](projects/arc-task-gen.md) | 9054 stars | 工具型 |
+| [genspark-ai/genoffice](projects/genoffice.md) | 4006 stars | 工具型 |
+| [firecrawl/anydoc](projects/anydoc.md) | 19386 stars | 工具型 |
+| [yc-software/qm](projects/qm.md) | 14368 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: tt-a1i/archify
-2. **Signal 2** · score 82 · repositories: bilawalsidhu/gods-eye-view
-3. **Signal 3** · score 78 · repositories: workweave/router
-4. **Signal 4** · score 76 · repositories: JetBrains/go-modern-guidelines
+1. **Signal 1** · score 88 · repositories: anywhere-labs/dsh-desktop, awesome-dsh-plugin/awesome-dsh-plugin, yjh051108/dsh-routing-suite
+2. **Signal 2** · score 82 · repositories: guillaumemeyer/watermarks-remover
+3. **Signal 3** · score 80 · repositories: firecrawl/anydoc
+4. **Signal 4** · score 76 · repositories: yc-software/qm
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-30.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-31.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 | [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
-| [2026-08-24](daily/2026-08-24.md) | 6 | 5 |
 
 ## Why this repository exists
 
