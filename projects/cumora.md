@@ -2,11 +2,11 @@
 title: "yetone/cumora"
 slug: "cumora"
 date_added: "2026-08-23"
-last_seen_date: "2026-08-23"
+last_seen_date: "2026-09-01"
 category: "平台候选"
 emoji: "💬"
-stars: "2,899 stars"
-stars_delta: "5 天 2,899⭐（2026-08-17 创建），TypeScript / MIT"
+stars: "3349 stars"
+stars_delta: "15 天 3349⭐（2026-09-01），10 天 +450⭐/+15.5%（自 8-23 的 2899⭐ 起）"
 language: "TypeScript"
 score: 90
 tags: ["ai-agents", "team-chat", "byoa", "claude-code", "codex", "grok-build", "agent-runtime", "electron", "react", "websocket"]

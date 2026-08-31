@@ -2,11 +2,11 @@
 title: "s1dashu/ip-as-logo-skill"
 slug: "ip-as-logo-skill"
 date_added: "2026-08-23"
-last_seen_date: "2026-08-23"
+last_seen_date: "2026-09-01"
 category: "工具型"
 emoji: "🎨"
-stars: "3,767 stars"
-stars_delta: "5 天 3,767⭐（2026-08-18 创建），Markdown / MIT"
+stars: "4666 stars"
+stars_delta: "14 天 4666⭐（2026-09-01），9 天 +899⭐/+23.9%（自 8-23 的 3767⭐ 起）"
 language: "Markdown"
 score: 86
 tags: ["codex", "codex-skill", "image-generation", "logo-design", "mascot-design", "agent-skills", "open-agent-skills-format", "cloudflare-r2", "supabase"]

@@ -2,11 +2,11 @@
 title: "duty1g/x64dbg-mcp-server"
 slug: "x64dbg-mcp-server"
 date_added: "2026-08-24"
-last_seen_date: "2026-08-24"
+last_seen_date: "2026-09-01"
 category: "工具型"
 emoji: "🧩"
-stars: "779 stars"
-stars_delta: "2 天 779⭐（2026-08-22 创建）"
+stars: "1800 stars"
+stars_delta: "10 天 1800⭐（2026-09-01），8 天 +1021⭐/+131%（自 8-24 的 779⭐ 起）"
 language: "Zig"
 score: 90
 tags: ["ai-debugging", "binary-analysis", "claude-code", "mcp", "mcp-server", "reverse-engineering", "x64dbg", "zig"]

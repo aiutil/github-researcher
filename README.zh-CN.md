@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-08-31.md">最新日报</a> ·
+  <a href="daily/2026-09-01.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-08-31
+## 最新研究 · 2026-09-01
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 518 | 5 | 5.4K+ |
+| 6 | 519 | 5 | 5.0K+ |
 
-**今日核心判断：** anywhere-labs/dsh-desktop（22077 stars）· guillaumemeyer/watermarks-remover（19466 stars）· firecrawl/anydoc（19386 stars）· yc-software/qm（14368 stars）· awesome-dsh-plugin/awesome-dsh-plugin（13705 stars）· pathwaycom/arc-task-gen（9054 stars）
+**今日核心判断：** sapientinc/PRAXIST（5446 stars）· MengTo/threeui（4775 stars）· s1dashu/ip-as-logo-skill（4666 stars）· CopilotKit/OpenBot（3607 stars）· yetone/cumora（3349 stars）· duty1g/x64dbg-mcp-server（1800 stars）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [anywhere-labs/dsh-desktop](projects/dsh-desktop.md) | 22077 stars | 平台候选 |
-| [awesome-dsh-plugin/awesome-dsh-plugin](projects/awesome-dsh-plugin.md) | 13705 stars | 工具型 |
-| [pathwaycom/arc-task-gen](projects/arc-task-gen.md) | 9054 stars | 工具型 |
-| [genspark-ai/genoffice](projects/genoffice.md) | 4006 stars | 工具型 |
-| [firecrawl/anydoc](projects/anydoc.md) | 19386 stars | 工具型 |
-| [yc-software/qm](projects/qm.md) | 14368 stars | 平台候选 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 5446 stars | 基础设施候选 |
+| [MengTo/threeui](projects/threeui.md) | 4775 stars | 工具型 |
+| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 4666 stars | 工具型 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 3607 stars | 平台候选 |
+| [yetone/cumora](projects/cumora.md) | 3349 stars | 平台候选 |
+| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1800 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **deepseek-harness-ecosystem / DSH 插件生态正式破圈，多款官方/社区插件同时登顶 Trending** · 相关项目：anywhere-labs/dsh-desktop, awesome-dsh-plugin/awesome-dsh-plugin, yjh051108/dsh-routing-suite · 强度：88
-2. **agent-skill-distribution / "内容所有权工具"以 Agent Skill 形态分发（watermark removal + c2pa provenance）** · 相关项目：guillaumemeyer/watermarks-remover · 强度：82
-3. **agent-document-intake / Rust 实现的办公文档→Markdown 一体化解析，配合 Firecrawl 主线** · 相关项目：firecrawl/anydoc · 强度：80
-4. **multiplayer-agent-harness / 团队级 AI 协同 harness（Slack + Web 双入口，每员工独立沙箱）** · 相关项目：yc-software/qm · 强度：76
+1. **autonomous-research-system / 可执行/可测量研究系统（PRAXIST 4 天 1451→5446 stars，3.7 倍增长）进入稳态** · 相关项目：sapientinc/PRAXIST · 强度：92
+2. **threejs-ui-catalog / MengTo 开源 Three.js UI 组件库（4775 stars/10 天），ThreeUI 社区版本上线** · 相关项目：MengTo/threeui · 强度：84
+3. **agent-design-skills / Agent Skill 在视觉/品牌/排版方向的扩展——从工程 skill 到设计 skill** · 相关项目：s1dashu/ip-as-logo-skill, nateherkai/scroll-craft, yanliudesign/mono-color-skill · 强度：82
+4. **agent-harness-as-product / 团队级 AI 协同 harness 进入产品化（CopilotKit 官方入场 + yetone cumora 持续高歌）** · 相关项目：CopilotKit/OpenBot, yetone/cumora, yc-software/qm, ApodexAI/FrontierAgent · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
-| [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

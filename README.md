@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-08-31.md">Latest report</a> ·
+  <a href="daily/2026-09-01.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-08-31
+## Latest report · 2026-09-01
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 518 | 5 | 5.4K+ |
+| 6 | 519 | 5 | 5.0K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [anywhere-labs/dsh-desktop](projects/dsh-desktop.md) | 22077 stars | 平台候选 |
-| [awesome-dsh-plugin/awesome-dsh-plugin](projects/awesome-dsh-plugin.md) | 13705 stars | 工具型 |
-| [pathwaycom/arc-task-gen](projects/arc-task-gen.md) | 9054 stars | 工具型 |
-| [genspark-ai/genoffice](projects/genoffice.md) | 4006 stars | 工具型 |
-| [firecrawl/anydoc](projects/anydoc.md) | 19386 stars | 工具型 |
-| [yc-software/qm](projects/qm.md) | 14368 stars | 平台候选 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 5446 stars | 基础设施候选 |
+| [MengTo/threeui](projects/threeui.md) | 4775 stars | 工具型 |
+| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 4666 stars | 工具型 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 3607 stars | 平台候选 |
+| [yetone/cumora](projects/cumora.md) | 3349 stars | 平台候选 |
+| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1800 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: anywhere-labs/dsh-desktop, awesome-dsh-plugin/awesome-dsh-plugin, yjh051108/dsh-routing-suite
-2. **Signal 2** · score 82 · repositories: guillaumemeyer/watermarks-remover
-3. **Signal 3** · score 80 · repositories: firecrawl/anydoc
-4. **Signal 4** · score 76 · repositories: yc-software/qm
+1. **Signal 1** · score 92 · repositories: sapientinc/PRAXIST
+2. **Signal 2** · score 84 · repositories: MengTo/threeui
+3. **Signal 3** · score 82 · repositories: s1dashu/ip-as-logo-skill, nateherkai/scroll-craft, yanliudesign/mono-color-skill
+4. **Signal 4** · score 80 · repositories: CopilotKit/OpenBot, yetone/cumora, yc-software/qm, ApodexAI/FrontierAgent
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-08-31.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-01.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 | [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
-| [2026-08-25](daily/2026-08-25.md) | 6 | 5 |
 
 ## Why this repository exists
 

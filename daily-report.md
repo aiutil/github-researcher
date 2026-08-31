@@ -3,6 +3,24 @@
 > 每日 GitHub 趋势研究简报，持续跟踪不间断
 
 ---
+## 2026-09-01
+**核心主题：** sapientinc/PRAXIST（5446 stars）· MengTo/threeui（4775 stars）· s1dashu/ip-as-logo-skill（4666 stars）· CopilotKit/OpenBot（3607 stars）· yetone/cumora（3349 stars）· duty1g/x64dbg-mcp-server（1800 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照（stars:>500 + created:2026-08-15..2026-09-01 sort=stars）；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧪 sapientinc/PRAXIST (5446 stars) — Sapient Inc. 的 autonomous research system（4 天 1451→5446 stars，3.7 倍增长），Score 94
+- 🎨 MengTo/threeui (4775 stars) — ThreeUI Community 开源版本（Three.js UI 组件目录），Score 84
+- 🐙 s1dashu/ip-as-logo-skill (4666 stars) — Agent Skill 形态的 IP 吉祥物 logo 设计 skill（Codex skill），Score 86
+- 🤖 CopilotKit/OpenBot (3607 stars) — CopilotKit 官方的 AI coworker（AG-UI + governance + browser/files/tools），Score 88
+- 💬 yetone/cumora (3349 stars) — 跨平台团队聊，AI agent 作为一等公民队友，Score 90
+- 🧩 duty1g/x64dbg-mcp-server (1800 stars) — x64dbg 的 MCP plugin（Zig 实现，Windows debugger AI 化），Score 90
+
+**关键判断：**
+- **Autonomous research / Scientific agent 进入开源产品化阶段**：sapientinc/PRAXIST 4 天 1,451⭐（8-29）→ 5,446⭐（9-01），3.7 倍增长；14.9MB Python + arXiv 2608.25955 + Codex/Claude Code skill pack 三件套说明"AI 研究员"已从概念走向可安装/可复现的工程实现
+- **Agent Skill 从工程类扩展到设计类完整品类**：s1dashu/ip-as-logo-skill 4,666⭐ + nateherkai/scroll-craft 1,336⭐ + yanliudesign/mono-color-skill 1,809⭐ + 此前 tt-a1i/archify 30,833⭐ + K-Dense-AI/scientific-agent-skills 38k⭐ + s0xDk/refactoring-ui-skill 419⭐ 共同证明 Agent Skill 协议在「代码 / 设计 / 写作 / 研究」四大方向都已被验证
+- **团队级 / 多人 Agent Harness 多源合流产品化**：CopilotKit/OpenBot 3,607⭐/450 forks（CopilotKit 官方）+ yetone/cumora 3,349⭐/412 forks（个人）+ yc-software/qm 14,368⭐/1,736 forks（YC 投资）+ ApodexAI/FrontierAgent 1,332⭐/118 forks（创业公司）四方势力同时押注团队级 harness，fork/star 比普遍 10-12% 说明有真实团队在部署
+
 
 ## 2026-08-31
 

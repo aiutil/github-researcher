@@ -4,6 +4,74 @@ last_updated: '2026-08-31'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+## 2026-09-01
+
+### sapientinc/PRAXIST（5446 stars）· MengTo/threeui（4775 stars）· s1dashu/ip-as-logo-skill（4666 stars）· CopilotKit/OpenBot（3607 stars）· yetone/cumora（3349 stars）· duty1g/x64dbg-mcp-server（1800 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照（stars:>500 + created:2026-08-15..2026-09-01 sort=stars）；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | autonomous-research-system / 可执行/可测量研究系统（PRAXIST 4 天 1451→5446 stars，3.7 倍增长）进入稳态 | sapientinc/PRAXIST | 92 |
+| 2 | threejs-ui-catalog / MengTo 开源 Three.js UI 组件库（4775 stars/10 天），ThreeUI 社区版本上线 | MengTo/threeui | 84 |
+| 3 | agent-design-skills / Agent Skill 在视觉/品牌/排版方向的扩展——从工程 skill 到设计 skill | s1dashu/ip-as-logo-skill | 82 |
+| 4 | agent-harness-as-product / 团队级 AI 协同 harness 进入产品化（CopilotKit 官方入场 + yetone cumora 持续高歌） | CopilotKit/OpenBot | 80 |
+| 5 | mcp-debugging / MCP 协议在系统编程/调试工具的纵深——x64dbg MCP server 突破 1.8k stars | duty1g/x64dbg-mcp-server | 76 |
+| 6 | dsh-plugin-ecosystem / DeepSeek Harness 周边工具从「插件」扩展到「报告 + 评估」——J-Space benchmark 落地 | Tiger3807861189/DeepSeek-V4-J-Space-Capability-Realization-Report | 70 |
+
+#### 当日重点项目
+
+- 🧪 sapientinc/PRAXIST (5446 stars) — Sapient Inc. 的 autonomous research system（4 天 1451→5446 stars，3.7 倍增长），Score 94
+- 🎨 MengTo/threeui (4775 stars) — ThreeUI Community 开源版本（Three.js UI 组件目录），Score 84
+- 🐙 s1dashu/ip-as-logo-skill (4666 stars) — Agent Skill 形态的 IP 吉祥物 logo 设计 skill（Codex skill），Score 86
+- 🤖 CopilotKit/OpenBot (3607 stars) — CopilotKit 官方的 AI coworker（AG-UI + governance + browser/files/tools），Score 88
+- 💬 yetone/cumora (3349 stars) — 跨平台团队聊，AI agent 作为一等公民队友，Score 90
+- 🧩 duty1g/x64dbg-mcp-server (1800 stars) — x64dbg 的 MCP plugin（Zig 实现，Windows debugger AI 化），Score 90
+
+#### 关键判断
+
+- **Autonomous research / Scientific agent 进入开源产品化阶段**：sapientinc/PRAXIST 4 天 1,451⭐（8-29）→ 5,446⭐（9-01），3.7 倍增长；14.9MB Python + arXiv 2608.25955 + Codex/Claude Code skill pack 三件套说明"AI 研究员"已从概念走向可安装/可复现的工程实现
+- **Agent Skill 从工程类扩展到设计类完整品类**：s1dashu/ip-as-logo-skill 4,666⭐ + nateherkai/scroll-craft 1,336⭐ + yanliudesign/mono-color-skill 1,809⭐ + 此前 tt-a1i/archify 30,833⭐ + K-Dense-AI/scientific-agent-skills 38k⭐ + s0xDk/refactoring-ui-skill 419⭐ 共同证明 Agent Skill 协议在「代码 / 设计 / 写作 / 研究」四大方向都已被验证
+- **团队级 / 多人 Agent Harness 多源合流产品化**：CopilotKit/OpenBot 3,607⭐/450 forks（CopilotKit 官方）+ yetone/cumora 3,349⭐/412 forks（个人）+ yc-software/qm 14,368⭐/1,736 forks（YC 投资）+ ApodexAI/FrontierAgent 1,332⭐/118 forks（创业公司）四方势力同时押注团队级 harness，fork/star 比普遍 10-12% 说明有真实团队在部署
+
+#### 排名变化与新晋
+
+- 新入榜（TOP 6）：sapientinc/PRAXIST（8-29 上榜后稳态 + 4 天 3.7 倍增长）、MengTo/threeui（新项目）、s1dashu/ip-as-logo-skill（8-23 上榜后持续增长）、CopilotKit/OpenBot（8-23 上榜后持续增长）、yetone/cumora（8-23 上榜后持续增长）、duty1g/x64dbg-mcp-server（8-24 上榜后持续增长）
+- 持续上榜（≥3 天）：sapientinc/PRAXIST（连续上榜自 8-29）、yetone/cumora（连续上榜自 8-23）、CopilotKit/OpenBot（连续上榜自 8-23）、s1dashu/ip-as-logo-skill（连续上榜自 8-23）、duty1g/x64dbg-mcp-server（连续上榜自 8-24）
+- 滑出 TOP 6：anywhere-labs/dsh-desktop、guillaumemeyer/watermarks-remover、firecrawl/anydoc、yc-software/qm、awesome-dsh-plugin/awesome-dsh-plugin、pathwaycom/arc-task-gen、genspark-ai/genoffice（8-31 全部 7 个项目滑出；仍持续观察）
+
+#### 异常信号
+
+- **PRAXIST 4 天 +275% / +3,995⭐ 异常陡增**：scientific agent 赛道首个进入"千日增长量级"项目；与 OpenAI Deep Research / Anthropic Research 形成开源对标；License NOASSERTION 商业采用前需读 LICENSE
+- **threeui 商业设计工具 + 开源社区版分发模式验证**：10 天 4,775⭐/473 forks（fork/star 比 9.9%）；与 plasmic / builder.io / animate-ui 形成同类样本
+- **Agent Skill 设计品类三件套同时上榜**：ip-as-logo-skill（logo）+ scroll-craft（滚动设计）+ mono-color-skill（编辑设计海报）证明 Agent Skill 已从工程扩展到设计完整品类
+- **CopilotKit 官方入场团队级 harness + 三方势力同期**：OpenBot（CopilotKit 官方）+ cumora（个人）+ qm（YC 投资）+ FrontierAgent（创业）四方同时押注团队级 harness
+
+#### 持续跟踪项目状态
+
+- PRAXIST（5,446⭐，4 天 +275%，autonomous research 赛道首个千日增长量级）
+- cumora（3,349⭐，15 天稳态增长，BYOA 模型持续验证）
+- ip-as-logo-skill（4,666⭐，14 天持续增长，Agent Skill × 资产库模式）
+- OpenBot（3,607⭐，15 天 +56%，CopilotKit 官方 AG-UI 协议层样本）
+- x64dbg-mcp-server（1,800⭐，10 天 +131%，MCP × Windows RE 标杆）
+- threeui（4,775⭐，新建项目，商业设计工具 + 开源社区版分发模式）
+
+#### 跨日趋势延续性
+
+- **Autonomous research / Scientific agent**（8-29 起 → 9-01）：PRAXIST 1,451⭐（8-29 起步）→ 5,446⭐（9-01），4 天 +275%；与 OpenAI Deep Research / Anthropic Research 形成开源对标
+- **Agent Skill 形态分发**（8-22 起 → 9-01）：tt-a1i/archify（架构图）→ K-Dense-AI/scientific-agent-skills（科学）→ s0xDk/refactoring-ui-skill（设计）→ Nanako0129/sepia（写作）→ watermarks-remover（内容所有权）→ ip-as-logo-skill（IP logo）+ scroll-craft（滚动设计）+ mono-color-skill（编辑设计）——"已有方法论 → Agent Skill"路径已成行业标准，且从工程扩展到设计完整品类
+- **团队级 / 多人 Agent Harness**（8-12 起 → 9-01）：qm（YC 投资）→ cumora（个人）→ OpenBot（CopilotKit 官方）→ FrontierAgent（创业）四方势力同时押注
+- **DSH 生态立体化**（8-18 起 → 9-01）：deepseek-harness 主仓库 → dsh-desktop 桌面端 → awesome-dsh-plugin 社区目录 → DeepSeek-Balance-Whale-Widget 桌面挂件 → J-Space-Capability-Realization-Report 评估类报告
+- **商业设计工具 + 开源社区版**（8-25 起 → 9-01）：plasmic → builder.io → animate-ui → threeui
+
+#### 待观察项
+
+- PRAXIST 30/60/90 天 stars / forks / contributors 曲线（判断是否进入长期采用）
+- threeui 商业版 vs Community 版的边界文档化（具体独家组件 / 商业授权条款）
+- Agent Skill 在「法律 / 医疗 / 金融 / 教育」垂直行业的扩展（设计 / 工程 / 写作 / 研究之外的第五方向）
+- CopilotKit/OpenBot Alpha → Beta → GA 的版本节奏与 AG-UI 协议稳定性
+- x64dbg-mcp-server 是否被主流 agent 框架默认收录（Claude Code skill marketplace / Codex plugin marketplace）
+- DSH 生态是否进入"插件 + 报告 + 桌面挂件 + 评估"立体化稳态
 
 # Trend Index — 趋势指数
 

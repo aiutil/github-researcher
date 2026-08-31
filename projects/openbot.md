@@ -2,11 +2,11 @@
 title: "CopilotKit/OpenBot"
 slug: "openbot"
 date_added: "2026-08-23"
-last_seen_date: "2026-08-23"
+last_seen_date: "2026-09-01"
 category: "平台候选"
 emoji: "🤖"
-stars: "2,308 stars"
-stars_delta: "6 天 2,308⭐（2026-08-17 创建），TypeScript / MIT / Alpha"
+stars: "3607 stars"
+stars_delta: "15 天 3607⭐（2026-09-01），9 天 +1299⭐/+56.3%（自 8-23 的 2308⭐ 起）"
 language: "TypeScript"
 score: 88
 tags: ["ag-ui", "agent-governance", "ai-agents", "browser-automation", "copilotkit", "generative-ui", "mcp", "docker", "self-hosted"]
