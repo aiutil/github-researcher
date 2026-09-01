@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-02 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-02-github">2026-09-02 GitHub 趋势研究简报</h1>
+<blockquote>
+<p>证据边界：本简报基于 2026-09-02 GitHub API 快照（stars:&gt;800 + created:2026-08-16..2026-09-01 sort=stars desc）；项目名称、星标、描述和标签为公开元数据，"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。复现项（如宣称指标 / 商业可用性 / 政策合规）需独立核验。引用前序日报数字（如 PRAXIST 8-29 时的 1451⭐）均来自同期 daily MD 档案。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名展开）</h2>
+<h3 id="1-autonomous-research-system-praxist-score-93">1. autonomous-research-system / PRAXIST 进入稳态第二日（Score 93）</h3>
+<p><code>sapientinc/PRAXIST</code> 在 8-29 记录 1,451⭐（首日 2 天），9-01 记录 5,446⭐，本次 9-02 记录 6,120⭐——3 天内净增 4,669⭐（+321%）。<code>514 forks / 6,120⭐ ≈ 8.4%</code> 的 fork/star 比说明社区在尝试部署但仍处于早期。15.2MB Python 仓库 + arXiv 2608.25955 + Codex/Claude Code skill pack 三件套延续昨天判断：scientific agent / autonomous researcher 赛道已从概念走向"可安装 + 可复现 + 论文 + 双 harness 适配"的产品化阶段。</p>
+<p><strong>关键证据 vs 推断：</strong> 6,120⭐ / 514 forks / 15.2MB / NOASSERTION License / 创建 2026-08-15 / pushed 2026-08-31——GitHub API 当日截取。<strong>风险：</strong> License NOASSERTION 商业采用前必须读 LICENSE；scientific agent 类项目"benchmark 宣称"复现性历来需独立测试；论文与代码版本对应关系需核验；3 天 +3,274⭐ 的增速若放缓，需关注"二次增长点"是否出现。</p>
+<h3 id="2-grok-bot-reconstructed-xai-grok-bot-018-macos-score-88">2. grok-bot-reconstructed / xAI Grok Bot 0.18 macOS 源码级复刻（Score 88）</h3>
+<p><code>b-nnett/grok-bot-0.18-reconstructed</code> 9 天 3,470⭐ / <strong>3,494 forks</strong>——<strong>fork/star 比 ≈ 100.7%（倒挂）</strong>。这一信号异常强烈：通常 fork/star 比在 5-15% 区间（个人项目 5-8%，工具型 10-15%），100% 倒挂说明仓库以"复刻/部署/二次修改"为驱动，而非"围观"。描述："Unofficial source-oriented reconstruction and extension of Grok Bot 0.18.0 for macOS"——明确标注 "Unofficial" 与 "source-oriented reconstruction"。<code>5559KB TypeScript</code> + 无 license 字段（License None）说明法律风险由使用者承担。</p>
+<p><strong>关键证据 vs 推断：</strong> 3,470⭐ / 3,494 forks / 5559KB / TypeScript / License None / created 2026-08-23 / pushed 2026-08-23——GitHub API 当日截取；<code>pushed_at</code> 与 <code>created_at</code> 几乎同一时刻（40 分钟差），说明此后无更新，是纯"一次性复刻 + 社区接力 fork"的样本。<strong>风险：</strong> License None 意味着没有任何明示授权，xAI / Grok 商标与代码版权需采用方自评；3,494 forks 中有多少会真正运行 / 提交 PR 需观察；属于"灰色地带"研究型项目，不应作为商业产品基础。</p>
+<h3 id="3-agent-routing-protocol-a2a-agent-score-84">3. agent-routing-protocol / A2A 多 Agent 状态路由（Score 84）</h3>
+<p><code>wang2122/sprix-sage-router</code> 10 天 3,185⭐ / 368 forks（topics 明示 <code>a2a</code> / <code>agent-orchestration</code> / <code>agent-routing</code> / <code>multi-agent-systems</code> / <code>sprix-ai</code> / <code>task-scheduling</code>，纯 Python 仅 350KB），代表 A2A（Agent-to-Agent）协议从概念进入"具体路由策略实现"。其设计为 <code>state-aware SELF/COLLABORATE/HANDOFF</code>——agent 网络中根据状态决定"自己处理 / 协作 / 移交"。配合 <code>XiaoDuoYa/codex-with-chatgpt</code>（14 天 2,120⭐ / 215 forks，TypeScript 112KB，"ChatGPT 想、Codex 做"——ChatGPT 作规划脑、保留 Codex harness）说明 <strong>A2A / 多 Agent 协同已进入"分工 + 路由 + 跨 harness 桥接"的具体实现阶段</strong>。</p>
+<p><strong>关键证据 vs 推断：</strong> sprix-sage-router 的 topics 字段明列 <code>a2a</code> / <code>agent-routing</code>，是 A2A 协议可观察样本；350KB 纯 Python 仓库，路由策略相对轻量。codex-with-chatgpt 集成 <code>mcp</code> / <code>oauth</code> / <code>model-context-protocol</code>，与 MCP 协议族互补。<strong>风险：</strong> A2A 协议层尚未形成公认标准（与 MCP 比），各家路由策略互不兼容；plan-then-execute 的拆分对模型推理质量高度敏感。</p>
+<h3 id="4-browser-use-macos-harness-browser-use-macos-harnessscore-82">4. browser-use-macos-harness / browser-use 官方 macOS Harness（Score 82）</h3>
+<p><code>browser-use/macos-harness</code> 15 天 818⭐ / 55 forks——<code>browser-use</code>（已是 macOS / Linux 浏览器自动化头部项目）官方出品的 macOS Harness：描述明示"最薄一层让 LLM 完全控制 Mac"（accessibility / CDP / computer-use）。与昨天 CopilotKit/OpenBot（AG-UI + governance + browser/files/tools）和 yetone/cumora（团队聊 + AI 一等公民）共同说明 <strong>"Mac / 桌面级 AI 协同"三方势力同时入场</strong>：CopilotKit（OpenBot 商业框架方）、yetone（个人 cumora）、browser-use（开源自动化头部）。</p>
+<p><strong>关键证据 vs 推断：</strong> 818⭐ / 55 forks / 5640KB / MIT / Python / topics <code>accessibility</code> <code>agent</code> <code>automation</code> <code>cdp</code> <code>computer-use</code> <code>macos</code>——GitHub API 当日截取；browser-use 已是 GitHub 上 macOS / Linux computer-use 头部项目（数万⭐），其官方 Harness 自然有真实用户基础。<strong>风险：</strong> macOS accessibility API 滥用风险（系统权限要求）；与 Apple App Sandbox / 隐私政策兼容性需采用方自评；computer-use 类项目法律责任边界（agent 误操作导致数据丢失）需观察。</p>
+<h3 id="5-agent-skill-vertical-expansion-agent-skill-score-80">5. agent-skill-vertical-expansion / Agent Skill 在写作/视频/购物方向纵深（Score 80）</h3>
+<p>四条并行线索：
+- <strong><code>yanliudesign/mono-color-skill</code></strong>（13 天 1,767⭐ / 0 forks，TypeScript/Python 双栈 / MIT / 74MB，<code>agent-skill</code> <code>claude-skill</code> <code>editorial-design</code> <code>monochrome</code> <code>halftone</code> <code>risograph</code> <code>zine</code>）——单色编辑设计海报 Agent Skill；0 forks / 1,767⭐ 的极端倒挂（0.0% fork/star）说明是"被围观但不被动手改"的样本；
+- <strong><code>Nanako0129/sepia</code></strong>（13 天 1,351⭐ / 79 forks，Python 172KB，<code>agent-skills</code> <code>ai-writing</code> <code>antigravity</code> <code>claude-code</code> <code>codex</code> <code>grok</code> <code>fiction</code> <code>humanizer</code>）——De-AI writing skill，兼容 77+ Agent Skills via Skills CLI；
+- <strong><code>cclank/lanshu-create-ai-presenter-video</code></strong>（14 天 990⭐ / 177 forks，Python 21KB，<code>codex</code> <code>codex-skill</code> <code>ai-video</code> <code>digital-human</code>）——AI 主持人视频生成 Codex Skill；
+- <strong><code>cinderline/northcinder</code></strong>（16 天 1,218⭐ / 8 forks，已存在档案）——local-first 购物 MCP server。</p>
+<p><strong>关键证据 vs 推断：</strong> 四项目星标、forks、topics 均来自 GitHub API 当日截取；sepia topics 明列 77+ Agent Skills via Skills CLI——意味着 Agent Skills 协议的"分发渠道"已成型；mono-color-skill 的 0 forks 极端值是设计类 skill 的典型（围观高、改动低）；northcinder 8 forks 极低说明仍是"少数人深用"的产品。<strong>风险：</strong> 设计 / 写作 / 视频 / 购物四类 skill 都涉及版权 / 隐私 / 合规边界（IP mascot / 编辑设计 / digital human / 购物意图）需采用方自评。</p>
+<h3 id="6-rust-native-tooling-rust-git-computer-use-score-76">6. rust-native-tooling / Rust 在 git / 媒体 / computer-use 工具的回潮（Score 76）</h3>
+<p><code>tobi/walgit</code> 10 天 2,384⭐ / 132 forks / MIT / 587KB / Rust——无描述、无 topics，但仍能在 10 天拿到 2.3k⭐，说明"原生 Rust git 工具"是 2026 下半年明确的开发者需求空白点。配合 <code>crmne/fastpotify</code>（15 天 1,507⭐ / 61 forks，Rust 12.7MB，topics <code>audio</code> <code>cross-platform</code> <code>desktop-app</code> <code>egui</code> <code>librespot</code> <code>spotify</code> <code>spotify-connect</code>）——Rust 在"git / 媒体播放器 / 系统工具"方向的原生实现正在持续产出。Rust 优势（无 GC、原生性能、单 binary 部署）在 CLI / desktop 场景回归明显。</p>
+<p><strong>关键证据 vs 推断：</strong> 2,384⭐ / 132 forks / 587KB / Rust / MIT——GitHub API 当日截取；无 description 是异常信号（开发者没写描述就直接 release），可能是"WIP 实验性仓库"；fastpotify 的 topics 完整度说明是成熟项目。<strong>风险：</strong> 无 description 的项目可能在改名 / 重组；Rust 生态 CLI 工具更新频繁，walgit 与 git 官方 CLI、gix、libgit2 等竞品关系需观察。</p>
+<h3 id="7-3d-content-from-prompt-3d-score-72">7. 3d-content-from-prompt / 文生 3D 设计工具持续产出（Score 72）</h3>
+<p><code>amagine-ai/Amagine3D</code> 15 天 2,109⭐ / 90 forks / Apache-2.0 / Python 5.1MB——"From hardware requirements to editable 3D designs"，明示"硬件需求 → 可编辑 3D 设计"工作流。配合 <code>wide-trace/open-higgsfield</code>（16 天 1,201⭐ / 18 forks / TypeScript 472KB / homepage openhiggsfield.ai）——"image and video generation studio"——共同说明 <strong>2026 下半年 "3D / 视频生成工作室"产品形态持续产出</strong>，且逐步向"硬件自选 + 可编辑输出"演进。</p>
+<p><strong>关键证据 vs 推断：</strong> 2,109⭐ / 90 forks / 5.1MB / Apache-2.0 / created 2026-08-19——GitHub API 当日截取；Apache-2.0 对企业友好；"editable 3D designs" 强调"可编辑"而非纯生成是关键差异化。<strong>风险：</strong> 文生 3D 模型质量与可控性历来是难题；硬件需求参数对消费级 GPU 不友好；模型 / 资产版权边界需采用方自评。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>Autonomous research / Scientific agent 进入稳态期</strong>——<code>PRAXIST</code> 4 天 4.2 倍增长后增速放缓（3 天 +3,274⭐ vs 前 3 天 +3,995⭐），进入"稳态观察期"；下一波可能是"垂直行业 research agent（生物 / 化学 / 材料 / 经济学）"或"多模态 research（视频 / 音频 / 3D）"</li>
+<li><strong>Grok Bot macOS 源码级复刻——研究型 fork/star 倒挂样本</strong>——<code>grok-bot-0.18-reconstructed</code> 100.7% 的 fork/star 比是 GitHub 上罕见的"研究 / 复刻"驱动样本，说明 xAI Grok 在 macOS 端的开发者关注度极高；同类型可能扩展到 Android / Windows 平台</li>
+<li><strong>A2A / 多 Agent 路由协议进入具体实现阶段</strong>——<code>sprix-sage-router</code> + <code>codex-with-chatgpt</code> 共同说明 A2A 已从"协议概念"走向"路由策略 + 跨 harness 桥接"具体实现；下一波可能是"A2A 标准统一"或"router-as-a-service"</li>
+<li><strong>macOS / 桌面 AI 协同三源合流</strong>——<code>CopilotKit/OpenBot</code>（商业框架方）+ <code>yetone/cumora</code>（个人）+ <code>browser-use/macos-harness</code>（开源自动化头部）三方势力同时押注 Mac 桌面 AI 协同；下一波可能是"iOS / Android / Windows 平台扩展"或"跨桌面协议"</li>
+<li><strong>Agent Skill 协议在垂直行业继续纵深</strong>——<code>mono-color-skill</code>（设计）+ <code>sepia</code>（写作）+ <code>lanshu</code>（视频）+ <code>northcinder</code>（购物）四件套说明 Agent Skill 协议在"代码 / 设计 / 写作 / 研究 / 视频 / 购物"六大方向都已成型；下一波可能是"法律 / 医疗 / 金融 / 教育"垂直行业 skill</li>
+<li><strong>Rust 原生工具回潮</strong>——<code>walgit</code>（git）+ <code>fastpotify</code>（媒体播放器）+ 此前 <code>ripgrep</code>/<code>fd</code>/<code>bat</code>/<code>eza</code> 等共同说明 Rust 在"CLI / 系统工具 / 桌面应用"方向持续替代 C / Go / Python；下一波可能是"数据库 / 浏览器 / 编辑器"等大件工具的 Rust 重写</li>
+<li><strong>文生 3D / 视频工作室持续产出</strong>——<code>Amagine3D</code>（Apache-2.0 / 可编辑）+ <code>open-higgsfield</code>（独立工作室）+ 此前多款共同说明 2026 下半年"AI 生成 3D / 视频"产品形态仍在快速演进；下一波可能是"可商用素材库 + 编辑器一体化"</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="sapientincpraxist6120-score-94">sapientinc/PRAXIST（6120⭐ · Score 94 · 已存在档案）</h3>
+<ul>
+<li><strong>定位</strong>：Sapient Inc. 出品的 autonomous research system——并行研究节点 + 多代合成 + evidence lanes + QD/DIG + Codex/Claude Code skill pack + arXiv 2608.25955。4 天 1,451⭐ → 6,120⭐，4.2 倍增长。</li>
+<li><strong>核心能力</strong>：(a) Autonomous research orchestration——并行研究节点调度；(b) 多代合成（multi-generation synthesis）——迭代精炼研究结论；(c) evidence lanes——证据通道隔离，避免交叉污染；(d) QD/DIG（quality-diversity + diverse-innovation-generation）——保证产出多样性与质量；(e) Codex/Claude Code skill pack——与主流 Coding Agent 兼容；(f) arXiv 2608.25955 论文——提供理论框架。</li>
+<li><strong>今日变化</strong>：5,446⭐ → 6,120⭐（+674⭐），增长率从 9-01 的 +1,667⭐ 放缓至 +674⭐（-60%），<strong>进入稳态期</strong>。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>并行研究节点调度层 + 多代合成引擎 + evidence lane 隔离层 + QD/DIG 多样性管理层 + Codex/Claude Code skill pack 适配层</td>
+<td>五要素是 Topics 与 description 明示；具体调度算法（贪心 / 强化学习 / 启发式）、evidence lane 实现（数据隔离 vs 共享 cache）需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>输入研究问题 → 并行启动 N 个研究节点 → 多代合成迭代精炼 → QD/DIG 选优 → evidence lane 汇总 → 输出可执行研究报告</td>
+<td>主路径抽象自 description；并行节点数、多代数、选优算法未公开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>研究广度（并行节点）vs 单节点深度（多代合成）vs 证据隔离 vs 多样性 vs 学术严谨性 vs Codex/Claude Code 双适配维护成本</td>
+<td>15.2MB 来自 API；License NOASSERTION 商业采用前需读 LICENSE；论文与代码版本对应关系需独立核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>安装 PRAXIST skill pack（Codex 或 Claude Code 任选）→ 准备 1 个小研究问题（如"对比 X 与 Y 框架"）→ 启动 autonomous research → 验证产出报告可读 + 可执行 + 多代收敛 → 与 OpenAI Deep Research 同输入对比质量与耗时</td>
+<td>skill pack 安装命令是 README 明示；具体 CLI 调用与最小 PoC 复杂度需 README 独立核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-nnettgrok-bot-018-reconstructed3470-score-78">b-nnett/grok-bot-0.18-reconstructed（3470⭐ · Score 78 · 新增档案）</h3>
+<ul>
+<li><strong>定位</strong>：b-nnett 开源的 macOS 上 xAI Grok Bot 0.18 的"非官方源码级复刻 + 扩展"——9 天 3,470⭐ / 3,494 forks。</li>
+<li><strong>核心能力</strong>：(a) source-oriented reconstruction——按源码思路复刻而非逆向工程；(b) macOS 平台原生支持；(c) 5.5MB TypeScript 实现；(d) 社区接力 fork 驱动（3494 forks / 3470⭐ = 100.7% fork/star 倒挂）；(e) 明确标注"Unofficial"以隔离法律风险。</li>
+<li><strong>今日变化</strong>：首次进入 800+ stars 阈值（昨日未达），意味着昨日 7 天累计 1k⭐ 基础上当日突破 3.4k⭐，<strong>单日增长异常陡</strong>。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>macOS 上 Grok Bot 0.18 的源码级复刻 + 扩展层，纯前端 / 客户端实现，无后端服务</td>
+<td>description 明示 "source-oriented reconstruction and extension"；具体 Grok Bot 0.18 的 API / 模型调用方式、复刻深度（UI / 业务逻辑 / 模型集成）需源码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 macOS 上启动复刻客户端 → 调用 Grok API → 与 xAI 官方 Grok Bot 类似对话 / 生成体验</td>
+<td>主路径为 description 抽象；具体技术栈（Electron / Tauri / 原生 Swift）需 README 核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"非官方复刻"vs "xAI 商标 / 代码版权风险"；"源码级"vs "法律边界"；"社区 fork 接力"vs "维护可持续性"（单人项目 + 3,494 forks 无 PR 可见）；License None vs 商业可用性</td>
+<td>5.5MB 来自 API；License None 意味着无明示授权；社区 3,494 forks 中实际 PR 占比待 GitHub UI 核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS 上 clone 仓库 → 安装依赖 → 配置 Grok API key → 启动客户端 → 验证基础对话 / 生成功能 → 对比 xAI 官方 Grok Bot 体验差异 → 评估法律风险后再决定是否深度使用</td>
+<td>安装命令需 README 独立核验；Grok API key 获取方式与 xAI 政策兼容性需自评；License None 的法律边界是采用最大障碍</td>
+</tr>
+</tbody>
+</table>
+<h3 id="browser-usemacos-harness818-score-84">browser-use/macos-harness（818⭐ · Score 84 · 新增档案）</h3>
+<ul>
+<li><strong>定位</strong>：browser-use 官方出品的 macOS Harness——最薄一层让 LLM 完全控制 Mac（accessibility / CDP / computer-use）。browser-use 已是 GitHub 上 macOS / Linux 浏览器自动化头部项目。</li>
+<li><strong>核心能力</strong>：(a) 最薄 Harness 层（thinnest harness）——抽象越少，灵活性越高；(b) macOS accessibility API + CDP（Chrome DevTools Protocol）双通道；(c) computer-use 完整控制（鼠标 / 键盘 / 屏幕读取）；(d) browser-use 官方背书（macOS / Linux computer-use 头部项目）；(e) MIT License 友好。</li>
+<li><strong>今日变化</strong>：首次进入 800+ stars 阈值，15 天累计 818⭐ / 55 forks（fork/star 比 6.7% 偏低，符合官方项目的特征）。</li>
+<li><strong>架构师速览</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>macOS accessibility API + CDP 双通道控制层 + LLM 调用层 + browser-use runtime 集成</td>
+<td>四要素是 topics 与 description 明示；具体 macOS 权限请求粒度、accessibility 与 CDP 切换策略、browser-use 与本 harness 的边界划分需 README 核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户任务 → LLM 决策 → accessibility API 控制原生 macOS 应用 + CDP 控制浏览器 → 屏幕读取验证 → 反馈</td>
+<td>主路径为 description 抽象；具体 accessibility API 调用细节、CDP 协议版本、browser-use 集成方式需 README 核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"最薄 Harness"灵活性 vs "复杂任务可靠性"；"accessibility"通用性 vs "误操作风险"；"LLM 全权控制" vs "人工审批门缺失"；"官方背书" vs "商业产品边界"</td>
+<td>5.6MB 来自 API；MIT License 商业可用；与 browser-use 主仓的关系（standalone vs submodule）需 README 核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>macOS 上 clone 仓库 → 安装依赖 → 配置 LLM API key → 启动 harness → 执行 1 个简单任务（如"打开 Safari 搜索 X → 提取 Y 字段"）→ 验证 accessibility + CDP 双通道是否工作 → 与 OpenBot / cumora 对比使用体验</td>
+<td>安装命令需 README 独立核验；具体 macOS 权限申请流程（系统设置 → 隐私 → 辅助功能）需文档指引；LLM 误操作风险评估需独立设计</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">风险与机遇</h2>
+<ul>
+<li><strong>风险 1：PRAXIST License NOASSERTION + 增速放缓</strong>——License NOASSERTION 商业采用前必须读 LICENSE；4 天 4.2 倍后增速从 +1,667⭐/日 放缓至 +674⭐/日（-60%），若持续放缓需关注"二次增长点"是否出现；scientific agent 类项目"benchmark 宣称"复现性历来需独立测试</li>
+<li><strong>风险 2：grok-bot-0.18-reconstructed 法律风险</strong>——License None 意味着无明示授权；xAI 商标 / 代码版权风险需采用方自评；3,494 forks 中真实运行 / PR 贡献占比待观察；属"灰色地带"研究型项目，不应作为商业产品基础</li>
+<li><strong>风险 3：macOS Harness 误操作风险</strong>——OpenBot + macos-harness + cumora 三方都在做"AI 完全控制 Mac"，但都缺"人工审批门"；agent 误操作导致数据丢失 / 系统损坏的法律责任需评估；macOS accessibility API 滥用风险需关注</li>
+<li><strong>风险 4：A2A 协议层分裂风险</strong>——sprix-sage-router 等各家路由策略互不兼容，与 MCP 协议层的成熟度差距明显；A2A 标准统一尚需时间，开发者早期接入需谨慎评估锁定风险</li>
+<li><strong>风险 5：Agent Skill 垂直化的版权边界</strong>——mono-color-skill（IP mascot）+ sepia（AI 写作去 AI 化）+ lanshu（digital human video）+ northcinder（购物）四类 skill 涉及 IP / 写作 / 数字人 / 消费意图版权与隐私边界，需采用方自评合规</li>
+<li><strong>风险 6：Rust walgit 无 description 风险</strong>——walgit 无 description、无 topics、无 README 内容说明（5559KB），可能是"WIP 实验性仓库"；与 git 官方 CLI、gix、libgit2 等竞品关系需观察</li>
+<li><strong>机遇 1：Autonomous research 垂直行业化</strong>——PRAXIST 稳态后下一波可能是"生物 / 化学 / 材料 / 经济学 / 法律"垂直行业 research agent</li>
+<li><strong>机遇 2：xAI Grok 复刻生态扩展</strong>——grok-bot-0.18-reconstructed 的 100.7% fork/star 倒挂说明开发者对 Grok Bot 跨平台扩展有强烈需求；下一波可能是"Android / Windows / Web 平台复刻"或"Grok API 集成 SDK"</li>
+<li><strong>机遇 3：A2A router-as-a-service</strong>——sprix-sage-router 等具体路由策略 + A2A 标准尚在演进；下一波可能是"router-as-a-service"云服务或"统一路由协议 SDK"</li>
+<li><strong>机遇 4：macOS Harness 三源合流的跨平台扩展</strong>——OpenBot + macos-harness + cumora 三方押注后，下一波可能是"iOS / Android / Windows" 平台扩展，或"跨桌面统一协议"</li>
+<li><strong>机遇 5：Agent Skill 协议标准化窗口</strong>——mono-color-skill + sepia + lanshu + northcinder 四件套共同说明 Agent Skill 协议在 6 大方向都已被验证；下一波可能是"法律 / 医疗 / 金融 / 教育"垂直行业 skill + 协议标准化</li>
+<li><strong>机遇 6：Rust 原生工具回潮持续</strong>——walgit + fastpotify + 此前多款共同说明 Rust 在 CLI / 系统工具 / 桌面应用方向的替代趋势持续；下一波可能是"数据库 / 浏览器 / 编辑器"大件工具 Rust 重写</li>
+<li><strong>机遇 7：3D / 视频工作室产品化</strong>——Amagine3D（Apache-2.0 / 可编辑）+ open-higgsfield 等共同说明 2026 下半年"AI 生成 3D / 视频"产品形态持续演进；下一波可能是"可商用素材库 + 编辑器一体化"</li>
+</ul>
+<h2 id="_4">关键发现</h2>
+<ul>
+<li><strong>PRAXIST 进入稳态期，增速放缓需关注二次增长点</strong>：4 天 1,451⭐ → 6,120⭐，4.2 倍后增速从 +1,667⭐/日 放缓至 +674⭐/日（-60%）；scientific agent 头部样本已确立但增长曲线进入"稳态观察期"</li>
+<li><strong>Grok Bot 源码级 fork/star 倒挂=100.7%——研究型驱动样本确认</strong>：<code>b-nnett/grok-bot-0.18-reconstructed</code> 9 天 3,470⭐ / 3,494 forks 是 GitHub 上罕见的"研究 / 复刻"驱动样本，说明 xAI Grok 在 macOS 端的开发者关注度极高；同类型可能扩展到 Android / Windows 平台</li>
+<li><strong>A2A 路由协议 + macOS Harness 三源合流 + Rust 原生工具回潮</strong>：今日三条并行趋势共同说明 2026 下半年 AI 工具链进入"协议标准化 + 平台硬件深度集成 + 原生性能回归"的三角驱动</li>
+</ul>
+<h2 id="_5">重点项目档案</h2>
+<blockquote>
+<p>本节给出当日新增 / 更新项目的完整档案索引。</p>
+</blockquote>
+<ul>
+<li>🧪 sapientinc/PRAXIST — Sapient Inc. 的 autonomous research system（4 天 1451→6120 stars，4.2 倍增长），Score 94 — 已存在档案，更新 stars 至 6,120⭐ — 详见 <a href="../projects/praxist.md">projects/praxist.md</a></li>
+<li>🤖 b-nnett/grok-bot-0.18-reconstructed — xAI Grok Bot 0.18 的 macOS 非官方源码级复刻与扩展（9 天 3470⭐/3494 forks，fork/star 倒挂 100.7%），Score 78 — 详见 <a href="../projects/b-nnett-grok-bot-0-18-reconstructed.md">projects/b-nnett-grok-bot-0-18-reconstructed.md</a></li>
+<li>🛰️ wang2122/sprix-sage-router — Sprix AI @ 屿智同行的 A2A state-aware SELF/COLLABORATE/HANDOFF 路由（10 天 3185⭐/368 forks，纯 Python 350KB），Score 85 — 已存在档案，更新 stars 至 3,185⭐ — 详见 <a href="../projects/sprix-sage-router.md">projects/sprix-sage-router.md</a></li>
+<li>🪄 XiaoDuoYa/codex-with-chatgpt — ChatGPT 想、Codex 做（14 天 2120⭐/215 forks，MCP + OAuth 集成），Score 86 — 已存在档案，更新 stars 至 2,120⭐ — 详见 <a href="../projects/codex-with-chatgpt.md">projects/codex-with-chatgpt.md</a></li>
+<li>🖥️ browser-use/macos-harness — browser-use 官方出品的 macOS Harness（15 天 818⭐/55 forks，accessibility + CDP + computer-use），Score 84 — 详见 <a href="../projects/macos-harness.md">projects/macos-harness.md</a></li>
+<li>🛒 cinderline/northcinder — Local-first 的 MCP shopping server（16 天 1218⭐/8 forks，三档推荐 + 人工审批），Score 84 — 已存在档案，更新 stars 至 1,218⭐ — 详见 <a href="../projects/northcinder.md">projects/northcinder.md</a></li>
+<li>🦀 tobi/walgit — Rust 原生 git 工具（10 天 2384⭐/132 forks / MIT / 587KB），Score 80 — 详见 <a href="../projects/walgit.md">projects/walgit.md</a></li>
+<li>🧊 amagine-ai/Amagine3D — 文生 3D 设计工具（15 天 2109⭐/90 forks，Apache-2.0 / 可编辑 3D），Score 78 — 详见 <a href="../projects/amagine3d.md">projects/amagine3d.md</a></li>
+</ul>
+<hr />
+<p><em>报告生成于 2026-09-02；数据源：GitHub API（stars:&gt;800 + created:2026-08-16..2026-09-01 sort=stars desc）；下期简报预计 2026-09-03 同步发布。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

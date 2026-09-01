@@ -2,11 +2,11 @@
 title: "XiaoDuoYa/codex-with-chatgpt"
 slug: "codex-with-chatgpt"
 date_added: "2026-08-29"
-last_seen_date: "2026-08-29"
+last_seen_date: "2026-09-02"
 category: "工具型"
 emoji: "🧠"
-stars: "239 stars"
-stars_delta: "239⭐ 起步（1 天）"
+stars: "2,120 stars"
+stars_delta: "14 天 2,120⭐（2026-08-19 创建），TypeScript 112KB，14 天 +1881⭐/+790%（自 8-29 的 239⭐ 起）"
 language: "TypeScript"
 score: 84
 tags: ["codex", "chatgpt", "mcp", "oauth", "read-only", "subscription-bridge", "ai-coding", "chatgpt-plus"]

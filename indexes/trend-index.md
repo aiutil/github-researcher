@@ -4,6 +4,33 @@ last_updated: '2026-08-31'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+## 2026-09-02
+
+### sapientinc/PRAXIST（6120 stars）· MengTo/threeui（4900 stars）· s1dashu/ip-as-logo-skill（4718 stars）· CopilotKit/OpenBot（3745 stars）· b-nnett/grok-bot-0.18-reconstructed（3470 stars）· yetone/cumora（3386 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照（stars:>800 + created:2026-08-16..2026-09-01 sort=stars）；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | autonomous-research-system / PRAXIST 进入稳态第二日（5 天 1451→6120 stars，4.2 倍增长），scientific agent 头部样本确认 | sapientinc/PRAXIST | 93 |
+| 2 | grok-bot-reconstructed / xAI Grok Bot 0.18 macOS 端非官方源码复刻/扩展（3494 forks/3470 stars）——fork/star 倒挂=100.7% | b-nnett/grok-bot-0.18-reconstructed | 88 |
+| 3 | agent-routing-protocol / A2A 多 Agent 状态路由协议（sprix-sage-router 3185 stars/15 天，state-aware SELF/COLLABORATE/HANDOFF） | wang2122/sprix-sage-router | 84 |
+| 4 | browser-use-macos-harness / 浏览器-use 团队官方 macOS Harness（818 stars）—— LLM 直接接管 Mac，computer-use 走向系统级 | browser-use/macos-harness | 82 |
+| 5 | agent-skill-vertical-expansion / Agent Skill 协议在「写作/调试/视频/本地优先购物」继续纵深 | yanliudesign/mono-color-skill | 80 |
+| 6 | rust-native-tooling / Rust 在 git/sql/wal/computer-use 方向的原生工具回潮（tobi/walgit 2384 stars/10 天） | tobi/walgit | 76 |
+| 7 | 3d-content-from-prompt / 文生 3D 设计工具持续产出（Amagine3D 2109 stars/15 天，Apache-2.0） | amagine-ai/Amagine3D | 72 |
+
+#### 当日重点项目
+
+- 🧪 sapientinc/PRAXIST (6120 stars) — Sapient Inc. 的 autonomous research system（5 天 1451→6120 stars，4.2 倍增长），Score 94
+- 🤖 b-nnett/grok-bot-0.18-reconstructed (3470 stars) — xAI Grok Bot 0.18 的 macOS 非官方源码级复刻 + 扩展（3494 forks / fork/star 倒挂 100.7%），Score 78
+- 🛰️ wang2122/sprix-sage-router (3185 stars) — A2A state-aware SELF/COLLABORATE/HANDOFF 路由（10 天 +1942⭐/+156%），Score 85
+- 🪄 XiaoDuoYa/codex-with-chatgpt (2120 stars) — ChatGPT 想、Codex 做（MCP + OAuth 集成），Score 86
+- 🖥️ browser-use/macos-harness (818 stars) — browser-use 官方 macOS Harness（accessibility + CDP + computer-use），Score 84
+- 🛒 cinderline/northcinder (1218 stars) — Local-first 的 MCP shopping server（三档推荐 + 人工审批），Score 84
+- 🦀 tobi/walgit (2384 stars) — Rust 原生 git 工具（WAL + CAS + 对象存储），Score 80
+- 🧊 amagine-ai/Amagine3D (2109 stars) — 文生可编辑参数化 3D 设计（Apache-2.0），Score 78
+
 ## 2026-09-01
 
 ### sapientinc/PRAXIST（5446 stars）· MengTo/threeui（4775 stars）· s1dashu/ip-as-logo-skill（4666 stars）· CopilotKit/OpenBot（3607 stars）· yetone/cumora（3349 stars）· duty1g/x64dbg-mcp-server（1800 stars）

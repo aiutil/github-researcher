@@ -3,6 +3,27 @@
 > 每日 GitHub 趋势研究简报，持续跟踪不间断
 
 ---
+## 2026-09-02
+**核心主题：** sapientinc/PRAXIST（6120 stars）· MengTo/threeui（4900 stars）· s1dashu/ip-as-logo-skill（4718 stars）· CopilotKit/OpenBot（3745 stars）· b-nnett/grok-bot-0.18-reconstructed（3470 stars）· yetone/cumora（3386 stars）
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照（stars:>800 + created:2026-08-16..2026-09-01 sort=stars）；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧪 sapientinc/PRAXIST (6120 stars) — Sapient Inc. 的 autonomous research system（5 天 1451→6120 stars，4.2 倍增长，增速放缓），Score 94
+- 🤖 b-nnett/grok-bot-0.18-reconstructed (3470 stars) — xAI Grok Bot 0.18 的 macOS 非官方源码级复刻（3494 forks / fork/star 倒挂 100.7%），Score 78
+- 🛰️ wang2122/sprix-sage-router (3185 stars) — A2A state-aware SELF/COLLABORATE/HANDOFF 路由（10 天 +1942⭐），Score 85
+- 🪄 XiaoDuoYa/codex-with-chatgpt (2120 stars) — ChatGPT 想、Codex 做（MCP + OAuth 集成），Score 86
+- 🖥️ browser-use/macos-harness (818 stars) — browser-use 官方 macOS Harness（accessibility + CDP + computer-use），Score 84
+- 🛒 cinderline/northcinder (1218 stars) — Local-first 的 MCP shopping server，Score 84
+- 🦀 tobi/walgit (2384 stars) — Rust 原生 git 工具（WAL + CAS + 对象存储），Score 80
+- 🧊 amagine-ai/Amagine3D (2109 stars) — 文生可编辑参数化 3D 设计（Apache-2.0），Score 78
+
+**关键判断：**
+- **PRAXIST 进入稳态期，增速放缓需关注二次增长点**：5 天 1,451⭐ → 6,120⭐，4.2 倍后增速从 +1,667⭐/日 放缓至 +674⭐/日（-60%）；scientific agent 头部样本已确立但增长曲线进入"稳态观察期"
+- **Grok Bot 源码级 fork/star 倒挂=100.7%——研究型驱动样本确认**：b-nnett/grok-bot-0.18-reconstructed 9 天 3,470⭐ / 3,494 forks 是 GitHub 上罕见的"研究 / 复刻"驱动样本，说明 xAI Grok 在 macOS 端的开发者关注度极高；同类型可能扩展到 Android / Windows 平台
+- **A2A 路由协议 + macOS Harness 三源合流 + Rust 原生工具回潮**：今日三条并行趋势共同说明 2026 下半年 AI 工具链进入"协议标准化 + 平台硬件深度集成 + 原生性能回归"的三角驱动
+
+
 ## 2026-09-01
 **核心主题：** sapientinc/PRAXIST（5446 stars）· MengTo/threeui（4775 stars）· s1dashu/ip-as-logo-skill（4666 stars）· CopilotKit/OpenBot（3607 stars）· yetone/cumora（3349 stars）· duty1g/x64dbg-mcp-server（1800 stars）
 

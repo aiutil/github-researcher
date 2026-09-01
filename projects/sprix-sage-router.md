@@ -2,11 +2,11 @@
 title: "wang2122/sprix-sage-router"
 slug: "sprix-sage-router"
 date_added: "2026-08-23"
-last_seen_date: "2026-08-23"
+last_seen_date: "2026-09-02"
 category: "观察型"
 emoji: "🛰️"
-stars: "1,243 stars"
-stars_delta: "5 天 1,243⭐（2026-08-18 创建），Python / MIT / research-preview"
+stars: "3,185 stars"
+stars_delta: "15 天 3,185⭐（2026-08-18 创建），Python 350KB / MIT，10 天 +1942⭐/+156%（自 8-23 的 1243⭐ 起）"
 language: "Python"
 score: 80
 tags: ["a2a", "agent-orchestration", "agent-routing", "ai-agents", "multi-agent-systems", "python", "sprix-ai", "task-scheduling", "research-preview"]

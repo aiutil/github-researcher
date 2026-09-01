@@ -2,11 +2,11 @@
 title: "sapientinc/PRAXIST"
 slug: "praxist"
 date_added: "2026-08-29"
-last_seen_date: "2026-09-01"
+last_seen_date: "2026-09-02"
 category: "基础设施候选"
 emoji: "🧪"
-stars: "5446 stars"
-stars_delta: "4 天 5446⭐（2026-09-01），4 天 +3995⭐/+275%（自 8-29 的 1451⭐ 起）"
+stars: "6120 stars"
+stars_delta: "5 天 6120⭐（2026-09-02），5 天 +4669⭐/+321%（自 8-29 的 1451⭐ 起），增速放缓 +674⭐/日（vs 9-01 +1667⭐/日，-60%）"
 language: "Python"
 score: 94
 tags: ["autonomous-research", "codex", "claude-code", "quality-diversity", "evidence-lanes", "multi-generation", "open-source-research", "skill-pack"]

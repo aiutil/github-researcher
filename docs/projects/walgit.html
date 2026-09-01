@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tobi/walgit | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/tobi/walgit" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="tobiwalgit">tobi/walgit</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>Rust 实现的 git server，遵循 Cursor "Git at any scale"（Continuity）架构</strong>——单一 binary + 对象存储（S3 / GCS）+ 写前日志（WAL）作为唯一真相源 + 每台机器都是 disposable cache + 仓库规模可超过机器规模。10 天 2,384⭐ / 132 forks / 26 open issues / 587KB / Rust / MIT——无 description / 无 topics 字段但拿到 2.3k⭐。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Git 是分布式系统，但 hosting 一个 git server 历来痛苦，原因只有一个：<strong>packfiles</strong>。一切都被压缩成大二进制 pack（按"小"而非"按顺序读"布局），每次 git 操作都是在 GB 之上随机走。在笔记本 page cache 内是好的，跨网络文件系统是灾难——这就是为什么"把仓库放 NFS 上"在每个尝试过的大型 host 都失败。<strong>GitHub Spokes 的设计</strong>（保真实仓库在本地 NVMe，让上游 git 做工作，packfile 级别复制 + 强一致）代价是三阶段提交 + 副本集 + 数据库映射 + pets fleet。</p>
+<p><code>walgit</code> 走 <strong>Cursor Continuity 路线</strong>（参考 Cursor 博客《Git at any scale》）：让 WAL（写前日志）在对象存储中成为唯一真相，每个磁盘仓库都是 cache。push 写入不可变对象到 bucket，仅当一个微小 manifest 被 CAS（compare-and-swap）重写时可见——CAS 即共识，无选举、无 quorum、无 primary。<strong>任意实例都可接收 push；两个 racing 实例不能同时赢</strong>。副本读 log 即可拥有仓库；读取无需协调（conditional GET，通常 304）；压缩由持 lease 者一次完成并发布到 log，副本下载压缩包而非 repack；WAL 是真相，故有完整 provenance（每个 push / repack 可重放到任意点）。</p>
+<p>针对 <strong>monorepo 在小机器上</strong> 这一关键场景，<code>walgit</code> 在 Continuity 基础上加了：
+- <strong>remote reader</strong>（HTTP range requests）——为大仓库服务 refs / web，pack 永远不必装在实例上
+- <strong>history pack</strong>——commits / trees 本地保留，blob 在 bucket
+- <strong>bundle-uri</strong>——clone 字节搬出服务器，新 clone / catch-up 是 bucket 或 CDN 提供的静态文件（周全包 + 链式日包 + 小时包）</p>
+<h2 id="2026-09-02">为什么值得关注（2026-09-02）</h2>
+<ul>
+<li><strong>10 天 2,384⭐ / 132 forks</strong>（GitHub API 可核验）：在无 description / 无 topics 情况下拿到 2.3k⭐，说明"原生 Rust git server"是 2026 下半年开发者强烈需求的空白点</li>
+<li><strong>26 open issues</strong>（相对偏高）：典型"早期 + 社区参与度强"信号，issues 内容待 GitHub UI 核验</li>
+<li><strong>Rust / MIT / 587KB</strong>：单一 binary（&lt; 1MB）即可启动 git server，对云原生部署极友好</li>
+<li><strong>架构传承 Cursor Continuity</strong>：Cursor 已是 GitHub Copilot / Cursor IDE 头部公司，其内部 git infra 开源版本意义重大</li>
+<li><strong>pushed 2026-08-27</strong>：比 created 晚 4 天，说明仍在活跃开发</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>"Git server 现代化 × 对象存储优先 × 单 binary 部署 × Cursor Continuity 架构开源"四重驱动。</strong> Git server 是 2026 下半年被忽视但需求明确的赛道——GitHub / GitLab / Gitea / SourceHut 之后，开发者社区需要一个"云原生 + 对象存储 + WAL + 无状态"的现代 git server 替代品。Cursor 已是 GitHub Copilot / Cursor IDE 头部公司，其内部 Continuity 架构开源版本（<code>walgit</code>）直接进入开发者视野。<code>无 description / 无 topics</code> 拿到 2.3k⭐ 本身就是需求强烈信号（说明开发者通过 PR / issue / 推文传播而非 SEO）。</p>
+<p><strong>关键证据 vs 推断：</strong> 2,384⭐ / 132 forks / 587KB / Rust / MIT / created 2026-08-23 22:28:01Z / pushed 2026-08-27 01:50:20Z——GitHub API 当日截取。<strong>风险：</strong> 无 description / 无 topics 意味着 SEO 弱、社区发现成本高；26 open issues 中可能含 blocker；与 GitHub Spokes / Gitea / SourceHut / gitness 等竞品关系需观察；WAL-based 设计对 S3 / GCS 等对象存储的强依赖性可能成为采用门槛。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>WAL + CAS 共识</strong>：写前日志在对象存储，唯一真相源；CAS 即共识，无选举 / 无 quorum / 无 primary</li>
+<li><strong>disposable cache</strong>：每台机器都是 cache，kill 所有机器仅丢失 warmth（缓存热度），不丢数据</li>
+<li><strong>smart HTTP v0/v2</strong>：<code>ls-refs</code>（带 prefix）、<code>fetch</code>（filter/shallow/deepen/sideband-all）、<code>receive-pack</code>（atomic、deletes、tags、push options、report-status-v2）、<code>&lt;owner&gt;/&lt;repo&gt;</code> namespaces、sha1 + sha256</li>
+<li><strong>bundle-uri</strong>：周全包 + 链式日包 + 小时包；新 clone 拉最新周全包 + 链上日包 + 服务器补余；catch-up 拉错过的 slots；blobless family 支持 <code>--filter=blob:none</code></li>
+<li><strong>Git LFS</strong>：Batch API + 基础 transfer，对象在 bucket，可选 read-through 上游 LFS server</li>
+<li><strong>web UI + API</strong>：React UI（tree / blob / commits / diffs / WAL 健康页）+ 只读 JSON API（<code>/{owner}/{repo}/api/*</code>）；sha-寻址响应不可变可缓存；长响应以 SSE 流式进度；<code>repos.js</code> 是无依赖 SDK</li>
+<li><strong>policy.json</strong>：per-repo push 规则（protected refs / groups / fast-forward only / bypass lists）</li>
+<li><strong>settings + WAL</strong>：per-repo 配置（bundle 调度 / 压缩 / upstream follow）发布到 WAL 带 history</li>
+<li><strong>events bridge</strong>：小桥接监听 WAL，POST ref 事件到 webhook，每个 <code>(repo, seq, ref)</code> 恰好一次（持久 cursor）</li>
+<li><strong>maintenance</strong>：checkpoints / bundle 构建 / 几何压缩 / base 重建 / 连通性审计 / 修复——一个循环计算期望状态，每轮做一项最重要缺失工作；自愈（outage 不留洞；删除的 artifact 标识为 "missing" 同等重建）</li>
+<li><strong>remote reader</strong>（HTTP range requests）：大仓库的 refs / web 服务，pack 不必装在实例上</li>
+<li><strong>history pack</strong>：commits / trees 本地，blob 在 bucket</li>
+<li><strong>monorepo on small machines</strong>：核心场景，专为 monorepo 在小机器上设计</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>WAL + 对象存储层 + git smart HTTP 协议层 + bundle-uri 静态服务层 + LFS 适配层 + web UI/API 层 + policy / settings / events / maintenance 子系统</td>
+<td>README 明示十三要素；具体 CAS 实现细节（S3 conditional writes / DynamoDB-like compare-and-swap）、bundle 调度算法、policy.json 完整 schema 均待代码核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>push → receive-pack 写 WAL + CAS manifest → 副本 conditional GET 看到变化 → 客户端 fetch（带 bundle-uri 优化）→ 上游 git 做 upload-pack/repack/bundle → walgit 做 receive-pack + WAL + plumbing</td>
+<td>主路径为 README 描述；具体 WAL 对象格式、CAS 重试策略、bundle 切割算法需 README / 代码独立核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"WAL + CAS 共识" vs "强一致副本集成本"（GitHub Spokes 路线）；"对象存储优先" vs "网络依赖 + 延迟"；"disposable cache" vs "冷启动延迟"；"单 binary 部署" vs "运维可视化欠缺"；"Cursor Continuity 传承" vs "生态绑定"</td>
+<td>587KB 来自 API（极小，说明是核心二进制）；MIT 商业可用；与 GitHub Spokes / Gitea / SourceHut / gitness 等竞品关系需观察</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>准备 S3 或 GCS bucket → 写 <code>walgit.toml</code>（S3 endpoint + token） → <code>walgit serve --config walgit.toml</code> 启动 → <code>git push https://git.example.com/acme/app.git main</code> 创建仓库 → 验证 web UI 可访问 / LFS 可用 / bundle-uri clone 可优化 → 与现有 Gitea / GitLab 对比部署复杂度与读性能</td>
+<td>安装命令需 README 独立核验；S3 / GCS 兼容性、CAS 在不同对象存储上的实现差异、bundle-uri 实际节省带宽比例需独立 benchmark</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><code>walgit</code> 的核心启发是 <strong>"Git hosting 的现代化路径"</strong>——从 GitHub Spokes 的"pet fleet + 副本集 + 数据库映射"过渡到 Cursor Continuity 的"WAL + CAS + disposable cache"。三个核心洞察：</p>
+<ol>
+<li><strong>CAS 即共识</strong>：对象存储的 conditional write（CAS）就是分布式共识——不需要 Raft / Paxos / 选举 / quorum。这是"把基础设施外包给云"的极致表现。</li>
+<li><strong>disposable cache 是常态</strong>：每台机器都是 cache，kill all 仅丢失 warmth。Monorepo 在小机器上的可行性由此打开。</li>
+<li><strong>clone 字节搬出服务器</strong>：bundle-uri 把 clone 流量从动态服务器搬到 CDN / bucket，是 GitHub 自己也在用的优化（<a href="https://github.blog/open-source/git/introducing-bundle-uri-clone-and-fetch-with-bundle-uri/">参考 GitHub bundle-uri 文档</a>）。</li>
+</ol>
+<p>更深层的启发是 <strong>"基础设施架构的演进是哲学问题而非技术问题"</strong>。GitHub Spokes 路线假设"机器是 pet，需要照顾"；Cursor Continuity 路线假设"机器是 cattle，死了就换"。两者都能 scale，但运维成本 / 心态完全不同——前者要养宠物，后者只管喂食。<code>walgit</code> 把 Cursor 内部架构开源化，让中小团队也能用上"GitHub 级别的 git hosting"，对自托管 git 生态是重大贡献。</p>
+<p>对 Rust 生态的启发是 <strong>"Rust 在系统 / 基础设施领域的优势持续兑现"</strong>——单一 binary（&lt; 1MB）+ 内存安全 + 高并发，完美匹配 git server 场景。与此前 ripgrep / fd / bat / eza / delta / zellij 等"Rust 重写经典工具"趋势一致。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  Client[git CLI 客户端] -->|smart HTTP v0/v2| WServer[walgit serve<br/>单 binary Rust]
+
+  subgraph "对象存储（S3 / GCS）真相源"
+    WAL[写前日志 WAL<br/>push / repack / settings 不可变对象]
+    Manifest[Tiny Manifest<br/>CAS 控制可见性]
+    Bundles[bundle-uri 静态文件<br/>weekly full + daily chained + hourly]
+    LFSStore[LFS 对象]
+  end
+
+  subgraph "walgit 实例（disposable cache）"
+    ReceivePack[receive-pack]
+    Router[refs / namespace 路由]
+    RemoteReader[remote reader<br/>HTTP range requests]
+    HistoryPack[history pack<br/>commits + trees 本地]
+    WebUI[React Web UI]
+    API[只读 JSON API]
+    RepoJS[repos.js SDK]
+  end
+
+  subgraph "可选子系统"
+    Policy[policy.json<br/>per-repo push 规则]
+    Settings[settings WAL 历史]
+    Events[events bridge<br/>webhook POST]
+    Maintenance[maintenance loop<br/>checkpoints + 几何压缩 + 修复]
+  end
+
+  WServer --> ReceivePack --> WAL
+  ReceivePack -->|CAS| Manifest
+  Client -.bundle-uri clone.-> Bundles
+  Client -.LFS batch API.-> LFSStore
+  WServer --> Router
+  WServer --> RemoteReader
+  WServer --> HistoryPack
+  WServer --> WebUI
+  WServer --> API
+  WServer --> RepoJS
+  WServer -.policy.-> Policy
+  WServer -.settings.-> Settings
+  WServer -.events.-> Events
+  WServer -.maintenance.-> Maintenance
+  Maintenance --> WAL
+  Events --> Webhook[外部 webhook]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>基础设施候选项目（git server 现代化）。</strong> <code>walgit</code> 不仅是"又一个 git server"，而是把 Cursor Continuity 架构开源化的具体实现——单 binary + 对象存储 + WAL + CAS 共识，目标是替代 GitHub Spokes 风格的复杂基础设施。10 天 2.3k⭐ + 26 open issues 已显示社区参与度。能否持续，取决于：(1) 对象存储兼容性（S3 / GCS 之外是否支持 MinIO / R2 等）；(2) 与 Gitea / GitLab / SourceHut 等成熟竞品的差异化能否维持；(3) Cursor 是否持续投入（"内部架构开源化"项目常见"开源后维护不足"问题）。</p>
+<p>目前定位是"Git server 现代化最有想象力的开源样本"——它把 Cursor 的内部架构暴露给社区，对自托管 git 生态是重大贡献。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>无 description / 无 topics</strong>：SEO 弱，社区发现成本高</li>
+<li><strong>26 open issues 偏高</strong>：典型"早期 + 社区参与度强 + 维护力量可能不足"信号</li>
+<li><strong>对象存储强依赖</strong>：S3 / GCS 兼容性、MinIO / R2 / Azure Blob 等兼容性需观察；CAS 在不同对象存储上的实现差异是潜在风险</li>
+<li><strong>冷启动延迟</strong>：disposable cache 意味着副本首次读仓库需从 bucket 拉，对 cold start 场景不友好</li>
+<li><strong>WAL 无限增长</strong>：写前日志长期保存成本，需观察 compaction 策略有效性</li>
+<li><strong>bundle-uri 客户端支持</strong>：依赖 git 2.39+ 的 bundle-uri 协议，老 git 客户端无法享受优化</li>
+<li><strong>与 Gitea / GitLab / SourceHut / gitness 等竞品关系不明</strong>：功能对比、生态对比需观察</li>
+<li><strong>Cursor 内部架构开源化的可持续性</strong>：历史上"内部项目开源"常出现"开源后维护不足"问题（参考早期 Kubernetes 周边工具）</li>
+<li><strong>587KB 极小</strong>：核心二进制完整度可能有限，与 <code>forgejo</code> / <code>gitea</code> 等成熟 git server 相比功能覆盖度待评估</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Cursor Continuity 原文</strong>：本项目是 Cursor 架构的 Rust 实现 + 小机器适配版本；原文是 Cursor 博客《Git at any scale》的设计说明</li>
+<li><strong>vs GitHub Spokes</strong>：Spokes 是 "pet fleet + 副本集 + 数据库映射"；本项目是 "WAL + CAS + disposable cache"；两种 git hosting 哲学</li>
+<li><strong>vs Gitea / Forgejo</strong>：Gitea 是 Go 实现的轻量自托管 git server；本项目是 Rust 实现 + 对象存储优先；两者定位不同</li>
+<li><strong>vs GitLab</strong>：GitLab 是 Rails 实现的重量级 DevOps 平台；本项目是 git server only + 云原生优先</li>
+<li><strong>vs SourceHut</strong>：SourceHut 是 Python + 全功能（git / hg / bug tracker / lists / paste / todo）；本项目是 git only</li>
+<li><strong>vs gitness / plane</strong>：gitness 是 Harness 自家 git server；plane 是项目管理系统；本项目是 git server only</li>
+<li><strong>vs bundle-uri 协议</strong>：本项目是 bundle-uri 的服务端实现，参考 GitHub 自家 bundle-uri 文档</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（git server 现代化代表）。</strong> <code>walgit</code> 代表了 git hosting 基础设施的现代化方向——从 pet fleet 到 disposable cache，从数据库映射到 WAL + CAS，从动态服务器到 CDN + bundle-uri。无论项目本身成败，这一方向是行业趋势。建议关注：对象存储兼容性扩展、bundle-uri 优化实际效果、与 Gitea / GitLab 的差异化能否维持、Cursor 是否持续投入。</p>
+<p>对自托管 git 团队，这个项目是"Gitea / GitLab 之后下一代"的潜在候选；对 Rust 生态，它是"基础设施类 Rust 项目"的最新代表；对架构师，它是"如何用对象存储 + CAS 替代分布式共识"的教科书级实现。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>对象存储兼容性扩展（MinIO / R2 / Azure Blob）</li>
+<li>bundle-uri 优化实际带宽节省比例（需独立 benchmark）</li>
+<li>与 GitHub Spokes 性能对比（读延迟、克隆速度、并发 push 能力）</li>
+<li>26 open issues 的解决节奏（决定维护可持续性）</li>
+<li>Cursor 是否持续投入（HR / commit 频率 / 社区参与度）</li>
+<li>是否被其他云厂商采用（如 Cloudflare R2 + Workers 的 walgit 集成）</li>
+<li>是否出现 "walgit 兼容 git 服务" 生态（如 walgit-based GitHub 替代品）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-02) | Stars: 2,384 | Forks: 132 | License: MIT | 语言: Rust | 创建: 2026-08-23 | Pushed: 2026-08-27 | Open Issues: 26 | Size: 587KB</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

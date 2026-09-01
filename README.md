@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-01.md">Latest report</a> ·
+  <a href="daily/2026-09-02.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-01
+## Latest report · 2026-09-02
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 519 | 5 | 5.0K+ |
+| 8 | 523 | 5 | 5.5K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 5446 stars | 基础设施候选 |
-| [MengTo/threeui](projects/threeui.md) | 4775 stars | 工具型 |
-| [s1dashu/ip-as-logo-skill](projects/ip-as-logo-skill.md) | 4666 stars | 工具型 |
-| [CopilotKit/OpenBot](projects/openbot.md) | 3607 stars | 平台候选 |
-| [yetone/cumora](projects/cumora.md) | 3349 stars | 平台候选 |
-| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1800 stars | 工具型 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 6120 stars | 基础设施候选 |
+| [b-nnett/grok-bot-0.18-reconstructed](projects/b-nnett-grok-bot-0-18-reconstructed.md) | 3470 stars | 研究型 |
+| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 3185 stars | 基础设施候选 |
+| [XiaoDuoYa/codex-with-chatgpt](projects/codex-with-chatgpt.md) | 2120 stars | 工具型 |
+| [browser-use/macos-harness](projects/macos-harness.md) | 818 stars | 平台候选 |
+| [cinderline/northcinder](projects/northcinder.md) | 1218 stars | 工具型 |
+| [tobi/walgit](projects/walgit.md) | 2384 stars | 工具型 |
+| [amagine-ai/Amagine3D](projects/amagine3d.md) | 2109 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: sapientinc/PRAXIST
-2. **Signal 2** · score 84 · repositories: MengTo/threeui
-3. **Signal 3** · score 82 · repositories: s1dashu/ip-as-logo-skill, nateherkai/scroll-craft, yanliudesign/mono-color-skill
-4. **Signal 4** · score 80 · repositories: CopilotKit/OpenBot, yetone/cumora, yc-software/qm, ApodexAI/FrontierAgent
+1. **Signal 1** · score 93 · repositories: sapientinc/PRAXIST
+2. **Signal 2** · score 88 · repositories: b-nnett/grok-bot-0.18-reconstructed
+3. **Signal 3** · score 84 · repositories: wang2122/sprix-sage-router, XiaoDuoYa/codex-with-chatgpt
+4. **Signal 4** · score 82 · repositories: browser-use/macos-harness
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-01.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-02.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 | [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
-| [2026-08-26](daily/2026-08-26.md) | 6 | 5 |
 
 ## Why this repository exists
 

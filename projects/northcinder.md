@@ -2,11 +2,11 @@
 title: "cinderline/northcinder"
 slug: "northcinder"
 date_added: "2026-08-23"
-last_seen_date: "2026-08-23"
+last_seen_date: "2026-09-02"
 category: "工具型"
 emoji: "🛒"
-stars: "1,205 stars"
-stars_delta: "6 天 1,205⭐（2026-08-17 创建），TypeScript / MIT / 本地优先"
+stars: "1,218 stars"
+stars_delta: "16 天 1,218⭐（2026-08-17 创建），TypeScript 1.4MB / MIT，10 天 +13⭐（自 8-23 的 1205⭐ 起，增速明显放缓）"
 language: "TypeScript"
 score: 84
 tags: ["agentic-commerce", "human-in-the-loop", "local-first", "mcp", "mcp-server", "model-context-protocol", "privacy", "self-hosted", "shopping-agent", "typescript"]
