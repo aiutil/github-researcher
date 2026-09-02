@@ -1,9 +1,38 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-08-31'
+last_updated: '2026-09-03'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+## 2026-09-03
+
+### sapientinc/PRAXIST（6675 stars）· CopilotKit/OpenBot（3891 stars）· duty1g/x64dbg-mcp-server（1846 stars）· crmne/fastpotify（2133 stars）· cbrock84/headcount（1105 stars）· N4darae/anti-mage（1419 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照（stars:>500 + created:2026-08-17..2026-09-02 sort=stars）；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | autonomous-research-system / PRAXIST 稳态第三日（6 天 1451→6675 stars，4.6 倍），增速回升 +555⭐/日，仍是 scientific agent 唯一头部样本 | sapientinc/PRAXIST | 93 |
+| 2 | mcp-debugging-verticalization / MCP 协议在调试 / 逆向 / 二进制分析方向的纵深（x64dbg-mcp-server 1846⭐；reverify 579⭐） | duty1g/x64dbg-mcp-server | 86 |
+| 3 | agent-org-as-product / 「公司化 agent 组织」成为 agent harness 下一形态（cbrock84/headcount 1105⭐，15 部门 / 125 技能，可独立安装） | cbrock84/headcount | 85 |
+| 4 | antidetect-detection-security / 反「反检测浏览器」进入 OSS 工具化阶段（N4darae/anti-mage 12 天 1419⭐，runtime coherence analysis） | N4darae/anti-mage | 82 |
+| 5 | rust-native-tooling-2 / Rust 在媒体 / 终端 / 代理三方向同时回潮（crmne/fastpotify 2133⭐、iAmCorey/Wake 725⭐、furkankly/zoetrope 767⭐、dlss5-feeder 587⭐） | crmne/fastpotify | 80 |
+| 6 | multimodal-embedding-1p / 大厂发布多模态 embedding 模型（Tencent/WeMM-Embedding 10 天 1085⭐，WeChat Vision Team 出品） | Tencent/WeMM-Embedding | 78 |
+| 7 | agent-skill-quality-control / Agent Skill 在「降失败 / 删冗余 / 写更好 prompt」等过程质量的纵深（Spielewoy/autoprompt-skill 971⭐） | Spielewoy/autoprompt-skill | 76 |
+
+#### 当日重点项目
+
+- 🧪 sapientinc/PRAXIST (6675 stars) — Sapient Inc. 的 autonomous research system（6 天 1451→6675 stars，4.6 倍增长，单日 +555⭐），Score 94
+- 🤖 CopilotKit/OpenBot (3891 stars) — CopilotKit 官方 AI coworker（17 天 3891⭐/472 forks，AG-UI + governance），Score 90
+- 🧩 duty1g/x64dbg-mcp-server (1846 stars) — x64dbg 的 MCP plugin（12 天 1846⭐/189 forks，Zig + zero-dep），Score 90
+- 🎵 crmne/fastpotify (2133 stars) — Spotify 原生 Rust 客户端（7 天 2133⭐/87 forks，单日 +626⭐），Score 86
+- 🏢 cbrock84/headcount (1105 stars) — Claude Code 公司化 agent 组织（6 天 1105⭐/171 forks，15+ 部门 / 125+ 技能），Score 85
+- 🛡️ N4darae/anti-mage (1419 stars) — anti-detect 浏览器检测工具（12 天 1419⭐/54 forks），Score 80
+- 🧬 Tencent/WeMM-Embedding (1085 stars) — WeChat Vision Team 多模态 embedding 模型族（9 天 1085⭐/80 forks），Score 82
+- 🧭 ApodexAI/FrontierAgent (1389 stars) — agent framework + native CLI TUI（12 天 1389⭐/130 forks，无 Docker 依赖），Score 82
+- 🪛 Spielewoy/autoprompt-skill (971 stars) — cuts failures 45% 的 AI coding 过程质量 skill（17 天 971⭐/64 forks），Score 76
+- 💤 iAmCorey/Wake (725 stars) — Rust + GPUI 的 AI agent session 管理器（16 天 725⭐/49 forks），Score 72
+
 ## 2026-09-02
 
 ### sapientinc/PRAXIST（6120 stars）· MengTo/threeui（4900 stars）· s1dashu/ip-as-logo-skill（4718 stars）· CopilotKit/OpenBot（3745 stars）· b-nnett/grok-bot-0.18-reconstructed（3470 stars）· yetone/cumora（3386 stars）

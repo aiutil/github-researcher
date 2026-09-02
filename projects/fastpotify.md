@@ -2,11 +2,11 @@
 title: "crmne/fastpotify"
 slug: "fastpotify"
 date_added: "2026-08-29"
-last_seen_date: "2026-08-29"
+last_seen_date: "2026-09-03"
 category: "生产可用"
 emoji: "🎵"
-stars: "388 stars"
-stars_delta: "388⭐ 起步（2 天）"
+stars: "2133 stars"
+stars_delta: "7 天 2133⭐（2026-09-03），7 天净增 2133⭐（首日即达 507⭐，单日 +626⭐ 是当前所有项目最快增速）；87 forks / 2133⭐ = 4.1% fork/star（典型工具型）"
 language: "Rust"
 score: 86
 tags: ["rust", "spotify", "egui", "librespot", "spotify-connect", "desktop-app", "native", "cross-platform", "mpris"]

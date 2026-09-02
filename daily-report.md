@@ -3,6 +3,30 @@
 > 每日 GitHub 趋势研究简报，持续跟踪不间断
 
 ---
+## 2026-09-03
+**核心主题：** sapientinc/PRAXIST 连续 6 日 6675⭐ · CopilotKit/OpenBot 跨 7 日 3891⭐ · duty1g/x64dbg-mcp-server 12 天 1846⭐ · crmne/fastpotify 7 天 +626⭐ 至 2133 · cbrock84/headcount 1105⭐ · Tencent/WeMM-Embedding 1085⭐ · ApodexAI/FrontierAgent 12 天 1389⭐ · N4darae/anti-mage 12 天 1419⭐
+
+**证据边界：** 星标、描述与标签取自当日 GitHub API 快照（stars:>500 + created:2026-08-17..2026-09-02 sort=stars）；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。
+
+**关键项目：**
+- 🧪 sapientinc/PRAXIST (6675 stars) — Sapient Inc. 的 autonomous research system（6 天 1451→6675 stars，4.6 倍增长，单日 +555⭐ 维持），Score 94
+- 🤖 CopilotKit/OpenBot (3891 stars) — CopilotKit 官方 AI coworker（17 天 3891⭐/472 forks，AG-UI + governance），Score 90
+- 🧩 duty1g/x64dbg-mcp-server (1846 stars) — x64dbg 的 MCP plugin（12 天 1846⭐/189 forks，Zig + zero-dep），Score 90
+- 🎵 crmne/fastpotify (2133 stars) — Spotify 原生 Rust 客户端（7 天 +626⭐ 至 2133⭐，单日增速最快），Score 86
+- 🏢 cbrock84/headcount (1105 stars) — Claude Code 公司化 agent 组织（15+ 部门 / 125+ 技能），Score 85
+- 🛡️ N4darae/anti-mage (1419 stars) — anti-detect 浏览器检测（runtime coherence analysis），Score 80
+- 🧬 Tencent/WeMM-Embedding (1085 stars) — WeChat Vision Team 多模态 embedding 模型族，Score 82
+- 🧭 ApodexAI/FrontierAgent (1389 stars) — agent framework + native CLI TUI，Score 82
+- 🪛 Spielewoy/autoprompt-skill (971 stars) — cuts failures 45% 的 AI coding 过程质量 skill，Score 76
+- 💤 iAmCorey/Wake (725 stars) — Rust + GPUI 的 AI agent session 管理器，Score 72
+
+**关键判断：**
+- **PRAXIST 6 天 4.6 倍增长仍维持 +555⭐/日——稳态期高位运行**：sapientinc/PRAXIST 6 天 1,451⭐ → 6,675⭐，无任何并行样本能复现，是当前 GitHub 上 scientific agent 唯一头部样本；下一波关注"垂直行业 research agent"或"二次增长点"
+- **MCP 协议从通用工具扩展到系统编程**：duty1g/x64dbg-mcp-server 1,846⭐ + 2akouwu/reverify 579⭐ 共同说明 MCP 已从"知识 / 写作 / 通用工具"扩展到"调试 / 逆向 / 二进制分析"等专业系统编程领域
+- **「公司化 agent 组织」成为 agent harness 下一形态**：cbrock84/headcount 1,105⭐（15.5% fork/star）+ ApodexAI/FrontierAgent 1,389⭐（9.4% fork/star）共同说明 agent harness 已从"单 agent 框架"演进到"组织级编排"——按"部门 / 团队 / 职能"组织 skills 是真实的部署需求
+- **反「反检测浏览器」进入 OSS 工具化 + Rust 在媒体 / TUI / Agent 可视化三方向同步回潮 + 大厂 embedding 模型开源化**：N4darae/anti-mage 1,419⭐ + crmne/fastpotify 2,133⭐（+626 单日）+ iAmCorey/Wake 725⭐（GPUI）+ furkankly/zoetrope 767⭐ + Tencent/WeMM-Embedding 1,085⭐ 共同说明 2026 下半年"安全工具开源 + 工具链全栈开源 + 媒体工具 Rust 化 + 大厂模型开源"四线并行
+
+
 ## 2026-09-02
 **核心主题：** sapientinc/PRAXIST（6120 stars）· MengTo/threeui（4900 stars）· s1dashu/ip-as-logo-skill（4718 stars）· CopilotKit/OpenBot（3745 stars）· b-nnett/grok-bot-0.18-reconstructed（3470 stars）· yetone/cumora（3386 stars）
 
@@ -105,7 +129,6 @@
 - **"Coding Agent × World Model"是软件工程自动化的潜在新范式**：CWM 把 world model 引入 coding 任务，论文 + LoRA + 样本 + 脚本四件套开源——但 paper 复现性需独立核验
 
 ---
-
 ## 2026-08-28
 
 

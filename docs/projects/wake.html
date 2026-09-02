@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAmCorey/Wake | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/iAmCorey/Wake" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="iamcoreywake">iAmCorey/Wake</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>Rust + GPUI 的 AI agent session 管理器</strong>——"All your AI agent sessions in one place — browse, search, resume." 把分散在不同 Coding Agent（Claude Code / Codex / Cursor 等）中的 session 集中管理。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>开发者使用 AI Coding Agent（Claude Code / Codex / Cursor / GitHub Copilot 等）时，每个 agent 都有自己的 session 存储位置与格式，导致三个真实痛点：(1) <strong>session 分散</strong>——Claude Code 的 session 在 ~/.claude、Codex 的 session 在 Codex 专属目录、Cursor 的 chat 历史在 Cursor 应用内；(2) <strong>无法跨 agent 搜索 / 浏览</strong>——开发者经常需要在不同 agent 的 session 中检索"之前解决过的类似问题"；(3) <strong>无法 resume 跨设备</strong>——session 数据通常锁定在单设备。Wake 直击这些痛点：使用 Rust + GPUI（Zed 编辑器团队的 Rust UI 框架）构建统一的 session 管理器，把所有 agent 的 session 集中到一个应用内，支持 browse / search / resume。<strong>GPUI 的引入是 Rust 在 TUI 之外的"原生 GUI"路线探索</strong>——比终端 UI 更丰富、比 Web UI 更轻量。</p>
+<h2 id="_3">为什么值得关注</h2>
+<ul>
+<li><strong>Stars:</strong> 725（截至 2026-09-03），16 天累计 725⭐（未达 1k⭐ 阈值但已进入关注范围）</li>
+<li><strong>Forks:</strong> 49，6.8% fork/star（典型工具型——真实安装使用）</li>
+<li><strong>License:</strong> MIT</li>
+<li><strong>语言:</strong> Rust（1.7MB），GPUI 原生 UI</li>
+<li><strong>活跃度:</strong> created 2026-08-18，pushed 2026-09-02，16 天内持续高活跃</li>
+<li><strong>规模:</strong> 1.7MB，含 GUI + session 解析器</li>
+<li><strong>Topics:</strong> 无 topics（异常信号——可能待项目成熟后补充）</li>
+</ul>
+<h2 id="_4">热度来源判断</h2>
+<p>Wake 的热度是 <strong>"AI agent session 分散痛点 × GPUI 原生 GUI 差异化 × MIT 商业友好"</strong> 的组合。AI Coding Agent 数量膨胀后，session 管理成为真实痛点——但 GitHub 上"跨 agent session 管理器"工具极少。Wake 16 天 725⭐ + 6.8% fork/star（典型工具型）+ Rust + GPUI 原生 GUI 路线共同说明这是个真实需求驱动的产品。<strong>GPUI 是 Zed 编辑器团队的 UI 框架，被 Wake 引入 agent session 管理是新方向</strong>——比 TUI 更丰富、比 Web UI 更轻量。热度<strong>真实且具差异化价值</strong>——但需警惕：与 furkankly/zoetrope（同为"agent 可视化"赛道）存在功能重叠风险；个人项目可持续性。</p>
+<h2 id="_5">关键技术亮点</h2>
+<ol>
+<li><strong>Rust + GPUI 原生 GUI</strong>——Zed 编辑器团队的 Rust UI 框架，原生渲染比 Web UI 更轻量、比 TUI 更丰富</li>
+<li><strong>跨 agent session 管理</strong>——支持 Claude Code / Codex / Cursor 等多个 agent 的 session 集中浏览</li>
+<li><strong>Browse / Search / Resume 三件套</strong>——核心功能：浏览所有 session、跨 session 搜索、resume 之前的 session</li>
+<li><strong>1.7MB 极小规模</strong>——单 binary 部署，Rust 优势（无 GC、原生性能、单 binary）</li>
+<li><strong>MIT License</strong>——商业可用</li>
+<li><strong>跨设备 session 同步潜力</strong>——Rust + GPUI 架构便于扩展到本地 + 云端同步</li>
+</ol>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Rust + GPUI 原生 GUI 层 + 多 agent session 解析器层（Claude Code / Codex / Cursor ...）+ session 索引 / 搜索层 + resume 协议层</td>
+<td>五要素是 description 与 topics 明示；具体 GPUI 组件实现、各 agent session 格式解析兼容性、resume 协议细节需 README 核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Wake 启动 → 扫描多 agent session 目录（~/.claude / Codex / Cursor ...）→ 索引 + 搜索 → 用户浏览 / 搜索 → 选择 session → resume</td>
+<td>主路径为 description 抽象；具体 session 目录扫描、索引算法、resume 协议兼容性边界需 README 核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>"GPUI 原生 GUI" 轻量 vs "Web UI" 远程访问；"Rust 单 binary" 部署便利 vs "GPUI 生态成熟度"（Zed 编辑器专属）；"跨多 agent session" 兼容性广 vs 单 agent session 深度；"MIT 商业可用" vs "个人项目可持续性"</td>
+<td>1.7MB 来自 API；MIT License 商业可用；GPUI 生态成熟度、session 兼容性边界需 README 核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS / Linux 上 clone 仓库 → cargo build --release → 启动 Wake → 验证自动扫描 Claude Code / Codex session → 验证跨 agent 搜索 → 选择 1 个 session resume → 对比 Web UI / TUI 工具体验差异</td>
+<td>安装命令需 README 独立核验；具体 GPUI 交互、session 格式兼容性需文档指引</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[AI coding 开发者<br/>macOS / Linux] --> Wake[Wake 启动<br/>Rust + GPUI 原生 GUI]
+  Wake --> Scan[扫描多 agent session 目录<br/>~/.claude / Codex / Cursor<br/>具体路径待核验]
+  Scan --> CC[Claude Code sessions]
+  Scan --> CX[Codex sessions]
+  Scan --> CUR[Cursor sessions]
+  CC --> Index[统一 session 索引]
+  CX --> Index
+  CUR --> Index
+  Index --> Search[跨 agent 搜索]
+  Search --> Browser[Session 浏览]
+  Browser --> Resume[Resume session]
+  Resume --> Agent[回到对应 agent 执行]
+  Resume -.可选.-> Cloud[跨设备同步<br/>未来扩展]
+  Wake -.与 zoetrope 同赛道.-> Comp[furkankly/zoetrope<br/>Claude Code flow graph<br/>功能重叠风险]
+</pre>
+<h2 id="_7">架构启发</h2>
+<p><code>iAmCorey/Wake</code> 的核心启发是 <strong>"Rust + GPUI 原生 GUI 是 TUI 与 Web UI 之间的中间路线"</strong>。开发者使用 AI Coding Agent（Claude Code / Codex / Cursor）时，每个 agent 有自己的 session 存储格式，导致 session 分散、无法跨 agent 搜索、无法跨设备 resume——Wake 直击这些痛点。更深层的启发是：<strong>GPUI（Zed 编辑器团队的 Rust UI 框架）正在从"Zed 专属"扩展到"非 Zed 应用"</strong>——Wake 是首批采用 GPUI 的非 Zed 项目之一。若 Wake 成功，可能推动 GPUI 成为 Rust GUI 主流框架之一。但 GPUI 生态成熟度、与 furkankly/zoetrope（同为"agent 可视化"赛道）的功能重叠是核心风险。6.8% fork/star（典型工具型）+ 16 天 725⭐（未破 1k⭐ 阈值但已接近）共同说明是真实需求驱动的产品。</p>
+<h2 id="_8">定位判断</h2>
+<p><strong>工具型 / agent session 管理候选。</strong> Wake 不是"又一个 AI agent"，而是"AI agent 的元工具"——专门管理各 agent 的 session 历史。16 天 725⭐ + 6.8% fork/star（典型工具型）+ Rust + GPUI 原生 GUI 路线共同说明这是个真实需求驱动的产品。GPUI 的引入是 Rust 在 TUI 之外的"原生 GUI"探索——若 Wake 成功，可能推动 GPUI 成为 Rust GUI 主流框架之一；若失败，仍是"小众实验"。</p>
+<h2 id="_9">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>GPUI 生态成熟度风险</strong>——GPUI 是 Zed 编辑器团队的 UI 框架，目前主要用于 Zed，Wake 是首批"非 Zed"采用者之一，长期生态支持需观察</li>
+<li><strong>与 furkankly/zoetrope 功能重叠</strong>——zoetrope 是"Claude Code live flow graph"，Wake 是"多 agent session 管理"，两者都属"agent 可视化"赛道，存在功能重叠与生态竞争</li>
+<li><strong>跨 agent session 兼容性边界</strong>——各 agent 的 session 格式持续演进（Claude Code / Codex / Cursor），Wake 需持续适配，维护成本高</li>
+<li><strong>个人项目属性</strong>——iAmCorey 个人维护，可持续性存疑</li>
+<li><strong>未达 1k⭐ 阈值</strong>——16 天 725⭐ 接近但未破 1k，需观察"二次增长点"是否出现</li>
+<li><strong>无 topics（异常信号）</strong>——可能是"项目早期阶段"或"避免过早 SEO"</li>
+</ul>
+<h2 id="_10">与同类项目的关系</h2>
+<ul>
+<li><strong>vs furkankly/zoetrope：</strong> zoetrope 是"Claude Code live flow graph"（可视化），Wake 是"多 agent session 管理"（browse / search / resume）——一个偏可视化、一个偏管理；存在功能重叠</li>
+<li><strong>vs Zed Editor（GPUI 出品）：</strong> Zed 是"代码编辑器 + GPUI 出品方"，Wake 是"agent session 管理 + GPUI 早期采用者"——Wake 是 GPUI 在 Zed 之外的首批应用之一</li>
+<li><strong>vs LangSmith / LangChain 监控：</strong> LangSmith 是"LangChain 生态监控"，Wake 是"多 agent session 通用管理"——Wake 更通用</li>
+<li><strong>vs Claude Code / Codex 官方 history UI：</strong> 各 agent 官方 history UI 是"单 agent 内置"，Wake 是"跨 agent 统一"——Wake 跨平台差异化</li>
+<li><strong>vs Loki / Elastic（日志聚合）：</strong> Loki / Elastic 是"通用日志聚合"，Wake 是"agent session 专用聚合"——Wake 更垂直</li>
+</ul>
+<h2 id="_11">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（agent session 管理）。</strong> Wake 代表了 AI agent session 从"分散在各 agent 内"演化为"统一管理"的细分市场探索，对需要跨 agent 检索 / resume session 的开发者有真实价值。建议关注：(a) GPUI 生态成熟度；(b) 跨 agent session 兼容性深度；(c) 与 furkankly/zoetrope 的差异化。</p>
+<h2 id="_12">后续观察点</h2>
+<ul>
+<li>GPUI 生态成熟度（是否有更多项目采用）</li>
+<li>跨 agent session 兼容性边界（支持的 agent 数量）</li>
+<li>与 furkankly/zoetrope 的差异化（功能重叠部分如何竞争）</li>
+<li>是否从 "session 管理" 演化为 "agent 监控 + 可视化" 平台</li>
+<li>是否被 Zed 编辑器 / Anthropic / OpenAI 官方采用</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-03) | Stars: 725 | Forks: 49 | License: MIT | 语言: Rust | 创建: 2026-08-18</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

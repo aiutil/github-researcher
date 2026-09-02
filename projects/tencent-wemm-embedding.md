@@ -5,8 +5,8 @@ date_added: 2026-08-28
 last_seen_date: 2026-08-28
 category: "基础设施候选"
 emoji: "🧬"
-stars: "476 stars"
-stars_delta: "3 天 476⭐（2026-08-25 创建，created 02:46:10Z，pushed 2026-08-26 03:00:58Z，forks 21，size 1498 KB）"
+stars: "1085 stars"
+stars_delta: "9 天 1085⭐（2026-09-03），9 天净增 1085⭐；80 forks / 1085⭐ = 7.4% fork/star（真实采用）"
 language: "Python"
 license: "Apache-2.0（README badge 标注；GitHub API 返回 NOASSERTION，建议以 LICENSE 文件为准）"
 score: 92

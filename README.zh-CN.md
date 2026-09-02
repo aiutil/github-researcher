@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-02.md">最新日报</a> ·
+  <a href="daily/2026-09-03.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-02
+## 最新研究 · 2026-09-03
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 8 | 523 | 5 | 5.5K+ |
+| 10 | 528 | 6 | 5.8K+ |
 
-**今日核心判断：** sapientinc/PRAXIST（6120 stars）· MengTo/threeui（4900 stars）· s1dashu/ip-as-logo-skill（4718 stars）· CopilotKit/OpenBot（3745 stars）· b-nnett/grok-bot-0.18-reconstructed（3470 stars）· yetone/cumora（3386 stars）
+**今日核心判断：** sapientinc/PRAXIST 连续 6 日 6675⭐ · CopilotKit/OpenBot 跨 7 日 3891⭐ · duty1g/x64dbg-mcp-server 12 天 1846⭐ · crmne/fastpotify 7 天 +626⭐ 至 2133 · cbrock84/headcount 1105⭐ · Tencent/WeMM-Embedding 1085⭐ · ApodexAI/FrontierAgent 12 天 1389⭐ · N4darae/anti-mage 12 天 1419⭐
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 6120 stars | 基础设施候选 |
-| [b-nnett/grok-bot-0.18-reconstructed](projects/b-nnett-grok-bot-0-18-reconstructed.md) | 3470 stars | 研究型 |
-| [wang2122/sprix-sage-router](projects/sprix-sage-router.md) | 3185 stars | 基础设施候选 |
-| [XiaoDuoYa/codex-with-chatgpt](projects/codex-with-chatgpt.md) | 2120 stars | 工具型 |
-| [browser-use/macos-harness](projects/macos-harness.md) | 818 stars | 平台候选 |
-| [cinderline/northcinder](projects/northcinder.md) | 1218 stars | 工具型 |
-| [tobi/walgit](projects/walgit.md) | 2384 stars | 工具型 |
-| [amagine-ai/Amagine3D](projects/amagine3d.md) | 2109 stars | 工具型 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 6675 stars | 基础设施候选 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 3891 stars | 平台候选 |
+| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1846 stars | 工具型 |
+| [crmne/fastpotify](projects/fastpotify.md) | 2133 stars | 生产可用 |
+| [cbrock84/headcount](projects/headcount.md) | 1105 stars | 平台候选 |
+| [N4darae/anti-mage](projects/anti-mage.md) | 1419 stars | 工具型 |
+| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 1085 stars | 基础设施候选 |
+| [ApodexAI/FrontierAgent](projects/frontieragent.md) | 1389 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **autonomous-research-system / PRAXIST 进入稳态第二日（4 天 1451→6120 stars，4.2 倍增长），scientific agent 头部样本确认** · 相关项目：sapientinc/PRAXIST · 强度：93
-2. **grok-bot-reconstructed / xAI Grok Bot 0.18 macOS 端非官方源码复刻/扩展（3494 forks/3470 stars）——fork/star 倒挂=100.7%** · 相关项目：b-nnett/grok-bot-0.18-reconstructed · 强度：88
-3. **agent-routing-protocol / A2A 多 Agent 状态路由协议（sprix-sage-router 3185 stars/10 天，state-aware SELF/COLLABORATE/HANDOFF）** · 相关项目：wang2122/sprix-sage-router, XiaoDuoYa/codex-with-chatgpt · 强度：84
-4. **browser-use-macos-harness / 浏览器-use 团队官方 macOS Harness（818 stars）—— LLM 直接接管 Mac，computer-use 走向系统级** · 相关项目：browser-use/macos-harness · 强度：82
+1. **autonomous-research-system / PRAXIST 稳态第三日（6 天 1451→6675 stars，4.6 倍），增速回升 +555⭐/日，仍是 scientific agent 唯一头部样本** · 相关项目：sapientinc/PRAXIST · 强度：93
+2. **mcp-debugging-verticalization / MCP 协议在调试 / 逆向 / 二进制分析方向的纵深（x64dbg-mcp-server 1846⭐；reverify 579⭐；duty1g 同期 246 forks）** · 相关项目：duty1g/x64dbg-mcp-server, 2akouwu/reverify · 强度：86
+3. **agent-org-as-product / 「公司化 agent 组织」成为 agent harness 下一形态（cbrock84/headcount 1105⭐，15 部门 / 125 技能，可独立安装）** · 相关项目：cbrock84/headcount, ApodexAI/FrontierAgent · 强度：85
+4. **antidetect-detection-security / 反「反检测浏览器」进入 OSS 工具化阶段（N4darae/anti-mage 12 天 1419⭐ / 54 forks，runtime coherence analysis）** · 相关项目：N4darae/anti-mage · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 | [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
-| [2026-08-27](daily/2026-08-27.md) | 6 | 5 |
 
 ## 为什么做这个项目
 
