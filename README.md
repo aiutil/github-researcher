@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-03.md">Latest report</a> ·
+  <a href="daily/2026-09-05.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-03
+## Latest report · 2026-09-05
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 10 | 528 | 6 | 5.8K+ |
+| 10 | 538 | 7 | 5.6K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 6675 stars | 基础设施候选 |
-| [CopilotKit/OpenBot](projects/openbot.md) | 3891 stars | 平台候选 |
-| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1846 stars | 工具型 |
-| [crmne/fastpotify](projects/fastpotify.md) | 2133 stars | 生产可用 |
-| [cbrock84/headcount](projects/headcount.md) | 1105 stars | 平台候选 |
-| [N4darae/anti-mage](projects/anti-mage.md) | 1419 stars | 工具型 |
-| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 1085 stars | 基础设施候选 |
-| [ApodexAI/FrontierAgent](projects/frontieragent.md) | 1389 stars | 工具型 |
+| [anthropics/commerce-agents](projects/anthropics-commerce-agents.md) | 1914 stars | 平台候选 |
+| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 1754 stars | 工具型 |
+| shadcn-ui-cn | 1099 stars | 工具型 |
+| [MSNightmare/FalconFlank](projects/falconflank.md) | 496 stars | 工具型 |
+| [Human-Agent-Society/reef](projects/reef.md) | 405 stars | 基础设施候选 |
+| [Merserk/dlss5-visual-enhancer](projects/dlss5-visual-enhancer.md) | 484 stars | 工具型 |
+| [codejunkie99/fable-orchestrator](projects/fable-orchestrator.md) | 462 stars | 工具型 |
+| [what1f/kitter](projects/kitter.md) | 183 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 93 · repositories: sapientinc/PRAXIST
-2. **Signal 2** · score 86 · repositories: duty1g/x64dbg-mcp-server, 2akouwu/reverify
-3. **Signal 3** · score 85 · repositories: cbrock84/headcount, ApodexAI/FrontierAgent
-4. **Signal 4** · score 82 · repositories: N4darae/anti-mage
+1. **Signal 1** · score 92 · repositories: anthropics/commerce-agents
+2. **Signal 2** · score 84 · repositories: lnkiai/m3e-canvas
+3. **Signal 3** · score 82 · repositories: shadcn-ui/cn
+4. **Signal 4** · score 80 · repositories: MSNightmare/FalconFlank, MSNightmare/PrettyPrague
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-03.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-05.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
-| [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 
 ## Why this repository exists
 

@@ -3,7 +3,37 @@ date: '2026-04-10'
 last_updated: '2026-09-03'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
----
+---## 2026-09-05
+
+### anthropics/commerce-agents（1914 stars）· lnkiai/m3e-canvas（1754 stars）· shadcn-ui/cn（1099 stars）· MSNightmare/FalconFlank（496 stars）· Human-Agent-Society/reef（405 stars）· Merserk/dlss5-visual-enhancer（484 stars）· codejunkie99/fable-orchestrator（462 stars）· what1f/kitter（183 stars）· anthropics/fermats-last-theorem（211 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自当日 GitHub API 快照（stars:>500 + created:2026-08-15..2026-09-04 sort=stars desc + 专项检索 created:2026-08-30..2026-09-04 stars:>100）；趋势归纳基于这些公开元数据，不将热度等同于价值。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | vendor-official-agent-verticalization / Anthropic 官方 commerce-agents 4 天 1914⭐/314 forks（Apache-2.0）——大厂首次以「垂直行业 Agent 参考实现」开源 | anthropics/commerce-agents | 92 |
+| 2 | vibe-coding-design-coupling / 设计工具直接产出 vibe-coding prompt（m3e-canvas 1754⭐/119 forks，Material 3 Expressive + Next.js + React） | lnkiai/m3e-canvas | 84 |
+| 3 | tailwind-stack-replacement / shadcn-ui 官方发布 tailwind-merge/clsx 替代品 cn 1099⭐/7 forks，宣称 30× 更快 / 全 API 兼容 | shadcn-ui/cn | 82 |
+| 4 | 0day-poc-virality / Microsoft-Nightmare 连续发布企业安全产品 0day PoC（FalconFlank 496⭐ Crowdstrike + PrettyPrague 178⭐ Avast） | MSNightmare/FalconFlank | 80 |
+| 5 | self-improving-agent-infra / 自改进 Agent 基础设施（reef 5 天 405⭐/33 forks，continual learning infra） | Human-Agent-Society/reef | 78 |
+| 6 | dlss5-tool-ecosystem-2 / DLSS5 第三方工具生态扩散（dlss5-visual-enhancer 484⭐ + DLSS5oneclick 380⭐ + DLSS-NR-on-AMD 425⭐ + DLSS5-Swapper 1475⭐） | Merserk/dlss5-visual-enhancer | 76 |
+| 7 | rust-native-tooling-3 / Rust 在「skill manager / 内存取证 / DLSS 注入」三方向持续产出（kitter 183⭐ + daffainfo/vol-rs 169⭐ + DLSS5oneclick 380⭐） | what1f/kitter | 74 |
+| 8 | multi-llm-orchestration-shell / Shell 作为多 LLM 编排入口（fable-orchestrator 3 天 462⭐/83 forks，Fable 5.1 + GPT-5.6 Luna + DeepSeek V4 Flash） | codejunkie99/fable-orchestrator | 72 |
+
+#### 当日重点项目
+
+- 🛍️ anthropics/commerce-agents (1914 stars) — Anthropic 官方 commerce agent 参考实现（4 天 1914⭐/314 forks，Apache-2.0），Score 92
+- 🎨 lnkiai/m3e-canvas (1754 stars) — Material 3 Expressive 设计画布 + vibe-coding prompt 产出器（3 天 1754⭐/119 forks），Score 84
+- 🧱 shadcn-ui/cn (1099 stars) — shadcn/ui 官方 tailwind-merge/clsx 替代品（5 天 1099⭐/7 forks，30× 更快），Score 84
+- 🔓 MSNightmare/FalconFlank (496 stars) — Crowdstrike Falcon 0day 本地权限提升漏洞 PoC（2 天 496⭐/132 forks），Score 80
+- 🌊 Human-Agent-Society/reef (405 stars) — 自改进 Agent 持续学习基础设施（5 天 405⭐/33 forks，Apache-2.0），Score 78
+- 🖼️ Merserk/dlss5-visual-enhancer (484 stars) — DLSS 5 神经渲染视频/图像增强 + 帧插值（6 天 484⭐/38 forks），Score 76
+- 🎼 codejunkie99/fable-orchestrator (462 stars) — Shell 形态多 LLM 编排器（3 天 462⭐/83 forks），Score 72
+- 🐾 what1f/kitter (183 stars) — Local-first Skill 管理器（3 天 183⭐/14 forks，Rust），Score 70
+- 📐 anthropics/fermats-last-theorem (211 stars) — Anthropic 官方 Lean 实现的费马大定理形式化（1 天 211⭐/16 forks），Score 68
+- 🚢 dreamers-laboratory/agent-fleet-manager (171 stars) — 大规模重复信息收集 worker fleet 通用引擎（3 天 171⭐/1 forks），Score 66
+
+
 ## 2026-09-03
 
 ### sapientinc/PRAXIST（6675 stars）· CopilotKit/OpenBot（3891 stars）· duty1g/x64dbg-mcp-server（1846 stars）· crmne/fastpotify（2133 stars）· cbrock84/headcount（1105 stars）· N4darae/anti-mage（1419 stars）

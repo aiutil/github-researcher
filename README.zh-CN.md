@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-03.md">最新日报</a> ·
+  <a href="daily/2026-09-05.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-03
+## 最新研究 · 2026-09-05
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 10 | 528 | 6 | 5.8K+ |
+| 10 | 538 | 7 | 5.6K+ |
 
-**今日核心判断：** sapientinc/PRAXIST 连续 6 日 6675⭐ · CopilotKit/OpenBot 跨 7 日 3891⭐ · duty1g/x64dbg-mcp-server 12 天 1846⭐ · crmne/fastpotify 7 天 +626⭐ 至 2133 · cbrock84/headcount 1105⭐ · Tencent/WeMM-Embedding 1085⭐ · ApodexAI/FrontierAgent 12 天 1389⭐ · N4darae/anti-mage 12 天 1419⭐
+**今日核心判断：** anthropics/commerce-agents 4 天 1914⭐ · lnkiai/m3e-canvas 3 天 1754⭐ · shadcn-ui/cn 5 天 1099⭐ · MSNightmare/FalconFlank 2 天 496⭐ · Human-Agent-Society/reef 5 天 405⭐ · Merserk/dlss5-visual-enhancer 6 天 484⭐ · codejunkie99/fable-orchestrator 3 天 462⭐ · what1f/kitter 3 天 183⭐ · Anthropic fermats-last-theorem 1 天 211⭐
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [sapientinc/PRAXIST](projects/praxist.md) | 6675 stars | 基础设施候选 |
-| [CopilotKit/OpenBot](projects/openbot.md) | 3891 stars | 平台候选 |
-| [duty1g/x64dbg-mcp-server](projects/x64dbg-mcp-server.md) | 1846 stars | 工具型 |
-| [crmne/fastpotify](projects/fastpotify.md) | 2133 stars | 生产可用 |
-| [cbrock84/headcount](projects/headcount.md) | 1105 stars | 平台候选 |
-| [N4darae/anti-mage](projects/anti-mage.md) | 1419 stars | 工具型 |
-| [Tencent/WeMM-Embedding](projects/tencent-wemm-embedding.md) | 1085 stars | 基础设施候选 |
-| [ApodexAI/FrontierAgent](projects/frontieragent.md) | 1389 stars | 工具型 |
+| [anthropics/commerce-agents](projects/anthropics-commerce-agents.md) | 1914 stars | 平台候选 |
+| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 1754 stars | 工具型 |
+| shadcn-ui-cn | 1099 stars | 工具型 |
+| [MSNightmare/FalconFlank](projects/falconflank.md) | 496 stars | 工具型 |
+| [Human-Agent-Society/reef](projects/reef.md) | 405 stars | 基础设施候选 |
+| [Merserk/dlss5-visual-enhancer](projects/dlss5-visual-enhancer.md) | 484 stars | 工具型 |
+| [codejunkie99/fable-orchestrator](projects/fable-orchestrator.md) | 462 stars | 工具型 |
+| [what1f/kitter](projects/kitter.md) | 183 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **autonomous-research-system / PRAXIST 稳态第三日（6 天 1451→6675 stars，4.6 倍），增速回升 +555⭐/日，仍是 scientific agent 唯一头部样本** · 相关项目：sapientinc/PRAXIST · 强度：93
-2. **mcp-debugging-verticalization / MCP 协议在调试 / 逆向 / 二进制分析方向的纵深（x64dbg-mcp-server 1846⭐；reverify 579⭐；duty1g 同期 246 forks）** · 相关项目：duty1g/x64dbg-mcp-server, 2akouwu/reverify · 强度：86
-3. **agent-org-as-product / 「公司化 agent 组织」成为 agent harness 下一形态（cbrock84/headcount 1105⭐，15 部门 / 125 技能，可独立安装）** · 相关项目：cbrock84/headcount, ApodexAI/FrontierAgent · 强度：85
-4. **antidetect-detection-security / 反「反检测浏览器」进入 OSS 工具化阶段（N4darae/anti-mage 12 天 1419⭐ / 54 forks，runtime coherence analysis）** · 相关项目：N4darae/anti-mage · 强度：82
+1. **vendor-official-agent-verticalization / Anthropic 官方 commerce-agents 4 天 1914⭐/314 forks（Apache-2.0）——大厂官方「垂直行业 Agent 参考实现」进入 GitHub Trending，标志 Agent 工业化第二阶段** · 相关项目：anthropics/commerce-agents · 强度：92
+2. **vibe-coding-design-coupling / 设计工具直接产出 vibe-coding prompt（m3e-canvas 1754⭐/119 forks，Material 3 Expressive + Next.js + React）** · 相关项目：lnkiai/m3e-canvas · 强度：84
+3. **tailwind-stack-replacement / shadcn-ui 官方发布 tailwind-merge/clsx 替代品 cn 1099⭐/7 forks，宣称 30× 更快 / 全 API 兼容** · 相关项目：shadcn-ui/cn · 强度：82
+4. **0day-poc-virality / Microsoft-Nightmare 连续发布企业安全产品 0day PoC（FalconFlank 496⭐ Crowdstrike + PrettyPrague 178⭐ Avast）——安全 PoC 作为 GitHub 内容品类爆发** · 相关项目：MSNightmare/FalconFlank, MSNightmare/PrettyPrague · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 | [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
-| [2026-08-28](daily/2026-08-28.md) | 6 | 5 |
 
 ## 为什么做这个项目
 
