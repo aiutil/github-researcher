@@ -3,7 +3,36 @@ date: '2026-04-10'
 last_updated: '2026-09-03'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
----## 2026-09-05
+---
+## 2026-09-06
+
+### mattpocock/skills（+2,666 stars/day）· DietrichGebert/ponytail（+2,813 stars/day）· affaan-m/ECC（+1,325 stars/day）· blader/humanizer（+988 stars/day）· cathrynlavery/diagram-design（+852 stars/day）· sgl-project/sglang（+862 stars/day）· magnitudedev/magnitude（+686 stars/day）· NousResearch/hermes-agent（+573 stars/day）· anthropics/skills（+472 stars/day）· humanlayer/skills（+408 stars/day）
+
+> 证据边界：项目名称、星标、单日增速、标签和描述来自 2026-09-06 GitHub Trending 页面快照（daily + python + typescript + rust）+ GitHub API 公开元数据；趋势归纳基于这些公开元数据，不将热度等同于价值。Skill 类项目单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | agent-skills-content-explosion / Agent Skills 内容生态全面爆发——9 个 Skill 类项目同时进入 daily trending 总榜，mattpocock 2666⭐/day 与 ponytail 2813⭐/day 双破 2500+ 单日 | mattpocock/skills | 96 |
+| 2 | agent-harness-perf-optimization / Agent Harness 性能优化作为独立赛道成型（affaan-m/ECC 1325⭐/day 自定位"agent harness operating system"） | affaan-m/ECC | 88 |
+| 3 | ai-writing-deai-skill / "去 AI 化"成为 Agent Skill 的高频用例（blader/humanizer 988⭐/day 验证 Skill 分发模式） | blader/humanizer | 84 |
+| 4 | design-system-skills / 视觉设计 / 图表设计 Agent Skill 化（cathrynlavery/diagram-design 852⭐/day，38 种编辑级图表模板） | cathrynlavery/diagram-design | 80 |
+| 5 | local-inference-agent-stack / 本地推理 + 本地 Agent 栈（magnitudedev/magnitude 686⭐/day，对接 7-8 个 Coding Agent） | magnitudedev/magnitude | 78 |
+| 6 | high-perf-llm-serving-1 / 高性能 LLM 推理服务框架（sgl-project/sglang 862⭐/day 持续活跃） | sgl-project/sglang | 76 |
+| 7 | agent-runtime-meta / Agent 运行时的"meta harness"概念（NousResearch/hermes-agent 573⭐/day + ruvnet/ruflo 127⭐/day） | NousResearch/hermes-agent | 72 |
+| 8 | exploit-archive-as-content / 0day PoC 集合作为 GitHub 内容品类（bikini/exploitarium 232⭐/day 持续走红） | bikini/exploitarium | 70 |
+
+#### 当日重点项目
+
+- 🧰 mattpocock/skills (+2,666 stars/day) — mattpocock 个人 Agent Skills 仓库（总数 252,441⭐/21,311 forks），Score 94
+- 🐴 DietrichGebert/ponytail (+2,813 stars/day) — "Laziest senior dev" Agent Skill（总数 127,831⭐/6,835 forks），Score 90
+- ⚡ affaan-m/ECC (+1,325 stars/day) — Agent Harness 性能优化系统（总数 249,777⭐/37,600 forks），Score 88
+- ✍️ blader/humanizer (+988 stars/day) — 去 AI 化 Agent Skill（总数 43,416⭐/3,642 forks），Score 86
+- 📊 cathrynlavery/diagram-design (+852 stars/day) — 38 种编辑级图表模板 Agent Skill（总数 31,639⭐/2,039 forks），Score 82
+- 🌐 magnitudedev/magnitude (+686 stars/day) — Open source 本地推理服务器对接 7-8 个 Coding Agent（总数 3,159⭐/226 forks），Score 78
+- 🪽 NousResearch/hermes-agent (+573 stars/day) — NousResearch 官方 Agent 运行时（总数 241,962⭐/49,704 forks），Score 74
+- 📚 anthropics/skills (+472 stars/day) — Anthropic 官方 Agent Skills 仓库（总数 174,531⭐/20,670 forks），Score 72
+
+## 2026-09-05
 
 ### anthropics/commerce-agents（1914 stars）· lnkiai/m3e-canvas（1754 stars）· shadcn-ui/cn（1099 stars）· MSNightmare/FalconFlank（496 stars）· Human-Agent-Society/reef（405 stars）· Merserk/dlss5-visual-enhancer（484 stars）· codejunkie99/fable-orchestrator（462 stars）· what1f/kitter（183 stars）· anthropics/fermats-last-theorem（211 stars）
 

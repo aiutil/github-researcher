@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-05.md">最新日报</a> ·
+  <a href="daily/2026-09-06.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-05
+## 最新研究 · 2026-09-06
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 10 | 538 | 7 | 5.6K+ |
+| 8 | 539 | 6 | 11K+ |
 
-**今日核心判断：** anthropics/commerce-agents 4 天 1914⭐ · lnkiai/m3e-canvas 3 天 1754⭐ · shadcn-ui/cn 5 天 1099⭐ · MSNightmare/FalconFlank 2 天 496⭐ · Human-Agent-Society/reef 5 天 405⭐ · Merserk/dlss5-visual-enhancer 6 天 484⭐ · codejunkie99/fable-orchestrator 3 天 462⭐ · what1f/kitter 3 天 183⭐ · Anthropic fermats-last-theorem 1 天 211⭐
+**今日核心判断：** mattpocock/skills 2666⭐/day · DietrichGebert/ponytail 2813⭐/day · affaan-m/ECC 1325⭐/day · blader/humanizer 988⭐/day · cathrynlavery/diagram-design 852⭐/day · sgl-project/sglang 862⭐/day · magnitudedev/magnitude 686⭐/day · NousResearch/hermes-agent 573⭐/day · anthropics/skills 472⭐/day · humanlayer/skills 408⭐/day
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [anthropics/commerce-agents](projects/anthropics-commerce-agents.md) | 1914 stars | 平台候选 |
-| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 1754 stars | 工具型 |
-| shadcn-ui-cn | 1099 stars | 工具型 |
-| [MSNightmare/FalconFlank](projects/falconflank.md) | 496 stars | 工具型 |
-| [Human-Agent-Society/reef](projects/reef.md) | 405 stars | 基础设施候选 |
-| [Merserk/dlss5-visual-enhancer](projects/dlss5-visual-enhancer.md) | 484 stars | 工具型 |
-| [codejunkie99/fable-orchestrator](projects/fable-orchestrator.md) | 462 stars | 工具型 |
-| [what1f/kitter](projects/kitter.md) | 183 stars | 工具型 |
+| [mattpocock/skills](projects/skills.md) | 252,441 stars (+2,666/day) | 平台候选 |
+| [DietrichGebert/ponytail](projects/ponytail.md) | 127,831 stars (+2,813/day) | 工具型 |
+| [affaan-m/ECC](projects/ecc.md) | 249,777 stars (+1,325/day) | 平台候选 |
+| [blader/humanizer](projects/humanizer.md) | 43,416 stars (+988/day) | 工具型 |
+| [cathrynlavery/diagram-design](projects/diagram-design.md) | 31,639 stars (+852/day) | 工具型 |
+| [magnitudedev/magnitude](projects/magnitude.md) | 3,159 stars (+686/day) | 工具型 |
+| [NousResearch/hermes-agent](projects/hermes-agent.md) | 241,962 stars (+573/day) | 平台候选 |
+| [anthropics/skills](projects/skills.md) | 174,531 stars (+472/day) | 平台候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **vendor-official-agent-verticalization / Anthropic 官方 commerce-agents 4 天 1914⭐/314 forks（Apache-2.0）——大厂官方「垂直行业 Agent 参考实现」进入 GitHub Trending，标志 Agent 工业化第二阶段** · 相关项目：anthropics/commerce-agents · 强度：92
-2. **vibe-coding-design-coupling / 设计工具直接产出 vibe-coding prompt（m3e-canvas 1754⭐/119 forks，Material 3 Expressive + Next.js + React）** · 相关项目：lnkiai/m3e-canvas · 强度：84
-3. **tailwind-stack-replacement / shadcn-ui 官方发布 tailwind-merge/clsx 替代品 cn 1099⭐/7 forks，宣称 30× 更快 / 全 API 兼容** · 相关项目：shadcn-ui/cn · 强度：82
-4. **0day-poc-virality / Microsoft-Nightmare 连续发布企业安全产品 0day PoC（FalconFlank 496⭐ Crowdstrike + PrettyPrague 178⭐ Avast）——安全 PoC 作为 GitHub 内容品类爆发** · 相关项目：MSNightmare/FalconFlank, MSNightmare/PrettyPrague · 强度：80
+1. **agent-skills-content-explosion / Agent Skills 内容生态全面爆发——9 个 Skill 类项目同时进入 daily trending 总榜，mattpocock 2666⭐/day 与 ponytail 2813⭐/day 双破 2500+ 单日** · 相关项目：mattpocock/skills, DietrichGebert/ponytail, affaan-m/ECC, blader/humanizer, cathrynlavery/diagram-design, anthropics/skills, humanlayer/skills, WorldFlowAI/everything-claude-code · 强度：96
+2. **agent-harness-perf-optimization / Agent Harness 性能优化作为独立赛道成型——affaan-m/ECC 自定位"agent harness operating system"1325⭐/day 是赛道头部** · 相关项目：affaan-m/ECC, NousResearch/hermes-agent · 强度：88
+3. **ai-writing-deai-skill / "去 AI 化"成为 Agent Skill 的高频用例——blader/humanizer 988⭐/day 验证 Skill 分发模式** · 相关项目：blader/humanizer · 强度：84
+4. **design-system-skills / 视觉设计 / 图表设计 Agent Skill 化——cathrynlavery/diagram-design 852⭐/day（38 种编辑级图表模板）** · 相关项目：cathrynlavery/diagram-design · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 | [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
-| [2026-08-29](daily/2026-08-29.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

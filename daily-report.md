@@ -3,6 +3,29 @@
 > 每日 GitHub 趋势研究简报，持续跟踪不间断
 
 ---
+
+## 2026-09-06
+**核心主题：** mattpocock/skills 单日 +2,666⭐ · DietrichGebert/ponytail 单日 +2,813⭐ · affaan-m/ECC 单日 +1,325⭐ · blader/humanizer 单日 +988⭐ · cathrynlavery/diagram-design 单日 +852⭐ · sgl-project/sglang 单日 +862⭐ · magnitudedev/magnitude 单日 +686⭐ · NousResearch/hermes-agent 单日 +573⭐ · anthropics/skills 单日 +472⭐ · humanlayer/skills 单日 +408⭐
+
+**证据边界：** 星标、单日增速、描述与标签取自 2026-09-06 GitHub Trending 页面快照（daily + python + typescript + rust）+ GitHub API 公开元数据；"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。Skill 类项目单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例。
+
+**关键项目：**
+- 🧰 mattpocock/skills (+2,666 stars/day) — mattpocock 个人 Agent Skills 仓库（总数 252,441⭐/21,311 forks），Score 94
+- 🐴 DietrichGebert/ponytail (+2,813 stars/day) — "Laziest senior dev" Agent Skill（总数 127,831⭐/6,835 forks），Score 90
+- ⚡ affaan-m/ECC (+1,325 stars/day) — Agent Harness 性能优化系统（总数 249,777⭐/37,600 forks），Score 88
+- ✍️ blader/humanizer (+988 stars/day) — 去 AI 化 Agent Skill（总数 43,416⭐/3,642 forks），Score 86
+- 📊 cathrynlavery/diagram-design (+852 stars/day) — 38 种编辑级图表模板 Agent Skill（总数 31,639⭐/2,039 forks），Score 82
+- 🌐 magnitudedev/magnitude (+686 stars/day) — Open source 本地推理服务器（总数 3,159⭐/226 forks），Score 78
+- 🪽 NousResearch/hermes-agent (+573 stars/day) — NousResearch 官方 Agent 运行时（总数 241,962⭐/49,704 forks），Score 74
+- 📚 anthropics/skills (+472 stars/day) — Anthropic 官方 Agent Skills 仓库（总数 174,531⭐/20,670 forks），Score 72
+
+**关键判断：**
+- **Agent Skills 内容生态 9 个项目同期进入 daily trending 是 GitHub 首次**：mattpocock/skills 2666⭐/day + ponytail 2813⭐/day 双破 2500+ 单日，加上 ECC / humanizer / diagram-design / anthropics / humanlayer / everything-claude-code / academic-research-skills，单日合计 +10K+⭐；Skill 模式（SKILL.md 指令文档 + CLI 安装）正成为 Agent 能力分发的范式
+- **Agent Harness 性能优化作为独立赛道**：affaan-m/ECC 1325⭐/day 持续领先（249,777⭐），8 天净增 11,350⭐；Skills + Instincts + Memory + Security 统一层是 Coding Agent 用户真实痛点
+- **本地推理 + 本地 Agent 栈成型**：magnitudedev/magnitude 686⭐/day（对接 7-8 个 Coding Agent）+ Hermes Agent（运行时）+ ECC（优化层）三方构成 Local-first Agent Stack
+- **0day PoC 集合持续走红**：继 9-05 MSNightmare/FalconFlank + PrettyPrague 之后，bikini/exploitarium 232⭐/day（4,687⭐ / 26.7% fork/star）是第三个安全研究者 PoC 仓库进入 daily trending
+- **Skill 治理工具出现**：NVIDIA/SkillSpector 160⭐/day "Security scanner for AI agent skills"——Skill 生态从"内容品类"演化到"需要治理的品类"
+
 ## 2026-09-05
 **核心主题：** anthropics/commerce-agents 4 天 1914⭐ · lnkiai/m3e-canvas 3 天 1754⭐ · shadcn-ui/cn (shadcn-cn) 5 天 1099⭐ · MSNightmare/FalconFlank 2 天 496⭐ · Human-Agent-Society/reef 5 天 405⭐ · Merserk/dlss5-visual-enhancer 6 天 484⭐ · codejunkie99/fable-orchestrator 3 天 462⭐ · what1f/kitter 3 天 183⭐ · Anthropic fermats-last-theorem 1 天 211⭐
 
