@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-06.md">最新日报</a> ·
+  <a href="daily/2026-09-07.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-06
+## 最新研究 · 2026-09-07
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 8 | 539 | 6 | 11K+ |
+| 10 | 542 | 6 | 12K+ |
 
-**今日核心判断：** mattpocock/skills 2666⭐/day · DietrichGebert/ponytail 2813⭐/day · affaan-m/ECC 1325⭐/day · blader/humanizer 988⭐/day · cathrynlavery/diagram-design 852⭐/day · sgl-project/sglang 862⭐/day · magnitudedev/magnitude 686⭐/day · NousResearch/hermes-agent 573⭐/day · anthropics/skills 472⭐/day · humanlayer/skills 408⭐/day
+**今日核心判断：** CopilotKit/OpenBot 4367⭐ 'AI coworkers' 平台化 · yetone/cumora 3491⭐ 'AI agents as first-class teammates' 群聊协议 · sapientinc/PRAXIST 6467⭐ 可执行科研 Agent · lnkiai/m3e-canvas 4251⭐ Material 3 vibe-coding · Nanako0129/sepia 2324⭐ 跨 77+ Agent Skill CLI · ashemag/human-atlas 1288⭐ 三维解剖 Atlas · crmne/fastpotify 3357⭐ 原生 Spotify 客户端 · vinzdg/codenotch 667⭐ Coding Agent 用量 Monitor · okf-memory/okf-agent-memory 340⭐ Git-native Agent 记忆
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [mattpocock/skills](projects/skills.md) | 252,441 stars (+2,666/day) | 平台候选 |
-| [DietrichGebert/ponytail](projects/ponytail.md) | 127,831 stars (+2,813/day) | 工具型 |
-| [affaan-m/ECC](projects/ecc.md) | 249,777 stars (+1,325/day) | 平台候选 |
-| [blader/humanizer](projects/humanizer.md) | 43,416 stars (+988/day) | 工具型 |
-| [cathrynlavery/diagram-design](projects/diagram-design.md) | 31,639 stars (+852/day) | 工具型 |
-| [magnitudedev/magnitude](projects/magnitude.md) | 3,159 stars (+686/day) | 工具型 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 241,962 stars (+573/day) | 平台候选 |
-| [anthropics/skills](projects/skills.md) | 174,531 stars (+472/day) | 平台候选 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 4,367 stars | 平台候选 |
+| [yetone/cumora](projects/cumora.md) | 3,491 stars | 平台候选 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 6,467 stars | 前沿研究 |
+| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 4,251 stars | 工具型 |
+| [Nanako0129/sepia](projects/sepia.md) | 2,324 stars | 工具型 |
+| [crmne/fastpotify](projects/fastpotify.md) | 3,357 stars | 应用型 |
+| [ashemag/human-atlas](projects/human-atlas.md) | 1,288 stars | 应用型 |
+| [vinzdg/codenotch](projects/codenotch.md) | 667 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **agent-skills-content-explosion / Agent Skills 内容生态全面爆发——9 个 Skill 类项目同时进入 daily trending 总榜，mattpocock 2666⭐/day 与 ponytail 2813⭐/day 双破 2500+ 单日** · 相关项目：mattpocock/skills, DietrichGebert/ponytail, affaan-m/ECC, blader/humanizer, cathrynlavery/diagram-design, anthropics/skills, humanlayer/skills, WorldFlowAI/everything-claude-code · 强度：96
-2. **agent-harness-perf-optimization / Agent Harness 性能优化作为独立赛道成型——affaan-m/ECC 自定位"agent harness operating system"1325⭐/day 是赛道头部** · 相关项目：affaan-m/ECC, NousResearch/hermes-agent · 强度：88
-3. **ai-writing-deai-skill / "去 AI 化"成为 Agent Skill 的高频用例——blader/humanizer 988⭐/day 验证 Skill 分发模式** · 相关项目：blader/humanizer · 强度：84
-4. **design-system-skills / 视觉设计 / 图表设计 Agent Skill 化——cathrynlavery/diagram-design 852⭐/day（38 种编辑级图表模板）** · 相关项目：cathrynlavery/diagram-design · 强度：80
+1. **agent-coworker-platform / 'AI coworker / agent-as-coworker' 概念正式破圈——CopilotKit/OpenBot 4367⭐ 把 Coding Agent 升级为 'AI coworker that each gets a computer of their own'，yetone/cumora 3491⭐ 把群聊升级为 'where agent teams gather'，两个项目从'coding agent'升级到'workspace coworker'层** · 相关项目：CopilotKit/OpenBot, yetone/cumora, Traycerai/traycer · 强度：95
+2. **executable-research-agent / 可执行科研 Agent 赛道成型——sapientinc/PRAXIST 6467⭐ 自述 'autonomous research system for measurable, computer-executable research'，是今日新增 Star 第一的全新项目（非 Skill 类）** · 相关项目：sapientinc/PRAXIST, brayonpi/hexstellar, 2akouwu/reverify · 强度：90
+3. **design-system-vibe-coding / 视觉设计↔vibe-coding 链路双向工具化——lnkiai/m3e-canvas 4251⭐（'sketch Material 3 Expressive screens → turn into vibe-coding prompts'）与 9-06 cathrynlavery/diagram-design 互补：用户画稿 → Agent 编码 / Agent 输出 → 编辑级图表** · 相关项目：lnkiai/m3e-canvas, cathrynlavery/diagram-design, kacperkapusciak/goldie · 强度：86
+4. **skill-ecosystem-deai-tools / Agent Skill 内容生态向'去 AI 化'纵深扩散——Nanako0129/sepia 2324⭐ 自述 'De-AI writing skill for any Agent Skills-compatible agent (77+ via the Skills CLI)'，与 9-06 blader/humanizer 988⭐ 共同构成 'Skill = deAI 分发' 子赛道** · 相关项目：Nanako0129/sepia, blader/humanizer · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
-| [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

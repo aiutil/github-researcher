@@ -1,109 +1,118 @@
 ---
 title: "Nanako0129/sepia"
-slug: "sepia"
-date_added: "2026-08-29"
-last_seen_date: "2026-08-29"
+slug: sepia
+date_added: 2026-09-07
+last_seen_date: 2026-09-07
 category: "工具型"
-emoji: "✍️"
-stars: "245 stars"
-stars_delta: "245⭐ 起步（1 天）"
-language: "Shell"
-score: 86
-tags: ["claude-code", "codex", "grok", "antigravity", "agent-skills", "humanizer", "narrative-architecture", "storyscope", "fiction", "professional-writing"]
+emoji: "🖋️"
+stars: "2,324 stars"
+stars_delta: "10 天 0→2,324⭐，单日均速 ~232⭐/day；77+ Agent 兼容的 deAI Skill CLI"
+language: "Python"
+score: 82
+tags: ["agent-skills", "claude-code", "codex", "deai", "grok", "nanako0129", "python", "skill-cli"]
 url: "https://github.com/Nanako0129/sepia"
 ---
 
 # Nanako0129/sepia
 
 ## 一句话定位
-从 narrative architecture 层面去 AI 化的小说与专业写作 skill——单一 SKILL.md 同时被 Claude Code / Codex / Grok Build / Antigravity 四平台加载，针对 LLM 写作七类叙事架构指纹做反向修复，学术基础为 StoryScope（Russell et al. 2026, arXiv 2604.03136）测得的 93.2% 分类器漏洞。
+跨 77+ Agent 兼容的去 AI 化 Skill CLI——De-AI writing skill for any Agent Skills-compatible agent (77+ via the Skills CLI), with native plugins for Claude Code, Codex, Grok Build...，Python，是 9-06 上榜的 blader/humanizer 的多 Agent 升级版，验证 "Skill CLI" 分发模式。
 
 ## 它解决的问题
-当前主流 humanizer 工具（GPTZero / Originality.ai 等的绕过器）集中在"改词改句、改 surface style"，但 StoryScope 论文（61,608 故事 / human + 5 frontier LLMs）证明：narrative-structure features 单独分类可达 93.2% macro-F1；改 surface style 仅从 95.5% 降到 93.9%——**"the tells that survive are architectural"**（README 自述）。这意味着真正决定"AI 味"的是叙事架构层（主题被叙述者解释 / 单线因果 / 情感只以躯体呈现 / 没有真实指涉 / 没有读者 / 线性时间 / 主角成长收尾），而非表面润色。sepia 把 StoryScope + 11 个相关研究消化成可操作的三遍写作/修订协议。
+2026 年 Agent Skill 内容生态爆发，但绝大多数 Skill 仅兼容少数 Coding Agent（如 blader/humanizer 兼容 Claude Code / Codex / Cursor / OpenCode）。用户同时使用 7-8 个 Coding Agent 时，需要为每个 Agent 安装 / 配置不同的 Skill。Nanako0129/sepia 直击这一痛点：(a) **77+ Agent 兼容**——通过 Skills CLI 单一安装命令支持 77+ Coding Agent；(b) **native plugins**——Claude Code / Codex / Grok Build 等主流 Agent 原生插件；(c) **deAI 纵深**——在 9-06 humanizer 基础上扩展 deAI 规则（识别 delve / tapestry / 连续排比等）。这是 Skill 模式从"单 Agent Skill"升级到"跨 Agent Skill CLI"的关键样本。
 
-## 为什么值得关注（2026-08-29）
-- **Stars:** 245（截至 2026-08-29），**1 天起步**，处于"极早期爆发"阶段
-- **Forks:** 待核验（API 检索未单独返回）
-- **License:** MIT
-- **语言:** Shell 仓库主体（README 自述 "A portable Agent Skill for Claude Code, Codex, Grok Build, and Antigravity. One canonical SKILL.md, no per-platform forks"）
-- **活跃度:** created 2026-08-28，pushed_at 2026-08-29
-- **跨平台:** 单一 SKILL.md 同时被 Claude Code / Codex / Grok Build / Antigravity 加载
-- **学术基础:** StoryScope 论文（Russell et al. 2026, arXiv 2604.03136）测得的 93.2% macro-F1
+## 为什么值得关注
+- **Stars:** 2,324（截至 2026-09-07），10 天净增，单日均速 ~232⭐/day
+- **Forks:** 141（fork/star **6.1%**，**显著低于** mattpocock/skills 8.4% / ECC 15.1%——反映"围观但不动手"特征）
+- **语言:** Python 主导
+- **77+ Agent 兼容:** Skill CLI 分发模式验证，比单 Agent Skill 的兼容矩阵广度优势
+- **deAI 纵深:** 在 humanizer 基础上扩展规则集
+- **Grok Build 集成:** xAI 的 Grok Build Coding Agent 是 2026 年新平台，sepia 把其纳入兼容矩阵
 
 ## 热度来源判断
-sepia 的热度是 **"humanizer 表面润色被证伪 × narrative architecture 是真实决胜战场 × 跨四平台单一 SKILL.md × MIT 许可证"** 的组合。StoryScope 论文测得的"改 surface style 仅 95.5% → 93.9%"是"为什么需要 narrative 修复"的硬证据，让 sepia 站在学术前沿。245⭐/1 天说明 academic 圈 + creative writing 圈的双向关注。但需警惕：humanizer 赛道的"绕过 AI 检测"定位可能引发学校 / 新闻 / 出版的合规反扑；StoryScope 数据集公开也可能被攻击者用于训练新一代绕过检测器。
+sepia 的热度来自三个趋势的交汇：(1) **Agent Skill 内容生态成熟**——9-06 trending 总榜前 16 名中 9 个 Skill 类项目已验证生态规模；(2) **跨 Agent 兼容刚需**——开发者同时使用 Claude Code / Cursor / Codex 等多 Agent，需要统一的 Skill 安装方式；(3) **deAI 持续热度**——AI 文本检测与对抗是 2026 年持续热点，humanizer 988⭐ 验证 deAI 是高频用例。
+
+10 天 2,324⭐ / fork/star 6.1% 与"早期传播期"特征一致。**提示：** fork 率 6.1% 显著低于 mattpocock 8.4% / ECC 15.1%——可能反映"围观但不动手"特征，或 Skill CLI 安装门槛较高；"77+" 兼容矩阵的实际深度需要核验（哪些 Agent 完全兼容 / 哪些仅部分兼容）。
 
 ## 关键技术亮点
-1. **三遍写作 / 修订协议**（README 表格明示）：① narrative architecture（fiction）—— stop explaining the theme / loosen causal chain / back-load revelations / mix emotion modes / sparse character networks / name real things；② discourse flow —— de-template paragraph-question sequence / fix mid-story sag / vary rhythm and positions；③ surface style —— clichés / syntax templates / vocabulary / register
-2. **四类操作原语**：`write` / `review` (diagnose only) / `refactor` (minimal edits) / `recreate` (full rewrite)
-3. **30 特征诊断 rubric**（README 自述）+ **per-model fingerprint corrections**（Claude / GPT / Gemini / DeepSeek / Kimi 五大模型的写作指纹反向调整）
-4. **venue-matched rule**（README 表格明示）：release notes / PR replies / postmortems / tickets / 技术文章各设专属规则——filler 剔除 / hedging 改写 / chatbot 残留去除 / register 与 venue 对齐 / formatting 去模板化
-5. **设计哲学"calibrate to the human distribution, don't invert the AI one"**（README 自述）："Humans sit at moderate values; a story with every rule applied is a new fingerprint. The skill selects 3–5 moves per story and leaves slack."——节制式修复比"全规则全打"更稳
-6. **跨四平台单一 SKILL.md**："One canonical SKILL.md, no per-platform forks"（README 自述）
+1. **Skills CLI 安装:** `npx skills add Nanako0129/sepia --global`（推测）——单一命令支持 77+ Agent
+2. **77+ Agent 兼容矩阵:** 覆盖 Claude Code / Codex / Cursor / OpenCode / Grok Build 等 77+ Coding Agent
+3. **deAI 规则扩展:** 在 humanizer 基础上扩展规则（识别更多 AI 写作模式 / 调整更精细的改写策略）
+4. **Python 实现:** SKILL.md 指令文档 + Python 辅助脚本
+5. **native plugins:** Claude Code / Codex / Grok Build 的原生插件集成
+6. **跨 Agent 一致性:** 同一段文本在不同 Agent 中执行 deAI 后的输出质量差异需要核验
 
 ## 架构师速览
 
 | 决策问题 | 研究判断 | 证据边界 |
 |---|---|---|
-| 系统边界 | 跨四平台的 Agent Skill（Claude Code / Codex / Grok Build / Antigravity）+ 三遍写作/修订协议（narrative / discourse / surface）+ venue-matched rule | 四平台兼容性是 README 明示；具体平台适配层（每个平台的 skill 加载机制）未公开 |
-| 主路径 | 用户写小说/专业文 → sepia `write` 生成 → `review` 诊断 narrative 指纹 → `refactor` 局部修复 / `recreate` 全重写 | 四类操作是 README 明示；与每个 platform 的 CLI 集成命令（`/skill sepia` 等）需平台文档独立核验 |
-| 关键权衡 | narrative 修复 vs "过度编辑失去 AI 指纹反被新指纹替换" 的概率 vs 跨平台语义一致性 vs StoryScope 数据集是否可下载 | StoryScope 论文 ID 与 93.2% 数字在 README 自述；研究/ 目录下 11 个相关研究是否齐全需核验；"calibrate to the human distribution, don't invert the AI one" 是 README 中明示的设计哲学 |
-| 最小 PoC | 在 Claude Code 上加载 sepia skill，写 800 字虚构故事 → 跑 `review` 拿诊断 → 跑 `refactor` 修复叙事指纹 → 拿 StoryScope 分类器或等价检测工具独立复核 | Skill 安装命令是 README 明示；StoryScope 复现需另算（数据集 / 模型可获得性） |
+| 系统边界 | 跨 77+ Agent 兼容的 deAI Skill CLI——通过 Skills CLI 单一命令支持 77+ Coding Agent，扩展 deAI 规则集 | 边界由 trending 描述明示；"77+" 兼容矩阵的实际深度（每个 Agent 的兼容程度）需 README 核验 |
+| 主路径 | 用户输入文本 → Coding Agent（Claude Code / Codex / Grok Build 等 77+）→ 加载 sepia Skill → deAI 改写 → 输出自然化文本 | 主路径为描述语义抽象；不同 Agent 加载 Skill 的具体机制（plugin / settings / prompt）未在 trending 中可见 |
+| 关键权衡 | 77+ Agent 兼容广度 vs 每个 Agent 的适配深度（浅兼容易但深兼容难）；deAI 规则扩展 vs 维护成本；Python 实现 vs 纯 Markdown 指令的分发差异 | Python 主导（来自 trending）；具体规则扩展数量与质量需 README 核验 |
+| 最小 PoC | 在 Claude Code / Codex / Grok Build 各安装 sepia Skill → 给同一段 AI 文本 → 对比三个 Agent 的 deAI 输出质量与一致性 | 安装命令需 README 独立核验；deAI 质量评估需人工或 AI 检测器对比 |
 
 ## 架构启发
-sepia 的核心启发是 **"humanizer 的下一战场是 narrative architecture，不是 surface style"**。StoryScope 论文以 61,608 故事 / human + 5 frontier LLMs 的硬数据证明：单纯改 surface style 几乎没用（95.5% → 93.9%），真正决定"AI 味"的是叙事架构层的七类指纹。这一发现把整个 humanizer 赛道的产品形态从"改词改句工具"推向"叙事架构修复协议"。更深层的启发是 **"calibrate to the human distribution, don't invert the AI one" 的设计哲学**——节制式修复比"全规则全打"更稳，因为人类分布是"中间值"，每个故事选 3-5 个 move 才不会留下新的"AI 反向指纹"。这与软件工程中"less is more"的减法美学一脉相承。最深层的启发是 **"per-model fingerprint corrections" 的设计**——针对不同模型的写作指纹做反向调整，是 niche 但极有商业价值的方向（尤其是平台方对 AI 生成内容的标识要求越来越强时）。
+sepia 的核心启发是 **"Agent Skill 应该跨 Coding Agent 兼容"**。当前 Skill 生态的痛点是"一个 Skill 只能在一个 Agent 中用"——开发者同时使用 Claude Code + Cursor + Codex 时需要为每个 Agent 安装不同 Skill。sepia 通过 Skills CLI 抽象层解决这一问题，把 Skill 从"Agent 专属"升级为"跨 Agent 通用"。更深层的启发是：**Skill 分发模式可能从"npm 包 + 单独安装"升级到"CLI 集中分发"**——类似 Homebrew 之于 macOS 包管理，Skills CLI 可能成为 Skill 时代的 Homebrew。
+
+风险提示：**"77+ 兼容"是营销数字 vs 实际深度**——浅兼容（仅在 prompt 中加载规则）vs 深兼容（plugin 原生集成）的差异需要核验；与 humanizer 的差异化（仅在兼容性扩展，无质量提升）需要独立 benchmark；与 Skills CLI 标准（mattpocock/anthropics 等是否使用同一 CLI）的关系需要核验。
 
 ## 架构图（MMD）
 
 > 证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。
 
 ```mermaid
-flowchart TB
-  User[写作者] --> Skill[sepia SKILL.md<br/>四平台共享]
-  Skill --> CC[Claude Code]
-  Skill --> CX[Codex]
-  Skill --> GB[Grok Build]
-  Skill --> AG[Antigravity]
-  Skill --> Op[四类操作<br/>write / review / refactor / recreate]
-  Op --> Narrative[Narrative architecture 修复<br/>主题 / 因果链 / 情感 / 指涉 / 读者 / 时间 / 收尾]
-  Op --> Discourse[Discourse flow 修复<br/>段落问题链 / 中段塌陷 / 节奏]
-  Op --> Surface[Surface style 修复<br/>clichés / syntax / vocabulary / register]
-  Op --> Venue[Venue-matched rule<br/>release notes / PR / postmortem / ticket / 技术文章]
-  Narrative --> Rubric[30 特征诊断 rubric]
-  Narrative --> Fingerprint[per-model fingerprint corrections<br/>Claude / GPT / Gemini / DeepSeek / Kimi]
-  Rubric --> User
-  Fingerprint --> User
-  Venue --> User
-  Skill -. 学术基础 .-> StoryScope[StoryScope arXiv 2604.03136<br/>93.2% macro-F1 漏洞]
+flowchart LR
+  User[用户] --> Input[AI 生成文本]
+  Input --> Agent[用户选择的 Coding Agent<br/>77+ 兼容]
+  Agent --> CLI[Skills CLI 加载]
+  CLI --> Sepia[sepia Skill 加载]
+  Sepia --> DeAI[deAI 规则集<br/>扩展自 humanizer]
+  DeAI --> Rewrite[改写引擎]
+  Rewrite --> Output[自然化文本输出]
+  Agent --> Claude[Claude Code]
+  Agent --> Codex[Codex]
+  Agent --> Cursor[Cursor]
+  Agent --> OC[OpenCode]
+  Agent --> Grok[Grok Build]
+  Agent --> Others[其它 72+ Agent<br/>兼容矩阵深度待核验]
+  Claude -.native plugin.-> Sepia
+  Codex -.native plugin.-> Sepia
+  Grok -.native plugin.-> Sepia
+  DeAI -.规则.-> R1[识别 delve / tapestry]
+  DeAI -.规则.-> R2[识别连续排比]
+  DeAI -.规则.-> R3[识别机械过渡词]
+  DeAI -.规则.-> R4[更多规则 待核验]
+  Output -.质量.-> AI[AI 检测器对抗<br/>持续军备竞赛]
 ```
 
 ## 定位判断
-**工具型项目（narrative architecture 级 humanizer skill）**。sepia 不是 GPTZero / Originality.ai 的绕过器，而是"从 narrative architecture 层面反向修复 LLM 写作"的协议级 skill。245⭐/1 天说明 academic 圈 + creative writing 圈对"next-gen humanizer"的关注。是否能进入主流，取决于：(1) StoryScope 数据集的可下载性（用于复现 93.2% 漏洞）；(2) 跨四平台适配稳定性；(3) 平台方对 AI 生成内容标识合规的态度（SynthID / C2PA）。
+**工具型项目（跨 Agent deAI Skill CLI）。** Nanako0129/sepia 是 9-06 humanizer 的多 Agent 升级版，验证 "Skill CLI" 分发模式。10 天 2,324⭐ / fork/star 6.1% 显示该中介环节有真实需求。但作为独立产品的天花板：(a) Skill CLI 标准未定型（mattpocock/anthropics 等是否使用同一 CLI）；(b) humanizer 等可能跟进多 Agent 兼容；(c) deAI 规则易被 AI 检测器反制。当前定位是"跨 Agent deAI Skill 头部样本"，与 Skills CLI 标准绑定是演进路径。
 
-## 风险 / 局限 / 泡沫点
-- **合规反扑风险**：humanizer 赛道被学校 / 新闻 / 出版视为"绕过 AI 检测"，可能引发监管反扑（特别是 EU AI Act / 中国生成式 AI 服务管理办法对"AI 生成内容标识"的强制要求）
-- **StoryScope 数据集可获得性**：93.2% 漏洞数字基于论文，分类器模型与数据集是否对外可下载未在 README 明示
-- **"per-model fingerprint"漂移**：Claude / GPT / Gemini / DeepSeek / Kimi 的写作指纹会随版本变化，per-model correction 需持续更新
-- **过度编辑反被新指纹替换**：若不遵守"3-5 moves per story and leaves slack"原则，会留下新的"AI 反向指纹"
-- **跨四平台适配风险**：单一 SKILL.md 在四个平台的加载机制差异需独立验证
+## 风险/局限/泡沫点
+- **"77+ 兼容"是营销数字 vs 实际深度:** 浅兼容（仅在 prompt 中加载规则）vs 深兼容（plugin 原生集成）的差异需要核验
+- **deAI 规则易被反制:** 与 AI 检测器的对抗是持续军备竞赛，今日生效的规则可能 1-2 个月后失效
+- **与 humanizer 差异化:** 仅在兼容性扩展（77+ Agent），无显著质量提升——可能被 humanizer 跟进兼容矩阵挤压
+- **fork/star 6.1% 偏低:** 显著低于 mattpocock 8.4% / ECC 15.1%——反映"围观但不动手"特征
+- **Skills CLI 标准未定型:** 与 mattpocock / anthropics 的 Skills CLI 是否同一标准需要核验
+- **Nanako0129 个人项目:** 长期可持续性 / 治理结构未验证
 
 ## 与同类项目的关系
-- **vs 主流 humanizer 工具（GPTZero 绕过器等）**：主流工具改 surface style，几乎没用；sepia 改 narrative architecture
-- **vs StoryScope 论文本身**：论文是 academic 学术发现；sepia 是把论文发现形式化为可操作 skill
-- **vs wshobson/agents（8-22 跨平台 skill 仓库）**：wshobson 是 skill 聚合市场；sepia 是单点深度 skill（专注 narrative architecture 修复）
-- **vs fire-your-seo-agency（8-28 SEO skill）**：两者都是"专业领域知识 × Claude Code skill"模式，但面向 SEO vs narrative writing
-- **vs 中文写作助手 / 笔神等**：国内产品是 SaaS；sepia 是 open source skill
+- **vs blader/humanizer:** humanizer 是单 Agent deAI Skill（Claude Code / Codex / Cursor / OpenCode）；sepia 是跨 77+ Agent deAI Skill CLI
+- **vs mattpocock/skills:** mattpocock 是 TypeScript Educator 个人 Agent Skills 集合（252K⭐）；sepia 是单一 deAI Skill
+- **vs anthropics/skills:** Anthropic 官方 Skills 规范 + 模板 + 示例（174K⭐）；sepia 是具体的 deAI Skill 实现
+- **vs affaan-m/ECC:** ECC 是 Agent Harness 性能优化系统（249K⭐）；sepia 是具体 Skill CLI 工具
+- **vs NVIDIA/SkillSpector:** SkillSpector 是 AI Agent Skills 安全扫描器；sepia 是 deAI Skill 实现
 
 ## 是否值得持续跟踪
-**值得跟踪（narrative architecture 级 humanizer 代表）**。sepia 代表了"humanizer 从 surface style 升级到 narrative architecture"的赛道转向，是 StoryScope 论文的形式化产品化。对学术写作 / 创意写作 / 内容运营团队，这是值得试验的工具；对 humanizer 赛道，这是 next-gen 范式。建议关注：StoryScope 数据集公开、跨四平台适配稳定性、平台方对 AI 生成内容标识的政策、per-model fingerprint 更新频率。
+**值得跟踪（跨 Agent deAI Skill CLI）。** sepia 代表了 Skill 模式从"单 Agent"升级到"跨 Agent"的诉求，与 Skills CLI 标准绑定是其演进路径。建议关注：(a) "77+ 兼容"矩阵的实际深度；(b) Skills CLI 标准的统一化进程；(c) deAI 规则与 AI 检测器的对抗；(d) humanizer 等是否跟进跨 Agent 兼容。对 Skill 重度用户，sepia 是值得尝试的 deAI Skill CLI。
 
 ## 后续观察点
-- 30/60/90 天 stars / forks 曲线（1 天 245⭐ 是极高起点）
-- StoryScope 论文数据集 / 分类器模型是否对外公开
-- 跨四平台（Claude Code / Codex / Grok Build / Antigravity）适配稳定性
-- "per-model fingerprint corrections" 是否随模型版本持续更新
-- 平台方（学校 / 新闻 / 出版）对 narrative architecture 级 humanizer 的政策
-- 与 SynthID / C2PA 等 AI 生成内容标识标准的冲突 / 协同
+- "77+ 兼容"矩阵的实际深度（哪些 Agent 完全兼容 / 哪些仅部分）
+- Skills CLI 标准的统一化（mattpocock / anthropics / sepia 是否使用同一 CLI）
+- deAI 规则与 AI 检测器的对抗演化
+- humanizer 等是否跟进跨 Agent 兼容
+- 与 NVIDIA/SkillSpector 等 Skill 治理工具的关系
+- Nanako0129 个人项目的可持续性 / 治理结构
 
 ---
-*首次记录：2026-08-29*
+> 数据来源: GitHub API (2026-09-07) | Stars: 2,324 | Forks: 141 | License: 待核验 | 语言: Python | 创建: 2026-08-28

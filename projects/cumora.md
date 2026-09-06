@@ -1,54 +1,60 @@
 ---
 title: "yetone/cumora"
-slug: "cumora"
-date_added: "2026-08-23"
-last_seen_date: "2026-09-01"
+slug: cumora
+date_added: 2026-09-07
+last_seen_date: 2026-09-07
 category: "平台候选"
 emoji: "💬"
-stars: "3349 stars"
-stars_delta: "15 天 3349⭐（2026-09-01），10 天 +450⭐/+15.5%（自 8-23 的 2899⭐ 起）"
+stars: "3,491 stars"
+stars_delta: "21 天 0→3,491⭐，单日均速 ~166⭐/day；yetone 出品的 Agent 一等公民群聊平台"
 language: "TypeScript"
-score: 90
-tags: ["ai-agents", "team-chat", "byoa", "claude-code", "codex", "grok-build", "agent-runtime", "electron", "react", "websocket"]
+score: 88
+tags: ["agent-runtime", "ai-agents", "chat-platform", "claude-code", "codex", "collaboration", "hermes", "yetone"]
 url: "https://github.com/yetone/cumora"
 ---
 
 # yetone/cumora
 
 ## 一句话定位
-跨平台（Electron / PWA / iOS / Android）团队聊天应用，AI agent 作为 first-class 团队成员——可在群聊、私聊、看板、日历里与人类并肩工作，主打"Bring Your Own Agent（BYOA）"让本地 Claude Code / Codex / Grok Build / Cursor Agent CLI 直接成为 agent 的大脑。
+yetone（avante.nvim / opencode.nvim 知名作者）出品的 Agent 一等公民群聊平台——Where agent teams gather. Cross-platform team chat where AI agents are first-class teammates — with cloud or bring-your-own (Claude Code / Codex / Hermes / OpenClaw...)。，TypeScript，是 GitHub 首次出现的"Agent 群聊协议"样本。
 
 ## 它解决的问题
-传统团队协作工具（Slack / Teams / Discord）面向"人与人"设计；当 agent 越来越多地参与实际工作时，① 它们无法像同事一样被 @、被指派任务、参加会议；② 让 agent 直接调用 LLM API 又面临**模型与订阅的强绑定**（如 ChatGPT Plus / Claude Pro / Cursor Pro 各有独立账户与计费）；③ agent 间的协作冲突难以仲裁（同一话题两个 agent 都在回，谁说了算？）。cumora 直击这三点：把 agent 提升为"团队成员"，通过 BYOA 复用用户既有订阅，通过 seen-cursor freshness gate + atomic claims + small-brain triage gate 三层协议做冲突仲裁。
+2026 年 Coding Agent 已成熟，但绝大多数仍是"单人 IDE 工具"——用户与 Agent 在 IDE 内 1-on-1 交互。yetone/cumora 直击这一痛点：(a) 把群聊从"人类 ↔ 人类"升级为"人类 ↔ Agent + Agent ↔ Agent"；(b) "first-class teammates"——Agent 不是工具而是团队成员（权限 / 身份 / 可见性）；(c) BYO Agent——支持 Claude Code / Codex / Hermes / OpenClaw 等多 Agent 接入；(d) 与 CopilotKit/OpenBot 的"独立电脑"概念互补——cumora 关注"组织协作"层。
 
-## 为什么值得关注（2026-08-23）
-- **5 天 2,899⭐**（GitHub API 可核验）：增速极快，处于 agent 协作赛道头部
-- **MIT / TypeScript / Electron+PWA+iOS+Android**：跨平台覆盖最完整的开源 agent 协作项目之一
-- **明确的产品架构文档**：README 直接给出 React UI → App workers → Postgres/Redis/K8s/BYOA 的分层图，并提供 docs/COORDINATION.md 详细说明多 agent 仲裁协议
-- **BYOA 模型**：用户保留模型与订阅控制权，企业不会被锁死
+## 为什么值得关注
+- **Stars:** 3,491（截至 2026-09-07），21 天净增，单日均速 ~166⭐/day
+- **Forks:** 438（fork/star 12.6%，远高于 magnitude 7.2%——反映真实开发者尝试）
+- **语言:** TypeScript 主导
+- **作者品牌:** yetone（avante.nvim 头部作者，12k+ stars，Neovim AI 编程社区知名），个人品牌可信
+- **Agent 群聊协议:** GitHub 首次出现的"群聊层 Agent 一等公民"概念集中爆发
+- **多 Agent 兼容:** Claude Code / Codex / Hermes / OpenClaw 四大 Coding Agent 同时支持
 
 ## 热度来源判断
-**"agent 团队成员化 × BYOA 隐私/成本双优 × 跨平台完整覆盖"三重驱动。** 8-22 趋势简报已识别"harness 中间层"成形；8-23 cumora 把中间层升级为"团队运行时"，承接了大量 agent 协作需求。增速真实但**含品牌流量**——yetone 是国内知名独立开发者（avante.nvim 等项目作者），其个人品牌带来部分早期 star。下游采用需关注：① BYOA 实际覆盖哪些 CLI（README 列了 Claude Code / Codex / Grok Build / Cursor Agent，但未逐一核验）；② 多 agent 冲突仲裁的实战表现；③ K8s 自管的运维成本对中小团队是否可接受。
+cumora 的热度来自三个趋势的交汇：(1) **Agent 群聊协议概念破圈**——GitHub 首次出现"workspace 群聊 + Agent 一等公民"集中爆发；(2) **yetone 个人品牌**——avante.nvim 社区积累的强信任，让开发者愿意尝试 yetone 的新项目；(3) **多 Agent 兼容**——开发者同时使用 Claude Code + Codex + Hermes 等多 Agent，需要统一的群聊协议。
+
+21 天 3,491⭐ 与 yetone 在 avante.nvim 社区的影响力一致；fork 438 / fork/star 12.6% 表明真实部署。**提示：** cumora 是 yetone 个人项目（avante.nvim 也是个人项目），长期可持续性需观察；与 Slack / Teams / Discord 等成熟群聊工具的差异化（Agent 一等公民）需要独立验证。
 
 ## 关键技术亮点
-1. **BYOA 协议：** `npx cumora agent computer` 在用户本地启动 agent CLI，cumora 服务器通过 cumora CLI 协议与之通信，服务器不接触用户 LLM 凭据
-2. **冲突仲裁三层协议：** seen-cursor freshness gate（stale reply 被 HELD，让 agent 看到新消息重判）、atomic claims（任务认领原子化）、small-brain triage gate（小模型先筛，大模型再答，节省成本）
-3. **K8s per-agent-pod：** 每个 cloud agent 独占一个 K8s pod，Go FUSE 挂载其服务端工作区，agent 间物理隔离
-4. **统一成本账本：** 所有 LLM 调用（cloud + BYOA）落入同一个 `llm_calls` 表，便于成本归因
-5. **完整跨平台：** Electron 桌面 / PWA Web / iOS / Android，UI 复用同一 React 组件库
-6. **邮件 / 推送集成：** 通过 Resend（email out）+ APNs/FCM（push）让 agent 能"真实地"对外沟通
+1. **Agent 一等公民:** Agent 在群聊中有独立身份 / 权限 / 可见性，不是"@bot"式工具调用
+2. **BYO Agent 协议:** 支持 Claude Code / Codex / Hermes / OpenClaw 等多 Agent 接入——Agent 协议转换是关键适配层
+3. **群聊消息路由:** 多 Agent 协作时需要协商（谁响应 / 是否并发 / 重复响应避免）
+4. **Agent 权限隔离:** 不同 Agent 在群聊中的可见消息 / 可执行操作不同
+5. **跨平台:** 推测支持 macOS / Linux / Windows（TypeScript 主导），可能还有 Web 客户端
+6. **TypeScript 主导:** 与 ECC / anthropics/skills 一致
 
 ## 架构师速览
 
 | 决策问题 | 研究判断 | 证据边界 |
 |---|---|---|
-| 系统边界 | cumora 是团队协作平台的 agent runtime，承担"agent ↔ 团队成员"映射；BYOA 让用户本地 CLI 成为 agent 大脑；K8s per-agent-pod 隔离 cloud agent | 架构图与 docs/COORDINATION.md 已公开；BYOA CLI 覆盖清单、agent 间冲突仲裁的实战 SLO 待核验 |
-| 主路径 | 用户消息 → React UI → Express+ws → Postgres/Redis → 调度至对应 agent → BYOA daemon / K8s pod 执行 → 回写 llm_calls → fan-out 至所有客户端 | 主路径为 README 架构图与 BYOA 描述；具体消息路由协议、pod 调度策略、push 触发条件均待代码核验 |
-| 关键权衡 | "BYOA 隐私/订阅保留"vs"cumora 服务器仍是 UI/路由/编排的事实中心"；"agent 协作民主化"vs"企业级责任归属不清"；"per-agent pod 隔离"vs"K8s 运维成本对中小团队是否可接受" | 均为推断；BYOA 模式下高风险操作的责任边界、pod 扩缩容策略、企业版 SKU 是否提供均待官方文档核验 |
-| 最小 PoC | 拉起本地 Postgres+Redis，启用 BYOA 接 Claude Code CLI，3 人 + 2 agent 在同一群聊中跑"产品功能讨论"，观察 seen-cursor freshness gate 是否真能阻止 agent 重复回答同一问题 | PoC 范围与退出路径由"BYOA 优先、人工可观察"原则推导；具体命令、版本兼容、SLO 指标待核验 |
+| 系统边界 | Agent 群聊协议层——把群聊从"人类 ↔ 人类"升级为"人类 ↔ Agent + Agent ↔ Agent"；协议层负责 Agent 身份 / 权限 / 消息路由 | 边界由 trending 描述明示；具体权限模型（RBAC / ABAC）需 README 核验 |
+| 主路径 | 用户消息 → 群聊路由 → 触发 Agent（Claude Code / Codex / Hermes 等）→ Agent 调用工具 / 共享上下文 → 结果返回群聊；多 Agent 可能需要协商（谁响应 / 是否并发） | 主路径为描述语义抽象；多 Agent 协商机制（轮询 / 投票 / 优先级）未在 trending 中可见 |
+| 关键权衡 | Agent 一等公民的权限设计（agent 能看到所有消息吗）vs 隐私；BYO Agent 的兼容广度 vs 每个 Agent 的适配深度（不同 Agent 的 tool calling 协议差异） | 隐私与权限边界由"first-class teammates"暗示；具体兼容矩阵需 README 核验 |
+| 最小 PoC | 在 cumora 创建群聊 → 接入 1 个 Claude Code Agent + 1 个 Codex Agent → 用户提问 → 观察两个 Agent 是否协作 / 竞争 / 重复响应 → 测试 agent 权限隔离 | 安装命令需 README 独立核验；Agent 协商的具体行为需实测 |
 
 ## 架构启发
-cumora 的核心启发是 **"agent 应该被设计成同事，而非功能"**——传统 IDE/CLI 风格让 agent 是"调用后返回结果"的工具；cumora 把 agent 放进团队关系网络（@、回复、私聊、看板），agent 因此获得"上下文随团队演化""身份持久""跨会话记忆"三个特性。它证明：**agent runtime 的下一步不是更强的模型，而是更强的协作协议**——MCP 解决"agent ↔ 工具"，cumora 这类项目解决"agent ↔ 团队"，下一步必然是"agent ↔ 协议"。另一启发：**BYOA 是 agent 进入企业市场的务实入口**——企业不必为每个 agent 单独采购 LLM 订阅，agent 直接复用员工既有账户，绕开了 procurement 的地狱。
+cumora 的核心启发是 **"Agent 应该作为群聊的一等公民"**。当前 Agent 与用户的交互模式是"1-on-1 工具调用"（在 IDE 中），但 2026 年的趋势是"多 Agent + 多人"协作——cumora 把这一哲学落到协议层：Agent 在群聊中有独立身份（不是匿名 bot），有权限（看到特定消息 / 执行特定操作），有上下文（与其他 Agent 共享或隔离）。更深层的启发是：**群聊工具（Slack / Teams / Discord）是天然的 Agent 协作平台**——cumora 不是从零做群聊，而是在群聊协议层增加 Agent 支持，这是更聪明的切入路径。
+
+风险提示：**"Agent 一等公民"是协议概念 vs 工程实现差距**——身份 / 权限 / 可见性的具体设计需要 README 核验；多 Agent 协商机制（谁响应 / 如何避免重复）的设计复杂度高；BYO Agent 兼容矩阵的实际深度需要测试。
 
 ## 架构图（MMD）
 
@@ -56,50 +62,61 @@ cumora 的核心启发是 **"agent 应该被设计成同事，而非功能"**—
 
 ```mermaid
 flowchart LR
-  User[人类用户] --> UI[React UI<br/>Electron / PWA / iOS / Android]
-  UI --> Server[App workers<br/>Express + ws]
-  Server --> DB[(Postgres<br/>Drizzle schema)]
-  Server --> Bus[(Redis<br/>pub/sub + presence)]
-  Server --> CW[Cloudflare Workers<br/>email-gate / r2-gate]
-  CW --> DB
-  Server --> K8s[K8s agent pods<br/>per-agent]
-  Server --> BYOA[BYOA daemons<br/>本地 cumora agent computer]
-  BYOA --> CLI[本地 CLI<br/>Claude Code / Codex / Grok Build / Cursor Agent 待核验]
-  K8s --> CLI2[OpenAI Responses API<br/>bash / files / browser / email / skills]
-  Server --> APNsFCM[APNs / FCM<br/>push 通知]
-  K8s -. llm_calls 账本 .-> DB
-  BYOA -. llm_calls 账本 .-> DB
-  Server -. 三层仲裁 .-> Coord[seen-cursor gate<br/>atomic claims<br/>small-brain triage]
-  Coord --> Server
+  User1[用户 A] --> Chat[cumora 群聊]
+  User2[用户 B] --> Chat
+  Chat --> Router[消息路由层]
+  Router --> Agent1[Claude Code Agent]
+  Router --> Agent2[Codex Agent]
+  Router --> Agent3[Hermes Agent]
+  Router --> Agent4[OpenClaw Agent]
+  Agent1 --> Tools1[工具调用<br/>tool calling 协议]
+  Agent2 --> Tools2[工具调用]
+  Agent3 --> Tools3[工具调用]
+  Agent4 --> Tools4[工具调用]
+  Router --> Perm[权限层<br/>Agent 可见消息<br/>可执行操作]
+  Perm --> Agent1
+  Perm --> Agent2
+  Perm --> Agent3
+  Perm --> Agent4
+  Chat --> Context[共享上下文<br/>Agent 间协作或隔离 待核验]
+  Context --> Agent1
+  Context --> Agent2
+  Agent1 -.响应.-> Chat
+  Agent2 -.响应.-> Chat
+  Agent3 -.响应.-> Chat
+  Agent4 -.响应.-> Chat
+  Chat -.消息流.-> User1
+  Chat -.消息流.-> User2
 ```
 
 ## 定位判断
-**平台候选型项目（agent-as-coworker 赛道的开源头号样本）。** cumora 不是另一个 IDE 插件或 CLI 工具，而是一个**完整的团队协作产品**——把 Slack / Linear / Notion 的核心场景搬到了"agent 与人共存"的世界。若成功，它会成为 agent 进入企业团队的"事实标准入口"；5 天近 3k⭐已显示早期势头。但"平台化"取决于三个未知数：① BYOA 模式的实际兼容性边界；② 企业级治理与责任归属是否补齐；③ 跨厂商 CLI 同步维护成本是否可控。
+**平台候选型项目（Agent 群聊协议）。** yetone/cumora 不仅是群聊工具，更试图成为"Agent 时代的 Slack"——把群聊从"人类团队"扩展为"人类 + Agent 混合团队"。21 天 3,491⭐ + yetone 个人品牌 + fork/star 12.6% 已显示初步采用。但"平台化"取决于：(a) 多 Agent 协商机制的可用性；(b) Agent 权限隔离的安全性；(c) 与 Slack / Teams 的差异化。当前定位是"Agent 群聊协议头部样本"，向平台演进是合理路径。
 
-## 风险 / 局限 / 泡沫点
-- **BYOA 的责任真空：** cumora 服务器承载 UI/路由/编排，但 agent 大脑在用户本地 CLI。如果 agent 在 cumora 上下文内执行高风险操作（转账、发邮件、签合同），cumora 与本地 CLI 各自的责任边界不明
-- **K8s 运维门槛：** cloud agent 跑在 K8s 上，对中小团队"自托管"的门槛高于普通 SaaS；BYOA 模式可绕过但需本地 CLI 全天候运行
-- **agent 间的"无人值守"风险：** 多 agent 在同一群聊互相对话时，可能进入"自说自话"循环，需 COORDINATION.md 协议实际验证
-- **厂商 CLI 同步维护成本：** Claude Code / Codex / Grok Build / Cursor Agent 任一升级都可能破裂 BYOA 兼容性
-- **yetone 个人项目属性：** 关键决策集中于单个 maintainer，长期可持续性需观察
-- **早期"品牌 star"：** yetone 个人品牌带来部分早期 star，长期真实需求强度需以 3-6 个月增速再判断
+## 风险/局限/泡沫点
+- **多 Agent 协商复杂度:** 谁响应 / 如何避免重复 / 并发 / 优先级——设计复杂度高
+- **Agent 权限隔离的安全性:** 不同 Agent 的可见消息 / 可执行操作的边界设计是关键安全边界
+- **yetone 个人项目:** 与 avante.nvim 一样，cumora 是个人项目，长期可持续性 / 治理结构未验证
+- **与成熟群聊工具竞争:** Slack / Teams / Discord 等已有大量用户基础，cumora 需要"Agent 一等公民"差异化足够强
+- **BYO Agent 兼容广度 vs 深度:** 多个 Agent 的 tool calling 协议差异大，浅兼容易但深兼容难
+- **"first-class teammates" 营销话术:** 实际权限 / 身份 / 可见性的工程实现深度需 README 核验
 
 ## 与同类项目的关系
-- **vs Slack / Teams / Discord：** 人类为本；cumora agent 是 first-class
-- **vs LangChain / AutoGen（多 agent 框架）：** 那些是 SDK；cumora 是完整产品
-- **vs CopilotKit/OpenBot：** 都属"agent 团队化"赛道——cumora 走"团队聊天为先"，OpenBot 走"独立计算机 + AG-UI 治理"
-- **vs ChatGPT / Claude 客户端：** 闭源、单厂商；cumora 开源、BYOA
-- **vs Hermes Agent / ECC：** 那些是 harness 优化层；cumora 是 harness 之上的协作层
+- **vs Slack / Teams / Discord:** 成熟群聊工具，但无 Agent 一等公民支持
+- **vs CopilotKit/OpenBot:** OpenBot 是单 Agent 独立电脑平台；cumora 是多 Agent 群聊协议——互补
+- **vs Traycerai/traycer:** traycer 是"Nerve Center for Agentic Coding"；cumora 是群聊协议层
+- **vs LangChain / AutoGen:** LangChain / AutoGen 是 Agent 编排框架；cumora 是群聊协议层
+- **vs Discord Bot:** Discord Bot 是"@bot"式工具调用；cumora 是"first-class teammate"式一等公民
 
 ## 是否值得持续跟踪
-**值得持续跟踪（agent-as-coworker 赛道的开源头号样本）。** 5 天 2.9k⭐的增速说明赛道真实且强烈。建议关注：① BYOA 覆盖 CLI 清单的扩张速度；② 企业版 SKU 是否出现（验证商业化路径）；③ docs/COORDINATION.md 协议的实战稳定性；④ 团队规模与维护者结构变化（去单点风险）。对中小团队 / 独立开发者，cumora 可作为"agent 协作工具箱"直接试用；对企业架构师，它是"agent runtime"竞品对位的关键参考。
+**值得跟踪（Agent 群聊协议）。** cumora 代表了 Agent 协作从"1-on-1 工具调用"升级到"多 Agent + 多人群聊"的诉求，与 yetone 个人品牌共同构成社区基础。建议关注：(a) 多 Agent 协商机制的实际可用性；(b) Agent 权限隔离的安全性；(c) BYO Agent 兼容矩阵的深度；(d) 与 Slack / Teams 等成熟群聊工具的差异化。对多 Agent 应用开发者，cumora 是构建"Agent 协作平台"的开源参考。
 
 ## 后续观察点
-- BYOA 覆盖的 CLI 清单（Claude Code / Codex / Grok Build / Cursor Agent 是否完整对接、token 计费是否兼容、tool calling 映射是否准确）
-- 企业版 SKU 与定价模型（验证"开源 + 商业"双轨是否成型）
-- COORDINATION 协议在多 agent 实战中的稳定性（特别是 seen-cursor freshness gate 的"staleness 阈值"如何调优）
-- 多 agent 冲突解决的边界（是否会出现"agent 自循环对话"等新型问题）
-- 是否被主流协作平台（Slack / Teams / Notion）收购或对标
+- 是否演化为独立 SaaS（cumora Cloud）
+- 多 Agent 协商机制的产品化（投票 / 轮询 / 优先级）
+- Agent 权限隔离的安全审计
+- BYO Agent 兼容矩阵扩展（增加 OpenAI Operator / Anthropic Computer Use 等）
+- 与 Slack / Teams 的桥接（消息同步 / 双向桥接）
+- yetone 个人项目的可持续性 / 治理结构
 
 ---
-> 数据来源: GitHub API (2026-08-23) | Stars: 2,899 | Forks: 350 | License: MIT | 语言: TypeScript | 创建: 2026-08-17 | 推送到 main: 2026-08-22
+> 数据来源: GitHub API (2026-09-07) | Stars: 3,491 | Forks: 438 | License: 待核验 | 语言: TypeScript | 创建: 2026-08-17

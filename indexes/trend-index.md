@@ -1,9 +1,41 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-09-03'
+last_updated: '2026-09-07'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+## 2026-09-07
+
+### CopilotKit/OpenBot（4,367 stars）· yetone/cumora（3,491 stars）· sapientinc/PRAXIST（6,467 stars）· lnkiai/m3e-canvas（4,251 stars）· Nanako0129/sepia（2,324 stars）· crmne/fastpotify（3,357 stars）· ashemag/human-atlas（1,288 stars）· vinzdg/codenotch（667 stars）· okf-memory/okf-agent-memory（340 stars）· XiaoDuoYa/codex-with-chatgpt（2,551 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自 2026-09-07 GitHub Trending 页面快照（daily + python + typescript + rust）+ GitHub Search API 公开元数据（created/pushed_at/stargazers_count/forks_count/language/description/topics）；趋势归纳基于这些公开元数据，不将热度等同于价值。"21 天 0→4,367⭐" 等速率基于创建日→2026-09-07 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。Skill 类项目（sepia）单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | agent-coworker-platform / "AI coworker / agent-as-coworker" 概念正式破圈（CopilotKit/OpenBot 21 天 4,367⭐ + yetone/cumora 21 天 3,491⭐ 同时上榜，是 GitHub 首次"workspace coworker 层"集中爆发） | CopilotKit/OpenBot | 95 |
+| 2 | executable-research-agent / 可执行科研 Agent 赛道成型（sapientinc/PRAXIST 11 天 6,467⭐ 今日非 Skill 类第一，"measurable, computer-executable research" 与 OpenAI Deep Research 形成开源本地差异化） | sapientinc/PRAXIST | 90 |
+| 3 | design-system-vibe-coding / 视觉设计↔vibe-coding 链路双向工具化（lnkiai/m3e-canvas 5 天 4,251⭐ "用户画稿→vibe-coding prompt"前向 + 9-06 cathrynlavery/diagram-design 反向 + goldie 1856⭐ "AI→营销素材"） | lnkiai/m3e-canvas | 86 |
+| 4 | skill-ecosystem-deai-tools / Agent Skill 内容生态向"去 AI 化"纵深扩散（Nanako0129/sepia 10 天 2,324⭐ 77+ Agent 兼容 Skill CLI + 9-06 blader/humanizer） | Nanako0129/sepia | 84 |
+| 5 | native-rust-spotify-client / Rust 原生客户端复兴（crmne/fastpotify 11 天 3,357⭐ Spotify Connect + tobi/walgit 2443⭐ + MetaMask-AI/metamask-desktop 1230⭐） | crmne/fastpotify | 78 |
+| 6 | 3d-anatomy-education / 开源三维解剖 Atlas（ashemag/human-atlas 2 天 1,288⭐ / fork 26.8% 极高，BodyParts3D + Three.js） | ashemag/human-atlas | 76 |
+| 7 | coding-agent-usage-monitor / Coding Agent 用量监控成为新刚需（vinzdg/codenotch 2 天 667⭐ macOS native 边缘固定 + 9-04 damejan80/tokentab CLI） | vinzdg/codenotch | 72 |
+| 8 | git-native-agent-memory / Git-native Agent 记忆层（okf-memory/okf-agent-memory 2 天 340⭐ Google OKF v0.2 + BM25 + MCP） | okf-memory/okf-agent-memory | 70 |
+| 9 | harness-bridge-chatgpt-codex / ChatGPT↔Codex 桥接工具持续（XiaoDuoYa/codex-with-chatgpt 10 天 2,551⭐ OpenAI 双产品协同的用户自研胶水） | XiaoDuoYa/codex-with-chatgpt | 68 |
+| 10 | dlss5-amd-bypass / DLSS 5 AMD 兼容持续扩散（danielblnc/DLSS-NR-on-AMD 754⭐ + 9-06 rakanki911/DLSS5-Swapper 2273⭐ + 9-06 jlrouzies-fr/DLSS5-Feeder 800⭐） | danielblnc/DLSS-NR-on-AMD | 64 |
+
+#### 当日重点项目
+
+- 🤖 CopilotKit/OpenBot (21 天 4,367⭐) — CopilotKit 官方 AI coworker 平台（TypeScript，fork 539 / fork/star 12.3%），Score 92
+- 💬 yetone/cumora (21 天 3,491⭐) — yetone 出品 Agent 一等公民群聊（TypeScript，fork 438 / fork/star 12.6%），Score 88
+- 🔬 sapientinc/PRAXIST (11 天 6,467⭐) — 可执行科研 Agent（Python，fork 558 / fork/star 8.6%），Score 90
+- 🎨 lnkiai/m3e-canvas (5 天 4,251⭐) — Material 3 vibe-coding prompt 生成器（TypeScript，fork 363 / fork/star 8.5%），Score 84
+- 🖋️ Nanako0129/sepia (10 天 2,324⭐) — 77+ Agent 兼容的 deAI Skill CLI（Python，fork 141 / fork/star 6.1%），Score 82
+- 🎵 crmne/fastpotify (11 天 3,357⭐) — Spotify Connect 原生 Rust 客户端（Rust，fork 146 / fork/star 4.4%），Score 78
+- 🫀 ashemag/human-atlas (2 天 1,288⭐) — 三维解剖 Atlas（TypeScript，fork 345 / fork/star 26.8%），Score 76
+- 📌 vinzdg/codenotch (2 天 667⭐) — Coding Agent 用量 Monitor（Swift，fork 87 / fork/star 13.0%），Score 72
+- 🧠 okf-memory/okf-agent-memory (2 天 340⭐) — Git-native Agent 记忆层（Go，fork 15 / fork/star 4.4%），Score 70
+- 🔌 XiaoDuoYa/codex-with-chatgpt (10 天 2,551⭐) — ChatGPT↔Codex 桥接（TypeScript，fork 278 / fork/star 10.9%），Score 68
+
 ## 2026-09-06
 
 ### mattpocock/skills（+2,666 stars/day）· DietrichGebert/ponytail（+2,813 stars/day）· affaan-m/ECC（+1,325 stars/day）· blader/humanizer（+988 stars/day）· cathrynlavery/diagram-design（+852 stars/day）· sgl-project/sglang（+862 stars/day）· magnitudedev/magnitude（+686 stars/day）· NousResearch/hermes-agent（+573 stars/day）· anthropics/skills（+472 stars/day）· humanlayer/skills（+408 stars/day）

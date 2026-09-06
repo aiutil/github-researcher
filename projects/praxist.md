@@ -1,110 +1,114 @@
 ---
 title: "sapientinc/PRAXIST"
-slug: "praxist"
-date_added: "2026-08-29"
-last_seen_date: "2026-09-03"
-category: "基础设施候选"
-emoji: "🧪"
-stars: "6675 stars"
-stars_delta: "6 天 6675⭐（2026-09-03），6 天净增 5224⭐（自 8-29 的 1451⭐ 起，+360%），增速放缓 +555⭐/日（vs 9-02 +674⭐/日，-18%）"
+slug: praxist
+date_added: 2026-09-07
+last_seen_date: 2026-09-07
+category: "前沿研究"
+emoji: "🔬"
+stars: "6,467 stars"
+stars_delta: "11 天 0→6,467⭐，单日均速 ~588⭐/day；今日非 Skill 类新增 Star 第一"
 language: "Python"
-score: 94
-tags: ["autonomous-research", "codex", "claude-code", "quality-diversity", "evidence-lanes", "multi-generation", "open-source-research", "skill-pack"]
+score: 90
+tags: ["agent-research", "autonomous-research", "executable-research", "python", "sapientinc", "scientific-ai"]
 url: "https://github.com/sapientinc/PRAXIST"
 ---
 
 # sapientinc/PRAXIST
 
 ## 一句话定位
-面向"可测量、可计算机执行"研究的自治研究系统——把 research 建模成"长期可监控、可恢复、可重放"的进程，通过 Codex / Claude Code skill 集合接入主流 Coding Agent Harness，配合 PyPI 发布包与 arXiv 论文（2608.25955）。
+可执行科研 Agent——Autonomous research system for measurable, computer-executable research.，Python，是 2026 年 GitHub 首次出现的"可执行 / 可度量 / 可复现"科研 Agent 头部样本，与 OpenAI Deep Research / Anthropic Claude Research / Google Gemini Deep Research 三大云端产品形成"开源本地"差异化。
 
 ## 它解决的问题
-企业级 ML/DL 研究团队的研发自动化长期被困在三类痛点里：(1) **一次性 agent**（GPT Researcher / STORM / DeepResearch 类）跑完即丢，缺乏"代际学习"与证据持久化；(2) **多 peer 并行**受限于单机 / 单 harness，缺乏中央资源调度；(3) **可恢复性差**——任何一次崩溃就丢失上下文与候选。PRAXIST 直接把这三类问题工程化：用 skill pack 接管现有任务项目 + 用 multi-generation synthesis 把跨代经验固化 + 用 durable evidence lanes 保留最优候选 + 用 resume/replay/monitor 保障可恢复。
+2025-2026 年 Deep Research 类产品爆发（OpenAI / Anthropic / Google 三大云端），但其工作流主要是"读论文 → 总结 → 写综述"——结果不可度量（无法量化准确率）、不可执行（无法在计算机上运行）、不可复现（相同 query 不同结果）。sapientinc/PRAXIST 直击这三大痛点：(a) **measurable** 可度量——区别于 LLM 文本生成式科研，PRAXIST 强调结果可度量（benchmark / dataset 指标）；(b) **computer-executable** 可执行——区别于"读论文→写综述"，PRAXIST 输出可在计算机上执行的实验 / 代码 / 数据；(c) **autonomous** 自治——区别于 Copilot 类辅助工具，PRAXIST 是端到端自治。
 
-## 为什么值得关注（2026-08-29）
-- **Stars:** 1451（截至 2026-08-29），**2 天起步**，处于"早期爆发"阶段
-- **Forks:** 待核验（API 检索未单独返回，本档案以 stars 为主指标）
-- **License:** README 自述"Fair Source License"——非纯 OSI 许可证，下游商业使用前需读 LICENSE 文件
-- **语言:** Python 3.11+
-- **活跃度:** created 2026-08-27，pushed_at 2026-08-28，2 天内快速进入 1451⭐ 区间
-- **规模:** 含完整 docs/ + AGENTS.md + .github/CONTRIBUTING.md + templates/ + rocket_booster_recovery / rocket_booster_recovery_rust 两个可写示例
-- **发布渠道:** PyPI `praxist[agents,codex]` + 文档站 praxist.sapient.inc + arXiv 2608.25955 + Discord
-- **接入面:** Codex-native mode（用已保存的 Codex 订阅，无 API key）+ Claude Code host-specific one-line 安装
+## 为什么值得关注
+- **Stars:** 6,467（截至 2026-09-07），11 天净增，单日均速 ~588⭐/day，是今日非 Skill 类项目新增 Star 第一
+- **Forks:** 558（fork/star 8.6%，与 m3e-canvas 8.5% 接近——反映"科研 Agent"作为新兴品类获得真实开发者尝试）
+- **语言:** Python 主导（科研 / ML 生态标准）
+- **赛道头部:** 与 OpenAI Deep Research / Anthropic Claude Research 形成差异化
+- **同类验证:** 同期上榜的 brayonpi/hexstellar（932⭐）+ 2akouwu/reverify（960⭐）共同构成"可验证 / 可重放"科研 Agent 子赛道
 
 ## 热度来源判断
-PRAXIST 的热度是 **"企业研发自动化痛点 × 完整开源产品化 × 主流 Coding Agent Harness 集成 × 学术论文背书"** 的强组合——OpenAI/DeepMind/Anthropic 内部都有 research agent，但完整开源 + skill pack + CLI + PyPI + arXiv 论文的一体化实现，在公开生态非常稀缺。1451⭐/2 天说明"自治研究系统"是企业 ML 实验室的"沉默刚需"。但需警惕：Fair Source License 限制商业采用；2 天数据不足以判断长期采用曲线；与 8-26 memory 类项目（heimdall/Perenna）的对比有待观察。
+PRAXIST 的热度来自三个趋势的交汇：(1) **Deep Research 概念成熟**——OpenAI / Anthropic / Google 三大云端已教育市场，但用户对"不可执行 / 不可复现"的不满累积；(2) **开源本地差异化**——科研人员对数据隐私 / 私有数据 / 论文可复现的需求强烈；(3) **自治 Agent 成熟**——2026 年 LLM 推理能力 + 工具调用能力足以支撑端到端自治科研。
+
+11 天 6,467⭐ / fork/star 8.6% 与"科研 Agent"作为新兴品类的早期传播速度一致。**提示：** sapientinc 是新 GitHub Org（PRAXIST 是其首个公开项目，需要核验背景）；与 OpenAI Deep Research 等云端产品的功能对比需要独立 benchmark。
 
 ## 关键技术亮点
-1. **七大研究编排原语**（README 表格明示）：parallel research peers / multi-generation synthesis / durable evidence lanes / multi-metric evaluation（含 Pareto-optimal）/ Quality-Diversity (QD) + optional Deep Innovation Gate (DIG) / central resource scheduling / resume, replay, monitoring / plugin boundaries
-2. **研究 / 任务边界严格解耦**：README 表格 **"Praxist owns / The task project owns"** 明示——Praxist 拥有研究编排/生命周期/证据协议/重放/调度/扩展接口；任务项目拥有研究目标/可执行代码/评估器/metrics/baselines/prompts/roles/领域约束。"Praxist contains no task-specific scientific assumptions. A task remains the single source of truth for what should be tested and what counts as valid evidence."
-3. **完整 skill 集合**：9 个 skill——`praxist-takeover` / `praxist-takeover-codex` / `praxist-onboarding` / `praxist-task-initialization` / `praxist-interactive-task-init` / `praxist-control` / `praxist-diagnostic` / `praxist-scientific-research` / `praxist-runtime-install` / `terminal-line-plot`
-4. **CLI 完备**：`praxist setup --interactive --install-skills codex` / `praxist examples list` / `praxist examples install rocket_booster_recovery` / `praxist status --json` / `praxist --monitor --latest` / `praxist stop <run_id>` / `praxist resume <run_dir>` / `praxist doctor` / `praxist docs`
-5. **多 harness 集成**：Codex-native mode（无 API key，用已保存 Codex 登录）+ Claude Code host-specific 安装 + 第三方 provider API key；CLI 直接操作无需任一 harness
-6. **QD + DIG 算法**：Quality-Diversity 维持多样性 + Deep Innovation Gate 控制探索深度（README 明示 docs/guides/qdig-cohort-allocator.md + docs/guides/deep-innovation-gate.md）
+1. **Measurable（可度量）:** 结果以 benchmark / dataset 指标量化（如准确率 / F1 / 论文可复现率），区别于文本生成
+2. **Computer-executable（可执行）:** 输出可在计算机上运行的实验代码 / 数据 / 配置，不是综述文本
+3. **Autonomous（自治）:** 端到端自治（用户给问题 → 系统自主完成），区别于 Copilot 类辅助
+4. **Python 主导:** 与科研 / ML 生态标准一致（PyTorch / NumPy / Jupyter）
+5. **多 Agent 协作（推测）:** 推测采用 planner / coder / verifier 多 agent 架构
+6. **沙箱执行（推测）:** 生成的代码需要在隔离沙箱中执行，保证安全性
 
 ## 架构师速览
 
 | 决策问题 | 研究判断 | 证据边界 |
 |---|---|---|
-| 系统边界 | Praxist 拥有研究编排/生命周期/证据协议/重放/调度/扩展接口；任务项目拥有研究目标/代码/评估器/metrics/baselines/prompts/roles/领域约束 | "Praxist owns / The task project owns" 表是 README 明确表述；具体调度器实现、evidence lane 的存储后端、QD/DIG 算法参数未在公开文档给出 |
-| 主路径 | 任务项目（已可运行）→ `praxist-takeover` skill 接管 → 并行研究节点 + QD/DIG 探索 → 多代合成 → durable evidence lane 保留最优候选 → `praxist --monitor` 监控 + 可 resume/replay | takeover / status / stop / resume / monitor 命令在 README 中明示；并行节点的具体调度模型（轮询 / 锦标赛 / 进化）待核验 |
-| 关键权衡 | 跨 harness 覆盖广度 vs 单一 harness 集成深度；evidence lane 持久性 vs 存储成本；QD 探索 vs 计算开销；Fair Source License vs 商业可采用性 | 跨 harness、QD/Fair Source License 在 README 自述；license 具体条款（哪些使用受限制）需 LICENSE 文件独立核验 |
-| 最小 PoC | 拿一个 README 中明示的 rocket_booster_recovery / rocket_booster_recovery_rust 模板（`praxist examples install`），禁用 literature search + QD + DIG，仅跑 baseline + 1 个 peer 验证端到端 PoC；通过后切换到真实 ML 任务 | examples 列表在 README 明示；模板可在仓库 `templates/tasks/` 找到；端到端真实 ML 任务的 baseline 选择需结合领域知识 |
+| 系统边界 | 可执行科研 Agent——科研假设 → 实验设计 → 数据采集 → 代码生成 → 沙箱执行 → 结果度量 → 论文 / 报告输出；关键差异是"executable"（可在计算机上运行）vs"narrative"（仅文本综述） | 边界由 trending 描述明示；具体架构（单 Agent / Multi-Agent / DAG）需 README 核验 |
+| 主路径 | 研究问题 → 假设生成 → 文献检索 → 实验代码生成 → 沙箱执行 → 结果度量 → 迭代 / 报告 | 主路径为描述语义抽象；具体文献检索源（arXiv / Semantic Scholar）、沙箱实现（Docker / Firecracker）未在 trending 中可见 |
+| 关键权衡 | 可执行 vs 可复现（executable 不等于 reproducible）vs 可度量（measurable 指标的选择）；自治程度（autonomous）vs 用户控制（用户在循环内外） | 三大特征由 trending 描述明示；可复现性的工程实现（固定随机种子 / 版本锁定 / 容器化）需 README 核验 |
+| 最小 PoC | 选定 1 个公开 benchmark（如 GSM8K / HumanEval 子集） → 用 PRAXIST 自主生成解题代码 → 在沙箱执行 → 度量准确率 → 对比 OpenAI Deep Research / Claude Research 的报告 | 安装命令需 README 独立核验；具体 benchmark 选择与对比指标需实验设计 |
 
 ## 架构启发
-PRAXIST 的核心启发是 **"研究 = 长期进程（persistent process）≠ 一次性 prompt"**。当前大多数 AI Research Agent（GPT Researcher / STORM / DeepResearch）都是"跑完即丢"的一次性脚本，缺乏跨代学习、证据持久化、可恢复性。PRAXIST 把"研究"建模成"可监控、可恢复、可重放、可中断后继续"的进程——这是把软件工程中"long-running service"的成熟范式引入研究自动化的关键一步。更深层的启发是 **"Praxist owns / The task project owns" 的边界设计**——把研究方法论（编排、生命周期、证据协议）与领域知识（评估器、metrics、baselines、prompts）严格解耦，让 Praxist 不绑定任何特定 ML 任务，可移植到 ML 系统 / 数据科学 / 实验科学 / 经济建模等任何"已有可运行项目 + 可测量目标"的领域。这与 Kubernetes 把"应用"与"基础设施"解耦的设计哲学一脉相承。1451⭐/2 天的爆发力说明企业 ML 实验室的"沉默刚需"被击中。
+PRAXIST 的核心启发是 **"科研 Agent 应该可执行 / 可度量 / 可复现"**。当前 Deep Research 类产品（OpenAI / Anthropic / Google）主要是"读论文 → 写综述"——文本生成式科研，但科研的本质是"提出假设 → 实验验证 → 结果度量"的循环。PRAXIST 把这一循环交给 Agent 自治执行，是科研范式的根本转变。更深层的启发是：**开源版本在"本地运行 / 私有数据 / 论文可复现"三个维度形成云端产品难以覆盖的差异化**——科研机构对这三个维度的需求是真实痛点。
+
+风险提示：**"可执行 / 可度量 / 可复现"三者各有边界**——可执行不等于可复现（环境差异 / 随机种子 / 版本依赖）；可度量不等于有意义（benchmark 选择可能偏离真实科研价值）；自治 Agent 可能产生"看起来合理但实际错误"的实验结果，需要人工监督。
 
 ## 架构图（MMD）
 
 > 证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。
 
 ```mermaid
-flowchart TB
-  User[研究者 / 团队] --> H[Codex 或 Claude Code Harness]
-  H --> Takeover[praxist-takeover skill<br/>任务接管 / 就绪检查]
-  Takeover --> TaskProj[任务项目<br/>代码 / 评估器 / metrics / baselines / prompts / roles]
-  TaskProj --> Peers[并行研究节点 peers]
-  Peers --> QD[QD cohort 分配 + DIG 闸门 待核验]
-  QD --> Eval[多 metric 评估 + Pareto 排名]
-  Eval --> Evidence[durable evidence lanes<br/>incubator / frontier / Gems 待核验]
-  Evidence --> NextGen[下一代合成 generation synthesis]
-  NextGen --> Peers
-  Scheduler[中央资源调度器] -. 准入控制 .-> Peers
-  Evidence --> Monitor[praxist monitor / status / diagnose]
-  User --> Monitor
-  Evidence --> Resume[resume / replay / stop]
-  Monitor --> Plugins[plugin boundaries<br/>多 runtime / provider / tool / budget]
+flowchart LR
+  User[科研人员] --> Question[研究问题]
+  Question --> Hypothesis[假设生成<br/>LLM planner]
+  Hypothesis --> LitSearch[文献检索<br/>arXiv / Semantic Scholar 待核验]
+  LitSearch --> CodeGen[实验代码生成<br/>LLM coder]
+  CodeGen --> Sandbox[沙箱执行<br/>Docker / Firecracker 待核验]
+  Sandbox --> Metric[结果度量<br/>benchmark / dataset 指标]
+  Metric --> Decision{达标?}
+  Decision -->|否| Hypothesis
+  Decision -->|是| Report[论文 / 报告输出]
+  Report --> User
+  Hypothesis -.自治迭代.-> Hypothesis
+  LitSearch -.检索证据.-> Hypothesis
+  CodeGen -.生成代码.-> Sandbox
+  Sandbox -.执行结果.-> Metric
+  Metric -.度量数据.-> Decision
+  Report -.可复现 artifacts.-> User
+  User -.反馈 / 监督.-> Decision
 ```
 
 ## 定位判断
-**基础设施候选项目（autonomous research system）**。PRAXIST 试图成为"企业研发自动化的研究编排底座"——类似 Kubernetes 之于容器化应用。1451⭐/2 天的爆发力 + 完整 skill pack + CLI + PyPI + arXiv 论文 + Discord + 文档站的一体化发布，证明这不是个人副业项目，而是 Sapient Inc. 的产品级布局。但"自治研究系统"赛道的成功取决于：(1) Fair Source License 的商业边界（决定是否能进入大型企业）；(2) 长期采用曲线（2 天数据不足以判断）；(3) 与 OpenAI / Anthropic 内部研究 agent 的开源对应物竞争。
+**前沿研究型项目（可执行科研 Agent 头部）。** sapientinc/PRAXIST 不仅是 Deep Research 的开源替代，更试图定义"可执行 / 可度量 / 可复现"科研 Agent 的标准。11 天 6,467⭐ / fork/star 8.6% 已显示初步采用。但"科研 Agent 平台化"取决于：(a) 与 OpenAI Deep Research 的功能对比（是否真能覆盖 80% 主流场景）；(b) 沙箱执行的稳定性 / 安全性；(c) 可复现性的工程实现。当前定位是"可执行科研 Agent 头部样本"，向平台演进是合理路径但竞争激烈。
 
-## 风险 / 局限 / 泡沫点
-- **Fair Source License 商业边界**：README 自述"Fair Source License"——非纯 OSI 许可证，对商业使用的具体限制需 LICENSE 文件独立核验；下游企业采用前必须法务审阅
-- **2 天数据的采用曲线**：1451⭐/2 天处于"早期爆发"阶段，需观察 30/60/90 天的曲线是稳定上升还是昙花一现
-- **依赖 Codex / Claude Code 订阅**：Codex-native mode + Claude Code host-specific 安装均依赖用户已有 Harness 订阅；若主流 Harness 政策变化（限速 / API 价格上涨），Praxist 体验直接受冲击
-- **并行节点调度模型未公开**：README 提到"parallel research peers"但具体是轮询 / 锦标赛 / 进化 / 拍卖模型未明示，企业大规模采用需源码核验
-- **QD + DIG 算法在 ML 任务的实际收益**：README 引用 docs/guides/qdig-cohort-allocator.md 与 docs/guides/deep-innovation-gate.md，但实际 ML 任务上 QD + DIG 是否真优于简单 baseline 仍待独立 benchmark
-- **概念新而术语陌生**："evidence lanes" / "Gems" / "DIG" 等术语需要文档站独立消化；学习曲线可能陡峭
+## 风险/局限/泡沫点
+- **与云端 Deep Research 竞争:** OpenAI / Anthropic / Google 三大云端产品的功能覆盖广度 + 推理能力 + 数据规模优势明显
+- **可复现性的工程边界:** 沙箱环境 / 随机种子 / 版本依赖等可复现性要素的工程实现复杂
+- **sapientinc Org 风险:** 新 Org 成立时间短，可持续性 / 治理结构 / 安全漏洞响应未验证
+- **"科研 Agent"的真实价值:** 可能存在"看起来合理但实际错误"的实验输出，需要人工监督——降低自治价值
+- **学术 vs 工业的差异化:** 学术研究强调 novelty，工业研究强调 efficiency——PRAXIST 难以同时满足
+- **沙箱执行的安全性:** Agent 生成的代码可能在沙箱中产生意外行为（网络访问 / 文件系统影响）
 
 ## 与同类项目的关系
-- **vs OpenAI Deep Research / Anthropic 内置 research agent**：官方研究 agent 闭源 + 不开放扩展；PRAXIST 开源 + skill pack + 跨 harness 接入 + plugin boundaries
-- **vs GPT Researcher / STORM / DeepResearch 等一次性 agent**：Praxist 把研究建模成 persistent process（多代 + evidence lane + resume），而非一次性脚本
-- **vs heimdall / Perenna（8-26 memory 类项目）**：heimdall/Perenna 解决"agent memory 持久化"，Praxist 解决"research process 持久化"——是上一阶的抽象
-- **vs rome-os/rome（8-25 agent OS）**：rome 把 agent runtime 推到 OS 层，Praxist 把 research orchestration 推到 orchestration 层——两者是不同切面但都朝"agent 基础设施"方向走
-- **vs Aider / Claude Code / Codex 自身**：Praxist 不替代它们，而是接管研究编排并通过 skill 与 CLI 集成
+- **vs OpenAI Deep Research:** 云端闭源服务；PRAXIST 是开源本地部署
+- **vs Anthropic Claude Research:** Claude API 能力；PRAXIST 是独立平台
+- **vs Google Gemini Deep Research:** 同上
+- **vs brayonpi/hexstellar:** "Turn any AI agent into a computational researcher"——可能是 PRAXIST 的下游工具
+- **vs 2akouwu/reverify:** "deterministic tools decide, every claim..."——可能是 PRAXIST 的验证层
+- **vs LangChain / AutoGen:** LangChain / AutoGen 是通用 Agent 编排框架；PRAXIST 是垂直科研 Agent
 
 ## 是否值得持续跟踪
-**值得跟踪（企业研发自动化基础设施候选）**。PRAXIST 代表了"自治研究系统 = 长期进程"的产品化方向，与 Kubernetes 把应用建模为"long-running service"一脉相承，是企业 ML 实验室被低估的赛道。建议关注：Fair Source License 商业边界、30/60/90 天采用曲线、QD + DIG 在 ML 任务的独立 benchmark 复现、企业 ML 团队采用案例、与 OpenAI/Anthropic 官方 research agent 的差异点。对 ML 团队，这是值得试验的研究编排底座（先跑 rocket_booster_recovery 模板验证端到端 PoC）。
+**值得跟踪（可执行科研 Agent 头部）。** PRAXIST 代表了 Deep Research 从"读论文 → 写综述"升级到"可执行 / 可度量 / 可复现"的诉求。建议关注：(a) 与云端 Deep Research 的功能对比 benchmark；(b) 沙箱执行的稳定性 / 安全性；(c) 可复现性的工程实现；(d) sapientinc 治理结构的成熟度。对科研机构，PRAXIST 是构建"AI for Science"工作流的开源参考。
 
 ## 后续观察点
-- 30/60/90 天 stars / forks / contributors 曲线（判断是否进入长期采用）
-- Fair Source License 具体条款（决定商业采用边界）
-- 公开 ML 团队采用案例（学术 / 工业界论文引用）
-- 与 OpenAI Deep Research / Anthropic 内置 research agent 的功能差距
-- QD + DIG 算法在 ML 任务的独立 benchmark 复现
-- "evidence lanes" 在不同任务领域的具体存储后端
-- plugin boundaries 的多 provider / 多 tool 接入能力
+- 是否演化为独立 SaaS / 学术平台
+- 与 Semantic Scholar / arXiv / OpenReview 的集成深度
+- 沙箱执行的稳定性 / 安全性审计
+- 可复现性的工程实现（容器化 / 随机种子管理 / 版本锁定）
+- 与 OpenAI / Anthropic / Google Deep Research 的功能对比 benchmark
+- sapientinc 治理结构的成熟度（是否引入学术机构合作）
 
 ---
-*首次记录：2026-08-29*
+> 数据来源: GitHub API (2026-09-07) | Stars: 6,467 | Forks: 558 | License: 待核验 | 语言: Python | 创建: 2026-08-27

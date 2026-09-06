@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-09-07
+**核心主题：** CopilotKit/OpenBot 21 天 4,367⭐ · yetone/cumora 21 天 3,491⭐ · sapientinc/PRAXIST 11 天 6,467⭐ · lnkiai/m3e-canvas 5 天 4,251⭐ · Nanako0129/sepia 10 天 2,324⭐ · crmne/fastpotify 11 天 3,357⭐ · ashemag/human-atlas 2 天 1,288⭐ · vinzdg/codenotch 2 天 667⭐ · okf-memory/okf-agent-memory 2 天 340⭐ · XiaoDuoYa/codex-with-chatgpt 10 天 2,551⭐
+
+**证据边界：** 星标、总星数与增速取自 2026-09-07 GitHub Trending 页面快照（daily + python + typescript + rust）+ GitHub Search API 公开元数据（created/pushed_at/stargazers_count/forks_count/language/description/topics）；"X 天 Y⭐"基于创建日→2026-09-07 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。Skill 类项目（sepia）单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例。
+
+**关键项目：**
+- 🤖 CopilotKit/OpenBot (21 天 4,367⭐) — CopilotKit 官方 AI coworker 平台（TypeScript，fork 539 / fork/star 12.3%），Score 92
+- 💬 yetone/cumora (21 天 3,491⭐) — yetone 出品 Agent 一等公民群聊（TypeScript，fork 438 / fork/star 12.6%），Score 88
+- 🔬 sapientinc/PRAXIST (11 天 6,467⭐) — 可执行科研 Agent（Python，fork 558 / fork/star 8.6%），Score 90
+- 🎨 lnkiai/m3e-canvas (5 天 4,251⭐) — Material 3 vibe-coding prompt 生成器（TypeScript，fork 363 / fork/star 8.5%），Score 84
+- 🖋️ Nanako0129/sepia (10 天 2,324⭐) — 77+ Agent 兼容的 deAI Skill CLI（Python，fork 141 / fork/star 6.1%），Score 82
+- 🎵 crmne/fastpotify (11 天 3,357⭐) — Spotify Connect 原生 Rust 客户端（Rust，fork 146 / fork/star 4.4%），Score 78
+- 🫀 ashemag/human-atlas (2 天 1,288⭐) — 三维解剖 Atlas（TypeScript，fork 345 / fork/star 26.8%），Score 76
+- 📌 vinzdg/codenotch (2 天 667⭐) — Coding Agent 用量 Monitor（Swift，fork 87 / fork/star 13.0%），Score 72
+- 🧠 okf-memory/okf-agent-memory (2 天 340⭐) — Git-native Agent 记忆层（Go，fork 15 / fork/star 4.4%），Score 70
+- 🔌 XiaoDuoYa/codex-with-chatgpt (10 天 2,551⭐) — ChatGPT↔Codex 桥接（TypeScript，fork 278 / fork/star 10.9%），Score 68
+
+**关键判断：**
+- **"AI Coworker / Agent-as-Coworker" 概念在 GitHub 首次破圈**：CopilotKit/OpenBot 21 天 4,367⭐（CopilotKit 官方背书）+ yetone/cumora 21 天 3,491⭐（avante.nvim 作者 yetone 出品）同时上榜；从 IDE 内的 Coding Agent 升级到组织层的"AI coworker / first-class teammates"，与 9-06 ECC / hermes-agent 共同构成三层嵌套（coworker → harness → skill）
+- **可执行科研 Agent 赛道成型**：sapientinc/PRAXIST 11 天 6,467⭐（今日非 Skill 类第一）+ hexstellar 932⭐ + reverify 960⭐；"measurable, computer-executable research" 与 OpenAI Deep Research / Anthropic Claude Research 形成"开源本地"差异化
+- **设计↔vibe-coding 链路双向闭环**：lnkiai/m3e-canvas 5 天 4,251⭐（用户画稿 → vibe-coding prompt 前向）+ cathrynlavery/diagram-design 852⭐（Agent → 编辑级图表反向）+ goldie 1856⭐（AI → 营销素材）；设计链路三个方向都被 Skill / 工具化
+- **Agent Skill 生态向"去 AI 化"纵深扩散**：Nanako0129/sepia 10 天 2,324⭐（77+ Agent 兼容 Skill CLI）；"Skill = deAI 分发"是 Skill 模式的内容生态纵深
+- **Rust 原生客户端复兴**：crmne/fastpotify 11 天 3,357⭐（Spotify Connect）+ tobi/walgit 2443⭐ + MetaMask-AI/metamask-desktop 1230⭐；Rust 在桌面 / 工具栈持续吸引开发者
+- **Git-native Agent 记忆层**：okf-memory/okf-agent-memory 340⭐（Google OKF v0.2 + BM25 + MCP）；把 Agent 记忆下推到 Git 仓库层
+- **3D Web 开源教育罕见高增速**：ashemag/human-atlas 2 天 1,288⭐ / fork 26.8%（极高），BodyParts3D 数据集 + Three.js 实时渲染
+
+
 ## 2026-09-06
 **核心主题：** mattpocock/skills 单日 +2,666⭐ · DietrichGebert/ponytail 单日 +2,813⭐ · affaan-m/ECC 单日 +1,325⭐ · blader/humanizer 单日 +988⭐ · cathrynlavery/diagram-design 单日 +852⭐ · sgl-project/sglang 单日 +862⭐ · magnitudedev/magnitude 单日 +686⭐ · NousResearch/hermes-agent 单日 +573⭐ · anthropics/skills 单日 +472⭐ · humanlayer/skills 单日 +408⭐
 

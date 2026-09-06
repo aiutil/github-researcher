@@ -29,31 +29,31 @@
         <div style="margin-bottom:20px;"><a href="https://github.com/lnkiai/m3e-canvas" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="lnkiaim3e-canvas">lnkiai/m3e-canvas</h1>
 <h2 id="_1">一句话定位</h2>
-<p>Material 3 Expressive 浏览器设计画布 + vibe-coding prompt 产出器——在浏览器内画 Material 3 Expressive 屏幕并自动产出 AI coding prompt，把"设计 → 代码"链路直接打通。</p>
+<p>浏览器内 Material 3 Expressive 屏幕设计工具——Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.，TypeScript，把"用户在浏览器画设计稿"自动转化为"vibe-coding prompt"，是设计链路（用户画稿 → AI 编码）的反向工具。</p>
 <h2 id="_2">它解决的问题</h2>
-<p>2026 年 vibe-coding 工具爆发，但所有主流工具（Cursor / Claude Code / Codex / v0 / Bolt 等）的输入都是<strong>文本 prompt</strong>——设计师需要"先写文字描述，再让 AI 生成代码"。这个流程对设计师不友好：(1) 设计师的思维是可视化的，不是文字；(2) prompt 描述与最终设计稿之间存在歧义；(3) 反复迭代成本高。<code>m3e-canvas</code> 把"画 Material 3 Expressive 设计稿"和"产出 vibe-coding prompt"耦合在同一界面——设计师直接在浏览器画，工具自动产出对应 prompt。这是 vibe-coding 工具的"上游化"（upstream shift）：把 AI 编程的输入端从文本转移到视觉，从设计稿直接生成代码。</p>
-<h2 id="2026-09-05">为什么值得关注（2026-09-05）</h2>
+<p>2026 年 vibe-coding（AI 直接从自然语言生成 UI 代码）爆发，但主流工具（v0 / Bolt / Lovable / Cursor Composer）都是从文本 prompt 直接生成 UI——缺乏"用户先画设计稿，再让 AI 编码"的中间环节。lnkiai/m3e-canvas 直击这一痛点：(a) 浏览器内画 Material 3 Expressive 设计稿；(b) 自动转化为 vibe-coding prompt；(c) 输出可被 Claude Code / Cursor / Codex 等 Coding Agent 直接消费。这与 9-06 上榜的 cathrynlavery/diagram-design（"AI Agent → 编辑级图表"）形成<strong>设计链路双向闭环</strong>——m3e-canvas 是前向（人类 → AI），diagram-design 是反向（AI → 人类可读产物）。</p>
+<h2 id="_3">为什么值得关注</h2>
 <ul>
-<li><strong>Stars:</strong> 1,754（截至 2026-09-05），3 天即达 1.7k⭐，处于"早期爆发 + 持续高增长"阶段</li>
-<li><strong>Forks:</strong> 119 / 3 天 = 40 forks/日，6.8% fork/star 比正常——说明有相当比例的 fork → 二次开发</li>
-<li><strong>License:</strong> MIT</li>
-<li><strong>语言:</strong> TypeScript</li>
-<li><strong>活跃度:</strong> created 2026-09-02，pushed_at 2026-09-04，3 天内快速进入 1.7k⭐ 区间</li>
-<li><strong>规模:</strong> 9.5MB——完整组件库 + 画布实现</li>
-<li><strong>Topics:</strong> 完整度 8 项（design-tool / material-3-expressive / material-design / material3 / nextjs / prompt / react / vibe-coding）——定位清晰</li>
+<li><strong>Stars:</strong> 4,251（截至 2026-09-07），5 天净增，单日均速 ~850⭐/day（<strong>非 Skill 类项目最高单日均速</strong>）</li>
+<li><strong>Forks:</strong> 363（fork/star 8.5%，与 magnitude 7.2% 接近——反映真实开发者尝试）</li>
+<li><strong>语言:</strong> TypeScript 主导</li>
+<li><strong>设计语言目标:</strong> Material 3 Expressive（Google 2025-2026 推的设计语言）——紧跟 Google 设计规范</li>
+<li><strong>设计链路反向工具:</strong> 区别于"文本 prompt → UI"的 v0 / Bolt / Lovable，m3e-canvas 是"用户画稿 → prompt"</li>
+<li><strong>多 Agent 兼容:</strong> 输出 vibe-coding prompt 可被 Claude Code / Cursor / Codex 等多 Coding Agent 消费</li>
 </ul>
-<h2 id="_3">热度来源判断</h2>
-<p><code>m3e-canvas</code> 的热度是 <strong>"vibe-coding 上游化 × Material 3 Expressive 设计语言风口 × Next.js + React 完整组件库"</strong> 的组合。Vibe-coding 是 2026 年最热方向（Cursor 数十亿美元估值 / Claude Code 增长 / Codex 持续进化），但所有 vibe-coding 工具的输入端都是文本，"设计 → prompt" 这一上游步骤仍是空白。Material 3 Expressive 是 Google 2025-2026 推的设计语言（动态色彩 / 弹性动效 / 真实感物理效果），m3e-canvas 是首批把 Material 3 Expressive 作为 vibe-coding 输入的浏览器工具。9.5MB / TypeScript 仓库大小说明有完整组件库与画布实现，不是 PoC。热度<strong>真实且具有工具链价值</strong>——但需警惕：(1) Material 3 Expressive 是 Google 设计语言，m3e-canvas 是社区实现，与 Google 官方工具的差异需对比；(2) 9.5MB 仓库中可能含大量图片 / 字体 / 文档，不是纯代码；(3) vibe-coding prompt 输出格式与具体 AI 工具兼容性需测试。</p>
-<h2 id="_4">关键技术亮点</h2>
+<h2 id="_4">热度来源判断</h2>
+<p>m3e-canvas 的热度来自三个趋势的交汇：(1) <strong>vibe-coding 主流化</strong>——2026 年 v0 / Bolt / Lovable / Cursor Composer 已教育市场，但"先画稿再编码"的中介环节缺位；(2) <strong>Material 3 Expressive 推广</strong>——Google 在 2025-2026 推 Material 3 Expressive 设计语言，设计师社区跟进；(3) <strong>设计链路反向</strong>——与 cathrynlavery/diagram-design / kacperkapusciak/goldie 共同构成"设计 ↔ AI"链路双向工具化。</p>
+<p>5 天 4,251⭐ / fork/star 8.5% 是 Skill 类项目之外较高的单日均速。<strong>提示：</strong> lnkiai 是独立开发者（GitHub stars 累计中等），m3e-canvas 是其个人项目；与 v0 / Bolt / Lovable 等成熟 vibe-coding 工具的差异化（仅限 Material 3 Expressive）需要核验。</p>
+<h2 id="_5">关键技术亮点</h2>
 <ol>
-<li><strong>Material 3 Expressive 浏览器画布</strong>：动态色彩 / 弹性动效 / 真实感物理效果——首批把 M3E 引入浏览器工具的开源项目</li>
-<li><strong>Vibe-coding prompt 产出</strong>：从设计稿直接生成 AI coding prompt——vibe-coding 工具的"上游化"</li>
-<li><strong>Next.js + React 完整组件库</strong>：topics 同时出现 nextjs + react + material3 + design-tool——技术栈清晰</li>
-<li><strong>9.5MB 完整实现</strong>：仓库大小说明有完整组件库 + 画布，不是 PoC / 模板</li>
-<li><strong>MIT License 商业可用</strong>：相比 NOASSERTION / Fair Source，MIT 是企业最友好的开源协议</li>
-<li><strong>3 天 1,754⭐</strong>：处于"早期爆发 + 持续高增长"阶段，符合热门 vibe-coding 工具的典型曲线</li>
+<li><strong>浏览器内设计编辑器:</strong> 用户可在浏览器中直接画 Material 3 Expressive 屏幕，无需安装</li>
+<li><strong>vibe-coding prompt 转换:</strong> 自动把设计稿转化为 vibe-coding prompt（推测采用 CV / DOM 分析 + LLM 总结）</li>
+<li><strong>Material 3 Expressive 设计系统:</strong> 内置 M3E 设计规范（颜色 / 字体 / 组件 / 间距）</li>
+<li><strong>多 Coding Agent 兼容:</strong> 输出的 prompt 格式需适配 Claude Code / Cursor / Codex 等多 Agent</li>
+<li><strong>TypeScript 主导:</strong> 与 ECC / anthropics/skills 一致</li>
+<li><strong>组件库内置:</strong> 推测内置 Material 3 Expressive 组件库（按钮 / 卡片 / 列表 / 导航等）</li>
 </ol>
-<h2 id="_5">架构师速览</h2>
+<h2 id="_6">架构师速览</h2>
 <table>
 <thead>
 <tr>
@@ -65,78 +65,87 @@
 <tbody>
 <tr>
 <td>系统边界</td>
-<td>浏览器内设计画布层（Material 3 Expressive 组件库）+ vibe-coding prompt 生成器层 + Next.js + React 前端框架</td>
-<td>三要素由 description 与 topics 明示；具体组件库覆盖度（Material 3 Expressive 全部组件 vs 部分）需 README 核验</td>
+<td>浏览器内 Material 3 Expressive 设计编辑器 + vibe-coding prompt 转换器——区别于 v0 / Bolt / Lovable 的"文本 prompt → UI"，m3e-canvas 是"用户画稿 → prompt"反向工具</td>
+<td>边界由 trending 描述明示；具体画稿编辑器（Canvas / SVG / WebGL）需 README 核验</td>
 </tr>
 <tr>
 <td>主路径</td>
-<td>用户在浏览器画 Material 3 Expressive 屏幕 → m3e-canvas 记录设计参数 + 组件层级 → 产出 vibe-coding prompt → 复制到 AI coding 工具</td>
-<td>主路径为 description 抽象；具体 prompt 模板格式（XML / Markdown / JSON）未在 API 中可见</td>
+<td>用户画设计稿 → 设计稿 DOM / Canvas 表征 → LLM 总结 → vibe-coding prompt 输出 → Coding Agent（Claude Code / Cursor）消费 → 生成代码</td>
+<td>主路径为描述语义抽象；具体 prompt 输出格式（自然语言 / 结构化 spec）未在 trending 中可见</td>
 </tr>
 <tr>
 <td>关键权衡</td>
-<td>"Material 3 Expressive" 设计语言与社区实现的差异；"vibe-coding prompt" 通用性（Claude / Codex / Cursor 兼容 vs 仅 Claude）；"开源组件库" vs "Google 官方 Material 3 Expressive 工具"的生态定位</td>
-<td>9.5MB 来自 API；MIT License 商业可用；具体 prompt 模板与 vibe-coding 工具兼容性边界需 README 核验</td>
+<td>仅限 Material 3 Expressive 设计语言（紧跟 Google）vs 与 v0 / Bolt / Lovable 等通用 vibe-coding 工具的兼容性；浏览器内编辑器（无需安装）vs 专业设计工具（Figma / Sketch）的功能深度</td>
+<td>Material 3 限制由 trending 描述明示；与通用 vibe-coding 工具的关系需 README 核验</td>
 </tr>
 <tr>
 <td>最小 PoC</td>
-<td>在浏览器打开 m3e-canvas → 选择 Material 3 Expressive 组件 → 画 1 个屏幕 → 导出 vibe-coding prompt → 在 Claude / Codex 中粘贴 → 评估生成代码与设计稿的一致性</td>
-<td>安装命令需 README 独立核验；vibe-coding prompt 输出格式与具体 AI 工具兼容性需测试</td>
+<td>浏览器打开 m3e-canvas → 用内置组件画一个 Material 3 屏幕 → 导出 vibe-coding prompt → 粘贴到 Claude Code → 对比生成的代码与设计稿的相似度</td>
+<td>安装命令需 README 独立核验；与 Figma Make / Galileo AI / Visily 等成熟 vibe-coding 工具的对比需测试</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_6">架构启发</h2>
-<p><code>m3e-canvas</code> 的核心启发是 <strong>"vibe-coding 工具的'上游化'——从 prompt 文本到可视设计"</strong>。2025-2026 年 vibe-coding 工具的输入端从 prompt 文本开始（Cursor / Claude Code / Codex），但设计师的思维是可视化的，"先写文字描述，再让 AI 生成代码"对设计师不友好。m3e-canvas 把"设计 → prompt → 代码"链路打通：画设计稿 → 自动产出 prompt → 喂给 vibe-coding 工具。更深层的启发是：<strong>"工具的胜利在于降低非专家用户的认知负担"</strong>——设计师不懂 prompt，但懂设计；m3e-canvas 让设计师在熟悉的领域（视觉设计）完成任务，结果自动转译到不熟悉的领域（prompt 文本）。下一波可能是"Figma / Sketch / Adobe XD 直接 → vibe-coding prompt"或"3D 设计 → 场景代码"。</p>
+<h2 id="_7">架构启发</h2>
+<p>m3e-canvas 的核心启发是 <strong>"vibe-coding 应该有'先画稿再编码'的中介环节"</strong>。当前 vibe-coding 工具（v0 / Bolt / Lovable）的输入是文本 prompt——但设计师更习惯用视觉表达。"用户画稿 → 自动 prompt → Coding Agent 消费"的链路把设计与编码无缝衔接，降低设计师与开发者之间的协作成本。更深层的启发是：<strong>Material 3 Expressive 作为设计语言目标的选择是务实的</strong>——Google 推 M3E 的同时开源工具支持，m3e-canvas 借势获得早期采用者；但仅限 M3E 也是天花板——v0 / Bolt 等通用工具可能跟进。</p>
+<p>风险提示：<strong>"画稿 → prompt"转换质量未量化</strong>——生成的 vibe-coding prompt 与原始设计稿的语义一致性是核心质量指标，需要 benchmark 验证；与 v0 / Bolt / Lovable 等成熟工具的对比（用户画稿的效率 vs 文本 prompt 的效率）需要独立评估；仅限 Material 3 Expressive 是"窄而深"vs"广而浅"的产品定位选择。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
 <p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
 </blockquote>
 <pre class="mermaid">flowchart LR
-  Designer[设计师] --> Browser[浏览器]
-  Browser --> Canvas[m3e-canvas 画布<br/>Material 3 Expressive 组件库]
-  Canvas --> Sketch[画 M3E 设计稿<br/>动态色彩 / 弹性动效]
-  Sketch --> Extract[提取设计参数<br/>组件层级 / 颜色 / 间距 待核验]
-  Extract --> Prompt[产出 vibe-coding prompt<br/>格式待核验]
-  Prompt --> Copy[复制到剪贴板]
-  Copy --> VibeCoder[vibe-coding 工具<br/>Claude Code / Codex / Cursor]
-  VibeCoder --> Code[生成代码]
-  Code -.对比.-> Sketch
-  Canvas --> Components[M3E 组件库<br/>9.5MB]
-  Components --> Nextjs[Next.js + React 框架]
+  User[设计师] --> Canvas[m3e-canvas 浏览器编辑器]
+  Canvas --> Sketch[用户画设计稿<br/>Material 3 Expressive]
+  Sketch --> DOM[设计稿 DOM / Canvas 表征<br/>待核验实现方式]
+  DOM --> LLM[LLM 总结<br/>vibe-coding prompt 生成]
+  LLM --> Prompt[vibe-coding prompt 输出]
+  Prompt --> CC[Claude Code]
+  Prompt --> Cursor[Cursor]
+  Prompt --> Codex[Codex]
+  CC --> Code[生成代码]
+  Cursor --> Code
+  Codex --> Code
+  Code --> App[应用代码<br/>与设计稿对应]
+  Canvas -.内置.-> M3E[Material 3 Expressive 设计系统<br/>颜色 / 字体 / 组件]
+  DOM -.提取.-> Components[组件类型 / 颜色 / 布局]
+  Components --> LLM
+  Sketch -.设计意图.-> Components
+  Code -.运行反馈.-> User
+  User -.迭代设计.-> Canvas
 </pre>
-<h2 id="_7">定位判断</h2>
-<p><strong>工具型项目（vibe-coding 工具的"上游化"代表）。</strong> <code>m3e-canvas</code> 不仅是设计画布，更代表 vibe-coding 工具链的"上游化"方向——把 AI 编程的输入端从文本转移到视觉。1.7k⭐ / 3 天的爆发力 + 9.5MB / TypeScript 仓库 + Material 3 Expressive 风口定位 + 完整 8 项 topics，说明这不是个人玩具，而是有明确产品定位的工具。但"工具型"项目的胜负取决于：(1) Material 3 Expressive 是否成为主流设计语言；(2) 产出的 vibe-coding prompt 是否被主流工具（Claude Code / Cursor / Codex）良好支持；(3) 与 Google 官方 Material 3 Expressive 工具的生态竞争。</p>
-<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">定位判断</h2>
+<p><strong>工具型项目（Material 3 vibe-coding prompt 生成器）。</strong> lnkiai/m3e-canvas 不是 vibe-coding 主工具，而是 vibe-coding 工具链的<strong>中介环节</strong>——专门服务于"Material 3 Expressive 设计 → vibe-coding prompt"这一窄场景。5 天 4,251⭐ / fork/star 8.5% 显示该中介环节有真实需求。但作为独立产品的天花板：(a) Material 3 Expressive 仅是设计语言之一（不是全部）；(b) v0 / Bolt / Lovable 可能跟进"画稿 → prompt"功能；(c) 设计师也可以直接用 Figma + Make 工具。当前定位是"M3E vibe-coding 中介头部样本"，向通用 vibe-coding 中介演进或聚焦 M3E 深度是两条路径。</p>
+<h2 id="_9">风险/局限/泡沫点</h2>
 <ul>
-<li><strong>Material 3 Expressive 普及度不确定</strong>：Material 3 Expressive 是 Google 2025-2026 推的设计语言，但与 Figma / Sketch / Adobe XD 等传统设计工具的兼容性、与 Material Design 既有项目的迁移成本未观察</li>
-<li><strong>Vibe-coding prompt 输出格式未公开</strong>：具体是 XML / Markdown / JSON 等格式、是否被 Claude Code / Cursor / Codex 良好支持、是否能保留设计意图到代码——README 核验前都是未知</li>
-<li><strong>9.5MB 仓库的"代码 vs 资源"比例</strong>：9.5MB 中相当一部分可能是图片 / 字体 / 文档（Material 3 Expressive 设计 token），纯代码部分比例待核验</li>
-<li><strong>与 Google 官方 M3E 工具的竞争</strong>：如果 Google 发布官方 Material 3 Expressive 设计工具，m3e-canvas 作为社区实现可能面临生态竞争</li>
-<li><strong>设计师 → 开发者协作的版本管理</strong>：设计稿 → prompt → 代码的链路中，版本管理 / diff / 协作工具尚未成熟</li>
-<li><strong>依赖 Next.js + React 技术栈</strong>：与其他框架（Vue / Svelte / Solid.js）集成需额外开发</li>
+<li><strong>Material 3 Expressive 窄定位:</strong> 仅服务 M3E 设计语言，与 Figma / Sketch 等通用设计工具相比功能浅</li>
+<li><strong>与 v0 / Bolt / Lovable 竞争:</strong> 通用 vibe-coding 工具可能跟进"画稿 → prompt"功能，挤压 m3e-canvas 空间</li>
+<li><strong>5 天新项目风险:</strong> 长期可持续性 / 治理结构 / 安全漏洞响应未验证</li>
+<li><strong>lnkiai 个人项目:</strong> 主要由社交媒体推动（Material 3 在设计师社区热度）</li>
+<li><strong>画稿 → prompt 转换质量:</strong> 生成的 vibe-coding prompt 与原始设计稿的语义一致性是核心质量指标</li>
+<li><strong>无 Figma / Sketch 集成:</strong> 与设计师日常工作流割裂，可能限制采用</li>
 </ul>
-<h2 id="_9">与同类项目的关系</h2>
+<h2 id="_10">与同类项目的关系</h2>
 <ul>
-<li><strong>vs Cursor / Claude Code / Codex</strong>：这些是 vibe-coding 工具的"下游"（接收 prompt → 生成代码）；m3e-canvas 是"上游"（设计 → prompt）——互补关系</li>
-<li><strong>vs Figma / Sketch / Adobe XD</strong>：这些是设计工具，但产出的是静态设计稿 + 手动代码导出；m3e-canvas 自动产出 vibe-coding prompt</li>
-<li><strong>vs v0 / Bolt.new / Replit Agent</strong>：这些是 AI 设计 → 代码工具，但输入是文本；m3e-canvas 输入是可视设计</li>
-<li><strong>vs plasmic / builder.io / animate-ui</strong>：这些是设计 → 代码的可视化构建工具；m3e-canvas 专注于 Material 3 Expressive + vibe-coding prompt</li>
+<li><strong>vs v0 / Bolt / Lovable:</strong> 通用 vibe-coding 工具（文本 prompt → UI）；m3e-canvas 是中介（用户画稿 → prompt）</li>
+<li><strong>vs Figma Make:</strong> Figma 内置的 vibe-coding 工具，可能直接竞争</li>
+<li><strong>vs Galileo AI / Visily:</strong> AI 设计生成工具（文本 / 草图 → UI 设计稿）；m3e-canvas 是反向（设计稿 → prompt）</li>
+<li><strong>vs cathrynlavery/diagram-design:</strong> diagram-design 是"AI → 编辑级图表"反向；m3e-canvas 是"用户画稿 → prompt"前向——设计链路双向闭环</li>
+<li><strong>vs kacperkapusciak/goldie:</strong> goldie 是"AI → App Store 预览图"；m3e-canvas 是"用户 → vibe-coding prompt"——设计链路不同方向</li>
 </ul>
-<h2 id="_10">是否值得持续跟踪</h2>
-<p><strong>值得跟踪（vibe-coding 工具链的"上游化"代表）。</strong> <code>m3e-canvas</code> 代表了 vibe-coding 工具链从"下游（接收 prompt）"向"上游（生成 prompt）"演进的趋势，无论其本身成败，这一方向是行业趋势。建议关注：(1) Material 3 Expressive 是否成为主流设计语言；(2) 产出的 vibe-coding prompt 是否被主流工具支持；(3) 与 Figma / Sketch 的集成可能性。对设计师，这是值得试验的 vibe-coding 工具上游；对 vibe-coding 工具开发者，这是值得研究的"输入端 UX"样本。</p>
-<h2 id="_11">后续观察点</h2>
+<h2 id="_11">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Material 3 vibe-coding 中介）。</strong> m3e-canvas 代表了 vibe-coding 从"纯文本 prompt"扩展到"视觉中介"的诉求。建议关注：(a) Material 3 Expressive 设计语言的推广速度；(b) v0 / Bolt / Lovable 是否跟进"画稿 → prompt"功能；(c) 设计师社区采用度（Material 3 设计语言覆盖度）；对 Material 3 设计师，m3e-canvas 是值得尝试的 vibe-coding 中介工具。</p>
+<h2 id="_12">后续观察点</h2>
 <ul>
-<li>Material 3 Expressive 在设计社区的普及度</li>
-<li>Vibe-coding prompt 输出格式与 Claude Code / Cursor / Codex 的兼容性测试</li>
-<li>与 Figma / Sketch / Adobe XD 的集成可能性</li>
-<li>是否扩展到其他设计语言（Tailwind UI / shadcn / MUI）</li>
-<li>设计师社区采用率与反馈</li>
-<li>9.5MB 仓库的纯代码 vs 资源比例</li>
-<li>与 Google 官方 M3E 工具的竞争态势</li>
-<li>多语言 / 多框架支持（Vue / Svelte）</li>
+<li>是否扩展到通用设计语言（不仅限 Material 3 Expressive）</li>
+<li>与 Figma / Sketch 的集成深度</li>
+<li>画稿 → prompt 转换质量 benchmark</li>
+<li>与 v0 / Bolt / Lovable 等通用 vibe-coding 工具的功能对比</li>
+<li>设计师社区采用度 / Material 3 Expressive 推广速度</li>
+<li>lnkiai 个人项目的可持续性 / 治理结构</li>
 </ul>
 <hr />
-<p><em>首次记录：2026-09-05；数据来源: GitHub API (2026-09-05) | Stars: 1,754 | Forks: 119 | License: MIT | 语言: TypeScript | 创建: 2026-09-02</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-09-07) | Stars: 4,251 | Forks: 363 | License: 待核验 | 语言: TypeScript | 创建: 2026-09-02</p>
+</blockquote>
     </div>
 </main>
     <footer class="footer">

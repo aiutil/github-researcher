@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-06.md">Latest report</a> ·
+  <a href="daily/2026-09-07.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-06
+## Latest report · 2026-09-07
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 8 | 539 | 6 | 11K+ |
+| 10 | 542 | 6 | 12K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [mattpocock/skills](projects/skills.md) | 252,441 stars (+2,666/day) | 平台候选 |
-| [DietrichGebert/ponytail](projects/ponytail.md) | 127,831 stars (+2,813/day) | 工具型 |
-| [affaan-m/ECC](projects/ecc.md) | 249,777 stars (+1,325/day) | 平台候选 |
-| [blader/humanizer](projects/humanizer.md) | 43,416 stars (+988/day) | 工具型 |
-| [cathrynlavery/diagram-design](projects/diagram-design.md) | 31,639 stars (+852/day) | 工具型 |
-| [magnitudedev/magnitude](projects/magnitude.md) | 3,159 stars (+686/day) | 工具型 |
-| [NousResearch/hermes-agent](projects/hermes-agent.md) | 241,962 stars (+573/day) | 平台候选 |
-| [anthropics/skills](projects/skills.md) | 174,531 stars (+472/day) | 平台候选 |
+| [CopilotKit/OpenBot](projects/openbot.md) | 4,367 stars | 平台候选 |
+| [yetone/cumora](projects/cumora.md) | 3,491 stars | 平台候选 |
+| [sapientinc/PRAXIST](projects/praxist.md) | 6,467 stars | 前沿研究 |
+| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 4,251 stars | 工具型 |
+| [Nanako0129/sepia](projects/sepia.md) | 2,324 stars | 工具型 |
+| [crmne/fastpotify](projects/fastpotify.md) | 3,357 stars | 应用型 |
+| [ashemag/human-atlas](projects/human-atlas.md) | 1,288 stars | 应用型 |
+| [vinzdg/codenotch](projects/codenotch.md) | 667 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 96 · repositories: mattpocock/skills, DietrichGebert/ponytail, affaan-m/ECC, blader/humanizer, cathrynlavery/diagram-design, anthropics/skills, humanlayer/skills, WorldFlowAI/everything-claude-code
-2. **Signal 2** · score 88 · repositories: affaan-m/ECC, NousResearch/hermes-agent
-3. **Signal 3** · score 84 · repositories: blader/humanizer
-4. **Signal 4** · score 80 · repositories: cathrynlavery/diagram-design
+1. **Signal 1** · score 95 · repositories: CopilotKit/OpenBot, yetone/cumora, Traycerai/traycer
+2. **Signal 2** · score 90 · repositories: sapientinc/PRAXIST, brayonpi/hexstellar, 2akouwu/reverify
+3. **Signal 3** · score 86 · repositories: lnkiai/m3e-canvas, cathrynlavery/diagram-design, kacperkapusciak/goldie
+4. **Signal 4** · score 84 · repositories: Nanako0129/sepia, blader/humanizer
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-06.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-07.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 | [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
-| [2026-08-30](daily/2026-08-30.md) | 6 | 5 |
 
 ## Why this repository exists
 
