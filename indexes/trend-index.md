@@ -1,9 +1,40 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-09-07'
+last_updated: '2026-09-08'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+
+## 2026-09-08
+
+### EverettFish/holo-card-studio（779 stars）· jtydhr88/screenwriting-skills（301 stars）· biusberline/cloudflare-turnstile-solver（258 stars）· kunchenguid/kun（234 stars）· alchaincyf/huashu-mac-use（181 stars）· Tejashmakwana/astra-chatgpt-hyperframes（130 stars）· achimala/dream-loop（121 stars）· wz1119/Codex-Minecraft-Gameplay（126 stars）· VII-Cae/hyalite--liquid-glass（102 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自 2026-09-08 GitHub Search API 公开元数据（created/pushed_at/stargazers_count/forks_count/language/description/topics）与各项目 README 摘录；趋势归纳基于这些公开元数据，不将热度等同于价值。"X 天 Y⭐"基于创建日→2026-09-08 总星数除以经过天数（粗略下限估计）。Skill 类项目（kun / screenwriting-skills）单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例；huashu-mac-use / Codex-Minecraft-Gameplay 等 computer use 项目的"每步取证"声明需要 benchmark 验证实际成功率。biusberline/cloudflare-turnstile-solver fork/star 仅 3.9% 反映潜在滥用风险。API rate limit 在 2026-09-08 已部分触发，本简报覆盖 9 个 trending 新项目而非完整 Top 30。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | codex-skill-3d-content-pipeline / Codex Skill 把"一句话"变成 3D 互动内容（EverettFish/holo-card-studio 1 天 779⭐ fork 123 / fork/star 15.8% 居新项目榜首，4 层图+Blender+Three.js+可编辑 card.blend） | EverettFish/holo-card-studio | 92 |
+| 2 | vertical-domain-skill-bundles / 垂直领域 Skill 套装化（jtydhr88/screenwriting-skills 2 天 301⭐ 12 项编剧 Skill 蒸馏 19 本书+契诃夫+小津安二郎 + kunchenguid/kun 2 天 234⭐ L8 PE /kun Skill + living docs 日更） | jtydhr88/screenwriting-skills | 88 |
+| 3 | computer-use-forensic-skill / Computer use + 每步取证成为新标准（alchaincyf/huashu-mac-use 2 天 181⭐ macOS + 后台截图取证 + wz1119/Codex-Minecraft-Gameplay 2 天 126⭐ Windows 键盘/鼠标/截图） | alchaincyf/huashu-mac-use | 86 |
+| 4 | anti-bot-bypass-cli / 反爬虫 / 反验证码 CLI 工具复兴（biusberline/cloudflare-turnstile-solver 2 天 258⭐ 无浏览器依赖 + 单文件 Python 标准库 + Peak API 后端） | biusberline/cloudflare-turnstile-solver | 80 |
+| 5 | liquid-glass-css-no-webgl / 纯 CSS 真折射"液态玻璃"（VII-Cae/hyalite--liquid-glass 1 天 102⭐ SDF + SVG displacement + backdrop-filter + 单文件无 WebGL） | VII-Cae/hyalite--liquid-glass | 78 |
+| 6 | ai-game-cinematic-reproducible / AI 影视级内容可复现（Tejashmakwana/astra-chatgpt-hyperframes 2 天 130⭐ 保留 180 帧 + JS 替换文字 + achimala/dream-loop 1 天 121⭐ 图像生成+子 Agent 批评闭环） | Tejashmakwana/astra-chatgpt-hyperframes | 75 |
+| 7 | skill-evolution-daily-update / Skill 内容日更模式（kunchenguid/kun "living docs / daily update" 刷新"Skill 是静态文档"的预设） | kunchenguid/kun | 72 |
+| 8 | skill-cli-discovery-protocol / agentskills.io 协议形成"Skill 分发基础设施"（kun / huashu-mac-use / screenwriting-skills 均通过 npx skills add agentskills.io 分发） | kunchenguid/kun | 70 |
+
+#### 当日重点项目
+
+- 🃏 EverettFish/holo-card-studio (1 天 779⭐) — Codex Skill 把"一句话"变成可拖拽 3D 全息闪卡（Python，fork 123 / fork/star 15.8%），Score 92
+- 🎬 jtydhr88/screenwriting-skills (2 天 301⭐) — 12 项 Claude Code 编剧 Skill 蒸馏 19 本书+契诃夫+小津安二郎（Markdown，fork 40 / fork/star 13.3%），Score 86
+- 👷 kunchenguid/kun (2 天 234⭐) — Meta/Microsoft/Atlassian L8 首席工程师 /kun Skill + living docs 日更（Markdown，fork 13 / fork/star 5.6%），Score 82
+- 🛡️ biusberline/cloudflare-turnstile-solver (2 天 258⭐) — 无浏览器依赖 Turnstile 求解 CLI（Python，fork 10 / fork/star 3.9%），Score 80
+- 🍎 alchaincyf/huashu-mac-use (2 天 181⭐) — macOS computer use + 每步取证 Swift Skill（Swift，fork 25 / fork/star 13.8%），Score 84
+- 🎞️ Tejashmakwana/astra-chatgpt-hyperframes (2 天 130⭐) — Hyperframes 运动设计可复现（JavaScript，fork 10 / fork/star 7.7%），Score 74
+- ⛏️ wz1119/Codex-Minecraft-Gameplay (2 天 126⭐) — Codex 玩 Minecraft 工具包（Python，fork 8 / fork/star 6.3%），Score 72
+- 🌀 achimala/dream-loop (1 天 121⭐) — 图像生成 + 子 Agent 批评闭环（Markdown，fork 19 / fork/star 15.7%），Score 76
+- 💧 VII-Cae/hyalite--liquid-glass (1 天 102⭐) — 纯 CSS 真折射液态玻璃（JavaScript，fork 7 / fork/star 6.9%），Score 70
+
+
 ## 2026-09-07
 
 ### CopilotKit/OpenBot（4,367 stars）· yetone/cumora（3,491 stars）· sapientinc/PRAXIST（6,467 stars）· lnkiai/m3e-canvas（4,251 stars）· Nanako0129/sepia（2,324 stars）· crmne/fastpotify（3,357 stars）· ashemag/human-atlas（1,288 stars）· vinzdg/codenotch（667 stars）· okf-memory/okf-agent-memory（340 stars）· XiaoDuoYa/codex-with-chatgpt（2,551 stars）

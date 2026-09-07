@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-09-08
+**核心主题：** EverettFish/holo-card-studio 1 天 779⭐ Codex Skill 把"一句话"变成可拖拽 3D 全息闪卡 · jtydhr88/screenwriting-skills 2 天 301⭐ 12 项 Claude Code 编剧 Skill 蒸馏 19 本书+契诃夫+小津安二郎 · biusberline/cloudflare-turnstile-solver 2 天 258⭐ 无浏览器依赖 Turnstile 求解 CLI · kunchenguid/kun 2 天 234⭐ Meta/Microsoft/Atlassian L8 首席工程师 /kun Skill + living docs 日更 · alchaincyf/huashu-mac-use 2 天 181⭐ macOS computer use + 每步取证 Swift Skill · Tejashmakwana/astra-chatgpt-hyperframes 2 天 130⭐ Hyperframes 运动设计可复现 · achimala/dream-loop 1 天 121⭐ 图像生成 + 子 Agent 批评闭环 · wz1119/Codex-Minecraft-Gameplay 2 天 126⭐ Codex 玩 Minecraft 工具包 · VII-Cae/hyalite--liquid-glass 1 天 102⭐ 纯 CSS 真折射液态玻璃
+
+**证据边界：** 星标、总星数与增速取自 2026-09-08 GitHub Search API 公开元数据（created/pushed_at/stargazers_count/forks_count/language/description/topics）+ 各项目 README 摘录（HTTP API readme 字段 base64 解码）；"X 天 Y⭐"基于创建日→2026-09-08 总星数除以经过天数（粗略下限估计）。"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。Skill 类项目（kun / screenwriting-skills）单日增速极高可能包含营销放大或社区推送，需独立核验 fork/star 比例；huashu-mac-use / Codex-Minecraft-Gameplay 等 computer use 项目的"每步取证"声明需要 benchmark 验证实际成功率。biusberline/cloudflare-turnstile-solver fork/star 仅 3.9% 反映潜在滥用风险。API rate limit 在 2026-09-08 已部分触发，本简报覆盖 9 个 trending 新项目而非完整 Top 30。
+
+**关键项目：**
+- 🃏 EverettFish/holo-card-studio (1 天 779⭐) — Codex Skill 把"一句话"变成可拖拽 3D 全息闪卡（Python，fork 123 / fork/star 15.8%），Score 92
+- 🎬 jtydhr88/screenwriting-skills (2 天 301⭐) — 12 项 Claude Code 编剧 Skill 蒸馏 19 本书+契诃夫+小津安二郎（Markdown，fork 40 / fork/star 13.3%），Score 86
+- 🛡️ biusberline/cloudflare-turnstile-solver (2 天 258⭐) — 无浏览器依赖 Turnstile 求解 CLI（Python，fork 10 / fork/star 3.9%），Score 80
+- 👷 kunchenguid/kun (2 天 234⭐) — Meta/Microsoft/Atlassian L8 首席工程师 /kun Skill + living docs 日更（Markdown，fork 13 / fork/star 5.6%），Score 82
+- 🍎 alchaincyf/huashu-mac-use (2 天 181⭐) — macOS computer use + 每步取证 Swift Skill（Swift，fork 25 / fork/star 13.8%），Score 84
+- 🎞️ Tejashmakwana/astra-chatgpt-hyperframes (2 天 130⭐) — Hyperframes 运动设计可复现（JavaScript，fork 10 / fork/star 7.7%），Score 74
+- ⛏️ wz1119/Codex-Minecraft-Gameplay (2 天 126⭐) — Codex 玩 Minecraft 工具包（Python，fork 8 / fork/star 6.3%），Score 72
+- 🌀 achimala/dream-loop (1 天 121⭐) — 图像生成 + 子 Agent 批评闭环（Markdown，fork 19 / fork/star 15.7%），Score 76
+- 💧 VII-Cae/hyalite--liquid-glass (1 天 102⭐) — 纯 CSS 真折射液态玻璃（JavaScript，fork 7 / fork/star 6.9%），Score 70
+
+**关键判断：**
+- **Codex Skill 把"一句话"变成 3D 互动内容是今日最强趋势**：EverettFish/holo-card-studio 1 天 779⭐ / fork 123（fork/star 15.8%）位居新项目榜首；achimala/dream-loop 121⭐ 与 Tejashmakwana/astra-chatgpt-hyperframes 130⭐ 共同验证"AI Agent Skill → 3D / 互动 / 视频内容"是新方向
+- **垂直领域 Skill 套装化正在成型**：jtydhr88/screenwriting-skills 2 天 301⭐（12 项编剧 Skill 蒸馏 19 本书 + 契诃夫 + 小津安二郎）+ kunchenguid/kun 2 天 234⭐（L8 首席工程师 /kun Skill + living docs 日更）；从单 Skill 升级到"专业级 Skill 套装"
+- **Computer use + 每步取证成为新标准**：alchaincyf/huashu-mac-use 2 天 181⭐（macOS 计算机使用 + 后台截图取证 + 自研 L0 通道不调用云端 API）+ wz1119/Codex-Minecraft-Gameplay 2 天 126⭐（Windows 键盘/鼠标/截图 + 可视化检查）；computer use 从"能用"升级到"可复现"
+- **Anti-bot CLI 工具复兴**：biusberline/cloudflare-turnstile-solver 2 天 258⭐（无浏览器依赖 + 单文件标准库 + Peak API 后端）；Turnstile 求解的新一代轻量方案，但 fork/star 仅 3.9% 反映滥用风险
+- **纯 CSS 真折射"液态玻璃"开源化**：VII-Cae/hyalite--liquid-glass 1 天 102⭐（SDF + SVG displacement + backdrop-filter + 单文件无 WebGL）；Apple Vision Pro 设计语言的开源实现
+- **AI 影视级内容可复现**：Tejashmakwana/astra-chatgpt-hyperframes（保留原视频 180 帧 + JS 替换文字层 + 完整复现工作流）+ achimala/dream-loop（图像生成 + 子 Agent 批评闭环）；AI 流水线强调"参考可核验 + 输出可复现"
+- **Skill 内容日更模式刷新 Skill 模式预设**：kunchenguid/kun 的"living docs / daily update"模式把 Skill 从静态文档升级为作者 live 经验流
+- **agentskills.io 协议形成 Skill 分发基础设施**：kun / huashu-mac-use / screenwriting-skills 三个 trending 项目均使用 agentskills.io 标准 + `npx skills add` 命令，是 Skill 时代的 npm / pip 雏形
+
 ## 2026-09-07
 **核心主题：** CopilotKit/OpenBot 21 天 4,367⭐ · yetone/cumora 21 天 3,491⭐ · sapientinc/PRAXIST 11 天 6,467⭐ · lnkiai/m3e-canvas 5 天 4,251⭐ · Nanako0129/sepia 10 天 2,324⭐ · crmne/fastpotify 11 天 3,357⭐ · ashemag/human-atlas 2 天 1,288⭐ · vinzdg/codenotch 2 天 667⭐ · okf-memory/okf-agent-memory 2 天 340⭐ · XiaoDuoYa/codex-with-chatgpt 10 天 2,551⭐
 

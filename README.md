@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-07.md">Latest report</a> ·
+  <a href="daily/2026-09-08.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-07
+## Latest report · 2026-09-08
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 10 | 542 | 6 | 12K+ |
+| 9 | 551 | 6 | 8K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [CopilotKit/OpenBot](projects/openbot.md) | 4,367 stars | 平台候选 |
-| [yetone/cumora](projects/cumora.md) | 3,491 stars | 平台候选 |
-| [sapientinc/PRAXIST](projects/praxist.md) | 6,467 stars | 前沿研究 |
-| [lnkiai/m3e-canvas](projects/m3e-canvas.md) | 4,251 stars | 工具型 |
-| [Nanako0129/sepia](projects/sepia.md) | 2,324 stars | 工具型 |
-| [crmne/fastpotify](projects/fastpotify.md) | 3,357 stars | 应用型 |
-| [ashemag/human-atlas](projects/human-atlas.md) | 1,288 stars | 应用型 |
-| [vinzdg/codenotch](projects/codenotch.md) | 667 stars | 工具型 |
+| [EverettFish/holo-card-studio](projects/holo-card-studio.md) | 779 stars | 工具型 |
+| [jtydhr88/screenwriting-skills](projects/screenwriting-skills.md) | 301 stars | 工具型 |
+| [biusberline/cloudflare-turnstile-solver](projects/cloudflare-turnstile-solver.md) | 258 stars | 工具型 |
+| [kunchenguid/kun](projects/kun.md) | 234 stars | 工具型 |
+| [alchaincyf/huashu-mac-use](projects/huashu-mac-use.md) | 181 stars | 工具型 |
+| [Tejashmakwana/astra-chatgpt-hyperframes](projects/astra-chatgpt-hyperframes.md) | 130 stars | 工具型 |
+| [achimala/dream-loop](projects/dream-loop.md) | 121 stars | 工具型 |
+| [wz1119/Codex-Minecraft-Gameplay](projects/codex-minecraft-gameplay.md) | 126 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 95 · repositories: CopilotKit/OpenBot, yetone/cumora, Traycerai/traycer
-2. **Signal 2** · score 90 · repositories: sapientinc/PRAXIST, brayonpi/hexstellar, 2akouwu/reverify
-3. **Signal 3** · score 86 · repositories: lnkiai/m3e-canvas, cathrynlavery/diagram-design, kacperkapusciak/goldie
-4. **Signal 4** · score 84 · repositories: Nanako0129/sepia, blader/humanizer
+1. **Signal 1** · score 92 · repositories: EverettFish/holo-card-studio, achimala/dream-loop, Tejashmakwana/astra-chatgpt-hyperframes
+2. **Signal 2** · score 88 · repositories: jtydhr88/screenwriting-skills, kunchenguid/kun
+3. **Signal 3** · score 86 · repositories: alchaincyf/huashu-mac-use, wz1119/Codex-Minecraft-Gameplay
+4. **Signal 4** · score 80 · repositories: biusberline/cloudflare-turnstile-solver
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-07.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-08.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 | [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
-| [2026-08-31](daily/2026-08-31.md) | 6 | 5 |
 
 ## Why this repository exists
 
