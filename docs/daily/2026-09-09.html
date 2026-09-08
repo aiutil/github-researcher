@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-09 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-09-github">2026-09-09 GitHub 趋势研究简报</h1>
+<blockquote>
+<p>证据边界：本简报基于 2026-09-09 GitHub Search API 公开元数据（<code>created</code> / <code>pushed_at</code> / <code>stargazers_count</code> / <code>forks_count</code> / <code>language</code> / <code>description</code> / <code>topics</code>）与各项目 README 摘录（HTTP API 的 <code>readme</code> 字段 base64 解码）。项目名称、星标、描述为公开可见事实，"趋势"是基于公开元数据的观察，不等同于价值或生产成熟度。"X 天 Y⭐"基于创建日→2026-09-09 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。<strong>今日最大事件是 <code>openai/NavierStokesAndEuler</code> 1 天 635⭐——这是 OpenAI 官方 Lean 4 形式化千禧年 Navier-Stokes 方案 C/D + Euler 方程有限时间爆破，sorry_count=0 + Comparator 独立核验。真正的数学结论正确性需要 Lean community 复审；本简报仅记录 GitHub 元数据事实，不评判数学结论。</strong> 多个 Turnstile bypass 项目同时上榜（henryzawadzki6542 / Sophomoresty / biusberline），fork/star 异常高（42.6% / 96.5%），需警惕滥用与法律边界。<code>lfzk550/fanzha-ai-proxy</code> 与国家反诈 AI 后端接入，合法性边界需独立核验。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名展开）</h2>
+<h3 id="1-openai-lean-formalization-millennium-openai-lean-score-98">1. openai-lean-formalization-millennium / OpenAI 官方 Lean 形式化千禧年数学问题（Score 98）</h3>
+<p><strong><code>openai/NavierStokesAndEuler</code></strong> 是 2026-09-09 GitHub 历史上<strong>最重的单一项目</strong>——<strong>1 天 635⭐</strong>，fork 48（fork/star 7.6%），Lean 4.34.0-rc2 + Mathlib + Lake，Apache-2.0。OpenAI 官方账号发布。</p>
+<p><strong>核心事实</strong>（直接来自 README 与 <code>formalization.yaml</code> v0.4）：
+- 形式化 Clay 千禧年问题 <a href="https://www.claymath.org/millennium/navier-stokes-equation/">Navier–Stokes existence and smoothness</a> 的两个备选答案 <strong>(C) Breakdown on ℝ³</strong> 和 <strong>(D) Breakdown on ℝ³/ℤ³</strong>——对于<strong>任意正粘性系数</strong>，构造光滑初始数据 + 强迫项使不存在全局光滑解（前者能量有界 / 后者周期）
+- 形式化欧拉方程（无粘性）有限时间爆破：构造光滑紧支散度自由初值，速度 <code>C¹</code> 范数在有限时间内 blow up
+- <strong>sorry_count = 0</strong>（无 <code>sorry</code> 占位符，所有声明均已证完）；<code>sorry_in_definitions = 0</code>
+- 仅依赖三个标准公理：<code>propext</code> / <code>Classical.choice</code> / <code>Quot.sound</code>
+- 仓库自带 <strong><code>ComparatorChallenges/NavierStokes.json</code> + <code>Euler.json</code></strong> 独立核验描述文件，通过 <a href="https://github.com/leanprover/comparator">leanprover/comparator</a> 工具第三方复审
+- 仓库根 <code>formalization.yaml</code> v0.4 是 mathlib-initiative 推动的"形式化元数据标准"——指向 google-deepmind/formal-conjectures 的 Navier-Stokes 定义（builds-on）</p>
+<p><strong>主声明文件</strong>：
+- <code>NavierStokes.Comparator.navier_stokes_breakdown_R3</code>（文件：<code>NavierStokes/ComparatorSolution.lean</code>）
+- <code>NavierStokes.Comparator.navier_stokes_breakdown_periodic</code>
+- <code>Euler.euler_breakdown_R3</code>（文件：<code>Euler/Solution.lean</code>）</p>
+<p><strong>与昨日 <code>tristanbuckmaster/fluid_lean</code></strong>（1 天 168⭐，fork 13）形成"主证明 + 教学资源"双轮——<code>fluid_lean</code> 是流体动力学的 Lean 教学项目，与 OpenAI 同日上榜形成 Lean 生态事件。</p>
+<p><strong>关键证据 vs 推断：</strong> README + <code>formalization.yaml</code> 是 GitHub 公开可核验事实，sorry_count=0 与 Comparator challenges 是 Lean community 可直接复审的；<code>formalization.yaml</code> 引用 google-deepmind/formal-conjectures 提供独立问题陈述参考。<strong>真正的数学正确性需要 Lean community 复审</strong>，本简报仅记录元数据。<strong>风险：</strong> (a) 千禧年问题形式化证明的 community 复审周期通常以月计，<strong>单日 635⭐ 与"问题已被解决"的早期传播可能领先于数学共识</strong>；(b) Lean 4.34.0-rc2 是 release candidate，工具链稳定性需要观察；(c) <code>formalization.yaml</code> 是新标准（v0.4），其他形式化项目是否跟进需要观察；(d) OpenAI 在 Lean 形式化领域是首次大规模公开成果，长期可持续性需要观察（vs Google DeepMind / Lean FRO 长期投入）。</p>
+<h3 id="2-turnstile-solver-cross-platform-eclipse-turnstile-saas-score-90">2. turnstile-solver-cross-platform-eclipse / Turnstile 求解器跨平台与 SaaS 化爆发（Score 90）</h3>
+<p>48 小时内 <strong>3 个 Turnstile bypass 项目同时上榜</strong>：</p>
+<ul>
+<li><strong><code>henryzawadzki6542/cloudflare-turnstile-bypass</code></strong>（<strong>1 天 367⭐</strong>，fork 19，fork/star 5.2%，Python，MIT）——README 直接挂 Peak.fo banner（"Powered by Peak"），定位是"Cloudflare Turnstile Bypass" 标准化 CLI：找 sitekey + 通过 Peak API 获取 <code>cf-turnstile-response</code> token，<strong>零依赖（Python 标准库 only）</strong>，CI/QA 自动化友好。</li>
+<li><strong><code>Sophomoresty/turnstile-bypass</code></strong>（<strong>2 天 305⭐</strong>，fork 130，<strong>fork/star 42.6% 异常高</strong>，Python，MIT）——<strong>跨平台</strong>（macOS/Windows/Linux）+ headed Chrome 驱动：覆盖两个 CF 层：(1) Turnstile widget（JSON token）→ (2) Interstitial waiting room（<code>cf_clearance</code> cookie + real origin，例如 grok.com）。README 明确说明"does not pass IP bans (1020), rate limits (1015), or Bot Fight"。</li>
+<li><strong><code>biusberline/cloudflare-turnstile-solver</code></strong>（<strong>昨日 258⭐</strong>，fork 10，fork/star 3.9%）——Python 标准库 + CLI + Peak API 后端。</li>
+</ul>
+<p><strong>关键差异矩阵</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>平台</th>
+<th>依赖</th>
+<th>后端</th>
+<th>Fork/Star</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>henryzawadzki6542</td>
+<td>CLI 为主</td>
+<td>零依赖</td>
+<td>Peak API</td>
+<td>5.2%</td>
+</tr>
+<tr>
+<td>Sophomoresty</td>
+<td>macOS/Win/Linux + headed Chrome</td>
+<td>Chrome</td>
+<td>自带（headed）</td>
+<td><strong>42.6%</strong></td>
+</tr>
+<tr>
+<td>biusberline</td>
+<td>CLI + Python API</td>
+<td>零依赖</td>
+<td>Peak API</td>
+<td>3.9%</td>
+</tr>
+</tbody>
+</table>
+<p><code>Sophomoresty</code> 的 fork/star 42.6% 是 GitHub 上罕见的极值——通常反映<strong>两件事之一</strong>：(a) 真实用户密度极高（每个 star 用户都 fork）；(b) 自动化 fork 刷量。需要独立核验。</p>
+<p><strong>关键证据 vs 推断：</strong> 三个项目描述与 README 一致；Sophomoresty 的"跨平台 + headed Chrome"路线明显重于 henryzawadzki6542 / biusberline 的"零依赖 + Peak API"路线。<strong>风险：</strong> (a) <strong>Cloudflare ToS 边界</strong>——Turnstile 求解是否违反 Cloudflare 服务条款需要核验（Cloudflare 明确禁止绕过安全机制）；(b) <strong>滥用风险</strong>——Sophomoresty 42.6% 的 fork/star + 解决 cf_clearance 直接对接 grok.com（X.AI Grok）反映<strong>灰产 / 黑产使用</strong>；(c) <strong>法律边界</strong>——三个项目均未声明法律意见，在哪些地区 / 哪些场景下合法需要独立法律意见；(d) Peak API 后端的可持续性 / 与项目方关系需要核验。</p>
+<h3 id="3-vertical-llm-skill-distillation-cn-skill-prompt-score-86">3. vertical-llm-skill-distillation-cn / 中文垂直领域 Skill / Prompt 适配层成为独立品类（Score 86）</h3>
+<p>今日 <strong>3 个中文 / 中国场景 Skill 项目</strong>同时上榜：</p>
+<ul>
+<li><strong><code>lfzk550/fanzha-ai-proxy</code></strong>（<strong>2 天 285⭐</strong>，fork <strong>275 / fork/star 96.5% 极异常</strong>）——把"国家反诈 AI"转换为 OpenAI 兼容 <code>/v1/chat/completions</code> 反向代理：SSE 流式 + NextChat / OneAPI / LobeChat / Codex CLI 适配 + Access Token + Refresh Token 自动续期（最长约 90 天免重新登录）+ 多模态 messages 结构解析。fork/star 96.5% 反常说明<strong>几乎每个 star 用户都 fork</strong>——可能反映：(a) 真实使用密度极高；(b) 自动化 fork。</li>
+<li><strong><code>eternity4719/HowToLiveBetter</code></strong>（<strong>2 天 122⭐</strong>，fork 10）——440 条循证建议（成本/收益/证据等级 A/B/C + 期刊与官方文件出处），覆盖长寿防病、急救、省钱理财、法律红线、失业与工伤、医保社保、恋爱婚育、出国与技能。HTML + 在线检索站。</li>
+<li><strong><code>jtydhr88/screenwriting-skills</code></strong>（<strong>昨日 301⭐</strong>，fork 40）——12 项 Claude Code 编剧 Skill 蒸馏 19 本书（中美日）+ 契诃夫 + 小津安二郎。</li>
+</ul>
+<p><strong>共同模式</strong>：把中文垂直领域知识 / 公共服务接口<strong>适配层</strong>化（Skill / Prompt / API proxy），让 LLM 能调用原本不直接暴露的能力。</p>
+<p><strong>关键证据 vs 推断：</strong> 三个项目 README 描述与功能一致；lfzk550 与国家反诈 AI 后端的对接需要核验合法性边界（反诈 AI 服务条款是否允许第三方代理？）。<strong>风险：</strong> (a) <strong><code>fanzha-ai-proxy</code> 的合规性</strong>——把公共服务 AI 接口反向代理到 OpenAI 兼容格式是否违反服务条款需要核验；fork/star 96.5% 极异常需要独立核验是否自动化刷量；(b) <strong><code>HowToLiveBetter</code> 的医学法律建议</strong>——"急救/法律/医保"建议是用户高风险决策内容，证据等级标注只能降低风险不能消除；(c) <strong>垂直领域 Skill 的版权边界</strong>——screenwriting-skills 蒸馏 19 本书 + fanzha-ai-proxy 复制公共服务接口的合理性需要核验。</p>
+<h3 id="4-mcp-finance-self-hosted-mcp-score-84">4. mcp-finance-self-hosted / 金融 MCP 自托管只读成为新方向（Score 84）</h3>
+<p><strong><code>noskillish/bankmcp</code></strong>（<strong>2 天 160⭐</strong>，fork 31，fork/star <strong>19.4%</strong>）——自托管只读银行 MCP server。技术要点：</p>
+<ol>
+<li><strong>接入层</strong>：通过 <a href="https://enablebanking.com">Enable Banking</a> PSD2 API（覆盖 2700+ 欧洲银行）→ 标准 MCP 协议 → Claude / Ollama / ChatGPT 客户端</li>
+<li><strong>数据路径</strong>：用户自托管服务（npm <code>bankmcp</code>）→ Enable Banking OAuth → 银行 API → 只读视图 → MCP 客户端</li>
+<li><strong>明确边界</strong>："BankMCP is not a bank. Read-only, no payments, no third party holding your data."</li>
+<li><strong>典型用例</strong>："Has the invoice from Acme been paid?" / "What did we spend on groceries in August?" / "Which subscriptions am I paying for?"</li>
+</ol>
+<p><strong>关键证据 vs 推断：</strong> 2 天 160⭐ + 19.4% fork/star + 2700+ 欧洲银行覆盖是真实基础设施级数据；MIT 协议自托管路线与 9-04 vinzdg/codenotch（Coding Agent 用量 Monitor）共同构成"Agent 接入真实世界数据"的趋势。<strong>风险：</strong> (a) <strong>PSD2 监管范围</strong>——欧洲银行接入需要 PSD2 合规，自托管是否规避监管需要核验；(b) <strong>数据敏感度</strong>——银行账户数据即使只读也极度敏感，Enable Banking OAuth token 的安全管理是核心；(c) <strong>non-EU 银行不支持</strong>——目前仅欧洲 2700+ 银行，区域性是真实局限；(d) <strong>mcp 生态依赖</strong>——MCP 客户端成熟度限制 BankMCP 的实用价值。</p>
+<h3 id="5-ai-vcam-meme-for-meetings-webcam-score-82">5. ai-vcam-meme-for-meetings / Webcam 表情包虚拟摄像头（Score 82）</h3>
+<p><strong><code>gazijarin/itsgiving</code></strong>（<strong>1 天 307⭐</strong>，fork 39，fork/star 12.7%）——Webcam 表情包虚拟摄像头。README 描述："Pull a face at your webcam. It works out <em>which</em> face, and drops the matching meme over your head, scaled to follow you around the frame."</p>
+<p><strong>核心机制</strong>：
+1. <strong>14 种会议反应</strong>：time out / heart hands / hands over face / crashing out / dancing / nose pinch / flirty / hand up / tongue out / gasp / disgust / talking to the camera / ???
+2. <strong>实时人脸追踪</strong>：检测 webcam 输入中的具体哪张脸
+3. <strong>表情包贴脸</strong>：选定的人脸被替换为对应表情包，按比例跟随
+4. <strong>虚拟摄像头输出</strong>：通过 Zoom / Teams / Google Meet 的虚拟摄像头设备，整个会议都能看到
+5. <strong>可扩展</strong>：自定义添加更多表情包</p>
+<p><strong>关键证据 vs 推断：</strong> 1 天 307⭐ 与 README 描述一致；gazijarin 是新 GitHub 账号但 README 给出 demo gif + 完整用例；fork/star 12.7% 在中等区间，反映"看到但不都用"的可选工具属性。<strong>风险：</strong> (a) <strong>隐私边界</strong>——本地 webcam 处理是默认路径，但若改为云端需要用户明确知情；(b) <strong>会议礼仪</strong>——会议中用表情包滤镜的合适场景（团队周会 OK，外部客户会议不 OK）需要规范；(c) <strong>跨平台虚拟摄像头</strong>——macOS / Windows 虚拟摄像头驱动实现差异需要观察；(d) <strong>类似工具</strong>——Snap Camera 已停服（2023），itsgiving 是接替者之一，与 mmhmm / Loom / OBS 虚拟摄像头的差异化需要观察。</p>
+<h3 id="6-clay-3d-kids-bilingual-world-3d-score-78">6. clay-3d-kids-bilingual-world / 黏土风格 3D 双语儿童教育（Score 78）</h3>
+<p><strong><code>cclank/clay-safari</code></strong>（<strong>2 天 135⭐</strong>，fork 32，fork/star <strong>23.7% 极高</strong>）——黏土风格 3D 双语儿童动物世界。</p>
+<p>技术栈：<strong>Three.js r185</strong> + <strong>Blender-scripted 模型</strong>（程序化建模）+ <strong>Cloudflare Workers</strong> 部署 + <strong>Vite 8</strong> 构建 + <strong>中文/English 双语</strong>。</p>
+<p>核心能力：
+- 10 种动物角色（点击听名字 + 叫声）
+- Blender 程序化生成黏土风格 3D 模型（避免人工建模成本）
+- Cloudflare Workers 全球边缘部署（低延迟儿童访问）
+- 双语界面（早期双语教育的工程化实现）</p>
+<p><strong>关键证据 vs 推断：</strong> 2 天 135⭐ + 23.7% fork/star 极高反映真实使用密度；在线 demo <code>clay-safari.lanshuagent.com</code> 可直接验证。<strong>风险：</strong> (a) <strong>儿童隐私</strong>——Clay Safari 是面向儿童的产品，COPPA / GDPR-K 适用，访问数据 / cookies 处理需要合规；(b) <strong>AI 内容生成</strong>——是否用 AI 生成音频 / 文本需要明确标注（儿童内容对 AI 生成有强监管）；(c) <strong>离线 / 弱网支持</strong>——Cloudflare Workers 模式在弱网地区是否可达需要 benchmark。</p>
+<h3 id="7-codex-skill-fork-flood-codex-skill-score-76">7. codex-skill-fork-flood / Codex Skill 单点突破后跟随项目爆发（Score 76）</h3>
+<p><strong><code>HRuiCcc/RuiC-card-skill</code></strong>（<strong>2 天 116⭐</strong>，fork 14）——昨日 <code>EverettFish/holo-card-studio</code>（1 天 779⭐）的<strong>同主题跟随项目</strong>。README 标题"全息闪卡 Codex Skill：一句话生成可拖转、会流光、带层次景深的 3D 闪卡网页，附可编辑 Blender 工程"——几乎是 holo-card-studio 的中文版 + 自我改进。</p>
+<p><strong>这是 Codex Skill 模式的关键转折</strong>——单点突破（holo-card-studio）→ 48 小时内出现<strong>中文 + 自我改进版本</strong>（RuiC-card-skill），验证：
+1. <strong>Codex Skill 模式的复制成本低</strong>——Skill 本质上是结构化 Markdown 指令 + 流水线代码，可以快速 fork + 改进
+2. <strong>跨语言生态同步</strong>——英文 → 中文 Skill 的翻译 / 适配速度极快（与昨日 jtydhr88/screenwriting-skills 的中英双语路径一致）
+3. <strong>"原作 + 同主题 fork"模式</strong>——类似 App Store 上"原作 + XX Pro"的爆款跟随模式</p>
+<p><strong>关键证据 vs 推断：</strong> 116⭐ / 14 fork 与 holo-card-studio 779⭐ / 123 fork 的对比说明 RuiC 是跟随者而非领导者，但 2 天内出现反映生态活跃度。<strong>风险：</strong> (a) <strong>Skill 生态的版权 / 归属</strong>——跟随项目是否标注原作、是否形成"Skill 引用链"需要协议规范；(b) <strong>Skill 质量参差</strong>——跟随项目可能缺失原作的关键安全机制（如 holo-card-studio 的 Blender SHA-256 校验）。</p>
+<h3 id="8-claude-code-deai-style-patch-claude-skillscore-74">8. claude-code-deai-style-patch / 反 Claude 风格化补丁成为新 Skill（Score 74）</h3>
+<p>今日 <strong>2 个 Skill</strong> 把"改风格 / 改行为"作为新方向：</p>
+<ul>
+<li><strong><code>andrewroxby/claude-style-patch</code></strong>（<strong>1 天 91⭐</strong>，fork 7）——drop-in CLAUDE.md 风格段落。README："A drop-in style section for <code>CLAUDE.md</code> that helps Claude writes clearer prose, targeting the worst of recent 'Claudish' in the generations since 4.6...Dense, gnarled prose was driving me insane when using Claude, so this was built to fix it." 这是<strong>对 Claude 自身输出的反向 Skill</strong>——不是让 Claude 更有能力，而是让 Claude 不要"Claudish"。</li>
+<li><strong><code>mubix/cyber-resume-reviewer-skill</code></strong>（<strong>2 天 112⭐</strong>，fork 10）——网络安全简历证据化审查 Skill。"An Agent Skill for evidence-led resume reviews, job-description tailoring, exact edits, diagnostic scoring, and complete rewrites across IT and cybersecurity roles." 强调"evidence-led / not rank candidates / not predict interviews / not invent missing achievements"——<strong>反 AI 简历幻觉</strong>。</li>
+</ul>
+<p><strong>关键证据 vs 推断：</strong> 两个 Skill 都明确针对 Claude / LLM 的"过度 AI 化"问题，是 Skill 模式从"加能力"扩展到"改风格 / 改行为"的转折。<strong>风险：</strong> (a) <strong>Skill 自身的内容控制</strong>——"drop-in CLAUDE.md"方式安装但作者对 Skill 的修改可能改变 Claude 行为，需要版本审计；(b) <strong>反 AI 风格化的边界</strong>——"clearer prose" vs "humanized prose" vs "deAI prose" 的差异需要观察；(c) <strong>证据化审查 Skill 的覆盖局限</strong>——网络安全简历是垂直领域，跨领域泛化能力需要观察。</p>
+<h3 id="9-ps2-rebuild-in-browser-ps2-threejs-score-70">9. ps2-rebuild-in-browser / PS2 资源转换 + Three.js 浏览器重制（Score 70）</h3>
+<p><strong><code>Vheissu/hit-and-run-web</code></strong>（<strong>2 天 101⭐</strong>，fork 17）——辛普森：Hit &amp; Run（2003 PS2 游戏）的浏览器重制。README："A Three.js reconstruction of The Simpsons: Hit &amp; Run using assets converted from a local PS2 disc image. It runs without PS2 emulation. New Game starts the original campaign. Story progression, bonus missions and races run from the converted mission scripts."</p>
+<p><strong>关键技术</strong>：
+1. <strong>PS2 资源转换</strong>——不模拟 PS2，而是从 PS2 disc 提取 3D 模型 / 纹理 / 音频 / mission scripts
+2. <strong>Three.js 重制引擎</strong>——把转换后的资源用 Three.js 重新运行
+3. <strong>原 campaign + bonus missions + races</strong>——完整剧情 + 支线任务
+4. <strong>无 PS2 模拟</strong>——只重新运行已转换的资源（绕过 Sony PS2 模拟器的版权 / 性能问题）</p>
+<p><strong>关键证据 vs 推断：</strong> 2 天 101⭐ 与 README 描述一致；<strong>法律边界</strong>：从 PS2 disc 提取资产是否构成 Sony / Radical Entertainment 版权侵权需要独立法律意见（项目本身是否提供 disc 资源？仅提供转换工具？）。<strong>风险：</strong> (a) <strong>版权边界</strong>——PS2 disc 资源是 Sony / Radical Entertainment 资产，浏览器重制的合法性高度依赖项目是否仅提供工具而不提供资源；(b) <strong>完整剧情的可玩性</strong>——README 注明"The engine is still a reconstruction, and full playthrough testing is ongoing"，完整通关测试未完成；(c) <strong>其他经典 PS2 游戏的跟随</strong>——是否会出现"PS2 游戏浏览器重制生态"需要观察。</p>
+<h3 id="10-lean-formalization-meta-trend-lean-score-72">10. lean-formalization-meta-trend / Lean 数学形式化生态扩散（Score 72）</h3>
+<p><strong><code>tristanbuckmaster/fluid_lean</code></strong>（<strong>1 天 168⭐</strong>，fork 13，fork/star 7.7%）——流体动力学的 Lean 教学项目（描述为空）。与 OpenAI 千禧年证明同日上榜形成 Lean 生态"主证明 + 教学资源"双轮。</p>
+<p><strong>Lean 形式化生态 2026 年趋势</strong>：
+- 2026 年 1 月：Terence Tao 等数学家公开支持 Lean 形式化
+- 2026 年 4 月：mathlib 4 + Lean 4.18 工具链稳定
+- 2026 年 9 月：OpenAI 官方 Lean 形式化千禧年问题（本文） + fluid_lean 教学资源 + google-deepmind/formal-conjectures 提供问题陈述
+- Lean 已从"学者玩具"升级为"工业级数学证明 + 教学"双轮</p>
+<p><strong>关键证据 vs 推断：</strong> 168⭐ 是 Lean 教学资源的罕见高增速（与 OpenAI 千禧年事件关联放大）；描述为空可能反映项目刚刚开始建设。<strong>风险：</strong> (a) <strong>tristanbuckmaster 是新账号</strong>，项目可持续性是真实风险；(b) Lean 教学的受众是数学系学生 / 研究者，与 GitHub 主流开发者有距离，长期 Star 增速可能放缓。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>OpenAI 官方 Lean 形式化千禧年数学问题</strong>——<code>openai/NavierStokesAndEuler</code> 1 天 635⭐（fork 48 / Lean 4.34.0-rc2 + Mathlib + formalization.yaml v0.4 + Comparator 独立核验 + sorry_count=0）；这是 2026 年 GitHub 上最具历史意义的单一项目——AI 公司公开形式化数学证明 + 千禧年问题</li>
+<li><strong>Turnstile 求解器跨平台与 SaaS 化爆发</strong>——48 小时内 3 个项目同时上榜（henryzawadzki6542 / Sophomoresty / biusberline），Sophomoresty fork/star 42.6% 异常反映潜在滥用</li>
+<li><strong>中文垂直领域 Skill / Prompt 适配层成为独立品类</strong>——<code>lfzk550/fanzha-ai-proxy</code> 2 天 285⭐（fork/star 96.5% 极异常）+ <code>eternity4719/HowToLiveBetter</code> 2 天 122⭐ + 昨日 <code>jtydhr88/screenwriting-skills</code> 301⭐；中文场景适配层开始批量出现</li>
+<li><strong>金融 MCP 自托管只读</strong>——<code>noskillish/bankmcp</code> 2 天 160⭐（PSD2 + 2700+ 欧洲银行 + self-hosted + Standard MCP + Claude/Ollama 兼容）；把金融数据下推到用户自托管 MCP 而非云端 SaaS</li>
+<li><strong>Webcam 表情包虚拟摄像头</strong>——<code>gazijarin/itsgiving</code> 1 天 307⭐（14 种反应 + Zoom 虚拟摄像头输出）；AI 视觉识别 + 虚拟视频设备路径替代传统 OBS 直播</li>
+<li><strong>黏土风格 3D 双语儿童教育</strong>——<code>cclank/clay-safari</code> 2 天 135⭐（Three.js + Blender + Cloudflare Workers + 中英双语 + 10 种动物 + fork/star 23.7% 极高）</li>
+<li><strong>Codex Skill "原作 + 同主题 fork" 模式</strong>——<code>HRuiCcc/RuiC-card-skill</code> 是 <code>EverettFish/holo-card-studio</code> 的中文跟随项目，2 天 116⭐；Skill 模式开始爆发跟随项目</li>
+<li><strong>反 Claude 风格化补丁成为新 Skill</strong>——<code>andrewroxby/claude-style-patch</code> 1 天 91⭐（drop-in CLAUDE.md 反 4.6 后 Claudish）+ <code>mubix/cyber-resume-reviewer-skill</code> 2 天 112⭐；Skill 不只是"加能力"，也包括"改风格 + 改行为"</li>
+<li><strong>PS2 资源转换 + Three.js 浏览器重制</strong>——<code>Vheissu/hit-and-run-web</code> 2 天 101⭐（辛普森：Hit &amp; Run 原 PS2 disc 转换 + 浏览器可玩）；3D 引擎 + 资源转译让经典 PS2 游戏重新可玩</li>
+<li><strong>Lean 形式化生态扩散</strong>——OpenAI 千禧年形式化 + <code>tristanbuckmaster/fluid_lean</code> 教学资源同日上榜；Lean 已从"学者玩具"升级为"工业级数学证明 + 教学"双轮</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="openainavierstokesandeuler635-score-98">openai/NavierStokesAndEuler（635⭐ · Score 98 · 今日最重项目）</h3>
+<ul>
+<li><strong>定位</strong>：OpenAI 官方 Lean 4 形式化 Clay 千禧年 Navier-Stokes 方案 C/D + Euler 方程有限时间爆破；sorry_count=0 + Comparator 独立核验 + formalization.yaml v0.4 元数据。Lean，创建 2026-09-08，<strong>1 天净增 635⭐</strong>，fork 48（fork/star 7.6%），Apache-2.0。</li>
+<li><strong>核心能力</strong>：(a) <strong>Navier-Stokes 方案 C</strong>——对任意正粘性系数，构造光滑初始数据 + 强迫项使不存在全局光滑解（能量有界）；(b) <strong>Navier-Stokes 方案 D</strong>——周期环面 ℝ³/ℤ³ 上构造光滑周期初始数据使不存在全局光滑解；(c) <strong>Euler 方程有限时间爆破</strong>——构造光滑紧支散度自由初值使速度 <code>C¹</code> 范数在有限时间内 blow up，涡度的 <code>L^∞</code> 范数时间积分发散；(d) <strong>sorry_count=0</strong>——所有主声明已证完，无 <code>sorry</code> 占位符；(e) <strong>Comparator 独立核验</strong>——通过 leanprover/comparator 工具与 google-deepmind/formal-conjectures 提供的独立问题陈述交叉验证</li>
+<li><strong>架构师速览（精简）：</strong></li>
+<li>系统边界：Lean 4.34.0-rc2 + Mathlib + Lake 构建系统 + Comparator challenges 独立核验层；输入是 OpenAI 论文"Finite time blowup for Navier–Stokes" / "Finite time blowup for the Euler equation"，输出是机器可验证的 Lean 证明证书</li>
+<li>主路径：论文数学陈述 → Lean 4 形式化（NS / Euler 独立目录）→ Mathlib 库复用 → 声明可编译（<code>lake build</code>）→ Comparator challenges 描述文件 → 第三方独立核验</li>
+<li>关键权衡：千禧年问题的"反 Clay 期望"vs 实际构造 vs 公开 Lean 验证；formality vs Lean community 可读性；OpenAI 内部证明 vs 公开 reviewer 复审；千禧年 100 万美元奖金的法律 / 学术归属</li>
+<li>最小 PoC：<code>elan</code> 安装 Lean 4.34.0-rc2 → clone 仓库 → <code>lake exe cache get</code> → <code>lake exe comparator ComparatorChallenges/NavierStokes.json</code> → 验证主声明 <code>NavierStokes.Comparator.navier_stokes_breakdown_R3</code> 与 <code>Euler.euler_breakdown_R3</code> 编译通过</li>
+<li><strong>关键风险</strong>：(a) <strong>数学正确性的最终判定</strong>需要 Lean community 复审（通常以月计），GitHub 单日 635⭐ 与"问题已被解决"的早期传播可能领先于数学共识；(b) Lean 4.34.0-rc2 是 release candidate，工具链稳定性需要观察；(c) OpenAI 是首次在 Lean 形式化领域公开大规模成果，长期可持续性需要观察；(d) <code>formalization.yaml</code> v0.4 是否成为生态标准需要观察；(e) <strong>千禧年奖金归属</strong>——Clay Institute 奖金规则可能不直接适用于"形式化证明 + 反 Clay 期望的构造"</li>
+</ul>
+<h3 id="henryzawadzki6542cloudflare-turnstile-bypass367-score-88">henryzawadzki6542/cloudflare-turnstile-bypass（367⭐ · Score 88 · 新增项目）</h3>
+<ul>
+<li><strong>定位</strong>：Cloudflare Turnstile 标准化求解 CLI + Python 库——Peak API 后端 + 零依赖（标准库 only）+ 找 sitekey + 获取 <code>cf-turnstile-response</code> token；CI/QA 自动化友好。Python，创建 2026-09-08，<strong>1 天净增 367⭐</strong>，fork 19（fork/star 5.2%），MIT。</li>
+<li><strong>核心能力</strong>：(a) <strong>零依赖</strong>——Python 标准库 only（vs Selenium / Playwright 路线）；(b) <strong>CLI + Python API 双接口</strong>——<code>find_sitekey</code> / <code>create_token</code> / <code>token_for_page</code> 三件套；(c) <strong>Peak API 后端</strong>——README 顶部有 Peak 服务 banner；(d) <strong>CI / QA 友好</strong>——专为 CI pipelines 与 QA 自动化设计</li>
+<li><strong>架构师速览（精简）：</strong></li>
+<li>系统边界：Turnstile 求解 CLI / Python 库层——前端 Python 接口 + 后端 Peak API（外部 SaaS）；仓库只包含前端，<strong>实际求解在 Peak 服务端</strong></li>
+<li>主路径：用户传入 URL → 库解析 HTML 找 sitekey → 调 Peak API（带 sitekey）→ 返回 cf-turnstile-response token → 用户携带 token 访问目标页</li>
+<li>关键权衡：自托管（前端）vs 核心求解服务（Peak API）的责任分离；零依赖 UX vs 求解质量；CLI 简洁 vs 错误处理完整性</li>
+<li>最小 PoC：<code>pip install cloudflare-turnstile-bypass</code>（或 <code>git clone</code>）→ <code>cf-turnstile find-sitekey https://example.com</code> → <code>cf-turnstile create-token --sitekey SITEKEY</code> → 把返回的 token 注入请求 header</li>
+<li><strong>关键风险</strong>：(a) <strong>Cloudflare ToS 边界</strong>——Turnstile 求解是否违反 Cloudflare 服务条款需要核验；(b) <strong>Peak API 商业依赖</strong>——核心求解在 Peak，CLI 项目本质上是 Peak 客户端而非独立工具，<strong>biusberline / Sophomoresty 是否同样依赖 Peak 需独立观察</strong>；(c) <strong>滥用风险</strong>——fork/star 5.2% 比昨日 biusberline (3.9%) 高，反映真实使用密度；(d) <strong>法律边界</strong>——求解 Turnstile 在哪些地区 / 哪些场景下合法需要独立法律意见</li>
+</ul>
+<h3 id="gazijarinitsgiving307-score-82">gazijarin/itsgiving（307⭐ · Score 82 · 新增项目）</h3>
+<ul>
+<li><strong>定位</strong>：Webcam 表情包虚拟摄像头——14 种会议反应（time out / heart hands / tongue out 等）+ 实时人脸追踪 + 表情包贴脸 + Zoom 虚拟摄像头输出。Python，创建 2026-09-08，<strong>1 天净增 307⭐</strong>，fork 39（fork/star 12.7%），MIT。</li>
+<li><strong>核心能力</strong>：(a) <strong>实时人脸追踪</strong>——检测 webcam 输入中是哪张脸；(b) <strong>14 种会议反应</strong>——time out / heart hands / hands over face / crashing out / dancing / nose pinch / flirty / hand up / tongue out / gasp / disgust / talking to the camera / ???；(c) <strong>表情包贴脸</strong>——根据反应自动贴对应表情包，按比例跟随；(d) <strong>Zoom 虚拟摄像头输出</strong>——通过 Zoom / Teams / Meet 的虚拟摄像头设备，整个会议能看到</li>
+<li><strong>架构师速览（精简）：</strong></li>
+<li>系统边界：本地 webcam 处理 + 表情包叠加 + 虚拟摄像头输出层；典型栈 OpenCV 人脸检测 + PIL / OpenGL 表情包叠加 + OBS-VirtualCam / pyvirtualcam 虚拟摄像头驱动</li>
+<li>主路径：webcam 帧捕获 → OpenCV 人脸检测 → 表情分类（用户指定或自动）→ 表情包图像合成 → 虚拟摄像头设备输出 → 会议客户端读取</li>
+<li>关键权衡：本地处理（隐私）vs 云端处理（更准）；14 种反应（开箱即用）vs 用户自定义扩展；CPU 处理（兼容）vs GPU 处理（性能）</li>
+<li>最小 PoC：<code>pip install itsgiving</code>（或 <code>git clone</code>）→ 启动本地虚拟摄像头驱动 → 在 Zoom 设置中选择 itsgiving 虚拟摄像头 → 触发不同反应测试人脸追踪</li>
+<li><strong>关键风险</strong>：(a) <strong>跨平台虚拟摄像头驱动</strong>——macOS / Windows 虚拟摄像头实现差异（OBS VirtualCam、pyvirtualcam、Zoom 兼容层）；(b) <strong>隐私边界</strong>——本地 webcam 处理是默认路径，但若改为云端需要用户明确知情；(c) <strong>会议礼仪</strong>——会议中用表情包滤镜的合适场景需要规范；(d) <strong>Snap Camera 已停服（2023）</strong>——itsgiving 是接替者之一，与 mmhmm / Loom / OBS 虚拟摄像头的差异化需要观察</li>
+</ul>
+<h2 id="_3">风险与机遇</h2>
+<ul>
+<li><strong>风险 1：OpenAI 千禧年证明的早期传播领先于数学共识</strong>——<code>openai/NavierStokesAndEuler</code> 1 天 635⭐ 与"问题已被解决"的传播速度可能领先于 Lean community 复审周期；数学结论正确性需要独立 Lean community 验证（通常以月计）；OpenAI 在 Lean 形式化领域是首次大规模公开成果，长期可持续性需要观察</li>
+<li><strong>风险 2：Turnstile 求解的法律 / ToS 边界</strong>——48 小时内 3 个 Turnstile bypass 项目同时上榜（henryzawadzki6542 / Sophomoresty / biusberline），Sophomoresty fork/star 42.6% 极异常；Cloudflare 明确禁止绕过安全机制，求解 Turnstile 在哪些地区 / 哪些场景下合法需要独立法律意见</li>
+<li><strong>风险 3：lfzk550/fanzha-ai-proxy 的合规性与 fork/star 96.5% 异常</strong>——把公共服务 AI 接口反向代理到 OpenAI 兼容格式是否违反服务条款需要核验；fork/star 96.5% 极异常可能反映滥用 / 自动化 fork</li>
+<li><strong>风险 4：金融 MCP 自托管的 PSD2 合规边界</strong>——<code>noskillish/bankmcp</code> 通过 Enable Banking PSD2 接入 2700+ 欧洲银行，自托管是否规避监管需要核验；银行账户数据即使只读也极度敏感</li>
+<li><strong>风险 5：Webcam 表情包的隐私与会议礼仪</strong>——<code>gazijarin/itsgiving</code> 是本地 webcam 处理，但若改为云端需要用户明确知情；会议中用表情包滤镜的合适场景需要规范</li>
+<li><strong>风险 6：儿童 3D 内容的合规边界</strong>——<code>cclank/clay-safari</code> 是面向儿童的产品，COPPA / GDPR-K 适用；访问数据 / cookies 处理 / AI 生成音频标注需要合规</li>
+<li><strong>风险 7：Codex Skill "原作 + 同主题 fork" 的版权 / 归属</strong>——<code>HRuiCcc/RuiC-card-skill</code> 是 <code>EverettFish/holo-card-studio</code> 的跟随项目，跟随项目是否标注原作、是否形成"Skill 引用链"需要协议规范</li>
+<li><strong>机遇 1：AI for Math 形式化证明成为新赛道</strong>——<code>openai/NavierStokesAndEuler</code> 1 天 635⭐ 验证 AI 公司公开形式化数学证明是真实品类；下一波可能是 Google DeepMind / Anthropic / Meta / xAI 等公司跟进公开形式化证明</li>
+<li><strong>机遇 2：Turnstile / Cloudflare 安全机制持续博弈</strong>——3 个 Turnstile bypass 项目同时上榜反映 Cloudflare 安全机制与绕过工具的持续博弈；下一波可能是 Cloudflare 推出更难绕过的方案（如行为分析 / 设备指纹）</li>
+<li><strong>机遇 3：中文垂直领域 Skill / Prompt 适配层</strong>——<code>lfzk550/fanzha-ai-proxy</code> + <code>eternity4719/HowToLiveBetter</code> + 昨日 <code>jtydhr88/screenwriting-skills</code> 共同验证中文场景适配层是真实品类；下一波可能是"中文场景 Skill Marketplace"</li>
+<li><strong>机遇 4：MCP × 真实世界数据接入</strong>——<code>noskillish/bankmcp</code> 把金融数据通过 MCP 自托管，与 9-04 vinzdg/codenotch（Coding Agent 用量）+ 9-07 okf-memory/okf-agent-memory 共同构成"Agent 接入真实世界数据"趋势；下一波可能是医疗 / 法律 / 教育 MCP</li>
+<li><strong>机遇 5：Webcam AI 视觉应用</strong>——<code>gazijarin/itsgiving</code> 验证 AI 视觉 + 虚拟摄像头是真实品类；与 Snap Camera 停服后的接替者市场结合</li>
+<li><strong>机遇 6：Codex Skill 跟随生态</strong>——<code>HRuiCcc/RuiC-card-skill</code> 是 <code>EverettFish/holo-card-studio</code> 的中文跟随项目，验证 Skill 模式开始出现"原作 + XX Pro"跟随生态</li>
+<li><strong>机遇 7：Lean 形式化教学 + 主证明双轮</strong>——OpenAI 千禧年证明 + <code>tristanbuckmaster/fluid_lean</code> 教学资源同日上榜，Lean 已从"学者玩具"升级为"工业级数学证明 + 教学"双轮</li>
+<li><strong>机遇 8：反 AI 化 / 反 Claude 风格化 Skill</strong>——<code>andrewroxby/claude-style-patch</code> + <code>mubix/cyber-resume-reviewer-skill</code> 把"改风格 / 改行为"作为新 Skill 方向；下一波可能是"AI 行为治理 Skill Marketplace"</li>
+</ul>
+<h2 id="_4">关键发现</h2>
+<ul>
+<li><strong>OpenAI 官方 Lean 形式化千禧年数学问题是今日 GitHub 史上最重要的单一项目</strong>：<code>openai/NavierStokesAndEuler</code> 1 天 635⭐ / fork 48（fork/star 7.6%）；Navier-Stokes 方案 C/D 与 Euler 方程有限时间爆破的形式化证明，sorry_count=0 + Comparator 独立核验 + formalization.yaml v0.4 元数据。<strong>真正的数学正确性需要 Lean community 复审</strong>，本简报仅记录 GitHub 元数据事实。</li>
+<li><strong>Turnstile 求解器 48 小时内 3 个项目同时上榜</strong>：<code>henryzawadzki6542/cloudflare-turnstile-bypass</code> 1 天 367⭐（Peak API + 零依赖）+ <code>Sophomoresty/turnstile-bypass</code> 2 天 305⭐（跨平台 + cf_clearance，fork/star 42.6% 极异常）+ 昨日 <code>biusberline/cloudflare-turnstile-solver</code> 258⭐；三个项目的差异化路线（CLI / 跨平台 / SaaS）+ 异常 fork/star 反映潜在滥用</li>
+<li><strong>中文垂直领域 Skill / Prompt 适配层成为独立品类</strong>：<code>lfzk550/fanzha-ai-proxy</code> 2 天 285⭐（fork/star 96.5% 极异常）+ <code>eternity4719/HowToLiveBetter</code> 2 天 122⭐ + 昨日 <code>jtydhr88/screenwriting-skills</code> 301⭐；中文场景适配层开始批量出现</li>
+<li><strong>金融 MCP 自托管只读</strong>：<code>noskillish/bankmcp</code> 2 天 160⭐（PSD2 + 2700+ 欧洲银行 + self-hosted + Standard MCP + Claude/Ollama 兼容）；把金融数据下推到用户自托管 MCP</li>
+<li><strong>Webcam 表情包虚拟摄像头</strong>：<code>gazijarin/itsgiving</code> 1 天 307⭐（14 种反应 + Zoom 虚拟摄像头输出）；AI 视觉识别 + 虚拟视频设备路径替代传统 OBS 直播</li>
+<li><strong>黏土风格 3D 双语儿童教育</strong>：<code>cclank/clay-safari</code> 2 天 135⭐（Three.js + Blender + Cloudflare Workers + 中英双语 + fork/star 23.7% 极高）</li>
+<li><strong>Codex Skill "原作 + 同主题 fork" 模式</strong>：<code>HRuiCcc/RuiC-card-skill</code> 是 <code>EverettFish/holo-card-studio</code> 的中文跟随项目，2 天 116⭐；Skill 模式开始爆发跟随项目</li>
+<li><strong>反 Claude 风格化补丁成为新 Skill</strong>：<code>andrewroxby/claude-style-patch</code> 1 天 91⭐（drop-in CLAUDE.md 反 4.6 后 Claudish）+ <code>mubix/cyber-resume-reviewer-skill</code> 2 天 112⭐；Skill 不只是"加能力"，也包括"改风格 + 改行为"</li>
+<li><strong>PS2 资源转换 + Three.js 浏览器重制</strong>：<code>Vheissu/hit-and-run-web</code> 2 天 101⭐（辛普森：Hit &amp; Run 原 PS2 disc 转换 + 浏览器可玩）；3D 引擎 + 资源转译让经典 PS2 游戏重新可玩</li>
+<li><strong>Lean 形式化生态扩散</strong>：OpenAI 千禧年形式化 + <code>tristanbuckmaster/fluid_lean</code> 教学资源同日上榜；Lean 已从"学者玩具"升级为"工业级数学证明 + 教学"双轮</li>
+</ul>
+<h2 id="_5">重点项目档案</h2>
+<blockquote>
+<p>本节给出当日新增 / 更新项目的完整档案索引。</p>
+</blockquote>
+<ul>
+<li>🧮 openai/NavierStokesAndEuler — OpenAI 官方 Lean 4 形式化千禧年 Navier-Stokes + Euler 有限时间爆破（1 天 635⭐，Apache-2.0），Score 98 — 详见 <a href="../projects/NavierStokesAndEuler.md">projects/NavierStokesAndEuler.md</a></li>
+<li>🛡️ henryzawadzki6542/cloudflare-turnstile-bypass — Turnstile Peak API 标准化求解 CLI（1 天 367⭐，Python），Score 88 — 详见 <a href="../projects/cloudflare-turnstile-bypass.md">projects/cloudflare-turnstile-bypass.md</a></li>
+<li>🤪 gazijarin/itsgiving — Webcam 表情包虚拟摄像头（1 天 307⭐，Python），Score 82 — 详见 <a href="../projects/itsgiving.md">projects/itsgiving.md</a></li>
+<li>🌐 Sophomoresty/turnstile-bypass — 跨平台 Turnstile + cf_clearance 求解（2 天 305⭐，Python），Score 82 — 详见 <a href="../projects/turnstile-bypass.md">projects/turnstile-bypass.md</a></li>
+<li>🛡️ lfzk550/fanzha-ai-proxy — 反诈 AI 转 OpenAI 兼容反向代理（2 天 285⭐，无语言），Score 84 — 详见 <a href="../projects/fanzha-ai-proxy.md">projects/fanzha-ai-proxy.md</a></li>
+<li>💧 tristanbuckmaster/fluid_lean — 流体动力学 Lean 教学资源（1 天 168⭐，Lean），Score 72 — 详见 <a href="../projects/fluid_lean.md">projects/fluid_lean.md</a></li>
+<li>🏦 noskillish/bankmcp — 银行 MCP 自托管只读（2 天 160⭐，TypeScript），Score 84 — 详见 <a href="../projects/bankmcp.md">projects/bankmcp.md</a></li>
+<li>🦁 cclank/clay-safari — 黏土风格 3D 双语儿童动物世界（2 天 135⭐，JavaScript），Score 76 — 详见 <a href="../projects/clay-safari.md">projects/clay-safari.md</a></li>
+<li>🎴 HRuiCcc/RuiC-card-skill — 全息闪卡 Codex Skill 跟随项目（2 天 116⭐，JavaScript），Score 74 — 详见 <a href="../projects/RuiC-card-skill.md">projects/RuiC-card-skill.md</a></li>
+<li>📄 mubix/cyber-resume-reviewer-skill — 网络安全简历证据化审查 Skill（2 天 112⭐，Python），Score 72 — 详见 <a href="../projects/cyber-resume-reviewer-skill.md">projects/cyber-resume-reviewer-skill.md</a></li>
+</ul>
+<hr />
+<p><em>报告生成于 2026-09-09；数据源：GitHub Search API 公开元数据 + 各项目 README 摘录（HTTP API）；下期简报预计 2026-09-10 同步发布。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

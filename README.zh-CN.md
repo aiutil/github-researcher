@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-08.md">最新日报</a> ·
+  <a href="daily/2026-09-09.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-08
+## 最新研究 · 2026-09-09
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 9 | 551 | 6 | 8K+ |
+| 10 | 561 | 7 | 10K+ |
 
-**今日核心判断：** EverettFish/holo-card-studio 1 天 779⭐ Codex Skill 把一句话变成可拖拽 3D 全息闪卡 · jtydhr88/screenwriting-skills 2 天 301⭐ 中英双语 12 项编剧 Skill 蒸馏 19 本书 · biusberline/cloudflare-turnstile-solver 2 天 258⭐ 无浏览器依赖 Turnstile 求解 · kunchenguid/kun 2 天 234⭐ Meta/Microsoft L8 首席工程师 '/kun' Skill · alchaincyf/huashu-mac-use 2 天 181⭐ macOS 计算机使用取证 Skill · Tejashmakwana/astra-chatgpt-hyperframes 2 天 130⭐ Hyperframes 运动设计可复现 · achimala/dream-loop 1 天 121⭐ 图像生成+批评闭环 3D Agent Skill · wz1119/Codex-Minecraft-Gameplay 2 天 126⭐ Codex 玩 Minecraft 工具包 · VII-Cae/hyalite--liquid-glass 1 天 102⭐ 单文件 SDF 真折射液态玻璃
+**今日核心判断：** openai/NavierStokesAndEuler 1 天 635⭐ OpenAI 官方 Lean 形式化千禧年 Navier-Stokes/Euler 有限时间爆破 · henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐ Turnstile Peak API 标准化求解 CLI · Sophomoresty/turnstile-bypass 2 天 305⭐ 跨平台 Turnstile + cf_clearance · gazijarin/itsgiving 1 天 307⭐ Webcam 表情包虚拟摄像头 · tristanbuckmaster/fluid_lean 1 天 168⭐ 流体动力学 Lean 教程资源 · lfzk550/fanzha-ai-proxy 2 天 285⭐ 反诈 AI OpenAI 兼容代理 · noskillish/bankmcp 2 天 160⭐ 银行 MCP 自托管只读 · cclank/clay-safari 2 天 135⭐ 黏土风格 3D 双语儿童动物世界 · HRuiCcc/RuiC-card-skill 2 天 116⭐ 全息闪卡 Codex Skill 跟随
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [EverettFish/holo-card-studio](projects/holo-card-studio.md) | 779 stars | 工具型 |
-| [jtydhr88/screenwriting-skills](projects/screenwriting-skills.md) | 301 stars | 工具型 |
-| [biusberline/cloudflare-turnstile-solver](projects/cloudflare-turnstile-solver.md) | 258 stars | 工具型 |
-| [kunchenguid/kun](projects/kun.md) | 234 stars | 工具型 |
-| [alchaincyf/huashu-mac-use](projects/huashu-mac-use.md) | 181 stars | 工具型 |
-| [Tejashmakwana/astra-chatgpt-hyperframes](projects/astra-chatgpt-hyperframes.md) | 130 stars | 工具型 |
-| [achimala/dream-loop](projects/dream-loop.md) | 121 stars | 工具型 |
-| [wz1119/Codex-Minecraft-Gameplay](projects/codex-minecraft-gameplay.md) | 126 stars | 工具型 |
+| [openai/NavierStokesAndEuler](projects/navierstokesandeuler.md) | 635 stars | 学术 / 形式化 |
+| [henryzawadzki6542/cloudflare-turnstile-bypass](projects/cloudflare-turnstile-bypass.md) | 367 stars | 工具型 |
+| [gazijarin/itsgiving](projects/itsgiving.md) | 307 stars | 工具型 |
+| [Sophomoresty/turnstile-bypass](projects/turnstile-bypass.md) | 305 stars | 工具型 |
+| [lfzk550/fanzha-ai-proxy](projects/fanzha-ai-proxy.md) | 285 stars | 工具型 |
+| [tristanbuckmaster/fluid_lean](projects/fluid-lean.md) | 168 stars | 学术 / 形式化 |
+| [noskillish/bankmcp](projects/bankmcp.md) | 160 stars | 工具型 |
+| [cclank/clay-safari](projects/clay-safari.md) | 135 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **codex-skill-3d-content-pipeline / Codex Skill 把"一句话"变成 3D 互动内容——EverettFish/holo-card-studio 1 天 779⭐（fork 123 / fork/star 15.8%）位居今日新项目榜首，把"主体+背景+线稿+文字"四层 + Blender + Three.js 流水线封装为 Codex Skill** · 相关项目：EverettFish/holo-card-studio, achimala/dream-loop, Tejashmakwana/astra-chatgpt-hyperframes · 强度：92
-2. **vertical-domain-skill-bundles / 垂直领域 Skill 套装化——jtydhr88/screenwriting-skills 2 天 301⭐（12 项编剧 Skill 蒸馏 19 本书，含契诃夫+小津安二郎 masterwork corpus）+ kunchenguid/kun 2 天 234⭐（Meta/Microsoft L8 首席工程师 /kun Skill），从单 Skill 向"专业级 Skill 套装"演化** · 相关项目：jtydhr88/screenwriting-skills, kunchenguid/kun · 强度：88
-3. **computer-use-forensic-skill / 计算机使用 + 每步取证成为 Skill 标准——alchaincyf/huashu-mac-use 2 天 181⭐ "读后台、写不打扰、每步留取证"，配合 wz1119/Codex-Minecraft-Gameplay 2 天 126⭐ "Windows 键盘+鼠标+截图+可视化检查"，computer use 技能从"能用"升级到"可复现"** · 相关项目：alchaincyf/huashu-mac-use, wz1119/Codex-Minecraft-Gameplay · 强度：86
-4. **anti-bot-bypass-cli / 反爬虫 / 反验证码 CLI 工具复兴——biusberline/cloudflare-turnstile-solver 2 天 258⭐（fork 10）"无浏览器依赖 + 单文件标准库 + CLI"，是 Turnstile 求解的新一代轻量方案，附 Peak API 后端** · 相关项目：biusberline/cloudflare-turnstile-solver · 强度：80
+1. **openai-lean-formalization-millennium / OpenAI 官方 Lean 形式化千禧年数学问题——openai/NavierStokesAndEuler 1 天 635⭐（fork 48 / Lean 4.34.0-rc2 + Mathlib + Lake + formalization.yaml v0.4 + Comparator 独立核验 + sorry_count=0）形式化证明 Navier-Stokes 方案 C/D 与 Euler 有限时间爆破** · 相关项目：openai/NavierStokesAndEuler, tristanbuckmaster/fluid_lean · 强度：98
+2. **turnstile-solver-cross-platform-eclipse / Turnstile 求解器跨平台与 SaaS 化爆发——henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐（Peak API 标准化 + 零依赖 CLI）+ Sophomoresty/turnstile-bypass 2 天 305⭐（macOS/Windows/Linux 跨平台 + headed Chrome + cf_clearance）+ 昨日 biusberline/cloudflare-turnstile-solver 258⭐；3 个 Turnstile 项目在 48h 内同时上榜** · 相关项目：henryzawadzki6542/cloudflare-turnstile-bypass, Sophomoresty/turnstile-bypass, biusberline/cloudflare-turnstile-solver · 强度：90
+3. **vertical-llm-skill-distillation-cn / 中文垂直领域 Skill 蒸馏成为独立品类——lfzk550/fanzha-ai-proxy 2 天 285⭐（国家反诈 AI OpenAI 兼容反向代理 + 90 天长效会话）+ eternity4719/HowToLiveBetter 2 天 122⭐（440 条循证生活指南 A/B/C 三级证据分级）；中文场景 Skill / Prompt 适配层开始批量出现** · 相关项目：lfzk550/fanzha-ai-proxy, eternity4719/HowToLiveBetter, jtydhr88/screenwriting-skills · 强度：86
+4. **mcp-finance-self-hosted / 金融 MCP 自托管只读成为新方向——noskillish/bankmcp 2 天 160⭐（Enable Banking PSD2 + 2700+ 欧洲银行 + self-hosted + Standard MCP + tested with Claude/Ollama）；把金融数据下推到用户自托管 MCP 而非云端 SaaS** · 相关项目：noskillish/bankmcp · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 | [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
-| [2026-09-01](daily/2026-09-01.md) | 6 | 5 |
 
 ## 为什么做这个项目
 

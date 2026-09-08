@@ -1,9 +1,43 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-09-08'
+last_updated: '2026-09-09'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+
+## 2026-09-09
+
+### openai/NavierStokesAndEuler（635 stars）· henryzawadzki6542/cloudflare-turnstile-bypass（367 stars）· gazijarin/itsgiving（307 stars）· Sophomoresty/turnstile-bypass（305 stars）· lfzk550/fanzha-ai-proxy（285 stars）· tristanbuckmaster/fluid_lean（168 stars）· noskillish/bankmcp（160 stars）· cclank/clay-safari（135 stars）· HRuiCcc/RuiC-card-skill（116 stars）· mubix/cyber-resume-reviewer-skill（112 stars）
+
+> 证据边界：项目名称、星标、标签和描述来自 2026-09-09 GitHub Search API 公开元数据（created/pushed_at/stargazers_count/forks_count/language/description/topics）与各项目 README 摘录（HTTP API readme 字段 base64 解码）；趋势归纳基于这些公开元数据，不将热度等同于价值。"X 天 Y⭐"基于创建日→2026-09-09 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。**今日最大事件是 `openai/NavierStokesAndEuler` 1 天 635⭐——OpenAI 官方 Lean 4 形式化千禧年 Navier-Stokes 方案 C/D + Euler 方程有限时间爆破，sorry_count=0 + Comparator 独立核验 + formalization.yaml v0.4 元数据；数学正确性需要 Lean community 复审，本简报仅记录 GitHub 元数据事实**。`Sophomoresty/turnstile-bypass` fork/star 42.6% 与 `lfzk550/fanzha-ai-proxy` fork/star 96.5% 异常，反映潜在滥用 / 自动化 fork 风险；`lfzk550/fanzha-ai-proxy` 把公共服务 AI 接口反向代理到 OpenAI 兼容格式，合法性边界需要独立法律意见。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | openai-lean-formalization-millennium / OpenAI 官方 Lean 形式化千禧年数学问题（openai/NavierStokesAndEuler 1 天 635⭐ fork 48 / Lean 4.34.0-rc2 + Mathlib + Lake + formalization.yaml v0.4 + Comparator 独立核验 + sorry_count=0 + Apache-2.0） | openai/NavierStokesAndEuler | 98 |
+| 2 | turnstile-solver-cross-platform-eclipse / Turnstile 求解器跨平台与 SaaS 化爆发（henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐ Peak API + 标准库 + Zero-dep CLI + Sophomoresty/turnstile-bypass 2 天 305⭐ macOS/Win/Linux + headed Chrome + cf_clearance + grok.com + fork/star 42.6% 异常） | henryzawadzki6542/cloudflare-turnstile-bypass | 90 |
+| 3 | vertical-llm-skill-distillation-cn / 中文垂直领域 Skill / Prompt 适配层成为独立品类（lfzk550/fanzha-ai-proxy 2 天 285⭐ fork 275 / 国家反诈 AI OpenAI 兼容反向代理 + 90 天长效会话 + fork/star 96.5% 极异常 + eternity4719/HowToLiveBetter 2 天 122⭐ 440 条循证生活指南 A/B/C 三级证据分级） | lfzk550/fanzha-ai-proxy | 86 |
+| 4 | mcp-finance-self-hosted / 金融 MCP 自托管只读成为新方向（noskillish/bankmcp 2 天 160⭐ fork 31 / Enable Banking PSD2 + 2700+ 欧洲银行 + self-hosted + Standard MCP + Claude/Ollama 兼容 + fork/star 19.4%） | noskillish/bankmcp | 84 |
+| 5 | ai-vcam-meme-for-meetings / Webcam 表情包虚拟摄像头（gazijarin/itsgiving 1 天 307⭐ fork 39 / 14 种会议反应 + Zoom 虚拟摄像头输出 + 实时人脸追踪 + 可扩展） | gazijarin/itsgiving | 82 |
+| 6 | clay-3d-kids-bilingual-world / 黏土风格 3D 双语儿童教育（cclank/clay-safari 2 天 135⭐ Three.js r185 + Blender 程序化建模 + Cloudflare Workers + 中英双语 + 10 种动物 + fork/star 23.7% 极高） | cclank/clay-safari | 78 |
+| 7 | codex-skill-fork-flood / Codex Skill 单点突破后跟随项目爆发（HRuiCcc/RuiC-card-skill 2 天 116⭐ 昨日 holo-card-studio 779⭐ 中文跟随项目 + 全息闪卡 Codex Skill + Blender 工程 + 同主题 fork 模式） | HRuiCcc/RuiC-card-skill | 76 |
+| 8 | claude-code-deai-style-patch / 反 Claude 风格化补丁成为新 Skill（andrewroxby/claude-style-patch 1 天 91⭐ drop-in CLAUDE.md 反 4.6 后 Claudish + mubix/cyber-resume-reviewer-skill 2 天 112⭐ 网络安全简历证据化审查 + 不排名 / 不预测 / 不编造） | mubix/cyber-resume-reviewer-skill | 74 |
+| 9 | ps2-rebuild-in-browser / PS2 资源转换 + Three.js 浏览器重制（Vheissu/hit-and-run-web 2 天 101⭐ 辛普森：Hit & Run 原 PS2 disc 转换 + 浏览器可玩 + 原 campaign + bonus missions） | Vheissu/hit-and-run-web | 70 |
+| 10 | lean-formalization-meta-trend / Lean 数学形式化生态扩散（tristanbuckmaster/fluid_lean 1 天 168⭐ fork 13 与 openai/NavierStokesAndEuler 同日上榜 + Lean 从"学者玩具"升级为"工业级数学证明 + 教学"双轮） | tristanbuckmaster/fluid_lean | 72 |
+
+#### 当日重点项目
+
+- 🧮 openai/NavierStokesAndEuler (1 天 635⭐) — OpenAI 官方 Lean 4 形式化千禧年 Navier-Stokes 方案 C/D + Euler 有限时间爆破（Lean，Apache-2.0，sorry_count=0 + Comparator 核验），Score 98
+- 🛡️ henryzawadzki6542/cloudflare-turnstile-bypass (1 天 367⭐) — Turnstile Peak API 标准化求解 CLI + 零依赖 + MIT（Python，fork 19 / fork/star 5.2%），Score 88
+- 🤪 gazijarin/itsgiving (1 天 307⭐) — Webcam 表情包虚拟摄像头 14 种会议反应 + Zoom 输出（Python，fork 39 / fork/star 12.7%），Score 82
+- 🌐 Sophomoresty/turnstile-bypass (2 天 305⭐) — 跨平台 Cloudflare 求解 + headed Chrome + cf_clearance + grok.com（Python，fork 130 / fork/star 42.6% 极异常），Score 82
+- 🛡️ lfzk550/fanzha-ai-proxy (2 天 285⭐) — 反诈 AI 转 OpenAI 兼容反向代理 + 90 天长效会话（无 Language，fork 275 / fork/star 96.5% 极异常），Score 84
+- 💧 tristanbuckmaster/fluid_lean (1 天 168⭐) — 流体动力学 Lean 教学资源（Lean，fork 13 / fork/star 7.7%），Score 72
+- 🏦 noskillish/bankmcp (2 天 160⭐) — 银行 MCP 自托管只读 + PSD2 + 2700+ 欧洲银行（TypeScript，fork 31 / fork/star 19.4%），Score 84
+- 🦁 cclank/clay-safari (2 天 135⭐) — 黏土风格 3D 双语儿童动物世界（JavaScript，fork 32 / fork/star 23.7% 极高），Score 76
+- 🎴 HRuiCcc/RuiC-card-skill (2 天 116⭐) — 全息闪卡 Codex Skill 跟随项目（JavaScript，fork 14 / fork/star 12.1%），Score 74
+- 📄 mubix/cyber-resume-reviewer-skill (2 天 112⭐) — 网络安全简历证据化审查 Skill + 反 AI 幻觉（Python，fork 10 / fork/star 8.9%），Score 72
+
+
 
 ## 2026-09-08
 
