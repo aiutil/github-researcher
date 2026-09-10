@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-09.md">Latest report</a> ·
+  <a href="daily/2026-09-11.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-09
+## Latest report · 2026-09-11
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 10 | 561 | 7 | 10K+ |
+| 8 | 569 | 7 | 12K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [openai/NavierStokesAndEuler](projects/navierstokesandeuler.md) | 635 stars | 学术 / 形式化 |
-| [henryzawadzki6542/cloudflare-turnstile-bypass](projects/cloudflare-turnstile-bypass.md) | 367 stars | 工具型 |
-| [gazijarin/itsgiving](projects/itsgiving.md) | 307 stars | 工具型 |
-| [Sophomoresty/turnstile-bypass](projects/turnstile-bypass.md) | 305 stars | 工具型 |
-| [lfzk550/fanzha-ai-proxy](projects/fanzha-ai-proxy.md) | 285 stars | 工具型 |
-| [tristanbuckmaster/fluid_lean](projects/fluid-lean.md) | 168 stars | 学术 / 形式化 |
-| [noskillish/bankmcp](projects/bankmcp.md) | 160 stars | 工具型 |
-| [cclank/clay-safari](projects/clay-safari.md) | 135 stars | 工具型 |
+| [deepseek-ai/DeepSelect](projects/deepselect.md) | 232 stars | 基础设施候选 |
+| [mizzlelover/gongwen-gbt9704-skill](projects/gongwen-gbt9704-skill.md) | 301 stars | 工具型 |
+| [yudaprasetya007/routeVSCODE](projects/routevscode.md) | 326 stars | 工具型 |
+| [kevinzakka/mjbatch](projects/mjbatch.md) | 215 stars | 工具型 |
+| [deepseek-ai/deepseek-recipe](projects/deepseek-recipe.md) | 209 stars | 基础设施候选 |
+| [viettranx/3dviz-pro-max](projects/3dviz-pro-max.md) | 131 stars | 工具型 |
+| [Foadsf/vintage-latex](projects/vintage-latex.md) | 191 stars | 工具型 |
+| [Da7-Tech/SureForge](projects/sureforge.md) | 86 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 98 · repositories: openai/NavierStokesAndEuler, tristanbuckmaster/fluid_lean
-2. **Signal 2** · score 90 · repositories: henryzawadzki6542/cloudflare-turnstile-bypass, Sophomoresty/turnstile-bypass, biusberline/cloudflare-turnstile-solver
-3. **Signal 3** · score 86 · repositories: lfzk550/fanzha-ai-proxy, eternity4719/HowToLiveBetter, jtydhr88/screenwriting-skills
-4. **Signal 4** · score 84 · repositories: noskillish/bankmcp
+1. **Signal 1** · score 94 · repositories: deepseek-ai/DeepSelect, deepseek-ai/deepseek-recipe
+2. **Signal 2** · score 92 · repositories: mizzlelover/gongwen-gbt9704-skill
+3. **Signal 3** · score 84 · repositories: yudaprasetya007/routeVSCODE
+4. **Signal 4** · score 86 · repositories: kevinzakka/mjbatch
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-09.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-11.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
-| [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 
 ## Why this repository exists
 

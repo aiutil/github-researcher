@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-11 日报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-11-github">2026-09-11 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description 来自 2026-09-11 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README / README.zh.md 公开摘录（raw.githubusercontent.com 拉取）。"X 天 Y⭐"基于 created_at→2026-09-11 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计；本次重点项目的描述、数据点（vintage-latex 示例数 / mjbatch Batch 规模 / DeepSelect 支持的 dtype 与 batch_size）均经对应 README 直接核验。<strong>"趋势"是基于公开元数据的观察，不等同于生产成熟度或长期价值</strong>——<code>x4gpanell/3x-ui_runonflux</code> 100⭐ / fork 185（fork/star 185%）极异常，反映该仓库被批量 fork 用于衍生部署而非真实代码热度，本简报不将其列入核心趋势。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-deepseek-api-94">1. DeepSeek 官方内核 + API 适配库同日双发（趋势分 94）</h3>
+<ul>
+<li><strong>deepseek-ai/DeepSelect</strong>（1 天 232⭐ / fork 9）——官方 TopK kernel for DeepSeek Sparse Attention (DSA) 与 Sampler；bfloat16 Lightning Indexer + float32 Sampling 两个场景；实测对 <code>torch.topk</code> 加速 2-20×；明确支持 DeepSeek V3.2 / V4 / V4.1；CUDA + MIT；benchmark 在 <code>tests/test.py --perf-only</code>，指标为 effective memory bandwidth。<strong>今日最大事件之一：DeepSeek 把推理栈里最关键的两个算子（TopK + Sampling）开源为可独立替换的内核，并附带基准。</strong></li>
+<li><strong>deepseek-ai/deepseek-recipe</strong>（1 天 209⭐ / fork 11）——Rust + Python bindings；目标是把 OpenAI Messages / Chat Completions / Responses 三种 API 请求格式"统一"转成 DeepSeek V4.1 Conversation；含 prompt 编码、thinking / reasoning / temperature / top_p / output limit、输出解析（thinking / tool call / JSON / stop sequences）、图像 base64 与外部 URL、Responses API function tool。<strong>明确把"推理后端、工具执行、HTTP transport"排除在外，留给外部实现</strong>——这是 V4.1 走"统一接口 + 多后端适配"路线的官方配件。</li>
+<li>两个仓库同窗并发，<strong>反映出 DeepSeek 把"模型权重 + 内核 + API recipe"作为可分离的三层资产同步开源</strong>——任何第三方推理框架（vLLM / SGLang / TensorRT-LLM 之外的更小众实现）拿到这三个仓库就能拼出一套 DeepSeek V4.1 兼容服务。</li>
+</ul>
+<h3 id="2-gbt-9704-2012-skill-92">2. 中文公文 GB/T 9704-2012 Skill 标准化（趋势分 92）</h3>
+<ul>
+<li><strong>mizzlelover/gongwen-gbt9704-skill</strong>（2 天 301⭐ / fork 56 / <strong>fork/star 18.6%</strong>）——把"中文公文版式"做成 Skill，按 GB/T 9704-2012 国标参数生成可编辑 DOCX：A4、版心、正文字体（仿宋）、标题黑体、层次编号、首页、机构名称、文号、署名、日期、页码。<strong>一次安装服务 8 个 Harness</strong>——Claude Code / Codex / OpenCode / Trae Code / Kimi / TraeWork / WorkBuddy / ZCode。MIT + 14KB+ 文档/资源（28MB size 主要为 punk-assets 插图）。</li>
+<li><strong>18.6% 的 fork/star 是企业 fork 信号</strong>——它不是"玩具 Skill"，是国标合规产物的可复用模板。Skill 模式正式进入"中文行业合规文档"层。</li>
+<li><strong>价值判断：</strong> 真正决定它是昙花还是基础设施的是"GB/T 标准是否长期稳定 + 是否会被国资 / 政企客户大量 fork 后二次定制"。本简报无法核验这两点，只记录元数据。</li>
+</ul>
+<h3 id="3-vscode-copilot-chat-84">3. VSCode Copilot Chat 零重启模型切换（趋势分 84）</h3>
+<ul>
+<li><strong>yudaprasetya007/routeVSCODE</strong>（1 天 326⭐ / fork 0 / 9Router Gateway + Port 20129 Local Proxy）——README 是印尼语（Bahasa），定位"在 GitHub Copilot Chat 中一键切换 AI 模型，零重启"。Web Dashboard :5500 + Status Bar + 动态本地代理 + SSE 流式注入 + 40+ Provider（OpenAI / Anthropic / Gemini / DeepSeek / Groq / OpenRouter）。MIT。</li>
+<li>fork=0 + stars=326 反映其通过 VSCode Marketplace 分发为主而非 fork；topics 完整覆盖 9router / copilot / model-switcher / local-proxy / vscode-extension。<strong>它解决的是 Copilot Chat 的"硬限制"——一旦开启会话就要重启才能换模型</strong>。</li>
+</ul>
+<h3 id="4-mujoco-cpu-86">4. MuJoCo CPU 并行仿真库（趋势分 86）</h3>
+<ul>
+<li><strong>kevinzakka/mjbatch</strong>（1 天 215⭐ / fork 13 / Apache-2.0）——<code>Batch(model, num_sims=4096)</code> + C++ thread pool（GIL 释放）+ <code>bind('qpos'/'ctrl')</code> + <code>set_const</code> 重算 derived constants；examples 覆盖 RL、MPC、SysID、hardware co-design。Go1 四足 RL 在 5 年 M1 笔记本 &lt; 1 min 学会行走（README 自述，需要 benchmark 复现）。</li>
+<li><strong>价值判断：</strong> MuJoCo 在 robotics / RL 圈是事实标准仿真器，但 Python 包装的并行能力一直受限；mjbatch 直接把"4096 个并行 sim"做成一等公民 API。<strong>它不抢 MuJoCo 本身的生态，而是补 Python 侧的并行吞吐缺口</strong>。</li>
+</ul>
+<h3 id="5-agent-skill-3d-82">5. Agent Skill 创意 3D 可视化复用库（趋势分 82）</h3>
+<ul>
+<li><strong>viettranx/3dviz-pro-max</strong>（1 天 131⭐ / fork 23 / fork/star 17.6%）——Agent Skill 形态的 3D 可视化模板集合：10 步工作流 + 223 recipes + 440 knowledge records + 22 proved kits + 37 runnable studies；Three.js 0.180 + Blender + GLTF；Claude Code plugin + Codex skill folder。</li>
+<li>与昨日 EverettFish/holo-card-studio（1 天 779⭐，2026-09-08）属于同构（Codex/Claude Skill 把"一句话"变成可探索 3D 场景），但 viettranx 把"技能 + 模板库 + 验证流程"打包得更结构化。<strong>它验证了"Agent Skill 不只是提示词，更是 recipe 库 + 验证工具链"的产品形态。</strong></li>
+</ul>
+<h3 id="6-lualatexmetapost-78">6. 复古科学论文排版 LuaLaTeX+MetaPost（趋势分 78）</h3>
+<ul>
+<li><strong>Foadsf/vintage-latex</strong>（2 天 191⭐ / fork 14）——20 个独立示例（每个 .tex / .mp 文件可单独编译）：三类——纯 LaTeX 页 / 独立 fiziko MetaPost 图 / LuaTeX 内嵌 fiziko 图；题材覆盖雕版光学图、Hooke 装置、Victorian 报纸、自然史目录、望远镜图、月相图、专利图、对数表、星图等。<strong>它教的是"机制"而不是"风格模板"——移除每个效果看它对整体美学的贡献。</strong></li>
+<li><strong>这与 Skill / Agent 趋势正交——它是排版 + 科学的"工艺课"</strong>，在 LaTeX 圈属于高质量作品集。PowerShell + LaTeX 混用反映作者的工作流习惯，不影响 LaTeX 部分。</li>
+</ul>
+<h3 id="7-agent-skill-76">7. Agent 工作纪律 Skill 化（趋势分 76）</h3>
+<ul>
+<li><strong>Da7-Tech/SureForge</strong>（2 天 86⭐ / fork 9）——五段工作纪律：research before ask / ask before plan / plan before build / verify before deliver / independent review before done；纯文本 SKILL.md + references + assets；跨 Claude Code / Codex / Cursor / Devin / hermes-agent。MIT。</li>
+<li>与 <strong>HammingDev/haiming-app-monetization</strong>（2 天 164⭐ / fork 22）一同：Skill 不再只是"加能力"，<strong>开始变成"给 Agent 立规矩 + 给业务定流程"</strong>——SureForge 立"质量纪律"，haiming 立"商业化合规流程"。</li>
+</ul>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>DeepSeek 官方三层资产同步开源（权重 + 内核 + API 适配）</strong>：这是 2026-09-11 最大事件。DeepSelect + deepseek-recipe + 此前的模型权重同步出现，意味着第三方推理栈可以"按图施工"地实现 DeepSeek V4.1 兼容服务。</li>
+<li><strong>中文公文 Skill 标准化</strong>：18.6% fork/star 是企业级 fork 信号；GB/T 国标依据 + 跨 8 Harness 一次性分发是行业级复用特征。</li>
+<li><strong>MuJoCo Python 侧的并行缺口被补上</strong>：mjbatch 把 C++ thread pool + GIL 释放 + 4096 并行 sim 做成一等公民 API，对 RL 训练/SysID 是直接的生产力。</li>
+<li><strong>VSCode Copilot 模型路由</strong>：routeVSCODE 326⭐ / fork 0 反映通过 Marketplace 分发为主；它把"动态切换 + 40+ Provider + 本地代理"做成了一键体验。</li>
+<li><strong>Agent Skill 进入"工艺 / 模板库"阶段</strong>：3dviz-pro-max 223 recipes + 440 knowledge + 37 runnable studies 的结构证明 Skill 不再是"一段提示词"，而是"可复用模板 + 验证流程"。</li>
+<li><strong>Skill 也管"规矩"与"流程"</strong>：SureForge（质量纪律）+ haiming-app-monetization（商业化流程）一同把 Skill 推到"组织级治理"层面。</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="deepseek-aideepselectscore-92">🏆 deepseek-ai/DeepSelect（Score 92）</h3>
+<p><strong>定位判断：</strong> DeepSeek 官方算子层资产。它把 DSA（DeepSeek Sparse Attention）里两个最热的算子（TopK + Sampling）做成 CUDA 实现并附 benchmark，明确说明"对 <code>torch.topk</code> 2-20× 加速"。<strong>它对第三方推理框架的意义是：可以直接 link 这个 kernel 替换 PyTorch 原生 <code>torch.topk</code>，立即获得 DSA 等价行为。</strong> 与之前 DeepSeek-V3 / V3.1 论文里手写的 indexer 实现保持一致。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>场景切分而非通用 TopK</strong>——Lightning Indexer（bf16 + batch_size 1~+∞ + vocab 1~+∞ + topk ≤ 4096）与 Sampler（fp32 + vocab ~128K + topk ≤ 4096）两个独立优化路径；README 明示"fastest algorithm highly depends on dtype/batch/vocab/topk"
+2. <strong>建议关闭 sorted_index</strong>——除非输出必须按 index 或 value 排序（启用任一都损失性能）
+3. <strong><code>return_value=False</code></strong> 跳过 value 输出加速
+4. <strong>基准透明</strong>——<code>tests/test.py --perf-only</code> + effective memory bandwidth 作为唯一指标（"TopK does no floating-point math, FLOP rate would not be meaningful"）</p>
+<p><strong>风险/局限：</strong>
+- topk ≤ 4096 硬上限（README 明示）
+- Lightning Indexer 场景只覆盖 bf16；其他 dtype 未实现
+- Benchmark 是仓库自维护，缺乏第三方独立核验
+- "2-20×" 区间宽，端点值取决于 input 形状；不能直接照搬到生产</p>
+<h3 id="mizzlelovergongwen-gbt9704-skillscore-92">🏆 mizzlelover/gongwen-gbt9704-skill（Score 92）</h3>
+<p><strong>定位判断：</strong> 中文正式材料 Skill 的"国标合规版"。README 自述缘起：作者先在 Claude Code 用 Office Skill 发现"格式留不住"，再在 Kimi 发现"它自己会去搜 GB/T 国标拼出版式"，意识到"公文排版这件事适合做成 Skill"。最终产物：GB/T 9704-2012 逐项核验 + 跨 8 Harness 安装 + 字体处理兼容 WPS/Word。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>GB/T 9704-2012 国标逐项映射</strong>——A4、版心、正文字体、标题黑体、层级、机构、文号、署名、日期、页码
+2. <strong>跨 8 Harness 一次安装</strong>——同一份规则服务 Claude Code / Codex / OpenCode / Trae Code / Kimi / TraeWork / WorkBuddy / ZCode；后续修改不用在七八个目录里重复补
+3. <strong>可选格式核验清单</strong>——不是只生成 DOCX，还提供检查表
+4. <strong>字体兼容性专门处理</strong>——中文字体名/英文名在不同环境下的映射（README 明示这是踩过的坑）</p>
+<p><strong>风险/局限：</strong>
+- "GB/T 9704-2012" 是 2012 年版国标；2026 年是否仍是最新版需要核验（README 自述引用 std.samr.gov.cn 链接，未交叉验证最新修订版）
+- 14KB 文档主体不大，但 28MB 仓库 size 主要是 punk-assets 插图，与功能无关
+- 18.6% fork/star 偏高，需警惕 fork 农场/刷星</p>
+<h3 id="yudaprasetya007routevscodescore-84">🏆 yudaprasetya007/routeVSCODE（Score 84）</h3>
+<p><strong>定位判断：</strong> VSCode Copilot Chat 的"模型路由器"。它解决的具体痛点是"切换 Copilot 模型需要重启 VSCode"——通过本地代理 + Dashboard + Status Bar 把切换动作变成零重启。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>Zero-Reload 模型切换</strong>——Local Proxy Port 20129 + SSE 流式注入 + 头部认证自动管理
+2. <strong>40+ Provider 通用接入</strong>——OpenAI / Anthropic / Gemini / DeepSeek / Groq / OpenRouter 等
+3. <strong>Live Model Comparison &amp; Benchmark</strong>——在 Dashboard 内对 prompt 响应做侧边对比，测 latency
+4. <strong>Status Bar 集成</strong>——右下角一键切换
+5. <strong>Web Dashboard :5500</strong>——dark mode + neon accents + provider 过滤</p>
+<p><strong>风险/局限：</strong>
+- README 全印尼语，对中文/英文用户的入门门槛略高
+- fork=0 + 326⭐ 通过 VSCode Marketplace 分发为主；版本号 v2.5.0 表明已多次迭代
+- "9Router Gateway"是配套的 npm 包（仓库自述），与本扩展是同一作者的"网关 + 客户端"双产品</p>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- <strong>DeepSelect 的"2-20×" 区间宽</strong>——端点值取决于 dtype/batch/vocab/topk 组合，第三方推理栈接入需要先在自家硬件上跑 benchmark
+- <strong>gongwen-gbt9704-skill 的 18.6% fork/star 偏高</strong>——fork 农场/刷星风险未排除；需要观察 fork 列表里是否有真实企业账号
+- <strong>routeVSCODE 依赖 9Router Gateway</strong>——如果 9Router 是闭源服务，本扩展只是客户端；如果它本身开源，扩展的价值会更高
+- <strong>DeepSeek 同日两个官方仓库</strong>——这是 DeepSeek 开源战略的一次集中投放；如果未来出现 License 收紧或"商业用途另议"，可能影响第三方接入</p>
+<p><strong>机遇：</strong>
+- <strong>DeepSeek 第三方推理栈机会窗口</strong>——任何想复刻 DeepSeek V4.1 行为的小型推理项目可立即基于 DeepSelect + deepseek-recipe 拼出最小可行实现
+- <strong>中文行业 Skill 模板化</strong>——公文/财务/法律/医疗等强合规领域都可以做"GB/T + 国标 + 跨 Harness"模式，gongwen 是首个标杆
+- <strong>MuJoCo 仿真在 RL 训练中的吞吐</strong>——mjbatch 把 4096 并行 sim 变成 Python 一等公民，对 RL 教学与 prototype 阶段直接受益</p>
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>⚡ <a href="../projects/deepselect.html">deepseek-ai/DeepSelect</a>（1 天 232⭐）—— DeepSeek 官方 TopK kernel for DSA + Sampler，2-20× torch.topk 加速，CUDA + MIT，Score 92</li>
+<li>📄 <a href="../projects/gongwen-gbt9704-skill.html">mizzlelover/gongwen-gbt9704-skill</a>（2 天 301⭐）—— 中文公文 GB/T 9704-2012 排版 Skill，跨 8 Harness，MIT，fork/star 18.6%，Score 92</li>
+<li>🔀 <a href="../projects/routevscode.html">yudaprasetya007/routeVSCODE</a>（1 天 326⭐）—— VSCode Copilot Chat Zero-Reload 模型切换，本地代理 + Dashboard + Status Bar，MIT，Score 84</li>
+<li>🤖 <a href="../projects/mjbatch.html">kevinzakka/mjbatch</a>（1 天 215⭐）—— MuJoCo CPU 并行仿真 Python 库，C++ thread pool + GIL 释放，4096 并行 sim，Apache-2.0，Score 86</li>
+<li>🍳 <a href="../projects/deepseek-recipe.html">deepseek-ai/deepseek-recipe</a>（1 天 209⭐）—— DeepSeek 官方 Rust 库 + Python bindings，多格式 API → V4.1 Conversation 转换，MIT，Score 88</li>
+<li>🎨 <a href="../projects/3dviz-pro-max.html">viettranx/3dviz-pro-max</a>（1 天 131⭐）—— Agent Skill for creative 3D，10 步工作流 + 223 recipes + 440 knowledge，Three.js 0.180 + Blender，MIT，Score 82</li>
+<li>🖋️ <a href="../projects/vintage-latex.html">Foadsf/vintage-latex</a>（2 天 191⭐）—— 20 个复古科学论文 LuaLaTeX + MetaPost 示例，机制拆解式工艺课，Score 78</li>
+<li>🛠️ <a href="../projects/sureforge.html">Da7-Tech/SureForge</a>（2 天 86⭐）—— Agent 五段工作纪律 Skill，纯文本 SKILL.md，跨 5 Harness，MIT，Score 76</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (2026-09-11) + 各项目 README 公开摘录 | Stars/Forks 截至 2026-09-11 | 仅记录公开元数据事实，不将热度等同于价值</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

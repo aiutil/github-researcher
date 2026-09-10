@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kevinzakka/mjbatch | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/kevinzakka/mjbatch" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="kevinzakkamjbatch">kevinzakka/mjbatch</h1>
+<h2 id="_1">一句话定位</h2>
+<p>MuJoCo CPU 并行仿真 Python 库——C++ thread pool + GIL 释放，一行 <code>Batch(model, num_sims=4096)</code> 即可并行跑数千个 MuJoCo 仿真，适用于 RL / MPC / SysID / hardware co-design。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>MuJoCo 是 robotics / RL 圈的事实标准仿真器，但其 Python 包装的并行能力受限：要么串行 step（慢），要么用 multiprocessing（IPC 开销大）。mjbatch 通过 C++ thread pool 在 Python 层面提供"4096 个并行 sim"的一等公民 API：(1) GIL 释放使 Python 主线程不阻塞；(2) 实时数组访问 qpos / ctrl 等仿真状态；(3) 每个 sim 可独立设常量参数并触发 derived constants 重算。</p>
+<h2 id="2026-09-11">为什么值得关注（2026-09-11）</h2>
+<ul>
+<li><strong>Stars:</strong> 215（截至 2026-09-11），1 天即达 215⭐，处于"首发即高增长"阶段</li>
+<li><strong>Forks:</strong> 13 / 1 天 = 13 forks/日，<strong>6.0% fork/star 偏低</strong>，反映 star 以"关注 / 收藏"为主，二次开发未铺开</li>
+<li><strong>License:</strong> Apache-2.0——可直接商用</li>
+<li><strong>语言:</strong> Python（含 C++ 扩展）</li>
+<li><strong>活跃度:</strong> created 2026-09-10，pushed_at 2026-09-10，1 天内完成发布</li>
+<li><strong>规模:</strong> 17MB（含 MuJoCo 模型文件 + 示例）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>mjbatch 的热度是 <strong>"MuJoCo 刚需 × Python 侧并行缺口 × RL 训练吞吐"</strong> 的组合。MuJoCo 在四足 / 双足 / manipulation / RL benchmark（HumanoidBench、Meta-World）中是首选仿真器，但 Python 包装的并行能力让大规模 sim2real 训练变慢。mjbatch 直接把"4096 并行 sim"做成一等公民 API，对 RL 训练 / MPC rollout / SysID sweep 是直接的生产力提升。<strong>Go1 RL 在 5 年 M1 笔记本 &lt; 1 min 学会行走</strong>的 README 声明需要 benchmark 复现。热度<strong>真实且具生产可用潜力</strong>——但需观察是否被 vLLM / SGLang 等主流 RL 框架集成。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>C++ thread pool + GIL 释放</strong>——Python 主线程不阻塞，可并发调度数千 sim</li>
+<li><strong><code>Batch(model, num_sims=4096)</code> 一行启动</strong>——threads 默认 = 逻辑 CPU 数</li>
+<li><strong>实时数组访问 qpos / ctrl</strong>——<code>batch.bind("qpos")</code> 返回共享数组，policy 直接写入</li>
+<li><strong><code>set_const</code> 触发 derived constants 重算</strong>——每个 sim 可独立修改参数（如 geom_friction）并重算 derived 物理量</li>
+<li><strong>RL / MPC / SysID / hardware co-design examples</strong>——cartpole swing-up、MPC、Go1 RL 全部自带可运行示例</li>
+<li><strong>Apache-2.0</strong>——商业可用，无法律障碍</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>MuJoCo Python 包装 + C++ thread pool；用户定义 num_sims 后所有 step 并行；实时数组与 batch 共享内存</td>
+<td>仅基于 README 明示的 Batch API、bind 接口、set_const 行为；具体 thread pool 调度策略（静态 / 动态）、NUMA 感知、SIMD 优化未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>policy 输出 ctrl → 写入 batch.bind("ctrl") 共享数组 → batch.step() 并行推进 → qpos 实时更新 → policy 读取</td>
+<td>主路径为 README 示例代码语义；具体 step 内部是否使用 SIMD、是否走 SIMD intrinsics 待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单机 CPU 并行 vs GPU 仿真（如 Isaac Gym / MJX）vs 跨机器分布式 vs 易用性 vs 维护成本</td>
+<td>档案明示与 Isaac Gym/MJX 的 CPU 路径差异（未直接对比，但 README 强调 CPU 并行）；GPU 仿真性能对比未在档案中给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>跑 cartpole_swingup 示例，对比 mjbatch 与单线程 MuJoCo 的 wall-clock；调整 num_sims 看加速曲线</td>
+<td>PoC 范围由 README 示例推导；具体硬件（CPU 型号、核数、SMT）、SLO（steps/sec）需自行测量</td>
+</tr>
+<tr>
+<td>风险</td>
+<td>MuJoCo 版本绑定、Python GIL 释放后多线程安全问题、跨平台（Windows / macOS / Linux）兼容性未在档案中明示</td>
+<td>档案明示三项风险</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>mjbatch 的核心启发是 <strong>"Python 侧的并行吞吐缺口可以用 C++ thread pool + GIL 释放来补"</strong>。MuJoCo 本身是 C 库，理论上支持多线程，但 Python 包装层（dm_control / mujoco-py）受 GIL 限制。mjbatch 直接在 C++ 层做线程调度，把 Python 接口降到"声明式"——<code>Batch(model, num_sims=4096)</code> 一行启动，policy 写共享数组即可。<strong>更深层的启发是：仿真器的并行能力不应绑定到 GPU（如 Isaac Gym / MJX）——CPU 并行在 RL rollout / MPC inner loop / SysID sweep 场景下仍有不可替代的成本优势。</strong> 这与 wshobson/agents 的"通用适配层"思路相似：mjbatch 在仿真器领域做"声明式并行 API"。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  UserPy[Python policy] --> Bind[batch.bind ctrl / qpos]
+  Bind --> SharedMem[共享内存数组<br/>num_sims 维度]
+  SharedMem --> Pool[C++ thread pool<br/>GIL 释放]
+  Pool --> S1[Sim 1]
+  Pool --> S2[Sim 2]
+  Pool --> SN[Sim N num_sims=4096]
+  S1 --> Pool
+  S2 --> Pool
+  SN --> Pool
+  Pool --> Step[batch.step 并行推进]
+  Step --> SharedMem
+  UserPy -.step 后.-> Read[读取 qpos 实时更新]
+  UserPy -.set_const.-> Const[geom_friction 等参数独立修改<br/>derived constants 重算]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（MuJoCo Python 并行仿真库）。</strong> mjbatch 不抢 MuJoCo 本身的生态，而是补 Python 侧的并行吞吐缺口。它的价值与"CPU 并行仿真"使用场景正相关——RL 训练、MPC inner loop、SysID sweep。<strong>值得持续跟踪</strong>工具型定位。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>MuJoCo 版本绑定</strong>——README 未明示依赖的 MuJoCo 版本，跨大版本升级可能 break</li>
+<li><strong>Python GIL 释放后多线程安全问题</strong>——C++ 层的内存模型需要严格保证，第三方扩展需谨慎</li>
+<li><strong>跨平台兼容性未明示</strong>——macOS / Windows / Linux 上的表现可能差异</li>
+<li><strong>17MB 仓库 size 偏大</strong>——主要是 MuJoCo 模型文件 + 示例</li>
+<li><strong>"Go1 RL 在 5 年 M1 笔记本 &lt; 1 min"</strong>——README 自述未提供 benchmark 脚本路径，需要复现</li>
+<li><strong>个人项目属性</strong>——单作者维护，企业级 SLA 未承诺</li>
+<li><strong>CPU 并行 vs GPU 仿真（Isaac Gym / MJX）性能对比未给出</strong>——用户需自行评估</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs dm_control / mujoco-py：</strong> MuJoCo 官方 Python 包装；mjbatch 在其上加并行层</li>
+<li><strong>vs Isaac Gym / Isaac Lab：</strong> GPU 并行仿真；mjbatch 是 CPU 并行</li>
+<li><strong>vs MJX：</strong> MuJoCo 的 JAX 实现，GPU/TPU 并行；mjbatch 是 CPU 多线程</li>
+<li><strong>vs Brax：</strong> Google 的 differentiable 物理仿真；mjbatch 不可微分但 CPU 易用</li>
+<li><strong>vs Genesis：</strong> 近期出现的物理仿真新秀；mjbatch 是 MuJoCo 生态专属</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（MuJoCo Python 并行仿真）。</strong> mjbatch 解决了 MuJoCo 用户的明确痛点（Python 侧并行吞吐），且 Apache-2.0 友好。建议关注：(1) 是否被 Stable Baselines3 / RLlib / CleanRL 等主流 RL 框架集成；(2) 跨平台兼容性；(3) 是否扩展到更多场景（如 differentiable sim）。对 MuJoCo 用户，本仓库直接提升日常仿真吞吐；对 robotics 仿真观察者，它是"CPU 并行 vs GPU 并行"路线的代表样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否被 Stable Baselines3 / RLlib / CleanRL 等主流 RL 框架集成</li>
+<li>跨平台兼容性（macOS Apple Silicon / Windows / Linux x86）</li>
+<li>"Go1 RL &lt; 1 min" benchmark 是否可复现</li>
+<li>是否扩展到 differentiable sim / 多机分布式</li>
+<li>MuJoCo 新版本（4.x → 5.x）兼容性</li>
+<li>是否有 CUDA 后端（虽然 README 强调 CPU）</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-09-11</em></p>
+<blockquote>
+<p>数据来源: GitHub API (2026-09-11) | Stars: 215 | Forks: 13 | License: Apache-2.0 | 语言: Python | 创建: 2026-09-10</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

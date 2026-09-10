@@ -4,6 +4,38 @@
 
 ---
 
+## 2026-09-11
+**核心主题：** deepseek-ai/DeepSelect 1 天 232⭐ DeepSeek 官方 TopK kernel for DSA（2-20× torch.topk · V3.2/V4/V4.1 · Lightning Indexer + Sampler） · mizzlelover/gongwen-gbt9704-skill 2 天 301⭐ 中文公文 GB/T 9704-2012 排版 Skill（跨 8 Harness · DOCX · fork/star 18.6%） · yudaprasetya007/routeVSCODE 1 天 326⭐ VSCode Copilot Chat Zero-Reload 模型切换（9Router · 40+ Provider · fork 0） · kevinzakka/mjbatch 1 天 215⭐ MuJoCo CPU 并行仿真 Python 库（C++ thread pool · GIL 释放 · 4096 并行 sim） · deepseek-ai/deepseek-recipe 1 天 209⭐ Rust 库 + Python bindings 把多格式 API 统一转 DeepSeek V4.1 Conversation · Foadsf/vintage-latex 2 天 191⭐ 20 个复古科学论文 LuaLaTeX+MetaPost 独立示例 · viettranx/3dviz-pro-max 1 天 131⭐ Agent Skill Three.js/Blender 创意 3D（223 recipes · 440 knowledge · 37 runnable studies）· Da7-Tech/SureForge 2 天 86⭐ Agent 五段工作纪律 Skill（research/ask/plan/build/verify/review · 跨 5 Harness）
+
+**证据边界：** 星标、总星数与增速取自 2026-09-11 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README 公开摘录（raw.githubusercontent.com 拉取）；"X 天 Y⭐"基于 created_at→2026-09-11 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。**今日最大事件是 DeepSeek 同日双发官方仓库：DeepSelect（TopK kernel for DSA，2-20× torch.topk 加速）+ deepseek-recipe（Rust+Python bindings 把 Messages/Chat Completions/Responses 三格式统一转 V4.1 Conversation），与模型权重构成 V4.1 第三方复刻的"算子 + 接口 + 权重"三层资产**。`mizzlelover/gongwen-gbt9704-skill` 18.6% fork/star 是企业 fork 信号，反映"中文行业合规文档 Skill 化"模式首次落地；`x4gpanell/3x-ui_runonflux` 100⭐ / fork 185（fork/star 185%）极异常，反映批量 fork 用于衍生部署而非真实热度，本简报不将其列入核心趋势；`yudaprasetya007/routeVSCODE` fork 0 但 stars 326 反映通过 VSCode Marketplace 分发为主，README 全印尼语说明作者在印尼开发者社区有强传播渠道。
+
+**关键项目：**
+- ⚡ deepseek-ai/DeepSelect (1 天 232⭐) — DeepSeek 官方 TopK kernel for DSA + Sampler（bf16 Lightning Indexer + fp32 Sampler · 2-20× torch.topk 加速 · topk ≤ 4096 · CUDA + MIT · fork/star 3.9%），Score 92
+- 📄 mizzlelover/gongwen-gbt9704-skill (2 天 301⭐) — 中文公文 GB/T 9704-2012 排版 Skill（A4/版心/字体/标题层级/机构文号/页码 · 跨 Claude Code/Codex/OpenCode/Trae Code/Kimi/TraeWork/WorkBuddy/ZCode 8 Harness · 字体兼容层 · MIT · fork/star 18.6%），Score 92
+- 🔀 yudaprasetya007/routeVSCODE (1 天 326⭐) — VSCode Copilot Chat 零重启模型切换（9Router Gateway · 本地代理 :20129 + SSE · 40+ Provider · Web Dashboard :5500 + Status Bar · MIT · fork 0），Score 84
+- 🤖 kevinzakka/mjbatch (1 天 215⭐) — MuJoCo CPU 并行仿真 Python 库（C++ thread pool + GIL 释放 · Batch(num_sims=4096) · bind('qpos'/'ctrl') · set_const 重算 derived · RL/MPC/SysID/hardware co-design examples · Apache-2.0 · fork/star 6.0%），Score 86
+- 🍳 deepseek-ai/deepseek-recipe (1 天 209⭐) — DeepSeek 官方 Rust + Python bindings（Messages/Chat Completions/Responses 三格式 → V4.1 Conversation · thinking mode + reasoning effort + temperature/top_p/output limit · 输出解析 thinking/tool call/JSON/stop · 图像 base64/URL · V4.1 preprocessing OpenCV · 推理后端外部提供 · MIT · fork/star 5.3%），Score 88
+- 🖋️ Foadsf/vintage-latex (2 天 191⭐) — 20 个复古科学论文 LuaLaTeX + MetaPost 独立示例（纯 LaTeX 页 + 独立 fiziko MetaPost 图 + LuaTeX 内嵌 fiziko · 雕版图/星空图/对数表/Hooke 装置/望远镜图/月相 · PowerShell · NOASSERTION · fork/star 7.3%），Score 78
+- 🎨 viettranx/3dviz-pro-max (1 天 131⭐) — Agent Skill for creative 3D visualization（10 步工作流 · 223 recipes · 440 knowledge records · 22 proved kits · 37 runnable studies · Three.js 0.180 + Blender + GLTF · Claude Code + Codex plugin · MIT · fork/star 17.6%），Score 82
+- 🛠️ Da7-Tech/SureForge (2 天 86⭐) — Agent 五段工作纪律 Skill（research before ask / ask before plan / plan before build / verify before deliver / independent review before done · 纯文本 SKILL.md 无运行时无 hook 无依赖 · 跨 Claude Code/Codex/Cursor/Devin/hermes-agent 5 Harness · MIT · fork/star 10.5%），Score 76
+- 💼 HammingDev/haiming-app-monetization (2 天 164⭐) — App 商业化 Skill（onboarding + 付费墙 + 内购选项 + 竞品调研 · MIT · fork/star 13.4%），作为 SureForge 的"流程纪律"同伴项目一并列出
+
+**关键判断：**
+- **DeepSeek 官方"算子 + 接口 + 权重"三层资产同步开源是今日 GitHub 史上最重要的单一公司事件**：deepseek-ai/DeepSelect（TopK kernel for DSA，2-20× torch.topk 加速）+ deepseek-ai/deepseek-recipe（Rust+Python bindings 把 Messages/Chat Completions/Responses 三格式统一转 V4.1 Conversation）同窗并发；任何想做 V4.1 推理兼容服务的第三方（vLLM / SGLang / 自研推理栈）可立即拼出"上层接口 + 下层算子"双配件 + 模型权重 = 最小可行服务；DeepSelect 的"2-20×" 区间宽，端点值取决于 dtype/batch/vocab/topk 组合，第三方接入需先在自家硬件上跑 benchmark
+- **中文公文 GB/T 9704-2012 Skill 标准化是中文行业 Skill 的首个标杆**：mizzlelover/gongwen-gbt9704-skill 18.6% fork/star 是企业 fork 信号（远超 3-8% 个人项目基线）；跨 8 Harness（Claude Code/Codex/OpenCode/Trae Code/Kimi/TraeWork/WorkBuddy/ZCode）一次性分发；GB/T 9704-2012 国标依据 + 字体兼容性专门处理；模式可推广到财务/法律/医疗等强合规领域
+- **MuJoCo Python 侧并行缺口被补上**：kevinzakka/mjbatch 把 C++ thread pool + GIL 释放 + 4096 并行 sim 做成一等公民 API；Go1 RL 在 5 年 M1 笔记本 < 1 min 学会行走的 README 声明需要 benchmark 复现；Apache-2.0 友好
+- **VSCode Copilot Chat 模型路由独立产品化**：yudaprasetya007/routeVSCODE 326⭐ / fork 0 通过 VSCode Marketplace 分发为主；零重启技术演示 + 40+ Provider + 9Router 配套 Gateway；fork=0 但 stars=326 反映分发路径偏置
+- **Agent Skill 从"加能力"推到"立规矩 + 定流程"**：viettranx/3dviz-pro-max 223 recipes + 440 knowledge + 37 runnable studies + capture helper 把 Skill 从"一段提示词"推到"模板库 + 验证流程"层级；Da7-Tech/SureForge 五段质量纪律（research/ask/plan/build/verify/review）+ HammingDev/haiming-app-monetization（商业化流程）一同把 Skill 推到"组织级治理"层面
+- **复古科学论文排版工艺课**：Foadsf/vintage-latex 20 个独立可编译示例的"机制拆解式教学"与 Skill / Agent 趋势正交；受众较窄（LaTeX 排版爱好者 + 科学插图创作者），但 191⭐ 反映 LaTeX 圈对高质量作品集的需求
+- **PowerShell 仓库出现反映跨平台工作流习惯**：Foadsf/vintage-latex 主语言为 PowerShell，构建脚本跨平台体验不佳；但 LaTeX 部分跨平台兼容
+- **License 风险待观察**：deepseek-ai/DeepSelect / deepseek-ai/deepseek-recipe 当前 MIT 友好，但 DeepSeek 之前的部分仓库有"商业用途另议"争议；Foadsf/vintage-latex 为 NOASSERTION，使用风险不明确
+
+# GitHub 趋势研究 · 日报索引
+
+> 每日 GitHub 趋势研究简报，持续跟踪不间断
+
+---
+
 ## 2026-09-09
 **核心主题：** openai/NavierStokesAndEuler 1 天 635⭐ OpenAI 官方 Lean 形式化千禧年 Navier-Stokes/Euler 有限时间爆破 · henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐ Turnstile Peak API 标准化求解 CLI · Sophomoresty/turnstile-bypass 2 天 305⭐ 跨平台 Turnstile + cf_clearance · gazijarin/itsgiving 1 天 307⭐ Webcam 表情包虚拟摄像头 · tristanbuckmaster/fluid_lean 1 天 168⭐ 流体动力学 Lean 教程资源 · lfzk550/fanzha-ai-proxy 2 天 285⭐ 反诈 AI OpenAI 兼容代理 · noskillish/bankmcp 2 天 160⭐ 银行 MCP 自托管只读 · cclank/clay-safari 2 天 135⭐ 黏土风格 3D 双语儿童动物世界 · HRuiCcc/RuiC-card-skill 2 天 116⭐ 全息闪卡 Codex Skill 跟随
 

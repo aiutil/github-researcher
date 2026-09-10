@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-09.md">最新日报</a> ·
+  <a href="daily/2026-09-11.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-09
+## 最新研究 · 2026-09-11
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 10 | 561 | 7 | 10K+ |
+| 8 | 569 | 7 | 12K+ |
 
-**今日核心判断：** openai/NavierStokesAndEuler 1 天 635⭐ OpenAI 官方 Lean 形式化千禧年 Navier-Stokes/Euler 有限时间爆破 · henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐ Turnstile Peak API 标准化求解 CLI · Sophomoresty/turnstile-bypass 2 天 305⭐ 跨平台 Turnstile + cf_clearance · gazijarin/itsgiving 1 天 307⭐ Webcam 表情包虚拟摄像头 · tristanbuckmaster/fluid_lean 1 天 168⭐ 流体动力学 Lean 教程资源 · lfzk550/fanzha-ai-proxy 2 天 285⭐ 反诈 AI OpenAI 兼容代理 · noskillish/bankmcp 2 天 160⭐ 银行 MCP 自托管只读 · cclank/clay-safari 2 天 135⭐ 黏土风格 3D 双语儿童动物世界 · HRuiCcc/RuiC-card-skill 2 天 116⭐ 全息闪卡 Codex Skill 跟随
+**今日核心判断：** deepseek-ai/DeepSelect 1 天 232⭐ DeepSeek V3.2/V4/V4.1 TopK 内核（2-20× torch.topk 加速 · DSA · Lightning Indexer） · mizzlelover/gongwen-gbt9704-skill 2 天 301⭐ 中文公文 GB/T 9704-2012 排版 Skill（多 AI Harness · DOCX · fork/star 18.6%） · yudaprasetya007/routeVSCODE 1 天 326⭐ VSCode Copilot Chat Zero-Reload 模型切换本地代理（9Router · 40+ Provider） · kevinzakka/mjbatch 1 天 215⭐ MuJoCo CPU 并行仿真 Python 库（C++ thread pool · GIL 释放 · RL/MPC/SysID） · deepseek-ai/deepseek-recipe 1 天 209⭐ Rust 库把多种 API 格式统一转换到 DeepSeek V4.1 Conversation · Foadsf/vintage-latex 2 天 191⭐ 20 个复古科学论文 LuaLaTeX+MetaPost 示例 · viettranx/3dviz-pro-max 1 天 131⭐ Agent Skill Three.js/Blender 创意 3D 可视化（223 recipes · 440 knowledge · 37 runnable studies）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [openai/NavierStokesAndEuler](projects/navierstokesandeuler.md) | 635 stars | 学术 / 形式化 |
-| [henryzawadzki6542/cloudflare-turnstile-bypass](projects/cloudflare-turnstile-bypass.md) | 367 stars | 工具型 |
-| [gazijarin/itsgiving](projects/itsgiving.md) | 307 stars | 工具型 |
-| [Sophomoresty/turnstile-bypass](projects/turnstile-bypass.md) | 305 stars | 工具型 |
-| [lfzk550/fanzha-ai-proxy](projects/fanzha-ai-proxy.md) | 285 stars | 工具型 |
-| [tristanbuckmaster/fluid_lean](projects/fluid-lean.md) | 168 stars | 学术 / 形式化 |
-| [noskillish/bankmcp](projects/bankmcp.md) | 160 stars | 工具型 |
-| [cclank/clay-safari](projects/clay-safari.md) | 135 stars | 工具型 |
+| [deepseek-ai/DeepSelect](projects/deepselect.md) | 232 stars | 基础设施候选 |
+| [mizzlelover/gongwen-gbt9704-skill](projects/gongwen-gbt9704-skill.md) | 301 stars | 工具型 |
+| [yudaprasetya007/routeVSCODE](projects/routevscode.md) | 326 stars | 工具型 |
+| [kevinzakka/mjbatch](projects/mjbatch.md) | 215 stars | 工具型 |
+| [deepseek-ai/deepseek-recipe](projects/deepseek-recipe.md) | 209 stars | 基础设施候选 |
+| [viettranx/3dviz-pro-max](projects/3dviz-pro-max.md) | 131 stars | 工具型 |
+| [Foadsf/vintage-latex](projects/vintage-latex.md) | 191 stars | 工具型 |
+| [Da7-Tech/SureForge](projects/sureforge.md) | 86 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **openai-lean-formalization-millennium / OpenAI 官方 Lean 形式化千禧年数学问题——openai/NavierStokesAndEuler 1 天 635⭐（fork 48 / Lean 4.34.0-rc2 + Mathlib + Lake + formalization.yaml v0.4 + Comparator 独立核验 + sorry_count=0）形式化证明 Navier-Stokes 方案 C/D 与 Euler 有限时间爆破** · 相关项目：openai/NavierStokesAndEuler, tristanbuckmaster/fluid_lean · 强度：98
-2. **turnstile-solver-cross-platform-eclipse / Turnstile 求解器跨平台与 SaaS 化爆发——henryzawadzki6542/cloudflare-turnstile-bypass 1 天 367⭐（Peak API 标准化 + 零依赖 CLI）+ Sophomoresty/turnstile-bypass 2 天 305⭐（macOS/Windows/Linux 跨平台 + headed Chrome + cf_clearance）+ 昨日 biusberline/cloudflare-turnstile-solver 258⭐；3 个 Turnstile 项目在 48h 内同时上榜** · 相关项目：henryzawadzki6542/cloudflare-turnstile-bypass, Sophomoresty/turnstile-bypass, biusberline/cloudflare-turnstile-solver · 强度：90
-3. **vertical-llm-skill-distillation-cn / 中文垂直领域 Skill 蒸馏成为独立品类——lfzk550/fanzha-ai-proxy 2 天 285⭐（国家反诈 AI OpenAI 兼容反向代理 + 90 天长效会话）+ eternity4719/HowToLiveBetter 2 天 122⭐（440 条循证生活指南 A/B/C 三级证据分级）；中文场景 Skill / Prompt 适配层开始批量出现** · 相关项目：lfzk550/fanzha-ai-proxy, eternity4719/HowToLiveBetter, jtydhr88/screenwriting-skills · 强度：86
-4. **mcp-finance-self-hosted / 金融 MCP 自托管只读成为新方向——noskillish/bankmcp 2 天 160⭐（Enable Banking PSD2 + 2700+ 欧洲银行 + self-hosted + Standard MCP + tested with Claude/Ollama）；把金融数据下推到用户自托管 MCP 而非云端 SaaS** · 相关项目：noskillish/bankmcp · 强度：84
+1. **deepseek-official-kernel-release / DeepSeek 官方内核与 API 适配库同窗爆发——deepseek-ai/DeepSelect 1 天 232⭐（TopK kernel for DeepSeek Sparse Attention · V3.2/V4/V4.1 · bfloat16 / float32 · Lightning Indexer + Sampler · 2-20× torch.topk 加速 · benchmark 公开 · CUDA + MIT）+ deepseek-ai/deepseek-recipe 1 天 209⭐（Rust + Python bindings · 把 Messages / Chat Completions / Responses 多格式请求统一转换到 DeepSeek V4.1 Conversation · 推理后端无关）** · 相关项目：deepseek-ai/DeepSelect, deepseek-ai/deepseek-recipe · 强度：94
+2. **chinese-formal-document-skill / 中文正式材料 Skill 首次标准化——mizzlelover/gongwen-gbt9704-skill 2 天 301⭐（GB/T 9704-2012 国标依据 · A4 + 版心 + 字体 + 标题层级 + 机构文号 + 页码 · 跨 Claude Code / Codex / OpenCode / Trae Code / Kimi / TraeWork / WorkBuddy / ZCode 8 Harness · fork 56 · fork/star 18.6% 高企服信号）** · 相关项目：mizzlelover/gongwen-gbt9704-skill · 强度：92
+3. **zero-reload-copilot-model-router / VSCode Copilot Chat Zero-Reload 模型切换——yudaprasetya007/routeVSCODE 1 天 326⭐（9Router Gateway · Local Proxy Port 20129 · SSE 流式注入 · 40+ Provider · Live Model Comparison · Status Bar 切换 · Web Dashboard :5500 · MIT）** · 相关项目：yudaprasetya007/routeVSCODE · 强度：84
+4. **robotics-mujoco-batch-cpu / MuJoCo CPU 并行仿真库——kevinzakka/mjbatch 1 天 215⭐（C++ thread pool + GIL 释放 · Batch(num_sims=4096) · set_const 重算 derived constants · 应用于 RL / MPC / SysID / hardware co-design · Go1 RL 在 5 年 M1 笔记本 < 1 min 学会行走 · Apache-2.0）** · 相关项目：kevinzakka/mjbatch · 强度：86
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 | [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
-| [2026-09-02](daily/2026-09-02.md) | 8 | 5 |
 
 ## 为什么做这个项目
 

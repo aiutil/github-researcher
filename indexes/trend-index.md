@@ -1,9 +1,38 @@
 ---
 date: '2026-04-10'
-last_updated: '2026-09-09'
+last_updated: '2026-09-11'
 summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
+
+## 2026-09-11
+
+### yudaprasetya007/routeVSCODE（326 stars）· mizzlelover/gongwen-gbt9704-skill（301 stars）· deepseek-ai/DeepSelect（232 stars）· kevinzakka/mjbatch（215 stars）· deepseek-ai/deepseek-recipe（209 stars）· Foadsf/vintage-latex（191 stars）· viettranx/3dviz-pro-max（131 stars）· HammingDev/haiming-app-monetization（164 stars）· Da7-Tech/SureForge（86 stars）
+
+> 证据边界：项目名称、星标、tags、description 来自 2026-09-11 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README 公开摘录（raw.githubusercontent.com 拉取）。"X 天 Y⭐"基于 created_at→2026-09-11 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。**今日最大事件是 DeepSeek 同日双发官方仓库：DeepSelect（TopK kernel for DSA，2-20× torch.topk 加速）+ deepseek-recipe（Rust+Python bindings 把 Messages/Chat Completions/Responses 三格式统一转 V4.1 Conversation），与模型权重构成 V4.1 第三方复刻的"算子 + 接口 + 权重"三层资产。**  18.6% fork/star 是企业 fork 信号； 100⭐ / fork 185（fork/star 185%）极异常，反映批量 fork 用于衍生部署而非真实热度，本简报不列入核心趋势。Skill 趋势继续爆发： 223 recipes + 440 knowledge + 37 runnable studies + capture helper 把 Skill 从"一段提示词"推到"模板库 + 验证流程"层级；（五段质量纪律）+ （商业化流程）一同把 Skill 推到"立规矩 + 定流程"层面。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | deepseek-official-kernel-recipe / DeepSeek 官方内核 + API 适配库同窗双发——deepseek-ai/DeepSelect 1 天 232⭐（TopK kernel for DSA · bfloat16 Lightning Indexer + float32 Sampler · 2-20× torch.topk 加速 · V3.2/V4/V4.1 通用 · CUDA + MIT）+ deepseek-ai/deepseek-recipe 1 天 209⭐（Rust+Python bindings · Messages/Chat Completions/Responses 三格式统一转 V4.1 Conversation · thinking/tool call/JSON/stop 输出解析 · 推理后端外部提供） | deepseek-ai/DeepSelect | 94 |
+| 2 | chinese-formal-document-skill / 中文公文 GB/T 9704-2012 Skill 标准化——mizzlelover/gongwen-gbt9704-skill 2 天 301⭐（国标依据 A4/版心/字体/标题层级/机构文号/页码 · 跨 Claude Code/Codex/OpenCode/Trae Code/Kimi/TraeWork/WorkBuddy/ZCode 8 Harness · 字体兼容层 · fork 56 / fork/star 18.6% 高企服信号 · MIT） | mizzlelover/gongwen-gbt9704-skill | 92 |
+| 3 | mujoco-cpu-batch-parallel / MuJoCo CPU 并行仿真库——kevinzakka/mjbatch 1 天 215⭐（C++ thread pool + GIL 释放 · Batch(num_sims=4096) · bind('qpos'/'ctrl') + set_const · Go1 RL 在 5 年 M1 笔记本 < 1 min 学会行走 · RL/MPC/SysID/hardware co-design examples · Apache-2.0） | kevinzakka/mjbatch | 86 |
+| 4 | zero-reload-copilot-model-router / VSCode Copilot Chat 零重启模型切换——yudaprasetya007/routeVSCODE 1 天 326⭐（9Router Gateway · 本地代理 Port 20129 + SSE 流式注入 · 40+ Provider 含 OpenAI/Anthropic/Gemini/DeepSeek/Groq/OpenRouter · Web Dashboard :5500 + Status Bar · fork 0 反映 Marketplace 分发为主 · MIT） | yudaprasetya007/routeVSCODE | 84 |
+| 5 | agent-skill-creative-3d-template / Agent Skill 创意 3D 可视化复用库——viettranx/3dviz-pro-max 1 天 131⭐（10 步工作流 · 223 recipes · 440 knowledge records · 22 proved kits · 37 runnable studies · Three.js 0.180 + Blender + GLTF · Claude Code + Codex plugin · fork 23 / fork/star 17.6%） | viettranx/3dviz-pro-max | 82 |
+| 6 | vintage-typography-latex-fiziko / 复古科学论文 LuaLaTeX+MetaPost 机制拆解教学——Foadsf/vintage-latex 2 天 191⭐（20 个独立可编译示例 · 三类分组：纯 LaTeX 页 + 独立 fiziko MetaPost 图 + LuaTeX 内嵌 fiziko · 雕版图/星空图/对数表/Hooke 装置/望远镜图/月相） | Foadsf/vintage-latex | 78 |
+| 7 | agent-skill-priorities-discipline / Agent 工作纪律 + 商业化流程 Skill 化——Da7-Tech/SureForge 2 天 86⭐（research before ask / ask before plan / plan before build / verify before deliver / independent review before done 五段纪律 · 纯文本 SKILL.md 无运行时无 hook 无依赖 · 跨 Claude Code/Codex/Cursor/Devin/hermes-agent 5 Harness）+ HammingDev/haiming-app-monetization 2 天 164⭐（App 商业化 Skill：onboarding + 付费墙 + 内购选项 + 竞品调研） | Da7-Tech/SureForge | 76 |
+
+#### 当日重点项目
+
+- ⚡ deepseek-ai/DeepSelect (1 天 232⭐) — DeepSeek 官方 TopK kernel for DSA + Sampler，2-20× torch.topk 加速，CUDA + MIT，Score 92
+- 📄 mizzlelover/gongwen-gbt9704-skill (2 天 301⭐) — 中文公文 GB/T 9704-2012 排版 Skill，跨 8 Harness，MIT，fork/star 18.6%，Score 92
+- 🔀 yudaprasetya007/routeVSCODE (1 天 326⭐) — VSCode Copilot Chat Zero-Reload 模型切换，9Router Gateway + 本地代理，MIT，Score 84
+- 🤖 kevinzakka/mjbatch (1 天 215⭐) — MuJoCo CPU 并行仿真 Python 库，C++ thread pool + GIL 释放，4096 并行 sim，Apache-2.0，Score 86
+- 🍳 deepseek-ai/deepseek-recipe (1 天 209⭐) — DeepSeek 官方 Rust + Python bindings，多格式 API → V4.1 Conversation 转换，MIT，Score 88
+- 🎨 viettranx/3dviz-pro-max (1 天 131⭐) — Agent Skill for creative 3D，10 步工作流 + 223 recipes + 440 knowledge + 37 runnable studies，MIT，Score 82
+- 🖋️ Foadsf/vintage-latex (2 天 191⭐) — 20 个复古科学论文 LuaLaTeX + MetaPost 独立示例，机制拆解式教学，Score 78
+- 🛠️ Da7-Tech/SureForge (2 天 86⭐) — Agent 五段工作纪律 Skill（research/ask/plan/build/verify/review），纯文本 SKILL.md，跨 5 Harness，MIT，Score 76
+
+
 
 ## 2026-09-09
 
