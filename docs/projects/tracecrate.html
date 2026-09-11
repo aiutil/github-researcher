@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FankChen/tracecrate | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/FankChen/tracecrate" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="fankchentracecrate">FankChen/tracecrate</h1>
+<h2 id="_1">一句话定位</h2>
+<p>TraceCrate——Local-first AI Agent Trace Workbench；客户端解析 Claude Code / Codex / OTLP 日志，生成可搜索 timeline + recorded metrics + heuristic diagnostics + side-by-side 对比；无后端、无遥测、无账号、无 API key。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2025-2026 年 AI Coding Agent（Claude Code / Codex / Aider 等）在开发者工作流中渗透，但运行结果的可观测性是空白——Langfuse / Helicone / Phoenix 等 AI observability 平台都要 SaaS 接入或本地部署服务端，企业对"agent 行为日志外发"有隐私顾虑。<strong>TraceCrate 把"只看 / 不执行"的只读工作台完全 client-side 化</strong>——用户打开本地日志文件，浏览器内解析、对比、导出，无需任何后端服务。这是面向"agent 用户不信任 SaaS 但又想看自己 trace"的精准切入。</p>
+<h2 id="2026-09-12">为什么值得关注（2026-09-12）</h2>
+<ul>
+<li>2 天 92⭐ / fork 2——早期阶段</li>
+<li>MIT license——商业友好</li>
+<li>Live demo 已上线（fankchen.github.io/tracecrate）</li>
+<li>v0.1.0 已发布（GitHub Releases）</li>
+<li>React + Vite + Node.js ≥22.12（24 推荐）</li>
+<li>仅客户端，不执行 agent 不运行 recorded commands</li>
+<li>截图明确标注"all events and values are synthetic demo data, not benchmark results"——透明诚信</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>TraceCrate 处于 AI observability 赛道——Langfuse、Helicone、Phoenix、Arize、LangSmith 等都在抢"AI Agent 可观测性"的位子。<strong>TraceCrate 的差异化是「local-first + 只读 + 无后端」三哲学合一</strong>——不与 SaaS observability 平台正面竞争，而是占据"用户不信任 SaaS"的细分。<strong>热度来源是「AI Agent 可观测性需求 × 企业隐私顾虑 × 浏览器内本地解析技术成熟」三因素叠加</strong>。但 fork=2 / 92⭐ 反映早期阶段，主要是被「隐私 + 哲学」吸引的用户群。<strong>热度真实但属于「细分市场」</strong>，能否扩展取决于支持的日志格式丰富度。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Local-first 架构</strong>：浏览器内解析本地日志文件，无后端无遥测无账号无 API key</li>
+<li><strong>多格式日志解析</strong>：Claude Code / Codex / OTLP（OpenTelemetry）三种主流日志格式</li>
+<li><strong>可搜索 timeline + recorded metrics</strong>：把 agent 运行 trace 转换成可视化 timeline + 性能指标</li>
+<li><strong>side-by-side 对比</strong>：多个 agent run 并排对比，便于 A/B 测试 prompt / 模型 / 工具</li>
+<li><strong>heuristic diagnostics</strong>：启发式诊断（识别异常模式、超时、错误循环等）</li>
+<li><strong>privacy-conscious 导出</strong>：可导出报告但不含敏感数据</li>
+<li><strong>Live demo 透明诚信</strong>：截图明确标注"all events and values are synthetic demo data, not benchmark results"</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单页 Web App（React + Vite）+ 浏览器内本地日志解析；Live demo 静态托管（GitHub Pages）；无后端服务</td>
+<td>仅基于 README + GitHub 元数据；具体日志解析器实现（OTLP 兼容深度）、性能基准、移动端兼容均待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户上传/选择本地日志文件 → 浏览器内解析 → 生成 timeline + metrics → 用户交互（搜索 / 对比 / 诊断）→ 可选导出报告</td>
+<td>主路径为 README 语义抽象；大文件解析性能、并发会话管理、浏览器存储限制均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>local-first 隐私 vs 日志格式兼容性 vs 仅客户端功能边界 vs "导出"产品哲学漂移 vs 早期阶段生态</td>
+<td>档案明示「privacy-first」哲学与仅客户端不执行特性；导出功能边界、Claude Code / Codex 日志格式变化适应机制均待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>浏览器打开 Live demo（fankchen.github.io/tracecrate）；选一个 Claude Code JSONL 日志；查看 timeline；做 side-by-side 对比两个 run；导出过滤后的报告</td>
+<td>PoC 范围与退出路径由档案"先 demo / 后本地、最小化数据外发、可审计"原则推导；具体 OTLP 兼容深度、性能基准、扩展能力均待核验</td>
+</tr>
+<tr>
+<td>依赖与红线</td>
+<td>依赖 Node.js ≥22.12；MIT license；浏览器内解析意味着大日志文件受浏览器内存限制；GitHub Pages 托管 demo 数据均为合成</td>
+<td>依赖与红线均来自 README + GitHub 元数据；具体大文件流式解析能力、移动端 PWA 支持、多语言均待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；“待核验”节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[Agent 开发者] -->|上传本地日志文件| Browser[浏览器内 React + Vite]
+  Browser -->|解析| Parser[本地日志解析器<br/>Claude Code / Codex / OTLP]
+  Parser -->|timeline + metrics| View[可视化视图]
+  View -->|搜索 / 对比 / 诊断| User
+  View -.可选导出过滤后报告.-> Export[privacy-conscious 导出]
+  Browser -.无后端无遥测.-> NoBackend[无 SaaS 依赖]
+  Browser -.GitHub Pages 静态托管.-> Demo[Live demo 数据为合成]
+  Parser -.浏览器内存限制.-> Limit[大文件流式解析能力 待核验]
+  View -.哲学漂移风险.-> Philosophy[只读不执行边界]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>TraceCrate 的核心启发是 <strong>「只读工作台完全 client-side 化」</strong>——不与 SaaS observability 平台正面竞争，而是占据"用户不信任 SaaS"的细分。<strong>更深层的启发是「截图透明诚信」</strong>——明确标注"all events and values are synthetic demo data, not benchmark results"，避免误导用户。<strong>最值得借鉴的是「多格式日志解析 + side-by-side 对比」的工程选择</strong>——不追求支持所有 agent，而是把主流（Claude Code / Codex / OTLP）做扎实，配合 A/B 对比工作流。<strong>哲学边界（只读不执行）是产品灵魂，不能漂移</strong>。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（local-first AI observability 工作台）。</strong> TraceCrate 与 Langfuse / Helicone / Phoenix / Arize / LangSmith 处于同一赛道，但走"local-first + 只读 + 无后端"的差异化路线。<strong>真正的差异化是「隐私哲学」</strong>——不与 SaaS observability 平台正面竞争，而是占据"用户不信任 SaaS"的细分。能否扩展取决于：(a) 支持的日志格式丰富度（决定用户覆盖）；(b) 浏览器内大文件解析性能（决定实际可用性）；(c) "导出"功能的隐私边界（决定哲学是否漂移）；(d) 是否扩展到更多 agent（Aider / Cursor / Continue 等）。当前定位是"最有哲学深度的 local-first observability 工作台"，向主流 AI observability 演进是合理路径。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>早期阶段</strong>：fork=2 / 92⭐ 反映用户基础小，扩展生态尚未形成</li>
+<li><strong>浏览器内存限制</strong>：大文件解析受限于浏览器内存；流式解析能力待核验</li>
+<li><strong>Claude Code / Codex 日志格式变化风险</strong>：如果上游 agent 改日志格式，TraceCrate 需要同步适配</li>
+<li><strong>"导出"哲学漂移风险</strong>：如果未来用户要求"导出到 SaaS"，产品哲学可能漂移</li>
+<li><strong>缺乏社区运营</strong>：目前没有 Discord / Reddit 等社区渠道</li>
+<li><strong>平台竞争激烈</strong>：Langfuse / Helicone / Phoenix / Arize / LangSmith 都是更成熟的产品</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Langfuse / Helicone / Phoenix / Arize / LangSmith</strong>：这些是 SaaS 或 self-hosted 服务端 observability 平台；TraceCrate 是纯客户端只读工作台</li>
+<li><strong>vs LangSmith</strong>：LangSmith 是 LangChain 官方；TraceCrate 不绑定 LangChain 生态</li>
+<li><strong>vs Aider / Cursor / Continue 内置 trace viewer</strong>：那些是 agent 自身的简易 viewer；TraceCrate 是独立跨 agent 工作台</li>
+<li><strong>vs OpenTelemetry 自托管 + Jaeger / Tempo</strong>：那些是通用 OTLP 平台；TraceCrate 是 AI agent 专用且 client-side</li>
+<li><strong>vs 浏览器内 SQL / 数据分析工具（如 DuckDB-WASM）</strong>：那些是通用数据分析；TraceCrate 是 AI trace 专用</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（local-first observability 哲学）。</strong> TraceCrate 代表了"agent 用户不信任 SaaS 但又想看自己 trace"的细分需求，无论其本身成败，这一方向会持续影响 AI observability 赛道。建议关注：(a) 支持的日志格式丰富度（决定用户覆盖）；(b) 浏览器内大文件解析性能（决定实际可用性）；(c) "导出"功能的隐私边界（决定哲学是否漂移）；(d) 是否扩展到更多 agent。<strong>对 AI Agent 隐私敏感用户，这是必看项目</strong>。对 AI observability 观察者，它是"local-first 哲学"的代表样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>支持的日志格式是否扩展（Aider / Cursor / Continue 等）</li>
+<li>浏览器内大文件流式解析能力</li>
+<li>"导出"功能的隐私边界如何演进</li>
+<li>是否扩展为 PWA（移动端支持）</li>
+<li>是否出现"扩展点"允许用户自定义解析器</li>
+<li>Live demo 数据集是否真实化（用真实 trace 替代合成数据）</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-09-12</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

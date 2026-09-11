@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-12 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-12-github">2026-09-12 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description 来自 2026-09-12 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README / README_EN.md 公开摘录（API readme 字段 base64 解码）。"X 天 Y⭐"基于 created_at→2026-09-12 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。<code>yureii1996/cek-probe-model</code>（354⭐ / fork 0 / 10 KB / 无 license）元数据信号异常，本简报不列入核心趋势；<code>Faizpi/bank-sampah</code>（918⭐ / fork 0 / PHP / 空 description）属于疑似刷星，亦排除。<strong>"趋势"是基于公开元数据的观察，不等同于生产成熟度或长期价值</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-llm-90">1. LLM 终端侧本地隐私脱敏网关成为独立品类（趋势分 90）</h3>
+<ul>
+<li><strong>xiaYuTian11/maskit</strong>（3 天 143⭐ / fork 24 / fork/star 16.8% / AGPL-3.0）——「数据面具」本地隐私脱敏与还原网关。Python 桌面 + Tauri 壳；mitmproxy MITM 改写请求结构化占位符打码；SSE 流式无感还原；100% 本地零遥测；支持 Cursor / Claude Code / Codex / Pi / OpenCode / ChatGPT 以及任意可配 Base URL 的 LLM 工具。Windows / macOS 桌面 + Docker（amd64 / arm64）。仓库 size 3.2 MB，但内含完整桌面壳。</li>
+<li><strong>核心价值定位：</strong> 当前 LLM Coding Agent 工具普遍把代码原文（含凭据、内网 IP、PII）发到远端——maskit 在中间架一道透明网关，<strong>出网前打码、入网时还原</strong>。它是 LLM 工具链里"隐私侧"的标准件，类比 SaaS 服务的 zero-trust 网关。</li>
+<li><strong>AGPL-3.0 与商业 fork 信号：</strong> fork/star 16.8% 与昨日 <code>mizzlelover/gongwen-gbt9704-skill</code>（18.6%）同处于"企业级 fork"区间；AGPL-3.0 在企业内网使用完全合规，但禁止修改后闭源分发。</li>
+<li><strong>价值判断：</strong> 它解决的是"用 LLM 工具又怕泄密"的真实痛点；技术栈（mitmproxy + Tauri + 流式还原）成熟；产品形态（桌面 + Docker + 跨工具）完整。是否能进入"基础设施"取决于是否被 IDE / Coding Agent 工具官方接入或内置。</li>
+</ul>
+<h3 id="2-pro-gpu-ide-86">2. 面向「pro」的 GPU 渲染 IDE 上线（趋势分 86）</h3>
+<ul>
+<li><strong>unstablebuild/rune</strong>（2 天 154⭐ / fork 8 / GPL-3.0）——「the development environment for pros」。Go 实现；character-grid 渲染界面（GPU 加速）；编辑器 + 终端 + CLI tools + language intelligence + debugging + AI agents 同窗；<code>cmd/rune</code> 主程序 + <code>cmd/rune-agent</code> 扩展解耦（agent 不污染核心编辑器，扩展系统被推到能承载复杂应用）；docs.rune.build 内嵌文档；仓库 size 147.9 MB（含 WebP 截图 + 文档资源）。</li>
+<li><strong>架构亮点：</strong> 把「agent 当扩展而不是核心」——与 Cursor / Claude Code / Codex 的"agent 是入口"路线相反，Rune 是"编辑器是入口，agent 是插件"。这是对 <strong>「核心编辑器不应被 agent 行为污染」</strong> 这一开发者诉求的明确回答。</li>
+<li><strong>GPL-3.0 与 GitHub Actions 完备：</strong> Linux + macOS 双平台 CI + Lint + codecov，6 项 badge 全亮；Discord + Reddit 社区同步运营。</li>
+<li><strong>价值判断：</strong> 它与 Helix / Lapce / Zed / Onlook 处于同一赛道，但把「pro」做到极致（character-grid + 多 workspace + 扩展系统承载 agent）。能否破圈取决于扩展系统的真实生态丰富度。</li>
+</ul>
+<h3 id="3-macbook-iphone-duo-84">3. MacBook iPhone Duo 折叠动效移植集群爆发（趋势分 84）</h3>
+<ul>
+<li><strong>sumimakito/Mac-Duo</strong>（1 天 512⭐ / fork 40 / Apache-2.0）——原始引爆点：Swift + Metal GPU 渲染 perspective / blur / dim + ScreenCaptureKit 实时屏幕内容；菜单栏控制；中英双语；prebuilt DMG 签名 + 公证；Apple Silicon + Intel 双架构。</li>
+<li><strong>同一灵感多 repo 并发：</strong> DhananjayBhosale/MacDuo（132⭐，Swift + Metal，桌面跟随盖角）、jh3y/lid-plane（131⭐，盖角度驱动 progressive blur）、IuCC123/BendMac（88⭐，桌面弯曲效果）、opensourcevillain/Bendable（76⭐，菜单栏动效）、chuspeeism/iphone-duo（98⭐，Web 端模拟）、Atomicx7/Duo-animation（128⭐，Kotlin 移植）、elijah-semyonov/DuoLikeAnimation（125⭐）。</li>
+<li><strong>延伸：</strong> MakrSas/Inferno-iOS（73⭐，在真 iPhone 上跑 iOS 14 模拟器；GPL-3.0；QEMU + Inferno）、eperez28/sonar.cool（89⭐，Mac 用扬声器+麦克风做声波手势控制）、jlxc2001/MacBook-Duo（62⭐）。</li>
+<li><strong>价值判断：</strong> 这是 2026-09-12 最大的"单点灵感引爆多 repo 集群"事件；iPhone Duo 动画作为 iOS 26 卖点之一，被 Mac 圈开发者广泛二创。<strong>真正决定它能否从"二创"升级为"基础设施"的是 Apple 官方是否在 macOS 下个版本内置类似 API</strong>。</li>
+</ul>
+<h3 id="4-local-first-ai-agent-trace-workbench-82">4. Local-first AI Agent Trace Workbench（趋势分 82）</h3>
+<ul>
+<li><strong>FankChen/tracecrate</strong>（2 天 92⭐ / fork 2 / MIT）——「Your agent ran. Read what happened.」客户端 AI trace 工作台；React + Vite + Node.js ≥22.12；解析 Claude Code / Codex / OTLP 日志；输出可搜索 timeline + recorded metrics + heuristic diagnostics + side-by-side 对比；<strong>仅客户端，不执行 agent 不运行 recorded commands</strong>；无后端无遥测无账号无 API key；站点 <code>fankchen.github.io/tracecrate</code> 已上线 live demo；README 截图 1440 × 2026 明确标注"all events and values are synthetic demo data, not benchmark results"。</li>
+<li><strong>价值判断：</strong> 当前 Langfuse / Helicone / Phoenix 等 AI observability 平台都要 SaaS 接入或本地部署服务端；tracecrate 把"只看 / 不执行"的只读工作台完全 client-side 化。<strong>它填补了"Agent 用户不信任 SaaS 但又想看自己 trace"的空位</strong>。</li>
+<li><strong>限制：</strong> fork=2 / 92⭐ 反映早期阶段；Claude Code / Codex 日志格式若变化需要同步适配；只读特性是产品哲学而非 bug——这与它的"privacy-first"卖点一致。</li>
+</ul>
+<h3 id="5-ai-shot-analysis-ffmpeg-skill-80">5. AI 视频 shot-analysis + ffmpeg Skill 包（趋势分 80）</h3>
+<ul>
+<li><strong>eternityspring/reelbench-skills</strong>（1 天 152⭐ / fork 21 / fork/star 13.8% / Apache-2.0）——HTML 主目录（README 是完整 HTML 结构）；Claude Code skills 入口；shot-analysis 工作流 + ffmpeg 工具链；22.5 MB 学习资料（远大于 README 体积，是 skill 资料包而非代码库）。</li>
+<li><strong>价值判断：</strong> 与 09-11 viettranx/3dviz-pro-max（3D Agent Skill）同构——Skill 不再是"一段提示词"，是"提示词 + 工具链 + 学习资料 + 工作流"的复合产品。<strong>它的差异点是垂直于 AI 视频剪辑场景</strong>。</li>
+</ul>
+<h3 id="6-aws-ses-72">6. AWS SES 之上的自托管邮件层（趋势分 72）</h3>
+<ul>
+<li><strong>R44VC0RP/opensend</strong>（3 天 117⭐ / fork 7 / TypeScript）——self-hosted transactional &amp; marketing email layer on top of AWS SES；仓库无 license 字段（README 自述 MIT-style 使用）。</li>
+<li><strong>价值判断：</strong> 它解决"不想被 Resend / SendGrid / Mailgun 锁定但又要 marketing + transactional 双功能"的痛点；2.3 MB size 含 demo + 文档。<strong>无 license 是关键风险信号</strong>——企业采用前需要明确法律意见。</li>
+</ul>
+<h3 id="7-lg-webos-tv-dns-76">7. LG webOS TV DNS 拦截列表（趋势分 76）</h3>
+<ul>
+<li><strong>furkan-bayrak/lg-tv-blocklist</strong>（3 天 125⭐ / fork 2 / CC-BY-4.0）——LG webOS TV 遥测 / 广告 / phone-home DNS 拦截；safe + strict 双层；AdGuard Home + Pi-hole 直接接入；120 KB 体积。</li>
+<li><strong>价值判断：</strong> LG webOS TV 在客厅场景出货量大、用户隐私感弱；该项目精准切入"家庭网络 ad-block"细分。CC-BY-4.0 鼓励衍生与商业化（署名即可）。</li>
+</ul>
+<h3 id="8-linux-ios-swiftui-app-70">8. Linux 直接构建部署 iOS SwiftUI App（趋势分 70）</h3>
+<ul>
+<li><strong>joshuaswarren/omarchy-apple-dev</strong>（3 天 102⭐ / fork 5 / MIT）——Omarchy Linux + Apple Silicon 直接构建部署 iOS SwiftUI App，<strong>无需 Xcode</strong>；8 KB 纯 Shell 脚本。</li>
+<li><strong>价值判断：</strong> Omarchy 是 Arch 系的轻量级 Linux 发行版，主打 Apple Silicon 原生体验；这个仓库把"iOS 开发"搬到 Linux 工作流。<strong>8KB / Shell 暗示它本质是 xcodebuild + codesign 的包装器</strong>——需要 macOS SDK 路径或远程构建服务器支持，纯 Linux 端不可能独立完成 IPA 签名。这点 README 应有明示，待核验。</li>
+</ul>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>LLM 终端侧本地隐私网关成为新基础设施候选</strong>——maskit 的「mitmproxy + 结构化占位符 + SSE 流式还原」技术栈非常工程化；AGPL-3.0 + fork/star 16.8% 双信号指向"企业级私有部署"刚需。</li>
+<li><strong>"Agent 当扩展 vs Editor 当入口"的 IDE 路线分歧</strong>——Rune 的 cmd/rune-agent 解耦哲学与 Cursor / Claude Code / Codex 的 agent-centric 路线形成对比，反映"core editor 完整性"开发者亚文化的明确需求。</li>
+<li><strong>iPhone Duo 二创集群——单点灵感 → 多 repo 并发</strong>——Mac-Duo 512⭐ 引爆后 7+ 个变体同窗出现，这是 2026-09-12 最显著的"灵感驱动二创爆发"事件。</li>
+<li><strong>Local-first AI observability</strong>——tracecrate 把"只看 trace 不执行 agent"的只读工作台完全 client-side 化；填补"隐私焦虑用户"的空位。</li>
+<li><strong>AI 视频 Skill 垂直化</strong>——reelbench-skills 22MB 学习资料 + ffmpeg + shot-analysis 证明 Skill 可以是"工作流 + 工具 + 资料"三层资产。</li>
+<li><strong>Omarchy Linux 试图抢 Apple Silicon 开发体验</strong>——omarchy-apple-dev 8KB Shell 把 iOS 构建搬到 Linux，呼应 Omarchy 本身"Arch-on-Apple-Silicon"定位。</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="xiayutian11maskitscore-90">🏆 xiaYuTian11/maskit（Score 90）</h3>
+<p><strong>定位判断：</strong> LLM 终端侧隐私脱敏网关。它不是单纯的 PII 替换工具，而是把「出网打码 / 入网还原 / 工具通用 / 本地部署」四件事打包成一等公民产品。<strong>与昨日 maskit（同作者昨日未上榜）和 mizzlelover/gongwen-gbt9704-skill（Skill 形态）相比，maskit 是中间件形态</strong>——不替代 LLM 工具本身，而是在中间架透明网关。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>mitmproxy MITM 改写</strong>——HTTPS 中间人改写请求体，把数据库连接串、内网 IP、手机号、API Key 替换成结构化占位符
+2. <strong>SSE 流式还原</strong>——模型回答流式到达时按占位符表毫秒级还原成原文；用户感知不到脱敏存在
+3. <strong>桌面 + Docker 双形态</strong>——Tauri 桌面壳（Windows/macOS）+ Docker 镜像（amd64/arm64）；CI 完整
+4. <strong>工具通用</strong>——任意可配 Base URL 的 LLM 工具都可用（Cursor/Claude Code/Codex/Pi/OpenCode/ChatGPT）
+5. <strong>100% 本地零遥测</strong>——README 明示无外发统计</p>
+<p><strong>风险/局限：</strong>
+- AGPL-3.0 是双刃剑——企业内部可自由用，但任何修改 + 分发都必须开源
+- "结构化占位符"对模型的影响未公开 benchmark——可能影响模型对脱敏后代码的理解精度
+- 流式还原在双向加密 / 非标 SSE 协议下可能丢失顺序</p>
+<h3 id="unstablebuildrunescore-86">🏆 unstablebuild/rune（Score 86）</h3>
+<p><strong>定位判断：</strong> 面向 pro 的 GPU 渲染 IDE。它的核心哲学是「core editor 干净，agent 当扩展」——<code>cmd/rune-agent</code> 与 <code>cmd/rune</code> 解耦，agent 不会污染编辑器的正常编程体验。这与 Helix（modal editing）、Lapce（Rust 原生 GPU）、Zed（Rust + GPU + 自研编辑栈）同属 GPU 渲染 IDE 赛道，但把「pro」做到极简：character-grid 界面 + 多 workspace + 内嵌文档 + 完整 CI。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>GPU 渲染 character-grid 界面</strong>——类似 Helix 的 TUI 思路但走 GPU 路径，渲染性能更高
+2. <strong>cmd/rune + cmd/rune-agent 解耦</strong>——主程序不含 agent 逻辑，agent 是独立扩展；扩展系统被设计为「能承载复杂应用」
+3. <strong>多 workspace 同窗</strong>——编辑器、终端、文件树、agent session 同窗口共存
+4. <strong>内嵌 docs</strong>——<code>cmd/rune/docs</code> markdown 内嵌二进制，通过 <code>docs:///</code> workspace 访问
+5. <strong>完整 GitHub Actions</strong>——Linux / macOS / Lint / codecov 四套 CI，6 项 badge 全亮</p>
+<p><strong>风险/局限：</strong>
+- GPL-3.0 与商业 fork 兼容性差——企业内集成需要明确法律意见
+- 扩展生态尚未形成——目前看是 solo 项目，没有现成的"扩展市场"
+- character-grid 界面学习曲线高于 GUI IDE——目标用户明确是「pro」
+- 仓库 size 147.9 MB（含截图与文档资源）</p>
+<h3 id="sumimakitomac-duoscore-84">🏆 sumimakito/Mac-Duo（Score 84）</h3>
+<p><strong>定位判断：</strong> MacBook iPhone Duo 动效移植工具，2026-09-12 灵感动爆点。Metal GPU 渲染 + ScreenCaptureKit 实时屏幕内容 + 菜单栏控制 = 一键复刻 iOS 26 的 Duo 折叠动画。<strong>它不是工具，是「氛围 App」</strong>——满足用户的视觉愉悦而非生产效率。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>Metal + ScreenCaptureKit</strong>——GPU 渲染 perspective / blur / dim 配合屏幕实时截屏
+2. <strong>菜单栏控制</strong>——无需打开主窗口，所有调节在菜单栏
+3. <strong>盖角度实时驱动</strong>——MacBook 铰链传感器（部分机型）检测盖角度变化
+4. <strong>prebuilt DMG 已签名 + 公证</strong>——Apple Silicon + Intel 双架构
+5. <strong>Moeru AI 赞助 Apple Developer Program</strong>——README 明示商业化路径</p>
+<p><strong>风险/局限：</strong>
+- 依赖 macOS 14 + 兼容盖角度传感器的 MacBook——机型覆盖有限
+- 屏实时截屏会触发 Screen Recording 权限弹窗——首次启动体验门槛
+- "氛围 App" 难以持续维护——iPhone Duo 热度过后活跃度可能骤降</p>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- <strong>maskit 的结构化占位符对模型理解的影响</strong>——README 未提供脱敏后代码准确率 benchmark；下游用户需要自己做 A/B 测试
+- <strong>Rune GPL-3.0 与企业生态兼容性</strong>——如果未来扩展系统要求企业级 license 兼容，需要明确商业条款
+- <strong>Mac-Duo 类 App 的"氛围依赖症"</strong>——iPhone Duo 热度一旦消退，整个集群活跃度都会下降
+- <strong>tracecrate 只读特性能否守住</strong>——如果未来用户要求"导出到 SaaS"，产品哲学可能漂移
+- <strong>opensend 无 license 字段</strong>——企业采用前需先补 license 声明
+- <strong>omarchy-apple-dev 8KB Shell 是否真能在纯 Linux 端独立完成 IPA</strong>——物理上不可能，需要明确外部依赖</p>
+<p><strong>机遇：</strong>
+- <strong>LLM 隐私网关赛道被 maskit 验证</strong>——任何做企业 / 政企 / 医疗 LLM 工具集成的团队都可能 fork 这条线
+- <strong>Omarchy 生态扩展</strong>——如果 omarchy-apple-dev 把"无 Xcode iOS 开发"跑通，可以反向推动 Apple 调整 Xcode CLI 边界
+- <strong>tracecrate 的"local-first observability"哲学</strong>——可复用到 OTLP / OpenInference / Phoenix 生态
+- <strong>AI 视频 Skill 垂直化</strong>——reelbench-skills 之后可能陆续出现 "AI 配音 Skill"、"AI 转场 Skill" 等垂直 Skill 包</p>
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>🛡️ <a href="../projects/maskit.html">xiaYuTian11/maskit</a>（3 天 143⭐）—— LLM 终端侧本地隐私脱敏与还原网关，mitmproxy + Tauri + SSE 流式还原，AGPL-3.0，fork/star 16.8%，Score 90</li>
+<li>🧙 <a href="../projects/rune.html">unstablebuild/rune</a>（2 天 154⭐）—— GPU 渲染键盘驱动 IDE，cmd/rune + cmd/rune-agent 扩展解耦，GPL-3.0，Score 86</li>
+<li>💻 <a href="../projects/mac-duo.html">sumimakito/Mac-Duo</a>（1 天 512⭐）—— MacBook iPhone Duo 折叠动效菜单栏 App，Metal + ScreenCaptureKit，Apache-2.0，Score 84</li>
+<li>📊 <a href="../projects/tracecrate.html">FankChen/tracecrate</a>（2 天 92⭐）—— Local-first AI Agent Trace Workbench，Claude Code/Codex/OTLP 日志解析，MIT，Score 82</li>
+<li>🎬 <a href="../projects/reelbench-skills.html">eternityspring/reelbench-skills</a>（1 天 152⭐）—— AI 视频 shot-analysis + ffmpeg Skill 包，22MB 学习资料，Apache-2.0，Score 80</li>
+<li>📺 <a href="../projects/lg-tv-blocklist.html">furkan-bayrak/lg-tv-blocklist</a>（3 天 125⭐）—— LG webOS TV DNS 拦截列表（safe + strict），AdGuard Home/Pi-hole，CC-BY-4.0，Score 76</li>
+<li>📧 <a href="../projects/opensend.html">R44VC0RP/opensend</a>（3 天 117⭐）—— AWS SES 之上的自托管事务/营销邮件层，TypeScript，Score 72</li>
+<li>🍎 <a href="../projects/omarchy-apple-dev.html">joshuaswarren/omarchy-apple-dev</a>（3 天 102⭐）—— Omarchy Linux 直接构建部署 iOS SwiftUI App，8KB Shell，MIT，Score 70</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (2026-09-12) + 各项目 README / README_EN.md 公开摘录 | Stars/Forks 截至 2026-09-12 | 仅记录公开元数据事实，不将热度等同于价值</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

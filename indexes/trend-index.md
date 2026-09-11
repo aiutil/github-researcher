@@ -5,6 +5,35 @@ summary: GitHub 趋势项目排名变化追踪，持续更新
 title: Trend Index — 趋势指数
 ---
 
+## 2026-09-12
+
+### xiaYuTian11/maskit（143 stars）· unstablebuild/rune（154 stars）· sumimakito/Mac-Duo（512 stars）· FankChen/tracecrate（92 stars）· eternityspring/reelbench-skills（152 stars）· R44VC0RP/opensend（117 stars）· furkan-bayrak/lg-tv-blocklist（125 stars）· joshuaswarren/omarchy-apple-dev（102 stars）
+
+> 证据边界：项目名称、星标、tags、description 来自 2026-09-12 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README / README_EN.md 公开摘录（API readme 字段 base64 解码）。"X 天 Y⭐"基于 created_at→2026-09-12 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。**今日最大事件是 `xiaYuTian11/maskit` 3 天 143⭐ / fork 24 / fork/star 16.8% — LLM 终端侧本地隐私脱敏与还原网关**——出网前自动结构化打码、入网时 SSE 流式无感还原，100% 本地零遥测，AGPL-3.0；与昨日 `mizzlelover/gongwen-gbt9704-skill` 18.6% 同处企业级 fork 信号区间。**iPhone Duo 二创集群爆发是 2026-09-12 最大的"单点灵感 → 多 repo 并发"事件**——`sumimakito/Mac-Duo` 1 天 512⭐ 引爆后同日出现 DhananjayBhosale/MacDuo（132⭐）、jh3y/lid-plane（131⭐）、Atomicx7/Duo-animation（128⭐）、elijah-semyonov/DuoLikeAnimation（125⭐）、chuspeeism/iphone-duo（98⭐）、IuCC123/BendMac（88⭐）、opensourcevillain/Bendable（76⭐）、MakrSas/Inferno-iOS（73⭐）、jlxc2001/MacBook-Duo（62⭐）等 7+ 变体。`yureii1996/cek-probe-model`（354⭐ / fork 0 / 10 KB / 无 license）元数据信号异常；`Faizpi/bank-sampah`（918⭐ / fork 0 / PHP / 空 description）疑似刷星，本简报均不列入核心趋势。
+
+| 排名 | 趋势方向 | 代表项目 | 趋势分 |
+|---:|---|---|---:|
+| 1 | llm-privacy-local-gateway / LLM 终端侧本地隐私脱敏网关——xiaYuTian11/maskit 3 天 143⭐ fork 24 fork/star 16.8%（Python + Tauri 壳 · mitmproxy MITM 改写请求 + 结构化占位符打码 · SSE 流式无感还原 · Cursor/Claude Code/Codex/Pi/OpenCode/ChatGPT 任意可配 Base URL 工具通用 · AGPL-3.0 · Windows/macOS/Docker amd64+arm64 · 100% 本地零遥测） | xiaYuTian11/maskit | 90 |
+| 2 | gpu-rendered-power-ide / 面向「pro」的 GPU 渲染键盘驱动 IDE——unstablebuild/rune 2 天 154⭐ fork 8（Go · cmd/rune 主程序 + cmd/rune-agent 扩展解耦 · character-grid 界面 · 编辑器 + 终端 + 文件树 + AI agent 同窗 · docs.rune.build 内嵌 · Linux/macOS CI + Lint + codecov 完整 · GPL-3.0） | unstablebuild/rune | 86 |
+| 3 | macbook-duo-animation-cluster / iPhone Duo 折叠动效移植 MacBook 集群爆发——sumimakito/Mac-Duo 1 天 512⭐ fork 40（Swift · Metal + ScreenCaptureKit · 盖角度驱动 perspective/blur/dim · 菜单栏控制 · 中英双语 · Apple Silicon+Intel 双架构 · Apache-2.0）+ DhananjayBhosale/MacDuo 132⭐（Swift + Metal · 桌面跟随盖角）+ jh3y/lid-plane 131⭐（盖角度驱动 progressive blur）+ Atomicx7/Duo-animation 128⭐（Kotlin 移植）+ elijah-semyonov/DuoLikeAnimation 125⭐ + IuCC123/BendMac 88⭐ + eperez28/sonar.cool 89⭐（声波手势控制 Mac 实验）+ MakrSas/Inferno-iOS 73⭐（iPhone 上跑 iOS 14 模拟器） | sumimakito/Mac-Duo | 84 |
+| 4 | agent-trace-observability / Local-first AI Agent Trace Workbench——FankChen/tracecrate 2 天 92⭐ fork 2 fork/star 2.2%（TypeScript · React + Vite + Node.js ≥22.12 · Claude Code / Codex / OTLP 日志解析 · 客户端不执行 agent · 无后端无遥测无账号无 API key · 站点 fankchen.github.io/tracecrate · MIT） | FankChen/tracecrate | 82 |
+| 5 | ai-video-skills-pack / AI 视频 shot-analysis + ffmpeg Skill 包——eternityspring/reelbench-skills 1 天 152⭐ fork 21 fork/star 13.8%（HTML 主目录 · 22MB 学习资料 + shot-analysis + ffmpeg · Claude Code skills · Apache-2.0） | eternityspring/reelbench-skills | 80 |
+| 6 | webos-tv-blocklist / LG webOS TV 遥测/广告/phone-home DNS 拦截——furkan-bayrak/lg-tv-blocklist 3 天 125⭐ fork 2（Python 配置 + 实际列表 · safe + strict 双层 · AdGuard Home + Pi-hole 兼容 · CC-BY-4.0） | furkan-bayrak/lg-tv-blocklist | 76 |
+| 7 | ses-email-self-hosted / AWS SES 之上的自托管事务/营销邮件层——R44VC0RP/opensend 3 天 117⭐ fork 7（TypeScript · transactional + marketing · 无 lock-in · **无 license 字段**） | R44VC0RP/opensend | 72 |
+| 8 | ios-build-on-linux / Linux 直接构建部署 iOS SwiftUI App——joshuaswarren/omarchy-apple-dev 3 天 102⭐ fork 5（Shell · 8KB · Omarchy Linux + Apple Silicon · "无 Xcode"声明的物理边界待核验 · MIT） | joshuaswarren/omarchy-apple-dev | 70 |
+
+#### 当日重点项目
+
+- 🛡️ xiaYuTian11/maskit (3 天 143⭐) — LLM 终端侧本地隐私脱敏与还原网关，mitmproxy + Tauri + SSE 流式还原，AGPL-3.0，fork/star 16.8%，Score 90
+- 🧙 unstablebuild/rune (2 天 154⭐) — 面向「pro」的 GPU 渲染键盘驱动 IDE，cmd/rune + cmd/rune-agent 扩展解耦，GPL-3.0，Score 86
+- 💻 sumimakito/Mac-Duo (1 天 512⭐) — MacBook iPhone Duo 折叠动效菜单栏 App，Metal + ScreenCaptureKit，Apache-2.0，Score 84
+- 📊 FankChen/tracecrate (2 天 92⭐) — Local-first AI Agent Trace Workbench，Claude Code/Codex/OTLP 日志解析，MIT，Score 82
+- 🎬 eternityspring/reelbench-skills (1 天 152⭐) — AI 视频 shot-analysis + ffmpeg Skill 包，22MB 学习资料，Apache-2.0，Score 80
+- 📺 furkan-bayrak/lg-tv-blocklist (3 天 125⭐) — LG webOS TV DNS 拦截列表（safe + strict），AdGuard Home/Pi-hole，CC-BY-4.0，Score 76
+- 📧 R44VC0RP/opensend (3 天 117⭐) — AWS SES 之上的自托管事务/营销邮件层，TypeScript，**无 license 字段**，Score 72
+- 🍎 joshuaswarren/omarchy-apple-dev (3 天 102⭐) — Omarchy Linux 直接构建部署 iOS SwiftUI App，8KB Shell，MIT，Score 70
+
+
 ## 2026-09-11
 
 ### yudaprasetya007/routeVSCODE（326 stars）· mizzlelover/gongwen-gbt9704-skill（301 stars）· deepseek-ai/DeepSelect（232 stars）· kevinzakka/mjbatch（215 stars）· deepseek-ai/deepseek-recipe（209 stars）· Foadsf/vintage-latex（191 stars）· viettranx/3dviz-pro-max（131 stars）· HammingDev/haiming-app-monetization（164 stars）· Da7-Tech/SureForge（86 stars）

@@ -31,7 +31,7 @@
     <div class="filter-bar">
         <div class="filter-group">
             <label>🔤 语言</label>
-            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS">CSS</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Cuda">Cuda</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="Java">Java</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option><option value="无主流语言（HTML + Markdown + 配置文件）">无主流语言（HTML + Markdown + 配置文件）</option><option value="无（Markdown 文档为主）">无（Markdown 文档为主）</option><option value="无（项目内 Language 为 None）">无（项目内 Language 为 None）</option></select>
+            <select id="filter-language"><option value="">全部</option><option value="C">C</option><option value="C#">C#</option><option value="C++">C++</option><option value="CSS">CSS</option><option value="CSS / JavaScript">CSS / JavaScript</option><option value="Cuda">Cuda</option><option value="Go">Go</option><option value="HTML">HTML</option><option value="Java">Java</option><option value="JavaScript">JavaScript</option><option value="Lean">Lean</option><option value="MDX">MDX</option><option value="Makefile">Makefile</option><option value="Markdown">Markdown</option><option value="Markdown / Config">Markdown / Config</option><option value="Markdown/Agent Skill">Markdown/Agent Skill</option><option value="Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）">Markdown/Docs（仓库以 orchestration 模式文档为主，无显著代码语言分布）</option><option value="Markdown/Skill">Markdown/Skill</option><option value="N/A">N/A</option><option value="N/A（模型权重仓库）">N/A（模型权重仓库）</option><option value="PLpgSQL">PLpgSQL</option><option value="PowerShell">PowerShell</option><option value="Python">Python</option><option value="Python + TypeScript (Tauri shell)">Python + TypeScript (Tauri shell)</option><option value="Python/CUDA">Python/CUDA</option><option value="Python/Swift">Python/Swift</option><option value="Ruby">Ruby</option><option value="Rust">Rust</option><option value="Rust + TypeScript SDK">Rust + TypeScript SDK</option><option value="Rust / Python">Rust / Python</option><option value="Shell">Shell</option><option value="Swift">Swift</option><option value="Swift / ONNX">Swift / ONNX</option><option value="TypeScript">TypeScript</option><option value="TypeScript / Rust">TypeScript / Rust</option><option value="TypeScript/Zig">TypeScript/Zig</option><option value="Vue">Vue</option><option value="Zig">Zig</option><option value="无主流语言（HTML + Markdown + 配置文件）">无主流语言（HTML + Markdown + 配置文件）</option><option value="无（Markdown 文档为主）">无（Markdown 文档为主）</option><option value="无（项目内 Language 为 None）">无（项目内 Language 为 None）</option></select>
         </div>
         <div class="filter-group">
             <label>🏷️ 类型</label>
@@ -55,13 +55,101 @@
     </div>
     <div class="filter-empty" id="filter-empty">😢 没有匹配的项目</div>
     <div class="card-grid" id="project-grid">
+                <div class="card" onclick="window.location='/projects/lg-tv-blocklist.html'" style="cursor:pointer" data-language="Python" data-category="工具型" data-stars="125" data-date="2026-09-12" data-name="furkan-bayrak/lg-tv-blocklist">
+                    <div class="card-top">
+                        <div class="card-emoji">📺</div>
+                        <div class="card-stars">125 stars</div>
+                    </div>
+                    <div class="card-title">furkan-bayrak/lg-tv-blocklist</div>
+                    <div class="card-desc">LG webOS TV 遥测/广告/phone-home DNS 拦截列表——safe + strict 双层；AdGuard Home / Pi-hole 直接接入；CC-BY-4.0；3 天 125⭐ / fork 2。</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/furkan-bayrak/lg-tv-blocklist" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/mac-duo.html'" style="cursor:pointer" data-language="Swift" data-category="工具型" data-stars="512" data-date="2026-09-12" data-name="sumimakito/Mac-Duo">
+                    <div class="card-top">
+                        <div class="card-emoji">💻</div>
+                        <div class="card-stars">512 stars</div>
+                    </div>
+                    <div class="card-title">sumimakito/Mac-Duo</div>
+                    <div class="card-desc">Mac Duo——MacBook 盖角度触发的 iPhone Duo 折叠动效菜单栏 App；Metal GPU 渲染 perspective/blur/dim + ScreenCaptureKit 实时屏幕内容；菜单栏控制；中英双语；Ap</div>
+                    <div class="card-tags"><span class="tag tag-purple">Swift</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/sumimakito/Mac-Duo" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/maskit.html'" style="cursor:pointer" data-language="Python + TypeScript (Tauri shell)" data-category="工具型" data-stars="143" data-date="2026-09-12" data-name="xiaYuTian11/maskit">
+                    <div class="card-top">
+                        <div class="card-emoji">🛡️</div>
+                        <div class="card-stars">143 stars</div>
+                    </div>
+                    <div class="card-title">xiaYuTian11/maskit</div>
+                    <div class="card-desc">数据面具 Data Maskit——大模型终端侧本地隐私脱敏与还原网关；mitmproxy MITM 改写请求结构化占位符打码，SSE 流式无感还原，100% 本地零遥测；Cursor/Claude Code/Codex/Pi/OpenCo</div>
+                    <div class="card-tags"><span class="tag tag-purple">Python + TypeScript (Tauri shell)</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/xiaYuTian11/maskit" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/omarchy-apple-dev.html'" style="cursor:pointer" data-language="Shell" data-category="工具型" data-stars="102" data-date="2026-09-12" data-name="joshuaswarren/omarchy-apple-dev">
+                    <div class="card-top">
+                        <div class="card-emoji">🍎</div>
+                        <div class="card-stars">102 stars</div>
+                    </div>
+                    <div class="card-title">joshuaswarren/omarchy-apple-dev</div>
+                    <div class="card-desc">omarchy-apple-dev——Omarchy Linux + Apple Silicon 直接构建部署 iOS SwiftUI App 无需 Xcode；纯 Shell 脚本（8KB 仓库）；MIT；3 天 102⭐ / fork </div>
+                    <div class="card-tags"><span class="tag tag-purple">Shell</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/joshuaswarren/omarchy-apple-dev" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/opensend.html'" style="cursor:pointer" data-language="TypeScript" data-category="工具型" data-stars="117" data-date="2026-09-12" data-name="R44VC0RP/opensend">
+                    <div class="card-top">
+                        <div class="card-emoji">📧</div>
+                        <div class="card-stars">117 stars</div>
+                    </div>
+                    <div class="card-title">R44VC0RP/opensend</div>
+                    <div class="card-desc">opensend——AWS SES 之上的自托管事务与营销邮件层；TypeScript；不锁死在单一 SaaS 邮件服务商；无 license 字段（README 自述 MIT-style 使用）；3 天 117⭐ / fork 7。</div>
+                    <div class="card-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/R44VC0RP/opensend" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/reelbench-skills.html'" style="cursor:pointer" data-language="HTML" data-category="工具型" data-stars="152" data-date="2026-09-12" data-name="eternityspring/reelbench-skills">
+                    <div class="card-top">
+                        <div class="card-emoji">🎬</div>
+                        <div class="card-stars">152 stars</div>
+                    </div>
+                    <div class="card-title">eternityspring/reelbench-skills</div>
+                    <div class="card-desc">AI 视频 shot-analysis 与 ffmpeg Skill 包——学习笔记 + 工具 skill 双层；Claude Code skills 入口；22MB 学习资料 + shot-analysis 工作流；Apache-2.0；</div>
+                    <div class="card-tags"><span class="tag tag-purple">HTML</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/eternityspring/reelbench-skills" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/rune.html'" style="cursor:pointer" data-language="Go" data-category="平台候选" data-stars="154" data-date="2026-09-12" data-name="unstablebuild/rune">
+                    <div class="card-top">
+                        <div class="card-emoji">🧙</div>
+                        <div class="card-stars">154 stars</div>
+                    </div>
+                    <div class="card-title">unstablebuild/rune</div>
+                    <div class="card-desc">Rune——面向「pro」的 GPU 渲染键盘驱动 IDE；character-grid 界面，编辑器 + 终端 + 文件树 + AI agent 同窗；cmd/rune 主程序 + cmd/rune-agent 扩展解耦（agent 不污</div>
+                    <div class="card-tags"><span class="tag tag-purple">Go</span><span class="tag tag-cyan">平台候选</span></div>
+                    <div class="card-actions"><a href="https://github.com/unstablebuild/rune" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
+                <div class="card" onclick="window.location='/projects/tracecrate.html'" style="cursor:pointer" data-language="TypeScript" data-category="工具型" data-stars="92" data-date="2026-09-12" data-name="FankChen/tracecrate">
+                    <div class="card-top">
+                        <div class="card-emoji">📊</div>
+                        <div class="card-stars">92 stars</div>
+                    </div>
+                    <div class="card-title">FankChen/tracecrate</div>
+                    <div class="card-desc">TraceCrate——Local-first AI Agent Trace Workbench；客户端解析 Claude Code / Codex / OTLP 日志，生成可搜索 timeline + recorded metrics +</div>
+                    <div class="card-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-purple">工具型</span></div>
+                    <div class="card-actions"><a href="https://github.com/FankChen/tracecrate" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-12</div>
+                </div>
                 <div class="card" onclick="window.location='/projects/3dviz-pro-max.html'" style="cursor:pointer" data-language="JavaScript" data-category="工具型" data-stars="131" data-date="2026-09-11" data-name="viettranx/3dviz-pro-max">
                     <div class="card-top">
                         <div class="card-emoji">🎨</div>
                         <div class="card-stars">131 stars</div>
                     </div>
                     <div class="card-title">viettranx/3dviz-pro-max</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">Agent Skill for creative 3D visualization——10 步工作流 + 223 recipes + 440 knowledge + 22 proved kits + 37 runnable studies；</div>
                     <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/viettranx/3dviz-pro-max" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -72,7 +160,7 @@
                         <div class="card-stars">209 stars</div>
                     </div>
                     <div class="card-title">deepseek-ai/deepseek-recipe</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">DeepSeek 官方 Rust 库 + Python 绑定——把 Messages / Chat Completions / Responses 多格式请求统一转 DeepSeek V4.1 Conversation；含 prompt 编</div>
                     <div class="card-tags"><span class="tag tag-purple">Rust</span><span class="tag tag-green">基础设施候选</span></div>
                     <div class="card-actions"><a href="https://github.com/deepseek-ai/deepseek-recipe" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -83,7 +171,7 @@
                         <div class="card-stars">232 stars</div>
                     </div>
                     <div class="card-title">deepseek-ai/DeepSelect</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">DeepSeek 官方 TopK kernel for DSA 与 Sampler——bfloat16 Lightning Indexer + float32 Sampling 两个场景，2-20× torch.topk 加速；DeepSe</div>
                     <div class="card-tags"><span class="tag tag-purple">Cuda</span><span class="tag tag-green">基础设施候选</span></div>
                     <div class="card-actions"><a href="https://github.com/deepseek-ai/DeepSelect" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -94,7 +182,7 @@
                         <div class="card-stars">301 stars</div>
                     </div>
                     <div class="card-title">mizzlelover/gongwen-gbt9704-skill</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">中文公文排版 Skill——参照 GB/T 9704-2012 把 A4/版心/字体/标题层级/机构文号/页码生成可编辑 DOCX；一次安装服务 Claude Code/Codex/OpenCode/Trae Code/Kimi/TraeW</div>
                     <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/mizzlelover/gongwen-gbt9704-skill" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -105,7 +193,7 @@
                         <div class="card-stars">215 stars</div>
                     </div>
                     <div class="card-title">kevinzakka/mjbatch</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">MuJoCo CPU 并行仿真 Python 库——C++ thread pool + GIL 释放；Batch(num_sims=4096) + bind('qpos'/'ctrl') + set_const 重算 derived；RL/</div>
                     <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/kevinzakka/mjbatch" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -116,7 +204,7 @@
                         <div class="card-stars">326 stars</div>
                     </div>
                     <div class="card-title">yudaprasetya007/routeVSCODE</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">9Router Model Connector——VSCode Copilot Chat 零重启动态切换模型；本地代理 :20129 + Web Dashboard :5500 + Status Bar；40+ Provider 含 Cla</div>
                     <div class="card-tags"><span class="tag tag-purple">JavaScript</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/yudaprasetya007/routeVSCODE" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -127,7 +215,7 @@
                         <div class="card-stars">86 stars</div>
                     </div>
                     <div class="card-title">Da7-Tech/SureForge</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">Agent Skill for complex work——五段工作纪律：research before ask / ask before plan / plan before build / verify before deliver /</div>
                     <div class="card-tags"><span class="tag tag-purple">Python</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/Da7-Tech/SureForge" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>
@@ -138,7 +226,7 @@
                         <div class="card-stars">191 stars</div>
                     </div>
                     <div class="card-title">Foadsf/vintage-latex</div>
-                    <div class="card-desc"></div>
+                    <div class="card-desc">20 个复古科学论文 LuaLaTeX+MetaPost 示例——独立可编译单文件；纯 LaTeX 页 / 独立 fiziko MetaPost 图 / LuaTeX 内嵌 fiziko 图三类；旧论文美学（雕版图、星空图、对数表、星图、望</div>
                     <div class="card-tags"><span class="tag tag-purple">PowerShell</span><span class="tag tag-purple">工具型</span></div>
                     <div class="card-actions"><a href="https://github.com/Foadsf/vintage-latex" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                     <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">最近出现: 2026-09-11</div>

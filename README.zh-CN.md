@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-11.md">最新日报</a> ·
+  <a href="daily/2026-09-12.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-11
+## 最新研究 · 2026-09-12
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 8 | 569 | 7 | 12K+ |
+| 8 | 577 | 6 | 11K+ |
 
-**今日核心判断：** deepseek-ai/DeepSelect 1 天 232⭐ DeepSeek V3.2/V4/V4.1 TopK 内核（2-20× torch.topk 加速 · DSA · Lightning Indexer） · mizzlelover/gongwen-gbt9704-skill 2 天 301⭐ 中文公文 GB/T 9704-2012 排版 Skill（多 AI Harness · DOCX · fork/star 18.6%） · yudaprasetya007/routeVSCODE 1 天 326⭐ VSCode Copilot Chat Zero-Reload 模型切换本地代理（9Router · 40+ Provider） · kevinzakka/mjbatch 1 天 215⭐ MuJoCo CPU 并行仿真 Python 库（C++ thread pool · GIL 释放 · RL/MPC/SysID） · deepseek-ai/deepseek-recipe 1 天 209⭐ Rust 库把多种 API 格式统一转换到 DeepSeek V4.1 Conversation · Foadsf/vintage-latex 2 天 191⭐ 20 个复古科学论文 LuaLaTeX+MetaPost 示例 · viettranx/3dviz-pro-max 1 天 131⭐ Agent Skill Three.js/Blender 创意 3D 可视化（223 recipes · 440 knowledge · 37 runnable studies）
+**今日核心判断：** xiaYuTian11/maskit 3 天 143⭐ 大模型本地隐私脱敏网关（AGPL-3.0 · mitmproxy + Tauri · Cursor/Claude Code/Codex/Pi 通用） · unstablebuild/rune 2 天 154⭐ GPU 渲染键盘驱动 IDE「the dev env for pros」（GPL-3.0 · Go · rune-agent 扩展解耦 · tmux 风格多 workspace） · sumimakito/Mac-Duo 1 天 512⭐ MacBook 盖角度触发的 iPhone Duo 折叠动效菜单栏 App（Apache-2.0 · Metal + ScreenCaptureKit · 中英双语） · FankChen/tracecrate 2 天 92⭐ Local-first AI Agent Trace Workbench（MIT · Claude Code/Codex/OTLP 日志 · 无后端 · React + Vite） · eternityspring/reelbench-skills 1 天 152⭐ AI 视频 shot-analysis 与 ffmpeg Skill 包（Apache-2.0 · 22MB 学习资料 · Claude Code skills） · R44VC0RP/opensend 3 天 117⭐ AWS SES 之上的自托管事务与营销邮件层（TypeScript · 无 lock-in） · furkan-bayrak/lg-tv-blocklist 3 天 125⭐ LG webOS TV 遥测/广告/phone-home 双层 DNS 拦截列表（CC-BY-4.0 · AdGuard Home / Pi-hole） · joshuaswarren/omarchy-apple-dev 3 天 102⭐ Omarchy Linux 直接构建部署 iOS SwiftUI App 无需 Xcode（MIT · Shell · Apple Silicon）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [deepseek-ai/DeepSelect](projects/deepselect.md) | 232 stars | 基础设施候选 |
-| [mizzlelover/gongwen-gbt9704-skill](projects/gongwen-gbt9704-skill.md) | 301 stars | 工具型 |
-| [yudaprasetya007/routeVSCODE](projects/routevscode.md) | 326 stars | 工具型 |
-| [kevinzakka/mjbatch](projects/mjbatch.md) | 215 stars | 工具型 |
-| [deepseek-ai/deepseek-recipe](projects/deepseek-recipe.md) | 209 stars | 基础设施候选 |
-| [viettranx/3dviz-pro-max](projects/3dviz-pro-max.md) | 131 stars | 工具型 |
-| [Foadsf/vintage-latex](projects/vintage-latex.md) | 191 stars | 工具型 |
-| [Da7-Tech/SureForge](projects/sureforge.md) | 86 stars | 工具型 |
+| [xiaYuTian11/maskit](projects/maskit.md) | 143 stars | 工具型 |
+| [unstablebuild/rune](projects/rune.md) | 154 stars | 平台候选 |
+| [sumimakito/Mac-Duo](projects/mac-duo.md) | 512 stars | 工具型 |
+| [FankChen/tracecrate](projects/tracecrate.md) | 92 stars | 工具型 |
+| [eternityspring/reelbench-skills](projects/reelbench-skills.md) | 152 stars | 工具型 |
+| [R44VC0RP/opensend](projects/opensend.md) | 117 stars | 工具型 |
+| [furkan-bayrak/lg-tv-blocklist](projects/lg-tv-blocklist.md) | 125 stars | 工具型 |
+| [joshuaswarren/omarchy-apple-dev](projects/omarchy-apple-dev.md) | 102 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **deepseek-official-kernel-release / DeepSeek 官方内核与 API 适配库同窗爆发——deepseek-ai/DeepSelect 1 天 232⭐（TopK kernel for DeepSeek Sparse Attention · V3.2/V4/V4.1 · bfloat16 / float32 · Lightning Indexer + Sampler · 2-20× torch.topk 加速 · benchmark 公开 · CUDA + MIT）+ deepseek-ai/deepseek-recipe 1 天 209⭐（Rust + Python bindings · 把 Messages / Chat Completions / Responses 多格式请求统一转换到 DeepSeek V4.1 Conversation · 推理后端无关）** · 相关项目：deepseek-ai/DeepSelect, deepseek-ai/deepseek-recipe · 强度：94
-2. **chinese-formal-document-skill / 中文正式材料 Skill 首次标准化——mizzlelover/gongwen-gbt9704-skill 2 天 301⭐（GB/T 9704-2012 国标依据 · A4 + 版心 + 字体 + 标题层级 + 机构文号 + 页码 · 跨 Claude Code / Codex / OpenCode / Trae Code / Kimi / TraeWork / WorkBuddy / ZCode 8 Harness · fork 56 · fork/star 18.6% 高企服信号）** · 相关项目：mizzlelover/gongwen-gbt9704-skill · 强度：92
-3. **zero-reload-copilot-model-router / VSCode Copilot Chat Zero-Reload 模型切换——yudaprasetya007/routeVSCODE 1 天 326⭐（9Router Gateway · Local Proxy Port 20129 · SSE 流式注入 · 40+ Provider · Live Model Comparison · Status Bar 切换 · Web Dashboard :5500 · MIT）** · 相关项目：yudaprasetya007/routeVSCODE · 强度：84
-4. **robotics-mujoco-batch-cpu / MuJoCo CPU 并行仿真库——kevinzakka/mjbatch 1 天 215⭐（C++ thread pool + GIL 释放 · Batch(num_sims=4096) · set_const 重算 derived constants · 应用于 RL / MPC / SysID / hardware co-design · Go1 RL 在 5 年 M1 笔记本 < 1 min 学会行走 · Apache-2.0）** · 相关项目：kevinzakka/mjbatch · 强度：86
+1. **llm-privacy-local-gateway / LLM 终端侧本地隐私脱敏网关——xiaYuTian11/maskit 3 天 143⭐ fork 24 fork/star 16.8%（Python 桌面 + Tauri 壳 · mitmproxy MITM 改写请求 · 结构化占位符打码 · SSE 流式无感还原 · Cursor/Claude Code/Codex/Pi/OpenCode/ChatGPT 任意可配 Base URL 工具通用 · AGPL-3.0 · Windows/macOS/Docker · 100% 本地零遥测）** · 相关项目：xiaYuTian11/maskit · 强度：90
+2. **gpu-rendered-power-ide / 面向「pro」的 GPU 渲染键盘驱动 IDE——unstablebuild/rune 2 天 154⭐ fork 8（Go · cmd/rune 主程序 + cmd/rune-agent 扩展解耦 · character-grid 界面 · 编辑器 + 终端 + 文件树 + AI agent 同窗 · docs.rune.build 内嵌 · GPL-3.0）** · 相关项目：unstablebuild/rune · 强度：86
+3. **macbook-duo-animation-cluster / iPhone Duo 折叠动效移植 MacBook 集群爆发——sumimakito/Mac-Duo 1 天 512⭐ fork 40（Swift · Metal + ScreenCaptureKit · 盖角度驱动 perspective/blur/dim · 菜单栏控制 · 中英双语 · Apache-2.0）+ DhananjayBhosale/MacDuo 132⭐（Swift + Metal · 桌面跟随盖角）+ jh3y/lid-plane 131⭐（盖角度驱动 progressive blur）+ IuCC123/BendMac 88⭐ + eperez28/sonar.cool 89⭐（声波手势控制 Mac 实验）+ Atomicx7/Duo-animation 128⭐（Kotlin 移植）+ elijah-semyonov/DuoLikeAnimation 125⭐ + MakrSas/Inferno-iOS 73⭐（iPhone 上跑 iOS 14 模拟器）** · 相关项目：sumimakito/Mac-Duo, DhananjayBhosale/MacDuo, jh3y/lid-plane · 强度：84
+4. **agent-trace-observability / Local-first AI Agent Trace Workbench——FankChen/tracecrate 2 天 92⭐ fork 2 fork/star 2.2%（TypeScript · React + Vite · Claude Code / Codex / OTLP 日志解析 · 仅客户端不执行 agent · 无后端无遥测 · 站点 fankchen.github.io/tracecrate · MIT）** · 相关项目：FankChen/tracecrate · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
-| [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 
 ## 为什么做这个项目
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-11.md">Latest report</a> ·
+  <a href="daily/2026-09-12.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-11
+## Latest report · 2026-09-12
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 8 | 569 | 7 | 12K+ |
+| 8 | 577 | 6 | 11K+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [deepseek-ai/DeepSelect](projects/deepselect.md) | 232 stars | 基础设施候选 |
-| [mizzlelover/gongwen-gbt9704-skill](projects/gongwen-gbt9704-skill.md) | 301 stars | 工具型 |
-| [yudaprasetya007/routeVSCODE](projects/routevscode.md) | 326 stars | 工具型 |
-| [kevinzakka/mjbatch](projects/mjbatch.md) | 215 stars | 工具型 |
-| [deepseek-ai/deepseek-recipe](projects/deepseek-recipe.md) | 209 stars | 基础设施候选 |
-| [viettranx/3dviz-pro-max](projects/3dviz-pro-max.md) | 131 stars | 工具型 |
-| [Foadsf/vintage-latex](projects/vintage-latex.md) | 191 stars | 工具型 |
-| [Da7-Tech/SureForge](projects/sureforge.md) | 86 stars | 工具型 |
+| [xiaYuTian11/maskit](projects/maskit.md) | 143 stars | 工具型 |
+| [unstablebuild/rune](projects/rune.md) | 154 stars | 平台候选 |
+| [sumimakito/Mac-Duo](projects/mac-duo.md) | 512 stars | 工具型 |
+| [FankChen/tracecrate](projects/tracecrate.md) | 92 stars | 工具型 |
+| [eternityspring/reelbench-skills](projects/reelbench-skills.md) | 152 stars | 工具型 |
+| [R44VC0RP/opensend](projects/opensend.md) | 117 stars | 工具型 |
+| [furkan-bayrak/lg-tv-blocklist](projects/lg-tv-blocklist.md) | 125 stars | 工具型 |
+| [joshuaswarren/omarchy-apple-dev](projects/omarchy-apple-dev.md) | 102 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 94 · repositories: deepseek-ai/DeepSelect, deepseek-ai/deepseek-recipe
-2. **Signal 2** · score 92 · repositories: mizzlelover/gongwen-gbt9704-skill
-3. **Signal 3** · score 84 · repositories: yudaprasetya007/routeVSCODE
-4. **Signal 4** · score 86 · repositories: kevinzakka/mjbatch
+1. **Signal 1** · score 90 · repositories: xiaYuTian11/maskit
+2. **Signal 2** · score 86 · repositories: unstablebuild/rune
+3. **Signal 3** · score 84 · repositories: sumimakito/Mac-Duo, DhananjayBhosale/MacDuo, jh3y/lid-plane
+4. **Signal 4** · score 82 · repositories: FankChen/tracecrate
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-11.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-12.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 | [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
-| [2026-09-03](daily/2026-09-03.md) | 10 | 6 |
 
 ## Why this repository exists
 

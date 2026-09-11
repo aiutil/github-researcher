@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-09-12
+**核心主题：** xiaYuTian11/maskit 3 天 143⭐ LLM 终端侧本地隐私脱敏与还原网关（mitmproxy + Tauri + SSE 流式还原 · AGPL-3.0 · fork/star 16.8%） · unstablebuild/rune 2 天 154⭐ GPU 渲染键盘驱动 IDE「the dev env for pros」（Go · cmd/rune + cmd/rune-agent 扩展解耦 · GPL-3.0） · sumimakito/Mac-Duo 1 天 512⭐ MacBook iPhone Duo 折叠动效菜单栏 App（Swift · Metal + ScreenCaptureKit · Apache-2.0） · FankChen/tracecrate 2 天 92⭐ Local-first AI Agent Trace Workbench（TypeScript · Claude Code/Codex/OTLP 日志 · MIT） · eternityspring/reelbench-skills 1 天 152⭐ AI 视频 shot-analysis + ffmpeg Skill 包（22MB 学习资料 · Apache-2.0） · furkan-bayrak/lg-tv-blocklist 3 天 125⭐ LG webOS TV DNS 拦截列表（safe + strict · CC-BY-4.0） · R44VC0RP/opensend 3 天 117⭐ AWS SES 之上的自托管事务/营销邮件层 · joshuaswarren/omarchy-apple-dev 3 天 102⭐ Omarchy Linux 直接构建部署 iOS SwiftUI App 无需 Xcode（8KB Shell · MIT）
+
+**证据边界：** 星标、总星数与增速取自 2026-09-12 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README / README_EN.md 公开摘录（API readme 字段 base64 解码）；"X 天 Y⭐"基于 created_at→2026-09-12 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。**今日最大事件是 `xiaYuTian11/maskit` 3 天 143⭐ / fork 24 / fork/star 16.8% — LLM 终端侧本地隐私脱敏与还原网关**——出网前自动打码、入网时 SSE 流式无感还原，100% 本地零遥测，AGPL-3.0；与昨日 `mizzlelover/gongwen-gbt9704-skill` 18.6% fork/star 同处企业级 fork 信号区间。**iPhone Duo 二创集群爆发是 2026-09-12 最大的"单点灵感 → 多 repo 并发"事件**——`sumimakito/Mac-Duo` 1 天 512⭐ 引爆后同日出现 DhananjayBhosale/MacDuo（132⭐）、jh3y/lid-plane（131⭐）、IuCC123/BendMac（88⭐）、eperez28/sonar.cool（89⭐）、Atomicx7/Duo-animation（128⭐）、elijah-semyonov/DuoLikeAnimation（125⭐）、chuspeeism/iphone-duo（98⭐）、opensourcevillain/Bendable（76⭐）、MakrSas/Inferno-iOS（73⭐，在真 iPhone 上跑 iOS 14 模拟器）、jlxc2001/MacBook-Duo（62⭐）等 7+ 变体。`yureii1996/cek-probe-model`（354⭐ / fork 0 / 10 KB / 无 license）元数据信号异常，本简报不列入核心趋势；`Faizpi/bank-sampah`（918⭐ / fork 0 / PHP / 空 description）疑似刷星，亦排除。
+
+**关键项目：**
+- 🛡️ xiaYuTian11/maskit (3 天 143⭐) — LLM 终端侧本地隐私脱敏与还原网关（mitmproxy MITM 改写 + 结构化占位符打码 + SSE 流式还原 · Tauri 桌面壳 / Docker · Cursor/Claude Code/Codex/Pi/OpenCode/ChatGPT 任意可配 Base URL 工具通用 · 100% 本地零遥测 · Windows/macOS/Docker amd64+arm64 · AGPL-3.0 · fork/star 16.8%），Score 90
+- 🧙 unstablebuild/rune (2 天 154⭐) — 面向「pro」的 GPU 渲染键盘驱动 IDE（character-grid 界面 · 编辑器+终端+文件树+AI agent 同窗 · cmd/rune 主程序 + cmd/rune-agent 扩展解耦 · agent 不污染核心编辑器 · docs.rune.build 内嵌 · Linux/macOS CI + Lint + codecov · GPL-3.0），Score 86
+- 💻 sumimakito/Mac-Duo (1 天 512⭐) — MacBook 盖角度触发 iPhone Duo 折叠动效菜单栏 App（Swift · Metal GPU 渲染 perspective/blur/dim + ScreenCaptureKit 实时屏幕内容 · 菜单栏控制 · 中英双语 · prebuilt DMG 已签名+公证 · Apple Silicon+Intel 双架构 · Apache-2.0 · fork/star 7.8%），Score 84
+- 📊 FankChen/tracecrate (2 天 92⭐) — Local-first AI Agent Trace Workbench（React + Vite + Node.js ≥22.12 · 客户端解析 Claude Code/Codex/OTLP 日志 · 可搜索 timeline + recorded metrics + heuristic diagnostics + side-by-side 对比 · 无后端无遥测无账号无 API key · 仅客户端不执行 agent · live demo fankchen.github.io/tracecrate · MIT · fork/star 2.2%），Score 82
+- 🎬 eternityspring/reelbench-skills (1 天 152⭐) — AI 视频 shot-analysis + ffmpeg Skill 包（HTML 主目录 · 22MB 学习资料 + shot-analysis 工作流 + ffmpeg 工具链 · Claude Code skills 入口 · 与 09-11 viettranx/3dviz-pro-max 同构但垂直于视频场景 · Apache-2.0 · fork/star 13.8%），Score 80
+- 📺 furkan-bayrak/lg-tv-blocklist (3 天 125⭐) — LG webOS TV 遥测/广告/phone-home DNS 拦截列表（Python 列表生成+校验工具 · safe + strict 双层分级 · AdGuard Home + Pi-hole 双兼容 · 120 KB 紧凑体积 · CC-BY-4.0 鼓励衍生与商业化 · fork/star 1.6%），Score 76
+- 📧 R44VC0RP/opensend (3 天 117⭐) — AWS SES 之上的自托管事务/营销邮件层（TypeScript · 不锁死在单一 SaaS 邮件服务商 · 2.3 MB 体积 · **无 license 字段 — 企业采用前需先补 license 声明** · fork/star 6.0%），Score 72
+- 🍎 joshuaswarren/omarchy-apple-dev (3 天 102⭐) — Omarchy Linux + Apple Silicon 直接构建部署 iOS SwiftUI App 无需 Xcode（8 KB 纯 Shell 脚本包装 xcodebuild + codesign · MIT · **"无 Xcode"声明的物理边界（是否仍需 macOS SDK / 远程 macOS）需核验** · fork/star 4.9%），Score 70
+
+**关键判断：**
+- **LLM 终端侧本地隐私脱敏网关成为新基础设施候选**：xiaYuTian11/maskit 的「mitmproxy + 结构化占位符 + SSE 流式还原」技术栈非常工程化；AGPL-3.0 + fork/star 16.8% 双信号指向"企业级私有部署"刚需；与昨日 mizzlelover/gongwen-gbt9704-skill（Skill 形态）相比，maskit 是中间件形态，不替代 LLM 工具本身，而是在中间架透明网关
+- **"Agent 当扩展 vs Editor 当入口"的 IDE 路线分歧**：unstablebuild/rune 的 cmd/rune-agent 解耦哲学与 Cursor / Claude Code / Codex 的 agent-centric 路线形成对比；反映"core editor 完整性"开发者亚文化的明确需求；character-grid 渲染 + 多 workspace 同窗 + 内嵌 docs 三件套服务"面向 pro 极简"定位
+- **iPhone Duo 二创集群——单点灵感 → 多 repo 并发**：sumimakito/Mac-Duo 1 天 512⭐ 引爆后同日 7+ 变体并发；这是 2026-09-12 最显著的"灵感驱动二创爆发"事件；真正决定集群长期可持续性的是 Apple 官方是否在 macOS 下个版本内置类似 API
+- **Local-first AI observability 哲学**：FankChen/tracecrate 把"只看 trace 不执行 agent"的只读工作台完全 client-side 化；填补"Agent 用户不信任 SaaS 但又想看自己 trace"的空位；MIT license 友好；但 fork=2 反映早期阶段
+- **Skill 形态从"通用工具"扩展到"垂直领域模板库"**：eternityspring/reelbench-skills 与 09-11 viettranx/3dviz-pro-max（3D）、09-11 mizzlelover/gongwen-gbt9704-skill（公文）同构，差异点是垂直于 AI 视频剪辑场景；22MB 学习资料 + ffmpeg + shot-analysis 三层资产
+- **DNS 拦截列表垂直化首批标杆**：furkan-bayrak/lg-tv-blocklist 切入"单品牌垂直"——精准只针对 LG webOS TV；safe + strict 双层分级降低使用门槛；CC-BY-4.0 鼓励衍生与商业化；未来可能出现"三星 Tizen TV blocklist"、"Sony Bravia blocklist"等同类
+- **License 风险待观察**：R44VC0RP/opensend 仓库无 license 字段是企业采用的阻塞性风险；unstablebuild/rune GPL-3.0 限制商业闭源 fork；xiaYuTian11/maskit AGPL-3.0 同样限制修改后闭源分发
+- **"无 Xcode"声明物理边界**：joshuaswarren/omarchy-apple-dev 8 KB Shell 暗示仍需 macOS SDK（本地 / 远程 / 容器化）；物理上 iOS IPA 构建不可能在纯 Linux 端独立完成；README 应明示外部依赖
+
+---
+
 ## 2026-09-11
 **核心主题：** deepseek-ai/DeepSelect 1 天 232⭐ DeepSeek 官方 TopK kernel for DSA（2-20× torch.topk · V3.2/V4/V4.1 · Lightning Indexer + Sampler） · mizzlelover/gongwen-gbt9704-skill 2 天 301⭐ 中文公文 GB/T 9704-2012 排版 Skill（跨 8 Harness · DOCX · fork/star 18.6%） · yudaprasetya007/routeVSCODE 1 天 326⭐ VSCode Copilot Chat Zero-Reload 模型切换（9Router · 40+ Provider · fork 0） · kevinzakka/mjbatch 1 天 215⭐ MuJoCo CPU 并行仿真 Python 库（C++ thread pool · GIL 释放 · 4096 并行 sim） · deepseek-ai/deepseek-recipe 1 天 209⭐ Rust 库 + Python bindings 把多格式 API 统一转 DeepSeek V4.1 Conversation · Foadsf/vintage-latex 2 天 191⭐ 20 个复古科学论文 LuaLaTeX+MetaPost 独立示例 · viettranx/3dviz-pro-max 1 天 131⭐ Agent Skill Three.js/Blender 创意 3D（223 recipes · 440 knowledge · 37 runnable studies）· Da7-Tech/SureForge 2 天 86⭐ Agent 五段工作纪律 Skill（research/ask/plan/build/verify/review · 跨 5 Harness）
 
