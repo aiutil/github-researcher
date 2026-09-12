@@ -5,6 +5,11 @@ from pathlib import Path
 p = Path("indexes/trend-index.md")
 text = p.read_text(encoding="utf-8")
 
+# Idempotency: if today's section is already present, do nothing.
+if f"\n## {__import__('datetime').date.today().isoformat()}" in ("\n" + text):
+    print("OK (idempotent: today's section already present, skipping)")
+    raise SystemExit(0)
+
 # Find end of frontmatter (--- ... ---)
 lines = text.split("\n")
 fm_end = 0

@@ -5,6 +5,11 @@ from pathlib import Path
 p = Path("daily-report.md")
 text = p.read_text(encoding="utf-8")
 
+# Idempotency: if today's section is already present, do nothing.
+if f"## {__import__('datetime').date.today().isoformat()}" in text:
+    print("OK (idempotent: today's section already present, skipping)")
+    raise SystemExit(0)
+
 # Find the first H2 line (## YYYY-MM-DD) to insert before it
 lines = text.split("\n")
 insert_at = None
