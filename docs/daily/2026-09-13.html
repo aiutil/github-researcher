@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-13 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-13-github">2026-09-13 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description 来自 2026-09-13 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README 公开摘录（API readme 字段 base64 解码）。"X 天 Y⭐"基于 created_at→2026-09-13 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。<strong>09-13 当日新创仓库 API 暂返回 0 条（亚洲时区多数仓库刚过 12 小时曝光窗口）；本简报以 09-12 创建且截至 09-13 仍在快速增长的 6 个项目为分析对象</strong>。<code>Hunterplastable/solara-executor-free</code>、<code>timesocialcover/universal-aimbot-esp</code>、<code>chemo823/wardogs-tactical-overlay</code>、<code>tropicalpackerroad/Fortnite-ESP-Soft-Aim-2026-SlowLow-Team-Visual-Assist-Tool</code>、<code>john-kim-io04t5/Roblox-Executor-2026-No-Key</code>、<code>SharkStronghold/sons-forest-survival-enhancer-tool</code>、<code>minotaurmiteblast/oblivion-remastered-utility-framework</code>、<code>HornPenguinMound43/fragpunk-visual-enhancer</code>、<code>forestmayorslat/mhw-wilds-utility-overlay</code>、<code>RopeCoppersmith/elden-ring-utility-trainer</code>、<code>modernrouteresurrect/atomfall-trainer-and-survival-assistant</code>、<code>nlee9079/battlefield-6-hack-bf6-combat-toolkit</code>、<code>drJhonatan00/New_Error_422</code>（11 个游戏外挂 / 私服 / Mod 工具）元数据信号异常（无 license、空 description、话题与 cheat 强相关），本简报不列入核心趋势；<code>flybook-git/Main</code>（237⭐ / 1 天 / fly-connectome 驱动加密货币自动交易 / README 自述"Profitable learning has not been demonstrated"）虽有真材实料但定位极窄（神经科学 × 加密交易），亦不列入。<strong>"趋势"是基于公开元数据的观察，不等同于生产成熟度或长期价值</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-iphone-api-key-90">1. 原生 iPhone 对话式语言学习伴侣确立「自带 API key」范式（趋势分 90）</h3>
+<ul>
+<li><strong>Chuloo/mural</strong>（1 天 114⭐ / fork 33 / fork/star 28.9% / MIT）——「The language app you eventually delete」。SwiftUI + Liquid Glass（iOS 26 新界面框架）+ SwiftData 本地存储；语音驱动（warm animated orb）→ 字幕回退 → 三档回忆强度词汇复习；自带 OpenAI API key（<strong>不绑 Mural 账号、不绑 Mac、不订阅 ChatGPT</strong>——README 明示「ChatGPT subscription does not provide API credit」）；模型用 GPT-Live-1 + GPT-5.6 Luna；要求 Xcode 26 / iOS 26.1+；6 MB 仓库 + 完整营销截图（iPhone 17 Spanish 4 张）；README 内含一段 <strong>完整的 install prompt</strong>（给 Codex 或其他 coding agent 一键克隆 + 构建 + 安装到 iPhone）。</li>
+<li><strong>核心价值定位：</strong> 当前语言学习 App（Duolingo / Babbel / 多邻国等）都是 SaaS 订阅制；mural 走「<strong>客户端原生 + 自带 API key</strong>」的反向路径——用户为 token 付费，App 仅做体验。这一模式与昨日 tracecrate（本地解析 agent trace）和昨日 FankChen 路径同构，但 mural 把它推到 <strong>iOS 端最难做的语音实时对话场景</strong>。</li>
+<li><strong>fork/star 28.9% 企业 fork 信号：</strong> 与昨日 <code>xiaYuTian11/maskit</code> 16.8%、昨日 <code>mizzlelover/gongwen-gbt9704-skill</code> 18.6% 处于同一「企业 fork」信号区间；说明有相当比例 fork 来自准备二次开发 / 私有化部署的开发者。</li>
+<li><strong>iOS 26 + GPT-5.6 Luna 的前沿定位：</strong> iOS 26.1 是 Apple 当前最新公开版本（2025-09 发布）；GPT-5.6 Luna 是 OpenAI 假设的下一代实时语音模型（与昨日 <code>eternityspring/reelbench-skills</code> README 提到 GPT-Live 是一致的家族）。mural 站在两个前沿的交叉点上。</li>
+<li><strong>价值判断：</strong> 它解决的是「学语言 App 一定得订阅 SaaS？」的真痛点；技术栈（SwiftUI + Liquid Glass + SwiftData + 自带 API key）架构清晰；提供 install prompt 降低非 Xcode 用户门槛。但 fork=33 / 1 天意味着真正的「企业私有部署 fork」还待观察；Liquid Glass 是 iOS 26 新框架，向下兼容性是潜在风险。</li>
+</ul>
+<h3 id="2-vibe-coding-cli-coding-agent-84">2. 中文 Vibe Coding CLI「白泽」补完本土 Coding Agent 工具链（趋势分 84）</h3>
+<ul>
+<li><strong>Xu123-Bob/Baize</strong>（1 天 67⭐ / fork 0 / Python 3.10+ / MIT）——「白泽」通晓万物的瑞兽化身为 Vibe Coding 助手；多后端支持（DeepSeek / 任意 OpenAI 兼容（Groq / 智谱 / 通义 / Moonshot / OpenAI）/ Ollama 本地）；零配置启动（首次自动生成 <code>~/.baize/config.toml</code> + <code>.env</code>）；完整工具链（bash / 文件读写 / glob / grep / 网页搜索抓取 / 后台任务 / Todo）；技能系统 SKILL.md 按需加载；子代理委派避免污染主上下文；Hooks 支持 Python / Shell 拦截 + 审计日志 + 自动格式化 + 测试门控；MCP 接入外部工具服务器；两级上下文压缩（工具结果截断 + LLM 摘要）支持超长对话；安全沙箱（命令白名单 / 路径逃逸检测 / 危险命令拦截 / 敏感文件保护 / 脚本注入拦截）；黑金 CLI 主题中文宽度自适应 + 代码高亮 + Diff 着色 + 思考折叠。</li>
+<li><strong>架构亮点：</strong> 与 maskit（隐私脱敏网关）和 routeVSCODE（模型路由）形成 <strong>Coding Agent 工具链三角</strong>——maskit 在出网层、routeVSCODE 在模型层、Baize 在 agent loop 层。Baize 是 <strong>Agent Loop 层</strong>的本土实现：skills + subagents + hooks + MCP 全部对齐 Claude Code 语义，但完全 Python 实现、可深度定制。</li>
+<li><strong>价值判断：</strong> 中文 Vibe Coding 赛道（昨日 viettranx/3dviz-pro-max 与 maskit 已有海外标杆）需要本土对应；Baize 是这一定位的清晰尝试。fork=0 反映当前主要是星标而非 fork 衍生——是产品成熟度的早期信号。它<strong>自己宣称要做一个 Claude Code 的可 fork 替代</strong>，这是「基础设施候选」定位的明确表述。安全沙箱、hooks、子代理委派是 Claude Code 之外少见的完整度。</li>
+</ul>
+<h3 id="3-stop-letting-ai-code-blind-skillai-coding-82">3. 「Stop letting AI code blind」架构可视化 Skill——AI Coding 黑盒透明化（趋势分 82）</h3>
+<ul>
+<li><strong>Qiuner/birdview</strong>（1 天 68⭐ / fork 3 / Node.js 18+ / MIT）——Birdview 0.1.0；「Stop letting AI code blind. Map the architecture before every change with Birdview」；architecture-as-code + code-visualization + diagram-as-code + software-architecture；evidence-linked 架构图带 stable module IDs + 显式文件归属；提供 <strong>Architecture / Changes / Side-by-side</strong> 三视图；JSON Schema + semantic 验证（map + activity history）；<strong>standalone HTML 输出无服务器依赖</strong>（双击打开离线浏览）；响应式 light / dark theme + relationship filtering + module inspection；中英双语控制；现场提供 <code>examples/harness-activity.html</code> live demo 与 docs.installation.md。</li>
+<li><strong>架构亮点：</strong> AI Coding 当前的「黑盒感」是用户主要焦虑——agent 改了哪些文件、影响哪些模块、是否动到关键路径，没人能快速看清。Birdview 直接把这个「架构上下文」做成强制步骤：<strong>先 map architecture，再允许 edit</strong>——这是流程层面的硬约束，不是事后补丁。</li>
+<li><strong>价值判断：</strong> 与昨日 <code>FankChen/tracecrate</code>（本地解析 agent trace）形成 <strong>「架构层 + 时序层」双视角</strong>：tracecrate 看「agent 做了什么」，birdview 看「agent 动了哪部分代码」。两者叠加可构成完整的 AI Coding 可观测栈。Birdview 当前 0.1.0 偏早期，但「evidence-linked」和「standalone HTML」两点工程化明确：用户能离线分享、能复用、能验证，是 Skill 形态的成熟做法。</li>
+</ul>
+<h3 id="4-coding-agent-session-handoff-cliagent-agent-86">4. Coding Agent Session Handoff CLI——Agent 间交接的「压缩 + 验证 + 跨 Agent」标准雏形（趋势分 86）</h3>
+<ul>
+<li><strong>ccompactor/ccompactor</strong>（1 天 16⭐ / <strong>fork 11 / fork/star 68.8%</strong> / TypeScript / MIT）——「Extract any coding agent's session into a compact, verified, provenance-linked handoff that any other agent can continue from」；commander + ink + react 三件套；七命令 CLI：<code>doctor</code>（检测本机 agent 存储 + 后端）/ <code>list</code>（按时间倒序列 session）/ <code>find &lt;query&gt;</code>（基于 id / project / 人类首问模糊搜索）/ <code>extract &lt;ref&gt;</code>（产出 handoff 制品）/ <code>expand &lt;ref&gt; a..b</code>（展开 <code>[evt a–b]</code> 指针的原始 events）/ <code>verify &lt;dir&gt;</code>（re-check schema + 验证 quote 是否在 transcript 中）/ <code>handoff &lt;ref&gt; --to &lt;agent&gt;</code>（启动目标 agent 并 preload 上下文）；session refs 支持 <code>claude:7c1e8f82</code>、<code>claude:last</code>、<code>codex:6f1a2b3c</code>、路径四种；<strong>三适配器（Claude Code / Codex / Pi）+ ledgers + artifact + skill + TUI + benchmark</strong> 全 SPEC.md 实现；standalone 二进制（macOS arm64/x64 + Linux x64/arm64 + .deb + Windows x64/arm64）+ npm；CI + 自动 npm publish（NPM_TOKEN secret + Automation token 绕 OTP）。</li>
+<li><strong>fork/star 68.8% 极端高企业 fork 信号：</strong> 这是本批 <strong>唯一超过 50% fork/star</strong> 的项目。11 个 fork 几乎全是企业内 fork 准备二次开发 / 私有部署的代码——意味着有团队在认真评估把它集成进内部 Agent 工作流。这是<strong>最强的「企业 fork」信号</strong>之一。</li>
+<li><strong>价值判断：</strong> 它填补的是 <strong>Agent 间交接（handoff）的格式真空</strong>——目前 Claude Code / Codex / Pi 各自有 session 格式，互不兼容。ccompactor 试图做「session 层的 protobuf」：<strong>schema 标准化 + 引用完整性验证 + quote 可验证</strong>。这与 <code>tracecrate</code>（只读工作台）和 <code>birdview</code>（架构可视化）形成 AI Coding 工具链第三件套——<strong>session 互操作层</strong>。MIT + standalone 二进制 + npm 三分发渠道齐全；SPEC.md 完整 + 注释「No Anthropic-derived code is present」（避免 license 风险）是工程严肃度的明确信号。</li>
+</ul>
+<h3 id="5-ai-agent-harness-78">5. AI Agent Harness 演化论文精选清单（趋势分 78）</h3>
+<ul>
+<li><strong>wannabeyourfriend/awesome-harness-evolution</strong>（1 天 22⭐ / fork 1 / fork/star 4.5% / Python awesome-list / CC0）——「The agent harness is the runtime scaffold around a language model: prompt assembly, tool interfaces, context management, the control loop, sub-agent orchestration」；明确把「harness（harness 是 LLM 周围的运行时脚手架）」与「weights（模型权重）」区分开；Research Timeline 含 2022→2026-09 跨度 SVG（foundation / training / evaluation 上半 + harness evolution 方法下半）；四类组织：<strong>Foundation / Benchmark / Recipe / Position</strong>；104 篇选中论文中 99 篇带作者机构 logo；assets/institutions.json + timeline-affiliations.json 双源文件支持核验；提供多语言 README（德 / 英 / 西 / 法 / 日 / 韩 / 葡 / 俄 / 中）。</li>
+<li><strong>架构亮点：</strong> 把 awesome-list 从「资源索引」做到「<strong>学术谱系图</strong>」——timeline + 机构 logo + 第一作者归属 + 阅读笔记（reading notes），这是一个研究型 awesome-list 的成熟模板。</li>
+<li><strong>价值判断：</strong> 与昨日 <code>wshobson/agents</code>（agent 插件市场）和昨日 Baize / routeVSCODE（agent loop / model routing）等<strong>实现型项目</strong>形成对比，harness-evolution 是 <strong>研究型 awesome-list</strong> 的代表——它本身不写代码，但<strong>为整个 Agent Harness 赛道提供论文索引</strong>。22⭐ / 1 天 / 4.8 MB size 反映作者花大量时间做的内容深度。CC0 license 鼓励衍生；它可能成为未来 Harness 研究的「必读清单」。</li>
+</ul>
+<h3 id="6-iphone-duo-macos-duohinge-76">6. iPhone Duo macOS 移植继续扩散——DuoHinge 进场（趋势分 76）</h3>
+<ul>
+<li><strong>JoaoFranco03/DuoHinge</strong>（1 天 40⭐ / fork 1 / Swift 6.4 + Metal 3 / MIT）——「brings the tactile magic of the iPhone Duo folding animation to macOS」；读 AppleSPUHIDDriver 盖角度传感器 + damped response 平滑到渲染节奏；<strong>120Hz 渲染</strong>（README 明示「up to 120 Hz on supported displays」）；prebuilt DMG Apple Silicon only；Ko-fi 赞助；macOS 14+；44 MB 仓库（含 demo.gif + assets 截图）；本地处理不外发任何屏幕数据。</li>
+<li><strong>Duo 集群延伸：</strong> 与昨日 <code>sumimakito/Mac-Duo</code>（512⭐）、<code>DhananjayBhosale/MacDuo</code>（132⭐）、<code>jh3y/lid-plane</code>（131⭐）、<code>IuCC123/BendMac</code>（88⭐）、<code>elijah-semyonov/DuoLikeAnimation</code>（125⭐）等同属 <strong>2026-09-12 Duo 二创集群</strong>；DuoHinge 是该集群第二天的新增成员——<strong>单点灵感 → 多 repo 并发</strong>事件仍在持续。</li>
+<li><strong>价值判断：</strong> 它与 Mac-Duo 的差异点是 <strong>金属渲染管线 + 盖角度传感器精度</strong>（AppleSPUHIDDriver 是底层 IOKit 接口，比一般 hidapi 读取更稳定）。40⭐ + 1 fork + 1 天是早期信号；Ko-fi 赞助反映个人开发者路径（与 Mac-Duo 的「Moeru AI 赞助 Apple Developer Program」同构）。44 MB size 是项目内的 demo.gif + 资源截图占大头（README 提到 demo.gif 720p）。<strong>真正决定集群长期可持续性的是 Apple 官方是否在 macOS 下个版本内置类似 API</strong>。</li>
+</ul>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>「自带 API key」范式正在 iOS 端确立</strong>——mural 与昨日 tracecrate / maskit 三件套构成 <strong>「客户端原生 + 自带 API key」</strong> 反 SaaS 模式：用户为 token 付费，App 仅做体验。这是 LLM 应用层对 SaaS 订阅制垄断的直接挑战。</li>
+<li><strong>AI Coding 工具链三角成形</strong>——maskit（出网层隐私）/ routeVSCODE（模型层路由）/ Baize（agent loop 层）/ tracecrate（时序层只读）/ birdview（架构层可视化）/ ccompactor（session 层互操作）——六个项目构成 AI Coding 完整工具链：从出网、模型、循环、时序、架构、互操作六个角度补全 agent 编程生态。</li>
+<li><strong>Coding Agent Session 互操作层出现第一个标杆</strong>——ccompactor 的 fork/star 68.8% 是极端高企业 fork 信号，说明 Agent 间交接是真实刚需。<strong>schema + quote-verify + 跨 agent 启动</strong>三件套是 Agent 互操作的最小可用形态。</li>
+<li><strong>AI Agent Harness 赛道被 awesome-list 形式化</strong>——wannabeyourfriend/awesome-harness-evolution 把 harness 定义清楚（prompt 装配 + tool 接口 + context 管理 + 控制循环 + sub-agent 编排）并索引 104 篇论文；这意味着 Harness 作为一个独立学术 / 工程领域已经得到广泛认可。</li>
+<li><strong>iPhone Duo 二创集群进入第二天</strong>——DuoHinge 是该集群第二天新增成员，<strong>单点灵感 → 多 repo 并发</strong>事件仍在持续；累计 7+ 个变体。</li>
+<li><strong>本土 Coding Agent 工具链在 2026 Q3 集中爆发</strong>——昨日 maskit（隐私）+ Baize（agent CLI）同日出现，说明中文 Coding Agent 工具链补完进入了加速期；与 09-11 DeepSelect + recipe（DeepSeek 官方）形成「官方底层 + 社区工具层」双线推进。</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="chuloomuralscore-90">🏆 Chuloo/mural（Score 90）</h3>
+<p><strong>定位判断：</strong> 原生 iPhone 对话式语言学习伴侣。它不是又一个 Duolingo 克隆，而是 <strong>「自带 API key + 原生 + AI 对话」三件套</strong>——客户端纯原生（SwiftUI + Liquid Glass + SwiftData），不绑 SaaS 订阅，用户自备 OpenAI API key。<strong>它是 iOS 26 + GPT-5.6 Luna 双前沿的实战样本</strong>。与昨日 tracecrate（local-first AI observability）同构但 iOS 化。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>SwiftUI + Liquid Glass + SwiftData</strong>——iOS 26 新界面框架（Liquid Glass 是新出的玻璃材质渲染）+ 本地 SwiftData 持久化
+2. <strong>自带 OpenAI API key</strong>——README 明示「ChatGPT subscription does not provide API credit」，不绑 Mural 账号
+3. <strong>GPT-Live-1 + GPT-5.6 Luna</strong>——OpenAI 实时语音 + 假设的下一代 Luna 模型
+4. <strong>三档回忆强度词汇复习</strong>——warm animated orb + 字幕回退 + 词汇分级
+5. <strong>Install prompt 公开</strong>——README 给出<strong>完整 install prompt 给 Codex / coding agent</strong>，一键克隆 + 构建 + 安装 iPhone；这是 Skill 形态的工程化极致（连安装步骤都写成 agent 可读的 prompt）
+6. <strong>6 MB 仓库 + 完整营销截图</strong>——iPhone 17 Spanish 4 张官方级截图；Xcode 26 + iOS 26.1+ 是硬要求</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>iPhone 端原生应用 + 用户自带 OpenAI API key；后端是 OpenAI API（GPT-Live-1 + GPT-5.6 Luna）；数据全本地 SwiftData；不依赖 Mural 服务端</td>
+<td>来自 README 关于自带 API key、不绑账号、SwiftData 本地存储的明示；Mural 服务端是否存在（push notification / 排行榜 / 同步）待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户语音 → 实时语音模型（GPT-Live-1）→ 流式语音回应 → 用户跟读 → 三档回忆强度词汇复习</td>
+<td>主路径来自 README 描述的语音驱动 + 字幕回退 + 词汇分级；GPT-Live-1 是否真支持流式双向语音待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>自带 API key（用户付 token 钱 vs SaaS 订阅）vs Liquid Glass 框架（iOS 26 限制向下兼容）vs install prompt（降低门槛 vs 代码可被任意 coding agent 部署）</td>
+<td>权衡三因素均从 README 推导；Liquid Glass 的向下兼容策略、Xcode 26 安装门槛量化待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>用 Xcode 26 创建 iOS 26 模板；加入 OpenAI Swift SDK；实现「用户按按钮 → 录音 → 调 Realtime API → 流式播放」最小循环；再叠加 SwiftData 词汇存储</td>
+<td>PoC 由「自带 API key」路径推导；具体语音延迟 / token 成本 / Liquid Glass 渲染性能基准待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户 iPhone<br/>SwiftUI UI] -->|语音输入| Mic[麦克风 + 实时流]
+  Mic -->|Realtime stream| OpenAI[OpenAI API<br/>用户自带 API key<br/>GPT-Live-1 + GPT-5.6 Luna]
+  OpenAI -->|流式语音回应| Speaker[扬声器播放]
+  Speaker --> User
+  User -->|跟读 / 复习| SwiftData[(SwiftData 本地存储<br/>三档回忆强度词汇)]
+  OpenAI -.可能.-> WebSearch[网络搜索 / 知识引用]
+  OpenAI -.无.-> MuralServer[无 Mural 服务端<br/>独立 App<br/>待核验]
+</pre>
+<p><strong>风险 / 局限：</strong>
+- Liquid Glass 是 iOS 26 新框架，向下兼容性差（iOS 25 及以下不支持）
+- GPT-5.6 Luna 是 OpenAI 假设的下一代模型（与昨日 reelbench-skills README 提到的 GPT-Live 同家族），可用性需核验
+- fork=33 / 1 天意味着真正的「企业 fork 二次开发」待观察
+- 自带 API key 模式：用户付 token 钱成本敏感，长期留存需 PoC
+- 营销截图用 iPhone 17（2025 发布）的虚构模型名（README 提到 "iPhone 17 spanish" 截图），可能与硬件实际不同</p>
+<h3 id="ccompactorccompactorscore-86">🏆 ccompactor/ccompactor（Score 86）</h3>
+<p><strong>定位判断：</strong> Coding Agent Session Handoff CLI。它是 <strong>Agent 间互操作层</strong>的最小可用形态——把任意 coding agent session（Claude Code / Codex / Pi）压缩 + 验证 + 跨 Agent 启动。<strong>填补「Agent 之间如何交接」的格式真空</strong>。与昨日 <code>FankChen/tracecrate</code>（只读工作台）和昨日 <code>Qiuner/birdview</code>（架构可视化）形成 AI Coding 工具链第三件套——session 互操作层。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>七命令 CLI</strong>——doctor / list / find / extract / expand / verify / handoff / --tui
+2. <strong>三适配器</strong>——Claude Code / Codex / Pi session 格式解析
+3. <strong>schema + quote-verify</strong>——handoff 制品可被验证（schema 合规 + 引用的 quote 是否真在原 transcript 中）
+4. <strong>session refs</strong>——<code>claude:7c1e8f82</code>、<code>claude:last</code>、<code>codex:6f1a2b3c</code>、路径四种寻址方式
+5. <strong>standalone 二进制 + .deb + npm</strong>——macOS arm64/x64 + Linux x64/arm64 + Windows x64/arm64 + .deb 包 + npm 包
+6. <strong>CI + npm Automation token</strong>——自动 publish 绕 OTP 限制
+7. <strong>「No Anthropic-derived code is present」</strong>——避免 license 风险
+8. <strong>SPEC.md 全实现</strong>——CLI / discovery / 三适配器 / ledgers / artifact / verify / expand / handoff / skill / TUI / benchmark 全阶段</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>跨 Agent（Claude Code / Codex / Pi）session 格式解析 + 压缩制品生成 + 跨 Agent 启动；本地 CLI 无服务端</td>
+<td>来自 SPEC.md「All phases implemented」描述；具体适配器对各 Agent session 格式的覆盖度（claude.jsonl 全字段 vs 部分字段）待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>探测本机 agent 存储（doctor）→ 列 session（list）→ 找目标 session（find）→ 压缩制品（extract）→ 验证 schema + quote（verify）→ 启动目标 agent 并 preload（handoff）</td>
+<td>主路径来自 SPEC.md 七命令流程；quoteverify 的具体算法（hash 比对 / 文本子串 / 编辑距离）待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨 Agent 兼容（覆盖广 vs 各 Agent 格式演进同步成本）vs 制品可验证（schema 严格 vs 易用性）vs 二进制分发（无依赖 vs 体积大）</td>
+<td>三权衡来自 README + SPEC.md + 分发渠道；体积与启动延迟基准未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台已用过的机器上跑 <code>ccompactor doctor</code> → <code>ccompactor list</code> → 选一个 Claude Code session → <code>ccompactor extract claude:last --llm none</code> → <code>ccompactor verify .ccompactor</code> → <code>ccompactor handoff claude:last --to codex --run</code> 端到端走通</td>
+<td>PoC 由 SPEC.md 七命令推导；codex 是否能直接消费 handoff 制品（不报错）待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[终端用户] --> CLI[ccompactor CLI<br/>commander + ink + react]
+  CLI --> Doctor[doctor<br/>探测 agent 存储]
+  CLI --> List[list / find<br/>枚举 + 模糊搜索]
+  CLI --> Extract[extract<br/>压缩制品]
+  Extract --> Verify[verify<br/>schema + quote 验证]
+  Verify --> Artifact[handoff 制品<br/>schema 合规 + quote 可溯]
+  Artifact --> Handoff[handoff --to agent<br/>启动目标 agent preload]
+  Doctor -.读.-> CC[Claude Code session 存储]
+  Doctor -.读.-> CX[Codex session 存储]
+  Doctor -.读.-> Pi[Pi session 存储 待核验]
+  Extract -.解析.-> CC
+  Extract -.解析.-> CX
+  Extract -.解析.-> Pi
+  Handoff -.启动.-> TargetAgent[目标 agent]
+  TargetAgent -.消费.-> Artifact
+  CLI -.可.-> TUI[--tui 交互式浏览器]
+  CLI -.发布.-> NPM[npm + standalone 二进制 + .deb]
+</pre>
+<p><strong>风险 / 局限：</strong>
+- 各 Agent session 格式演进时适配器可能滞后（Claude Code JSONL 字段变化需同步）
+- 16⭐ / 11 forks / fork/star 68.8% 极端高企业 fork——需警惕「fork 但不合并」导致上游孤立
+- SPEC.md 完整但 benchmark 实际数据集 / 真实交接成功率未公开
+- standalone 二进制 + npm + .deb 三分发渠道增加维护成本</p>
+<h3 id="xu123-bobbaizescore-84">🏆 Xu123-Bob/Baize（Score 84）</h3>
+<p><strong>定位判断：</strong> 中文 Vibe Coding CLI「白泽」——本土 Coding Agent Loop 实现。它把 <strong>Claude Code 的语义（Skills + Subagents + Hooks + MCP）</strong> 用 Python 完整复刻一遍，并补足 <strong>安全沙箱 + 中文宽度自适应 CLI</strong>。<strong>它是「基础设施候选」定位的明确表述</strong>：自己宣称要做一个 Claude Code 的可 fork 替代。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>多后端</strong>——DeepSeek / OpenAI 兼容（Groq / 智谱 / 通义 / Moonshot / OpenAI）/ Ollama 本地
+2. <strong>零配置启动</strong>——首次自动生成 <code>~/.baize/config.toml</code> + <code>.env</code>
+3. <strong>完整工具链</strong>——bash 执行 / 文件读写编辑 / glob/grep 搜索 / 网页搜索抓取 / 后台任务 / Todo 管理
+4. <strong>技能系统 SKILL.md</strong>——按需加载领域知识
+5. <strong>子代理 Subagents</strong>——复杂任务委派独立上下文避免污染主会话
+6. <strong>钩子 Hooks</strong>——Python / Shell 拦截工具调用前后 + 审计日志 + 自动格式化 + 测试门控
+7. <strong>MCP 协议</strong>——接入外部工具服务器（GitHub / Filesystem 等）
+8. <strong>两级上下文压缩</strong>——工具结果截断 + LLM 摘要支持超长对话
+9. <strong>安全沙箱</strong>——命令白名单 / 路径逃逸检测 / 危险命令拦截 / 敏感文件保护 / 脚本注入拦截
+10. <strong>黑金 CLI 主题</strong>——中文宽度自适应 + 代码高亮 + Diff 着色 + 思考折叠</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地 Python CLI Agent；多后端 LLM 切换；本地工具链 + Skills/Subagents/Hooks/MCP 扩展点</td>
+<td>来自 README 章节结构与特性列表；具体 MCP server 实现 / Hooks 签名 / Skills 加载机制（是否类似 Claude Code 热加载）待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入 → 后端 LLM 选模型 → 工具调用循环（bash / 文件 / glob/grep / 搜索）→ 可选 Hooks 拦截 → 可选 Subagent 委派 → Skills 按需加载 → 输出回用户</td>
+<td>主路径来自 README「完整工具链」描述；Subagent 委派触发条件、Skills 加载时机待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多后端灵活（DeepSeek / OpenAI / Ollama）vs 协议一致性（各后端 API 差异）vs 中文宽度 CLI（终端兼容性 vs 美观）vs 安全沙箱严格度（保护强 vs 易用性弱）</td>
+<td>四权衡来自 README 特性对照；安全沙箱的具体规则集（哪些命令禁止、哪些路径逃逸规则）待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>装 Python 3.11 + DeepSeek API key → <code>baize</code> → 在某项目根目录让 agent 跑「修这个 bug」最小任务；观察 Hooks 是否生效、MCP 是否连通、Subagent 是否按需触发</td>
+<td>PoC 由「多后端 + 完整工具链」推导；Hooks / MCP / Subagent 的真实触发率待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[终端用户] --> CLI[Baize CLI<br/>Python 3.10+<br/>黑金主题中文宽度自适应]
+  CLI --> Config[~/.baize/config.toml<br/>+ .env]
+  Config --> Provider{后端选择}
+  Provider -->|DeepSeek| DS[DeepSeek API]
+  Provider -->|OpenAI 兼容| OA[Groq / 智谱 / 通义 / Moonshot / OpenAI]
+  Provider -->|Ollama| OL[本地 Ollama]
+  DS --> Loop[Agent Loop<br/>工具调用循环]
+  OA --> Loop
+  OL --> Loop
+  Loop --> Tools[bash / 文件 / glob/grep / 搜索 / 后台任务 / Todo]
+  Loop --> Skills[Skills SKILL.md 按需加载]
+  Loop --> Subagents[Subagents 委派]
+  Loop -.拦截.-> Hooks[Hooks Python/Shell]
+  Loop -.接.-> MCP[MCP 协议<br/>GitHub / Filesystem 等]
+  Loop --> Sandbox[安全沙箱<br/>白名单 / 逃逸检测 / 危险拦截]
+  Loop --> Compress[两级上下文压缩<br/>截断 + LLM 摘要]
+  Compress --> Loop
+</pre>
+<p><strong>风险 / 局限：</strong>
+- fork=0 反映当前主要是星标而非 fork 衍生——产品成熟度早期信号
+- Python 实现 vs Claude Code TypeScript 实现，性能 / 启动延迟可能不如
+- 安全沙箱规则集未公开——具体哪些命令禁止 / 哪些路径逃逸规则，企业采用前需审查
+- Skills + Subagents + Hooks + MCP 都是「实现 Claude Code 语义」——差异化空间有限，需要找到自己独特价值
+- README 提到 <code>cd baize-agent</code> 但仓库名是 <code>baize</code>——README 与 git clone 后目录名不一致，潜在混淆</p>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- <strong>mural 的 iOS 26 + Liquid Glass 限制</strong>——iOS 25 及以下不支持；目标用户群被锁在最新系统
+- <strong>mural 的 GPT-5.6 Luna 可用性</strong>——OpenAI 假设的下一代模型，可用性 / 定价需核验
+- <strong>ccompactor 的 fork/star 68.8% 极端高企业 fork 信号</strong>——需警惕「fork 但不合并」导致上游孤立
+- <strong>Baize 与 Claude Code 的差异化</strong>——Skills + Subagents + Hooks + MCP 都是「实现 Claude Code 语义」，需找到独特价值
+- <strong>Birdview 0.1.0 早期阶段</strong>——v0.1.0 偏早期，文档 / 错误处理 / 边界场景覆盖度有限
+- <strong>awesome-harness-evolution 是 awesome-list</strong>——本身不写代码，价值取决于论文整理质量与社区维护意愿
+- <strong>DuoHinge 仅 Apple Silicon</strong>——Intel Mac 用户被排除；macOS 14+ 限制老设备</p>
+<p><strong>机遇：</strong>
+- <strong>「自带 API key」范式可复用到 macOS / Android</strong>——mural 在 iOS 端的成功可复制到 macOS（菜单栏 widget + 自带 key）/ Android（widget + 自带 key）；<code>R44VC0RP/docstudio</code> 已在 macOS 端尝试
+- <strong>ccompactor 的 session 互操作层可能成为 Agent 间事实标准</strong>——如果继续获得 fork + 合并，可能成为「Agent 间交接」的 schema 雏形
+- <strong>Birdview + tracecrate 构成 AI Coding 完整可观测栈</strong>——架构层（birdview）+ 时序层（tracecrate）覆盖 AI Coding 黑盒的两个维度
+- <strong>awesome-harness-evolution 的研究型 awesome-list 模板可复用到其他赛道</strong>——timeline + 机构 logo + 阅读笔记的研究型组织方式比传统分类更易导航
+- <strong>Baize 的中文 CLI 主题 + 安全沙箱</strong>——中文宽度自适应 + 命令白名单是面向国内企业场景的差异化能力
+- <strong>AI Coding 工具链六件套组合</strong>——maskit / routeVSCODE / Baize / tracecrate / birdview / ccompactor 六件套覆盖出网 / 模型 / loop / 时序 / 架构 / 互操作六个角度，可形成 AI Coding 完整工具链</p>
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li>🗣️ <a href="../projects/mural.html">Chuloo/mural</a>（1 天 114⭐）—— 原生 iPhone 对话式语言学习伴侣，SwiftUI + Liquid Glass + SwiftData + 自带 OpenAI API key + GPT-Live-1 + GPT-5.6 Luna，MIT，fork/star 28.9%，Score 90</li>
+<li>🧳 <a href="../projects/ccompactor.html">ccompactor/ccompactor</a>（1 天 16⭐ ⑂11）—— Coding Agent Session Handoff CLI，Claude Code/Codex/Pi 三适配器，schema + quote-verify，TypeScript，standalone 二进制 + .deb + npm，MIT，fork/star 68.8%，Score 86</li>
+<li>🦌 <a href="../projects/baize.html">Xu123-Bob/Baize</a>（1 天 67⭐）—— 中文 Vibe Coding CLI「白泽」，多后端 + Skills + Subagents + Hooks + MCP + 安全沙箱 + 黑金 CLI 主题，MIT，Score 84</li>
+<li>🗺️ <a href="../projects/birdview.html">Qiuner/birdview</a>（1 天 68⭐）—— 「Stop letting AI code blind」架构可视化 Skill，evidence-linked 模块图 + standalone HTML 输出，Node.js 18+，MIT，Score 82</li>
+<li>📚 <a href="../projects/awesome-harness-evolution.html">wannabeyourfriend/awesome-harness-evolution</a>（1 天 22⭐）—— AI Agent Harness 演化论文精选清单，Foundation/Benchmark/Recipe/Position 四类 104 篇，CC0，Score 78</li>
+<li>📐 <a href="../projects/duohinge.html">JoaoFranco03/DuoHinge</a>（1 天 40⭐）—— iPhone Duo 折叠动效移植 macOS，Swift 6.4 + Metal 3 + AppleSPUHIDDriver + 120Hz，prebuilt DMG Apple Silicon only，MIT，Score 76</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (2026-09-13) + 各项目 README 公开摘录（API readme 字段 base64 解码）| Stars/Forks 截至 2026-09-13 | 仅记录公开元数据事实，不将热度等同于价值</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

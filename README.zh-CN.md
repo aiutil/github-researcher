@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-12.md">最新日报</a> ·
+  <a href="daily/2026-09-13.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-12
+## 最新研究 · 2026-09-13
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 8 | 577 | 6 | 11K+ |
+| 6 | 583 | 4 | 9k+ |
 
-**今日核心判断：** xiaYuTian11/maskit 3 天 143⭐ 大模型本地隐私脱敏网关（AGPL-3.0 · mitmproxy + Tauri · Cursor/Claude Code/Codex/Pi 通用） · unstablebuild/rune 2 天 154⭐ GPU 渲染键盘驱动 IDE「the dev env for pros」（GPL-3.0 · Go · rune-agent 扩展解耦 · tmux 风格多 workspace） · sumimakito/Mac-Duo 1 天 512⭐ MacBook 盖角度触发的 iPhone Duo 折叠动效菜单栏 App（Apache-2.0 · Metal + ScreenCaptureKit · 中英双语） · FankChen/tracecrate 2 天 92⭐ Local-first AI Agent Trace Workbench（MIT · Claude Code/Codex/OTLP 日志 · 无后端 · React + Vite） · eternityspring/reelbench-skills 1 天 152⭐ AI 视频 shot-analysis 与 ffmpeg Skill 包（Apache-2.0 · 22MB 学习资料 · Claude Code skills） · R44VC0RP/opensend 3 天 117⭐ AWS SES 之上的自托管事务与营销邮件层（TypeScript · 无 lock-in） · furkan-bayrak/lg-tv-blocklist 3 天 125⭐ LG webOS TV 遥测/广告/phone-home 双层 DNS 拦截列表（CC-BY-4.0 · AdGuard Home / Pi-hole） · joshuaswarren/omarchy-apple-dev 3 天 102⭐ Omarchy Linux 直接构建部署 iOS SwiftUI App 无需 Xcode（MIT · Shell · Apple Silicon）
+**今日核心判断：** Chuloo/mural 1 天 114⭐ 原生 iPhone 语言学习伴侣（SwiftUI · Liquid Glass · SwiftData · 自带 OpenAI API key · GPT-Live-1 + GPT-5.6 Luna）· Xu123-Bob/Baize 1 天 67⭐ 中文 Vibe Coding CLI Agent「白泽」（多后端 DeepSeek/OpenAI 兼容/Ollama · Skills + Subagents + Hooks + MCP · 安全沙箱 · MIT）· Qiuner/birdview 1 天 68⭐ 「Stop letting AI code blind」架构可视化 Skill 包（architecture-as-code · 证据链接模块图 · standalone HTML 输出 · MIT）· ccompactor/ccompactor 1 天 16⭐ ⑂11 Agent Session Handoff CLI（Claude Code/Codex/Pi → 压缩 + 验证 + 跨 Agent 交接 · TypeScript · standalone 二进制 · MIT · fork/star 68.8% 极端高）· wannabeyourfriend/awesome-harness-evolution 1 天 22⭐ AI Agent Harness 演化论文精选清单（Foundation/Benchmark/Recipe/Position · 104 选中论文 · 99 校徽 · CC0）· JoaoFranco03/DuoHinge 1 天 40⭐ iPhone Duo 折叠动效移植 macOS（Metal 3 · AppleSPUHIDDriver 盖角度 · 120Hz · prebuilt DMG · MIT）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [xiaYuTian11/maskit](projects/maskit.md) | 143 stars | 工具型 |
-| [unstablebuild/rune](projects/rune.md) | 154 stars | 平台候选 |
-| [sumimakito/Mac-Duo](projects/mac-duo.md) | 512 stars | 工具型 |
-| [FankChen/tracecrate](projects/tracecrate.md) | 92 stars | 工具型 |
-| [eternityspring/reelbench-skills](projects/reelbench-skills.md) | 152 stars | 工具型 |
-| [R44VC0RP/opensend](projects/opensend.md) | 117 stars | 工具型 |
-| [furkan-bayrak/lg-tv-blocklist](projects/lg-tv-blocklist.md) | 125 stars | 工具型 |
-| [joshuaswarren/omarchy-apple-dev](projects/omarchy-apple-dev.md) | 102 stars | 工具型 |
+| [Chuloo/mural](projects/mural.md) | 114 stars | 工具型 |
+| [Xu123-Bob/Baize](projects/baize.md) | 67 stars | 平台候选 |
+| [Qiuner/birdview](projects/birdview.md) | 68 stars | 工具型 |
+| [ccompactor/ccompactor](projects/ccompactor.md) | 16 stars | 工具型 |
+| [wannabeyourfriend/awesome-harness-evolution](projects/awesome-harness-evolution.md) | 22 stars | 观察型 |
+| [JoaoFranco03/DuoHinge](projects/duohinge.md) | 40 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **llm-privacy-local-gateway / LLM 终端侧本地隐私脱敏网关——xiaYuTian11/maskit 3 天 143⭐ fork 24 fork/star 16.8%（Python 桌面 + Tauri 壳 · mitmproxy MITM 改写请求 · 结构化占位符打码 · SSE 流式无感还原 · Cursor/Claude Code/Codex/Pi/OpenCode/ChatGPT 任意可配 Base URL 工具通用 · AGPL-3.0 · Windows/macOS/Docker · 100% 本地零遥测）** · 相关项目：xiaYuTian11/maskit · 强度：90
-2. **gpu-rendered-power-ide / 面向「pro」的 GPU 渲染键盘驱动 IDE——unstablebuild/rune 2 天 154⭐ fork 8（Go · cmd/rune 主程序 + cmd/rune-agent 扩展解耦 · character-grid 界面 · 编辑器 + 终端 + 文件树 + AI agent 同窗 · docs.rune.build 内嵌 · GPL-3.0）** · 相关项目：unstablebuild/rune · 强度：86
-3. **macbook-duo-animation-cluster / iPhone Duo 折叠动效移植 MacBook 集群爆发——sumimakito/Mac-Duo 1 天 512⭐ fork 40（Swift · Metal + ScreenCaptureKit · 盖角度驱动 perspective/blur/dim · 菜单栏控制 · 中英双语 · Apache-2.0）+ DhananjayBhosale/MacDuo 132⭐（Swift + Metal · 桌面跟随盖角）+ jh3y/lid-plane 131⭐（盖角度驱动 progressive blur）+ IuCC123/BendMac 88⭐ + eperez28/sonar.cool 89⭐（声波手势控制 Mac 实验）+ Atomicx7/Duo-animation 128⭐（Kotlin 移植）+ elijah-semyonov/DuoLikeAnimation 125⭐ + MakrSas/Inferno-iOS 73⭐（iPhone 上跑 iOS 14 模拟器）** · 相关项目：sumimakito/Mac-Duo, DhananjayBhosale/MacDuo, jh3y/lid-plane · 强度：84
-4. **agent-trace-observability / Local-first AI Agent Trace Workbench——FankChen/tracecrate 2 天 92⭐ fork 2 fork/star 2.2%（TypeScript · React + Vite · Claude Code / Codex / OTLP 日志解析 · 仅客户端不执行 agent · 无后端无遥测 · 站点 fankchen.github.io/tracecrate · MIT）** · 相关项目：FankChen/tracecrate · 强度：82
+1. **native-iphone-language-companion / 原生 iPhone 对话式语言学习伴侣——Chuloo/mural 1 天 114⭐ ⑂33 fork/star 28.9%（SwiftUI + Liquid Glass + SwiftData · 自带 OpenAI API key · GPT-Live-1 + GPT-5.6 Luna · Xcode 26 + iOS 26.1+ · 6MB repo · Swift 6 · iPhone 17 截图四张 · 现场 Code Agent 一键构建安装的 install prompt 公开 · MIT）** · 相关项目：Chuloo/mural · 强度：90
+2. **chinese-vibe-coding-cli / 中文 Vibe Coding CLI「白泽」——Xu123-Bob/Baize 1 天 67⭐ fork 0（Python 3.10+ · DeepSeek / OpenAI 兼容 / Ollama 三后端 · Skills + Subagents + Hooks + MCP + 上下文压缩 + 安全沙箱 · 黑金 CLI 主题 · 中文宽度自适应 · MIT）** · 相关项目：Xu123-Bob/Baize · 强度：84
+3. **architecture-as-code-skill / 「Stop letting AI code blind」架构可视化 Skill——Qiuner/birdview 1 天 68⭐ ⑂3（Node.js 18+ · Evidence-linked 架构图带 stable module IDs + 文件归属 · Architecture / Changes / Side-by-side 三视图 · JSON Schema + semantic 验证 · standalone HTML 输出无服务器依赖 · 英文 + 中文双语 · 0.1.0 · MIT）** · 相关项目：Qiuner/birdview · 强度：82
+4. **agent-session-handoff-cli / Coding Agent Session 压缩 + 验证 + 跨 Agent Handoff——ccompactor/ccompactor 1 天 16⭐ ⑂11 fork/star 68.8%（TypeScript · commander + ink + react · Claude Code/Codex/Pi 三适配器 · schema + quote-verify 验证 · list/find/extract/expand/verify/handoff/--tui 七命令 · standalone 二进制 + .deb + npm · CI + npm 自动 publish · MIT）** · 相关项目：ccompactor/ccompactor · 强度：86
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 | [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
-| [2026-09-05](daily/2026-09-05.md) | 10 | 7 |
 
 ## 为什么做这个项目
 
