@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zorrobyte/asset-studio | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/zorrobyte/asset-studio" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="zorrobyteasset-studio">zorrobyte/asset-studio</h1>
+<h2 id="_1">一句话定位</h2>
+<p>端到端本地文本→3D 游戏资产生成管道——三阶段管线（Qwen-Image-2512 文生参考图 → Pixal3D / TRELLIS.2 高细节 3D → Blender / meshoptimizer 自动简模 + LOD + 碰撞），三接口接入（FastAPI + CLI + MCP），单卡 RTX 5090 全离线运行，资产可追溯（manifest.json），输出 Godot / Unity / Blender 直接 drop-in。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年游戏 / 元宇宙 / 3D 内容需求持续爆发，但 3D 资产生产链路被 SaaS 工单垄断（Meshy / Tripo3D / Luma Genie 等按 token 计费，资产出云、模型不可控、上传下载依赖网络）。同时游戏开发者用 Coding Agent 工作流时，需要「按需产出 3D 资产」的能力——但现有方案要么云端 SaaS（隐私 / 成本 / 上传问题），要么纯本地 CLI（资产不可被 agent 自动调用）。asset-studio 直击这两个痛点：<strong>完全本地化整条管线</strong> + <strong>首次把整条资产管道用 MCP 协议暴露给 coding agent</strong>。解决的是「3D 资产生成必须依赖云 SaaS + coding agent 无法直接调用资产生成」的工程闭环问题。</p>
+<h2 id="2026-09-14">为什么值得关注（2026-09-14）</h2>
+<ul>
+<li><strong>Stars:</strong> 33（截至 2026-09-14），1 天新增 33⭐ / 8 forks / fork/star 24.2%（企业 fork 信号）</li>
+<li><strong>Forks:</strong> 8，社区高活跃（与昨日 Chuloo/mural 28.9% 同处企业 fork 信号区间）</li>
+<li><strong>License:</strong> 0BSD（极宽松：可商用、可修改、无署名要求；缺 license 文件是企业合规潜在风险）</li>
+<li><strong>语言:</strong> Python（容器化）+ 三组件各自原生（Qwen-Image / Pixal3D / Blender）</li>
+<li><strong>活跃度:</strong> created 2026-09-13，pushed_at 2026-09-13，已提交完整三 sample（pump / crate / mug）</li>
+<li><strong>规模:</strong> 76 MB repo（含大量 sample 资产 + master mesh + optimized asset 对照）</li>
+<li><strong>Topics:</strong> 无（README 未声明 topics，但 description 完整列出技术栈）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>asset-studio 的热度是 <strong>「端到端本地 + 三组件 SOTA 编排 + agent-callable + 三完整 sample 验证 + 0BSD」</strong> 的强组合。三个组件（Qwen-Image-2512 文生图 + Pixal3D / TRELLIS.2 参考图→3D + Blender/meshoptimizer 优化）每个都是当前 SOTA；把三者端到端编排成「文本一句话 → 6K-20K 三角的 game-ready 资产」是可复现的工程价值。<strong>MCP 接口是真正的差异化</strong>——它把资产生成从「手动 GUI 操作」变成「coding agent 可调用的函数」，让任何 coding agent 可以按需产出 3D 资产而无需工程师介入。8 个 forks 反映<strong>企业 fork 信号</strong>（24.2% 是少有的高比例），可能来自游戏工作室 / 元宇宙公司准备集成到现有工作流的团队。热度<strong>真实且具工程价值</strong>——三个 sample 都是真实可跑通的 contact_sheet（pump 19803 tris / crate 7998 tris / mug 6000 tris），不是 PoC 截图。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>三阶段管线</strong>——Qwen-Image-2512（文生参考图）→ Pixal3D (TRELLIS.2)（参考图→高细节 3D 模型）→ Blender / meshoptimizer（自动简模 + LOD + 碰撞烘焙）；每阶段解耦独立</li>
+<li><strong>三接口接入</strong>——FastAPI HTTP 服务 + CLI 命令行 + MCP（Model Context Protocol）工具协议；后者让任何 coding agent 可以 <code>asset_studio.generate("...", budget=N)</code> 调用</li>
+<li><strong>单卡 RTX 5090 全离线</strong>——Docker Desktop + 无账号 + 无云 + 无上传；README 明示「one RTX 5090, Docker Desktop, no accounts, no uploads, no cloud」</li>
+<li><strong>任务级元数据追溯</strong>——manifest.json 记录 prompt / 三角预算 / LOD 设置 / 时间戳；agent 自动化测试与回归友好</li>
+<li><strong>三个完整 sample</strong>——pump / crate / mug，每个跑通到 20K / 8K / 6K 三角预算 + contact_sheet 对照图，证明不是 PoC</li>
+<li><strong>直接 drop-in 输出</strong>——master.glb（≤1M tris / 4096² PBR）+ <code>&lt;name&gt;.glb</code>（预算三角化版本）+ LOD1/LOD2/collision.glb + 四视图 PNG 预览；Godot / Unity / Blender 无缝集成</li>
+<li><strong>0BSD 极宽松许可</strong>——可商用、可修改、无署名要求；但缺 license 文件的 0BSD 在某些企业合规扫描里可能被识别为「未声明」</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>三阶段本地管线（image→3D→optimize）外加三个接口（FastAPI/CLI/MCP），无云、无账号、无上传；数据全本地（master / LOD / collision / previews / manifest.json 都落盘到工作目录）</td>
+<td>来自 README 关于「one RTX 5090, Docker Desktop, no accounts, no uploads, no cloud」、Qwen-Image-2512 → Pixal3D → Blender/meshoptimizer、FastAPI+CLI+MCP 三接口、manifest.json 任务追溯的明示；三个组件的版本号、具体配置、Docker 镜像内部结构在 README 中未完全给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入 prompt → Qwen-Image-2512 文生参考图 → Pixal3D (TRELLIS.2) 产高细节 3D → Blender/meshoptimizer 自动简模到预算三角数 + LOD + 碰撞烘焙 → 输出 master.glb + 多个 LOD.glb + collision.glb + previews + manifest.json</td>
+<td>主路径来自 README 描述的三阶段 + 三个 sample 的 contact_sheet 对照图；每个组件的具体调用参数、并行策略、失败回退未给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>本地化（无云 vs 速度受限于单卡）vs 三组件成熟度（Qwen-Image/Pixal3D/Blender 都是 SOTA 但 API 各异）vs LOD 策略（50% / 25% 默认，可调但需手动测试）vs license（0BSD 极宽松但企业合规可能识别为「未声明」）</td>
+<td>权衡四因素均从 README + repo 元数据推导；本地化 vs 云端的速度基准、LOD 质量保留度、license 文件存在与否待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单卡 RTX 5090 + Docker Desktop；运行 README 中三个 sample 之一（如 mug），验证 manifest.json + LOD 三角数 + previews PNG 输出；再叠加 MCP server 启动 + Claude Code / Codex 端调一次 <code>asset_studio.generate("test cube", budget=5000)</code></td>
+<td>PoC 由「三接口三 sample」路径推导；具体 RTX 5090 显存占用、MCP server 启动步骤、agent 端调用样例在 README 中给出但具体 token 成本未量化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>asset-studio 的核心启发是 <strong>「资产生产链路应该 agent-callable + 端到端可追溯，正如 CI 流水线应该代码化 + 可复现」</strong>。当前游戏 3D 资产生产是工单制——美术在 Meshy 上传 prompt、等待、下载、手工简化、烘焙、打包、入库。这一流程与「软件部署」在 2010 年之前类似（手动 FTP 上传）。<strong>asset-studio 把资产生成做成 CI 流水线式的资产管道</strong>：prompt 输入 / 三角预算配置 / LOD 设置 / 输出 manifest.json + 完整资产包，每个步骤都可追溯、可回归、可自动化。<strong>更深层的启发是：MCP 协议正在变成「工具」与「agent」的标准接口层</strong>——asset-studio 是首批把 3D 资产生成接入 MCP 的项目之一，意味着 coding agent 的能力边界从「读写文件 + 调 API」扩展到「产出 3D 资产」。<strong>76 MB repo + 8 forks + 24.2% fork/star</strong> 的结构说明这不是「又一个开源 demo」，而是「已经有早期采用者愿意二次开发」的项目。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户/Coding Agent] --> Prompt[输入 prompt<br/>+ 三角预算 + LOD 设置]
+  Prompt --> Qwen[Qwen-Image-2512<br/>文生参考图]
+  Qwen --> Ref[reference.png]
+  Ref --> Pixal3D[Pixal3D / TRELLIS.2<br/>参考图→高细节 3D]
+  Pixal3D --> Master[master.glb<br/>≤1M tris / 4096² PBR]
+  Master --> Blender[Blender + meshoptimizer<br/>自动简模 + LOD + 碰撞]
+  Blender --> Opt[&lt;name&gt;.glb<br/>预算三角化版本]
+  Blender --> LOD1[&lt;name&gt;_LOD1.glb<br/>50% 三角]
+  Blender --> LOD2[&lt;name&gt;_LOD2.glb<br/>25% 三角]
+  Blender --> Col[&lt;name&gt;_collision.glb<br/>凸包碰撞]
+  Blender --> Prev[previews/*.png<br/>四视图预览]
+  Blender --> Tex[textures/*.png<br/>PNG 烘焙贴图]
+  Ref --> Manifest[manifest.json<br/>任务级元数据]
+  Opt --> Manifest
+  LOD1 --> Manifest
+  LOD2 --> Manifest
+  Col --> Manifest
+  Prev --> Manifest
+  Tex --> Manifest
+  Master --> Out[输出文件夹<br/>可直接 drop-in]
+  Opt --> Out
+  LOD1 --> Out
+  LOD2 --> Out
+  Col --> Out
+  Prev --> Out
+  Tex --> Out
+  Manifest --> Out
+  User -.可选 MCP 调用.-> MCP[MCP server<br/>asset_studio.generate]
+  MCP --> Prompt
+  User -.可选 CLI 调用.-> CLI[CLI 命令行]
+  CLI --> Prompt
+  User -.可选 HTTP 调用.-> API[FastAPI 服务]
+  API --> Prompt
+  Out -.导入.-> Godot[Godot]
+  Out -.导入.-> Unity[Unity]
+  Out -.导入.-> Blender2[Blender]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（agent-callable 资产生成管道）。</strong> asset-studio 的核心定位不是「AI 生成 3D」（这是 Pixal3D/TRELLIS.2 的工作），而是「把多个 AI 工具端到端编排 + 本地化 + agent-callable」。这是「AI 工具集成层」赛道——类似 LangChain 之于 LLM、Terraform 之于云资源、Docker 之于应用容器。<strong>它的对手不是 Tripo3D / Meshy（这些是上游 AI 模型）</strong>，而是 <strong>「本地 + agent-callable 资产生成」集成栈的标准化</strong>——目前这个位置只有它一家在认真做。如果 MCP 协议继续扩散（Claude Code / Codex / Cursor 都已支持），asset-studio 的 MCP 接口会成为「任何 coding agent 都能调用的 3D 资产生产工具」，具有平台级潜力。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>三组件版本漂移</strong>——Qwen-Image-2512 / Pixal3D / TRELLIS.2 / Blender / meshoptimizer 五个组件各自迭代，任何一个版本变化都可能导致管线断裂；README 未明确版本固定策略</li>
+<li><strong>单卡硬件锁定</strong>——README 明示「one RTX 5090」验证；中端 GPU（如 RTX 4060/4070）能否跑通未验证；消费级集成显卡用户被排除</li>
+<li><strong>0BSD 缺 license 文件</strong>——某些企业合规扫描（如 Snyk / FOSSA）会因缺 LICENSE 文件将 0BSD 仓库识别为「未声明许可」，导致 CI 失败</li>
+<li><strong>三组件 API 各异</strong>——Qwen-Image 用 Python diffusers API、Pixal3D / TRELLIS.2 用自定义推理接口、Blender 用 bpy Python 绑定；维护者需同时熟悉三套技术栈，长期维护成本高</li>
+<li><strong>AI 资产生成质量随机</strong>——Pixal3D / TRELLIS.2 输出仍可能产生「六指手 / 畸变拓扑 / UV 错误」等问题；README 未提及失败回退或人工审核机制</li>
+<li><strong>替代竞争</strong>——Tripo3D / Meshy 持续迭代云端 API（如 Tripo3D v3 / Meshy v4）；若云端质量追上本地 + 价格继续下降，「本地化」优势会被稀释</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Tripo3D / Meshy / Luma Genie（云端 SaaS）</strong>：这些是上游 AI 资产生成 API；asset-studio 集成它们或类似模型 + 加本地化 + agent-callable 包装；关系是「上游 API vs 下游本地化集成」</li>
+<li><strong>vs Blender + 各种 AI 插件</strong>：Blender 有官方 Stable Diffusion / 各种社区插件；asset-studio 是「端到端管道」而非「单个插件」，覆盖从文生参考图到最终 drop-in 资产的全链路</li>
+<li><strong>vs LangChain / LlamaIndex（AI 编排框架）</strong>：asset-studio 是「资产生成领域的 LangChain」——把多个 AI 工具端到端编排；区别是 LangChain 通用、asset-studio 专用</li>
+<li><strong>vs Rodin / Genie / Luma AI（专门 3D 生成模型）</strong>：这些是 3D 生成模型本身；asset-studio 不做模型，是「模型编排 + 优化 + agent-callable」层</li>
+<li><strong>vs MCP 生态（Claude Code / Codex / Cursor 工具协议）</strong>：asset-studio 是 MCP 工具的「资产生成 provider」；与 MCP 协议本身是上下游</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>强烈推荐跟踪（agent-callable 资产生成管道首次实现）。</strong> asset-studio 解决了「coding agent 不能直接调用 3D 资产生成」的真实空白，是 MCP 工具生态扩张的明确信号。建议关注：1) 三组件版本固定策略（防止管线漂移）；2) MCP server 接口稳定性（决定能不能成为「Agent 的标准资产生成工具」）；3) 企业 fork 是否带来新需求（如 USDZ 输出 / Substance Painter 烘焙集成）；4) 0BSD license 文件补全（影响企业采用）。对游戏开发者 / 元宇宙 / 3D 内容创作者，这个仓库是「本地化 + agent-callable 资产生成」的实用入口，值得直接试用三个 sample 评估质量。对 AI 工具集成层观察者，它是 MCP 协议扩张的清晰样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>三组件（Qwen-Image / Pixal3D / Blender）版本固定策略与依赖锁定（requirements.txt / Dockerfile 完整度）</li>
+<li>MCP server 接口是否支持更多参数（如 negative prompt / texture quality / collision 精度）</li>
+<li>多卡 / 中端 GPU 兼容性扩展（是否出 RTX 4060/4070 验证指南）</li>
+<li>0BSD license 文件是否补全（根目录添加 LICENSE 文件）</li>
+<li>失败回退机制（Pixal3D 拓扑错误 → 是否提供 repair pass）</li>
+<li>与 Godot / Unity 引擎插件的官方集成（如 Godot asset library 自动 sync）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-14) | Stars: 33 | Forks: 8 | License: 0BSD（缺 LICENSE 文件） | 语言: Python | 创建: 2026-09-13 | Repo size: 76 MB</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

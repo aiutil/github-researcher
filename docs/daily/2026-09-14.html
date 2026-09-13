@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-14 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-14-github">2026-09-14 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description 来自 2026-09-14 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README 公开摘录（API readme 字段 base64 解码）。"X 天 Y⭐"基于 created_at→2026-09-14 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。<strong>今日观察窗为 2026-09-13 创建且截至 2026-09-14 仍在快速增长的 4 个非游戏类高质量项目</strong>；09-14 当日新创仓库 API 暂返回 0 条命中（亚洲时区多数仓库刚过 12 小时曝光窗口）。<strong>本批 4 个项目的共同特征是「单一痛点 + 工程闭环 + 上手文档齐全」</strong>——asset-studio 解决「文本→游戏 3D 资产」本地化；IvyClaw 解决「中文软件研发多 Agent 生产落地」；CUDA-for-AMD-Windows 解决「AMD GPU 跑 CUDA」跨厂商兼容；altdb 解决「KernelSU 无线 ADB 替代」Android 高级玩家刚需。<strong>11+ 个游戏外挂 / 私服 / Mod 工具</strong>（fortnite-xp-map-codes-windows / nba-2k27-mycareer-badge-planner / blox-fruits-trade-calculator / monster-hunter-wilds-dps-meter-overlay / kingdom-come-deliverance-2-save-editor 等，命名高度同质、topics 与 cheat/save-editor/cheat-engine 强相关、commit 历史无功能迭代）元数据信号异常，本简报不列入核心趋势。<code>Abomination81/copybot</code>（65⭐ / 36 forks / 无 license / Rust）虽 fork/star 55.4% 极端高，但定位是 Polymarket 跟单交易执行，与昨日已观察过的去中心化交易机器人（Argona7/stampede 等）属于同类，本批重点放在更可工程复现的项目。<code>MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks</code>（74⭐ / 6 forks / AGPL-3.0 / EXL3 2.9 bpw 量化包）虽是「DeepSeek v4.1 Flash 量化 + DGX Sparks 双卡」具体硬件绑定，但作为模型权重资源发布（不是工程系统），亦不列入核心趋势——它的热度反映 9 月以来 DeepSeek 系模型权重社区对低比特 + 多卡推理方案的持续关注。<strong>"趋势"是基于公开元数据的观察，不等同于生产成熟度或长期价值</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-3d-90">1. 端到端本地文本→3D 游戏资产生成管道确立（趋势分 90）</h3>
+<ul>
+<li><strong>zorrobyte/asset-studio</strong>（1 天 33⭐ / fork 8 / fork/star 24.2% / 0BSD / 76 MB）——「Type a sentence, get a game-ready 3D asset. Everything runs on your own machine — one RTX 5090, Docker Desktop, no accounts, no uploads, no cloud」；三阶段管线 <strong>Qwen-Image-2512（文生参考图）→ Pixal3D (TRELLIS.2)（参考图→高细节 3D 模型）→ Blender/meshoptimizer（自动简模 + LOD + 碰撞烘焙）</strong>；三个接口（FastAPI HTTP 服务 + CLI 命令行 + MCP 工具协议）三套接入路径；单卡 RTX 5090 全离线运行，无云无账号无上传；输出 master.glb（≤1M tris / 4096² PBR）+ <code>&lt;name&gt;.glb</code>（用户预算三角化版本）+ LOD1/LOD2/collision.glb + 四视图 PNG 预览 + manifest.json（任务级追溯）；README 直接给三个样本（"Stylized industrial water pump station" / "Stylized wooden cargo crate" / "Ceramic coffee mug"）每个都有 contact_sheet、master mesh、optimized asset 完整对照图。</li>
+<li><strong>核心价值定位：</strong> 当前游戏 3D 资产生产是 <strong>SaaS 工单链路</strong>（Meshy / Tripo3D / Luma Genie 等按 token 计费，资产出云、上传下载、模型不可控）；asset-studio 走 <strong>「端到端本地 + agent-callable + 资产可追溯」</strong> 反 SaaS 路径——它不仅本地化整条链路（资产不出网），还<strong>首次把整条管线用 MCP 暴露给 coding agent</strong>（与昨日 <code>tracecrate</code>/<code>birdview</code>/<code>ccompactor</code> 形成的 AI Coding 可观测栈同构，但移到「资产生成」领域）。三个 sample（pump / crate / mug）每个都跑通到 20K / 8K / 6K 三角的预算，证明不是 PoC 而是已可复现。</li>
+<li><strong>fork/star 24.2% 企业 fork 信号：</strong> 与昨日 <code>Chuloo/mural</code> 28.9% 处于同一企业 fork 区间；说明有相当比例 fork 来自准备二次开发 / 集成到现有工作流的团队。这是<strong>资产生成领域罕见的高 fork/star</strong>——通常新创 demo 类项目 fork 多来自克隆学习。</li>
+<li><strong>架构亮点：</strong> pipeline 编排（image→3D→optimize）解耦成三个独立工具（Qwen-Image / Pixal3D / Blender + meshoptimizer），单卡可跑；manifest.json 把每次生成的 prompt / 三角预算 / LOD 设置 / 时间戳做成任务级元数据，便于 agent 自动化测试与回归；<strong>MCP 接口把资产生成变成 agent 可调用的函数</strong>（<code>asset_studio.generate("water pump", budget=20000, lod_count=2)</code>），让任何 coding agent 可以「按需产出资产」而无需工程师介入。</li>
+<li><strong>价值判断：</strong> 它解决的是「游戏 3D 资产一定要外包 SaaS？」的真痛点；技术栈（Qwen-Image-2512 + Pixal3D/TRELLIS.2 + Blender + meshoptimizer）选择清晰、每个组件都是当前 SOTA；提供三个完整 sample 让用户可复现；FastAPI + CLI + MCP 三接口覆盖了从浏览器到终端到 agent 的所有接入路径。但 fork=8 / 1 天 + 76 MB repo size（说明内置了大量数据 / 模型权重 / sample）意味着真正的「企业 fork」还有待观察；0BSD 是极宽松许可（可商用、可修改、无署名要求），但缺 license 文件的 0BSD 仓库在某些企业合规扫描里仍可能被打回——这是潜在风险。</li>
+</ul>
+<h3 id="2-agent-86">2. 中文生产级多智能体软件研发 Agent 系统成型（趋势分 86）</h3>
+<ul>
+<li><strong>ivyfan-toowell/IvyClaw</strong>（1 天 52⭐ / fork 3 / fork/star 5.8% / 1.8 MB / 无 license）——「面向软件研发任务的多智能体 AI Agent 工程系统」；基于 <strong>DeepAgents + LangGraph</strong>；五角色编排 <strong>Planner（任务规划）→ Researcher（资料检索，按需）→ Coder（代码实现）→ Tester（自动测试）→ Reviewer（代码审查）</strong>；多模型路由（按 Agent 角色和任务复杂度选择不同模型档位）；真实工具调用（Git / pytest / Web Search / MCP）；双沙箱（<strong>Docker / Daytona</strong> 隔离运行 Agent 生成的代码）；状态持久化（<strong>PostgreSQL + LangGraph Checkpointer/Store</strong> 保存任务上下文）；异步长任务（<strong>Redis + ARQ Worker</strong> 处理耗时 Agent 任务）；<strong>Human-in-the-Loop（高风险工具调用支持人工审批与恢复执行）</strong>；多渠道接入（CLI / Web API / 飞书 WebSocket / Webhook）；多租户治理（API Key + Tenant + 限流 + 幂等 + 审计）；可观测（<strong>LangSmith + Prometheus + Grafana</strong> + 自动化测试 + Agent Evaluation）；Mermaid 架构图完整；提供 docker-compose.prod.yml 一键部署。</li>
+<li><strong>架构亮点：</strong> 与昨日 <code>Xu123-Bob/Baize</code>（agent loop 层中文本土实现）形成 <strong>「agent loop 层 vs 生产工程层」分工</strong>：Baize 偏向 Claude Code 语义的可 fork 替代（CLI 工具化 + Skills/Subagents/Hooks/MCP）；IvyClaw 偏向 <strong>生产级 Agent 工程系统</strong>（多租户 + 异步 + 沙箱 + 可观测 + 多渠道 + HITL + 状态持久化 + 评测）。IvyClaw 把 Baize 关注的「Agent 协议层」推到 <strong>「Agent 工程化落地层」</strong>——同样的五角色编排，但配备了 PostgreSQL/Redis/ARQ/Daytona/LangSmith 这一整套生产基础设施。</li>
+<li><strong>价值判断：</strong> 中文 Coding Agent 赛道（昨日 viettranx/3dviz-pro-max + maskit + Baize）需要本土对应生产系统；IvyClaw 是这一定位的清晰尝试。<strong>DeepAgents + LangGraph 是 LangChain 官方在 2026 主推的 Agent 编排栈</strong>（与早期 LangChain Agent / LangGraph Agent 不同），IvyClaw 直接站在生态最前沿。fork=3 / 1 天 / fork/star 5.8% 反映当前主要是早期关注而非企业 fork——是产品成熟度的早期信号。<strong>无 license</strong> 是企业采用的最大门槛（合规扫描直接拒绝）；Docker/Daytona 双沙箱 + ARQ Worker + LangSmith 是「看起来很全」的工程配置，但需实际部署验证其稳定性。README 自带的 Mermaid 架构图清晰展示了从用户接入到可观测的完整数据流，是少有的「架构图公开 + 部署文档齐备」的多 Agent 系统。</li>
+</ul>
+<h3 id="3-gpu-cuda-84">3. 跨 GPU 厂商 CUDA 兼容层进入实测阶段（趋势分 84）</h3>
+<ul>
+<li><strong>Speedstu/CUDA-for-AMD-Windows</strong>（1 天 55⭐ / fork 1 / fork/star 1.8% / 53 KB / NOASSERTION）——「WORKING REPRODUCIBLE STACK IS NOW UPLOADED」；<strong>ZLUDA <code>v6-preview.69</code>（官方 upstream）+ AMD HIP SDK 6.4 + LibTorch <code>2.3.0 + cu118</code> + AMD Radeon RX 9060 XT (<code>gfx1200</code>)</strong>；五个 CUDA 入口 <strong>nvcuda / cuBLAS / cuBLASLt / cuSPARSE / cuFFT</strong> 全 pass <code>cuda_check</code>；<strong>真实 2,216,347 参数 PPO 网络完成 forward / inference / PPO learning / optimizer</strong> 全部在 CUDA-facing device 上跑通；<strong>单次 validation iteration 完成 65,536 timesteps</strong>；<code>install.ps1</code> 自动检测 AMD GPU + <code>gfxXXXX</code> 目标 + 验证 AMD driver/HIP SDK + 下载 pinned 官方 ZLUDA + 下载 LibTorch 2.3.0+cu118（约 2.66 GB）+ 校验；<code>docs/VALIDATION.md</code> 提供可复现验证步骤；GitHub Actions <code>verify.yml</code> 跑 CI。</li>
+<li><strong>架构亮点：</strong> ZLUDA 是 2020 年起持续维护的 CUDA-on-AMD 兼容层（前两年停摆，2024-2026 重启），但<strong>过去四年都没有 Windows 上跑通完整 LibTorch 训练链路的公开复现</strong>——Speedstu 的贡献是 <strong>首次把 ZLUDA + LibTorch 训练路径在 Windows + AMD 上端到端跑通</strong>，并把 install.ps1 自动化（detect / verify / download / validate 全自动）。这意味着开发者<strong>只需一台 AMD GPU Windows 机器</strong>（而非 NVIDIA GPU + Linux），就能跑通 CUDA-target 的训练 workload。</li>
+<li><strong>价值判断：</strong> AMD GPU 用户长期被 CUDA 生态排斥（PyTorch 官方 CUDA-only build 不支持 AMD，ROCm PyTorch 滞后且 API 兼容性差）；ZLUDA + HIP SDK 是「中间路径」，但过去只有 Linux 上的成功复现。Speedstu 把这条路搬到 Windows + 上游 ZLUDA + LibTorch + 真实 PPO 训练，是一个<strong>有强证据的可复现栈</strong>——README 直接给「verified today」清单（具体到版本号 + 验证步骤）。<strong>NOASSERTION</strong> 是潜在的合规风险（不是 MIT/Apache，是「无明确声明」，企业合规扫描会拒绝）；53 KB repo size 反映这不是「大项目」而是 <strong>「集成脚本 + 验证脚本 + 文档」</strong> 形态——本质是一份可复现的「AI 训练栈搭建配方」，而非自研 GPU runtime。<strong>真正决定长期价值的是 ZLUDA 项目的可持续性</strong>（作者 vosen 多次更迭、过去有两年空窗）；这个仓库的价值是「在 ZLUDA 还活着的窗口期，把 Windows + AMD + CUDA 跑通留下可复现模板」。</li>
+</ul>
+<h3 id="4-kernelsu-adb-android-82">4. KernelSU 无线 ADB 模块上线——Android 高级玩家刚需（趋势分 82）</h3>
+<ul>
+<li><strong>Dr-TSNG/altdb</strong>（1 天 53⭐ / fork 5 / fork/star 9.4% / 131 KB / Apache-2.0）——「A KernelSU module that provides wireless ADB over your local network」；<strong>六位配对码 + TLS 加密</strong>（paired computers 可免配对重连）；连接协议（<code>adb pair PHONE_IP:PAIRING_PORT</code> + <code>adb connect PHONE_IP:CONNECTION_PORT</code>）与 Google 官方一致；支持 <strong>shell 访问 / 文件传输 / 应用安装与卸载 / logs / reboot / forward-reverse port forwarding</strong>；网络范围 <strong>IPv4 局域网（Wi-Fi / 热点 / Ethernet），排除蜂窝与 VPN</strong>；<strong>自动暂停</strong>（当系统 USB 调试或无线调试被启用时自动停止，恢复后自动续连）；WebUI（状态 / 连接命令 / 已配对设备 / 诊断）中英双语；连接端口可固定（1024–65535）或随机；<code>adb root</code> / <code>adb unroot</code> 与 <code>su</code> 权限独立开关；<strong>不动系统 adbd 授权</strong>；Android 11+ ARM64；KernelSU v3.2.5 (32525)+；Rust 实现；Apache-2.0。</li>
+<li><strong>架构亮点：</strong> Google 自 Android 11 起原生提供无线调试，但<strong>默认端口随机 + 每次配对 + 不持久化已配对设备 + 与系统 USB 调试冲突</strong>——开发者每次都得 <code>adb pair</code> 一次，且与 USB 调试开关状态耦合。altdb 提供的是 <strong>「常驻 + 持久配对 + 不冲突系统 adbd」</strong> 的替代方案——本质是把 adbd 替换成 KernelSU 模块直接实现的轻量级 adb-over-TCP 服务，但又<strong>不破坏系统 adbd 的现有授权</strong>（这是 KernelSU 模块的关键边界）。fork/star 9.4% 处于「企业 fork 信号」下限——比昨日 maskit 16.8% / mural 28.9% 低，说明主要是早期用户 / 个人开发者关注。</li>
+<li><strong>价值判断：</strong> 它解决的是「Android 11+ 无线调试难用」的真痛点；<strong>KernelSU 模块形态意味着 root + 系统级权限</strong>（不是普通应用能做的），Apache-2.0 + Rust 实现 + 131 KB repo size 都是工程严肃度信号。fork=5 / 1 天意味着企业 fork 还早；<strong>真正决定长期价值的是 KernelSU 生态本身</strong>（如果 KernelSU 后续版本改 API 或停止维护，altdb 需跟随适配）。相比 Google 官方无线调试，altdb 优势是<strong>不冲突系统 adbd + 自动暂停恢复 + 持久化已配对</strong>；劣势是<strong>需要 KernelSU root</strong>（非通用方案）+ <strong>依赖单一 KernelSU 版本</strong>。</li>
+</ul>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>「Agent-callable 本地管线」范式扩散到资产生成领域</strong>——asset-studio 的 MCP 接口把「文本→3D 资产」变成 coding agent 可调用的函数；这是 <code>tracecrate</code> / <code>birdview</code> / <code>ccompactor</code> 形成的 AI Coding 可观测栈之外的<strong>第四条线</strong>（资产生成）。<strong>Coding Agent 现在不仅能「读」「改」「可视化」代码，还能「产出」3D 资产</strong>——这是 agent 能力边界的实质扩张。</li>
+<li><strong>中文 Coding Agent 从「协议层」推进到「工程层」</strong>——Baize 关注 agent loop / skills / hooks 协议；IvyClaw 关注多租户 / 异步 / 沙箱 / 可观测 / HITL 等生产工程能力。两者构成<strong>「中文 Coding Agent 双层栈」</strong>：底层是 Baize（agent loop 协议）+ maskit（出网隐私）+ routeVSCODE（模型路由），上层是 IvyClaw（多租户生产系统）。<strong>与昨日 Baize 偏个人开发者 / 自部署不同，IvyClaw 面向企业 / 团队 / SaaS 化</strong>——这是「个人 CLI 工具 → 团队 SaaS 系统」的典型路径。</li>
+<li><strong>AMD GPU + CUDA 训练栈首次有可复现 Windows 实现</strong>——CUDA-for-AMD-Windows 不是新发明 ZLUDA，而是<strong>把 ZLUDA + HIP SDK + LibTorch 在 Windows + AMD 上端到端跑通</strong>并把脚本自动化 + 验证公开。这是「开发者现在可以在 Windows + AMD 上跑 CUDA-target 训练」的可复现证明——对 AMD GPU Windows 用户（消费级 RDNA3/RDNA4 用户）有直接价值。</li>
+<li><strong>KernelSU 无线 ADB 模块填补 Android root 用户刚需</strong>——altdb 是 KernelSU 生态里少数「无线 ADB 替代」模块；Apache-2.0 + Rust + 131 KB + WebUI 中英双语都是 KernelSU 模块生态的工程严肃度信号。<strong>KernelSU 模块生态</strong>（与 Magisk 模块并列的 Android root 生态）在 2026 年持续壮大，altdb 是其中一个清晰填补空白的具体工具。</li>
+<li><strong>「端到端本地 + agent-callable」三个项目形成新组合</strong>——asset-studio（本地 3D 资产生成）+ 昨日 <code>FankChen/tracecrate</code>（本地 AI Agent trace 解析）+ 昨日 <code>xiaYuTian11/maskit</code>（本地 LLM 出网隐私脱敏）形成<strong>「本地 AI Coding 工具链三件套」</strong>——本地算、本地存、本地隐私。本地化是 LLM 应用层的反向 SaaS 路径，与 iOS 端 <code>Chuloo/mural</code>（自带 API key 原生 iOS 语言学习）同构但推到「本地 + 可被 agent 调用」层级。</li>
+<li><strong>游戏资产 / AI 训练 / Android 系统级模块三个「工程级具体问题」同日被各自解决</strong>——asset-studio（游戏资产生成）+ CUDA-for-AMD-Windows（AMD 上跑 CUDA 训练）+ altdb（KernelSU 无线 ADB）三个项目<strong>都不是宏大叙事，而是解决一个具体工程问题</strong>——这是 2026-09 趋势的明显特征：单点灵感到工程闭环的项目比「AI 平台 / 框架」类更易爆。</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="zorrobyteasset-studioscore-90">🏆 zorrobyte/asset-studio（Score 90）</h3>
+<p><strong>定位判断：</strong> 端到端本地文本→3D 游戏资产生成管道。它不是又一个 Tripo3D 替代（云端 SaaS），而是 <strong>「端到端本地 + agent-callable + 资产可追溯」三件套</strong>——客户端完全本地（FastAPI + CLI + MCP 三接口，单卡 RTX 5090），资产不出网、出产可追溯（manifest.json）。<strong>它是「Qwen-Image + Pixal3D + Blender/meshoptimizer」三个 SOTA 工具的端到端编排</strong>——这不是新发明，而是把已有工具的链路自动化。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>三阶段管线</strong>——Qwen-Image-2512（文生参考图）→ Pixal3D / TRELLIS.2（参考图→高细节 3D）→ Blender/meshoptimizer（自动简模 + LOD + 碰撞烘焙）
+2. <strong>三接口接入</strong>——FastAPI HTTP 服务 + CLI 命令行 + MCP 工具协议；后者让任何 coding agent 可以 <code>asset_studio.generate(...)</code> 调用
+3. <strong>单卡 RTX 5090 全离线</strong>——Docker Desktop + 无账号 + 无云 + 无上传；README 明示「one RTX 5090, Docker Desktop, no accounts, no uploads, no cloud」
+4. <strong>任务级元数据追溯</strong>——manifest.json 记录 prompt / 三角预算 / LOD 设置 / 时间戳；agent 自动化测试与回归友好
+5. <strong>三个完整 sample</strong>——pump / crate / mug，每个跑通到 20K / 8K / 6K 三角预算 + contact_sheet 对照图，证明不是 PoC
+6. <strong>直接 drop-in 输出</strong>——master.glb（≤1M tris / 4096² PBR）+ <code>&lt;name&gt;.glb</code>（预算三角化版本）+ LOD1/LOD2/collision.glb + 四视图 PNG 预览；Godot / Unity / Blender 无缝集成
+7. <strong>0BSD 极宽松许可</strong>——可商用、可修改、无署名要求；但缺 license 文件的 0BSD 在某些企业合规扫描里可能被识别为「未声明许可」</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>三阶段本地管线（image→3D→optimize）外加三个接口（FastAPI/CLI/MCP），无云、无账号、无上传；数据全本地（master / LOD / collision / previews / manifest.json 都落盘到工作目录）</td>
+<td>来自 README 关于「one RTX 5090, Docker Desktop, no accounts, no uploads, no cloud」、Qwen-Image-2512 → Pixal3D → Blender/meshoptimizer、FastAPI+CLI+MCP 三接口、manifest.json 任务追溯的明示；三个组件的版本号、具体配置、Docker 镜像内部结构在 README 中未完全给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入 prompt → Qwen-Image-2512 文生参考图 → Pixal3D (TRELLIS.2) 产高细节 3D → Blender/meshoptimizer 自动简模到预算三角数 + LOD + 碰撞烘焙 → 输出 master.glb + 多个 LOD.glb + collision.glb + previews + manifest.json</td>
+<td>主路径来自 README 描述的三阶段 + 三个 sample 的 contact_sheet 对照图；每个组件的具体调用参数、并行策略、失败回退未给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>本地化（无云 vs 速度受限于单卡）vs 三组件成熟度（Qwen-Image/Pixal3D/Blender 都是 SOTA 但 API 各异）vs LOD 策略（50% / 25% 默认，可调但需手动测试）vs license（0BSD 极宽松但企业合规可能识别为「未声明」）</td>
+<td>权衡四因素均从 README + repo 元数据推导；本地化 vs 云端的速度基准、LOD 质量保留度、license 文件存在与否待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单卡 RTX 5090 + Docker Desktop；运行 README 中三个 sample 之一（如 mug），验证 manifest.json + LOD 三角数 + previews PNG 输出；再叠加 MCP server 启动 + Claude Code / Codex 端调一次 <code>asset_studio.generate("test cube", budget=5000)</code></td>
+<td>PoC 由「三接口三 sample」路径推导；具体 RTX 5090 显存占用、MCP server 启动步骤、agent 端调用样例在 README 中给出但具体 token 成本未量化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户/Coding Agent] --> Prompt[输入 prompt<br/>+ 三角预算 + LOD 设置]
+  Prompt --> Qwen[Qwen-Image-2512<br/>文生参考图]
+  Qwen --> Ref[reference.png]
+  Ref --> Pixal3D[Pixal3D / TRELLIS.2<br/>参考图→高细节 3D]
+  Pixal3D --> Master[master.glb<br/>≤1M tris / 4096² PBR]
+  Master --> Blender[Blender + meshoptimizer<br/>自动简模 + LOD + 碰撞]
+  Blender --> Opt[&lt;name&gt;.glb<br/>预算三角化版本]
+  Blender --> LOD1[&lt;name&gt;_LOD1.glb<br/>50% 三角]
+  Blender --> LOD2[&lt;name&gt;_LOD2.glb<br/>25% 三角]
+  Blender --> Col[&lt;name&gt;_collision.glb<br/>凸包碰撞]
+  Blender --> Prev[previews/*.png<br/>四视图预览]
+  Blender --> Tex[textures/*.png<br/>PNG 烘焙贴图]
+  Ref --> Manifest[manifest.json<br/>任务级元数据]
+  Opt --> Manifest
+  LOD1 --> Manifest
+  LOD2 --> Manifest
+  Col --> Manifest
+  Prev --> Manifest
+  Tex --> Manifest
+  Master --> Out[输出文件夹<br/>可直接 drop-in]
+  Opt --> Out
+  LOD1 --> Out
+  LOD2 --> Out
+  Col --> Out
+  Prev --> Out
+  Tex --> Out
+  Manifest --> Out
+  User -.可选 MCP 调用.-> MCP[MCP server<br/>asset_studio.generate]
+  MCP --> Prompt
+  User -.可选 CLI 调用.-> CLI[CLI 命令行]
+  CLI --> Prompt
+  User -.可选 HTTP 调用.-> API[FastAPI 服务]
+  API --> Prompt
+  Out -.导入.-> Godot[Godot]
+  Out -.导入.-> Unity[Unity]
+  Out -.导入.-> Blender2[Blender]
+</pre>
+<h3 id="ivyfan-toowellivyclawscore-86">🥈 ivyfan-toowell/IvyClaw（Score 86）</h3>
+<p><strong>定位判断：</strong> 中文生产级多智能体软件研发 Agent 工程系统。它不是又一个 LangChain Agent Demo，而是 <strong>「DeepAgents + LangGraph + Planner/Researcher/Coder/Tester/Reviewer 五角色 + Docker/Daytona 双沙箱 + 多租户治理 + 多渠道接入 + 可观测 + HITL」</strong> 八件套——是「Agent 工程化落地」的系统级尝试。<strong>它是昨日 Baize（agent loop 层 CLI）的「生产工程层」对照</strong>。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>五角色编排</strong>——Planner（任务规划）→ Researcher（按需资料检索）→ Coder（代码实现）→ Tester（自动测试）→ Reviewer（代码审查）；Mermaid 架构图清晰展示了从 User → Gateway → Dispatcher → Planner → Researcher/Coder → Tester → Reviewer → Final Response 的完整数据流
+2. <strong>多模型路由</strong>——根据 Agent 角色和任务复杂度选择不同模型档位（README 列了 Planner / Researcher / Coder / Tester / Reviewer 五档）
+3. <strong>真实工具调用</strong>——Git、pytest、Web Search、MCP 等
+4. <strong>双沙箱执行</strong>——通过 Docker / Daytona 隔离运行 Agent 生成的代码（两个沙箱选项，Daytona 是云开发环境服务）
+5. <strong>状态持久化</strong>——PostgreSQL + LangGraph Checkpointer / Store 保存任务上下文（LangGraph 原生持久化机制）
+6. <strong>异步长任务</strong>——Redis + ARQ Worker 处理耗时 Agent 任务
+7. <strong>Human-in-the-Loop</strong>——高风险工具调用支持人工审批与恢复执行
+8. <strong>多渠道接入</strong>——CLI、Web API、飞书 WebSocket、Webhook 统一接入（飞书 WebSocket 是国内企业 IM 集成）
+9. <strong>多租户治理</strong>——API Key、Tenant、限流、幂等、审计
+10. <strong>可观测</strong>——LangSmith（LangChain 官方）、Prometheus、Grafana、自动化测试与 Agent Evaluation</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>中文生产级多智能体软件研发系统；接入层（CLI/Web/飞书/微信）+ 治理层（API Key/Tenant/限流/审计）+ 编排层（DeepAgents + LangGraph 五角色）+ 工具层（Git/pytest/MCP）+ 沙箱层（Docker/Daytona）+ 持久层（PostgreSQL + LangGraph Checkpointer/Store）+ 异步层（Redis + ARQ Worker）+ 可观测层（LangSmith + Prometheus + Grafana）</td>
+<td>来自 README 关于 8 层架构 + Mermaid 架构图 + 五个 Agent 角色 + 双沙箱 + 持久化 + 异步 + HITL 的明示；具体 LangGraph 状态机配置、Daytona 集成方式、LangSmith 埋点细节在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户请求 → API Gateway（鉴权 + 限流 + 审计）→ Dispatcher（任务分发）→ Planner（拆解任务）→ Researcher（按需检索）→ Coder（实现代码 + Docker/Daytona 沙箱）→ Tester（自动测试）→ Reviewer（代码审查）→ Final Response；长任务经 Redis + ARQ Worker 异步化</td>
+<td>主路径来自 README 描述的五角色 + 持久化 + 异步 + 沙箱；具体 Planner 拆解策略、Researcher 触发条件、Coder 失败重试细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>五角色分工（深度拆解 vs 延迟增加 + 上下文传递损失）vs 多模型路由（成本 vs 质量）vs 双沙箱（Docker 自托管 vs Daytona 云沙箱取舍）vs HITL（安全 vs 自动化效率）vs 无 license（开源 vs 企业合规）</td>
+<td>权衡五因素均从 README + 主题词推导；具体模型档位定价、双沙箱性能基准、HITL 触发阈值、license 文件是否存在待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单机部署：PostgreSQL + Redis + Docker；启动 API + ARQ Worker；CLI 提交「写一个 FastAPI hello world」任务；观察五角色轨迹（LangSmith）+ 沙箱执行（Docker 日志）+ 异步任务（ARQ dashboard）+ 审计日志（Prometheus/Grafana）</td>
+<td>PoC 由「8 层架构 + 五角色 + 双沙箱 + 异步 + HITL」路径推导；具体 docker-compose.prod.yml 配置、IVC_API_KEY 默认值、双沙箱切换命令待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[User / Client] --> Channel[Channel 接入层<br/>CLI / Web API / 飞书 WS / Webhook]
+  Channel --> Gateway[API Gateway<br/>鉴权 + 限流 + 幂等 + 审计]
+  Gateway --> Dispatcher[Dispatcher<br/>任务分发]
+  Dispatcher --> Planner[Planner<br/>任务拆解]
+  Planner --> Decide{需要检索?}
+  Decide -->|是| Researcher[Researcher<br/>资料检索]
+  Decide -->|否| Coder[Coder<br/>代码实现]
+  Researcher --> Coder
+  Coder --> Tester[Tester<br/>自动测试]
+  Tester --> Reviewer[Reviewer<br/>代码审查]
+  Reviewer --> Final[Final Response]
+  Dispatcher <-.持久化.-> PG[(PostgreSQL<br/>+ LangGraph Checkpointer/Store)]
+  Dispatcher <-.异步任务队列.-> Redis[(Redis<br/>+ ARQ Worker)]
+  Coder -.沙箱执行.-> Sandbox[Docker / Daytona<br/>双沙箱]
+  Sandbox --> Coder
+  Redis --> Worker[ARQ Worker<br/>处理长任务]
+  Worker --> Dispatcher
+  Dispatcher -.可观测.-> Obs[LangSmith + Prometheus + Grafana<br/>+ Agent Evaluation]
+  Coder -.HITL 高危工具.-> Hitl[Human-in-the-Loop<br/>人工审批与恢复]
+  Hitl --> Coder
+  Coder -.工具调用.-> Tools[Git / pytest / Web Search / MCP]
+  Tools --> Coder
+</pre>
+<h3 id="speedstucuda-for-amd-windowsscore-84">🥉 Speedstu/CUDA-for-AMD-Windows（Score 84）</h3>
+<p><strong>定位判断：</strong> 跨 GPU 厂商 CUDA 兼容层（ZLUDA + ROCm/HIP）的 Windows 复现模板。它不是新发明 ZLUDA，而是 <strong>「在 Windows + AMD 上端到端跑通 CUDA-target LibTorch 训练链路 + 自动化安装脚本 + 验证文档公开」</strong> 三件套——是「AMD GPU 用户跑 CUDA 训练」的可复现配方。<strong>它是「ZLUDA 仍活着的窗口期，把 Windows + AMD + CUDA 跑通留下可复现模板」</strong>。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>三个 pinned 版本</strong>——ZLUDA <code>v6-preview.69</code>（官方 upstream release）+ AMD HIP SDK <code>6.4</code> + LibTorch <code>2.3.0 + cu118</code>；版本固定避免「今天跑得通明天跑不通」
+2. <strong>五个 CUDA 入口验证</strong>——nvcuda / cuBLAS / cuBLASLt / cuSPARSE / cuFFT 全 pass <code>cuda_check</code>
+3. <strong>真实 PPO 训练</strong>——220 万参数 PPO 网络 forward / inference / PPO learning / optimizer 全部在 CUDA-facing device 上跑通；README 明示「the same CUDA-facing LibTorch training workload that originally motivated this project」
+4. <strong>65,536 timesteps 单次 validation</strong>——可复现的验证规模（README 给具体数字）
+5. <strong><code>install.ps1</code> 全自动</strong>——detect AMD GPU + native <code>gfxXXXX</code> target + verify AMD driver/HIP SDK + download pinned ZLUDA + download LibTorch 2.3.0+cu118 (2.66 GB) + verify
+6. <strong>GitHub Actions CI</strong>——<code>verify.yml</code> 自动跑验证
+7. <strong>NOASSERTION 许可证</strong>——无明确 license；企业合规扫描会拒绝
+8. <strong><code>docs/VALIDATION.md</code></strong> 公开验证步骤——可复现性的关键
+9. <strong>53 KB repo size</strong>——不是「大项目」而是「集成脚本 + 验证脚本 + 文档」形态</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Windows x64 + AMD GPU + ZLUDA + HIP SDK + LibTorch 集成栈；非「自研 GPU runtime」，而是「已有组件的集成配方 + 自动化脚本 + 验证证据」</td>
+<td>来自 README 关于「ZLUDA v6-preview.69 + AMD HIP SDK 6.4 + LibTorch 2.3.0+cu118」、install.ps1 五步、验证 AMD Radeon RX 9060 XT (gfx1200) only 的明示；其他 AMD GPU 兼容性矩阵在 README 中显式标为「candidates, not guaranteed working devices」</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>CUDA-targeted Windows app → ZLUDA → cuBLAS/cuSPARSE/cuFFT compat → rocBLAS/hipBLASLt/rocSPARSE/HIP → AMD GPU；README 给 ASCII 流程图</td>
+<td>主路径来自 README 描述的 ASCII 流程图 + 「How it works」段落；具体 ZLUDA 拦截点、HIP 库替换细节在 docs/VALIDATION.md 中可能给出，本档案未读</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>单卡验证（RX 9060 XT gfx1200 only）vs ZLUDA 持续性（作者多次更迭 + 过去两年空窗）vs NOASSERTION 许可证（无明确声明）vs LibTorch 版本固定（避免依赖漂移但失去新特性）</td>
+<td>权衡四因素均从 README 推导；其他 AMD GPU 兼容性实测、ZLUDA 未来 roadmap、license 实际限制待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Windows x64 + AMD Radeon RX 9060 XT；执行 install.ps1；运行 docs/VALIDATION.md 中 PPO 训练；观察 forward / inference / learning / optimizer 是否全在 CUDA-facing device 完成</td>
+<td>PoC 由「install.ps1 五步 + 五个 CUDA 入口验证 + PPO 训练验证」路径推导；其他 AMD GPU（如 RX 7900 XT / RX 9070 XT）兼容性测试在 README 中显式要求用户开 issue 报告</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  App[CUDA-targeted Windows app<br/>例如 LibTorch CUDA build]
+  App --> ZLUDA[ZLUDA v6-preview.69<br/>CUDA API 拦截层]
+  ZLUDA --> Compat[cuBLAS / cuBLASLt / cuSPARSE / cuFFT<br/>compat layer]
+  Compat --> RocBLAS[rocBLAS / hipBLASLt / rocSPARSE / HIP<br/>AMD 原生数学库]
+  RocBLAS --> AMD[AMD Radeon GPU<br/>RX 9060 XT gfx1200 唯一验证]
+  App -.可选 cuFFT.-> Compat
+  App -.可选 nvcuda.-> ZLUDA
+  Install[install.ps1] --> Detect[detect AMD GPU + gfx target]
+  Install --> Verify[verify driver / HIP SDK]
+  Install --> Download[download ZLUDA + LibTorch]
+  Install --> Check[校验]
+  Detect --> AMD
+  Verify --> AMD
+  CI[GitHub Actions verify.yml] --> Validate[跑 cuda_check + PPO 训练]
+  Validate --> Report[verified today 清单]
+  AMD -.验证反馈.-> Validate
+</pre>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">风险（项目级）</h3>
+<ul>
+<li><strong>zorrobyte/asset-studio</strong>：Qwen-Image-2512 / Pixal3D / TRELLIS.2 / Blender / meshoptimizer 五个组件版本漂移可能导致管线断裂；单卡 RTX 5090 限制使得中端 GPU 用户难以本地化；0BSD 缺 license 文件在某些企业合规扫描里被识别为「未声明」</li>
+<li><strong>ivyfan-toowell/IvyClaw</strong>：<strong>无 license</strong> 是企业采用的最大门槛（合规扫描直接拒绝）；DeepAgents + LangGraph 是 LangChain 官方主推但相对较新的栈，长期稳定性需观察；Docker/Daytona 双沙箱 + ARQ Worker + LangSmith 配置复杂，单机 PoC 与多租户生产的差距较大</li>
+<li><strong>Speedstu/CUDA-for-AMD-Windows</strong>：<strong>NOASSERTION license</strong> 是企业合规风险；<strong>ZLUDA 项目本身可持续性存疑</strong>（作者 vosen 多次更迭、过去两年空窗）；<strong>单卡 RX 9060 XT gfx1200 唯一验证</strong>（README 明示「Other AMD GPUs are candidates, not guaranteed working devices」）</li>
+<li><strong>Dr-TSNG/altdb</strong>：依赖 KernelSU 单一 root 方案（非通用）；KernelSU v3.2.5+ 版本绑定（后续版本改 API 需适配）；IPv4 局域网限制意味着蜂窝与 VPN 用户无法用</li>
+</ul>
+<h3 id="_5">机遇（赛道级）</h3>
+<ul>
+<li><strong>「本地 + agent-callable」是 LLM 应用层反向 SaaS 的具体形态</strong>——从昨日 tracecrate（本地 trace）/ maskit（本地隐私）/ mural（iOS 自带 API key）到今日 asset-studio（本地资产生成）+ altdb（KernelSU 无线 ADB），「本地 + 工具协议暴露给 agent」正在变成显式模式</li>
+<li><strong>中文 Coding Agent 进入「生产工程层」</strong>——Baize（agent loop 协议层）+ IvyClaw（多租户生产工程层）构成完整栈；这是中文 AI 工具栈追赶 LangChain / Anthropic / OpenAI 阵营的清晰路径</li>
+<li><strong>AMD GPU Windows 用户首次有 CUDA 训练栈可复现模板</strong>——ZLUDA 重新活跃的窗口期内，Speedstu 把这个窗口期的最佳实践固化下来；对 AMD GPU Windows 用户（消费级 RDNA3/RDNA4）有直接价值</li>
+<li><strong>KernelSU 模块生态继续壮大</strong>——altdb 是少有的「无线 ADB 替代」模块；与 2026 年持续出现的 KernelSU 模块形成生态扩张</li>
+</ul>
+<h2 id="_6">风险与机遇（叙事级）</h2>
+<h3 id="_7">风险</h3>
+<ul>
+<li><strong>过度关注「AI Coding 工具」而忽视非 AI 项目</strong>——今日 4 个项目仅 IvyClaw 与 asset-studio 属 AI 范畴；CUDA-for-AMD-Windows 是 GPU 计算；altdb 是 Android root；提醒「GitHub 趋势不等于 LLM 趋势」</li>
+<li><strong>「本地 + agent-callable」可能撞墙于硬件依赖</strong>——asset-studio 需 RTX 5090；IvyClaw 需 PostgreSQL + Redis + ARQ + LangSmith 全栈；并非所有用户都能本地化</li>
+<li><strong>企业合规风险普遍存在</strong>——本批 4 个项目中 IvyClaw（无 license）、CUDA-for-AMD-Windows（NOASSERTION）、asset-studio（0BSD 缺 license 文件）三个都有合规问题；提醒「开源不自动意味着可商用」</li>
+</ul>
+<h3 id="_8">机遇</h3>
+<ul>
+<li><strong>「单点灵感到工程闭环」是 2026-09 趋势的明显特征</strong>——asset-studio（资产生成）+ CUDA-for-AMD-Windows（AMD 训练）+ altdb（KernelSU ADB）三个项目都不是宏大叙事，而是「解决一个具体工程问题」——这是中小型独立开发者最容易爆火的路径</li>
+<li><strong>「Coding Agent 工具体系」边界正在扩张到资产 / 训练 / 系统模块</strong>——asset-studio（资产生成）/ CUDA-for-AMD-Windows（AI 训练）/ altdb（系统级 ADB）三个项目<strong>第一次把 coding agent 可调用范围扩展到非代码领域</strong>——资产生成、AI 训练、系统模块；这意味着 coding agent 从「写代码」变成「自动化一切」</li>
+</ul>
+<h2 id="_9">重点项目档案</h2>
+<ul>
+<li>🎨 <a href="projects/asset-studio.html">zorrobyte/asset-studio</a>（1 天 33⭐ ⑂8）— 端到端本地文本→3D 游戏资产生成管道，0BSD</li>
+<li>🦞 <a href="projects/ivyclaw.html">ivyfan-toowell/IvyClaw</a>（1 天 52⭐ ⑂3）— 中文生产级多智能体软件研发 Agent 系统</li>
+<li>🪟 <a href="projects/cuda-for-amd-windows.html">Speedstu/CUDA-for-AMD-Windows</a>（1 天 55⭐ ⑂1）— 跨 GPU 厂商 CUDA 兼容层 Windows 复现模板</li>
+<li>📱 <a href="projects/altdb.html">Dr-TSNG/altdb</a>（1 天 53⭐ ⑂5）— KernelSU 无线 ADB 模块</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (2026-09-14) + 各项目 README API readme 字段 base64 解码 | License: 0BSD / 无 / NOASSERTION / Apache-2.0 | Stars: 33/52/55/53 | Forks: 8/3/1/5 | Created: 2026-09-13</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

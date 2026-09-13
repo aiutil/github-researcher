@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-13.md">Latest report</a> ·
+  <a href="daily/2026-09-14.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-13
+## Latest report · 2026-09-14
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 6 | 583 | 4 | 9k+ |
+| 4 | 587 | 4 | 10k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Chuloo/mural](projects/mural.md) | 114 stars | 工具型 |
-| [Xu123-Bob/Baize](projects/baize.md) | 67 stars | 平台候选 |
-| [Qiuner/birdview](projects/birdview.md) | 68 stars | 工具型 |
-| [ccompactor/ccompactor](projects/ccompactor.md) | 16 stars | 工具型 |
-| [wannabeyourfriend/awesome-harness-evolution](projects/awesome-harness-evolution.md) | 22 stars | 观察型 |
-| [JoaoFranco03/DuoHinge](projects/duohinge.md) | 40 stars | 工具型 |
+| [zorrobyte/asset-studio](projects/asset-studio.md) | 33 stars | 工具型 |
+| [ivyfan-toowell/IvyClaw](projects/ivyclaw.md) | 52 stars | 平台候选 |
+| [Speedstu/CUDA-for-AMD-Windows](projects/cuda-for-amd-windows.md) | 55 stars | 工具型 |
+| [Dr-TSNG/altdb](projects/altdb.md) | 53 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: Chuloo/mural
-2. **Signal 2** · score 84 · repositories: Xu123-Bob/Baize
-3. **Signal 3** · score 82 · repositories: Qiuner/birdview
-4. **Signal 4** · score 86 · repositories: ccompactor/ccompactor
+1. **Signal 1** · score 90 · repositories: zorrobyte/asset-studio
+2. **Signal 2** · score 86 · repositories: ivyfan-toowell/IvyClaw
+3. **Signal 3** · score 84 · repositories: Speedstu/CUDA-for-AMD-Windows
+4. **Signal 4** · score 82 · repositories: Dr-TSNG/altdb
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-13.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-14.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
-| [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 
 ## Why this repository exists
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-13.md">最新日报</a> ·
+  <a href="daily/2026-09-14.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-13
+## 最新研究 · 2026-09-14
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 583 | 4 | 9k+ |
+| 4 | 587 | 4 | 10k+ |
 
-**今日核心判断：** Chuloo/mural 1 天 114⭐ 原生 iPhone 语言学习伴侣（SwiftUI · Liquid Glass · SwiftData · 自带 OpenAI API key · GPT-Live-1 + GPT-5.6 Luna）· Xu123-Bob/Baize 1 天 67⭐ 中文 Vibe Coding CLI Agent「白泽」（多后端 DeepSeek/OpenAI 兼容/Ollama · Skills + Subagents + Hooks + MCP · 安全沙箱 · MIT）· Qiuner/birdview 1 天 68⭐ 「Stop letting AI code blind」架构可视化 Skill 包（architecture-as-code · 证据链接模块图 · standalone HTML 输出 · MIT）· ccompactor/ccompactor 1 天 16⭐ ⑂11 Agent Session Handoff CLI（Claude Code/Codex/Pi → 压缩 + 验证 + 跨 Agent 交接 · TypeScript · standalone 二进制 · MIT · fork/star 68.8% 极端高）· wannabeyourfriend/awesome-harness-evolution 1 天 22⭐ AI Agent Harness 演化论文精选清单（Foundation/Benchmark/Recipe/Position · 104 选中论文 · 99 校徽 · CC0）· JoaoFranco03/DuoHinge 1 天 40⭐ iPhone Duo 折叠动效移植 macOS（Metal 3 · AppleSPUHIDDriver 盖角度 · 120Hz · prebuilt DMG · MIT）
+**今日核心判断：** zorrobyte/asset-studio 1 天 33⭐ ⑂8 0BSD 本地文本→3D 游戏资产生成管道（Qwen-Image-2512 → Pixal3D/TRELLIS.2 → Blender/meshoptimizer · FastAPI + CLI + MCP · RTX 5090 验证）· ivyfan-toowell/IvyClaw 1 天 52⭐ 中文生产级多智能体软件研发 Agent（DeepAgents + LangGraph · Planner/Researcher/Coder/Tester/Reviewer 五角色 · Docker/Daytona 沙箱 · FastAPI + PostgreSQL + Redis + ARQ · HITL + LangSmith）· Speedstu/CUDA-for-AMD-Windows 1 天 55⭐ 跨 GPU 厂商 CUDA 兼容层（ZLUDA v6-preview.69 + AMD HIP SDK 6.4 + LibTorch 2.3.0 cu118 · RX 9060 XT gfx1200 · PPO 220 万参数训练推理验证 · NOASSERTION）· Dr-TSNG/altdb 1 天 53⭐ ⑂5 KernelSU 无线 ADB 模块（六位配对码 + TLS · IPv4 局域网 · WebUI 双语 · Android 11+ ARM64 · Apache-2.0）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [Chuloo/mural](projects/mural.md) | 114 stars | 工具型 |
-| [Xu123-Bob/Baize](projects/baize.md) | 67 stars | 平台候选 |
-| [Qiuner/birdview](projects/birdview.md) | 68 stars | 工具型 |
-| [ccompactor/ccompactor](projects/ccompactor.md) | 16 stars | 工具型 |
-| [wannabeyourfriend/awesome-harness-evolution](projects/awesome-harness-evolution.md) | 22 stars | 观察型 |
-| [JoaoFranco03/DuoHinge](projects/duohinge.md) | 40 stars | 工具型 |
+| [zorrobyte/asset-studio](projects/asset-studio.md) | 33 stars | 工具型 |
+| [ivyfan-toowell/IvyClaw](projects/ivyclaw.md) | 52 stars | 平台候选 |
+| [Speedstu/CUDA-for-AMD-Windows](projects/cuda-for-amd-windows.md) | 55 stars | 工具型 |
+| [Dr-TSNG/altdb](projects/altdb.md) | 53 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **native-iphone-language-companion / 原生 iPhone 对话式语言学习伴侣——Chuloo/mural 1 天 114⭐ ⑂33 fork/star 28.9%（SwiftUI + Liquid Glass + SwiftData · 自带 OpenAI API key · GPT-Live-1 + GPT-5.6 Luna · Xcode 26 + iOS 26.1+ · 6MB repo · Swift 6 · iPhone 17 截图四张 · 现场 Code Agent 一键构建安装的 install prompt 公开 · MIT）** · 相关项目：Chuloo/mural · 强度：90
-2. **chinese-vibe-coding-cli / 中文 Vibe Coding CLI「白泽」——Xu123-Bob/Baize 1 天 67⭐ fork 0（Python 3.10+ · DeepSeek / OpenAI 兼容 / Ollama 三后端 · Skills + Subagents + Hooks + MCP + 上下文压缩 + 安全沙箱 · 黑金 CLI 主题 · 中文宽度自适应 · MIT）** · 相关项目：Xu123-Bob/Baize · 强度：84
-3. **architecture-as-code-skill / 「Stop letting AI code blind」架构可视化 Skill——Qiuner/birdview 1 天 68⭐ ⑂3（Node.js 18+ · Evidence-linked 架构图带 stable module IDs + 文件归属 · Architecture / Changes / Side-by-side 三视图 · JSON Schema + semantic 验证 · standalone HTML 输出无服务器依赖 · 英文 + 中文双语 · 0.1.0 · MIT）** · 相关项目：Qiuner/birdview · 强度：82
-4. **agent-session-handoff-cli / Coding Agent Session 压缩 + 验证 + 跨 Agent Handoff——ccompactor/ccompactor 1 天 16⭐ ⑂11 fork/star 68.8%（TypeScript · commander + ink + react · Claude Code/Codex/Pi 三适配器 · schema + quote-verify 验证 · list/find/extract/expand/verify/handoff/--tui 七命令 · standalone 二进制 + .deb + npm · CI + npm 自动 publish · MIT）** · 相关项目：ccompactor/ccompactor · 强度：86
+1. **local-text-to-3d-pipeline / 端到端本地文本→3D 游戏资产生成管道——zorrobyte/asset-studio 1 天 33⭐ ⑂8 fork/star 24.2%（Python · 0BSD · Qwen-Image-2512 文生图参考图 → Pixal3D/TRELLIS.2 高细节模型 → Blender/meshoptimizer 自动优化 LOD 与碰撞 → FastAPI + CLI + MCP 三接口 · RTX 5090 单卡验证 · Godot/Unity/Blender 直接 drop-in · manifest.json 任务级追溯 · 76 MB repo）** · 相关项目：zorrobyte/asset-studio · 强度：90
+2. **production-multi-agent-swe / 中文生产级多智能体软件研发 Agent——ivyfan-toowell/IvyClaw 1 天 52⭐ ⑂3 fork/star 5.8%（Python · 无 license · DeepAgents + LangGraph · Planner/Researcher/Coder/Tester/Reviewer 五角色编排 · Git/pytest/Web Search/MCP 真实工具调用 · Docker/Daytona 双沙箱 · PostgreSQL + LangGraph Checkpointer/Store 状态持久化 · Redis + ARQ Worker 异步长任务 · 多模型路由 · HITL 高危工具人工审批 · 多渠道 CLI/FastAPI/飞书 WS/Webhook · API Key + 租户 + 限流 + 幂等 + 审计 · LangSmith + Prometheus + Grafana 可观测 · Mermaid 架构图）** · 相关项目：ivyfan-toowell/IvyClaw · 强度：86
+3. **cross-vendor-cuda-compat / 跨 GPU 厂商 CUDA 兼容层——Speedstu/CUDA-for-AMD-Windows 1 天 55⭐ ⑂1 fork/star 1.8%（PowerShell + ZLUDA v6-preview.69 · NOASSERTION · AMD HIP SDK 6.4 · LibTorch 2.3.0 + cu118 · Windows x64 · AMD RX 9060 XT gfx1200 唯一验证硬件 · nvcuda/cuBLAS/cuBLASLt/cuSPARSE/cuFFT 全 pass cuda_check · 220 万参数 PPO 网络 forward/inference/PPO learning/optimizer 全链路 · 65 536 timesteps 单次 validation · install.ps1 自动检测 + 验证 + 下载 + 校验）** · 相关项目：Speedstu/CUDA-for-AMD-Windows · 强度：84
+4. **kernelsu-wireless-adb / KernelSU 无线 ADB 模块——Dr-TSNG/altdb 1 天 53⭐ ⑂5 fork/star 9.4%（Rust · Apache-2.0 · KernelSU v3.2.5+ · Android 11+ ARM64 · 六位配对码 + TLS · Wi-Fi/热点/Ethernet IPv4 · 排除蜂窝与 VPN · shell/file/install/logs/reboot/forward-reverse port · USB/无线调试开启自动暂停 · WebUI 中英双语 · 持久化配对记录 · 不动系统 adbd 授权）** · 相关项目：Dr-TSNG/altdb · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 | [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
-| [2026-09-06](daily/2026-09-06.md) | 8 | 6 |
 
 ## 为什么做这个项目
 
