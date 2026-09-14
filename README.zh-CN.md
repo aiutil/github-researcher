@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-14.md">最新日报</a> ·
+  <a href="daily/2026-09-15.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-14
+## 最新研究 · 2026-09-15
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 587 | 4 | 10k+ |
+| 5 | 592 | 4 | 9k+ |
 
-**今日核心判断：** zorrobyte/asset-studio 1 天 33⭐ ⑂8 0BSD 本地文本→3D 游戏资产生成管道（Qwen-Image-2512 → Pixal3D/TRELLIS.2 → Blender/meshoptimizer · FastAPI + CLI + MCP · RTX 5090 验证）· ivyfan-toowell/IvyClaw 1 天 52⭐ 中文生产级多智能体软件研发 Agent（DeepAgents + LangGraph · Planner/Researcher/Coder/Tester/Reviewer 五角色 · Docker/Daytona 沙箱 · FastAPI + PostgreSQL + Redis + ARQ · HITL + LangSmith）· Speedstu/CUDA-for-AMD-Windows 1 天 55⭐ 跨 GPU 厂商 CUDA 兼容层（ZLUDA v6-preview.69 + AMD HIP SDK 6.4 + LibTorch 2.3.0 cu118 · RX 9060 XT gfx1200 · PPO 220 万参数训练推理验证 · NOASSERTION）· Dr-TSNG/altdb 1 天 53⭐ ⑂5 KernelSU 无线 ADB 模块（六位配对码 + TLS · IPv4 局域网 · WebUI 双语 · Android 11+ ARM64 · Apache-2.0）
+**今日核心判断：** Matthew0822/ToolReplay 1 天 171⭐ ⑂18 fork/star 10.5% Agent 工具调用会话审计 CLI（Python · MIT · hash-chain 封存 + 确定性 replay + 权限越权 scope 检查 + 无三方依赖 + seal/replay/verify/scope/version 五命令 · 单一六行样本跑通 non-determinism + redundant-call + permission-overreach 三类 finding）· yifanzhang-pro/FlashREINFORCE 1 天 39⭐ ⑂3 NVIDIA 2026-09 论文 Asynchronous RL 框架（Python · Apache-2.0 · Critic-Free 单 rollout + token importance sampling + Sequence Trust Region + Sample-Mean Optimization + 整合 Molt 异步训练 + R1 / Qwen2.5-Math pinned launcher + ALFWorld 设置）· 0xjohnnydev/airlift 1 天 33⭐ ⑂2 iOS 27.0 RC AirTraffic 沙箱逃逸 PoC（Objective-C · NOASSERTION · /var/mobile/Media/Airlock/Book ATAirlock 路径校验漏洞 + MobileDevice.framework + AirTrafficHost + paired-Mac Wi-Fi/USB 触发 + 已验证 12 个目录写权限 + Books 同步链 NSFileManager follow symlink）· FelixQiu1/XiaoAi-LLM-Router 1 天 20⭐ MIT 老旧小米小爱同学升级 DeepSeek/Ollama 本地智能管家网关（Python · LiteLLM 100+ 供应商统一接口 + MiService 拦截 + MiTTS 切句播放 + 唤醒词路由 + 多轮对话记忆 session + Docker Compose 一键部署 + Ollama 模式链路不出局域网）· ToolMonsters/claude-code-routing 1 天 19⭐ ⑂3 Spotify Portal 90% Claude Code token 削减开源复现（HTML · MIT · code-write Haiku 直写盘 + bulk-read 整文件读 Haiku + PreToolUse 350 行阻断 hook + 4 个 psf/requests 复现基准 + Opus 5 实际成本对比）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [zorrobyte/asset-studio](projects/asset-studio.md) | 33 stars | 工具型 |
-| [ivyfan-toowell/IvyClaw](projects/ivyclaw.md) | 52 stars | 平台候选 |
-| [Speedstu/CUDA-for-AMD-Windows](projects/cuda-for-amd-windows.md) | 55 stars | 工具型 |
-| [Dr-TSNG/altdb](projects/altdb.md) | 53 stars | 工具型 |
+| [Matthew0822/ToolReplay](projects/toolreplay.md) | 171 stars | 工具型 |
+| [yifanzhang-pro/FlashREINFORCE](projects/flashreinforce.md) | 39 stars | 生产可用 |
+| [0xjohnnydev/airlift](projects/airlift.md) | 33 stars | 工具型 |
+| [FelixQiu1/XiaoAi-LLM-Router](projects/xiaoai-llm-router.md) | 20 stars | 工具型 |
+| [ToolMonsters/claude-code-routing](projects/claude-code-routing.md) | 19 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **local-text-to-3d-pipeline / 端到端本地文本→3D 游戏资产生成管道——zorrobyte/asset-studio 1 天 33⭐ ⑂8 fork/star 24.2%（Python · 0BSD · Qwen-Image-2512 文生图参考图 → Pixal3D/TRELLIS.2 高细节模型 → Blender/meshoptimizer 自动优化 LOD 与碰撞 → FastAPI + CLI + MCP 三接口 · RTX 5090 单卡验证 · Godot/Unity/Blender 直接 drop-in · manifest.json 任务级追溯 · 76 MB repo）** · 相关项目：zorrobyte/asset-studio · 强度：90
-2. **production-multi-agent-swe / 中文生产级多智能体软件研发 Agent——ivyfan-toowell/IvyClaw 1 天 52⭐ ⑂3 fork/star 5.8%（Python · 无 license · DeepAgents + LangGraph · Planner/Researcher/Coder/Tester/Reviewer 五角色编排 · Git/pytest/Web Search/MCP 真实工具调用 · Docker/Daytona 双沙箱 · PostgreSQL + LangGraph Checkpointer/Store 状态持久化 · Redis + ARQ Worker 异步长任务 · 多模型路由 · HITL 高危工具人工审批 · 多渠道 CLI/FastAPI/飞书 WS/Webhook · API Key + 租户 + 限流 + 幂等 + 审计 · LangSmith + Prometheus + Grafana 可观测 · Mermaid 架构图）** · 相关项目：ivyfan-toowell/IvyClaw · 强度：86
-3. **cross-vendor-cuda-compat / 跨 GPU 厂商 CUDA 兼容层——Speedstu/CUDA-for-AMD-Windows 1 天 55⭐ ⑂1 fork/star 1.8%（PowerShell + ZLUDA v6-preview.69 · NOASSERTION · AMD HIP SDK 6.4 · LibTorch 2.3.0 + cu118 · Windows x64 · AMD RX 9060 XT gfx1200 唯一验证硬件 · nvcuda/cuBLAS/cuBLASLt/cuSPARSE/cuFFT 全 pass cuda_check · 220 万参数 PPO 网络 forward/inference/PPO learning/optimizer 全链路 · 65 536 timesteps 单次 validation · install.ps1 自动检测 + 验证 + 下载 + 校验）** · 相关项目：Speedstu/CUDA-for-AMD-Windows · 强度：84
-4. **kernelsu-wireless-adb / KernelSU 无线 ADB 模块——Dr-TSNG/altdb 1 天 53⭐ ⑂5 fork/star 9.4%（Rust · Apache-2.0 · KernelSU v3.2.5+ · Android 11+ ARM64 · 六位配对码 + TLS · Wi-Fi/热点/Ethernet IPv4 · 排除蜂窝与 VPN · shell/file/install/logs/reboot/forward-reverse port · USB/无线调试开启自动暂停 · WebUI 中英双语 · 持久化配对记录 · 不动系统 adbd 授权）** · 相关项目：Dr-TSNG/altdb · 强度：82
+1. **agent-transcript-audit / Coding Agent 工具调用会话审计 CLI——Matthew0822/ToolReplay 1 天 171⭐ ⑂18 fork/star 10.5%（Python · MIT · seal/replay/verify/scope/version 五命令 · hash-chain 封存 + canonical JSON 编码比较 deterministic + state-change mutator 识别 redundant + 外部声明权限 scope 文件比对 overreach · Python 3.11+ 零三方依赖 · samples/session-dirty.jsonl 单一六行样本覆盖三类 finding · exit code 1 标记有 finding · 报告顺序稳定到 byte-identical · 464KB repo · 与昨日 tracecrate/birdview/ccompactor 同构 AI Coding 可观测栈第七件套「session 层审计」）** · 相关项目：Matthew0822/ToolReplay · 强度：92
+2. **async-agentic-rl-framework / NVIDIA FlashREINFORCE Asynchronous Agent RL 框架——yifanzhang-pro/FlashREINFORCE 1 天 39⭐ ⑂3（Python · Apache-2.0 · flashreinforce/loss.py 参考实现含 batch centering + token IS + sequence trust + sample mean + entropy-based failure-token filter · scripts/train_molt.py Molt 异步训练 launcher · R1 / Qwen2.5-Math reasoning + Python tools + MoE + ALFWorld 实验设置 · docs/training.md GPU/data/命令/paper-to-code 映射 · pip install -e '.[test]' + pytest · 701KB repo · 官方代码仓 NVIDIA-NeMo/labs-molt）** · 相关项目：yifanzhang-pro/FlashREINFORCE · 强度：86
+3. **ios27-airtraffic-sandbox-escape / iOS 27.0 RC AirTraffic 沙箱逃逸 PoC——0xjohnnydev/airlift 1 天 33⭐ ⑂2（Objective-C · NOASSERTION · MobileDevice.framework + AirTrafficHost.framework 链路 · com.apple.streaming_zip_conduit → afc → atc → AirTrafficDevice → Books sync client → ATLegacyAssetLink → ATAirlock → NSFileManager 12 个目录写权限已验证 · -[ATAirlock processCompletedAsset:] 仅校验 destination 字符串前缀未验证 source · ancestor symlink 跟随 · Books "Persistent ID" 无路径校验 · 仅声明 PoC 给开发者与安全研究者 · iOS 27.0 RC 24A435 + final 24A437 验证）** · 相关项目：0xjohnnydev/airlift · 强度：84
+4. **xiaoai-local-llm-gateway / 老旧小米小爱同学升级 DeepSeek/Ollama 本地智能管家网关——FelixQiu1/XiaoAi-LLM-Router 1 天 20⭐（Python · NOASSERTION · MiService 拦截小爱收音 + LiteLLM 100+ 供应商统一接口 + MiTTS 切句播放回小爱 · 多轮对话记忆按 device + 时间窗 TTL 默认 10 分钟 max_turns 10 · 唤醒词路由「请问 / 深思」命中才走 LLM · Ollama 模式链路不出局域网 · docker compose up -d 一键部署 · config.yaml 切换 deepseek/ollama/openai/claude 同套唤醒词记忆 · 20KB repo · 与昨日 tracecrate/maskit 本地 AI Coding 工具链三件套同构「本地 + 自带 key」反 SaaS 范式推到智能音箱领域）** · 相关项目：FelixQiu1/XiaoAi-LLM-Router · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
-| [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 
 ## 为什么做这个项目
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-14.md">Latest report</a> ·
+  <a href="daily/2026-09-15.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-14
+## Latest report · 2026-09-15
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 587 | 4 | 10k+ |
+| 5 | 592 | 4 | 9k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [zorrobyte/asset-studio](projects/asset-studio.md) | 33 stars | 工具型 |
-| [ivyfan-toowell/IvyClaw](projects/ivyclaw.md) | 52 stars | 平台候选 |
-| [Speedstu/CUDA-for-AMD-Windows](projects/cuda-for-amd-windows.md) | 55 stars | 工具型 |
-| [Dr-TSNG/altdb](projects/altdb.md) | 53 stars | 工具型 |
+| [Matthew0822/ToolReplay](projects/toolreplay.md) | 171 stars | 工具型 |
+| [yifanzhang-pro/FlashREINFORCE](projects/flashreinforce.md) | 39 stars | 生产可用 |
+| [0xjohnnydev/airlift](projects/airlift.md) | 33 stars | 工具型 |
+| [FelixQiu1/XiaoAi-LLM-Router](projects/xiaoai-llm-router.md) | 20 stars | 工具型 |
+| [ToolMonsters/claude-code-routing](projects/claude-code-routing.md) | 19 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: zorrobyte/asset-studio
-2. **Signal 2** · score 86 · repositories: ivyfan-toowell/IvyClaw
-3. **Signal 3** · score 84 · repositories: Speedstu/CUDA-for-AMD-Windows
-4. **Signal 4** · score 82 · repositories: Dr-TSNG/altdb
+1. **Signal 1** · score 92 · repositories: Matthew0822/ToolReplay
+2. **Signal 2** · score 86 · repositories: yifanzhang-pro/FlashREINFORCE
+3. **Signal 3** · score 84 · repositories: 0xjohnnydev/airlift
+4. **Signal 4** · score 78 · repositories: FelixQiu1/XiaoAi-LLM-Router
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-14.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-15.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 | [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
-| [2026-09-07](daily/2026-09-07.md) | 10 | 6 |
 
 ## Why this repository exists
 
