@@ -58,7 +58,39 @@
 <li><strong>零三方运行时依赖</strong>——<code>pip install .</code> 仅装 console script；适合作为合规管线中的一个步骤</li>
 <li><strong>samples/session-dirty.jsonl 单一六行样本</strong>——同时覆盖三类 finding 的最小可复现证据</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Coding Agent 工具调用会话审计 CLI；输入 transcript (JSONL) + 可选 scope 文件；输出 finding 列表 + hash-chain sealed JSONL；零三方依赖零网络访问；五命令独立可组合</td>
+<td>来自 README 关于「seal/replay/verify/scope/version 五命令」「Python 3.11+」「dependency-free」「no network access」「canonical JSON 编码」「state-change mutator 识别」「external scope file」的明示；具体 canonical JSON 编码细节、mutator 工具列表、scope 文件 schema 在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>输入 transcript → strict 解析 → canonical JSON 编码构建调用指纹 → replay 命令：第一次见到调用记录响应，重复见到不同响应判 non-determinism 且首个分歧索引即 divergence point；同指纹 + 中间无 mutator 判 redundant；scope 命令：外部 scope 文件比对每次调用的 tool name 是否在声明范围</td>
+<td>主路径来自 README 描述的三个 finding 维度 + samples/session-dirty.jsonl 六行样本；三类 finding 的具体边界（canonical JSON 字段范围、mutator 判定规则、scope 文件 JSON schema）待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>静态审计 vs 运行时插桩（零运行时开销 vs 漏掉未记录的调用）/ canonical JSON 编码 vs 原始字符串（精度 vs 鲁棒性）/ strict 解析 vs 容错（清晰 vs 易用）/ 外部 scope 文件 vs 内嵌声明（解耦 vs 紧耦合）/ 零三方依赖 vs 功能丰富（轻 vs 重）</td>
+<td>权衡五因素均从 README + repo 元数据推导；具体 canonical JSON 实现细节、scope 文件 schema 严格度、与其他 Coding Agent transcript 格式的兼容性待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Python 3.11+ + samples/session-dirty.jsonl + samples/scope.json（已随仓库提供）；运行 <code>python -m toolreplay replay samples/session-dirty.jsonl</code> 观察三类 finding + divergence + exit code 1；再运行 <code>python -m toolreplay scope samples/session-dirty.jsonl samples/scope.json</code> 观察 permission-overreach；最后 <code>python -m toolreplay seal</code> 输出 hash-chain sealed JSONL + <code>python -m toolreplay verify</code> 重算 chain</td>
+<td>PoC 由「五命令 + samples/session-dirty.jsonl 六行样本 + samples/scope.json 配套」路径推导；具体 scope 文件 JSON schema、canonical JSON 编码细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>ToolReplay 的核心启发是 <strong>「静态审计优先于运行时插桩」</strong>。现代系统监控主流是「运行时插桩」（tracing / metrics / logs），但<strong>对 Coding Agent transcript 这种「最终输出」做静态审计</strong>有独特优势：<strong>(a) 零运行时开销</strong>——不需要在 agent 执行路径上插桩；<strong>(b) 可后置审查</strong>——即使 agent 已运行完毕，仍可对 transcript 做审计；<strong>(c) 独立可信</strong>——审计工具与 agent 运行解耦，避免「agent 既当运动员又当裁判员」的循环依赖；<strong>(d) 合规友好</strong>——hash-chain 封存 + 断链检测是 SOC2 审计关心的「不可篡改证据」标准形态。更深层的启发是 <strong>「session 层可观测」是 AI Coding 工具链的第七个维度</strong>——之前 6 件套（maskit 出网层 + routeVSCODE 路由层 + Baize agent loop 层 + tracecrate 时序层 + birdview 架构层 + ccompactor session 互操作层）缺一个「session 层可信审计」维度；ToolReplay 补齐了。<strong>「cheap model 当 worker + Claude 当 orchestrator」标准模式 + 7 件套 AI Coding 工具链</strong>意味着 agent 可观测生态正走向成熟。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -85,9 +117,9 @@
   CI -.调用.-> ScopeChk
   CI -.调用.-> Verify1
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（agent 会话审计 CLI）。</strong> ToolReplay 不是 tracecrate 类时序回放工具，不是 birdview 类架构图工具，不是 ccompactor 类 session 互操作工具，而是 <strong>「session 层可信审计」</strong> 的最小可用工具——这是 AI Coding 工具链 7 件套中缺失的一环。它的价值不在于「功能多」，而在于 <strong>「单一职责 + 零依赖 + 合规友好 + 可独立部署」</strong>。对企业 SDLC 团队，这是 PR 检查流程中可直接集成的合规步骤；对个人开发者，这是「验证我的 agent 是否做了它声称做的事」的最小工具。<strong>与企业现有 SIEM / SOC 流程对接</strong>是清晰路径（hash-chain 封存可作为不可篡改证据存档）。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>canonical JSON 编码字段范围未完全公开</strong>——企业集成时需读源码确认</li>
 <li><strong>mutator 工具列表未完全公开</strong>——<code>read_file</code> 与 <code>write_file</code> 是示例，但完整 mutator 列表未在 README 给出</li>
@@ -97,7 +129,7 @@
 <li><strong>零三方依赖是双刃剑</strong>——轻 vs 功能丰富；未来若需 canonical JSON 库 / hash 库可能需用户自行提供</li>
 <li><strong>暂无 GitHub Actions CI</strong>——README 未提自动化测试 CI 状态</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs FankChen/tracecrate（昨日 2 天 92⭐）</strong>：tracecrate 是「时序回放」工具（Claude Code/Codex/OTLP 日志可视化）；ToolReplay 是「静态审计」工具（对 transcript 做自洽性 / 冗余 / 权限检查）——<strong>互补</strong></li>
 <li><strong>vs Qiuner/birdview（昨日 1 天 68⭐）</strong>：birdview 是「架构层可视化」工具（evidence-linked 架构图）；ToolReplay 是「session 层可信审计」工具——<strong>正交维度</strong></li>
@@ -106,9 +138,9 @@
 <li><strong>vs ToolMonsters/claude-code-routing（今日 1 天 19⭐）</strong>：claude-code-routing 是「路由层成本优化」工具（cheap model 当 worker）；ToolReplay 是「session 层可信审计」工具——<strong>AI Coding 工具链不同维度</strong></li>
 <li><strong>vs 各 Agent 官方 transcript 格式</strong>：Claude Code JSONL / Codex 日志 / Pi session 等是各 agent 平台的私有格式；ToolReplay 是「标准化的审计内核」——<strong>能否消费各平台私有 transcript 是关键</strong></li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（Coding Agent 会话审计赛道）。</strong> ToolReplay 代表了 AI Coding 工具链「session 层可信审计」的方向，无论其本身成败，这一方向是行业趋势。建议关注：<strong>(a) 主流 Coding Agent 官方 transcript 格式的兼容性</strong>（决定其实用价值）、<strong>(b) 是否被主流 Coding Agent 集成</strong>（决定其「事实标准」地位）、<strong>(c) hash-chain + permission overreach 是否成为合规审计的事实标准</strong>（决定其长期价值）。对企业 SDLC 团队，这个工具可直接集成进 PR 检查流程——值得立即评估集成可行性。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>canonical JSON 编码 / mutator 工具列表 / scope 文件 schema 三个细节的完整公开</li>
 <li>主流 Coding Agent（Claude Code / Codex / Pi / OpenCode）官方 transcript 格式的支持</li>

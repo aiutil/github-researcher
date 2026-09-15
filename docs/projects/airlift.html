@@ -60,7 +60,39 @@
 <li><strong>PoC 意图明示</strong>——「there are always more bugs 🔥🪲4⃣☃️」的反 burn-for-clout 立场；明确「simple proof-of-concept for developers and security researchers」</li>
 <li><strong>Objective-C + NOASSERTION + 33⭐ / fork 2 / 123 KB</strong>——「安全研究 PoC」典型形态（小、专、目标明确）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>iOS 27.0 RC + paired Mac + Books sync 启用场景；macOS 侧 MobileDevice.framework + AirTrafficHost.framework；iOS 侧 streaming_zip_conduit → afc → atc → AirTrafficDevice → Books sync client → ATLegacyAssetLink → ATAirlock → NSFileManager；沙箱逃逸 12 个目录写权限已验证；reads indirect（移动已知文件到 Media → AFC 读 → 移回）</td>
+<td>来自 README 关于「12 个目录」「- [ATAirlock processCompletedAsset:] 字符串前缀校验」「ancestor symlink 跟随」「iOS 27.0 RC 24A435 + final 24A437」「no iOS app required」的明示；具体漏洞利用代码（移动 symlink + 触发 Books sync 的 Objective-C 源码）、NSFileManager 默认行为细节、MobileDevice.framework 在 paired Mac 侧的具体调用在 README 中未完整给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>paired Mac + Books sync enabled → 构造 symlink + Books 「Persistent ID」→ 触发 AirTraffic sync → ATAirlock <code>-[processCompletedAsset:]</code> 取 asset.identifier 无校验直接拼接到 source 路径 → 取 asset.path（FileComplete.AssetPath 控制）拼接到 destination 路径 → 仅校验 destination 字符串前缀未校验 source → <code>[NSFileManager moveItemAtPath:source toPath:destination]</code> 跟随 ancestor symlink → 写入 12 个目录之一</td>
+<td>主路径来自 README 关于漏洞利用流程的明示；具体 Objective-C PoC 代码（移动 symlink + 触发 Books sync 的实现细节）在本档案未读取；每个步骤的具体函数调用待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>公开 PoC（教育 + 推动修复 vs 给攻击者武器化）/ 仅 Books 同步场景（聚焦 vs 攻击面窄）/ 不工作于 MobileGestalt plist（数据读写可 vs 设备控制不可）/ iOS 27.0 RC + final（早期补丁窗口 vs 已公开补丁窗口）/ Objective-C 实现（Apple 栈原生 vs 复杂 PoC 工程）</td>
+<td>权衡五因素均从 README 推导；具体 Apple Security 是否已收到报告、ETA 修复时间、patched iOS 版本号、其他 Books 同步路径变种待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>macOS + Xcode + paired iPhone（iOS 27.0 RC 24A435 或 final 24A437）+ 启用 Books sync + Objective-C 编译 PoC；触发条件：构造 symlink + 触发 AirTraffic sync；验证：写入 <code>/var/mobile/Library/Preferences</code>（最敏感目录之一）+ 读取 indirect（移动已知文件到 Media → AFC 读 → 移回）；不应尝试 MobileGestalt plist（README 明示当前不工作）</td>
+<td>PoC 由「12 个目录验证 + paired Mac + Books sync + Objective-C 漏洞利用代码」路径推导；具体 PoC 编译步骤、symlink 构造细节、AFC 命令行调用待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>airlift 的核心启发是 <strong>「iOS 沙箱路径校验的反模式」</strong>——path traversal 类的经典漏洞。<code>-[ATAirlock processCompletedAsset:]</code> 的 <code>destination</code> 校验是 <strong>「字符串前缀 + 未验证 source + 跟随 ancestor symlink」</strong> 的组合——这是教科书级的反模式。Apple 框架层正确做法应是 <strong>「realpath 解析 + sandbox token 校验 + source 独立验证」</strong> 三件套，而非简单的字符串前缀。更深层的启发是 <strong>「paired Mac + 默认服务（Books sync）是 iOS 沙箱逃逸的高暴露面」</strong>——任何开启 Mac-iPhone Books 同步的用户都暴露于本 PoC 的攻击面；这意味着 iOS 沙箱逃逸不必依赖物理接触或 0-day 漏洞链，仅「默认服务启用」即可触发。<strong>MobileGestalt plist 当前不工作</strong>限制了设备配置修改能力（无法直接绕过 Activation Lock），但 <strong>12 个目录的写权限已足以造成数据泄露 / 篡改 / 持久化</strong>。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -96,9 +128,9 @@
   Books -. Persistent ID 无路径校验 .-> Airlock
   Fm -.间接 read .-> Afc
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（iOS 安全研究 PoC）。</strong> airlift 不是武器化工具，而是 <strong>「开发者与安全研究者了解 AirTraffic / ATAirlock / Books 同步链路边界设计缺陷」的最小可复现 PoC</strong>。它的价值不在于「利用价值」，而在于 <strong>「漏洞模式公开化 + 推动 Apple Security 修复」</strong>。对 Apple Security 团队：这是应该直接对应修复的清晰漏洞模式；对 iOS 安全研究者：这是 2026 Q3 公开的最具体 iOS 27 沙箱绕过案例；对企业 iOS 管理员：这是「应暂时关闭 Books 同步直到补丁」的明确信号。<strong>NOASSERTION 许可 + 反 burn-for-clout 立场</strong>是 PoC 公开的负责任态度。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>NOASSERTION 许可</strong>——合规扫描拒绝；安全研究 PoC 典型但企业直接采用有风险</li>
 <li><strong>漏洞利用窗口期</strong>——若 Apple Security 未收到报告则漏洞持续暴露；若已收到则补丁窗口期内是攻击高发期</li>
@@ -108,7 +140,7 @@
 <li><strong>公开 PoC 风险</strong>——任何 paired Mac + Books sync 启用用户在补丁发布前暴露</li>
 <li><strong>fork 2 / 1 天 / 123 KB</strong>——「学术 + 安全研究」圈层典型扩散速度，非大规模漏洞利用</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs 其他 iOS 沙箱逃逸 PoC</strong>：多数 iOS 沙箱逃逸研究在 iOS 17 后转向私下披露；airlift 是 2026 Q3 公开的最具体 iOS 27 沙箱绕过案例</li>
 <li><strong>vs Ian Beer / Google Project Zero iOS 研究</strong>：Google Project Zero 是 iOS 公开研究的标杆；airlift 是 iOS 27.0 RC 阶段的极简 PoC</li>
@@ -116,9 +148,9 @@
 <li><strong>vs KernelSU / unc0ver / checkra1n 等越狱工具</strong>：airlift 是数据读写 PoC 而非设备越狱；不涉及 Activation Lock 绕过或内核代码执行</li>
 <li><strong>vs Dr-TSNG/altdb（昨日 1 天 53⭐）</strong>：altdb 是 KernelSU 模块（无线 ADB 替代）；airlift 是 iOS 沙箱逃逸 PoC（系统服务漏洞）——<strong>不同安全研究类别</strong></li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（iOS 27.0 公开沙箱逃逸 PoC）。</strong> airlift 代表了 iOS 27.0 公开沙箱逃逸的清晰样本，无论其本身被利用程度，这一方向是 Apple Security 工作的关键输入。建议关注：<strong>(a) Apple Security 是否已收到报告 + 补丁窗口期</strong>（决定实际攻击窗口）、<strong>(b) PoC 是否被扩展到 MobileGestalt plist 或其他 AirTraffic 同步路径</strong>（决定威胁面扩展）、<strong>(c) iOS 27.0.x 后续补丁是否修复此漏洞模式</strong>（决定 Apple Security 响应速度）。对企业 iOS 管理员：在补丁发布前应暂时关闭 Books 同步。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>Apple Security 补丁版本号与发布时间</li>
 <li>PoC 是否被扩展到其他 AirTraffic 同步路径（Music / Photos / etc.）</li>

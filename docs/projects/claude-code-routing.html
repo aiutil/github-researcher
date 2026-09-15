@@ -59,7 +59,39 @@
 <li><strong>诚实信号</strong>——README 主动标注 S2 反例（$0.85 with vs $0.74 without，「with 略贵」）避免读者误读为「所有场景都省钱」</li>
 <li><strong>MIT 许可 + 193 KB repo</strong>——可直接复现的成本优化工具标准形态</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>plain Claude Code CLI 之上的 cheap model 路由层；输入 Claude Code 任务；输出低成本执行（Haiku 处理 reading/boilerplate，Claude Opus 5 处理 thinking）；含 bin/code-write + bin/bulk-read scripts + hooks/block-big-reads.sh PreToolUse hook + skills/code-write + skills/bulk-read Skills 调度指令 + benchmark/ 4 场景</td>
+<td>来自 README 关于「bin/code-write Haiku 直写盘可预测代码」「bin/bulk-read Haiku 整文件读返回 bullets」「hooks/block-big-reads.sh PreToolUse 350 行阻断」「skills/code-write / skills/bulk-read」「benchmark/ 4 场景 psf/requests」的明示；具体 Haiku 模型版本、Opus 5 token 单价、Skills 调度协议细节待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户提交 Claude Code 任务 → Claude Opus 5 orchestrator → skills/code-write 调度 bin/code-write（Haiku 写测试/type stub/config 直写盘）或 skills/bulk-read 调度 bin/bulk-read（Haiku 整文件读返回 dense bullets）→ PreToolUse hook 350 行阻断引导用上述 scripts → Claude Opus 5 用 ranged reads 精确取片段思考决策 → 回复 / 代码修改</td>
+<td>主路径来自 README 描述的「cheap model 当 worker + Claude 当 orchestrator」模式 + Spotify Portal 公开博客复现；具体 Skills 调度协议、Haiku 调用参数、Opus 5 vs Haiku token 单价比待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>cheap model 当 worker + Claude 当 orchestrator（成本省 vs 增加路由复杂度）/ plain Claude Code 不需 Portal（不绑 SaaS 平台 vs Spotify Portal 集成度更高）/ PreToolUse hook 350 行阻断（保护 Claude context vs 可能误阻断大文件读）/ S2 反例诚实标注（实测 vs cherry-pick）/ benchmark/ 4 场景仅 psf/requests 仓库（可复现 vs 场景覆盖窄）</td>
+<td>权衡五因素均从 README 推导；具体 Spotify Portal 博客原文版权、Haiku 模型可用性、PreToolUse hook 阻断阈值 350 是否调整、更多 benchmark 场景待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>macOS / Linux + Claude Code CLI 2.1.270 + Opus 5 + Haiku 模型可用 + git clone + cd claude-code-routing &amp;&amp; ./install.sh（自动复制 scripts + hook + skills 到 ~/.claude 并备份 settings.json）+ 重启 Claude Code + 跑 benchmark/ 4 场景（inventory 110/110 classes + raise-except 跨 1155+625 行）+ 对比 without 成本 vs with 成本</td>
+<td>PoC 由「git clone + install.sh + benchmark/ 4 场景」路径推导；具体 Haiku 模型可用性、benchmark/ 数字验证、S2 反例实测、Spotify Portal 博客原文版权待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>claude-code-routing 的核心启发是 <strong>「cheap model 当 worker + Claude 当 orchestrator」是 AI Coding 成本优化的标准模式</strong>。现代 AI Coding 系统的成本结构是「高 token 单价的 LLM 处理所有任务」，但<strong>绝大多数 token 消耗是「读 / 写 boilerplate」这种高 token 低思考的工作</strong>——把这类工作分离出去给 cheap model（Haiku / Gemini Flash / Llama 等）能显著降低成本且不损失质量。更深层的启发是 <strong>「plain Claude Code 不需 Portal」的复现路径</strong>——Spotify Portal 公开博客后，本仓库证明「不绑 SaaS 平台也能降本」；<strong>对企业</strong>：这是「内部可部署的降本方案」而非「依赖第三方 SaaS 平台」的关键差异。<strong>S2 反例（with 比 without 略贵）是诚实信号</strong>——说明不是所有场景都省钱，路由策略的适用场景需用户根据自身 workload 实测。<strong>PreToolUse hook + Skills 组合</strong>是 Claude Code 扩展机制的清晰示范——hook 强制阻断、Skills 引导调度，二者配合实现「cheap model worker + Claude orchestrator」的协调。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -89,9 +121,9 @@
   Benchmark -.对比.-> WithoutCost[without 路由成本]
   Benchmark -.对比.-> WithCost[with 路由成本]
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（AI Coding 成本优化工具）。</strong> claude-code-routing 不是又一个 AI Coding 客户端（那是 Aider / Cursor / Claude Code 等），而是 <strong>「plain Claude Code 之上叠加 cheap model 路由层的成本优化工具」</strong>。它的价值不在于「功能多」，而在于 <strong>「可复现 + 可实测 + 诚实标注」</strong> 三件套。对 Claude Code 重度用户：这是「直接克隆 + install.sh + 跑 4 个 benchmark 验证成本节省比」的最简路径；对企业 IT 团队：这是「内部可部署的降本方案」而非「依赖第三方 SaaS 平台」的关键差异。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>S2 反例（with 比 without 略贵）说明不是所有场景都省钱</strong>——路由策略的适用场景需用户实测</li>
 <li><strong>依赖 plain Claude Code CLI + Haiku 模型可用性</strong>——若 Haiku 不可用需切其他 cheap model（<code>CHEAP_MODEL</code> 环境变量可配）</li>
@@ -101,7 +133,7 @@
 <li><strong><code>bin/code-write</code> 写可预测代码（测试 / type stub / config）但不写创造性代码</strong>——路由策略仅对 boilerplate 工作有效</li>
 <li><strong>193 KB repo + 仅 README + Scripts + Skills 形态</strong>——不是「大项目」而是「配置 + Scripts + Skills」形态</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Spotify Portal</strong>：Portal 是 Spotify 内部 SaaS 平台 + Gemini Flash；claude-code-routing 是 plain Claude Code + Haiku 复现——<strong>不依赖 SaaS 平台</strong></li>
 <li><strong>vs oil-oil/oil-codex-title（今日 1 天 24⭐）</strong>：oil-codex-title 是独立 Luna Fast 后台命名话题（不污染主对话）；claude-code-routing 是 cheap model 处理 reading/boilerplate——<strong>AI Coding 工具链不同维度</strong></li>
@@ -109,9 +141,9 @@
 <li><strong>vs 昨日 ToolMonsters/claude-code-routing 复现历史</strong>：本仓库是 2026-09-14 创建的复现版本——<strong>完整复现 1 天 19⭐</strong></li>
 <li><strong>vs Aider / Cursor / Claude Code</strong>：这些是 AI Coding 客户端；claude-code-routing 是 plain Claude Code 之上的路由层——<strong>叠加层</strong></li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（AI Coding 成本优化工具赛道）。</strong> claude-code-routing 代表了「cheap model 当 worker + Claude 当 orchestrator」AI Coding 成本优化的标准模式，无论其本身成败，这一方向是行业趋势。建议关注：<strong>(a) 是否被 Claude Code 官方集成</strong>（决定其「事实标准」地位）、<strong>(b) cheap model 路由策略是否扩展到其他 AI Coding 客户端</strong>（决定模式可推广性）、<strong>(c) Spotify Portal 后续博客是否进一步公开细节</strong>（决定可复现深度）。对 Claude Code 重度用户：值得立即评估成本节省比。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>是否被 Claude Code 官方集成（类似 settings.json 标准化）</li>
 <li>cheap model 路由策略是否扩展到其他 AI Coding 客户端</li>

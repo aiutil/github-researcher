@@ -61,7 +61,39 @@
 <li><strong><code>pip install -e '.[test]' + python -m pytest -q</code></strong>——可测试的工程化形式</li>
 <li><strong>Apache-2.0 + NVIDIA 团队 + 701 KB repo</strong>——工业级严肃度的论文参考实现</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>论文参考实现 + Molt 异步训练 launcher；输入 prompt + 工具调用环境；输出 policy 更新；与官方 NVIDIA-NeMo/labs-molt 主仓形成「论文参考实现 + 生产训练栈」分工</td>
+<td>来自 README 关于「standalone PyTorch reference loss + CPU update example + pinned Molt launchers + R1/Qwen2.5-Math + reasoning/Python tools/MoE/ALFWorld 实验设置」「docs/training.md 含 GPU setup + paper-to-code 映射 + 复现局限」的明示；具体 token IS 数学公式、sequence trust region 边界值、entropy filter 阈值在 loss.py 中可能给出，本档案未读源码</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>输入 prompt → 单 rollout（生成一次轨迹）→ token IS 修正（重要性采样）→ sequence trust region（序列级 trust region 控制累积 policy drift）→ sample mean 优化（用样本均值避免长失败轨迹主导）→ 可选 entropy-based failure-token filter（基于熵过滤失败 token）→ policy 更新</td>
+<td>主路径来自 README 描述的三个核心机制 + loss.py 五个组件；每个组件的具体公式（trust region 阈值、sample mean 实现、entropy filter 计算方式）待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>critic-free（少一份算力 + 少一个失败点 vs 单 rollout 估计方差大）/ 单 rollout（算力省 vs 多 rollout 估计基线更稳）/ 异步（Molt 解耦吞吐 vs 同步训练更易调试）/ trust region（控制 drift vs 限制更新速度）/ sample mean（避免失败主导 vs 对长成功轨迹不公平）</td>
+<td>权衡五因素均从 README 推导；具体 trust region 数学形式、IS 重要性采样分布定义、sample mean vs weighted sum 的实际差距在论文中给出，本档案未读论文</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Python 3.11+ + PyTorch + Molt（NVIDIA-NeMo/labs-molt）→ <code>pip install -e '.[test]'</code> → <code>python examples/toy_update.py</code>（CPU 验证优化器更新 step）+ <code>python -m pytest -q</code>（单元测试）；再 GPU 跑 <code>python scripts/train_molt.py --dry-run</code> 预览 flags；最后用 R1 或 Qwen2.5-Math launcher 跑 reasoning 实验</td>
+<td>PoC 由「pip install + CPU example + pytest + Molt launcher + 4 实验设置」路径推导；具体 GPU 显存需求、CUDA 版本、Molt 集成细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>FlashREINFORCE 的核心启发是 <strong>「REINFORCE 类方法在 agentic LLM 上的回归」</strong>。现代 RL 训练主流是 PPO / GRPO 等使用 critic 或 advantage baseline 的方法，但 critic 训练本身是额外算力开销 + 额外失败点。FlashREINFORCE 的论文级主张是 <strong>「token importance sampling + sequence trust region + sample mean + 可选 entropy filter」</strong> 四件套可以替代 critic 的统计功能——这是对 critic-based 范式的实质性简化。对工程团队的直接影响：<strong>减少一个训练组件 = 减少一份算力预算 + 减少一个潜在失败点</strong>。更深层的启发是 <strong>「学术参考实现与生产训练栈的清晰分工」</strong>——本仓库（论文参考实现 + launcher）与官方 NVIDIA-NeMo/labs-molt（生产训练栈）形成两层架构：研究者读本仓库改公式，生产者用主仓跑训练。这是 NVIDIA 在 agentic LLM RL 训练领域的工业级布局。<strong>「critic-free + 单 rollout」是否在大规模训练中被工业界接受</strong>是论文价值的最终判断点。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -90,9 +122,9 @@
   Docs[docs/training.md<br/>GPU setup + paper-to-code<br/>复现局限] -.指导.-> Molt
   Test[pytest 单元测试] -.验证.-> Loss
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>生产可用（论文参考实现 + 训练 launcher）。</strong> FlashREINFORCE 不是又一个 RL 算法库（那是 Hugging Face TRL / Stable Baselines3），而是 <strong>「论文作者团队直接把论文公式写成可读 PyTorch 代码 + 整合 Molt 异步训练栈 + 提供四类实验设置 + 主动标注复现局限」</strong> 的工程化形式。它与官方 NVIDIA-NeMo/labs-molt 形成清晰分工：本仓库是「论文参考 + launcher」，主仓是「生产训练栈」。对学术研究者，本仓库是「可读可改的公式实现」；对工业团队，本仓库是「评估 critic-free 是否值得迁移」的 PoC 起点。<strong>「critic-free + 单 rollout」在大规模训练中的实际表现</strong>是论文价值的最终判断点。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>「critic-free + 单 rollout」是否在大规模训练中被工业界接受是论文价值的关键</strong>——目前是 NVIDIA 团队论文级主张，第三方 benchmark 复现尚需时间</li>
 <li><strong>Molt 异步训练栈的可持续性依赖 NVIDIA-NeMo 团队更新节奏</strong>——本仓库与主仓同步演进是关键</li>
@@ -101,7 +133,7 @@
 <li><strong>依赖 NVIDIA-NeMo/labs-molt 主仓的稳定性</strong>——若主仓 API 变化本仓库需跟随更新</li>
 <li><strong>39⭐ / fork 3 / 1 天反映学术参考实现的早期信号</strong>——与 ToolReplay 171⭐ / 18 forks 的「企业 fork 信号」形成对比</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Hugging Face TRL</strong>：TRL 是综合 RL 训练库（PPO / GRPO / DPO 等）；FlashREINFORCE 是论文级 critic-free 范式专门参考实现</li>
 <li><strong>vs Stable Baselines3</strong>：SB3 是经典 RL 算法库（PPO / SAC / TD3 等）；FlashREINFORCE 是 agentic LLM 专用 RL 参考实现</li>
@@ -109,9 +141,9 @@
 <li><strong>vs NVIDIA-NeMo/labs-molt</strong>：主仓是生产训练栈；本仓是论文参考实现 + launcher——<strong>分工</strong></li>
 <li><strong>vs verl（Volcengine RL）</strong>：verl 是字节开源 RL 训练框架；FlashREINFORCE 是 NVIDIA 团队 critic-free 范式</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（NVIDIA agentic LLM RL 训练范式）。</strong> FlashREINFORCE 代表了 NVIDIA 在 2026 Q3 给出的「critic-free + 异步」工业级 RL 训练替代方案，无论其本身成败，这一方向是行业趋势。建议关注：<strong>(a) 「critic-free + 单 rollout」在大规模训练中的实际表现</strong>（决定论文价值）、<strong>(b) NVIDIA-NeMo/labs-molt 主仓的维护节奏</strong>（决定本仓可持续性）、<strong>(c) 第三方 benchmark 复现结果</strong>（决定论文可推广性）。对学术研究者，这是 REINFORCE 类方法在 agentic LLM 上的回归案例，值得深入研究；对工业 RL 团队，这是评估 critic-based 范式是否值得迁移的关键参考。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>「critic-free + 单 rollout」在大规模训练中的实际吞吐与质量对比</li>
 <li>NVIDIA-NeMo/labs-molt 主仓的更新节奏与 API 稳定性</li>

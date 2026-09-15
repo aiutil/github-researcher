@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-15.md">最新日报</a> ·
+  <a href="daily/2026-09-16.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-15
+## 最新研究 · 2026-09-16
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 592 | 4 | 9k+ |
+| 5 | 596 | 4 | 9k+ |
 
-**今日核心判断：** Matthew0822/ToolReplay 1 天 171⭐ ⑂18 fork/star 10.5% Agent 工具调用会话审计 CLI（Python · MIT · hash-chain 封存 + 确定性 replay + 权限越权 scope 检查 + 无三方依赖 + seal/replay/verify/scope/version 五命令 · 单一六行样本跑通 non-determinism + redundant-call + permission-overreach 三类 finding）· yifanzhang-pro/FlashREINFORCE 1 天 39⭐ ⑂3 NVIDIA 2026-09 论文 Asynchronous RL 框架（Python · Apache-2.0 · Critic-Free 单 rollout + token importance sampling + Sequence Trust Region + Sample-Mean Optimization + 整合 Molt 异步训练 + R1 / Qwen2.5-Math pinned launcher + ALFWorld 设置）· 0xjohnnydev/airlift 1 天 33⭐ ⑂2 iOS 27.0 RC AirTraffic 沙箱逃逸 PoC（Objective-C · NOASSERTION · /var/mobile/Media/Airlock/Book ATAirlock 路径校验漏洞 + MobileDevice.framework + AirTrafficHost + paired-Mac Wi-Fi/USB 触发 + 已验证 12 个目录写权限 + Books 同步链 NSFileManager follow symlink）· FelixQiu1/XiaoAi-LLM-Router 1 天 20⭐ MIT 老旧小米小爱同学升级 DeepSeek/Ollama 本地智能管家网关（Python · LiteLLM 100+ 供应商统一接口 + MiService 拦截 + MiTTS 切句播放 + 唤醒词路由 + 多轮对话记忆 session + Docker Compose 一键部署 + Ollama 模式链路不出局域网）· ToolMonsters/claude-code-routing 1 天 19⭐ ⑂3 Spotify Portal 90% Claude Code token 削减开源复现（HTML · MIT · code-write Haiku 直写盘 + bulk-read 整文件读 Haiku + PreToolUse 350 行阻断 hook + 4 个 psf/requests 复现基准 + Opus 5 实际成本对比）
+**今日核心判断：** wushi2333/dsh-computer-use_codex-style 1 天 15⭐ Codex-style Computer Use for DeepSeek Harness（Python · MIT · cordis.patch.yml DSH bundle · window2 13 方法 list_windows/get_window/list_apps/launch_app/get_window_state/click/press_key/type_text/scroll/set_value/drag/perform_secondary_action/activate_window 命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致 · SendInput 真实输入 + UI Automation 无障碍树 + Windows.Graphics.Capture 截屏可见于被遮挡窗口 · 状态 pill + 合成光标动画 overlay · Esc 中断 · per-app approvals · bundled skills · Chromium 自动化 · 与官方 experimental release 共存不冲突 · Windows 10/11 x64）· TopVitamin/agent-skills 1 天 11⭐ Codex Agent Skills 集合（JavaScript · MIT · vitamin-prototype-annotation 前端低侵入业务逻辑标注 · old-system-ui-clone DOM/CDP 证据复刻老系统后台 Page Map + 交互 + 视觉 QA · $skill-installer 集成 · Git ref 固定版本 · SKILL.md + scripts/requirements.txt 标准目录）· Tina2088/wechat-group-report 1 天 10⭐ Windows 微信群聊总结 Codex Skill（Python · Apache-2.0 · 微信 4.1.13.65 验证 · 按群名精确匹配 + 24h/48h/历史截止时间 + 已确认群 ID · 联系人库 + 消息分片 + WAL 增量 + 结构完整性检查 · 文本/引用/可解析卡片 · 每个报告条目引用本次真实消息编号 · 已确认/已接收/待完成/个人观点/报告建议分类 · cryptography + zstandard + Pillow · Python 3.13 · 中文字体微软雅黑 · 密钥临时解密副本正常退出清理 · 原微信数据库保持只读 · 默认不上传原始记录）· FLModel/flm 1 天 68⭐ ⑂13 Frozen Language Model × MaleCNS v1.0 苍蝇脑连接组（Python · OTHER · 166,700 保留节点 + 25,582,938 directed connections · 278,528 参数 adapter 训练 · Liquid AI LFM2.5-1.2B-Instruct 冻结 · token embeddings 驱动固定图 · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · SHA-256 校验上游文件 · 可选 C kernel 加速特征提取 SciPy 路径同语义 · 64 corpus + 32 synthetic style 训练 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v2/ 写一次不被覆盖 · /new 清空 /quit 退出交互聊天）· karanb192/awesome-claude-code-mods 1 天 10⭐ ⑂5 Claude Code Mods 自动 footprint 扫描 awesome 列表（JavaScript · CC0-1.0 · Anthropic 2026-09-03 提出 2026-09-09 承诺发版 · CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 早期访问开关 · claude plugin validate 静态扫描每个 mod 钩子事件 + $ 调用 · 31 mods / 92 candidate repos · 14 跑 host 进程 / 4 写文件 / 7 读文件 / 4 触网 / 13 见所有 tool call / 11 见所有 prompt · L0/L1/L2/L3 reach 等级 · 每晚扫描刷新表格 + 徽章 + 得分页 · Claude Code 2.1.272 对照）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [Matthew0822/ToolReplay](projects/toolreplay.md) | 171 stars | 工具型 |
-| [yifanzhang-pro/FlashREINFORCE](projects/flashreinforce.md) | 39 stars | 生产可用 |
-| [0xjohnnydev/airlift](projects/airlift.md) | 33 stars | 工具型 |
-| [FelixQiu1/XiaoAi-LLM-Router](projects/xiaoai-llm-router.md) | 20 stars | 工具型 |
-| [ToolMonsters/claude-code-routing](projects/claude-code-routing.md) | 19 stars | 工具型 |
+| [wushi2333/dsh-computer-use_codex-style](projects/dsh-computer-use-codex-style.md) | 15 stars | 工具型 |
+| [TopVitamin/agent-skills](projects/agent-skills.md) | 11 stars | 工具型 |
+| [Tina2088/wechat-group-report](projects/wechat-group-report.md) | 10 stars | 工具型 |
+| [FLModel/flm](projects/flm.md) | 68 stars | 观察型 |
+| [karanb192/awesome-claude-code-mods](projects/awesome-claude-code-mods.md) | 10 stars | 观察型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **agent-transcript-audit / Coding Agent 工具调用会话审计 CLI——Matthew0822/ToolReplay 1 天 171⭐ ⑂18 fork/star 10.5%（Python · MIT · seal/replay/verify/scope/version 五命令 · hash-chain 封存 + canonical JSON 编码比较 deterministic + state-change mutator 识别 redundant + 外部声明权限 scope 文件比对 overreach · Python 3.11+ 零三方依赖 · samples/session-dirty.jsonl 单一六行样本覆盖三类 finding · exit code 1 标记有 finding · 报告顺序稳定到 byte-identical · 464KB repo · 与昨日 tracecrate/birdview/ccompactor 同构 AI Coding 可观测栈第七件套「session 层审计」）** · 相关项目：Matthew0822/ToolReplay · 强度：92
-2. **async-agentic-rl-framework / NVIDIA FlashREINFORCE Asynchronous Agent RL 框架——yifanzhang-pro/FlashREINFORCE 1 天 39⭐ ⑂3（Python · Apache-2.0 · flashreinforce/loss.py 参考实现含 batch centering + token IS + sequence trust + sample mean + entropy-based failure-token filter · scripts/train_molt.py Molt 异步训练 launcher · R1 / Qwen2.5-Math reasoning + Python tools + MoE + ALFWorld 实验设置 · docs/training.md GPU/data/命令/paper-to-code 映射 · pip install -e '.[test]' + pytest · 701KB repo · 官方代码仓 NVIDIA-NeMo/labs-molt）** · 相关项目：yifanzhang-pro/FlashREINFORCE · 强度：86
-3. **ios27-airtraffic-sandbox-escape / iOS 27.0 RC AirTraffic 沙箱逃逸 PoC——0xjohnnydev/airlift 1 天 33⭐ ⑂2（Objective-C · NOASSERTION · MobileDevice.framework + AirTrafficHost.framework 链路 · com.apple.streaming_zip_conduit → afc → atc → AirTrafficDevice → Books sync client → ATLegacyAssetLink → ATAirlock → NSFileManager 12 个目录写权限已验证 · -[ATAirlock processCompletedAsset:] 仅校验 destination 字符串前缀未验证 source · ancestor symlink 跟随 · Books "Persistent ID" 无路径校验 · 仅声明 PoC 给开发者与安全研究者 · iOS 27.0 RC 24A435 + final 24A437 验证）** · 相关项目：0xjohnnydev/airlift · 强度：84
-4. **xiaoai-local-llm-gateway / 老旧小米小爱同学升级 DeepSeek/Ollama 本地智能管家网关——FelixQiu1/XiaoAi-LLM-Router 1 天 20⭐（Python · NOASSERTION · MiService 拦截小爱收音 + LiteLLM 100+ 供应商统一接口 + MiTTS 切句播放回小爱 · 多轮对话记忆按 device + 时间窗 TTL 默认 10 分钟 max_turns 10 · 唤醒词路由「请问 / 深思」命中才走 LLM · Ollama 模式链路不出局域网 · docker compose up -d 一键部署 · config.yaml 切换 deepseek/ollama/openai/claude 同套唤醒词记忆 · 20KB repo · 与昨日 tracecrate/maskit 本地 AI Coding 工具链三件套同构「本地 + 自带 key」反 SaaS 范式推到智能音箱领域）** · 相关项目：FelixQiu1/XiaoAi-LLM-Router · 强度：78
+1. **dsh-computer-use-codex-style / Codex-style Computer Use for DeepSeek Harness——wushi2333/dsh-computer-use_codex-style 1 天 15⭐（Python · MIT · cordis.patch.yml DSH bundle 安装 · window2 13 方法完整覆盖（list_windows / get_window / list_apps / launch_app / get_window_state / click / press_key / type_text / scroll / set_value / drag / perform_secondary_action / activate_window）命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致 · SendInput 真实输入 + UI Automation 无障碍树 + Windows.Graphics.Capture 截屏可见于被遮挡窗口 · vision image parts 不嵌入 JSON base64 · 状态 pill + 合成光标动画 overlay · Esc 中断 · per-app approvals · bundled skills · Chromium 自动化 · 与官方 experimental release 共存不冲突 · Windows 10/11 x64 · 3.6 MB repo · 与昨日 ToolReplay「session 层审计」同构 AI Coding Agent 工具链扩张但推到「DeepSeek Harness 上的桌面控制」层）** · 相关项目：wushi2333/dsh-computer-use_codex-style · 强度：88
+2. **agent-skills-curated / 中文 Codex Agent Skills 集合——TopVitamin/agent-skills 1 天 11⭐（JavaScript · MIT · vitamin-prototype-annotation 前端低侵入业务逻辑标注 + old-system-ui-clone DOM/CDP 证据复刻老系统后台 Page Map + 交互 + 视觉 QA · $skill-installer 集成 + Git ref 固定版本 · SKILL.md + scripts/requirements.txt 标准目录约定 · 公开 URL / 本地页面用 Playwright · 登录态页面需 Chrome/CDP 路径 · 134 KB repo · 与昨日 Baize/skills/MCP 等 agent loop 协议层同构但推到「中文 + 可复用的具体 Skill 实例」层）** · 相关项目：TopVitamin/agent-skills · 强度：80
+3. **wechat-group-summary-skill / Windows 微信群聊总结 Codex Skill——Tina2088/wechat-group-report 1 天 10⭐（Python · Apache-2.0 · 微信 4.1.13.65 验证 · 按群名精确匹配 + 24h/48h/历史截止时间 + 已确认群 ID · 联系人库 + 消息分片 + WAL 增量 + 结构完整性检查 · 文本/引用/可解析卡片解析 · 每个报告条目引用本次真实消息编号 · 已确认/已接收/待完成/个人观点/报告建议分类 · cryptography + zstandard + Pillow + Python 3.13 · 中文字体微软雅黑 · 密钥临时解密副本正常退出清理 · 原微信数据库保持只读 · 默认不上传原始记录 · 802 KB repo · 与昨日 ToolReplay/tracecrate/birdview/ccompactor 「session 层工具链」同构但推到「本地微信数据库 + Codex Skill 编排」中文场景）** · 相关项目：Tina2088/wechat-group-report · 强度：82
+4. **frozen-lm-with-fly-connectome / Frozen LM × MaleCNS v1.0 苍蝇脑连接组适配——FLModel/flm 1 天 68⭐ ⑂13（Python · OTHER · 166,700 保留节点 + 25,582,938 directed connections · 278,528 参数 adapter 训练 · Liquid AI LFM2.5-1.2B-Instruct 冻结 · token embeddings 驱动固定图 · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · SHA-256 校验上游文件 · 可选 C kernel 加速特征提取 SciPy 路径同语义 · 64 corpus + 32 synthetic style 训练 · 24 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v2/ 写一次不被覆盖 · /new 清空 /quit 退出交互聊天 · fork/star 19.1% 是早期学术 + 研究信号 · 与昨日 FlashREINFORCE「NVIDIA 论文级严肃度」同构但推到「神经科学 + LLM 融合」研究领域）** · 相关项目：FLModel/flm · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 | [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
-| [2026-09-08](daily/2026-09-08.md) | 9 | 6 |
 
 ## 为什么做这个项目
 

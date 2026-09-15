@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-09-16 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-09-16-github">2026-09-16 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description 来自 2026-09-16 GitHub Search API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license）+ 各项目 README 公开摘录（API readme 字段 base64 解码）。"X 天 Y⭐"基于 created_at→2026-09-16 总星数除以经过天数（粗略下限估计），stargazers REST endpoint 需要认证故未做精确单日增量统计。<strong>今日观察窗为 2026-09-15 创建且截至 2026-09-16 仍在快速增长的 5 个非游戏类高质量工程型项目</strong>；09-16 当日新创仓库在 GitHub API 暴露窗口 &lt; 12 小时，本批重点放在 09-15 创建且仍持续增长的项目。<strong>本批 5 个项目的共同特征是「Agent 能力可插拔 + 严肃许可 + 强可复现证据」</strong>——dsh-computer-use_codex-style 把 Codex 的 window2 13 方法完整复刻到 DeepSeek Harness，agent-skills 把 Codex Skill 标准用具体 Skill 实例固化，wechat-group-report 把 Codex Skill 推到中文本地数据库场景，FLModel/flm 把 Frozen LM × 生物神经连接组做成可本地训练的 278K 参数 adapter，awesome-claude-code-mods 用 claude plugin validate 自动扫描每个 mod 的 footprint 并分 L0/L1/L2/L3 等级。<strong>"趋势"是基于公开元数据的观察，不等同于生产成熟度或长期价值</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-deepseek-harness-codex-style-computer-use-88">1. DeepSeek Harness 桌面控制层补齐「Codex-style Computer Use」（趋势分 88）</h3>
+<ul>
+<li><strong>wushi2333/dsh-computer-use_codex-style</strong>（1 天 15⭐ / fork 0 / fork/star 0% / MIT / 3.6 MB）——「Drive Windows desktop apps and Chromium tabs from DeepSeek Harness. Based on the Codex <code>window2</code> tool surface — the Codex-style Computer Use experience on DeepSeek Harness」；安装机制 <strong><code>cordis.patch.yml</code> DSH bundle</strong>；工具面 <strong>window2 13 方法完整覆盖</strong>（<code>list_windows</code> / <code>get_window</code> / <code>list_apps</code> / <code>launch_app</code> / <code>get_window_state</code> / <code>click</code> / <code>press_key</code> / <code>type_text</code> / <code>scroll</code> / <code>set_value</code> / <code>drag</code> / <code>perform_secondary_action</code> / <code>activate_window</code>）命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致；输入机制 <strong><code>SendInput</code> 真实输入 + <code>UI Automation</code> 无障碍树 + <code>Windows.Graphics.Capture</code> 截屏可见于被遮挡窗口</strong>；输出形式 <strong>vision image parts（不嵌入 JSON base64）</strong>；体验层 <strong>状态 pill + 合成光标动画 overlay + 隐藏单次截图时长</strong>；安全控制 <strong>per-app approvals（每个应用独立审批）+ Esc 中断</strong>；浏览器自动化 <strong>bundled skills + Chromium 自动化</strong>；<strong>与官方 DeepSeek Harness experimental Computer Use release 共存不冲突</strong>（同时安装但同一时间不推荐两个驱动并行）；目标平台 <strong>Windows 10 / 11 x64</strong>；<strong>基线 Codex 26.903.61454</strong>（Codex 内部版本号）。</li>
+<li><strong>核心价值定位：</strong> 当前 Coding Agent 工具链在过去 14 天集中在 <strong>「会话时序层（tracecrate）/ 架构层（birdview）/ session 互操作层（ccompactor）/ session 审计层（ToolReplay 9-15）/ agent loop 协议层（Baize）/ 出网层（maskit）」</strong>——但 <strong>「桌面控制层」</strong> 在 DeepSeek Harness 上仍属空白（Codex 官方 Computer Use 在 OpenAI Codex 已有 experimental release，但 DeepSeek Harness 用户无法直接复用 OpenAI 的 13 方法）。<strong>dsh-computer-use_codex-style 是「Codex window2 13 方法完整复刻到 DeepSeek Harness」</strong>——命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致，意味着 Codex 上已写好的 prompt / skill / hook 可零修改移植到 DeepSeek Harness。<strong>SendInput + UI Automation + Windows.Graphics.Capture 三件套</strong> 是 Windows 桌面自动化的工业标准组合（与 Apple 的 AX API / Linux 的 AT-SPI / Web 的 CDP 同级）；<strong>vision image parts 而非 base64 in JSON</strong> 是性能关键——base64 会让 JSON 膨胀 1.33x + 强制模型完整重读才能拿到像素信息。</li>
+<li><strong>架构亮点：</strong> <strong><code>cordis.patch.yml</code> DSH bundle 安装机制</strong>——DSH（DeepSeek Harness）的 bundle 标准是把补丁以 patch 文件形式分发，用户用 DSH 自带 apply 命令加载；这是「不修改 DSH 主程序就能加载 13 方法」的工程化形式；<strong>状态 pill + 合成光标动画 overlay + Esc 中断</strong> 是「用户可见 + 用户可控」的最小可信层——避免「agent 在桌面跑用户看不见也拦不住」的安全顾虑；<strong>per-app approvals</strong> 把「应用级权限」与「全局权限」区分开——Photoshop 一组审批 + Slack 一组审批 + Windows Settings 一组审批；<strong>bundled skills + Chromium 自动化</strong> 是「桌面 + 浏览器」双 surface 覆盖；<strong>与官方 experimental release 共存不冲突</strong> ——意味着 DeepSeek 官方未来推出 Computer Use 后，本仓库仍可作为「Codex 兼容层」长期使用。</li>
+<li><strong>价值判断：</strong> 它解决的是「DeepSeek Harness 用户能否在 Windows 桌面跑 Codex-style Computer Use」的真痛点（中国市场 DeepSeek 用户数远超 OpenAI Codex 用户数）；MIT 许可 + 3.6 MB repo 是「可独立部署的桌面控制内核」形态；<strong>15⭐ / fork 0 / 1 天相对低调反映早期信号</strong>（项目刚发布 12 小时曝光窗口）；<strong>决定长期价值的是与 DeepSeek 官方 Computer Use experimental release 的兼容策略</strong>——README 明示「coexistence-safe」是合理技术表态，但 DeepSeek 官方若推出 13 方法原生版，本仓库价值会被吸收；<strong>对企业</strong>：本仓库在 DSH 桌面控制层提供「与 Codex prompt 兼容」的工程方案；<strong>对个人开发者</strong>：可直接在 Windows + DeepSeek Harness 上跑 Codex-style Computer Use。</li>
+</ul>
+<h3 id="2-codex-agent-skills-80">2. 中文 Codex Agent Skills 标准实例（趋势分 80）</h3>
+<ul>
+<li><strong>TopVitamin/agent-skills</strong>（1 天 11⭐ / fork 0 / fork/star 0% / JavaScript / MIT / 134 KB）——「TopVitamin 面向 Codex 和其他兼容 Agent Skills 标准的工具，整理可复用的工作流 Skill」；<strong>两个具体 Skill</strong> —— <strong><code>vitamin-prototype-annotation</code></strong>（为 HTML / React / Vue 等前端原型添加低侵入的业务逻辑标注，让后续维护者快速理解「这一块是干什么的」）+ <strong><code>old-system-ui-clone</code></strong>（基于 DOM / CDP 证据复刻老系统、竞品后台和企业管理页面，并完成 Page Map、交互与视觉 QA）；安装机制 <strong><code>$skill-installer 从 GitHub 安装 TopVitamin/agent-skills 中的 skills/&lt;name&gt;</code></strong> + 可指定 Git ref 固定版本；目录约定 <strong>每个 Skill 位于 <code>skills/&lt;skill-name&gt;/</code> + 每个 Skill 必须包含 <code>SKILL.md</code> + 脚本/参考资料/示例/测试放在对应 Skill 目录内</strong>；浏览器能力 <strong><code>old-system-ui-clone</code> 公开 URL 或本地页面用 Playwright，登录态页面需要可访问用户会话的 Chrome / CDP 路径</strong>；依赖 <strong>Python 辅助脚本依赖见 Skill 内 <code>scripts/requirements.txt</code></strong>；<strong>MIT License</strong>。</li>
+<li><strong>核心价值定位：</strong> 当前 Coding Agent Skill 生态的痛点是 <strong>「awesome list 多但具体可用 Skill 少」</strong> ——awesome-claude-code-mods 列出 31 个 mod 但每个 mod 的「能做什么 + 怎么用 + 触发边界」缺具体实例；TopVitamin/agent-skills 提供两个具体 Skill 实例（<code>vitamin-prototype-annotation</code> + <code>old-system-ui-clone</code>）展示「什么是合规 Skill」「Skill 目录怎么组织」「Playwright / CDP 怎么集成」「Git ref 怎么固定版本」——这是 <strong>「Skill 标准 + 具体实例」</strong> 双层结构。<strong>对中文 Coding Agent 生态</strong>：TopVitamin 是少数 <strong>明确面向 Codex Skill 标准的中文 Skill 仓库</strong>——README 全中文 + 仓库组织遵循 Codex Skill 规范；这是「中国开发者用中国语言写中国 Skill 给中国 Coding Agent」的清晰路径。</li>
+<li><strong>架构亮点：</strong> <strong><code>vitamin-prototype-annotation</code></strong> 解决的是「前端原型如何不被『注释太少』拖慢维护」——给原型加低侵入业务逻辑标注（不是改源代码而是写附加说明）；<strong><code>old-system-ui-clone</code></strong> 解决的是「企业 IT 如何用 Coding Agent 复刻老后台」——基于 DOM/CDP 证据（Playwright 抓的结构 + Chrome DevTools Protocol 抓的行为）而非凭记忆或截图复刻，并完成 Page Map（页面地图）+ 交互（点击/表单流程）+ 视觉 QA（CSS 一致性）三件套；<strong><code>SKILL.md</code> + <code>scripts/requirements.txt</code> 标准目录</strong> 让 Skill 可移植（不同 Codex 安装目录都识别）；<strong>Git ref 固定版本</strong> 避免「今天跑得通明天跑不通」（Skill 更新引入 breaking change 时可指定旧版本）。</li>
+<li><strong>价值判断：</strong> 它解决的是「中文 Coding Agent Skill 标准 + 实例」的具体痛点；MIT + 134 KB + 两个具体 Skill 是「可被 Codex <code>$skill-installer</code> 直接安装」的标准形态；<strong>11⭐ / fork 0 / 1 天反映早期信号</strong>——Skill 标准生态刚起步；<strong>对中文 Coding Agent 用户</strong>：这是「中文 Skill + 中文文档 + 中文章节」的清晰路径；<strong>决定长期价值的是 <code>$skill-installer</code> 是否被 Codex 官方正式承认</strong>——目前 OpenAI Skills 文档列出「<code>~/.agents/skills</code>」个人目录（参考 <code>learn.chatgpt.com/docs/build-skills</code>），<code>$skill-installer</code> 命令是仓库自定义的安装机制；<strong>对企业</strong>：两个具体 Skill（前端标注 + 老系统复刻）是企业 IT 的真实需求场景。</li>
+</ul>
+<h3 id="3-codex-skill-windows-82">3. Codex Skill 推到「Windows 微信本地数据库 + 中文场景」（趋势分 82）</h3>
+<ul>
+<li><strong>Tina2088/wechat-group-report</strong>（1 天 10⭐ / fork 0 / fork/star 0% / Python / Apache-2.0 / 802 KB）——「一个可复用的 Codex Skill：读取 Windows 微信中指定群的本地已同步记录，整理主要话题、结论和待办，一次生成 <strong>PNG 长图、HTML 网页和 Markdown 摘要</strong>」；触发 <strong><code>使用 $wechat-group-report，读取"我的项目群"最近 48 小时记录，生成 PNG 和网页版总结报告</code></strong> ；架构 <strong>Codex 会话协调的工作流</strong>（Python 读取与渲染，Codex 理解并总结消息）；<strong>项目没有内置模型 API 调用、无人值守调度或自动发消息功能</strong>——避免「skill 自动发消息」的合规风险；功能 <strong>按群名精确匹配 + 默认 24 小时 + 可指定时长 / 历史截止时间 / 已确认的群 ID</strong> + 读取联系人库 + 消息分片 + WAL 增量 + 检查结构完整性 + 时间窗口 + 发送者映射 + 重复记录 + 解析文本 + 引用 + 可解析卡片 + <strong>每个报告条目引用本次真实消息编号</strong> + 区分已确认 / 已接收 / 待完成 / 个人观点 / 报告建议；输出 <strong>PNG 自动计算高度 + HTML 响应式排版无外部资源依赖 + Markdown 摘要</strong>——三格式同一正文；安全 <strong>密钥不主动写入文件 + 临时解密副本正常退出清理 + 原微信数据库保持只读 + 默认不上传原始记录 / 数据库 / 个人配置</strong>；环境 <strong>Windows + 微信桌面客户端已登录 + 微信 4.1.13.65 实际验证 + Python 3.13（3.10+ 语法）+ cryptography + zstandard + Pillow + 中文字体微软雅黑可指定其他字体 + macOS 读取器当前不支持</strong>；安装 <strong>Codex <code>$skill-installer</code> 或手动克隆到 <code>~/.agents/skills</code> + <code>python -m venv .venv</code> + pip install</strong>；配置 <strong><code>settings.local.json</code> 含 db_dir / account / self_name / output_root / default_group</strong>——<code>db_dir</code> 是包含账号目录的父目录；<code>account</code> 是该目录下、包含 <code>db_storage</code> 的账号文件夹名（不能复制别人的账号标识）；<strong>Apache-2.0</strong>。</li>
+<li><strong>核心价值定位：</strong> 当前 Codex Skill 生态在中文本地应用层是空白——Skill 主流是英文 + SaaS API（Slack / GitHub / Jira 等），而中国开发者日常用的微信、钉钉、飞书等本地 IM 软件需要专门的 Skill 才能让 Codex 调用。<strong>wechat-group-report 是「Windows 微信本地数据库 + Codex Skill 编排」的具体实现</strong>——解决的是「把微信群聊转成可搜索可归档可总结的内容资产」。<strong>关键工程点是「原微信数据库保持只读」+「临时解密副本正常退出清理」</strong>——微信消息是加密存储（cryptography），Skill 不修改原库只读 + 临时副本退出清理 = 不破坏原数据 + 不留隐私痕迹的安全底线。</li>
+<li><strong>架构亮点：</strong> <strong>Codex 会话协调的工作流</strong>——Codex 不是直接读 SQLite 而是调度 Python 脚本（读取 / 渲染）+ 自己理解与总结消息；这是「Codex Skill 不内置模型 API 调用」的工程化形式（避免「Skill 偷偷调用 LLM API 把数据传到第三方」）；<strong>每个报告条目引用本次真实消息编号</strong>——可追溯到具体消息 ID；<strong>已确认 / 已接收 / 待完成 / 个人观点 / 报告建议五分类</strong>是「群聊总结」的内容分类标准；<strong>三格式输出同一正文</strong>（PNG 长图 + HTML 网页 + Markdown 摘要）——覆盖「朋友圈分享」「浏览器打开」「文档归档」三种使用场景；<strong>默认不上传原始记录 / 数据库 / 个人配置</strong>——隐私保护明确表态。</li>
+<li><strong>价值判断：</strong> 它解决的是「中国开发者用 Codex 处理本地微信群聊」的真痛点；Apache-2.0 + 802 KB + Windows 微信 4.1.13.65 验证 + cryptography + zstandard + Pillow 是「可被 Codex <code>$skill-installer</code> 直接安装」的严肃形态；<strong>10⭐ / fork 0 / 1 天反映早期信号</strong>（项目刚发布）；<strong>对企业</strong>：微信群工作沟通在中国企业是默认渠道，Codex 能直接总结群聊是「会议纪要自动生成」的具体路径；<strong>决定长期价值的是微信版本兼容性</strong>——README 明示「微信更新可能导致内存结构变化，需要重新适配」；<strong>macOS 读取器当前不支持</strong> 是企业 macOS 用户的局限；<strong>对个人</strong>：可直接 <code>$skill-installer</code> 安装 + 设置 <code>db_dir</code> + 在 Codex 中调用。</li>
+</ul>
+<h3 id="4-frozen-lm-adapter-84">4. Frozen LM × 生物神经连接组本地可训练 adapter（趋势分 84）</h3>
+<ul>
+<li><strong>FLModel/flm</strong>（1 天 68⭐ / fork 13 / fork/star 19.1% / Python / OTHER / 119 KB）——「A frozen language model with a trained readout of the <strong>MaleCNS v1.0 fly connectome</strong>: 166,700 retained nodes and 25,582,938 directed connections. Token embeddings drive the full fixed graph. A <strong>278,528-parameter adapter</strong> reads its state and adjusts the next-token scores of <strong>Liquid AI LFM2.5-1.2B-Instruct</strong>. Only the adapter is trained. Language ability comes from the pretrained model; this does not mean a biological fly understands language」；训练 <strong>Python 3.12 + macOS / Linux + Apple Silicon MPS / NVIDIA CUDA / CPU 三路径</strong>（CPU 较慢）；依赖 <strong><code>pip install -r requirements.txt</code></strong> + 多 GB 下载 + 至少 10 GB 磁盘 + 16 GB+ RAM；数据准备 <strong><code>python scripts/download.py</code>（上游 SHA-256 校验） + <code>python scripts/prepare_graph.py</code> + 可选 <code>python scripts/build_graph_kernel.py</code>（需要 cc / Clang / GCC）</strong>；训练 <strong><code>python scripts/train_conversation.py</code></strong>（64 corpus + 32 original synthetic style examples；24 separate test conversations 评估；parameter-matched 直接输入 adapter 作为控制组；输出 <code>runs/conversation-v2/</code> 不覆盖已完成 run）；聊天 <strong><code>python scripts/chat.py</code> + <code>--prompt</code> + <code>--seed</code> + <code>--run</code></strong>（交互命令 <code>/new</code> 清空 / <code>/quit</code> 退出；回复使用训练好的 fly adapter）；架构 <strong>frozen LM + trainable adapter + fixed graph readout</strong>——adapter 读 graph state 调整 next-token 分数；上游 <strong>graph files pinned to upstream revisions + SHA-256 校验</strong>；加速 <strong>可选 C kernel 加速特征提取不丢节点 / 边；无编译器时 SciPy 路径同语义</strong>；<strong>OTHER license</strong>。</li>
+<li><strong>核心价值定位：</strong> 当前 neuroAI（神经科学 × 人工智能）研究主流方向之一是 <strong>「把生物神经连接组接到 LLM 上，看 LLM 能否用连接组结构辅助生成」</strong>——FLModel/flm 是 <strong>「Frozen LM × MaleCNS v1.0 苍蝇脑连接组」</strong> 的具体实现：<strong>MaleCNS v1.0</strong> 是 2024 年发表的成年雄性果蝇全脑连接组（166,700 保留节点 + 25,582,938 directed connections，覆盖苍蝇全脑大部分神经元的突触连接）；<strong>Liquid AI LFM2.5-1.2B-Instruct</strong> 是 Liquid AI 2025 年发布的 1.2B 参数小模型（专门为本地部署 + 多模态优化）；<strong>278,528 参数 adapter</strong> 是极小可训练组件（仅 LM 总参数 ~0.02%）。<strong>「只训练 adapter + LM 冻结 + graph 固定」</strong> 是 <strong>「参数高效 + 数据需求低 + 可本地复现」</strong> 的标准组合——可在普通笔记本（CPU / Apple Silicon / RTX 3090）上跑。</li>
+<li><strong>架构亮点：</strong> <strong>「token embeddings 驱动固定 graph」</strong>——LM 的 token 表示作为 graph 的输入信号；<strong>「278,528 参数 adapter 读 graph state 调整 next-token 分数」</strong>——graph 不是 LLM 的「知识」而是「token 预测时的额外约束」；<strong>「64 corpus + 32 synthetic style 训练」</strong> 是 <strong>「小数据 + 强控制组」</strong>——parameter-matched 直接输入 adapter（绕过 graph）作为 ablation；<strong>「24 separate test conversations 评估」</strong> 是 <strong>「不是训练数据外的小集评估」</strong>——比常规 validation 更可信；<strong>「SHA-256 校验上游文件 + Git ref pin」</strong> 是 <strong>「可复现性硬要求」</strong>——同一份数据 + 同一份代码 + 同一份图，应该跑出同一份结果；<strong>「可选 C kernel 加速特征提取 + SciPy 路径同语义」</strong> 是 <strong>「硬件门槛最低」</strong>——无 C 编译器时 SciPy 路径不丢节点 / 边，跑同样的图。</li>
+<li><strong>价值判断：</strong> 它解决的是「neuroAI 研究需要可本地训练 + 可复现的小模型」的真痛点；OTHER license + 119 KB + Python 3.12 + 上游 SHA-256 校验 + 三路径（CPU / MPS / CUDA）是「学术研究 + 可复现」的严肃形态；<strong>68⭐ / fork 13 / fork/star 19.1% 处于「学术 + 研究」信号区间</strong>——fork/star 19.1% 反映学术圈复制实验的活跃度（与昨日 FlashREINFORCE fork/star 7.7% 是同类学术信号但更高）；<strong>真正决定长期价值的是 adapter 在 benchmark 上的效果</strong>——README 自述「This does not mean a biological fly understands language」是诚实表态（避免「我用 LFM2.5 + fly brain 实现了 AGI」类过度营销）；<strong>对 neuroAI 研究者</strong>：这是 2026 Q3 公开的「可本地训练 + 可复现 + SHA-256 校验」的最小可行 adapter 工程。</li>
+</ul>
+<h3 id="5-claude-code-mods-footprint-l0-l3-reach-78">5. Claude Code Mods 自动 footprint 扫描 + L0-L3 reach 分级（趋势分 78）</h3>
+<ul>
+<li><strong>karanb192/awesome-claude-code-mods</strong>（1 天 10⭐ / fork 5 / fork/star 50% / JavaScript / CC0-1.0 / 150 KB）——「Every Claude Code mod on GitHub, with what each one can reach. A Claude Mod is a Claude Code plugin whose hooks are TypeScript functions that run inside Claude Code's own process. They draw above the prompt, open panes beside the transcript, rewrite tool calls, spawn agents and touch the host, all with zero tokens. Anthropic proposed them as function hooks on 2026-09-03 and committed to shipping them on 2026-09-09」；早期访问 <strong><code>CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1</code> 或不加载</strong>；扫描机制 <strong><code>claude plugin validate</code> 静态扫描每个 mod 钩子事件 + <code>$</code> 调用</strong> + 每晚克隆每个候选 repo 刷新表格 / 徽章 / 得分页 <code>mods.karanbansal.in</code>（从同一份数据生成）；截至 2026-09-15 对照 <strong>Claude Code 2.1.272</strong>：<strong>31 mods / 92 candidate repos</strong> + <strong>14 跑 host 进程 / 4 写文件 / 7 读文件 / 4 触网 / 13 见所有 tool call / 11 见所有 prompt / 1 fail to validate on this version</strong>；reach 等级 <strong>L0 draws and remembers 12 / L1 reads 2 / L2 writes or runs 13 / L3 network 4</strong>；<strong>CC0-1.0</strong>；<strong>fork/star 50%</strong> 极高早期信号。</li>
+<li><strong>核心价值定位：</strong> 当前 Claude Code 生态在 2026-09-03 Anthropic 提出 function hooks + 2026-09-09 承诺发版后进入 <strong>「Mod 时代」</strong>——但 Mod 的安全风险（TypeScript 函数跑在 Claude Code 自己进程内、可改写 tool call、可 spawn agent、可触网）远超传统 SaaS Skill；awesome-claude-code-mods 提供 <strong>「footprint 可见性」</strong> —— 每个 Mod 列出「它钩了哪些事件 + 它调用了哪些 <code>$</code> API」，并按 L0（draws and remembers）/ L1（reads）/ L2（writes or runs）/ L3（network）四等级分类；这是 <strong>「plugin/mod 供应链可见性 + 权限等级分类」</strong> 的工程化形式——类似 npm audit 但针对 Claude Code Mod 生态。</li>
+<li><strong>架构亮点：</strong> <strong><code>claude plugin validate</code> 是 Claude Code 官方命令</strong>——awesome-claude-code-mods 用官方命令扫描 Mod，避免「自己写扫描器可能漏判」；<strong>每晚克隆每个候选 repo + 刷新表格</strong> 是 <strong>「新鲜度保证」</strong>——Mod 生态每周都在变，awesome list 必须实时刷新；<strong>L0-L3 reach 等级</strong> 是 <strong>「Mod 权限可见性」</strong>——L0 = 只画 + 记（最安全）/ L3 = 触网（最危险）；用户安装 Mod 前可一眼看出风险等级；<strong>得分页 <code>mods.karanbansal.in</code></strong> 是 <strong>「数据驱动可视化」</strong>——同一份数据生成表格 + 徽章 + 网站，避免人工维护出错；<strong>CC0-1.0</strong> 是「完全放弃版权」的最高开放度。</li>
+<li><strong>价值判断：</strong> 它解决的是「Claude Code Mod 生态的供应链可见性」的真痛点；CC0-1.0 + JavaScript + 150 KB + 官方 <code>claude plugin validate</code> 命令 + 每晚自动扫描 + L0-L3 reach 等级是「企业可信任的 Mod 目录」严肃形态；<strong>10⭐ / fork 5 / fork/star 50% 极高早期信号</strong> —— 5 个 fork 几乎全部是「准备把 Mod 集成进工作流」的企业 fork（与昨日 ToolReplay fork/star 10.5% 同区间但 fork 数更小）；<strong>决定长期价值的是 Claude Code 官方是否承认第三方 footprint 扫描</strong>——目前 Anthropic 没有官方 Mod 目录；<strong>对 Claude Code 重度用户</strong>：可在安装任何 Mod 前查 awesome-claude-code-mods 的 reach 等级；<strong>对企业</strong>：L3 触网 Mod 应谨慎安装（与昨日 ToolReplay「permission overreach」是同类安全考量）。</li>
+</ul>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>「Codex-style Computer Use 跨 Harness 移植」是 Coding Agent 工具链扩张的新维度</strong>——dsh-computer-use_codex-style 把 Codex window2 13 方法完整复刻到 DeepSeek Harness，与昨日 ToolReplay「session 层审计」同构 AI Coding Agent 工具链扩张但推到「DeepSeek Harness 上的桌面控制」层；<strong>13 方法命名/参数/默认值/返回形状/错误字符串完全一致</strong>意味着 Codex 已有 prompt / skill / hook 可零修改移植——「跨 Harness 可移植」是 Coding Agent 工具链的下一战场；SendInput + UI Automation + Windows.Graphics.Capture 三件套是 Windows 桌面自动化的工业标准组合。</li>
+<li><strong>「本地 + 反 SaaS + Skill 标准」推到中文本地应用场景</strong>——TopVitamin/agent-skills（中文 Codex Agent Skills 标准实例）+ Tina2088/wechat-group-report（Windows 微信本地数据库 Codex Skill）两个项目同构「本地 + Skill 标准」反 SaaS 范式，但推到「中文 + 本地数据库」场景——vitamin-prototype-annotation 解决前端标注 + old-system-ui-clone 解决老系统复刻 + wechat-group-report 解决微信群总结 = 「中文 Coding Agent 落地的具体 Skill 实例」；<strong>Apache-2.0 + 中文字体 + 默认不上传</strong>是中国用户合规与隐私的关键卖点。</li>
+<li><strong>「Frozen LM × 生物神经连接组」是 neuroAI 可本地训练 adapter 的严肃工程化</strong>——FLModel/flm 把 MaleCNS v1.0 苍蝇脑（166,700 节点 + 25,582,938 connections）+ Liquid AI LFM2.5-1.2B-Instruct + 278,528 参数 adapter 组合成 <strong>「frozen LM + trainable adapter + fixed graph」</strong> 的最小可行 adapter；<strong>SHA-256 校验上游 + 三路径（CPU/MPS/CUDA）+ parameter-matched 控制组 + 24 separate test 评估</strong> 是学术可复现的硬要求；与昨日 FlashREINFORCE「NVIDIA 论文级严肃度」同构但推到「神经科学 + LLM 融合」研究领域。</li>
+<li><strong>「plugin/mod 供应链可见性 + 权限等级分类」是 AI Coding Mod 生态的合规硬需求</strong>——awesome-claude-code-mods 用 <code>claude plugin validate</code> 官方命令静态扫描每个 Mod 钩子事件 + <code>$</code> 调用 + L0-L3 reach 等级分类；与昨日 ToolReplay「session 层审计」同构但推到「plugin/mod 供应链可见性」领域；<strong>Mod 跑在 Claude Code 自己进程内 + 可改写 tool call + 可 spawn agent + 可触网</strong> 是远超传统 SaaS Skill 的安全风险——L3 触网 Mod 应谨慎安装是企业合规的硬要求；<strong>CC0-1.0 + 每晚自动扫描 + 得分页</strong> 是「企业可信任的 Mod 目录」严肃形态。</li>
+<li><strong>「单点工程痛点 + 强可复现证据 + 严肃许可」三项目同日出现</strong>——dsh-computer-use_codex-style（Python MIT 13 方法完整覆盖 + SendInput + UI Automation + Windows.Graphics.Capture + per-app approvals）+ FLModel/flm（Python OTHER SHA-256 校验 + 三路径 + parameter-matched 控制组 + 24 separate test）+ wechat-group-report（Python Apache-2.0 Windows 微信 4.1.13.65 验证 + cryptography + zstandard + Pillow + 默认不上传）三个项目都是「解决一个具体工程问题 + 证据可独立复现 + 许可明确」——这是 2026-09 趋势的延续特征。</li>
+<li><strong>「Anthropic function hooks 2026-09-03 提出 + 2026-09-09 发版」是 Claude Code 生态进入「Mod 时代」的明确信号</strong>——awesome-claude-code-mods 抓住这个时间窗提供 footprint 可见性；<strong>CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 早期访问开关</strong>意味着 Mod API 在版本之间可能变化；<strong>企业使用 Mod 应关注 Claude Code 版本锁定</strong>。</li>
+<li><strong>「Coexistence-safe」是 Coding Agent 工具链扩张的稳健策略</strong>——dsh-computer-use_codex-style 与 DeepSeek 官方 Computer Use experimental release 共存不冲突（同时安装但不同时跑两个驱动）是「官方版与第三方版并行不冲突」的工程表态；这与昨日 ToolReplay「Python 3.11+ 零三方依赖便于集成进合规管线」同构——「不破坏现有生态 + 增量提供新能力」是 AI Coding 工具链扩张的稳健策略。</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="wushi2333dsh-computer-use_codex-stylescore-88">🏆 wushi2333/dsh-computer-use_codex-style（Score 88）</h3>
+<p><strong>定位判断：</strong> Codex-style Computer Use for DeepSeek Harness。它不是又一个桌面自动化工具（那是 PyAutoGUI / AutoIt / WinAppDriver），而是 <strong>「Codex window2 13 方法完整复刻到 DeepSeek Harness」</strong> —— 命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致；<strong>cordis.patch.yml DSH bundle 安装</strong>是「不修改 DSH 主程序就能加载 13 方法」的工程化形式；<strong>SendInput + UI Automation + Windows.Graphics.Capture 三件套</strong>是 Windows 桌面自动化的工业标准组合。<strong>它是 AI Coding Agent 工具链扩张到「DeepSeek Harness 上的桌面控制层」的补齐</strong>——昨日 ToolReplay 把「session 层审计」补齐，本项目把「桌面控制层跨 Harness 可移植」补齐。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>window2 13 方法完整覆盖</strong>——<code>list_windows</code>（列出所有可见窗口）/ <code>get_window</code>（查询单个窗口详细信息）/ <code>list_apps</code>（列出已安装应用）/ <code>launch_app</code>（启动应用）/ <code>get_window_state</code>（查询窗口状态最小化/最大化/聚焦）/ <code>click</code>（点击坐标）/ <code>press_key</code>（按键）/ <code>type_text</code>（输入文本）/ <code>scroll</code>（滚动）/ <code>set_value</code>（设置值如输入框）/ <code>drag</code>（拖拽）/ <code>perform_secondary_action</code>（右键等次要动作）/ <code>activate_window</code>（激活窗口）；命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致
+2. <strong><code>cordis.patch.yml</code> DSH bundle 安装机制</strong>——DSH（DeepSeek Harness）的 bundle 标准是把补丁以 patch 文件形式分发，用户用 DSH 自带 apply 命令加载；这是「不修改 DSH 主程序就能加载 13 方法」的工程化形式
+3. <strong><code>SendInput</code> 真实输入</strong>——Windows 真实输入事件，与「模拟按键」（<code>keybd_event</code>）不同；<code>SendInput</code> 是 Windows Vista 之后唯一受支持的输入 API
+4. <strong><code>UI Automation</code> 无障碍树</strong>——Windows 无障碍框架的标准 API；可枚举所有 UI 元素的 Role / Name / Value / Bounding Rectangle；与 macOS 的 AX API / Linux 的 AT-SPI / Web 的 DOM 同级
+5. <strong><code>Windows.Graphics.Capture</code> 截屏可见于被遮挡窗口</strong>——这是 Windows 10 1809+ 的现代截屏 API；可截取被遮挡窗口的内容（与 PrintScreen 不同）；性能比 GDI BitBlt 高
+6. <strong>vision image parts 而非 base64 in JSON</strong>——截屏以「vision image parts」（模型可识别的图片块）传输，不嵌入 base64 让 JSON 膨胀；性能关键
+7. <strong>状态 pill + 合成光标动画 overlay</strong>——屏幕上的「正在执行」指示；隐藏单次截图时长避免遮挡用户工作
+8. <strong>Esc 中断</strong>——用户随时按 Esc 停止当前执行；agent 不会无限运行
+9. <strong>per-app approvals</strong>——每个应用独立审批；Photoshop 一组审批 + Slack 一组审批 + Windows Settings 一组审批；避免「全局权限」过宽
+10. <strong>bundled skills + Chromium 自动化</strong>——「桌面 + 浏览器」双 surface 覆盖；Chromium 自动化是当前 Coding Agent 主流浏览器能力
+11. <strong>与官方 experimental release 共存不冲突</strong>——README 明示可同时安装，但同一时间不推荐两个驱动并行；这是「官方版与第三方版并行不冲突」的工程表态
+12. <strong>Windows 10 / 11 x64 + Codex baseline 26.903.61454</strong>——目标平台明确；Codex 内部版本号说明本项目基于 Codex 26.903.61454 baseline</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Codex-style Computer Use for DeepSeek Harness on Windows 10/11 x64；输入 DSH 调用 window2 13 方法；输出执行结果 + 截图（vision image parts）；cordis.patch.yml DSH bundle 安装；SendInput + UI Automation + Windows.Graphics.Capture 三件套；与官方 experimental release 共存不冲突</td>
+<td>来自 README 关于「window2 13 方法完整覆盖」「cordis.patch.yml DSH bundle」「SendInput 真实输入 + UI Automation 无障碍树 + Windows.Graphics.Capture 截屏」「vision image parts 不嵌入 JSON base64」「状态 pill + 合成光标动画 overlay + Esc 中断 + per-app approvals」「bundled skills + Chromium 自动化」「Windows 10/11 x64」「Codex baseline 26.903.61454」「与官方 experimental release 共存不冲突」的明示；具体 patch 文件结构、bundle apply 命令细节、每个 window2 方法的 Python 实现细节在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>DSH 调用 <code>list_windows</code> / <code>get_window</code> / <code>list_apps</code> 等查询方法 → 返回当前桌面状态（vision image parts + 文本描述）→ LLM 决策 → 调用 <code>click</code> / <code>press_key</code> / <code>type_text</code> / <code>scroll</code> / <code>set_value</code> / <code>drag</code> 等执行方法 → SendInput 真实输入 + UI Automation 定位 → 截图返回给 DSH → 循环直到任务完成或用户 Esc 中断</td>
+<td>主路径来自 README 描述的 13 方法 + 三件套 + act-and-refresh loop 暗示；具体每次截图后是否做 OCR / 是否缓存窗口信息 / per-app approvals 的具体弹窗 UI 在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨 Harness 可移植 vs DeepSeek Harness 原生集成（Codex prompt 兼容 vs DSH 原生优化）/ SendInput + UI Automation + Windows.Graphics.Capture vs 单一截屏 + 模板匹配（工业级 vs 简单）/ vision image parts vs base64 in JSON（性能 vs 简单）/ 状态 pill overlay vs 无指示（用户可控 vs 简洁）/ per-app approvals vs 全局权限（精细 vs 简单）/ 与官方 release 共存 vs 替代（稳健 vs 激进）/ Windows only vs 跨平台（聚焦 vs 通用）</td>
+<td>权衡七因素均从 README + repo 元数据推导；具体 per-app approvals 的 UI 流程、Chromium 自动化的实现细节（puppeteer / playwright / 自研）、DSH bundle patch 的回滚机制待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Windows 10/11 x64 + DeepSeek Harness 已安装 + DSH bundle apply + <code>cordis.patch.yml</code> 加载 13 方法；DSH 调用 <code>list_windows</code> 验证返回当前桌面所有可见窗口；再调用 <code>launch_app notepad.exe</code> 启动记事本 + <code>click</code> 点击菜单 + <code>type_text</code> 输入文本；观察截图（vision image parts）+ 状态 pill overlay + Esc 中断；最后尝试 per-app approvals 弹窗验证权限控制</td>
+<td>PoC 由「window2 13 方法 + 三件套 + 状态 pill + per-app approvals + Chromium 自动化」路径推导；具体 DSH bundle apply 命令、cordis.patch.yml 内容、13 方法的 Python 实现在本档案未读源码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  DSH[DeepSeek Harness<br/>LLM 决策 + agent loop] --> Bundle[cordis.patch.yml<br/>DSH bundle]
+  Bundle --> Patch[patch apply 加载<br/>13 window2 方法]
+  Patch --> W2[window2 13 方法<br/>list_windows / get_window /<br/>list_apps / launch_app /<br/>get_window_state / click /<br/>press_key / type_text /<br/>scroll / set_value /<br/>drag / perform_secondary_action /<br/>activate_window]
+  W2 --> SendInput[SendInput<br/>真实输入]
+  W2 --> UIA[UI Automation<br/>无障碍树]
+  W2 --> WGC[Windows.Graphics.Capture<br/>截屏可见于被遮挡窗口]
+  UIA --> Desktop[Windows 10/11 x64<br/>桌面]
+  SendInput --> Desktop
+  WGC --> Desktop
+  Desktop --> Desktop2[截图返回 vision image parts<br/>不嵌入 JSON base64]
+  Desktop2 --> DSH
+  W2 --> Overlay[状态 pill + 合成光标动画<br/>隐藏单次截图时长]
+  W2 --> Esc[Esc 中断<br/>用户随时停止]
+  W2 --> Approvals[per-app approvals<br/>每应用独立审批]
+  W2 --> Chromium[Chromium 自动化<br/>bundled skills]
+  DSH -.决策.-> W2
+  DSH -.可选并存.-> Official[官方 experimental release<br/>同一时间不推荐两个驱动并行]
+  Approval[用户授权] --> Approvals
+  Chrom[Chromium 浏览器] --> Chromium
+</pre>
+<h3 id="flmodelflmscore-84">🥈 FLModel/flm（Score 84）</h3>
+<p><strong>定位判断：</strong> Frozen LM × MaleCNS v1.0 苍蝇脑连接组。它不是又一个 LLM 训练框架（那是 HuggingFace Transformers / PyTorch Lightning / Axolotl），而是 <strong>「frozen LM + trainable adapter + fixed graph readout」</strong> 的最小可行 adapter 工程：<strong>166,700 保留节点 + 25,582,938 directed connections</strong> 是 MaleCNS v1.0 成年雄性果蝇全脑连接组；<strong>278,528 参数 adapter</strong> 是极小可训练组件（仅 LM 总参数 ~0.02%）；<strong>Liquid AI LFM2.5-1.2B-Instruct</strong> 是 Liquid AI 2025 年发布的 1.2B 参数小模型（专门为本地部署优化）。<strong>「token embeddings 驱动固定 graph」</strong> + <strong>「adapter 读 graph state 调整 next-token 分数」</strong> + <strong>「only adapter is trained」</strong> 是「参数高效 + 数据需求低 + 可本地复现」的标准组合。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>MaleCNS v1.0 苍蝇全脑连接组</strong>——2024 年发表的成年雄性果蝇全脑连接组；166,700 保留节点 + 25,582,938 directed connections；覆盖苍蝇全脑大部分神经元的突触连接
+2. <strong>Liquid AI LFM2.5-1.2B-Instruct</strong>——Liquid AI 2025 年发布的 1.2B 参数小模型；专门为本地部署 + 多模态优化；可在 CPU / Apple Silicon / NVIDIA GPU 上跑
+3. <strong>278,528 参数 adapter</strong>——极小可训练组件（仅 LM 总参数 ~0.02%）；这是「adapter-based fine-tuning」的标准尺度
+4. <strong>frozen LM + trainable adapter + fixed graph readout</strong>——三件套组合；LM 不更新参数（frozen） + adapter 训练更新 + graph 固定不更新
+5. <strong>token embeddings 驱动固定 graph</strong>——LM 的 token 表示作为 graph 的输入信号；这是「LM 输出 → graph 输入」的方向
+6. <strong>adapter 读 graph state 调整 next-token 分数</strong>——graph 不是 LLM 的「知识」而是「token 预测时的额外约束」；adapter 把 graph 状态转成 next-token 分数的调整量
+7. <strong>三路径训练</strong>——Apple Silicon MPS + NVIDIA CUDA + CPU；可在普通笔记本 / 工作站 / 服务器上跑
+8. <strong>上游 SHA-256 校验</strong>——graph files pinned to upstream revisions；同一份数据 + 同一份代码 + 同一份图，应该跑出同一份结果；可复现性硬要求
+9. <strong>可选 C kernel + SciPy 同语义</strong>——可选 C kernel 加速特征提取不丢节点 / 边；无编译器时 SciPy 路径同语义；硬件门槛最低
+10. <strong>parameter-matched 直接输入 adapter 控制组</strong>——绕过 graph 直接输入控制组；作为 ablation 看 graph 到底贡献多少
+11. <strong>64 corpus + 32 synthetic style + 24 separate test</strong>——训练数据小（64+32）+ 评估数据独立（24 个 test conversations）；避免「训练数据泄漏到评估」
+12. <strong>runs/conversation-v2/ 不覆盖已完成 run</strong>——「写一次不被覆盖」的工程化形式；多次实验可保留历史
+13. <strong>/new 清空 /quit 退出交互聊天</strong>——交互命令简洁；用户可连续测试多个 prompt</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Frozen LM × MaleCNS v1.0 苍蝇脑连接组适配；输入 prompt；输出 next-token（用 adapter 调整）；Python 3.12 + macOS/Linux + Apple Silicon MPS / NVIDIA CUDA / CPU 三路径；上游文件 SHA-256 校验；可选 C kernel 加速 + SciPy 同语义；64 corpus + 32 synthetic style 训练 + 24 separate test 评估；parameter-matched 控制组</td>
+<td>来自 README 关于「MaleCNS v1.0 166,700 节点 + 25,582,938 connections」「Liquid AI LFM2.5-1.2B-Instruct 冻结」「278,528 参数 adapter 训练」「token embeddings 驱动固定 graph」「adapter 读 graph state 调整 next-token 分数」「Apple Silicon MPS / NVIDIA CUDA / CPU 三路径」「上游文件 SHA-256 校验」「可选 C kernel 加速 + SciPy 同语义」「64 corpus + 32 synthetic style 训练 + 24 separate test 评估」「parameter-matched 直接输入 adapter 控制组」的明示；具体 adapter 数学形式（线性层 / 注意力 / MLP）、graph 状态向量维度、token 与 graph 的对应关系在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>输入 prompt → LM token embeddings 提取 → 固定 graph 接收 token embeddings 作为输入信号 → graph 状态更新（基于 166,700 节点 + 25,582,938 connections 的递归传播）→ 278,528 参数 adapter 读 graph 状态 → 调整 LM next-token 分数 → 输出 token；训练时只更新 adapter 参数</td>
+<td>主路径来自 README 描述的「token embeddings 驱动固定 graph」+「adapter 读 graph state 调整 next-token 分数」+「only adapter is trained」；具体 graph 状态更新规则（message passing / 注意力 / 卷积）、adapter 的具体数学形式（线性变换 / 注意力 / MLP）、控制组的 baseline 实现细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>frozen LM（保留语言能力 vs 不能微调 LM 内部知识）/ adapter-based（参数高效 vs 不能深度改造 LM 行为）/ fixed graph（可解释 vs 不能学习图结构）/ 苍蝇脑（数据丰富 vs 与人脑距离远）/ 1.2B 小模型（本地可跑 vs 能力受限）/ SHA-256 校验（可复现 vs 上游变化需更新）/ parameter-matched 控制组（ablation 严谨 vs 增加实验成本）/ CPU 可跑（硬件门槛低 vs 训练慢）</td>
+<td>权衡八因素均从 README + repo 元数据推导；具体 graph 状态向量的物理意义（神经科学 vs 工程化抽象）、adapter 在 benchmark 上的具体效果提升幅度、训练时长与超参数设置待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Python 3.12 + macOS 或 Linux（Apple Silicon / NVIDIA GPU / CPU）+ <code>git clone https://github.com/nftechie/flm.git</code> + <code>python3.12 -m venv .venv</code> + <code>pip install -r requirements.txt</code> + <code>python scripts/download.py</code>（SHA-256 校验）+ <code>python scripts/prepare_graph.py</code> + 跳过可选 C kernel + <code>python scripts/train_conversation.py --output runs/test --device cpu</code>；再 <code>python scripts/chat.py --prompt "Invent a tiny museum exhibit." --seed 42</code>；最后 <code>python scripts/train_conversation.py --output runs/direct-input --device cpu</code> 跑控制组对比</td>
+<td>PoC 由「上游 SHA-256 + 三路径 + parameter-matched 控制组 + 24 separate test + 写一次不被覆盖」路径推导；具体 adapter 数学形式、graph 状态更新规则、训练时长待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Prompt[prompt batch] --> Embed[LM token embeddings<br/>Liquid AI LFM2.5-1.2B-Instruct frozen]
+  Embed --> Graph[固定 graph<br/>MaleCNS v1.0<br/>166,700 节点 + 25,582,938 connections<br/>SHA-256 校验上游]
+  Graph --> State[graph state 更新<br/>message passing / 注意力 / 卷积 待核验]
+  State --> Adapter[278,528 参数 adapter<br/>线性 / 注意力 / MLP 待核验<br/>only trainable]
+  Adapter --> Adjust[调整 LM next-token 分数]
+  Frozen[LM frozen<br/>不更新参数] -.冻结.-> Embed
+  Adjust --> LMOut[LM 输出 token]
+  Corpus[64 corpus + 32 synthetic style<br/>训练数据] -.训练.-> Adapter
+  Test[24 separate test<br/>评估数据] -.评估.-> LMOut
+  Control[parameter-matched<br/>直接输入 adapter<br/>ablation 控制组] -.对比.-> Adapter
+  Hash[SHA-256 校验<br/>graph 上游 pin] -.保证.-> Graph
+  CKernel[可选 C kernel<br/>cc / Clang / GCC] -.加速.-> State
+  SciPy[SciPy 路径<br/>同语义<br/>无编译器时] -.兜底.-> State
+  MPS[Apple Silicon MPS] -.运行.-> Embed
+  CUDA[NVIDIA CUDA] -.运行.-> Embed
+  CPU[CPU] -.运行.-> Embed
+  Runs[runs/conversation-v2/<br/>写一次不被覆盖] -.持久化.-> Adapter
+  Chat[scripts/chat.py<br/>/new 清空 /quit 退出] -.交互.-> LMOut
+</pre>
+<h3 id="tina2088wechat-group-reportscore-82">🥉 Tina2088/wechat-group-report（Score 82）</h3>
+<p><strong>定位判断：</strong> Windows 微信群聊总结 Codex Skill。它不是又一个聊天总结工具（那是 LangChain summarize / ChatGPT 摘要），而是 <strong>「Codex 会话协调的工作流 + Python 读取渲染 + Codex 理解总结 + 三格式输出同一正文」</strong> 的最小可行本地 IM 总结 Skill：<strong>Codex 不是直接读 SQLite</strong>而是<strong>调度 Python 脚本 + 自己理解与总结</strong>；<strong>项目没有内置模型 API 调用</strong>——避免「Skill 偷偷调用 LLM API 把数据传到第三方」；<strong>密钥不主动写入文件 + 临时解密副本正常退出清理 + 原微信数据库保持只读</strong>是安全底线；<strong>默认不上传原始记录 / 数据库 / 个人配置</strong>是隐私保护明确表态。</p>
+<p><strong>关键技术亮点：</strong>
+1. <strong>Codex 会话协调的工作流</strong>——Codex 不是直接读 SQLite 而是调度 Python 脚本（读取 / 渲染）+ 自己理解与总结消息；这是「Codex Skill 不内置模型 API 调用」的工程化形式
+2. <strong>按群名精确匹配 + 默认 24 小时</strong>——可指定时长（24h / 48h 等）/ 历史截止时间 / 已确认的群 ID；避免「总结错群」/「总结时间错」类常见错误
+3. <strong>联系人库 + 消息分片 + WAL 增量</strong>——微信本地数据库是分片存储 + WAL（Write-Ahead Log）增量；Skill 完整读取而不是只读主表
+4. <strong>结构完整性 + 时间窗口 + 发送者映射 + 重复记录检查</strong>——四点完整性检查保证数据可靠
+5. <strong>每个报告条目引用本次真实消息编号</strong>——可追溯到具体消息 ID；这是「总结可验证」的工程化形式
+6. <strong>已确认 / 已接收 / 待完成 / 个人观点 / 报告建议五分类</strong>——群聊总结的内容分类标准
+7. <strong>三格式输出同一正文</strong>——PNG 自动计算高度（朋友圈分享）+ HTML 响应式排版无外部资源依赖（浏览器打开）+ Markdown 摘要（文档归档）；覆盖三种使用场景
+8. <strong>cryptography + zstandard + Pillow</strong>——微信消息是加密存储（cryptography 解密）+ 压缩（zstandard 解压）+ 渲染（Pillow 出图）；Python 3.13 验证
+9. <strong>中文字体微软雅黑可指定其他字体</strong>——Windows 默认中文字体；可指定其他字体
+10. <strong>macOS 读取器当前不支持</strong>——明确标注局限；不假装跨平台
+11. <strong>密钥不主动写入文件</strong>——避免「密钥泄漏到本地文件」类常见错误
+12. <strong>临时解密副本正常退出清理</strong>——Skill 退出时清理临时副本，不留隐私痕迹
+13. <strong>原微信数据库保持只读</strong>——不破坏原数据；只读权限
+14. <strong>默认不上传原始记录 / 数据库 / 个人配置</strong>——隐私保护明确表态
+15. <strong>微信 4.1.13.65 实际验证</strong>——明示具体验证版本；README 警告「微信更新可能导致内存结构变化，需要重新适配」</p>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Windows 微信群聊总结 Codex Skill；输入 Codex 调用 + 群名 + 时长；输出 PNG 长图 + HTML 网页 + Markdown 摘要；微信 4.1.13.65 实际验证 + cryptography + zstandard + Pillow + Python 3.13；macOS 读取器当前不支持；密钥临时解密副本正常退出清理 + 原数据库保持只读 + 默认不上传</td>
+<td>来自 README 关于「Codex 会话协调的工作流」「按群名精确匹配 + 默认 24h」「联系人库 + 消息分片 + WAL 增量 + 结构完整性 + 时间窗口 + 发送者映射 + 重复记录检查」「每个报告条目引用本次真实消息编号」「已确认/已接收/待完成/个人观点/报告建议五分类」「PNG + HTML + Markdown 三格式同一正文」「cryptography + zstandard + Pillow + Python 3.13」「中文字体微软雅黑」「macOS 读取器当前不支持」「密钥不主动写入文件 + 临时解密副本正常退出清理 + 原微信数据库保持只读 + 默认不上传」「微信 4.1.13.65 实际验证」的明示；具体微信 SQLite 数据库 schema、cryptography 解密细节、Codex Skill 调用流程在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Codex 调用 <code>$wechat-group-report</code> → 读取 <code>~/.agents/skills/wechat-group-report/settings.local.json</code>（含 <code>db_dir</code> / <code>account</code> / <code>self_name</code> / <code>output_root</code> / <code>default_group</code>）→ Python 脚本解密微信 SQLite（cryptography + zstandard）→ 读取联系人库 + 消息分片 + WAL 增量 → 按群名 + 时长过滤 → 渲染 PNG + HTML + Markdown 三格式 → 清理临时副本退出</td>
+<td>主路径来自 README 描述的「Codex 会话协调的工作流 + Python 读取渲染 + Codex 理解总结 + 三格式输出同一正文」；具体微信 SQLite schema 字段、cryptography 解密算法、Codex Skill 调用流程细节待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Codex Skill 形式（可被 Codex <code>$skill-installer</code> 直接安装 vs 不能脱离 Codex 单独用）/ 本地数据库读取（隐私可控 vs 微信版本更新需适配）/ cryptography + zstandard + Pillow 三个依赖（功能完整 vs 依赖较多）/ macOS 不支持（聚焦 Windows vs 不跨平台）/ 默认不上传（隐私优先 vs 不能云同步）/ Codex 会话协调（Codex 理解 + 总结 vs 不能脱离 Codex）/ 每个报告条目引用消息编号（可追溯 vs 报告变长）</td>
+<td>权衡八因素均从 README + repo 元数据推导；具体微信 SQLite schema 兼容性、Codex Skill 调用兼容性、cryptography 性能、报告长度控制待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Windows 10/11 + 微信 4.1.13.65 桌面客户端已登录 + Codex 已安装 + Python 3.13 + <code>git clone</code> 到 <code>~/.agents/skills/wechat-group-report/</code> + <code>python -m venv .venv</code> + <code>pip install -r scripts/requirements.txt</code> + 复制 <code>settings.example.json</code> 到 <code>settings.local.json</code> 填入 <code>db_dir</code> / <code>account</code> / <code>self_name</code> / <code>output_root</code> / <code>default_group</code> + 在 Codex 中调用 <code>$wechat-group-report，总结"我的项目群"最近 24 小时，生成 PNG 和网页</code>；观察 PNG + HTML + Markdown 三格式 + 默认不上传行为 + 临时副本清理</td>
+<td>PoC 由「Windows + 微信 4.1.13.65 + Codex + Python 3.13 + cryptography + zstandard + Pillow + 三格式 + 默认不上传 + 临时副本清理」路径推导；具体微信 SQLite schema 字段、Codex Skill 调用兼容性待核验</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Codex[Codex<br/>理解 + 总结] --> Skill[$wechat-group-report Skill]
+  Skill --> Settings[settings.local.json<br/>db_dir / account /<br/>self_name / output_root /<br/>default_group]
+  Skill --> Py[Python 脚本<br/>Python 3.13]
+  Py --> Crypto[cryptography<br/>解密]
+  Py --> Zstd[zstandard<br/>解压]
+  WeChat[Windows 微信 4.1.13.65<br/>桌面客户端已登录<br/>数据库只读] --> Crypto
+  WeChat --> Zstd
+  Crypto --> DB[联系人库 + 消息分片 +<br/>WAL 增量 + 结构完整性检查]
+  Zstd --> DB
+  DB --> Filter[按群名 + 时长过滤<br/>24h / 48h / 历史截止]
+  Filter --> Parse[解析文本 + 引用 + 可解析卡片<br/>每个条目引用消息编号]
+  Parse --> Classify[五分类<br/>已确认 / 已接收 /<br/>待完成 / 个人观点 / 报告建议]
+  Classify --> PNG[PNG 长图<br/>自动计算高度<br/>Pillow 渲染]
+  Classify --> HTML[HTML 网页<br/>响应式排版<br/>无外部资源依赖]
+  Classify --> MD[Markdown 摘要]
+  PNG --> Output[output_root/<br/>三格式同一正文]
+  HTML --> Output
+  MD --> Output
+  Py -.退出清理.-> Temp[临时解密副本清理<br/>不留隐私痕迹]
+  Py -.只读权限.-> WeChat
+  Py -.默认不上传.-> Net[无网络传输<br/>默认不上传]
+  Font[中文字体<br/>微软雅黑可指定其他字体] -.渲染.-> PNG
+  Font -.渲染.-> HTML
+  Mac[macOS 读取器<br/>当前不支持] -.局限.-> Py
+  Ver[微信版本兼容<br/>4.1.13.65 验证<br/>更新需重新适配] -.约束.-> WeChat
+</pre>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">风险（项目级）</h3>
+<ul>
+<li><strong>wushi2333/dsh-computer-use_codex-style</strong>：<strong>与 DeepSeek 官方 Computer Use experimental release 的兼容策略是双刃剑</strong> ——「coexistence-safe」是合理技术表态，但 DeepSeek 官方若推出 13 方法原生版，本仓库价值会被吸收；<strong>Cordis patch 加载机制的具体兼容性未在 README 完全展开</strong> ——DSH bundle apply 命令细节、patch 回滚机制、跨 DSH 版本的兼容性需用户实测；<strong>15⭐ / fork 0 / 1 天</strong>反映早期信号，企业 fork 信号尚未出现；<strong>per-app approvals 的具体 UI 流程、Chromium 自动化实现细节（puppeteer / playwright / 自研）待核验</strong>；<strong>Windows only + x64</strong> 是企业 macOS / Linux 用户的局限</li>
+<li><strong>TopVitamin/agent-skills</strong>：<strong><code>$skill-installer</code> 是否被 Codex 官方正式承认</strong>——目前 OpenAI Skills 文档列出「<code>~/.agents/skills</code>」个人目录，<code>$skill-installer</code> 命令是仓库自定义的安装机制；<strong>两个具体 Skill 的成熟度待观察</strong>——vitamin-prototype-annotation + old-system-ui-clone 都是新发布 Skill，企业采用需实测；<strong>11⭐ / fork 0 / 1 天</strong>反映早期信号</li>
+<li><strong>Tina2088/wechat-group-report</strong>：<strong>微信版本兼容性是最大风险</strong>——README 明示「微信更新可能导致内存结构变化，需要重新适配」；<strong>macOS 读取器当前不支持</strong>是企业 macOS 用户的局限；<strong>Cryptography + zstandard + Pillow 三个依赖 + Python 3.13</strong>对老 Python 环境不友好；<strong>每个报告条目引用消息编号让报告变长</strong>——长群聊的报告可能非常长；<strong>10⭐ / fork 0 / 1 天</strong>反映早期信号</li>
+<li><strong>FLModel/flm</strong>：<strong>OTHER license（非标准 license）</strong>——企业商用合规需仔细审查 license 内容；<strong>168,700 节点 + 25,582,938 connections 的大图训练对硬件门槛较高</strong>（CPU 较慢，需要 MPS / CUDA 加速）；<strong>「This does not mean a biological fly understands language」是诚实表态但限制了「neuroAI AGI」类过度营销</strong>；<strong>parameter-matched 直接输入 adapter 作为控制组的具体 baseline 效果待核验</strong>；<strong>adapter 在 benchmark 上的具体效果提升幅度待核验</strong></li>
+<li><strong>karanb192/awesome-claude-code-mods</strong>：<strong>CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 早期访问开关意味着 Mod API 在版本之间可能变化</strong>——awesome list 需要持续跟进 API 变化；<strong>L0-L3 reach 等级分类的具体边界待官方承认</strong>——目前是社区自定分类；<strong>10⭐ / fork 5 / fork/star 50% 极高早期信号</strong>（5 个 fork 几乎全部是「准备把 Mod 集成进工作流」的企业 fork）；<strong>Anthropic 官方是否推出第三方 Mod 目录的不确定性</strong></li>
+</ul>
+<h3 id="_5">机遇（赛道级）</h3>
+<ul>
+<li><strong>「Codex-style Computer Use 跨 Harness 移植」是 Coding Agent 工具链扩张的新维度</strong>——dsh-computer-use_codex-style 把 Codex window2 13 方法完整复刻到 DeepSeek Harness；<strong>SendInput + UI Automation + Windows.Graphics.Capture 三件套</strong>是 Windows 桌面自动化的工业标准组合；<strong>per-app approvals + Esc 中断</strong>是「用户可见 + 用户可控」的最小可信层</li>
+<li><strong>「本地 + 反 SaaS + Skill 标准」推到中文本地应用场景</strong>——TopVitamin/agent-skills（中文 Codex Agent Skills 标准实例）+ Tina2088/wechat-group-report（Windows 微信本地数据库 Codex Skill）两个项目同构「本地 + Skill 标准」反 SaaS 范式，但推到「中文 + 本地数据库」场景</li>
+<li><strong>「Frozen LM × 生物神经连接组」是 neuroAI 可本地训练 adapter 的严肃工程化</strong>——FLModel/flm 把 MaleCNS v1.0 苍蝇脑 + Liquid AI LFM2.5-1.2B-Instruct + 278,528 参数 adapter 组合成「frozen LM + trainable adapter + fixed graph」的最小可行 adapter；<strong>SHA-256 校验上游 + 三路径 + parameter-matched 控制组 + 24 separate test</strong> 是学术可复现的硬要求</li>
+<li><strong>「plugin/mod 供应链可见性 + 权限等级分类」是 AI Coding Mod 生态的合规硬需求</strong>——awesome-claude-code-mods 用 <code>claude plugin validate</code> 官方命令静态扫描每个 Mod 钩子事件 + <code>$</code> 调用 + L0-L3 reach 等级分类；<strong>CC0-1.0 + 每晚自动扫描 + 得分页</strong> 是「企业可信任的 Mod 目录」严肃形态</li>
+<li><strong>「单点工程痛点 + 强可复现证据 + 严肃许可」三项目同日出现</strong>——dsh-computer-use_codex-style（MIT）+ FLModel/flm（OTHER）+ wechat-group-report（Apache-2.0）三个项目都是「解决一个具体工程问题 + 证据可独立复现 + 许可明确」——这是 2026-09 趋势的延续特征</li>
+<li><strong>「Anthropic function hooks 2026-09-03 提出 + 2026-09-09 发版」是 Claude Code 生态进入「Mod 时代」的明确信号</strong>——awesome-claude-code-mods 抓住这个时间窗提供 footprint 可见性；<strong>企业使用 Mod 应关注 Claude Code 版本锁定</strong></li>
+<li><strong>「Coexistence-safe」是 Coding Agent 工具链扩张的稳健策略</strong>——dsh-computer-use_codex-style 与官方 release 共存不冲突是「不破坏现有生态 + 增量提供新能力」的工程表态</li>
+</ul>
+<h2 id="_6">风险与机遇（叙事级）</h2>
+<h3 id="_7">风险</h3>
+<ul>
+<li><strong>「DeepSeek Harness 桌面控制层」是否会与官方 Computer Use experimental release 冲突</strong>——dsh-computer-use_codex-style 是第三方 DSH bundle，官方 release 是平台原生；长期共存需要 Anthropic / DeepSeek 双方明确表态</li>
+<li><strong>「中文 Codex Skill 标准」是否被 Codex 官方承认</strong>——<code>$skill-installer</code> 是仓库自定义命令，OpenAI Skills 文档未明确承认；长期看 Codex Skill 标准需要 Anthropic / OpenAI 官方背书</li>
+<li><strong>「微信本地数据库读取」的合规性</strong>——微信 TOS 限制第三方读取本地数据库；wechat-group-report 的合规性需要用户评估</li>
+<li><strong>「Frozen LM × 生物神经连接组」的实际效果</strong>——FLModel/flm 的 README 诚实表态「This does not mean a biological fly understands language」是好事但限制了「neuroAI AGI」类营销；adapter 在 benchmark 上的具体效果提升幅度待核验</li>
+<li><strong>「Mod 供应链可见性」是否被 Anthropic 官方接受</strong>——awesome-claude-code-mods 是社区自定 L0-L3 reach 等级分类；Anthropic 可能推出官方 Mod 目录</li>
+</ul>
+<h3 id="_8">机遇</h3>
+<ul>
+<li><strong>「单点工程痛点 + 强可复现证据 + 严肃许可」是 2026-09 趋势的延续特征</strong>——dsh-computer-use_codex-style + FLModel/flm + wechat-group-report 三个项目都是「解决一个具体工程问题 + 证据可独立复现 + 许可明确」</li>
+<li><strong>「跨 Harness 可移植」是 Coding Agent 工具链的下一战场</strong>——dsh-computer-use_codex-style 的 window2 13 方法完全一致是「跨 Harness 可移植」的工程化形式</li>
+<li><strong>「本地 + Skill 标准 + 中文场景」是中国开发者用中国语言写中国 Skill 的清晰路径</strong>——TopVitamin/agent-skills + wechat-group-report 两个项目同构</li>
+<li><strong>「Frozen LM + trainable adapter + fixed graph」是 neuroAI 研究的最小可行 adapter 工程范式</strong>——FLModel/flm 的 SHA-256 校验 + 三路径 + parameter-matched 控制组是学术可复现的硬要求</li>
+<li><strong>「plugin/mod 供应链可见性 + 权限等级分类」是 AI Coding Mod 生态的合规硬需求</strong>——awesome-claude-code-mods 用官方 <code>claude plugin validate</code> 命令扫描 + L0-L3 reach 等级分类</li>
+</ul>
+<h2 id="_9">重点项目档案</h2>
+<ul>
+<li>🖥️ <a href="projects/dsh-computer-use-codex-style.html">wushi2333/dsh-computer-use_codex-style</a>（1 天 15⭐）— Codex-style Computer Use for DeepSeek Harness；window2 13 方法完整覆盖；SendInput + UI Automation + Windows.Graphics.Capture 三件套；per-app approvals + Esc 中断；Python MIT 3.6 MB</li>
+<li>🧩 <a href="projects/agent-skills.html">TopVitamin/agent-skills</a>（1 天 11⭐）— 中文 Codex Agent Skills 集合；vitamin-prototype-annotation + old-system-ui-clone 两个具体 Skill；<code>$skill-installer</code> 集成；JavaScript MIT 134 KB</li>
+<li>💬 <a href="projects/wechat-group-report.html">Tina2088/wechat-group-report</a>（1 天 10⭐）— Windows 微信群聊总结 Codex Skill；cryptography + zstandard + Pillow + Python 3.13；密钥临时解密副本正常退出清理 + 原数据库保持只读 + 默认不上传；Python Apache-2.0 802 KB</li>
+<li>🪰 <a href="projects/flm.html">FLModel/flm</a>（1 天 68⭐ ⑂13）— Frozen LM × MaleCNS v1.0 苍蝇脑连接组；166,700 节点 + 25,582,938 connections；278,528 参数 adapter + Liquid AI LFM2.5-1.2B-Instruct 冻结；SHA-256 校验上游 + 三路径 + parameter-matched 控制组 + 24 separate test；fork/star 19.1%</li>
+<li>🛰️ <a href="projects/awesome-claude-code-mods.html">karanb192/awesome-claude-code-mods</a>（1 天 10⭐ ⑂5）— Claude Code Mods 自动 footprint 扫描 + L0-L3 reach 等级分类；<code>claude plugin validate</code> 静态扫描每个 Mod 钩子事件 + <code>$</code> 调用；31 mods / 92 candidate repos；CC0-1.0；fork/star 50% 极高早期信号</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API (2026-09-16) + 各项目 README API readme 字段 base64 解码 | License: MIT / Apache-2.0 / CC0-1.0 / OTHER | Stars: 15/11/10/68/10 | Forks: 0/0/0/13/5 | Created: 2026-09-15</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

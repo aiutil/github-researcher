@@ -59,7 +59,39 @@
 <li><strong>完整示例对话</strong>——「小爱同学，请深入思考：为什么月亮晚上才上班？」+ 小爱自身音色念回回答</li>
 <li><strong>20 KB repo + Python 3.11+</strong>——极简配置 + Docker Compose 一键部署形态</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>智能音箱升级中间层；收音层（MiService 拦截小爱对话流）+ 思考层（LiteLLM 100+ 供应商统一接口 + 多轮对话记忆 session）+ 嘴层（MiTTS 切句播放回小爱原音色）；数据流：小爱收音 → MiService → XiaoAi-LLM-Router → LiteLLM/REST → DeepSeek/Ollama/OpenAI → Mi TTS → 小爱播放</td>
+<td>来自 README 关于「三段拆分」「LiteLLM 100+ 供应商」「session 按 device + 时间窗 TTL 600s + max_turns 10」「唤醒词路由」「Ollama 模式链路不出局域网」「docker compose up -d」的明示；具体 MiService / MiTTS 接口稳定性、session 持久化机制、config.yaml schema 在 README 中未完全展开</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户对小爱说话 → 小爱收音 → MiService 拦截对话流 → 唤醒词判断（「请问 / 深思」命中才走 LLM，否则小爱原生应答）→ XiaoAi-LLM-Router → 多轮对话记忆 session 维护上下文 → LiteLLM 适配器调用 DeepSeek / Ollama / OpenAI / Claude → LLM 回复切短句 → MiTTS 播放回小爱原音色</td>
+<td>主路径来自 README 描述的三段拆分 + 完整示例对话；MiService 抓包接口的具体协议、LiteLLM session 持久化机制、MiTTS 切句算法待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>不拆硬件 / 不刷固件 / 不破坏厂商生态（兼容 vs 受限）/ MiService 抓包逆向（无官方支持 vs 可用）/ Ollama 模式链路不出局域网（隐私 vs 需用户自部署 Ollama）/ 唤醒词路由「请深入思考 / 请问」硬编码（避免 LLM 接管所有 vs 用户无法自定义）/ NOASSERTION 许可（开源 vs 企业合规）</td>
+<td>权衡六因素均从 README 推导；具体 MiService 接口稳定性、唤醒词可配置性、LiteLLM session 在 Docker 重启后是否丢失待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Raspberry Pi / NAS / NUC + Docker + 现有小米小爱同学 + MiService 已部署 + LiteLLM 配置（deepseek API key 或 ollama 本地模型如 qwen2.5:7b）+ config.yaml 配置小爱账号密码 + docker compose up -d；触发条件：对小爱说「小爱同学，请深入思考：为什么月亮晚上才上班？」观察 LLM 回复切短句 MiTTS 播放回小爱</td>
+<td>PoC 由「Docker 一键部署 + MiService 拦截 + LiteLLM 适配 + 多轮对话记忆 + 唤醒词路由」路径推导；具体 MiService 部署步骤、LiteLLM 供应商配置示例、config.yaml schema 严格度待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
 <p>XiaoAi-LLM-Router 的核心启发是 <strong>「不拆硬件 + LiteLLM 中间层」是智能音箱升级的可行模式</strong>。现代硬件升级痛点不止 LLM 应用层，<strong>智能音箱这种「硬件封闭 + 接口官方控制」设备</strong>的升级需要中间层路径：<strong>(a) 不绕过厂商</strong>——保留 MiService / MiTTS 等官方接口以避免兼容性问题；<strong>(b) 加 LLM 思考回路</strong>——通过 LiteLLM 适配多供应商，加多轮对话记忆；<strong>(c) 保留原音色</strong>——TTS 仍走 MiTTS 让用户听到熟悉的小爱声音。更深层的启发是 <strong>「本地 + 反 SaaS + 自带 key」范式扩张到硬件受限设备</strong>——与昨日 tracecrate（本地 trace）/ maskit（本地隐私）/ mural（iOS 自带 API key）/ asset-studio（本地资产生成）同构，但推到「硬件受限设备的 LLM 升级」这一新场景。<strong>唤醒词路由是值得借鉴的工程细节</strong>——日常问答走原生 / 深度问答走 LLM 的清晰分工避免 LLM 接管所有请求导致的延迟与误判。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -86,9 +118,9 @@
   Config[config.yaml] --> Router
   Docker[docker compose up -d] -.部署.-> Router
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（本地 AI 智能音箱升级网关）。</strong> XiaoAi-LLM-Router 不是又一个 LLM Chat 客户端（那是 Open WebUI / LM Studio 等），而是 <strong>「硬件受限设备 + 厂商封闭生态 + LiteLLM 中间层」的智能音箱升级路径</strong>。它的价值不在于「功能多」，而在于 <strong>「不拆硬件 / 不刷固件 / 不破坏厂商生态」</strong> 三件套 + <strong>「Ollama 模式链路不出局域网」</strong> 隐私亮点。对中国家庭普遍持有小米 / 天猫精灵 / 小度等老音箱的市场，这是「配置驱动多供应商」+「Docker 一键部署」的具体路径。</p>
-<h2 id="_7">风险/局限/泡沫点</h2>
+<h2 id="_8">风险/局限/泡沫点</h2>
 <ul>
 <li><strong>NOASSERTION 许可</strong>——合规扫描拒绝；企业直接采用有风险</li>
 <li><strong>MiService / MiTTS 是小米官方接口逆向</strong>——版本变动立刻破坏项目；接口稳定性依赖小米未公开</li>
@@ -98,7 +130,7 @@
 <li><strong>唤醒词路由「请深入思考 / 请问」是硬编码</strong>——用户能否自定义唤醒词是 README 未明确问题</li>
 <li><strong>多轮对话记忆 TTL 600s + max_turns 10</strong> 是默认配置——长对话需求可能需调整</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs MiService</strong>：MiService 是小米设备控制网关（提供 MiService REST API）；XiaoAi-LLM-Router 是 LLM 增强中间层——<strong>依赖</strong></li>
 <li><strong>vs LiteLLM</strong>：LiteLLM 是 100+ LLM 供应商统一接口；XiaoAi-LLM-Router 是智能音箱升级场景的应用——<strong>复用</strong></li>
@@ -106,9 +138,9 @@
 <li><strong>vs 昨日 tracecrate / maskit / mural / asset-studio</strong>：tracecrate（本地 trace）/ maskit（本地隐私）/ mural（iOS 自带 API key）/ asset-studio（本地资产生成）同构「本地 + 反 SaaS + 自带 key」范式——<strong>XiaoAi-LLM-Router 推到硬件受限设备的 LLM 升级</strong></li>
 <li><strong>vs 智能音箱厂商官方升级</strong>：小米 / 天猫精灵 / 小度等官方升级受限于硬件 + 商业模式；XiaoAi-LLM-Router 是社区绕过路径</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（本地 AI 智能音箱升级赛道）。</strong> XiaoAi-LLM-Router 代表了「不拆硬件 + LiteLLM 中间层」智能音箱升级的可行模式，无论其本身成败，这一方向是行业趋势。建议关注：<strong>(a) MiService / MiTTS 接口的稳定性</strong>（决定项目可持续性）、<strong>(b) 是否扩展到天猫精灵 / 小度等其他智能音箱</strong>（决定模式可推广性）、<strong>(c) Ollama 模式链路不出局域网的隐私卖点是否成为同类项目的标配</strong>（决定「本地 + 反 SaaS」范式扩张速度）。对中国家庭用户：值得直接尝试；对企业：MiService 抓包接口的合规性需评估。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>MiService / MiTTS 接口逆向稳定性 + 接口变动对项目的影响</li>
 <li>是否扩展到天猫精灵 / 小度等其他智能音箱品牌</li>
