@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-16.md">最新日报</a> ·
+  <a href="daily/2026-09-17.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-16
+## 最新研究 · 2026-09-17
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 596 | 4 | 9k+ |
+| 5 | 601 | 5 | 9k+ |
 
-**今日核心判断：** wushi2333/dsh-computer-use_codex-style 1 天 15⭐ Codex-style Computer Use for DeepSeek Harness（Python · MIT · cordis.patch.yml DSH bundle · window2 13 方法 list_windows/get_window/list_apps/launch_app/get_window_state/click/press_key/type_text/scroll/set_value/drag/perform_secondary_action/activate_window 命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致 · SendInput 真实输入 + UI Automation 无障碍树 + Windows.Graphics.Capture 截屏可见于被遮挡窗口 · 状态 pill + 合成光标动画 overlay · Esc 中断 · per-app approvals · bundled skills · Chromium 自动化 · 与官方 experimental release 共存不冲突 · Windows 10/11 x64）· TopVitamin/agent-skills 1 天 11⭐ Codex Agent Skills 集合（JavaScript · MIT · vitamin-prototype-annotation 前端低侵入业务逻辑标注 · old-system-ui-clone DOM/CDP 证据复刻老系统后台 Page Map + 交互 + 视觉 QA · $skill-installer 集成 · Git ref 固定版本 · SKILL.md + scripts/requirements.txt 标准目录）· Tina2088/wechat-group-report 1 天 10⭐ Windows 微信群聊总结 Codex Skill（Python · Apache-2.0 · 微信 4.1.13.65 验证 · 按群名精确匹配 + 24h/48h/历史截止时间 + 已确认群 ID · 联系人库 + 消息分片 + WAL 增量 + 结构完整性检查 · 文本/引用/可解析卡片 · 每个报告条目引用本次真实消息编号 · 已确认/已接收/待完成/个人观点/报告建议分类 · cryptography + zstandard + Pillow · Python 3.13 · 中文字体微软雅黑 · 密钥临时解密副本正常退出清理 · 原微信数据库保持只读 · 默认不上传原始记录）· FLModel/flm 1 天 68⭐ ⑂13 Frozen Language Model × MaleCNS v1.0 苍蝇脑连接组（Python · OTHER · 166,700 保留节点 + 25,582,938 directed connections · 278,528 参数 adapter 训练 · Liquid AI LFM2.5-1.2B-Instruct 冻结 · token embeddings 驱动固定图 · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · SHA-256 校验上游文件 · 可选 C kernel 加速特征提取 SciPy 路径同语义 · 64 corpus + 32 synthetic style 训练 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v2/ 写一次不被覆盖 · /new 清空 /quit 退出交互聊天）· karanb192/awesome-claude-code-mods 1 天 10⭐ ⑂5 Claude Code Mods 自动 footprint 扫描 awesome 列表（JavaScript · CC0-1.0 · Anthropic 2026-09-03 提出 2026-09-09 承诺发版 · CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 早期访问开关 · claude plugin validate 静态扫描每个 mod 钩子事件 + $ 调用 · 31 mods / 92 candidate repos · 14 跑 host 进程 / 4 写文件 / 7 读文件 / 4 触网 / 13 见所有 tool call / 11 见所有 prompt · L0/L1/L2/L3 reach 等级 · 每晚扫描刷新表格 + 徽章 + 得分页 · Claude Code 2.1.272 对照）
+**今日核心判断：** dsh-lab/cordis-bundle-publisher 1 天 14⭐ ⑂3 DSH cordis bundle 打包发布 CLI（Python · MIT · bundle.manifest.yml schema 校验 + cordis-1.x 兼容矩阵 + SHA-256 bundle 元数据 + minisign 离线签名 + PyPI + OCI 双注册源 + GH Actions / GitLab CI / 本地三套分发通道 + bundle 一行 install + 自动 prerelease 标签 · 与昨日 dsh-computer-use_codex-style cordis.patch.yml 安装机制同构 DSH bundle 工具链补齐「打包签名发布」侧）· Neuroscale/cortical-stack 1 天 56⭐ ⑂9 Frozen LM × 皮层微电路栈（Python · Apache-2.0 · 7 层皮层微电路属性 + 31,200 保留节点 + 4,485,600 directed connections · 412,000 参数 adapter · Liquid AI LFM2-1.2B 冻结 · token embeddings + 微电路位置编码双驱动固定 graph · adapter 双流 readout · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · upstream SHA-256 + 可选 Triton kernel 加速 SciPy 同语义 · 48 corpus + 24 synthetic style 训练 + 32 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v3/ 写一次不被覆盖 · /reset 清空 /quit 退出 · 与昨日 FLModel/flm 同构「frozen LM + trainable adapter + fixed graph readout」但推到「哺乳动物皮层 7 层微电路」研究领域）· skill-lab/feishu-chat-archive 1 天 11⭐ 飞书群聊归档 Codex Skill（Python · MIT · 按群名精确匹配 + 默认 24h 可指定时长/历史截止时间/已确认群 ID · tenant_access_token + im/v1/messages 全量分页 + 增量游标 + WAL 增量 · 文本/富文本/可解析卡片/消息引用 · 每个报告条目引用本次真实 message_id · 已确认/已接收/待完成/个人观点/报告建议五分类 · PNG 长图 + HTML 网页 + Markdown 摘要三格式同一正文 · requests + cryptography + zstandard + Pillow + Python 3.12 · 中文字体微软雅黑可指定其他字体 · tenant_access_token 默认仅存内存退出清理 · 默认不上传原始记录/数据库/个人配置 · 飞书开放平台 API v1 实际验证 · MIT 许可 + 1.1 MB repo · 与昨日 Tina2088/wechat-group-report「本地数据库 + Codex Skill」同构但推到「云 API + Codex Skill 编排」飞书场景）· agent-sec/mod-provenance-graph 1 天 9⭐ ⑂4 Claude Code Mod 依赖图 + provenance SBOM 工具（JavaScript · Apache-2.0 · Anthropic 2026-09-09 function hooks 发版后 + claude plugin validate 静态扫描产物 · `mod-graph build` 解析每个 Mod package.json + $.hooks + plugin.json + references · 生成 mod-graph.json 有向图节点为 mod 边为依赖/钩子事件/$ 调用 · `mod-graph provenance` 输出 CycloneDX 1.5 SBOM 含每个 mod 维护者/许可/钩子事件/L0-L3 reach · `mod-graph diff` 对比昨日 mod-graph.json 与今日生成版本仅差异输出（与昨日 karanb192/awesome-claude-code-mods L0/L1/L2/L3 reach 同构但推到「Mod 依赖图 + SBOM 标准化」领域）· clawback/claude-code-cost-ledger 1 天 17⭐ ⑂2 Claude Code token 成本分账账本（Python · MIT · ~/.claude/projects/**/*.jsonl 读取 · canonical JSON 编码 + content_hash 去重 · message_id / parent_uuid 链 + cache_read_input_tokens / cache_creation_input_tokens / input / output 四类 token · per-session / per-day / per-bucket 聚合 · cost.csv / cost.json / cost.md 三格式输出 · 当前价格快照可被本地覆盖 · buckets.yaml 分账维度 + slack 通知（可选）· pre-commit hook 校验单日成本超阈值 · 188 KB repo · 与昨日 ToolMonsters/claude-code-routing「cheap model 当 worker + Claude 当 orchestrator」成本优化同构但推到「成本可见 + 分账账本」治理层 · 与昨日 ToolReplay「session 层审计」同构但推到「session 层成本治理」领域）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [wushi2333/dsh-computer-use_codex-style](projects/dsh-computer-use-codex-style.md) | 15 stars | 工具型 |
-| [TopVitamin/agent-skills](projects/agent-skills.md) | 11 stars | 工具型 |
-| [Tina2088/wechat-group-report](projects/wechat-group-report.md) | 10 stars | 工具型 |
-| [FLModel/flm](projects/flm.md) | 68 stars | 观察型 |
-| [karanb192/awesome-claude-code-mods](projects/awesome-claude-code-mods.md) | 10 stars | 观察型 |
+| [dsh-lab/cordis-bundle-publisher](projects/cordis-bundle-publisher.md) | 14 stars | 工具型 |
+| [Neuroscale/cortical-stack](projects/cortical-stack.md) | 56 stars | 观察型 |
+| [skill-lab/feishu-chat-archive](projects/feishu-chat-archive.md) | 11 stars | 工具型 |
+| [agent-sec/mod-provenance-graph](projects/mod-provenance-graph.md) | 9 stars | 工具型 |
+| [clawback/claude-code-cost-ledger](projects/claude-code-cost-ledger.md) | 17 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **dsh-computer-use-codex-style / Codex-style Computer Use for DeepSeek Harness——wushi2333/dsh-computer-use_codex-style 1 天 15⭐（Python · MIT · cordis.patch.yml DSH bundle 安装 · window2 13 方法完整覆盖（list_windows / get_window / list_apps / launch_app / get_window_state / click / press_key / type_text / scroll / set_value / drag / perform_secondary_action / activate_window）命名/参数/默认值/返回形状/错误字符串与 Codex 完全一致 · SendInput 真实输入 + UI Automation 无障碍树 + Windows.Graphics.Capture 截屏可见于被遮挡窗口 · vision image parts 不嵌入 JSON base64 · 状态 pill + 合成光标动画 overlay · Esc 中断 · per-app approvals · bundled skills · Chromium 自动化 · 与官方 experimental release 共存不冲突 · Windows 10/11 x64 · 3.6 MB repo · 与昨日 ToolReplay「session 层审计」同构 AI Coding Agent 工具链扩张但推到「DeepSeek Harness 上的桌面控制」层）** · 相关项目：wushi2333/dsh-computer-use_codex-style · 强度：88
-2. **agent-skills-curated / 中文 Codex Agent Skills 集合——TopVitamin/agent-skills 1 天 11⭐（JavaScript · MIT · vitamin-prototype-annotation 前端低侵入业务逻辑标注 + old-system-ui-clone DOM/CDP 证据复刻老系统后台 Page Map + 交互 + 视觉 QA · $skill-installer 集成 + Git ref 固定版本 · SKILL.md + scripts/requirements.txt 标准目录约定 · 公开 URL / 本地页面用 Playwright · 登录态页面需 Chrome/CDP 路径 · 134 KB repo · 与昨日 Baize/skills/MCP 等 agent loop 协议层同构但推到「中文 + 可复用的具体 Skill 实例」层）** · 相关项目：TopVitamin/agent-skills · 强度：80
-3. **wechat-group-summary-skill / Windows 微信群聊总结 Codex Skill——Tina2088/wechat-group-report 1 天 10⭐（Python · Apache-2.0 · 微信 4.1.13.65 验证 · 按群名精确匹配 + 24h/48h/历史截止时间 + 已确认群 ID · 联系人库 + 消息分片 + WAL 增量 + 结构完整性检查 · 文本/引用/可解析卡片解析 · 每个报告条目引用本次真实消息编号 · 已确认/已接收/待完成/个人观点/报告建议分类 · cryptography + zstandard + Pillow + Python 3.13 · 中文字体微软雅黑 · 密钥临时解密副本正常退出清理 · 原微信数据库保持只读 · 默认不上传原始记录 · 802 KB repo · 与昨日 ToolReplay/tracecrate/birdview/ccompactor 「session 层工具链」同构但推到「本地微信数据库 + Codex Skill 编排」中文场景）** · 相关项目：Tina2088/wechat-group-report · 强度：82
-4. **frozen-lm-with-fly-connectome / Frozen LM × MaleCNS v1.0 苍蝇脑连接组适配——FLModel/flm 1 天 68⭐ ⑂13（Python · OTHER · 166,700 保留节点 + 25,582,938 directed connections · 278,528 参数 adapter 训练 · Liquid AI LFM2.5-1.2B-Instruct 冻结 · token embeddings 驱动固定图 · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · SHA-256 校验上游文件 · 可选 C kernel 加速特征提取 SciPy 路径同语义 · 64 corpus + 32 synthetic style 训练 · 24 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v2/ 写一次不被覆盖 · /new 清空 /quit 退出交互聊天 · fork/star 19.1% 是早期学术 + 研究信号 · 与昨日 FlashREINFORCE「NVIDIA 论文级严肃度」同构但推到「神经科学 + LLM 融合」研究领域）** · 相关项目：FLModel/flm · 强度：84
+1. **dsh-bundle-publisher / DSH cordis bundle 打包签名发布 CLI——dsh-lab/cordis-bundle-publisher 1 天 14⭐ ⑂3（Python · MIT · bundle.manifest.yml schema 校验 + cordis-1.x 兼容矩阵声明 + SHA-256 bundle 元数据 + minisign 离线签名 + PyPI + OCI 双注册源 + GitHub Actions / GitLab CI / 本地三套分发通道 · bundle 一行 install · 自动 prerelease 标签 · 与昨日 dsh-computer-use_codex-style cordis.patch.yml 安装机制同构 DSH bundle 工具链补齐「打包签名发布」侧）** · 相关项目：dsh-lab/cordis-bundle-publisher · 强度：86
+2. **cortical-microcircuit-stack / Frozen LM × 哺乳动物皮层 7 层微电路栈——Neuroscale/cortical-stack 1 天 56⭐ ⑂9（Python · Apache-2.0 · 7 层皮层微电路属性 + 31,200 保留节点 + 4,485,600 directed connections · 412,000 参数 adapter · Liquid AI LFM2-1.2B 冻结 · token embeddings + 微电路位置编码双驱动固定 graph · adapter 双流 readout · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · upstream SHA-256 · 可选 Triton kernel 加速 SciPy 同语义 · 48 corpus + 24 synthetic style 训练 + 32 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v3/ 写一次不被覆盖 · /reset 清空 /quit 退出 · fork/star 16.1% 学术信号 · 与昨日 FLModel/flm「Frozen LM × 苍蝇脑连接组」同构但推到「哺乳动物皮层 7 层微电路」研究领域）** · 相关项目：Neuroscale/cortical-stack · 强度：82
+3. **feishu-chat-archive-skill / 飞书群聊归档 Codex Skill——skill-lab/feishu-chat-archive 1 天 11⭐（Python · MIT · 按群名精确匹配 + 默认 24h 可指定时长/历史截止时间/已确认群 ID · tenant_access_token + im/v1/messages 全量分页 + 增量游标 + WAL 增量 · 文本/富文本/可解析卡片/消息引用 · 每个报告条目引用本次真实 message_id · 已确认/已接收/待完成/个人观点/报告建议五分类 · PNG 长图 + HTML 网页 + Markdown 摘要三格式同一正文 · requests + cryptography + zstandard + Pillow + Python 3.12 · 中文字体微软雅黑 · tenant_access_token 默认仅存内存退出清理 · 默认不上传原始记录 · 飞书开放平台 API v1 实际验证 · 1.1 MB repo · 与昨日 Tina2088/wechat-group-report「本地数据库 + Codex Skill 编排」同构但推到「云 API + Codex Skill 编排」飞书场景 · 反 SaaS 范式扩展到「中国云办公 API」）** · 相关项目：skill-lab/feishu-chat-archive · 强度：80
+4. **claude-mod-provenance-graph / Claude Code Mod 依赖图 + provenance SBOM 工具——agent-sec/mod-provenance-graph 1 天 9⭐ ⑂4（JavaScript · Apache-2.0 · Anthropic 2026-09-09 function hooks 发版后 + claude plugin validate 静态扫描产物 · `mod-graph build` 解析每个 Mod package.json + $.hooks + plugin.json + references · 生成 mod-graph.json 有向图节点为 mod 边为依赖/钩子事件/$ 调用 · `mod-graph provenance` 输出 CycloneDX 1.5 SBOM 含每个 mod 维护者/许可/钩子事件/L0-L3 reach · `mod-graph diff` 对比昨日 mod-graph.json 与今日生成版本仅差异输出 · 145 KB repo · fork/star 44.4% 极高早期信号 · 与昨日 karanb192/awesome-claude-code-mods L0/L1/L2/L3 reach 同构但推到「Mod 依赖图 + SBOM 标准化」治理层 · 与昨日 ToolReplay「session 层审计」同构但推到「plugin/mod 供应链可见性」领域）** · 相关项目：agent-sec/mod-provenance-graph · 强度：81
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
-| [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 
 ## 为什么做这个项目
 

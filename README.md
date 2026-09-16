@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-16.md">Latest report</a> ·
+  <a href="daily/2026-09-17.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-16
+## Latest report · 2026-09-17
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 596 | 4 | 9k+ |
+| 5 | 601 | 5 | 9k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [wushi2333/dsh-computer-use_codex-style](projects/dsh-computer-use-codex-style.md) | 15 stars | 工具型 |
-| [TopVitamin/agent-skills](projects/agent-skills.md) | 11 stars | 工具型 |
-| [Tina2088/wechat-group-report](projects/wechat-group-report.md) | 10 stars | 工具型 |
-| [FLModel/flm](projects/flm.md) | 68 stars | 观察型 |
-| [karanb192/awesome-claude-code-mods](projects/awesome-claude-code-mods.md) | 10 stars | 观察型 |
+| [dsh-lab/cordis-bundle-publisher](projects/cordis-bundle-publisher.md) | 14 stars | 工具型 |
+| [Neuroscale/cortical-stack](projects/cortical-stack.md) | 56 stars | 观察型 |
+| [skill-lab/feishu-chat-archive](projects/feishu-chat-archive.md) | 11 stars | 工具型 |
+| [agent-sec/mod-provenance-graph](projects/mod-provenance-graph.md) | 9 stars | 工具型 |
+| [clawback/claude-code-cost-ledger](projects/claude-code-cost-ledger.md) | 17 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: wushi2333/dsh-computer-use_codex-style
-2. **Signal 2** · score 80 · repositories: TopVitamin/agent-skills
-3. **Signal 3** · score 82 · repositories: Tina2088/wechat-group-report
-4. **Signal 4** · score 84 · repositories: FLModel/flm
+1. **Signal 1** · score 86 · repositories: dsh-lab/cordis-bundle-publisher
+2. **Signal 2** · score 82 · repositories: Neuroscale/cortical-stack
+3. **Signal 3** · score 80 · repositories: skill-lab/feishu-chat-archive
+4. **Signal 4** · score 81 · repositories: agent-sec/mod-provenance-graph
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-16.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-17.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 | [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
-| [2026-09-09](daily/2026-09-09.md) | 10 | 7 |
 
 ## Why this repository exists
 
