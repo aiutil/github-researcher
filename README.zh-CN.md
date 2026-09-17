@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-17.md">最新日报</a> ·
+  <a href="daily/2026-09-18.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-17
+## 最新研究 · 2026-09-18
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 601 | 5 | 9k+ |
+| 5 | 606 | 3 | 10k+ |
 
-**今日核心判断：** dsh-lab/cordis-bundle-publisher 1 天 14⭐ ⑂3 DSH cordis bundle 打包发布 CLI（Python · MIT · bundle.manifest.yml schema 校验 + cordis-1.x 兼容矩阵 + SHA-256 bundle 元数据 + minisign 离线签名 + PyPI + OCI 双注册源 + GH Actions / GitLab CI / 本地三套分发通道 + bundle 一行 install + 自动 prerelease 标签 · 与昨日 dsh-computer-use_codex-style cordis.patch.yml 安装机制同构 DSH bundle 工具链补齐「打包签名发布」侧）· Neuroscale/cortical-stack 1 天 56⭐ ⑂9 Frozen LM × 皮层微电路栈（Python · Apache-2.0 · 7 层皮层微电路属性 + 31,200 保留节点 + 4,485,600 directed connections · 412,000 参数 adapter · Liquid AI LFM2-1.2B 冻结 · token embeddings + 微电路位置编码双驱动固定 graph · adapter 双流 readout · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · upstream SHA-256 + 可选 Triton kernel 加速 SciPy 同语义 · 48 corpus + 24 synthetic style 训练 + 32 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v3/ 写一次不被覆盖 · /reset 清空 /quit 退出 · 与昨日 FLModel/flm 同构「frozen LM + trainable adapter + fixed graph readout」但推到「哺乳动物皮层 7 层微电路」研究领域）· skill-lab/feishu-chat-archive 1 天 11⭐ 飞书群聊归档 Codex Skill（Python · MIT · 按群名精确匹配 + 默认 24h 可指定时长/历史截止时间/已确认群 ID · tenant_access_token + im/v1/messages 全量分页 + 增量游标 + WAL 增量 · 文本/富文本/可解析卡片/消息引用 · 每个报告条目引用本次真实 message_id · 已确认/已接收/待完成/个人观点/报告建议五分类 · PNG 长图 + HTML 网页 + Markdown 摘要三格式同一正文 · requests + cryptography + zstandard + Pillow + Python 3.12 · 中文字体微软雅黑可指定其他字体 · tenant_access_token 默认仅存内存退出清理 · 默认不上传原始记录/数据库/个人配置 · 飞书开放平台 API v1 实际验证 · MIT 许可 + 1.1 MB repo · 与昨日 Tina2088/wechat-group-report「本地数据库 + Codex Skill」同构但推到「云 API + Codex Skill 编排」飞书场景）· agent-sec/mod-provenance-graph 1 天 9⭐ ⑂4 Claude Code Mod 依赖图 + provenance SBOM 工具（JavaScript · Apache-2.0 · Anthropic 2026-09-09 function hooks 发版后 + claude plugin validate 静态扫描产物 · `mod-graph build` 解析每个 Mod package.json + $.hooks + plugin.json + references · 生成 mod-graph.json 有向图节点为 mod 边为依赖/钩子事件/$ 调用 · `mod-graph provenance` 输出 CycloneDX 1.5 SBOM 含每个 mod 维护者/许可/钩子事件/L0-L3 reach · `mod-graph diff` 对比昨日 mod-graph.json 与今日生成版本仅差异输出（与昨日 karanb192/awesome-claude-code-mods L0/L1/L2/L3 reach 同构但推到「Mod 依赖图 + SBOM 标准化」领域）· clawback/claude-code-cost-ledger 1 天 17⭐ ⑂2 Claude Code token 成本分账账本（Python · MIT · ~/.claude/projects/**/*.jsonl 读取 · canonical JSON 编码 + content_hash 去重 · message_id / parent_uuid 链 + cache_read_input_tokens / cache_creation_input_tokens / input / output 四类 token · per-session / per-day / per-bucket 聚合 · cost.csv / cost.json / cost.md 三格式输出 · 当前价格快照可被本地覆盖 · buckets.yaml 分账维度 + slack 通知（可选）· pre-commit hook 校验单日成本超阈值 · 188 KB repo · 与昨日 ToolMonsters/claude-code-routing「cheap model 当 worker + Claude 当 orchestrator」成本优化同构但推到「成本可见 + 分账账本」治理层 · 与昨日 ToolReplay「session 层审计」同构但推到「session 层成本治理」领域）
+**今日核心判断：** thruwire/foreman 1 天 172⭐ ⑂11 TypeSafe Jev Software Factory Foreman（Python · MIT · Jev 决策模型置于 Codex coding agent 之上双 loop 并行 · `codex exec --cd <repo> --sandbox workspace-write --json` 作为 worker · Jev 并行评估 7 维度 implementation_complete / tests_sufficient / requirements_satisfied / worker_stuck / needs_verification / work_off_track / meaningful_progress 返回概率决策 · Python policy 层决定 continue/stop/retry/verify/finish · 默认 20K diff + 12K tail + 30 events + 10 workers 边界 · FactoryConfig 可调 · Worker implementation replaceable 取决于 small worker protocol · verifier 复用 Codex 不同 verification mission · 不替换 Codex 内部 reason/tool/observe loop · doc 4 篇含 theory.md + why-jev.md + what-foreman-proves.md + runtime.md）· NiazMorshed2007/jev-review 1 天 72⭐ ⑂6 本地优先 MCP 软件质量评估插件（TypeScript · MIT · Node.js 20+ MCP stdio · 单一 `jev_review` 工具 · 支持 Claude Code / Codex / Cursor / OpenCode 四大 Coding Agent · 评估 correctness/complexity/changeability/modularity/tests/security 多维度 · 用户 API key 留在本地 · 无 hosted backend · 无 database · 无 telemetry · 无 author proxy · 唯一 remote 请求直接到 Jev API · 编码由主 agent 完成 Jev 只供应 scalar signal · README 重点强调「Your API key stays on your machine」 · 2.9 MB · TypeSafe AI 官方 console 配 Jev API key）· Worldbuilder013/HEXIS 1 天 69⭐ SKILL.md → 扩展有限状态机编译器（Python · MIT · 3.11/3.12 · 论文「Compiling Agent Skills into Extended Finite State Machines」配套代码 · `efsm-v1` JSON schema 含 typed variables + tool/model/judge/user/end 5 类 actions + 有序 guarded transitions + bounded loops + fallback state · LLM 在 state 内推理 · 顺序由 program 强制 · 4 个 shipped machines data analysis/mathematics/QA over corpus/spreadsheet editing · GUIDE.md + PROMPT.md 自描述产物 · 350+ tests 不需网络/endpoint/key · OpenAI-compatible `--model --base-url --api-key-env` · OpenCode native tools + 本地 `bash` backend + 工具 registry · fallback state 重试 + 解释执行兜底）· kitze/skillbox 1 天 69⭐ ⑂7 自托管版本化 AI agent 技能库（TypeScript · MIT · MCP + scoped clients + 可选 Jev recommendations · 自托管 · 版本化 · 主流 Coding Agent 通用接入 · Kitze 知名独立开发者多项目矩阵营销 · Zero To Shipped + Sotto + Tinkerer Club + Sizzy + Supermac）· pengchujin/MacTV 1 天 61⭐ ⑂2 macOS 电视遥控菜单栏 App（Swift · MIT · Apple Silicon arm64 + macOS 14+ · HDMI-CEC 双向遥控 · Mac 音量键控制电视音量 · 电视遥控器控制 Mac 媒体/鼠标 · 菜单栏遥控器 · 输入源切换 · VoiceOver + 浅色/深色外观 + 简繁英三语 · Homebrew cask `pengchujin/tap/mactv` 安装 · 5.1 MB · 与今日 Jev 生态无关联独立工程类项目）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [dsh-lab/cordis-bundle-publisher](projects/cordis-bundle-publisher.md) | 14 stars | 工具型 |
-| [Neuroscale/cortical-stack](projects/cortical-stack.md) | 56 stars | 观察型 |
-| [skill-lab/feishu-chat-archive](projects/feishu-chat-archive.md) | 11 stars | 工具型 |
-| [agent-sec/mod-provenance-graph](projects/mod-provenance-graph.md) | 9 stars | 工具型 |
-| [clawback/claude-code-cost-ledger](projects/claude-code-cost-ledger.md) | 17 stars | 工具型 |
+| [thruwire/foreman](projects/foreman.md) | 172 stars | 基础设施候选 |
+| [NiazMorshed2007/jev-review](projects/jev-review.md) | 72 stars | 工具型 |
+| [Worldbuilder013/HEXIS](projects/hexis.md) | 69 stars | 观察型 |
+| [kitze/skillbox](projects/skillbox.md) | 69 stars | 工具型 |
+| [pengchujin/MacTV](projects/mactv.md) | 61 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **dsh-bundle-publisher / DSH cordis bundle 打包签名发布 CLI——dsh-lab/cordis-bundle-publisher 1 天 14⭐ ⑂3（Python · MIT · bundle.manifest.yml schema 校验 + cordis-1.x 兼容矩阵声明 + SHA-256 bundle 元数据 + minisign 离线签名 + PyPI + OCI 双注册源 + GitHub Actions / GitLab CI / 本地三套分发通道 · bundle 一行 install · 自动 prerelease 标签 · 与昨日 dsh-computer-use_codex-style cordis.patch.yml 安装机制同构 DSH bundle 工具链补齐「打包签名发布」侧）** · 相关项目：dsh-lab/cordis-bundle-publisher · 强度：86
-2. **cortical-microcircuit-stack / Frozen LM × 哺乳动物皮层 7 层微电路栈——Neuroscale/cortical-stack 1 天 56⭐ ⑂9（Python · Apache-2.0 · 7 层皮层微电路属性 + 31,200 保留节点 + 4,485,600 directed connections · 412,000 参数 adapter · Liquid AI LFM2-1.2B 冻结 · token embeddings + 微电路位置编码双驱动固定 graph · adapter 双流 readout · Apple Silicon MPS + NVIDIA CUDA + CPU 三路径 · upstream SHA-256 · 可选 Triton kernel 加速 SciPy 同语义 · 48 corpus + 24 synthetic style 训练 + 32 separate test 评估 · parameter-matched 直接输入 adapter 控制组 · runs/conversation-v3/ 写一次不被覆盖 · /reset 清空 /quit 退出 · fork/star 16.1% 学术信号 · 与昨日 FLModel/flm「Frozen LM × 苍蝇脑连接组」同构但推到「哺乳动物皮层 7 层微电路」研究领域）** · 相关项目：Neuroscale/cortical-stack · 强度：82
-3. **feishu-chat-archive-skill / 飞书群聊归档 Codex Skill——skill-lab/feishu-chat-archive 1 天 11⭐（Python · MIT · 按群名精确匹配 + 默认 24h 可指定时长/历史截止时间/已确认群 ID · tenant_access_token + im/v1/messages 全量分页 + 增量游标 + WAL 增量 · 文本/富文本/可解析卡片/消息引用 · 每个报告条目引用本次真实 message_id · 已确认/已接收/待完成/个人观点/报告建议五分类 · PNG 长图 + HTML 网页 + Markdown 摘要三格式同一正文 · requests + cryptography + zstandard + Pillow + Python 3.12 · 中文字体微软雅黑 · tenant_access_token 默认仅存内存退出清理 · 默认不上传原始记录 · 飞书开放平台 API v1 实际验证 · 1.1 MB repo · 与昨日 Tina2088/wechat-group-report「本地数据库 + Codex Skill 编排」同构但推到「云 API + Codex Skill 编排」飞书场景 · 反 SaaS 范式扩展到「中国云办公 API」）** · 相关项目：skill-lab/feishu-chat-archive · 强度：80
-4. **claude-mod-provenance-graph / Claude Code Mod 依赖图 + provenance SBOM 工具——agent-sec/mod-provenance-graph 1 天 9⭐ ⑂4（JavaScript · Apache-2.0 · Anthropic 2026-09-09 function hooks 发版后 + claude plugin validate 静态扫描产物 · `mod-graph build` 解析每个 Mod package.json + $.hooks + plugin.json + references · 生成 mod-graph.json 有向图节点为 mod 边为依赖/钩子事件/$ 调用 · `mod-graph provenance` 输出 CycloneDX 1.5 SBOM 含每个 mod 维护者/许可/钩子事件/L0-L3 reach · `mod-graph diff` 对比昨日 mod-graph.json 与今日生成版本仅差异输出 · 145 KB repo · fork/star 44.4% 极高早期信号 · 与昨日 karanb192/awesome-claude-code-mods L0/L1/L2/L3 reach 同构但推到「Mod 依赖图 + SBOM 标准化」治理层 · 与昨日 ToolReplay「session 层审计」同构但推到「plugin/mod 供应链可见性」领域）** · 相关项目：agent-sec/mod-provenance-graph · 强度：81
+1. **TypeSafe Jev 软件工厂 Foreman——thruwire/foreman 1 天 172⭐ ⑂11（Python · MIT · Jev 决策模型置于 Codex coding agent 之上双 loop 并行 · `codex exec --cd <repo> --sandbox workspace-write --color never --json <mission>` worker · Jev 并行评估 7 维度 implementation_complete / tests_sufficient / requirements_satisfied / worker_stuck / needs_verification / work_off_track / meaningful_progress · Python policy 层决定 continue / stop / retry / verify / finish · 默认 20K diff + 12K tail + 30 events + 10 workers 边界 · FactoryConfig 可调 · worker implementation replaceable 取决于 small worker protocol · verifier 复用 Codex 不同 verification mission · 不替换 Codex 内部 reason/tool/observe loop · 4 篇 docs theory.md / why-jev.md / what-foreman-proves.md / runtime.md · 46 KB · 明确表态「an architectural experiment, not a claim that this design is already better than a conventional coding-agent harness」 · 与 NiazMorshed2007/jev-review + kitze/skillbox + ekzhang/openjev-sglang 等同构 TypeSafe Jev 决策模型生态爆发 但推到「软件工厂监管层」最高抽象）** · 相关项目：thruwire/foreman · 强度：88
+2. **本地优先 MCP 软件质量评估插件——NiazMorshed2007/jev-review 1 天 72⭐ ⑂6（TypeScript · MIT · Node.js 20+ · MCP stdio · 单一 `jev_review` 工具 · 支持 Claude Code / Codex / Cursor / OpenCode 四大 Coding Agent · 评估 correctness / complexity / changeability / modularity / tests / security 多维度 · 用户 API key 留在本地 · 无 hosted backend · 无 database · 无 telemetry · 无 author-operated proxy · 唯一 remote 请求直接到 Jev API · 编码由主 agent 完成 Jev 只供应 scalar signal · README 重点强调「Your API key stays on your machine」 · 2.9 MB · TypeSafe AI 官方 console 配 Jev API key · 与昨日 karanb192/awesome-claude-code-mods / agent-sec/mod-provenance-graph「plugin/mod 供应链可见性」同构但推到「plugin/mod 质量评估」领域 · 与 kitze/skillbox 同构 Jev 决策模型生态但推到「软件质量评估」领域）** · 相关项目：NiazMorshed2007/jev-review · 强度：84
+3. **SKILL.md → 扩展有限状态机编译器——Worldbuilder013/HEXIS 1 天 69⭐（Python · MIT · 3.11/3.12 · 论文「Compiling Agent Skills into Extended Finite State Machines」配套代码 · `efsm-v1` JSON schema 含 typed variables + tool/model/judge/user/end 5 类 actions + ordered guarded transitions + bounded loops + fallback state · LLM 在 state 内推理 · 顺序由 program 强制 · 4 个 shipped machines data analysis/mathematics/QA over corpus/spreadsheet editing · GUIDE.md + PROMPT.md 自描述产物 · 350+ tests 不需网络/endpoint/key · OpenAI-compatible `--model --base-url --api-key-env` · OpenCode native tools + 本地 `bash` backend + 工具 registry · fallback state 重试 + 解释执行兜底 · 6.1 MB · 与昨日 TopVitamin/agent-skills「中文 Codex Skills 实例」同构但推到「SKILL.md → 状态机编译」学术严肃度）** · 相关项目：Worldbuilder013/HEXIS · 强度：82
+4. **自托管版本化 AI agent 技能库——kitze/skillbox 1 天 69⭐ ⑂7（TypeScript · MIT · MCP + scoped clients + 可选 Jev recommendations · 自托管 · 版本化 · 主流 Coding Agent 通用接入 · Kitze 知名独立开发者多项目矩阵营销 · Zero To Shipped + Sotto + Tinkerer Club + Sizzy + Supermac · 191 KB · 与昨日 wshobson/agents「多 Harness Agent Skills 市场」同构但推到「自托管 + 个人开发者背书」领域 · 与 TopVitamin/agent-skills「中文 Codex Skills」同构但推到「英文 + 知名独立开发者 + 自托管」领域）** · 相关项目：kitze/skillbox · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 | [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
-| [2026-09-11](daily/2026-09-11.md) | 8 | 7 |
 
 ## 为什么做这个项目
 
