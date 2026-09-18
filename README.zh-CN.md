@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-18.md">最新日报</a> ·
+  <a href="daily/2026-09-19.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-18
+## 最新研究 · 2026-09-19
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 606 | 3 | 10k+ |
+| 4 | 610 | 3 | 10k+ |
 
-**今日核心判断：** thruwire/foreman 1 天 172⭐ ⑂11 TypeSafe Jev Software Factory Foreman（Python · MIT · Jev 决策模型置于 Codex coding agent 之上双 loop 并行 · `codex exec --cd <repo> --sandbox workspace-write --json` 作为 worker · Jev 并行评估 7 维度 implementation_complete / tests_sufficient / requirements_satisfied / worker_stuck / needs_verification / work_off_track / meaningful_progress 返回概率决策 · Python policy 层决定 continue/stop/retry/verify/finish · 默认 20K diff + 12K tail + 30 events + 10 workers 边界 · FactoryConfig 可调 · Worker implementation replaceable 取决于 small worker protocol · verifier 复用 Codex 不同 verification mission · 不替换 Codex 内部 reason/tool/observe loop · doc 4 篇含 theory.md + why-jev.md + what-foreman-proves.md + runtime.md）· NiazMorshed2007/jev-review 1 天 72⭐ ⑂6 本地优先 MCP 软件质量评估插件（TypeScript · MIT · Node.js 20+ MCP stdio · 单一 `jev_review` 工具 · 支持 Claude Code / Codex / Cursor / OpenCode 四大 Coding Agent · 评估 correctness/complexity/changeability/modularity/tests/security 多维度 · 用户 API key 留在本地 · 无 hosted backend · 无 database · 无 telemetry · 无 author proxy · 唯一 remote 请求直接到 Jev API · 编码由主 agent 完成 Jev 只供应 scalar signal · README 重点强调「Your API key stays on your machine」 · 2.9 MB · TypeSafe AI 官方 console 配 Jev API key）· Worldbuilder013/HEXIS 1 天 69⭐ SKILL.md → 扩展有限状态机编译器（Python · MIT · 3.11/3.12 · 论文「Compiling Agent Skills into Extended Finite State Machines」配套代码 · `efsm-v1` JSON schema 含 typed variables + tool/model/judge/user/end 5 类 actions + 有序 guarded transitions + bounded loops + fallback state · LLM 在 state 内推理 · 顺序由 program 强制 · 4 个 shipped machines data analysis/mathematics/QA over corpus/spreadsheet editing · GUIDE.md + PROMPT.md 自描述产物 · 350+ tests 不需网络/endpoint/key · OpenAI-compatible `--model --base-url --api-key-env` · OpenCode native tools + 本地 `bash` backend + 工具 registry · fallback state 重试 + 解释执行兜底）· kitze/skillbox 1 天 69⭐ ⑂7 自托管版本化 AI agent 技能库（TypeScript · MIT · MCP + scoped clients + 可选 Jev recommendations · 自托管 · 版本化 · 主流 Coding Agent 通用接入 · Kitze 知名独立开发者多项目矩阵营销 · Zero To Shipped + Sotto + Tinkerer Club + Sizzy + Supermac）· pengchujin/MacTV 1 天 61⭐ ⑂2 macOS 电视遥控菜单栏 App（Swift · MIT · Apple Silicon arm64 + macOS 14+ · HDMI-CEC 双向遥控 · Mac 音量键控制电视音量 · 电视遥控器控制 Mac 媒体/鼠标 · 菜单栏遥控器 · 输入源切换 · VoiceOver + 浅色/深色外观 + 简繁英三语 · Homebrew cask `pengchujin/tap/mactv` 安装 · 5.1 MB · 与今日 Jev 生态无关联独立工程类项目）
+**今日核心判断：** eliasstravik/herdr-projects 1 天 140⭐ ⑂4 协调器对话 + 并行 worker 线程 Coding Agent 项目编排（Rust · MIT · Herdr 0.9.1+ 插件 · 协调器永不亲自干活始终保持可对话 · 每个任务一个独立 agent 跑在自己 git worktree + 分支 · 所有线程共享同一份指令 + 项目级 memory · 侧栏按 ready-for-review / waiting-on-you / working / landing / idle 五组聚合 · threads 状态 ticker 跟 PR + 例行 routine · 自托管 macOS / Linux · 无 hosted service · 与昨日 thruwire/foreman「Jev 软件工厂监管层」同构 AI Coding Agent 多 loop 工程化但推到「多 worker 线程并行 + 协调器只做路由 + 项目级 memory 共享」用户决策侧最高抽象）· indada/repopilot 1 天 95⭐ ⑂6 验证驱动 AI 软件迭代引擎（TypeScript · MIT · OpenAI Codex SDK + 自托管 worker · GitHub Issue / PR → 需求驱动测试生成 → 失败复现 → 代码修复 → 独立 Docker runner 验证 → 维护者保留 merge 决策 · 修复前冻结测试 · 候选必须保留测试身份 + 通过独立执行 + 通过 policy 重检 · 环境失败有界重试 · 不稳定证据阻断自动修复 · JSON / Markdown 报告本地保留 findings + test outcomes + repair attempts + publication state · AGENTS.md 项目规约静态规则 + Codex 语义审查 + 引用规则 + 代码证据 · 378 KB · 与昨日 thruwire/foreman「Jev supervisor」同构但推到「Codex SDK 直接做工程迭代 + 独立验证器」领域 · 与昨日 clawback/claude-code-cost-ledger「session 层成本治理」同构但推到「仓库级 Issue / PR 验证迭代闭环」领域）· LingxiangXu/traceclause 1 天 58⭐ ⑂4 本地优先需求文档证据审查工作台（Python · MIT · 3.11+ · FastAPI · SQLite · 文本 PDF/DOCX/UTF-8 TXT/Markdown 导入 · PDF 页引用 + DOCX 段落/表行引用 + 文本行引用 · 原文件字节 SHA-256 指纹 + 精确需求引用偏移 · 中文 bigram + 英文 word BM25 检索至多 3 候选 + 共享术语 + 词覆盖 · 候选 / 可能冲突 / 缺失证据三类提示 · 数字差异触发复核提醒 · 人类审查选定源段 + 书面理由 + 变更历史 · Markdown / CSV / JSON 三格式导出 · 不需 model API key · 文档内容不外发 AI · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」同构但推到「本地需求文档 + 反 SaaS 证据审查」领域 · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 软件质量评估」同构但推到「本地优先文档证据审查」合规证据链领域）· CYBERVERSE-Research/skyline-speeder 1 天 33⭐ ⑂4 发送端 eBPF struct_ops TCP 拥塞控制（Python + Rust · GPL-2.0 · kernel 6.12 LTS+ · Debian / Ubuntu · 4 件套 skyline_cc eBPF struct_ops + skyline_policy cgroup sockops + skyline_tc TC egress + skyline-speederd / ssctl Rust userspace · 仅部署发送端客户端零改造 · 目标 10-20% 丢包 + 100-300 ms RTT 长单向流 · 假设丢包不带拥塞信息 · CUBIC 0.05-0.31 vs BBR 3-84 vs Skyline 79-95 Mbit/s 九宫格 +13% ~ +26.8x · 守卫项失活场景 < 0.01% 偏差 · RTO ceiling 防 101s 退避 · 297 KB · 与昨日 arvindear/wp2shell-PoC「RCE 链 PoC」同构但推到「网络栈层 eBPF 加速」基础设施领域 · 与昨日 thruwire/foreman「快决策 / 慢生成分层」同构但推到「网络栈层快路径 / 慢回退分层」基础设施领域）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [thruwire/foreman](projects/foreman.md) | 172 stars | 基础设施候选 |
-| [NiazMorshed2007/jev-review](projects/jev-review.md) | 72 stars | 工具型 |
-| [Worldbuilder013/HEXIS](projects/hexis.md) | 69 stars | 观察型 |
-| [kitze/skillbox](projects/skillbox.md) | 69 stars | 工具型 |
-| [pengchujin/MacTV](projects/mactv.md) | 61 stars | 工具型 |
+| [eliasstravik/herdr-projects](projects/herdr-projects.md) | 140 stars | 基础设施候选 |
+| [indada/repopilot](projects/repopilot.md) | 95 stars | 工具型 |
+| [LingxiangXu/traceclause](projects/traceclause.md) | 58 stars | 工具型 |
+| [CYBERVERSE-Research/skyline-speeder](projects/skyline-speeder.md) | 33 stars | 基础设施候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **TypeSafe Jev 软件工厂 Foreman——thruwire/foreman 1 天 172⭐ ⑂11（Python · MIT · Jev 决策模型置于 Codex coding agent 之上双 loop 并行 · `codex exec --cd <repo> --sandbox workspace-write --color never --json <mission>` worker · Jev 并行评估 7 维度 implementation_complete / tests_sufficient / requirements_satisfied / worker_stuck / needs_verification / work_off_track / meaningful_progress · Python policy 层决定 continue / stop / retry / verify / finish · 默认 20K diff + 12K tail + 30 events + 10 workers 边界 · FactoryConfig 可调 · worker implementation replaceable 取决于 small worker protocol · verifier 复用 Codex 不同 verification mission · 不替换 Codex 内部 reason/tool/observe loop · 4 篇 docs theory.md / why-jev.md / what-foreman-proves.md / runtime.md · 46 KB · 明确表态「an architectural experiment, not a claim that this design is already better than a conventional coding-agent harness」 · 与 NiazMorshed2007/jev-review + kitze/skillbox + ekzhang/openjev-sglang 等同构 TypeSafe Jev 决策模型生态爆发 但推到「软件工厂监管层」最高抽象）** · 相关项目：thruwire/foreman · 强度：88
-2. **本地优先 MCP 软件质量评估插件——NiazMorshed2007/jev-review 1 天 72⭐ ⑂6（TypeScript · MIT · Node.js 20+ · MCP stdio · 单一 `jev_review` 工具 · 支持 Claude Code / Codex / Cursor / OpenCode 四大 Coding Agent · 评估 correctness / complexity / changeability / modularity / tests / security 多维度 · 用户 API key 留在本地 · 无 hosted backend · 无 database · 无 telemetry · 无 author-operated proxy · 唯一 remote 请求直接到 Jev API · 编码由主 agent 完成 Jev 只供应 scalar signal · README 重点强调「Your API key stays on your machine」 · 2.9 MB · TypeSafe AI 官方 console 配 Jev API key · 与昨日 karanb192/awesome-claude-code-mods / agent-sec/mod-provenance-graph「plugin/mod 供应链可见性」同构但推到「plugin/mod 质量评估」领域 · 与 kitze/skillbox 同构 Jev 决策模型生态但推到「软件质量评估」领域）** · 相关项目：NiazMorshed2007/jev-review · 强度：84
-3. **SKILL.md → 扩展有限状态机编译器——Worldbuilder013/HEXIS 1 天 69⭐（Python · MIT · 3.11/3.12 · 论文「Compiling Agent Skills into Extended Finite State Machines」配套代码 · `efsm-v1` JSON schema 含 typed variables + tool/model/judge/user/end 5 类 actions + ordered guarded transitions + bounded loops + fallback state · LLM 在 state 内推理 · 顺序由 program 强制 · 4 个 shipped machines data analysis/mathematics/QA over corpus/spreadsheet editing · GUIDE.md + PROMPT.md 自描述产物 · 350+ tests 不需网络/endpoint/key · OpenAI-compatible `--model --base-url --api-key-env` · OpenCode native tools + 本地 `bash` backend + 工具 registry · fallback state 重试 + 解释执行兜底 · 6.1 MB · 与昨日 TopVitamin/agent-skills「中文 Codex Skills 实例」同构但推到「SKILL.md → 状态机编译」学术严肃度）** · 相关项目：Worldbuilder013/HEXIS · 强度：82
-4. **自托管版本化 AI agent 技能库——kitze/skillbox 1 天 69⭐ ⑂7（TypeScript · MIT · MCP + scoped clients + 可选 Jev recommendations · 自托管 · 版本化 · 主流 Coding Agent 通用接入 · Kitze 知名独立开发者多项目矩阵营销 · Zero To Shipped + Sotto + Tinkerer Club + Sizzy + Supermac · 191 KB · 与昨日 wshobson/agents「多 Harness Agent Skills 市场」同构但推到「自托管 + 个人开发者背书」领域 · 与 TopVitamin/agent-skills「中文 Codex Skills」同构但推到「英文 + 知名独立开发者 + 自托管」领域）** · 相关项目：kitze/skillbox · 强度：80
+1. **协调器对话 + 并行 worker 线程 Coding Agent 项目编排——eliasstravik/herdr-projects 1 天 140⭐ ⑂4（Rust · MIT · Herdr 0.9.1+ 插件 · 协调器永不亲自干活始终保持可对话 · 每个任务一个独立 agent 跑在自己 git worktree + 分支 · 所有线程共享同一份指令 + 项目级 memory · 侧栏按 ready-for-review / waiting-on-you / working / landing / idle 五组聚合 · threads 状态 ticker 跟 PR + 例行 routine · lessons under `## Remember` 流回 memory 给下一个 thread · 自托管 macOS / Linux · 无 hosted service · 不需要预装 Node.js · 与昨日 thruwire/foreman「Jev supervisor 双 loop 并行」同构但推到「多 worker 线程并行 + 协调器只做路由 + 项目级 memory 共享」用户决策侧最高抽象 · 同一指令同一 memory 跨线程是「agent 上下文复用」的工程化形式 · 对比 cloud projects 产品保持自托管 + 免费 + 适配现有 agent CLI）** · 相关项目：eliasstravik/herdr-projects · 强度：88
+2. **验证驱动 AI 软件迭代引擎——indada/repopilot 1 天 95⭐ ⑂6（TypeScript · MIT · OpenAI Codex SDK + 自托管 worker · GitHub Issue / PR → 需求驱动测试生成 → 失败复现 → 代码修复 → 独立 Docker runner 验证 → 维护者保留 merge 决策 · 修复前冻结测试 · 候选必须保留测试身份 + 通过独立执行 + 通过 policy 重检 · 环境失败有界重试 · 不稳定证据阻断自动修复 · JSON / Markdown 报告本地保留 findings + test outcomes + repair attempts + publication state · AGENTS.md 项目规约静态规则 + Codex 语义审查 + 引用规则 + 代码证据 · 与昨日 thruwire/foreman「Jev supervisor」同构 AI Coding Agent 多 loop 工程化但推到「Codex SDK 直接做工程迭代 + 独立验证器」领域 · 与昨日 clawback/claude-code-cost-ledger「session 层成本治理」同构但推到「仓库级 Issue / PR 验证迭代闭环」领域 · 与昨日 thruwire/foreman「verifier 是另一个 Codex worker」同构但推到「verifier 是独立 Docker runner + 维护者最终 merge gate」多 harness 治理）** · 相关项目：indada/repopilot · 强度：86
+3. **本地优先需求文档证据审查工作台——LingxiangXu/traceclause 1 天 58⭐ ⑂4（Python · MIT · 3.11+ · FastAPI · SQLite · 文本 PDF / DOCX / UTF-8 TXT / Markdown 导入 · PDF 页引用 + DOCX 段落 / 表行引用 + 文本行引用 · 原文件字节 SHA-256 指纹 + 精确需求引用偏移 · 中文 bigram + 英文 word BM25 检索至多 3 候选 + 共享术语 + 词覆盖 · 候选 / 可能冲突 / 缺失证据三类提示 · 数字差异触发复核提醒 · 人类审查选定源段 + 书面理由 + 变更历史 · Markdown / CSV / JSON 三格式导出 · 不需 model API key · 文档内容不外发 AI · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」同构但推到「本地需求文档 + 反 SaaS 证据审查」领域 · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 软件质量评估」同构但推到「本地优先文档证据审查」合规证据链领域 · 10 MB 单文件 + 200 PDF 页 + 5000 抽取块 + 50 万字符 + 500 需求上限）** · 相关项目：LingxiangXu/traceclause · 强度：82
+4. **发送端 eBPF struct_ops TCP 拥塞控制——CYBERVERSE-Research/skyline-speeder 1 天 33⭐ ⑂4（Python + Rust · GPL-2.0 · kernel 6.12 LTS+ · Debian / Ubuntu · 4 件套 skyline_cc eBPF struct_ops 拥塞控制 + skyline_policy cgroup sockops 早期丢包观察 + skyline_tc TC egress DSCP 标记 + skyline-speederd / ssctl Rust userspace 驻留控制面 · 仅部署发送端客户端零改造 · 目标 10-20% 丢包 + 100-300 ms RTT 长单向流 · 假设丢包不带拥塞信息 · CUBIC 0.05-0.31 vs BBR 3-84 vs Skyline 79-95 Mbit/s 九宫格 +13% ~ +26.8x · 守卫项失活场景 < 0.01% 偏差 · RTO ceiling 防 101s 退避 · 与昨日 arvindear/wp2shell-PoC「RCE 链 PoC」同构基础设施领域但推到「网络栈层 eBPF 加速」领域 · 与昨日 thruwire/foreman「快决策 / 慢生成分层」同构分层思想但推到「网络栈层快路径 / 慢回退分层」基础设施领域 · 与昨日 chaseleantj/desktop-habitats「macOS 菜单栏 + Three.js 桌面生态」同构 macOS 桌面应用层但推到「Linux 服务器网络栈层」）** · 相关项目：CYBERVERSE-Research/skyline-speeder · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 | [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
-| [2026-09-12](daily/2026-09-12.md) | 8 | 6 |
 
 ## 为什么做这个项目
 
