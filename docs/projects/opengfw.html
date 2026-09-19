@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyNetworks/OpenGFW | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/HyNetworks/OpenGFW" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="hynetworksopengfw">HyNetworks/OpenGFW</h1>
+<h2 id="_1">一句话定位</h2>
+<p>DIY GFW-like 全协议栈流量分析与干预框架 —— 在自有 Linux 路由器 / VPS / NAS 上跑起完整 IP/TCP reassembly + HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 协议解析器 + Shadowsocks/VMess/Trojan 加密代理识别 + expr 规则引擎 + 热重载 + NFQueue IO 抽象 的开源流量治理基础设施。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年家庭网络主权 / VPS 提供商流量治理 / 居家路由器广告拦截 / VPN 滥用防护场景的痛点是 <strong>「要在自有 Linux 路由器 / VPS / NAS 上跑起 GFW-like 全协议栈流量分析 + 干预 + 不依赖第三方 SaaS + 规则热重载不中断服务」</strong>。传统方案是商业防火墙（贵 + 黑盒）/ 单纯 iptables（无应用层解析）/ 单协议代理识别工具（不全 / 不持续维护）。<strong>OpenGFW 用 Go + 完整协议栈 + expr 规则引擎 + NFQueue + 热重载 + MPL-2.0 严肃许可</strong> 是「Linux 网络栈层基础设施 + 严肃许可 + 可扩展规则」的具体路径。</p>
+<h2 id="2026-09-20">为什么值得关注（2026-09-20）</h2>
+<ul>
+<li><strong>Stars:</strong> 131（截至 2026-09-20），1 天 131⭐，fork 58，<strong>fork/star 44.3%</strong> 极高企业 / VPS fork 信号</li>
+<li><strong>License:</strong> MPL-2.0（Mozilla Public License 2.0，文件级 copyleft + 可商用 + 修改需公开）</li>
+<li><strong>语言:</strong> Go</li>
+<li><strong>活跃度:</strong> created 2026-09-19，pushed_at 2026-09-19</li>
+<li><strong>规模:</strong> 285 KB</li>
+<li><strong>支持:</strong> Linux（netfilter/NFQueue 内核依赖）</li>
+<li><strong>多协议支持:</strong> HTTP / TLS / QUIC / DNS / SSH / SOCKS4/5 / WireGuard / OpenVPN + Shadowsocks/VMess/Trojan 加密代理识别</li>
+<li><strong>fork/star 44.3%</strong> —— 与昨日 agent-sec/mod-provenance-graph 44.4% 接近，是「准备集成 / VPS / 路由器部署」的最高 fork 信号</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>OpenGFW 的热度是 <strong>「网络主权基础设施刚需 × 完整协议栈覆盖 × expr 规则引擎 + 热重载 × MPL-2.0 严肃许可 × fork/star 44.3% 极高企业 / VPS fork 信号」</strong> 的强劲组合。当前家庭 / VPS / VPN 提供商 / 居家路由器 / 流量研究场景的痛点是「要 GFW-like 全协议栈流量治理 + 不依赖第三方 SaaS + 规则热重载 + 严肃许可」。一个 285 KB Go 项目覆盖完整 IP/TCP reassembly + 9 类协议解析器 + 3 类加密代理识别 + expr 规则引擎 + 热重载 + multicore + connection offloading + NFQueue 抽象——直击痛点，自然爆火。<strong>58 个 forks 反映「网络基础设施」类项目最高 fork 率（44.3% fork/star）</strong>——这正是「企业 / VPS 实际部署准备」类项目的网络效应（部署者越多，规则社区越活跃，吸引更多用户）。<strong>MPL-2.0 严肃许可</strong> 是「可商用 + 文件级 copyleft」的具体路径。热度<strong>真实且具基础设施价值</strong>——但需警惕：完整协议栈在不同 Linux 发行版的稳定性 + expr 规则引擎在复杂规则的表达力 + NFQueue 在高负载下的吞吐 + ML 流量分类（WIP）的准确率 + Web UI（WIP）的可用度是长期可用性的关键。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>完整 IP/TCP reassembly</strong> ——碎片重组避免被协议字段绕过；这是「应用层解析而非端口匹配」的工程化基础</li>
+<li><strong>多协议解析器</strong> ——HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 9 类协议应用层解析而非端口匹配；这是「覆盖主流协议」的工程化形式</li>
+<li><strong>加密代理识别</strong> ——Shadowsocks/VMess 识别基于 gfw.report/publications/usenixsecurity23 「Fully encrypted traffic」检测 + Trojan (proxy protocol) detection；这是「识别加密代理而非只识别明文协议」的工程化形式</li>
+<li><strong>expr 规则引擎</strong> ——基于 github.com/expr-lang/expr；规则化决策 + 比 if-else 更可读 + 比 Lua 嵌入更轻量；这是「规则化决策」的工程化形式</li>
+<li><strong>热重载规则 SIGHUP</strong> ——不中断服务换规则；这是「长期运行的家庭路由器 / VPS 关键」的工程化形式</li>
+<li><strong>Flow-based multicore 负载均衡 + Connection offloading</strong> ——多核扩展 + 大流卸载避免占用 CPU；这是「单核 netfilter 难以承载家庭千兆带宽」的工程化形式</li>
+<li><strong>NFQueue IO 抽象 + 可扩展 IO 实现</strong> ——不绑定单一 IO + 未来可加 XDP / TC / eBPF；这是「不绑定单一 IO」的工程化形式</li>
+<li><strong>6 类用例明示</strong> ——ad blocking / parental control / malware protection / abuse prevention for VPN/proxy services / traffic analysis (log only mode) / 居家网络主权；这是「明确使用场景」的工程化形式</li>
+<li><strong>MPL-2.0 License</strong> ——Mozilla Public License 2.0 是「文件级 copyleft + 可商用 + 修改需公开」的具体路径</li>
+<li><strong>WIP 部分明示</strong> ——machine learning based traffic classification + Web UI 是未来路径；这是「诚实表态未来工作」的工程化形式</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Linux netfilter/NFQueue 之上的全协议栈流量分析与干预框架；Go userspace 进程 + 内核 netfilter 数据面 + NFQueue IPC 桥接</td>
+<td>仅基于 README 公开描述的 9 类协议解析器、expr 规则引擎、Flow-based multicore；具体模块边界、协议解析器实现、Flow 抽象细节均待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>网络包 → netfilter NFQUEUE → Go userspace → IP/TCP reassembly → 协议解析器（HTTP/TLS/QUIC/DNS/SSH/SOCKS/WireGuard/OpenVPN/Shadowsocks/VMess/Trojan）→ expr 规则引擎决策 → 干预/放行/记账 + SIGHUP 热重载</td>
+<td>主路径为档案语义抽象；reassembly 与协议解析的并发模型、Flow 抽象、connection offloading 实现细节均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>完整协议栈覆盖广度 vs 每协议深度（无应用层 payload 解密）vs 性能（Flow-based multicore）vs 规则表达力（expr vs 自研 DSL）vs IO 可扩展性（NFQueue vs XDP/TC/eBPF）vs MPL-2.0 vs GPL-2.0</td>
+<td>档案明示完整协议栈、expr、multicore、Flow-based offloading、可扩展 IO、6 类用例 6 项权衡；WIP 部分 ML 分类 + Web UI 是待核验的未来工作</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在自有 Linux 路由器/VPS 上单 NFQUEUE 队列 + Go binary + 最小 expr 规则（如阻断 SNI 包含特定关键字的 TLS 连接），验证一条端到端匹配后扩展到第二条规则；先 ad blocking → 再 malware protection → 最后加密代理识别</td>
+<td>PoC 范围、退出路径由档案「最小规则 + 6 类用例渐进扩展」建议推导；具体规则语法、SLO 指标待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>OpenGFW 的核心启发是 <strong>「Linux 路由器 / VPS / NAS 上的网络主权基础设施应该在 netfilter 之上以开源 + 完整协议栈 + 规则化 + 热重载的方式工程化」</strong>。当前网络主权 / 流量治理 / 居家路由器广告拦截 / VPN 滥用防护场景的痛点是「要么贵 + 黑盒（商业防火墙）+ 要么浅（单纯 iptables 无应用层解析）+ 要么不全（单协议工具）」。OpenGFW 用 Go 协程（IO 密集型）+ 完整协议栈（应用层而非端口）+ expr（规则化决策）+ 热重载（不中断服务）+ Flow-based multicore（家庭千兆）+ NFQueue（不绑定单一 IO）+ MPL-2.0（严肃许可）的组合——这是「netfilter 时代之后的流量分析基础设施」参考实现。更深层的启发是：<strong>协议栈完整性 + 规则化 + 热重载 + 可扩展 IO 是网络主权基础设施的「四件套」</strong>——任何想做严肃流量治理的开源项目都应满足。能否持续，取决于完整协议栈在不同发行版的稳定性 + expr 在复杂规则的表达力 + NFQueue 在高负载下的吞吐 + ML 流量分类的准确率 + Web UI 的可用度 + MPL-2.0 与商业产品的兼容性。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Net[网络流量] --> NFQ[Linux netfilter NFQUEUE]
+  NFQ --> Go[OpenGFW Go userspace]
+  Go --> Reasm[完整 IP/TCP reassembly 待核验]
+  Reasm --> Parser[多协议解析器<br/>HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN]
+  Parser --> Enc[加密代理识别<br/>Shadowsocks/VMess/Trojan]
+  Enc --> Expr[expr 规则引擎]
+  Expr --> Act[干预/放行/记账]
+  Act --> NFQ
+  SIGHUP[SIGHUP 信号] -.热重载.-> Expr
+  Go --> MC[Flow-based multicore 负载均衡]
+  Go --> Off[Connection offloading]
+  Expr --> WIP[ML 流量分类 WIP]
+  Expr --> UI[Web UI WIP]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选型项目（网络主权流量治理基础设施）。</strong> OpenGFW 不仅是工具，更试图成为 Linux 网络主权 / 流量治理 / 居家路由器广告拦截 / VPN 滥用防护场景的「开源基础设施」——类似 Pi-hole 之于 DNS 黑洞 / Snort 之于 IDS。若成功，它会成为这些场景的默认基础设施，具有平台级价值。131⭐ + fork 58 + fork/star 44.3% 已显示「企业 / VPS 准备部署」信号。但「平台化」取决于一个关键问题：完整协议栈的稳定性 + expr 的表达力 + NFQueue 的吞吐 + ML 流量分类的准确率。目前定位是「最有影响力的开源 GFW-like 流量治理基础设施」，向平台演进是合理路径。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>完整协议栈维护成本极高</strong> ——9 类协议 + 加密代理识别，每协议持续演化（TLS 1.3 / QUIC v2 / Shadowsocks 2022 / VMess AEAD），需持续跟进</li>
+<li><strong>Linux 多发行版兼容性</strong> ——netfilter / NFQueue / iptables / nftables 在不同发行版默认配置差异大</li>
+<li><strong>规则表达力限制</strong> ——expr 是通用表达式语言，未必有专门的协议匹配原语（如 SNI 包含 / TLS ALPN / DNS QTYPE）</li>
+<li><strong>NFQueue 吞吐瓶颈</strong> ——单 NFQUEUE 队列 + 单 userspace 进程可能成为高负载下的瓶颈（虽然 Flow-based multicore 缓解）</li>
+<li><strong>ML 流量分类未成熟</strong> ——README 明示 [WIP] ML 流量分类，准确率待验证</li>
+<li><strong>Web UI 缺失</strong> ——README 明示 [WIP] Web UI，目前主要靠配置文件 + SIGHUP 重载</li>
+<li><strong>MPL-2.0 与商业产品集成</strong> ——文件级 copyleft 修改需公开，与商业产品集成时需法律审查</li>
+<li><strong>CAUTION very early stages</strong> ——README 明示「This project is still in very early stages of development. Use at your own risk」</li>
+<li><strong>加密代理 vs 加密隐私冲突</strong> ——Shadowsocks / VMess 既是「加密代理被滥用」也是「加密隐私」标识，存在法律 / 道德边界</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Pi-hole:</strong> Pi-hole 是 DNS 黑洞（仅 DNS 层），OpenGFW 是全协议栈（HTTP/TLS/QUIC/DNS/SSH/SOCKS/WireGuard/OpenVPN + 加密代理识别）；Pi-hole 适合「广告拦截」场景，OpenGFW 适合「网络主权 + VPN 滥用防护」场景</li>
+<li><strong>vs Snort / Suricata:</strong> Snort / Suricata 是 IDS（入侵检测），OpenGFW 是 GFW-like（流量治理 + 干预）；Snort 规则更复杂（Snort 规则语法），OpenGFW 规则更轻量（expr）</li>
+<li><strong>vs OPNsense / pfSense:</strong> OPNsense / pfSense 是完整防火墙发行版，OpenGFW 是单进程工具可集成到任意 Linux；OPNsense 适合「完整路由器替代」，OpenGFW 适合「在现有 Linux 上增强」</li>
+<li><strong>vs iptables / nftables:</strong> iptables / nftables 是「端口 + IP 匹配」无应用层解析，OpenGFW 是「应用层 + 加密代理识别」；iptables 适合简单规则，OpenGFW 适合复杂协议治理</li>
+<li><strong>vs 商业防火墙:</strong> 商业防火墙是闭源 + 贵 + 黑盒，OpenGFW 是开源 + 免费 + 透明 + MPL-2.0</li>
+<li><strong>vs 官方 GFW:</strong> OpenGFW 自述「Your very own DIY Great Firewall of China... democratize censorship」，但 GFW 是国家级封闭基础设施，OpenGFW 是开源技术复刻</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（网络主权流量治理基础设施）。</strong> OpenGFW 代表了 Linux 上「DIY GFW-like 流量治理」的诉求，无论其本身成败，这一方向是行业趋势。建议关注：完整协议栈在不同发行版的稳定性（决定实际可用性）+ expr 规则引擎的扩展（决定复杂规则表达力）+ ML 流量分类的准确率（决定加密代理识别效果）+ Web UI 的可用度（决定用户体验）+ MPL-2.0 与商业产品的兼容性。对 Linux 网络工程师 / VPS 提供商 / 居家路由器爱好者，这个项目是「Linux 网络主权流量治理」的具体路径，值得直接采用或 Fork 部署。对网络基础设施观察者，它是「开源网络主权」赛道的头部样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>完整协议栈在不同 Linux 发行版的稳定性（Ubuntu / Debian / CentOS / Arch 等）</li>
+<li>expr 规则引擎在复杂规则的表达力（是否需要专门的协议匹配原语）</li>
+<li>NFQueue 在高负载下的吞吐（家庭千兆 / VPS 万兆的实际性能）</li>
+<li>ML 流量分类的准确率（WIP 部分的具体进展）</li>
+<li>Web UI 的可用度（WIP 部分的具体进展）</li>
+<li>MPL-2.0 与商业产品的兼容性（集成到商业路由器 OS 的法律可行性）</li>
+<li>加密代理识别的演化（Shadowsocks 2022 / VMess AEAD / Trojan-GFW 等新协议）</li>
+<li>是否出现统一网络治理规则标准（决定 expr 在多工具互操作中的地位）</li>
+<li>企业 / VPS 采用案例（fork 后的实际部署报告）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-20) | Stars: 131 | Forks: 58 | License: MPL-2.0 | 语言: Go | 创建: 2026-09-19</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

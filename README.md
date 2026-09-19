@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-19.md">Latest report</a> ·
+  <a href="daily/2026-09-20.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-19
+## Latest report · 2026-09-20
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 610 | 3 | 10k+ |
+| 4 | 614 | 3 | 10k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [eliasstravik/herdr-projects](projects/herdr-projects.md) | 140 stars | 基础设施候选 |
-| [indada/repopilot](projects/repopilot.md) | 95 stars | 工具型 |
-| [LingxiangXu/traceclause](projects/traceclause.md) | 58 stars | 工具型 |
-| [CYBERVERSE-Research/skyline-speeder](projects/skyline-speeder.md) | 33 stars | 基础设施候选 |
+| [HyNetworks/OpenGFW](projects/opengfw.md) | 131 stars | 基础设施候选 |
+| [v-modal/awesome-jev-tools](projects/awesome-jev-tools.md) | 158 stars | 观察型 |
+| [logan-markewich/jeff](projects/jeff.md) | 98 stars | 工具型 |
+| [liushunqi8-hash/editaplot2026](projects/editaplot2026.md) | 81 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: eliasstravik/herdr-projects
-2. **Signal 2** · score 86 · repositories: indada/repopilot
-3. **Signal 3** · score 82 · repositories: LingxiangXu/traceclause
-4. **Signal 4** · score 78 · repositories: CYBERVERSE-Research/skyline-speeder
+1. **Signal 1** · score 88 · repositories: HyNetworks/OpenGFW
+2. **Signal 2** · score 84 · repositories: v-modal/awesome-jev-tools
+3. **Signal 3** · score 82 · repositories: logan-markewich/jeff
+4. **Signal 4** · score 78 · repositories: liushunqi8-hash/editaplot2026
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-19.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-20.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
-| [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 
 ## Why this repository exists
 

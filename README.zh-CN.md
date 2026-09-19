@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-19.md">最新日报</a> ·
+  <a href="daily/2026-09-20.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-19
+## 最新研究 · 2026-09-20
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 610 | 3 | 10k+ |
+| 4 | 614 | 3 | 10k+ |
 
-**今日核心判断：** eliasstravik/herdr-projects 1 天 140⭐ ⑂4 协调器对话 + 并行 worker 线程 Coding Agent 项目编排（Rust · MIT · Herdr 0.9.1+ 插件 · 协调器永不亲自干活始终保持可对话 · 每个任务一个独立 agent 跑在自己 git worktree + 分支 · 所有线程共享同一份指令 + 项目级 memory · 侧栏按 ready-for-review / waiting-on-you / working / landing / idle 五组聚合 · threads 状态 ticker 跟 PR + 例行 routine · 自托管 macOS / Linux · 无 hosted service · 与昨日 thruwire/foreman「Jev 软件工厂监管层」同构 AI Coding Agent 多 loop 工程化但推到「多 worker 线程并行 + 协调器只做路由 + 项目级 memory 共享」用户决策侧最高抽象）· indada/repopilot 1 天 95⭐ ⑂6 验证驱动 AI 软件迭代引擎（TypeScript · MIT · OpenAI Codex SDK + 自托管 worker · GitHub Issue / PR → 需求驱动测试生成 → 失败复现 → 代码修复 → 独立 Docker runner 验证 → 维护者保留 merge 决策 · 修复前冻结测试 · 候选必须保留测试身份 + 通过独立执行 + 通过 policy 重检 · 环境失败有界重试 · 不稳定证据阻断自动修复 · JSON / Markdown 报告本地保留 findings + test outcomes + repair attempts + publication state · AGENTS.md 项目规约静态规则 + Codex 语义审查 + 引用规则 + 代码证据 · 378 KB · 与昨日 thruwire/foreman「Jev supervisor」同构但推到「Codex SDK 直接做工程迭代 + 独立验证器」领域 · 与昨日 clawback/claude-code-cost-ledger「session 层成本治理」同构但推到「仓库级 Issue / PR 验证迭代闭环」领域）· LingxiangXu/traceclause 1 天 58⭐ ⑂4 本地优先需求文档证据审查工作台（Python · MIT · 3.11+ · FastAPI · SQLite · 文本 PDF/DOCX/UTF-8 TXT/Markdown 导入 · PDF 页引用 + DOCX 段落/表行引用 + 文本行引用 · 原文件字节 SHA-256 指纹 + 精确需求引用偏移 · 中文 bigram + 英文 word BM25 检索至多 3 候选 + 共享术语 + 词覆盖 · 候选 / 可能冲突 / 缺失证据三类提示 · 数字差异触发复核提醒 · 人类审查选定源段 + 书面理由 + 变更历史 · Markdown / CSV / JSON 三格式导出 · 不需 model API key · 文档内容不外发 AI · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」同构但推到「本地需求文档 + 反 SaaS 证据审查」领域 · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 软件质量评估」同构但推到「本地优先文档证据审查」合规证据链领域）· CYBERVERSE-Research/skyline-speeder 1 天 33⭐ ⑂4 发送端 eBPF struct_ops TCP 拥塞控制（Python + Rust · GPL-2.0 · kernel 6.12 LTS+ · Debian / Ubuntu · 4 件套 skyline_cc eBPF struct_ops + skyline_policy cgroup sockops + skyline_tc TC egress + skyline-speederd / ssctl Rust userspace · 仅部署发送端客户端零改造 · 目标 10-20% 丢包 + 100-300 ms RTT 长单向流 · 假设丢包不带拥塞信息 · CUBIC 0.05-0.31 vs BBR 3-84 vs Skyline 79-95 Mbit/s 九宫格 +13% ~ +26.8x · 守卫项失活场景 < 0.01% 偏差 · RTO ceiling 防 101s 退避 · 297 KB · 与昨日 arvindear/wp2shell-PoC「RCE 链 PoC」同构但推到「网络栈层 eBPF 加速」基础设施领域 · 与昨日 thruwire/foreman「快决策 / 慢生成分层」同构但推到「网络栈层快路径 / 慢回退分层」基础设施领域）
+**今日核心判断：** HyNetworks/OpenGFW 1 天 131⭐ ⑂58 DIY GFW Linux 全协议栈流量分析工程化（Go · MPL-2.0 · 完整 IP/TCP reassembly + HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 协议解析器 + Shadowsocks/VMess/Trojan 加密代理识别 + 基于 expr 规则引擎 + 热重载规则 + Flow-based multicore 负载均衡 + Connection offloading + NFQueue IO 抽象 · 285 KB · 与昨日 thruwire/foreman「Jev supervisor 监管层 + Python policy 5 类动作」同构「监管 + 策略」分层但推到「网络栈层监管 + expr 策略」基础设施领域 · 与昨日 LingxiangXu/traceclause「本地优先 + 不外发 AI」同构反 SaaS 但推到「本地网络主权 + 不外发流量」基础设施领域）· v-modal/awesome-jev-tools 1 天 158⭐ ⑂0 Jev 决策模型生态聚合 awesome 列表（README 是分类文件首页聚合 · TypeSafe AI System One 决策模型 · 接受 state + typed question 返回 typed decision + confidence · 分类 / 基础设施路由 / rubric scoring / 验证 gate / agent guardrails 5 类应用 · 排除 generic classifier + pure theory + launch-hype + private sources · curl means nothing · jev review 是 awesome-list 资源聚合）· logan-markewich/jeff 1 天 98⭐ ⑂4 自托管 Jev drop-in replacement（Python · MIT · GLiFormer 400M 参数 encoder · 兼容 typesafe-sdk · TYPESAFE_BASE_URL 指 jeff · 支持 choice / score / noul 三类问题 · CUDA → MPS → CPU 设备选择 · README 诚实「Cheaper to self-host but less accurate than jev on reasoning-heavy tasks」 · 957 KB · 09-15 ~ 09-19 五日内「Jev 生态从单点模型到生态爆发 + 自我解构（自托管 fork + 开源 API + awesome 列表 + GEPA 对齐 + Rust 嵌入）」的「决策模型生态去 SaaS 化」严肃化）· liushunqi8-hash/editaplot2026 1 天 81⭐ ⑂3 Codex 可编辑科研绘图 Skill（Python · Apache-2.0 · Windows 10/11 x64 only · Codex Skill 形态 · Origin 2026 (10.30) verified · 输入数据 → 理解表 → 逐列说明用途 → 推荐图形 → 用户确认 → 调用 Origin 实例 → 生成可编辑 OPJU + 导出 PNG/PDF/TIF · 不让 Python 预览冒充 Origin 成图 · 不擅自补列 / 拟合 / 推断 · 5.7 MB · 与昨日 indada/repopilot「verification-driven iteration + 维护者最终 merge gate」同构「AI 提议 + 人类最终 gate」但推到「科学绘图 + 用户最终确认图形元素」领域 · 与前日 pengchujin/MacTV「Apple Silicon + 硬件桥接」同构「中文开发者 + 平台专属 + 硬件集成」但推到「中文开发者 + Codex Skill + Origin 集成」领域 · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」+ LingxiangXu/traceclause「本地优先 + 不外发」同构「中文场景本地工具 + 反 SaaS」但推到「中文科研 + 本地 Origin + AI 辅助 + 不替用户决定」领域）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [eliasstravik/herdr-projects](projects/herdr-projects.md) | 140 stars | 基础设施候选 |
-| [indada/repopilot](projects/repopilot.md) | 95 stars | 工具型 |
-| [LingxiangXu/traceclause](projects/traceclause.md) | 58 stars | 工具型 |
-| [CYBERVERSE-Research/skyline-speeder](projects/skyline-speeder.md) | 33 stars | 基础设施候选 |
+| [HyNetworks/OpenGFW](projects/opengfw.md) | 131 stars | 基础设施候选 |
+| [v-modal/awesome-jev-tools](projects/awesome-jev-tools.md) | 158 stars | 观察型 |
+| [logan-markewich/jeff](projects/jeff.md) | 98 stars | 工具型 |
+| [liushunqi8-hash/editaplot2026](projects/editaplot2026.md) | 81 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **协调器对话 + 并行 worker 线程 Coding Agent 项目编排——eliasstravik/herdr-projects 1 天 140⭐ ⑂4（Rust · MIT · Herdr 0.9.1+ 插件 · 协调器永不亲自干活始终保持可对话 · 每个任务一个独立 agent 跑在自己 git worktree + 分支 · 所有线程共享同一份指令 + 项目级 memory · 侧栏按 ready-for-review / waiting-on-you / working / landing / idle 五组聚合 · threads 状态 ticker 跟 PR + 例行 routine · lessons under `## Remember` 流回 memory 给下一个 thread · 自托管 macOS / Linux · 无 hosted service · 不需要预装 Node.js · 与昨日 thruwire/foreman「Jev supervisor 双 loop 并行」同构但推到「多 worker 线程并行 + 协调器只做路由 + 项目级 memory 共享」用户决策侧最高抽象 · 同一指令同一 memory 跨线程是「agent 上下文复用」的工程化形式 · 对比 cloud projects 产品保持自托管 + 免费 + 适配现有 agent CLI）** · 相关项目：eliasstravik/herdr-projects · 强度：88
-2. **验证驱动 AI 软件迭代引擎——indada/repopilot 1 天 95⭐ ⑂6（TypeScript · MIT · OpenAI Codex SDK + 自托管 worker · GitHub Issue / PR → 需求驱动测试生成 → 失败复现 → 代码修复 → 独立 Docker runner 验证 → 维护者保留 merge 决策 · 修复前冻结测试 · 候选必须保留测试身份 + 通过独立执行 + 通过 policy 重检 · 环境失败有界重试 · 不稳定证据阻断自动修复 · JSON / Markdown 报告本地保留 findings + test outcomes + repair attempts + publication state · AGENTS.md 项目规约静态规则 + Codex 语义审查 + 引用规则 + 代码证据 · 与昨日 thruwire/foreman「Jev supervisor」同构 AI Coding Agent 多 loop 工程化但推到「Codex SDK 直接做工程迭代 + 独立验证器」领域 · 与昨日 clawback/claude-code-cost-ledger「session 层成本治理」同构但推到「仓库级 Issue / PR 验证迭代闭环」领域 · 与昨日 thruwire/foreman「verifier 是另一个 Codex worker」同构但推到「verifier 是独立 Docker runner + 维护者最终 merge gate」多 harness 治理）** · 相关项目：indada/repopilot · 强度：86
-3. **本地优先需求文档证据审查工作台——LingxiangXu/traceclause 1 天 58⭐ ⑂4（Python · MIT · 3.11+ · FastAPI · SQLite · 文本 PDF / DOCX / UTF-8 TXT / Markdown 导入 · PDF 页引用 + DOCX 段落 / 表行引用 + 文本行引用 · 原文件字节 SHA-256 指纹 + 精确需求引用偏移 · 中文 bigram + 英文 word BM25 检索至多 3 候选 + 共享术语 + 词覆盖 · 候选 / 可能冲突 / 缺失证据三类提示 · 数字差异触发复核提醒 · 人类审查选定源段 + 书面理由 + 变更历史 · Markdown / CSV / JSON 三格式导出 · 不需 model API key · 文档内容不外发 AI · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」同构但推到「本地需求文档 + 反 SaaS 证据审查」领域 · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 软件质量评估」同构但推到「本地优先文档证据审查」合规证据链领域 · 10 MB 单文件 + 200 PDF 页 + 5000 抽取块 + 50 万字符 + 500 需求上限）** · 相关项目：LingxiangXu/traceclause · 强度：82
-4. **发送端 eBPF struct_ops TCP 拥塞控制——CYBERVERSE-Research/skyline-speeder 1 天 33⭐ ⑂4（Python + Rust · GPL-2.0 · kernel 6.12 LTS+ · Debian / Ubuntu · 4 件套 skyline_cc eBPF struct_ops 拥塞控制 + skyline_policy cgroup sockops 早期丢包观察 + skyline_tc TC egress DSCP 标记 + skyline-speederd / ssctl Rust userspace 驻留控制面 · 仅部署发送端客户端零改造 · 目标 10-20% 丢包 + 100-300 ms RTT 长单向流 · 假设丢包不带拥塞信息 · CUBIC 0.05-0.31 vs BBR 3-84 vs Skyline 79-95 Mbit/s 九宫格 +13% ~ +26.8x · 守卫项失活场景 < 0.01% 偏差 · RTO ceiling 防 101s 退避 · 与昨日 arvindear/wp2shell-PoC「RCE 链 PoC」同构基础设施领域但推到「网络栈层 eBPF 加速」领域 · 与昨日 thruwire/foreman「快决策 / 慢生成分层」同构分层思想但推到「网络栈层快路径 / 慢回退分层」基础设施领域 · 与昨日 chaseleantj/desktop-habitats「macOS 菜单栏 + Three.js 桌面生态」同构 macOS 桌面应用层但推到「Linux 服务器网络栈层」）** · 相关项目：CYBERVERSE-Research/skyline-speeder · 强度：78
+1. **网络栈层监管 + expr 策略——HyNetworks/OpenGFW 1 天 131⭐ ⑂58 fork/star 44.3%（Go · MPL-2.0 · 完整 IP/TCP reassembly + HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 协议解析器 + Shadowsocks/VMess/Trojan 加密代理识别 + 基于 expr 规则引擎 + 热重载规则 SIGHUP 重载 + Flow-based multicore 负载均衡 + Connection offloading + NFQueue IO 抽象 · 285 KB · 与昨日 thruwire/foreman「Jev supervisor 监管 + Python policy 5 类动作」同构「监管 + 策略」分层但推到「网络栈层监管 + expr 策略」基础设施领域 · 与昨日 LingxiangXu/traceclause「本地优先 + 不外发 AI」同构反 SaaS 但推到「本地网络主权 + 不外发流量」基础设施领域 · fork/star 44.3% 极高企业 / VPS fork 信号）** · 相关项目：HyNetworks/OpenGFW · 强度：88
+2. **Jev 决策模型生态聚合 awesome 列表——v-modal/awesome-jev-tools 1 天 158⭐ ⑂0 fork/star 0%（README 是分类文件首页聚合 · TypeSafe AI System One 决策模型 · 接受 state + typed question 返回 typed decision + confidence · 分类 / 基础设施路由 / rubric scoring / 验证 gate / agent guardrails 5 类应用 · 排除 generic classifier + pure theory + launch-hype + private sources · 83 KB · 与昨日 cobanov/awesome-jev 158⭐ + fatwang2/awesome-jev + AbdelStark/awesome-typesafe 同构「Jev 资源聚合」但推到「明确纳入标准 + curation is not endorsement + 不接受 private sources」严肃化 · 与昨日 thruwire/foreman「Jev supervisor」+ NiazMorshed2007/jev-review「本地优先 MCP」同构「Jev 应用层」但推到「Jev 资源 + 生态聚合层」）** · 相关项目：v-modal/awesome-jev-tools · 强度：84
+3. **自托管 Jev drop-in replacement powered by GLiFormer——logan-markewich/jeff 1 天 98⭐ ⑂4 fork/star 4.1%（Python · MIT · GLiFormer 400M 参数 encoder · 兼容 typesafe-sdk · TYPESAFE_BASE_URL 指 jeff · 支持 choice / score / noul 三类问题 · CUDA → MPS → CPU 设备选择 · README 诚实「Cheaper to self-host but less accurate than jev on reasoning-heavy tasks」 · 957 KB · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 质量评估」同构「本地优先反 SaaS」但推到「自托管 Jev 替代 API + 开源 encoder 模型」领域 · 与昨日 featherless-ai/simple-jev「开源模型转 classifier/jev endpoint」同构但推到「自托管 + drop-in + 完整 typesafe-sdk 兼容」严肃化 · 与昨日 ekzhang/openjev-sglang「Jev-compatible API endpoint 基于开源模型 prefill-only」同构但推到「GLiFormer encoder + full choice/score/noul」领域 · 是 09-15 ~ 09-19 「Jev 生态去 SaaS 化」路径的具体兑现）** · 相关项目：logan-markewich/jeff · 强度：82
+4. **Codex 可编辑科研绘图 Skill Windows——liushunqi8-hash/editaplot2026 1 天 81⭐ ⑂3 fork/star 3.7%（Python · Apache-2.0 · Windows 10/11 x64 only · Codex Skill 形态 · Origin 2026 (10.30) verified · 输入数据 → 理解表 → 逐列说明用途 → 推荐图形 → 用户确认 → 调用 Origin 实例 → 生成可编辑 OPJU + 导出 PNG/PDF/TIF · 不让 Python 预览冒充 Origin 成图 · 不擅自补列 / 拟合 / 推断 · 5.7 MB · 与昨日 indada/repopilot「verification-driven iteration + 维护者最终 merge gate」同构「AI 提议 + 人类最终 gate」但推到「科学绘图 + 用户最终确认图形元素」领域 · 与前日 pengchujin/MacTV「Apple Silicon + 硬件桥接」同构「中文开发者 + 平台专属 + 硬件集成」但推到「中文开发者 + Codex Skill + Origin 集成」领域 · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」+ LingxiangXu/traceclause「本地优先 + 不外发」同构「中文场景本地工具 + 反 SaaS」但推到「中文科研 + 本地 Origin + AI 辅助 + 不替用户决定」领域）** · 相关项目：liushunqi8-hash/editaplot2026 · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
 | [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
-| [2026-09-13](daily/2026-09-13.md) | 6 | 4 |
 
 ## 为什么做这个项目
 
