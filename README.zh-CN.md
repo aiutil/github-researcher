@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-20.md">最新日报</a> ·
+  <a href="daily/2026-09-21.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-20
+## 最新研究 · 2026-09-21
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 614 | 3 | 10k+ |
+| 4 | 618 | 3 | 10k+ |
 
-**今日核心判断：** HyNetworks/OpenGFW 1 天 131⭐ ⑂58 DIY GFW Linux 全协议栈流量分析工程化（Go · MPL-2.0 · 完整 IP/TCP reassembly + HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 协议解析器 + Shadowsocks/VMess/Trojan 加密代理识别 + 基于 expr 规则引擎 + 热重载规则 + Flow-based multicore 负载均衡 + Connection offloading + NFQueue IO 抽象 · 285 KB · 与昨日 thruwire/foreman「Jev supervisor 监管层 + Python policy 5 类动作」同构「监管 + 策略」分层但推到「网络栈层监管 + expr 策略」基础设施领域 · 与昨日 LingxiangXu/traceclause「本地优先 + 不外发 AI」同构反 SaaS 但推到「本地网络主权 + 不外发流量」基础设施领域）· v-modal/awesome-jev-tools 1 天 158⭐ ⑂0 Jev 决策模型生态聚合 awesome 列表（README 是分类文件首页聚合 · TypeSafe AI System One 决策模型 · 接受 state + typed question 返回 typed decision + confidence · 分类 / 基础设施路由 / rubric scoring / 验证 gate / agent guardrails 5 类应用 · 排除 generic classifier + pure theory + launch-hype + private sources · curl means nothing · jev review 是 awesome-list 资源聚合）· logan-markewich/jeff 1 天 98⭐ ⑂4 自托管 Jev drop-in replacement（Python · MIT · GLiFormer 400M 参数 encoder · 兼容 typesafe-sdk · TYPESAFE_BASE_URL 指 jeff · 支持 choice / score / noul 三类问题 · CUDA → MPS → CPU 设备选择 · README 诚实「Cheaper to self-host but less accurate than jev on reasoning-heavy tasks」 · 957 KB · 09-15 ~ 09-19 五日内「Jev 生态从单点模型到生态爆发 + 自我解构（自托管 fork + 开源 API + awesome 列表 + GEPA 对齐 + Rust 嵌入）」的「决策模型生态去 SaaS 化」严肃化）· liushunqi8-hash/editaplot2026 1 天 81⭐ ⑂3 Codex 可编辑科研绘图 Skill（Python · Apache-2.0 · Windows 10/11 x64 only · Codex Skill 形态 · Origin 2026 (10.30) verified · 输入数据 → 理解表 → 逐列说明用途 → 推荐图形 → 用户确认 → 调用 Origin 实例 → 生成可编辑 OPJU + 导出 PNG/PDF/TIF · 不让 Python 预览冒充 Origin 成图 · 不擅自补列 / 拟合 / 推断 · 5.7 MB · 与昨日 indada/repopilot「verification-driven iteration + 维护者最终 merge gate」同构「AI 提议 + 人类最终 gate」但推到「科学绘图 + 用户最终确认图形元素」领域 · 与前日 pengchujin/MacTV「Apple Silicon + 硬件桥接」同构「中文开发者 + 平台专属 + 硬件集成」但推到「中文开发者 + Codex Skill + Origin 集成」领域 · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」+ LingxiangXu/traceclause「本地优先 + 不外发」同构「中文场景本地工具 + 反 SaaS」但推到「中文科研 + 本地 Origin + AI 辅助 + 不替用户决定」领域）
+**今日核心判断：** Haleclipse/CometixCode 1 天 325⭐ ⑂17 Anthropic Claude Code TUI 的 Rust 1:1 重实现（Rust 2024 edition · AGPL-3.0 · iocraft retained-mode TUI + 自带 CometixTUI fork row-level diffing + SIGCONT 自愈 + IME cursor + bracketed paste · 5919 KB · AGPL-3.0 是「服务端网络使用 copyleft」具体路径 · README 明示「Unofficial project, not affiliated with Anthropic」 · 与昨日 09-19 ~ 09-20 各 agent SDK / harness fork 范式同构但推到「terminal UI 1:1 重实现」领域）· rmalde/minecraft-agent 1 天 259⭐ ⑂17 GPT-6 Astra + JEV Minecraft Java 1.16.5 端到端通关 agent（JavaScript · 无 license · Mineflayer + vanilla server + 隐藏 Java sensor 报告龙首精确位置 · nether-final-08 用时 8 分 43.3 秒比上一次 14 分 31.8 秒缩短 40% · 131 次 JEV 决策 + 35 次 Astra 调用 · 6 次床爆炸击杀末影龙 · 全部 17 项 run 检查 + 8 项 route/camera/screen 检查 + 29 项本地测试通过 · 摄像头连续转向 240 度/秒 + 加速度 960 度/秒² · README 诚实表态「Dragon flight and landing times can vary」 · 698 KB）· wuyoscar/jev-skill 1 天 142⭐ ⑂3 Awesome Jev Skills 90 场景 + 9 技能 + 浏览器 / inbox / 文档 / 创意项目工作流合集（Python · MIT · 9 个 skills + 90 个 scenarios · Action tests 工作流 · Demos 链接到原作者 · 双语 README 英文 + 简体中文 · 1011 KB · 与昨日 09-20 v-modal/awesome-jev-tools「Jev 资源聚合 + 严格纳入标准」同构「Jev 资源聚合」但推到「90 场景可运行 + Action tests 工作流 + 9 技能可安装」具体可执行化领域）· ghuntley/underclass 1 天 107⭐ ⑂5 OpenAI 兼容多订阅池化代理（Rust · MIT · /v1/responses + /v1/chat/completions + /v1/models 三端点 · sticky sessions 钉单订阅保持 prompt cache warm · quota exhausted 自动冷却到窗口重置 · 池全枯竭 fail-fast 返回最早 Retry-After · chatgpt.com Codex N 订阅 OAuth device flow · api.githubcopilot.com GitHub device flow · web UI accounts / catalog / live request feed · ghuntley 个人开发者背书（GitHub Principal Engineer 出身） · 170 KB · 与昨日 clawback/claude-code-cost-ledger「session 层成本治理」+ NiazMorshed2007/jev-review「本地优先」同构「AI Coding 多账户 / 多订阅治理」但推到「OpenAI 兼容代理 + sticky session + 冷却 + fail-fast」领域）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [HyNetworks/OpenGFW](projects/opengfw.md) | 131 stars | 基础设施候选 |
-| [v-modal/awesome-jev-tools](projects/awesome-jev-tools.md) | 158 stars | 观察型 |
-| [logan-markewich/jeff](projects/jeff.md) | 98 stars | 工具型 |
-| [liushunqi8-hash/editaplot2026](projects/editaplot2026.md) | 81 stars | 工具型 |
+| [Haleclipse/CometixCode](projects/cometixcode.md) | 325 stars | 工具型 |
+| [rmalde/minecraft-agent](projects/minecraft-agent.md) | 259 stars | 观察型 |
+| [wuyoscar/jev-skill](projects/jev-skill.md) | 142 stars | 观察型 |
+| [ghuntley/underclass](projects/underclass.md) | 107 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **网络栈层监管 + expr 策略——HyNetworks/OpenGFW 1 天 131⭐ ⑂58 fork/star 44.3%（Go · MPL-2.0 · 完整 IP/TCP reassembly + HTTP/TLS/QUIC/DNS/SSH/SOCKS4/5/WireGuard/OpenVPN 协议解析器 + Shadowsocks/VMess/Trojan 加密代理识别 + 基于 expr 规则引擎 + 热重载规则 SIGHUP 重载 + Flow-based multicore 负载均衡 + Connection offloading + NFQueue IO 抽象 · 285 KB · 与昨日 thruwire/foreman「Jev supervisor 监管 + Python policy 5 类动作」同构「监管 + 策略」分层但推到「网络栈层监管 + expr 策略」基础设施领域 · 与昨日 LingxiangXu/traceclause「本地优先 + 不外发 AI」同构反 SaaS 但推到「本地网络主权 + 不外发流量」基础设施领域 · fork/star 44.3% 极高企业 / VPS fork 信号）** · 相关项目：HyNetworks/OpenGFW · 强度：88
-2. **Jev 决策模型生态聚合 awesome 列表——v-modal/awesome-jev-tools 1 天 158⭐ ⑂0 fork/star 0%（README 是分类文件首页聚合 · TypeSafe AI System One 决策模型 · 接受 state + typed question 返回 typed decision + confidence · 分类 / 基础设施路由 / rubric scoring / 验证 gate / agent guardrails 5 类应用 · 排除 generic classifier + pure theory + launch-hype + private sources · 83 KB · 与昨日 cobanov/awesome-jev 158⭐ + fatwang2/awesome-jev + AbdelStark/awesome-typesafe 同构「Jev 资源聚合」但推到「明确纳入标准 + curation is not endorsement + 不接受 private sources」严肃化 · 与昨日 thruwire/foreman「Jev supervisor」+ NiazMorshed2007/jev-review「本地优先 MCP」同构「Jev 应用层」但推到「Jev 资源 + 生态聚合层」）** · 相关项目：v-modal/awesome-jev-tools · 强度：84
-3. **自托管 Jev drop-in replacement powered by GLiFormer——logan-markewich/jeff 1 天 98⭐ ⑂4 fork/star 4.1%（Python · MIT · GLiFormer 400M 参数 encoder · 兼容 typesafe-sdk · TYPESAFE_BASE_URL 指 jeff · 支持 choice / score / noul 三类问题 · CUDA → MPS → CPU 设备选择 · README 诚实「Cheaper to self-host but less accurate than jev on reasoning-heavy tasks」 · 957 KB · 与昨日 NiazMorshed2007/jev-review「本地优先 MCP 质量评估」同构「本地优先反 SaaS」但推到「自托管 Jev 替代 API + 开源 encoder 模型」领域 · 与昨日 featherless-ai/simple-jev「开源模型转 classifier/jev endpoint」同构但推到「自托管 + drop-in + 完整 typesafe-sdk 兼容」严肃化 · 与昨日 ekzhang/openjev-sglang「Jev-compatible API endpoint 基于开源模型 prefill-only」同构但推到「GLiFormer encoder + full choice/score/noul」领域 · 是 09-15 ~ 09-19 「Jev 生态去 SaaS 化」路径的具体兑现）** · 相关项目：logan-markewich/jeff · 强度：82
-4. **Codex 可编辑科研绘图 Skill Windows——liushunqi8-hash/editaplot2026 1 天 81⭐ ⑂3 fork/star 3.7%（Python · Apache-2.0 · Windows 10/11 x64 only · Codex Skill 形态 · Origin 2026 (10.30) verified · 输入数据 → 理解表 → 逐列说明用途 → 推荐图形 → 用户确认 → 调用 Origin 实例 → 生成可编辑 OPJU + 导出 PNG/PDF/TIF · 不让 Python 预览冒充 Origin 成图 · 不擅自补列 / 拟合 / 推断 · 5.7 MB · 与昨日 indada/repopilot「verification-driven iteration + 维护者最终 merge gate」同构「AI 提议 + 人类最终 gate」但推到「科学绘图 + 用户最终确认图形元素」领域 · 与前日 pengchujin/MacTV「Apple Silicon + 硬件桥接」同构「中文开发者 + 平台专属 + 硬件集成」但推到「中文开发者 + Codex Skill + Origin 集成」领域 · 与昨日 skill-lab/feishu-chat-archive「中国云办公 API 反 SaaS 编排」+ LingxiangXu/traceclause「本地优先 + 不外发」同构「中文场景本地工具 + 反 SaaS」但推到「中文科研 + 本地 Origin + AI 辅助 + 不替用户决定」领域）** · 相关项目：liushunqi8-hash/editaplot2026 · 强度：78
+1. **Claude Code TUI 的 Rust 1:1 重实现——Haleclipse/CometixCode 1 天 325⭐ ⑂17（Rust 2024 edition · AGPL-3.0 · iocraft retained-mode TUI framework · 自带 CometixTUI fork row-level diffing + SIGCONT 自愈 + IME cursor + bracketed paste + grid layout · TypeScript 组件映射到 Rust 组件 · hook 映射到 hook · 偏差记录在源码里 · interactive loop + tool execution + permissions + MCP + slash commands 已实现 · 其余部分进度中 · 5919 KB · fork/star 5.2% · README 明示「Unofficial project, not affiliated with Anthropic」+ 「Claude/Claude Code are trademarks of Anthropic」+ 「Nothing here is endorsed」· Rust 1.88+ edition 2024 是「最低依赖无系统库无 pkg-config」具体路径 · AGPL-3.0 是「网络使用 copyleft + 修改需公开」具体路径 · 与昨日 09-19 ~ 09-20 各 agent SDK / harness fork 范式同构「Claude Code 替代 / 复用 / 重实现」但推到「terminal UI 1:1 重实现」领域 · 与前日 09-18 kitze/skillbox「自托管 Skills + 知名独立开发者背书」同构「独立开发者 + Claude Code 周边」领域 · 与昨日 09-18 dsh-lab/cordis-bundle-publisher「manifest + minisign + PyPI/OCI publish」同构「Claude Code 生态工具链补齐」但推到「TUI 层重写 + 严肃许可」领域）** · 相关项目：Haleclipse/CometixCode · 强度：88
+2. **GPT-6 Astra + JEV Minecraft 端到端通关 agent——rmalde/minecraft-agent 1 天 259⭐ ⑂17（JavaScript · 无 license · Mineflayer + Minecraft Java 1.16.5 vanilla server + 隐藏 Java sensor 报告龙首精确位置 · nether-final-08 用时 8 分 43.300 秒比上一次 14 分 31.800 秒缩短 40% · End combat 152 秒代替 332 秒 · 131 次 JEV 决策 + 35 次 Astra 调用 · 6 次床爆炸击杀末影龙 · 全部 17 项 run 检查 + 8 项 route/camera/screen 检查 + 29 项本地测试通过 · 不改游戏规则或实体状态 · 摄像头连续转向 240 度/秒 + 加速度 960 度/秒² · 隐藏原生 Minecraft 客户端渲染游戏无桌面输入 · 698 KB · fork/star 6.6% · README 诚实表态「Dragon flight and landing times can vary between runs」 · 与昨日 09-20 sutro-sh/jev-align「GEPA 对齐 Jev」+ Heman10x-NGU/openJev-verdict-2.0「Non-Autoregressive Decision Engine 击败 TypeSafe Jev & Laya」同构「Jev 决策模型应用层」但推到「Astra 规划 + JEV 选动作 + Minecraft 端到端通关」具身智能领域 · 与 09-17 rmalde/minecraft-agent 同构领域但推到「nether-final-08 验证 + 全部测试通过」严肃工程化 · 意味着 JEV 决策模型从「决策 API」推到「具身智能 agent 动作选择」具体路径 · 无 license 是企业 / 商业复用风险点）** · 相关项目：rmalde/minecraft-agent · 强度：86
+3. **Awesome Jev Skills 90 场景 + 9 技能合集——wuyoscar/jev-skill 1 天 142⭐ ⑂3（Python · MIT · 9 个 skills + 90 个 scenarios · Action tests 工作流 · Demos 链接到原作者（browser-use/jev-ultrafast 等）· 双语 README 英文 + 简体中文 · topics 含 skills badge · 1011 KB · fork/star 2.1% · 与昨日 09-20 v-modal/awesome-jev-tools「README 是分类文件首页聚合 + 5 类应用 + 严格纳入标准 + Curation is not endorsement」同构「Jev 资源聚合」但推到「90 场景可运行 + 9 技能可安装 + Action tests 工作流 + 双语 README」具体可执行化领域 · 与 09-19 mizorewww/laya-mlx「Native MLX runtime for Laya typed decision models 7-14 ms on M3 Max」+ mizorewww/laya-coreml「Core ML + Neural Engine」同构「Laya 决策模型本地推理」但推到「Jev 技能生态 + 应用场景 + 浏览器 / inbox / 文档 / 创意」领域 · 意味着 Jev 决策模型从「awesome 列表资源聚合」推到「可运行场景 + 可安装技能 + 工作流测试」可执行化 · 决定这条主线长期价值的是「Action tests 工作流是否稳定 + 90 场景覆盖广度 + 9 技能的可复用性 + Demos 链接的活跃度 + 双语 README 在中文 Jev 用户的接受度」—— Action tests CI / 90 场景广度 / 技能可复用性 / Demos 活跃度是关键）** · 相关项目：wuyoscar/jev-skill · 强度：82
+4. **OpenAI 兼容多订阅池化代理——ghuntley/underclass 1 天 107⭐ ⑂5（Rust · MIT · /v1/responses + /v1/chat/completions + /v1/models 三端点 · sticky sessions 钉单订阅保持上游 prompt cache warm · quota exhausted 自动冷却到窗口重置 · 池全枯竭 fail-fast 返回最早 Retry-After · chatgpt.com Codex N 订阅 OAuth device flow · api.githubcopilot.com GitHub device flow · web UI accounts / catalog / live request feed · ghuntley 个人开发者背书（GitHub Principal Engineer 出身 + 转独立）· 170 KB · fork/star 4.7% · 与昨日 09-17 clawback/claude-code-cost-ledger「session 层成本治理 + canonical JSON + content_hash + buckets.yaml」同构「AI Coding 多账户 / 多订阅治理」但推到「OpenAI 兼容代理 + sticky session + 冷却 + fail-fast」运行时领域 · 与 09-19 NiazMorshed2007/jev-review「本地优先 + 无 backend/database/telemetry/proxy」同构「本地优先」但推到「本地代理 + 多订阅池化」资源治理领域 · 决定这条主线长期价值的是「sticky session 在 chatgpt.com 订阅配额变化的兼容性 + 池全枯竭 fail-fast 在多用户场景的公平性 + web UI 的可用度 + GitHub device flow 在企业 GitHub 账号的可用度 + sticky session vs round-robin 在上游 cache 命中率的差异」—— chatgpt.com 配额机制 + fail-fast 公平性 + web UI 可用度 + device flow 可用度是关键）** · 相关项目：ghuntley/underclass · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 | [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 | [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 | [2026-09-15](daily/2026-09-15.md) | 5 | 4 |
-| [2026-09-14](daily/2026-09-14.md) | 4 | 4 |
 
 ## 为什么做这个项目
 

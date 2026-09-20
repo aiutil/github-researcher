@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ghuntley/underclass | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/ghuntley/underclass" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="ghuntleyunderclass">ghuntley/underclass</h1>
+<h2 id="_1">一句话定位</h2>
+<p>OpenAI 兼容多订阅池化代理 —— 把多个 ChatGPT/Codex 和 GitHub Copilot 订阅池化在一个 OpenAI 兼容 endpoint 后，通过 sticky sessions 钉单订阅保持上游 prompt cache warm，quota exhausted 自动冷却到窗口重置，池全枯竭 fail-fast 返回最早 Retry-After，并由 ghuntley（GitHub Principal Engineer 出身）独立开发者背书。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>当前 AI Coding 多订阅治理的痛点是 <strong>「个人订阅配额上限（ChatGPT Plus 每周消息数 / Codex 配额 / Copilot 配额）是单一账号天花板 + 多账号手动切换繁琐 + 上游 prompt cache 在 round-robin 下命中率极低 + 配额耗尽后不知何时重置 + 池全枯竭时客户端挂起等待 + 无统一 OpenAI 兼容 endpoint」</strong>。underclass 用「OpenAI 兼容 endpoint + sticky session 钉单订阅保持上游 prompt cache warm + quota exhausted 自动冷却到窗口重置 + 池全枯竭 fail-fast 返回最早 Retry-After + chatgpt.com Codex N 订阅 OAuth device flow + api.githubcopilot.com GitHub device flow + web UI accounts / catalog / live request feed」是「AI Coding 多订阅池化 + sticky session + 冷却 + fail-fast + OpenAI 兼容」的具体路径。</p>
+<h2 id="2026-09-21">为什么值得关注（2026-09-21）</h2>
+<ul>
+<li><strong>Stars:</strong> 107（截至 2026-09-21），1 天 107⭐，fork 5</li>
+<li><strong>License:</strong> MIT（明确许可）</li>
+<li><strong>语言:</strong> Rust</li>
+<li><strong>活跃度:</strong> created 2026-09-20，pushed_at 2026-09-20</li>
+<li><strong>规模:</strong> 170 KB（Rust + 多协议客户端 + sticky session + 冷却 + fail-fast + web UI 的轻量）</li>
+<li><strong>Topics:</strong> openai / openai-proxy-load-balancer</li>
+<li><strong>Homepage:</strong> https://ghuntley.com</li>
+<li><strong>背书:</strong> ghuntley 个人开发者背书（GitHub Principal Engineer 出身 + 转独立）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>underclass 的热度是 <strong>「AI Coding 多订阅治理 × OpenAI 兼容 endpoint × sticky session 保持上游 prompt cache warm × quota exhausted 自动冷却 × 池全枯竭 fail-fast × chatgpt.com + api.githubcopilot.com 双源 × ghuntley 独立开发者背书」</strong> 的组合。当前 AI Coding 多订阅用户的痛点是「单一账号配额上限 + 多账号手动切换繁琐 + 上游 prompt cache 命中率低 + 配额耗尽不知何时重置 + 池全枯竭客户端挂起等待」。一个 170 KB Rust 项目直击痛点 + sticky session + 冷却 + fail-fast + 双源 + ghuntley 背书，自然爆火。<strong>fork/star 4.7%</strong> 与昨日 logan-markewich/jeff 4.1% 接近，反映「严肃工具型 Rust 项目」早期 fork 率特征——准备集成到 AI Coding 工作流的开发者 fork。热度<strong>真实且具 AI Coding 多订阅治理价值</strong>——但需警惕：sticky session 在 chatgpt.com / api.githubcopilot.com 订阅配额变化的兼容性 + 池全枯竭 fail-fast 在多用户场景的公平性 + web UI 的可用度 + GitHub device flow 在企业 GitHub 账号的可用度 + sticky session vs round-robin 在上游 cache 命中率的差异 + OpenAI 兼容 endpoint 在第三方客户端的兼容性。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>OpenAI 兼容三端点</strong> ——/v1/responses + /v1/chat/completions + /v1/models</li>
+<li><strong>sticky sessions 钉单订阅保持上游 prompt cache warm</strong> ——关键工程化形式</li>
+<li><strong>quota exhausted 自动冷却到窗口重置</strong> ——避免无效重试</li>
+<li><strong>池全枯竭 fail-fast 返回最早 Retry-After</strong> ——不挂起</li>
+<li><strong>chatgpt.com Codex N 订阅 OAuth device flow</strong> ——多 ChatGPT/Codex 订阅</li>
+<li><strong>api.githubcopilot.com GitHub device flow</strong> ——多 GitHub Copilot 订阅</li>
+<li><strong>web UI accounts / catalog / live request feed</strong> ——多账号管理</li>
+<li><strong>ghuntley 个人开发者背书</strong> ——GitHub Principal Engineer 出身 + 转独立开发者</li>
+<li><strong>170 KB repo</strong> ——Rust + 多协议客户端 + sticky session + 冷却 + fail-fast + web UI 的轻量</li>
+<li><strong>MIT License</strong> ——明确许可</li>
+<li><strong>107⭐ / fork 5 / fork/star 4.7%</strong> ——严肃多订阅治理信号</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>OpenAI 兼容多订阅池化代理；/v1/responses + /v1/chat/completions + /v1/models + sticky sessions + health pool + fail-fast saturation + tracing</td>
+<td>仅基于档案描述的 OpenAI 兼容三端点、sticky session、quota 冷却、fail-fast、chatgpt.com / api.githubcopilot.com 双源、web UI；具体 sticky session 算法、quota 窗口检测、fail-fast 公平性策略均待核验</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>OpenAI 客户端请求 → sticky session 钉单 → 转发 chatgpt.com / api.githubcopilot.com → 上游 prompt cache warm → 流式响应 → quota exhausted 冷却 → 池全枯竭 fail-fast 返回 Retry-After</td>
+<td>主路径为档案语义抽象；具体 sticky session 路由算法、quota 窗口检测机制、fail-fast 公平性策略、web UI 实时性均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>sticky session vs round-robin 命中率 vs quota 冷却 vs fail-fast 公平性 vs OpenAI 兼容 vs 双源 vs 独立开发者背书</td>
+<td>档案明示 OpenAI 兼容、sticky session、quota 冷却、fail-fast、双源、ghuntley 背书 6 项权衡；具体 sticky session 命中率基准、quota 窗口兼容性、fail-fast 公平性基准均待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>配置 chatgpt.com 2 个 OAuth 订阅 + api.githubcopilot.com 2 个 device flow 订阅，跑 sticky session 对话测试，确认 quota 冷却 + fail-fast Retry-After 行为</td>
+<td>PoC 范围、退出路径由档案「sticky session + 冷却 + fail-fast」建议推导；具体 OAuth 配置流程、device flow 流程、sticky session 命中率基准待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>underclass 的核心启发是 <strong>「AI Coding 多订阅池化代理 + sticky session 保持上游 prompt cache warm + quota 冷却 + fail-fast + OpenAI 兼容 + 双源订阅」</strong>。当前 AI Coding 多订阅治理的痛点是「单一账号配额上限 + 多账号手动切换繁琐 + 上游 prompt cache 命中率低 + 配额耗尽不知何时重置 + 池全枯竭客户端挂起等待」。underclass 用「OpenAI 兼容 endpoint + sticky session + quota 冷却 + fail-fast + chatgpt.com + api.githubcopilot.com 双源 + web UI」是「AI Coding 多订阅池化严肃代理」的参考实现。更深层的启发是：<strong>「sticky session 保持上游 prompt cache warm」是「多订阅代理 + prompt cache 复用」的关键工程化形式</strong>——cache warm 时延迟显著降低 + token 成本显著降低；<strong>「quota exhausted 自动冷却到窗口重置」是「避免无效重试」的工程化形式</strong>——按上游告知的窗口自动冷却；<strong>「池全枯竭 fail-fast 返回最早 Retry-After」是「不挂起等待」的工程化形式</strong>——客户端按上游告知的最早重置时间等待；<strong>「ghuntley 个人开发者背书」是「独立开发者 + 严肃工程化」的工程化形式</strong>——GitHub Principal Engineer 出身 + 转独立开发者，与前日 kitze/skillbox（Kitze 知名独立开发者）同构。能否持续，取决于 sticky session 在 chatgpt.com / api.githubcopilot.com 订阅配额变化的兼容性 + 池全枯竭 fail-fast 在多用户场景的公平性 + web UI 的可用度 + GitHub device flow 在企业 GitHub 账号的可用度 + sticky session vs round-robin 在上游 cache 命中率的差异 + OpenAI 兼容 endpoint 在第三方客户端的兼容性。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Client[OpenAI 兼容客户端<br/>opencode / Claude Code 间接 / Aider / Cline] --> Endpoint[OpenAI 兼容 endpoint<br/>/v1/responses + /v1/chat/completions + /v1/models]
+  Endpoint --> Sticky[sticky session<br/>钉单订阅]
+  Sticky --> Cache[上游 prompt cache warm]
+  Cache --> ChatGPT[chatgpt.com<br/>Codex N 订阅<br/>OAuth device flow]
+  Cache --> Copilot[api.githubcopilot.com<br/>M Copilot 订阅<br/>GitHub device flow]
+  ChatGPT --> Stream[流式响应]
+  Copilot --> Stream
+  Stream --> Client
+  ChatGPT -.quota exhausted.-> Cool[自动冷却<br/>到窗口重置]
+  Copilot -.quota exhausted.-> Cool
+  Cool -.窗口重置.-> Sticky
+  Endpoint -.池全枯竭.-> Fail[fail-fast<br/>返回最早 Retry-After]
+  Fail --> Client
+  Endpoint --> WebUI[web UI<br/>accounts + catalog + live request feed]
+  WebUI --> Admin[多账号管理]
+  Client -.sticky vs round-robin.-> Honest[cache 命中率差异<br/>待核验]
+  WebUI -.ghuntley 背书.-> Brand[独立开发者<br/>GitHub Principal Engineer 出身]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（AI Coding 多订阅池化严肃代理）。</strong> underclass 不仅是多账号切换工具，更试图成为「AI Coding 多订阅治理运行时基础设施」——类似 LiteLLM 之于 OpenAI 但聚焦多订阅池化。若成功，它会成为「个人 / 小团队 AI Coding 多订阅治理」的默认选择，具有生态级价值。107⭐ + fork 5 + fork/star 4.7% + 170 KB 已显示「严肃多订阅治理」早期信号。但「生态化」取决于一个关键问题：sticky session 在 chatgpt.com / api.githubcopilot.com 订阅配额变化的兼容性 + 池全枯竭 fail-fast 在多用户场景的公平性 + web UI 的可用度 + GitHub device flow 在企业 GitHub 账号的可用度 + sticky session vs round-robin 在上游 cache 命中率的差异。目前定位是「AI Coding 多订阅池化严肃代理的早期样本」。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>sticky session 命中率</strong> ——sticky session vs round-robin 在上游 cache 命中率的实际差异（cache warm 时延迟显著降低 + token 成本显著降低，但具体基准待验证）</li>
+<li><strong>quota 窗口兼容性</strong> ——chatgpt.com / api.githubcopilot.com 订阅配额窗口变化可能影响冷却逻辑</li>
+<li><strong>fail-fast 公平性</strong> ——池全枯竭时 fail-fast 返回最早 Retry-After 在多用户场景的公平性</li>
+<li><strong>web UI 可用度</strong> ——accounts / catalog / live request feed 的 UI / UX 可用度</li>
+<li><strong>GitHub device flow 可用度</strong> ——GitHub device flow 在企业 GitHub 账号的可用度（SSO / SAML 等）</li>
+<li><strong>OpenAI 兼容 endpoint 兼容性</strong> ——在第三方客户端（opencode / Claude Code 间接 / Aider / Cline 等）的兼容性</li>
+<li><strong>ChatGPT / Codex 订阅 ToS</strong> ——chatgpt.com 个人订阅的 ToS 可能限制池化代理</li>
+<li><strong>GitHub Copilot 订阅 ToS</strong> ——api.githubcopilot.com 个人订阅的 ToS 可能限制池化代理</li>
+<li><strong>个人维护</strong> ——ghuntley 个人维护，长期可持续性存疑</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs clawback/claude-code-cost-ledger (09-17):</strong> cost-ledger 是 session 层成本账本 + canonical JSON + buckets.yaml 治理；underclass 是运行时多订阅池化代理 + sticky session + 冷却 + fail-fast</li>
+<li><strong>vs NiazMorshed2007/jev-review (09-18):</strong> jev-review 是本地优先 + 无 backend/database/telemetry/proxy；underclass 是本地代理 + 多订阅池化资源治理</li>
+<li><strong>vs LiteLLM:</strong> LiteLLM 是 LLM provider 统一接口 + 路由；underclass 是多订阅池化代理 + sticky session + 冷却</li>
+<li><strong>vs OpenAI Proxy:</strong> OpenAI Proxy 是单订阅代理；underclass 是多订阅池化</li>
+<li><strong>vs kitze/skillbox (09-18):</strong> skillbox 是 Skills 库 + 独立开发者背书；underclass 是多订阅代理 + ghuntley 背书</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（AI Coding 多订阅池化严肃代理）。</strong> underclass 代表了「AI Coding 多订阅治理从 session 层成本 + 本地优先 → 运行时多订阅池化代理 + sticky session + 冷却 + fail-fast」的诉求，无论其本身成败，这一方向是行业趋势。建议关注：sticky session 在 chatgpt.com / api.githubcopilot.com 订阅配额变化的兼容性 + 池全枯竭 fail-fast 在多用户场景的公平性 + web UI 的可用度 + GitHub device flow 在企业 GitHub 账号的可用度 + sticky session vs round-robin 在上游 cache 命中率的差异 + OpenAI 兼容 endpoint 在第三方客户端的兼容性。对个人 / 小团队 AI Coding 用户，这个项目是把多个订阅池化为一个 endpoint 的严肃工具；对 OpenAI 兼容客户端，可直接接入；对学术，sticky session vs round-robin 的 prompt cache 命中率差异是「AI Coding 多订阅代理」的关键工程化。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>sticky session 在 chatgpt.com / api.githubcopilot.com 订阅配额变化的兼容性</li>
+<li>池全枯竭 fail-fast 在多用户场景的公平性（早 Retry-After 分配策略）</li>
+<li>web UI（accounts / catalog / live request feed）的 UI / UX 可用度</li>
+<li>GitHub device flow 在企业 GitHub 账号（SSO / SAML 等）的可用度</li>
+<li>sticky session vs round-robin 在上游 prompt cache 命中率的实际差异（cache warm 时延迟 + token 成本）</li>
+<li>OpenAI 兼容 endpoint（/v1/responses + /v1/chat/completions + /v1/models）在第三方客户端的兼容性</li>
+<li>ChatGPT / Codex / Copilot 订阅 ToS 对池化代理的限制</li>
+<li>个人维护可持续性（ghuntley 是否建立社区 / 公司化）</li>
+<li>与 LiteLLM / OpenAI Proxy 等多订阅代理的协同或竞争</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-21) | Stars: 107 | Forks: 5 | License: MIT | 语言: Rust | 创建: 2026-09-20</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
