@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TianyuCodings/JevHarness | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/TianyuCodings/JevHarness" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="tianyucodingsjevharness">TianyuCodings/JevHarness</h1>
+<h2 id="_1">一句话定位</h2>
+<p>让一个 LLM 写一个任务专属的 Jev harness——freeze 该 harness 后，由 Jev 在 runtime 做 fast fuzzy decisions；可选 GEPA 从完整执行 traces + rewards 改进 harness；Pokemon 例子 5 轮反思 Eval 胜率 25% (3/12) → 75% (9/12) 严肃工程化。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>当前 Jev 决策模型在「<strong>任务专属 harness + 演化 + 严肃工程化</strong>」赛道的痛点是「<strong>Jev 只回答 narrow decisions（choice / score / noul）+ 任务需要 feature construction + 任务需要 observations → features → actions 整条链 + 任务需要 runtime 不依赖 LLM per decision + 任务需要 reflection 从 rewards 改进 harness + 任务需要 frozen artifacts 可重现</strong>」——JevHarness 把「<strong>Authoring LLM → Harness（Python + expression code + Jev questions）→ Task action → Environment → Reward → Complete traces → 可选 GEPA reflection 改进 Harness</strong>」做成完整工程化模板 + Pokemon 严肃 example + Claude Code plugin marketplace 一键接入。</p>
+<h2 id="2026-09-22">为什么值得关注（2026-09-22）</h2>
+<ul>
+<li><strong>Stars:</strong> 76（截至 2026-09-22），1 天新增 76⭐，fork 4</li>
+<li><strong>Forks:</strong> 4（fork/star 5.3%，偏向观察收藏）</li>
+<li><strong>Open Issues:</strong> N/A（详情未抓取）</li>
+<li><strong>License:</strong> 无（⚠ 企业 / 商业复用风险点）</li>
+<li><strong>语言:</strong> Python</li>
+<li><strong>规模:</strong> 43246 KB（含 Pokemon 资源 + GEPA + Jev harness + 浏览器回放系统代码）</li>
+<li><strong>活跃度:</strong> created 2026-09-21，pushed 2026-09-21，1 天内快速迭代</li>
+<li><strong>Topics:</strong> N/A（GitHub topics 未声明）</li>
+<li><strong>接入:</strong> Claude Code plugin marketplace add + plugin install jev-harness@jevharness + reload-plugins；Codex 接入</li>
+<li><strong>Pokemon Eval:</strong> 5 轮反思 25% (3/12) → 75% (9/12)</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>JevHarness 的热度是「<strong>LLM author harness once + GEPA full-trajectory reflection + freeze strategy + runtime Jev fast fuzzy + Pokemon 严肃 example + Claude Code plugin 接入 + 完整 Frozen artifacts + lossless dedup</strong>」的强劲组合。Jev 决策模型从 09-15 ~ 09-21 的「<strong>单点 API + SDK + 资源聚合 + 具身智能 + 可执行技能</strong>」推到 09-22 的「<strong>LLM author task-specific harness + GEPA reflection + Frozen artifacts + 任务适配器 / harness 边界划分</strong>」严肃工程化，是「<strong>Jev + GEPA 从对齐 Jev 到全轨迹反思演化</strong>」的具体兑现。4 个 fork 反映社区观察（fork/star 5.3%）。76⭐ / 1 天是 09-22 当日 GitHub Search created 2026-09-21..2026-09-22 stars&gt;30 全站 trending 第十位左右。热度<strong>真实且具备 Jev + GEPA 严肃演化潜力</strong>——但需警惕：Pokemon 5 轮反思胜率 25% → 75% 的泛化到其他任务的可复现性 + Frozen artifacts 在 hosted model 升级的兼容性 + README 诚实表态边界。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Authoring LLM 写 Harness:</strong> 可改 code + questions + graph + memory</li>
+<li><strong>Freeze selected harness:</strong> 选定 harness 不需 Authoring LLM 在 runtime——reason deeply during development, freeze the strategy, let Jev make fast, fuzzy decisions</li>
+<li><strong>Frozen artifacts:</strong> 绑定 PipelineSpec + PipelineRuntime + evaluator + 任务资源</li>
+<li><strong>task adapter 边界:</strong> owns observations + legal actions + side effects + scoring</li>
+<li><strong>harness 边界:</strong> owns feature construction + Jev judgments + decision logic</li>
+<li><strong>composing judgments:</strong> Jev 支持 choice / score / noul + 多问题可一次发 + 独立 graph nodes 可并发</li>
+<li><strong>reflection from evidence:</strong> GEPA 从 instance frontier 选 parent + 同一训练 batch 比较 parent 和 proposal + 接受 proposal 完整 Eval + 记录 actual ancestry 含 rejected proposals</li>
+<li><strong>keep whole trace:</strong> 每集完整 decisions + observations + node inputs / outputs + Jev questions / answers + memory + failures</li>
+<li><strong>lossless deduplication:</strong> 减少 trace 重复</li>
+<li><strong>超出 byte cap 归档拒绝不截断:</strong> 严格边界</li>
+<li><strong>hosted model alias 不 pinned future provider behavior:</strong> stored responses 和 fresh calls 有不同 reproducibility guarantees</li>
+<li><strong>Pokemon 5 轮反思 Eval 胜率 25% (3/12) → 75% (9/12):</strong> 搜索保留 round-3 candidate 作为最佳 harness；Eval 用于选择</li>
+<li><strong>性能基线:</strong> 选定 harness 完整决策 568 ms median / P95 657 ms / 113 decisions；初始 harness 完整决策 678 ms median / P95 1495 ms / 238 decisions；选定 harness 单 Jev 请求 269 ms median / P95 348 ms / 226 requests</li>
+<li><strong>12 Eval games per harness:</strong> 每个 included Jev call explicitly marked as missing the local response cache</li>
+<li><strong>Claude Code plugin marketplace 一键接入:</strong> <code>/plugin marketplace add https://github.com/TianyuCodings/JevHarness.git</code> + <code>/plugin install jev-harness@jevharness</code> + <code>/reload-plugins</code></li>
+<li><strong>Codex 接入:</strong> skill 形态</li>
+<li><strong>本地浏览器回放:</strong> node website/build.mjs + preview.mjs --port 8768；battle animations 下载 Pokemon Showdown renderer assets；archived battle log 留在浏览器不上传 replay server</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Claude Code / Codex plugin + Authoring LLM + Harness（Python + Jev questions） + Task adapter + Environment + Frozen artifacts；边界为 task adapter / harness 划分 + Frozen artifacts 绑定</td>
+<td>仅基于档案描述的 task adapter / harness 边界 + Frozen artifacts + Claude Code plugin 接入；具体 plugin 权限范围、Codex 接入细节、跨平台兼容性未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>Task contract + examples → Authoring LLM 写 Harness → Harness（Python + expression code + Jev questions） → Observation → Task action → Environment → Reward → Complete traces → 可选 GEPA reflection 改进 Harness</td>
+<td>主路径为档案语义抽象；具体 Authoring LLM 调用方式（哪个 LLM）、Jev endpoint 选型、GEPA instance frontier 实现细节未在档案中给出</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>LLM author harness 一次性投资 vs 长期 Jev fast fuzzy decisions vs GEPA full-trajectory reflection 改进 vs Frozen artifacts 可重现 vs task adapter / harness 边界清晰度 vs README 诚实表态边界 vs ⚠ 无 license</td>
+<td>档案明示 8 项限制（Frozen artifacts 仍需 Jev / hosted model alias 不 pinned / stored responses 和 fresh calls 不同 guarantees / 等等）；具体企业部署态度、付费策略未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>单 Claude Code 安装 plugin marketplace → <code>/jev-harness:jev-harness Build a harness that routes support tickets to the right team</code> → 跑 Pokemon example → 验证 568 ms median 完整决策 → 5 轮 GEPA reflection → 验证 Frozen artifacts</td>
+<td>PoC 范围、退出路径由档案「Claude Code plugin + Pokemon example + 5 轮反思」建议推导；具体 Authoring LLM 选型、Jev endpoint 配置、Plugin marketplace 维护策略待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>JevHarness 的核心启发是「<strong>Reason deeply during development. Freeze the strategy. Let Jev make fast, fuzzy decisions.</strong>」——这是「<strong>开发期深度推理 + runtime 快速决策</strong>」分层的工程化形式。传统做法是 LLM per decision 既要快又要准，但 JevHarness 反向走「<strong>Authoring LLM 一次性写 harness + freeze 后 runtime 只跑 harness + Jev 做 narrow decisions</strong>」路线——是「<strong>慢开发 vs 快 runtime</strong>」的工程化对比。<strong>更深层的启发是：task adapter 边界 owns observations + legal actions + side effects + scoring，harness 边界 owns feature construction + Jev judgments + decision logic</strong>——这种「<strong>边界划分</strong>」让 harness 可独立修改而不让它重写自己的 reward 或读隐藏任务状态，是「<strong>安全 + 可审计</strong>」的工程化形式。<strong>GEPA from instance frontier + 同一训练 batch 比较 parent / proposal + 接受 proposal 完整 Eval + 记录 actual ancestry 含 rejected proposals</strong>——是「<strong>严肃演化算法</strong>」的工程化形式。<strong>lossless dedup + 超出 byte cap 归档拒绝不截断</strong>——是「<strong>严格边界</strong>」的工程化形式。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；「待核验」节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Task[Task contract + examples] --> Author[Authoring LLM<br/>reason deeply during development]
+  Author --> Harness[Harness<br/>Python + expression code<br/>+ Jev questions]
+  Harness --> Adapter[task adapter<br/>observations + legal actions<br/>+ side effects + scoring]
+  Adapter --> Obs[Allowed task observation]
+  Obs --> Harness
+  Harness --> Jev[Jev<br/>choice / score / noul<br/>~269 ms median]
+  Harness --> Action[Task action]
+  Action --> Env[Trusted environment + reward]
+  Env --> Traces[Complete execution traces<br/>decisions + observations<br/>+ node inputs / outputs<br/>+ Jev Q/A + memory + failures]
+  Traces -.可选 reflection.-> Author
+  Traces --> GEPA[GEPA reflection<br/>instance frontier 选 parent<br/>同训练 batch 比较<br/>接受 proposal 完整 Eval]
+  GEPA --> Author
+  Harness --> Freeze[Frozen artifacts<br/>PipelineSpec + PipelineRuntime<br/>+ evaluator + 任务资源]
+  Freeze -.仍需 Jev if Jev nodes.-> Jev
+  Harness -.hosted model alias 不 pinned future provider.-> Note1[stored responses vs fresh calls<br/>不同 reproducibility guarantees]
+  Traces --> Dedup[Lossless deduplication<br/>超出 byte cap 归档拒绝不截断]
+  Harness -.Claude Code plugin marketplace 一键接入.-> Plugin[/plugin marketplace add<br/>/plugin install jev-harness@jevharness<br/>/reload-plugins]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（Jev + LLM author harness + GEPA reflection + Frozen artifacts）。</strong> JevHarness 不仅是 Pokemon 模板，更试图成为「<strong>Jev 决策模型 + 任务专属 harness + 严肃演化 + 可重现</strong>」的工程化框架——通过 Authoring LLM 写 Harness + Freeze selected harness + task adapter / harness 边界划分 + GEPA from evidence + keep whole trace + lossless dedup + 拒绝截断 + Pokemon 严肃 example + Claude Code plugin marketplace 一键接入，把「<strong>Jev + 任务专属 harness + 严肃工程化</strong>」做到极致。76⭐ + 4 fork 已显示社区初步关注。但「<strong>框架化</strong>」取决于一个关键问题：Pokemon 5 轮反思胜率 25% → 75% 的泛化到其他任务的可复现性 + GEPA 在 instance frontier + parent / proposal 完整 Eval 的稳定性 + task adapter / harness 边界划分的清晰度。目前定位是「<strong>最有影响力的 Jev + LLM author harness + GEPA 严肃工程化</strong>」，向多任务 + 多 LLM + 企业部署是合理路径。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>Pokemon 5 轮反思胜率 25% → 75% 的泛化性:</strong> README 明示「The reported improvement is an example result on the selection Eval set, not an independent estimate of performance on unseen games」，未给其他任务泛化数据</li>
+<li><strong>GEPA 在 instance frontier + parent / proposal 完整 Eval 的稳定性:</strong> 评估成本高，复杂度随 instance frontier 指数增长</li>
+<li><strong>task adapter / harness 边界划分的清晰度:</strong> 实际项目中边界可能模糊，需要开发者自律</li>
+<li><strong>lossless dedup 在长 trace 的稳定性:</strong> 长 trace 的 dedup 性能未给具体数据</li>
+<li><strong>Frozen artifacts 在 hosted model 升级的兼容性:</strong> README 明示「hosted model alias does not pin future provider behavior」，stored responses 和 fresh calls 有不同 reproducibility guarantees</li>
+<li><strong>⚠ 无 license:</strong> 企业 / 商业复用风险点</li>
+<li><strong>Authoring LLM 依赖:</strong> 需要一个能写 harness 的 LLM，可能成本较高</li>
+<li><strong>Jev API 依赖:</strong> 需要 Jev API key，模型不可用或额度耗尽会直接断链</li>
+<li><strong>Pokemon 资源依赖:</strong> 浏览器回放需要下载 Pokemon Showdown renderer assets</li>
+<li><strong>个人项目属性:</strong> TianyuCodings 个人维护，4 forks 但核心治理仍集中</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs 官方 TypeSafe Jev endpoint:</strong> 官方 Jev 是 closed hosted service + 通用 decision API；JevHarness 是 LLM author harness + GEPA reflection + Frozen artifacts + Pokemon 严肃 example</li>
+<li><strong>vs thruwire/foreman:</strong> thruwire/foreman 是「<strong>Jev supervisor 双 loop + Python policy 5 类动作 + FactoryConfig</strong>」；JevHarness 是「<strong>LLM author harness + GEPA reflection + Frozen artifacts + task adapter / harness 边界</strong>」——两者都用 Jev 但走不同工程化路径：foreman 是 runtime supervisor，JevHarness 是 task-specific harness</li>
+<li><strong>vs sutro-sh/jev-align:</strong> sutro-sh/jev-align 是「<strong>GEPA 对齐 Jev</strong>」；JevHarness 是「<strong>LLM author harness + GEPA from instance frontier + 完整 Eval + Pokemon 5 轮反思胜率 25% → 75%</strong>」——jev-align 是对齐 Jev 模型本身，JevHarness 是对齐 harness（而非 Jev）</li>
+<li><strong>vs ekzhang/openjev-sglang:</strong> openjev-sglang 是「<strong>Jev-compatible API endpoint 基于开源模型 prefill-only</strong>」；JevHarness 是「<strong>Jev + LLM author harness + GEPA reflection + Frozen artifacts</strong>」——openjev-sglang 是基础设施，JevHarness 是应用工程化</li>
+<li><strong>vs Pokemon Showdown / Pokemon battle simulators:</strong> Pokemon Showdown 是 battle simulator；JevHarness 是 harness + reflection + browser replay 系统</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Jev + LLM author harness + GEPA reflection + Frozen artifacts 候选）。</strong> JevHarness 代表了「<strong>Jev 决策模型 + 任务专属 harness + 严肃演化 + 可重现</strong>」的演化方向，无论其本身成败，这一方向是行业趋势。建议关注：Pokemon 5 轮反思胜率泛化性、GEPA 在多任务的稳定性、task adapter / harness 边界在多任务的清晰度、Authoring LLM 选型、Frozen artifacts 在 hosted model 升级的兼容性。对 Jev 决策模型应用开发者，这是「<strong>Jev + 任务专属 harness + GEPA 严肃工程化</strong>」的具体样本，值得直接采用。对 AI 决策模型生态观察者，它是「<strong>慢开发 + 快 runtime + 严肃演化</strong>」的头部样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>Pokemon 5 轮反思胜率 25% → 75% 在其他任务（route support tickets / 决策博弈 / 自动交易）的泛化（决定框架可用性）</li>
+<li>GEPA 在 instance frontier + parent / proposal 完整 Eval 的稳定性（决定 GEPA 严肃性）</li>
+<li>task adapter / harness 边界在多任务项目的清晰度（决定可维护性）</li>
+<li>Authoring LLM 选型（决定开发成本）</li>
+<li>Frozen artifacts 在 hosted model 升级的兼容性（决定可重现性）</li>
+<li>⚠ 许可决策（无 license 是企业 / 商业复用风险点）</li>
+<li>多 LLM 接入（除 OpenAI / Anthropic / Codex 外是否支持其他 LLM）</li>
+<li>是否演化为独立平台 / 商店（从 GitHub 仓库升级为 harness marketplace）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-09-22) | Stars: 76 | Forks: 4 | License: 无 (⚠ 风险点) | 语言: Python | 创建: 2026-09-21 | Pokemon Eval: 25% → 75% (5 轮反思)</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
