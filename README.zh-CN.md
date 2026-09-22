@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-22.md">最新日报</a> ·
+  <a href="daily/2026-09-23.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-22
+## 最新研究 · 2026-09-23
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 622 | 3 | 11k+ |
+| 5 | 626 | 3 | 12k+ |
 
-**今日核心判断：** Finderchangchang/jev-chat-JARVIS 1 天 833⭐ ⑂361 Android「聊天副驾」悬浮窗用 Jev 一次 7 道题判断对话（Kotlin · MIT · 微信 8.0.78 / QQ 9.3.50 / X 12.25 真机验证 · 无障碍读节点不 hook 不改包 · 发送永远由你点不碰转账红包 · 17103 KB · fork/star 43.3% 极高企业信号）· Rizzo-AI-Academy/rizzo-flow 1 天 221⭐ ⑂6 Jev 兼容 API 本地实现 0 generated tokens（Python · Apache-2.0 · Spark-X2.5-4B Apache-2.0 开源权重 · MLX Metal / CUDA / CPU 三路径 · 1M native context · ~250 ms / decision Q8 M4 Pro · ~5 GiB 内存 Q8 · POST /v1/decisions + POST /v1/systemone + GET /v1/models 三端点 · TYPESAFE_BASE_URL 指 localhost 即可替换官方 · 预填 KV cache 克隆给每道题 · 只算 answer letters logits 验证同语义 · 140 步 25.6 秒 ≈ 5.5/秒 Snake demo · 4770 KB · README 明示「Independent project, not affiliated with TypeSafe」+「Probabilities are uncalibrated unless you calibrate them」）· TianyuCodings/JevHarness 1 天 76⭐ ⑂4 LLM 写任务专属 Jev harness + GEPA 全轨迹反思演化（Python · 无 license · Claude Code / Codex 双接入 plugin marketplace add + plugin install jev-harness@jevharness · Pokémon 5 轮反思 Eval 胜率 25% → 75% · 选定 harness 完整决策 568 ms P95 657 ms · 单 Jev 请求 269 ms P95 348 ms · 226 Jev 请求 median · author LLM 不在 runtime · Frozen artifacts 绑定 spec + runtime + evaluator + 任务资源 · node.js website/build.mjs + preview.mjs 本地浏览器回放 · 43246 KB · honesty「improvement is on selection Eval set, not independent estimate of unseen games」）· fstandhartinger/chat-seek-vscode 1 天 54⭐ ⑂6 VS Code 跨 Claude Code / Codex / OpenCode 聊天本地检索 + Laya reranking（JavaScript · MIT · Ctrl+Shift+P → Chat Seek: Search past AI chats · 侧栏放大镜 Activity Bar · Laya 本地决策模型 1.7 GB 模型下载到 ~/.cache/receptron-laya · 可选 OpenAI / OpenRouter / TensorX / Custom OpenAI-compatible 摘要 默认 gpt-5.6-luna low reasoning · SecretStorage 存 API key · 摘要默认 off 默认完全本地 · Resume 跳到匹配 CLI 的 session id + cwd · 2753 KB · 与昨日 09-19 wuyoscar/jev-skill「Awesome Jev Skills 9 技能 + 90 场景」同构「Jev 周边工具 + 本地检索 + 双语 + 可执行化」但推到「跨 CLI 聊天记录本地搜索 + Laya reranking + VS Code 集成」领域）
+**今日核心判断：** jev-chat/jev-chat-jarvis 2 天 3660⭐ ⑂821 昨日 Finderchangchang/jev-chat-JARVIS 的官方 org fork（Kotlin · MIT · 23.49 MB · 微信 8.0.52+ 混淆节点 8.0.78 实测 · QQ 9.3.50 群聊 · X 12.25 中文 · 飞书 1.3 起 ML Kit 离线 OCR · 三路 API key 拆分：判断 / 回复 / 视觉 · 判断内核 + 起草模型分离 · 用户本地知识库与联系人档案 · APK 签名 v1.3 · 网站 chatjevs.com · fork/star 22.4% 极度组织化 / 官方化信号 · 与昨日 833⭐ / fork 43.3% 个人开发者 fork 形态形成「个人 fork → 官方 org fork」演化）· jev-chat/jev-chat-windows 2 天 249⭐ ⑂56 同内核跨平台到 Windows 微信 4.x（Python · PyQt · MIT-like · WGC 窗口截图 + RapidOCR 离线 OCR · exe 内置 146 MB · 注册表 HKCU\Environment 存 API key · 起草默认 DeepSeek 官网国内直连 · 判断 OpenRouter / TypeSafe 直连二选一 · 群聊指定回复对象 · 调试视图画框 · 1623 KB · fork/star 22.5% 同样严肃企业 fork 信号）· freestylefly/WeChatBridge 2 天 238⭐ ⑂133 macOS 微信 4.1.13+ 合并转发 Share Extension → Codex / Claude / 豆包 / 千问办公 / WorkBuddy / WeSight / Obsidian / 剪贴板 / 自定义 九入口（Swift 6.0 · MIT · macOS 14+ · Developer ID 签名 + Apple 公证 0.1.14 DMG · 场景化提示词 + 技能中心 + SKILL.md · 双语界面 · 26298 KB · fork/star 55.9% 极高 macOS native fork 信号 · 与前两项目同构「微信聊天侧 AI 副驾 / Agent 转发 / 知识库沉淀」但推到「macOS 微信原生 Share Extension + Developer ID + 双语界面 + 多 App 入口」严肃工程化）· unreallabsai/unreal-agent 2 天 746⭐ ⑂35 async-first agent harness Go 实现（Go · MIT · Session inbox / Coordinator / Session store / Context builder / LLM Adapter / Tool registry / Operation manager 八组件 · Tool translator 严格同步不 I/O · 持久化 Session 可 fork · 8 项命名（Input / Inbox / Session / LLM turn / Tool / Tool call / Tool translator / Operation）+ 序列化 + 版本化 · 1061 KB · fork/star 4.7% · 与 09-19 ~ 09-22 各 agent SDK / harness 同构「Agent harness 严肃工程化」但推到「async-first + Session 可 fork + Tool translator 严格同步不 I/O + Operation 版本化 + 组件可替换」具体路径）· deepopen-com/deepopen 2 天 206⭐ ⑂1 非自回归 System 1 决策引擎 Laya 改进 + 三检查点（Python · Apache-2.0 · ModernBERT-large 421M 英文 39.5 ms / mmBERT-base 322M 多语言 1024 ctx / ModernBERT-large 421M 类型决策 1024 ctx · 单请求 32.8 ms · 10 题批量 72.3 ms · T4 单卡 103-332 问题/秒 · 7.8 倍 Jev 速度 · 2000 样本基准 0.766 准确率超 Jev 1.13.0 0.727 · Brier 0.062 · Apache-2.0 完全开源权重 · pip install deepopen · Router preload · CLINC150 / Banking77 榜单第 2 / 第 5 · 2652 KB · fork/star 0.5% · 与昨日 Heman10x-NGU/openJev-verdict-2.0「Non-Autoregressive Decision Engine 击败 Jev & Laya」+ Rizzo-AI-Academy/rizzo-flow「Spark-X2.5 4B Jev 兼容 0 generated tokens」同构「Jev / Laya 决策模型挑战者 + 开源权重 + 非自回归 + Apache-2.0」但推到「三检查点 + Laya 改进 + 智能路由器 + 32.8 ms + 7.8× Jev 速度 + Apache-2.0 + pip install」严肃工程化）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [Finderchangchang/jev-chat-JARVIS](projects/jev-chat-jarvis.md) | 833 stars | 观察型 |
-| [Rizzo-AI-Academy/rizzo-flow](projects/rizzo-flow.md) | 221 stars | 工具型 |
-| [TianyuCodings/JevHarness](projects/jevharness.md) | 76 stars | 工具型 |
-| [fstandhartinger/chat-seek-vscode](projects/chat-seek-vscode.md) | 54 stars | 工具型 |
+| [jev-chat/jev-chat-jarvis](projects/jev-chat-jarvis.md) | 3,660 stars | 观察型 |
+| [jev-chat/jev-chat-windows](projects/jev-chat-windows.md) | 249 stars | 工具型 |
+| [freestylefly/WeChatBridge](projects/wechatbridge.md) | 238 stars | 工具型 |
+| [unreallabsai/unreal-agent](projects/unreal-agent.md) | 746 stars | 工具型 |
+| [deepopen-com/deepopen](projects/deepopen.md) | 206 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **Android「聊天副驾」悬浮窗 Jev 一次 7 道题判断对话——Finderchangchang/jev-chat-JARVIS 1 天 833⭐ ⑂361（Kotlin · MIT · 微信 8.0.78 / QQ 9.3.50 / X 12.25 真机验证 · 飞书采集已接入 · 一套内核 + 一个 App 一个几十行的 ChatAppAdapter · 非侵入：无障碍读节点不 hook 不改包不走 App 接口不读数据库 · 看得懂：Jev 一次给意图 / 危险等级 1-9 / 对方要什么 / 该不该马上回 / 最佳动作 · 3 条候选 Jev 排序 · 发送永远由你点 · 隐私在本机：密钥只存 App 私有空间聊天内容只在分析那一刻发给模型 · 国产 ROM 后台冻结小米 / HyperOS 必做自启动 + 省电无限制 · 17103 KB · fork/star 43.3% 极高企业 / 个人开发者 fork 信号 · 与昨日 09-19 ~ 09-21 各 Jev / Laya 决策模型应用层同构但推到「Android 端无障碍采集 + Jev 实时判断 + 用户最终 gate」移动端具身智能领域 · README 明示「只读你自己设备上你自己有权查看的聊天」+「程序只把回复填进输入框从不自动发送不碰转账红包收款」）** · 相关项目：Finderchangchang/jev-chat-JARVIS · 强度：90
-2. **Jev 兼容 API 本地实现 0 generated tokens——Rizzo-AI-Academy/rizzo-flow 1 天 221⭐ ⑂6（Python · Apache-2.0 · Spark-X2.5-4B / Spark-X2.5-1.7B Apache-2.0 开源权重 · MLX Metal / CUDA / CPU 三路径 · 1M tokens native context · ~250 ms / decision Q8 M4 Pro · ~5 GiB 内存 Q8 · POST /v1/decisions native API + POST /v1/systemone + GET /v1/models Jev 兼容三端点 · 4 类 typed decisions boolean / choice / score / numeric + 内置 __insufficient__ 弃权 · TYPESAFE_BASE_URL=http://127.0.0.1:8017 即可替换官方 · 预填 KV cache 克隆给每道题 · 只算 answer letters logits 验证 identical · Snake demo 140 步 25.6 秒 ≈ 5.5/秒 ≈ 150 ms / decision · uv sync --locked --extra mlx/cuda/cpu · 4770 KB · fork/star 2.7% · 与 09-19 NiazMorshed2007/jev-review「本地优先 MCP 质量评估」+ 09-20 logan-markewich/jeff「自托管 Jev drop-in GLiFormer 400M」同构「Jev 去 SaaS 化 + 自托管 drop-in」但推到「Spark-X2.5 4B Apache-2.0 开源权重 + Jev-compatible API + KV cache 克隆 + 0 generated tokens + 1M native context」具体实现 · README 明示「Independent project, not affiliated with TypeSafe」+「Probabilities are uncalibrated unless you calibrate them」+「The interface is compatible, the model is not Jev」）** · 相关项目：Rizzo-AI-Academy/rizzo-flow · 强度：88
-3. **LLM 写任务专属 Jev harness + GEPA 全轨迹反思演化——TianyuCodings/JevHarness 1 天 76⭐ ⑂4（Python · 无 license · Claude Code plugin marketplace add + plugin install jev-harness@jevharness · Codex 接入 · Pokemon 例子里 5 轮反思 Eval 胜率 25% → 75% · 选定 harness 完整决策 568 ms median P95 657 ms · 单 Jev 请求 269 ms median P95 348 ms · 226 个 Jev 请求 median · Frozen artifacts 绑定 PipelineSpec + PipelineRuntime + evaluator + 任务资源 · task adapter 边界 owns observations + legal actions + side effects + scoring · harness owns feature construction + Jev judgments + decision logic · reflection 包含完整 decisions + observations + node inputs / outputs + Jev questions / answers + memory + failures · lossless dedup · 超出 byte cap 归档拒绝不截断 · node website/build.mjs + preview.mjs 本地浏览器回放 · 43246 KB · fork/star 5.3% · 与昨日 09-20 sutro-sh/jev-align「GEPA 对齐 Jev」同构「Jev + GEPA」但推到「LLM author harness once + GEPA full-trajectory reflection + freeze strategy + runtime Jev fast fuzzy」严肃工程化 · README 诚实「improvement is on selection Eval set, not independent estimate of performance on unseen games」）** · 相关项目：TianyuCodings/JevHarness · 强度：82
-4. **VS Code 跨 Claude Code / Codex / OpenCode 聊天本地检索 + Laya reranking——fstandhartinger/chat-seek-vscode 1 天 54⭐ ⑂6（JavaScript · MIT · Ctrl+Shift+P → Chat Seek: Search past AI chats + 侧栏放大镜 Activity Bar + Pin search tab · Laya 本地决策模型 1.7 GB 模型下载到 ~/.cache/receptron-laya CPU inference · 可选摘要 OpenAI / OpenRouter / TensorX / Custom OpenAI-compatible 默认 gpt-5.6-luna low reasoning · SecretStorage 存 API key · 摘要默认 off 默认完全本地 · Resume 跳到匹配 CLI 的 session id + cwd · Read excerpt 打开索引上下文 · 一次 Laya 用法下载 1.7 GB 模型权重 · npm ci + npm test + npm run lint + npm run package + code --install-extension · 2753 KB · fork/star 11.1% · 与昨日 09-19 wuyoscar/jev-skill「Awesome Jev Skills 9 技能 + 90 场景」同构「Jev / Laya 周边工具 + 本地检索 + 双语 + 可执行化」但推到「跨 CLI 聊天记录本地搜索 + Laya reranking + VS Code 集成 + Resume」领域 · 与 09-18 wshobson/agents「多 Harness Skills 市场」同构「跨 Harness Agent 工具」但推到「跨 Harness 聊天记录检索」领域）** · 相关项目：fstandhartinger/chat-seek-vscode · 强度：78
+1. **jev-chat-jarvis 组织化（个人 fork → 官方 org fork）——jev-chat/jev-chat-jarvis 2 天 3660⭐ ⑂821 fork/star 22.4%（Kotlin · MIT · 23.49 MB · 微信 8.0.52+ 混淆节点 8.0.78 实测可读 · QQ 9.3.50 群聊 · X 12.25 中文 · 飞书 1.3 起 ML Kit 离线 OCR 兜底 · 三路 API key 拆分：判断 / 回复 / 视觉 · 用户本地知识库与联系人档案 · APK 签名 v1.3 · 网站 chatjevs.com · 9 个原生入口 · 任意其它 App 用悬浮窗菜单「截屏识别一次」整屏 OCR · 桌面端 / 网页 ⏳ 规划 · 与昨日 09-22 Finderchangchang/jev-chat-JARVIS 833⭐ / fork 361 / fork/star 43.3% 个人开发者形态形成「个人 fork → 官方 org fork → 多端展开（macOS / Windows / 桌面网页 ⏳）」演化 · README 明示「只读你自己设备上你自己有权查看的聊天」+「程序只把回复填进输入框从不自动发送不碰转账红包收款」）** · 相关项目：jev-chat/jev-chat-jarvis · 强度：92
+2. **jev-chat-windows 同内核跨平台到 Windows——jev-chat/jev-chat-windows 2 天 249⭐ ⑂56 fork/star 22.5%（Python · PyQt · MIT-like · 微信 Windows 4.x · WGC 窗口截图 + RapidOCR 离线 OCR · exe 内置 146 MB · 注册表 HKCU\Environment 存 API key · 起草默认 DeepSeek 官网国内直连 · 判断 OpenRouter / TypeSafe 直连二选一 · 群聊指定回复对象 · 调试视图画框 · 1623 KB · 与昨日 Finderchangchang/jev-chat-JARVIS 同构「Jev + 微信 + 用户最终 gate」但推到「Windows 微信 + WGC 截图 + RapidOCR 离线 + exe 内置 + 注册表存 key + DeepSeek 国内直连」具体路径 · README 明示「只读自己电脑上自己本来就有权查看的对话」+「只截自己的微信窗口 + 本地离线 OCR RapidOCR」+「不 hook、不注入、不读微信数据库、不解密、不碰微信进程内存」+「截图只在内存里 · 全程不写磁盘、不进日志、不上传」）** · 相关项目：jev-chat/jev-chat-windows · 强度：85
+3. **WeChatBridge macOS 微信合并转发 Share Extension → 9 入口——freestylefly/WeChatBridge 2 天 238⭐ ⑂133 fork/star 55.9%（Swift 6.0 · MIT · macOS 14+ · Developer ID 签名 + Apple 公证 0.1.14 DMG · 微信 4.1.13+ 多选聊天记录「合并转发」菜单 → Share Extension → Codex / Claude / 豆包 / 千问办公 / WorkBuddy / WeSight / Obsidian / 剪贴板 / 自定义 九入口 · 场景化提示词 + 技能中心 + SKILL.md 兼容 Agent · 双语界面 · 26298 KB · 与昨日 09-21 ~ 09-22 各 Jev 副驾同构「微信聊天侧 AI 副驾 + 用户最终 gate」但推到「macOS 微信原生 Share Extension + Developer ID + 公证 + 双语界面 + 多 App 入口 + Obsidian 沉淀 + 技能中心」严肃工程化 · 与 jev-chat 系列同构「聊天 → Agent」但 jev-chat 是「读屏 → Jev 判断 → 填入」，WeChatBridge 是「多选转发 → 多 Agent → 用户手动激活」）** · 相关项目：freestylefly/WeChatBridge · 强度：82
+4. **unreal-agent async-first Go Agent harness——unreallabsai/unreal-agent 2 天 746⭐ ⑂35 fork/star 4.7%（Go · MIT · Session inbox / Coordinator / Session store / Context builder / LLM Adapter / Tool registry / Operation manager 八组件 · Input 全局唯一 ID 跨重投递稳定 · Session append-only 持久化可 fork · Tool translator 严格同步不 I/O 校验 + 翻译为 operation · Operation 版本化 + 序列化 · Operation manager Actor runtime 本地实现可换（如远程 sandbox）· 8 项术语严格定义 · Session store items 序列化 + 存储格式版本化 · 1061 KB · 与 09-19 ~ 09-22 各 agent SDK / harness 同构「Agent harness 严肃工程化」但推到「async-first + Session 可 fork + Tool translator 严格同步不 I/O + Operation 版本化 + 组件可替换 + 远程 sandbox proxy operations manager」具体路径 · OpenAI 兼容 LLM Adapter · Bash / ViewImage / skill-use 固定工具）** · 相关项目：unreallabsai/unreal-agent · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 | [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 | [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
-| [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 
 ## 为什么做这个项目
 

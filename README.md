@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-22.md">Latest report</a> ·
+  <a href="daily/2026-09-23.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-22
+## Latest report · 2026-09-23
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 622 | 3 | 11k+ |
+| 5 | 626 | 3 | 12k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Finderchangchang/jev-chat-JARVIS](projects/jev-chat-jarvis.md) | 833 stars | 观察型 |
-| [Rizzo-AI-Academy/rizzo-flow](projects/rizzo-flow.md) | 221 stars | 工具型 |
-| [TianyuCodings/JevHarness](projects/jevharness.md) | 76 stars | 工具型 |
-| [fstandhartinger/chat-seek-vscode](projects/chat-seek-vscode.md) | 54 stars | 工具型 |
+| [jev-chat/jev-chat-jarvis](projects/jev-chat-jarvis.md) | 3,660 stars | 观察型 |
+| [jev-chat/jev-chat-windows](projects/jev-chat-windows.md) | 249 stars | 工具型 |
+| [freestylefly/WeChatBridge](projects/wechatbridge.md) | 238 stars | 工具型 |
+| [unreallabsai/unreal-agent](projects/unreal-agent.md) | 746 stars | 工具型 |
+| [deepopen-com/deepopen](projects/deepopen.md) | 206 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: Finderchangchang/jev-chat-JARVIS
-2. **Signal 2** · score 88 · repositories: Rizzo-AI-Academy/rizzo-flow
-3. **Signal 3** · score 82 · repositories: TianyuCodings/JevHarness
-4. **Signal 4** · score 78 · repositories: fstandhartinger/chat-seek-vscode
+1. **Signal 1** · score 92 · repositories: jev-chat/jev-chat-jarvis
+2. **Signal 2** · score 85 · repositories: jev-chat/jev-chat-windows
+3. **Signal 3** · score 82 · repositories: freestylefly/WeChatBridge
+4. **Signal 4** · score 80 · repositories: unreallabsai/unreal-agent
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-22.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-23.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 | [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 | [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
 | [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
-| [2026-09-16](daily/2026-09-16.md) | 5 | 4 |
 
 ## Why this repository exists
 
