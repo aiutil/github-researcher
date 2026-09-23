@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-23.md">Latest report</a> ·
+  <a href="daily/2026-09-24.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-23
+## Latest report · 2026-09-24
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 626 | 3 | 12k+ |
+| 5 | 631 | 3 | 12k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [jev-chat/jev-chat-jarvis](projects/jev-chat-jarvis.md) | 3,660 stars | 观察型 |
-| [jev-chat/jev-chat-windows](projects/jev-chat-windows.md) | 249 stars | 工具型 |
-| [freestylefly/WeChatBridge](projects/wechatbridge.md) | 238 stars | 工具型 |
-| [unreallabsai/unreal-agent](projects/unreal-agent.md) | 746 stars | 工具型 |
-| [deepopen-com/deepopen](projects/deepopen.md) | 206 stars | 工具型 |
+| [anishfn/shapeshift](projects/shapeshift.md) | 387 stars | 观察型 |
+| [miuuyy/Astra-Ares](projects/astra-ares.md) | 234 stars | 工具型 |
+| [SewCabinSpout/cleanupper](projects/cleanupper.md) | 723 stars | 工具型 |
+| [edison-land/paragravity](projects/paragravity.md) | 186 stars | 工具型 |
+| [lhlGitHub/threejs-architecture-effects](projects/threejs-architecture-effects.md) | 172 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: jev-chat/jev-chat-jarvis
-2. **Signal 2** · score 85 · repositories: jev-chat/jev-chat-windows
-3. **Signal 3** · score 82 · repositories: freestylefly/WeChatBridge
-4. **Signal 4** · score 80 · repositories: unreallabsai/unreal-agent
+1. **Signal 1** · score 88 · repositories: anishfn/shapeshift
+2. **Signal 2** · score 85 · repositories: miuuyy/Astra-Ares
+3. **Signal 3** · score 82 · repositories: SewCabinSpout/cleanupper
+4. **Signal 4** · score 78 · repositories: edison-land/paragravity
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-23.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-24.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 | [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 | [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 | [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 | [2026-09-18](daily/2026-09-18.md) | 5 | 3 |
-| [2026-09-17](daily/2026-09-17.md) | 5 | 5 |
 
 ## Why this repository exists
 
