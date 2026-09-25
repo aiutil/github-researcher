@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-25.md">Latest report</a> ·
+  <a href="daily/2026-09-26.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,7 +21,7 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-25
+## Latest report · 2026-09-26
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
@@ -29,11 +29,11 @@
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Contrastive-LM/CLM](projects/clm.md) | 769 stars | 观察型 |
-| [mikehasa/golive-skill](projects/golive-skill.md) | 845 stars | 工具型 |
-| [yetone/magpie](projects/magpie.md) | 595 stars | 工具型 |
-| [anishfn/shapeshift](projects/shapeshift.md) | 566 stars | 观察型 |
-| [samyost1/3dicon](projects/3dicon.md) | 379 stars | 工具型 |
+| [Contrastive-LM/CLM](projects/clm.md) | 892 stars | 观察型 |
+| [mikehasa/golive-skill](projects/golive-skill.md) | 982 stars | 工具型 |
+| [yetone/magpie](projects/magpie.md) | 688 stars | 工具型 |
+| [anishfn/shapeshift](projects/shapeshift.md) | 759 stars | 观察型 |
+| [samyost1/3dicon](projects/3dicon.md) | 521 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
@@ -44,19 +44,19 @@
 3. **Signal 3** · score 85 · repositories: yetone/magpie
 4. **Signal 4** · score 82 · repositories: anishfn/shapeshift
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-25.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-26.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 | [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 | [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
-| [2026-09-19](daily/2026-09-19.md) | 4 | 3 |
 
 ## Why this repository exists
 

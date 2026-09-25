@@ -2,11 +2,11 @@
 title: "samyost1/3dicon"
 slug: 3dicon
 date_added: 2026-09-25
-last_seen_date: 2026-09-25
+last_seen_date: 2026-09-26
 category: "工具型"
 emoji: "🎲"
-stars: "379 stars"
-stars_delta: "2 天 379⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-25 总星数除以 2 天）"
+stars: "521 stars"
+stars_delta: "3 天 521⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-26 总星数除以 3 天，09-25 379⭐ → 09-26 521⭐ 持续 2 日增长）"
 language: "Python"
 score: 78
 tags: ["3dicon", "python", "mit", "claude-code-skill", "plugin-marketplace", "openrouter", "gpt-image", "seedance", "ffmpeg", "matting", "webp-alpha", "real-transparency", "looping-animation", "solved-color", "soft-edges", "commercial-use", "two-stage-review", "scaffold-skill"]

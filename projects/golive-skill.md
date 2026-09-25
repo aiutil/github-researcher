@@ -2,11 +2,11 @@
 title: "mikehasa/golive-skill"
 slug: golive-skill
 date_added: 2026-09-25
-last_seen_date: 2026-09-25
+last_seen_date: 2026-09-26
 category: "工具型"
 emoji: "🚀"
-stars: "845 stars"
-stars_delta: "2 天 845⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-25 总星数除以 2 天）"
+stars: "982 stars"
+stars_delta: "3 天 982⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-26 总星数除以 3 天，09-25 845⭐ → 09-26 982⭐）"
 language: "TypeScript"
 score: 88
 tags: ["golive-skill", "typescript", "mit", "agent-skill", "codex", "claude-code", "vercel", "netlify", "supabase", "neon", "porkbun", "godaddy", "resend", "stripe", "deployment", "teardown", "drift-check", "zero-telemetry", "production-deploy", "ownership-document", "detect-plan-approve-apply-verify"]

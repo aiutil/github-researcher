@@ -2,11 +2,11 @@
 title: "yetone/magpie"
 slug: magpie
 date_added: 2026-09-25
-last_seen_date: 2026-09-25
+last_seen_date: 2026-09-26
 category: "工具型"
 emoji: "🐦"
-stars: "595 stars"
-stars_delta: "2 天 595⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-25 总星数除以 2 天）"
+stars: "688 stars"
+stars_delta: "3 天 688⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-26 总星数除以 3 天，09-25 595⭐ → 09-26 688⭐）"
 language: "Go"
 score: 85
 tags: ["magpie", "go", "mit", "wails", "menu-bar", "cross-agent", "openai-api", "anthropic-messages", "openai-responses", "codex", "claude-code", "opencode", "cursor", "copilot", "goose", "gemini-cli", "pi", "local-gateway", "models-dev", "shared-subscriptions", "macos-linux-windows", "atomic-writes", "surgical-edit"]

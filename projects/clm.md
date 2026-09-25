@@ -2,11 +2,11 @@
 title: "Contrastive-LM/CLM"
 slug: clm
 date_added: 2026-09-25
-last_seen_date: 2026-09-25
+last_seen_date: 2026-09-26
 category: "观察型"
 emoji: "🧠"
-stars: "769 stars"
-stars_delta: "2 天 769⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-25 总星数除以 2 天）"
+stars: "892 stars"
+stars_delta: "3 天 892⭐（粗略下限估计，created_at 2026-09-23 → 2026-09-26 总星数除以 3 天，09-25 769⭐ → 09-26 892⭐）"
 language: "Python"
 score: 90
 tags: ["contrastive-lm", "clm", "python", "apache-2.0", "system-one", "contrastive-learning", "states-actions", "type-safe-compatible", "vllm", "qwen3-8b", "pip-install", "terminal-bench", "deep-swe", "sota-verifier", "decision-model", "jev-competitor", "fast-inference", "disaggregated-embeddings"]
