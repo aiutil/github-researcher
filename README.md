@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-26.md">Latest report</a> ·
+  <a href="daily/2026-09-28.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-26
+## Latest report · 2026-09-28
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 635 | 3 | 12k+ |
+| 5 | 639 | 3 | 11k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Contrastive-LM/CLM](projects/clm.md) | 892 stars | 观察型 |
-| [mikehasa/golive-skill](projects/golive-skill.md) | 982 stars | 工具型 |
-| [yetone/magpie](projects/magpie.md) | 688 stars | 工具型 |
+| [dzhng/jevgrep](projects/jevgrep.md) | 699 stars | 工具型 |
+| [feitangyuan/onetake](projects/onetake.md) | 529 stars | 工具型 |
+| [supermemoryai/company-brain](projects/supermemoryai-company-brain.md) | 664 stars | 工具型 |
 | [anishfn/shapeshift](projects/shapeshift.md) | 759 stars | 观察型 |
-| [samyost1/3dicon](projects/3dicon.md) | 521 stars | 工具型 |
+| [amitshekhariitbhu/ai-system-design](projects/amitshekhariitbhu-ai-system-design.md) | 448 stars | 观察型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: Contrastive-LM/CLM
-2. **Signal 2** · score 88 · repositories: mikehasa/golive-skill
-3. **Signal 3** · score 85 · repositories: yetone/magpie
-4. **Signal 4** · score 82 · repositories: anishfn/shapeshift
+1. **Signal 1** · score 92 · repositories: dzhng/jevgrep
+2. **Signal 2** · score 88 · repositories: feitangyuan/onetake, supermemoryai/company-brain, amitshekhariitbhu/ai-system-design
+3. **Signal 3** · score 85 · repositories: Contrastive-LM/CLM, mikehasa/golive-skill, yetone/magpie, anishfn/shapeshift, samyost1/3dicon
+4. **Signal 4** · score 80 · repositories: freestylefly/WeChatBridge, SewCabinSpout/cleanupper, yetone/magpie, samyost1/3dicon
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-26.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-28.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 | [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
-| [2026-09-20](daily/2026-09-20.md) | 4 | 3 |
 
 ## Why this repository exists
 

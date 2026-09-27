@@ -2,13 +2,13 @@
 title: "anishfn/shapeshift"
 slug: shapeshift
 date_added: 2026-09-24
-last_seen_date: 2026-09-26
+last_seen_date: 2026-09-28
 category: "观察型"
 emoji: "🎭"
 stars: "759 stars"
-stars_delta: "4 天 759⭐（粗略下限估计，created_at 2026-09-22 → 2026-09-26 总星数除以 4 天，09-24 387⭐ → 09-25 566⭐ → 09-26 759⭐ 持续 3 日增长）"
+stars_delta: "6 天 759⭐（粗略下限估计，created_at 2026-09-22 → 2026-09-28 总星数除以 6 天，09-25 387⭐ → 09-26 566⭐ → 09-27 759⭐ 持续 3 日增长 → 09-28 持续 4 日）"
 language: "TypeScript"
-score: 88
+score: 82
 tags: ["shapeshift", "typescript", "mit", "jev", "typesafe", "system-one", "decision-model", "intent-classification", "offline-classifier", "next-js", "bun", "excalidraw", "ui-morph", "hysteresis", "url-debug", "typed-questions"]
 url: "https://github.com/anishfn/shapeshift"
 ---

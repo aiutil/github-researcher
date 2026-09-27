@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-09-26 GitHub 趋势研究简报 | GitHub Researcher</title>
+    <title>2026-09-28 GitHub 趋势研究简报 | GitHub Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📊</text></svg>">
-    <meta name="description" content="Jev / System One 决策模型继续向「Apache-2.0 完全开源 + 多后端可切换 + 自托管部署」方向演化——09-22 ~ 09-25 四日出现了 Spark-X2.5-4B（rizzo-flow）/ GLiFormer 400M（jeff）/ Non-Auto Decision Engine（deepopen）/ Contrastive-LM CLM-8B（CLM）四条 Apache-2.0 + pip install 路径，今日在「对比学习 + 缓存独立 + TypeSafe 兼容 + 9× Jev + Terminal-Bench / DeepSWE SOTA verifier」之外，重点观察「System One 决策模型生态从单点后端 → 多后端并存 + 应用层无缝切换」的范式跃迁；Agent Skill 严肃工程化继续向「跨工作流 + 跨平台 + 跨客户端」展开——09-19 ~ 09-25 七日内 3D 视觉生成（3dicon）/ 上线六路 provider（golive-skill）/ 跨 CLI 模型切换（magpie）/ 古建程序化（threejs-architecture-effects）/ UI 端具身（shapeshift）多线同时铺开；macOS / Windows 严肃工程化个人开发者工具持续把「Trash-first + Zero telemetry + 保护路径黑名单 + JSON 脚本化」作为标准答案——09-24 SewCabinSpout/cleanupper macOS 终端清理 723⭐ / fork 0 + 09-23 unreallabsai/unreal-agent async-first Go harness + 09-25 yetone/magpie Wails 菜单栏同时把 macOS / Windows 严肃工程化推到「隐私边界 + 离线优先 + 不读 shell env + 不联网 + 保护路径黑名单 + Atomic writes」共识。">
+    <meta name="description" content="Jev 生态从「决策模型挑战者 + 应用层 UI 端具身 + 可执行技能合集」推到「TypeSafe 兼容 CLI / 工具层 + 多 harness 共生 + 严肃工程化交叉路径」——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents 把 09-22 ~ 09-26 五日 Jev 决策模型多后端并存（spark-x2.5-4b / gliformer-400m / laya-improved / clm-8b）+ 应用层 UI 端具身（shapeshift）+ 跨 CLI 检索（chat-seek-vscode）+ Android 聊天副驾（jev-chat-jarvis / jev-chat-windows）推到「CLI 工具层 + Vercel AI Gateway / TypeSafe / OpenRouter / OpenCode Zen 四 provider + Claude Code / Codex / OpenCode 多 harness 自动检测 + Python / TypeScript declaration 解析 + Node.js 22+ 一行装 + `npx skills add dzhng/jevgrep --skill jevgrep` 二次分发」严肃工程化形态；Agent Skill 严肃工程化向「Agent Skill 工具自身 + 严肃工程化个人开发者工具」继续铺开——feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% Claude Agent Skill「一镜到底」连贯动效做产品发布片（carry score oracle 测每帧边界连续性 0.00 / 0.40 / 0.75 / 0.83）+ supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 记忆副驾开源（Apache-2.0 + Cloudflare Workers + 权限图）+ amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计 step-by-step 教程（Apache-2.0 · Markdown · RAG + Agents）+ 昨日 unreallabsai/unreal-agent async-first Go harness + yetone/magpie 跨 Agent 网关持续 04 日同步增长——把 Agent Skill 严肃工程化推到「一镜到底连贯动效 carry score 测连续性 + 商用 Slack 副驾开源 Apache-2.0 + Cloudflare Workers + 权限图 + AI 系统设计教程 + 跨 harness 严肃工程化」严肃工程化多层形态；严肃工程化个人开发者工具继续把「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」作为标准答案——feat. Sam Worrall / ICLR 2017 + 09-24 SewCabinSpout/cleanupper macOS 终端清理 Trash-first + 09-25 yetone/magpie Wails 菜单栏 + 09-26 freestylery/WeChatBridge macOS Share Extension + 09-26 samyost1/3dicon 一个 prompt → 透明循环 3D 图标。">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -27,14 +27,14 @@
         <section class="hero">
             <div class="hero-meta">
                 <span class="hero-meta-dot"></span>
-                <span class="hero-meta-date">2026-09-26</span>
+                <span class="hero-meta-date">2026-09-28</span>
                 <span class="hero-meta-sep">·</span>
-                <span class="hero-meta-status">2026-09-26</span>
+                <span class="hero-meta-status">2026-09-28</span>
             </div>
             <h1 class="hero-title">GitHub 趋势研究</h1>
             <p class="hero-subtitle">每日从 GitHub Trending 中筛选真正值得架构师关注的项目——不只是搬运 star 数，而是判断它属于玩具、工具、平台还是未来基础设施。</p>
             <div class="hero-actions">
-                <a href="/daily/2026-09-26.html" class="btn-dark">
+                <a href="/daily/2026-09-28.html" class="btn-dark">
                     阅读今日简报
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -46,30 +46,30 @@
         <section class="stats-row">
             <div class="stat-card stat-card-primary">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                <div class="stat-number">12k+</div>
+                <div class="stat-number">11k+</div>
                 <div class="stat-label">本周总 Star 增速</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                <div class="stat-number">695</div>
+                <div class="stat-number">699</div>
                 <div class="stat-label">深度分析项目</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div class="stat-number">171</div>
+                <div class="stat-number">172</div>
                 <div class="stat-label">日更日报</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                <div class="stat-number">748</div>
+                <div class="stat-number">753</div>
                 <div class="stat-label">核心跟踪方向</div>
             </div>
         </section>
         <section class="brief-card">
-            <div class="brief-date">📅 2026-09-26 · 今日核心判断</div>
-            <h2 class="brief-title">Jev / System One 决策模型继续向「Apache-2.0 完全开源 + 多后端可切换 + 自托管部署」方向演化——09-22 ~ 09-25 四日出现了 Spark-X2.5-4B（rizzo-flow）/ GLiFormer 400M（jeff）/ Non-Auto Decision Engine（deepopen）/ Contrastive-LM CLM-8B（CLM）四条 Apache-2.0 + pip install 路径，今日在「对比学习 + 缓存独立 + TypeSafe 兼容 + 9× Jev + Terminal-Bench / DeepSWE SOTA verifier」之外，重点观察「System One 决策模型生态从单点后端 → 多后端并存 + 应用层无缝切换」的范式跃迁；Agent Skill 严肃工程化继续向「跨工作流 + 跨平台 + 跨客户端」展开——09-19 ~ 09-25 七日内 3D 视觉生成（3dicon）/ 上线六路 provider（golive-skill）/ 跨 CLI 模型切换（magpie）/ 古建程序化（threejs-architecture-effects）/ UI 端具身（shapeshift）多线同时铺开；macOS / Windows 严肃工程化个人开发者工具持续把「Trash-first + Zero telemetry + 保护路径黑名单 + JSON 脚本化」作为标准答案——09-24 SewCabinSpout/cleanupper macOS 终端清理 723⭐ / fork 0 + 09-23 unreallabsai/unreal-agent async-first Go harness + 09-25 yetone/magpie Wails 菜单栏同时把 macOS / Windows 严肃工程化推到「隐私边界 + 离线优先 + 不读 shell env + 不联网 + 保护路径黑名单 + Atomic writes」共识。</h2>
-            <p class="brief-text">Jev / System One 决策模型继续向「Apache-2.0 完全开源 + 多后端可切换 + 自托管部署」方向演化——09-22 ~ 09-25 四日出现了 Spark-X2.5-4B（rizzo-flow）/ GLiFormer 400M（jeff）/ Non-Auto Decision Engine（deepopen）/ Contrastive-LM CLM-8B（CLM）四条 Apache-2.0 + pip install 路径，今日在「对比学习 + 缓存独立 + TypeSafe 兼容 + 9× Jev + Terminal-Bench / DeepSWE SOTA verifier」之外，重点观察「System One 决策模型生态从单点后端 → 多后端并存 + 应用层无缝切换」的范式跃迁；Agent Skill 严肃工程化继续向「跨工作流 + 跨平台 + 跨客户端」展开——09-19 ~ 09-25 七日内 3D 视觉生成（3dicon）/ 上线六路 provider（golive-skill）/ 跨 CLI 模型切换（magpie）/ 古建程序化（threejs-architecture-effects）/ UI 端具身（shapeshift）多线同时铺开；macOS / Windows 严肃工程化个人开发者工具持续把「Trash-first + Zero telemetry + 保护路径黑名单 + JSON 脚本化」作为标准答案——09-24 SewCabinSpout/cleanupper macOS 终端清理 723⭐ / fork 0 + 09-23 unreallabsai/unreal-agent async-first Go harness + 09-25 yetone/magpie Wails 菜单栏同时把 macOS / Windows 严肃工程化推到「隐私边界 + 离线优先 + 不读 shell env + 不联网 + 保护路径黑名单 + Atomic writes」共识。 今日头条趋势:Jev / System One 决策模型挑战者进入多后端并存阶段（09-22 ~ 09-25 Apache-2.0 四路径同步推进）——昨日 Contrastive-LM/CLM 对比学习 states↔actions + 缓存独立 + TypeSafe 兼容 API + 9× Jev 速度 + Terminal-Bench / DeepSWE SOTA verifier（趋势分 90）。</p>
-            <a href="/daily/2026-09-26.html" class="brief-cta">阅读完整简报 →</a>
+            <div class="brief-date">📅 2026-09-28 · 今日核心判断</div>
+            <h2 class="brief-title">Jev 生态从「决策模型挑战者 + 应用层 UI 端具身 + 可执行技能合集」推到「TypeSafe 兼容 CLI / 工具层 + 多 harness 共生 + 严肃工程化交叉路径」——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents 把 09-22 ~ 09-26 五日 Jev 决策模型多后端并存（spark-x2.5-4b / gliformer-400m / laya-improved / clm-8b）+ 应用层 UI 端具身（shapeshift）+ 跨 CLI 检索（chat-seek-vscode）+ Android 聊天副驾（jev-chat-jarvis / jev-chat-windows）推到「CLI 工具层 + Vercel AI Gateway / TypeSafe / OpenRouter / OpenCode Zen 四 provider + Claude Code / Codex / OpenCode 多 harness 自动检测 + Python / TypeScript declaration 解析 + Node.js 22+ 一行装 + `npx skills add dzhng/jevgrep --skill jevgrep` 二次分发」严肃工程化形态；Agent Skill 严肃工程化向「Agent Skill 工具自身 + 严肃工程化个人开发者工具」继续铺开——feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% Claude Agent Skill「一镜到底」连贯动效做产品发布片（carry score oracle 测每帧边界连续性 0.00 / 0.40 / 0.75 / 0.83）+ supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 记忆副驾开源（Apache-2.0 + Cloudflare Workers + 权限图）+ amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计 step-by-step 教程（Apache-2.0 · Markdown · RAG + Agents）+ 昨日 unreallabsai/unreal-agent async-first Go harness + yetone/magpie 跨 Agent 网关持续 04 日同步增长——把 Agent Skill 严肃工程化推到「一镜到底连贯动效 carry score 测连续性 + 商用 Slack 副驾开源 Apache-2.0 + Cloudflare Workers + 权限图 + AI 系统设计教程 + 跨 harness 严肃工程化」严肃工程化多层形态；严肃工程化个人开发者工具继续把「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」作为标准答案——feat. Sam Worrall / ICLR 2017 + 09-24 SewCabinSpout/cleanupper macOS 终端清理 Trash-first + 09-25 yetone/magpie Wails 菜单栏 + 09-26 freestylery/WeChatBridge macOS Share Extension + 09-26 samyost1/3dicon 一个 prompt → 透明循环 3D 图标。</h2>
+            <p class="brief-text">Jev 生态从「决策模型挑战者 + 应用层 UI 端具身 + 可执行技能合集」推到「TypeSafe 兼容 CLI / 工具层 + 多 harness 共生 + 严肃工程化交叉路径」——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents 把 09-22 ~ 09-26 五日 Jev 决策模型多后端并存（spark-x2.5-4b / gliformer-400m / laya-improved / clm-8b）+ 应用层 UI 端具身（shapeshift）+ 跨 CLI 检索（chat-seek-vscode）+ Android 聊天副驾（jev-chat-jarvis / jev-chat-windows）推到「CLI 工具层 + Vercel AI Gateway / TypeSafe / OpenRouter / OpenCode Zen 四 provider + Claude Code / Codex / OpenCode 多 harness 自动检测 + Python / TypeScript declaration 解析 + Node.js 22+ 一行装 + `npx skills add dzhng/jevgrep --skill jevgrep` 二次分发」严肃工程化形态；Agent Skill 严肃工程化向「Agent Skill 工具自身 + 严肃工程化个人开发者工具」继续铺开——feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% Claude Agent Skill「一镜到底」连贯动效做产品发布片（carry score oracle 测每帧边界连续性 0.00 / 0.40 / 0.75 / 0.83）+ supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 记忆副驾开源（Apache-2.0 + Cloudflare Workers + 权限图）+ amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计 step-by-step 教程（Apache-2.0 · Markdown · RAG + Agents）+ 昨日 unreallabsai/unreal-agent async-first Go harness + yetone/magpie 跨 Agent 网关持续 04 日同步增长——把 Agent Skill 严肃工程化推到「一镜到底连贯动效 carry score 测连续性 + 商用 Slack 副驾开源 Apache-2.0 + Cloudflare Workers + 权限图 + AI 系统设计教程 + 跨 harness 严肃工程化」严肃工程化多层形态；严肃工程化个人开发者工具继续把「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」作为标准答案——feat. Sam Worrall / ICLR 2017 + 09-24 SewCabinSpout/cleanupper macOS 终端清理 Trash-first + 09-25 yetone/magpie Wails 菜单栏 + 09-26 freestylery/WeChatBridge macOS Share Extension + 09-26 samyost1/3dicon 一个 prompt → 透明循环 3D 图标。 今日头条趋势:Jev / System One 决策模型推到 CLI / 工具层 + 多 provider + 多 harness 严肃工程化——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents（趋势分 92）。</p>
+            <a href="/daily/2026-09-28.html" class="brief-cta">阅读完整简报 →</a>
         </section>
         <section>
             <div class="section-header">
@@ -80,35 +80,35 @@
                 <a href="/projects.html" class="section-link">查看全部 →</a>
             </div>
             <div class="card-grid">
-                <div class="card" onclick="window.location='/projects/clm.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/jevgrep.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">🔍</div>
+                        <div class="card-stars">699 stars</div>
+                    </div>
+                    <div class="card-title">dzhng/jevgrep</div>
+                    <div class="card-desc">dzhng/jevgrep——CLI for coding agents 用 Jev 一次判断多文件相关性的 code search 工具；TypeScript · MIT · 4143 KB · `npm install -g @dzhng/jevgrep` · `jg auth` · `jg skill` · `jg "How are telemetry events recorded and sent?" ./my-project` · Node.js 22+ · macOS / Linux · Vercel AI Gateway / TypeSafe / OpenRouter / OpenCode Zen 四 provider · Claude Code / Codex / OpenCode 多 harness 自动检测 · `jg skill` 二次分发到 Claude Code / Codex / OpenCode（npx skills add dzhng/jevgrep --skill jevgrep）· Python / TypeScript / JavaScript declaration 解析 · 其它文本 fallback · summary + file locations + reading leads + verbatim source excerpts with line references · evidence not generated answer · 与昨日 09-22 Rizzo-AI-Academy/rizzo-flow「Spark-X2.5 Jev 兼容 API drop-in」+ 09-20 logan-markewich/jeff「GLiFormer 400M Jev 兼容 drop-in」+ 09-23 deepopen-com/deepopen「Non-Auto Decision Engine Laya 改进」+ 09-25 Contrastive-LM/CLM「CLM-8B 对比学习 9× Jev」+ 09-26 anishfn/shapeshift「Jev 应用层 UI 端 18 类卡片」同构「Jev / System One 决策模型生态」但推到「CLI 工具层 + coding agent 上下文检索 + 多 provider + 多 harness 自动检测 + Python / TS declaration 解析 + npx skills 二次分发」严肃工程化形态 · 2 天 699⭐ / fork 45 / fork/star 6.4%，Score 92。</div>
+                    <div class="card-tags"><span class="tag tag-purple">jevgrep</span><span class="tag tag-purple">typescript</span><span class="tag tag-purple">mit</span></div>
+                    <div class="card-actions"><a href="https://github.com/dzhng/jevgrep" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/onetake.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">🎬</div>
+                        <div class="card-stars">529 stars</div>
+                    </div>
+                    <div class="card-title">feitangyuan/onetake</div>
+                    <div class="card-desc">feitangyuan/onetake——Claude Agent Skill「一镜到底」连贯动效做产品发布片 / 预告片 / 功能演示；Python · PolyForm Noncommercial 1.0.0 · 77237 KB · Agent Skill SKILL.md · 10 cases · probe.py oracle 测每帧边界 carry score 0.00 / 0.40 / 0.75 / 0.83 · ~38 moves (springs / entrances / carries / contact / sims / camera / fluid grounds) 各自为时间纯函数 · 同一相机不切镜头 · real UI rebuilt in HTML from screenshots on camera's plane 让相机以任何 zoom 飞入 · screen recording 不用 · uniform cadence / no stillness / clipped audio / fast moves without motion blur / subject leaves frame 五项 oracle 自动失败 · 与昨日 09-26 samyost1/3dicon「一个 prompt → 透明循环 3D 图标」+ 09-19 lhlGitHub/threejs-architecture-effects「Three.js 古建程序化动态组装」同构「Agent Skill 严肃工程化 + 视觉生成 + 一个 prompt 出片」但推到「一镜到底 + boundary 设计 carry 跨镜头 + oracle 自动测 carry score + ~38 移动纯函数 + 同一相机不切 + real UI HTML 重建 + PolyForm Noncommercial 商用限制」严肃工程化形态 · 2 天 529⭐ / fork 40 / fork/star 7.6%，Score 88。</div>
+                    <div class="card-tags"><span class="tag tag-purple">onetake</span><span class="tag tag-purple">python</span><span class="tag tag-purple">polyform-noncommercial</span></div>
+                    <div class="card-actions"><a href="https://github.com/feitangyuan/onetake" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/supermemoryai-company-brain.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">🧠</div>
-                        <div class="card-stars">892 stars</div>
+                        <div class="card-stars">664 stars</div>
                     </div>
-                    <div class="card-title">Contrastive-LM/CLM</div>
-                    <div class="card-desc">Contrastive-LM/CLM——对比学习 System One 模型 CLM-8B 60M+30M+1M 三段训练 + TypeSafe 兼容 API + 9× Jev 速度 + Terminal-Bench 87.6% + DeepSWE 81.6% SOTA verifier；Python · Apache-2.0 · 892 KB · CLMClient/Noul/Choice/Score typed questions · Qwen3-8B encoder vLLM · clm-serve 8700 · pip install contrastive-lm · Discord + Hugging Face + blog · 与昨日 deepopen-com/deepopen「非自回归 System 1 决策引擎」+ anishfn/shapeshift「Jev 应用层 UI 端 18 类卡片」同构「Jev 决策模型挑战者」但推到「对比学习 states↔actions + 缓存独立 + Apache-2.0 + pip install + vLLM serve + Terminal-Bench / DeepSWE SOTA verifier」严肃工程化形态 · 3 天 892⭐ / fork 71 / fork/star 8.0%，Score 90。</div>
-                    <div class="card-tags"><span class="tag tag-purple">contrastive-lm</span><span class="tag tag-purple">clm</span><span class="tag tag-purple">python</span></div>
-                    <div class="card-actions"><a href="https://github.com/Contrastive-LM/CLM" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
-                </div>
-                <div class="card" onclick="window.location='/projects/golive-skill.html'" style="cursor:pointer">
-                    <div class="card-top">
-                        <div class="card-emoji">🚀</div>
-                        <div class="card-stars">982 stars</div>
-                    </div>
-                    <div class="card-title">mikehasa/golive-skill</div>
-                    <div class="card-desc">mikehasa/golive-skill——Agent Skill 把 agent 产物上线：Vercel / Netlify / Supabase / Neon / Porkbun / GoDaddy / Resend / Stripe 六路 provider + teardown 卸载；TypeScript · MIT · 1716 KB · Node.js 20+ · `npx skills add https://github.com/mikehasa/golive-skill --skill golive --global` · Codex / Claude Code 已测 · detect → plan → approve → apply → verify 五步 · 0.1.0-alpha.3 · ownership document + golive status drift check · Zero telemetry · 与昨日 unreallabsai/unreal-agent「async-first Go harness」同构「严肃工程化个人开发者作品」但推到「Agent Skill 上线工程化 + 六路 provider + detect → plan → approve → apply → verify + teardown + drift check + Zero telemetry + ownership document」上线工程化形态 · 3 天 982⭐ / fork 70 / fork/star 7.1%，Score 88。</div>
-                    <div class="card-tags"><span class="tag tag-purple">golive-skill</span><span class="tag tag-purple">typescript</span><span class="tag tag-purple">mit</span></div>
-                    <div class="card-actions"><a href="https://github.com/mikehasa/golive-skill" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
-                </div>
-                <div class="card" onclick="window.location='/projects/magpie.html'" style="cursor:pointer">
-                    <div class="card-top">
-                        <div class="card-emoji">🐦</div>
-                        <div class="card-stars">688 stars</div>
-                    </div>
-                    <div class="card-title">yetone/magpie</div>
-                    <div class="card-desc">yetone/magpie——跨 Agent 模型统一网关菜单栏 App：Codex on DeepSeek / Claude Code on Kimi / Gemini CLI on GLM 一处切换；Go · MIT · 6737 KB · Wails 系统 webview < 15 MB · 7 MB 终端 build · macOS / Linux / Windows · 本地网关 127.0.0.1:3425/v1 同时讲 OpenAI chat completions / OpenAI Responses / Anthropic Messages · Codex / Claude Code / OpenCode / Cursor / Copilot / Goose / Gemini CLI / Pi 都指向一个 catalog · 配置 surgical edit settings.json / config.toml / opencode.jsonc / config.yaml 只动改的 key · atomic writes · 模型列表拉取 models.dev 不编译进 · 共享订阅 · 与昨日 unreallabsai/unreal-agent + SewCabinSpout/cleanupper 同构「严肃工程化个人开发者工具 + 隐私 / 安全边界」但推到「跨 Agent 菜单栏 App + 统一网关 + surgical 配置 + 模型列表拉取 + 共享订阅 + 三平台 + 系统 webview < 15 MB」统一网关严肃工程化形态 · 3 天 688⭐ / fork 33 / fork/star 4.8%，Score 85。</div>
-                    <div class="card-tags"><span class="tag tag-purple">magpie</span><span class="tag tag-purple">go</span><span class="tag tag-purple">mit</span></div>
-                    <div class="card-actions"><a href="https://github.com/yetone/magpie" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">supermemoryai/company-brain</div>
+                    <div class="card-desc">supermemoryai/company-brain——商用 Slack 记忆副驾开源 + Cloudflare Workers 部署；TypeScript · Apache-2.0 · 13452 KB · 一个 Slack teammate 记住团队说的一切 + 主动回答 + 主动执行（开 issue / 读 PR / 挖仓库）+ 在对话需要它知道时主动发声 · Runs on Cloudflare Workers · memory by supermemory · permissions graph · Remembers / Answers from your team / Acts in your tools / Speaks up / Runs code / Works while you sleep / Learns your way 七大能力 · Skills teach it your processes / formats / voice · workspace prompt sets how it behaves everywhere · 一键 deploy button · 与昨日 09-23 freestylefly/WeChatBridge「macOS 微信 Share Extension 多入口 + Developer ID + Apple 公证」+ 09-25 yetone/magpie「跨 Agent 菜单栏 App + 不读 shell env」同构「严肃工程化个人 / 公司记忆副驾 + 跨平台 + 隐私边界 + 商用清晰」但推到「商用产品停服 → Apache-2.0 完全开源 + Cloudflare Workers 部署 + Slack 原生 teammate + permissions graph + 主动回答 + 主动执行 + Skills + workspace prompt」严肃工程化形态 · 3 天 664⭐ / fork 93 / fork/star 14.0%，Score 85。</div>
+                    <div class="card-tags"><span class="tag tag-purple">company-brain</span><span class="tag tag-purple">typescript</span><span class="tag tag-purple">apache-2.0</span></div>
+                    <div class="card-actions"><a href="https://github.com/supermemoryai/company-brain" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
             </div>
         </section>
@@ -124,34 +124,34 @@
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>
                     <div class="trend-content">
-                        <div class="trend-title">Jev / System One 决策模型挑战者进入多后端并存阶段（09-22 ~ 09-25 Apache-2.0 四路径同步推进）——昨日 Contrastive-LM/CLM 对比学习 states↔actions + 缓存独立 + TypeSafe 兼容 API + 9× Jev 速度 + Terminal-Bench / DeepSWE SOTA verifier（趋势分 90）</div>
-                        <div class="trend-meta">Contrastive-LM/CLM</div>
+                        <div class="trend-title">Jev / System One 决策模型推到 CLI / 工具层 + 多 provider + 多 harness 严肃工程化——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents（趋势分 92）</div>
+                        <div class="trend-meta">dzhng/jevgrep</div>
                     </div>
-                    <div class="trend-score high">90/80</div>
+                    <div class="trend-score high">92/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank top">2</div>
                     <div class="trend-content">
-                        <div class="trend-title">Agent Skill 严肃工程化跨工作流展开——昨日 mikehasa/golive-skill 上线六路 provider + detect → plan → approve → apply → verify + teardown + drift check + Zero telemetry（趋势分 88）</div>
-                        <div class="trend-meta">mikehasa/golive-skill</div>
+                        <div class="trend-title">Agent Skill 严肃工程化向「Agent Skill 工具自身 + 商用开源 + 教程合集」三层展开——昨日 feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% 一镜到底连贯动效 + supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 副驾开源 + amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计教程（趋势分 88）</div>
+                        <div class="trend-meta">feitangyuan/onetake · supermemoryai/company-brain · amitshekhariitbhu/ai-system-design</div>
                     </div>
                     <div class="trend-score high">88/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">3</div>
                     <div class="trend-content">
-                        <div class="trend-title">跨 Agent 模型统一网关菜单栏 App——昨日 yetone/magpie 本地网关 127.0.0.1:3425/v1 同时讲 OpenAI chat completions / OpenAI Responses / Anthropic Messages（趋势分 85）</div>
-                        <div class="trend-meta">yetone/magpie</div>
+                        <div class="trend-title">Jev 应用层 + 跨 CLI + Android 聊天副驾多端展开持续 04 日同步增长——昨日 Contrastive-LM/CLM / mikehasa/golive-skill / yetone/magpie / anishfn/shapeshift / samyost1/3dicon 五项目持续 3 ~ 4 日增长 + 今日 jevgrep 加入构成「Jev 决策模型生态从决策 API → 应用层 UI → CLI 工具层 → Agent harness 自托管 → 跨 CLI 检索 → 移动端副驾」全栈严肃工程化（趋势分 85）</div>
+                        <div class="trend-meta">Contrastive-LM/CLM · mikehasa/golive-skill · yetone/magpie</div>
                     </div>
                     <div class="trend-score high">85/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">4</div>
                     <div class="trend-content">
-                        <div class="trend-title">Jev 应用层 UI 端具身形态持续增长——anishfn/shapeshift 4 天 759⭐ ⑂71 fork/star 9.4%（TypeScript · MIT · 与昨日 09-25 同 · 387⭐ → 566⭐ → 759⭐ 持续 3 日增长 · Jev 14 typed questions + 18 类卡片 + 滞回状态机 challenger + Next.js + Three.js + Excalidraw）</div>
-                        <div class="trend-meta">anishfn/shapeshift</div>
+                        <div class="trend-title">严肃工程化个人开发者工具「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」共识持续——09-22 ~ 09-26 五日持续填充（趋势分 80）</div>
+                        <div class="trend-meta">freestylefly/WeChatBridge · SewCabinSpout/cleanupper · yetone/magpie</div>
                     </div>
-                    <div class="trend-score high">82/80</div>
+                    <div class="trend-score high">80/80</div>
                 </div>
             </div>
         </section>
