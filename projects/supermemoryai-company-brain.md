@@ -2,11 +2,11 @@
 title: "supermemoryai/company-brain"
 slug: supermemoryai-company-brain
 date_added: 2026-09-28
-last_seen_date: 2026-09-28
+last_seen_date: 2026-09-29
 category: "工具型"
 emoji: "🧠"
-stars: "664 stars"
-stars_delta: "3 天 664⭐（粗略下限估计，created_at 2026-09-25 → 2026-09-28 总星数除以 3 天）"
+stars: "780 stars"
+stars_delta: "4 天 780⭐（粗略下限估计，created_at 2026-09-25 → 2026-09-29 总星数除以 4 天；09-29 当日较 09-28 664⭐ 增长 ~17%）"
 language: "TypeScript"
 score: 85
 tags: ["company-brain", "typescript", "apache-2.0", "cloudflare-workers", "slack", "teammate", "memory", "supermemory", "permissions-graph", "skills", "workspace-prompt", "open-source", "previously-paid", "github-mcp", "linear", "notion", "google-workspace"]

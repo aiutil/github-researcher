@@ -2,11 +2,11 @@
 title: "dzhng/jevgrep"
 slug: jevgrep
 date_added: 2026-09-28
-last_seen_date: 2026-09-28
+last_seen_date: 2026-09-29
 category: "工具型"
 emoji: "🔍"
-stars: "699 stars"
-stars_delta: "2 天 699⭐（粗略下限估计，created_at 2026-09-26 → 2026-09-28 总星数除以 2 天）"
+stars: "1373 stars"
+stars_delta: "3 天 1373⭐（粗略下限估计，created_at 2026-09-26 → 2026-09-29 总星数除以 3 天；09-29 当日较 09-28 699⭐ 增长 ~96%）"
 language: "TypeScript"
 score: 92
 tags: ["jevgrep", "typescript", "mit", "cli", "code-search", "semantic-search", "context-retrieval", "coding-agents", "claude-code", "codex", "opencode", "vercel-ai-gateway", "typesafe", "openrouter", "opencode-zen", "declaration-parsing", "npx-skills", "node-22", "macos-linux"]

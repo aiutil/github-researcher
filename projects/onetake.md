@@ -2,11 +2,11 @@
 title: "feitangyuan/onetake"
 slug: onetake
 date_added: 2026-09-28
-last_seen_date: 2026-09-28
+last_seen_date: 2026-09-29
 category: "工具型"
 emoji: "🎬"
-stars: "529 stars"
-stars_delta: "2 天 529⭐（粗略下限估计，created_at 2026-09-26 → 2026-09-28 总星数除以 2 天）"
+stars: "814 stars"
+stars_delta: "3 天 814⭐（粗略下限估计，created_at 2026-09-26 → 2026-09-29 总星数除以 3 天；09-29 当日较 09-28 529⭐ 增长 ~54%）"
 language: "Python"
 score: 88
 tags: ["onetake", "python", "polyform-noncommercial", "agent-skill", "claude-skill", "motion-graphics", "animation", "canvas", "video", "launch-video", "one-take", "continuity-oracle", "carry-score", "pure-function-time", "real-ui-rebuild", "noncommercial"]

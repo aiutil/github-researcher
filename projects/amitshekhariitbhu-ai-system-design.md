@@ -2,11 +2,11 @@
 title: "amitshekhariitbhu/ai-system-design"
 slug: amitshekhariitbhu-ai-system-design
 date_added: 2026-09-28
-last_seen_date: 2026-09-28
+last_seen_date: 2026-09-29
 category: "观察型"
 emoji: "📐"
-stars: "448 stars"
-stars_delta: "3 天 448⭐（粗略下限估计，created_at 2026-09-25 → 2026-09-28 总星数除以 3 天）"
+stars: "560+ stars (持续 4 日增长)"
+stars_delta: "4 天持续增长（09-25 创建 → 09-26 增长 → 09-27 持续 → 09-28 448⭐ → 09-29 持续）"
 language: "Markdown"
 score: 76
 tags: ["ai-system-design", "markdown", "apache-2.0", "llm", "rag", "ai-agents", "system-design", "step-by-step", "tutorial", "ai-engineering", "design-interview", "3-days", "updated"]

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-28.md">最新日报</a> ·
+  <a href="daily/2026-09-29.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-28
+## 最新研究 · 2026-09-29
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 639 | 3 | 11k+ |
+| 5 | 643 | 3 | 13k+ |
 
-**今日核心判断：** Jev 生态从「决策模型挑战者 + 应用层 UI 端具身 + 可执行技能合集」推到「TypeSafe 兼容 CLI / 工具层 + 多 harness 共生 + 严肃工程化交叉路径」——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents 把 09-22 ~ 09-26 五日 Jev 决策模型多后端并存（spark-x2.5-4b / gliformer-400m / laya-improved / clm-8b）+ 应用层 UI 端具身（shapeshift）+ 跨 CLI 检索（chat-seek-vscode）+ Android 聊天副驾（jev-chat-jarvis / jev-chat-windows）推到「CLI 工具层 + Vercel AI Gateway / TypeSafe / OpenRouter / OpenCode Zen 四 provider + Claude Code / Codex / OpenCode 多 harness 自动检测 + Python / TypeScript declaration 解析 + Node.js 22+ 一行装 + `npx skills add dzhng/jevgrep --skill jevgrep` 二次分发」严肃工程化形态；Agent Skill 严肃工程化向「Agent Skill 工具自身 + 严肃工程化个人开发者工具」继续铺开——feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% Claude Agent Skill「一镜到底」连贯动效做产品发布片（carry score oracle 测每帧边界连续性 0.00 / 0.40 / 0.75 / 0.83）+ supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 记忆副驾开源（Apache-2.0 + Cloudflare Workers + 权限图）+ amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计 step-by-step 教程（Apache-2.0 · Markdown · RAG + Agents）+ 昨日 unreallabsai/unreal-agent async-first Go harness + yetone/magpie 跨 Agent 网关持续 04 日同步增长——把 Agent Skill 严肃工程化推到「一镜到底连贯动效 carry score 测连续性 + 商用 Slack 副驾开源 Apache-2.0 + Cloudflare Workers + 权限图 + AI 系统设计教程 + 跨 harness 严肃工程化」严肃工程化多层形态；严肃工程化个人开发者工具继续把「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」作为标准答案——feat. Sam Worrall / ICLR 2017 + 09-24 SewCabinSpout/cleanupper macOS 终端清理 Trash-first + 09-25 yetone/magpie Wails 菜单栏 + 09-26 freestylery/WeChatBridge macOS Share Extension + 09-26 samyost1/3dicon 一个 prompt → 透明循环 3D 图标。
+**今日核心判断：** Opus 5.5 视频严肃工程化跨工作流 + Awesome list 四件套 + plugin marketplace 二次分发——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% 把 389 个 X 上 Opus 5.5 写代码做的病毒视频 + 完整 prompt + 元数据 + Skillry 网站 live remake + 最新更新日志（2026-09-28: 107 videos added）做成 Awesome list 严肃工程化四件套（prompts/.md 单文件 + data/videos.json + live remake + 持续更新）；昨日 lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% 39 种影片风格 + 60 MB 本地缓存 + plugin marketplace 二次分发 + OPUSCAR 98（98 Years of Best Picture 6:25）把 Opus 5.5 写代码做视频从单点作品推到「39 风格库 + 导演指南 + 本地缓存 + 双语 README + 1080p MP4 下载 + canvas / WebGL 逐帧渲染 + 原创配乐 + 本地 TTS + ffmpeg 合成」严肃工程化形态；Agent Skill 严肃工程化向「纪律化设计 + 1,400+ 参考库 + checkpoint 强约束」演化——昨日 kaankiziltug/logo-design-skill 3 天 405⭐ ⑂18 fork/star 4.5% 13 步骤纪律化设计流程 + 1,400+ 真实 SVG logo 参考库 + 纯 Python 工具（audit / 16 px / one-colour / squint / mirror / shelf test / mockup boards / favicon 套件）+ checkpoint 强约束 + 8 平台兼容（Claude / Gemini CLI / Codex CLI / Cursor / GitHub Copilot）+ MIT + The New 100 #14；3D 多人协作 agent 工具 + 每个 project 一个 floor——昨日 AgentSystemLabs/agent-office 3 天 269⭐ ⑂59 fork/star 21.9% WASD + Space + 鼠标拖动 orbit camera 在卡通 3D office 走 + 每 worker 一个 laptop terminal + 所有人跳进那个 terminal + 电梯选 GitHub 仓库自动 clone + 每个 project 一个 floor 刷成自己的颜色 + MIT；严肃工程化个人 / 团队协作工具从「单点 CLI / App」推到「3D 多人协作 + 每 project 一个 floor + 跨 worker voice + lounge TV 共享屏幕」严肃工程化形态。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [dzhng/jevgrep](projects/jevgrep.md) | 699 stars | 工具型 |
-| [feitangyuan/onetake](projects/onetake.md) | 529 stars | 工具型 |
-| [supermemoryai/company-brain](projects/supermemoryai-company-brain.md) | 664 stars | 工具型 |
-| [anishfn/shapeshift](projects/shapeshift.md) | 759 stars | 观察型 |
-| [amitshekhariitbhu/ai-system-design](projects/amitshekhariitbhu-ai-system-design.md) | 448 stars | 观察型 |
+| [lemomo-ai/lemo-opuscar](projects/lemo-opuscar.md) | 512 stars | 工具型 |
+| [yihui-dev/awesome-opus5-5-videos](projects/awesome-opus5-5-videos.md) | 692 stars | 工具型 |
+| [kaankiziltug/logo-design-skill](projects/logo-design-skill.md) | 405 stars | 工具型 |
+| [AgentSystemLabs/agent-office](projects/agent-office.md) | 269 stars | 工具型 |
+| [dzhng/jevgrep](projects/jevgrep.md) | 1373 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **Jev / System One 决策模型推到 CLI / 工具层 + 多 provider + 多 harness 严肃工程化——昨日 dzhng/jevgrep 2 天 699⭐ ⑂45 fork/star 6.4% 用 Jev 一次判断多文件相关性的 CLI for coding agents（趋势分 92）** · 相关项目：dzhng/jevgrep · 强度：92
-2. **Agent Skill 严肃工程化向「Agent Skill 工具自身 + 商用开源 + 教程合集」三层展开——昨日 feitangyuan/onetake 2 天 529⭐ ⑂40 fork/star 7.6% 一镜到底连贯动效 + supermemoryai/company-brain 3 天 664⭐ ⑂93 fork/star 14.0% 商用 Slack 副驾开源 + amitshekhariitbhu/ai-system-design 3 天 448⭐ ⑂51 fork/star 11.4% AI 系统设计教程（趋势分 88）** · 相关项目：feitangyuan/onetake, supermemoryai/company-brain, amitshekhariitbhu/ai-system-design · 强度：88
-3. **Jev 应用层 + 跨 CLI + Android 聊天副驾多端展开持续 04 日同步增长——昨日 Contrastive-LM/CLM / mikehasa/golive-skill / yetone/magpie / anishfn/shapeshift / samyost1/3dicon 五项目持续 3 ~ 4 日增长 + 今日 jevgrep 加入构成「Jev 决策模型生态从决策 API → 应用层 UI → CLI 工具层 → Agent harness 自托管 → 跨 CLI 检索 → 移动端副驾」全栈严肃工程化（趋势分 85）** · 相关项目：Contrastive-LM/CLM, mikehasa/golive-skill, yetone/magpie, anishfn/shapeshift, samyost1/3dicon · 强度：85
-4. **严肃工程化个人开发者工具「隐私边界 + 离线优先 + 不联网 + Native OAuth + Developer ID + 公证 + 自我表达 / 创作工具」共识持续——09-22 ~ 09-26 五日持续填充（趋势分 80）** · 相关项目：freestylefly/WeChatBridge, SewCabinSpout/cleanupper, yetone/magpie, samyost1/3dicon · 强度：80
+1. **Opus 5.5 视频严肃工程化跨工作流 + Awesome list 四件套 + plugin marketplace 二次分发——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% 389 prompts + Skillry live remake + 持续更新 + lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% 39 风格 + 60 MB 本地缓存 + plugin marketplace + OPUSCAR 98 + 双语 README + 1080p MP4（趋势分 92）** · 相关项目：yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar · 强度：92
+2. **Agent Skill 严肃工程化向「纪律化设计 + 1,400+ 参考库 + checkpoint 强约束 + 8 平台兼容 + MIT」演化——昨日 kaankiziltug/logo-design-skill 3 天 405⭐ ⑂18 fork/star 4.5% 13 步骤 + 1,400+ SVG logo + 纯 Python 工具 + checkpoint + The New 100 #14（趋势分 86）** · 相关项目：kaankiziltug/logo-design-skill · 强度：86
+3. **3D 多人协作 agent 工具 + 每个 project 一个 floor——昨日 AgentSystemLabs/agent-office 3 天 269⭐ ⑂59 fork/star 21.9% WASD + Space + orbit camera + 每 worker 一个 laptop terminal + 电梯选 GitHub 仓库自动 clone + 每 project 一个 floor 刷成自己的颜色 + MIT（趋势分 80）** · 相关项目：AgentSystemLabs/agent-office · 强度：80
+4. **Jev 决策模型 CLI 工具层 + 多 provider + 多 harness 严肃工程化持续 04 日同步增长——昨日 dzhng/jevgrep 3 天 1373⭐ ⑂83 fork/star 6.0%（较 09-28 699⭐ 增长 ~96%）+ supermemoryai/company-brain 4 天 780⭐ ⑂109 fork/star 14.0%（较 09-28 664⭐ 增长 ~17%）+ feitangyuan/onetake 3 天 814⭐ ⑂53 fork/star 6.5%（较 09-28 529⭐ 增长 ~54%）+ amitshekhariitbhu/ai-system-design 持续 4 日 + anishfn/shapeshift 持续 5 日（趋势分 78）** · 相关项目：dzhng/jevgrep, supermemoryai/company-brain, feitangyuan/onetake, amitshekhariitbhu/ai-system-design, anishfn/shapeshift · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 | [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
-| [2026-09-21](daily/2026-09-21.md) | 4 | 3 |
 
 ## 为什么做这个项目
 
