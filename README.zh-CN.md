@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-29.md">最新日报</a> ·
+  <a href="daily/2026-09-30.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-29
+## 最新研究 · 2026-09-30
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 643 | 3 | 13k+ |
+| 5 | 648 | 3 | 14k+ |
 
-**今日核心判断：** Opus 5.5 视频严肃工程化跨工作流 + Awesome list 四件套 + plugin marketplace 二次分发——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% 把 389 个 X 上 Opus 5.5 写代码做的病毒视频 + 完整 prompt + 元数据 + Skillry 网站 live remake + 最新更新日志（2026-09-28: 107 videos added）做成 Awesome list 严肃工程化四件套（prompts/.md 单文件 + data/videos.json + live remake + 持续更新）；昨日 lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% 39 种影片风格 + 60 MB 本地缓存 + plugin marketplace 二次分发 + OPUSCAR 98（98 Years of Best Picture 6:25）把 Opus 5.5 写代码做视频从单点作品推到「39 风格库 + 导演指南 + 本地缓存 + 双语 README + 1080p MP4 下载 + canvas / WebGL 逐帧渲染 + 原创配乐 + 本地 TTS + ffmpeg 合成」严肃工程化形态；Agent Skill 严肃工程化向「纪律化设计 + 1,400+ 参考库 + checkpoint 强约束」演化——昨日 kaankiziltug/logo-design-skill 3 天 405⭐ ⑂18 fork/star 4.5% 13 步骤纪律化设计流程 + 1,400+ 真实 SVG logo 参考库 + 纯 Python 工具（audit / 16 px / one-colour / squint / mirror / shelf test / mockup boards / favicon 套件）+ checkpoint 强约束 + 8 平台兼容（Claude / Gemini CLI / Codex CLI / Cursor / GitHub Copilot）+ MIT + The New 100 #14；3D 多人协作 agent 工具 + 每个 project 一个 floor——昨日 AgentSystemLabs/agent-office 3 天 269⭐ ⑂59 fork/star 21.9% WASD + Space + 鼠标拖动 orbit camera 在卡通 3D office 走 + 每 worker 一个 laptop terminal + 所有人跳进那个 terminal + 电梯选 GitHub 仓库自动 clone + 每个 project 一个 floor 刷成自己的颜色 + MIT；严肃工程化个人 / 团队协作工具从「单点 CLI / App」推到「3D 多人协作 + 每 project 一个 floor + 跨 worker voice + lounge TV 共享屏幕」严肃工程化形态。
+**今日核心判断：** 自托管 AI 热点网站框架 + Jev 决策模型生态多线扩张 + 严肃工程化单文件前端工具——今日 KKKKhazix/AIHOT 2 天 3008⭐ ⑂861 fork/star 28.6% 把「每天信源→预筛→两次评分→聚簇→日报」完整流水线做成可改信源、可改精选标准的自托管网站框架（Node.js 24 + PostgreSQL 17 + Docker Compose + MIT + 6 信源 + 提示词全文 + 18 个公开海外 AI 信源示例 + 事件级热度 48h/24h 减半 + 页面中位 10ms + 95% 50ms 内）；Jev / System One 决策模型生态 09-30 多线同步爆发——firelex/jeff 2 天 991⭐ ⑂38 fork/star 3.8% Qwen3.5 / Gemma4 零样本分类微调（v1.1 254 个选项 / 22ms RTX PRO 6000 / 28ms Apple M4 Max MLX / 完整训练数据 / uv 一行装）+ PostHog/jeeves 1 天 257⭐ ⑂11 fork/star 4.3% 9B reasoning Qwen3.5-9B + LoRA + pointer head + block-4 diffusion drafter + SFT+CISPO（JevBench public 0.935 vs Jev 0.866）+ santtiago49/system-design-trainer 2 天 107⭐ ⑂4 fork/star 3.7% React Flow 拖拽 AWS / Azure 组件 + Jev 自动评分 + 15 levels + 4 章 + 容量模型（CDN / cache / queue / SQL/NoSQL 分区）+ 多端同步增长（dzhng/jevgrep 持续 6 日 + anishfn/shapeshift 持续 6 日 + amitshekhariitbhu/ai-system-design 持续 5 日）；严肃工程化单文件前端工具从「Agent Skill 严肃工程化」推到「自托管 + 零依赖 + 双语 + 完整工作流 + MIT」——wy51ai/floorplan-3d 1 天 457⭐ ⑂117 fork/star 25.6% 纯前端 2D / 3D 户型装修设计工具（一个 index.html + Three.js r160 + 60 余种家具 + 鸟瞰/漫游 + 中英双语 + localStorage 自动保存 + PNG / JSON 导出）+ openJiuwen-ai/iCode 2 天 235⭐ ⑂37 fork/star 15.7% 轻量级离线 agent / workflow 平台（Python 3.14 + uv + Agent/Model/Diff/Rollback/Trajectory/Shell 七大视图 + MCP servers + skills + memory 全配）+ openai/mcp-extensions 1 天 165⭐ ⑂7 fork/star 4.2% ChatGPT MCP 扩展（sidebar / file viewer / composer mentions / extended forms 四类 + TypeScript / Python SDK + Apache-2.0）——Jev 决策模型生态 + 自托管 AI 热点网站框架 + 严肃工程化单文件前端工具 + 离线 agent 平台 + ChatGPT MCP 扩展五线同时推到严肃工程化。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [lemomo-ai/lemo-opuscar](projects/lemo-opuscar.md) | 512 stars | 工具型 |
-| [yihui-dev/awesome-opus5-5-videos](projects/awesome-opus5-5-videos.md) | 692 stars | 工具型 |
-| [kaankiziltug/logo-design-skill](projects/logo-design-skill.md) | 405 stars | 工具型 |
-| [AgentSystemLabs/agent-office](projects/agent-office.md) | 269 stars | 工具型 |
-| [dzhng/jevgrep](projects/jevgrep.md) | 1373 stars | 工具型 |
+| [KKKKhazix/AIHOT](projects/aihot.md) | 3008 stars | 平台候选 |
+| [firelex/jeff](projects/firelex-jeff.md) | 991 stars | 工具型 |
+| [PostHog/jeeves](projects/jeeves.md) | 257 stars | 工具型 |
+| [wy51ai/floorplan-3d](projects/floorplan-3d.md) | 457 stars | 工具型 |
+| [santtiago49/system-design-trainer](projects/system-design-trainer.md) | 107 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **Opus 5.5 视频严肃工程化跨工作流 + Awesome list 四件套 + plugin marketplace 二次分发——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% 389 prompts + Skillry live remake + 持续更新 + lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% 39 风格 + 60 MB 本地缓存 + plugin marketplace + OPUSCAR 98 + 双语 README + 1080p MP4（趋势分 92）** · 相关项目：yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar · 强度：92
-2. **Agent Skill 严肃工程化向「纪律化设计 + 1,400+ 参考库 + checkpoint 强约束 + 8 平台兼容 + MIT」演化——昨日 kaankiziltug/logo-design-skill 3 天 405⭐ ⑂18 fork/star 4.5% 13 步骤 + 1,400+ SVG logo + 纯 Python 工具 + checkpoint + The New 100 #14（趋势分 86）** · 相关项目：kaankiziltug/logo-design-skill · 强度：86
-3. **3D 多人协作 agent 工具 + 每个 project 一个 floor——昨日 AgentSystemLabs/agent-office 3 天 269⭐ ⑂59 fork/star 21.9% WASD + Space + orbit camera + 每 worker 一个 laptop terminal + 电梯选 GitHub 仓库自动 clone + 每 project 一个 floor 刷成自己的颜色 + MIT（趋势分 80）** · 相关项目：AgentSystemLabs/agent-office · 强度：80
-4. **Jev 决策模型 CLI 工具层 + 多 provider + 多 harness 严肃工程化持续 04 日同步增长——昨日 dzhng/jevgrep 3 天 1373⭐ ⑂83 fork/star 6.0%（较 09-28 699⭐ 增长 ~96%）+ supermemoryai/company-brain 4 天 780⭐ ⑂109 fork/star 14.0%（较 09-28 664⭐ 增长 ~17%）+ feitangyuan/onetake 3 天 814⭐ ⑂53 fork/star 6.5%（较 09-28 529⭐ 增长 ~54%）+ amitshekhariitbhu/ai-system-design 持续 4 日 + anishfn/shapeshift 持续 5 日（趋势分 78）** · 相关项目：dzhng/jevgrep, supermemoryai/company-brain, feitangyuan/onetake, amitshekhariitbhu/ai-system-design, anishfn/shapeshift · 强度：78
+1. **自托管 AI 热点网站框架 + 可改信源 + 可改精选标准 + 完整流水线——今日 KKKKhazix/AIHOT 2 天 3008⭐ ⑂861 fork/star 28.6% Node.js 24 + PostgreSQL 17 + Docker Compose + MIT + 6 信源 + 18 个公开海外 AI 信源示例 + 事件级热度 48h/24h 减半 + 页面中位 10ms + 95% 50ms 内 + 中文日报（趋势分 92）** · 相关项目：KKKKhazix/AIHOT · 强度：92
+2. **Jev / System One 决策模型生态 09-30 多线同步爆发——firelex/jeff 2 天 991⭐ ⑂38 fork/star 3.8% Qwen3.5 / Gemma4 零样本分类微调 + PostHog/jeeves 1 天 257⭐ ⑂11 fork/star 4.3% 9B reasoning Qwen3.5-9B + diffusion drafter + SFT+CISPO + santtiago49/system-design-trainer 2 天 107⭐ ⑂4 fork/star 3.7% React Flow + Jev 自动评分 + 15 levels + 容量模型 + dzhng/jevgrep 持续 6 日 + anishfn/shapeshift 持续 6 日 + amitshekhariitbhu/ai-system-design 持续 5 日（趋势分 90）** · 相关项目：firelex/jeff, PostHog/jeeves, santtiago49/system-design-trainer, dzhng/jevgrep, anishfn/shapeshift, amitshekhariitbhu/ai-system-design · 强度：90
+3. **严肃工程化单文件前端工具从「Agent Skill 严肃工程化」推到「自托管 + 零依赖 + 双语 + 完整工作流 + MIT」——wy51ai/floorplan-3d 1 天 457⭐ ⑂117 fork/star 25.6% 纯前端 2D / 3D 户型装修设计工具 + openJiuwen-ai/iCode 2 天 235⭐ ⑂37 fork/star 15.7% 轻量级离线 agent / workflow 平台 + openai/mcp-extensions 1 天 165⭐ ⑂7 fork/star 4.2% ChatGPT MCP 扩展（趋势分 82）** · 相关项目：wy51ai/floorplan-3d, openJiuwen-ai/iCode, openai/mcp-extensions · 强度：82
+4. **Opus 5.5 视频严肃工程化 + Awesome list 四件套 + plugin marketplace 二次分发 09-30 持续——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% + lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% + feitangyuan/onetake 持续 5 日 + Rieranthony/product-film-skill 持续 4 日（趋势分 78）** · 相关项目：yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar, feitangyuan/onetake, Rieranthony/product-film-skill · 强度：78
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
-| [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 
 ## 为什么做这个项目
 

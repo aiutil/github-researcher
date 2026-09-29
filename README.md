@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-09-29.md">Latest report</a> ·
+  <a href="daily/2026-09-30.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-09-29
+## Latest report · 2026-09-30
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 643 | 3 | 13k+ |
+| 5 | 648 | 3 | 14k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [lemomo-ai/lemo-opuscar](projects/lemo-opuscar.md) | 512 stars | 工具型 |
-| [yihui-dev/awesome-opus5-5-videos](projects/awesome-opus5-5-videos.md) | 692 stars | 工具型 |
-| [kaankiziltug/logo-design-skill](projects/logo-design-skill.md) | 405 stars | 工具型 |
-| [AgentSystemLabs/agent-office](projects/agent-office.md) | 269 stars | 工具型 |
-| [dzhng/jevgrep](projects/jevgrep.md) | 1373 stars | 工具型 |
+| [KKKKhazix/AIHOT](projects/aihot.md) | 3008 stars | 平台候选 |
+| [firelex/jeff](projects/firelex-jeff.md) | 991 stars | 工具型 |
+| [PostHog/jeeves](projects/jeeves.md) | 257 stars | 工具型 |
+| [wy51ai/floorplan-3d](projects/floorplan-3d.md) | 457 stars | 工具型 |
+| [santtiago49/system-design-trainer](projects/system-design-trainer.md) | 107 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar
-2. **Signal 2** · score 86 · repositories: kaankiziltug/logo-design-skill
-3. **Signal 3** · score 80 · repositories: AgentSystemLabs/agent-office
-4. **Signal 4** · score 78 · repositories: dzhng/jevgrep, supermemoryai/company-brain, feitangyuan/onetake, amitshekhariitbhu/ai-system-design, anishfn/shapeshift
+1. **Signal 1** · score 92 · repositories: KKKKhazix/AIHOT
+2. **Signal 2** · score 90 · repositories: firelex/jeff, PostHog/jeeves, santtiago49/system-design-trainer, dzhng/jevgrep, anishfn/shapeshift, amitshekhariitbhu/ai-system-design
+3. **Signal 3** · score 82 · repositories: wy51ai/floorplan-3d, openJiuwen-ai/iCode, openai/mcp-extensions
+4. **Signal 4** · score 78 · repositories: yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar, feitangyuan/onetake, Rieranthony/product-film-skill
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-29.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-09-30.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 | [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
-| [2026-09-22](daily/2026-09-22.md) | 4 | 3 |
 
 ## Why this repository exists
 
