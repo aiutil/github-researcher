@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-09-30.md">最新日报</a> ·
+  <a href="daily/2026-10-01.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-09-30
+## 最新研究 · 2026-10-01
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 648 | 3 | 14k+ |
+| 5 | 653 | 4 | 16k+ |
 
-**今日核心判断：** 自托管 AI 热点网站框架 + Jev 决策模型生态多线扩张 + 严肃工程化单文件前端工具——今日 KKKKhazix/AIHOT 2 天 3008⭐ ⑂861 fork/star 28.6% 把「每天信源→预筛→两次评分→聚簇→日报」完整流水线做成可改信源、可改精选标准的自托管网站框架（Node.js 24 + PostgreSQL 17 + Docker Compose + MIT + 6 信源 + 提示词全文 + 18 个公开海外 AI 信源示例 + 事件级热度 48h/24h 减半 + 页面中位 10ms + 95% 50ms 内）；Jev / System One 决策模型生态 09-30 多线同步爆发——firelex/jeff 2 天 991⭐ ⑂38 fork/star 3.8% Qwen3.5 / Gemma4 零样本分类微调（v1.1 254 个选项 / 22ms RTX PRO 6000 / 28ms Apple M4 Max MLX / 完整训练数据 / uv 一行装）+ PostHog/jeeves 1 天 257⭐ ⑂11 fork/star 4.3% 9B reasoning Qwen3.5-9B + LoRA + pointer head + block-4 diffusion drafter + SFT+CISPO（JevBench public 0.935 vs Jev 0.866）+ santtiago49/system-design-trainer 2 天 107⭐ ⑂4 fork/star 3.7% React Flow 拖拽 AWS / Azure 组件 + Jev 自动评分 + 15 levels + 4 章 + 容量模型（CDN / cache / queue / SQL/NoSQL 分区）+ 多端同步增长（dzhng/jevgrep 持续 6 日 + anishfn/shapeshift 持续 6 日 + amitshekhariitbhu/ai-system-design 持续 5 日）；严肃工程化单文件前端工具从「Agent Skill 严肃工程化」推到「自托管 + 零依赖 + 双语 + 完整工作流 + MIT」——wy51ai/floorplan-3d 1 天 457⭐ ⑂117 fork/star 25.6% 纯前端 2D / 3D 户型装修设计工具（一个 index.html + Three.js r160 + 60 余种家具 + 鸟瞰/漫游 + 中英双语 + localStorage 自动保存 + PNG / JSON 导出）+ openJiuwen-ai/iCode 2 天 235⭐ ⑂37 fork/star 15.7% 轻量级离线 agent / workflow 平台（Python 3.14 + uv + Agent/Model/Diff/Rollback/Trajectory/Shell 七大视图 + MCP servers + skills + memory 全配）+ openai/mcp-extensions 1 天 165⭐ ⑂7 fork/star 4.2% ChatGPT MCP 扩展（sidebar / file viewer / composer mentions / extended forms 四类 + TypeScript / Python SDK + Apache-2.0）——Jev 决策模型生态 + 自托管 AI 热点网站框架 + 严肃工程化单文件前端工具 + 离线 agent 平台 + ChatGPT MCP 扩展五线同时推到严肃工程化。
+**今日核心判断：** 反检测 AI 浏览器底层 + 跨 NPU 高性能通信库 + 严肃工程化 PC 游戏 modding + 自托管 AI 热点网站持续扩张——今日 feder-cr/dots 2 天 1931⭐ ⑂320 fork/star 16.6% 推开「AI agent 自己带 Firefox 内核反检测浏览器」（patched Firefox C++ 内核 + One identity per seed + 屏幕 / 字体 / GPU / 时区语言同意 + No WebDriver 标志 / DevTools 协议 / automation globals + The pointer travels to what it clicks + 一只手一行键盘事件 + `--profile-dir` 持久登录 + `--proxy` 时区跟随出口 + OpenRouter `--model` 一键换模型 + uvx 一行启动 + 127.0.0.1:8765 左对话右浏览器 + `invisible_playwright_mcp` 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端 + 全部 patches 在 C++ 内核 + MIT）严肃工程化形态；deepseek-ai/DeepEP-Ascend + DeepGEMM-Ascend 同日推到「Ascend NPU 高性能通信库 + Ascend GEMM kernel 公开」严肃工程化（DeepEP-Ascend：MoE dispatch/combine + FP8 dispatch + deferred epilogue + Pipeline / Context / Data Parallel Bucket collectives + Engram 远端内存 + HCCL/HCOMM/UBMEM/URMA + DeepJIT 运行时编译 + Ascend 950DT EP8 dispatch 373-375 GB/s + EP128 dispatch 313-320 GB/s 90-95% 物理带宽 + API 与 NVIDIA 版 DeepEP 对齐 + DeepGEMM-Ascend：完全 API 兼容 DeepGEMM + BF16/FP8/FP4 GEMM + MQA logits + MegaMoE + 稀疏数据加载 + 协程流水线 + 2026.09.30 Initial release for Ascend 950 + MIT）；rehan-remade/universal-modder 1 天 739⭐ ⑂48 fork/star 6.5% Claude Code plugin 把 PC 游戏 modding 推到「严肃工程化跨工作流」（`/plugin marketplace add rehan-remade/universal-modder` + Claude Code plugin + `mod-any-game` skill 包含 12 个 engine playbooks Unity/Unreal/.NET XNA (Terraria/Stardew/Celeste)/Godot/Source 1-2/Bethesda/Minecraft/AoE2/RE Engine/native C++/indie engines + `game-recon` 找引擎 + `reverse-engineering` ILSpy/Cpp2IL/Vineflower/Ghidra/IDA MCP/Cheat Engine/Frida/RenderDoc + `fal-assets` sprites/pixel art/seamless textures/PBR/image-to-3D/auto-rigging/SFX/music/voice/cutscene + `asset-pipeline` art→engine-exact frames + `game-automation` GPU-safe screenshot/windowed/crash-reporter cleanup + `showcase-video` GPU 录制 + 音频 process-loopback + `um scan/fal/sprite/render3d/win/video/backup/publish` Python CLI + 年龄卡 + 战术核弹 + 真实 Terra/AoE2 测试 + 25 MB 模型压缩 3-8 MB + MIT）；KKKKhazix/AIHOT 持续 3 日 4050⭐ ⑂1158 fork/star 28.6% 持续头部 + 同期 feder-cr/dots 共同把「反检测 / 自托管 / 严肃工程化 / MIT / 跨工作流」推到新高度。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [KKKKhazix/AIHOT](projects/aihot.md) | 3008 stars | 平台候选 |
-| [firelex/jeff](projects/firelex-jeff.md) | 991 stars | 工具型 |
-| [PostHog/jeeves](projects/jeeves.md) | 257 stars | 工具型 |
-| [wy51ai/floorplan-3d](projects/floorplan-3d.md) | 457 stars | 工具型 |
-| [santtiago49/system-design-trainer](projects/system-design-trainer.md) | 107 stars | 工具型 |
+| [feder-cr/dots](projects/feder-cr-dots.md) | 1931 stars | 基础设施候选 |
+| [deepseek-ai/DeepEP-Ascend](projects/deepseek-ai-deepep-ascend.md) | 180 stars | 基础设施候选 |
+| [deepseek-ai/DeepGEMM-Ascend](projects/deepseek-ai-deepgemm-ascend.md) | 377 stars | 基础设施候选 |
+| [rehan-remade/universal-modder](projects/rehan-remade-universal-modder.md) | 739 stars | 工具型 |
+| [OpSafari/hypoarena](projects/op-safari-hypoarena.md) | 545 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **自托管 AI 热点网站框架 + 可改信源 + 可改精选标准 + 完整流水线——今日 KKKKhazix/AIHOT 2 天 3008⭐ ⑂861 fork/star 28.6% Node.js 24 + PostgreSQL 17 + Docker Compose + MIT + 6 信源 + 18 个公开海外 AI 信源示例 + 事件级热度 48h/24h 减半 + 页面中位 10ms + 95% 50ms 内 + 中文日报（趋势分 92）** · 相关项目：KKKKhazix/AIHOT · 强度：92
-2. **Jev / System One 决策模型生态 09-30 多线同步爆发——firelex/jeff 2 天 991⭐ ⑂38 fork/star 3.8% Qwen3.5 / Gemma4 零样本分类微调 + PostHog/jeeves 1 天 257⭐ ⑂11 fork/star 4.3% 9B reasoning Qwen3.5-9B + diffusion drafter + SFT+CISPO + santtiago49/system-design-trainer 2 天 107⭐ ⑂4 fork/star 3.7% React Flow + Jev 自动评分 + 15 levels + 容量模型 + dzhng/jevgrep 持续 6 日 + anishfn/shapeshift 持续 6 日 + amitshekhariitbhu/ai-system-design 持续 5 日（趋势分 90）** · 相关项目：firelex/jeff, PostHog/jeeves, santtiago49/system-design-trainer, dzhng/jevgrep, anishfn/shapeshift, amitshekhariitbhu/ai-system-design · 强度：90
-3. **严肃工程化单文件前端工具从「Agent Skill 严肃工程化」推到「自托管 + 零依赖 + 双语 + 完整工作流 + MIT」——wy51ai/floorplan-3d 1 天 457⭐ ⑂117 fork/star 25.6% 纯前端 2D / 3D 户型装修设计工具 + openJiuwen-ai/iCode 2 天 235⭐ ⑂37 fork/star 15.7% 轻量级离线 agent / workflow 平台 + openai/mcp-extensions 1 天 165⭐ ⑂7 fork/star 4.2% ChatGPT MCP 扩展（趋势分 82）** · 相关项目：wy51ai/floorplan-3d, openJiuwen-ai/iCode, openai/mcp-extensions · 强度：82
-4. **Opus 5.5 视频严肃工程化 + Awesome list 四件套 + plugin marketplace 二次分发 09-30 持续——昨日 yihui-dev/awesome-opus5-5-videos 2 天 692⭐ ⑂80 fork/star 11.6% + lemomo-ai/lemo-opuscar 3 天 512⭐ ⑂67 fork/star 13.1% + feitangyuan/onetake 持续 5 日 + Rieranthony/product-film-skill 持续 4 日（趋势分 78）** · 相关项目：yihui-dev/awesome-opus5-5-videos, lemomo-ai/lemo-opuscar, feitangyuan/onetake, Rieranthony/product-film-skill · 强度：78
+1. **反检测 AI 浏览器底层 + stealth browser + One identity per seed——feder-cr/dots 2 天 1931⭐ ⑂320 fork/star 16.6% patched Firefox C++ 内核 + No WebDriver/DevTools/automation globals + `--proxy` 时区跟随出口 + `--model` 一键换模型 + uvx 一行启动 + 127.0.0.1:8765 左对话右浏览器 + `invisible_playwright_mcp` 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端 + MIT（趋势分 90）** · 相关项目：feder-cr/dots · 强度：90
+2. **Ascend NPU 高性能通信库 + DeepGEMM kernel 公开——deepseek-ai/DeepEP-Ascend 1 天 180⭐ ⑂15 + DeepGEMM-Ascend 2 天 377⭐ ⑂20 同日推到「Huawei Ascend 950 上 EP8 dispatch 373-375 GB/s + 90-95% 物理带宽 + API 与 NVIDIA 版 DeepEP 对齐 + 完全 API 兼容 DeepGEMM + BF16/FP8/FP4/MQA logits/MegaMoE + DeepJIT 运行时编译 + Ascend C kernels」严肃工程化形态（趋势分 84）** · 相关项目：deepseek-ai/DeepEP-Ascend, deepseek-ai/DeepGEMM-Ascend · 强度：84
+3. **严肃工程化 PC 游戏 modding 跨工作流——rehan-remade/universal-modder 1 天 739⭐ ⑂48 fork/star 6.5% Claude Code plugin + 12 个 engine playbooks + ILSpy/Cpp2IL/Ghidra/IDA/Cheat Engine/Frida/RenderDoc + fal assets MCP + sprite/render3d/win/video Python CLI + `mod-any-game` skill + 真实 Terra/AoE2 测试（趋势分 82）** · 相关项目：rehan-remade/universal-modder · 强度：82
+4. **科学假设发现工作台 + AI co-scientist 推到「全离线」严肃工程化——OpSafari/hypoarena 1 天 545⭐ ⑂28 fork/star 5.1% generate–debate–evolve loop + 引用支承的假设 / 证据图 + 合成文献工厂 + span-level grounding verification + pluggable agent adapters + Bradley-Terry / Elo tournaments + MinHash LSH paraphrase dedup + Bayesian evidence accumulation + NumPy core + CPU-only torch extra + `hypoarena demo` 端到端离线跑（趋势分 80）** · 相关项目：OpSafari/hypoarena · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 | [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
-| [2026-09-23](daily/2026-09-23.md) | 5 | 3 |
 
 ## 为什么做这个项目
 

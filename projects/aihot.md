@@ -2,11 +2,11 @@
 title: "KKKKhazix/AIHOT"
 slug: aihot
 date_added: "2026-09-30"
-last_seen_date: "2026-09-30"
+last_seen_date: "2026-10-01"
 category: "平台候选"
 emoji: "🔥"
-stars: "3008 stars"
-stars_delta: "2 天 3008⭐ (2026-09-28 → 2026-09-30)"
+stars: "4050 stars"
+stars_delta: "3 天 4050⭐ (2026-09-28 → 2026-10-01)"
 language: "TypeScript"
 license: "MIT"
 score: 92

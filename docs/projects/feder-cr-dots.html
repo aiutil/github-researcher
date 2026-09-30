@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feder-cr/dots | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/feder-cr/dots" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="feder-crdots">feder-cr/dots</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Open-source dots for the web：一个 AI agent 专属浏览器，patched Firefox C++ 内核（fingerprint 决定在引擎里），One identity per seed（屏幕 / 字体 / GPU / 时区语言一致），No WebDriver / DevTools / automation globals，A person's hands（pointer 真飞过去 + keys 逐个按下），<code>--model</code> 一键换 OpenRouter 任何模型，uvx 一行启动，<code>127.0.0.1:8765</code> 左对话右浏览器 live，<code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端调用。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>AI agent 在网页上失败的根因 99% 不是模型差，是浏览器层之前就失败了——页面没加载、挑战出现、登录失效、点击没点上——这些都发生在模型思考之前。当前「playwright + stealth 插件 + JS 改 navigator」路线是脆弱的：fingerprint 由 JS 画上去，page 一检查就露；WebDriver flag、DevTools protocol、automation globals 在 page 里都能查到；pointer 是 dispatchEvent 而不是真实鼠标，keys 是 KeyboardEvent 而不是真实键盘。dots 直击这些痛点，把浏览器当作 AI agent 的真实基础设施：<strong>fingerprint 决定在内核里</strong>（patched Firefox C++）、One identity per seed（屏幕 / 字体 / GPU / 时区语言互相一致 + <code>--seed</code> 同 seed 每次都是同一个人）、No WebDriver / DevTools / automation globals in the page、A person's hands（pointer travels to what it clicks + keys pressed one at a time + 每一个事件都是 trusted event 页面收到）。解决的是 <strong>「AI agent 在反爬 / 反 bot 网站上的真实可达性 + 任何模型可换 + 一行启动 + 任何 Agent Harness 可用」</strong> 的浏览器层基础设施问题。</p>
+<h2 id="2026-10-01">为什么值得关注（2026-10-01）</h2>
+<ul>
+<li><strong>Stars:</strong> 1931（截至 2026-10-01），2 天 1931⭐，fork 320，fork/star 16.6%</li>
+<li><strong>Forks:</strong> 320（典型高 fork 严肃工程化持续关注信号）</li>
+<li><strong>License:</strong> MIT（明确许可，商用清晰）</li>
+<li><strong>语言:</strong> Python</li>
+<li><strong>活跃度:</strong> created 2026-09-29，pushed_at 2026-10-01，持续高活跃</li>
+<li><strong>规模:</strong> 10 KB（仅 README + Python 极小 repo，patched Firefox C++ 在子模块或外部 repo）</li>
+<li><strong>Topics:</strong> 20 个覆盖 ai-agent / ai-agents / ai-browser / anti-detect-browser / browser-agent / browser-automation / chatgpt / dotfiles / dots / firefox / llm-agent / mcp / open-source-alternative / openai-dots / openrouter / playwright / stealth-browser / web-agent / web-automation</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>feder-cr/dots 的热度是 <strong>「AI agent 浏览器层失败是真实痛点 × patched Firefox C++ 内核是反检测严肃工程化 × 任何模型可换 × 任何 Agent Harness 可用 × 10 KB 极小 repo × MIT」</strong> 的强劲组合。AI agent 是 2026 年最热赛道，但「agent 在反爬 / 反 bot 网站失败」是真实痛点——GitHub Copilot Coding Agent / Devin / Claude Computer Use / Operator 在 LinkedIn / Cloudflare 保护页 / Steam / 银行网站上 90% 失败根因是浏览器层之前。当前「playwright + stealth 插件」路线是脆弱封装，dots 把浏览器当作真实基础设施：fingerprint 决定在内核里、屏幕字体 GPU 时区语言互相一致、No WebDriver/DevTools/automation globals、pointer 真的飞过去 / keys 真的逐个按下、<code>--proxy</code> 让时区语言跟随出口、<code>--profile-dir</code> 让登录跨次持久、自次 <code>--model</code> 一键换 OpenRouter 上任何模型、<code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端调用。热度 <strong>真实且具严肃工程化深度</strong>——10 KB 极小 repo + MIT + 全部 patches 在 C++ 内核 + 任何 Agent Harness 可用 + Not affiliated with OpenAI。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>patched Firefox C++ 内核:</strong> fingerprint 决定在引擎里，不是 JS 画上去、page 一检查就露——这是反检测严肃工程化的关键</li>
+<li><strong>One identity per seed:</strong> 屏幕 / 字体 / GPU / 时区语言互相一致 + <code>--seed</code> 同 seed 每次都是同一个人——反检测 fingerprint 一致性</li>
+<li><strong>No WebDriver / DevTools / automation globals:</strong> page 里查不到 WebDriver flag、DevTools protocol、automation globals——是 stealth 严肃工程化的关键</li>
+<li><strong>A person's hands:</strong> pointer travels to what it clicks + keys pressed one at a time + 每一个事件都是 trusted event 页面收到——是反 bot 严肃工程化的关键</li>
+<li><strong><code>--profile-dir</code> 持久登录跨次:</strong> 让登录跨次持久——是反 bot 严肃工程化的关键</li>
+<li><strong><code>--proxy</code> 时区语言跟随出口:</strong> "Where it connects from is who it is" + 时区语言跟随 proxy 出口——是反 bot 严肃工程化的关键</li>
+<li><strong>任何模型 on OpenRouter + <code>--model</code> 一键换:</strong> OpenRouter 任何模型 + <code>--model</code> 一键换——是模型无关严肃工程化的关键</li>
+<li><strong>uvx 一行启动 + 127.0.0.1:8765 左对话右浏览器:</strong> uvx <code>--from git+...dots</code> + <code>--openrouter-key</code> 一行启动 + 127.0.0.1:8765 左对话右浏览器 live——是 UX 严肃工程化的关键</li>
+<li><strong><code>invisible_playwright_mcp</code> 给任何 MCP 客户端:</strong> <code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端调用——是 Agent Harness 无关严肃工程化的关键</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AI agent 专属浏览器；patched Firefox C++ 内核（fingerprint 决定在引擎里，page 看不到）+ 任何模型 on OpenRouter（<code>--model</code> 一键换）+ 任何 MCP 客户端（<code>invisible_playwright_mcp</code>）</td>
+<td>仅基于 README 描述的 patched Firefox C++ 内核、One identity per seed、No WebDriver/DevTools/automation globals、A person's hands（pointer travels + keys one by one）、<code>--profile-dir</code> 持久登录、<code>--proxy</code> 时区跟随出口、OpenRouter <code>--model</code> 一键换、uvx 一行启动、127.0.0.1:8765 左对话右浏览器 live、<code>invisible_playwright_mcp</code> 给 Claude Code/Codex/Gemini CLI/任何 MCP；具体 C++ patch 范围、<code>invisible_playwright_mcp</code> 协议未在档案中明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 query → 127.0.0.1:8765 dots 调度 → patched Firefox C++ 内核（fingerprint 一致 + No WebDriver + No DevTools）→ 真实事件（pointer travels / keys one by one）→ 目标 page 信任事件 → OpenRouter 模型（<code>--model</code> 一键换）思考 → 浏览器执行</td>
+<td>主路径为档案语义抽象；浏览器 ↔ 模型间的协议（是否为 MCP-style）未在档案中明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>反检测强度（fingerprint 一致 + 真实事件）vs 多 OS 兼容性 + 任何模型可换 vs OpenRouter 单一 provider + 任何 Agent Harness 可用 vs <code>invisible_playwright_mcp</code> 协议开放性</td>
+<td>档案明示 patched C++ 内核、OpenRouter <code>--model</code>、uvx 一行启动、127.0.0.1:8765、<code>invisible_playwright_mcp</code> 给 Claude Code/Codex/Gemini CLI/任何 MCP、Not affiliated with OpenAI、MIT；多 OS 兼容性、C++ patch 维护成本、合规边界未在档案中讨论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一台 Linux + uvx + <code>--seed 42</code> 启动 dots；用无头脚本访问 1 个高反爬网站验证「Same identity every run + trusted events」；再以 <code>--proxy</code> 切换出口验证 timezone 跟随</td>
+<td>PoC 范围、退出路径由档案「先单 fingerprint、最小 PoC、Seed 可复现」建议推导；具体 <code>invisible_playwright_mcp</code> 接口未公开</td>
+</tr>
+<tr>
+<td>## 架构启发</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>feder-cr/dots 的核心启发是 <strong>「AI agent 的浏览器层是关键基础设施，不是 SaaS wrapper」</strong>。当前 AI agent 生态普遍把「playwright + stealth 插件 + JS 改 navigator」当作反检测的全部，但这是脆弱封装——fingerprint 由 JS 画上去、page 一检查就露；WebDriver flag、DevTools protocol、automation globals 在 page 里都能查到；pointer 是 dispatchEvent 而不是真实鼠标。dots 把浏览器当作 AI agent 的真实基础设施：fingerprint 决定在内核里、屏幕字体 GPU 时区语言互相一致、No WebDriver/DevTools/automation globals、pointer 真的飞过去 / keys 真的逐个按下、<code>--proxy</code> 让时区语言跟随出口、<code>--profile-dir</code> 让登录跨次持久、自次 <code>--model</code> 一键换 OpenRouter 上任何模型、<code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端调用。更深层的启发是：<strong>反检测的关键不是 stealth 插件，而是 fingerprint 一致性 + 真实事件 + Agent Harness 无关</strong>——<code>--seed</code> 让同 seed 每次都是同一个人，<code>--proxy</code> 让时区语言跟随出口，<code>--profile-dir</code> 让登录跨次持久，<code>--model</code> 一键换 OpenRouter 任何模型，<code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给任何 MCP 客户端调用。能否持续，取决于能否在多 OS（Windows / macOS / Linux）+ 多 Agent Harness（Claude Code / Codex / Gemini CLI / Cursor / Copilot / Goose）+ 多反爬机制（Cloudflare / DataDome / PerimeterX / 自研指纹检测）下保持 patched C++ 内核的稳定性。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户 query] --> Loop[127.0.0.1:8765<br/>dots 调度]
+  Loop --> Browser[patched Firefox C++ 内核<br/>fingerprint 一致 + No WebDriver + No DevTools]
+  Browser --> Events[真实事件<br/>pointer travels / keys one by one]
+  Events --> Page[目标 page<br/>页面信任事件]
+  Browser -.profile-dir.-> Profile[登录 / cookie 持久]
+  Browser -.proxy 时区跟随.-> Geo[地域出口]
+  Loop --> Model[OpenRouter 模型<br/>--model 一键换]
+  Model --> Loop
+  Browser --> MCP[invisible_playwright_mcp<br/>待核验协议]
+  MCP --> ClaudeCode[Claude Code]
+  MCP --> Codex[Codex]
+  MCP --> GeminiCLI[Gemini CLI]
+  MCP --> Others[任何 MCP 客户端]
+</pre>
+<h2 id="_6">定位判断</h2>
+<p><strong>基础设施候选型项目（AI agent 浏览器层）。</strong> feder-cr/dots 不再把浏览器当作「playwright + stealth 插件」的脆弱封装，而是把浏览器当作 AI agent 的真实基础设施：fingerprint 决定在内核里、屏幕字体 GPU 时区语言互相一致、No WebDriver/DevTools/automation globals、pointer 真的飞过去 / keys 真的逐个按下、<code>--proxy</code> 让时区语言跟随出口、<code>--profile-dir</code> 让登录跨次持久、自次 <code>--model</code> 一键换 OpenRouter 上任何模型、<code>invisible_playwright_mcp</code> 把这个浏览器作为 server 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端调用。这是对 AI agent 失败的根因（浏览器层之前就失败了）的严肃工程化回应。1931⭐ + 320 fork + MIT + 10 KB + 20 个 topics 已显示严肃工程化深度。但「基础设施化」取决于一个关键问题：能否在多 OS（Windows / macOS / Linux）+ 多 Agent Harness（Claude Code / Codex / Gemini CLI / Cursor / Copilot）+ 多反爬机制（Cloudflare / DataDome / PerimeterX）下保持 C++ 内核严肃工程化的稳定性。目前定位是「最有影响力的反检测 AI agent 浏览器层基础设施」。</p>
+<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>合规边界:</strong> 反检测 AI 浏览器可能被用于「绕过网站反爬机制 + 服务条款违反 + 自动化批量操作 + 账号注册滥用」灰色场景，需要严肃评估合规边界（README 未明示合法使用边界）</li>
+<li><strong>多 OS 兼容性:</strong> patched Firefox C++ 内核在 Windows / macOS / Linux 三端的兼容性未在档案中明示</li>
+<li><strong>反爬机制覆盖广度:</strong> patched Firefox C++ 内核在多反爬机制（Cloudflare / DataDome / PerimeterX / 自研指纹检测）的鲁棒性未在档案中给出</li>
+<li><strong>服务商检测:</strong> OpenAI / Anthropic / Google 等服务商的检测机制对反检测的响应未在档案中讨论</li>
+<li><strong><code>--proxy</code> 出口稳定性:</strong> proxy 服务商的多地域稳定性 + 文案合规性未在档案中给出</li>
+<li><strong>个人项目属性:</strong> feder-cr 个人维护，2 天 1931⭐ + fork 320 但核心治理仍集中，可持续性存疑</li>
+</ul>
+<h2 id="_8">与同类项目的关系</h2>
+<ul>
+<li><strong>vs playwright + stealth:</strong> playwright + stealth 是 JS 改 navigator 路线；feder-cr/dots 是 patched Firefox C++ 内核路线，fingerprint 决定在引擎里</li>
+<li><strong>vs OpenAI Operator / Anthropic Computer Use:</strong> OpenAI Operator / Anthropic Computer Use 是 SaaS + 闭源 + 不能改 fingerprint；feder-cr/dots 是 MIT + 自管 + 可换 fingerprint + 可换模型</li>
+<li><strong>vs Camoufox / undetected-playwright:</strong> Camoufox / undetected-playwright 是 stealth 包装；feder-cr/dots 是 patched Firefox C++ 内核（更深度）</li>
+<li><strong>vs 各浏览器厂商反 bot:</strong> 各浏览器厂商反 bot 是 SaaS + 闭源 + 不能改；feder-cr/dots 是 MIT + 自管 + 可换 fingerprint</li>
+<li><strong>vs 各 Agent Harness:</strong> 各 Agent Harness 内置 browser-use 是闭源；feder-cr/dots 是 MIT + <code>invisible_playwright_mcp</code> 任何 MCP 客户端</li>
+</ul>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（AI agent 浏览器层基础设施）。</strong> feder-cr/dots 代表了 AI agent「真实基础设施」诉求——fingerprint 一致性 + 真实事件 + 任何模型可换 + 任何 Agent Harness 可用 + 严肃工程化 + MIT，无论其本身成败，这一方向是行业趋势。建议关注：是否在多 OS（Windows / macOS / Linux）+ 多 Agent Harness（Claude Code / Codex / Gemini CLI / Cursor / Copilot）+ 多反爬机制（Cloudflare / DataDoma / PerimeterX）下保持 C++ 内核严肃工程化的稳定性、是否提供合规使用边界、是否提供商用授权路径。对 AI agent 用户，feder-cr/dots 是「真实可达性 + 任何模型可换 + 任何 Agent Harness 可用」严肃工程化方案，值得直接采用。</p>
+<h2 id="_10">后续观察点</h2>
+<ul>
+<li>是否在多 OS（Windows / macOS / Linux）+ 多 Agent Harness（Claude Code / Codex / Gemini CLI / Cursor / Copilot）+ 多反爬机制（Cloudflare / DataDome / PerimeterX / 自研指纹检测）下保持 C++ 内核严肃工程化的稳定性</li>
+<li>是否提供合规使用边界 + 商用授权路径</li>
+<li><code>invisible_playwright_mcp</code> 协议是否公开 + 与 OpenAI Operator / Anthropic Computer Use 的兼容性</li>
+<li>是否被 Anthropic / OpenAI / Cursor 等厂商集成进自家 Agent Harness 作为反检测底层</li>
+<li>是否进入企业采用（金融 / 电商 / 票务等反爬严肃场景）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-01) | Stars: 1931 | Forks: 320 | License: MIT | 语言: Python | 创建: 2026-09-29</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

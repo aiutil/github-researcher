@@ -2,11 +2,11 @@
 title: "PostHog/jeeves"
 slug: jeeves
 date_added: "2026-09-30"
-last_seen_date: "2026-09-30"
+last_seen_date: "2026-10-01"
 category: "工具型"
 emoji: "🕵️"
-stars: "257 stars"
-stars_delta: "1 天 257⭐ (2026-09-29 → 2026-09-30)"
+stars: "336 stars"
+stars_delta: "3 天 336⭐ (2026-09-29 → 2026-10-01)"
 language: "Python"
 license: "MIT"
 score: 84

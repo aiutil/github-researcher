@@ -2,11 +2,11 @@
 title: "firelex/jeff"
 slug: firelex-jeff
 date_added: "2026-09-30"
-last_seen_date: "2026-09-30"
+last_seen_date: "2026-10-01"
 category: "工具型"
 emoji: "🦊"
-stars: "991 stars"
-stars_delta: "2 天 991⭐ (2026-09-28 → 2026-09-30)"
+stars: "1182 stars"
+stars_delta: "4 天 1182⭐ (2026-09-28 → 2026-10-01)"
 language: "Python"
 license: "MIT"
 score: 88
