@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-01.md">Latest report</a> ·
+  <a href="daily/2026-10-03.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-01
+## Latest report · 2026-10-03
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 653 | 4 | 16k+ |
+| 5 | 658 | 4 | 11k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [feder-cr/dots](projects/feder-cr-dots.md) | 1931 stars | 基础设施候选 |
-| [deepseek-ai/DeepEP-Ascend](projects/deepseek-ai-deepep-ascend.md) | 180 stars | 基础设施候选 |
-| [deepseek-ai/DeepGEMM-Ascend](projects/deepseek-ai-deepgemm-ascend.md) | 377 stars | 基础设施候选 |
-| [rehan-remade/universal-modder](projects/rehan-remade-universal-modder.md) | 739 stars | 工具型 |
-| [OpSafari/hypoarena](projects/op-safari-hypoarena.md) | 545 stars | 工具型 |
+| [facebookincubator/muse-gadget-sdk](projects/facebookincubator-muse-gadget-sdk.md) | 819 stars | 基础设施候选 |
+| [StayLameBro/backburner](projects/staylamebro-backburner.md) | 215 stars | 基础设施候选 |
+| [BootLoops-ai/bootloops](projects/bootloops-ai-bootloops.md) | 203 stars | 基础设施候选 |
+| [blendi-remade/agentcraft](projects/blendi-remade-agentcraft.md) | 184 stars | 工具型 |
+| [whirlchat/whirl](projects/whirlchat-whirl.md) | 240 stars | 生产可用 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: feder-cr/dots
-2. **Signal 2** · score 84 · repositories: deepseek-ai/DeepEP-Ascend, deepseek-ai/DeepGEMM-Ascend
-3. **Signal 3** · score 82 · repositories: rehan-remade/universal-modder
-4. **Signal 4** · score 80 · repositories: OpSafari/hypoarena
+1. **Signal 1** · score 92 · repositories: facebookincubator/muse-gadget-sdk
+2. **Signal 2** · score 88 · repositories: StayLameBro/backburner
+3. **Signal 3** · score 85 · repositories: BootLoops-ai/bootloops
+4. **Signal 4** · score 82 · repositories: blendi-remade/agentcraft
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-01.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-03.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
-| [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 
 ## Why this repository exists
 

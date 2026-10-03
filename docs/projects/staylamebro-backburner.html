@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayLameBro/backburner | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/StayLameBro/backburner" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="staylamebrobackburner">StayLameBro/backburner</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Mac + iPhone 联合本地 LLM 推理框架——把 27B 模型推理从「单设备 24GB 显存天花板」推到「iPhone USB-C 10 Gb/s + split prefill layers 1-40 Mac + 41-64 iPhone GPU + 29-44% prefill 加速 + 196k-229k 8-bit 上下文 + SME2/Metal/DFlash2 多硬件加速」严肃工程化形态。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2025-2026 年本地 LLM 推理需求爆发，但 Apple Silicon Mac 的 unified memory 天花板（约 24-64 GB）让 27B 模型推理卡在 64k 上下文——长 agent session、长 PDF、长代码库都无法本地跑。StayLameBro/backburner 直击这一痛点：它利用 iPhone 的 USB-C 10 Gb/s 串流能力 + iPhone GPU/Neural Engine 闲置算力 + Apple 的 split prefill 工程化，把推理「分工」到 Mac + iPhone 两台设备——Mac 跑 layers 1-40 + iPhone 跑 layers 41-64，pipelined；context 64k 以内 iPhone 不动，past 64k iPhone attention over old keys；最终 MacBook Pro M4 Pro 24GB + iPhone 17 Pro Max 实现 196k-229k 8-bit 上下文，128k 8-bit 3/3 planted facts recalled。解决的是 <strong>「Apple Silicon Mac 显存天花板 + 长上下文推理 + 多硬件协同加速」</strong> 的本地 LLM 推理严肃工程化问题。</p>
+<h2 id="2026-10-03">为什么值得关注（2026-10-03）</h2>
+<ul>
+<li><strong>Stars:</strong> 215（截至 2026-10-03），2 天破 200，增速极快</li>
+<li><strong>Forks:</strong> 21，社区贡献活跃（llama.cpp fork + iOS tail server 天然适合贡献）</li>
+<li><strong>License:</strong> 未明示（README 头部未声明 LICENSE 文件，llama.cpp 主项目 license 未明示），商用集成需先确认</li>
+<li><strong>语言:</strong> Python（主仓库）+ C++（llama.cpp fork）+ Swift/Obj-C（iOS tail server）</li>
+<li><strong>规模:</strong> 800 KB 主仓库 + llama.cpp fork StayLameBro/backburner-llama.cpp + ios/Backburner</li>
+<li><strong>活跃度:</strong> created 2026-10-01，pushed_at 2026-10-03，持续高活跃</li>
+<li><strong>Topics:</strong> 5 个覆盖（apple-silicon / ios / iphone / llama-cpp / llm-inference / local-llm / macos / metal / qwen / sme2 / speculative-decoding）</li>
+<li><strong>关键性能:</strong> 256/256 tokens greedy token-identical 8k/32k + 32/32 at 140k + 67-73 tok/s 8-bit 64k-96k + 59-68 tok/s Mac alone 4-bit + 128k 8-bit 3/3 planted facts recalled + 0.3-5s SSD prompt cache</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>StayLameBro/backburner 的热度是 <strong>「Apple Silicon Mac 显存天花板 × iPhone 闲置算力 × 严肃工程化 × 长上下文刚需」</strong> 的强劲组合。本地 LLM 推理是 2026 年最热赛道，但 24GB unified memory 卡在 27B 64k 上下文——长 agent session、长 PDF、长代码库用户苦不堪言。一个「Mac + iPhone 联合推理」方案直击痛点，自然爆火。21 个 forks 反映 llama.cpp 社区高度关注——这正是「推理框架」类项目的网络效应（用户越多、性能数据越多、吸引更多优化）。热度<strong>真实且具严肃工程化深度</strong>——性能数字极其具体（29-44% prefill 加速 + 196k-229k 8-bit 上下文 + 3/3 planted facts recalled），不是 hype。但需警惕：硬件依赖强（必须 Mac + iPhone + 10 Gb/s USB-C），不是所有用户都能用；license 未明示是商用集成的隐患。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Split prefill:</strong> Mac layers 1-40 + iPhone GPU layers 41-64，pipelined（<code>llama.cpp/src/llama-split.cpp</code> + <code>ios/Backburner</code>）</li>
+<li><strong>196k-229k 8-bit 上下文:</strong> Mac 24GB 装下 64k 8-bit；iPhone 装老 keys + 算 attention；iPhone 17 Pro Max 自由内存决定总上下文</li>
+<li><strong>iPhone attention over old keys past 64k:</strong> iPhone GPU + Neural Engine 联合算老 keys 的 attention；Mac 跑全部 64 layers</li>
+<li><strong>DFlash2 speculative decoding:</strong> Mac 上 draft model 加速 decoding</li>
+<li><strong>SME2 + Metal fusions:</strong> Mac 自有 Apple Silicon 加速（无需 iPhone 也快）</li>
+<li><strong>SSD prompt cache:</strong> <code>scripts/proxy.py</code> 把 27k-token start 恢复在 0.3-5 s</li>
+<li><strong>Mac Neural Engine 不使用:</strong> 文档明示「shares the Mac's memory bandwidth and slowed decode by 26% when running」——这是一个反向的工程化选择</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地 27B LLM 推理的 Mac+iPhone 联合推理框架；llama.cpp fork + iOS tail server + SSD prompt cache；模型仍是 Qwen3.8-27B，硬件仍是 Mac+iPhone，分工被工程化推到极致</td>
+<td>仅基于 README 描述的 split prefill layers 1-40 Mac + 41-64 iPhone GPU、iPhone attention over old keys past 64k、SME2 + Metal fusions + DFlash2 speculative decoding、SSD prompt cache 0.3-5s、196k-229k 8-bit 上下文；具体 KV 串流协议、SSD prompt cache 的 key 推导方式未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>256-token ubatch → Mac layers 1-40 → 残差流过 USB-C → iPhone layers 41-64 on GPU → KV 镜像维持；&lt;64k 上下文 Mac 写、iPhone 不动；&gt;64k 上下文 iPhone GPU+ANE 算老 keys 的 attention</td>
+<td>主路径为档案语义抽象；KV 串流格式（连续 byte stream vs 消息队列）、iPhone 端 attention 实现（ANE 调用细节）、Speculative decoding 的 draft 模型未在档案中明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>跨设备串流加速 vs Mac/iPhone 必须物理接近 + USB-C 依赖 + license 未明示 + 12 工具覆盖度 + 27k prompt cache</td>
+<td>档案明示 10 Gb/s USB-C + split prefill + 29-44% prefill 加速 + 196k-229k 上下文 + 67-73 tok/s 8-bit 64k-96k；Android 兼容、Wi-Fi 替代串流、license 商用边界未在档案中讨论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 MacBook Pro M4 Pro 24GB + iPhone 17 Pro Max + 10 Gb/s USB-C 上跑 backburner demo；先 16k 上下文预填验证 29-44% 加速；再扩到 128k 验证 3/3 planted facts recall</td>
+<td>PoC 范围由档案「29-44% prefill 加速 + 196k-229k 8-bit 上下文 + 128k 3/3 planted facts」建议推导；具体 demo 入口、omp session 复现路径未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>StayLameBro/backburner 的核心启发是 <strong>「Apple Silicon + iPhone A-series GPU 的严肃工程化协同是本地 LLM 推理的下一站」</strong>。当前本地 LLM 推理把硬件当作「单设备显存天花板」的脆弱封装——但 iPhone 的 A-series GPU + Neural Engine 在闲置时是巨大的算力池（196k-229k tokens 上下文就是 iPhone 自由内存贡献的）。backburner 尝试做「跨 Apple 设备严肃工程化协同推理」，类似 ROCm 之于 AMD、CUDA 之于 NVIDIA。更深层的启发是：<strong>严肃工程化本地 LLM 推理的价值在于「多硬件协同 + 严肃工程化 split + 长上下文扩展」</strong>——29-44% prefill 加速 + 196k-229k 上下文 + 3/3 planted facts recall 这些具体数字，说明严肃工程化路径可行。能否持续，取决于能否在多 iPhone 型号（A18/A19）+ 多 Mac 型号（M2/M3/M4）+ 多 USB-C 串流速度持续兼容。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Prompt[prompt tokens<br/>256-token ubatch] --> MacPrefill[Mac GPU layers 1-40<br/>SME2 + Metal fusions]
+  MacPrefill --> USB[10 Gb/s USB-C 串流]
+  USB --> iPhonePrefill[iPhone GPU layers 41-64]
+  iPhonePrefill --> iPhoneKV[iPhone KV 镜像<br/>layers 41-64]
+  iPhonePrefill --> MacNext[Mac 启动下一 ubatch]
+  MacPrefill --> MacKV[Mac KV 缓存<br/>layers 1-40]
+  MacPrefill -.29-44% prefill 加速.-> Speed[16k-48k +29~44%]
+  MacKV --> Write[Writing<br/>Mac 全部 64 layers<br/>+ draft model]
+  Write --> DFlash2[DFlash2<br/>speculative decoding]
+  DFlash2 --> Out[token 输出]
+  Write --> SSDCache[SSD prompt cache<br/>0.3-5s]
+  SSDCache --> Prompt
+  iPhoneKV -.past 64k.-> iPhoneAttn[iPhone GPU + ANE<br/>attention over old keys]
+  iPhoneAttn --> Write
+  MacKV -.past 64k.-> MacAttn[Mac layers 1-40<br/>oldest keys past 40k]
+  MacAttn --> Write
+  Out --> Context[196k-229k 8-bit<br/>128k 3/3 planted facts]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>基础设施候选型项目（Mac+iPhone 联合 LLM 推理框架）。</strong> StayLameBro/backburner 不仅是 llama.cpp fork，更试图成为 Apple Silicon 设备本地推理的「跨设备协同严肃工程化框架」——类似 ROCm 之于 AMD、CUDA 之于 NVIDIA。若成功，它会成为 Apple 设备本地 LLM 推理的默认加速方案，具有平台级价值。2 天 215⭐ + 21 forks 已显示严肃工程化深度。但「平台化」取决于几个关键问题：多 iPhone 型号（A18/A19）+ 多 Mac 型号（M2/M3/M4）兼容性能否持续；USB-C 依赖能否被 Wi-Fi 替代串流解决；license 未明示的商用边界能否补齐。目前定位是「最有影响力的 Mac+iPhone 联合推理框架」，向平台演进是合理路径。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>硬件依赖强:</strong> 必须 Mac + iPhone + 10 Gb/s USB-C 串流；不能纯 Mac、不能纯 iPhone、不能 Android</li>
+<li><strong>license 未明示:</strong> README 头部未声明 LICENSE 文件，商用集成需先确认</li>
+<li><strong>USB-C 物理接近:</strong> Mac 与 iPhone 必须物理连接（10 Gb/s 串流），无线替代未在档案中讨论</li>
+<li><strong>单模型支持:</strong> 主要针对 Qwen3.8-27B + IQ4_XS 量化；其他 27B 模型支持度未在档案中明示</li>
+<li><strong>Mac Neural Engine 反向选择:</strong> 文档明示「Mac's ANE shares memory bandwidth and slowed decode by 26%」——这是一个不平凡的工程化权衡，但读者可能误以为是「未优化」</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs stock llama.cpp:</strong> llama.cpp 是通用本地 LLM 推理；backburner 是 Mac+iPhone 联合推理 fork</li>
+<li><strong>vs Ollama / LM Studio:</strong> 那些是单设备本地推理；backburner 是双设备协同推理</li>
+<li><strong>vs MLX (Apple):</strong> MLX 是 Apple 官方机器学习框架；backburner 是在 llama.cpp 之上的应用加速</li>
+<li><strong>vs exo (分布式推理):</strong> exo 是分布式推理；backburner 是 Apple 设备特化协同</li>
+<li><strong>vs vLLM:</strong> vLLM 是 server-side 推理；backburner 是本地推理</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Apple Silicon 本地 LLM 推理严肃工程化）。</strong> StayLameBro/backburner 代表了 Apple Silicon 本地 LLM 推理的「多硬件协同 + 严肃工程化 split + 长上下文扩展」诉求，无论其本身成败，这一方向是行业趋势。建议关注：是否演化为 llama.cpp 官方 plugin（决定其严肃工程化深度命运）、多 iPhone 型号 + 多 Mac 型号 + Wi-Fi 替代串流的兼容性、license 商用集成成熟度、Qwen 之外模型的支持广度。对本地 LLM 推理用户，这个仓库是 27B 模型在 Mac+iPhone 联合推理严肃工程化的实用方案，值得直接采用。对 LLM 推理生态观察者，它是「跨设备协同推理」赛道的头部样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否演化为 llama.cpp 官方 plugin（从社区 fork 升级为官方插件）</li>
+<li>多 iPhone 型号（A18/A19）+ 多 Mac 型号（M2/M3/M4）的兼容性</li>
+<li>Wi-Fi 替代 USB-C 串流的严肃工程化可行性</li>
+<li>license 状态明确化（决定商用集成成熟度）</li>
+<li>Qwen 之外模型的支持广度（27B 之外 / 70B 模型等）</li>
+<li>Speculative decoding 的 draft 模型扩展性</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-03) | Stars: 215 | Forks: 21 | License: 未明示 | 语言: Python | 创建: 2026-10-01</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

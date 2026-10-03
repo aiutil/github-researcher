@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-01.md">最新日报</a> ·
+  <a href="daily/2026-10-03.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-01
+## 最新研究 · 2026-10-03
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 653 | 4 | 16k+ |
+| 5 | 658 | 4 | 11k+ |
 
-**今日核心判断：** 反检测 AI 浏览器底层 + 跨 NPU 高性能通信库 + 严肃工程化 PC 游戏 modding + 自托管 AI 热点网站持续扩张——今日 feder-cr/dots 2 天 1931⭐ ⑂320 fork/star 16.6% 推开「AI agent 自己带 Firefox 内核反检测浏览器」（patched Firefox C++ 内核 + One identity per seed + 屏幕 / 字体 / GPU / 时区语言同意 + No WebDriver 标志 / DevTools 协议 / automation globals + The pointer travels to what it clicks + 一只手一行键盘事件 + `--profile-dir` 持久登录 + `--proxy` 时区跟随出口 + OpenRouter `--model` 一键换模型 + uvx 一行启动 + 127.0.0.1:8765 左对话右浏览器 + `invisible_playwright_mcp` 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端 + 全部 patches 在 C++ 内核 + MIT）严肃工程化形态；deepseek-ai/DeepEP-Ascend + DeepGEMM-Ascend 同日推到「Ascend NPU 高性能通信库 + Ascend GEMM kernel 公开」严肃工程化（DeepEP-Ascend：MoE dispatch/combine + FP8 dispatch + deferred epilogue + Pipeline / Context / Data Parallel Bucket collectives + Engram 远端内存 + HCCL/HCOMM/UBMEM/URMA + DeepJIT 运行时编译 + Ascend 950DT EP8 dispatch 373-375 GB/s + EP128 dispatch 313-320 GB/s 90-95% 物理带宽 + API 与 NVIDIA 版 DeepEP 对齐 + DeepGEMM-Ascend：完全 API 兼容 DeepGEMM + BF16/FP8/FP4 GEMM + MQA logits + MegaMoE + 稀疏数据加载 + 协程流水线 + 2026.09.30 Initial release for Ascend 950 + MIT）；rehan-remade/universal-modder 1 天 739⭐ ⑂48 fork/star 6.5% Claude Code plugin 把 PC 游戏 modding 推到「严肃工程化跨工作流」（`/plugin marketplace add rehan-remade/universal-modder` + Claude Code plugin + `mod-any-game` skill 包含 12 个 engine playbooks Unity/Unreal/.NET XNA (Terraria/Stardew/Celeste)/Godot/Source 1-2/Bethesda/Minecraft/AoE2/RE Engine/native C++/indie engines + `game-recon` 找引擎 + `reverse-engineering` ILSpy/Cpp2IL/Vineflower/Ghidra/IDA MCP/Cheat Engine/Frida/RenderDoc + `fal-assets` sprites/pixel art/seamless textures/PBR/image-to-3D/auto-rigging/SFX/music/voice/cutscene + `asset-pipeline` art→engine-exact frames + `game-automation` GPU-safe screenshot/windowed/crash-reporter cleanup + `showcase-video` GPU 录制 + 音频 process-loopback + `um scan/fal/sprite/render3d/win/video/backup/publish` Python CLI + 年龄卡 + 战术核弹 + 真实 Terra/AoE2 测试 + 25 MB 模型压缩 3-8 MB + MIT）；KKKKhazix/AIHOT 持续 3 日 4050⭐ ⑂1158 fork/star 28.6% 持续头部 + 同期 feder-cr/dots 共同把「反检测 / 自托管 / 严肃工程化 / MIT / 跨工作流」推到新高度。
+**今日核心判断：** Meta 官方 Muse Gadget SDK（ESP32+Linux 设备 SDK 开源）+ iPhone USB-C 加速 Mac 本地 27B LLM 推理 + Mac/iPhone 联合 196k-229k 上下文 + BootLoops 1.0 严肃工程化 LLM 物理计算引擎 + 反检测/网页/桌面 GUI 三向 Agent 副驾——今日 facebookincubator/muse-gadget-sdk 1 天 819⭐ ⑂127 fork/star 15.5% 把 Meta Muse AI 项目的「开源设备 SDK」推到「ESP32 设备 SDK + Linux/Raspberry Pi 设备 SDK + 屏幕 / 音频 / 传感器 / 舵机全配 + Apache-2.0 + gadgets.muse.ai」严肃工程化形态（C · Apache-2.0 · 2482 KB · ESP32 Device SDK + Linux Device SDK + Waveshare 圆 AMOLED + M5Stack StickS3 + Muse Home Link + Raspberry Pi + Seeed reTerminal e-ink + off-the-shelf boards + screens / buttons / sensors / actuators + 设备 SDK 公开 + 商用清晰 + Not affiliated with Meta in any way + 「Built by hackers, for hackers」）；StayLameBro/backburner 2 天 215⭐ ⑂21 fork/star 9.8% 把本地 27B 推理从「纯 Mac 24GB 64k 上下文」推到「iPhone USB-C 10 Gb/s + Mac layers 1-40 + iPhone GPU layers 41-64 split prefill + 29-44% prefill 加速 16k-48k + 196k-229k 8-bit 上下文 + iPhone attention over old keys past 64k + llama.cpp fork + SME2 + Metal fusions + DFlash2 speculative decoding + 0.3-5s SSD prompt cache + MacBook Pro M4 Pro 24GB + iPhone 17 Pro Max A19 Pro」严肃工程化形态（Python · license 未明示 · 800 KB · llama.cpp fork StayLameBro/backburner-llama.cpp + ios/Backburner + scripts/proxy.py SSD prompt cache + bench/{turn-bench.py,session-bench.py} + 256/256 tokens greedy token-identical 8k/32k + 32/32 at 140k + 67-73 tok/s 8-bit 64k-96k + 59-68 tok/s Mac alone 4-bit + 128k 3/3 planted facts recalled + 12 omp tools + 26,849 tokens prompt）；BootLoops-ai/bootloops 2 天 203⭐ ⑂42 fork/star 20.7% 把 LLM 驱动严肃科学计算从「前端集成 Python 包」推到「BootLoops 1.0 certified computational tools + house engines for exact and high-precision scientific computing + Feynman integrals polylogarithmic/elliptic/K3/Calabi–Yau closed form/hundreds of certified digits + recurrences with certificates + Bayesian evidence integrals closed form + ball arithmetic proven error radius + exhaustive enumeration completeness certificates + open implementations of standard statistical procedures + Comprehensive field-specific codebases JaCKandJill/Mixalot/Terrier/Popcorn + 49 packages under tools/ + `python3 run_selftests.py --par 8` 一次性自检 + `python3 tools/landau-alphabet/test_landau_alphabet.py` Landau Alphabet 引擎 reference results 一分半钟复现 + plain-markdown skills 协议 + bootloops.ai」严肃工程化形态（Python · MIT · 8104 KB · bootloops skills separate repo + 49 packages + per-package GUIDE.md + acceptance gates + verification class + Landau Alphabet engine + 12-step protocols including「no unsupported claims, no filler, every quoted number traceable」+ related repos skills/JaCKandJill/BootLoops-ai）；blendi-remade/agentcraft 0 天 184⭐ ⑂23 fork/star 12.5% 把多 Agent coding 协作从「wall of terminal text」推到「Minecraft 26.3 studio 走来走去 + 6 个手绘角色 Marlow/Juniper/Kit/Wren/Rowan/Tove + Marlow 拆任务 + workers 各坐各 desk + 各 git worktree + 各 live monitor + Task Wall kanban + Library shared memory + podium 决策 + real diff merge review screen + 482 tests passing + Foreman 离线重连继续 + 实测 6 个 feature landed with tests passing + 安全 worktrees 不动 checkout + 不推送」严肃工程化形态（Java · MIT · 28737 KB · Minecraft 26.3 + Fabric + Claude Agent SDK + foreman/test + AgentCraft HQ golden hour + agents/<agent>/<task> 命名 + `<kbd>!</kbd>` bell + `<kbd>J</kbd>` + clay figurines + particles + nameplates + speech bubbles + real pathfinding）；whirlchat/whirl 1 天 240⭐ ⑂15 fork/star 6.3% 把 AI chat app 从「单 SaaS 闭源」推到「whirl.chat full-stack open source + Next.js 16 + Convex 后端 + Clerk auth + OpenRouter models + 100% MIT + apps/{v2,console,mobile,waitlist,remotion,legacy} + packages/backend + docs/{self-hosting,configuration,architecture}.md + every top model + living artifacts + MCP OAuth + long-term memory + live web search + locked chats 客户端加密 + incognito mode + message queueing + voice input + image generation + file attachments + folders + sharing」严肃工程化形态（TypeScript · MIT · 4631 KB · Anterra © + Bun workspaces + apps/v2 + admin console Vite + native Expo + remotion promo video + Convex database/functions/streaming/crons + Clerk + OpenRouter AI SDK + postcss no Tailwind `unused-keep` + waiting chat 多 model + adjustable thinking levels）。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [feder-cr/dots](projects/feder-cr-dots.md) | 1931 stars | 基础设施候选 |
-| [deepseek-ai/DeepEP-Ascend](projects/deepseek-ai-deepep-ascend.md) | 180 stars | 基础设施候选 |
-| [deepseek-ai/DeepGEMM-Ascend](projects/deepseek-ai-deepgemm-ascend.md) | 377 stars | 基础设施候选 |
-| [rehan-remade/universal-modder](projects/rehan-remade-universal-modder.md) | 739 stars | 工具型 |
-| [OpSafari/hypoarena](projects/op-safari-hypoarena.md) | 545 stars | 工具型 |
+| [facebookincubator/muse-gadget-sdk](projects/facebookincubator-muse-gadget-sdk.md) | 819 stars | 基础设施候选 |
+| [StayLameBro/backburner](projects/staylamebro-backburner.md) | 215 stars | 基础设施候选 |
+| [BootLoops-ai/bootloops](projects/bootloops-ai-bootloops.md) | 203 stars | 基础设施候选 |
+| [blendi-remade/agentcraft](projects/blendi-remade-agentcraft.md) | 184 stars | 工具型 |
+| [whirlchat/whirl](projects/whirlchat-whirl.md) | 240 stars | 生产可用 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **反检测 AI 浏览器底层 + stealth browser + One identity per seed——feder-cr/dots 2 天 1931⭐ ⑂320 fork/star 16.6% patched Firefox C++ 内核 + No WebDriver/DevTools/automation globals + `--proxy` 时区跟随出口 + `--model` 一键换模型 + uvx 一行启动 + 127.0.0.1:8765 左对话右浏览器 + `invisible_playwright_mcp` 给 Claude Code / Codex / Gemini CLI / 任何 MCP 客户端 + MIT（趋势分 90）** · 相关项目：feder-cr/dots · 强度：90
-2. **Ascend NPU 高性能通信库 + DeepGEMM kernel 公开——deepseek-ai/DeepEP-Ascend 1 天 180⭐ ⑂15 + DeepGEMM-Ascend 2 天 377⭐ ⑂20 同日推到「Huawei Ascend 950 上 EP8 dispatch 373-375 GB/s + 90-95% 物理带宽 + API 与 NVIDIA 版 DeepEP 对齐 + 完全 API 兼容 DeepGEMM + BF16/FP8/FP4/MQA logits/MegaMoE + DeepJIT 运行时编译 + Ascend C kernels」严肃工程化形态（趋势分 84）** · 相关项目：deepseek-ai/DeepEP-Ascend, deepseek-ai/DeepGEMM-Ascend · 强度：84
-3. **严肃工程化 PC 游戏 modding 跨工作流——rehan-remade/universal-modder 1 天 739⭐ ⑂48 fork/star 6.5% Claude Code plugin + 12 个 engine playbooks + ILSpy/Cpp2IL/Ghidra/IDA/Cheat Engine/Frida/RenderDoc + fal assets MCP + sprite/render3d/win/video Python CLI + `mod-any-game` skill + 真实 Terra/AoE2 测试（趋势分 82）** · 相关项目：rehan-remade/universal-modder · 强度：82
-4. **科学假设发现工作台 + AI co-scientist 推到「全离线」严肃工程化——OpSafari/hypoarena 1 天 545⭐ ⑂28 fork/star 5.1% generate–debate–evolve loop + 引用支承的假设 / 证据图 + 合成文献工厂 + span-level grounding verification + pluggable agent adapters + Bradley-Terry / Elo tournaments + MinHash LSH paraphrase dedup + Bayesian evidence accumulation + NumPy core + CPU-only torch extra + `hypoarena demo` 端到端离线跑（趋势分 80）** · 相关项目：OpSafari/hypoarena · 强度：80
+1. **Meta 官方 Muse Gadget SDK 开源——facebookincubator/muse-gadget-sdk 1 天 819⭐ ⑂127 fork/star 15.5% 把 AI 项目的「开源设备 SDK」推到「ESP32 设备 SDK + Linux/Raspberry Pi 设备 SDK + 屏幕/音频/传感器/舵机全配 + Apache-2.0 + gadgets.muse.ai」严肃工程化形态（趋势分 92）** · 相关项目：facebookincubator/muse-gadget-sdk · 强度：92
+2. **iPhone USB-C 加速 Mac 本地 27B LLM 推理 + 196k-229k 上下文——StayLameBro/backburner 2 天 215⭐ ⑂21 fork/star 9.8% split prefill layers 1-40 Mac + 41-64 iPhone GPU + 29-44% prefill 加速 + llama.cpp fork + SME2 + Metal fusions + DFlash2 speculative decoding + SSD prompt cache 0.3-5s（趋势分 88）** · 相关项目：StayLameBro/backburner · 强度：88
+3. **BootLoops 1.0 严肃工程化 LLM 物理计算引擎——BootLoops-ai/bootloops 2 天 203⭐ ⑂42 fork/star 20.7% Feynman integrals polylogarithmic/elliptic/K3/Calabi-Yau + recurrences with certificates + Bayesian evidence closed form + ball arithmetic + 49 packages + plain-markdown skills 协议 + Landau Alphabet engine reference results（趋势分 85）** · 相关项目：BootLoops-ai/bootloops · 强度：85
+4. **Minecraft 26.3 + 6 个手绘角色 + Marlow 拆任务 + workers 各 git worktree + 各 live monitor + podium 决策 + real diff merge review + Foreman 重连继续——blendi-remade/agentcraft 0 天 184⭐ ⑂23 fork/star 12.5% 严肃工程化多 Agent coding 协作跨工作流（趋势分 82）** · 相关项目：blendi-remade/agentcraft · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 | [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
-| [2026-09-24](daily/2026-09-24.md) | 5 | 3 |
 
 ## 为什么做这个项目
 
