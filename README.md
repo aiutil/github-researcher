@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-03.md">Latest report</a> ·
+  <a href="daily/2026-10-05.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-03
+## Latest report · 2026-10-05
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 658 | 4 | 11k+ |
+| 4 | 663 | 4 | 590k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [facebookincubator/muse-gadget-sdk](projects/facebookincubator-muse-gadget-sdk.md) | 819 stars | 基础设施候选 |
-| [StayLameBro/backburner](projects/staylamebro-backburner.md) | 215 stars | 基础设施候选 |
-| [BootLoops-ai/bootloops](projects/bootloops-ai-bootloops.md) | 203 stars | 基础设施候选 |
-| [blendi-remade/agentcraft](projects/blendi-remade-agentcraft.md) | 184 stars | 工具型 |
-| [whirlchat/whirl](projects/whirlchat-whirl.md) | 240 stars | 生产可用 |
+| [pingdotgg/t3code](projects/pingdotgg-t3code.md) | 25115 stars | 工具型 |
+| [pbakaus/impeccable](projects/pbakaus-impeccable.md) | 76227 stars | 工具型 |
+| [coreyhaines31/marketingskills](projects/coreyhaines31-marketingskills.md) | 53021 stars | 工具型 |
+| [tester-army/e2e](projects/tester-army-e2e.md) | 2997 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: facebookincubator/muse-gadget-sdk
-2. **Signal 2** · score 88 · repositories: StayLameBro/backburner
-3. **Signal 3** · score 85 · repositories: BootLoops-ai/bootloops
-4. **Signal 4** · score 82 · repositories: blendi-remade/agentcraft
+1. **Signal 1** · score 92 · repositories: pingdotgg/t3code
+2. **Signal 2** · score 88 · repositories: pbakaus/impeccable
+3. **Signal 3** · score 85 · repositories: coreyhaines31/marketingskills
+4. **Signal 4** · score 78 · repositories: tester-army/e2e
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-03.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-05.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 | [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
-| [2026-09-25](daily/2026-09-25.md) | 5 | 3 |
 
 ## Why this repository exists
 

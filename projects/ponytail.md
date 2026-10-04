@@ -2,15 +2,15 @@
 title: "DietrichGebert/ponytail"
 slug: "ponytail"
 date_added: "2026-06-13"
-last_seen_date: "2026-08-11"
+last_seen_date: "2026-10-05"
 category: "工具型"
 emoji: "🐴"
-stars: "100,395 stars"
-stars_delta: "60天从0到100K，日均~1.7K；持续 Trending"
+stars: "154,773 stars"
+stars_delta: "4 个月 154,773⭐ / fork 8,318 / fork/star 5.4%；持续 GitHub Trending"
 language: "JavaScript"
 license: "MIT"
 score: 93
-tags: ["agent-skill", "yagni", "minimalism", "code-quality", "token-optimization", "claude-code"]
+tags: ["agent-skill", "yagni", "minimalism", "code-quality", "token-optimization", "claude-code", "laziest-senior-dev", "54-percent-less-code", "100-percent-safety"]
 url: "https://github.com/DietrichGebert/ponytail"
 ---
 

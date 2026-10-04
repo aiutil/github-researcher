@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-05 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-05-github">2026-10-05 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description、license、size、forks 来自 2026-10-05 GitHub Search API + GitHub Repository API 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license / size）+ 各项目 README 公开摘录（API readme 字段 base64 解码）。<strong>"X 月 Y⭐"基于 created_at→2026-10-05 总星数与经过月数（粗略下限估计）</strong>，stargazers REST endpoint 需要认证故未做精确单日增量统计；GitHub Trending 页面（https://github.com/trending）今日 daily 列表显示以上 4 个新项目出现在 daily 列表的前列（tester-army/e2e #2、pbakaus/impeccable #3、coreyhaines31/marketingskills #4、pingdotgg/t3code #6 等，sponsors 项已剔除）。<strong>今日观察窗为 GitHub trending 抓取时刻起、且截至 2026-10-05 仍在快速增长的新发现项目</strong>；GitHub Search API 速率限制（10/小时）已耗尽，本批 trending 数据通过 GitHub Trending HTML + Repository API 元数据补充。<strong>今日最大事件是 <code>pingdotgg/t3code</code> 4 个月 25115⭐ / fork 6507 / fork/star 25.9% — pingdotgg 官方组织（T3 Stack 作者 Theo）背书的「6 大 Coding Agent 远程/桌面/CLI 跨设备控制面」</strong>——把「Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 桌面 4 端 + MIT + control surface（performance, remote-ready, truly open）+ <code>curl -fsSL https://t3.codes/install.sh | sh</code> 一行启动 + <code>npx t3@latest</code> 一次性试用 + <code>t3 service install</code> 后台守护 + <code>t3 update</code> 升级 + winget / brew / .deb / AUR 包管理器全配 + App Store / Play Store 移动应用已发布」严肃工程化形态——这是 T3 Stack 作者 Theo 把 Coding Agent 生态从「桌面应用碎片化」推到「统一控制面 + MIT 开源 + 跨设备 + 包管理器全配」形态。<strong>今日 4 个新项目 + 7 个延续跟踪项目分五条主线</strong>：<strong>A. T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面（pingdotgg/t3code）</strong>——把「多 Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 4 端 + MIT + control surface 严肃工程化」形态（4 个月 25115⭐ / fork 6507 / fork/star 25.9% / TypeScript MIT 433650 KB）；<strong>B. Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules（pbakaus/impeccable）</strong>——把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands + npx install + /impeccable init 写 PRODUCT.md + 61 deterministic detector rules + Apache-2.0 商用清晰」严肃工程化形态（11 个月 76227⭐ / fork 4546 / fork/star 5.9% / JavaScript Apache-2.0 387030 KB）；<strong>C. Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理（coreyhaines31/marketingskills）</strong>——把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf + tools/REGISTRY.md + tools/PARTNERS.md 治理边界 + Verified Partners 不影响 core skill 推荐 + MIT 商用清晰」严肃工程化形态（9 个月 53021⭐ / fork 7915 / fork/star 14.9% / JavaScript MIT 4621 KB）；<strong>D. e2e TesterArmy AI 驱动自然语言端到端测试框架（tester-army/e2e）</strong>——把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e <code>agent.act('升级 Pro')</code> 自然语言 agent step + <code>agent.assert('发票预览显示按比例金额')</code> 自然语言断言 + 重放无模型调用 + 移动 / Web 全平台」严肃工程化形态（2.5 个月 2997⭐ / fork 114 / fork/star 3.8% / TypeScript Apache-2.0 14055 KB）；<strong>E. 延续跟踪 7 个 Agent 严肃工程化项目同步高速增长</strong>（addyosmani/agent-skills 101K⭐ + garrytan/gstack 135K⭐ + thedotmack/claude-mem 96K⭐ + DietrichGebert/ponytail 155K⭐ + earthtojake/text-to-cad 17K⭐ + calesthio/OpenMontage 63K⭐ + antirez/ds4 23K⭐，累计 ~590K 颗 ⭐ 严肃工程化生态持续 trending）。<strong>与昨日（10-03）「Meta 官方 Muse Gadget SDK 开源 + iPhone USB-C 加速 Mac 本地 27B LLM 推理 + BootLoops 1.0 严肃工程化 LLM 物理计算引擎 + Minecraft 26.3 + 6 个手绘角色 + AI chat app full-stack open source」五主线不同</strong>，今日主线转向「<strong>T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面</strong>（pingdotgg 官方组织背书 + MIT + t3.codes + iOS/Android/Web/Electron 4 端 + control surface 严肃工程化）」+「<strong>Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules</strong>（pbakaus/impeccable + npx install + /impeccable init + Apache-2.0 + impeccable.style）」+「<strong>Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理</strong>（coreyhaines31/marketingskills + MIT + corey.co + 商业化生态）」+「<strong>e2e TesterArmy AI 驱动自然语言端到端测试框架</strong>（tester-army/e2e + agent.act + agent.assert + 重放无模型调用 + tester.army + Apache-2.0）」+「<strong>延续跟踪 7 个 Agent 严肃工程化项目同步高速增长 ~590K 颗 ⭐ 累计</strong>（agent-skills 101K⭐ + gstack 135K⭐ + claude-mem 96K⭐ + ponytail 155K⭐ + text-to-cad 17K⭐ + OpenMontage 63K⭐ + ds4 23K⭐）」五个严肃工程化 + 跨工作流的演化形态——今日偏重「<strong>Coding Agent 控制面 + 设计语言 + 营销技能库 + 端到端测试 + 严肃工程化生态累计</strong>」，10-03 偏重「<strong>硬件 AI SDK + 本地 LLM 推理 + 严肃科学计算 + Minecraft 多 Agent 协作 + AI chat app 全栈开源</strong>」。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1t3-code-6-coding-agent-cli-92">趋势 1：T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面（趋势分 92）</h3>
+<p><code>pingdotgg/t3code</code> 4 个月 25115⭐ ⑂6507 fork/star 25.9% 把「多 Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 桌面 4 端 + MIT + control surface（performance, remote-ready, truly open）+ <code>curl -fsSL https://t3.codes/install.sh | sh</code> 一行启动 + <code>npx t3@latest</code> 一次性试用 + <code>t3 service install</code> 后台守护 + <code>t3 update</code> 升级 + winget / brew / .deb / AUR 包管理器全配 + App Store / Play Store 移动应用已发布」严肃工程化形态——核心洞察 <strong>「Coding Agent 远程控制从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent + 4 端 + MIT + control surface 严肃工程化」形态」</strong>。<strong>t3code</strong> 是 T3 Code is an "agent harness control surface" + It enables control of the agents on your machine with a best-in-class mobile app (iOS + Android), web app and Electron-based desktop app + Works with your subscriptions on Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity + If they're set up on your computer, T3 Code can control them + Nothing. We built T3 Code because we wanted the best possible development experience with agents + We were inspired by existing solutions like the Codex desktop app, Conductor, Claude Desktop and Cursor Glass, but none met our bar + We wanted something performant, remote-ready, and truly open + If we ever go the wrong direction, you want you to have everything you need to fork and build the editor that you want + T3 Code currently supports Codex / Claude / Cursor / Grok Build / OpenCode / Antigravity + Install and authenticate at least one provider before use + Codex CLI: <code>codex login</code> / Claude Code: <code>claude auth login</code> / Cursor CLI: <code>agent login</code> / Grok Build CLI: <code>grok login</code> / OpenCode: <code>opencode auth login</code> / Antigravity: enable in Settings + Install Antigravity + Sign in with Google + Command line: <code>curl -fsSL https://t3.codes/install.sh | sh</code> + Windows PowerShell: <code>irm https://t3.codes/install.ps1 | iex</code> + Then run <code>t3</code> to start the server and open the local web app + <code>t3 service install</code> keeps it running in the background + <code>t3 update</code> moves to a newer release + <code>t3 --help</code> full reference + To try it once without installing, run <code>npx t3@latest</code> instead + Desktop app: GitHub Releases / winget install T3Tools.T3Code / brew install --cask t3-code / Debian/Ubuntu <code>.deb</code> from GitHub Releases / Arch Linux AUR <code>yay -S t3code-bin</code> (stable) + <code>t3code-nightly-bin</code> (nightly) + AUR packaging maintained under <code>packaging/aur</code> + TypeScript · MIT · 433650 KB · pingdotgg 官方组织背书（T3 Stack 作者 Theo · t3.codes · iOS app id6787819824 · Android app com.t3tools.t3code）+ 4 个月 25115⭐ / fork 6507 / fork/star 25.9% + topics 0 个覆盖（README 未明示）。<strong>决定这条主线长期价值的是「6 Agent 适配层（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）在多版本的兼容性 + 4 端（iOS / Android / Web / Electron）在多平台的稳定性 + <code>t3</code> 服务在多 OS 的多后端进程模型 + <code>t3 service install</code> 后台守护在多 systemd / launchd / Windows Service 的兼容性 + <code>t3 update</code> 升级机制在多 channel（stable / nightly）的稳定性 + 包管理器全配（winget / brew / .deb / AUR）在多 OS 商店的覆盖广度 + App Store / Play Store 移动应用在多 device 的可用性 + <code>curl install.sh</code> 一行启动在多 OS shell 的兼容性 + <code>npx t3@latest</code> 一次性试用在多网络环境的可用性 + 性能 remote-ready truly open 三特性的严肃工程化承诺 + MIT 商用清晰的边界 + topics 0 个覆盖的清晰度」</strong>——6 Agent 适配层兼容性 + 4 端稳定性 + t3 服务多 OS 进程模型 + 后台守护在多 systemd/launchd/Windows Service 兼容性 + t3 update 升级机制 + 包管理器全配 + App Store/Play Store 可用性 + curl/npx 兼容性 + 三特性严肃工程化承诺 + MIT 商用清晰 + topics 覆盖是关键。</p>
+<h3 id="2impeccable-1-skill-24-commands-61-detector-rules-88">趋势 2：Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules（趋势分 88）</h3>
+<p><code>pbakaus/impeccable</code> 11 个月 76227⭐ ⑂4546 fork/star 5.9% 把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands（polish / audit / critique / distill / animate / bolder / quieter）+ <code>npx impeccable install</code> 一行装 + <code>/impeccable init</code> 一次性扫描写 PRODUCT.md + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展无 LLM 无 API key 跑 + 387030 KB 巨大工程量 + Apache-2.0 商用清晰 + impeccable.style」严肃工程化形态——核心洞察 <strong>「AI 设计语言从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands + 61 确定性 detector rules + npx install + /impeccable init 写 PRODUCT.md + CLI 与浏览器扩展无 LLM 无 API key」严肃工程化形态」</strong>。<strong>impeccable</strong> is Design guidance for AI coding agents + 1 skill + 24 commands + live browser iteration + 61 deterministic detector rules for AI-generated frontend design + Quick start: From your project root, run <code>npx impeccable install</code>, then run <code>/impeccable init</code> inside your AI coding tool + Full docs: impeccable.style + Anthropic's frontend-design was the first widely-used design skill for Claude + Impeccable started from there + Every model trained on the same SaaS templates + Skip the guidance and you get the same handful of tells on every project: Inter for everything / purple-to-blue gradients / cards nested in cards / gray text on colored backgrounds / the rounded-square icon tile above every heading + Impeccable adds: One setup flow <code>/impeccable init</code> records durable product truth in <code>PRODUCT.md</code> + 24 commands / shared design vocabulary with your AI: polish / audit / critique / distill / animate / bolder / quieter + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展 run the deterministic rules with no LLM and no API key + The Skill: impeccable + installs as one command <code>/impeccable &lt;command&gt; &lt;target&gt;</code> + Start every new project with <code>/impeccable init</code> + <code>init</code> inspects the project, asks only for material gaps in durable product truth, and writes <code>PRODUCT.md</code> + Visitor mode and visual direction are chosen later for each surface + incumbent or newly built vi[sitor mode] + JavaScript · Apache-2.0 · 387030 KB · pbakaus 个人 + impeccable.style + 11 个月 76227⭐ / fork 4546 / fork/star 5.9% + topics 0 个覆盖（README 未明示）。<strong>决定这条主线长期价值的是「1 skill + 24 commands 在多 AI coding tool（Claude Code / Codex / Cursor / Windsurf 等）的兼容性 + <code>npx impeccable install</code> 一行装在多 OS shell 的兼容性 + <code>/impeccable init</code> 一次性扫描在多产品工程上写 PRODUCT.md 的完整性 + 61 deterministic detector rules 在多 frontend stack 的覆盖广度 + LLM-only critique checks 在多 LLM provider 的可移植性 + CLI 与浏览器扩展无 LLM 无 API key 的离线运行能力 + Anthropic frontend-design 兼容性 + 11 个月 76227⭐ 持续验证 + Apache-2.0 商用清晰的边界 + topics 0 个覆盖（README 未明示）的清晰度 + 387030 KB 巨大工程量在多 file 的可靠性 + impeccable.style 主页的活跃度」</strong>——24 commands 多 AI tool 兼容性 + npx install 多 OS shell 兼容性 + /impeccable init PRODUCT.md 完整性 + 61 detector rules 多 frontend 覆盖广度 + LLM critique 可移植性 + CLI/扩展离线运行 + frontend-design 兼容性 + Apache-2.0 商用清晰 + topics 覆盖 + 巨大工程量 + impeccable.style 活跃度是关键。</p>
+<h3 id="3marketingskills-8-skill-claude-codecodexcursorwindsurf-toolsregistrymd-toolspartnersmd-85">趋势 3：Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理（趋势分 85）</h3>
+<p><code>coreyhaines31/marketingskills</code> 9 个月 53021⭐ ⑂7915 fork/star 14.9% 把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill（CRO Conversion Rate Optimization + Copywriting + SEO + Analytics + Growth Engineering 等）+ Claude Code / OpenAI Codex / Cursor / Windsurf + 任何支持 Agent Skills spec 的 Agent 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理边界 + Verified Partners 不影响 core skill 推荐 + 自由 MIT 许可 + corey.co + Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态 + Contributions welcome」严肃工程化形态——核心洞察 <strong>「AI Agent 营销技能库从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理 + 自由 MIT + 商业化生态」严肃工程化形态」</strong>。<strong>marketingskills</strong> is A collection of AI agent skills focused on marketing tasks + Built for technical marketers and founders who want AI coding agents to help with conversion optimization + copywriting + SEO + analytics + growth engineering + Works with Claude Code + OpenAI Codex + Cursor + Windsurf + any agent that supports the Agent Skills spec + Built by Corey Haines + Need hands-on help? Check out Conversion Factory — Corey's agency for conversion optimization + landing pages + growth strategy + Want to learn more about marketing? Subscribe to Swipe Files + Want to get dangerously good at using AI for marketing? Check out AI Marketing Training + Want an autonomous AI agent that uses these skills to be your CMO? Try Magister + New to the terminal and coding agents? Check out the companion guide Coding for Marketers + Contributions welcome! Found a way to improve a skill or have a new one to add? Open a PR + Run into a problem or have a question? Open an issue + The library is free and MIT-licensed + Verified Partners fund the work — vetted + disclosed tool integrations + listed alongside the neutral options + never influencing what the core skills recommend + The full rules and boundaries are in tools/PARTNERS.md + JavaScript · MIT · 4621 KB · corey.co + 9 个月 53021⭐ / fork 7915 / fork/star 14.9% + topics 3 个覆盖 claude/codex/marketing。<strong>决定这条主线长期价值的是「8 大 Skill（CRO + Copywriting + SEO + Analytics + Growth Engineering 等）在多营销场景的覆盖广度 + Claude Code / OpenAI Codex / Cursor / Windsurf 多 Agent 兼容性 + 任何支持 Agent Skills spec 的 Agent 全兼容扩展性 + tools/REGISTRY.md Verified Partners 治理边界 + tools/PARTNERS.md 治理规则在多 Partner 的严谨度 + Verified Partners 不影响 core skill 推荐的独立性 + Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态在多用户的接受度 + 9 个月 53021⭐ 持续验证 + MIT 商用清晰的边界 + topics 3 个覆盖（claude/codex/marketing）的清晰度 + corey.co 主页的活跃度」</strong>——8 大 Skill 覆盖广度 + 4 Agent 兼容性 + Agent Skills spec 扩展性 + REGISTRY.md 治理边界 + PARTNERS.md 治理严谨度 + 独立性 + 商业化生态接受度 + MIT 商用清晰 + topics 覆盖 + corey.co 活跃度是关键。</p>
+<h3 id="4e2e-testerarmy-ai-78">趋势 4：e2e TesterArmy AI 驱动自然语言端到端测试框架（趋势分 78）</h3>
+<p><code>tester-army/e2e</code> 2.5 个月 2997⭐ ⑂114 fork/star 3.8% 把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e <code>agent.act('升级 Pro')</code> 自然语言 agent step + <code>agent.assert('发票预览显示按比例金额')</code> 自然语言断言 + expect + 重放无模型调用 + 移动 / Web 全平台 + tester.army Discord 社区 + TypeScript · Apache-2.0」严肃工程化形态——核心洞察 <strong>「AI 端到端测试从「Playwright + Cypress 手动脚本」推到「e2e <code>agent.act</code> + <code>agent.assert</code> 自然语言 + 重放无模型调用 + 移动 / Web 全平台 + tester.army」严肃工程化形态」</strong>。<strong>e2e</strong> is e2e is an end-to-end testing framework for web and mobile apps + Describe a goal in natural language and an agent drives the app to reach it + Check the result with locators and assertions in the same test + <code>import { test, expect } from 'e2e'</code> + <code>test('a member upgrades to Pro', async ({ app, agent, screen }) =&gt; { await app.open('/settings/billing') + await agent.act('upgrade the workspace to the Pro plan') + await agent.assert('the invoice preview shows a prorated amount') + await expect(screen.getByRole('status')).toContainText('Pro') })</code> + An agent step that a later assertion verifies records its actions + the next run replays them with no model calls until the app changes + Tests without [truncated] + TypeScript · Apache-2.0 · 14055 KB · tester.army + tester.army Discord 社区 + 2.5 个月 2997⭐ / fork 114 / fork/star 3.8% + topics 7 个覆盖 e2e/e2e-testing/end-to-end-testing/mobile/mobile-testing/playwright/web + npm <code>e2e</code>。<strong>决定这条主线长期价值的是「<code>agent.act</code> 自然语言在多 goal 的解析准确性 + <code>agent.assert</code> 自然语言在多 assertion 的验证准确性 + expect + locators + Playwright 兼容性 + 移动 / Web 全平台在多 device / browser 的覆盖广度 + 重放无模型调用在多 test 的可复现性 + tester.army Discord 社区在多用户的活跃度 + 2.5 个月 2997⭐ 持续验证 + TypeScript Apache-2.0 商用清晰的边界 + topics 7 个覆盖（e2e/e2e-testing/end-to-end-testing/mobile/mobile-testing/playwright/web）的清晰度 + npm <code>e2e</code> 生态的可用性」</strong>——agent.act 解析准确性 + agent.assert 验证准确性 + Playwright 兼容性 + 移动/Web 覆盖广度 + 重放可复现性 + Discord 活跃度 + Apache-2.0 商用清晰 + topics 覆盖 + npm 生态是关键。</p>
+<h3 id="5-7-agent-80">趋势 5：延续跟踪 7 个 Agent 严肃工程化项目同步高速增长（趋势分 80）</h3>
+<p><strong>延续跟踪 7 个 Agent 严肃工程化项目同步高速增长 ~590K 颗 ⭐ 累计严肃工程化生态持续 trending</strong>——（<strong>A addyosmani/agent-skills 8 个月 101K⭐ ⑂10.6K fork/star 10.5%</strong>：addyosmani 个人 + Production-grade engineering skills for AI coding agents + featured on GitHub trending 持续）+（<strong>B garrytan/gstack 7 个月 135K⭐ ⑂20.1K fork/star 14.9%</strong>：YC 总裁 Garry Tan + Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO + Designer + Eng Manager + Release Manager + Doc Engineer + QA + 持续 trending）+（<strong>C thedotmack/claude-mem 13 个月 96K⭐ ⑂8.5K fork/star 8.8%</strong>：Persistent Context Across Sessions for Every Agent + Captures everything your agent does during sessions + compresses it with AI + injects relevant context back into future sessions + Works with Claude Code / Codex / Cursor 等 + ChromaDB + Agent SDK + 持续 trending）+（<strong>D DietrichGebert/ponytail 4 个月 155K⭐ ⑂8.3K fork/star 5.4%</strong>：Makes your AI agent think like the laziest senior dev in the room + The best code is the code you never wrote + YAGNI + 持续 trending）+（<strong>E earthtojake/text-to-cad 5.5 个月 17K⭐ ⑂1.7K fork/star 10.3%</strong>：Give your agent CAD superpowers + Text-to-CAD engine + 自然语言生成 CAD 模型 + WebAssembly + MIT + 持续 trending）+（<strong>F calesthio/OpenMontage 6 个月 63K⭐ ⑂8K fork/star 12.8%</strong>：World's first open-source, agentic video production system + 12 production pipelines + 100+ tools + 700+ agent skill and production-knowledge files + Turn your AI coding assistant into a full video production + 持续 trending）+（<strong>G antirez/ds4 5 个月 23K⭐ ⑂2.3K fork/star 9.6%</strong>：DeepSeek 4 Flash and PRO local inference engine for Metal + CUDA and ROCm + 2-bit quantization + KV Cache persistence + 持续投资）——核心洞察 <strong>「延续跟踪 7 个 Agent 严肃工程化项目同步高速增长 ~590K 颗 ⭐ 累计严肃工程化生态持续 trending —— Coding Agent skills（agent-skills）+ 严肃工程化虚拟团队（gstack）+ persistent context（claude-mem）+ YAGNI minimalism（ponytail）+ Text-to-CAD WASM（text-to-cad）+ agentic video production（OpenMontage）+ DeepSeek V4 Flash 本地推理（ds4）」</strong>。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面（pingdotgg/t3code）</strong>——把「多 Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 桌面 4 端 + MIT + control surface（performance, remote-ready, truly open）+ 包管理器全配 + 移动应用已发布」严肃工程化形态。决定长期价值的是「6 Agent 适配层兼容性 + 4 端稳定性 + t3 服务多 OS 进程模型 + 后台守护在多 systemd/launchd/Windows Service 兼容性 + t3 update 升级机制 + 包管理器全配（winget/brew/.deb/AUR）+ App Store/Play Store 可用性 + curl/npx 兼容性 + 三特性严肃工程化承诺 + MIT 商用清晰 + topics 覆盖」</li>
+<li><strong>Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules（pbakaus/impeccable）</strong>——把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands + npx install + /impeccable init 写 PRODUCT.md + 61 deterministic detector rules + CLI 与浏览器扩展无 LLM 无 API key」严肃工程化形态。决定长期价值的是「24 commands 多 AI tool 兼容性 + npx install 多 OS shell 兼容性 + /impeccable init PRODUCT.md 完整性 + 61 detector rules 多 frontend 覆盖广度 + LLM critique 可移植性 + CLI/扩展离线运行 + frontend-design 兼容性 + Apache-2.0 商用清晰 + topics 覆盖 + 巨大工程量 + impeccable.style 活跃度」</li>
+<li><strong>Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理（coreyhaines31/marketingskills）</strong>——把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理 + 自由 MIT + 商业化生态」严肃工程化形态。决定长期价值的是「8 大 Skill 覆盖广度 + 4 Agent 兼容性 + Agent Skills spec 扩展性 + REGISTRY.md 治理边界 + PARTNERS.md 治理严谨度 + 独立性 + 商业化生态接受度 + MIT 商用清晰 + topics 覆盖 + corey.co 活跃度」</li>
+<li><strong>e2e TesterArmy AI 驱动自然语言端到端测试框架（tester-army/e2e）</strong>——把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e <code>agent.act</code> + <code>agent.assert</code> 自然语言 + 重放无模型调用 + 移动 / Web 全平台 + tester.army」严肃工程化形态。决定长期价值的是「agent.act 解析准确性 + agent.assert 验证准确性 + Playwright 兼容性 + 移动/Web 覆盖广度 + 重放可复现性 + Discord 活跃度 + Apache-2.0 商用清晰 + topics 覆盖 + npm 生态」</li>
+<li><strong>延续跟踪 7 个 Agent 严肃工程化项目同步高速增长 ~590K 颗 ⭐ 累计</strong>（agent-skills 101K + gstack 135K + claude-mem 96K + ponytail 155K + text-to-cad 17K + OpenMontage 63K + ds4 23K）——严肃工程化生态持续 trending，Coding Agent skills + 严肃工程化虚拟团队 + persistent context + YAGNI minimalism + Text-to-CAD WASM + agentic video production + DeepSeek V4 Flash 本地推理 七大方向同步增长</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="a-pingdotggt3codescore-92t3-code-6-coding-agent-cli">A. pingdotgg/t3code（Score 92）——T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面</h3>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>多 Coding Agent 远程/桌面/CLI 跨设备控制面；1 个 <code>t3</code> 服务进程 + 4 端（iOS/Android/Web/Electron）；6 大 Agent 适配层（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）</td>
+<td>仅基于 README 描述的 1 服务 6 Agent + 4 端 + control surface + <code>curl install.sh</code> + <code>npx t3@latest</code> + <code>t3 service install</code> + <code>t3 update</code> + winget/brew/.deb/AUR + iOS/Android App Store/Play Store 已发布；具体 t3 服务进程模型、Agent 适配层实现、control surface API 形态未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 4 端（iOS/Android/Web/Electron）打开 → 连接到本地 t3 服务 → t3 启动已认证的 Agent（Claude Code / Codex / Cursor 等）→ 控制 → 输出流式回到端</td>
+<td>主路径为档案语义抽象；具体 t3 服务 ↔ Agent Harness 通信协议（stdio / IPC / HTTP / gRPC）、4 端 ↔ t3 服务的认证 / 加密机制未在档案中明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>1 服务 6 Agent 覆盖广度 vs 单 Agent 优化深度 + 4 端稳定性 vs 服务进程模型 + 性能 remote-ready truly open 三特性 vs 商业化边界 + MIT 商用清晰 vs 各 Agent 子许可兼容性</td>
+<td>档案明示 Inspired by Codex desktop app / Conductor / Claude Desktop / Cursor Glass + performance + remote-ready + truly open + If we ever go the wrong direction, you have everything you need to fork + 商业化生态（Conversion Factory / Swipe Files / Magister）+ topics 0 个覆盖；具体 6 Agent 子许可边界、fork 后商业化路径未在档案中讨论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS 上装 t3（<code>curl -fsSL https://t3.codes/install.sh \| sh</code>），先连 Codex 或 Claude 上任一已完成 auth 的 Agent；再开 iOS App 通过 t3 服务连接到同一 Agent 验证 remote-ready；最后试 Grok Build / OpenCode / Antigravity 验证 6 Agent 覆盖广度；fork 后 build 自己的 editor 验证 truly open</td>
+<td>PoC 范围由档案「control surface + 6 Agent + 4 端 + 性能 + remote-ready + truly open」建议推导；具体 demo 入口、winget/brew/.deb/AUR 跨平台覆盖广度验证未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户开发者] --> iOS[iOS App<br/>App Store id6787819824]
+  User --> Android[Android App<br/>Play Store com.t3tools.t3code]
+  User --> Web[Web App<br/>app.t3.codes]
+  User --> Electron[Electron 桌面 App<br/>GitHub Releases]
+  iOS --> T3[t3 服务<br/>本地进程]
+  Android --> T3
+  Web --> T3
+  Electron --> T3
+  T3 --> CC[Claude Code<br/>claude auth login]
+  T3 --> CX[Codex<br/>codex login]
+  T3 --> CUR[Cursor<br/>agent login]
+  T3 --> GB[Grok Build<br/>grok login]
+  T3 --> OC[OpenCode<br/>opencode auth login]
+  T3 --> AG[Google Antigravity<br/>Settings + Install Antigravity]
+  CC --> T3
+  CX --> T3
+  CUR --> T3
+  GB --> T3
+  OC --> T3
+  AG --> T3
+  T3 --> Control[Control surface<br/>performance + remote-ready + truly open]
+  T3 --> Install[curl install.sh / npx t3@latest / winget / brew / .deb / AUR]
+  T3 --> Update[t3 update + service install 后台守护]
+  Control -.fork.-> Fork[editor 自构建<br/>If we ever go the wrong direction]
+  Control -.商业化.-> Biz[Conversion Factory / Swipe Files / Magister]
+</pre>
+<p><strong>定位判断：</strong> 多 Coding Agent 远程/桌面/CLI 跨设备控制面候选平台——<code>pingdotgg/t3code</code> 不再把 Coding Agent 远程控制当作「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」的脆弱封装，而是把「多 Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent + 4 端 + MIT + control surface（performance, remote-ready, truly open）+ 包管理器全配 + 移动应用已发布」严肃工程化形态。决定这条主线长期价值的是「6 Agent 适配层兼容性 + 4 端稳定性 + t3 服务多 OS 进程模型 + 后台守护在多 systemd/launchd/Windows Service 兼容性 + t3 update 升级机制 + 包管理器全配（winget/brew/.deb/AUR）+ App Store/Play Store 可用性 + curl/npx 兼容性 + 三特性严肃工程化承诺 + MIT 商用清晰 + topics 覆盖」。这是 T3 Stack 作者 Theo 把 Coding Agent 生态从「桌面应用碎片化」推到「统一控制面 + MIT 开源 + 跨设备 + 包管理器全配」的严肃工程化尝试——<code>fork/star 25.9%</code> 显示贡献者极度活跃（4 个月 25115⭐ + 6507 forks），是 2026 年 Coding Agent 平台化候选的严肃工程化方向。</p>
+<h3 id="b-pbakausimpeccablescore-88impeccable-1-skill-24-commands-61-detector-rules">B. pbakaus/impeccable（Score 88）——Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules</h3>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AI 编程 Agent 的设计语言 skill 集；1 个 skill + 24 commands + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展</td>
+<td>仅基于 README 描述的 1 skill + 24 commands（polish / audit / critique / distill / animate / bolder / quieter）+ <code>npx impeccable install</code> + <code>/impeccable init</code> 写 PRODUCT.md + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展无 LLM 无 API key 跑；具体 24 commands 在多 AI coding tool 的兼容性、61 detector rules 的实现细节、CLI 与浏览器扩展的底层架构未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者 → 装 <code>npx impeccable install</code> → 跑 <code>/impeccable init</code> → 扫描项目 → 写 PRODUCT.md → 用 24 commands 中任一个（polish / audit / critique / distill / animate / bolder / quieter）→ 61 deterministic detector rules 离线 check → 可选 LLM critique</td>
+<td>主路径为档案语义抽象；具体 PRODUCT.md 的 schema、24 commands 在多 AI coding tool（Claude Code / Codex / Cursor / Windsurf）的兼容性、CLI/浏览器扩展 ↔ 61 detector rules 的接口未在档案中明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>1 skill + 24 commands 覆盖面 vs 单一命令优化 + 61 deterministic detector rules 离线检查 vs LLM critique 准确性 + Anthropic frontend-design 兼容性 vs 独立产品 + Apache-2.0 商用清晰 vs SaaS 模板化压制；具体 387030 KB 巨大工程量在多 file 的可靠性、impeccable.style 主页的活跃度 + topics 0 个覆盖（README 未明示）的清晰度未在档案中讨论</td>
+<td>档案明示「Every model trained on the same SaaS templates + Skip the guidance and you get the same handful of tells on every project: Inter for everything + purple-to-blue gradients + cards nested in cards + gray text on colored backgrounds + the rounded-square icon tile above every heading」+ 11 个月 76227⭐ + Apache-2.0 + impeccable.style + 商业化生态（Conversion Factory 等）</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在一个新项目上跑 <code>npx impeccable install</code>，再跑 <code>/impeccable init</code> 验证扫描 + 写 PRODUCT.md；用 <code>/impeccable polish</code> 验证 1 个 polish command + 61 detector rules 离线 check；再尝试 Claude Code / Codex / Cursor 多 AI tool 兼容性</td>
+<td>PoC 范围由档案「24 commands + 61 detector rules + 多 AI tool 兼容性」建议推导；具体 detector rules 在多 frontend stack 的覆盖广度、LLM critique 在多 LLM provider 的可移植性未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Dev[开发者] --> Install[npx impeccable install]
+  Install --> Init[/impeccable init]
+  Init --> Scan[扫描项目]
+  Scan --> Ask[询问 material gaps<br/>在 durable product truth]
+  Ask --> Product[写 PRODUCT.md<br/>audience + purpose + operating context<br/>constraints + voice + evidence]
+  Product --> Cmds[24 commands<br/>polish / audit / critique<br/>distill / animate / bolder / quieter]
+  Cmds --> Rule[61 deterministic<br/>detector rules]
+  Rule --> CLI[CLI<br/>无 LLM 无 API key]
+  Rule --> Ext[浏览器扩展<br/>无 LLM 无 API key]
+  Cmds -.可选.-> LLM[LLM-only<br/>critique checks]
+  CLI --> Result[detector rule 输出<br/>offline 离线运行]
+  Ext --> Result
+  Rule -.修复 SaaS telltale.-> Fix[Inter for everything<br/>purple-to-blue gradients<br/>cards nested in cards<br/>gray text on colored backgrounds<br/>rounded-square icon tile]
+  Fix -.Visitor mode.-> Visitor[visitor mode
+and visual direction<br/>incumbent or newly built]
+  Init -.兼容.-> ACS[Anthropic frontend-design<br/>首 widely-used]
+  Cmds -.兼容.-> Multi[Claude Code / Cursor<br/>Windsurf / Codex 等]
+  Install -.工程量.-> Big[387030 KB<br/>巨大工程量]
+  Result -.商用.-> Biz[Apache-2.0 商用清晰<br/>impeccable.style]
+</pre>
+<p><strong>定位判断：</strong> AI 编程 Agent 的设计语言 skill 集候选标准——<code>pbakaus/impeccable</code> 不再把 AI 设计语言当作「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」的脆弱封装，而是把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands + 61 确定性 detector rules + npx install + /impeccable init 写 PRODUCT.md + CLI 与浏览器扩展无 LLM 无 API key」严肃工程化形态。决定这条主线长期价值的是「24 commands 多 AI tool 兼容性 + npx install 多 OS shell 兼容性 + /impeccable init PRODUCT.md 完整性 + 61 detector rules 多 frontend 覆盖广度 + LLM critique 可移植性 + CLI/扩展离线运行 + frontend-design 兼容性 + Apache-2.0 商用清晰 + topics 覆盖 + 巨大工程量 + impeccable.style 活跃度」。这是把 AI 编程 Agent 的「设计语言」从「单一 skill + SaaS 模板 telltale」推到「1 skill + 24 commands + 61 确定性 detector rules + PRODUCT.md + 无 LLM 离线检查」的严肃工程化形态——<code>11 个月 76227⭐</code> 显示这是严肃工程化方向（不是泡沫），是 AI 编程 Agent 设计语言生态的严肃工程化范式。</p>
+<h3 id="c-coreyhaines31marketingskillsscore-85marketingskills-8-skill-claude-codecodexcursorwindsurf">C. coreyhaines31/marketingskills（Score 85）——Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容</h3>
+<p><strong>架构师速览：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>AI Agent 的营销技能库；8 大 Skill（CRO / Copywriting / SEO / Analytics / Growth Engineering 等）+ Claude Code / OpenAI Codex / Cursor / Windsurf + 任何支持 Agent Skills spec 的 Agent 全兼容</td>
+<td>仅基于 README 描述的 AI agent skills focused on marketing tasks + Claude Code / OpenAI Codex / Cursor / Windsurf + 任何支持 Agent Skills spec 的 Agent + 8 大 Skill（CRO / Copywriting / SEO / Analytics / Growth Engineering）+ tools/REGISTRY.md + tools/PARTNERS.md + 商业化生态；具体 8 大 Skill 在多营销场景的覆盖广度、Agent Skills spec 在多 Agent 的兼容性未在档案中明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>技术营销人 / 创始人 → 装 skills（via Claude Code / Codex / Cursor / Windsurf）→ AI coding agent 用 skills 做 CRO / 文案 / SEO / Analytics / Growth Engineering → Verified Partners 不影响 core skill 推荐 → 升级到 Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态</td>
+<td>主路径为档案语义抽象；具体 skills 在多 AI Agent 的安装流程、Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态在多用户的接受度未在档案中讨论</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>8 大 Skill 多营销场景覆盖广度 vs 单一营销深度 + 4 Agent 兼容性 vs 单 Agent 优化 + 任何支持 Agent Skills spec 的扩展性 vs 兼容性 + Verified Partners 不影响 core skill 推荐的独立性 vs Partner 商业化生态 + MIT 商用清晰 vs Conversion Factory / Swipe Files / Magister 商业 SaaS 边界；topics 3 个覆盖（claude/codex/marketing）的清晰度、corey.co 主页的活跃度、tools/PARTNERS.md 治理规则在多 Partner 的严谨度未在档案中讨论</td>
+<td>档案明示 9 个月 53021⭐ + fork 7915 + fork/star 14.9% + topics 3 个覆盖（claude/codex/marketing）+ MIT + corey.co + Conversion Factory + Swipe Files + Magister + Coding for Marketers + tools/REGISTRY.md + tools/PARTNERS.md + Verified Partners funded the work + vetted + disclosed tool integrations + listed alongside the neutral options + never influencing what the core skills recommend</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 或 Codex 上装 skills（按 Agent Skills spec 规范）；跑 1 个 CRO skill 验证 1 个营销场景；再切换到 Cursor / Windsurf 验证多 Agent 兼容性；最后用 tools/PARTNERS.md 检查 Verified Partners 是否影响 core skill 推荐</td>
+<td>PoC 范围由档案「8 大 Skill + 4 Agent + Verified Partners + MIT + 商业化生态」建议推导；具体 8 大 Skill 在多营销场景的覆盖广度、Verified Partners 治理严谨度未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构图（MMD）：</strong></p>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[技术营销人 / 创始人] --> CC[Claude Code]
+  User --> CX[OpenAI Codex]
+  User --> CUR[Cursor]
+  User --> WS[Windsurf]
+  User --> Other[任何支持<br/>Agent Skills spec 的 Agent]
+  CC --> Skills[8 大 Skill<br/>CRO Conversion Rate Optimization<br/>Copywriting + SEO<br/>Analytics + Growth Engineering 等]
+  CX --> Skills
+  CUR --> Skills
+  WS --> Skills
+  Other --> Skills
+  Skills --> Output[输出营销任务结果]
+  Skills -.治理.-> Reg[tools/REGISTRY.md<br/>Verified Partners]
+  Skills -.治理.-> Part[tools/PARTNERS.md<br/>完整规则与边界]
+  Reg -.独立性.-> Neutral[中立选项<br/>Verified Partners 不影响<br/>core skill 推荐]
+  Skills -.商业化.-> Conv[Conversion Factory<br/>agency 转化优化<br/>landing pages + growth strategy]
+  Skills -.商业化.-> SF[Swipe Files<br/>营销学习订阅]
+  Skills -.商业化.-> Mag[Magister<br/>autonomous AI CMO]
+  Skills -.商业化.-> CFM[Coding for Marketers<br/>终端与 coding agents 入门]
+  Skills -.教育.-> Train[AI Marketing Training<br/>Conversion Factory offers]
+  Output -.许可证.-> MIT[MIT 自由许可<br/>商用清晰]
+  Output -.覆盖.-> Top[topics 3 个<br/>claude/codex/marketing]
+</pre>
+<p><strong>定位判断：</strong> AI Agent 营销技能库候选标准——<code>coreyhaines31/marketingskills</code> 不再把 AI Agent 营销技能库当作「CRO / SEO / 文案 SaaS 闭源」的脆弱封装，而是把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理 + 自由 MIT + 商业化生态」严肃工程化形态。决定这条主线长期价值的是「8 大 Skill 覆盖广度 + 4 Agent 兼容性 + Agent Skills spec 扩展性 + REGISTRY.md 治理边界 + PARTNERS.md 治理严谨度 + 独立性 + 商业化生态接受度 + MIT 商用清晰 + topics 覆盖 + corey.co 活跃度」。这是把 AI Agent 营销技能库从「SaaS 闭源」推到「8 大 Skill + 4 Agent + Verified Partners + 商业化生态 + MIT」的严肃工程化形态——<code>9 个月 53021⭐</code> 显示这是真实严肃工程化信号（不是泡沫），是 AI Agent 营销技能生态的严肃工程化范式。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机遇</h3>
+<ol>
+<li><strong>T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面（pingdotgg/t3code）</strong>——把「多 Coding Agent 远程控制」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent + 4 端 + MIT + control surface 严肃工程化」形态。pingdotgg/t3code 4 个月 25115⭐ / fork 6507 / fork/star 25.9% 是真实严肃工程化信号，不是泡沫——它是 T3 Stack 作者 Theo + 6 Agent 适配层 + 4 端（iOS/Android/Web/Electron）+ MIT + control surface + 包管理器全配 + App Store/Play Store 已发布</li>
+<li><strong>Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules（pbakaus/impeccable）</strong>——把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands + npx install + /impeccable init 写 PRODUCT.md + 61 deterministic detector rules + CLI/扩展无 LLM 无 API key」严肃工程化形态。pbakaus/impeccable 11 个月 76227⭐ / fork 4546 / fork/star 5.9% 是真实严肃工程化信号，不是泡沫——它是 1 skill + 24 commands + 61 detector rules + Anthropic frontend-design 之后的下一代 + Apache-2.0 + impeccable.style</li>
+<li><strong>Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理（coreyhaines31/marketingskills）</strong>——把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill + 4 Agent + tools/REGISTRY.md + tools/PARTNERS.md 治理 + Verified Partners + 商业化生态 + MIT」严肃工程化形态。coreyhaines31/marketingskills 9 个月 53021⭐ / fork 7915 / fork/star 14.9% 是真实严肃工程化信号，不是泡沫——它是 8 大 Skill + 4 Agent + Verified Partners + 商业化生态 + MIT 商用清晰</li>
+<li><strong>e2e TesterArmy AI 驱动自然语言端到端测试框架（tester-army/e2e）</strong>——把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e <code>agent.act</code> + <code>agent.assert</code> 自然语言 + 重放无模型调用 + 移动/Web 全平台 + tester.army」严肃工程化形态。tester-army/e2e 2.5 个月 2997⭐ / fork 114 / fork/star 3.8% 是真实严肃工程化信号，不是泡沫——它是 agent.act + agent.assert + 重放无模型调用 + 移动/Web 全平台 + TypeScript Apache-2.0 + tester.army</li>
+<li><strong>延续跟踪 7 个 Agent 严肃工程化项目同步高速增长 ~590K 颗 ⭐ 累计</strong>（agent-skills 101K + gstack 135K + claude-mem 96K + ponytail 155K + text-to-cad 17K + OpenMontage 63K + ds4 23K）——严肃工程化生态持续 trending，Coding Agent skills + 严肃工程化虚拟团队 + persistent context + YAGNI minimalism + Text-to-CAD WASM + agentic video production + DeepSeek V4 Flash 本地推理 七大方向同步增长</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>pingdotgg/t3code 6 Agent 适配层稳定性边界</strong>——README 明示 6 Agent 适配层（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity），但具体适配层实现、t3 服务进程模型、control surface API 形态未在档案中明示；且各 Agent 子许可兼容性、各 Agent 在多版本的兼容性未在档案中讨论，需要严肃评估「6 Agent 覆盖广度 vs 单 Agent 优化深度」边界</li>
+<li><strong>pbakaus/impeccable 24 commands 多 AI tool 兼容性边界</strong>——README 明示 1 skill + 24 commands + 61 detector rules + Anthropic frontend-design 之后的下一代，但具体 24 commands 在多 AI coding tool（Claude Code / Codex / Cursor / Windsurf）的兼容性、61 detector rules 在多 frontend stack 的覆盖广度、387030 KB 巨大工程量在多 file 的可靠性未在档案中明示，需要严肃评估「24 commands 覆盖面 vs 单一命令优化深度」边界</li>
+<li><strong>coreyhaines31/marketingskills Verified Partners 治理严谨度边界</strong>——README 明示 tools/REGISTRY.md + tools/PARTNERS.md + Verified Partners 不影响 core skill 推荐，但具体 Verified Partners 在多 Partner 的严谨度、8 大 Skill 在多营销场景的覆盖广度、Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态在多用户的接受度未在档案中明示，需要严肃评估「Verified Partners 独立性 vs Partner 商业化生态」边界</li>
+<li><strong>tester-army/e2e <code>agent.act</code> 解析准确性边界</strong>——README 明示 <code>agent.act('升级 Pro')</code> + <code>agent.assert('发票预览显示按比例金额')</code> 自然语言 + 重放无模型调用，但具体 <code>agent.act</code> 自然语言在多 goal 的解析准确性、<code>agent.assert</code> 自然语言在多 assertion 的验证准确性、CLI 与浏览器扩展在多 device 的稳定性未在档案中明示，需要严肃评估「自然语言解析 vs Playwright 手动脚本精度」边界</li>
+<li><strong>延续跟踪 7 项目累计 ~590K 颗 ⭐ 严重度与可持续性</strong>——7 个延续跟踪项目（agent-skills 101K + gstack 135K + claude-mem 96K + ponytail 155K + text-to-cad 17K + OpenMontage 63K + ds4 23K）持续 trending，但累计 ~590K 颗 ⭐ 严肃工程化生态是否可持续取决于各项目的社区活跃度、维护频率、长期价值，需要严肃评估「累计增长 vs 长期可持续性」边界</li>
+</ol>
+<h2 id="_6">重点项目档案</h2>
+<h3 id="pingdotggt3code">pingdotgg/t3code</h3>
+<p><a href="projects/pingdotgg-t3code.html">projects/pingdotgg-t3code.html</a></p>
+<h3 id="pbakausimpeccable">pbakaus/impeccable</h3>
+<p><a href="projects/pbakaus-impeccable.html">projects/pbakaus-impeccable.html</a></p>
+<h3 id="coreyhaines31marketingskills">coreyhaines31/marketingskills</h3>
+<p><a href="projects/coreyhaines31-marketingskills.html">projects/coreyhaines31-marketingskills.html</a></p>
+<h3 id="tester-armye2e">tester-army/e2e</h3>
+<p><a href="projects/tester-army-e2e.html">projects/tester-army-e2e.html</a></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

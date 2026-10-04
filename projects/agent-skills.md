@@ -2,11 +2,11 @@
 title: "TopVitamin/agent-skills"
 slug: agent-skills
 date_added: "2026-09-16"
-last_seen_date: "2026-09-16"
+last_seen_date: "2026-10-05"
 category: "工具型"
 emoji: "🧩"
 stars: "11 stars"
-stars_delta: "1 天 11⭐ / fork 0 / fork/star 0%"
+stars_delta: "1 天 11⭐ / fork 0 / fork/star 0%（延续跟踪，与 addyosmani/agent-skills 101K⭐ 是不同项目；2026-10-05 trending 上是 addyosmani/agent-skills）"
 language: "JavaScript"
 score: 80
 tags: ["agent-skills", "codex", "skill-installer", "playwright", "cdp", "frontend-annotation", "ui-clone", "page-map", "visual-qa", "mit"]

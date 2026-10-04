@@ -2,14 +2,14 @@
 title: "OpenMontage"
 slug: "openmontage"
 date_added: "2026-06-22"
-last_seen_date: "2026-07-05"
+last_seen_date: "2026-10-05"
 category: "平台候选"
 emoji: "🎬"
-stars: "33,050 stars"
-stars_delta: "周增 9,213，总计从 8.5K→33.1K（13 天增长 289%）"
+stars: "63,149 stars"
+stars_delta: "6 个月 63,149⭐ / fork 8,053 / fork/star 12.8%；持续 GitHub Trending"
 language: "Python"
 score: 85
-tags: ["agentic-video", "content-production", "pipeline", "agent-skills", "video", "automation"]
+tags: ["agentic-video", "content-production", "pipeline", "agent-skills", "video", "automation", "open-source", "worlds-first", "12-pipelines", "100-tools", "700-agent-skills"]
 url: "https://github.com/calesthio/OpenMontage"
 ---
 

@@ -4,11 +4,13 @@ slug: "gstack"
 date_added: "2026-04-14"
 category: "工具型/平台候选"
 emoji: "🔷"
-stars: "66,000+"
+stars: "135,133 stars"
+stars_delta: "7 个月 135,133⭐ / fork 20,091 / fork/star 14.9%；持续 GitHub Trending"
+language: "TypeScript"
 score: 72
-tags: ["Claude Code", "Workflow", "AI Coding", "Y Combinator", "虚拟团队"]
+tags: ["Claude Code", "Workflow", "AI Coding", "Y Combinator", "虚拟团队", "garry-tan", "trending", "ceo-role", "designer-role", "eng-manager-role", "release-manager-role", "doc-engineer-role", "qa-role", "23-opinionated-tools"]
 url: "https://github.com/garrytan/gstack"
-last_seen_date: "2026-04-14"
+last_seen_date: "2026-10-05"
 ---
 
 # gstack

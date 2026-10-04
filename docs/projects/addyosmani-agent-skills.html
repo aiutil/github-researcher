@@ -5,179 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>addyosmani/agent-skills | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
-    <style>
-        :root {
-            --primary: #7C3AED;
-            --primary-light: #A78BFA;
-            --primary-dark: #5B21B6;
-            --cta: #06B6D4;
-            --cta-light: #67E8F9;
-            --bg: #FAF5FF;
-            --bg-card: #FFFFFF;
-            --text: #1E1B4B;
-            --text-muted: #6B7280;
-            --border: #E9D5FF;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.1), 0 2px 4px -2px rgba(124, 58, 237, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(124, 58, 237, 0.12), 0 4px 6px -4px rgba(124, 58, 237, 0.1);
-            --radius: 12px;
-            --radius-sm: 8px;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-        .nav {
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0 24px;
-        }
-        .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .nav-brand svg { width: 28px; height: 28px; }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: var(--radius-sm);
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .nav-links a:hover { background: var(--primary); color: white; }
-        .nav-links a svg { width: 16px; height: 16px; }
-        .nav-links a.active { background: var(--primary); color: white; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
-        .hero { text-align: center; padding: 60px 0 50px; }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
-        .hero-badge .dot { width: 6px; height: 6px; background: var(--cta-light); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.8); } }
-        .hero h1 { font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; letter-spacing: -1px; }
-        .hero p { font-size: 17px; color: var(--text-muted); max-width: 560px; margin: 0 auto 36px; }
-        .hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: white; padding: 12px 24px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.2s; border: none; cursor: pointer; box-shadow: var(--shadow); }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-lg); }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--primary); padding: 12px 24px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.2s; border: 2px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--primary); background: var(--bg); }
-        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 20px; text-align: center; transition: all 0.2s; box-shadow: var(--shadow); }
-        .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
-        .stat-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 20px; }
-        .stat-number { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
-        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .section-title { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: var(--text); }
-        .section-title .icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--cta)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .section-link { font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 4px; }
-        .section-link:hover { text-decoration: underline; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 48px; }
-        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: all 0.2s; box-shadow: var(--shadow); text-decoration: none; color: inherit; display: block; }
-        .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
-        .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-        .card-emoji { font-size: 32px; line-height: 1; }
-        .card-stars { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 4px 10px; border-radius: 100px; font-size: 12px; font-weight: 700; }
-        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-        .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
-        .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .card-actions { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
-        .btn-github { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; background: var(--bg); color: var(--text); border: 1px solid var(--border); text-decoration: none; transition: all 0.2s; }
-        .btn-github:hover { background: var(--primary); color: white; border-color: var(--primary); }
-        .btn-github svg { width: 14px; height: 14px; }
-        .tag { padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; border: 1px solid; }
-        .tag-purple { background: #F3E8FF; color: var(--primary); border-color: var(--border); }
-        .tag-cyan { background: #ECFEFF; color: #0891B2; border-color: #A5F3FC; }
-        .tag-green { background: #ECFDF5; color: #059669; border-color: #A7F3D0; }
-        .tag-orange { background: #FFF7ED; color: #C2410C; border-color: #FED7AA; }
-        .trend-list { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 48px; box-shadow: var(--shadow); }
-        .trend-item { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); gap: 16px; transition: background 0.15s; }
-        .trend-item:last-child { border-bottom: none; }
-        .trend-item:hover { background: var(--bg); }
-        .trend-rank { width: 28px; height: 28px; border-radius: 6px; background: var(--primary); color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .trend-rank.top { background: linear-gradient(135deg, #F59E0B, #EF4444); }
-        .trend-content { flex: 1; min-width: 0; }
-        .trend-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-        .trend-meta { font-size: 12px; color: var(--text-muted); }
-        .trend-score { padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; background: #F3E8FF; color: var(--primary); border: 1px solid var(--border); flex-shrink: 0; }
-        .trend-score.high { background: #ECFDF5; color: #059669; border-color: #A7F3D0; }
-        .brief-card { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: var(--radius); padding: 36px 40px; color: white; margin-bottom: 48px; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
-        .brief-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: rgba(255,255,255,0.08); border-radius: 50%; }
-        .brief-card::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border-radius: 50%; }
-        .brief-date { font-size: 13px; opacity: 0.75; margin-bottom: 8px; font-weight: 500; }
-        .brief-title { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
-        .brief-text { font-size: 15px; opacity: 0.9; line-height: 1.7; max-width: 700px; margin-bottom: 24px; }
-        .brief-cta { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--primary); padding: 10px 20px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.2s; position: relative; z-index: 1; }
-        .brief-cta:hover { transform: translateY(-1px); }
-        .category-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
-        .category-pill { display: flex; align-items: center; gap: 6px; padding: 8px 16px; background: white; border: 1px solid var(--border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow); }
-        .category-pill:hover { background: var(--primary); color: white; border-color: var(--primary); }
-        .category-pill .emoji { font-size: 15px; }
-        .footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
-        .footer a { color: var(--primary); text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .hero h1 { font-size: 30px; } .stats-row { grid-template-columns: repeat(2, 1fr); } .nav-links span { display: none; } .brief-card { padding: 28px 24px; } }
-        @media (max-width: 480px) { .card-grid { grid-template-columns: 1fr; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hero, .stats-row, .brief-card, .card-grid, .trend-list { animation: fadeInUp 0.5s ease-out; }
-        .stats-row { animation-delay: 0.1s; animation-fill-mode: both; }
-        .brief-card { animation-delay: 0.15s; animation-fill-mode: both; }
-        .card-grid { animation-delay: 0.2s; animation-fill-mode: both; }
-        .trend-list { animation-delay: 0.25s; animation-fill-mode: both; }
-    </style>
-    <style>
-        .project-content { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 48px; box-shadow: var(--shadow); margin-bottom: 48px; max-width: 860px; margin-left: auto; margin-right: auto; }
-        .project-content h1 { font-size: 26px; font-weight: 800; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
-        .project-content h2 { font-size: 18px; font-weight: 700; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 12px; margin: 28px 0 14px; }
-        .project-content p { font-size: 14px; margin-bottom: 12px; line-height: 1.7; }
-        .project-content a { color: var(--primary); }
-        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 24px; }
-        .back-link:hover { text-decoration: underline; }
-    </style>
+    <link rel="stylesheet" href="/assets/style.css">
+    
 </head>
 <body>
     <nav class="nav">
@@ -195,20 +24,138 @@
         </div>
     </nav>
 <main class="container">
-    <a href="/trends.html" class="back-link">← 返回趋势时间线</a>
-    <div class="project-content">
-        
-        <h1>addyosmani/agent-skills</h1>
-<div class="card-tags" style="margin-bottom:20px;"></div>
-<p><strong>Stars:</strong> 54,532 stars</p><p><strong>来源日报:</strong> <a href="/daily/2026-06-12.html">2026-06-12</a></p>
-<h2>简介</h2>
-<p>Production-grade engineering skills for AI coding agents，Agent 工程技能标准化的事实标准</p>
-
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="addyosmaniagent-skills">addyosmani/agent-skills</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Production-grade engineering skills for AI coding agents——Google Chrome 团队的 Addy Osmani 出品，一套面向生产环境的 AI 编程 Agent 技能集，覆盖前端开发、性能优化、测试、可访问性等多个工程领域。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年 AI 编程 Agent（如 Claude Code、Codex、Cursor 等）的能力严重依赖技能（skills）生态，但多数技能是个人或小团队作品，质量参差，难以满足生产环境的工程标准。addyosmani/agent-skills 直击这一痛点：它提供 <strong>生产级（Production-grade）的工程技能集</strong>，由 Google Chrome 团队 Addy Osmani 背书，覆盖前端开发、性能、视觉 QA、可访问性等多个工程领域。解决的是 <strong>「AI Agent 技能质量参差、缺乏生产级标准」</strong> 的痛点。</p>
+<h2 id="2026-10-05">为什么值得关注（2026-10-05）</h2>
+<ul>
+<li><strong>Stars:</strong> 101,185（截至 2026-10-05），8 个月突破 10 万，是 AI Agent skills 领域头部项目之一</li>
+<li><strong>Forks:</strong> 10,615</li>
+<li><strong>License:</strong> Apache-2.0，商用清晰</li>
+<li><strong>语言:</strong> JavaScript</li>
+<li><strong>规模:</strong> 巨大（README 提及多个 Skill 模块）</li>
+<li><strong>活跃度:</strong> created 2026-02-15，pushed_at 2026-10-03，持续高活跃</li>
+<li><strong>背书:</strong> Addy Osmani（Google Chrome 团队工程师，著名前端性能专家）</li>
+<li><strong>Topics:</strong> 多个覆盖（engineering-skills，ai-coding-agents 等）</li>
+<li><strong>GitHub Trending 持续</strong> 出现在 daily 列表</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>agent-skills 的热度是 <strong>「AI Agent 技能生产级刚需 × Addy Osmani 个人品牌 × Google Chrome 团队背书 × Apache-2.0 商用清晰 × 持续 GitHub Trending」</strong> 的强劲组合。Addy Osmani 是著名前端性能专家，他的《Learning JavaScript Design Patterns》等作品在开发者社区有广泛影响。当他推出面向 AI 编程 Agent 的生产级技能集时，自然获得高度关注。Apache-2.0 + Google Chrome 团队背书保证商用清晰度和工程质量。热度 <strong>真实且具生产级 AI Agent 标准潜力</strong>——但需警惕：技能覆盖广度是否持续更新，是否能在各 AI Agent（Claude Code / Codex / Cursor 等）中稳定兼容。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Production-grade 标准:</strong> 每个技能均按生产环境标准设计，包含完整的错误处理、测试覆盖、文档说明</li>
+<li><strong>多领域覆盖:</strong> 前端开发、性能优化、测试、可访问性等多个工程领域</li>
+<li><strong>AI Agent 兼容性:</strong> 适配 Claude Code / Codex / Cursor 等主流 AI 编程 Agent</li>
+<li><strong>Apache-2.0 商用清晰:</strong> 商用集成无授权风险</li>
+<li><strong>Google Chrome 团队背书:</strong> Addy Osmani（Google Chrome 团队工程师）品质保证</li>
+<li><strong>持续高活跃:</strong> pushed_at 2026-10-03，反映持续维护</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>生产级 AI 编程 Agent 技能集；多领域（前端 / 性能 / 测试 / 可访问性等）+ 多 Agent 适配（Claude Code / Codex / Cursor 等）</td>
+<td>仅基于 README 描述的 Production-grade engineering skills for AI coding agents；具体技能清单（具体包括哪些 skills）、各 skill 的实现细节、Agent 适配层未在档案中明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者 → 装 skills（按各 Agent 兼容方式）→ AI coding agent 在多场景（前端 / 性能 / 测试 / 可访问性等）使用 skills → 生产级输出</td>
+<td>主路径为档案语义抽象；具体 skills 在多 Agent 的安装流程、各 skill 的边界条件、生产级标准如何量化未在档案中讨论</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>多领域覆盖广度 vs 单一领域深度 + Google Chrome 团队背书 vs 个人项目属性 + Apache-2.0 商用清晰 vs 各 Agent 子许可兼容性 + Production-grade 标准 vs 社区贡献友好</td>
+<td>档案明示 Addy Osmani 个人 + Production-grade engineering skills for AI coding agents + 持续 GitHub Trending；具体技能清单、多 Agent 兼容性维护、Production-grade 标准的量化方法未在档案中讨论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 Claude Code 或 Codex 上装 skills；跑 1 个前端开发 skill 验证生产级输出；再切换到 Cursor 验证多 Agent 兼容性</td>
+<td>PoC 范围由档案「Production-grade engineering skills for AI coding agents」建议推导；具体 demo 入口、Production-grade 标准量化未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Dev[开发者] --> CC[Claude Code]
+  Dev --> CX[Codex]
+  Dev --> CUR[Cursor]
+  Dev --> Other[其他 AI Agent]
+  CC --> Skills[Production-grade Engineering Skills<br/>多领域]
+  CX --> Skills
+  CUR --> Skills
+  Other --> Skills
+  Skills --> FE[前端开发 skill]
+  Skills --> Perf[性能优化 skill]
+  Skills --> Test[测试 skill]
+  Skills --> A11y[可访问性 skill]
+  Skills --> Other2[其他工程领域 skill<br/>待核验]
+  FE --> Output[生产级输出]
+  Perf --> Output
+  Test --> Output
+  A11y --> Output
+  Other2 --> Output
+  Skills -.背书.-> Addy[Addy Osmani<br/>Google Chrome 团队]
+  Output -.许可证.-> Apache[Apache-2.0<br/>商用清晰]
+  Skills -.工程标准.-> Prod[Production-grade<br/>完整错误处理<br/>测试覆盖<br/>文档说明]
+  Output -.覆盖.-> Top[topics 多覆盖<br/>engineering-skills<br/>ai-coding-agents]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>agent-skills 的核心启发是 <strong>"AI Agent 技能应该 Production-grade，正如 npm 包应该有测试覆盖"</strong>。多数 AI Agent 技能是个人或小团队作品，缺乏完整的错误处理、测试覆盖、文档说明，导致生产环境使用风险。AgentSkills 直面这一痛点，提供 <strong>生产级技能集</strong>，由 Google Chrome 团队工程师背书，保证工程质量。8 个月 101K⭐ 显示这是真实严肃工程化方向（不是泡沫），是 AI Agent 技能生产级化的代表。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>AI Agent 技能生产级化候选标准。</strong> agent-skills 不仅是一个技能集合，更试图成为 AI Agent 技能的「生产级标准」——类似 ESLint 之于 JavaScript lint。若成功，它会成为每个 AI 编程 Agent 默认装载的技能集，具有生态级价值。8 个月 101K⭐ + fork 10,615 + Apache-2.0 显示真实严肃工程化信号。但"标准"取决于一个关键问题：技能覆盖广度是否能持续扩展，多 Agent 兼容性是否可持续。目前定位是"AI Agent 技能生产级化头部项目"，向 standard 演进是合理路径。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>多领域覆盖广度 vs 单一领域深度:</strong> 多领域覆盖广度未明示，单一领域深度可能不如专用工具</li>
+<li><strong>Google Chrome 团队背书 vs 个人项目属性:</strong> Addy Osmani 个人维护，可持续性取决于个人投入</li>
+<li><strong>多 Agent 兼容性维护:</strong> 多 Agent（Claude Code / Codex / Cursor 等）格式持续演进，兼容性维护成本高</li>
+<li><strong>生产级标准量化:</strong> Production-grade 标准如何量化、与其他技能集合（如 Ponytail、Impeccable 等）的边界未明示</li>
+<li><strong>依赖各 Agent 平台:</strong> 若任一 AI Agent 平台大幅变更，技能兼容性可能受影响</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Anthropic Skills:</strong> Anthropic 官方 Skills 仓库；agent-skills 是第三方生产级技能集</li>
+<li><strong>vs wshobson/agents:</strong> 多 Agent 跨平台技能集合；agent-skills 是生产级工程技能集</li>
+<li><strong>vs TopVitamin/agent-skills:</strong> 个人 Codex Skill 集合；agent-skills 是生产级工程技能集</li>
+<li><strong>vs Ponytail (DietrichGebert):</strong> YAGNI minimalism skill；agent-skills 是生产级工程技能集</li>
+<li><strong>vs Impeccable (pbakaus):</strong> 设计语言 skill；agent-skills 是工程技能集</li>
+<li><strong>vs marketingskills:</strong> 营销技能库；agent-skills 是工程技能集</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（AI Agent 技能生产级化候选标准）。</strong> agent-skills 代表了 AI 编程 Agent 技能生产级化的诉求，无论其本身成败，这一方向是行业趋势。建议关注：技能覆盖广度持续扩展（决定其标准地位）、多 Agent 兼容性维护（决定其实用价值）、Addy Osmani 个人治理。对 AI 编程 Agent 用户，agent-skills 是获取生产级技能集的实用来源，值得直接采用。对 AI 编程生态观察者，它是"AI Agent 技能生产级化"赛道的头部样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>技能清单扩展（前端 / 性能 / 测试 / 可访问性之外是否覆盖更多领域）</li>
+<li>多 Agent（Claude Code / Codex / Cursor 等）兼容性维护</li>
+<li>Addy Osmani 个人治理 vs 社区治理</li>
+<li>是否演化为独立平台/网站（从 GitHub 仓库升级为技能门户）</li>
+<li>企业采用（团队是否将此作为 AI Agent 技能统一来源）</li>
+<li>与 Anthropic 官方 Skills、wshobson/agents 等同类项目的差异化</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-10-05</em></p>
     </div>
 </main>
     <footer class="footer">
         <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
         <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
 </body>
 </html>

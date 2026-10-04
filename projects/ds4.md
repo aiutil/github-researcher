@@ -4,13 +4,13 @@ slug: "ds4"
 date_added: "2026-05-08"
 category: "基础设施候选"
 emoji: "🔧"
-stars: "14,770 stars"
-stars_delta: "从 12.9K 到 14.8K，antirez 持续投入"
+stars: "23,417 stars"
+stars_delta: "5 个月 23,417⭐ / fork 2,251 / fork/star 9.6%；antirez 持续投入"
 language: "C"
 score: 87
-tags: ["deepseek-v4", "metal", "local-inference", "gguf", "quantization", "macos", "kv-cache"]
+tags: ["deepseek-v4", "metal", "local-inference", "gguf", "quantization", "macos", "kv-cache", "deepseek-v4-flash", "deepseek-v4-pro", "cuda", "rocm", "2-bit-quantization"]
 url: "https://github.com/antirez/ds4"
-last_seen_date: "2026-06-21"
+last_seen_date: "2026-10-05"
 ---
 
 # ds4.c

@@ -4,13 +4,13 @@ slug: "text-to-cad"
 date_added: "2026-05-04"
 category: "工具型"
 emoji: "📐"
-stars: "1.4k stars"
-stars_delta: "12天 1.4K，稳步增长"
+stars: "16,830 stars"
+stars_delta: "5.5 个月 16,830⭐ / fork 1,739 / fork/star 10.3%；持续 GitHub Trending"
 language: "JavaScript"
 score: 77
-tags: ["cad", "text-to-cad", "ai-agents", "wasm", "generative", "engineering"]
+tags: ["cad", "text-to-cad", "ai-agents", "wasm", "generative", "engineering", "agent-cad-superpowers"]
 url: "https://github.com/earthtojake/text-to-cad"
-last_seen_date: "2026-05-04"
+last_seen_date: "2026-10-05"
 ---
 
 # text-to-cad

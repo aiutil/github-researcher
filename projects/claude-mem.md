@@ -4,13 +4,14 @@ slug: "claude-mem"
 date_added: "2026-04-15"
 category: "基础设施候选"
 emoji: "💾"
-stars: "55,797 stars"
-stars_delta: "日增 2,997, 周增 8,742"
+stars: "96,090 stars"
+stars_delta: "13 个月 96,090⭐ / fork 8,486 / fork/star 8.8%；持续 GitHub Trending"
 language: "TypeScript"
 score: 84
-tags: ["Claude Code", "AI Memory", "Session Context", "RAG", "ChromaDB", "Agent SDK"]
+tags: ["Claude Code", "AI Memory", "Session Context", "RAG", "ChromaDB", "Agent SDK", "persistent-context", "across-sessions", "compress-with-ai", "inject-context"]
 url: "https://github.com/thedotmack/claude-mem"
 tracking_status: "深度跟踪"
+last_seen_date: "2026-10-05"
 ---
 
 # claude-mem
