@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-05.md">最新日报</a> ·
+  <a href="daily/2026-10-06.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-05
+## 最新研究 · 2026-10-06
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 663 | 4 | 590k+ |
+| 4 | 667 | 7 | 700k+ |
 
-**今日核心判断：** T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面 + Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules + npx install + marketing skills MIT 全栈增长 + e2e TesterArmy AI 驱动自然语言端到端测试框架 + agent-skills/ponytail/claude-mem/gstack/OpenMontage/text-to-cad/ds4 七大持续高速增长——今日 pingdotgg/t3code（Theo / T3 Stack 作者） 4 个月 25K⭐ ⑂6507 fork/star 25.9% 把「多 Coding Agent 远程控制面」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 大 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 桌面 4 端 + MIT + control surface（performance, remote-ready, truly open）+ `curl -fsSL https://t3.codes/install.sh | sh` 一行启动 + `npx t3@latest` 一次性试用 + `t3 service install` 后台守护 + `t3 update` 升级 + winget / brew / .deb / AUR 包管理器全配 + App Store / Play Store 移动应用已发布」严肃工程化形态（TypeScript · MIT · 433650 KB · pingdotgg 官方组织背书（T3 Stack 作者 Theo · t3.codes · iOS app id6787819824 · Android app com.t3tools.t3code）+ 4 个月 25115⭐ / fork 6507 / fork/star 25.9%）；pbakaus/impeccable 11 个月 76227⭐ ⑂4546 fork/star 5.9% 把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands（polish / audit / critique / distill / animate / bolder / quieter）+ `npx impeccable install` 一行装 + `/impeccable init` 一次性扫描写 PRODUCT.md + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展无 LLM 无 API key 跑 + 387030 KB 巨大工程量 + Apache-2.0 商用清晰 + impeccable.style」严肃工程化形态（JavaScript · Apache-2.0 · 387030 KB · pbakaus 个人 + impeccable.style + topics 0 个覆盖 + 11 个月 76227⭐ / fork 4546 / fork/star 5.9%）；coreyhaines31/marketingskills 9 个月 53021⭐ ⑂7915 fork/star 14.9% 把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill（CRO Conversion Rate Optimization + Copywriting + SEO + Analytics + Growth Engineering 等）+ Claude Code / OpenAI Codex / Cursor / Windsurf + 任何支持 Agent Skills spec 的 Agent 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理边界 + Verified Partners 不影响 core skill 推荐 + 9 个月 53021⭐ / fork 7915 / fork/star 14.9%」严肃工程化形态（JavaScript · MIT · 4621 KB · corey.co + Conversion Factory + Swipe Files + Magister + Coding for Marketers + topics 3 个覆盖 claude/codex/marketing）；tester-army/e2e 2.5 个月 2997⭐ ⑂114 fork/star 3.8% 把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e `agent.act('升级 Pro')` 自然语言 agent step + `agent.assert('发票预览显示按比例金额')` 自然语言断言 + 256/256 tokens greedy token-identical 8k/32k 重放无模型调用 + tester.army Discord 社区 + 14 MB TypeScript · Apache-2.0 · topics 7 个覆盖 e2e/e2e-testing/end-to-end-testing/mobile/mobile-testing/playwright/web + npm `e2e`」严肃工程化形态（TypeScript · Apache-2.0 · 14055 KB · tester.army + tester.army Discord + 2.5 个月 2997⭐ / fork 114 / fork/star 3.8%）；同时**延续跟踪 7 个项目同步高速增长**addyosmani/agent-skills 8 个月 101K⭐ ⑂10.6K fork/star 10.5%（featured on GitHub trending 持续）+ garrytan/gstack 7 个月 135K⭐ ⑂20.1K fork/star 14.9%（YC 总裁 Garry Tan Claude Code 23 个角色虚拟团队 + 持续 trending）+ thedotmack/claude-mem 13 个月 96K⭐ ⑂8.5K fork/star 8.8%（persistent context across sessions + ChromaDB RAG + 持续 trending）+ DietrichGebert/ponytail 4 个月 155K⭐ ⑂8.3K fork/star 5.4%（YAGNI 严肃工程化 + 持续 trending）+ earthtojake/text-to-cad 5.5 个月 17K⭐ ⑂1.7K fork/star 10.3%（give your agent CAD superpowers + WASM + 持续 trending）+ calesthio/OpenMontage 6 个月 63K⭐ ⑂8K fork/star 12.8%（agentic video production + 12 pipelines + 100+ tools + 持续 trending）+ antirez/ds4 5 个月 23K⭐ ⑂2.3K fork/star 9.6%（DeepSeek 4 Flash + Metal/CUDA/ROCm 2-bit 量化 + 持续投资）——五条主线同时推到严肃工程化 + 跨领域 + 跨工作流：（A T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面 + pingdotgg 官方背书 + MIT + t3.codes + iOS/Android/Web/Electron 4 端 + control surface 严肃工程化 + 4 个月 25115⭐ / fork 6507 / fork/star 25.9%）+（B Impeccable 设计语言 1 skill + 24 commands + 61 deterministic detector rules + npx install + Apache-2.0 + impeccable.style + 11 个月 76227⭐ / fork 4546 / fork/star 5.9%）+（C marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf + tools/REGISTRY.md + tools/PARTNERS.md 治理 + 9 个月 53021⭐ / fork 7915 / fork/star 14.9%）+（D e2e AI 端到端测试 `agent.act` + `agent.assert` 自然语言 + 256/256 重放无模型调用 + tester.army + 2.5 个月 2997⭐ / fork 114 / fork/star 3.8%）+（E 延续跟踪 7 大 Agent 严肃工程化项目同步高速增长 agent-skills 101K⭐ / gstack 135K⭐ / claude-mem 96K⭐ / ponytail 155K⭐ / text-to-cad 17K⭐ / OpenMontage 63K⭐ / ds4 23K⭐ 累计 ~590K 颗 ⭐ 严肃工程化生态）。
+**今日核心判断：** AnyPS5 PS5 可执行文件 Linux/Windows 自动移植工具 4874⭐ ⑂364 + esp32-c3-adblock $2 ESP32-C3 Pi-hole 级 DNS 黑洞 1308⭐ ⑂119 + cloudflare-os Cloudflare Workers Agent 工作台 10977⭐ ⑂1306 + pstack-claude Lauren Tan pstack Cursor→Claude Code/Codex/Pi/OpenCode/Gemini 跨 Harness 严肃工程化移植 1405⭐ ⑂152 + Agent-Reach 49k→92k 严肃工程化零 API 费 AI Agent 互联网感知层 8061 forks 突破 + tester-army/e2e 1430⭐ today 持续 + pingdotgg/t3code 487⭐ today 持续 + earthtojake/text-to-cad 456⭐ today 持续——7 条主线严肃工程化跨领域：（A AnyPS5 PS5→Linux/Windows 自动 porting + SPIR-V shader 重编译 + SDL 输入映射 + GPL-2.0 严肃工程化）+（B esp32-c3-adblock $2 ESP32-C3 Pi-hole-class + 537k 域名 40-bit FNV-1a hash + ~50KB RAM + 二分 flash 检索 + 0 collisions at 141k + Tom's Hardware 专题报道）+（C cloudflare-os Cloudflare 自家全公司使用的 Agent 生产力环境 + agent 聊/沙箱应用开发/Gatekeepers 安全框架 + 全面开源 + pnpm run-local 一次性本地启动 + Apache-2.0）+（D pstack-claude Lauren Tan Cursor 官方 pstack→Claude Code/Codex/Pi/OpenCode/Gemini 严肃工程化移植 + `/plugin marketplace add` + setup-pstack 模型默认 + agent-formal-verify TLA+ formal verify 配套）+（E Agent-Reach 49k→92k 严肃工程化零 API 费 7 平台 AI Agent 互联网感知层 + 中文 README + 17 个 topics 全覆盖）+（F tester-army/e2e 1430⭐ today 严肃工程化自然语言 e2e 测试框架持续 + npm `e2e` + tester.army Discord）+（G pingdotgg/t3code 487⭐ today 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面持续）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [pingdotgg/t3code](projects/pingdotgg-t3code.md) | 25115 stars | 工具型 |
-| [pbakaus/impeccable](projects/pbakaus-impeccable.md) | 76227 stars | 工具型 |
-| [coreyhaines31/marketingskills](projects/coreyhaines31-marketingskills.md) | 53021 stars | 工具型 |
-| [tester-army/e2e](projects/tester-army-e2e.md) | 2997 stars | 工具型 |
+| [boykopovar/AnyPS5](projects/boykopovar-anyps5.md) | 4874 stars | 工具型 |
+| [M-Abozaid/esp32-c3-adblock](projects/m-abozaid-esp32-c3-adblock.md) | 1308 stars | 工具型 |
+| [cloudflare/cloudflare-os](projects/cloudflare-cloudflare-os.md) | 10977 stars | 基础设施候选 |
+| [michael-denyer/pstack-claude](projects/michael-denyer-pstack-claude.md) | 1405 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **T3 Code 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面——pingdotgg/t3code 4 个月 25115⭐ ⑂6507 fork/star 25.9% 把「多 Coding Agent 控制面」从「Codex Desktop / Conductor / Claude Desktop / Cursor Glass 单 Agent 单端单 SaaS」推到「T3 Code 1 服务 6 Agent（Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity）+ iOS / Android / Web / Electron 4 端 + MIT + control surface（performance, remote-ready, truly open）+ `curl -fsSL https://t3.codes/install.sh | sh` 一行启动 + `npx t3@latest` 一次性试用 + `t3 service install` 后台守护 + `t3 update` 升级 + winget / brew / .deb / AUR 包管理器全配 + App Store / Play Store 移动应用已发布 + t3.codes」严肃工程化形态（趋势分 92）** · 相关项目：pingdotgg/t3code · 强度：92
-2. **Impeccable 设计语言 1 skill + 24 commands + 61 确定性 detector rules——pbakaus/impeccable 11 个月 76227⭐ ⑂4546 fork/star 5.9% 把「AI 设计语言」从「Anthropic frontend-design 单一 skill + SaaS 模板 telltale 堆叠」推到「Impeccable 1 skill + 24 commands（polish / audit / critique / distill / animate / bolder / quieter）+ `npx impeccable install` 一行装 + `/impeccable init` 一次性扫描写 PRODUCT.md + 61 deterministic detector rules + LLM-only critique checks + CLI 与浏览器扩展无 LLM 无 API key 跑 + 387030 KB 巨大工程量 + Apache-2.0 商用清晰 + impeccable.style + topics 0 个覆盖（README 未明示）」严肃工程化形态（趋势分 88）** · 相关项目：pbakaus/impeccable · 强度：88
-3. **Marketingskills 8 大 Skill + Claude Code/Codex/Cursor/Windsurf 全兼容 + tools/REGISTRY.md + tools/PARTNERS.md 治理边界——coreyhaines31/marketingskills 9 个月 53021⭐ ⑂7915 fork/star 14.9% 把「AI Agent 营销技能库」从「CRO / SEO / 文案 SaaS 闭源」推到「Marketingskills 8 大 Skill（CRO + Copywriting + SEO + Analytics + Growth Engineering 等）+ Claude Code / OpenAI Codex / Cursor / Windsurf + 任何支持 Agent Skills spec 的 Agent 全兼容 + tools/REGISTRY.md Verified Partners + tools/PARTNERS.md 治理边界 + Verified Partners 不影响 core skill 推荐 + Conversion Factory / Swipe Files / Magister / Coding for Marketers 商业化生态 + MIT + topics 3 个覆盖 claude/codex/marketing + corey.co」严肃工程化形态（趋势分 85）** · 相关项目：coreyhaines31/marketingskills · 强度：85
-4. **e2e TesterArmy AI 驱动自然语言端到端测试框架——tester-army/e2e 2.5 个月 2997⭐ ⑂114 fork/star 3.8% 把「AI 端到端测试」从「Playwright + Cypress 手动脚本」推到「e2e `agent.act('升级 Pro')` 自然语言 agent step + `agent.assert('发票预览显示按比例金额')` 自然语言断言 + expect + 重放无模型调用 + tester.army Discord 社区 + TypeScript · Apache-2.0 · 14055 KB · topics 7 个覆盖 e2e/e2e-testing/end-to-end-testing/mobile/mobile-testing/playwright/web + npm `e2e` + 移动 / Web 全平台」严肃工程化形态（趋势分 78）** · 相关项目：tester-army/e2e · 强度：78
+1. **AnyPS5 PS5 可执行文件 Linux/Windows 自动移植工具——boykopovar/AnyPS5 2 个月 4874⭐ ⑂364 fork/star 7.5% 把「PS5→PC 移植」从「Wine/Proton 模拟」推到「AnyPS5 自动 relinker 把可执行转目标系统原生格式 + 实现 PS5 系统 prx 库供动态链接 + SPIR-V shader 重编译通过 Spirv-Tools 验证 + SDL 输入映射手柄 / 键鼠 / anyps5-input.ini + Dreaming Sarah 2D platformer 在 GTX 1050 Ti / i5-7500 3.4GHz 稳定 60fps + 进度仪表盘 + GPL-2.0 + This project is intended for interoperability, research, preservation, and compatibility purposes」严肃工程化形态（趋势分 90）** · 相关项目：boykopovar/AnyPS5 · 强度：90
+2. **esp32-c3-adblock $2 ESP32-C3 Pi-hole 级 DNS 黑洞——M-Abozaid/esp32-c3-adblock 3.5 个月 1308⭐ ⑂119 fork/star 9.1% 把「Pi-hole 家庭 DNS 黑洞」从「Raspberry Pi $50+/PSRAM $8+」推到「ESP32-C3 无 PSRAM $2 + 537k 域名 sorted 40-bit FNV-1a hash in flash + 二分检索 + ~50KB RAM + 0 collisions at 141k / ~1 at 537k + UDP DNS sinkhole + Web dashboard + Tom's Hardware 专题报道 + 16MB ESP32-S3 上 ~2.7M 域名 + MIT」严肃工程化形态（趋势分 88）** · 相关项目：M-Abozaid/esp32-c3-adblock · 强度：88
+3. **cloudflare-os Cloudflare Workers Agent 工作台——cloudflare/cloudflare-os 5.7 个月 10977⭐ ⑂1306 fork/star 11.9% 把「AI 生产力环境」从「企业内 SaaS 闭源」推到「Cloudflare 全公司使用的 Agent 工作台 + agent chat UI / 沙箱 gadgets 开发 / Gatekeepers 安全框架 + pnpm run-local wrangler+workerd 一次性本地启动 + Apache-2.0 + os.cloudflare.app 部署 + August 2026 v2 重写 + Make it『Your Company's』OS」严肃工程化形态（趋势分 86）** · 相关项目：cloudflare/cloudflare-os · 强度：86
+4. **pstack-claude Lauren Tan pstack Cursor→Claude Code/Codex/Pi/OpenCode/Gemini 跨 Harness 严肃工程化移植——michael-denyer/pstack-claude 4 个月 1405⭐ ⑂152 fork/star 10.8% 把「Cursor 官方 pstack」从「单 Harness 严肃工程化 Agent workflow」推到「michael-denyer/pstack-claude 跨 6 Harness（Claude Code / Codex / Pi / OpenCode / Gemini CLI / Prime Agent）移植 + `/plugin marketplace add michael-denyer/pstack-claude` + `setup-pstack` 模型默认 / reasoning effort / arena runners + poteto-mode 统一入口 + how/why/architect/fix/rerun 严肃工程化 + agent-formal-verify TLA+ formal verify 配套插件 + MIT」严肃工程化形态（趋势分 82）** · 相关项目：michael-denyer/pstack-claude · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 | [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
-| [2026-09-26](daily/2026-09-26.md) | 5 | 3 |
 
 ## 为什么做这个项目
 
