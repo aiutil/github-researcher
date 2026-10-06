@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-06.md">最新日报</a> ·
+  <a href="daily/2026-10-07.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-06
+## 最新研究 · 2026-10-07
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 667 | 7 | 700k+ |
+| 4 | 671 | 5 | 850k+ |
 
-**今日核心判断：** AnyPS5 PS5 可执行文件 Linux/Windows 自动移植工具 4874⭐ ⑂364 + esp32-c3-adblock $2 ESP32-C3 Pi-hole 级 DNS 黑洞 1308⭐ ⑂119 + cloudflare-os Cloudflare Workers Agent 工作台 10977⭐ ⑂1306 + pstack-claude Lauren Tan pstack Cursor→Claude Code/Codex/Pi/OpenCode/Gemini 跨 Harness 严肃工程化移植 1405⭐ ⑂152 + Agent-Reach 49k→92k 严肃工程化零 API 费 AI Agent 互联网感知层 8061 forks 突破 + tester-army/e2e 1430⭐ today 持续 + pingdotgg/t3code 487⭐ today 持续 + earthtojake/text-to-cad 456⭐ today 持续——7 条主线严肃工程化跨领域：（A AnyPS5 PS5→Linux/Windows 自动 porting + SPIR-V shader 重编译 + SDL 输入映射 + GPL-2.0 严肃工程化）+（B esp32-c3-adblock $2 ESP32-C3 Pi-hole-class + 537k 域名 40-bit FNV-1a hash + ~50KB RAM + 二分 flash 检索 + 0 collisions at 141k + Tom's Hardware 专题报道）+（C cloudflare-os Cloudflare 自家全公司使用的 Agent 生产力环境 + agent 聊/沙箱应用开发/Gatekeepers 安全框架 + 全面开源 + pnpm run-local 一次性本地启动 + Apache-2.0）+（D pstack-claude Lauren Tan Cursor 官方 pstack→Claude Code/Codex/Pi/OpenCode/Gemini 严肃工程化移植 + `/plugin marketplace add` + setup-pstack 模型默认 + agent-formal-verify TLA+ formal verify 配套）+（E Agent-Reach 49k→92k 严肃工程化零 API 费 7 平台 AI Agent 互联网感知层 + 中文 README + 17 个 topics 全覆盖）+（F tester-army/e2e 1430⭐ today 严肃工程化自然语言 e2e 测试框架持续 + npm `e2e` + tester.army Discord）+（G pingdotgg/t3code 487⭐ today 严肃工程化 6 大 Coding Agent 远程/桌面/CLI 跨设备控制面持续）
+**今日核心判断：** Niko1221/Strata 13 天 15616⭐ ⑂1331 fork/star 8.5% 消费级显卡跑 Qwen3.8-Flash-Next 125B 模型——把「本地 LLM 推理」从「24GB H100 / 双卡 A100」推到「RTX 5070 / RX 9070 XT 12GB + Strata 引擎跨 GPU/CPU/RAM/SSD 分层调度 24576 experts + guess-and-check 1.6-1.8x 加速 + OpenAI/Anthropic 兼容 /v1 + Claude Code ANTHROPIC_BASE_URL 直连 + 严肃工程化 MIT 一键启动脚本 START-HERE.bat / setup.sh + docs/{INSTALL,MODELS,DETAILS,HOW_IT_WORKS,TROUBLESHOOTING}.md + 多 GPU + 多 README 语言」严肃工程化形态 · NandhaKishorM/laya 19 天 31195⭐ ⑂2755 fork/star 8.8% Non-autoregressive System 1 决策引擎——把「LLM 分类 / 评分 / 决策」从「自回归逐 token 200ms+ + 闭源」嵌入「Laya 33ms 单次前向 typed decision（choice/score/noul）+ 100+ 语言 + Router 自动路由到 english/multilingual checkpoint + Python 3.10+ pip install laya + laya[serve/mcp/langchain/llamaindex/crewai/onnx/fast] extras + TypeScript laya-ts/ + 12 个 Apache-2.0 / 严肃工程化」严肃工程化形态 · jaredpalmer/kev 20 天 8597⭐ ⑂563 fork/star 6.5% 自训 Jev-like System 1 决策模型族（Kev-0.8B/4B/9B/27B 基于 Qwen3.5/Qwen3.8 + noul/choice/score 共享模型 + 8192-65536 token 上下文 + MLX/CUDA + TypeSafe System One API drop-in + Modal 一键部署 + Apache-2.0） · storytold/photocraft 7 天 5857⭐ ⑂742 fork/star 12.7% Adobe Photoshop clean-room 纯 Rust 重实现——把「Adobe Photoshop in Rust」从「单 alpha 半成品」嵌入「Photocraft 完整 layer / mask / adjustment / type / vectors / brushes / 真实 PSD（307/309 psd-tools 测试）+ wgpu GPU compositor Metal/Vulkan/DX12/WebGPU + agent-ready command/CLI/JSON/MCP + MIT OR Apache-2.0 + Discord 社区」严肃工程化形态 · 延续跟踪 KKKKhazix/AIHOT 4050→6176⭐ 自托管热点站框架（TypeScript · MIT · 12367 KB · Docker Compose · PostgreSQL 17 · Node 24 · MCP + RSS/JSON/X/微信公众号 6 信源 + SelectBench + 中文日报 08:00 · 周报周一/月报每月 1 日）持续增长——5 条主线严肃工程化跨领域：（A Strata 消费级硬件跑 125B 模型 + GPU/CPU/RAM/SSD 分层调度 24576 experts + guess-and-check + 双 API 兼容 + 一键启动 + 多 README 语言）+（B Laya 33ms 非自回归 typed decision + 100+ 语言 + Router + Python/TypeScript 双绑定 + 7 extras 集成 langchain/llamaindex/crewai/MCP/ONNX/fast）+（C Kev 自训 Qwen3.5/Qwen3.8 Jev-like 决策模型族 + 4 个 size + MLX/CUDA + drop-in API + Modal 部署）+（D Photocraft Photoshop 完整 layer/mask/type/PSD 重实现 + wgpu GPU compositor + agent-ready 多接口 + MIT OR Apache-2.0 + Discord）+（E AIHOT 自托管热点站 6176⭐ 持续 + AIHOT 鉴权 / 评分 / 聚簇 / 热度 严肃工程化 + MCP / RSS / API / llms.txt 接入 Agent）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [boykopovar/AnyPS5](projects/boykopovar-anyps5.md) | 4874 stars | 工具型 |
-| [M-Abozaid/esp32-c3-adblock](projects/m-abozaid-esp32-c3-adblock.md) | 1308 stars | 工具型 |
-| [cloudflare/cloudflare-os](projects/cloudflare-cloudflare-os.md) | 10977 stars | 基础设施候选 |
-| [michael-denyer/pstack-claude](projects/michael-denyer-pstack-claude.md) | 1405 stars | 工具型 |
+| [Niko1221/Strata](projects/strata.md) | 15616 stars | 基础设施候选 |
+| [NandhaKishorM/laya](projects/laya.md) | 31195 stars | 平台候选 |
+| [jaredpalmer/kev](projects/kev.md) | 8597 stars | 工具型 |
+| [storytold/photocraft](projects/photocraft.md) | 5857 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **AnyPS5 PS5 可执行文件 Linux/Windows 自动移植工具——boykopovar/AnyPS5 2 个月 4874⭐ ⑂364 fork/star 7.5% 把「PS5→PC 移植」从「Wine/Proton 模拟」推到「AnyPS5 自动 relinker 把可执行转目标系统原生格式 + 实现 PS5 系统 prx 库供动态链接 + SPIR-V shader 重编译通过 Spirv-Tools 验证 + SDL 输入映射手柄 / 键鼠 / anyps5-input.ini + Dreaming Sarah 2D platformer 在 GTX 1050 Ti / i5-7500 3.4GHz 稳定 60fps + 进度仪表盘 + GPL-2.0 + This project is intended for interoperability, research, preservation, and compatibility purposes」严肃工程化形态（趋势分 90）** · 相关项目：boykopovar/AnyPS5 · 强度：90
-2. **esp32-c3-adblock $2 ESP32-C3 Pi-hole 级 DNS 黑洞——M-Abozaid/esp32-c3-adblock 3.5 个月 1308⭐ ⑂119 fork/star 9.1% 把「Pi-hole 家庭 DNS 黑洞」从「Raspberry Pi $50+/PSRAM $8+」推到「ESP32-C3 无 PSRAM $2 + 537k 域名 sorted 40-bit FNV-1a hash in flash + 二分检索 + ~50KB RAM + 0 collisions at 141k / ~1 at 537k + UDP DNS sinkhole + Web dashboard + Tom's Hardware 专题报道 + 16MB ESP32-S3 上 ~2.7M 域名 + MIT」严肃工程化形态（趋势分 88）** · 相关项目：M-Abozaid/esp32-c3-adblock · 强度：88
-3. **cloudflare-os Cloudflare Workers Agent 工作台——cloudflare/cloudflare-os 5.7 个月 10977⭐ ⑂1306 fork/star 11.9% 把「AI 生产力环境」从「企业内 SaaS 闭源」推到「Cloudflare 全公司使用的 Agent 工作台 + agent chat UI / 沙箱 gadgets 开发 / Gatekeepers 安全框架 + pnpm run-local wrangler+workerd 一次性本地启动 + Apache-2.0 + os.cloudflare.app 部署 + August 2026 v2 重写 + Make it『Your Company's』OS」严肃工程化形态（趋势分 86）** · 相关项目：cloudflare/cloudflare-os · 强度：86
-4. **pstack-claude Lauren Tan pstack Cursor→Claude Code/Codex/Pi/OpenCode/Gemini 跨 Harness 严肃工程化移植——michael-denyer/pstack-claude 4 个月 1405⭐ ⑂152 fork/star 10.8% 把「Cursor 官方 pstack」从「单 Harness 严肃工程化 Agent workflow」推到「michael-denyer/pstack-claude 跨 6 Harness（Claude Code / Codex / Pi / OpenCode / Gemini CLI / Prime Agent）移植 + `/plugin marketplace add michael-denyer/pstack-claude` + `setup-pstack` 模型默认 / reasoning effort / arena runners + poteto-mode 统一入口 + how/why/architect/fix/rerun 严肃工程化 + agent-formal-verify TLA+ formal verify 配套插件 + MIT」严肃工程化形态（趋势分 82）** · 相关项目：michael-denyer/pstack-claude · 强度：82
+1. **Niko1221/Strata 13 天 15616⭐ ⑂1331 fork/star 8.5% 把「本地 LLM 推理」从「24GB H100 / 双卡 A100 集群」推到「Strata 消费级显卡跑 Qwen3.8-Flash-Next 125B 模型——RTX 5070 / RX 9070 XT 12GB+ 一键 + Strata 引擎跨 GPU/CPU/RAM/SSD 分层调度 24576 experts（每 token 用 10 个）+ VGPU + VRAM + RAM 持 24-55GB + SSD lookup + guess-and-check 1.6-1.8x 加速 + 8192 token 块读 1000+ tokens/s + OpenAI / Anthropic /v1 兼容 + Claude Code ANTHROPIC_BASE_URL 直连 + 一键启动脚本 START-HERE.bat / setup.sh + docs/{INSTALL,MODELS,DETAILS,HOW_IT_WORKS,TROUBLESHOOTING,MCP_SERVER,AI_SETUP,BATCHING,COMMUNITY_BENCHMARKS,OLDER_GPUS,INTEL_ARC,STRIX_HALO,MULTI_GPU}.md + 7 语言 README + 多 GPU 协调 + Coder/Swift 1.5/Unsloth UD-IQ4_XS/UD-Q4_K_XL/OrcaRouter Uncensored IQ3_XXS 模型 + buymeacoffee + 13 days 15616⭐ ⑂1331 fork/star 8.5% + C++ · 19115 + topics 0 覆盖」严肃工程化形态（趋势分 92）** · 相关项目：Niko1221/Strata · 强度：92
+2. **NandhaKishorM/laya 19 天 31195⭐ ⑂2755 fork/star 8.8% 把「LLM 分类 / 评分 / 决策」从「自回归逐 token 200ms+ + 闭源」嵌入「Laya 33ms 单次前向 typed decision（choice/score/noul 三类型）+ 100+ 语言 + Router 自动路由到 english/multilingual checkpoint + Python 3.10+ pip install laya + laya[serve/mcp/langchain/llamaindex/crewai/onnx/fast] 7 extras + TypeScript laya-ts/ + npm install laya-ts + MLX 7-14ms Apple Silicon + TileLang GPU fast path + RLCD reinforcement learning against strictly proper scoring rules + 8192 token 多语言长文档 + laya-train CLI 从 CSV fine-tune + 严肃工程化」形态（趋势分 90）** · 相关项目：NandhaKishorM/laya · 强度：90
+3. **jaredpalmer/kev 20 天 8597⭐ ⑂563 fork/star 6.5% 把「Jev 闭源决策模型 API」推到「Kev 自训 Jev-like System 1 决策模型族——基于 Qwen3.5 / Qwen3.8 + Kev-0.8B/4B/9B/27B 4 size + noul/choice/score 共享模型 + 8192 token 上下文（Kev-27B 65536 token）+ MLX Apple Silicon + CUDA + TypeSafe System One API drop-in（同一 Python SDK）+ Modal 一键部署 + frozen eval suites breadth-v1 14 数据集 + held-out 23.3-52.3 + Brier 分数 + 0.851 vs Jev 0.857 + Apache-2.0 + jaredpalmer 个人 + HF Spaces demo」严肃工程化形态（趋势分 84）** · 相关项目：jaredpalmer/kev · 强度：84
+4. **storytold/photocraft 7 天 5857⭐ ⑂742 fork/star 12.7% 把「Adobe Photoshop 在 Rust 重实现」从「单 alpha 半成品」嵌入「Photocraft 完整 layer / mask / adjustment layer / type / vectors / brushes / 真实 PSD 文件（307/309 psd-tools 测试保留）+ wgpu GPU compositor Metal/Vulkan/DX12/WebGPU + copy-on-write tiles + 多线程 filter + 无 Electron 无 web view 启动 + 100% Rust + macOS/Windows/Linux/FreeBSD/Web-native + agent-ready command / CLI / JSON / MCP + MIT OR Apache-2.0 + Discord + getartcraft.com + 7 days 5857⭐ ⑂742 fork/star 12.7%」严肃工程化形态（趋势分 80）** · 相关项目：storytold/photocraft · 强度：80
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
-| [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 
 ## 为什么做这个项目
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-06.md">Latest report</a> ·
+  <a href="daily/2026-10-07.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-06
+## Latest report · 2026-10-07
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 667 | 7 | 700k+ |
+| 4 | 671 | 5 | 850k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [boykopovar/AnyPS5](projects/boykopovar-anyps5.md) | 4874 stars | 工具型 |
-| [M-Abozaid/esp32-c3-adblock](projects/m-abozaid-esp32-c3-adblock.md) | 1308 stars | 工具型 |
-| [cloudflare/cloudflare-os](projects/cloudflare-cloudflare-os.md) | 10977 stars | 基础设施候选 |
-| [michael-denyer/pstack-claude](projects/michael-denyer-pstack-claude.md) | 1405 stars | 工具型 |
+| [Niko1221/Strata](projects/strata.md) | 15616 stars | 基础设施候选 |
+| [NandhaKishorM/laya](projects/laya.md) | 31195 stars | 平台候选 |
+| [jaredpalmer/kev](projects/kev.md) | 8597 stars | 工具型 |
+| [storytold/photocraft](projects/photocraft.md) | 5857 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: boykopovar/AnyPS5
-2. **Signal 2** · score 88 · repositories: M-Abozaid/esp32-c3-adblock
-3. **Signal 3** · score 86 · repositories: cloudflare/cloudflare-os
-4. **Signal 4** · score 82 · repositories: michael-denyer/pstack-claude
+1. **Signal 1** · score 92 · repositories: Niko1221/Strata
+2. **Signal 2** · score 90 · repositories: NandhaKishorM/laya
+3. **Signal 3** · score 84 · repositories: jaredpalmer/kev
+4. **Signal 4** · score 80 · repositories: storytold/photocraft
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-06.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-07.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
 | [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
-| [2026-09-28](daily/2026-09-28.md) | 5 | 3 |
 
 ## Why this repository exists
 

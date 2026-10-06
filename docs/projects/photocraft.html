@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storytold/photocraft | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/storytold/photocraft" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="storytoldphotocraft">storytold/photocraft</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Adobe Photoshop 的 clean-room 100% Rust 重实现严肃工程化平台——把「Adobe Photoshop 在 Rust 重实现」从「单 alpha 半成品」嵌入「Photocraft 完整 layer / mask / adjustment layer / type / vectors / brushes + 真实 PSD 文件（307 of 309 psd-tools 测试保留渲染）+ GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter + No Electron / no web view / no waiting + 100% Rust + macOS / Windows / Linux / FreeBSD / Web-native + license MIT OR Apache-2.0 + Status: early alpha + Every action is a command so you can drive the same engine from UI / CLI / JSON control channel / MCP server + agent-ready + Familiar by design（菜单 / 快捷键 / 面板 / 工具与 Photoshop 同量 ⌘J ⇧⌘D）+ docs/images/photocraft-demo.jpg (Hokusai The Great Wave 演示) + Crafting Apps series + Discord artcraft + getartcraft.com/apps/photocraft + 11 topics 覆盖」（storytold 个人）。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年 Adobe Photoshop 严肃工程化赛道的痛点是 <strong>「Adobe Photoshop 闭源 + 商业订阅 + Rust 重实现多停留在 alpha + 半成品 + 真实 PSD 文件兼容性不足 + 多 GPU API 适配不足 + 多接口（agent-ready）覆盖不足 + 商用边界不清」</strong>。Photocraft 直击这一痛点：把「Adobe Photoshop 在 Rust 重实现」从「单 alpha 半成品」嵌入「Photocraft 完整 layer / mask / adjustment layer / type / vectors / brushes + 真实 PSD 文件（307 of 309 psd-tools 测试保留渲染）+ GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter + No Electron / no web view / no waiting + 100% Rust + macOS / Windows / Linux / FreeBSD / Web-native + agent-ready command / CLI / JSON control channel / MCP server + Familiar by design ⌘J ⇧⌘D + Status: early alpha + Crafting Apps series + Discord artcraft + getartcraft.com + MIT OR Apache-2.0」严肃工程化形态。解决的是 <strong>「Adobe Photoshop clean-room 重实现 + 真实 PSD 文件兼容 + 多 GPU API + 多接口 + 严肃工程化 + 商用清晰」</strong> 的 Adobe Photoshop 严肃工程化问题。</p>
+<h2 id="2026-10-07">为什么值得关注（2026-10-07）</h2>
+<ul>
+<li><strong>Stars:</strong> 5857（截至 2026-10-07），7 天 5857⭐，fork 742，fork/star 12.7%</li>
+<li><strong>Forks:</strong> 742（典型高 fork 严肃工程化持续关注信号）</li>
+<li><strong>License:</strong> Apache-2.0（MIT OR Apache-2.0）</li>
+<li><strong>语言:</strong> Rust</li>
+<li><strong>活跃度:</strong> created 2026-09-30，pushed_at 2026-10-06，持续高活跃</li>
+<li><strong>规模:</strong> 14494 KB</li>
+<li><strong>Topics:</strong> 11 个覆盖（adobe / adobe-photoshop-2026 / adobe-photoshop-2026-ai / art / image-editing / image-editing-software / image-editor / images / photo-editing / photoshop / psd / rust）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>storytold/photocraft 的热度是 <strong>「Adobe Photoshop 严肃工程化（Rust 重实现 + 真实 PSD + 多 GPU API + 多接口）刚需 × clean-room × Familiar by design（菜单 / 快捷键 / 面板 / 工具与 Photoshop 同量）× Status: early alpha + Crafting Apps series + Discord artcraft + MIT OR Apache-2.0」</strong> 的强劲组合。Adobe Photoshop 严肃工程化是 2026 年最热赛道（图像处理 + 创意软件），但「Adobe Photoshop 闭源 + 商业订阅」是真痛点——大多数用户对 Adobe Photoshop 严肃工程化（Rust 重实现 + 真实 PSD 兼容）的需求无法满足。一个把「Adobe Photoshop 闭源 + 商业订阅」推到「Photocraft clean-room + 真实 PSD（307/309）+ wgpu GPU compositor + agent-ready + MIT OR Apache-2.0」的严肃工程化平台自然爆火。742 个 forks 反映社区高度参与。7 天 5857⭐ + fork/star 12.7% 说明这是真实严肃工程化信号（不是泡沫）。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>clean-room 100% Rust 重实现 + 真实 PSD 文件（307 of 309 psd-tools 测试保留渲染）</strong>——clean-room 实现避免版权风险；307 of 309 psd-tools 测试保留渲染确保真实 PSD 文件兼容性</li>
+<li><strong>GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter</strong>——wgpu 跨 GPU API；copy-on-write tiles 节省内存；多线程 filter 加速</li>
+<li><strong>No Electron / no web view / no waiting + macOS / Windows / Linux / FreeBSD / Web-native</strong>——100% 原生应用；多 OS 覆盖广度；Web-native 浏览器内运行</li>
+<li><strong>agent-ready command / CLI / JSON control channel / MCP server + Familiar by design ⌘J ⇧⌘D</strong>——Every action is a command；UI / CLI / JSON / MCP 多接口；菜单 / 快捷键 / 面板 / 工具与 Photoshop 同量</li>
+<li><strong>Status: early alpha + Crafting Apps series + Discord artcraft + getartcraft.com + MIT OR Apache-2.0</strong>——Crafting Apps series 系列化严肃工程化承诺；Discord artcraft 社区；getartcraft.com 在线 demo；MIT OR Apache-2.0 商用清晰</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Adobe Photoshop 的 clean-room 100% Rust 重实现；layer / mask / adjustment layer / type / vectors / brushes + 真实 PSD 文件（307 of 309 psd-tools 测试保留渲染）+ GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter + No Electron / no web view / no waiting + macOS / Windows / Linux / FreeBSD / Web-native + agent-ready command / CLI / JSON control channel / MCP server</td>
+<td>仅基于 README 描述的 clean-room 100% Rust 重实现 + layers / masks / adjustment layers / layer styles / type / vectors / brushes + 真实 PSD 文件（307 of 309 psd-tools 测试保留渲染）+ GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter + No Electron / no web view / no waiting + 100% Rust + macOS / Windows / Linux / FreeBSD / Web-native + license MIT OR Apache-2.0 + Status: early alpha + Every action is a command + agent-ready + UI / CLI / JSON control channel / MCP server + Familiar by design ⌘J ⇧⌘D + Crafting Apps series + Discord artcraft + getartcraft.com/apps/photocraft + 11 topics 覆盖；具体 GPU compositor on wgpu 在多 vendor 显卡的严谨度、真实 PSD 文件 307/309 测试保留渲染在多 PSD 类型的严肃工程化承诺、copy-on-write tiles / 多线程 filter 在多图像尺寸的严谨度、agent-ready 多接口在多 Claude Code / Codex / Cursor harness 的兼容性、early alpha 早期 alpha 在多 PSD 类型的严肃工程化承诺未在档案中明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 → 启动 Photocraft → UI 菜单 ⌘J ⇧⌘D 与 Photoshop 同量 → 加载真实 PSD 文件（保留 307/309 psd-tools 测试渲染）→ layer / mask / adjustment layer / type / vectors / brushes 编辑 → GPU compositor on wgpu Metal/Vulkan/DX12/WebGPU + copy-on-write tiles + 多线程 filter 加速 → 保存 PSD 文件 → No Electron / no web view / no waiting 启动 → agent-ready command / CLI / JSON control channel / MCP server 接入</td>
+<td>主路径为档案语义抽象；具体 GPU compositor on wgpu 在多 vendor 显卡的严谨度、真实 PSD 文件 307/309 测试保留渲染在多 PSD 类型的严肃工程化承诺、copy-on-write tiles / 多线程 filter 在多图像尺寸的严谨度、agent-ready 多接口在多 Claude Code / Codex / Cursor harness 的兼容性未在档案中讨论</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>100% Rust clean-room 重实现 vs 单 alpha 半成品 + 真实 PSD 文件 307/309 psd-tools 测试保留渲染 vs 半 PSD 兼容 + layer / mask / adjustment / type / vectors / brushes 全功能覆盖 vs 单 layer + GPU compositor on wgpu Metal/Vulkan/DX12/WebGPU 多 GPU API vs 单 GPU API + copy-on-write tiles vs 单次拷贝 + 多线程 filter vs 单线程 + No Electron / no web view / no waiting 启动 vs Electron 慢启动 + macOS / Windows / Linux / FreeBSD / Web-native 多平台 vs 单 OS + agent-ready command / CLI / JSON / MCP 多接口 vs 单 UI + Familiar by design ⌘J ⇧⌘D vs 新 UI + early alpha 早期 alpha vs production + MIT OR Apache-2.0 商用清晰 vs 单 license + Crafting Apps series 系列化 vs 单产品 + 11 topics 覆盖广度</td>
+<td>档案明示 100% Rust + 真实 PSD 文件（307 of 309）+ GPU compositor on wgpu (Metal / Vulkan / DX12 / WebGPU) + copy-on-write tiles + 多线程 filter + No Electron / no web view / no waiting + macOS / Windows / Linux / FreeBSD / Web-native + MIT OR Apache-2.0 + Status: early alpha + agent-ready + UI / CLI / JSON / MCP + Familiar by design ⌘J ⇧⌘D + Crafting Apps series + Discord artcraft + getartcraft.com/apps/photocraft + 11 topics 覆盖；具体 GPU compositor on wgpu 在多 vendor 显卡的严谨度、真实 PSD 文件 307/309 测试保留渲染在多 PSD 类型的严肃工程化承诺、agent-ready 多接口在多 Claude Code / Codex / Cursor harness 的兼容性、early alpha 早期 alpha 在多 PSD 类型的严肃工程化承诺未在档案中讨论</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在 macOS / Windows / Linux 上 git clone storytold/photocraft + cargo build --release → 启动 Photocraft → 加载 docs/images/photocraft-demo.jpg (Hokusai The Great Wave 演示) → 验证 layer / mask / adjustment layer / type / vectors / brushes 全功能 → 保存 PSD 文件 → 验证 307 of 309 psd-tools 测试保留渲染 → 试 GPU compositor on wgpu Metal/Vulkan/DX12/WebGPU 多 GPU API → 试 No Electron / no web view 启动 → 试 MCP server 在 Claude Code 中启用 → 验证 MIT OR Apache-2.0</td>
+<td>PoC 范围由档案「100% Rust + 真实 PSD 文件 307/309 + GPU compositor on wgpu Metal/Vulkan/DX12/WebGPU + copy-on-write tiles + 多线程 filter + No Electron + macOS/Windows/Linux/FreeBSD/Web-native + agent-ready UI/CLI/JSON/MCP + Familiar by design ⌘J ⇧⌘D + early alpha + Crafting Apps series + Discord artcraft + getartcraft.com + 11 topics」建议推导；具体严谨度未在档案中讨论</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户] --> Install[git clone + cargo build --release<br/>macOS / Windows / Linux / FreeBSD / Web-native]
+  Install --> App[Photocraft 100% Rust<br/>No Electron / no web view<br/>No waiting]
+  App --> Familiar[Familiar by design<br/>菜单 ⌘J ⇧⌘D<br/>与 Photoshop 同量]
+  Familiar --> Layer[layer / mask / adjustment layer<br/>layer styles / type / vectors / brushes]
+  Layer --> GPU[GPU compositor on wgpu<br/>Metal / Vulkan / DX12 / WebGPU]
+  GPU -.copy-on-write.-> Tile[copy-on-write tiles]
+  Tile --> MultiThread[多线程 filter]
+  MultiThread --> PSD[真实 PSD 文件<br/>307 of 309 psd-tools 测试保留渲染]
+  Layer --> Open[打开 PSD]
+  Open --> Edit[编辑 layer / mask / adjustment / type / vectors / brushes]
+  Edit --> Save[保存 PSD]
+  PSD -.Test.-> Test[psd-tools 测试<br/>307 of 309 测试通过]
+  App -.agent-ready.-> Action[Every action is a command]
+  Action --> UI[UI]
+  Action --> CLI[CLI]
+  Action --> JSON[JSON control channel]
+  Action --> MCP[MCP server]
+  MCP -.Harness.-> CC[Claude Code]
+  MCP -.Harness.-> CX[Codex CLI]
+  MCP -.Harness.-> CUR[Cursor]
+  App -.Demo.-> Demo[Hokusai The Great Wave<br/>docs/images/photocraft-demo.jpg<br/>+ caption card drop shadow<br/>+ Title and Credit type layers<br/>+ Vibrance and Curves adjustment layers<br/>+ Curves editor]
+  App -.Status.-> Status[Status: early alpha]
+  App -.License.-> Lic[MIT OR Apache-2.0 商用清晰<br/>storytold 个人]
+  App -.Community.-> Disc[Discord artcraft<br/>join us]
+  App -.Web.-> Web[getartcraft.com/apps/photocraft<br/>getartcraft.com/apps<br/>Crafting Apps series]
+</pre>
+<h2 id="_6">架构启发</h2>
+<p>storytold/photocraft 的核心启发是 <strong>「Adobe Photoshop 的严肃工程化重实现必须四件事：clean-room + 真实 PSD 文件兼容 + 多 GPU API + 多接口（agent-ready）」</strong>。当前大多数 Rust 重实现都停留在「单 alpha 半成品 + 半 PSD 兼容 + 单 GPU API + 单 UI」——严肃工程化友好度不足。Photocraft 尝试做「Adobe Photoshop 的 Rust 严肃工程化栈」——类似：
+  - GIMP 之于 Photoshop（开源 + 多平台）
+  - Darktable 之于 Lightroom（开源 + 专业级）
+  - Krita 之于 Photoshop（开源 + 数字绘画）</p>
+<p>更深层的启发是：<strong>「Every action is a command so you can drive the same engine from UI / CLI / JSON control channel / MCP server + agent-ready」是 2026 年严肃工程化软件的标准设计哲学</strong>。这种「UI/CLI/JSON/MCP 多接口同引擎」设计，使得 Photocraft 不仅能被人类使用，还能被 Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity 等 AI Coding Agent 直接驱动——这是 2026 年严肃工程化软件 + agent-ready 的范式。7 天 5857⭐ + 742 forks 已显示其严肃工程化影响力。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（Adobe Photoshop clean-room 100% Rust 重实现严肃工程化平台）。</strong> storytold/photocraft 不仅是 Adobe Photoshop 替代品，更试图成为「Adobe Photoshop 的 Rust 严肃工程化栈 + agent-ready」范式——类似 Darktable / GIMP / Krita 但专攻 Photoshop 完整 layer/mask/adjustment/type/vectors/brushes + 真实 PSD 文件兼容。7 天 5857⭐ + 742 forks 已显示其严肃工程化影响力。但「Adobe Photoshop 的 Rust 严肃工程化栈」取决于一个关键问题：Status: early alpha 在多 PSD 类型的严肃工程化承诺（早期 alpha 距离 production 仍有距离）——若 production 化进展缓慢，Photocraft 的严肃工程化承诺会受影响。目前定位是「最有影响力的 Adobe Photoshop Rust 严肃工程化平台」，向更通用创意软件严肃工程化平台演进是合理路径。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>Status: early alpha 早期 alpha 严肃工程化承诺:</strong> README 明示 Status: early alpha——距离 production 仍有距离；多 PSD 类型 / 多图像尺寸 / 多 GPU 硬件的边缘情况可能未覆盖</li>
+<li><strong>真实 PSD 文件 307/309 psd-tools 测试保留渲染边界:</strong> README 明示 307 of 309 测试保留渲染——剩余 2 个 psd-tools 测试未通过，可能存在特定 PSD 类型的兼容性问题</li>
+<li><strong>GPU compositor on wgpu 多 GPU API 边界:</strong> README 明示 wgpu 跨 Metal/Vulkan/DX12/WebGPU，但具体多 vendor 显卡（NVIDIA / AMD / Intel / Apple）的兼容性边界未明示</li>
+<li><strong>agent-ready command / CLI / JSON control channel / MCP server 多接口边界:</strong> README 明示 Every action is a command，但具体多 Claude Code / Codex / Cursor / Grok Build / OpenCode / Google Antigravity harness 的兼容性边界未明示</li>
+<li><strong>copy-on-write tiles / 多线程 filter 在多图像尺寸的严谨度:</strong> README 明示 copy-on-write tiles + 多线程 filter，但具体超大图像（10K+ x 10K+）的内存占用 / 性能边界未明示</li>
+<li><strong>Familiar by design ⌘J ⇧⌘D 严肃工程化承诺:</strong> README 明示菜单 / 快捷键 / 面板 / 工具与 Photoshop 同量，但具体 100% Photoshop 兼容 vs 90% Photoshop 兼容边界未明示</li>
+<li><strong>个人项目属性:</strong> storytold 个人维护，742 forks 但核心治理仍集中，长期可持续性需要观察</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Adobe Photoshop:</strong> Adobe Photoshop 是闭源商业图像编辑软件（订阅）；Photocraft 是 clean-room 100% Rust 重实现 + MIT OR Apache-2.0 + agent-ready</li>
+<li><strong>vs GIMP:</strong> GIMP 是开源 C/C++ 图像编辑软件；Photocraft 是 clean-room 100% Rust + 真实 PSD（307/309）+ agent-ready</li>
+<li><strong>vs Darktable / RawTherapee:</strong> Darktable / RawTherapee 是专业级 RAW 处理软件；Photocraft 是 Photoshop 完整 layer/mask/adjustment/type/vectors/brushes 重实现</li>
+<li><strong>vs Krita:</strong> Krita 是开源数字绘画软件；Photocraft 是 Photoshop 严肃工程化重实现（layer/mask/adjustment/type/vectors/brushes + 真实 PSD）</li>
+<li><strong>vs Photoshop Elements:</strong> Photoshop Elements 是 Adobe 的简化版；Photocraft 是 Photoshop 严肃工程化重实现</li>
+<li><strong>vs Paint.NET:</strong> Paint.NET 是开源 Windows 图像编辑软件；Photocraft 是 Photoshop 严肃工程化重实现 + 多平台 + agent-ready</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Adobe Photoshop clean-room 100% Rust 严肃工程化平台）。</strong> storytold/photocraft 代表了「Adobe Photoshop 严肃工程化（Rust 重实现 + 真实 PSD + 多 GPU API + 多接口）」诉求，无论其本身成败，这一方向是行业趋势。建议关注：Status: early alpha 在 production 化的进度（决定 Photocraft 严肃工程化承诺）、307/309 测试保留渲染在多 PSD 类型的严谨度（决定真实 PSD 兼容）、GPU compositor on wgpu 在多 vendor 显卡的兼容性（决定多硬件严谨工程化）、agent-ready 多接口在多 Claude Code / Codex / Cursor harness 的完整性（决定 agent-ready 严肃工程化承诺）。对图像编辑 + agent-ready 用户，Photocraft 是「clean-room + 真实 PSD + wgpu + agent-ready + MIT OR Apache-2.0」的实用严肃工程化方案，值得直接采用。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>Status: early alpha 在 production 化的进度（决定 Photocraft 严肃工程化承诺）</li>
+<li>307/309 psd-tools 测试保留渲染在多 PSD 类型的严谨度</li>
+<li>GPU compositor on wgpu 在多 vendor 显卡（NVIDIA / AMD / Intel / Apple）的兼容性</li>
+<li>agent-ready command / CLI / JSON / MCP 多接口在多 Claude Code / Codex / Cursor harness 的完整性</li>
+<li>copy-on-write tiles / 多线程 filter 在多图像尺寸的严谨度</li>
+<li>Familiar by design ⌘J ⇧⌘D 在 100% Photoshop 兼容 vs 90% Photoshop 兼容的边界</li>
+<li>个人项目治理结构（742 forks 但核心治理仍集中于 storytold 个人）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-07) | Stars: 5857 | Forks: 742 | License: Apache-2.0 (MIT OR Apache-2.0) | 语言: Rust | 创建: 2026-09-30 | 大小: 14494 KB</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
