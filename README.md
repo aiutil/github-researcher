@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-07.md">Latest report</a> ·
+  <a href="daily/2026-10-08.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,43 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-07
+## Latest report · 2026-10-08
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 671 | 5 | 850k+ |
+| 6 | 675 | 5 | 900k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Niko1221/Strata](projects/strata.md) | 15616 stars | 基础设施候选 |
-| [NandhaKishorM/laya](projects/laya.md) | 31195 stars | 平台候选 |
-| [jaredpalmer/kev](projects/kev.md) | 8597 stars | 工具型 |
-| [storytold/photocraft](projects/photocraft.md) | 5857 stars | 工具型 |
+| [openai/math](projects/math.md) | 9205 stars | 基础设施候选 |
+| [storytold/filmcraft](projects/filmcraft.md) | 3143 stars | 工具型 |
+| [yetone/magpie](projects/magpie.md) | 5833 stars | 工具型 |
+| [CopilotKit/OpenDots](projects/opendots.md) | 4167 stars | 工具型 |
+| [storytold/lightcraft](projects/lightcraft.md) | 2859 stars | 工具型 |
+| [firelex/jeff](projects/firelex-jeff.md) | 1435 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: Niko1221/Strata
-2. **Signal 2** · score 90 · repositories: NandhaKishorM/laya
-3. **Signal 3** · score 84 · repositories: jaredpalmer/kev
-4. **Signal 4** · score 80 · repositories: storytold/photocraft
+1. **Signal 1** · score 95 · repositories: openai/math
+2. **Signal 2** · score 90 · repositories: storytold/filmcraft, storytold/lightcraft, storytold/pdfcraft, storytold/vectorcraft, storytold/effectcraft
+3. **Signal 3** · score 85 · repositories: yetone/magpie
+4. **Signal 4** · score 80 · repositories: CopilotKit/OpenDots
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-07.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-08.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 | [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 | [2026-09-30](daily/2026-09-30.md) | 5 | 3 |
-| [2026-09-29](daily/2026-09-29.md) | 5 | 3 |
 
 ## Why this repository exists
 
