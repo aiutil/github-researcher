@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storytold/wordcraft | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/storytold/wordcraft" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="storytoldwordcraft">storytold/wordcraft</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Microsoft Word 的 Rust 100% clean-room 重实现——把「Word 严肃工程化替代」从「LibreOffice Writer（部分兼容）+ OnlyOffice + 闭源 Word Online」推到「wordcraft 7-layer crate architecture + 389 commands drive ribbon/keyboard/command search/CLI/JSON control channel/MCP server + 87% Word ribbon features + ~62% real feature parity + Native egui on GPU + No Electron no Tauri + Reading &amp; writing .docx (OOXML) + .odt/.rtf/.html/.md/.txt + PDF export + macOS/Windows/Linux/BSD/Web + WebAssembly + Apache-2.0 + ArtCraft 团队」严肃工程化形态。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年「Word 严肃工程化替代」的痛点是 <strong>「绝大多数 Word 替代要么严肃翻页格式（Google Docs）+ 闭源（Word Online）+ 部分兼容（LibreOffice Writer）+ SaaS 强制订阅（Microsoft 365）+ Electron 重（Tauri-based alternatives）+ 无 MCP server + 无 agent 可编程化」</strong>。wordcraft 直击这一痛点：把「Word 严肃工程化替代」从「LibreOffice Writer（部分兼容）+ OnlyOffice + 闭源 Word Online」推到「wordcraft 7-layer crate architecture（wordcraft-geom/doc/fonts-proof/layout/docx-formats/render-pdf/engine/mcp/ui-egui）+ 389 commands drive ribbon/keyboard/command search/CLI/JSON control channel/MCP server + 87% Word ribbon features + ~62% real feature parity + Native egui on GPU + No Electron no Tauri + Spelling/grammar offline + Reading &amp; writing .docx (OOXML) + .odt/.rtf/.html/.md/.txt + PDF export with selectable text + 跨 macOS/Windows/Linux/BSD/Web + WebAssembly + Apache-2.0 + StoryTold 个人 + ArtCraft 团队」严肃工程化形态。解决的是 <strong>「Word 严肃工程化替代 + 100% Rust clean-room + 跨平台覆盖广度 + WebAssembly + MCP server 多 tool 严肃工程化 + Apache-2.0 商用清晰 + agent 可编程化」</strong> 的 Word 严肃工程化替代问题。</p>
+<h2 id="2026-10-09">为什么值得关注（2026-10-09）</h2>
+<ul>
+<li><strong>Stars:</strong> 761（截至 2026-10-09），2 天 761⭐，fork 280，fork/star 36.8%（fork/star 高，反映社区强烈参与）</li>
+<li><strong>Forks:</strong> 280（典型高 fork 严肃工程化持续关注信号）</li>
+<li><strong>License:</strong> Apache-2.0（明确许可，商用清晰）</li>
+<li><strong>语言:</strong> Rust（100% Rust + Native egui on GPU + No Electron no Tauri）</li>
+<li><strong>活跃度:</strong> created 2026-10-07，2 天内冲到 761 推严肃工程化承诺</li>
+<li><strong>规模:</strong> 7082 KB（严肃工程化典型规模）</li>
+<li><strong>Topics:</strong> wordcraft / microsoft-word / clean-room / 100-percent-rust / docx / ooxml / odt / rtf / markdown / pdf-export / egui / 389-commands / mcp-server / cli / json-control-channel / wasm / artcraft-team / discord / getartcraft-com / apache-2 / 2-days（覆盖广）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>wordcraft 的热度是 <strong>「Word 严肃工程化替代刚需 × ArtCraft 团队 8 库全家桶严肃工程化 × MCP server agent 可编程化 × Apache-2.0 商用清晰 × StoryTold 个人 + ArtCraft 团队 + Discord 社区」</strong> 的强劲组合。Word 是全球装机量最大的桌面办公软件之一，但「严肃工程化 100% Rust + 跨平台 + clean-room + WebAssembly + MCP server + Apache-2.0 商用清晰」替代品几乎空白。wordcraft + photocraft + filmcraft + lightcraft + pdfcraft + vectorcraft + effectcraft + designcraft + cadcraft + gridcraft + soundcraft + deckcraft 12 库同步严肃工程化覆盖 Adobe/Microsoft/Avid 全创意套件，单一项目热度已验证市场（如 photocraft 16286⭐），现在 8 库同步爆发（2 天集中推出 wordcraft/cadcraft/gridcraft/soundcraft/deckcraft 5 库）反映 ArtCraft 团队正从「单 alpha 半成品」推到「8 库全家桶 + 跨平台 + WebAssembly + MCP server + Apache-2.0 商用清晰」严肃工程化全家桶形态。热度<strong>真实且具网络效应潜力</strong>——但需警惕：12 库覆盖广度虽猛但各库成熟度参差（wordcraft 87% ribbon + 62% real parity 是上限，其余库未给 parity 数字）；Apache-2.0 商用清晰但与 Microsoft 商业关系需关注（clean-room 是合规底线）；StoryTold 个人 + ArtCraft 团队治理可持续性需观察（核心维护集中度高）；MCP server 与 CLI/JSON control channel 同步维护成本高。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>7-layer crate architecture:</strong> wordcraft-geom (units/measurements) + wordcraft-doc + wordcraft-fonts + wordcraft-proof (document model + editing + fonts + shaping + spelling/grammar/hyphenation) + wordcraft-layout + wordcraft-docx + wordcraft-formats (line breaking/pagination/tables/notes/hit testing/OOXML/ODT/RTF/HTML/Markdown/TXT) + wordcraft-render + wordcraft-pdf (rasteriser vello_cpu + PDF krilla) + wordcraft-engine (session/undo/389 commands/Word feature catalog) + wordcraft-mcp (MCP server) + wordcraft-ui-egui (Word-style front end swappable) + apps/wordcraft + apps/wordcraft-cli + apps/wordcraft-web</li>
+<li><strong>389 commands drive ribbon/keyboard/command search/JSON control channel/MCP server:</strong> Every action is a command so you can drive the same engine from UI / CLI / JSON control channel / MCP server</li>
+<li><strong>87% Word ribbon features + ~62% real feature parity:</strong> An alpha for everyday writing is close; the remaining work is mostly testing against real-world .docx files, native printing and the first signed builds</li>
+<li><strong>Native egui on GPU + No Electron no Tauri:</strong> One Rust codebase for macOS, Windows, Linux, BSD and the web</li>
+<li><strong>Spelling/grammar offline:</strong> Spelling, grammar and everything else work offline</li>
+<li><strong>Multiple format support:</strong> Opens and saves .docx (OOXML), and also .odt, .rtf, .html, .md, .txt; exports PDF with real, selectable text, links and bookmarks</li>
+<li><strong>For agents:</strong> claude mcp add wordcraft -- wordcraft-cli mcp / wordcraft --control 7981 &amp; / claude mcp add wordcraft-app -- wordcraft-cli mcp --connect 127.0.0.1:7981 + Tools list_commands, execute, batch, type_text, select_text, inspect_document, render_page, save_document, screenshot (with running app), click, key + Agents can check their work through inspect_document without screenshots + docs/mcp.md + control-protocol.md</li>
+<li><strong>CI/CD:</strong> cargo xtask ci runs formatting, clippy, ~250 tests, the asset-attribution check, the layering check and the wasm build + AGENTS.md contributor instructions</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>跨 macOS/Windows/Linux/BSD/Web 的 Word 严肃工程化替代，仓库是 7-layer crates 而非运行时</td>
+<td>仅基于档案描述的 7-layer crates + 389 commands drive + Apache-2.0；具体业务功能实现、wargo.toml 依赖治理、各层接口契约未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>贡献者 → wordcraft 7-layer crates (geom→doc/fonts-proof→layout/docx-formats→render-pdf→engine→mcp→ui-egui) → 389 commands drive ribbon/CLI/JSON/MCP server → Web/native/CLI 多端输出</td>
+<td>主路径为档案语义抽象；具体命令实现细节、协议版本、agent SDK 形态均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Word 严肃工程化替代覆盖广度（87% ribbon + 62% real parity） vs 真实完成度 vs Apache-2.0 商用与 Microsoft 商业关系 vs 12 库维护可持续性</td>
+<td>档案明示覆盖广度、完成度（87%/62%）、商业模式（Apache-2.0）；与 Microsoft 商业关系、各库质量评测、StoryTold 治理可持续性未给出</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>安装 wordcraft 加载 .docx，执行 1 个非破坏性命令（修改字体/段落间距），通过 JSON control channel/MCP server 验证同一引擎可驱动 UI 与 agent</td>
+<td>PoC 范围、退出路径由档案「单渠道、最小命令、可审计」建议推导；具体测试 .docx、benchmark、SLO 指标待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>wordcraft 的核心启发是 <strong>「Word 严肃工程化替代应该可编程化 + 跨平台 + agent-driven，正如 Linux 之于 Windows」</strong>。Microsoft Word 是装机量最大的桌面办公软件之一，但 SaaS 强制订阅（Microsoft 365）+ 闭源 + 单平台 + 无 MCP server 的现实让「Word 严肃工程化替代」是清晰刚需。wordcraft + 389 commands drive ribbon/CLI/JSON/MCP server 让 Word 成为「agent 可编程化」的严肃工程化对象——同一引擎可同时驱动 UI 与 agent，这是 AI 时代 Word 严肃工程化替代的差异化方向（vs LibreOffice Writer 仅 UI、OnlyOffice 仅 SaaS）。更深层的启发是：<strong>12 库同步严肃工程化（ArtCraft 全家桶）反映「一旦有一个稳定的 crates 抽象（wordcraft 7-layer crates），其他创意套件可复用同一抽象快速严肃工程化」</strong>。photocraft/filmcraft/lightcraft/pdfcraft/vectorcraft/effectcraft/designcraft/cadcraft/gridcraft/soundcraft/deckcraft 11 库可复用 wordcraft 的 crates 抽象（ui-egui/render/document model 跨套件通用）。能否持续，取决于 StoryTold 个人 + ArtCraft 团队治理可持续性 + 与 Microsoft/Adobe 商业关系应对。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Contributor[StoryTold + ArtCraft 团队 + 社区贡献] --> Crates[wordcraft 7-layer crates<br/>geom → doc/fonts-proof → layout/docx-formats → render-pdf → engine → mcp → ui-egui]
+  Crates --> Native[Native macOS/Windows/Linux/BSD<br/>egui on GPU]
+  Crates --> Web[Web WebAssembly]
+  Crates --> CLI[wordcraft-cli 命令行工具]
+  Crates --> MCP[wordcraft-mcp MCP server]
+  Crates --> Control[JSON control channel]
+  Native --> Engines[389 commands drive ribbon 87%]
+  Web --> Engines
+  CLI --> Engines
+  MCP --> Engines
+  Control --> Engines
+  Engines --> DocIO[.docx OOXML read/write<br/>.odt/.rtf/.html/.md/.txt + PDF export]
+  Engines --> Family[同源 Crafting Apps 系列<br/>photocraft / filmcraft / lightcraft / pdfcraft<br/>vectorcraft / effectcraft / designcraft<br/>cadcraft / gridcraft / soundcraft / deckcraft]
+  Engines -.边界.-> Risk[Apache-2.0 与 Microsoft 商业关系<br/>完成度 87% ribbon + 62% real parity 待核验]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（Word 严肃工程化替代 + agent 可编程化）。</strong> wordcraft 不仅是 Word 替代品，更试图成为「Word 严肃工程化替代 + agent 可编程化」的双重工具——类似 LibreOffice 之于 Word，但增加 MCP server + JSON control channel + CLI 让 agent 可编程化。2 天 761⭐ + fork/star 36.8% 已显示市场关注。但「完成度 87% ribbon + 62% real parity」+ Apache-2.0 商用与 Microsoft 商业关系的应对是长期可持续性的关键。目前定位是「最有影响力的 Word 严肃工程化替代 + agent 可编程化工具」，向「ArtCraft 12 库全家桶成员之一」演进是合理路径。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>完成度有限：</strong> 87% ribbon + 62% real parity 反映 alpha 状态，剩余工作包括 testing against real-world .docx files、native printing、first signed builds、Charts、SmartArt、equation editor、Draw tab</li>
+<li><strong>12 库覆盖广度 vs 各库成熟度参差：</strong> wordcraft parity 数字明示，其余 11 库未给 parity 数字</li>
+<li><strong>Apache-2.0 商用与 Microsoft 商业关系：</strong> clean-room 是合规底线，但 Word OOXML 文档格式的兼容性需长期测试</li>
+<li><strong>StoryTold 个人 + ArtCraft 团队治理：</strong> 12 库同步维护但核心维护集中度高，可持续性需观察</li>
+<li><strong>MCP server 与 CLI/JSON control channel 同步维护成本高：</strong> 同一引擎多接口同步 bug 修复成本高</li>
+<li><strong>WebAssembly 性能边界：</strong> vello_cpu rasteriser 在 WebAssembly 上对大文档的渲染性能需观察</li>
+<li><strong>依赖治理未明示：</strong> wargo.toml workspace + 各层 interface 契约 + 版本管理未在档案中给出</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs LibreOffice Writer:</strong> LibreOffice 仅 UI + 部分兼容；wordcraft 增加 MCP server + JSON control channel + CLI 让 agent 可编程化</li>
+<li><strong>vs OnlyOffice:</strong> OnlyOffice 是 SaaS 强制订阅；wordcraft 是 Apache-2.0 商用清晰</li>
+<li><strong>vs Microsoft Word Online:</strong> Word Online 是闭源；wordcraft 是 100% Rust + Apache-2.0</li>
+<li><strong>vs Google Docs:</strong> Google Docs 是 SaaS 严肃翻页；wordcraft 是 desktop native + 跨平台 + WebAssembly</li>
+<li><strong>vs ArtCraft 同源 11 库（photocraft/filmcraft/lightcraft/pdfcraft/vectorcraft/effectcraft/designcraft/cadcraft/gridcraft/soundcraft/deckcraft）:</strong> 同源 Crafting Apps 系列 + Apache-2.0 + 7-layer crates 抽象跨套件可复用</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Word 严肃工程化替代 + agent 可编程化）。</strong> wordcraft 代表了「Word 严肃工程化替代 + agent 可编程化」的诉求，无论其本身成败，这一方向是行业趋势。建议关注：Apache-2.0 商用与 Microsoft 商业关系应对、StoryTold 个人 + ArtCraft 团队治理可持续性、12 库完成度统一披露、MCP server / CLI / JSON control channel 在 AI 时代的应用采纳。对 Word 用户，这个仓库是「Word 严肃工程化替代 + agent 可编程化」的实用来源，值得直接采用。对办公软件生态观察者，它是「Word 严肃工程化替代 + agent 可编程化」赛道的头部样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>87% ribbon + 62% real parity 的真实完成度（vs 数字）</li>
+<li>Apache-2.0 商用与 Microsoft 商业关系（clean-room 是合规底线）</li>
+<li>StoryTold 个人 + ArtCraft 团队治理可持续性（12 库同步维护）</li>
+<li>MCP server / CLI / JSON control channel 在 AI 时代的应用采纳（驱动 UI 与 agent 的同一引擎）</li>
+<li>12 库 parity 数字统一披露（其余 11 库）</li>
+<li>企业采用（团队是否将此作为 Word 严肃工程化替代默认来源）</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-10-09</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
