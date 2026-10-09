@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-09.md">最新日报</a> ·
+  <a href="daily/2026-10-10.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-09
+## 最新研究 · 2026-10-10
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 7 | 685 | 5 | 1100k+ |
+| 6 | 690 | 5 | 1200k+ |
 
-**今日核心判断：** storytold ArtCraft Rust clean-room 从「5 库 12000⭐」推到「8 库 WordCraft 2 天 761⭐ + CADCraft 690⭐ + GridCraft 498⭐ + SoundCraft 493⭐ + DeckCraft 424⭐ + 8 库 Adobe/Microsoft/Avid 创意套件覆盖广度 + 跨 macOS/Windows/Linux/BSD/Web + WebAssembly + MCP server + ArtCraft 团队 + Discord + getartcraft.com 全家桶 + Apache-2.0」严肃工程化全形态 · nullmoth/nvidia-macos-driver 2 天 956⭐ 把「NVIDIA 在 macOS 严肃工程化支持」从「Apple 已停止官方支持」推到「NullMoth Metal 驱动 + NVMTLDriver.bundle + Apple AIR→SPIR-V 翻译器 + Mesa NVK + NVRM/NVAccel/NVRMFB/NVRMAGDC 4 个 kext + GSP 固件 + 1401 Mac 配套安装工具 + RTX 5060 实测 + 跨 macOS 15.7.x/15.8.1 + Intel Mac + OpenCore + LGPL-3.0 + NOASSERTION」严肃工程化形态 · LoreanXavier/pt-pc 2 天 949⭐ 把「P.T. 复刻」从「模拟器 / 闭源移植」推到「C++ 原生 PC 移植 + Vulkan 渲染器 + 读玩家自己的 PS4 dump + 完整关卡/模型/纹理/音效/脚本/过场 + Windows 10/11 + Linux glibc 2.38+ + SteamOS + Vulkan 1.3 + 可选 DLSS/FSR/XeSS + 麦克风收音 + 自动更新检查 + NOASSERTION + 严肃工程化」形态 · pingdotgg/ts-rust 2 天 682⭐ 把「TypeScript 编译器」从「microsoft/TypeScript-Go 重实现 + typescript-go」推到「LLM 把 tsc port 到 Rust + Claude Opus 5.5 用 $24k 写完 + GPT-5.6 Sol/GPT-6 Astra 用 $400k 没写完 + 100% 实测项目兼容 + WASM 高性能 + 早期 release + Drop-in for tsc + npm install -D tsc-rs + MIT」严肃工程化形态 · mhtsec/ARTEX 1 天 678⭐ ⑂1761 fork/star 260% 把「AI 自主渗透测试」从「人工/规则」推到「Go 后端 + Next.js 前端 + PostgreSQL + 仪表盘 + 任务列表 + 会话/工具调用 + 探索链路力导向图 + 发现/资产 + 流量录制 + 人在环路对话 + Agent 管理 + LLM 配置 + 拦截审批 + 后端日志 + ScopeSentry 资产同步 + ANTHROPIC_API_KEY/OPENAI_API_KEY + Docker 一键安装 + 百度 agent+ 攻防挑战赛冠军项目 + AGPL-3.0 + 1761 fork 反映社区强烈参与」严肃工程化形态 · noahdunnagan/fsearch 1 天 270⭐ 把「macOS 文件搜索」从「Spotlight / fff / mdfind」推到「fsearch 守护进程 + 1.3ms p50 找文件名 + 9ms p50 全文搜索 + 7.7M 文件覆盖 + ~0.1s 新建/改名/删除可见 + 50-135MB 守护进程内存 + 与 fff 头对头（1.1ms vs 13.8ms 找名 + 5.6ms vs 53ms 内容 + 50ms vs 2.5s 启动 + 50MB vs 358MB 内存）+ 模糊匹配 + typo 容忍 + JSON-over-Unix-socket API + 可作 Rust crate + MIT + 全盘 Full Disk Access」严肃工程化形态 · 延续跟踪 openai/math 2→3 天 12002⭐ + Niko1221/Strata 15616→持续 + NandhaKishorM/laya 31195→持续 + jaredpalmer/kev 8597→持续 + storytold/photocraft 16286→持续 + CopilotKit/OpenDots 4167→持续 + KKKKhazix/AIHOT 6176→持续——5 条新主线严肃工程化：（A ArtCraft 8 库 Adobe/Microsoft/Avid 创意套件 Rust 100% 重实现全家桶）+（B nullmoth/nvidia-macos-driver NVIDIA Metal + Mesa NVK + 4 kext + GSP 固件 + 1401 Mac 配套）+（C LoreanXavier/pt-pc P.T. 原生 PC 移植 + Vulkan + 玩家自己 dump + SteamOS 兼容）+（D pingdotgg/ts-rust LLM 把 tsc port 到 Rust + Claude Opus 5.5 vs GPT-6 Astra $24k vs $400k + 100% 兼容 + WASM）+（E mhtsec/ARTEX AI 自主渗透测试 + Go/Next.js + PostgreSQL + ScopeSentry + 百度 agent+ 攻防挑战赛冠军项目）。
+**今日核心判断：** anthropics/oss-scanner 2 天 593⭐ 把「开源安全扫描」从「OSSF Scorecard / npm audit 等单点工具」推到「Anthropic 官方服务 + red.anthropic.com/oss-scanner + 隔离 VM 构建 + 无网络访问分析 + 自动重现脚本 + 自动提议 patch + emails primary_contact + projects/<name>/project.yaml + Dockerfile + threat_model.md + auto_ccs + pgp 加密 + 自动 cc 维护者 + Apache-2.0」官方严肃工程化形态 · mrsarac/ff-tracking 1 天 480⭐ 把「程序化短视频生成」从「ffmpeg + stock 视频」推到「Rust 2024 + fframes 1.2 + Skia Metal GPU + 一个 SkSL shader + 虚拟摄像机跟随每个字符 + tracker 锁定 + 6 秒 12 镜头 + 4 种调色板（paper/thermal/phosphor/amber/navy/neon）+ 14 框塌缩成 Done pill + 全部像素和声音从代码合成 + release 页 1080p video + MIT」严肃工程化形态 · juspay/streamgres 3 天 365⭐ 把「PostgreSQL 实时同步」从「LISTEN/NOTIFY + 轮询 + materialized view」推到「订阅原生（subscription-native）sync engine + WebSocket subscribe(SQL) → 增量 delta + 写入成本 O(匹配条件数) 不 O(订阅数) + 相同查询共享视图 + ORDER BY/LIMIT 窗口 + LEFT/RIGHT/INNER/EXISTS planner + 主备 logical replication + 零侵入（写不到你的数据库）+ Apache-2.0」严肃工程化形态 · t4t5/omdrop-owl 2 天 359⭐ 把「非 Apple Wi-Fi AirDrop」从「不可能」推到「AWDL 在 AP 频道 6/44/149 + OWL monitor interface + mt7925e Framework 13 实测 + omdrop-plugin radio-backend 标准 + omdrop-awdl 工具链复用 + Apache-2.0/MIT OR」严肃工程化形态 · franzenzenhofer/big-arrow-on-the-screen 2 天 418⭐ 把「AI agent 提示用户点哪里」从「终端打 'click Allow'」推到「bigarrow Swift CLI + 一个透明覆盖窗口 + 跨所有 Space/Display + 绘制无需权限 + 鼠标点击穿透 + keyboard focus 保留 + 自动消失 + Claude Code/Codex skill + Real app 场景剧本（macOS 27 + System Settings + Keynote + 9 个 Hacker News 同色箭头 × 2007-2026 时期图解）+ 12 年 HN 共识 20000 devs 40000 opinions 终极大箭头 + MIT」严肃工程化形态 · 延续跟踪 ARTEX 8→2 天 2930⭐ ⑂5289 fork（百度 agent+ 攻防挑战赛冠军项目）+ noahdunnagan/fsearch 2→3 天 1312⭐ ⑂98 fork（macOS Whole-disk 文件搜索）+ ThariqS/ai-newtab 2 天 511⭐（Claude 生成的 daily new tab page）+ storytold ArtCraft 8 库 wordcraft 3→4 天 2203⭐ + cadcraft 1695⭐ + gridcraft 1485⭐ + soundcraft 1149⭐ + deckcraft 1151⭐ + designcraft 1578⭐ + effectcraft 2647⭐ + filmcraft 3143⭐ + lightcraft 2859⭐ + pdfcraft 2208⭐ + vectorcraft 2108⭐ + photocraft 16286⭐ + nullmoth/nvidia-macos-driver 3→4 天 1826⭐ + LoreanXavier/pt-pc 3→4 天 1062⭐ + pingdotgg/ts-rust 3→4 天 1050⭐ ⑂22 fork ……【5 个新项目 + 13 个延续跟踪项目 五条新主线严肃工程化跨领域】
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [storytold/wordcraft](projects/wordcraft.md) | 761 stars | 工具型 |
-| [storytold/cadcraft](projects/cadcraft.md) | 690 stars | 工具型 |
-| [storytold/gridcraft](projects/gridcraft.md) | 498 stars | 工具型 |
-| [storytold/soundcraft](projects/soundcraft.md) | 493 stars | 工具型 |
-| [nullmoth/nvidia-macos-driver](projects/nvidia-macos-driver.md) | 956 stars | 基础设施候选 |
-| [LoreanXavier/pt-pc](projects/pt-pc.md) | 949 stars | 工具型 |
-| [pingdotgg/ts-rust](projects/ts-rust.md) | 682 stars | 工具型 |
-| [mhtsec/ARTEX](projects/artex.md) | 678 stars | 工具型 |
+| [mrsarac/ff-tracking](projects/ff-tracking.md) | 480 stars | 工具型 |
+| [juspay/streamgres](projects/streamgres.md) | 365 stars | 基础设施候选 |
+| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 359 stars | 工具型 |
+| [franzenzenhofer/big-arrow-on-the-screen](projects/big-arrow-on-the-screen.md) | 418 stars | 工具型 |
+| [anthropics/oss-scanner](projects/oss-scanner.md) | 593 stars | 基础设施候选 |
+| [mhtsec/ARTEX](projects/artex.md) | 2930 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **storytold ArtCraft 8 库 Rust 100% 重实现 Adobe/Microsoft/Avid 创意套件全家桶严肃工程化（wordcraft 2 天 761⭐ + cadcraft 690⭐ + gridcraft 498⭐ + soundcraft 493⭐ + deckcraft 424⭐ + designcraft 1578⭐ + effectcraft 2647⭐ + 已有 filmcraft 3143⭐ lightcraft 2859⭐ pdfcraft 2208⭐ vectorcraft 2108⭐ photocraft 16286⭐）——把「Adobe/Microsoft/Avid 创意套件」从「5 库 12000⭐」推到「8 库（含 Word/CAD/Excel/Pro Tools/PowerPoint）严肃工程化 + 跨 macOS/Windows/Linux/BSD/Web + WebAssembly + MCP server + ArtCraft 团队 + Discord + getartcraft.com 全家桶 + Apache-2.0」严肃工程化全家桶形态（趋势分 95）** · 相关项目：storytold/wordcraft, storytold/cadcraft, storytold/gridcraft, storytold/soundcraft, storytold/deckcraft · 强度：95
-2. **nullmoth/nvidia-macos-driver 2 天 956⭐ 把「NVIDIA 在 macOS 严肃工程化支持」从「Apple 已停止官方支持」推到「NullMoth Metal 驱动 + NVMTLDriver.bundle + Apple AIR→SPIR-V 翻译器 + Mesa NVK + NVRM/NVAccel/NVRMFB/NVRMAGDC 4 个 kext + GSP 固件 + 1401 Mac 配套安装工具 + RTX 5060 实测 + 跨 macOS 15.7.x/15.8.1 + Intel Mac + OpenCore + LGPL-3.0 + NOASSERTION」严肃工程化形态（趋势分 88）** · 相关项目：nullmoth/nvidia-macos-driver · 强度：88
-3. **LoreanXavier/pt-pc 2 天 949⭐ 把「P.T. 复刻」从「模拟器 / 闭源移植」推到「C++ 原生 PC 移植 + Vulkan 渲染器 + 读玩家自己的 PS4 dump + 完整关卡/模型/纹理/音效/脚本/过场 + Windows 10/11 + Linux glibc 2.38+ + SteamOS + Vulkan 1.3 + 可选 DLSS/FSR/XeSS + 麦克风收音 + 自动更新检查 + NOASSERTION + 严肃工程化」形态（趋势分 85）** · 相关项目：LoreanXavier/pt-pc · 强度：85
-4. **pingdotgg/ts-rust 2 天 682⭐ 把「TypeScript 编译器」从「microsoft/TypeScript-Go 重实现 + typescript-go」推到「LLM 把 tsc port 到 Rust + Claude Opus 5.5 用 $24k 写完 + GPT-5.6 Sol/GPT-6 Astra 用 $400k 没写完 + 100% 实测项目兼容 + WASM 高性能 + 早期 release + Drop-in for tsc + npm install -D tsc-rs + MIT」严肃工程化形态（趋势分 82）** · 相关项目：pingdotgg/ts-rust · 强度：82
+1. **anthropics/oss-scanner 2 天 593⭐ 把「开源安全扫描」从「OSSF Scorecard / Snyk / Dependabot / GitHub Code Scanning」推到「Anthropic 官方服务 + red.anthropic.com/oss-scanner + OSS Scanner terms + 隔离 VM 构建 + 无网络访问分析 + 模型生成 reproducer + 模型生成 proposed patch + 邮件到 primary_contact + auto_ccs + OpenPGP 加密 + project.yaml（repo/primary_contact/auto_ccs/homepage/disabled/dockerfile/threat_model/pgp）+ projects/<name>/ 目录 + Dockerfile（自带或本仓库）+ threat_model.md（自带或本仓库）+ enroll 通过 PR 加一个目录 + critical opensource 仓库 + 238 fork 反映社区强烈兴趣」（趋势分 92）** · 相关项目：anthropics/oss-scanner · 强度：92
+2. **mrsarac/ff-tracking 1 天 480⭐ 把「程序化短视频生成」从「ffmpeg + stock 视频 + stock 配乐」推到「Rust 2024 + fframes 1.2 + Skia Metal GPU + 一个 SkSL shader + 6 秒 12 镜头 0.5s 切割 + 4 类调色板（paper/thermal/phosphor/amber/navy/neon）+ 虚拟摄像机跟随字符 + tracker box lock + chain of thought 节点+边+点 + 14 框塌缩成 Done pill + 红色框 2 帧 + 扫描线撕裂 + beep panned to box position + 全部像素和声音从代码合成 + release 1.0.0 tracking.mp4 1080p with sound + mrsarac 个人 + MIT」（趋势分 88）** · 相关项目：mrsarac/ff-tracking · 强度：88
+3. **juspay/streamgres 3 天 365⭐ 把「PostgreSQL 实时同步」从「LISTEN/NOTIFY + 轮询 + materialized view + Hasura + Supabase realtime」推到「subscription-native sync engine + WebSocket subscribe(SQL) + 增量 delta（rows added/removed）+ 写入成本 O(匹配条件数) 不 O(订阅数) + 相同查询共享视图 + 从 100→10000 订阅 写仍只触 3-4 个条件 + ORDER BY/LIMIT 窗口 + buffer 维护离开页的行 + LEFT/RIGHT/INNER/EXISTS planner + 写不到你的数据库 + logical replication from primary/replica/standby + live schema changes + Apache-2.0」（趋势分 82）** · 相关项目：juspay/streamgres · 强度：82
+4. **t4t5/omdrop-owl 2 天 359⭐ 把「非 Apple Wi-Fi AirDrop」从「不可能」推到「AWDL 在 AP channel 6/44/149 + OWL run on monitor interface with -S intersect + mt7925e Framework 13 实测 AirDrop 双向工作 + 与 omdrop-plugin 的 radio-backend.md 标准对接 + omdrop-awdl 的工具链复用（send-to-peer/airdrop-send.py/ble-airdrop-adv.py/awdl-airdrop-adv.py/awdl-mdns-respond.py）+ 17 fork/star 4.7%」（趋势分 76）** · 相关项目：t4t5/omdrop-owl · 强度：76
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 | [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
-| [2026-10-01](daily/2026-10-01.md) | 5 | 4 |
 
 ## 为什么做这个项目
 
