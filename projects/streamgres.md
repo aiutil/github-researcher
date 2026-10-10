@@ -2,10 +2,11 @@
 title: "juspay/streamgres"
 slug: streamgres
 date_added: 2026-10-10
-last_seen_date: 2026-10-10
+last_seen_date: 2026-10-11
 category: "基础设施候选"
 emoji: "🌊"
-stars: "365 stars"
+stars: "96 stars"
+stars_delta: "4 天 96⭐ ⑂3 fork（2026-10-11 GitHub Search API 实时；增速大幅低于 10-10 估值，需观察）"
 score: 82
 tags: ["subscription-native","sync-engine","postgresql","websocket","delta-stream","incremental-view","logical-replication","wal","order-by-limit-window","planner","rust","apache-2"]
 url: "https://github.com/juspay/streamgres"

@@ -2,10 +2,11 @@
 title: "franzenzenhofer/big-arrow-on-the-screen"
 slug: big-arrow-on-the-screen
 date_added: 2026-10-10
-last_seen_date: 2026-10-10
+last_seen_date: 2026-10-11
 category: "工具型"
 emoji: "🫵"
-stars: "418 stars"
+stars: "576 stars"
+stars_delta: "4 天 576⭐ ⑂9 fork/star 1.6%（持续小幅增长）"
 score: 74
 tags: ["bigarrow","macos-cli","swift","transparent-overlay","click-through","ai-agent","claude-code","codex","real-mac-macos-27","hacker-news-2007-2026","mit"]
 url: "https://github.com/franzenzenhofer/big-arrow-on-the-screen"

@@ -2,10 +2,11 @@
 title: "t4t5/omdrop-owl"
 slug: omdrop-owl
 date_added: 2026-10-10
-last_seen_date: 2026-10-10
+last_seen_date: 2026-10-11
 category: "工具型"
 emoji: "📡"
-stars: "359 stars"
+stars: "1323 stars"
+stars_delta: "4 天 1323⭐ ⑂87 fork/star 6.6%（持续增长强劲）"
 score: 76
 tags: ["airdrop","awdl","owl","userspace","mt7925","framework-13","non-apple-wifi","broadcom-replacement","radio-backend"]
 url: "https://github.com/t4t5/omdrop-owl"

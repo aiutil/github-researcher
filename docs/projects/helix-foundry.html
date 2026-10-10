@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelixDB/helix-foundry | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/HelixDB/helix-foundry" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="helixdbhelix-foundry">HelixDB/helix-foundry</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Helix Foundry 是「跑在你自己电脑上的公司数据工作台」——Docker 一键起栈，把 HelixDB（graph）+ DuckDB（列存）+ 多源连接器（Stripe/WorkOS/PostHog/Files/APIs）+ 本地 LLM by default + 自动 ontology Explorer 全装进用户本地。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>企业数据查询当前是「SaaS 仪表盘割裂」+「大模型上下文塞满」两个痛点：
+- <strong>SaaS 仪表盘割裂：</strong> Stripe Dashboard、WorkOS Dashboard、PostHog Dashboard、Notion/Linear/Jira、各类 BI——每个仪表盘看一个面，没有「一个屏幕看完整公司」
+- <strong>大模型上下文塞满：</strong> 把所有数据源塞 LLM context window → 慢、贵、容易 hallucinate、需要凭据外泄</p>
+<p>Helix Foundry 的解决思路是「<strong>本地优先 + ontology 自动 + AI 默认本地 + 凭据用户掌控</strong>」：
+- <strong>本地优先：</strong> 数据不外发、跑在自己电脑、Docker Compose 一键起栈
+- <strong>ontology 自动：</strong> 自动从多源数据建议一个 connected ontology（schema 设计不再手动）
+- <strong>AI 默认本地：</strong> Ollama 兼容（已装即用），可换 Claude/OpenAI
+- <strong>凭据用户掌控：</strong> 浏览器输入 Claude/OpenAI/数据库凭据，agent 永不接触</p>
+<h2 id="2026-10-11">为什么值得关注（2026-10-11）</h2>
+<ul>
+<li><strong>Stars:</strong> 949（截至 2026-10-11），4 天累计</li>
+<li><strong>Forks:</strong> 135，fork/star 14.2%（社区高活跃——大概率是企业数据栈关注群体）</li>
+<li><strong>License:</strong> Apache-2.0，商用清晰</li>
+<li><strong>Language:</strong> TypeScript（前端 + 后端编排）</li>
+<li><strong>Size:</strong> 1113 KB（仓库精简——HelixDB + DuckDB 是独立 Docker 镜像）</li>
+<li><strong>创新点:</strong> 把 HelixDB graph + DuckDB 列存双栈、多源连接器、自动 ontology、本地 LLM、零信任凭据设计整合到 Docker 一键起栈</li>
+<li><strong>定位：</strong> 「本地优先 + 数据主权 + AI 默认本地」方向的企业数据工作台开源代表</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>HelixDB/helix-foundry 的热度是「<strong>企业数据查询的本地化 + AI 默认本地 + 多源数据统一 ontology + 零信任凭据设计</strong>」的组合。Snowflake/BigQuery/Databricks/Palantir 都是「别人的云、别人的数据库、别人的 schema」——数据所有权、控制权、查询成本都不在用户手上。Helix Foundry 用 Docker Compose 把 HelixDB + DuckDB + 多个连接器 + 本地 LLM + Explorer 全装进用户的电脑。这与 Snowflake / BigQuery / Databricks 形成镜像：<strong>"本地优先"是企业数据栈的「Notion / Linear / Figma 自部署版本」</strong>。135 个 fork 反映社区高活跃——很可能是数据工程师 / 数据科学家 / 企业 CTO 群体在认真研究。热度<strong>真实且具定位意义</strong>——但需警惕：本地优先 = 不跨设备同步（除非用户自建）+ Docker 依赖 + 第一跑下载几个 GB + HelixDB 是 graph DB（不是 SQL）+ DuckDB 是列存（不是 graph）+ 多源连接器覆盖范围有限。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>本地优先 + Docker 一键起栈：</strong> Docker Compose 一键起栈（第一跑下载几个 GB），无 SaaS 依赖</li>
+<li><strong>HelixDB graph + DuckDB 列存双栈：</strong> graph（实体关系）+ 列存（OLAP 查询）双数据库覆盖</li>
+<li><strong>多源连接器：</strong> Stripe、WorkOS、PostHog、Files、APIs——覆盖 SaaS 计费 + SSO + 分析 + 文件 + 自定义 API</li>
+<li><strong>自动 ontology：</strong> 从多源数据自动建议一个 connected ontology（schema 设计自动化）</li>
+<li><strong>本地 LLM by default：</strong> Ollama 兼容（已装即用），可换 Claude/OpenAI</li>
+<li><strong>零信任凭据设计：</strong> 浏览器输入凭据，agent 永不接触（防 prompt injection 偷凭据）</li>
+<li><strong>AGENTS.md runbook：</strong> 提供给 Claude Code / Codex / Cursor 通吃的部署指南</li>
+<li><strong>无账号无托管：</strong> 跑在自己电脑、不需要 HelixDB 团队运营服务</li>
+<li><strong>scripts/setup.sh 自动生成 .env 加密密钥：</strong> 部署过程简化</li>
+<li><strong>Guided setup：</strong> AI → Data → Ontology 三步引导，Continue with sample data 选项</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地优先的 Docker Compose 应用栈，前端 Explorer + 后端编排 + HelixDB（graph）+ DuckDB（列存）+ 多源连接器 + 本地 LLM（Ollama）/ Claude / OpenAI</td>
+<td>仅基于 README 列出的 HelixDB/DuckDB/Docker Compose/Stripe/WorkOS/PostHog/Files/APIs 集成；具体连接器实现、ontology 算法、Memory 缓存策略未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 Docker Compose up → 访问 localhost:3001 → Guided setup（AI → Data → Ontology）→ 选 Local / Claude / OpenAI → 连数据或选 sample → 确认 ontology → Home 显示关键指标 → 顶部 box 提问</td>
+<td>主路径来自 README 描述；具体 schema 推断、跨源实体解析、ontology 演化机制均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>本地优先（数据主权）vs SaaS 托管（跨设备协作）vs 双数据库栈（HelixDB graph + DuckDB 列存）vs 单一数据库 vs 自动 ontology（用户接管 schema 设计）vs 手动 schema + 零信任凭据设计（agent 永不接触）</td>
+<td>档案明示本地优先/双栈/自动 ontology/零信任四点权衡；具体数据冲突解决、跨设备同步、Schema 版本控制未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Docker Compose up → Guided setup → 选 Local Ollama → Continue with sample data → 确认 ontology → Home 显示 accounts/users/invoices/subscriptions/campaigns/SSO connections/support tickets 一个 connected graph → 在顶部 box 问一句</td>
+<td>PoC 范围由 README「Explorer showing accounts, users, invoices, subscriptions, campaigns, SSO connections and support tickets」反推；具体示例数据 schema、连接真实 Stripe 账户的体验待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>HelixDB/helix-foundry 的核心启发是 <strong>「公司数据查询的下一阶段不在于'更多 SaaS 仪表盘'或'更强 LLM context'，而在于'数据在我自己电脑上、ontology 自动生成、AI 默认本地'」</strong>。当前大多数企业数据栈是「SaaS 仪表盘 + 大模型 context」组合——数据散在多个 SaaS 上、查询靠 LLM 把所有数据塞 context window。Helix Foundry 通过 Docker Compose 一键起栈，把 HelixDB（graph）+ DuckDB（列存）+ 多个连接器 + 本地 LLM + Explorer 全装进用户的电脑。这与 Snowflake / BigQuery / Databricks / Palantir 形成镜像：<strong>"本地优先"是企业数据栈的 Slack-Notion-Linear vs 个人工具栈的离线版本</strong>。更深层的启发是：<strong>「ontology 自动生成 + 零信任凭据设计 + AGENTS.md runbook」三件套是本地优先 AI 应用的关键工程模式</strong>——ontology 让 schema 设计不再是数据工程师专属；零信任凭据设计让 agent 接触不到 secrets；AGENTS.md runbook 让 coding agent 一键部署。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户 / 数据工程师] --> Docker[docker compose up<br/>scripts/setup.sh]
+  Docker --> Browser[浏览器<br/>localhost:3001]
+  Browser --> Setup[Guided setup<br/>AI → Data → Ontology]
+  Setup --> AI1[AI: Local Ollama<br/>已装即用]
+  Setup --> AI2[AI: Claude<br/>凭据浏览器输入]
+  Setup --> AI3[AI: OpenAI<br/>凭据浏览器输入]
+  Setup --> Data[Data: Connect / Sample]
+  Data --> Stripe[Stripe connector]
+  Data --> WorkOS[WorkOS connector]
+  Data --> PostHog[PostHog connector]
+  Data --> Files[Files connector]
+  Data --> APIs[APIs connector]
+  Setup --> Ont[Ontology<br/>自动建议 connected schema]
+  Ont --> Explorer[Helix Foundry Explorer<br/>accounts/users/invoices/subscriptions<br/>campaigns/SSO/supports 一个 graph]
+  Explorer --> HelixDB[(HelixDB<br/>graph 存储)]
+  Explorer --> DuckDB[(DuckDB<br/>列存 OLAP)]
+  Browser -.零信任.-> Browser2[凭据浏览器输入<br/>agent 永不接触]
+  Browser --> AgentBox[顶部 box<br/>问数据]
+  AgentBox --> AI1
+  AgentBox --> AI2
+  AgentBox --> AI3
+  Agent -.AGENTS.md runbook.-> Agent[Claude Code / Codex / Cursor<br/>一键部署]
+  HelixDB -.Apache-2.0.-> User
+  DuckDB -.Apache-2.0.-> User
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选型项目（本地优先企业数据工作台 + ontology 自动 + AI 默认本地）。</strong> HelixDB/helix-foundry 不只是工具，更是「<strong>本地优先 + 数据主权 + ontology 自动 + AI 默认本地</strong>」方向的开源代表。它把 HelixDB（graph）+ DuckDB（列存）+ 多源连接器 + 本地 LLM + Explorer 全装进 Docker 一键起栈——这与 Supabase（Postgres + Auth + Storage + Realtime）等「全栈 BaaS 模板化」思路同源，但聚焦「企业数据查询」这一垂直场景。其潜在演进路径：(1) 成为「本地优先企业数据工作台」的事实标准（类似 Supabase 之于 Postgres）；(2) 衍生出团队版（多用户但仍自部署）；(3) 集成更多连接器（Salesforce / HubSpot / NetSuite 等）；(4) 与 HelixDB 团队的 graph 数据库策略绑定。当前定位：「本地优先 + AI 默认本地 + ontology 自动」三件套的开源先驱。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>本地优先 = 不跨设备同步：</strong> 除非用户自建（VPN / 自托管反代），否则团队成员看不到同一数据</li>
+<li><strong>Docker 依赖：</strong> 第一跑下载几个 GB；学习曲线</li>
+<li><strong>HelixDB 是 graph DB（不是 SQL）：</strong> 用户需懂 Cypher / graph query；非数据工程师门槛</li>
+<li><strong>DuckDB 是列存（不是 graph）：</strong> 两个数据库的边界 / 同步机制未明</li>
+<li><strong>多源连接器覆盖范围有限：</strong> README 只列 5 个（Stripe/WorkOS/PostHog/Files/APIs）；缺 Salesforce/HubSpot/Notion/Linear 等</li>
+<li><strong>自动 ontology 算法未明：</strong> 是启发式还是 LLM-driven？ontology 冲突解决？ontology 演化？</li>
+<li><strong>凭据浏览器输入的 UX：</strong> 用户每次切换 provider 都需手动输入；agent 接入需走 OAuth 流程</li>
+<li><strong>HelixDB 团队双重身份：</strong> Helix Foundry 是 HelixDB 团队的「展示厅」，对其他 DB（Neo4j / Postgres / MongoDB）公平性存疑</li>
+<li><strong>Apache-2.0 商用清晰但 HelixDB 自身许可：</strong> HelixDB 引擎本身的许可需独立审查</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Snowflake / BigQuery / Databricks：</strong> 那些是「别人云 + 闭源 SaaS」；Helix Foundry 是「本地 + 开源」</li>
+<li><strong>vs Palantir Foundry：</strong> Palantir 是企业级闭源 SaaS；Helix Foundry 是个人/小团队开源自部署</li>
+<li><strong>vs Apache Superset / Metabase：</strong> 那些是「BI 工具」；Helix Foundry 是「ontology 工作台 + 自动 schema + 本地 LLM」</li>
+<li><strong>vs LangChain / LlamaIndex 私有数据 RAG：</strong> 那些是「LLM 把私有数据塞 context」；Helix Foundry 是「ontology + 双数据库 + 本地 LLM 编排」</li>
+<li><strong>vs Ollama + AnythingLLM：</strong> Ollama + AnythingLLM 是「本地 LLM + RAG」；Helix Foundry 是「ontology + 双数据库 + 多源连接器 + 本地 LLM + Explorer 一栈」</li>
+<li><strong>vs OpenBB Terminal：</strong> OpenBB 是「金融数据本地终端」；Helix Foundry 是「公司数据本地工作台」（垂直更广）</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（本地优先 + ontology 自动 + AI 默认本地三件套的开源代表）。</strong> HelixDB/helix-foundry 代表了「本地优先企业数据工作台」方向——无论其本身成败，这一方向与 Snowflake/BigQuery/Databricks 闭源 SaaS 形成镜像，是 2025-2026 数据栈「本地化」趋势的具体体现。建议关注：连接器扩展（Salesforce/HubSpot/Notion/Linear）、ontology 算法细节、与 LangChain/LlamaIndex 的整合、HelixDB 数据库引擎本身的演进。对数据工程师 / 数据科学家 / 企业 CTO，这是「数据主权 + AI 默认本地 + ontology 自动」三件套的入门工具；对 SaaS 观察者，这是「本地优先」挑战「云端 SaaS」的标杆样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>集成更多连接器（Salesforce / HubSpot / Notion / Linear / Jira / NetSuite）</li>
+<li>ontology 算法的具体实现（LLM-driven？启发式？人工可接管？）</li>
+<li>与 LangChain / LlamaIndex / Vanna 等 RAG 工具的整合</li>
+<li>HelixDB 数据库引擎本身的演进（graph query 性能、Cypher 兼容、事务支持）</li>
+<li>跨设备同步 / 团队版 / 多用户协作</li>
+<li>与其他 DuckDB / Postgres / SQLite 的兼容性（不止 HelixDB）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API + Repository API (2026-10-11) + README 公开摘录 | Stars: 949 | Forks: 135 | License: Apache-2.0 | 语言: TypeScript | 创建: 2026-10-07</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

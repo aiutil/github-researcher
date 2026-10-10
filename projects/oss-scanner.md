@@ -2,10 +2,11 @@
 title: "anthropics/oss-scanner"
 slug: oss-scanner
 date_added: 2026-10-10
-last_seen_date: 2026-10-10
+last_seen_date: 2026-10-11
 category: "基础设施候选"
 emoji: "🛡️"
-stars: "593 stars"
+stars: "642 stars"
+stars_delta: "4 天 642⭐ ⑂329 fork/star 51.2%"
 score: 92
 tags: ["anthropics","anthropic","red-anthropic-com","open-source-security","vulnerability-scanning","isolated-vm-build","model-generated-report","reproducer","proposed-patch","primary-contact","auto-ccs","pgp-encryption","project-yaml","dockerfile","threat-model","critical-oss","apache-2"]
 url: "https://github.com/anthropics/oss-scanner"

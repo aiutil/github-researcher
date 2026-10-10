@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-10.md">最新日报</a> ·
+  <a href="daily/2026-10-11.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,43 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-10
+## 最新研究 · 2026-10-11
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 6 | 690 | 5 | 1200k+ |
+| 5 | 695 | 5 | 1300k+ |
 
-**今日核心判断：** anthropics/oss-scanner 2 天 593⭐ 把「开源安全扫描」从「OSSF Scorecard / npm audit 等单点工具」推到「Anthropic 官方服务 + red.anthropic.com/oss-scanner + 隔离 VM 构建 + 无网络访问分析 + 自动重现脚本 + 自动提议 patch + emails primary_contact + projects/<name>/project.yaml + Dockerfile + threat_model.md + auto_ccs + pgp 加密 + 自动 cc 维护者 + Apache-2.0」官方严肃工程化形态 · mrsarac/ff-tracking 1 天 480⭐ 把「程序化短视频生成」从「ffmpeg + stock 视频」推到「Rust 2024 + fframes 1.2 + Skia Metal GPU + 一个 SkSL shader + 虚拟摄像机跟随每个字符 + tracker 锁定 + 6 秒 12 镜头 + 4 种调色板（paper/thermal/phosphor/amber/navy/neon）+ 14 框塌缩成 Done pill + 全部像素和声音从代码合成 + release 页 1080p video + MIT」严肃工程化形态 · juspay/streamgres 3 天 365⭐ 把「PostgreSQL 实时同步」从「LISTEN/NOTIFY + 轮询 + materialized view」推到「订阅原生（subscription-native）sync engine + WebSocket subscribe(SQL) → 增量 delta + 写入成本 O(匹配条件数) 不 O(订阅数) + 相同查询共享视图 + ORDER BY/LIMIT 窗口 + LEFT/RIGHT/INNER/EXISTS planner + 主备 logical replication + 零侵入（写不到你的数据库）+ Apache-2.0」严肃工程化形态 · t4t5/omdrop-owl 2 天 359⭐ 把「非 Apple Wi-Fi AirDrop」从「不可能」推到「AWDL 在 AP 频道 6/44/149 + OWL monitor interface + mt7925e Framework 13 实测 + omdrop-plugin radio-backend 标准 + omdrop-awdl 工具链复用 + Apache-2.0/MIT OR」严肃工程化形态 · franzenzenhofer/big-arrow-on-the-screen 2 天 418⭐ 把「AI agent 提示用户点哪里」从「终端打 'click Allow'」推到「bigarrow Swift CLI + 一个透明覆盖窗口 + 跨所有 Space/Display + 绘制无需权限 + 鼠标点击穿透 + keyboard focus 保留 + 自动消失 + Claude Code/Codex skill + Real app 场景剧本（macOS 27 + System Settings + Keynote + 9 个 Hacker News 同色箭头 × 2007-2026 时期图解）+ 12 年 HN 共识 20000 devs 40000 opinions 终极大箭头 + MIT」严肃工程化形态 · 延续跟踪 ARTEX 8→2 天 2930⭐ ⑂5289 fork（百度 agent+ 攻防挑战赛冠军项目）+ noahdunnagan/fsearch 2→3 天 1312⭐ ⑂98 fork（macOS Whole-disk 文件搜索）+ ThariqS/ai-newtab 2 天 511⭐（Claude 生成的 daily new tab page）+ storytold ArtCraft 8 库 wordcraft 3→4 天 2203⭐ + cadcraft 1695⭐ + gridcraft 1485⭐ + soundcraft 1149⭐ + deckcraft 1151⭐ + designcraft 1578⭐ + effectcraft 2647⭐ + filmcraft 3143⭐ + lightcraft 2859⭐ + pdfcraft 2208⭐ + vectorcraft 2108⭐ + photocraft 16286⭐ + nullmoth/nvidia-macos-driver 3→4 天 1826⭐ + LoreanXavier/pt-pc 3→4 天 1062⭐ + pingdotgg/ts-rust 3→4 天 1050⭐ ⑂22 fork ……【5 个新项目 + 13 个延续跟踪项目 五条新主线严肃工程化跨领域】
+**今日核心判断：** rociiu/talorys 2 天 312⭐ 把「个人 AI agent」从「云端 SaaS / 第三方 LLM API」推到「npx create-talorys@latest 一键部署 + 跑在用户自己的 Cloudflare 账户 + Workers + D1 + Durable Objects + R2 + AI Gateway + 12 个 Tier 1 集成（聊天流式 + 持久化 Memory + 任务/笔记/项目 CRUD + 一次性/循环提醒 + 每日 task digest + 可选 AI routines + Durable Object alarms + 单用户设计 + owner password + AI quota 用尽仍可工作 + 视图/编辑/删除 Memory + CLI/UI/chat 三入口）+ MIT」严肃工程化形态 · c22dev/muguet 2 天 269⭐ 把「GTA V 在 Apple 平台」从「不存在的官方版本」推到「Rust + wasmtime 把游戏 wasm 当 native app 直接跑 + wgpu on Metal 接管图形 + macOS 首次启动编译为 arm64 native 并缓存 + iOS 编译时打包进 binary（避免 JIT 麻烦）+ udp 端口 47520 多玩家 + 从 omdrop-plugin + omdrop-awdl 借鉴 radio-backend 模式 × 跑玩家自己的 .zip（data/ + b/<build>/）+ xcodegen + brew install + AltStore + make-app.sh / make-ios.sh / muguet-server」严肃工程化形态 · Gentleman-Programming/gentle-dot 3 天 121⭐ 把「桌面 AI 助手」从「浏览器 tab 之间丢上下文」推到「macOS/Linux/Web 全平台 + 桌面常驻 + 一键唤起 + 一段持续对话 + 真持久记忆（不是逐 chat 丢）+ 可读用户文件 + 可驱动 Mac 应用（屏幕可见时按授权）+ shell harness + 优雅安全检查 + MIT」早期严肃工程化形态 · HelixDB/helix-foundry 4 天 949⭐ 把「公司数据查询」从「SaaS 仪表盘割裂 + 大模型上下文塞满」推到「本地优先 + Docker 一键起栈 + HelixDB graph + DuckDB 列存 + Stripe/WorkOS/PostHog/Files/APIs 多源连接器 + 自动建议 ontology + 本地 LLM by default（可换 Claude/OpenAI）+ 无账号无托管 + AGENTS.md runbook 给 agent 读 + Claude Code/Codex/Cursor 通吃 + localhost:3001 + Apache-2.0」严肃工程化形态 · thesysdev/open-intelligent-ui 4 天 293⭐ 把「ChatGPT Intelligent UI」从「OpenAI 私货」推到「OpenUI 开源标准 + OpenUI Gateway 流式 Lang + 自定义组件（TravelHeading/Prose/Image/Gallery/Stop/Map/Suggestions）+ MapLibre GL 地图 + emoji pin + streaming pin 出现 + 路线绘制 + Wikipedia fallback image + 内置 form 回传 ToAssistant + Node 24 + Ollama 兼容（qwen3.8:27b 默认）+ Apache-2.0 (theysdev/openui)」严肃工程化形态 · 延续跟踪 HelixDB/helix-foundry → 4 天 949⭐（本地优先数据工作台）+ ARTEX 2→3 天 2897⭐ ⑂5309 fork（百度 agent+ 攻防挑战赛冠军）+ storytold ArtCraft wordcraft 3→4 天 3079⭐ + cadcraft 4 天 1801⭐ + gridcraft 4 天 1775⭐ + soundcraft 4 天 1281⭐ + deckcraft 4 天 1374⭐ + nullmoth/nvidia-macos-driver 4 天 2274⭐ + LoreanXavier/pt-pc 4 天 1317⭐ + pingdotgg/ts-rust 4 天 966⭐ + noahdunnagan/fsearch 4 天 1594⭐ + ThariqS/ai-newtab 4 天 673⭐ + alejandrobujan/tendedero 4 天 1536⭐ + oss-scanner 4 天 642⭐ ⑂329 fork + ff-tracking 4 天 221⭐ + streamgres 4 天 96⭐ + omdrop-owl 4 天 1323⭐ + big-arrow-on-the-screen 4 天 576⭐ ⑂9 fork + 5 个新项目 + 14 个延续跟踪项目 五条新主线严肃工程化跨领域
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [mrsarac/ff-tracking](projects/ff-tracking.md) | 480 stars | 工具型 |
-| [juspay/streamgres](projects/streamgres.md) | 365 stars | 基础设施候选 |
-| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 359 stars | 工具型 |
-| [franzenzenhofer/big-arrow-on-the-screen](projects/big-arrow-on-the-screen.md) | 418 stars | 工具型 |
-| [anthropics/oss-scanner](projects/oss-scanner.md) | 593 stars | 基础设施候选 |
-| [mhtsec/ARTEX](projects/artex.md) | 2930 stars | 工具型 |
+| [rociiu/talorys](projects/talorys.md) | 312 stars | 平台候选 |
+| [c22dev/muguet](projects/muguet.md) | 269 stars | 工具型 |
+| [HelixDB/helix-foundry](projects/helix-foundry.md) | 949 stars | 平台候选 |
+| [Gentleman-Programming/gentle-dot](projects/gentle-dot.md) | 121 stars | 工具型 |
+| [thesysdev/open-intelligent-ui](projects/open-intelligent-ui.md) | 293 stars | 工具型 |
+| [mhtsec/ARTEX](projects/artex.md) | 2897 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **anthropics/oss-scanner 2 天 593⭐ 把「开源安全扫描」从「OSSF Scorecard / Snyk / Dependabot / GitHub Code Scanning」推到「Anthropic 官方服务 + red.anthropic.com/oss-scanner + OSS Scanner terms + 隔离 VM 构建 + 无网络访问分析 + 模型生成 reproducer + 模型生成 proposed patch + 邮件到 primary_contact + auto_ccs + OpenPGP 加密 + project.yaml（repo/primary_contact/auto_ccs/homepage/disabled/dockerfile/threat_model/pgp）+ projects/<name>/ 目录 + Dockerfile（自带或本仓库）+ threat_model.md（自带或本仓库）+ enroll 通过 PR 加一个目录 + critical opensource 仓库 + 238 fork 反映社区强烈兴趣」（趋势分 92）** · 相关项目：anthropics/oss-scanner · 强度：92
-2. **mrsarac/ff-tracking 1 天 480⭐ 把「程序化短视频生成」从「ffmpeg + stock 视频 + stock 配乐」推到「Rust 2024 + fframes 1.2 + Skia Metal GPU + 一个 SkSL shader + 6 秒 12 镜头 0.5s 切割 + 4 类调色板（paper/thermal/phosphor/amber/navy/neon）+ 虚拟摄像机跟随字符 + tracker box lock + chain of thought 节点+边+点 + 14 框塌缩成 Done pill + 红色框 2 帧 + 扫描线撕裂 + beep panned to box position + 全部像素和声音从代码合成 + release 1.0.0 tracking.mp4 1080p with sound + mrsarac 个人 + MIT」（趋势分 88）** · 相关项目：mrsarac/ff-tracking · 强度：88
-3. **juspay/streamgres 3 天 365⭐ 把「PostgreSQL 实时同步」从「LISTEN/NOTIFY + 轮询 + materialized view + Hasura + Supabase realtime」推到「subscription-native sync engine + WebSocket subscribe(SQL) + 增量 delta（rows added/removed）+ 写入成本 O(匹配条件数) 不 O(订阅数) + 相同查询共享视图 + 从 100→10000 订阅 写仍只触 3-4 个条件 + ORDER BY/LIMIT 窗口 + buffer 维护离开页的行 + LEFT/RIGHT/INNER/EXISTS planner + 写不到你的数据库 + logical replication from primary/replica/standby + live schema changes + Apache-2.0」（趋势分 82）** · 相关项目：juspay/streamgres · 强度：82
-4. **t4t5/omdrop-owl 2 天 359⭐ 把「非 Apple Wi-Fi AirDrop」从「不可能」推到「AWDL 在 AP channel 6/44/149 + OWL run on monitor interface with -S intersect + mt7925e Framework 13 实测 AirDrop 双向工作 + 与 omdrop-plugin 的 radio-backend.md 标准对接 + omdrop-awdl 的工具链复用（send-to-peer/airdrop-send.py/ble-airdrop-adv.py/awdl-airdrop-adv.py/awdl-mdns-respond.py）+ 17 fork/star 4.7%」（趋势分 76）** · 相关项目：t4t5/omdrop-owl · 强度：76
+1. **rociiu/talorys 2 天 312⭐ 把「个人 AI agent」从「云端 SaaS / 第三方 LLM API」推到「npx create-talorys@latest 一键部署 + 跑在用户自己的 Cloudflare 账户 + Workers + D1 + Durable Objects + R2 + AI Gateway + 12 个 Tier 1 集成（聊天流式 Markdown + 工具活动指示器 + 持久化 Memory + 任务/笔记/项目 CRUD + 一次性/循环提醒 + 每日 task digest + 可选 AI routines + Durable Object alarms + 单用户设计 + owner password + AI quota 用尽仍可工作 + 视图/编辑/删除 Memory + CLI/UI/chat 三入口）+ MIT」严肃工程化形态** · 相关项目：rociiu/talorys · 强度：90
+2. **c22dev/muguet 2 天 269⭐ 把「GTA V 在 Apple 平台」从「不存在的官方版本」推到「Rust + wasmtime 把游戏 wasm 当 native app 直接跑 + wgpu on Metal 接管图形 + macOS 首次启动编译为 arm64 native 并缓存 + iOS 编译时打包进 binary（避免 JIT 麻烦）+ udp 端口 47520 多玩家 + omdrop-plugin × omdrop-awdl 借鉴 radio-backend 模式 × 跑玩家自己的 .zip（data/ + b/<build>/）+ xcodegen + brew install + AltStore + make-app.sh / make-ios.sh / muguet-server + Apple Silicon macOS 14+ + iOS 15+ 8GB+ + GPL-3.0」严肃工程化形态** · 相关项目：c22dev/muguet · 强度：85
+3. **Gentleman-Programming/gentle-dot 3 天 121⭐ 把「桌面 AI 助手」从「浏览器 tab 之间丢上下文」推到「macOS/Linux/Web 全平台 + 桌面常驻 + 一键唤起 + 一段持续对话 + 真持久记忆（不是逐 chat 丢）+ 可读用户文件 + 可驱动 Mac 应用（屏幕可见时按授权）+ shell harness + 优雅安全检查 + MIT」早期严肃工程化形态** · 相关项目：Gentleman-Programming/gentle-dot · 强度：80
+4. **HelixDB/helix-foundry 4 天 949⭐ 把「公司数据查询」从「SaaS 仪表盘割裂 + 大模型上下文塞满」推到「本地优先 + Docker 一键起栈 + HelixDB graph + DuckDB 列存 + Stripe/WorkOS/PostHog/Files/APIs 多源连接器 + 自动建议 ontology + 本地 LLM by default（可换 Claude/OpenAI）+ 无账号无托管 + AGENTS.md runbook 给 agent 读 + Claude Code/Codex/Cursor 通吃 + localhost:3001 + Apache-2.0」严肃工程化形态** · 相关项目：HelixDB/helix-foundry · 强度：88
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 | [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
-| [2026-10-03](daily/2026-10-03.md) | 5 | 4 |
 
 ## 为什么做这个项目
 

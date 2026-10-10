@@ -2,10 +2,11 @@
 title: "mrsarac/ff-tracking"
 slug: ff-tracking
 date_added: 2026-10-10
-last_seen_date: 2026-10-10
+last_seen_date: 2026-10-11
 category: "工具型"
 emoji: "🎬"
-stars: "480 stars"
+stars: "221 stars"
+stars_delta: "4 天 221⭐ ⑂13 fork（2026-10-11 GitHub Search API 实时）"
 score: 88
 tags: ["fframes","fframes-1-2","rust-2024","skia-metal","sksl-shader","programmatic-video","procedural-audio","agent-thought-tracker","chain-of-thought","release-1080p","mit"]
 url: "https://github.com/mrsarac/ff-tracking"

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c22dev/muguet | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/c22dev/muguet" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="c22devmuguet">c22dev/muguet</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Muguet 是「GTA V 在 iOS / macOS 上的原生 Mach-O 移植」——通过 wasmtime 把游戏的 WebAssembly 版本当 native app 跑，wgpu on Metal 接管图形，并加了一层 UDP multiplayer。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Rockstar 在 Apple 平台上从未正式发布过 GTA V（macOS 早在 2019 年起就不被官方支持；iOS 完全没有官方版）。同时，许多大型应用只有 WebAssembly 版本（如 Blender Web / Godot Web / Three.js 应用），无法在 iOS/macOS 上以 native 体验跑。Muguet 探索了「<strong>WebAssembly + wasmtime + wgpu on Metal = native app 体验</strong>」这一路径：
+- <strong>绕过 web engine / WebGPU / Web Audio overhead：</strong> wasmtime 直接跑 wasm，wgpu on Metal 接管图形
+- <strong>绕过 iOS JIT 麻烦：</strong> iOS 上 JIT 启用需企业证书或开发者账户；Muguet 在 iOS 上把 wasm 在编译时打包进 binary
+- <strong>保留原生性能：</strong> macOS 上首次启动把 wasm 编译为 arm64 native 并缓存
+- <strong>小型多人：</strong> UDP 端口 47520 的简单多人模式</p>
+<h2 id="2026-10-11">为什么值得关注（2026-10-11）</h2>
+<ul>
+<li><strong>Stars:</strong> 269（截至 2026-10-11），2 天累计</li>
+<li><strong>Forks:</strong> 60，fork/star 22.3%（社区高活跃度——很可能是游戏爱好者群体）</li>
+<li><strong>License:</strong> GPL-3.0（开源但闭源不可二次分发）</li>
+<li><strong>Language:</strong> Rust（wasmtime + wgpu 客户端 + 服务端）</li>
+<li><strong>Size:</strong> 612 KB（仓库精简——游戏资源由玩家自备）</li>
+<li><strong>创新点:</strong> 把 web 版本（GTA V 的 wasm 移植）通过 wasmtime 直接跑成 native app，避开 web engine / WebGPU / Web Audio overhead</li>
+<li><strong>定位：</strong> wasm → native 路径的「游戏移植」代表 + Apple Silicon 上 wasm 应用的新工作流</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>c22dev/muguet 的热度是「<strong>GTA V 在 Apple 平台的强需求 + wasm → native 路径的工程启发 + Rockstar 不在 Apple 平台补缺的真空</strong>」的组合。GTA V 本身是史上最畅销游戏之一，Apple 平台上无官方版 = 庞大未满足需求。60 个 fork 反映社区极高参与——但需警惕：fork/star 22.3% 的高比例可能反映「游戏爱好者 fork 一下看看」而非真正的代码贡献。热度<strong>真实且具工程启发价值</strong>——但需警惕：GPL-3.0（不能用于商业/闭源二次分发）+ 玩家需要自己的 .zip（GTA V 资源）+ Rockstar 法律风险（虽然是「native port」但用了 wasm 仍可能触发 DMCA）+ 性能未观察（wasmtime vs native C++）+ 多人仅本地 UDP（非互联网）。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>wasmtime + wgpu on Metal 栈：</strong> 绕过 JS engine / WebGPU / Web Audio overhead，让 wasm 版 GTA V 以 native 体验跑</li>
+<li><strong>macOS 首次启动 arm64 native 编译并缓存：</strong> 利用 Apple Silicon 性能，避免每次启动重编译</li>
+<li><strong>iOS 编译时打包 binary（绕过 JIT 麻烦）：</strong> 把 wasm 在编译时嵌入 binary，避免 iOS JIT 启用需企业证书的麻烦</li>
+<li><strong>UDP 47520 multiplayer：</strong> 简单但够用的小型多人模式（muguet-server 可在任意机器跑）</li>
+<li><strong>玩家自己 .zip：</strong> data/ + b/<build>/（含 game.wasm 和 shaders/）——避免 Rockstar 资源版权</li>
+<li><strong>make-app.sh / make-ios.sh + xcodegen：</strong> 完整构建脚本链</li>
+<li><strong>AltStore 分发：</strong> 避开 App Store 审核（SideStore 已知有问题）</li>
+<li><strong>Apple Silicon + macOS 14+ + iOS 15+ 8GB+：</strong> 现代 Apple 平台覆盖</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>把 WebAssembly 编译的 GTA V 游戏通过 wasmtime 跑成 native app，wgpu on Metal 接管图形，UDP 提供 multiplayer</td>
+<td>仅基于 README 列出的 wasmtime / wgpu / Metal / UDP 47520；具体 frame scheduler、input handling、网络协议、anti-cheat 未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户跑 make-app.sh/make-ios.sh → 启动 Muguet.app → wasmtime 跑 game.wasm → wgpu on Metal 渲染 → muguet-server 提供 UDP multiplayer</td>
+<td>主路径来自 README 描述；具体 first-launch arm64 缓存位置、Metal shader 缓存、内存压力处理均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>web → native（wasmtime/wgpu）vs native C++ 直接移植 vs 静态重编译路径 vs 第三方 native port（如 M-series Rosetta）+ GPL-3.0（开源但闭源不可）+ Rockstar 法律灰区</td>
+<td>档案明示 wasm → native 路径；Rosetta 2 兼容性、Steam Deck / Linux 版本、iPad 分辨率适配未证实</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Apple Silicon Mac + macOS 14+ → brew install xcodegen + rustup 1.98.1 → ./make-app.sh → 启动 Muguet.app → 加载玩家自己的 .zip → 跑一段游戏 + 启动 muguet-server → 第二个玩家加入</td>
+<td>PoC 范围由 README「How does this work」反推；具体 macOS 14/15 兼容、性能基准 vs 原生 GTA V 路径待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>c22dev/muguet 的核心启发是 <strong>「WebAssembly + native runtime（如 wasmtime/wgpu）可绕过 Apple App Store / 系统限制，让大型应用以 native 体验跑在 iOS/macOS 上」</strong>。把 GTA V 的 web 版本（GTA V 的 wasm 移植）通过 wasmtime 直接跑成 native app，避免 web engine / WebGPU / Web Audio 这一层 overhead。这与「静态重编译 PSP / PS3 / PS4 / PS5 / Wii U / Xbox 360 / GameCube」社区的「native port」思路互补：<strong>wasm native 是另一条把 web 应用跑成 native 的路径</strong>。更深层的启发是：<strong>wasmtime 已足够成熟，可在消费级游戏上提供可接受的 native 体验</strong>——这为更多 wasm-only 应用（Blender Web / Godot Web / Three.js 应用 / 自研 wasm 应用）打开 native port 思路。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Player[玩家] --> Zip[玩家自己的 .zip<br/>data/ + b/<build>/<br/>game.wasm + shaders/]
+  Zip --> Muguet[Muguet.app<br/>Rust + wasmtime + wgpu on Metal]
+  Player --> AltStore[AltStore 分发<br/>绕开 App Store]
+  AltStore --> Muguet
+  Muguet --> wasmtime[wasmtime 跑 game.wasm<br/>不需 JS engine]
+  Muguet --> wgpu[wgpu on Metal<br/>原生 Metal 图形]
+  Muguet -.macOS 首次启动.-> Cache[arm64 native 编译并缓存]
+  Muguet -.iOS.-> Bake[编译时打包 wasm 进 binary<br/>绕过 JIT 麻烦]
+  Player2[第二个玩家<br/>同 port 玩家] --> UDP[UDP 端口 47520<br/>muguet-server]
+  UDP --> Muguet
+  Muguet -.GPL-3.0.-> Limit[闭源不可二次分发<br/>Rockstar 法律灰区]
+  Muguet -.苹果平台.-> HW[Apple Silicon<br/>macOS 14+ / iOS 15+ 8GB+<br/>Xcode 26]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（Apple 平台上的 wasm → native 游戏移植实验 + Apple Silicon 工程展示）。</strong> c22dev/muguet 不仅是「让 GTA V 在 macOS 上跑起来」的 hack，更是「<strong>wasm → native 路径在大型游戏上可不可行</strong>」的工程展示。它把 wasmtime + wgpu on Metal 这条非主流路径在消费级游戏上跑了一遍，验证了可行性。其潜在演进路径：(1) 成为「wasm 应用 native port」的参考实现（类似 React Native 之于 mobile）；(2) 被用于其他 wasm-only 应用（Blender Web / Godot Web）；(3) c22dev 个人继续添加更多平台（iPad / Apple TV / Linux）。当前定位：「<strong>wasm → native 在游戏上的严肃工程化验证</strong>」。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>GPL-3.0：</strong> 不能用于商业/闭源二次分发——商业 Mac App Store 上架受限</li>
+<li><strong>Rockstar 法律灰区：</strong> 虽是「native port」但用了 wasm 仍可能触发 DMCA（特别是分发版本）</li>
+<li><strong>玩家需要自己的 .zip：</strong> 需找到 GTA V 资源（GTA V 资源分发本身涉及版权）</li>
+<li><strong>性能未观察：</strong> wasmtime vs native C++（特别是 GPU 调用开销）</li>
+<li><strong>多人仅本地 UDP：</strong> 非互联网 multiplayer（除非玩家自己跑 muguet-server + 公网 IP）</li>
+<li><strong>c22dev 个人项目：</strong> 治理可持续性、安全更新、未观察</li>
+<li><strong>SideStore 已知有问题：</strong> AltStore 是首选，但分发门槛仍较高</li>
+<li><strong>Limitations（GTA V 解锁任务绕过有问题 / 字体 / 文本缺失）：</strong> README 自述的 limitations</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs LoreanXavier/pt-pc：</strong> pt-pc 是 P.T. 的 native PC 移植（静态重编译路径）；Muguet 是 GTA V 的 native Apple port（wasm → native 路径）</li>
+<li><strong>vs nullmoth/nvidia-macos-driver：</strong> nvidia-macos-driver 是 NVIDIA Metal 驱动；Muguet 是 GTA V 的 Apple 平台移植（都涉及 Apple 平台的「不被官方支持」空间）</li>
+<li><strong>vs Rosetta 2：</strong> Rosetta 2 跑 x86_64 macOS 应用；Muguet 跑 wasm（不同的桥接技术）</li>
+<li><strong>vs Static Recompilation（PS3/PS4/PS5/Xbox 360/GameCube）：</strong> 静态重编译是 native → native；Muguet 是 wasm → native</li>
+<li><strong>vs Steam / Apple Arcade：</strong> Steam/Apple Arcade 是官方游戏分发；Muguet 是非官方 native port（法律灰区）</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（wasm → native 路径在游戏上的严肃工程化验证）。</strong> c22dev/muguet 代表了「<strong>wasm → native 路径</strong>」在消费级游戏上的可行性验证——无论其本身成败，这一技术路径对 Apple 平台游戏移植、对 wasm 应用 native 化都有启发。建议关注：性能基准（wasmtime vs native C++）、是否被 DMCA、是否衍生出其他 wasm → native 应用、对 Godot Web / Blender Web 的启发。对 Apple Silicon Mac 用户，这是「在 macOS 上跑 GTA V」的开源路径；对 wasm 生态观察者，这是 wasmtime 成熟度的标杆。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>性能基准（wasmtime vs native C++，特别是 GPU 调用开销）</li>
+<li>Rockstar 法律行动（DMCA、takedown）</li>
+<li>是否被 GameCube / PS3 静态重编译社区借鉴</li>
+<li>wasm → native 路径在 Blender Web / Godot Web / Three.js 应用的复用</li>
+<li>c22dev 是否衍生出更通用的「wasm → Apple native port」工具</li>
+<li>iPad / Apple TV / Linux 版本扩展</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Search API + Repository API (2026-10-11) + README 公开摘录 | Stars: 269 | Forks: 60 | License: GPL-3.0 | 语言: Rust | 创建: 2026-10-09</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
