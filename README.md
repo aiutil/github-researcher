@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-11.md">Latest report</a> ·
+  <a href="daily/2026-10-12.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,42 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-11
+## Latest report · 2026-10-12
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 695 | 5 | 1300k+ |
+| 5 | 699 | 5 | 1300k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [rociiu/talorys](projects/talorys.md) | 312 stars | 平台候选 |
-| [c22dev/muguet](projects/muguet.md) | 269 stars | 工具型 |
-| [HelixDB/helix-foundry](projects/helix-foundry.md) | 949 stars | 平台候选 |
-| [Gentleman-Programming/gentle-dot](projects/gentle-dot.md) | 121 stars | 工具型 |
-| [thesysdev/open-intelligent-ui](projects/open-intelligent-ui.md) | 293 stars | 工具型 |
-| [mhtsec/ARTEX](projects/artex.md) | 2897 stars | 工具型 |
+| [wheresryan22/anatomy](projects/anatomy.md) | 3077 stars | 工具型 |
+| [tcchen2026/VibeOffice](projects/vibeoffice.md) | 545 stars | 工具型 |
+| [wesbos/photo-frame-dashboard](projects/photo-frame-dashboard.md) | 742 stars | 工具型 |
+| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 2061 stars | 工具型 |
+| [storytold/craft-launcher](projects/craft-launcher.md) | 1155 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: rociiu/talorys
-2. **Signal 2** · score 85 · repositories: c22dev/muguet
-3. **Signal 3** · score 80 · repositories: Gentleman-Programming/gentle-dot
-4. **Signal 4** · score 88 · repositories: HelixDB/helix-foundry
+1. **Signal 1** · score 92 · repositories: wheresryan22/anatomy
+2. **Signal 2** · score 86 · repositories: tcchen2026/VibeOffice
+3. **Signal 3** · score 80 · repositories: wesbos/photo-frame-dashboard
+4. **Signal 4** · score 84 · repositories: t4t5/omdrop-owl
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-11.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-12.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
-| [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 
 ## Why this repository exists
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-11.md">最新日报</a> ·
+  <a href="daily/2026-10-12.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,43 +21,42 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-11
+## 最新研究 · 2026-10-12
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 695 | 5 | 1300k+ |
+| 5 | 699 | 5 | 1300k+ |
 
-**今日核心判断：** rociiu/talorys 2 天 312⭐ 把「个人 AI agent」从「云端 SaaS / 第三方 LLM API」推到「npx create-talorys@latest 一键部署 + 跑在用户自己的 Cloudflare 账户 + Workers + D1 + Durable Objects + R2 + AI Gateway + 12 个 Tier 1 集成（聊天流式 + 持久化 Memory + 任务/笔记/项目 CRUD + 一次性/循环提醒 + 每日 task digest + 可选 AI routines + Durable Object alarms + 单用户设计 + owner password + AI quota 用尽仍可工作 + 视图/编辑/删除 Memory + CLI/UI/chat 三入口）+ MIT」严肃工程化形态 · c22dev/muguet 2 天 269⭐ 把「GTA V 在 Apple 平台」从「不存在的官方版本」推到「Rust + wasmtime 把游戏 wasm 当 native app 直接跑 + wgpu on Metal 接管图形 + macOS 首次启动编译为 arm64 native 并缓存 + iOS 编译时打包进 binary（避免 JIT 麻烦）+ udp 端口 47520 多玩家 + 从 omdrop-plugin + omdrop-awdl 借鉴 radio-backend 模式 × 跑玩家自己的 .zip（data/ + b/<build>/）+ xcodegen + brew install + AltStore + make-app.sh / make-ios.sh / muguet-server」严肃工程化形态 · Gentleman-Programming/gentle-dot 3 天 121⭐ 把「桌面 AI 助手」从「浏览器 tab 之间丢上下文」推到「macOS/Linux/Web 全平台 + 桌面常驻 + 一键唤起 + 一段持续对话 + 真持久记忆（不是逐 chat 丢）+ 可读用户文件 + 可驱动 Mac 应用（屏幕可见时按授权）+ shell harness + 优雅安全检查 + MIT」早期严肃工程化形态 · HelixDB/helix-foundry 4 天 949⭐ 把「公司数据查询」从「SaaS 仪表盘割裂 + 大模型上下文塞满」推到「本地优先 + Docker 一键起栈 + HelixDB graph + DuckDB 列存 + Stripe/WorkOS/PostHog/Files/APIs 多源连接器 + 自动建议 ontology + 本地 LLM by default（可换 Claude/OpenAI）+ 无账号无托管 + AGENTS.md runbook 给 agent 读 + Claude Code/Codex/Cursor 通吃 + localhost:3001 + Apache-2.0」严肃工程化形态 · thesysdev/open-intelligent-ui 4 天 293⭐ 把「ChatGPT Intelligent UI」从「OpenAI 私货」推到「OpenUI 开源标准 + OpenUI Gateway 流式 Lang + 自定义组件（TravelHeading/Prose/Image/Gallery/Stop/Map/Suggestions）+ MapLibre GL 地图 + emoji pin + streaming pin 出现 + 路线绘制 + Wikipedia fallback image + 内置 form 回传 ToAssistant + Node 24 + Ollama 兼容（qwen3.8:27b 默认）+ Apache-2.0 (theysdev/openui)」严肃工程化形态 · 延续跟踪 HelixDB/helix-foundry → 4 天 949⭐（本地优先数据工作台）+ ARTEX 2→3 天 2897⭐ ⑂5309 fork（百度 agent+ 攻防挑战赛冠军）+ storytold ArtCraft wordcraft 3→4 天 3079⭐ + cadcraft 4 天 1801⭐ + gridcraft 4 天 1775⭐ + soundcraft 4 天 1281⭐ + deckcraft 4 天 1374⭐ + nullmoth/nvidia-macos-driver 4 天 2274⭐ + LoreanXavier/pt-pc 4 天 1317⭐ + pingdotgg/ts-rust 4 天 966⭐ + noahdunnagan/fsearch 4 天 1594⭐ + ThariqS/ai-newtab 4 天 673⭐ + alejandrobujan/tendedero 4 天 1536⭐ + oss-scanner 4 天 642⭐ ⑂329 fork + ff-tracking 4 天 221⭐ + streamgres 4 天 96⭐ + omdrop-owl 4 天 1323⭐ + big-arrow-on-the-screen 4 天 576⭐ ⑂9 fork + 5 个新项目 + 14 个延续跟踪项目 五条新主线严肃工程化跨领域
+**今日核心判断：** wheresryan22/anatomy 4 天 3077⭐ 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图」推到「Claude 自己讲一个工作对象——token bucket = 弹子锁 + GPU context = gantry plotter + Raptor 2 test stand——用几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + 标题/提示/实时读数卡片 + 鼠标键盘动效 + 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add + 0 依赖 + MIT」严肃工程化形态 · tcchen2026/VibeOffice 4 天 545⭐ 把「浏览器 office」从「TinyMCE + SheetJS + 笨 demo」推到「Quire/Ledger/Lectern 三件套 + Office 2003 UI（菜单/工具栏/任务窗格）+ 真实 .docx/.xlsx/.pptx + lossless save 改了什么写什么——VBA macro/SmartArt/视频音频/ink/3-D/custom XML 字节级保留 + 每个 app 自己特性存活（Word content control / Excel pivot slicer / PowerPoint 媒体区段）+ Compatibility Checker 4,697 个文件 LibreOffice/POI/Open XML SDK 端到端测 + 纯 HTML/JS 无 build + Chrome/Edge 可安装 + Apache-2.0 + vibeoffice.work」严肃工程化形态 · wesbos/photo-frame-dashboard 4 天 742⭐ 把「Android photo frame」从「厂商锁定 + 永远显示 slideshow」推到「完整 reverse engineer——Skylight Calendar 15" Rockchip RK3566 + BIUFRAME 10.1" Rockchip RK3126 + PF1007L Allwinner A33 三机笔记 + ADB/root/备份（Rockusb loader+patched RAM helper 越过 32MiB+ums disk）/launcher/browser/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + 真实文档 + 给 agent 读的 AGENTS.md」严肃工程化形态 · t4t5/omdrop-owl 4 天 2061⭐ 把「Linux AirDrop」从「Framework 13 上不可能」推到「omdrop-plugin × omdrop-awdl × owl 三仓分工 + AWDL userspace OWL on AP channel 6/44/149 + monitor interface 携带 station MAC 让 MT7925e station ACK + intersect -S 只广告手机 slot + no active monitor + sibling license」增长持续形态 · 延续跟踪 tcchen2026/VibeOffice → 4 天 545⭐ ⑂88 fork/star 16.1%（Apache-2.0 office 套件 lossless save）+ wheresryan22/anatomy → 4 天 3077⭐ ⑂234 fork/star 7.6%（Claude skill isometric SVG + WebGL shader + 0 依赖）+ storytold ArtCraft 8 库 Rust 100% Adobe/Microsoft/Avid 重实现全家桶 + ArtCraft Launcher 1155⭐ ⑂409 fork/star 35.4%（craft-launcher 一键安装更新跨 OS）+ HelixDB/helix-foundry 持续（5 天 1000+⭐）+ openai/math 持续（6 天 14000+⭐）+ rociiu/talorys 持续（2 天 700+⭐）+ c22dev/muguet 持续（2 天 400+⭐）+ mhtsec/ARTEX 持续（4 天 3000+⭐）+ anthropics/oss-scanner 持续 + pingdotgg/ts-rust 持续——5 条新主线严肃工程化：（A wheresryan22/anatomy Claude Code skill 把「技术概念」物化成 isometric SVG/WebGL 工作对象 + 0 依赖 + MIT）+（B tcchen2026/VibeOffice 浏览器内 Office 2003 + lossless save + 4697 真实文件 LibreOffice/POI/Open XML SDK 测 + Apache-2.0）+（C wesbos/photo-frame-dashboard Android photo frame reverse engineer 三机笔记 + ADB/root/launcher/browser/kiosk 自跑 + 真实文档）+（D storytold ArtCraft Launcher 跨 macOS/Windows/Linux/FreeBSD/Web-native 一键安装更新 8 库 Rust 100% Adobe/Microsoft/Avid）+（E t4t5/omdrop-owl + omdrop-plugin + omdrop-awdl + owl Linux AirDrop 严肃工程化三仓协同）。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [rociiu/talorys](projects/talorys.md) | 312 stars | 平台候选 |
-| [c22dev/muguet](projects/muguet.md) | 269 stars | 工具型 |
-| [HelixDB/helix-foundry](projects/helix-foundry.md) | 949 stars | 平台候选 |
-| [Gentleman-Programming/gentle-dot](projects/gentle-dot.md) | 121 stars | 工具型 |
-| [thesysdev/open-intelligent-ui](projects/open-intelligent-ui.md) | 293 stars | 工具型 |
-| [mhtsec/ARTEX](projects/artex.md) | 2897 stars | 工具型 |
+| [wheresryan22/anatomy](projects/anatomy.md) | 3077 stars | 工具型 |
+| [tcchen2026/VibeOffice](projects/vibeoffice.md) | 545 stars | 工具型 |
+| [wesbos/photo-frame-dashboard](projects/photo-frame-dashboard.md) | 742 stars | 工具型 |
+| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 2061 stars | 工具型 |
+| [storytold/craft-launcher](projects/craft-launcher.md) | 1155 stars | 平台候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **rociiu/talorys 2 天 312⭐ 把「个人 AI agent」从「云端 SaaS / 第三方 LLM API」推到「npx create-talorys@latest 一键部署 + 跑在用户自己的 Cloudflare 账户 + Workers + D1 + Durable Objects + R2 + AI Gateway + 12 个 Tier 1 集成（聊天流式 Markdown + 工具活动指示器 + 持久化 Memory + 任务/笔记/项目 CRUD + 一次性/循环提醒 + 每日 task digest + 可选 AI routines + Durable Object alarms + 单用户设计 + owner password + AI quota 用尽仍可工作 + 视图/编辑/删除 Memory + CLI/UI/chat 三入口）+ MIT」严肃工程化形态** · 相关项目：rociiu/talorys · 强度：90
-2. **c22dev/muguet 2 天 269⭐ 把「GTA V 在 Apple 平台」从「不存在的官方版本」推到「Rust + wasmtime 把游戏 wasm 当 native app 直接跑 + wgpu on Metal 接管图形 + macOS 首次启动编译为 arm64 native 并缓存 + iOS 编译时打包进 binary（避免 JIT 麻烦）+ udp 端口 47520 多玩家 + omdrop-plugin × omdrop-awdl 借鉴 radio-backend 模式 × 跑玩家自己的 .zip（data/ + b/<build>/）+ xcodegen + brew install + AltStore + make-app.sh / make-ios.sh / muguet-server + Apple Silicon macOS 14+ + iOS 15+ 8GB+ + GPL-3.0」严肃工程化形态** · 相关项目：c22dev/muguet · 强度：85
-3. **Gentleman-Programming/gentle-dot 3 天 121⭐ 把「桌面 AI 助手」从「浏览器 tab 之间丢上下文」推到「macOS/Linux/Web 全平台 + 桌面常驻 + 一键唤起 + 一段持续对话 + 真持久记忆（不是逐 chat 丢）+ 可读用户文件 + 可驱动 Mac 应用（屏幕可见时按授权）+ shell harness + 优雅安全检查 + MIT」早期严肃工程化形态** · 相关项目：Gentleman-Programming/gentle-dot · 强度：80
-4. **HelixDB/helix-foundry 4 天 949⭐ 把「公司数据查询」从「SaaS 仪表盘割裂 + 大模型上下文塞满」推到「本地优先 + Docker 一键起栈 + HelixDB graph + DuckDB 列存 + Stripe/WorkOS/PostHog/Files/APIs 多源连接器 + 自动建议 ontology + 本地 LLM by default（可换 Claude/OpenAI）+ 无账号无托管 + AGENTS.md runbook 给 agent 读 + Claude Code/Codex/Cursor 通吃 + localhost:3001 + Apache-2.0」严肃工程化形态** · 相关项目：HelixDB/helix-foundry · 强度：88
+1. **wheresryan22/anatomy 4 天 3077⭐ 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图」推到「Claude 自己讲一个工作对象——token bucket = 弹子锁 + GPU context = gantry plotter + Raptor 2 test stand——用几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + 标题/提示/实时读数卡片 + 鼠标键盘动效 + 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add -g -a claude-code + 0 依赖 Node 内置模块 + MIT」严肃工程化形态** · 相关项目：wheresryan22/anatomy · 强度：92
+2. **tcchen2026/VibeOffice 4 天 545⭐ 把「浏览器 office」从「TinyMCE + SheetJS + 笨 demo」推到「Quire/Ledger/Lectern 三件套 + Office 2003 UI（菜单/工具栏/任务窗格）+ 真实 .docx/.xlsx/.pptx + lossless save 改了什么写什么——VBA macro/SmartArt/视频音频/ink/3-D/custom XML 字节级保留 + 每个 app 自己特性存活（Word content control + Excel pivot/slicer/timeline/threaded comments + PowerPoint 媒体/区段/自定义放映/comment/unused layout/动作/效果）+ Compatibility Checker + 4697 真实文件 LibreOffice/POI/Open XML SDK 测 + 纯 HTML/JS 无 build + AGENTS.md + Chrome/Edge 可安装 .docx/.xlsx/.pptx + Apache-2.0 + vibeoffice.work」严肃工程化形态** · 相关项目：tcchen2026/VibeOffice · 强度：86
+3. **wesbos/photo-frame-dashboard 4 天 742⭐ 把「Android photo frame」从「厂商锁定 + 永远显示 slideshow」推到「完整 reverse engineer 三机笔记——Skylight Calendar 15" Rockchip RK3566 Android 12 + BIUFRAME 10.1" Rockchip RK3126 Android 6.0.1 + PF1007L 10.1" Allwinner A33 Android 6.0.1 AiMOR home app + ADB/root/备份（Rockusb loader + patched RAM helper 越过 32MiB + U-Boot ums disk + SD 卡 boot patch）+ launcher/browser/WebView 106/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + 真实文档 AGENTS.md + YouTube demo + pf1007l-start-here.md + biuframe-setup-guide.md + aimor-remote-root-shell.md（A33 厂商 app 接受远端 root shell，上线前关掉） + 同一 Amazon listing 不同板警告」严肃工程化形态** · 相关项目：wesbos/photo-frame-dashboard · 强度：80
+4. **t4t5/omdrop-owl 4 天 2061⭐ 把「Linux AirDrop」从「Framework 13 上不可能」推到「omdrop-plugin × omdrop-awdl × owl 三仓分工 + AWDL userspace OWL on AP channel 6/44/149 + monitor interface 携带 station MAC 让 MT7925e station interface ACK 手机 unicast + intersect -S 只广告手机 slot + 无 active monitor + sibling license NOASSERTION + brentkearney/jedbillyb 协作」增长持续形态** · 相关项目：t4t5/omdrop-owl · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 | [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
-| [2026-10-05](daily/2026-10-05.md) | 4 | 4 |
 
 ## 为什么做这个项目
 

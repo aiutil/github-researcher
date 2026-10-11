@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-12 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-12-github">2026-10-12 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description、license、size、forks 来自 2026-10-12 GitHub Search API（<code>gh api search/repositories</code> 经 gh CLI 认证，避免未认证速率限制）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license / size）+ 各项目 README 公开摘录（GitHub Search API 受速率限制时改用 <code>gh api .../readme -H Accept: application/vnd.github.raw</code> 抓取）+ 已有 <code>projects/</code> 档案对照。本批 trending 数据通过 GitHub Search API <code>stars:&gt;500 created:2026-09-12..2026-10-09 sort=stars order=desc per_page=30</code>（30 天内最强增长 329 个）+ <code>stars:&gt;300 pushed:2026-10-11..2026-10-12 created:2026-10-08..2026-10-11</code>（最近 1-2 天新爆发 14 个）+ 多语言筛选 + Repository API 元数据补充；本批搜索结果中出现大量「fork=0 + size=2 + 随机词+字典词产品名」spam 仓库（KMS-Pico / Discord-Quest-Completer / Wondshare-Recoverit / Fps-Booster-for-Windows / Microsoft-Project / Canva-Pro / Adobe-Substance-3d 等 50+），已通过 full_name 模式 + description 模板 + fork=0 + size&lt;=2 + language=null 四信号过滤。<strong>"X 天 Y⭐"基于 created_at→2026-10-12 总星数除以经过天数（粗略下限估计）</strong>，stargazers REST endpoint 需要认证故未做精确单日增量统计；GitHub Trending HTML 直接抓取本时段超时，已通过 GitHub Search API 替代。<strong>今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-12 仍在快速增长的新发现项目 + 延续跟踪项目</strong>。<strong>今日最大事件是 <code>wheresryan22/anatomy</code> 4 天 3077⭐ 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图」推到「Claude 自己讲一个工作对象——token bucket = 弹子锁 + GPU context = gantry plotter 16 wells + Raptor 2 test stand firing Pc 300 bar 230 tf——用几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + 标题/提示/实时读数 framed card + 鼠标键盘动效 + Claude 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add + 0 依赖 + MIT」严肃工程化形态</strong>。本日 4 个新项目 + 12 个延续跟踪项目分五条主线严肃工程化跨领域：</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1wheresryan22anatomy-claude-code-skill-92">趋势 1：wheresryan22/anatomy Claude Code skill 物化技术概念严肃工程化（趋势分 92）</h3>
+<p><code>wheresryan22/anatomy</code> 4 天 3077⭐ ⑂234 fork/star 7.6% 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图 + 文字 ASCII」推到「<strong>Anatomy + A Claude skill that explains an idea by building it as a real, working object + Crafted, interactive isometric figures with many small precise parts, in SVG, WebGL and 3D + Ask Claude for a figure that explains a technical idea, and Anatomy has it invent a physical thing whose working <em>is</em> the concept. A cache key that skips work when nothing changed becomes a pin-tumbler lock that only turns when every pin matches. One GPU context serving many canvases becomes a gantry plotter whose single print head visits 16 wells + Then Claude builds that thing out of dozens of small, solid, shaded parts, puts it in a framed card with a title, a hint and a live readout, makes it move calmly under the pointer and the keyboard, and checks its own work by zooming in on every joint + Every number the figure shows comes from the same small model that moves its parts + Quick start npx skills add wheresryan22/anatomy -g -a claude-code + /anatomy explain how a token bucket rate limiter works, interactive + That's it. No API keys and nothing to npm install: the kit uses only Node's built-in modules + examples/raptor-engine Raptor 2 test stand firing Pc 300 bar 230 tf + light theme + firing + the engine and stand are SVG; the plume is a WebGL shader in the same isometric camera + JavaScript · MIT · 1737 KB + 4 days 3077⭐ ⑂234 fork/star 7.6%</strong>」严肃工程化形态——核心洞察 <strong>「Claude Code skill 从「写一段 Markdown 文字」推到「Claude 自己讲一个工作对象（token bucket = 弹子锁 + GPU context = gantry plotter + Raptor 2 test stand firing）+ 几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + framed card 标题/提示/实时读数 + 鼠标键盘动效 + Claude 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add -g -a claude-code + Node ≥20.10 + 0 依赖（只用 Node 内置模块）+ MIT」严肃工程化形态」</strong>。</p>
+<p><strong>架构师速览（anatomy）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 Claude Code skill（即「被加载到 Claude Code 的指令文件 + 配套渲染资产」），输入是用户 /anatomy 命令 + 一句技术概念描述，输出是单个 HTML + SVG + 可选 WebGL 的交互对象。仓库本身不包含 web 服务——它通过 npx skills add 安装到 Claude Code 的 skills 目录（<code>~/.claude/skills/anatomy/</code>）后由 Claude 调用，本质是一个文档 + 提示工程产物</td>
+<td>仅基于 README 「A Claude skill that explains an idea by building it as a real, working object」 + 「npx skills add wheresryan22/anatomy -g -a claude-code」 + 「No API keys and nothing to npm install: the kit uses only Node's built-in modules」+ size=1737KB 推断；具体 SKILL.md 指令格式、模板数量、Anthropic 官方 skills 协议兼容性未在档案中给出</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户输入技术概念 → skill 引导 Claude 构思一个物理对象（机制即概念）→ 拆成几十个 solid shaded SVG 小件 → 同一 isometric 相机（可选 WebGL shader plume）→ framed card 标题/提示/实时读数 → 鼠标键盘动效 → 数字统一由一个模型驱动部件 → 输出单个可嵌 HTML</td>
+<td>主路径来自 README 「Ask Claude... Anatomy has it invent a physical thing whose working <em>is</em> the concept... dozens of small, solid, shaded parts... framed card with a title, a hint and a live readout... zoom in on every joint... number comes from the same small model that moves its parts」</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>教学表达力 vs 渲染复杂度 vs 「数字来自同一模型」的可维护性：每个概念都要重画一个全新物体对象，没有可复用模板（README 明示「Claude invents」是 LLM 实时生成），依赖 Claude 对 LLM 的指令质量而非预制模板</td>
+<td>权衡来自 README 「Claude invents a physical thing... checks its own work by zooming in on every joint」；具体的 SKILL.md 提示工程、token 经济性、未在档案中验证</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在本地 Claude Code 安装（<code>npx skills add wheresryan22/anatomy -g -a claude-code</code>），执行 <code>/anatomy explain how a token bucket rate limiter works, interactive</code>，预期产出 1 个 HTML 单页（含 SVG + 可选 WebGL shader）；验证：是否真的用「弹子锁」物件可视化、是否数字与模型一致、是否 framerate 在 60fps</td>
+<td>PoC 流程由 README Quick start 段落给出；产出质量、shaders 是否默认启用、是否需要 WebGL 能力 fallback 均未在档案中明确</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；「数字来自同一模型」「自己缩到关节自检」由 README 直接叙述，未做单条规则测试</td>
+<td>待核验：skill 安装目录结构、是否需要 Anthropic Skill 协议 register、token 成本、shaders 启用条件、跨浏览器兼容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2tcchen2026vibeoffice-office-2003-lossless-save-86">趋势 2：tcchen2026/VibeOffice 浏览器 Office 2003 + lossless save 严肃工程化（趋势分 86）</h3>
+<p><code>tcchen2026/VibeOffice</code> 4 天 545⭐ ⑂88 fork/star 16.1% 把「浏览器 office」从「TinyMCE + SheetJS + 笨 demo / Microsoft 365 强账号 / LibreOffice 桌面安装 / OnlyOffice 服务化」推到「<strong>VibeOffice + A free office suite that runs in your browser, in the style of Office 2003. Nothing to install, no account, no server: documents are opened, edited and saved on your own computer + A word processor, a spreadsheet and a presentation editor that run in your browser + They open and save real .docx, .xlsx and .pptx files + Lossless editing + The goal: edit a Word, Excel or PowerPoint file here, save it in the same format, and send it to someone who uses Microsoft Office + What VibeOffice can't edit for now, it keeps. VBA macros, embedded objects, SmartArt in layouts it does not have, video and audio, ink, 3-D models, custom XML and Office's newer extensions are written back byte for byte + Edits change only what you changed + Each app's own features survive + Word content controls and their data bindings, comments, watermarks, section and numbering properties + Excel pivot tables (refreshed by Excel when their source changed), slicers and timelines, threaded comments with @mentions, form controls, query tables + PowerPoint media, sections and custom shows, comments, unused slide layouts, tags, actions and effects + Nothing lost silently. If a save would drop something you would miss, the Compatibility Checker will show a warning + 4,697 real files from public test collections (LibreOffice, Apache POI, Open XML SDK) are opened, saved, edited, undone and recovered, and every save is compared with the original + Quire .docx .docm + .dotx .dotm + .rtf + .htm + .txt + Markdown (.md, or .zip with pictures); PDF + Ledger .xlsx .xlsm + .xltx .xltm + .csv + XML Spreadsheet 2003 + .htm; PDF + Lectern .pptx .pptm + .ppsx + .ppsm + .potx + .potm; PDF, PNG, .htm + Start Center vibeoffice.work + Recent Files + 纯 HTML/JS 无 build + Chrome/Edge 安装 + AGENTS.md 设计规则 + JavaScript · Apache-2.0 · 7174 KB + 4 days 545⭐ ⑂88 fork/star 16.1%</strong>」严肃工程化形态——核心洞察 <strong>「浏览器 office 从「TinyMCE + SheetJS demo / 强账号 Microsoft 365 / 桌面 LibreOffice / 服务化 OnlyOffice」推到「Quire（word + .docx/.docm/.dotx/.dotm/.rtf/.htm/.txt/Markdown 含图 zip/PDF）+ Ledger（spreadsheet + .xlsx/.xlsm/.xltx/.xltm/.csv/XML Spreadsheet 2003/.htm/PDF）+ Lectern（presentation + .pptx/.pptm/.ppsx/.ppsm/.potx/.potm/PDF/PNG/.htm）三件套 + Office 2003 经典 UI（菜单/工具栏/任务窗格）+ lossless save 改了什么写什么——VBA macro/SmartArt/视频音频/ink/3-D/custom XML 字节级保留 + 每个 app 自己特性存活（Word content control + Excel pivot/slicer/timeline/threaded comments/query tables + PowerPoint 媒体/区段/自定义放映/comment/unused layout/动作/效果）+ Compatibility Checker 警告 + 4,697 真实文件 LibreOffice/POI/Open XML SDK 端到端测 + 纯 HTML/JS 无 build + Chrome/Edge 可安装 .docx/.xlsx/.pptx + Apache-2.0 + vibeoffice.work」严肃工程化形态」</strong>。</p>
+<p><strong>架构师速览（VibeOffice）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个静态网站（<code>vibeoffice.work</code>）+ 三个纯前端应用（Quire word / Ledger spreadsheet / Lectern presentation），无 build 步骤、无后端服务器、无账号体系；用户文件从本机 File System Access API（Chrome/Edge）或 <code>&lt;input type=file&gt;</code> + 下载流进入，全程不出浏览器</td>
+<td>仅基于 README 「Nothing to install, no account, no server: documents are opened, edited and saved on your own computer」+ 「plain HTML and JavaScript with no build step」 + 「In Chrome or Edge, install it from the Start Center. It then opens .docx, .xlsx and .pptx files from your file manager」；具体 File System Access API 依赖、Chrome/Edge 版本下限未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户打开 Start Center → 选 Recent Files / 新建空白 / 模板 → 选应用（Quire/Ledger/Lectern）→ 打开 .docx/.xlsx/.pptx → 解析（自研 OOXML 解析器，不是直接套用 mammoth/xlsx-style 库）→ 渲染 Office 2003 风格 UI → 用户编辑 → lossless save（只序列化用户改过的部分，未编辑字节级透传）→ 输出 .docx/.xlsx/.pptx → Compatibility Checker 报告</td>
+<td>主路径为档案语义抽象；具体 OOXML 解析/序列化库选择、partial diff 算法、Compatibility Checker 实现细节均待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>真·毫无保留 .docx 兼容性（License + Excel pivot PowerPoint + PowerPoint 媒体保留） vs 渲染层重写工作量 vs 「4,697 真实文件 LibreOffice/POI/Open XML SDK 端到端测」压力测试覆盖率 vs Office 2003 经典 UI 对触控屏用户体验</td>
+<td>权衡来自 README 「What VibeOffice can't edit for now, it keeps... VBA macros, embedded objects, SmartArt in layouts it does not have, video and audio, ink, 3-D models, custom XML and Office's newer extensions are written back byte for byte」 + 「4,697 real files from public test collections」 + 「Office 2003 look」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>访问 vibeoffice.work Start Center → 选 <code>.docx</code> 模板 → 输入文字 → save 下载 .docx → 用 Microsoft Word 打开验证不报错；同 spreadsheet 用 ledger 模板跑 pivot / 用 presentation 加一张未支持的 SmartArt → 验证是否真「字节级保留」+ Compatibility Checker 是否触发</td>
+<td>PoC 由 README Quire/Ledger/Lectern 段落 + docs/LOSSLESS_SAVE.md 推断；具体已知限制清单与 Compatibility Checker 触发条件未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；4,697 测试数字、Apache-2.0、Office 2003 UI 风格由 README 直接叙述</td>
+<td>待核验：渲染层是否纯前端（无 WebAssembly 加速）、是否支持协同编辑、Chrome/Edge 之外浏览器兼容策略、Office UI 控件库来源（自研/CodeMirror/ProseMirror 等）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3wesbosphoto-frame-dashboard-android-photo-frame-reverse-engineer-80">趋势 3：wesbos/photo-frame-dashboard Android photo frame reverse engineer 三机笔记严肃工程化（趋势分 80）</h3>
+<p><code>wesbos/photo-frame-dashboard</code> 4 天 742⭐ ⑂53 fork/star 7.1% 把「Android photo frame」从「厂商锁定 + 永远显示 slideshow + 无法装其他 launcher」推到「<strong>Getting ADB, root, backups and custom apps onto locked-down Android photo frames (Skylight Calendar, BIUFRAME) + YouTube video + Amazon aff link + 三机笔记——Skylight Calendar 15" Rockchip RK3566 Android 12 home app + BIUFRAME 10.1" Rockchip RK3126 Android 6.0.1 + PF1007L 10.1" Allwinner A33 Android 6.0.1 AiMOR home app + 同一 Amazon listing 不同板警告（Settings → About 检 firmware string） + ADB/root/备份方法（Rockusb loader + patched RAM helper 越过 32MiB + U-Boot ums disk + SD 卡 boot patch + dd over ADB as root + /force_debuggable 加到 boot ramdisk） + launcher/browser/WebView 106/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + pf1007l-start-here.md + biuframe-setup-guide.md + aimor-remote-root-shell.md（PF1007L 厂商 app 接受远端 root shell，上线前关掉） + For agents 段 + Python · 无 license · 664 KB + 4 days 742⭐ ⑂53 fork/star 7.1%</strong>」严肃工程化形态——核心洞察 <strong>「Android photo frame 从「厂商锁定 + 永远 slideshow」推到「完整 reverse engineer 三机笔记（Skylight Calendar 15" Rockchip RK3566 + BIUFRAME 10.1" Rockchip RK3126 + PF1007L Allwinner A33）+ ADB/root/备份（Rockusb loader + patched RAM helper 越过 32MiB + U-Boot ums disk + SD 卡 boot patch + /force_debuggable + dd over ADB）+ launcher/browser/WebView 106/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + 真实文档 + AGENTS.md 给 agent 读 + PF1007L 厂商 app 远端 root shell 警告」严肃工程化形态」</strong>。</p>
+<p><strong>架构师速览（photo-frame-dashboard）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一组 ADB/root/备份文档（pf1007l-start-here.md + biuframe-setup-guide.md + aimor-remote-root-shell.md 等）+ 一个 Cloudflare Workers 部署的家庭 dashboard Vite web app（dashboard/）+ 一个无 Gradle 的 WebView Android kiosk app（dashboard/kiosk/）+ YouTube video demo + Amazon aff link。仓库本身是笔记 + 一个 web dashboard + 一个 kiosk app 三个产物</td>
+<td>仅基于 README 「Notes and scripts from getting full control of locked-down Android displays: getting ADB, backing up the firmware, getting root, removing the vendor app, and running our own launcher, browser and kiosk app」 + 「dashboard/ is the family dashboard we run on the BIUFRAME (it uses mock data). It is a Vite web app deployed to Cloudflare Workers」 + 「dashboard/kiosk/: a small full-screen WebView Android app, built without Gradle」</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户买 Skylight/BIUFRAME/PF1007L 任一板 → 按 firmware 走对应 setup guide → 通过 USB cable（注意 USB-C to USB-C 不行 / 用 USB-A to USB-C） → 解锁 ADB（5-tap 隐藏菜单 / U-Boot 改 ramdisk） → 备份固件（Rockusb loader 越过 32MiB 或 U-Boot ums disk 或 dd over ADB as root） → 拿 root（patched /force_debuggable + adb root 或 SuperSU） → 删厂商 app（注意 PF1007L 厂商 app 有远端 root shell） → 装自家 launcher/browser/WebView 106/kiosk app → Vite dashboard 部署到 Cloudflare Workers → kiosk app 全屏 WebView 指向 dashboard</td>
+<td>主路径为 README 「How we got ADB / Backup / Root / End result」 表格整理；具体 U-Boot patch 细节、kiosk app 握两指 1.5s 退 launcher 实现未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>笔记本级别的 reverse engineer 深度 vs 同一 Amazon listing 不同板带来的兼容性风险（README 明示警告） vs 安全风险（PF1007L 厂商 app 接受远端 root shell） vs 是否值得为全家 dashboad 自部署 Vite + Cloudflare Workers + kiosk app</td>
+<td>权衡来自 README 「Frames sold under the same name can have different boards and firmware. These are not universal flashing guides」 + 「The vendor app on it accepts root shell commands from the vendor's server, so read aimor-remote-root-shell.md before it goes online. Do not run the Rockchip setup script on it」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在已有 ADB 权限的 Android 设备（甚至模拟器）上跑 <code>dashboard/kiosk/</code> 全屏 WebView Android app + <code>dashboard/</code> 本地 Vite dev server，验证 2-finger hold 1.5s 退 launcher；非必须真机 Android photo frame 试验（避免 brick）</td>
+<td>PoC 由 README 「Hold two fingers still for 1.5 s to exit to the launcher」 + 「built without Gradle」 推断；具体 kiosk app 启动行为、Android 版本下限未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；三机笔记由 README 表格直接整理</td>
+<td>待核验：dashboard/ Cloudflare Workers 部署脚本、kiosk app 启动方式、WebView 106 是哪个 Android 版本范围、Rockusb loader patched RAM helper 是否开源</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4t4t5omdrop-owl-linux-airdrop-84">趋势 4：t4t5/omdrop-owl Linux AirDrop 严肃工程化持续（趋势分 84）</h3>
+<p><code>t4t5/omdrop-owl</code> 4 天 2061⭐ ⑂144 fork/star 7.0% 把「Linux AirDrop」从「Framework 13 + MT7925e 上不可能 / Linux 笔记本用户无法原生分享到 iPhone」推到「<strong>omdrop-owl + airdrop for non-apple devices + omdrop-plugin × omdrop-awdl × owl 三仓分工 + AWDL userspace OWL on AP channel 6/44/149 + monitor interface 携带 station MAC 让 MT7925e station interface ACK 手机 unicast + intersect -S 只广告手机 slot + 无 active monitor + sibling license NOASSERTION + Framework 13 MT7925e 实测 AirDrop 双向工作 + Shell · NOASSERTION (sibling) · 75 KB + 4 days 2061⭐ ⑂144 fork/star 7.0%</strong>」增长持续形态——核心洞察 <strong>「Linux AirDrop 从「Framework 13 上不可能」推到「omdrop-plugin × omdrop-awdl × owl 三仓协同 + AWDL userspace OWL + monitor interface 携带 station MAC + station interface ACK + intersect -S 只广告手机 slot + sibling license + MT7925e 实测」增长持续形态」</strong>。</p>
+<h3 id="5storytoldcraft-launcher-rust-adobemicrosoftavid-82">趋势 5：storytold/craft-launcher Rust Adobe/Microsoft/Avid 全家桶一键安装更新（趋势分 82）</h3>
+<p><code>storytold/craft-launcher</code> 3 天 1155⭐ ⑂409 fork/star 35.4% 把「Rust 重实现 Adobe/Microsoft/Avid 全家桶」从「8 库各自 GitHub release 下载」推到「<strong>Craft App Launcher + One place to install, update and open every app in the Craft App Suite, rebuilt in pure Rust + PhotoCraft/LightCraft/FilmCraft/DesignCraft/VectorCraft/PdfCraft/EffectCraft/WordCraft/DeckCraft/GridCraft/CADCraft/SoundCraft 12 个 app + 100% Rust + 跨 macOS/Windows/Linux/FreeBSD/Web-native + Apache-2.0/MIT + 早期 alpha + Discord 社区 + getartcraft.com 全家桶 + grid view（dark theme card + icon/status/version/release date + Install/Open 按钮） + 选对 build + Download ArtCraft Launcher link + artcraft-launcher-grid.png 截图 + Rust · MIT OR Apache-2.0 · 5000 KB + 3 days 1155⭐ ⑂409 fork/star 35.4%</strong>」形态——核心洞察 <strong>「Rust 重实现 Adobe/Microsoft/Avid 全家桶从「8 库各自下载」推到「ArtCraft Launcher 一键安装/更新/打开 + 12 个 app（PhotoCraft/LightCraft/FilmCraft/DesignCraft/VectorCraft/PdfCraft/EffectCraft/WordCraft/DeckCraft/GridCraft/CADCraft/SoundCraft）+ 跨 macOS/Windows/Linux/FreeBSD/Web-native + Apache-2.0/MIT 双重许可 + 早期 alpha + Discord 社区 + getartcraft.com 全家桶」形态」</strong>。</p>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li>
+<p><strong>Claude Code skill 物化技术概念（anatomy 上线）。</strong> <code>wheresryan22/anatomy</code> 4 天 3077⭐ 把 Anthropic Skills 协议的潜力显式化——Claude 不只写文字，还能讲一个工作对象（token bucket = 弹子锁、GPU context = gantry plotter、Raptor 2 test stand firing）作为「机制即概念」。这与 <code>storytold/craft-launcher</code>、<code>anthropics/oss-scanner</code>、<code>anthropics/skills</code> 形成完整的 skill 生态。</p>
+</li>
+<li>
+<p><strong>浏览器 office lossless save 严肃工程化（VibeOffice 上线）。</strong> <code>tcchen2026/VibeOffice</code> 4 天 545⭐ 把「TinyMCE + SheetJS demo / 强账号 Microsoft 365 / 桌面 LibreOffice / 服务化 OnlyOffice」推到「纯 HTML/JS 无 build + 4,697 真实文件 LibreOffice/POI/Open XML SDK 端到端测 + VBA macro 字节级保留 + Office 2003 经典 UI + Chrome/Edge 可安装」。这是除 Microsoft 365 / OnlyOffice / LibreOffice Online 之外首次严肃的「无服务器、无账号、纯前端」路径。</p>
+</li>
+<li>
+<p><strong>Android photo frame 完整 reverse engineer（photo-frame-dashboard 上线）。</strong> <code>wesbos/photo-frame-dashboard</code> 4 天 742⭐ 把 Skylight/BIUFRAME/PF1007L 三机的 ADB/root/备份/launcher 全部严肃工程化——同一 Amazon listing 不同板警告 + PF1007L 厂商 app 远端 root shell 警告是认真做安全的标志。</p>
+</li>
+<li>
+<p><strong>Linux AirDrop 严肃工程化增长持续（omdrop-owl 跟进）。</strong> <code>t4t5/omdrop-owl</code> 4 天 2061⭐（前一日 1323⭐，增速 +738⭐/天 ⑂fork/star 稳定 7%）反映 Linux + Framework 13 + MediaTek MT7925e 用户群体对 AirDrop 的真实刚需。</p>
+</li>
+<li>
+<p><strong>storytold ArtCraft Rust 全家桶 + Launcher 一键安装更新（craft-launcher 上线）。</strong> <code>storytold/craft-launcher</code> 3 天 1155⭐ ⑂409 fork/star 35.4% 把 ArtCraft 12 库（PhotoCraft/LightCraft/FilmCraft/DesignCraft/VectorCraft/PdfCraft/EffectCraft/WordCraft/DeckCraft/GridCraft/CADCraft/SoundCraft）从「8 库各自下载」推到「Launcher 一键 install/update/open + 跨 macOS/Windows/Linux/FreeBSD/Web-native + Apache-2.0/MIT 双重许可 + Discord 社区 + getartcraft.com 全家桶」形态。</p>
+</li>
+</ol>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="top-1wheresryan22anatomyclaude-code-skill">Top 1：wheresryan22/anatomy——Claude Code skill 物化技术概念</h3>
+<ul>
+<li><strong>架构亮点：</strong> 用 Claude 作为「教学物化」引擎——L发明物理对象（token bucket = 弹子锁），L自动拆分 SVG 小件，L自动渲染 isometric 相机，L自检缩关节。所有数字（cache key 状态、gantry 喷头位置、Raptor 2 Pc 300 bar 230 tf）来自同一模型驱动部件。</li>
+<li><strong>差异点：</strong> 区别于 Mermaid（静态图）、Manim（视频渲染）、artifacts-of-thought（多模态输出），Anatomy 把「工作对象的视觉表达」作为一等公民——读数 + 动效 + 自检 + 0 依赖。</li>
+<li><strong>可借鉴：</strong> 任何团队文档/技术博客/landing page 都可植入 <code>/anatomy</code> skill 把抽象概念物化。</li>
+<li><strong>风险点：</strong> token bucket、gantry、Raptor 2 是 README 给的 examples，其他概念（数据库索引、CAP、cache coherence）物化效果未在档案中验证；shaders 是否默认启用、WebGL 兼容性 fallback 未在档案中明示。</li>
+</ul>
+<h3 id="top-2tcchen2026vibeoffice-office-2003-lossless-save">Top 2：tcchen2026/VibeOffice——浏览器 Office 2003 + lossless save</h3>
+<ul>
+<li><strong>架构亮点：</strong> 三个独立应用（Quire/Ledger/Lectern）+ Office 2003 经典 UI + lossless save 算法（只序列化用户改过部分，未编辑字节级透传）+ Compatibility Checker 警告 + 4,697 真实文件 LibreOffice/POI/Open XML SDK 端到端测 + 纯 HTML/JS 无 build + AGENTS.md 设计规则。</li>
+<li><strong>差异点：</strong> 区别于 Microsoft 365（强账号 + 服务化）、LibreOffice（桌面安装）、OnlyOffice（服务端）、TinyMCE（不是真 .docx 解析），VibeOffice 是首次严肃的「无服务器 + 无账号 + 纯前端 + Apache-2.0」路径。</li>
+<li><strong>可借鉴：</strong> 任何团队可自部署 VibeOffice 作为内部 office 工具，无需付费 Microsoft 365 即可打开/编辑/保存 .docx/.xlsx/.pptx。</li>
+<li><strong>风险点：</strong> Office UI 控件库来源（自研/CodeMirror/ProseMirror）未在档案中明示；具体 OOXML 解析/序列化库选择、partial diff 算法未在档案明示；协同编辑未在档案中提及；Chrome/Edge 之外浏览器兼容策略未在档案明示。</li>
+</ul>
+<h3 id="top-3wesbosphoto-frame-dashboardandroid-photo-frame">Top 3：wesbos/photo-frame-dashboard——Android photo frame 三机笔记</h3>
+<ul>
+<li><strong>架构亮点：</strong> 三个真实机型的 ADB/root/备份/launcher 严肃工程化笔记——Skylight Calendar 15"（RK3566）+ BIUFRAME 10.1"（RK3126）+ PF1007L 10.1"（A33）+ Cloudflare Workers 部署的家庭 dashboard Vite app + 无 Gradle 的 WebView Android kiosk app + 握两指 1.5s 退 launcher。</li>
+<li><strong>差异点：</strong> 区别于「跑一个 launcher 替代品」博客教程，photo-frame-dashboard 是「完整 reverse engineer 三机 + 真实文档 + AGENTS.md 给 agent 读 + 安全警告（PF1007L 厂商 app 远端 root shell）」。</li>
+<li><strong>可借鉴：</strong> 任何拥有 Skylight/BIUFRAME/PF1007L 的家庭可按 setup guide 解锁 photo frame 为家庭 dashboard（待办、日历、天气、相册）。</li>
+<li><strong>风险点：</strong> 同一 Amazon listing 不同板带来兼容性风险（README 明示警告）；brick 风险（若 U-Boot patch 错误可能变砖）；PF1007L 厂商 app 远端 root shell 警告必须遵守。</li>
+</ul>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- <strong>anatomy 物化质量不稳定：</strong> 依赖 Claude 实时发明物理对象，对 LLM 能力敏感；如果 LLM 在某些概念（数据库事务、编译器优化）上无识别度，产出会很弱；shaders 是否默认启用、WebGL fallback 未在档案明示
+- <strong>VibeOffice 渲染路径未表达：</strong> OOXML 解析/序列化库选择、partial diff 算法、Compatibility Checker 实现细节均待核验；Office UI 控件库来源未在档案明示；协同编辑、跨浏览器兼容策略未在档案明示
+- <strong>photo-frame-dashboard brick 风险：</strong> 同一 Amazon listing 不同板带来兼容性风险，U-Boot patch 错误可能 brick；PF1007L 厂商 app 远端 root shell 是真实安全漏洞</p>
+<p><strong>机遇：</strong>
+- <strong>Claude Code skill 物化技术概念</strong> 是 Anthropic Skills 协议的杀手级演示——团队文档、技术博客、landing page 都会跟进
+- <strong>浏览器 office lossless save</strong> 给「无服务器 + 无账号 + 纯前端」严肃路径，对中小团队、私密场景、自托管场景价值显著
+- <strong>Android photo frame reverse engineer</strong> 给 Linux/Android 极客家庭 dashboard 自部署机会</p>
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li><a href="../projects/anatomy.md"><code>projects/anatomy.md</code></a> — wheresryan22/anatomy（新增）</li>
+<li><a href="../projects/vibeoffice.md"><code>projects/vibeoffice.md</code></a> — tcchen2026/VibeOffice（新增）</li>
+<li><a href="../projects/photo-frame-dashboard.md"><code>projects/photo-frame-dashboard.md</code></a> — wesbos/photo-frame-dashboard（新增）</li>
+<li><a href="../projects/omdrop-owl.md"><code>projects/omdrop-owl.md</code></a> — t4t5/omdrop-owl（已有，本日 +738⭐）</li>
+<li><a href="../projects/craft-launcher.md"><code>projects/craft-launcher.md</code></a> — storytold/craft-launcher（新增）</li>
+</ul>
+<hr />
+<p><em>证据边界：本文档核心数据来源为 2026-10-12 抓取的 GitHub Search API + Repository API 公开元数据（经 gh CLI token 认证，绕开未认证 60 req/h 速率限制）+ 各项目 README raw 接口摘录。"X 天 Y⭐"为粗略下限估计（总星数 / 经过天数），非精确单日增量统计。所有"严肃工程化形态"判断基于 README 描述的功能广度与技术深度，stars_delta 为相对增速（fork/star %），不当则为挥发性描述。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
