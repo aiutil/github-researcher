@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-12.md">最新日报</a> ·
+  <a href="daily/2026-10-13.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-12
+## 最新研究 · 2026-10-13
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 5 | 699 | 5 | 1300k+ |
+| 4 | 703 | 4 | 1500k+ |
 
-**今日核心判断：** wheresryan22/anatomy 4 天 3077⭐ 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图」推到「Claude 自己讲一个工作对象——token bucket = 弹子锁 + GPU context = gantry plotter + Raptor 2 test stand——用几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + 标题/提示/实时读数卡片 + 鼠标键盘动效 + 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add + 0 依赖 + MIT」严肃工程化形态 · tcchen2026/VibeOffice 4 天 545⭐ 把「浏览器 office」从「TinyMCE + SheetJS + 笨 demo」推到「Quire/Ledger/Lectern 三件套 + Office 2003 UI（菜单/工具栏/任务窗格）+ 真实 .docx/.xlsx/.pptx + lossless save 改了什么写什么——VBA macro/SmartArt/视频音频/ink/3-D/custom XML 字节级保留 + 每个 app 自己特性存活（Word content control / Excel pivot slicer / PowerPoint 媒体区段）+ Compatibility Checker 4,697 个文件 LibreOffice/POI/Open XML SDK 端到端测 + 纯 HTML/JS 无 build + Chrome/Edge 可安装 + Apache-2.0 + vibeoffice.work」严肃工程化形态 · wesbos/photo-frame-dashboard 4 天 742⭐ 把「Android photo frame」从「厂商锁定 + 永远显示 slideshow」推到「完整 reverse engineer——Skylight Calendar 15" Rockchip RK3566 + BIUFRAME 10.1" Rockchip RK3126 + PF1007L Allwinner A33 三机笔记 + ADB/root/备份（Rockusb loader+patched RAM helper 越过 32MiB+ums disk）/launcher/browser/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + 真实文档 + 给 agent 读的 AGENTS.md」严肃工程化形态 · t4t5/omdrop-owl 4 天 2061⭐ 把「Linux AirDrop」从「Framework 13 上不可能」推到「omdrop-plugin × omdrop-awdl × owl 三仓分工 + AWDL userspace OWL on AP channel 6/44/149 + monitor interface 携带 station MAC 让 MT7925e station ACK + intersect -S 只广告手机 slot + no active monitor + sibling license」增长持续形态 · 延续跟踪 tcchen2026/VibeOffice → 4 天 545⭐ ⑂88 fork/star 16.1%（Apache-2.0 office 套件 lossless save）+ wheresryan22/anatomy → 4 天 3077⭐ ⑂234 fork/star 7.6%（Claude skill isometric SVG + WebGL shader + 0 依赖）+ storytold ArtCraft 8 库 Rust 100% Adobe/Microsoft/Avid 重实现全家桶 + ArtCraft Launcher 1155⭐ ⑂409 fork/star 35.4%（craft-launcher 一键安装更新跨 OS）+ HelixDB/helix-foundry 持续（5 天 1000+⭐）+ openai/math 持续（6 天 14000+⭐）+ rociiu/talorys 持续（2 天 700+⭐）+ c22dev/muguet 持续（2 天 400+⭐）+ mhtsec/ARTEX 持续（4 天 3000+⭐）+ anthropics/oss-scanner 持续 + pingdotgg/ts-rust 持续——5 条新主线严肃工程化：（A wheresryan22/anatomy Claude Code skill 把「技术概念」物化成 isometric SVG/WebGL 工作对象 + 0 依赖 + MIT）+（B tcchen2026/VibeOffice 浏览器内 Office 2003 + lossless save + 4697 真实文件 LibreOffice/POI/Open XML SDK 测 + Apache-2.0）+（C wesbos/photo-frame-dashboard Android photo frame reverse engineer 三机笔记 + ADB/root/launcher/browser/kiosk 自跑 + 真实文档）+（D storytold ArtCraft Launcher 跨 macOS/Windows/Linux/FreeBSD/Web-native 一键安装更新 8 库 Rust 100% Adobe/Microsoft/Avid）+（E t4t5/omdrop-owl + omdrop-plugin + omdrop-awdl + owl Linux AirDrop 严肃工程化三仓协同）。
+**今日核心判断：** liseami/CCBaga 2 天 1572⭐ 把「Claude identity 切换 + 浏览器 fingerprint + 系统区域设置 + VPS/代理网络配置」从「散装脚本 + 桌面工具零散」推到「CCBaga-A × CCBaga-B 双应用分工 + Rust + Tauri 2 跨 macOS/Linux/Windows + React 19 + Cromma UI + Objective-C/Security/CoreLocation 桥 + Fingerprint Chromium 独立 profile + AI Network Skill（Agent Skills 协议 + Debian 12/13 Xray/Reality）+ .baga 加密身份容器 + 真实浏览器测量 + 仅 $7 ESP32-S3 / One region selector / Four everyday actions」严肃工程化形态 · jhaizhou-ops/d2r-mobile 1 天 650⭐ 把「D2R 移动版」从「不可能 / 模拟器 / 云游戏」推到「原生 aarch64 跑 Switch 版的 D2R 自身程序 + iOS 26 Metal 重写图形 API + 离线 shader 翻译 + 44 台 iPhone/iPad closed beta 全通关 + Touch 控制方案 + 60fps + 3.8W 整机功耗 + Bring your own game files + MIT」严肃工程化形态 · zhuyansen/new-term-radar 1 天 510⭐ 把「AI 新词发现」从「Google Trends step 5 慢 14 天」推到「X accounts + Hugging Face trending + GitHub breakout + sitemaps + 14 天后回看 + 5 个信号源 + 1 个 AIsa 单一 key + 报告三栏（candidate + others + 14-day review）+ 实测 Niko1221/Strata 早 3 天发现 + Python 标准库 + GitHub Actions」形态 · onehumanbeing/esp32-iphone-agent 1 天 500⭐ 把「AI 用 iPhone」从「XCTest + WebDriverAgent + Mac + Xcode + Apple 开发者账号 + 签名 + 7 天过期」推到「ESP32-S3 7 美元 USB HID 桥 + UxPlay AirPlay 屏幕镜像 + GStreamer → JPEG + planner/actor 双模型 + 同一坐标 + 抖针自动校准 + iOS AssistiveTouch 鼠标模拟 + 任何 OpenAI 兼容视觉模型 + 适用所有 app（含游戏）+ 无需 Mac / 无需开发者账号 / 无需越狱」严肃工程化形态 · 延续跟踪 wheresryan22/anatomy → 5 天 6029⭐ ⑂429 fork/star 7.1%（Claude skill isometric SVG + WebGL shader + 0 依赖）+ t4t5/omdrop-owl → 5 天 2439⭐ ⑂175 fork/star 7.2%（Linux AirDrop AWDL + MT7925e）+ noahdunnagan/fsearch → 5 天 1961⭐ ⑂130 fork/star 6.6%（macOS 整盘 0.1ms 模糊搜索 + content grep + MCP server）+ ARahim3/DigUp → 5 天 1842⭐ ⑂135 fork/star 7.3%（EmbeddingGemma 2 on-device 多模态文件搜索）+ storytold/craft-launcher → 4 天 1771⭐ ⑂601 fork/star 34.0%（Rust 全家桶 Launcher）+ wesbos/photo-frame-dashboard → 5 天 932⭐ ⑂97 fork/star 10.4%（三机 Android photo frame reverse engineer）+ rociiu/talorys → 3 天 891⭐ ⑂74 fork/star 8.3%（Cloudflare personal AI agent）+ zeusinsight/FinderSearch → 4 天 645⭐ ⑂16 fork/star 2.5%（macOS 原生 Finder + fsearch 内核）+ c22dev/muguet → 3 天 532⭐ ⑂155 fork/star 29.1%（GTA V Mach-O 移植 iOS/macOS 多人）+ jwuthri-cloud/Tracely-ai → 2 天 481⭐ ⑂69 fork/star 14.3%（Trace-native CI/CD for AI agents，failure → regression test → CI gate → alert）+ storytold/photocraft 持续（13 天 53041⭐）+ storytold/wordcraft 持续（6 天 8945⭐）+ browser-use/jev-ultrafast 持续（27 天 22742⭐）+ Niko1221/Strata 持续（19 天 22648⭐）+ shihabal3amri/DiPlay 持续（19 天 9911⭐ CarPlay 独立接收器）+ yetone/magpie 持续（20 天 10335⭐ 菜单栏模型路由）+ T-Auto/dsh-ops 持续（5 天 682⭐ DSH 低层操作工具）+ Ebony-Vinyl/dsh-our-free-model 持续（19 天 11831⭐ DeepSeek V4.1 Flash + Kimi K3 免费模型 plugin）
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [wheresryan22/anatomy](projects/anatomy.md) | 3077 stars | 工具型 |
-| [tcchen2026/VibeOffice](projects/vibeoffice.md) | 545 stars | 工具型 |
-| [wesbos/photo-frame-dashboard](projects/photo-frame-dashboard.md) | 742 stars | 工具型 |
-| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 2061 stars | 工具型 |
-| [storytold/craft-launcher](projects/craft-launcher.md) | 1155 stars | 平台候选 |
+| [liseami/CCBaga](projects/ccbaga.md) | 1572 stars | 工具型 |
+| [jhaizhou-ops/d2r-mobile](projects/d2r-mobile.md) | 650 stars | 工具型 |
+| [zhuyansen/new-term-radar](projects/new-term-radar.md) | 510 stars | 工具型 |
+| [onehumanbeing/esp32-iphone-agent](projects/esp32-iphone-agent.md) | 500 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **wheresryan22/anatomy 4 天 3077⭐ 把「Claude Code skill 解释技术概念」从「Markdown 段落 + Mermaid 静态图」推到「Claude 自己讲一个工作对象——token bucket = 弹子锁 + GPU context = gantry plotter + Raptor 2 test stand——用几十个 solid shaded SVG 小件 + 可选 WebGL shader plume + isometric 相机 + 标题/提示/实时读数卡片 + 鼠标键盘动效 + 自己缩到关节自检 + 数字来自同一模型驱动部件 + npx skills add -g -a claude-code + 0 依赖 Node 内置模块 + MIT」严肃工程化形态** · 相关项目：wheresryan22/anatomy · 强度：92
-2. **tcchen2026/VibeOffice 4 天 545⭐ 把「浏览器 office」从「TinyMCE + SheetJS + 笨 demo」推到「Quire/Ledger/Lectern 三件套 + Office 2003 UI（菜单/工具栏/任务窗格）+ 真实 .docx/.xlsx/.pptx + lossless save 改了什么写什么——VBA macro/SmartArt/视频音频/ink/3-D/custom XML 字节级保留 + 每个 app 自己特性存活（Word content control + Excel pivot/slicer/timeline/threaded comments + PowerPoint 媒体/区段/自定义放映/comment/unused layout/动作/效果）+ Compatibility Checker + 4697 真实文件 LibreOffice/POI/Open XML SDK 测 + 纯 HTML/JS 无 build + AGENTS.md + Chrome/Edge 可安装 .docx/.xlsx/.pptx + Apache-2.0 + vibeoffice.work」严肃工程化形态** · 相关项目：tcchen2026/VibeOffice · 强度：86
-3. **wesbos/photo-frame-dashboard 4 天 742⭐ 把「Android photo frame」从「厂商锁定 + 永远显示 slideshow」推到「完整 reverse engineer 三机笔记——Skylight Calendar 15" Rockchip RK3566 Android 12 + BIUFRAME 10.1" Rockchip RK3126 Android 6.0.1 + PF1007L 10.1" Allwinner A33 Android 6.0.1 AiMOR home app + ADB/root/备份（Rockusb loader + patched RAM helper 越过 32MiB + U-Boot ums disk + SD 卡 boot patch）+ launcher/browser/WebView 106/kiosk 自跑 + dashboard/ Vite + Cloudflare Workers + dashboard/kiosk/ WebView Android 无 Gradle + 握两指 1.5s 退 launcher + 真实文档 AGENTS.md + YouTube demo + pf1007l-start-here.md + biuframe-setup-guide.md + aimor-remote-root-shell.md（A33 厂商 app 接受远端 root shell，上线前关掉） + 同一 Amazon listing 不同板警告」严肃工程化形态** · 相关项目：wesbos/photo-frame-dashboard · 强度：80
-4. **t4t5/omdrop-owl 4 天 2061⭐ 把「Linux AirDrop」从「Framework 13 上不可能」推到「omdrop-plugin × omdrop-awdl × owl 三仓分工 + AWDL userspace OWL on AP channel 6/44/149 + monitor interface 携带 station MAC 让 MT7925e station interface ACK 手机 unicast + intersect -S 只广告手机 slot + 无 active monitor + sibling license NOASSERTION + brentkearney/jedbillyb 协作」增长持续形态** · 相关项目：t4t5/omdrop-owl · 强度：84
+1. **liseami/CCBaga 2 天 1572⭐ 把「Claude identity 切换 + 浏览器 fingerprint + 系统区域设置 + VPS/代理网络配置」从「散装脚本 + 桌面工具零散」推到「CCBaga-A × CCBaga-B 双应用分工 + Rust + Tauri 2 跨 macOS arm64（macOS 12+）/Linux x86_64 GTK 3 WebKitGTK 4.1/Windows 10/11 x86_64 + React 19 + TypeScript + Cromma UI + Objective-C/Security/CoreLocation 桥 + Linux/Windows Rust 桥 + Fingerprint Chromium 148.0.7778.215 独立 profile + AI Network Skill（Agent Skills 协议 + Python stdlib + OpenSSH + Bash + Xray/Reality 远程 setup + Debian 12/13 授权服务器）+ .baga 加密身份容器（authenticated encrypted）+ 一选区域 / 四日常动作（缓存清理 / fingerprint 旋转 / 时区语言重置 / 身份归档）+ 真实浏览器测量（exit/country/timezone/language/platform/CPU/engine/location）+ DNS/WebRTC leak 未独立验证 + 跨 macOS arm64 + Linux x86_64 + Windows 10/11 + MIT + 2 days 1572⭐ ⑂154 fork/star 9.8%」严肃工程化形态** · 相关项目：liseami/CCBaga · 强度：88
+2. **jhaizhou-ops/d2r-mobile 1 天 650⭐ 把「D2R 移动版」从「不可能 / 模拟器 / 云游戏 / Switch 模拟器」推到「原生 aarch64 跑 Switch release 3.3.94012 with Reign of the Warlock 自身程序 + iOS 26 iPhone/iPad + 100% aarch64 no emulated CPU + 几条不可移植指令重写其余字节原样 + 平台服务（系统调用/文件系统/图形 API/音频/输入）小宿主为 Apple 写 + 图形 API 完全重写为 Metal 无 emulation + 离线 shader 翻译 + Touch 完整控制方案 + edge-to-edge iPhone + iPad true full screen + 控制器支持 + 省电模式 + save sync + 英中双语 + 新 endgame modes + 60fps 不掉 + 主菜单到游戏 1 秒 + 整机 3.8W 功耗 + 44 iPhone/iPad closed beta（35 直装 + 9 TestFlight）全通关 Normal/Nightmare/Hell + Bring your own game files + 仓库不携带 game program/art/text/data table/shader 仅含 shader 接口描述/graphics API function table/程序内地址 + docs/DERIVED.md 列出 + MIT + 1 day 650⭐ ⑂282 fork/star 43.4%」严肃工程化形态** · 相关项目：jhaizhou-ops/d2r-mobile · 强度：86
+3. **zhuyansen/new-term-radar 1 天 510⭐ 把「AI 新词发现」从「Google Trends step 5 慢 14 天 / 关键词工具读 Google Trends」推到「X accounts 关注 + Hugging Face trending + GitHub breakout（一个 repo 起飞）+ sitemaps（其他站添加页面）+ 新域名已 rank + 14 天后 Google Trends 回看 + 1 个 AIsa key 涵盖 X posts/Google Trends/domain data/models + 候选 5 列（name / type / behind / daily / decision）+ 小模型 judge（specific name vs common word）+ evidence → phrases → screen → volume → trends 5 步生成 keyword table + report.md + radar.db + radar/usecases.py + 实测 Niko1221/Strata 早 3 天 + PhotoCraft/Claude Haiku 5.5/SynthID Detector 案例 + Python stdlib + GitHub Actions + 可选 GoAnyAPI key（30 天单国数据） + MIT + 1 day 510⭐ ⑂210 fork/star 41.2%」形态** · 相关项目：zhuyansen/new-term-radar · 强度：82
+4. **onehumanbeing/esp32-iphone-agent 1 天 500⭐ 把「AI 用 iPhone」从「XCTest + WebDriverAgent + Mac + Xcode + Apple 开发者账号 + 签名 + 7 天过期 + 装测试 app」推到「ESP32-S3 Seeed XIAO ESP32S3 ~$7 板子 USB HID 桥（鼠标 + 键盘） + UxPlay AirPlay 屏幕镜像 + GStreamer 管线 → JPEG + iOS AssistiveTouch 开 + 鼠标移动屏幕指针 + 电脑 Wi-Fi 控制 ESP32 执行 move/click/type + planner 模型写短期计划 + actor 模型看新截图 + 抖针 + 在镜像屏找指针 + 校准 + 每次动作后检查屏幕是否变 + 失败重试 + 重复动作触发重 plan + 任一 OpenAI 兼容视觉模型（云 API 或本地）+ USB-C 直插 / Lightning 需 Camera Adapter + Mac 或 Linux 电脑 + iOS 26+ + 适用所有 app（含游戏，因只见像素）+ 无需 Mac / 无需开发者账号 / 无需越狱 / 无需装 app + Python 3.10+ + Python 3.10+ + MIT + 1 day 500⭐ ⑂62 fork/star 12.4%」严肃工程化形态** · 相关项目：onehumanbeing/esp32-iphone-agent · 强度：84
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 | [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
-| [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 
 ## 为什么做这个项目
 

@@ -2,10 +2,10 @@
 title: "wesbos/photo-frame-dashboard"
 slug: photo-frame-dashboard
 date_added: "2026-10-12"
-last_seen_date: "2026-10-12"
+last_seen_date: "2026-10-13"
 category: "工具型"
 emoji: "🖼️"
-stars: "742 stars"
+stars: "932 stars"
 stars_delta: "4 天 742⭐ ⑂53 fork/star 7.1%（持续增长 + 真实 reverse engineer 严肃工程化承诺）"
 language: "Python"
 score: 80

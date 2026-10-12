@@ -1,11 +1,11 @@
 ---
 title: "c22dev/muguet"
 slug: muguet
-date_added: 2026-10-11
-last_seen_date: 2026-10-11
+date_added: "2026-10-11"
+last_seen_date: "2026-10-13"
 category: "工具型"
 emoji: "🎮"
-stars: "269 stars"
+stars: "532 stars"
 score: 85
 tags: ["muguet","c22dev","gta-v","mach-o","wasm","wasmtime","wgpu","metal","arm64-native","jit","ios-jit","udp-multiplayer","altstore","xcodegen","xcode-26","apple-silicon","macos-14","ios-15","gpl-3","2-days"]
 url: "https://github.com/c22dev/muguet"

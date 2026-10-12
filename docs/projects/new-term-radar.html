@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhuyansen/new-term-radar | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/zhuyansen/new-term-radar" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="zhuyansennew-term-radar">zhuyansen/new-term-radar</h1>
+<h2 id="_1">一句话定位</h2>
+<p>new-term-radar 是一个 Python stdlib 的 AI 新词雷达工具——5 个信号源（X 关注账号 + Hugging Face trending + GitHub breakout 一个 repo 起飞 + sitemaps 其他站添加页面 + 新域名已 rank）+ 14 天后 Google Trends 回看 + 1 个 AIsa key 涵盖 X posts / Google Trends / domain data / models + 候选三栏（candidate new terms + other rising terms + 14-day review verdict）+ decision 3 档（prioritize / watch / skip）——把 AI 新词发现从「Google Trends step 5 慢 14 天 / 关键词工具读 Google Trends」推到「5 个前置信号 + 14 天后回看 + 1 key 全包 + 三栏决策」严肃工程化形态。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026 年做 AI 工具站 SEO / newsletter / directory 的团队面临痛点：Google Trends 后知后觉（step 5 慢 14 天），关键词工具都读 Google Trends，新词出来 14 天后才知道。new-term-radar 直击：<strong>5 个前置信号（X 关注账号 + Hugging Face trending + GitHub breakout + sitemaps + 新域名）+ 14 天后回看 + 1 AIsa key 全包</strong>。解决的是「AI 新词发现比 Google Trends 早 3-14 天」严肃工程化问题。</p>
+<h2 id="2026-10-13">为什么值得关注（2026-10-13）</h2>
+<ul>
+<li><strong>Stars:</strong> 510（截至 2026-10-13），1 天 510⭐ ⑂210 fork/star 41.2%，<strong>增长率</strong> 41.2%（fork/star 反映社区参与，爆发极强）</li>
+<li><strong>Forks:</strong> 210，社区参与度极高（SEO / newsletter / directory 用户群庞大）</li>
+<li><strong>Size:</strong> 203 KB（小、轻、Python stdlib）</li>
+<li><strong>License:</strong> MIT</li>
+<li><strong>语言:</strong> Python（stdlib only）</li>
+<li><strong>活跃度:</strong> created 2026-10-12，pushed_at 2026-10-12，1 天爆发</li>
+<li><strong>依赖:</strong> Python 3.10+ + 仅标准库（No PyPI deps for the radar itself）；AIsa key 必需（X/Google Trends/domain data/models via DataForSEO）；GoAnyAPI key 可选（+30 天单国数据）</li>
+</ul>
+<h2 id="_3">热度来源判断</h2>
+<p>new-term-radar 的热度是 <strong>「AI 新词发现比 Google Trends 早 3-14 天 × 5 个前置信号源 × 14 天后回看 × 1 AIsa key 全包 × 三栏决策（prioritize/watch/skip）× 实测 Niko1221/Strata 早 3 天 × PhotoCraft/Claude Haiku 5.5/SynthID Detector 案例 × Python stdlib 轻量 × GitHub Actions 友好」</strong> 的组合。AI 工具站 SEO / newsletter / directory 团队庞大，对「先于 Google Trends 3-14 天发现新词」有强需求——new-term-radar 把「5 个前置信号 + 14 天后回看」严肃工程化，自然爆火。210 fork 是 SEO / newsletter / directory 用户群的网络效应。热度真实且具「AI 新词发现 + 早于 Google Trends」严肃工程化场景的强需求。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>5 个前置信号源：</strong> X accounts you follow + Hugging Face trending + GitHub one repo taking off + sitemaps of other sites + new domains that already rank</li>
+<li><strong>14 天后 Google Trends 回看：</strong> 报告 14 天后是否上升；hit rate per signal 自我校准</li>
+<li><strong>1 AIsa key 涵盖：</strong> X posts + Google Trends + domain data (DataForSEO behind) + 小模型 judge + 关键词表生成 models</li>
+<li><strong>候选 5 列：</strong> Keyword/Type（name or generic ⚠ or 🔎）/Behind/New?/Est. searches/day/Started rising/Peak vs gpts/Peak day/Last 7 vs 7 before/Now/Decision</li>
+<li><strong>小模型 judge：</strong> name of one specific thing, or a common word?（specific name → report + radar.db；common word → listed at the bottom）</li>
+<li><strong>evidence → phrases → screen → volume → trends 5 步生成 keyword table：</strong></li>
+<li><strong>Evidence:</strong> X 高级搜索最赞 posts + repo README</li>
+<li><strong>Phrases:</strong> 模型读 evidence 写普通用户关键词 + 引文 + ⚠ 标 built on 其他产品名 + 可选 🔎 Google Trends related queries</li>
+<li><strong>Screen:</strong> 第二调用评分 + 标 brands + 识别 other 物 + 弱相关 drop</li>
+<li><strong>Volume:</strong> Google Ads 月搜索量批量调用 + min_volume 阈值 drop</li>
+<li><strong>Trends:</strong> 2 次/行（term 形状 + term vs benchmark 关键词 gpts 大小）</li>
+<li><strong>Decision 3 档：</strong> prioritize（涨 + still up + min_daily）/ watch（涨但小 + too early + flat + steady demand）/ skip（退 + flat + small）</li>
+<li><strong>每个名字读 2 次：</strong> announcement day + 3 days later（announcement day posts 是公告无 use）</li>
+<li><strong>AIsa ~$15/月：</strong> 35 X 账号读 3 次/天 + 5 关键词表/天 = $10 X reads + $5 keyword table</li>
+<li><strong>可选 GoAnyAPI $0.07/天：</strong> +Google Trends related queries + 30 天单国 settled 数据（rows 标 "Now" 后 <code>(US)</code>）</li>
+<li><strong>Python stdlib only：</strong> radar/ 目录；config.example.json；radar/usecases.py</li>
+<li><strong>sources/daily 双命令：</strong> <code>sources --out sources.md</code> 仅新名写报告；<code>daily --skip x,hf --out report.md</code> 每天 1 次</li>
+<li><strong>灵活关信号：</strong> <code>--skip x,hf,breakout,sitemaps,newsites,gsc,review,judge,usecases</code></li>
+<li><strong>其他 flags：</strong> <code>--new-sites</code>（周信号今天跑）；<code>--mail</code>（发邮件）；<code>--state DIR</code>（移动 db 和 snapshots）</li>
+<li><strong>GitHub Actions 友好：</strong> sources 命令「Run every few hours」 + daily 命令「once a day」</li>
+<li><strong>实测案例：</strong> Niko1221/Strata 2026-09-25 报告 → 14 天后 Google Trends hit → 提前 3 天发现</li>
+<li><strong>实测数据示例：</strong> PhotoCraft 12747 searches/day started rising 2026-10-05 peak 2026-10-09 still rising prioritize；Claude Haiku 5.5 1863 searches/day started rising 2026-10-07 peak 2026-10-08 ×6.0 still rising prioritize</li>
+<li><strong>generic terms 14 天回看：</strong> "photoshop alternative" ran 80% above level in US for 5 days after PhotoCraft appeared; worldwide daily series showed almost nothing of it (2,1,1,2,4,2)</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 Python stdlib CLI 工具（radar/ 目录）+ 1 个 AIsa key 必需（X posts/Google Trends/domain data/models via DataForSEO）+ 1 个可选 GoAnyAPI key（+30 天单国 + Google Trends related queries）+ 一个 config.json（X accounts / sitemaps / topics）+ radar.db 数据库 + report.md 输出 + sources.md 输出（仅新名时写）</td>
+<td>仅基于 README 「The radar uses only the standard library / AIsa key + GOANYAPI_API_KEY / config.example.json / radar/usecases.py / radar.db」 推断；具体 radar/ 模块边界、AIsa/GoAnyAPI 速率限制、sources/daily 命令调度策略未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 config.json 配 X accounts / sitemaps / topics → <code>python -m radar daily --out report.md</code> → radar 跑 5 信号源 → 合并 terms → 小模型 judge（name vs common word） → 候选 5 列输出 + decision 3 档 → report.md → 14 天后 review 段对比 Google Trends → hit rate per signal 校准 → 自我校准反馈</td>
+<td>主路径为 README 「Why + What it reads + The keyword table + Quick start」 段落整理；具体 evidence → phrases → screen → volume → trends 5 步实现、GoAnyAPI 单国曲线数据、Google Ads 月搜索量 batch 调用、rader.db schema 未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>1 AIsa key 全包 vs 单一供应商锁定（$15/月固定成本 + DataForSEO 上游） vs Python stdlib 限制（无 Pandas / numpy） vs 小模型 judge 准确率依赖模型 vs 5 信号源完整覆盖 vs Google Trends last 2 days 数据未 settled vs generic terms 14 天后回升概率未量化</td>
+<td>权衡来自 README 「Without an AIsa key the free signals still run... the report then lists every term unsorted / Google Trends' last two days are not settled... every reader in the code now drops those two days, and a rise must last two days to count / Whether generic terms follow the names is what the 14-day review will show, and we have no result yet」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>准备 AIsa key + 35 X 账号 + 5 主题 → config.json 配 → <code>python -m radar sources --out sources.md</code>（仅新名）→ 验证 sources.md 是否列出新名 → <code>python -m radar daily --out report.md</code> → 验证 report.md 三栏（candidate new terms + other rising terms + 14-day review verdict）</td>
+<td>PoC 由 README 「Quick start + sources/daily 双命令 + The keyword table」 段落整理；具体 X 账号抓取频率、DataForSEO 速率限制、Google Trends last 2 days drop 实现、rader.db schema 未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；5 信号源 + 14 天回看 + 1 AIsa key + 3 档决策 + Python stdlib + GitHub Actions 友好 + 实测 Niko1221/Strata 案例 + PhotoCraft/Claude Haiku 5.5/SynthID Detector 数据由 README 直接叙述</td>
+<td>待核验：具体 radar/ 模块边界、AIsa/GoAnyAPI 速率限制、sources/daily 调度策略、rader.db schema、evidence → phrases → screen → volume → trends 5 步实现细节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>new-term-radar 的核心启发是 <strong>「5 个前置信号源 + 14 天后回看 + 1 key 全包 + 三栏决策」是严肃工程化的「AI 新词发现」路径</strong>。Google Trends 是 step 5（14 天后才到），但新词的「trail」从 X 关注账号 + Hugging Face trending + GitHub breakout + sitemaps + 新域名就开始了。new-term-radar 把这 5 个前置信号严肃工程化——比 Google Trends 早 3-14 天发现新词。这指向 <strong>「新词发现 = 多源前置信号 + 14 天回看 + 自我校准」</strong> 的未来。new-term-radar 还展示了 <strong>「evidence → phrases → screen → volume → trends 5 步」</strong> 的设计哲学——从 evidence 到 trends 5 步逐步精炼，每步都有模型调用、batch 调用、阈值 drop。这与 <code>jwuthri-cloud/Tracely-ai</code>（AI agent trace → regression test → CI gate → alert）形成完整的「AI 应用观察工具」严肃工程化方向。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  X[① X accounts you follow] --> M
+  HF[① Hugging Face trending] --> M
+  GH[② GitHub one repo taking off] --> M
+  SM[③ Sitemaps of other sites] --> M
+  NS[③ New domains that already rank] --> M
+  M[merge terms] --> J{name of a new thing, or a common word?}
+  J -->|name| R[report.md + radar.db]
+  J -->|common word| O[listed at the bottom]
+  GSC[④ your Search Console<br/>optional] --> R
+  R -->|14 days later| T[⑤ Google Trends check]
+  T --> H[hit rate per signal]
+  H --> R
+  R -->|5 步生成| K[Keyword table<br/>evidence → phrases → screen → volume → trends]
+  K --> D{Decision 3 档}
+  D -->|prioritize| P[rose in 30 days, still up, min_daily]
+  D -->|watch| W[rose but smaller, too early, flat with steady demand]
+  D -->|skip| S[fading, or flat and small]
+  AIsa[AIsa key ~$15/月<br/>X posts/Google Trends/domain data/models via DataForSEO] --> X
+  AIsa --> HF
+  AIsa --> T
+  AIsa --> M
+  AIsa --> K
+  GoAnyAPI[GoAnyAPI key 可选 $0.07/天<br/>+30 天单国 settled + Google Trends related queries] -.-> K
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>SEO / newsletter / directory 工具型项目（AI 新词发现比 Google Trends 早 3-14 天）。</strong> new-term-radar 不仅是 SEO 工具，更展示了「5 个前置信号 + 14 天回看 + 1 key 全包 + 三栏决策」严肃工程化路径。510⭐ + 210 fork/star 41.2% 已显示 SEO / newsletter / directory 用户群对「先于 Google Trends 3-14 天发现新词」的强需求。但能否持续取决于：（1）AIsa key 单一供应商锁定；（2）Python stdlib 限制（无 Pandas / numpy）；（3）小模型 judge 准确率；（4）5 信号源完整覆盖；（5）Google Trends last 2 days 数据 drop；（6）generic terms 14 天后回升概率量化。定位是「AI 新词发现 + 早于 Google Trends + 三栏决策」严肃工程化整合的头部样本，向「团队 / 企业级 AI 新词发现 SaaS」演进是合理路径。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>AIsa key 单一供应商锁定：</strong> $15/月固定成本（35 X 账号 + 5 关键词表）；DataForSEO 上游；AIsa 故障会停摆</li>
+<li><strong>Python stdlib 限制：</strong> 无 Pandas / numpy / 高级数据处理库；CSV / JSON 处理须手工</li>
+<li><strong>小模型 judge 准确率：</strong> 依赖模型能力；对 "specific name vs common word" 判断可能错；对 generic terms 弱</li>
+<li><strong>Google Trends last 2 days 数据未 settled：</strong> unrelated terms 出现 0 → 100 spike；first pass 被骗过；现在 drop last 2 days + rise must last 2 days to count</li>
+<li><strong>generic terms 14 天后回升概率未量化：</strong> "Whether generic terms follow the names is what the 14-day review will show, and we have no result yet"</li>
+<li><strong>Google Ads 体积延迟：</strong> Google Ads volumes run about two months behind</li>
+<li><strong>AIsa referral link：</strong> README 提 AIsa + GoAnyAPI 推广 affiliate（README 内有 aff link）</li>
+<li><strong>GoAnyAPI 服务成熟度：</strong> "first released in August 2026 / about one in ten failed / tries twice, reports a failure in the table and carries on"</li>
+<li><strong>config.json 配置成本：</strong> 35 X 账号 + 5 主题 + sitemaps 须用户自配</li>
+<li><strong>个人项目属性：</strong> zhuyansen 个人维护，可持续性存疑</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Google Trends:</strong> Google Trends 是 step 5（14 天后才到）；new-term-radar 是 5 个前置信号（早 3-14 天）</li>
+<li><strong>vs 关键词工具（Ahrefs / SEMrush）:</strong> 关键词工具都读 Google Trends；new-term-radar 读 5 个前置信号</li>
+<li><strong>vs jwuthri-cloud/Tracely-ai:</strong> Tracely-ai 是「AI agent trace → regression test → CI gate → alert」；new-term-radar 是「AI 新词发现 + 早于 Google Trends 3-14 天 + 三栏决策」。两者形成「AI 应用观察工具」完整方向</li>
+<li><strong>vs KKKK浩子/AIHOT:</strong> AIHOT 是「自己找热点 + 自己写日报的网站框架」；new-term-radar 是「AI 新词发现 + 三栏决策 + AIsa key」</li>
+<li><strong>vs awesome-AI-terms 类 awesome 列表:</strong> 那些是人工收录；new-term-radar 是自动化发现</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（AI 新词发现 + 早于 Google Trends 3-14 天 + 三栏决策）。</strong> new-term-radar 代表了「5 个前置信号 + 14 天回看 + 1 key 全包 + 三栏决策」严肃工程化路径的完整演示。无论其本身成败，这一方向是 AI 工具站 SEO / newsletter / directory 团队的趋势。建议关注：（1）AIsa key 单一供应商锁定；（2）Python stdlib 限制；（3）小模型 judge 准确率；（4）5 信号源完整覆盖；（5）Google Trends last 2 days 数据 drop；（6）generic terms 14 天后回升概率量化。对做 AI 工具站 SEO / newsletter / directory 的团队，这个工具是「先于 Google Trends 3-14 天发现新词」的实用选择，值得直接采用。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>AIsa key 单一供应商锁定（是否增加多供应商）</li>
+<li>Python stdlib 限制（是否增加 Pandas/numpy 可选）</li>
+<li>小模型 judge 准确率（对 "specific name vs common word"）</li>
+<li>5 信号源完整覆盖（X 关注账号抓取频率、HF trending 延迟、GH breakout 阈值、sitemaps 解析）</li>
+<li>Google Trends last 2 days 数据 drop（是否优化）</li>
+<li>generic terms 14 天后回升概率量化（14-day review verdict 数据积累）</li>
+<li>config.json 配置成本（是否提供预设 config 模板）</li>
+<li>zhuyansen 个人项目可持续性</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub Repository API (2026-10-13) + README raw 接口 | Stars: 510 | Forks: 210 | License: MIT | 语言: Python (stdlib only) | Size: 203 KB | 创建: 2026-10-12 | 依赖: Python 3.10+ + AIsa key + 可选 GoAnyAPI key</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

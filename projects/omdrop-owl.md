@@ -1,12 +1,12 @@
 ---
 title: "t4t5/omdrop-owl"
 slug: omdrop-owl
-date_added: 2026-10-10
-last_seen_date: 2026-10-11
+date_added: "2026-10-10"
+last_seen_date: "2026-10-13"
 category: "工具型"
 emoji: "📡"
-stars: "2061 stars"
-stars_delta: "4 天 2061⭐ ⑂144 fork/star 7.0%（持续增长强劲）"
+stars: "2439 stars"
+stars_delta: "5 天 2439⭐ ⑂175 fork/star 7.2%（持续增长强劲，本日 +378⭐）"
 score: 84
 tags: ["airdrop","awdl","owl","userspace","mt7925","framework-13","non-apple-wifi","broadcom-replacement","radio-backend","omdrop-plugin","omdrop-awdl","sibling-license","4-days"]
 url: "https://github.com/t4t5/omdrop-owl"

@@ -2,11 +2,11 @@
 title: "wheresryan22/anatomy"
 slug: anatomy
 date_added: "2026-10-12"
-last_seen_date: "2026-10-12"
+last_seen_date: "2026-10-13"
 category: "工具型"
 emoji: "🧬"
-stars: "3077 stars"
-stars_delta: "4 天 3077⭐ ⑂234 fork/star 7.6%（持续增长强劲）"
+stars: "6029 stars"
+stars_delta: "5 天 6029⭐ ⑂429 fork/star 7.1%（持续增长强劲，本日 +2952⭐）"
 language: "JavaScript"
 score: 92
 tags: ["anatomy","wheresryan22","claude-code","skill","agent-skills","svg","webgl","isometric","npx-skills-add","interactive-figures","no-dependencies","mit","4-days"]

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-12.md">Latest report</a> ·
+  <a href="daily/2026-10-13.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,42 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-12
+## Latest report · 2026-10-13
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 5 | 699 | 5 | 1300k+ |
+| 4 | 703 | 4 | 1500k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [wheresryan22/anatomy](projects/anatomy.md) | 3077 stars | 工具型 |
-| [tcchen2026/VibeOffice](projects/vibeoffice.md) | 545 stars | 工具型 |
-| [wesbos/photo-frame-dashboard](projects/photo-frame-dashboard.md) | 742 stars | 工具型 |
-| [t4t5/omdrop-owl](projects/omdrop-owl.md) | 2061 stars | 工具型 |
-| [storytold/craft-launcher](projects/craft-launcher.md) | 1155 stars | 平台候选 |
+| [liseami/CCBaga](projects/ccbaga.md) | 1572 stars | 工具型 |
+| [jhaizhou-ops/d2r-mobile](projects/d2r-mobile.md) | 650 stars | 工具型 |
+| [zhuyansen/new-term-radar](projects/new-term-radar.md) | 510 stars | 工具型 |
+| [onehumanbeing/esp32-iphone-agent](projects/esp32-iphone-agent.md) | 500 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: wheresryan22/anatomy
-2. **Signal 2** · score 86 · repositories: tcchen2026/VibeOffice
-3. **Signal 3** · score 80 · repositories: wesbos/photo-frame-dashboard
-4. **Signal 4** · score 84 · repositories: t4t5/omdrop-owl
+1. **Signal 1** · score 88 · repositories: liseami/CCBaga
+2. **Signal 2** · score 86 · repositories: jhaizhou-ops/d2r-mobile
+3. **Signal 3** · score 82 · repositories: zhuyansen/new-term-radar
+4. **Signal 4** · score 84 · repositories: onehumanbeing/esp32-iphone-agent
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-12.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-13.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 | [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
 | [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
-| [2026-10-06](daily/2026-10-06.md) | 4 | 7 |
 
 ## Why this repository exists
 
