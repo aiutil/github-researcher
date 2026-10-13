@@ -2,11 +2,11 @@
 title: "onehumanbeing/esp32-iphone-agent"
 slug: esp32-iphone-agent
 date_added: "2026-10-13"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "工具型"
 emoji: "📱"
-stars: "500 stars"
-stars_delta: "1 天 500⭐ ⑂62 fork/star 12.4%（爆发极强）"
+stars: "1480 stars"
+stars_delta: "3 天 1480⭐ ⑂187 fork/star 12.6%（持续增长强劲）"
 language: "Python"
 score: 84
 tags: ["esp32-iphone-agent","onehumanbeing","esp32-s3","xiao-esp32s3","airplay","uxplay","usb-hid","assistivetouch","planner-actor","openai-compatible","vision-model","computer-use","ai-agent","iphone-automation","ios-26","mit","1-day"]

@@ -2,10 +2,10 @@
 title: "rociiu/talorys"
 slug: talorys
 date_added: "2026-10-11"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "平台候选"
 emoji: "☁️"
-stars: "891 stars"
+stars: "953 stars"
 score: 90
 tags: ["talorys","rociiu","cloudflare-workers","durable-objects","d1","r2","ai-gateway","personal-ai-agent","self-hosted","memory","tasks","notes","reminders","automations","npx-create","single-user","owner-password","mit","2-days"]
 url: "https://github.com/rociiu/talorys"

@@ -2,11 +2,11 @@
 title: "zhuyansen/new-term-radar"
 slug: new-term-radar
 date_added: "2026-10-13"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "工具型"
 emoji: "📡"
-stars: "510 stars"
-stars_delta: "1 天 510⭐ ⑂210 fork/star 41.2%（爆发极强）"
+stars: "855 stars"
+stars_delta: "2 天 855⭐ ⑂349 fork/star 40.8%（持续增长强劲）"
 language: "Python"
 score: 82
 tags: ["new-term-radar","zhuyansen","ai-radar","x-trends","huggingface","github-breakout","sitemaps","google-trends","aisa","goanyapi","python-stdlib","seo","keyword-research","ai-terms","git-actions","1-day"]

@@ -2,11 +2,11 @@
 title: "wesbos/photo-frame-dashboard"
 slug: photo-frame-dashboard
 date_added: "2026-10-12"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "工具型"
 emoji: "🖼️"
-stars: "932 stars"
-stars_delta: "4 天 742⭐ ⑂53 fork/star 7.1%（持续增长 + 真实 reverse engineer 严肃工程化承诺）"
+stars: "1066 stars"
+stars_delta: "6 天 1066⭐ ⑂136 fork/star 12.8%（持续增长强劲）"
 language: "Python"
 score: 80
 tags: ["photo-frame","wesbos","skylight","biuframe","pf1007l","rockchip-rk3566","rockchip-rk3126","allwinner-a33","adb","root","rockusb","openfang-vendor","dashboards","vite","cloudflare-workers","webview-android","kiosk","4-days"]

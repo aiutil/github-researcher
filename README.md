@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-13.md">Latest report</a> ·
+  <a href="daily/2026-10-14.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-13
+## Latest report · 2026-10-14
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 703 | 4 | 1500k+ |
+| 4 | 707 | 4 | 1700k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [liseami/CCBaga](projects/ccbaga.md) | 1572 stars | 工具型 |
-| [jhaizhou-ops/d2r-mobile](projects/d2r-mobile.md) | 650 stars | 工具型 |
-| [zhuyansen/new-term-radar](projects/new-term-radar.md) | 510 stars | 工具型 |
-| [onehumanbeing/esp32-iphone-agent](projects/esp32-iphone-agent.md) | 500 stars | 工具型 |
+| [shaongitbd/doory](projects/doory.md) | 1041 stars | 工具型 |
+| [opengeos/RustGIS](projects/rustgis.md) | 771 stars | 工具型 |
+| [snuri00/ps2-web-recomp](projects/ps2-web-recomp.md) | 683 stars | 工具型 |
+| [Gen-Verse/RSI-Anything](projects/rsi-anything.md) | 615 stars | 观察型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 88 · repositories: liseami/CCBaga
-2. **Signal 2** · score 86 · repositories: jhaizhou-ops/d2r-mobile
-3. **Signal 3** · score 82 · repositories: zhuyansen/new-term-radar
-4. **Signal 4** · score 84 · repositories: onehumanbeing/esp32-iphone-agent
+1. **Signal 1** · score 86 · repositories: shaongitbd/doory
+2. **Signal 2** · score 88 · repositories: opengeos/RustGIS
+3. **Signal 3** · score 85 · repositories: snuri00/ps2-web-recomp
+4. **Signal 4** · score 82 · repositories: Gen-Verse/RSI-Anything
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-13.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-14.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
 | [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 | [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
 | [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 | [2026-10-08](daily/2026-10-08.md) | 6 | 5 |
-| [2026-10-07](daily/2026-10-07.md) | 4 | 5 |
 
 ## Why this repository exists
 

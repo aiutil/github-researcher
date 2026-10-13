@@ -2,11 +2,11 @@
 title: "storytold/craft-launcher"
 slug: craft-launcher
 date_added: "2026-10-12"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "平台候选"
 emoji: "🎨"
-stars: "1771 stars"
-stars_delta: "4 天 1771⭐ ⑂601 fork/star 34.0%（fork/star 极高反映社区强参与，本日 +616⭐）"
+stars: "2260 stars"
+stars_delta: "4 天 2260⭐ ⑂755 fork/star 33.4%（持续增长强劲）"
 language: "Rust"
 score: 82
 tags: ["artcraft","craft-launcher","storytold","rust","100-rust","macos","windows","linux","freebsd","web-native","apache-2","mit","getartcraft","discord","3-days","alpha"]

@@ -2,11 +2,11 @@
 title: "liseami/CCBaga"
 slug: ccbaga
 date_added: "2026-10-13"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "工具型"
 emoji: "🎒"
-stars: "1572 stars"
-stars_delta: "2 天 1572⭐ ⑂154 fork/star 9.8%（持续增长强劲）"
+stars: "2041 stars"
+stars_delta: "3 天 2041⭐ ⑂206 fork/star 10.1%（持续增长强劲）"
 language: "Rust"
 score: 88
 tags: ["ccbaga","liseami","claude-identity","browser-fingerprint","rust","tauri-2","react-19","typescript","cromma-ui","macos","linux","windows","fingerprint-chromium","agent-skills","xray","reality","debian","network-skill","baga-container","sqlite","2-days"]

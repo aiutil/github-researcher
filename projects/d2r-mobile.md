@@ -2,11 +2,11 @@
 title: "jhaizhou-ops/d2r-mobile"
 slug: d2r-mobile
 date_added: "2026-10-13"
-last_seen_date: "2026-10-13"
+last_seen_date: "2026-10-14"
 category: "工具型"
 emoji: "⚔️"
-stars: "650 stars"
-stars_delta: "1 天 650⭐ ⑂282 fork/star 43.4%（爆发极强）"
+stars: "1091 stars"
+stars_delta: "2 天 1091⭐ ⑂392 fork/star 35.9%（持续增长强劲）"
 language: "C"
 score: 86
 tags: ["d2r-mobile","jhaizhou-ops","diablo-2","ios","ipad","iphone","aarch64","metal","reign-of-the-warlock","touch-controls","60fps","compatibility-layer","bring-your-own-game-files","closed-beta","mit","1-day"]
