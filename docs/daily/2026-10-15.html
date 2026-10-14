@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-15 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-15-github">2026-10-15 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description、license、size、forks 来自 2026-10-15 GitHub Search API（<code>gh api search/repositories</code> 经 gh CLI 认证，避免未认证速率限制）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license / size）+ GitHub Trending HTML 直接抓取（<code>https://github.com/trending?since=daily</code> + 各语言 trending）+ 各项目 README 公开摘录（<code>gh api .../readme -H Accept: application/vnd.github.raw</code> 抓取）+ 已有 <code>projects/</code> 档案对照。本批搜索结果中出现大量「fork=0 + size=2 + 随机词+字典词产品名」spam 仓库（Arekejoker/qwen21-nsfw-pose-skill 1232⭐ NSFW 类别 / h0m3us3r/w1700k-sdr 744⭐ 描述为空 / nateherkai/roast-room 515⭐ 营销 / npwitk/Macintosh-Skeletal-Filled 521⭐ 字体 / Chen-Wei810/Semiconductor_Manufacturing_Introduction 567⭐ 教辅）以及「已稳态多年突然 re-fork 复出」的旧项目（nvm-sh/nvm / rust-lang/rust / NationalSecurityAgency/ghidra / vuejs/core / nestjs/nest / python/cpython 等），已通过 created_at 距今 &gt; 6 个月或 description 为 NSFW/工具类、营销类判定为延续/非新增本批排除。今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-15 仍在快速增长的新发现项目 + 延续跟踪项目。<strong>今日最大事件是 <code>outcrawlai/scout</code> 2 天 636⭐ ⑂22 fork/star 3.5% 把「AI browser agent」从「playwright + stealth + LLM 串联调」推到「Tell it the task. It opens a browser and gets it done + 一行 npm i @outcrawl/scout + 4 个模型角色（hands/brain/eyes/extract）+ 任意 chat completions API + Scout runs best on Outcrawl's cloud（residential + captcha solving + natural input + replays）+ 自己的 machine 可走 <code>browser: { launch }</code> 或 <code>browser: { cdpUrl }</code> + monorepo 6 packages + Browser Use 80-site 基准 92.5% + your own JSON schema → structured answer + Apache-2.0（agenthands 自带 MIT）」严肃工程化形态</strong>。本日 4 个新项目 + 8 个延续跟踪项目分四条主线严肃工程化跨领域：<strong>(A) outcrawlai/scout 严肃工程化 open-source browser agent + Outcrawl cloud + JSON schema 答案 + monorepo 6 packages 严肃工程化；(B) deeplethe/solid-glass AI 应用设计系统 + shadcn/ui data-slot 不改组件 + blocks 完整屏 + Material/Create 调参页 + 13 items registry 严肃工程化；(C) HeyPuter/everything 严肃工程化 mono-repo 34+ apps 把 Office/Collaboration/Creative/Engineering/Productivity/Finance/Business/Developer Tools/Games 9 大类对应开源替代；(D) CoolkHz/gptibo 严肃工程化 self-hosted 数字商品商城 + admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选 + 原站点停运重开 MIT</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1outcrawlaiscout-open-source-browser-agent-outcrawl-cloud-json-schema-monorepo-6-packages-92">趋势 1：outcrawlai/scout 严肃工程化 open-source browser agent + Outcrawl cloud + JSON schema 答案 + monorepo 6 packages（趋势分 92）</h3>
+<p><code>outcrawlai/scout</code> 2 天 636⭐ ⑂22 fork/star 3.5% 把「AI browser agent」从「playwright + stealth + LLM 串联调 + 自建 loop」推到「<strong>Scout: the open-source browser agent, by Outcrawl. Tell it the task. It opens a browser and gets it done + Scout reads the page, clicks, types and scrolls until the job is done, then hands back the answer. If it cannot finish, it tells you what is missing and returns what it found + Scout runs best on Outcrawl's cloud. One line gives it a browser that sites treat like anyone at home, with captcha solving and a replay of every run. It also runs on your own machine + npm i @outcrawl/scout + OUTCRAWL_API_KEY + SCOUT_BASE_URL + SCOUT_API_KEY + SCOUT_HANDS_MODEL + new Scout({ browser: 'outcrawl', models: { hands } }).run(task) + JSON Schema → structured answer + 4 model roles：hands（reads the page and takes each step + click / type / scroll / read + runs every step so a fast model pays off here）+ brain（plans the run and decides each step + helps long tasks that cross many pages）+ eyes（looks at a screenshot when the page has to be seen + needs a model that accepts images）+ extract（reads a page into your answer or your schema + if absent, hands does this）+ structuredOutput: 'json_object' / 'strict' 当 service 拒绝 structured reply 时 + 三种 browser：'outcrawl'（推荐，云端 + residential + captcha solving + natural input + replays）/ <code>{ launch: {} }</code>（本机，<code>headless: false</code> 看）/ <code>{ cdpUrl: 'http://127.0.0.1:9222' }</code>（已有 CDP）+ Each run returns status（completed / partial / capped / failed）+ data（schema-shape 答案）+ error + steps（each action + timing + success/fail）+ costUsd + replayUrl（云端录像回放）+ caps：steps / duration / budget + limit reached 是 normal ending + 92.5% on Browser Use 80-site benchmark（next best 81.4%；3 full runs, 2026-10-07）+ monorepo 6 packages（packages/scout 前门 <code>new Scout({ browser, models }).run(task)</code> + packages/runtime <code>agent loop: look at the page, pick an action, act, check, repeat</code> + packages/model <code>prompts, the job split, structured replies, provider-neutral clients</code> + packages/scout-core shared types + packages/scout-cdp <code>drives a real browser over the DevTools protocol: navigation, clicks, typing, scrolling, tabs, snapshots</code> + packages/agenthands <code>pointer and keyboard input planning for local browsers</code> MIT 自带 licence）+ bun install + bun test + This repository is an automatic mirror. Every change lands first in the repository Outcrawl runs in production, ships with its tests, and then arrives here in a sync commit + Pull requests welcome + sign-off each commit（DCO）+ Copyright 2026 Aeonmind LLC + Outcrawl cloud：residential connections（traffic leaves through ordinary home connections, so sites load the way they do for anyone at home）+ captcha solving（challenges are answered inside the browser, and the run carries on）+ natural input（the browser plans every pointer move, scroll and keystroke itself, so Scout sends it plain actions）+ recordings（runs are recorded by default, and result.replayUrl opens a step-by-step replay）+ nothing to install（no browser to download, update or keep running on your machine）+ Runs billed as an ordinary Outcrawl browser session + your model calls still go to your own services + 1000 free credits / month no card needed + 2 天 636⭐ ⑂22 fork/star 3.5%</strong>」严肃工程化形态——核心洞察 <strong>「AI browser agent 从「playwright + stealth + 自建 LLM loop 串联调」推到「<code>new Scout({ browser, models }).run(task)</code> 一行调用 + 4 角色模型分工（hands/brain/eyes/extract）+ 任意 chat completions API + Scout runs best on Outcrawl's cloud（residential + captcha + natural input + replays）+ 本机可走 launch / CDP + monorepo 6 packages + Browser Use 80-site 基准 92.5% + Apache-2.0」严肃工程化形态</strong>。</p>
+<p><strong>架构师速览（scout）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 Scout 前门（npm @outcrawl/scout）+ 一个 runtime agent loop（look at the page, pick an action, act, check, repeat）+ 一个 model 包（prompts, the job split, structured replies, provider-neutral clients）+ 一个 scout-core（shared types）+ 一个 scout-cdp（drives a real browser over DevTools: navigation, clicks, typing, scrolling, tabs, snapshots）+ 一个 agenthands 包（pointer / keyboard input planning，MIT 自带 licence）+ 一个 Outcrawl 云浏览器服务（residential + captcha + natural input + replays + 1000 free credits/month）+ 一个用户自选 chat completions provider（hosted/gateway/local）+ 一个 Benchmark pipeline（Browser Use 80-site + 自家 code）</td>
+<td>仅基于 README「Tell it the task + Start in three steps + Bring your own models + Browser Use 80-site 92.5% + monorepo 6 packages + Scout runs best on Outcrawl's cloud + 1000 free credits + MIT/Apache-2.0」+ license badge + size 推断；具体 Outcrawl 内部基础设施（browser fleet size / captcha solver 选型 / replay 录制后端 / cost 上限）未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 <code>npm i @outcrawl/scout</code> + 配 OUTCRAWL_API_KEY / SCOUT_BASE_URL / SCOUT_API_KEY / SCOUT_HANDS_MODEL + 写 <code>new Scout({ browser: 'outcrawl', models: { hands } }).run('找 HN top 3 stories')</code> → Scout 在云端打开 residential browser → hands 模型 read / click / type / scroll → brain 规划 step → eyes 看 screenshot（如需）→ extract 给 schema-shape 答案 → 返回 { status, data, steps, costUsd, replayUrl }</td>
+<td>主路径为 README「Start in three steps + Examples（research / form-fill / compare / login）+ What you get back + Caps」段落整理；具体 model provider 容错、step-level retry 策略、brain 与 eyes 在长跨页任务的实际调度权重未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>LLM-driven browser agent vs 静态重编译（ps2-web-recomp）vs 反检测浏览器底层（dots）vs Scout CLI bridge vs Outcrawl cloud 仅一家支持 vs monorepo 6 包 vs BYO 4 role models vs JSON Schema schema-shape vs 92.5% on 80-site vs 1k free credits/month vs AGENTS.md/DCO 协议 vs Apache-2.0（agenthands 自带 MIT）vs automatic mirror to public repo</td>
+<td>权衡来自 README「Scout runs best on Outcrawl's cloud + It also runs on your own machine + 4 roles + monorepo + 92.5% benchmark + 1000 free credits + Apache-2.0 + DCO + automatic mirror」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>装 <code>@outcrawl/scout</code> + 拿 OUTCRAWL_API_KEY（1000 free credits）+ 配 OPENAI_API_KEY 作 hands + 配 OPENAI_BASE_URL → 跑 <code>new Scout({ browser: 'outcrawl', models: { hands: { model: 'gpt-4o-mini', baseURL, apiKey } } }).run('Go to books.toscrape.com, open the first book in the Poetry category and report its title and price')</code> → 验证 5 步完成 + replay 可看</td>
+<td>PoC 由 README「Start in three steps + Examples + demo-light.gif」段落整理；具体 captcha 命中率、replay 录像大小、costUsd 在不同 task 上的分布未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；npm @outcrawl/scout + Aeonmind LLC + monorepo 6 packages + 92.5% on 80-site + 1000 free credits + MIT/Apache-2.0 由 README 直接叙述</td>
+<td>待核验：Outcrawl 内部 browser fleet size / captcha solver / replay 录制后端 / cost 计费公式 / 自动 mirror 仓库间的差异 / 数据治理 / multi-task 在同一 browser 上的并发隔离</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2deeplethesolid-glass-ai-shadcnui-data-slot-blocks-84">趋势 2：deeplethe/solid-glass AI 应用设计系统 + shadcn/ui data-slot 不改组件 + blocks 完整屏（趋势分 84）</h3>
+<p><code>deeplethe/solid-glass</code> 3 天 590⭐ ⑂5 fork/star 0.8% 把「AI 应用设计系统」从「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」推到「<strong>Solid Glass: A design system for AI applications. Material, physical, tactile, technical + A refined glass-inspired aesthetic that feels solid from afar and reveals its subtle materiality up close. Delicate highlights, fine borders, and soft shadows create depth, while a restrained finish emphasizes clarity, stability, and a sense of solidity over transparency, refraction, and fluidity + blocks：whole screens made of the components (an agent workspace made of it: sessions, the thread, files and background tasks) + Stands between flat design and liquid glass. Flat is an opaque block with no finish to speak of; liquid glass is nearly clear, and on a page with a lot of text the reader is always fighting the background for the words. Solid Glass lets only an outline through: enough to know it is glass, not enough to get in the way of reading + Why it is built this way: AI applications are built around information that is constantly changing — responses streaming in, agents performing tasks, and decisions waiting for human input. Solid Glass keeps the interface calm and readable. Neutral surfaces reduce visual distractions, depth establishes hierarchy, and color and motion are reserved for meaningful feedback + 4-axis design language: Tactility（Interfaces that feel tangible. Every interaction carries a subtle sense of touch and response.）+ Precision（Clean geometry, refined details, and restrained lighting create a precise, technical aesthetic.）+ Physicality（Depth comes from thickness, shadow, and spatial hierarchy, giving every element a sense of physical presence.）+ Materiality（Subtle edge highlights, fine borders, and soft shadows define the character of each surface.）+ The entire system is built with lightweight CSS and works with existing shadcn/ui components in both light and dark modes + Material page shows how a pane is made + Create page lets you turn the dials + One stylesheet finds each part of a shadcn/ui component by the data-slot and the classes it already carries, so the components you have need no changes + Start from a shadcn/ui project (React 19, Tailwind CSS 4, the Base UI components) + 13 items registry + Official site deeplethe.github.io/solid-glass + Built by DeepLethe + MIT + 3 天 590⭐ ⑂5 fork/star 0.8%</strong>」严肃工程化形态——核心洞察 <strong>「AI 应用设计系统从「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」推到「stands between flat design and liquid glass + one stylesheet finds shadcn/ui 的 data-slot 不改组件 + 13 items registry + 4-axis 设计语言 + blocks（agent workspace 等完整屏）+ Material/Create 调参页 + Light/Dark + React 19 + Tailwind CSS 4 + Base UI + MIT」严肃工程化形态</strong>。</p>
+<p><strong>架构师速览（solid-glass）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 Solid Glass stylesheet（仅 CSS + 可选 token 文件）+ 一个 13 items registry（components + blocks + tokens）+ 一个 Official site deeplethe.github.io/solid-glass（blocks 完整屏 + Material/Create 调参页 + Home dark/light 对比）+ 一个 shadcn/ui 适配层（data-slot + 已有 classes 不改）+ 一个 design language 文档（4-axis Tactility/Precision/Physicality/Materiality）+ 一个 React 19 + Tailwind CSS 4 + Base UI 标准栈</td>
+<td>仅基于 README「Solid Glass is one stylesheet + It finds each part of a shadcn/ui component by the data-slot and the classes it already carries + 13 items registry + Built by DeepLethe」+ license badge + size 推断；具体每个 component 的 CSS 变量覆盖深度、Create 页面 token 编辑如何同步回 stylesheet、blocks 可复制性（copy-paste vs CLI）未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户新建 shadcn/ui (React 19 + Tailwind CSS 4 + Base UI) 项目 → <code>npm i solid-glass</code> → import Solid Glass stylesheet → 已有 components 自动获得 Solid Glass 外观 → 打开 Official site 看 blocks（agent workspace 等完整屏）→ 参考 Material 页面学 token / Create 页面调参 → Light/Dark 一致</td>
+<td>主路径为 README「The style + Install + What is here + An agent workspace made of it」段落整理；具体 data-slot 匹配哪些 shadcn/ui 默认元素、dark mode 切换的 token 覆盖完整度未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>设计系统 vs 单一 components 库 vs Liquid Glass 商用许可 vs 设计自由度 vs install 即用 vs 13 items vs blocks 完整屏 vs 4-axis 设计语言 vs MIT vs vs 各家 design system 半成品（Tailwind UI / shadcn / Radix Themes / Mantine）</td>
+<td>权衡来自 README「stands between flat design and liquid glass + one stylesheet finds shadcn/ui 的 data-slot + 13 items registry + 4-axis design language + MIT」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><code>npm create shadcn@latest</code> 起 shadcn/ui 项目（React 19 + Tailwind CSS 4 + Base UI）→ <code>npm i solid-glass</code> → import Solid Glass stylesheet → 在 Agent workspace block 复制一个 chat + sidebar 布局 → 切换 Light/Dark 验证 Material/Create 调参</td>
+<td>PoC 由 README「Install + blocks（agent workspace）+ Material/Create」段落整理；具体 token 调控（Create 页面）保存路径、blocks 导出完整度未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；13 items registry + Built by DeepLethe + MIT + shadcn/ui + React 19 + Tailwind CSS 4 + Base UI + Light/Dark + 4-axis design language 由 README 直接叙述</td>
+<td>待核验：每个 component 的 CSS 变量覆盖深度、Create 页面 token 编辑回流机制、blocks 导出完整度、与非 shadcn 项目的兼容性、社区贡献治理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3heyputereverything-mono-repo-34-apps-officecollaborationcreativeengineeringproductivityfinancebusinessdeveloper-toolsgames-9-88">趋势 3：HeyPuter/everything 严肃工程化 mono-repo 34+ apps 把 Office/Collaboration/Creative/Engineering/Productivity/Finance/Business/Developer Tools/Games 9 大类对应开源替代（趋势分 88）</h3>
+<p><code>HeyPuter/everything</code> 2 天 731⭐ ⑂107 fork/star 14.6% 把「开源软件替代闭源应用」从「各自独立的 FOSS 替代（LibreOffice/GIMP/Inkscape/FreeCAD）+ 单组织维护单 app」推到「<strong>The Everything Project is an effort to rebuild and open-source the world's software from scratch. From Office to Slack and Photoshop to AutoCAD, we are recreating free, open-source alternatives to all proprietary software. This is a mono-repository containing all the applications and tools developed under the project + 9 大类 + Office 8（Spreadsheet/Excel/Sheets/Numbers · Documents/Word/Docs/Pages · Presentation/PowerPoint/Slides/Keynote · Whiteboard/Miro/MS Whiteboard/FigJam · PDF/Acrobat/PDF Expert · Notes/OneNote/Evernote/Apple Notes · Records/Airtable/MS Access/Baserow · 待续）+ Collaboration 6（Meetings/Zoom/Google Meet/Teams · Teamchat/Slack/Teams/Google Chat · Email/Gmail/Outlook/Mail · Contacts/Google/Apple · Calendar/Google/Apple/Outlook · Signatures/DocuSign/Adobe Sign/Dropbox Sign）+ Creative Tools 6（Photo Studio/Photoshop/Pixelmator · Video Studio/CapCut/Premiere/FCP/DaVinci · Vector Studio/Illustrator/CorelDRAW/Affinity · Audio Studio/Adobe Audition/Sound Forge · Music Studio/FL Studio/Ableton/Logic · 3D Studio/Maya/SketchUp）+ Engineering 4（CAD/AutoCAD/DraftSight/BricsCAD · Parametric/SolidWorks/Fusion/Inventor · Circuits/Altium/Eagle/OrCAD · Building Design/Revit/ArchiCAD/Vectorworks）+ Productivity + Finance + Business + Developer Tools + Games 全部 MIT-licensed + 每个 app 都有替代关系映射 + try-it / source 双链 + App names, descriptions, and navigation are native text. The Everything logo, app icons, and decorative hero are images. Demo and source links use project metadata where available; missing destinations point to the link-status note + mono-repository containing all the applications and tools + 2 天 731⭐ ⑂107 fork/star 14.6%</strong>」严肃工程化形态——核心洞察 <strong>「开源软件替代闭源应用从「各自独立的 FOSS 替代（LibreOffice/GIMP/Inkscape/FreeCAD）+ 单组织维护单 app」推到「mono-repo 34+ apps 把 Office/Collaboration/Creative/Engineering/Productivity/Finance/Business/Developer Tools/Games 9 大类对应开源替代 + 每个 app 都有 Photoshop/CapCut/Illustrator/AutoCAD/SolidWorks/Excel/Word/Zoom/Slack/DocuSign 等替代关系 + try-it / source 双链 + 全部 MIT + HeyPuter 同组织」严肃工程化形态</strong>。</p>
+<p><strong>架构师速览（everything）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 mono-repository + 9 大类 + 34+ apps，每个 app 在 <code>src/[app-name]/</code> 独立 npm 项目 + 每个 app 在 puter.com 子域有 try-it demo + 一个 link-status 元数据约定（missing destinations point to the link-status note）+ 一个 App names/descriptions/navigation native text + 一个 Puter 平台统一栈（推测）+ 一个 HeyPuter 团队维护</td>
+<td>仅基于 README「mono-repository containing all the applications + Office 8 + Collaboration 6 + Creative 6 + Engineering 4 + 全部 MIT + HeyPuter + 每 app 替代关系 + try-it / source」+ license badge + size 推断；具体每个 app 是否独立 README、CI/CD、tests、共享 component 是否存在、put.com 域名 -&gt; GitHub repo 的映射完整性未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户访问 everything 仓库 → 选要看的 app 类别（Office / Collaboration / Creative / Engineering / Productivity / Finance / Business / Developer Tools / Games）→ 选具体 app（如 Spreadsheet）+ 看替代关系（Excel/Sheets/Numbers）+ 点「Try it」试在线版（puter.com 子域）或点「Source」看源码 → <code>git clone https://github.com/HeyPuter/everything.git &amp;&amp; cd everything/src/spreadsheet &amp;&amp; npm install &amp;&amp; npm run dev</code></td>
+<td>主路径为 README「Office + Collaboration + Creative Tools + Engineering + Getting started」表格整理；具体每个 app 是否独立 npm module、put.com 上的多 app 数据隔离、Puter 平台 subscription 模型未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>mono-repo vs poly-repo（每个 app 独立仓库）vs MIT vs 商业 SaaS（Puter）vs 9 大类 34+ apps vs 各家独立 FOSS（LibreOffice/GIMP/Inkscape/FreeCAD）vs try-it 双链 vs vs LINKSTATUS 占位 vs Hero / Icon 图片与文字 native/UI 边界</td>
+<td>权衡来自 README「From Office to Slack and Photoshop to AutoCAD + mono-repository + 9 大类 + 全部 MIT + HeyPuter」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><code>git clone https://github.com/HeyPuter/everything.git</code> → <code>cd everything/src/spreadsheet</code> → <code>npm install &amp;&amp; npm run dev</code> 起本地 development server → 打开 <code>http://localhost:5173</code>（具体端口视 app 而定）→ 试基础 spreadsheet 操作（建 worksheet / sum / cell reference）→ 在 puter.com 上同步试一下在线版</td>
+<td>PoC 由 README「Getting started + git clone + cd src/[app-name] + npm install + npm run dev + Office (Spreadsheet etc.) 」段落整理；具体各 app 的 build instructions、put.com 个人数据治理、与既有 Puter 平台 account 关系未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；mono-repo 34+ apps + MIT + HeyPuter + 9 大类 + each app 替代映射 + try-it / source 由 README 直接叙述</td>
+<td>待核验：各 app 是否独立 README + tests + shared component 机制 + puter.com 与 GitHub repo 的发布同步 / link-status 占位完整性 / 各 app 许可证一致性（README 顶部称 MIT，但具体每 app LICENSE 文件是否就位）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4coolkhzgptibo-self-hosted-admin-agent-workbench-gopg-cf-workersd1-82">趋势 4：CoolkHz/gptibo 严肃工程化 self-hosted 数字商品商城 + admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选（趋势分 82）</h3>
+<p><code>CoolkHz/gptibo</code> 2 天 722⭐ ⑂438 fork/star 60.7% 把「数字商品商城自托管」从「Shopify 闭源 + WooCommerce/WordPress 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」推到「<strong>GPTibo：可自托管的数字商品商城，包含用户前台、管理后台与代理工作台 + GPTibo 将商品展示、下单支付、订单交付、售后处理和代理商店管理整合在同一套系统中。前端使用 React 与 TypeScript，后端提供 Go + PostgreSQL 和 Cloudflare Workers + D1 两种实现，便于按部署环境选择和二次开发 + 原站点已停止运营，项目现以 MIT 许可证开放源码 + 支付与供应商接入使用匿名适配器，需要配置自己的服务后使用 + 5 模块：用户商城（商品与套餐展示、下单、支付状态、订单查询、售后申请、中英文界面、深浅色主题）+ 管理后台（商品定价、订单与客户管理、退款处理、代理管理、结算与通知配置）+ 代理工作台（独立商店、品牌设置、自定义域名、商品管理、订单统计与下级代理管理）+ 业务后端（身份验证、支付回调、采购适配、异步任务、邮件通知与交易状态管理）+ 开发与部署（数据库迁移、Docker Compose、自动化测试、GitHub Actions 与源码安全扫描）+ Tech：React 19 + TypeScript + Vite + Tailwind CSS + Go + Gin + PostgreSQL + Cloudflare Workers + D1 + Wrangler + React Email + Node.js 24 + Node.js Test Runner + Go Test + Gitleaks + Docker Compose + GitHub Actions + CI verify workflow + 中文 + 英文界面 + 深浅色主题 + 鉴权 + 支付回调 + 采购适配 + 异步任务 + 邮件 + 交易状态 + 匿名支付/供应商适配器 + Node 1.26+ / PG 或 Wrangler D1 部署 + Windows init-secrets.ps1 + 2 天 722⭐ ⑂438 fork/star 60.7%</strong>」严肃工程化形态——核心洞察 <strong>「数字商品商城自托管从「Shopify 闭源 + WooCommerce/WordPress 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」推到「Self-hosted 数字商品商城 + admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选 + 原站点停运重开 MIT + CI verify workflow + 匿名支付/供应商适配器」严肃工程化形态</strong>。</p>
+<p><strong>架构师速览（gptibo）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 Self-hosted 数字商品商城系统 + 5 模块（用户商城 / 管理后台 / 代理工作台 / 业务后端 / 开发与部署）+ 两套后端任选（Go + Gin + PostgreSQL 服务 / Cloudflare Workers + D1 + Wrangler）+ 一个前端（React 19 + Vite + Tailwind CSS + TypeScript）+ 一个 CI（GitHub Actions + verify workflow + Gitleaks + Node.js Test Runner + Go Test）+ 一个 Docker Compose（postgres + api + worker + maintenance profile）+ 一个匿名支付/供应商适配器层 + 一个 React Email + 一个 secrets 初始化（<code>python3 scripts/init-secrets.py</code> + <code>init-secrets.ps1</code> Windows 双 shell）+ 一个 CI badge（actions/workflows/verify.yml branch=main）+ 一个中文主 README + 一个 i18n（中英界面）</td>
+<td>仅基于 README「GPTibo 将商品展示、下单支付、订单交付、售后处理和代理商店管理整合在同一套系统中 + 前端 React + TypeScript + 后端 Go+PG 或 CF Workers+D1 + 原站点已停止运营重开 MIT + 支付/供应商匿名适配器 + 5 模块 + CI verify workflow + Gitleaks + 中英文界面 + 深浅色主题 + Docker Compose」+ license badge + size 推断；具体哪一版商家后台 UI 路径、payment adapter 在 Go 与 CF 两个 runtime 的兼容性、maintenance migration 数据完整性证明、agent workbench 多级代理结算规则未在档案明示</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户 <code>git clone https://github.com/CoolkHz/gptibo.git &amp;&amp; cd gptibo &amp;&amp; npm ci</code> → 选后端：a) Go+PG：<code>cd services/storefront &amp;&amp; python3 scripts/init-secrets.py &amp;&amp; cp .env.example .env &amp;&amp; docker compose config --quiet &amp;&amp; docker compose build api &amp;&amp; docker compose up -d --wait postgres &amp;&amp; docker compose --profile maintenance run --rm maintenance migrate &amp;&amp; docker compose --profile maintenance run --rm maintenance grant-runtime &amp;&amp; docker compose up -d --wait api worker</code>；另开终端 <code>npx vite --config services/storefront/vite.config.ts</code> → 访问 <code>http://127.0.0.1:5175</code>（前端）/ API 代理到 <code>127.0.0.1:8093</code>。b) CF Workers+D1：仓库根目录 <code>cp .dev.vars.example .dev.vars &amp;&amp; npx wrangler d1 migrations apply gptibo-local --local &amp;&amp; npm run preview:worker</code> → 访问 <code>http://127.0.0.1:8787</code>；frontend 热更新另起 <code>npm run dev</code> → <code>http://127.0.0.1:5173</code></td>
+<td>主路径为 README「快速开始 + 方式一/方式二 + 页面入口 + Go 后端文档」段落整理；具体 PG vs D1 两套迁移 schema 的等价性、agent workbench 多级代理结算财务一致性、CI verify workflow 当前涵盖哪些检查、<code>.env.example</code> 与 <code>.dev.vars.example</code> 占位项是否一致未在档案明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Self-hosted vs SaaS Shopify vs WooCommerce WordPress全套包袱 vs Gumroad/Lemon Squeezy 抽成 vs 原站点停运重开 MIT vs Go+PG vs CF Workers+D1 双 runtime vs 匿名支付/供应商适配器 vs agent workbench 多级代理 vs React 19 + Vite + Tailwind vs Node 24 + Docker Compose vs CI verify workflow + Gitleaks</td>
+<td>权衡来自 README「原站点已停止运营重开 MIT + 支付/供应商匿名适配器需要配置 + Go+PG / CF Workers+D1 二选一 + agent workbench 多级代理 + React 19 + Vite + Tailwind + Node 24 + Docker Compose + CI verify + Gitleaks + 中英文 + 深浅色」</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>a) Go+PG：装 Docker Compose + Go 1.26 + Node 24 + Python 3 → <code>git clone</code> 后跑 <code>方式一</code> 完整 7 步 → 访问 <code>http://127.0.0.1:5175</code> 注册一个 admin → 建一个 demo 商品 → 用测试支付后端（匿名适配器 placeholder）下单 → 验订单、后台管理、agent workbench 多级代理；b) CF Workers+D1：<code>npm run preview:worker</code> + 装 wrangler → 本地 D1 migrate → 同样路径验证；Windows 用户用 <code>init-secrets.ps1</code> 替代</td>
+<td>PoC 由 README「快速开始 + 方式一 + 方式二 + 页面入口 + Go 后端文档」段落整理；具体主版本测试、demo seed data、payment adapter 与 supplier adapter 的 reference 实现、agent workbench webhook 与结算合理性 demo 未在档案明示</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td>仅核验：仓库存在、stars/forks/description/license/size/language 来自 GitHub API；README 节录自 raw 接口；5 模块 + 两套后端 + React 19 + Vite + Tailwind + Go+Gin+PG + CF Workers+D1 + 原站点停运重开 MIT + 匿名适配器 + Node 24 + Docker Compose + GitHub Actions + CI verify workflow + Gitleaks + Node Test Runner + Go Test + React Email + 双语界面（中主文档）+ 2 天 722⭐ ⑂438 fork/star 60.7% 由 README 直接叙述</td>
+<td>待核验：payment adapter &amp; supplier adapter 的 reference 实现完整度、PG 与 D1 两套 migrations schema 等价性证明、maintenance profile 的权限模型、agent workbench 多级代理结算规则、CI verify 工作流当前涵盖的检查项与进入门槛、Windows PowerShell 与 Linux/Mac 两条初始化路径是否完全对齐、社区治理</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>AI browser agent 严肃工程化（scout 上线 + ANPL 联用）。</strong> <code>outcrawlai/scout</code> 2 天 636⭐ ⑂22 fork/star 3.5% 把「AI browser agent」从「playwright + stealth + 自建 LLM loop 串联调」推到「<code>new Scout({ browser, models }).run(task)</code> + 4 角色模型（hands/brain/eyes/extract）+ Outcrawl cloud（residential + captcha + natural input + replays）+ 本机 launch / CDP + monorepo 6 packages + Browser Use 80-site 基准 92.5% + Apache-2.0」。这与今日 trending <code>morluto/rea</code>（Reverse engineer anything with agents）+ OpenCut/CLI-Anything 等一同指向「AI agent 在真实浏览器 / 真实世界工作的严肃工程化栈」的成型。</li>
+<li><strong>AI 应用设计系统严肃工程化（solid-glass 上线）。</strong> <code>deeplethe/solid-glass</code> 3 天 590⭐ ⑂5 把「AI 应用设计系统」从「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」推到「stands between flat design and liquid glass + one stylesheet finds shadcn/ui 的 data-slot 不改组件 + 13 items registry + 4-axis 设计语言 + blocks（agent workspace 等完整屏）+ Material/Create 调参页 + Light/Dark + React 19 + Tailwind CSS 4 + Base UI + MIT」。这是 AI agent UI 严肃工程化的关键拼图。</li>
+<li><strong>mono-repo OSS 严肃工程化（Everything 上线）。</strong> <code>HeyPuter/everything</code> 2 天 731⭐ ⑂107 fork/star 14.6% 把「开源软件替代闭源应用」从「各自独立的 FOSS 替代 + 单组织维护单 app」推到「mono-repo 34+ apps 把 Office/Collaboration/Creative/Engineering/Productivity/Finance/Business/Developer Tools/Games 9 大类对应开源替代 + 每个 app 都有 Photoshop/CapCut/Illustrator/AutoCAD/SolidWorks/Excel/Word/Zoom/Slack/DocuSign 等替代关系 + try-it / source 双链 + 全部 MIT + HeyPuter 同组织」。这与「doory 设计编辑器 + RustGIS 跨平台 GIS + ps2-web-recomp PS2 in browser」一同指向「严肃工程化跨领域」浪潮。</li>
+<li><strong>Self-hosted SaaS 严肃工程化（gptibo 上线）。</strong> <code>CoolkHz/gptibo</code> 2 天 722⭐ ⑂438 fork/star 60.7% 把「数字商品商城自托管」从「Shopify 闭源 + WooCommerce 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」推到「Self-hosted 数字商品商城 + admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选 + 原站点停运重开 MIT + CI verify workflow + 匿名支付/供应商适配器」。<code>fork/star 60.7%</code> 极高，说明大量用户在 fork 用于二次开发。</li>
+<li><strong>延续高增长势头强劲：CCBaga 4 天 2244⭐ + esp32-iphone-agent 4 天 2063⭐ + d2r-mobile 3 天 2061⭐ + doory 5 天 1187⭐ + RustGIS 5 天 1036⭐ + talorys 5 天 997⭐ + new-term-radar 3 天 947⭐ + everything 2 天 731⭐ + gptibo 2 天 722⭐。</strong> 8+ 个延续项目同时进入 top trending，反映了 Anthropic Skills 协议 + Apple 平台原生 Mach-O 严肃工程化 + AI browser/agent 真实基础设施 + 开源软件生态严肃工程化 + 严肃工程化自托管 SaaS 五大方向的强需求。</li>
+</ol>
+<h2 id="top-4">重点项目深度分析（top 4）</h2>
+<h3 id="top-1outcrawlaiscouttell-it-the-task-it-opens-a-browser-and-gets-it-done">Top 1：outcrawlai/scout——Tell it the task. It opens a browser and gets it done</h3>
+<ul>
+<li><strong>架构亮点：</strong> monorepo 6 packages（scout 前门 / runtime agent loop / model prompts + job split + provider-neutral clients / scout-core / scout-cdp drives real browser over DevTools / agenthands pointer+keyboard MIT 自带）+ 4 角色模型（hands reads+takes each step / brain plans+decides / eyes screenshot / extract reads-to-schema）+ <code>browser: 'outcrawl' | { launch } | { cdpUrl }</code> 三种 browser + JSON Schema → structured answer + every run returns status/data/error/steps/costUsd/replayUrl + caps: steps/duration/budget + 92.5% on Browser Use 80-site benchmark + 1000 free credits/month + AGENTS.md / DCO + automatic mirror to public repo + bun install / bun test + Apache-2.0</li>
+<li><strong>差异点：</strong> 区别于「playwright + stealth + 自建 LLM loop 串联调」，scout 是「one Scout + 4 roles + Outcrawl cloud / 本机 / CDP + monorepo 6 packages + 92.5% benchmark + Apache-2.0」严肃工程化路径</li>
+<li><strong>可借鉴：</strong> 任何需要「在浏览器完成任务 + 返回结构化答案」的团队 / SaaS / 个人 agent 可直接采用 <code>new Scout({ browser, models }).run(task)</code>；BYO 任意 chat completions API</li>
+<li><strong>风险点：</strong> Outcrawl cloud browser fleet 透明度不足；costUsd 计费规则未明示；自动 mirror 公开仓库可能延迟 / 失同步；parallel task 共享同一 browser 的并发隔离；replay 录像的内容安全 / 隐私合规；captcha solver 法律与伦理边界</li>
+</ul>
+<h3 id="top-2deeplethesolid-glassa-refined-glass-inspired-aesthetic-that-feels-solid">Top 2：deeplethe/solid-glass——A refined glass-inspired aesthetic that feels solid</h3>
+<ul>
+<li><strong>架构亮点：</strong> One stylesheet finds shadcn/ui data-slot 不改组件 + 13 items registry + 4-axis 设计语言（Tactility / Precision / Physicality / Materiality）+ blocks 完整屏（agent workspace: sessions, the thread, files and background tasks）+ Material 页面（how a pane is made）+ Create 页面（turn the dials）+ Light/Dark + Built on shadcn/ui Base UI + React 19 + Tailwind CSS 4 + Official site deeplethe.github.io/solid-glass + Built by DeepLethe + MIT</li>
+<li><strong>差异点：</strong> 区别于「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」，solid-glass 是「one stylesheet 找到 shadcn/ui data-slot 不改组件 + 4-axis 设计语言 + blocks 完整屏 + Material/Create 调参 + Light/Dark + MIT」严肃工程化路径</li>
+<li><strong>可借鉴：</strong> 任何已经有 shadcn/ui 项目的 React 19 + Tailwind CSS 4 + Base UI 团队可直接 <code>npm i solid-glass</code> import stylesheet 即可获得 Solid Glass 外观 + AI 类 agent workspace 可直接借鉴 blocks 完整屏</li>
+<li><strong>风险点：</strong> 与非 shadcn 项目的兼容性未明示；每个 component CSS 变量覆盖深度未公开；Create 页面 token 编辑如何回流 stylesheet；blocks 导出完整度；社区贡献治理；与 Tailwind UI / Radix Themes / Mantine 等 design system 的差异化（README 称「stands between flat and liquid glass」，但与 shadcn ecosystem 外的项目集成成本不明）</li>
+</ul>
+<h3 id="top-3heyputereverythingrebuild-and-open-source-the-worlds-software-from-scratch">Top 3：HeyPuter/everything——rebuild and open-source the world's software from scratch</h3>
+<ul>
+<li><strong>架构亮点：</strong> mono-repository 34+ apps + 9 大类（Office / Collaboration / Creative / Engineering / Productivity / Finance / Business / Developer Tools / Games）+ 每个 app 都有 Photoshop / CapCut / Illustrator / AutoCAD / SolidWorks / Excel / Word / Zoom / Slack / DocuSign 等替代关系 + try-it（puter.com 子域）/ source（GitHub src/[app-name]）双链 + 全部 MIT + HeyPuter 同组织维护 + App names, descriptions, and navigation are native text（图片仅 logo + icon + decorative hero）</li>
+<li><strong>差异点：</strong> 区别于「各自独立的 FOSS 替代（LibreOffice/GIMP/Inkscape/FreeCAD）+ 单组织维护单 app」，Everything 是「mono-repo 34+ apps 把 Office/Collaboration/Creative/Engineering/Productivity/Finance/Business/Developer Tools/Games 9 大类对应开源替代 + 每个 app 替代关系 + try-it / source 双链 + 全部 MIT + HeyPuter 同组织」严肃工程化路径</li>
+<li><strong>可借鉴：</strong> 任何需要「找到某个闭源软件（Photoshop/CapCut/Illustrator/AutoCAD/SolidWorks/Excel/Word/Zoom/Slack/DocuSign）的 FOSS 替代」的用户可直接访问 everything 看替代关系 + try-it / source 双链；任何 Puter 用户可扩展 everything</li>
+<li><strong>风险点：</strong> 各 app 实际完成度差异大（部分仅有 src/ 占位如 Building Design、Music Studio）；各 app CI / tests 完整度未明示；mono-repo 体积 416995 KB 极大，构建 &amp; clone 体验；put.com 域名 ↔ GitHub repo 同步机制；link-status 占位完整性；与 Puter 平台 account / 订阅模型关系；每个 app LICENSE 一致性；长期社区治理</li>
+</ul>
+<h3 id="top-4coolkhzgptiboself-hosted-admin-agent-workbench">Top 4：CoolkHz/gptibo——Self-hosted 数字商品商城 + admin + agent workbench</h3>
+<ul>
+<li><strong>架构亮点：</strong> 5 模块（用户商城 / 管理后台 / 代理工作台 / 业务后端 / 开发与部署）+ 两套后端任选（Go + Gin + PostgreSQL / Cloudflare Workers + D1 + Wrangler）+ React 19 + TypeScript + Vite + Tailwind + React Email + Node.js 24 + Docker Compose + GitHub Actions + CI verify workflow + Gitleaks + Node Test Runner + Go Test + 鉴权 + 支付回调 + 采购适配 + 异步任务 + 邮件 + 交易状态 + admin 定价/订单/客户/退款/代理/结算/通知 + agent workbench 独立商店/品牌/自定义域名/商品/订单/下级代理 + 匿名支付/供应商适配器 + 原站点停运重开 MIT + 中英界面 + 深浅主题</li>
+<li><strong>差异点：</strong> 区别于「Shopify 闭源 + WooCommerce/WordPress 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」，gptibo 是「Self-hosted 数字商品商城 + admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选 + 原站点停运重开 MIT + 匿名支付/供应商适配器 + CI verify workflow」严肃工程化路径</li>
+<li><strong>可借鉴：</strong> 任何需要「自托管数字商品商城 + admin + 多级代理 workbench」的团队 / 公司 / 站长可直接 clone → 选 Go+PG 或 CF Workers+D1 → 部署</li>
+<li><strong>风险点：</strong> 匿名支付/供应商适配器的 reference 实现完整度；PG vs D1 两套 migrations schema 等价性证明；maintenance profile 权限模型；agent workbench 多级代理结算规则；CI verify 当前涵盖的检查与门槛；Windows PowerShell 与 Linux/Mac 两条初始化路径对齐；与既有 SaaS 平台对比的迁移成本；社区治理</li>
+</ul>
+<h2 id="_3">风险与机遇</h2>
+<p><strong>风险：</strong>
+- <strong>scout Outcrawl cloud 单点 + 自动 mirror 隐私：</strong> Outcrawl cloud browser fleet 透明度不足；costUsd 计费公式未明；自动 mirror 公开仓库可能延迟 / 失同步；parallel task 共享同一 browser 的并发隔离；replay 录像内容安全 / 隐私合规；captcha solver 法律与伦理边界
+- <strong>solid-glass 与 shadcn 生态绑定 + 设计自由度：</strong> 与非 shadcn 项目兼容性未明；每个 component CSS 变量覆盖深度未公开；Create 页面 token 编辑回流机制；blocks 导出完整度；社区贡献治理；与 Tailwind UI / Radix Themes / Mantine 等 design system 差异
+- <strong>Everything mono-repo 体量 + 各 app 完成度：</strong> 各 app 实际完成度差异大（部分仅有 src/ 占位）；各 app CI / tests 完整度未明示；mono-repo 416995 KB 极大，构建 &amp; clone 体验；put.com ↔ GitHub repo 同步；link-status 占位完整性；与 Puter 平台 account / 订阅模型关系；每 app LICENSE 一致性；长期社区治理
+- <strong>gptibo 匿名支付/供应商适配器 + 双 runtime 等价性：</strong> 匿名支付/供应商适配器的 reference 实现完整度；PG vs D1 两套 migrations schema 等价性证明；maintenance profile 权限模型；agent workbench 多级代理结算规则；CI verify 检查项与门槛；Windows PowerShell 与 Linux/Mac 路径对齐；与既有 SaaS 平台对比的迁移成本；社区治理</p>
+<p><strong>机遇：</strong>
+- <strong>AI browser agent 严肃工程化（scout + today trending CLI-Anything / morluto/rea + 多 harness 一行 npm）</strong> 形成完整方向：scout 4 角色 + Outcrawl cloud / 本机 / CDP + JSON Schema → structured answer + monorepo 6 packages + 92.5% benchmark + Apache-2.0
+- <strong>AI 应用设计系统严肃工程化（solid-glass + 6 天 8072⭐ anatomy + 4 天 2260⭐ craft-launcher）</strong> 形成完整方向：shadcn/ui data-slot 不改组件 + 4-axis 设计语言 + blocks + Material/Create + Light/Dark + MIT
+- <strong>mono-repo OSS 严肃工程化（Everything + doory 设计 + RustGIS GIS + ps2-web-recomp 模拟器）</strong> 形成完整方向：mono-repo 34+ apps 把 9 大类对应开源替代 + try-it / source 双链 + MIT
+- <strong>Self-hosted SaaS 严肃工程化（gptibo + talorys + new-term-radar + mailcheap）</strong> 形成完整方向：admin + agent workbench + Go+PG 或 CF Workers+D1 双后端任选 + 匿名支付/供应商适配器 + MIT + CI verify
+- <strong>AI browser agent 真实基础设施（scout cloud + OpenCut + browser-use）+ 严肃工程化跨设计（solid-glass）+ 严肃工程化跨软件形态（Everything）+ 严肃工程化自托管商业 SaaS（gptibo）</strong> 形成「2026-10-15 四新主线」严肃工程化栈</p>
+<h2 id="_4">重点项目档案</h2>
+<ul>
+<li><a href="../projects/scout.md"><code>projects/scout.md</code></a> — outcrawlai/scout（新增）</li>
+<li><a href="../projects/solid-glass.md"><code>projects/solid-glass.md</code></a> — deeplethe/solid-glass（新增）</li>
+<li><a href="../projects/everything.md"><code>projects/everything.md</code></a> — HeyPuter/everything（新增）</li>
+<li><a href="../projects/gptibo.md"><code>projects/gptibo.md</code></a> — CoolkHz/gptibo（新增）</li>
+<li><a href="../projects/ccbaga.md"><code>projects/ccbaga.md</code></a> — liseami/CCBaga（已有，本日 1572⭐→2244⭐ +672⭐）</li>
+<li><a href="../projects/esp32-iphone-agent.md"><code>projects/esp32-iphone-agent.md</code></a> — onehumanbeing/esp32-iphone-agent（已有，本日 500⭐→2063⭐ +1563⭐）</li>
+<li><a href="../projects/d2r-mobile.md"><code>projects/d2r-mobile.md</code></a> — jhaizhou-ops/d2r-mobile（已有，本日 650⭐→2061⭐ +1411⭐）</li>
+<li><a href="../projects/doory.md"><code>projects/doory.md</code></a> — shaongitbd/doory（已有，本日 1041⭐→1187⭐ +146⭐）</li>
+<li><a href="../projects/rustgis.md"><code>projects/rustgis.md</code></a> — opengeos/RustGIS（已有，本日 771⭐→1036⭐ +265⭐）</li>
+<li><a href="../projects/talorys.md"><code>projects/talorys.md</code></a> — rociiu/talorys（已有，本日 953⭐→997⭐ +44⭐）</li>
+<li><a href="../projects/new-term-radar.md"><code>projects/new-term-radar.md</code></a> — zhuyansen/new-term-radar（已有，本日 855⭐→947⭐ +92⭐）</li>
+</ul>
+<hr />
+<p><em>证据边界：本文档核心数据来源为 2026-10-15 抓取的 GitHub Search API + Repository API 公开元数据（经 gh CLI token 认证，绕开未认证 60 req/h 速率限制）+ GitHub Trending HTML 直接抓取 + 各项目 README raw 接口摘录。"X 天 Y⭐"为粗略下限估计（总星数 / 经过天数），非精确单日增量统计。所有"严肃工程化形态"判断基于 README 描述的功能广度与技术深度，stars_delta 为相对增速（fork/star %），不当则为挥发性描述。</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
