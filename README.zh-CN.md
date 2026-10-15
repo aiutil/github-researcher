@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-15.md">最新日报</a> ·
+  <a href="daily/2026-10-16.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-15
+## 最新研究 · 2026-10-16
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 711 | 4 | 1800k+ |
+| 4 | 715 | 4 | 1850k+ |
 
-**今日核心判断：** outcrawlai/scout 2 天 636⭐ 把「AI browser agent」从「playwright + stealth + LLM 串联调」推到「Tell it the task. It opens a browser and gets it done + 一行 npm i @outcrawl/scout + 4 个模型角色（hands/brain/eyes/extract）+ 任意 chat completions API + Scout runs best on Outcrawl's cloud（residential + captcha solving + natural input + replays）+ 自己的 machine 可走 `browser: { launch }` 或 `browser: { cdpUrl }` + monorepo（packages/scout/runtime/model/scout-core/scout-cdp/agenthands）+ Browser Use 80-site 基准 92.5% + your own JSON schema → structured answer + Apache-2.0（agenthands 自带 MIT）」严肃工程化形态 · deeplethe/solid-glass 3 天 590⭐ 把「AI 应用设计系统」从「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」推到「A refined glass-inspired aesthetic that feels solid from afar and reveals its subtle materiality up close + stands between flat design and liquid glass + one stylesheet finds shadcn/ui 的 data-slot 不改组件 + 13 items registry + React 19 + Tailwind CSS 4 + Base UI + Material/Create 页面 + Light/Dark + blocks（agent workspace 等完整屏）+ built by DeepLethe + MIT」严肃工程化形态 · HeyPuter/everything 2 天 731⭐ 把「开源软件替代闭源应用」从「各自独立的 FOSS 替代（LibreOffice/GIMP/Inkscape/FreeCAD）+ 单组织维护单 app」推到「mono-repository containing all the applications and tools developed under the project + Office 8 + Collaboration 6 + Creative 6 + Engineering 4 + Productivity + Finance + Business + Developer Tools + Games 9 大类 + 34+ apps （Spreadsheet/Documents/Presentation/Whiteboard/PDF/Notes/Records/Meetings/Teamchat/Email/Contacts/Calendar/Signatures/Photo Studio/Video Studio/Vector Studio/Audio Studio/Music Studio/3D/CAD/Parametric/Circuits/...）+ 全部 MIT-licensed + 每个 app 都有替代关系映射（Photoshop/CapCut/Illustrator/AutoCAD/SolidWorks/Excel/Word/Zoom/Slack/DocuSign 等）+ 每个 app 都有 try-it / source 双入口 + HeyPuter 同一组织维护」严肃工程化形态 · CoolkHz/gptibo 2 天 722⭐ 把「数字商品商城自托管」从「Shopify 闭源 + WooCommerce/WordPress 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」推到「Self-hosted 数字商品商城 + 商品展示/下单支付/订单交付/售后 + 管理后台 + 代理工作台（前/后/代理三端）+ 两套后端任选（Go + PostgreSQL / Cloudflare Workers + D1）+ 原站点已停止运营重开 MIT + React 19 + TypeScript + Vite + Tailwind + React Email + Node.js 24 + Docker Compose + GitHub Actions + Gitleaks + 自动测试 + CI verify workflow + 中英界面 + 深浅主题 + 双语 README（中文主文档）」严肃工程化形态 · 延续跟踪 liseami/CCBaga → 4 天 2244⭐ ⑂222 fork/star 9.9%（Tauri 2 + .baga 容器 + Fingerprint Chromium 148 + Agent Skills 协议 + Debian 12/13 Xray/Reality）+ onehumanbeing/esp32-iphone-agent → 4 天 2063⭐ ⑂276 fork/star 13.4%（ESP32-S3 USB HID + UxPlay + GStreamer）+ jhaizhou-ops/d2r-mobile → 3 天 2061⭐ ⑂678 fork/star 32.9%（iOS aarch64 + Metal + shader 翻译）+ shaongitbd/doory → 5 天 1187⭐ ⑂68 fork/star 5.7%（React 19 + Django 5 + Docker）+ opengeos/RustGIS → 5 天 1036⭐ ⑂140 fork/star 13.5%（pure-Rust + WASM + plugins）+ rociiu/talorys → 5 天 997⭐ ⑂90 fork/star 9.0%（Cloudflare AI agent）+ zhuyansen/new-term-radar → 3 天 947⭐ ⑂381 fork/star 40.2%（AI 新词发现）+ HeyPuter/everything → 2 天 731⭐ ⑂107 fork/star 14.6%（mono-repo 开源软件）+ CoolkHz/gptibo → 2 天 722⭐ ⑂438 fork/star 60.7%（Self-hosted 商城）+ 5 个延续项目同时进入 top trending，反映了 Anthropic Skills 协议 + Apple 平台原生 Mach-O 严肃工程化 + AI browser/agent 真实基础设施 + 开源软件生态严肃工程化 + 严肃工程化自托管 SaaS 五大方向的强需求
+**今日核心判断：** lexmount/moli 67 天 18659⭐ ⑂498 fork/star 2.7% 把「AI agent headless browser」从「Chromium wrapper + CDP + stealth + 缓慢启动」推到「a standalone browser kernel, not a Chromium wrapper. It is built in Rust, has its own ownership and lifecycle rules + html5ever + rusty_v8/V8 + Servo/Stylo + Taffy + Parley + AnyRender/Vello CPU + Document & style have a single source of truth: the native DOM and its Stylo integration + Every real refresh builds a temporary working tree ... freezes the canonical box/fragment geometry into a compact FrozenLayoutTree + no incrementally maintained layout tree, damage graph, retained display list, GPU compositor, or persistent window + CLI/CDP/WebDriver Classic/WebDriver BiDi + on-demand layout & rendering + Apache-2.0」严肃工程化形态 · devswha/herdr-web-ui 29 天 1022⭐ ⑂138 fork/star 13.5% 把「coding agent 远程控制」从「tmux/zellij + SSH + Tailscale + 手动端口 + 仅桌面」推到「Browser and phone client for herdr: chat and live terminal for every agent pane + native Claude Code / Codex / omp / omo / gjc / pi / Hermes / OpenCode 2 / Devin CLI transcripts + 一次 Chat ↔ Terminal 切换 + PWA + key bar (Esc / Tab / Ctrl / Alt / Shift / Enter / arrows) + Tailscale serve + QR code + voice dictation (Korean + English) + screen mirror (Windows) + worktree branch from phone + Bun + xterm.js + React + MIT」严肃工程化形态 · pch/rawmakase 20 天 1199⭐ ⑂44 fork/star 3.7% 把「non-destructive RAW photo developer」从「Lightroom 闭源订阅 + Darktable 年久失修 + RawTherapee UI 不友好 + Apple Silicon 适配滞后」推到「a fast, non-destructive RAW photo developer for Linux, macOS and Windows, written in Rust + opens RAW files from the cameras LibRaw supports + Lightroom-style controls + JPEG/PNG/TIFF + Lightroom Classic .lrcat import with folder relinking + SQLite catalogs + 26 built-in presets + Lightroom XMP presets + GPU color & tone (Metal macOS / Vulkan Linux / DirectX 12 or Vulkan Windows) + MCP server for agents + MIDI controllers + scripts + Omarchy `rawmakase-bin` package + Homebrew Cask + .deb/.rpm/Arch + 1.0 之前 backwards compatibility not guaranteed + 个人项目在 active development + MIT」严肃工程化形态 · ViceVerse-cz/Serein 37 天 789⭐ ⑂46 fork/star 5.8% 把「Discord 客户端」从「Electron 庞大 + 隐私疑云 + 资源高占用 + 闭源」推到「A lightweight, native Discord desktop client written in Rust, powered by egui and wgpu + immediate-mode rendering + minimal idle CPU + zero Electron / Node.js / web runtime overhead + Direct gateway & REST (active rate-limit cooldowns + heartbeat + reconnect/resume + partial payload patching) + macOS Keychain / Windows Credential Manager / Linux Secret Service 存 session token + ephemeral WKWebView/WebView2/WebKitGTK 官方登录页 (email/password / QR / MFA) + voice: Opus + RTP/UDP + DAVE v1 + Sonora AEC + RNNoise + video decode + multi-crate Cargo workspace (apps/desktop + 11 crates) + MIT OR Apache-2.0」严肃工程化形态
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [outcrawlai/scout](projects/scout.md) | 636 stars | 工具型 |
-| [deeplethe/solid-glass](projects/solid-glass.md) | 590 stars | 工具型 |
-| [HeyPuter/everything](projects/everything.md) | 731 stars | 观察型 |
-| [CoolkHz/gptibo](projects/gptibo.md) | 722 stars | 工具型 |
+| [lexmount/moli](projects/moli.md) | 18659 stars | 基础设施候选 |
+| [devswha/herdr-web-ui](projects/herdr-web-ui.md) | 1022 stars | 工具型 |
+| [pch/rawmakase](projects/rawmakase.md) | 1199 stars | 工具型 |
+| [ViceVerse-cz/Serein](projects/serein.md) | 789 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **outcrawlai/scout 2 天 636⭐ 把「AI browser agent」从「playwright + stealth + LLM 串联调」推到「Tell it the task. It opens a browser and gets it done + 一行 npm i @outcrawl/scout + 4 个模型角色（hands/brain/eyes/extract）+ 任意 chat completions API + Scout runs best on Outcrawl's cloud（residential + captcha solving + natural input + replays）+ 自己的 machine 可走 `browser: { launch }` 或 `browser: { cdpUrl }` + monorepo（packages/scout/runtime/model/scout-core/scout-cdp/agenthands）+ Browser Use 80-site 基准 92.5% + your own JSON schema → structured answer + Apache-2.0（agenthands 自带 MIT）」严肃工程化形态** · 相关项目：outcrawlai/scout · 强度：92
-2. **deeplethe/solid-glass 3 天 590⭐ 把「AI 应用设计系统」从「shadcn/ui 默认 flat + Apple liquid glass 商用许可 + 各家 design system 半成品」推到「A refined glass-inspired aesthetic that feels solid from afar and reveals its subtle materiality up close + stands between flat design and liquid glass + one stylesheet finds shadcn/ui 的 data-slot 不改组件 + 13 items registry + React 19 + Tailwind CSS 4 + Base UI + Material/Create 页面 + Light/Dark + blocks（agent workspace 等完整屏）+ built by DeepLethe + MIT」严肃工程化形态** · 相关项目：deeplethe/solid-glass · 强度：84
-3. **HeyPuter/everything 2 天 731⭐ 把「开源软件替代闭源应用」从「各自独立的 FOSS 替代（LibreOffice/GIMP/Inkscape/FreeCAD）+ 单组织维护单 app」推到「mono-repository containing all the applications and tools developed under the project + Office 8 + Collaboration 6 + Creative 6 + Engineering 4 + Productivity + Finance + Business + Developer Tools + Games 9 大类 + 34+ apps （Spreadsheet/Documents/Presentation/Whiteboard/PDF/Notes/Records/Meetings/Teamchat/Email/Contacts/Calendar/Signatures/Photo Studio/Video Studio/Vector Studio/Audio Studio/Music Studio/3D/CAD/Parametric/Circuits/...）+ 全部 MIT-licensed + 每个 app 都有替代关系映射（Photoshop/CapCut/Illustrator/AutoCAD/SolidWorks/Excel/Word/Zoom/Slack/DocuSign 等）+ 每个 app 都有 try-it / source 双入口 + HeyPuter 同一组织维护」严肃工程化形态** · 相关项目：HeyPuter/everything · 强度：88
-4. **CoolkHz/gptibo 2 天 722⭐ 把「数字商品商城自托管」从「Shopify 闭源 + WooCommerce/WordPress 全套包袱 + Gumroad 收费抽成 + Lemon Squeezy 抽成」推到「Self-hosted 数字商品商城 + 商品展示/下单支付/订单交付/售后 + 管理后台 + 代理工作台（前/后/代理三端）+ 两套后端任选（Go + PostgreSQL / Cloudflare Workers + D1）+ 原站点已停止运营重开 MIT + React 19 + TypeScript + Vite + Tailwind + React Email + Node.js 24 + Docker Compose + GitHub Actions + Gitleaks + 自动测试 + CI verify workflow + 中英界面 + 深浅主题 + 双语 README（中文主文档）」严肃工程化形态** · 相关项目：CoolkHz/gptibo · 强度：82
+1. **lexmount/moli 67 天 18659⭐ ⑂498 fork/star 2.7% 把「AI agent headless browser」从「Chromium wrapper + stealth + 缓慢启动」推到「standalone browser kernel not a Chromium wrapper + Rust + html5ever + V8 + Servo/Stylo + Taffy + Parley + AnyRender/Vello + on-demand layout & rendering + FrozenLayoutTree + CLI/CDP/WebDriver Classic/WebDriver BiDi + Apache-2.0」严肃工程化形态** · 相关项目：lexmount/moli · 强度：95
+2. **devswha/herdr-web-ui 29 天 1022⭐ ⑂138 fork/star 13.5% 把「coding agent 远程控制」从「tmux/zellij + SSH + Tailscale + 仅桌面」推到「Browser and phone client for herdr + native Claude Code / Codex / omp / omo / gjc / pi / Hermes / OpenCode 2 / Devin CLI transcripts + Chat ↔ Terminal + PWA + key bar + Tailscale serve + QR + voice dictation + screen mirror + worktree branch from phone + Bun + xterm.js + React + MIT」严肃工程化形态** · 相关项目：devswha/herdr-web-ui · 强度：89
+3. **pch/rawmakase 20 天 1199⭐ ⑂44 fork/star 3.7% 把「non-destructive RAW photo developer」从「Lightroom 闭源订阅 + Darktable 年久失修 + RawTherapee UI 不友好」推到「fast, non-destructive RAW photo developer in Rust + LibRaw + Lightroom-style controls + Lightroom Classic .lrcat import + SQLite catalogs + 26 built-in presets + Lightroom XMP + GPU color & tone (Metal / Vulkan / DirectX 12) + MCP server for agents + MIDI + Omarchy + Homebrew Cask + .deb/.rpm/Arch + MIT」严肃工程化形态** · 相关项目：pch/rawmakase · 强度：86
+4. **ViceVerse-cz/Serein 37 天 789⭐ ⑂46 fork/star 5.8% 把「Discord 客户端」从「Electron 庞大 + 隐私疑云 + 资源高占用」推到「lightweight, native Discord desktop client in Rust + egui + wgpu + immediate-mode + zero Electron/Node.js/web runtime + Direct gateway & REST + Keychain/CredManager/SecretService session token + ephemeral WKWebView/WebView2/WebKitGTK login (email/password + QR + MFA) + voice (Opus + RTP/UDP + DAVE v1 + Sonora AEC + RNNoise + video decode) + multi-crate Cargo workspace + MIT OR Apache-2.0」严肃工程化形态** · 相关项目：ViceVerse-cz/Serein · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 | [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 | [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
 | [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 | [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
-| [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 
 ## 为什么做这个项目
 

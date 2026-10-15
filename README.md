@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-15.md">Latest report</a> ·
+  <a href="daily/2026-10-16.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-15
+## Latest report · 2026-10-16
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 711 | 4 | 1800k+ |
+| 4 | 715 | 4 | 1850k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [outcrawlai/scout](projects/scout.md) | 636 stars | 工具型 |
-| [deeplethe/solid-glass](projects/solid-glass.md) | 590 stars | 工具型 |
-| [HeyPuter/everything](projects/everything.md) | 731 stars | 观察型 |
-| [CoolkHz/gptibo](projects/gptibo.md) | 722 stars | 工具型 |
+| [lexmount/moli](projects/moli.md) | 18659 stars | 基础设施候选 |
+| [devswha/herdr-web-ui](projects/herdr-web-ui.md) | 1022 stars | 工具型 |
+| [pch/rawmakase](projects/rawmakase.md) | 1199 stars | 工具型 |
+| [ViceVerse-cz/Serein](projects/serein.md) | 789 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: outcrawlai/scout
-2. **Signal 2** · score 84 · repositories: deeplethe/solid-glass
-3. **Signal 3** · score 88 · repositories: HeyPuter/everything
-4. **Signal 4** · score 82 · repositories: CoolkHz/gptibo
+1. **Signal 1** · score 95 · repositories: lexmount/moli
+2. **Signal 2** · score 89 · repositories: devswha/herdr-web-ui
+3. **Signal 3** · score 86 · repositories: pch/rawmakase
+4. **Signal 4** · score 82 · repositories: ViceVerse-cz/Serein
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-15.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-16.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 | [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 | [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
 | [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 | [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 | [2026-10-11](daily/2026-10-11.md) | 5 | 5 |
 | [2026-10-10](daily/2026-10-10.md) | 6 | 5 |
-| [2026-10-09](daily/2026-10-09.md) | 7 | 5 |
 
 ## Why this repository exists
 
