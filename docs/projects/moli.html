@@ -59,7 +59,9 @@
 <li><strong>给 coding agent 的 prompt 模板：</strong> Install the skills under https://github.com/lexmount/moli/tree/main/skills, follow their instructions to download and install the latest prebuilt Moli binary, then use moli-webfetch to fetch https://example.com and show me the result</li>
 <li><strong>Showcase：</strong> An HTML5 game rendered by Moli and inspected live through Chrome DevTools（说明 DevTools live inspection 可用）</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<p>（详见各趋势的架构师速览表 + Mermaid 架构图。系统边界、主路径、关键权衡、最小 PoC、证据边界、待核验均见下表与图。）</p>
+<h2 id="_6">架构启发</h2>
 <p>Moli 的核心启发是 <strong>「浏览器不一定要基于 Chromium wrapper——AI agent 时代的 headless browser 应是 standalone kernel + on-demand layout + FrozenLayoutTree」</strong>。当前所有主流 headless browser（Chromium / Playwright / Puppeteer / browser-use / OpenCut / dots）都基于 Chromium wrapper——启动慢、内存大、依赖重、CDP 单协议。Chromium wrapper 在「人在桌面浏览器用」时代合理，但在「AI agent 在 server 跑 headless browser」时代笨重。Moli 走另一条路：自实现整套浏览器栈 + on-demand layout + FrozenLayoutTree + 四接口 + skills/ for coding agent。这与 <code>outcrawlai/scout</code>（昨日 trending 636⭐，LLM-driven browser agent on Outcrawl cloud）形成完美互补——scout 偏「agent 调度 / 模型分工」，moli 偏「浏览器运行时本身」。更深层的启发是：<strong>on-demand layout + FrozenLayoutTree + no incrementally maintained layout tree</strong> 让 AI agent 时代的 headless browser 真正做到了「轻量 + 快速 + 高兼容」——任何需要 AI agent 真实网页操作的团队 / SaaS / 个人 agent 均可直接采用 moli 作为基础 runtime。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -87,9 +89,9 @@
   Kernel -.计费.-> Cost[Cost controls<br/>headless browser fleet model]
   Kernel -.基线.-> Bench[Benchmarks<br/>Mixed public-web crawl<br/>Sample agent workload<br/>WPT tests<br/>Lexbench-Headless-Browser]
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>基础设施候选（standalone headless browser kernel for AI agents）。</strong> Moli 不只是工具，更是 AI agent 时代 headless browser 的 <strong>「standalone kernel 路径」</strong>——在 Chromium wrapper 主导的市场，提供「轻量 + 快速 + 高兼容 + on-demand + Rust + Apache-2.0 + skills/ for agent」的严肃工程化基础。18659⭐ ⑂498 + 14 topics（ai-agents / browser / browser-automation / cloud-browser / kitesurf / playwright / puppeteer / rust / servo / web-crawler / web-scraper / web-scraping / ai-tools）+ Apache-2.0 + 67 天稳步增长已显示这是 Chromium wrapper 之外的关键 stand。能否成为「AI agent headless browser 默认 runtime」取决于：网页兼容性边界（form submit / shadow DOM / WebGL / canvas）+ V8/Stylo/Taffy/Parley 版本稳定性 + Screencast token 隐私模型 + Cost controls 计费公式 + Lexbench 数字 + 商业模式 + 与 morluto/rea / outcrawlai/scout / OpenCut 等 AI browser agent 栈的互操作性。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>standalone browser kernel 而非 Chromium wrapper：</strong> 网页兼容性边界（form submit / shadow DOM / WebGL / canvas）；V8 / Stylo / Taffy / Parley 各包版本稳定性；Screencast token 的隐私模型；Cost controls 计费公式</li>
 <li><strong>Lexbench 自家 benchmark：</strong> Lexbench-Headless-Benchmark 数字、与其他 headless browser（Chromium / Playwright / Puppeteer / browser-use）的实测差距、商业模式、与 morluto/rea / outcrawlai/scout / OpenCut 等 AI browser agent 栈的互操作性</li>
@@ -97,7 +99,7 @@
 <li><strong>skills/ 生态依赖：</strong> skills/ 给 Claude Code / Codex 等 coding agent 用的程度、与各 agent harness 的适配完整度、社区贡献治理</li>
 <li><strong>泡沫点：</strong> 与 morluto/rea (265K⭐ LLM-driven reverse engineering) / outcrawlai/scout (yesterday's 636⭐ browser agent) / OpenCut (CLI-Anything) 等同期 trending AI browser agent 项目的功能重叠与差异化</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Chromium wrapper（Playwright / Puppeteer / browser-use / OpenCut / dots）：</strong> Chromium wrapper 启动慢、内存大、依赖重、CDP 单协议；Moli 是 standalone Rust kernel + on-demand + FrozenLayoutTree + 四接口 + Apache-2.0</li>
 <li><strong>vs outcrawlai/scout（昨日 trending）：</strong> scout 偏 LLM-driven browser agent（云端 Outcrawl cloud + 本机/CDP），Moli 偏 standalone browser kernel（Rust + html5ever + V8 + Servo/Stylo），两者在「浏览器层 / agent 层」分工不同但互补——Moli 可作为 scout 的 browser runtime 后端</li>
@@ -105,9 +107,9 @@
 <li><strong>vs agentswha/herdr-web-ui：</strong> herdr-web-ui 偏 coding agent 远程控制 client（Claude Code/Codex/Hermes 等 native transcripts + Chat↔Terminal + PWA）；Moli 偏 standalone browser kernel——两者无直接竞争，moli 是底层 runtime，herdr-web-ui 是上层 client</li>
 <li><strong>vs anthropics/skills：</strong> Anthropic 官方 Skills 仓库仅服务 Claude；Moli 的 skills/ 跨 coding agent（Claude Code / Codex 等）+ 更通用</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（standalone headless browser kernel for AI agents）。</strong> Moli 代表了 AI agent 时代 headless browser 的「standalone kernel 走向」——在 Chromium wrapper 主导的市场，提供「轻量 + 快速 + 高兼容 + on-demand + Rust + Apache-2.0 + skills/ for agent」的严肃工程化基础。建议关注：网页兼容性边界（form submit / shadow DOM / WebGL / canvas）+ V8/Stylo/Taffy/Parley 版本稳定性 + Screencast token 隐私模型 + Cost controls 计费公式 + Lexbench 数字 + 商业模式 + 与 morluto/rea / outcrawlai/scout / OpenCut 等 AI browser agent 栈的互操作性。对 AI agent 团队 / SaaS / 个人 agent builder，这是 Chromium wrapper 之外的关键 stand，值得直接采用。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>网页兼容性边界（form submit / shadow DOM / WebGL / canvas）的实测表现</li>
 <li>V8 / Stylo / Taffy / Parley 各包版本稳定性与升级节奏</li>

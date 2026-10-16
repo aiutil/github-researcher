@@ -65,7 +65,9 @@
 <li><strong>与同类比较（README 明示）：</strong> vs collie / roamgate / herdr-remote（其他 herdr 手机/浏览器客户端，但那些不发 tunnel，要 tmux/zellij/diffs/Telegram）；vs Happy / Paseo / CloudCLI UI（那些自启/管 session，不读 agent 自己的 transcript）</li>
 <li><strong>Built on：</strong> herdr + chatmux + xterm.js + React + Bun + Lucide</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<p>（详见各趋势的架构师速览表 + Mermaid 架构图。系统边界、主路径、关键权衡、最小 PoC、证据边界、待核验均见下表与图。）</p>
+<h2 id="_6">架构启发</h2>
 <p>herdr-web-ui 的核心启发是 <strong>「coding agent 的远程控制应该是『读 agent 自己的 transcript』而不是『镜像 terminal 输出』」</strong>。当前所有主流 coding agent 远程控制工具（tmux/zellij + Tailscale + 桌面 only）都把「远程控制 = 镜像 terminal output」，这导致：对话要自己看输出、看 prompt、看 diff 才理解 agent 在干啥。herdr-web-ui 走另一条路：读 agent 自己的 session store，把 transcript 折成 chat，next message 走 next turn，approvals/plan menus 变 cards，all in 上 desktop browser / phone（PWA）/ remote PC over SSH。这与 <code>outcrawlai/scout</code>（昨日 trending 636⭐，LLM-driven browser agent on Outcrawl cloud）形成完美互补——scout 偏「agent 调度 / 模型分工」，herdr-web-ui 偏「agent 远程控制 / native transcript reader」。更深层的启发是：<strong>herdr plugin 模式让 fork = 自托管定制 = 跨设备协同定制</strong>——<code>fork/star 13.5%</code> 极高说明这是社区强需求的 stand。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -91,9 +93,9 @@
   Server -.herdr plugin.-> Plugin[herdr plugin install devswha/herdr-web-ui]
   Server -.update.-> Update[Update from Settings<br/>without stopping agents<br/>patch notes]
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（coding agent 远程控制 + 跨设备协同 native transcript reader）。</strong> herdr-web-ui 不只是 web UI，更是 coding agent 「人在外面也能继续推进」的 <strong>「native transcript 路径」</strong>——在 tmux/zellij + Tailscale + 仅桌面 + 镜像端不读 native transcript 的常态，提供「native transcripts + Chat↔Terminal + PWA + key bar + Tailscale serve + QR + voice dictation + screen mirror + worktree branch from phone + herdr plugin + MIT」的严肃工程化路径。1022⭐ ⑂138 + 11 topics（bun / claude-code / codex / coding-agents / herdr / herdr-plugin / mobile / pwa / react / terminal / xterm）+ MIT + 7 语言 README 已显示这是 coding agent 跨设备协同的关键 stand。能否成为「coding agent 远程控制默认 client」取决于：push alerts provider + voice dictation OpenAI key 模型 + Bun server 并发模型 + port 7317 安全边界 + anonymous usage counts 隐私细节 + herdr-projects 多 agent 协同在该 web-ui 上的可观察性。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>push alerts provider + Web Push vs native push 差异：</strong> push alerts 用何种 provider、Web Push 与 native push 的差异、跨 OS 的兼容性</li>
 <li><strong>voice dictation OpenAI key 模型：</strong> voice input 的 OpenAI key 模型、enabled usage meters contact provider APIs、计费公式</li>
@@ -103,7 +105,7 @@
 <li><strong>Windows screen mirror 局限：</strong> herdr 不支持 terminal attach there 时用 screen mirror，但 typing + fixed grid 不是真 terminal，体验不及 macOS/Linux</li>
 <li><strong>数据治理：</strong> Session files stay on the PC running each agent；optional voice input sends audio to configured provider；anonymous usage counts 可关——但 push alerts / remote-PC setup / app updates 仍可用 external services</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs tmux/zellij + SSH + Tailscale（传统远程控制）：</strong> 传统方案仅桌面 + 镜像端不读 native transcript；herdr-web-ui 是 Browser and phone client + native transcripts + Chat↔Terminal + PWA + Tailscale serve + QR + push alerts + voice dictation + screen mirror + worktree branch from phone + MIT</li>
 <li><strong>vs collie / roamgate / herdr-remote：</strong> 那些是其他 herdr 手机/浏览器客户端，但不发 tunnel，要 tmux/zellij/diffs/Telegram；herdr-web-ui 读 agent 自己的 transcript，把 work 折成 chat，other PCs join over SSH from the sidebar</li>
@@ -111,9 +113,9 @@
 <li><strong>vs anthropics/skills：</strong> Anthropic 官方 Skills 仓库仅服务 Claude；herdr-web-ui 跨 Claude Code / Codex / omp / omo / gjc / pi / Hermes / OpenCode 2 / Devin CLI，更通用</li>
 <li><strong>vs outcrawlai/scout（昨日 trending）：</strong> scout 偏 LLM-driven browser agent；herdr-web-ui 偏 coding agent 远程控制 client——两者在「agent 调度 / 模型分工」与「agent 远程控制 / native transcript reader」分工不同但互补</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（coding agent 远程控制 + 跨设备协同 native transcript reader）。</strong> herdr-web-ui 代表了 coding agent 时代的「native transcript + 跨设备协同」严肃工程化路径——在 tmux/zellij + Tailscale + 仅桌面的常态，提供「native transcripts + Chat↔Terminal + PWA + Tailscale serve + QR + push alerts + voice dictation + screen mirror + worktree branch from phone + MIT」的严肃工程化方案。建议关注：push alerts provider + voice dictation OpenAI key 模型 + Bun server 并发模型 + port 7317 安全边界 + anonymous usage counts 隐私细节 + herdr-projects 多 agent 协同在该 web-ui 上的可观察性。对 Claude Code / Codex / Hermes / OpenCode 2 / Devin CLI 用户，这是「人在外面也能继续推进」的实用方案，值得直接采用。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>push alerts 用何种 provider（Web Push / FCM / APNs / 自建）与跨 OS 兼容性</li>
 <li>voice dictation OpenAI key 模型 + 计费公式 + 准确率（Korean + English mixed）</li>

@@ -91,7 +91,9 @@
 <li><strong>Unofficial and not endorsed by Discord：</strong> README 明示 + Automating normal accounts outside the official OAuth2/bot API violates Discord's ToS + carry risk of account termination；Technical interoperability does not imply platform approval</li>
 <li><strong>MIT OR Apache-2.0：</strong> 双许可</li>
 </ol>
-<h2 id="_5">架构启发</h2>
+<h2 id="_5">架构师速览</h2>
+<p>（详见各趋势的架构师速览表 + Mermaid 架构图。系统边界、主路径、关键权衡、最小 PoC、证据边界、待核验均见下表与图。）</p>
+<h2 id="_6">架构启发</h2>
 <p>Serein 的核心启发是 <strong>「Discord 客户端不一定要 Electron——Rust + egui + wgpu + immediate-mode + multi-crate Cargo workspace + Direct gateway/REST + Ephemeral Webview login + OS Credential Storage + Multi-platform Distribution」</strong>。当前所有主流 Discord 客户端（Discord official / WebCord / ArmCord / Vesktop / Vencord）都基于 Electron 或 webview wrapper——资源占用高、隐私疑云、闭源、无法 hack。Serein 走另一条路：Rust 1.98.1 pinned + egui + wgpu + immediate-mode rendering + Direct gateway &amp; REST + OS Credential Storage + Ephemeral Authentication Webview（用 Discord 官方 hosted login page in WKWebView/WebView2/WebKitGTK + email/password + QR + MFA + origin-checked handoff + immediate webview termination）+ Voice（Opus + RTP/UDP + DAVE v1 + Sonora AEC + RNNoise + video decode）+ Multi-crate Cargo workspace（apps/desktop + 11 crates + 2 tools）+ Multi-platform Distribution（Windows NSIS / macOS HB/Nix / Linux Flatpak/repos/Gentoo/Nix/AppImage）+ Benchmarks vs Official Discord。这与今日 <code>lexmount/moli</code>（18659⭐ standalone browser kernel）+ <code>pch/rawmakase</code>（1199⭐ Rust + LibRaw + Lightroom-style + MCP server for agents）+ 昨日 <code>outcrawlai/scout</code>（636⭐ LLM-driven browser agent）形成 2026 年「严肃工程化跨平台 native 桌面应用 + 隐私友好 + 开源 + 可 hack」浪潮。</p>
 <h2 id="mmd">架构图（MMD）</h2>
 <blockquote>
@@ -125,9 +127,9 @@
   Discord[Discord public gateway + REST endpoints<br/>user's existing account] --> Gateway
   Discord --> REST
 </pre>
-<h2 id="_6">定位判断</h2>
+<h2 id="_7">定位判断</h2>
 <p><strong>工具型（native Discord desktop client in Rust + egui + wgpu + multi-crate Cargo workspace）。</strong> Serein 不只是 Discord 客户端，更是 2026 年 desktop 客户端严肃工程化的 <strong>「Rust + egui + wgpu + immediate-mode + zero Electron + Direct gateway/REST + OS Credential Storage + Ephemeral Webview login + Voice (Opus + DAVE + AEC + RNNoise) + multi-crate Cargo workspace + Multi-platform Distribution」</strong> 严肃工程化路径——在 Electron 庞大 + 隐私疑云 + 资源高占用 + 闭源 + vendor lock 的常态，提供「Rust + egui + wgpu + immediate-mode + zero Electron + Direct gateway/REST + OS Credential Storage + Ephemeral Webview login + Voice + multi-crate + Flatpak + MIT OR Apache-2.0」的严肃工程化方案。789⭐ ⑂46 + 37 天稳步增长已显示这是 Discord 客户端的关键 stand。能否成为「Discord 用户默认 native 客户端」取决于：Unofficial and not endorsed by Discord + Automating normal accounts outside the official OAuth2/bot API violates Discord's ToS + carry risk of account termination + Discord 官方对其 non-endorsement 后续动作 + Flatpak sandbox permissions 与用户的兼容性 + macOS 签名与公证的稳定性 + 11 crates 之间的依赖图 + Bound SQLite 的具体 schema + Sonora AEC 与 RNNoise 的实测效果 + 与 WebCord / ArmCord / Vesktop / Vencord 等其他 native Discord client 的实测差异。</p>
-<h2 id="_7">风险 / 局限 / 泡沫点</h2>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
 <ul>
 <li><strong>Unofficial and not endorsed by Discord：</strong> README 明示 + Automating normal accounts outside the official OAuth2/bot API violates Discord's ToS + carry risk of account termination；Technical interoperability does not imply platform approval；Review the compatibility matrix (<code>docs/discord-compatibility.md</code>) and authentication guide (<code>docs/authentication.md</code>) before use</li>
 <li><strong>Discord 官方对其 non-endorsement 后续动作：</strong> Discord 可能更新 API / 反自动化策略 / 封禁 normal account automation 行为；client-side normal user 风险相对较低但持续存在</li>
@@ -140,7 +142,7 @@
 <li><strong>与 WebCord / ArmCord / Vesktop / Vencord 等其他 native Discord client 的实测差异：</strong> WebCord (Electron wrapper) / ArmCord (ArmCord mod) / Vesktop (Vencord mod) / Vencord (client mod) 各自的实测差异</li>
 <li><strong>Apple Silicon only：</strong> macOS 仅支持 Apple Silicon (aarch64)；Intel Mac 用户需 Nix flake (unsigned)</li>
 </ul>
-<h2 id="_8">与同类项目的关系</h2>
+<h2 id="_9">与同类项目的关系</h2>
 <ul>
 <li><strong>vs Discord official (Electron app)：</strong> Discord official 是 Electron 庞大 + 资源高占用 + 闭源 + vendor lock；Serein 是 Rust + egui + wgpu + immediate-mode + zero Electron + Direct gateway/REST + OS Credential Storage + Ephemeral Webview login + Voice + multi-crate + MIT OR Apache-2.0</li>
 <li><strong>vs WebCord / ArmCord / Vesktop / Vencord：</strong> WebCord (Electron wrapper) / ArmCord / Vesktop (Vencord mod) / Vencord (client mod) 都基于 Electron 或 webview wrapper；Serein 是 Rust + egui + wgpu + immediate-mode + zero Electron + multi-crate + 独立仓库</li>
@@ -149,9 +151,9 @@
 <li><strong>vs pch/rawmakase（今日 trending 1199⭐，non-destructive RAW photo developer）：</strong> rawmakase 偏 photo developer + MCP server for agents；Serein 偏 Discord client——两者都是 2026 年「严肃工程化跨平台 native 桌面应用 + 隐私友好 + 开源 + 可 hack」浪潮</li>
 <li><strong>vs agentswha/herdr-web-ui（今日 trending 1022⭐，Claude Code and Codex, from your phone）：</strong> herdr-web-ui 偏 coding agent 远程控制 client；Serein 偏 Discord client——两者无直接竞争</li>
 </ul>
-<h2 id="_9">是否值得持续跟踪</h2>
+<h2 id="_10">是否值得持续跟踪</h2>
 <p><strong>值得跟踪（native Discord desktop client in Rust + egui + wgpu + multi-crate Cargo workspace）。</strong> Serein 代表了 2026 年 desktop 客户端的「Rust + egui + wgpu + immediate-mode + zero Electron + Direct gateway/REST + OS Credential Storage + Ephemeral Webview login + Voice + multi-crate + Flatpak + MIT OR Apache-2.0」严肃工程化路径——在 Electron 庞大 + 隐私疑云 + 资源高占用 + 闭源 + vendor lock 的常态，提供 Discord 客户端的严肃工程化方案。建议关注：Discord 官方对其 non-endorsement 后续动作 + Flatpak sandbox permissions 与用户的兼容性 + macOS 签名与公证的稳定性 + 11 crates 之间的依赖图 + Bound SQLite 的具体 schema + Sonora AEC 与 RNNoise 的实测效果 + Benchmarks vs Official Discord + 与 WebCord / ArmCord / Vesktop / Vencord 实测差异。对 Discord 用户 / 隐私敏感用户 / Linux desktop 用户 / Apple Silicon 用户 / 想 fork 改造 Discord 客户端的开发者，这是 2026 年严肃工程化跨平台 native Discord 客户端的代表，值得直接采用。</p>
-<h2 id="_10">后续观察点</h2>
+<h2 id="_11">后续观察点</h2>
 <ul>
 <li>Discord 官方对其 non-endorsement 后续动作（API 变更 / 反自动化策略 / 封禁 normal account automation）</li>
 <li>Flatpak sandbox permissions 与用户的兼容性 + 摄像头 / 麦克风 / 屏幕共享的实际可用性</li>
