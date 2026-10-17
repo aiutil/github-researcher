@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noniv/web-ocean | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Noniv/web-ocean" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="nonivweb-ocean">Noniv/web-ocean</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Noniv 个人 + <strong>Claude Code (Opus 5.5) 完整写就的 WebGPU 实时海面渲染器</strong>——<code>no engine or rendering library</code>，102 KB ocean.html + 61 KB ocean.min.html 单文件可用，6 cascade radix-2 FFT + CDLOD 17-level quadtree + mip-mapped LEAN mapping + Hillaire 大气 + 双云层 + AgX + 6-8ms @ 2560×1440 RTX 5070 Ti，MIT 严肃工程化全形态。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>传统实时海面渲染需要 Three.js / Babylon / 自研引擎，开发者们面对三大痛点：(1) 引擎依赖与版本兼容；(2) 物理保真度（FFT / JONSWAP / LEAN mapping / Hillaire 大气）难以独立完整实现；(3) 部署要么 npm + build，要么 bin 文件臃肿。Noniv/web-ocean 直击——<strong>单 HTML file:// 可跑 + WebGPU compute shaders + 6 cascade FFT + CDLOD + Hillaire + 双云层 + AgX + build pipeline 简单 (esbuild)</strong>。零引擎依赖是 2026-Q4 "Lone developer + Claude Opus 5.5 写 graphics paper 级实现"的稳定副线样本。</p>
+<h2 id="2026-10-18">为什么值得关注（2026-10-18）</h2>
+<p>今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-18 仍在快速增长的新发现项目。<code>Noniv/web-ocean</code> 2 天 444⭐ ⑂82 fork/star 18.5%——<strong>fork/star 18.5% 显著高于同档</strong>（多数项目 fork/star 5-10%），暗示大量二次开发者要拆 wheels。444⭐ ⑂82 是"Lone developer 个人项目"中星 + fork 异常高的信号。Claude Opus 5.5 写就意味着读者可能"读不懂模型写过的代码"，但同时也意味着<strong>完整奉上一份 graphics programmer 论文级实现</strong>对教学 / 学习价值巨大。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>web-ocean 的热度是 <strong>"Lone developer + Claude Opus 5.5 + WebGPU from scratch + 完整教科书级别实现 + 6 cascade FFT + CDLOD + Hillaire + 双云层 + AgX + 6-8ms 性能 + 61 KB 单 HTML + MIT" 单一开发者 + AI 助手完整奉上</strong>。
+- fork 18.5% 暗示大量 wheel-rebuilders 要 fork
+- "no engine or rendering library" 是稀缺差异化
+- "Claude Code (Opus 5.5)" 是副线样本——2026-10 上半月 Lone developer + Claude Opus 5.5 写 graphics paper 级实现的稳定副线延续</p>
+<p>热度<strong>真实且具教学价值</strong>——fork 18.5% 高信号意味着这会成为 WebGPU 引擎级实现 reference 仓库，但维护可持续性是真实风险。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>6 cascade radix-2 FFT compute shaders</strong>：6 个 256×256 sample patch，波长从 1103 m 到 0.26 m，最小 cascade 给近端 sun sparkle</li>
+<li><strong>CDLOD 17-level quadtree 表面 mesh</strong>：6.25 cm 间距近端、160 km 视野，连续 LOD 形变</li>
+<li><strong>Fetch-limited JONSWAP + Donelan-Banner directional spreading + 长浪 swell + 毛细波 dispersion + choppy 水平位移</strong></li>
+<li><strong>Mip-mapped LEAN mapping（一阶 + 二阶 wave slope moments）</strong>：远海无 aliasing + 近端 specular 清晰</li>
+<li><strong>Anisotropic Gaussian slope distribution with Smith masking</strong>：sun glitter 真</li>
+<li><strong>两 camera-centred world-space foam map (128 m + 1 km)</strong>：foam 衰减 + 顺风漂移 + age streak + procedural bubble texture</li>
+<li><strong>Hillaire 大气</strong>：transmittance + multiple-scattering + sky-view LUT + aerosol haze</li>
+<li><strong>双云层</strong>：broken cumulus + fibrous altostratus，self-shadowing + lit rims + silver linings + direction-dependent multiple scattering + 解析反走样</li>
+<li><strong>HDR + 4× MSAA + 8-level bloom + AgX tone mapping + 白色平衡 dithering</strong></li>
+<li><strong>环境 cube map 每帧 rebuild</strong>：roughness-filtered mips，grazing angle 反射方向 tilt</li>
+<li><strong>每帧零分配优化</strong>：typed arrays + descriptors 预分配，GC 几乎无活儿</li>
+<li><strong>6-8ms @ 2560×1440 RTX 5070 Ti</strong>：实测性能门槛极高</li>
+<li><strong>Build pipeline 简单</strong>：esbuild + WGSL comment / whitespace 剥离 → 102 KB unmin → 61 KB min</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>自托管单页 WebGPU ocean：WGSL compute shaders + JS 渲染编排 + URL 参数化运行时配置 + npm + esbuild 构建链</td>
+<td>基于 README「no engine or rendering library + WGSL comments stripped on build」+「ocean.html 直接 file:// 工作」</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>配置面板 / URL 参数 → JS host → 每帧：① Hessian FFT cascade compute → ② surface mesh CDLOD evaluate → ③ slope mip 生成 + LEAN mapping → ④ sky cube map rebuild + 双云层遮罩 → ⑤ water shading + foam maps update → ⑥ post (bloom + AgX + dither)</td>
+<td>主路径是 README「How it works」四节（Waves / Shading / Sky / Post）的语义抽象；具体 WGSL dispatch / bind group 布局未公开</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>WebGPU only（无 WebGL 回退）vs 浏览器覆盖 / 6 cascade FFT CPU/GPU 成本 vs 视野近端细节 / sun glitter 物理保真度 vs 仅 sunset 调好 / 远水仍偏深色的已知局限</td>
+<td>README「Known limitations」+ Controls 段落</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>Chrome（force dedicated GPU）打开 ocean.min.html → 调 wind / swell / sun → 验证 60 fps @ 1080p → 再切 URL cam / fov / ui=0 → 比较 file:// 与 http://</td>
+<td>PoC 由 README Controls + URL 参数段推导</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>Noniv/web-ocean 的核心启发是 <strong>"Lone developer + AI Opus 5.5 + WebGPU from scratch + 完整奉上 graphics programmer 论文级实现的严肃工程化"</strong>。这一路径在 2026-10 上半月形成稳定副线（与 <code>framemck/holloway</code>、<code>snuri00/ps2-web-recomp</code>、<code>LoreanXavier/pt-pc</code> 同调）。更深层的启发是：<strong>fork 18.5% 反映"二次开发需求"高于 "点赞"，意味着 WebGPU 引擎级实现 reference 仓库仍有空白</strong>——这是 graphics programmer / 引擎工程师的稀缺资产。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Param[URL 参数 / 控制面板<br/>wind/swell/choppiness/sun/haze/clouds/exposure/bloom]
+  Param --> JS[JS host 每帧驱动]
+  JS --> FFT[6 cascade radix-2 FFT<br/>WGSL compute shaders<br/>workgroup memory]
+  FFT --> Surface[CDLOD 17-level quadtree<br/>6.25 cm 间距近端<br/>160 km 视野<br/>vertex morphing]
+  Surface --> Slope[Slope mip 生成<br/>LEAN mapping 一阶+二阶]
+  Slope --> Shading[水着色<br/>Smith masking<br/>环境 cube map 每帧 rebuild<br/>turbid blue-green + subsurface glow]
+  JS --> Sky[Hillaire 大气 LUT<br/>+ 双云层]
+  Sky --> Shading
+  Surface --> Foam[2 camera-centred world-space foam maps<br/>128m + 1km<br/>衰减 + 顺风漂移 + age streak]
+  Foam --> Shading
+  Shading --> Post[HDR + 4x MSAA<br/>bloom 8-level<br/>AgX tone mapping<br/>白色平衡 + dithering]
+  Post --> Output[最终像素]
+  Output --> Display[Chrome WebGPU<br/>force dedicated GPU]
+  JS -.GC 优化.-> Alloc[预分配 typed arrays + descriptors 待核验]
+  Build[build pipeline<br/>esbuild + WGSL strip] --> HTML[102 KB ocean.html<br/>61 KB ocean.min.html]
+  HTML --> Display
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>参考实现型项目（WebGPU engine reference）。</strong> web-ocean 是 2026-Q4 "个人 + AI 助手完整奉上 graphics paper 级实现"路线的代表样本。<strong>6 cascade radix-2 FFT + CDLOD + LEAN + Hillaire + 双云层 + AgX + 6-8ms @ RTX 5070 Ti + 61 KB 单 HTML</strong> 这套组合没有任何"玩具 demo"成分——是 production-grade graphics programmer 完整呈现。对想学"严肃工程化 WebGPU 是怎么写的"的人来说，这是少有的完整范例。<strong>fork 18.5% 高信号</strong>意味着二次开发者社群正在形成。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>CLAUDE 生成代码的维护脆弱性</strong>：Claude Opus 5.5 写就——意味着"模型读不懂模型写过的代码"是结构性风险，未来维护者要靠 PR + fork 维持</li>
+<li><strong>无 WebGL 回退</strong>：老浏览器 / iOS Safari 受限（README 明示"force Chrome onto the dedicated GPU"）</li>
+<li><strong>远水偏深色 + 无海岸 + 无物体 + 仅 sunset 调好</strong>：README「Known limitations」明示三个</li>
+<li><strong>fork 18.5%</strong>：fork 显著高于 star，可能是大量二次开发需求 + AI 写就的复杂代码导致二次开发者接手困难</li>
+<li><strong>依赖 NVIDIA GPU</strong>：6-8ms @ RTX 5070 Ti + force dedicated GPU 暗示 AMD / Intel GPU 性能可能下降</li>
+<li><strong>性能测量方法不严谨</strong>：「while other programs were also using the GPU」暗示 benchmark 不严谨</li>
+<li><strong>npm 模块依赖</strong>：尽管 README 主打"single HTML + file://"，但 build pipeline 仍需 npm</li>
+<li><strong>社区单一作者</strong>：Noniv 个人项目，bus factor = 1</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Three.js Sea3k / Ocean demo</strong>：Three.js 引擎依赖且效果远不如完整 web-ocean；社区成熟但局限在 WebGL</li>
+<li><strong>vs real-flow / Houdni Flip</strong>：商业物理仿真，desktop only</li>
+<li><strong>vs framemck/holloway (2026-10)</strong>：holloway 是 Voxel 引擎，web-ocean 是 Ocean 渲染——同副线样本</li>
+<li><strong>vs snuri00/ps2-web-recomp (2026-10)</strong>：PS2 静态重编译到 WebAssembly，web-ocean 是实时模拟的 WebGPU 路线——同副线样本</li>
+<li><strong>vs LoreanXavier/pt-pc (2026-10)</strong>：P.T. C++ Vulkan 移植到 PC，web-ocean 是 WebGPU 路线——同副线样本</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（WebGPU engine reference + 教学样本）。</strong> web-ocean 是 2026-Q4 一份少有的"个人 + Claude Opus 5.5 完整奉上一份细分领域引擎级实现"的严肃工程化样本。fork 18.5% 暗示这会成为 WebGPU 引擎级实现 reference 仓库。对想学 WebGPU / 实时海面 / FFT / 大气 / Tone mapping 的 graphics 工程师，这是难得的高质量完整范例；对 production 集成则 fork / 二次开发优于直接采用。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否补充 WebGL 回退支持</li>
+<li>是否推出其他场景（山林 / 城市 / 雪原）通用渲染 pipeline</li>
+<li>AMD / Intel GPU 实测性能</li>
+<li>iOS Safari WebGPU 上线后的兼容性测试</li>
+<li>维护者能否跟上 fork 社区的 PR 节奏</li>
+<li>是否发布 WGSL shader 单独子仓库（让 fork 社区更易复用）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-18) | Stars: 444 | Forks: 82 | License: MIT | 语言: HTML | 创建: 2026-10-16 | Size: 714 KB | Topics: (README 未列)</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
