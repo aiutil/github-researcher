@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-19 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-19-github">2026-10-19 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 项目名称、星标、tags、description、license、size、forks 来自 2026-10-19 GitHub Search API（<code>gh api search/repositories</code> 经 gh CLI 认证，避免未认证速率限制）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license / size）+ 各项目 README 公开摘录（<code>gh api .../readme -H Accept:application/vnd.github.raw</code> 抓取）+ 已有 <code>projects/</code> 档案对照。<strong>"X 天 Y⭐"基于 created_at→2026-10-19 总星数除以经过天数（粗略下限估计）；stargazers REST endpoint 需要认证故未做精确单日增量统计</strong>。本批搜索结果中已过滤「fork=0 + size 极小 + 随机词+字典词产品名 + 商业软件 pre-activated 仓库」spam 仓库（如 Maroonplocord/Movavi-Converter / Metropolisioretreat/Movavi-Screen-Recorder / NoviceAdjust19/PH-Downloader / PaintManager/Quicken-Deluxe / southroadball/Hwid-Spoofer / originbatarm/Patreon-Viewer / ScorpionPlan/Wise-Care / Shardgrureduce/Wondshare-Recoverit / OriginOstrichSignify/Photo-Commander / PureShoutRemedy/StartAll-Back / Smashflefurnish/CorelDraw / Nestsarecall/Ozone-12-Advanced / lineclericcode/Microsoft-365 / OverlordPrize/Power-Director / Postardetach/SlideShow-Video-Maker / PolygonOceanNote/SketchUp-Pro / psychezonequicken/SoundPad / Panelnyastage/Reason-14 / StoneSniperStrip/Discord-Server-Cloner / RiggerVitalize/Uttorent 一系列 1-2 KB 251⭐ + NOASSERTION/无 license + 描述为"Pre-activated desktop edition"），以及 NSFW（BreezeSolicitorMap/undress.ai NSFW 描述、VITASID57/bluntcore-intimacy-lab 人机恋成人 AI 仓库）、earshot/coop-anything/MOSS-Image/web-ocean 等已跟踪项目和「已稳态多年突然 re-fork 复出」的旧项目（已通过 created_at 距今 &gt; 6 个月或 description 为 NSFW/工具类/营销类判定为延续/非新增本批排除）。今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-19 仍在快速增长的新发现项目 + 延续跟踪项目。<strong>今日最大事件是 <code>Gathin23/tv-vibehack</code> 2 天 1739⭐ 把「Android TV 系统级去广告 + 替换 launcher」从「root + 卸应用 + 折腾」推到「ADB over Wi-Fi + 一行命令 + 不 root + 不卸载 + tvOS-inspired launcher + one-line restore + prompt 公开 + Claude Code 一下午搞定 Mi TV」严肃工程化形态</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1gathin23tv-vibehack-android-tv-adb-over-wi-fi-root-tvos-inspired-launcher-one-line-restore-claude-code-mi-tv-prompt-92">趋势 1：Gathin23/tv-vibehack 严肃工程化 Android TV 去广告 + ADB over Wi-Fi + 不 root 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开（趋势分 92）</h3>
+<p><code>Gathin23/tv-vibehack</code> 2 天 1739⭐ ⑂206 fork/star 11.8% 把「Android TV 系统级去广告 + 替换 launcher」从「root + 卸应用 + 折腾 + 售后无法保修」推到「<strong>tv-vibehack: Your TV, minus the ads. Strip the bloatware from any Android TV or Google TV over Wi-Fi, and replace the ad-filled home screen with a clean launcher that looks like an Apple TV. No root, no cable, nothing uninstalled, and a one-line restore if you change your mind. It started as an afternoon fixing my parents' Mi TV, which showed them an advert before they could reach Netflix. The whole thing was done with Claude Code talking to the real TV, and the prompt that did it is in this repo so you can do the same with yours. Supported TVs: 文档列 Mi TV / Google TV 阵营 + Quick start: 一行命令 + ADB connect over Wi-Fi + pm disable-user + pm hide + pm uninstall -k --user 0 + launcher apk 替换 home + restore.sh 一次性回退 + topics: adb, android-tv, claude-code, debloat, launcher, xiaomi + size 4880 KB + NOASSERTION license + language Java</strong>」严肃工程化形态。</p>
+<p>这与昨日 trending <code>OpenMOSS/MOSS-Image</code>（严肃工程化国产 DiT base + 文本渲染 + 异构 GPU + ComfyUI）+ <code>Noniv/web-ocean</code>（严肃工程化 WebGPU 实时海面 + no engine + FFT + CDLOD + 6-8ms RTX 5070 Ti + Claude Opus 5.5 写）+ <code>reason-machines/reason-network</code>（严肃工程化 P2P team coding agents 总线 + iroh + MCP）+ <code>cranebeaker/coop-anything</code>（严肃工程化 AI agent 把单人大作变 co-op + AGENTS.md + skills + Co-op MCP）一同，「<strong>agent 时代严肃工程化跨领域能力栈</strong>」在 2026-10-18 是「<strong>生成式基础设施 + 渲染引擎 + 团队总线 + 游戏联机</strong>」四件套，而在 2026-10-19 转为「<strong>家用设备 OS 治理 + 反向工程 skill 化 + agent 视频 + 教育知识图谱</strong>」四件套——主轴是从「娱乐/协作栈」往「<strong>消费者 OS / 学习工作流栈</strong>」纵深推进。tv-vibehack 的核心是「<strong>不 root 不卸载 + 一行命令 + tvOS-inspired launcher + one-line restore + Claude Code prompt 公开</strong>」——这意味着任何想给父母/岳父母/客厅电视去广告的人，<strong>不需要懂 Android 内部机理</strong>，只需要执行一行命令，然后告诉他"想还原就再执行一行"。同时 README 明示「the prompt that did it is in this repo」——把 Claude Code 的 prompt 公开，意味着这不只是工具，更是「<strong>agent 时代客厅设备治理</strong>」的开源剧本。</p>
+<p><strong>架构师速览（tv-vibehack）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>ADB over Wi-Fi（adb pair / adb connect）+ pm disable-user / pm hide / pm uninstall -k --user 0 + launcher apk 替换 home + restore.sh 一次性回退 + Claude Code prompt 公开</td>
+<td>基于 README「Quick start」+「Doing it by hand」+「The launcher」+ topics（adb / android-tv / claude-code / debloat / launcher / xiaomi）</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户执行一行命令 → ADB pair IP:PORT + connect → pm disable-user -k --user 0 <bloat 包名> → 装 launcher apk + 替换默认 home → 设置永不退到原 launcher → restore.sh 回退</td>
+<td>主路径由 README 段落 + topics 推导；具体 launcher apk 名字 + 调试可见性 + 远程固件 OTA 后是否需重做待核验</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>ADB over Wi-Fi（无 USB 调试）vs 安全开关需手动开 / pm disable-user（可恢复）vs pm uninstall -k --user 0（可恢复）vs 真 root 卸 / 不 root（保售后）vs root 干净 / 公开 Claude Code prompt vs 私藏 / tvOS launcher 自研 vs 开源 launcher 二次开发</td>
+<td>档案明示不 root + 不卸载 + ADB over Wi-Fi + 一行命令 + tvOS-style launcher + one-line restore 六点权衡；具体 launcher UI 实现 + 长期 OTA 兼容性未公开</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. Android TV 开启开发者模式 + 无线调试 → 2. 手机端 adb pair IP:PORT → 3. 一行命令执行去广告脚本 → 4. 切换 tvOS-style launcher → 5. 试 restore.sh 回退到原始</td>
+<td>PoC 由 README Quick start 段 + supported TVs 列表推导；具体 launcher 演示 GIF / 兼容性矩阵 / OTA 后重做命令待核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2aicodekingleanrea-8kb-skillmd-rea-25mb-mcp-207-tools-4007k-tokens-0-tool-345k-tokens-headless-benchmark-38-faster-35-cheaper-56-fewer-turns-60-fewer-tokens-7475-accuracy-90">趋势 2：aicodeking/leanrea 严肃工程化 8KB SKILL.md 替 REA 25MB MCP + 207 tools + 400.7k tokens → 0 tool + 34.5k tokens + headless benchmark 38% faster + 35% cheaper + 56% fewer turns + 60% fewer tokens + 同 74/75 accuracy（趋势分 90）</h3>
+<p><code>aicodeking/leanrea</code> 2 天 617⭐ ⑂107 fork/star 17.3% 把「Reverse Engineer Anything」从「REA 25MB npm + MCP server + 207 tools + 23.5KB skill + 48.8KB references + 3.35MB definitions + 400.7k tokens $1.60 单次 Hello OK」推到「<strong>One 8 KB skill file that does what REA does: no MCP server, no 207 tools, no setup. REA (Reverse Engineer Anything) puts an MCP layer between your agent and tools it can already use: asar, otool, nm, go version -m, jadx, apktool, Ghidra, tshark, binwalk, sqlite3. leanrea drops that layer. It tells the agent which command is fastest for each kind of target, gives it ready-to-paste recon commands, and lists the traps that REA's code handles for you. The agent then runs the real tools itself. Bench: Claude Code headless (claude -p) Sonnet 5.5 macOS arm64 4 reverse-engineering tasks × 3 reps × 3 arms side by side: leanrea 388s $2.17 55 turns 2.40M tokens 74/75 vs no skill 479s $2.21 81 turns 3.11M tokens 67/75 (one refusal) vs REA (MCP + skill) 627s $3.36 124 turns 5.93M tokens 75/75. Against REA, leanrea had 38% less wall time, 35% lower cost, 56% fewer turns and 60% fewer tokens, at the same accuracy. Its one partial miss named an older IPC channel instead of the v2 one (both channels exist). Tasks: electron (trace feature through real Electron app.asar native fn → main-process class → IPC channels); native (inventory exports, TCC permission check, single-instance lock of .node); go (toolchain + dep versions of stripped gh binary); deep (from disassembly alone, exact socket path format, wire protocol and peer authentication of that lock). Operation timing: REA Go build info 0.56s vs raw go version -m 0.06s; REA Mach-O overview 3.32s vs raw otool + dyld_info + nm 0.04s; REA Electron app 47.9s + 140 MB JSON vs raw asar extract + rg -uu 4.8s 24 KB. Full tables: bench/BENCHMARK.md, raw per-run metrics: bench/results/final.jsonl</strong>」严肃工程化形态。</p>
+<p>这与昨日 trending <code>OpenMOSS/MOSS-Image</code>（Apache-2.0 + ComfyUI + agent skill）+ 前几日 <code>wshobson/agents</code>（六 Harness 通用插件）+ <code>Leonxlnx/earshot</code>（CPU-only ears for coding agents + 16 commands）+ <code>Leonxlnx/athenaion</code>（massive ancient Greek world with three.js + Claude Code Opus 5.5）一致——「<strong>agent 不是 chat，是真正改变工具链调用方式的工程化执行</strong>」在 2026-10 下半月形成稳定信号。leanrea 的核心是「<strong>单 8KB SKILL.md 把 25MB MCP + 207 tools 替掉 + benchmark 公开 + 同 accuracy</strong>」——这意味着任何想用 Claude Code / Codex / Cursor 做 reverse engineering 的 agent，<strong>根本不需要装 25MB npm 包和 MCP server</strong>，只需要读一份 8KB 文档，就知道 asar / otool / nm / go version -m / jadx / apktool / Ghidra / tshark / binwalk / sqlite3 该怎么调用、哪些是 traps。这是 2026-Q4 严肃工程化「<strong>MCP-heavy 是 anti-pattern；skill-heavy 是正途</strong>」路线的最强论证。</p>
+<p><strong>架构师速览（leanrea）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单 8KB SKILL.md + 0 MCP tool + 直接 Bash 调外部 CLI（asar / otool / nm / go version -m / jadx / apktool / Ghidra / tshark / binwalk / sqlite3）+ bench/BENCHMARK.md + bench/results/final.jsonl 公开</td>
+<td>基于 README「What gets installed」表 +「Benchmark」节 + README 直引 leanrea 8 KB SKILL.md vs REA 25 MB npm + 207 tools + 400.7k tokens</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>agent 接到 reverse engineering 任务 → 读 leanrea SKILL.md → 按 target 类别选最快 CLI → 直接 Bash 跑（不经过 MCP）→ 拿到 recon 结果 → 列举已知 traps（asar 完整性、.node 单实例锁、TCC、socket path 格式） → 完成 4 任务之一</td>
+<td>主路径由 README「Bench」节 +「Tasks」分项（electron / native / go / deep）推导；具体 SKILL.md 内部 trap 清单与 ready-to-paste 命令片段未在 README 主页展示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>SKILL-only（无 MCP，agent 用 Bash）vs MCP-server（25MB + 207 tools）/ 8KB 文档 vs 23.5KB + 48.8KB references（同 REA）/ 0 tool 暴露 vs 207 tool 暴露（节省 400k tokens）/ 同 accuracy 74/75 vs REA 75/75（仅 1 错）</td>
+<td>档案明示上述五点权衡；其他 coding agent（Codex / Cursor / Gemini CLI）用 leanrea 时是否同 benchmark 表现未在 README 中量化</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 复制 8KB SKILL.md 到 ~/.claude/skills/ → 2. claude -p 'reverse engineer this Electron app.asar' → 3. 对比 REA 装好的 MCP 跑同样 prompt → 4. 看 tokens / cost / wall time / accuracy 四列</td>
+<td>PoC 由 README 主页「Bench」表直接推导；具体 trap 列表 / ready-to-paste commands / JSON 报告 schema 待核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3alchaincyfhuashu-motion-agent-abc-z-6-harness-53s-87">趋势 3：alchaincyf/huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面评论 + ⌘Z 多版留底 + 6 harness 通用 + 53s 自发布片（趋势分 87）</h3>
+<p><code>alchaincyf/huashu-motion</code> 1 天 239⭐ ⑂28 fork/star 11.7% 把「agent 做视频」从「CapCut 模板 + LLM 写脚本 + 找素材 + 后期拼接」推到「<strong>huashu-motion: 让你的agent一键直出商业级产品宣传片：会作曲，能指着画面改。Commercial-grade launch films by your coding agent — point at the frame to change it. 跟Claude Code、Codex这些agent说一句「给我的产品做个30秒的发布片」，它会先读你的产品，给你三个方向挑，写出整支片子，自己写谱配乐，然后在浏览器里打开一个编辑器等你。哪里不满意，在画面上点一下，写下要改什么，它就只改那一处。npx skills add alchaincyf/huashu-motion. 1. 指着画面改：按C，在画面上点一下，写下要改什么。评论发过去的时候带着时间点、场景、点中的元素和它在源码里的位置，agent先把那一帧和你点的那一小块截图放大看一眼，再只改那一处，改完回一句人话，预览停在原来的位置刷新。每一版都留着，⌘Z随时撤回；标题、数字、颜色、停留时长这些会变成编辑器右边的输入框，自己改，不用等agent。2. 先写谱，再拍片（composer mode）：做发布片用的是作曲家模式，agent按节奏单先写一份谱（ABC记谱法，纯文本的乐谱），谱里的标记对齐每个场景，再由三角钢琴、弦乐和鼓组的采样演奏出来（真乐器采样要先跑一次 om samples build，不跑就用合成音色）；画面上每个东西落地的那一帧，再配一个音效。配乐全部在本机现场生成，不调用任何收费接口。3. 一日二十支。Runtime: Claude Code / Codex / WorkBuddy / Grok Bot / Muse / Dots. README 全动画演示 + 53 秒自发布片（MP4 带声音）+ docs/media/hero.gif + docs/media/point-to-edit.gif + docs/media/score-first.gif</strong>」严肃工程化形态。</p>
+<p>这与昨日 trending <code>OpenMOSS/MOSS-Image</code>（Apache-2.0 + ComfyUI + MOSS-Image Prompt Enhancer skill）+ <code>cranebeaker/coop-anything</code>（AGENTS.md + skills + MCP）+ <code>reason-machines/reason-network</code>（iroh + MCP + 8 harness）+ <code>Leonxlnx/earshot</code>（CPU-only ears for coding agents + earshot forge）+ <code>wshobson/agents</code>（六 Harness 通用插件）一致——「<strong>agent 不是 chat，是真正让产品宣传片级别的视频创作进入 AI 一键时代</strong>」在 2026-10 下半月形成稳定信号。huashu-motion 的核心是「<strong>composer mode（先 ABC 乐谱 + 本机采样演奏 + 每帧音效）+ 指着画面点一下评论就改那一处 + ⌘Z 多版留底 + 6 harness 通用 + 53 秒自发布片</strong>」——这意味着任何想给产品做发布片的人，<strong>不需要懂剪辑/乐理/动画/合成器</strong>，只需要在 agent 里说「做 30 秒发布片」，它会读你的产品、给三个方向、写脚本、写谱、配乐、生成视频、打开编辑器等评论。</p>
+<p><strong>架构师速览（huashu-motion）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单仓：npx skills add + 浏览器内编辑器 + 本机采样库（三角钢琴/弦乐/鼓组）+ ABC 乐谱生成器 + agent 评论总线（时间点 + 场景 + 元素 + 源码位置）+ docs/media/{hero,point-to-edit,score-first}.gif 演示</td>
+<td>基于 README「看效果」+「安装」+「能做什么」+「怎么做到的」+「背后的故事」段</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>user 对 agent 说「给产品做 30s 发布片」 → agent 读产品 → 给三个方向 → user 选 → agent 写 ABC 谱 → 本机采样/合成音色演奏 → 画面逐帧生成 + 每帧音效 → 浏览器内打开编辑器 → user 按 C + 点画面 + 评论 → agent 看截图 + 只改那一处 + 回人话 → ⌘Z 撤回 → 标题/数字/颜色/时长输入框自改</td>
+<td>主路径由 README「看效果」+「指着画面改」+「先写谱，再拍片」+「一天二十支」段推导；具体 ABC 谱 schema / 采样播放引擎 / 浏览器编辑器技术栈（React / Vue / 自研）未在档案主页明示</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>composer mode（先 ABC 谱 + 本机演奏）vs LLM 写脚本 + 商用配乐库 / 指着画面评论（精准改一处）vs 全片重生成 / 本机采样 + 合成音色 vs 调用商用接口（无收费依赖）/ 6 harness 通用 vs 单一 Claude Code / 53s 自发布片 + README 全动画 vs 文档 dry</td>
+<td>档案明示六点权衡；具体本机采样库 license 与音色库大小 + om samples build 命令细节待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. npx skills add alchaincyf/huashu-motion → 2. Claude Code / Codex / WorkBuddy / Grok Bot 任选 → 3. 对 agent 说「给 [某产品] 做 30 秒发布片」 → 4. 在浏览器编辑器里按 C + 点一帧 + 评论 → 5. ⌘Z 撤回 → 6. 测 om samples build 真乐器 vs 默认合成音色音质差</td>
+<td>PoC 由 README「安装」+「看效果」段推导；具体编辑器源码位置 + agent 评论总线协议待核验</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4xiaoyang111222cn-math-taxonomy-2024-dag-157-1407-ai-83">趋势 4：xiaoyang111222/cn-math-taxonomy 严肃工程化人教版 2024 初中数学知识图谱 DAG + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口（趋势分 83）</h3>
+<p><code>xiaoyang111222/cn-math-taxonomy</code> 1 天 282⭐ ⑂74 fork/star 26.2% 把「中国初中数学知识图谱」从「教师手工 + 商业题库闭源 + 教育公司私有」推到「<strong>cn-math-taxonomy: 用「知识点节点 + 先修边」的有向无环图（DAG）描述人教版初中数学（七上至九下）的知识结构，数据格式参考 Marble os-taxonomy（topics + dependencies）。状态声明：这是 AI 生成的初稿，未经任何教师审核。知识点的拆分粒度、掌握标准、诊断题答案，尤其是先修关系（哪些是 hard、哪些是 soft，甚至某条边该不该存在）都需要一线初中数学教师审核后才能用于教学、诊断或学习路径推荐。诊断题答案虽经抽查心算，但没有逐题由人工复核。课程标准：教育部《义务教育数学课程标准（2022年版）》第四学段（7—9 年级）的内容范围与学段要求（数与代数、图形与几何、统计与概率、综合与实践四个领域）。第三轮起，课标第四学段【内容要求】已拆成机器可读条目（data/cn-curriculum-standards.json，157 条），每个正式知识点通过 standards 字段挂接 1–3 条（共 383 条映射）；来源、规则、覆盖率与局限见 docs/standards-mapping.md。教材顺序：人民教育出版社（人教版）义务教育教科书数学，采用 2024 年审定的新版。章节目录取自第三方电子课本目录站 dzskb.com（非人教社官方页面），核对情况如下：七上（第一章有理数）已核对目录页；七下（第七章 相交线与平行线）已核对目录页；八上（第十三章三角形）已核对目录页（2024 审定版）；八下（第十九章二次根式）已核对目录页（2024 审定版）；九上（第二十五章一元二次方程）已核对目录页（2024 审定版）；九下（第三十一章相似；第三十二章锐角三角函数…第三十三章投影与视图…第三十四章随机事件的概率）非官方、待核。结论：没有找到人教社（pep.com.cn）官方发布的 2024 版九下目录页（官方「新教材介绍」页只介绍编写思路，未列各册章目；pep.com.cn 的「数学 九年级下册」页是旧版封面，页面不显示目录）。九下的 2024 版教材预计 2027 年春季学期才开始使用。下列目录是综合第三方来源后的最可靠推定，并非官方原文，章名、章号请以教材实物或人教社官方目录为准 + size 912 KB + JavaScript + NOASSERTION</strong>」严肃工程化形态。</p>
+<p>这与昨日 trending <code>OpenMOSS/MOSS-Image</code>（严肃工程化国产 + Apache-2.0 + 中文社区）+ <code>Noniv/web-ocean</code>（严肃工程化 WebGPU + 单 HTML + 61 KB）+ <code>reason-machines/reason-network</code>（Apache-2.0 + MCP）+ <code>cranebeaker/coop-anything</code>（MIT + AGENTS.md + skills + Co-op MCP）一致——「<strong>agent + 教育知识图谱严肃工程化</strong>」在 2026-10 下半月出现首份样本。cn-math-taxonomy 的核心是「<strong>DAG topics+dependencies + 人教版 2024 审定新版 6 册 + 课标 157 条机器可读 + 383 条映射 + 1407 道诊断题 + 自适应诊断工具 + 状态声明 AI 草稿待教师审核 + 九下权威源缺口透明披露</strong>」——这意味着任何想给初中数学做自适应学习路径推荐的人，<strong>不需要从零搭知识图谱</strong>，只需要复用这份 DAG 拓扑 + 课标映射 + 题库，再补上教师审核与九下权威源就能上线。README 主动声明「<strong>未经任何教师审核</strong>」「<strong>诊断题答案虽经抽查心算但没有逐题人工复核</strong>」「<strong>九下权威源缺口</strong>」——这是 2026-Q4 严肃工程化「<strong>AI 生成教育内容时透明披露局限</strong>」的罕见样本，比商业题库闭源更值得参考。</p>
+<p><strong>架构师速览（cn-math-taxonomy）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单仓：DAG（topics + dependencies）+ 人教版 2024 七上—九下 6 册章节目录 + 课标 2022 第四学段【内容要求】157 条 + 383 条知识-课标映射 + 1407 道诊断题 + 自适应诊断工具 + data/cn-curriculum-standards.json + docs/standards-mapping.md</td>
+<td>基于 README「数据来源与对齐依据」+「九下目录的来源与核实情况」段</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>学生/老师访问仓库 → 读 DAG 拓扑（topics + dependencies）→ 通过 standards 字段挂接课标 157 条 → 1407 题做自适应诊断 → 推荐学习路径</td>
+<td>主路径由 README 主页 + data/cn-curriculum-standards.json 推导；具体自适应诊断算法（item response theory? knowledge tracing? Bayesian network?）未在档案中详述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>DAG（拓扑结构）vs 题型标签（更细粒度）/ 人教版 2024 新版（最新）vs 旧版（教师熟悉）/ AI 生成（速度）vs 教师审核（准确性）/ 第三方教材目录核对（可达性）vs pep.com.cn 权威源（缺失）/ 自适应诊断（推荐）vs 教师手出题（深度）</td>
+<td>档案明示六点权衡；具体 1407 题题型分布 + 诊断算法 + 课标 157 条字段 schema 待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. clone + 打开 data/cn-curriculum-standards.json 看 157 条 → 2. 打开主拓扑找 topics + dependencies → 3. 跑 1407 题中 5 道对照答案 → 4. 接入 Marble os-taxonomy 可视化看 DAG 渲染 → 5. 与教师讨论 hard/soft 边划分</td>
+<td>PoC 由 README「数据来源与对齐依据」段推导；具体自适应诊断 UI + 推荐算法细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最值得关注的方向</h2>
+<p>四个项目恰巧构筑成「<strong>agent 时代严肃工程化 cross-domain 能力栈</strong>」的<strong>四个补全新层</strong>——从昨日的「生成式基础设施 + 渲染引擎 + 团队总线 + 游戏联机」扩展到今日的「<strong>家用设备 OS 治理 + 反向工程 skill 化 + agent 视频 + 教育知识图谱</strong>」：</p>
+<ol>
+<li>
+<p><strong>Gathin23/tv-vibehack 把「Android TV 消费者去广告」从「root + 折腾 + 售后无」推到「ADB over Wi-Fi + 一行命令 + 不 root 不卸载 + tvOS-style launcher + one-line restore + Claude Code 一下午 + prompt 公开」</strong>——这是 2026-Q4 严肃工程化「<strong>消费者设备 OS 治理</strong>」的代表样本。对想给父母/岳父母/客厅电视去广告的人来说，这是少有的「<strong>不破坏 + 一行命令 + 公开剧本 + 可回退</strong>」完整范式。</p>
+</li>
+<li>
+<p><strong>aicodeking/leanrea 是 2026-Q4 严肃工程化「</strong>MCP-heavy 是 anti-pattern；skill-heavy 是正途<strong>」的最强论证</strong>——8KB SKILL.md 把 25MB REA MCP + 207 tools + 400k tokens 替掉，headless benchmark 38% faster + 35% cheaper + 56% fewer turns + 同 74/75 accuracy。对想用 Claude Code / Codex / Cursor 做 reverse engineering 的 agent 来说，这是少有的「<strong>单 8KB 文档替整套 MCP</strong>」严肃工程化样本。</p>
+</li>
+<li>
+<p><strong>alchaincyf/huashu-motion 把「agent 做视频」从「CapCut 模板 + LLM 写脚本」推到「composer mode（先 ABC 乐谱 + 本机采样演奏 + 每帧音效）+ 指着画面点一下评论 + ⌘Z 多版留底 + 6 harness 通用 + 53s 自发布片」</strong>——这是 2026-Q4 严肃工程化「<strong>agent 时代产品宣传片一键化</strong>」的代表样本。对想给产品做发布片的人来说，这是少有的「<strong>不需要懂剪辑/乐理/动画/合成器</strong>」完整范式。</p>
+</li>
+<li>
+<p><strong>xiaoyang111222/cn-math-taxonomy 把「中国初中数学知识图谱」从「教师手工 + 商业题库闭源」推到「DAG + 人教版 2024 审定新版 6 册 + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口透明披露」</strong>——这是 2026-Q4 严肃工程化「<strong>agent + 教育知识图谱 + 透明披露局限</strong>」的首份样本。</p>
+</li>
+</ol>
+<p>四个项目形成一个完整图景：<strong>(A) 治理自家客厅 OS → (B) 用 agent 做反向工程 → (C) 让 agent 做产品宣传片 → (D) 让 agent 维护教育知识图谱</strong>。这是从 2026-Q4 严肃工程化「agent 时代 cross-domain 能力栈」向「<strong>消费者 + 学习 + 创作 + 操作系统治理</strong>」四个纵深推进。</p>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="deep-dive-1gathin23tv-vibehackadb-over-wi-fi-root-tvos-style-launcher-one-line-restore-claude-code-prompt">Deep Dive 1：Gathin23/tv-vibehack（ADB over Wi-Fi + 不 root 不卸载 + tvOS-style launcher + one-line restore + Claude Code prompt 公开）</h3>
+<p><strong>项目定位。</strong> tv-vibehack 是 Gathin23 个人在 2026-10-17 发布的「<strong>Android TV 系统级去广告 + 替换 launcher</strong>」严肃工程化实现：<strong>ADB over Wi-Fi + 一行命令 + 不 root + 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开</strong>。主题 tags：adb, android-tv, claude-code, debloat, launcher, xiaomi。NOASSERTION license。Java 语言。4880 KB size。2 天 1739⭐ ⑂206 fork/star 11.8%——fork 显著高于平均（11.8%），反映大量「<strong>想给父母/客厅电视去广告</strong>」的真实需求。</p>
+<p><strong>技术亮点。</strong> 
+- <strong>ADB over Wi-Fi</strong>：adb pair IP:PORT + adb connect，无 USB 调试线，对客厅电视友好
+- <strong>pm disable-user -k --user 0</strong>：保留系统应用包但禁用，可恢复，对售后友好
+- <strong>pm uninstall -k --user 0</strong>：可选卸载用户层应用，保留缓存（-k）可恢复
+- <strong>tvOS-inspired launcher</strong>：自研或开源 launcher 二次开发，<strong>看起来像 Apple TV</strong>而不是 Material Design
+- <strong>one-line restore</strong>：restore.sh 一次性回退到原始状态
+- <strong>公开 Claude Code prompt</strong>：README 明示「the prompt that did it is in this repo」——把工程化全过程作为可复用剧本
+- <strong>supported TVs 列表</strong>：Mi TV / Google TV / Android TV 阵营</p>
+<p><strong>风险。</strong> 
+- <strong>NOASSERTION license</strong>：LICENSE 文件未明确，可能限制商用 fork
+- <strong>4880 KB 中包含 launcher apk</strong>：size 偏大，可能含二进制依赖
+- <strong>OTA 后可能需重做</strong>：Android TV 系统升级可能恢复原 launcher / 重新启用 bloat 应用，README 未明示自动化应对
+- <strong>adb pair IP:PORT 流程</strong>：需手动进 TV 设置→开发者模式→无线调试，需一定动手能力
+- <strong>2 天 1739⭐ 早期信号</strong>：Mi TV 父母用例广，但跨品牌适配可能踩坑</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得</strong>——这是 2026-Q4 严肃工程化「<strong>消费者设备 OS 治理 + agent 写就 + prompt 公开</strong>」的代表样本。ADB over Wi-Fi + 不 root + one-line restore 三件套<strong>使大众可及</strong>，是少有的「<strong>agent 时代客厅设备治理</strong>」的严肃工程化实现。</p>
+<h3 id="deep-dive-2aicodekingleanrea8kb-skillmd-vs-rea-25mb-mcp-207-tools-headless-benchmark-38-faster-35-cheaper-7475-accuracy">Deep Dive 2：aicodeking/leanrea（8KB SKILL.md vs REA 25MB MCP + 207 tools + headless benchmark 38% faster + 35% cheaper + 同 74/75 accuracy）</h3>
+<p><strong>项目定位。</strong> leanrea 是 aicodeking 个人在 2026-10-17 发布的「<strong>反向工程 agent skill</strong>」严肃工程化实现：<strong>单个 8KB SKILL.md + 0 个 MCP tool + 直接 Bash 调外部 CLI（asar / otool / nm / go version -m / jadx / apktool / Ghidra / tshark / binwalk / sqlite3）+ 公开 headless benchmark + 4 任务 × 3 reps × 3 arms + 同 74/75 accuracy</strong>。MIT license。Python 语言。24 KB size（极度紧凑）。2 天 617⭐ ⑂107 fork/star 17.3%——fork 显著高于平均（17.3%），反映大量「<strong>想摆脱 REA MCP 25MB 重型依赖</strong>」的开发者诉求。</p>
+<p><strong>技术亮点。</strong>
+- <strong>单个 8KB SKILL.md</strong>：README 直引「Instructions: 23.5 KB skill + 48.8 KB references（REA）vs 8 KB（leanrea）」
+- <strong>0 MCP tool 暴露</strong>：agent 直接用 Bash 调外部 CLI，节省 400.7k tokens → 34.5k tokens
+- <strong>headless benchmark 公开</strong>：Claude Code Sonnet 5.5 macOS arm64 + 4 任务 × 3 reps × 3 arms
+- <strong>同 74/75 accuracy vs REA 75/75</strong>：仅 1 错（命名了旧 IPC channel 而非 v2），其他 74 题全对
+- <strong>38% faster / 35% cheaper / 56% fewer turns / 60% fewer tokens</strong>：四维全面优于 REA
+- <strong>CLI 直执行（无 MCP 中间层）</strong>：asar extract + rg -uu 4.8s 24 KB vs REA 47.9s 140 MB JSON
+- <strong>bench/BENCHMARK.md + bench/results/final.jsonl 公开</strong>：完整 reproducible 验证
+- <strong>trap 列表</strong>：README 提及「lists the traps that REA's code handles for you」——把 REA 的隐藏逻辑显式化</p>
+<p><strong>风险。</strong> 
+- <strong>仅 1 错 vs REA 0 错</strong>：REA 75/75，leanrea 74/75——对极严格场景（如安全审计）可能要求 100% accuracy
+- <strong>bench 仅 Claude Code Sonnet 5.5 macOS arm64</strong>：未测试 Codex / Cursor / Gemini CLI 等其他 harness
+- <strong>24 KB size 极小</strong>：可能不含完整 trap 文档，仅 README 主页摘录
+- <strong>无 MCP 注册</strong>：对未装 Bash 工具的 harness（如纯 chat UI）失效
+- <strong>仅 4 task benchmark</strong>：覆盖面偏窄（electron / native / go / deep），未覆盖 iOS / Android / Windows 等其他 reverse engineering 场景</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得</strong>——这是 2026-Q4 严肃工程化「<strong>MCP-heavy 是 anti-pattern；skill-heavy 是正途</strong>」的最强论证。8KB SKILL.md 把 25MB MCP + 207 tools 替掉且同 accuracy，对 agent 工作流设计哲学有结构性影响。</p>
+<h3 id="deep-dive-3alchaincyfhuashu-motioncomposer-mode-abc-z-6-harness">Deep Dive 3：alchaincyf/huashu-motion（composer mode + ABC 乐谱 + 本机采样演奏 + 指着画面评论 + ⌘Z 多版留底 + 6 harness 通用）</h3>
+<p><strong>项目定位。</strong> huashu-motion 是 alchaincyf 个人在 2026-10-18 发布的「<strong>agent 视频作曲家</strong>」严肃工程化实现：<strong>npx skills add + composer mode（先 ABC 乐谱 + 本机采样演奏 + 每帧音效）+ 浏览器内编辑器 + 按 C + 点画面 + 评论（时间点 + 场景 + 元素 + 源码位置）+ agent 看截图 + 只改那一处 + ⌘Z 多版留底 + 标题/数字/颜色/时长输入框自改 + 6 harness 通用 + 53 秒自发布片</strong>。MIT license。JavaScript 语言。40030 KB size（偏大，含本机采样库）。1 天 239⭐ ⑂28 fork/star 11.7%。</p>
+<p><strong>技术亮点。</strong>
+- <strong>composer mode（先 ABC 乐谱）</strong>：agent 按节奏单先写一份 ABC 谱（纯文本乐谱），谱里标记对齐每个场景
+- <strong>本机采样演奏</strong>：三角钢琴 / 弦乐 / 鼓组的采样演奏（om samples build 真乐器，不跑则用合成音色）
+- <strong>每帧音效</strong>：画面上每个东西落地的那一帧，配一个音效
+- <strong>指着画面评论</strong>：按 C，在画面上点一下，写下要改什么。评论带时间点 + 场景 + 元素 + 源码位置
+- <strong>agent 只改那一处</strong>：agent 先看截图 + 点中的小块，再只改那一处
+- <strong>多版留底 + ⌘Z</strong>：每一版都留底，可撤回
+- <strong>输入框自改</strong>：标题/数字/颜色/停留时长变输入框，不用等 agent
+- <strong>npx skills add 一键安装</strong>：标准 agent skills 注册
+- <strong>6 harness 通用</strong>：Claude Code / Codex / WorkBuddy / Grok Bot / Muse / Dots
+- <strong>README 全动画演示</strong>：hero.gif + point-to-edit.gif + score-first.gif + 53 秒自发布片（MP4 带声音）
+- <strong>本机采样 + 合成音色 fallback</strong>：不调用任何收费接口</p>
+<p><strong>风险。</strong> 
+- <strong>40030 KB size 偏大</strong>：含本机采样库，git clone 较慢
+- <strong>仅 hero / point-to-edit / score-first 三个 demo gif</strong>：其他场景演示不足
+- <strong>om samples build 真乐器采样</strong>：首次使用需下载采样库，网络受限场景体验差
+- <strong>仅 6 harness 列名</strong>：实际 harness 兼容性矩阵未在 README 中量化
+- <strong>ABC 谱 schema 与采样播放引擎</strong>：README 未明示具体技术栈
+- <strong>MIT license</strong>：但本机采样库可能有独立 license（README 未明示）</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得</strong>——这是 2026-Q4 严肃工程化「<strong>agent 时代产品宣传片一键化</strong>」的代表样本。composer mode + 指着画面评论 + 6 harness 通用三件套<strong>使产品发布片创作大众可及</strong>，是少有的「<strong>不需要懂剪辑/乐理/动画/合成器</strong>」完整范式。</p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机会</h3>
+<ol>
+<li><strong>消费者设备 OS 治理 + agent 写就 + prompt 公开窗口期</strong>：tv-vibehack ADB over Wi-Fi + 不 root + one-line restore + Claude Code 一下午 + prompt 公开，是 2026-Q4 严肃工程化「<strong>客厅/父母电视去广告</strong>」的代表样本。<strong>与小米/Google TV/Android TV 阵营打通</strong>让消费者可及性变得可见。</li>
+<li><strong>MCP-heavy → skill-heavy 哲学转向最强样本</strong>：leanrea 8KB SKILL.md 把 25MB REA MCP + 207 tools 替掉，headless benchmark 38% faster + 35% cheaper + 同 accuracy，<strong>对 agent 工作流设计哲学有结构性影响</strong>。这是 2026-Q4 严肃工程化「<strong>MCP 是 anti-pattern</strong>」路线最强论证。</li>
+<li><strong>agent 时代产品宣传片一键化稳定信号</strong>：huashu-motion composer mode + 指着画面评论 + 6 harness 通用 + 53s 自发布片 + MIT + 本机采样无收费依赖，是 2026-Q4 严肃工程化「<strong>agent + 视频创作大众化</strong>」的代表样本。</li>
+<li><strong>教育知识图谱 + 透明披露局限的罕见样本</strong>：cn-math-taxonomy DAG + 人教版 2024 6 册 + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口，是 2026-Q4 严肃工程化「<strong>agent + 教育知识图谱 + 透明披露</strong>」的首份样本。</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>NOASSERTION license 的传染风险</strong>：tv-vibehack 与 cn-math-taxonomy 均使用 NOASSERTION license——LICENSE 文件未明确，可能限制商用 fork 与二次分发，对严肃工程化生态不利。</li>
+<li><strong>MCP-heavy 阵营反弹</strong>：leanrea 把 25MB REA MCP 替掉，可能引发 MCP-heavy 项目阵营（mcp.so、Composio、Zapier MCP 等）的反击——leanrea 仅覆盖 reverse engineering 一类任务，<strong>MCP 在更广泛工具编排场景仍有不可替代性</strong>。</li>
+<li><strong>AI 生成视频的同质化风险</strong>：huashu-motion composer mode 虽严肃工程化，但所有用户都用同一套采样库与 ABC 谱生成，<strong>可能产生「AI 同质化发布片」</strong>，需要更细分的视觉风格库。</li>
+<li><strong>教育知识图谱的权威源依赖</strong>：cn-math-taxonomy 主动披露「九下权威源缺口」「AI 草稿未审」「诊断题答案未逐题人工复核」——<strong>对教育场景而言，这些声明虽是诚意但仍是结构性短板</strong>，教师审核与权威源缺失是落地关键。</li>
+<li><strong>2 天 1739⭐ 早期信号</strong>：tv-vibehack、leanrea 等均处于早期阶段，<strong>长期维护可持续性与社区治理尚未验证</strong>，fork 比例高（11.8% / 17.3%）暗示二次开发需求旺盛但治理压力大。</li>
+</ol>
+<h2 id="_6">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gathin23/tv-vibehack</td>
+<td>NOASSERTION + ADB over Wi-Fi + pm disable-user / pm hide / pm uninstall -k --user 0 + tvOS-inspired launcher + one-line restore + Claude Code 一下午 + Mi TV parent use case + topics: adb, android-tv, claude-code, debloat, launcher, xiaomi + 4880 KB + Java + 2 天 1739⭐ ⑂206 fork</td>
+<td>推断：ADB over Wi-Fi + 不 root + one-line restore 三件套使「<strong>给父母/客厅电视去广告</strong>」大众可及</td>
+<td>待核验：跨品牌 OTA 后兼容性 + launcher apk 来源 + 公开 Claude Code prompt 的具体内容 + 长期维护可持续性</td>
+</tr>
+<tr>
+<td>aicodeking/leanrea</td>
+<td>MIT + 单 8KB SKILL.md + 0 MCP tool + Bash 直调（asar / otool / nm / go version -m / jadx / apktool / Ghidra / tshark / binwalk / sqlite3）+ headless benchmark 公开 + Claude Code Sonnet 5.5 macOS arm64 + 4 任务 × 3 reps × 3 arms + 74/75 vs REA 75/75 + 38% faster + 35% cheaper + 56% fewer turns + 60% fewer tokens + 24 KB size + Python</td>
+<td>推断：「<strong>MCP-heavy 是 anti-pattern；skill-heavy 是正途</strong>」是 2026-Q4 agent 工作流设计哲学结构性转向</td>
+<td>待核验：Codex / Cursor / Gemini CLI 等其他 harness 同 benchmark 表现 + iOS / Android / Windows reverse engineering 任务覆盖 + trap 列表完整 schema</td>
+</tr>
+<tr>
+<td>alchaincyf/huashu-motion</td>
+<td>MIT + npx skills add + composer mode（ABC 乐谱）+ 本机采样（三角钢琴 / 弦乐 / 鼓组）+ 浏览器内编辑器 + 按 C + 点画面 + 评论（时间点 + 场景 + 元素 + 源码位置）+ agent 看截图 + 只改那一处 + ⌘Z 多版留底 + 输入框自改 + 6 harness（Claude Code/Codex/WorkBuddy/Grok Bot/Muse/Dots）+ 53s 自发布片 + 40030 KB + JavaScript</td>
+<td>推断：「<strong>agent + 视频创作大众化</strong>」是 2026-Q4 严肃工程化稳定信号</td>
+<td>待核验：编辑器技术栈（React / Vue / 自研）+ 本机采样库 license + om samples build 网络依赖 + harness 兼容性矩阵</td>
+</tr>
+<tr>
+<td>xiaoyang111222/cn-math-taxonomy</td>
+<td>NOASSERTION + DAG（topics + dependencies）+ 人教版 2024 七上—九下 6 册 + 课标 2022 第四学段 + 课标 157 条机器可读（data/cn-curriculum-standards.json）+ 383 条映射 + 1407 道诊断题 + 自适应诊断工具 + Marble os-taxonomy 参考 + 状态声明「AI 草稿未审」+ 第三方目录核 + 九下权威源缺口 + 912 KB + JavaScript</td>
+<td>推断：「<strong>agent + 教育知识图谱 + 透明披露局限</strong>」是 2026-Q4 严肃工程化首份样本</td>
+<td>待核验：自适应诊断算法（IRT / knowledge tracing / Bayesian network）+ 1407 题题型分布 + 课标 157 条字段 schema + 长期教师审核边界</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 项目名称、星标、tags、description、license、size、forks 来自 2026-10-19 GitHub Search API（<code>gh api search/repositories</code> 经 gh CLI 认证，避免未认证速率限制）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / language / description / topics / license / size）+ 各项目 README 公开摘录（<code>gh api .../readme -H Accept:application/vnd.github.raw</code> 抓取）+ 已有 <code>projects/</code> 档案对照。<strong>"X 天 Y⭐"基于 created_at→2026-10-19 总星数除以经过天数（粗略下限估计）；stargazers REST endpoint 需要认证故未做精确单日增量统计</strong>。本批搜索结果中已过滤「fork=0 + size 极小 + 随机词+字典词产品名 + 商业软件 pre-activated 仓库」spam 仓库（如 22 个 251⭐ + NOASSERTION + 1-2 KB + 描述为"Pre-activated desktop edition"的 Movavi/CorelDraw/Reason/SketchUp/SoundPad/Discord-Server-Cloner/StartAll-Back/Uttorent 商业软件激活仓库），以及 NSFW（BreezeSolicitorMap/undress.ai NSFW 描述、VITASID57/bluntcore-intimacy-lab 人机恋成人 AI 仓库）、xscreensaver-official/xscreensaver（只是「There is no official XScreenSaver GitHub repository」声明仓库）等延续项目，以及 earshot/coop-anything/MOSS-Image/web-ocean/reason-network/feder-cr-git-ai/LiCinCan-blender-ai-mcp/Leonxlnx-earshot/Tencent-Hunyuan-Hy-Memory/MyLuxy-overdrive/Gathin23-tv-vibehack 等已跟踪或继续跟踪的项目。今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-19 仍在快速增长的新发现项目 + 延续跟踪项目。<strong>今日最大事件是 <code>Gathin23/tv-vibehack</code> 2 天 1739⭐ 把「Android TV 系统级去广告 + 替换 launcher」从「root + 卸应用 + 折腾」推到「ADB over Wi-Fi + 一行命令 + 不 root + 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开」严肃工程化形态</strong>。<strong>今日 4 个新项目分四条主线严肃工程化跨领域 agent 时代能力栈</strong>：(A Gathin23/tv-vibehack 严肃工程化 Android TV 浏览器去广告 + ADB + Claude Code 一下午 + prompt 公开 + 不 root 不卸载 + tvOS-style launcher)；(B aicodeking/leanrea 严肃工程化 8KB SKILL.md 把 25MB REA MCP + 207 tools + 400k tokens 替掉 + headless benchmark 38% faster + 35% cheaper + 56% fewer turns + 同 74/75 accuracy + 反向工程 plain CLI + traps 列表)；(C alchaincyf/huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面评论 + ⌘Z + 6 harness 通用 + 53s 自发布片)；(D xiaoyang111222/cn-math-taxonomy 严肃工程化人教版 2024 七—九年级 6 册 DAG 知识图谱 + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口)。</p>
+</blockquote>
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>📺 <a href="projects/tv-vibehack.html">Gathin23/tv-vibehack</a> — Android TV 系统级去广告 + ADB over Wi-Fi + 一行命令 + 不 root 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开（NOASSERTION · 4880 KB · Gathin23 个人 · 2 天 1739⭐ ⑂206 · Score 92）</li>
+<li>🪶 <a href="projects/leanrea.html">aicodeking/leanrea</a> — 8KB SKILL.md 替 REA 25MB MCP + 207 tools + 400.7k tokens → 0 tool + 34.5k tokens + headless benchmark 38% faster + 35% cheaper + 56% fewer turns + 60% fewer tokens + 同 74/75 accuracy + Bash 直调 asar/otool/nm/go version -m/jadx/apktool/Ghidra/tshark/binwalk/sqlite3（MIT · 24 KB · aicodeking 个人 · 2 天 617⭐ ⑂107 · Score 90）</li>
+<li>🎬 <a href="projects/huashu-motion.html">alchaincyf/huashu-motion</a> — agent 视频作曲家模式 + composer mode + 先 ABC 乐谱 + 本机采样演奏（三角钢琴/弦乐/鼓组）+ 指着画面点一下评论 + ⌘Z 多版留底 + 输入框自改 + 6 harness 通用 + 53 秒自发布片 + npx skills add 一键安装（MIT · 40030 KB · alchaincyf 个人 · 1 天 239⭐ ⑂28 · Score 87）</li>
+<li>📐 <a href="projects/cn-math-taxonomy.html">xiaoyang111222/cn-math-taxonomy</a> — 人教版 2024 七—九年级 6 册 DAG 知识图谱 + topics+dependencies + 课标 2022 第四学段 157 条机器可读 + 383 条映射 + 1407 道诊断题 + 自适应诊断工具 + 状态声明「AI 草稿未审」+ 第三方教材目录核 + 九下权威源缺口透明披露（NOASSERTION · 912 KB · xiaoyang111222 个人 · 1 天 282⭐ ⑂74 · Score 83）</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

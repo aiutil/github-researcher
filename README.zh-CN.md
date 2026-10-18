@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-18.md">最新日报</a> ·
+  <a href="daily/2026-10-19.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-18
+## 最新研究 · 2026-10-19
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 723 | 4 | 1630k+ |
+| 4 | 727 | 4 | 1740k+ |
 
-**今日核心判断：** OpenMOSS/MOSS-Image 2 天 428⭐ 把「文本生成图像 DiT」从「模糊文字 + 弱布局控制」推到「5B 参数 base DiT + 强文本渲染 + 布局控制 + 4K 长 prompt + 异构 GPU 训练 + ComfyUI 原生插件 + MOSS-Image Prompt Enhancer skill 给 GPT-6 agent + Apache-2.0 + PyPI + Hugging Face + 中文社区 + Discord + Feishu Builders」严肃工程化形态· Noniv/web-ocean 2 天 444⭐ ⑂82 fork/star 18.5% 把「实时海面渲染」从「Three.js + 引擎 demo」推到「WebGPU from scratch + no engine + 6 cascades FFT + JONSWAP + CDLOD 17-level quadtree + 米级到毫米级波长 + 透射散射大气 + 双云层 + AgX + bloom + 6-8ms @ 2560×1440 RTX 5070 Ti + 61 KB single-file HTML + Claude Code Opus 5.5 写」严肃工程化形态· reason-machines/reason-network 2 天 201⭐ 把「team coding agents 协作」从「Slack + IDE 切来切去 + 不知道队友的 agent 在干嘛」推到「P2P daemon + iroh (n0) end-to-end relay-可选 + MCP server reason-network + list_team / send_message / check_inbox + Claude Code/Codex/Cursor/Gemini CLI/Copilot CLI/opencode/pi/Reason 全覆盖 + mid-session 推送 + menu bar icon + notify pop-up + 由 tincan 改名 fork 自 iroh + Reason CLI + Rust + Apache-2.0」严肃工程化形态· cranebeaker/coop-anything 2 天 147⭐ 把「单人大作变多人合作」从「无数废弃 mod」推到「AI agent 读 AGENTS.md + 路径 1 完成现有 mod + 路径 2 从零 reverse engineer + .agents/skills coop-research/coop-revive/coop-qa/coop-reverse-engineer/coop-build-from-zero/coop-networking + Co-op Anything MCP server + 自动测试 bot + one-click install + Steam relay + Deus Ex/FNV/OoT/Dungeon Keeper/STALKER SoC/CS/Mega Man X/X4/Pilotwings 64 排队 + Python + MIT + Claude Code/Codex/Gemini CLI/Cursor/OpenCode 通吃」严肃工程化形态——四条主线同时推到「agent 时代严肃工程化 cross-domain 能力栈」：(A MOSS-Image 严肃工程化国产开源 DiT base + 文本渲染 + layout + 异构 GPU + agent skill；(B web-ocean 严肃工程化 WebGPU 实时海面 + no engine + FFT + 大气 + Claude Opus 5.5 写；(C reason-network 严肃工程化 P2P team coding agent 总线 + iroh + MCP + fork 自 tincan + 多 harness 一致接入；(D coop-anything 严肃工程化 AI agent 把单人大作变 co-op + path 1 revive mod + path 2 reverse engineer + skills + Co-op MCP + 已有 6 个项目排队)。
+**今日核心判断：** Gathin23/tv-vibehack 2 天 1739⭐ ⑂206 fork/star 11.8% 把「Android TV 系统级去广告 + 替换 launcher」从「root + 卸应用 + 折腾」推到「ADB over Wi-Fi + 一行命令 + 不 root + 不卸载 + tvOS-inspired launcher + one-line restore + prompt 公开 + Claude Code 一下午搞定 Mi TV」严肃工程化形态· aicodeking/leanrea 2 天 617⭐ ⑂107 fork/star 17.3% 把「Reverse Engineer Anything」从「REA 25MB MCP + 207 tools + 400.7k tokens」推到「单个 8KB SKILL.md + 0 个 tool + 34.5k tokens + Claude Code Sonnet 5.5 headless 38% faster + 35% cheaper + 56% fewer turns + 60% fewer tokens + 同 74/75 准确率 + 真实 benchmark on Electron/native/Go/deep disassembly」严肃工程化形态· alchaincyf/huashu-motion 1 天 239⭐ ⑂28 fork/star 11.7% 把「agent 做视频」从「CapCut 模板 + LLM 写脚本」推到「npx skills add + composer mode 先写 ABC 谱 + 本机采样演奏 + 每帧音效 + 指着画面点一下评论就改那一处 + 多版留底 + ⌘Z 撤回 + Claude Code/Codex/WorkBuddy/Grok Bot/Muse/Dots 通用 + 53 秒自发布片」严肃工程化形态· xiaoyang111222/cn-math-taxonomy 1 天 282⭐ ⑂74 fork/star 26.2% 把「中国初中数学知识图谱」从「教师手工 + 商业题库闭源」推到「DAG topics+dependencies + 人教版 2024 七—九年级 6 册 6 章 12 章 13 章…34 章 + 课标 157 条机器可读条目 + 383 条知识-课标映射 + 1407 道诊断题 + 自适应诊断 + 状态声明 AI 草稿待教师审核 + 第三方教材目录核 + 九下章名权威源仍缺」严肃工程化形态——四条主线同时推到「agent 时代严肃工程化 cross-domain 能力栈」：(A tv-vibehack 严肃工程化 Android TV 浏览器去广告 + ADB + Claude Code 一下午 + prompt 公开 + 不 root 不卸载 + tvOS-style launcher)；(B leanrea 严肃工程化 8KB SKILL.md 把 25MB REA MCP + 207 tools + 400k tokens 替掉 + headless benchmark 38% faster / 35% cheaper / 56% fewer turns / 同 74/75 accuracy + 反向工程 plain CLI + traps 列表)；(C huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面评论 + 多版留底 + ⌘Z + 53s 自发布片 + 通用 6 harness)；(D cn-math-taxonomy 严肃工程化人教版 2024 初中数学知识图谱 DAG + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口)。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [OpenMOSS/MOSS-Image](projects/moss-image.md) | 428 stars | 基础设施候选 |
-| [Noniv/web-ocean](projects/web-ocean.md) | 444 stars | 工具型 |
-| [reason-machines/reason-network](projects/reason-network.md) | 201 stars | 基础设施候选 |
-| [cranebeaker/coop-anything](projects/coop-anything.md) | 147 stars | 工具型 |
+| [Gathin23/tv-vibehack](projects/tv-vibehack.md) | 1739 stars | 工具型 |
+| [aicodeking/leanrea](projects/leanrea.md) | 617 stars | 工具型 |
+| [alchaincyf/huashu-motion](projects/huashu-motion.md) | 239 stars | 工具型 |
+| [xiaoyang111222/cn-math-taxonomy](projects/cn-math-taxonomy.md) | 282 stars | 基础设施候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **openmoss-di-base-strong-text-render-layout-heterogeneous-gpu-comfyui-skill / OpenMOSS/MOSS-Image 严肃工程化国产 DiT base + 强文本渲染 + 4K 长 prompt + 布局控制 + 异构 GPU 训练 + ComfyUI 原生插件 + GPT-6 family Prompt Enhancer skill** · 相关项目：OpenMOSS/MOSS-Image · 强度：91
-2. **webgpu-ocean-fft-jonswap-cdlod-quadtree-bloom-agx-opus-claude / Noniv/web-ocean 严肃工程化 WebGPU 实时海面渲染（no engine + FFT + JONSWAP + CDLOD + 大气 + 双云层 + AgX + 6-8ms RTX 5070 Ti + Claude Opus 5.5 写）** · 相关项目：Noniv/web-ocean · 强度：88
-3. **p2p-team-coding-agent-bus-iroh-mcp-mid-session-push-menu-bar / reason-machines/reason-network 严肃工程化 P2P team coding agents 总线（iroh + Reason CLI + MCP + Claude Code/Codex/Cursor/Gemini/Copilot/opencode/pi/Reason + tincan 重命名升级）** · 相关项目：reason-machines/reason-network · 强度：85
-4. **ai-agent-coop-mod-revive-reverse-engineer-mcp-steam-relay / cranebeaker/coop-anything 严肃工程化 AI agent 把单人大作变 co-op（path 1 revive mod + path 2 从零 reverse engineer + skills + Co-op MCP + 自动测试 + Steam relay）** · 相关项目：cranebeaker/coop-anything · 强度：82
+1. **android-tv-debloat-adb-wifi-no-root-tvos-launcher-one-line-restore-claude-code-prompt / Gathin23/tv-vibehack 严肃工程化 Android TV 去广告 + ADB over Wi-Fi + 不 root 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开** · 相关项目：Gathin23/tv-vibehack · 强度：92
+2. **leanrea-8kb-skill-vs-rea-mcp-207tools-headless-sonnet55-38faster-35cheaper-74of75 / aicodeking/leanrea 严肃工程化 8KB SKILL.md 替 REA 25MB MCP + 207 tools + 400.7k tokens → 0 tool + 34.5k tokens + headless benchmark 38% faster + 35% cheaper + 同 74/75 accuracy** · 相关项目：aicodeking/leanrea · 强度：90
+3. **agent-commercial-launch-film-composer-mode-abc-score-on-device-sample-point-frame-comment-revert / alchaincyf/huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面点一下评论 + ⌘Z 多版留底 + 6 harness 通用** · 相关项目：alchaincyf/huashu-motion · 强度：87
+4. **cn-junior-math-knowledge-graph-dag-pep2024-157-standards-1407-adaptive-diagnosis-ai-draft / xiaoyang111222/cn-math-taxonomy 严肃工程化人教版 2024 七—九年级 6 册 DAG 知识图谱 + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对** · 相关项目：xiaoyang111222/cn-math-taxonomy · 强度：83
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
 | [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 | [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 | [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
 | [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
-| [2026-10-12](daily/2026-10-12.md) | 5 | 5 |
 
 ## 为什么做这个项目
 
