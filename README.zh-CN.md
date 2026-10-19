@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-19.md">最新日报</a> ·
+  <a href="daily/2026-10-20.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-19
+## 最新研究 · 2026-10-20
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 727 | 4 | 1740k+ |
+| 4 | 731 | 4 | 1741k+ |
 
-**今日核心判断：** Gathin23/tv-vibehack 2 天 1739⭐ ⑂206 fork/star 11.8% 把「Android TV 系统级去广告 + 替换 launcher」从「root + 卸应用 + 折腾」推到「ADB over Wi-Fi + 一行命令 + 不 root + 不卸载 + tvOS-inspired launcher + one-line restore + prompt 公开 + Claude Code 一下午搞定 Mi TV」严肃工程化形态· aicodeking/leanrea 2 天 617⭐ ⑂107 fork/star 17.3% 把「Reverse Engineer Anything」从「REA 25MB MCP + 207 tools + 400.7k tokens」推到「单个 8KB SKILL.md + 0 个 tool + 34.5k tokens + Claude Code Sonnet 5.5 headless 38% faster + 35% cheaper + 56% fewer turns + 60% fewer tokens + 同 74/75 准确率 + 真实 benchmark on Electron/native/Go/deep disassembly」严肃工程化形态· alchaincyf/huashu-motion 1 天 239⭐ ⑂28 fork/star 11.7% 把「agent 做视频」从「CapCut 模板 + LLM 写脚本」推到「npx skills add + composer mode 先写 ABC 谱 + 本机采样演奏 + 每帧音效 + 指着画面点一下评论就改那一处 + 多版留底 + ⌘Z 撤回 + Claude Code/Codex/WorkBuddy/Grok Bot/Muse/Dots 通用 + 53 秒自发布片」严肃工程化形态· xiaoyang111222/cn-math-taxonomy 1 天 282⭐ ⑂74 fork/star 26.2% 把「中国初中数学知识图谱」从「教师手工 + 商业题库闭源」推到「DAG topics+dependencies + 人教版 2024 七—九年级 6 册 6 章 12 章 13 章…34 章 + 课标 157 条机器可读条目 + 383 条知识-课标映射 + 1407 道诊断题 + 自适应诊断 + 状态声明 AI 草稿待教师审核 + 第三方教材目录核 + 九下章名权威源仍缺」严肃工程化形态——四条主线同时推到「agent 时代严肃工程化 cross-domain 能力栈」：(A tv-vibehack 严肃工程化 Android TV 浏览器去广告 + ADB + Claude Code 一下午 + prompt 公开 + 不 root 不卸载 + tvOS-style launcher)；(B leanrea 严肃工程化 8KB SKILL.md 把 25MB REA MCP + 207 tools + 400k tokens 替掉 + headless benchmark 38% faster / 35% cheaper / 56% fewer turns / 同 74/75 accuracy + 反向工程 plain CLI + traps 列表)；(C huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面评论 + 多版留底 + ⌘Z + 53s 自发布片 + 通用 6 harness)；(D cn-math-taxonomy 严肃工程化人教版 2024 初中数学知识图谱 DAG + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对 + 九下权威源缺口)。
+**今日核心判断：** simbasjungles/free-my-tv 2 天 198⭐ ⑂23 fork/star 11.6% 把「Android TV launcher 替换」从「root + 折腾 + 卸应用」推到「ADB over Wi-Fi + 一行命令 + 不 root 不卸载 + 自研 fast ad-free Google TV launcher + 60fps/16.6ms 帧时间/96MB vs 242MB（−60%）内存在 TV 自身芯片上跑 + 跟随真实日落切换浅深主题 + trending picks 来自用户已有 app + 一键 restore + Claude Code 一段 prompt + freemytv.io 上线 + 整套截图/YouTube 演示」严肃工程化形态· interplains/zero-breach 2 天 402⭐ ⑂25 fork/star 6.2% 把「Citizen Lab / AdFection-Candiru 商业间谍软件 IOC 检测」从「厂商闭源 + 商业取证收费 + 需 root + 需联网」推到「本地只读 read-only scanner + 不联网 + 不需管理员 + 零 Python 依赖 + Windows/macOS/Linux 3 系统 + Python 3.8–3.12 + 浏览历史 / cookies / 缓存 / 连接记录 / 文件指纹 / 自启动注册 / 多端口 DNS 解析器缓存 7 个本地证据通道 + 标准库 only 默认检查 + 可选 YARA-X 引擎 + 公开 IOCs（MISP / STIX）+ 主动声明「A clean result is not a clean bill of health」+ 主动指引 Access Now / Amnesty Security Lab 专家 + Apache-2.0」严肃工程化形态· justrach/nanoui 2 天 320⭐ ⑂7 fork/star 2.2% 把「桌面 GUI 框架」从「Electron 100MB+ / Tauri 10MB+ / Qt C++ 巨依赖」推到「Zig 0.17 单一语言 + GPU-native UI（macOS/Linux/Windows 三平台）vs Web 前端二选一 + flexbox layout + glyph atlas 文字 + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已经在 nanoterm（terminal + coding agent）和 nanomon（活动监视器 CPU/内存/GPU/磁盘/网络）落地 + MIT」严肃工程化形态· kanaworksai-hue/audio-studio-mcp 2 天 251⭐ ⑂13 fork/star 5.2% 把「agent 做 BGM / 音效」从「商用 Stable Audio API 收费 + 云端依赖 + API key」推到「本地 MCP server + Stable Audio 3 + Apple Silicon MLX 后端 vs Windows NVIDIA GPU PyTorch 后端 + 无云无 API key 完全免费 + 一句话生成 1–4 BGM 候选 + re-style 整段 / 重生成时间段 / 延长 track / 无缝 loop / 淡入淡出 / LUFS 响度归一 / 48kHz WAV·OGG·FLAC 导出 + Claude Code/Claude Desktop/Cursor/任何 MCP client 通吃 + MIT」严肃工程化形态——四条主线同时推到「agent 时代严肃工程化 cross-domain 能力栈」从昨日「消费者设备 OS 治理 + 反向工程 skill 化 + agent 视频 + 教育知识图谱」往「家用设备 OS 治理 2.0（自研 launcher + 性能数据 + 日落主题）+ 数字取证安全扫描 + 跨语言原生 GUI + 本地 agent 音频工作室」纵深推进：(A simbasjungles/free-my-tv 严肃工程化 Android TV/Google TV 自研 fast ad-free launcher + 60fps/16.6ms 帧时间/96MB 内存在 TV 自身芯片跑 + 跟随真实日落 + trending picks 来自用户已有 app + 一键 restore + freemytv.io + 一段 Claude Code prompt + YouTube 4 分钟演示 + 整套截图 全部就绪 + 不 root 不卸载 + 2 天 198⭐ ⑂23 fork/star 11.6%）；(B interplains/zero-breach 严肃工程化 Citizen Lab AdFection/Candiru 间谍软件本地只读 scanner + 不联网 + 不需管理员 + 零依赖默认 + 3 系统 + Python 3.8–3.12 + 7 个本地证据通道（浏览历史/cookies/缓存/连接记录/文件指纹/自启动/多端口 DNS 解析器缓存）+ 可选 YARA-X + MISP/STIX 公开 IOC + 主动声明不确定 + 推荐用户用专家帮助 + Apache-2.0 + 2 天 402⭐ ⑂25 fork/star 6.2%）；(C justrach/nanoui 严肃工程化 Zig 0.17 单一语言 GPU-drawn native UI + web frontend 二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm/nanomon 落地 + macOS/Linux/Windows + MIT + 2 天 320⭐ ⑂7 fork/star 2.2%）；(D kanaworksai-hue/audio-studio-mcp 严肃工程化本地 MCP server + Stable Audio 3 + MLX/PyTorch 双后端 + 无云无 API key 完全免费 + 1–4 BGM 候选 + re-style/重生成/延长/loop/淡入淡出/LUFS 归一/48kHz 多格式导出 + Claude Code/Desktop/Cursor/任何 MCP client 通吃 + MIT + 2 天 251⭐ ⑂13 fork/star 5.2%）。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [Gathin23/tv-vibehack](projects/tv-vibehack.md) | 1739 stars | 工具型 |
-| [aicodeking/leanrea](projects/leanrea.md) | 617 stars | 工具型 |
-| [alchaincyf/huashu-motion](projects/huashu-motion.md) | 239 stars | 工具型 |
-| [xiaoyang111222/cn-math-taxonomy](projects/cn-math-taxonomy.md) | 282 stars | 基础设施候选 |
+| [simbasjungles/free-my-tv](projects/free-my-tv.md) | 198 stars | 工具型 |
+| [interplains/zero-breach](projects/zero-breach.md) | 402 stars | 工具型 |
+| [justrach/nanoui](projects/nanoui.md) | 320 stars | 基础设施候选 |
+| [kanaworksai-hue/audio-studio-mcp](projects/audio-studio-mcp.md) | 251 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **android-tv-debloat-adb-wifi-no-root-tvos-launcher-one-line-restore-claude-code-prompt / Gathin23/tv-vibehack 严肃工程化 Android TV 去广告 + ADB over Wi-Fi + 不 root 不卸载 + tvOS-inspired launcher + one-line restore + Claude Code 一下午搞定 Mi TV + prompt 公开** · 相关项目：Gathin23/tv-vibehack · 强度：92
-2. **leanrea-8kb-skill-vs-rea-mcp-207tools-headless-sonnet55-38faster-35cheaper-74of75 / aicodeking/leanrea 严肃工程化 8KB SKILL.md 替 REA 25MB MCP + 207 tools + 400.7k tokens → 0 tool + 34.5k tokens + headless benchmark 38% faster + 35% cheaper + 同 74/75 accuracy** · 相关项目：aicodeking/leanrea · 强度：90
-3. **agent-commercial-launch-film-composer-mode-abc-score-on-device-sample-point-frame-comment-revert / alchaincyf/huashu-motion 严肃工程化 agent 视频作曲家模式 + 先 ABC 乐谱 + 本机采样演奏 + 指着画面点一下评论 + ⌘Z 多版留底 + 6 harness 通用** · 相关项目：alchaincyf/huashu-motion · 强度：87
-4. **cn-junior-math-knowledge-graph-dag-pep2024-157-standards-1407-adaptive-diagnosis-ai-draft / xiaoyang111222/cn-math-taxonomy 严肃工程化人教版 2024 七—九年级 6 册 DAG 知识图谱 + 课标 157 条 + 1407 题 + 自适应诊断 + AI 草稿声明 + 第三方目录核对** · 相关项目：xiaoyang111222/cn-math-taxonomy · 强度：83
+1. **android-tv-fast-ad-free-google-tvlauncher-60fps-96mb-sunset-themed-trending-from-own-apps-one-button-restore-freemytv-claude-code-prompt / simbasjungles/free-my-tv 严肃工程化 Android TV/Google TV 自研 fast ad-free launcher + 60fps/16.6ms 帧时间/96MB vs 242MB（−60%）内存在 TV 自身芯片跑 + 跟随真实日落切换浅深主题 + trending picks 来自用户已有 app + 一键 restore + freemytv.io 上线 + 一段 Claude Code prompt + 整套截图/YouTube 4 分钟演示** · 相关项目：simbasjungles/free-my-tv · 强度：91
+2. **zero-breach-local-readonly-candiru-adfection-ioc-scanner-no-network-no-admin-zero-deps-3os-misp-stix-apache / interplains/zero-breach 严肃工程化 Citizen Lab AdFection/Candiru 间谍软件本地只读 scanner + 不联网 + 不需管理员 + 零依赖默认 + Windows/macOS/Linux 3 系统 + Python 3.8–3.12 + 7 个本地证据通道 + 可选 YARA-X + MISP/STIX 公开 IOC + 主动声明不确定 + 引导专家帮助 + Apache-2.0** · 相关项目：interplains/zero-breach · 强度：88
+3. **nanoui-zig-gpu-drawn-native-ui-zerodeps-700kb-binaries-flexibox-glyph-atlas-no-window-testing-maclanouwinwindows / justrach/nanoui 严肃工程化 Zig 0.17 单一语言 GPU-drawn native UI + Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm/nanomon 落地 + MIT** · 相关项目：justrach/nanoui · 强度：84
+4. **audio-studio-mcp-local-stable-audio-3-mlxapple-silicon-pytorchnvidia-no-cloud-no-api-key-bgm-sfx-loop-lufs-any-mcp-client / kanaworksai-hue/audio-studio-mcp 严肃工程化本地 MCP server + Stable Audio 3 + MLX/PyTorch 双后端 + 无云无 API key 完全免费 + 一句话生成 1–4 BGM 候选 + re-style/重生成/延长/loop/淡入淡出/LUFS 归一/48kHz 多格式导出 + Claude Code/Desktop/Cursor/任何 MCP client 通吃 + MIT** · 相关项目：kanaworksai-hue/audio-studio-mcp · 强度：82
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
 | [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 | [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 | [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
-| [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 
 ## 为什么做这个项目
 

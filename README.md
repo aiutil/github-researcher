@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-19.md">Latest report</a> ·
+  <a href="daily/2026-10-20.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-19
+## Latest report · 2026-10-20
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 727 | 4 | 1740k+ |
+| 4 | 731 | 4 | 1741k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [Gathin23/tv-vibehack](projects/tv-vibehack.md) | 1739 stars | 工具型 |
-| [aicodeking/leanrea](projects/leanrea.md) | 617 stars | 工具型 |
-| [alchaincyf/huashu-motion](projects/huashu-motion.md) | 239 stars | 工具型 |
-| [xiaoyang111222/cn-math-taxonomy](projects/cn-math-taxonomy.md) | 282 stars | 基础设施候选 |
+| [simbasjungles/free-my-tv](projects/free-my-tv.md) | 198 stars | 工具型 |
+| [interplains/zero-breach](projects/zero-breach.md) | 402 stars | 工具型 |
+| [justrach/nanoui](projects/nanoui.md) | 320 stars | 基础设施候选 |
+| [kanaworksai-hue/audio-studio-mcp](projects/audio-studio-mcp.md) | 251 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: Gathin23/tv-vibehack
-2. **Signal 2** · score 90 · repositories: aicodeking/leanrea
-3. **Signal 3** · score 87 · repositories: alchaincyf/huashu-motion
-4. **Signal 4** · score 83 · repositories: xiaoyang111222/cn-math-taxonomy
+1. **Signal 1** · score 91 · repositories: simbasjungles/free-my-tv
+2. **Signal 2** · score 88 · repositories: interplains/zero-breach
+3. **Signal 3** · score 84 · repositories: justrach/nanoui
+4. **Signal 4** · score 82 · repositories: kanaworksai-hue/audio-studio-mcp
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-19.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-20.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
 | [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 | [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 | [2026-10-14](daily/2026-10-14.md) | 4 | 4 |
-| [2026-10-13](daily/2026-10-13.md) | 4 | 4 |
 
 ## Why this repository exists
 

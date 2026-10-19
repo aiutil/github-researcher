@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>justrach/nanoui | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/justrach/nanoui" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="justrachnanoui">justrach/nanoui</h1>
+<h2 id="_1">一句话定位</h2>
+<p>justrach 个人 2026-10-18 发布的「<strong>Zig 0.17 单一语言 GPU-drawn 桌面 GUI 框架</strong>」严肃工程化实现：<strong>Zig 0.17 单一语言 + GPU-drawn native UI（macOS/Linux/Windows 三平台）vs Web 前端二选一 + flexbox layout + 文字 glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm（terminal + coding agent）和 nanomon（活动监视器 CPU/内存/GPU/磁盘/网络）落地 + MIT</strong>——agent 时代跨语言原生 GUI 严肃工程化首份样本。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2025-2026 桌面 GUI 框架生态长期由「<strong>Electron 100MB+（HTML/JS/CSS）</strong>」「<strong>Tauri 10MB+（Rust + WebView）</strong>」「<strong>Qt C++ 巨依赖</strong>」「<strong>Flutter Desktop 30MB+（Dart）</strong>」四类占据，<strong>没有单一语言 + GPU-drawn native UI + 零依赖 + ~MB 级二进制</strong>的严肃选项。nanoui 直击——<strong>Zig 0.17 单一语言 + GPU-drawn native UI（macOS/Linux/Windows 三平台）+ Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm/nanomon 落地 + MIT</strong>。这是 2026-10 下半月「<strong>单一语言 + GPU-drawn + 零依赖 + 已在两个真实 app 落地</strong>」严肃工程化首份样本。</p>
+<h2 id="2026-10-20">为什么值得关注（2026-10-20）</h2>
+<p>今日观察窗为 GitHub Search API 抓取时刻起、且截至 2026-10-20 仍在快速增长的新发现项目。<code>justrach/nanoui</code> 2 天 320⭐ ⑂7 fork/star 2.2%——320⭐ 在 2 天是显著信号（fork 2.2% 略低于平均，但<strong>已在 nanoterm/nanomon 两个真实 app 落地</strong>反映已有实质性采用）。<strong>Zig 0.17 + GPU-drawn native UI + Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + macOS/Linux/Windows + MIT</strong>十一要素共振，<strong>让跨平台 desktop app 严肃工程化大众可及</strong>。MIT license 保证可商用 fork 与二次分发。</p>
+<h2 id="_3">热度来源判断</h2>
+<p>nanoui 的热度是「<strong>Zig 0.17 单一语言 + GPU-drawn native UI + Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + macOS/Linux/Windows + 已在 nanoterm/nanomon 落地 + MIT</strong>」十二要素共振：
+- <strong>Zig 0.17 单一语言</strong>：README 明示「<strong>Built in Zig 0.17</strong>」——单一语言 Zig 0.17（无 C++/Rust/Go 绑定）
+- <strong>GPU-drawn native UI</strong>：README 明示「<strong>Native UI, written in Zig alone and drawn by nanoui: no HTML, no JavaScript, no webview</strong>」——GPU-drawn native UI（无 HTML/JS/webview）
+- <strong>Web 前端二选一</strong>：README 明示「<strong>Each window shows one of two kinds of interface: Native UI ... or Web frontend</strong>」——二选一 Native UI 或 Web 前端
+- <strong>flexbox layout</strong>：README 明示「<strong>It has flexbox layout</strong>」——flexbox layout
+- <strong>文字 glyph atlas</strong>：README 明示「<strong>text in a glyph atlas</strong>」——文字 glyph atlas（自管字体）
+- <strong>animations</strong>：README 明示「<strong>animations</strong>」——animations
+- <strong>无窗口测试</strong>：README 明示「<strong>views you can test without a window</strong>」——可无窗口测试（headless render）
+- <strong>~0.7 MB 二进制</strong>：README 明示「<strong>Apps of about 0.7 MB</strong>」——应用程序约 0.7 MB
+- <strong>零依赖</strong>：README 明示「<strong>Zero dependencies</strong>」——零依赖
+- <strong>macOS/Linux/Windows 三平台</strong>：README 明示「<strong>macOS · Linux · Windows</strong>」——三平台
+- <strong>已在 nanoterm/nanomon 落地</strong>：README 明示「<strong><a href="https://github.com/justrach/nanoterm">nanoterm</a> is a terminal with a coding agent, and <a href="https://github.com/justrach/nanomon">nanomon</a> an activity monitor, both built on nanoui</strong>」——nanoterm + nanomon 已落地
+- <strong>Codegraff Light 主题</strong>：README 明示「<strong>the overview in Codegraff Light, with cell graphs of CPU, memory, GPU, disk and network</strong>」——Codegraff Light 主题
+- <strong>docs/images 完整</strong>：README 明示「<strong>docs/images/nano-transparent.png + docs/images/nano-paper.png + docs/images/nanomon-window.png</strong>」——docs/images 完整
+- <strong>MIT license</strong>：可商用 fork 与二次分发</p>
+<p>热度<strong>真实且具跨语言 GUI 严肃工程化潜力</strong>——320⭐ + 7 fork + 已在 nanoterm/nanomon 落地 + Zig 0.17 + ~0.7 MB 二进制 + MIT 是真实框架信号。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Zig 0.17 单一语言</strong>：README 明示「<strong>Built in Zig 0.17</strong>」——单一语言 Zig 0.17（无 C++/Rust/Go 绑定）</li>
+<li><strong>GPU-drawn native UI</strong>：README 明示「<strong>Native UI, written in Zig alone and drawn by nanoui: no HTML, no JavaScript, no webview</strong>」——GPU-drawn native UI（无 HTML/JS/webview）</li>
+<li><strong>Web 前端二选一</strong>：README 明示「<strong>Each window shows one of two kinds of interface: Native UI ... or Web frontend</strong>」——二选一 Native UI 或 Web 前端</li>
+<li><strong>flexbox layout</strong>：README 明示「<strong>It has flexbox layout</strong>」——flexbox layout</li>
+<li><strong>文字 glyph atlas</strong>：README 明示「<strong>text in a glyph atlas</strong>」——文字 glyph atlas（自管字体）</li>
+<li><strong>animations</strong>：README 明示「<strong>animations</strong>」——animations</li>
+<li><strong>无窗口测试</strong>：README 明示「<strong>views you can test without a window</strong>」——可无窗口测试（headless render）</li>
+<li><strong>~0.7 MB 二进制</strong>：README 明示「<strong>Apps of about 0.7 MB</strong>」——应用程序约 0.7 MB</li>
+<li><strong>零依赖</strong>：README 明示「<strong>Zero dependencies</strong>」——零依赖</li>
+<li><strong>macOS/Linux/Windows 三平台</strong>：README 明示「<strong>macOS · Linux · Windows</strong>」——三平台</li>
+<li><strong>已在 nanoterm 落地</strong>：README 明示「<strong><a href="https://github.com/justrach/nanoterm">nanoterm</a> is a terminal with a coding agent</strong>」——nanoterm（terminal + coding agent）已落地</li>
+<li><strong>已在 nanomon 落地</strong>：README 明示「<strong><a href="https://github.com/justrach/nanomon">nanomon</a> an activity monitor</strong>」——nanomon（活动监视器 CPU/内存/GPU/磁盘/网络）已落地</li>
+<li><strong>Codegraff Light 主题</strong>：README 明示「<strong>the overview in Codegraff Light, with cell graphs of CPU, memory, GPU, disk and network</strong>」——Codegraff Light 主题</li>
+<li><strong>docs/images 完整</strong>：README 明示「<strong>docs/images/nano-transparent.png + docs/images/nano-paper.png + docs/images/nanomon-window.png</strong>」——docs/images 完整</li>
+<li><strong>MIT license</strong>：可商用 fork 与二次分发</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>单仓：Zig 0.17 单一语言 + GPU-drawn native UI（macOS/Linux/Windows）+ Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm/nanomon 落地 + MIT + docs/images/{nano-transparent.png,nano-paper.png,nanomon-window.png} 演示</td>
+<td>基于 README「Each window shows one of two kinds of interface」+「Get started / Native UI / Web pages / Testing without a window / Platforms / Apps / Performance / Credits」段</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者写 Zig 0.17 → 用 nanoui API（flexbox + glyph atlas + animations）→ 二选一 Native UI（GPU-drawn）或 Web 前端 → 编译为 ~0.7 MB 二进制（macOS/Linux/Windows 三平台）→ 无窗口测试（headless render）→ 零依赖部署</td>
+<td>主路径由 README「Get started」+「Native UI」段推导；具体 Zig 0.17 macOS GPU 后端（Metal?）/ Linux GPU 后端（Vulkan?）/ Windows GPU 后端（DX12?）未在 README 主页详述</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>Zig 0.17 单一语言 vs Electron 100MB+（JS/HTML/CSS）/ GPU-drawn native UI vs Web frontend（无 JS）/ flexbox vs 自研 layout / glyph atlas vs 系统字体 / 无窗口测试 vs 依赖真窗口 / ~0.7 MB 二进制 vs Electron 100MB+ / 零依赖 vs Electron 200+ 依赖 / 已在 nanoterm/nanomon 落地 vs 仅 demo 仓库 / Zig 0.17 仍在开发 vs Rust 稳定 / MIT vs Apache-2.0</td>
+<td>档案明示十一点权衡；具体 700 KB 二进制的实测条件（release / strip / LTO）+ Mac/Linux/Windows GPU 后端细节 + Web frontend 集成方式待核验</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 装 Zig 0.17 → 2. clone nanoui → 3. cargo build（zig build）→ 4. 跑 doc 「Get started」最小 Native UI 例子 → 5. 测 headless render（无窗口）→ 6. 看二进制大小是否 ~0.7 MB → 7. 跑 nanoterm 看真实 app 落地</td>
+<td>PoC 由 README「Get started / Testing without a window / Apps」段直接推导；具体 Zig 0.17 API 完整 schema + Web frontend 集成代码 + GPU 后端细节待核验</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>nanoui 的核心启发是「<strong>单一语言 + GPU-drawn + 零依赖 + ~MB 级二进制</strong>」是 2026-Q4 严肃工程化「<strong>跨平台 desktop app</strong>」的合理路径。Electron 100MB+ / Tauri 10MB+ / Qt C++ 巨依赖 / Flutter Desktop 30MB+ 都太重——nanoui 用 Zig 0.17 单一语言 + GPU-drawn native UI + 零依赖 + ~0.7 MB 二进制，把「<strong>跨平台 desktop app</strong>」严肃工程化推到「<strong>单一语言 + GPU-drawn + 零依赖 + ~MB 级二进制</strong>」形态。更深层的启发是：<strong>「已在两个真实 app 落地」（nanoterm + nanomon）是「</strong>框架可信度<strong>」的最强证明</strong>——「<strong>又一个 demo 仓库</strong>」与「<strong>已经在两个真实 app 落地的框架</strong>」是截然不同的可信度信号。能否持续，取决于 Zig 0.17 升级时 nanoui API 适配 + nanoterm/nanomon 长期维护 + Web frontend 集成方式 + GPU 后端细节公开。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；"待核验"节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Dev[开发者 写 Zig 0.17] --> NanouiAPI[nanoui API<br/>flexbox + glyph atlas + animations]
+  NanouiAPI --> Choice{二选一}
+  Choice -->|Native UI| Native[GPU-drawn native UI<br/>no HTML/JS/webview<br/>macOS/Linux/Windows]
+  Choice -->|Web frontend| Web[Web 前端 待核验集成]
+  Native --> Build[zig build 编译]
+  Web --> Build
+  Build --> Binary[~0.7 MB 二进制<br/>零依赖]
+  Build -.CI.-> Test[无窗口测试<br/>headless render]
+  Binary --> Apps[应用部署]
+  Apps --> Nanoterm[nanoterm<br/>terminal + coding agent<br/>已在 nanoui 落地]
+  Apps --> Nanomon[nanomon<br/>活动监视器 CPU/内存/GPU/磁盘/网络<br/>已在 nanoui 落地]
+  Binary -.Codegraff Light.-> Theme[主题系统<br/>Codegraff Light]
+  Binary -.docs.->docs.-> DocsImages[docs/images/nano-transparent.png<br/>docs/images/nano-paper.png<br/>docs/images/nanomon-window.png]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>基础设施候选项目（Zig 0.17 单一语言 GPU-drawn 桌面 GUI 框架严肃工程化首份样本）。</strong> nanoui 不仅是「<strong>又一个 GUI 框架</strong>」，而是「<strong>Zig 0.17 单一语言 + GPU-drawn native UI + Web 前端二选一 + flexbox + glyph atlas + animations + 无窗口测试 + ~0.7 MB 二进制 + 零依赖 + 已在 nanoterm/nanomon 落地 + MIT</strong>」——具备「<strong>已在两个真实 app 落地</strong>」的可信度。但需注意：<strong>Zig 0.17 仍在开发</strong>（nanoui 绑定 Zig 0.17 API 可能在未来 Zig 升级时需重新适配），且 <strong>GPU 后端细节 + Web frontend 集成方式 + ~0.7 MB 二进制的实测条件</strong> 未在 README 主页详述。</p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li><strong>仅 2 天 320⭐ 早期信号</strong>：与 Electron 156k⭐ / Tauri 79k⭐ 相比，nanoui 早期信号较弱</li>
+<li><strong>仅 2.2% fork 比例</strong>：fork 比例偏低，反映「<strong>目前主要用户是 justrach 本人 + 两个真实 app 作者</strong>」</li>
+<li><strong>Zig 0.17 仍在开发</strong>：Zig 0.17 仍是开发版本，nanoui 绑定 Zig 0.17 API 可能在未来 Zig 升级时需重新适配</li>
+<li><strong>Mac/Linux/Windows GPU 后端细节</strong>：README 未明示 Mac（Metal?）/Linux（Vulkan?）/Windows（DX12?）GPU 后端细节</li>
+<li><strong>Web frontend 集成方式</strong>：README 未明示 Web frontend 集成方式（WebView2? CEF?）</li>
+<li><strong>~0.7 MB 二进制的实测条件</strong>：README 未明示 0.7 MB 是 release / strip / LTO 后的实测</li>
+<li><strong>仅 justrach 个人维护</strong>：justrach 个人项目，可持续性存疑</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Electron（156k⭐）</strong>：Electron 100MB+ + JS/HTML/CSS + 200+ 依赖；nanoui ~0.7 MB + Zig 0.17 + 零依赖</li>
+<li><strong>vs Tauri（79k⭐）</strong>：Tauri 10MB+ + Rust + WebView；nanoui ~0.7 MB + Zig 0.17 + 零依赖 + 零 WebView</li>
+<li><strong>vs Qt</strong>：Qt C++ + 巨依赖；nanoui Zig 0.17 + 零依赖</li>
+<li><strong>vs Flutter Desktop</strong>：Flutter Desktop 30MB+ + Dart；nanoui ~0.7 MB + Zig 0.17 + 零依赖</li>
+<li><strong>vs Iced（Rust GUI）</strong>：Iced Rust + ~5MB 二进制；nanoui Zig 0.17 + ~0.7 MB 二进制 + 零依赖</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（Zig 0.17 单一语言 GPU-drawn 桌面 GUI 框架严肃工程化首份样本）。</strong> nanoui 代表了 2026-Q4 严肃工程化「<strong>单一语言 + GPU-drawn + 零依赖 + ~MB 级二进制 + 已在两个真实 app 落地</strong>」的首份样本。建议关注：
+1. <strong>Zig 0.17 → 0.18 升级时 nanoui API 适配</strong>（长期可维护性）
+2. <strong>Mac/Linux/Windows GPU 后端细节公开</strong>（Metal? Vulkan? DX12?）
+3. <strong>Web frontend 集成方式</strong>（WebView2? CEF?）
+4. <strong>~0.7 MB 二进制的实测条件</strong>（release / strip / LTO 后的实测）
+5. <strong>nanoterm/nanomon 持续维护</strong>（两个真实 app 落地的健康度）</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否推出 nanoui-vscode 插件（VSCode 集成）</li>
+<li>是否推出 nanoui-figma 插件（设计稿 → Zig 代码）</li>
+<li>是否联合 Iced（Rust GUI）做跨语言 GUI 标准化</li>
+<li>是否被 Zig 官方采用为标准 GUI 框架</li>
+<li>1 个月后 fork/star 比例是否上升（验证「已在两个真实 app 落地」的传染效应）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-20) | Stars: 320 | Forks: 7 | License: MIT | 语言: Zig | 创建: 2026-10-18</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
