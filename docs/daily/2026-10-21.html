@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-21 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-21-github">2026-10-21 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 2026-10-21 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API（<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/readme</code>、<code>search/repositories</code>），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>description</code>，以及 README 原文摘录（<code>Accept: application/vnd.github.raw</code>）。<strong>「2 天」按 <code>created_at</code>（UTC）到 2026-10-21 计算；单日 star 增量未做统计</strong>——GitHub 的 stargazers 逐日时间序列需要 stargazer 列表分页遍历，本日报未做，因此<strong>所有增速描述均为「总星数 ÷ 经过天数」的下限粗估，不能读作当日新增</strong>。<strong>已核验为 0 的字段直接标注</strong>：opentrap/opentrap 的 <code>releases</code> 列表返回为空、4 个新项目 topics 字段除 opentrap 外均为空数组（这些仓库未设置 GitHub topics，不代表无主题）；aerial-tv 的 <code>subscribers_count</code> 为 0、ElyOffice 为 2、fx0 为 0，说明目前几乎没有「订阅者」级别的深度关注者。<strong>已过滤的 spam 仓库</strong>（本批 Search API 结果中出现、已排除，不作为研究对象）：<code>bitwarden-app312/.gitp3d</code>（271⭐ ⑂111，描述为「bitwarden-for-mac-and-windows-pc-desktop-app」）、<code>arc-tool/.github</code>、<code>cod-tool/.github</code>、<code>fort-tool/.github</code>、<code>cs-tool-s/.github</code>、<code>val-tools-c/.github</code>、<code>cs2-tools-new/.github</code>、<code>fort-skins/.github</code>、<code>val-tools/.github</code>、<code>lock-tool/.github</code>、<code>dogs-tool/.github</code>、<code>rbl-tools/.github</code>、<code>rbl-fps-tool/.github</code>、<code>apex-pro12/.github</code>（后 13 个均 262–270⭐ ⑂135–270，描述统一为「🔥 …-cheats-mod-menu-hacks…」，fork 与 star 比接近或超过 1:1，<code>.github</code> 作为仓库名且含 <code>-tool(s)/.github</code> 命名模式——这是<strong>可核验的批量 spam 模式</strong>，非研究对象）。<strong>未纳入今日 key_projects 的其他候选及原因</strong>：<code>VictorTaelin/uniichat</code>（521⭐ ⑂51，TypeScript，Apache-2.0，但 description 为空 <code>N/A</code>，README 未在本次采集窗口内取到内容，无可核验的技术证据）；<code>stackedlol/ascii-sharks</code>（505⭐，description 仅为「ascii shark components in typescript」，26 KB，无实质信息）；<code>timhengc/mai-shen-zai-ci</code>（282⭐ ⑂31，description「麦门封神榜｜你在麦门算老几？」，属运营活动型仓库，无 license 非技术项目）；<code>soumatheusgomes/editonny</code>（275⭐，485 MB，description「Local video editing through conversation」，规模异常大但本窗口未取 README 内容）；<code>typecraft-dev/oma-cast</code>（272⭐，description「omarchy rebuild of raycast」，无 license）。<strong>延续跟踪</strong>：<code>simbasjungles/free-my-tv</code> 从昨日 198⭐ 涨到今日 <strong>1678⭐ ⑂172</strong>（fork 从 23 涨到 172，fork-star 从 11.6% 变为 10.2%），这是 Android TV 桌面赛道的连续第 4 天爆发，但<strong>今日不重复建档、不再作为新趋势</strong>——它的爆发曲线已经在 10-19/10-20 两份日报中完整记录，重复计入会让趋势指数失真；它的意义在今日体现为「<strong>为 pengchujin/aerial-tv 提供了赛道已验证的证据</strong>」。</p>
+<p><strong>今日最重要的元观察（元层面，不是技术判断）：</strong> 本批 4 个新项目中有 3 个（opentrap、aerial-tv、ElyOffice）的 fork/star 比都在 <strong>1.1%–6.9%</strong> 区间，属于 GitHub 的<strong>偏低区间</strong>——对比 free-my-tv 的 10.2%、fx0 的 18.6%。低 fork 比通常意味着「<strong>被看见但没被动手改</strong>」。这有多种解释（工具型桌面/办公应用本身 fork 价值有限；用户还没来得及动手；star 来自聚合推荐而非真实需求），<strong>本日报不据此判断真假</strong>，但把它列为待观察项：<strong>7 天后回看 fork 增长是否跟上 star 增长，是区分「真实采用」与「star 波动」最直接的一个指标。</strong></p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1vercel-labsfx0-durable-design-agent-90">趋势 1：vercel-labs/fx0 严肃工程化 durable design agent 公开参考实现（趋势分 90）</h3>
+<p><code>vercel-labs/fx0</code> 2 天 296⭐ ⑂55 fork（fork-star 18.6%，本批最高）把「durable agent」从「各家 SDK 文档里的抽象名词」推到「<strong>一个 <code>createFxAgent()</code> 调用即获得 agent loop / streaming / tool calls / retries / durable sessions</strong>」的<strong>可读参考实现</strong>。README 明示的分层是本日最值得记的架构信息：</p>
+<ul>
+<li><strong>fx0 拥有</strong>用户可见的一切：chat 与实时预览、登录、agent 调用的设计工具、Redis 与 Neon 里的 chat 历史。</li>
+<li><strong>libfx 拥有</strong>每一个 turn 内的全部工作：模型循环、tool calls、retries、steering。fx0 用 <code>createFxAgent()</code> 建一个 agent，把每个 chat 的 messages 交给它。</li>
+<li><strong>Workflow World</strong>（Vercel Workflow 背后的存储）是 libfx 保存每个 turn 运行过程的地方：先存 prompt，再存每一步。</li>
+<li><strong>Vercel Queues</strong> 给每个 prompt 留一份备份：函数崩溃或触到时限时，队列在 <code>/api/libfx</code> 唤醒一个新函数，libfx 从最后保存的步骤继续。</li>
+<li><strong>AI Gateway</strong> 收每一次模型调用：付费轮用发送者的 OAuth token 与 team，显式赞助的试用轮用服务器自己的 trial key。</li>
+</ul>
+<p>两个「成本控制」细节在 agent 工程里非常少见被写明：其一，<strong>turn 在队列投递时没有浏览器 cookie</strong>，所以 prompt 路由把 funding 封进 Redis——每条消息记录它所启动的那一轮的 funding 归属（要么是被准入的赞助，要么是付费发送者的 OAuth grant 与 team），这防止了「agent 在后台跑完、账单挂错人」；其二，<strong>一轮最多 64 个 model steps（含 subagent）</strong>，README 直言这是为了让陷入循环的 agent 跑不出一张天价账单。</p>
+<p><strong>架构师速览（fx0）：</strong>
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 四层：fx0（UI/鉴权/chat 历史，Redis + Neon）· libfx（agent loop/tool calls/retries/steering）· Vercel Workflow 的 World（每轮每步落盘）+ Vercel Queues（prompt 备份与崩溃唤醒）· AI Gateway（每一次模型调用的计费与路由） | README「How fx0 uses libfx」五点分述 + docs/diagrams/pieces-<em>.svg；fx0 与 libfx 的代码边界（fx0 侧文件为 app/api、lib/agent.ts）由 README 代码块路径推得 |
+| 主路径 | 用户发消息 → <code>POST /api/prompt</code> 在</em><em>一个 Redis 脚本</em><em>里把消息写入 transcript 并交给 libfx（libfx 先存后 ack，保证「显示已发送」的消息不会丢、重试请求落到同一轮）→ prompt 路由把 funding 封进 Redis → libfx 跑 turn，每步存进 World → 边跑边流式回用户 → 若函数崩溃/触 800 秒上限，Queues 在 <code>app/api/libfx</code> 唤醒新函数（<code>maxDuration = 800</code>，<code>agent().wakeHandler()</code>）从最后保存步骤继续 | 全部由 README「Durability」段的 1/2/3/4/5 步 + 两个代码块 + vercel.json 的 queue 触发配置推得；800 秒与 queue/v2beta 主题名由 README 内联的 vercel.json 片段直接引用 |
+| 关键权衡 | 自研 agent loop vs 用现成 SDK / 模型调用走 AI Gateway vs 直连模型厂商 / 每步落盘 World（更贵但可续）vs 只存终态（更便宜但崩了全丢）/ 队列兜底（多一跳延迟）vs 纯同步（崩了就没）/ </em><em>64 steps 上限（防烧钱）vs 不设限（agent 可能真需要更久）</em><em> / 试用轮与付费轮资金隔离（免费额度不串味）vs 统一计费 | README 明示：funding 隔离原因（队列无 cookie）、64 步原因（防账单失控）、试用免费额度由服务器 key 出资（"a server-only Gateway key funds its admitted prompts"）；未明示 World/Queues 的实际成本量级与 800 秒是否够长 |
+| 最小 PoC | 1. <code>npm i libfx</code> + 在任意 Next.js route 建 <code>createFxAgent()</code>（不传 durability 选项 → Vercel 上自动用 World + Queues，��� Vercel 之外用本地文件）→ 2. <code>agent.newSessionId()</code> + <code>agent.session(id, { model, instructions, context })</code> → 3. <code>session.prompt(text, { messageId })</code> 跑一轮 → 4. </em><em>故意在 turn 中途 kill 掉函数进程</em><em> → 5. 确认队列在新函数里从最后保存步骤继续、转录未丢 → 6. 故意让 agent 陷入循环，确认 64 步后停止而非无限计费 | PoC 前 3 步由 README 内联的 TS 代码块直接给出（已注明 simplified）；第 4–6 步是对 README 明示行为的</em><em>可证伪测试设计</em>*，具体本地复现所需的 Vercel 账号/免费额度、libfx 版本待核验 |</p>
+<h3 id="2opentrapopentrap-burp-suite-88">趋势 2：opentrap/opentrap 严肃工程化 Burp Suite 免费开源替代（趋势分 88）</h3>
+<p><code>opentrap/opentrap</code> 2 天 177⭐ ⑂2 fork（fork-star 仅 1.1%，本批最低）做的是一件在安全工具里少见的组合：把<strong>用户已经熟悉的 Burp 式代理工作流</strong>放在<strong>成熟的 OWASP ZAP 检测引擎</strong>上。README 的「Why we built it」把缺口说得很直接——「最有力的拦截代理（Burp Suite）是商业闭源的，最有用的功能在付费许可后面；OWASP ZAP 是强力的开源引擎，但界面对大量 proxy-first 的测试者不熟悉」。OpenTRAP 的主张是二者合并，并且<strong>核心能力没有许可门禁</strong>。</p>
+<p><strong>可核验的能力清单</strong>（均来自 README）：Proxy 标签（拦截 + 一键打开的<strong>内置 Chromium</strong>，已路由经代理并信任其 CA，TLS 拦截零配置）· Target 标签（site map 树、请求列表、每个发现的问题附完整 advisory：请求与响应并排）· Collaborator（OOB DNS 与 HTTP 交互全量留档，用于盲注类漏洞，每个回调请求都有记录）· Intruder（四种攻击类型 + payload 集与处理，实时攻击表显示每个请求的 status / length / timing）· Dashboard（爬取完成 + 活跃审计运行中 + 按严重度排序的实时漏洞表）。技术栈：Java 17+ · AGPL-3.0 · Linux AppImage 分发 · 19 个 topics（含 burp-alternative、burp-suite、owasp-zap、dast、bug-bounty、penetration-testing）。徽章自标 <code>status: active development</code> 与 <code>contributions welcome</code>。</p>
+<p><strong>需要诚实指出的两个反向信号</strong>：<strong>fork-star 1.1% 是本批最低</strong>（177⭐ 只有 2 fork），<strong><code>releases</code> 列表当前为空</strong>（GitHub API 返回空数组，即尚无正式 release 或全部为草稿，README 中的 AppImage 下载链接指向 <code>releases/latest</code>）——意味着<strong>下载链接此刻很可能不可用</strong>，且社区尚未进入「动手改」阶段。<code>open_issues_count = 0</code> 在一个刚建立 2 天的项目上更可能是「还没人提」而非「质量完美」。</p>
+<p><strong>架构师速览（opentrap）：</strong>
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单体桌面应用（Java 17+ / Linux AppImage）：代理与内置 Chromium 走浏览器侧 TLS 拦截 · 检测能力完全依赖内置 OWASP ZAP 引擎（不是自研规则）· AGPL-3.0 保证改动必须开源回流 | README「What it is」+「Why we built it」+ 徽章行；<strong>ZAP 集成是嵌入还是外部进程调用，README 未明示</strong>；macOS/Windows 支持未见声明 |
+| 主路径 | 启动 → 浏览器/内置 Chromium 流量走本地代理 → Proxy 拦截与改包 → Target 里从 site map 选攻击面 → Repeater/Intruder 手工或自动打点 → Collaborator 收 OOB 回调验证盲注 → Dashboard 看 ZAP crawl + active audit 的按严重度结果 → 逐条读 advisory | 主路径由 README 五张截图（target/proxy/collaborator/intruder/dashboard）的说明文字拼合；ZAP 扫描结果与手工代理视图在同一 UI 内的状态同步机制未明示 |
+| 关键权衡 | Burp 式交互（用户迁移成本低）vs ZAP 式自动化（检测成熟）· 复用 ZAP 引擎（不重复造扫描规则）vs 自研规则（差异化但无覆盖）· AGPL（无许可门禁、强制开源）vs Apache/MIT（更易商用集成）· 桌面单进程（易用）vs 服务端架构（可团队共享）· Linux AppImage（分发简单）vs 仅源码（跨平台待补） | README 明示「nothing locked behind a licence」与「built to be improved by the people who use it rather than steered by a single vendor's roadmap」；<strong>代价是 AGPL 的传染性与仅 Linux 单平台</strong>，README 未讨论 |
+| 最小 PoC | 1. 下载 Linux AppImage（<strong>注意：当前 releases 为空，此步可能直接失败——这本身就是第一个待观察信号</strong>）→ 2. 装内置 CA 并让目标浏览器信任 → 3. 打开内置 Chromium 访问自建靶站，确认 HTTPS 明文可见 → 4. 跑一次 ZAP active scan，确认 Dashboard 按严重度出结果 → 5. 用 Collaborator 发一个 OOB 请求确认回调留档 → 6. 用 Intruder 跑一次 sniper 攻击看 timing 列 | PoC 由 README 五张功能截图 + 能力清单推导；<strong>第 1 步能否完成是本项目当前最关键的未验证项</strong> |</p>
+<h3 id="3pengchujinaerial-tv-android-tv-87">趋势 3：pengchujin/aerial-tv 严肃工程化国产 Android TV 桌面（趋势分 87）</h3>
+<p><code>pengchujin/aerial-tv</code> 2 天 524⭐ ⑂36 fork（fork-star 6.9%），中文项目，README 主文档 + <code>README.en.md</code>，官网 aerial.qust.me。它的独特之处不在 UI，而在<strong>「如何在一台只认自家桌面、待机还会杀第三方 App 的国产电视上活下来」这套五层接管模型</strong>——README 把每一层与其代价都写了出来：</p>
+<ol>
+<li><strong>正常申请</strong>：申请 HOME 角色、设为默认桌面。原生 Android TV 和 Google TV 到这步就够。</li>
+<li><strong>桌面守护</strong>：固件坚持自家桌面时（小米、TCL 都是），由<strong>无障碍服务</strong>接管——官方桌面一到前台就把 Aerial 拉回来。README 明示它「<strong>只看哪个窗口到了前台，不读屏幕内容</strong>」，这是对无障碍权限最敏感的隐私点做出的正面承诺。</li>
+<li><strong>被杀后复活</strong>：小米待机会强制停止所有第三方 App。Aerial 注册<strong>通知监听</strong>（明示不读任何通知），系统会在约 0.5 秒内重新绑定它，借此复活，并用 <code>WRITE_SECURE_SETTINGS</code> 重新打开守护。</li>
+<li><strong>开机自启</strong>：开机时系统绑定通知监听，Aerial 随之启动；TCL 的「自启动管理」默认拦截第三方 App，安装脚本用 <code>appops</code> 放行。</li>
+<li><strong>ADB 常开（可选）</strong>：<code>KEEP_ADB=1</code> 应对小米唤醒后自动关闭 ADB 调试。</li>
+</ol>
+<p>README 附了一张<strong>权限明示表</strong>，把每个高危权限的用途摊开：<code>WRITE_SECURE_SETTINGS</code>（重开守护 / 保持为系统屏保 / KEEP_ADB / 写入小米背光值）· 通知监听（被强停或开机后被系统拉起，不读取任何通知）· 悬浮窗（开机后从后台打开）· 修改系统设置（标准接口调亮度）· 定位（<strong>只用来读取 Wi-Fi 名称</strong>）· TCL <code>APP_AUTO_START</code> / <code>APP_ASSOC_START</code>。同时承诺<strong>不 root、不卸载、不停用任何系统应用</strong>，且还原只需再跑一条 curl 管道。</p>
+<p><strong>已验证矩阵是本日四个项目中最实的</strong>（README 表格直接列出）：小米 MiTV-MFTR0（Android 14 / HyperOS TV，日常使用中）· 小米 MiTV-MFFU0（安装 + 开机自启已验证）· Redmi X65 2026（用户验证 issues #3）· TCL MT5879 国行（Android 11，日常使用中）· 索尼 XRJ-77A80J 国行（Android 10，用户验证 issues #16）· 索尼 BRAVIA VH1 国行（Android 12，用户验证 issues #2）——每台机型都挂了一份 <code>docs/devices/*.md</code> 笔记。</p>
+<p><strong>已知限制也写得具体</strong>：需联网（航拍 1080p H.264 实时播放约 15–20 Mbps）· HDMI 设备名无系统权限只显示「已连接」· TCL 调音量会双弹自家音量条 · 停在别的 App 空闲时小米自己的屏保仍会出现 · 电视网络 ADB 无法从浏览器连，故不能「打开网页就装」。</p>
+<p><strong>架构师速览（aerial-tv）：</strong>
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 单个 Android TV launcher APK（<code>app.orchard.tv</code>，另有 <code>aerial-guard.apk</code> 不声明 HOME 的变体）+ 控制中心 + 屏保 + 手机壁纸面板（QR + 随机令牌）+ <code>tools/get.sh</code> / <code>tools/install.sh</code> + <code>docs/devices/</code> 机型笔记；数据面依赖 Apple 航拍服务器与必应每日精选 | 由 README 安装段 + 权限表 + 已验证矩阵推得；<strong>航拍与每日精选的实际数据通路（直连 Apple / 有无 CDN）未明示</strong>；app 包名 <code>app.orchard.tv</code> 来自 README 手动安装段 |
+| 主路径 | 电视开 ADB（逐机型步骤表：小米连按产品型号确认键 / TCL 按上下一左右 / 原生连按版本号 7 次）→ <code>curl … get.sh \| KEEP_ADB=1 TV=&lt;IP&gt; bash</code> → 装 APK + 授予权限 + <code>appops</code> 放行 + 接管桌面与屏保 → 开机自启 → 桌面守护对抗官方桌面 | 全路径由 README 三段（安装 / 一行命令 / 手动安装 5 条 adb 命令）+ 五层接管模型直读；<strong>TCL 分支改走电视自带「多屏互动」推送、无此功能时退回当贝市场</strong>——这条 fallback 的可靠性待核验 |
+| 关键权衡 | 无障碍服务守护（换来桌面不被抢，代价是长期持有高敏感权限）vs 放弃守护（小米/TCL 会被切回）· 通知监听复活（系统 0.5 秒重绑）vs 自启动白名单（品牌差异大）· 拿 <code>WRITE_SECURE_SETTINGS</code>（能重开守护）vs 拒绝（被强停后回不来）· 航拍直连 Apple 1080p H.264 15–20Mbps（画质好）vs 本地预置素材（不依赖外网）· <code>-s guard</code> 变体（应对固件拒绝桌面类 App）vs 标准变体（功能全）· 手机壁纸面板（随机令牌 + 仅打开时开放）vs 全开放面板 | README 明示各层与其理由；<strong>无障碍/通知监听/<code>WRITE_SECURE_SETTINGS</code> 三项叠加的隐私暴露面，README 只做了「不读屏幕/不读通知」的声明，未做第三方审计</strong>——这是最该被外部验证的一点 |
+| 最小 PoC | 1. 手上有任意 Android TV 5.0+ 电视 → 2. 按机型表开 ADB → 3. 跑一行 curl 安装 → 4. <code>adb shell dumpsys window \| grep mCurrentFocus</code> 确认前台是 <code>app.orchard.tv</code>（README 在 Agent prompt 里也是这么建议的）→ 5. <code>adb reboot</code> 验证开机直达 → 6. 停在别的 App 空闲 10 分钟，验证小米屏保是否被抢先 → 7. 跑还原命令确认能恢复原桌面 | PoC 第 3–7 步逐条来自 README；<strong>若没有对应品牌真机，只能用原生 Android TV / Google TV 走第 1 层，2–5 层无法验证</strong>——这直接决定该项目的可信度能被检验到什么程度 |</p>
+<h3 id="4ely-open-sourceelyoffice-84">趋势 4：ELY-Open-Source/ElyOffice 严肃工程化本地办公套件（趋势分 84）</h3>
+<p><code>ELY-Open-Source/ElyOffice</code> 2 天 566⭐ ⑂34 fork（fork-star 6.0%），Rust + GPUI，MIT，55225 KB（54 MB——本批最大），组织账号 <code>ELY-Open-Source</code>。它的定位一句话说清：<strong>offline-first desktop apps，文件留在你自己的文件夹里，没有账号，没有云服务</strong>。</p>
+<p>架构上最有信息量的一点是：它<strong>不复用上游发行版，而是自己把上游构建一遍</strong>——<code>scripts/fetch-references.sh</code> 在 <strong>pinned commit</strong> 上拉上游源码，<code>scripts/build-libreoffice.sh</code> 打补丁构建 LibreOffice 26.2.6.3（README 诚实标注约一小时），<code>scripts/build-mupdf.sh</code> 构建 MuPDF 1.28.5，再加 Git + Git LFS + tessdata。打包时 <code>packaging/macos/release.sh</code> 除了产出每个 app 的 <code>.app</code> 和 <code>.dmg</code>，还<strong>同时产出源码归档和打过补丁的上游源码归档（MuPDF、Git）</strong>。这在许可证合规上是一个明确动作，不只是打包。</p>
+<p>六个应用各有引擎分工：ElyDoc（DOCX/ODT）· ElyTable（XLSX/ODS/CSV）· ElyShow（PPTX/ODP）三者共用 LibreOfficeKit；ElyPDF 用 MuPDF + Tesseract 做 PDF 阅读、编辑、OCR、签名；ElyTree 是 Git 客户端；ElyMark 用 markdown-rs + RaTeX + mermaid-rs-renderer。README 明确把 ElyMail 与 ElyAgent 标为「Second release」——<strong>即尚未实现</strong>，这是一个诚实的边界声明。</p>
+<p><strong>同样需要诚实指出的反向信号</strong>：README 自己写明 <strong>「Linux and Windows recipes are in <code>packaging/linux</code> and <code>packaging/windows</code>; they have not been run on those systems」</strong>——跨平台承诺目前只有配方、没有验证。<code>subscribers_count = 2</code>，说明几乎没有深度关注者。55225 KB 的仓库体积主要来自上游源码获取脚本与文档，实际构建耗时（LibreOffice 约一小时只是单步）对新用户是真实的门槛。</p>
+<p><strong>架构师速览（ElyOffice）：</strong>
+| 决策问题 | 研究判断 | 证据边界 |
+|---|---|---|
+| 系统边界 | 一个 monorepo（Rust workspace）内六个独立桌面应用：ely-doc / ely-table / ely-show 走 LibreOfficeKit 共享内核 <code>ely-lok</code>，ely-pdf-engine 走 MuPDF + Tesseract，ely-tree 走 Git，ely-mark 走 markdown-rs + RaTeX + mermaid-renderer；上游以 pinned commit 方式引入并本地重建；分发产出 .app/.dmg + 自有源码归档 + 上游源码归档 | 全部由 README「Build」段的脚本序列 + 应用表格的 Engine 列 + <code>packaging/macos/release.sh</code> 描述推得；<strong>六个 app 是六个独立进程还是单进程多窗口，README 未明示</strong>；GPUI 具体承担哪些窗口/控件未明示 |
+| 主路径 | 开发者 clone → <code>scripts/doctor.sh</code> 查工具链 → <code>fetch-references.sh</code> 拉 pinned 上游 → 构建 LibreOffice（约一小时）与 MuPDF → 取 LFS 与 tessdata → <code>cargo build -p ely-lok --bins -p ely-pdf-engine --bins</code> → <code>cargo run -p ely-doc</code> 等启动单个应用 → 打开/保存本地文件夹里的文件（无账号、无云） | 逐条来自 README「Build (macOS)」代码块与描述；<strong>用户侧的安装路径（是否有 brew cask / DMG 直装）README 未给</strong>，本节描述的是开发者构建路径 |
+| 关键权衡 | 自建上游（在 pinned commit 上打补丁、换取可控与合规）vs 直接用上游发行版（省一小时构建、但拿不到补丁）· MIT 覆盖自有代码 vs 第三方组件各自许可（必须看 <code>docs/licenses.md</code>）· 离线优先无账号 vs 云协作（易分享、免登录）· GPUI（Rust 原生、复用 Rust 生态）vs Tauri/Electron（Web 技术栈、体积/内存代价）· macOS 先验证 vs 三平台齐发（Linux/Windows 未跑）· 提供版本化兼容清单 <code>docs/compatibility.md</code> vs 宣称全兼容 | README 明示「patched LibreOffice 26.2.6.3 / patched MuPDF 1.28.5」「third-party components keep their own licences」「they have not been run on those systems」「ElyMail, ElyAgent — Second release」；未明示 GPUI 相对 Tauri 的实际体积/内存收益数字 |
+| 最小 PoC | 1. 在一台 macOS 上备齐工具链 → 2. 跑 <code>scripts/doctor.sh</code> → 3. 跑 <code>fetch-references.sh</code> 并<strong>核对拉到的上游 commit 是否与 README 所写版本一致</strong> → 4. 构建 LibreOffice（预留一小时以上）→ 5. 构建 MuPDF 与 LFS/tessdata → 6. <code>cargo test --workspace</code> → 7. 只构建并运行 <code>ely-mark</code>（最轻、无 LibreOfficeKit 依赖）确认链路通 → 8. 再试 <code>ely-doc</code> 打开一个真实 .docx 并另存验证 LibreOfficeKit 通路 | PoC 顺序按依赖倒排（markdown-rs 路径最轻 → LibreOfficeKit 路径最重）；<strong>建议先跑 ely-mark 而非 ely-doc</strong>，因为 README 已明示 ElyMail/ElyAgent 未实现、Linux/Windows 未验证，多变量一次全测会难以定位问题 |</p>
+<h2 id="_2">最值得关注的方向</h2>
+<p>今天四个项目<strong>不在同一条赛道上</strong>，但共享一个更值得记的模式：<strong>把一件已被大厂产品垄断或被忽视的日常能力，用可核验的方式重新做一遍，并把边界摊开写出来</strong>。</p>
+<ul>
+<li><strong>fx0</strong> 把 durable agent 从抽象名词变成一行 <code>createFxAgent()</code>，而且是<strong>由做这套基础设施的公司自己公开参考实现</strong>——这比第三方教程更可信。真正稀缺的不是 agent loop，而是那两条 README 亲口写下的工程约束：<strong>每轮 funding 必须在 Redis 里封存</strong>（因为队列投递没有浏览器 cookie）和<strong>每轮 64 步上限</strong>（因为 agent 会死循环烧钱）。这两条几乎必然出现在任何自建 agent 生产系统里，但很少有项目把它们写进 README 首页。</li>
+<li><strong>opentrap</strong> 的价值不在技术（它明说检测靠 ZAP），而在<strong>交互层</strong>：它选的是「让 proxy-first 的用户不用重新学 ZAP」。这是把成熟引擎重新包装成主流工作流的标准路径，风险在 fork-star 1.1% 与 releases 为空。</li>
+<li><strong>aerial-tv</strong> 是今日唯一一个<strong>在真实异构硬件上被六款真机验证过</strong>的项目，它的五层接管模型（HOME → 无障碍守护 → 通知监听复活 → 开机自启 → ADB 常开）本质上是一份「如何在敌意固件上求生」的操作手册，可迁移到任何国产电视盒子、机顶盒、车机。</li>
+<li><strong>ElyOffice</strong> 最有价值的动作是<strong>在 pinned commit 上重建上游并同时发布上游源码归档</strong>——这是许可证合规的硬动作，比「我们支持 ODF 格式」这类口号具体得多。</li>
+</ul>
+<p><strong>跨项目的共同观察</strong>：四个项目中有三个（opentrap、aerial-tv、ElyOffice）<strong>都在 README 里明确写了自己的失败边界</strong>——「Linux/Windows 未跑过」「TCL 拒绝 ADB 只能走多屏互动」「需要联网、HDMI 名读不到」。这种「先说边界」的表达在 2 天内的新项目里并不常见，<strong>但它与热度无关，是独立于 star 数的质量信号</strong>。反过来，热度信号本身今天给出的提示是相反的：<strong>fork-star 普遍偏低（1.1%–6.9%）</strong>，说明这批热度更多来自曝光而非动手采用，需要 7 天数据再判断。</p>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="deep-dive-1vercel-labsfx0-createfxagent-agent-loop-tool-calls-retries-durable-sessions-turn-funding-64">Deep Dive 1：vercel-labs/fx0（一个 <code>createFxAgent()</code> 即获得 agent loop + 流式 + tool calls + retries + durable sessions + 每 turn funding 封存 + 64 步上限）</h3>
+<p><strong>项目定位。</strong> vercel-labs/fx0 是 Vercel 官方 labs 账号在 2026-10-19 发布的「<strong>开源轻量 design agent</strong>」，2 天 296⭐ ⑂55，TypeScript，Apache-2.0，1066 KB，<code>subscribers_count = 0</code>，<code>open_issues_count = 1</code>。它的双重身份 README 讲得很清楚：<strong>fx0 是应用，libfx 是跑在里面的 agent</strong>，而且它同时是 libfx 的一个可用工作示例。在线可试 fx0.vercel.dev。</p>
+<p><strong>为什么 fork-star 18.6% 值得单独说。</strong> 本批四项目 fork-star 分别为 18.6% / 1.1% / 6.9% / 6.0%。fx0 是唯一显著高于平均的——对「设计 agent 网页应用」这种通常只是「用一用就走」的东西，18.6% 的 fork 比例指向的是<strong>开发者在读它的架构而不是在收藏它</strong>，与 README 里那张 <code>docs/diagrams/pieces-*.svg</code> 分层图和三段 TS 代码块的详尽程度互相印证。</p>
+<p><strong>技术亮点（全部可核验于 README）：</strong>
+- <strong>一行调用换四件套</strong>：<code>One createFxAgent() call gives it the agent loop, streaming, tool calls, retries and durable sessions</code>
+- <strong>五层职责边界写死在 README</strong>：fx0（UI/鉴权/工具/历史）· libfx（每轮内全部工作）· Workflow World（逐步落盘）· Vercel Queues（崩溃唤醒）· AI Gateway（每次模型调用的计费归属）
+- <strong>先存后 ack</strong>：<code>POST /api/prompt</code> 在<strong>一个 Redis 脚本</strong>里加消息，再交给 libfx；libfx 先存再确认——保证「显示为已发送的消息不会丢失」，且重试请求落到同一轮
+- <strong>funding 封存</strong>：队列投递无浏览器 cookie，prompt 路由把 funding 封进 Redis；每条消息记录它启动的那一轮的 funding（被准入的赞助 / 付费发送者的 OAuth grant + team）
+- <strong>64 model steps 上限（含 subagent）</strong>：README 直言「keeps an agent stuck in a loop from running up a bill」
+- <strong>800 秒 + 队列兜底</strong>：<code>app/api/libfx</code> 的 <code>maxDuration = 800</code>，<code>vercel.json</code> 用 <code>queue/v2beta</code> 订阅 libfx 的队列主题，<code>retryAfterSeconds: 5</code>
+- <strong>steer 语义</strong>：空闲时发消息 = 新一轮；运行中发消息 = 插话（经 Queues 送达正在跑的那轮），试用轮刻意让每条输入各成一轮以隔离免费与付费资金
+- <strong>设计版本化</strong>：每轮保留自己的设计版本，可重开、复制、下载 HTML
+- <strong>成本闸门</strong>：不登录可试每 IP 五次免费 Opus 5.5 Fast，BotID 防滥用，服务器专用 Gateway key 出资；十个 <code>design.md</code> 风格起步（源自 VoltAgent 的 awesome-design-md，可自上传）</p>
+<p><strong>风险。</strong>
+- <strong>README 大量用 <code>elided</code>（截断）呈现</strong>：<code>apiKey: 'sessi...ed'</code> 这类占位符意味着<strong>关键接入代码在公开 README 里并不完整</strong>，读者能理解架构但不能直接复制
+- <strong>强绑定 Vercel 生态</strong>：World、Queues、AI Gateway、BotID 四件套全是 Vercel 服务；README 说「on Vercel 用 World + Queues，别处用本地文件」——<strong>非 Vercel 环境下的 durable 语义是降级的</strong>，这对想借鉴架构的团队是重要边界
+- <strong>依赖 Opus 5.5 Fast</strong>：默认模型绑在特定模型上，模型涨价或下架会直接抬高/打断成本
+- <strong>2 天 0 subscribers</strong>：没有深度关注者，早期信号
+- <strong>安全面</strong>：agent 能搜索网页并抓取页面做参考——这是典型的 prompt injection 入口，README 未讨论</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，且优先级最高。</strong> 理由与热度无关：<strong>它是把 durable agent 的成本与计费归属这两个最容易被忽略的工程约束，写在首页 README 里的公开参考实现</strong>。哪怕 fx0 本身失败，这两条约束也会留在使用者的系统里。</p>
+<h3 id="deep-dive-2opentrapopentrapburp-owasp-zap-chromium-tls-agpl-30">Deep Dive 2：opentrap/opentrap（Burp 式工作流 + OWASP ZAP 引擎 + 内置 Chromium 开箱 TLS 拦截 + AGPL-3.0）</h3>
+<p><strong>项目定位。</strong> opentrap/opentrap 是 <code>opentrap</code> 组织在 2026-10-19 发布的「<strong>Burp Suite 的免费开源替代</strong>」，2 天 177⭐ ⑂2，Java，AGPL-3.0，19229 KB，19 个 topics，<code>open_issues_count = 0</code>，<code>subscribers_count = 1</code>。徽章自标 <code>status: active development</code>、<code>contributions welcome</code>、Java 17+、Linux。</p>
+<p><strong>技术亮点：</strong>
+- <strong>引擎复用而非重造</strong>：检测能力明确依赖内置 OWASP ZAP——README 的定位句是「on top of the trusted OWASP ZAP detection engine」
+- <strong>内置 Chromium 开箱 TLS 拦截</strong>：「One click opens Chromium already routed through the proxy and trusting its certificate authority, so TLS interception works with nothing to configure」——这消除了 proxy-first 用户最大的一段配置摩擦
+- <strong>五个工作面完整</strong>：Proxy（拦截 + 内置浏览器）· Target（site map 树 + 请求列表 + 每条发现附 advisory 含请求与响应）· Collaborator（OOB DNS/HTTP 全量留档）· Intruder（四种攻击类型 + payload 集与处理，实时表含 status/length/timing）· Dashboard（crawl 完成 + active audit 运行 + 按严重度实时排序）
+- <strong>AGPL-3.0 无许可门禁</strong>：README 明说「nothing locked behind a licence」，且主张「built to be improved by the people who use it rather than steered by a single vendor's roadmap」
+- <strong>19 个 topics 是明确的 SEO/发现位设计</strong>：含 <code>burp-alternative</code>、<code>burp-suite</code>、<code>owasp-zap</code>、<code>burp</code> 三个关键词，直接打「Burp 替代品」搜索意图</p>
+<p><strong>风险。</strong>
+- <strong>releases 为空</strong>：GitHub API 返回空数组，README 的 AppImage 下载链接指向 <code>releases/latest</code>——<strong>当前大概率下不到</strong>。这是最直接的可采用性阻塞
+- <strong>fork-star 1.1%（本批最低）</strong>：177⭐ 只有 2 fork，社区尚未进入动手阶段，与「contributions welcome」的自我定位存在张力
+- <strong>仅 Linux 声明</strong>：AppImage 是唯一明确分发物，macOS/Windows 未提
+- <strong>AGPL-3.0 的商用摩擦</strong>：企业安全工具常需嵌入既有平台，AGPL 的传染性是现实采用障碍——README 未讨论
+- <strong>0 open issues 的解读</strong>：2 天新项目更可能是「还没人提」，不能读作质量背书
+- <strong>ZAP 集成的耦合度未知</strong>：是嵌入 JVM 还是外部进程，决定了升级 ZAP 的成本，README 未说</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，但定位要放在「交互层重构」而非「检测能力突破」</strong>——检测来自 ZAP，价值在于把 proxy-first 用户不需要重新学一遍这一点做到位。<strong>观察重点：releases 何时出现、macOS/Windows 是否跟进、fork 是否从 2 涨起来。</strong></p>
+<h3 id="deep-dive-3pengchujinaerial-tv-curl">Deep Dive 3：pengchujin/aerial-tv（国产电视五层接管 + 六款真机验证矩阵 + 权限明示表 + 一条 curl 还原）</h3>
+<p><strong>项目定位。</strong> pengchujin/aerial-tv 是 pengchujin 个人在 2026-10-20 发布的「<strong>给国产电视的一块干净桌面</strong>」，2 天 524⭐ ⑂36（fork-star 6.9%），Kotlin，MIT，3132 KB，Android TV 5.0+，中文主 README + README.en.md，官网 aerial.qust.me，<code>open_issues_count = 39</code>（本批最高，说明有真实用户在提交问题），<code>subscribers_count = 0</code>。</p>
+<p><strong>技术亮点：</strong>
+- <strong>五层接管模型</strong>（README 逐层解释，见趋势 3）
+- <strong>无障碍守护的隐私承诺</strong>：桌面守护「只看哪个窗口到了前台，<strong>不读屏幕内容</strong>」
+- <strong>通知监听只借绑定不读内容</strong>：明示「不读取任何通知」，借此获得系统约 0.5 秒内的复活重绑
+- <strong>权限明示表</strong>：六类高危权限逐项说明用途，定位权限「只用来读取 Wi-Fi 名称」
+- <strong>逐机型安装步骤表</strong>：小米（连按产品型号确认键）· TCL/雷鸟（按上下一左右，出现「更多」）· 原生/海信（连按版本号 7 次）
+- <strong>两套安装路径</strong>：一行 curl（<code>KEEP_ADB=1 TV=&lt;IP&gt; bash</code>）+ 手动 5 条 adb 命令；Agent 安装 prompt 明确要求「不要卸载或停用任何系统应用，失败时把命令输出原样给我看」
+- <strong>固件对抗分支</strong>：<code>aerial-guard.apk</code>（不声明 HOME）应对固件拒绝安装桌面类 App；TCL 拒绝一切 ADB 安装时改走电视自带「多屏互动」推送，无此功能时退回当贝市场
+- <strong>六款真机验证 + 逐机型笔记</strong>：小米 MiTV-MFTR0 / MiTV-MFFU0 / Redmi X65 2026 · TCL MT5879 国行 Android 11 · 索尼 XRJ-77A80J 国行 Android 10 · 索尼 BRAVIA VH1 国行 Android 12
+- <strong>屏保三形态</strong>：114 段 Apple TV 航拍实时播放 + 每日精选照片 + 每分钟换位防烧屏时钟；在标准 Android 屏保机型上即系统屏保，在小米上抢先于其广告屏保启动</p>
+<p><strong>风险。</strong>
+- <strong>权限组合敏感</strong>：无障碍服务 + 通知监听 + <code>WRITE_SECURE_SETTINGS</code> + 悬浮窗四项叠加。README 做了「不读屏幕/不读通知」的自我声明，但<strong>未见第三方审计</strong>——这是最该被外部验证的一点
+- <strong>航拍依赖 Apple 服务器</strong>：1080p H.264 约 15–20 Mbps 实时播放，Apple 若变更策略或地区封锁则功能失效；README 已列为已知限制
+- <strong>部分路径无法验证</strong>：TCL 的当贝市场 fallback、小米屏保在别的 App 空闲时仍会出现的现象，说明「接管」并非 100%
+- <strong>39 open issues + 0 subscribers</strong>：有真实用户在用，但没有人长期订阅——典型的「项目有用、社区未形成」
+- <strong>小米/TCL 固件策略变化即失效</strong>：整套模型建立在「系统会重绑通知监听」「系统会绑定通知监听实现开机自启」这些 OEM 行为上，一次固件更新可能推翻某层</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，且它是今日四个项目中最可验证的一个</strong>——不是因为它 star 多，而是因为它把验证矩阵、权限用途、已知限制三者都公开写了出来，别人可以逐条复核。<strong>观察重点：docs/devices/ 机型笔记是否持续增加（说明社区在补验证）、issues #3/#2/#16 这类用户验证是否继续出现、国产固件大版本更新后五层模型是否需要改。</strong></p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机会</h3>
+<ol>
+<li><strong>「先说边界」正在成为可观察的质量信号，且与热度解耦。</strong> 今日三个项目（ElyOffice 的「Linux/Windows 未跑过」、aerial-tv 的五条已知限制、opentrap 的「nothing locked behind a licence」）都在 README 首页写明失效条件。这类表达值得在评估任何新项目时作为<strong>独立于 star 数的检查项</strong>。</li>
+<li><strong>agent 基础设施开始公开「失败模式」而不只是「成功路径」。</strong> fx0 把 funding 归属与 64 步上限写在 README 首页——这类内容目前稀缺。任何打算自建 agent 生产系统的人都应把它当作设计清单读一遍。</li>
+<li><strong>「敌意固件求生手册」是可迁移的。</strong> aerial-tv 的五层接管模型不限于电视：机顶盒、车机、智能屏、定制 ROM 手机面对的是同一类问题（厂商只认自家桌面 / 待机杀第三方 / 拦自启动）。</li>
+<li><strong>交互层重构仍有空间。</strong> opentrap 证明「成熟引擎 + 熟悉界面」的组合在安全工具里仍有位置，且这层重构成本远低于重造引擎。</li>
+<li><strong>中文原创项目在 GitHub 上能拿到全球 star。</strong> aerial-tv 是纯中文 README 起步，2 天 524⭐，且已有多台国产机型（小米 / TCL / 索尼国行）的验证笔记。</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>本批热度信号整体偏弱，且方向明确。</strong> 4 个项目 fork-star 中位在 6.5%，opentrap 仅 1.1%，ElyOffice 仅 6.0%，且三个项目 <code>subscribers_count</code> ≤ 2。<strong>这批 star 更接近「曝光量」而非「采用量」</strong>——这是可核验的元事实，但它意味着：<strong>今天不该基于这批热度做技术选型决策。</strong></li>
+<li><strong>durable agent 基础设施对单一云厂商的耦合。</strong> fx0 的 World + Queues + AI Gateway + BotID 全在 Vercel，非 Vercel 环境是降级路径。若 Vercel 调整定价或模型供应，参考实现的经济模型会变。</li>
+<li><strong>AGPL 与桌面单平台的组合限制采用面。</strong> opentrap 的 AGPL-3.0 在企业安全工具链里是现实摩擦，加上仅 Linux AppImage，实际可部署面比 star 数暗示的窄。</li>
+<li><strong>高危权限组合缺少外部审计。</strong> aerial-tv 的无障碍 + 通知监听 + <code>WRITE_SECURE_SETTINGS</code> 三件套虽有「不读」承诺，但用户无法独立验证承诺是否被遵守；这类项目一旦出现滥用，影响面是全设备。</li>
+<li><strong>上游自建带来的维护债。</strong> ElyOffice 在 pinned commit 上自行构建 LibreOffice 与 MuPDF，代价是每次上游安全更新都要人工跟进（README 未说明更新策略），且新用户需承受约一小时的 LibreOffice 构建。</li>
+<li><strong>「2 天内爆发」的重复造轮子风险。</strong> Android TV 桌面赛道今日已有第 5 个项目（tv-vibehack / free-my-tv / tv-detox / tv-home / dumbtv / aerial-tv），其中 free-my-tv 今日已到 1678⭐ ⑂172。赛道已验证，但<strong>同质化严重</strong>，差异化正在从「能不能装」转向「在什么机型上能活下来」——aerial-tv 的六机型矩阵正是这个转向的第一个样本。</li>
+</ol>
+<h2 id="_6">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vercel-labs/fx0</td>
+<td>Apache-2.0 + TypeScript + 1066 KB + 2 天 296⭐ ⑂55（fork-star 18.6%）+ vercel-labs 官方 + 一个 <code>createFxAgent()</code> 获得 agent loop/streaming/tool calls/retries/durable sessions + <code>createFxEngine()</code> 跑 subagent + 五层职责边界（fx0/libfx/World/Queues/AI Gateway）+ Redis 脚本先存消息 + 每 turn funding 封存 + 64 model steps 上限 + <code>maxDuration = 800</code> + queue/v2beta 主题 + 每 IP 五次免费 Opus 5.5 Fast + BotID + 十个 design.md 风格 + 设计版本化 + steer 语义 + <code>subscribers = 0</code> <code>oi = 1</code></td>
+<td>推断：本批唯一 fork 显著高于平均的项目，指向「开发者读架构」而非「收藏」；推断：<strong>funding 封存 + 64 步上限是任何自建 agent 生产系统的必备约束</strong></td>
+<td>待核验：非 Vercel 环境 libfx durable 的降级程度 + libfx 版本与许可 + README 中被 <code>elided</code> 的接入代码全貌 + World/Queues 实际成本 + 网页抓取带来的 prompt injection 防护 + 7 天后 fork 是否继续增长</td>
+</tr>
+<tr>
+<td>opentrap/opentrap</td>
+<td>AGPL-3.0 + Java 17+ + Linux AppImage + 19229 KB + 2 天 177⭐ ⑂2（fork-star 1.1%）+ 19 topics + 检测依赖内置 OWASP ZAP + 内置 Chromium 一键已路由代理并信任其 CA（TLS 拦截零配置）+ Proxy/Target/Collaborator/Intruder/Dashboard 五面 + Intruder 四种攻击类型 + Collaborator OOB DNS/HTTP 全量留档 + 徽章 <code>active development</code> / <code>contributions welcome</code> + <strong><code>releases</code> API 返回空数组</strong> + <code>oi = 0</code> <code>subs = 1</code></td>
+<td>推断：价值在交互层重构而非检测能力；推断：19 topics 是针对「Burp 替代品」搜索意图的明确发现位设计</td>
+<td>待核验：<strong>AppImage 能否实际下载（releases 为空）</strong> + ZAP 是嵌入 JVM 还是外部进程 + macOS/Windows 计划 + AGPL 在企业环境的实际接受度 + 7 天后 fork 是否从 2 涨起 + open issues 是否随使用增长</td>
+</tr>
+<tr>
+<td>pengchujin/aerial-tv</td>
+<td>MIT + Kotlin + 3132 KB + Android TV 5.0+ + 2 天 524⭐ ⑂36（fork-star 6.9%）+ 官网 aerial.qust.me + 中文 README + README.en.md + 五层接管模型（HOME 角色 → 无障碍桌面守护「只看前台窗口不读屏幕」→ 通知监听复活「系统约 0.5 秒重绑、不读通知」→ 开机自启（TCL 用 appops 放行）→ <code>KEEP_ADB=1</code>）+ 权限明示表（<code>WRITE_SECURE_SETTINGS</code> / 通知监听 / 悬浮窗 / 修改系统设置 / 定位「只读 Wi-Fi 名」 / TCL <code>APP_AUTO_START</code>+<code>APP_ASSOC_START</code>）+ 不 root 不卸载不停用 + 一行 curl 安装 + <code>bash -s restore</code> 还原 + 一段 Agent 安装 prompt + 手动 5 条 adb 命令 + <code>aerial-guard.apk</code> + TCL 走「多屏互动」/ 当贝市场 fallback + 六款真机验证 + 逐机型 <code>docs/devices/</code> 笔记 + 114 段 Apple TV 航拍 1080p H.264 约 15–20 Mbps + 手机扫码壁纸（随机令牌）+ 五条已知限制 + <code>oi = 39</code> <code>subs = 0</code></td>
+<td>推断：是今日<strong>最可验证</strong>的项目（验证矩阵 + 权限用途 + 已知限制三者公开可复核）；推断：五层模型可迁移到任何敌意固件场景</td>
+<td>待核验：无障碍/通知监听/<code>WRITE_SECURE_SETTINGS</code> 三件套是否经第三方审计 + 当贝市场 fallback 可靠性 + 小米屏保在别 App 空闲时出现的具体条件 + 航拍直连 Apple 的地区可用性 + docs/devices/ 机型笔记增长速度 + 小米/TCL 固件大版本更新后五层模型是否需改</td>
+</tr>
+<tr>
+<td>ELY-Open-Source/ElyOffice</td>
+<td>MIT + Rust + GPUI + 55225 KB + 2 天 566⭐ ⑂34（fork-star 6.0%）+ offline-first / 无账号无云 + 六应用（ElyDoc/ElyTable/ElyShow 用 LibreOfficeKit；ElyPDF 用 MuPDF + Tesseract 含 OCR 与签名；ElyTree 用 Git；ElyMark 用 markdown-rs + RaTeX + mermaid-renderer）+ <strong>ElyMail / ElyAgent 标为 Second release（未实现）</strong> + <code>fetch-references.sh</code> 在 pinned commit 拉上游 + 打补丁构建 LibreOffice 26.2.6.3（约一小时）与 MuPDF 1.28.5 + Git + LFS + tessdata + <code>cargo build -p ely-lok --bins -p ely-pdf-engine --bins</code> + macOS release 脚本同时产出 .app/.dmg + 自有源码归档 + <strong>打过补丁的上游源码归档（MuPDF、Git）</strong> + <code>cargo test --workspace</code> + tests/scripts 窗口脚本（macOS + Accessibility）+ tests/perf/bench.py + docs/{help,compatibility,accessibility,perf,licenses}.md + <strong>Linux/Windows 配方存在但「have not been run on those systems」</strong> + <code>subs = 2</code> <code>oi = 12</code></td>
+<td>推断：发布上游源码归档是许可证合规的硬动作而非口号；推断：用户侧安装路径可能才是真实采用门槛（README 只给开发者构建路径）</td>
+<td>待核验：用户侧是否有 brew cask / DMG 直装 + GPUI 相对 Tauri/Electron 的实际体积与内存收益 + 上游安全更新的跟进策略 + Linux/Windows 配方是否被验证 + ElyMail/ElyAgent 的时间表 + <code>oi = 12</code> 中 2 天内的 12 个 issue 主要在问什么</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 本日全部元数据取自 2026-10-21 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API，README 原文经 <code>Accept: application/vnd.github.raw</code> 抓取。<strong>「2 天」按 <code>created_at</code>（UTC）到 2026-10-21 计算，总星数除以经过天数为下限粗估；本日报未做逐日 star 增量统计（需遍历 stargazer 分页），因此任何「增速」表述都不能读作当日新增。</strong> 四个项目全部处于创建 2 天内的早期区间，<code>subscribers_count</code> 分别为 0 / 1 / 0 / 2，说明目前几乎没有深度关注者；<strong>热度的可持续性在本日报写作时无法判断。</strong> 本批 Search API 结果中已过滤一批可核验的 spam 模式（<code>.github</code> 作为仓库名 + <code>-tool(s)/.github</code> 命名 + 「🔥 …-cheats-mod-menu-hacks」统一描述 + fork/star ≥ 0.5 的组合，含 <code>bitwarden-app312/.gitp3d</code>、<code>arc-tool/.github</code>、<code>cod-tool/.github</code>、<code>fort-tool/.github</code>、<code>cs-tool-s/.github</code>、<code>val-tools-c/.github</code>、<code>cs2-tools-new/.github</code>、<code>fort-skins/.github</code>、<code>val-tools/.github</code>、<code>lock-tool/.github</code>、<code>dogs-tool/.github</code>、<code>rbl-tools/.github</code>、<code>rbl-fps-tool/.github</code>、<code>apex-pro12/.github</code>）。另有 5 个候选因缺少可核验技术证据未纳入 key_projects（<code>VictorTaelin/uniichat</code> 描述为空、<code>stackedlol/ascii-sharks</code> 26 KB 无实质信息、<code>timhengc/mai-shen-zai-ci</code> 为运营活动仓库、<code>soumatheusgomes/editonny</code> 485 MB 但本窗口未取 README、<code>typecraft-dev/oma-cast</code> 无 license）。<strong>延续跟踪</strong>：<code>simbasjungles/free-my-tv</code> 今日 1678⭐ ⑂172（昨日 198⭐ ⑂23），作为 Android TV 桌面赛道连续第 4 天爆发被记录为赛道已验证的证据，<strong>今日不重复建档、不计入趋势排名</strong>。<strong>今日最重要的判断不是「哪个项目最热」，而是：三个项目在 README 首页主动写明自己的失效边界（ElyOffice 跨平台未验证 / aerial-tv 五条已知限制 / opentrap 无许可门禁与仅 Linux），这种「先说边界」是与 star 数完全解耦的质量信号；而 fork-star 普遍偏低（1.1%–6.9%，中位约 6.5%）说明这批热度目前更接近曝光而非采用——7 天后 fork 是否跟上 star，是区分两者的最直接指标。</strong></p>
+</blockquote>
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>🎨 <a href="projects/fx0.html">vercel-labs/fx0</a> — 一个 <code>createFxAgent()</code> 即获得 agent loop + streaming + tool calls + retries + durable sessions；五层边界（fx0 拥有 UI 与历史 / libfx 拥有每一轮 / Workflow World 逐步落盘 / Vercel Queues 崩溃唤醒续跑 / AI Gateway 收每次模型调用）；Redis 脚本先存消息；每 turn funding 封存防队列投递丢计费归属；64 model steps 上限防烧钱；<code>maxDuration = 800</code>；内置 Chromium 同款免配置 TLS 思路的反例对照（Apache-2.0 · 1066 KB · vercel-labs 官方 · 2 天 296⭐ ⑂55 · Score 90）</li>
+<li>🛡️ <a href="projects/opentrap.html">opentrap/opentrap</a> — Burp Suite 免费开源替代：Burp 式代理工作流 + 成熟 OWASP ZAP 检测引擎 + 内置 Chromium 一键打开即已路由代理并信任其 CA（TLS 拦截零配置）+ Proxy/Target/Collaborator/Intruder/Dashboard 五面完整 + Intruder 四种攻击类型 + OOB 回调全量留档 + AGPL-3.0 无许可门禁（AGPL-3.0 · 19229 KB · Java 17+ · Linux AppImage · 2 天 177⭐ ⑂2 · Score 88）</li>
+<li>📺 <a href="projects/aerial-tv.html">pengchujin/aerial-tv</a> — 国产 Android TV 桌面：参照 tvOS 无广告无推荐流 + 五层接管（HOME 角色 → 无障碍桌面守护「只看前台不读屏幕」→ 通知监听被杀复活「系统 0.5 秒重绑」→ 开机自启 → ADB 常开）+ 权限明示表 + 六款真机验证矩阵 + 逐机型笔记 + 不 root 不卸载 + 一条 curl 还原 + 一段 Agent 安装 prompt（MIT · 3132 KB · Kotlin · Android TV 5.0+ · 2 天 524⭐ ⑂36 · Score 87）</li>
+<li>📄 <a href="projects/elyoffice.html">ELY-Open-Source/ElyOffice</a> — 本地办公套件：Rust + GPUI + offline-first 无账号无云 + 六应用（LibreOfficeKit ×3 / MuPDF+Tesseract / Git / markdown-rs+RaTeX+mermaid）+ 在 pinned commit 上自建上游（LibreOffice 26.2.6.3 约一小时 / MuPDF 1.28.5 / Git+LFS / tessdata）+ 同时发布打过补丁的上游源码归档 + ElyMail/ElyAgent 标为未实现 + macOS 已验证而 Linux/Windows 未在真机跑过（MIT · 55225 KB · Rust · 2 天 566⭐ ⑂34 · Score 84）</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
