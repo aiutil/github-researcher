@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ikow/php2shell-poc | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/ikow/php2shell-poc" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="ikowphp2shell-poc">ikow/php2shell-poc</h1>
+<h2 id="_1">一句话定位</h2>
+<p>CVE-2026-109618 / CVE-2026-109619 的 PHP 预认证 RCE 研究与工具包——把两条 CVE 拆成五条标注了前置条件与 SAPI 的攻击链，配一键 Docker 靶场、四类检测规则与逐链验证脚本。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026-10-21 PHP 发布两条 <code>critical</code> 级 RCE：</p>
+<table>
+<thead>
+<tr>
+<th>CVE</th>
+<th>GHSA</th>
+<th style="text-align: right;">CVSS</th>
+<th>官方描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CVE-2026-109618</td>
+<td>GHSA-w8hw-w9fx-j79w</td>
+<td style="text-align: right;">9.2</td>
+<td>OOM → <code>longjmp()</code> 使 Zend 引擎状态失效 → RCE</td>
+</tr>
+<tr>
+<td>CVE-2026-109619</td>
+<td>GHSA-6wmf-4rv5-p3rp</td>
+<td style="text-align: right;">9.2</td>
+<td>FPM worker 请求间残留全局状态 → UAF → RCE</td>
+</tr>
+</tbody>
+</table>
+<p>官方补丁为 commit <code>3584a98bda</code>（作者日期 2026-10-18T15:26:39Z，标题 <code>Avoid state corruption via bailout</code>，<strong>改动 300 个文件</strong>），首个 release <code>php-8.5.12</code> 于 2026-10-21T14:06:46Z 发布。<strong>advisory 发布（13:34Z）到 release 发布只隔了 32 分钟，而补丁 commit 的作者日期比 advisory 早 3 天</strong>——修复早于披露，披露早于分发。</p>
+<p>问题在于：一条 CVSS 9.2 的预认证 RCE 在补丁发布当天下午被公开，而受影响面是「所有用 PHP 提供 Web 服务的安装」。管理员需要立刻知道三件事——<strong>哪条链真的能用、怎么复现安全地验证自己有没有被打、怎么在 IDS/WAF 上加规则</strong>。这个项目一次性回答了这三个问题。</p>
+<h2 id="2026-10-22">为什么值得关注（2026-10-22）</h2>
+<p><strong>因为它的 star 数是本日最高的，而这恰恰是最需要被谨慎解读的一件事。</strong></p>
+<p>13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高，是昨日记录的最高值的两倍以上），但：</p>
+<ol>
+<li><strong>最关键的两条利用代码不免费。</strong> <code>exploit/</code> 目录只公开 Chain A / B / C 三个文件；README Disclaimer 明写「Exploit code for Chains D and E (zero-dependency RCE) is available to <strong>paid subscribers</strong> of the writeup」。而 Chain D 正是作者自己判定为最关键的那条。<strong>star 数最高的那部分价值，恰好是免费拿不到的。</strong></li>
+<li><strong>热度来源是 CVE 事件而非工具采用。</strong> 859⭐ 出现在 <code>created_at</code> 后约 13 小时，这个速度度量的是事件关注度。</li>
+<li><strong>⚠️ 许可证存在可核验的不一致。</strong> GitHub API 的 <code>license.spdx_id</code> 为 <strong>null</strong>（即 <code>NOLICENSE</code>），而 README 末尾写 <strong>MIT</strong>。以 GitHub 侧为准，该仓库<strong>未附可被识别的许可证文件</strong>——这对要复用其检测规则或靶场配置的人是一个必须先澄清的前置问题。</li>
+</ol>
+<p>那么它为什么仍然值得建档？因为<strong>它的资产分布与 star 数无关</strong>：<code>detection/</code> 里四类规则（Suricata/Snort IDS · Sigma SIEM · ModSecurity WAF · OpenResty/Nginx Lua）覆盖了网络层、SIEM 层、WAF 层与应用层四层；<code>lab/</code> 的 <code>docker-compose.yml</code> 同时起 PHP-FPM + nginx + Apache mod_php，这解决了「我想安全地复现但没有三套 SAPI 环境」的实际困难。<strong>这些是可复用的，与它有多少 star 无关。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度是真实的，但性质是「CVE 注意力洪峰」而非「工具采用」。</strong> 三条可核验的理由：</p>
+<ol>
+<li><strong>时间尺度</strong>：13 小时 859⭐ 与 <code>subscribers_count = 4</code>、<code>open_issues_count = 2</code> 并存。<strong>深度关注者极少</strong>——说明绝大多数 star 来自事件驱动的围观，而非把仓库加入日常工具链。</li>
+<li><strong>内容分布</strong>：五条链中最重要的 D/E 在付费墙后，公开的 A/B/C 需要应用侧存在 LFI sink 或调用 <code>unserialize()</code>——<strong>这些前提在真实生产环境中比 D/E 少得多</strong>。也就是说，<strong>免费部分的价值低于 star 暗示的水平</strong>。</li>
+<li><strong>生态同质化严重</strong>：同一事件下还有 <code>eness/php2shell-...-PoC</code>（530⭐ ⑂94，无 license）、<code>9bie/php2shell-bypass-aslr-exp</code>（356⭐ ⑂130，21.5 MB，无 description）、<code>Zer061/CVE-2026-109618</code>（52⭐ ⑂39）、<code>junaire/CVE-2026-109618-exploit</code>（74⭐ ⑂49）、<code>wakemeiflose/php2shell</code>（34⭐ ⑂14）等多个竞争 PoC，多数无 license 或无 description。<strong>多个项目同时抢同一个事件的热度，本身就说明热度是事件给的，不是质量给的。</strong></li>
+</ol>
+<p><strong>但 fork-star 35.9% 需要单独解释，不能简单归为噪声。</strong> 这个比例异常高（昨日记录的最高值是 fx0 的 18.6%）。一个合理的机制解释是：<strong>这个仓库带 <code>lab/docker-compose.yml</code> 一键靶场与五条可运行的验证脚本，fork 一个仓库去搭自己的复现环境是有直接用途的</strong>——而 fork 一个终端或一个 PHP 扩展则不然。<strong>这是推断，不是事实</strong>，且它只是本日四个数据点之一，不足以支撑普遍结论。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>五条链各自标注「是否预认证 / 需要什么条件 / 适用哪个 SAPI」</strong>——这是把一个模糊的「PHP 有 RCE」变成五个可分别判断的问题的关键动作：</li>
+<li><strong>Chain A</strong>：session 注入 + LFI（预认证，需应用有任意 LFI sink，全 SAPI）</li>
+<li><strong>Chain B</strong>：<code>var_destroy</code> UAF → handler 覆写（非预认证，需应用调用 <code>unserialize()</code>，全 SAPI）</li>
+<li><strong>Chain C</strong>：handler 失配 → <code>__destruct</code>（预认证，需两个目录 <code>serialize_handler</code> 不同，FPM）</li>
+<li><strong>Chain D</strong>：OOM 损坏 → 残留 <code>EG()</code>（<strong>预认证，条件「None — any endpoint」，mod_php</strong>）</li>
+<li><strong>Chain E</strong>：FPM session OOM → 残留 <code>BG()</code>（预认证，任意 <code>session_start()</code> 端点，FPM）</li>
+<li><strong>作者自己判定 Chain D 最关键</strong>：「zero-dependency pre-auth RCE against any Apache mod_php installation. No LFI, no app vulnerability, no authentication — just a single multipart POST」。这个判定与官方 advisory 中「PHP considers the risk highest for mod_php」的表述一致（NCSC-NL 转述）。</li>
+<li><strong><code>lab/</code> 一键靶场：</strong> <code>docker-compose.yml</code> 同时起 PHP-FPM + nginx + Apache mod_php，配 <code>php-apache.ini</code> 与 <code>setup.sh</code>——<strong>这让「验证我自己的机器是否受影响」从「需要一台脏机器」变成「一条 docker-compose」。</strong></li>
+<li><strong><code>poc/</code> 五个验证脚本逐链对应</strong>，其中 <code>verify_uaf_asan.php</code> 用 ASAN 复现 UAF 类问题——对内存破坏类漏洞用 ASAN 是标准做法，能把「疑似 UAF」变成「确证 UAF」。</li>
+<li><strong><code>detection/</code> 四类规则同一仓库覆盖四个层次：</strong> <code>php2shell.rules</code>（Suricata/Snort IDS）· <code>php2shell.yaml</code>（Sigma SIEM）· <code>modsecurity.conf</code>（ModSecurity WAF）· <code>php2shell.lua</code>（OpenResty/Nginx Lua 模块）。</li>
+<li><strong>缓解建议附带边界声明：</strong> <code>session.upload_progress.enabled = Off</code> + <code>session.use_only_cookies = On</code>，并明写「<strong>The only complete fix is patching PHP to 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12+. The OOM corruption (Chain D) is in the Zend engine core — no INI setting fixes it.</strong>」——<strong>明确否定了「改 ini 就行」的流行说法</strong>，与 <code>HOSTED-POWER/php_uploadprogress_guard</code> 的存在互为印证。</li>
+<li><strong>下游影响表逐框架标注条件而非笼统打勾：</strong> WordPress 核心不用 PHP session（但 WooCommerce 与多数插件用）· Joomla 默认用原生 session · Drupal 默认用原生 session · Magento <strong>在维护模式下仍受影响</strong> · Laravel 的 <code>PendingBroadcast</code> 是已知 <code>__destruct</code> gadget。「在维护模式下仍受影响」这一条尤其有用——它直接否定了「进维护模式」这个常见止血动作。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>这个项目最值得借鉴的不是漏洞本身，而是<strong>它把「一个模糊的 CVE 编号」拆成「一组可分别判断的前提」的组织方式</strong>。</p>
+<p>大多数 CVE 分析给出的是「影响范围广，建议尽快升级」。这个项目给出的是：<strong>五条链，每条注明是否预认证、需要什么应用侧条件、适用哪个 SAPI</strong>。这个结构让三类人各自能立刻行动——系统管理员按 SAPI 判断、开发者按应用侧条件判断、检测工程师按攻击特征判断。<strong>「把一件事拆成若干条带前置条件的断言」是任何 CVE 研究的通用模板。</strong></p>
+<p>第二个启发关于<strong>验证环境的价值</strong>。漏洞研究里的一个隐性瓶颈是：验证需要特定的环境组合（这里是三套 SAPI），而绝大多数人手上只有一套。<code>lab/docker-compose.yml</code> 把这个瓶颈消掉了——<strong>这对复现生态的影响可能大于利用代码本身。</strong></p>
+<p>第三个启发关于<strong>否定性结论的价值</strong>。「Chain D 在 Zend 引擎核心里，没有任何 INI 设置能修」这句话，比列出十条缓解措施更有用：它<strong>防止了运维把时间浪费在一个看起来可行但实际无效的方案上</strong>。这类「明确说某个方案不work」的表述，在安全领域稀缺且珍贵。</p>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个<strong>研究/工具包仓库</strong>，不是运行时组件。四类内容：① <code>exploit/</code> 三个可运行的利用脚本（A/B/C）② <code>poc/</code> 五个逐链验证脚本（含 ASAN 版）③ <code>lab/</code> 靶场编排（PHP-FPM + nginx + mod_php 三 SAPI）④ <code>detection/</code> 四层规则（IDS / SIEM / WAF / 应用层）。<strong>第五部分（Chain D/E 利用代码）在付费墙外</strong></td>
+<td>仓库树（<code>git/trees/HEAD?recursive=1</code>）19 个文件路径 + README 的 Exploits / Attack Chains / Repository structure 三节；<strong>D/E 利用代码的实现形态完全不可核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>研究者：clone → 起 <code>lab/docker-compose.yml</code>（三 SAPI 靶场）→ 逐条跑 <code>poc/verify_*.py</code> 确认哪条链在自己的环境成立 → 需要完整利用时走 A/B/C 的公开脚本，D/E 转付费墙。防御方：直接取 <code>detection/</code> 四类规则部署到现有 IDS/SIEM/WAF。缓解方：读 README 的 Mitigation 段（并注意它明说了 INI 修不了 Chain D）</td>
+<td>逐条来自 README 的 <code>exploit/</code> <code>poc/</code> <code>lab/</code> <code>detection/</code> 四节 + Mitigation 段；<strong><code>lab/docker-compose.yml</code> 的镜像 tag、初始化脚本细节与是否含已打补丁的对照环境本窗口未取内容</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>公开可复现（<code>lab/</code> + <code>poc/</code> 让验证成本极低）vs 保持稀缺性（把 D/E 放付费墙）</strong>——这个项目明确选择了后者，且用前者补偿 · <strong>覆盖五类检测层（IDS/SIEM/WAF/应用）vs 专注一层（做深一条线）</strong> · <strong>逐框架标注下游影响（WordPress 核心/插件分开说）vs 笼统打勾</strong> · <strong>NOLICENSE 的实际效果（检测规则无法安全内嵌进商业产品）vs MIT 自述带来的可用性预期</strong></td>
+<td>README 明示付费墙（Disclaimer）、五链条件表、下游影响表；<strong>未明示：许可证意图（是疏漏还是刻意）、<code>detection/</code> 规则的测试覆盖、以及 lab 是否含已修复版本的对照环境</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>不要在生产机上试</strong> → 2. clone 后起 <code>lab/docker-compose.yml</code>（README 提供的靶场，起三套 SAPI）→ 3. 先跑 <code>poc/verify_oom_trigger.py</code> 确认 Chain D 的触发条件（这一条作者判定为最关键且零依赖）→ 4. 跑 <code>poc/verify_uaf_asan.php</code> <strong>在 ASAN 下</strong>确认 Chain B 的 UAF 是确证而非疑似 → 5. <strong>防御侧优先于利用侧</strong>：把 <code>detection/php2shell.rules</code> 投到测试环境的 Suricata，把 <code>modsecurity.conf</code> 投到测试环境的 ModSecurity，确认规则命中 → 6. 确认自己所有 PHP 机器的版本是否 ≥ 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12（<strong>注意 <code>openai/php2shell-checker</code> 明言 UNKNOWN 不等于已打补丁</strong>）→ 7. 对不能升级的机器，转 <code>HOSTED-POWER/php_uploadprogress_guard</code> 的方案 → 8. <strong>复用 <code>detection/</code> 规则前先解决许可证问题</strong>（GitHub 侧 <code>license.spdx_id</code> 为 null）</td>
+<td>PoC 顺序刻意把防御侧放在利用侧之前；<strong>第 5 步（规则是否真能命中）比第 3 步（能否复现）对多数人更有价值</strong>；<strong>第 8 步是本项目特有的、不可跳过的一步</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Vuln["php2shell 两漏洞<br/>CVE-2026-109618 OOM longjmp<br/>CVE-2026-109619 FPM 残留全局状态<br/>各 CVSS 9.2"] --> Chain
+
+  subgraph Chain[五条攻击链 · 各自标注前置条件与 SAPI]
+    A["Chain A session 注入 + LFI<br/>预认证 需任意 LFI sink 全 SAPI"]
+    B["Chain B var_destroy UAF 覆写 handler<br/>非预认证 需应用调用 unserialize"]
+    C["Chain C handler 失配 触发 __destruct<br/>预认证 需两目录 serialize_handler 不同 FPM"]
+    D["Chain D OOM 损坏 残留 EG<br/>预认证 条件 None 任意端点 mod_php 最关键"]
+    E["Chain E FPM session OOM 残留 BG<br/>预认证 任意 session_start 端点 FPM"]
+  end
+
+  A --> ExploitOpen["exploit 目录<br/>chain_a_session_lfi.py<br/>chain_b_uaf_rce.php<br/>chain_c_mismatch_rce.py"]
+  D -.付费墙.-> ExploitPaid["Chain D / E 利用代码<br/>仅付费 Substack 订阅者<br/>实现不可核验"]
+  E -.付费墙.-> ExploitPaid
+
+  Vuln --> Poc["poc 验证脚本 5 个<br/>含 verify_uaf_asan.php ASAN 版"]
+  Vuln --> Lab["lab 一键靶场<br/>docker-compose 起 PHP-FPM + nginx + Apache mod_php"]
+
+  Vuln --> Detect["detection 四层规则<br/>Suricata/Snort IDS · Sigma SIEM<br/>ModSecurity WAF · OpenResty Lua"]
+
+  Poc --> Defender[防御方]
+  Detect --> Defender
+  Defender --> Ops{"机器能升级 PHP 吗"}
+  Ops -->|能 官方正解| Patch["升级到 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12"]
+  Ops -->|不能 等 backport| Guard["HOSTED-POWER/php_uploadprogress_guard<br/>引擎层缓解 见独立档案"]
+  Ops -->|不能且等很久| Ini["session.upload_progress.enabled Off<br/>session.use_only_cookies On"]
+
+  Ini -.挡不住.-> D
+  Lab -.仅本地靶场.-> Tester[研究者本地复现]
+  ExploitOpen --> Tester
+  ExploitPaid --> Paid[付费订阅者]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>研究材料与检测资产（观察型），而非可直接依赖的工具。</strong></p>
+<p>在 CVE 响应的分工里，这个项目占据了「谁解释漏洞 + 谁提供检测」两个位置——而这恰恰是 <code>NCSC-NL/php2shell</code>（谁在国家层面处置）与 <code>HOSTED-POWER/php_uploadprogress_guard</code>（谁在等补丁期间先保住机器）所不覆盖的部分。四层分工合起来，才构成一次完整的 CVE 响应。</p>
+<p>它的独特优势不是唯一性（同事件至少有六个竞争 PoC），而是<strong>完整性</strong>：链 + 靶场 + 检测三者齐备在一个仓库里。竞争者大多只提供链。</p>
+<p><strong>它不适合作为依赖引入生产流程</strong>，原因有三：许可证不明（<code>license.spdx_id</code> 为 null）、利用代码部分不公开、以及它在 24 小时内的形态大概率还会变（<code>pushed_at</code> 距采集时刻不到 13 小时）。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>⚠️ 许可证不一致（可核验的事实）。</strong> GitHub <code>license.spdx_id</code> = null，README 写 MIT。以 GitHub 侧为准即无授权。<strong>这直接影响 <code>detection/</code> 规则能否被安全内嵌进商业产品</strong>——这是复用前必须澄清的第一件事。</li>
+<li><strong>最关键的利用代码不公开。</strong> Chain D（作者判定最关键）与 Chain E 在付费墙后。<strong>免费拿到的三条链都需要应用侧前提（LFI sink 或 <code>unserialize()</code>），在真实生产环境中的成立概率低于 Chain D/E。</strong></li>
+<li><strong>热度来源是事件而非采用。</strong> 13 小时 859⭐ 与 <code>subscribers_count = 4</code>、<code>oi = 2</code> 并存。<strong>任何基于「今天最热的项目」做技术选型的判断，在这个案例上都会失效。</strong></li>
+<li><strong>README 的影响面数字缺乏独立来源。</strong> 「影响 78% 的网站，其中 WordPress 43%」是<strong>作者主张</strong>，本档案未独立核验。相比之下 <code>NCSC-NL/php2shell</code> 在 <code>software/</code> 目录给出具体产品清单——<strong>「给产品名」比「给百分比」可核验得多</strong>。</li>
+<li><strong>生态同质化且质量参差。</strong> 至少六个竞争 PoC，多数无 license 或无 description。作为研究参考没问题，作为「权威来源」需要交叉验证。</li>
+<li><strong>非 GPL 授权的竞争者也可能更严谨。</strong> 没有任何机制保证这个仓库的链条描述是准确的——<strong>五条链中 D/E 的实现不可核验，其余三条也应自行验证而非直接采信。</strong></li>
+<li><strong>README 引用了外部来源（Wiz 的下游影响演示、Sansec 的 PHPSESSID 堆泄漏发现、Corelight 的社区规则、Cloudflare 的 WAF 覆盖说明），本档案未逐条核验这些引用。</strong></li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs PHP 官方 advisory（GHSA-w8hw-w9fx-j79w / GHSA-6wmf-4rv5-p3rp）：</strong> 不是竞品。官方给出 CVE、受影响版本范围与修复；本项目给出链条、复现与检测。<strong>引用链细节时应回到官方 advisory 核对。</strong></li>
+<li><strong>vs <code>NCSC-NL/php2shell</code>（96⭐ ⑂21，EUPL-1.2，TLP:CLEAR）：</strong> 分工不同。NCSC-NL 给出国家级处置建议、CERT-EU 编号 2026-018、引用其他成员国 CSIRT 公告，并在 <code>software/</code> 目录提供受影响产品清单；本项目提供技术细节。<strong>NCSC-NL 有一句本项目没有的判断</strong>：「PHP is also embedded in appliances, network devices, management interfaces and other vendor products where <strong>administrators may not be able to update PHP directly</strong>」——<strong>这正是 <code>php_uploadprogress_guard</code> 存在的理由。</strong></li>
+<li><strong>vs <code>HOSTED-POWER/php_uploadprogress_guard</code>（53⭐ ⑂4，MIT）：</strong> 互补而非替代。本项目提供「为什么必须改引擎」的证据（Chain D 在 Zend 核心里，无 INI 可修），guard 提供「那怎么办」。<strong>两者的缓解建议可以叠加，README 均未讨论对方。</strong></li>
+<li><strong>vs <code>openai/php2shell-checker</code>（310⭐ ⑂22，Apache-2.0）：</strong> 分工清晰。本项目做检测引擎（规则），checker 只做版本判定，且诚实声明「UNKNOWN 不等于已打补丁」「不独立验证安全修复」。<strong>checker 的 Limitations 段是本项目缺失的东西。</strong></li>
+<li><strong>vs <code>syhunt/php2shell-protection</code>（62⭐ ⑂6，PHP + MIT）：</strong> 那个走 Apache 侧加固（multipart POST 阻断、请求大小限制），属配置层；本项目走规则层。<strong>两者可叠加。</strong></li>
+<li><strong>vs 同事件的其他 PoC（<code>eness/...</code>、<code>9bie/...</code>、<code>Zer061/...</code>、<code>junaire/...</code> 等）：</strong> 内容重叠，多数无 license。本项目的相对优势是完整性（链 + 靶场 + 检测）与作者自述的背景（Qi Deng / Substack 长文）。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>作为研究材料跟踪，作为依赖不推荐。</strong> 三条明确理由：</p>
+<ol>
+<li><strong>可抽取的资产</strong>：<code>detection/</code> 四类规则与 <code>lab/</code> 靶场配置是可直接复用的东西，值得抽出来单独评估。</li>
+<li><strong>不可核验的部分</strong>：Chain D/E 的实现、README 的 78% 影响面数字、以及引用的外部来源，都需要交叉验证。</li>
+<li><strong>必须先解决的前置问题</strong>：NOLICENSE 与 MIT 自述的不一致——在这个事件里大家都在复制粘贴规则，而规则能不能商用取决于许可证。</li>
+</ol>
+<p><strong>具体动作建议：</strong>
+- <strong>防御方（多数人）</strong>：直接取 <code>detection/</code> 规则部署，同时用 <code>openai/php2shell-checker</code> 之类做版本盘点——<strong>规则能否内嵌进商业产品需先澄清许可证</strong>。
+- <strong>研究者</strong>：优先看 <code>lab/</code> 与 <code>poc/</code>，而不是 <code>exploit/</code>——公开的三条链前提更强，而靶场与验证脚本是更稀缺的资产。
+- <strong>不建议</strong>：把这个仓库加入生产工具链依赖，或引用其影响面数字。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>是否会补上 LICENSE 文件。</strong> 这是决定 <code>detection/</code> 规则能否被安全内嵌进商业产品的唯一因素，也是本档案列出的第一待观察项。</li>
+<li><strong>Chain D / E 的公开程度。</strong> 若作者后续免费放出，观察是否引发更多同类研究（当前的付费墙客观上限制了扩散，也限制了被独立验证的机会）。</li>
+<li><strong>四类检测规则是否被主流项目合并。</strong> README 提到 Corelight 的社区规则；观察 Suricata / ModSecurity / Sigma 官方规则库是否吸收本项目的规则——<strong>被合并是检测质量的第三方背书</strong>。</li>
+<li><strong>README 的「78% 网站 / WordPress 43%」是否会补上独立来源。</strong> 目前是作者主张。</li>
+<li><strong>仓库形态在 24 小时后的稳定性。</strong> <code>pushed_at</code> 距采集时刻不到 13 小时，观察是否继续高频改动、链条描述是否被修正。</li>
+<li><strong>同事件生态是否收敛。</strong> 六个竞争 PoC 中是否有项目主动合并或退出——收敛通常意味着事实被交叉验证完毕。</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-10-22</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

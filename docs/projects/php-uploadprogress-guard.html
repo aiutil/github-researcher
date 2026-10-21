@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOSTED-POWER/php_uploadprogress_guard | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/HOSTED-POWER/php_uploadprogress_guard" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="hosted-powerphp_uploadprogress_guard">HOSTED-POWER/php_uploadprogress_guard</h1>
+<h2 id="_1">一句话定位</h2>
+<p>一个可加载的 PHP 扩展，逐组件镜像 CVE-2026-109618 / CVE-2026-109619 的官方修复，让<strong>没打补丁的 PHP</strong> 也移除已公布攻击链的每一环——不重编 PHP、不改宿主上任何应用行为，升级后自动退场。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>2026-10-21 PHP 发布 CVE-2026-109618（OOM → <code>longjmp()</code> 使 Zend 引擎状态失效 → RCE）与 CVE-2026-109619（FPM worker 请求间残留全局状态 → UAF → RCE），两条都是 <code>critical</code>，修复版本为 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12。</p>
+<p>对多数站点，「升级到 8.2.35 以上」就是答案。但存在一类机器没有这个选项：发行版已停更的 LTS、厂商把 PHP 嵌进 appliance / 网络设备 / 管理界面（NCSC-NL 公告点名了这一类：「administrators may not be able to update PHP directly」）、自编译的旧版本、或锁死了包管理器的共享主机。这些机器在补丁到达前只能改 <code>php.ini</code> 或加 WAF 规则——<strong>而 php_uploadprogress_guard 指出这两者都不解决问题</strong>：<code>ikow/php2shell-poc</code> 的 README 明确写道「The OOM corruption (Chain D) is in the Zend engine core — <strong>no INI setting fixes it</strong>」。</p>
+<p>这个项目填的正是这段窗口：把缓解措施本身做成有版本、有测试、有退场机制的正经软件。</p>
+<h2 id="2026-10-22">为什么值得关注（2026-10-22）</h2>
+<p><strong>不是因为它星多（53⭐ 是本批最低之一），而是因为它是本日唯一把「临时缓解方案」当作长期工程对象来做的项目</strong>，并且在三个方面做到了临时方案通常缺失的事：</p>
+<ol>
+<li><strong>可复核的实测证据。</strong> README 的 v3.1.0 段给出的是<strong>具体输入 + 具体输出数值</strong>（15000 字段的单个 multipart body、exit 255 / 137 / 0、<code>Status: 413</code>、<code>code 70</code>、孤儿临时文件计数），而不是「有效」「已修复」这类断言。本日报采信的所有材料中，这是唯一带完整数值的一组。</li>
+<li><strong>自检让位机制。</strong> 用 <code>nm -D</code> 探测引擎是否导出修复符号，已打补丁则跳过 parser 替换并报告 <code>carries the official fix =&gt; yes</code>。这意味着<strong>装了它的机器在升级 PHP 后会自己退场</strong>，不需要任何人工卸载动作——这是临时缓解方案最重要的工程属性，而它被写进了机制而非文档说明。</li>
+<li><strong>把自己的两次回归写进 README。</strong> v3.0.0 修了 v2.2.0 在 PHP 7.0–7.4 上拒绝所有 multipart 请求的 bug；v3.0.1 修了 v3.0.0 二进制在 Debian 12 及更早因 <code>GLIBC_2.38</code> 无法加载、<strong>导致 PHP 继续运行但 guard 未生效</strong>的 bug。第二个回归尤其值得注意——它意味着用户可能在毫无察觉的情况下处于「以为装了、其实没生效」的状态，而 README 把这件事写在了首页。</li>
+</ol>
+<h2 id="_3">热度来源判断</h2>
+<p>53⭐ ⑂4 的绝对量级说明<strong>这不是被广泛采用的工具</strong>。更合理的读法是：它诞生于一个真实且迫切的时间窗口（补丁发布后 12 小时），而这类项目天然不会成为 star 收割品——<strong>它的用户是那批「机器今天就要被攻击」的运维，而不是 GitHub 的探索者</strong>。</p>
+<p>fork-star 7.5% 与 <code>subscribers_count = 4</code> 都偏低，这与「托管商为自己机队构建、公开出来分享」的自述一致：<strong>这是一个厂商把自己的内部应急方案开源的案例，不是社区驱动的项目</strong>。</p>
+<p><strong>反向信号同样要说清楚</strong>：README 开头就写「<strong>Install the official PHP release… we recommend it without reservation</strong>」——<strong>作者自己把它定位为候补而非首选</strong>。加上它明确列出了失败场景（<code>mode=parse</code> 会改变超大 multipart 的响应语义、<code>mode=native</code> 会牺牲 worker、mbstring 开启时放弃镜像 parser），这是一个克制到 unusual 的项目。<strong>结论：热度低是定位使然，不是缺陷；但「维护者只有一人 + 一家托管商」是真实的持续性风险。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>逐组件镜像官方补丁，覆盖 PHP 5.6–8.5 十二个 minor，每分支每 SAPI 单独测试。</strong> 不是写一份补丁说明，而是编译出十二份针对具体引擎版本的二进制，并给出按版本的测试结果。</li>
+<li><strong>三个机制对应两条 CVE：</strong> 移除 session upload-progress handler（对 109619：handler 在每个 multipart 请求上、于请求初始化之前运行，能消费同一 worker 上前一个请求留下的状态）· 携带修复版 parser 并让 parser 本身不可能 OOM（对 109618，用 headroom guard 保留 <code>memory_limit</code> 的八分之一）· <code>mode=native</code> 在 OOM 时直接结束进程（exit 137）而非让半初始化状态继续服务下一个请求。</li>
+<li><strong>自检让位：</strong> <code>nm -D</code> 探测修复符号。README 给出逐版本结果——Sury 的 5.6.40-104 / 7.0.33-92 / 7.3.33-35 / 7.4.33-31 / 8.1.34-9 / 8.3.36-1 全部报 <code>carries the official fix =&gt; yes</code>，官方 docker 的 8.4.11 / 8.1.20 / 7.4.33 / 5.6.40 全部报 <code>no</code> 且机制全 active，并说明「Neither fix symbol exists on any unpatched engine (<code>nm -D</code>)」。</li>
+<li><strong>孤儿上传临时文件：</strong> php-fpm 场景下 <code>mode=native</code> 时 worker 因 <code>child exited with code 137</code> 被回收且 <strong>0 个孤儿上传临时文件</strong>，而<strong>原生 PHP 启动失败会留下 1 个（<code>code 70</code>）</strong>——在共享主机上这是磁盘耗尽的一个真实来源。</li>
+<li><strong>不改变用户代码语义：</strong> <code>set_error_handler</code> + 未定义变量 + <code>trigger_error</code> 的 15000 字段 POST 在 8.4 与 5.6 上均返回 <code>OK:15000 handled: … handled: custom</code>，证明请求状态重置不动用户的错误处理器。</li>
+<li><strong>两处诚实降级：</strong> mbstring 的多字节 hook 是 file-static、无法镜像，因此 <code>mbstring.encoding_translation=On</code> 的宿主交还给 PHP 自带 parser（callback detach 仍生效）；8.0–8.3 的副本不再依赖中途才加入的 <code>max_multipart_body_parts</code>。</li>
+<li><strong>构建基线：</strong> 12 个二进制零编译警告、不高于 <code>GLIBC_2.14</code>，修复探针以 versionless weak reference 形式存在（<code>objdump -T</code> 可查）；<code>build.sh</code> <strong>拒绝任何高于 <code>GLIBC_2.14</code> 的构建</strong>——这是 v3.0.1 回归的直接对策。</li>
+<li><strong>部署幂等性有实测：</strong> Ansible 二次运行 <code>changed=0</code>，全量部署 <code>ok=1506 failed=0</code>；web1/2/3 经 AWX 各 <code>changed=4</code> 且 fpm 重启、二次重跑 <code>changed=0</code>；cPanel EA4 与 DirectAdmin CustomBuild 两类真实面板均 <code>failed=0 changed=0</code>。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p>这个项目示范了一件在安全领域少见的事：<strong>把「临时」这个属性编码进架构，而不是只写在免责声明里。</strong></p>
+<p>大多数缓解方案的隐含假设是「装上就一直有效」，于是它要么长期驻留并与官方补丁冲突，要么需要用户记得手工卸载。而这个项目把「什么时候我应该消失」变成了一个<strong>可被机器判定的问题</strong>——引擎是否导出了修复符号？——并把这个判定做进每次加载的路径里。同样的思路还体现在：升级到带补丁的 PHP 后，<strong>它报告 skipped 而不报错</strong>，因为「我不做事了」在这个语境下是成功状态而不是失败状态。</p>
+<p>第二个启发是关于<strong>降级的表达方式</strong>。mbstring 场景的降级不是静默的：README 说清了为什么不能镜像（file-static hook）、降级到什么程度（callback detach 仍生效）、以及这只影响哪些配置。把「做不到什么」写得和「做到什么」一样清楚，是这个项目可信度的主要来源。</p>
+<p>第三个启发关于<strong>验证的可证伪性</strong>。「我们的扩展有效」是不可检验的陈述；「15000 字段的 multipart body 在未打补丁的 8.4.11 / 8.1.20 / 7.0.33 / 5.6.40 上，无模块时 exit 255、<code>mode=native</code> 时 exit 137、默认 <code>mode=parse</code> 时 exit 0 且 <code>Status: 413</code>，四个版本结果一致」是可以被任何人复现的。</p>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 PHP 扩展（<code>src/hp_uploadprogress_guard.c</code> + <code>config.m4</code>）+ 按 PHP minor 预编译的 NTS x86_64 <code>.so</code> 与 SHA256SUMS（<code>dist/</code>）+ 重建脚本（<code>build.sh</code>，从官方 <code>php:&lt;X.Y&gt;-cli</code> 镜像重建）+ 测试三件（<code>test/probe.php</code>、<code>test/run-builtin-server.sh</code>、<code>test/fcgi-probe.py</code>）+ 实际部署用的 Ansible task 与 ini（<code>ansible/</code>）。<strong>控制面在 PHP 引擎内部</strong>（handler 摘除 + parser 替换 + 内存余量闸门 + OOM 退出策略），<strong>数据面是 multipart 请求解析</strong></td>
+<td>全部来自 README 的「Repository layout」与 v3.1.0 测试段；<strong>逐符号级的引擎内部改动（具体 patch 了哪些 Zend 结构）README 未展开</strong>，只说 mirrors the official fix component by component——这是审计该扩展时的第一道信息缺口</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求进入 → 请求初始化阶段 session upload-progress handler 已被摘除（对 109619 的直接对策）→ parser 换成修复版并带 headroom guard，<code>memory_limit</code> 的八分之一保持空闲（对 109618 的直接对策）→ 若真发生 OOM，<code>mode=native</code> 结束进程而非让半初始化状态继续跑 → 请求结束后状态被重置，用户的 error handler 不受影响 → 升级到带官方补丁的 PHP 后，<code>nm -D</code> 探测到修复符号即跳过 parser 替换</td>
+<td>逐条来自 README 的 v3.1.0 测试表、临时文件计数、error handler 测试、fix detection 段；<strong><code>mode=parse</code> 与 <code>mode=native</code> 的自动选择逻辑、headroom guard 与 OOM exit 的优先级关系 README 未说明</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>自研缓解层（覆盖补丁空窗期，代价是必须逐版本跟引擎结构）vs 只发检测（安全但不阻断）vs 等发行版 backport（最稳但可能永远不来）</strong> · <code>mode=parse</code> 返回 413（保住进程，但改变了服务端对超大 multipart 的响应语义）vs <code>mode=native</code> 直接 exit 137（语义最贴近「崩溃」，但牺牲 worker）· 预编译二进制覆盖 5.6–8.5 十二个 minor（覆盖广，但每个都要单独构建与测试）vs 只支持当前分支（省事，但嵌入式与 LTS 机器恰恰是老分支）· 在 <code>mbstring.encoding_translation=On</code> 的宿主上放弃镜像 parser（诚实降级）vs 强行镜像（可能出错）· 主动向 PHP 官方发行版退让（自检到已修复就跳过）vs 长期驻留（与官方补丁冲突的风险）</td>
+<td>README 明示「we recommend it without reservation」「it notices and steps aside」「steps aside on its own, so there is nothing to undo」以及 mbstring 与 max_multipart_body_parts 两处降级说明；<strong>未明示：12 个 minor 二进制矩阵的维护机制、与未来 CVE 的兼容性、以及长期维护者承诺</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 找一台<strong>不能升级 PHP</strong> 的机器（发行版停更 / 厂商 appliance / 自编译旧版）→ 2. 核对 <code>nm -D</code> 确认修复符号<strong>不存在</strong>（README 用这条命令证明未打补丁机没有该符号）→ 3. 从 <code>dist/</code> 取对应 minor 的 <code>.so</code> 并核对 SHA256SUMS → 4. 用 <code>test/probe.php</code> 确认模块加载且报 detached → 5. 用 <code>test/run-builtin-server.sh</code> 复现 v3.1.0 表：15000 字段 POST 前后各一次 GET，确认得到 <code>Status: 413</code>（<code>mode=parse</code>）或 worker 被回收且无孤儿临时文件（<code>mode=native</code>）→ 6. 装一个带 <code>set_error_handler</code> 的脚本，确认 <code>handled:</code> 前缀仍在（证明未改用户代码语义）→ 7. 跑一次 Ansible tag-scoped 部署，<strong>再跑第二次确认 <code>changed=0</code></strong>（幂等性是这个项目最值得学的工程纪律）→ 8. 升级 PHP 到带补丁版本，确认自检报告 <code>carries the official fix</code> 并自动让位</td>
+<td>PoC 顺序完全按 README 已给的证据链倒排；<strong>第 2 步与第 8 步是整个 PoC 的意义所在</strong>：证明「装了会自己退场」比证明「装了能挡住」更重要；<strong>第 5 步是唯一真正需要自己动手的部分，前 3 步的产物 README 都已提供</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Client[HTTP 客户端<br/>multipart POST] --> SAPI[PHP SAPI<br/>php-fpm / mod_php / php-cgi / FrankenPHP / LiteSpeed]
+  SAPI --> Guard["hp_uploadprogress_guard 扩展<br/>预编译 .so 按 PHP minor 分发"]
+
+  Guard --> Detect["启动期自检<br/>nm -D 探测修复符号"]
+  Detect -->|已打官方补丁| StepAside["报告 carries the official fix => yes<br/>跳过 parser 替换 · 自动退场"]
+
+  Detect -->|未打补丁| Detach["摘除 session upload-progress handler<br/>对策 CVE-2026-109619"]
+  Detach --> Parser["替换为修复版 parser<br/>headroom guard 保留 memory_limit 八分之一<br/>对策 CVE-2026-109618"]
+
+  Parser --> Mode{"mode"}
+  Mode -->|parse 默认| Parse["返回 Status: 413<br/>进程存活 复用同一 worker"]
+  Mode -->|native| Native["exit 137 进程结束<br/>worker 被 FPM 回收 0 孤儿临时文件"]
+
+  Parse --> App[宿主上的原有应用<br/>不重编 PHP 不改应用行为]
+  Native --> Respawn["FPM master 重建 worker"]
+  Respawn --> SAPI
+
+  App --> AppErr["用户 set_error_handler 与 warning 语义不变<br/>实测 OK:15000 handled"]
+  App --> Opcache["OPcache 编译窗口<br/>实测 compiled+ran 第二次请求正常"]
+
+  Guard --> Degrade["诚实降级<br/>mbstring.encoding_translation=On 交还 PHP 自带 parser<br/>callback detach 仍生效"]
+  Guard --> Build["build.sh 拒绝高于 GLIBC_2.14 的构建<br/>12 个二进制零编译警告"]
+  Guard --> Deploy["Ansible 幂等部署<br/>Debian/Sury · cPanel EA4 · DirectAdmin · AWX<br/>二次 changed=0 全量 ok=1506 failed=0"]
+
+  Deploy -.信任假设 待核验.-> Trust["dist/ 为预编译二进制<br/>SHA256SUMS 由发布者自行提供<br/>无独立签名 待核验"]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>生产可用（针对特定窗口），而非通用推荐。</strong> 这是一个<strong>候补方案</strong>——作者自己在 README 第一句劝你装官方发行版。它的适用范围非常明确：<strong>补丁到达之前、包管理器不会供上补丁、且你无法更换机器的那段窗口</strong>。这个窗口可能是几天（发行版跟进快）、几个月（LTS backport 慢），也可能永远（厂商 appliance）。</p>
+<p>不属于「生产可用」的另一层含义是<strong>它不适合所有站点</strong>：绝大多数能升级的机器装它没有意义（升级本身就是更完整的修复），而 <code>dist/</code> 里是预编译二进制，这本身构成一个信任假设。</p>
+<p>从生态位置看，它填补的是一个此前没有专职产品的缝隙：<strong>「CVE 的临时缓解方案」通常以博客文章或一条 <code>php.ini</code> 配置的形式存在，很少被做成可版本化、可测试、可退场的软件</strong>。这个项目证明了这条路可行。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>⚠️ <code>dist/</code> 是预编译二进制，发布者即构建者。</strong> 即使有 SHA256SUMS，宿主仍需信任发布者。这是所有「预编译缓解方案」的共同性质，也是本项目最大的信任假设——它恰好出现在安全事件中，读者是否有能力验证是另一件事。</li>
+<li><strong>维护是单人 + 一家托管商。</strong> 上游 PHP 若在 Zend 引擎结构上做新改动，镜像可能失效。README 未说明跟进机制，也未见路线图。</li>
+<li><strong>存在一个「以为装了、其实没生效」的失败模式，且它真实发生过。</strong> README 自己记录了 v3.0.1 的回归（<code>GLIBC_2.38</code> 二进制在 Debian 12 及更早加载失败，<strong>PHP 继续运行但 guard 未生效</strong>）。用户如何自行确认当前生效，README 未给一键命令。</li>
+<li><strong><code>mode=parse</code> 改变了服务端对超大 multipart 的响应语义</strong>（从 255 变成 <code>413</code>）。如果上游应用依赖原有行为，这是一次行为变更而非纯加固。</li>
+<li><strong>与 WAF / <code>session.upload_progress.enabled=Off</code> 叠加是否会冲突，README 未讨论。</strong> NCSC-NL 建议的第一条正是 <code>session.upload_progress</code> 禁用。</li>
+<li><strong><code>subscribers_count = 4</code>，53⭐ ⑂4。</strong> 这不是被广泛验证的工具。</li>
+<li><strong>版本矩阵的隐性成本：</strong> 12 个 minor × 多 SAPI × 多面板的组合测试在版本发布时是真实工作量，而这类工作量通常不产生可见回报，容易在注意力转移后衰减。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs 直接升级 PHP（官方推荐的正解）：</strong> 不是竞品而是互补。它的价值恰恰建立在「升级不可行」这个前提上，README 第一句就劝你升级。</li>
+<li><strong>vs <code>session.upload_progress.enabled=Off</code>（PHP 官方缓解）：</strong> 官方 INI 开关能挡住 109619 的一部分，但<strong>挡不住 Chain D</strong>（OOM 路径在 Zend 引擎核心里，<code>ikow/php2shell-poc</code> 明言没有任何 INI 设置能修）。本项目做的是 INI 做不到的那部分。</li>
+<li><strong>vs WAF 规则（<code>modsecurity.conf</code> / Suricata / OpenResty Lua）：</strong> WAF 在网络层看请求，本扩展在引擎内部改行为。<strong>两者是叠加关系而非替代关系</strong>——WAF 可能被编码变形绕过，扩展不依赖请求特征。</li>
+<li><strong>vs <code>syhunt/php2shell-protection</code>（同事件，62⭐ ⑂6，PHP + MIT）：</strong> 那个走的是 Apache 侧的加固（multipart POST 阻断、请求大小限制），属于配置层；本项目走的是引擎层。<strong>两者可叠加但 README 均未讨论对方。</strong></li>
+<li><strong>vs <code>HOSTED-POWER</code> 自家机队 vs 社区项目：</strong> 这个项目的独特之处不在技术，而在<strong>它是厂商把自己的内部应急方案开源</strong>——这决定了它有真实的生产环境（cPanel、DirectAdmin、AWX 部署）作为测试床，而这是社区项目通常没有的。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，且优先级高于它的 star 数。</strong> 理由与热度无关：<strong>它是本日唯一一个把「临时缓解方案」当作长期工程对象来做、并把「自己会退场」写进机制设计的项目</strong>。这两条（可复现的验证记录 + 自动让位）正是所有临时缓解方案通常缺失的部分，且这个模式可迁移到任何「等上游修复」的场景——不只是安全事件。</p>
+<p>对<strong>没有受影响机器</strong>的读者，它的价值是方法论参照：可按它的 README 组织方式检查自己团队的应急方案是否具备「可验证」与「会退场」两条属性。</p>
+<p><strong>明确的跟踪建议：</strong>
+- <strong>若你有不能升级 PHP 的机器</strong>：按上面的最小 PoC 走一遍，尤其确认第 2 步（<code>nm -D</code>）与第 8 步（自检让位）。<strong>先装官方发行版，本模块只当候补。</strong>
+- <strong>若你没有</strong>：跟踪 <code>dist/</code> 的信任模型是否被独立验证、12 分支持续矩阵如何维护、以及是否出现第二维护者。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>是否出现独立签名或第三方可复现构建。</strong> 当前 <code>build.sh</code> 存在且可从官方镜像重建，这是好基础，但发布者即构建者。观察是否有 SBOM、签名或第三方构建出现。</li>
+<li><strong>12 个 minor 的版本矩阵如何跟随 PHP 新版本。</strong> 观察是否出现 <code>dist/</code> 停止更新的版本落后——那将直接导致「装在老机器上有效、新机器上无对应二进制」。</li>
+<li><strong>是否与官方缓解叠加出问题。</strong> 特别是与 <code>session.upload_progress.enabled=Off</code> 或 WAF 规则共存时。</li>
+<li><strong>是否有第二维护者或上游（PHP 社区）认可。</strong> 这是判断项目生命力的最直接指标。</li>
+<li><strong>未来 CVE 时是否复用同一套方法。</strong> 如果下一个 CVE 也出现「等 backport」的窗口，这个项目是否会变成常设工具，还是一次性应急产物。</li>
+<li><strong><code>releases</code> API 当前返回空数组</strong>（分发走 <code>dist/</code> 与文档）——观察是否开始发正式 release 标签，以及是否有可校验的版本号体系。</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-10-22</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

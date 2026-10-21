@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-22 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-22-github">2026-10-22 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 2026-10-22 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API（<code>search/repositories</code>、<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/readme</code>（<code>Accept: application/vnd.github.raw</code>）、<code>repos/{owner}/{repo}/releases</code>、<code>repos/{owner}/{repo}/git/trees/{HEAD}?recursive=1</code>、<code>contents/{AGENTS.md,README.md}</code>、<code>repos/php/php-src/security-advisories/GHSA-*</code>、<code>repos/php/php-src/commits/3584a98bda</code>），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>description</code> / <code>assets</code>。<strong>「X 小时 Y⭐」按 <code>created_at</code>（UTC）到 2026-10-22 计算，总星数除以经过时长为下限粗估；单日 star 增量未做统计</strong>（需分页遍历 stargazer 列表），因此<strong>所有增速表述都不能读作当日新增</strong>。<strong>已核验为空/为零并直接标注的字段</strong>：4 个 key_projects 的 <code>topics</code> 均为空数组（未设 GitHub topics，不代表无主题）；<code>releases</code> API 对 <code>openai/php2shell-checker</code>、<code>NVIDIA/flare-local-inference</code>、<code>HOSTED-POWER/php_uploadprogress_guard</code> 均返回<strong>空数组</strong>（三者均在 README/文档里描述了分发方式，但 GitHub Releases 此刻为空——对 flare 与 guard 而言 <code>dist/</code> 与文档是主分发路径，对 checker 而言是 <code>node phpcheck.js</code> 源码直用）；<code>subscribers_count</code> 为 4 / 4 / 5 / 2。<strong>发现一处可核验的元数据不一致</strong>：<code>ikow/php2shell-poc</code> 的 <code>license.spdx_id</code> 为 <strong>null</strong>，而其 README 末尾写 <strong>MIT</strong>——以 GitHub 侧元数据为准则该仓库<strong>未附可被识别的许可证文件</strong>，<code>NOLICENSE</code> 对使用者的实际含义是「无授权」，这一点与 README 自述不一致。<strong>热度来源的重要限定</strong>：今日排名第一的 php2shell 生态<strong>是 CVE 驱动的注意力洪峰，不是技术突破</strong>——ikow/php2shell-poc 的 859⭐ 出现在 <code>created_at</code> 后约 13 小时，且作者把最关键的 Chain D/E 利用代码放在付费 Substack 之后；star 数在这里度量的是事件关注度，不能读作工具采用度。<strong>已过滤的 spam 仓库</strong>（本批 Search 结果中出现、已排除）：<code>lol-tools-new/.github</code>（95⭐ ⑂95）、<code>DLSS-5-Swapper-Download-2026/.github</code>（86⭐ ⑂50）、<code>DLSS-5-Swapper-Update-Download/.github</code>（76⭐）、<code>cs-tool-s/.github</code>（244⭐ ⑂216）、<code>val-tools/.github</code>（242⭐ ⑂238）、<code>rbl-tools/.github</code>（240⭐ ⑂196）、<code>shareshellrelease/Cinema-4d</code>（82⭐）、<code>ThresholdSummoner/Camtasia</code>（80⭐）、<code>slaterockweb/BorisFX</code>（80⭐）、<code>Torrentthefoundry/KMS-Pico</code>（80⭐）——前 6 个与昨日已过滤的 <code>*-tool(s)/.github</code> 属同一可核验模式（<code>.github</code> 作仓库名 + <code>*-tool(s)/.github</code> 命名 + fork/star ≥ 0.5），后 4 个为同一模式（80–82⭐ ⑂0 + size 2 KB + 统一「Full working installer…Ready to run」描述的破解软件仓库）。<strong>未纳入 key_projects 的候选及原因</strong>：<code>eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC</code>（530⭐ ⑂94，Shell 215 KB，无 license）、<code>9bie/php2shell-bypass-aslr-exp</code>（356⭐ ⑂130，21.5 MB，<code>description</code> 为 null，无 license）、<code>Zer061/CVE-2026-109618</code>（52⭐ ⑂39）、<code>junaire/CVE-2026-109618-exploit</code>（74⭐ ⑂49）、<code>wakemeiflose/php2shell</code>（34⭐ ⑂14）、<code>JoasASantos/php2shell-scanner</code>（44⭐ ⑂15）、<code>syhunt/php2shell-protection</code>（62⭐ ⑂6）——均为同事件的 PoC/检测变体，<strong>作为「生态规模」的证据被引用，但与 <code>ikow/php2shell-poc</code> 内容重叠，本报不重复建档</strong>；<code>eagle-hq/EAGLE-4</code>（713⭐ ⑂18，<code>Official Inference Code of EAGLE-4</code>，NOASSERTION，本窗口未取 README 内容，模型与许可均无法核验）；<code>lesnolie/Tigris</code>（222⭐ ⑂20，Kotlin MIT，中文 tvOS 26 风格 Android TV 桌面，声明已在索尼 BRAVIA XR-55A80J 验证）、<code>op7418/guizang-tv</code>（137⭐ ⑂22）、<code>Jimu888/home-tv-cn</code>（41⭐，<strong>明确写着「基于 Aerial 定制」</strong>）——Android TV 桌面赛道连续第 5 天有新项目，但赛道已在 10-19/10-20/10-21 三份日报完整记录（free-my-tv / aerial-tv 等），<strong>今日不重复建档</strong>，仅作为赛道延续性记录；<code>eagle-hq/EAGLE-4</code> 与 flare 同属「官方开源推理代码」形态，属另一条观察线。<strong>延续跟踪</strong>：本日不新增延续跟踪条目（<code>simbasjungles/free-my-tv</code>、<code>pengchujin/aerial-tv</code>、<code>vercel-labs/fx0</code> 等昨日已建档项目的今日状态留给下一次日报统一处理，避免重复计入趋势指数造成失真）。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1php2shell-php-92">趋势 1：php2shell —— 一个 PHP 补丁被拆成四层职责，各自认领（趋势分 92）</h3>
+<p>先固定事实基线（全部来自 GitHub 官方接口）：</p>
+<table>
+<thead>
+<tr>
+<th>事实</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CVE-2026-109618 / GHSA-w8hw-w9fx-j79w，severity <code>critical</code>，summary <code>RCE via OOM corruption</code>，published 2026-10-21T13:34:25Z</td>
+<td><code>repos/php/php-src/security-advisories/GHSA-w8hw-w9fx-j79w</code></td>
+</tr>
+<tr>
+<td>CVE-2026-109619 / GHSA-6wmf-4rv5-p3rp，severity <code>critical</code>，summary <code>RCE via stale global state</code>，published 2026-10-21T13:34:13Z</td>
+<td><code>repos/php/php-src/security-advisories/GHSA-6wmf-4rv5-p3rp</code></td>
+</tr>
+<tr>
+<td>官方补丁 commit <code>3584a98bda</code>，作者日期 2026-10-18T15:26:39Z，标题 <code>Avoid state corruption via bailout</code>，<strong>改动 300 个文件</strong></td>
+<td><code>repos/php/php-src/commits/3584a98bda</code></td>
+</tr>
+<tr>
+<td>首个发布标签 <code>php-8.5.12</code>，published 2026-10-21T14:06:46Z</td>
+<td><code>repos/php/php-src/releases</code></td>
+</tr>
+<tr>
+<td>官方判定受影响 <code>&lt; 8.2.35</code> / <code>&lt; 8.3.36</code> / <code>&lt; 8.4.27</code> / <code>&lt; 8.5.12</code>（四条分支各一个 patched 版本）</td>
+<td>两条 advisory 的 <code>vulnerabilities</code> 数组</td>
+</tr>
+</tbody>
+</table>
+<p>advisory 发布（13:34Z）到 release 发布（14:06Z）<strong>只隔了 32 分钟</strong>，而补丁 commit 的作者日期比 advisory 早 3 天——<strong>修复早于披露，披露早于分发</strong>，这条时间线是今天所有下游工作的起点。</p>
+<p>接下来是一天之内长出的四层：</p>
+<p><strong>第一层：谁解释漏洞</strong> —— <code>ikow/php2shell-poc</code>（859⭐ ⑂308，fork-star 35.9%）。作者 Qi Deng，13 小时星数。它把两条 CVE 拆成<strong>五条链</strong>，并明确标出每条链的「是否预认证 / 需要什么条件 / 适用哪个 SAPI」：</p>
+<ul>
+<li>Chain A：session 注入 + LFI（预认证，需要应用有任意 LFI sink，全 SAPI）</li>
+<li>Chain B：<code>var_destroy</code> UAF → handler 覆写（非预认证，需要应用调用 <code>unserialize()</code>，全 SAPI）</li>
+<li>Chain C：handler 失配 → <code>__destruct</code>（预认证，需要两个目录 <code>serialize_handler</code> 不同，FPM）</li>
+<li><strong>Chain D：OOM 损坏 → 残留 <code>EG()</code>（预认证，条件「None — any endpoint」，mod_php）</strong></li>
+<li>Chain E：FPM session OOM → 残留 <code>BG()</code>（预认证，任意 <code>session_start()</code> 端点，FPM）</li>
+</ul>
+<p>README 自己判定 <strong>Chain D 最关键</strong>：「zero-dependency pre-auth RCE against any Apache mod_php installation. No LFI, no app vulnerability, no authentication — just a single multipart POST」。仓库结构与这个分层是自洽的：<code>exploit/</code> 只放 A/B/C 三个文件，<code>poc/</code> 放五个验证脚本（含 ASAN 版 <code>verify_uaf_asan.php</code>），<code>lab/</code> 提供 PHP-FPM + nginx + Apache mod_php 的 <code>docker-compose.yml</code> 一键靶场，<code>detection/</code> 放四类规则。</p>
+<p><strong>第二层：谁检测</strong> —— <code>ikow/php2shell-poc</code> 自带 <code>php2shell.rules</code>（Suricata/Snort IDS）· <code>php2shell.yaml</code>（Sigma SIEM）· <code>modsecurity.conf</code>（ModSecurity WAF）· <code>php2shell.lua</code>（OpenResty/Nginx Lua 模块）；<code>openai/php2shell-checker</code>（310⭐ ⑂22，Apache-2.0，26 KB）走另一条路——<strong>不做检测，只做版本判定</strong>，并把它包装成两个 skill（<code>skills/phpcheck-server/SKILL.md</code> 有服务器权限时用、<code>skills/phpcheck-url/SKILL.md</code> 只有 URL 时用），入口是 <code>node phpcheck.js "&lt;url&gt;"</code> 或 <code>node phpcheck.js --local</code>，退出码 <code>0=OK</code> / <code>1=VULNERABLE</code> / <code>3=UNKNOWN</code>，<code>--json</code> 输出 <code>patch_status</code>。它最值得抄的不是代码而是 <strong>Limitations 段</strong>：「OK is a version comparison based on the assumption that subsequent stable patches in each listed branch contain the fix. <strong>It does not independently verify a security fix.</strong>」「Headers can be hidden or changed, and distribution backports may not change the upstream version. <strong>UNKNOWN does not mean the target is patched!</strong>」——在一个所有人都在抢着发「我的一键检测」的窗口里，明确写出自己的结论不能被当证据，是罕见的自我设限。</p>
+<p><strong>第三层：谁在国家层面处置</strong> —— <code>NCSC-NL/php2shell</code>（96⭐ ⑂21，EUPL-1.2，<code>subscribers_count = 8</code> 为本批最高）。荷兰 NCSC 以 <strong>TLP:CLEAR</strong> 发布（README 标注 last significant change 21 October 2026 17:25 CEST），指明 CERT-EU 追踪编号 <strong>2026-018</strong>，并给出两条 advisory 都没有强调的一句：<strong>「The impact is not limited to websites: PHP is also embedded in appliances, network devices, management interfaces and other vendor products where administrators may not be able to update PHP directly.」</strong> 处置建议里包含 <code>session.upload_progress</code> 禁用、重启 worker、<code>memory_limit</code> / <code>post_max_size</code> / PHP 8.5 <code>fatal_error_backtraces</code> 指引，并诚实标注 <strong>「PHP states that these measures are not complete fixes」</strong>。仓库里 <code>software/</code> 目录放的是「有 PHP 依赖的受影响软件产品清单」——这是把「78% 的网站」这类统计换成具体产品名单的动作。</p>
+<p><strong>第四层：谁在等补丁期间先保住机器</strong> —— 这正是趋势 2 的 <code>HOSTED-POWER/php_uploadprogress_guard</code>。</p>
+<h3 id="2-89">趋势 2：把「等补丁」这段空窗期做成可安装软件（趋势分 89）</h3>
+<p><code>HOSTED-POWER/php_uploadprogress_guard</code>（53⭐ ⑂4，C，MIT，12 小时）是今日四个项目里唯一<strong>不是 PoC 也不是 PoC 检测</strong>的项目，也是唯一一个把缓解措施本身当作产品来交付的。它的核心动作是把官方补丁<strong>逐组件镜像</strong>进一个可加载的 PHP 扩展，从而「在未打补丁的 PHP 上移除已公布攻击链的每一环」。</p>
+<p>它的 README 从一个反直觉的建议开始：<strong>「Install the official PHP release… we recommend it without reservation. This module protects an unpatched PHP for real.」</strong> 并给出理由——包管理器可能明天就供上补丁，也可能永远不供（发行版停更的 LTS、嵌入式设备、被厂商锁死的 appliance）。这个表述把项目的定位卡得很准：<strong>它不是补丁的替代品，是补丁的候补</strong>。</p>
+<p>技术上三个机制（README 明示）：v3.0.0 <strong>移除 session upload-progress handler</strong> + <strong>携带修复版 parser</strong> + <strong>让 parser 本身不可能 OOM</strong>（headroom guard 保留 <code>memory_limit</code> 的八分之一）；<code>mode=native</code> 改为在 OOM 时直接结束进程（exit 137）而非继续服务下一个请求；<code>mbstring.encoding_translation=On</code> 的宿主交还给 PHP 自带 parser，因为 mbstring 的多字节 hook 是 file-static、无法镜像（但 callback detach 仍然生效）。</p>
+<p><strong>最见工程功力的是「自检让位」机制</strong>：用 <code>nm -D</code> 探测引擎是否导出了修复符号，已带官方补丁就报告 <code>carries the official fix =&gt; yes (fix symbol exported by the engine; parser replacement skipped)</code>。README 给出了逐版本的结果：Sury 的 5.6.40-104 / 7.0.33-92 / 7.3.33-35 / 7.4.33-31 / 8.1.34-9 / 8.3.36-1 全部报 yes，官方 docker 的 8.4.11 / 8.1.20 / 7.4.33 / 5.6.40 全部报 no 且全部机制 active；并说明「Neither fix symbol exists on any unpatched engine (<code>nm -D</code>)」。这意味着<strong>装了它的机器在升级 PHP 后会自己退场，不需要任何人工卸载动作</strong>——这是临时缓解方案最重要的工程属性。</p>
+<p><strong>它的 7 组实测记录是本日可复核性最高的材料</strong>（README 原文摘录）：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>无模块</th>
+<th>装模块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>php-cgi，15000 字段的单个 multipart body，未打补丁 8.4.11 / 8.1.20 / 7.0.33 / 5.6.40</td>
+<td>exit 255 <code>Allowed memory size exhausted</code>（请求启动期间）</td>
+<td><code>mode=native</code> → <strong>exit 137</strong>（进程结束）；默认 <code>mode=parse</code> → <strong>exit 0 + <code>Status: 413</code></strong>（headroom guard，根本没触发 OOM）</td>
+</tr>
+<tr>
+<td>php-fpm，GET 后接一个带文件字段的 OOM POST，再 GET（8.4.11 / 7.4.33 / 5.6.40）</td>
+<td>留下 <strong>1 个孤儿上传临时文件</strong>（<code>code 70</code>）</td>
+<td><code>mode=native</code> worker 因 <code>child exited with code 137</code> 被回收，<strong>0 孤儿文件</strong>；<code>mode=parse</code> 回 413，复用同一 worker，0 临时文件</td>
+</tr>
+<tr>
+<td><code>set_error_handler</code> + 未定义变量 + <code>trigger_error</code>，15000 字段 POST（8.4 与 5.6）</td>
+<td>—</td>
+<td><code>OK:15000 handled: … handled: custom</code> → <strong>请求状态重置不动用户的错误处理器</strong></td>
+</tr>
+<tr>
+<td>OPcache 编译窗口（<code>memory_limit=20M</code>，5.5 MB 脚本首编 + 9 MB POST in-memory）</td>
+<td><code>Allowed memory size … in Unknown on line 0</code>，<strong>错误落在 OPcache store 内部</strong></td>
+<td><code>compiled+ran, memory_limit=20M</code>，第二次请求正常</td>
+</tr>
+<tr>
+<td>cPanel EA4 <code>ea-php83</code> 8.3.35 on AlmaLinux 10.2（glibc 2.39）· DirectAdmin CustomBuild <code>php84</code> 8.4.22 on Debian 13</td>
+<td>—</td>
+<td>均加载预编译文件并报 <code>detached</code>；cPanel 上新开 <code>php-cgi -m</code> 列出模块</td>
+</tr>
+<tr>
+<td>Ansible 幂等性（tag-scoped <code>phpguard</code> run + 二次 run + 全量 untagged deploy）</td>
+<td>—</td>
+<td>ansibletest <code>failed=0</code>，二次 <code>changed=0</code>，全量部署 <code>ok=1506 failed=0</code>；web1/2/3 经 AWX 各 <code>changed=4</code>，fpm 重启，二次 <code>changed=0</code>；cpanel1.staging 8.1–8.4 <code>failed=0 changed=0</code>；directadmin1.staging 8.2–8.4 <code>failed=0 changed=0</code> 且三个 fpm 全部重启</td>
+</tr>
+</tbody>
+</table>
+<p>并且<strong>两次回归都被写在 README 里</strong>：v3.0.0 在 PHP 7.0–7.4 上因读取了 8.0.28 才存在的 ini 而拒绝所有 multipart 请求（<code>Multipart body parts limit exceeded 0</code>）——v3.0.0 修了它；v3.0.0 的 8.2–8.5 二进制构建于 Debian 13 因而要求 <code>GLIBC_2.38</code>，在 Debian 12 及更早上加载失败（<code>PHP Startup: Unable to load dynamic library</code>，<strong>PHP 继续运行但没有 guard</strong>）——v3.0.1 修了它，<code>build.sh</code> 现在拒绝任何高于 <code>GLIBC_2.14</code> 的构建。</p>
+<p><strong>架构师速览（php_uploadprogress_guard）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 PHP 扩展（<code>src/hp_uploadprogress_guard.c</code> + <code>config.m4</code>）+ 按 PHP minor 预编译的 NTS x86_64 <code>.so</code> 与 SHA256SUMS（<code>dist/</code>）+ 重建脚本（<code>build.sh</code>，从官方 <code>php:&lt;X.Y&gt;-cli</code> 镜像重建）+ 测试三件（<code>test/probe.php</code>、<code>test/run-builtin-server.sh</code>、<code>test/fcgi-probe.py</code>）+ 实际部署用的 Ansible task 与 ini（<code>ansible/</code>）。<strong>控制面在 PHP 引擎内部（handler 摘除 + parser 替换 + 内存余量闸门），数据面是 multipart 请求解析</strong></td>
+<td>全部来自 README 的「Repository layout」与「v3.1.0」测试段；<strong><code>flare</code> 式的内部符号级实现细节（具体 patch 了哪些引擎内部结构）README 未展开</strong>，只说 mirrors the official fix component by component</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>请求进入 → PHP 启动/请求初始化阶段 session upload-progress handler 已被摘除（对 109619 的直接对策）→ parser 换成修复版并带 headroom guard，<code>memory_limit</code> 的八分之一保持空闲（对 109618 的直接对策）→ 若真发生 OOM，<code>mode=native</code> 结束进程而非让半初始化状态继续跑 → 请求结束后状态被重置，用户的 error handler 不受影响 → 升级到带官方补丁的 PHP 后，<code>nm -D</code> 探测到修复符号即跳过 parser 替换</td>
+<td>逐条来自 README 的 v3.1.0 测试表、tmp 文件计数、error handler 测试、fix detection 段；<strong>headroom guard 与 OOM exit 的优先级关系、<code>mode=parse</code> 与 <code>mode=native</code> 的自动选择逻辑 README 未说明</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>自研缓解层（覆盖补丁空窗期，代价是必须逐版本跟引擎结构）vs 只发检测（安全但不阻断）vs 等发行版 backport（最稳但可能永远不来）</strong> · <code>mode=parse</code> 返回 413（保住进程，但改变了服务端对超大 multipart 的响应语义）vs <code>mode=native</code> 直接 exit 137（语义最贴近「崩溃」，但牺牲 worker）· 预编译二进制覆盖 5.6–8.5 十二个 minor（覆盖广，但每个都要单独构建与测试）vs 只支持当前分支（省事，但嵌入式与 LTS 机器恰恰是老分支）· 在 <code>mbstring.encoding_translation=On</code> 的宿主上放弃镜像 parser（诚实降级）vs 强行镜像（可能出错）· 主动向 PHP 官方发行版退让（自检到已修复就跳过）vs 长期驻留（与官方补丁冲突的风险）</td>
+<td>README 明示「we recommend it without reservation」「it notices and steps aside」「steps aside on its own, so there is nothing to undo」以及 mbstring 与 max_multipart_body_parts 的两处降级说明；<strong>未明示：12 个 minor 二进制的构建矩阵如何维护、与未来 CVE 的兼容性、以及长期维护者承诺</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 找一台<strong>不能升级 PHP</strong> 的机器（发行版停更 / 厂商 appliance / 自编译旧版）→ 2. 核对 <code>nm -D $(php -i \| grep extension_dir)</code> 确认修复符号<strong>不存在</strong>（README 用这条命令证明未打补丁机没有该符号）→ 3. 从 <code>dist/</code> 取对应 minor 的 <code>.so</code> 并核对 SHA256SUMS → 4. 用 <code>test/probe.php</code> 确认模块加载且报 detached → 5. 用 <code>test/run-builtin-server.sh</code> 复现 v3.1.0 表：15000 字段 POST 前后各一次 GET，确认得到 <code>Status: 413</code>（<code>mode=parse</code>）或 worker 被回收且无孤儿临时文件（<code>mode=native</code>）→ 6. 装一个带 <code>set_error_handler</code> 的脚本，确认 <code>handled:</code> 前缀仍在（证明未改用户代码语义）→ 7. 跑一次 Ansible tag-scoped 部署，<strong>再跑第二次确认 <code>changed=0</code></strong>（幂等性是这个项目最值得学的工程纪律）→ 8. 升级 PHP 到带补丁版本，确认 <code>php -v</code> / 模块自检报告 <code>carries the official fix</code> 并自动让位</td>
+<td>PoC 顺序完全按 README 已给的证据链倒排；<strong>第 2 步与第 8 步是整个 PoC 的意义所在</strong>：证明「装了会自己退场」这一点，比证明「装了能挡住」更重要；<strong>第 5 步是唯一真正需要自己动手的部分，前 3 步的产物 README 都已提供</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-86">趋势 3：大厂把研究原型当研究原型发布（趋势分 86）</h3>
+<p><code>NVIDIA/flare-local-inference</code>（485⭐ ⑂47，fork-star 9.7%，Apache-2.0，NVIDIA 官方组织，2 天）的 README 有一个细节值得单独记：<strong>第一句是对 agent 说的</strong>——「<strong>Coding agents: skip this README and read AGENTS.md directly.</strong>」</p>
+<p>架构上，它把「构建期」与「运行期」切成一条硬边界并写进代码库结构：</p>
+<ul>
+<li><code>ignition/</code>（Python 包）用 PyTorch、Transformers、FlashInfer/b12x 加载模型、调 kernel、编译 forward、把 CUDA graph 捕获成运行时包</li>
+<li><code>flare/</code>（Rust CLI）链接 <code>helios/</code>（Rust 运行库）<strong>在没有 Python 的情况下</strong>服务已准备好的 CUDA graph</li>
+<li><code>heliopause/</code>（crate）构建 <code>flare_heliopause</code> 扩展</li>
+<li><strong><code>Helios</code> 同时被 Flare 与 Heliopause 依赖，而 <code>Helios</code> 没有任何 Python 或准备工具的依赖</strong>——AGENTS.md 明确写出这条依赖方向</li>
+<li>「Compilation and graph capture finish before serving」——运行期不编译</li>
+</ul>
+<p>四条设计原则里最有信息量的是第三条：<strong>「Make memory and state explicit. Plan buffers and execution capacities ahead of time. Treat conversation state—including recurrent state alongside KV caches—as a whole, so reuse, branching, and resuming preserve it correctly.」</strong>——把循环状态（recurrent state）与 KV cache 当作一个整体来规划，正是 2026 年 serving 设计的核心争论点，而 README 把它列为原则而非实现细节。</p>
+<p><strong>它同时划了两条非常少见的边界</strong>。第一条在 README：「Flare is not, and will never, be a replacement for production inference engines like vLLM.」第二条在 <code>AGENTS.md</code>，而且是<strong>面向所有贡献者（含 agent）的三类驳回标准</strong>：</p>
+<ul>
+<li><strong>拒绝未批准的范围扩张</strong>：CPU 或非 NVIDIA 执行、可互换执行后端、训练或微调、多模型托管与路由、无关服务 API、通用集群编排——「均需维护者明确决定后才能实现；已支持的跨节点准备与服务<strong>不授权</strong>这些新增」</li>
+<li><strong>拒绝架构违规</strong>：生产 Python 回调、eager serving、运行期编译或重捕获、稳态 GPU 分配、模型特定原生策略或状态更新算法、准备元数据中的可执行扩展机制——并补一句「<strong>Flags, enums, callbacks, optional paths, and temporary implementations cannot be used to bypass them</strong>」</li>
+<li><strong>拒绝削弱保证</strong>：完整缓存与投机状态、非活跃行行为、异步资源生命周期、checkpoint 精度、模型语义、模型包兼容性；「<strong>不得删除校验、压制错误、静默替换执行路径，或放宽参考值、工作负载与数值边界来换取通过的检查或好看的指标</strong>」</li>
+</ul>
+<p>还有一句直接针对 agent 生成的贡献：<strong>「Hypothetical future consumers, agent-generated suggestions, and lint findings alone do not establish a need for a change.」</strong> 并且把发版纪律写成流程：进入 clone 后与 pull 后必须重读 <code>AGENTS.md</code> 与 <code>docs/design-review.md</code>，提交前启用 <code>.githooks/commit-msg</code> 钩子并按该文档做 <strong>staged-diff 复核</strong>；「A rejected acknowledgment requires reading that document and reviewing the staged change before retrying; <strong>do not treat the rejection as a formatting repair</strong>」——最后这半句是针对「agent 收到拒绝后当成格式问题去改」的防御性设计。</p>
+<p><strong>架构师速览（flare）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>四块且依赖方向单向：Ignition（Python，准备期：加载/调 kernel/编译/图捕获 → 运行时包）· Heliopause（crate，提供 <code>flare_heliopause</code> 扩展）· Helios（Rust 运行库，<strong>无 Python 与准备工具依赖</strong>，负责调度、缓存存储、请求处理）· Orbit（管理服务流程所需的主机、准备、包与 rank 进程）。数据面是 CUDA graph 驱动的推理；控制面是准备期产物（运行时包）与多主机调度</td>
+<td>AGENTS.md 开篇的依赖描述 + README 四条原则 + 仓库树中 <code>ignition/</code> <code>heliopause/</code> <code>helios/</code> <code>flare/</code> 四目录与 <code>docs/</code> 下的 <code>orbit.md</code> <code>multi-host.md</code>；<strong>Ignition 产出物的具体格式（<code>docs/runtime-package-design.md</code> 存在但本窗口未取其内容）与签名机制（<code>docs/signing.md</code> 存在）待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>主机侧用 PyTorch/Transformers/FlashInfer/b12x 把选定模型配方编译并捕获 CUDA graph → 打成运行时包 → Orbit 把包分发到目标主机、起 rank 进程 → Rust CLI 经 Helios 直接执行已捕获的 CUDA graph 服务请求，全程无 Python、无运行期编译、无稳态 GPU 分配 → 会话状态（循环状态 + KV cache）按预规划容量整体复用，支持分支与恢复</td>
+<td>全部由 AGENTS.md 的依赖方向、README 的「Compilation and graph capture finish before serving」与「the runtime owns scheduling, cache storage, and request handling」推出；<strong>分支与恢复的具体实现（<code>docs/prefix-cache-offload.md</code> / <code>docs/scheduling-*.md</code> 存在但本窗口未取内容）待核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>构建期 PyTorch 生态 vs 运行期 Rust（编译期灵活、服务期轻）vs 全 Python（简单但服务期重）</strong> · <strong>复用规范模型实现 vs 为布局/执行不同的部分特化</strong>（README 明示后者是例外而非默认）· <strong>提前规划内存与容量（稳态无分配）vs 动态按需分配（灵活但引入抖动与碎片）</strong> · <strong>聚焦硬件（仅 SM120/SM121）与模型覆盖（换取聚焦的服务契约）vs 广覆盖（vLLM 的路子）</strong> · <strong>贡献闸门严格（拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证）vs 接受度与迭代速度</strong> · <strong>发布研究原型收早期反馈 vs 等更成熟再开源</strong></td>
+<td>README 四条原则 + 「Flare trades that breadth for a focused serving contract」「Flare is not, and will never, be a replacement for production inference engines like vLLM」+ AGENTS.md 三类驳回标准与「This is a research prototype, and is made available via open-source to enable technical collaboration and collect early feedback」；<strong>未明示：SM120/SM121 具体对应哪些 GPU、聚焦模型清单、以及哪些部分已有实测数据</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 确认机器是 SM120 或 SM121（README 未给检测方法，<code>docs/cli-design.md</code> 可能有）→ 2. 按 <code>docs/model-preparation.md</code> 准备一个受支持模型配方 → 3. 用 <code>docs/container.md</code> 或 <code>docs/debian.md</code> 起环境 → 4. 只起<strong>单机</strong>（README 明示 single-host execution 在范围内），跨节点 TP 放到最后 → 5. 用 <code>docs/clients/codex.toml</code> / <code>claude-code.json</code> 的客户端配置接上 → 6. 只测一个明确工作负载：长会话 + 重复工具调用（README 自述的定位场景）→ 7. <strong>故意在同一会话里做一次「恢复」与一次「分支」，核对会话状态（含循环状态与 KV cache）是否被整体保留</strong>——这是 README 第三条原则唯一可证伪的地方 → 8. 跑 <code>./.github/workflows/native-serving.yml</code>（仓库内存在该工作流）对照</td>
+<td>PoC 顺序按依赖倒排且刻意只测单机；<strong>第 1 步（硬件判定）与第 7 步（状态整体性）是本项目最关键也最缺公开说明的两个点</strong>，前者 README 未给命令，后者只能靠 <code>docs/prefix-cache-offload.md</code> 与 <code>docs/scheduling-theory.md</code> 补</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-agent-agent-84">趋势 4：多 agent 终端从「多标签」到「多 agent 状态机」（趋势分 84）</h3>
+<p><code>dominikmartn/harp</code>（527⭐ ⑂29，Rust，AGPL-3.0 但 <code>warpui</code> 与 <code>warpui_core</code> 两个 crate 为 MIT，217 MB，个人项目，<strong>2 天 4 个 release</strong>：v0.1.0 10-20 11:13Z → v0.1.1 13:43Z → v0.1.2 18:09Z → v0.1.3 10-21 10:29Z）是 Warp 的非官方 fork，核心动作一句话说清：<strong>把 tab bar 换成专门为长跑型 coding agent 设计的侧边栏，其余保持 Warp 原样</strong>。</p>
+<p>侧边栏每行显示的状态是：<strong>working / waiting for you / done / inactive</strong>，配一个「未读标记，直到你真的看过才消失」；一个<strong>小圆点</strong>表示后台任务仍在跑；一个<strong>月亮</strong>表示你把这个 tab 置入了暂存；<code>Cmd+R</code> 重命名 tab。</p>
+<p><strong>限额环（limit rings）是本项目最可借鉴的设计</strong>。每个 provider 两个环——<strong>5 小时窗口</strong>与<strong>周限额</strong>，悬停显示数字与重置时间。数据来源分两种，README 说得很清楚：</p>
+<ul>
+<li><strong>Codex</strong>：从 <code>~/.codex/sessions</code>（或 <code>$CODEX_HOME</code>）里的 <code>rate_limits</code> 日志读；Codex 至少回答过一次后环才出现</li>
+<li><strong>Claude Code</strong>：Claude Code 只把计划限额交给 status line。<strong>Harp 首次启动时若 <code>~/.claude/settings.json</code> 里还没有 <code>statusLine</code>，Harp 会自己加一个</strong>——把 status line 的输入存到 <code>~/.harp/claude-statusline.json</code> 且不打印任何内容；<strong>已有的 status line 保持不动</strong>（想两者兼得，需要自己先把输入落盘，例如 <code>"command": "tee ~/.harp/claude-statusline.json | your-command"</code>）；环在 Claude Code 下一次回答后出现；<strong>只对 Claude.ai 计划有效，API key 无效</strong></li>
+</ul>
+<p>并且它把信任边界写成了三句否定：<strong>「Harp fetches nothing and reads no credentials.」</strong>「Everything else is upstream Warp… They talk to Warp's servers exactly as upstream does; <strong>Harp adds no servers of its own</strong>.」「<strong>Logging in through Harp is untested.</strong>」</p>
+<p><strong>tmux 集成的思路同样值得记</strong>：打开后，分组名与顺序存在 <strong>tmux session 本身</strong>上，因此<strong>跨重启存活，且其他 tmux 客户端看到同一布局</strong>；从手机 ssh 起的 session 可以用 <code>tmux set-option @warp_adopt 1</code> 认领一个 tab。默认关闭，开启后每 10 秒轮询。</p>
+<p><strong>它还明确列出「故意移除」的东西</strong>：tab bar 的搜索框、视图选项、tab 配置按钮、侧边栏分隔线选项、标题条面板开关。以及调试开关的用途——<code>WARPOSS_STATUS_TRACE=1</code> 把每一行状态的每次变化写成 <code>~/Library/Logs/harp.log</code> 的 <code>[status-check]</code> 行，「以对照某个 agent 的 transcript 做回归检查」；<code>WARPOSS_SKIP_LOGIN=1</code> 用测试用户启动并让所有认证请求失败以便自动化。</p>
+<p><strong>架构师速览（harp）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 macOS 桌面 App（Warp 的 fork，AGPL-3.0，<code>warpui</code>/<code>warpui_core</code> 为 MIT）。侧边栏替代 tab bar；限额环从两个<strong>本地</strong>来源读（Codex 的 <code>~/.codex/sessions</code> 日志、Claude Code 的 status line 输入）；tmux 集成为可选（默认关闭）；云功能（agents / Warp Drive / session sharing / login）仍直连 Warp 的服务器，<strong>Harp 不自建服务器</strong>。控制面：agent 状态探测 + 限额读取 + tmux 轮询；数据面：本地文件（<code>~/.codex/sessions</code>、<code>~/.harp/claude-statusline.json</code>、<code>~/.harp/settings.toml</code>）+ tmux session 属性</td>
+<td>全部来自 README 的 What it adds / Settings / 贡献者细节三段；<strong>agent 状态的判定机制（读 transcript？调 hook？）README 只提了一个「reports background tasks to the sidebar」的 Claude Code hook（<code>integrations/claude-code/README.md</code>），主路径待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>启动 → 侧边栏为每个 tab 探测 agent 状态并归入 working / waiting / done / inactive + 未读标记 → 每 10 秒轮询 tmux（若开启）同步 tab 名、分组、顺序与 read/inactive 标志，并从 tmux 属性读限额或按 <code>session_script</code> 执行自定义脚本 → 限额环读 Codex 的 <code>rate_limits</code> 日志与 Claude Code 的 status line 输入 → 若用户已有 statusLine 则<strong>不改动</strong>，若无则由 Harp 写入一个并把输入落盘到 <code>~/.harp/claude-statusline.json</code> → 一切云功能仍走 Warp 上游</td>
+<td>逐条来自 README；<strong>「Harp adds a statusLine if none exists」这条路径的失败模式（status line 被用户换掉、Claude Code 改格式）README 未讨论</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>fork 上游（Warp）拿全部既有功能 vs 从零写（无兼容负担）</strong>——README 明确 Harp <strong>不生产可用的更新</strong>：这是 fork 路线最本质的债 · <strong>读本地文件与日志拿限额 vs 请求云端 API（后者准确但要凭据）</strong>——选择本地读并因此只能用 status line 这条间接通道 · <strong>自动注入 status line（开箱即用）vs 不动用户配置（尊重但用户要自己配）</strong>——README 选了「有就不动，没有才加」的折中 · <strong>tmux 集成默认关闭（多数用户不需要）vs 默认开启（多 agent 玩家的核心诉求）</strong> · <strong>AGPL-3.0（改动必须开源回流的强约束）vs MIT（更易集成）</strong>——Harp 用「<code>warpui</code> 与 <code>warpui_core</code> 两个 crate 例外为 MIT」给自己留了口子</td>
+<td>README 明示「does not produce usable updates」「Harp fetches nothing and reads no credentials」「Harp adds no servers of its own」「Logging in through Harp is untested」「if ~/.claude/settings.json has no statusLine yet, Harp adds one… A status line you already have is left alone」与许可证例外条款；<strong>未明示 fork 与上游的同步策略、以及 AGPL 例外是否会随上游改动失效</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 从 Releases 取最新 DMG 拖入 Applications（v0.1.3 已发布，<strong>这条路今天就能走通</strong>，与昨日 opentrap 的空 releases 形成对比）→ 2. 同时开一个 Claude Code 会话与一个 Codex 会话，<strong>不要设任何 status line</strong> → 3. 启动 Harp，核对是否出现两个限额环（悬停应显示 5 小时窗口与周限额的数字与重置时间）→ 4. <strong>检查 <code>~/.claude/settings.json</code> 是否被写入了一个 <code>statusLine</code>，以及 <code>~/.harp/claude-statusline.json</code> 是否生成</strong> → 5. 现在把 status line 改成自己的一条命令，<strong>核对 Harp 不再改动它</strong>（README 明示已有则不碰），并按 README 提示改成 <code>tee ~/.harp/claude-statusline.json \| 你的命令</code> → 6. 观察五个状态是否随 agent 实际行为切换，并<strong>用 <code>WARPOSS_STATUS_TRACE=1</code> 把 <code>~/Library/Logs/harp.log</code> 的 <code>[status-check]</code> 行与某个 agent 的 transcript 对照</strong>，验证状态判定不是猜的 → 7. 打开 tmux 集成，建两个分组，重启一次，<strong>核对分组名与顺序是否仍在、其他 tmux 客户端是否看到同一布局</strong> → 8. 从手机 ssh 上去 <code>tmux set-option @warp_adopt 1</code> 认领一个 tab</td>
+<td>PoC 逐步来自 README；<strong>第 6 步是本项目最有价值的验证动作</strong>——它把「状态显示对不对」从主观感受变成可对照的日志证据；<strong>第 3 步可能失败（若 Claude Code 走的是 API key 而非 Claude.ai 计划，README 明示此时不出现环）</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最值得关注的方向</h2>
+<p>今天四个项目分属三个领域，但共享一个更值得记的判断标准：<strong>README 里的「我不做什么」，比「我能做什么」更能预测项目会不会活下来。</strong></p>
+<ul>
+<li><strong>php_uploadprogress_guard</strong> 的 README 第一句是「先装官方发行版，我们无条件推荐」，第二句才是「本模块真实保护未打补丁的 PHP」。<strong>主动劝退自己的项目，通常比夸大能力的项目更可信</strong>。加上它把两次自身回归（v3.0.0 在 PHP 7.x 上拒绝所有 multipart、v3.0.1 的二进制在 Debian 12 上加载失败导致<strong>PHP 继续运行但没有 guard</strong>）直接写进 README——第二个回归尤其值得注意，因为它意味着<strong>用户可能在毫无察觉的情况下处于「以为装了、其实没生效」的状态</strong>。</li>
+<li><strong>Flare</strong> 把同样的态度制度化成了 <code>AGENTS.md</code> 的三类驳回标准，并显式声明「agent 生成的建议本身不构成变更理由」。在一个越来越多项目开始接受 agent PR 的时期，这条规则的价值会随时间上升。</li>
+<li><strong>Harp</strong> 的反向声明同样是硬边界：「Harp 不自建任何服务器」「通过 Harp 登录未测试」「Harp 不读取任何凭据」「有意移除了 tab bar 的搜索框、视图选项、tab 配置按钮」。</li>
+<li><strong>openai/php2shell-checker</strong> 在一个所有人都在抢发「一键检测」的窗口里写「UNKNOWN 不等于已打补丁」「我不独立验证安全修复」——<strong>在一个事件驱动的热度洪峰里，主动写出自己结论的不可用边界，是本日最反常也最值得学的动作。</strong></li>
+</ul>
+<p><strong>跨项目的第二个观察：今日四个项目的 fork-star 分化极大（4.9%–35.9%），且分化方向可解释。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">⑂</th>
+<th style="text-align: right;">fork-star</th>
+<th>本批内 fork/star 最高者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ikow/php2shell-poc</td>
+<td style="text-align: right;">859</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;"><strong>35.9%</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>NVIDIA/flare-local-inference</td>
+<td style="text-align: right;">485</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">9.7%</td>
+<td></td>
+</tr>
+<tr>
+<td>HOSTED-POWER/php_uploadprogress_guard</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7.5%</td>
+<td></td>
+</tr>
+<tr>
+<td>dominikmartn/harp</td>
+<td style="text-align: right;">527</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">5.5%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>推断（不构成事实）</strong>：php2shell-poc 的 35.9% 有明确的机制解释——它带 <code>lab/docker-compose.yml</code> 一键靶场与五条可运行的验证脚本，<strong>fork 一个仓库去搭自己的复现环境是有直接用途的</strong>，而 fork 一个终端或一个扩展则不然。flare 的 9.7% 同样可解释——它带 30+ 份设计文档与 <code>docs/clients/*.toml</code> 客户端配置。<strong>但这只是本批四个点的观察，不足以支撑任何普遍结论；7 天后 fork 是否继续增长才是判据。</strong></p>
+<p><strong>必须同时说清的第三点：今日排名最高的趋势，其热度来源与其他三个根本不同。</strong> ikow/php2shell-poc 的 859⭐ 出现在 <code>created_at</code> 后约 13 小时，而作者把最关键的 Chain D/E 利用代码放在付费 Substack 之后——<strong>这里的 star 数度量的是 CVE 事件的关注度，不是工具采用度</strong>。任何基于「今天最热的项目」做技术选型的判断，在这个案例上都会失效。</p>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="deep-dive-1hosted-powerphp_uploadprogress_guard">Deep Dive 1：HOSTED-POWER/php_uploadprogress_guard（把「等补丁」做成可安装、可自检、会自己退场的软件）</h3>
+<p><strong>项目定位。</strong> 宿主托管商 Hosted Power 为自家机队构建的 PHP 扩展，公开给所有人。12 小时 53⭐ ⑂4（fork-star 7.5%），C，MIT，5750 KB，<code>subscribers_count = 4</code>，<code>open_issues_count = 2</code>，覆盖 PHP 5.6–8.5 与 Sury / Remi / cPanel EA4 / DirectAdmin CustomBuild / 官方 Docker 镜像。</p>
+<p><strong>为什么它值得比它的 star 数更多的注意力。</strong> 因为它回答的是一个具体到可以立即执行的问题：<strong>你的机器今天就要被攻击，但你的发行版要三个月后才供上补丁，或者永远不会（嵌入式 appliance、被厂商锁死的管理界面、LTS 已停更）——那这三个月怎么办？</strong> NCSC-NL 的公告恰好点名了这一类机器（「PHP is also embedded in appliances, network devices, management interfaces and other vendor products where administrators may not be able to update PHP directly」）。这个缺口此前只能靠手改 <code>php.ini</code> 或加 WAF 规则顶，而这两者都不改引擎内部。</p>
+<p><strong>技术亮点（全部可核验于 README）：</strong>
+- <strong>逐组件镜像官方补丁</strong>，覆盖 PHP 5.6–8.5 十二个 minor，每分支每 SAPI 单独测试
+- <strong>三个机制</strong>：移除 session upload-progress handler（对 109619）· 携带修复版 parser 并让 parser 本身不可能 OOM（对 109618，headroom guard 保留 <code>memory_limit</code> 的八分之一）· <code>mode=native</code> 在 OOM 时直接结束进程（exit 137）而非让半初始化状态继续服务下一个请求
+- <strong>自检让位</strong>：用 <code>nm -D</code> 探测引擎导出的修复符号，已打补丁则报告 <code>carries the official fix =&gt; yes</code> 并跳过 parser 替换——<strong>升级后自动退场，无需人工卸载</strong>
+- <strong>两处诚实降级</strong>：mbstring 的多字节 hook 是 file-static 无法镜像 → <code>mbstring.encoding_translation=On</code> 的宿主交还给 PHP 自带 parser（callback detach 仍生效）；8.0–8.3 的副本不再依赖中途才加入的 <code>max_multipart_body_parts</code>
+- <strong>孤儿临时文件这一条最容易被忽略</strong>：<code>mode=native</code> 下 worker 因 <code>child exited with code 137</code> 被回收且 0 孤儿上传临时文件，而<strong>原生 PHP 启动失败会留下 1 个（<code>code 70</code>）</strong>——在共享主机上这是磁盘耗尽的一个真实来源
+- <strong>12 个二进制全部 <code>GLIBC_2.14</code> 以下</strong>，零编译警告，修复探针以 versionless weak reference 形式存在（<code>objdump -T</code> 可查）
+- <strong>两次自身回归写在 README</strong>：v3.0.0 修了 v2.2.0 在 PHP 7.0–7.4 上拒绝所有 multipart 请求的 bug（原因：读取了 8.0.28 才存在的 ini）；v3.0.1 修了 v3.0.0 二进制在 Debian 12 及更早上因 <code>GLIBC_2.38</code> 无法加载、<strong>导致 PHP 继续运行但 guard 未生效</strong>的 bug</p>
+<p><strong>风险。</strong>
+- <strong><code>dist/</code> 里是二进制 .so</strong>：即使有 SHA256SUMS，宿主仍需信任发布者。这是所有「预编译缓解方案」的共同性质，也是本项目最大的信任假设
+- <strong>维护是单人 + 一个托管商</strong>：上游 PHP 若在 Zend 引擎结构上做新改动，镜像可能失效；README 未说明跟进机制
+- <strong>与 WAF 的关系未讨论</strong>：把 <code>session.upload_progress.enabled=Off</code> 这类官方缓解（NCSC-NL 列出的第一条）与本扩展叠加是否会冲突，README 未涉及
+- <strong><code>subscribers_count = 4</code></strong>：这不是被广泛验证的工具
+- <strong>「PHP 继续运行但没有 guard」这个失败模式值得用户自查</strong>——README 自己写下了这个回归，说明它真实发生过</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，且优先级高于它的 star 数。</strong> 理由与热度无关：<strong>它是本日唯一一个把「临时缓解方案」当作长期工程对象来做、并把「自己会退场」写进机制设计的项目</strong>。这两条（可复现的验证记录 + 自动让位）正是所有临时缓解方案通常缺失的部分。<strong>观察重点：<code>dist/</code> 二进制的信任模型是否被独立验证（README 给了 SHA256SUMS 但发布者即构建者）、12 分支持续矩阵如何维护、以及是否会有第二个维护者出现。</strong></p>
+<h3 id="deep-dive-2nvidiaflare-local-inference">Deep Dive 2：NVIDIA/flare-local-inference（研究原型的发布方式本身就是技术信号）</h3>
+<p><strong>项目定位。</strong> NVIDIA 官方组织的本地推理服务器，面向 SM120/SM121 GPU，定位「long conversations, coding agents, and repeated tool use」，2 天 485⭐ ⑂47（fork-star 9.7%，本批最高），Apache-2.0，22386 KB，<code>subscribers_count = 5</code>，<code>open_issues_count = 8</code>。README 明写：<strong>「This is a research prototype, and is made available via open-source to enable technical collaboration and collect early feedback.」</strong></p>
+<p><strong>最值得记的技术判断（README 四条原则）：</strong>
+- <strong>构建期拥抱标准 PyTorch 生态，运行期用 Rust</strong>——<code>ignition/</code>（Python）负责加载/调 kernel/编译 forward/捕获 CUDA graph 并打包，<code>flare/</code>（Rust CLI）链接 <code>helios/</code>（Rust 运行库）在无 Python 的情况下服务该包。AGENTS.md 明确了依赖方向：<strong>Helios 被 Flare 与 Heliopause 依赖，而 Helios 没有任何 Python 或准备工具的依赖</strong>
+- <strong>复用规范模型实现，只为布局或执行确实不同的部分做特化</strong>——这是对「什么都自己重写」的直接否定
+- <strong>把内存与状态显式化</strong>：提前规划 buffer 与执行容量；<strong>把会话状态连同循环状态与 KV cache 当作整体</strong>，使复用、分支与恢复都能正确保持
+- <strong>运行时保持小而专</strong>：模型配方负责模型计算，运行时负责调度、缓存存储与请求处理
+- <strong>编译与图捕获在服务之前完成</strong>——运行期不编译</p>
+<p><strong>最值得记的非技术判断（AGENTS.md）：</strong> 这是本日唯一把「拒绝什么」写成制度文件的项目。三类驳回标准之外，还有两条常被忽略的补充：其一，「<strong>Hypothetical future consumers, agent-generated suggestions, and lint findings alone do not establish a need for a change</strong>」——直接拒绝以「未来可能有人用」或「agent 建议」为理由的贡献；其二，发版纪律要求提交前启用 <code>.githooks/commit-msg</code> 钩子并按 <code>docs/design-review.md</code> 做 staged-diff 复核，且「<strong>被拒绝的确认不得当作格式修复处理</strong>」——这是针对「agent 把架构评审的拒绝当成 lint 报错去改」的防御性设计。</p>
+<p><strong>风险。</strong>
+- <strong>研究原型，无 release</strong>：<code>releases</code> API 返回空数组，启动路径需自行按 <code>docs/</code> 构建
+- <strong>硬件门槛硬</strong>：仅 SM120/SM121，<code>vLLM 覆盖更广的模型、硬件与部署形态</code>——覆盖面确实窄
+- <strong><code>subscribers_count = 5</code>，8 个 open issues 在 2 天内</strong>——早期项目的正常状态，不能读作质量信号
+- <strong>README 几乎不给出性能数字</strong>：30+ 份设计文档（<code>scheduling-theory</code> / <code>prefix-cache-offload</code> / <code>mtp-design</code> / <code>roce-ring</code> 等）存在，但 README 首页没有任何 benchmark 表格——<strong>架构主张与实测证据之间目前有可见的落差</strong>
+- <strong>贡献闸门严格可能拖慢采纳</strong>：对外部贡献者而言，被 AGENTS.md 明确拒绝的范围（训练/微调、多模型托管、CPU 执行）恰好覆盖了不少人最想做的事</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，理由是它提供了一份「研究原型该如何被公开」的完整样本</strong>——尤其是 <code>AGENTS.md</code> 的驳回标准与 staged-diff 复核流程，可以直接被抄进任何有 agent PR 的开源项目。<strong>观察重点：是否开始发布带 benchmark 的 release、SM120/SM121 之外是否扩展、以及贡献闸门在实际协作中是否真的挡住了架构违规（看 issue 里被拒绝的 PR 类型）。</strong></p>
+<h3 id="deep-dive-3ikowphp2shell-poc-star">Deep Dive 3：ikow/php2shell-poc（五条链 + 一键靶场 + 四类规则，但 star 数度量的是事件而非采用）</h3>
+<p><strong>项目定位。</strong> 个人研究者 Qi Deng 的 CVE 研究与利用工具包，13 小时 859⭐ ⑂308，Python，2706 KB，<code>subscribers_count = 4</code>，<code>open_issues_count = 2</code>。</p>
+<p><strong>必须先讲的一件事：它的热度不是技术指标。</strong> 859⭐ 出现在创建后约 13 小时，而<strong>最关键的 Chain D 与 Chain E 的利用代码放在付费 Substack 订阅之后</strong>（README Disclaimer 明写），公开的 <code>exploit/</code> 只有 A/B/C 三条链。也就是说：<strong>star 数最高的那部分价值，恰好是免费拿不到的</strong>——这与「star = 工具被采用」的常规读法完全不同。同时它引用的「影响 78% 网站、WordPress 43%」是<strong>作者主张，本日报未独立核验</strong>；相比之下 <code>NCSC-NL/php2shell</code> 给出的是 <code>software/</code> 目录里的具体产品清单，这种形式更可核验。</p>
+<p><strong>技术亮点（可核验于 README 与仓库树）：</strong>
+- <strong>五条链各自标注「是否预认证 / 需要什么条件 / 适用哪个 SAPI」</strong>，Chain D 明确标为「<strong>Conditions: None — any endpoint</strong>」「mod_php」，并被作者自己判为最关键
+- <strong><code>lab/</code> 一键靶场</strong>：<code>docker-compose.yml</code> 同时起 PHP-FPM + nginx + Apache mod_php，另有 <code>php-apache.ini</code> 与 <code>setup.sh</code>
+- <strong><code>poc/</code> 五个验证脚本</strong>逐链对应，含 ASAN 版 <code>verify_uaf_asan.php</code>（对 UAF 类问题用 ASAN 是标准做法）
+- <strong><code>detection/</code> 四类规则</strong>：Suricata/Snort IDS、Sigma SIEM、ModSecurity WAF、OpenResty/Nginx Lua 模块——<strong>同一仓库同时覆盖网络层、SIEM 层、WAF 层与应用层</strong>
+- <strong>缓解建议附边界声明</strong>：<code>session.upload_progress.enabled = Off</code> + <code>session.use_only_cookies = On</code>，并明写「<strong>The only complete fix is patching PHP… The OOM corruption (Chain D) is in the Zend engine core — no INI setting fixes it.</strong>」——<strong>明确否定了「改 ini 就行」的流行说法</strong>
+- <strong>下游影响表</strong>逐框架标注条件（WordPress 核心不用 PHP session 但 WooCommerce 与多数插件用；Magento 在维护模式下仍受影响；Laravel 的 <code>PendingBroadcast</code> 是已知 <code>__destruct</code> gadget）</p>
+<p><strong>风险。</strong>
+- <strong>⚠️ 许可证不一致（可核验）</strong>：GitHub API 的 <code>license.spdx_id</code> 为 <strong>null</strong>（NOLICENSE），而 README 末尾写 <strong>MIT</strong>。以 GitHub 侧为准则<strong>无授权</strong>。对要复用其检测规则或靶场配置的人，这是必须先澄清的问题
+- <strong>最关键的利用代码不公开</strong>：D/E 链在付费墙后
+- <strong><code>subscribers_count = 4</code> / <code>oi = 2</code></strong>：这是事件驱动的注意力，不是深度关注
+- <strong>NOLICENSE 的连带影响</strong>：<code>detection/</code> 里的规则能否被安全地内嵌进商业产品，取决于许可证澄清的结果
+- <strong>同时存在的多个竞争 PoC</strong>：<code>eness/php2shell-...-PoC</code>（530⭐ ⑂94）、<code>9bie/php2shell-bypass-aslr-exp</code>（356⭐ ⑂130）、<code>Zer061/CVE-2026-109618</code>（52⭐ ⑂39）、<code>junaire/CVE-2026-109618-exploit</code>（74⭐ ⑂49）等，多数<strong>无 license 或无 description</strong>——生态碎片化明显，也说明本仓库的优势不在唯一性而在完整性（链 + 靶场 + 检测三者齐备）</p>
+<p><strong>是否值得跟踪。</strong> <strong>作为研究材料跟踪，作为依赖不推荐。</strong> 理由：它的<strong>检测规则</strong>（四类）与<strong>靶场配置</strong>是可直接复用的资产，值得抽取；它的<strong>利用代码</strong>部分在付费墙后，价值不可核验；而 NOLICENSE 与 MIT 的不一致必须在复用前解决。<strong>观察重点：仓库是否补上 LICENSE 文件、四个检测规则是否被主流 WAF/IDS 项目（如 Corelight README 中提到的社区规则）合并、以及 Chain D/E 的公开程度。</strong></p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机会</h3>
+<ol>
+<li><strong>「临时缓解方案」是一个被低估的产品形态。</strong> php_uploadprogress_guard 证明了一件事：<strong>在官方补丁到达之前的那段窗口里，有真实且迫切的需求，且这个需求可以做成有版本、有测试、有退场机制的正经软件</strong>。这对任何做基础库、运行时、协议的项目都适用——不只是安全事件。</li>
+<li><strong>在事件洪峰里主动写「我不做什么」，是本日最稀缺的动作。</strong> openai/php2shell-checker 写「UNKNOWN 不等于已打补丁」「我不独立验证安全修复」；guard 写「我们无条件推荐官方发行版」；flare 写「不是也不会是 vLLM 的替代」。<strong>热度越高，这类声明的价值越大</strong>，因为它替代了本该由用户承担的验证成本。</li>
+<li><strong>把贡献边界写成机器可读的文件，而不是散落在 CONTRIBUTING 里。</strong> flare 的 <code>AGENTS.md</code> 把「拒绝什么」列成三类可执行标准，并明确「agent 生成的建议本身不构成变更理由」。在 agent 参与开源贡献越来越多的当下，这类文件本身就是一种防御机制。</li>
+<li><strong>agent 状态管理正在成为独立的一层。</strong> harp 证明「多开几个 agent」带来的真问题不是终端多标签，而是<strong>「哪一个在等我」</strong>。五种状态 + 未读标记 + 后台圆点 + 置入暂存 + 双 provider 限额环，是一套不需要模型就能做的信息设计；其中「限额从本地日志与 status line 读、不读任何凭据」的信任边界尤其值得借鉴。</li>
+<li><strong>国家 CERT 仓库是 CVE 响应的高质量参考物。</strong> <code>NCSC-NL/php2shell</code> 以 EUPL-1.2 + TLP:CLEAR 发布，<code>software/</code> 目录放受影响产品清单而非「78% 网站」这类统计，并引用 CERT-EU 编号 2026-018 与其他成员国 CSIRT 公告——<strong>「给具体产品名」比「给一个百分比」有用得多</strong>。</li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>CVE 事件的 star 数与技术价值脱钩，且这种脱钩有明确机制。</strong> 本日排名第一的趋势是事件驱动：13 小时 859⭐，而最关键的利用代码在付费墙后，最常用的资产（检测规则）反而不需要 star 数来评价。<strong>今天的热度排序对技术选型没有参考价值</strong>——这与昨日「fork-star 普遍偏低说明热度更像曝光」的观察是同一个问题的两面。</li>
+<li><strong>预编译二进制的分发仍是信任问题。</strong> guard 的 <code>dist/</code> 提供了 SHA256SUMS，但发布者即构建者，没有独立签名或第三方构建。这类方案在安全事件中的可信度高度依赖读者是否验证——而 README 明确鼓励「install the official release」，恰恰说明作者自己也把它定位为候补而非首选。</li>
+<li><strong>NOLICENSE 与 MIT 自述不一致。</strong> php2shell-poc 的 GitHub 侧 <code>license.spdx_id</code> 为 null。这是<strong>可核验的事实</strong>，也是本日报中唯一一处元数据与自述直接冲突的记录——在安全事件这种「大家都在复制粘贴」的场合，许可证不明意味着检测规则无法安全内嵌进商业产品。</li>
+<li><strong>研究原型的架构主张与实测证据之间有落差。</strong> flare 有 30+ 份设计文档，但 README 首页没有任何 benchmark。<strong>「我们把内存与状态显式化」是一句主张，不是一个测量结果</strong>；在本日报采信的所有材料中，guard 的 7 组实测表是唯一带具体输入与输出数值的一组。</li>
+<li><strong>非官方 fork 的路线债是结构性的。</strong> harp 明写「does not produce usable updates」——这意味着上游 Warp 的每次改动都不会自动到达，用户要么自己解冲突要么放弃某部分功能。2 天 4 个 release 表明当前跟随强度尚可，但<strong>这不是一个能长期成立的模型</strong>，README 自己也知道。</li>
+<li><strong>Android TV 桌面赛道已连续第 5 天有新项目，但今日仍不重复建档。</strong> <code>lesnolie/Tigris</code>（222⭐，声称已在索尼 BRAVIA XR-55A80J 验证）、<code>op7418/guizang-tv</code>（137⭐）、<code>Jimu888/home-tv-cn</code>（41⭐，<strong>README 明写「基于 Aerial 定制」</strong>）——赛道真实存在竞争，但也开始出现直接派生。<strong>赛道已验证不等于每个项目都有价值</strong>；差异化正在从「UI 像不像 tvOS」转向「在什么机型上能活下来」。</li>
+</ol>
+<h2 id="_6">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ikow/php2shell-poc</td>
+<td>Python + 2706 KB + 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）+ 作者 Qi Deng + 两条 CVE 各 CVSS 9.2（GHSA-w8hw-w9fx-j79w「RCE via OOM corruption」published 2026-10-21T13:34:25Z / GHSA-6wmf-4rv5-p3rp「RCE via stale global state」published 13:34:13Z）+ 官方补丁 commit 3584a98bda（作者日期 2026-10-18T15:26:39Z，标题 Avoid state corruption via bailout，300 文件）+ 首个 release php-8.5.12 published 2026-10-21T14:06:46Z + 官方判定受影响 <code>&lt;8.2.35</code> / <code>&lt;8.3.36</code> / <code>&lt;8.4.27</code> / <code>&lt;8.5.12</code> + 5 条链（作者判定 D 最关键：<strong>Conditions None — any endpoint</strong>，mod_php）+ <code>exploit/</code> 公开 A/B/C 三条链，<strong>D/E 在付费 Substack 后</strong> + <code>poc/</code> 5 个验证脚本含 ASAN 版 + <code>lab/</code> PHP-FPM+nginx+mod_php docker-compose 一键靶场 + <code>detection/</code> 四类规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）+ 缓解 <code>session.upload_progress.enabled=Off</code> 且明言 <strong>Chain D 在 Zend 引擎核心里没有任何 INI 设置能修</strong> + 下游表（WordPress 核心不用 session 但 WooCommerce 与多数插件用 · Magento 维护模式下仍受影响 · Laravel <code>PendingBroadcast</code> 为已知 <code>__destruct</code> gadget）+ <strong><code>license.spdx_id</code> 为 null 而 README 写 MIT（可核验的不一致）</strong> + subs 4 oi 2</td>
+<td>推断：35.9% 的 fork-star 与「带一键靶场与可运行验证脚本」直接相关——fork 去搭自己的复现环境有用途，fork 一个工具则未必；推断：其作为资产的价值主要在 <code>detection/</code> 与 <code>lab/</code>，而不在 star 数</td>
+<td>待核验：<strong>是否补上 LICENSE 文件（决定检测规则能否安全内嵌）</strong> + Chain D/E 的公开程度 + 四类规则是否被主流 WAF/IDS 合并 + README 的「78% 网站 / WordPress 43%」缺乏独立来源 + NOLICENSE 与 MIT 自述冲突的解决方式</td>
+</tr>
+<tr>
+<td>HOSTED-POWER/php_uploadprogress_guard</td>
+<td>C + MIT + 5750 KB + 12 小时 53⭐ ⑂4（fork-star 7.5%）+ Hosted Power 为自家机队构建后公开 + 覆盖 PHP 5.6–8.5 与 Sury/Remi/cPanel EA4/DirectAdmin CustomBuild/官方 Docker + README 开头即 <strong>「we recommend it without reservation」装官方发行版</strong> + 三机制（移除 session upload-progress handler · 携带修复版 parser + headroom guard 保留 memory_limit 八分之一 · mode=native 遇 OOM 直接 exit 137）+ <strong>自检让位</strong>：<code>nm -D</code> 探测修复符号，Sury 5.6.40-104/7.0.33-92/7.3.33-35/7.4.33-31/8.1.34-9/8.3.36-1 全报 <code>carries the official fix =&gt; yes</code>，官方 docker 8.4.11/8.1.20/7.4.33/5.6.40 全报 no 且机制全 active，未打补丁引擎上「Neither fix symbol exists (nm -D)」+ v3.1.0 未打补丁机型行为表（15000 字段单 multipart，8.4.11/8.1.20/7.0.33/5.6.40 一致：无模块 exit 255 Allowed memory size exhausted；mode=native <strong>exit 137</strong>；默认 mode=parse <strong>exit 0 + Status: 413</strong>）+ php-fpm 场景 mode=native worker 因 <code>child exited with code 137</code> 被回收且 <strong>0 孤儿上传临时文件（原生 PHP 留 1 个，code 70）</strong> + <code>set_error_handler</code> 场景在 8.4 与 5.6 均返回 <code>OK:15000 handled: …</code>，证明请求状态重置不动用户错误处理器 + OPcache 编译窗口 20M 限额下无模块报 <code>Allowed memory size … in Unknown on line 0</code>（错误落在 OPcache store 内），装模块后 <code>compiled+ran</code> + cPanel EA4 ea-php83 8.3.35 on AlmaLinux 10.2 与 DirectAdmin CustomBuild php84 8.4.22 on Debian 13 均加载预编译并报 detached，cPanel 上 <code>php-cgi -m</code> 列出模块 + Ansible 幂等：ansibletest 二次 <code>changed=0</code>、全量 <code>ok=1506 failed=0</code>；web1/2/3 经 AWX 各 <code>changed=4</code> 且 fpm 重启、二次 <code>changed=0</code>；cpanel1.staging 8.1–8.4 与 directadmin1.staging 8.2–8.4 均 <code>failed=0 changed=0</code> + <strong>两次回归写在 README</strong>：v3.0.0 修 v2.2.0 在 7.0–7.4 拒绝所有 multipart；v3.0.1 修 v3.0.0 二进制因 <code>GLIBC_2.38</code> 在 Debian 12 及更早加载失败、<strong>PHP 继续运行但 guard 未生效</strong>，build.sh 现拒绝任何高于 GLIBC_2.14 的构建 + 12 个二进制零编译警告、修复探针为 versionless weak reference（objdump -T）+ mbstring 与 max_multipart_body_parts 两处诚实降级 + <strong><code>releases</code> API 返回空数组</strong>（<code>dist/</code> 与文档是主分发路径）+ subs 4 oi 2</td>
+<td>推断：<strong>「装了会自己退场」比「装了能挡住」更重要</strong>——这是所有临时缓解方案通常缺失的工程属性；推断：把缓解做成产品需要在补丁空窗期之外还想清楚两件事：信任模型与跟随机制</td>
+<td>待核验：<strong><code>dist/</code> 二进制无独立签名（发布者即构建者，SHA256SUMS 需自行验证）</strong> + 12 分支持续矩阵如何维护 + 未来 Zend 引擎结构变更时的跟进机制 + 与 WAF / <code>session.upload_progress.enabled=Off</code> 叠加是否冲突 + 是否有第二维护者</td>
+</tr>
+<tr>
+<td>NVIDIA/flare-local-inference</td>
+<td>Apache-2.0 + Python + 22386 KB + 2 天 485⭐ ⑂47（fork-star 9.7%，本批最高）+ NVIDIA 官方组织 + 定位 SM120/SM121 GPU 的本地推理服务器 + README 第一句给 agent：<strong>Coding agents: skip this README and read AGENTS.md directly</strong> + 四组件单向依赖（<code>ignition/</code> Python 用 PyTorch+Transformers+FlashInfer+b12x 加载/调 kernel/编译/捕获 CUDA graph 打包 → <code>heliopause/</code> crate 构建 flare_heliopause → <code>flare/</code> Rust CLI 链接 <code>helios/</code> Rust 运行库无 Python 服务 → <strong>Helios 无任何 Python 或准备工具依赖</strong>）+ 编译与图捕获在服务之前完成 + 四原则（构建期 PyTorch 生态 / serve 时 Rust · 复用规范模型实现只特化布局与执行不同处 · <strong>把内存与状态显式化：提前规划 buffer 与执行容量，把会话状态连同循环状态与 KV cache 当作整体使复用分支恢复都正确</strong> · 运行时小而专：模型配方负责模型计算、运行时负责调度缓存存储与请求处理）+ <strong>README 明文划界：vLLM 覆盖更广的模型硬件与部署形态，Flare 用广度换聚焦服务契约；不是、也永远不会是对 vLLM 这类生产推理引擎的替代</strong> + <strong>自述研究原型，开源是为技术协作与收集早期反馈</strong> + <strong>AGENTS.md 三类驳回标准</strong>（拒绝未批准的范围扩张：CPU/非 NVIDIA 执行、可互换执行后端、训练或微调、多模型托管与路由、无关服务 API、通用集群编排，且已支持的跨节点 TP <strong>不授权</strong>这些新增 / 拒绝架构违规：生产 Python 回调、eager serving、运行期编译或重捕获、稳态 GPU 分配、模型特定原生策略或状态更新算法、准备元数据中的可执行扩展机制，<strong>且 Flags/enums/callbacks/optional paths/temporary implementations 不能用来绕过</strong> / 拒绝削弱保证：完整缓存与投机状态、非活跃行行为、异步资源生命周期、checkpoint 精度、模型语义、模型包兼容性，<strong>不得删除校验、压制错误、静默替换执行路径或放宽参考值工作负载与数值边界换取通过的检查或好看的指标</strong>）+ <strong>「Hypothetical future consumers, agent-generated suggestions, and lint findings alone do not establish a need for a change」</strong> + 发版纪律：进入 clone 与 pull 后重读 AGENTS.md 与 docs/design-review.md，提交前启用 <code>.githooks/commit-msg</code> 钩子并做 staged-diff 复核，<strong>「被拒绝的确认不得当作格式修复处理」</strong> + Orbit 管理主机/准备/包/rank 进程，单机执行与跨节点 TP 均在范围内 + docs/ 含 30+ 份设计文档（core-design / runtime-package-design / prefix-cache-offload / mtp-design / scheduling-theory / scheduling-runtime-design / scheduling-oracle / scheduling-utility / same-process-tp / tp-checkpoint-layout / roce-ring / direct-execution / signing / design-review / orbit / multi-host 等）+ docs/clients/{claude-code.json, codex-models.json, codex.toml} 客户端样本 + .github/workflows/native-serving.yml + <strong><code>releases</code> API 返回空数组</strong> + subs 5 oi 8</td>
+<td>推断：把「拒绝什么」写成机器可读的 AGENTS.md 并显式排除「agent 建议」作为变更理由，是可被任何有 agent PR 的开源项目直接抄走的制度设计；推断：README 无 benchmark 而设计文档 30+ 份，说明<strong>架构主张与实测证据之间目前有可见落差</strong></td>
+<td>待核验：<strong>SM120/SM121 对应哪些具体 GPU 与 README 未给检测方法</strong> + 受支持模型清单 + 是否开始发布带 benchmark 的 release + 运行时包格式与签名机制（docs/runtime-package-design.md 与 docs/signing.md 存在但本窗口未取内容） + 分支与恢复的具体实现（docs/prefix-cache-offload.md 与 scheduling-* 未取内容） + 贡献闸门在实际协作中是否真的挡住了架构违规</td>
+</tr>
+<tr>
+<td>dominikmartn/harp</td>
+<td>Rust + AGPL-3.0（<code>warpui</code> 与 <code>warpui_core</code> 两个 crate 为 MIT）+ 222265 KB（217 MB，本批最大）+ 个人项目 + 2 天 527⭐ ⑂29（fork-star 5.5%）+ <strong>2 天 4 个 release：v0.1.0（10-20 11:13Z）→ v0.1.1（13:43Z）→ v0.1.2（18:09Z）→ v0.1.3（10-21 10:29Z）</strong> + 徽章只标 macOS + Warp 非官方 fork，<strong>把 tab bar 换成专为长跑型 coding agent 设计的侧边栏，其余保持 Warp 原样</strong> + 五种状态（working / waiting for you / done / inactive）+ 未读标记直到真的看过 + 小圆点=后台仍在跑 + 月亮=已置入暂存 + Cmd+R 重命名 + 分组名与顺序存 <strong>tmux session 本身</strong>（跨重启存活、其他 tmux 客户端见同一布局）+ <code>tmux set-option @warp_adopt 1</code> 收养手机 ssh 起的 session + <strong>双 provider 限额环</strong>（5 小时窗口 + 周限额，悬停显示数字与重置时间；Codex 从 <code>~/.codex/sessions</code> 或 <code>$CODEX_HOME</code> 的 <code>rate_limits</code> 日志读且需至少回答过一次；Claude Code <strong>只能从 status line 拿计划限额</strong>——首次启动若 <code>~/.claude/settings.json</code> 无 <code>statusLine</code> 则 Harp 自己加一个并把输入存 <code>~/.harp/claude-statusline.json</code> 且不打印任何内容，<strong>已有 statusLine 则保持不动</strong>（要兼得需先落盘如 <code>tee ~/.harp/claude-statusline.json \| 你的命令</code>），环在下一次回答后出现，<strong>只对 Claude.ai 计划有效、API key 无效</strong>）+ <strong>「Harp fetches nothing and reads no credentials」</strong> + 其余全为上游 Warp（agents / Warp Drive / session sharing / login），<strong>与上游一样直连 Warp 服务器，Harp 不自建任何服务器；通过 Harp 登录未测试</strong> + tmux 集成默认关闭，开启后每 10 秒轮询，支持 <code>session_script</code> 自定义 + <strong>明确列出故意移除</strong>（tab bar 搜索框、视图选项、tab 配置按钮、侧边栏分隔线选项、标题条面板开关）+ 调试开关（<code>WARPOSS_STATUS_TRACE=1</code> 把每行状态变化写成 <code>~/Library/Logs/harp.log</code> 的 <code>[status-check]</code> 行以对照 agent transcript 做回归 / <code>WARPOSS_SKIP_LOGIN=1</code> 用测试用户启动且所有认证请求失败以便自动化 / <code>WARP_DATA_PROFILE</code> 把数据放 <code>~/.harp-&lt;name&gt;</code>）+ 身份诚实（显示名来自 <code>app_display_name!()</code>，bundle id / URL scheme / 设置目录有文件级列举，<strong>内部名称保持 Warp 的</strong>：warp-oss 二进制、crates、WARPOSS_<em> 开关、@warp_</em> tmux 选项）+ 构建 script/bootstrap → script/run → target/debug/bundle/osx/Harp.app；script/macos/run 用钥匙串首个 Apple Development 身份签名、失败回落 ad-hoc；script/release_macos 产出可公证 release DMG + 提交前跑 <code>./script/presubmit</code>（format/clippy/tests）+ subs 2 oi 5</td>
+<td>推断：「多开几个 agent」的真问题不是终端多标签而是<strong>「哪一个在等我」</strong>，这套信息设计不需要模型即可成立；推断：限额环选择读本地日志与 status line 而非云端 API，代价是只能覆盖两个 provider 且 Claude 侧依赖间接通道</td>
+<td>待核验：<strong>agent 状态的判定机制</strong>（读 transcript？调 hook？README 只提了一个「reports background tasks to the sidebar」的 Claude Code hook，主路径未说明）+ Harp 注入的 statusLine 在 Claude Code 改格式或用户换掉时的失败模式 + <strong>fork 与上游 Warp 的同步策略</strong>（README 明写 does not produce usable updates）+ AGPL 例外（warpui/warpui_core 为 MIT）是否会随上游改动失效 + 2 天 4 个 release 的当前强度能否延续</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 本日全部元数据取自 2026-10-22 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API，README 与 <code>AGENTS.md</code> 原文经 <code>Accept: application/vnd.github.raw</code> 抓取，CVE 与补丁事实经 <code>repos/php/php-src/security-advisories/*</code>、<code>repos/php/php-src/commits/3584a98bda</code>、<code>repos/php/php-src/releases</code> 直接核验。<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-22 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计（需分页遍历 stargazer），因此任何「增速」表述都不能读作当日新增。</strong> 四个 key_projects 中三个的 <code>releases</code> API 返回空数组（<code>openai/php2shell-checker</code>、<code>NVIDIA/flare-local-inference</code>、<code>HOSTED-POWER/php_uploadprogress_guard</code>），<code>subscribers_count</code> 为 4 / 5 / 4 / 2——<strong>说明这批项目都还没有「深度关注者」，热度可持续性在写作时无法判断</strong>；4 个项目 <code>topics</code> 均为空数组（未设 GitHub topics，不代表无主题）。<strong>发现一处可核验的元数据冲突</strong>：<code>ikow/php2shell-poc</code> 的 <code>license.spdx_id</code> 为 null 而 README 写 MIT，本日报按「未附可识别许可证」处理并列为待澄清项。<strong>今日排名第一的趋势是 CVE 驱动的注意力洪峰而非技术突破</strong>——ikow/php2shell-poc 的 859⭐ 出现在创建后约 13 小时，且作者把最关键的 Chain D/E 利用代码放在付费 Substack 之后，<strong>star 数在此度量事件关注度而非工具采用度；今天的热度排序对技术选型没有参考价值</strong>。本批 Search 结果中已过滤可核验的 spam 模式（<code>.github</code> 作仓库名 + <code>*-tool(s)/.github</code> 命名 + fork/star ≥ 0.5：<code>lol-tools-new/.github</code> 95⭐ ⑂95、<code>DLSS-5-Swapper-Download-2026/.github</code> 86⭐ ⑂50、<code>DLSS-5-Swapper-Update-Download/.github</code> 76⭐、<code>cs-tool-s/.github</code> 244⭐ ⑂216、<code>val-tools/.github</code> 242⭐ ⑂238、<code>rbl-tools/.github</code> 240⭐ ⑂196；以及 80–82⭐ ⑂0 + size 2 KB + 统一「Full working installer…Ready to run」描述的破解软件仓库：<code>shareshellrelease/Cinema-4d</code>、<code>ThresholdSummoner/Camtasia</code>、<code>slaterockweb/BorisFX</code>、<code>Torrentthefoundry/KMS-Pico</code>）。<strong>未纳入 key_projects 的候选</strong>：<code>eness/php2shell-...-PoC</code>（530⭐ ⑂94，无 license）、<code>9bie/php2shell-bypass-aslr-exp</code>（356⭐ ⑂130，21.5 MB，无 description 无 license）、<code>Zer061/CVE-2026-109618</code>、<code>junaire/CVE-2026-109618-exploit</code>、<code>wakemeiflose/php2shell</code>、<code>JoasASantos/php2shell-scanner</code>、<code>syhunt/php2shell-protection</code>——均为同事件 PoC/检测变体，<strong>作为「生态规模」的证据被引用但与主档内容重叠，不重复建档</strong>；<code>eagle-hq/EAGLE-4</code>（713⭐ ⑂18，<code>Official Inference Code of EAGLE-4</code>，NOASSERTION，本窗口未取 README，模型与许可均无法核验）；<code>lesnolie/Tigris</code>（222⭐，中文 tvOS 26 风格 Android TV 桌面，声称已在索尼 BRAVIA XR-55A80J 验证）、<code>op7418/guizang-tv</code>（137⭐）、<code>Jimu888/home-tv-cn</code>（41⭐，README 明写「基于 Aerial 定制」）——<strong>Android TV 桌面赛道连续第 5 天有新项目，但该赛道已在 10-19/10-20/10-21 三份日报完整记录，今日不重复建档，仅记为赛道延续性证据</strong>。本日不新增延续跟踪条目。<strong>今日最重要的判断不是「哪个项目最热」，而是三个各自独立的项目在同一个早上做了同一件事：把「我不做什么」写进可核验的位置</strong>——flare 写进 <code>AGENTS.md</code> 的三类驳回标准并显式排除「agent 建议」作为变更理由；openai/php2shell-checker 写进 README 的 Limitations（UNKNOWN 不等于已打补丁、不独立验证安全修复）；guard 写进 README 的第一句（无条件推荐装官方发行版，本模块只是候补）。<strong>这与 star 数完全无关，却是本日跨领域最强的共同信号。</strong> 与之相对的是本日最需要警惕的一点：<strong>php2shell 生态的 fork-star 35.9% 可以用「带一键靶场与可运行验证脚本」解释（fork 去搭复现环境有直接用途），但这是本批四个点的观察，不足以支撑普遍结论</strong>；7 天后 fork 是否继续增长，仍是区分真实采用与事件余温的唯一判据。</p>
+</blockquote>
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>🩸 <a href="projects/php2shell-poc.html">ikow/php2shell-poc</a> — CVE-2026-109618/109619 PHP 预认证 RCE 研究与工具包：两条 CVE 各 CVSS 9.2（OOM → longjmp 致 Zend 状态失效 / FPM worker 请求间残留全局状态 → UAF）+ 官方补丁 commit 3584a98bda 改 300 文件 + 5 条链各自标注预认证条件与 SAPI（Chain D 判定最关键：<strong>条件「None — any endpoint」</strong>，mod_php）+ <code>exploit/</code> 公开 A/B/C 三条链而 <strong>D/E 在付费 Substack 之后</strong> + <code>lab/</code> PHP-FPM+nginx+mod_php docker-compose 一键靶场 + <code>poc/</code> 5 个验证脚本含 ASAN 版 + <code>detection/</code> 四类规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）+ 缓解明言「Chain D 在 Zend 引擎核心里没有任何 INI 设置能修」+ <strong>⚠️ GitHub <code>license.spdx_id</code> 为 null 而 README 写 MIT</strong>（13 小时 859⭐ ⑂308 · fork-star 35.9% 本批最高 · Python · 2706 KB · Score 92）</li>
+<li>🛡️ <a href="projects/php-uploadprogress-guard.html">HOSTED-POWER/php_uploadprogress_guard</a> — 把「等官方补丁」做成可安装软件：PHP 扩展逐组件镜像官方修复 + 移除 session upload-progress handler + 携带修复版 parser 并用 headroom guard 留出 memory_limit 八分之一 + <code>mode=native</code> 遇 OOM 直接 exit 137 + <strong>自检让位机制</strong>（<code>nm -D</code> 探测修复符号，已打补丁则自动跳过并报告 carries the official fix =&gt; yes，升级后无需人工卸载）+ 12 个预编译二进制全部 GLIBC_2.14 以下 + Ansible 幂等部署在 cPanel EA4 / DirectAdmin CustomBuild / AWX 上实测 <code>ok=1506 failed=0</code> 且二次 <code>changed=0</code> + <strong>两次自身回归写在 README</strong>（v3.0.0 修 PHP 7.x 拒绝所有 multipart；v3.0.1 修 Debian 12 上因 GLIBC_2.38 加载失败、<strong>PHP 继续运行但 guard 未生效</strong>）+ README 第一句即「无条件推荐装官方发行版」（12 小时 53⭐ ⑂4 · C · 5750 KB · MIT · Score 89）</li>
+<li>⚡ <a href="projects/flare-local-inference.html">NVIDIA/flare-local-inference</a> — 研究原型的发布方式本身就是技术信号：编译期 PyTorch（<code>ignition/</code> + FlashInfer/b12x 捕获 CUDA graph 打包）→ 运行期纯 Rust（<code>flare/</code> CLI 链接 <code>helios/</code>，<strong>Helios 无任何 Python 依赖</strong>，编译与图捕获在服务前完成）+ README 第一句给 agent「skip this README and read AGENTS.md」+ 第三条原则把<strong>会话状态连同循环状态与 KV cache 当作整体</strong>规划 + <strong>README 明文：不是也不会是 vLLM 的替代</strong> + <strong>AGENTS.md 三类驳回标准</strong>（拒绝未批准范围扩张 / 拒绝架构违规且「flags、callbacks、optional paths 不能用来绕过」/ 拒绝削弱保证且「不得删校验、压制错误、静默替换执行路径换好看的指标」）+ <strong>「agent 生成的建议本身不构成变更理由」</strong> + 发版前必须走 <code>docs/design-review.md</code> 的 staged-diff 复核且<strong>被拒绝不得当作格式修复</strong> + 30+ 份设计文档 + 无 release（2 天 485⭐ ⑂47 · fork-star 9.7% 本批 fork 比例最高 · Apache-2.0 · Score 86）</li>
+<li>🎼 <a href="projects/harp.html">dominikmartn/harp</a> — 多 agent 终端从「多标签」到「多 agent 状态机」：Warp 非官方 fork 把 tab bar 换成侧边栏，五种状态（working / waiting for you / done / inactive）+ 未读标记 + 后台圆点 + 置入暂存月亮 + <strong>双 provider 限额环</strong>（5 小时窗口 + 周限额，Codex 读 <code>~/.codex/sessions</code> 的 <code>rate_limits</code> 日志，Claude Code 只能读 status line——<strong>无 statusLine 时 Harp 自己加一个并把输入落盘，已有则不动</strong>，只对 Claude.ai 计划有效）+ <strong>「Harp 不抓取任何东西、不读任何凭据」「Harp 不自建任何服务器」「通过 Harp 登录未测试」</strong> + tmux 分组名与顺序存 session 本身故跨重启存活 + <code>@warp_adopt 1</code> 收养手机 ssh 的 session + <code>WARPOSS_STATUS_TRACE=1</code> 输出 <code>[status-check]</code> 行以对照 agent transcript 做回归 + 明写 does not produce usable updates（2 天 527⭐ ⑂29 · <strong>2 天 4 个 release（v0.1.0–v0.1.3）</strong> · Rust · AGPL-3.0 但 warpui/warpui_core 为 MIT · 217 MB · Score 84）</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

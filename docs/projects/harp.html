@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dominikmartn/harp | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/dominikmartn/harp" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="dominikmartnharp">dominikmartn/harp</h1>
+<h2 id="_1">一句话定位</h2>
+<p>Warp 终端的非官方 fork——<strong>把 tab bar 换成专为长跑型 coding agent 设计的侧边栏</strong>，让「哪一个 agent 在等我」成为一屏可见的状态，其余保持 Warp 原样。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>同时开三个以上 Claude Code 或 Codex 会话时，终端 tab bar 只告诉你「有几个 tab」，不告诉你「<strong>哪一个正在等我回答</strong>」。实际后果是：agent 已经停下等你输入了，但你还在另一个 tab 里写代码，直到它超时或你想起来去看。</p>
+<p>Harp 的答案是把 agent 状态做成主界面而不是附注。每行显示一种状态：<strong>working</strong>（正在跑）· <strong>waiting for you</strong>（等你输入）· <strong>done</strong>（完成）· <strong>inactive</strong>（不活跃），配一个<strong>未读标记，直到你真的看过才消失</strong>；一个<strong>小圆点</strong>表示后台任务仍在跑；一个<strong>月亮</strong>表示你把这个 tab 置入了暂存。</p>
+<p>第二个问题是<strong>限额</strong>。Claude Code 与 Codex 都有 5 小时窗口与周限额，但在多个 agent 并行时，用户往往在撞上限额之后才知道自己已经用完了。Harp 把两个环放在侧边栏底部，每个 provider 两个环，悬停显示数字与重置时间。</p>
+<h2 id="2026-10-22">为什么值得关注（2026-10-22）</h2>
+<p><strong>因为它是本日四个项目里唯一一个「不靠模型、纯靠信息设计解决问题」的</strong>——而且这套信息设计值得被更广的 agent 工具采用。</p>
+<p>更具体地说，有三个设计选择值得单独记：</p>
+<ol>
+<li><strong>限额从本地读，不读任何凭据。</strong> README 写死了三句否定：「<strong>Harp fetches nothing and reads no credentials.</strong>」「They talk to Warp's servers exactly as upstream does; <strong>Harp adds no servers of its own</strong>.」「<strong>Logging in through Harp is untested.</strong>」——一个要显示你的配额信息的工具，明确声明自己不碰凭据，这比任何架构说明都有说服力。</li>
+<li><strong>「有就不动，没有才加」的注入策略。</strong> Claude Code 的计划限额只从 status line 拿到。Harp 首次启动时若 <code>~/.claude/settings.json</code> 里没有 <code>statusLine</code>，Harp 会自己加一个，<strong>把输入存到 <code>~/.harp/claude-statusline.json</code> 且不打印任何内容</strong>；<strong>已有的 status line 保持不动</strong>，并告诉用户若想两者兼得需要自己先把输入落盘（例如 <code>"command": "tee ~/.harp/claude-statusline.json | 你的命令"</code>）。<strong>这个「不覆盖用户已有配置」的克制是整个设计里最成熟的一处。</strong></li>
+<li><strong>它把状态判定做成了可回归验证的。</strong> <code>WARPOSS_STATUS_TRACE=1</code> 把每一行状态的每次变化写成 <code>~/Library/Logs/harp.log</code> 的 <code>[status-check]</code> 行，README 明说用途是「<strong>以对照某个 agent 的 transcript 做回归检查</strong>」。<strong>这意味着「状态显示对不对」可以变成一个可对照的日志证据，而不是主观感受。</strong></li>
+</ol>
+<h2 id="_3">热度来源判断</h2>
+<p>2 天 527⭐ ⑂29（fork-star 5.5%），<strong>2 天内 4 个 release</strong>（v0.1.0 10-20 11:13Z → v0.1.1 13:43Z → v0.1.2 18:09Z → v0.1.3 10-21 10:29Z）。</p>
+<p><strong>发布节奏说明项目在真实迭代</strong>，不是发完 README 就不管了——这在 2 天龄的项目里是强信号，且与昨日记录的 opentrap（<code>releases</code> 为空）形成对比。</p>
+<p><strong>但 fork-star 5.5% 与 <code>subscribers_count = 2</code> 说明这是「被围观但没被动手改」的状态</strong>。一个合理的解释是：这是个 macOS 桌面应用，而 fork 一个终端对多数人没有直接用途（不像 fork 一个带靶场的靶场仓库）。<strong>这是推断，不是事实。</strong></p>
+<p>热度来源的另一个关键特征：<strong>它建立在 Warp 已有的人群之上</strong>。Warp 本身是知名产品，Harp 用「unofficial fork」这个定位降低了理解成本——用户不需要理解 agent 状态机，只需要理解「我认识的那个终端，只是换了个侧边栏」。<strong>这是复用而非创新带来的传播优势。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>状态即界面：</strong> 五种状态 + 未读标记（直到真的看过）+ 后台小圆点 + 置入暂存的月亮 + <code>Cmd+R</code> 重命名 tab。这套设计不需要模型，纯靠状态机即可成立。</li>
+<li><strong>tmux 集成的持久化位置选对了：</strong> 分组名与顺序存在 <strong>tmux session 本身</strong>上，因此<strong>跨重启存活，且其他 tmux 客户端看到同一布局</strong>。这比存在应用自己的配置里正确——应用重启 tmux 就丢，存在 tmux 里则任何客户端都对。</li>
+<li><strong>手机友好的收养机制：</strong> 从手机 ssh 起的 session 可以用 <code>tmux set-option @warp_adopt 1</code> 认领一个 tab。这解决了一个真实的边缘场景——<strong>你在外面用手机 ssh 起了个 agent，回来在电脑上想看到它。</strong></li>
+<li><strong>限额环的数据来源分工明确：</strong> Codex 从 <code>~/.codex/sessions</code>（或 <code>$CODEX_HOME</code>）的 <code>rate_limits</code> 日志读（需至少回答过一次才出现）；Claude Code 只能从 status line 拿（<strong>且只对 Claude.ai 计划有效，API key 无效</strong>——这一点 README 明说）。更多 provider 可由外部工具维护的 JSON 文件提供，同名条目替换 Harp 自己的读数。</li>
+<li><strong>调试开关面向具体验证需求：</strong> <code>WARPOSS_STATUS_TRACE=1</code>（状态变化日志，用于对照 transcript 回归）· <code>WARPOSS_SKIP_LOGIN=1</code>（用测试用户启动且所有认证请求失败，便于自动化运行）· <code>WARP_DATA_PROFILE=&lt;name&gt;</code>（debug 构建下把设置与数据放 <code>~/.harp-&lt;name&gt;</code>）。<strong>三个开关分别对应「回归验证」「自动化」「多环境隔离」三种真实需求，而不是随手加的调试代码。</strong></li>
+<li><strong>明确列出「故意移除」的东西：</strong> tab bar 的搜索框、视图选项、tab 配置按钮、侧边栏分隔线选项、标题条面板开关。<strong>把「我砍了什么」写进 README 是 fork 类项目的诚实做法</strong>——用户需要知道哪些上游能力没有。</li>
+<li><strong>身份标识诚实：</strong> 显示名来自 <code>app/src/lib.rs</code> 的 <code>app_display_name!()</code>，bundle id / URL scheme / 设置目录有文件级列举，而<strong>内部名称保持 Warp 的</strong>（<code>warp-oss</code> 二进制、crates、<code>WARPOSS_*</code> 开关、其他 tmux 客户端读的 <code>@warp_*</code> 选项）——<strong>这个「对外改名、对内不改名」的策略让 tmux 生态的互操作得以保留。</strong></li>
+<li><strong>构建与发布路径完整：</strong> <code>script/bootstrap</code> → <code>script/run</code>（构建 <code>target/debug/bundle/osx/Harp.app</code> 并启动）；<code>script/macos/run</code> 用钥匙串里第一个 Apple Development 身份签名、失败回落 ad-hoc 签名；<code>script/release_macos</code> 产出<strong>可公证（notarizable）的 release DMG</strong>；提交前跑 <code>./script/presubmit</code>（format / clippy / tests）。</li>
+</ol>
+<h2 id="_5">架构启发</h2>
+<p><strong>第一条启发关于「信任边界用否定句表达」。</strong> 「不抓取任何东西、不读任何凭据」「不自建任何服务器」「通过 Harp 登录未测试」——三句否定比任何功能描述都更快地建立了信任。<strong>在工具要求接触用户数据或账号时，「我不碰什么」应当与「我能做什么」同等重要地出现在首页。</strong></p>
+<p><strong>第二条启发关于「配置注入要尊重已有配置」。</strong> 「有 statusLine 就不动，没有才加」是一个只有一处代码的策略，但它避免了最常见的两种失败：覆盖用户的自定义配置，以及在用户不知情时改变其工具行为。<strong>README 甚至教用户如何两者兼得</strong>（把 status line 命令改成 <code>tee ~/.harp/claude-statusline.json | 你自己的命令</code>）——<strong>给受影响的用户一条自救路径，是工具注入行为的应有之义。</strong></p>
+<p><strong>第三条启发关于「状态机应该可观测」。</strong> <code>[status-check]</code> 日志行不是一个调试残留，而是一条<strong>回归测试的数据源</strong>——它让「agent 状态判定」这个本质上依赖推断的过程，变为可与 agent transcript 对照的事实。<strong>任何自动化状态推断（IDE 里 agent 在干什么、CI 里 job 卡在哪、面板里 pod 处于什么阶段）都应该有同等的可观测出口。</strong></p>
+<p><strong>第四条启发关于「把持久化状态放在被集成的系统里」。</strong> 分组名与顺序存在 tmux session 而非 Harp 自己的配置，带来三个好处：跨重启存活、任何 tmux 客户端一致、换终端工具不会丢。<strong>这是「谁是真正的状态所有者」这个问题的一个干净答案。</strong></p>
+<h2 id="_6">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一个 macOS 桌面 App（Warp 的 fork，AGPL-3.0，<code>warpui</code> 与 <code>warpui_core</code> 两个 crate 为 MIT）。侧边栏替代 tab bar；限额环从两个<strong>本地</strong>来源读（Codex 的 <code>~/.codex/sessions</code> 日志、Claude Code 的 status line 输入）；tmux 集成为可选（默认关闭）；云功能（agents / Warp Drive / session sharing / login）仍直连 Warp 的服务器，<strong>Harp 不自建服务器</strong>。<strong>控制面：agent 状态探测 + 限额读取 + tmux 轮询；数据面：本地文件（<code>~/.codex/sessions</code>、<code>~/.harp/claude-statusline.json</code>、<code>~/.harp/settings.toml</code>）+ tmux session 属性</strong></td>
+<td>全部来自 README 的 What it adds / Settings / 贡献者细节三段；<strong>agent 状态的判定机制（读 transcript？调 hook？）README 只提了一个「reports background tasks to the sidebar」的 Claude Code hook（<code>integrations/claude-code/README.md</code>），主路径待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>启动 → 侧边栏为每个 tab 探测 agent 状态并归入 working / waiting / done / inactive + 未读标记 → 每 10 秒轮询 tmux（若开启）同步 tab 名、分组、顺序与 read/inactive 标志，并从 tmux 属性读限额或按 <code>session_script</code> 执行自定义脚本 → 限额环读 Codex 的 <code>rate_limits</code> 日志与 Claude Code 的 status line 输入 → <strong>若用户已有 statusLine 则不改动，若无则由 Harp 写入一个并把输入落盘到 <code>~/.harp/claude-statusline.json</code></strong> → 一切云功能仍走 Warp 上游</td>
+<td>逐条来自 README；<strong>「Harp adds a statusLine if none exists」这条路径的失败模式（status line 被用户换掉、Claude Code 改格式）README 未讨论</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>fork 上游（Warp）拿全部既有功能 vs 从零写（无兼容负担）</strong>——README 明确 Harp <strong>does not produce usable updates</strong>，这是 fork 路线最本质的债 · <strong>读本地文件与日志拿限额 vs 请求云端 API（后者准确但要凭据）</strong>——选择本地读并因此只能用 status line 这条间接通道 · <strong>自动注入 status line（开箱即用）vs 不动用户配置（尊重但用户要自己配）</strong>——选了「有就不动，没有才加」的折中 · <strong>tmux 集成默认关闭（多数用户不需要）vs 默认开启（多 agent 玩家的核心诉求）</strong> · <strong>AGPL-3.0（改动必须开源回流的强约束）vs MIT（更易集成）</strong>——Harp 用「<code>warpui</code> 与 <code>warpui_core</code> 两个 crate 例外为 MIT」给自己留了口子</td>
+<td>README 明示「does not produce usable updates」「Harp fetches nothing and reads no credentials」「Harp adds no servers of its own」「Logging in through Harp is untested」「if ~/.claude/settings.json has no statusLine yet, Harp adds one… A status line you already have is left alone」与许可证例外条款；<strong>未明示 fork 与上游的同步策略、以及 AGPL 例外是否会随上游改动失效</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 从 Releases 取最新 DMG 拖入 Applications（v0.1.3 已发布，<strong>这条路今天就能走通</strong>，与昨日 opentrap 的空 releases 形成对比）→ 2. 同时开一个 Claude Code 会话与一个 Codex 会话，<strong>不要设任何 status line</strong> → 3. 启动 Harp，核对是否出现两个限额环（悬停应显示 5 小时窗口与周限额的数字与重置时间）→ 4. <strong>检查 <code>~/.claude/settings.json</code> 是否被写入了一个 <code>statusLine</code>，以及 <code>~/.harp/claude-statusline.json</code> 是否生成</strong> → 5. 现在把 status line 改成自己的一条命令，<strong>核对 Harp 不再改动它</strong>（README 明示已有则不碰），并按 README 提示改成 <code>tee ~/.harp/claude-statusline.json \| 你的命令</code> → 6. 观察五个状态是否随 agent 实际行为切换，并<strong>用 <code>WARPOSS_STATUS_TRACE=1</code> 把 <code>~/Library/Logs/harp.log</code> 的 <code>[status-check]</code> 行与某个 agent 的 transcript 对照</strong>，验证状态判定不是猜的 → 7. 打开 tmux 集成，建两个分组，重启一次，<strong>核对分组名与顺序是否仍在、其他 tmux 客户端是否看到同一布局</strong> → 8. 从手机 ssh 上去 <code>tmux set-option @warp_adopt 1</code> 认领一个 tab</td>
+<td>PoC 逐步来自 README；<strong>第 6 步是本项目最有价值的验证动作</strong>——它把「状态显示对不对」从主观感受变成可对照的日志证据；<strong>第 3 步可能失败</strong>（若 Claude Code 走的是 API key 而非 Claude.ai 计划，README 明示此时不出现环）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Agents[Agent 运行时]
+    CC[Claude Code 会话]
+    CX[Codex 会话]
+  end
+
+  CC --> Transcript[agent transcript]
+  CX --> Transcript
+
+  Agents --> Detect["agent 状态探测<br/>判定机制待核验<br/>README 仅提及一个上报后台任务的 Claude Code hook"]
+
+  Detect --> Sidebar["Harp 侧边栏 替代 tab bar<br/>working / waiting for you / done / inactive<br/>未读标记 · 后台小圆点 · 置入暂存的月亮"]
+
+  subgraph Limits[限额环 · 每 provider 两环]
+    CL[5 小时窗口环]
+    CW[周限额环]
+  end
+  Sidebar --> Limits
+  Limits -.悬停.-> Numbers["数字与重置时间"]
+
+  CX --> Log["~/.codex/sessions 的 rate_limits 日志<br/>或 CODEX_HOME"]
+  CC --> SL["Claude Code status line 输入"]
+  SL --> File["~/.harp/claude-statusline.json<br/>不打印任何内容"]
+
+  Settings["~/.claude/settings.json"] --> Check{"已有 statusLine 吗"}
+  Check -->|有| Keep["保持不动 不覆盖用户配置"]
+  Check -->|无| Inject["Harp 写入一个 statusLine"]
+
+  Log --> Limits
+  File --> Limits
+  Inject --> File
+
+  subgraph Tmux[tmux 集成 默认关闭 开启后每 10 秒轮询]
+    T1["分组名与顺序存 tmux session 本身<br/>跨重启存活 其他客户端同布局"]
+    T2["手机 ssh 的 session 可用<br/>tmux set-option @warp_adopt 1 认领 tab"]
+  end
+  T1 --> Sidebar
+  T2 --> Sidebar
+
+  Sidebar --> Cloud["云功能 全部为上游 Warp<br/>agents / Warp Drive / session sharing / login<br/>与上游一样直连 Warp 服务器<br/>Harp 不自建任何服务器"]
+  Cloud -.登录未测试.-> Risk["边界声明<br/>Harp fetches nothing and reads no credentials<br/>does not produce usable updates"]
+
+  Sidebar --> Trace["WARPOSS_STATUS_TRACE=1<br/>输出 status-check 行到 harp.log<br/>用于对照 transcript 做回归"]
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型，且在「多 agent 并行」这个细分需求上暂时没有直接竞争者。</strong></p>
+<p>Warp 本身有 AI 功能但 tab bar 不为 agent 设计；iTerm2 / Ghostty / WezTerm 需要自己配 tmux 与脚本；各类「agent 管理器」大多停在 web UI 或 CLI 层面。Harp 占住的是「<strong>你已经在用 Warp，现在同时跑 5 个 agent</strong>」这个具体格子。</p>
+<p>它的传播优势来自<strong>复用而非创新</strong>：理解成本极低（我认识的那个终端），改造面极小（换了 tab bar），核心价值来自信息设计而非新能力。<strong>这既是它的优点（易理解、易采用）也是它的天花板（难以形成技术壁垒）。</strong></p>
+<p>从成熟度看：2 天、4 个 release、<code>subscribers_count = 2</code>、macOS 单平台、<strong>且 README 明写不产出可用更新</strong>。<strong>它处在「今天就能用，但要盯着上游」的状态。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>⚠️ 非官方 fork 的路线债是结构性的。</strong> README 明写「<strong>does not produce usable updates</strong>」——上游 Warp 的每次改动不会自动到达，用户要么自己解冲突要么放弃某部分功能。2 天 4 个 release 说明当前跟随强度尚可，<strong>但这不是一个能长期成立的模型</strong>，README 自己也承认。</li>
+<li><strong>agent 状态的判定机制未说明。</strong> README 只提到一个「reports background tasks to the sidebar」的 Claude Code hook（<code>integrations/claude-code/README.md</code>），主路径不清。<strong>「waiting for you」这个最有价值的状态如何被判定，直接决定了整个产品的可信度</strong>——而这需要读代码或跑第 6 步 PoC 才能知道。</li>
+<li><strong>限额环在 API key 模式下无效。</strong> README 明示只对 Claude.ai 计划有效、API key 无效。<strong>大量开发者在用 API key</strong>——这意味着限额环这个功能对相当一部分目标用户是失效的。</li>
+<li><strong>Harp 注入 status line 的失败模式未讨论。</strong> 用户换掉 status line、Claude Code 改格式、Harp 崩溃后未恢复——README 未涉及。而<strong>静默失效的限额显示比没有更危险</strong>：用户会以为自己还在配额内。</li>
+<li><strong>macOS 单平台。</strong> 徽章只标 macOS，Windows / Linux 未提。</li>
+<li><strong><code>subscribers_count = 2</code>，fork-star 5.5%。</strong> 处于「被围观但没被动手改」的状态。</li>
+<li><strong>AGPL-3.0 加例外条款的长期风险。</strong> 两个 crate（<code>warpui</code>、<code>warpui_core</code>）为 MIT，其余 AGPL。这个例外是否能随上游持续成立，README 未说明——<strong>若上游改动这两个 crate 的依赖关系，例外的法律效力可能受影响。</strong></li>
+<li><strong>登录路径未测试。</strong> 「Logging in through Harp is untested」——这不是 bug，但它意味着走 Warp 账号的那部分功能（如 session sharing）在本 fork 上是未知状态。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Warp（上游）：</strong> fork 关系，非竞品。Harp 替换 tab bar 并新增侧边栏、限额环、tmux 集成，其余保持原样。<strong>明写不被 Warp 支持或认可，issue 应提到 Harp 而非 Warp。</strong></li>
+<li><strong>vs tmux + 自定义脚本：</strong> tmux 本身能做窗口/分组管理，且 Harp 的分组状态就存在 tmux 里。<strong>差别在于 agent 状态语义与未读标记——tmux 不知道哪个 agent 在等你。</strong> 若用户已在用 tmux + 脚本，Harp 的增量价值取决于状态判定是否比脚本可靠。</li>
+<li><strong>vs 各终端的 agent 集成：</strong> Warp / iTerm2 / Ghostty 等若原生支持 agent 状态显示，Harp 的存在空间会迅速收窄。<strong>它的窗口期取决于上游的反应速度。</strong></li>
+<li><strong>vs Claude Code / Codex 自带的 status line：</strong> 两者都能通过 status line 显示配额。<strong>Harp 的增量是把它做成了常驻的视觉元素（两个环）而非需要主动调用的命令。</strong></li>
+<li><strong>vs 各类 GUI 的「任务/会话管理器」（如 IDE 的 agent 面板）：</strong> IDE 有更好的 agent 集成（Harp 集成的是 CLI agent）。<strong>在 IDE 里工作的人不需要 Harp；在终端里工作的人才需要</strong>——这是一个明确但不大的人群。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，且属于「今天就能抄走」的类别。</strong> 三条明确理由：</p>
+<ol>
+<li><strong>信息设计可迁移到任何多 agent 工具。</strong> 五种状态 + 未读标记 + 后台圆点 + 置入暂存 + 双限额环，这套设计不需要模型即可成立，<strong>任何要同时管多个异步任务的工具（IDE 插件、CI 面板、运维控制台）都能借鉴</strong>。</li>
+<li><strong>两个具体做法可以直接抄：</strong> 其一，「有 statusLine 就不动，没有才加」并教用户如何自救；其二，<code>[status-check]</code> 日志行把状态推断变成可回归验证的证据。</li>
+<li><strong>发布节奏真实。</strong> 2 天 4 个 release，且 v0.1.3 存在意味着下载路径今天就能走通。</li>
+</ol>
+<p><strong>但必须同时盯住一条结构性风险：</strong> fork 上游且不产出可用更新的模式不可长期持续。<strong>这个项目的生命力取决于 Warp 上游的变动频率。</strong></p>
+<p><strong>具体动作建议：</strong>
+- <strong>若你是多 agent 并行用户（macOS + Claude Code/Codex 的 Claude.ai 计划用户）：</strong> 直接按上面的 PoC 走一遍，尤其第 6 步——<strong>用 <code>[status-check]</code> 日志验证状态判定是否可信</strong>，这是决定要不要继续用的关键。
+- <strong>若你在设计任何多任务/多 agent 工具：</strong> 抄信息设计与配置注入策略，不必抄 fork 本身。
+- <strong>若你用 API key：</strong> 限额环会失效，剩下的价值只有状态侧边栏。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>agent 状态的判定机制是否被公开说明或开源得更清楚。</strong> 这是本产品最关键也最不透明的一环——观察 README 或 <code>integrations/claude-code/README.md</code> 是否补充「waiting for you」如何被检测。</li>
+<li><strong>上游 Warp 的变动频率。</strong> 这是结构性风险的核心指标——<strong>观察 Warp 上游发版后 Harp 的跟进间隔，若连续多次落后超过两周，说明模式已失效。</strong></li>
+<li><strong>平台扩展。</strong> 是否出现 Linux / Windows 构建——这将直接决定它是个人工具还是可推广产品。</li>
+<li><strong>限额环的 provider 覆盖面。</strong> README 说可由外部 JSON 文件提供更多 provider，观察是否出现第三方 provider 生态（如 Cursor / Gemini CLI 的限额读取器）。</li>
+<li><strong>Harp 注入的 statusLine 在异常情况下的行为。</strong> 用户换掉 status line、Harp 崩溃、Claude Code 改格式时，是否会静默失效。</li>
+<li><strong><code>subscribers_count</code> 与 fork 的变化方向。</strong> 当前 2 与 5.5% 说明处于围观状态；<strong>若 fork 明显上升（对比昨日记录的同类 fork-star 分化），说明有人真的在改它</strong>——那时它的长期价值判断需要重新评估。</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-10-22</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-10-21 GitHub 趋势研究简报 | GitHub Researcher</title>
+    <title>2026-10-22 GitHub 趋势研究简报 | GitHub Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📊</text></svg>">
-    <meta name="description" content="vercel-labs/fx0 把「durable agent」从「厂商私有 SDK 概念」推到「一行 createFxAgent() 即获得 agent loop + 流式 + tool calls + retries + durable sessions + Vercel Queues 崩溃后从最后一步继续」的可核验参考实现 + 用 Workflow World 存每一步 + 每 turn 记 funding 防止队列投递丢失计费归属 + 64 model steps 上限防 agent 死循环烧钱 + 十个 design.md 风格起步 + Agent 不明写终于是什么，由 Vercel 官方实验室出样本；opentrap/opentrap 把「拦截代理 + Web 安全扫描」从「Burp Suite 商业闭源 + ZAP 开源但界面不熟」拼成「Burp 风格工作流 + OWASP ZAP 成熟检测引擎 + 内置 Chromium 已走代理且信任其 CA 开箱 TLS 拦截 + Repeater/Intruder/Collaborator + AGPL-3.0 + Linux AppImage」的可运行样本；pengchujin/aerial-tv（524⭐ 36 fork，中文）把 Android TV 去广告从「海外机型 + 一句安装」推到「国产机型 + 五层接管模型（HOME 角色 → 无障碍桌面守护 → 通知监听被杀复活 → 开机自启 → ADB 常开）+ 逐机型笔记 docs/devices/ + 六款真机验证矩阵 + 不 root 不卸载 + 一条 curl 命令还原」；ELY-Open-Source/ElyOffice 把「本地办公套件」从「LibreOffice 巨型二进制 + 云端订阅」推到「Rust + GPUI + 逐个 fork 上游到 pinned commit 自己 build（LibreOffice 26.2.6.3 / MuPDF 1.28.5 / Git + LFS / tessdata）+ 文件留在本地文件夹、无账号无云 + MIT + macOS 已验证、Linux/Windows 配方存在但未在真机跑过」——今日主线是「**同一件事被多个团队并行严肃工程化**：durable agent 有官方样本、Web 安全工具有 AGPL 样本、电视桌面有国产机型样本、本地办公有上游自建样本；热度本身仍不等于价值，四个项目都处在 2 天内的早期信号区，需要后续 7–30 天数据才能判断是真实采用还是纯 star 波动">
+    <meta name="description" content="PHP 核心 RCE（php2shell / CVE-2026-109618 + CVE-2026-109619）在补丁发布后 24 小时内长出一整套开源响应生态：ikow/php2shell-poc 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）给出 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）；openai/php2shell-checker 310⭐ Apache-2.0 且主动声明「不独立验证安全修复、UNKNOWN 不等于已打补丁」；NCSC-NL/php2shell 以 EUPL-1.2 + TLP:CLEAR 发出国家级处置建议并明确「嵌入家电/网络设备/管理界面的 PHP 无法直接升级」；HOSTED-POWER/php_uploadprogress_guard 53⭐ 写出本日唯一非 PoC 项目——把缓解措施本身做成可安装 PHP 扩展，逐组件镜像官方补丁、自检到已打补丁就自动让位、12 个预编译二进制全部构建在 GLIBC_2.14 以下、Ansible 幂等部署在 cPanel EA4 / DirectAdmin / AWX 上实测 failed=0 二次 changed=0；NVIDIA/flare-local-inference 485⭐ ⑂47 用 AGENTS.md 明文列出「拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证」并自称「不是也不会是 vLLM 的替代」；dominikmartn/harp 527⭐ ⑂29 把 Warp 非官方 fork 的 tab bar 换成 agent 状态侧边栏 + 双 provider 限额环 + tmux 状态同步——今日主线是「**一个 PHP 补丁被开源社区拆成四层职责各自认领：谁解释漏洞、谁检测、谁国家层面处置、谁在等补丁期间先保住机器**；而 Flare 与 Harp 共享另一种信号——**把『我不做什么』写进代码仓库的制度文件，而不是只写在 README 卖点里**。热度本身仍不等于价值：php2shell 生态是 CVE 驱动的注意力洪峰而非技术突破，Flare 是明示的研究原型，Harp 是 4 个 release / 2 天的 fork，所有这些都需要后续 7–30 天数据才能判断是真实采用还是事件余温。">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -27,14 +27,14 @@
         <section class="hero">
             <div class="hero-meta">
                 <span class="hero-meta-dot"></span>
-                <span class="hero-meta-date">2026-10-21</span>
+                <span class="hero-meta-date">2026-10-22</span>
                 <span class="hero-meta-sep">·</span>
-                <span class="hero-meta-status">2026-10-21</span>
+                <span class="hero-meta-status">2026-10-22</span>
             </div>
             <h1 class="hero-title">GitHub 趋势研究</h1>
             <p class="hero-subtitle">每日从 GitHub Trending 中筛选真正值得架构师关注的项目——不只是搬运 star 数，而是判断它属于玩具、工具、平台还是未来基础设施。</p>
             <div class="hero-actions">
-                <a href="/daily/2026-10-21.html" class="btn-dark">
+                <a href="/daily/2026-10-22.html" class="btn-dark">
                     阅读今日简报
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -46,30 +46,30 @@
         <section class="stats-row">
             <div class="stat-card stat-card-primary">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                <div class="stat-number">1815k+</div>
+                <div class="stat-number">86k+</div>
                 <div class="stat-label">本周总 Star 增速</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                <div class="stat-number">794</div>
+                <div class="stat-number">798</div>
                 <div class="stat-label">深度分析项目</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div class="stat-number">193</div>
+                <div class="stat-number">194</div>
                 <div class="stat-label">日更日报</div>
             </div>
             <div class="stat-card">
                 <svg class="stat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                <div class="stat-number">852</div>
+                <div class="stat-number">856</div>
                 <div class="stat-label">核心跟踪方向</div>
             </div>
         </section>
         <section class="brief-card">
-            <div class="brief-date">📅 2026-10-21 · 今日核心判断</div>
-            <h2 class="brief-title">vercel-labs/fx0 把「durable agent」从「厂商私有 SDK 概念」推到「一行 createFxAgent() 即获得 agent loop + 流式 + tool calls + retries + durable sessions + Vercel Queues 崩溃后从最后一步继续」的可核验参考实现 + 用 Workflow World 存每一步 + 每 turn 记 funding 防止队列投递丢失计费归属 + 64 model steps 上限防 agent 死循环烧钱 + 十个 design.md 风格起步 + Agent 不明写终于是什么，由 Vercel 官方实验室出样本；opentrap/opentrap 把「拦截代理 + Web 安全扫描」从「Burp Suite 商业闭源 + ZAP 开源但界面不熟」拼成「Burp 风格工作流 + OWASP ZAP 成熟检测引擎 + 内置 Chromium 已走代理且信任其 CA 开箱 TLS 拦截 + Repeater/Intruder/Collaborator + AGPL-3.0 + Linux AppImage」的可运行样本；pengchujin/aerial-tv（524⭐ 36 fork，中文）把 Android TV 去广告从「海外机型 + 一句安装」推到「国产机型 + 五层接管模型（HOME 角色 → 无障碍桌面守护 → 通知监听被杀复活 → 开机自启 → ADB 常开）+ 逐机型笔记 docs/devices/ + 六款真机验证矩阵 + 不 root 不卸载 + 一条 curl 命令还原」；ELY-Open-Source/ElyOffice 把「本地办公套件」从「LibreOffice 巨型二进制 + 云端订阅」推到「Rust + GPUI + 逐个 fork 上游到 pinned commit 自己 build（LibreOffice 26.2.6.3 / MuPDF 1.28.5 / Git + LFS / tessdata）+ 文件留在本地文件夹、无账号无云 + MIT + macOS 已验证、Linux/Windows 配方存在但未在真机跑过」——今日主线是「**同一件事被多个团队并行严肃工程化**：durable agent 有官方样本、Web 安全工具有 AGPL 样本、电视桌面有国产机型样本、本地办公有上游自建样本；热度本身仍不等于价值，四个项目都处在 2 天内的早期信号区，需要后续 7–30 天数据才能判断是真实采用还是纯 star 波动</h2>
-            <p class="brief-text">vercel-labs/fx0 把「durable agent」从「厂商私有 SDK 概念」推到「一行 createFxAgent() 即获得 agent loop + 流式 + tool calls + retries + durable sessions + Vercel Queues 崩溃后从最后一步继续」的可核验参考实现 + 用 Workflow World 存每一步 + 每 turn 记 funding 防止队列投递丢失计费归属 + 64 model steps 上限防 agent 死循环烧钱 + 十个 design.md 风格起步 + Agent 不明写终于是什么，由 Vercel 官方实验室出样本；opentrap/opentrap 把「拦截代理 + Web 安全扫描」从「Burp Suite 商业闭源 + ZAP 开源但界面不熟」拼成「Burp 风格工作流 + OWASP ZAP 成熟检测引擎 + 内置 Chromium 已走代理且信任其 CA 开箱 TLS 拦截 + Repeater/Intruder/Collaborator + AGPL-3.0 + Linux AppImage」的可运行样本；pengchujin/aerial-tv（524⭐ 36 fork，中文）把 Android TV 去广告从「海外机型 + 一句安装」推到「国产机型 + 五层接管模型（HOME 角色 → 无障碍桌面守护 → 通知监听被杀复活 → 开机自启 → ADB 常开）+ 逐机型笔记 docs/devices/ + 六款真机验证矩阵 + 不 root 不卸载 + 一条 curl 命令还原」；ELY-Open-Source/ElyOffice 把「本地办公套件」从「LibreOffice 巨型二进制 + 云端订阅」推到「Rust + GPUI + 逐个 fork 上游到 pinned commit 自己 build（LibreOffice 26.2.6.3 / MuPDF 1.28.5 / Git + LFS / tessdata）+ 文件留在本地文件夹、无账号无云 + MIT + macOS 已验证、Linux/Windows 配方存在但未在真机跑过」——今日主线是「**同一件事被多个团队并行严肃工程化**：durable agent 有官方样本、Web 安全工具有 AGPL 样本、电视桌面有国产机型样本、本地办公有上游自建样本；热度本身仍不等于价值，四个项目都处在 2 天内的早期信号区，需要后续 7–30 天数据才能判断是真实采用还是纯 star 波动 今日头条趋势:vercel-labs/fx0 严肃工程化 durable design agent 公开参考实现：libfx 一行 createFxAgent() 即获得 agent loop + streaming + tool calls + retries + durable sessions + 每 turn funding 绑定防计费归属丢失 + 64 model steps 上限防烧钱 + Vercel Queues 崩溃唤醒续跑 + Workflow World 逐步落盘。</p>
-            <a href="/daily/2026-10-21.html" class="brief-cta">阅读完整简报 →</a>
+            <div class="brief-date">📅 2026-10-22 · 今日核心判断</div>
+            <h2 class="brief-title">PHP 核心 RCE（php2shell / CVE-2026-109618 + CVE-2026-109619）在补丁发布后 24 小时内长出一整套开源响应生态：ikow/php2shell-poc 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）给出 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）；openai/php2shell-checker 310⭐ Apache-2.0 且主动声明「不独立验证安全修复、UNKNOWN 不等于已打补丁」；NCSC-NL/php2shell 以 EUPL-1.2 + TLP:CLEAR 发出国家级处置建议并明确「嵌入家电/网络设备/管理界面的 PHP 无法直接升级」；HOSTED-POWER/php_uploadprogress_guard 53⭐ 写出本日唯一非 PoC 项目——把缓解措施本身做成可安装 PHP 扩展，逐组件镜像官方补丁、自检到已打补丁就自动让位、12 个预编译二进制全部构建在 GLIBC_2.14 以下、Ansible 幂等部署在 cPanel EA4 / DirectAdmin / AWX 上实测 failed=0 二次 changed=0；NVIDIA/flare-local-inference 485⭐ ⑂47 用 AGENTS.md 明文列出「拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证」并自称「不是也不会是 vLLM 的替代」；dominikmartn/harp 527⭐ ⑂29 把 Warp 非官方 fork 的 tab bar 换成 agent 状态侧边栏 + 双 provider 限额环 + tmux 状态同步——今日主线是「**一个 PHP 补丁被开源社区拆成四层职责各自认领：谁解释漏洞、谁检测、谁国家层面处置、谁在等补丁期间先保住机器**；而 Flare 与 Harp 共享另一种信号——**把『我不做什么』写进代码仓库的制度文件，而不是只写在 README 卖点里**。热度本身仍不等于价值：php2shell 生态是 CVE 驱动的注意力洪峰而非技术突破，Flare 是明示的研究原型，Harp 是 4 个 release / 2 天的 fork，所有这些都需要后续 7–30 天数据才能判断是真实采用还是事件余温。</h2>
+            <p class="brief-text">PHP 核心 RCE（php2shell / CVE-2026-109618 + CVE-2026-109619）在补丁发布后 24 小时内长出一整套开源响应生态：ikow/php2shell-poc 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）给出 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）；openai/php2shell-checker 310⭐ Apache-2.0 且主动声明「不独立验证安全修复、UNKNOWN 不等于已打补丁」；NCSC-NL/php2shell 以 EUPL-1.2 + TLP:CLEAR 发出国家级处置建议并明确「嵌入家电/网络设备/管理界面的 PHP 无法直接升级」；HOSTED-POWER/php_uploadprogress_guard 53⭐ 写出本日唯一非 PoC 项目——把缓解措施本身做成可安装 PHP 扩展，逐组件镜像官方补丁、自检到已打补丁就自动让位、12 个预编译二进制全部构建在 GLIBC_2.14 以下、Ansible 幂等部署在 cPanel EA4 / DirectAdmin / AWX 上实测 failed=0 二次 changed=0；NVIDIA/flare-local-inference 485⭐ ⑂47 用 AGENTS.md 明文列出「拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证」并自称「不是也不会是 vLLM 的替代」；dominikmartn/harp 527⭐ ⑂29 把 Warp 非官方 fork 的 tab bar 换成 agent 状态侧边栏 + 双 provider 限额环 + tmux 状态同步——今日主线是「**一个 PHP 补丁被开源社区拆成四层职责各自认领：谁解释漏洞、谁检测、谁国家层面处置、谁在等补丁期间先保住机器**；而 Flare 与 Harp 共享另一种信号——**把『我不做什么』写进代码仓库的制度文件，而不是只写在 README 卖点里**。热度本身仍不等于价值：php2shell 生态是 CVE 驱动的注意力洪峰而非技术突破，Flare 是明示的研究原型，Harp 是 4 个 release / 2 天的 fork，所有这些都需要后续 7–30 天数据才能判断是真实采用还是事件余温。 今日头条趋势:php2shell（CVE-2026-109618 / CVE-2026-109619）补丁发布 24 小时内长出完整开源响应生态：ikow/php2shell-poc 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）+ openai/php2shell-checker 版本判定 skill + NCSC-NL 国家级处置建议（EUPL-1.2 / TLP:CLEAR）。</p>
+            <a href="/daily/2026-10-22.html" class="brief-cta">阅读完整简报 →</a>
         </section>
         <section>
             <div class="section-header">
@@ -80,35 +80,35 @@
                 <a href="/projects.html" class="section-link">查看全部 →</a>
             </div>
             <div class="card-grid">
-                <div class="card" onclick="window.location='/projects/fx0.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/php2shell-poc.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">🎨</div>
-                        <div class="card-stars">296 stars</div>
+                        <div class="card-emoji">🩸</div>
+                        <div class="card-stars">859 stars</div>
                     </div>
-                    <div class="card-title">vercel-labs/fx0</div>
-                    <div class="card-desc">vercel-labs/fx0——A lightweight design agent built with libfx. Describe a page and an agent writes it as one HTML file；TypeScript · Apache-2.0 · 1066 KB · vercel-labs 官方 · 2 天 296⭐ ⑂55 fork/fork-star 18.6%（显著高于平均，反映大量真实 fork 学习）+ 一个 createFxAgent() 调用即获得 agent loop / streaming / tool calls / retries / durable sessions + createFxEngine() 跑每个 subagent + 在线试 fx0.vercel.dev + 明示五层边界：fx0 拥有 UI/鉴权/chat 历史（Redis+Neon）/libfx 跑每一轮 turn（模型循环+工具+重试+steer）/Vercel Queues 存 prompt 备份并在函数崩溃或触顶 800 秒后唤醒新函数从最后保存步骤继续/Vercel Workflow 的 World 存每轮每步/AI Gateway 收每一次模型调用且付费轮用发送者 OAuth token 与 team、显式赞助轮用服务器试用 key + 每 turn 64 model steps 上限（含 subagent）以防 agent 死循环烧掉账单 + 每 turn 保留自己的设计版本可重开复制下载 HTML + 可选每 IP 五次免费 Opus 5.5 Fast 试用（BotID 防滥用、服务器专用 Gateway key 出资）+ 未登录时草稿含图片在标签页等 15 分钟 + 十个 design.md 风格起步或自上传（源自 VoltAgent awesome-design-md）+ 运行时中发消息即 steer（试用轮各输入独立成轮以隔离免费与付费资金）+ Rust-free TypeScript</div>
-                    <div class="card-tags"><span class="tag tag-purple">fx0</span><span class="tag tag-purple">vercel-labs</span><span class="tag tag-purple">libfx</span></div>
-                    <div class="card-actions"><a href="https://github.com/vercel-labs/fx0" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">ikow/php2shell-poc</div>
+                    <div class="card-desc">ikow/php2shell-poc——CVE-2026-109618/109619 PHP Pre-Auth RCE Exploit & Detection Toolkit；Python · API 返回 NOLICENSE 而 README 声明 MIT（可核验的不一致）· 2706 KB · ikow 个人（Qi Deng）+ Substack 长文为唯一详述载体 · 13 小时 859⭐ ⑂308 fork/fork-star 35.9%（本批最高，30 天内新高量级）· 两个 CVE 各 CVSS 9.2：109618 = OOM → longjmp() 使 Zend 引擎状态失效 → RCE（GHSA-w8hw-w9fx-j79w）；109619 = FPM worker 请求间残留全局状态 → UAF → RCE（GHSA-6wmf-4rv5-p3rp）；官方补丁 commit 3584a98bda（2026-10-18T15:26:39Z，标题 Avoid state corruption via bailout，改动 300 个文件）· 5 条链：A session 注入 + LFI（需任意 LFI sink）· B var_destroy UAF → handler 覆写（需应用调用 unserialize）· C handler 失配 → __destruct（需两个目录 serialize_handler 不同，FPM）· **D OOM 损坏 → 残留 EG()（零依赖、预认证、任意端点、mod_php）** · E FPM session OOM → 残留 BG()（任意 session_start 端点，FPM）· exploit/ 公开 A/B/C 三条链（chain_a_session_lfi.py / chain_b_uaf_rce.php / chain_c_mismatch_rce.py），**D 与 E 的利用代码仅对付费 Substack 订阅者开放** · poc/ 五个验证脚本含 ASAN 版 verify_uaf_asan.php · lab/ 提供 PHP-FPM + nginx + Apache mod_php 的 docker-compose 一键靶场 · detection/ 提供 4 类规则：php2shell.rules（Suricata/Snort IDS）· php2shell.yaml（Sigma SIEM）· modsecurity.conf（ModSecurity WAF）· php2shell.lua（OpenResty/Nginx Lua）· 缓解：session.upload_progress.enabled=Off + session.use_only_cookies=On，并明言『唯一完整修复是升级 PHP；Chain D 在 Zend 引擎核心里，没有任何 INI 设置能修』· README 自称影响 78% 网站含 WordPress 43%（作者主张，未经独立核验）</div>
+                    <div class="card-tags"><span class="tag tag-purple">php2shell</span><span class="tag tag-purple">cve-2026-109618</span><span class="tag tag-purple">cve-2026-109619</span></div>
+                    <div class="card-actions"><a href="https://github.com/ikow/php2shell-poc" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/opentrap.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/php-uploadprogress-guard.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">🛡️</div>
-                        <div class="card-stars">177 stars</div>
+                        <div class="card-stars">53 stars</div>
                     </div>
-                    <div class="card-title">opentrap/opentrap</div>
-                    <div class="card-desc">opentrap/opentrap——OpenTRAP: A free, open-source alternative to Burp Suite: an intercepting proxy and web app security testing suite with Repeater, Intruder, Collaborator and a built-in OWASP ZAP scanner. Linux, AGPL-3.0；Java · AGPL-3.0 · 19229 KB · opentrap 组织 · 2 天 177⭐ ⑂2 fork（fork-star 仅 1.1%，明显低于平均——早期 star 主要来自曝光而非动手改）+ 19 个 topics（application-security / appsec / bug-bounty / burp-alternative / burp-suite / dast / http-proxy / infosec / intercepting-proxy / java / owasp / owasp-zap / penetration-testing / pentesting / security / security-tools / vulnerability-scanner / web-application-security / web-security）+ 明示定位：最有力的拦截代理（Burp Suite）是商业闭源且最有用功能在付费墙后，OWASP ZAP 引擎强但界面不熟，OpenTRAP 把两者合起来 + Proxy/Target/Collaborator/Intruder/Dashboard 多标签 + 内置 Chromium 一键打开即已路由代理并信任其 CA，TLS 拦截零配置 + 内置 OWASP ZAP 扫描器（crawl + active audit + 按严重度排序的实时结果表）+ OOB DNS/HTTP 回调全量留档用于盲注漏洞 + Intruder 四种攻击类型 + Java 17+ + Linux AppImage + 徽章标 status active development / contributions welcome + AGPL-3.0（无许可门禁）+ 用户群：渗透测试者、漏洞赏金猎人、AppSec 工程师、学生</div>
-                    <div class="card-tags"><span class="tag tag-purple">opentrap</span><span class="tag tag-purple">burp-alternative</span><span class="tag tag-purple">burp-suite</span></div>
-                    <div class="card-actions"><a href="https://github.com/opentrap/opentrap" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">HOSTED-POWER/php_uploadprogress_guard</div>
+                    <div class="card-desc">HOSTED-POWER/php_uploadprogress_guard——hp_uploadprogress_guard v3.1.0：一个 PHP 扩展，逐组件镜像 CVE-2026-109618 / 109619 的官方修复，使未打补丁的 PHP 上攻击链每一环都被移除，**不需要重编 PHP，也不改变宿主上的任何应用行为**；C · MIT · 5750 KB · Hosted Power 为自家机队构建后公开 · 12 小时 53⭐ ⑂4 fork/fork-star 7.5% · 覆盖 PHP 5.6–8.5 与 Sury / Remi / cPanel EA4 / DirectAdmin CustomBuild / 官方 Docker 镜像 · **README 仍以『我们无条件推荐装官方发行版』开头**，理由是包管理器随时可能供上补丁，而本扩展保护的是『包明天到、或者永远不到』的机器 · 机制三条：v3.0.0 移除 session upload-progress handler + 携带修复版 parser + 让 parser 本身不可能 OOM（headroom guard 保留 memory_limit 的八分之一）· mode=native 改为在 OOM 时直接结束进程（exit 137）而非继续服务下一个请求 · mbstring.encoding_translation=On 的宿主交还给 PHP 自带 parser（mbstring 多字节 hook 是 file-static，无法镜像）· **自检让位机制**：用 nm -D 探测引擎导出的修复符号，若已带官方补丁则报告 carries the official fix => yes 并跳过 parser 替换；官方 docker:8.4.11 / 8.1.20 / 7.4.33 / 5.6.40 报 no 且全部机制 active · **7 组实测可复核**：cPanel EA4 ea-php83 8.3.35 on AlmaLinux 10.2（glibc 2.39）与 DirectAdmin CustomBuild php84 8.4.22 on Debian 13 均加载预编译文件并报 detached，cPanel 上新开 php-cgi -m 列出该模块 · Ansible 幂等性：ansibletest 第二次 changed=0、全量部署 ok=1506 failed=0 · web1/2/3 经 AWX 各 changed=4 且 fpm 重启、二次重跑 changed=0 · cpanel1.staging 8.1–8.4 failed=0 changed=0 · directadmin1.staging 8.2–8.4 failed=0 changed=0 · v3.1.0 未打补丁机型的行为表：15000 字段的单个 multipart body 在 8.4.11 / 8.1.20 / 7.0.33 / 5.6.40 上完全一致，无模块时 exit 255 Allowed memory size exhausted，mode=native 时 exit 137（进程结束），默认 mode=parse 时 exit 0 且 Status: 413（headroom guard 根本没触发 OOM）· php-fpm 场景 mode=native 下 worker 因 child exited with code 137 被回收且 **0 个孤儿上传临时文件（原生 PHP 启动失败会留 1 个，code 70）** · set_error_handler 场景在 8.4 与 5.6 均返回 OK:15000 handled:…，证明请求状态重置不动用户错误处理器 · OPcache 编译窗口 20M 限额下无模块报 Allowed memory size … in Unknown on line 0（错误落在 OPcache store 内部），装模块后 compiled+ran 且第二次请求正常 · 兼容性纠错记录可查：v3.0.1 修了 v3.0.0 在 Debian 12 及更早因 GLIBC_2.38 无法加载的二进制，build.sh 现在拒绝任何高于 GLIBC_2.14 的构建；v3.0.0 也修了 v2.2.0 在 7.0–7.4 上因读取 8.0.28 才有的 ini 而拒绝所有 multipart 请求的回归 · 仓库结构：src/（C 源码 + config.m4）· dist/（按 PHP minor 的 NTS x86_64 预编译 .so + SHA256SUMS）· build.sh（从官方 php:&lt;X.Y&gt;-cli 镜像重建）· test/（probe.php / run-builtin-server.sh / fcgi-probe.py）· ansible/（实际部署用的 task 与 ini）</div>
+                    <div class="card-tags"><span class="tag tag-purple">php-uploadprogress-guard</span><span class="tag tag-purple">hosted-power</span><span class="tag tag-purple">php-extension</span></div>
+                    <div class="card-actions"><a href="https://github.com/HOSTED-POWER/php_uploadprogress_guard" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/projects/aerial-tv.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/flare-local-inference.html'" style="cursor:pointer">
                     <div class="card-top">
-                        <div class="card-emoji">📺</div>
-                        <div class="card-stars">524 stars</div>
+                        <div class="card-emoji">⚡</div>
+                        <div class="card-stars">485 stars</div>
                     </div>
-                    <div class="card-title">pengchujin/aerial-tv</div>
-                    <div class="card-desc">pengchujin/aerial-tv——给国产电视的一块干净桌面。参照 tvOS 设计的开源 Android TV 桌面，没有广告，开机自动接管。A tvOS-style launcher for Xiaomi, TCL and other China-market TVs；Kotlin · MIT · 3132 KB · pengchujin 个人 + 官网 aerial.qust.me + 中文 README + README.en.md + Android TV 5.0+ + 首页大号细体时钟压壁纸（滚动态收进状态栏）+ 每行 5 个应用网格聚焦浮起（有电视横幅用横幅/方形图标底色铺满磁贴/自适应图标两层视差）+ 显示无标准入口的国产系统 App（小米应用中心/高清播放器/米家）+ 信号源磁贴把 HDMI/AV/天线固定到首页 + 长按 OK 移动/隐藏/应用信息/卸载 + 控制中心（信号源含 CEC 设备/网络/设置/音量亮度滑块/壁纸屏保/隐藏 App/Aerial 设置）+ 三种屏保（114 段 Apple TV 航拍 1080p H.264 约 15–20Mbps 实时播放 + 照片每日精选 + 每分钟换位防烧屏时钟）+ 在标准 Android 屏保机型（TCL）上即系统屏保，在小米上抢先于其广告屏保启动 + 壁纸必应每日精选（国内直连）/8 组内置渐变/自传 + 手机扫码传壁纸（二维码 + 随机令牌 + 仅面板打开时开放）+ 五层接管模型：正常申请 HOME 角色 → 无障碍服务桌面守护（官方桌面一到前台即拉回，只看窗口不读屏幕）→ 通知监听被杀复活（系统约 0.5 秒内重新绑定，不读任何通知）→ 开机自启（TCL 用 appops 放行自启动管理）→ KEEP_ADB=1 应对小米待机自动关 ADB + 权限明示表（WRITE_SECURE_SETTINGS/通知监听/悬浮窗/修改系统设置/定位仅读 Wi-Fi 名/TCL APP_AUTO_START）+ 不 root 不卸载不停用任何系统应用 + 一条 curl | KEEP_ADB=1 TV=<IP> bash 安装 + 同法 bash -s restore 还原 + 一段给 Claude Code/Codex/Cursor 的 Agent 安装 prompt + 手动安装 5 条 adb 命令（含 aerial-guard.apk 应对固件拒绝安装桌面类 App）+ TCL 拒绝 ADB 时改走自带多屏互动推送 + 已验证真机矩阵：小米 MiTV-MFTR0/MiTV-MFFU0/Redmi X65 2026、TCL MT5879 国行 Android 11、索尼 XRJ-77A80J 国行 Android 10、索尼 BRAVIA VH1 国行 Android 12（含逐机型 docs/devices 笔记）+ 已知限制：需联网、HDMI 设备名无权限只显示已连接、TCL 音量条双弹、小米屏保在别的 App 空闲仍会出现、无法网页安装 + 2 天 524⭐ ⑂36 fork/fork-star 6.9%</div>
-                    <div class="card-tags"><span class="tag tag-purple">aerial-tv</span><span class="tag tag-purple">pengchujin</span><span class="tag tag-purple">android-tv</span></div>
-                    <div class="card-actions"><a href="https://github.com/pengchujin/aerial-tv" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                    <div class="card-title">NVIDIA/flare-local-inference</div>
+                    <div class="card-desc">NVIDIA/flare-local-inference——Flare: a local inference server for NVIDIA SM120/SM121 GPUs, built for long conversations, coding agents, and repeated tool use；Apache-2.0 · 22386 KB · NVIDIA 官方组织 · 2 天 485⭐ ⑂47 fork/fork-star 9.7%（本批最高，开发者确实在读）· README 开门第一句给 agent：Coding agents: skip this README and read AGENTS.md directly · **四组件硬边界**：ignition/ 是 Python 包，用 PyTorch + Transformers + FlashInfer/b12x 加载模型、调 kernel、编译 forward、捕获 CUDA graph，打包成运行时包；heliopause/ crate 构建 flare_heliopause 扩展；flare/ 是 Rust CLI 链接 helios/ 运行库，无 Python 地服务已准备好的 CUDA graph；**Helios 同时被 Flare 与 Heliopause 依赖，而 Helios 没有任何 Python 或准备工具的依赖**；编译与图捕获在服务之前完成 · 四条设计原则：build 时拥抱标准 PyTorch 生态而 serve 时用 Rust · 复用规范模型实现，只为布局或执行确实不同的部分做特化 · **把内存与状态显式化**（提前规划 buffer 与执行容量，把会话状态连同循环状态与 KV cache 当作整体，使复用、分支、恢复都正确）· 保持运行时小而专（模型配方负责模型计算，运行时负责调度、缓存存储、请求处理）· **README 明文划界：vLLM 覆盖更广的模型、硬件与部署形态，Flare 用这份广度换围绕选定模型与本地工作负载的服务契约；Flare 不是、也永远不会是对 vLLM 这类生产推理引擎的替代**；本项目是研究原型，开源是为了技术协作与早期反馈 · **AGENTS.md 三类驳回标准**：拒绝未批准的范围扩张（CPU 或非 NVIDIA 执行、可互换执行后端、训练或微调、多模型托管与路由、无关服务 API、通用集群编排，均需维护者明确决定）· 拒绝架构违规（生产 Python 回调、eager serving、运行期编译或重捕获、稳态 GPU 分配、模型特定原生策略或状态更新算法、准备元数据中的可执行扩展机制）· 拒绝削弱保证（完整缓存与投机状态、非活跃行行为、异步资源生命周期、checkpoint 精度、模型语义、模型包兼容性；不得删除校验、压制错误、静默替换执行路径或放宽参考值以换取通过的检查或好看的指标）· 并补充：**假设性的未来使用者、agent 生成的建议、单纯的 lint 发现都不构成变更理由**；每个贡献必须对应明确维护者请求、已证实的缺陷、实测的性能或内存问题、不准确的文档 · 发版纪律：进入 clone 后与 pull 后必须重读 AGENTS.md 与 docs/design-review.md，提交前必须启用 .githooks/commit-msg 钩子并按该文档做 staged-diff 复核，被拒绝的确认需要重读文档重审改动，**不得当作格式修复处理** · Orbit 负责管理服务流程所需的主机、准备、包与 rank 进程；单机执行与跨节点张量并行都在范围内 · 文档面异常完整：core-design / runtime-package-design / model-preparation / model-development / scheduling-theory / scheduling-runtime-design / scheduling-oracle / scheduling-utility / prefix-cache-offoffload / mtp-design / logprobs-design / same-process-tp / tp-checkpoint-layout / roce-ring / direct-execution / design-review / api / cli-design / container / debian / windows / model-storage / preparation-development / performance-work / signing + docs/clients/{claude-code.json, codex-models.json, codex.toml} 客户端配置样本 · **releases API 返回空数组，无正式 release**</div>
+                    <div class="card-tags"><span class="tag tag-purple">flare</span><span class="tag tag-purple">nvidia</span><span class="tag tag-purple">sm120</span></div>
+                    <div class="card-actions"><a href="https://github.com/NVIDIA/flare-local-inference" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
             </div>
         </section>
@@ -124,32 +124,32 @@
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>
                     <div class="trend-content">
-                        <div class="trend-title">vercel-labs/fx0 严肃工程化 durable design agent 公开参考实现：libfx 一行 createFxAgent() 即获得 agent loop + streaming + tool calls + retries + durable sessions + 每 turn funding 绑定防计费归属丢失 + 64 model steps 上限防烧钱 + Vercel Queues 崩溃唤醒续跑 + Workflow World 逐步落盘</div>
-                        <div class="trend-meta">vercel-labs/fx0</div>
+                        <div class="trend-title">php2shell（CVE-2026-109618 / CVE-2026-109619）补丁发布 24 小时内长出完整开源响应生态：ikow/php2shell-poc 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）+ openai/php2shell-checker 版本判定 skill + NCSC-NL 国家级处置建议（EUPL-1.2 / TLP:CLEAR）</div>
+                        <div class="trend-meta">ikow/php2shell-poc · openai/php2shell-checker · NCSC-NL/php2shell</div>
                     </div>
-                    <div class="trend-score high">90/80</div>
+                    <div class="trend-score high">92/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank top">2</div>
                     <div class="trend-content">
-                        <div class="trend-title">opentrap/opentrap 严肃工程化 Burp Suite 免费开源替代：Burp 风格代理工作流 + OWASP ZAP 成熟检测引擎 + 内置 Chromium 已路由代理并信任其 CA 开箱 TLS 拦截 + Repeater/Intruder/Collaborator/Dashboard + AGPL-3.0 + Linux AppImage + Java 17+</div>
-                        <div class="trend-meta">opentrap/opentrap</div>
+                        <div class="trend-title">HOSTED-POWER/php_uploadprogress_guard 把『等官方补丁』这段空窗期做成可安装软件：PHP 扩展逐组件镜像官方补丁 + 拆掉 session upload-progress handler + 自检到已打补丁就自动让位 + 12 个预编译二进制全部 GLIBC_2.14 以下 + Ansible 幂等部署在 cPanel EA4 / DirectAdmin CustomBuild / AWX 实测 failed=0 且二次 changed=0</div>
+                        <div class="trend-meta">HOSTED-POWER/php_uploadprogress_guard</div>
                     </div>
-                    <div class="trend-score high">88/80</div>
+                    <div class="trend-score high">89/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">3</div>
                     <div class="trend-content">
-                        <div class="trend-title">pengchujin/aerial-tv 严肃工程化国产 Android TV 桌面：参照 tvOS + 无广告无推荐流 + 五层接管（HOME 角色/无障碍桌面守护/通知监听被杀复活/开机自启/ADB 常开）+ 逐机型笔记 + 六款真机验证 + 不 root 不卸载 + 一条 curl 还原</div>
-                        <div class="trend-meta">pengchujin/aerial-tv</div>
+                        <div class="trend-title">NVIDIA/flare-local-inference 严肃工程化研究原型的发布方式：AGENTS.md 明文列出『拒绝未批准的范围扩张 / 拒绝架构违规 / 拒绝削弱保证』三类驳回标准 + README 自称不是也不会是 vLLM 替代 + 编译期 PyTorch（Ignition）→ 运行期纯 Rust（Helios）的硬边界 + 发版前必须走 docs/design-review.md 的 staged-diff 复核</div>
+                        <div class="trend-meta">NVIDIA/flare-local-inference</div>
                     </div>
-                    <div class="trend-score high">87/80</div>
+                    <div class="trend-score high">86/80</div>
                 </div>
                 <div class="trend-item">
                     <div class="trend-rank ">4</div>
                     <div class="trend-content">
-                        <div class="trend-title">ELY-Open-Source/ElyOffice 严肃工程化本地办公套件：Rust + GPUI + 自建上游（LibreOfficeKit 26.2.6.3 / MuPDF 1.28.5 / Git + LFS / tessdata 均 pinned commit）+ 无账号无云 + MIT + macOS 已验证而 Linux/Windows 配方未在真机跑过</div>
-                        <div class="trend-meta">ELY-Open-Source/ElyOffice</div>
+                        <div class="trend-title">dominikmartn/harp 严肃工程化多 agent 终端的状态管理：Warp 非官方 fork 把 tab bar 换成 agent 状态侧边栏（working / waiting for you / done / inactive + 未读标记 + 后台小圆点 + 置入暂存月亮）+ Claude/Codex 双限额环 + tmux 会话名/分组/顺序跨重启持久化与 @warp_adopt 1 收养 + 明示『Harp 不自建任何服务器 / 通过 Harp 登录未测试』</div>
+                        <div class="trend-meta">dominikmartn/harp</div>
                     </div>
                     <div class="trend-score high">84/80</div>
                 </div>

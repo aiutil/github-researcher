@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-21.md">Latest report</a> ·
+  <a href="daily/2026-10-22.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-21
+## Latest report · 2026-10-22
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 735 | 4 | 1815k+ |
+| 4 | 739 | 4 | 86k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [vercel-labs/fx0](projects/fx0.md) | 296 stars | 基础设施候选 |
-| [opentrap/opentrap](projects/opentrap.md) | 177 stars | 工具型 |
-| [pengchujin/aerial-tv](projects/aerial-tv.md) | 524 stars | 工具型 |
-| [ELY-Open-Source/ElyOffice](projects/elyoffice.md) | 566 stars | 平台候选 |
+| [ikow/php2shell-poc](projects/php2shell-poc.md) | 859 stars | 观察型 |
+| [HOSTED-POWER/php_uploadprogress_guard](projects/php-uploadprogress-guard.md) | 53 stars | 生产可用 |
+| [NVIDIA/flare-local-inference](projects/flare-local-inference.md) | 485 stars | 基础设施候选 |
+| [dominikmartn/harp](projects/harp.md) | 527 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: vercel-labs/fx0
-2. **Signal 2** · score 88 · repositories: opentrap/opentrap
-3. **Signal 3** · score 87 · repositories: pengchujin/aerial-tv
-4. **Signal 4** · score 84 · repositories: ELY-Open-Source/ElyOffice
+1. **Signal 1** · score 92 · repositories: ikow/php2shell-poc, openai/php2shell-checker, NCSC-NL/php2shell
+2. **Signal 2** · score 89 · repositories: HOSTED-POWER/php_uploadprogress_guard
+3. **Signal 3** · score 86 · repositories: NVIDIA/flare-local-inference
+4. **Signal 4** · score 84 · repositories: dominikmartn/harp
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-21.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-22.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-22](daily/2026-10-22.md) | 4 | 4 |
 | [2026-10-21](daily/2026-10-21.md) | 4 | 4 |
 | [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
 | [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
-| [2026-10-15](daily/2026-10-15.md) | 4 | 4 |
 
 ## Why this repository exists
 
