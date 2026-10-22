@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-23 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-23-github">2026-10-23 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 2026-10-23 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API（<code>search/repositories</code>（<code>created:&gt;2026-10-15 stars:&gt;120</code>）、<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/readme</code>（<code>Accept: application/vnd.github.raw</code>）、<code>repos/{owner}/{repo}/contents/{LICENSE,AGENTS.md,.gitmodules,doc/inference_deployment_qa.md,THIRD_PARTY_NOTICES.md}</code>、<code>repos/{owner}/{repo}/git/trees/HEAD</code> 与 <code>?recursive=1</code>、<code>repos/{owner}/{repo}/releases</code>、<code>repos/{owner}/{repo}/commits</code>、<code>repos/{owner}/{repo}/contributors</code>），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>description</code>。<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-23 计算，总星数除以经过时长为下限粗估；单日 star 增量未做统计</strong>（需分页遍历 stargazer 列表），因此<strong>所有增速表述都不能读作当日新增</strong>。<strong>已核验为空/为零并直接标注的字段</strong>：<code>releases</code> API 对 <code>deepseek-ai/DeepInfer</code>、<code>Acelogic/Snapintosh</code>、<code>UniXNU/UniXNU</code> 三者均返回<strong>空数组或长度 0</strong>（三者的主分发路径分别是 <code>./build.sh</code> 从源码构建、clone + submodule 自建、以及文档 + 自编译）；<code>subscribers_count</code> 为 <strong>3 / 43 / 4 / 0</strong>（DeepInfer 43 为本批最高，reylo 0 为本批最低）；<code>topics</code> 字段对 DeepInfer 与 reylo 为<strong>空数组</strong>（UniXNU 有 1 个 topic，Snapintosh 为 0）。<strong>发现两处可核验的元数据不一致（本日报新增）</strong>：<code>UniXNU/UniXNU</code> 与 <code>Acelogic/Snapintosh</code> 的 <code>license.spdx_id</code> 均为 <strong><code>NOASSERTION</code></strong>，但两者的 <code>LICENSE</code> 文件首行分别明写 <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code> 与 <code>MIT License</code>，且 <code>THIRD_PARTY_NOTICES.md</code> 也写明「Snapintosh is licensed under the MIT licence」——<strong>以文件为准两者均可正常使用，但 GitHub 侧无法被自动识别为标准许可证，依赖 license 扫描器的工具会当成非标准协议处理</strong>。这与 10-22 记录的 <code>ikow/php2shell-poc</code>（spdx_id 为 null 而 README 写 MIT）性质相同但<strong>严重程度低得多</strong>（本次两处 LICENSE 文件本身内容清晰无歧义，而 php2shell-poc 的 README 与元数据直接冲突）。<strong>热度的关键限定</strong>：本日四个项目 fork-star 分化为 <strong>0.5% / 5.5% / 10.6% / 15.7%</strong>，<strong>但这四个数字不可直接横向比较</strong>——高 fork 比例的两个项目（UniXNU 15.7%、DeepInfer 10.6%）分别是「fork 去移植自己的机型」与「fork 去读它的调度逻辑」，低 fork 比例的两个项目（Snapintosh 5.5%、reylo 0.5%）分别是「只支持一台机器，没有第二台可移植」与「需要的是等上游 beta 特性稳定而不是 fork 它」。<strong>连续第三天观察到同一条分界线：fork 比例在「可改造型项目」与「不可改造型项目」之间不可比。</strong> <strong>本日没有 CVE 驱动的注意力洪峰</strong>——这是自 10-21 的 php2shell 事件以来第一次，今日热度排序对技术选型的干扰比前两日小；<strong>但这四个项目没有一个是可以直接采用的</strong>：UniXNU 与 Macintosh 是研究快照（Macintosh 仅 11 个 commit、单机型、需另一台 Mac），DeepInfer 缺三成系统（KV cache / PD 分离 / 负载均衡），reylo 依赖尚未 stable 的 TS 7.1。<strong>已过滤的 spam 仓库</strong>（本批 Search 结果中出现、已排除）：<code>xscreensaver-official/xscreensaver</code>（1147⭐ ⑂33，<strong>README 自述「There is no official XScreenSaver GitHub repository.」</strong>——自我否认自身权威性，可核验的伪装）、<code>WoYun520/dsh-purge</code>（401⭐ ⑂687，<strong>fork/star 171%</strong>，README 自述「DeepSeek Harness 破甲 (mirror of mmparko/dsh-purge) — 全量镜像：全部分支/100 个 tag/完整提交历史」，是完整的仓库镜像而非原创）。<strong>未纳入 key_projects 的候选</strong>：<code>Gathin23/cleanyourtv</code>（23,714⭐ ⑂2,592 NOASSERTION，19 topics 直打 Android TV 去广告，但该赛道已在 10-19/10-20/10-21/10-22 四份日报连续记录，今日不重复建档）、<code>reason-machines/reason-network</code>（1060⭐ ⑂86 Apache-2.0 Rust，<strong>已有 projects/reason-network.md 档案</strong>，本窗口未取其 README 故不重复更新）、<code>kividbio/kividb</code>（460⭐ ⑂14 AGPL-3.0 Rust，20 topics「Redis/Valkey 的 Rust drop-in 替代，含全文检索」）、<code>ELY-Open-Source/ElyOffice</code>（850⭐ ⑂54，<strong>已有 projects/elyoffice.md 档案</strong>，10-21 已建档，本窗口未取 README）、<code>vercel-labs/fx0</code>（382⭐ ⑂70，<strong>已有档案</strong>，10-21 已建档）、<code>eagle-hq/EAGLE-4</code>（862⭐ ⑂24 NOASSERTION，10-22 已记录为未取 README）、<code>pengchujin/aerial-tv</code> / <code>simbasjungles/free-my-tv</code>（<strong>均有档案</strong>，10-21/10-20 已建档）。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1apple-90">趋势 1：Apple 内核移植的两条独立路径，撞上同一组难点（趋势分 90）</h3>
+<p>这是本日最值得记的结构性观察。<strong>两个互不相识、作者不同、路径不同的项目，在同一天各自解决同一个问题，并各自独立地把「Apple 私有输入不得入库」写成了仓库级制度。</strong></p>
+<p>先固定事实基线（全部来自 GitHub 官方接口与 README/AGENTS.md 原文）：</p>
+<table>
+<thead>
+<tr>
+<th>事实</th>
+<th>UniXNU/UniXNU</th>
+<th>Acelogic/Snapintosh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标</td>
+<td>iOS + macOS 跑在非 Apple ARM64 硬件</td>
+<td>macOS 27（build 26A428）跑在 Snapdragon X2 Elite 笔记本</td>
+</tr>
+<tr>
+<td>路径</td>
+<td><strong>UEFI</strong> + 伪平台契约</td>
+<td><strong>EL2 hypervisor</strong>（monitor）+ 工具链</td>
+</tr>
+<tr>
+<td>内核</td>
+<td>官方 XNU，<strong>不 patch</strong>（README 明写补齐平台契约）</td>
+<td>官方 kernelcache（J700/T8140），<strong>默认未修改</strong></td>
+</tr>
+<tr>
+<td>设备覆盖</td>
+<td><strong>35 份设备文档</strong>，多机型移植</td>
+<td><strong>只支持一台</strong>（ASUS Zenbook A16 UX3607OA，X2E-96-100，README 原文「Nothing else is supported」）</td>
+</tr>
+<tr>
+<td>页表难点</td>
+<td><code>docs/xnu/four-k-page-tables</code> 单列一章</td>
+<td><code>shadow/</code> 目录（16 KiB → 4 KiB 影子页表）</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>原生 Adreno 740 Metal 驱动（10-22 news）</td>
+<td>自写 AdrenoMetal.bundle + AdrenoX2 + air2ir3 shader 编译器</td>
+</tr>
+<tr>
+<td>私有输入</td>
+<td>README 的 <strong>Private blobs</strong> 段</td>
+<td><strong>AGENTS.md 第 1 条</strong> + <code>THIRD_PARTY_NOTICES.md</code></td>
+</tr>
+<tr>
+<td>额外依赖</td>
+<td>—</td>
+<td><strong>必须有一台 macOS 27 Mac 主机</strong>（USB-C NCM）</td>
+</tr>
+<tr>
+<td>规模信号</td>
+<td>35 设备 · 16 驱动 submodule · subs 3 · 贡献者 6 人 · 30 commits</td>
+<td><strong>11 commits</strong>（5 小时内完成）· subs 4</td>
+</tr>
+<tr>
+<td>许可</td>
+<td>BSD-2-Clause-Patent（文件）/ NOASSERTION（API）</td>
+<td>MIT（文件）/ NOASSERTION（API）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同的三个技术难点：</strong></p>
+<ol>
+<li>
+<p><strong>16 KiB → 4 KiB 页表翻译</strong>。Apple 的 XNU 用 16 KiB 页，而绝大多数 ARM64 SoC 的 MMU 只支持 4 KiB。两个项目都把它单列为核心章节/核心目录——<strong>这说明它是这类移植绕不过去的第一个真问题</strong>，而不是某个项目的个性选择。</p>
+</li>
+<li>
+<p><strong>Apple 平台契约的构造</strong>。UniXNU 的做法是提供内核"认识的"设备与寄存器（16 个 <code>Native*</code> submodule + <code>Arm*</code> 平台层）；Macintosh 的做法是在 EL2 提供 SPTM/TXM 调用、内核 16 KiB 页表翻译、以及 AIC / ANS2 NVMe / DART 等 Apple 设备模型。<strong>两者都不 patch 内核</strong>——这是一个共同的、且反直觉的取舍：继承内核的全部不兼容，换来内核升级时零 rebase。</p>
+</li>
+<li>
+<p><strong>私有输入的合规处理</strong>。UniXNU README：「Do not add Apple IPSW files, kernelcaches, disk images, trust caches, Data seeds or vendor firmware to this repository.」Macintosh AGENTS.md 第 1 条列举了九类不得提交的内容（kernelcache、固件、restore-image 部件、KDK、kext、dyld cache、ACPI dump、反汇编/vtable/ABI dump、重建的 <code>*26A428.h</code> 头文件），<strong>并加了一句「Do not paste protected source material into PRs, tickets, build logs or test fixtures」——把禁止范围从代码扩展到了 issue、构建日志与测试夹具</strong>。</p>
+</li>
+</ol>
+<p><strong>架构师速览（UniXNU）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>Apple 内核保持官方二进制不动</strong>，边界划在"内核之下"：UEFI 引导链（<code>uefi-sheng</code> 等仓库）+ 平台契约提供者（设备树、时钟、寄存器、设备模型、4 KiB 页表补丁）+ 16 个 Darwin 侧驱动 submodule。数据面是内核对硬件的读写；控制面是构建系统按设备选择 modules 与 kit</td>
+<td>全部来自 README 的 Repositories 表 + <code>.gitmodules</code> 的 16 条 URL + Documentation 目录清单；<strong>平台契约提供者的具体实现形式（kext / 伪装固件 / 两者）README 未展开，<code>docs/concepts/{prelink,userdata,payload}.md</code> 存在但本窗口未取内容</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>设备上电 → UEFI 固件（移植版）→ <code>DarwinBoot</code> 装载官方 kernelcache → 平台契约层向内核呈现它认识的设备与寄存器 → XNU 启动到 EL1 → <code>Native*</code> 驱动接管实际硬件（含 Adreno GPU 经自研 Metal 驱动）→ 用户空间</td>
+<td>由 README 的 boot chain 文档结构 + <code>.gitmodules</code> 分层 + news 段落推出；<strong>官方 kernelcache 从哪来 README 明令不得入库，<code>docs/concepts/payload.md</code> 应有说明但未取</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>伪 Apple 硬件 vs 重写 Linux 侧驱动</strong>（与 Asahi 路线相反）· <strong>保持官方内核 vs patch 内核</strong>（前者继承全部漏洞与不兼容但零 rebase）· <strong>驱动独立仓库 vs 单一大仓库</strong>（前者让移植者只 clone 自己机型需要的部分）· <strong>BSD-2-Clause-Patent vs 宽松许可</strong>（含专利条款在逆向领域是保护，但会劝退部分商业使用者）· <strong>原生 GPU 驱动 vs GPU 透传/虚拟 AGX</strong>（<code>gpu/agx*</code> 显示其自身也走过更省事的路并放弃了）</td>
+<td>README news 段 + Documentation 清单 + <code>.gitmodules</code> 16 条 + LICENSE 首行 SPDX 标识 + <code>docs/drivers/native-adreno.md</code> 存在；<strong>「为什么从虚拟 AGX 转向原生驱动」README 未解释</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 确认目标机型<strong>未被 35 份 <code>docs/devices/*.md</code> 覆盖</strong>（这是唯一决定可行性的变量）→ 2. 在已支持机型上跑通整条链作对照 → 3. 按 <code>docs/drivers/device-tree-matching.md</code> 做设备树匹配 → 4. 按 <code>docs/porting/</code> 复制最接近的机型仓库作模板 → 5. <strong>官方 kernelcache 与固件留在本地不入库</strong> → 6. <strong>只验证"能进内核并跑起来"，不要一上来碰 GPU</strong></td>
+<td>顺序按依赖倒排；<strong>第 1 步（机型是否已被覆盖）是唯一真实门槛，第 5 步是合规前提而非可选项</strong>；<strong>README 未给最低机型门槛（内存/存储/SoC 特性要求），本日报无法核验</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>架构师速览（Macintosh）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>一台 ASUS Zenbook A16 + <strong>一台必须存在的 macOS 27 Mac 主机</strong>（USB-C NCM）+ EL2 monitor（<code>compat/</code> <code>shadow/</code> <code>probes/</code>）+ EL1 官方内核与 AuxKC + EL0 用户空间与 Metal 插件。控制面在 EL2 契约提供者与主机侧工具链；数据面是 GPU 命令流与 NVMe I/O</td>
+<td>全部来自 README 自带的 Architecture in brief mermaid 图、Repository layout 表、AGENTS.md 分层职责表；<strong>q1n1 只做 proxy，实际驱动逻辑在 <code>tools/cycle.py</code> 与 q1n1 proxy client 侧，控制流未细述</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>A16 UEFI → q1n1（EL2 proxy，USB-C NCM 连 Mac 主机）→ Snapintosh EL2 monitor（SPTM/TXM 契约、16K→4K 影子页表、AIC/ANS2/DART、GPU ring 与 SMMU 中介）→ 官方 XNU + AuxKC（AdrenoX2 + AdrenoDisplay、SnapI2CHID 等）→ 用户空间（WindowServer、Core Animation、应用、AdrenoMetal.bundle + air2ir3）</td>
+<td><strong>README 自带 mermaid 图与逐层说明，本档案架构图在此基础上补出「私有输入不入库」边界与待核验节点</strong>；<strong>air2ir3 编译器在运行期的角色（按需 vs 构建期预编译）未明说，待核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>不改内核 vs 改内核</strong> · <strong>自写 Metal 驱动 + shader 编译器 vs 虚拟 AGX vs 透传</strong>（README 明文否决软件/CPU/半虚拟路径，<code>gpu/agx*</code> 是保留的早期路线）· <strong>依赖 Mac 主机 vs 独立运行</strong>（AGENTS.md 明写独立运行是「a direction, not an already implemented or authorized replacement」）· <strong>只支持一台机器 vs 多机型</strong> · <strong>GPL-2.0 成分与 MIT 主体共存</strong></td>
+<td>AGENTS.md 三条硬规则 + Status 表 + Required hardware 段 + <code>gpu/agx*</code> 目录 + <code>LICENSES/</code> 四份文本；<strong>未明示：为什么依赖 Mac 主机、GPU ring 中介的具体实现、air2ir3 的支持度</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 确认有指定那台机器（<strong>不支持任何其他机型</strong>）→ 2. <strong>确认有第二台 macOS 27 Mac 主机</strong>（比目标机更硬的门槛）→ 3. 按 <code>docs/RUNNING.md</code> 接 USB-C 并 AC 供电→ 4. 按 AGENTS.md「Start Here」读 README → ARCHITECTURE → BUILDING → STATUS（硬件执行再读 RUNNING），<strong>AGENTS.md 明写「Do not rely on status summaries from earlier sessions in place of the current tree」</strong>→ 5. 从自己机器获取 kernelcache 与固件（不下载不提交）→ 6. <strong>只验证 Status 表第一行</strong>（启动到桌面 + 像素检查通过）→ 7. <strong>不要验证 60 Hz</strong>（README 自己写着 in progress，当失败判据是误读）→ 8. 用 <code>tools/test-*</code> 与 <code>tools/replay-*</code> 对照而非重复跑真机</td>
+<td><strong>第 1–2 步是纯硬件门槛，先于任何技术判断</strong>；<strong>第 7 步是本 PoC 最重要的判断</strong>：Status 表把"已可用"与"进行中"明确分开，读错这张表就会得出错误结论</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-readme-89">趋势 2：把"不在范围内的东西"写进 README（趋势分 89）</h3>
+<p><code>deepseek-ai/DeepInfer</code>（7 天 19,806⭐ ⑂2,106 fork/star 10.6%，<strong>subs 43 为本批最高</strong>，Apache-2.0）是本日唯一一个由头部模型厂商官方开源、且<strong>明确描述了自己生产环境规模</strong>的项目。</p>
+<p><code>doc/inference_deployment_qa.md</code> 里的三目标把整个架构的来源说清楚了：<strong>支持多厂商加速器</strong> · <strong>围绕商用硬件组织 prefill 与 decode</strong>（普通 8-GPU 机做 prefill，普通 64–128-GPU 超节点做 decode）· <strong>KV cache 保留超过 72 小时</strong>以换上下文复用。同一份文档给出规模声明：<strong>单集群每日 15.5 万亿 token、每 GPU 小时 38 美元（谷值定价）</strong>。</p>
+<p><strong>最值得记的是它对"不含什么"的处理。</strong> README 有一整段叫 <code>Required for a complete inference service (not included in this release)</code>，列出三项：<strong>KV cache 系统</strong> · <strong>VE/Prefill/Decode 分离</strong>（注明"引擎大部分必需功能已实现"）· <strong>prefill 与 decode 两侧的跨 DP 副本负载均衡</strong>。QA 文档补充：KV cache 管理与负载均衡"与内部基础设施耦合紧密，尚未完全开源"。</p>
+<p><strong>这个信息的后果是实质性的</strong>：即使全部编译成功，也无法用它复现 72h 缓存复用——而那是这个框架最核心的设计目标之一。这与本日另一个项目 Macintosh 的 Status 表（逐项写明"不支持"）是同一种纪律的两种形态。</p>
+<p><strong>架构师速览（DeepInfer）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>Python 包 + <code>csrc/</code> + <code>vendor/</code>（顶层：csrc, deep_cluster, deepinfer, doc, eval, examples, scripts, tests, vendor）。<strong>边界清晰地停在 KV cache 与负载均衡之前</strong>。数据面是 GPU/NPU 上的 kernel 执行；控制面是 DP/CP/EP 并行组构、批次调度、投机解码的验证调度</td>
+<td>README 的三项"不含" + 顶层目录（<code>deep_cluster/</code> 暗示集群能力有部分代码）+ QA 文档的「not yet fully open-sourced」；<strong><code>deep_cluster/</code> 的实际内容与 PD 分离实现程度未取，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>加载 checkpoint（默认首次下载 <code>DeepSeek-V4.1-Flash-1017</code>，可用 <code>DEEPINFER_HF_MODEL_DIR</code> 指向本地）→ MoE 在（超）节点内用 EP 提升 batch 与 GEMM 效率 → prefill 在 8 卡机、decode 在 64–128 卡超节点 → 异步调度把 CPU 批调度与设备执行重叠 → DSpark 产 draft token、按置信度调度验证 → SWA bounded replay 只重放保留后缀（须覆盖 SWA 窗口 + 最大回退）→ KV cache 保留 &gt;72h（<strong>该层不在本次开源范围</strong>）</td>
+<td>由 QA 文档三目标 + README 特性段 + <code>examples/offline_inference.py</code> 推出；<strong>benchmark 硬件（prefill 4×SM100、decode 64×SM100）与生产组织方式一致是可核验的交叉印证</strong>，但<strong>代码中这两级的自动化切分是否已开源未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>围绕商用硬件组织 vs 围绕顶级超节点优化</strong> · <strong>KV cache 保留 &gt;72h vs 容量与管理开销</strong>（文档明说有代价）· <strong>置信度调度验证 vs 固定 draft 长度</strong> · <strong>SWA bounded replay 省 prefill vs 保留后缀须覆盖 SWA 窗口 + 最大回退</strong>（写死在文档里的正确性约束）· <strong>开源引擎但不开源 KV cache</strong>（保住核心调度价值，拿不到完整系统）· <strong>batch-invariant + 确定性采样 vs 吞吐</strong>（两条均标 NVIDIA only）</td>
+<td>QA 文档三目标 + README 三项"不含" + 环境变量开关分组 + <strong>benchmark 硬件配置与生产组织方式一致的交叉印证</strong>；<strong>未明示：EPLB 具体策略、draft 模型的显存/算力成本占比、昇腾与 NVIDIA 路径的功能对等程度</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 确认硬件落在 NVIDIA SM100 或 Ascend 950 之一（CUDA 13 / CANN 9.2、GCC≥13、Python 3.12）→ 2. 建空 Python 3.12 环境并 <code>export DEEPINFER_ACCELERATOR=nvidia</code>（昇腾改 <code>ascend</code>），跑 <code>./build.sh</code> → 3. 首次运行下载 checkpoint（或先设 <code>DEEPINFER_HF_MODEL_DIR</code>）→ 4. <code>python examples/offline_inference.py</code> 跑通<strong>默认路径</strong>——<strong>注意默认路径不含 KV cache，72h 复用本 PoC 验证不了</strong> → 5. 逐个开特性且每次只改一个：<code>DEEPINFER_ENABLE_MTP_VARLEN=1</code> → <code>DEEPINFER_YOCO_PREFILL_TRUNCATION_MODE=compact</code> + <code>..._KEEP_TOKENS=140</code> → <code>DEEPINFER_BATCH_INVARIANT=1</code> → 6. <strong><code>DEEPINFER_BATCH_INVARIANT=1 DEEPINFER_ENABLE_MTP_VARLEN=0</code> + 固定 <code>seq_seed</code>，验证两次运行输出逐 token 相同</strong>——<strong>这是整个 PoC 里唯一真正可证伪的一步</strong> → 7. 结构化输出按 <code>examples/_structured_output.py</code> 传 <code>so_args</code> → 8. 复现 benchmark：<code>examples/sweep/run_sweep.sh</code></td>
+<td><strong>第 5 步最值得做</strong>：batch-invariant 是本框架少数几个能在一台机器上自我验证的性质，且同时解锁确定性采样；<strong>第 4 步要留意 README 自标的三项"不含"——结果与官方 API 有出入时先排除是否落在这三项内，而不是先怀疑框架有 bug</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3codegen-87">趋势 3：codegen 的派生物从磁盘上消失（趋势分 87）</h3>
+<p><code>colinhacks/reylo</code>（1.9 天 616⭐ ⑂3，<strong>fork/star 0.5% 为本批最低</strong>，<strong>subs 0</strong>）的方向与前两个项目都不同——它不碰硬件，也不碰集群，只处理一件事：<strong>让 SQL 文件本身成为类型的事实源。</strong></p>
+<p>它的技术前提是单一且决定性的：<strong>TypeScript 7.1 的 content mappers</strong>。README 引用的是 <code>microsoft/typescript-go</code> 的 PR #4712，明写「introduced in TypeScript 7.1 (currently in beta)」。</p>
+<p>六条卖点里最关键的两条：</p>
+<ul>
+<li><strong>「No codegen — the type checker asks Reylo directly: no generated files, no watcher.」</strong> 这不是"生成得更好"，是<strong>不生成</strong>。</li>
+<li><strong>「Checked against your database — a misspelled column, a wrong parameter or a dropped table is a type error, in <code>tsc</code> and in your editor.」</strong> 校验发生在<strong>类型检查期</strong>而非运行期，且要求一个正在运行的开发库。</li>
+</ul>
+<p>还有一条论证方式的转变值得记：「<strong>Agent-friendly</strong> — each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed.」<strong>这把"单一事实源"从面向人的 DRY 论点改写成面向 agent 的失效模式论证</strong>——不再是"这样更整洁"，而是"这样 agent 就无法制造过期状态"。2026 年工具设计开始用「agent 会怎么弄坏它」而不是「人会不会弄错它」来论证，这是一个值得注意的转变。</p>
+<p><strong>架构师速览（reylo）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TS 语言插件层（content mapper）· Rust 引擎（<code>engine/</code>）· <strong>对真实数据库的 schema 读取通道</strong> · 类型检查期（<code>tsc</code> 与编辑器）· 运行期（<code>.run(db, params)</code>）。数据面是类型检查时的 SQL 解析 + schema 查询；控制面是 TS 编译器调用 mapper</td>
+<td>README Setup 段（需 TS 7.1 beta、Node 24+、<strong>一个正在运行的开发数据库</strong>）+ 六卖点 + <code>Cargo.toml</code>/<code>engine/</code>/<code>oracle/</code> 目录；<strong><code>oracle/</code>、<code>skills/</code>、<code>lab/</code>、<code>wiki/</code> 的内容未取，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>编辑器或 <code>tsc</code> 遇到 <code>.sql</code> import → 调 content mapper 请求类型 → mapper 交给 Rust 引擎 → 引擎解析 SQL <strong>并连开发库读取当前 schema</strong> → 推导该条查询的行类型（受方言与 cast 影响）→ 返回给 type checker → hover 得到类型，错列名/参数在检查期报错 → 运行期 <code>.run(db, params)</code> 执行同一条 SQL</td>
+<td>由 README 的 Setup 依赖 + 六卖点 + 示例代码倒排；<strong>「schema 读取是否每次检查都发生、是否缓存、缓存如何失效」README 未说明，这是本项目最关键的未决问题</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>零 codegen（检查时实时查询）vs 生成文件（离线、快、可 review）</strong>——实时查询把成本转移到 type check 延迟与对开发库的依赖上 · <strong>对着真实数据库校验 vs 纯静态解析</strong> · <strong>零手写类型 vs 显式类型（可读性）</strong> · <strong>依赖 TS 7.1 beta vs 现在就能用（ORM 或 codegen）</strong> · <strong>方言原生 SQL 全文力 vs 可移植性</strong>（README 强调 "any statement, function, operator or syntax your database supports, in its own dialect"）</td>
+<td>README 三项依赖 + 六卖点逐条 + <strong>cast 直接影响推导结果这一事实</strong>（<code>::int</code> → <code>number</code>）；<strong>未明示：type check 性能开销、schema 缓存策略、错误信息质量、非 TS 后端的可用性</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>先确认 TS 7.1 可安装</strong>（<code>npm install -D typescript@beta</code>）——<strong>这一步不成立则整个 PoC 不成立，先不要往下走</strong>→ 2. 准备 Node 24+ 与运行中的开发库 → 3. 安装三件 → 4. 在 <code>tsconfig.json</code> 为 <code>.sql</code> 与 <code>.reylo.yaml</code> 注册 → 5. 用 README 的 <code>get_author.sql</code> 原样建表并 import，hover 确认类型为 <code>{ id: number; name: string; post_count: number } | null</code> → 6. <strong>故意把 <code>post_count</code> 改成不存在的列，确认编辑器立刻标红且 <code>tsc</code> 报错</strong>——<strong>这一步是整个 PoC 的意义所在</strong>：验证"对着数据库校验"是真的而非只做了静态解析 → 7. 改 SQL 的 cast，确认类型随之变化 → 8. 运行 <code>.run()</code> 确认一致 → 9. <strong>测量 type check 延迟</strong>（<code>tsc --diagnostics</code>，小项目与大项目各一次）——<strong>这是唯一能回答"零 codegen 是否真的划算"的方法</strong></td>
+<td><strong>第 5–7 步是最关键的自检</strong>：若第 6 步不报错，说明它根本没连库校验，"Checked against your database" 就是空话；<strong>第 9 步是 README 完全没提但决定该方案成败的问题</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最值得关注的方向</h2>
+<p>今天四个项目分属四个领域（硬件移植 / 推理框架 / 工具链 / 语言工具），没有一个共同的技术主题。<strong>但有一条判断标准可以跨领域复用，而且它在前三天已经连续出现：把边界、缺口与失败模式写成可核验的文档，比 star 数更能预测项目会不会被用起来。</strong></p>
+<p>按项目逐个说：</p>
+<ul>
+<li><strong>UniXNU</strong>：35 份设备文档让"这件事能不能做"从玄学变成查表；README 的 Private blobs 段把合规要求放在最显眼处。</li>
+<li><strong>Snapintosh</strong>：Status 表把"已可用 / 进行中 / 不支持"三档措辞放在同一张表里，且给"进行中"标了量化目标（60 Hz）。<strong>读者不需要读完全文就知道这台机器现在能干什么。</strong></li>
+<li><strong>DeepInfer</strong>：README 有一整段专门写"本次发布不含什么"。对生产引入者来说，这段话的价值高于任何一项特性列表。</li>
+<li><strong>reylo</strong>：六卖点里把"No codegen"和"Checked against your database"并列——<strong>一个减少派生物，一个把校验提前，两者都在缩小"人可能弄错"的窗口。</strong></li>
+</ul>
+<p><strong>跨项目的第二个观察（本日最实用的一条）：fork-star 在本日四个项目之间完全不可比，但有一个可解释的规律。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">⑂</th>
+<th style="text-align: right;">fork-star</th>
+<th>归类</th>
+<th>机制解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UniXNU/UniXNU</td>
+<td style="text-align: right;">750</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;"><strong>15.7%</strong></td>
+<td>可改造型</td>
+<td>fork 去移植自己的机型——README 专设 <code>docs/porting/</code>，35 份设备文档就是证据</td>
+</tr>
+<tr>
+<td>deepseek-ai/DeepInfer</td>
+<td style="text-align: right;">19,806</td>
+<td style="text-align: right;">2,106</td>
+<td style="text-align: right;">10.6%</td>
+<td>可读型</td>
+<td>fork 去读它的调度逻辑；kernel 栈本身已拆成 5 个独立仓库</td>
+</tr>
+<tr>
+<td>Acelogic/Snapintosh</td>
+<td style="text-align: right;">530</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">5.5%</td>
+<td>不可改造型</td>
+<td><strong>只支持一台机器，没有第二台可移植</strong>（README「Nothing else is supported」）</td>
+</tr>
+<tr>
+<td>colinhacks/reylo</td>
+<td style="text-align: right;">616</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><strong>0.5%</strong></td>
+<td>不可改造型</td>
+<td><strong>需要的是等 TS 7.1 stable 并升级，而不是 fork 它</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>推断（不构成事实）</strong>：本批四个数据点显示，fork 比例与「项目是否允许/需要用户改造」相关，而与项目质量、热度或价值无关。<strong>这是连续第三天观察到同一条分界线</strong>（10-21 记录 1.1%–18.6%，10-22 记录 5.5%–35.9%，本日记录 0.5%–15.7%）。<strong>但这仍是四个数据点，不足以支撑任何普遍结论。</strong></p>
+<p><strong>必须同时说清的第三点：本日没有事件驱动的热度洪峰，但"没有一个可直接采用"这件事比"排名"更重要。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>现在能不能用</th>
+<th>卡在哪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UniXNU</td>
+<td>不能（除非你的机型已在 35 份设备文档里）</td>
+<td>单机型移植成本；无 release</td>
+</tr>
+<tr>
+<td>DeepInfer</td>
+<td>不能用于生产</td>
+<td><strong>缺 KV cache / PD 分离 / 跨副本负载均衡</strong>——即缺它的核心设计目标</td>
+</tr>
+<tr>
+<td>Macintosh</td>
+<td>不能（除非你有那台 A16 和一台 Mac）</td>
+<td>11 commits、单机型、需第二台设备、音频摄像头蓝牙全缺</td>
+</tr>
+<tr>
+<td>reylo</td>
+<td>不能（除非 TS 7.1 stable）</td>
+<td><strong>单一语言特性依赖</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>这四个项目没有一个可以直接投入生产——这一点比它们的排名更能说明今天这个窗口的性质：这是研究快照与设计样本的窗口，不是工具发布的窗口。</strong></p>
+<h2 id="top-3">重点项目深度分析（top 3）</h2>
+<h3 id="deep-dive-1unixnuunixnu">Deep Dive 1：UniXNU/UniXNU（把移植难度写成可查询索引）</h3>
+<p><strong>项目定位。</strong> 独立项目，通过 UEFI 在非 Apple ARM64 硬件上启动 iOS 与 macOS，3.5 天 750⭐ ⑂118（fork/star 15.7%，本批最高），Python，BSD-2-Clause-Patent，1947 KB，subs 3，oi 6。</p>
+<p><strong>为什么它值得比它的 star 数更多的注意力。</strong> 因为它的<strong>规模信号来自三处可核验的结构事实，而不是来自热度</strong>：</p>
+<ol>
+<li><strong>35 份设备文档</strong>（<code>docs/devices/</code>）。README 明确说明设备仓库用与主仓库相同的布局，其 modules 覆盖同名 modules，其 <code>package/</code> 成为构建树里的一个 kit——<strong>这是一套已经被复用到至少 35 款设备的架构，不是单机型 hack。</strong></li>
+<li><strong>16 个独立公开驱动的 submodule</strong>。驱动不在主仓库里，各自独立、按需克隆。这既是可复用性设计，也是一种责任边界划分。</li>
+<li><strong>文档站 unixnu.com 是一等公民</strong>：<code>docs/concepts/{boot-chain,payload,prelink,security,userdata}.md</code>、<code>docs/drivers/{device-tree-matching,kexts,native-adreno}.md</code>、<code>docs/xnu/four-k-page-tables</code>，配 <code>docs.yml</code> 与 <code>macos.yml</code> 两条工作流。</li>
+</ol>
+<p><strong>风险。</strong>
+- <strong>⚠️ <code>license.spdx_id</code> 为 <code>NOASSERTION</code>，而 LICENSE 首行明写 <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code></strong>——可核验的元数据不一致（严重程度低，因文件本身无歧义）
+- <strong>star 数与社区规模严重不匹配</strong>：750⭐ 但 subs <strong>3</strong>、贡献者 <strong>6 人</strong>、主仓库 <strong>30 个 commit</strong>
+- <strong>没有任何 release</strong>：分发路径是 clone + submodule + 自建
+- <strong>原生 GPU 驱动的声明无法在本日报核验</strong>：news 段落称 Adreno 740 驱动在小米平板 6S Pro 上完全工作，但仓库按其自身规则不含可运行产物
+- <strong>设备覆盖是查表式的</strong>：README 未给"最低可移植门槛"（内存、存储、特定 SoC 特性）
+- <strong>35 份设备文档中的机型代号大量为国产 SoC</strong>（sheng / fajita / nuwa / pipa / piano / q2q / gta4l），意味着实际使用者集中在特定法域</p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，但跟踪方式应是"设备覆盖表"而非"star 数"。</strong> 它是本日唯一一个把难度直接写成可查询索引的项目。<strong>观察重点：<code>docs/devices/</code> 是否从 35 增长到 40+（说明有外部贡献者）；是否出现第二个由外部贡献者提交的设备文档；macOS/iOS 内核变更如何被跟进（保持官方内核意味着每次系统更新都要重做契约层）。</strong></p>
+<h3 id="deep-dive-2deepseek-aideepinfer">Deep Dive 2：deepseek-ai/DeepInfer（本日最有信息量的一份"不做什么"清单）</h3>
+<p><strong>项目定位。</strong> DeepSeek 生产推理框架的开源版本，7 天 19,806⭐ ⑂2,106（fork/star 10.6%），Apache-2.0，2965 KB，<strong>subs 43 为本批最高</strong>，oi 193。</p>
+<p><strong>为什么它值得比它的 star 数更多的注意力。</strong> 因为它是本日唯一<strong>同时具备两个特征</strong>的项目：<strong>由头部模型厂商官方开源</strong>，且<strong>明确描述了自己的生产环境规模</strong>。QA 文档里的三条目标（多厂商加速器 / prefill 用 8 卡机而 decode 用 64–128 卡超节点 / KV cache 保留 &gt;72h）解释了所有架构选择——尤其第二条，<strong>prefill 与 decode 差一个数量级的硬件配置不是为了省钱，而是为了让缓存有一个能待得住的家</strong>。</p>
+<p><strong>它的三条技术观察点：</strong></p>
+<ol>
+<li><strong>DSpark 的 confidence-scheduled verification</strong> 用置信度决定验证多少个 draft token，而不是固定值——这正是 2026 年投机解码的核心争论点，README 直接把开关暴露为环境变量。</li>
+<li><strong>SWA bounded replay 的正确性约束被写进文档</strong>：保留的后缀"必须覆盖 SWA 窗口加上最大回退长度"。<strong>一条可写死的正确性要求，比一个漂亮的 benchmark 更有价值。</strong></li>
+<li><strong>batch-invariant 与确定性采样</strong> 把可复现性做进引擎而非依赖外部固定种子，且两者都标注 <strong>NVIDIA only</strong>——说明昇腾路径并非功能对等。</li>
+</ol>
+<p><strong>风险。</strong>
+- <strong>⚠️ 最关键的限制是框架不完整</strong>：不含 KV cache、PD 分离、跨副本负载均衡。<strong>即使全部编译成功，也无法复现 72h 缓存复用——而那是它最核心的设计目标之一。</strong>
+- <strong>7 天 193 个 open issue</strong>：对新框架属正常，但配合 subs 43 说明确有大量真实用户。<strong>是早期信号而非质量缺陷</strong>，需观察关闭率。
+- <strong>「155T tokens/日、38 USD/GPU-hour」是作者声明</strong>，本日报无法核验（私有集群数据）；README 的两张 Pareto 图（prefill 4×SM100、decode 64×SM100）是当前唯一可复核的量化证据
+- <strong>昇腾路径成熟度未知</strong>：列为受支持硬件，但本窗口未取到任何昇腾特定的性能数据或限制
+- <strong>无 release</strong></p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，优先级在本日四个项目中最高。</strong> 理由：它是本日唯一一个有公开声明的生产规模、且把不在范围内的东西写进 README 的项目。<strong>观察重点（三项缺失是否开源，是这个项目未来的分水岭）、<code>deep_cluster/</code> 的实际内容（PD 分离代码是否已在树内未接线）、昇腾与 NVIDIA 的功能差距、<code>subscribers_count</code> 与 issue 关闭率的变化。</strong></p>
+<h3 id="deep-dive-3acelogicsnapintoshstatus">Deep Dive 3：Acelogic/Snapintosh（Status 表是本日最值得学的一个形式）</h3>
+<p><strong>项目定位。</strong> 在 ASUS Zenbook A16（Snapdragon X2 Elite）上运行 Apple 官方 macOS 27 的 EL2 hypervisor，20 小时 530⭐ ⑂29，Python，MIT（文件），9641 KB，subs 4，oi 4，<strong>全仓库仅 11 个 commit</strong>。</p>
+<p><strong>为什么它值得比它的 star 数更多的注意力。</strong> <strong>因为它的 Status 表。</strong> 这一张表把以下内容放在同一套"已可用 / 进行中 / 不支持"的三档措辞里：</p>
+<ul>
+<li>桌面：启动到桌面且 GPU 加速，<strong>桌面测试场景的像素检查通过</strong></li>
+<li>流畅度：<strong>进行中，「interaction is usable but not yet smooth」</strong>，目标稳定约 60 Hz，屏幕的 120 Hz 排后</li>
+<li>Wi-Fi：扫描、WPA2、DHCP、ping 在 host-proxy 测试架上可用，<strong>从 macOS Wi-Fi 菜单发起连接尚不可用</strong></li>
+<li>其他硬件：<strong>音频、摄像头、蓝牙、休眠与外接显示器均不支持</strong></li>
+</ul>
+<p><strong>这张表的价值在于它同时给出了"已验证"和"未达标"的边界，且给了未达标项一个量化目标。</strong> 对比同规模项目通常只写一句 "coming soon"，信息密度高一个量级。</p>
+<p><strong>第二条值得记的是 <code>gpu/agx*</code> 目录的存在本身就是一份诚实的路线记录。</strong> README 说这是"an earlier virtual-AGX model, kept for reference"。<strong>保留一条放弃的路径并标注为参考，比删掉它更能让读者理解为什么现在选原生驱动。</strong></p>
+<p><strong>风险。</strong>
+- <strong>⚠️ <code>license.spdx_id</code> 为 <code>NOASSERTION</code>，而 LICENSE 首行明写 <code>MIT License</code></strong>——同类元数据不一致
+- <strong>只支持一台笔记本</strong>：README「Nothing else is supported. The monitor, device tables, clocks and register addresses are specific to this machine.」
+- <strong>必须有一台 macOS 27 的 Mac 主机</strong>，且 AGENTS.md 把独立运行列为「a direction, not an already implemented or authorized replacement」
+- <strong>⭐ 11 个 commit、单机型、单次公开</strong>：历史集中在 2026-10-22 的 5 小时内，<strong>这不是成熟项目，是一个刚公开的快照</strong>
+- <strong>未经第三方复现</strong>：「pixel checks across the desktop test scenes pass」是作者自述
+- <strong>GPL-2.0 成分</strong>：主体 MIT，但 <code>LICENSES/</code> 含 GPL-2.0-only 与 GPL-2.0-or-later，<strong>具体哪些文件是 GPL-2.0 本窗口未逐项核验</strong></p>
+<p><strong>是否值得跟踪。</strong> <strong>值得，但应作为"分层与状态记录的样本"而非"可用工具"。</strong> 它的 EL2/EL1/EL0 分层表、Status 三档措辞、AGENTS.md 的九条禁止提交清单、THIRD_PARTY_NOTICES 的成分声明——<strong>这四样加起来是一份关于"如何在硬件逆向项目里表达边界"的完整示范</strong>，而这些都不需要它继续可用。<strong>观察重点：60 Hz 目标是否有进展；是否出现第二台机型（决定它是封闭作品还是可移植方案）。</strong></p>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机会</h3>
+<ol>
+<li><strong>"缺什么"比"有什么"更值得读。</strong> DeepInfer 用整段 README 写"本次发布不含 KV cache、PD 分离、跨副本负载均衡"，Macintosh 用 Status 表逐项写"音频、摄像头、蓝牙、休眠、外接显示器均不支持"。<strong>对准备引入的人，这两张清单的信息价值高于任何特性列表</strong>——它们直接决定"我能不能用"和"我要自己补多少"。</li>
+<li><strong>两个独立项目同时把"Apple 私有输入不得入库"写成仓库级制度，且 Macintosh 进一步扩展到 issue 与构建日志。</strong> UniXNU 的 README Private blobs 段与 Macintosh 的 AGENTS.md 第 1 条是两个互不相识项目的独立表述。<strong>这类合规纪律在硬件逆向领域正在标准化，值得被抄进任何相关项目。</strong></li>
+<li><strong>codegen 的替代路径出现了，而且论证方式变了。</strong> reylo 让派生物不再存在于磁盘上（type checker 直接问引擎），并把"单一事实源"从 DRY 论点改写成 agent 失效模式论证。<strong>凡是"事实源 A 变了，派生物 B 需重新生成"的场景，content mappers 都适用</strong>——这个思路的可迁移性比项目本身大。</li>
+<li><strong>16 KiB→4 KiB 页表翻译这个难点被两个独立项目同时确认为核心。</strong> Macintosh 的 <code>shadow/</code> 与 UniXNU 的 <code>docs/xnu/four-k-page-tables</code> 都在同一位置把它单列。<strong>一个技术难点被两条独立路径同时撞上，是这个难点真实存在成本的最好证据。</strong></li>
+<li><strong>本日是自 php2shell 事件以来第一次没有事件驱动的热度洪峰。</strong> 这意味着连续三天观察到的"fork-star 低区间"现象在本日<strong>不是事件驱动的结果</strong>——它更像是常态。<strong>这为后续几天的观察清掉了一个混淆变量。</strong></li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>四个项目没有一个可直接采用。</strong> 今日的性质是研究快照与设计样本窗口，不是工具发布窗口。做选型时<strong>"有没有被关注"与"能不能用"在今天是完全脱钩的两件事</strong>——19,806⭐ 的 DeepInfer 不能用于生产，616⭐ ⑂3 的 reylo 反而把技术路线说得最清楚。</li>
+<li><strong>reylo 的存续完全由一个尚未 stable 的语言特性决定。</strong> README 要求 <code>typescript@beta</code>。若 content mappers 在 stable 前变更 API，项目需重写；若 TS 7.1 跳票，项目为零。<strong>这是本日四个项目中最大的单点风险，且风险不在项目内部。</strong></li>
+<li><strong>两处 <code>license.spdx_id = NOASSERTION</code></strong>（UniXNU 与 Macintosh），尽管两处 LICENSE 文件内容清晰。<strong>依赖 license 扫描器的工具（合规流水线、企业采购清单）会把这当成非标准协议处理</strong>——这是本日新增的可核验元数据问题。</li>
+<li><strong>"生产规模声明"目前无法被任何外部证据交叉验证。</strong> DeepInfer 的「155T tokens/日、38 USD/GPU-hour」是私有集群的运行数据；Macintosh 的「pixel checks pass」无法在无硬件的情况下复现。<strong>这两个项目的可信度都依赖读者对作者的信任，而不只是依赖 README 的措辞。</strong></li>
+<li><strong>单机型 / 单次公开项目的信息衰减很快。</strong> Macintosh 的 11 个 commit 全部集中在 5 小时内，UniXNU 的设备文档覆盖完全依赖项目自己。<strong>这类项目在 star 数上升的同时可能没有任何功能进展</strong>——阅读它的 README 快照不能反映它今天的真实能力。</li>
+<li><strong>Android TV 去广告赛道继续第 6 天有新项目，但今日仍不重复建档。</strong> <code>Gathin23/cleanyourtv</code> 已达 <strong>23,714⭐ ⑂2,592</strong>（NOASSERTION，19 topics），<code>simbasjungles/free-my-tv</code> 3,366⭐、<code>humblemuzzu/dumbtv</code> 1,295⭐、<code>Ansub/tv-detox</code> 1,278⭐、<code>mihirgupta0900/tv-home</code> 407⭐。该赛道已在 10-19/10-20/10-21/10-22 四份日报完整记录，今日<strong>仅记为赛道延续性证据，不计入趋势排名</strong>——重复计入会让趋势指数失真。</li>
+</ol>
+<h2 id="_6">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UniXNU/UniXNU</td>
+<td>Python + 1947 KB + 3.5 天 750⭐ ⑂118（fork-star 15.7%，本批最高）+ UniXNU 组织 + subs 3 oi 6 + 主仓库 30 commits、贡献者 API 返回 6 人 + <strong><code>releases</code> API 返回空数组</strong> + 定位「run iOS and macOS on non-Apple ARM64 hardware through UEFI」+ news 段落（10-22）原生 Metal GPU 驱动已在小米平板 6S Pro（sheng）完全工作、渲染服务器经 Adreno 740 合成系统 UI、被列入名单的进程获得各自 Metal 设备 + <strong><code>docs/devices/</code> 下 35 份设备文档</strong>（amethyst/sheng/fajita/nuwa/pipa/piano/q2q/tb128fu/gta4l 等）+ README 明写设备仓库与主仓库同布局、其 modules 覆盖同名 modules、其 <code>package/</code> 成为构建树里的 kit + <strong><code>.gitmodules</code> 16 条独立驱动 submodule</strong>（ArmCpu/ArmDTPlatform/ArmVirtPlatform/DarwinBoot/NativeAES/NativeAdreno/NativeGeniSpi/NativeHidInput/NativeKeyStoreEvents/NativeMetal/NativeMobileDisplay/NativeRamBlock/NativeUfs/NativeVirtioBlock/NativeVirtioConsole）+ <strong>4 KiB 页表补丁单列一章</strong>（docs/xnu/four-k-page-tables、README Documentation 列表）· 文档站 unixnu.com（docs/.vitepress/config.mts）+ .github/workflows/{docs.yml,macos.yml} + 三仓库分工（UniXNU 构建驱动+UEFI 引导管理器+module 子模块与补丁 / UniXNU-sheng 设备仓库 / uefi-sheng UEFI 固件移植）+ <strong>README Private blobs 段：「Do not add Apple IPSW files, kernelcaches, disk images, trust caches, Data seeds or vendor firmware to this repository. Keep them in a local cache or external storage.」</strong> + <strong>LICENSE 首行 <code>Copyright (c) 2026, UniXNU contributors. All rights reserved.</code> + <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code>，而 GitHub <code>license.spdx_id</code> 为 <code>NOASSERTION</code>（可核验的元数据不一致）</strong></td>
+<td>推断：15.7% 的 fork-star 与「专设 docs/porting/ + 35 份设备文档」直接相关——fork 去移植自己的机型是核心使用方式；推断：BSD-2-Clause-Patent 而非 MIT，在 Apple 硬件逆向领域是有意义的信号</td>
+<td>待核验：<strong>原生 Adreno 740 驱动的声明无第三方复现记录</strong> + <strong>README 未给最低可移植门槛（内存/存储/SoC 特性要求）</strong> + <strong>35 份设备文档目前看全是项目自己的，是否有外部贡献者提交待观察</strong> + 平台契约提供者的具体实现形式（<code>docs/concepts/{prelink,userdata,payload}.md</code> 未取） + 「为什么从虚拟 AGX 转向原生驱动」README 未解释 + 是否会发布任何预构建产物</td>
+</tr>
+<tr>
+<td>deepseek-ai/DeepInfer</td>
+<td>Python+csrc+vendor + Apache-2.0 + 2965 KB + 7 天 19,806⭐ ⑂2,106（fork-star 10.6%）+ deepseek-ai 官方组织 + <strong>subs 43 为本批最高</strong> + oi 193 + <strong>topics 为空数组</strong> + <strong><code>releases</code> API 返回空数组</strong> + 自述「powers DeepSeek's large-scale production services… open-source release provides offline inference with the core features needed for serving at scale」+ <strong>仅支持 DeepSeek-V4.1-Flash</strong>（默认 checkpoint deepseek-ai/DeepSeek-V4.1-Flash-1017，首次运行下载到 HF 缓存，可用 DEEPINFER_HF_MODEL_DIR 指向本地）+ <strong>⚠️ README 整段「Required for a complete inference service (not included in this release)」明列三项不含：KV cache 系统 / VE-Prefill-Decode 分离（注明引擎大部分必需功能已实现）/ prefill 与 decode 两侧的跨 DP 副本负载均衡</strong>；doc/inference_deployment_qa.md 补充 KV cache 管理与负载均衡「tightly coupled to our internal infrastructure, so that code is not yet fully open-sourced」+ 支持硬件仅 NVIDIA SM100 与华为 Ascend 950（Linux/GCC≥13/Python 3.12/CUDA 13 或 CANN 9.2）+ 八项特性（优化 kernel：FlashMLA·DeepGEMM·DeepEP·TileKernels·DeepSelect + 自定义 TileLang kernel 位于 deepinfer/model_executor/layers/tilelang_ops，<strong>前五者均为独立仓库</strong> / DSpark confidence-scheduled verification：DEEPINFER_ENABLE_MTP_VARLEN=1，DEEPINFER_USE_NEXTN_DECODE 控制最大 draft 长度默认 5 / decoder SWA bounded replay：compact 模式 + DEEPINFER_YOCO_PREFILL_KEEP_TOKENS=140，<strong>保留后缀须覆盖 SWA 窗口加上最大回退长度</strong> / 异步调度默认开启，README 称 zero-overhead batch scheduler / batch-invariant：DEEPINFER_BATCH_INVARIANT=1，<strong>仅 NVIDIA</strong> / 确定性采样：同开关 + DEEPINFER_ENABLE_MTP_VARLEN=0 + 固定 seq_seed，<strong>仅 NVIDIA</strong> / 结构化输出：regex·JSON schema·EBNF，见 examples/_structured_output.py）+ 并行：Attention DP / balanced CP / MoE EP + EPLB + <strong>QA 文档三目标</strong>（支持多厂商加速器 / <strong>prefill 用普通 8-GPU 机而 decode 用普通 64–128-GPU 超节点</strong> / <strong>KV cache 保留超过 72 小时</strong>换上下文复用）+ <strong>作者声明「A single cluster currently serves 155 trillion tokens per day, with overall revenue of US$38 per GPU-hour (at valley pricing)」</strong> + benchmark 图在 4 张 SM100（prefill）与 64 张 SM100（decode）上测、各在一个 scale-up 域内，可用 examples/sweep/run_sweep.sh 复现 + <strong>自述「originally built primarily on vLLM, with additional inspiration from SGLang and TensorRT-LLM」</strong> + 同时开源 deepseek-recipe（生产级 token 编解码，逻辑完全对齐官方 DeepSeek API）· 顶层目录 csrc, deep_cluster, deepinfer, doc, eval, examples, scripts, tests, vendor（共 398 条），eval/ 含 aime/gpqa/hle 三套</td>
+<td>推断：<strong>「把不在范围内的东西写成整段」在本项目上比在多数开源项目上更可信</strong>——理由是它同时给出了三项缺失的准确定义（KV cache / PD 分离 / 跨副本负载均衡），而不是笼统说「更多功能即将到来」；推断：**「155T tokens/日、38 USD/GPU-hour」的表述方式（给出 GPU 小时单价而非仅 token 量）说明作者知道读者会追问成本结构</td>
+<td>待核验：<strong>三项缺失是否会在后续版本开源（这个项目未来的分水岭）</strong> + <strong><code>deep_cluster/</code> 的实际内容——PD 分离代码是否已在树内但未接线</strong> + <strong>昇腾路径与 NVIDIA 路径的功能差距（batch-invariant 缺失已知，实际影响未知）</strong> + EPLB 的具体策略 + draft 模型的显存/算力成本占比 + 「155T tokens/日、38 USD/GPU-hour」为作者声明，本日报未独立核验且无法核验（私有集群运行数据）</td>
+</tr>
+<tr>
+<td>Acelogic/Snapintosh</td>
+<td>Python + <strong>LICENSE 文件首行 MIT License 而 GitHub <code>license.spdx_id</code> 为 <code>NOASSERTION</code></strong>（可核验的元数据不一致）· 9641 KB + 20 小时 530⭐ ⑂29（fork-star 5.5%）+ subs 4 oi 4 + <strong>全仓库仅 11 个 commit，历史集中在 2026-10-22 的 5 小时内</strong>（01:26:36Z「Snapintosh public release」→ 06:36:49Z，含 3 个 Merge PR）+ <strong><code>releases</code> API 返回空数组</strong> + topics 0 + 定位 EL2 monitor + toolchain，「boots Apple's macOS 27 (build 26A428) on an ASUS Zenbook A16 laptop with a Qualcomm Snapdragon X2 Elite (X2E-96-100)」+ <strong>「The monitor runs Apple's stock kernelcache (the J700/T8140 kernel) unmodified by default.」</strong> + 提供 SPTM/TXM 监控调用 + 内核 16 KiB 页表翻译 + Apple 设备（README 列出 AIC / ANS2 NVMe / DART / GPU ring / SMMU 中介）+ 图形经笔记本自带 Adreno X2-90 GPU 走项目自写栈（AdrenoMetal.bundle Metal 驱动插件 / AdrenoX2 IOGPU kext 配 AdrenoDisplay 驱动内屏 / air2ir3 把 Apple AIR 即 Metal 的 IR 翻译成 Mesa ir3）+ <strong>硬边界「There is no software, CPU or paravirtual rendering path.」+ <code>gpu/agx*</code> 为「an earlier virtual-AGX model, kept for reference」</strong> + 配套 q1n1（从 Asahi Linux m1n1 fork 的 UEFI EL2 proxy）经 USB-C NCM 把机器交给 macOS 27 Mac 主机驱动，<strong>每次启动、镜像上传与日志抓取都走该链路；README 明写需要一台 Mac 主机，AC 供电强烈推荐，工具在电量低于阈值时拒绝启动或写盘</strong> + <strong>Status 表</strong>：桌面启动到桌面且 GPU 加速、<strong>桌面测试场景像素检查通过</strong> / 流畅度 in progress「usable but not yet smooth」目标稳定约 60 Hz、面板 120 Hz 排后 / 输入内置键鼠与触控板手势·Mission Control·应用切换可用 / Wi-Fi QCC2072 扫描·WPA2·DHCP·ping 在 host-proxy 测试架可用但<strong>从 macOS Wi-Fi 菜单发起连接尚不可用</strong> / 存储已装到内置 NVMe 并从其启动 / <strong>音频·摄像头·蓝牙·休眠·外接显示器均不支持</strong> + AGENTS.md 开篇「This is the complete policy, not an addendum to an earlier AGENTS.md」+ 三条硬规则（①绝不提交 Apple/Qualcomm/ASUS 的 kernelcache、固件、restore-image 部件、KDK、kext、dyld cache、ACPI dump、反汇编/vtable/ABI dump、重建的 <code>*26A428.h</code> 头文件、从 Apple shader 编译的 shader 集，且<strong>不得贴进 PR/issue/构建日志/测试夹具</strong> ②绝不提交密钥或机器标识数据（个人路径、用户名、主机名、接口名、IP/MAC、序列号、SSID/密码、SSH 密钥、容器 ID），用 tools/cycle_lib/pins.example.json 参数化 ③保留 opt-in 语义，新运行时特性需编译期 ADRENO_<em>/SNAP_</em> 开关）+ <strong>「Standalone execution is a direction, not an already implemented or authorized replacement for this flow」</strong> + 分层表 compat/（EL2 monitor + SPTM/TXM 中介 + CPU/中断/定时器/设备模拟 + GPU ring 与 SMMU 中介 + NVMe 后端）、shadow/（页表遍历器 16K→4K）、probes/、tools/（cycle.py + cycle_lib 启动编排/安全检查/日志、test-<em> 与 replay-</em> 主机测试与离线重放）、gpu/adreno-kext/{kext,plugin}、gpu/air2ir3/、gpu/agx*、drivers/{snap-i2c-hid, snap-qcc2072}、config/ + THIRD_PARTY_NOTICES.md「The repository contains no Apple, Qualcomm, ASUS or Microsoft binaries」，输入停在 git-ignored 的 downloads/ build/ gpu/adreno/ gpu/air2ir3/corpus + LICENSES/ 含 BSD-3-Clause.txt GPL-2.0-only.txt GPL-2.0-or-later.txt MIT.txt</td>
+<td>推断：<strong>Status 表的三档措辞（「已可用 / 进行中 / 不支持」+ 对"进行中"给出量化目标 60 Hz）是本日最值得抄的一个文档形式</strong>——读者不读完全文即可知道这台机器能干什么；推断：<strong><code>gpu/agx*</code> 保留为参考使读者能理解为什么最终选原生驱动</strong>——项目保留了判断过程而非只有结果；推断：<strong>AGENTS.md 第 1 条把禁止范围从代码扩展到 issue/构建日志/测试夹具，这比只写"不要提交内核"要难遵守得多，因此更可能是被真实问题推动的</strong></td>
+<td>待核验：<strong>「pixel checks across the desktop test scenes pass」为作者自述，本日报无法核验，仓库按其自身规则不含可分发的运行产物</strong> + <strong>air2ir3 在运行期的角色（按需编译 vs 构建期预编译）README 未明说</strong> + <strong>q1n1 与 tools/cycle.py 之间的控制流未细述</strong> + <strong>LICENSES/ 中哪些文件是 GPL-2.0，本窗口未逐项核验</strong>（若用于分发需先确认） + 60 Hz 目标是否有进展记录 + 是否出现第二台受支持机型（决定 STATUS.md 是单页还是多页）</td>
+</tr>
+<tr>
+<td>colinhacks/reylo</td>
+<td>Rust + TypeScript + MIT + 66704 KB（67 MB）+ colinhacks 个人 + 1.9 天 616⭐ ⑂3（<strong>fork-star 0.5%，本批最低</strong>）+ <strong>subs 0</strong> + oi 13 + topics 为空数组 + 定位「Import .sql files into TypeScript with full type inference」+ <strong>⚠️ 完全依赖 TypeScript 7.1 beta 的 content mappers</strong>（README 引用 microsoft/typescript-go PR #4712，明写「introduced in TypeScript 7.1 (currently in beta)」）+ 需 Node 24 或更高 + <strong>一个正在运行的开发数据库</strong>（README Prerequisite 原文「A running dev database. Postgres, MySQL 8.0.22 or later, or a SQLite file: Reylo reads your current schema from it.」）+ 安装 npm install reylo + @reylosql/postgres（or mysql/sqlite）+ typescript@beta，并在 tsconfig.json 为 .sql 与项目文件 .reylo.yaml/.reylo.yml 注册 + 六卖点：<strong>全文力 SQL</strong>（any statement, function, operator or syntax your database supports, in its own dialect）/ <strong>DRY</strong>（类型来自 SQL 本身，无手写行类型、无 schema 文件需同步）/ <strong>Checked against your database</strong>（<strong>拼错的列名、错误参数、已删除的表都是类型错误，在 tsc 和编辑器里都成立</strong>）/ <strong>Agent-friendly</strong>（<strong>each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed</strong>）/ 支持 Postgres·MySQL·SQLite 且自带驱动 pg·postgres.js·mysql2·better-sqlite3·Bun.sql·Cloudflare D1 等 / <strong>No codegen — the type checker asks Reylo directly: no generated files, no watcher</strong> + 示例：<code>select u.id, u.name, count(p.id)::int as post_count …</code> 的 <code>.run(db, {id:1})</code> 返回 <code>{ id: number; name: string; post_count: number } | null</code> —— <strong>cast 直接影响推导结果，::int 得到 number 而非 bigint</strong> + 仓库顶层 Cargo.toml/Cargo.lock、engine/、oracle/、src/、packages/、lab/、skills/、wiki/、site/ + 文档站 reylo.dev</td>
+<td>推断：<strong>subs 0 + fork-star 0.5% 说明热度目前完全是曝光，没有任何采用信号</strong>——这与本项目"需要等上游 beta 特性而非 fork 它"的形态完全吻合；推断：<strong>「agent 论证」是 2026 年工具设计的一个可观察转变</strong>——把 DRY 论点改写成「agent 无法制造过期状态」的失效模式论证</td>
+<td>待核验：<strong>TypeScript 7.1 的发布时间表与 content mappers 的 API 稳定性（决定性变量）</strong> + <strong>type check 的性能开销是否有公开基准</strong>（决定"零 codegen"卖点的真实成本，README 通篇未提） + <strong>schema 缓存策略：是否每次检查都连库、是否可离线</strong>（本项目最关键的未决问题） + <strong>oracle/ 与 skills/ 的职责</strong>（若 oracle 是对推导正确性的对照实现，其测试方式是可信度关键） + <strong>oi 13 对 616⭐ 的库偏高</strong>——可能反映真实用户遇到 beta 边界，也可能反映 API 未稳定；<strong>本窗口未取 issue 内容，不做判断</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 本日全部元数据取自 2026-10-23 CST 06:00 前后经 gh CLI 认证的 GitHub REST / Search API，README 与 <code>AGENTS.md</code> / <code>doc/inference_deployment_qa.md</code> / <code>THIRD_PARTY_NOTICES.md</code> / <code>LICENSE</code> / <code>.gitmodules</code> 原文经 <code>Accept: application/vnd.github.raw</code> 抓取，仓库结构经 <code>git/trees/HEAD</code> 与 <code>?recursive=1</code>，历史与贡献者规模经 <code>commits</code> 与 <code>contributors</code>。<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-23 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计（需分页遍历 stargazer），因此任何「增速」表述都不能读作当日新增。</strong> <code>releases</code> API 对 <code>deepseek-ai/DeepInfer</code>、<code>Acelogic/Snapintosh</code>、<code>UniXNU/UniXNU</code> 三者均返回空数组或长度 0（三者的主分发路径分别是 <code>./build.sh</code> 从源码构建、clone + submodule 自建、以及文档 + 自编译）。<code>subscribers_count</code> 为 43 / 3 / 4 / 0（DeepInfer 43 为本批最高，reylo 0 为本批最低）；<code>topics</code> 对 DeepInfer 与 reylo 为空数组、UniXNU 有 1 个 topic、Macintosh 为 0。<strong>本日新增发现两处可核验的元数据不一致</strong>：<code>UniXNU/UniXNU</code> 与 <code>Acelogic/Snapintosh</code> 的 <code>license.spdx_id</code> 均为 <code>NOASSERTION</code>，但两处 <code>LICENSE</code> 文件首行分别明写 <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code> 与 <code>MIT License</code>，且 <code>THIRD_PARTY_NOTICES.md</code> 也写明 Snapintosh 采用 MIT——<strong>以文件为准两者均可正常使用，但 GitHub 侧无法被自动识别为标准许可证，依赖 license 扫描器的工具会当成非标准协议处理</strong>；这与 10-22 记录的 <code>ikow/php2shell-poc</code>（spdx_id 为 null 而 README 写 MIT）性质相同但严重程度低得多（本次两处 LICENSE 文件内容清晰无歧义，而 php2shell-poc 的 README 与元数据直接冲突）。<strong>本日没有 CVE 驱动的注意力洪峰</strong>——这是自 10-21 的 php2shell 事件以来第一次，今日热度排序对技术选型的干扰比前两日小；<strong>但这四个项目没有一个是可直接采用的</strong>：UniXNU 与 Macintosh 是研究快照（Macintosh 仅 11 个 commit、单机型、需另一台 Mac 主机、音频摄像头蓝牙全缺），DeepInfer 缺三成系统（KV cache / PD 分离 / 跨副本负载均衡），reylo 依赖尚未 stable 的 TS 7.1——<strong>今天这个窗口的性质是研究快照与设计样本，而不是工具发布。</strong> 四个项目 fork-star 分化为 0.5% / 5.5% / 10.6% / 15.7%，<strong>但这四个数字不可横向比较</strong>：高 fork 比例的两个分别是「fork 去移植自己的机型」（UniXNU，专设 <code>docs/porting/</code> + 35 份设备文档）与「fork 去读它的调度逻辑」（DeepInfer，kernel 栈本身已拆成 5 个独立仓库），低 fork 比例的两个分别是「只支持一台机器，没有第二台可移植」（Macintosh，README「Nothing else is supported」）与「需要的是等上游 beta 特性稳定而不是 fork 它」（reylo，subs 0）；<strong>连续第三天观察到同一条分界线——fork 比例在「可改造型项目」与「不可改造型项目」之间不可比</strong>。已过滤可核验的 spam 模式：<code>xscreensaver-official/xscreensaver</code>（1147⭐ ⑂33，<strong>README 自述「There is no official XScreenSaver GitHub repository.」</strong>——自我否认自身权威性，可核验的伪装）；<code>WoYun520/dsh-purge</code>（401⭐ ⑂687，<strong>fork/star 171%</strong>，README 自述「DeepSeek Harness 破甲 (mirror of mmparko/dsh-purge) — 全量镜像：全部分支/100 个 tag/完整提交历史」，是完整的仓库镜像而非原创）。<strong>未纳入 key_projects 的候选</strong>：<code>Gathin23/cleanyourtv</code>（23,714⭐ ⑂2,592 NOASSERTION，19 topics 直打 Android TV 去广告，但该赛道已在 10-19/10-20/10-21/10-22 四份日报连续记录，今日不重复建档）；<code>reason-machines/reason-network</code>（1060⭐ ⑂86 Apache-2.0 Rust，<strong>已有 projects/reason-network.md 档案</strong>，本窗口未取其 README 故不重复更新）；<code>kividbio/kividb</code>（460⭐ ⑂14 AGPL-3.0 Rust，20 topics 描述「Redis 与 Valkey 的 Rust drop-in 替代，含全文检索」，<strong>未建档</strong>）；<code>ELY-Open-Source/ElyOffice</code>（850⭐ ⑂54，<strong>已有 projects/elyoffice.md 档案</strong>，10-21 已建档，本窗口未取 README）；<code>vercel-labs/fx0</code>（382⭐ ⑂70，<strong>已有档案</strong>，10-21 已建档）；<code>eagle-hq/EAGLE-4</code>（862⭐ ⑂24 NOASSERTION，10-22 已记录为未取 README）。<strong>本日最重要的判断不是「哪个项目最热」，而是三个各自独立的项目在同一天做了同一件事：把边界写成可核验的文档</strong>——DeepInfer 用整段 README 写「本次发布不含什么」，Macintosh 用 Status 表逐项写「什么不支持、什么进行中及目标值」，UniXNU 用 README 的 Private blobs 段与 BSD-2-Clause-Patent 许可写「什么不能进来、以什么条款进来」，而 reylo 用六卖点中的「No codegen」与「Checked against your database」写「派生物不存在于磁盘上、校验发生在类型检查期」。<strong>这四条与 star 数完全无关，却是本日跨领域最强的共同信号。</strong> 与前三日不同的是，本日的第二条共同信号来自<strong>技术路径本身</strong>：UniXNU（UEFI 伪平台契约，35 款设备）与 Macintosh（EL2 hypervisor，单机型）<strong>两个互不相识的项目撞上了同一组核心技术难点——16 KiB→4 KiB 页表翻译与 Apple 私有输入的合规处理——并各自独立地把后者写成了仓库级制度</strong>；一个技术难点被两条独立路径同时确认为核心，是这个难点真实存在成本的最好证据。</p>
+</blockquote>
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>🍎 <a href="projects/unixnu.html">UniXNU/UniXNU</a> — 通过 UEFI 在非 Apple ARM64 硬件上启动 iOS 与 macOS，<strong>不 patch 内核而是补齐内核期待的 Apple 平台契约</strong>（3.5 天 750⭐ ⑂118 · <strong>fork/star 15.7% 本批最高</strong> · Python · 1947 KB · BSD-2-Clause-Patent（LICENSE 首行 SPDX 明写，但 GitHub <code>license.spdx_id</code> 为 <code>NOASSERTION</code>，可核验的元数据不一致）· subs 3 oi 6 · <strong>主仓库仅 30 commits、贡献者 API 返回 6 人</strong> · <code>releases</code> API 返回空数组）—— <strong>规模信号来自三处结构事实而非热度</strong>：<code>docs/devices/</code> 下 <strong>35 份设备文档</strong>（README 明写设备仓库同布局、modules 覆盖同名、其 <code>package/</code> 成为构建树里的 kit）+ <strong>16 个独立公开驱动的 submodule</strong>（ArmCpu/ArmDTPlatform/ArmVirtPlatform/DarwinBoot/NativeAES/NativeAdreno/NativeGeniSpi/NativeHidInput/NativeKeyStoreEvents/NativeMetal/NativeMobileDisplay/NativeRamBlock/NativeUfs/NativeVirtioBlock/NativeVirtioConsole，需 <code>--recurse-submodules</code>）+ 文档站 unixnu.com 是一等公民（<code>concepts/{boot-chain,payload,prelink,security,userdata}</code> + <code>drivers/{device-tree-matching,kexts,native-adreno}</code> + <strong>4 KiB 页表补丁单列一章</strong>）· <strong>news（10-22）：原生 Metal GPU 驱动已在小米平板 6S Pro（sheng）完全工作，渲染服务器经 Adreno 740 合成系统 UI，被列入名单的进程获得各自 Metal 设备</strong> · <strong>README Private blobs 段：「Do not add Apple IPSW files, kernelcaches, disk images, trust caches, Data seeds or vendor firmware to this repository.」</strong> · 三仓库分工（UniXNU 构建驱动+UEFI 引导管理器+module 与补丁 / UniXNU-sheng 设备仓库 / uefi-sheng UEFI 固件移植）· ⚠️ 750⭐ 但 subs 仅 3、贡献者仅 6 人，<strong>star 数在此度量话题吸引力而非社区规模</strong>（Score 88）</li>
+<li>⚡ <a href="projects/deepinfer.html">deepseek-ai/DeepInfer</a> — DeepSeek 生产大规模推理服务所用的推理框架的开源版本，提供离线推理与规模化服务所需的核心里能力（优化 kernel、并行策略、投机解码调度、异步批调度），<strong>但明确不含 KV cache 系统、PD 分离与跨副本负载均衡</strong>（7 天 19,806⭐ ⑂2,106 · fork/star 10.6% · Python+csrc+vendor · Apache-2.0 · 2965 KB · <strong>subs 43 为本批最高</strong> · oi 193 · topics 为空数组 · <code>releases</code> API 返回空数组）—— <strong>⚠️ README 用整段「Required for a complete inference service (not included in this release)」明列三项不含</strong>（KV cache 系统 / VE-Prefill-Decode 分离「引擎大部分必需功能已实现」/ prefill 与 decode 两侧的跨 DP 副本负载均衡；QA 文档补充前两者「与内部基础设施耦合紧密尚未完全开源」）<strong>这意味着即使全部编译成功也无法复现 72h 缓存复用，而那是它最核心的设计目标之一</strong> · 仅支持 DeepSeek-V4.1-Flash（默认 checkpoint <code>deepseek-ai/DeepSeek-V4.1-Flash-1017</code>，可用 <code>DEEPINFER_HF_MODEL_DIR</code> 指向本地）· 支持硬件仅 NVIDIA SM100 与华为 Ascend 950（CUDA 13 / CANN 9.2）· <strong>QA 文档三目标</strong>：多厂商加速器 / <strong>prefill 用普通 8-GPU 机而 decode 用普通 64–128-GPU 超节点</strong>（差一个数量级不是为省钱，是让缓存有地方待）/ <strong>KV cache 保留超过 72 小时</strong>换上下文复用 + <strong>作者声明「单集群每日 155 万亿 token、每 GPU 小时 38 美元（谷值定价）」——本日报未独立核验且无法核验</strong> · 八项特性：kernel 栈全是独立仓库（FlashMLA·DeepGEMM·DeepEP·TileKernels·DeepSelect + 自定义 TileLang kernel）· <strong>DSpark 置信度调度验证</strong>（用置信度决定验证多少 draft token）· <strong>SWA bounded replay</strong>（compact + <code>KEEP_TOKENS=140</code>，<strong>保留后缀须覆盖 SWA 窗口加上最大回退长度</strong>——一条写死在文档里的正确性约束）· <strong>默认开启的异步调度</strong> · <strong>batch-invariant 与确定性采样</strong>（均标注 <strong>NVIDIA only</strong>）· 结构化输出 · 并行 Attention DP / balanced CP / MoE EP + EPLB · benchmark 在 4 张 SM100（prefill）与 64 张（decode）上测、各在一个 scale-up 域内，可用 <code>examples/sweep/run_sweep.sh</code> 复现 · 自述「originally built primarily on vLLM, with inspiration from SGLang and TensorRT-LLM」· 同时开源 deepseek-recipe（逻辑完全对齐官方 API）· <strong>未来模型推理代码与后续性能工作将继续在 DeepInfer 开源</strong>（Score 91）</li>
+<li>💾 <a href="projects/snapintosh.html">Acelogic/Snapintosh</a> — 在 ASUS Zenbook A16（Snapdragon X2 Elite X2E-96-100）上运行 Apple 官方 macOS 27 的 EL2 hypervisor + 工具链，<strong>不改内核而是提供内核期待的 Apple silicon 平台契约</strong>（20 小时 530⭐ ⑂29 · fork/star 5.5% · Python · 9641 KB · <strong>LICENSE 文件首行 MIT 而 GitHub <code>license.spdx_id</code> 为 <code>NOASSERTION</code></strong> · subs 4 oi 4 · <strong>全仓库仅 11 个 commit，历史集中在 2026-10-22 的 5 小时内</strong>（01:26:36Z 首次公开 → 06:36:49Z 含 3 个 Merge PR）· <code>releases</code> API 返回空数组）—— <strong>「The monitor runs Apple's stock kernelcache (the J700/T8140 kernel) unmodified by default.」</strong> 提供 SPTM/TXM 监控调用、内核 16 KiB→4 KiB 页表翻译（<code>shadow/</code>）、Apple 设备模型（AIC/ANS2 NVMe/DART/GPU ring/SMMU 中介）· 图形走笔记本自带 <strong>Adreno X2-90 GPU</strong> 与项目自写栈：<strong>AdrenoMetal.bundle</strong>（Metal 驱动插件）+ <strong>AdrenoX2</strong>（IOGPU kext，配 AdrenoDisplay 驱动内屏）+ <strong>air2ir3</strong>（把 Apple AIR 即 Metal 的 IR 翻译成 Mesa ir3）· <strong>硬边界「There is no software, CPU or paravirtual rendering path.」而 <code>gpu/agx*</code> 是「an earlier virtual-AGX model, kept for reference」——项目保留了自己的判断过程</strong> · 配套 <strong>q1n1</strong>（从 Asahi Linux m1n1 fork 的 UEFI EL2 proxy）经 USB-C NCM 把机器交给 <strong>一台 macOS 27 Mac 主机</strong>，每次启动/上传/日志抓取都走该链路；<strong>AGENTS.md 明写「Standalone execution is a direction, not an already implemented or authorized replacement」</strong> · <strong>Status 表是本日最值得学的一个形式</strong>：桌面「pixel checks across the desktop test scenes pass」/ 流畅度 in progress「usable but not yet smooth」目标 60 Hz 而面板 120 Hz 排后 / Wi-Fi 仅 host-proxy 可用<strong>从 macOS 菜单发起连接尚不可用</strong> / 存储已装到内置 NVMe / <strong>音频·摄像头·蓝牙·休眠·外接显示器均不支持</strong> · <strong>AGENTS.md 开篇「This is the complete policy, not an addendum to an earlier AGENTS.md」+ 三条硬规则</strong>（①绝不提交 Apple/Qualcomm/ASUS 的 kernelcache、固件、restore-image 部件、KDK、kext、dyld cache、ACPI dump、反汇编/vtable/ABI dump、重建的 <code>*26A428.h</code> 头文件、从 Apple shader 编译的 shader 集，<strong>且不得贴进 PR/issue/构建日志/测试夹具</strong> ②绝不提交密钥或机器标识数据，用 pins.example.json 参数化 ③保留 opt-in 语义，新特性需编译期 <code>ADRENO_*</code>/<code>SNAP_*</code> 开关）· <strong>THIRD_PARTY_NOTICES.md「The repository contains no Apple, Qualcomm, ASUS or Microsoft binaries」</strong>，输入停在 git-ignored 的 <code>downloads/</code> <code>build/</code> <code>gpu/adreno/</code> <code>gpu/air2ir3/corpus</code> · <code>LICENSES/</code> 含 BSD-3-Clause/GPL-2.0-only/GPL-2.0-or-later/MIT 四份文本（<strong>哪些文件是 GPL-2.0 本窗口未逐项核验</strong>）· ⚠️ <strong>只支持一台笔记本</strong>（README「Nothing else is supported」）且必须配一台 Mac 主机（Score 87）</li>
+<li>🗄️ <a href="projects/reylo.html">colinhacks/reylo</a> — 把 <code>.sql</code> 文件直接 import 进 TypeScript 并让<strong>类型直接从 SQL 本身推导</strong>，不手写行类型、不维护 schema 文件、<strong>不 codegen</strong>（1.9 天 616⭐ ⑂3 · <strong>fork/star 0.5% 为本批最低</strong> · Rust + TypeScript · MIT · 67 MB · colinhacks 个人（TypeScript 编译器方向核心贡献者）· <strong>subs 0</strong> · oi 13 · topics 为空数组）—— <strong>⚠️ 完全依赖 TypeScript 7.1 beta 的 content mappers</strong>（README 引用 microsoft/typescript-go PR #4712，明写「introduced in TypeScript 7.1 (currently in beta)」，需 <code>typescript@beta</code> 与 Node 24+）· <strong>需要一个正在运行的开发数据库</strong>（README Prerequisite 原文「A running dev database… Reylo reads your current schema from it.」）· 六卖点：<strong>「No codegen — the type checker asks Reylo directly: no generated files, no watcher.」</strong> · <strong>「Checked against your database — a misspelled column, a wrong parameter or a dropped table is a type error, in <code>tsc</code> and in your editor.」校验发生在类型检查期而非运行期</strong> · <strong>「Agent-friendly — each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed.」——把 DRY 论证改写成 agent 失效模式论证</strong> · 全文力 SQL（任何方言的语句/函数/运算符/语法）· 零手写类型 · 自带驱动 pg·postgres.js·mysql2·better-sqlite3·Bun.sql·Cloudflare D1 等 · <strong>类型来自 SQL 本身，cast 直接影响推导结果</strong>（<code>count(p.id)::int as post_count</code> → <code>post_count: number</code> 而非 bigint）· 示例 <code>.run(db, {id:1})</code> 返回 <code>{ id: number; name: string; post_count: number } | null</code> · 仓库顶层含 <code>engine/</code> <code>oracle/</code> <code>src/</code> <code>packages/</code> <code>lab/</code> <code>skills/</code> <code>wiki/</code>（<strong>oracle/ 与 skills/ 职责待核验</strong>）· <strong>⚠️ 存续完全由一个尚未 stable 的语言特性决定：若 content mappers 在 stable 前变更 API 需重写，若 TS 7.1 跳票则为零</strong>（Score 87）</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

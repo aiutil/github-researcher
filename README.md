@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-22.md">Latest report</a> ·
+  <a href="daily/2026-10-23.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,40 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-22
+## Latest report · 2026-10-23
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 739 | 4 | 86k+ |
+| 4 | 743 | 4 | 112k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [ikow/php2shell-poc](projects/php2shell-poc.md) | 859 stars | 观察型 |
-| [HOSTED-POWER/php_uploadprogress_guard](projects/php-uploadprogress-guard.md) | 53 stars | 生产可用 |
-| [NVIDIA/flare-local-inference](projects/flare-local-inference.md) | 485 stars | 基础设施候选 |
-| [dominikmartn/harp](projects/harp.md) | 527 stars | 工具型 |
+| [UniXNU/UniXNU](projects/unixnu.md) | 750 stars | 观察型 |
+| [deepseek-ai/DeepInfer](projects/deepinfer.md) | 19,806 stars | 基础设施候选 |
+| [Acelogic/Snapintosh](projects/snapintosh.md) | 530 stars | 观察型 |
+| [colinhacks/reylo](projects/reylo.md) | 616 stars | 观察型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 92 · repositories: ikow/php2shell-poc, openai/php2shell-checker, NCSC-NL/php2shell
-2. **Signal 2** · score 89 · repositories: HOSTED-POWER/php_uploadprogress_guard
-3. **Signal 3** · score 86 · repositories: NVIDIA/flare-local-inference
-4. **Signal 4** · score 84 · repositories: dominikmartn/harp
+1. **Signal 1** · score 90 · repositories: UniXNU/UniXNU, Acelogic/Snapintosh
+2. **Signal 2** · score 89 · repositories: deepseek-ai/DeepInfer
+3. **Signal 3** · score 87 · repositories: colinhacks/reylo
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-22.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-23.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-23](daily/2026-10-23.md) | 4 | 4 |
 | [2026-10-22](daily/2026-10-22.md) | 4 | 4 |
 | [2026-10-21](daily/2026-10-21.md) | 4 | 4 |
 | [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
-| [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 
 ## Why this repository exists
 

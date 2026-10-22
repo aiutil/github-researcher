@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-10-22.md">最新日报</a> ·
+  <a href="daily/2026-10-23.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,40 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-10-22
+## 最新研究 · 2026-10-23
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 4 | 739 | 4 | 86k+ |
+| 4 | 743 | 4 | 112k+ |
 
-**今日核心判断：** PHP 核心 RCE（php2shell / CVE-2026-109618 + CVE-2026-109619）在补丁发布后 24 小时内长出一整套开源响应生态：ikow/php2shell-poc 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）给出 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）；openai/php2shell-checker 310⭐ Apache-2.0 且主动声明「不独立验证安全修复、UNKNOWN 不等于已打补丁」；NCSC-NL/php2shell 以 EUPL-1.2 + TLP:CLEAR 发出国家级处置建议并明确「嵌入家电/网络设备/管理界面的 PHP 无法直接升级」；HOSTED-POWER/php_uploadprogress_guard 53⭐ 写出本日唯一非 PoC 项目——把缓解措施本身做成可安装 PHP 扩展，逐组件镜像官方补丁、自检到已打补丁就自动让位、12 个预编译二进制全部构建在 GLIBC_2.14 以下、Ansible 幂等部署在 cPanel EA4 / DirectAdmin / AWX 上实测 failed=0 二次 changed=0；NVIDIA/flare-local-inference 485⭐ ⑂47 用 AGENTS.md 明文列出「拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证」并自称「不是也不会是 vLLM 的替代」；dominikmartn/harp 527⭐ ⑂29 把 Warp 非官方 fork 的 tab bar 换成 agent 状态侧边栏 + 双 provider 限额环 + tmux 状态同步——今日主线是「**一个 PHP 补丁被开源社区拆成四层职责各自认领：谁解释漏洞、谁检测、谁国家层面处置、谁在等补丁期间先保住机器**；而 Flare 与 Harp 共享另一种信号——**把『我不做什么』写进代码仓库的制度文件，而不是只写在 README 卖点里**。热度本身仍不等于价值：php2shell 生态是 CVE 驱动的注意力洪峰而非技术突破，Flare 是明示的研究原型，Harp 是 4 个 release / 2 天的 fork，所有这些都需要后续 7–30 天数据才能判断是真实采用还是事件余温。
+**今日核心判断：** 本日最值得记的不是四个项目各自的领域，而是三条各自独立却在同一天浮现出的同构信号：**第一，Apple 内核移植的两条互不相识路径（UniXNU 走 UEFI 伪平台契约 + 35 款设备文档，Snapintosh 走 EL2 hypervisor + 单机型 + 依赖一台 Mac 主机）撞上了同一组核心技术难点——16 KiB→4 KiB 页表翻译与 Apple 私有输入的合规处理，且各自独立地把「Apple kernelcache 不得入库」写成了仓库级制度**（UniXNU 的 README Private blobs 段、Macintosh 的 AGENTS.md 第 1 条与 THIRD_PARTY_NOTICES 的「contains no Apple binaries」声明）；**第二，DeepSeek 官方开源 DeepInfer（7 天 19,806⭐ ⑂2,106 Apache-2.0，subs 43 为本批最高）时在 README 里用整段明列「本次发布不含什么」——KV cache 系统、PD 分离、跨副本负载均衡——而这恰恰是本日报采信的全部材料里唯一一处「大厂把生产系统的缺口写在 README 而不是写在私有 wiki 里」的样本**；**第三，colinhacks/reylo（1.9 天 616⭐ ⑂3 fork/star 0.5%，subs 0）把 codegen 这个事实彻底从派生物里删掉——TypeScript 7.1 beta 的 content mappers 让 type checker 直接向引擎查询 SQL 类型，「派生物不存在于磁盘上，因此不可能过期」**。而热度判读必须与前日保持一致的限制：本日四个项目 fork-star 分化极端（0.5% / 5.5% / 10.6% / 15.7%），**fork-star 高的是「fork 去移植自己的机型」（UniXNU），低的是「不需要 fork，只需等待上游 beta 特性」（reylo）**——fork 比例在不同类型项目之间不可直接比较，这是连续第三天观察到的同一条分界线。今天没有 CVE 驱动的注意力洪峰，这是自 php2shell 事件以来第一次：**热度排序对技术选型的干扰比昨天小，但这四个项目没有一个是可以直接采用的**——UniXNU 与 Macintosh 是研究快照，DeepInfer 缺三成系统，reylo 依赖 beta 语言特性。
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [ikow/php2shell-poc](projects/php2shell-poc.md) | 859 stars | 观察型 |
-| [HOSTED-POWER/php_uploadprogress_guard](projects/php-uploadprogress-guard.md) | 53 stars | 生产可用 |
-| [NVIDIA/flare-local-inference](projects/flare-local-inference.md) | 485 stars | 基础设施候选 |
-| [dominikmartn/harp](projects/harp.md) | 527 stars | 工具型 |
+| [UniXNU/UniXNU](projects/unixnu.md) | 750 stars | 观察型 |
+| [deepseek-ai/DeepInfer](projects/deepinfer.md) | 19,806 stars | 基础设施候选 |
+| [Acelogic/Snapintosh](projects/snapintosh.md) | 530 stars | 观察型 |
+| [colinhacks/reylo](projects/reylo.md) | 616 stars | 观察型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **php2shell（CVE-2026-109618 / CVE-2026-109619）补丁发布 24 小时内长出完整开源响应生态：ikow/php2shell-poc 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）+ openai/php2shell-checker 版本判定 skill + NCSC-NL 国家级处置建议（EUPL-1.2 / TLP:CLEAR）** · 相关项目：ikow/php2shell-poc, openai/php2shell-checker, NCSC-NL/php2shell · 强度：92
-2. **HOSTED-POWER/php_uploadprogress_guard 把『等官方补丁』这段空窗期做成可安装软件：PHP 扩展逐组件镜像官方补丁 + 拆掉 session upload-progress handler + 自检到已打补丁就自动让位 + 12 个预编译二进制全部 GLIBC_2.14 以下 + Ansible 幂等部署在 cPanel EA4 / DirectAdmin CustomBuild / AWX 实测 failed=0 且二次 changed=0** · 相关项目：HOSTED-POWER/php_uploadprogress_guard · 强度：89
-3. **NVIDIA/flare-local-inference 严肃工程化研究原型的发布方式：AGENTS.md 明文列出『拒绝未批准的范围扩张 / 拒绝架构违规 / 拒绝削弱保证』三类驳回标准 + README 自称不是也不会是 vLLM 替代 + 编译期 PyTorch（Ignition）→ 运行期纯 Rust（Helios）的硬边界 + 发版前必须走 docs/design-review.md 的 staged-diff 复核** · 相关项目：NVIDIA/flare-local-inference · 强度：86
-4. **dominikmartn/harp 严肃工程化多 agent 终端的状态管理：Warp 非官方 fork 把 tab bar 换成 agent 状态侧边栏（working / waiting for you / done / inactive + 未读标记 + 后台小圆点 + 置入暂存月亮）+ Claude/Codex 双限额环 + tmux 会话名/分组/顺序跨重启持久化与 @warp_adopt 1 收养 + 明示『Harp 不自建任何服务器 / 通过 Harp 登录未测试』** · 相关项目：dominikmartn/harp · 强度：84
+1. **Apple 内核移植的两条独立路径撞上同一组难点：UniXNU/UniXNU（3.5 天 750⭐ ⑂118 fork/star 15.7% 本批最高）走 UEFI + 伪平台契约 + 16 个驱动独立 submodule + 35 份设备文档（docs/devices/amethyst / sheng / fajita / nuwa / pipa / piano / q2q / tb128fu / gta4l …），并在 10-22 宣布原生 Adreno 740 Metal 驱动在小米平板 6S Pro 上完全可用；Acelogic/Snapintosh（20 小时 530⭐ ⑂29）走 EL2 hypervisor 跑官方 macOS 27 kernelcache（J700/T8140，默认未修改）于 ASUS Zenbook A16，自写 AdrenoMetal.bundle + AdrenoX2 IOGPU kext + air2ir3（AIR→Mesa ir3 shader 编译器）并明文「无软件/CPU/半虚拟渲染路径」，用 Status 表逐项写明流畅度 in progress（目标 60 Hz，120 Hz 排后）、Wi-Fi 仅 host-proxy 可用、音频摄像头蓝牙休眠外接显示器全不支持，且必须配一台 macOS 27 Mac 主机经 USB-C NCM 驱动。两者都把 16 KiB→4 KiB 页表翻译单列为核心章节，都把「Apple 私有输入不得入库」写成仓库级制度** · 相关项目：UniXNU/UniXNU, Acelogic/Snapintosh · 强度：90
+2. **deepseek-ai/DeepInfer（7 天 19,806⭐ ⑂2,106 fork/star 10.6%，subs 43 本批最高）用整段 README 明列本次发布不含什么：KV cache 系统、VE/Prefill/Decode 分离（引擎大部分必需功能已实现）、prefill 与 decode 两侧的跨 DP 副本负载均衡（doc/inference_deployment_qa.md 补充称前两者与内部基础设施耦合紧密尚未完全开源）；同时用 QA 文档给出三条可核验的生产目标（支持多厂商加速器 / prefill 用普通 8 卡机而 decode 用 64–128 卡超节点 / KV cache 保留 >72h 换上下文复用）与一条作者声明（单集群 155T tokens/日、38 USD per GPU-hour 谷值定价），开源部分为 FlashMLA + DeepGEMM + DeepEP + TileKernels + DeepSelect + TileLang kernel 之上，加 DSpark 置信度调度验证、SWA bounded replay（compact 模式 + KEEP_TOKENS=140，保留后缀须覆盖 SWA 窗口 + 最大回退长度）、默认开启的异步调度、batch-invariant 与确定性采样（均标注 NVIDIA only）** · 相关项目：deepseek-ai/DeepInfer · 强度：89
+3. **colinhacks/reylo（1.9 天 616⭐ ⑂3 fork/star 0.5% 本批最低，subs 0）把 codegen 从派生物里彻底删除：TypeScript 7.1 beta 的 content mappers 让 type checker 直接向 Rust 引擎查询 SQL 类型，六卖点明写「No codegen — the type checker asks Reylo directly: no generated files, no watcher」「Checked against your database — 拼错的列名、错误参数、已删除的表都是类型错误，且在 tsc 与编辑器里成立」「类型来自 SQL 本身（::int → number），无手写行类型、无 schema 文件需同步」，并首次把 DRY 论证改写为 agent 论证（each fact lives in one place, so an agent cannot leave a stale type behind）** · 相关项目：colinhacks/reylo · 强度：87
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-10-23](daily/2026-10-23.md) | 4 | 4 |
 | [2026-10-22](daily/2026-10-22.md) | 4 | 4 |
 | [2026-10-21](daily/2026-10-21.md) | 4 | 4 |
 | [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
 | [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
-| [2026-10-16](daily/2026-10-16.md) | 4 | 4 |
 
 ## 为什么做这个项目
 

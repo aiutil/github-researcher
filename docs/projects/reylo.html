@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colinhacks/reylo | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/colinhacks/reylo" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="colinhacksreylo">colinhacks/reylo</h1>
+<h2 id="_1">一句话定位</h2>
+<p>把 <code>.sql</code> 文件直接 import 进 TypeScript，并让<strong>类型直接从 SQL 本身推导出来</strong>——不需要手写行类型，不需要 schema 文件同步，不需要 codegen；type checker 直接向 reylo 查询。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>TypeScript 生态里，SQL 与类型之间长期存在一条<strong>必须手工维护的接缝</strong>：</p>
+<ul>
+<li>用 ORM（Prisma、Drizzle）：schema 是单一事实源，但你写不进原生 SQL 方言的全部能力。</li>
+<li>手写 <code>.sql</code> + 手写行类型：两份东西必然漂移。</li>
+<li>用 codegen（<code>:gen types</code> 之类）：有生成文件、有 watcher、有 diff 噪音，schema 改了要记得重跑。</li>
+</ul>
+<p>reylo 的主张是把这条接缝消掉：<strong>让 SQL 文件本身成为类型的事实源</strong>。README 的演示图说明了这个体验——「hovering a query's result shows its type, which follows the SQL as the SQL changes」。示例代码：</p>
+<p><code>sql
+-- get_author.sql
+select u.id, u.name, count(p.id)::int as post_count
+from users u
+left join posts p on p.user_id = u.id
+where u.id = :id::int
+group by u.id</code></p>
+<p><code>ts
+import getAuthor from "./get_author.sql";
+const author = await getAuthor.run(db, { id: 1 });
+// { id: number; name: string; post_count: number } | null</code></p>
+<p><strong>类型跟着 SQL 变</strong>——改 SQL，类型自动跟着变。</p>
+<h2 id="2026-10-23">为什么值得关注（2026-10-23）</h2>
+<p><strong>它唯一的、也是决定性的技术前提，是 TypeScript 7.1 的 content mappers——而该特性目前在 beta。</strong> README 明确：「Reylo is powered by TypeScript <a href="https://github.com/microsoft/typescript-go/pull/4712">content mappers</a>, introduced in TypeScript 7.1 (currently in beta)」。</p>
+<p>这个依赖决定了它今天的所有性质：
+- <strong>成立的话</strong>，它是第一个真正消灭 SQL↔类型同步成本的方案，且没有任何 codegen 副产物。
+- <strong>不成立的话</strong>（content mappers 改了 API、或 TS 7.1 迟迟不发），整个项目无法运行。</p>
+<p><strong>616⭐ ⑂3（fork/star 0.5%）出现在 1.9 天内，是本日四个项目中 fork 比例最低的</strong>。这个数字与它的形态完全吻合：这是一个<strong>依赖 beta 特性的库</strong>，不是一个可以 fork 去改造的东西——你需要的是等 TS 7.1 stable 并升级，不是 fork 它。<code>subscribers_count = 0</code> 也印证了这一点。</p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度来自作者本身，不是来自采用。</strong> colinhacks 即 Colin McDonnell，是 TypeScript 编译器方向的核心贡献者（TS 7 的 typescript-go 路线中 content mappers 的 PR 即由他所在生态推动）。<strong>一个编译器核心贡献者发布"第一个吃 content mappers 的库"，天然获得关注</strong>——但 0 subscribers、0.5% fork-star 说明这份关注尚未转化为使用。</p>
+<p><strong>必须说清</strong>：<code>open_issues_count = 13</code> 而 stars 616、subscribers 0。13 个 issue 对一个 616⭐ 的库不算低，可能反映两类情况：真实用户在试 beta 特性时遇到具体问题，或 API 尚未稳定。<strong>本窗口未取 issue 内容，不做判断。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>零 codegen</strong>：README 用「<strong>No codegen</strong> — the type checker asks Reylo directly: no generated files, no watcher」作为六大卖点之一。<strong>这是它与所有现有方案最本质的区别</strong>——不是"生成得更好"，而是"不生成"。</li>
+<li><strong>对着真实数据库校验</strong>：README 的 "Checked against your database" 一条写明，<strong>拼错的列名、错误的参数、已删除的表都是类型错误</strong>，且在 <code>tsc</code> 和编辑器里都成立。<strong>校验发生在 type check 期而非运行期。</strong></li>
+<li><strong>类型来自 SQL 本身</strong>：README 的 DRY 一条写明「no hand-written row types, no schema file to keep in sync」。类型不是从数据库 schema 反推的（那会丢失方言特有信息），而是<strong>从你写的这条具体 SQL 推导的</strong>——所以 <code>count(p.id)::int as post_count</code> 会得到 <code>number</code> 而不是 <code>bigint</code>。</li>
+<li><strong>面向 agent 的设计论证</strong>：README 把「Agent-friendly」列为核心卖点之一，理由是「each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed」。<strong>这是把「单一事实源」从 DRY 论点转成 agent 论点</strong>，2026 年值得注意的论证方式转换。</li>
+<li><strong>自带驱动而非绑定</strong>：支持 Postgres、MySQL（8.0.22+）、SQLite，驱动由用户提供——<code>pg</code>、postgres.js、<code>mysql2</code>、<code>better-sqlite3</code>、<code>Bun.sql</code>、Cloudflare D1 等。</li>
+<li><strong>Rust 实现</strong>：仓库含 <code>Cargo.toml</code> / <code>Cargo.lock</code> / <code>engine/</code> / <code>oracle/</code> / <code>src/</code> / <code>packages/</code>，顶层目录显示 <code>engine</code>、<code>oracle</code>、<code>lab</code>、<code>skills</code>、<code>wiki</code>、<code>site</code>。<strong><code>oracle/</code> 这个目录名暗示存在一个用于对答案的机制（推测为类型推导正确性的对照实现，待核验）。</strong></li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>TypeScript 语言插件层（content mapper）· Rust 引擎（<code>engine/</code>）· <strong>对真实数据库的 schema 读取通道</strong>（"Checked against your database" 要求引擎能连库）· 类型检查期（<code>tsc</code> 与编辑器）· 运行期（<code>.run(db, params)</code> 执行）。数据面是类型检查时的 SQL 解析 + schema 查询；控制面是 TS 编译器调用 mapper</td>
+<td>README 的 Setup 段（需 TS 7.1 beta、Node 24+、<strong>一个正在运行的开发数据库</strong>「Reylo reads your current schema from it」）+ 六卖点 + <code>Cargo.toml</code> / <code>engine/</code> / <code>oracle/</code> 目录；<strong><code>oracle/</code> 的职责与 <code>skills/</code> <code>wiki/</code> <code>lab/</code> 的内容本窗口未取，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>编辑器或 <code>tsc</code> 遇到 <code>.sql</code> import → 调 content mapper 请求类型 → mapper 交给 Rust 引擎 → 引擎解析 SQL <strong>并连开发库读取当前 schema</strong> → 推导该条查询的行类型（受方言与 cast 影响，如 <code>::int</code> → <code>number</code>）→ 返回类型给 type checker → 用户 hover 得到类型，错误列名/参数在检查期报错 → 运行期 <code>.run(db, params)</code> 执行同一条 SQL</td>
+<td>由 README 的 Setup 依赖（运行中的开发库）+ 六卖点 + 示例代码倒排；<strong>「schema 读取是否每次检查都发生、是否缓存、缓存如何失效」README 未说明，这是本项目最关键的未决问题</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>零 codegen（类型检查时实时查询）vs 生成文件（离线、快、可 review）</strong>——实时查询把成本转移到 type check 的延迟与对开发库的依赖上 · <strong>对着真实数据库校验（准确）vs 纯静态解析（无需连库）</strong>——前者要求开发者在编辑器里有一个活的库 · <strong>零手写类型（DRY）vs 显式类型（可读性/可文档性）</strong> · <strong>依赖 TS 7.1 beta（拿到 content mapper 这个前所未有的能力）vs 现在就能用（用 ORM 或 codegen）</strong> · <strong>方言原生 SQL 全文力（任意语句、函数、运算符、语法）vs 可移植性</strong>（README 强调 "any statement, function, operator or syntax your database supports, in its own dialect"）</td>
+<td>README 明示的三项依赖（TS 7.1 beta / Node 24+ / 运行中的开发库）+ 六卖点逐条（No codegen / Checked against your database / DRY / full power of SQL in its own dialect）+ 类型来自 SQL 本身（<code>::int</code> 影响推导结果）这一事实；<strong>未明示：type check 性能开销、schema 缓存策略、错误信息的质量、以及对非 SQL 文件（如 Python/Java 后端）的可用性</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>先确认 TS 7.1 已可安装</strong>（<code>npm install -D typescript@beta</code>，README 明确要求 beta）——<strong>这一步不成立则整个 PoC 不成立，先不要往下走</strong>→ 2. 准备 Node 24+ 与一个正在运行的开发库（Postgres / MySQL 8.0.22+ / SQLite 文件）→ 3. <code>npm install reylo</code> + <code>npm install -D @reylosql/postgres</code>（或 mysql / sqlite）+ <code>npm install -D typescript@beta</code> → 4. 在 <code>tsconfig.json</code> 里为 <code>.sql</code> 与项目文件（<code>.reylo.yaml</code> / <code>.reylo.yml</code>）注册 Reylo → 5. 用 README 的 <code>get_author.sql</code> 原样建表并 import，<strong>先在编辑器里 hover 结果</strong>，确认类型是 <code>{ id: number; name: string; post_count: number } | null</code> → 6. <strong>故意把 <code>post_count</code> 改成 <code>post_counts</code>（不存在的列），确认编辑器立刻标红且 <code>tsc</code> 报错</strong>——<strong>这一步是整个 PoC 的意义所在</strong>：验证"对着数据库校验"是真的，而不是只做了静态解析 → 7. 改 SQL 的 cast（<code>::int</code> → 不写），确认类型随之变化 → 8. 运行 <code>getAuthor.run(db, { id: 1 })</code> 确认运行期一致 → 9. <strong>测量 type check 的延迟</strong>：对一个只有几个 <code>.sql</code> 文件的项目跑一次 <code>tsc --diagnostics</code>，再对一个大项目跑——这是唯一能回答"零 codegen 是否真的划算"的方法</td>
+<td>前 4 步来自 README 的 Setup 原文；<strong>第 5–7 步是本项目最关键的自检动作</strong>：如果第 6 步不报错，说明它根本没有连库校验，"Checked against your database" 就是空话；<strong>第 9 步是 README 完全没提但决定该方案成败的问题</strong>，本日报无法代答</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid">flowchart TB
+  subgraph TS["TypeScript 侧（TS 7.1 beta，Node 24+）"]
+    SRC["业务代码 main.ts"]
+    SQLF[".sql 文件<br/>get_author.sql"]
+    MAP["content mapper 注册<br/>tsconfig.json 中为 .sql 与<br/>.reylo.yaml 声明"]
+    TC["tsc / 编辑器 type checker"]
+  end
+
+  subgraph RS["Rust 侧（Rust 实现）"]
+    ENG["engine/：类型推导引擎"]
+    ORC["oracle/：对答案机制<br/>职责待核验"]
+  end
+
+  subgraph DB["开发数据库（必需，实时读取）"]
+    PG["Postgres"]
+    MY["MySQL 8.0.22+"]
+    LITE["SQLite 文件"]
+  end
+
+  subgraph RT["运行期"]
+    RUN["getAuthor.run(db, {id: 1})"]
+  end
+
+  subgraph DRV["用户自带驱动（reylo 不绑定）"]
+    D1["pg / postgres.js"]
+    D2["mysql2"]
+    D3["better-sqlite3 / Bun.sql / Cloudflare D1"]
+  end
+
+  SRC --> MAP
+  SQLF --> MAP
+  MAP --> TC
+  TC -->|"检查期：请求类型"| ENG
+  ENG -->|"解析 SQL + cast（::int → number）"| ORC
+  ENG -->|"读取当前 schema"| DB
+  ENG -->|"返回行类型 / 报错（错列名、错参数、已删表）"| TC
+  SRC --> RUN
+  RUN --> DRV --> DB
+
+  SCHEMA["⚠️ 待核验：schema 读取是否每次检查都发生？<br/>是否缓存？缓存如何失效？<br/>→ 决定 type check 延迟与离线可用性"] -.-> ENG
+  LIM["边界：依赖 TS 7.1 beta<br/>README 未提 type check 性能开销<br/>README 未提对非 TS 后端的可用性"] -.-> TS
+</pre>
+<blockquote>
+<p>证据边界：此图只采用 README 的 Setup 段、六卖点、示例代码与仓库顶层目录（<code>Cargo.toml</code> / <code>engine/</code> / <code>oracle/</code> / <code>src/</code> / <code>packages/</code>）。虚线节点为 README 未说明、待核验的问题；<code>oracle/</code> 的职责为本档案据目录名所作的推断，未经证实。</p>
+</blockquote>
+<h2 id="_6">架构启发</h2>
+<p><strong>它最值得学的一条是把「事实源」这个概念推到了编译期。</strong></p>
+<p>过去十年工具链里，「避免手写重复」的主流解法是 <strong>codegen</strong>：生成文件、提交、review、在 CI 里校验生成物是否最新。这套流程有明确成本——生成物进版本库造成 diff 噪音、watcher 吃掉本地资源、schema 变了忘了重跑就静默过期。</p>
+<p>reylo 的主张是：<strong>如果类型检查器能在检查期直接向一个服务提问，就根本不需要 codegen 这一步。</strong> content mappers 正是为这件事准备的语言机制——README 引用的是 typescript-go 仓库的 PR #4712。</p>
+<p><strong>这个思路的可迁移性比项目本身大。</strong> 凡是「事实源 A 变了，派生物 B 需要重新生成」的场景，codegen 都在做同一件事。content mappers 把这件事从「生成文件」改成「检查时计算」——<strong>派生物不再存在于磁盘上，因此不可能过期</strong>。这是本日四个项目里唯一一条关于语言与工具链设计的判断。</p>
+<p>第二条是它的 <strong>agent 论证方式</strong>：「each fact lives in one place, so an agent cannot leave a stale type behind, and the type check finds every caller it missed」。这把「单一事实源」从面向人的 DRY 论点，改写成面向 agent 的<strong>失效模式论证</strong>——不是"这样更整洁"，而是"这样 agent 就无法制造过期状态"。<strong>2026 年工具设计开始用「agent 会怎么弄坏它」而不是「人会不会弄错它」来论证，这是一个值得注意的转变。</strong></p>
+<h2 id="_7">定位判断</h2>
+<p><strong>证明型库（观察型），当前不具备生产可用性。</strong></p>
+<p>README 把「The perfect option for the agent era」写在卖点列表里，语气是判断而非观察。本档案的判断不同：<strong>它现在是 beta 依赖上的概念验证。</strong> 依据是三条可核验事实——<code>subscribers_count = 0</code>、<code>fork/star 0.5%</code>、<code>requires TypeScript 7.1 (currently in beta)</code>。</p>
+<p>与同类项目的关系：
+- <strong>vs Prisma / Drizzle</strong>：它们用 schema-as-source 换取可移植性，代价是 SQL 方言受限；reylo 用 SQL-as-source 换全文力，代价是方言绑死在你的数据库上。<strong>这是同一枚硬币的两面，reylo 的取舍在有大量 SQL 方言特定语法的存量代码库里更有利。</strong>
+- <strong>vs sqlc / Slither（Go 侧同类）</strong>：sqlc 做同样的事但是<strong>离线 codegen</strong>。reylo 与 sqlc 的差别不在结果类型，而在于「结果存在磁盘上还是检查时计算」。这是同一个问题的两种答案，也正因如此 sqlc 的存在说明这个需求是被验证过的。
+- <strong>vs 类型安全的 API 客户端（如 Speakeasy、OpenAPI codegen）</strong>：同一问题在 API 边界上的版本，答案是 codegen。
+- <strong>vs TS 7.1 本身</strong>：reylo 是 content mappers 最早的重量级使用者之一——<strong>它的成败会直接影响该特性的成熟度判断</strong>。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>⚠️ 完全依赖 TS 7.1 beta</strong>：README 明确要求 <code>typescript@beta</code> 与 Node 24+。<strong>若 content mappers 在 stable 前变更 API，本项目需要重写；若 TS 7.1 跳票，它就是零。</strong> 这是本项目唯一的、也是压倒性的单点风险。</li>
+<li><strong>需要运行中的开发数据库</strong>：README 的 Prerequisites 写明「A running dev database」。<strong>这意味着编辑器里的类型检查依赖一个网络可达的服务</strong>——在没有 DB 的环境（CI 的某些阶段、新机器、离线场景）会怎样，README 未说明。</li>
+<li><strong>type check 性能未测</strong>：README 通篇没有 type check 延迟的任何数据或基准。<strong>「零 codegen 是否真的划算」完全取决于这个数字，而它不可得。</strong></li>
+<li><strong><code>subscribers_count = 0</code> 与 fork/star 0.5%</strong>：<strong>热度目前完全是曝光，没有任何采用信号。</strong> 这与 10-21、10-22 连续两日的观察一致——多批项目的 fork-star 都在偏低区间。</li>
+<li><strong><code>open_issues_count = 13</code></strong>：对一个 616⭐、0 subscribers 的库，issue/star 比偏高。可能反映真实用户遇到 beta 特性的边界，也可能反映 API 未稳定。<strong>本窗口未取 issue 内容，不做判断。</strong></li>
+<li><strong>方言绑定的隐性成本</strong>：README 强调「any statement, function, operator or syntax your database supports, in its own dialect」——这是全文力，但也是<strong>不可移植</strong>。同一段 SQL 换数据库就可能不成立，README 未讨论跨库场景。</li>
+<li><strong>仓库含 67 MB 代码</strong>（<code>size = 66704 KB</code>）但 stars 616、forks 3：<strong>绝大部分 star 来自围观而非使用。</strong></li>
+<li><strong><code>topics</code> 字段为空数组</strong>（未设置 GitHub topics）。</li>
+</ol>
+<h2 id="_9">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，但跟踪的应���是「TS 7.1 的进度」而非「reylo 的 star 数」。</strong> 理由：它的存续完全由上游语言特性决定，而 content mappers 的最终形态是本项目所有设计的前提。</p>
+<p><strong>7 天后判断标准</strong>：只看一件事——<strong>TypeScript 7.1 是否进入 stable / content mapper API 是否发生变更</strong>。若两者皆无变化，reylo 的 star 数再涨也不代表任何东西；若 TS 7.1 定稿而 reylo 未跟进，那才是一个有信息量的负面信号。</p>
+<h2 id="_10">后续观察点</h2>
+<ul>
+<li>TypeScript 7.1 的发布时间表与 content mappers 的 API 稳定性（<strong>决定性变量</strong>）</li>
+<li>type check 的性能开销是否有公开基准（决定「零 codegen」这个卖点的真实成本）</li>
+<li>schema 缓存策略：是否每次检查都连库、是否可离线</li>
+<li><code>@reylosql/*</code> 驱动包的数量与覆盖范围（当前只有 postgres / mysql / sqlite 三种）</li>
+<li><code>oracle/</code> 目录的职责（若它是对推导正确性的对照实现，那么它的测试方式是本项目可信度的关键）</li>
+<li>是否出现第二个重量级使用者——这对 content mappers 这个特性本身比对 reylo 更重要</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-10-23</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

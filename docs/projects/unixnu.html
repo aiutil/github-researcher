@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniXNU/UniXNU | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/UniXNU/UniXNU" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="unixnuunixnu">UniXNU/UniXNU</h1>
+<h2 id="_1">一句话定位</h2>
+<p>一个独立项目，通过 UEFI 在非 Apple 的 ARM64 硬件上启动 Apple 的 iOS 与 macOS（XNU 内核），核心工作是补齐内核期望的 Apple 平台契约（设备树、驱动、4 KiB 页表补丁），并在 2026-10-22 宣布自研的原生 Adreno 740 Metal 驱动已在小米平板 6S Pro 上完全可用。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Apple 的 XNU 内核不是为第三方 ARM64 SoC 设计的。它启动时期待一整套 Apple 私有平台契约：Apple 的设备节点、特定的 MMIO 寄存器布局、16 KiB 页表语义、以及 SPTM/TXM 安全监控调用。这些东西在 Qualcomm/MediaTek/瑞芯微 SoC 上一个都没有。</p>
+<p>UniXNU 的做法是<strong>不修改内核，而是补齐它看到的"硬件世界"</strong>——构造出内核认得的那套假象。这与 Asahi Linux 的路线正好相反（Asahi 是重写 Linux 侧驱动去适配 Apple 硬件；UniXNU 是伪造 Apple 硬件去适配 Apple 内核）。README 的 news 段落记录了这一层的最新成果：原生 Metal 驱动已在小米平板 6S Pro（sheng）上完全工作，渲染服务器经 Adreno 740 合成系统 UI，被列入名单的进程各自获得独立的 Metal 设备。</p>
+<h2 id="2026-10-23">为什么值得关注（2026-10-23）</h2>
+<p><strong>它的规模信号来自三处可核验的结构事实，而不是来自 star 数：</strong></p>
+<ol>
+<li><strong>35 份设备文档</strong>（<code>docs/devices/</code> 下的 amethyst / sheng / fajita / nuwa / pipa / piano / q2q / tb128fu / gta4l / … 共 35 个条目）。README 明确说明设备仓库用与主仓库相同的布局，其 modules 覆盖同名 modules，<code>package/</code> 成为构建树里的一个 kit——<strong>这是一套已经被复用到至少 35 款设备的架构，不是单机型 hack</strong>。</li>
+<li><strong>16 个独立驱动的 submodule 组织</strong>（<code>drivers/ArmCpu</code> <code>ArmDTPlatform</code> <code>ArmVirtPlatform</code> <code>DarwinBoot</code> <code>NativeAES</code> <code>NativeAdreno</code> <code>NativeGeniSpi</code> <code>NativeHidInput</code> <code>NativeKeyStoreEvents</code> <code>NativeMetal</code> <code>NativeMobileDisplay</code> <code>NativeRamBlock</code> <code>NativeUfs</code> <code>NativeVirtioBlock</code> <code>NativeVirtioConsole</code>）。<strong>驱动不在主仓库里，各自独立公开、按需克隆</strong>——这既是可复用性设计，也是一种责任边界划分。</li>
+<li><strong>文档站在 docs/ 的一等位置</strong>：<code>docs/concepts/{boot-chain,payload,prelink,security,userdata}.md</code>、<code>docs/drivers/{device-tree-matching,kexts,native-adreno}.md</code>、<code>docs/xnu/four-k-page-tables</code>、<code>docs/building.md</code>，配 <code>.github/workflows/{docs,macos}.yml</code> 两条工作流。文档文档站是 unixnu.com（VitePress，配置在 <code>docs/.vitepress/</code>）。</li>
+</ol>
+<p><strong>README 里有一句对研究者很关键的自我约束</strong>：不要把 Apple IPSW 文件、kernelcache、disk image、trust cache、Data seeds 或厂商固件放进本仓库，留在本地缓存或外部存储。这与 Macintosh 的 AGENTS.md 第一节是同一条规则的两个独立表述——<strong>两个互不相识的项目在同一天各自把"不得提交 Apple 私有输入"写成了仓库级制度</strong>。</p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度主要来自"能让我的平板跑 iOS/macOS"这一具体愿望的直接满足，而非技术优雅度。</strong> 750⭐ ⑂118 出现在创建后 3.5 天，fork/star 15.7% 显著高于本日其他三个项目（8.6% / 5.5% / 0.5%）。这个比例有明确的机制解释可核验：<strong>fork 一个项目来尝试移植自己的机型，是这个项目的核心使用方式</strong>——README 专设 <code>docs/porting/</code> 章节讲设备移植，35 份设备文档就是证据。</p>
+<p><strong>必须说清的限制</strong>：<code>subscribers_count = 3</code>（低于 star 数的 0.5%）、<code>open_issues_count = 6</code>、主仓库仅 <strong>30 个 commit</strong>、贡献者 API 返回 <strong>6 人</strong>。这说明它是一个<strong>小团队、高完成度的作品</strong>，而不是一个正在快速增长的开源生态。star 数在这里度量的是话题吸引力，不是社区规模。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>不 patch 内核，补齐平台契约</strong>：README 的描述是「build driver, UEFI boot manager, module submodules and patches」——内核保持官方二进制，攻击面集中在"内核看到什么"。</li>
+<li><strong>4 KiB 页表补丁作为独立概念</strong>：<code>docs/xnu/four-k-page-tables</code> 与 README 的 Documentation 列表把它单列为一章，说明这是本项目的核心技术难点之一（XNU 用 16 KiB 页，多数 ARM64 SoC 的 MMU 只有 4 KiB 支持）。</li>
+<li><strong>原生 Adreno 驱动而非虚拟化</strong>：<code>docs/drivers/native-adreno.md</code> 记录 news 中的 Adreno 740 驱动——渲染服务器合成系统 UI，被列入名单的进程获得各自 Metal 设备。<strong>这条路径与"软件渲染"或"GPU 透传"都不同</strong>，是本项目最硬的一条声明。</li>
+<li><strong>Linux 侧与 Darwin 侧的分离驱动</strong>：<code>Native*</code>（Darwin kext/driver 对）与 <code>Arm*</code>/<code>DarwinBoot</code>（UEFI 与设备树侧）命名上的区分，让"哪一层跑在哪"从目录名就能读出。</li>
+<li><strong>BSD-2-Clause-Patent 许可</strong>：LICENSE 原文首行即 <code>Copyright (c) 2026, UniXNU contributors. All rights reserved.</code> + <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code>。选专利授权而非 MIT，通常意味着作者考虑了潜在的专利主张——<strong>在 Apple 硬件逆向领域这是一个有意义的信号</strong>。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>Apple 内核保持官方二进制不动</strong>，系统边界划在"内核之下"：UEFI 引导链（<code>uefi-sheng</code> 等仓库）+ 一层平台契约提供者（设备树、时钟、寄存器、设备模型）+ 一层 Darwin 侧驱动（16 个 submodule）。数据面是内核对硬件的读写；控制面是构建系统按设备选择 modules 与 kit</td>
+<td>全部来自 README 的 Repositories 表（UniXNU = build driver + UEFI boot manager + module submodules + patches；UniXNU-sheng = 设备仓库；uefi-sheng = UEFI 固件移植）+ <code>.gitmodules</code> 的 16 条 URL + README 的 Documentation 目录清单；<strong>「平台契约提供者」的具体实现形式（是 kext、是伪装固件、还是两者）README 未展开，<code>docs/concepts/{prelink,userdata,payload}.md</code> 存在但本窗口未取内容</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>设备上电 → UEFI 固件（移植版）→ <code>DarwinBoot</code> 把官方 kernelcache 载入 → 平台契约层向内核呈现它认识的设备与寄存器 → XNU 启动到 EL1 → <code>Native*</code> 驱动接管实际硬件（含 Adreno GPU 经自研 Metal 驱动）→ 用户空间</td>
+<td>由 README 的 boot chain 文档结构 + <code>.gitmodules</code> 分层 + news 段落推出；<strong>「官方 kernelcache 从哪来」README 明令不得入库，只能来自用户本地</strong>，<code>docs/concepts/payload.md</code> 应有说明但本窗口未取</td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>伪造 Apple 硬件 vs 重写 Linux 侧驱动</strong>（UniXNU 走前者，与 Asahi 路线相反）· <strong>保持官方内核 vs patch 内核</strong>（保持官方意味着内核漏洞与兼容性完全继承）· <strong>驱动独立仓库 vs 单一大仓库</strong>（前者让移植者只需 clone 自己机型需要的部分，后者便于统一 CI）· <strong>BSD-2-Clause-Patent vs 宽松许可</strong>（含专利条款在逆向领域是保护，但会劝退一部分商业使用者）· <strong>原生 GPU 驱动（工程量大）vs GPU 透传/虚拟 AGX</strong>（README 提到 <code>gpu/agx*</code> 是"更早的虚拟 AGX 模型，保留作参考"——说明原生路线是后来的选择）</td>
+<td>README 的 news 段（原生 Metal 驱动已工作）+ Documentation 清单（four-k-page-tables 单列）+ <code>.gitmodules</code> 的 16 个独立驱动 + LICENSE 首行的 SPDX 标识 + <code>docs/drivers/native-adreno.md</code> 存在；<strong>「为什么从虚拟 AGX 转向原生驱动」README 未解释</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 确认目标是 35 份 <code>docs/devices/*.md</code> 里<strong>没有覆盖的机型</strong>（这是最难的一步，也是本项目唯一的真实门槛）→ 2. 用 <code>docs/concepts/boot-chain.md</code> 确认启动链，在已支持的机型上先把整条链跑通作为对照 → 3. 按 <code>docs/drivers/device-tree-matching.md</code> 做设备树匹配 → 4. 按 <code>docs/porting/</code> 复制最接近的机型仓库作模板，其 modules 覆盖同名 modules → 5. <strong>把官方 kernelcache 与固件留在本地不入库</strong>（README 明确要求），只用 <code>.github/workflows/macos.yml</code> 跑构建 → 6. 只验证一件事：<strong>能进内核并跑起来</strong>，不要一上来碰 GPU</td>
+<td>顺序按依赖倒排；<strong>第 1 步（机型是否已被覆盖）是决定 PoC 可行性的唯一变量，第 5 步是合规前提而非可选项</strong>；<strong>README 未给"最低要求"的机型门槛（内存、存储、特定 SoC），这一项本日报无法核验</strong></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid">flowchart TB
+  subgraph HW["物理设备（非 Apple ARM64 SoC）"]
+    SOC["SoC：CPU / MMU 4KiB / GPU Adreno<br/>UFS / GenI SPI / I2C-HID"]
+  end
+
+  subgraph BOOT["引导与契约层（UniXNU 提供）"]
+    UEFI["UEFI 固件移植<br/>仓库 uefi-sheng"]
+    DBOOT["DarwinBoot<br/>装载官方 kernelcache"]
+    PLAT["平台契约层<br/>设备树 / 时钟 / 寄存器 / 设备模型<br/>4KiB ↔ 16KiB 页表转换"]
+  end
+
+  subgraph KERN["Apple 内核（官方二进制，不修改）"]
+    XNU["XNU kernelcache<br/>J700 / T8140 等官方镜像"]
+  end
+
+  subgraph DRV["Darwin 侧驱动（16 个独立 submodule）"]
+    ACPU["ArmCpu / ArmDTPlatform / ArmVirtPlatform"]
+    AGPU["NativeAdreno<br/>Adreno 740 原生 Metal 驱动"]
+    AOTH["NativeAES / NativeHidInput / NativeUfs<br/>NativeMobileDisplay / NativeRamBlock<br/>NativeGeniSpi / NativeKeyStoreEvents / NativeMetal<br/>NativeVirtioBlock / NativeVirtioConsole"]
+  end
+
+  USER["iOS / macOS 用户空间"]
+
+  SOC --> UEFI --> DBOOT --> PLAT --> XNU --> DRV --> USER
+  PLAT -. "向内核伪装成 Apple 硬件" .-> XNU
+  AGPU --> SOC
+  UEFI -. "来自用户本地不入库" .-> LOCAL["本地：IPSW / kernelcache / trust cache<br/>README 明令不得提交"]
+  XNU -. "未确认：内部调用路径" .-> UNK["待核验：prelink / SPTM / TXM 处理细节"]
+</pre>
+<blockquote>
+<p>证据边界：此图只采用本档案已核验描述（README 摘录、<code>.gitmodules</code> 16 条 URL、<code>docs/</code> 目录结构、news 段落）。虚线节点标为未确认路径，不得视为项目实现事实。</p>
+</blockquote>
+<h2 id="_6">架构启发</h2>
+<p><strong>它最值得学的一条不是技术，是组织方式</strong>：把 16 个驱动拆成独立公开仓库、把 35 个机型各做成一个仓库、主仓库只保留构建系统与文档。这套结构直接对应这个项目的真实使用模式——<strong>大多数用户只需要自己机型的那一份，而不是全部</strong>。相比之下，一个 200 MB 的单仓库即使 star 数相同，对移植者的实际可用性也低一个量级。</p>
+<p>第二条启发是<strong>「不 patch 上游，而是补齐契约」</strong>这个取向。在大量依赖第三方内核的项目里（Asahi、部分 Android 移植），patch 内核是常态，结果是每次上游升级都要 rebase。UniXNU 选择保持官方 kernelcache，把所有改动压在平台层——<strong>代价是继承内核的全部漏洞与不兼容，收益是内核升级时零冲突</strong>。这是一个明确的、可被争论的权衡。</p>
+<h2 id="_7">定位判断</h2>
+<p><strong>长尾单机型移植基础设施（观察型）。</strong> 它既不是消费级产品（35 份设备文档对应的是 35 个细分机型，不是 35 亿用户），也不是通用工具（换一款 SoC 就是一次新移植）。它的正确定位是<strong>为特定机型提供 iOS/macOS 运行能力的一组工程师级资产</strong>，以及一份可复用的"平台契约"方法论。</p>
+<p>与 Asahi Linux 的关系值得明确：Asahi 是<strong>在 Linux 上重新实现 Apple 硬件的驱动</strong>（M 系列 Mac 的 Linux 支持），UniXNU 是<strong>在 Android/国产平板硬件上重新实现 Apple 软件的平台依赖</strong>。两者方向正交，技术栈几乎不重叠。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li><strong>⚠️ GitHub <code>license.spdx_id</code> 为 <code>NOASSERTION</code>，而 LICENSE 文件首行明写 <code>SPDX-License-Identifier: BSD-2-Clause-Patent</code></strong>。以文件为准是可用的 BSD-2-Clause-Patent；但 GitHub 侧无法被自动识别为标准许可证，意味着依赖 license 扫描器的工具会把它当成非标准协议。<strong>这是可核验的元数据与文件内容不一致</strong>，与 10-22 记录的 ikow/php2shell-poc 那处性质相同但严重程度低得多（此处文件本身清晰无歧义）。</li>
+<li><strong>没有任何 release</strong>：<code>releases</code> API 返回空数组。分发路径是 clone + submodule + 自建，这符合该项目性质，但也意味着没有开箱即用的产物。</li>
+<li><strong>⭐ star 数与社区规模严重不匹配</strong>：750⭐ ⑂118 但 <code>subscribers_count</code> 仅 <strong>3</strong>、贡献者仅 <strong>6 人</strong>、主仓库 <strong>30 个 commit</strong>。<strong>fork/star 15.7% 是本日四个项目中最高的，但这个比例反映的是"每个人 fork 去移植自己的机型"，而不是"社区在共同建设"</strong>。</li>
+<li><strong>原生 GPU 驱动的声明无法在本日报核验</strong>：news 段落称 Adreno 740 驱动在小米平板 6S Pro 上完全工作，但<strong>仓库中不含可运行的验证产物</strong>（按其自身规则也不能含），也没有第三方复现记录。</li>
+<li><strong>设备覆盖是查表式的，不是通用的</strong>：用户拿到一个未被 <code>docs/devices/</code> 覆盖的机型，成本不是"装一下"而是"做一次移植"。README 没有给出"最低可移植门槛"（内存、存储、特定 SoC 特性要求）。</li>
+<li><strong>法律与地区风险</strong>：本项目的工作对象是 Apple 私有内核与固件。README 主动禁止提交私有输入是良好的合规姿态，但<strong>这不构成对整体法律风险的评估</strong>；中国大陆用户群（35 份设备文档里 sheng/fajita/nuwa/pipa/piano/q2q/gta4l 全是国产机型代号）意味着实际使用者集中在特定法域。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Asahi Linux</strong>：正交。Asahi 在 Linux 上支持 Apple Silicon；UniXNU 在非 Apple ARM64 上支持 Apple 内核。</li>
+<li><strong>vs Macintosh（本日另一个项目）</strong>：<strong>同日、同题、不同路径，且互相独立</strong>。Macintosh 走 EL2 hypervisor + 造一台 Mac；UniXNU 走 UEFI + 伪造平台契约。两者都独立地在 AGENTS.md/README 里写下"不得提交 Apple 私有输入"。</li>
+<li><strong>vs Corellium / UTM / VMware Fusion 的免费层</strong>：它们是商业产品的免费通道，有分发物有文档有用户支持；UniXNU 是没有分发物的工程资产。</li>
+<li><strong>vs 项目内更早的虚拟 AGX 模型</strong>：README 提到 <code>gpu/agx*</code> 目录是"更早的虚拟 AGX 模型，保留作参考"——这是该项目自己的历史路径，原生驱动是后来的选择。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，但跟踪方式应是"设备覆盖表"而非"star 数"。</strong> 理由与热度无关：它是本日四个项目里<strong>唯一一个把难度直接写成可查询索引的项目</strong>（35 份设备文档），这使得"这件事能不能做"从玄学变成了查表。</p>
+<p><strong>7 天后判断标准</strong>：若 <code>docs/devices/</code> 从 35 增长到 40+，说明有外部贡献者在持续做移植，社区在形成；若停在 35，则它是一个完成度很高但封闭的作品。<strong>两个结果都不影响其方法论价值，但会影响"生态"这个说法。</strong></p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>原生 Adreno 驱动是否会扩展到除 sheng/Adreno 740 之外的 GPU 型号（news 只声明了一个平台）</li>
+<li>是否出现第一个由外部贡献者提交的 <code>docs/devices/*.md</code>（35 份设备文档目前看全是项目自己的）</li>
+<li>是否会发布任何形式的预构建产物或设备镜像（当前 <code>releases</code> 为空）</li>
+<li>macOS 27 与 iOS 最新版本的内核变更如何被跟进——保持官方内核意味着每次 iOS 更新都要重做契约层</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-10-23</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

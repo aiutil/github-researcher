@@ -53,6 +53,11 @@
                 </tr>
             </thead>
             <tbody>
+        <tr data-date="2026-10-23">
+            <td style="font-family:var(--font-mono);font-weight:600;">2026-10-23</td>
+            <td>本日最值得记的不是四个项目各自的领域，而是三条各自独立却在同一天浮现出的同构信号：**第一，Apple 内核移植的两条互不相识路径（UniXNU 走 UEFI 伪平台契约 + 35 款设备文档，Snapintosh 走 EL2 hypervisor + 单机型 + 依赖一台 Mac 主机）撞上了同一组核心技术难点——16 KiB→4 KiB 页表翻译与 Apple 私有输入的合规处理，且各自独立地把「Apple kernelcache 不得入库」写成了仓库级制度**（UniXNU 的 README Private blobs 段、Macintosh 的 AGENTS.md 第 1 条与 THIRD_PARTY_NOTICES 的「contains no Apple binaries」声明）；**第二，DeepSeek 官方开源 DeepInfer（7 天 19,806⭐ ⑂2,106 Apache-2.0，subs 43 为本批最高）时在 README 里用整段明列「本次发布不含什么」——KV cache 系统、PD 分离、跨副本负载均衡——而这恰恰是本日报采信的全部材料里唯一一处「大厂把生产系统的缺口写在 README 而不是写在私有 wiki 里」的样本**；**第三，colinhacks/reylo（1.9 天 616⭐ ⑂3 fork/star 0.5%，subs 0）把 codegen 这个事实彻底从派生物里删掉——TypeScript 7.1 beta 的 content mappers 让 type checker 直接向引擎查询 SQL 类型，「派生物不存在于磁盘上，因此不可能过期」**</td>
+            <td><a href="/daily/2026-10-23.html" class="section-link">查看 →</a></td>
+        </tr>
         <tr data-date="2026-10-22">
             <td style="font-family:var(--font-mono);font-weight:600;">2026-10-22</td>
             <td>PHP 核心 RCE（php2shell / CVE-2026-109618 + CVE-2026-109619）在补丁发布后 24 小时内长出一整套开源响应生态：ikow/php2shell-poc 13 小时 859⭐ ⑂308（fork-star 35.9%，本批最高）给出 5 条 RCE 链 + Docker 靶场 + 5 套检测规则（Suricata/Snort · Sigma · ModSecurity · OpenResty Lua）；openai/php2shell-checker 310⭐ Apache-2.0 且主动声明「不独立验证安全修复、UNKNOWN 不等于已打补丁」；NCSC-NL/php2shell 以 EUPL-1.2 + TLP:CLEAR 发出国家级处置建议并明确「嵌入家电/网络设备/管理界面的 PHP 无法直接升级」；HOSTED-POWER/php_uploadprogress_guard 53⭐ 写出本日唯一非 PoC 项目——把缓解措施本身做成可安装 PHP 扩展，逐组件镜像官方补丁、自检到已打补丁就自动让位、12 个预编译二进制全部构建在 GLIBC_2.14 以下、Ansible 幂等部署在 cPanel EA4 / DirectAdmin / AWX 上实测 failed=0 二次 changed=0；NVIDIA/flare-local-inference 485⭐ ⑂47 用 AGENTS.md 明文列出「拒绝范围蔓延 / 拒绝架构违规 / 拒绝削弱保证」并自称「不是也不会是 vLLM 的替代」；dominikmartn/harp 527⭐ ⑂29 把 Warp 非官方 fork 的 tab bar 换成 agent 状态侧边栏 + 双 provider 限额环 + tmux 状态同步——今日主线是「**一个 PHP 补丁被开源社区拆成四层职责各自认领：谁解释漏洞、谁检测、谁国家层面处置、谁在等补丁期间先保住机器**；而 Flare 与 Harp 共享另一种信号——**把『我不做什么』写进代码仓库的制度文件，而不是只写在 README 卖点里**</td>
