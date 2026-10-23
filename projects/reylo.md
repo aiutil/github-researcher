@@ -2,11 +2,11 @@
 title: "colinhacks/reylo"
 slug: reylo
 date_added: "2026-10-23"
-last_seen_date: "2026-10-23"
+last_seen_date: "2026-10-24"
 category: "观察型"
 emoji: "🗄️"
-stars: "616 stars"
-stars_delta: "1.9 天 616⭐ ⑂3（fork/star 0.5%）"
+stars: "1,028 stars"
+stars_delta: "3.9 天 1,028⭐ ⑂8（fork/star 0.8%）"
 language: "Rust"
 score: 89
 tags: ["reylo", "sql", "typescript", "content-mappers", "typescript-7-1", "type-inference", "zero-codegen", "postgres", "mysql", "sqlite", "type-safety", "agent-friendly", "dry", "colinhacks", "node-24", "rust-engine", "beta-dependency", "no-deps-generated"]
@@ -178,3 +178,6 @@ README 把「The perfect option for the agent era」写在卖点列表里，语�
 
 ---
 *首次记录：2026-10-23*
+## 最近动态（2026-10-24）
+
+**2026-10-24：** ⭐ 616 → **1,028**（+412，约 +67%），⑂ 3 → **8**（fork/star 0.5% → **0.8%**，仍为本批最低区间），**subs 0 → 2**（首次出现深度关注者），oi 13 → **12**。**`pushed_at` 更新至 2026-10-23T22:12:38Z（10-23 当日仍在提交）**，**且仓库体积从 66,704 KB 增至 78,474 KB**——说明项目在持续开发而非停滞。**⭐ 关键观察：10-23 记录的「单一决定性风险」——完全依赖 TypeScript 7.1 beta 的 content mappers——本窗口未核验 TS 7.1 是否已进入 stable**（本日报未取 microsoft/typescript-go 的最新状态）。**subs 从 0 到 2 是本项目首次出现采用信号**，比 star 数更能说明问题：前 1.9 天 616⭐ 而 subs 0（纯曝光），现在 1,028⭐ 且 subs 2，**fork-star 仍仅 0.8%——再次印证本日报连续四天观察到的分界线：「需要等上游 beta 特性而非 fork 它」的项目，fork 比例天然低。** **观察重点不变：TypeScript 7.1 是否进入 stable、content mapper API 是否变更。**

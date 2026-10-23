@@ -2,11 +2,11 @@
 title: "deepseek-ai/DeepInfer"
 slug: deepinfer
 date_added: "2026-10-23"
-last_seen_date: "2026-10-23"
+last_seen_date: "2026-10-24"
 category: "基础设施候选"
 emoji: "⚡"
-stars: "19,806 stars"
-stars_delta: "7 天 19,806⭐ ⑂2,106（fork/star 10.6%）"
+stars: "21,056 stars"
+stars_delta: "8.5 天 21,056⭐ ⑂2,322（fork/star 11.0%）"
 language: "Python"
 score: 91
 tags: ["deepinfer", "deepseek", "deepseek-v4-1-flash", "inference-framework", "moe", "expert-parallelism", "eplb", "flashmla", "deepgemm", "deepep", "tilekernels", "tilelang", "dsark", "confidence-scheduled-verification", "swa-bounded-replay", "async-scheduling", "batch-invariant", "deterministic-sampling", "structured-outputs", "sm100", "nvidia", "ascend-950", "huawei-cann", "apache-2", "kv-cache-not-open", "pd-disaggregation"]
@@ -151,3 +151,6 @@ flowchart TB
 
 ---
 *首次记录：2026-10-23*
+## 最近动态（2026-10-24）
+
+**2026-10-24：** ⭐ 19,806 → **21,056**（+1,250），⑂ 2,106 → **2,322**（fork/star 10.6% → **11.0%**），**subs 43 → 50（本项目订阅数持续上升，仍为本批最高）**，oi 193 → **200**。⚠️ **`pushed_at` 为 2026-10-21T04:55:44Z——距本快照（2026-10-23T22:13Z）已约 2.7 天，即最近三天窗口内无新 push**。**这是本日最值得注意的一条延续跟踪观察：一个 21k⭐ 的项目连续三天无提交，说明热度与开发活动在本项目上已经脱钩**——star 仍在涨，但代码未动。**三项缺失（KV cache 系统 / VE-Prefill-Decode 分离 / prefill 与 decode 两侧的跨 DP 副本负载均衡）本窗口未重新核验是否已开源——这仍是本项目未来的分水岭。**另：oi 200 对 21k⭐ 属正常早期信号，需观察关闭率。

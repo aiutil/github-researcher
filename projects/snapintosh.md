@@ -1,16 +1,16 @@
 ---
-title: "Acelogic/Snapintosh"
+title: "Macintosh/Snapintosh"
 slug: snapintosh
 date_added: "2026-10-23"
-last_seen_date: "2026-10-23"
+last_seen_date: "2026-10-24"
 category: "观察型"
 emoji: "💾"
-stars: "530 stars"
-stars_delta: "20 小时 530⭐ ⑂29（fork/star 5.5%）"
+stars: "745 stars"
+stars_delta: "2.4 天 745⭐ ⑂43（fork/star 5.8%）"
 language: "Python"
 score: 87
 tags: ["snapintosh", "macos-on-arm", "el2-hypervisor", "sptm", "txm", "xnu", "auxkc", "shadow-page-tables", "16k-to-4k", "adreno-x2-90", "adrenometal", "io-gpu-kext", "air2ir3", "mesa-ir3", "shader-compiler", "q1n1", "m1n1-fork", "uefi-el2-proxy", "usb-ncm", "snap-i2c-hid", "qcc2072-wifi", "nvme", "aic", "dart", "smmu", "apple-hardware-contract", "mit", "agents-md", "single-laptop", "experimental"]
-url: "https://github.com/Acelogic/Snapintosh"
+url: "https://github.com/Macintosh/Snapintosh"
 ---
 
 # Acelogic/Snapintosh
@@ -176,3 +176,6 @@ flowchart TB
 
 ---
 *首次记录：2026-10-23*
+## 最近动态（2026-10-24）
+
+**2026-10-24：** ⚠️ **仓库已改组——`Acelogic/Snapintosh` → `Macintosh/Snapintosh`**（新组织 `Snapintosh` 创建于 2026-10-23T05:28:04Z）。⭐ 530 → **745**（+215），⑂ 29 → **43**（fork/star 5.5% → **5.8%**），subs 4 → **7**，oi 4 不变。⚠️ **`license.spdx_id` 仍为 `NOASSERTION`**（LICENSE 首行仍写 `MIT License`），**而 `LICENSE` 文件本身确认仍在**（`Copyright (c) 2026 The Snapintosh contributors`）。**⭐ 结构性变化：主仓库已拆分为 8 个仓库**——`Macintosh/Snapintosh`（745⭐）、`Macintosh/q1n1`（35⭐，2026-09-16 创建，从 Asahi Linux m1n1 fork 的 UEFI EL2 proxy）、`Macintosh/air2ir3`（AIR→Mesa ir3 shader 编译器，2026-10-23 新建，0⭐）、`Macintosh/SnapAdreno`（Adreno X2-90 IOGPU 与显示驱动，0⭐）、`Macintosh/SnapI2CHID`（I2C-HID 键盘/触控板/精密触控板驱动，0⭐）、`Macintosh/SnapMetal`（AdrenoMetal.bundle，0⭐）、`Macintosh/SnapQCC2072`（QCC2072 Wi-Fi 驱动，work in progress，0⭐）、`Macintosh/.github`（组织档案）。**这与 UniXNU 的 16 个驱动 submodule 属同一种「驱动独立仓库」的责任边界划分，但本日才显现。** **新的跟踪方式：主仓库 star 数已不是好指标（拆到 8 个仓库里），应改为跟踪 7 个子仓库中哪一个先获得外部 star**——这是「从单仓库走向多仓库平台」的第一个可观测信号。另注：10-23 记录的 Status 表中「60 Hz 目标」与「Wi-Fi 从 macOS 菜单发起连接尚不可用」**本窗口未重新核验**（README 未重取）。

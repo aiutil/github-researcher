@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-23.md">Latest report</a> ·
+  <a href="daily/2026-10-24.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,40 +21,41 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-23
+## Latest report · 2026-10-24
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 743 | 4 | 112k+ |
+| 4 | 747 | 4 | 95k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [UniXNU/UniXNU](projects/unixnu.md) | 750 stars | 观察型 |
-| [deepseek-ai/DeepInfer](projects/deepinfer.md) | 19,806 stars | 基础设施候选 |
-| [Acelogic/Snapintosh](projects/snapintosh.md) | 530 stars | 观察型 |
-| [colinhacks/reylo](projects/reylo.md) | 616 stars | 观察型 |
+| [oosexgang/hackios-xnu-kernel](projects/hackios-xnu-kernel.md) | 1,064 stars | 观察型 |
+| [theorem-labs/oss-verify-proofs](projects/oss-verify-proofs.md) | 92 stars | 观察型 |
+| [xevrion/hatchzip](projects/hatchzip.md) | 888 stars | 工具型 |
+| [haplollc/Vesalius](projects/vesalius.md) | 61 stars | 观察型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 90 · repositories: UniXNU/UniXNU, Acelogic/Snapintosh
-2. **Signal 2** · score 89 · repositories: deepseek-ai/DeepInfer
-3. **Signal 3** · score 87 · repositories: colinhacks/reylo
+1. **Signal 1** · score 91 · repositories: oosexgang/hackios-xnu-kernel, oosexgang/hackios-xnu-userland
+2. **Signal 2** · score 90 · repositories: theorem-labs/oss-verify-proofs
+3. **Signal 3** · score 89 · repositories: xevrion/hatchzip
+4. **Signal 4** · score 88 · repositories: haplollc/Vesalius
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-23.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-24.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-10-24](daily/2026-10-24.md) | 4 | 4 |
 | [2026-10-23](daily/2026-10-23.md) | 4 | 4 |
 | [2026-10-22](daily/2026-10-22.md) | 4 | 4 |
 | [2026-10-21](daily/2026-10-21.md) | 4 | 4 |
 | [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
 | [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
 | [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
-| [2026-10-17](daily/2026-10-17.md) | 4 | 4 |
 
 ## Why this repository exists
 

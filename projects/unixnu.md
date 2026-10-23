@@ -2,11 +2,11 @@
 title: "UniXNU/UniXNU"
 slug: unixnu
 date_added: "2026-10-23"
-last_seen_date: "2026-10-23"
+last_seen_date: "2026-10-24"
 category: "观察型"
 emoji: "🍎"
-stars: "750 stars"
-stars_delta: "3.5 天 750⭐ ⑂118（fork/star 15.7%）"
+stars: "856 stars"
+stars_delta: "4.6 天 856⭐ ⑂148（fork/star 17.3%）"
 language: "Python"
 score: 88
 tags: ["unixnu", "ios-on-android", "macos-on-android", "uefi", "xnu-kernel", "kernelcache", "metal-driver", "adreno-740", "page-tables", "4k-paging", "sheng", "xiaomi-pad-6s-pro", "boot-chain", "prelink", "device-porting", "bsd-2-clause-patent", "submodules", "driver-foundation", "35-devices", "reverse-engineering"]
@@ -134,3 +134,6 @@ flowchart TB
 
 ---
 *首次记录：2026-10-23*
+## 最近动态（2026-10-24）
+
+**2026-10-24：** ⭐ 750 → **856**（+106），⑂ 118 → **148**（fork/star 15.7% → **17.3%**），subs 3 → **4**，oi 6 不变，`pushed_at` 2026-10-23T15:29:35Z。`license.spdx_id` 仍为 `NOASSERTION`（LICENSE 首行仍写 `SPDX-License-Identifier: BSD-2-Clause-Patent`），**这是 10-23 记录的两处元数据不一致之一，一周内未修复**。本日新增第三个同领域项目 oosexgang/hackios-xnu-kernel（1,064⭐），**而它选择了与 UniXNU 相反的技术路线（直接编译 Apple 开源 XNU 并打补丁）**——见 [2026-10-24 日报](../daily/2026-10-24.md)。**跟踪方式仍是「设备覆盖表」而非 star 数**：观察 `docs/devices/` 是否从 35 增长到 40+。

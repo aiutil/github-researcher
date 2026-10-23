@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haplollc/Vesalius | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/haplollc/Vesalius" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="haplollcvesalius">haplollc/Vesalius</h1>
+<h2 id="_1">一句话定位</h2>
+<p>为 Claude Code 提供一张本地代码图——SwiftSyntax 解析出的调用图 + MCP server + CLI + Mac app + VS Code 扩展，让 agent 用一次带 file:line 的查询替代一串搜索与读文件。</p>
+<h2 id="_2">它解决的问题</h2>
+<p><strong>当 agent 回答「谁调用了这个函数」「改名要改什么」「某个功能在哪实现」时，它的方式跟一个第一天来新同事一样</strong>：搜名字、开文件、再搜、再开文件，逐步拼出答案。<strong>每一步都花时间和 token，在真实代码库上会累积得很快。</strong></p>
+<p>Vesalius 的思路是：<strong>把仓库读一次，记下一切如何连接</strong>——哪个文件用什么、谁调用什么、某个功能实际在哪——然后让 Claude Code 直接问它，通常一次调用就得到带精确 file:line 引用的答案。</p>
+<p><strong>它还解决一个更少被讨论但更痛的问题：「agent 到底会不会调我的工具？」</strong> MCP 生态里最常见的抱怨正是这个——工具装好了，agent 从来不用，而开发者不知道原因。Vesalius 用 <code>vesalius stats</code>（本地计数）与 <code>vesalius doctor</code>（连接诊断）把这件事变成可观测的。</p>
+<h2 id="2026-10-24">为什么值得关注（2026-10-24）</h2>
+<p><strong>因为它的 benchmark 是本日报里唯一一个「作者先写下自己的失败」的。</strong></p>
+<p>具体地说：<strong>第一轮 24 次运行中，Claude 只在 2 次里调用了 Vesalius。作者据此判定那一轮 13% 的 token 差距「主要是 run-to-run 噪声」——并把这个失败、失败的原因、以及由此触发的重新设计全部写进 README。</strong></p>
+<p>这在一个普遍只发布正面数字的领域里非常罕见。它的价值不在于「51% token 节省」这个数字，而在于<strong>它演示了如何回答「这个工具到底有没有用」这个问题</strong>：</p>
+<ol>
+<li>先做一个能证伪的对照实验；</li>
+<li>如果结果落在噪声里，就承认它是噪声；</li>
+<li>找出根因（不是 agent 笨，是 Claude Code 把 MCP 工具藏在 tool search 后面而几乎从不搜索）；</li>
+<li>改设计（按问题类型各配一个更锋利的工具 + 预加载最常被问的两个）；</li>
+<li>重做，得到 20/20；</li>
+<li><strong>并且逐类列出自己没赢的地方</strong>（功能在哪 −2.1 分、符号在哪 −1.7 分；4 题 token 反而更多）。</li>
+</ol>
+<p><strong>这六个步骤本身比它的功能列表更有迁移价值。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>61⭐ / ⑂1 / subs 1 / 3 个 commit / contributors 1 人——尚无采用信号。</strong></p>
+<p>热度来源是「Agent 工具 + 本地优先 + MCP」这个组合在 2026 年的关注度，加上 README 里那张 benchmark 图的传播力（<strong>token 减 51%、20/20 全调用</strong>这种数字很容易被截图转发）。</p>
+<p><strong>但它还没有被采用的任何证据</strong>：fork-star 1.6%（<strong>本批最低</strong>，且 fork 与它无关——它是一个需要 brew 安装的 macOS 应用）、subscribers 1、3 个 commit 全部集中在 2026-10-23 一天内。</p>
+<p><strong>它的形态是「刚公开的快照」</strong>，与 10-23 记录的 Macintosh（11 commits、5 小时内完成）同类：<strong>阅读它的 README 快照不能反映它今天的真实能力与成熟度。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐ 五工具按问题类型分工，而不是一个大而全的 explore 工具。</strong> <code>usages</code>（谁调用 X / 改名要改什么 / 含只有类型推导才能看见的使用点，<strong>去掉同名 lookalike</strong>，附完整性检查与 <code>change: rename|signature|remove</code> 的编辑清单与要跑的测试）/ <code>feature_map</code>（按角色分组的核心类型与函数，附决定性行、框架与 I/O 调用、配置与环境链接、调用点）/ <code>outline</code>（声明与签名、行范围、首句文档、按顺序的调用，<strong>约为读整个文件 token 的一 fifth</strong>）/ <code>architecture</code>（target 与产品类型、包、文件夹、依赖方向、环、跨 target 链接）/ <code>dependency_cycles</code>（范围内每个环，附每条边的 import 行与被导入名的使用位置，<strong>以及扫描了什么，所以「没有其他环」不需要复查</strong>）。</li>
+<li><strong>⭐ 预加载策略是实测得出的，不是拍脑袋。</strong> <code>usages</code> 与 <code>feature_map</code> 预加载（约 +900 token 上下文），其余三个等 Claude Code 的 tool search 按需加载。<strong>这正是把 2/24 提到 20/20 的改动。</strong></li>
+<li><strong>⭐ 完整性检查作为返回值的一部分。</strong> <code>usages</code> 的输出形如 <code>complete: "ensureFresh" occurs 10×: 3 resolved to the target, 1 declaration, 2 strings, 4 non-source; 0 unresolved</code>——<strong>它告诉 agent「我已经找过多少次、有没有没解析的」</strong>，而不是给一个孤零零的列表。</li>
+<li><strong>⭐ 本地计数让「agent 用没用」可观测。</strong> <code>vesalius stats</code> 显示工具、调用数、token、每次答案的中位耗时、完整性检查是否通过；<strong>它从不记录你的问题、符号或代码</strong>（<code>VESALIUS_STATS=off</code> 或 <code>--reset</code> 可关闭/清空）。<code>vesalius doctor</code> 按 Claude Code 的方式启动 server 并检查每一环连接、它服务哪个仓库、索引有多新。</li>
+<li><strong>类型感知的调用图。</strong> Swift 走 SwiftSyntax 的类型解析（<strong>包括通过类型流但从不点名符号的使用</strong>——<code>via 172 │ return IndexLocation.allIndexed()…</code>），TypeScript / JavaScript / Python 走 tree-sitter。</li>
+<li><strong>setup 只做三件事，且可完全回退。</strong> 注册 <code>vesalius mcp</code>（Claude Code <code>--scope user</code>，检测到 <code>codex</code> 命令时也注册 Codex）、把 <code>mcp__vesalius__*</code> 加入 <code>~/.claude/settings.json</code> 的 permissions.allow、索引当前仓库。<strong>它从不写你的仓库、CLAUDE.md 或 hooks</strong>；<code>--dry-run</code> 先显示计划；<code>vesalius setup --undo</code> 完全回退。</li>
+<li><strong>不止 MCP。</strong> 同样的能力暴露为 CLI（<code>usages</code> / <code>feature-map</code> / <code>outline</code> / <code>architecture</code> / <code>dependency-cycles</code> / <code>ask</code> / <code>impact</code> / <code>health</code> / <code>diagnostics</code> / <code>hotspots</code> / <code>unused</code> / <code>map</code> / <code>query "&lt;sql&gt;"</code> 对索引做只读 SQL / <code>watch</code> / <code>doctor</code> / <code>stats</code>），外加一个 SwiftUI Mac app 与一个 VS Code 扩展。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>① <strong>索引与图引擎</strong>（VesaliusKit：SwiftSyntax 解析出的调用图 + 类型推导流 + 持久化索引）② <strong>MCP server</strong>（stdio，暴露 5 个只读工具）③ <strong>CLI</strong>（<code>vesalius &lt;command&gt;</code> 全套，含 <code>--json</code>）④ <strong>Mac app</strong>（SwiftUI，Settings › Agents 可注册 MCP）⑤ <strong>VS Code 扩展</strong>。<strong>边界划在「索引存放位置」</strong>：<strong>不写入用户的仓库、CLAUDE.md 或 hooks</strong>，索引与使用计数在 <code>~/Library/Application Support/Vesalius</code>，<strong>可整目录删除</strong>；<code>.vesaliusignore</code> 提供仓库内排除</td>
+<td>README 的 What setup changes and nothing else 节、五个工具表、FAQ 的 How do I remove it 与 It answered about the wrong folder 节；<strong>索引的存储格式与查询后端（README 提到 <code>vesalius query "&lt;sql&gt;"</code> 对索引做只读 SQL）本窗口未取具体实现，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><code>vesalius setup</code> 注册 MCP + 加一条权限规则 + 索引当前仓库 → Claude Code 提问 → tool search 命中（<code>usages</code>/<code>feature_map</code> 预加载，其余按需）→ <strong>MCP server 查询本地索引 → 返回带 file:line 的答案 + 完整性检查</strong> → Claude 用 grep/读文件做二次核对（<strong>benchmark 中每题 2.65 次搜索/读/shell 调用，对比无 Vesalius 时的 7.2 次</strong>）→ <code>vesalius stats</code> 记录本次调用（仓库路径、工具、答案大小与耗时、完整性检查是否通过）</td>
+<td>README 的 Quick start 输出（含真实 <code>vesalius setup</code> 与 <code>vesalius stats</code> 输出）、The five tools 节、Is Claude using it? 节；<strong>索引刷新时机（<code>ensureFresh</code> 的增量判定）与 <code>--no-refresh</code> 的失效条件未完全核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>预加载两个工具（+900 token 上下文）vs 全按需加载</strong>（这是把 2/24 提到 20/20 的关键改动，代价是固定上下文成本）· <strong>类型感知的调用图 vs 纯 tree-sitter 词法</strong>（Swift 走类型解析准确，但<strong>只有 4 种语言有调用图，其余 13 种只有词法</strong>）· <strong>本地索引 vs 服务端索引</strong>（无网络、无遥测、无 <code>.codegraph/</code> 残留、无更新检查）· <strong>只读工具 vs 可写工具</strong>（所有工具只读，编辑仍交给 agent）· <strong>私有 benchmark 数据 vs 完全可复现</strong>（保留数据防泄漏，代价是无法精确复现）· <strong>单平台 vs 跨平台</strong>（只在 Apple silicon 上，放弃三大平台市场）</td>
+<td>README 的 How it compares 表与 Where it helps 节、benchmark 的留出集说明；<strong>「为什么放弃 Linux/Windows」README 未解释</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>确认硬件门槛</strong>：Apple silicon + macOS 15+（<strong>这一步不成立则整个 PoC 不成立</strong>）→ 2. <code>brew install haplollc/tap/vesalius</code> → 3. <code>vesalius setup</code>（<strong>建议先 <code>--dry-run</code> 看它要改什么</strong>）→ 4. <strong>用 <code>vesalius doctor</code> 确认连接</strong>（它按 Claude Code 的方式启动 server 并检查每一环）→ 5. 在你自己的仓库问一个问题，例如「谁调用 X，改名要改什么」→ 6. <strong>故意问一个代码里不存在的符号，观察它是否返回「0 unresolved」并给出完整性检查</strong>（<strong>这一步验证它是否真的在解析而非猜测</strong>）→ 7. <strong>跑 <code>vesalius stats</code>，确认 Claude 确实调用了它</strong>（<strong>若调用数为 0，回到 Vesalius 的 FAQ：先按名要求一次「use vesalius to find who calls X」，因为预加载不等于会被调用</strong>）→ 8. <code>vesalius setup --undo</code> 验证可完全回退 → 9. <strong>在自己的代码上跑一次它自己的 benchmark harness</strong>（<code>docs/benchmark/run_benchmark.py</code>）以获得对自己代码库的数字</td>
+<td><strong>第 6 步是唯一能证伪「它真的在解析」的步骤</strong>（与 HackiOS 的 checks.md 同构）；<strong>第 7 步是本项目的核心价值所在</strong>——<strong>没有 stats，agent 调没调根本不可见</strong>；<strong>第 9 步能给出比 README 更贴合自己代码库的数字</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>第一条启发：「agent 不会用我的工具」是一个可诊断的工程问题，而不是玄学。</strong> Vesalius 的根因定位非常具体：<strong>Claude Code 把 MCP 工具藏在 tool search 后面，而它几乎从不搜索。</strong> 由此得出的解法不是「写更好的工具描述」，而是<strong>改变工具的装载方式</strong>（预加载最常被问的两个）+ <strong>按问题类型拆分粒度</strong>（让每个问题有一个「更锋利的」工具）。<strong>这是一个可以直接迁移到任何 MCP 工具设计上的结论。</strong></p>
+<p><strong>第二条启发：一个负结果比一个正结果信息量更大。</strong> 「第一轮 24 次里只调用了 2 次，所以那一轮的数字是噪声」——<strong>这句话是整个项目最有价值的部分</strong>，因为它阻止读者把噪声读成效果。<strong>它同时给出了第二天的行动依据。</strong></p>
+<p><strong>第三条启发：把「我没赢的地方」做成表格，比只报平均数诚实得多。</strong> 逐类质量表（功能在哪 −2.1、符号在哪 −1.7）+ 「20 题中 4 题 token 反而更多、11 题质量移动超过 1 分」——<strong>这些数字让读者能自己判断「这个工具对我的场景是否有用」，而不是被迫接受一个平均值。</strong></p>
+<p><strong>第四条启发：把「不可见」变成「可观测」，是 MCP 生态当前最缺的一环。</strong> <code>vesalius stats</code> 记录工具、调用数、token、耗时、完整性检查是否通过，<strong>但从不记录你的问题、符号或代码</strong>——<strong>这个边界设计让「可观测」不以「隐私泄漏」为代价</strong>，而这正是它能安心在本地跑的前提。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；「待核验」节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph 输入["输入"]
+    REPO["你的仓库<br/>不写入任何内容<br/>.vesaliusignore 可排除"]
+    SW["SwiftSyntax<br/>类型解析 调用图<br/>Swift"]
+    TS["tree-sitter<br/>词法<br/>TypeScript·JavaScript·Python<br/>其余 13 种语言只有词法"]
+  end
+
+  subgraph 引擎["VesaliusKit 索引与查询引擎"]
+    IDX["持久化索引<br/>仓库路径·符号·调用边·类型流"]
+    ENG["QueryEngine<br/>usages·feature_map·outline<br/>architecture·dependency_cycles"]
+    SQL["只读 SQL 接口<br/>vesalius query &quot;&lt;sql&gt;&quot;<br/>具体后端待核验"]
+    FRESH["ensureFresh 增量刷新<br/>不阻塞其他调用的缓存检查<br/>触发条件待核验"]
+  end
+
+  subgraph 消费["消费面"]
+    MCP["MCP server（stdio）<br/>5 个只读工具<br/>usages 与 feature_map 预加载<br/>其余等 tool search"]
+    CLI["CLI<br/>ask·impact·health·hotspots<br/>unused·map·query·watch"]
+    APP["Mac app（SwiftUI）<br/>Settings › Agents 可注册 MCP"]
+    EXT["VS Code 扩展"]
+  end
+
+  subgraph 客户端["客户端"]
+    CC["Claude Code<br/>permissions.allow 加 mcp__vesalius__*<br/>--no-permissions 可跳过"]
+    CX["Codex / Cursor / 其他 stdio MCP 客户端"]
+  end
+
+  subgraph 观测["观测（本项目的独特之处）"]
+    STATS["vesalius stats<br/>工具·调用数·token·中位耗时<br/>完整性检查是否通过<br/>从不记录你的问题 符号或代码"]
+    DOCTOR["vesalius doctor<br/>按 Claude Code 的方式启动 server<br/>检查每一环连接·服务哪个仓库·索引多新"]
+  end
+
+  REPO --> SW --> IDX
+  REPO --> TS --> IDX
+  IDX --> FRESH --> ENG
+  IDX --> SQL
+  ENG --> MCP
+  ENG --> CLI
+  ENG --> APP
+  ENG --> EXT
+  MCP --> CC
+  MCP --> CX
+  CLI --> CC
+  MCP --> STATS
+  MCP --> DOCTOR
+  STATS --> IDX
+
+  BND["边界<br/>不写仓库·CLAUDE.md·hooks<br/>索引在 ~/Library/Application Support/Vesalius<br/>无网络 无遥测 无更新检查<br/>可整目录删除"]
+  BND -.约束.-> IDX
+  BND -.约束.-> STATS
+
+  BM["benchmark 方法论<br/>第一轮 2/24 → 判定为噪声<br/>改设计后 20/20<br/>token −51% 质量 −0.5<br/>留出集 8 题 −44%<br/>三个私有代码库 key 与 transcript 不公开"]
+  BM -.解释数据来源.-> STATS
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>观察型工具（有真实技术含量，但尚未被采用）。</strong></p>
+<p>在「给 agent 提供代码上下文」这个 2026 年的拥挤赛道上，它的定位由三个边界定义清楚：</p>
+<ol>
+<li><strong>本地优先 + 只读。</strong> 索引在自己机器上，不上传代码，<strong>在仓库里不留任何东西</strong>，无网络无遥测。这与 CodeGraph（默认开匿名遥测与更新检查）、graphify（可选的 LLM pass over docs）形成对比。<strong>「Vesalius itself never uploads your code」是它最清晰的定位声明。</strong></li>
+<li><strong>只覆盖少数语言的类型感知调用图。</strong> Swift 是它自己写的语言，解析质量最好；TypeScript/JavaScript/Python 走 tree-sitter 词法；<strong>其余 13 种语言只有词法</strong>。<strong>这比纯 tree-sitter 的工具更准，比全语言覆盖的工具更窄。</strong></li>
+<li><strong>只在一个平台上。</strong> macOS 15+ Apple silicon。这既是它的质量保证（性能与系统集成）也是它的天花板。</li>
+</ol>
+<p><strong>它不是所有人的正确工具——而作者自己知道这一点并写了出来</strong>（README 的 How it compares 表逐项列出它输给 CodeGraph / graphify / context-mode 的场景：Linux/Windows、纯词法语言、需要压缩命令输出的场景）。<strong>这种自我定位的诚实度是它区别于同赛道项目的一个可观察特征。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️ 无根级 LICENSE 文件。</strong> <code>?recursive=1</code> 全树查询确认仓库里只有 <code>VesaliusKit/Sources/CTreeSitter/LICENSE</code>、<code>CTreeSitter/LICENSE-ICU</code>、<code>CTreeSitterGrammars/LICENSES/tree-sitter-{javascript,python,typescript}.LICENSE</code> 与 <code>vscode-extension/LICENSE</code>——<strong>全部是第三方许可</strong>。GitHub 的 <code>license</code> 字段为 null。<strong>按默认版权保留处理。这与本周记录的其他几例性质不同：不是「许可证识别失败」，而是「根本没有许可证声明」——这意味着默认无授权使用/修改/分发。</strong></li>
+<li><strong>⚠️ 本日新增发现的元数据不一致，累计第四类四例。</strong></li>
+<li><strong>⭐ 平台限制极硬。</strong> 只支持 Apple silicon + macOS 15 或更高。<strong>这排除了绝大多数 Linux/Windows 用户</strong>，而后者是开发者的多数。</li>
+<li><strong>调用图的语言覆盖窄。</strong> 4 种语言有调用图，其余 13 种只有词法——<strong>而「谁调用了 X」这个问题在词法模式下必然有误报与漏报</strong>（README 自己举的例子里 <code>usages</code> 要「去掉同名 lookalike」并给出完整性检查，正是为了应对这个）。</li>
+<li><strong>61⭐ 与 subs 1 说明尚无采用信号。</strong> 3 个 commit 全部集中在 2026-10-23 一天内（05:05、21:06、21:13），<strong>这是一个刚公开的快照</strong>。</li>
+<li><strong>benchmark 无法精确复现。</strong> 三个代码库是作者私有应用，<strong>答案 key 与 run transcript 保持私有</strong>（防泄漏进未来的工具设计与训练数据）。judge 指令与 harness 公开，但<strong>外部读者拿不到同样的数据</strong>，因此只能相信作者的数字。</li>
+<li><strong>benchmark 的样本量小且有方向性偏差。</strong> 20 题、6 个代码库、每题一次运行一次评审；<strong>12 题是它对着建的</strong>（留出集只有 8 题）。作者自己说明了这点并给了留出集数字，这是诚实的，但<strong>样本量决定了「−51%」这个数字的置信区间必然较宽</strong>。</li>
+<li><strong>性能与索引规模的关系未知。</strong> README 只给了「256 files in 3.6 s」这一个索引速度数字（在其自身仓库上）；<strong>一个百万行级别的第三方代码库上的索引时间、内存占用与增量刷新延迟均未说明</strong>。</li>
+<li><strong>「≈1/5 tokens」的 outline 优势来自其自身仓库的文档密度</strong>，<strong>未在第三方代码库上验证</strong>。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<p>Vesalius 自己在 README 里做了完整对比，本档案照录并标注证据边界：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th><strong>Vesalius</strong></th>
+<th>CodeGraph</th>
+<th>graphify</th>
+<th>context-mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>agent 拿到什么</td>
+<td>按函数分组的 uses、改名编辑清单与要跑的测试、feature maps、outlines</td>
+<td>一个 <code>explore</code> 工具返回源码、调用路径与影响半径</td>
+<td>对代码/文档/媒体的图查询（<code>query</code>/<code>path</code>/<code>explain</code>）</td>
+<td>沙箱 + 工具输出搜索，压缩后保留会话记忆</td>
+</tr>
+<tr>
+<td>调用图</td>
+<td><strong>Swift（类型解析）、TypeScript、JavaScript、Python</strong>；其余 13 种只有词法</td>
+<td>30+ 语言（tree-sitter）</td>
+<td>约 40 语言（tree-sitter）</td>
+<td>无（索引输出而非代码）</td>
+</tr>
+<tr>
+<td>运行平台</td>
+<td><strong>macOS 15+ Apple silicon</strong></td>
+<td>macOS/Linux/Windows</td>
+<td>macOS/Linux/Windows</td>
+<td>macOS/Linux/Windows</td>
+</tr>
+<tr>
+<td>在你仓库里留下什么</td>
+<td><strong>什么都不留</strong></td>
+<td><code>.codegraph/</code> 目录</td>
+<td><code>graphify-out/</code> 目录</td>
+<td>什么都不留</td>
+</tr>
+<tr>
+<td>setup 加了什么</td>
+<td>一条 MCP 条目 + 一条权限规则</td>
+<td>一条 MCP 条目 + 权限规则 + prompt hook + CLAUDE.md 块</td>
+<td>一个 skill + CLAUDE.md 块 + always-on 模式的 hooks</td>
+<td>多数工具加 hooks + skills</td>
+</tr>
+<tr>
+<td>网络</td>
+<td><strong>无</strong></td>
+<td>匿名遥测（默认开）+ 更新检查</td>
+<td>可选的 LLM pass over 文档与媒体</td>
+<td>更新检查</td>
+</tr>
+</tbody>
+</table>
+<p><strong>补充几条本日报的观察：</strong></p>
+<ul>
+<li><strong>vs 单纯的文件读取 / grep</strong>：Vesalius 的增量在「跨文件的类型流」（<code>via 172 │ return IndexLocation.allIndexed()…</code> —— 通过类型流但从不点名符号的使用）与「完整性计数」（<code>occurs 38×: 28 resolved, 1 declaration, 2 comments, 7 non-source; 0 unresolved</code>）上，<strong>这两项是 grep 与文件读取都给不出的</strong>。</li>
+<li><strong>vs 纯 tree-sitter 方案（CodeGraph / graphify）</strong>：<strong>Swift 上 Vesalius 有类型解析因而更准，但覆盖面窄得多。</strong> README 自己说「If you work on Linux or Windows, or mostly in languages Vesalius reads only lexically, CodeGraph or graphify will serve you better.」</li>
+<li><strong>vs context-mode / rtk</strong>：<strong>这些工具压缩的是命令与日志的输出，Vesalius 不碰这个领域</strong>——README 明确说二者可以配对使用。<strong>这是一个「互补」而非「竞争」的关系。</strong></li>
+<li><strong>vs semble / mrw</strong>：semble 提供任意语言的快速语义代码搜索，mrw 批量处理 agent 的读与写——<strong>README 把它们列为可搭配的补充</strong>。</li>
+<li><strong>vs 自建 agent 索引方案</strong>：Vesalius 的差异化在于它是<strong>现成的、五个工具分工明确的、且有本地计数</strong>的方案，而不是让用户自己搭。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，但理由不是它的功能，而是它的方法论样本价值。</strong></p>
+<p>理由有两层：</p>
+<ol>
+<li><strong>方法论层面（更持久）</strong>：它是本日报唯一一个完整演示了「如何诚实评估一个 agent 工具是否有用」的项目——先做可证伪的对照、承认噪声、找根因、改设计、重做、<strong>并逐类列出没赢的地方</strong>。<strong>这六个步骤可以迁移到任何 MCP 工具、任何 agent 集成的评估。</strong></li>
+<li><strong>产品层面（有限）</strong>：它有真实技术含量（类型感知的调用图、完整性检查、本地计数），但<strong>平台限制极硬（仅 Apple silicon + macOS 15+）、语言覆盖窄（4 种）、且 61⭐ / 3 commits 说明尚未被验证过。</strong></li>
+</ol>
+<p><strong>必须说清：今天没有人应该把它引入关键工作流。</strong> 无 LICENSE（默认版权保留）这一条本身就足以让任何商业或合规敏感的使用停在门外。</p>
+<p>具体观察点：
+1. <strong>是否补上根级 LICENSE</strong>——<strong>这是它从「不能用于任何受合规约束的场景」变成「可以」的唯一门槛。</strong>
+2. <strong>是否有第二个贡献者</strong>（当前 1 人、3 commits 集中于一天）。
+3. <strong>是否扩大语言覆盖或平台</strong>（尤其 Linux 与 Windows）。
+4. <strong><code>subscribers_count</code> 与 fork 数的变化</strong>（当前 1 与 1）。
+5. <strong>benchmark 是否开放更多代码库或答案 key</strong>（当前 6 个代码库中 3 个私有、key 与 transcript 不公开）。
+6. <strong>索引在大型第三方代码库上的性能数据</strong>（当前只有其自身仓库的「256 files in 3.6 s」）。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>是否发布根级 LICENSE 以及采用何种许可（MIT 与 Apache-2.0 在 AGPL/MIT 混合的 agent 工具生态里各有拥趸）。</li>
+<li><code>docs/benchmark/results.json</code> 的后续版本是否新增代码库或题数（可核验的公开指标）。</li>
+<li>是否新增 <code>vesalius stats</code> 的聚合视图（当前只有 per-repository 与 <code>--all</code>）。</li>
+<li><code>vesalius ask</code>（自然语言排序文件/符号/行范围）与 <code>vesalius impact</code>（影响半径）在 README 中的描述最简略，<strong>这两个工具的实际能力边界最值得追问</strong>。</li>
+<li>索引的存储后端与 <code>vesalius query</code> 的 SQL 方言（决定它能否被用户自己的工具消费）。</li>
+<li>是否出现 fork-star 的实质性上升（当前 1.6%，若开始有人 fork，说明出现了「二次开发」这类新用法）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-24 CST 06:00 前后 / UTC 2026-10-23T22:13Z 快照) | Stars: 61 | Forks: 1 | Subscribers: 1 | Open Issues: 1 | License: null（仓库根目录无 LICENSE 文件）| 语言: Swift | 创建: 2026-10-22T05:01:30Z | 推: 2026-10-23T21:13:46Z | Commits: 3 | Contributors: 1 | Releases: 1 | Size: 7870 KB</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
