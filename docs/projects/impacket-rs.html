@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nestho/impacket-rs | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/nestho/impacket-rs" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="nesthoimpacket-rs">nestho/impacket-rs</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>用纯 Rust 从零重写 Impacket 的协议栈与工具集</strong>（SMB / Kerberos / NTLM / LDAP / DCERPC / SAM 等），目标是 74 个 CLI 子命令与上游 100% 对齐，同时做到零 Python 依赖、跨平台、内存安全。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>Impacket 是 Windows 内网的事实标准工具箱，但它是一个 Python 项目 —— 而这在真实的红队/运维场景里恰恰是它的硬约束：</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 环境依赖：</strong> Python 解释器 + 虚拟环境 + 依赖冲突（同一台机器上多个工具的依赖版本常常互斥）；</li>
+<li><strong>⭐⭐⭐⭐⭐ 启动开销：</strong> 在「批量编排 / 快速横向移动」场景里，每个命令的 Python 启动与模块导入时间会累积；</li>
+<li><strong>⭐⭐⭐⭐⭐ 内存安全：</strong> Impacket 大量使用 Python 的动态类型 + 二进制结构拼接（<code>impacket</code> 的 NDR 编解码是手工 struct 操作），<strong>在解析不可信网络数据时，Python 的内存安全并不成立</strong>。</li>
+</ol>
+<p>⭐⭐⭐⭐⭐ <strong>impacket-rs 的回答是：全部用 Rust 重写，产物是一个自包含的静态二进制。</strong></p>
+<p>⭐⭐⭐⭐ <strong>而它最实际的解决点是「可移植性」</strong> —— README 明写目标平台为 Linux（glibc &amp; 静态 musl）、macOS（Apple Silicon &amp; Intel）、Windows，<strong>且它同时面对 Linux/UNIX 目标（Samba、FreeIPA、OpenLDAP、MIT/Heimdal Kerberos KDC）与 Windows 域（Windows 2000 到 Windows Server 2025）</strong>。</p>
+<h2 id="2026-11-12">为什么值得关注（2026-11-12）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它把「用另一种语言重写一个成熟工具」这件事做到了本日报记录过的最完整的一份：118 blobs 分成 13 个 crate（<code>impacket-smb</code> / <code>impacket-crypto</code> / <code>impacket-dcerpc</code> / <code>impacket-msrpc</code> / <code>impacket-krb5</code> / <code>impacket-ldap</code> / <code>impacket-auth</code> / <code>impacket-sam</code> / <code>impacket-mssqlclient</code> / <code>impacket-secretsdump</code> / <code>impacket-mimikatz</code> / <code>impacket-ntlm</code> 等），每个协议一个 crate，每个 crate 都有对应的 <code>*_test.rs</code>。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而它的 CI 安全实践是本仓库最见功力、也最值得架构师抄的一部分 —— 19 个 commit 里有 6 个是纯 CI/安全加固：</strong></p>
+<p><code>2026-11-11T06:28:50Z  ci(security): pin immutable commit SHAs for actions and scope Semgrep to source codebase
+2026-11-11T06:32:03Z  ci: restore stable actions, remove semgrep, and keep trivy security audit
+2026-11-11T06:40:14Z  ci(sonar): resolve Quality Gate failures by excluding workflows, enabling CPD exemptions, and securing Trivy i...
+2026-11-11T06:47:39Z  ci(sonar): eliminate external action dependencies with native rustup/gh and disable YAML sensor in Sonar
+2026-11-11T06:25:31Z  ci(security): fix Trivy action resolution by using direct CLI installer and update CHANGELOG</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>「pin immutable commit SHAs for actions」是本日报见过的</strong>最正确<strong>的 CI 实践之一</strong> —— 它把「第三方 Action 被投毒」这条最常见的供应链攻击面直接消掉。⭐⭐⭐⭐⭐ <strong>而紧随其后的「remove semgrep, and keep trivy」+「eliminate external action dependencies with native rustup/gh」是一条完整的收敛路线：把能换成原生工具的外部 action 全部换掉，减少第三方依赖面。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>这与本日报记录的 <code>auto-twitch-drops-claim</code> 形成了本日最刺眼的一组对照</strong> —— 一个仓库用 CI 的 <code>contents: write</code> 权限<strong>伪造</strong>提交历史来制造「活跃」假象，另一个仓库用 CI <strong>加固</strong>供应链安全来保护真实代码。⭐⭐⭐⭐⭐ <strong>同一种技术基础设施，被用来做完全相反的两件事。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>还有两个细节值得记：</strong>
+- <strong>commit「docs: add support and donation section with badge UI for USDT-TRC20 and BTC-BSC」</strong> —— 一个安全工具作者公开挂加密货币捐赠，<strong>这是本日报记录到的第一个明确标注这一点的项目</strong>，也是评估其动机时的必要背景信息；
+- <strong>commit「docs: reorganize roadmap and architecture specifications into docs directory」</strong> —— 即它有 roadmap 与 architecture 文档，且在创建当天就整理过。</p>
+<p>⭐⭐⭐⭐ <strong>它的 fork 分布完全正常：</strong> 抽样 5 个 fork，间隔中位数 <strong>8,884 秒</strong>（2.5 小时），0/4 个 ≤10 秒。⭐⭐⭐⭐ <strong>对照同日两个农场的 6.0 秒 / 9.0 秒 —— 相差三个数量级。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>真实的技术需求 + 真实的社区关注，但当前仍处早期。</strong> 判据：
+1. <strong>⭐⭐⭐⭐⭐ 仓库结构：</strong> 13 个按协议划分的 crate + 每 crate 的 <code>*_test.rs</code> + <code>docs/COMMAND_REFERENCE.md</code>（28,713 B）+ <code>CHANGELOG.md</code>（74,804 B）—— <strong>这是「在做工程」而非「在攒 star」的目录结构。</strong>
+2. <strong>⭐⭐⭐⭐ CI 加固的 commit 序列</strong>（见上）—— <strong>这是真实使用 CI 之后才会遇到并解决的问题</strong>（如「Sonar Quality Gate 失败」「Trivy action 解析失败」），<strong>而不是能凭空写出来的剧本。</strong>
+3. <strong>⭐⭐⭐⭐⭐ 性能数字自述完整且带基准环境：</strong> README 给出 Apple Silicon（M-series, 10-core）与 Linux（AMD EPYC, 8-core）两个平台、Python 3.11 + Impacket v0.12.0 对照 <code>impacket-rs</code> v0.1.0-dev（release build），六项指标带具体数值（冷启动 185.4 ms → 1.8 ms；NDR PDU 42,000 → 5,850,000 ops/sec；RSS 48.2 MB → 4.6 MB；10,000 NTDS hash 14.8 s → 0.22 s；Kerberos 票据加密 1,250 → 98,400 tickets/sec）。⭐⭐⭐⭐⭐ <strong>给出版本号、构建模式与对照版本 —— 这符合本日报连日记录的「把验证条件写清楚」的做法。</strong>
+4. <strong>⭐⭐⭐⭐ Apache-2.0 许可 + 16 个 topics（<code>redteam</code> / <code>redteaming</code> / <code>offsec</code> / <code>offsec-tools</code> / <code>security-audit</code> / <code>security-scanner</code> 等）+ <code>bins/impacket-rs/src/main.rs</code>（455 KB 的 CLI 入口）。</strong>
+5. <strong>⭐⭐⭐ 31⭐ / 5 fork / 1 subscriber / 0 issue —— 关注度极低。</strong> ⭐⭐⭐⭐⭐ <strong>对照同日的 <code>c6lang/c6</code>（37⭐，761 blobs，285 commits）：两者体量相当，而 impacket-rs 的领域（红队工具）天然关注面更窄。</strong> ⭐⭐⭐⭐ <strong>但要诚实：本仓库</strong>同样没有任何外部验证<strong> —— 0 issue、0 release、subs 1，且作者账号 followers 仅 3。</strong></p>
+<p>⭐⭐⭐⭐ <strong>结论：这是一个由单人驱动、工程质量信号密集、但尚无外部使用证据的早期重写项目。</strong> ⭐⭐⭐ <strong>其热度（31⭐）完全不能反映其工作量 —— 这又是本日报「热度 ≠ 价值」主线的一个样本。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 按协议分 crate 的架构：</strong> 从树清单可见 <code>crates/impacket-smb</code>（<code>lib.rs</code> 74,104 B + <code>server.rs</code> 51,118 B）、<code>impacket-krb5</code>（<code>lib.rs</code> 50,358 B + <code>pac.rs</code> 45,288 B + <code>fast.rs</code> 44,468 B + <code>tgs.rs</code> 34,753 B + <code>ccache.rs</code> 28,812 B）、<code>impacket-msrpc</code>（<code>samr.rs</code> 56,761 B + <code>drsr.rs</code> 35,070 B + <code>rrp.rs</code> 32,674 B + <code>scmr.rs</code> 31,331 B）、<code>impacket-ldap</code>（<code>asn1.rs</code> 34,953 B + <code>shell.rs</code> 33,285 B + <code>dnsp.rs</code> 29,430 B）、<code>impacket-crypto</code>（63,817 B）、<code>impacket-dcerpc</code>（56,773 B）、<code>impacket-sam</code>（<code>ese.rs</code> 32,674 B + <code>lib.rs</code> 31,131 B）。⭐⭐⭐⭐⭐ <strong>「一个协议一个 crate」是这类项目的正确切分方式 —— 它让「协议实现」与「工具编排」解耦，也让并行开发与按需裁剪成为可能。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 纯 Rust 密码学引擎（不依赖 OpenSSL）：</strong> README 列出独立、常数时间（constant-time）实现的 RC4、DES、3DES、AES-128/256（<strong>CBC/CTS/GCM/CCM</strong>）、MD4、MD5、SHA-1/256/512、HMAC、PBKDF2、CMAC 与 Kerberos n-fold。⭐⭐⭐⭐⭐ <strong>「常数时间」这一条是安全实现的关键要求 —— 而它是绝大多数「重写性能更好」的同类项目不会提的。</strong> ⭐⭐⭐ <strong>⚠️ 是否经过侧信道审计，本日报无从判断。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 跨年代 AD 协议方言的运行时协商：</strong> 「Automatic runtime dialect negotiation from Windows 2000 through Windows Server 2025 (<code>LegacyWin2000</code>, <code>UniversalAuto</code>, <code>ModernHardened</code>)」。⭐⭐⭐⭐⭐ <strong>这是本仓库最被低估的一处工程难度 —— 域控端的加密与签名策略随年代变化，一个「能用」的 Kerberos 实现必须能同时面对三代方言。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 零分配 NDR 编解码 + 编译期布局校验：</strong> 「Zero-allocation NDR marshaling and <strong>compile-time layout verification</strong>」；并称 NDR PDU 打包+解包达 5,850,000 ops/sec。⭐⭐⭐⭐ <strong>「编译期布局校验」意味着二进制结构体的内存布局在编译期就被检查 —— 这把 NDR 序列化最常见的一类 bug（结构体对齐/填充错误）从运行时搬到了编译期。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 74 个 CLI 子命令的覆盖面：</strong> <code>psexec</code> / <code>wmiexec</code> / <code>smbexec</code> / <code>atexec</code>（远程执行）、<code>secretsdump</code> / <code>ntdsdump</code> / <code>dpapi</code>（凭据导出）、<code>GetNPUsers</code> / <code>GetUserSPNs</code> / <code>getTGT</code> / <code>getST</code> / <code>raiseChild</code> / <code>ticketer</code>（Kerberos 攻击与黄金/白银/钻石票据）、<code>ldapclient</code> / <code>GetADUsers</code> / <code>trueTree</code> / <code>dnstool</code> / <code>GetLAPSPassword</code>（AD 管理）、<code>ntlmrelayx</code>（中继）、<code>sniffer</code>（报文解析）、<code>rdp_check</code> / <code>mqtt_check</code> / <code>tracer</code>（审计）。⭐⭐⭐⭐ <strong>「100% 上游对齐」是一个可被逐条比对的强断言</strong> —— 任何人都可以拿上游 Impacket 的命令清单来核对。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 跨平台目标矩阵：</strong> 宿主 Linux（glibc &amp; 静态 musl）/ macOS（Apple Silicon &amp; Intel）/ Windows；目标 Linux/UNIX（Samba、FreeIPA、OpenLDAP、MIT/Heimdal KDC）与 Windows 域（Win2000 → Server 2025）。⭐⭐⭐⭐⭐ <strong>「musl 静态链接」这一项对容器化部署尤其有价值。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ CI 安全加固：</strong> 固定 action 的 immutable commit SHA、把 Semgrep 限定在源码目录、移除 Semgrep 保留 Trivy、用原生 rustup/gh 替代外部 action 依赖、修复 Trivy 的 action 解析并更新 CHANGELOG、关闭 Sonar 的 YAML sensor。⭐⭐⭐⭐⭐ <strong>这一串 commit 的价值高于其代码量。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 可运行的对比基准资产：</strong> <code>assets/comparison-demo.svg</code> 与 <code>assets/demo.svg</code>（README 内嵌）、<code>assets/logo-card.png</code>（340 KB）/<code>logo-light.png</code>/<code>logo-dark.png</code>/<code>logo.png</code>（高分辨率品牌资产，由最后一条 commit 补上）。⭐⭐⭐ <strong>四个 logo 变体 + 图表资产，说明它在做面向人的呈现而不只是能跑。</strong></p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>「协议实现库」与「CLI 工具」的严格分层</strong>：<code>crates/*</code> 是可复用的协议栈（krb5 / smb / ldap / dcerpc / msrpc / crypto / auth / sam / ntlm / mssqlclient），<code>bins/impacket-rs</code> 是 455 KB 的 CLI 编排层，<code>docs/COMMAND_REFERENCE.md</code> 是对外契约。⭐ <strong>边界外是网络与目标主机 —— 仓库不包含任何被测系统。</strong></td>
+<td>crate 划分、文件大小、目录布局为实测（118 blobs 的树清单）；<strong>各 crate 的公共 API 面（哪些是 pub）未逐行核验；「协议实现库可独立复用」是由 crate 拆分推断，未核验是否有独立发布</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>CLI 解析 → 协议客户端（按目标协议进入对应 crate）→ 认证层（NTLM / Kerberos，含票据获取与加密）→ 消息编解码（ASN.1 / NDR，编译期布局校验）→ 传输（SMB / DCERPC / LDAP）→ 结果渲染。⭐ <strong>注意这条路径上有两处「可独立成靶」的子系统：Kerberos 票据层与 NDR 编解码层。</strong></td>
+<td>主路径由 crate 划分 + README 的命令族描述拼出；<strong>「编译期布局校验」的实现方式（宏 / trait / build.rs）未核验；两处子系统的边界为推断</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>① 性能 vs 审计风险</strong> —— 自研密码学（常数时间）换来零依赖与可控性能，代价是<strong>放弃了 OpenSSL 的审计背书</strong>；<strong>② 兼容性 vs 简洁性</strong> —— 支持 Win2000→Server2025 三代方言，换来覆盖面，代价是协议代码里条件分支激增；<strong>③ 供应链安全 vs CI 便利</strong> —— 固定 SHA、移除外部 action、换原生工具，代价是 CI 更难写也更易腐坏（README 记录了 Trivy/Sonar 的实际故障并逐条修复）；<strong>④ 单二进制 vs 可裁剪</strong> —— 做成一个 CLI 而非按协议拆成多个可执行文件</td>
+<td>四项权衡均对应 README/commit 的明文（密码学清单、方言协商、CI commit 序列、<code>bins/</code> 单一入口）；<strong>① 的审计风险为推断，② 的分支复杂度未见量化，④ 的取舍理由未见文档说明</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><strong>挑一个只读、单目标、低影响的命令做对照验证</strong>：取 <code>secretsdump</code> 或 <code>ldapclient</code>，在同一台测试域控上分别用上游 Impacket v0.12.0 与 <code>impacket-rs</code> 跑，<strong>比对输出的字段级一致性与耗时</strong>；⭐ <strong>退出路径 = 卸载静态二进制（无系统改动）；</strong> ⭐ <strong>必须自带隔离测试域（它操作的是域控与票据，绝不能在生产域上试）</strong></td>
+<td>PoC 范围由 README 的命令族与基准表推导；<strong>「字段级一致性」的判定方法（如何 diff）需自行设计；README 未给出可复现的测试环境</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>最值得抄的一条是 CI 安全加固的那串 commit —— 它是一份「Actions 供应链风险」的实操清单。</strong> 具体来说：<code>pin immutable commit SHAs for actions</code>（把 action 从 tag 换成不可变 commit SHA，<strong>这是唯一能防住 action 仓库被投毒的做法</strong>）、<code>scope Semgrep to source codebase</code>（限制扫描范围而不是禁用）、<code>remove semgrep, and keep trivy</code>（做减法而不是做加法）、<code>eliminate external action dependencies with native rustup/gh</code>（能原生做的就别用 action）、<code>disable YAML sensor in Sonar</code>（对不需要的扫描关掉）。⭐⭐⭐⭐⭐ <strong>这五条合起来是一条完整的收敛路线，而不是零散的加固 —— 这正是本日报认为可以直接抄进任何仓库的 CI 模板。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第二条是「按协议分 crate」这个切分。</strong> ⭐⭐⭐⭐ <strong>它带来的不只是代码组织，而是「可独立验证」</strong> —— 每个协议 crate 有自己的 <code>*_test.rs</code>（<code>base58_test.rs</code> / <code>samr.rs</code> + <code>audit_test.rs</code> / <code>report_test.rs</code> / <code>render_test.rs</code> / <code>wizard_test.rs</code> / <code>webhook_test.rs</code>），<strong>即每个 crate 都可以被单独测量与回归，而不必拉起整个工具。</strong> ⭐⭐⭐⭐ <strong>对本日报连日记录的那些「单文件大工具」（如 11-07 的 <code>node2shell-scanner</code> 的 1,163 行 <code>scanner.py</code>、10-26 的 <code>raven</code> 的 <code>advapi32.go</code> 242 KB），这是一个值得对照的架构选择。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第三条关于「性能声明的可证伪性」。</strong> README 的基准表给了<strong>平台（Apple Silicon M-series 10-core / AMD EPYC 8-core）、对照版本（Python 3.11 + Impacket v0.12.0 vs v0.1.0-dev release build）、六项指标与具体数值</strong>。⭐⭐⭐⭐⭐ <strong>加上「release build」这个限定 —— 它明确告诉读者这是编译优化后的数字。</strong> ⭐⭐⭐⭐ <strong>这与本日报记录的 <code>satmux</code>（明写「一次性的测量，未给方差或重复次数」，被本日报标注为待核验）形成对照：同样自述性能，一个给出了构建模式与对照版本，一个没有。</strong> ⭐⭐⭐⭐ <strong>即便如此，本日报仍未复现其任何一项数字 —— 声明的可证伪性与声明的真实性是两回事。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第四条关于「把捐赠写进仓库」。</strong> <code>docs: add support and donation section with badge UI for USDT-TRC20 and BTC-BSC</code> —— ⭐⭐⭐⭐ <strong>对于一个红队工具，明确的资金来源是好事的信号（它让读者的信任决策有据可依），但它同时意味着这个项目的维护动机里包含经济因素</strong> —— ⭐⭐⭐⭐ <strong>本日报的立场是：记录它、但把它与「工程质量证据」分开评估 —— 一个收捐赠的项目不会有动力去做无收益的兼容性维护，而 Impacket 的「100% 对齐」恰恰需要长期做无聊的兼容性工作。</strong> ⭐⭐⭐⭐ <strong>这是本日一个具体的、值得记录的「结构性风险」——不是指控，而是分析。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Crates[crates/* · 按协议分 crate]
+    Smb[impacket-smb<br/>lib.rs 74 KB + server.rs 51 KB]
+    Krb[impacket-krb5<br/>pac / tgs / ccache / fast]
+    Msrpc[impacket-msrpc<br/>samr / drsr / rrp / scmr]
+    Ldap[impacket-ldap<br/>asn1 / shell / dnsp]
+    Dcerpc[impacket-dcerpc<br/>NDR 编解码]
+    Crypto[impacket-crypto<br/>自研常数时间密码学]
+    Sam[impacket-sam<br/>ESE 数据库]
+    Others[impacket-auth / ntlm / mssqlclient<br/>secretsdump / mimikatz]
+  end
+  subgraph Cli[CLI 编排层]
+    Bin[bins/impacket-rs<br/>main.rs 455 KB]
+    Docs[docs/COMMAND_REFERENCE.md<br/>74 个子命令的对外契约]
+  end
+  subgraph Target[边界外 · 目标网络与主机]
+    Ad[Windows 域控<br/>Win2000 → Server 2025]
+    Unix[Samba / FreeIPA / OpenLDAP<br/>MIT / Heimdal KDC]
+  end
+  subgraph CI[CI 供应链边界]
+    Sha[actions 固定 immutable commit SHA]
+    Trivy[Trivy 安全扫描<br/>已移除 Semgrep]
+    Native[原生 rustup / gh<br/>消除外部 action 依赖]
+    Sonar[Sonar Quality Gate<br/>YAML sensor 已关闭]
+  end
+  Bin --> Smb
+  Bin --> Krb
+  Bin --> Msrpc
+  Bin --> Ldap
+  Bin --> Dcerpc
+  Bin --> Sam
+  Bin --> Others
+  Krb --> Crypto
+  Dcerpc --> Crypto
+  Smb --> Ad
+  Ldap --> Ad
+  Msrpc --> Ad
+  Krb --> Ad
+  Krb --> Unix
+  Ldap --> Unix
+  Smb --> Unix
+  Bin -.对外契约.-> Docs
+  CI -.只作用于构建 不作用于运行时.-> Bin
+  Risk[证据边界与未核验项<br/>性能数字为作者自述 本日报未复现<br/>自研密码学未见第三方侧信道审计<br/>「74/74」只统计命令存在性<br/>双用途 · 必须在隔离域验证]
+  Crypto -.受其约束.-> Risk
+  Bin -.受其约束.-> Risk
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型（tool），且是「基础设施的重写型」而非「新功能型」。</strong> ⭐⭐⭐⭐⭐ <strong>它不创造新能力，它把一个既有的、被广泛使用的工具箱搬到另一个运行时上，并把「跨平台 + 内存安全 + 单二进制」变成可得属性。</strong> ⭐⭐⭐⭐⭐ <strong>这条路的价值取决于一件很朴素的事：Impacket 有多被需要。</strong> ⭐⭐⭐⭐⭐ <strong>答案是：它至今仍是 Windows 内网红队与运维的事实标准之一（尤其 <code>secretsdump</code> / <code>psexec</code> / <code>ntlmrelayx</code> / <code>GetUserSPNs</code> 这几个命令）—— 因此「一个能在容器里跑的、无 Python 依赖的、内存安全的 Impacket」有明确的现实需求。</strong></p>
+<p>⭐⭐⭐⭐ <strong>与同类项目的关系：</strong>
+- <strong>vs 上游 <code>fortra/impacket</code>（原 SecAdept/Impacket）：</strong> <strong>直接对位，README 的「100% 上游对齐 / 74 个 CLI 子命令」就是对上游功能清单的逐条复刻。</strong> ⭐⭐⭐⭐ <strong>这不是竞品，是替代实现</strong> —— 用户迁移时面对的是「行为是否一致」这一个问题。
+- <strong>vs <code>fortra/impacket</code> 的社区分叉（如各种打包版）：</strong> 那些只改分发形态，不改运行时；impacket-rs 换的是运行时本身。
+- <strong>vs Rust 生态里的其他 AD 工具（如 <code>rustyldap</code> 之类）：</strong> 那些通常只覆盖单一协议；impacket-rs 的目标是<strong>全套协议的完整对齐</strong>。
+- <strong>vs Python 的 <code>impacket</code> 在容器里的使用：</strong> impacket-rs 的价值在 CI/容器镜像体积、启动时间与内存占用三点上。
+- <strong>vs 本日另一建档项目 <code>c6lang/c6</code>：</strong> ⭐⭐⭐⭐⭐ <strong>两者构成一对有意思的对照 —— c6 是「给一门既有语言加扩展」，impacket-rs 是「把一整套既有工具搬到另一门语言」；而两者都面对同一类问题：既有生态的兼容性负担，且两者都选择了「用测试矩阵与 CI 把兼容性做成可回归的东西」。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 全部性能数字为作者自述，本日报未复现任何一项</strong>（未编译、未运行、未做基准）。⭐⭐⭐⭐⭐ 「5,850,000 ops/sec」「~139x faster」这类数字必须理解为<strong>声明</strong>，不是证据。<strong>且 README 未给出方差、重复次数与测试数据集 —— 这正是本日报在 11-08 记录 <code>satmux</code> 时标注为「待核验」的同类缺口。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 自研密码学的审计状态未知：</strong> 它自己实现了 DES/3DES/RC4/MD4/MD5/AES/HMAC/PBKDF2/CMAC 与 Kerberos n-fold，<strong>且宣称常数时间</strong>。⭐⭐⭐⭐ <strong>「宣称」与「经过第三方侧信道审计」之间有巨大差距 —— 而 Kerberos 票据加密正是历史上出过多次真实漏洞的区域。</strong> ⭐⭐⭐⭐ <strong>对本日报的读者（安全从业者）而言，这是使用前必须自己评估的一项，而不是可以接受的默认状态。</strong></li>
+<li><strong>⭐⭐⭐⭐ 兼容性是「宣称 100%」而非「证明 100%」：</strong> README 的 parity 徽章写「100% (74/74 tools)」，<strong>但本日报未逐条比对上游命令行为，也未发现仓库内有自动比对测试的证据。</strong> ⭐⭐⭐⭐ <strong>「74/74」统计的是命令存在性，而行为一致性是另一个更难的问题。</strong></li>
+<li><strong>⭐⭐⭐⭐ 早期项目风险：</strong> 19 commits、0 release、0 issue、subs 1、作者 followers 3、单人贡献。⭐⭐⭐⭐ <strong>而 <code>CHANGELOG.md</code> 已有 74,804 B —— 意味着它有相当长的开发史是被压缩进初始 push 的</strong>（<strong>此为基于「19 commits 但 CHANGELOG 74 KB」结构差异的推断，未核验</strong>）。</li>
+<li><strong>⭐⭐⭐⭐ 资金来源带来的维护动机风险</strong>（见上文架构启发第四条）。</li>
+<li><strong>⭐⭐⭐⭐⭐ 双用途风险：</strong> 这是一个功能完整的凭据导出与远程执行工具箱。⭐⭐⭐⭐⭐ <strong>本档案记录它是因为它是本日工程密度最高的项目之一，不是因为推荐在未审计环境下部署它</strong> —— <strong>在未确认其密码学实现可信、且未在隔离环境验证前，不应在任何真实网络上运行。</strong></li>
+<li><strong>⚠️ 证据边界：</strong> 未编译、未运行、未复现任何基准数字、未核验密码学实现的正确性、未逐条比对上游行为；commit 数为 <code>per_page=100</code> 的首页（19 条，即全部）；fork 抽样仅 5 个。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>fortra/impacket</code>（上游）：</strong> <strong>直接替代实现</strong>，非竞品。⭐⭐⭐⭐ <strong>迁移决策的核心问题是「行为是否一致」，而不是「功能是否更多」。</strong></li>
+<li><strong>vs Impacket 的各种容器打包版：</strong> 那些改分发不改运行时；impacket-rs 改运行时。</li>
+<li><strong>vs Rust 生态的单协议 AD 库：</strong> impacket-rs 追求全套对齐，广度优先。</li>
+<li><strong>vs <code>c6lang/c6</code>（本日另一建档项目）：</strong> ⭐⭐⭐⭐⭐ <strong>c6 是「扩展既有语言」，impacket-rs 是「替换既有工具的运行时」—— 两者都把「与既有生态的兼容性」当作一等工程对象（c6 用 <code>.c</code> 完全兼容 + 自举，impacket-rs 用 74 命令对齐 + 跨年代方言协商），这构成本日一条值得记录的共同模式：⭐⭐⭐⭐ 「重写/扩展类项目的真实成本不在新功能，而在把旧行为一个一个对齐。」</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，且对本日报的读者（安全工具使用者）有明确的观察价值。</strong> 建议关注：
+1. <strong>⭐⭐⭐⭐⭐ 密码学实现是否被第三方审计</strong> —— 这是它能否被信任的<strong>唯一决定性条件</strong>；
+2. <strong>⭐⭐⭐⭐⭐ 是否出现第一个真实用户的 issue</strong> —— 0 issue 意味着所有「100% 对齐」都还没有被外部挑战过；
+3. <strong>⭐⭐⭐⭐⭐ <code>releases</code> 是否出现，以及是否有语义化版本</strong> —— v0.1.0-dev 的定位意味着它自己也承认未稳；
+4. <strong>⭐⭐⭐⭐ 它的 CI 安全实践是否被其他项目采纳</strong> —— ⭐⭐⭐⭐ <strong>本日报认为这一条的可迁移价值最高</strong>：即使你不用 Rust，这五条 CI 加固规则也该抄；
+5. <strong>⭐⭐⭐⭐⭐ 是否出现「与上游行为不一致」的具体报告</strong> —— ⭐⭐⭐⭐ <strong>这是判断「100% 对齐」是工程目标还是营销话术的唯一途径。</strong></p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li><code>pushed_at</code> 节奏（快照时 2026-11-11T20:44:30Z，仓库创建后约 16 小时）；</li>
+<li>star 增速（31⭐ / 5 fork / 1 subscriber）与 subs 是否从 1 上升（<strong>subs 仍上升才说明出现「在用的人」</strong>）；</li>
+<li>releases / issues 是否出现；</li>
+<li><code>CHANGELOG.md</code> 与 <code>docs/</code> 的结构是否随功能增长继续扩展（<strong>这能反映它是在做工程还是在补文档</strong>）；</li>
+<li>是否发布 crates.io 包（<strong>若发布，说明 crate 拆分是认真的、库可独立复用</strong>）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST API 快照（2026-11-12 CST，仓库创建于 2026-11-11T04:58:36Z）| Stars: 31 | Forks: 5 | Subscribers: 1 | License: Apache-2.0 | 语言: Rust | 体积: 1,658 KB / 118 blobs | 作者 <code>nestho</code>（2020-04-18 创建，24 repos，3 followers）
+<strong>证据边界：</strong> 未编译、未运行、未复现任何基准数字、未核验密码学实现的正确性、未逐条比对上游 Impacket 行为；fork 抽样仅 5 个（间隔中位数 8,884 s），样本极小。</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

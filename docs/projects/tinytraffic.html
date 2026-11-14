@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>egoist/tinytraffic | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/egoist/tinytraffic" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="egoisttinytraffic">egoist/tinytraffic</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>自托管的隐私友好网页分析：Go + DuckDB 后端 + 嵌入二进制的 Solid/TanStack 仪表盘，零 cookie、无 IP 存储、约 1 KB 的追踪脚本</strong>，并且<strong>明确接受 Plausible 的事件格式</strong>（所以已有的 Plausible 集成可直接复用）。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>主流网页分析的困境是「要拿到有用的数据，就必须先拿到可识别的人」。</strong> Google Analytics 用 cookie 做标识符；Plausible/Matomo 之类的隐私派工具仍在做 IP 哈希与跨站追踪；Cloudflare/Umami 这类则把「自托管」当成卖点但仍要你接受它们的标识方案。</p>
+<p>⭐⭐⭐⭐⭐ <strong>tinytraffic 的选择是把自己的边界画得很硬：</strong> README 的 Privacy 一段原文是「<strong>no cookies or storage. Visitors are identified by <code>hash(daily salt, site, IP, user agent)</code>. The salt rotates at midnight in the site's timezone, and the IP is never stored.</strong>」⭐⭐⭐⭐⭐ <strong>即：它不是「不给第三方 cookie」，而是「自己也不留标识」—— 用一个每天轮换的盐做哈希，跨天不可关联，IP 本身从不落盘。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而这个选择带来一个真实的产品难题并被正面处理了：轮换的盐意味着「同一天内同一访客可识别，跨天不可识别」，这直接影响 bounce rate 与 visit duration 的计算。</strong> README 明写 salt 是「rotates at midnight in the site's timezone」—— <strong>注意是站点时区而非 UTC，这是一条把「统计口径」写进实现的决定。</strong></p>
+<p>⭐⭐⭐⭐ <strong>第二个它解决的问题是「部署形态」：</strong> 一个 binary + 一个 DuckDB 文件，无外部服务依赖，Docker 一行起，也支持 Dokploy/Traefik/Caddy/nginx 反代。</p>
+<h2 id="2026-11-12">为什么值得关注（2026-11-12）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本日最不像「农场」的一个项目，而它的作者本身就是本日最强的可信度信号：账号 <code>egoist</code> 创建于 2014-09-15，有 843 个公开仓库、13,985 followers。</strong> ⭐⭐⭐⭐⭐ <strong>对照本日报连续多日记录的观察 —— 新账号、无 followers、单 commit、md5 模板复用 —— 这是一个 12 年历史的账号在 2026-11-10 发布的新项目。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而它的 commit 历史是「工程师式的连续工作」形态，与本日的 <code>auto-twitch-drops-claim</code> 形成教科书级对照：</strong></p>
+<p><code>2026-11-11T15:56:19Z  Add AGPL-3.0 license
+2026-11-11T15:15:59Z  Add public dashboards that anyone can view without signing in
+2026-11-11T14:56:52Z  Rotate visitor salt at midnight in each site's timezone
+2026-11-11T14:33:12Z  Add ClickHouse as a storage backend (#1)
+2026-11-11T13:20:52Z  Redirect signed-out visitors to sign-in on the server
+2026-11-11T13:10:37Z  Document stop-first update order for Dokploy deployments
+2026-11-11T13:06:34Z  Document TT_TRUST_PROXY for deployments behind a reverse proxy
+...</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>这 10 条 commit 每一件都是一个具体的功能或决定，而不是「import analyze」这类无语义双词。</strong> ⭐⭐⭐⭐⭐ <strong>而且它有一个真实外部贡献的痕迹：<code>Add ClickHouse as a storage backend (#1)</code> —— 带 PR 编号 #1，即这是别人提的 PR。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而 11-11 当天它还在连续推进（<code>pushed_at</code> = 2026-11-11T21:25:06Z，距仓库创建约 36 小时），星数已从创建时的 107 涨到 179。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第三个值得记的点：它的「反代信任」设计被写成了 README 里的一整段警告，而不是一句「支持反代」。</strong> README 原文：「Behind a reverse proxy (Traefik, Caddy, nginx or Dokploy), add <code>-e TT_TRUST_PROXY=true</code> and drop <code>-p 8080:8080</code>, so the proxy is the only way in. Visitors are then located by their real IP. <strong>Without the flag, every visitor appears to come from the proxy and shows as "Unknown", and viewers of public dashboards share one rate limit.</strong>」⭐⭐⭐⭐⭐ <strong>「不开这个 flag，所有访客都显示为 Unknown，且公开仪表盘的观众共享同一个限流配额」—— 这是把「配置错误的后果」明确写出来的写法。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>真实需求驱动的自发关注，且传播路径与农场不同。</strong> 判据：
+1. <strong>⭐⭐⭐⭐⭐ 作者资历：</strong> 12 年账号、843 个公开仓库、13,985 followers。⭐⭐⭐⭐⭐ <strong>对照本日报记录的农场账号画像（<code>BankerInterface</code>、<code>Nobleglusurvive</code>、<code>SteelMillerBar</code> 等均为当天新建、0 followers、仅 1–2 个公开仓库），这是两个完全不同的分布。</strong>
+2. <strong>⭐⭐⭐⭐ commit 形态：</strong> 25 个语义明确的提交，覆盖具体功能（public dashboards / salt 轮换 / ClickHouse 后端 / 反代信任 / 文档），其中一条带外部 PR 号。⭐⭐⭐⭐ <strong>没有随机双词提交，没有 bot 提交。</strong>
+3. <strong>⭐⭐⭐⭐ 代码量与结构：</strong> 100 blobs，包含 <code>internal/ingest/bot.go</code>（bot 过滤）、<code>internal/store/events.go</code>、<code>internal/audit/</code>、<code>packages/tracker/</code>（追踪脚本）、<code>apps/dashboard/</code>（Solid + shadcn 风格组件）、<code>web/embed.go</code>（把前端嵌进 Go binary）。
+4. <strong>⭐⭐⭐ fork 分布正常。</strong> ⭐⭐⭐ <strong>⚠️ 精确的 fork 间隔中位数本窗口未单独取样（10 个 fork），仅记录量级正常。</strong>
+5. <strong>⭐⭐⭐⭐⭐ 许可选择：AGPL-3.0 —— 这是网络软件里最「认真」的许可选择之一</strong>（对比本日 <code>c6lang/c6</code> 的无 LICENSE 与 <code>auto-twitch-drops-claim</code> 的无 LICENSE）。</p>
+<p>⭐⭐⭐⭐ <strong>但必须同时给出反面：</strong> ⭐⭐⭐ <strong>subscribers 0、open issues 0、releases 0 —— 它没有任何深度关注者、没有 issue、没有版本发布。</strong> ⭐⭐⭐⭐ <strong>即：179⭐ 里几乎没有「采用了之后又回来反馈」的那部分人。</strong> ⭐⭐⭐ <strong>这是「热度 ≠ 价值」主线的另一面 —— 本日报不主张 179⭐ 说明了什么被验证过的价值，只主张它是一个由资深作者构建、结构完整、但尚无外部验证的早期项目。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 单二进制 + 嵌入前端：</strong> 「<strong>Stack</strong>: Go + DuckDB backend. The dashboard is TanStack Start (SPA mode) with Solid and shadcn-style components, <strong>embedded in the binary</strong>」。⭐⭐⭐⭐ <code>web/embed.go</code>（403 B）即嵌入点；部署物是「一个 binary、一个 DuckDB 文件」，<strong>无 Node 运行时、无数据库服务、无 CDN</strong>。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 追踪脚本 ≈1 KB gzipped，并兼容 Plausible 事件格式：</strong> 「<strong>Tracker</strong>: ~1 KB gzipped. Pageviews (including SPA navigation), outbound link clicks and custom events. <strong>Accepts Plausible's event format, so existing Plausible integrations work.</strong>」⭐⭐⭐⭐⭐ <strong>「兼容别人的事件格式」是一个极聪明的迁移策略 —— 用户不用改埋点代码，只换接收端。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 访客标识 = <code>hash(daily salt, site, IP, user agent)</code>，IP 不落盘：</strong> salt 每站点时区午夜轮换。⭐⭐⭐⭐⭐ <strong>这是一个把「隐私」从口号变成具体算法、且把算法边界（当天内可关联、跨天不可）写进 README 的实现。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 存储后端可切换（Go 内建 DuckDB + 可选 ClickHouse）：</strong> commit「Add ClickHouse as a storage backend (#1)」是带 PR 号的外部贡献。⭐⭐⭐⭐ <strong>「小规模用嵌入式、大规模用 ClickHouse」的分层存储是自托管分析工具的常见正确做法。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 公开仪表盘 + 限流模型被明确写出：</strong> 「Make a site's stats public to share its dashboard with anyone, no sign-in needed (<strong>rate limited to 300 requests a minute per IP</strong>)」，且<strong>「viewers of public dashboards share one rate limit」</strong> —— 即限流是按 IP 而非按站点，与反代场景下的访客限流是两套独立的预算，<strong>这个区别被写在了文档里。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 反代信任是显式开关且有明确后果说明：</strong> <code>TT_TRUST_PROXY=true</code> + 去掉端口映射（让代理成为唯一入口），README 同时写明<strong>不开会怎样</strong>（所有访客显示 Unknown、公开仪表盘观众共享限流）。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 引导流程细节：</strong> 「On first visit you choose a dashboard password, unless <code>TT_PASSWORD</code> set one. Then add a site and paste its snippet into the site's <code>&lt;head&gt;</code>」；且 commit「Keep setup form up after creating the password」—— <strong>修的是一个具体的首次使用摩擦点。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 语言栈细节：</strong> 「<strong>Tracker</strong>: ~1 KB gzipped」（TypeScript，<code>packages/tracker/</code>）、后端 Go、DuckDB 为 C++ 库因此需要 cgo、构建需 Go 1.26+ / Bun 1.4+ / C 编译器。</p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>单一进程</strong>：Go 进程内含 HTTP 服务 + 事件摄取 + 审计 + 指标渲染 + 嵌入的 SPA 仪表盘；外部依赖只有「一个 DuckDB 文件」（可选 ClickHouse）与「地理定位数据库」（构建期由 <code>bun install</code> 抓取）。<strong>边界之外没有任何常驻服务。</strong></td>
+<td>README 的 Stack / Quick start / Tracking 段 + 树清单（<code>internal/ingest</code>、<code>internal/store</code>、<code>internal/audit</code>、<code>packages/tracker</code>、<code>apps/dashboard</code>、<code>web/embed.go</code>）为实测；<strong>GeoIP 数据库的抓取方式仅见 README 一句，未核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>浏览器 → <code>&lt;script defer data-domain=... src=.../js/script.js&gt;</code> → 摄取端（<code>internal/ingest</code>，含 bot 过滤）→ <code>hash(daily salt, site, IP, UA)</code> → 事件存储（DuckDB / ClickHouse）→ 仪表盘查询（<code>internal/store</code> + 嵌入 SPA）。⭐ <strong>公开仪表盘的读路径与埋点写路径共用同一服务，但限流预算是分开的。</strong></td>
+<td>主路径由目录结构 + README 各段拼出；<strong><code>internal/store/events.go</code>（1,103 B）与 <code>internal/ingest/bot.go</code>（869 B）的内部实现未逐行核验</strong>；⭐ <strong>「读路径与写路径共用服务」为由文件布局推断</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>① 隐私 vs 统计精度</strong> —— 放弃跨天访客关联，换取「不存 IP」；② <strong>嵌入前端 vs 独立前端服务</strong> —— 换来零额外依赖，代价是仪表盘改动要重新编译 Go；③ <strong>DuckDB 嵌入式 vs ClickHouse 服务端</strong> —— 默认零运维，代价是单机写入上限；④ <strong>AGPL vs 更宽松许可</strong> —— 选了网络传染性最强的那个</td>
+<td>四项权衡均直接对应 README 明文（Privacy 段、Stack 段、commit「Add ClickHouse as a storage backend (#1)」、commit「Add AGPL-3.0 license」）；<strong>「单机写入上限」为基于 DuckDB 特性的推断，未做压测</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><strong>单站点 + 单容器</strong>：Docker 起一个实例、设 <code>TT_PASSWORD</code>、加一个站点、贴一段 <code>&lt;script&gt;</code>、观察 24 小时内 pageview 与访客数；⭐ <strong>退出路径 = 删掉容器与数据卷</strong>（唯一持久状态是 DuckDB 文件）；⭐ <strong>关键验收点不是「图表好看」，而是「次日 salt 轮换后，同一访客是否变为两个访客」—— 这是隐私承诺的直接检验</strong></td>
+<td>PoC 范围由 README 的 Quick start 与 Data/DuckDB 描述推导；<strong>「salt 轮换后访客被拆分」为基于 README 描述的预期，未实测</strong>；<strong>数据删除的彻底性（DuckDB 文件内的残留）未核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>最值得抄的一条：「把隐私承诺写成一条可检验的算法，而不是一句形容词」。</strong> <code>hash(daily salt, site, IP, user agent)</code> + salt 按站点时区午夜轮换 —— ⭐⭐⭐⭐⭐ <strong>这句话可以被第三方独立验证</strong>（抓一天的访客数、跨天比对、确认 IP 未落盘），而「隐私友好」这四个字不能。<strong> ⭐⭐⭐⭐⭐ </strong>这与本日报连日记录的「把边界写进输出」是同一条线索<strong> —— 11-08 记录的 <code>satmux</code> 把物理 RTT 下界写进 <code>## Limits</code>，<code>phoneuse</code> 用实测环境表标注「Tested with」，10-26 记录的 <code>brotli-checker</code> 明写「exit 0 does not establish that the running app is fixed」。</strong>它们共同指向一条原则：可被证伪的承诺才是承诺。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>第二条关于「兼容别人的事件格式」。</strong> 「Accepts Plausible's event format, so existing Plausible integrations work」—— ⭐⭐⭐⭐⭐ <strong>这是一个把迁移成本降到零的设计决策</strong>：用户不需要改一行埋点代码。⭐⭐⭐⭐ <strong>对于一个要与既有工具竞争的独立项目，</strong>「我的格式和你的兼容」比「我的格式更好」有效一个数量级** —— 因为它把用户的决策从「评估」降级为「切换」。</p>
+<p>⭐⭐⭐⭐⭐ <strong>第三条是关于「配置错误的后果」应该被文档化。</strong> README 不是写「支持反代」，而是写「<strong>不开这个 flag 会发生什么</strong>」（所有访客显示 Unknown、公开仪表盘观众共享限流）。⭐⭐⭐⭐⭐ <strong>大多数项目只写正确用法的 happy path，而错误配置的后果恰恰是运维事故的主要来源。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第四条关于「用一条 commit 记录一个决定」。</strong> 25 条 commit 覆盖 36 小时，每条对应一件具体的事（加许可、加公开仪表盘、加 salt 轮换、加 ClickHouse、改反代行为）。⭐⭐⭐⭐⭐ <strong>这种提交粒度使得「这个项目的历史就是它的设计决策日志」</strong> —— 对比本日报记录的 <code>impacket-rs</code> 的 <code>ci(security): pin immutable commit SHAs for actions</code> 一类同样有信息量的条目。⭐⭐⭐⭐ <strong>而这与本日报记录的 <code>raven</code> 用 <code>DECISIONS.md</code>（11-07 的 <code>hermes-voice</code>）是同一条思路：把「为什么这么选」留下。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Browser[浏览器]
+    Page[站点页面<br/>head 标签插入 script defer]
+  end
+  subgraph Single[单一 Go 进程 · 无外部常驻服务]
+    Tracker[packages/tracker<br/>约 1 KB gzip 脚本<br/>含 SPA 导航与自定义事件]
+    Ingest[internal/ingest<br/>事件摄取 + bot 过滤]
+    Hash[访客标识<br/>hash(daily salt, site, IP, UA)]
+    Salt[盐轮换<br/>按站点时区午夜<br/>跨天不可关联]
+    Store[internal/store<br/>DuckDB 嵌入式<br/>可选 ClickHouse 服务端]
+    Audit[internal/audit<br/>审计与指标]
+    Dash[嵌入 SPA 仪表盘<br/>TanStack Start + Solid]
+    Embed[web/embed.go<br/>前端打进二进制]
+    Public[公开仪表盘<br/>每 IP 300 req/min<br/>观众共享同一限流预算]
+    Proxy[TT_TRUST_PROXY=true<br/>反代信任开关]
+  end
+  subgraph Outside[边界外]
+    Geo[地理定位数据库<br/>构建期由 bun install 抓取]
+  end
+  Page --> Tracker --> Ingest --> Hash --> Store
+  Salt --> Hash
+  Store --> Audit --> Dash
+  Embed --> Dash
+  Dash --> Public
+  Proxy -.决定 IP 解析方式.-> Ingest
+  Tracker -.格式兼容 Plausible 事件格式.-> Plausible[Plausible 既有集成<br/>无需改动埋点代码]
+  Geo -.仅地理维度用.-> Audit
+  Lim[未核验与边界<br/>「不存 IP」未在容器内实测<br/>DuckDB 文件内残留未核验<br/>单机写入上限为推断 未压测<br/>配置错误后果已文档化 访客显示 Unknown]
+  Hash -.受其约束.-> Lim
+  Store -.受其约束.-> Lim
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>生产可用候选（production-ready candidate），但必须附三个限定条件。</strong> ⭐⭐⭐⭐⭐ <strong>理由</strong>：它有完整的可运行产品形态（单 binary + 单文件存储 + 嵌入仪表盘 + Docker 一行起）、有真实外部 PR、有清晰的隐私语义、有具体的错误配置说明、有活跃的提交节奏。</p>
+<p>⭐⭐⭐⭐⭐ <strong>三个限定条件必须一起写：</strong>
+1. <strong>⭐⭐⭐⭐ 无版本发布（releases 0）、无 issue、subs 0</strong> —— <strong>即没有任何外部使用者的反馈闭环</strong>。「生产可用候选」是<strong>基于代码与文档质量的判断，不是基于使用证据的判断。</strong>
+2. <strong>⭐⭐⭐⭐ 项目仅约 36 小时大（快照时）</strong>，README 自己也标了 <code>v0.1.0-dev</code> 之外的状态吗？—— <strong>⚠️ 更正：本仓库 README 未标注版本状态，<code>releases</code> 为 0 个。</strong>
+3. <strong>⭐⭐⭐⭐ AGPL-3.0 的传染性</strong> —— 若要嵌入进闭源商业产品，需要先走法律评估；<strong>对纯自托管使用场景则无影响。</strong></p>
+<p>⭐⭐⭐⭐ <strong>与同类项目的关系：</strong>
+- <strong>vs Plausible（官方自托管版）：</strong> <strong>协议兼容而非产品对等</strong> —— tinytraffic 接受 Plausible 事件格式（迁移成本低），但<strong>不提供 Plausible 的完整功能面</strong>（无 A/B 测试、无 dashboard 分享链接、无数仓级扩展）。⭐⭐⭐⭐ <strong>而它的差异化是「连 IP 都不存」+ 单二进制。</strong>
+- <strong>vs Umami / Counter / GoAccess 等自托管分析：</strong> 都是同类；tinytraffic 的差异是<strong>零 cookie + 跨天不可关联 + 单文件 + DuckDB 嵌入式</strong>，而 Umami 走 Postgres、GoAccess 走日志文件解析。
+- <strong>vs Matomo：</strong> Matomo 功能更全但重得多；tinytraffic 是「一个人用的最小实现」。
+- <strong>vs Cloudflare Web Analytics：</strong> 那个是托管的免费服务、无自托管；tinytraffic 是完全自托管。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐ 隐私承诺的验证缺口：</strong> 「IP 从不存储」与「salt 按站点时区午夜轮换」都是 <strong>README 陈述</strong>。⭐⭐⭐⭐ <strong>本日报未部署、未抓包、未检查 DuckDB 文件内容，也未验证跨天访客拆分是否真的发生。</strong> <strong>一个声称不做标识的隐私工具，其隐私承诺必须由第三方审计而非作者自述确认。</strong></li>
+<li><strong>⭐⭐⭐⭐ 单作者单仓库（contributors 1 人 = egoist）：</strong> 843 个仓库的作者做一件新事，<strong>深度贡献的门槛全在一个人身上</strong>。</li>
+<li><strong>⭐⭐⭐⭐ 无 release、无 issue：</strong> 没有版本化发布节奏，<strong>下游无法锁定版本</strong>（Docker 镜像用的是 <code>:main</code> 标签 —— README 的 Quick start 写 <code>ghcr.io/egoist/tinytraffic:main</code>）。</li>
+<li><strong>⭐⭐⭐⭐ 构建链较重：</strong> 需要 Go 1.26+ <strong>且</strong> Bun 1.4+ <strong>且</strong> C 编译器（cgo），<strong>且</strong>构建时会抓取 GeoIP 数据库 —— <strong>对「一个二进制」的承诺来说，源码构建路径并不轻。</strong></li>
+<li><strong>⭐⭐⭐ DuckDB 的并发写入上限未知：</strong> 单文件嵌入式数据库在高频写入下的表现<strong>本日报未压测</strong>。</li>
+<li><strong>⭐⭐⭐ ClickHouse 后端刚由外部 PR 加入（#1），未经充分验证。</strong></li>
+<li><strong>⭐⭐⭐ subs 0 / oi 0：</strong> 179⭐ 无深度关注者 —— <strong>热度与采用之间存在明显缺口。</strong></li>
+<li><strong>⚠️ 证据边界：</strong> 未部署、未运行、未压测、未验证隐私承诺；star 数为快照绝对值，<strong>单日 star 增量未做统计</strong>（需分页遍历 stargazer 列表）；fork 间隔中位数未单独取样。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Plausible：</strong> <strong>事件格式兼容关系</strong>（这是本项目最值得注意的竞合方式）；tinytraffic 是「更小、更私密、更自托管」的替代，不是功能替代。</li>
+<li><strong>vs Umami：</strong> 同为自托管分析，Umami 是 Postgres + React 全栈方案（更重、功能更多），tinytraffic 是 Go + DuckDB + 嵌入 SPA（更轻、部署更简单）。⭐⭐⭐⭐ <strong>两者最本质的差别在隐私模型：Umami 默认做 IP 哈希（salt 可配，但存在），tinytraffic 明写不存 IP。</strong></li>
+<li><strong>vs GoAccess：</strong> GoAccess 是<strong>日志文件</strong>分析器（读 nginx/caddy 日志），tinytraffic 是<strong>主动埋点</strong>分析器。⭐⭐⭐⭐ <strong>两者可互补：不想埋点就用 GoAccess。</strong></li>
+<li><strong>vs Fathom / Simple Analytics（托管）：</strong> 它们用「不 cookie、不存 PII」做差异化，tinytraffic 的差异是<strong>你可以自己托管它</strong>。</li>
+<li><strong>vs <code>c6lang/c6</code>（本日另一建档项目）：</strong> ⭐⭐⭐⭐ <strong>两者恰好构成一组关于「许可证与成熟度」的对照</strong> —— c6（37⭐，761 blobs，无 LICENSE）与 tinytraffic（179⭐，100 blobs，AGPL-3.0，外部 PR）。⭐⭐⭐⭐ <strong>两者的星数差 5 倍、体量差 7 倍，而更小的那一个的许可与外部参与状况明显更健康。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，且建议在小规模自托管场景做一次真实验证。</strong> 具体建议：
+1. <strong>⭐⭐⭐⭐⭐ 独立验证它的隐私承诺</strong>（抓 48 小时的访客数据、确认 IP 未落盘、确认跨天访客被拆分）—— <strong>这是本档案认为唯一值得投入的验证动作</strong>；
+2. <strong>⭐⭐⭐⭐ 观察 releases 是否开始出现</strong> —— <code>:main</code> 标签对生产使用是硬伤，<strong>发布节奏是它从「候选」变成「可用」的分界线</strong>；
+3. <strong>⭐⭐⭐⭐ 观察 issue 出现后的响应速度</strong> —— 对一个单人项目，这比 star 数更能说明它值不值得依赖；
+4. <strong>⭐⭐⭐⭐ 关注 ClickHouse 后端的成熟度</strong>（#1 是外部 PR）；
+5. <strong>⭐⭐⭐⭐⭐ 把它的两个设计当作可迁移范式</strong>：<strong>「把隐私承诺写成可检验的算法」与「兼容竞品的事件格式以降低迁移成本」</strong> —— 这两条与语言无关，任何团队都能用。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li><code>pushed_at</code> 节奏（快照时 2026-11-11T21:25:06Z）；</li>
+<li>star 增速（107 → 179 在约 36 小时内）与 subs 何时从 0 变为非 0（<strong>subs 是「从看热闹到在用」的转换指标</strong>）；</li>
+<li>releases 是否出现、是否改用语义化版本标签；</li>
+<li>是否出现第一个非作者的 issue；</li>
+<li>GeoIP 数据库的获取方式与许可（<strong>README 未说明其来源与许可 —— 这是一个待核验的合规点</strong>）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST API 快照（2026-11-12 CST，仓库创建于 2026-11-10T09:39:00Z）| Stars: 179 | Forks: 10 | Subscribers: 0 | License: AGPL-3.0 | 语言: TypeScript | 体积: 482 KB / 100 blobs | 作者 <code>egoist</code>（2014-09-15 创建，843 repos，13,985 followers）
+<strong>证据边界：</strong> 未部署、未运行、未压测、未验证隐私承诺；star 增量为两次快照之间的差值推算，<strong>单日 star 增量未做统计</strong>。</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

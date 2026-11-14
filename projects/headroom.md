@@ -11,6 +11,8 @@ score: 94
 tags: ["token-optimization", "context-compression", "mcp", "agent-infrastructure", "context-engineering", "cross-agent-memory"]
 url: "https://github.com/chopratejas/headroom"
 last_seen_date: "2026-06-22"
+---
+
 ## 2026-06-22 更新
 
 stars 从 38K 继续飙升到 44K（日增 2,617）。新增关键特性：

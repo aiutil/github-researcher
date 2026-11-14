@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>songjianyang/xss-audit | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/songjianyang/xss-audit" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="songjianyangxss-audit">songjianyang/xss-audit</h1>
+<h2 id="_1">一句话定位</h2>
+<p>一份 26 KB 的<strong>静态 XSS 审计规程</strong>（agent skill）——14 层检查覆盖 React/TypeScript/JavaScript 项目，<strong>输出报告而不是修改代码</strong>；<strong>它的产物是文字，而它的质量控制方式恰好是它自己文档结构的一部分</strong>。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>前端 XSS 审计的真实难点不是「搜不搜得到 <code>innerHTML</code>」，而是三件事：</p>
+<ol>
+<li><strong>覆盖率不可证</strong>——静态清单无法保证覆盖所有 XSS 变体（新浏览器 API、框架抽象、动态代码路径、构建期变换）</li>
+<li><strong>假阳性与假阴性无法区分</strong>——「搜到了」不等于「有漏洞」，而「没搜到」不等于「没漏洞」</li>
+<li><strong>审计边界不可见</strong>——读了哪些文件、跳过了什么、为什么跳过，读者通常看不到</li>
+</ol>
+<p>xss-audit 针对这三件事各给了一个机制：<strong>Reality check 段落声明清单本身的局限</strong>、<strong>14 层 sink 分类 + 数据流追踪要求</strong>、<strong>报告里的排除项与未读文件账本 + 单列的人工复核区</strong>。</p>
+<h2 id="2026-10-25">为什么值得关注（2026-10-25）</h2>
+<p><strong>因为它是本日唯一一个「产物是文字」的热门项目，而它的 fork 比例（25.8%）是本批最高的——这个数字恰好暴露了本日报连续五日观察到的分界线的一个新维度。</strong></p>
+<p><strong>⭐ 先看它的物理形态，它小得出奇：</strong> 仓库仅 <strong>15 KB</strong>、<strong>仅 1 个 commit</strong>、contributors API 返回 <strong>1 人</strong>、无 release、topics 为空数组。四个文件：<code>SKILL.md</code>（26,430 字节）+ <code>README.md</code>（5,894 字节）+ <code>SECURITY.md</code>（1,176 字节）+ <code>examples/sample-report.md</code>（3,454 字节）。<strong>仓库里没有一个可执行文件。</strong></p>
+<p><strong>⭐ 而它的 14 层检查覆盖的是真实的 sink 分类，不是简化清单：</strong></p>
+<ol>
+<li><strong>DOM / HTML 注入</strong>：<code>innerHTML</code>、<code>outerHTML</code>、<code>insertAdjacentHTML</code>、<code>document.write</code>、<code>DOMParser</code>、<code>setHTMLUnsafe</code>、<code>ShadowRoot.innerHTML</code>、<code>attachShadow</code>、React <code>dangerouslySetInnerHTML</code></li>
+<li><strong>属性与事件处理器</strong>：动态 <code>on*</code>、<code>href</code>/<code>src</code>/<code>srcdoc</code>/<code>action</code>/<code>formaction</code>/<code>style</code>、转发攻击者可控值的 JSX props</li>
+<li><strong>URL 与导航</strong>：<code>window.open</code>、<code>location</code>、路由导航、协议白名单、<strong>hostname 与 substring 校验错误</strong>、解析器归一化、History API state</li>
+<li><strong>配置与 JSON-in-script</strong>：SSR bootstrap data、hydration state、JSON-LD、富文本配置、<strong><code>&lt;/script&gt;</code> breakout</strong></li>
+<li><strong>Props 展开与 gadget 组件</strong>：不可信 props 转发给 anchor / iframe / URL 处理组件</li>
+<li><strong>不受信来源与消息传递</strong>：URL data、API 响应、cookies、storage、IndexedDB、referrer、<code>postMessage</code>、<code>BroadcastChannel</code>、<code>MessageChannel</code>，<strong>含 origin、source、schema、target-origin 检查</strong></li>
+<li><strong>原型污染链</strong>：不安全的 merge / setter / 赋值路径影响安全敏感的 XSS gadget</li>
+<li><strong>JS 执行</strong>：<code>eval</code>、<code>new Function</code>、字符串 <code>setTimeout</code>、动态创建脚本、Blob/ObjectURL 执行、worker 脚本导入</li>
+<li><strong>CSS 与样式注入</strong>：<code>cssText</code>、<code>setProperty</code>、<code>insertRule</code>、CSS-in-JS 插值、外部 CSS URL</li>
+<li><strong>SVG / MathML / XML</strong>：命名空间感知的元素创建、<code>xlink:href</code>、动画事件、<code>foreignObject</code>、<code>annotation-xml</code>、命名空间混淆</li>
+<li><strong>Markdown / sanitizer / mXSS</strong>：渲染器、DOMPurify、sanitize-html、已解析版本、生效配置、<strong>双重解析</strong>、消毒后变换、<strong>输出上下文不匹配</strong></li>
+<li><strong>框架渲染与信任钩子</strong>：Vue <code>v-html</code>、Angular 信任绕过、Svelte <code>{@html}</code>、Lit <code>unsafeHTML</code>、绕过框架保护的直接 DOM 写</li>
+<li><strong>Trusted Types 与 CSP</strong>：强制、违规、策略配置、防御纵深缺口，<strong>且明确不把浏览器防御当作安全证明</strong></li>
+<li><strong>框架绑定与模板注入</strong>：KnockoutJS、WinJS、Alpine.js、AngularJS、Vue、Angular、Ember、Handlebars 中攻击者可控属性或模板源在消毒后仍存活的路径</li>
+</ol>
+<p><strong>⭐⭐ 而它最有价值的三处，全部关于「边界」：</strong></p>
+<p><strong>① 开篇就是一段自我限制：</strong></p>
+<blockquote>
+<p><strong>Reality check</strong>: No static checklist can guarantee complete coverage against all XSS variants (new browser APIs, framework abstractions, dynamic code paths, build-time transforms). This playbook improves coverage by enumerating <strong>known sinks, sources, and execution contexts</strong>, and by requiring <strong>data-flow + sanitization verification</strong> for every suspicious match. Combine static review with dynamic testing and defense-in-depth (CSP + Trusted Types); <strong>none of these measures guarantees complete protection on its own.</strong></p>
+</blockquote>
+<p><strong>② 它的执行规则把失效模式显式列为「必须避免的错误」：</strong></p>
+<blockquote>
+<ol>
+<li><strong>DO NOT SKIP ANY SEARCH CATEGORY</strong> - Execute EVERY search pattern listed below within the defined audit scope</li>
+<li><strong>READ EVERY RELEVANT MATCHING FILE</strong> - Do not assume a file is safe based on filename alone. <strong>Define the audit scope and exclusions (dependencies, generated/minified code, binaries) before auditing, and record exclusions and unread files in the report</strong></li>
+<li><strong>TRACE DATA FLOW FOR EACH SUSPICIOUS MATCH</strong> - Find where the data comes from and where it goes</li>
+<li><strong>CHECK FOR SANITIZATION</strong> - If you see a sink … you MUST verify if the input is validated/sanitized for the <strong><em>correct context</em></strong> (HTML/attribute/URL/JS/CSS)</li>
+</ol>
+</blockquote>
+<p><strong>⭐ 规则 2 的后半句尤其值得注意：「把排除项与未读文件记进报告」——它要求的是一份「我检查了哪里、没检查哪里」的账本，而不是一份「我找到了多少问题」的清单。</strong></p>
+<p><strong>③ 它点名了一个非常具体的 URL 校验陷阱：</strong></p>
+<blockquote>
+<p><strong>Hostname-only URL validation</strong> - <code>new URL('javascript://trusted.com/%0aalert(1)').hostname</code> is <code>trusted.com</code>; when the URL reaches a navigation sink, <strong>protocol validation is also required</strong></p>
+</blockquote>
+<p><strong>这正是「只校验 hostname 就算安全」这个常见误解的反例</strong>，而它把反例直接写进了执行规则，而不是放在脚注。</p>
+<p><strong>⭐⭐⭐ 而整份文档最值得抄的一处，在 <code>examples/sample-report.md</code> 的第一行：</strong></p>
+<blockquote>
+<p><strong>Fictional example:</strong> This report demonstrates formatting and classification only. <strong>It is not the result of a real audit, and no reproduction steps were executed.</strong></p>
+</blockquote>
+<p><strong>在一个「输出格式即卖点」的文档类项目里，唯一的示例被明确标注为虚构且未经执行——这直接对冲了这类项目最常见的失真方式：把示例当战绩。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度来自作者的资历背书 + fork 成本极低这两件事的叠加。</strong></p>
+<p>作者自述：「Over the course of one year, I used it in my day-to-day audit workflow and refined it continuously based on what worked and what missed. That workflow helped me identify dozens of XSS vulnerabilities that were awarded bounties.」并列出 MSRC 安全研究排行榜 2025 Q3 #4、Q4 #7、2026 Q1 #6、Q2 #10 四个季度的连续 Top 10，附 leaderboard 与 X 主页链接（<code>x.com/SecBoxer</code>）。</p>
+<p><strong>⚠️ 本日报未独立核验该榜单</strong>（MSRC leaderboard 是外部页面，且榜单内容会随时间变化）。</p>
+<p><strong>⭐ 推断（不构成事实）：25.8% 的 fork 比例对应的是「fork 去改写 14 层清单以适配自己的框架、语言或审计口径」——</strong> 这是这类「知识资产」项目的典型 fork 动机。<strong>它与需要重新实现代码的项目完全不是一回事</strong>：改一段 26 KB 的 Markdown 几乎零成本，而 fork 一个 17.9 MB 的兼容层要接手整套实现。<strong>这是本日报连续五日观察到的「可改造型 vs 不可改造型」分界线的一个推进版本——分的不再是「是否邀请你改造」，而是「改造的单位成本」。</strong></p>
+<p><strong>⭐ 作者身份佐证（推断）</strong>：作者账号 <code>songjianyang</code> 创建于 2015-05-27，仅 5 个公开仓库、35 followers，其中 <code>CVE-2026-47644</code>（2⭐，2026-10-15 创建）、<code>CVE-2021-26882</code>、<code>HEVD_EXPLOIT</code> <strong>均为漏洞研究类</strong>——<strong>说明他是安全研究员而非产品作者</strong>。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐ 14 层覆盖的是真实 sink 分类</strong>——含 mXSS、SVG/MathML 命名空间混淆、JSON-in-script 的 <code>&lt;/script&gt;</code> 逃逸、原型污染链、CSS-in-JS 插值、框架信任钩子、模板注入，<strong>不是「搜索 innerHTML」的简化清单</strong>。</li>
+<li><strong>⭐⭐ 开篇的 Reality check 把清单本身的局限说在前面</strong>（「none of these measures guarantees complete protection on its own」）。</li>
+<li><strong>⭐⭐ 执行规则把失效模式显式化</strong>：不得跳过任何搜索类别、不得因文件名判断安全、必须逐个追数据流、必须按<strong>正确上下文</strong>（HTML/attribute/URL/JS/CSS）检查消毒。</li>
+<li><strong>⭐⭐⭐ 点名了具体的 URL 校验反例</strong>：<code>new URL('javascript://trusted.com/%0aalert(1)').hostname</code> 是 <code>trusted.com</code>——<strong>只校验 hostname 是不够的</strong>。</li>
+<li><strong>⭐⭐⭐ 要求把「排除项与未读文件」记进报告</strong>，并单列 manual-review 区——<strong>一份「我检查了哪里、没检查哪里」的账本</strong>。</li>
+<li><strong>⭐⭐⭐ 示例报告第一行就写「Fictional example… no reproduction steps were executed」</strong>——<strong>在一个「输出格式即卖点」的品类里，唯一示例被明确标注为虚构且未经执行</strong>。</li>
+<li><strong>⭐ 报告格式把「未确认」独立成节</strong>：每条 finding 要求记录 file:line、影响、source/sink/data flow/缺失的校验或消毒、漏洞代码与具体修复建议、<strong>confidence 与 verification status</strong>、以及 <strong>reproduction notes that clearly distinguish theoretical steps from steps actually executed</strong>；报告含「<strong>a separate manual-review section for incomplete or unconfirmed data flows</strong>」与「<strong>a per-layer search summary that distinguishes pattern matches from confirmed vulnerabilities</strong>」。</li>
+<li><strong>⭐ <code>SECURITY.md</code> 把工具的输出流向也管起来</strong>：「This repository contains an audit playbook and documentation rather than a runtime application」，并写明「<strong>Vulnerabilities discovered in another project by using this skill should be reported to that project's maintainers through its own security process, not to this repository.</strong>」——<strong>本批唯一把「工具的输出会流向哪里」写进安全策略的项目</strong>。</li>
+<li><strong>⭐ README 的 Limitations 段主动列出两类风险</strong>：静态分析的假阳假阴（「Review exclusions and verify findings before relying on them. <strong>No coverage is guaranteed.</strong>」）与<strong>生成报告可能含敏感路径、源码、内部域名或凭据，分发前须复核与脱敏</strong>。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>严格地说它<strong>没有运行时</strong>——它是一份被 agent 加载的规程（SKILL.md）+ 两份说明文档（README.md、SECURITY.md）+ 一份格式示例（examples/sample-report.md）。<strong>边界划在「规程」与「执行」之间</strong>：规程定义要搜什么、怎么判、报告写什么；执行由承载它的 agent 完成，<strong>本仓库不提供任何执行、验证或修复代码</strong>。第二层边界是<strong>输出流向</strong>：审计在别的项目里发现的漏洞应报给那个项目，而不是这个仓库</td>
+<td>仓库树（<code>git/trees/HEAD?recursive=1</code> 仅 7 个条目）、<code>SKILL.md</code> 的 frontmatter 与 CRITICAL EXECUTION RULES、<code>SECURITY.md</code> 的 Scope of Security Reports 节；<strong>「agent 如何加载这份 skill」的安装方式 README 只给了「复制到 skills 目录」一句，未给具体适配说明</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 agent 中触发（<code>/xss-audit</code> 或 <code>/xss-audit src/</code>，或该 agent 的 <code>$</code> 语法）→ <strong>agent 先定义审计范围与排除项</strong>（依赖、生成/压缩代码、二进制）→ <strong>逐层执行 14 层的每个搜索模式，一个都不能跳过</strong> → <strong>读每一个相关匹配文件，不因文件名判断安全</strong> → 对每个可疑匹配<strong>追数据流</strong>并<strong>按正确上下文检查消毒</strong> → <strong>把排除项与未读文件记进报告</strong> → 输出 <code>xss-audit-report.md</code>（<strong>若已存在则加时间戳后缀</strong>）→ 报告按严重度分层 + 单列人工复核区 + 逐层搜索摘要</td>
+<td><code>SKILL.md</code> 的 CRITICAL EXECUTION RULES 与 14 层小节、README 的 Usage 与 Output 节；<strong>⚠️ 规则 6 明确「OUTPUT TO FILE ONLY」，因此它不产生交互式输出</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>静态清单 vs 动态验证</strong>（选静态，<strong>并在文档里明写静态的局限</strong>，代价是无法覆盖运行时行为）· <strong>模板化规程 vs 自由推理</strong>（选前者，代价是可能诱导 agent 机械执行而不做判断——<strong>它用规则 3「TRACE DATA FLOW」和规则 4「按正确上下文检查」来对冲</strong>）· <strong>输出报告 vs 修改代码</strong>（选前者，<strong>「WITHOUT modifying code」</strong>，代价是不解决只定位）· <strong>完整覆盖声明 vs 诚实边界声明</strong>（选后者，README 首句即「<strong>A search match is not a confirmed vulnerability.</strong>」）· <strong>⭐ 虚构示例 vs 真实示例</strong>（<strong>选虚构并自我否定</strong>，代价是读者无法看到真实产出——<strong>换来的是「示例即战绩」的失真被直接对冲</strong>）· <strong>⭐ 报告含敏感信息的风险 vs 不生成报告</strong>（选生成，但 README 明确警告分发前须脱敏）· <strong>14 层固定 vs 可扩展</strong>（固定，<strong>但它自己也承认「新浏览器 API」会让清单过时</strong>）</td>
+<td><code>SKILL.md</code> 的 Reality check 与 CRITICAL EXECUTION RULES、README 的 Output 与 Limitations 节、<code>SECURITY.md</code>；<strong>未明示：作者如何维护这份清单、是否有版本化机制、是否计划支持更多框架</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. 把 <code>SKILL.md</code> 复制到 agent 的 skills 目录 → 2. <strong>⭐ 准备一个你有权审计的测试项目</strong>（README 明确要求「Use this project only on code and systems that you own or have permission to assess」）→ 3. 对一个<strong>故意含 XSS 的小样例</strong>跑 <code>/xss-audit</code> → 4. <strong>⭐ 检查报告的 Exclusion/Unread Files 段是否真的列出了排除项与未读文件</strong>（<strong>这一步验证的是规则 2 的后半句是否被执行，而不只是「报告模板里有没有这个字段」</strong>）→ 5. <strong>⭐ 检查它是否区分了 pattern match 与 confirmed vulnerability</strong>（对照逐层搜索摘要与 finding 列表）→ 6. <strong>⭐ 检查 manual-review 区是否真的收录了「数据流不完整」的条目</strong> → 7. <strong>故意造一个只校验 hostname 的 URL 注入（如 <code>javascript://trusted.com/%0aalert(1)</code>），看它是否按规则要求指出需要 protocol validation</strong> → 8. <strong>⭐ 造一个「文件名看起来像生成的」文件（如 <code>vendor.bundle.js</code>），确认它没有被静默跳过</strong> → 9. <strong>确认它没有修改任何代码</strong>（规则要求 <code>WITHOUT modifying code</code>）→ 10. <strong>⭐ 检查报告中是否出现你的真实路径、源码或内部域名，并据此决定是否脱敏后再分享</strong></td>
+<td><strong>第 4 步与第 5 步是唯二能证伪其核心主张的步骤</strong>（区分「模式匹配」与「确认漏洞」，以及「检查了哪里」与「没检查哪里」）· <strong>第 7 步验证它点名的那条具体陷阱是否真的被执行</strong> · <strong>第 10 步是它自己提出的风险，本 PoC 必须覆盖</strong> · 本 PoC <strong>不覆盖</strong>动态测试、渗透验证与任何真实漏洞的复现确认</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>这份规程最值得迁移的不是那 14 层，而是它对「清单类知识资产」的三处理方式。</strong></p>
+<p><strong>⭐ 第一，把清单的局限写在第一段而不是最后。</strong> 大多数清单类工具的 README 结构是「功能 → 用法 → 局限性」，局限性在最末尾，而读者往往只看前两段。<strong>它把 Reality check 放在 <code>SKILL.md</code> 的开头，让 agent 在生成任何结论之前就读到「没有哪种静态清单能保证完整覆盖」。</strong></p>
+<p><strong>⭐ 第二，把「失效模式」写成规则而不是愿望。</strong> 「要仔细审查」不是规则，「DO NOT SKIP ANY SEARCH CATEGORY - Execute EVERY search pattern listed below」才是规则。<strong>「Do not assume a file is safe based on filename alone」同理——它把一个常见的自动化捷径显式禁掉了。</strong></p>
+<p><strong>⭐ 第三，把「我查了什么」和「我发现了什么」分开记录。</strong> 排除项与未读文件进报告、单列 manual-review 区、逐层搜索摘要区分 pattern match 与 confirmed vulnerability——<strong>这三条加起来，让一份审计报告的「分母」变得可见。</strong> 这与本日报 10-24 记录的 HackiOS <code>docs/checks.md</code>（「<strong>missing information reads as a missing problem</strong>」「A denominator lies as quietly as a summand」）是同一条原则的两种表达：<strong>分母必须自己说出来，否则它会被默认成「全部」。</strong></p>
+<p><strong>⭐⭐ 而关于 fork 比例，它提供了本日最实用的一条读法。</strong> 25.8% 的 fork 比例常常被读作「这个项目很受欢迎」，但对这一批项目，它更可能说明的是：<strong>fork 的单位成本很低</strong>。<strong>改一段 26 KB 的 Markdown 是十分钟的事；给一个 653 个 commit 的兼容层加一个新 API 是几周的事。</strong> 因此在评估「这个项目有多少人在真的改造」时，<strong>fork/star 应当先按「改造单位成本」分层，再在同一层内比较。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[有权审计该代码的用户] --> Skill[SKILL.md 规程<br/>14 层检查 + CRITICAL RULES]
+  Skill --> Scope[第一步 定义范围与排除项<br/>依赖 / 生成代码 / 二进制<br/>排除项与未读文件必须记录]
+  Scope --> Layers[逐层执行 14 个搜索类别<br/>DO NOT SKIP ANY SEARCH CATEGORY]
+  Layers --> Read[读每一个相关匹配文件<br/>不因文件名判断安全]
+  Read --> Flow[对每个可疑匹配<br/>TRACE DATA FLOW<br/>按正确上下文检查消毒<br/>HTML / attribute / URL / JS / CSS]
+  Flow --> Sink[Sink 分类<br/>DOM / 属性 / URL / JSON-in-script<br/>props / 消息 / 原型污染 / JS / CSS<br/>SVG-MathML / mXSS / 框架信任钩子 / CSP / 模板注入]
+  Flow --> Report[报告 xss-audit-report.md<br/>已存在则加时间戳后缀]
+  Report --> Confirmed[已确认漏洞<br/>file:line / 影响 / source+sink<br/>data flow / 缺失消毒 / 修复建议<br/>confidence + verification status]
+  Report --> Manual[人工复核区<br/>数据流不完整或未确认的条目]
+  Report --> PerLayer[逐层搜索摘要<br/>区分 pattern match 与 confirmed vulnerability]
+  Report --> Account[审计范围与未读文件账本<br/>分母自己说出来]
+  Findings[在别的项目中发现的漏洞] --> Other[报给那个项目自己的安全流程<br/>SECURITY.md 明文规定]
+  Findings -.不报.-> Skill
+  Sensitive[报告可能含真实路径 / 源码<br/>内部域名 / 凭据] --> Share[分享前复核与脱敏<br/>README Limitations 明写]
+  Report --> Sensitive
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>「审计规程」品类的一个样本，而不是「安全工具」。</strong> 它的交付物是文字，执行由 agent 完成，验证由人完成——<strong>因此它的正确使用方式是「拿它当一份检查清单的起点」，不是「拿它当一个能给出结论的扫描器」。</strong></p>
+<p><strong>⭐ 而它在本批的真正稀缺之处不是「14 层」这个数字，而是三件别的项目没做的事：</strong></p>
+<ol>
+<li><strong>把「搜到」与「确认有漏洞」分开记录</strong>（per-layer 摘要 + manual-review 区）</li>
+<li><strong>把「我查了哪里」写进报告</strong>（排除项与未读文件）</li>
+<li><strong>把唯一的示例标注为虚构</strong>（在一个「示例即战绩」的品类里）</li>
+</ol>
+<p><strong>⭐ 定位上最值得记的一点：它的作者身份（安全研究员）比它的 star 数更能说明它的定位。</strong> 5 个仓库里有 3 个是 CVE 与利用研究——<strong>他不是在卖工具，他是在把自己一年的工作流程公开出来</strong>。<strong>而「把工作流程公开」的产物其价值不取决于有多少人 star，取决于有多少人照着改了。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️ <code>subs 0</code> + 1 个 commit + 15 KB + contributors API 返回 1 人 = 一份被当作 skill 分发的静态文档，尚无社区共建。</strong></li>
+<li><strong>⚠️ 它声称的漏洞发现数与 MSRC 排行榜排名本日报无法核验</strong>（附了 leaderboard 与 X 主页链接，但排行榜是外部页面）。</li>
+<li><strong>⚠️ 静态分析必然有假阳与假阴</strong>——README 自己写了（「Static analysis can produce false positives and false negatives, especially for dynamic runtime behavior, build-time transforms, excluded code, and framework-specific execution timing. Review exclusions and verify findings before relying on them. <strong>No coverage is guaranteed.</strong>」）。<strong>这意味着它给出的 finding 必须由人复核才能当作结论。</strong></li>
+<li><strong>⚠️ 报告可能包含敏感信息</strong>——README 自己警告：「Generated reports may contain sensitive paths, source code, internal domains, or credentials. Review and sanitize them before sharing.」<strong>在企业环境里这是一条实际的数据外泄路径。</strong></li>
+<li><strong>⚠️ 清单会过时。</strong> 它自己在 Reality check 里点了「新浏览器 API」，但<strong>没有任何版本化或更新机制</strong>——<strong>而浏览器与框架的演进速度远快于一个 1 个 commit 的仓库的维护速度。</strong></li>
+<li><strong>⚠️ 模板化规程有诱导 agent 机械执行的风险</strong>——「不跳过任何搜索类别」保证了完整性，但也可能让 agent 报告大量低价值匹配。<strong>它用规则 3 与规则 4 试图对冲，但没有提供判断质量的标准。</strong></li>
+<li><strong>⚠️ 25.8% 的 fork 比例不可读作「质量更高」</strong>——<strong>它对应的是「改一份 26 KB 的 Markdown 几乎零成本」</strong>，与 fork 一个实现型项目完全不是同一件事。</li>
+<li><strong>⚠️ 无 release、无 topics、仓库仅 15 KB</strong>——<strong>这意味着它没有任何版本锚点</strong>：使用者拿到的是「某个时刻的某一版清单」，且无法判断它是哪一版。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs PortSwigger / OWASP 静态检查清单：那些是规范与知识库，不是可执行规程。</strong> xss-audit 的差异是<strong>它被写成 agent 可以逐条执行的形式</strong>（含明确的搜索类别与判定要求），<strong>而不是给人读的参考文档</strong>。</li>
+<li><strong>vs Semgrep / CodeQL 的 XSS 规则：那些是真正可执行的静态分析器</strong>，能给出可复现的定位，但<strong>只能覆盖规则作者想到的 sink</strong>，且误报处理需要工程投入。<strong>xss-audit 覆盖更宽（含框架信任钩子与模板注入），但精度更低。</strong> <strong>⭐ 两者的关系是互补而非替代——Semgrep 抓已知模式，xss-audit 抓「你没想到的模式」。</strong></li>
+<li><strong>vs <code>mirkobrombin/raven</code>（本批）：一个做「让 Windows 程序跑在 Linux 上」，一个做「让人类/agent 判断前端代码是否安全」</strong>——<strong>唯一的共同点是都在处理「一个已经存在的东西的兼容性」，且都在文档里明确列出「什么还不支持」。</strong></li>
+<li><strong>vs 同类 agent skill（如各种 <code>/review</code> 指令）：差别在于它有 14 层的</strong>具体 sink 清单<strong>与「按正确上下文检查消毒」的要求，而不只是「检查一下」。</strong></li>
+<li><strong>vs <code>rddmwmddr/android-ad-cleaner</code>（本批）：后者把「不做什么」写成给 agent 的 10 条硬规则</strong>，<strong>而它把「怎么查什么」写成 14 层清单——两者合起来才是完整的 agent 规程：一边是禁令，一边是检查表。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，但作为「规程设计的样本」而非「安全工具」。</strong></p>
+<p><strong>⭐ 理由</strong>：它的核心价值不是「有多少人用它」，而是<strong>「它示范了如何让一份知识资产在被 agent 消费时保持诚实」</strong>——Reality check 放最前、失效模式写成规则、示例自我否定、输出分母自己说出来。<strong>这四条方法可以直接抄进任何写给 agent 的文档，而与 XSS 无关。</strong></p>
+<p><strong>⭐ 而它 25.8% 的 fork 比例是本日最值得进一步观察的信号之一</strong>：如果 fork 之后真的出现了「适配 Angular 的版本」「支持 Svelte 的版本」「补充 CSP 审计层的版本」，那说明<strong>「一份可 fork 的审计规程」是一种可持续的协作形态</strong>；如果 fork 之后没有下文，那 25.8% 就只是「star 之外没别的事发生」。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>⭐ 是否出现第二个 commit</strong>（即是否有人补上更新机制——<strong>静态清单会随浏览器 API 与框架演进而腐化，这一点它自己也承认</strong>）</li>
+<li><strong>⭐ 是否有外部使用者发布用它做的真实审计报告</strong>（<strong>这是判断它是否真的被用的唯一信号</strong>，也是检验「示例即战绩」的对冲是否奏效的最好办法）</li>
+<li><strong>14 层是否扩展到它点名但未覆盖的 API</strong>（如 Trusted Types 的实际落地路径、<code>import()</code> 与动态 import 的注入面）</li>
+<li><strong>⭐ 是否有 fork 改造成支持其他框架/语言的版本</strong>——<strong>这正是 25.8% fork 比例最可能的去向</strong></li>
+<li><strong>是否有人提交 issue 补充新的 sink 类别</strong>（它有 issue 模板吗？本窗口未核验）</li>
+<li><strong>作者是否会公开它声称的漏洞发现案例</strong>（目前只有自述与一个外部榜单链接）</li>
+<li><strong>是否出现版本化机制</strong>（tag、CHANGELOG、或至少一个「清单版本 + 日期」标注）</li>
+</ol>
+<h2 id="2026-10-26">最近动态（2026-10-26）</h2>
+<p><strong>2026-10-26：</strong> ⭐⭐⭐ <strong>194 → 393（+103%）</strong>，⑂ 50 → <strong>115</strong>，subs 0 → 1，<code>pushed_at</code> 2026-10-24T11:32:14Z（<strong>未变</strong>）。⭐⭐⭐ <strong>而本日报本日最干净的一个样本就在这里：<code>commits?per_page=10</code> 返回长度仍为 1</strong>——唯一 commit 仍是 2026-10-24T11:32:14Z「✨ feat: Add initial XSS audit skill」，<strong>此后 35 小时零提交，而 star 翻了一倍。</strong> ⭐⭐⭐ <strong>即：热度翻倍，代码一个字没动。</strong></p>
+<p>⭐⭐⭐ 而 <strong>fork/star 从 25.8% 升至 29.3%</strong>（115/393）——⭐ 本日报的推断是：这最可能对应「<strong>fork 下去改写那 14 层清单以适配自己的框架</strong>」，<strong>而不是质量提升</strong>；这是本日报连续记录的「fork 比例不可横向比较」的又一实例（对照本日 <code>ZiChuanLan/agent-purge</code> 的 128.6%）。⭐⭐⭐ <strong>而这条推断的证据基础是：它只有一个 commit，且那一个 commit 就是全部内容。</strong> 仓库仍为 15 KB 的纯 Markdown（无代码文件）、contributors 1 人、无 release。</p>
+<p>⭐⭐ <strong>本档案 10-25 提的观察点「是否出现版本化机制（tag、CHANGELOG、或至少一个『清单版本 + 日期』标注）」本日仍然未满足</strong>——<strong>⭐ 而在 star 翻倍的同时仍无版本标注，这进一步说明其 star 与工程成熟度无关。</strong></p>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-25) | Stars: 192 | Forks: 50 | Subscribers: 0 | License: MIT | 语言: Markdown（仓库无代码文件） | 创建: 2026-10-24T11:32:36Z | 1 commit | contributors 1 人 | 仓库 15 KB
+附：作者账号 <code>songjianyang</code> 创建于 2015-05-27，5 个公开仓库、35 followers；MSRC 排行榜排名未独立核验</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

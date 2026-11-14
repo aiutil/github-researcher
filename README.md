@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-10-24.md">Latest report</a> ·
+  <a href="daily/2026-11-15.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,41 +21,44 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-10-24
+## Latest report · 2026-11-15
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 4 | 747 | 4 | 95k+ |
+| 7 | 816 | 5 | 118k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [oosexgang/hackios-xnu-kernel](projects/hackios-xnu-kernel.md) | 1,064 stars | 观察型 |
-| [theorem-labs/oss-verify-proofs](projects/oss-verify-proofs.md) | 92 stars | 观察型 |
-| [xevrion/hatchzip](projects/hatchzip.md) | 888 stars | 工具型 |
-| [haplollc/Vesalius](projects/vesalius.md) | 61 stars | 观察型 |
+| [brisk-thrush-husky/malware-defender-desktop](projects/malware-defender-desktop.md) | 300 stars | 观察型（反例样本） |
+| [WarriorRemember/IPTV_Player_2.0](projects/iptv-player-2-0.md) | 672 stars | 观察型（反例样本） |
+| [hikaku-io/hikaku-extension](projects/hikaku-extension.md) | 283 stars | 工具型 |
+| [opencoredev/islandcn](projects/islandcn.md) | 658 stars | 基础设施候选 |
+| [faizfahmi77/ScanDot](projects/scandot.md) | 532 stars | 工具型 |
+| [quer3q/kraken-mount](projects/kraken-mount.md) | 321 stars | 工具型 |
+| [duwqijlk/muse-protocol](projects/muse-protocol.md) | 513 stars | 观察型（反例样本） |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 91 · repositories: oosexgang/hackios-xnu-kernel, oosexgang/hackios-xnu-userland
-2. **Signal 2** · score 90 · repositories: theorem-labs/oss-verify-proofs
-3. **Signal 3** · score 89 · repositories: xevrion/hatchzip
-4. **Signal 4** · score 88 · repositories: haplollc/Vesalius
+1. **Signal 1** · score 97 · repositories: brisk-thrush-husky/malware-defender-desktop, bradburns2001/topaz-video-ai-desktop, brave-shell-07/izotope-rx-11-desktop
+2. **Signal 2** · score 96 · repositories: Topkiflare74/ai--manus2.0, WarriorRemember/IPTV_Player_2.0, trackboatwrightplan/GitHub-Copilot-app
+3. **Signal 3** · score 95 · repositories: DimensionRobin/rob-run-private-cheat, Crateryeexpiate/TradePilot, Beachfromgate/Wallet-Hunter
+4. **Signal 4** · score 93 · repositories: hikaku-io/hikaku-extension, opencoredev/islandcn, faizfahmi77/ScanDot
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-10-24.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-15.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
-| [2026-10-24](daily/2026-10-24.md) | 4 | 4 |
-| [2026-10-23](daily/2026-10-23.md) | 4 | 4 |
-| [2026-10-22](daily/2026-10-22.md) | 4 | 4 |
-| [2026-10-21](daily/2026-10-21.md) | 4 | 4 |
-| [2026-10-20](daily/2026-10-20.md) | 4 | 4 |
-| [2026-10-19](daily/2026-10-19.md) | 4 | 4 |
-| [2026-10-18](daily/2026-10-18.md) | 4 | 4 |
+| [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
+| [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
+| [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
+| [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
+| [2026-11-11](daily/2026-11-11.md) | 2 | 2 |
+| [2026-11-10](daily/2026-11-10.md) | 5 | 3 |
+| [2026-11-09](daily/2026-11-09.md) | 4 | 2 |
 
 ## Why this repository exists
 

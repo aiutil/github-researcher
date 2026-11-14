@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>headroom | GitHub 趋势研究</title>
+    <title>Headroom | GitHub 趋势研究</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
     <link rel="stylesheet" href="/assets/style.css">
     
@@ -26,8 +26,21 @@
 <main class="container">
     <a href="/projects.html" class="back-link">← 返回重点项目</a>
     <div class="content-card">
-        
-        <h1 id="headroom-ai-agent">Headroom — AI Agent 上下文压缩层</h1>
+        <div style="margin-bottom:20px;"><a href="https://github.com/chopratejas/headroom" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h2 id="2026-06-22">2026-06-22 更新</h2>
+<p>stars 从 38K 继续飙升到 44K（日增 2,617）。新增关键特性：
+- <strong>输出 Token 削减</strong>：不只压缩输入，还削减模型输出（verbosity steering + effort routing），31.7% 输出 token 节省
+- <strong>headroom learn --verbosity</strong>：从历史会话学习用户的简洁度偏好
+- <strong>headroom copilot-auth</strong>：支持 GitHub Copilot CLI 订阅流量压缩
+- <strong>OpenClaw 兼容</strong>：以 ContextEngine 插件形式集成
+- <strong>holdout 对照组</strong>：<code>HEADROOM_OUTPUT_HOLDOUT=0.1</code> 保留 10% 不压缩作为对照
+- <strong>headroom wrap 热同步</strong>：运行中的 proxy 不需重启即可应用新环境变量
+- <strong>6 种压缩算法体系化</strong>：SmartCrusher（JSON）+ CodeCompressor（AST）+ Kompress-v2-base（HF 模型）+ CacheAligner + CCR + Image</p>
+<p><strong>判断维持升级：</strong> Headroom 已稳固确立为 Agent 基础设施层标准组件。44K stars + 日均 2K+ 增速 + cross-agent memory + headroom learn 表明它正在从"压缩工具"进化为"Agent 记忆与优化平台"。Context Engineering 作为新工程学科的定位越来越清晰。</p>
+<h2 id="2026-06-20">2026-06-20 更新</h2>
+<p>stars 从 26K 飙升到 38K（日增 3,938）。判断升级为"生产可用"阶段。</p>
+<hr />
+<h1 id="headroom-ai-agent">Headroom — AI Agent 上下文压缩层</h1>
 <h2 id="_1">一句话定位</h2>
 <p>AI Agent 与 LLM 之间的 Token 压缩中间件，60-95% Token 节省，支持 Library/Proxy/MCP 三模式接入。</p>
 <h2 id="_2">它解决的问题</h2>

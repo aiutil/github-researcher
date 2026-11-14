@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mirkobrombin/raven | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/mirkobrombin/raven" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="mirkobrombinraven">mirkobrombin/raven</h1>
+<h2 id="_1">一句话定位</h2>
+<p>在 Linux 上跑 Windows 应用——<strong>不用虚拟机、不用 winetricks、不用 DLL 覆盖</strong>：程序代码直接跑在宿主 CPU 上，在不能触达 Linux 的沙箱里执行，<strong>它对 Windows 内核的每一次调用都由 Raven 自己应答</strong>（进程与线程、文件、注册表、窗口与输入）。</p>
+<p><strong>⭐⭐⭐ 而 2026-10-26 是这个项目最重要的一天：它在 24 小时内被彻底重写并重新许可——Go → C++、MIT → GPL-3.0-or-later、目录结构全换。</strong> <strong>本档案 2026-10-25 记录的所有代码结构描述自今日起全部作废</strong>，详见「最近动态」。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>Wine 的经典使用姿势是「用 winetricks 逐个塞 DLL、用 winecfg 改注册表、用一个 prefix 装所有东西」——<strong>每个应用都要手工调教，且共享 prefix 时互相污染</strong>。</p>
+<p>raven 的主张是把这一整套隐式约定变成<strong>显式的兼容层</strong>：</p>
+<blockquote>
+<p>You install them with their own installers, the same ones you would use on a PC, and they start: <strong>no virtual machine, no winetricks, no DLL overrides.</strong>
+<strong>The program's code runs directly on your CPU, inside a sandbox where it cannot reach Linux. Every call it makes to the system is answered by Raven, which plays the part of the Windows kernel and its services: processes and threads, files, the registry, windows and input.</strong></p>
+</blockquote>
+<p><strong>⭐ 而它针对的第二个问题是「兼容到什么程度」这个问题的可度量性。</strong> 大多数兼容层只说「能跑」或「不能跑」，而 raven 把它拆成四段并给出百分比。</p>
+<h2 id="2026-10-26">为什么值得关注（2026-10-26）</h2>
+<p><strong>⭐⭐⭐⭐ 本日最值得记的一条，是这个项目在 24 小时内换了语言、换了许可、换了目录结构——而这些变化都由可核验的元数据与 commit 直接证明。</strong></p>
+<h3 id="2026-10-26_1">⭐⭐⭐ 2026-10-26 的四项结构性变化（全部已核验）</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>2026-10-25 记录</th>
+<th>2026-10-26 快照</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td><code>Go</code></td>
+<td><strong><code>C++</code></strong></td>
+<td>GitHub API <code>language</code> 字段</td>
+</tr>
+<tr>
+<td><code>license.spdx_id</code></td>
+<td><code>MIT</code></td>
+<td><strong><code>NOASSERTION</code></strong></td>
+<td>GitHub API</td>
+</tr>
+<tr>
+<td>根 <code>LICENSE</code> 首行</td>
+<td><code>MIT License</code></td>
+<td><strong>「Raven is free software… under the terms of the GNU General Public License」</strong></td>
+<td><code>contents/LICENSE</code> 原文</td>
+</tr>
+<tr>
+<td>源码构成</td>
+<td><code>cmd/govm/*.go</code> + <code>pkg/*.go</code></td>
+<td><strong><code>cmd/govm/</code> 与 <code>pkg/</code> 已从根树消失</strong>；改为 <code>native/</code>（354 个 C/C++ 文件）+ <code>CMakeLists.txt</code> + <code>Makefile</code> + <code>testdata/</code></td>
+<td><code>?recursive=1</code> 全树</td>
+</tr>
+<tr>
+<td>Go 文件数</td>
+<td>大量</td>
+<td><strong>0</strong></td>
+<td>全树统计</td>
+</tr>
+<tr>
+<td>C/C++ 文件数</td>
+<td>—</td>
+<td><strong>354</strong></td>
+<td>全树统计</td>
+</tr>
+<tr>
+<td>commit 数</td>
+<td>653</td>
+<td><strong>678</strong></td>
+<td><code>commits</code> API Link 头</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>17879 KB</td>
+<td><strong>18529 KB</strong></td>
+<td>API <code>size</code></td>
+</tr>
+<tr>
+<td>stars / forks</td>
+<td>166 / 4</td>
+<td><strong>378 / 8</strong></td>
+<td>API</td>
+</tr>
+<tr>
+<td>subscribers</td>
+<td>1</td>
+<td><strong>4</strong></td>
+<td>API</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐ 而两次快照之间的 25 个 commit 把过程完整记录了下来——这 25 条 commit 标题本身就是一份变更日志：</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间（UTC）</th>
+<th>commit 标题</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-10-25T10:01:28Z</strong></td>
+<td><strong><code>chore: license the host under GPLv3 and preserve guest terms</code></strong></td>
+<td><strong>⭐ 重新许可：宿主运行时改为 GPLv3，同时保留 guest 组件原有条款</strong></td>
+</tr>
+<tr>
+<td><strong>2026-10-25T10:14:38Z</strong></td>
+<td><strong><code>chore: remove the legacy Go runtime and tooling</code></strong></td>
+<td><strong>⭐ 移除旧 Go 运行时与工具链</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T16:17:49Z</td>
+<td><code>feat: add an experimental X11 desktop backend</code></td>
+<td>新增 X11 后端（此前只有 Wayland）</td>
+</tr>
+<tr>
+<td>2026-10-25T14:47:36Z</td>
+<td><code>fix: import installer assertions directly from msvcrt</code></td>
+<td>安装器路径细化</td>
+</tr>
+<tr>
+<td>2026-10-25T13:54:45Z</td>
+<td><code>fix: build with distro MinGW and Vulkan headers</code></td>
+<td>构建可移植性</td>
+</tr>
+<tr>
+<td><strong>2026-10-25T14:38:11Z</strong></td>
+<td><code>fix: avoid string replacement on mingw's gcc directory (**#13**)</code></td>
+<td><strong>⭐ 唯一一条带 PR 号的 commit——即已接受外部贡献</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T08:26:15Z</td>
+<td><code>docs: add contribution guidelines</code></td>
+<td>开始写贡献指南</td>
+</tr>
+<tr>
+<td>2026-10-25T08:29:35Z</td>
+<td><code>docs: reserve co-author credits for human contributors</code></td>
+<td><strong>⭐ 署名政策：共著署名只留给人类贡献者</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T20:54:15Z</td>
+<td><code>fix: store a 32-bit pointer for LoadStringW in x86 processes</code></td>
+<td>32 位进程指针宽度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而本日最值得学的一处，是它</strong>重新许可时的做法<strong>——它没有假装自己一直是 GPL：</strong></p>
+<p><code>LICENSES.md</code> 首段原文：</p>
+<blockquote>
+<p>Raven's Linux host runtime is <strong>GPL-3.0-or-later</strong>. <strong>Original Raven guest adapters</strong> listed in <a href="LICENSES.json">LICENSES.json</a> remain <strong>MIT-licensed</strong>. Imported source keeps its copyright, license notices and any exceptions. <strong>Earlier MIT grants remain valid.</strong> The release is a collection of components with these terms, <strong>not a single MIT or GPLv3 license applied to every file</strong>.</p>
+</blockquote>
+<p>README 的 License 段同样明写：「<strong>Earlier MIT grants remain valid.</strong>」并补充：「The Linux <code>raven</code> executable incorporates GPL UTF-8 conversion code and LGPL window-rectangle code. <a href="LICENSES.md">LICENSES.md</a> records the component boundaries and distribution requirements; <a href="docs/packaging.md">packaging</a> describes how to include the corresponding sources and notices with a build.」</p>
+<p><strong>⭐⭐⭐⭐⭐ 而 <code>LICENSES.json</code> 把这件事结构化成机器可读的表单（11 个组件，本日报已逐条核验其 <code>name</code> / <code>license</code> / <code>review</code> / <code>paths</code>）：</strong></p>
+<p><code>json
+{
+  "schema_version": 1,
+  "review_date": "2026-10-25",
+  "original_code_license": "GPL-3.0-or-later with MIT guest-adapter exceptions",
+  "license_references": {
+    "LicenseRef-ReactOS-COPYING": "…",
+    "LicenseRef-ReactOS-Installer-Mixed": "…",
+    "LicenseRef-ReactOS-CRT": "…",
+    "LicenseRef-Configuration-Dependent": "…"
+  },
+  "components": [ … 11 条 … ]
+}</code></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 逐条核验的组件表（<code>review</code> 字段全部为 <code>reviewed</code>，除最后一条）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>许可</th>
+<th><code>review</code></th>
+<th><code>paths</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raven Linux host and build tooling</td>
+<td><strong>GPL-3.0-or-later</strong></td>
+<td>reviewed</td>
+<td><code>native</code>, <code>scripts</code></td>
+</tr>
+<tr>
+<td><strong>Raven guest adapters</strong></td>
+<td><strong>MIT</strong></td>
+<td>reviewed</td>
+<td><strong>60 个文件</strong>（<code>raven-control</code> / <code>raven-crt</code> / <code>raven-d2d1</code> / <code>raven-dism</code> / <code>raven-dwrite</code> / <code>raven-mscoree</code> / <code>raven-shell</code> / <code>raven-uianimation</code> + <code>reactos-controls</code> / <code>reactos-installer</code> / <code>reactos-rtl</code> / <code>reactos-text</code> / <code>reactos-user32</code> 的具体文件）</td>
+</tr>
+<tr>
+<td>ReactOS UTF-8</td>
+<td>GPL-2.0-or-later</td>
+<td>reviewed</td>
+<td><code>native/upstream/reactos-utf8</code></td>
+</tr>
+<tr>
+<td>ReactOS nonclient</td>
+<td>LGPL-2.1-or-later</td>
+<td>reviewed</td>
+<td><code>native/upstream/reactos-nonclient</code></td>
+</tr>
+<tr>
+<td>CP1252 data</td>
+<td>Unicode-3.0</td>
+<td>reviewed</td>
+<td><code>native/upstream/reactos-nls/c_1252.txt</code></td>
+</tr>
+<tr>
+<td>ReactOS NLS converter</td>
+<td>GPL-2.0-or-later</td>
+<td>reviewed</td>
+<td><code>native/upstream/reactos-nls/txt2nls.cpp</code></td>
+</tr>
+<tr>
+<td>ReactOS controls / RTL / installer libraries / optional text</td>
+<td>（由 <code>license_references</code> 的 <code>LicenseRef-ReactOS-*</code> 覆盖）</td>
+<td>reviewed</td>
+<td>未逐项列出</td>
+</tr>
+<tr>
+<td>External build inputs</td>
+<td><strong>LicenseRef-Configuration-Dependent</strong></td>
+<td><strong>requires-release-inventory</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而这恰好一次性解决了本日报已记录多日的两类许可元数据问题——这是本日最值得记的一条方法论闭环：</strong></p>
+<ul>
+<li><strong>⭐ 它把「组合许可被折叠」解决了</strong>——从「9 个 ReactOS 组件的义务只在 README 一小段散文里」，变为<strong>逐组件、逐路径、带 review 状态的机器可读清单</strong>。<strong>⭐⭐ 而连「哪些组件的许可还没核完」都被写进了字段</strong>（<code>External build inputs</code> 的 <code>review: "requires-release-inventory"</code>）——<strong>即清单自己承认自己不完备。</strong></li>
+<li><strong>⭐⭐⭐ 它把「NOASSERTION」从缺陷变成了正确结果</strong>——<strong>一个混合许可项目被 GitHub 识别为单一 spdx id 反而是错的</strong>，NOASSERTION 在这里是诚实的答案。而它把真正的答案放在了 <code>LICENSES.json</code> 里，而不是指望扫描器猜出来。</li>
+<li><strong>⭐⭐⭐⭐ 而最关键的是时序：这条改动发生在本日报 10-25 批评它「GPL 义务只在 README 散文里、扫描器会给出『纯 MIT』的错误默认答案」之后两天内。</strong> <strong>⭐⭐⭐⭐⭐ 即：作者把外部观察提出的批评直接实现成了结构化清单——这是本日报连续记录多日的「边界写进可核验的位置」这条原则，第一次看到一个项目被外部指出后逐条落地为机器可读文件的完整闭环。</strong></li>
+</ul>
+<h3 id="_3">⭐⭐ 重写带来的其他可核验变化</h3>
+<ul>
+<li><strong>⭐ <code>native/</code> 的六个子目录</strong>：<code>cpu</code> / <code>desktop</code> / <code>graphics</code> / <code>nt</code> / <code>pe</code> / <code>upstream</code>；<code>native/upstream/</code> 下 <strong>20 个组件目录</strong>（<code>libpng</code> <code>raven-control</code> <code>raven-crt</code> <code>raven-d2d1</code> <code>raven-dism</code> <code>raven-dwrite</code> <code>raven-mscoree</code> <code>raven-shell</code> <code>raven-uianimation</code> <code>reactos-controls</code> <code>reactos-delayimp</code> <code>reactos-installer</code> <code>reactos-nls</code> <code>reactos-nonclient</code> <code>reactos-rtl</code> <code>reactos-text</code> <code>reactos-user32</code> <code>reactos-utf8</code> <code>skia</code> <code>unicode</code>），共 <strong>109 个文件</strong>。<strong>⭐ 即 ReactOS 组件从 10-25 记录的 9 个增加到至少 13 个（<code>reactos-delayimp</code> 为新增）。</strong></li>
+<li><strong>⭐⭐ 契约测试被写进了宿主代码目录</strong>：<code>native/cpu/</code> 下 <code>callback_fixture_test.cpp</code>（2,798 B）/ <code>shared_mapping_test.cpp</code>（4,324 B）/ <code>native_x86_test.cpp</code>（6,201 B）/ <code>native_cpu_test.cpp</code>（44,685 B）+ <code>served_queue.h</code>（348 B）+ <code>bootstrap.S</code>（103 B）+ <code>native_cpu.cpp</code>（<strong>97,780 B</strong>）+ <code>native_cpu.h</code>（11,081 B）。<strong>⭐ 即 10-25 记录的 <code>internal/compat/</code> 只有 <code>log.go</code> 与 <code>matrix.go</code> 的局面已经改变，测试被放到了实现旁边。</strong></li>
+<li><strong>⭐⭐ <code>native_cpu.cpp</code> 97,780 字节 —— 而 10-25 记录的 <code>cmd/govm/advapi32.go</code> 是 242 KB。</strong> <strong>⭐ 即最大的单文件从 242 KB 降到约 98 KB，而文件语言从 Go 变为 C++。</strong></li>
+<li><strong>⭐ 图形后端从 Wayland 扩到 X11</strong>（commit 标注 experimental）；README 明写「On an X11 session, <code>--desktop=x11</code> takes the place of <code>--desktop=wayland</code>. The X11 desktop is experimental; <code>-DRAVEN_DESKTOP_WAYLAND=OFF</code> builds Raven without Wayland at all.」</li>
+<li><strong>⭐⭐ <code>pushed_at</code> 2026-10-25T20:58:09Z，距快照仅约 36 分钟，仍在高频提交。</strong></li>
+<li><strong>⭐⭐ 而热度与开发活动同步上升（+128% star，pushed_at 距快照 36 分钟），与本日报 10-25 记录的 DeepInfer「热度涨而 pushed_at 不动」形成对照。</strong></li>
+</ul>
+<h3 id="10-25-readme">⭐ 10-25 的哪些记录仍然成立（已重新核验 README 原文）</h3>
+<p><strong>⭐⭐ 本日重新读取 README（7,517 字节）确认以下内容全部未变：</strong>
+- <strong>四段 25% 兼容评分表</strong>（Notepad++ 100% / 7-Zip EXE 75% / 7-Zip MSI 75% / Audacity 75% / KeePass 50% / VLC 25% / ClassiCube 75% / Minesweeper 75%）—— <strong>表格结构与 10-25 记录完全一致</strong>；
+- <strong>benchmark 的交替运行与中位数方法</strong>：「ClassiCube 1.3.8, fixed seed 1, four alternating rounds」/「Each workload runs three times and the charts show the median」/「The Soda Direct3D 11 triangle did not finish within its 600-second limit」/「Software Vulkan keeps the numbers reproducible anywhere; a hardware GPU raises them for every runtime」—— <strong>全部原文未变</strong>；
+- <strong>ClassiCube 中位 71.5 FPS</strong>（样本 72/73/54/71）—— <strong>数字未变</strong>；
+- <strong>主动作废旧数据并说明原因</strong>：「These replace the earlier ClassiCube series; its scene configuration was not verified against the retained samples.」—— <strong>未变</strong>；
+- <strong>测试跳过条件公开</strong>（<code>RAVEN_MINESWEEPER</code> / <code>RAVEN_NETFX_INSTALLER</code> / <code>RAVEN_NETFX35_PACKAGE</code> / <code>RAVEN_XNA_INSTALLER</code> / <code>RAVEN_REDIST_DIRECTORY</code>）—— <strong>未变</strong>；
+- <strong>构建参数 <code>cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo</code> + <code>cmake --build build -j2</code> + <code>ctest --test-dir build --output-on-failure -j1</code></strong> —— <strong>未变</strong>（<code>-j2</code> / <code>-j1</code> 这两个「暗示构建很重、测试间有共享状态」的参数仍在）；
+- <strong>Requirements 段</strong>（Linux x86_64 / CMake 3.20+ / C++20 编译器 / Python 3.11+ / MinGW-w64 / Wayland+xkbcommon+pixman+FreeType+Vulkan）—— <strong>未变</strong>；
+- <strong><code>RAVEN_PREFIX</code> 快照与 <code>--restore-prefix</code></strong> —— <strong>未变</strong>；
+- <strong>「Raven 自带系统库仍在管辖」的解析顺序声明</strong> —— <strong>未变</strong>；
+- <strong>⭐ 新增一句</strong>：「Each component under <a href="native/upstream">native/upstream</a> records where it comes from and its license.」—— <strong>⭐ 即 10-25 批评的「上游组件清单未结构化到仓库中」，现在由每个组件目录各自记录来源与许可。</strong></p>
+<p><strong>⭐⭐⭐ 换句话说：重写换掉了实现语言、许可与目录结构，但换不掉它那三份「诚实工程文档」——兼容评分表、benchmark 的作废与交替说明、测试跳过条件的公开。</strong> <strong>⭐⭐⭐⭐ 而这恰恰是本档案把它定位为「方法论样本」的理由：它证明了那些方法与实现语言无关。</strong></p>
+<h2 id="_4">最近动态</h2>
+<h3 id="2026-10-26-2026-10-25t225509z">2026-10-26（快照 2026-10-25T22:55:09Z）</h3>
+<p><strong>⭐⭐⭐ 本日记录的头条：项目在 24 小时内被彻底重写并重新许可。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实现语言</td>
+<td><strong>Go → C++</strong>（全树 Go 文件 0 个、C/C++ 文件 354 个）</td>
+</tr>
+<tr>
+<td>许可</td>
+<td><strong>MIT → GPL-3.0-or-later</strong>（宿主运行时），<code>license.spdx_id</code> 变为 <strong>NOASSERTION</strong></td>
+</tr>
+<tr>
+<td>许可结构化</td>
+<td><strong>新增 <code>LICENSES.json</code>（11 个组件）+ <code>LICENSES.md</code> + <code>LICENSES/</code> 7 份许可文本 + <code>docs/packaging.md</code></strong></td>
+</tr>
+<tr>
+<td>目录结构</td>
+<td><code>cmd/govm/</code> + <code>pkg/</code> <strong>消失</strong>；新增 <code>native/</code>（cpu / desktop / graphics / nt / pe / upstream）+ <code>CMakeLists.txt</code> + <code>Makefile</code> + <code>testdata/</code></td>
+</tr>
+<tr>
+<td>图形后端</td>
+<td>Wayland → Wayland + <strong>X11（experimental）</strong></td>
+</tr>
+<tr>
+<td>契约测试</td>
+<td><strong>进入宿主代码目录</strong>（<code>native/cpu/*_test.cpp</code>）</td>
+</tr>
+<tr>
+<td>外部协作</td>
+<td><strong>首次接受带 PR 号的外部贡献（#13）</strong> + 新增 <code>CONTRIBUTING.md</code> + 「reserve co-author credits for human contributors」</td>
+</tr>
+<tr>
+<td>热度</td>
+<td>166⭐ ⑂4 → <strong>378⭐ ⑂8</strong>（+128%），subs 1 → 4，oi 8，pushed_at 距快照约 36 分钟</td>
+</tr>
+<tr>
+<td>commit 数</td>
+<td>653 → <strong>678</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而最需要记录的一条元数据纪律：本档案 2026-10-25 的所有关于 raven 代码结构的描述（<code>cmd/govm/</code> 按 DLL 划分、<code>advapi32.go</code> 242 KB、<code>pkg/</code> 15+ 个包按 API 域划分、<code>internal/compat/</code> 只有 <code>log.go</code> 与 <code>matrix.go</code>）自今日起全部作废。</strong></p>
+<p><strong>⭐⭐ 而 <code>created_at</code> 仍是 2026-10-24T17:13:42Z（改名时间戳），本次重写</strong>没有<strong>改变这一点</strong>——<strong>即本日报 10-25 建立的「<code>created_at</code> 不可信」这条纪律在今日再次生效。</strong></p>
+<h3 id="2026-10-25">2026-10-25（首日建档）</h3>
+<ul>
+<li>建档，记录 Go / MIT / 653 commits / 166⭐ / <code>created_at</code> 为改名时间戳</li>
+<li>记录三份「诚实工程文档」：四段 25% 评分表、benchmark 作废与交替说明、测试跳过条件公开</li>
+<li>记录第五类许可元数据问题：<strong>主许可正确但组合许可被折叠</strong></li>
+<li>记录 <code>internal/compat/</code> 的数据规模为未核验项</li>
+</ul>
+<h2 id="_5">热度来源判断</h2>
+<p><strong>⭐⭐⭐ 热度与开发活动在本日首次同步上升，且这次同步是真实的——但 star 的绝对量仍不应读作采用度。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐ 今日最硬的一条对照</strong>：<strong>378⭐ ⑂8 + subs 4 + oi 8 + pushed_at 距快照 36 分钟 + 25 个 commit 在 24 小时内</strong>。<strong>⭐⭐ 与 10-25 记录的「热度来自改名事件而非采用」不同，本日的热度与一次</strong>可见的、实质性的工程事件<strong>（一次完整的重写 + 一次重新许可）同时发生。</strong>⭐⭐⭐ 即：这批新增 star 至少有一部分是「看到了重写这件事」的结果，而不是纯话题热度。**</li>
+<li><strong>⭐⭐ 但采用信号仍然很弱</strong>：<strong>contributors API 仍返回 1 人</strong>、<code>releases</code> API <strong>仍返回 0 个</strong>。<strong>⭐⭐⭐ 678 个 commit、18,529 KB、无 release、单作者——分发路径仍是从源码构建（<code>cmake -S . -B build ... -j2</code>），这本身就是采用门槛。</strong></li>
+<li><strong>⭐⭐ 而 <code>created_at</code> 陷阱与本日报 10-24/10-25 记录的批量账号 spam 仍是同一个技术问题的两面</strong>——<code>created_at</code> 既会被改名项目滥用，也会被批量账号滥用。<strong>⭐⭐⭐ 而本日新增的 25 个 commit（尤其是重写与重新许可这两条）说明：</strong>这个仓库的 <code>created_at</code> 与它的实际活跃度<strong>之间没有可推断的关系</strong>，必须靠 <code>commits</code> API 的最早时间戳交叉验证。**</li>
+<li><strong>⭐⭐⭐ 而 fork/star 2.1%（8/378）依然极低。</strong> <strong>⭐⭐ 这不应读作「没人要它」</strong>——<strong>fork 一个 18.5 MB、678 个 commit、20 个上游组件、且</strong>宿主部分是 GPL<strong> 的兼容层，成本与 fork 一份 26 KB 的 Markdown 差了两个数量级。</strong> <strong>⭐⭐⭐ 而本日报 10-25 建立的读法依然成立：在评估「有多少人在真的改造这个项目」时，fork/star 必须先按「改造单位成本」分层，再在同一层内比较。</strong></li>
+<li><strong>推断（不构成事实）</strong>：本日报无法核验 378⭐ 中有多少来自「重写与重新许可」的注意力、多少来自改名后的持续关注迁移、多少来自新读者；<strong>且 <code>stargazers</code> 端点对该 token 返回 404，无法拆解 star 的来源结构。</strong></li>
+</ul>
+<h2 id="_6">关键技术亮点</h2>
+<ol>
+<li><strong>⭐⭐⭐ 组合许可的机器可读清单（本本日新增，且是本日最值得学的一处）</strong>
+   <code>LICENSES.json</code> 的 11 个组件条目，每条含 <code>name</code> / <code>paths</code> / <code>license</code> / <code>review</code> / <code>provenance</code>；顶层含 <code>schema_version</code> / <code>review_date</code> / <code>original_code_license</code> / <code>license_references</code>。
+   <strong>⭐⭐⭐ 而三个设计细节尤其值得注意</strong>：</li>
+<li><strong><code>review</code> 是一等字段</strong>——<code>reviewed</code> 与 <code>requires-release-inventory</code> 并存，<strong>即清单自己声明了「哪一部分还没核完」</strong>；</li>
+<li><strong><code>paths</code> 精确到文件</strong>——MIT 的 guest adapters 列出 60 个具体路径，<strong>而不是一个笼统的目录名</strong>；</li>
+<li>
+<p><strong><code>original_code_license</code> 用了复合值</strong>——<code>"GPL-3.0-or-later with MIT guest-adapter exceptions"</code>，<strong>即它没有假装 SPDX 表达式能表达这件事</strong>。
+   <strong>⭐⭐⭐⭐ 而 <code>review_date: "2026-10-25"</code> 是一个日期而非「最新」标签——即它承认这份清单会过期。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 直接执行 + 沙箱隔离 + API 全量自实现。</strong> 「The program's code runs directly on your CPU, inside a sandbox where it cannot reach Linux. Every call it makes to the system is answered by Raven, which plays the part of the Windows kernel and its services: processes and threads, files, the registry, windows and input.」</p>
+</li>
+<li><strong>⭐⭐⭐ 四段 25% 的兼容评分——把「能跑」拆成可累加的阶段。</strong> README 的应用表有 install / start / main window / workflow 四列，<strong>每段可用加 25%</strong>：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>Install</th>
+<th>Start</th>
+<th>Main window</th>
+<th>Workflow</th>
+<th style="text-align: right;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notepad++ 8.7.1</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>editing</td>
+<td style="text-align: right;"><strong>100%</strong></td>
+</tr>
+<tr>
+<td>7-Zip 24.09（EXE installer）</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>not automated yet</td>
+<td style="text-align: right;">75%</td>
+</tr>
+<tr>
+<td>7-Zip 24.09（MSI）</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>not automated yet</td>
+<td style="text-align: right;">75%</td>
+</tr>
+<tr>
+<td>Audacity 3.6.4</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>not automated yet</td>
+<td style="text-align: right;">75%</td>
+</tr>
+<tr>
+<td>KeePass 2.57</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>not automated yet</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td>VLC 3.0.21</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>not automated yet</td>
+<td style="text-align: right;">25%</td>
+</tr>
+<tr>
+<td>ClassiCube 1.3.8</td>
+<td>portable</td>
+<td>yes</td>
+<td>yes</td>
+<td>singleplayer</td>
+<td style="text-align: right;">75%</td>
+</tr>
+<tr>
+<td>Minesweeper</td>
+<td>portable</td>
+<td>yes</td>
+<td>yes</td>
+<td>gameplay</td>
+<td style="text-align: right;">75%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐ 这张表的真正价值在于它让「装得上但起不来」（VLC 25%）与「完全跑不了」变成了可比较的事实。</strong>
+4. <strong>⭐⭐ benchmark 的两个可核验方法论动作：</strong>
+   - <strong>① 主动作废自己的一组数据并说明原因</strong>：「<strong>These replace the earlier ClassiCube series; its scene configuration was not verified against the retained samples.</strong>」——<strong>旧数据仍留在 <code>docs/benchmarks.json</code> 供对照</strong>（其 ClassiCube 条目被本表取代）。
+   - <strong>② 交替运行以抵消机器负载漂移</strong>：「<strong>Every runtime starts from a copy of a prefix it initialised beforehand. Each workload runs three times and the charts show the median; ClassiCube runs four rounds alternating the runtimes, so a change in machine load weighs on both.</strong>」
+5. <strong>⭐⭐ ClassiCube 1.3.8 固定种子 1、四轮交替</strong>：<strong>Raven 中位 71.5 FPS</strong>（样本 72/73/54/71）、Wine 11.0 <strong>63.0</strong>（65/68/61/61）、Soda 11.0-32-experimental <strong>63.0</strong>（64/64/61/62）；<strong>并且对手未完成也被如实记录</strong>：「<strong>The Soda Direct3D 11 triangle did not finish within its 600-second limit.</strong>」
+6. <strong>⭐⭐ 公开测试跳过条件，而不是把跳过算进通过率</strong>：「Some tests need software Raven cannot redistribute; point <code>RAVEN_MINESWEEPER</code>, <code>RAVEN_NETFX_INSTALLER</code>, <code>RAVEN_NETFX35_PACKAGE</code>, <code>RAVEN_XNA_INSTALLER</code> and <code>RAVEN_REDIST_DIRECTORY</code> at your own copies, <strong>or those tests are skipped</strong>」。
+7. <strong>⭐ 为可复现性牺牲性能。</strong> 测量环境写明 Mesa 26.0.8 <strong>lavapipe（软件 Vulkan）</strong>、两个渲染线程、labwc 0.9.3 headless 每轮一个隔离实例，并明说「<strong>Software Vulkan keeps the numbers reproducible anywhere; a hardware GPU raises them for every runtime.</strong>」
+8. <strong>⭐ 前缀快照与回退。</strong> 每个应用一个 <code>RAVEN_PREFIX</code>（自带 <code>C:</code> 盘与注册表），<strong>每次 installer 前对 prefix 做快照，<code>--restore-prefix</code> 可回退</strong>。
+9. <strong>⭐ 混合上游来源的诚实声明 —— 本日已从散文升级为结构化清单。</strong> README 明写：「Imported and derived components keep their own licenses and notices (GPL, LGPL, MIT, BSD, libpng, Unicode and Skia). <strong>Earlier MIT grants remain valid.</strong>」<strong>⭐⭐ 且「Each component under native/upstream records where it comes from and its license.」</strong>
+10. <strong>⭐ 图形栈的完整映射。</strong> Direct3D 8/9/11 经 DXVK（11 含每个 shader stage、compute、MSAA、deferred context）、Direct3D 12 经 vkd3d-proton（含光线追踪），图形走 Wayland（<strong>新增实验性 X11</strong>）与 Vulkan。
+11. <strong>⭐ 安装器覆盖面。</strong> NSIS、Inno Setup 与 Windows Installer（MSI），含自定义动作、回滚与提权；.NET Framework 4.8 与 3.5（CLR 2.0 程序）；Visual C++ 2005–2022 可单独或并存安装、旧版覆盖新版。
+12. <strong>⭐⭐ 32 位与 64 位程序并排在同一 prefix</strong>：README 的 What works today 表首行即「32 and 64-bit programs | Both, side by side in the same prefix」。
+13. <strong>⭐⭐ 署名政策（本新增）</strong>：「docs: reserve co-author credits for human contributors」——<strong>⭐ 即它明确区分了人类贡献者与自动化贡献者的署名，这在本日报本日记录的 agent skill 浪潮中是一条值得注意的立场。</strong></p>
+<h2 id="_7">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>重写后的边界划分为五层</strong>：① <strong>宿主执行层</strong>（<code>native/</code> 下 354 个 C/C++ 文件，按 <code>cpu</code> / <code>desktop</code> / <code>graphics</code> / <code>nt</code> / <code>pe</code> / <code>upstream</code> 六个子目录组织；<code>native/cpu/</code> 含 <code>native_cpu.cpp</code> 97,780 B / <code>native_cpu.h</code> 11,081 B / <code>bootstrap.S</code> / <code>served_queue.h</code> 与四个契约测试文件）② <strong>Windows API 兼容层</strong>（原 <code>cmd/govm/</code> 与 <code>pkg/</code> 的职责已迁入 <code>native/</code>，<strong>具体文件划分本窗口未逐目录核验</strong>）③ <strong>上游移植层</strong>（<code>native/upstream/</code> 下 <strong>20 个组件目录、109 个文件</strong>，含 13+ 个 ReactOS 组件与 libpng / Skia / Unicode）④ <strong>⭐ 许可与来源层</strong>（<code>LICENSES/</code> 目录含 <code>GPL-2.0-or-later.txt</code> / <code>GPL-3.0-or-later.txt</code> / <code>LGPL-2.1-or-later.txt</code> / <code>Liberation-fonts.txt</code> / <code>MIT.txt</code> / <code>Skia.txt</code> / <code>Unicode-3.0.txt</code> + <code>LICENSES.json</code> + <code>LICENSES.md</code> + <code>docs/packaging.md</code>）⑤ <strong>⭐⭐ 图形后端层</strong>（Wayland + 实验性 X11）。<strong>⭐⭐⭐ 第四层是本日新增的、也是本日最值得记的一层：它把「哪些文件适用哪份许可」变成了一份机器可读清单，从而让 <code>NOASSERTION</code> 从缺陷变成诚实答案</strong></td>
+<td>根树 <code>?recursive=1</code>（Go 文件 0 个、C/C++ 文件 354 个、根 <code>LICENSES/</code> 下 7 个许可文本、<code>native/upstream/</code> 20 个目录 109 个文件）、<code>LICENSES.json</code> 的 <code>schema_version</code> / <code>review_date</code> / <code>original_code_license</code> / <code>license_references</code> 4 条 / <code>components[]</code> 11 条的 <code>paths|license|review</code>、<code>LICENSES.md</code> 的组件表格、README 的 License 段、25 条 commit 标题。<strong>⭐ <code>native/</code> 各子目录的具体职责边界、<code>native/nt</code> 与 <code>native/pe</code> 的内容、<code>docs/packaging.md</code> 的分发要求、<code>scripts/</code> 下的内容本窗口未逐项核验，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户设 <code>RAVEN_PREFIX</code>（Windows 侧安装目录，自带 <code>C:</code> 盘与注册表，每个应用一个）→ 构建（<strong><code>cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo</code> + <code>cmake --build build -j2</code>——与 10-25 记录一致，未变</strong>）→ <code>build/native/raven --run-process --execution=native --timeout-ms=600000 --desktop=wayland setup.exe</code>（<strong>新增 <code>--desktop=x11</code> 的实验性后端</strong>；<code>-DRAVEN_DESKTOP_WAYLAND=OFF</code> 可构建无 Wayland 版本<strong>）→ 安装器写自己的 kernel32/user32 时 Raven 自带系统库仍管辖 → Windows 程序直接调用 <code>native/</code> 提供的 API 替代实现 → 图形调用经 DXVK / vkd3d-proton 到 Vulkan → </strong>每次安装器前对 prefix 做快照，<code>--restore-prefix</code> 可回退**。测试：<code>ctest --test-dir build --output-on-failure -j1</code></td>
+<td>README 的 Requirements / Installation / What works today / Tested applications / Benchmarks / License 六节、<code>CMakeLists.txt</code> 与 <code>Makefile</code> 的存在、25 条 commit 标题中的构建与后端条目、<code>LICENSES.md</code> 的「Linux <code>raven</code> 与 <code>raven-bootstrap</code>」行。<strong>⭐ 「Raven 自带系统库优先于安装器写入的同名库」的具体解析顺序机制本窗口仍未核验；新的 CLI 参数全集未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ 保留旧 MIT 授权 vs 统一改为 GPL</strong>（选 GPL-3.0-or-later 并<strong>明写「Earlier MIT grants remain valid」</strong>——<strong>⭐ 即用「条款分层 + 历史授权存续」而不是「追溯改许可」</strong>，这在实践中更诚实也更省事）· <strong>⭐ 手工散文许可说明 vs 机器可读许可清单</strong>（新增 <code>LICENSES.json</code> + <code>LICENSES.md</code> + <code>docs/packaging.md</code>——<strong>代价是维护成本与「审查日期」会过期</strong>，故 <code>review_date</code> 与 <code>review: "requires-release-inventory"</code> 本身就是一种诚实的时效声明）· <strong>⭐ 保留 Go 实现 vs 重写为 C++</strong>（Go 文件数归零、354 个 C/C++ 文件——<strong>推断是为了直接控制内存布局、DMA 与 x86 32 位指针语义</strong>（commit「store a 32-bit pointer for LoadStringW in x86 processes」与 <code>native_x86_test.cpp</code> 支持此推断），<strong>但仓库未给出重写动因的原文说明，本日报不将其作为事实</strong>）· <strong>⭐ 契约测试的位置</strong>（<code>native/cpu/</code> 下直接放 <code>*_test.cpp</code> 与 <code>testdata/</code> 目录——<strong>推断是让测试贴近实现边界</strong>）· <strong>Wayland-only vs Wayland + X11</strong>（新增 X11 但标注 experimental，<strong>推断是为无 Wayland 环境提供退路</strong>）· <strong>公开贡献 vs 单人主导</strong>（新增 <code>CONTRIBUTING.md</code> 与「reserve co-author credits for human contributors」，且已合并一条带 PR 号的 commit——<strong>⭐ 这是本日唯一可核验的外部参与信号</strong>）· <strong>⭐⭐ 单许可标签 vs 组合许可清单</strong>（<code>license.spdx_id</code> 变成 NOASSERTION，但 <code>LICENSES.json</code> 给出精确答案——<strong>⭐ 代价是依赖 license 扫描器的自动化流水线会给出「非标准协议」的判断</strong>）</td>
+<td><code>LICENSES.md</code> / <code>LICENSES.json</code> / <code>docs/packaging.md</code> / <code>CONTRIBUTING.md</code> 的存在与内容、<code>LICENSES/</code> 下 7 份许可文本、25 条 commit 标题、README 的 License 段。<strong>未明示：重写的性能影响、是否有迁移指南、旧 Go 版本的用户如何升级、以及为什么宿主要改为 GPL（商业影响很大，但仓库未给动机说明）</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐ 第一步不是编译，是读 <code>LICENSES.json</code> 与 <code>LICENSES.md</code></strong>，确认你自己的使用方式落在哪个条款下（宿主 GPL-3.0-or-later vs 自有 guest 适配器 MIT vs 导入组件各自条款）→ 2. <strong>⭐ 确认「历史 MIT 授权仍有效」对你是否适用</strong>（README 明写 Earlier MIT grants remain valid）→ 3. <strong>按新的构建入口构建</strong>（<code>cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo</code> + <code>cmake --build build -j2</code>；<strong>Requirements 段本窗口已重新核验，与 10-25 记录一致</strong>：Linux x86_64、CMake 3.20+、C++20 编译器、Python 3.11+、MinGW-w64、Wayland/xkbcommon/pixman/FreeType/Vulkan）→ 4. <strong>⭐ 跑 <code>ctest --test-dir build --output-on-failure -j1</code> 并数 skipped</strong>（<code>RAVEN_MINESWEEPER</code> 等五个环境变量仍应生效，<strong>但测试文件已从 Go 换成 C++，跳过机制是否保留需重新验证</strong>）→ 5. 跑 <code>build/native/raven --run-process --execution=native --desktop=wayland setup.exe</code>，观察是否仍能不用 wine 前缀装上一个 Windows 应用 → 6. <strong>⭐ 故意破坏一次 prefix 再跑 <code>--restore-prefix</code></strong>（这是它区别于「装得上但不可逆」的唯一保障）→ 7. <strong>⭐ 检查 <code>native/cpu/</code> 下的四个 <code>*_test.cpp</code> 契约测试是否随构建一起运行</strong>（这是重写后最重要的回归防线）→ 8. <strong>⭐ 对照 <code>LICENSES.json</code> 的 <code>review_date</code> 与你实际依赖的组件清单，确认没有「条款已变但清单未更」的组件</strong>（<strong>特别是 <code>review: "requires-release-inventory"</code> 的 <code>External build inputs</code> 一条</strong>）→ 9. <strong>⭐ 跑 <code>scripts/benchmark-app-matrix.py</code></strong>（README 明写它「runs the whole table again」）复现四段评分表</td>
+<td><strong>第 1–2 步是本 PoC 的核心</strong>（对 GPL 项目而言，许可边界比能否编译更重要）· <strong>第 4 步是「全绿 ≠ 全测过」的检验</strong>· <strong>第 6 步是不可逆性的唯一证据</strong>· <strong>第 7 步是重写后回归风险的唯一防线</strong>· <strong>第 8 步是许可清单时效性的检验</strong> · 本 PoC <strong>不覆盖</strong> 3D 应用性能（软件 Vulkan 下无意义）、<strong>不覆盖</strong> X11 后端（标注 experimental）、<strong>不覆盖</strong> 商业分发场景（<code>docs/packaging.md</code> 的完整要求本窗口未核验）</td>
+</tr>
+<tr>
+<td>## 架构启发</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>⭐⭐⭐ 最值得迁移的一条：把「我凭什么这么说」写成机器可读的清单，而不是散落在散文里。</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>raven 的 <code>LICENSES.json</code> 给了本日报一个可以直接抄的模板：<strong>顶层有 <code>schema_version</code>（格式版本）、<code>review_date</code>（时效声明）、<code>original_code_license</code>（总体判断）、<code>license_references</code>（引用外部许可文本的方式）；每条组件有 <code>paths</code>（精确到文件而非目录）、<code>license</code>（该组件的实际条款）、<code>review</code>（该条是否已核完）、<code>provenance</code>（从哪来）。</strong>
+<strong>⭐⭐⭐ 而最巧妙的两个细节是：① <code>review</code> 是一等字段，所以「还没核完」这件事可以被机器读出来；② <code>review_date</code> 是一个日期，所以「这份清单会过期」这件事被写在了结构里而不是文档里。</strong></p>
+<p><strong>⭐⭐⭐⭐ 第二个启发（本日报认为本日最值得单独指出的一条）：重新许可的正确做法是「分层 + 历史存续」，而不是「追溯改许可」。</strong></p>
+<p>raven 没有假装自己一直是 GPL，也没有宣布过去的 MIT 授权作废，而是明写「<strong>Earlier MIT grants remain valid</strong>」并把 guest adapters 单独列为 MIT。
+<strong>⭐⭐⭐⭐⭐ 这条做法对任何需要改变许可的项目都成立：它同时满足了「新贡献受新条款约束」与「历史使用者的既有授权不受影响」，而且</strong>把这个区分写成了结构化条款而不是一句解释<strong>。</strong></p>
+<p><strong>⭐⭐ 第三个启发：主动作废自己的数据，比隐藏它更可信。</strong>
+「These replace the earlier ClassiCube series; its scene configuration was not verified against the retained samples.」——<strong>它没说「之前的数字有问题」，也没删掉，而是说明作废原因并把旧数据留在仓库里对照。</strong> 这与本日报 10-24 记录的 hatchzip「Every number in the README and docs is measured on real hardware, never estimated」是同一条纪律的两个方向：<strong>一个禁止编造，一个禁止掩盖。</strong></p>
+<p><strong>⭐⭐ 第四条：它对「可复现性」与「性能」的取舍是选软件 Vulkan，明说硬件 GPU 会抬高所有 runtime 的数字。</strong> 这意味着<strong>它给出的绝对 FPS 数字是偏低的</strong>——但换来了「任何人都能在同样的条件下重跑」。<strong>这是一个把「结论的可复现性」置于「结论的好看」之上的选择。</strong></p>
+<p><strong>⭐⭐⭐⭐ 而关于 fork 比例，它提供了本日最实用的一条读法。</strong> 它的 fork/star 只有 2.1%，本批最低。<strong>但这不是「没人要它」——fork 一个 18.5 MB、678 个 commit、20 个上游组件、且宿主部分是 GPL 的兼容层，成本与 fork 一份 26 KB 的 Markdown 差了两个数量级。</strong> <strong>因此在评估「有多少人在真的改造这个项目」时，fork/star 必须先按「改造单位成本」分层，再在同一层内比较。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 而本日最有价值的一条元数据教训，来自这个项目本身：</strong>
+<strong>它的 <code>created_at</code> 在一次 14 个月的改名后仍然指向改名当天；在一次彻底重写后仍然指向同一天。</strong> <strong>⭐⭐⭐⭐ 即：<code>created_at</code> 记录的是「这个 GitHub 对象何时被创建/命名」，与「项目何时开始」「项目现在多活跃」三者完全独立。</strong> <strong>⭐⭐⭐⭐⭐ 而本日报 10-25 建立的「用 <code>commits</code> API 的最早时间戳交叉验证 <code>created_at</code>」这条规则，在本日再次得到验证。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Win[Windows 应用<br/>自己的安装器 setup.exe] --> WinExe[Windows 机器码<br/>直接跑在宿主 CPU 上]
+  WinExe --> Sandbox[沙箱<br/>不能触达 Linux]
+  Sandbox --> WinApi[Raven 提供的 Win32 语义<br/>native 按 API 域分层<br/>cpu desktop graphics nt pe]
+  WinApi --> Kernel[进程与线程 / 文件 / 注册表<br/>窗口与输入<br/>plays the part of the Windows kernel]
+  WinApi --> Gfx[图形 Direct3D 8 9 11<br/>经 DXVK]
+  WinApi --> Gfx12[Direct3D 12<br/>经 vkd3d-proton 含光线追踪]
+  Gfx --> Vulkan[Vulkan]
+  Gfx12 --> Vulkan
+  Vulkan --> Wayland[Wayland 桌面<br/>软件 Vulkan lavapipe 用于可复现测量]
+  Vulkan --> X11[X11 桌面 experimental<br/>--desktop=x11<br/>-DRAVEN_DESKTOP_WAYLAND=OFF 可无 Wayland 构建]
+  Kernel --> Prefix[(RAVEN_PREFIX<br/>每个应用一个 自带 C: 盘与注册表)]
+  Prefix --> Snap[安装器前做快照<br/>--restore-prefix 可回退]
+  Up[上游移植 native/upstream<br/>20 个组件目录 109 个文件<br/>13+ 个 ReactOS 组件 GPL/LGPL<br/>libpng Skia Unicode] --> WinApi
+  Up --> Provenance[每个组件记录来源与许可<br/>Each component records where it comes from and its license]
+
+  Host[宿主执行层<br/>native/cpu/native_cpu.cpp 97780 字节<br/>native_cpu.h 11081 字节<br/>bootstrap.S served_queue.h<br/>契约测试 callback_fixture_test<br/>shared_mapping_test native_x86_test<br/>native_cpu_test] --> WinApi
+
+  Lic[LICENSES.json 11 个组件<br/>schema_version 1 / review_date 2026-10-25<br/>original_code_license GPL-3.0-or-later<br/>with MIT guest-adapter exceptions<br/>license_references 4 条<br/>每条含 paths license review provenance<br/>review: reviewed 或 requires-release-inventory] --> LicenseOut
+  Lic --> Host
+  Lic --> Up
+  LicMd[LICENSES.md 组件边界表<br/>Earlier MIT grants remain valid<br/>not a single MIT or GPLv3 license applied to every file] --> LicenseOut
+  LicTxt[LICENSES/ 7 份许可文本<br/>GPL-2.0 GPL-3.0 LGPL-2.1 MIT Skia Unicode Liberation-fonts] --> LicenseOut
+  Packaging[docs/packaging.md<br/>分发时如何附带对应源码与声明] --> LicenseOut
+  LicenseOut[许可与来源层<br/>license.spdx_id 为 NOASSERTION<br/>对混合许可项目这是诚实答案 而非缺陷<br/>但依赖 spdx 扫描器的流水线会报非标准协议]
+
+  Matrix[兼容矩阵 scripts/native-app-matrix.py<br/>benchmark-app-matrix.py 复跑整表<br/>规模待核验] --> Score[四段 25% 评分<br/>install / start / main window / workflow]
+  Bench[Benchmark 脚本<br/>四轮交替运行 三次取中位<br/>软件 Vulkan lavapipe] --> Score
+  Skip[部分测试因缺软件被跳过<br/>RAVEN_MINESWEEPER 等五个环境变量<br/>跳过条件公开] -.约束.-> Bench
+  Old[被作废的 ClassiCube 旧数据<br/>保留在 docs/benchmarks.json 供对照<br/>说明作废原因而不删除] -.对照.-> Bench
+
+  Contrib[CONTRIBUTING.md<br/>docs: reserve co-author credits for human contributors<br/>已合并带 PR 号的外部贡献 #13] -.约束.-> Host
+</pre>
+<h2 id="_8">定位判断</h2>
+<p><strong>「Windows on Linux」赛道的第三种技术路线，且是本日最值得当作方法论样本的一个。</strong></p>
+<p>现有路线大致是：虚拟机（隔离最强、性能最差）、Wine（复用成熟实现、但依赖 winetricks 式的隐式调教）、以及<strong>自建兼容层（成本最高、控制力最强）</strong>。raven 走的是第三条——<strong>这意味着它的兼容面完全由自己的工作量决定，而不受上游 Wine 进度牵制；代价是每一个未实现的 API 都是它自己的负债。</strong></p>
+<p><strong>⭐⭐ 而它今天真正的价值可能不在兼容层本身，而在它的三份「诚实工程」文档：</strong> 兼容评分表、benchmark 的作废与交替说明、测试跳过条件的公开。<strong>这三样都可以被任何做兼容性工作的团队直接抄用，而与 Windows 无关。</strong></p>
+<p><strong>⭐⭐⭐⭐ 而本日它新增了第四样，而且这一样与前三样同源：那份机器可读的许可清单。</strong> <strong>⭐⭐⭐⭐ 四份加起来构成了一个完整的「工程诚实」样本——</strong>它对性能、测试、数据、许可四个维度都选择了「宁可说难看也不说好看」。<strong> ⭐⭐⭐⭐⭐ 而本日最值得强调的是：</strong>这四份文档在一次彻底的重写之后全部存活了下来<strong>——</strong>即它的方法论与实现语言无关，而这一点只有经过一次重写才能证明。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 而商业影响必须被明确记录：</strong>宿主运行时从 MIT 变为 <strong>GPL-3.0-or-later</strong>，这对以 MIT 假设做过集成规划的使用者是一个<strong>重大条款变更</strong>。<strong>⭐⭐ 「Earlier MIT grants remain valid」指的是历史授权的存续，而</strong>新的<strong>贡献与分发适用 GPL</strong>——这两件事不可混为一谈。**</p>
+<h2 id="_9">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️⚠️⚠️ 最大的元数据风险未变：<code>created_at</code> 不可信。</strong> 任何自动化流程——包括本日报自己的「今日新项目」筛选——若只用 <code>created_at</code>，会把这个 14 个月的项目当成 4 小时前的新项目。<strong>本日报 10-25 起把「用 <code>commits</code> API 最早时间戳交叉验证 <code>created_at</code>」加入筛选规则；10-26 再次验证该规则有效（一次彻底重写没有改变 <code>created_at</code>）。</strong></li>
+<li><strong>⚠️⚠️⚠️⭐ 许可变更的商业影响（本日新增）：宿主运行时从 MIT 变为 GPL-3.0-or-later。</strong> <strong>⭐ 对以 MIT 假设做过集成规划的使用者，这是一个重大条款变更。</strong> README 明写「Earlier MIT grants remain valid」，<strong>但那指的是历史授权的存续，而新的贡献与分发适用 GPL。</strong></li>
+<li><strong>⚠️⚠️ <code>license.spdx_id</code> 现在是 NOASSERTION</strong> —— 本日报把它定性为「混合许可项目的诚实答案」而非缺陷，<strong>但依赖 license 扫描器的自动化流水线会给出「非标准协议」的判断</strong> —— 这对 raven 自身是诚实的，对下游工具是麻烦的。<strong>⭐ 而 <code>LICENSES.json</code> 中 <code>External build inputs</code> 的 <code>review: "requires-release-inventory"</code> 明示「外部构建输入的许可需按 release 清单核对」——即连作者自己都标出了一块未完成区域。</strong></li>
+<li><strong>⚠️⚠️ 单作者</strong>（contributors API 仍返回 1 人，尽管今日合并了一条带 PR 号的 commit）、<strong>subs 4</strong>、<strong>无 release</strong>（分发路径是从源码构建，<strong>这本身就是采用门槛</strong>）。</li>
+<li><strong>⚠️⚠️⭐ 一次彻底重写本身是重大风险信号。</strong> 18,529 KB / 678 commits 的项目在 24 小时内把语言从 Go 换成 C++、把目录结构整个换掉、把许可换掉。<strong>⭐ 这类改动的回归风险极高，而项目没有发布任何 release、没有外部 issue 通道来暴露回归</strong>（oi 8，本日报未读取其内容）。<strong>⭐⭐ 而 <code>native/cpu/</code> 下新增的四个契约测试是本日报能看到的唯一回归防线——但它覆盖的只是 <code>cpu</code> 一个子目录。</strong></li>
+<li><strong>⚠️ 它自己列出的限制</strong>：只支持 Windows 应用（不是 Linux 上的游戏生态）；ReactOS 组件是按需挑选的移植而非全量引入。<strong>⭐ 本日核验 <code>native/upstream/</code> 有 20 个组件目录 109 个文件，其中 13+ 个是 ReactOS 组件——比 10-25 记录的 9 个更多。</strong></li>
+<li><strong>⚠️ 性能优势的边界</strong>：软件 Vulkan 下 71.5 vs 63.0 FPS 的差距在真实商业应用上未必线性；<strong>且这 8 个逻辑 CPU 的环境不具代表性。</strong></li>
+<li><strong>⚠️ 未经第三方复现</strong>：全部 benchmark 为作者自述。<strong>⭐ 而重写后这些 benchmark 是否重测过，本日报未核验。</strong></li>
+<li><strong>⚠️ 构建成本高</strong>：README 给出的 <code>-j2</code>（14 核机器只用 2 个并行）暗示编译很重，<strong>这对只想试一下的人构成实际门槛</strong>——<strong>⭐ 而现在语言换了，这 <code>-j2</code> 是否仍然合适，README 未更新。</strong></li>
+<li><strong>⚠️ <code>RAVEN_PREFIX</code> 快照是唯一的回退屏障</strong>——<strong>而它是破坏性操作的前提</strong>（安装器会改 prefix），<strong>快照机制的实现本窗口未核验</strong>。</li>
+<li><strong>⚠️ X11 后端标注 experimental</strong>，其成熟度本日报未核验。</li>
+<li><strong>⚠️ <code>internal/compat/</code> 已被 <code>native/</code> 取代，而兼容矩阵的数据规模仍未核验</strong>（10-25 记录的缺口延续；<code>scripts/native-app-matrix.py</code> 与 <code>scripts/benchmark-app-matrix.py</code> 本窗口仅从 README 得知存在，未读代码）。</li>
+</ul>
+<h2 id="_10">与同类项目的关系</h2>
+<ul>
+<li><strong>vs Wine：最直接的对照。</strong> Wine 是「复用 Wine 的实现，用 winetricks 补洞」；raven 是「自己实现 Win32 语义，按自己的兼容度表说话」。<strong>⭐ 二者的关键差异在可核验性</strong>：Wine 的兼容性靠社区与发行版测试网，raven 靠一张自己维护的评分表——<strong>后者对单次评估更有用，前者对生态更有用。</strong></li>
+<li><strong>vs Soda / WineD3D 等实验性兼容层：raven 与 Soda 的 benchmark 被放在同一张表里四轮交替比较</strong>——<strong>这本身就是一种罕见的做法：把自己的项目放在竞品的基准表里，而不是单发一个自己的数字。</strong></li>
+<li><strong>vs 虚拟机方案（QEMU/KVM + Windows）：性能与兼容性上 raven 明显占优（直接执行机器码），但隔离性与「什么都能跑」上虚拟机占优。</strong> raven 的沙箱是「不能触达 Linux」的单向隔离，不是完整虚拟化。</li>
+<li><strong>vs CrossOver / Wine Proton：它们是打包好的商业发行版，raven 是从源码构建的工程</strong>——<strong>因此它的使用门槛完全不同：Proton 装完即用，raven 需要 CMake + C++20 + MinGW + 一堆图形依赖。</strong></li>
+<li><strong>⭐⭐ vs 本日报 10-26 同日的 <code>trailofbits/brotli-checker</code>（<code>LICENSES.json</code> / <code>verified_on</code> / <code>SECURITY.md</code>）：</strong> ⭐⭐ <strong>两者是同一条工程原则在两个维度的实现</strong> —— raven 的 <code>LICENSES.json</code> 把<strong>许可边界</strong>结构化并配 <code>review_date</code>，brotli-checker 的 <code>fingerprints.json</code> 把<strong>安全指纹</strong>结构化并配 <code>verified_on</code>。<strong>⭐⭐⭐ 而两者都做了一件关键的事：都没有假装自己是完整的</strong>（raven 有 <code>review: "requires-release-inventory"</code>，brotli-checker 有 <code>SECURITY.md</code>「snapshots, and an old checkout does not automatically receive new guidance」）。**</li>
+<li><strong>⭐⭐ vs 本日报 10-26 同日的 <code>KohakuBlueleaf/KohakUnlock</code>（<code>NOTICE.md</code> 溯源链）：</strong> <strong>⭐⭐ 同样是把「来源与许可」结构化</strong> —— KohakUnlock 的 <code>NOTICE.md</code> 记录<strong>代码来源链</strong>（<code>haohervchb/Turing-unlock</code> → <code>PZH1gdmu/CMP40HX-Unlock</code> → CMP 90HX → Jon Pry），raven 的 <code>LICENSES.json</code> 记录<strong>文件级许可归属</strong>。<strong>⭐⭐⭐ 而两者都做了一件关键的事：都没有假装自己是原创的</strong>（raven 明写「Earlier MIT grants remain valid」，KohakUnlock 明写「Public availability is not by itself redistribution permission」「No upstream endorsement implied」）。</li>
+<li><strong>vs <code>songjianyang/xss-audit</code>（本批）：唯一的共同点是都在处理「一个已经存在的东西的兼容性」，且都在文档里明确列出「什么还不支持」。</strong></li>
+</ul>
+<h2 id="_11">是否值得持续跟踪</h2>
+<p><strong>值得，且这是本日唯一一个「应当被当作方法论样本而非产品候选」的项目。</strong></p>
+<ul>
+<li><strong>⭐ 理由</strong>：它 678 个 commit 的实现本身不是一个能在短期内评估完的对象（<strong>本档案对兼容矩阵的实际数据规模仍然没有核验</strong>），但它的<strong>三份诚实工程文档（兼容评分表、benchmark 作废与交替说明、测试跳过条件公开）加上今日新增的第四份（机器可读许可清单）是可以立刻被其他团队抄用的</strong>。</li>
+<li><strong>⭐⭐⭐ 而本日新增了一个更重要的理由：这四份方法在一次彻底重写之后全部存活。</strong> <strong>⭐⭐⭐ 这把「raven 值得学」从「一个项目的偶然优点」升级成了「一套与实现无关的方法论」——而这一点只有经历过一次语言级重写才能证明。</strong></li>
+<li><strong>⭐⭐ 作为元数据研究对象，它的价值更高</strong>：它是本日唯一一个<strong>被改名、且改名时间戳会污染 <code>created_at</code> 排序</strong>的项目，<strong>这个案例本身值得被记住。</strong> <strong>⭐⭐⭐ 而本日它又加了一条新证据：一次彻底重写也没有改变 <code>created_at</code>。</strong></li>
+<li><strong>⭐⭐⭐ 而本日最实际的观察点是它会不会发第一个 release</strong>：一个把宿主改成 GPL 的项目，其分发形态的变化（尤其是 <code>docs/packaging.md</code> 的要求如何影响下游打包）是<strong>GPL 转换项目里最典型的难题</strong>——<strong>⭐⭐⭐ 而它的解决方式（机器可读清单 + 组件级 review 状态）正是本日报希望看到后续验证的地方。</strong></li>
+</ul>
+<h2 id="_12">后续观察点</h2>
+<ol>
+<li><strong>⭐⭐⭐ 是否发布第一个 release，以及 <code>docs/packaging.md</code> 对下游打包的实际影响</strong> —— <strong>⭐⭐⭐ 这是 GPL 转换项目最典型的难题（如何在分发时附带对应源码），也是本档案最想看到后续验证的部分。</strong></li>
+<li><strong>⭐⭐⭐ 兼容矩阵的实际规模</strong>（<code>scripts/native-app-matrix.py</code> 与 <code>scripts/benchmark-app-matrix.py</code> 的数据来源与条目数——<strong>这是它最核心也最未知的部分</strong>，也是本档案的明确待核验项）</li>
+<li><strong>⭐⭐ <code>LICENSES.json</code> 中 <code>review: "requires-release-inventory"</code> 的那一条何时变成 <code>reviewed</code></strong> —— <strong>⭐⭐ 即它是否会补齐「外部构建输入」的许可清单。</strong></li>
+<li><strong>⭐⭐ <code>review_date</code> 的更新节奏</strong>（当前 "2026-10-25"）—— <strong>⭐⭐ 一个会过期的清单需要维护频率来保证有效。</strong></li>
+<li><strong>⭐⭐ 重写后的 benchmark 是否重测</strong>（10-25 记录的 71.5 FPS 等数字在 README 中<strong>仍然存在且未变</strong>，但<strong>在语言级重写后未标注重测时间</strong>——<strong>⭐⭐ 这是一个值得追问的细节：README 的 benchmark 表里没有日期戳。</strong>）</li>
+<li><strong>⭐⭐ X11 后端是否从 experimental 毕业</strong>（<code>-DRAVEN_DESKTOP_WAYLAND=OFF</code> 的存在说明它想支持无 Wayland 环境）</li>
+<li><strong>⭐ 是否支持 ARM64 宿主</strong>（README 只写 Linux on x86_64）</li>
+<li><strong>⭐⭐ 是否继续在自己的仓库里维护 <code>docs/benchmarks.json</code> 里被作废的数据</strong>——<strong>这是「作废数据是否留痕」的一个长期观察点</strong></li>
+<li><strong>⭐ <code>--restore-prefix</code> 的快照机制是否可靠</strong>（这是它破坏性操作的唯一屏障）</li>
+<li><strong>⭐⭐⭐ 重写后是否会接受更多外部 PR</strong>（今日仅一条 #13）——<strong>⭐⭐⭐ 这是判断「单人主导的实验项目」是否正在变成「有社区的工程项目」的唯一指标，也是本日报对其可持续性的核心观察点。</strong></li>
+</ol>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-25T22:55:09Z 快照) | Stars: 378 | Forks: 8 | Subscribers: 4 | Open Issues: 8 | License: <strong>NOASSERTION</strong>（根 LICENSE 为 GPL-3.0-or-later；宿主运行时 GPL-3.0-or-later，自有 guest 适配器 MIT，详见 LICENSES.json 11 个组件） | 语言: <strong>C++</strong> | <code>created_at</code> 2026-10-24T17:13:42Z（<strong>改名时间戳</strong>） | <strong>678 commits，最早 2025-09-05T18:51:56Z</strong> | contributors 1 人 | 无 release | 18529 KB | 354 个 C/C++ 文件，Go 文件 0 个
+附：<code>mirkobrombin</code> 账号创建于 2014-10-31，159 个公开仓库、483 followers；同日新建 <code>mirkobrombin/raven-website</code>（useraven.org）；重写与重新许可的两条关键 commit 为 2026-10-25T10:01:28Z「chore: license the host under GPLv3 and preserve guest terms」与 2026-10-25T10:14:38Z「chore: remove the legacy Go runtime and tooling」
+证据边界: <code>native/</code> 各子目录（cpu/desktop/graphics/nt/pe）的具体职责划分未逐目录核验；<code>docs/packaging.md</code> 的分发要求未核验；<code>scripts/</code> 下各脚本代码未读；重写后的 benchmark 是否重测未核验（README benchmark 表无日期戳）；X11 后端成熟度未核验；oi 8 的内容未核验；重写动因与 GPL 转换动机仓库未给原文说明；兼容矩阵数据规模仍未核验</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

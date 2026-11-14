@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-11-08 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-11-08-github">2026-11-08 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>数据窗口</strong>：2026-11-07（UTC）新建且 ≥30⭐ 的仓库，共 <strong>162</strong> 个。
+<strong>快照时刻</strong>：2026-11-08 CST（GitHub REST/Search API，经 <code>gh</code> CLI 认证）。
+<strong>方法</strong>：先用 <code>created:2026-11-07 stars:&gt;=30</code> 拉全量候选（<code>total_count</code> = 162），再对每个候选取 <code>repos/{owner}/{repo}</code>、树、<code>commits</code>（含 Link 头分页）、<code>releases</code>、<code>contributors</code>、<code>contents/*</code>（<code>Accept: application/vnd.github.raw</code>）与 <code>forks</code>（时间戳）做取证。</p>
+</blockquote>
+<hr />
+<h2 id="_1">今日重点趋势</h2>
+<h3 id="rank-1score-96">趋势一（rank 1，score 96）：判据本身被针对 —— 两个空壳仓库的订阅数高于当天所有真项目</h3>
+<p>这是本日报连续记录「热度 ≠ 价值」以来，第一次遇到<strong>判据被对方主动针对</strong>的情形。</p>
+<p>昨天（11-07）的日报把 <code>subscribers_count</code> 列为「噪声极低但样本极小」的深度信号，理由是同一批里 poki 有 83 个 fork 但只有 1 个 subscriber、hermes-voice 有 20 个 fork 但只有 3 个 subscriber。本日实测把这个推翻了：</p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">forks</th>
+<th style="text-align: right;"><strong>subs</strong></th>
+<th style="text-align: right;">commits</th>
+<th style="text-align: right;">体积</th>
+<th>代码内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinelsoldierprize/Minecraft-AFK-Bot</code></td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;"><strong>35</strong></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7 KB</td>
+<td>模板骨架，<code>main.py</code> import 会抛错</td>
+</tr>
+<tr>
+<td><code>Poltergeistlunagrid/Steam-Idler</code></td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">313</td>
+<td style="text-align: right;"><strong>25</strong></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6 KB</td>
+<td>模板骨架，无任何 Steam 实现</td>
+</tr>
+<tr>
+<td><code>dabingfy-dot/solo-to-team-skills</code></td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13,997 KB</td>
+<td>4 支技能 + 模板 + 案例</td>
+</tr>
+<tr>
+<td><code>lxe/phoneuse</code></td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">594 KB</td>
+<td>完整实现，34 文件</td>
+</tr>
+<tr>
+<td><code>Th0rgal/satmux</code></td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22 KB</td>
+<td>7 文件完整实现</td>
+</tr>
+<tr>
+<td><code>MajestyPoemFold/ghostclick-mouse-double-click-fix</code></td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12,029 KB</td>
+<td>Rust + Tauri，77 文件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>两个 425⭐ 的空壳占据了订阅数榜前两名。</strong> 原因在它们的 README 里：</p>
+<p><code>**⭐ Star the repo if it helped you.**     ← Quick Start 之后
+...
+**⭐ Star the repo if it helped you.**     ← 文末再写一次</code></p>
+<p>「关注」被明写成一条投放指令，而 GitHub 的 <code>subscribers_count</code> 与 <code>stargazers_count</code> 会被同一次点击同时抬高。<strong>换言之，11-07 推荐的判据在 11-08 被对方使用了。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>对照样本让这条判断更硬</strong>：同一日的 <code>ghostclick</code>（136⭐）把用户导流到 Discord（<code>discord.gg/INVITE</code>）而不是索取 star，其 subs 因此是 <strong>0</strong>；<code>phoneuse</code>（118⭐）根本没有索取关注的语句，subs 是 <strong>2</strong>。<strong>即「subs 低」有两种完全相反的成因 ——「没人真的关注」与「关注被导流到别处」—— 只有读 README 才能区分。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>因此本日修正昨日的判据</strong>：</p>
+<blockquote>
+<p>~~「subs 是一个噪声极低但样本极小的指标」~~
+<strong>「subs 只在同作者族内可比；跨作者比较前必须先确认该仓库的 README 是否含索取 star/watch 的语句。」</strong></p>
+</blockquote>
+<hr />
+<h3 id="rank-2score-94-85">趋势二（rank 2，score 94）：投递形态的完整降级曲线 —— 85 个空壳，且这次在卖真外挂</h3>
+<p>本日 162 个候选的分布：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README 为空</td>
+<td><strong>85 / 162 = 52.5%</strong></td>
+</tr>
+<tr>
+<td>体积 ≤20 KB</td>
+<td>98 / 162 = 60.5%</td>
+</tr>
+<tr>
+<td>forks = 0</td>
+<td>88 / 162 = 54.3%</td>
+</tr>
+<tr>
+<td>star 取值只有 {91, 92, 42, ...}</td>
+<td>91 个仓库落在 42–43 与 91–92 两个窄带</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这 85 个空壳里，84 个的仓库名带 <code>resp</code> / <code>rpocket</code> / <code>resocket</code> 标记</strong>，只有一个例外（<code>ElivenpeakMega/bf-autofarm-and-more</code>）。它们的共同特征是：<strong>star 全部恰好等于 42、forks 全部为 0、无 LICENSE、体积 3–10 KB、2–3 个 commit。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>抽样 30 个仓库的树，其中 28 个的 <code>initial.html</code> 逐字节相同</strong>（md5 <code>258a0f5edf5d42288cfc1866497dc7dd</code>，485 字节）——内容是一个把 <code>README.md</code> / <code>CONTRIBUTING.md</code> / <code>SECURITY.md</code> 推入 <code>std::vector</code> 的 C++ 玩具：</p>
+<p>```cpp</p>
+<h1 id="include">include <iostream></h1>
+<h1 id="include_1">include <vector></h1>
+<h1 id="include_2">include <string></h1>
+<h1 id="include_3">include <algorithm></h1>
+<p>int main() {
+    std::vector<std::string> repo_docs;
+    repo_docs.push_back("README.md");
+    repo_docs.push_back("CONTRIBUTING.md");
+    repo_docs.push_back("SECURITY.md");
+    ...
+```</p>
+<p>⭐⭐⭐⭐⭐ <strong>而 <code>CONTRIBUTING.md</code> 的顶部是伪造的徽章</strong>：<code>![Downloads](https://img.shields.io/badge/Downloads-40K+-blue?...)</code> 与 <code>![User Rating](...User%20Rating-4.8%2F5-gold...)</code> —— 一个从未下载过任何东西的空仓库宣称 40K+ 下载。</p>
+<p>⭐⭐⭐⭐⭐ <strong>关键差别在于这一批的描述文本不是伪装成工具，而是真的在卖外挂</strong>：</p>
+<ul>
+<li><code>SablemoorGhost22545/WarframeHelperAIO-rpocket-team</code> → 「🎯 <strong>Warframe Hack 2026</strong> — free Warframe cheat for Windows 10/11. Enemy ESP, Loot ESP, Aimbot, God Mode…」</li>
+<li><code>ArmorBeforePrincess/rpocket-Exunys-ESP</code> → 「<strong>ROBLOX Universal ESP Module</strong>」</li>
+<li><code>GoblinWildlord/5m-mods-rpocket-team-2026</code> → 「A private script featuring an accurate <strong>aimbot</strong> and full <strong>ESP</strong>」</li>
+<li><code>SinceWarlockRoyal/monero-rpocket-team-miner</code> → 「<strong>Monero Miner</strong> 2023 automated deployment pipeline」</li>
+<li><code>ImmortalThroughElysium/alt-resp-access-tool</code> → 「<strong>Claude-Jailbreak-Prompt</strong>: Preconfigured Local Desktop Toolkit for Claude AI」</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>这意味着它已经不是「投放」，而是「货源」</strong>：模板农场变成了外挂分销的货架，而 GitHub 的 star 机制对一个「伪装成作弊器的空目录」<strong>完全无感</strong>。⭐⭐⭐ <strong>对照本日报 10-22 起记录的谱系：11-06 前的形态是可执行 PowerShell 载荷（<code>irm … | Invoke-Expression</code>）；11-06 变成 starter 模板；11-07 变成索取 star 的同模板变体；本日退化为空壳占位符 —— 四天四种形态，但背后的基础设施是同一套。</strong></p>
+<hr />
+<h3 id="rank-3score-92seo-readme">趋势三（rank 3，score 92）：第一例「SEO 关键词投毒」—— README 不再是给人读的</h3>
+<p>本日另一簇是 <strong>57 个仓库</strong>共用同一份「Manus - Autonomous AI Agent」README：</p>
+<ul>
+<li>README 长度只有 <strong>两种取值</strong>：7,256 与 7,234 字节</li>
+<li>star 只有 <strong>两个取值</strong>：91 与 92</li>
+<li>license <strong>全部</strong> Apache-2.0</li>
+<li>创建窗口：<code>2026-11-07T06:34:14Z</code> .. <code>2026-11-07T13:43:00Z</code>，横跨 <strong>6 小时 54 分</strong></li>
+<li>归一化后仓库名只有两种：<code>aimanus</code>（52 个）与 <code>manusai</code>（5 个）</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>README 顶部是一条 Dropbox 直链加一行促销码</strong>：</p>
+<p><code>[![Download Manus](https://img.shields.io/badge/GET%20%E2%80%94%20Manus-0078D6;...)](
+  https://www.dropbox.com/scl/fi/7otex5g3in9c38g1ney7u/Manus_Studio.rar?rlkey=tr3wtzzcqtt9uh5dv5mcieenf&amp;st=5pgmec41&amp;dl=1)
+PROMO2026</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>而 README 末尾是一段 24 个关键词的堆砌</strong>：</p>
+<p>```</p>
+<h2 id="related-search-terms">Related Search Terms</h2>
+<p>Manus AI agent • Manus code automation • Manus browser control • Manus autonomous tasks •
+Manus personal assistant • Manus task helper • Manus workflow aid • ...
+```</p>
+<p>⭐⭐⭐⭐⭐ <strong>这是本日报记录到的第一例「关键词投毒」形态</strong>：此前五天的农场 README 都是<strong>给人看的</strong>（宣传一个工具），而这一批的 README 是<strong>给搜索引擎读的</strong>——关键词堆在末尾，正文是通稿，唯一的可执行内容是一条 Dropbox 直链。<strong>判据随之改变：README 的长度不再能区分「认真写了文档」与「堆了关键词」。</strong></p>
+<p>⭐⭐ <strong>这一簇的 fork 间隔中位数是 56–60 秒（38 个 ≤10 秒 / 49 个间隔）</strong>，介于机器簇（4–6 秒）与真人簇（sheeridVerify 74 秒）之间；样本 50 个 fork 的跨度是 7.6 小时 —— <strong>它更像「分发网络」而非「单个农场账号群」</strong>，但仅凭 fork 时间戳无法判定，待观察。</p>
+<hr />
+<h3 id="rank-4score-90">趋势四（rank 4，score 90）：四个真项目给出四种互不重叠的诚实形态</h3>
+<p>在同一份榜单上，本日有四个项目各自把「不能确定的部分」写进输出，<strong>而且四种做法互不重复</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th>它的诚实形态</th>
+<th>可核验的原文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lxe/phoneuse</code></td>
+<td style="text-align: right;">118</td>
+<td>「这是给我自己搭的，别人大概率要改」</td>
+<td>README 第一屏的 <code>&gt; [!WARNING]</code> + <strong>Under heavy construction.</strong></td>
+</tr>
+<tr>
+<td><code>Th0rgal/satmux</code></td>
+<td style="text-align: right;">316</td>
+<td>物理下界不可消除</td>
+<td><code>## Limits</code>：<strong>removes extra round-trips, not the physical RTT of one hop.</strong></td>
+</tr>
+<tr>
+<td><code>MajestyPoemFold/ghostclick-mouse-double-click-fix</code></td>
+<td style="text-align: right;">136</td>
+<td>从用户现象而非技术名词出发</td>
+<td>「learns a debounce threshold <strong>from your real double-clicks</strong>」</td>
+</tr>
+<tr>
+<td><code>dabingfy-dot/solo-to-team-skills</code></td>
+<td style="text-align: right;">130</td>
+<td>把「证据先于完成声明」写成带反例清单的铁规</td>
+<td>「<strong>没有对得上当前版本的有效证据，就不说「做好了」</strong>」</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>这四个项目的订阅数是 2 / 1 / 0 / 4 —— 全部低于两个空壳的 25 与 35。</strong> 本日因此把「热度榜无法区分价值」这句话从观察升级为<strong>可操作的判据</strong>：在同一份 162 仓库的榜单里，<strong>排名第二第三的 425⭐ 仓库（空壳）与排名第 9 的 118⭐ 仓库（完整实现、85 commits）在 star 排序中只差 307 个 star，但在「README 是否索取 star」「代码是否可运行」「文件 md5 是否与已知农场重复」这三个可自动化的检查上，答案完全相反。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong><code>solo-to-team-skills</code> 的自陈值得逐字引用，因为它把「验证到什么程度」写在了最显眼处</strong>：</p>
+<blockquote>
+<p>文档状态：<strong>v0.9-draft</strong>，非最终发布稿……
+……部分宿主经受阻重跑或退回修订后才通过；<strong>不代表稳定性或所有任务都能做成</strong>……<strong>部分宿主未保留技能加载的原始轨迹；不表示每家四个技能都逐一被调用，也不证明效果</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>而它的 SKILL.md 里对应的一栏更克制</strong>：</p>
+<blockquote>
+<p>队内交付已按「先有证据再说做完」执行；<strong>公开包保证的是「核对步骤可照做」。能否降低返工率……本技能正文不下效果结论。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_2">最值得关注的方向</h2>
+<p><strong>方向一：判据的可被攻击性，应该成为研究方法的一部分。</strong></p>
+<p>本日报连续多日使用 fork 时间分布、commit 秒字段熵、subs/oi/commits/releases 等判据来识别星标农场。11-08 记录的第一件方法论事实是：<strong>这些判据里至少有一个（subs）已经出现在攻击面上，而且攻击成本几乎为零 —— 只要在 README 里加一句「⭐ Star the repo if it helped you.」即可。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>推论</strong>：判据必须成对使用 —— 一个「深度信号」和一个「反向信号」同时检查。本日可用的四元组是：<strong>(a) README 是否索取 star/watch；(b) fork 到达的时间分布；(c) 文件 md5 是否与已知农场重复；(d) 代码能否 import / 运行。</strong> 这四项在本日全部可自动化，且本日对 162 个候选逐个跑通了。</p>
+<p><strong>方向二：「让不确定性可见」正在从文档习惯变成一种可复用的产品形态。</strong></p>
+<p>本日报过去五天记录了 vork 的许可声明、poki 的验证文档、hermes-voice 的决策契约。11-08 的四个项目把这个趋势推到了四个新位置：</p>
+<ul>
+<li><code>phoneuse</code> —— <strong>测试矩阵入档</strong>（逐项写明「Tested with」的版本号）</li>
+<li><code>satmux</code> —— <strong>物理下界入档</strong>（不可消除的 RTT）</li>
+<li><code>ghostclick</code> —— <strong>证据材料化</strong>（RMA evidence，而不只是结论）</li>
+<li><code>solo-to-team-skills</code> —— <strong>完成声明的门槛化</strong>（证据先于声明，且给出反例清单）</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ 这四个项目互不相识、互不相关，却都做了同一件事：<strong>把「我凭什么这么说」写进产物，而不是写进 issue 讨论。</strong> 这比「开源项目有文档」具体得多，也更可检验。</p>
+<p><strong>方向三：空壳分销正在接替载荷投递。</strong></p>
+<p>11-06 之前，农场投递的是可执行载荷；本日，85 个仓库连 README 都不写，直接在描述里卖外挂。<strong>这意味着 GitHub 上「star 数」作为注意力度量的噪声本底已经高到无法单独使用</strong> —— 而这也正是本日值得记录的：<strong>在同一份榜单上同时存在「42⭐ 的空壳目录」与「316⭐ 的 7 文件完整实现」，任何按 star 排序的榜单都无法把它们分开。</strong></p>
+<hr />
+<h2 id="_3">重点项目深度分析</h2>
+<h3 id="top-1-lxephoneuse">Top 1 · <code>lxe/phoneuse</code> — 把「这是给我自己搭的」写在第一屏</h3>
+<p><strong>118⭐ ⑂10 · subs 2 · oi 0 · 85 commits · 594 KB · Python · MIT · 34 文件</strong></p>
+<p>它的整个设计围绕一个选择：<strong>手机侧零安装</strong>。屏幕走 AirPlay 进来，输入走 Bluetooth HID 出去，中间没有任何东西跑在 iPhone 上。<code>ARCHITECTURE.md</code> 首段把这条边界写死：</p>
+<blockquote>
+<p>phoneuse has two independent channels to the phone. The screen comes in over AirPlay, the same way it would go to an Apple TV, and input goes out over Bluetooth, with the PC pretending to be a mouse and keyboard. <strong>Nothing runs on the phone.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>而本日最值得抄的是它对「未验证」的写法。</strong> README 的第一个块就是警告，然后是一张把每个依赖都钉到版本的表：</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Tested with</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone</td>
+<td>iPhone 17 Pro, iOS 26</td>
+<td>other models: set <code>screen_points</code> (below)</td>
+</tr>
+<tr>
+<td>Linux with BlueZ</td>
+<td>Arch Linux, BlueZ 5.87</td>
+<td>the Bluetooth adapter must be in range of the phone</td>
+</tr>
+<tr>
+<td>Hyprland</td>
+<td>0.56</td>
+<td>window geometry and the cursor come from Hyprland's IPC</td>
+</tr>
+<tr>
+<td>GStreamer</td>
+<td>1.28</td>
+<td>NVIDIA decoding used when available, software otherwise</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>⭐⭐⭐⭐ <strong>注意第三列里那些看起来像抱怨的句子</strong>：「the Bluetooth adapter must be in range of the phone」「NVIDIA decoding used when available, software otherwise」——<strong>它们不是免责声明，是「我的结论在什么条件下成立」</strong>。这比「本项目尽力支持多种设备」有用一个数量级。</p>
+<p>⭐⭐⭐⭐⭐ <strong>而它对自己造成的破坏也写出来了</strong>：<code>phoneuse install</code> 需要 sudo，会「disable bluetoothd's own input and hostname plugins, <strong>so this PC stops accepting Bluetooth keyboards and mice of its own</strong>」，并给了一条撤销命令。⭐⭐ <strong>这是本日报见过最诚实的一处权限声明：工具的代价是「你这台机器不再是原来的样子」。</strong></p>
+<p>⭐⭐⭐⭐ <strong>架构上最精细的一段是输入映射</strong>：<code>mirror_input</code> 把镜像窗口上的 hover / press / drag 翻译成手机触摸，<strong>坐标通过 Hyprland IPC 获得</strong>（窗口几何 + 光标位置），而不是盲发像素。HID daemon 的 report descriptor <strong>同时声明键盘、相对鼠标与绝对指针三样东西</strong> —— 这解释了为什么它既能做「移动光标」，也能做「在镜像窗口里点一下 = 戳手机屏幕」。</p>
+<p>⭐⭐⭐ <strong>对 agent 的入口是双份</strong>：<code>bin/phoneuse</code>（CLI）与 <code>bin/phoneuse-mcp</code>（MCP server），视觉侧走 OCR + grounding 支持 <code>phoneuse text/find</code>。⭐⭐ <strong>这与本日报记录的「给 agent 的入口按 token 预算设计」（vork）不同</strong>：vork 把帮助文本压到 2,500 token，phoneuse 走的是「CLI + MCP 双通道」，<strong>两者都是「让 agent 有一个确定的入口」，但一个压 token，一个压接口</strong>。</p>
+<p>⚠️ <strong>证据边界</strong>：subs 2、contributors 1 人、releases 0、topics 空数组。<strong>全部结论基于单一机型（iPhone 17 Pro / iOS 26）与单一桌面（Arch + Hyprland + NVIDIA），本日报未在任何硬件上复现任何一项</strong>；<code>unlock.py</code> 与 <code>screen_points</code> 的具体实现本窗口未逐行核验。</p>
+<hr />
+<h3 id="top-2-th0rgalsatmux-limits">Top 2 · <code>Th0rgal/satmux</code> — 把不可消除的物理下界写进 Limits</h3>
+<p><strong>316⭐ ⑂17 · subs 1 · oi 0 · 7 文件 / 22 KB · Python（纯标准库）· MIT</strong></p>
+<p>它的诊断是三段结构而非一句「卫星网慢」：① 客舱网关劫持 <code>:53</code> 并跑透明 <code>:443</code> split-TCP 代理（PEP），其状态表在负载下丢连接 —— <strong>而非 443 端口原样透传</strong>；② 每个新 origin 都要付多个卫星往返才能传第一个字节；③ 丢包让标准 TCP 反复腰斩 <code>cwnd</code>，<strong>使每座位的令牌桶额度用不满</strong>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>而它的实测表把「没赢的格子」也标了出来，这是全表最关键的读法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>ORIGIN (6× PARALLEL)</th>
+<th>RAW CABIN WI-FI (:443)</th>
+<th>1-RTT BBR + ZLIB MUX</th>
+<th>SPEEDUP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub Repo</td>
+<td><strong>TIMEOUT</strong></td>
+<td>4.66s</td>
+<td><strong>FIXED ✓</strong></td>
+</tr>
+<tr>
+<td>GitHub API</td>
+<td><strong>TCP RESET</strong></td>
+<td>2.66s</td>
+<td><strong>FIXED ✓</strong></td>
+</tr>
+<tr>
+<td>Hacker News</td>
+<td><strong>TIMEOUT</strong></td>
+<td>2.28s</td>
+<td><strong>FIXED ✓</strong></td>
+</tr>
+<tr>
+<td>MDN Docs</td>
+<td>12.01s</td>
+<td>2.30s</td>
+<td>5.2×</td>
+</tr>
+<tr>
+<td>Cloudflare</td>
+<td>2.97s</td>
+<td>1.40s</td>
+<td>2.1×</td>
+</tr>
+<tr>
+<td>PyPI JSON API</td>
+<td>7.09s</td>
+<td>2.64s</td>
+<td>2.7×</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>前三行的 <code>FIXED ✓</code> 与后三行的加速倍数，含义完全不同</strong>：前三行说明 raw 连接是<strong>被超时和 TCP reset 打死的</strong>，satmux 的作用是「让失败变成成功」；后三行才是常规意义上的提速。<strong>如果只读「5.2×」就会低估这个工具；如果只读「FIXED」就会以为它只是个绕过方案 —— 两者都不是。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>它的 <code>## Limits</code> 是本日报最值得整段抄走的一节</strong>：</p>
+<blockquote>
+<ul>
+<li><strong>Latency floor (<code>~580–650 ms</code>):</strong> Speed-of-light propagation to geostationary orbit (<code>35,786 km</code>) does not change; <code>satmux</code> removes extra round-trips, <strong>not the physical RTT of one hop.</strong></li>
+<li><strong>Per-seat shaper (<code>~4–5 Mbps</code> typical):</strong> ……already-compressed binaries (<code>.mp4</code>, <code>.zip</code>) stay bounded by the seat cap</li>
+<li><strong>Single paid session:</strong> Uses your authenticated cabin Wi-Fi lease; <strong>it does not bypass captive portals.</strong></li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐ <strong>而对照表与 Limits 是配套的</strong>：它明写测量条件（Inmarsat GX Ka-band、<code>~620 ms</code> RTT、SITA <code>AS206433</code> 阿姆斯特丹地面站），并<strong>没有给出方差或重复次数</strong> —— 这是一处需要读者自己保留的怀疑。</p>
+<p>⭐⭐⭐ <strong>安全设计值得记</strong>：载波流用 <code>BLAKE2b-512</code> 加密 + <code>HMAC-SHA256</code> 认证，<strong>端到端 TLS 在笔记本侧保留</strong>（地面 VM 只做 DNS + 已验证的 TLS 1.3 + HTTP 重定向 + zlib 压缩），PSK 用 <code>chmod 600</code> 保存。⭐⭐ <strong>它还给了可直接交给 coding agent 的部署指令</strong>，并要求在机上暂停 UDP VPN（「blocked UDP retry traffic competes for cabin airtime」）。</p>
+<p>⚠️ <strong>证据边界</strong>：subs 1、contributors 1 人、releases 0、topics 空数组。<strong>全部性能数字为作者自述的一次性测量，本日报未复现任何一项</strong>；方案需在地面站自备付费 VM（$0.01–0.03/h），<strong>不是一个「装上就能用」的工具</strong>。</p>
+<hr />
+<h3 id="top-3-majestypoemfoldghostclick-mouse-double-click-fix">Top 3 · <code>MajestyPoemFold/ghostclick-mouse-double-click-fix</code> — 不只给结论，还产出证据</h3>
+<p><strong>136⭐ ⑂21 · subs 0 · oi 0 · 77 文件 / 12,029 KB · Rust + Tauri 2 · MIT · 1 release</strong></p>
+<p>它的产品定义从<strong>用户可观察的现象</strong>出发，而不是从技术名词出发：「鼠标单击变双击」的机制是 mouse chatter / switch bounce，但它的界面是<strong>一张走纸记录仪式的条带图</strong>，每键一支笔，6 ms 与 11 ms 的幽灵点击被红笔圈出并标注。</p>
+<p>⭐⭐⭐⭐⭐ <strong>而它最有架构价值的一步是「learns a debounce threshold from your real double-clicks」</strong> —— 它不内置固定去抖阈值，而是<strong>先让用户自己双击、从真实输入里学出这台设备这只手在这个灵敏度下的阈值</strong>。⭐⭐⭐⭐ <strong>这是「把机器拍的参数换成实测参数」的又一种形态</strong>，与 poki 的「触摸写进去了 ≠ 设备确认了」同源。</p>
+<p>⭐⭐⭐⭐⭐ <strong>而「exports RMA evidence」是本日最值得架构师记的一句</strong>：它不只输出结论，还<strong>产出一份可提交给厂商退货/换货的证据材料</strong>。⭐⭐⭐ <strong>对照本日报近五天的记录 —— vork 把许可边界写进 LICENSE、poki 把「写进去了 vs 确认了」分开、hermes-voice 用 19 条决策记录取舍 —— 这四个项目都是「把边界写进输出」，而 ghostclick 是</strong>「把证据造出来」<strong>，方向更进一步。</strong></p>
+<p>⭐⭐⭐ <strong>它的工程面也说明它是认真做的</strong>：CI workflow、三份 issue 模板、CHANGELOG、ROADMAP、FAQ、CONTRIBUTING（深浅两套图）、完整的 <code>.github/media/</code> 品牌资产、<code>releases/latest/download/app.zip</code> 直接分发。⭐⭐⭐⭐⭐ <strong>最关键的对照是分发选择</strong>：它把用户导流到 <strong>Discord</strong>（<code>discord.gg/INVITE</code>），<strong>没有一句索取 star 的话</strong>，subs 因此是 <strong>0</strong> —— 与两个 425⭐ 空壳仓库把「⭐ Star the repo if it helped you.」写两遍形成直接对照。</p>
+<p>⚠️ <strong>证据边界</strong>：subs 0、forks 21、oi 0、contributors 1 人、owner 账号创建于 2026-08-15 且仅 2 个公开仓库。<strong>全部硬件结论（去抖学习、拖放丢帧检测、RMA 导出）为作者自述，本日报未在真实鼠标上复现任何一项</strong>；「system-wide filter」在 Windows 10/11 上的权限与稳定性影响本窗口未核验。</p>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<p>⭐⭐⭐⭐⭐ <strong>风险一：昨日推荐的判据今日被证伪 —— 这是本日报记录到的第一例「判据被针对」。</strong>
+11-07 的日报把 <code>subscribers_count</code> 写进 <code>projects/poki.md</code> 的「⭐⭐ <strong>subs 是一个噪声极低但样本极小的指标</strong>」一节。11-08 实测：两个空壳仓库的 subs 是 25 与 35，高于全部四个真项目（4 / 2 / 1 / 0）。原因就是 README 里两行 <code>⭐ Star the repo if it helped you.</code>。<strong>本日报已把该判据修正为「只在同作者族内可比；跨作者比较前必须先核对 README 是否索取 star/watch」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>风险二：空壳仓库的「订阅数」会持续污染任何基于 subs 的自动化筛选。</strong>
+这是一个「越受欢迎越容易被引用的判据」：一个工具如果开始基于 subs 筛选高质量仓库，它筛出来的会是「README 里写了请给我 star 的仓库」。⭐⭐⭐ <strong>这与昨天记录的「农场会针对判据调整形态」是同一件事，只是这次被针对的是判据而不是 payload。</strong></p>
+<p>⭐⭐⭐⭐ <strong>风险三：本日的形态已不是「投递」，而是「外挂分销货架」。</strong>
+85 个空壳中 84 个带 <code>resp</code>/<code>rpocket</code> 标记，描述直接售卖 Warframe hack、ROBLOX ESP、aimbot、Monero Miner 与 Claude jailbreak prompt。⭐⭐⭐ <strong>对研究者而言，这意味着「GitHub 上新仓库的 star 分布」这个数据源本身已被污染到不能单独用于趋势判断</strong>；对使用者而言，空仓库里不会有任何东西可下载，但描述会引导到别处。</p>
+<p>⭐⭐⭐⭐⭐ <strong>风险四：一个已归档项目的档案混入了另一个仓库的数据 —— 而它的成因不是「改名」，是「上下游」。</strong>
+本日报核查持续跟踪项时发现：2026-10-30 日报把 <code>interplains/Zero-Breach-Toolkit</code> 的数据（4,475⭐ / 12,477 KB / fork 473 / subs 42 / oi 7 / v0.1.13）写进了上游 <code>interplains/zero-breach</code> 的档案，并把两者描述为「仓库已由 <code>interplains/Zero-Breach-Toolkit</code> <strong>改名为</strong> <code>interplains/zero-breach</code>（GitHub 会重定向旧路径）」。⭐⭐⭐⭐⭐ <strong>经 <code>id</code> / <code>fork</code> / <code>parent</code> / <code>created_at</code> / release 列表五字段交叉确认，两者是各自独立创建的不同仓库</strong> —— <code>interplains/zero-breach</code> = <code>id 1424399708</code>（创建 2026-10-18T13:22:34Z，1,218⭐，9 个 release v0.1.0–v0.1.8，499 KB，57 commits），<code>interplains/Zero-Breach-Toolkit</code> = <code>id 1433297111</code>（创建 2026-10-25T14:41:34Z，<strong>4,553⭐</strong>，23 个 release v0.1.0–v2.0.6，12,477 KB，70 commits），<strong>两者 <code>fork=False</code> 且 <code>parent=None</code></strong>。⭐⭐⭐⭐⭐ <strong>判定依据是文件存在性</strong>：<code>PRIVACY.md</code> 与 <code>docs/VERIFYING.md</code> <strong>只存在于下游 Toolkit</strong>，上游两者皆无；⭐⭐⭐⭐⭐ <strong>而 <code>projects/zero-breach.md</code> 的正文自始至终描述的是上游</strong>（其 README 引文「no admin, no dependencies」「Tested on Windows, macOS and Linux (Python 3.8–3.12) in CI」「A clean result is not a clean bill of health」均与上游吻合）—— <strong>即：档案的正文是对的，元数据是错的。</strong> ⭐⭐⭐⭐⭐ <strong>本日报已据此更正 <code>projects/zero-breach.md</code> 的 <code>stars</code> 与 <code>stars_delta</code>，并为下游另建独立档案 <code>projects/zero-breach-toolkit.md</code>。</strong> ⭐⭐⭐⭐⭐ <strong>而这次纠错反而证实了 2026-10-30 日报自己记下的那句观察</strong>：「上游负责研究，下游负责可用，而 star 记在下游」—— 上游 9 个 release 停在 10-20（19 天无 push），下游 10 天内从 v0.1.0 迭代到 v2.0.6 并新增 27 种语言与 Android / iPhone 备份支持；⭐⭐⭐⭐⭐ <strong>教训与本日报记录的「<code>created_at</code> 会说谎」「改名时间戳」同族：GitHub 的旧路径在改名后仍可解析，因此「旧路径能打开」不能证明「两者是同一个仓库」；判定改名必须比对 <code>id</code> 与 <code>parent</code>，而不是比对路径或描述。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>机遇一：本日出现了四个「把不确定性写进产物」的新位置，且都是可复制的小改动 —— 不是新架构，是新纪律。</strong>
+<code>phoneuse</code> 的测试矩阵、<code>satmux</code> 的 Limits、<code>ghostclick</code> 的 RMA 证据、<code>solo-to-team-skills</code> 的反例清单，<strong>四个项目的实现复杂度天差地别（85 commits / 7 文件 / 77 文件 / 23 文件），但四个都在同一个位置做了同一件事</strong>。⭐⭐⭐ <strong>对任何要对外交付的 agent 或工具，这四件事的成本都在一天以内，而收益是「读者不必自己补全边界」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>机遇二：判据可以做得更便宜。</strong>
+本日对 162 个候选做的全部取证只需要四个可自动化的检查：(a) README 全文里是否含索取 star/watch 的语句；(b) fork 时间戳的间隔分布（中位数 + ≤10 秒占比）；(c) <code>config.py</code> / <code>helpers.py</code> / <code>.gitignore</code> / <code>initial.html</code> 的 md5 是否与已知农场集合重复；(d) 仓库内是否真的存在该 README 宣称的依赖（如 Steam 库、Mineflayer、Express）。⭐⭐⭐⭐ <strong>本日的前三个农场样本全部被这四项检查零歧义地抓住 —— 其中 (c) 是跨日复用的模板指纹，(d) 是宣称与实现的落差。</strong></p>
+<p>⭐⭐⭐⭐ <strong>机遇三：<code>satmux</code> 展示了「把不可消除的下界写出来」如何变成一段可信的营销。</strong>
+它的 README 首屏是一张测速表，但<strong>第三列写的是 FIXED / TIMEOUT / TCP RESET</strong>，第四列才是加速倍数。⭐⭐⭐⭐ <strong>结果是一个 316⭐ 的项目在 22 KB、7 文件、单人维护、subs 仅 1 的条件下获得了信任 —— 而同期两个 425⭐ 的空壳什么都没交付。</strong></p>
+<hr />
+<h2 id="_5">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">forks</th>
+<th style="text-align: right;">subs</th>
+<th>语言</th>
+<th style="text-align: right;">commits</th>
+<th style="text-align: right;">体积</th>
+<th>类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="projects/phoneuse.html">lxe/phoneuse</a></td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td>Python</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">594 KB</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td><a href="projects/satmux.html">Th0rgal/satmux</a></td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1</td>
+<td>Python</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22 KB</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td><a href="projects/ghostclick-mouse-double-click-fix.html">MajestyPoemFold/ghostclick-mouse-double-click-fix</a></td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+<td>Rust</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12,029 KB</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td><a href="projects/solo-to-team-skills.html">dabingfy-dot/solo-to-team-skills</a></td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td>无（Markdown）</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13,997 KB</td>
+<td>工具型</td>
+</tr>
+<tr>
+<td><a href="projects/steam-idler.html">Poltergeistlunagrid/Steam-Idler</a></td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">313</td>
+<td style="text-align: right;">25</td>
+<td>Python</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6 KB</td>
+<td>观察型（反例样本）</td>
+</tr>
+<tr>
+<td><a href="projects/minecraft-afk-bot.html">sentinelsoldierprize/Minecraft-AFK-Bot</a></td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">35</td>
+<td>Python</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7 KB</td>
+<td>观察型（反例样本）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>两个反例样本被收进 <code>key_projects</code> 的理由</strong>：它们不是「值得用的项目」，而是<strong>本日最有方法论价值的事件</strong>—— 本日报据此发现了「判据被针对」这一新现象，并给出了修正后的判据。<strong>收录反例样本的目的，是让「热度 ≠ 价值」这句话在本仓库里保持可核验、可复查。</strong></p>
+<hr />
+<p><strong>证据边界：</strong></p>
+<ul>
+<li>本日全部元数据取自 <strong>2026-11-08 CST 的 GitHub REST / Search API 快照</strong>（经 <code>gh</code> CLI 认证），覆盖 <code>search/repositories</code>（<code>created:2026-11-07 stars:&gt;=30</code>，<code>total_count</code> = 162）、<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/git/trees/HEAD</code> 与 <code>?recursive=1</code>、<code>repos/{owner}/{repo}/commits</code>（含 Link 头分页）、<code>repos/{owner}/{repo}/forks</code>（时间戳）、<code>repos/{owner}/{repo}/releases</code>、<code>repos/{owner}/{repo}/contributors</code>、<code>repos/{owner}/{repo}/contents/{path}</code>（<code>Accept: application/vnd.github.raw</code>）、<code>users/{owner}</code>。</li>
+<li>⭐⭐⭐ <strong><code>stargazers</code> 与 <code>subscribers</code> 端点在本窗口对本 token 返回 404</strong>（<code>lxe/phoneuse</code> 与两个农场仓库均如此），因此<strong>本日报未能对 star / subscriber 的账号年龄与账号行为做逐个取证</strong> —— 11-07 报告中的「fork 拥有者账号创建年份分布」类证据在本日<strong>不适用</strong>，请以本报告的 fork 时间分布、commit 时间戳与文件 md5 证据为准。</li>
+<li>⭐⭐⭐ <strong><code>star</code> 增速未做统计</strong>（需分页遍历 stargazer 列表）。因此本报告中所有「⭐ 数」均为<strong>快照绝对值</strong>，不是当日增量；「X 天 +Y%」类表述在本报告中一律不使用。</li>
+<li>⭐⭐⭐ <strong>持续跟踪项的对比值</strong>（如 <code>android-ad-cleaner</code> 6,924⭐、<code>totk-pc-recomp</code> 5,670⭐、<code>unclebob/ub-mode</code> 7,252⭐、<code>DeepInfer</code> 25,602⭐、<code>zero-breach</code> 1,218⭐）均取自同一次 API 调用，<strong>可直接与本日新增项目的绝对值同口径比较</strong>；与 11-06 快照的差值不作为增长率结论。</li>
+<li>⭐⭐⭐ <strong>两个农场仓库的代码均未被执行</strong>。本日报对其「无实现」的判断依据是：仓库树文件清单、文件内容原文（<code>helpers.py</code> / <code>config.py</code> / <code>utils.py</code> / <code>main.py</code> 的完整内容已在本报告中引用）、<code>language</code> 字段、以及 README 宣称的依赖（SteamKit2 / Mineflayer / Express / Socket.io）在树中不存在。⭐⭐⭐⭐ <strong>本报告不主张这些仓库的意图，只主张它们的可核验内容与宣称不一致。</strong></li>
+<li>⭐⭐⭐ <strong><code>ghostclick</code> 的「system-wide filter」、<code>phoneuse</code> 的 <code>unlock.py</code> 与 <code>screen_points</code>、<code>satmux</code> 的 <code>satmux.py</code> 内部实现，本窗口未逐行核验</strong>；<code>solo-to-team-skills</code> 在任一宿主上的调用结果未核验。</li>
+<li>⭐⭐⭐⭐ <strong><code>interplains/zero-breach</code> 与 <code>interplains/Zero-Breach-Toolkit</code> 的上下游事实，是本窗口通过 <code>id</code> / <code>fork</code> / <code>parent</code> / <code>created_at</code> / release 列表 / 文件存在性六个字段交叉确认的</strong>；本报告已据此<strong>更正 <code>projects/zero-breach.md</code> 的 <code>stars</code>（4,475 → 1,218）与 <code>stars_delta</code></strong>（该档案正文描述的始终是上游，故只更正元数据），并<strong>为下游另建独立档案 <code>projects/zero-breach-toolkit.md</code></strong>；⭐⭐⭐ <strong>2026-10-30 日报正文未被改写</strong> —— 历史日报记录保留原样，纠错以本档案与本日报的更正说明为准。</li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

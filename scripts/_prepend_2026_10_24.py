@@ -48,5 +48,10 @@ def prepend(path: Path, entry: str) -> None:
     print(f"prepended {path.name} (+{len(entry)} bytes)")
 
 
-prepend(ROOT / "indexes" / "trend-index.md", TREND_ENTRY)
-prepend(ROOT / "daily-report.md", DAILY_REPORT_ENTRY)
+def main() -> None:
+    prepend(ROOT / "indexes" / "trend-index.md", TREND_ENTRY)
+    prepend(ROOT / "daily-report.md", DAILY_REPORT_ENTRY)
+
+
+if __name__ == "__main__":
+    main()

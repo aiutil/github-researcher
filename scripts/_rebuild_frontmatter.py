@@ -7,21 +7,58 @@ correct.  Usage: python3 scripts/_rebuild_frontmatter.py daily/YYYY-MM-DD.md
 """
 
 import sys
+from pathlib import Path
+
 import yaml
 
 LIST_KEYS = {"trends", "key_projects", "tags"}
 SCALAR_KEYS = {"title", "date", "version", "summary", "hero_badge"}
 STATS_KEYS = {"project_count", "daily_updates", "core_directions", "weekly_stars"}
 
+# Frontmatter key order used when re-emitting a daily report.
+ORDERED_KEYS = (
+    "title", "date", "version", "summary", "hero_badge",
+    "stats", "trends", "key_projects",
+)
+
+
+def load_frontmatter(path) -> tuple[dict, str]:
+    """Return (frontmatter dict, body) for a markdown file with frontmatter."""
+    parts = Path(path).read_text(encoding="utf-8").split("---", 2)
+    if len(parts) < 3:
+        raise SystemExit(f"no frontmatter found: {path}")
+    return yaml.safe_load(parts[1]) or {}, parts[2]
+
+
+def dump_frontmatter(path, fm: dict, body: str) -> None:
+    """Write frontmatter back to `path` with canonical key order and quoting."""
+    ordered = {key: fm.get(key) for key in ORDERED_KEYS if key in fm}
+    for key, value in fm.items():
+        if key not in ordered:
+            ordered[key] = value
+    dumped = yaml.safe_dump(
+        ordered, allow_unicode=True, sort_keys=False, default_flow_style=False, width=100000
+    )
+    Path(path).write_text("---" + dumped + "---" + body, encoding="utf-8")
+
 
 def unquote(value: str) -> str:
+    """Turn a raw YAML scalar into its string value.
+
+    PyYAML does the unquoting so escapes (\\", \\n, ...) are processed
+    correctly; hand-rolled quote-stripping would keep the backslashes and
+    make the script non-idempotent.  Genuinely malformed input (the reason
+    this script exists) falls back to stripping the outer quotes.
+    """
     value = value.strip()
-    if len(value) >= 2 and value[0] == '"' and value[-1] == '"':
-        return value[1:-1]
-    if len(value) >= 2 and value[0] == '"':
-        return value[1:]
-    if len(value) >= 2 and value[0] == "'" and value[-1] == "'":
-        return value[1:-1]
+    if not value:
+        return value
+    try:
+        parsed = yaml.safe_load(value)
+    except yaml.YAMLError:
+        return value.strip('"').strip("'")
+    if isinstance(parsed, str):
+        return parsed
     return value
 
 
@@ -162,10 +199,7 @@ def main() -> None:
         "key_projects": data["key_projects"],
     }
 
-    dumped = yaml.safe_dump(
-        ordered, allow_unicode=True, sort_keys=False, default_flow_style=False, width=100000
-    )
-    open(path, "w", encoding="utf-8").write("---" + dumped + "---" + parts[2])
+    dump_frontmatter(path, ordered, parts[2])
 
     # Verify
     check = yaml.safe_load(open(path, encoding="utf-8").read().split("---", 2)[1])

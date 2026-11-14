@@ -106,11 +106,24 @@ def update_frontmatter(text: str, changes: dict) -> str:
 
 
 def append_dynamic(text: str, note: str, date: str) -> str:
-    """Append a dated 最近动态 block before the trailing source line."""
+    """Insert a dated 最近动态 block before the trailing source line.
+
+    Idempotent: re-running for the same date replaces that date's block
+    instead of appending a second copy.
+    """
     # A bold run must never end adjacent to another bold run: "**a****b" renders
     # as literal asterisks.  Separate the two runs with a single space.
     note = note.replace("****", "** **")
-    block = f"\n## 最近动态（{date}）\n\n{note}\n"
+    heading = f"## 最近动态（{date}）"
+    block = f"\n{heading}\n\n{note}\n"
+
+    # Drop any existing block for this date (heading up to the next heading).
+    pattern = re.compile(
+        rf"^\n?{re.escape(heading)}\n.*?(?=^## |\n---\n> 数据来源:|\Z)",
+        re.M | re.S,
+    )
+    text = pattern.sub("", text)
+
     marker = "\n---\n> 数据来源:"
     if marker in text:
         head, _, tail = text.partition(marker)
@@ -118,15 +131,20 @@ def append_dynamic(text: str, note: str, date: str) -> str:
     return text + block
 
 
-for slug, changes in UPDATES.items():
-    path = ROOT / "projects" / f"{slug}.md"
-    if not path.exists():
-        print(f"SKIP {slug}: not found")
-        continue
-    text = path.read_text(encoding="utf-8")
-    note = changes["note"]
-    date = changes["last_seen_date"]
-    new_text = update_frontmatter(text, changes)
-    new_text = append_dynamic(new_text, note, date)
-    path.write_text(new_text, encoding="utf-8")
-    print(f"updated {path.name} ({len(text)} -> {len(new_text)} bytes)")
+def main() -> None:
+    for slug, changes in UPDATES.items():
+        path = ROOT / "projects" / f"{slug}.md"
+        if not path.exists():
+            print(f"SKIP {slug}: not found")
+            continue
+        text = path.read_text(encoding="utf-8")
+        note = changes["note"]
+        date = changes["last_seen_date"]
+        new_text = update_frontmatter(text, changes)
+        new_text = append_dynamic(new_text, note, date)
+        path.write_text(new_text, encoding="utf-8")
+        print(f"updated {path.name} ({len(text)} -> {len(new_text)} bytes)")
+
+
+if __name__ == "__main__":
+    main()

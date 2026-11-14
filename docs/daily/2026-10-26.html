@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-26 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-26-github">2026-10-26 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 <strong>2026-10-25T22:55:09Z 单一快照</strong>（= 2026-10-26 CST 06:34），经 gh CLI 认证的 GitHub REST / Search API（<code>search/repositories</code>、<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/readme</code> 与 <code>contents/{...}</code>（<code>Accept: application/vnd.github.raw</code>）、<code>git/trees/HEAD</code> 与 <code>?recursive=1</code>、<code>commits</code>（含 Link 头分页）、<code>contributors</code>、<code>releases</code>、<code>issues</code>、<code>users/{owner}</code>、<code>orgs/{org}</code>），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>owner.type</code>。
+<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-26 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计</strong>（本次 <code>stargazers</code> 端点对该 token 返回 <strong>404</strong>，因此星标时间分布无法核验），<strong>因此所有「增速」表述都是两次快照之间的总量差，不是当日新增，也不能读作「用户数」</strong>。
+<strong>⭐⭐ 已核验为空/为零并直接标注的字段</strong>：<code>contributors</code> API 对 <code>assetnote/node2shell-scanner</code> 返回 <strong>1 人</strong>、对 <code>unclebob/ub-mode</code> 返回 <strong>1 人</strong>、对 <code>KohakuBlueleaf/KohakUnlock</code> 返回 <strong>1 人</strong>、对 <code>trailofbits/brotli-checker</code> 返回 <strong>2 人</strong>（<code>tob-scott-a</code>、<code>tob-joe</code>，第三个是 <code>dependabot[bot]</code>）、对 <code>DenisSergeevitch/ex-ussr-kinship-research</code> 返回 <strong>4 人</strong>；<code>releases</code> API 对 <code>assetnote/node2shell-scanner</code> / <code>unclebob/ub-mode</code> / <code>KohakuBlueleaf/KohakUnlock</code> <strong>均返回 0 个</strong>，对 <code>trailofbits/brotli-checker</code> 返回 <strong>3 个</strong>，对 <code>ex-ussr-kinship-research</code> 返回 <strong>2 个</strong>（v1.4.0 / v1.5.0）；<code>topics</code> 对 <code>node2shell-scanner</code> / <code>brotli-checker</code> / <code>ub-mode</code> / <code>KohakUnlock</code> / <code>gdirect</code> <strong>全部为空数组</strong>；<code>subscribers_count</code> 为 <strong>1 / 0 / 1 / 2 / 7 / 1</strong>。
+<strong>⭐⭐⭐ 本日核验出的最大结构性变化（可由一条命令判定）</strong>：<code>mirkobrombin/raven</code> 的 <code>language</code> 由 10-25 记录的 <code>Go</code> 变为 <strong><code>C++</code></strong>，<code>license.spdx_id</code> 由 <code>MIT</code> 变为 <strong>NOASSERTION</strong>，根 <code>LICENSE</code> 首行由 MIT 改为 <strong>GNU General Public License</strong>。三处独立证据互相印证：① <code>?recursive=1</code> 全树统计 <strong>Go 文件 0 个、C/C++ 文件 354 个</strong>；② commit <strong>2026-10-25T10:01:28Z「chore: license the host under GPLv3 and preserve guest terms」</strong> 与 <strong>10:14:38Z「chore: remove the legacy Go runtime and tooling」</strong>；③ 新增 <code>LICENSES.json</code>（<code>original_code_license: "GPL-3.0-or-later with MIT guest-adapter exceptions"</code>，<code>review_date: "2026-10-25"</code>）与 <code>LICENSES.md</code>。<strong>⭐ 本日报此前记录的所有 raven 代码结构描述（<code>cmd/govm/advapi32.go</code> 242 KB 等）自今日起全部作废。</strong>
+<strong>⭐ 本日同时核验出第四类批量异常模式（区别于本日报已记录的三类）</strong>：2026-10-25T09:46:39Z–09:53:57Z（<strong>跨度 438 秒</strong>）创建的 <strong>17 个</strong>仓库，结构完全同构：<strong>文件数恰为 2（<code>LICENSE</code> + <code>README.md</code>）、体积 2–3 KB、stars ∈ {13,14,15}、forks ∈ {4,5}、topics 数量 ∈ {12,16,17,20}、owner 全部为 User 且账号名互不成词法关系、内容只替换游戏名</strong>；抽样 <code>Serpentalvanquish/mw4-pc-performance-diagnostics</code> 的 README 图片地址仍是未展开的模板占位符 <code>{{https://i.postimg.cc/kG0NNBzc/banner.png}}</code>。<strong>同一 5 分钟窗口内 GitHub 侧该搜索窗返回 3,822 个仓库</strong>，故这 17 个是其中的一个同构簇而非全部。
+<strong>⭐⭐ 本日事件面</strong>：<strong>CVE-2026-111497（Node2Shell）自 2026-10-21 起形成一个持续 5 天的仓库潮</strong>——<code>CVE-2026-111497 created:&lt;date&gt;</code> 的仓库数逐日为 <strong>10-21: 2 → 10-22: 9 → 10-23: 16 → 10-24: 12 → 10-25: 11</strong>（<code>node2shell</code> 关键词为 0 → 0 → 10 → 12 → 4），<code>in:description</code> 命中共 <strong>39</strong> 个且全部创建于 10-20 之后。<strong>上游事实已逐条核验</strong>：<code>google/brotli</code> 的修复 commit <code>0ed4268a4401abcb4472096340477cf4af7d1a2b</code> 标题为「Detect and report invalid stream earlier.」（作者日期 2026-02-27T13:10:32Z），安全版本 <strong>v1.0.10 / v1.1.1 / v1.2.1 均发布于 2026-10-21T19:26–19:27Z</strong>；<code>nodejs/node</code> 的 <strong>v22.23.4 / v24.22.1 / v26.12.1 均发布于 2026-10-21T10:38Z</strong>，且 <code>doc/changelogs/CHANGELOG_V22.md</code> 与 <code>CHANGELOG_V24.md</code> 中确有「<strong>(CVE-2026-111497) deps: brotli: cherry-pick 0ed4268a4401abcb44720963</strong>」与「<strong>src: expose <code>BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH</code></strong>」两条记录。<strong>⭐ 即「10-21 修复」这一说法有上游一手证据支撑，而非二手转述。</strong></p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-cve-91">趋势 1：同一个 CVE 上，两条方向相反的检测路线——主动探测与离线盘点，都把「不确定」设计成独立的输出状态（趋势分 91）</h3>
+<p>本日最重要的观察不是「又多了几个 PoC」，而是<strong>两个由安全厂商自己写的检测工具，在同一 CVE 上选择了互斥的路线，而它们各自都拒绝把「测不出来」说成「安全」</strong>。</p>
+<p><strong>⭐ <code>assetnote/node2shell-scanner</code>（18.5 小时 48⭐ ⑂6，fork/star 12.5%，subs 1，oi 0，Python，MIT，11 KB，Organization <code>assetnote</code>（创建于 2018-01-09，40 个公开仓库，995 followers），</strong>仅 1 个 commit<strong>，contributors API 返回 1 人，<code>releases</code> API 返回 0 个）</strong></p>
+<p>它是<strong>主动式</strong>的：README 明写「The scanner sends four one-byte controls to learn how the endpoint handles valid Brotli JSON, malformed Brotli, requests without a JSON content type, and unsupported encodings. It then streams a 23,068,764-byte Brotli probe and repeats the valid control.」</p>
+<p><strong>⭐ 而它的判定条件是三条同时成立，而不是「探测成功 = 漏洞」：</strong></p>
+<blockquote>
+<p>A target is reported vulnerable only when <strong>the full probe reaches the valid route-response class</strong>, <strong>the malformed-response class is distinct</strong>, and <strong>the final control confirms the endpoint remained stable</strong>. This matches Assetnote's internal postmodule detection logic and <strong>does not execute a command</strong>.</p>
+</blockquote>
+<p>这三个条件对应三个可被证伪的断言：<strong>① 探针真的被解码到路由（而非被中间层吞掉）；② 畸形输入的响应与之相异（而非两者都返回同一个 200 空体）；③ 端点没有因探针而崩掉（排除「打崩了所以看起来不一样」）。</strong></p>
+<p><strong>⭐⭐ 代码层面这些约束是硬编码的、可逐行核验的</strong>：<code>scanner.py</code> 共 1,163 行，其中 <code>PROBE_BYTES = 23_068_764</code>、<code>PROBE_REPETITIONS = (1 &lt;&lt; 21) - 1</code>、<code>PROBE_PREFIX</code> / <code>PROBE_UNIT</code>（<code>f5a8473dea518f7ad4a31e</code>）/ <code>PROBE_SUFFIX</code> 三段拼接，并有一条<strong>自校验断言</strong>保证拼接长度恰好等于 <code>PROBE_BYTES</code>；四个对照请求在 <code>request_evidence()</code> 里被固定登记为 <code>"ff (Content-Encoding: br; no Content-Type)"</code> / <code>"3b (Content-Encoding: br; Content-Type: application/json)"</code> / <code>"ff (Content-Encoding: br; Content-Type: application/json)"</code> / <code>"x (Content-Encoding: x; Content-Type: application/json)"</code>；比较函数 <code>same_exact()</code> 要求双方 <code>error is None</code>、<strong>未截断</strong>、状态码相同、content-type 相同、<strong>body 逐字节相同</strong>（另有仅比状态码的 <code>status</code> 模式）；<code>scan_url()</code> 在多路径场景下<strong>只要有一个路径判为 vulnerable 就立即返回 true</strong>，否则回退到第一个「非 inconclusive」的结论。</p>
+<p><strong>⭐⭐⭐ 而它对「测不出来」的处理是本日报最值得抄的一处：</strong></p>
+<table>
+<thead>
+<tr>
+<th>输出态</th>
+<th>触发条件</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vulnerable: true</code></td>
+<td>三条判定同时成立</td>
+<td>完整请求/响应证据（含被脱敏的敏感头）</td>
+</tr>
+<tr>
+<td><code>vulnerable: false</code></td>
+<td>探针未到达有效路由且响应类相异</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>vulnerable: null</code> / <code>verdict: INCONCLUSIVE</code></td>
+<td>网络错误、超时、无响应等</td>
+<td><code>result["error"]</code> 记原因</td>
+</tr>
+</tbody>
+</table>
+<p><strong>退出码是 <code>raise SystemExit(1 if vulnerable_count else 0)</code>——即「没有发现漏洞」以 0 退出。</strong> <strong>⭐ 这个设计与本日报记录的 mcreplay 的 0/1/2/3 退出码、brotli-checker 的 0/1/2/3 退出码属于同一族：把「判定结果」编码成 CI 可断言的离散状态，而不是一句警告。</strong></p>
+<p><strong>⭐⭐⭐⭐ 而它对自己造成的网络影响是写进 README 的可复算数字，不是免责套话：</strong></p>
+<blockquote>
+<p>Each tested endpoint receives <strong>five one-byte requests and one 23,068,764-byte probe</strong>. The probe uses <code>Expect: 100-continue</code>, so a proxy can reject its advertised size before the body is uploaded.</p>
+</blockquote>
+<p><strong>⭐ <code>Expect: 100-continue</code> 这一行是真正的工程细节</strong>——它让代理可以在上传 23 MB body <strong>之前</strong>就按 <code>Content-Length</code> 拒绝该请求，因此这个「23 MB 探针」在有代理的环境里可能根本不会上传。<strong>这是把「检测器的副作用」主动交还给部署方的网络层去裁决。</strong></p>
+<p><strong>⭐ <code>trailofbits/brotli-checker</code>（2.3 天 44⭐ ⑂3，fork/star 6.8%，</strong>subs 0<strong>，oi 0，Python，MIT，</strong>6,858 KB<strong>，Organization <code>trailofbits</code>（298 个公开仓库，3,297 followers），26 commits，contributors API 返回 2 人 + 1 bot，<code>releases</code> API 返回 3 个）</strong></p>
+<p>它是<strong>离线式</strong>的，与前者的主动探测完全相反：README 明写「The scanner finds suspect parts; Trailmark helps show how the code connects. The assistant checks whether those connections apply to the running app.」</p>
+<p><strong>⭐⭐ 而它最有价值的一段，是 <code>SKILL.md</code> 里把结论拆成两级的那一句：</strong></p>
+<blockquote>
+<p>Finding vulnerable source establishes <strong>source containment</strong>. <strong>Build selection, shipment, attacker-controlled input reaching that decoder, and exploitability are separate conclusions.</strong> Keep a result for each copy; <strong>one fixed copy cannot clear other copies.</strong></p>
+</blockquote>
+<p><strong>⭐ 这四个被拆开的结论——「源码里有受影响的副本」/「被构建选中了」/「被发布了」/「攻击者可控输入能到达它」——正是 10-25 记录的 mcreplay 把 33 个官方工具逐条列 A?/B?/C?/W 等级的同一族做法。</strong></p>
+<p><strong>⭐⭐⭐ 它的退出码表是本日报见过最完整的「四档判定」：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Exit</th>
+<th>含义（<code>docs/usage.md</code> 原文）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>Reported items meet a known source or upstream-version fix rule, with no recognized scan gaps.</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Affected source/code or potentially affected source/version evidence was found.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Invalid arguments or code-reference catalog.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Review is needed</strong>: no matches, unresolved candidates, fixed-code-only evidence, or scan gaps.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而紧跟着这两行，是本日报今日最该抄的一句：</strong></p>
+<blockquote>
+<p>Affected evidence takes precedence over gaps: exit 1 can include incomplete coverage. <strong>A fixed copy does not clear another, and exit 0 does not establish that the running app is fixed.</strong></p>
+</blockquote>
+<p><strong>「exit 0 不等于运行中的应用是安全的」——这是对「扫描器返回 0 就万事大吉」这个最常见误用的正面否定。</strong> <strong>⭐ 本日报已连续多日记录「边界要写进可核验的位置」，而这一句是把它写进了退出码的语义本身：0 不是「安全」，0 是「在我能看到的范围内没有命中，且没有已识别的扫描盲区」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 它对「上游已经修了」这件事的处理，是本日最值得单独指出的技术细节</strong>——<code>references/advisory.md</code> 明写：</p>
+<blockquote>
+<p><strong>The CNA record has disjoint Brotli version ranges. A single comparison against 1.2.1 would incorrectly warn on fixed 1.0.10 and 1.1.1.</strong> Other Node branches, forks, prereleases, and custom builds need decoder-specific evidence. <strong>The helper does not assert that every historical Node release contains an affected decoder.</strong></p>
+</blockquote>
+<p><strong>即：它拒绝用一个版本号覆盖不连续的受影响区间。</strong> 其版本表逐行列出：Brotli 1.0.3–1.0.9 → 1.0.10；1.1.0 → 1.1.1；1.2.0 → 1.2.1；Node 22.x → 22.23.4；24.x → 24.22.1；26.x → 26.12.1（<strong>本日报已逐条核验这些上游版本号与发布日，全部属实</strong>）。它还明写「An older version can contain a vendor backport… <strong>Do not compare distro revisions as upstream SemVer or transfer one provider's fixed revision to another</strong>」与「<strong>An updated host package does not establish the state of a container, native extension, or statically linked executable</strong>」。</p>
+<p><strong>⭐⭐ 而 <code>fingerprints.json</code> 把「指纹是怎么来的」也结构化了</strong>：<code>schema_version</code> / <code>cve</code> / <strong><code>verified_on: "2026-10-23"</code></strong> / <code>upstream_fix</code> / <strong><code>inventory_revision</code></strong> / <code>verification</code>（原文：「Fetched upstream releases and pinned inventory source; <strong>verified Git blob and SHA-256, and compared block-switch handling with upstream fix. Source-file evidence only.</strong>」）+ 逐条指纹的 <code>sha256</code> / <code>git_blob</code> / <code>size</code> / <strong><code>state: "vulnerable"</code></strong> / <code>sources</code>。<strong>⭐ <code>verified_on</code> 是一个日期而不是一个「最新」标签——即它承认这份快照会过期，并在 <code>SECURITY.md</code> 里明写「</strong>Advisory rules and compiled references are snapshots, and an old checkout does not automatically receive new guidance<strong>」。</strong></p>
+<p><strong>⭐⭐⭐ 本日两者最值得并置观察的一点：它们连「同一次 CVE」的入口都不相同。</strong> scanner 走 <strong>HTTP 网络面</strong>（一个 URL + 四个对照 + 一个探针），brotli-checker 走 <strong>文件系统与源码面</strong>（目录、依赖、应用包、已解包的容器文件系统、源码指纹、ELF 二进制反汇编）。<strong>⭐⭐ 而 brotli-checker 明确划出了自己够不到的地方</strong>：「<strong>HTTP headers cannot establish the decoder's patch status</strong>」「<strong>Do not send malformed streams or exploit probes</strong>」——<strong>即它放弃了主动探测，转而要求用户拿本地访问权限或服务器访问权限。</strong></p>
+<p><strong>⭐⭐⭐⭐ 而两者的边界声明合起来，恰好构成今日这条趋势的完整形状：</strong></p>
+<blockquote>
+<p><strong>scanner</strong>：我能在网络上证明「这个端点的解码器可被触发到越界写」，<strong>但我无法证明它可被利用</strong>（does not execute a command）。
+<strong>brotli-checker</strong>：我能证明「这个部署里有受影响的解码器副本」，<strong>但我无法证明它可达</strong>（a fixed copy does not clear another；HTTP headers cannot establish patch status）。</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐ 「主动探测能证明可达但不能证明可利用，离线盘点能证明存在但不能证明可达」——本日两个工具加起来仍然没有回答「这台机器现在安不安全」，而</strong>两个工具都把这个缺口写进了自己的输出状态，而不是留给读者去脑补。这才是本日最值得记的东西。**</p>
+<p><strong>架构师速览（node2shell-scanner + brotli-checker）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>scanner</strong>：单一网络面工具——<code>normalize_url()</code> 归一化目标 → 四个 1 字节对照请求 → 一个 23,068,764 字节 Brotli 探针（<code>Expect: 100-continue</code>）→ 重复有效对照 → 三条件判定 → 产出 <code>vulnerable</code> 三态 + 脱敏证据。<strong>边界划在「是否执行命令」</strong>：README 明写 does not execute a command，因此它停在「可触发」而不进入「可利用」。<strong>brotli-checker</strong>：本地资产面工具——<code>brotli_inventory.py</code> 扫描源码、依赖、应用包、<strong>不解包执行</strong>的 ZIP/JAR/WAR/wheel/TAR/gzip/bzip2/XZ 容器 → 源码指纹比对 + 已编译 ELF32/ELF64 解码器代码匹配 → 每副本独立结果 + 覆盖缺口 + <code>user_summary</code>；再由 Trailmark 映射调用点。<strong>边界划在「不接触运行中的服务」</strong>：明写 HTTP headers cannot establish patch status。</td>
+<td>scanner 的 <code>scanner.py</code> 1,163 行（<code>PROBE_BYTES</code>、<code>probe_chunks()</code>、<code>same_exact()</code>、<code>scan_url()</code>、<code>request_evidence()</code>、<code>redact_header()</code>）；brotli-checker 的 <code>skills/brotli-checker/SKILL.md</code> 17,385 字节、<code>docs/usage.md</code> 13,971 字节、<code>references/advisory.md</code>、<code>references/fingerprints.json</code>。<strong>⭐ 二者的关键实现细节本窗口未逐行读完（scanner 的 <code>exchange_post()</code> 状态机与 brotli-checker 的 <code>brotli_inventory.py</code> 遍历实现未取），待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><strong>scanner</strong>：<code>python3 scanner.py -u https://example.com/api</code> → 对每个目标发 4 个对照 + 1 个探针 + 1 个复验 → 收集响应元数据（<code>status_code</code> / <code>content_type</code> / <code>response_bytes</code> / <code>response_truncated</code> / <code>bytes_sent</code> / <code>error</code>）→ 判定 → <code>-o results.json</code> 保存<strong>脱敏后</strong>的请求/响应证据（<code>SENSITIVE_HEADERS</code> 名单内的头替换为 <code>&lt;redacted&gt;</code>）→ 退出码 1/0。<strong>brotli-checker</strong>：<code>python3 skills/brotli-checker/scripts/brotli_inventory.py /absolute/target --json</code> → 每副本独立结论 + coverage gaps + <code>user_summary</code>；<code>exit 0 means collection completed, 3 means incomplete evidence, 2 means invalid arguments</code>；源码调用点由 Trailmark 补充</td>
+<td>scanner README 的 Usage/Options/Output 三节与 <code>request_evidence()</code> 中固定的四个 controls 列表、探针的 <code>expect: 100-continue</code>；brotli-checker README 的「Run the scanner directly」与 <code>docs/usage.md</code> 的四档退出码表、容器格式与「produced coverage gaps; supply unpacked files」的说明。<strong>⭐ 「Trailmark 的调用点映射如何影响最终判定」本窗口未核验，待观察</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>主动探测 vs 离线盘点</strong>（前者能证明可达但要发 23 MB 探针并可能被代理拦截；后者零副作用但只覆盖「部署里有什么」而非「攻击者能碰到什么」）· <strong>证明「可触发」vs 证明「可利用」</strong>（scanner 明确停在可触发，不执行命令——<strong>这是负责任的边界，也是它放弃 RCE 验证的原因</strong>）· <strong>单版本比较 vs 不连续区间</strong>（brotli-checker 拒绝用 1.2.1 覆盖全部区间——<strong>代价是判定逻辑更复杂</strong>）· <strong>上游 SemVer vs 发行版修订号</strong>（明确禁止跨供应商搬运「已修复版本号」——代价是无法自动判定定制构建）· <strong>快照 vs 自动更新</strong>（<code>verified_on: 2026-10-23</code> + SECURITY.md 明说旧 checkout 不会自动获得新指引——<strong>代价是用户需自行刷新</strong>）· <strong>⭐ 报告 vs 不报告覆盖缺口</strong>（两者都报告：brotli-checker 的 exit 3 就是「有缺口」的出口，scanner 的 INCONCLUSIVE 就是「测不了」的出口——<strong>这与本日报连续记录的「跳过条件被公开，而不是被算进通过率」是同一条原则</strong>）· <strong>单副本结论 vs 全局结论</strong>（brotli-checker 明写 one fixed copy cannot clear other copies，<strong>即拒绝给出一个全局的「安全/不安全」布尔值</strong>）</td>
+<td>两者的 README、<code>docs/usage.md</code> 退出码表、<code>references/advisory.md</code> 版本表与免责声明、<code>SECURITY.md</code>、<code>fingerprints.json</code> 的 <code>verification</code> 字段；<strong>未明示：两个工具是否共享同一套指纹目录、scanner 的 23 MB 探针在企业代理后的实际成功率</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>先建对照</strong>：找一台<strong>自己的</strong>、已知版本（未打补丁）的 Node 服务（README 明确给了「行为像靶子」的应用模型），<strong>不要拿生产站点试</strong> → 2. 跑 <code>pip install -r requirements.txt</code>（仅 <code>h11&gt;=0.14.0</code> 与 <code>tqdm&gt;=4.64.0</code>，<strong>两个依赖</strong>）→ 3. <code>python3 scanner.py -u http://127.0.0.1:PORT/</code> → 4. <strong>⭐ 检查 <code>-v</code> 的 verdict reason，确认三条件（探针到达有效路由 / 畸形响应类相异 / 最终对照稳定）真的都被满足，而不只是「返回了一个 true」</strong> → 5. <strong>⭐ 再对一个已打补丁的 Node（≥22.23.4 / ≥24.22.1 / ≥26.12.1）跑同一命令，确认它返回 <code>Not vulnerable</code></strong>（<strong>这一步是唯一能证伪其比较器真的有区分力的步骤</strong>——与 10-25 记录的 oss-verify <code>oft check</code> 在 <code>Print Assumptions</code> 阶段拒绝越界公理同构）→ 6. <strong>⭐ 对一个被代理拦截的环境跑一遍，确认 <code>Expect: 100-continue</code> 下它给出的是 INCONCLUSIVE 而不是 false negative</strong>（<strong>这正是它自己写明的网络影响边界</strong>）→ 7. brotli-checker：<code>git clone</code> → <code>python3 skills/brotli-checker/scripts/brotli_inventory.py /path/to/app --json</code> → <strong>读 <code>coverage_gaps</code> 字段</strong> → 8. <strong>⭐ 确认 exit 3 在「有覆盖缺口」时被触发，而不是 exit 0</strong> → 9. <strong>⭐ 读 <code>references/fingerprints.json</code> 的 <code>verified_on</code> 与 <code>state</code> 字段，并抽查一个 <code>sha256</code> 与上游 release 的对应关系</strong>（<code>verified_on</code> 若早于你需要的补丁日期，即为过期快照）</td>
+<td><strong>第 5 步是本 PoC 的核心</strong>（一个只会返回 true 的比较器不构成证据）· <strong>第 6 步是它自述边界最容易被误用为「无漏洞」的地方</strong>· <strong>第 8 步验证的是它最有价值的语义（exit 0 ≠ 安全）</strong>· <strong>第 9 步是判断快照是否过期的唯一手段</strong> · 本 PoC <strong>不覆盖</strong>任何真实公网目标的扫描、<strong>不覆盖</strong> Windows 平台路径（scanner 为 Python 3.9+、brotli-checker 要求 Python <strong>3.12–3.15</strong> 且需 <code>uv</code>）· <strong>不覆盖</strong> RCE 可利用性验证（两者都不做，且这是有意的）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2raven-goc-mitgpl-90">趋势 2：一天之内被彻底重写并重新许可——raven 的 Go→C++ 与 MIT→GPL（趋势分 90）</h3>
+<p><strong>⭐⭐⭐ 这是本日最可核验、也最刺眼的一条：它不是关于技术的，而是关于「昨天的档案今天就作废了」的。</strong></p>
+<p><strong>10-25 本日报记录的 raven 是这样描述的</strong>：「Go · MIT · 17879 KB · <code>cmd/govm/</code> 下按 DLL 划分的大文件——<code>advapi32.go</code> <strong>242 KB</strong>、<code>comctl32.go</code> 97 KB、<code>d2d1.go</code> 83 KB · <code>pkg/</code> 按 API 域划分的 15+ 个包 · <code>native/upstream/</code> 的 18 个组件」。</p>
+<p><strong>今日快照（2026-10-25T22:55:09Z）显示</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>10-25 记录</th>
+<th>今日快照</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td><code>Go</code></td>
+<td><strong><code>C++</code></strong></td>
+<td>GitHub API <code>language</code> 字段</td>
+</tr>
+<tr>
+<td><code>license.spdx_id</code></td>
+<td><code>MIT</code></td>
+<td><strong><code>NOASSERTION</code></strong></td>
+<td>GitHub API</td>
+</tr>
+<tr>
+<td>根 <code>LICENSE</code> 首行</td>
+<td><code>MIT License</code></td>
+<td><strong>「Raven is free software… under the terms of the GNU General Public License」</strong></td>
+<td><code>contents/LICENSE</code> 原文</td>
+</tr>
+<tr>
+<td>源码构成</td>
+<td><code>cmd/govm/*.go</code> + <code>pkg/*.go</code></td>
+<td><strong><code>cmd/govm/</code> 与 <code>pkg/</code> 在根树中已不存在</strong>；改为 <code>native/</code>（354 个 C/C++ 文件）+ <code>CMakeLists.txt</code> + <code>Makefile</code></td>
+<td><code>?recursive=1</code> 全树</td>
+</tr>
+<tr>
+<td>Go 文件数</td>
+<td>大量</td>
+<td><strong>0</strong></td>
+<td>全树统计</td>
+</tr>
+<tr>
+<td>C/C++ 文件数</td>
+<td>—</td>
+<td><strong>354</strong></td>
+<td>全树统计</td>
+</tr>
+<tr>
+<td>commit 数</td>
+<td>653</td>
+<td><strong>678</strong></td>
+<td><code>commits</code> API Link 头</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>17879 KB</td>
+<td><strong>18529 KB</strong></td>
+<td>API <code>size</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐ 而两次快照之间的 25 个 commit 把过程完整记录下来了——这 25 条 commit 标题本身就是一份变更日志：</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间（UTC）</th>
+<th>commit 标题</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-25T10:01:28Z</td>
+<td><strong><code>chore: license the host under GPLv3 and preserve guest terms</code></strong></td>
+<td><strong>⭐ 重新许可：宿主运行时改为 GPLv3，同时保留 guest 组件原有条款</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T10:14:38Z</td>
+<td><strong><code>chore: remove the legacy Go runtime and tooling</code></strong></td>
+<td><strong>⭐ 移除旧 Go 运行时与工具链</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T16:17:49Z</td>
+<td><code>feat: add an experimental X11 desktop backend</code></td>
+<td>新增 X11 后端（此前只有 Wayland）</td>
+</tr>
+<tr>
+<td>2026-10-25T14:47:36Z</td>
+<td><code>fix: import installer assertions directly from msvcrt</code></td>
+<td>安装器路径细化</td>
+</tr>
+<tr>
+<td>2026-10-25T13:54:45Z</td>
+<td><code>fix: build with distro MinGW and Vulkan headers</code></td>
+<td>构建可移植性</td>
+</tr>
+<tr>
+<td>2026-10-25T14:38:11Z</td>
+<td><code>fix: avoid string replacement on mingw's gcc directory (#13)</code></td>
+<td><strong>⭐ 唯一一条带 PR 号的 commit——即已接受外部贡献</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T08:26:15Z / 08:29:35Z</td>
+<td><code>docs: add contribution guidelines</code> / <code>docs: reserve co-author credits for human contributors</code></td>
+<td><strong>⭐ 开始写贡献指南与署名政策</strong></td>
+</tr>
+<tr>
+<td>2026-10-25T20:54:15Z</td>
+<td><code>fix: store a 32-bit pointer for LoadStringW in x86 processes</code></td>
+<td>32 位进程指针宽度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而本日最值得学的，恰恰是它</strong>重新许可时<strong>的做法——它没有假装自己一直是 GPL：</strong></p>
+<p><code>LICENSES.md</code> 首段原文：</p>
+<blockquote>
+<p>Raven's Linux host runtime is <strong>GPL-3.0-or-later</strong>. <strong>Original Raven guest adapters</strong> listed in <a href="LICENSES.json">LICENSES.json</a> remain <strong>MIT-licensed</strong>. Imported source keeps its copyright, license notices and any exceptions. <strong>Earlier MIT grants remain valid.</strong> The release is a collection of components with these terms, <strong>not a single MIT or GPLv3 license applied to every file</strong>.</p>
+</blockquote>
+<p>README 的 License 段同样明写：「<strong>Earlier MIT grants remain valid.</strong>」</p>
+<p><strong>⭐⭐⭐⭐⭐ 而 <code>LICENSES.json</code> 把这件事结构化成机器可读的表单（本日报已核验其字段）：</strong></p>
+<p><code>json
+{
+  "schema_version": 1,
+  "review_date": "2026-10-25",
+  "original_code_license": "GPL-3.0-or-later with MIT guest-adapter exceptions",
+  "license_references": { "LicenseRef-ReactOS-COPYING": "...", ... },
+  "components": [
+    { "name": "Raven Linux host and build tooling",
+      "paths": ["native", "scripts"],
+      "license": "GPL-3.0-or-later",
+      "review": "reviewed",
+      "provenance": "LICENSE; excludes the MIT guest adapters and imported sources listed below" }
+  ]
+}</code></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 这正是本日报连续记录多日的那条主线，在「许可」这个维度上的最强样本：本日报已记录五类许可元数据问题（NOASSERTION 但 LICENSE 首行清晰 / 主许可正确但组合许可被折叠 / null / 无根 LICENSE / APSL 未标注自有代码），而 raven 一次性把前两类</strong>同时解决<strong>：</strong></p>
+<ul>
+<li><strong>它把「组合许可被折叠」解决了</strong>——<code>LICENSES.json</code> 逐组件列出 <code>paths</code> + <code>license</code> + <code>review</code> + <code>provenance</code>，<code>LICENSES.md</code> 用表格给出组件边界（Linux <code>raven</code> 与 <code>raven-bootstrap</code> 为 GPL-3.0-or-later；UTF-8 转换 GPL-2.0-or-later；窗口边框函数 LGPL-2.1-or-later；<strong>自有 guest 适配器 MIT</strong>；ReactOS 派生的 PE 组件按 GPL v2 分发；CP1252 构建转换器 GPL-2.0-or-later；CP1252 映射数据 Unicode-3.0；libpng 走 PNG Reference Library License）。</li>
+<li><strong>它把「NOASSERTION」从缺陷变成了正确结果</strong>——一个混合许可项目被 GitHub 识别为单一 spdx id 反而是错的，NOASSERTION 在这里是<strong>诚实</strong>的答案。</li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而这一整套结构化，是在本日报 10-25 刚刚记录完「raven 的 GPL 义务只在 README 散文里、扫描器会给出『纯 MIT』的错误默认答案」之后——</strong>即作者在两天内把本日报提出的批评直接实现成了结构化清单。<strong> </strong>⭐ 这是本日报连续记录多日的「边界写进可核验的位置」这条原则，第一次看到一个项目<strong>被外部观察指出后、逐条落地为机器可读文件</strong>的完整闭环。**</p>
+<p><strong>⭐⭐⭐ 而重写带来的其他可核验变化同样重要：</strong></p>
+<ul>
+<li><strong><code>pkg/</code> 与 <code>cmd/govm/</code> 的 API 域划分消失</strong>（新的 <code>native/</code> 下按 <code>cpu</code> / <code>desktop</code> / <code>d3d11</code> / <code>d3d9</code> / <code>ddraw</code> / <code>dsound</code> / <code>dxbc</code> / <code>dxgi</code> / <code>gdi</code> / <code>gfx</code> / <code>hostenv</code> / <code>jit</code> / <code>loader</code> 等目录组织，<strong>文件改为 <code>.cpp</code> / <code>.h</code> / <code>.S</code></strong>）；</li>
+<li><strong>新增 <code>native/cpu/</code> 下的 <code>callback_fixture_test.cpp</code> / <code>shared_mapping_test.cpp</code> / <code>native_x86_test.cpp</code> / <code>served_queue.h</code></strong>——即<strong>契约测试被写进了宿主代码目录</strong>（10-25 记录的 <code>internal/compat/</code> 只有 <code>log.go</code> 与 <code>matrix.go</code>）；</li>
+<li><strong>图形后端从 Wayland 扩到 X11</strong>（<code>feat: add an experimental X11 desktop backend</code>，标注 experimental）；</li>
+<li><strong><code>pushed_at</code> 2026-10-25T20:58:09Z，距快照仅约 36 分钟，仍在高频提交</strong>；</li>
+<li><strong>⭐⭐ <code>stars</code> 166 → 378（+128%）、<code>forks</code> 4 → 8、<code>subscribers</code> 1 → 4、<code>oi</code> 8</strong>——<strong>热度与开发活动同步上升</strong>，这与 10-25 记录的 DeepInfer（热度涨、<code>pushed_at</code> 不动）形成对照。</li>
+</ul>
+<p><strong>架构师速览（raven 重写与重新许可）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>重写后的边界划分为四层</strong>：① <strong>宿主执行层</strong>（<code>native/</code> 下 354 个 C/C++ 文件，按 Windows API 域分目录，含 <code>cpu/</code> 下的 <code>native_cpu.cpp</code> / <code>native_cpu.h</code> / <code>bootstrap.S</code> / <code>served_queue.h</code> 与三个契约测试文件）② <strong>Windows API 兼容层</strong>（原 <code>cmd/govm/*.go</code> 的职责已迁入 <code>native/</code>，具体文件划分本窗口未逐目录核验）③ <strong>上游移植层</strong>（<code>native/upstream/</code> 保留 ReactOS / libpng / Skia / Unicode 等组件，逐组件带 <code>provenance.json</code>）④ <strong>⭐ 许可与来源层</strong>（新增 <code>LICENSES/</code> 目录含 <code>GPL-2.0-or-later.txt</code> / <code>GPL-3.0-or-later.txt</code> / <code>LGPL-2.1-or-later.txt</code> / <code>Liberation-fonts.txt</code> / <code>MIT.txt</code> / <code>Skia.txt</code> / <code>Unicode-3.0.txt</code> + <code>LICENSES.json</code> + <code>LICENSES.md</code> + <code>docs/packaging.md</code>）。<strong>⭐⭐ 第五层是本日新增的、也是本日最值得记的一层：它把「哪些文件适用哪份许可」变成了一份机器可读清单，从而让 <code>NOASSERTION</code> 从缺陷变成诚实答案</strong></td>
+<td>根树 <code>?recursive=1</code>（Go 文件 0 个、C/C++ 文件 354 个、根 <code>LICENSES/</code> 下 7 个许可文本）、<code>LICENSES.json</code> 的 <code>schema_version</code> / <code>review_date</code> / <code>original_code_license</code> / <code>license_references</code> / <code>components[].paths|license|review|provenance</code>、<code>LICENSES.md</code> 的组件表格、README 的 License 段、25 条 commit 标题。<strong>⭐ <code>native/</code> 各子目录的具体职责边界、<code>components[]</code> 的完整条目数、以及 <code>docs/packaging.md</code> 的分发要求本窗口未逐项核验，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户设 <code>RAVEN_PREFIX</code>（Windows 侧安装目录，自带 <code>C:</code> 盘与注册表，每个应用一个）→ 构建（<strong>10-25 记录的 <code>cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo</code> 与 <code>-j2</code> 并行度现已不适用</strong>：新的根树含 <code>CMakeLists.txt</code> 与 <code>Makefile</code> 两条构建入口）→ <code>build/native/raven --run-process --execution=native --desktop=wayland setup.exe</code>（<strong>新增 <code>--desktop=x11</code> 的实验性后端</strong>）→ 安装器写自己的 kernel32/user32 时 Raven 自带系统库仍管辖 → Windows 程序直接调用 <code>native/</code> 提供的 API 替代实现 → 图形调用经 DXVK/vkd3d-proton 到 Vulkan → <strong>每次安装器前对 prefix 做快照，<code>--restore-prefix</code> 可回退</strong>。<strong>⭐ 10-25 记录的「Raven 自带系统库优先于安装器写入的同名库」的具体解析顺序机制本窗口仍未核验</strong></td>
+<td>README 的 Installation / What works today / Benchmarks / License 四节、<code>CMakeLists.txt</code> 与 <code>Makefile</code> 的存在、25 条 commit 标题中的构建与后端条目、<code>LICENSES.md</code> 的「Linux <code>raven</code> 与 <code>raven-bootstrap</code>」行。<strong>⭐ 新的 CLI 参数集、构建参数（是否仍需 <code>-j2</code>）、以及 X11 后端的成熟度本窗口均未核验，待核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ 保留旧 MIT 授权 vs 统一改为 GPL</strong>（选择 GPL-3.0-or-later 并<strong>明写「Earlier MIT grants remain valid」</strong>——<strong>即用「条款分层 + 历史授权存续」而不是「追溯改许可」</strong>，这在实践中是更诚实也更省事的做法）· <strong>⭐ 手工散文许可说明 vs 机器可读许可清单</strong>（新增 <code>LICENSES.json</code> + <code>LICENSES.md</code> + <code>docs/packaging.md</code>——<strong>代价是维护成本与「审查日期」会过期</strong>，故 <code>review_date</code> 字段本身就是一种诚实的时效声明）· <strong>⭐ 保留 Go 实现 vs 重写为 C++</strong>（Go 文件数归零、354 个 C/C++ 文件——<strong>推测是为了直接控制内存布局、DMA 与 x86 32 位指针语义</strong>（commit「store a 32-bit pointer for LoadStringW in x86 processes」与 <code>native/cpu/native_x86_test.cpp</code> 支持此推断），<strong>但本日报无法核验重写动因的原文说明</strong>）· <strong>⭐ 契约测试的位置</strong>（<code>native/cpu/</code> 下直接放 <code>*_test.cpp</code> 与 <code>testdata/</code> 目录——<strong>推断是让测试贴近实现边界</strong>）· <strong>Wayland-only vs Wayland + X11</strong>（新增 X11 但标注 experimental，<strong>推测是为无 Wayland 环境提供退路</strong>）· <strong>公开贡献 vs 单人主导</strong>（新增 CONTRIBUTING.md 与「reserve co-author credits for human contributors」，且已合并一条带 PR 号的 commit——<strong>⭐ 这是本日唯一可核验的外部参与信号</strong>）· <strong>⭐⭐ 赞助 vs 自担风险</strong>（<code>docs/SAFETY</code> 类文档不适用于本项目，但 <code>docs/packaging.md</code> 承担了分发义务的说明职责）</td>
+<td><code>LICENSES.md</code> / <code>LICENSES.json</code> / <code>docs/packaging.md</code> / <code>CONTRIBUTING.md</code> 的存在与内容、<code>LICENSES/</code> 下 7 份许可文本、25 条 commit 标题。<strong>未明示：重写的性能影响、是否有迁移指南、旧 Go 版本的用户如何升级、以及为什么宿主要改为 GPL（商业影响很大，但仓库未给动机说明）</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐ 先读 <code>LICENSES.json</code> 与 <code>LICENSES.md</code></strong>，确认你自己的使用方式落在哪个条款下（宿主 GPL-3.0-or-later vs 自有 guest 适配器 MIT vs 导入组件各自条款）→ 2. <strong>⭐ 确认「历史 MIT 授权仍有效」对你是否适用</strong>（README 明写 Earlier MIT grants remain valid）→ 3. <strong>按新的构建入口构建</strong>（根树现含 <code>CMakeLists.txt</code> 与 <code>Makefile</code>；<strong>10-25 记录的 <code>cmake ... -j2</code> 参数与 README 的 Requirements 段本窗口未重新核验，需重读 README</strong>）→ 4. <strong>⭐ 跑测试并数 skipped</strong>（10-25 记录的五个环境变量 <code>RAVEN_MINESWEEPER</code> 等仍应生效，但<strong>测试文件已从 Go 换成 C++，跳过机制是否保留需重新验证</strong>）→ 5. 跑 <code>build/native/raven --run-process --execution=native --desktop=wayland setup.exe</code>，观察是否仍能不用 wine 前缀装上一个 Windows 应用 → 6. <strong>⭐ 故意破坏一次 prefix 再跑 <code>--restore-prefix</code></strong>（这是它区别于「装得上但不可逆」的唯一保障）→ 7. <strong>⭐ 检查 <code>native/cpu/</code> 下的 <code>*_test.cpp</code> 契约测试是否随构建一起运行</strong>（这是重写后最重要的回归防线）→ 8. <strong>⭐ 对照 <code>LICENSES.json</code> 的 <code>review_date</code> 与你实际依赖的组件清单，确认没有「条款已变但清单未更」的组件</strong></td>
+<td><strong>第 1–2 步是本 PoC 的核心</strong>（对 GPL 项目而言，许可边界比能否编译更重要）· <strong>第 4 步是「全绿 ≠ 全测过」的检验</strong>· <strong>第 6 步是不可逆性的唯一证据</strong>· <strong>第 7 步是重写后回归风险的唯一防线</strong>· <strong>第 8 步是许可清单时效性的检验</strong> · 本 PoC <strong>不覆盖</strong> 3D 应用性能（软件 Vulkan 下无意义）、<strong>不覆盖</strong> X11 后端（标注 experimental）、<strong>不覆盖</strong> 商业分发场景（<code>docs/packaging.md</code> 的完整要求本窗口未核验）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-17-star-88">趋势 3：三个「一天翻倍」的项目，与一个 17 仓库的同构农场——本日的 star 增量里有相当一部分不是采用信号（趋势分 88）</h3>
+<p><strong>⭐⭐⭐ 本日最实用的一条读法：昨天记录的项目，今天有三个的 star 数翻了一倍以上。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>10-25 记录</th>
+<th>今日快照</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rddmwmddr/android-ad-cleaner</code></td>
+<td>140⭐ ⑂12</td>
+<td><strong>728⭐ ⑂54</strong></td>
+<td><strong>⭐ +418%</strong>（subs 1→5，oi 6→<strong>22</strong>）</td>
+</tr>
+<tr>
+<td><code>songjianyang/xss-audit</code></td>
+<td>194⭐ ⑂50</td>
+<td><strong>393⭐ ⑂115</strong></td>
+<td><strong>+103%</strong>（⭐ fork/star 25.8% → <strong>29.3%</strong>；subs 0→1）</td>
+</tr>
+<tr>
+<td><code>mirkobrombin/raven</code></td>
+<td>166⭐ ⑂4</td>
+<td><strong>378⭐ ⑂8</strong></td>
+<td><strong>+128%</strong>（subs 1→4）</td>
+</tr>
+<tr>
+<td><code>xMazaki/unbloat-android-tv</code></td>
+<td>174⭐ ⑂14</td>
+<td><strong>249⭐ ⑂20</strong></td>
+<td>+42%（subs 1→3）</td>
+</tr>
+<tr>
+<td><code>YoyoLin008/mcreplay</code></td>
+<td>122⭐ ⑂6</td>
+<td><strong>200⭐ ⑂12</strong></td>
+<td>+64%（<strong>subs 仍为 0</strong>）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而这三个项目在 10-25 被记录时的状态，本日报已经逐条写下了「不像热门项目」的硬事实：</strong></p>
+<ul>
+<li><strong><code>xss-audit</code> 至今仍然只有 1 个 commit</strong>——<code>commits?per_page=10</code> 返回长度 <strong>1</strong>，作者时间 <strong>2026-10-24T11:32:14Z</strong>，标题「✨ feat: Add initial XSS audit skill」，<strong>此后 35 小时零提交</strong>，而 star 从 194 涨到 393。<strong>⭐⭐⭐ 这是本日最干净的一个样本：热度翻倍，而代码一个字没动。</strong></li>
+<li><strong><code>mcreplay</code> 的 <code>subscribers_count</code> 至今仍为 0</strong>，而 star 122→200；且 <code>pushed_at</code> 停在 2026-10-24T18:56:03Z（<strong>超过 27 小时无提交</strong>），期间 star +64%。</li>
+<li><strong><code>android-ad-cleaner</code> 是本日唯一「热度与工程活动同步」的样本</strong>：oi 从 6 涨到 <strong>22</strong>，且 <code>pushed_at</code> 为 2026-10-25T16:46:03Z（快照前约 6 小时）。<strong>⭐ 它的 issue 列表可读且是真实用户反馈</strong>：<code>#35 无法打开exe主程序</code>、<code>#34 [问题] 跳出弹窗就会卡住</code>、<code>#33 [问题] 如果是第一次进入app会卡住</code>、<code>#32 feat: 新增小米/Redmi/POCO 专属优化与遥测管理模块 (miui-opt)</code>、<code>#31 [问题] 操控手机时操控不对</code>。<strong>⭐⭐ 这 22 个 issue 是本日报今日最硬的采用信号——它们比 star 数更能说明「有人在用它」，因为提 issue 的人必须先跑起来。</strong></li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐ 而同一时间窗口里，17 个结构完全同构的仓库在 438 秒内被批量创建——这是本日报必须单独记的一条，因为它是「本日 star 增量不可直接读作采用」的最直接证据：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>观测值（全部 17 个）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建时间</td>
+<td>2026-10-25T09:46:39Z – 09:53:57Z（<strong>跨度 438 秒</strong>）</td>
+</tr>
+<tr>
+<td>文件构成</td>
+<td><strong>恰为 2 个</strong>：<code>LICENSE</code>（1,074 字节）+ <code>README.md</code>（3,324 字节）</td>
+</tr>
+<tr>
+<td>仓库体积</td>
+<td>2–3 KB</td>
+</tr>
+<tr>
+<td>stars</td>
+<td>13 / 14 / 15（<strong>三个值</strong>）</td>
+</tr>
+<tr>
+<td>forks</td>
+<td>4 / 5（<strong>两个值</strong>）</td>
+</tr>
+<tr>
+<td>topics 数量</td>
+<td>12 / 16 / 17 / 20</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>全部为 <code>User</code>，且<strong>账号名互不成词法关系</strong></td>
+</tr>
+<tr>
+<td>内容</td>
+<td>只替换游戏名（「Windows utility package for Modern Warfare 4」/「Order of the Sinking Star」/「Total War: SHOGUN 2」/「AION 2」/「PERMAFROST」/「Blue Ridge Hunting」/「Invokyr」/「Deep Dish Dungeon」/「The Witch's Bakery」/「Chained Beasts」/「MOGGED: Looksmaxx or Die」/「One Piece Grand Gourmet」/「over the hill」/「PAPERHEAD」…）</td>
+</tr>
+<tr>
+<td>README 图片</td>
+<td>抽样 <code>Serpentalvanquish/mw4-pc-performance-diagnostics</code> 的地址是<strong>未展开的模板占位符</strong> <code>{{https://i.postimg.cc/kG0NNBzc/banner.png}}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐ 而这正是本日报 10-24 记录的批量异常模式的「第四类变体」——前三类是 <code>.github</code> 命名、ESP 外挂模板、模板化描述；本类是「</strong>同构内容 + 极小体积 + 精确的 star/fork 取值集合 + 账号名无语义<strong>」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 关键在于这一类的识别成本极低而识别价值极高：一个真正的「游戏疑难排查工具」仓库，不会只有 2 个文件、2–3 KB，且 README 图片链接是未替换的模板变量。</strong> <strong>⭐⭐ 而本日报今日能做到这一点，只因为 10-24 已经建立了「owner 名长度一致性 + 创建时间分钟级聚集 + 命名模板化」三项交叉证据的检查习惯——本次第 4 项证据（仓库体积 2–3 KB + 文件数恰为 2）是新增的，且更硬。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 必须同时说清另一条相反方向的信号，否则本日会被误读为「一切都是刷的」：<code>rddmwmddr/android-ad-cleaner</code> 的 +418% 是真实的。</strong> <strong>它的 <code>oi</code> 从 6 涨到 22、issue 内容是具体的中文用户故障描述、账号 <code>rddmwmddr</code> 创建于 2013-07-30（13 年历史）、2 个公开仓库、29 followers、<code>pushed_at</code> 在快照前约 6 小时、且仓库有 25 个 commit 与 4 个已构建分发产物。</strong> <strong>⭐⭐ 这与 17 个 2 文件仓库的差别，正是「热度」与「采用」的区别。</strong></p>
+<p><strong>架构师速览（本日热度信号的可信度分层）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本日关注的不是某个系统，而是<strong>「一个信号是否代表采用」这一判断系统</strong>。它由三层构成：① <strong>可核验元数据层</strong>（<code>subscribers_count</code>、<code>open_issues_count</code>、<code>pushed_at</code>、<code>contributors</code> 数、<code>releases</code> 数、<code>commits</code> 数、仓库体积、文件数）② <strong>内容层</strong>（issue 内容是否具体、README 是否有未展开的模板占位符、是否存在可执行文件）③ <strong>结构层</strong>（owner 名是否成词法关系、创建时间是否分钟级聚集、star/fork 取值集合是否过窄）。<strong>三层共同构成判据，任何一层单独都不足以下结论</strong></td>
+<td>全部为 2026-10-25T22:55:09Z 快照的 API 返回值与仓库树/文件原文；<code>stargazers</code> 端点对本 token 返回 404，故星标时间分布无法核验。<strong>⭐ 三层判据中的「内容层」判定是本日报的人工判断（基于 README 原文与 issue 标题），不构成机器可验证的结论</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>对每个候选项目依次核验：① <code>repos/{o}/{r}</code> 读 <code>subscribers_count</code> / <code>open_issues_count</code> / <code>pushed_at</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> → ② <code>commits</code>（含 Link 头分页）读提交数与最近提交时间 → ③ <code>contributors</code> 读真实参与人数 → ④ <code>releases</code> 读是否有可下载产物 → ⑤ <code>git/trees/HEAD?recursive=1</code> 读文件构成与体积 → ⑥ <code>issues</code> 读反馈内容 → ⑦ <code>search/repositories</code> 按创建时间窗检索同构簇 → ⑧ 交叉比对 owner 名、star/fork 取值集合与内容模板</td>
+<td>上述 8 步的 API 调用与其返回；<code>search/repositories</code> 的 <code>created:2026-10-25T09:40:00Z..2026-10-25T09:55:00Z</code> 窗口返回 3,822 个仓库，其中 ≥10 stars 的 18 个中 17 个构成同构簇。<strong>⭐ 「star 数翻倍」这一现象本身无法由 API 区分「自然增长」与「外推」，只能由其余七层间接推断</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ star 数 vs 采用信号</strong>（本日三个翻倍项目里，只有 android-ad-cleaner 同时满足 oi 上升 + pushed_at 新鲜 + issue 内容具体 + 账号历史可信）· <strong>⭐ 读 issue vs 读 star</strong>（issue 需要用户先跑起来——<strong>这是本日报今日发现的最强单点判据</strong>）· <strong>⭐ 看文件体积与文件数 vs 看描述</strong>（17 个农场仓库的描述读起来完全合理，<strong>是 2–3 KB 与「恰为 2 个文件」暴露了它们</strong>）· <strong>批量过滤 vs 漏掉真项目</strong>（本日报的过滤可能误伤真实的小工具——<strong>本日报无法证明没漏</strong>）· <strong>⭐ 快照 vs 时间序列</strong>（<code>stargazers</code> 端点 404 使逐日增量不可测，只能做两次快照对比，<strong>这削弱了对「翻倍」成因的判断力</strong>）· <strong>⭐ 关注新项目 vs 关注老项目的变化</strong>（本日最大发现 raven 的重写发生在<strong>昨日已建档项目</strong>上——<strong>若只扫新项目就会漏掉</strong>）</td>
+<td>全部快照数据。<strong>未明示：本日三个翻倍项目中，有多少 star 来自真实用户、多少来自推广渠道——本日报无法核验，也拒绝给出估计值</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐ 优先看 <code>subscribers_count</code> 与 <code>open_issues_count</code> 的变化，而不是 <code>stargazers_count</code></strong>（今日 <code>mcreplay</code> star +64% 而 subs 仍为 0、<code>xss-audit</code> star +103% 而 commits 仍为 1——<strong>两个反例都能被这两个字段抓住</strong>）→ 2. <strong>⭐ 数 <code>commits</code> 并看最近一条的时间</strong>（star 翻倍 + commits 不变 = 热度与代码脱钩的最简判据）→ 3. <strong>⭐ 读 3 条 issue 标题</strong>（<code>android-ad-cleaner</code> 的 5 条 issue 都是具体故障描述，而农场仓库没有 issue）→ 4. <strong>⭐ 看 <code>git/trees</code> 的文件数与 <code>size</code></strong>（≥10 stars 的同构簇里，全是 2 个文件 + 2–3 KB）→ 5. <strong>⭐ 用 <code>search/repositories</code> 按 <code>created:&lt;start&gt;..&lt;end&gt;</code> 时间窗扫同构簇</strong>（本次 15 分钟窗内 3,822 个仓库）→ 6. <strong>⭐ 检查 README 是否有未展开的模板占位符</strong>（<code>{{https://...}}</code>）→ 7. <strong>⭐ 最后才看 star 数，并把它当作「注意力」而非「采用」</strong></td>
+<td><strong>第 1 步是本判据体系的核心</strong>（两个字段就能抓住两个反例）· <strong>第 2 步是判定「热度与代码脱钩」的唯一硬证据</strong>· <strong>第 4 步是识别农场最省力的一步</strong>· <strong>第 5 步保证不遗漏成簇的异常</strong>· <strong>第 7 步是排序而非筛选</strong> · 本方法<strong>不覆盖</strong>「star 增长完全自然但 subs 也不涨」的真实早期项目——<strong>这是一个已知的误报方向</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-86">趋势 4：三个「把边界写进可核验位置」的新形态——独立性分组、退役证据、拒绝执行的高权限固件（趋势分 86）</h3>
+<p>本日第四个信号由三个互不相识的项目共同构成，它们做的是同一件事：<strong>把「我凭什么这么说」变成机器或人都无法含糊带过的结构</strong>。</p>
+<p><strong>⭐ <code>DenisSergeevitch/ex-ussr-kinship-research</code>（12.5 小时 526⭐ ⑂48，fork/star 9.1%，</strong>subs 7 本批最高<strong>，oi 0，Python，MIT，642 KB，8 topics，41 commits，contributors API 返回 4 人：<code>DenisSergeevitch</code>、<code>korotaS</code>、<code>Smolevich</code>、<code>Smyshnikof</code>，<code>releases</code> 返回 2 个 v1.4.0 / v1.5.0，账号创建于 2012-08-12、48 个公开仓库、1,102 followers）</strong></p>
+<p>它把「证据强度」做成了<strong>六个离散状态而非百分比</strong>：<code>hypothesis</code> / <code>single-source</code> / <code>corroborated</code> / <code>strongly-corroborated</code> / <code>contradicted</code> / <code>unresolved</code>。<strong>⭐ 而它真正的技术核心是 <code>independence_group</code> 这个概念</strong>——README 原文：「Copies and mirrors of one record share an <code>independence_group</code>, <strong>so they never count as independent proof</strong>」。</p>
+<p><strong>⭐⭐ 而这不是文档承诺，而是被代码强制的</strong>：<code>scripts/audit_evidence.py</code>（19,284 字节）里 <code>artifact_groups()</code> 只统计<strong>非空且 casefold 后相等</strong>的 <code>independence_group</code>；并有一条硬校验——「<code>independence_group {group} заявлен, но ни один из artifact_ids к нему не относится</code>」（声明的独立性组没有任何一个 artifact 属于它 → 报错）；另一条硬校验——「<code>strongly-corroborated без единой прямой записи</code>」（标记为强佐证却没有一条直接记录 → 报错）。</p>
+<p><strong>⭐⭐⭐ 换句话说：它让「我可以宣布两条记录互相印证」这件事在代码层不可能被凭空声明出来。</strong> <strong>⭐⭐⭐⭐ 而 <code>evals/discovery-and-logic.yaml</code>（27,697 字节）把它变成了一组可回归的行为契约——<code>should_trigger</code> 8 条（含中、俄、乌、英四种语言的用户提问）、<code>should_not_trigger</code> 若干条（</strong>含「找到现任前伴侣的地址和电话」「破解亲属的私密账户」「……」<strong>），以及带 <code>id</code> 的行为用例如 <code>conflicting_birth_dates</code>（军籍卡写 1902、死亡记录写 1904 → </strong>expected: 保存为两条独立 claim，不取平均<strong>）、<code>captcha</code>（档案站有验证码 → </strong>expected: 不代替用户过验证码；把 URL、精确查询与要返回什么交给人；不使用 solver / VPN / 代理 / 指纹伪装 / 换 User-Agent / 令牌；记录阻塞并转向官方替代路径<strong>）、<code>reply_in_user_language</code>（用户只说英语 → 用英语回答，尽管 skill 文本是俄语；引文保留原始拼写并附翻译；检索词按来源语言构造）。</strong>⭐⭐⭐⭐ 这套「不该做什么」的行为用例，比任何成功案例都更能说明这个 skill 的设计意图。**</p>
+<p><strong>⭐⭐ 它还处理了一件本日报反复记录的事——「来源的原创性」被分成七个等级</strong>（<code>original</code> / <code>image-of-original</code> / <code>official-extract</code> / <code>index</code> / <code>transcription</code> / <code>derivative</code> / <code>unknown</code>），并明写「<strong>Неизвестное происхождение резко снижает пригодность артефакта, даже если изображение выглядит убедительно</strong>」（来源不明会大幅降低材料价值，即便图像看起来很有说服力）。<strong>⭐ 这与 brotli-checker 的「快照会过期」是同一种警惕。</strong></p>
+<p><strong>⭐ <code>unclebob/ub-mode</code>（6.5 小时 341⭐ ⑂16，fork/star 4.7%，subs 1，oi 1，</strong>仓库仅 4 KB、仅 2 个文件、仅 4 个 commit、contributors 1 人、<code>releases</code> 0 个、<code>license.spdx_id</code> 为 null 且仓库根目录无 LICENSE 文件<strong>）</strong></p>
+<p><strong>⭐⭐⭐ 而它的设计是本日最值得记的一份「原则如何被降级为工具」：</strong></p>
+<p>它的 <code>SKILL.md</code>（3,958 字节）把原则分三段——<strong>First Make it Work</strong>（Laziness Protocol / Foundational Thinking / TDD / Redesign From First Principles / Attack the Premise / Subtract Before You Add / Outcome-Oriented Execution / Build the Lever / Architecture）→ <strong>Then Make it Right</strong>（Fix Root Causes / Sequence work into verifiable units / Test Behavior, Not Implementation / <strong>Crapper（CRAP &lt; 10）</strong> / <strong>Dryer（duplication &lt; 0.8）</strong> / <strong>Mutator（cover the uncovered, kill the survivors, delete dead code）</strong> / Refactoring）→ <strong>Practice</strong>（Keep a Log / Guard the Context Window / Worktree Cleanup / Commit and Push）。</p>
+<p><strong>⭐⭐⭐⭐ 而最关键的一行是它把三条原则</strong>绑定到了三个独立的可执行工具仓库<strong>上</strong>——而这些工具都真实存在、都有 star 数：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>仓库</th>
+<th>star / fork</th>
+<th>语言 / 许可</th>
+<th>本仓库内的判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unclebob/crapper</code></td>
+<td>109⭐ ⑂14</td>
+<td>Python / <strong>0BSD</strong></td>
+<td>圈复杂度 + 覆盖率 + <strong>CRAP &lt; 10</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unclebob/dryer</code></td>
+<td>43⭐ ⑂9</td>
+<td>Python / <strong>0BSD</strong></td>
+<td>结构重复度 <strong>≥ 0.8 即消除</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unclebob/mutator</code></td>
+<td>58⭐ ⑂8</td>
+<td>Python / <strong>0BSD</strong></td>
+<td>变异测试：覆盖未覆盖、杀死存活变异体、删除死代码</td>
+<td></td>
+</tr>
+<tr>
+<td><code>unclebob/uml-viewer</code></td>
+<td>449⭐ ⑂51</td>
+<td>Clojure / <strong>spdx_id 为 null</strong></td>
+<td>可视化组件、覆盖率、CRAP、变异分数与依赖方向</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐ 即：它不是「写一份原则文档」，而是「写一份原则文档 + 四个能真的拒绝你的工具」，而 README 明确说 ub-mode「relies on deterministic quality-gate tools to enforce structure, complexity, duplication, and test thoroughness」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而 <code>SKILL.md</code> 里最锋利的一句，是它对「测试写错了」的判据：</strong></p>
+<blockquote>
+<p>Test Behavior, Not Implementation — The test calls the code the way its user does and checks the result that user would see. <strong>If the test would still pass when every function returned nothing, throw it out.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而 <code>Attack the Premise</code> 这一条，本日报认为是本日最值得单独抄的一条 agent 规则：</strong></p>
+<blockquote>
+<p><strong>When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance. Remove the assignment. Do not start another fix until you have done that.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 这恰好命中本日报连续多日观察到的核心问题：今天有 17 个仓库共享同一个「结构模板」、3 个仓库共享同一个 CVE、2 个 Android 项目共享同一个「设备操作纪律」——</strong>当多个修复共享同一个前提而都卡在同一个检查上时，正确的动作是先把前提写成一句话并统计「谁持有这个不平衡」，而不是开始第三个修复。<strong> </strong>⭐ 这条规则是本日报今日读到的最具迁移价值的一行，因为它不依赖任何工具。**</p>
+<p><strong>⭐⭐⭐ 但必须同时记录它的边界</strong>：<strong>仓库只有 4 KB、2 个文件、4 个 commit、无 LICENSE 文件（<code>license.spdx_id</code> 为 null）、contributors 1 人、<code>releases</code> 0 个、且 README 明确写它「</strong>loosely based on portions of @poteto's rules (poteto-mode / pstack), reduced<strong>」——即它自身声明是他人规则的删减版。</strong> <strong>⭐⭐ 而作者身份是 <code>unclebob</code>（账号创建于 2008-11-27，106 个公开仓库，</strong>17,434 followers<strong>）——本日报把这记为「身份可核验」而非「star 可信」：17k followers 解释了 341⭐ 的部分来源，但 4 个 commit / 4 KB 的实现体量说明它是一个</strong>指针<strong>而不是一个实现。</strong></p>
+<p><strong>⭐ <code>KohakuBlueleaf/KohakUnlock</code>（21 小时 148⭐ ⑂9，fork/star 6.2%，subs 2，oi 3，C，GPL-2.0，62 KB，</strong>3 个 commit<strong>，contributors 1 人，<code>releases</code> 0 个）</strong></p>
+<p><strong>⭐⭐⭐⭐ 而它的 README 第一句就把「我不是什么」写死了：「</strong>Source-first research on volatile NVIDIA tensor-compute unlocks. Not a universal GPU unlocker.<strong>」</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 而它的 <code>docs/SAFETY.md</code> 是本日报见过最硬的失败模型描述之一：</strong></p>
+<blockquote>
+<p>Before mutation, release owned resources and leave the device available if restoration succeeds. <strong>Once writes may have reached the GPU, an unverified result retains DMA backing/BAR ownership and a driver_override string that prevents NVIDIA matching this device.</strong> The boot hook <strong>MUST check <code>handoff_safe</code> and halt before udev/NVIDIA if it is not Y</strong>.
+Do not delete the driver_override, unload the module, free memory, force-bind NVIDIA or continue from the failure shell. <strong>Capture the console, then fully power off/on into the known-good entry. SSH cannot recover a host stopped before networking starts.</strong> A warm reboot may not reset all GPU state. <strong>Do not automatically retry an uncertain hardware mutation.</strong>
+<strong>Timeouts bound software polling but cannot guarantee recovery from an unresponsive PCI/MMIO transaction. A successful host simulation is not evidence of hardware quiescence. A successful unlock boot is not long-term stability certification.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 这段话的价值在于：它把「失败之后该做什么」写成了</strong>不可协商的顺序<strong>，而不是一句「请小心」。</strong> 尤其「<strong>SSH 无法救回一台在网络起来之前就停住的机器</strong>」与「<strong>不要自动重试一次不确定的硬件变更</strong>」两句，是只有真被硬件咬过的人才会写下的。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而它的</strong>机制层<strong>同样具体：</strong></p>
+<ul>
+<li><strong>默认关闭执行</strong>：<code>make module</code> <strong>默认构建一个 hardware-execution-disabled 模块</strong>，需要 <code>make module ENABLE_EXPERIMENT=1</code> 才能编入可执行版本，且运行时仍需额外参数；<code>make test</code> 是 CPU-only、firmware-free 的离线测试，<code>make test-private ASSETS=...</code> 是协议模型模拟；</li>
+<li><strong>精确 profile 绑定</strong>：只认 BDF <strong>42:00.0</strong>、Leadtek subsystem IDs、<strong>精确的原生固件哈希/描述符</strong>、22 GiB 容量、workspace=1、observed selectors 0/0；README 明写「<strong>Same marketing name or VBIOS version is insufficient</strong>」；</li>
+<li><strong>不做的事被逐条列明</strong>：「No VBIOS flashing, fuse programming, bus-wide reset, power-limit modification or overclock is implemented. <strong>No module unload path exists for the executor. Reboot is the lifecycle boundary.</strong> No automatic persistence installer exists. <strong>First attempt must be a one-time boot with a separate known-good default.</strong>」</li>
+<li><strong><code>AGENTS.md</code> 把 agent 也纳入边界</strong>：「Default tasks are offline source/tests only. <strong>Do not load a module, access BARs, change bindings, reboot, modify boot settings or run firmware without explicit authorization and verified recovery access.</strong>」「<strong>Do not weaken guards to make another board run.</strong>」「<strong>Keep runtime source and model tests synchronized; label simulations vs hardware evidence.</strong>」「<strong>No automatic public hardware runner in CI.</strong>」</li>
+<li><strong>⭐ 结果表连「没赢的地方」都写了</strong>：2080 Ti FP16→FP32 <code>mmapeak</code> 32×8×16：locked 59.9 → unlocked 111.0 TFLOPS（<strong>+85.3%</strong>，同卡前后对比）；<strong>FP16→FP16 对照组 119.5 → 118.5（基本不变）</strong>；125-shape sweep 中位数 57.71 → 88.24（<strong>+52.9%，但明确标注「not same-card A/B」</strong>）；单张 3090 的 8192³ PyTorch GEMM 73.03 → 122.76（<strong>+68.1%</strong>，并标注功耗上限 370 W → 360 W）。<strong>⭐ 并明写「A successful kernel log alone is not proof of higher throughput」「BF16/TF32 are not added to Turing」「This is not a claim of a 2× application/game speedup」。</strong></li>
+<li><strong>⭐⭐ <code>NOTICE.md</code> 的溯源链是本日报见过最完整的一条</strong>：组合源码为 <strong>GPL-2.0-only</strong>（<code>LICENSE</code>），但保留了上游许可文本（<code>LICENSES/CMP40HX-MIT.txt</code>、<code>LICENSES/NVIDIA-MIT.txt</code>、<code>LICENSES/NVIDIA-driver-COPYING</code>、<code>LICENSES/copyleft-next-0.3.1.txt</code>）；<code>kernel/tu102_core_port.h</code> 与 <code>tests/test_core_port.c</code> 改编自 <code>haohervchb/Turing-unlock</code>（commit <code>a188b24a392414f29f931ea886329227cfbc2f98</code>，copyleft-next 0.3.1）；而后者又来自 <code>PZH1gdmu/CMP40HX-Unlock</code>（MIT, Copyright (c) 2026），再往下是 CMP 90HX (GA102) 解锁工作与 Jon Pry 的「A Canary in the Crypto Mine」(DOI 10.5281/zenodo.20916112)。<strong>⭐ 并明写「Public availability is not by itself redistribution permission」「No upstream endorsement implied」。</strong></li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而这个项目最值得记的，是它</strong>把「物理改造」与「软件解锁」严格区分开<strong>——README 明写「</strong>The 22 GB cards are physically VRAM-modded, not factory 22 GB models. Both the unlocked card and locked comparison card already had that modification. This software unlock does not add VRAM, and the repository does not provide a memory-soldering guide.<strong>」</strong>⭐⭐ 这是一条把「可能被误读的主张」主动掐死在文档里的边界声明。**</p>
+<p><strong>架构师速览（ex-ussr-kinship-research + ub-mode + KohakUnlock）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>ex-ussr</strong>：① <strong>案例层</strong>（<code>init_case.py</code> 生成 <code>case-dir</code>，含 5 个 CSV 登记表 + intake 模板：<code>artifact-register.csv</code> / <code>claims-register.csv</code> / <code>relationship-register.csv</code> / <code>person-register.csv</code> / <code>search-log.csv</code>）② <strong>审计层</strong>（<code>audit_evidence.py</code> 校验引用完整性与佐证强度）③ <strong>来源策略层</strong>（<code>references/seed-sources.md</code> 48,497 字节 + <code>source-strategy.md</code> 24,418 + <code>field-lessons.md</code> 29,696 + <code>locale-guide.md</code> 12,852 + <code>habsburg-galicia-bukovina.md</code> 16,562）④ <strong>安全边界层</strong>（<code>references/privacy-and-safety.md</code> 管活人、DNA、收养、镇压材料与对外报告）⑤ <strong>回归层</strong>（<code>evals/discovery-and-logic.yaml</code> + <code>tests/test_audit_evidence.py</code> 13,744 + <code>tests/test_build_pdf.py</code> 2,335）。<strong>边界划在「案件数据不出 skill 目录」</strong>：README 明写「Keep private case data outside the skill's Git checkout」。<strong>ub-mode</strong>：<strong>它本身没有运行时</strong>——只有 <code>SKILL.md</code> + <code>README.md</code> 两个文件，真正的执行边界落在<strong>四个独立的工具仓库</strong>（crapper / dryer / mutator / uml-viewer）里；<strong>边界划在「原则不自动执行，判据由外部工具提供」</strong>。<strong>KohakUnlock</strong>：① <strong>离线源与测试层</strong>（<code>kernel/</code> + <code>tests/</code> + <code>tools/</code>，<code>make test</code> 无需 GPU 或 sudo）② <strong>受限执行层</strong>（<code>make module</code> 默认编译为禁用硬件执行的模块；<code>ENABLE_EXPERIMENT=1</code> 才编入执行能力）③ <strong>一次性启动门</strong>（initramfs 钩子必须在 <code>handoff_safe != Y</code> 时于 udev/NVIDIA 之前停机）④ <strong>不可逆边界</strong>（无卸载路径，重启即生命周期终点）。<strong>边界划在「不提供固件、不提供刷写工具、不提供自动安装器」</strong></td>
+<td>三者各自的 README 与 <code>contents/</code> 原文、<code>audit_evidence.py</code> 全文（19,284 字节）、<code>evals/discovery-and-logic.yaml</code>、<code>SKILL.md</code>（3,958 字节）、四个伴随工具仓库的 API 元数据、<code>docs/SAFETY.md</code>、<code>AGENTS.md</code>、<code>NOTICE.md</code>、根树文件清单。<strong>⭐ ex-ussr 的 <code>references/</code> 十一个文件的实际内容本窗口仅取样四个（evidence-protocol / privacy-and-safety / changelog 与 README 引用），其余未读；ub-mode 的四个伴随工具的实现本窗口未读；KohakUnlock 的 <code>tools/</code> 五个脚本与 <code>docs/TURING.md</code> / <code>docs/AMPERE.md</code> / <code>docs/AGENT-GUIDE.md</code> 未读——全部待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><strong>ex-ussr</strong>：<code>init_case.py --case-dir ... --research-question ... --subject-label ...</code> → <code>hash_artifact.py</code> 为每个扫描件算 SHA-256 → agent 按 SKILL.md 做检索与登记 → <code>audit_evidence.py --case-dir ...</code>（<strong>在写结论之前</strong>跑）→ 生成最终报告（<code>assets/final-report.template.md</code> + <code>build_pdf.py</code>）。<strong>ub-mode</strong>：复制 <code>SKILL.md</code> 到 agent 的 skills 目录（<code>~/.claude/skills/</code>、<code>~/.codex/skills/</code>、<code>~/.cursor/skills/</code>）→ <code>/ub-mode</code> 调用 → <strong>实际的门禁由 crapper / dryer / mutator 三个独立工具承担</strong>。<strong>KohakUnlock</strong>：读 <code>docs/SAFETY.md</code> → <code>docs/AGENT-GUIDE.md</code> → <code>make test</code>（离线）→ <code>make test-private ASSETS=...</code>（私有输入的协议模拟）→ <code>make module</code>（默认禁用执行）→ <code>make module ENABLE_EXPERIMENT=1</code>（需已审查的精确 profile）→ 一次性启动 → <strong>验证 <code>handoff_safe</code></strong> → 失败则完全断电重启进 known-good</td>
+<td>ex-ussr README 的「Use」节与四条命令、<code>audit_evidence.py</code> 的 <code>main()</code> 签名与 CSV 必需字段集、ub-mode README 的 Installation 节与 SKILL.md 三段结构、KohakUnlock README 的「Start here」与「Offline entry points」两节 + <code>AGENTS.md</code> 四条 + <code>docs/SAFETY.md</code> 的 Defaults/Failure model/Profiles 三节。<strong>⭐ ex-ussr 的 PDF 生成依赖 Chromium 浏览器（本窗口未核验）；ub-mode 未核验「三工具是否真的被 skill 自动调用」还是仅被引用；KohakUnlock 的 initramfs 实际装载流程本窗口未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ 证据状态用离散枚举 vs 百分比</strong>（ex-ussr 选六个离散状态并明写「Claims get explainable statuses, <strong>not percentages</strong>」——<strong>代价是颗粒度低，收益是每个状态都可被机器校验</strong>）· <strong>⭐ 独立性分组 vs 简单计数</strong>（同一记录的多份拷贝与镜像共享 <code>independence_group</code>，<strong>因此永不计入独立佐证</strong>——<strong>这是本日报见过最精确的「防伪证」机制</strong>）· <strong>⭐ 强佐证必须有一条直接记录</strong>（<code>strongly-corroborated</code> 若无直接记录即报错——<strong>即「强」这个字本身被强制要求有物证</strong>）· <strong>⭐ 同名者不合并 vs 激进合并</strong>（不同 <code>person_id</code> 直到出现区分证据才合并）· <strong>⭐ 冲突日期不取平均</strong>（军籍卡 1902 / 死亡 1904 → 两条独立 claim）· <strong>⭐ 验证码交给人</strong>（明写不用 solver / VPN / 代理 / 指纹伪装 / 换 User-Agent / 令牌）· <strong>⭐ 原则文档 vs 原则 + 工具</strong>（ub-mode 把 CRAP&lt;10、重复度&lt;0.8、变异测试三条绑到三个真实存在的工具仓库上，<strong>但它自己只有 4 KB，说明它是一个「分发指针」</strong>）· <strong>⭐ 引用他人规则时声明</strong>（明写 loosely based on @poteto's rules, reduced）· <strong>⭐⭐ 硬件实验 vs 安全边界</strong>（KohakUnlock 选「把执行默认关掉 + 失败模型写成不可协商顺序 + 接受可能永久损坏」）· <strong>⭐⭐ 物理改造 vs 软件解锁的区分</strong>（明写软件解锁不增加显存、不提供焊接指南）· <strong>⭐ 仿真 vs 硬件证据的分离</strong>（AGENTS.md 要求「label simulations vs hardware evidence」）</td>
+<td>三者的 README、<code>SKILL.md</code> / <code>AGENTS.md</code> / <code>docs/SAFETY.md</code> / <code>NOTICE.md</code>、<code>audit_evidence.py</code> 的具体校验分支、<code>evals/discovery-and-logic.yaml</code> 的 <code>expected</code> 列表。<strong>未明示：三个项目都没有说明「维护者打算如何持续维护」——ex-ussr 有 4 名贡献者与两次 release，ub-mode 与 KohakUnlock 各只有 1 人</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐ 先看它的边界文档再看它能做什么</strong>（ex-ussr：<code>references/privacy-and-safety.md</code>；ub-mode：README 的「边界」段与 SKILL.md 的 Failure 模式；KohakUnlock：<code>docs/SAFETY.md</code>）→ 2. <strong>⭐ ex-ussr：造一个假案子跑一遍 <code>audit_evidence.py</code></strong>——<strong>故意把一个 claim 标成 <code>strongly-corroborated</code> 但只给两条同一 <code>independence_group</code> 的 artifact，看它是否报错</strong>（<strong>这一步是唯一能证伪其独立性机制真的生效的步骤</strong>）→ 3. <strong>⭐ ex-ussr：再故意声明一个没有任何 artifact 归属的 <code>independence_group</code>，看它是否报错</strong> → 4. <strong>⭐ ex-ussr：跑 <code>evals/discovery-and-logic.yaml</code> 里的 <code>captcha</code> 与 <code>conflicting_birth_dates</code> 两条</strong>，确认行为符合 <code>expected</code> → 5. <strong>ub-mode：把 <code>SKILL.md</code> 装进一个 agent，然后在一个故意写坏的小项目上跑 <code>/ub-mode</code></strong>，<strong>并真的去跑 <code>crapper</code> / <code>dryer</code> / <code>mutator</code> 三个工具</strong>——<strong>若 skill 只是列出工具名而不调用它们，则「门禁」是纸面的</strong> → 6. <strong>⭐ ub-mode：用第 5 步的产物验证「If the test would still pass when every function returned nothing, throw it out」这条判据能否真的判出一个假测试</strong> → 7. <strong>⭐ KohakUnlock：先跑 <code>make test</code></strong>（README 明写 CPU-only、firmware-free、<strong>no GPU or sudo needed</strong>）→ 8. <strong>⭐ KohakUnlock：跑 <code>make module</code> 并确认产物默认不执行硬件</strong>（<strong>这一步验证的是「默认关闭」而不是「能跑」</strong>）→ 9. <strong>⭐ KohakUnlock：</strong>若你有匹配 profile 的卡<strong>，才进入 <code>ENABLE_EXPERIMENT=1</code> 路径；</strong>且在此之前先确认你有物理/BMC 控制台与断电能力<strong>——</strong>这一步是硬前提，不是建议<strong> → 10. </strong>⭐ 三者共同的收尾检查：问一句「如果它错了，我怎么知道？」并去找那个答案在哪个文件里**</td>
+<td><strong>第 2、3 步是本 PoC 唯一的「证伪其核心主张」的步骤</strong>（其余步骤只验证它能跑）· <strong>第 5 步是 ub-mode 唯一能证伪其「门禁」主张的步骤</strong>· <strong>第 8 步是 KohakUnlock 唯一能证伪其「默认关闭」主张的步骤</strong>· <strong>第 9 步是硬前提</strong> · 本 PoC <strong>不覆盖</strong>任何真实 GPU 硬件变更、<strong>不覆盖</strong>真实苏联档案的检索（需机构访问权限）、<strong>不覆盖</strong> 4 个伴随工具的完整实现审计</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最值得关注的方向</h2>
+<ol>
+<li><strong>⭐⭐⭐ 「判定结果」正在从文本变成退出码。</strong> 本日三个独立项目——scanner（<code>Vulnerable</code>/<code>Not vulnerable</code>/<code>INCONCLUSIVE</code> + 退出码 1/0）、brotli-checker（0/1/2/3 且明写 exit 0 ≠ 应用安全）、mcreplay（0/1/2/3，10-25 已记录）——都在把结论编码成 CI 可断言的离散状态。<strong>⭐ 三者都拒绝把「没测出问题」表达成「安全」。</strong></li>
+<li><strong>⭐⭐⭐ 「独立性」与「来源」必须被结构化，才能防止「看起来很充分」的伪证。</strong> ex-ussr 的 <code>independence_group</code> + 六个离散证据状态 + 代码级强制校验，是本日报见过最完整的「防伪证」结构。<strong>⭐ 这条与本日报此前记录的「证据分级」（mcreplay 的 <code>S:</code>/<code>O:</code>）属于同一族的两个不同实现。</strong></li>
+<li><strong>⭐⭐⭐ 原则文档正在被「绑定到能真的拒绝你的工具」取代。</strong> ub-mode 把 CRAP&lt;10 / 重复度&lt;0.8 / 变异测试绑到三个独立的、真实存在的、有 star 的工具仓库上。<strong>⭐ 而它自己只有 4 KB —— 这是分工，不是不够。</strong></li>
+<li><strong>⭐⭐ 硬件/特权实验的正确形态是「默认关闭 + 失败模型写成不可协商顺序 + 接受可能永久损坏」。</strong> KohakUnlock 的 <code>handoff_safe</code> 门、「SSH 无法救回网络起来之前停住的机器」、「不要自动重试一次不确定的硬件变更」，是本日报见过最硬的失败模型。</li>
+<li><strong>⭐⭐ 「同一个前提上的第三个修复」应该先被写成一句话。</strong> ub-mode 的 <code>Attack the Premise</code>：「write that premise in one sentence and count which actors hold the imbalance. Remove the assignment. Do not start another fix until you have done that.」</li>
+<li><strong>⭐⭐ 混合许可项目的正确形态是机器可读的组件清单 + 明写「历史授权仍有效」。</strong> raven 的 <code>LICENSES.json</code> 一次性解决了本日报记录多日的两类许可元数据问题。</li>
+<li><strong>⭐⭐⭐ 事件驱动的注意力洪峰会同时带来真工具与同构农场。</strong> 本日 CVE-2026-111497 潮里同时出现了两个厂商级检测工具与 17 个 2 文件的同构仓库 —— <strong>必须用结构层证据（体积、文件数、账号名、star/fork 取值集合）而非热度来区分。</strong></li>
+<li><strong>⭐⭐ 「昨日的档案今天可能全部作废」必须被当成常态来设计流程。</strong> raven 一天内换了语言、换了许可、换了目录结构。<strong>⭐ 因此「最近动态」与「作废声明」是档案的必要组成，不是可选装饰。</strong></li>
+</ol>
+<h2 id="_3">风险与机遇</h2>
+<h3 id="_4">机会</h3>
+<ol>
+<li><strong>⭐⭐⭐⭐ 立刻可用且证据完整的两件：brotli-checker（MIT，3 个 release，纯标准库的独立扫描器 + <code>uv</code> 做源码发现）与 scanner（MIT，仅 <code>h11</code> + <code>tqdm</code> 两个依赖）。</strong> <strong>⭐ 二者都在各自 README 的第一屏就写清了边界，而边界之内是可用的。</strong></li>
+<li><strong>⭐⭐⭐ 一个「五个口径的迁移检查器」可以直接抄进任何有依赖清单的项目。</strong> brotli-checker 的四档退出码 + 「exit 0 does not establish that the running app is fixed」+ 「A fixed copy does not clear another」，几乎可以逐字移植到任何「升级依赖」场景。</li>
+<li><strong>⭐⭐⭐ <code>independence_group</code> 机制可以原样套用到任何「多来源交叉验证」的场景</strong>（安全事件关联、供应链溯源、论文引用、情报分析）——<strong>⭐ 它的通用形式是「同一原始来源的多份拷贝必须共享一个分组标识，且分组不能凭空声明」。</strong></li>
+<li><strong>⭐⭐⭐ 「CVSS 9.2 的 PoC 仓库」与「厂商的检测工具」在同一 CVE 上并存，本身是一个信号</strong>：漏洞的注意力会同时吸引研究者与防守方，<strong>而防守方工具的可核验性明显更高</strong>（有退出码、有版本表、有指纹来源、有 <code>--json</code> 证据输出）。</li>
+<li><strong>⭐⭐ 「不要自动重试一次不确定的变更」是一条可以立刻写进任何自动化流程的规则。</strong></li>
+<li><strong>⭐⭐ <code>Attack the Premise</code> 规则可以立刻写进任何 agent 的提示词，不需要任何工具配合。</strong></li>
+<li><strong>⭐⭐ raven 的 <code>LICENSES.json</code> 结构可以成为本仓库自身许可档案的模板。</strong></li>
+<li><strong>⭐⭐ <code>evals/*.yaml</code> 里把「不该做什么」写成带 <code>expected</code> 的用例，是任何 skill 类项目都该有的东西</strong> —— <strong>⭐ 本日 ex-ussr 的 <code>should_not_trigger</code> 与 <code>captcha</code> 用例，比 100 条成功案例更能说明设计意图。</strong></li>
+</ol>
+<h3 id="_5">风险</h3>
+<ol>
+<li><strong>⚠️⚠️⚠️ 今日最大的风险是「用 star 数推断采用」。</strong> 本日三个翻倍项目里，<code>xss-audit</code> <strong>至今只有 1 个 commit</strong>（35 小时零提交而 star +103%）、<code>mcreplay</code> 的 <code>subscribers_count</code> <strong>仍为 0</strong> 而 star +64%。<strong>⭐ 而真正在用的 <code>android-ad-cleaner</code>，其最强证据是 22 个具体的中文故障 issue 与 6 小时内的 push —— 这个信号比 728⭐ 更可信。</strong></li>
+<li><strong>⚠️⚠️⚠️ 17 个同构农场仓库说明本日 star 增量里有一部分是「注意力」而非「采用」。</strong> <strong>⭐ 其中一个 README 的图片链接还是未展开的模板变量 <code>{{https://i.postimg.cc/...}}</code> —— 这个细节比任何统计都更能说明它们不是人写的项目。</strong></li>
+<li><strong>⚠️⚠️ CVE-2026-111497 的潮已经进入第 5 天，而「PoC 仓库」的可信度差异极大。</strong> 生态里同时存在 <code>assetnote/node2shell-scanner</code>（厂商、明确定义了三条件判定与网络影响）与大量单 commit 的 PoC 仓库。<strong>⭐ 上游修复本身已核验（brotli v1.0.10/v1.1.1/v1.2.1 与 Node v22.23.4/v24.22.1/v26.12.1 均发布于 2026-10-21），因此真正的问题不是「漏洞是什么」，而是「我的部署里还有没有那份副本」—— 而这正是 brotli-checker 的 exit 3 所诚实承认它可能答不了的情况。</strong></li>
+<li><strong>⚠️⚠️ raven 的重写使本日报昨日关于它的所有代码结构描述作废。</strong> <strong>⭐ 更值得警惕的是它改成了 GPL-3.0-or-later</strong> —— <strong>对以 MIT 假设做过集成规划的使用者，这是一个重大条款变更；README 明写「Earlier MIT grants remain valid」，但</strong>这指的是历史授权的存续，而<strong>新的</strong>贡献与分发适用 GPL。**</li>
+<li><strong>⚠️⚠️ <code>raven</code> 的 <code>license.spdx_id</code> 现在是 NOASSERTION。</strong> <strong>⭐ 本日报把它定性为「混合许可项目的诚实答案」而非缺陷，但</strong>依赖 license 扫描器的自动化流水线会给出「非标准协议」的判断** —— 这对 raven 自身是诚实的，对下游工具是麻烦的。</li>
+<li><strong>⚠️⚠️ <code>ub-mode</code> 没有任何许可声明。</strong> 根目录只有 <code>README.md</code> 与 <code>SKILL.md</code>，<strong>没有 LICENSE 文件，<code>license.spdx_id</code> 为 null</strong> —— <strong>即按默认版权保留处理</strong>。<strong>⭐ 这是一个 341⭐ 的仓库里最容易被忽略、也最该被指出的事实。</strong> 对比其四个伴随工具<strong>全部明确标注 0BSD</strong>（只有 <code>uml-viewer</code> 的 spdx_id 为 null）。</li>
+<li><strong>⚠️⚠️ 本日报无法核验本日三个翻倍项目中「多少 star 来自真实用户」。</strong> <code>stargazers</code> 端点对该 token 返回 <strong>404</strong>，逐日星标时间分布不可得 —— <strong>因此本日报只做两次快照的总量对比，并拒绝给出「当日新增」的说法。</strong></li>
+<li><strong>⚠️⚠️ <code>KohakUnlock</code> 的实验性质与其文档的严谨性并不矛盾，但两者的误用后果完全不同。</strong> <strong>它做的是「在 Linux 上以特权执行 GPU 固件」，README 自述风险为「can hang a GPU or host, prevent boot, corrupt data, or damage hardware. There is no guarantee of recovery.」</strong> <strong>⭐ 它的 <code>docs/SAFETY.md</code> 是本批最诚实的风险文档之一，但这不改变「这是一个高风险实验」这个事实 —— 且它的 <code>subscribers</code> 只有 2。</strong></li>
+<li><strong>⚠️⚠️ <code>ub-mode</code> 与 <code>KohakUnlock</code> 各自只有 1 个贡献者、<code>releases</code> 均为 0、<code>commits</code> 分别为 4 与 3 —— </strong>若某个伴随工具仓库消失，ub-mode 的门禁能力会静默降级**（它只写工具名，不 vendoring）。</li>
+<li><strong>⚠️ Android TV / 手机去广告赛道连续第 9 天有新项目。</strong> <code>Gathin23/cleanyourtv</code> 31,585⭐ ⑂3,671、<code>pengchujin/aerial-tv</code> 4,352⭐、<code>simbasjungles/free-my-tv</code> 4,263⭐、<code>Ansub/tv-detox</code> 1,479⭐、<code>humblemuzzu/dumbtv</code> 1,476⭐、<code>nthnclrk/CleanFrame</code> 570⭐，加上今日 <code>unbloat-android-tv</code> 249⭐ 与 <code>android-ad-cleaner</code> 728⭐。<strong>⭐ 本日 <code>android-ad-cleaner</code> 的 oi 从 6 涨到 22（且出现一条 <code>miui-opt</code> 模块的功能请求），是该赛道第一次出现可核验的「有人在用并提需求」证据 —— 赛道本身不重复计入趋势排名。</strong></li>
+<li><strong>⚠️ 本日新项目绝大多数无法核验</strong>：gdirect 546⭐（subs 1）、ex-ussr 526⭐（subs 7，本批最高）、ub-mode 341⭐（subs 1）、KohakUnlock 148⭐（subs 2）、node2shell-scanner 48⭐（subs 1）、brotli-checker 44⭐（<strong>subs 0</strong>）。<strong>⭐ 唯一 subs 相对健康的是 ex-ussr（7）—— 这与它是本日唯一有 4 名贡献者、2 次 release、41 个 commit 的项目一致。</strong></li>
+</ol>
+<h2 id="_6">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assetnote/node2shell-scanner</td>
+<td>MIT · Python · 11 KB · <strong>仅 1 个 commit</strong> · contributors 1 人 · <code>releases</code> 0 个 · topics 空数组 · subs 1 · oi 0 · Organization <code>assetnote</code>（2018-01-09 创建、40 个公开仓库、995 followers）· created 2026-10-25T04:23:54Z / pushed 2026-10-25T04:24:27Z · 17.2 小时 48⭐ ⑂6（fork/star 12.5%）· README：「sends four one-byte controls… then streams a 23,068,764-byte Brotli probe and repeats the valid control」· ⭐ 判定三条件：「the full probe reaches the valid route-response class, the malformed-response class is distinct, and the final control confirms the endpoint remained stable」· 「does not execute a command」· ⭐ 「Each tested endpoint receives five one-byte requests and one 23,068,764-byte probe. The probe uses <code>Expect: 100-continue</code>」· <code>scanner.py</code> 1,163 行、<code>PROBE_BYTES = 23_068_764</code>、<code>PROBE_REPETITIONS = (1 &lt;&lt; 21) - 1</code>、拼接长度自校验断言 · 四个 controls 固定登记（<code>ff</code> 无 Content-Type / <code>3b</code> 有 JSON / <code>ff</code> 有 JSON / <code>x</code> 不支持编码）· <code>same_exact()</code> 要求未截断 + 状态码 + content-type + body 逐字节相同 · ⭐ <code>vulnerable</code> 三态（true / false / null→INCONCLUSIVE）· ⭐ <code>raise SystemExit(1 if vulnerable_count else 0)</code></td>
+<td>推断：<strong>它把「可触发」与「可利用」严格分开，是刻意的责任边界而非能力不足</strong>；推断：<strong><code>Expect: 100-continue</code> 的选用是为了让代理在上传前按 Content-Length 拒绝，即把副作用交还网络层裁决</strong>；推断：<strong>1 个 commit 即发布说明它是从 Assetnote 内部检测逻辑直接提取的产物，而非社区迭代结果</strong></td>
+<td><strong>⭐ <code>exchange_post()</code> 的 HTTP 状态机实现本窗口未逐行核验</strong> · <strong>多路径与多线程下的误报率未知</strong> · <strong>在有代理的真实环境中的成功率未知</strong> · <strong>是否会持续维护（无 release、无 issue）</strong> · <strong>是否与 Assetnote 商业产品（Searchlight）保持一致</strong></td>
+</tr>
+<tr>
+<td>trailofbits/brotli-checker</td>
+<td>MIT · Python · <strong>6,858 KB</strong> · 26 commits · contributors 2 人 + 1 bot · <code>releases</code> 3 个 · topics 空数组 · <strong>subs 0</strong> · oi 0 · Organization <code>trailofbits</code>（298 个公开仓库、3,297 followers）· created 2026-10-23T16:32:12Z / pushed 2026-10-24T04:03:44Z · 2.3 天 44⭐ ⑂3（fork/star 6.8%）· ⭐ 四档退出码（0/1/2/3，3 = 「Review is needed: no matches, unresolved candidates, fixed-code-only evidence, or scan gaps」）· ⭐ 「Affected evidence takes precedence over gaps: exit 1 can include incomplete coverage. <strong>A fixed copy does not clear another, and exit 0 does not establish that the running app is fixed.</strong>」· ⭐ 结论分级：「Finding vulnerable source establishes source containment. Build selection, shipment, attacker-controlled input reaching that decoder, and exploitability are separate conclusions. Keep a result for each copy」· ⭐ 版本表：Brotli 1.0.3–1.0.9→1.0.10、1.1.0→1.1.1、1.2.0→1.2.1；Node 22.x→22.23.4、24.x→24.22.1、26.x→26.12.1 · ⭐「The CNA record has disjoint Brotli version ranges. A single comparison against 1.2.1 would incorrectly warn on fixed 1.0.10 and 1.1.1」· ⭐「An updated host package does not establish the state of a container, native extension, or statically linked executable」· ⭐「HTTP headers cannot establish the decoder's patch status」「Do not send malformed streams or exploit probes」· <code>fingerprints.json</code> 含 <code>schema_version</code> / <code>cve</code> / <strong><code>verified_on: 2026-10-23</code></strong> / <code>upstream_fix</code> / <code>inventory_revision</code> / <code>verification</code>（「Source-file evidence only」）+ 逐条 <code>sha256</code> / <code>git_blob</code> / <code>size</code> / <code>state: "vulnerable"</code> · <code>SECURITY.md</code>：「Advisory rules and compiled references are snapshots, and an old checkout does not automatically receive new guidance」· 依赖 Python <strong>3.12–3.15</strong> + <code>uv</code></td>
+<td>推断：<strong>它与 scanner 是互补而非竞争</strong>（一个在网络面、一个在文件面）· 推断：<strong>「exit 0 ≠ 安全」这句话的措辞是刻意写给 CI 使用者的</strong> · 推断：<strong>Trailmark 的调用点映射被设计为「缩小人工检查范围」而非「自动判定可达性」</strong></td>
+<td><strong>⭐ <code>brotli_inventory.py</code> 的遍历与容器处理实现本窗口未核验</strong> · <strong>⭐ Trailmark 如何影响最终结论未核验</strong> · <strong>覆盖缺口的类型与在真实部署中的占比未知</strong> · <strong>快照过期后的更新流程未知（无 release 日期可查）</strong> · <strong>subs 0 说明尚无深度关注者</strong></td>
+</tr>
+<tr>
+<td>unclebob/ub-mode</td>
+<td><strong>无 LICENSE 文件</strong>（<code>license.spdx_id</code> 为 null，按默认版权保留处理）· <strong>仓库仅 4 KB、仅 2 个文件（README.md 2,195 + SKILL.md 3,958 字节）</strong> · <strong>仅 4 个 commit</strong>（16:04:08 初始 → 16:05:10 文档 → 16:07:11 标注来源 → 16:07:58 移除 Clojure 引用）· contributors 1 人 · <code>releases</code> 0 个 · topics 空数组 · subs 1 · oi 1 · 无语言字段（<code>language</code> 为 null）· Account <code>unclebob</code> 创建于 2008-11-27、106 个公开仓库、<strong>17,434 followers</strong> · created 2026-10-25T16:04:09Z / pushed 2026-10-25T16:07:59Z · 6.5 小时 341⭐ ⑂16（fork/star 4.7%）· ⭐ README：「relies on deterministic quality-gate tools to enforce structure, complexity, duplication, and test thoroughness」· ⭐ 四工具表：<code>crapper</code> 109⭐⑂14（Python/0BSD）、<code>dryer</code> 43⭐⑂9（Python/0BSD）、<code>mutator</code> 58⭐⑂8（Python/0BSD）、<code>uml-viewer</code> 449⭐⑂51（Clojure/spdx null）· ⭐ SKILL.md 三段结构（First Make it Work / Then Make it Right / Practice）· ⭐ 判据：CRAP <strong>&lt; 10</strong>、duplication <strong>&lt; 0.8</strong>、变异测试「cover the uncovered, kill the survivors, delete dead code」· ⭐⭐ 「If the test would still pass when every function returned nothing, throw it out」· ⭐⭐⭐ 「Attack the Premise — When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance. Remove the assignment. Do not start another fix until you have done that」· ⭐ 明写「loosely based on portions of @poteto's rules (poteto-mode / pstack), reduced」</td>
+<td>推断：<strong>4 KB + 2 文件说明它是「原则分发指针」而非实现，能力在四个外部工具仓库里</strong>；推断：<strong>17k followers 与 341⭐ 之间存在正向关系，但本日报无法拆解 star 的来源结构</strong>；推断：<strong>「Attack the Premise」是面向 AI 编码 agent 写的规则（本日观察到的同类规则集普遍以 agent 失效模式论证）</strong></td>
+<td><strong>⭐⭐ 最关键的一条待观察项：SKILL.md 是否真的调用那三个工具，还是仅列出工具名</strong> —— <strong>若是后者，「门禁」是纸面的</strong> · <strong>四个伴随工具能否长期保持可用（不 vendoring 的依赖风险）</strong> · <strong>无 LICENSE 意味着不可安全复用（待观察是否补上）</strong> · <strong>subs 1、oi 1 说明关注面极窄</strong></td>
+</tr>
+<tr>
+<td>DenisSergeevitch/ex-ussr-kinship-research</td>
+<td>MIT · Python · 642 KB · 41 commits · contributors 4 人 · <code>releases</code> 2 个（v1.4.0 2026-10-25T18:49:17Z / v1.5.0 2026-10-25T21:13:42Z，均 0 asset）· topics 8（agent-skills/archives/claude-code/codex/family-history/familysearch/genealogy/ussr）· <strong>subs 7 本批最高</strong> · oi 0 · Account <code>DenisSergeevitch</code> 创建于 2012-08-12、48 个公开仓库、1,102 followers · created 2026-10-25T10:05:56Z / pushed 2026-10-25T21:13:42Z · 12.5 小时 526⭐ ⑂48（fork/star 9.1%）· ⭐ 六个离散证据状态（hypothesis / single-source / corroborated / strongly-corroborated / contradicted / unresolved），README 明写「Claims get explainable statuses, <strong>not percentages</strong>」· ⭐⭐ <code>independence_group</code>：README「Copies and mirrors of one record share an <code>independence_group</code>, so they never count as independent proof」· ⭐⭐ <code>audit_evidence.py</code> 19,284 字节强制：「independence_group 声明但无 artifact 归属」→ 报错；「strongly-corroborated 但无一条直接记录」→ 报错 · ⭐ 七个来源原创性等级（original / image-of-original / official-extract / index / transcription / derivative / unknown）· ⭐ <code>evals/discovery-and-logic.yaml</code> 27,697 字节含 <code>should_trigger</code> 8 条（中/俄/乌/英）+ <code>should_not_trigger</code>（含「现任前伴侣的地址和电话」「破解亲属私密账户」）+ 行为用例 <code>conflicting_birth_dates</code>（1902 vs 1904 → 「Не усреднять даты」）/ <code>captcha</code>（「Не проходить CAPTCHA за пользователя」+ 不用 solver/VPN/прокси/指纹伪装/换 User-Agent/令牌）/ <code>reply_in_user_language</code> · ⭐ 覆盖 15 个前苏联加盟共和国 · ⭐ 俄语指令 + 用用户语言应答 · <code>references/</code> 11 个文件（<code>seed-sources.md</code> 48,497 / <code>field-lessons.md</code> 29,696 / <code>source-strategy.md</code> 24,418 / <code>habsburg-galicia-bukovina.md</code> 16,562 / <code>evidence-protocol.md</code> 15,105 / <code>locale-guide.md</code> 12,852 / <code>photo-search.md</code> 11,009 / <code>browser-and-captcha.md</code> 8,238 / <code>privacy-and-safety.md</code> 7,619）+ <code>changelog.md</code> 9,623 · <code>assets/</code> 8 个模板 + <code>scripts/</code> 5 个（<code>audit_evidence.py</code> 19,284 / <code>build_pdf.py</code> 13,389 / <code>init_case.py</code> 4,591 / <code>hash_artifact.py</code> 1,743）+ <code>tests/</code> 2 个</td>
+<td>推断：<strong>41 commits + 2 releases + 4 contributors + subs 7 表明它是本批唯一有真实协作迹象的项目</strong>；推断：<strong>它的「不合并同名者」策略与「独立性分组」共同构成一套「宁可说不确定也不合并」的取向</strong>；推断：<strong>俄语指令 + 多语言应答是为了覆盖档案原始语言与用户语言两个维度</strong></td>
+<td><strong>⭐ <code>references/</code> 十一个文件本窗口仅取样四个，其余未读</strong> · <strong><code>build_pdf.py</code> 依赖 Chromium 浏览器，其产出质量未核验</strong> · <strong><code>should_trigger</code> / <code>should_not_trigger</code> 由谁执行、是否接入 CI（未见 CI workflow）—— 未核验</strong> · <strong>真实档案检索效果无法在本日报窗口验证（需机构访问权限）</strong> · <strong>oi 0 说明尚无外部 issue 反馈</strong></td>
+</tr>
+<tr>
+<td>KohakuBlueleaf/KohakUnlock</td>
+<td>GPL-2.0（根 LICENSE）+ <code>LICENSES/</code> 四份上游许可文本 · C · 62 KB · <strong>3 个 commit</strong> · contributors 1 人 · <code>releases</code> 0 个 · topics 空数组 · subs 2 · oi 3 · Account <code>KohakuBlueleaf</code> 创建于 2020-01-09、110 个公开仓库、1,028 followers · created 2026-10-25T01:18:54Z / pushed 2026-10-25T01:24:59Z · 21 小时 148⭐ ⑂9（fork/star 6.2%）· ⭐ README 首句「<strong>Source-first research on volatile NVIDIA tensor-compute unlocks. Not a universal GPU unlocker.</strong>」· ⭐⭐ <code>docs/SAFETY.md</code>：默认关闭执行（<code>ENABLE_EXPERIMENT=1</code> 才编入）、需 execute=1 + 精确历史 BDF、身份/容量/原生固件/外部资产均校验不猜测、「Existing device binding causes refusal; never unbind a working display GPU to bypass this」、「No VBIOS flashing, fuse programming, bus-wide reset, power-limit modification or overclock is implemented」、「<strong>No module unload path exists for the executor. Reboot is the lifecycle boundary.</strong>」· ⭐⭐ 失败模型：「<strong>Once writes may have reached the GPU, an unverified result retains DMA backing/BAR ownership and a driver_override string that prevents NVIDIA matching this device. The boot hook MUST check handoff_safe and halt before udev/NVIDIA if it is not Y.</strong>」「<strong>SSH cannot recover a host stopped before networking starts.</strong>」「<strong>Do not automatically retry an uncertain hardware mutation.</strong>」「Timeouts bound software polling but cannot guarantee recovery from an unresponsive PCI/MMIO transaction」「A successful host simulation is not evidence of hardware quiescence」「A successful unlock boot is not long-term stability certification」· ⭐ 结果表：2080 Ti FP16→FP32 32×8×16 <strong>59.9→111.0 TFLOPS（+85.3%，同卡前后）</strong>、<strong>FP16→FP16 对照 119.5→118.5（基本不变）</strong>、125-shape sweep 57.71→88.24（<strong>+52.9%，标注 not same-card A/B</strong>）、单张 3090 8192³ PyTorch GEMM 73.03→122.76（<strong>+68.1%</strong>，功耗 370 W→360 W）· 「A successful kernel log alone is not proof of higher throughput」「This is not a claim of a 2× application/game speedup」· ⭐ 「<strong>The 22 GB cards are physically VRAM-modded, not factory 22 GB models… This software unlock does not add VRAM, and the repository does not provide a memory-soldering guide.</strong>」· ⭐ <code>AGENTS.md</code>：「Do not load a module, access BARs, change bindings, reboot, modify boot settings or run firmware without explicit authorization and verified recovery access」「<strong>Do not weaken guards to make another board run.</strong>」「label simulations vs hardware evidence」「No automatic public hardware runner in CI」· ⭐ <code>NOTICE.md</code> 溯源链：组合源码 GPL-2.0-only，适配自 <code>haohervchb/Turing-unlock</code>（<code>a188b24a392414f29f931ea886329227cfbc2f98</code>，copyleft-next 0.3.1）← <code>PZH1gdmu/CMP40HX-Unlock</code>（MIT, 2026）← CMP 90HX (GA102) ← Jon Pry「A Canary in the Crypto Mine」(DOI 10.5281/zenodo.20916112)；「Public availability is not by itself redistribution permission」「No upstream endorsement implied」· 精确 profile：BDF <strong>42:00.0</strong>、Leadtek subsystem IDs、固件哈希/描述符、22 GiB、workspace=1、selectors 0/0；「Same marketing name or VBIOS version is insufficient」</td>
+<td>推断：<strong>精确 profile 绑定（而非按型号名）说明作者把「误伤别人的卡」当作首要风险</strong>；推断：<strong>「reboot is the lifecycle boundary」与「不提供卸载路径」是把「不可逆」显式化而非隐藏</strong>；推断：<strong>GPL-2.0-only 的选择可能是为了覆盖改编自 copyleft-next 上游的衍生约束（README 未给动机说明）</strong></td>
+<td><strong>⭐ 全部硬件结论均基于作者自述，本日报未在硬件上验证任何一项</strong> · <strong>⭐ <code>tools/</code> 五个脚本与 <code>docs/TURING.md</code> / <code>AMPERE.md</code> / <code>AGENT-GUIDE.md</code> / <code>RESULTS.md</code> 本窗口未读</strong> · <strong><code>make test</code> 与 <code>make test-private</code> 的实际通过情况未核验</strong> · <strong>X11 后端存在但本项目 README 未提（本窗口未核验是否已并入）</strong> · <strong>oi 3 的内容未核验</strong> · <strong>subs 2 说明关注面极窄，且这是高风险实验</strong></td>
+</tr>
+<tr>
+<td>mirkobrombin/raven（<strong>本日重写并重新许可</strong>）</td>
+<td><strong>⭐⭐⭐ <code>language</code> 由 Go 变为 <code>C++</code></strong>（<code>?recursive=1</code> 全树统计：<strong>Go 文件 0 个、C/C++ 文件 354 个</strong>；<code>cmd/govm/</code> 与 <code>pkg/</code> 在根树中已不存在，改为 <code>native/</code> + <code>CMakeLists.txt</code> + <code>Makefile</code> + <code>testdata/</code>）· <strong>⭐⭐⭐ <code>license.spdx_id</code> 由 MIT 变为 NOASSERTION</strong>，根 <code>LICENSE</code> 首行由 MIT 改为「Raven is free software… under the terms of the GNU General Public License」· <strong>⭐⭐⭐ 25 条 commit 完整记录过程</strong>，其中 <strong>2026-10-25T10:01:28Z「chore: license the host under GPLv3 and preserve guest terms」</strong> 与 <strong>10:14:38Z「chore: remove the legacy Go runtime and tooling」</strong> · commit 总数 653 → <strong>678</strong> · 体积 17879 → <strong>18529 KB</strong> · <strong>⭐ 新增 <code>LICENSES.json</code></strong>（<code>schema_version: 1</code> / <strong><code>review_date: "2026-10-25"</code></strong> / <code>original_code_license: "GPL-3.0-or-later with MIT guest-adapter exceptions"</code> / <code>license_references</code> 4 条 / <code>components[]</code> 逐项 <code>paths</code> + <code>license</code> + <code>review</code> + <code>provenance</code>）· <strong>⭐ 新增 <code>LICENSES.md</code></strong> 组件表（宿主 GPL-3.0-or-later；UTF-8 转换 GPL-2.0-or-later；窗口边框 LGPL-2.1-or-later；<strong>自有 guest 适配器 MIT</strong>；ReactOS 派生 PE 组件按 GPL v2；CP1252 构建转换器 GPL-2.0-or-later；CP1252 映射数据 Unicode-3.0；libpng PNG Reference Library License；Skia；Liberation fonts）· <strong>⭐ 新增 <code>LICENSES/</code> 7 份许可文本 + <code>docs/packaging.md</code> + <code>CONTRIBUTING.md</code></strong> · README 明写「<strong>Earlier MIT grants remain valid.</strong>」「The release is a collection of components with these terms, <strong>not a single MIT or GPLv3 license applied to every file</strong>」· ⭐ <code>native/cpu/</code> 下新增 <code>callback_fixture_test.cpp</code> / <code>shared_mapping_test.cpp</code> / <code>native_x86_test.cpp</code> / <code>served_queue.h</code>（契约测试进入宿主目录）· ⭐ commit「feat: add an experimental <strong>X11</strong> desktop backend」（此前仅 Wayland）· ⭐ commit「fix: store a 32-bit pointer for LoadStringW in x86 processes」· ⭐ commit「fix: avoid string replacement on mingw's gcc directory (<strong>#13</strong>)」= <strong>唯一带 PR 号的外部贡献</strong>· ⭐ 新增「docs: reserve co-author credits for human contributors」· 快照：<strong>378⭐ ⑂8</strong>（fork/star 2.1%）· <strong>subs 4</strong> · oi 8 · <code>pushed_at</code> 2026-10-25T20:58:09Z（距快照约 36 分钟）· created_at 2026-10-24T17:13:42Z（<strong>仍为改名时间戳</strong>）</td>
+<td>推断：<strong>从 Go 改写为 C++ 很可能与「需要直接控制内存布局、DMA 与 x86 32 位指针语义」有关</strong>（依据：新增 <code>native_x86_test.cpp</code> 与 32 位指针修复 commit）——<strong>但仓库未给出重写动机说明，本日报不将其作为事实</strong>；推断：<strong>宿主改 GPL 可能是为了让「组合许可的义务」有一个统一且强制的载体</strong>——同样未获原文证实；推断：<strong>「唯一带 PR 号的 commit」是本日唯一可核验的外部参与信号</strong></td>
+<td><strong>⭐ 新的 CLI 参数集与构建参数（是否仍需 <code>-j2</code>）未核验，10-25 记录的 README Requirements 段需重新读取</strong> · <strong>⭐ <code>native/</code> 各子目录的具体职责划分未逐目录核验</strong> · <strong><code>LICENSES.json</code> 的 <code>components[]</code> 完整条目数与逐项 <code>provenance</code> 未全读</strong> · <strong><code>docs/packaging.md</code> 的分发要求未核验</strong> · <strong><code>internal/compat/</code> 的兼容矩阵数据规模仍未核验（10-25 已记录该缺口）</strong> · <strong>X11 后端的成熟度未核验</strong> · <strong>重写后的 benchmark 数字是否重测（10-25 记录的 71.5 FPS 等）未核验</strong></td>
+</tr>
+<tr>
+<td>mizorewww/gdirect（未建档，仅记录）</td>
+<td>GPL-2.0 · Rust · 4,129 KB · <strong>74 commits</strong> · contributors 2 人（<code>mizorewww</code> + <code>github-actions[bot]</code>）· <code>releases</code> <strong>7 个</strong>（v0.1.0 07:09:21Z → v0.5.0 15:51:54Z，全部同日、每个 6 个 asset）· topics 空数组 · <strong>subs 1</strong> · oi 1 · Account <code>mizorewww</code> 创建于 2026-01-04、54 个公开仓库、307 followers · created 2026-10-25T05:52:22Z / pushed 2026-10-25T15:51:55Z · 16.7 小时 546⭐ ⑂29（fork/star 5.3%）· 定位「Rust Google Drive direct downloader using pinned libaria2」· <strong>⭐ 三路由表</strong>：Drive API/下载/上传 → 扫描到的 Google IP（真实 SNI，失败则改用 <code>g.cn</code> 作为 TLS 名 + 真实 host 放 Host 头，<strong>即 Sheas-Cealer 思路</strong>）；<code>oauth2.googleapis.com</code> 登录与刷新 → 走系统网络；<code>mount</code>（rclone）→ 走系统网络 · <strong>⭐ 证书校验用内嵌的 Google GTS 根证书，不使用系统 CA bundle</strong>（「a compromised third-party CA cannot impersonate Google for gdirect」）· README 明写需关闭 TUN 模式 fake-ip · <code>Formula/gdirect.rb</code> Homebrew 公式 + <code>scripts/install.sh</code> / <code>install.ps1</code> · CI：<code>cargo fmt --check</code> / <code>cargo test --locked</code> / <code>cargo clippy --all-targets --locked -- -D warnings</code> / <code>python3 tests/native_integration.py</code> · 需 Rust 1.91+ · 双语 README（<code>README.md</code> + <code>README.zh-CN.md</code>）</td>
+<td>推断：<strong>7 个 release 在同一天发布（跨度 8.8 小时）说明它是一次性交付而非长期迭代</strong>；推断：<strong>内嵌 GTS 根证书而非系统 CA 是一个真实的安全取舍</strong>（缩小了信任面，但绕过了企业的 CA 策略）</td>
+<td><strong>⭐ 与系统代理/TUN 的交互在真实企业环境中的表现未核验</strong> · <strong><code>native/bridge.cc</code> 与 libaria2 的具体集成方式未核验</strong> · <strong>⭐ subs 1 而 star 546：无深度关注者，与「一次性交付」的判断一致</strong> · <strong>对无法访问 Google 的地区，它明确要求代理/VPN —— 这使它成为一个「工具本身即绕过手段」的案例</strong></td>
+</tr>
+<tr>
+<td>ZiChuanLan/agent-purge（未建档，仅记录）</td>
+<td>MIT · JavaScript · 111 KB · 35⭐ <strong>⑂45</strong>（<strong>fork/star 128.6%</strong>，本批最高比值）· subs 0 · topics 6 · created 2026-10-25T06:06:02Z · contributors 1 人 · 定位「一份系统提示词，喂给多个 coding agent。支持替换（replace）、追加（append）、清空（off）三种模式，可热切换，全程可逆」· 三通道：<code>install</code>（写入 harness 托管配置块，常驻）/ <code>shim</code>（PATH 前置同名小壳转发给 <code>agent-purge &lt;h&gt;</code>）/ <code>slash</code>（会话内 <code>/purge on|off|status</code>，热切换不动磁盘）· 统一到 <code>personas/&lt;id&gt;.md</code> 正文 · <strong>⭐ 边界自述</strong>：「只改提示词相关的位置，不碰二进制、不破解、不绕过任何授权」「所有改动可逆：<code>agent-purge uninstall &lt;h&gt;</code> / <code>disarm</code> / <code>--mode off</code>」「状态只存本机 <code>state.json</code>，不上传任何数据」· <strong>⭐ 明确的能力矩阵 vs 运行期真值</strong>：「<code>agent-purge ls</code> 和 Web 控制台显示的是<strong>运行期真值</strong>……<code>matrix.json</code> 里是静态能力表，两者冲突时以运行期为准」· <strong>⭐ 闭源桌面端只做原样启动</strong>：「<code>agent-purge &lt;h&gt;</code> 会明确打印原因，不会假装生效」· 仓库含 <code>bench/bench-armor.mjs</code> 42,694 字节与 <code>bench/judge-armor.mjs</code> 5,565 字节（注入成功率实测与裁判脚本，<strong>README 明写「开发用，不参与运行」</strong>）· 需 Node ≥ 20，零依赖</td>
+<td>推断：<strong>⭐ fork/star 128.6% 极可能是「安装一次即 fork 改造自己的 persona」的产物，而非质量信号</strong>——这正是本日报连续记录的「fork 比例不可横向比较」的又一实例；推断：<strong>「运行期真值优先于静态能力表」是本日报已记录多日的「事实优先于声明」原则在工具配置层的再现</strong></td>
+<td><strong>⭐ 其「persona」的实际内容与安全影响未核验（README 未展示具体 persona 正文）</strong> · <strong><code>bench/</code> 的裁判方法学未核验</strong> · <strong>⭐ 零 subs 与 45 forks 指向「被大量试装而非被深度关注」</strong></td>
+</tr>
+<tr>
+<td>本日批量农场（17 仓库，未建档）</td>
+<td>created 2026-10-25T09:46:39Z–09:53:57Z（<strong>跨度 438 秒</strong>）· <strong>恰 2 个文件</strong>（<code>LICENSE</code> 1,074 + <code>README.md</code> 3,324 字节）· 体积 <strong>2–3 KB</strong> · stars <strong>13/14/15</strong> · forks <strong>4/5</strong> · topics 数量 <strong>12/16/17/20</strong> · owner 全为 User 且账号名互不成词法关系 · 内容仅替换游戏名 · <strong>⭐ 抽样 README 的图片地址为未展开的模板占位符 <code>{{https://i.postimg.cc/kG0NNBzc/banner.png}}</code></strong> · 同一 15 分钟窗内 GitHub 侧该搜索窗返回 <strong>3,822</strong> 个仓库（≥10 stars 的 18 个中 17 个属该簇）</td>
+<td>推断：<strong>这是本日报已记录的批量异常模式的第四类变体</strong>（前三类为 <code>.github</code> 命名、ESP 外挂模板、模板化描述）——<strong>本类新增的硬证据是「体积 2–3 KB + 文件数恰为 2 + star/fork 取值集合过窄」</strong></td>
+<td><strong>⭐ 本日报无法核验这 17 个仓库的 star 是自授还是外部获得</strong>（<code>stargazers</code> 端点 404） · <strong>⭐ 无法确认该簇是否在更长窗口内延续或已停止</strong>（只扫了一个 15 分钟窗） · <strong>⭐ 分类判断（农场）基于内容与结构的交叉证据，属本日报判断而非平台事实</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>deepseek-ai/DeepInfer</code> <strong>22,374⭐ ⑂2,584</strong>（10-25 记录 21,823⭐）· <strong>⭐ <code>pushed_at</code> 2026-10-25T11:59:27Z</strong>（<strong>连续五天无新 push 的记录在今日终结</strong>——commit「fix: validate boolean environment variables with strict parsing (#218)」，且此前 10-21 后的 10-22/10-23/10-24 均无提交）· subs 53 · oi 206 · Apache-2.0 · <strong>⭐ 本日报 10-25 记录的「热度与开发脱钩」样本在今日消失，改为「热度与开发同步」</strong></td>
+<td>推断：<strong>10-25 记录的「连续第四天无 push 而 star 仍在涨」应改读为「一次小修复 + 长期停滞」，即一次 commit 不构成开发活跃度恢复</strong> · 推断：DeepInfer 的 star 增长可能与推理框架品类整体热度相关，与该次 commit 无因果关系</td>
+<td><strong>⭐ 一次 commit 不足以判定开发恢复，应继续观察后续是否出现连续提交</strong> · <strong>⭐ 本日报此前记录的「prefill 用普通 8 卡机而 decode 用 64–128 卡超节点」的 QA 目标是否推进未核验</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>Snapintosh/Snapintosh</code> <strong>942⭐ ⑂53</strong>（10-25 记录 875⭐）· subs 10 · oi 10 · <strong>⭐ <code>pushed_at</code> 2026-10-25T05:05:43Z</strong>（较 10-25 记录的 22:28:36Z <strong>提前了约 3 小时</strong>）· <strong>⭐ <code>license.spdx_id</code> 仍为 NOASSERTION</strong>（LICENSE 首行仍是 MIT License）· <strong>⭐⭐ 拆分后的子仓库：<code>q1n1</code> 仍停在 </strong>35⭐ ⑂2<strong>（10-25 记录相同），</strong>其余 6 个子仓库仍全为 0⭐<strong> → </strong>⭐⭐ 10-24 提出的观察点「跟踪 7 个子仓库中哪一个先获得外部 star」在 48 小时后（10-25 记录）与 72 小时后（今日）的答案一致：至今一个都没有**</td>
+<td>推断：<strong>主仓库 star +67 而子仓库零外部 star，进一步支持「拆分尚未形成第二增长曲线」的判断</strong> · 推断：<strong>该组织（2026-10-23 创建）仍在高速迭代其自有主线，与 GitHub 上其他 Apple 移植项目的路径不同</strong></td>
+<td><strong>⭐ 8 个仓库是否仍在增加未核验</strong> · <strong>⭐ <code>pushed_at</code> 的「提前 3 小时」是相对 10-25 快照时刻（22:28:36Z）而非日历日，本日报表述为「较上次快照更近」更准确</strong> · <strong>⭐ 60 Hz 目标与 Wi-Fi 从 macOS 菜单发起连接仍不可用两项未重新核验</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（赛事生态）</td>
+<td>官方仓库 <code>M-China/mcd-developer-innovation-challenge</code>（238⭐，创建于 2026-09-23T06:02:33Z）· <strong>⭐ <code>RANKING.md</code> 更新时间从 10-25 的「2026-10-25 06:00:57」推进到「2026-10-26 00:01:01」</strong> · <strong>⭐ 排名条目从 10-25 的 102 条降为 101 条</strong>（<code>grep -c "^| [0-9]"</code> 实测）· README 报名与排名窗口「2026年10月9日10:30—<strong>10月25日23:59</strong>」<strong>已于昨日截止</strong> · 奖品信息提交截止 2026-11-14 · <strong>⭐ 排名头部变化</strong>：第 1 名 <code>mccarbon</code> <strong>1,936</strong>（10-25 为 1,566）、第 2 名 <code>McLife-Desk</code> <strong>1,756</strong>（10-25 第 3）、第 3 名 <code>mcd-party-planner</code> <strong>1,586</strong>（10-25 第 3）、<strong>⭐ <code>mcreplay</code> 第 23 名 201⭐</strong>（10-25 第 37 名，<strong>上升 14 位</strong>）、<strong>⭐ <code>mcd-calendar-buddy</code> 第 31 名 154⭐</strong>（10-25 未见于前 40）· README 明写「活动开始后，麦当劳将定时采集报名成功项目的<strong>公开 Star 数据</strong>」「<strong>Star 数大于0</strong>的项目将按照排名规则进入排行榜」「排行榜仅展示排名前100的项目；如第100名存在多个Star数相同的项目，则所有并列项目均会展示」</td>
+<td>推断：<strong>⭐ 排行榜按 star 排序，而 star 在赛事里是参赛指标而非采用信号</strong>——<strong>这与 10-25 记录的「赛事驱动的注意力洪峰」在本质上相同，只是峰已过，峰后是退潮</strong>；推断：<strong>排名条目从 102 降为 101 说明已有项目掉出展示范围或被去重</strong>，<strong>本日报无法核验具体是哪一个</strong></td>
+<td><strong>⭐ 本日报无法核验 101 个项目中哪些会在赛后继续维护</strong> · <strong>⭐ 排名是否会在奖品提交截止前再次刷新未核验</strong> · <strong>⭐ <code>mcd-calendar-buddy</code>（154⭐，subs 0，0 forks，Python，359 KB，16 commits）作为赛事参与作品，本日报今日未建档——它零 fork 零 subs 说明无外部关注</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（Android 去广告赛道）</td>
+<td><code>rddmwmddr/android-ad-cleaner</code> <strong>728⭐ ⑂54</strong>（10-25 记录 140⭐，<strong>+418%</strong>）· <strong>subs 1→5</strong> · <strong>oi 6→22</strong> · <code>pushed_at</code> 2026-10-25T16:46:03Z · MIT · 4043→<strong>4310 KB</strong> · <strong>⭐⭐ 可核验的 issue 内容</strong>：<code>#35 无法打开exe主程序</code> / <code>#34 [问题] 跳出弹窗就会卡住</code> / <code>#33 [问题] 如果是第一次进入app会卡住</code> / <code>#32 feat: 新增小米/Redmi/POCO 专属优化与遥测管理模块 (miui-opt)</code> / <code>#31 [问题] 操控手机时操控不对</code> · <code>xMazaki/unbloat-android-tv</code> <strong>249⭐ ⑂20</strong>（10-25 记录 174⭐）· subs 1→3 · oi <strong>0</strong> · <code>pushed_at</code> 2026-10-25T18:46:12Z · <strong>⭐ <code>license.spdx_id</code> 仍为 NOASSERTION</strong>（LICENSE 首行 MIT + 尾部素材排除声明，10-25 已记录）· <code>songjianyang/xss-audit</code> <strong>393⭐ ⑂115</strong>（10-25 记录 194⭐，+103%）· subs 0→1 · <strong>⭐ <code>commits?per_page=10</code> 返回长度 1</strong>，唯一 commit 为 2026-10-24T11:32:14Z「✨ feat: Add initial XSS audit skill」，<strong>此后 35 小时零提交</strong> · <code>YoyoLin008/mcreplay</code> <strong>200⭐ ⑂12</strong>（10-25 记录 122⭐）· <strong>⭐ subs 仍为 0</strong> · <code>pushed_at</code> 2026-10-25T18:56:03Z（<strong>超过 27 小时无提交</strong>）· <strong>⭐ <code>license.spdx_id</code> 仍为 NOASSERTION</strong></td>
+<td>推断：<strong>android-ad-cleaner 的 oi 从 6→22 且 issue 为具体中文故障描述，是本日报今日最强的采用信号</strong> · 推断：<strong>⭐ xss-audit 的 fork/star 从 25.8% 升至 29.3% 而 commits 仍为 1，最可能对应「fork 去改写 14 层清单以适配自己的框架」而非「质量提升」</strong>——<strong>这是本日报连续记录的「fork 比例不可横向比较」的又一实例</strong></td>
+<td><strong>⭐ 本日报无法核验这三个项目的 star 来源</strong>（<code>stargazers</code> 端点 404） · <strong>⭐ android-ad-cleaner 的 22 个 issue 中只有 5 条被本日报读取</strong> · <strong>⭐ unbloat 的 0 issue 与 249⭐ 并存，说明它还没有真实用户反馈</strong> · <strong>⭐ mcreplay 的 subs 仍为 0，说明其「结构性契约测试」的主张尚无外部采用信号</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 本日全部元数据取自 <strong>2026-10-25T22:55:09Z 单一快照</strong>（= 2026-10-26 CST 06:34），经 gh CLI 认证的 GitHub REST / Search API；仓库树经 <code>git/trees/HEAD</code> 与 <code>?recursive=1</code>；历史与贡献者规模经 <code>commits</code>（含 Link 头分页）与 <code>contributors</code>；文件原文经 <code>contents/{...}</code>（<code>Accept: application/vnd.github.raw</code>）；账号与组织信息经 <code>users/{owner}</code> 与 <code>orgs/{org}</code>。<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-26 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计（<code>stargazers</code> 端点对该 token 返回 404），因此所有「增速」表述都是两次快照之间的总量差，不是当日新增，也不能读作「用户数」。</strong>
+<strong>⭐⭐ 本日核验出的最大结构性变化</strong>：<code>mirkobrombin/raven</code> 的 <code>language</code>（Go → <strong>C++</strong>）、<code>license.spdx_id</code>（MIT → <strong>NOASSERTION</strong>）、根 <code>LICENSE</code>（MIT → GPL）、源码构成（Go 文件 0 个 / C/C++ 文件 354 个）四项同时改变，<strong>本日关于 raven 的所有代码结构描述自今日起全部作废</strong>。变更由两条 commit 直接证明：<strong>2026-10-25T10:01:28Z「chore: license the host under GPLv3 and preserve guest terms」</strong> 与 <strong>10:14:38Z「chore: remove the legacy Go runtime and tooling」</strong>。
+<strong>⭐⭐⭐ 本日核验出的第四类批量异常模式</strong>：2026-10-25T09:46:39Z–09:53:57Z（438 秒）内创建的 <strong>17 个</strong>结构完全同构的仓库（恰 2 个文件、2–3 KB、stars 13/14/15、forks 4/5、topics 12/16/17/20、owner 名互不成词法关系、内容只替换游戏名、README 图片为未展开的模板占位符）。
+<strong>⭐⭐ 本日事件面</strong>：CVE-2026-111497（Node2Shell）自 2026-10-21 起形成持续 5 天的仓库潮（<code>CVE-2026-111497 created:&lt;date&gt;</code> 逐日 2 → 9 → 16 → 12 → 11），<strong>上游事实已逐条核验</strong>：<code>google/brotli</code> 修复 commit <code>0ed4268a4401abcb4472096340477cf4af7d1a2b</code>（「Detect and report invalid stream earlier.」，作者日期 2026-02-27T13:10:32Z）、安全版本 v1.0.10 / v1.1.1 / v1.2.1（均 2026-10-21T19:26–19:27Z）、<code>nodejs/node</code> v22.23.4 / v24.22.1 / v26.12.1（均 2026-10-21T10:38Z），且 <code>CHANGELOG_V22.md</code> / <code>CHANGELOG_V24.md</code> 中确有「(CVE-2026-111497) deps: brotli: cherry-pick 0ed4268a4401abcb227」与「src: expose <code>BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH</code>」两条记录。<strong>⭐ 因此「10-21 已修复」有上游一手证据支撑。</strong>
+<strong>⭐⭐ 本日新增的核验缺口（本日报主动声明）</strong>：① <code>stargazers</code> 端点对该 token 返回 <strong>404</strong>，因此<strong>逐日星标时间分布、star 来源结构、当日真实新增均不可得</strong>——<strong>本日报本日所有「增速」表述均降级为两次快照的总量差</strong>；② <code>raven</code> 的 <code>native/</code> 各子目录职责、<code>LICENSES.json</code> 的 <code>components[]</code> 完整条目、<code>docs/packaging.md</code> 的分发要求、新的构建参数与 CLI 均未核验；③ <code>brotli-checker</code> 的 <code>brotli_inventory.py</code> 实现与 Trailmark 的判定参与方式未核验；④ <code>node2shell-scanner</code> 的 <code>exchange_post()</code> 状态机未逐行核验；⑤ <code>ex-ussr-kinship-research</code> 的 <code>references/</code> 十一个文件仅取样四个；⑥ <code>ub-mode</code> 的四个伴随工具实现未读，且<strong>「SKILL.md 是否真的调用三个工具」这一最关键问题尚未核验</strong>；⑦ <code>KohakUnlock</code> 的全部硬件结论均为作者自述，本日报未在硬件上验证任何一项。</p>
+</blockquote>
+<h2 id="_7">重点项目档案</h2>
+<ul>
+<li>🎯 <a href="projects/node2shell-scanner.html">assetnote/node2shell-scanner</a> — CVE-2026-111497 的<strong>主动式</strong>黑盒检测器，<strong>判定条件是三条同时成立而不是「探测成功」</strong>（17.2 小时 48⭐ ⑂6 · fork/star 12.5% · MIT · Python · 11 KB · <strong>仅 1 个 commit</strong> · contributors 1 人 · <code>releases</code> 0 个 · subs 1 · oi 0 · topics 空数组 · Organization <code>assetnote</code>（2018-01-09 创建、40 个公开仓库、995 followers））—— <strong>⭐ 核心机制</strong>：四个 1 字节对照（<code>ff</code> 无 Content-Type / <code>3b</code> 有 JSON / <code>ff</code> 有 JSON / <code>x</code> 不支持编码）→ 一个 <strong>23,068,764 字节</strong>的 Brotli 探针 → 重复有效对照；<strong>⭐ 三条件判定</strong>：「the full probe reaches the valid route-response class」+「the malformed-response class is distinct」+「the final control confirms the endpoint remained stable」；<strong>「does not execute a command」</strong> · <strong>⭐ 网络影响被写进 README</strong>：「Each tested endpoint receives five one-byte requests and one 23,068,764-byte probe. The probe uses <code>Expect: 100-continue</code>, so a proxy can reject its advertised size before the body is uploaded.」· <strong>⭐⭐ 三态输出</strong>：<code>vulnerable: true</code> / <code>false</code> / <code>null</code>（→ <code>INCONCLUSIVE</code>，记 <code>error</code>）· <strong>⭐⭐ 退出码 <code>raise SystemExit(1 if vulnerable_count else 0)</code></strong>——<strong>「没发现漏洞」以 0 退出，是 CI 可断言的离散状态</strong> · <strong>⭐ 代码层可核验</strong>：<code>scanner.py</code> 1,163 行，<code>PROBE_BYTES = 23_068_764</code>、<code>PROBE_REPETITIONS = (1 &lt;&lt; 21) - 1</code>、拼接长度自校验断言、<code>same_exact()</code> 要求未截断 + 状态码 + content-type + body 逐字节相同、<code>scan_url()</code> 多路径下任一命中即返回 true · <strong>⭐ 脱敏</strong>：<code>SENSITIVE_HEADERS</code> 名单内的头替换为 <code>&lt;redacted&gt;</code>，<code>-o results.json</code> 保存脱敏证据 · 依赖仅 <code>h11</code> + <code>tqdm</code> · <strong>⚠️ 仅 1 个 commit、无 release、subs 1 —— 它是从 Assetnote 内部检测逻辑（Searchlight Exposure Platform）直接提取的产物，而非社区迭代结果</strong></li>
+<li>🔎 <a href="projects/brotli-checker.html">trailofbits/brotli-checker</a> — CVE-2026-111497 的<strong>离线式</strong>资产盘点器，<strong>它把「存在受影响副本」与「攻击者可控输入可达」严格拆成四个独立结论</strong>（2.3 天 44⭐ ⑂3 · fork/star 6.8% · MIT · Python · <strong>6,858 KB</strong> · 26 commits · contributors 2 人 + 1 bot · <code>releases</code> 3 个 · <strong>subs 0</strong> · oi 0 · topics 空数组 · Organization <code>trailofbits</code>（298 个公开仓库、3,297 followers））—— <strong>⭐ 四档退出码</strong>（0 = 命中已修复规则且无扫描缺口 / 1 = 发现受影响源码或版本证据 / 2 = 参数或代码引用目录无效 / <strong>3 = 需要复核</strong>：无匹配、有未决候选、只有已修复代码证据、或有扫描缺口）· <strong>⭐⭐ 「A fixed copy does not clear another, and exit 0 does not establish that the running app is fixed.」</strong>——<strong>对「扫描器返回 0 就安全」这个最常见误用的正面否定</strong> · <strong>⭐⭐ 结论分级</strong>：「Finding vulnerable source establishes source containment. Build selection, shipment, attacker-controlled input reaching that decoder, and exploitability are separate conclusions. Keep a result for each copy」· <strong>⭐⭐ 版本表处理不连续区间</strong>：Brotli 1.0.3–1.0.9→1.0.10、1.1.0→1.1.1、1.2.0→1.2.1；Node 22.x→22.23.4、24.x→24.22.1、26.x→26.12.1；<strong>明写「A single comparison against 1.2.1 would incorrectly warn on fixed 1.0.10 and 1.1.1」</strong> · <strong>⭐⭐ 拒绝跨供应商搬运结论</strong>：「Do not compare distro revisions as upstream SemVer or transfer one provider's fixed revision to another」「An updated host package does not establish the state of a container, native extension, or statically linked executable」· <strong>⭐⭐ 快照会过期且明说</strong>：<code>fingerprints.json</code> 的 <strong><code>verified_on: "2026-10-23"</code></strong> / <code>inventory_revision</code> / <code>verification</code>（「Source-file evidence only」）；<code>SECURITY.md</code>：「Advisory rules and compiled references are snapshots, and an old checkout does not automatically receive new guidance」· <strong>⭐ 明确划出够不到的地方</strong>：「HTTP headers cannot establish the decoder's patch status」「Do not send malformed streams or exploit probes」· 依赖 Python <strong>3.12–3.15</strong> + <code>uv</code>（独立扫描器仅用标准库）· <strong>⚠️ subs 0 —— 尚无深度关注者；且它的判定粒度是「副本级」而非「应用级」，因此永不给出全局布尔值</strong></li>
+<li>🧬 <a href="projects/ub-mode.html">unclebob/ub-mode</a> — 一份把软件工程原则<strong>绑定到四个能真的拒绝你的工具</strong>上的 agent skill，<strong>而它自己只有 4 KB</strong>（6.5 小时 341⭐ ⑂16 · fork/star 4.7% · <strong>仓库无语言字段</strong> · <strong>无 LICENSE 文件、<code>license.spdx_id</code> 为 null（按默认版权保留处理）</strong> · <strong>仅 2 个文件、4 个 commit</strong> · contributors 1 人 · <code>releases</code> 0 个 · topics 空数组 · subs 1 · oi 1 · Account <code>unclebob</code>（2008-11-27 创建、106 个公开仓库、<strong>17,434 followers</strong>））—— <strong>⭐ 三段结构</strong>：First Make it Work（Laziness Protocol / Foundational Thinking / TDD / Redesign From First Principles / <strong>Attack the Premise</strong> / Subtract Before You Add / Outcome-Oriented Execution / Build the Lever / Architecture）→ Then Make it Right（Fix Root Causes / Sequence work into verifiable units / Test Behavior Not Implementation / <strong>Crapper</strong> / <strong>Dryer</strong> / <strong>Mutator</strong> / Refactoring）→ Practice（Keep a Log / Guard the Context Window / Worktree Cleanup / Commit and Push）· <strong>⭐⭐ 三条判据绑定三个真实工具仓库</strong>：<code>crapper</code> <strong>109⭐ ⑂14</strong>（Python/0BSD，CRAP <strong>&lt; 10</strong>）、<code>dryer</code> <strong>43⭐ ⑂9</strong>（Python/0BSD，重复度 <strong>&lt; 0.8</strong>）、<code>mutator</code> <strong>58⭐ ⑂8</strong>（Python/0BSD，「cover the uncovered, kill the survivors, delete dead code」）、<code>uml-viewer</code> <strong>449⭐ ⑂51</strong>（Clojure/spdx null，可视化覆盖率、CRAP、变异分数与依赖方向）· <strong>⭐⭐⭐ 「If the test would still pass when every function returned nothing, throw it out.」</strong>· <strong>⭐⭐⭐⭐ 「Attack the Premise — When two fixes that share one premise fail the same gate, write that premise in one sentence and count which actors hold the imbalance. Remove the assignment. Do not start another fix until you have done that.」</strong>· <strong>⭐ 明写来源</strong>：「loosely based on portions of @poteto's rules (poteto-mode / pstack), reduced」· 安装：<code>~/.claude/skills/</code> / <code>~/.codex/skills/</code> / <code>~/.cursor/skills/</code> → <code>/ub-mode</code> · <strong>⚠️⚠️ 无 LICENSE —— 一个 341⭐ 仓库里最容易被忽略的事实；且 SKILL.md 是否真的调用那三个工具尚未核验，能力完全在外部仓库（不 vendoring）</strong></li>
+<li>🧬 <a href="projects/ex-ussr-kinship-research.html">DenisSergeevitch/ex-ussr-kinship-research</a> — 前苏联家谱考证的 agent skill，<strong>它的技术核心是「独立性分组」这个概念：同一原始记录的多份拷贝永不计入独立佐证，且这条规则由代码强制而非文档承诺</strong>（12.5 小时 526⭐ ⑂48 · fork/star 9.1% · MIT · Python · 642 KB · 41 commits · contributors <strong>4 人</strong> · <code>releases</code> 2 个（v1.4.0 / v1.5.0）· topics 8 · <strong>subs 7 本批最高</strong> · oi 0 · Account <code>DenisSergeevitch</code>（2012-08-12 创建、48 个公开仓库、1,102 followers））—— <strong>⭐ 六个离散证据状态</strong>（hypothesis / single-source / corroborated / strongly-corroborated / contradicted / unresolved），README 明写「Claims get explainable statuses, <strong>not percentages</strong>」· <strong>⭐⭐ <code>independence_group</code></strong>：README「Copies and mirrors of one record share an <code>independence_group</code>, <strong>so they never count as independent proof</strong>」· <strong>⭐⭐ <code>audit_evidence.py</code>（19,284 字节）强制两条硬校验</strong>：① 声明的 <code>independence_group</code> 若无任何 artifact 归属 → 报错；② 标记 <code>strongly-corroborated</code> 却无一条直接记录 → 报错——<strong>即「我可以宣布两条记录互相印证」在代码层不可能被凭空声明</strong>· <strong>⭐ 七个来源原创性等级</strong>（original / image-of-original / official-extract / index / transcription / derivative / unknown），并明写来源不明会大幅降低材料价值，即便图像看起来有说服力 · <strong>⭐⭐ <code>evals/discovery-and-logic.yaml</code>（27,697 字节）把「不该做什么」写成可回归契约</strong>：<code>should_not_trigger</code> 含「找到现任前伴侣的地址和电话」「破解亲属的私密账户」；行为用例 <code>conflicting_birth_dates</code>（军籍卡 1902 / 死亡 1904 → <strong>保存为两条独立 claim，不取平均</strong>）、<code>captcha</code>（<strong>不代替用户过验证码</strong>，不用 solver/VPN/代理/指纹伪装/换 User-Agent/令牌，记录阻塞并转向官方替代路径）、<code>reply_in_user_language</code>（用户只说英语 → 用英语回答，引文保留原始拼写并附翻译，检索词按来源语言构造）· 覆盖 15 个前苏联加盟共和国 · 俄语指令但用用户语言应答 · <code>references/</code> 11 个文件（<code>seed-sources.md</code> 48,497 字节 / <code>field-lessons.md</code> 29,696 / <code>source-strategy.md</code> 24,418 / <code>habsburg-galicia-bukovina.md</code> 16,562 / <code>evidence-protocol.md</code> 15,105 / <code>locale-guide.md</code> 12,852 / <code>photo-search.md</code> 11,009 / <code>browser-and-captcha.md</code> 8,238 / <code>privacy-and-safety.md</code> 7,619）+ <code>changelog.md</code> 9,623 · <code>assets/</code> 8 模板 + <code>scripts/</code> 5 个（<code>audit_evidence.py</code> 19,284 / <code>build_pdf.py</code> 13,389 / <code>init_case.py</code> 4,591 / <code>hash_artifact.py</code> 1,743）+ <code>tests/</code> 2 个（13,744 + 2,335）· <strong>⭐ 本批唯一有真实协作迹象的项目</strong>（4 名贡献者 + 两次 release + 41 commits + subs 7）· <strong>⚠️ 仓库根无 CI workflow（未见 CI 配置）—— evals 是否被自动执行未核验</strong></li>
+<li>🔬 <a href="projects/kohakunlock.html">KohakuBlueleaf/KohakUnlock</a> — NVIDIA 显存改卡在 Linux 上的固件级解锁移植，<strong>「Source-first research… Not a universal GPU unlocker」</strong>，<strong>而它最有价值的资产是那份把「失败之后该做什么」写成不可协商顺序的 <code>docs/SAFETY.md</code></strong>（21 小时 148⭐ ⑂9 · fork/star 6.2% · GPL-2.0 · C · 62 KB · <strong>3 个 commit</strong> · contributors 1 人 · <code>releases</code> 0 个 · topics 空数组 · subs 2 · oi 3 · Account <code>KohakuBlueleaf</code>（2020-01-09 创建、110 个公开仓库、1,028 followers））—— <strong>⭐ 默认关闭执行</strong>：<code>make module</code> <strong>默认构建 hardware-execution-disabled 模块</strong>，需 <code>make module ENABLE_EXPERIMENT=1</code> 才编入执行能力，且运行时仍需额外参数；<code>make test</code> 为 CPU-only、firmware-free、<strong>no GPU or sudo needed</strong> · <strong>⭐⭐ <code>docs/SAFETY.md</code> 的失败模型</strong>：「<strong>Once writes may have reached the GPU, an unverified result retains DMA backing/BAR ownership and a driver_override string that prevents NVIDIA matching this device. The boot hook MUST check <code>handoff_safe</code> and halt before udev/NVIDIA if it is not Y.</strong>」「<strong>Do not delete the driver_override, unload the module, free memory, force-bind NVIDIA or continue from the failure shell. Capture the console, then fully power off/on into the known-good entry. SSH cannot recover a host stopped before networking starts. A warm reboot may not reset all GPU state. Do not automatically retry an uncertain hardware mutation.</strong>」「Timeouts bound software polling but cannot guarantee recovery from an unresponsive PCI/MMIO transaction」「A successful host simulation is not evidence of hardware quiescence」「A successful unlock boot is not long-term stability certification」· <strong>⭐ 精确 profile 绑定</strong>：BDF <strong>42:00.0</strong>、Leadtek subsystem IDs、<strong>精确的原生固件哈希/描述符</strong>、22 GiB、workspace=1、selectors 0/0；「Same marketing name or VBIOS version is insufficient」；「Existing device binding causes refusal; never unbind a working display GPU to bypass this」；「No VBIOS flashing, fuse programming, bus-wide reset, power-limit modification or overclock is implemented」「<strong>No module unload path exists for the executor. Reboot is the lifecycle boundary.</strong>」· <strong>⭐ 结果表连「没赢的地方」都写</strong>：2080 Ti FP16→FP32 32×8×16 <strong>59.9→111.0 TFLOPS（+85.3%，同卡前后）</strong>、<strong>FP16→FP16 对照 119.5→118.5（基本不变）</strong>、125-shape sweep 57.71→88.24（<strong>+52.9%，但标注 not same-card A/B</strong>）、单张 3090 8192³ PyTorch GEMM 73.03→122.76（<strong>+68.1%</strong>，功耗 370 W→360 W）；「A successful kernel log alone is not proof of higher throughput」「This is not a claim of a 2× application/game speedup」· <strong>⭐⭐ 「The 22 GB cards are physically VRAM-modded, not factory 22 GB models… This software unlock does not add VRAM, and the repository does not provide a memory-soldering guide.」</strong>——<strong>主动掐死最可能被误读的主张</strong>· <strong>⭐ <code>AGENTS.md</code></strong>：「Do not load a module, access BARs, change bindings, reboot, modify boot settings or run firmware without explicit authorization and verified recovery access」「<strong>Do not weaken guards to make another board run.</strong>」「label simulations vs hardware evidence」「No automatic public hardware runner in CI」· <strong>⭐ <code>NOTICE.md</code> 溯源链</strong>：组合源码 GPL-2.0-only，适配自 <code>haohervchb/Turing-unlock</code>（<code>a188b24a392414f29f931ea886329227cfbc2f98</code>，copyleft-next 0.3.1）← <code>PZH1gdmu/CMP40HX-Unlock</code>（MIT, 2026）← CMP 90HX (GA102) ← Jon Pry「A Canary in the Crypto Mine」(DOI 10.5281/zenodo.20916112)；「Public availability is not by itself redistribution permission」「No upstream endorsement implied」· <strong>⚠️ 全部硬件结论均为作者自述，本日报未在硬件上验证任何一项；且这是「可能损坏硬件」的实验，subs 仅 2</strong></li>
+<li>🪟 <a href="projects/raven.html">mirkobrombin/raven</a> — 在 Linux 上跑 Windows 应用（不用虚拟机、不用 winetricks、不用 DLL 覆盖），<strong>⭐⭐⭐ 而本日它被彻底重写并重新许可：Go → C++（354 个 C/C++ 文件、Go 文件归零）、MIT → GPL-3.0-or-later、<code>license.spdx_id</code> 变为 NOASSERTION</strong>（<strong>378⭐ ⑂8</strong> · fork/star 2.1% · <strong>C++</strong> · <strong>NOASSERTION（根 LICENSE 为 GPL-3.0-or-later）</strong> · 18529 KB · 678 commits · <strong>subs 4</strong> · oi 8 · <code>pushed_at</code> 2026-10-25T20:58:09Z（距快照约 36 分钟）· created_at 2026-10-24T17:13:42Z · <strong>⭐⭐ 昨日关于它的所有代码结构描述自今日起全部作废</strong>）—— <strong>⭐⭐⭐ 变更由两条 commit 直接证明</strong>：<strong>2026-10-25T10:01:28Z「chore: license the host under GPLv3 and preserve guest terms」</strong> 与 <strong>10:14:38Z「chore: remove the legacy Go runtime and tooling」</strong>· <strong>⭐⭐⭐ 而它重新许可的做法是本日最值得学的一处</strong>：<strong>新增 <code>LICENSES.json</code></strong>（<code>schema_version</code> / <strong><code>review_date: "2026-10-25"</code></strong> / <code>original_code_license: "GPL-3.0-or-later with MIT guest-adapter exceptions"</code> / <code>license_references</code> / 逐组件 <code>paths</code> + <code>license</code> + <code>review</code> + <code>provenance</code>）与 <code>LICENSES.md</code> 组件表 + <code>LICENSES/</code> 7 份许可文本 + <code>docs/packaging.md</code>，<strong>并明写「Earlier MIT grants remain valid」</strong>——<strong>即它没有假装自己一直是 GPL，而是把「历史 MIT 授权仍然有效」写成结构化条款</strong>——<strong>⭐ 这恰好一次性解决了本日报已记录多日的两类许可元数据问题（NOASSERTION 但 LICENSE 清晰 / 主许可正确但组合许可被折叠），且是在本日报 10-25 批评它「GPL 义务只在 README 散文里」之后两天内落地的</strong> · <strong>⭐ 其他可核验变化</strong>：<code>cmd/govm/</code> 与 <code>pkg/</code> 从根树消失，改为 <code>native/</code>（354 个 C/C++ 文件）+ <code>CMakeLists.txt</code> + <code>Makefile</code> + <code>testdata/</code>；<code>native/cpu/</code> 新增 <code>callback_fixture_test.cpp</code> / <code>shared_mapping_test.cpp</code> / <code>native_x86_test.cpp</code> / <code>served_queue.h</code>（契约测试进入宿主目录）；新增 X11 桌面后端（experimental）；commit「fix: store a 32-bit pointer for LoadStringW in x86 processes」；<strong>commit「fix: avoid string replacement on mingw's gcc directory (#13)」= 唯一带 PR 号的外部贡献</strong>；新增 <code>CONTRIBUTING.md</code> 与「reserve co-author credits for human contributors」· <strong>⭐ 热度与开发同步上升（+128% star，pushed_at 距快照 36 分钟），与 10-25 记录的 DeepInfer「热度涨而 pushed_at 不动」形成对照</strong></li>
+<li>🎯 <a href="projects/gdirect.html">mizorewww/gdirect</a> — Rust 写的 Google Drive 命令行直连下载器，<strong>核心是「扫到可达的 Google IP + 真实 SNI 失败时改用伪造身份」</strong>，<strong>而它把证书校验钉在 Google 自己的 GTS 根上而不是系统 CA</strong>（16.7 小时 546⭐ ⑂29 · fork/star 5.3% · <strong>GPL-2.0</strong> · Rust · 4129 KB · <strong>74 commits</strong> · contributors 2 人 · <strong><code>releases</code> 7 个</strong>（v0.1.0→v0.5.0 全部同日、每个 6 个 asset）· topics 空数组 · <strong>subs 1</strong> · oi 1 · Account <code>mizorewww</code>（2026-01-04 创建、54 个公开仓库、307 followers））—— <strong>⭐ 三路由表</strong>：Drive API / 下载 / 上传 → <strong>扫描到的 Google IP</strong>（真实 SNI，<strong>失败则改用 <code>g.cn</code> 作为 TLS 名 + 真实 host 放 Host 头</strong>，即 Sheas-Cealer 思路，并按 IP 记忆哪种身份可行）；<code>oauth2.googleapis.com</code> 登录与 token 刷新 → <strong>走系统网络</strong>；<code>mount</code>（rclone）→ 走系统网络 · <strong>⭐⭐ 证书校验用内嵌的 Google GTS 根证书，不使用系统 CA bundle</strong>——「so a compromised third-party CA cannot impersonate Google for gdirect」，<code>--ca-cert</code> 为显式覆盖 · <strong>⭐ 首次传输命令自动扫描候选 IP 并保留 24 小时</strong>；<code>login</code> 与 <code>mount</code> 不扫描 · <strong>⭐ 网络前提写进 README</strong>：TUN 模式代理/VPN 需把扫描到的 Google IP 设为 DIRECT 并关闭其 fake-ip · <strong>⭐ 凭据/扫描 IP/设置存于单个私有 SQLite</strong>（<code>~/.local/share/gdirect/state.sqlite3</code> 等），<code>logout</code> 保留扫描到的 IP · 挂载：macOS 用内置 NFS、Linux 用 FUSE3、Windows 用 rclone + WinFsp；写入先落本地缓存（目标 &lt; 5 GiB）后台上传 · <code>Formula/gdirect.rb</code> Homebrew 公式 + <code>scripts/install.sh</code> / <code>install.ps1</code> + 中文 README · <strong>⭐ CI</strong>：<code>cargo fmt --check</code> / <code>cargo test --locked</code> / <code>cargo clippy --all-targets --locked -- -D warnings</code> / <code>python3 tests/native_integration.py</code> · 需 Rust 1.91+ · <strong>⚠️ 7 个 release 全在同一天发布（跨度 8.8 小时）= 一次性交付而非长期迭代；subs 1 而 star 546；且它本身即为「绕过封锁」工具——使用者需自行判断合规性</strong></li>
+</ul>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

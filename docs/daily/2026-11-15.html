@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-11-15 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日重点趋势</h2>
+<h3 id="1-score-97">1️⃣ 投放体第一次被证实拥有「运行时」（score 97）</h3>
+<p><strong>本日最硬的发现：<code>-desktop</code> 族的活跃度是自动生成的。</strong></p>
+<p>本日报实测 <code>brisk-thrush-husky/malware-defender-desktop</code> 的 GitHub Actions 配置：</p>
+<ul>
+<li>工作流文件名：<code>SP7LDgUHone.yml</code>（随机串）</li>
+<li>工作流名：<code>YAqWuDoGTdQ</code>（随机串）</li>
+<li>内容：<code>actions/github-script@v7</code>，脚本内定义了一个 43 个词的数组（<code>fix</code> / <code>update</code> / <code>refactor</code> / <code>add</code> / <code>remove</code> / …），每次随机取 3 个词拼成提交消息，再拼一个 0–9999 的随机数：
+  <code>js
+  function aS() {
+    const ilCD = Math.floor(Math.random() * 10000);
+    return `${y7cid[...]} ${y7cid[...]} ${y7cid[...]} (${ilCD})`;
+  }</code></li>
+<li>目标文件：<code>.github/widQh6sNxsqplg</code>（同样是随机名），每次追加一行时间戳</li>
+</ul>
+<p><strong>实测该仓库的提交历史（<code>commits</code> API，最近 10 条）：</strong></p>
+<p><code>2026-11-14T21:14:01Z  optimize revert sync (5102)
+2026-11-14T16:28:03Z  monitor docs enhance (3709)
+2026-11-14T09:30:34Z  improve validate retry (4810)
+2026-11-14T09:30:01Z  chore: drop legacy marker
+2026-11-14T09:29:53Z  chore: retire old workflow
+2026-11-14T09:29:43Z  ci: add SP7LDgUHone.yml
+2026-11-14T08:43:08Z  chore: refresh stamp</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>这直接废掉了本日报此前长期使用的两个活跃度判据：「近期 push 频率高」与「commit 数量多」—— 因为这两个信号都可以由一个 30 行的定时脚本凭空制造。</strong></p>
+<p>⭐⭐⭐⭐⭐ 同族 5 个仓库（<code>malware-defender-desktop</code> / <code>topaz-video-ai-desktop</code> / <code>izotope-rx-11-desktop</code> / <code>adobe-acrobat-pdf-desktop</code> / <code>leonardo-ai-desktop</code>）<strong>各有各的随机名工作流与随机名目标文件</strong>（<code>SP7LDgUHone.yml</code> / <code>mmZDs9dJzawUKR.yml</code> / <code>hi6b2Xefut.yml</code> / <code>F1fAks7Y8Hdu0.yml</code> / <code>J5zzALI4By.yml</code>），但<strong>工作流结构完全一致</strong> —— 即<strong>这是一套模板，被参数化后批量部署</strong>。</p>
+<p>⭐⭐⭐⭐⭐ 而这 5 个仓库的代码本身是<strong>玩具桩</strong>：<code>files/main.cpp</code> 全文 9 行，只处理 <code>--version</code> 与 <code>--help</code>；<code>files/util.cpp</code> 只实现了 FNV-1a 哈希与一个返回 <code>"0.3.1"</code> 的 <code>version()</code> 函数。⭐⭐⭐⭐⭐ 仓库共 12 个文件：README + LICENSE + 3 个 C++ + 3 张图片/图标 + 2 个 SVG + 1 个 <code>docs/index.html</code> + 2 个 <code>.github/</code> 文件。</p>
+<p>⭐⭐⭐⭐⭐ 它们的 README 则相反地<strong>极其饱满</strong>（13,230 B / 13,344 B / 13,625 B / 13,548 B / 13,230 B），结构完整（徽章行 / Intro / Feature Cards 三栏表 / 安装说明 / FAQ），只把产品名与 GitHub Pages 路径参数化。⭐⭐⭐⭐⭐ <strong>两者的反差本身就是判据：README 长度与代码量在本族内完全负相关。</strong></p>
+<h3 id="2-md5-score-96">2️⃣ 「md5 相同」判据被证伪一半（score 96）</h3>
+<p>本日报对 <code>created:2026-11-14</code> 的 300 个候选做了全量 README 全文 md5：</p>
+<table>
+<thead>
+<tr>
+<th>README md5</th>
+<th>族群</th>
+<th style="text-align: right;">数量</th>
+<th>star 范围</th>
+<th style="text-align: right;">README 长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a21a6ad0c8c039c3…</code></td>
+<td><code>ai--manus2.0</code></td>
+<td style="text-align: right;">114</td>
+<td>181–678</td>
+<td style="text-align: right;">7,236 B</td>
+</tr>
+<tr>
+<td><code>265eb99cc4a7d4c6…</code></td>
+<td><code>IPTV_Player_2.0</code></td>
+<td style="text-align: right;">111</td>
+<td>132–672</td>
+<td style="text-align: right;">8,763 B</td>
+</tr>
+<tr>
+<td><code>093f7cbc341063a0…</code></td>
+<td><code>GitHub-Copilot-app</code></td>
+<td style="text-align: right;">61</td>
+<td>114–673</td>
+<td style="text-align: right;">4,894 B</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>合计 286/300 = 95.3%。</strong> 但把每个族群内部的 <strong>Dropbox 下载链接</strong>取出来对比后发现：<strong>同一族群内 100% 的仓库指向完全相同的 Dropbox 路径</strong>：</p>
+<ul>
+<li><code>ai--manus2.0</code> 族 → <code>…/scl/fi/kvqr16k9gf7v2bmi2asz8/ManusStudio2.0.rar?rlkey=iif54rqdmga96v9lio1xz56p3</code></li>
+<li><code>IPTV_Player_2.0</code> 族 → <code>…/scl/fi/qxtz9gqkau35vmim0rff1/IPTVPlayer2.0.rar?rlkey=2ve8tu0objpsagy4xxgf1ax0n</code></li>
+<li><code>GitHub-Copilot-app</code> 族 → <code>…/scl/fi/j76ijf5l3bdbckuip6kx9/GitHub_Copilot_app.rar?rlkey=acbqv1mezy4gd1wobkxw24oz1</code></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>所以本日最实用的判据修正不是「md5 相同」，而是「载荷链接相同」</strong> —— 因为 README 文本是模板，会因批次不同而微调，而载荷链接是<strong>投放者唯一需要真花成本的东西</strong>。</p>
+<p>⭐⭐⭐⭐⭐ 三个族群的 owner 账号全部创建于 <strong>2026-10-14T00:43Z–03:03Z</strong>（约 2 小时 20 分）窗口内，每个账号 12–17 个公开仓库；⭐⭐⭐⭐⭐ 而<strong>star 值判据已完全失效</strong>（300 个候选有 <strong>67 个不同 star 取值</strong>，不再是 11-08 记录的「集中在单一值」）。</p>
+<p>⭐⭐⭐⭐⭐ 值得单独记录的是 <code>IPTV_Player_2.0</code> 族的<strong>代码形态</strong>：整棵树 26 个 blob，其中 <code>api.py</code>(553 KB) / <code>api_40.go</code>(748 KB) / <code>models/helpers_92.rs</code>(796 KB) / <code>views/module_73.go</code>(473 KB) / <code>src/renderer/lib/x64/init_17.c</code>(370 KB) / <code>utils/middleware_14.c</code>(463 KB) / <code>services/drivers/profiler.dll</code>(639 KB) / <code>views/middleware/handler.dll</code>(150 KB) 全部<strong>体积可观但内容不可读</strong>（<code>.enc</code> 加密文件、<code>*.dll</code> 二进制、<code>.json</code> 里只有 <code>{"...986B..."}</code> 这类极小内容），⭐⭐⭐⭐⭐ <strong>唯一可读的 Python 文件 <code>api.py</code> 实测是 553 KB</strong> —— ⭐⭐⭐⭐⭐ <strong>即「体积大」这个信号也可以被加密载荷单独制造</strong>，这给 11-10 记录的「<code>Shape</code> 2,180 blobs 但只有 1 个 commit」补上了另一半：<strong>体积与 commit 数都不足以判断工程量</strong>。</p>
+<h3 id="3-subs-score-95">3️⃣ 「subs 高」可以是纯手动订阅农场（score 95）</h3>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">subs</th>
+<th style="text-align: right;">star</th>
+<th style="text-align: right;">fork</th>
+<th style="text-align: right;">体积</th>
+<th style="text-align: right;">整棵树的文件数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DimensionRobin/rob-run-private-cheat</code></td>
+<td style="text-align: right;"><strong>68</strong></td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26 KB</td>
+<td style="text-align: right;"><strong>2</strong>（LICENSE + README）</td>
+</tr>
+<tr>
+<td><code>prismarmorergirder/wallet-security-checker</code></td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>summittypeplay/sims4-updater</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>Crateryeexpiate/TradePilot</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>Beachfromgate/Wallet-Hunter</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>Logosheshow47/crypto-panic</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">177</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>Hairzenexalt/Fragment-Sniper</code></td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4 KB</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>这 7 个仓库的整棵树只有 <code>LICENSE</code> + <code>README.md</code>，零个代码文件</strong> —— 而它们的订阅数（24–68）是本数据集同日真项目（<code>hikaku-extension</code> subs 0、<code>islandcn</code> subs 0、<code>ScanDot</code> subs 0、<code>kraken-mount</code> subs 8）的<strong>数倍到无穷倍</strong>。</p>
+<p>⭐⭐⭐⭐⭐ owner 账号的证据更直接：</p>
+<p><code>DimensionRobin        created=2026-09-21T17:23:39Z   2 repos, 0 followers
+prismarmorergirder    created=2026-09-21T17:24:16Z   2 repos, 0 followers
+summittypeplay        created=2026-09-21T17:24:34Z   2 repos, 0 followers
+Beachfromgate         created=2026-09-21T17:24:37Z   2 repos, 0 followers
+Logoshesow47          created=2026-09-21T17:25:05Z   3 repos, 0 followers
+Crateryeexpiate       created=2026-09-21T17:25:16Z   2 repos, 0 followers
+Hairzenexalt          created=2026-08-10T10:11:27Z   2 repos, 0 followers</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>6 个账号在 97 秒内注册</strong>（17:23:39 → 17:25:16），每个账号除主仓库外还有一个<strong>随机名、0 star、~1 KB 的占位仓库</strong>（<code>ewbjrjub</code> / <code>mopeftmn</code> / <code>kklghvkx</code> / <code>cdsowpjo</code> / <code>uvhhmfdg</code> / <code>rnvyvlep</code>），⭐⭐⭐⭐⭐ 而占位仓库的创建时间也集中在 <strong>2026-09-21T17:26:41Z–17:27:41Z</strong> 这一分钟内 —— <strong>即账号在注册后 1–4 分钟内批量建好占位仓库，然后静默 54 天，到 2026-11-14 才一次性投放主仓库。</strong></p>
+<p>⭐⭐⭐⭐⭐ 这给 11-08 的判据「subs 只能同作者族内比较」补上了前提条件：<strong>subs 必须先与「该仓库是否存在任何代码」一起看，否则 24–68 个订阅可以完全由人工点击产生。</strong></p>
+<h3 id="4-score-93">4️⃣ 四个真项目：四种互不重叠的诚实形态（score 93）</h3>
+<p>⭐⭐⭐⭐⭐ <code>hikaku-io/hikaku-extension</code>（283⭐ · ⑂1 · subs 0 · oi 0 · <strong>87 files</strong> · 12,307 KB · JavaScript · Apache-2.0 · v0.1.0）<strong>最值得抄的是它把失败率写进产品文档</strong>：</p>
+<blockquote>
+<p>Real-world (Reddit via soci.ly, 548 images + 53 videos/GIFs, weak labels): <strong>65% of AI images caught, 6% of real photos flagged (2.5% excluding film), AI video 22% caught. Provenance metadata survived on 0 of 548 Reddit images.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ 而它的架构文档把<strong>「声明」与「估计」分成两条独立路径</strong>（<code>docs/ARCHITECTURE.md</code> 的 Mermaid 图里，「metadata declarations」与「SwinV2 estimate」是两个节点，最后汇入同一个 Scoring 层），⭐⭐⭐⭐⭐ 并且 README 第一屏就写明「a flag is the model's estimate, not proof」。</p>
+<p>⭐⭐⭐⭐⭐ <code>opencoredev/islandcn</code>（658⭐ · ⑂56 · subs 0 · oi 0 · <strong>310 blobs</strong> · 1,795 KB · TypeScript · MIT · <strong>Organization</strong> <code>opencoredev</code>，账号 2025-06-25 创建，56 个公开仓库，118 followers）<strong>把 <code>AGENTS.md</code> 写成一份给 coding agent 的路径归属合同</strong>：</p>
+<blockquote>
+<ul>
+<li>Every file is written for this repo. Don't copy from startercn, asciicn or any registry template.</li>
+<li>The license is MIT, <code>Copyright (c) 2026 Leo</code>. Nobody else goes on it.</li>
+<li>Copy the look and motion of Apple's island, never its assets.</li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ 而它的分发方式是 <code>/r/island-core.json</code> 这个 <strong>shadcn registry 端点</strong>（<code>npx shadcn@latest add https://islandcn.dev/r/island-core.json</code>），⭐⭐⭐⭐⭐ <strong>即它不是一个「clone 下来自己改」的库，而是一个通过 registry 协议分发的组件引擎</strong> —— 这与 <code>Shape</code>（CLI + SDK + C ABI + npm + cargo 五种接入形态）是同一思路的不同实现。</p>
+<p>⭐⭐⭐⭐⭐ <code>faizfahmi77/ScanDot</code>（532⭐ · ⑂5 · subs 0 · oi 0 · 55 files · 151 KB · Kotlin · MIT · v0.3.0-preview.1）<strong>在 README 第二段就用加粗声明了一件容易被误解的事</strong>：</p>
+<blockquote>
+<p>The repository also contains a separate video photogrammetry pipeline that runs on a workstation using FFmpeg and COLMAP. <strong>The Android app does not reconstruct ordinary video with photogrammetry on the phone.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ 并且它的 <code>Current status</code> 段明写「This is an early prototype. Results can contain gaps, drift and noise; they are not textured meshes or validated measurements. Reflective, transparent and textureless subjects are difficult.」</p>
+<p>⭐⭐⭐⭐⭐ <code>quer3q/kraken-mount</code>（321⭐ · ⑂27 · <strong>subs 8</strong> · <strong>oi 19</strong> · 57 files · 1,602 KB · Rust + C · <strong>GPL-3.0</strong> · v0.0.1-beta）<strong>用 <code>DESIGN.md</code> 逐条列出「只支持什么」</strong>：</p>
+<blockquote>
+<h2 id="supported-sources-nothing-else">Supported sources (nothing else)</h2>
+<ul>
+<li><strong>FPKG</strong>: a dump-forge debug <code>.pkg</code> file directly in a scan root.</li>
+<li><strong>Folder</strong>: a directory directly in a scan root with <code>eboot.bin</code> and <code>sce_sys/param.json</code>.</li>
+<li>Any drive. The cache is always on the internal SSD.</li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ 而 <strong>19 个 open issue 是本日真项目里最多的</strong> —— 按 11-12 记录 <code>solo-to-team-skills</code> 时的同一条判据：issue 的存在说明项目正在被真实使用与质疑，这是<strong>正信号</strong>。</p>
+<h3 id="5-forkstar-493-score-88">5️⃣ 边界样本：fork/star 49.3% 的协议逆向项目（score 88）</h3>
+<p>⭐⭐⭐⭐⭐ <code>duwqijlk/muse-protocol</code>（513⭐ · <strong>⑂253</strong> · subs 0 · oi 0 · <strong>9 files</strong> · 32 KB · Python · <strong>NOASSERTION</strong>）<strong>看起来是本日报最刺眼的 fork/star 比值（49.3%）</strong>，但取证结果相反：</p>
+<ul>
+<li>fork 到达间隔中位 <strong>266 秒</strong>，仅 <strong>2/99</strong> 个间隔 ≤10 秒，跨度 13 小时 15 分 —— <strong>属正常 fork 分布</strong>，与 11-13 记录的镜像样本（146.2% fork/star + fork 间隔中位 139 秒 + 2/59 ≤10 秒）不同量级；</li>
+<li>内容是真的：README 逐字段记录了 <code>POST /api/auth/native/restart</code> → <code>send-otp</code> → <code>confirm-otp</code> → <code>register-completion</code> → <code>accept-tos</code> → <code>/api/hatch/vm/wake</code> → <code>invite-code/redeem</code> 的完整协议链，并标注了 6 个「容易踩的坑」（<code>confirm-otp</code> 必须带 <code>supports_muse_link_transparency: true</code>；<code>first_name</code> 是名不是姓；不调 <code>vm/wake</code> 会误报 <code>invalid</code> 等）；</li>
+<li>⭐⭐⭐⭐⭐ <strong>但它的用途本身是绕过注册限制</strong> —— README 第一行就写「<strong>补充一下，记得用JP 节点，JP 不需要绑卡，直接过</strong>」，且末段声明「本项目仅供个人、非商业的学习与研究使用，不采用 MIT 等开源许可证。不得用于商业用途或再分发。」</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>本日报记录它的工程结构与判据价值，不主张其用途。</strong> ⭐⭐⭐⭐⭐ 它的存在还给出一条方法论提醒：<strong>一个高 fork/star 比值的仓库，需要先看它的 fork 到达时间分布与内容实质，才能判断是「有人替你制造分母」还是「成果确实可复制」。</strong></p>
+<hr />
+<h2 id="_2">最值得关注的方向</h2>
+<p>⭐⭐⭐⭐⭐ <strong>方向一：判据的「可被自动化制造性」检验。</strong> 本日三个发现（auto-commit 工作流 / 加密载荷撑大体积 / 人工订阅农场）指向同一个方法论升级：<strong>任何单点信号在使用前，都必须先回答「这个信号能否被一个自动化脚本或一次人工操作单独制造？」</strong> README 文本可以，commit 数可以，push 频率可以，仓库体积可以，subs 数可以，甚至 fork 数也可以。⭐⭐⭐⭐⭐ <strong>真正难伪造的，是需要真实工程投入才能产生的信号</strong> —— 比如 <code>hikaku-extension</code> 的 87 个文件与 <code>docs/MODELS.md</code> 里的 548 张 Reddit 基准、<code>kraken-mount</code> 的 19 个 open issue、<code>ScanDot</code> 的 CI 配置与 <code>build.gradle.kts</code> 里的 <code>lint { abortOnError = true }</code>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>方向二：把「不确定性」写进产物，而不是写进 README。</strong> 四个真项目里有三个做到了同一件事，但层次不同：<code>hikaku-extension</code> 把它做进<strong>数据结构</strong>（declaration 与 estimate 两条独立路径）；<code>ScanDot</code> 做进<strong>文档结构</strong>（第二段就划清手机端与工作站端）；<code>kraken-mount</code> 做进<strong>规格结构</strong>（<code>DESIGN.md</code> 的「Supported sources (nothing else)」）；<code>islandcn</code> 做进<strong>协作结构</strong>（<code>AGENTS.md</code> 的路径归属与许可约束）。⭐⭐⭐⭐⭐ <strong>共性是：边界被写在了会被机器读到的地方，而不是只写在会被机器跳过的散文里。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向三：分发协议正在取代 clone。</strong> <code>islandcn</code> 走 shadcn registry（<code>/r/island-core.json</code>）、<code>hikaku-extension</code> 走 Chrome/Edge/Firefox 与 AMO 三条发布通道并提供 <code>hikaku-bench</code> 独立基准仓库、<code>ScanDot</code> 走 GitHub Release 的 preview APK、<code>kraken-mount</code> 走 GitHub Release 的 <code>.elf</code> + 仓库内 <code>ps5/build.sh</code>（需 Docker）。⭐⭐⭐⭐⭐ <strong>这与 11-13 记录的 <code>open-orange</code> 把 conformance 结果做成逐日可 diff 是同一条线索：产物应该可被机器消费与复现。</strong></p>
+<hr />
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="hikaku-iohikaku-extension">🥇 <code>hikaku-io/hikaku-extension</code> — 把模型的失败率写进产品文档</h3>
+<p><strong>可核验事实（2026-11-15 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / issues</td>
+<td>283 / 1 / 0 / 0</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-14T14:06:05Z / 2026-11-14T20:36:06Z</td>
+</tr>
+<tr>
+<td>体积 / 文件数</td>
+<td>12,307 KB / 87</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>JavaScript / Apache-2.0 / <code>v0.1.0</code></td>
+</tr>
+<tr>
+<td>topics</td>
+<td>ai-detection, c2pa, onnx, webgpu, on-device-ai, privacy 等 14 个</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>User <code>hikaku-io</code>，账号 <strong>2026-11-14T01:53:26Z</strong> 创建，2 个公开仓库，5 followers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐ 最值得记的一点：它的 <code>docs/MODELS.md</code> 里有一张「已知失败模式」表，同时给出了小样本 sanity check 与真实基准：</strong></p>
+<p><code>Threshold | AI caught | Real wrongly flagged
+0.50      | 94%       | 6%
+0.90      | 88%       | 6%</code></p>
+<p>⭐⭐⭐⭐⭐ 并且紧跟着补了一句 <code>**Sanity check, not a benchmark.**</code> —— <strong>主动给自己的数字降级</strong>，这在本数据集里非常罕见。</p>
+<p>⭐⭐⭐⭐⭐ 架构上它用 Manifest V3 的四个上下文分工（content script / service worker / offscreen document / popup），⭐⭐⭐⭐⭐ 并且在 <code>manifest.json</code> 里声明了 <code>cross_origin_embedder_policy: require-corp</code> + <code>cross_origin_opener_policy: same-origin</code>（WebGPU 共享内存所需），⭐⭐⭐⭐⭐ 而 <code>host_permissions</code> 是 <code>&lt;all_urls&gt;</code> —— <strong>这是一份「能力很宽、边界写明」的扩展配置</strong>。</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未安装、未运行、未在真实网页上验证任何检测结果</strong>；所有性能与准确率数字均为 <code>docs/MODELS.md</code> 的作者自述。
+- ⭐⭐⭐ ⚠️ 基准数据（Reddit 548 张图）来自弱标签（weak labels），作者自己也标注了这一点；<strong>本日报未复现、未重新标注、未核对 <code>hikaku-bench</code> 仓库</strong>。
+- ⭐⭐⭐ ⚠️ <code>docs/MODELS.md</code> 中 <code>Community Forensics estimate</code> 的具体模型与阈值<strong>本日报未核验</strong>。
+- ⭐⭐⭐ ⚠️ <code>host_permissions: &lt;all_urls&gt;</code> + <code>offscreen</code> + <code>scripting</code> 组合的隐私影响<strong>本日报未做审计</strong>。
+- ⭐⭐⭐ ⚠️ 仓库创建仅约 8 小时，283⭐ 的增速未做统计（本 token 的 <code>stargazers</code> 端点返回 404）。</p>
+<hr />
+<h3 id="opencoredevislandcn-agentsmd">🥈 <code>opencoredev/islandcn</code> — 把 <code>AGENTS.md</code> 写成合同</h3>
+<p><strong>可核验事实（2026-11-15 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / issues</td>
+<td>658 / 56 / 0 / 0</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-13T11:50:50Z / 2026-11-13T15:14:36Z</td>
+</tr>
+<tr>
+<td>体积 / 文件数</td>
+<td>1,795 KB / <strong>310 blobs</strong>（109 <code>.ts</code> + 99 <code>.tsx</code> + 26 <code>.mdx</code> + 22 <code>.png</code> + 14 <code>.svg</code>）</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>TypeScript / MIT / 无</td>
+</tr>
+<tr>
+<td>owner</td>
+<td><strong>Organization</strong> <code>opencoredev</code>，账号 2025-06-25 创建，56 个公开仓库，118 followers</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它的 310 个 blob 里，有一个叫 <code>app/.well-known/agent-skills/index.json/route.ts</code> 的路由</strong> —— ⭐⭐⭐⭐⭐ 即<strong>它把「给 agent 的技能索引」做成了一个 HTTP 端点</strong>，而不是只放在仓库里让 agent 自己找。⭐⭐⭐⭐⭐ 这与 11-08 记录的 <code>solo-to-team-skills</code> / <code>research-loop-skills</code> 是同一方向，但这里的实现更接近「站点自身就是 agent 的分发端点」。</p>
+<p>⭐⭐⭐⭐⭐ 它的 <code>AGENTS.md</code> 里有一段非常少见的<strong>许可归属硬约束</strong>：</p>
+<blockquote>
+<ul>
+<li>The license is MIT, <code>Copyright (c) 2026 Leo</code>. Nobody else goes on it.</li>
+<li>Copy the look and motion of Apple's island, never its assets. The product is islandcn. "Dynamic Island" may be used descriptively, as in the hero's "The open-source Dynamic Island for React", and the footer says islandcn is not affiliated with Apple.</li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>即它明确区分了「描述性使用」与「资产使用」</strong> —— 这对做同类项目的人是很实用的边界写法。</p>
+<p>⭐⭐⭐⭐⭐ 而 <code>AGENTS.md</code> 里还提到 <code>BRIEF.md</code> 与 <code>docs/CONTRACT.md</code> <strong>不在公开仓库里</strong>（「In Leo's local checkout, also read <code>BRIEF.md</code>… Neither is in the public repo」）—— ⭐⭐⭐⭐⭐ <strong>即它诚实地告诉外部 agent「有一部分上下文你拿不到」，而不是假装仓库是完整的</strong>。</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未 clone、未构建、未运行</strong>，未执行 <code>pnpm build</code> / <code>pnpm typecheck</code>，未访问 <code>islandcn.dev/r/island-core.json</code> 取回 registry JSON。
+- ⭐⭐⭐ ⚠️ 其 spring 动画「fitted to frame-by-frame recordings of the real island」是作者自述，<strong>本日报未逐帧比对</strong>。
+- ⭐⭐⭐ ⚠️ <code>AGENTS.md</code> 引用的 <code>BRIEF.md</code> / <code>docs/CONTRACT.md</code> 不在公开仓库，<strong>其内容与存在与否本日报无法核验</strong>。
+- ⭐⭐⭐ ⚠️ <code>opencoredev</code> 组织账号下有 56 个公开仓库，本日报<strong>只核验了本仓库</strong>，未核验该组织是否与本仓库共享同一作者、是否有其他推广型仓库。
+- ⭐⭐⭐ ⚠️ 658⭐ / ⑂56 的增速未做统计；<code>forks</code> 到达时间分布未做取证。</p>
+<hr />
+<h3 id="quer3qkraken-mount-designmd">🥉 <code>quer3q/kraken-mount</code> — 用 <code>DESIGN.md</code> 写「只支持什么」</h3>
+<p><strong>可核验事实（2026-11-15 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / <strong>issues</strong></td>
+<td>321 / 27 / 8 / <strong>19</strong></td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-13T07:25:37Z / 2026-11-14T17:12:54Z</td>
+</tr>
+<tr>
+<td>体积 / 文件数</td>
+<td>1,602 KB / 57（21 <code>.rs</code> + 10 <code>.c</code> + 3 <code>.toml</code> + 3 <code>.md</code> + 2 <code>.sh</code>）</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>Rust + C / <strong>GPL-3.0</strong> / <code>v0.0.1-beta</code></td>
+</tr>
+<tr>
+<td>owner</td>
+<td>User <code>quer3q</code>，账号 2020-04-15 创建，8 个公开仓库，0 followers</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ 它的 <code>DESIGN.md</code> 第一段就把<strong>构建产物与外部依赖的边界</strong>写清楚了：</p>
+<blockquote>
+<p>The ampr-emu-ng runtime is NOT built here: its released <code>libSceAmpr.sprx</code> is bundled from <code>vendor/ampr-emu-ng/</code> (<code>VERSION</code>, <code>SHA256SUMS</code> from the GitHub release, <strong>checked by <code>ps5/build.sh</code></strong>) and installed into <code>/data/krakenmount/ampr/</code> at start.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>即「我不构建这个二进制，我拉它的官方 release 并校验 SHA256」是一条被显式记录的供应链边界</strong> —— 这在本数据集里是极少见的做法。</p>
+<p>⭐⭐⭐⭐⭐ 它的 README 也把<strong>授权来源的合法性边界</strong>写在了前面：「A <code>.pkg</code> must be a plaintext debug FPKG from <code>dump-forge</code>」—— 即要求使用者自己提供合法转储的调试包。</p>
+<p>⭐⭐⭐⭐⭐ <strong>19 个 open issue 是本日四个真项目里最多的</strong> —— 按 11-12 记录 <code>solo-to-team-skills</code>（9 个 issue）时的同一条判据：<strong>issue 的存在说明项目正在被真实使用与质疑，这是正信号。</strong> ⭐⭐⭐⭐⭐ 而 <code>subs 8</code> 相对 321⭐ 也很低 —— <strong>在本日「subs 高 = 有机关注」的假设已被否证之后，它反而成了「关注是真的」的一个弱正证</strong>（因为本日的农场样本要么 subs 高但零代码，要么 subs 低但代码被加密）。</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未在 PS5 上运行、未编译、未构建 Docker 镜像</strong>，未核验 <code>vendor/ampr-emu-ng/</code> 目录是否真的含 <code>VERSION</code> 与 <code>SHA256SUMS</code>（该目录未在 <code>git/trees</code> 输出中列出，可能在 <code>.gitignore</code> 或为 submodule）。
+- ⭐⭐⭐ ⚠️ 19 个 issue <strong>本日报未逐条打开</strong>，「issue 是真实使用信号」是推断而非实测。
+- ⭐⭐⭐ ⚠️ 其 <code>crates/kraken-mount-pkg</code> 的 Kraken block 解码器<strong>本日报未运行</strong>，其正确性未知。
+- ⭐⭐⭐ ⚠️ 其「ported from <code>drakmor/ShadowMountPlus</code>」的归属关系<strong>本日报未核验</strong>（仅读到 README 的致谢段）。
+- ⭐⭐⭐ ⚠️ 21 <code>.rs</code> + 10 <code>.c</code> 的代码<strong>本日报未逐行审阅</strong>。</p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>⭐⭐⭐⭐⭐ 风险一：投放体开始具备运行时，单点判据全面失效。</strong>
+本日报此前使用的活跃度判据（push 频率、commit 数量）与体量判据（仓库体积、blob 数）在本日被逐一证伪：
+- <code>malware-defender-desktop</code> 用一个随机名 GitHub Actions 工作流制造提交历史 → <strong>commit 数与 push 频率可伪造</strong>；
+- <code>IPTV_Player_2.0</code> 用 553 KB 的 <code>api.py</code> + 748 KB 的 <code>api_40.go</code> + 多个 <code>.enc</code>/<code>.dll</code> 撑起体积 → <strong>体积可伪造</strong>；
+- 7 个零代码仓库用人工点击做出 24–68 个订阅 → <strong>subs 可伪造</strong>。
+⭐⭐⭐⭐⭐ <strong>结论：单一信号不可用于定性，必须多信号交叉，且要问「可否被脚本单独制造」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险二：<code>-desktop</code> 族的 README 承诺与仓库内容完全脱节。</strong>
+它们的 README 承诺「self-contained x64 bundle」「carries the runtime, the scanning engine components, and the definition update mechanism」；⭐⭐⭐⭐⭐ <strong>而仓库里没有任何扫描引擎、没有任何运行时、没有定义更新机制，只有 3 个玩具 C++ 文件和一张 GitHub Pages 落地页</strong>（实测 <code>https://ariamitchell54.github.io/</code> 在快照时刻返回 <strong>404 Site not found</strong>）。⭐⭐⭐⭐⭐ 用户按 README 下载后得到的是<strong>一个无法运行的空壳</strong>。</p>
+<p><strong>⭐⭐⭐⭐⭐ 风险三：<code>muse-protocol</code> 这类「诚实记录 + 规避用途」的项目需要单独归类。</strong>
+它把规避注册风控的用法（JP 节点、不绑卡）写在<strong>第一行</strong>，免责声明放在最后。⭐⭐⭐⭐⭐ 本日报此前把 <code>mate</code>（主动声明是 starter）与 <code>impacket-rs</code>（<code>T!error</code> 类型）当作「把边界写进产物」的正面样本；⭐⭐⭐⭐⭐ <strong>但边界写进产物的项目，其用途仍需单独评估 —— 「诚实的技术文档」不等于「正当的用途」</strong>。</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇一：把「不确定性」写进产物的做法正在成为可识别的品质信号。</strong>
+本日四个真项目分别把它做进了<strong>数据结构</strong>（hikaku）、<strong>规格结构</strong>（kraken-mount）、<strong>文档结构</strong>（ScanDot）、<strong>协作结构</strong>（islandcn）。⭐⭐⭐⭐⭐ 对做类似项目的人：这是可以直接抄的四条路径。</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇二：分发协议化（registry / Release / AMO / 独立 benchmark 仓库）正在成为组件型项目的默认做法。</strong>
+⭐⭐⭐⭐⭐ 组件不再以「clone + 自己维护」的方式分发，而是以「可安装的包 + 可复现的构建 + 可独立核验的基准」的方式分发。</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇三：<code>hikaku-extension</code> 的「声明 vs 估计」分层是一个可迁移到任何 AI 产品的模式。</strong>
+⭐⭐⭐⭐⭐ 任何产品只要输出「模型判断」，就一定会遇到「元数据说 A、模型说 B」的情况；⭐⭐⭐⭐⭐ <strong>把它做成两条独立路径而不是一个混合分数，是一个代价很低、收益很高的架构决策。</strong></p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th>类别</th>
+<th>档案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>brisk-thrush-husky/malware-defender-desktop</code></td>
+<td style="text-align: right;">300</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/malware-defender-desktop.md">projects/malware-defender-desktop.md</a></td>
+</tr>
+<tr>
+<td><code>WarriorRemember/IPTV_Player_2.0</code></td>
+<td style="text-align: right;">672</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/iptv-player-2-0.md">projects/iptv-player-2-0.md</a></td>
+</tr>
+<tr>
+<td><code>hikaku-io/hikaku-extension</code></td>
+<td style="text-align: right;">283</td>
+<td>工具型</td>
+<td><a href="projects/hikaku-extension.md">projects/hikaku-extension.md</a></td>
+</tr>
+<tr>
+<td><code>opencoredev/islandcn</code></td>
+<td style="text-align: right;">658</td>
+<td>基础设施候选</td>
+<td><a href="projects/islandcn.md">projects/islandcn.md</a></td>
+</tr>
+<tr>
+<td><code>faizfahmi77/ScanDot</code></td>
+<td style="text-align: right;">532</td>
+<td>工具型</td>
+<td><a href="projects/scandot.md">projects/scandot.md</a></td>
+</tr>
+<tr>
+<td><code>quer3q/kraken-mount</code></td>
+<td style="text-align: right;">321</td>
+<td>工具型</td>
+<td><a href="projects/kraken-mount.md">projects/kraken-mount.md</a></td>
+</tr>
+<tr>
+<td><code>duwqijlk/muse-protocol</code></td>
+<td style="text-align: right;">513</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/muse-protocol.md">projects/muse-protocol.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>证据边界：</strong></p>
+<p>⭐⭐⭐ 本日全部元数据取自 <strong>2026-11-15 CST</strong>（2026-11-14T22:00Z–22:20Z 窗口）经 <code>gh</code> CLI 认证的 GitHub REST / Search API 快照，覆盖 <code>search/repositories</code>（<code>created:2026-11-14 stars:&gt;=30</code>，<code>total_count</code> = <strong>300</strong>；<code>created:2026-11-13 stars:&gt;=30</code>，<code>total_count</code> = <strong>300</strong>）、<code>repos/{owner}/{repo}</code>、<code>git/trees/{branch}?recursive=1</code>、<code>commits</code>、<code>forks?sort=newest&amp;per_page=100</code>、<code>releases</code>、<code>tags</code>、<code>readme</code>、<code>contents/{path}</code>（<code>Accept: application/vnd.github.raw</code>）、<code>users/{owner}</code>、<code>users/{owner}/repos</code>、<code>actions/workflows</code>、<code>license</code>。</p>
+<p>⭐⭐⭐ <strong>⚠️ 本日报未下载、未执行、未运行任何被投放的载荷。</strong> 对三条 Dropbox 链接（<code>ManusStudio2.0.rar</code> / <code>IPTVPlayer2.0.rar</code> / <code>GitHub_Copilot_app.rar</code>）<strong>本日报只提取了 URL 字符串本身，未发起任何请求</strong>；对 GitHub Pages 落地页（<code>https://ariamitchell54.github.io/</code>）只做了一次 HTTP GET，记录状态码 <strong>404</strong> 与响应体首行 <code>Site not found · GitHub Pages</code>。</p>
+<p>⭐⭐⭐ <strong>⚠️ <code>stargazers</code> 与 <code>subscribers</code> 端点在本窗口对本 token 返回 404</strong>（对 <code>torvalds/linux</code> 等公共仓库亦然），⭐⭐⭐ 因此<strong>未对 star / subscriber 的账号做逐个取证</strong>，本日报的「subs 高」结论基于 <code>subscribers_count</code> 计数 + owner 账号创建窗口 + 整棵树文件清单三项交叉，未能直接枚举订阅者账号。</p>
+<p>⭐⭐⭐ <strong>⚠️ star 增速未做统计</strong>（需分页遍历 stargazer 列表），故所有 ⭐ 数均为快照绝对值；文中「本日新出现」指的是<strong>仓库创建日落在数据窗口内</strong>，而非 star 在本日增长。</p>
+<p>⭐⭐⭐ <strong>⚠️ <code>git pull --ff-only origin main</code> 在本次任务中持续失败</strong>（<code>gnutls_handshake() failed: The TLS connection was non-properly terminated</code>，重试 3 次并尝试 <code>http.sslCAInfo</code> 与 <code>http.version=HTTP/1.1</code> 均失败），⭐⭐⭐ <strong>本仓库的 git smart-HTTP 通道在本次任务期间不可达</strong>；本日报的所有 API 取证均通过 <code>api.github.com</code>（<code>gh</code> CLI）完成，未受影响。</p>
+<p>⭐⭐⭐ <strong>⚠️ 本日报未核验项</strong>：<code>hikaku-extension</code> 的任何实际检测结果与其基准数据的可复现性、<code>islandcn</code> 的构建与动画保真度、<code>ScanDot</code> 在真机上的点云质量、<code>kraken-mount</code> 在 PS5 上的实际挂载行为、<code>muse-protocol</code> 协议细节在 muse.ai 当前的可用性（该站点策略可能已变更）、三个 Dropbox 载荷的实际内容、加密 <code>.enc</code>/<code>.dll</code> 文件的用途。</p>
+<hr />
+<p><em>首次记录：2026-11-15</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

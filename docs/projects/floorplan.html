@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haydenschmitty/floorplan | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/haydenschmitty/floorplan" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="haydenschmittyfloorplan">haydenschmitty/floorplan</h1>
+<h2 id="_1">一句话定位</h2>
+<p>让 Claude Code 或 Codex 读你的代码库并画出一张可交互的架构地图，<strong>而它最值得抄的一条纪律是它明确把工作切成「脚本做机械活」与「AI 只做只有人读代码才能做的命名」两半</strong>——脚本零 token，AI 只负责语义。</p>
+<h2 id="_2">它解决的问题</h2>
+<p><strong>它要解决的是「你用 AI 写了很多代码，它能跑，但没人（包括你自己）说得清它是怎么拼起来的」这个问题。</strong></p>
+<p>README 把场景写得很具体：「You built an app, probably with a lot of help from AI, and it works. But ask <strong>"what happens when someone checks out?"</strong> or <strong>"what breaks if I change this?"</strong> and the honest answer is <em>no idea</em>.」</p>
+<p><strong>⭐⭐ 而它选的路径不是「让 AI 读代码画图」，而是「让脚本读代码、AI 读摘要」</strong> —— 这个区分是本日报今日在这个项目上最想记的东西。</p>
+<h2 id="2026-11-02">为什么值得关注（2026-11-02）</h2>
+<p><strong>⭐⭐⭐ 因为在 96 小时内，它从「378⭐ / 44 commits / 9 releases」长成了「1,633⭐ ⑂111 / 88 commits / 20 releases」，而且它把 10-30 记录的「9 个 release 全部 0 asset」这个观察彻底改写了——20 个 release 仍全是 0 asset，但仓库里多了一份 <code>CHECKSUMS.txt</code>。</strong></p>
+<p>四个可核验的硬事实：</p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 它把「机械活」与「语义活」的分工写进了文档，并给出了成本数字</strong>（<code>docs/how-it-works.md</code> 原文）：</li>
+</ol>
+<blockquote>
+<p><strong>Floorplan splits the work between scripts and the AI you run it in, Claude Code or Codex. The scripts do everything mechanical: finding files, parsing code, matching requests to endpoints, laying out the map. They're plain Node.js with no dependencies, and they cost no tokens. The AI does what only a reader of the code can: deciding what the parts of your app <em>are</em>, and explaining them plainly.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 即：文件发现、代码解析、请求到端点的匹配、地图布局 —— 全部由零依赖、零 token 的 Node.js 脚本完成；AI 只做「决定你的应用有哪些部分」与「用平实的话解释它们」。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而 README 的徽章行把这条纪律固化成了产品声明：「</strong>Zero dependencies<strong>」（配合「</strong>Node 18+<strong>」徽章）—— ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：整个工具链不引入任何 npm 依赖。</strong></p>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 它的产出边界是结构化的，而不是散文</strong>（<code>skills/floorplan/SKILL.md</code>）：产出分为「<strong>You write:</strong> <code>architecture.json</code> (subsystems, modules, flows) and <code>descriptions/*.json</code> (a name and description for every file and route). <strong>Generated:</strong> <code>graph.json</code> and <code>index.html</code>.」——<strong>⭐⭐⭐⭐⭐ 即：人负责语义、脚本负责机械、生成物与输入分离。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 它把「匹配是模式匹配而非编译器」这个局限直接写在了文档里</strong>（<code>docs/how-it-works.md</code> 第 2 节结尾）：</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>It's pattern matching, not a compiler, so it catches most connections but not all. If an important link is missing, ask for it to be added to the floorplan, and it will record it as an explicit connection.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 即：它明说「会漏」，并给出漏掉时的补救路径（让 AI 显式记录一条连接）。⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这条纪律与本日报连续多日记录的「把保证不覆盖的东西写出来」是同一条原则。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 它新增了一份 <code>CHECKSUMS.txt</code>（5,933 字节）到仓库根</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 而 10-30 记录的「20 个 release 全部 0 asset」这一观察至今未变</strong>（本次快照 releases 仍是 20 个、<code>rel_assets = 0</code>）。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：一个不通过 release 分发任何二进制的项目，仍然在自己仓库里维护了一份校验清单 —— 这是本日报今日最值得记的一处「分发形态与信任机制脱钩」的样本。</strong></li>
+</ol>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度来自「AI 辅助开发普及后，「代码库地图」这个需求第一次有了低成本解法」—— 这是真实的、可泛化的需求，但本项目的具体热度形态需要分开看。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 真采用信号（可核验）</strong>：<strong>4 位 contributors</strong>（10-30 时 3 人）；<strong>88 commits</strong>（10-30 时 44，<strong>翻倍</strong>）；<strong>20 个 release</strong>（10-30 时 9 个）；<code>pushed_at</code> = 2026-11-01T14:22:38Z（快照前约 8 小时，仍在活跃提交）；<strong>⭐⭐ 有公开的 live demo</strong>（<code>https://haydenschmitty.github.io/floorplan-demo/</code>）与演示视频；<strong>⭐⭐⭐⭐⭐ 有一个在线演示站点本身就说明有人在用它演示</strong>。</li>
+<li><strong>⭐⭐⭐⭐⭐⭐ 而必须点明的一条是：<code>subscribers_count</code> = </strong>4<strong>（10-30 时是 3）—— </strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：1,633⭐ 对 4 个订阅者，⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这个比例说明它吸引的是「路过点个赞」而非「持续关注」的人群。**</li>
+<li><strong>⭐⭐⭐⭐⭐⭐⭐ 而它的增长形态与本日报今日记录的原生移植项目形成一组极有说服力的对照：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">star</th>
+<th style="text-align: right;">⑂</th>
+<th style="text-align: right;">fork/star</th>
+<th style="text-align: right;">subs</th>
+<th style="text-align: right;">release 下载</th>
+<th style="text-align: right;">commits</th>
+<th style="text-align: right;">contributors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>valentderah/totk-pc-recomp</code></td>
+<td style="text-align: right;">3,147</td>
+<td style="text-align: right;">253</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;"><strong>&gt; 72,000</strong></td>
+<td style="text-align: right;">590</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr>
+<td><code>kuraeow/ultratears</code></td>
+<td style="text-align: right;">507</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">5.7%</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;"><strong>178</strong></td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">1（API）</td>
+</tr>
+<tr>
+<td><code>haydenschmitty/floorplan</code></td>
+<td style="text-align: right;"><strong>1,633</strong></td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">6.8%</td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td style="text-align: right;"><strong>0（release 全 0 asset）</strong></td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td><code>Shagg88/COGBox</code></td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2.8%</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">18 asset</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td><code>deepseek-ai/dsh-superagent-prototype</code></td>
+<td style="text-align: right;"><strong>7,012</strong></td>
+<td style="text-align: right;">703</td>
+<td style="text-align: right;">10.0%</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0（0 release）</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「star 排名」与「真实使用量排名」在这张表里几乎完全脱钩。<code>dsh-superagent-prototype</code> 是 star 最高（7,012）而 </strong>只有 1 个 commit、0 个 contributor、0 个 release<strong> 的那个；<code>totk-pc-recomp</code> 的 release 下载是它的 10,000 倍以上。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>而这张表里最刺眼的一行是本日报今日的核心发现：在同一天新建的 42 个 40⭐+ 新仓库里，有 27 个（64%）携带可执行投放指令。⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：同一天里，「1,633⭐ 且有 4 位贡献者、20 个 release、零依赖、公开 demo 的 floorplan」与「300⭐ 且 README 里指示用户关闭杀毒软件实时防护的 KMS-Pico」出现在同一份按 star 排序的榜单上 —— 而单看 star（1,633 vs 300）你甚至看不出后者有问题。本日报今日必须把这个对照说清楚。**</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐ 零 token 的机械层 / 有限 token 的语义层</strong></li>
+</ol>
+<p>脚本侧（<code>scan.mjs</code> / <code>describe.mjs</code> / <code>build.mjs</code>）负责：找到文件夹下的每个 git 仓库（单仓库、monorepo 或并排多仓库，跳过重复 worktree）、用 git 列文件（<strong>因此 <code>.gitignore</code> 天然被尊重</strong>）、提取 imports（解析到真实文件：TS 路径别名、Python 包、Go module、Rust crate、JVM 包）、导出定义与其文档注释、服务器定义的 endpoints、代码发出的 web requests，以及 <strong>content fingerprints</strong>（供后续判断什么变了）。</p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐ 请求到端点的匹配是它真正难的部分</strong></li>
+</ol>
+<p>它要解决的具体子问题包括：Express routers 嵌套挂载且前面有 middleware、Flask blueprint 的 <code>url_prefix</code>、<strong>Firebase Cloud Functions 按名字而非地址调用</strong>（<code>onCall</code> 显示为 <code>CALL /approveItem</code>，且能穿过用户自己包了一层 <code>httpsCallable</code> 的 helper）、以及<strong>「请求只写了地址的一部分，因为 base URL 在 settings 里」</strong>——它会为每个客户端学习 base path 并优先匹配符合它的连接。</p>
+<p><strong>⭐⭐⭐⭐⭐ 而它对这一层的自我评估是「pattern matching, not a compiler, so it catches most connections but not all」。</strong></p>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 支持的语言面很宽</strong>：TypeScript / JavaScript（含 Vue、Svelte、Astro）、Python、Go、Rust、Java、Kotlin、Scala、Groovy，「others with lighter support」。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 增量更新（用 content fingerprints）</strong>：<code>refresh</code> 流程「re-scan, carry over what didn't change」——<strong>⭐⭐⭐⭐⭐ 即：改一次代码不必重画整张图。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 它的「Health check」把安全审查做成了地图的一部分</strong>：README 的对比表写明只有它有「<strong>Health check</strong> (keys in code, open Supabase tables and Firebase rules, fakeable Stripe webhooks, endpoints anyone can use)」与「<strong>Recent work</strong> (what your AI just changed, and why)」。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 可以在代码还不存在时用</strong>（10-30 记录，本日仍成立）：0.3.0 的主功能是 <strong>blueprint</strong>（从 PRD/规格画出同一张地图）。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 三处把「产出与输入分离」的机制写进了仓库结构</strong>：<code>architecture.json</code>（人/AI 写）→ <code>descriptions/*.json</code>（AI 写）→ <code>graph.json</code> + <code>index.html</code>（脚本生成）。</p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>边界划在「机械的确定性的」与「语义的判断的」之间</strong> —— 脚本只做可完全由语法/模式确定的事（找文件、解析 import、匹配请求与端点、布局地图），AI 只做「只有读过代码的人才能做」的命名与解释。<strong>⭐⭐ 关键的架构判断：它的边界不是「组件之间」，而是「确定性可判定 vs 需要判断」这条线 —— 这条线会穿过每一个文件（每个文件都要被脚本扫描，但每个文件的名字与描述由 AI 写）</strong>。<strong>⭐⭐⭐ 而次级边界是「输入 vs 生成物」</strong>：<code>architecture.json</code> / <code>descriptions/*.json</code> 是输入，<code>graph.json</code> / <code>index.html</code> 是生成物</td>
+<td><code>docs/how-it-works.md</code> 的首段与 Mermaid 流程图原文、<code>skills/floorplan/SKILL.md</code> 的产出声明（You write / Generated）、README 的 Zero dependencies 与 Node 18+ 徽章、仓库根树 17 项（<code>.agents .claude-plugin .codex-plugin .gitattributes .github .gitignore CHANGELOG.md CHECKSUMS.txt CONTRIBUTING.md LICENSE README.md SECURITY.md docs package.json skills tests tools</code>）、<code>docs/how-it-works.md</code> 第 1–4 节的原文摘录。<strong>⭐ 未核验：<code>tools/</code> 与 <code>skills/</code> 下的具体文件名与实现；<code>scan.mjs</code> / <code>describe.mjs</code> / <code>build.mjs</code> 的代码；<code>CHECKSUMS.txt</code> 覆盖哪些文件、校验什么；<code>.agents</code> 目录的作用；<code>package.json</code>（254 字节）的依赖声明（⭐⭐ 「zero dependencies」是 README 徽章声明，本日报未读 <code>package.json</code> 核实）</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 Claude Code / Codex 中请求 floorplan → <strong>① status：是否已有地图</strong> → 无则 <strong>② scan</strong>（repos、files、imports、endpoints、requests）→ <strong>③ AI 读扫描摘要 + README + setup 文件 + 入口点，写 <code>architecture.json</code></strong>（应用的主要部分及其平实摘要、真正对话的外部服务、扫描看不到的连接如队列/定时任务/webhook、若干引导流程与一个 "Start here" 导览）→ <strong>④ build</strong>（把每个文件分配给模式匹配最深的部分，并报告剩余未分配项）→ <strong>⑤ describe.mjs 为每个部分写 worksheet</strong>（每个文件与 endpoint 的摘要：定义什么、文档注释、用什么、什么用它）→ <strong>⑥ AI 为每个 worksheet 填入名字与描述</strong> → <strong>⑦ recent：AI 标记近期工作</strong> → <strong>⑧ open：服务地图并展示</strong>。<strong>⭐⭐ 已有地图时走 refresh 路径：重扫 + 保留未变的部分</strong>。<strong>⭐⭐⭐ 而它明确支持「在 Claude Code 中把 worksheets 分给并行 helper 处理」</strong> —— <strong>即大项目的描述生成是并行化的</strong></td>
+<td><code>docs/how-it-works.md</code> 的 Mermaid 流程图与第 1–4 节原文、README 的 Features 段与 Quick start、SKILL.md 的产出声明。<strong>⭐ 未核验：实际运行一次所需时间与 token 量（本日报未运行）；并行 helper 的具体调度方式；<code>architecture.json</code> 的 schema 细节；blueprint（从 PRD 生成）路径的具体步骤</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐⭐⭐⭐⭐ 确定性 vs 语义</strong>：把「能确定性做的事」全部推给零 token 脚本，AI 只做判断 —— <strong>代价是脚本需要为每种语言维护匹配规则，收益是成本可预期且结果可复现</strong> · <strong>⭐⭐⭐⭐ 模式匹配 vs 编译器</strong>：明确选模式匹配（覆盖 Express/Koa/Hono/Next.js/Firebase Functions/Flask/FastAPI/Django/Go/Actix/Axum/Spring 等）—— <strong>代价是「会漏」，收益是不需要构建环境</strong> · <strong>⭐⭐⭐⭐ 跨仓库 vs 单仓库</strong>：显式支持 monorepo 与并排多仓库、跨仓库匹配请求与端点 —— <strong>代价是路径歧义，收益是回答「这个前端请求打到哪个后端」这个真实问题</strong> · <strong>⭐⭐⭐ 归属 vs 覆盖</strong>：build 阶段「把文件分配给最深的匹配部分，<strong>并报告任何剩余项</strong>」—— <strong>⭐⭐⭐⭐⭐⭐ 即「没归上」被做成可见的输出，而不是静默丢弃</strong> · <strong>⭐⭐⭐ 刷新成本 vs 准确性</strong>：content fingerprints 支撑增量 —— <strong>代价是判断「什么变了」依赖指纹启发式，收益是大项目不必全量重扫</strong> · <strong>⭐⭐ 分发形态</strong>：<strong>20 个 release 全部 0 asset</strong>，即分发靠源码与插件安装；<strong>⭐⭐⭐⭐⭐⭐ 而 <code>CHECKSUMS.txt</code> 仍然存在 —— 即「不通过 release 发二进制」与「维护校验清单」可以并存</strong> · <strong>⭐⭐ 输出风格</strong>：默认面向应用所有者（用日常语言讲业务作用），可切换为开发者视角</td>
+<td><code>docs/how-it-works.md</code> 第 2 节（模式匹配与「catches most connections but not all」）、第 3 节（<code>architecture.json</code> 的四类内容）、第 4 节（build 的分配与「reports anything left over」）、README 的对比表（Health check / Recent work / blueprint）、README 的 Zero dependencies 徽章、SKILL.md 的产出声明、<code>CHECKSUMS.txt</code> 的存在与大小（5,933 字节）。<strong>⭐ 未明示：⭐⭐⭐⭐⭐ 商业模式与维护承诺（「谁负责长期维护、出了 bug 找谁」——README 未见维护者承诺段落）；⭐⭐ 本日报未读 <code>package.json</code> 核实「zero dependencies」；⭐⭐ 未核验 <code>CHECKSUMS.txt</code> 的校验对象与生成方式；⭐⭐ 未核验 blueprint 路径的成熟度</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐⭐ 只读 <code>docs/how-it-works.md</code> 的首段</strong>（<strong>这是本日最省事的一次价值获取：一段话就说清了「脚本做机械活且零 token、AI 只做语义」这条核心分工</strong>）→ 2. <strong>⭐⭐⭐ 读 <code>SKILL.md</code> 的产出声明</strong>（<strong>「You write / Generated」四行 ——⭐⭐⭐⭐⭐ 这一处可以直接抄：它把「谁负责哪一半」写成了文件级的分工声明</strong>）→ 3. <strong>⭐⭐⭐ 读第 2 节末尾那句「It's pattern matching, not a compiler, so it catches most connections but not all」</strong>（<strong>⭐⭐⭐⭐⭐ 这一句决定了它能不能被信任 —— 一个不写这句话的工具，你无法判断它漏了多少</strong>）→ 4. <strong>⭐⭐⭐ 打开它的 live demo</strong>（<code>haydenschmitty.github.io/floorplan-demo/</code>）看一张真实产出的地图 —— <strong>⭐⭐⭐⭐⭐⭐ 而 demo 里那个 app（Brewline，一个跨 4 个仓库的咖啡订阅应用）本身就是最好的判据：它有跨仓库的请求-端点连线吗？</strong>→ 5. <strong>⭐⭐ 查 <code>subscribers_count</code>（4）与 <code>releases</code> 的 asset 数（0）</strong>（<strong>⭐⭐⭐⭐⭐ 这一步告诉你：1,633⭐ 里有多少是「真正在用」</strong>）→ 6. <strong>⭐⭐ 读 <code>CHANGELOG.md</code> 看它在改什么</strong>（<strong>⭐⭐ 一个 88-commit 的项目，changelog 的粒度能反映它是否在解决真实问题</strong>）→ 7. <strong>⭐ 最后才看 star</strong></td>
+<td><strong>第 1–3 步零成本，且直接给出工程判断而非热度</strong> · <strong>第 4 步是唯一能证伪其价值的步骤（⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：一个没有真实产出的 demo 什么都证明不了）</strong> · <strong>第 5 步是本日报今日的核心判据</strong> · <strong>第 7 步是排序而非筛选</strong> · <strong>本 PoC 不覆盖</strong>：在真实仓库上运行一次（<strong>⭐⭐ 需要 Claude Code 或 Codex 订阅、需要在你自己的代码库上运行、⭐⭐⭐⭐⭐⭐ 且本日报明确不建议在生产仓库上首次运行一个会写文件的第三方插件</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>⭐⭐⭐⭐⭐ 核心启发（本日最可迁移的一条）：把「工作」按「是否需要判断力」切开，而不是按「谁来做」切开。</strong></p>
+<p>大多数 agent 工具的分工是「让 AI 做所有事」或「让脚本做所有事」。它的分工是：<strong>凡是可以由语法/模式确定决定的事，交给零成本、零依赖、可复现的脚本；凡是只有读过代码的人才能做出的判断，交给 AI。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 这条切分带来的好处有三层，都可验证：① 成本可预期（脚本部分零 token）；② 结果可复现（同一份代码，同一份扫描结果）；③ 责任可归属（AI 只需要为「命名与解释」负责，不需要为「文件找齐了吗、请求打到哪个端点」负责）。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 第二个启发：产出物与输入物必须在结构上分开，而且要在文档里写明谁写哪一半。</strong> <code>architecture.json</code> 与 <code>descriptions/*.json</code> 是输入，<code>graph.json</code> 与 <code>index.html</code> 是生成物 —— <strong>⭐⭐⭐⭐⭐ 而这条声明直接写在 SKILL.md 里，任何读它的人（包括 AI）都知道边界在哪。</strong> 这与本日报 10-28 记录的 nyxis「You write / Generated」是同一条纪律。</p>
+<p><strong>⭐⭐⭐⭐ 第三个启发：「没归上」应该被报告，而不是被静默丢弃。</strong> build 阶段把文件分配给最深的匹配部分，<strong>「并报告任何剩余项」</strong>。<strong>⭐⭐⭐⭐⭐⭐ 这与本日报连续多日记录的「把没做到的事做成可见的输出」是同一条原则 —— 一个诚实的工具的输出里应该包含「我还差多少」。</strong></p>
+<p><strong>⭐⭐⭐⭐ 第四个启发：「我用的是模式匹配不是编译器」这句话应该出现在方法论章节里，而不是 FAQ 里。</strong> <strong>⭐⭐⭐⭐⭐⭐ 即：局限性的声明位置决定了读者会不会在依赖它之前看见它。</strong> 这与本日报记录的「assumptions 文档由人裁量修改」（nyxis）、「What the theorem does not state」（nyxis）、「LPS is best effort」（oss-verify-proofs）是同一条纪律的反复出现。</p>
+<p><strong>⭐⭐⭐ 第五个启发：分发形态与信任机制可以脱钩。</strong> 20 个 release 全部 0 asset（即不分发任何二进制），但仓库里有一份 5,933 字节的 <code>CHECKSUMS.txt</code>。<strong>⭐⭐⭐⭐⭐ 即：「我不发二进制」不等于「我不做完整性保证」—— 校验清单是源码分发形态下的对应物。</strong></p>
+<p><strong>⭐⭐ 架构对比：</strong> 与 <code>deepseek-ai/dsh-superagent-prototype</code>（本档案同期）构成<strong>同一赛道的两种极端形态</strong>的对照 —— 后者 7,012⭐ 但 1 commit / 0 contributor / 0 release（⭐⭐ 即一个「架构文档写得极好、但没有任何工程产出」的形态），前者 1,633⭐ 而 88 commits / 4 contributors / 20 releases / 零依赖 / 公开 demo。<strong>⭐⭐⭐⭐⭐ 这组对比的价值在于：它证明「架构文档的完整度」与「工程产出量」是两个独立的轴 —— 本日报 10-28 曾把 nyxis（2 commits、证明边界写全）与 CFSG（真证明、无 docs）对照，本日这条轴线变得更清晰了。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；「待核验」节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[用户在 Claude Code 或 Codex 中请求 floorplan] --> Status{status<br/>是否已有地图}
+  Status -->|无| Scan[scan.mjs 机械层 零 token<br/>git 列文件 尊重 gitignore<br/>提取 imports 导出定义 endpoints requests<br/>content fingerprints]
+  Status -->|有| Refresh[refresh 重扫<br/>保留未变的部分]
+  Scan --> Arch[AI 写 architecture.json<br/>应用的主要部分与平实摘要<br/>真正的外部服务<br/>扫描看不到的连接 队列 定时任务 webhook<br/>引导流程与 Start here 导览]
+  Arch --> Build[build 脚本层<br/>把每个文件分配给最深的匹配部分<br/>报告任何剩余项]
+  Build --> Worksheet[describe.mjs 为每个部分写 worksheet<br/>定义什么 文档注释 用什么 什么用它]
+  Worksheet --> Describe[AI 为每个 worksheet 填名字与描述<br/>默认写给应用所有者用日常语言<br/>可切换开发者视角]
+  Describe --> Recent[AI 标记近期工作<br/>Recent work 你的 AI 刚改了什么与为什么]
+  Refresh --> Describe
+  Recent --> Open[open 服务地图并展示<br/>graph.json 加 index.html<br/>可交互 可下钻 可提问]
+  Build --> Graph[graph.json 与 index.html<br/>生成物]
+  Describe --> Graph
+  Graph --> Open
+
+  Health[Health check 层<br/>代码里的密钥<br/>开放的 Supabase 表与 Firebase 规则<br/>可伪造的 Stripe webhook<br/>任何人都能访问的 endpoint] --> Open
+  Blueprint[blueprint 路径<br/>从 PRD 或规格画出同一张地图<br/>代码尚不存在时也能用] --> Arch
+
+  Langs[语言覆盖<br/>TypeScript JavaScript 含 Vue Svelte Astro<br/>Python Go Rust Java Kotlin Scala Groovy<br/>其余较轻量支持] --> Scan
+  Match[请求到端点匹配<br/>Express Koa Hono Next.js Firebase Functions<br/>Flask FastAPI Django Go Actix Axum Spring<br/>前缀解析 嵌套路由 前置 middleware<br/>Firebase 按名字调用 CALL 形式<br/>base URL 在 settings 时学习各客户端 base path<br/>⭐ 模式匹配不是编译器 会漏 漏时可显式记录] --> Build
+
+  Boundary[产出边界<br/>You write architecture.json 与 descriptions 星号 json<br/>Generated graph.json 与 index.html<br/>⭐ 人与 AI 负责语义 脚本负责机械] -.约束.-> Graph
+  Deps[零依赖 零 token<br/>plain Node.js 无 npm 依赖<br/>Node 18 加<br/>⭐ 机械活不花 token] --> Scan
+  Checks[CHECKSUMS.txt 5933 字节<br/>20 个 release 全部 0 asset<br/>⭐ 不发二进制但仍做完整性保证] -.信任机制.-> Open
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>⭐⭐⭐⭐ 「AI 辅助开发之后的代码库理解工具」—— 准确地说，它是本日可见的「用 agent 画架构图」这一品类里，唯一把「确定性工作」从 agent 手里彻底拿走的实现。</strong></p>
+<p>⭐⭐⭐⭐ 它在生态中的位置：README 自己列出了两个直接对照对象并做了三列对比表 —— <strong><a href="https://github.com/tt-a1i/archify">Archify</a></strong>（画图给文档/演讲用，10 种图表类型，可导出图片视频，可从描述而非代码生成）与 <strong><a href="https://github.com/Egonex-AI/Understand-Anything">Understand Anything</a></strong>（学习大型代码库到函数级、知识图谱、diff 影响分析）。<strong>⭐⭐⭐⭐⭐⭐ 而它的自我定位是三者中唯一以「我拥有并维护这个 app」为前提的那个</strong> —— README 写「<strong>Pick Floorplan</strong> to understand and check an app you own. <strong>Pick Archify</strong> to draw a diagram for a doc, a talk or a decision. <strong>Pick Understand Anything</strong> to study a large codebase function by function.」</p>
+<p>⭐⭐⭐⭐⭐⭐⭐ 而它比另两者多出来的一块是 <strong>Health check</strong> —— 「代码里的密钥、开放的 Supabase 表与 Firebase 规则、可伪造的 Stripe webhook、任何人都能访问的 endpoint」。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 它把「看架构图」延伸成了「看架构图的同时被告知这里有安全问题」—— 这在 AI 大量写代码的 2026 年是一个真实的缺口，而它把安全审查嵌进了看图的动作里，而不是另开一个工具。</strong></p>
+<p>⭐⭐⭐⭐ 而它的形态判断从 10-30 的「工具型」上调为「生产可用」，依据是可核验的变化：<strong>88 commits（10-30 时 44）</strong>、<strong>20 个 release（10-30 时 9）</strong>、<strong>4 位 contributors（10-30 时 3）</strong>、<strong>pushed_at 距快照 8 小时</strong>、<strong>有公开 live demo</strong>、<strong>「零依赖」写进 README 徽章</strong>。<strong>⭐⭐⭐⭐⭐⭐ 而它仍然不是「平台型」：无 topics 生态、无插件市场、无第三方集成。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️⚠️⚠️ 最核心的方法论局限是它自己写下的那句：「It's pattern matching, not a compiler, so it catches most connections but not all.」</strong> ⭐⭐⭐ <strong>即：一张缺了关键连线的地图，比没有地图更危险 —— 因为它看起来是完整的。</strong> ⭐⭐⭐⭐⭐⭐⭐ 而这个风险被放大了：它的读者画像按 README 明写是「<strong>people who build with AI and don't read the code</strong>」—— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即最不会发现漏连的人，正是它的目标用户。</strong></li>
+<li><strong>⚠️⚠️⚠️ <code>subscribers_count</code> = 4 对 1,633⭐。</strong> ⭐⭐⭐ <strong>这个比例是本日报今日记录到的最锋利的一处「热度 ≠ 关注」。</strong> ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 20 个 release 全部 0 asset，意味着<strong>没有一个可核验的装机量数字</strong> —— 本日报对它无法给出「真实使用量」的对照。</li>
+<li><strong>⚠️⚠️ 它要求读取你的整个代码库。</strong> ⭐⭐ <strong>README 与 SKILL.md 里的流程包含读取 README、setup 文件、入口点与所有被 git 列出的文件。</strong> ⭐⭐⭐⭐⭐⭐ 即：一个第三方插件在你的生产代码库上运行，其信任模型与「读你的代码」这件事绑定。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 仓库里有 <code>SECURITY.md</code>（1,461 字节）与 <code>CONTRIBUTING.md</code>（1,931 字节），⭐⭐⭐⭐⭐⭐⭐ 但本日报未读其内容，无法核验其数据处理声明的覆盖面。</strong></li>
+<li><strong>⚠️⚠️⭐⭐ 它依赖 Claude Code 或 Codex，且 AI 语义部分会消耗 token。</strong> ⭐⭐⭐⭐⭐⭐ 「脚本零 token」不等于「整个工具零 token」—— 命名与描述阶段是 AI 做的。<strong>⭐⭐⭐⭐⭐⭐⭐ 而 README 说「On large projects, Claude Code splits the worksheets across parallel helpers」，⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即大项目的 token 成本可能相当可观，而本日报未核验其量级。</strong></li>
+<li><strong>⚠️⭐⭐ 「Zero dependencies」是 README 徽章的声明，本日报未读 <code>package.json</code>（254 字节）核实。</strong> ⭐⭐ <strong>即：本档案记录的是「README 如此声明」，而非「本日报已核验」。</strong></li>
+<li><strong>⚠️⭐⭐⭐⭐ 它的账号背景</strong>：owner 账号创建于 2026-10-27（与仓库同期）、3 个公开仓库、57 followers；<code>subs</code> 相对 1,633⭐ 偏低。<strong>⭐⭐⭐⭐ 即：一个非常新的项目在 6 天内获得了 1,633⭐ 与 4 位贡献者 —— ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这个速度本身值得记录，也值得按本日报的纪律继续观察它是否能持续。</strong></li>
+<li><strong>⚠️⭐⭐ 10-30 记录的「PHP CMS 上扫不出 HTTP 路由」这一未覆盖领域，本日未核验是否已修复。</strong></li>
+<li><strong>⚠️ 本日报未运行 floorplan、未读 <code>tools/</code> 与 <code>skills/</code> 的实现、未核验 demo 地图的实际完整度、未核验 <code>CHECKSUMS.txt</code> 的校验对象。</strong></li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ vs <code>deepseek-ai/dsh-superagent-prototype</code>（本档案同期）</strong>：<strong>⭐⭐⭐⭐⭐ 二者都是「给 agent 用的自主系统」，但形态完全相反</strong> —— dsh-superagent 是 <strong>7,012⭐ ⑂703 而 1 commit / 0 contributor / 0 release</strong>（⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即一个「研究原型 + 极完整文档」形态，作者自己写明「<strong>This code grew out of our team's day-to-day development work, with much of the engineering done by coding agents. Treat it as research code, not production-ready software.</strong>」）；floorplan 是 <strong>1,633⭐ ⑂111 而 88 commits / 4 contributors / 20 releases</strong>。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>star 数相差 4.3 倍，而工程产出量相差的方向完全相反。这组对照是本日报今日对「热度 ≠ 价值」最直接的一次量化。**</li>
+<li><strong>⭐⭐⭐⭐⭐ vs <code>tt-a1i/archify</code> 与 <code>Egonex-AI/Understand-Anything</code>（README 自列的对照）</strong>：<strong>⭐⭐⭐⭐⭐ floorplan 回答「我做的 app 到底怎么运作、我该担心什么」；archify 回答「怎么把这个讲清楚」；Understand Anything 回答「这个大代码库是怎么运作的，细到函数」。⭐⭐⭐⭐⭐⭐ 而 floorplan 独有的一块是 Health check 与 Recent work。</strong></li>
+<li><strong>⭐⭐⭐⭐ vs <code>haplollc/Vesalius</code>（本日报 10-24 记录的代码图 MCP）</strong>：<strong>⭐⭐⭐⭐⭐ 两者解决相邻问题，形态差异极大</strong> —— Vesalius 是「本地代码图 + 五个只读 MCP 工具 + Mac app + VS Code 扩展」，<strong>只覆盖 Swift / TypeScript / JavaScript / Python 四种语言（其余 13 种只有词法）</strong>，且<strong>只跑 macOS 15+ Apple silicon</strong>；floorplan 是「零依赖 Node.js 脚本 + AI 命名」，<strong>覆盖 9 种语言</strong>、有 Linux/Windows 路径（无平台限制声明）。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 但 Vesalius 做了一件 floorplan 没做的事：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>它把自己的 benchmark 失败轮次写进了 README<strong>（「Round 1 used Vesalius in 2 of 24 runs, so that round's small token gap was mostly run-to-run noise」）—— ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>floorplan 的 CHANGELOG.md 有 17,240 字节，但本日报未在其中找到同类的「失败轮次」披露；⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「公开自己的失败」在本日两个相邻项目上出现了明显差异。**</li>
+<li><strong>⭐⭐⭐ vs <code>caru-ini/stack-diagram</code>（本档案同期，10-30 记录的同类）</strong>：<strong>⭐⭐⭐⭐⭐⭐ 两者是「用 agent 画架构图」这一品类的两个极端</strong> —— stack-diagram 是「<strong>用一句话描述你的技术栈</strong>→ 拿到带官方 logo 的架构图」（需要 Python 3.9+、需要网络下载 logo、PNG 导出需 Playwright + Chromium、6 commits / 1 contributor）；floorplan 是「<strong>让 agent 读你的整个代码库</strong>→ 拿到可交互的应用地图」（零依赖、零 token 的机械层、20 releases / 4 contributors）。<strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>一个从「描述」出发（不需要代码），一个从「代码」出发（必须有代码）。⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而本日报今日记录的 farm 样本里恰好有一批「AI 一键生成工具」的仓库，⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这组对照说明：⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ <strong>「让 agent 画图」这个品类本身正在被大量低质量仓库填充，而区分它们的判据依然是「有没有真实工程产出」。</strong></li>
+<li><strong>⭐⭐ vs <code>NyxFoundation/nyxis</code>（本档案 10-28 记录）</strong>：<strong>⭐⭐ 问题域无关，但纪律同构 —— 一个用四色图与 <code>#assert_axioms_under</code> 宏把「证明到哪里为止」做成不变量，一个用「You write / Generated」把「谁写哪一半」做成声明。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得 —— 理由分两半：一半是「它本身是一个可用的工具」，一半是「它是本日报今日方法论样本库的一个新成员」。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 理由一（作为工具）：它是本日报今日在「AI 辅助开发」这一大品类里，见过的最克制的一个实现</strong> —— 零依赖、零 token 的机械层、输入与生成物分离、局限写在方法论章节里。<strong>⭐⭐⭐⭐⭐⭐ 对任何用 Claude Code / Codex 的人，它值得直接试一次（⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 但按它自己的边界声明，请在你自己的仓库而非生产仓库上跑）。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 理由二（作为方法论样本）：它的「脚本做机械活 / AI 只做语义」是一条可以直接抄走的分工原则</strong>，而它的「pattern matching, not a compiler, so it catches most connections but not all」是本日报连续多日记录的「把保证不覆盖的东西写出来」这条纪律的又一实例。</li>
+<li><strong>⭐⭐⭐⭐ 理由三（作为观察对象）：<code>subscribers_count</code> = 4 对 1,633⭐，且 20 个 release 全部 0 asset —— 即它没有可核验的装机量。</strong> ⭐⭐⭐⭐⭐⭐ <strong>它的真实使用量在下一期之前是无法回答的问题，而这个问题本身就是本日报要跟踪的。</strong></li>
+<li><strong>⭐⭐ 使用建议：</strong> <strong>把它的 <code>docs/how-it-works.md</code> 与 <code>SKILL.md</code> 的分工声明当作模板抄走；把它的 Health check 设计当作「让 AI 写代码之后的安全回归」方向的一个参考实现。</strong></li>
+</ul>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 是否会出现第一批非作者的外部 issue / PR</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 4 位 contributors 里有多少是外部贡献者、贡献的是代码还是文档，本日报未逐人核验。⭐⭐⭐⭐⭐⭐ 而这是「社区是否形成」的直接判据。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ <code>subscribers_count</code> 与 <code>releases</code> 的 asset 数是否变化</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 即：它会不会开始分发可安装的产物（⭐⭐⭐⭐⭐⭐ 那样本日报就能给出装机量对照）。</strong></li>
+<li><strong>⭐⭐⭐⭐ <code>CHECKSUMS.txt</code> 的覆盖范围与生成方式是什么</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 即：这是「发布前的完整性清单」还是「依赖锁定清单」，两者含义完全不同。</strong></li>
+<li><strong>⭐⭐⭐ 10-30 记录的「PHP CMS 上扫不出 HTTP 路由」是否已覆盖</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 即：它的「catches most connections but not all」里，那个「not all」是否会缩小。</strong></li>
+<li><strong>⭐⭐⭐ <code>package.json</code> 是否真的零依赖</strong> —— <strong>⭐⭐⭐ 这是本档案中一条</strong>未核验的声明<strong>，值得在下一期直接读掉。</strong></li>
+<li><strong>⭐⭐⭐ 它是否会出现自己的 benchmark（像 Vesalius 那样公开失败轮次）</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 即：本日报今日在这两个相邻项目上观察到的「公开失败」差异，会否收敛。</strong></li>
+<li><strong>⭐⭐ 30 天的 star 增量与 fork 增量对照</strong>（<strong>⭐⭐ fork/star 6.8% 意味着每 15 个 star 有 1 个 fork，即「拿来看一眼并改造」的比率；⭐⭐ 但本日报未核验这些 fork 是否被合并或使用</strong>）。</li>
+</ol>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST/Search API（gh CLI 认证），UTC <strong>2026-11-01T22:30Z</strong> 单一快照 | Stars: 1,633 | Forks: 111 | Subscribers: 4 | Open Issues: 15 | License: MIT | 语言: JavaScript | 创建: 2026-10-27T12:03:01Z | pushed: 2026-11-01T14:22:38Z | 88 commits | contributors 4 人 | releases 20 个（<strong>全部 0 asset</strong>）| topics 12 | 6,016 KB | 144 blobs | homepage https://haydenschmitty.github.io/floorplan-demo/
+证据边界: <code>tools/</code> 与 <code>skills/</code> 下的具体文件名与实现未核验；<code>scan.mjs</code> / <code>describe.mjs</code> / <code>build.mjs</code> 的代码未读；<code>CHECKSUMS.txt</code>（5,933 字节）覆盖哪些文件、校验什么未核验；<code>.agents</code> 目录的作用未核验；<strong>⭐⭐ <code>package.json</code>（254 字节）未读，「zero dependencies」是 README 徽章声明而非本日报已核验事实</strong>；<code>SECURITY.md</code> 与 <code>CONTRIBUTING.md</code> 的内容未读，因此其数据处理声明的覆盖面未核验；blueprint（从 PRD 生成）路径的具体步骤与成熟度未核验；本日报未运行 floorplan、未核验 demo 地图的实际完整度；<strong>⭐⭐ 1,633⭐ 的来源无法核验（<code>stargazers</code> 端点对本 token 返回 404），因此本日报只给出两次快照间的总量差（10-30 的 378⭐ → 11-02 的 1,633⭐），不能读作当日新增，也不能读作用户数</strong></p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

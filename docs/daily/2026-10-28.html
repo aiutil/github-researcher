@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-10-28 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h1 id="2026-10-28-github">2026-10-28 GitHub 趋势研究简报</h1>
+<blockquote>
+<p><strong>证据边界：</strong> 本日全部元数据取自 <strong>2026-10-27T22:16:31Z 单一快照</strong>（= 2026-10-28 CST 06:16），经 gh CLI 认证的 GitHub REST / Search API（<code>search/repositories</code>、<code>repos/{owner}/{repo}</code>、<code>repos/{owner}/{repo}/readme</code> 与 <code>contents/{...}</code>（<code>Accept: application/vnd.github.raw</code>）、<code>git/trees/HEAD</code> 与 <code>?recursive=1</code>、<code>commits</code>（含 Link 头分页取精确 commit 总数）、<code>contributors</code>、<code>releases</code>、<code>issues</code>、<code>users/{owner}</code>、<code>orgs/{org}</code>），字段包括 <code>stargazers_count</code> / <code>forks_count</code> / <code>subscribers_count</code> / <code>open_issues_count</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> / <code>topics</code> / <code>created_at</code> / <code>pushed_at</code> / <code>owner.type</code>。
+<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-28 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计</strong>（<code>stargazers</code> 端点对本 token 持续返回 <strong>404</strong>，因此星标时间分布无法核验），<strong>因此所有「增速」表述都是两次快照之间的总量差，不是当日新增，也不能读作「用户数」</strong>。
+<strong>⭐⭐⭐ 本日核验出的最大结构性事实（一条命令即可判定）</strong>：<code>AxiomMath/CFSG</code> 的 <code>?recursive=1</code> 返回 <strong><code>truncated: true</code></strong>（65,107 条目），因此<strong>本日报无法声称已核验「全仓库 sorry-free」</strong>。本日报实际做的是<strong>逐文件 grep 四个主干文件</strong>（<code>CFSG.lean</code> / <code>Certificates.lean</code> / <code>CertifiedResults.lean</code> / <code>Comparator/Solution.lean</code>）的 <code>sorry</code> 与 <code>native_decide</code>，计数<strong>均为 0</strong>；<strong>并且发现 <code>Comparator/Challenge.lean</code> 的内容是 <code>theorem CFSGComparator.classification : TauCeti.ClassificationStatement.{u} := sorry</code></strong>。结合 <code>comparator.json</code>（<code>challenge_module</code> / <code>solution_module</code> / <code>theorem_names</code> / <code>permitted_axioms</code>）与 <code>formalization.yaml</code>（<code>status.sorry_count: 0</code>），<strong>本日报的判断是：仓库内存在一处刻意的 <code>sorry</code>，它属于对照题的「题面」而非证明的一部分 —— 即 README 的「sorry-free」指的是证明侧，本日报把它记为「声称需精确化」而非「声称不成立」</strong>。<strong>这个区分本身是本日可迁移的方法论：找到一处 <code>sorry</code> 不等于项目不诚实，必须先问「这处 <code>sorry</code> 在体系里扮演什么角色」。</strong>
+<strong>⭐⭐ 本日新增的第五类批量异常模式（区别于本日报已记录的四类）</strong>：本日出现两组<strong>内容与结构同时同构</strong>的簇，且<strong>首次出现「跨仓库 blob SHA 完全相同」这一可机器复核的指纹</strong> —— ① <strong>3 秒窗口簇</strong>（2026-10-27T11:42:40Z–11:42:42Z，4 个仓库）：每个<strong>恰 2 个文件</strong>（<code>README.md</code> 1,626 / 1,703 / 1,629 / 1,681 字节 + <code>description.json</code> 78 / 80 / 78 / 78 字节），体积<strong>均为 2 KB</strong>，stars <strong>100 / 100 / 100 / 99</strong>，forks <strong>均为 0</strong>，<code>description.json</code> 的 base64 解码内容<strong>只替换软件名</strong>（<code>{"description":"Camtasia Crack 2026 stable release for creative tasks"}</code> 等），owner 名互不成词法关系。② <strong>6 个共享 <code>.gitignore</code> blob 的簇</strong>（14:55:20Z–17:30:31Z）：<code>russells9175/Microsoft-365-Full-Suite-2026</code>、<code>chase4812/CapCut-Pro-Studio-2026</code>、<code>bria-stewart-12/Acrobat-Pro-PDF-Studio-2026</code>、<code>laylaellis20/PremierePro-Cinematic-Editor-2026</code>、<code>shaneyoung321/FL-Studio-Producer-Suite-2026</code>、<code>cbarnes607/AutoCAD-Design-Studio-2026</code> —— <strong>6 个仓库的 <code>.gitignore</code> blob SHA 完全相同（<code>6f596e17917419c463b0d15bf1f0bce19b8918eb</code>）</strong>，体积<strong>均为 8 KB</strong>，文件构成<strong>均为 3 个</strong>（<code>.gitignore</code> 4,664 + <code>LICENSE</code> 1,064–1,070 + <code>README.md</code> 8,466–8,869 字节），stars <strong>52 / 51 / 51 / 51 / 50 / 50</strong>，forks 7–10，README 均为「⚡ + 图标 + h1 + 说明」的同构模板。<strong>⭐⭐ 而「blob SHA 相同」比「文件大小相同」强一个量级：后者可能是巧合，前者是同一份模板被复制。</strong>
+<strong>⭐ 本日事件面</strong>：本日<strong>没有 CVE 驱动的注意力洪峰</strong>（自 2026-10-21 的 CVE-2026-111497 潮之后连续第 6 个无事件驱动日）；<strong>取而代之的是一条生态层面的结构异常 + 一条「形式化验证进入主流工具形态」的信号</strong>。CVE-2026-111497 的潮在今日已完全退潮（10-26 记录的 <code>created:&lt;date&gt;</code> 逐日 2 → 9 → 16 → 12 → 11 → <strong>0</strong>），但<strong>防守方工具仍在持续演进</strong>：<code>trailofbits/brotli-checker</code> 的 commits 从 26 涨到 <strong>33</strong>，且其中三条 commit 标题直接对应能力扩展 —— <strong>「Recognize stable Brotli decoder tables independently of patch fingerprints」（2026-10-26T21:33:05Z）</strong>、<strong>「Avoid repeated compiler-catalog parsing in mutation test setup」（2026-10-26T20:34:35Z）</strong>、<strong>「Fix cross-version parser test and parallelize mutation CI by module」（2026-10-26T20:12:26Z）</strong>。</p>
+</blockquote>
+<h2 id="_1">今日重点趋势（按排名）</h2>
+<h3 id="1-92">趋势 1：把「我凭什么敢下这个结论」变成可被当场推翻的事——三个互不相识的项目，三种完全不同的机制（趋势分 92）</h3>
+<p><strong>⭐⭐⭐ 本日最重要的观察不是「谁更硬核」，而是三个来自完全不同技术层（Web 后端授权 / 纯数学 / 嵌入式外设）的项目，</strong>在同一天各自用不同的物理手段，做了同一件事：把「我的结论成立」这个判断，交给一个别人能独立重跑的东西来裁决。**</p>
+<h4 id="nyxfoundationnyxis418-297-11forkstar-37lean-mit-1274-kb-2-commit-contributors-1-releases-2-subs-3-oi-33">⭐ <code>NyxFoundation/nyxis</code>（41.8 小时 297⭐ ⑂11，fork/star 3.7%，Lean · MIT · 1274 KB · <strong>仅 2 个 commit</strong> · contributors 1 人 · <code>releases</code> 2 个 · <strong>subs 3</strong> · <strong>oi 33 本批最高</strong>）</h4>
+<p><strong>它的一句话定位是</strong>：开发者只需要写一份 Cedar schema 和 policies，<strong>永远不必写 Lean</strong>；而每一个建在 Nyxis 上的后端，都自带一份关于授权安全的<strong>形式证明</strong>。</p>
+<p><strong>⭐⭐ 而它的主定理说的是一件具体的事，而不是一句「安全」：</strong></p>
+<blockquote>
+<p>No sequence of HTTP requests can cause an authenticated principal to read, modify, delete, or grant access to data beyond its legitimate permissions.</p>
+</blockquote>
+<p><strong>⭐⭐⭐ 本日最值得抄的，不是这个定理，而是</strong>它把「证明到哪里为止」画成了一张四色图**——<code>ASSUMPTIONS.md</code> 里那张 Mermaid 图用四类颜色标出四个信任层级：</p>
+<table>
+<thead>
+<tr>
+<th>颜色</th>
+<th>含义</th>
+<th>本日报核对到的实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 绿</td>
+<td><strong>纯模型内已证</strong></td>
+<td>从路由到授权层对每个 action 的判定（<code>exactly cedar-spec's Cedar.Spec.isAuthorized</code>）、effect 签发、状态转移、列表、级联、外部效果记录，直到传给 handler 的值</td>
+</tr>
+<tr>
+<td>🔵 蓝</td>
+<td><strong>连接代码，已证</strong></td>
+<td>由成功认证构造主体的接线（<code>HttpAuth</code>）；把生成值固定、组装请求、在<strong>一个事务内</strong>分阶段执行、构建响应；签发出的 SQL 全部来自已授权操作；外部效果只对已记录内容发送；响应可由请求与阶段结果序列重放（<code>ReadSafety.replay_runHandler</code>）</td>
+</tr>
+<tr>
+<td>🔴 红</td>
+<td><strong>连接代码，未证 → 作为 Assumption 1 被信任</strong></td>
+<td>原始 HTTP 解码、body task 与发送；JWKS 获取 / 签名验证 / 时钟 / 随机数的内部实现；<strong>加载判定材料</strong>（点查与 <code>SELECT ... WHERE</code> 的结果就是数据库当前行，且已取全判定所需行）；PostgreSQL 实际执行 SQL 的语义 / 隔离 / 持久化；JSON 解析器；启动 curl 并解析其响应；outbox 写入与内部循环重试；CORS 装饰后的响应</td>
+</tr>
+<tr>
+<td>🟡 黄</td>
+<td><strong>外部世界与使用者 → Assumption 1–3</strong></td>
+<td>Lean 工具链与固定版本的依赖、FFI 与原生库、密码学实现正确性（Assumption 1）；Supabase Auth JWKS / TLS / PostgreSQL / Storage / SMTP / 外部 API 的行为（Assumption 2）；<strong>被人类批准的那两份文件</strong>（schema 与 policies）、应用 handler 代码、secrets 与云端设置、运维者的正确使用（Assumption 3）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐ 而每条假设都按四段写 —— 这四段本身就是本日报今日最值得单独记的一条文档规范：</strong></p>
+<blockquote>
+<p>Each of the three items is written in four parts: <strong>the assumption (what is trusted), what happens if it is broken, how developers uphold it, and checks</strong> (the supporting condition IDs and checks). <strong>These do not prove that the assumption holds, and a passing integration test is never a substitute for a formal proof.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐ 「一个通过的集成测试永远不是形式证明的替代品」—— 这句话与本日报连续记录的「跳过条件被公开，而不是被算进通过率」是同一条原则在形式化领域的表述。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而它对「我证明了什么」与「我没证明什么」的切分，具体到了令人意外的程度</strong> —— <code>ASSUMPTIONS.md</code> 的 "What the theorem does not state" 一节逐条列出：HTTP/JWT/SQL 的对应关系；生成值的唯一性与时钟正确性；签名 URL 的内容与 Storage 的行为；邮件与异步外部 API 的投递；<strong>「COMMIT 失败之后已发出的同步调用在目标端产生的副作用」</strong>；服务主体的 ID 与配置；<strong>「unconditional noninterference, including observation of permit and deny」</strong>（即<strong>它不保证「拒绝」本身不可被观察</strong> —— 一个 permit 与一个 deny 的可区分性 leaking 明确落在保证之外）；<strong>以及「附件内容直接在客户端与 Storage 之间传递，不经过 Nyxis，因此内容检查、病毒扫描与大小限制是 Storage 与应用的责任，并在保证之外」</strong>。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而它用来守住「不许偷偷用新公理」的手段，是一个</strong>自动遍历命名空间的宏<strong> —— <code>Test/Axioms.lean</code> 定义了 <code>#assert_axioms_under ns</code>：遍历环境里命名空间 <code>ns</code> 下的</strong>每一个**定理（包含 private 定理），逐个 <code>collectAxioms</code>，凡不在允许名单 <code>["propext", "Classical.choice", "Quot.sound"]</code> 里就 <code>throwError</code>：</p>
+<blockquote>
+<p>列挙を手で保守しないため、補助定理の追加・削除で検査が漏れない。</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 「不手工维护名单，所以辅助定理的增删不会漏检」—— 这是本日报见过最正确的自检写法之一：它把「检查的覆盖面」本身做成了可增长的，而不是靠人记得补。</strong> 且它的说明里明确写着：<strong>未证明的洞或自定义公理一旦混入，构建就会失败（并报告不被允许的公理名）。</strong></p>
+<p><strong>⭐⭐⭐ 它的工程规模也可核验</strong>：全树 261 个条目（<code>truncated: false</code>），其中 <code>Nyxis/</code> 43 项、<code>Test/</code> 33 项、<code>.lean</code> 文件 102 个；<code>scripts/</code> 下 <strong>34 个检查脚本</strong>（<code>check-approved-binding.py</code> / <code>check-approved-declaration.py</code> / <code>check-core-isolation.py</code> / <code>check-cors.py</code> / <code>check-external-calls.py</code> / <code>check-handler-effects.sh</code> / <code>check-http-headers.py</code> / <code>check-http.sh</code> / <code>check-installed-jwt.sh</code> / <code>check-jwks-fetch.py</code> / <code>check-jwt-dependency.sh</code> / <code>check-local-postgres-http.py</code> / <code>check-local-supabase.py</code> / <code>check-materials-scale.py</code> / <code>check-outbox.py</code> / <code>check-postgres-http.py</code> / <code>check-postgres-lifetime.py</code> / <code>check-postgres-values.py</code> / <code>check-pq-patch.py</code> / <code>check-sample-init.py</code> / <code>check-sample-jwks.py</code> / <code>check-sample-jwt-db.py</code> / <code>check-sample-startup.py</code> / <code>check-schema-rejection.sh</code> / <code>check-team-docs.py</code> + <code>prepare-dependencies.py</code> + <code>local-supabase.py</code> + <code>nyxis_local.py</code> + <code>run-sample-frontend-backend.py</code>）。</p>
+<p><strong>⭐⭐⭐⭐⭐ 而这些脚本与 <code>docs/proofs.md</code> 的定理目录是配套的 —— <code>docs/proofs.md</code> 里每一行定理都有四列：「定理 / 文件 / 述べること / </strong>述べないこと<strong>」。</strong> ⭐⭐⭐⭐⭐⭐⭐⭐ <strong>本日报已连续记录多日的「边界要写进可核验位置」，本日在这一个项目上达到了本日报见过的最完整形态：主定理、假设、连接代码的责任划分、定理目录、集成检查脚本，全部在同一套命名下对齐。</strong></p>
+<p><strong>⚠️ 但必须同时说清它的边界</strong>（这也是本日报拒绝把它写成「已证安全」的原因）：
+- <strong>v0.1.1（快照时最新 release，2026-10-26T08:56:02Z，0 个 asset）</strong> —— README 顶部徽章写 <code>status: under development</code>；
+- <strong>仅 2 个 commit</strong>（v0.1.0 → v0.1.1），<strong>contributors 1 人</strong>，<code>releases</code> 2 个均 0 asset（无二进制分发）；
+- <strong><code>oi</code> 33 是本批最高，但内容需要细读</strong>：已核验的 issue 里，#33 是一份<strong>日文的企业供应链尽调问卷</strong>（提问者 <code>umayado17</code>，主题为「研究助成与 Nyxis 开发/发布治理」，明确提到 Nyx Foundation 曾获 Fenbushi Capital 研究助成，并列出 4 个待答问题：助成的合同/受领主体与期间、助成附带权利、成果与源码的发布权、以及维护承诺）；#32–#26 是一批<strong>自建 issue 式的工程待办</strong>（<code>feat(theorem): state the record kind behind a signed URL</code>、<code>docs: align the theorem readings and docstrings with the definitions</code>、<code>fix(mail): keep message lines within the RFC limits</code>、<code>fix(outbox): decide async deliveries by status, discarding the body</code>、<code>fix(calls): allow spaces inside auth: header secret values</code>、<code>fix(cors): allow the handler request headers and expose ETag/Location</code>、<code>fix(postgres): store only canonical sets and records</code>、<code>fix(schema): make action group ancestors transitive</code>）；#17–#21 是一批<strong>Linux/Windows 构建与运行故障</strong>（<code>lake build</code> 在 Linux 上 <code>-L&lt;system libdir&gt;</code> 覆盖 Lean sysroot、Linux 上找不到 <code>libcrypto_shim.so</code>、<code>prepare-dependencies.py</code> 在 Windows 上的 locale 解码与 CRLF checkout 失败、Linux/WSL2 下跑本地 Supabase 检查、Windows checkout 准备依赖）；#16 是一条<strong>真实缺陷报告</strong>（<code>Schema parser accepts /* */ block comments, which Cedar's schema syntax does not have</code>）。
+  <strong>⭐⭐⭐⭐⭐⭐⭐ 而这批 issue 本身就是本日报今日关于 nyxis 最有价值的一条观察：33 个 issue 里绝大多数是作者自己开的工程待办与平台兼容性故障，而唯一的「外部用户」是一份尽调问卷 —— 它说明这个项目当前的关注者主要是评估者而不是使用者。</strong>
+- <strong>文档主体是日文</strong>（README 明写「Apart from the README and ASSUMPTIONS, documentation is currently written in Japanese」；<code>ASSUMPTIONS.md</code> 是英译，且<strong>日文版为权威版本，项目检查跑的是日文版</strong>）；依赖 Lean 4（<code>lean-toolchain</code> 固定 <code>leanprover/lean4:v4.34.1</code>）、cedar-lean、batteries、lean-pq、lean-jose 等经 <code>scripts/dependencies.py</code>（<code>prepare-dependencies.py</code>）按 SHA256 固定拉取；运行时需 PostgreSQL（Supabase）+ Supabase Auth。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而本日 nyxis 最值得单独记的一条 —— 它把「谁有权批准什么」写进了文档：</strong></p>
+<blockquote>
+<p><strong>This document is maintained by humans, and any change to it, including adding, removing, or restructuring assumptions, is made at human discretion.</strong></p>
+</blockquote>
+<p><strong>⭐⭐ 假设是可以被人改的 —— 于是「谁改、什么时候改、基于什么」就成了这个体系里真正的治理问题</strong>，而 issue #33 恰好在问这件事。<strong>一个把证明边界写得极其严谨的系统，在治理层面留下的空白恰恰是最容易被攻击的地方 —— 这是本日最值得记的架构师视角。</strong></p>
+<h4 id="axiommathcfsg89-64-7forkstar-109lean-apache-20-6071207-kb-58-gb-1-commit-contributors-api-0-releases-0-subs-2-oi-0">⭐ <code>AxiomMath/CFSG</code>（8.9 小时 64⭐ ⑂7，fork/star 10.9%，Lean · Apache-2.0 · <strong>6,071,207 KB ≈ 5.8 GB</strong> · <strong>仅 1 个 commit</strong> · <code>contributors</code> API 返回 <strong>0 人</strong> · <code>releases</code> 0 个 · subs 2 · oi 0）</h4>
+<p><strong>它是 Lean 4 对「有限单群分类」（CFSG）的形式化</strong>，README 声称：<strong>「A sorry-free Lean4 (v4.35.0-rc3) proof of the Classification of Finite Simple Groups (CFSG), built on Mathlib and TauCeti, using the standard axioms <code>Classical.choice</code>, <code>propext</code>, and <code>Quot.sound</code> (no <code>native_decide</code>). We primarily follow the first generation proof of CFSG.」</strong></p>
+<p><strong>⭐⭐ 而它值得单独一记的原因是：</strong>它采用的不是「直接给出一条证明」，而是<strong>一条对照题机制</strong> —— <code>comparator.json</code> 明确写着：</p>
+<p><code>json
+{
+  "challenge_module": "Comparator.Challenge",
+  "solution_module": "Comparator.Solution",
+  "theorem_names": ["CFSGComparator.classification"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}</code></p>
+<p><code>Comparator/Challenge.lean</code> 的全部内容是：</p>
+<p><code>lean
+theorem CFSGComparator.classification : TauCeti.ClassificationStatement.{u} := sorry</code></p>
+<p>而 <code>Comparator/Solution.lean</code> 里同名的定理是<strong>真证明</strong>（<code>TauCeti.classificationStatement_of_zero ∘ ... CFSG.Certified.classification_finite_simple_groups</code>，<code>sorry</code> 计数 <strong>0</strong>）。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而这是本日最值得单独拿出来讲的一条方法论：</strong></p>
+<blockquote>
+<p><strong>找到一处 <code>sorry</code> 不等于项目在撒谎。必须先问：这处 <code>sorry</code> 在体系里扮演什么角色。</strong>
+这里的 <code>sorry</code> 是<strong>题面</strong>（challenge）—— 它存在的意义是让比对器拿一份「空答案」和「真答案」跑同一套检查，从而度量「从空答案到真答案」这个过程。<strong>它不是证明的一部分，且 <code>formalization.yaml</code> 的 <code>status.sorry_count: 0</code> 正是对证明侧的声明。</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而本日报必须同时声明自己的核验边界：</strong>
+- <strong><code>?recursive=1</code> 返回 <code>truncated: true</code>（65,107 条目）</strong> → <strong>本日报无法声称「全仓库 sorry-free」</strong>；本日报实际做的是<strong>逐文件 grep 四个主干文件</strong>（<code>CFSG.lean</code> 120,786 字节 / <code>Certificates.lean</code> 231,223 字节 / <code>CertifiedResults.lean</code> 17,245 字节 / <code>Comparator/Solution.lean</code>）的 <code>sorry</code> 与 <code>native_decide</code>，<strong>计数均为 0</strong>；
+- <code>search/code?q=sorry+repo:AxiomMath/CFSG</code> 命中 5 个路径：<code>README.md</code>（即那句 "sorry-free"）、<code>Comparator/Challenge.lean</code>、<strong><code>formalization.yaml</code></strong>、<code>CFSG/Certificates/Kernel/Common/AddThm.lean</code> 与 <code>Certificates/Kernel/Sporadic/RawGen.lean</code> —— <strong>⭐ 而后两处经本日报逐行核验，其 <code>sorry</code> 出现在一个 <code>meta def</code> 里，用于</strong>在 <code>debug.proofAsSorry</code> 选项开启时把定理体替换为 <code>sorryAx</code><strong>，</strong>即它们是「一个把证明降级成 sorry 的调试开关」，在默认构建下不生效<strong>；
+- <code>formalization.yaml</code> 自报 <code>sorry_count: 0</code>、<code>sorry_in_definitions: 0</code>、<code>axioms: ["propext", "Classical.choice", "Quot.sound"]</code>，并为主定理 <code>CFSGComparator.classification</code> 与里程碑 <code>CFSG.Milestones.cfsg_classification_native_and_realization</code> 各列一行 <code>sorry_count: 0</code> + 同样的三条公理 + <code>comparator_config</code>；
+- 该 yaml 还列出 </strong>30 位作者<strong>与 </strong>3 位 responsible_maintainers**（<code>Niels Voss</code>、<code>Vasily Ilin</code>、<code>Dean Cureton</code>），<code>arxiv: ["math.GR"]</code>，<code>msc2020: ["20D05", "20D06"]</code>。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而它的另一个数字比 star 更值得记：</strong></p>
+<blockquote>
+<p><code>lake build</code> builds the entire project. We used a few open changes to Lake and some optimizations we plan to upstream soon to get this project's build time <strong>under 24 hours</strong>.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「一个形式化项目的构建时间被压到 24 小时以内，且为此改了 Lake 本身」—— 这是本日报今日对「形式化验证进入主流工具形态」这条趋势最硬的证据：它不是把证明当作论文附件，而是当作</strong>需要被日常运行的构建产物<strong>。</strong></p>
+<p><strong>⚠️ 它的边界</strong>：
+- <strong>5.8 GB 仓库体积</strong>（<code>size</code> = 6,071,207 KB）—— 本日报今日记录的最大单仓库；
+- <strong>仅 1 个 commit、<code>contributors</code> API 返回 0 人</strong>（这与 yaml 里的 30 位作者名单并存，<strong>说明作者身份来自外部协作而非本仓库的 git 历史</strong>）；
+- <code>releases</code> 0 个、<code>oi</code> 0、<code>subs</code> 2；
+- <strong>无 <code>.github/workflows</code></strong>（本日报已核验：全树无 <code>github</code> 路径）—— <strong>即它没有 CI 配置</strong>；
+- <strong><code>docs/</code> 目录为空/不存在</strong>（全树无 <code>docs/</code> 条目）—— 与 nyxis 那种「定理目录 + 假设文档 + 34 个检查脚本」的完整形态形成鲜明对比；
+- <strong>它没有回答「我证明了什么」和「我没证明什么」</strong> —— 这正是 nyxis 做而 CFSG 没做的那一半。<strong>⭐ 两个 Lean 项目，同一天出现，却代表形式化实践的两种完成度：一个把边界写全了，一个只写了证明。</strong></p>
+<h4 id="ngxsonesp32-usb-to-airprint30-157-8forkstar-51c-mit-10687-kb-14-commits-contributors-1-releases-0-subs-0-oi-5">⭐ <code>ngxson/esp32-usb-to-airprint</code>（30 小时 157⭐ ⑂8，fork/star 5.1%，C · MIT · 10687 KB · 14 commits · contributors 1 人 · <code>releases</code> 0 个 · <strong>subs 0</strong> · oi 5）</h4>
+<p><strong>⭐⭐⭐ 而它是本日三个项目里唯一一个「把正确性绑定到一个独立的第三方实现」而不是绑定到一条定理的：</strong></p>
+<p>它的做法是 —— <strong>从 SourceForge 下载 Gutenprint 5.3.5 源码，编译出参考打印流，然后用自己的 C 代码重新编码，逐命令比对，要求字节完全一致。</strong></p>
+<p><code>tools/gutenprint_ref/build_ref.sh</code> 的核心流程（已核验原文）：下载 <code>gutenprint-5.3.5.tar.xz</code> → <code>./configure --disable-nls --without-gimp2 --without-cups --disable-libgutenprintui2 ... --enable-static</code> → 编译 <code>src/main</code> 与 <code>src/xml</code> → <code>cc ... gp_ref.c ... libgutenprint.a</code> → 用 <code>STP_DATA_PATH=$GP/src/xml ./gp_ref 300x300dpi ref300.prn</code> 等生成参考流 → <strong>再为 <code>canon_bjl.h</code> 的每个 stream 变体各建一个 Gutenprint 驱动</strong>（<code>MG2900:bjc-MG2900-series</code>、<code>iP2800:bjc-iP2800-series</code>、<code>E3100:bjc-E3100-series</code>、<code>MP230:bjc-MULTIPASS-MP230</code>、<code>iP2700:bjc-PIXMA-iP2700</code>）。</p>
+<p><code>tools/compare_gutenprint.py</code> 的 docstring 原文：</p>
+<blockquote>
+<p>Decodes the Gutenprint stream into raw ink planes, re-encodes those planes with host/bjl_host (our C code), then compares the two streams command by command. They must be byte-identical, <strong>except that Gutenprint drops the last raster block when the page height is a multiple of 8</strong> (print-canon.c canon_write_multiraster never flushes it), so our stream may carry extra trailing all-blank ESC (F blocks.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「Gutenprint 在页高是 8 的倍数时会丢弃最后一个 raster block」这个缺陷被写进了</strong>对照器的豁免说明<strong> —— 这正是本日报连续记录多日的那条原则的又一样本：</strong>当参照系自己有 bug 时，正确做法不是放宽判据，而是把偏差的方向、原因与量级写清楚，并让对照器只在这一处放宽。<strong> </strong>⭐⭐ 而更关键的是：这个偏差方向是<strong>对自己有利</strong>的（自己多出尾部空白块），如果对照器默默放过，就等于给了自己一个无法被发现的作弊空间。**</p>
+<p><strong>⭐⭐⭐⭐ 而它的 <code>AGENTS.md</code> 是本日报见过最像「工程宪法」的一份 agent 指令文档</strong>，六条工作规则逐条对应一种真实的失效模式：</p>
+<table>
+<thead>
+<tr>
+<th>规则原文</th>
+<th>它防的是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>「Verify before touching hardware.」</strong> Every change goes through the host tests (<code>tools/run_tests.sh</code>, with <code>GUTENPRINT=1 AIRPRINT=1</code> …, <code>WEB=1</code> …) and, when firmware behaviour changes, the QEMU self test (<code>tools/qemu_selftest.sh</code>).</td>
+<td>「改了代码就烧板子试」—— 没有隔离层时每次验证都不可逆</td>
+</tr>
+<tr>
+<td><strong>「Flash only with the user's go-ahead.」</strong> That includes OTA updates, reboots and the <code>panic</code> test. Reading <code>/info</code>, the remote log, the status pages and the serial log of a running board is fine. <strong>A real scan is harmless but scans whatever is on the glass: the user's documents are private, so don't describe them and don't keep copies.</strong></td>
+<td>把「读日志」与「写设备」混为一谈；⭐ <strong>以及把用户隐私文档当成可用测试数据</strong></td>
+</tr>
+<tr>
+<td><strong>「Never read or print the secrets」</strong> in <code>.env</code> or the generated <code>src/local_config.h</code>. To check whether a key is set, <strong>test for a non-empty value without printing it</strong>（<code>grep -qE '^WIFI_SSID=.+' .env</code>）.</td>
+<td>agent 把密钥读进上下文/日志</td>
+</tr>
+<tr>
+<td><strong>「Keep the core portable.」</strong> <code>components/canon_bjl</code>, <code>components/airprint</code>, <code>components/printers</code> and <code>components/scanner</code> build both natively (<code>host/</code>) and for the ESP32. Platform specifics go behind hooks or <code>#ifdef ESP_PLATFORM</code>.</td>
+<td>同一份代码无法在主机上跑测试，于是只能靠真机验证</td>
+</tr>
+<tr>
+<td><strong>「Optimisations must not change output.」</strong> Pure speed changes must keep the reference CRCs below unchanged.</td>
+<td>「重构顺手优化」悄悄改变位流</td>
+</tr>
+<tr>
+<td><strong>「Don't edit a script while it runs.」</strong> bash reads scripts as it goes; an edit during <code>qemu_selftest.sh</code> broke a run with a syntax error.</td>
+<td><strong>⭐ 把一次真实的踩坑写成了规则 —— 这条比任何抽象原则都可信</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而它的设备支持表也是本日报见过最诚实的一种表格</strong> —— <strong>19 行机型，每行两列状态：<code>🟢 Validated on real printer</code> / <code>🟡 Expected to work, not tested on real hardware yet</code></strong> —— <strong>只有 <code>MG2500</code>（MG2550S）一行是绿的，其余 18 行全是黄的。</strong> README 顶部还有一句针对性的呼吁：「<strong>Most importantly, you need to really own the printer you add: every driver must be tested on the real hardware, not only in emulation.</strong>」</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这个「19 行里 18 行是黄的」比例，正是本日报今日关于「热度与成熟度脱钩」的第三组证据：157⭐ 的仓库里，只有 1/19 的机型组合在真机上被验证过。</strong></p>
+<p><strong>⚠️ 边界</strong>：<strong><code>subs 0</code></strong>（无深度关注者）、<code>releases</code> 0 个、contributors 1 人（作者 <code>ngxson</code> 账号创建于 <strong>2014-05-26</strong>，179 个公开仓库、1,287 followers —— 本日报记为「身份可核验」而非「star 可信」）；oi 5 已核验内容为 4 条功能请求 + 1 条机型请求（<code>#5 Web installer: flash from the browser, set up WiFi over Improv</code>、<code>#4 WiFi setup network with a captive portal</code>、<code>#3 Flash esp32 from web</code>、<code>#2 Captive Portal</code>、<code>#1 Epson 2400T</code>）—— <strong>⭐ 即它的 issue 全是「想要什么」，还没有一条「我试了但坏了」</strong>；需要一块 ESP32-S3 双 USB-C 开发板；固件为 IPv4-only（AGENTS.md 明写 <code>canon-mg2500.local</code> 在 macOS 上解析约需 5 秒，因为固件只出 IPv4 而 macOS 还要等 IPv6）。</p>
+<h4 id="1">⭐⭐ 本日趋势 1 的三段小结</h4>
+<blockquote>
+<p><strong>nyxis</strong>：把「授权安全」的结论交给 <strong>Lean 内核</strong>裁决，并<strong>逐条写明哪些部分没有被裁决</strong>（红/黄两层）+ <strong>用宏自动遍历全部定理来禁止新公理</strong>。
+<strong>CFSG</strong>：把「分类有限单群」的结论交给 <strong>Lean 内核</strong>裁决，并<strong>用 challenge/solution 对照结构让「从空答案到真答案」可被度量</strong> —— <strong>但没有写「哪些部分没有被裁决」</strong>。
+<strong>esp32-usb-to-airprint</strong>：把「我的打印流和真机一样吗」的结论交给 <strong>另一个独立实现（Gutenprint）</strong>裁决，并<strong>把参照系自身的缺陷写进豁免说明</strong>。</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 三者合起来，本日这条趋势的完整形状是：「</strong>把裁决权交给一个别人能独立重跑的东西<strong>」—— 形式证明、第三方参照实现、逐字节比对，这三件事是同一种思路的三种物理形态。</strong>⭐⭐ 而三者的完成度递减也清晰可见：nyxis 写全了边界（红/黄 + 四段式假设 + 定理目录 + 34 个检查脚本），CFSG 只写了证明与对照机制（无 <code>docs/</code>、无 CI），esp32 写了对照与规则（19 行支持表里 18 行标黄、6 条 AGENTS 规则）<strong> —— </strong>⭐⭐⭐ 边界声明的完整度与 star 数完全无关：297⭐ 的项目有最完整的边界声明，64⭐ 的项目连一个 <code>docs/</code> 都没有，而 157⭐ 的项目把 18/19 的机型标成「未在真机验证」。**</p>
+<p><strong>架构师速览（nyxis + CFSG + esp32-usb-to-airprint）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>nyxis</strong>：四层边界 —— ① <strong>纯模型层</strong>（<code>Nyxis/</code> 43 项：路由 / Cedar 解析 / 授权层 / 运行时 / 连接代码 / 证明）② <strong>连接代码层</strong>（<code>Nyxis.Internal.*</code>：HTTP / JWT / JWKS / Postgres / CORS / StorageSign / MailSend / CallSend / Outbox / Jobs）③ <strong>信任边界层</strong>（<code>ASSUMPTIONS.md</code> 的 Assumption 1–3 + <code>docs/proofs.md</code> 的「述べないこと」列）④ <strong>工具边界层</strong>（<code>scripts/</code> 34 个检查脚本 + <code>Test/Axioms.lean</code> 的公理审计 + <code>examples/</code> 两个官方样例）。<strong>边界划在「连接代码中未被证明的部分」</strong>，且被显式标红。<strong>CFSG</strong>：三层 —— ① <strong>证明层</strong>（<code>CFSG/</code> 65,104 条目 + <code>CFSG.lean</code> / <code>Certificates.lean</code> / <code>CertifiedResults.lean</code>）② <strong>对照层</strong>（<code>Comparator/Challenge.lean</code> + <code>Comparator/Solution.lean</code> + <code>comparator.json</code>）③ <strong>元数据层</strong>（<code>formalization.yaml</code>：<code>status.sorry_count</code> / <code>axioms</code> / <code>main_results</code> / 作者与维护者名单）。<strong>边界划在「题面 vs 证明」</strong> —— 但<strong>没有第三份文档说明「这个证明不覆盖什么」</strong>。<strong>esp32</strong>：四层 —— ① <strong>可移植核心层</strong>（<code>components/canon_bjl</code> / <code>components/airprint</code> / <code>components/printers</code> / <code>components/scanner</code>，<strong>同时编到 host 与 ESP32</strong>）② <strong>参照层</strong>（<code>tools/gutenprint_ref/</code> 从 SourceForge 构建 Gutenprint 5.3.5 产出参考流）③ <strong>判定层</strong>（<code>tools/compare_gutenprint.py</code> 逐命令比对 + <code>tools/run_tests.sh</code> 主机测试 + <code>tools/qemu_selftest.sh</code>）④ <strong>规则层</strong>（<code>AGENTS.md</code> 六条工作规则）。<strong>边界划在「烧录与真机写入」</strong>（需用户明确同意）</td>
+<td>nyxis 的 <code>ASSUMPTIONS.md</code> 四色 Mermaid 图与三条假设的四段结构、<code>docs/proofs.md</code> 的四列表格、<code>Test/Axioms.lean</code> 的 <code>allowed</code> 名单与 <code>#assert_axioms_under</code> 宏、34 个 <code>scripts/check-*.py</code> 文件名清单、261 条树（<code>truncated: false</code>）；CFSG 的 <code>comparator.json</code> 全文、<code>Comparator/Challenge.lean</code> 与 <code>Comparator/Solution.lean</code> 原文、四个主干文件的 <code>sorry</code>/<code>native_decide</code> grep 计数（均 0）、<code>formalization.yaml</code> 全文、<strong>全树 <code>truncated: true</code>（65,107 条目）</strong>；esp32 的 <code>AGENTS.md</code> 六条规则原文、<code>tools/gutenprint_ref/build_ref.sh</code> 原文、<code>tools/compare_gutenprint.py</code> docstring、README 支持表的 19 行状态列。<strong>⭐ 三处未核验：nyxis 的 <code>docs/proofs.md</code> 中每条定理的具体 Lean 原文（仅读表头与部分行）、CFSG 的 <code>CFSG/</code> 子树具体职责划分（</strong>全树 truncated，未逐目录核验<strong>）、esp32 的 <code>components/</code> 各 C 文件实现（仅读布局与文件名）</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><strong>nyxis</strong>：写 Cedar schema（<code>entity User = {...}</code>）+ policies（<code>@id("manage-post") permit (...) when { resource.author == principal \|\| principal.admin }</code>）→ 写 handler（类型 <code>Nyxis.Handler</code>，<strong>其唯一效果是调用授权层的 action，不能做 IO、不能直接碰数据库</strong>）→ <code>lake build</code>（<strong>同时绑定应用源码、审计应用代码、检查证明</strong>）→ 客户端用 Supabase Auth 的 JWT 走 HTTP 调用；前端在 Nyxis 之外，作为普通 HTTP 客户端。<strong>CFSG</strong>：<code>lake build</code>（<strong>构建整个项目，作者称已优化到 24 小时以内</strong>）→ 由 <code>comparator.json</code> 指定的 challenge/solution 双模块对照 → <code>formalization.yaml</code> 记录每个主结果的 <code>sorry_count</code> 与公理。<strong>esp32</strong>：插板 → <code>pio run</code> 一次生成 <code>.env</code>（填 <code>WIFI_SSID</code> / <code>WIFI_PASSWORD</code> / <code>PRINTER_NAME</code> / <code>HOSTNAME</code> / <code>MODE</code>）→ <code>pio run -t upload</code>（<strong>用 COM 口，不是标着 "USB" 的口</strong>）→ 插打印机 → 浏览器开 <code>http://canon-mg2500.local/</code>；打印走 AirPrint(Mac/iOS)/Mopria(Android)/IPP(Linux)，扫描走浏览器 / Mac 的 Image Capture / 板载按键（BOOT 或 GPIO4：按一下扫描、按两下测试页、长按 2 秒取消）；开发期 <code>MODE=dev</code> 只处理打印任务不真打印</td>
+<td>nyxis README 的 "How it works" 四步与官方样例节、<code>policies.cedar</code> / <code>schema.cedarschema</code> 的文件存在性、<code>examples/bulletin-board/</code> 的文件清单（<code>BulletinBoard.lean</code> / <code>Approved.lean</code> / <code>Handlers.lean</code> / <code>Server.lean</code> + <code>Test/</code> 4 个测试文件 + Next.js frontend）；CFSG README 的 "Checking the proof" 节与 <code>comparator.json</code> / <code>formalization.yaml</code>；esp32 README 的 "What you need" / "Setup"（三步）/ "Using it" 三节与支持表。<strong>⭐ 未核验：nyxis 的 <code>lake build</code> 实际耗时与样例是否能跑通（需 Lean 4.34.1 + Supabase）、CFSG 的 24 小时构建是否可复现、esp32 的固件是否真的能让 iPhone 打印（需真机）</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ 证明 vs 文档</strong>（nyxis 两者都做，因此体量与门槛都高；CFSG 只做证明，因此紧凑但缺边界；esp32 不做证明只做对照，因此门槛最低但覆盖面依赖第三方实现）· <strong>⭐ 边界写进文档 vs 写进可执行检查</strong>（nyxis 两者都做：文档给四色图，检查给 34 个脚本 + 公理审计宏；esp32 只做检查 + 规则文档；CFSG 只做元数据 YAML）· <strong>⭐ 公理白名单 vs 手工核查</strong>（nyxis 用 <code>#assert_axioms_under</code> 遍历命名空间，<strong>覆盖率不靠人记得补</strong>；CFSG 的 <code>permitted_axioms</code> 是<strong>写在 JSON/YAML 里的声明</strong>，本日报未见对应的自动遍历实现）· <strong>⭐ 题面 <code>sorry</code> vs 声称 sorry-free</strong>（CFSG 的 challenge/solution 是<strong>把「证明的难度」变成可度量的过程</strong>；代价是仓库里确实存在一处 <code>sorry</code>，且全树 truncated 使外部核验困难）· <strong>⭐ 参照第三方 vs 自证</strong>（esp32 选 Gutenprint 当参照系，因此拿到了一个「真机之外的第二意见」；<strong>代价是必须接受参照系自身的缺陷</strong>，并把它写进豁免）· <strong>⭐ 可移植核心 vs 平台特例</strong>（esp32 的核心同时编到主机与 MCU，换来「改完能先在主机上跑测试」；代价是平台差异收进 hooks 与 <code>#ifdef</code>）· <strong>⭐ 速度 vs 输出不变</strong>（esp32 明写「纯提速优化不得改变输出，且参考 CRC 必须保持不变」）· <strong>⭐⭐ 治理 vs 技术</strong>（nyxis 明写假设「由人裁量修改」—— <strong>⭐ 技术上严谨的系统，治理上留了空白</strong>，而本日唯一的一条外部 issue 恰好在问这件事）</td>
+<td>三份 README 原文、<code>AGENTS.md</code> 全文、<code>ASSUMPTIONS.md</code> 的假设段落与图例、<code>comparator.json</code>、<code>formalization.yaml</code>、<code>docs/proofs.md</code> 的表头与连接代码段落、issue 列表（nyxis 33 条已核验全部标题与 #33 正文前 700 字符）。<strong>未明示：三个项目都没有说明「谁负责长期维护、谁付钱、出问题找谁」—— nyxis 的 #33 恰好在问这件事且本日报未取得回复</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><strong>1. ⭐⭐ nyxis：先读 <code>ASSUMPTIONS.md</code> 的四色图与三条假设（四段结构），再读 <code>docs/proofs.md</code> 的「述べないこと」列</strong> —— <strong>这一步是唯一能判断「它证明了什么」的动作，且不需要装任何东西</strong> → 2. ⭐ <code>grep -rn "sorry" &lt;clone&gt;/Test/</code> 与 <code>lake build</code>（<strong>观察 <code>Test/Axioms.lean</code> 是否真的在编译期拒绝越界公理</strong>）→ 3. ⭐ 跑 <code>examples/bulletin-board/</code>，<strong>在 UI 里用一个非管理员账号试着编辑别人的帖子，确认被 Cedar 策略拒绝</strong>（<strong>这一步才是证明的价值所在：它对应一个你能亲眼看到的拒绝</strong>）→ 4. ⭐ 读 <code>scripts/check-*.py</code> 的文件名清单，对照自己项目的安全检查，<strong>挑 3 个抄走</strong>（本日报推荐 <code>check-approved-declaration.py</code> / <code>check-core-isolation.py</code> / <code>check-handler-effects.sh</code> 这三个，因为它们对应「声明了什么」「handler 能不能越权」「效果是不是被记录」）→ 5. ⭐⭐ <strong>CFSG：<code>comparator.json</code> + <code>Comparator/Challenge.lean</code> + <code>Comparator/Solution.lean</code> 三个文件并排读一遍</strong> → 6. ⭐ <code>grep -rn "sorry" --include="*.lean"</code> <strong>并逐条判定每处 <code>sorry</code> 的角色</strong>（<strong>这是本日最可迁移的一步：不问「有没有 sorry」，问「每处 sorry 在体系里干什么」</strong>）→ 7. ⭐ <strong>esp32：读 <code>tools/compare_gutenprint.py</code> 的 docstring 与 <code>tools/gutenprint_ref/build_ref.sh</code></strong>（<strong>不需要硬件就能判断它的正确性主张是否成体系</strong>）→ 8. ⭐ esp32：读 <code>AGENTS.md</code> 六条规则，<strong>逐条问「这条防的失效模式我昨天踩过吗」</strong> → 9. ⭐⭐ <strong>三选一的共同收尾：问一句「它的结论如果错了，是谁、在哪个文件里、能被发现的？」</strong> —— <strong>nyxis 的答案是「<code>Test/Axioms.lean</code> 的构建失败」，CFSG 的答案是「<code>comparator.json</code> 的双模块对照」，esp32 的答案是「<code>compare_gutenprint.py</code> 的逐命令比对」</strong></td>
+<td><strong>第 3 步是 nyxis 唯一能证伪其价值的步骤</strong>（证明好 ≠ 策略对）· <strong>第 6 步是 CFSG 唯一能判断其「sorry-free」声称是否成问题的步骤</strong> · <strong>第 7 步是 esp32 唯一能判断其正确性主张是否成体系的步骤</strong> · <strong>第 9 步是三者的共同判据，且它不需要运行任何代码</strong> · <strong>本 PoC 不覆盖</strong>：nyxis 的真实 PostgreSQL/Supabase 部署（需本地 Supabase）、CFSG 的 24 小时构建（<strong>本日报明确不建议任何人为了验证它去 clone 5.8 GB 并构建 24 小时</strong>）、esp32 的任何真机烧录与打印验证（<strong>需自购硬件，且 19 行支持表里 18 行标黄</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-star-90">趋势 2：本日 star 增量第三次混入结构同构的农场，而这一次的指纹更硬（趋势分 90）</h3>
+<p><strong>⭐⭐⭐⭐ 今日必须把话说清楚：本日新项目中最热的几个，和本日 star 涨得最快的几个，和本日最值得研究的几个，</strong>几乎是三份互不相交的名单。**</p>
+<h4 id="_2">本日新增的同构簇（第五类异常模式）</h4>
+<p><strong>⭐⭐⭐⭐⭐ 簇 A —— 3 秒窗口，4 个仓库：</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">stars</th>
+<th style="text-align: right;">forks</th>
+<th style="text-align: right;">体积</th>
+<th>文件构成</th>
+<th>created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pebblebretrap/Camtasia</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>2 KB</strong></td>
+<td><code>README.md</code> 1,626 + <code>description.json</code> 79</td>
+<td>2026-10-27T11:42:41Z</td>
+</tr>
+<tr>
+<td><code>Stampdrusupply/Cinema-4d</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>2 KB</strong></td>
+<td><code>README.md</code> 1,703 + <code>description.json</code> 80</td>
+<td>2026-10-27T11:42:41Z</td>
+</tr>
+<tr>
+<td><code>TyphoonMidgeRegister/KMS-Pico</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>2 KB</strong></td>
+<td><code>README.md</code> 1,629 + <code>description.json</code> 78</td>
+<td>2026-10-27T11:42:42Z</td>
+</tr>
+<tr>
+<td><code>daimyodragonpit/BorisFX</code></td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>2 KB</strong></td>
+<td><code>README.md</code> 1,681 + <code>description.json</code> 78</td>
+<td>2026-10-27T11:42:40Z</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而 <code>description.json</code> 的 base64 解码内容是本日报今日最直白的一条证据：</strong></p>
+<p><code>json
+{"description":"Camtasia Crack 2026 stable release for creative tasks"}
+{"description":"Cinema 4D Crack 2026 stable release for creative tasks"}
+{"description":"Kms Pico Free 2026 stable release for creative tasks"}
+{"description":"BorisFX Crack 2026 stable release for creative tasks"}</code></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 「只替换软件名」这个模式，与本日报 10-26 记录的 17 个游戏诊断农场（只替换游戏名）</strong>是同一族，但今天的版本<strong>只剩 2 个文件</strong>（连 LICENSE 都没有了），体积缩到 2 KB。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 而簇 B 的指纹比簇 A 更硬 —— </strong>跨仓库 blob SHA 完全相同<strong>：</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">stars</th>
+<th style="text-align: right;">forks</th>
+<th style="text-align: right;">体积</th>
+<th style="text-align: right;">文件数</th>
+<th><code>.gitignore</code> blob SHA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>russells9175/Microsoft-365-Full-Suite-2026</code></td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><code>6f596e17917419c463b0d15bf1f0bce19b8918eb</code></td>
+</tr>
+<tr>
+<td><code>chase4812/CapCut-Pro-Studio-2026</code></td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><strong>同上</strong></td>
+</tr>
+<tr>
+<td><code>bria-stewart-12/Acrobat-Pro-PDF-Studio-2026</code></td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><strong>同上</strong></td>
+</tr>
+<tr>
+<td><code>laylaellis20/PremierePro-Cinematic-Editor-2026</code></td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><strong>同上</strong></td>
+</tr>
+<tr>
+<td><code>shaneyoung321/FL-Studio-Producer-Suite-2026</code></td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><strong>同上</strong></td>
+</tr>
+<tr>
+<td><code>cbarnes607/AutoCAD-Design-Studio-2026</code></td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8 KB</td>
+<td style="text-align: right;">3</td>
+<td><strong>同上</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「6 个仓库的 <code>.gitignore</code> 是同一个 git blob」—— 本日报把这记为</strong>本日新增的最强单项判据<strong>：此前记录的四类模式依赖的是「文件数 / 体积 / owner 名 / 创建时间窗」这类</strong>间接统计<strong>；而 blob SHA 是</strong>内容寻址的哈希<strong>，</strong>两个仓库的同一个文件 SHA 相同，就是同一份内容被复制，没有其他解释<strong>。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而分母也必须给出：本日 <code>created:2026-10-26..2026-10-28 + stars:&gt;=40</code> 的窗口共返回 </strong>77 个<strong>仓库，其中 </strong><code>size:&lt;=20</code>（体积 ≤ 20 KB）的有 23 个<strong> —— 即 </strong>约 30% 的「40⭐ 以上新仓库」是空壳或农场<strong>。</strong></p>
+<h4 id="48">⭐⭐⭐⭐⭐ 与此同时，同一 48 小时窗口里的真项目</h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>10-26 记录</th>
+<th>今日快照</th>
+<th>变化</th>
+<th><strong>但更重要的信号</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unclebob/ub-mode</code></td>
+<td>341⭐ ⑂16</td>
+<td><strong>2,105⭐ ⑂100</strong></td>
+<td><strong>⭐⭐ +517%</strong></td>
+<td>⭐⭐ <strong>commits 仍是 4</strong>、<code>releases</code> 仍是 0、<strong>subs 1→16</strong>、fork/star 4.7%→4.8%</td>
+</tr>
+<tr>
+<td><code>rddmwmddr/android-ad-cleaner</code></td>
+<td>728⭐ ⑂54</td>
+<td><strong>3,170⭐ ⑂267</strong></td>
+<td>⭐⭐ <strong>+335%</strong></td>
+<td>⭐⭐⭐ <strong>oi 22→178</strong>、<strong><code>releases</code> 2→7</strong>（v0.2.1→v0.2.5，v0.2.5 于 2026-10-27T12:16:35Z 带 5 个 asset）、commits 25→<strong>57</strong>、<code>pushed_at</code> 2026-10-27T14:43:09Z、subs 5→8、体积 4,310→4,181 KB</td>
+</tr>
+<tr>
+<td><code>DenisSergeevitch/ex-ussr-kinship-research</code></td>
+<td>526⭐ ⑂48</td>
+<td><strong>1,044⭐ ⑂105</strong></td>
+<td>⭐⭐ +98%</td>
+<td>⭐⭐⭐ <strong><code>releases</code> 2→7</strong>（v1.4.0→v1.10.0，<strong>v1.10.0 于 2026-10-27T22:34:04Z</strong>，距快照仅约 42 分钟）、<strong><code>contributors</code> 4→14 人</strong>、commits 41→<strong>152</strong>、subs 7→12</td>
+</tr>
+<tr>
+<td><code>songjianyang/xss-audit</code></td>
+<td>393⭐ ⑂115</td>
+<td><strong>503⭐ ⑂141</strong></td>
+<td>⭐ +28%</td>
+<td>⭐⭐ <strong>commits 仍是 1</strong>（唯一 commit 仍是 2026-10-24T11:32:14Z）、<code>releases</code> 仍是 0、subs 1、<code>pushed_at</code> 仍停在 2026-10-24T11:32:55Z</td>
+</tr>
+<tr>
+<td><code>mirkobrombin/raven</code></td>
+<td>378⭐ ⑂8</td>
+<td><strong>488⭐ ⑂11</strong></td>
+<td>⭐ +29%</td>
+<td>commits 678→<strong>747</strong>、subs 4→5、oi 8→12、<code>pushed_at</code> 2026-10-27T17:49:07Z、体积 18,529→<strong>21,229 KB</strong></td>
+</tr>
+<tr>
+<td><code>trailofbits/brotli-checker</code></td>
+<td>44⭐ ⑂3</td>
+<td><strong>56⭐ ⑂4</strong></td>
+<td>⭐ +27%</td>
+<td>⭐⭐ commits 26→<strong>33</strong>、<strong><code>releases</code> 仍为 3</strong>、<strong>subs 仍为 0</strong></td>
+</tr>
+<tr>
+<td><code>KohakuBlueleaf/KohakUnlock</code></td>
+<td>148⭐ ⑂9</td>
+<td><strong>325⭐ ⑂30</strong></td>
+<td>⭐⭐ +120%</td>
+<td>⭐⭐ commits 3→<strong>17</strong>、<strong>并入了两条外部 PR（#10 / #8，作者 <code>DarkSkar</code>）</strong>、subs 2→3、体积 62→<strong>1,913 KB</strong></td>
+</tr>
+<tr>
+<td><code>YoyoLin008/mcreplay</code></td>
+<td>200⭐ ⑂12</td>
+<td><strong>202⭐ ⑂12</strong></td>
+<td>≈ 0</td>
+<td>⭐⭐ <strong>commits 仍是 8</strong>、<strong>subs 仍是 0</strong>、<code>pushed_at</code> 仍停在 2026-10-24T18:56:03Z</td>
+</tr>
+<tr>
+<td><code>xMazaki/unbloat-android-tv</code></td>
+<td>249⭐ ⑂20</td>
+<td><strong>277⭐ ⑂22</strong></td>
+<td>+11%</td>
+<td>commits 未变、<code>pushed_at</code> 2026-10-27T20:03:33Z、subs 4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这张表里最值得单独拿出来的是 <code>ub-mode</code> 与 <code>ex-ussr-kinship-research</code> 的对照：</strong></p>
+<ul>
+<li><strong><code>ub-mode</code>：341 → 2,105⭐（+517%），而 <code>commits</code> 一个都没多（仍是 4）、<code>releases</code> 仍是 0、仓库仍是 2 个文件、仍是 4 KB、</strong>仍没有 LICENSE 文件<strong>。</strong> ⭐⭐⭐⭐⭐⭐ <strong>它的 <code>subscribers_count</code> 从 1 涨到 16</strong> —— 这是本日报今日唯一一条「热度涨了但关注度也涨了」的样本，而<strong>它的代码一动没动</strong>。<strong>⭐⭐⭐⭐⭐⭐⭐⭐ 换句话说：+517% 的 star 与「一个字节的代码变更」之间不存在因果关系；把这类增长读作「采用」是错的。</strong> ⭐⭐ <strong>而它之所以仍值得记录，是因为 <code>subs</code> 涨到 16 说明有 16 个人「订阅了更新」—— 而对一个只有 2 个文件、4 个 commit 的指针型仓库来说，订阅行为本身就是一个有意思的信号（ people subscribe to principles, not to code）。</strong></li>
+<li><strong><code>ex-ussr-kinship-research</code>：526 → 1,044⭐，而 <code>releases</code> 从 2 涨到 7、<code>contributors</code> 从 4 涨到 14、<code>commits</code> 从 41 涨到 152。</strong> ⭐⭐⭐⭐⭐⭐⭐ <strong>这是本日报今日唯一一个「热度、产出、协作、发布」四条线同时向上的样本</strong> —— v1.4.0 → v1.10.0 一天内连发 7 个版本，最后一个距快照仅 42 分钟；<code>contributors</code> 的 14 个 login 已核验（<code>DenisSergeevitch</code>、<code>maxkrut</code>、<code>Smolevich</code>、<code>korotaS</code>、<code>RomanSytnyk</code>、<code>vdementev</code>、<code>alex-kashkarov</code>、<code>Osipchuk</code>、<code>Kazemir</code>、<code>KarimovDev</code>、<code>OleksiiBulba</code>、<code>Smyshnikof</code>、<code>uburuntu</code>、<code>Rai220</code>）。<strong>⭐⭐⭐ 而它同时暴露了一个新问题：一天 7 个版本、152 个 commit、14 个贡献者 —— 在没有 release 说明与 changelog 的情况下，「发布」这个动作本身的含义变得不可核验。</strong></li>
+</ul>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而「判据仍然是 subs / oi / commits / pushed_at，而不是 star」这条，本日报今天可以给出</strong>最干净的一组反例<strong>：<code>ub-mode</code>（+517%，commits 0）、<code>xss-audit</code>（+28%，commits 0）、<code>mcreplay</code>（≈0，commits 0）三个是纯注意力；而 <code>android-ad-cleaner</code>（oi 178、releases 7、commits 57）、<code>ex-ussr</code>（releases 7、contributors 14、commits 152）两个是真实产出。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 <code>android-ad-cleaner</code> 的 178 个 issue 是本日报今日最强的单点采用证据</strong> —— 已核验的最近 12 条全部是<strong>具体的中文用户故障描述与机型适配请求</strong>：<code>#211 [问题] 对三星手机好像毫无作用</code> / <code>#209 [问题] REDMI K90 Pro Max（OS 4.0.5.0 A17）安全模式跑参考脚本：系统广告/应用商店/浏览器等 6 段找不到入口</code> / <code>#208 #207 #206 [新机型] 希望适配小米14系列</code> / <code>#205 [问题] chan-off 在 HyperOS 3 / Android 16 中断：dumpsys 管道 grep -m1 触发 adbutils shell output invalid</code> / <code>#204 适配 REDMI K80 至尊版（25060RK16C / HyperOS 2 / Android 16）</code> / <code>#203 [问题] 已打开usb调试安全设置，仍显示未开</code> / <code>#202 [问题] 第二步，检测，一直下一步不了</code> / <code>#201 [问题] 有许多软件仍然保留广告，并不是很成功</code> / <code>#200 [新机型] 希望支持三星s25u</code> / <code>#199 [新机型] 一加ace6至尊版</code>。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 注意 <code>#205</code> 与 <code>#209</code> 这两条的性质：它们</strong>不是「想要这个功能」，而是「我按你文档做了，但第 3 步在 HyperOS 3 / Android 16 上断了，错误是 <code>adbutils shell output invalid</code>」<strong>。</strong> ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ <strong>这类 issue 是本日报连续多日记录的「最强采用信号」的又一形态 —— 提 issue 的人必须先跑起来，而跑起来的人会给出具体的失败点、具体的环境版本与具体的错误串。</strong> <strong>⭐⭐⭐⭐⭐⭐ 而 <code>android-ad-cleaner</code> 的 <code>releases</code> 从 2 涨到 7（v0.2.5 带 5 个 asset）且 <code>pushed_at</code> 距快照仅约 7.5 小时，是与那 178 个 issue 完全一致的工程节奏。</strong></p>
+<p><strong>架构师速览（本日热度信号可信度分层）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本日关注的不是某个系统，而是<strong>「一个信号是否代表采用」这一判断系统</strong>的四层：① <strong>可核验元数据层</strong>（<code>subscribers_count</code> / <code>open_issues_count</code> / <code>pushed_at</code> / <code>contributors</code> 数 / <code>releases</code> 数 / <code>commits</code> 数 / 体积 / 文件数 / <strong>跨仓库 blob SHA</strong>）② <strong>内容层</strong>（issue 是否具体到机型与错误串、README 是否含未展开的模板占位符、<code>description.json</code> 是否只替换软件名）③ <strong>结构层</strong>（owner 名是否成词法关系、创建时间是否秒级聚集、star/fork 取值集合是否过窄、<strong>是否共享同一个 git blob</strong>）④ <strong>产出层</strong>（commits 与 releases 是否与 star 同步增长）。<strong>四层共同构成判据，任何一层单独都不足以下结论；今日新增的 blob SHA 层是最强的一层</strong></td>
+<td>全部为 2026-10-27T22:16:31Z 快照的 API 返回值与仓库树/文件原文；<code>stargazers</code> 端点对该 token 返回 404，故星标时间分布无法核验。<strong>⭐ 内容层与结构层的分类判断是本日报的人工判断（基于 README 原文、issue 标题与文件哈希），不构成平台事实</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>对每个候选依次核验：① <code>repos/{o}/{r}</code> 读 <code>subscribers_count</code> / <code>open_issues_count</code> / <code>pushed_at</code> / <code>size</code> / <code>language</code> / <code>license.spdx_id</code> → ② <code>commits</code>（<strong>用 Link 头的 <code>rel="last"</code> 取精确总数，不用 <code>per_page=100</code> 的长度</strong>）→ ③ <code>contributors</code> 取精确人数 → ④ <code>releases</code> → ⑤ <code>git/trees/HEAD</code>（根树）与 <code>?recursive=1</code>（<strong>必须检查返回的 <code>truncated</code> 字段</strong>）→ ⑥ <code>issues</code> 读反馈内容 → ⑦ <code>search/repositories</code> 按 <code>created:</code> 时间窗 + <code>size:&lt;=N</code> + <code>stars:&gt;=M</code> 检索同构簇 → ⑧ <strong>对同构簇逐个取 <code>contents/{file}</code> 的 <code>.sha</code> 并比对</strong>（今日新增步骤）</td>
+<td>上述 8 步的 API 调用与其返回；<strong>今日的分母核验</strong>：<code>created:2026-10-26..2026-10-28 + stars:&gt;=40</code> 返回 <strong>77</strong> 个，其中 <code>size:&lt;=20</code> 的 <strong>23</strong> 个（≈30%）；<code>created:2026-10-27T11:40..11:46 + size:&lt;=10</code> 返回 <strong>1,386</strong> 个（总窗口），其中 <code>stars:&gt;=50</code> 的 4 个构成簇 A。<strong>⭐ 「star 数翻倍」这一现象本身无法由 API 区分「自然增长」与「外推」，只能由其余三层间接推断</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐ star vs 采用信号</strong>（本日三对反例：<code>ub-mode</code> +517% 而 commits 0、<code>android-ad-cleaner</code> +335% 而 commits +32 且 releases +5 且 oi +156）· <strong>⭐ issue 的两种形态</strong>（<strong>「我想要」vs「我按你文档做了但第 3 步断了，错误是 X」</strong> —— 后者强得多，今日 <code>#205</code> / <code>#209</code> 是样本）· <strong>⭐ 体积/文件数 vs blob SHA</strong>（前者是间接统计，后者是内容寻址哈希，<strong>今日起应优先用 blob SHA</strong>）· <strong>⭐ 关注度（subs）vs 总量（star）</strong>（<code>ub-mode</code> 的 subs 从 1 到 16 而 commits 0 —— <strong>⭐ 对「原则型/指针型」仓库，订阅数可能比 star 更能反映真实关注</strong>）· <strong>⭐ 发布次数 vs 发布可核验性</strong>（<code>ex-ussr</code> 一天 7 个 release、152 commits、14 contributors，<strong>但没有 release notes 或 changelog</strong>，于是「发了什么」不可核验）· <strong>批量过滤 vs 漏掉真项目</strong>（本日报的过滤可能误伤真实的小工具，<strong>本日报无法证明没漏</strong>）· <strong>⭐ 快照 vs 时间序列</strong>（<code>stargazers</code> 端点 404 使逐日增量不可测，只能做两次快照对比）</td>
+<td>全部快照数据。<strong>未明示：本日所有涨星项目中，有多少 star 来自真实用户、多少来自推广渠道 —— 本日报无法核验，也拒绝给出估计值</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐ 优先看 <code>subscribers_count</code> 与 <code>open_issues_count</code> 的变化，而不是 <code>stargazers_count</code></strong>（今日 <code>ub-mode</code> / <code>xss-audit</code> / <code>mcreplay</code> 三个反例都能被这两个字段抓住）→ 2. <strong>⭐ 用 Link 头取精确 commit 总数</strong>（<code>per_page=100</code> 的长度在超过 100 时会骗人：今日 <code>raven</code> 与 <code>ex-ussr</code> 都超过 100）→ 3. <strong>⭐ 读 3 条 issue 原文</strong>，特别看是「想要」还是「照做后失败」→ 4. <strong>⭐ 看 <code>git/trees/HEAD</code> 的文件数与 <code>size</code></strong> → 5. <strong>⭐⭐ 对同构簇逐个取 <code>contents/{file}</code> 的 <code>.sha</code> 并比对</strong>（<strong>今日新增的最强一步</strong>）→ 6. <strong>⭐ 用 <code>search/repositories</code> 按 <code>created:</code> 时间窗 + <code>size:&lt;=N</code> 扫同构簇并给出分母</strong>（今日：77 → 23）→ 7. <strong>⭐ 检查 README 是否有未展开的模板占位符、<code>description.json</code> 是否只替换软件名</strong> → 8. <strong>⭐ 最后才看 star 数，并把它当作「注意力」而非「采用」</strong></td>
+<td><strong>第 1 步是本判据体系的核心</strong> · <strong>第 2 步是避免被 API 长度骗过的唯一手段</strong> · <strong>第 3 步是区分「许愿」与「采用」的关键</strong> · <strong>第 5 步是识别农场最省力且最不易误伤的一步</strong> · <strong>第 6 步保证不遗漏成簇的异常</strong> · <strong>第 8 步是排序而非筛选</strong> · <strong>本方法不覆盖</strong>「star 增长完全自然但 subs 也不涨」的真实早期项目 —— <strong>这是一个已知的误报方向</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-87">趋势 3：昨日记录的六条线全部继续推进，且各自留下了可核验的推进痕迹（趋势分 87）</h3>
+<p><strong>⭐⭐⭐ 本日没有新的「跨领域共同信号」，但昨日记录的每一条线今天都留下了具体痕迹 —— 而其中两条的痕迹改变了我们对它们的判断。</strong></p>
+<p><strong>⭐ <code>trailofbits/brotli-checker</code>：从 26 到 33 commits，而其中三条 commit 标题直接对应能力扩展：</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间（UTC）</th>
+<th>commit 标题</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-26T21:33:05Z</td>
+<td><strong><code>Recognize stable Brotli decoder tables independently of patch fingerprints</code></strong></td>
+<td><strong>⭐⭐⭐⭐⭐ 昨日记录的「指纹会过期」问题被正面处理</strong> —— 不再只靠补丁指纹，而是<strong>识别稳定的 Brotli 解码器表本身</strong>。<strong>这正是昨日档案里列出的最关键待观察项（「快照会过期」的解法）被独立地实现了。</strong></td>
+</tr>
+<tr>
+<td>2026-10-26T20:34:35Z</td>
+<td><code>Avoid repeated compiler-catalog parsing in mutation test setup</code></td>
+<td>构建期性能（变异测试装置）</td>
+</tr>
+<tr>
+<td>2026-10-26T20:12:26Z</td>
+<td><code>Fix cross-version parser test and parallelize mutation CI by module</code></td>
+<td>跨版本解析器测试修复 + CI 按模块并行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐ 而 <code>SKILL.md</code> 的当前版本同时把昨日档案没记到的两件事写清了：</strong>
+- <strong>⭐⭐ 打包引用从「三种架构」扩展到十一种</strong>：<code>Packaged references cover x86, x86-64, ARM/Thumb, AArch64, RISC-V64, PowerPC64 little-endian, s390x, MIPS32/64 in both byte orders, and LoongArch64</code>；<strong>432 条引用</strong>覆盖 <code>-O2</code>/<code>-O3</code> × PIC/non-PIC × 三组 affected/fixed release pair，用 GCC 14.2、原始 AArch64 GCC 16.2.1、Clang 19 LoongArch 构建；<strong>LoongArch 另有 GCC 14.2 <code>-mno-relax</code> 针对真实 LoongArch glibc sysroot 的引用</strong>，且明写「<strong>The two Loong toolchains have distinct header/sysroot provenance; inspect <code>build_note</code>, <code>headers_sha256</code>, compiler, and flags rather than treating the ISA as the build identity.</strong>」
+- <strong>⭐⭐ 而它昨日的核心句今天仍在，且被强化</strong>：<code>Exit 0 means evidence collection completed, not that the binary is fixed. Exit 3 means the evidence is incomplete.</code> 以及新增的「<strong><code>fixed_code_match</code> concerns only matched decoder code, leaves other copies unresolved, and does not by itself produce exit 0</strong>」—— <strong>⭐⭐⭐⭐⭐ 即「一个副本被修复不能清掉另一个副本」这条规则，现在被写进了 ELF 代码匹配路径，而不仅是源码路径。</strong>
+- ⭐⭐ <strong><code>fingerprints.json</code> 的 <code>verified_on</code> 仍是 <code>"2026-10-23"</code>、<code>inventory_revision</code> 仍是 <code>6f34a3ae446cbba851214fd6a0b40d3a6e3c786f</code></strong> —— <strong>⭐⭐⭐ 而这恰恰印证了昨日的判断：快照会过期，而今天的新能力（识别稳定解码器表）正是为了</strong>部分<strong>摆脱对快照的依赖。</strong>（<code>inventory_revision</code> 未变说明指纹集本身未更新。）**</p>
+<p><strong>⭐ <code>KohakuBlueleaf/KohakUnlock</code>：从 3 到 17 commits，且并入了两条外部 PR —— 这是本日报今日关于「社区参与」的最强信号：</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间（UTC）</th>
+<th>commit 标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-27T11:40:25Z</td>
+<td><strong><code>Merge pull request #10 from DarkSkar/pr/auto-attempt</code></strong></td>
+</tr>
+<tr>
+<td>2026-10-27T11:40:17Z</td>
+<td><strong><code>Merge pull request #8 from DarkSkar/pr/no-usb-auto</code></strong></td>
+</tr>
+<tr>
+<td>2026-10-27T09:29:50Z</td>
+<td><code>windows/ad102: auto-attempt after KOH_AUTOCONFIRM_MS with Esc as the only skip</code></td>
+</tr>
+<tr>
+<td>2026-10-27T09:27:30Z</td>
+<td><code>docs: document the USB-less ESP+payload layout and why the payload partition is pinned by GUID, not index</code></td>
+</tr>
+<tr>
+<td>2026-10-27T09:26:14Z</td>
+<td><code>windows/ad102: payload discovery requires exactly-one match; verify root Close() before switching</code></td>
+</tr>
+<tr>
+<td>2026-10-26T22:32:56Z</td>
+<td><code>sin-USB fase 4: payload clavada solo por GUID (numero de particion a comodin 0 en EspGuidPath) — **el run hardware 26-10 fallo porque diskpart renumero la payload de la planeada part 5 a part 4 tras el shrink de C:**; fixture fiel (payload part 4) + test de regresion APP_PAYLOAD_RENUM (GUID OK, numero 3, acepta); suite 55 casos PASS</code></td>
+</tr>
+<tr>
+<td>2026-10-26T23:29:23Z</td>
+<td><code>windows/ad102: UCRT host harness fix — native _aligned_malloc/_aligned_free pairs on Windows (glibc keeps aligned_alloc)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这批 commit 里藏着本日最值得记的一条工程教训 —— 它被作者自己写进了 commit message：</strong></p>
+<blockquote>
+<p><strong>el run hardware 26-10 fallo porque diskpart renumero la payload de la planeada part 5 a part 4 tras el shrink de C:</strong></p>
+</blockquote>
+<p><strong>⭐⭐ 即「一次真机运行失败，原因是 <code>diskpart</code> 在 C: 收缩后把 payload 分区从第 5 号重编号为第 4 号」—— 于是修复不是「改用当前分区号」，而是</strong>改用 GUID 绑定<strong>（<code>payload clavada solo por GUID (numero de particion a comodin 0 en EspGuidPath)</code>、<code>payload discovery requires exactly-one match</code>），并配了一个回归测试 <code>APP_PAYLOAD_RENUM</code>（GUID OK，numero 3，acepta）。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「分区号是易变量，GUID 是稳定标识；一次真机失败暴露了这个假设，于是把它从实现里删掉并加回归测试」—— 这与本日报 10-26 记录的 KohakUnlock「Do not automatically retry an uncertain hardware mutation」是</strong>同一条纪律在标识符层面的再现<strong>：</strong>不要把会变的东西当作锚点。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而必须同时指出一个本日新增的张力：仓库里新增了 <code>windows/ad102/</code> 这条「Windows 引导 + GUID 绑定 payload 分区」的移植路线（引入 EDK2 作为 <code>source/deps/edk2</code>，带 <code>MdePkg/Include/...</code>），而 <code>docs/SAFETY.md</code> 里那句「</strong>Do not automatically retry an uncertain hardware mutation<strong>」在今日的 SHA <code>b8b58526…</code>（2,917 字节）中</strong>原样保留、未被修改<strong>。</strong> ⭐⭐ <strong>而新增的 <code>KOH_AUTOCONFIRM_MS</code> 自动尝试机制（<code>windows/ad102/source/unlock/app.c</code> / <code>local_profile.h</code> / <code>tests/test_ad103_app.c</code>）恰恰是一种「自动重试」</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 本日报明确记录这一张力并标为待观察：它是否属于 SAFETY.md 所指的那种「不确定的硬件变更」的重试，仓库未明确说明；这需要作者澄清，而不是本日报替它下结论。</strong> ⭐⭐ （同时注意：SAFEETY.md 的那条禁令写的是「不确定的<strong>硬件变更（hardware mutation）</strong>」，而 <code>KOH_AUTOCONFIRM_MS</code> 出现在 Windows 侧 payload 引导流程中；两者是否同一层，<strong>本日报未核验 <code>windows/ad102/README.md</code> 与 <code>docs/ADA-WINDOWS.md</code> 的对应关系</strong>。）</p>
+<p><strong>⭐ <code>mirkobrombin/raven</code>：从 678 到 747 commits，但本日没有昨日那样的结构性事件。</strong> ⭐⭐ <strong>体积 18,529 → 21,229 KB（+2,700 KB）</strong>，subs 4→5，oi 8→12，<code>pushed_at</code> 2026-10-27T17:49:07Z，<code>language</code> 仍为 <code>C++</code>，<code>license.spdx_id</code> <strong>仍为 NOASSERTION</strong>（昨日记录的「混合许可项目的诚实答案」这一判断今日不变）。<strong>⭐⭐⭐ 而 <code>releases</code> 仍是 0 个 —— 昨日档案里「未发布 release」这一条在今日依然成立。</strong></p>
+<p><strong>⭐ <code>YoyoLin008/mcreplay</code> 与 <code>songjianyang/xss-audit</code>：两个「热度涨、代码不动」的样本今日仍在原地。</strong>
+- <strong>mcreplay</strong>：202⭐ ⑂12，<strong>subs 仍是 0</strong>，commits 仍是 8（最后一条仍是 2026-10-24T18:56:00Z <code>docs: use supplied McDonald's dashboard artwork</code>），<code>pushed_at</code> 仍是 2026-10-24T18:56:03Z（<strong>距快照 75 小时</strong>）。
+- <strong>xss-audit</strong>：503⭐ ⑂141（<strong>fork/star 28.0%</strong>，较昨日 29.3% 微降），<strong>commits 仍是 1</strong>（唯一 commit 仍是 2026-10-24T11:32:14Z <code>✨ feat: Add initial XSS audit skill</code>），<strong>距快照 82.7 小时零提交</strong>，<code>releases</code> 仍是 0，subs 1。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而这两个样本的持续存在，比它们各自的星数更有信息量：它们是本日报连续三日记录的「注意力 ≠ 采用」的两个稳定对照点。</strong></p>
+<p><strong>架构师速览（昨日六条线的推进痕迹）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本日关注的不是单个系统，而是<strong>「昨日的判断今天是否还成立」这一追踪系统</strong>，它由四个可核验动作构成：① <strong>变更计数</strong>（commits / releases / contributors 的增量）② <strong>内容变更识别</strong>（commit 标题本身作为变更日志）③ <strong>文档不变性检查</strong>（昨日引用的关键句子是否仍在、其 SHA 是否变）④ <strong>张力识别</strong>（新增机制是否与旧文档的禁令冲突）。<strong>⭐ 本日最值得记的产出恰恰来自第 4 步与第 3 步</strong></td>
+<td>全部为 2026-10-27T22:16:31Z 快照的 API 返回值、commit 标题原文、<code>docs/SAFETY.md</code> 与 <code>SKILL.md</code> 的原文与 SHA；<strong>⭐ 「张力识别」是本日报的人工判断（基于两处文本的对照），不构成项目缺陷的事实认定</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>对每个跟踪项依次：① <code>repos/{o}/{r}</code> 读全部计数与 <code>pushed_at</code> → ② <code>commits?per_page=100</code> 取最近 N 条标题 + Link 头取精确总数 → ③ <code>releases</code> 与 <code>contributors</code> → ④ 拉取昨日引用的关键文档原文，<strong>逐字比对并记录其 SHA</strong> → ⑤ <strong>把新增 commit 标题与昨日的文档承诺做交叉对照，标记一致 / 扩展 / 张力</strong></td>
+<td>上述 5 步的 API 调用；今日的关键原文本：<code>docs/SAFETY.md</code>（2,917 字节，SHA <code>b8b58526a1ab9c2ca393849b2af4461737fff1be</code>）、<code>SKILL.md</code> 的 exit-code 段与 packaged-references 段、<code>fingerprints.json</code> 的 <code>verified_on</code> / <code>inventory_revision</code>、KohakUnlock 的 17 条 commit 标题、anymove/COGBox/esp32 的 README 与 skill 文档。<strong>⭐ 未核验：KohakUnlock <code>windows/ad102/README.md</code> 与 <code>docs/ADA-WINDOWS.md</code> 的内容、<code>KOH_AUTOCONFIRM_MS</code> 的具体行为边界</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐⭐ 指纹 vs 稳定特征</strong>（brotli-checker 的「识别稳定解码器表」<strong>部分摆脱了对会过期快照的依赖</strong>，代价是指纹匹配逻辑更复杂、且 <code>fingerprints.json</code> 的 <code>verified_on</code> 仍是 2026-10-23）· <strong>⭐⭐ 分区号 vs GUID</strong>（KohakUnlock 用一次真机失败换来了「标识符用稳定量」的正确做法）· <strong>⭐⭐⭐ 自动重试 vs 不确定变更</strong>（<strong>本日最值得记的张力</strong>：KohakUnlock 新增 <code>KOH_AUTOCONFIRM_MS</code> 自动尝试，而 <code>SAFETY.md</code> 仍写着「Do not automatically retry an uncertain hardware mutation」—— <strong>⚠️ 本日报不替它下结论，标为待作者澄清</strong>）· <strong>⭐ 代码不动 vs 关注度上升</strong>（ub-mode 的 subs 1→16 而 commits 0 —— <strong>对原则型仓库，订阅行为是一种独立的关注形式</strong>）· <strong>⭐⭐ 发布频率 vs 发布可核验性</strong>（ex-ussr 一天 7 个 release + 152 commits + 14 contributors，<strong>但没有 release notes/changelog</strong>，于是「发了什么」不可核验）· <strong>⭐ 未发布 release vs 可复现安装</strong>（raven 的 <code>releases</code> 至今为 0，而 android-ad-cleaner 已到 7 个带 asset 的 release —— <strong>分发能力本身是采用的前置条件</strong>）</td>
+<td>上述快照与原文。<strong>未明示：本日四个跟踪项都没有说明「谁负责长期维护、出问题找谁」—— nyxis 的 issue #33 恰好在问这件事且本日报未取得回复</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐ 对每个跟踪项，把昨日档案里引用的那句关键原文重新拉一遍，比对它的 SHA 是否变</strong>（今日：<code>SAFETY.md</code> 的 SHA <code>b8b58526…</code> 与原文均未变 → 昨日的判断仍成立）→ 2. <strong>⭐⭐ 用 Link 头取精确 commit 总数</strong>（<code>raven</code> 678→747、<code>ex-ussr</code> 41→152，两者都超过 <code>per_page=100</code>）→ 3. <strong>⭐⭐ 读最近 10 条 commit 标题当作变更日志</strong>（今日两条最强的判断都来自这一步：brotli-checker 的「Recognize stable Brotli decoder tables independently of patch fingerprints」与 KohakUnlock 的「payload clavada solo por GUID」）→ 4. <strong>⭐⭐ 把新增 commit 标题与昨日文档的承诺做交叉对照</strong>（今日唯一的张力来自这一步）→ 5. <strong>⭐ 看 <code>releases</code> 是否有 asset</strong>（<code>releases</code> 数量相同但 asset 数不同，含义完全不同）→ 6. <strong>⭐ 最后才看 star</strong></td>
+<td><strong>第 1 步是本方法的核心</strong>（昨日的档案可能已作废，必须重验）· <strong>第 3 步是产出密度最高的一步</strong> · <strong>第 4 步是唯一能发现「文档与实现不一致」的一步</strong> · <strong>第 5 步区分「发了个 tag」与「有东西可装」</strong> · 本方法<strong>不覆盖</strong>「star 增长完全自然但 subs 也不涨」的真实早期项目</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-85">趋势 4：两条互不相干的「产线化」路线（趋势分 85）</h3>
+<p><strong>⭐⭐ 本日第四个信号由两个来自完全不同领域（AI 生成内容的动作捕捉 / 游戏主机代码移植）的项目构成，它们做的是同一件事：把一件以前需要专家手艺的手工活，变成一条</strong>有确定输入输出、有可测中间量、有明确失败判据<strong>的流水线。</strong></p>
+<h4 id="patch-gganymove143-170-16forkstar-94python-apache-20-13968-kb-8-topics-4-commit-contributors-1-releases-1-examples-v12026-10-27t081211z17-asset-subs-1-oi-0">⭐ <code>patch-gg/anymove</code>（14.3 小时 170⭐ ⑂16，fork/star 9.4%，Python · Apache-2.0 · 13968 KB · 8 topics · <strong>仅 4 个 commit</strong> · contributors 1 人 · <code>releases</code> 1 个（<code>examples-v1</code>，2026-10-27T08:12:11Z，<strong>17 个 asset</strong>）· subs 1 · oi 0）</h4>
+<p><strong>⭐⭐⭐ 它的 8 步流水线，每一步都给出了可核验的量：</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>内容</th>
+<th>可核验的量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>一张图 → 带纹理的网格</td>
+<td><strong>真实尺寸</strong>；flux 3 图像 + tripo h3.1 网格，<strong>$0.40</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>骨架</td>
+<td><strong>42 根骨</strong>：腿、翅膀、尾巴；Blender</td>
+</tr>
+<tr>
+<td>3</td>
+<td>肢体配色</td>
+<td><strong>6 个肢体 6 种颜色</strong> —— <strong>⭐ 目的是让左右永不混淆</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>双摄像头</td>
+<td>一个正、一个侧，<strong>同一帧内</strong>；minimax h3 max on fal，<strong>5 秒 $0.26</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>训练关节读取器</td>
+<td><strong>DINOv2 · 2,200 个随机姿势 · 单 GPU 20 分钟</strong>；<strong>⭐ 平均误差从 40 px 降到 6 px</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>读取每个关节</td>
+<td><strong>50 个关节 · 10 秒一个 clip</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>两视角转 3D</td>
+<td>立在互相垂直的两面墙上求交；<strong>x 取自正面、y 取自侧面、z 取自两者</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>骨架跟随</td>
+<td>骨落到点上、忽略离群点、导出 GLB；<strong>24 fps · 无需手改 · 一个 clip 不到一分钟</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而它最有价值的部分不是流水线本身，而是</strong>「怎么判断这一次采集是好的」被写成了两个可读的数字<strong>：</strong></p>
+<p><code>skills/anymove-capture/SKILL.md</code> 的 "Is it good? Read the solve output" 一节，给出的真实输出样例：</p>
+<p><code>paw height agreement between views: {'fpaw_L': 1.0, 'fpaw_R': 1.0, 'hpaw_L': 0.78, 'hpaw_R': None, 'score': 0.93}
+sync as generated: mean height gap 4.4 px, worst 8.6 px, best constant lag 0 frames
+reprojection error px: {'front': 5.92, 'front_x_only': 2.55, 'side': 7.99}</code></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它把判据、含义与处置动作三者连在一起写死：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>判据</th>
+<th>含义与动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>paw agreement score</strong></td>
+<td><strong>≥ 0.8</strong></td>
+<td>两个视角讲同一个故事 → 保留；<strong>0.5–0.8</strong>：看 <code>showcase.mp4</code>，<strong>通常有一条肢体不对</strong>；<strong>&lt; 0.5</strong>：视频模型把两个视角演得不一样了 → <strong>重摇这个 clip</strong>（回到 <code>anymove-film</code>）；<strong><code>None</code></strong> 表示那只脚几乎没动（吼叫时踩住的前脚）→ 改看重投影误差</td>
+</tr>
+<tr>
+<td><strong>reprojection error</strong></td>
+<td>front_x_only <strong>1–3 px</strong>、side <strong>2–8 px</strong></td>
+<td>拟合后的骨架关节落点与读数之间的距离；<strong>⭐ 明写「按生物在画面中的尺寸缩放」</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它把「没赢的地方」直接写进结果表，而不是只报最好成绩：</strong></p>
+<blockquote>
+<p>Results so far: dragon take-off 1.00, roar 0.93, swipe 0.85, walk 0.81; <strong>spider rear-up 0.99, bite 0.96, pounce 0.89, walk 0.36-0.49 (fails)</strong>; demon wing beat 0.99, slam 0.84, roar 0.73 with feet planted and 3 px reprojection; wolf trot 0.94 with H3 Max.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「spider walk 0.36–0.49（fails）」被明确标为失败并留在表里 —— 这与本日报连续记录的「连没赢的地方都写」是同一条原则。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它的失败处置段落同样具体到可执行：</strong></p>
+<blockquote>
+<p>Legs crossed or a limb flipped side to side in the side view: the painted colours make labels reliable, so swap fixing is off. <code>python -m mocap.solve ... --fix-swaps</code> swaps near/far legs where heights say the reader mixed them up; <strong>it "fixed" correct labels on one clip, so only use it after looking.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「<code>--fix-swaps</code> 在一个 clip 上把本来正确的标签也改错了，所以只在看过之后才用」—— 一个工具作者写下「我的自动修复在某个 clip 上帮了倒忙，请先人眼确认」。</strong> <strong>⭐⭐⭐⭐⭐⭐ 这与本日报 10-26 记录的 brotli-checker「exit 0 does not establish that the running app is fixed」是同族：把工具自己会出错的地方写进工具的使用说明，而不是留给使用者踩。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它的架构分工也值得一记</strong>：<code>skills/</code> 下 6 个 skill（<code>anymove</code> / <code>anymove-rig</code> / <code>anymove-film</code> / <code>anymove-lora</code> / <code>anymove-reader</code> / <code>anymove-capture</code>），每个 skill 带自己的 <code>compatibility</code> 字段（写明 GPU 显存、Blender 版本、Python 版本与前置产物）；<code>.claude-plugin/</code> 目录 + README 给出 <code>/plugin marketplace add Patch-gg/anymove</code> 与 <code>/plugin install anymove@anymove</code>；<code>tools/</code> 下 8 个 shell 脚本（<code>prep.sh</code> / <code>rig.sh</code> / <code>dataset.sh</code> / <code>train.sh</code> / <code>film.sh</code> / <code>capture.sh</code> / <code>make_prompt.py</code> / <code>fetch_examples.sh</code>）；<code>mocap/</code> 是 Python 包；<code>assets/</code> 放四只示例生物（wolf 四腿 / dragon 四腿加翅 / spider 八腿 / demon 两腿两臂加翅加尾）。<strong>⭐ 而它写明了自己的方法归属：「The method is [@CanItCode]'s; the MiniMax H3 LoRA step is [@Graalitoo]'s idea. This repo is our working version of both, with the agent skills to run it.」</strong></p>
+<p><strong>⚠️ 边界</strong>：<strong>仅 4 个 commit、contributors 1 人</strong>、subs 1、oi 0；<strong>每个新动作都要付费调用 fal（$0.26/clip + $0.40 的建模）</strong>；训练读取器需 24 GB 显存的 NVIDIA GPU 与 20 分钟；<strong>⭐⭐⭐ 最关键的一条：它的输入素材本身是 AI 生成的视频</strong> —— 即「用 AI 生成的画面反过来训练一个读取关节的模型，再把结果导出成给引擎用的动画」。<strong>⭐⭐⭐ 这个闭环的技术难点不是流水线，而是「模型读的是模型画的」——因此每个关节都必须靠</strong>双视角的几何约束<strong>（同一关节在两视角中高度相同）来消歧，而不能靠单视角的视觉。</strong> ⭐⭐⭐⭐⭐⭐ <strong>而这恰好解释了为什么第 7 步是「把两视角立成互相垂直的两面墙」而不是「做多视角三角化」——⭐⭐ 两个视角恰好确定一个 3D 点（x 由正面给、y 由侧面给、z 由两者交出），这在数学上是最省的多视图几何，而多视角是冗余的。</strong></p>
+<h4 id="shagg88cogbox178-117-2forkstar-17c-mit-3254-kb-484-gears-native-21-commits-contributors-1-releases-1-0102026-10-27t044504z2-asset-subs-4-oi-12">⭐ <code>Shagg88/COGBox</code>（17.8 小时 117⭐ ⑂2，fork/star 1.7%，C++ · MIT · 3254 KB · <strong>484 个 <code>Gears*-Native</code> 源文件</strong> · 21 commits · contributors 1 人 · <code>releases</code> 1 个（<code>0.1.0</code>，2026-10-27T04:45:04Z，2 个 asset）· <strong>subs 4</strong> · <strong>oi 12 本批最高</strong>）</h4>
+<p><strong>⭐⭐⭐ 它的技术路线一句话就能说清：</strong></p>
+<blockquote>
+<p>The games' original Xbox 360 code is translated ahead of time into C++ and compiled into ordinary Windows programs - <strong>no emulator interprets the game while you play.</strong> The parts the console's hardware did are supplied by our code, most importantly <strong>our own renderer</strong>, which draws every frame on Direct3D 12 (or Vulkan, experimental).</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而它拿到的是「模拟器难以提供」的那一批东西</strong>，逐条列出：<strong>任意分辨率</strong>（1x–4x 原生，最高 5K，或匹配显示器，<strong>是真实额外细节而非拉伸</strong>）· <strong>抗锯齿与升采样</strong>（SMAA / AMD FSR / NVIDIA DLSS / Intel XeSS，含弱 GPU 的升采样模式）· <strong>高帧率</strong>（解除 30 fps 限制，垂直同步按显示器匹配，<strong>AMD FSR 帧生成标注为高度实验性</strong>）· <strong>流畅度</strong>（着色器在 1 毫秒内直译为 D3D12 着色器代码，<strong>像 Xenia Canary 那样</strong>，管线在后台构建，<strong>新区域晚一点显示而不是卡住游戏</strong>）· <strong>更低输入延迟</strong>（一帧在途，NVIDIA Reflex / AMD Anti-Lag 2）· HDR10 / 21:9 超宽 / 16x 各向异性过滤 / 视野角 / 运动模糊、景深、镜头光晕<strong>作为可开关项</strong>· 分屏（Gears 2）· 键鼠与 Xbox/PlayStation 手柄 · 章节选择 · 游戏内菜单（Back+Start 或 F1：改设置 / 重启生效 / 退出）。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 而它的支持表把版本钉死到了具体游戏版本与 title update：</strong></p>
+<table>
+<thead>
+<tr>
+<th>游戏</th>
+<th>移植所针对的版本</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gears of War 2</td>
+<td>US disc (0.0.0.5) + <strong>Title Update 6</strong></td>
+<td>每个章节在测试中可玩；<strong>Title Update 6 是默认且最快的构建</strong></td>
+</tr>
+<tr>
+<td>Gears of War 3</td>
+<td>Disc + <strong>Title Update 6</strong></td>
+<td>可玩；Title Update 6 为默认</td>
+</tr>
+<tr>
+<td>Gears of War: Judgment</td>
+<td>Disc + <strong>Title Update 4</strong></td>
+<td>可玩</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而状态一栏用的是一句定义极严的话：</strong></p>
+<blockquote>
+<p><strong>"In testing" means on the developer's PC (an RTX 3080 Ti) and scripted test runs through the chapters. Other hardware hasn't been tried yet - please report what you find.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「In testing」被定义为「在开发者自己那台 RTX 3080 Ti 上 + 脚本化跑过章节」——</strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这句话把「可玩」的含义从「我觉得能跑」精确成了「在一台具体配置的机器上、由脚本跑过章节」。<strong> </strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而本日报今日在它的 12 个 issue 里读到的，恰恰全在这个定义的边界上：**</p>
+<p><code>#9 DX12 not working in GoW2</code> · <code>#11 "Error initializing network layer" for GoW2 on Steam Deck</code> · <code>#7 Cant get games to launch on steamdeck buttons greyed out</code> · <code>#3 SteamOS issues</code> · <code>#6 GOW3 Crash</code> · <code>#1 Game crashes on start GOW: Judgement</code> · <code>#5 GoWJudgmement Flickering textures</code> · <code>#12 Camera shake (roadie run) not working</code> · <code>#2 mouse movement is too slow</code> · <code>#10 Multi-monitor setup for coop</code> · <code>#4 Add support european version</code> · <code>#8 Interview request from The Raytrace</code>。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即：</strong>12 个 issue 里有 6 个是「在别的硬件上跑不起来」（Steam Deck ×3、DX12、崩溃 ×2、贴图闪烁 ×1）—— <strong>这些恰好是「In testing means on the developer's PC (an RTX 3080 Ti)」这句话的直接后果，而作者把这句话写在 README 里，等于在 issue 爆发之前就声明了适用范围。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这正是本日报今日最想记的一条对照：COGBox 的 12 个 issue 全部是「</strong>我照你的文档做了，但在我这台机器上不行<strong>」（它甚至要求「</strong>PLEASE FOR NOW MAKE SURE TO USE THE LATEST TITLE UPDATE FOR EACH GAME<strong>」）；而 <code>Motionsites-AI/claude-skill</code>（455⭐ ⑂52、Python、NOASSERTION、1,942 KB、</strong>仅 2 个 commit<strong>、<code>contributors</code> API 返回 </strong>0 人<strong>）的 4 个 issue 则是「</strong>我想要 Web 安装器 / 强制门户 / 浏览器刷固件 / 支持 Epson 2400T<strong>」——</strong>全部是许愿，没有一条是失败报告。<strong> </strong>⭐⭐⭐⭐⭐⭐ 同一个生态里，「有真实使用者反馈」与「只有许愿」的差别，在 issue 列表上一眼可辨。**</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而 COGBox 的 launcher 设计里也有两处值得记的取舍：</strong>
+- <strong>⭐ 它要求用户自带游戏拷贝</strong>（disc image / Games on Demand 拷贝 / title update 包 / 解压目录），并明写「<strong>You need your own copy of each game. No game files are included or ever will be.</strong>」—— <strong>⭐⭐⭐ 这是一条把「分发风险」从项目身上彻底移走的边界声明，与本日报记录的 KohakUnlock「不提供焊接指南」、unbloat-android-tv「不提供系统更新包」是同一族。</strong>
+- <strong>⭐ 它的 box art 与背景来自开源归档 x360db，且「downloaded only when you press </strong>Get box art<strong>」</strong> —— 即素材按需拉取而非预置。
+- <strong>⭐ 它的许可与归属声明完整</strong>：MIT（Copyright (c) 2026 Shagg）+ 一整段「This is an unofficial fan project. It is not made by, endorsed by or connected to Microsoft, Xbox Game Studios, The Coalition, Epic Games or People Can Fly. "Gears of War", "Xbox" and "Xbox 360" are trademarks of Microsoft.」</p>
+<p><strong>⚠️ 边界</strong>：需 <strong>Windows 10/11 64 位</strong>（或 Linux / Steam Deck 经 Proton，实验性）· <strong>需 AVX2 CPU</strong>（Intel Haswell / AMD Ryzen 约 2013 年后）· <strong>需 DirectX 12 显卡</strong> · 需自带游戏拷贝（<strong>每游戏约 8–16 GB 空间</strong>）· <strong>需最后 title update</strong>（Gears 2/3 为 Title Update 6，存放在曾在线玩过该游戏的主机 <code>Content\0000000000000000\&lt;title ID&gt;\0B0000\</code> 下，Gears 2 为 <code>4D53082D</code>、Gears 3 为 <code>4D5308AB</code>、Judgment 为 <code>4D530A26</code>）· <strong>subs 4</strong>、contributors 1 人、<strong>仅 1 个 release 且只有 2 个 asset</strong>；<strong>⭐⭐ 而它自己标为「experimental」的至少有四项</strong>：Vulkan 后端、AMD FSR 帧生成、Steam Deck 经 Proton、以及「In testing」的定义本身。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 而必须把它与本日报记录的 <code>raven</code> 放在同一张表上对比 —— 因为两者做的是</strong>同一类事<strong>（让非原生平台的旧软件在现代系统上跑），而完成度差异极大：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Shagg88/COGBox</code></th>
+<th><code>mirkobrombin/raven</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路线</td>
+<td>静态重编译（主机代码提前翻译成 C++）</td>
+<td>沙箱内核 + API 兼容层（宿主代码直接跑）</td>
+</tr>
+<tr>
+<td>图形</td>
+<td><strong>自写渲染器</strong>（D3D12）</td>
+<td>DXVK / vkd3d-proton（用现成的 Vulkan 转译层）</td>
+</tr>
+<tr>
+<td>许可</td>
+<td>MIT</td>
+<td><strong>NOASSERTION</strong>（混合许可，宿主 GPL-3.0-or-later + 自有 guest 适配器 MIT + 导入组件各自条款）</td>
+</tr>
+<tr>
+<td>发布</td>
+<td><strong>1 个 release</strong>（2 asset）</td>
+<td><strong>0 个 release</strong></td>
+</tr>
+<tr>
+<td>规模</td>
+<td>484 源文件 / 3,254 KB</td>
+<td>747 commits / 21,229 KB</td>
+</tr>
+<tr>
+<td>测试声明</td>
+<td>「In testing = RTX 3080 Ti + 脚本化跑章节」</td>
+<td>四段 25% 兼容评分 + 交替运行 benchmark + <strong>明写「Software Vulkan keeps the numbers reproducible anywhere」</strong></td>
+</tr>
+<tr>
+<td>可核验性</td>
+<td><strong>3 条 issue 是「在别的硬件上崩」</strong></td>
+<td>昨日记录的「交替运行法 + 作废旧数据并说明理由」仍在</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「同一类问题、两种路线、两种测试哲学」—— 而本日报今日的可核验结论是：</strong>COGBox 的测试哲学更朴素但更诚实（它直接说「只在一台机器上测过」），raven 的测试哲学更系统但也更复杂（它做交叉对照与作废流程）；两者都没有把「未验证的部分」藏起来。<strong> ⭐⭐⭐⭐⭐⭐ </strong>这是本日报今日观察到的、跨领域最一致的一条：<strong>越是接近「把别人的作品跑起来」的项目，越倾向于公开自己的测试边界</strong>（COGBox 的 RTX 3080 Ti、raven 的软件 Vulkan、esp32 的 18 行黄标、KohakUnlock 的 BDF 42:00.0 绑定、anymove 的 spider walk 0.36–0.49 fails）。<strong> ⭐⭐⭐⭐⭐⭐⭐⭐⭐ </strong>而这个共同点，与本日报连续多日记录的「边界要写进可核验的位置」是同一件事的第 6 个独立样本 —— ⭐⭐⭐⭐⭐⭐⭐⭐⭐ 并且它出现在 5 个互不相识的项目上。**</p>
+<p><strong>架构师速览（anymove + COGBox）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>anymove</strong>：五层 —— ① <strong>素材层</strong>（fal 上的 AI 视频 + flux 3 图像 + tripo h3.1 网格，<strong>全部按次付费</strong>）② <strong>准备层</strong>（<code>tools/prep.sh</code> 真实尺寸与朝向、<code>tools/rig.sh</code> 骨架与蒙皮与配色与参考帧）③ <strong>数据与训练层</strong>（<code>tools/dataset.sh</code> 2,200 个随机姿势 + <code>tools/train.sh</code> DINOv2 关节读取器）④ <strong>采集层</strong>（<code>tools/film.sh</code> 生成双视角 clip + <code>tools/capture.sh</code> 读取 + 拟合 + 导出）⑤ <strong>判据层</strong>（<code>skills/anymove-capture/SKILL.md</code> 的 paw agreement 与重投影误差两个数 + showcase 渲染）。<strong>边界划在「三维几何的唯一性由两个正交视角提供」</strong> —— 即一个关节靠「两视角同高」消歧。<strong>COGBox</strong>：四层 —— ① <strong>静态重编译层</strong>（<code>Gears2-Native</code> / <code>Gears3-Native</code> / <code>GearsJ-Native</code> 共 484 个源文件，主机代码提前翻译成 C++）② <strong>图形层</strong>（自写渲染器，Direct3D 12 主线 + Vulkan 实验性）③ <strong>启动器层</strong>（<code>COGBox</code>：识别盘镜像 / 解包 / 校验 release / 每游戏设置页 / 存档备份 / 自更新 / 完全手柄可用）④ <strong>素材与法务层</strong>（box art 按需从 x360db 拉取 + 明确的非官方声明 + 不附带任何游戏文件）。<strong>边界划在「用户自带拷贝」</strong> —— 即项目不分发任何受版权保护的内容。</td>
+<td>anymove 的 README 八步表与「quick start」「your own creature」「agent skills」三节、<code>skills/anymove-capture/SKILL.md</code> 全文（frontmatter 的 <code>compatibility</code> + "What happens" + "Is it good?" + "When a fit is wrong" 四节）、<code>releases</code> 的 17 个 asset 名与体积（<code>reader-*.pt</code> 各约 <strong>355 MB</strong>、<code>dragon.glb</code> 13,256,908 字节、<code>lora-wolf-twocam-h3.safetensors</code> 131,229,792 字节、<code>clip-*.mp4</code> 3.4–4.8 MB）、<code>docs/PIPELINE.md</code> 存在；COGBox 的 README 全文（"What it is" / "The games" 表 / "COGBox, the launcher" / "What you need"）、<code>Gears*-Native</code> 三目录 484 个源文件数、<code>releases</code> 的 1 个 release 与 2 个 asset、12 条 issue 标题与时间。<strong>⭐ 未核验：anymove 的 <code>mocap/solve.py</code> 实现与其关节限位处理、COGBox 的 <code>Gears*-Native</code> 具体代码（仅核验了文件数与目录划分）</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><strong>anymove</strong>：<code>git clone</code> → 建 venv（<code>torch==2.11.0</code> cu128 + <code>requirements.txt</code>）→ <code>tools/fetch_examples.sh dragon --readers --clips</code>（从 release 拉 13 MB 网格 + 355 MB 读取器 + 4 MB clip）→ <code>tools/prep.sh</code> / <code>tools/rig.sh</code> / <code>tools/capture.sh</code> → 得到 <code>runs/dragon/clips/roar/render/animation.glb</code> + <code>showcase.mp4</code>；<strong>⭐ 有一条不需要 GPU / Blender / 下载的 CPU 快路径</strong>：<code>MOCAP_CREATURE=assets/dragon python -m mocap.solve examples/dragon_roar/det.npz assets/dragon/rigged/rig_info.json runs/dragon/clips/roar/motion.json</code>（约 20 秒，并打印两视角的一致程度）；新动作则 <code>tools/make_prompt.py</code> → <code>tools/film.sh</code>（<strong>两 clip 约 $0.52</strong>）→ <code>tools/capture.sh</code>。<strong>COGBox</strong>：安装 release → 添加自己的拷贝（拖入 <code>.iso</code> / Games on Demand 拷贝 / title update 包 / 解压目录）→ COGBox 识别并解包 → 校验是正确 release → 从启动器启动 → 在游戏内菜单改设置（<strong>Back+Start / F1</strong>）→ 存档备份与问题报告。</td>
+<td>anymove README 的 <code>quick start</code> 与 <code>your own creature</code> 两节的命令序列、release asset 清单与体积、CPU 快路径命令原文；COGBox README 的 "COGBox, the launcher" 节的五个要点与 "Using it" 的菜单键位。<strong>⭐ 未核验：anymove 的 <code>mocap.solve</code> 在 CPU 上的实际输出与耗时、COGBox 的解包与版本校验实现</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐⭐ 双视角 vs 多视角</strong>（anymove 只用两个正交视角：<strong>数学上恰好确定一个 3D 点</strong>（x 由正面、y 由侧面、z 由交点），最省；但<strong>没有冗余可用于剔除离群点</strong>，因此第 8 步必须「忽略离群点」）· <strong>⭐⭐ 生成素材 vs 真实素材</strong>（用 AI 生成的画面训练读取器，<strong>成本与可得性极低（$0.26/clip）但引入「模型读模型」的闭环误差</strong>，只能用几何约束消歧）· <strong>⭐⭐ 自动修复 vs 人工确认</strong>（<code>--fix-swaps</code> 明写「在一个 clip 上改错了正确标签，所以只在看过之后用」）· <strong>⭐⭐⭐ 报最好成绩 vs 报失败率</strong>（<strong>spider walk 0.36–0.49 (fails) 被留在结果表里</strong>）· <strong>⭐⭐⭐ 打包分发 vs 按需下载</strong>（读取器 355 MB × 3、网格 13 MB、LoRA 131 MB —— <strong>anymove 用一个 release 装了 17 个 asset，下载量对用户是真实负担</strong>）· <strong>⭐ 静态重编译 vs 模拟器</strong>（COGBox：<strong>没有模拟器在玩的时候逐帧解释</strong>，因此能拿到任意分辨率与帧生成；<strong>代价是必须自己重写渲染器</strong>，这是全项目最大的一块工作）· <strong>⭐⭐⭐ 自带拷贝 vs 附带内容</strong>（<strong>No game files are included or ever will be</strong> —— 把分发风险整体移出项目）· <strong>⭐ 成熟度声明 vs 硬件现实</strong>（<strong>「In testing」被定义为 RTX 3080 Ti + 脚本化跑章节，而 12 个 issue 里 6 个是「别的硬件上崩」</strong>）· <strong>⭐⭐⭐ 跨领域共同取舍（本日最值得记的一条）</strong>：<strong>这五个项目都主动公开了「我没在什么上验证过」</strong> —— 即<strong>「公开未验证范围」正在成为一种跨领域默认实践</strong></td>
+<td>两份 README 与 SKILL.md 原文、release asset 清单与体积、issue 列表；<strong>⭐「跨领域共同取舍」是本日报基于 5 个项目（nyxis / CFSG / esp32 / anymove / COGBox）+ 3 个跟踪项（KohakUnlock / raven / unbloat-android-tv）的人工归纳，不构成项目方的声明</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐ anymove：先跑 CPU 快路径</strong>（<code>MOCAP_CREATURE=assets/dragon python -m mocap.solve examples/dragon_roar/det.npz ...</code>）—— <strong>⭐ 这一步不需要 GPU、不需要 Blender、不需要任何付费调用，约 20 秒就能看到它的判据输出</strong>（paw agreement 与重投影误差）→ 2. <strong>⭐⭐ 读它的输出并对照 SKILL.md 的判据表</strong>：分数 ≥0.8？重投影误差在 1–3 px / 2–8 px？→ 3. <strong>⭐⭐ 读 README 八步表，核对每一步给出的量是否可信</strong>（尤其第 5 步「平均误差从 40 px 降到 6 px」与第 7 步的 x/y/z 来源）→ 4. <strong>⭐ 读 <code>skills/anymove-capture/SKILL.md</code> 的 "When a fit is wrong" 一节，判断它的失败处置是否可执行</strong> → 5. <strong>⭐⭐ COGBox：只读 README 的 "The games" 表与 "In testing" 那一句</strong>，<strong>判断「可玩」的含义被定义到了什么粒度</strong> → 6. <strong>⭐⭐ 读 12 条 issue，分类为「我照做后失败」与「我想要」</strong>（<strong>今日的样本是 6 : 0</strong>）→ 7. <strong>⭐ 读 README 的法务段与 "What you need" 段，确认游戏拷贝与硬件门槛 → 8. </strong>⭐⭐⭐ 三选一的共同收尾：把「它在什么上被验证过 / 没被验证过」抄成一行字，贴在你的采用决策旁边**</td>
+<td><strong>第 1 步是 anymove 唯一能证伪其「流水线可用」主张的零成本步骤</strong> · <strong>第 2 步是唯一能证伪其「判据可用」的步骤</strong> · <strong>第 6 步是 COGBox 唯一能判断其「测试范围声明是否诚实」的步骤</strong> · <strong>第 8 步是本 PoC 真正的产出</strong> · <strong>本 PoC 不覆盖</strong>：anymove 的付费生成（<strong>$0.26/clip + $0.40 建模 + 24 GB GPU 训练 20 分钟</strong>）、COGBox 的任何真机运行（<strong>需 Windows 10/11 + AVX2 CPU + DX12 显卡 + 自带游戏拷贝 + 每游戏 8–16 GB</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">最值得关注的方向</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐ 「把裁决权交给一个别人能独立重跑的东西」是本日最强的共同信号。</strong> nyxis 交给 Lean 内核、CFSG 交给 Lean 内核 + 对照机制、esp32-usb-to-airprint 交给 Gutenprint 的字节流。<strong>⭐ 而三者的边界声明完整度递减（nyxis 写全了红/黄两层与定理目录，CFSG 没有 <code>docs/</code>，esp32 有 19 行机型表但 18 行标黄）—— ⭐⭐ 边界声明的完整度与 star 数无关。</strong></li>
+<li><strong>⭐⭐⭐⭐ 「假设可以被人改」是一个技术严谨系统里最容易漏掉的治理面。</strong> nyxis 明写假设「由人裁量修改」，而本日唯一一条外部 issue（#33，日文供应链尽调）问的正是「谁有权批准什么」。<strong>⭐ 技术证明的可信度上限，最终由「谁能改假设」决定。</strong></li>
+<li><strong>⭐⭐⭐⭐ 「找到一处 <code>sorry</code> 不等于项目不诚实」是一条可立即迁移的方法论。</strong> CFSG 的 <code>Comparator/Challenge.lean</code> 以 <code>:= sorry</code> 作为题面骨架，配 <code>comparator.json</code> 的 challenge/solution 双模块与 <code>permitted_axioms</code>；而两处 <code>meta def</code> 里的 <code>sorry</code> 只是一个默认关闭的调试开关。<strong>⭐ 判断标准是「这处 sorry 在体系里扮演什么角色」，不是「有没有 sorry」。</strong></li>
+<li><strong>⭐⭐⭐⭐ 「指纹会过期」这个问题的正解是「识别稳定特征」，而不是「勤更新快照」。</strong> brotli-checker 的新 commit <code>Recognize stable Brotli decoder tables independently of patch fingerprints</code> 正是在做这件事，而它的 <code>fingerprints.json</code> 的 <code>verified_on</code> 至今仍是 2026-10-23。<strong>⭐ 快照仍会过期，但判定不再完全依赖它。</strong></li>
+<li><strong>⭐⭐⭐ 「标识符要用稳定量，不要用易变量。」</strong> KohakUnlock 的一次真机失败（<code>diskpart</code> 在 C: 收缩后把 payload 从 part 5 重编号为 part 4）换来了「payload 只按 GUID 绑定」的修复与一个回归测试 <code>APP_PAYLOAD_RENUM</code>。<strong>⭐ 这与「不要把会变的东西当锚点」是一条通用工程纪律。</strong></li>
+<li><strong>⭐⭐⭐ 「公开未验证范围」已经是跨领域的默认实践，而不是某个项目的美德。</strong> 今日 5 个新项目 + 3 个跟踪项各自公开了未验证范围：COGBox 的「RTX 3080 Ti + 脚本化跑章节」、esp32 的 18/19 行机型标黄、anymove 的 spider walk 0.36–0.49 fails、raven 的软件 Vulkan、nyxis 的红/黄两层、CFSG 的无 <code>docs/</code>。<strong>⭐ 这可能比今日任何一个具体项目都更值得记。</strong></li>
+<li><strong>⭐⭐⭐ 判据仍然是 subs / oi / commits / pushed_at，而不是 star —— 今日三对反例齐了。</strong> <code>ub-mode</code> +517% 而 commits 0（但 subs 1→16）、<code>xss-audit</code> +28% 而 commits 0、<code>mcreplay</code> ±0% 而 commits 0 且 subs 0；对照 <code>android-ad-cleaner</code> +335% 而 oi 22→178 / releases 2→7 / commits +32、<code>ex-ussr</code> +98% 而 releases 2→7 / contributors 4→14 / commits 41→152。<strong>⭐⭐ 而「blob SHA 相同」是本日报今日新增的最强单项判据（6 个仓库共享同一个 <code>.gitignore</code> SHA）。</strong></li>
+<li><strong>⭐⭐ 「订阅」可能是一种被低估的关注形式。</strong> <code>ub-mode</code> 的代码一个字节没动、仍无 LICENSE，但 <code>subscribers_count</code> 从 1 涨到 16。<strong>⭐ 对原则型/指针型仓库，订阅数比 star 更接近真实意图。</strong></li>
+<li><strong>⭐⭐ 「文档与实现之间的张力」必须被记下来，而不是被抹平。</strong> KohakUnlock 新增 <code>KOH_AUTOCONFIRM_MS</code> 自动尝试，而 <code>docs/SAFETY.md</code>（SHA <code>b8b58526…</code>，2,917 字节）里的「Do not automatically retry an uncertain hardware mutation」原样保留。<strong>⭐ 本日报不替它下结论，标为待作者澄清 —— 这正是「边界写进可核验位置」的必要代价：一旦写下来，它就会与后来的实现对账。</strong></li>
+</ol>
+<h2 id="_4">风险与机遇</h2>
+<h3 id="_5">机会</h3>
+<ol>
+<li><strong>⭐⭐⭐⭐ nyxis 的 <code>ASSUMPTIONS.md</code> 四段式假设写法可以直接抄进任何「我做了什么保证」的项目</strong>（信什么 / 破了会怎样 / 开发者如何维持 / 支撑检查），并附一句「<strong>集成测试通过永远不是形式证明的替代品</strong>」。<strong>⭐ 而它的四色 Mermaid 图是本日报见过最好的一张「证明边界图」，可以直接作为模板。</strong></li>
+<li><strong>⭐⭐⭐⭐ nyxis 的 <code>Test/Axioms.lean</code> 的 <code>#assert_axioms_under</code> 宏是一个可以直接抄走的「覆盖面不靠人记得补」的写法</strong> —— 遍历命名空间下每一个定理，逐个检查公理依赖，名单写死。<strong>⭐ 任何做静态检查的项目都能用这个模式。</strong></li>
+<li><strong>⭐⭐⭐⭐ 「找到一处 <code>sorry</code> 就问它在体系里扮演什么角色」这条判据可以直接用于评估任何声称「无 sorry / 无 TODO / 无占位」的仓库</strong> —— 它把「扫描结果」变成「结构判断」，避免误伤也避免放过。</li>
+<li><strong>⭐⭐⭐⭐ esp32-usb-to-airprint 的「编译第三方实现产出参考流 + 逐命令字节比对 + 把参照系自身的缺陷写进豁免说明」是一套可以在任何有外部标准的地方复用的正确性论证模板</strong>（打印流、协议编解码、文件格式、编解码器输出）。<strong>⭐ 而 <code>tools/gutenprint_ref/build_ref.sh</code> + <code>tools/compare_gutenprint.py</code> 是可以直接照抄的工程骨架。</strong></li>
+<li><strong>⭐⭐⭐ anymove 的两个质量数字（paw agreement ≥0.8、重投影误差 front_x_only 1–3 px / side 2–8 px）+ 「失败案例留在结果表里」+ 「自动修复工具会帮倒忙，请先人眼确认」三件套，是任何「用模型处理媒体/数据」的项目都该有的验收规范。</strong></li>
+<li><strong>⭐⭐⭐ COGBox 的「In testing means on the developer's PC (an RTX 3080 Ti) and scripted test runs through the chapters」是一个可以直接复制的「可玩」定义模板</strong> —— 它把一个含糊的状态词换成了「在哪台机器上、用什么方式测过」。<strong>⭐ 而它 12 条 issue 里 6 条是「在别的硬件上崩」这件事，本身证明了这个定义是有效的。</strong></li>
+<li><strong>⭐⭐⭐ KohakUnlock 的「payload 只按 GUID 绑定 + 一个重编号回归测试」可以直接套用到任何用分区号/索引号/序号当标识符的系统</strong>（K8s StatefulSet 序号、数据库分片号、容器槽位号）。</li>
+<li><strong>⭐⭐⭐ 「跨仓库 blob SHA 比对」可以立刻加进任何仓库监控脚本</strong> —— 它比「体积/文件数/owner 名」更准、比「README 模板」更硬，<strong>且本日报今日已给出可直接复用的命令形态</strong>（<code>gh api repos/{o}/{r}/contents/{path} --jq .sha</code>）。</li>
+<li><strong>⭐⭐ nyxis 的 <code>scripts/</code> 34 个检查脚本里有三个最值得抄</strong>：<code>check-approved-declaration.py</code>（校验「声明了什么」）、<code>check-core-isolation.py</code>（校验「核心是否被绕过」）、<code>check-handler-effects.sh</code>（校验「效果是不是被记录」）—— <strong>⭐ 三者对应的都是「绕过路径」，而不是「正常路径」。</strong></li>
+</ol>
+<h3 id="_6">风险</h3>
+<ol>
+<li><strong>⚠️⚠️⚠️ 今日最大的风险仍然是「用 star 数推断采用」，而且今天的新反例比昨天更强。</strong> <code>unclebob/ub-mode</code> 从 341⭐ 涨到 <strong>2,105⭐（+517%）</strong>，<strong>而 commits 一个都没多（仍是 4）、releases 仍是 0、仓库仍是 2 个文件 4 KB、仍没有 LICENSE 文件。</strong> <strong>⭐⭐⭐ 而 <code>songjianyang/xss-audit</code> 在 82.7 小时零提交的情况下 star 从 393 涨到 503，<code>YoyoLin008/mcreplay</code> 在 75 小时零提交、subs 仍为 0 的情况下 star 从 200 到 202（几乎不动）。</strong> <strong>⭐⭐⭐⭐ 三者与真正的产出（android-ad-cleaner 的 178 个 issue / 7 个 release / +32 commits、ex-ussr 的 7 个 release / 14 名贡献者 / +111 commits）形成本日最硬的一组对照。</strong></li>
+<li><strong>⚠️⚠️⚠️ 本日新增两组结构同构的农场，其中簇 B 的「6 个仓库共享同一个 <code>.gitignore</code> blob SHA」是本日报至今最强的一条个体异常判据。</strong> <strong>⭐⭐ 而在 <code>created:2026-10-26..2026-10-28 + stars:&gt;=40</code> 的 77 个仓库里，<code>size:&lt;=20</code> 的有 23 个（≈30%）。</strong> <strong>⭐⭐⭐ 「30% 的 40⭐ 以上新仓库是空壳」这个比例，比任何单个仓库的 star 数都更能说明「GitHub 趋势榜」的噪声水平。</strong></li>
+<li><strong>⚠️⚠️⚠️ 本日新项目的「成熟度」与其 star 完全脱钩，且今日首次出现「⭐ star 最高的项目支持表里 18/19 行标黄」的情形。</strong> <code>ngxson/esp32-usb-to-airprint</code> 157⭐，19 行机型里只有 1 行（MG2550S）标 🟢 已真机验证；<strong><code>Motionsites-AI/claude-skill</code> 455⭐ ⑂52 而 <code>contributors</code> API 返回 0 人、仅 2 个 commit</strong>，且它的 4 条 issue 全是许愿。<strong>⭐⭐⭐⭐ 而这三个项目的真实约束各不相同：esp32 需要你自购 ESP32-S3 与打印机、claude-skill 需要你接受一个「示例与素材不可再分发」的许可分层（其 LICENSE 明确写 examples/media 为 © MotionSites 且「You may not resell or redistribute them」）、CFSG 需要 5.8 GB 下载与 24 小时构建。</strong></li>
+<li><strong>⚠️⚠️ <code>AxiomMath/CFSG</code> 的「sorry-free」声称需要被精确化，而本日报自身也必须承认核验不完整。</strong> 仓库内确实存在 <code>Comparator/Challenge.lean</code> 的 <code>theorem ... := sorry</code>（对照题面，非证明部分），另有两处 <code>meta def</code> 里的 <code>sorryAx</code> 调试开关；<strong>⭐⭐⭐ 而 <code>?recursive=1</code> 返回 <code>truncated: true</code>（65,107 条目），本日报因此无法声称已核验全仓库 sorry-free。</strong> <strong>⭐⭐⭐⭐ 正确的表述是「主干四个文件的 <code>sorry</code> 与 <code>native_decide</code> 计数为 0，仓库内另有一处刻意的对照题面 <code>sorry</code>」，而不是「全仓库无 sorry」也不是「它撒谎」。</strong></li>
+<li><strong>⚠️⚠️ <code>AxiomMath/CFSG</code> 的工程形态使第三方核验成本极高：5.8 GB 体积、构建时间被作者称优化到「24 小时以内」、无 <code>docs/</code> 目录、无 <code>.github/workflows</code>（即无 CI）。</strong> <strong>⭐⭐⭐⭐ 这意味着它的「sorry-free」与「三条公理」目前</strong>只能靠阅读 <code>formalization.yaml</code> 这一份自述文件来相信<strong>，而没有可复现的 CI 佐证 —— </strong>这正是 nyxis 用 34 个检查脚本 + <code>Test/Axioms.lean</code> 做的事，而 CFSG 一样也没做。**</li>
+<li><strong>⚠️⚠️ <code>patch-gg/anymove</code> 的输入是 AI 生成的视频，输出是要喂给游戏引擎的动画 —— 这个闭环的可靠性上限由「模型读模型」决定。</strong> <strong>⭐⭐⭐ 它用双视角几何约束来消歧是正确的设计，但</strong>两个视角恰好确定一个 3D 点，没有冗余<strong>，因此离群点只能靠拟合阶段的鲁棒损失剔除。</strong>⭐⭐⭐⭐ 而它自己的结果表就记着「spider walk 0.36–0.49 (fails)」—— <strong>⭐⭐⭐⭐⭐ 即八条腿的生物在它的流程下是已知失败案例，而它诚实地留在了表里。</strong></li>
+<li><strong>⚠️⚠️ <code>anymove</code> 的分发负担很重：</strong> 一个 release 带 17 个 asset，其中三个读取器各约 <strong>355 MB</strong>、一个 LoRA <strong>131 MB</strong>、网格 13 MB。<strong>⭐⭐ 而每个新动作还要额外付费（$0.26/clip，两 clip 约 $0.52）。</strong></li>
+<li><strong>⚠️⚠️ <code>Shagg88/COGBox</code> 的可用性边界极其依赖硬件与自备拷贝：</strong> 需 Windows 10/11 64 位（或 Linux/Steam Deck 经 Proton，<strong>实验性</strong>）、需 AVX2 CPU、需 DX12 显卡、需自带游戏拷贝与最后的 title update、每游戏 8–16 GB 空间。<strong>⭐⭐⭐ 而它 12 条 issue 里 6 条正是「在别的硬件上崩」（Steam Deck ×3、DX12、崩溃 ×2、贴图闪烁 ×1）。</strong> <strong>⭐⭐⭐⭐ 换句话说：</strong>它的实际可用范围，很可能远小于「三个游戏 × 任意 PC」这个第一印象。**</li>
+<li><strong>⚠️⚠️ <code>KohakUnlock</code> 新增的 <code>KOH_AUTOCONFIRM_MS</code> 自动尝试机制与 <code>docs/SAFETY.md</code> 里「Do not automatically retry an uncertain hardware mutation」之间存在本日报已标记的未澄清张力。</strong> <strong>⭐⭐⭐ 而它今日新增的 <code>windows/ad102/</code> 路线引入 EDK2 作为依赖（<code>source/deps/edk2</code> 带 <code>MdePkg/Include/...</code>），</strong>依赖面在扩大<strong>。</strong>⭐⭐⭐⭐ 一个 325⭐ 的项目在两天内从 3 个 commit 涨到 17 个、体积从 62 KB 涨到 1,913 KB（<strong>31 倍</strong>），<strong>⭐⭐⭐⭐⭐ 这个体量增速本身值得独立观察。</strong></li>
+<li><strong>⚠️⚠️ <code>DenisSergeevitch/ex-ussr-kinship-research</code> 一天内发 7 个 release、152 个 commit、14 名贡献者，但没有 release notes 或 changelog —— 于是「今天到底改了什么」不可核验。</strong> <strong>⭐⭐⭐ 这是本日「产出速度」与「产出可核验性」脱钩的一个新样本，与 10-25 记录的 gdirect「7 个 release 全在同一天（跨度 8.8 小时）」是同一族问题的更大规模版。</strong></li>
+<li><strong>⚠️⚠️ <code>nyxis</code> 的 33 个 open issue 里，绝大多数是作者自建的工程待办与平台兼容性故障，而唯一的外部 issue 是一份日文尽调问卷。</strong> <strong>⭐⭐⭐ 这说明它当前的关注者主要是评估者（尽调）而不是使用者 —— ⭐⭐ 而一个「授权安全」框架如果只有评估者没有使用者，其证明边界的价值就还没有被现实验证过。</strong></li>
+<li><strong>⚠️⚠️ 本日报无法核验本日所有涨星项目中「多少 star 来自真实用户」。</strong> <code>stargazers</code> 端点对该 token 持续返回 <strong>404</strong>，逐日星标时间分布不可得 —— <strong>因此本日报今日所有「增速」表述均降级为两次快照的总量差。</strong></li>
+<li><strong>⚠️⚠️ <code>Macintosh/Snapintosh</code> 的组织归属本日出现新情况：昨日记录的 <code>Macintosh/Snapintosh</code> 与 <code>Snapintosh/Snapintosh</code> 现在都返回 404 或指向同一仓库。</strong> <strong>⭐⭐⭐ 本日报实测：<code>Acelogic/Snapintosh</code> 与 <code>Snapintosh/Snapintosh</code> </strong>都解析到同一个仓库<strong>（1,005⭐ ⑂58、subs 13、oi 10、<code>pushed_at</code> 2026-10-25T05:05:43Z），而 <code>Macintosh/Snapintosh</code> </strong>返回 404<strong>，<code>orgs/Macintosh</code> 亦返回 404，<code>orgs/Snapintosh</code> 存在（创建于 2026-10-23T05:28:04Z、8 个公开仓库、23 followers）。</strong>⭐⭐⭐⭐ 即组织名在 10-26 到 10-28 之间又发生了一次变更（<code>Macintosh</code> → <code>Snapintosh</code>），昨日档案里的仓库名 <code>Macintosh/Snapintosh</code> <strong>已作废</strong>。<strong> ⭐⭐⭐⭐⭐ </strong>而 8 个仓库中，除主仓库 1,005⭐、<code>q1n1</code> 36⭐、<code>SnapMetal</code> 2⭐ 外，<code>air2ir3</code> / <code>SnapAdreno</code> / <code>SnapI2CHID</code> / <code>SnapQCC2072</code> / <code>.github</code> 各 0–1⭐ —— 昨日提出的观察点「7 个子仓库中哪一个先获得外部 star」在 48 小时后答案依然是：没有一个（最多 2⭐）。**</li>
+<li><strong>⚠️ 本日无 CVE 驱动的注意力洪峰（连续第 6 个无事件驱动日），因此本日报的「趋势」主要来自结构与工程，而不是事件。</strong> <strong>⭐⭐⭐ 这本身是一个值得记录的生态状态：</strong>在事件退潮期，「谁在认真做事」比「谁在被热议」更容易看清** —— 而今日恰好给出了两组极端对照（2,105⭐ 而 commits 0 vs 1,044⭐ 而 commits 152 + 7 个 release）。</li>
+</ol>
+<h2 id="_7">证据边界总结</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键事实（可核验）</th>
+<th>推断（不构成事实）</th>
+<th>待观察（待后续数据）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NyxFoundation/nyxis</td>
+<td>Lean · MIT · 1274 KB · <strong>仅 2 个 commit</strong> · contributors 1 人 · <code>releases</code> 2 个（v0.1.0 2026-10-26T08:30:23Z / v0.1.1 2026-10-26T08:56:02Z，<strong>均 0 asset</strong>）· topics 空数组 · <strong>subs 3</strong> · <strong>oi 33 本批最高</strong> · Organization <code>NyxFoundation</code>（创建于 2025-07-15、57 个公开仓库、43 followers）· created 2026-10-26T04:26:18Z / pushed 2026-10-26T08:55:57Z · <strong>41.8 小时 297⭐ ⑂11（fork/star 3.7%）</strong> · <code>lean-toolchain</code> = <code>leanprover/lean4:v4.34.1</code> · 全树 <strong>261 条目（<code>truncated: false</code>）</strong>，<code>.lean</code> 102 个、<code>Nyxis/</code> 43、<code>Test/</code> 33、<code>scripts/</code> <strong>34 个 check 脚本</strong> · 主定理 <code>Nyxis.Runtime.authorization_safety</code>（README 原文：「No sequence of HTTP requests can cause an authenticated principal to read, modify, delete, or grant access to data beyond its legitimate permissions.」）· <code>ASSUMPTIONS.md</code> 四色图（绿=纯模型已证 / 蓝=连接代码已证 / <strong>红=连接代码未证即 Assumption 1</strong> / 黄=外部世界与人）· ⭐ 三条假设各四段（the assumption / what happens if it is broken / how developers uphold it / checks）+ 「<strong>These do not prove that the assumption holds, and a passing integration test is never a substitute for a formal proof</strong>」· ⭐「<strong>This document is maintained by humans, and any change to it, including adding, removing, or restructuring assumptions, is made at human discretion.</strong>」· ⭐「What the theorem does not state」含「<strong>unconditional noninterference, including observation of permit and deny</strong>」与「<strong>Attachment contents travel directly between the client and Storage via signed URLs without passing through Nyxis, so content inspection, virus scanning, and size limits are the responsibility of Storage and the application and outside the guarantee</strong>」· ⭐ <code>Test/Axioms.lean</code> 的 <code>allowed = [propext, Classical.choice, Quot.sound]</code> 与 <code>#assert_axioms_under</code> 宏（「列挙を手で保守しないため、補助定理の追加・削除で検査が漏れない」）· <code>docs/proofs.md</code> 四列表格（定理 / 文件 / 述べること / <strong>述べないこと</strong>）· README 首屏徽章 <code>status: under development</code> · 文档主体为日文（<code>ASSUMPTIONS.md</code> 为英译且<strong>日文版为权威</strong>）· issue #33 为日文供应链尽调问卷（<code>umayado17</code>，问 Fenbushi Capital 研究助成的合同主体、期间、附带权利、源码发布权与维护承诺）；#32–#26 为作者自建工程待办；#17–#21 为 Linux/Windows 构建与运行故障；#16 为真实缺陷（<code>Schema parser accepts /* */ block comments, which Cedar's schema syntax does not have</code>）</td>
+<td>推断：<strong>「授权交给 Lean 内核裁决 + 边界写进四色图 + 假设改动需人工裁量」是一套自洽但把治理留给人的设计</strong>；推断：<strong>33 个 issue 的构成（自建待办 + 平台故障 + 1 条尽调）说明当前用户是评估者而非使用者</strong>；推断：<strong>它与 CFSG 同为 Lean 项目但完成度差异极大，差异点恰在「有没有写边界文档」</strong></td>
+<td><strong>⭐⭐⭐ 最重要的一条：issue #33 的四个问题（助成的合同/受领主体与期间、助成附带权利、源码发布权、维护承诺）</strong>在本日快照时<strong>未取得作者回复</strong>（该 issue 本身也无回复记录被本日报核验）· <strong><code>lake build</code> 的实际耗时与两个官方样例能否跑通未核验</strong>（需 Lean 4.34.1 + 本地 Supabase）· <strong><code>docs/proofs.md</code> 中每条定理的 Lean 原文未逐条核验</strong>（本日报只读了表头与部分行）· <strong><code>Nyxis/</code> 43 个条目的具体职责划分未逐目录核验</strong> · <strong>⭐ <code>scripts/</code> 34 个检查脚本中仅核验了文件名，未读实现</strong> · <strong>⭐⭐ 「假设由人裁量修改」这一治理缺口在技术上无解，但本日报无法判断它是否已被实际行使过</strong></td>
+</tr>
+<tr>
+<td>AxiomMath/CFSG</td>
+<td>Lean · Apache-2.0 · <strong>6,071,207 KB ≈ 5.8 GB</strong> · <strong>仅 1 个 commit</strong> · <strong><code>contributors</code> API 返回 0 人</strong> · <code>releases</code> 0 个 · topics 空数组 · subs 2 · oi 0 · Organization <code>AxiomMath</code>（创建于 2025-06-17、64 个公开仓库、307 followers）· created 2026-10-27T13:19:32Z / pushed 2026-10-27T15:07:45Z · <strong>8.9 小时 64⭐ ⑂7（fork/star 10.9%）</strong> · README：「<strong>A sorry-free Lean4 (v4.35.0-rc3) proof of the Classification of Finite Simple Groups (CFSG), built on Mathlib and TauCeti, using the standard axioms <code>Classical.choice</code>, <code>propext</code>, and <code>Quot.sound</code> (no <code>native_decide</code>). We primarily follow the first generation proof of CFSG.</strong>」· ⭐⭐ <strong><code>?recursive=1</code> 返回 <code>truncated: true</code>（65,107 条目）→ 本日报无法声称已核验全仓库 sorry-free</strong> · ⭐⭐ <strong><code>search/code?q=sorry+repo:AxiomMath/CFSG</code> 命中 5 路径</strong>：<code>README.md</code>、<code>Comparator/Challenge.lean</code>、<strong><code>formalization.yaml</code></strong>、<strong><code>CFSG/Certificates/Kernel/Common/AddThm.lean</code></strong>、<strong><code>Certificates/Kernel/Sporadic/RawGen.lean</code></strong> · ⭐⭐⭐ <strong>本日报逐文件 grep 四个主干文件（<code>CFSG.lean</code> 120,786 B / <code>Certificates.lean</code> 231,223 B / <code>CertifiedResults.lean</code> 17,245 B / <code>Comparator/Solution.lean</code>）的 <code>sorry</code> 与 <code>native_decide</code>，计数均为 0</strong> · ⭐⭐⭐ <strong><code>Comparator/Challenge.lean</code> 全文即 <code>theorem CFSGComparator.classification : TauCeti.ClassificationStatement.{u} := sorry</code></strong>（对照题面），<code>Comparator/Solution.lean</code> 同名定理为真证明且 <code>sorry</code> 计数 0 · ⭐ <code>comparator.json</code> 全文（<code>challenge_module</code> / <code>solution_module</code> / <code>theorem_names</code> / <code>permitted_axioms: ["propext","Quot.sound","Classical.choice"]</code>）· ⭐ <code>formalization.yaml</code>：<code>status.sorry_count: 0</code>、<code>sorry_in_definitions: 0</code>、<code>axioms: ["propext","Classical.choice","Quot.sound"]</code>，主结果两条各列 <code>sorry_count: 0</code> + <code>comparator_config</code> + <code>literature_dependencies: []</code>，作者 <strong>30 位</strong>、responsible_maintainers <strong>3 位</strong>（<code>Niels Voss</code> / <code>Vasily Ilin</code> / <code>Dean Cureton</code>），<code>arxiv: ["math.GR"]</code>、<code>msc2020: ["20D05","20D06"]</code> · ⭐⭐ 两处 <code>meta def</code> 里的 <code>sorry</code> 位于 <code>debug.proofAsSorry</code> 选项分支（<code>mkApp2 (mkConst ``sorryAx [levelZero])</code>），<strong>默认构建下不生效</strong> · README：「get this project's build time <strong>under 24 hours</strong>」· <strong>无 <code>.github/workflows</code>（全树无 <code>github</code> 路径）</strong> · <strong>无 <code>docs/</code> 目录</strong></td>
+<td>推断：<strong>challenge/solution 对照结构是把「证明难度」变成可度量过程的设计，而非疏忽</strong> · 推断：<strong>「30 位作者 vs contributors API 返回 0 人」说明作者身份来自外部协作而非本仓库 git 历史</strong> · 推断：<strong>它与 nyxis 的差距不在证明而在「有没有写边界」—— 一个形式化项目不写「我没证明什么」，读者就只能自己猜</strong></td>
+<td><strong>⭐⭐⭐ 最重要：<code>?recursive=1</code> truncated → 无法给出「全仓库 sorry-free」的结论</strong> · <strong><code>CFSG/</code> 子树 65,104 条目的具体职责划分本日报完全未核验</strong>（全树 truncated）· <strong>⭐⭐ <code>docs/</code> 目录不存在 → 「这个证明不覆盖什么」在仓库内没有任何答案</strong> · <strong>⭐⭐ 无 CI → 「sorry-free」与「三条公理」目前只能靠 <code>formalization.yaml</code> 这一份自述文件相信，无可复现佐证</strong> · <strong>⭐ 24 小时构建未复现（本日报明确不建议任何人为了验证它 clone 5.8 GB 并构建 24 小时）</strong> · <strong>⭐ <code>Comparator/Challenge.lean</code> 的 <code>sorry</code> 是否被 <code>lake build</code> 排除在证明链之外，本日报未核验构建配置</strong></td>
+</tr>
+<tr>
+<td>patch-gg/anymove</td>
+<td>Python · Apache-2.0 · 13968 KB · topics 8（agent-skills / animation / blender / claude-code-plugin / dinov2 / gamedev / generative-ai / motion-capture）· <strong>仅 4 个 commit</strong> · contributors 1 人 · <code>releases</code> 1 个（<code>examples-v1</code>，2026-10-27T08:12:11Z，<strong>17 个 asset</strong>）· subs 1 · oi 0 · Organization <code>patch-gg</code>（创建于 2026-10-05、4 个公开仓库、5 followers）· created 2026-10-27T08:00:42Z / pushed 2026-10-27T08:49:46Z · <strong>14.3 小时 170⭐ ⑂16（fork/star 9.4%）</strong> · README 八步表各带可核验量（<strong>42 根骨</strong> / <strong>6 肢体 6 色</strong> / <strong>DINOv2 · 2,200 姿势 · 20 分钟 · 平均误差 40 px → 6 px</strong> / <strong>50 关节 · 10 秒一个 clip</strong> / <strong>24 fps · 不到一分钟</strong> / <strong>$0.26 每 clip · $0.40 建模</strong>）· ⭐⭐ <code>skills/anymove-capture/SKILL.md</code>：「Paw agreement score: <strong>0.8 or more</strong>, the views tell one story: keep it. <strong>0.5-0.8</strong>: look at <code>showcase.mp4</code>, often one limb is off. <strong>Under 0.5</strong>: the video model animated the views differently; reroll the clip」「Reprojection error … <strong>front_x_only of 1-3 px and side of 2-8 px</strong> were typical on good clips. <strong>Scale by the creature's size in the frame.</strong>」「<code>None</code> for a foot means it barely moved」· ⭐⭐⭐ 结果表含失败项：「spider … walk <strong>0.36-0.49 (fails)</strong>」· ⭐⭐⭐ 「<code>--fix-swaps</code> … it "fixed" correct labels on one clip, so only use it after looking」· ⭐⭐ 第 7 步几何：「<strong>x from the front, y from the side, z from both</strong>」· ⭐ 归属声明：「The method is [@CanItCode]'s; the MiniMax H3 LoRA step is [@Graalitoo]'s idea. This repo is our working version of both, with the agent skills to run it.」· ⭐ 6 个 skill（anymove / anymove-rig / anymove-film / anymove-lora / anymove-reader / anymove-capture），每个带 <code>compatibility</code> 字段 · ⭐ 零 GPU 快路径：<code>MOCAP_CREATURE=assets/dragon python -m mocap.solve examples/dragon_roar/det.npz assets/dragon/rigged/rig_info.json runs/dragon/clips/roar/motion.json</code>（<strong>约 20 秒，无 Blender 无下载</strong>）· release asset 体积：<code>reader-{dragon,spider,demon}.pt</code> 各约 <strong>355 MB</strong>、<code>dragon.glb</code> 13,256,908 B、<code>lora-wolf-twocam-h3.safetensors</code> 131,229,792 B、<code>clip-*.mp4</code> 3.4–4.8 MB</td>
+<td>推断：<strong>「两个正交视角恰好确定一个 3D 点」是刻意的最省设计，而非视角不足</strong>（依据：第 7 步明确给出 x/y/z 的来源分配）· 推断：<strong>8 条腿的生物失败（0.36–0.49）与「离群点只能靠鲁棒损失剔除、无冗余视角可交叉验证」一致</strong> · 推断：<strong>355 MB × 3 的读取器体量说明「每个生物一套模型」是当前架构的直接成本</strong></td>
+<td><strong>⭐⭐ <code>mocap/solve.py</code> 的实现、关节限位处理与鲁棒损失的具体形式本窗口未读</strong> · <strong>⭐⭐ 「模型读模型」这一闭环在非示例生物上的泛化性未知</strong>（只有 4 只示例生物的实测数据）· <strong>⭐ 训练读取器需 24 GB 显存 NVIDIA GPU 与 20 分钟，本日报未跑</strong> · <strong>⭐ 付费调用（$0.26/clip）的实际稳定性与成本波动未知</strong> · <strong>⭐ <code>docs/PIPELINE.md</code> 存在但本日报未读</strong> · <strong>⭐ 其「哪个方法归谁」的归属在法律层面是否充分，本日报无法判断</strong></td>
+</tr>
+<tr>
+<td>ngxson/esp32-usb-to-airprint</td>
+<td>C · MIT · 10687 KB · topics 空数组 · <strong>14 commits</strong> · contributors 1 人 · <code>releases</code> 0 个 · <strong>subs 0</strong> · oi 5 · User <code>ngxson</code>（创建于 2014-05-26、179 个公开仓库、1,287 followers）· created 2026-10-26T16:18:54Z / pushed 2026-10-26T20:49:54Z · <strong>30 小时 157⭐ ⑂8（fork/star 5.1%）</strong> · ⭐⭐⭐ <code>tools/gutenprint_ref/build_ref.sh</code> 原文：下载 <code>gutenprint-5.3.5.tar.xz</code> → <code>--enable-static</code> 编译 <code>src/main</code>+<code>src/xml</code> → <code>cc ... gp_ref.c libgutenprint.a</code> → 产出 <code>ref300.prn</code> / <code>ref600.prn</code> / <code>ref300_letter.prn</code> / <code>ref300_2pages.prn</code>，<strong>并为 <code>canon_bjl.h</code> 的 5 个 stream 变体各建一个 Gutenprint 驱动</strong>（<code>MG2900:bjc-MG2900-series</code>、<code>iP2800:bjc-iP2800-series</code>、<code>E3100:bjc-E3100-series</code>、<code>MP230:bjc-MULTIPASS-MP230</code>、<code>iP2700:bjc-PIXMA-iP2700</code>）· ⭐⭐⭐ <code>tools/compare_gutenprint.py</code> docstring 原文：「They must be byte-identical, <strong>except that Gutenprint drops the last raster block when the page height is a multiple of 8</strong> (print-canon.c canon_write_multiraster never flushes it), so our stream may carry extra trailing all-blank ESC (F blocks.」· ⭐⭐ <code>AGENTS.md</code> 六条规则原文（含「<strong>Never read or print the secrets</strong> … test for a non-empty value without printing it」「<strong>Optimisations must not change output.</strong> Pure speed changes must keep the reference CRCs below unchanged」「<strong>Don't edit a script while it runs.</strong> bash reads scripts as it goes; an edit during <code>qemu_selftest.sh</code> broke a run with a syntax error」「A real scan is harmless but scans whatever is on the glass: <strong>the user's documents are private, so don't describe them and don't keep copies</strong>」）· ⭐⭐ 支持表 <strong>19 行</strong>，状态列 <code>🟢 Validated on real printer</code> / <code>🟡 Expected to work, not tested on real hardware yet</code>，<strong>仅 MG2500 / MG2550S 一行为绿</strong> · ⭐ README 首屏呼吁：「<strong>every driver must be tested on the real hardware, not only in emulation</strong>」· ⭐ 组件布局（<code>components/canon_bjl</code> 含 <code>canon_bjl.c</code> / <code>bjl_render.c</code> / <code>testpage.c</code>；<code>components/airprint</code> 含 <code>printer_driver.c</code> / <code>airprint.c</code>（HTTP/1.1 + IPP，端口 631 与 80）/ <code>events.c</code>（SSE）/ <code>ipp.c</code> / <code>raster.c</code>；<code>components/printers/canon_pixma.c</code>；<code>components/scanner/</code> 含 <code>pixma_scan.c</code>（<strong>取自 SANE 的 pixma 后端</strong>）/ <code>jpeg_enc.c</code> / <code>scan_service.c</code>（<code>/scan</code> 与 <code>/eSCL</code>）/ <code>shared_buf.c</code>（<strong>PSRAM 大缓冲</strong>）/ <code>fake_scanner.c</code>）· ⭐ <code>MODE=dev</code>（只处理打印任务不真打印，扫描显示内置测试页）/ <code>MODE=debug</code>（可 OTA）/ <code>MODE=normal</code> · 4 个 tools 脚本含 <code>run_tests.sh</code>（<code>GUTENPRINT=1 AIRPRINT=1</code> / <code>WEB=1</code>）与 <code>qemu_selftest.sh</code> · 5 条 issue 全为功能请求（<code>#5 Web installer</code> / <code>#4 captive portal</code> / <code>#3 Flash esp32 from web</code> / <code>#2 Captive Portal</code> / <code>#1 Epson 2400T</code>）</td>
+<td>推断：<strong>「核心同时编到 host 与 ESP32」是为换取「改完能先在主机上跑测试」，而不是代码洁癖</strong>（依据：AGENTS.md 明确要求每处改动先过 host 测试）· 推断：<strong>「19 行支持表只绿 1 行」与 157⭐ 并存，说明 star 与真机验证度完全脱钩</strong> · 推断：<strong>Gutenprint 作为参照系是本项目正确性论证的支柱，也是其正确性的上限</strong></td>
+<td><strong>⭐⭐ 参照系自身缺陷的完整清单本日报未知</strong>（只知「页高是 8 的倍数时丢最后一个 raster block」这一条）· <strong>⭐⭐ <code>components/</code> 各 C 文件的实现本日报未读</strong>（本日报只读了布局与文件名）· <strong>⭐ 真机打印/扫描未验证</strong>（需自购 ESP32-S3 双 USB-C 板 + 一台 Canon 打印机）· <strong>⭐ <code>MODE=dev</code> 与 <code>MODE=debug</code> 的行为差异未逐条核验</strong> · <strong>⭐ 固件为 IPv4-only，macOS 上 <code>.local</code> 解析约需 5 秒（AGENTS.md 自述）</strong> · <strong>⭐⭐ subs 0 说明尚无深度关注者；且 5 条 issue 全是许愿，说明还没有「我试了但坏了」的报告</strong></td>
+</tr>
+<tr>
+<td>Shagg88/COGBox</td>
+<td>C++ · MIT · 3254 KB · topics 空数组 · <strong>21 commits</strong> · contributors 1 人 · <code>releases</code> 1 个（<code>0.1.0</code>，2026-10-27T04:45:04Z，<strong>2 个 asset</strong>）· subs 4 · <strong>oi 12 本批最高</strong> · User <code>Shagg88</code>（创建于 2026-10-16、2 个公开仓库、8 followers）· created 2026-10-27T04:28:46Z / pushed 2026-10-27T15:28:31Z · <strong>17.8 小时 117⭐ ⑂2（fork/star 1.7%）</strong> · ⭐⭐⭐ 路线原文：「The games' original Xbox 360 code is translated ahead of time into C++ and compiled into ordinary Windows programs - <strong>no emulator interprets the game while you play.</strong> The parts the console's hardware did are supplied by our code, most importantly <strong>our own renderer</strong>, which draws every frame on Direct3D 12 (or Vulkan, experimental).」· ⭐⭐⭐⭐「<strong>"In testing" means on the developer's PC (an RTX 3080 Ti) and scripted test runs through the chapters. Other hardware hasn't been tried yet - please report what you find.</strong>」· ⭐⭐ 三游戏版本表（Gears 2 = US disc 0.0.0.5 + Title Update 6；Gears 3 = Disc + TU6；Judgment = Disc + <strong>TU4</strong>）· ⭐⭐ 「<strong>You need your own copy of each game. No game files are included or ever will be.</strong>」· ⭐⭐ 法务段：「This is an unofficial fan project. It is not made by, endorsed by or connected to Microsoft, Xbox Game Studios, The Coalition, Epic Games or People Can Fly. "Gears of War", "Xbox" and "Xbox 360" are trademarks of Microsoft.」· ⭐⭐ box art 与背景来自 <code>x360db</code>，「<strong>downloaded only when you press "Get box art"</strong>」· ⭐⭐⭐ <strong>484 个 <code>Gears*-Native</code> 源文件</strong>（<code>Gears2-Native</code> / <code>Gears3-Native</code> / <code>GearsJ-Native</code> 三目录，全树 546 条目、<code>truncated: false</code>）· ⭐⭐ 能力清单（任意分辨率 1x–4x 至 5K、SMAA/FSR/DLSS/XeSS、解除 30 fps 上限、<strong>着色器 1 毫秒内直译 D3D12</strong>、管线后台构建、一帧在途 + Reflex/Anti-Lag 2、HDR10、21:9、16x 各向异性、视野角、运动模糊/景深/镜头光晕可开关、Gears 2 分屏、章节选择、游戏内菜单 Back+Start 或 F1）· 硬件前提（Windows 10/11 64 位 或 Linux/Steam Deck 经 Proton <strong>实验性</strong>、AVX2 CPU 约 2013 年后、DX12 显卡、自带拷贝、最后 title update：Gears 2 <code>4D53082D</code> / Gears 3 <code>4D5308AB</code> / Judgment <code>4D530A26</code>、每游戏 8–16 GB）· ⭐⭐⭐ <strong>12 条 issue 全为真实用户故障或请求</strong>：<code>#9 DX12 not working in GoW2</code> / <code>#11 "Error initializing network layer" for GoW2 on Steam Deck</code> / <code>#7 Cant get games to launch on steamdeck buttons greyed out</code> / <code>#3 SteamOS issues</code> / <code>#6 GOW3 Crash</code> / <code>#1 Game crashes on start GOW: Judgement</code> / <code>#5 GoWJudgmement Flickering textures</code> / <code>#12 Camera shake (roadie run) not working</code> / <code>#2 mouse movement is too slow</code> / <code>#10 Multi-monitor setup for coop</code> / <code>#4 Add support european version</code> / <code>#8 Interview request from The Raytrace</code></td>
+<td>推断：<strong>「In testing」的定义精确到「一台具体 GPU + 脚本化跑章节」，且 12 条 issue 中 6 条是「别的硬件上崩」—— 说明这个定义在 issue 爆发前就已写下并起了作用</strong> · 推断：<strong>自写渲染器是本项目相对模拟器的真实增量（分辨率上限、帧生成、着色器预编译）</strong> · 推断：<strong>「No game files are included or ever will be」把分发风险整体移出项目，是可持续发布的前提</strong></td>
+<td><strong>⭐⭐⭐ 最重要：<code>Gears*-Native</code> 的 484 个源文件的具体实现本日报完全未核验</strong>（本日报只数了文件数与目录划分）· <strong>⭐⭐ 「static recompilation」的技术细节（用了什么反汇编/翻译工具链）本日报未核验</strong> · <strong>⭐⭐ 真机可玩性未验证</strong>（需 Windows 10/11 + AVX2 + DX12 + 自带拷贝 + TU6/TU4）· <strong>⭐⭐ Steam Deck 经 Proton 的支持标注为 experimental，且 3 条 issue 正是 Steam Deck 相关</strong> · <strong>⭐ 只 1 个 release 且只有 2 个 asset —— 分发能力远未成型</strong> · <strong>⭐⭐ 标题更新包需从「曾在线玩过该游戏的主机」提取（<code>Content\0000...\</code>），这是一条普通用户难以满足的前提</strong> · <strong>⭐ <code>owner</code> 账号创建于 2026-10-16、仅 2 个公开仓库、8 followers —— 本日报记为「身份可核验但历史很短」</strong></td>
+</tr>
+<tr>
+<td>本日农场簇 A（4 仓库，未建档）</td>
+<td>created <strong>2026-10-27T11:42:40Z–11:42:42Z（跨度 3 秒）</strong> · <code>Pebblebretrap/Camtasia</code>（100⭐ ⑂0）/ <code>Stampdrusupply/Cinema-4d</code>（100⭐ ⑂0）/ <code>TyphoonMidgeRegister/KMS-Pico</code>（100⭐ ⑂0）/ <code>daimyodragonpit/BorisFX</code>（99⭐ ⑂0）· <strong>恰 2 个文件</strong>（<code>README.md</code> 1,626/1,703/1,629/1,681 B + <code>description.json</code> 79/80/78/78 B）· <strong>体积均 2 KB</strong> · ⭐ <code>description.json</code> base64 解码后<strong>只替换软件名</strong>（「Camtasia Crack 2026 stable release for creative tasks」/「Cinema 4D Crack 2026 stable release for creative tasks」/「Kms Pico Free 2026 stable release for creative tasks」/「BorisFX Crack 2026 stable release for creative tasks」）· owner 名互不成词法关系 · ⭐⭐ <code>search/repositories?q=created:2026-10-27T11:40:00Z..2026-10-27T11:46:00Z+size:&lt;=10</code> 返回 <strong>1,386</strong> 个仓库，其中 <code>stars:&gt;=50</code> 的 4 个构成本簇</td>
+<td>推断：<strong>这是本日报已记录四类批量异常模式的第五类变体，且比第四类更极端（文件数从 2 降到 2、体积从 2–3 KB 降到 2 KB、连 LICENSE 都没有了）</strong></td>
+<td><strong>⭐ 本日报无法核验这 4 个仓库的 star 是自授还是外部获得</strong>（<code>stargazers</code> 端点 404）· <strong>⭐ 无法确认该簇在更长窗口内是否延续</strong>（只扫了一个 6 分钟窗）· <strong>⭐ 分类判断（农场）基于内容与结构的交叉证据，属本日报判断而非平台事实</strong></td>
+</tr>
+<tr>
+<td>本日农场簇 B（6 仓库，未建档）</td>
+<td><code>russells9175/Microsoft-365-Full-Suite-2026</code>（52⭐ ⑂9）/ <code>chase4812/CapCut-Pro-Studio-2026</code>（51⭐ ⑂7）/ <code>bria-stewart-12/Acrobat-Pro-PDF-Studio-2026</code>（51⭐ ⑂9）/ <code>laylaellis20/PremierePro-Cinematic-Editor-2026</code>（51⭐ ⑂9）/ <code>shaneyoung321/FL-Studio-Producer-Suite-2026</code>（50⭐ ⑂9）/ <code>cbarnes607/AutoCAD-Design-Studio-2026</code>（50⭐ ⑂10）· created <strong>2026-10-27T14:55:20Z–17:30:31Z</strong> · <strong>体积均 8 KB</strong> · <strong>文件数均恰为 3</strong>（<code>.gitignore</code> <strong>4,664 B</strong> / <code>LICENSE</code> 1,064–1,070 B / <code>README.md</code> 8,466–8,869 B）· ⭐⭐⭐ <strong>6 个仓库的 <code>.gitignore</code> blob SHA 完全相同：<code>6f596e17917419c463b0d15bf1f0bce19b8918eb</code></strong>（Git blob SHA 为内容寻址哈希，相同即同一份内容）· stars 取值集合 {50, 51, 52} · README 均为同构模板（<code># ⚡ &lt;软件名&gt;</code> + icons8 图标 + <code>&lt;h1 align="center"&gt;</code> + 说明段）· owner 名互不成词法关系 · ⭐⭐ 分母：<code>created:2026-10-26..2026-10-28 + stars:&gt;=40</code> 共 <strong>77</strong> 个仓库，其中 <code>size:&lt;=20</code> 的 <strong>23</strong> 个（≈30%）</td>
+<td>推断：<strong>⭐⭐⭐ 这是本日报至今最强的单项异常判据 —— 跨仓库 blob SHA 相同是内容复制的直接证据，不依赖任何间接统计（文件数、体积、owner 名、创建时间窗）</strong> · 推断：<strong>同构模板 + 精确 star/fork 取值集合 + 共享 blob 共同指向批量生成</strong></td>
+<td><strong>⭐ 本日报无法核验这 6 个仓库的 star 来源</strong> · <strong>⭐⭐ 只核验了 6 个仓库的 <code>.gitignore</code> 一个文件的 SHA；README 是否也共享 blob 未核验</strong>（README 长度各不相同，故大概率不同）· <strong>⭐ 无法确认该簇在更长窗口内是否延续</strong> · <strong>⭐ 分类判断属本日报判断而非平台事实</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>trailofbits/brotli-checker</code> <strong>56⭐ ⑂4</strong>（10-26 记录 44⭐ ⑂3）· <strong>subs 仍为 0</strong> · commits 26 → <strong>33</strong> · oi 0→1 · <code>pushed_at</code> 2026-10-27T20:20:26Z · ⭐ 三条新 commit：「<strong>Recognize stable Brotli decoder tables independently of patch fingerprints</strong>」(2026-10-26T21:33:05Z) / 「Avoid repeated compiler-catalog parsing in mutation test setup」(20:34:35Z) / 「Fix cross-version parser test and parallelize mutation CI by module」(20:12:26Z) · ⭐ <code>SKILL.md</code> 现载：Exit 0 = 证据收集完成而非二进制已修、Exit 3 = 证据不完整、<strong><code>fixed_code_match</code> 只涉及已匹配的解码器代码、不清掉其他副本、其本身不产生 exit 0</strong> · ⭐ 打包引用覆盖 <strong>11 种架构</strong>（x86 / x86-64 / ARM/Thumb / AArch64 / RISC-V64 / PowerPC64 LE / s390x / MIPS32-64 两种字节序 / LoongArch64），<strong>432 条引用</strong>覆盖 <code>-O2</code>/<code>-O3</code> × PIC/non-PIC × 三组 affected/fixed pair，含 GCC 14.2、AArch64 GCC 16.2.1、Clang 19 LoongArch，以及 LoongArch 的 GCC 14.2 <code>-mno-relax</code> 真实 LoongArch glibc sysroot 引用；明写「<strong>inspect <code>build_note</code>, <code>headers_sha256</code>, compiler, and flags rather than treating the ISA as the build identity</strong>」· ⭐ <code>fingerprints.json</code> 的 <code>verified_on</code> <strong>仍为 "2026-10-23"</strong>、<code>inventory_revision</code> <strong>仍为 <code>6f34a3ae…</code></strong></td>
+<td>推断：<strong>「识别稳定解码器表」是对「快照会过期」这一昨日待观察项的正面回应，方向正确</strong> · 推断：<strong><code>verified_on</code> 与 <code>inventory_revision</code> 均未变说明指纹集本身未更新，新能力是「部分」摆脱快照依赖</strong></td>
+<td><strong>⭐ <code>stargazers</code> 端点 404 → 本日报无法核验 star 来源</strong> · <strong>⭐⭐ 新增的「稳定解码器表识别」在真实部署中的误报/漏报率未知</strong> · <strong>⭐ <code>subs</code> 仍为 0 说明尚无深度关注者</strong> · <strong>⭐ 33 个 commit 中仅 3 条被本日报逐条核验标题，其余未读</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>mirkobrombin/raven</code> <strong>488⭐ ⑂11</strong>（10-26 记录 378⭐ ⑂8）· commits 678 → <strong>747</strong> · subs 4→5 · oi 8→12 · <code>pushed_at</code> 2026-10-27T17:49:07Z · 体积 18,529 → <strong>21,229 KB</strong> · <code>language</code> 仍为 <code>C++</code> · <code>license.spdx_id</code> <strong>仍为 NOASSERTION</strong> · <strong><code>releases</code> 仍为 0 个</strong></td>
+<td>推断：<strong>昨日记录的「混合许可项目的诚实答案」这一判断今日不变</strong></td>
+<td><strong>⭐ 「未发布 release」这条今日依然成立 —— 用户无法用 release 资产安装</strong> · <strong>⭐ 本日报未核验今日新增的 69 个 commit 内容</strong> · <strong>⭐ 本日报无法核验 star 来源</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>KohakuBlueleaf/KohakUnlock</code> <strong>325⭐ ⑂30</strong>（10-26 记录 148⭐ ⑂9）· <strong>+120%</strong> · commits 3 → <strong>17</strong> · ⭐⭐ <strong>并入两条外部 PR（#10 / #8，作者 <code>DarkSkar</code>）</strong> · subs 2→3 · oi 3→6 · 体积 62 → <strong>1,913 KB（31 倍）</strong> · <code>pushed_at</code> 2026-10-27T11:40:25Z · <strong>⭐ <code>docs/SAFETY.md</code> 2,917 字节，SHA <code>b8b58526a1ab9c2ca393849b2af4461737fff1be</code>，其原文「Do not automatically retry an uncertain hardware mutation.」本日未变</strong> · ⭐⭐ 关键 commit：「<strong>sin-USB fase 4: payload clavada solo por GUID (numero de particion a comodin 0 en EspGuidPath) — el run hardware 26-10 fallo porque diskpart renumero la payload de la planeada part 5 a part 4 tras el shrink de C:</strong>; fixture fiel (payload part 4) + test de regresion APP_PAYLOAD_RENUM; suite 55 casos PASS**」· ⭐ 新增 <code>windows/ad102/</code> 路线（引入 EDK2 <code>source/deps/edk2</code> 带 <code>MdePkg/Include/...</code>）+ <code>KOH_AUTOCONFIRM_MS</code> 自动尝试（<code>windows/ad102/source/unlock/app.c</code> / <code>local_profile.h</code> / <code>tests/test_ad103_app.c</code>）+ 「payload discovery requires exactly-one match; verify root Close() before switching」+ 「UCRT host harness fix — native _aligned_malloc/_aligned_free pairs on Windows (glibc keeps aligned_alloc)」</td>
+<td>推断：<strong>⭐⭐⭐ 「标识符用稳定量（GUID）而非易变量（分区号）」是本日最可迁移的一条工程纪律，且它是被一次真机失败换来的</strong> · 推断：<strong>⭐⭐⭐ <code>KOH_AUTOCONFIRM_MS</code> 与 SAFETY.md 的「不要自动重试不确定的硬件变更」之间存在张力，但两者是否属同一层本日报未核验</strong></td>
+<td><strong>⭐⭐⭐ 最重要：<code>KOH_AUTOCONFIRM_MS</code> 是否属于 SAFETY.md 所指「不确定的硬件变更的重试」，仓库未明确说明 —— 待作者澄清</strong> · <strong>⭐⭐ <code>windows/ad102/README.md</code> 与 <code>docs/ADA-WINDOWS.md</code> 本窗口未读</strong> · <strong>⭐⭐ 体积 31 倍增长（62 KB → 1,913 KB）与 2 条外部 PR 同时发生，其关系未核验</strong> · <strong>⭐ 本日报未在硬件上验证任何一项</strong> · <strong>⭐ <code>subs</code> 仍为 3</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>DenisSergeevitch/ex-ussr-kinship-research</code> <strong>1,044⭐ ⑂105</strong>（10-26 记录 526⭐ ⑂48）· <strong>+98%</strong> · ⭐⭐⭐ <strong><code>releases</code> 2 → 7</strong>（v1.4.0 → v1.10.0，<strong>v1.10.0 于 2026-10-27T22:34:04Z，距快照仅约 42 分钟</strong>）· ⭐⭐ <strong><code>contributors</code> 4 → 14 人</strong>（<code>DenisSergeevitch</code>、<code>maxkrut</code>、<code>Smolevich</code>、<code>korotaS</code>、<code>RomanSytnyk</code>、<code>vdementev</code>、<code>alex-kashkarov</code>、<code>Osipchuk</code>、<code>Kazemir</code>、<code>KarimovDev</code>、<code>OleksiiBulba</code>、<code>Smyshnikof</code>、<code>uburuntu</code>、<code>Rai220</code>）· commits 41 → <strong>152</strong> · subs 7→12 · oi 0→3 · 体积 642 → <strong>771 KB</strong> · <code>pushed_at</code> 2026-10-27T19:10:59Z · MIT</td>
+<td>推断：<strong>⭐⭐⭐ 这是本日唯一「热度、产出、协作、发布」四条线同时向上的样本</strong> · 推断：<strong>⭐⭐ 一天 7 个 release、152 commits、14 contributors 而无 release notes/changelog → 「发了什么」不可核验，与 10-25 的 gdirect 同族但规模更大</strong></td>
+<td><strong>⭐⭐⭐ 一天 7 个版本的实际内容差异本日报无法核验</strong>（无 release notes）· <strong>⭐ 本日报无法核验 star 来源</strong> · <strong>⭐⭐⭐⭐ 「1,044⭐ 而 7 个 release / 14 名贡献者」是本日报至今最接近「真实协作项目」的样本 —— 值得单独持续跟踪它的 issue 质量与 release 说明</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>unclebob/ub-mode</code> <strong>2,105⭐ ⑂100</strong>（10-26 记录 341⭐ ⑂16）· <strong>⭐⭐ +517%</strong> · ⭐⭐ <strong>commits 仍为 4</strong>（最后一条仍是 2026-10-25T16:07:58Z「Remove crap4clj and clj-mutate references from README」）· <strong><code>releases</code> 仍为 0</strong> · <strong>仓库仍恰为 2 个文件</strong>（<code>README.md</code> 2,195 B + <code>SKILL.md</code> 3,958 B）· <strong>仍无 LICENSE 文件、<code>license.spdx_id</code> 仍为 null</strong> · ⭐ <strong>subs 1 → 16</strong> · fork/star 4.7%→4.8% · <code>pushed_at</code> 仍停在 2026-10-25T16:07:59Z（<strong>距快照约 54 小时零提交</strong>）</td>
+<td>推断：<strong>⭐⭐⭐⭐ +517% 的 star 与「一个字节的代码变更」之间不存在因果关系</strong>；推断：<strong>⭐⭐⭐ 对原则型/指针型仓库，<code>subscribers_count</code> 从 1 到 16 可能比 star 更接近真实关注（people subscribe to principles, not to code）</strong></td>
+<td><strong>⭐⭐ 本日报无法核验 star 来源</strong> · <strong>⭐⭐ 16 个订阅者的身份与意图本日报无法核验</strong> · <strong>⭐⭐⭐ 最要紧的一条：</strong>「SKILL.md 是否真的调用 crapper / dryer / mutator 三个工具」这一 10-26 提出的最关键待观察项，本日仍未核验**（SKILL.md 未变，commits 仍为 4，故大概率仍未调用）</td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>songjianyang/xss-audit</code> <strong>503⭐ ⑂141</strong>（10-26 记录 393⭐ ⑂115）· fork/star 25.8%→<strong>28.0%</strong> · <strong>commits 仍为 1</strong>（唯一 commit 仍是 2026-10-24T11:32:14Z「✨ feat: Add initial XSS audit skill」）· <strong><code>releases</code> 仍为 0</strong> · subs 仍为 1 · <code>pushed_at</code> 仍停在 2026-10-24T11:32:55Z（<strong>距快照 82.7 小时零提交</strong>）· oi 仍为 0</td>
+<td>推断：<strong>⭐⭐⭐ 「热度涨 28% 而代码一字未动」在本日继续成立；且 fork/star 28% 对应「fork 去改写 14 层清单以适配自己的框架」而非质量提升</strong></td>
+<td><strong>⭐ 本日报无法核验 star 来源</strong> · <strong>⭐⭐ 28% 的 fork 比例说明有大量二次加工，但这些 fork 的内容本日报未检视</strong> · <strong>⭐ 仍无外部使用者反馈（oi 0、subs 1）</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>YoyoLin008/mcreplay</code> <strong>202⭐ ⑂12</strong>（10-26 记录 200⭐ ⑂12）· <strong>subs 仍为 0</strong> · commits 仍为 8（最后一条仍是 2026-10-24T18:56:00Z）· <code>pushed_at</code> 仍停在 2026-10-24T18:56:03Z（<strong>距快照 75 小时零提交</strong>）· <code>license.spdx_id</code> 仍为 NOASSERTION</td>
+<td>推断：<strong>「结构性契约测试」的主张至今仍无任何外部采用信号</strong></td>
+<td><strong>⭐ 本日报无法核验 star 来源</strong> · <strong>⭐⭐ 与 10-26 相同：subs 0 是本批最刺眼的一条 —— 202⭐ 而零深度关注者</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>rddmwmddr/android-ad-cleaner</code> <strong>3,170⭐ ⑂267</strong>（10-26 记录 728⭐ ⑂54）· <strong>⭐ +335%</strong> · ⭐⭐⭐ <strong>oi 22 → 178</strong> · ⭐⭐ <strong><code>releases</code> 2 → 7</strong>（v0.2.1→v0.2.5，<strong>v0.2.5 于 2026-10-27T12:16:35Z 带 5 个 asset</strong>）· commits 25 → <strong>57</strong> · subs 5→8 · 体积 4,310 → 4,181 KB · <code>pushed_at</code> 2026-10-27T14:43:09Z（<strong>距快照约 7.5 小时</strong>）· <strong>12 条最近 issue 已核验，全部为具体中文故障描述或机型适配请求</strong>：<code>#211 [问题] 对三星手机好像毫无作用</code> / <code>#209 [问题] REDMI K90 Pro Max（OS 4.0.5.0 A17）安全模式跑参考脚本：系统广告/应用商店/浏览器等 6 段找不到入口</code> / <code>#208 #207 #206 [新机型] 希望适配小米14系列</code> / <code>#205 [问题] chan-off 在 HyperOS 3 / Android 16 中断：dumpsys 管道 grep -m1 触发 adbutils shell output invalid</code> / <code>#204 适配 REDMI K80 至尊版（25060RK16C / HyperOS 2 / Android 16）</code> / <code>#203 [问题] 已打开usb调试安全设置，仍显示未开</code> / <code>#202 [问题] 第二步，检测，一直下一步不了</code> / <code>#201 [问题] 有许多软件仍然保留广告，并不是很成功</code> / <code>#200 [新机型] 希望支持三星s25u</code> / <code>#199 [新机型] 一加ace6至尊版</code></td>
+<td>推断：<strong>⭐⭐⭐⭐ 这是本日最强的采用信号</strong> —— 178 个 issue、7 个带 asset 的 release、+32 commits 与距快照 7.5 小时的 push 四者一致；且 <code>#205</code> / <code>#209</code> 是「照文档操作后在具体环境版本上以具体错误串失败」，比许愿强一个量级</td>
+<td><strong>⭐ 本日报无法核验 star 来源</strong> · <strong>⭐⭐⭐ 178 个 issue 中本日报只读了最近 12 条；其余 166 条的内容分布未知</strong> · <strong>⭐⭐ <code>pushed_at</code> 距快照 7.5 小时与 178 个 issue 同时出现，说明它是本批唯一「需求 → 修复 → 发版」闭环可见的项目</strong> · <strong>⭐ 体积 4,310 → 4,181 KB 略降（可能是构建产物清理），本日报未核验</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（本日更新）</td>
+<td><code>xMazaki/unbloat-android-tv</code> <strong>277⭐ ⑂22</strong>（10-26 记录 249⭐ ⑂20）· subs 4 · commits 未变 · <code>pushed_at</code> 2026-10-27T20:03:33Z（<strong>距快照约 2 小时</strong>）· oi 仍为 0 · <code>license.spdx_id</code> 仍为 NOASSERTION</td>
+<td>推断：<strong>⭐ 与 android-ad-cleaner 今日的 178 个 issue 相比，本项目 oi 仍为 0 —— 同一赛道内「有真实反馈」与「只有 star」的分歧在今日继续扩大</strong></td>
+<td><strong>⭐ 本日报未核验其今日新增 commit 的内容</strong> · <strong>⭐⭐ 该赛道已连续多日出现新项目，本日报今日未将其单列为趋势（因本日无新增项具备独立架构价值）</strong></td>
+</tr>
+<tr>
+<td>持续跟踪项（组织更名）</td>
+<td>⭐⭐⭐⭐ <strong><code>Macintosh/Snapintosh</code> 已作废。</strong> 本日报实测：<code>Acelogic/Snapintosh</code> 与 <code>Snapintosh/Snapintosh</code> <strong>都解析到同一仓库</strong>（1,005⭐ ⑂58、subs 13、oi 10、<code>pushed_at</code> 2026-10-25T05:05:43Z）；<strong><code>Macintosh/Snapintosh</code> 返回 404</strong>；<code>orgs/Macintosh</code> 返回 404；<code>orgs/Snapintosh</code> 存在（<strong>创建于 2026-10-23T05:28:04Z</strong>、8 个公开仓库、23 followers）。<strong>⭐ 即组织名在 10-26 → 10-28 之间又变更了一次（<code>Macintosh</code> → <code>Snapintosh</code>）。</strong> 8 个仓库：<code>Snapintosh/Snapintosh</code> 1,005⭐、<code>Snapintosh/q1n1</code> 36⭐、<code>Snapintosh/SnapMetal</code> 2⭐、<code>Snapintosh/air2ir3</code> 1⭐、<code>Snapintosh/SnapAdreno</code> 1⭐、<code>Snapintosh/SnapI2CHID</code> 1⭐、<code>Snapintosh/SnapQCC2072</code> 0⭐、<code>Snapintosh/.github</code> 0⭐</td>
+<td>推断：<strong>⭐⭐ 组织更名仍在进行中 —— 10-24 记录「Acelogic → Macintosh」，10-26 记录「Macintosh → Snapintosh」，今日实测确认</strong> · 推断：<strong>⭐⭐ 昨日档案的仓库名已作废，且更名可能继续</strong></td>
+<td><strong>⭐⭐⭐ 10-24 提出的观察点「7 个子仓库中哪一个先获得外部 star」在 48 小时后答案依然是：没有一个（最多 2⭐）</strong> · <strong>⭐⭐ <code>pushed_at</code> 停在 2026-10-25T05:05:43Z，距快照约 2.5 天无提交</strong> · <strong>⭐⭐ 组织名可能再次变更，本仓库档案需按此模式持续复核</strong></td>
+</tr>
+<tr>
+<td>未建档候选（本日记录）</td>
+<td><code>Motionsites-AI/claude-skill</code>（<strong>455⭐ ⑂52</strong>，Python，NOASSERTION，1,942 KB，<strong>仅 2 个 commit</strong>，<code>contributors</code> API 返回 <strong>0 人</strong>，subs 4，oi 0，Organization <code>Motionsites-AI</code> 创建于 2026-10-26T06:58:06Z、1 个公开仓库、3 followers）—— <strong>⭐ 许可分层明确</strong>：LICENSE 明写「Skill instructions, references and scripts (everything except the folders "examples" and "media") are released under the MIT License」，而「The example prompts (folder "examples") and the media they reference … are © MotionSites … <strong>You may not resell or redistribute them as a prompt or media collection</strong>」；<strong>⭐ 全树 80 条目，<code>examples/</code> 41 项、<code>media/</code> 7 项</strong>，<code>.claude-plugin/plugin.json</code> 版本 1.0.0；<strong>⭐ 4 条 issue 全为功能请求</strong>（<code>#5 Web installer</code> / <code>#4 captive portal</code> / <code>#3 Flash esp32 from web</code> / <code>#2 Captive Portal</code> / <code>#1 Epson 2400T</code>，其中 3 条与 esp32-usb-to-airprint 同一作者）· <code>DiaoOrg/awesome-supermimic</code>（<strong>231⭐ ⑂6</strong>，CC0-1.0，16,361 KB，10 commits，contributors 3 人，Organization <code>DiaoOrg</code> 创建于 2026-10-26T03:59:15Z、8 个公开仓库、69 followers；<strong>⭐⭐ 明写「Official code status — checked 2026-10-26: the official website links the paper, video, and browser demo, but does not link a training-code repository. The projects below are community implementations and extensions」</strong>，README 59,291 字节 + <code>README_zh-CN.md</code> 56,243 字节 + <code>assets/</code>）· <code>daniellockyer/dstack</code>（125⭐ ⑂1，<strong>仅 2 个文件、7 commits，README 自述「This repo is a work in progress. </strong>Skills are coming soon.<strong>」</strong>）· <code>AxiomMath/CFSG</code> 的组织 <code>AxiomMath</code>（64 个公开仓库、307 followers）· <code>xMazaki/unbloat-android-tv</code>（277⭐ ⑂22）</td>
+<td>推断：<strong>⭐⭐ <code>Motionsites-AI/claude-skill</code> 的许可分层（MIT 指令 + 不可再分发的示例与素材）是本日报今日第三种许可形态</strong>（前两种为 raven 的组件清单与 unbloat 的素材排除声明）—— <strong>即「素材可商用但不可再分发」是一个独立于 MIT 的条款维度</strong> · 推断：<strong>⭐⭐ <code>awesome-supermimic</code> 明写「官方未发布训练代码」，因此它是一份资源索引而非实现</strong></td>
+<td><strong>⭐⭐ <code>claude-skill</code> 的 55+ 技术配方与 40 个示例 prompt 的实际质量本日报未核验</strong>（只核验了 LICENSE、plugin.json、树结构与 issue 列表）· <strong>⭐⭐⭐ 「让 Claude 截图自查并反复修」这个核心主张（look-and-fix loop + Playwright + 评分 rubric）本日报完全未核验</strong> · <strong>⭐⭐⭐ <code>awesome-supermimic</code> 引用的 8 篇 arXiv 与 10 个社区实现本日报均未核验</strong>（只核验了它对官方代码状态的声明）· <strong>⭐ <code>dstack</code> 是一个空壳（2 个文件、无 skill），125⭐ 无产出</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>总证据边界：</strong> 本日全部元数据取自 <strong>2026-10-27T22:16:31Z 单一快照</strong>（= 2026-10-28 CST 06:16），经 gh CLI 认证的 GitHub REST / Search API；仓库树经 <code>git/trees/HEAD</code> 与 <code>?recursive=1</code>（<strong>已逐项检查 <code>truncated</code> 字段</strong>）；历史与贡献者规模经 <code>commits</code>（<strong>用 Link 头 <code>rel="last"</code> 取精确总数</strong>）与 <code>contributors</code>；文件原文经 <code>contents/{...}</code>（<code>Accept: application/vnd.github.raw</code>）；账号与组织信息经 <code>users/{owner}</code> 与 <code>orgs/{org}</code>。<strong>「X 小时 / Y 天 Z⭐」按 <code>created_at</code>（UTC）到 2026-10-28 计算，总星数除以经过时长为下限粗估；本日报未做逐日 star 增量统计（<code>stargazers</code> 端点对该 token 持续返回 404），因此所有「增速」表述都是两次快照之间的总量差，不是当日新增，也不能读作「用户数」。</strong>
+<strong>⭐⭐ 本日核验出的最重要方法论事实</strong>：<code>AxiomMath/CFSG</code> 的 <code>?recursive=1</code> 返回 <code>truncated: true</code>（65,107 条目），<strong>因此本日报拒绝给出「全仓库 sorry-free」的结论</strong>，并明确区分了两件事：<strong>「主干四个文件的 <code>sorry</code> 与 <code>native_decide</code> 计数为 0」是可核验事实；「仓库内另有一处刻意的对照题面 <code>sorry</code>（<code>Comparator/Challenge.lean</code>）与两处默认关闭的调试开关」也是可核验事实；「这个项目是否真的在证明层面无 sorry」则超出本日报的核验能力。</strong>
+<strong>⭐⭐⭐ 本日新增的第五类批量异常模式</strong>：两组内容与结构同时同构的簇（3 秒内 4 个 + 14:55–17:30 之间 6 个），<strong>且簇 B 的 6 个仓库共享同一个 <code>.gitignore</code> blob SHA（<code>6f596e17…</code>）—— 这是本日报至今最强的一项个体异常判据</strong>。同窗口内 <code>created:2026-10-26..2026-10-28 + stars:&gt;=40</code> 共 <strong>77</strong> 个仓库，其中 <code>size:&lt;=20</code> 的 <strong>23</strong> 个（≈30%）。
+<strong>⭐⭐ 本日事件面</strong>：本日<strong>无 CVE 驱动的注意力洪峰</strong>（自 2026-10-21 起连续第 6 个无事件驱动日；CVE-2026-111497 的仓库潮在 10-26 记录的逐日 2 → 9 → 16 → 12 → 11 → <strong>0</strong>）。<strong>取而代之的是一条跨领域信号</strong>：三个互不相识的项目（nyxis / CFSG / esp32-usb-to-airprint）在同一天各自把「我的结论成立」交给了别人能独立重跑的东西来裁决。
+<strong>⭐⭐⭐⭐⭐⭐⭐⭐ 本日新增的核验缺口（本日报主动声明）</strong>：① <code>stargazers</code> 端点对该 token 持续返回 <strong>404</strong>，因此逐日星标时间分布、star 来源结构、当日真实新增均不可得；② <strong><code>AxiomMath/CFSG</code> 的全树因 <code>truncated: true</code> 未被核验</strong>，<code>CFSG/</code> 子树 65,104 条目的职责划分完全未知；③ <strong><code>CFSG</code> 的 <code>Comparator/Challenge.lean</code> 是否被 <code>lake build</code> 排除在证明链之外，本日报未核验构建配置</strong>；④ <code>nyxis</code> 的 <code>docs/proofs.md</code> 每条定理的 Lean 原文、<code>Nyxis/</code> 43 个条目的职责划分、<code>scripts/</code> 34 个检查脚本的实现均未读；⑤ <strong><code>nyxis</code> 的 <code>lake build</code> 实际耗时与两个官方样例能否跑通未验证</strong>（需 Lean 4.34.1 + 本地 Supabase）；⑥ <code>anymove</code> 的 <code>mocap/solve.py</code> 实现与 <code>docs/PIPELINE.md</code> 未读，「模型读模型」闭环在非示例生物上的泛化性未知；⑦ <code>esp32-usb-to-airprint</code> 的 <code>components/</code> 各 C 文件未读、Gutenprint 参照系缺陷的完整清单未知；⑧ <strong><code>Shagg88/COGBox</code> 的 484 个源文件实现未读，静态重编译的技术细节（反汇编/翻译工具链）未核验</strong>；⑨ <strong><code>KohakuBlueleaf/KohakUnlock</code> 新增的 <code>KOH_AUTOCONFIRM_MS</code> 与 <code>docs/SAFETY.md</code>「不要自动重试不确定的硬件变更」之间是否为同一层，未核验</strong>（<code>windows/ad102/README.md</code> 与 <code>docs/ADA-WINDOWS.md</code> 未读）；⑩ <code>ex-ussr-kinship-research</code> 一天 7 个 release 的内容差异不可核验（无 release notes/changelog）；⑪ <code>Motionsites-AI/claude-skill</code> 的「截图自查循环」核心主张完全未核验；⑫ <strong>本日报实测确认 <code>Macintosh/Snapintosh</code> 已作废，组织名再次变更为 <code>Snapintosh</code></strong>。</p>
+</blockquote>
+<h2 id="_8">重点项目档案</h2>
+<ul>
+<li>🛡️ <a href="projects/nyxis.html">NyxFoundation/nyxis</a> — Lean 4 后端框架，<strong>授权安全由 Lean 内核在每次 <code>lake build</code> 时检查</strong>，主定理断言「任何 HTTP 请求序列都不能让已认证主体读写或授予超出其正当权限的数据」（41.8 小时 297⭐ ⑂11 · fork/star 3.7% · Lean · MIT · 1274 KB · <strong>仅 2 个 commit</strong> · contributors 1 人 · <code>releases</code> 2 个（均 0 asset）· <strong>subs 3</strong> · <strong>oi 33 本批最高</strong> · topics 空数组 · Organization <code>NyxFoundation</code>（2025-07-15 创建、57 个公开仓库、43 followers）· <code>lean-toolchain</code> = <code>leanprover/lean4:v4.34.1</code>）—— <strong>⭐⭐⭐⭐⭐ 而它最值得抄的是 <code>ASSUMPTIONS.md</code> 把证明边界画成四色图</strong>：绿=纯模型内已证 / 蓝=连接代码已证 / <strong>红=连接代码未证（作为 Assumption 1 被信任）</strong> / 黄=外部世界与人（Assumption 1–3）；<strong>⭐⭐⭐ 三条假设各按四段写（信什么 / 破了会怎样 / 开发者如何维持 / 支撑检查），并明写「</strong>These do not prove that the assumption holds, and a passing integration test is never a substitute for a formal proof.<strong>」</strong>· <strong>⭐⭐⭐⭐⭐⭐ 而它的定理目录 <code>docs/proofs.md</code> 每一行都有第四列「述べないこと」</strong> —— 即「我没证明什么」与「我证明了什么」在同一张表里 · <strong>⭐⭐⭐⭐⭐⭐⭐⭐ <code>Test/Axioms.lean</code> 用一个 <code>#assert_axioms_under</code> 宏遍历命名空间下每一个定理（而非手工维护名单），只允许 <code>propext</code> / <code>Classical.choice</code> / <code>Quot.sound</code> 三条公理</strong> —— 「<strong>列挙を手で保守しないため、補助定理の追加・削除で検査が漏れない</strong>」· <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它的 33 个 open issue 里，最值得记的是唯一一条外部 issue（#33，日文供应链尽调问卷，问 Fenbushi Capital 研究助成的合同主体、期间、附带权利与源码发布权）</strong> —— <strong>因为 <code>ASSUMPTIONS.md</code> 自己写着「This document is maintained by humans, and any change to it … is made at human discretion」</strong> —— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 技术上最严谨的系统，治理上留了空白，而本日唯一一条外部 issue 恰好在问这件事</strong> · <strong>⭐⭐ 「What the theorem does not state」明确排除「unconditional noninterference, including observation of permit and deny」与「附件内容不经 Nyxis 故病毒扫描与大小限制在保证之外」</strong> · 34 个 <code>scripts/check-*.py</code> 集成检查脚本 + 2 个官方样例（<code>examples/bulletin-board</code> 含 Next.js 前端、<code>examples/team-docs</code> 仅后端）· <strong>⚠️ v0.1.1、README 徽章 <code>under development</code>、文档主体为日文（ASSUMPTIONS.md 为英译且日文版权威）、contributors 1 人、releases 无 asset —— 而 33 个 issue 中大多数是作者自建待办与 Linux/Windows 构建故障（<code>lake build</code> 在 Linux 上 <code>-L&lt;system libdir&gt;</code> 覆盖 Lean sysroot、<code>libcrypto_shim.so</code> 运行时找不到、<code>prepare-dependencies.py</code> 在 Windows 上 locale 解码与 CRLF checkout 失败），唯一的真实缺陷报告是 #16（<code>Schema parser accepts /* */ block comments, which Cedar's schema syntax does not have</code>）</strong></li>
+<li>🧮 <a href="projects/cfsg.html">AxiomMath/CFSG</a> — 有限单群分类（CFSG）的 Lean 4 形式化，<strong>⭐⭐⭐ 而本日最值得记的是它的「sorry-free」声称需要被精确化——本日报逐文件核验后的结论是：四个主干文件的 <code>sorry</code> 与 <code>native_decide</code> 计数均为 0，但仓库里确实有一处刻意的 <code>sorry</code></strong>（8.9 小时 64⭐ ⑂7 · fork/star 10.9% · Lean · Apache-2.0 · <strong>6,071,207 KB ≈ 5.8 GB</strong> · <strong>仅 1 个 commit</strong> · <strong><code>contributors</code> API 返回 0 人</strong> · <code>releases</code> 0 个 · subs 2 · oi 0 · topics 空数组 · Organization <code>AxiomMath</code>（2025-06-17 创建、64 个公开仓库、307 followers））—— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「Comparator/Challenge.lean」全文即 <code>theorem CFSGComparator.classification : TauCeti.ClassificationStatement.{u} := sorry</code> —— 而 <code>Comparator/Solution.lean</code> 里同名定理是真证明（<code>sorry</code> 计数 0）；<code>comparator.json</code> 明确写着 <code>challenge_module</code> / <code>solution_module</code> / <code>theorem_names</code> / <code>permitted_axioms</code></strong> → <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这不是疏忽，是对照题机制：「题面」故意是空的，比对器拿空答案与真答案跑同一套检查，以度量「从空到真」这个过程</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 而 <code>search/code?q=sorry</code> 命中的另两处（<code>CFSG/Certificates/Kernel/Common/AddThm.lean</code> 与 <code>Certificates/Kernel/Sporadic/RawGen.lean</code>）经本日报逐行核验，其 <code>sorry</code> 位于一个 <code>meta def</code> 里，用于在 <code>debug.proofAsSorry</code> 选项开启时把定理体替换为 <code>sorryAx</code>，默认构建下不生效</strong> —— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 即本日报今日最可迁移的方法论：「找到一处 <code>sorry</code> 不等于项目不诚实，必须先问这处 <code>sorry</code> 在体系里扮演什么角色」</strong> · <code>formalization.yaml</code> 自报 <code>sorry_count: 0</code>、<code>sorry_in_definitions: 0</code>、三条公理，主结果两条各列 <code>sorry_count: 0</code> + <code>comparator_config</code>，作者 <strong>30 位</strong>、维护者 <strong>3 位</strong> · <strong>⭐⭐ README 的另一个数字比 star 更值得记：「get this project's build time under 24 hours」——「一个形式化项目的构建被当作需要日常运行的构建产物，且为此改了 Lake 本身」</strong> · <strong>⚠️⚠️ 本日报必须同时声明自己的核验缺口：<code>?recursive=1</code> 返回 <code>truncated: true</code>（65,107 条目），因此无法声称已核验全仓库 sorry-free；<code>CFSG/</code> 子树 65,104 条目的职责划分完全未核验；无 <code>docs/</code> 目录（= 没有「这个证明不覆盖什么」的答案）、无 <code>.github/workflows</code>（= 无 CI，其「sorry-free」目前只能靠一份自述 YAML 相信）</strong></li>
+<li>🎬 <a href="projects/anymove.html">patch-gg/anymove</a> — 用「一个 AI 视频 + 一帧里的正/侧双摄像头 + 一个 DINOv2 关节读取器」把动作捕捉做成任何有骨骼生物的 8 步流水线（14.3 小时 170⭐ ⑂16 · fork/star 9.4% · Python · Apache-2.0 · 13968 KB · topics 8 · <strong>仅 4 个 commit</strong> · contributors 1 人 · <code>releases</code> 1 个（<code>examples-v1</code>，<strong>17 个 asset</strong>）· subs 1 · oi 0 · Organization <code>patch-gg</code>（2026-10-05 创建、4 个公开仓库、5 followers））—— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它最有价值的不是流水线，而是把「这次采集好不好」写成两个可读数字</strong>：<strong>paw agreement（两视角高度相关性，≥0.8 才算「两个视角讲同一个故事」；0.5–0.8 通常一条肢体不对；&lt;0.5 即视频模型把两个视角演得不一样 → 重摇 clip）</strong> 与 <strong>重投影误差（front_x_only 1–3 px / side 2–8 px，明写「按生物在画面中的尺寸缩放」）</strong> · <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而且它把「没赢的地方」直接留在结果表里：「spider … walk 0.36-0.49 (fails)」</strong> —— 同一族还有「<code>--fix-swaps</code> 在一个 clip 上把本来正确的标签也改错了，所以只在看过之后才用」· <strong>⭐⭐⭐⭐⭐⭐ 8 步各带可核验量</strong>：42 根骨 / 6 肢体 6 色（<strong>目的是让左右永不混淆</strong>）/ DINOv2 · 2,200 姿势 · 20 分钟 · <strong>平均误差 40 px → 6 px</strong> / 50 关节 · 10 秒一 clip / <strong>x 取自正面、y 取自侧面、z 取自两者</strong>（两个正交视角恰好确定一个 3D 点，最省但无冗余）/ 24 fps · 不到一分钟 · <strong>$0.26 每 clip + $0.40 建模</strong> · <strong>⭐ 有一条零 GPU 快路径</strong>（<code>MOCAP_CREATURE=assets/dragon python -m mocap.solve examples/dragon_roar/det.npz …</code>，约 20 秒，无 Blender 无下载）· 6 个 skill 各带 <code>compatibility</code> 字段 + <code>/plugin marketplace add Patch-gg/anymove</code> · <strong>⭐ 归属声明完整</strong>：「The method is [@CanItCode]'s; the MiniMax H3 LoRA step is [@Graalitoo]'s idea.」· <strong>⚠️ 输入是 AI 生成的视频（模型读模型的闭环）、每个动作付费、读取器 355 MB × 3 + LoRA 131 MB、8 条腿的生物已知失败</strong></li>
+<li>🖨️ <a href="projects/esp32-usb-to-airprint.html">ngxson/esp32-usb-to-airprint</a> — 用一块 ESP32-S3 让纯 USB 老打印机获得 AirPrint/AirScan 能力，<strong>⭐⭐⭐⭐⭐ 而它最硬的一处工程是「怎么证明我的输出和真机一样」——它从 SourceForge 拉 Gutenprint 5.3.5 源码编译出参考打印流，再用 <code>tools/compare_gutenprint.py</code> 解码参考流、用自己的 C 代码重新编码，逐命令比对要求字节完全一致，并把 Gutenprint 自身「页高是 8 的倍数时丢弃最后一个 raster block」的缺陷写进豁免说明</strong>（30 小时 157⭐ ⑂8 · fork/star 5.1% · C · MIT · 10687 KB · 14 commits · contributors 1 人 · <code>releases</code> 0 个 · <strong>subs 0</strong> · oi 5 · topics 空数组 · User <code>ngxson</code>（2014-05-26 创建、179 个公开仓库、1,287 followers））—— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而那个偏差方向是</strong>对自己有利<strong>的（自己多出尾部空白块），若默默放过就等于给了自己一个无法被发现的作弊空间</strong> · <strong>⭐⭐⭐⭐⭐⭐ <code>AGENTS.md</code> 六条工作规则逐条对应一种真实失效模式</strong>：「Verify before touching hardware」（改完先过 host 测试与 QEMU 自测）/「Flash only with the user's go-ahead」（<strong>且明写「用户的文档是私密的，不要描述也不要留存副本」</strong>）/「Never read or print the secrets」（<strong>只测非空而不打印</strong>）/「Keep the core portable」（核心同时编到 host 与 ESP32）/「Optimisations must not change output」（<strong>参考 CRC 必须保持不变</strong>）/「<strong>Don't edit a script while it runs.</strong> bash reads scripts as it goes; an edit during <code>qemu_selftest.sh</code> broke a run with a syntax error」（<strong>⭐ 把一次真实踩坑写成了规则</strong>）· <strong>⭐⭐⭐⭐⭐⭐ 支持表 19 行，状态列 <code>🟢 Validated on real printer</code> / <code>🟡 Expected to work, not tested on real hardware yet</code> —— 只有 MG2550S 一行是绿的，其余 18 行全是黄的</strong>；首屏呼吁「every driver must be tested on the real hardware, not only in emulation」· <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 组件分层清晰</strong>：<code>components/canon_bjl</code>（BJL 作业流生成、PackBits、抖动、CRC）/ <code>components/airprint</code>（HTTP/1.1 + IPP 服务器，端口 631 与 80；SSE 事件流；URF/PWG 光栅解码）/ <code>components/printers/canon_pixma.c</code>（<strong>22 个系列</strong>）/ <code>components/scanner</code>（<strong>扫描协议取自 SANE 的 pixma 后端</strong>；baseline JPEG 编码器；PSRAM 大缓冲；<code>/scan</code> 与 <code>/eSCL</code> 端点；假扫描仪）· <code>MODE=dev</code> / <code>debug</code>（可 OTA）/ <code>normal</code> · <strong>⚠️ subs 0、无 release、5 条 issue 全是功能请求（还没有一条「我试了但坏了」）</strong></li>
+<li>🎮 <a href="projects/cogbox.html">Shagg88/COGBox</a> — 用静态重编译把三个 Xbox 360 游戏变成原生 Windows 程序（<strong>不是模拟器逐帧解释，而是提前把主机代码翻译成 C++ 并编译成普通 Windows 可执行文件，用自写渲染器走 Direct3D 12</strong>）（17.8 小时 117⭐ ⑂2 · fork/star 1.7% · C++ · MIT · 3254 KB · <strong>484 个 <code>Gears*-Native</code> 源文件</strong> · 21 commits · contributors 1 人 · <code>releases</code> 1 个（0.1.0，2 个 asset）· subs 4 · <strong>oi 12 本批最高</strong> · User <code>Shagg88</code>（2026-10-16 创建、2 个公开仓库、8 followers））—— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它把「可玩」的含义定义死了：「In testing means on the developer's PC (an RTX 3080 Ti) and scripted test runs through the chapters. Other hardware hasn't been tried yet」</strong> —— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它的 12 条 issue 里 6 条正是「在别的硬件上崩」（Steam Deck ×3、DX12、GOW3 崩溃、Judgment 启动崩溃、Judgment 贴图闪烁），说明这句定义在 issue 爆发之前就起了作用</strong> · <strong>⭐⭐ 三游戏版本表钉到 title update</strong>（Gears 2 = US disc 0.0.0.5 + TU6、Gears 3 = Disc + TU6、Judgment = Disc + <strong>TU4</strong>）· <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 能力清单</strong>：任意分辨率 1x–4x 至 5K（<strong>真实额外细节而非拉伸</strong>）/ SMAA + AMD FSR + NVIDIA DLSS + Intel XeSS / 解除 30 fps 上限（<strong>FSR 帧生成标注高度实验性</strong>）/ <strong>着色器 1 毫秒内直译为 D3D12</strong>（像 Xenia Canary 那样）且管线后台构建（<strong>新区域晚点显示而不是卡住</strong>）/ 一帧在途 + NVIDIA Reflex + AMD Anti-Lag 2 / HDR10 / 21:9 / 16x 各向异性 / 视野角 / 运动模糊·景深·镜头光晕<strong>作为可开关项</strong> / Gears 2 分屏 / 键鼠与 Xbox·PlayStation 手柄 / 章节选择 / 游戏内菜单（Back+Start 或 F1：改设置、重启生效、退出）· <strong>⭐⭐⭐ 「You need your own copy of each game. No game files are included or ever will be.」</strong> + box art 按需从 x360db 拉取 + 完整法务声明（非官方粉丝项目，与 Microsoft / Xbox Game Studios / The Coalition / Epic / People Can Fly 无关，Gears of War / Xbox / Xbox 360 为 Microsoft 商标）· <strong>⚠️ 需 Windows 10/11 64 位（或 Linux/Steam Deck 经 Proton，实验性）、AVX2 CPU、DX12 显卡、自带游戏拷贝与最后 title update（</strong>title update 需从「曾在线玩过该游戏的主机」<code>Content\0000...\</code> 提取<strong>）、每游戏 8–16 GB；仅 1 个 release 且只有 2 个 asset</strong></li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST/Search API（gh CLI 认证），UTC <strong>2026-10-27T22:16:31Z</strong> 单一快照 | 本日分析 5 个新增项目 + 12 个持续跟踪项 | 提交于 2026-10-28 CST
+附：commit 总数经 Link 头 <code>rel="last"</code> 取精确值（非 <code>per_page=100</code> 的长度）；仓库树已逐项检查 <code>truncated</code> 字段；<code>stargazers</code> 端点对本 token 返回 404，故所有「增速」表述均为两次快照的总量差</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

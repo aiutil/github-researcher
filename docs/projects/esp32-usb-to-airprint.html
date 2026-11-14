@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ngxson/esp32-usb-to-airprint | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/ngxson/esp32-usb-to-airprint" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="ngxsonesp32-usb-to-airprint">ngxson/esp32-usb-to-airprint</h1>
+<h2 id="_1">一句话定位</h2>
+<p>用一块 ESP32-S3 让纯 USB 老打印机获得 AirPrint/AirScan 能力（打印 + 扫描 + 浏览器端 PDF 拼页）—— <strong>⭐ 而它最硬的一处工程是「怎么证明我的输出和真机一样」：它从 SourceForge 拉 Gutenprint 5.3.5 源码编译出参考打印流，再用 <code>tools/compare_gutenprint.py</code> 解码参考流、用自己的 C 代码重新编码，逐命令比对要求字节完全一致，并把 Gutenprint 自身「页高是 8 的倍数时丢弃最后一个 raster block」的缺陷写进了豁免说明。</strong></p>
+<h2 id="_2">它解决的问题</h2>
+<p><strong>它要解决的是「AirPrint 需要打印机直连网络，而大量老打印机只有 USB」这个问题。</strong></p>
+<p>Apple 的 AirPrint 依赖打印机在局域网上暴露 IPP/IPPS 服务，Mopria、Android 打印也类似。<strong>⭐⭐ 而 2010 年代前后的 Canon PIXMA、HP LaserJet 等大量打印机只有 USB —— 它们内部跑的是完全不同的协议（如 Canon 的 BJ 语言），不是 IPP。</strong></p>
+<p>历史上这一需求由两类方案覆盖：<strong>① 打印机服务器（如 CUPS 的 <code>ipp-usb</code> 驱动）</strong> —— 需要一台常开的 Linux 机器；<strong>② 打印服务器硬件</strong> —— 商业产品。这个项目的做法是第三种：<strong>把协议转换放进一块 ESP32-S3（$10 量级），插在打印机和路由器之间。</strong></p>
+<p><strong>⭐⭐⭐ 而它比同类项目多做了一件事：它没有声称「我实现了 AirPrint」，而是声称「我的字节流和 Gutenprint 产出的字节流一致」—— 并用一条可重跑的脚本证明这一点。</strong></p>
+<h2 id="2026-10-28">为什么值得关注（2026-10-28）</h2>
+<p><strong>⭐⭐⭐⭐⭐ 因为它是本日三个「把裁决权交给外部对象」的项目里，唯一一个把裁决权交给</strong>另一个独立实现<strong>而不是一条定理的 —— 而它的对照工程细节是本日最值得抄的模板。</strong></p>
+<p>四个可核验的硬事实：</p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐ <code>tools/compare_gutenprint.py</code> 的 docstring 原文</strong></li>
+</ol>
+<blockquote>
+<p>Decodes the Gutenprint stream into raw ink planes, re-encodes those planes with host/bjl_host (our C code), then compares the two streams command by command. They must be byte-identical, <strong>except that Gutenprint drops the last raster block when the page height is a multiple of 8</strong> (print-canon.c canon_write_multiraster never flushes it), so our stream may carry extra trailing all-blank ESC (F blocks.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而那个偏差方向是</strong>对自己有利<strong>的（自己多出尾部空白块）—— 若默默放过，就等于给了自己一个无法被发现的作弊空间。</strong> 这与本日报连续记录多日的那条原则完全同形：<strong>当参照系自己有 bug 时，正确做法不是放宽判据，而是把偏差的方向、原因与量级写清楚，并让对照器只在这一处放宽。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ <code>tools/gutenprint_ref/build_ref.sh</code> 的完整流程（已核验原文）</strong></li>
+</ol>
+<p>下载 <code>gutenprint-5.3.5.tar.xz</code> → <code>./configure --disable-nls --without-gimp2 --without-cups --disable-libgutenprintui2 ... --enable-static</code> → 编译 <code>src/main</code> 与 <code>src/xml</code> → <code>cc ... gp_ref.c ... libgutenprint.a</code> → 用 <code>STP_DATA_PATH=$GP/src/xml ./gp_ref 300x300dpi ref300.prn</code> 等生成参考流 → <strong>再为 <code>canon_bjl.h</code> 的每个 stream 变体各建一个 Gutenprint 驱动</strong>（<code>MG2900:bjc-MG2900-series</code>、<code>iP2800:bjc-iP2800-series</code>、<code>E3100:bjc-E3100-series</code>、<code>MP230:bjc-MULTIPASS-MP230</code>、<code>iP2700:bjc-PIXMA-iP2700</code>）。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 即：它不是「手写一个看起来对的打印流」，而是「把一个成熟的第三方实现编译成参考系，然后用它来审判自己的实现」。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ <code>AGENTS.md</code> 六条工作规则逐条对应一种真实的失效模式</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>规则原文</th>
+<th>它防的是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>「Verify before touching hardware.」</strong> Every change goes through the host tests (<code>tools/run_tests.sh</code>, with <code>GUTENPRINT=1 AIRPRINT=1</code> …, <code>WEB=1</code> …) and, when firmware behaviour changes, the QEMU self test (<code>tools/qemu_selftest.sh</code>).</td>
+<td>「改了代码就烧板子试」—— 没有隔离层时每次验证都不可逆</td>
+</tr>
+<tr>
+<td><strong>「Flash only with the user's go-ahead.」</strong> That includes OTA updates, reboots and the <code>panic</code> test. Reading <code>/info</code>, the remote log, the status pages and the serial log of a running board is fine. <strong>A real scan is harmless but scans whatever is on the glass: the user's documents are private, so don't describe them and don't keep copies.</strong></td>
+<td>把「读日志」与「写设备」混为一谈；⭐ <strong>以及把用户隐私文档当成可用测试数据</strong></td>
+</tr>
+<tr>
+<td><strong>「Never read or print the secrets」</strong> in <code>.env</code> or the generated <code>src/local_config.h</code>. To check whether a key is set, <strong>test for a non-empty value without printing it</strong>（<code>grep -qE '^WIFI_SSID=.+' .env</code>）.</td>
+<td>agent 把密钥读进上下文/日志</td>
+</tr>
+<tr>
+<td><strong>「Keep the core portable.」</strong> <code>components/canon_bjl</code>, <code>components/airprint</code>, <code>components/printers</code> and <code>components/scanner</code> build both natively (<code>host/</code>) and for the ESP32. Platform specifics go behind hooks or <code>#ifdef ESP_PLATFORM</code>.</td>
+<td>同一份代码无法在主机上跑测试，于是只能靠真机验证</td>
+</tr>
+<tr>
+<td><strong>「Optimisations must not change output.」</strong> Pure speed changes must keep the reference CRCs below unchanged.</td>
+<td>「重构顺手优化」悄悄改变位流</td>
+</tr>
+<tr>
+<td><strong>「Don't edit a script while it runs.」</strong> bash reads scripts as it goes; an edit during <code>qemu_selftest.sh</code> broke a run with a syntax error.</td>
+<td><strong>⭐ 把一次真实的踩坑写成了规则 —— 这条比任何抽象原则都可信</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 支持表 19 行，状态列用两档，且只有 1 行是绿的</strong></li>
+</ol>
+<p>状态列：<code>🟢 Validated on real printer</code> / <code>🟡 Expected to work, not tested on real hardware yet</code>。<strong>⭐⭐⭐⭐⭐ 只有 <code>MG2500</code>（MG2550S）一行标绿，其余 18 行全是黄的。</strong> README 首屏还有一句针对性的呼吁：</p>
+<blockquote>
+<p><strong>Most importantly, you need to really own the printer you add: every driver must be tested on the real hardware, not only in emulation.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而这个「19 行里 18 行是黄的」比例，正是本日报今日关于「热度与成熟度脱钩」的第三组证据：157⭐ 的仓库里，只有 1/19 的机型组合在真机上被验证过。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>⭐⭐⭐ 热度来自「一个便宜硬件解决一个长期痛点」这个叙事，而采用信号尚未开始。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 可核验的采用信号是本日新项目中最弱的一档</strong>：<strong><code>subs</code> 0</strong>、<code>releases</code> <strong>0 个</strong>、contributors <strong>1 人</strong>、<strong>oi 5 且全部是功能请求</strong>（<code>#5 Web installer: flash from the browser, set up WiFi over Improv</code>、<code>#4 WiFi setup network with a captive portal</code>、<code>#3 Flash esp32 from web</code>、<code>#2 Captive Portal</code>、<code>#1 Epson 2400T</code>）—— <strong>⭐⭐⭐⭐⭐ 即还没有一条「我试了但坏了」的报告。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 而这是一个结构性反常：<code>subs 0</code> 意味着 GitHub 上没有任何人「订阅了它的更新」—— 而这是一个需要持续跟随打印机型号更新的项目。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐⭐ 账号背景可核验</strong>：<code>ngxson</code> 是 User，创建于 <strong>2014-05-26</strong>，<strong>179 个公开仓库、1,287 followers</strong> —— 本日报记为「身份可核验」而非「star 可信」。</li>
+<li><strong>⭐⭐⭐⭐⭐⭐⭐ 而 157⭐ 在 30 小时里的来源无法核验</strong>（<code>stargazers</code> 端点 404）。<strong>⭐⭐⭐ 唯一可核验的结构信号是 fork/star 5.1%</strong> —— 与「需要自购硬件才能用」的定位相称。</li>
+</ul>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐ 参照第三方实现产出参考流 + 逐命令字节比对</strong></li>
+</ol>
+<p>这是本项目的正确性论证骨架，也是本日报今日最值得抄的一条工程方法。<strong>⭐⭐⭐⭐⭐⭐⭐ 关键在于「参照系」是一个</strong>独立的、成熟的、被广泛使用的实现<strong>（Gutenprint 是 Linux 打印栈的事实标准之一），而不是项目作者自己写的一份期望输出。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐⭐ 参照系自身的缺陷被写进豁免说明，且偏差方向对自己不利</strong></li>
+</ol>
+<blockquote>
+<p><strong>except that Gutenprint drops the last raster block when the page height is a multiple of 8</strong> (print-canon.c canon_write_multiraster never flushes it), so our stream may carry extra trailing all-blank ESC (F blocks.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这句话同时做到了三件事：指出缺陷、给出机制层面的原因（<code>canon_write_multiraster</code> 从不 flush）、限定豁免范围（仅尾部全空白 ESC ( F 块）。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 核心代码同时编到 host 与 ESP32</strong></li>
+</ol>
+<p><code>components/canon_bjl</code> / <code>components/airprint</code> / <code>components/printers</code> / <code>components/scanner</code> <strong>同时编到主机与 MCU</strong>，平台差异收进 hooks 与 <code>#ifdef ESP_PLATFORM</code>。<strong>⭐⭐⭐⭐⭐ 这不是为了代码洁癖，而是为了「改完能先在主机上跑测试」—— 没有这一层，所有验证都必须烧板子，而烧板子是有成本的、不可逆的。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 组件分层清晰且各自职责单一</strong></li>
+</ol>
+<p><code>components/canon_bjl</code>（含 <code>canon_bjl.c</code> / <code>bjl_render.c</code> / <code>testpage.c</code>）· <code>components/airprint</code>（含 <code>printer_driver.c</code> / <code>airprint.c</code>（HTTP/1.1 + IPP，端口 631 与 80）/ <code>events.c</code>（SSE）/ <code>ipp.c</code> / <code>raster.c</code>）· <code>components/printers/canon_pixma.c</code>（<strong>22 个系列</strong>）· <code>components/scanner/</code>（含 <code>pixma_scan.c</code>（<strong>取自 SANE 的 pixma 后端</strong>）/ <code>jpeg_enc.c</code> / <code>scan_service.c</code>（<code>/scan</code> 与 <code>/eSCL</code> 端点）/ <code>shared_buf.c</code>（<strong>PSRAM 大缓冲</strong>）/ <code>fake_scanner.c</code>）。</p>
+<p><strong>⭐⭐⭐⭐⭐ 「扫描协议取自 SANE 的 pixma 后端」是又一个「借用成熟实现」的例子 —— 与打印侧的 Gutenprint 参照系同源。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐⭐ 三种运行模式分离</strong></li>
+</ol>
+<p><code>MODE=dev</code>（只处理打印任务不真打印，扫描显示内置测试页）/ <code>MODE=debug</code>（可 OTA）/ <code>MODE=normal</code>。<strong>⭐⭐⭐⭐ 即「开发时不会意外把用户文档打出来」是模式层面的保证，而不是靠小心。</strong></p>
+<ol>
+<li><strong>⭐⭐⭐ 三个使用入口覆盖三类用户</strong></li>
+</ol>
+<p>打印走 AirPrint（Mac/iOS）/ Mopria（Android）/ IPP（Linux）；扫描走浏览器 / Mac 的 Image Capture / 板载按键（BOOT 或 GPIO4：按一下扫描、按两下测试页、长按 2 秒取消）；<strong>⭐⭐⭐ 浏览器端 PDF 拼页</strong>。</p>
+<ol>
+<li><strong>⭐⭐ QEMU 自测与主机测试双层</strong></li>
+</ol>
+<p><code>tools/run_tests.sh</code>（<code>GUTENPRINT=1 AIRPRINT=1</code> / <code>WEB=1</code>）与 <code>tools/qemu_selftest.sh</code>。<strong>⭐⭐⭐⭐⭐ 这让「不碰硬件也能验证固件行为改变」成为可能 —— 也是 AGENTS.md 第一条规则的物理基础。</strong></p>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>四层</strong>：① <strong>可移植核心层</strong>（<code>components/canon_bjl</code> / <code>components/airprint</code> / <code>components/printers</code> / <code>components/scanner</code>，<strong>同时编到 host 与 ESP32</strong>）② <strong>参照层</strong>（<code>tools/gutenprint_ref/</code> 从 SourceForge 构建 Gutenprint 5.3.5 产出参考流）③ <strong>判定层</strong>（<code>tools/compare_gutenprint.py</code> 逐命令比对 + <code>tools/run_tests.sh</code> 主机测试 + <code>tools/qemu_selftest.sh</code>）④ <strong>规则层</strong>（<code>AGENTS.md</code> 六条工作规则）。<strong>⭐⭐ 边界划在「烧录与真机写入」</strong>（需用户明确同意）—— <strong>⭐⭐⭐⭐⭐ 而这条边界同时保护了用户设备与用户隐私（明写「不要描述也不要留存用户文档的副本」）。</strong></td>
+<td><code>AGENTS.md</code> 六条规则原文、<code>tools/gutenprint_ref/build_ref.sh</code> 原文、<code>tools/compare_gutenprint.py</code> docstring、README 支持表的 19 行状态列、<code>components/</code> 目录结构与文件名。<strong>⭐ 三处未核验：<code>components/</code> 各 C 文件的实现、Gutenprint 参照系缺陷的完整清单（本档案只知「页高是 8 的倍数丢最后一块」这一条）、<code>MODE=dev</code> 与 <code>MODE=debug</code> 的行为差异</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>插板 → <code>pio run</code> 一次生成 <code>.env</code>（填 <code>WIFI_SSID</code> / <code>WIFI_PASSWORD</code> / <code>PRINTER_NAME</code> / <code>HOSTNAME</code> / <code>MODE</code>）→ <code>pio run -t upload</code>（<strong>用 COM 口，不是标着 "USB" 的口</strong>）→ 插打印机 → 浏览器开 <code>http://canon-mg2500.local/</code>；打印走 AirPrint(Mac/iOS)/Mopria(Android)/IPP(Linux)，扫描走浏览器 / Mac 的 Image Capture / 板载按键（BOOT 或 GPIO4：按一下扫描、按两下测试页、长按 2 秒取消）；开发期 <code>MODE=dev</code> 只处理打印任务不真打印。<strong>⭐⭐⭐⭐⭐ 开发与验证路径（更值得 architect 关心）：<code>tools/gutenprint_ref/build_ref.sh</code> 产出参考流 → <code>tools/compare_gutenprint.py</code> 逐命令比对 → <code>tools/run_tests.sh</code>（<code>GUTENPRINT=1 AIRPRINT=1</code> / <code>WEB=1</code>）→ 固件行为改变时 <code>tools/qemu_selftest.sh</code>。</strong></td>
+<td>README 的 "What you need" / "Setup"（三步）/ "Using it" 三节与支持表、<code>build_ref.sh</code> 与 <code>compare_gutenprint.py</code> 的原文与 docstring、<code>AGENTS.md</code> 原文。<strong>⭐ 未核验：固件是否真的能让 iPhone 打印（需真机）、<code>.local</code> 解析的实际体验（AGENTS.md 自述固件 IPv4-only，macOS 上约需 5 秒）</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>⭐⭐⭐⭐ 参照第三方 vs 自证</strong>（选 Gutenprint 当参照系，因此拿到了一个「真机之外的第二意见」；<strong>代价是必须接受参照系自身的缺陷</strong>，并把它写进豁免）· <strong>⭐⭐⭐ 逐字节一致 vs 允许语义等价</strong>（选择严格到字节，<strong>代价是必须逐条豁免参照系的每个已知缺陷</strong>）· <strong>⭐⭐ 可移植核心 vs 平台特例</strong>（核心同时编到主机与 MCU，换来「改完能先在主机上跑测试」；代价是平台差异收进 hooks 与 <code>#ifdef</code>）· <strong>⭐⭐ 速度 vs 输出不变</strong>（明写「纯提速优化不得改变输出，且参考 CRC 必须保持不变」）· <strong>⭐⭐⭐ 用户设备边界 vs 便利性</strong>（「未经用户同意不刷写」，包括 OTA、重启与 panic 测试）· <strong>⭐⭐⭐ 隐私 vs 测试便利</strong>（「扫描会扫到玻璃上的一切：用户的文档是私密的，不要描述也不要留存副本」）· <strong>⭐⭐⭐ 开发模式 vs 真机</strong>（<code>MODE=dev</code> 不真打印，<strong>代价是开发期无法验证真机行为</strong>）</td>
+<td>三份 README 原文、<code>AGENTS.md</code> 全文、<code>build_ref.sh</code> 与 <code>compare_gutenprint.py</code> 原文、issue 列表（5 条全为功能请求）。<strong>⭐ 未明示：真机验证的机型清单在支持表里标黄之外，是否有任何测试日志或复现步骤；以及「真机验证」由谁执行、是否可复现</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>⭐⭐⭐ esp32：读 <code>tools/compare_gutenprint.py</code> 的 docstring 与 <code>tools/gutenprint_ref/build_ref.sh</code></strong>（<strong>不需要硬件就能判断它的正确性主张是否成体系</strong> —— 这是本 poC 的核心）→ 2. ⭐⭐ <strong>看它是否为每个 stream 变体都建了对应的 Gutenprint 驱动</strong>（5 个变体：MG2900 / iP2800 / E3100 / MP230 / iP2700）—— <strong>这一步判断它的对照是否覆盖了全部路径</strong> → 3. ⭐⭐ 读 <code>AGENTS.md</code> 六条规则，<strong>逐条问「这条防的失效模式我昨天踩过吗」</strong> → 4. ⭐⭐ <strong>数支持表里 🟢 与 🟡 各多少行</strong>（当前 1 : 18）—— <strong>这一步决定它的可用范围</strong> → 5. ⭐ 读 README 的 "What you need" 确认硬件门槛（ESP32-S3 双 USB-C 开发板 + 一台 Canon 打印机 + 一台路由器）→ 6. <strong>⭐⭐⭐ 三选一的共同收尾：问一句「它的结论如果错了，是谁、在哪个文件里、能被发现的？」</strong> —— <strong>esp32 的答案是「<code>compare_gutenprint.py</code> 的逐命令比对」</strong></td>
+<td><strong>第 1 步是唯一能判断其正确性主张是否成体系的步骤，且零成本</strong> · <strong>第 4 步是唯一能判断其实际可用范围的步骤</strong> · <strong>第 2 步是判断对照覆盖度的唯一手段</strong> · <strong>第 6 步是本 PoC 真正的产出</strong> · <strong>本 PoC 不覆盖</strong>：任何真机烧录与打印验证（<strong>需自购硬件，且 19 行支持表里 18 行标黄</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>⭐⭐⭐⭐⭐ 核心启发：正确性论证可以外包给一个独立的成熟实现，而不必依赖真机。</strong></p>
+<p>「编译 Gutenprint 5.3.5 产出参考流 → 解码 → 用自己的代码重新编码 → 逐命令比对」这条链路的价值在于：<strong>⭐⭐⭐⭐⭐⭐ 它把「我的输出对不对」这个本来只能靠真机回答的问题，变成了一个可以在 CI 里跑的、无需硬件的、可字节级判定的检查。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 而它更精细的一层是「参照系自己有 bug 怎么办」的答案：不是放宽判据，而是把偏差的方向、机制与范围写进对照器，并让对照器只在这一处放宽。</strong> <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 这个模式可以直接套用到任何「有外部标准」的地方：打印流、协议编解码、文件格式、编解码器输出、序列化格式。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 第二个启发：把「一次真实踩坑」写成工作规则，比写十条抽象原则更有说服力。</strong></p>
+<blockquote>
+<p><strong>「Don't edit a script while it runs.</strong> bash reads scripts as it goes; an edit during <code>qemu_selftest.sh</code> broke a run with a syntax error.」</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐ 这条规则之所以可信，是因为它带了一个具体的后果、一个具体的工具名与一个具体的症状。</strong></p>
+<p><strong>⭐⭐⭐⭐ 第三个启发：把「不做什么」写进 agent 工作规则，而不只是写进人类贡献指南。</strong></p>
+<p>「Never read or print the secrets … test for a non-empty value without printing it」与「A real scan … the user's documents are private, so don't describe them and don't keep copies」—— <strong>⭐⭐⭐⭐⭐⭐⭐ 这两条防的不是 bug，而是</strong>把不该看的东西带进上下文或日志<strong>。</strong> ⭐⭐⭐⭐⭐⭐ 而它们被写在一个 <code>AGENTS.md</code> 里，说明作者的目标用户里包含 agent。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 第四个启发：支持表里 18/19 行标黄，比一句「支持多款打印机」诚实得多，也更有用。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 因为它让读者在</strong>买硬件之前<strong>就知道自己的型号在不在已验证列表里。</strong></p>
+<p><strong>⭐⭐ 架构对比：</strong> 与 <code>NyxFoundation/nyxis</code>、<code>AxiomMath/CFSG</code> 构成本日「把裁决权交给外部对象」的三分形态 —— <strong>nyxis 交给 Lean 内核（定理）、CFSG 交给 Lean 内核 + 对照机制、esp32 交给 Gutenprint（第三方实现）。</strong> <strong>⭐⭐⭐⭐⭐ 而三者的完成度递减清晰可见：nyxis 写全了边界（红/黄两层 + 四段式假设 + 定理目录 + 34 个检查脚本），CFSG 只写了证明与对照机制（无 <code>docs/</code>、无 CI），esp32 写了对照与规则（19 行机型表里 18 行标黄、6 条 AGENTS 规则）</strong> —— <strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 边界声明的完整度与 star 数完全无关：297⭐ 的项目有最完整的边界声明，64⭐ 的项目连一个 <code>docs/</code> 都没有，而 157⭐ 的项目把 18/19 的机型标成「未在真机验证」。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；「待核验」节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+  Client[客户端<br/>Mac iOS 走 AirPrint<br/>Android 走 Mopria<br/>Linux 走 IPP<br/>扫描走浏览器或 Mac Image Capture 或板载按键 BOOT GPIO4] --> Srv
+
+  subgraph Srv[ESP32-S3 固件 MODE dev debug normal]
+    Core[可移植核心层 同时编到 host 与 ESP32<br/>平台差异收进 hooks 与 ifdef ESP_PLATFORM<br/>AGENTS.md 规则 Keep the core portable]
+    Core --> Bjl[components/canon_bjl<br/>canon_bjl.c BJL 作业流生成<br/>bjl_render.c PackBits 抖动 CRC<br/>testpage.c 内置测试页]
+    Core --> Air[components/airprint<br/>airprint.c HTTP 1.1 加 IPP 端口 631 与 80<br/>ipp.c IPP 协议<br/>raster.c URF PWG 光栅解码<br/>events.c SSE 事件流<br/>printer_driver.c]
+    Core --> Prn[components/printers/canon_pixma.c<br/>22 个打印机系列]
+    Core --> Scan[components/scanner<br/>pixma_scan.c 取自 SANE 的 pixma 后端<br/>jpeg_enc.c baseline JPEG 编码器<br/>scan_service.c /scan 与 /eSCL 端点<br/>shared_buf.c PSRAM 大缓冲<br/>fake_scanner.c]
+  end
+
+  Air --> USB[USB 打印<br/>BJL 作业流发送到纯 USB 老打印机]
+  Scan --> USB
+  USB --> Printer[Canon PIXMA 等纯 USB 打印机<br/>19 行支持表 仅 MG2550S 一行为绿<br/>其余 18 行标黄 未在真机验证]
+
+  subgraph Ref[参照层 外部成熟实现]
+    DL[从 SourceForge 下载 gutenprint-5.3.5.tar.xz] --> Conf[configure disable-nls without-gimp2 without-cups<br/>disable-libgutenprintui2 enable-static<br/>编译 src/main 与 src/xml]
+    Conf --> Lib[cc gp_ref.c libgutenprint.a<br/>静态链接参考驱动]
+    Lib --> Drv[为 canon_bjl.h 的每个 stream 变体各建一个驱动<br/>MG2900 bjc-MG2900-series<br/>iP2800 bjc-iP2800-series<br/>E3100 bjc-E3100-series<br/>MP230 bjc-MULTIPASS-MP230<br/>iP2700 bjc-PIXMA-iP2700]
+    Drv --> Ref1[产出参考打印流<br/>ref300.prn ref600.prn<br/>ref300_letter.prn ref300_2pages.prn]
+  end
+
+  subgraph Judge[判定层]
+    Dec[compare_gutenprint.py<br/>解码 Gutenprint 流为原始墨平面<br/>用 host bjl_host 即本项目 C 代码重新编码<br/>逐命令比对 两个流必须字节完全一致] --> Exempt[豁免 仅一处且方向对自己不利<br/>Gutenprint 在页高是 8 的倍数时丢弃最后一个 raster block<br/>print-canon.c canon_write_multiraster 从不 flush<br/>因此本实现可多出尾部全空白 ESC F 块]
+    Exempt --> Verdict{逐命令比对结果}
+  end
+  Ref1 --> Dec
+  Bjl --> Dec
+
+  Tests[tools/run_tests.sh<br/>GUTENPRINT=1 AIRPRINT=1<br/>WEB=1 主机测试] --> Core
+  Qemu[tools/qemu_selftest.sh<br/>固件行为改变时的 QEMU 自测] --> Core
+  Verdict --> Tests
+
+  Rules[AGENTS.md 六条工作规则<br/>Verify before touching hardware<br/>Flash only with the user go-ahead<br/>Never read or print the secrets 只测非空不打印<br/>Keep the core portable<br/>Optimisations must not change output 参考 CRC 不变<br/>Don t edit a script while it runs 一次真实的踩坑] --> Core
+  Privacy[隐私与设备边界<br/>扫描会扫到玻璃上的一切<br/>用户的文档是私密的<br/>不要描述也不要留存副本<br/>未经同意不刷写 含 OTA 重启 panic 测试] --> Srv
+
+  Mode[三种模式<br/>MODE=dev 只处理打印任务不真打印 扫描显示内置测试页<br/>MODE=debug 可 OTA<br/>MODE=normal] --> Srv
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>把「网络打印协议」下沉到 $10 量级硬件上的协议转换器 —— 位于「打印机生态」与「嵌入式网络设备」的交叉点。</strong></p>
+<p>⭐⭐⭐⭐ 它在生态中的位置非常明确：<strong>它是 CUPS <code>ipp-usb</code> 与打印服务器硬件这两类方案的第三种实现</strong>，而它独特的地方是<strong>载体</strong>（一块 ESP32 而不是一台常开的机器）以及<strong>正确性论证方式</strong>（字节级参照比对而不是「能打印就算成功」）。</p>
+<p>⭐⭐⭐⭐⭐ 而它的形态判断是「工具型」：<strong>它已经是一个可用产品形态</strong>（完整组件层、QEMU 自测、三种模式、浏览器端界面、19 行机型支持表、AGENTS 工作规则），<strong>但它不是一个基础设施</strong>（单作者、subs 0、零 release、19 行机型里只有 1 行真机验证过）。</p>
+<p>⭐⭐⭐⭐⭐⭐ <strong>而它最独特的位置其实在「工程方法」这一侧</strong> —— 本日报今日的三个「把裁决权交给外部对象」的项目里，它是唯一一个参照系来自<strong>完全独立的项目</strong>（Gutenprint）而非<strong>同一个形式化生态</strong>（Lean）。<strong>⭐⭐⭐⭐⭐⭐ 这使它成为一份关于「如何在嵌入式项目里做可核验的正确性论证」的独立样本。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️⚠️⚠️ 19 行机型里只有 1 行在真机上验证过。</strong> <strong>⭐⭐⭐⭐⭐ 157⭐ 而 1/19 的真机验证率 —— 这意味着用户买到板子后大概率要自己调试自己的型号。</strong></li>
+<li><strong>⚠️⚠️⚠️ <code>subs 0</code> 且 5 条 issue 全是功能请求</strong> —— <strong>⭐⭐⭐⭐⭐ 即没有任何一条「我试了但坏了」的报告，因此它的实际可用性完全没有被外部证据检验过。</strong> <strong>⭐⭐⭐ 对比 COGBox 的 12 条 issue 里有 6 条是「在别的硬件上崩」，本项目的 issue 生态还处在「许愿」阶段。</strong></li>
+<li><strong>⚠️⚠️⚠️ 零 release、无二进制分发。</strong> 用户必须自己编译固件、准备 <code>.env</code>、用 COM 口烧录。<strong>⭐⭐ 这个门槛会淘汰绝大多数只想「让它能用」的用户。</strong></li>
+<li><strong>⚠️⚠️ 单作者、14 commits —— bus factor 为 1。</strong> 而它需要持续跟随新的打印机型号。</li>
+<li><strong>⚠️⚠️ 正确性论证依赖一个外部项目的特定版本（Gutenprint 5.3.5）。</strong> <strong>⭐⭐⭐⭐⭐ 即它的字节级保证只在「与 5.3.5 一致」这个参照下成立 —— 参照系升级后需要重新核验。</strong></li>
+<li><strong>⚠️⚠️ Gutenprint 参照系自身的缺陷清单未知。</strong> 本档案只核验到「页高是 8 的倍数丢最后一块」这一条。<strong>⭐⭐⭐⭐⭐ 如果还有别的缺陷被默默放过，本档案无法判断 —— 且对照器的豁免只覆盖了作者发现的那一条。</strong></li>
+<li><strong>⚠️⚠️ 硬件门槛</strong>：需一块 ESP32-S3 双 USB-C 开发板 + 一台 Canon 打印机 + 一台路由器。<strong>⭐⭐ 而 README 还特意提醒用 COM 口而不是标着 "USB" 的口 —— 这类细节本身就说明易用性尚未打磨。</strong></li>
+<li><strong>⚠️⚠️ 固件为 IPv4-only</strong>，macOS 上 <code>.local</code> 解析约需 5 秒（AGENTS.md 自述）。</li>
+<li><strong>⚠️⚠️ 本档案未读 <code>components/</code> 各 C 文件实现</strong>，因此无法评估协议实现的正确性与安全性。</li>
+<li><strong>⚠️ 本档案无法核验 157⭐ 的来源</strong>（<code>stargazers</code> 端点 404）。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ vs CUPS 的 <code>ipp-usb</code>（Linux 驱动）</strong>：<strong>⭐⭐⭐⭐⭐ 两者做同一件事（把 USB 打印机暴露为 IPP 网络打印机），载体完全不同。</strong> <code>ipp-usb</code> 跑在一台常开的 Linux 机器上，依赖系统已有的 Gutenprint；本项目跑在一块 ESP32 上，<strong>自带一个 Gutenprint 编译出的参考系来验证自己</strong>。<strong>⭐⭐⭐⭐⭐ 换句话说：CUPS 复用 Gutenprint 作为</strong>实现<strong>，本项目复用 Gutenprint 作为</strong>判官<strong>。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ vs 商业打印服务器（如 TP-Link TL-PS110U、PrintCellect 一类）</strong>：<strong>⭐⭐⭐ 商业产品做的是同一件事且有品牌与售后，但它们</strong>不公开自己的正确性论证方式<strong>；本项目的对照工程是完全可核验的。</strong>⭐⭐⭐⭐⭐ 而本项目的代价是：机型支持面远小于商业产品（1/19 已验证）。**</li>
+<li><strong>⭐⭐⭐⭐ vs AirPrint 逆向实现（如 <code>apple2hp</code>、各类 AirPrint 补丁集）</strong>：<strong>⭐⭐⭐⭐ 那些项目让打印机自己说话（给打印机刷固件或加 USB 拦截器）；本项目让外部设备替它说话。</strong> <strong>⭐⭐⭐⭐⭐ 后者不需要动打印机，因此风险与门槛完全不同。</strong></li>
+<li><strong>⭐⭐⭐ vs 各种 ESP32 打印/IoT 项目</strong>：<strong>⭐⭐⭐⭐⭐ 同类项目通常只有「我能让它打印」的演示；本项目有</strong>字节级对照 + QEMU 自测 + AGENTS 工作规则 + 19 行带状态的机型表<strong>。</strong> ⭐⭐⭐⭐⭐⭐ 这在本日报今日的新项目里是罕见的工程完整度。**</li>
+<li><strong>⭐⭐⭐ vs <code>AxiomMath/CFSG</code>、<code>NyxFoundation/nyxis</code>（本日同期）</strong>：<strong>⭐⭐⭐⭐⭐ 三者是「把裁决权交给外部对象」的三种形态 —— 定理（nyxis）、形式化证明 + 对照机制（CFSG）、第三方实现（esp32）。</strong> <strong>⭐⭐⭐⭐⭐ 而 esp32 的独特之处是：它的参照系</strong>完全在另一个生态里<strong>（Linux 打印栈），因此不依赖形式化方法学，也因此门槛最低。</strong></li>
+<li><strong>⭐⭐ vs <code>Motionsites-AI/claude-skill</code>（同作者群）</strong>：<strong>⭐⭐⭐⭐⭐⭐⭐ 两者形态相似（都做 ESP32 相关、都提供 Claude Code 插件、</strong>其中 3 条 issue 来自同一作者<strong>），但</strong>方向相反<strong>：claude-skill 走「让 Claude 截图自查并反复修」的自动化循环（</strong>⭐ 本日报今日未核验其核心主张<strong>），esp32 走「让第三方实现当判官」的确定性对照。</strong>⭐⭐⭐⭐⭐⭐⭐ 而后者的证据等级明显更高。**</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得 —— 它的工程方法比它的产品更值得跟踪。</strong></p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 理由一：「编译第三方成熟实现 → 产出参考流 → 逐字节比对 → 豁免仅一处并写明原因」是一套可以直接复用的正确性论证模板。</strong> <strong>⭐⭐⭐⭐⭐⭐ 而 <code>tools/gutenprint_ref/build_ref.sh</code> + <code>tools/compare_gutenprint.py</code> 是可以直接照抄的工程骨架 —— 在任何有外部标准的领域（协议编解码、文件格式、字体渲染、编解码器输出）都成立。</strong></li>
+<li><strong>⭐⭐⭐⭐ 理由二：<code>AGENTS.md</code> 的六条规则是本日报见过最像「工程宪法」的 agent 指令文档</strong>，且每一条都对应一种真实的失效模式，其中一条直接引用了一次具体的踩坑。<strong>⭐⭐⭐⭐ 这份文档可以直接抄进任何做硬件/嵌入式 agent 的项目。</strong></li>
+<li><strong>⭐⭐⭐ 理由三：它把「未验证范围」做成了一张可数的表（1 绿 : 18 黄），这是本日报今日关于「公开未验证范围」的第五个独立样本。</strong> <strong>⭐⭐⭐⭐⭐ 而这个样本的价值在于：</strong>它同时是一个 star 数不低（157⭐）而验证率极低（1/19）的项目** —— 这让「热度不等于成熟度」这条判断有了最锋利的一个数据点。</li>
+<li><strong>⭐⭐ 使用建议</strong>：<strong>如果你只是想打印，直接买打印服务器更省事；如果你在做协议实现或嵌入式正确性论证，读它的 <code>tools/</code> 目录。</strong></li>
+</ul>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 支持表里 🟢 的行数是否增加</strong>（当前 1 行）—— <strong>⭐⭐⭐⭐⭐ 这是它从「玩具」变成「产品」的唯一硬指标。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 是否出现第一条「我试了但坏了」的 issue</strong>（当前 5 条全是功能请求）—— <strong>⭐⭐⭐⭐⭐ 这是它可用性的第一份外部证据。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ <code>subs</code> 是否从 0 上升</strong> —— <strong>⭐⭐⭐⭐⭐⭐ 对一个需要持续跟随打印机型号的项目，订阅数比 star 更能反映真实意图。</strong></li>
+<li><strong>⭐⭐⭐ 是否发布第一个 release 并附带预编译固件</strong>（当前 0 个）—— <strong>⭐⭐⭐ 这决定易用门槛能否下降。</strong></li>
+<li><strong>⭐⭐⭐ 对照器的豁免清单是否扩大</strong>（当前只有 1 条）—— <strong>⭐⭐⭐⭐⭐ 豁免条数增长说明作者在持续发现参照系的新缺陷，这是好事；但也说明「字节级一致」的保证覆盖面在变窄，需要同步记录。</strong></li>
+<li><strong>⭐⭐⭐ 是否有第三方贡献者新增机型驱动</strong> —— <strong>⭐⭐ 22 个系列的驱动若全靠一人维护，覆盖面会长期受限。</strong></li>
+<li><strong>⭐⭐ <code>MODE=dev</code> 是否会加入更多「不产生副作用」的保护</strong> —— <strong>⭐⭐ 这直接对应 AGENTS.md 的隐私规则。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 本日报今日未核验 <code>components/</code> 的实现 —— 下一次跟踪时应补上这一步</strong>，<strong>⭐⭐⭐⭐⭐ 因为它是「这个项目的协议实现到底对不对」的唯一答案所在。</strong></li>
+</ol>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST/Search API（gh CLI 认证），UTC <strong>2026-10-27T22:16:31Z</strong> 单一快照 | Stars: 157 | Forks: 8 | Subscribers: 0 | Open Issues: 5 | License: MIT | 语言: C | 创建: 2026-10-26T16:18:54Z | pushed: 2026-10-26T20:49:54Z | 14 commits | contributors 1 人 | releases 0 个 | topics 0 | 10,687 KB
+账号背景: <code>ngxson</code> 为 User，创建于 2014-05-26，179 个公开仓库，1,287 followers
+已核验: <code>tools/compare_gutenprint.py</code> docstring 全文（含 Gutenprint 缺陷豁免说明）；<code>tools/gutenprint_ref/build_ref.sh</code> 的下载 / configure 参数 / 编译 / 产出参考流 / 五个 stream 变体驱动构建流程；<code>AGENTS.md</code> 六条规则原文；README 支持表 19 行与状态列（1 绿 : 18 黄）；<code>components/</code> 四目录与文件名；<code>MODE=dev</code> / <code>debug</code> / <code>normal</code> 三模式；5 条 issue 标题（全部为功能请求）
+证据边界: <code>components/</code> 各 C 文件的实现未读；Gutenprint 参照系缺陷的完整清单未知（本档案只知「页高是 8 的倍数丢最后一块」）；<code>MODE=dev</code> 与 <code>MODE=debug</code> 的行为差异未逐条核验；真机打印/扫描未验证（需自购 ESP32-S3 双 USB-C 板 + 一台 Canon 打印机）；固件 IPv4-only，macOS 上 <code>.local</code> 解析约需 5 秒（项目自述）；157⭐ 的来源无法核验（<code>stargazers</code> 端点对本 token 返回 404）</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

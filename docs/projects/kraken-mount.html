@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quer3q/kraken-mount | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/quer3q/kraken-mount" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="quer3qkraken-mount">quer3q/kraken-mount</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>一个 PS5 上的 ELF payload：在主机与 USB/扩展硬盘上查找游戏，挂载调试 FPKG 与游戏目录</strong> —— ⭐⭐⭐⭐⭐ 它的独特之处是<strong>用 <code>DESIGN.md</code> 把「支持的来源只有三种」写成了一节标题，并在同一节里逐条说明「不支持什么」</strong>，同时<strong>把一个不自己构建的外部二进制（<code>ampr-emu-ng</code>）的 SHA256 校验写进了构建脚本</strong>。</p>
+<h2 id="_2">它解决的问题</h2>
+<p><strong>PS5 上没有官方的第三方游戏挂载机制。</strong> ⭐⭐⭐⭐⭐ 使用者手上有的是三种形态的资产：dump-forge 出来的调试 FPKG <code>.pkg</code>、普通游戏目录（或被 zstd / LZ4 打包的目录）、以及分布在多个盘上的集合。⭐⭐⭐⭐⭐ kraken-mount 负责扫描这些位置、注册到主屏幕 tile、在启动时覆盖 fakelib 与共享的 <code>ampr-emu-ng</code> 目录。</p>
+<h2 id="2026-11-15">为什么值得关注（2026-11-15）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本数据集里把「非目标」写得最清楚的项目之一</strong>，⭐⭐⭐⭐⭐ 并且<strong>19 个 open issue 是本日四个真项目里最多的</strong>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实一：<code>DESIGN.md</code> 用一节标题声明边界。</strong></p>
+<p>原文（节标题与条目）：</p>
+<blockquote>
+<h2 id="supported-sources-nothing-else">Supported sources (nothing else)</h2>
+<ul>
+<li><strong>FPKG</strong>: a dump-forge debug <code>.pkg</code> file directly in a scan root. Sparse layout extents (holes: a kind-0x40 boundary up to the next boundary) are read as zeros.</li>
+<li><strong>Folder</strong>: a directory directly in a scan root with <code>eboot.bin</code> and <code>sce_sys/param.json</code>. Packing: <code>ampr_zstd.index</code> present = zstd, else <code>ampr_assets.index</code> = lz4, else plain.</li>
+<li>Any drive. The cache is always on the internal SSD.</li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>「(nothing else)」这四个字在括号里</strong> —— ⭐⭐⭐⭐⭐ 即「只支持这三种，没有第四种」被写成了标题的一部分。⭐⭐⭐⭐⭐ 并且「Sparse layout extents (holes …) are read as zeros」连稀疏布局的边界行为都写明了。</p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实二：供应链边界被写进构建脚本。</strong></p>
+<p>原文：</p>
+<blockquote>
+<p>The ampr-emu-ng runtime is <strong>NOT built here</strong>: its released <code>libSceAmpr.sprx</code> is bundled from <code>vendor/ampr-emu-ng/</code> (<code>VERSION</code>, <code>SHA256SUMS</code> from the GitHub release, <strong>checked by <code>ps5/build.sh</code></strong>) and installed into <code>/data/krakenmount/ampr/</code> at start.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>即「我不构建这个二进制，我拉它的官方 release 并校验 SHA256」是一条被显式记录的供应链边界</strong> —— ⭐⭐⭐⭐⭐ 按 11-13 记录的 <code>hikaku-extension</code> 判据（把上游 commit hash 写进文档），⭐⭐⭐⭐⭐ <strong>这是同一条实践在二进制分发场景下的版本。</strong> ⭐⭐⭐ ⚠️ <strong>但 <code>vendor/ampr-emu-ng/</code> 目录未出现在 <code>git/trees</code> 输出中，因此「该目录确实含 <code>VERSION</code> 与 <code>SHA256SUMS</code>」本日报未能核验。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实三：授权来源的合法性边界写在 README 靠前位置。</strong></p>
+<p>原文：「A <code>.pkg</code> must be a <strong>plaintext debug FPKG from <code>dump-forge</code></strong>. A folder needs <code>eboot.bin</code> and <code>sce_sys/param.json</code>.」</p>
+<p>⭐⭐⭐⭐⭐ <strong>即它要求使用者自己提供合法转储的调试包，不提供任何获取途径。</strong> ⭐⭐⭐⭐⭐ 这与 11-13 记录的 <code>super-odyssey-pc-recomp</code>（「<strong>You must bring your own game</strong>… requests for game files or keys will be closed」）⭐⭐⭐⭐⭐ 是同一种责任姿态。</p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实四：19 个 open issue。</strong>
+⭐⭐⭐⭐⭐ 按 11-12 记录 <code>solo-to-team-skills</code>（9 个 issue）时确立的判据：<strong>issue 的存在说明项目正在被真实使用与质疑，这是正信号。</strong> ⭐⭐⭐⭐⭐ 本日四个真项目的 issue 数为 0 / 0 / 0 / <strong>19</strong>，⭐⭐⭐⭐⭐ kraken-mount 是唯一一个「有人真的在用它、并且在跟作者争论」的项目。⭐⭐⭐ ⚠️ <strong>本日报未逐条打开这 19 个 issue 内容</strong>，因此「issue 是真实使用信号」是推断而非实测。</p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实五：运行期行为也被设计过。</strong>
+缓存路径 <code>/data/krakenmount/caches/&lt;TITLE_ID&gt;</code>、配置 <code>/data/krakenmount/config.toml</code>、日志 <code>/data/krakenmount/kraken.log</code>；⭐⭐⭐⭐⭐ 每个游戏会得到一个「<name> registered」通知与独立的主屏幕 tile；⭐⭐⭐⭐⭐ 且支持通过 <code>http://&lt;ps5-ip&gt;:8097/</code> 从电脑侧管理游戏、重建/删除、改设置、读日志。⭐⭐⭐⭐⭐ <strong>最后这条尤其值得记 —— 它把「一个跑在游戏机上的 payload」做成了可从外部运维的服务。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实六：许可清晰，且有第三方声明。</strong>
+<code>license.spdx_id = GPL-3.0</code>，根目录有完整 <code>LICENSE</code>（GNU GPL v3 原文），⭐⭐⭐⭐⭐ 且额外有 <code>THIRD_PARTY_NOTICES</code> 文件与 README 里的致谢段（「<code>drakmor/ShadowMountPlus</code>: home-screen registration, the fakelib sandbox overlay and backports are ported from it」）。⭐⭐⭐⭐⭐ <strong>这与本日 <code>super-odyssey-pc-recomp</code>（NOASSERTION 且根目录无 LICENSE 文件）形成整整一个档次的差距。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p>⭐⭐⭐⭐⭐ <strong>真实需求 + 真实使用，且「低 fork/star + 高 subs + 高 issue」的组合在本日样本里是独特的。</strong></p>
+<p>⭐⭐⭐⭐⭐ ⑂27 / 321⭐ = <strong>fork/star 8.4%</strong>；⭐⭐⭐⭐⭐ <strong>subs 8</strong> 相对 321⭐ = 2.5%（本日投放体的 subs 是 0–3，而本项目的订阅数在真实关注一侧）；⭐⭐⭐⭐⭐ <strong>oi 19</strong> 在 star 321 的规模下是极高的参与度。</p>
+<p>⭐⭐⭐⭐⭐ owner <code>quer3q</code> 账号 <strong>2020-04-15</strong> 创建（6 年）、8 个公开仓库、bio「Backend Engineer」⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ <strong>既不新、也非组织、也无账号聚集特征</strong>，按 11-13 建立的判据完全不符合投放体特征。⭐⭐⭐⭐⭐ 且它自带一个独立工具链仓库 <code>quer3q/ampr-emu-ng</code>（README 提到「comes bundled」并指向 <code>github.com/quer3q/ampr-emu-ng</code>），⭐⭐⭐⭐⭐ <strong>即作者是长期做 PS5 homebrew 的持续产出者，不是「投放当天现造的账号」。</strong></p>
+<p>⭐⭐⭐⭐⭐ ⚠️ <strong>未核验</strong>：<code>ampr-emu-ng</code> 仓库本日报<strong>未打开</strong>（仅从 README 的引用确认其存在与作者归属一致）；⭐⭐⭐⭐⭐ <strong>本项目涉及绕过 PS5 官方软件授权机制，本档案只记录其工程结构与文档做法，不评价其合法性，不提供使用指引。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>Rust 编写的主 payload + C 的 PS5 兼容层</strong>：21 个 <code>.rs</code> + 10 个 <code>.c</code>；<code>ps5/</code> 目录下有 <code>Dockerfile</code>、<code>build.sh</code>、<code>compat.c</code>、<code>entry.c</code> —— ⭐⭐⭐⭐⭐ <strong>用 Docker 固定构建环境</strong>，对交叉编译目标机代码是标准做法。</li>
+<li><strong>workspace 化的 crate 拆分</strong>：<code>crates/kraken-mount-pkg</code> 独立成 crate（含 <code>Cargo.lock</code>、<code>examples/ls.rs</code>），⭐⭐⭐⭐⭐ 其 <code>src/decoder/</code> 下有 <code>huff.rs</code> / <code>lz.rs</code> / <code>timing.rs</code> / <code>mod.rs</code> —— ⭐⭐⭐⭐⭐ <strong>即 FPKG 的块解码被拆成独立模块并单独成 crate</strong>。</li>
+<li><strong>稀疏布局处理</strong>：<code>DESIGN.md</code> 明写 sparse extents（holes）按零读取 ⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ 这是 FPKG 格式的一个具体边界，多数同类项目会跳过不提。</li>
+<li><strong>多存储位置扫描</strong>：<code>/data/homebrew</code>、<code>/data/etaHEN/games</code>、USB 根目录下的 <code>homebrew</code> / <code>etaHEN/games</code>；backports 放 <code>&lt;scan root&gt;/backports/&lt;TITLE_ID&gt;*</code>。</li>
+<li><strong>配置与日志分离</strong>：<code>config.toml</code> + <code>kraken.log</code> 分开，日志路径固定。</li>
+<li><strong>外部 HTTP 管理面</strong>（8097 端口）⭐⭐⭐⭐⭐ —— 对一个跑在游戏机上的 payload 来说，这是少见但极实用的设计。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>「PS5 侧的游戏挂载运行时」；边界 = 扫描根目录内的三种资产 + 一个外部 ampr-emu-ng 运行时 + 一个 8097 管理面；<strong>主机内部 SSD 是缓存的唯一落点</strong></td>
+<td><code>DESIGN.md</code> 的「Supported sources (nothing else)」+ README 路径表；⚠️ <strong>未在 PS5 上运行、未编译、未构建 Docker 镜像</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>启动 → 扫描各扫描根 → 按 <code>ampr_zstd.index</code> / <code>ampr_assets.index</code> 判定打包方式 → 解码 FPKG 或直接挂目录 → 写内部 SSD 缓存 → 注册主屏幕 tile → 启动时 overlay fakelib 与 ampr 目录 → 8097 提供管理界面</td>
+<td>主路径由 <code>DESIGN.md</code> 与 README 的 1–5 步推导；⚠️ <strong>未逐文件审阅 Rust/C 实现</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>①<strong>自建 vs 借用运行时</strong>：不构建 ampr-emu-ng，改为拉官方 release + SHA256 校验 —— 换供应链可信度，牺牲自举能力；②<strong>缓存位置</strong>：永远在内部 SSD —— 换可靠性，牺牲 USB 性能；③<strong>支持面</strong>：三种来源写死 —— 换明确性，牺牲通用性；④<strong>许可</strong>：GPL-3.0 + THIRD_PARTY_NOTICES —— 换可审计性，牺牲闭源嵌入</td>
+<td>四个权衡的<strong>存在</strong>均由 DESIGN.md/README/许可证文件证实；<strong>每项的实际代价本日报未评估</strong>（未测性能、未核验校验是否真在构建时执行）</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>在有 homebrew 环境的 PS5 上：放一个 dump-forge 调试 FPKG 到扫描根 → 用 elfldr（9021）发送 <code>kraken-mount.elf</code> → 观察主屏幕 tile → 开 8097 管理面 → 读日志 → 用 <code>ps5/build.sh</code>（需 Docker）本地复现构建并核对 SHA256 校验步骤</td>
+<td>PoC 范围由 README 的「How to」推导；<strong>本日报未执行</strong>（需 PS5 + homebrew 环境 + Docker）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>第一条：把「不支持什么」写成节标题的一部分。</strong> ⭐⭐⭐⭐⭐ 「Supported sources (nothing else)」比任何一段免责文字都更有效 —— ⭐⭐⭐⭐⭐ <strong>它在读者做错误预期之前就完成了筛选。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第二条：不为一个外部依赖重建供应链，而是绑定它的发布物并校验哈希。</strong> ⭐⭐⭐⭐⭐ <code>VERSION</code> + <code>SHA256SUMS</code> + <code>checked by ps5/build.sh</code> 是一个可以照抄的三件套。</p>
+<p>⭐⭐⭐⭐⭐ <strong>第三条：把「不支持」的粒度写到格式级别。</strong> ⭐⭐⭐⭐⭐ 「Sparse layout extents (holes: a kind-0x40 boundary up to the next boundary) are read as zeros」⭐⭐⭐⭐⭐ —— <strong>大多数项目只写「支持 FPKG」，而这会让使用者误以为所有 FPKG 布局都正确。</strong></p>
+<p>⭐⭐⭐⭐⭐ 第四条：<strong>给一个跑在专用设备上的程序配一个外部管理面</strong>（8097 + 日志 + TOML 配置），是本数据集里少见的成熟度信号。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：结构取自 <code>DESIGN.md</code>、<code>README.md</code> 与 <code>git/trees</code> 文件清单；标注「实测」的为本日报直接读取到的内容，标注「待核验」的为推断。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Assets["扫描根 资产 三种 仅此三种"]
+    FPKG["调试 FPKG .pkg<br/>必须来自 dump-forge<br/>稀疏 extents 按零读取"]
+    Folder["游戏目录<br/>需 eboot.bin + sce_sys/param.json"]
+    Packed["打包目录<br/>ampr_zstd.index → zstd<br/>ampr_assets.index → lz4<br/>否则普通目录"]
+    Roots["扫描根位置<br/>/data/homebrew · /data/etaHEN/games<br/>homebrew · etaHEN/games · USB 根"]
+    Backports["backports/<TITLE_ID>*"]
+  end
+  subgraph Payload["kraken-mount payload · Rust + C"]
+    Scan["扫描器"]
+    Dec["crates/kraken-mount-pkg<br/>FPKG reader + Kraken block decoder<br/>decoder/huff.rs · lz.rs · timing.rs"]
+    Cache["内部 SSD 缓存<br/>/data/krakenmount/caches/<TITLE_ID><br/>DESIGN: cache is always on the internal SSD"]
+    Reg["主屏幕 tile 注册<br/>每游戏一个 tile + registered 通知"]
+    Overlay["启动时 overlay<br/>fakelib + 共享 ampr 目录<br/>ported from ShadowMountPlus"]
+    Mgmt["管理面 http://<ps5-ip>:8097/<br/>重建 删除 改设置 读日志"]
+    Cfg["config.toml + kraken.log"]
+  end
+  subgraph Supply["供应链"]
+    Ampr["ampr-emu-ng<br/>不自行构建<br/>拉官方 release 的 libSceAmpr.sprx<br/>VERSION + SHA256SUMS<br/>checked by ps5/build.sh 待核验"]
+    Vendor["vendor/ampr-emu-ng/<br/>未出现在 git/trees 待核验"]
+    Docker["ps5/Dockerfile + build.sh<br/>可复现构建 需 Docker"]
+  end
+  Roots --> Scan
+  FPKG --> Dec
+  Folder --> Scan
+  Packed --> Dec
+  Backports --> Scan
+  Scan --> Cache --> Reg
+  Ampr -.安装到 /data/krakenmount/ampr/.-> Overlay
+  Vendor --> Ampr
+  Reg --> Overlay
+  Payload -.启动.-> Overlay
+  Overlay --> Mgmt
+  Cfg -.配置与日志.-> Mgmt
+  Ampr -.SHA256 校验.-> Docker
+  Docker -.构建 kraken-mount.elf.-> Payload
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型项目（主机侧 homebrew 运行时）。</strong> ⭐⭐⭐⭐⭐ 在 PS5 侧「游戏挂载」这个细分位置上，它是本数据集里文档质量最高的样本 —— ⭐⭐⭐⭐⭐ <strong>不是因为功能更强（它的功能范围被自己写死了），而是因为它的文档把「边界」「供应链」「许可」三件事都交代清楚了。</strong> ⭐⭐⭐⭐⭐ 对照 11-13 记录的 <code>super-odyssey-pc-recomp</code>（同样的「静态重编译 / 需自备素材」定位，但 NOASSERTION 且无 LICENSE 文件），⭐⭐⭐⭐⭐ <strong>两者之间的差距不在技术，在工程规范。</strong></p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li>⭐⭐⭐⭐⭐ <strong>用途本身涉及绕过主机平台的官方软件授权机制</strong> —— ⭐⭐⭐⭐⭐ 本档案只记录工程结构与文档做法，<strong>不评价其合法性，也不提供任何使用指引</strong>。</li>
+<li>⭐⭐⭐⭐⭐ <strong>强依赖外部生态</strong>：<code>elfldr</code>（9021）、<code>ampr-emu-ng</code> 的 <code>.sprx</code>、<code>dump-forge</code> 产出的 FPKG —— ⭐⭐⭐⭐⭐ 任何一环变动都会让项目失效。</li>
+<li>⭐⭐⭐⭐⭐ <strong>功能面被自己写死</strong>：只支持三种来源，⭐⭐⭐⭐⭐ 因此遇到新格式只能等待上游更新。</li>
+<li>⭐⭐⭐⭐⭐ <strong>「fakelib sandbox overlay」是移植来的</strong>（源自 <code>drakmor/ShadowMountPlus</code>）⭐⭐⭐⭐⭐ —— <strong>上游若变更该机制，此处需要跟进</strong>；⭐⭐⭐ ⚠️ <strong>归属关系本日报未独立核验</strong>（仅读到 README 致谢段）。</li>
+<li>⭐⭐⭐ ⚠️ <strong>未核验项</strong>：未编译、未在 PS5 上运行、未构建 Docker 镜像、未核验 <code>vendor/ampr-emu-ng/</code> 是否存在、未运行 <code>crates/kraken-mount-pkg</code> 的解码器、未逐条打开 19 个 issue。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>drakmor/ShadowMountPlus</code></strong>：⭐⭐⭐⭐⭐ <strong>本项目明确声明移植了它的 home-screen registration、fakelib sandbox overlay 与 backports</strong> —— ⭐⭐⭐⭐⭐ 即两者是<strong>继承关系而非竞争关系</strong>。</li>
+<li><strong>vs <code>quer3q/ampr-emu-ng</code></strong>：同一作者的配套运行时项目，本项目<strong>消费</strong>它并校验其哈希。</li>
+<li><strong>vs 其他 PS5 payload 工具</strong>：⭐⭐⭐⭐⭐ 多数同类项目是单文件 payload + 简短 README；⭐⭐⭐⭐⭐ kraken-mount 的差异在于<strong>有 crate 拆分、有 DESIGN.md、有 Docker 构建、有外部管理面、有 SHA256 校验</strong>。</li>
+<li><strong>vs 11-13 的 <code>super-odyssey-pc-recomp</code></strong> ⭐⭐⭐⭐⭐ 同为「需自备素材」的边界清晰型项目，⭐⭐⭐⭐⭐ <strong>但本项目有 GPL-3.0 与 <code>THIRD_PARTY_NOTICES</code>，那个项目根目录没有 LICENSE 文件</strong> —— ⭐⭐⭐⭐⭐ 差距在许可与第三方声明，不在功能。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪（作为 PS5 homebrew 生态的活跃样本与文档规范样本）。</strong> ⭐⭐⭐⭐⭐ 具体建议：
+1. <strong>做同类主机侧工具的人应抄它的 <code>DESIGN.md</code> 结构</strong>：一节「Supported sources (nothing else)」+ 逐条边界 + 供应链声明 + 缓存位置；
+2. <strong>抄它的供应链三件套</strong>：拉官方 release + 记 <code>VERSION</code> + 记 <code>SHA256SUMS</code> + 在构建脚本里校验；
+3. 观察 19 个 issue 里的高频问题 —— 那会直接告诉你下一个版本该修什么；
+4. 观察 <code>ampr-emu-ng</code> 的版本节奏（0.4.0 已在 2026-11-13 被 bundle），⭐⭐⭐⭐⭐ 它是判断本项目活跃度的最佳代理指标。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>19 个 issue 的分布与关闭率（判断是「被真实使用」还是「只有人在提 issue」）</li>
+<li><code>vendor/ampr-emu-ng/</code> 是否实际入库且 <code>ps5/build.sh</code> 的 SHA256 校验是否真的生效（⭐⭐⭐⭐⭐ 本档案最想确认但未能确认的一点）</li>
+<li>是否发布 <code>v0.0.1-beta</code> 之后的版本，以及是否补上 i18n（提交标题提到「11 languages」）</li>
+<li>稀疏 FPKG / 打包目录的支持是否扩展（<code>DESIGN.md</code> 的「nothing else」是否松动）</li>
+<li>是否有其他工具开始采用同样的「拉 release + 校验哈希」依赖方式（若成为惯例，本档案的三件套建议价值上升）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-11-15) | Stars: 321 | Forks: 27 | Subscribers: 8 | Open Issues: 19 | License: GPL-3.0 | 语言: Rust | 创建: 2026-11-13T07:25:37Z | release v0.0.1-beta | owner 创建: 2020-04-15T13:54:41Z</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

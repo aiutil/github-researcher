@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c6lang/c6 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/c6lang/c6" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="c6langc6">c6lang/c6</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>TinyCC 的一个分支</strong>：给 C 加上一组系统编程友好的语言扩展（<code>defer</code> / <code>errdefer</code> / <code>try-catch</code> / <code>async-await</code> / <code>module-import</code> / <code>interface</code> / 切片 / 元组 / 泛型 / 闭包 / 宏），<strong>并且用「源文件后缀 <code>.c6</code>」作为唯一的开关</strong> —— <code>.c</code> 文件的行为与上游 TCC 完全一致。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>C 的老问题不是「没有函数」，而是「没有作用域退出语义、没有错误传播、没有模块、没有泛型、没有协程」—— 而所有补法都在语言之外。</strong> 现有选项是换语言（Rust/Go/Zig，代价是重写）、用宏库（glibc/Boost，代价是编译期依赖与可移植性）、或者用纪律约束（goto cleanup、setjmp，代价是人会忘）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>c6 的赌注是：这些能力可以在编译期被「按文件」加进 C，而不改 C 的语义。</strong> README 写得很明确：<strong>「扩展默认不启用，且是编译期可裁剪的：不定义 <code>C6_EXT</code> 构建出的编译器与上游 TCC 行为完全一致」</strong>，且<strong>「开启扩展的唯一开关是源文件后缀 <code>.c6</code>：它只对这一个翻译单元生效（每个文件独立判断，<code>.c</code> 文件不会因为同一次编译里出现 <code>.c6</code> 而被连带开启）」</strong>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>这个设计决定是本日最值得架构师抄的一条：它把「语言方言」这个通常需要编译器 flag 全局开关的东西，降级成了一个逐文件的、可组合的、可逐目录推广的特性。</strong> 与之配套的是 <strong><code>import NAME;</code> 优先查找 <code>NAME.c6</code>，找不到才回退到 <code>NAME.c</code></strong> —— 即<strong>同一个模块的两种实现可以共存于同一构建中</strong>。</p>
+<h2 id="2026-11-12">为什么值得关注（2026-11-12）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本日 29 个候选里唯一一个「像正经项目」的编译器项目，而它的规模与密度远超过这个星数应有的水平：761 个 blob、285 个 commit、2 名贡献者（funnywwh 280 + Fancyhe1 5）、README 71,130 字节、<code>docs/</code> 下有 <code>plan.md</code> / <code>grammar.md</code> / <code>stdlib.md</code> / <code>closure-design.md</code> / <code>generics-design.md</code>。</strong> ⭐⭐⭐⭐⭐ <strong>37⭐ 对应这样一份密度，几乎可以肯定是「star 不是主要传播渠道」的项目 —— 而这正是本日报一贯主张的「热度不等于价值」的一次正面例证。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而它的测试组织方式是本日报迄今记录过的最认真的一份：</strong> <code>tests/</code> 下的每一个测试文件对应一个语言特性（<code>defer.c6</code> / <code>defer_scope.c6</code> / <code>defer_reent.c6</code> / <code>defer_thread.c6</code> / <code>err.c6</code> / <code>err_ids.c6</code> / <code>try.c6</code> / <code>test-block.c6</code> / <code>macro.c6</code> / <code>module.c6</code> / <code>method.c6</code> / <code>interface.c6</code> / <code>slice.c6</code> / <code>tuple.c6</code> / <code>tuple_error.c6</code> / <code>tuple_async.c6</code> / <code>tuple_thread.c6</code> / <code>typename.c6</code> / <code>enum_scope.c6</code> / <code>foreach.c6</code> / <code>foreach_head.c6</code> / <code>foreach_iter.c6</code> / <code>fstr.c6</code> / <code>fn_lit.c6</code> / <code>closure.c6</code> / <code>generic.c6</code> / <code>generic_fn.c6</code> / <code>generic_scope.c6</code> / <code>async.c6</code> / <code>async_frame.c6</code> / <code>thread.c6</code> / <code>thread_handle.c6</code> / <code>task_method.c6</code> / <code>weak.c6</code> / <code>gc.c6</code> / <code>gc_field.c6</code> / <code>gc_type.c6</code> / <code>gc_drop.c6</code> / <code>gc_thread.c6</code> / <code>gc_async.c6</code>），<strong>而且 README 明确写出一条提交前的单一验证命令</strong>：</p>
+<p><code>提交前只跑一条命令就够：`make check-all`（= `test-all` + `errcheck` + C99 后端两套用例 + 三条自举路线）</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>「三条自举路线」是本日最值得记的一句：</strong> 一个改写 TCC 的编译器项目，<strong>用自举（self-hosting）来证明自己的实现是对的</strong> —— 这比任何单元测试都强一个量级。</p>
+<p>⭐⭐⭐⭐⭐ <strong>而 commit 信息本身是工程师式的可读历史</strong>：<code>README: 提交前验证统一指向 make check-all</code> / <code>docs: 纠正「已知限制」里两处过期说法</code> / <code>std: 补齐第二批模块（strbuf/utf8/bits/hash/path/deque）并加固 str/vec/fmt</code> / <code>修复 make check-all：裸机 harness 认得条件编译，不再引用悬空的 __tcc_test_7</code> / <code>tests: 补齐特性矩阵里 4 处缺口，把有专属用例的特性覆盖补到全量</code>。⭐⭐⭐⭐⭐ <strong>注意最后一条：它把「特性矩阵里有几个特性还没有专属测试用例」当成一个显式的待办来跟踪</strong> —— 这正是本日报连日记录的那类「把不确定性写进输出」的诚实度。</p>
+<p>⭐⭐⭐⭐ <strong>以及，与本日两个农场对照，它的 fork 分布完全正常：抽样 3 个 fork，间隔中位数 18,858 秒（5.2 小时），0/2 个 ≤10 秒。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>低热度、高密度 —— 典型的「社区内部传播」而非「注意力洪峰」型项目。</strong> 判据：
+- <strong>⭐⭐⭐⭐⭐ 37⭐ / 3 fork / 1 subscriber / 0 issue / 0 followers（组织）</strong> —— 这个热度分布对应的是一个<strong>刚被创建不到一天、尚未进入任何榜单视野</strong>的项目；
+- ⭐⭐⭐⭐ <strong>但 285 commits / 761 blobs / 5,242 行 README+docs / 35+ 个测试文件 / 2 名贡献者</strong> —— <strong>即它不是「一夜写完」的产物</strong>：README 明写 <code>tcc/</code> 是「上游基线 + 一个 c6 补丁一个提交」，而 <code>tcc/</code> 本身就有 700+ 个 blob。⭐⭐⭐⭐ <strong>推论：真实工作量 = 一次 TCC 分支 + 大量扩展实现，而这些实现是在仓库创建前完成的（一次性 push 进来），所以 git 历史看不出「开发了多久」。</strong> ⚠️ <strong>这只是一个基于「1 个 commit + 285 commits」结构差异的推断 —— 本日报无法核验作者实际的工作时长。</strong>
+- ⭐⭐⭐ <strong>组织 <code>c6lang</code> 账号创建于 2026-11-11T04:19:21Z，比仓库创建早 7 分钟，0 followers、1 个公开仓库</strong> —— <strong>即这是一个全新的、还没有任何社区围绕它形成的存在。</strong></p>
+<p>⭐⭐⭐⭐ <strong>结论：这是一个「被 star 数低估了的项目」，也是本日报连续多日「热度 ≠ 价值」这条主线的最强样本之一。</strong> ⚠️ 但必须同时说清另一面：<strong>37⭐ / 1 subscriber / 0 issue 同样意味着它目前没有任何外部验证、没有真实用户反馈、没有第三方贡献</strong> —— <strong>「密度高」不等于「已被验证可用」，这是两回事。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 逐文件开关的语言扩展（<code>.c6</code> 后缀）：</strong>
+   README 明写「<strong>后缀是唯一的开关</strong>：<code>.c6</code> 文件开启扩展（并定义 <code>__C6__</code>），<code>.c</code> 文件永远是普通 C；没有 <code>-std=c6</code> 这个选项」；<code>import</code> 优先找 <code>NAME.c6</code>，再回退 <code>NAME.c</code>。<strong>这一个决定同时解决了三件事：默认安全（<code>.c</code> 行为不变）、渐进采用（一个目录一个目录地迁）、以及模块级混编（<code>.c6</code> 与 <code>.c</code> 可以在同一构建中共存）。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 编译期可裁剪：</strong> 「不定义 <code>C6_EXT</code> 构建出的编译器与上游 TCC 行为完全一致」—— 即扩展不是运行时开关，而是<strong>构建期条件编译</strong>，在不使用扩展的部署里零成本零风险。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ <code>defer</code> 的实现选择：注册状态在函数帧里，不需要 TLS。</strong> README 写「<code>defer { ... }</code> 作用域/函数退出时逆序执行清理代码（<strong>注册状态在函数帧里，不需要 TLS</strong>）」，并有专门的 <code>defer_scope.c6</code>（块作用域与 goto 跨作用域）、<code>defer_reent.c6</code>（递归/重入时的 defer 链）、<code>defer_thread.c6</code>（线程里的 defer）三个测试文件。<strong>「不需要 TLS」这一句是架构上的关键决策 —— 它避免了线程局部存储带来的初始化顺序与跨线程可见性问题。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 错误处理是一条完整链路而非单个关键字：</strong> <code>errdefer</code>（仅错误路径）、<code>return err(id, "msg")</code>（设置错误槽、就地展开清理并直接返回，且<strong>只能在 <code>T!error</code> 函数里写</strong>）、<code>func() T!error</code> 声明可能失败的函数、<code>try</code> 原样传播、<code>catch e { ... }</code> 就地处理并清空错误槽。<strong>类型签名 <code>T!error</code> 把「这个函数可能失败」写进类型系统，而不是靠文档约定。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 无栈协程 + 真线程是两套分开的机制：</strong> <code>async</code>/<code>await</code>/<code>co</code>/<code>task</code> 是<strong>无栈协程</strong>（<code>co f();</code> 顶层跑、<code>task t = f();</code> 拿句柄），而 <code>spawn f(...)</code> 是 <strong>OS 线程</strong>（<code>pthread_create</code>）—— README 明写「语句立刻返回、<strong>真并发</strong>」。⭐⭐⭐⭐ <strong>把两者分开是正确且常见的选择：无栈协程不能被 OS 抢占，容易与 FFI 死锁；用 spawn 换来真并行但要付线程代价。</strong> <code>async_frame.c6</code> 测试「帧住在任务里：<code>&amp;local</code> 跨 await、weak 形参」—— <strong>即它明确处理了协程捕获栈引用这个经典陷阱。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 泛型用 <code>@</code> 后缀而不是尖括号：</strong> <code>struct Vect@T { ... }</code>、<code>Vect@int</code>、<code>Map@(char[:], int)</code>，函数模板用 <code>\|T\|</code> 前缀绑定形参，值形参 <code>struct Buf@(T, int N)</code> 进入 mangle（<code>struct Buf_int_4</code>）。⭐⭐⭐⭐ <strong>README 写「</strong>单态化<strong>：实例就是普通 <code>struct Vect_int</code>、普通函数 <code>Vect_int_vat</code>……所以 c99 后端与纯 C 的 TU 零改动</strong>」—— 即泛型在编译期被完全消解，不留运行时类型。<strong> ⭐⭐⭐⭐ </strong>这一条是「泛型系统设计」里最省事也最稳的一条路线：<strong> 不做 type erasure、不做字典查找、导出的头文件就是普通 C。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ <code>interface</code> 用胖指针 + 自动生成 vtable：</strong> 「胖指针（<code>{void *self; const VT *vt;}</code>）+ 自动生成的 vtable 接口抽象」。⭐⭐⭐ <strong>这是「C 语言里的接口」最标准的实现方式（等价于 C++ 的非虚接口 + 手写 vtable），没有魔法。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐ 结构体方法用 C 的命名约定实现：</strong> 「<code>ret f(struct T *self, ...)</code> 即为 <code>T</code> 的方法，可用 <code>p-&gt;f(...)</code> 或 <code>v.f(...)</code> 调用（符号是 <code>T_f</code>，不同类型可同名，<code>f(p)</code> 仍可用）」—— <strong>即方法 = 带类型前缀的自由函数 + 语法糖，且保持 C 的 ABI。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 切片是两个字长：</strong> 「带长度与边界检查的数组视图（<code>{元素指针, 长度}</code> 两个机器字）」—— 边界检查是<strong>运行时</strong>的（README 明确写了「带长度与边界检查」），与泛型的编译期消解形成对比。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐ 宏按角色定义并自动卫生重命名：</strong> 「像函数一样写宏：<code>stmt swap(expr a, expr b) { ... }</code>，开头的角色说清展开结果怎么用；宏体里的局部变量自动卫生重命名（<code>__local</code> 仍可手动标注）」。</p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>编译器本体 + 三个文档层</strong>：<code>tcc/</code>（上游 TinyCC 基线 + 一个 c6 补丁）、<code>std/</code>（标准库，一文件一 module）、<code>tests/</code> + <code>examples/</code>（自测与可运行示例）。<strong>编译器是唯一的运行时边界 —— 扩展全部在编译期落地，产物仍是普通机器码。</strong></td>
+<td>目录结构与 README 的目录说明为实测（<code>docs/plan.md</code> / <code>docs/grammar.md</code> / <code>docs/stdlib.md</code> 均存在）；「产物仍是普通机器码」由「单态化 → 普通 <code>struct Vect_int</code>」与「c99 后端与纯 C 的 TU 零改动」推得，<strong>未实际编译验证</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td><code>.c6</code> 源文件 → 独立翻译单元判定（<code>.c6</code> 开启扩展 / <code>.c</code> 不开启）→ 扩展语义消解（defer 链展开、错误槽传播、泛型单态化、协程帧构造）→ <code>c6</code> 后端或 <strong>c99 后端</strong>生成 → 链接。<strong>主路径的关键是「每文件独立判定」这条，它保证了 <code>.c</code> 与 <code>.c6</code> 可混编。</strong></td>
+<td>主路径由 README 的扩展语义描述与目录说明推导；<strong>「c99 后端」的存在由 <code>tests/abi/generic.c6</code> 的说明与 commit「修复 make check-all：裸机 harness 认得条件编译」间接佐证，未逐一核验后端实现</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>① 扩展 vs C 语义纯度</strong> —— 用「逐文件开关 + 编译期可裁剪」把冲突降级为目录级迁移成本；<strong>② 泛型的易用性 vs 运行时开销</strong> —— 选单态化（无 type erasure，换来 C ABI 兼容与零运行时成本，代价是每个实例一份代码）；<strong>③ 协程栈安全 vs 真并发</strong> —— 拆成无栈协程 + <code>spawn</code> 真线程两套；<strong>④ 语法糖 vs ABI</strong> —— 方法名 mangle 为 <code>T_f</code>，牺牲 C++ 式重载的直观性，换取与 libc 同名方法共存</td>
+<td>四项权衡均直接对应 README 的明文表述（逐文件开关、单态化、<code>co</code>/<code>spawn</code> 分离、<code>T_f</code> 命名）；<strong>「每个实例一份代码」带来的体积代价未见 README 量化，属未观察项</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><strong>在单一目录做渐进验证</strong>：取一个现有 C 项目，把其中 3–5 个「需要清理逻辑」的 <code>.c</code> 文件复制为 <code>.c6</code>，用 <code>defer</code> 替换手写的 cleanup 链，用 <code>make check-all</code> 验证；<strong>退出路径是把这几个文件改回 <code>.c</code> —— 因为 <code>.c</code> 行为与上游 TCC 完全一致，迁移是逐文件可撤销的</strong></td>
+<td>PoC 范围与退出路径由「<code>.c6</code> 逐文件生效」+「<code>.c</code> 行为不变」两条实测事实推导；<strong>具体的 SLO/回归基线待核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>最值得抄的一条是「用文件后缀而不是命令行开关来选择方言」。</strong> 这是一个看似微小、实则影响全局的设计决定：它把「要不要这个语言特性」的决策粒度从<strong>一次构建</strong>降到<strong>一个文件</strong>，<strong>从而让采用这件事从「立项」降级为「试一个目录」</strong>。⭐⭐⭐⭐⭐ <strong>任何团队在推广新工具时都该问一句：我能不能把采纳的最小单位做到「一个文件」？</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第二条是「错误路径写进类型签名」。</strong> <code>func() T!error</code> 让「这个函数可能失败」成为类型的一部分，而不是注释里的一句约定。⭐⭐⭐⭐⭐ <strong>这与本日报连日记录的「把边界结构化」是同一条线索的不同层次</strong> —— 11-08 记录 <code>ex-ussr-kinship-research</code> 用 <code>independence_group</code> 在代码层禁止凭空声明两条记录互相印证，10-26 记录 <code>raven</code> 用 <code>LICENSES.json</code> 把许可边界结构化，<strong>而 c6 是同一条思路在语言层面的版本：把一条本来靠人遵守的纪律，做进类型系统或编译期。</strong> ⭐⭐⭐⭐ <strong>三者共同指向一个判断：把规则写进机制，比写进文档可靠一个数量级。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第三条关于「自举作为正确性证明」。</strong> 「三条自举路线」意味着编译器用自己的输出编译自己 —— ⭐⭐⭐⭐ <strong>这是编译器领域最强的自证形式之一（比测试更接近「我确实能跑」）。</strong> ⭐⭐⭐⭐ <strong>但也要清醒：自举通过不等于语义正确，只等于「自洽」。</strong> ⭐⭐⭐⭐ <strong>因此 c6 同时保留了 35+ 个按特性划分的测试文件 —— 这两者的组合（自举 + 特性矩阵测试）比任何单独一种都强。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第四条关于「把未完成的部分显式列出」。</strong> commit 「tests: 补齐特性矩阵里 4 处缺口，把有专属用例的特性覆盖补到全量」与 README 里的 <code>## 已知限制</code> 章节、文档 <code>docs/plan.md</code>（含实现状态）、<code>docs/grammar.md</code>（BNF/EBNF 规范）—— <strong>即项目的「完成度」是被当作一等的工程产物来维护的。</strong> ⭐⭐⭐⭐ <strong>这与本日报记录的 <code>solo-to-team-skills</code>「证据先于完成声明」、<code>ghostclick</code> 的 RMA 证据导出、11-08 记录的 <code>phoneuse</code> 用 <code>[!WARNING]</code> 主动降级自己，是同一种气质。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Src[源文件层 · 逐文件独立判定]
+    C6[.c6 文件<br/>开启扩展 并定义 __C6__]
+    C[.c 文件<br/>行为与上游 TCC 完全一致]
+  end
+  subgraph Ext[编译期扩展语义消解]
+    Defer[defer / errdefer<br/>注册状态在函数帧 不需要 TLS]
+    Err[错误槽链路<br/>T!error · try · catch<br/>可能失败写进类型签名]
+    Co[无栈协程<br/>async / await / co / task<br/>帧住在任务里]
+    Spawn[spawn<br/>OS 真线程 pthread_create]
+    Gen[泛型单态化<br/>struct Vect_int<br/>不留运行时类型]
+    Iface[interface 胖指针<br/>{self, vt} + 自动生成 vtable]
+    Slice[切片<br/>指针 + 长度两个机器字<br/>运行时边界检查]
+    Macro[按角色定义的宏<br/>局部变量自动卫生重命名]
+  end
+  subgraph Backend[代码生成]
+    C6Backend[c6 后端]
+    C99Backend[c99 后端<br/>与纯 C 的 TU 零改动]
+  end
+  subgraph Repo[仓库边界]
+    Tcc[tcc/ · 上游 TinyCC 基线 + c6 补丁]
+    Std[std/ · 一文件一 module]
+    Tests[tests/ + examples/<br/>特性矩阵测试 + 三条自举路线]
+    Docs[docs/plan.md · grammar.md · stdlib.md<br/>含实现状态与已知限制]
+  end
+  C6 --> Defer
+  C6 --> Err
+  C6 --> Co
+  C6 --> Gen
+  C6 --> Iface
+  C6 --> Slice
+  C6 --> Macro
+  Defer --> C6Backend
+  Err --> C6Backend
+  Co --> C6Backend
+  Gen --> C99Backend
+  C --> C99Backend
+  C6Backend --> Link[链接产物<br/>普通机器码]
+  C99Backend --> Link
+  Std --> C6
+  Tcc --> Ext
+  Tests --> Link
+  Docs -.完成度作为一等工程产物.-> Tests
+  Lim[证据边界<br/>未实际编译验证<br/>c99 后端存在性为间接佐证<br/>自举通过只等于自洽 不等于语义正确<br/>仓库根目录无 LICENSE 许可未声明]
+  Link -.受其约束.-> Lim
+  Docs -.受其约束.-> Lim
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>基础设施候选（infra-candidate），且是本日唯一一个。</strong> ⭐⭐⭐⭐⭐ <strong>它想成为的东西不是一个库，而是「C 生态的一个方言层」—— 如果它成功，C 的用户可以按文件渐进获得 defer/错误处理/模块/泛型/协程，而不需要重写，也不需要换语言。</strong> ⭐⭐⭐⭐⭐ <strong>这个定位的价值在于它可被证伪：</strong> 「<code>.c</code> 文件行为与上游 TCC 完全一致」是一个可以逐条比对上游 TCC 行为的强断言；而「三条自举路线」是一个可以运行的强验证。</p>
+<p>⭐⭐⭐⭐ <strong>与同类项目的关系上，它处在一个少见的交叉点：</strong>
+- <strong>vs 各类 C++ 替代品（Zig / Rust / Go）：</strong> 那些是<strong>换语言</strong>，c6 是<strong>留在 C 里</strong>；代价是它必须自己实现泛型/协程/闭包/GC 这些 C 缺失的部分（README 的 <code>gc.c6</code> / <code>gc_type.c6</code> / <code>gc_drop.c6</code> / <code>gc_thread.c6</code> 说明连 GC 都做了）；
+- <strong>vs TinyCC 上游：</strong> 它是 TCC 的分支，<strong>不是替代品</strong> —— README 明写「<code>tcc/</code> 源码树：上游基线 + 一个 c6 补丁一个提交」，<strong>这意味着它的长期维护成本与 TCC 上游的演进直接绑定</strong>；
+- <strong>vs 各类 C 宏库（如 defer 宏、error-handling 宏）：</strong> 那些是「无编译器改动」的折中，c6 是「改编译器」的彻底方案 —— <strong>而 c6 的 <code>.c</code> 兼容性正是为了让宏库方案与它可以共存</strong>；
+- <strong>vs 各类 C 方言编译器（GCC 的 C++ 模式、Clang 的扩展、MSVC 的 C）：</strong> 那些靠 flag 全局开启，<strong>c6 靠后缀逐文件开启</strong> —— <strong>这是本日最独特的一处设计差异。</strong></p>
+<p>⭐⭐⭐⭐ <strong>但必须同时给出定位的风险面：</strong> 组织 <code>c6lang</code> 是<strong>创建于仓库前 7 分钟、0 followers、1 个公开仓库</strong>的全新实体；<code>license.spdx_id</code> 为 <strong>null</strong>（仓库根目录<strong>没有 LICENSE 文件</strong>）—— <strong>一个语言级项目没有许可声明，是一个 serious 的采用障碍</strong>（详见下）。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 无 LICENSE：</strong> <code>license.spdx_id</code> = null，仓库根目录无 LICENSE 文件。<strong>对「一个打算被广泛采用的语言方言」来说，这是最实质的障碍</strong> —— <strong>它意味着默认版权保留（all rights reserved），任何人不应在未获许可的情况下 fork 或分发。</strong> ⭐⭐⭐⭐⭐ <strong>而这与 10-26 记录的 <code>unclebob/ub-mode</code>（341⭐、4 KB、无 LICENSE）是同一个问题在不同体量上的重复出现 —— 本日报认为「热度与许可元数据之间没有相关性」这条判断，在本日再次成立。</strong></li>
+<li><strong>⭐⭐⭐⭐ 编译器分叉的长期维护成本：</strong> 它绑定 TCC 上游（README 写「上游基线 + 一个 c6 补丁一个提交」）。⭐⭐⭐⭐ <strong>上游演进时，「一个补丁」是否还能干净地 rebase 是一个持续风险 —— 而本仓库只有 2 名贡献者，没有第三方生态。</strong></li>
+<li><strong>⭐⭐⭐⭐ 37⭐ / 1 subscriber / 0 issue / 0 followers：</strong> <strong>没有任何外部用户反馈、没有 issue、没有第三方贡献</strong> —— ⭐⭐⭐⭐ <strong>「密度高」与「已被验证」是两回事，本档案只主张前者。</strong></li>
+<li><strong>⭐⭐⭐ 扩展集过宽：</strong> defer + 错误处理 + 协程 + 模块 + interface + 切片 + 元组 + 泛型 + 闭包 + 宏 + 字符串插值 + GC + 弱引用 + 线程句柄 + 任务句柄 —— <strong>⭐⭐⭐ 覆盖面广意味着每一项都缺少长期打磨；README 的 <code>## 已知限制</code> 章节本身就是这个宽度的代价。</strong></li>
+<li><strong>⭐⭐⭐ 切片有运行时边界检查而泛型是编译期消解：</strong> 两者的安全模型不一致，<strong>在组合使用时需要小心</strong>（此为<strong>基于 README 描述的推断</strong>，未见文档讨论该组合）。</li>
+<li><strong>⚠️ 证据边界：</strong> 本日报<strong>未编译 c6、未运行 <code>make check-all</code>、未运行任何一条自举路线、未验证任何一条测试</strong>；<strong>「285 commits / 761 blobs / 35+ 测试文件 / 三条自举路线」均为仓库元数据与 README 陈述的记录，本档案不主张它们已被执行并通过。</strong> 全部性能与规模判断均引自 README 与 API 快照，未独立复现。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs TinyCC 上游（<code>TinyCC/tinycc</code>）：</strong> <strong>父子/分叉关系</strong>，c6 是「上游基线 + 一个补丁」，<strong>不是替代</strong>。⭐⭐⭐⭐ 这条关系决定了两者必须共同演进。</li>
+<li><strong>vs 其他「C 方言」实验（GCC 的 C2x 提案、Clang 的实验特性）：</strong> 那些是<strong>标准化路线</strong>（进入 C 标准），c6 是<strong>分叉路线</strong>（不等标准）。⭐⭐⭐⭐ <strong>分叉的好处是可以立刻做自己想做的事（<code>.c6</code> 后缀 + 自定义泛型语法 <code>@</code>），代价是永远要自己维护标准分叉的漂移。</strong></li>
+<li><strong>vs 各类 C 宏/库级方案（defer 宏、expected 库）：</strong> 那些不改编译器、可与任何编译器配合；<strong>c6 的 <code>.c</code> 完全兼容策略恰恰是让两者可以在同一代码库里共存。</strong> ⭐⭐⭐⭐ <strong>这两条路线不是竞争关系，而是分层关系</strong> —— 这也是本档案认为 c6 定位务实的一个理由。</li>
+<li><strong>vs Rust / Zig / Go 等「换语言」方案：</strong> c6 的整个价值主张就是「不必换」。⭐⭐⭐⭐ <strong>对一个有百万行 C 代码的存量组织，这是唯一现实的技术路径 —— 也是本日报认为它的潜在影响面远大于其 37⭐ 的原因。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得跟踪，且优先级高于其星数。</strong> 建议关注：
+1. <strong>⭐⭐⭐⭐⭐ LICENSE 是否补上</strong> —— 这是能否被第三方采用的第一道门，<strong>且补上的成本几乎为零</strong>；
+2. <strong>⭐⭐⭐⭐⭐ 三条自举路线是否在 CI 里被持续执行</strong> —— README 说「提交前只跑一条命令」，<strong>但仓库是否有 CI 在跑它，本日报未核验</strong>（<code>docs/</code> 与 <code>tests/</code> 均在，但未见 <code>.github/workflows/</code> 在本日抓取的树清单中 —— <strong>树清单未完整列出 <code>.github/</code>，故此点为待核验，非否定结论</strong>）；
+3. <strong>⭐⭐⭐⭐ 泛型的 mangle 策略是否被上游社区接受</strong> —— 若有第三方工具链（clangd、ccls）能解析 <code>.c6</code>，采用曲线会完全不同；
+4. <strong>⭐⭐⭐⭐ <code>docs/plan.md</code> 里的实现状态推进速度</strong> —— 这是项目自述的完成度真相表；
+5. <strong>⭐⭐⭐⭐ TCC 上游的演进是否让「一个补丁」变得难以 rebase</strong>。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>LICENSE 文件是否出现（观察 <code>license.spdx_id</code> 从 null 变为具体 SPDX）；</li>
+<li>是否出现第一个非作者的 issue / PR（0 issue、2 contributors 是快照值）；</li>
+<li><code>pushed_at</code> 的节奏（快照时 2026-11-11T15:47:27Z，距仓库创建约 11 小时）；</li>
+<li>star 增速：⭐ <strong>37⭐ 在约 18 小时里，且 subs 仅 1 —— 若它在没有任何外部曝光的情况下继续增长，说明其传播路径是技术社区而非榜单，值得单独跟踪；</strong></li>
+<li>是否被其他 C 项目以 <code>.c6</code> 文件形式采用（这是该模式唯一真正的成功指标）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST API 快照（2026-11-12 CST，仓库创建于 2026-11-11T04:26:35Z）| Stars: 37 | Forks: 3 | Subscribers: 1 | License: null（无 LICENSE） | 语言: C | 体积: 4,069 KB / 761 blobs | 组织 <code>c6lang</code> 创建于 2026-11-11T04:19:21Z
+<strong>证据边界：</strong> 未编译、未运行 <code>make check-all</code>、未运行任何自举路线、未执行任何测试；commit 数为 3 页共 285 条；fork 抽样仅 3 个（区间中位数 18,858 s），样本极小，<strong>不足以作为「真人」判定的强证据，仅与机器投放形态不同</strong>。</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

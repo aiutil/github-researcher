@@ -11,6 +11,8 @@ language: "Python"
 score: 86
 tags: ["agent-security", "nvidia", "vulnerability-scanning", "supply-chain", "skills"]
 url: "https://github.com/NVIDIA/SkillSpector"
+---
+
 ## 2026-06-20 更新
 
 stars 从 4,360 翻倍到 8,251（周增 5,505）。重要新增信息：

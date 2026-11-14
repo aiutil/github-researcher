@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoyoLin008/mcreplay | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/YoyoLin008/mcreplay" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="yoyolin008mcreplay">YoyoLin008/mcreplay</h1>
+<h2 id="_1">一句话定位</h2>
+<p>把一次麦当劳 MCP 查询变成<strong>可复现的本地结构测试</strong>——删除响应真实值、保留结构、比较变化、再通过标准 MCP 在本地回放；<strong>它的核心不是「调用官方 API」，而是「让上游 API 的输出漂移变成 CI 里会失败的一个退出码」</strong>。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>维护一个基于第三方 API 的 Skill / 解析器 / 演示应用时，最难缠的故障不是「调用失败」，而是<strong>「昨天能解析，今天为什么空了」</strong>——字段类型改变、活动字段消失、文本返回变空，都可能让已有解析器<strong>静默</strong>失效。</p>
+<p>麦当劳中国官方 MCP 恰好是这类问题的典型样本：<strong>官方仓库 <code>M-China/mcd-mcp-server</code> 经 <code>?recursive=1</code> 全树查询确认只有 <code>README.md</code>（18,722 字节）与 <code>README_EN.md</code>（19,845 字节）两个文件</strong>——<strong>没有实现、没有机器可读的输入输出 schema、没有可运行的 SDK 示例</strong>。官方 README 是好的（写明 <code>https://mcp.mcd.cn</code>、Streamable HTTP、Token 申请流程、<strong>每 Token 每分钟 600 次请求上限与 429 错误码</strong>），<strong>但它是一份文档，不是一个契约</strong>。当上游改了一个字段的类型，没有任何东西会告诉你的解析器。</p>
+<p>mcreplay 解决的就是这个缺口：<strong>把「结构变了」变成一个可判定、可阻断、且不泄露真实值的事件。</strong></p>
+<h2 id="2026-10-25">为什么值得关注（2026-10-25）</h2>
+<p><strong>因为它是本日信息密度最高的项目，而它面对的问题类型在本日所有项目里是唯一的</strong>——其他项目都在做「把一个东西做出来」，只有它在做「<strong>怎么让一个已经存在的东西的变化能被机器发现</strong>」。</p>
+<p>更关键的是它处理「不确定性」的方式。本日报连续五天记录到「元数据不一致」这一类真实故障（NOASSERTION / null / 无 LICENSE 文件 / APSL 未标注 / 组合许可被折叠），而<strong>mcreplay 把「我不知道」写成了产品的一部分，并且没有因此少发布任何东西</strong>：</p>
+<ul>
+<li><code>docs/capability-matrix.md</code> 的<strong>第一行</strong>就是「<strong>No authenticated calls were possible: this session has no MCP token binding. … official authenticated calls remain unverified. All reliability judgments below are provisional, not production certifications.</strong>」</li>
+<li>同一仓库的 <code>docs/LIVE_VERIFICATION.md</code> 又记录了另一条路径的实测（三次成功查询、逐项耗时、端到端六项检查）</li>
+<li><strong>⭐ 两份互相矛盾的证据并列保留，读者能同时看到「我当时知道什么」与「后来验证了什么」</strong>——这比「只写一份并标注可信度」更难，也更有信息量</li>
+</ul>
+<p><strong>⭐⭐ 而它最有价值的一份文档是 <code>docs/competitive-research.md</code></strong>：它逐个检视了 10 个对手（每个都附官方登记 issue 号与被检视文件的具体 SHA），结论是：</p>
+<blockquote>
+<p><strong>The inspected sample is unusually implementation-rich. It would be inaccurate to label every competitor a "thin AI wrapper." … several contain deterministic engines and defensive transport.</strong></p>
+</blockquote>
+<p><strong>在本日报连续第二天记录「热度不等于价值」的背景下，这是第一个反例样本——而且它是由一个正在比赛中的参赛者自己写下的。</strong> 在一个 122 个仓库同天冒头的赛事生态里，最省事的判断是「绝大多数参赛者只是把提示词套在 API 上」；<strong>它亲手检视了 10 个对手后给出了相反的判断。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>热度来自事件，不是来自采用。</strong> 本日是麦当劳程序员创意开发大赛的<strong>报名截止日</strong>（官方 README：「报名及排名 | 2026年10月9日10:30—<strong>10月25日23:59</strong>」），官方 <code>RANKING.md</code> 有 <strong>102 个排名条目</strong>、更新时间 2026-10-25 06:00:57；本仓库排<strong>第 37 名</strong>（113⭐，快照时 122⭐）。</p>
+<p><strong>⭐ 因此必须明确一件事：这个排行榜按 star 排序，而 star 在赛事语境里是参赛指标，不是采用信号。</strong> 一个项目为了排名去刷 star，其 star 与「有多少人在生产环境依赖它」的相关性接近于零。</p>
+<p><strong>⭐ 唯一可靠的判据是 mcreplay 自己用的那种</strong>：读可执行代码、记录 SHA、标注「authors' claims, not independently rerun」。<strong>它自己也照这个标准做了 10 次，并公开了对手的弱点。</strong></p>
+<p><strong>推断（不构成事实）</strong>：它选择在赛事截止日当天发布且同时公开「未验证」与「已验证」两份文档，<strong>可能是因为对参赛项目而言「公开的不确定性」比「隐藏的空白」更能建立信任</strong>——这类判断无法从仓库本身证实。</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐ 双路径证据，两份都留着。</strong> <code>capability-matrix.md</code> 全部标注 provisional；<code>LIVE_VERIFICATION.md</code> 记录实测。<strong>这是本批唯一的「并行矛盾证据」结构。</strong></li>
+<li><strong>⭐ 证据分级精确到字段级。</strong> <code>S:</code> = 必填字段名来自第三方 <code>CRFXN5C/mcd-mcp-kit</code> 在 2026-10-23 的 <code>tools/list</code> 捕获（<strong>并明写「Do not copy this project's implementation or make our own live-test claims from it」</strong>）；<code>O:</code> = 官方仓库 issue 里的确切 schema 示例；官方文档的 <code>data</code> 描述则被明确降级为「<strong>a semantic summary from official documentation, not an output JSON schema</strong>」。</li>
+<li><strong>⭐ 官方 issue 只当观测痛点，不当官方保证。</strong> 它逐条引用 issue 9（套餐可选池）、issue 11（营养 ID 缺失）、issue 13（订单列表只限最近 10 条，并写「Never label this full history/month/year analysis」）、issue 16（工具数 35 vs 33、<strong>「wrong code→productCode mapping silently yields price0. Missing/zero price must not be treated as free」</strong>）、issue 4（限流事故已被维护者确认修复）。</li>
+<li><strong>⭐ 退出码即契约。</strong> <code>0</code> = 无变化或仅信息项、<code>2</code> = 有破坏性风险、<code>3</code> = 仅需人工复核、<code>1</code> = 输入或执行失败。<strong>「有破坏性变化」是一个可以被 CI 判定的离散状态，不是一句警告。</strong></li>
+<li><strong>⭐ 结构比较覆盖两个编码面。</strong> 官方响应同时有「Markdown 后缀 JSON」与 <code>structuredContent</code>；它的类型变更实验<strong>同时定位了两处变化</strong>，说明它不是只扫一个面。</li>
+<li><strong>⭐ 真实值不出本机。</strong> 业务值统一替换为占位符；接收文件权限实测为 <strong>0600</strong>；仓库附带的 <code>examples/fixtures/official-20261024.json</code>（87,252 字节）经 <strong>Gitleaks 8.30.1</strong> 校验无泄露。</li>
+<li><strong>⭐ 逐个检视 10 个对手并公开其弱点</strong>，同时明写「authors' claims, not independently rerun」与「This is an inspected sample, not a census」，并纠正了一个排名混淆（「official ranking's #3 is a different similarly named project」）。</li>
+<li><strong>⭐ QA 记录完整到可以当模板用。</strong> 原环境 <code>pytest -q</code> <strong>120 passed in 4.35s</strong>（核心 42 / 比较 47 / CLI 12 / MCP 服务 19，<strong>全部合成输入</strong>）+ SDK 子进程测试 <strong>19 passed in 5.38s</strong>（<strong>协议测试有 25 秒截止</strong>）+ <code>ruff check .</code> 与 <code>ruff format --check .</code> 通过 + sdist 与 wheel 构建成功 + 独立环境装 wheel 后 <code>pip check</code> 通过 + <strong>Gitleaks 8.30.1</strong> + <strong>对锁文件全部 29 项依赖跑 pip-audit 无已知漏洞</strong> + CI 覆盖 macOS/Python 3.13 与 Linux/Python 3.11、3.12、3.13。</li>
+<li><strong>⭐ 离线演示自带破坏性样本。</strong> <code>mcreplay demo --out-dir demo-output</code> 会显示三处预设的结构变化；<code>mcreplay compare</code> 对该演示<strong>预期退出码为 2</strong>——<strong>即它的失败路径是默认可演示的</strong>。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>四个可分离的部分：① <strong>观察层</strong>（把一次官方查询的完整 <code>CallToolResult</code>（<code>content</code> + <code>structuredContent</code> + <code>isError</code>）落成「结构包」，业务值替换为占位符）② <strong>比较层</strong>（两份观察包的结构 diff，输出 <code>breaking</code>/<code>review</code>/<code>info</code> 三级 + 退出码）③ <strong>回放层</strong>（用官方 Python MCP SDK 起一个 stdio server，把结构包里的占位响应作为三个只读工具返回）④ <strong>CI 层</strong>（离线命令 + 明确退出码 + 独立 HTML 报告）。<strong>边界划在「真实值不出本机」</strong>：响应真实值在落盘前于内存中删除，接收到的文件权限 0600</td>
+<td><code>docs/LIVE_VERIFICATION.md</code> 的端到端检查表、<code>docs/limitations.md</code> 的逐行支持范围、README 的「30 秒离线试用」、<code>examples/</code> 下三个脚本（<code>check_adapter.py</code> 1,336 字节、<code>check_recorded_structure.py</code> 2,875 字节、<code>fixtures/{before,after,official-20261024}.json</code>）；<strong>观察层与比较层的具体实现本窗口未取，待核验</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>开发者：在 AI 客户端里查一次官方 MCP → <code>mcreplay import private/export-before.json</code> 导出结构 → 改了解析器 → 再查一次导出为 after → <code>mcreplay compare before.json after.json --html report.html</code> → <strong>若退出码为 2 则阻断提交</strong>；离线自检路径为 <code>mcreplay demo --out-dir demo-output</code>（<strong>演示使用合成样本</strong>）与 <code>python examples/check_recorded_structure.py</code>（用仓库附带的官方结构包走<strong>标准 MCP 客户端</strong>完成三项样本的接收与回放，验证时间、活动及营养响应的字段格式）</td>
+<td>README 的三个实际开发工作流、<code>docs/LIVE_VERIFICATION.md</code> 的复现节、<code>examples/</code> 三个脚本；<strong>「退出码 2 阻断提交」是本档案的推断——README 未明写 CI 接入方式</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>离线优先 vs 在线实时</strong>（离线是为了能进 CI 且不触发 600 次/分钟限流，代价是延迟发现漂移）· <strong>替换业务值 vs 保留原值</strong>（替换让样本可公开且不泄露隐私，<strong>代价是丢失了对值语义的检测能力——只能测结构不能测业务正确性</strong>）· <strong>未验证结论也发布 vs 只发已验证的</strong>（它选择发布前者但逐条标注等级，代价是读者必须自己判断等级的可信度）· <strong>通用 33 工具覆盖 vs 三工具精确覆盖</strong>（它只实现了三个工具，<strong>换来的是这三个工具的行为被完整刻画</strong>）· <strong>结构比较 vs 语义比较</strong>（结构 diff 稳定可比，语义 diff 需要模型判断——它选了前者）· <strong>⭐ 对照赛事的对手 vs 只做自己的工具</strong>（它花大量篇幅逐个检视对手并公开弱点，<strong>这在竞争环境里是反直觉的</strong>）</td>
+<td><code>docs/limitations.md</code>、<code>docs/capability-matrix.md</code> 的 reliability grades 定义、<code>docs/competitive-research.md</code> 的方法节；<strong>未明示：它是否有付费或商业动机、维护者是否计划扩展到更多工具</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>1. <strong>先确认你能不碰官方服务就验证</strong>（这是它离线优先的直接理由）→ 2. <code>git clone</code> + <code>python3 -m venv .venv</code> + <code>pip install -e .</code>（<strong>需 Python 3.11+，Linux 或 macOS；Windows 不在其支持范围内</strong>）→ 3. 跑 <code>mcreplay demo --out-dir demo-output</code>，打开 <code>demo-output/report.html</code> <strong>看是否确实显示了三处预设的结构变化</strong> → 4. <strong>⭐ 跑 <code>mcreplay compare demo-output/before.json demo-output/after.json</code> 并确认退出码是 2</strong>（<strong>这一步是唯一能证伪「它的比较器真的会拒绝」的步骤</strong>——与 10-24 记录的 oss-verify <code>oft check</code> 在 <code>Print Assumptions</code> 阶段拒绝越界公理同构）→ 5. 跑 <code>python examples/check_adapter.py demo-output/before.json</code>（应退出 0），再把文件换成 <code>after.json</code>（应检出类型变化并退出 2）→ 6. 跑 <code>python examples/check_recorded_structure.py</code>，<strong>确认它是用标准 MCP 客户端完成回放的，而不是自己实现的假 server</strong> → 7. <strong>⭐ 验证「删掉真实值」这一步真的发生了</strong>：检查 <code>examples/fixtures/official-20261024.json</code> 里是否还有任何具体的时间戳、门店码或价格；再检查 <code>record_mcd_observation</code> 写出的文件权限是否为 <code>0600</code> → 8. <strong>⭐ 读 <code>docs/capability-matrix.md</code> 的第一行，确认它仍然写着「official authenticated calls remain unverified」——如果这句话消失了，说明文档与能力矩阵不同步</strong> → 9. 若要接官方服务，先读官方 README 的限流条款（600 次/分钟）与 Token 申请流程</td>
+<td><strong>第 4 步是本 PoC 的核心</strong>（一个只会通过的比较器不构成证据）· <strong>第 7 步是本项目主张的核心价值</strong>（不泄露真实值）· <strong>第 8 步验证的是它最独特的资产（并行证据路径）是否还在</strong> · <strong>第 2 步的 Windows 限制是硬门槛</strong> · 本 PoC <strong>不覆盖</strong>它未实现的 30 个工具，也不覆盖任何官方写操作（<code>W</code> 级工具）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>最值得迁移的一点不是工具，是「未验证」被当成一个可以发布的状态。</strong></p>
+<p>绝大多数工程文档只有两种状态：已验证（于是被相信）与未提及（于是被忽略）。mcreplay 有第三种——<strong>「我此刻不知道，这是我知道的边界，这是我的证据等级」</strong>——并且把它写成<strong>机器可读的形式</strong>（A?/B?/C?/W + <code>S:</code>/<code>O:</code> 分级 + 退出码 0/1/2/3）。</p>
+<p><strong>⭐ 更深的启发是它对「同一份仓库里的两份矛盾文档」的处理。</strong> 它没有因为实测版本存在就把未验证版本删掉，也没有因为要发布就假装验证过。<strong>两份都在，读者能自己判断哪一份更可信。</strong> 这在一个「AI 生成的文档越来越多、而可信度标注越来越不显眼」的时间点，是一种值得被直接抄的诚实工程形式。</p>
+<p><strong>第三个启发关于 fork 比例。</strong> 它的 fork/star 只有 4.9%——<strong>远低于同批的 xss-audit（25.8%）</strong>——但这不说明它差。<strong>它说明的是「fork 的单位成本」</strong>：改一段 26 KB 的 Markdown 几乎零成本，而给一个框架加一个工具的契约测试是有实际工程量的。<strong>这是本日报连续五日观察到的「可改造型 vs 不可改造型」分界线的一个推进版本——分的不再是「是否邀请改造」，而是「改造的单位成本」。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[维护 MCP Skill 的个人开发者] --> MCP[麦当劳官方 MCP<br/>https://mcp.mcd.cn<br/>Streamable HTTP · 600 次/分钟限流]
+  User --> Client[AI 客户端<br/>查询一次官方接口]
+  Client -->|CallToolResult| MCP
+  MCP -->|content + structuredContent + isError| Rec[观察层<br/>record_mcd_observation<br/>真实值在内存中删除]
+  Rec -->|占位符结构包 权限 0600| Store[(本地观察包<br/>before.json / after.json)]
+  Store --> Compare[比较层<br/>结构 diff<br/>breaking / review / info]
+  Compare -->|退出码 0 / 1 / 2 / 3| CI[CI 判定层<br/>离线命令 + HTML 报告]
+  Store --> Replay[回放层<br/>官方 Python MCP SDK<br/>stdio · 三个只读工具]
+  Replay --> Skill[被测的 Skill / 解析器<br/>本地离线回归]
+  CI -->|退出码 2 = 有破坏性变化| Gate{阻断提交?}
+  MCP -.受限.-> Rule[官方服务规则 第3/6条<br/>限制自动化访问<br/>这正是离线优先的根因]
+  Doc[证据文档 双轨并行<br/>capability-matrix 未验证版<br/>LIVE_VERIFICATION 实测版] -.约束.-> Compare
+  Doc -.标注.-> Grade[可靠性分级 A?/B?/C?/W<br/>证据分级 S: / O:<br/>None means production verified]
+  Grade -.说明.-> Compare
+  Comp[competitive-research<br/>逐个检视 10 个对手<br/>附 issue 号与 SHA] -.差异化定位.-> Compare
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>「API 契约回归测试」品类的一个高质量样本，且很可能是该品类里目前最诚实的一份。</strong></p>
+<p>它不是「麦当劳专属工具」——<strong>它的核心能力（观察包 → 结构 diff → 退出码 → 本地回放）可以套在任何会漂移的第三方 API 上</strong>，麦当劳只是它选择的第一个真实样本。这一点决定了它的<strong>长期价值高于其赛事排名所暗示的位置</strong>。</p>
+<p><strong>⭐ 定位上最值得记的一点：它把「工具的价值」定位在「让人敢改代码」而不是「让人少写代码」。</strong> 在一个 API 没有 schema、只提供 README 的现实里，<strong>「我能确认我这次改动没踩到上游的字段变化」本身就是交付物的一部分</strong>。这与本日报连续记录的「把边界写进可核验的位置」是同一条线，但落到了最实用的位置。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⚠️ <code>subs 0</code> + contributors API 返回 1 人 + 仅 8 个 commit = 一个个人项目在赛事截止日当天的一次集中发布。</strong> 没有任何外部贡献者痕迹，也没有外部复现记录。</li>
+<li><strong>⚠️ 它的能力矩阵基于未验证的官方文档描述与第三方捕获，「33 个工具」的必填参数没有一条来自官方 schema。</strong> 它自己写了这一点（<code>S:</code> 标记 + 「not an output JSON schema」），<strong>但读者在摘要层很容易丢掉这个标记</strong>。</li>
+<li><strong>⚠️ 平台限制</strong>：Python 3.11+、<strong>Linux 或 macOS（无 Windows）</strong>；只实现了 3 个工具的契约回归。</li>
+<li><strong>⚠️ 它依赖官方服务的限流额度</strong>（600 次/分钟），而官方服务规则第 3、6 条限制自动化访问——<strong>这既是它选择离线优先的根因，也是它验证路径的天然边界。</strong></li>
+<li><strong>⚠️ <code>license.spdx_id</code> 为 NOASSERTION</strong>（尽管 <code>LICENSE</code> 文件首行是 MIT License 且带额外条款）——<strong>依赖 license 扫描器的工具会给出错误的默认答案</strong>。<strong>这是本日报已记录的第四类许可元数据问题的新增实例。</strong></li>
+<li><strong>⚠️ 官方 MCP 的许可条款禁止未经书面授权的商业使用</strong>——<strong>mcreplay 自己的 LICENSE 尾部也写了这一句</strong>（「This license grants no permission to use the official service commercially or outside its rules」）。<strong>依赖该服务的任何商业产品都需要单独审视这条边界。</strong></li>
+<li><strong>⚠️ 本日报无法核验它对 10 个对手的判断是否公允</strong>——虽然它的方法可核验（附 SHA），但结论仍是它自己的。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>mcd-self-butler</code>（同为参赛者，第 23 名，150⭐）：两种完全不同的取向。</strong> 前者做<strong>业务决策</strong>（全成本比价 = 商品价 + 走路时间 + 排队时间），后者做<strong>契约回归</strong>。<strong>⭐ 但两者的 SKILL 纪律高度同构</strong>：mcd-self-butler 的 6 条铁律含「价格只信 <code>calculate-price</code>」「营养只信 <code>list-nutrition-foods</code>，分析套餐必须先 <code>query-meal-detail</code> 拆成子项」「不自动下单」「不编造」，<strong>而 mcreplay 的整条主张就是「不编造结构」</strong>。</li>
+<li><strong>vs <code>CRFXN5C/mcd-mcp-kit</code>（19⭐，非参赛的第三方工具抓取集）：mcreplay 把它的 <code>tools/list</code> 捕获当作二手证据来源（<code>S:</code> 标记），并明确拒绝复制其实现。</strong> 这是分工而非竞争。</li>
+<li><strong>vs 通用契约测试工具（Schemathesis / dredd / pact）：那些工具需要被测服务提供 schema 或可配置的期望，而 mcreplay 只需要「抓一次真实响应」。</strong> <strong>⭐ 在「上游根本不提供 schema」的场景下，前者无法启动，后者可以——这是它的真实差异化。</strong></li>
+<li><strong>vs 各类 API mock 工具：mock 需要预先知道结构（同样需要 schema），mcreplay 是从真实响应里「长出」结构。</strong></li>
+<li><strong>vs <code>oss-verify-proofs</code>（10-24 记录）：两者都在做「让机器读出边界」，但方向相反——oss-verify 让机器</strong>证明<strong>代码不触发 sanitizer 错误，mcreplay 让机器</strong>发现<strong>接口的形状变了。</strong> ⭐ 共同点是「检查器必须真的会拒绝」：oss-verify 在 <code>Print Assumptions</code> 阶段拒绝越界公理，mcreplay 用退出码 2 拒绝破坏性变化。**</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，且跟踪方式应是「它是否被赛事之外的人采用」，而不是「它能不能获奖」。</strong></p>
+<p><strong>⭐ 理由</strong>：它的核心价值（API 契约回归）在赛事结束后的长期需求反而更大——<strong>因为 122 个参赛仓库会在赛后暴露在同一类 API 漂移风险下</strong>。<strong>如果这些项目在赛后消失，而 mcreplay 的方法被更广泛采用，那它的长期价值远高于今天的第 37 名。</strong></p>
+<p><strong>⭐ 而且它对 10 个对手的逐个检视是本日报最有用的一份生态判断</strong>——即使它自己消失，这份文档也会被反复引用。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li><strong>⭐ 是否出现第一个外部 fork</strong>（fork/star 4.9% 说明还没到；这与「有多少人在真的用它的比较器」是最直接的信号）</li>
+<li><strong>它的工具覆盖是否从 3 个扩展</strong>（这是它能力边界最直接的指标，也决定它是否真的成为「通用契约测试」而非「麦当劳工具」）</li>
+<li><strong>是否有人把它的退出码接进 CI 并公开</strong>（这会验证「契约回归」这个模式是否真的有用，而不只是「一个本地脚本」）</li>
+<li><strong>⭐ 赛事结束（2026-10-25 23:59）后的存续情况</strong>——<strong>特别是那 122 个仓库里有多少会因为许可或无差异而消失</strong></li>
+<li><strong>官方是否发布正式的 schema</strong>（那会直接改变它的核心价值——如果官方给出 schema，<code>capability-matrix.md</code> 的整份暂定矩阵就失去意义）</li>
+<li><strong>⭐ 官方服务规则第 3、6 条对自动化访问的具体限制范围</strong>（这决定了它的离线优先是权宜之计还是长期形态）</li>
+<li><strong>是否有人给它提 PR</strong>（<code>subs 0</code> + contributors 1 人意味着目前完全没有人参与）</li>
+</ol>
+<h2 id="2026-10-26">最近动态（2026-10-26）</h2>
+<p><strong>2026-10-26：</strong> ⭐ 122 → <strong>200</strong>（+64%），⑂ 6 → <strong>12</strong>，<strong><code>subscribers_count</code> 仍为 0</strong>，<code>pushed_at</code> 2026-10-24T18:56:03Z（<strong>超过 27 小时无提交</strong>）。⭐⭐⭐ <strong>即 star +64% 而 subscribers 仍为 0——这与本日报同日记录的 <code>xss-audit</code>（star +103% 而 commits 仍为 1）构成同一族的两个反例。</strong> ⭐⭐ <strong>而这正是本日报本日确立的判据的核心：优先看 <code>subscribers_count</code> 与 <code>open_issues_count</code> 的变化，而不是 <code>stargazers_count</code>。</strong></p>
+<p>⭐⭐⭐ <strong>赛事侧同步更新：官方 <code>M-China/mcd-developer-innovation-challenge</code> 的 <code>RANKING.md</code> 更新时间从 10-25 的「2026-10-25 06:00:57」推进到「2026-10-26 00:01:01」，排名条目从 102 条降为 101 条（<code>grep -c "^| [0-9]"</code> 实测），本项目从第 37 名升至第 23 名 201⭐。</strong> ⭐⭐ 而 README 明写「活动开始后，麦当劳将定时采集报名成功项目的<strong>公开 Star 数据</strong>」「<strong>Star 数大于0</strong>的项目将按照排名规则进入排行榜」——⭐⭐⭐ <strong>即排行榜本身按 star 排序，而 star 在赛事里是参赛指标而非采用信号。这与本日报 10-25 记录的「赛事驱动的注意力洪峰」在本质上是同一件事，只是峰已过、峰后是退潮。</strong> ⭐⭐ <strong>而 subs 仍为 0 是本项目「结构性契约测试」主张尚无外部采用信号的最直接读数。</strong></p>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-10-25) | Stars: 116 | Forks: 6 | Subscribers: 0 | License: NOASSERTION (LICENSE 文件为 MIT + 额外条款) | 语言: Python | 创建: 2026-10-24T17:14:18Z | 8 commits | contributors 1 人
+官方对照: <code>M-China/mcd-mcp-server</code> 246⭐ ⑂9（树仅 <code>README.md</code> + <code>README_EN.md</code>）、<code>M-China/mcd-developer-innovation-challenge</code> 237⭐ ⑂13（RANKING.md 102 条，本仓库第 37 名）</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

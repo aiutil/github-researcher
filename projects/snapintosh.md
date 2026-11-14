@@ -1,19 +1,19 @@
 ---
-title: "Macintosh/Snapintosh"
+title: "Snapintosh/Snapintosh"
 slug: snapintosh
 date_added: "2026-10-23"
-last_seen_date: "2026-10-24"
+last_seen_date: "2026-10-26"
 category: "观察型"
 emoji: "💾"
-stars: "745 stars"
-stars_delta: "2.4 天 745⭐ ⑂43（fork/star 5.8%）"
+stars: "942 stars"
+stars_delta: "942⭐ ⑂53（fork/star 5.6%）· 10-25 记录 875⭐"
 language: "Python"
 score: 87
 tags: ["snapintosh", "macos-on-arm", "el2-hypervisor", "sptm", "txm", "xnu", "auxkc", "shadow-page-tables", "16k-to-4k", "adreno-x2-90", "adrenometal", "io-gpu-kext", "air2ir3", "mesa-ir3", "shader-compiler", "q1n1", "m1n1-fork", "uefi-el2-proxy", "usb-ncm", "snap-i2c-hid", "qcc2072-wifi", "nvme", "aic", "dart", "smmu", "apple-hardware-contract", "mit", "agents-md", "single-laptop", "experimental"]
-url: "https://github.com/Macintosh/Snapintosh"
+url: "https://github.com/Snapintosh/Snapintosh"
 ---
 
-# Acelogic/Snapintosh
+# Snapintosh/Snapintosh
 
 ## 一句话定位
 
@@ -179,3 +179,7 @@ flowchart TB
 ## 最近动态（2026-10-24）
 
 **2026-10-24：** ⚠️ **仓库已改组——`Acelogic/Snapintosh` → `Macintosh/Snapintosh`**（新组织 `Snapintosh` 创建于 2026-10-23T05:28:04Z）。⭐ 530 → **745**（+215），⑂ 29 → **43**（fork/star 5.5% → **5.8%**），subs 4 → **7**，oi 4 不变。⚠️ **`license.spdx_id` 仍为 `NOASSERTION`**（LICENSE 首行仍写 `MIT License`），**而 `LICENSE` 文件本身确认仍在**（`Copyright (c) 2026 The Snapintosh contributors`）。**⭐ 结构性变化：主仓库已拆分为 8 个仓库**——`Macintosh/Snapintosh`（745⭐）、`Macintosh/q1n1`（35⭐，2026-09-16 创建，从 Asahi Linux m1n1 fork 的 UEFI EL2 proxy）、`Macintosh/air2ir3`（AIR→Mesa ir3 shader 编译器，2026-10-23 新建，0⭐）、`Macintosh/SnapAdreno`（Adreno X2-90 IOGPU 与显示驱动，0⭐）、`Macintosh/SnapI2CHID`（I2C-HID 键盘/触控板/精密触控板驱动，0⭐）、`Macintosh/SnapMetal`（AdrenoMetal.bundle，0⭐）、`Macintosh/SnapQCC2072`（QCC2072 Wi-Fi 驱动，work in progress，0⭐）、`Macintosh/.github`（组织档案）。**这与 UniXNU 的 16 个驱动 submodule 属同一种「驱动独立仓库」的责任边界划分，但本日才显现。** **新的跟踪方式：主仓库 star 数已不是好指标（拆到 8 个仓库里），应改为跟踪 7 个子仓库中哪一个先获得外部 star**——这是「从单仓库走向多仓库平台」的第一个可观测信号。另注：10-23 记录的 Status 表中「60 Hz 目标」与「Wi-Fi 从 macOS 菜单发起连接尚不可用」**本窗口未重新核验**（README 未重取）。
+
+**2026-10-25：** ⚠️ **昨日记录的「组织改名」写错了名字，本日更正——组织名不是 `Macintosh` 而是 `Snapintosh`。** 证据：`repos/Macintosh/Snapintosh` 与 `orgs/Macintosh` 均返回 **404**；`repos/Snapintosh/Snapintosh` 正常返回。**⭐ 仓库 ID 1429116361 保持不变**（`Acelogic/Snapintosh` 与 `Snapintosh/Snapintosh` 指向同一 ID），因此**这是仓库归属变更（组织改名），不是仓库重建、不是删除**——**昨日档案里「`Acelogic/Snapintosh` → `Macintosh/Snapintosh`」的表述需按此更正**，且**仓库的 commit 历史完整保留**。组织 `Snapintosh` 创建于 **2026-10-23T05:28:04Z**，公开仓库 8 个、followers 11；个人账号 `Macintosh` 仍是存在的**用户**（2013-05-05 创建），**这正是昨日把组织名记错的原因——「Macintosh」曾以用户名形式出现在路径里**。⭐ **745 → 875（+130）**，⑂ 43 → **50**（fork/star 5.8% → **5.7%**），subs 7 → **10**，oi 4 → **6**，pushed_at **2026-10-24T22:28:36Z**（仍在活跃提交，最近一次为「cycle: pin the next AuxKC for --edp-backlight runs」）。⚠️ **`license.spdx_id` 仍为 `NOASSERTION`**，而 `LICENSE` 文件仍在且首行仍是 `MIT License`、`Copyright (c) 2026 The Snapintosh contributors`——**这是本日报已记录的 NOASSERTION 类的延续（第 5 天同一仓库仍未被 GitHub 正确识别）**。⭐ **组织内 8 个仓库本日全部有更新**：`Snapintosh/q1n1`（**35⭐ ⑂2**，MIT，2026-09-16 创建，从 Asahi Linux m1n1 fork 的 UEFI EL2 proxy，描述：「m1n1 retargeted to a Snapdragon laptop: EL2 after ExitBootServices on the ASUS Zenbook A16, serving m1n1's proxy protocol over q1n1's own USB stack」）、`Snapintosh/SnapAdreno`、`Snapintosh/SnapI2CHID`、`Snapintosh/SnapMetal`（均 2026-10-24T22:28:2x~3x 集中推送）、`Snapintosh/SnapQCC2072` 与 `Snapintosh/air2ir3`（2026-10-23 建仓后未再推送）。⭐ **本日的可观测信号按 10-24 设定的「跟踪哪个子仓库先获得外部 star」来看：`q1n1` 仍是最有希望的那个**（35⭐ ⑂2，且是唯一有 MIT 明确许可的子仓库），但本日无新增外部 star 可确认（子仓库 star 数与 10-24 相同）。⚠️ **10-23 记录的 Status 表中「60 Hz 目标」与「Wi-Fi 从 macOS 菜单发起连接尚不可用」本窗口未重新核验**（README 未重取）。
+
+**2026-10-26：** ⭐ 875 → **942**（+67），⑂ 50 → **53**（fork/star **5.6%**），subs 10，oi 10。⭐ **`pushed_at` 2026-10-25T05:05:43Z（较 10-25 记录的 22:28:36Z 提前了约 3 小时，即「较上次快照更近」——本日报不用日历日语表述）**。⚠️ **`license.spdx_id` 仍为 `NOASSERTION`**（LICENSE 首行仍是 MIT License）——**这是本日报已记录的 NOASSERTION 类的延续（第 6 天同一仓库仍未被 GitHub 正确识别）**。⭐⭐⭐ **而 10-24 设定的那个观察点，在 48 小时后（10-25）与 72 小时后（今日）的答案完全一致：`q1n1` 仍停在 35⭐ ⑂2，其余 6 个子仓库仍全为 0⭐，至今一个子仓库都没有获得外部 star。** ⭐⭐ **即：主仓库 star +67 而 7 个子仓库零外部 star，进一步支持「拆分尚未形成第二增长曲线」的判断。** ⚠️ **10-23 记录的 Status 表中「60 Hz 目标」与「Wi-Fi 从 macOS 菜单发起连接尚不可用」本窗口仍未重新核验**（README 未重取）。

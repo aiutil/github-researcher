@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JosssphZhou/poki | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/JosssphZhou/poki" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="josssphzhoupoki">JosssphZhou/poki</h1>
+<h2 id="_1">一句话定位</h2>
+<p>让 AI agent 操作真实 iPhone 的本地 MCP server + 独立 agent（免越狱、免额外硬件），<strong>而它本日最硬的一份资产不是能力而是 <code>docs/verification.md</code> —— 那份文件把「我测过了」拆成「在什么设备上、什么姿态、哪些结论不能外推」，并逐条记录没赢的地方</strong>。</p>
+<h2 id="_2">它解决的问题</h2>
+<p>让 agent 操作手机（发消息、查资料、填表）需要一条从「模型」到「设备」的链路。常见方案有三条，各有代价：</p>
+<ol>
+<li><strong>越狱 + 私有 API</strong> —— 能力最强，但要越狱、要重建签名、系统升级即失效；</li>
+<li><strong>Apple 官方 Shortcuts / XCUITest</strong> —— 安全但在后台执行，交互能力受限，且难以做「读屏 → 判断 → 操作」的闭环；</li>
+<li><strong>WebDriverAgent / 第三方桥接</strong> —— 需要额外硬件或复杂环境。</li>
+</ol>
+<p>poki 走的是第三条里最省事的一支：<strong>用 <code>pymobiledevice3</code> 风格的 USB 配对 + 一个自研 native bridge，把触摸、滑动、截图、OCR、粘贴板做成本地服务</strong>，然后用 MCP 暴露给 agent。<strong>免越狱、免额外硬件</strong>。</p>
+<h2 id="2026-11-07">为什么值得关注（2026-11-07）</h2>
+<p><strong>⭐⭐⭐⭐⭐ 本日最值得抄的一段（<code>docs/verification.md</code> 原文）</strong>：</p>
+<blockquote>
+<p><strong><code>sent: true</code> only means the touch was written to the connection. The device does not acknowledge it, so check <code>screen_changed</code> and the returned screen.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐ 这句话把一个被普遍混淆的事实拆开了</strong>：「触摸指令写进去了」和「设备执行了这次触摸」是两件事。前者可以由写入端确认，后者只能由屏幕变化推断。<strong>⭐⭐⭐⭐⭐ 把前者单独取名 <code>sent</code>、把后者单独取名 <code>screen_changed</code>，并要求调用方同时检查，是本日报见过最干净的一次「接口语义设计」</strong> —— 它不靠文档提醒，靠返回值结构强制调用方注意。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 配套的实测数字全部带适用边界（原文逐条）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>结果</th>
+<th>原文边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>旧连接处理，点聊天应用搜索框</td>
+<td><strong>丢 2 / 70</strong> 次触摸</td>
+<td>「<strong>Every dropped touch still returned <code>sent: true</code>.</strong>」</td>
+</tr>
+<tr>
+<td>保持连接直到 post-touch wait 结束</td>
+<td><strong>丢 0 / 70</strong></td>
+<td>「These numbers only apply to <strong>that single search field</strong>.」</td>
+</tr>
+<tr>
+<td>最终构建</td>
+<td><strong>丢 0 / 24</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>启动后 1.5 秒点击</td>
+<td><strong>0 / 3 生效</strong></td>
+<td>「Touches sent too soon after app launch may have no effect.」</td>
+</tr>
+<tr>
+<td>启动后 ≥ 2.8 秒点击</td>
+<td><strong>12 / 12 生效</strong></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>点底部浮动栏旁的控件（Settings）</td>
+<td><strong>4 / 4 无效</strong></td>
+<td>「<strong>This is not fixed.</strong> Those taps now return <code>screen_changed: false</code>.」</td>
+</tr>
+<tr>
+<td>横屏游戏点按钮坐标</td>
+<td>无效（同一 session 竖屏有效）</td>
+<td>「<strong>The cause is unknown.</strong>」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐ 它连「没测的部分」都点名</strong>：</p>
+<blockquote>
+<p>We only measured taps. <code>drag</code> and <code>pinch</code> use the same connection path and <strong>were not measured.</strong> The latest update to how <code>screen_changed</code> compares screens <strong>has not been tested with touches on a physical phone.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 它把「模拟器数据」与「真机数据」在文件结构上就分开了</strong>（「Measured on simulators only」独立成节），并写明：</p>
+<blockquote>
+<p>These numbers were measured <strong>before</strong> the later physical-tap changes. <strong>They have not been re-run.</strong> To run the measurement yourself, see <code>bin/eval-first-call.mjs</code>.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 全文件的定调句极为克制</strong>：</p>
+<blockquote>
+<p>The earlier measurements below come from a <strong>single iPhone running iOS 27.3 over Wi-Fi. Treat them as a test log from that setup, not a guarantee for other apps or devices.</strong></p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 「测过什么」与「没测什么」的边界写在测试脚本的分类里</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套件</th>
+<th>内容</th>
+<th>是否接触真机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm test</code>（协议套件）</td>
+<td>stdio↔HTTP 桥、鉴权、工具发现、无设备错误处理、wait-only 批处理</td>
+<td><strong>否</strong> —— 「without injecting input into a phone or simulator」</td>
+</tr>
+<tr>
+<td><code>bin/verify-fixture.mjs</code></td>
+<td>真实 UI 与应用变更</td>
+<td>是 —— 需专用一次性模拟器 <code>Poki MCP QA</code> + <code>PokiMCPFixture</code> app</td>
+</tr>
+<tr>
+<td><code>bin/verify-platform.mjs</code></td>
+<td>同上（含 pasteboard 限制探测）</td>
+<td>是 —— 「<strong>intentionally excluded from <code>npm test</code></strong>」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 它的边界声明把「外部进程 fixture 能证明什么」也划清了</strong>：</p>
+<blockquote>
+<p>These coordination checks use external-process fixtures. <strong>They do not establish real-device cancellation, gesture effects, first-time system permissions, or an independent new-user installation.</strong> Those checks still require separately authorized device acceptance.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 风险披露写在 README 最显眼处</strong>：</p>
+<blockquote>
+<p>Poki controls your real iPhone. <strong>If you ask it to send messages or make payments, it will.</strong> Screen contents are sent to your configured model service.</p>
+</blockquote>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 它的许可选择与分发方式匹配</strong>：AGPL-3.0-only，<strong>并且提供预编译包</strong>（<code>poki-v0.1.1-macos-arm64.tar.gz</code>）+ <strong>每日匿名 GitHub release 检查</strong>（可用 <code>POKI_NO_UPDATE_CHECK=1</code> 关闭）。<strong>⭐⭐⭐ AGPL + 预编译分发 + 自动更新这三者的组合，说明作者清楚「网络服务场景的许可义务」并做了工程应对。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 依赖也做成了可审阅清单</strong>：<code>docs/third-party-dependencies.md</code>、<code>docs/licenses/BlueBubbles-LICENSE</code>、<code>native/LICENSE.idb</code>、<code>native/LICENSE.idevice</code>、<code>native/LICENSE.idevice</code>、<code>THIRD_PARTY_NOTICES.md</code>。</p>
+<h2 id="_3">热度来源判断</h2>
+<p><strong>⭐⭐⭐⭐ 真实需求，且热度结构本身是可信的。</strong></p>
+<p>支持「真实」的证据：</p>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ fork 间隔分布是真人形态</strong>：<code>forks</code> 全量 83 个，跨 <code>2026-11-05T15:41:43Z .. 2026-11-06T18:34:17Z</code>（约 27 小时），按小时分桶为 <code>15:41</code>×7、<code>16:01</code>×15、<code>17:02</code>×7、<code>18:25</code>×2、<code>19:15</code>×2、<code>21:37</code>×1 —— <strong>⭐⭐⭐⭐⭐ 这是本日第二批农场（5–6 秒中位数、96.9% 的间隔 ≤10 秒）截然不同的形态</strong>。</li>
+<li><strong>⭐⭐⭐⭐ 六个语言的 README</strong>（<code>README.md</code> / <code>README.zh-CN.md</code> / <code>README.zh-TW.md</code> / <code>README.ja.md</code> / <code>README.ko.md</code> / <code>README.es.md</code>）+ 独立的 <code>docs/</code> 文档站（<code>install.md</code> / <code>tools.md</code> / <code>configuration.md</code> / <code>physical-iphone.md</code> / <code>verification.md</code> / <code>imessage-gateway.md</code> / <code>third-party-dependencies.md</code> / <code>verification/cellular-test-plan.md</code> / <code>verification/tailscale-pr-validation.md</code>）。</li>
+<li><strong>⭐⭐⭐⭐ 2 个 release、23 个 commit、2 个 contributor</strong>；有 <code>AGENTS.md</code> / <code>CODE_OF_CONDUCT.md</code> / <code>CONTRIBUTING.md</code> / <code>SECURITY.md</code>。</li>
+<li><strong>⭐⭐⭐⭐⭐ <code>docs/verification.md</code> 里那 5 条「没修好」的记录</strong>（bottom bar 点击 4/4 无效、两次未复现的 touch 丢失、horizon 未知原因）—— <strong>⭐⭐⭐⭐⭐ 真实的项目不会把这些写进 README</strong>，因为这会显得产品不好用。</li>
+</ul>
+<p><strong>⭐⭐⚠️ 但必须点名一个反向信号</strong>：<strong><code>subscribers_count</code> = 1，而 forks = 83</strong>。<strong>⭐⭐ 这个「大量 fork + 极少深度订阅」的组合，本日在农场簇里也出现过</strong>（<code>roblox-studio-mcp</code> 是 subs 8 / forks 260）。<strong>⭐⭐⭐⭐ 因此本日再次确认：单看 fork 数会误判，必须看 fork 的时间分布。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>⭐⭐⭐⭐⭐ 双层架构：设备执行与 agent 决策分离</strong>。<code>native/bridge/</code>（Rust + Cargo，<code>apps.rs</code> / <code>gesture.rs</code> / <code>installation.rs</code> / <code>stream.rs</code> / <code>pasteboard.rs</code> / <code>remote.rs</code> / <code>ax.rs</code>）负责设备侧；<code>src/*.mjs</code>（Node）负责 MCP 协议与批处理。</li>
+<li><strong>⭐⭐⭐⭐⭐ 双信号返回</strong>：<code>sent</code>（写入了）与 <code>screen_changed</code>（屏幕变了）分离，让调用方能区分「动作已投递」与「动作已生效」。</li>
+<li><strong>⭐⭐⭐⭐⭐ 触摸可靠性被实测并公开</strong>：2/70 → 0/70 → 0/24 的修复路径，以及「启动后 ≥2.8 秒」的窗口结论。</li>
+<li><strong>⭐⭐⭐⭐ 三套测试分层</strong>：协议套件（无设备）、fixture 脚本（一次性模拟器 + fixture app）、真机 e2e（授权设备验收）。</li>
+<li><strong>⭐⭐⭐⭐ 三种接入方式并存</strong>：MCP server（Claude Code / Codex / 任意 <code>mServers</code> JSON）、独立终端 agent（<code>poki login</code> / <code>poki status</code>）、消息渠道（<code>poki imessage</code> / <code>poki telegram</code>）。</li>
+<li><strong>⭐⭐⭐⭐ 远程接入与多设备</strong>：<code>native/bridge/src/remote.rs</code> + <code>docs/remote-iphone.md</code> + <code>docs/verification/tailscale-pr-validation.md</code>；<code>bin/prepare-remote.mjs</code>；多设备时用 <code>--device '&lt;device UUID&gt;'</code> 显式选择。</li>
+<li><strong>⭐⭐⭐ OCR 与粘贴板</strong>：<code>native/ocr.swift</code> + <code>native/bridge/src/pasteboard.rs</code>；<code>bin/verify-platform.mjs</code> 专门报告 pasteboard 限制（并说明该脚本「so it does not verify clipboard writes on this runtime」）。</li>
+<li><strong>⭐⭐⭐ fixture app 自带</strong>：<code>bin/fixture-app/</code> 是一个 Xcode 工程（<code>PokiMCPFixture</code>），使端到端验证不依赖第三方应用。</li>
+<li><strong>⭐⭐⭐ <code>eval-first-call.mjs</code></strong>：把「首次调用延迟」做成可复算的评测脚本，<code>docs/verification.md</code> 的中位数表（Claude Code / Codex CLI × Counter / Form × batch / single-step）由它产生。</li>
+<li><strong>⭐⭐ agent 技能</strong>：<code>skills/poki-mcp/SKILL.md</code>，README 直接给出「让 agent 装它」的一句话指令。</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>本地 iOS 设备执行层（Rust native bridge）+ MCP 协议层（Node stdio→HTTP）+ agent 层（独立 CLI / 消息渠道）+ 文档与 fixture app；<strong>不含云端服务</strong></td>
+<td>依据根树 25 项与 <code>native/bridge/src/</code> 的文件清单；<code>ax.rs</code> 与 <code>roles.json</code> / <code>traits.json</code> 的实现<strong>未读</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>agent（或 MCP 客户端）→ stdio → 本地 HTTP → agent 编排层 → native bridge → USB/Wi-Fi 连接的 iPhone → <strong>读回截图</strong> → 判断 → 下一步</td>
+<td>主路径为 README 描述 + 目录结构的语义抽象；<code>stream.rs</code> 的连接生命周期与 <code>roles.json</code> 的角色模型<strong>未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td><strong>① 免越狱 vs 能力上限</strong>（换来实现稳定性与可分发的许可友好性）；<strong>② 真实设备 vs 可复现性</strong>（作者用「真机日志 + 明确标注不可外推」而非「只报模拟器漂亮数字」）；<strong>③ 模拟器验证 vs 真机验收</strong>（两套脚本分开，明确后者不在 <code>npm test</code> 内）；<strong>④ AGPL + 预编译分发 + 自动更新 vs 许可义务</strong>（作者对 AGPL 的网络服务义务做了工程应对）</td>
+<td>①②③ 有原文直接支撑（README 与 <code>docs/verification.md</code>）；④ 是本日报基于「AGPL-3.0-only + 提供 tar.gz + 每日 release 检查」三项事实的<strong>推断</strong>，项目未如此陈述</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><strong>不要先接真机</strong>：先在 iOS 模拟器上跑 <code>bin/setup</code> → <code>npm start</code> → <code>bin/verify-fixture.mjs</code>，用自带 <code>PokiMCPFixture</code> app 验证 <code>tap_text</code> 与 <code>screen_changed</code> 的双信号行为；模拟器通过后再用 <code>bin/verify-platform.mjs</code>；<strong>真机环节必须由用户在授权设备上完成</strong></td>
+<td>PoC 顺序依据 <code>docs/verification.md</code> 的测试分层与「They do not establish real-device cancellation… Those checks still require separately authorized device acceptance」推导</td>
+</tr>
+<tr>
+<td>证据边界</td>
+<td><strong>可核验</strong>：<code>docs/verification.md</code> 全文、README 的平台/许可/风险声明、目录树、测试脚本清单、GitHub 元数据。<strong>未核验</strong>：所有触摸数字均为<strong>作者自测结果的转述</strong>，本日报<strong>未运行该工具、未连接任何 iPhone、未复现任何测量</strong></td>
+<td><code>agent/</code> 目录（Poki Agent，含 <code>gpt-6.1-terra</code> 默认模型）<strong>未审</strong>；Linux 社区移植 <code>carrotciallo/poki-for-linux</code> 在仓库外，<strong>未核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p><strong>⭐⭐⭐⭐⭐ 启发一：接口语义要强制调用方注意，而不只是文档提醒。</strong></p>
+<p><code>sent: true</code> + <code>screen_changed: false</code> 这对返回值，把「投递」与「生效」拆成两个可断言的信号。<strong>⭐⭐⭐⭐⭐ 很多项目只给一个 <code>success: true</code>，把判断责任推给调用方 —— 结果调用方不看屏幕，于是把失败的触摸当成成功。</strong> poki 的做法让「慢一步」（写入到生效之间）成为可观测状态，而不是隐藏的失败。</p>
+<p><strong>⭐⭐⭐⭐⭐ 启发二：把「我测过的」和「我测过的适用范围」放在同一张表里。</strong></p>
+<p>poki 的表格里每个数字都带一句边界（「These numbers only apply to that single search field.」）。<strong>⭐⭐⭐⭐⭐ 这比「测试覆盖率 87%」这类指标有用得多 —— 前者告诉你这个结论能不能搬到你的场景，后者只告诉你代码跑过多少。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐⭐ 启发三：把「已知失败」写进产品文档，而不是等 issue。</strong></p>
+<p>「Tapping a target next to a bottom floating bar had no effect 4 of 4 times… <strong>This is not fixed.</strong>」—— 这类句子在 README 里非常罕见。<strong>⭐⭐⭐⭐⭐ 它的价值不在于诚实本身，而在于它把「已知坏掉的路径」变成了可被 agent 规划时避开的显式约束</strong>（agent 读文档时会避开那个交互位置）。</p>
+<p><strong>⭐⭐⭐⭐⭐⭐⭐ 启发四：把「测量脚本」和「测量结果」一起交付。</strong></p>
+<p><code>bin/eval-first-call.mjs</code> 与 <code>docs/verification.md</code> 的中位数表是一对。<strong>⭐⭐⭐⭐⭐⭐ 这意味着任何人都可以重跑那张表 —— 而文档里那句「These numbers … have not been re-run」反而承认了这一点。</strong> 交付测量工具比交付数字更值钱。</p>
+<p><strong>⭐⭐⭐⭐⭐ 启发五：把「需要的外部条件」写进警告，而不是埋进文档。</strong></p>
+<p>「If you ask it to send messages or make payments, it will.」—— 一句提醒，放在读者必然经过的位置。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；「待核验」节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Client[MCP 客户端<br/>Claude Code / Codex / 任意 mcpServers] --> Stdio[src/stdio.mjs<br/>stdio 到 HTTP 桥]
+  Stdio --> Orch[src/batch.mjs 等<br/>批处理与编排层]
+  Agent[独立 Poki Agent<br/>poki CLI / imessage / telegram] --> Orch
+  Orch --> Bridge[native/bridge (Rust)<br/>apps / gesture / stream / pasteboard / remote]
+  Bridge --> Device[真实 iPhone 或 模拟器<br/>USB 配对 或 Wi-Fi]
+  Device --> Screen[屏幕截图回读]
+  Screen --> Orch
+  Orch --> Dual[双信号返回<br/>sent 写入确认 + screen_changed 生效确认]
+  Bridge --> Native[设备侧原生能力<br/>ocr.swift / pasteboard / simulator.m]
+  Bridge -.测试夹具.-> Fixture[bin/fixture-app<br/>PokiMCPFixture 一次性 app]
+  Bridge --> Eval[bin/eval-first-call.mjs<br/>可复算的首次调用延迟评测]
+  Eval --> Doc[docs/verification.md<br/>真机日志与模拟器数据分节]
+  Dual --> Doc
+  Stdio --> Auth[鉴权 / 租约 / 会话<br/>协议套件覆盖 不触碰设备]
+  Auth -.仅协议层证明.-> Doc
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>⭐⭐⭐⭐⭐ 基础设施候选型项目（agent 触达真实设备的一条务实路线），目前是本日报证据充分度最高的项目之一。</strong></p>
+<p>它的位置很清楚：<strong>在「云端大模型」与「物理世界」之间做一层本地、可审计的设备适配</strong>。同类项目多数要么依赖云端服务（数据出境、隐私、延迟），要么依赖越狱（不稳定、不可分发）。poki 走的是「本地 + 免越狱 + 协议标准化（MCP）」这条组合。</p>
+<p><strong>⭐⭐⭐⭐⭐ 而它与本日其余项目最大的不同是：它的产出可以被第三方逐条核对。</strong> <code>docs/verification.md</code> 的数字可以重跑（<code>bin/eval-first-call.mjs</code>），测试套件可以看，fixture app 可以自己编译，第三方许可清单可以逐条查。</p>
+<p><strong>⭐⭐ 定位的限定</strong>：<strong>平台仅 macOS</strong>（需要完整 Xcode 与 iOS 工具链），Linux 走仓库外维护的社区移植（<code>carrotciallo/poki-for-linux</code>，issue #16），<strong>真机验证仅覆盖中文界面与竖屏</strong>。这些不是小问题 —— 它们直接限制了可用场景。</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ 真机验证面极窄</strong>：README 明写「Physical iPhone support has been verified <strong>only on iPhones using the Chinese interface</strong>」「Physical devices support <strong>portrait orientation only</strong>」「App container export and direct links to Settings subpages are unavailable.」<strong>⭐⭐⭐⭐⭐ 即：非中文界面、横屏、以及部分系统导航路径都属于未验证区。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ 已知未修的交互失败</strong>：<code>docs/verification.md</code> 明确记录「Tapping a target next to a bottom floating bar had no effect 4 of 4 times in the Settings app. <strong>This is not fixed.</strong>」以及「Two earlier <code>tap_text</code> calls … returned <code>sent: true</code> but had no effect. <strong>We have not reproduced this failure</strong>」。<strong>⭐⭐⭐⭐ 这些是产品层面的真缺陷，不是文档瑕疵。</strong></li>
+<li><strong>⭐⭐⭐⭐ 未测的手势</strong>：<code>drag</code> 与 <code>pinch</code> 「were not measured」。</li>
+<li><strong>⭐⭐⭐⭐ 平台门槛</strong>：macOS 15+、完整 Xcode、Rust、Node.js 24+、ffmpeg；<strong>无 Linux/Windows 一等支持</strong>。</li>
+<li><strong>⭐⭐⭐⭐⭐ 隐私与金钱风险</strong>：屏幕内容会发送到用户配置的模型服务；agent 可以真的发消息、真的付款。<strong>⭐⭐⭐⭐ 这不是漏洞而是设计，但使用者必须知道。</strong></li>
+<li><strong>⭐⭐⭐ 模型绑定</strong>：Poki Agent 默认模型写死为 <code>gpt-6.1-terra</code>（low reasoning），可用 <code>POKI_AGENT_MODEL</code> 覆盖。<strong>⭐⭐⭐ 依赖一个特定前沿模型名，意味着上游改名即需跟改。</strong></li>
+<li><strong>⭐⭐⭐ 供应链面</strong>：提供 <code>curl | sh</code> 式的预编译包与每日自动 release 检查 —— 便利，但<strong>自动更新本身是攻击面</strong>（可用 <code>POKI_NO_UPDATE_CHECK=1</code> 关闭）。</li>
+<li><strong>⭐⭐⚠️ subs 仅 1</strong>：406⭐ 而深度订阅者 1 个。<strong>⭐⭐ 结合 forks=83 看，这不是「无人使用」也不是「广泛使用」的真实项目，而是「被大量 fork 尝试过」的形态 —— 原因待观察。</strong></li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ vs 越狱方案（如基于 frida / Substrate 的自动化）</strong>：越狱路线能力上限更高（可注入进程、可读更多数据），但系统升级即失效、且难以合法分发。<strong>poki 用「免越狱 + 有限但稳定」换取了可分发性。</strong></li>
+<li><strong>⭐⭐⭐⭐⭐ vs 官方 XCUITest / Shortcuts</strong>：官方路径合规性最好，但只能在有限场景下操作，且难以支撑「读屏 → 推理 → 自由交互」的闭环。<strong>poki 提供了更自由的交互面。</strong></li>
+<li><strong>⭐⭐⭐⭐ vs 云端手机农场（如各类 device cloud）</strong>：云端方案无需本地设备，但数据必须出境、成本随调用计费、无法处理个人敏感内容。<strong>poki 的本地化是其核心差异。</strong></li>
+<li><strong>⭐⭐⭐⭐ vs 其他 MCP server 项目</strong>：MCP 生态中大量 server 是「包一个 API」；poki 是少见的<strong>「包一个物理设备」</strong>的 server，<strong>因此它的失败模式是物理的（触摸没生效），而不是 API 的（HTTP 500）</strong> —— 这也是它必须发明 <code>screen_changed</code> 的原因。</li>
+<li><strong>⭐⭐⭐ 与本日报的 <code>hermes-voice</code> 对比</strong>：两者都做「把既有设备接入 agent」，但 poki 面向触屏设备的<strong>精细操作</strong>，hermes-voice 面向语音设备的<strong>会话维持</strong>。<strong>后者的会话问题（<code>X-Hermes-Session-Id</code>）与前者的问题（触摸是否生效）在结构上同类</strong> —— 都是「客户端以为成功、实际没生效」。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>⭐⭐⭐⭐⭐ 值得跟踪，且是本日报证据质量最高的项目之一。</strong></p>
+<p>理由不是星数，而是：<strong>它提供了一份「如何在设备自动化这种高失败率场景里做可信验证」的完整可复制样例</strong>。<code>docs/verification.md</code> 的写法可以直接搬用到任何「动作可能失败」的系统 —— 机器人控制、UI 自动化、支付流程。</p>
+<p><strong>⭐⭐⭐⭐ 具体跟踪方式</strong>：
+1. 跟踪 <strong><code>docs/verification.md</code> 的修订</strong>：新条目是「新增已知失败」还是「修复已知失败」，这是它成熟度的直接读数；
+2. 跟踪 <strong><code>docs/verification/</code> 子目录的扩充</strong>（目前有 <code>cellular-test-plan.md</code> / <code>tailscale-pr-validation.md</code>）—— 说明验证面在扩大；
+3. 跟踪 <strong>真机验证的支持范围</strong>（中文界面 → 多语言？竖屏 → 横屏？），这是它从「个人工具」走向「可用产品」的关键；
+4. 跟踪 <strong><code>subscribers_count</code> 是否离开 1</strong>；
+5. 跟踪 <strong><code>poki-for-linux</code> 社区移植是否被上游合并</strong>。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li><strong>⭐⭐⭐⭐⭐ <code>docs/verification.md</code> 中「This is not fixed」的条目数是否下降</strong> —— 这是产品成熟度的单一最佳指标。</li>
+<li><strong>⭐⭐⭐⭐ 真机支持语言是否从「仅中文」扩大</strong>；</li>
+<li><strong>⭐⭐⭐⭐ <code>drag</code> / <code>pinch</code> 是否获得实测数据</strong>；</li>
+<li>**⭐⭐⭐⭐ 社区移植 <code>carrotciallo/poki-for-linux</code> 是否被纳入上游仓库或成为官方支持的后端；</li>
+<li><strong>⭐⭐⭐⭐ <code>subscribers_count</code> 与 <code>forks</code> 的比值是否收敛</strong>（83 fork / 1 sub 是本日最刺眼的不对称之一）；</li>
+<li><strong>⭐⭐⭐⭐⭐ 默认模型从 <code>gpt-6.1-terra</code> 迁移后的兼容性处理</strong>；</li>
+<li><strong>⭐⭐⭐ <code>bin/eval-first-call.mjs</code> 产出的中位数表是否随版本更新</strong> —— 若长期不更新，说明「可复算」承诺在退化。</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub REST API (2026-11-06T22:00Z 快照区间) | Stars: 406 | Forks: 83 | Subscribers: 1 | Open Issues: 10 | License: AGPL-3.0-only | 语言: JavaScript | 体积: 4,097 KB | Commits: 23 | Contributors: 2 | Releases: 2 (2 assets) | 创建: 2026-11-05T15:04:31Z | 最后推送: 2026-11-06T16:22:45Z
+本档案未核验项：所有触摸与延迟数字均为作者自测结果的转述（本日报未运行该工具、未连接任何 iPhone）；<code>native/bridge/src/ax.rs</code>、<code>roles.json</code>、<code>traits.json</code> 的实现；<code>agent/</code> 目录；<code>carrotciallo/poki-for-linux</code> 社区移植。</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
