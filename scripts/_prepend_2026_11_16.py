@@ -125,15 +125,20 @@ DR_NEW = """## 2026-11-16
 
 
 def prepend(path, block):
+    """Prepend `block` unless its date heading is already in the head of the
+    file.  Idempotent: re-running must not duplicate the section."""
     with io.open(path, encoding="utf-8") as f:
         cur = f.read()
-    if block.split("## ", 1)[1].split("\n", 1)[0] in cur[:4000]:
+    heading = block.split("## ", 1)[1].split("\n", 1)[0]
+    if heading in cur[:4000]:
         print(f"SKIP (already present): {path}")
-        return
+        return False
     with io.open(path, "w", encoding="utf-8") as f:
         f.write(block + cur)
     print(f"prepended -> {path}")
+    return True
 
 
-prepend(TI, TI_NEW)
-prepend(DR, DR_NEW)
+if __name__ == "__main__":
+    prepend(TI, TI_NEW)
+    prepend(DR, DR_NEW)

@@ -49,6 +49,25 @@ def search(q, page=1, per_page=100):
     return d.get("items", []) if d else []
 
 
+_OWNER_CACHE = {}
+
+
+def owner_meta(login):
+    """Owner account metadata, cached.  Owner age is a farm signal but only
+    a weak one (11-12 disproved "account created today => farm"), so it is
+    recorded alongside follower counts rather than used alone."""
+    if login not in _OWNER_CACHE:
+        u, _ = api(f"users/{login}")
+        u = u or {}
+        _OWNER_CACHE[login] = {
+            "owner_created": u.get("created_at"),
+            "owner_followers": u.get("followers"),
+            "owner_public_repos": u.get("public_repos"),
+            "owner_type": u.get("type"),
+        }
+    return _OWNER_CACHE[login]
+
+
 def work(it):
     full = it["full_name"]
     m, _ = api(f"repos/{full}")
@@ -74,6 +93,7 @@ def work(it):
     rm = rm or ""
     lic = m.get("license") or {}
     owner = m.get("owner") or {}
+    ometa = owner_meta(owner.get("login")) if owner.get("login") else {}
     return {
         "full_name": full,
         "stars": m.get("stargazers_count"),
@@ -99,6 +119,9 @@ def work(it):
         "has_discussions": m.get("has_discussions"),
         "owner_login": owner.get("login"),
         "owner_type": owner.get("type"),
+        "owner_created": ometa.get("owner_created"),
+        "owner_followers": ometa.get("owner_followers"),
+        "owner_public_repos": ometa.get("owner_public_repos"),
         "n_commits": len(commits),
         "commit_secs": sorted(secs),
         "n_blobs": len(blobs),

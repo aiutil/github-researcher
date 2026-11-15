@@ -3,9 +3,11 @@
 payload links, rank by engineering-effort proxies."""
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 
-C = json.load(open("/tmp/cand_1115.json"))
+SRC = sys.argv[1] if len(sys.argv) > 1 else "/tmp/cand_1115.json"
+C = json.load(open(SRC))
 print(f"candidates: {len(C)}")
 
 # ---- cluster by README md5 ----
@@ -91,8 +93,13 @@ for r in C:
     own[r["owner_login"]].append(r)
 rows = []
 for o, g in sorted(own.items()):
-    rows.append((g[0]["owner_created"], o, len(g), sum(x["stars"] for x in g)))
+    # owner_created is absent from older collector snapshots; group by it
+    # only when present so a missing field cannot abort the whole report.
+    created = next((x.get("owner_created") for x in g if x.get("owner_created")), None)
+    rows.append((created or "", o, len(g), sum(x["stars"] for x in g)))
 rows.sort()
 for t, o, n, s in rows[:40]:
-    print(f"  {t}  {o:40s} repos={n:2d} stars={s}")
+    print(f"  {t or '(unknown)':22s}  {o:40s} repos={n:2d} stars={s}")
 print(f"  ... total distinct owners: {len(own)}")
+print(f"  ... owners with known creation time: "
+      f"{sum(1 for r in rows if r[0])}/{len(rows)}")
