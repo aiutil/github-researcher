@@ -1,3 +1,96 @@
+## 2026-11-16
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | 语言 | 体积 | commits | 类别 |
+|---|---:|---:|---:|---:|---|---:|---:|---|
+| `WindGatorRise37/Gemini-Config-Checker-` | 473 | 0 | 0% | 3 | Go | 181 KB | 53 | 观察型（反例样本） |
+| `atlas7283/steam-library-bridge` | 176 | 0 | 0% | **19** | JavaScript | 0 KB | **1** | 观察型（反例样本） |
+| `tsukumijima/pydtcpip` | 44 | 5 | 11.6% | 1 | Python | 258 KB | 6 | 生产可用 |
+| `petekp/coordinator` | 34 | 3 | 8.8% | 0 | Python | 894 KB | 26 | 工具型 |
+| `cnrad/interspace` | 131 | 7 | 5.3% | 0 | Swift | 17,768 KB | 5 | 工具型 |
+| `lishuangqiang/mixbar` | 79 | 1 | 1.3% | 0 | Swift | 2,178 KB | 4 | 工具型 |
+| `rauchg/winamp-ui-sdk` | 42 | 2 | 4.8% | 0 | TypeScript | 15,385 KB | 2 | 观察型 |
+| `huangserva/h3-fight` | 30 | **14** | **46.7%** | 0 | Python | 8,902 KB | 2 | 工具型 |
+| `Dart-veider01/TradingAgents-crypto` | 140 | **64** | **45.7%** | 0 | Python | 6,984 KB | 4 | 观察型 |
+
+### ⭐⭐⭐⭐⭐ 判据修正一：镜像检测从「上游是否清空」转向「blob sha 是否相同」
+
+`Gemini-Config-Checker-` 族的 21 个仓库（各 473⭐）逐字节复制了**健在**的上游 `MatinSenPai/Gemini-Config-Checker`（144⭐ · MIT · 2026-10-03 创建 · 72 blobs）。
+
+| 探针文件 | 覆盖仓库 | 不同 md5 数 | GitHub blob sha |
+|---|---:|---:|---|
+| `internal/scan/scan_test.go` | 21 | **1** | `585365eec6394fc0d3e5f85815add761051ad664` |
+| `internal/scan/region.go` | 21 | **1** | — |
+| `internal/ui/ui.go` | 21 | **1** | — |
+| `dns_android.go` | 21 | **1** | — |
+| `Makefile` | 21 | **1** | `88c61e0e666782968392de1f5c96a5c2cf43f0d6` |
+| `go.mod` | 21 | **1** | `0985644d9817804ca6331193ff7a002ab859aeaf` |
+| `VERSION` | 21 | **1** | — |
+
+**但许可被改掉（上游 `MIT License` → 镜像 `Apache License`）、载荷被改掉（上游无 Dropbox 链接 → 21 个镜像统一指向 `…/GeminiConfigChecker.rar?rlkey=dv7oxsttd2j8kvr5zu7uyx1tm`）、53 个 commit 的消息序列逐条复制（`identical message sequence = True`，仅时间戳不同）。**
+
+> 新增零成本检测项：**「同族仓库的 blob sha 是否与上游逐一相同」** —— 无需下载任何内容。
+
+> **与 11-13 的 `AIRzZ90/study-materials-fork` 的区别**：那次是「上游被作者清空后的镜像」（镜像方没有选择）；**本次是「上游健在时的镜像」（镜像方主动选择复制 21 份、改许可、换载荷）。**
+
+### ⭐⭐⭐⭐⭐ 判据修正二：「账号注册聚集度」升级为「账号 × 家族矩阵」
+
+21 个 Gemini 镜像的 owner 账号实测注册窗口 `2026-10-14T01:07:31Z–03:02:24Z`（跨度 **6,893 秒**），**全部 0 followers、全部恰好 12 个公开仓库**。
+
+| 账号 | 注册时间 | GitHub-Copilot-app | ai--manus2.0 | Gemini-Config-Checker- |
+|---|---|---:|---:|---:|
+| `TypeTyrantScheme` | 01:07:31Z | 10 | 0 | 1 |
+| `VortexHostFeel` | 01:15:10Z | 9 | 1 | 1 |
+| `Visionbeyondtrack` | 01:41:16Z | 0 | **10** | 1 |
+| `WindGatorRise37` | 02:04:33Z | 10 | 0 | 1 |
+| `Violetnyudress` | 03:02:13Z | 10 | 0 | 1 |
+| `wisemeadowlarkspike` | 03:02:24Z | 10 | 0 | 1 |
+| **（其余 15 个账号同构）** | 01:15Z–03:02Z | 9–10 | 0–10 | 1 |
+
+**注册窗口完全落在 11-14 记录的 `2026-10-14T00:43Z–03:03Z` 账号队列内部 —— 即同一批账号在 11-14 投放两个家族，在 11-15 投放第三个家族，且每个账号每个家族各持 9–10 个副本 + 1 个主仓库 + 1 个随机名占位 = 恰好 12 个。**
+
+> 新增零成本检测项：**「同一个账号是否在多个毫无词法关系的家族里各持 9–10 个副本」** —— `users/{owner}/repos` 一次请求即可取全，**不受账号闲置时间影响，也不受命名词根相似性影响**。
+
+### ⭐⭐⭐⭐⭐ 判据修正三：「release 数量 / 版本号」不能当发布历史的证据
+
+`atlas7283/steam-library-bridge`（176⭐ · 19 subs · 572 blobs · **1 个 commit**）：
+
+| tag | `created_at` | `published_at` | assets |
+|---|---|---|---:|
+| `v1.2.8` | 2026-11-15T21:11:41Z | 21:11:48Z | 2 |
+| `v2.3.2` | 2026-11-15T21:11:41Z | 21:11:54Z | 2 |
+| `v3.1.6` | 2026-11-15T21:11:41Z | 21:11:59Z | 2 |
+| `v4.4.2` | 2026-11-15T21:11:41Z | 21:12:02Z | 2 |
+
+**四个 release 的 `created_at` 完全相同（= 唯一那次 commit 的时间），`published_at` 依次 +7s / +13s / +18s / +21s；四个版本号的次版本号互不相同且与代码无关。**
+
+> 新增零成本检测项：**「仓库 `size` 字段为 0 但 `git/trees` 非空」** —— 本样本 `size = 0 KB` 而树内含 `Steam-Library-Bridge.exe` **1,050,048 B** 与 312 个 `third_party/` blob。
+
+> **发布史真伪的三项配套核验**：① release 资产的 sha256 是否随版本变化；② tag 是否指向不同 commit；③ 代码在版本之间是否实质改动。
+
+### ⭐⭐⭐⭐⭐ 判据修正四：许可判据从 `license.spdx_id` 字段转向 LICENSE 文件内容 + 第三方声明文件
+
+| 仓库 | `license.spdx_id` | LICENSE 实际内容 |
+|---|---|---|
+| `cnrad/interspace` | **NOASSERTION** | `MIT License` / `Copyright (c) 2026 cnrad` |
+| `lishuangqiang/mixbar` | MIT | MIT + **`THIRD_PARTY_NOTICES.md`** |
+
+**`mixbar` 的 `THIRD_PARTY_NOTICES.md` 精确到借用代码的 commit hash：**
+
+> - 项目：https://github.com/burghr/MacMixer
+> - 参考提交：**`3b2c69015949786b02462281420bb6eb75488434`**
+> - 引用范围：**`CoreAudioSupport.swift` 中的 Core Audio 属性读取、设备枚举和应用进程识别辅助逻辑**
+> - 原始作者：burghr
+
+> 新增零成本检测项：**「仓库是否有第三方声明文件，且是否精确到 commit hash」** —— 本数据集里第一次见到这种写法。
+
+### ⭐⭐⭐⭐⭐ 判据修正五：仓库体积必须先做构成分析
+
+`rauchg/winamp-ui-sdk` 共 15,385 KB，其中 **5 个 mp3 音轨占 15,373,046 B（98%）**，实际 TypeScript 代码只有 5 个文件共 158,566 B。⭐⭐⭐⭐⭐ **「体积大」不等于「工程量大」** —— 这与 11-10 的 `Shape`（2,180 blobs 但 1 个 commit）是「体积」判据的两种不同失效方式。
+
+---
+
 ## 2026-11-15
 
 ### 本日新增项目

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tsukumijima/pydtcpip | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/tsukumijima/pydtcpip" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="tsukumijimapydtcpip">tsukumijima/pydtcpip</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>一个非官方的 DTCP-IP + DLNA/UPnP asyncio Python 实现库（外加一个参考 CLI）—— ⭐⭐⭐⭐⭐ 它的特别之处不是实现了加密传输协议，而是把「我们从未实现过的那几项」写成了 <code>AGENTS.md</code> 的第一段，并把每台真实设备的验证状态做成三档表格。</strong></p>
+<h2 id="_2">它解决的问题</h2>
+<p><strong>日本家庭的电视与蓝光/硬盘录像机（REGZA、nasne、DBR 系列等）用 DTCP-IP 做互认加密传输与「追放（ダビング / dubbing）」，而 DTCP-IP 的公开规格（Informational Version）省略了密码学参数与部分函数细节。</strong> ⭐⭐⭐⭐⭐ 项目自己的说法是：</p>
+<blockquote>
+<p><strong>for more than 20 years since the specification was established, there had been no open-source implementation that integrated DLNA / UPnP discovery, mutual authentication, decryption, and Move.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>它的用户群非常具体</strong>：家里有老录像机、想把广播录制内容抢救到 PC 的人；以及研究 DLNA / DTCP-IP 实现细节的人。⭐⭐⭐⭐⭐ 这是一个「小众但真实存在、且会随设备老化而加速消失」的需求 —— README 把这层意思写了出来：<strong>「a foundation library for recovering broadcast recordings from aging recording devices and continuing to archive them as the industry as a whole declines」</strong>。</p>
+<h2 id="2026-11-16">为什么值得关注（2026-11-16）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本数据集至今为止「issue 内容质量最高」的一个样本 —— 9 个 open issue 全部是带具体型号的真机兼容性报告，而不是「装不上」或「求教程」。</strong></p>
+<p><strong>实测 9 个 open issue 的标题与作者：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>作者</th>
+<th>标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#10</td>
+<td><code>aoiro-labo</code></td>
+<td>Add: Panasonic のレコーダー用プロファイルを追加し、残りコピー回数を表示する</td>
+</tr>
+<tr>
+<td>#9</td>
+<td><code>aoiro-labo</code></td>
+<td>Support the Panasonic DIGA recorder family: remaining copy count and Move support</td>
+</tr>
+<tr>
+<td>#8</td>
+<td><code>aoiro-labo</code></td>
+<td>Compatibility report: TOSHIBA TVS REGZA 43M550M</td>
+</tr>
+<tr>
+<td>#7</td>
+<td><code>aoiro-labo</code></td>
+<td>Compatibility report: Panasonic DMR-BXT3000</td>
+</tr>
+<tr>
+<td>#6</td>
+<td><code>aoiro-labo</code></td>
+<td>Compatibility report: Panasonic DMR-BRX/BCX2060</td>
+</tr>
+<tr>
+<td>#4</td>
+<td><code>grfkrn</code></td>
+<td>Compatibility report: Buffalo nasne NS-N100</td>
+</tr>
+<tr>
+<td>#3</td>
+<td><code>junpeiT</code></td>
+<td>Compatibility report: SIE nasne CECH-ZNR1J</td>
+</tr>
+<tr>
+<td>#2</td>
+<td><code>tatsuya0902</code></td>
+<td>Compatibility report: SONY BDZ-ZW1500</td>
+</tr>
+<tr>
+<td>#1</td>
+<td><code>tt-s8</code></td>
+<td>Compatibility report: SHARP AQUOS BD-W2700</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>6 位不同的用户、8 个不同的设备型号 —— 这正是本日报自 11-12 起使用的判据（「issue 的存在说明项目正在被真实使用与质疑，这是正信号」）的最强形态。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>第二个值得记的点：<code>AGENTS.md</code> 的第一段就是否定式清单。</strong></p>
+<blockquote>
+<p>The project <strong>does not</strong> implement recorder scheduling, proprietary preparation for mobile downloads, remote access, Enhanced Full Authentication, PCP2, or a DTCP Source for playback distribution.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>第三个值得记的点：README 的「Supported devices」表用三档标注每一台机器的每一项能力</strong>，⭐⭐⭐⭐⭐ 并且对 nasne 明确降级：</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Discovery / recording listings</th>
+<th>Move</th>
+<th>Push dubbing reception</th>
+<th>Streaming</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toshiba REGZA 43Z570L</td>
+<td>Verified</td>
+<td>Verified</td>
+<td>Verified</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>Toshiba DBR-Z620</td>
+<td>Verified</td>
+<td>Verified</td>
+<td>Verified</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>SIE nasne</td>
+<td>Unverified (profile implemented)</td>
+<td>Unverified (profile implemented)</td>
+<td>Not applicable</td>
+<td>Unverified (profile implemented)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>A device profile (<code>sie_nasne</code>) for SIE nasne is also implemented, but its operation is unverified because no physical device is available.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>第四个值得记的点：它把「Move 会消耗源副本、且可能删除源录像」这类不可逆风险写成了 agent 也要遵守的硬约束：</strong></p>
+<blockquote>
+<p>For Move, persist the entire recording before sending FINALIZE. After a verified finalize response, commit the sink before sending COMPLETE. If the response is lost, retain the full data and resume state; <strong>the source may already have consumed a copy.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>而 README 还写明一个多数同类项目不会写的现实：「Even commercial recorders frequently encounter interoperability problems with each other.」</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p>⭐⭐⭐⭐⭐ <strong>真实且窄的需求驱动，不是尝鲜流量。</strong></p>
+<p>支持「真实」的一面：⭐⭐⭐⭐⭐ <strong>owner 账号创建于 2018-05-14，有 140 个公开仓库、462 followers</strong>；⭐⭐⭐⭐⭐ 9 个 open issue 来自 6 位不同用户的真机报告；⭐⭐⭐⭐⭐ 项目已发布到 PyPI 并有 <code>uv.lock</code>；⭐⭐⭐⭐⭐ CI 矩阵覆盖 3 个操作系统 × 3 个 Python 版本。</p>
+<p>⭐⭐⭐⭐⭐ <strong>fork 到达分布也支持这一点</strong>：⭐⭐⭐⭐⭐ 实测 5 个 fork 的到达间隔<strong>中位 15,971 秒（约 4.4 小时）</strong>、<strong>≤10 秒的 0 个</strong>、跨度 879.6 分钟 —— ⭐⭐⭐⭐⭐ <strong>按 11-15 建立的判据（「有人在替你制造分母」vs「成果确实可复制」），这是「关注是真的」的弱正证</strong>，⭐⭐⭐⭐⭐ 与同日 <code>HideKazekage/rob-run-cheat-tool</code>（76 个 fork，中位间隔 <strong>4 秒</strong>，62/75 个 ≤10 秒，跨度仅 10.2 分钟）形成极端对照。</p>
+<p>⭐⭐⭐⭐⭐ <strong>但热度规模必然有限</strong>：44⭐ 对应的是一个「家里有 REGZA 或 nasne 的小众用户群」，⭐⭐⭐⭐⭐ <strong>本项目不太可能成为大热门，它的价值在深度而非广度。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li><strong>纯 asyncio 库 + Pydantic 模型 + 类型安全事件</strong>：三个主类 <code>DLNAClient</code> / <code>DTCPClient</code> / <code>DubbingReceiver</code>，⭐⭐⭐⭐⭐ 接收侧通过 <code>on_event</code> 推送进度、<code>on_data</code> 回调施加背压。</li>
+<li><strong>SSDP 发现 + 目录浏览</strong>：⭐⭐⭐⭐⭐ 走 DLNA/UPnP 前置阶段获取设备与节目信息与拷贝控制信息（README 明写「recording listings and protection information are exchanged through DLNA / UPnP at the preceding stage」）。</li>
+<li><strong>完整 Move 生命周期</strong>：⭐⭐⭐⭐⭐ 互认 → 解密 → <code>FINALIZE</code> → <code>COMPLETE</code>，⭐⭐⭐⭐⭐ 且支持<strong>断线后只重做 finalize 而不重传数据</strong>（<code>resume</code>）。</li>
+<li><strong>作为 NAS 接收端（POST Move）</strong>：⭐⭐⭐⭐⭐ 让不支持流式推送、只能从设备菜单发起「送り出しダビング」的机型也能把录像推到 PC。</li>
+<li><strong>流式接收不消耗拷贝次数</strong>：⭐⭐⭐⭐⭐ 带背压控制，可直接管道给 FFplay 等工具。</li>
+<li><strong>设备 profile 树</strong>：⭐⭐⭐⭐⭐ <code>profiles/</code> 下 <code>base.py</code> / <code>generic.py</code> / <code>toshiba.py</code> / <code>toshiba_regza_tv.py</code> / <code>sie_nasne.py</code>，⭐⭐⭐⭐⭐ <strong>按最深匹配选择，同深度冲突视为测试失败</strong>。</li>
+<li><strong>隐私脱敏导出</strong>：<code>dump --mask-private</code> 把设备响应中的标识替换为文档值，⭐⭐⭐⭐⭐ <strong>「保留已知非敏感值、替换内嵌标识、抹掉其余一切（含未知元素、属性、CDATA、注释、URL 路径、header）」</strong>。</li>
+<li><strong>测试夹具用合成数据</strong>：⭐⭐⭐⭐⭐ <code>tests/fixtures/</code> 下两台设备的 <code>description.xml</code> / <code>recording.xml</code>，⭐⭐⭐⭐⭐ <code>AGENTS.md</code> 明写「The repository is public. Never include actual credentials, personal identifiers, recording content, raw device responses … Use sanitized synthetic fixtures.」</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td>库 + CLI，边界 = 「一个 DLNA/DTCP-IP 设备」与「一个本地 sink」；⭐⭐⭐⭐⭐ <strong>库不负责内容处理</strong>（<code>AGENTS.md</code>：Leave the handling of received content to the user）</td>
+<td><code>AGENTS.md</code> 的 Purpose 段 + 树结构（<code>pydtcpip/</code> 31 文件、<code>tests/</code> 17 文件）。⚠️ <strong>本日报未 clone、未安装、未连接任何设备</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>SSDP 发现 → 浏览目录取节目信息与拷贝控制 → （可选）AKE 互认 → 解密传输 → 落盘 → <code>FINALIZE</code> → <code>COMPLETE</code>；⭐⭐⭐⭐⭐ 另一条路径是设备发起 POST Move，本库作为 NAS 接收</td>
+<td>由 <code>AGENTS.md</code> 的 Transfer safety 段与 README 的 Main features 给出。⚠️ <strong>FINALIZE/COMPLETE 的确切时序本日报未逐行核对实现代码</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>①拷贝次数是不可逆资源 → 宁可在协议层也不消耗 → 提供不消耗次数的 <code>stream</code> 路径；②设备差异大 → 隔离成 profile 树而不是塞进核心；③「已实现」≠「已验证」→ 三档标注；④公开仓库 → 只放合成夹具，不放真实响应</td>
+<td>权衡 ①②③④均有 <code>AGENTS.md</code> / README 原文支撑。⭐⭐⭐ ⚠️ <strong>每个权衡的实际代价本日报未实测</strong>（未测吞吐、未测断线恢复、未测与真实设备的兼容性）</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>① <code>uv tool install pydtcpip</code>；② <code>pydtcpip discover</code> 列出局域网内的 DLNA 媒体服务器；③ <code>pydtcpip info</code> 读某台设备的一档节目信息；④ 在<strong>不消耗拷贝</strong>的前提下跑 <code>pydtcpip stream</code> 试一段；⑤ 若有真实设备，再对照 <code>AGENTS.md</code> 里 REGZA 43Z570L / DBR-Z620 的已知行为逐条核对</td>
+<td>PoC 范围由本档案的取证路径推导。⭐⭐⭐ ⚠️ <strong>本日报未执行任何一步</strong>（需要真实电视/录像机与凭据）；⭐⭐⭐ ⚠️ <strong>凭据必须自备</strong>（88 字节设备证书 + 20 字节每设备私钥，README 明写本包不提供）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>最值得抄的一条：把「实现状态」与「验证状态」做成两个正交字段。</strong></p>
+<p>本项目用 <code>Verified</code> / <code>Unverified (profile implemented)</code> / <code>Not applicable</code> 三档标注每一台设备的每一项能力，⭐⭐⭐⭐⭐ 并在只有实现、没有设备时明确写「operation is unverified because no physical device is available」。⭐⭐⭐⭐⭐ <strong>这与本数据集已记录的 <code>hikaku-extension</code>（<code>Sanity check, not a benchmark.</code>）、<code>ScanDot</code>（README 第二段声明手机端不做摄影测量）是同一条原则的不同实现 —— 但 pydtcpip 的版本更结构化，因为它要标注的是 3 台设备 × 4 项能力 = 12 个格子。</strong></p>
+<p>⭐⭐⭐⭐⭐ 第二条：<strong>「不可逆操作的顺序」应当被写成 agent 也要遵守的规则。</strong> ⭐⭐⭐⭐⭐ <code>AGENTS.md</code> 的 Transfer safety 段把「先落盘再 FINALIZE、收到确认再 commit sink」写成了硬约束，⭐⭐⭐⭐⭐ 并且承认了「源可能已经消耗了拷贝」这种无法回滚的状态。</p>
+<p>⭐⭐⭐⭐⭐ 第三条：<strong>「同深度冲突视为测试失败」是配置系统的一个好规则。</strong> ⭐⭐⭐⭐⭐ profile 树按最深匹配选择，同深度出现歧义直接判为失败 —— ⭐⭐⭐⭐⭐ 这把「配置选择错了」从运行期事故变成了测试期失败。</p>
+<p>⭐⭐⭐⭐⭐ 第四条：<strong>公开协议实现仓库应该用合成夹具。</strong> ⭐⭐⭐⭐⭐ <code>AGENTS.md</code> 明写不得把真实凭据、个人标识、录像内容、原始设备响应放进仓库，⭐⭐⭐⭐⭐ 且要求脱敏后的输出<strong>仍可作为测试夹具</strong> —— ⭐⭐⭐⭐⭐ 这是「可公开」与「可复现」两个目标同时达成的做法。</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图的结构取自 <code>AGENTS.md</code>、README 与仓库树；标「待核验」的节点是本日报未能独立验证的部分。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  subgraph Device["局域网设备"]
+    TV["电视 / 录像机<br/>REGZA 43Z570L · DBR-Z620<br/>nasne 无物理设备 未验证"]
+  end
+  subgraph Lib["pydtcpip 库"]
+    SSDP["ssdp.py<br/>SSDP 发现"]
+    DLNA["dlna/ browse + didl<br/>节目信息与拷贝控制"]
+    Prof["dlna/profiles/<br/>设备 profile 树<br/>最深匹配 · 同深度即失败"]
+    AKE["dtcp/ake.py<br/>互认"]
+    Move["dtcp/move.py<br/>解密传输 · FINALIZE · COMPLETE"]
+    PCP["dtcp/pcp.py<br/>拷贝次数"]
+    Sink["sinks.py<br/>write persist commit discard"]
+    Events["events.py<br/>on_event 进度 · on_data 背压"]
+    Dump["dump.py<br/>--mask-private 脱敏"]
+  end
+  Creds["用户自备凭据<br/>88B 设备证书 + 20B 每设备私钥<br/>本包不提供"] --> AKE
+  TV --> SSDP --> DLNA
+  Prof -. "厂商差异隔离" .-> DLNA
+  TV --> AKE --> Move
+  PCP --> Move
+  Move --> Sink --> Store[("用户自行处理内容<br/>库不负责内容")]
+  Events --> CLI["参考 CLI<br/>discover / info / move / resume<br/>receive / stream / dump"]
+  TV -. "设备发起 POST Move 需先认证" .-> Move
+  Sink --> Store
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>生产可用。</strong> ⭐⭐⭐⭐⭐ 理由：已发布到 PyPI、有版本号（v0.1.0）、有跨 3 平台 × 3 Python 版本的 CI、有 9 个来自真实用户的设备兼容性 issue、有独立于实现的 profile 抽象、有脱敏导出工具。</p>
+<p>⭐⭐⭐⭐⭐ <strong>它在本数据集里的位置很特殊：这是一个「协议实现」类项目 —— ⭐⭐⭐⭐⭐ 与 11-08 记录的 <code>impacket-rs</code>（74/74 协议覆盖）同类，但方向相反：⭐⭐⭐⭐⭐ impacket-rs 做的是「把断言做成可回归的计数」，⭐⭐⭐⭐⭐ pydtcpip 做的是「把不确定的设备兼容性做成三档状态表」。</strong>⭐⭐⭐⭐⭐ <strong>两者都在解决同一个问题：如何让「我支持什么」变成可核验的陈述。</strong></p>
+<p>⭐⭐⭐⭐⭐ 但它同时是<strong>边界项目</strong>：44⭐、1 个 release、v0.1.0、文档日英双语且以英语为主 —— <strong>它不会成为流行项目，但它对特定用户是刚需。</strong></p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ul>
+<li>⭐⭐⭐⭐⭐ <strong>「20 多年无开源实现」是项目自述</strong>，⭐⭐⭐ ⚠️ <strong>本日报未做独立文献核查</strong>，<strong>无法排除存在本日报未收录的实现</strong>。</li>
+<li>⭐⭐⭐⭐⭐ <strong>凭据必须自备且不可从包内获得</strong>（88 字节设备证书 + 20 字节每设备私钥）—— ⭐⭐⭐⭐⭐ 这既是合理的分发边界（README 明写「This package provides only the protocol implementation and does not include a device certificate or per-device private key」），⭐⭐⭐⭐⭐ <strong>也意味着普通用户无法开箱即用</strong>。</li>
+<li>⭐⭐⭐⭐⭐ <strong>Move 会消耗源副本、且在某些情况下删除源录像</strong> —— ⭐⭐⭐⭐⭐ 这是一个<strong>不可逆且有用户数据损失风险的操作</strong>，项目对此的处理是把风险写进文档与 agent 规则，⭐⭐⭐⭐⭐ 而不是提供安全模式。</li>
+<li>⭐⭐⭐⭐⭐ <strong>设备 profile 的覆盖面决定了实际可用性</strong>：⭐⭐⭐⭐⭐ 目前明确验证的是 2 台设备（REGZA 43Z570L / DBR-Z620），nasne 只有 profile；⭐⭐⭐⭐⭐ <strong>而 issue 里出现的另外 6 个型号（Panasonic DIGA / DMR-BXT3000 / DMR-BRX/BCX2060 / 43M550M / Buffalo nasne / SONY BDZ-ZW1500 / SHARP BD-W2700）都还没有验证状态</strong>。</li>
+<li>⭐⭐⭐⭐⭐ <strong>v0.1.0 + 1 个 release</strong>：⭐⭐⭐⭐⭐ API 稳定性无保证。</li>
+<li>⭐⭐⭐ ⚠️ <strong>未核验项</strong>：真实设备上的任何实际行为、PyPI 包内容与仓库的一致性、9 个 issue 的正文、<code>tests/fixtures/</code> 的内容、吞吐量与断线恢复表现。</li>
+</ul>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs 11-08 的 <code>impacket-rs</code></strong>：⭐⭐⭐⭐⭐ 两者都在「让支持范围可核验」，但一个用计数断言（74/74），一个用能力矩阵（三档状态）。⭐⭐⭐⭐⭐ <strong>pydtcpip 的方法更适合「能力按设备分叉」的场景。</strong></li>
+<li><strong>vs 11-12 的 <code>Kianuni/Erosion-CN</code></strong>：⭐⭐⭐⭐⭐ 同样是「把修改做成可回滚」，但 Erosion-CN 是<strong>写入前自动备份原值 + 一键回滚</strong>，⭐⭐⭐⭐⭐ pydtcpip 是<strong>在协议层就拒绝不可逆顺序</strong> —— 后者更保守，但要求客户端与设备配合。</li>
+<li><strong>vs 11-13 的 <code>open-orange</code></strong>：⭐⭐⭐⭐⭐ open-orange 把兼容度做成 34 个日期的逐日可 diff 结果，⭐⭐⭐⭐⭐ pydtcpip 把兼容度做成 issue 里的真机报告 —— ⭐⭐⭐⭐⭐ <strong>两种都是「用外部证据代替自述」，前者需要用户跑 conformance，后者需要用户有设备。</strong></li>
+<li><strong>vs <code>v2rayN</code> / <code>PattN</code> 等客户端</strong>：⭐⭐⭐⭐⭐ 那些是通用代理客户端；⭐⭐⭐⭐⭐ pydtcpip 面向的是<strong>广播录制的追放协议</strong>这一特定场景，⭐⭐⭐⭐⭐ 不重叠。</li>
+<li><strong>vs 本日同窗的 <code>Gemini-Config-Checker-</code> 族</strong>：⭐⭐⭐⭐⭐ 后者复刻了一个真实项目的代码并改许可换载荷，⭐⭐⭐⭐⭐ <strong>本项目的代码与许可都是自己的</strong> —— 同一天窗口内，两种「镜像」的对照极其清晰。</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，且建议相关用户直接采用。</strong></p>
+<p>具体建议：
+1. ⭐⭐⭐⭐⭐ <strong>有 REGZA / DBR / nasne 等设备的用户可直接安装试用</strong>（<code>uv tool install pydtcpip</code>），⭐⭐⭐⭐⭐ <strong>但必须先用 <code>stream</code> 路径，不要一上来就 <code>move</code></strong> —— 前者不消耗拷贝次数。
+2. ⭐⭐⭐⭐⭐ <strong>做协议实现类项目的人应抄它的三件事</strong>：能力矩阵的三档状态、profile 树 + 同深度歧义判失败、合成夹具 + 脱敏导出。
+3. ⭐⭐⭐⭐⭐ <strong>做 agent 协作类项目的人应抄它的 <code>AGENTS.md</code> 写法</strong>：把「不做什么」放在第一段，把「不可逆操作的顺序」写成硬约束。
+4. ⭐⭐⭐ 关注 issue 里的兼容性报告如何沉淀进 profile。</p>
+<h2 id="_11">后续观察点</h2>
+<ul>
+<li>兼容性 issue 是否被转成 <code>profiles/</code> 下的新 profile（目前 <code>aoiro-labo</code> 提的 Panasonic DIGA 支持是一个明确的候选）</li>
+<li>v0.1.0 之后是否发布 0.2.0，以及 API 是否有破坏性变更</li>
+<li>是否被主流 AOSP/DLNA 客户端集成（这是这类库最大的扩散路径）</li>
+<li><code>sie_nasne</code> profile 是否从「Unverified」变成「Verified」</li>
+<li><code>AGENTS.md</code> 里「Do not identify which firmware, devices or applications were analyzed」这类自我约束是否长期坚持（它对本项目的合规性至关重要）</li>
+</ul>
+<hr />
+<blockquote>
+<p>数据来源: GitHub API (2026-11-16) | Stars: 44 | Forks: 5 | Subscribers: 1 | Open Issues: 9 | License: MIT | 语言: Python | 创建: 2026-11-15T00:26:42Z | release v0.1.0 | owner 创建: 2018-05-14T14:43:38Z | fork 间隔中位 15971s ≤10s 0/5</p>
+</blockquote>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

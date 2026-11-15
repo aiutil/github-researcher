@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-11-16 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日重点趋势</h2>
+<h3 id="1-score-97">1️⃣ 投放体第一次被证明会「认领」一个真实上游（score 97）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日最硬的发现：<code>Gemini-Config-Checker-</code> 族的 21 个仓库不是空壳，也不是「上游清空后的镜像」，而是「上游健在时主动改许可、换载荷、批量复制 star 的镜像农场」。</strong></p>
+<p><strong>可核验事实一：上游真实存在，且规模比镜像更小。</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">⑂</th>
+<th style="text-align: right;">subs</th>
+<th style="text-align: right;">体积</th>
+<th style="text-align: right;">blobs</th>
+<th>许可</th>
+<th>创建 / 最后 push</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MatinSenPai/Gemini-Config-Checker</code>（上游）</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7,583 KB</td>
+<td style="text-align: right;"><strong>72</strong></td>
+<td><strong>MIT</strong></td>
+<td>2026-10-03T15:08:10Z / 2026-10-03T19:28:33Z</td>
+</tr>
+<tr>
+<td><code>WindGatorRise37/Gemini-Config-Checker-</code>（镜像之一）</td>
+<td style="text-align: right;"><strong>473</strong></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">181 KB</td>
+<td style="text-align: right;">53</td>
+<td><strong>Apache-2.0</strong></td>
+<td>2026-11-15T16:47:17Z / 2026-11-15T16:48:17Z</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>上游 owner <code>MatinSenPai</code> 账号创建于 2022-02-17，有 1,845 followers、7 个公开仓库，其中 <code>SenPaiScanner</code> 有 2,515⭐</strong> —— ⭐⭐⭐⭐⭐ 即<strong>上游是一个有真实历史的账号，而不是本日的空壳账号</strong>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>上游仓库的 <code>fork=false</code>、<code>parent=null</code>、<code>source=null</code></strong> —— ⭐⭐⭐⭐⭐ <strong>即上游本身是一个干净的首发仓库，镜像方是从它复制过去的。</strong></p>
+<p><strong>可核验事实二：代码是逐字节复制的，而且 GitHub 的 blob sha 完全相同。</strong></p>
+<p>本日报对 21 个镜像中的全部 21 个，逐个读取以下 7 个文件的内容并计算 md5：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th style="text-align: right;">覆盖仓库数</th>
+<th style="text-align: right;">不同 md5 数</th>
+<th>md5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>internal/scan/scan_test.go</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>7ea545e526dfbe237af5e3fc2ba556a7</code></td>
+</tr>
+<tr>
+<td><code>internal/scan/region.go</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>8652864523cda8abe5382d69f25ef7b6</code></td>
+</tr>
+<tr>
+<td><code>internal/ui/ui.go</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>01fc90c133c1fc3b794872b5cf6f6ac0</code></td>
+</tr>
+<tr>
+<td><code>dns_android.go</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>e4ef7c17d184fc8227ca074cf3ea7606</code></td>
+</tr>
+<tr>
+<td><code>Makefile</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>da949240efa4af91b34cc549ed40caa0</code></td>
+</tr>
+<tr>
+<td><code>go.mod</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>b64828afaf6cce9dfbd5db27ded7889c</code></td>
+</tr>
+<tr>
+<td><code>VERSION</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td><code>1347633cdf7cdcb2168d61093630d5ae</code></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>并且 GitHub 的 tree blob sha 也完全相同</strong>（实测 <code>TrooperFilter</code> / <code>TurtleReside</code> / <code>TypeTyrantScheme</code> 三个仓库）：</p>
+<p><code>Makefile                  → 88c61e0e666782968392de1f5c96a5c2cf43f0d6
+go.mod                    → 0985644d9817804ca6331193ff7a002ab859aeaf
+internal/scan/scan_test.go → 585365eec6394fc0d3e5f85815add761051ad664</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>这比 11-13 记录的 <code>AIRzZ90/study-materials-fork</code> 强得多 —— 那次的镜像是因为上游被作者亲手清空（<code>Minireel/HGhub</code> 只剩 1 个 blob），所以镜像方没有选择；⭐⭐⭐⭐⭐ 而本日的上游完好无损（72 blobs、144⭐、MIT、README 21,191 B），镜像方是有能力选择不镜像的。</strong></p>
+<p><strong>可核验事实三：许可被改掉了。</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>上游</th>
+<th>镜像</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LICENSE</code> 首行</td>
+<td><code>MIT License</code></td>
+<td><code>Apache License</code></td>
+</tr>
+<tr>
+<td><code>license.spdx_id</code></td>
+<td><strong>MIT</strong></td>
+<td><strong>Apache-2.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>即镜像方在复制代码的同时改写了许可声明 —— 而 README 里的「Credits and references」段落</strong>逐字保留了上游的归属<strong>（<code>This project exists because of other people's work. Please go and use and star them.</code> 与整张 9 行的 credits 表）。⭐⭐⭐⭐⭐ </strong>这构成本数据集里最锋利的一个矛盾：README 承认上游、许可却不是上游的。**</p>
+<p><strong>可核验事实四：载荷被换掉了。</strong></p>
+<ul>
+<li>上游 README（21,191 B）：<strong>实测无任何 Dropbox 链接</strong>；</li>
+<li>21 个镜像 README（20,846 B，md5 <code>9dca10b4fa20…</code>）：<strong>全部指向同一条链接</strong>
+  <code>https://www.dropbox.com/scl/fi/l80rdcm1o9gnqcpdsw1gi/GeminiConfigChecker.rar?rlkey=dv7oxsttd2j8kvr5zu7uyx1tm&amp;st=l2vaozdz&amp;dl=1</code></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>并且 21 个镜像的 README </strong>本身也逐字节相同<strong>（md5 完全一致），⭐⭐⭐⭐⭐ 这正是 11-15 记录的「md5 相同」判据 —— ⭐⭐⭐⭐⭐ </strong>但本日给出了它的新含义：md5 相同 + 上游健在 + 许可不同 + 载荷相同 = 未授权镜像农场，而不是空壳模板。**</p>
+<p><strong>可核验事实五：commit 历史是复制的。</strong></p>
+<p>实测 <code>TrooperFilter/Gemini-Config-Checker-</code> 与 <code>Visionbeyondtrack/Gemini-Config-Checker-</code>：</p>
+<ul>
+<li>两者均为 <strong>53 个 commit</strong>；</li>
+<li><strong>commit 消息序列逐条完全相同</strong>（<code>identical message sequence = True</code>）；</li>
+<li>消息形如 <code>Create main.go</code> / <code>Create internal/ui/ui.go</code> / <code>Create internal/ui/index.html</code> / <code>Create internal/scan/scan_test.go</code> / <code>Create internal/scan/region.go</code> / <code>Create internal/scan/profile.go</code>；</li>
+<li>⭐⭐⭐⭐⭐ <strong>时间戳序列不同</strong>（<code>identical timestamp sequence = False</code>）—— ⭐⭐⭐⭐⭐ <strong>即「逐条复制历史」比「复制字节」更进一步：连 commit 消息都复刻，只重放时间。</strong></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>本日报据此给出可直接执行的检测法：把同族仓库的 <code>git/trees</code> blob sha 逐个与上游比对 —— sha 相同即字节相同，无需下载内容。</strong></p>
+<h3 id="2-score-95">2️⃣ 判据升级：从「账号注册聚集度」到「账号 × 家族矩阵」（score 95）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本族的 21 个 owner 账号，实测注册窗口是 <code>2026-10-14T01:07:31Z</code> – <code>2026-10-14T03:02:24Z</code>，跨度 6,893 秒（1 小时 54 分 53 秒）。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>三个「整齐到不像真人」的同质性指标：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>followers</td>
+<td><strong>21 个账号全部为 0</strong></td>
+</tr>
+<tr>
+<td>公开仓库数</td>
+<td><strong>21 个账号全部恰好 12 个</strong></td>
+</tr>
+<tr>
+<td>注册窗口</td>
+<td>全部落在 1 小时 54 分 53 秒内</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>而最关键的一条是「账号 × 家族矩阵」—— 本日报逐个列出这 21 个账号的仓库构成：</strong></p>
+<table>
+<thead>
+<tr>
+<th>账号</th>
+<th>注册时间</th>
+<th style="text-align: right;">GitHub-Copilot-app</th>
+<th style="text-align: right;">ai--manus2.0</th>
+<th style="text-align: right;">Gemini-Config-Checker-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TypeTyrantScheme</code></td>
+<td>01:07:31Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>VortexHostFeel</code></td>
+<td>01:15:10Z</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>TurtleReside</code></td>
+<td>01:17:01Z</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>YellowLaborerMarket</code></td>
+<td>01:33:29Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>Visionbeyondtrack</code></td>
+<td>01:41:16Z</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WerewolfEmuHub</code></td>
+<td>01:51:34Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WireProvostPucker</code></td>
+<td>01:54:37Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WindGatorRise37</code></td>
+<td>02:04:33Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WingDataVacuum</code></td>
+<td>02:12:11Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>VisionWormStudio</code></td>
+<td>02:24:47Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>Watchlespeed</code></td>
+<td>02:26:22Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>weightcashiercupola</code></td>
+<td>02:29:57Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WyrmClimberManacle</code></td>
+<td>02:37:23Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>weldbladesmithwharf</code></td>
+<td>02:41:53Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WharfBoulderColander</code></td>
+<td>02:43:32Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WindowStaffGate11</code></td>
+<td>02:49:18Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>TrooperFilter</code></td>
+<td>02:53:02Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WestLocksmithSpout</code></td>
+<td>02:57:32Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>WinnerSpecialist</code></td>
+<td>02:59:51Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>Violetnyudress</code></td>
+<td>03:02:13Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td><code>wisemeadowlarkspike</code></td>
+<td>03:02:24Z</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>这张矩阵直接闭合了 11-13 / 11-14 / 11-15 三天的线索：</strong></p>
+<ul>
+<li>11-13 记录的 <code>GitHub-Copilot-app</code> 族（61 个同 md5 副本）、<code>ai--manus2.0</code> 族（114 个）、<code>IPTV_Player_2.0</code> 族（111 个）；</li>
+<li>11-14 记录的 owner 账号创建窗口 <code>2026-10-14T00:43Z–03:03Z</code>（约 2 小时 20 分，468 个账号）；</li>
+<li>⭐⭐⭐⭐⭐ <strong>本日的 <code>Gemini-Config-Checker-</code> 族（21 个）—— 注册窗口 <code>01:07:31Z–03:02:24Z</code> 完全落在 11-14 记录的窗口内部。</strong></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>即：同一批账号，在 11-14 投放两个家族，在 11-15 投放第三个家族，且每个账号每个家族各持 9–10 个副本 + 1 个当前主仓库 + 1 个随机名占位仓库 = 恰好 12 个。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>判据因此升级：</strong></p>
+<blockquote>
+<p>❌ 旧：「这些账号是否在同一时间窗口注册？」（受账号闲置时间影响，11-12 已证伪「账号当天新建」）
+✅ 新：<strong>「同一个账号是否在多个家族里各持 9–10 个副本？」</strong> —— 这个特征<strong>不受命名词根相似性影响</strong>（<code>Gemini-Config-Checker-</code> / <code>GitHub-Copilot-app</code> / <code>ai--manus2.0</code> 三个词根毫无关系），<strong>也不受账号年龄影响</strong>，且可用 <code>users/{owner}/repos</code> 一次请求取全。</p>
+</blockquote>
+<h3 id="3-release-score-93">3️⃣ 「release 数量 / 版本号」可以同时被凭空制造（score 93）</h3>
+<p>⭐⭐⭐⭐⭐ <code>atlas7283/steam-library-bridge</code>（176⭐ · ⑂0 · <strong>subs 19</strong> · oi 0 · 572 blobs · JavaScript · MIT · <strong>1 个 commit</strong>）：</p>
+<p><strong>实测 release 时间线：</strong></p>
+<table>
+<thead>
+<tr>
+<th>tag</th>
+<th>created</th>
+<th>published</th>
+<th style="text-align: right;">assets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v1.2.8</code></td>
+<td>2026-11-15T21:11:41Z</td>
+<td>2026-11-15T21:11:48Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>v2.3.2</code></td>
+<td>2026-11-15T21:11:41Z</td>
+<td>2026-11-15T21:11:54Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>v3.1.6</code></td>
+<td>2026-11-15T21:11:41Z</td>
+<td>2026-11-15T21:11:59Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>v4.4.2</code></td>
+<td>2026-11-15T21:11:41Z</td>
+<td>2026-11-15T21:12:02Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>四个 release 的 <code>created_at</code> 完全相同（21:11:41Z，即那唯一一次 commit 的时间），<code>published_at</code> 依次是 +7s / +13s / +18s / +21s。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而四个版本号 <code>1.2.8 / 2.3.2 / 3.1.6 / 4.4.2</code> 的次版本号互不相同，且与代码里任何东西都不对应。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>账号侧证据同样整齐：</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner <code>atlas7283</code> 账号创建</td>
+<td><strong>2026-11-03T17:05:45Z</strong>（距仓库创建仅 <strong>12 天</strong>）</td>
+</tr>
+<tr>
+<td>followers</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>公开仓库数</td>
+<td><strong>1</strong>（就是这一个）</td>
+</tr>
+<tr>
+<td>仓库 <code>size</code> 字段</td>
+<td><strong>0 KB</strong></td>
+</tr>
+<tr>
+<td>树内最大 blob</td>
+<td><code>resources/app/steam/ngl.bundle.js</code> 1,543,299 B</td>
+</tr>
+<tr>
+<td>树内 <code>.exe</code></td>
+<td><code>Steam-Library-Bridge.exe</code> <strong>1,050,048 B</strong></td>
+</tr>
+<tr>
+<td><code>third_party/</code></td>
+<td><strong>312 个 blob</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>注意「<code>size</code> 字段 = 0 KB 但树内有 1.05 MB 的 <code>.exe</code>」这一矛盾 —— ⭐⭐⭐⭐⭐ 这说明 GitHub 的 <code>size</code> 字段与实际树内容可以严重脱节（该仓库很可能是通过 API 建仓后一次性推入树）。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>结论：「有 4 个 release、版本号到 v4.4.2」不是发布历史的证据。要成立必须同时核对：①release 资产是否随版本变化；②tag 指向的 commit 是否不同；③代码是否真的演进。本日报只核对了 ①的前置条件（4 个 release 共 8 个 asset）与 ③的反例（只有 1 个 commit）。</strong></p>
+<h3 id="4-score-92">4️⃣ 三个真项目：三种不同的诚实边界（score 92）</h3>
+<p>⭐⭐⭐⭐⭐ <code>tsukumijima/pydtcpip</code>（44⭐ · ⑂5 · subs 1 · <strong>oi 9</strong> · 57 blobs · 258 KB · Python · MIT · v0.1.0 · <strong>owner 创建于 2018-05-14，140 个公开仓库，462 followers</strong>）<strong>的 <code>AGENTS.md</code> 第一段就把「不做什么」列成清单：</strong></p>
+<blockquote>
+<p>The project does not implement recorder scheduling, proprietary preparation for mobile downloads, remote access, Enhanced Full Authentication, PCP2, or a DTCP Source for playback distribution.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>而 9 个 open issue </strong>全部是来自 6 位不同用户的真机兼容性报告<strong>（<code>aoiro-labo</code> × 4 条含 Panasonic DIGA / TOSHIBA REGZA 43M550M / Panasonic DMR-BXT3000 / Buffalo nasne NS-N100、<code>junpeiT</code> × 1 条 SIE nasne、<code>tatsuya0902</code> × 1 条 SONY BDZ-ZW1500、<code>grfkrn</code> × 1 条、<code>tt-s8</code> × 1 条 SHARP AQUOS BD-W2700）—— ⭐⭐⭐⭐⭐ </strong>这是本数据集里 issue 最「有内容」的一次：每一条都是一份带型号的设备兼容性报告，而不是「装不上」或「求教程」。**</p>
+<p>⭐⭐⭐⭐⭐ 它的 README 的「Supported devices」表用 <code>Verified</code> / <code>Unverified (profile implemented)</code> / <code>Not applicable</code> 三档标注每台机器的每个能力，⭐⭐⭐⭐⭐ <strong>并且对 nasne 明写「a device profile is also implemented, but its operation is unverified because no physical device is available」</strong> —— ⭐⭐⭐⭐⭐ <strong>即「实现了 profile」与「验证过」被分成两个字段。</strong></p>
+<p>⭐⭐⭐⭐⭐ <code>petekp/coordinator</code>（34⭐ · ⑂3 · oi 1 · 26 commits · 49 blobs · 894 KB · Python · MIT · v0.2.0 · owner 2011 年创建、82 repos）<strong>把「token 预算」做成一个可被 pre-commit hook 读取的文件 <code>.token-ceilings</code>：</strong></p>
+<p><code>herdr/RECIPE.md 6500
+herdr/mods/coordinator-agents/main.js 9000
+herdr/mods/coordinator-spaces/main.js 7500</code></p>
+<p>⭐⭐⭐⭐⭐ <strong>文件头注释写明规则：「Files allowed over the 5,000-token limit (tokens = bytes / 4), each with the most tokens it may hold. One "path ceiling" entry per line. The pre-commit hook reads this file.」</strong> —— ⭐⭐⭐⭐⭐ <strong>即「不许让单个文件膨胀到撑爆上下文」这条纪律，被做成了一个机器可校验的清单，而不是一句建议。</strong></p>
+<p>⭐⭐⭐⭐⭐ <code>cnrad/interspace</code>（131⭐ · ⑂7 · oi 2 · 33 blobs · 17,768 KB · Swift · <strong>LICENSE 首行 <code>MIT License</code> / <code>Copyright (c) 2026 cnrad</code>，但 <code>license.spdx_id = NOASSERTION</code></strong>）<strong>在 README 里写明自更新的行为边界：</strong></p>
+<blockquote>
+<p>Interspace installs a download only if it has the same signature as the releases of this project and a newer version. <strong>If not, it changes nothing.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>而它的 Permissions 表把两个系统权限的用途逐条对应（Accessibility / Screen &amp; System Audio Recording），并写明「Until both are allowed, Interspace does nothing and the normal macOS swipe works as before.」</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>三者共性：边界被写在了会被机器读到的地方 —— <code>AGENTS.md</code> / <code>.token-ceilings</code> / README 的签名校验条款。</strong></p>
+<h3 id="5-score-89">5️⃣ 许可判据：从字段转向文件内容 + 第三方声明（score 89）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日两例并置，把「许可」这条判据撑开了：</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th><code>license.spdx_id</code></th>
+<th>LICENSE 文件实际内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cnrad/interspace</code></td>
+<td><strong>NOASSERTION</strong></td>
+<td><code>MIT License</code> / <code>Copyright (c) 2026 cnrad</code></td>
+</tr>
+<tr>
+<td><code>lishuangqiang/mixbar</code></td>
+<td>MIT</td>
+<td>MIT + <strong><code>THIRD_PARTY_NOTICES.md</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>mixbar 的 <code>THIRD_PARTY_NOTICES.md</code> 是本数据集里第一次见到「把借用的具体代码精确到 commit hash」的写法：</strong></p>
+<blockquote>
+<h2 id="macmixer">MacMixer</h2>
+<ul>
+<li>项目：https://github.com/burghr/MacMixer</li>
+<li>参考提交：<strong><code>3b2c69015949786b02462281420bb6eb75488434</code></strong></li>
+<li>引用范围：<strong><code>CoreAudioSupport.swift</code> 中的 Core Audio 属性读取、设备枚举和应用进程识别辅助逻辑。Mixbar 对其作了适配。</strong></li>
+<li>原始作者：burghr</li>
+</ul>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>这份声明把「借了什么」「从哪个版本借的」「改了哪一块」三件事全部写死 —— ⭐⭐⭐⭐⭐ 这与 11-15 记录的 <code>kraken-mount</code>（「不自行构建 ampr-emu-ng，而是拉官方 release 并校验 <code>SHA256SUMS</code>」）是同一条线索，但更细：kraken-mount 写的是</strong>二进制<strong>的校验，mixbar 写的是</strong>源码<strong>的溯源。</strong></p>
+<p>⭐⭐⭐⭐⭐ 而 <code>rauchg/winamp-ui-sdk</code>（42⭐ · owner <code>rauchg</code> 是 Vercel CEO，账号 2008 年创建、17,558 followers、145 repos）<strong>的源码分层很清楚</strong>：4 个 Winamp 组件（<code>winamp-window.ts</code> / <code>lcd-renderer.ts</code> / <code>skin-chassis.ts</code> / <code>audio-engine.ts</code>）+ <code>main.ts</code> 58,764 B，⭐⭐⭐⭐⭐ <strong>但 5 个 mp3 音轨共占 15,373,046 B —— 即 98% 的仓库体积是音频而非代码。</strong></p>
+<hr />
+<h2 id="_2">最值得关注的方向</h2>
+<p>⭐⭐⭐⭐⭐ <strong>方向一：镜像检测从「上游是否清空」转向「blob sha 是否相同」。</strong>
+11-13 记录的 <code>AIRzZ90/study-materials-fork</code> 之所以难判，是因为上游被作者亲手清空了历史，镜像方是被迫的；⭐⭐⭐⭐⭐ 本日的 <code>Gemini-Config-Checker-</code> 族不同 —— <strong>上游 <code>MatinSenPai/Gemini-Config-Checker</code> 完好无损（72 blobs、144⭐、MIT、2026-10-03 创建），镜像方在 11-15 主动选择复制 21 份、改许可、换载荷。</strong>⭐⭐⭐⭐⭐ <strong>检测法也随之变得便宜：不需要下载任何内容，只要把同族仓库 <code>git/trees</code> 的 blob sha 与上游逐一比对即可。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向二：同一账号矩阵可以同时承载多个家族，这是比「命名词根」更硬的判据。</strong>
+<code>Gemini-Config-Checker-</code> / <code>GitHub-Copilot-app</code> / <code>ai--manus2.0</code> 三个家族名毫无词法关系，⭐⭐⭐⭐⭐ 但它们共用同一批账号、共用同一个「每家族 9–10 个副本 + 1 个主仓库 + 1 个随机名占位 = 恰好 12」的结构。⭐⭐⭐⭐⭐ <strong>这提示：追踪投放体时，应当把「账号 → 仓库列表」作为一等公民，而不是把仓库名当作主要线索。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向三：「发布历史」需要降级为「可核验的发布证据」。</strong>
+本日两个样本（21 个镜像复刻 53 条 commit 消息；1 个 commit 后 7 秒内发 4 个语义无关的 release）说明：⭐⭐⭐⭐⭐ <strong>commit 数、release 数、版本号这三个字段都可以脱离代码演进独立存在。</strong>⭐⭐⭐⭐⭐ 真正有信息量的是「tag 指向的 commit 是否不同」「release 资产是否随版本变化」「代码是否在版本之间发生过实质改动」。</p>
+<p>⭐⭐⭐⭐⭐ <strong>方向四：诚实边界的三种落点已经形成模式。</strong>
+<code>AGENTS.md</code> 的「不做什么」清单（pydtcpip）、<code>pre-commit</code> 可读的 token 预算（coordinator）、README 的签名校验条款（interspace）—— ⭐⭐⭐⭐⭐ <strong>三者都是把纪律做进机器能读到的地方，而不是写进散文。</strong></p>
+<hr />
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="windgatorrise37gemini-config-checker-">🥇 <code>WindGatorRise37/Gemini-Config-Checker-</code> — 认领上游的镜像农场</h3>
+<p><strong>可核验事实（2026-11-16 CST 快照，2026-11-15T22:00Z–22:40Z 窗口）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / issues</td>
+<td><strong>473</strong> / 0 / 3 / 0</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-15T16:47:17Z / 2026-11-15T16:48:17Z</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>181 KB / 53</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>Go（部分记为 Makefile）/ <strong>Apache-2.0</strong> / 无</td>
+</tr>
+<tr>
+<td>README</td>
+<td>20,846 B，md5 <code>9dca10b4fa2096be…</code>（<strong>21 个副本完全相同</strong>）</td>
+</tr>
+<tr>
+<td>commit</td>
+<td>53 个，消息序列与同族逐条相同，时间戳各异</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>User <code>WindGatorRise37</code>，账号 <strong>2026-10-14T02:04:33Z</strong> 创建，<strong>0 followers</strong>，<strong>恰好 12 个公开仓库</strong></td>
+</tr>
+<tr>
+<td>同族副本</td>
+<td><strong>21 个</strong>，全部 473⭐（<strong>distinct star 取值 = 1</strong>）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>最有价值的取证（本日报逐仓库执行）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>探针</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>internal/scan/scan_test.go</code> md5</td>
+<td>21/21 仓库 <strong>同一值</strong> <code>7ea545e5…</code></td>
+</tr>
+<tr>
+<td><code>internal/scan/region.go</code> md5</td>
+<td>21/21 仓库 <strong>同一值</strong> <code>86528645…</code></td>
+</tr>
+<tr>
+<td><code>internal/ui/ui.go</code> md5</td>
+<td>21/21 仓库 <strong>同一值</strong> <code>01fc90c1…</code></td>
+</tr>
+<tr>
+<td><code>dns_android.go</code> md5</td>
+<td>21/21 仓库 <strong>同一值</strong> <code>e4ef7c17…</code></td>
+</tr>
+<tr>
+<td><code>Makefile</code> / <code>go.mod</code> / <code>VERSION</code> md5</td>
+<td>21/21 各 <strong>同一值</strong></td>
+</tr>
+<tr>
+<td>GitHub tree blob sha</td>
+<td><code>Makefile</code> = <code>88c61e0e…</code>、<code>go.mod</code> = <code>0985644d…</code>、<code>scan_test.go</code> = <code>585365ee…</code>（<strong>三个仓库抽样完全一致</strong>）</td>
+</tr>
+<tr>
+<td>Dropbox 链接</td>
+<td>21/21 <strong>完全相同</strong>：<code>…/GeminiConfigChecker.rar?rlkey=dv7oxsttd2j8kvr5zu7uyx1tm</code></td>
+</tr>
+<tr>
+<td>上游 <code>MatinSenPai/Gemini-Config-Checker</code></td>
+<td><strong>健在</strong>：144⭐ · ⑂7 · MIT · 72 blobs · 2026-10-03 创建</td>
+</tr>
+<tr>
+<td>上游 README</td>
+<td>21,191 B，md5 <code>7069e9e5e09e…</code>，<strong>无 Dropbox 链接</strong></td>
+</tr>
+<tr>
+<td>许可差异</td>
+<td>上游 <code>LICENSE</code> 首行 <code>MIT License</code>；镜像首行 <code>Apache License</code></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它与 11-13 记录的 <code>AIRzZ90/study-materials-fork</code> 的关键区别正是「上游健在」这一条：⭐⭐⭐⭐⭐ 那次的 LICENSE 里还留着上游的 copyright（<code>Required Notice: Copyright (c) 2026 HGhub contributors</code>）而上游已清空；⭐⭐⭐⭐⭐ 本次镜像的 README </strong>逐字保留了上游的 credits 表<strong>（<code>Please go and use and star them.</code> + 9 行归属表），⭐⭐⭐⭐⭐ </strong>但许可换成了 Apache-2.0。**</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未下载、未执行、未运行任何被投放的载荷</strong>；对 Dropbox 链接<strong>只提取 URL 字符串，未发起任何请求</strong>。
+- ⭐⭐⭐ ⚠️ <strong>未逐个核验 21 个仓库的全部 53 个 blob</strong>，只对 7 个代表性文件做了全量 21 仓库 md5 比对；<strong>未做上游 ↔ 镜像的完整文件级 diff</strong>（上游 72 blobs vs 镜像 53 blobs，<strong>目录不完全一致</strong>，差异部分未核验）。
+- ⭐⭐⭐ ⚠️ 「镜像方未经授权」是<strong>推断</strong> —— 本日报<strong>未取得上游作者的任何授权状态证明</strong>，也未核验镜像方与上游作者之间是否存在私下协议。⭐⭐⭐ <strong>可核验的只是：字节相同、commit 消息相同、许可不同、载荷不同。</strong>
+- ⭐⭐⭐ ⚠️ <strong>star 增速未做统计</strong>（<code>stargazers</code> 端点此前返回 404），故 473⭐ 为快照绝对值；<strong>不主张「21 个仓库的 star 是刷的」这一结论</strong> —— 只记录「21 个副本的 star 取值完全相同且上游只有 144⭐」这一事实。
+- ⭐⭐⭐ ⚠️ <code>license.spdx_id</code> 的 Apache-2.0 是 GitHub 对该 LICENSE 文件的归类结果，<strong>本日报未逐字审阅镜像的 LICENSE 全文</strong>（只取了首行）。</p>
+<hr />
+<h3 id="tsukumijimapydtcpip-agentsmd">🥈 <code>tsukumijima/pydtcpip</code> — 把「我们从未实现过」写进 AGENTS.md</h3>
+<p><strong>可核验事实（2026-11-16 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / <strong>issues</strong></td>
+<td>44 / 5 / 1 / <strong>9</strong></td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-15T00:26:42Z / 2026-11-15T17:52:39Z</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>258 KB / 57（31 个 <code>pydtcpip/</code> + 17 个 <code>tests/</code> + 2 个工作流 + 5 个文档）</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>Python / MIT / <code>v0.1.0</code>（2026-11-15T00:50:53Z）</td>
+</tr>
+<tr>
+<td>分发</td>
+<td>PyPI（<code>pypi.org/project/pydtcpip/</code>）+ <code>uv.lock</code></td>
+</tr>
+<tr>
+<td>CI</td>
+<td><code>.github/workflows/ci.yml</code>：矩阵 <code>ubuntu/macos/windows</code> × <code>Python 3.13/3.14/3.15</code></td>
+</tr>
+<tr>
+<td>发布</td>
+<td><code>.github/workflows/deploy.yml</code>：tag <code>v*</code> 触发 → <code>pipx run build</code> → 发布到 PyPI</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>User <code>tsukumijima</code>，账号 <strong>2018-05-14</strong> 创建，<strong>140 个公开仓库，462 followers</strong></td>
+</tr>
+<tr>
+<td>fork 到达分布</td>
+<td>n=5，中位间隔 <strong>15,971 秒</strong>（4.4 小时），≤10 秒 <strong>0</strong> 个，跨度 879.6 分钟</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong><code>AGENTS.md</code> 的「Purpose and scope」段第一句就是否定式清单：</strong></p>
+<blockquote>
+<p>The project does <strong>not</strong> implement recorder scheduling, proprietary preparation for mobile downloads, remote access, Enhanced Full Authentication, PCP2, or a DTCP Source for playback distribution.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>「Transfer safety」段把不可逆操作的顺序写成了硬约束：</strong></p>
+<blockquote>
+<p>For Move, persist the entire recording before sending FINALIZE. After a verified finalize response, commit the sink before sending COMPLETE. If the response is lost, retain the full data and resume state; <strong>the source may already have consumed a copy.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>「Device compatibility」段甚至把「同深度匹配视为测试失败」写成了规则：「Profiles form a tree rooted in generic DLNA, inherit unspecified behavior, and select the deepest match. … Treat ties at the same depth as test failures.」</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>而 <code>README</code> 的「Supported devices」表用三档标注（<code>Verified</code> / <code>Unverified (profile implemented)</code> / <code>Not applicable</code>），并明写 nasne「profile implemented, but its operation is unverified because no physical device is available」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>9 个 open issue 全部是带型号的兼容性报告</strong>（Panasonic DIGA / TOSHIBA REGZA 43M550M / DMR-BXT3000 / DMR-BRX/BCX2060 / Buffalo nasne NS-N100 / SIE nasne CECH-ZNR1J / SONY BDZ-ZW1500 / SHARP AQUOS BD-W2700）—— ⭐⭐⭐⭐⭐ <strong>按本日报自 11-12 起的判据（issue 是真实使用信号），这是本数据集里 issue 内容质量最高的一次。</strong></p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未 clone、未安装、未运行、未连接任何真实设备。</strong> <code>pydtcpip</code> 的全部功能描述来自 README 与 <code>AGENTS.md</code>。
+- ⭐⭐⭐ ⚠️ <strong>未核验 PyPI 上的包内容与仓库是否一致</strong>（<code>pypi.org/project/pydtcpip/</code> 未访问）。
+- ⭐⭐⭐ ⚠️ <strong>9 个 issue 未逐条打开阅读</strong>，仅读取了标题与作者；「都是真机兼容性报告」是<strong>基于标题的判断</strong>，未核实正文。
+- ⭐⭐⭐ ⚠️ <code>tests/</code> 下的 6 个 fixture 目录（<code>tests/fixtures/toshiba/dbr-z620/</code>、<code>toshiba_regza_tv/43z570l/</code>）<strong>未打开</strong>；「测试使用合成夹具」是 <code>AGENTS.md</code> 的自述。
+- ⭐⭐⭐ ⚠️ 「20 多年来无开源实现」是 README 的引述，<strong>本日报未做独立文献核查</strong>。
+- ⭐⭐⭐ ⚠️ 该仓库<strong>为本日的 fork/star 比最低者之一</strong>（11.6%），fork 到达分布极慢（0/5 个 ≤10 秒）—— 按 11-15 建立的判据，这是<strong>「关注是真的」的弱正证</strong>。</p>
+<hr />
+<h3 id="petekpcoordinator-token-pre-commit">🥉 <code>petekp/coordinator</code> — 把 token 预算做成 pre-commit 可读文件</h3>
+<p><strong>可核验事实（2026-11-16 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / issues</td>
+<td>34 / 3 / 0 / 1</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-15T00:00:02Z / 2026-11-15T21:55:49Z</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>894 KB / 49（<code>skills/</code> 28 + <code>herdr/</code> 14 + 5 个文档）</td>
+</tr>
+<tr>
+<td>语言 / 许可 / release</td>
+<td>Python / MIT / <code>v0.2.0</code>（2026-11-15T08:42:58Z），另有 tag <code>v0.1.0</code></td>
+</tr>
+<tr>
+<td>owner</td>
+<td>User <code>petekp</code>，账号 <strong>2011-08-01</strong> 创建，<strong>82 个公开仓库，72 followers</strong></td>
+</tr>
+<tr>
+<td>commit</td>
+<td>26 个，消息形如 <code>Herdr sidebar layout for the coordinator workflow (#1)</code> / <code>The update check runs at the watcher's first wake-up ea…</code></td>
+</tr>
+<tr>
+<td>fork 到达分布</td>
+<td>n=3，中位间隔 <strong>31,252 秒</strong>（8.7 小时），≤10 秒 <strong>0</strong> 个</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它的核心结构是「一份 Markdown backlog 就是全部状态」：</strong></p>
+<blockquote>
+<p>The coordinator is a Claude Code session you start with <code>/coordinator &lt;domain or project&gt;</code>. It owns one domain and keeps its state in a Markdown <strong>backlog</strong> file: what the domain covers, what you approved for good, what is open, and what is done. <strong>The backlog is what survives a restart.</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>每个 delegate 拿到独立的 Git worktree、独立的 tab、一份写明「什么算做完、在哪停」的 brief，完成时写 <code>REPORT.md</code>。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong><code>.token-ceilings</code>（490 B）的实测内容：</strong></p>
+<p>```</p>
+<h1 id="files-allowed-over-the-5000-token-limit-tokens-bytes-4-each-with-the">Files allowed over the 5,000-token limit (tokens = bytes / 4), each with the</h1>
+<h1 id="most-tokens-it-may-hold-one-path-ceiling-entry-per-line-the-pre-commit">most tokens it may hold. One "path ceiling" entry per line. The pre-commit</h1>
+<h1 id="hook-reads-this-file">hook reads this file.</h1>
+<h1 id="_3"></h1>
+<h1 id="herdrs-layout-gallery-reads-one-recipemd-per-layout">Herdr's layout gallery reads one RECIPE.md per layout.</h1>
+<p>herdr/RECIPE.md 6500</p>
+<h1 id="single-file-clones-of-herdrs-shipped-agents-and-spaces-mods-kept-in-the">Single-file clones of Herdr's shipped agents and spaces mods, kept in the</h1>
+<h1 id="shipped-shape-so-each-can-be-compared-with-a-newer-herdr-release">shipped shape so each can be compared with a newer Herdr release.</h1>
+<p>herdr/mods/coordinator-agents/main.js 9000
+herdr/mods/coordinator-spaces/main.js 7500
+```</p>
+<p>⭐⭐⭐⭐⭐ <strong>即「别让单个文件膨胀到撑爆上下文」这条纪律被编码成了一个可校验的清单 + 一个 pre-commit hook。</strong> ⭐⭐⭐⭐⭐ 这与本数据集已记录的 <code>mate</code>（每条 demo 回复带 <code>[demo]</code> 标签）、<code>impacket-rs</code>（<code>T!error</code> 类型）、<code>solana-vigil</code>（<code>unknown</code> 枚举）是同一条原则的不同层次。</p>
+<p>⭐⭐⭐⭐⭐ <strong>它的「决策权限」也被写成了显式规则：</strong></p>
+<blockquote>
+<p>The coordinator decides small, reversible things on its own and says what it chose. It asks you when the answer changes what gets built, costs time or money, reaches other people, or is a matter of taste. <strong>Questions arrive in batches of at most five, each with its options and a recommendation.</strong></p>
+</blockquote>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未安装、未运行、未启动任何 Claude Code / Herdr 会话。</strong> <code>.token-ceilings</code> 提到的 pre-commit hook <strong>本日报未打开核验</strong>（该文件在仓库树中，但 hook 本体是否存在于 <code>.git/hooks/</code> 无法从 API 确认）。
+- ⭐⭐⭐ ⚠️ <code>skills/coordinator/SKILL.md</code> 17,700 B <strong>未通读</strong>，只读了前 18 行。
+- ⭐⭐⭐ ⚠️ README 声明的测试环境（<code>herdr-core 0.1.21</code> / <code>Herdr app 0.1.15</code> / <code>Claude Code 2.1.325</code> / <code>Codex 0.164.0</code>）<strong>本日报未核验</strong>，也没有对应的 CI 工作流（该仓库无 <code>.github/workflows/</code>）。
+- ⭐⭐⭐ ⚠️ 「up to three others work in parallel」这一并发上限<strong>本日报未实测</strong>。</p>
+<hr />
+<h2 id="_4">风险与机遇</h2>
+<p><strong>⭐⭐⭐⭐⭐ 风险一：投放体开始「认领」上游，镜像的授权状态成为新的攻击面。</strong>
+本日 21 个镜像在 README 里逐字保留上游的 credits 表，却把 <code>LICENSE</code> 从 MIT 换成 Apache-2.0，并把唯一的下载入口换成一条 Dropbox 链接。⭐⭐⭐⭐⭐ <strong>后果是：上游作者的名誉与 star 被搬运，而用户的下载行为被导向投放者控制的地址。</strong>⭐⭐⭐⭐⭐ <strong>这类形态用「仓库是否为空壳」完全查不出来 —— 镜像仓有 53 个真实 Go 文件、53 个 commit、Apache-2.0 许可。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险二：账号矩阵提示投放基础设施已是「多家族并行」。</strong>
+本日实测同一个账号在 3 个家族里各持 9–10 个副本 + 主仓库 + 占位仓库，⭐⭐⭐⭐⭐ <strong>即投放方同时运营多条产品线，每条线用不同的名字和不同的诱饵。</strong>⭐⭐⭐⭐⭐ 这意味着<strong>逐日单窗口的观察会系统性低估投放规模</strong>，⭐⭐⭐⭐⭐ 而「把 owner 账号作为追踪主键」能一次性看到全部家族。</p>
+<p><strong>⭐⭐⭐⭐⭐ 风险三：<code>steam-library-bridge</code> 的 release 结构是「用版本号伪造历史」的新样本。</strong>
+4 个 release、8 个 asset、版本号从 1.2.8 一路到 4.4.2，⭐⭐⭐⭐⭐ 但只有 1 个 commit。⭐⭐⭐⭐⭐ <strong>用户看到「更新到 v4.4.2」会默认认为经历了 4 次迭代。</strong>⭐⭐⭐⭐⭐ 同时注意它的 <code>subs 19</code> 相对 176⭐ 是<strong>本日真项目里最高的 subs/star 比之一</strong>，⭐⭐⭐⭐⭐ 而它的账号只有 12 天、0 followers —— ⭐⭐⭐⭐⭐ <strong>这说明「subs 高」在本日再次不是「关注真实」的证据（与 11-15 记录的一致）。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险四：许可判据本身需要修正。</strong>
+<code>interspace</code> 的 <code>license.spdx_id</code> 是 <code>NOASSERTION</code>，但 LICENSE 文件明确写着 MIT；⭐⭐⭐⭐⭐ <strong>若只按 <code>spdx_id</code> 判「无许可」，会误判。</strong>⭐⭐⭐⭐⭐ 反过来，<code>Gemini-Config-Checker-</code> 的 <code>spdx_id</code> 是 Apache-2.0，⭐⭐⭐⭐⭐ <strong>但它是从 MIT 上游复制后改写的 —— 若只按字段判「有许可」，也会误判。</strong>⭐⭐⭐⭐⭐ <strong>结论：许可必须读文件，且要读仓库内的第三方声明文件（mixbar 的 <code>THIRD_PARTY_NOTICES.md</code> 是范例）。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇一：「blob sha 比对」把镜像检测的成本降到了接近零。</strong>
+不需要下载任何内容，不需要比较 README 文本，⭐⭐⭐⭐⭐ 只要 <code>git/trees</code> 的 blob sha 一比就知道字节是否相同。⭐⭐⭐⭐⭐ <strong>这可以做成一个零成本的每日巡检项。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇二：<code>pydtcpip</code> 的「能力矩阵 + 三档验证状态」是可迁移的模板。</strong>
+<code>Verified</code> / <code>Unverified (profile implemented)</code> / <code>Not applicable</code> 三档，⭐⭐⭐⭐⭐ 把「支持什么」和「验证过什么」分成两个正交维度，⭐⭐⭐⭐⭐ <strong>任何「支持 N 种设备/模型/平台」的项目都可以直接抄。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇三：三种「诚实边界」的落点已经成型，可直接抄。</strong>
+<code>AGENTS.md</code> 的否定式清单（pydtcpip）/ <code>pre-commit</code> 可读的预算清单（coordinator）/ README 的签名校验条款（interspace），⭐⭐⭐⭐⭐ <strong>共同点是：边界写在机器会读到的地方，而不是散文里。</strong></p>
+<hr />
+<h2 id="_5">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th>类别</th>
+<th>档案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WindGatorRise37/Gemini-Config-Checker-</code></td>
+<td style="text-align: right;">473</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/gemini-config-checker.md">projects/gemini-config-checker.md</a></td>
+</tr>
+<tr>
+<td><code>atlas7283/steam-library-bridge</code></td>
+<td style="text-align: right;">176</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/steam-library-bridge.md">projects/steam-library-bridge.md</a></td>
+</tr>
+<tr>
+<td><code>tsukumijima/pydtcpip</code></td>
+<td style="text-align: right;">44</td>
+<td>生产可用</td>
+<td><a href="projects/pydtcpip.md">projects/pydtcpip.md</a></td>
+</tr>
+<tr>
+<td><code>petekp/coordinator</code></td>
+<td style="text-align: right;">34</td>
+<td>工具型</td>
+<td><a href="projects/coordinator.md">projects/coordinator.md</a></td>
+</tr>
+<tr>
+<td><code>cnrad/interspace</code></td>
+<td style="text-align: right;">131</td>
+<td>工具型</td>
+<td><a href="projects/interspace.md">projects/interspace.md</a></td>
+</tr>
+<tr>
+<td><code>lishuangqiang/mixbar</code></td>
+<td style="text-align: right;">79</td>
+<td>工具型</td>
+<td><a href="projects/mixbar.md">projects/mixbar.md</a></td>
+</tr>
+<tr>
+<td><code>rauchg/winamp-ui-sdk</code></td>
+<td style="text-align: right;">42</td>
+<td>观察型</td>
+<td><a href="projects/winamp-ui-sdk.md">projects/winamp-ui-sdk.md</a></td>
+</tr>
+<tr>
+<td><code>huangserva/h3-fight</code></td>
+<td style="text-align: right;">30</td>
+<td>工具型</td>
+<td><a href="projects/h3-fight.md">projects/h3-fight.md</a></td>
+</tr>
+<tr>
+<td><code>Dart-veider01/TradingAgents-crypto</code></td>
+<td style="text-align: right;">140</td>
+<td>观察型</td>
+<td><a href="projects/tradingagents-crypto.md">projects/tradingagents-crypto.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>证据边界：</strong></p>
+<p>⭐⭐⭐ 本日全部元数据取自 <strong>2026-11-16 CST</strong>（2026-11-15T22:00Z–22:40Z 窗口）经 <code>gh</code> CLI 认证的 GitHub REST / Search API 快照，覆盖 <code>search/repositories</code>（<code>created:2026-11-15 stars:&gt;=30</code>，<code>total_count</code> = <strong>105</strong>）、<code>repos/{owner}/{repo}</code>、<code>git/trees/{branch}?recursive=1</code>、<code>commits</code>、<code>forks?sort=newest&amp;per_page=100</code>、<code>releases</code>、<code>tags</code>、<code>readme</code>、<code>contents/{path}</code>（<code>Accept: application/vnd.github.raw</code>）、<code>users/{owner}</code>、<code>users/{owner}/repos</code>、<code>actions/workflows</code>、<code>license</code>。</p>
+<p>⭐⭐⭐ <strong>⚠️ 本日报未下载、未执行、未运行任何被投放的载荷。</strong> 对 <code>GeminiConfigChecker.rar</code> 的 Dropbox 链接<strong>只提取 URL 字符串，未发起任何请求</strong>；对 <code>Steam-Library-Bridge.exe</code>（1,050,048 B）<strong>只读取了 tree 中的 blob 元数据（路径与大小），未下载、未反汇编、未运行</strong>。</p>
+<p>⭐⭐⭐ <strong>⚠️ <code>stargazers</code> 与 <code>subscribers</code> 端点在本窗口未用于逐个取证</strong>（此前记录该端点对本 token 返回 404），⭐⭐⭐ 因此<strong>「21 个镜像的 473⭐ 是刷的」这一结论本日报不作主张</strong> —— 只记录「21 个副本的 star 取值完全相同（distinct = 1），且真实上游只有 144⭐」这一可核验事实。</p>
+<p>⭐⭐⭐ <strong>⚠️ star 增速未做统计</strong>（需分页遍历 stargazer 列表），故所有 ⭐ 数均为快照绝对值；文中「本日新出现」指的是<strong>仓库创建日落在数据窗口内</strong>，而非 star 在本日增长。</p>
+<p>⭐⭐⭐ <strong>⚠️ 「镜像方未经授权」是推断，不是取证结论。</strong> 本日报<strong>未取得上游作者的授权状态证明</strong>，<strong>未核验镜像方与上游作者之间是否存在私下协议</strong>，<strong>未做上游 ↔ 镜像的完整文件级 diff</strong>（上游 72 blobs vs 镜像 53 blobs，目录不完全一致）。</p>
+<p>⭐⭐⭐ <strong>⚠️ 本日报未核验项</strong>：<code>pydtcpip</code> 在真实 DTCP-IP 设备上的任何实际行为、其 PyPI 包内容与仓库的一致性、9 个 issue 的正文、<code>coordinator</code> 的 pre-commit hook 本体与其声明的测试环境、<code>interspace</code> 的实际切换动画与自更新签名逻辑、<code>mixbar</code> 的 Core Audio Process Tap 实现与其声明的第三方代码、<code>winamp-ui-sdk</code> 的 WebMCP agent 控制与音频实现、<code>h3-fight</code> 提示词库的出片效果、<code>TradingAgents-crypto</code> 的 bytx 下单链路、<code>steam-library-bridge</code> 的 <code>.exe</code> 实际功能、<code>Gemini-Config-Checker-</code> 族 21 个仓库中除上述 7 个探针文件外的其余 blob 内容。</p>
+<p>⭐⭐⭐ <strong>⚠️ 本日的 <code>git pull --ff-only origin main</code> 在默认代理配置下持续失败</strong>（<code>gnutls_handshake() failed: The TLS connection was non-properly terminated</code>，重试 3 次并尝试 <code>http.sslCAInfo</code> 均失败），⭐⭐⭐ <strong>最终以 <code>git -c http.proxy= -c https.proxy= pull</code>（绕过本机 127.0.0.1:7890 代理）成功</strong>，⭐⭐⭐ <strong>本次任务中所有 <code>git push</code> 也使用同一绕过方式。</strong></p>
+<hr />
+<p><em>首次记录：2026-11-16</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
