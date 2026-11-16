@@ -1,3 +1,117 @@
+## 2026-11-17
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | oi | 语言 | 体积 | blobs | commits | 类别 |
+|---|---:|---:|---:|---:|---:|---|---:|---:|---:|---|
+| `OceanChandlerSewer/rob-run-cheat-private` | 236 | 65 | 27.5% | **91** | 1 | Markdown | 8 KB | **2** | 3 | 观察型（反例样本） |
+| `hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client` | 53 | 0 | 0% | 24 | 0 | Markdown | 7 KB | **2** | 3 | 观察型（反例样本） |
+| `kajisho5/ffmpeg-skill` | 6,630 | 598 | 9.0% | 12 | 33 | Python | 40,342 KB | 425 | 100+ | 生产可用 |
+| `google/elephant-goldfish-model` | 20,347 | 1,505 | 7.4% | 81 | 122 | Python | 15,271 KB | 283 | 100+ | 工具型 |
+| `NVIDIA/SkillEvaluator` | 2,623 | 356 | 13.6% | 3 | 20 | Python | 23,230 KB | 1,180 | 100+ | 平台候选 |
+| `mvanhorn/last30days-skill` | 68,087 | 6,035 | 8.9% | 219 | 34 | Python | 56,718 KB | 736 | 100+ | 生产可用 |
+| `vercel-labs/agent-browser` | 51,996 | 3,628 | 7.0% | 114 | **589** | Rust | 35,243 KB | 680 | 100+ | 生产可用 |
+| `ag-ui-protocol/ag-ui` | 18,912 | 1,961 | 10.4% | 102 | 591 | TypeScript | 89,211 KB | 6,069 | 100+ | 平台候选 |
+| `boringmarketer/boring-marketing-skills` | 117 | 52 | **44.4%** | 0 | 0 | Python | 1,143 KB | 235 | **6** | 观察型 |
+
+### ⭐⭐⭐⭐⭐ 判据修正一：「账号注册聚集度」被「占位仓库指纹」取代（本日最强判据）
+
+10 个投放账号 **10/10** 各持有一个结构占位仓库；同一天候选池里 16 个普通账号只有 **1 个**（`staryone/sanckut`，6.25%）命中同一签名。
+
+| 组别 | 账号数 | 命中占位签名 | 全部仓库都是占位 |
+|---|---:|---:|---:|
+| **投放账号** | 10 | **10（100%）** | 0 |
+| **对照账号** | 16 | **1（6.25%）** | 0 |
+
+占位签名：整棵树只有 1 个 blob（`README.md`），内容**恰好等于** `# <仓库名>`（8 字符随机名 ⇒ 10 字节），0⭐ / 0 forks / 0 issues / 1 个 commit（`Initial commit`），创建于账号注册后 1–3 分钟。
+
+| owner | 占位仓库 | README | 创建 | 账号创建 | 延迟 |
+|---|---|---|---|---|---:|
+| `OceanChandlerSewer` | `trckulpa` | `# trckulpa` | 08-10T10:13:55Z | 08-10T10:12:04Z | 1m51s |
+| `SandstoneShoutMoon` | `szoyxrqs` | `# szoyxrqs` | 08-10T22:38:53Z | 08-10T22:36:43Z | 2m10s |
+| `VergeEnvoyAdze` | `fzohpjud` | `# fzohpjud` | 08-10T22:38:52Z | 08-10T22:36:56Z | 1m56s |
+| `ashtherapistpillar` | `cwjhmbpo` | `# cwjhmbpo` | 08-10T22:39:08Z | 08-10T22:37:15Z | 1m53s |
+| `LairFreighter85` | `ugqbrkec` | `# ugqbrkec` | 08-10T22:38:28Z | 08-10T22:36:14Z | 2m14s |
+| `DiamondCockatooFlow` | `hrolzfoa` | `# hrolzfoa` | 08-10T22:38:25Z | 08-10T22:36:23Z | 2m02s |
+| `Brandtrocontrol` | `upzuukrt` | `# upzuukrt` | 09-21T17:27:42Z | 09-21T17:24:55Z | 2m47s |
+| `hubchrysalisspanner` | `nuxtdjnj` | `# nuxtdjnj` | 09-21T17:28:06Z | 09-21T17:25:39Z | 2m27s |
+| `DestroyerStrait` | `rqpylldg` | `# rqpylldg` | 06-15T19:52:00Z | 06-15T19:48:39Z | 3m21s |
+| `delugesovereignphase` | `khcmkgzv` | `# khcmkgzv` | 06-15T19:52:03Z | 06-15T19:49:37Z | 2m26s |
+
+**判据升级：**
+
+> ❌ 旧：「这些账号是否在同一时间窗口注册？」—— 受账号闲置时间影响（11-12 已证伪「当天新建」），**且投放方只需养号数月即可规避**
+> ✅ 新：**「该 owner 的仓库列表里是否存在一个 README 恰好等于 `# <仓库名>` 的单 blob 随机名仓库？」** —— 一次 `users/{owner}/repos` 请求即可判定
+
+**⭐⭐⭐⭐⭐ 跨日闭环**：11-15 记录的「零代码但高 subs」批次，其 owner `Hairzenexalt`（2026-08-10T10:11:27Z）与 `prismarmorergirder`（2026-09-21T17:24:16Z）同样各持有一个 10 字节占位仓库（`fbvylkfq` / `mopeftmn`）。
+
+### ⭐⭐⭐⭐⭐ 判据修正二：投放方的账号是「长期在编的产能」，不是当天现注册的
+
+9 个 `cheat client` 族仓库（ROB RUN ×3 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板：`capsule-render.vercel.app` 横幅生成器（9/9）+ `readme-typing-svg.demolab.com` 打字动效（9/9）+ `img.shields.io` 徽章阵列（9/9），⭐⭐⭐⭐⭐ 其中 6 个统一指向同一条载荷域名 `modbay.live`（路径按游戏分）。9/9 只有 2 个 blob、0 个源码文件、8/9 是 0 个 open issue（唯二的两个 issue 内容是 `NOT WORK` 与 `无法运行`）。
+
+账号注册时间分三批：
+
+| 批次 | 账号 | 注册窗口 | 跨度 |
+|---|---|---|---:|
+| A | `LairFreighter85` / `DiamondCockatooFlow` / `SandstoneShoutMoon` / `VergeEnvoyAdze` / `ashtherapistpillar` | `2026-08-10T22:36:14Z – 22:37:15Z` | **61 秒** |
+| B | `Brandtrocontrol` / `hubchrysalisspanner` | `2026-09-21T17:24:55Z – 17:25:39Z` | 44 秒 |
+| C | `DestroyerStrait` / `delugesovereignphase` | `2026-06-15T19:48:39Z – 19:49:37Z` | 58 秒 |
+
+**批次 A 落在 11-15 记录的 `2026-08-10T10:11:27Z` 账号队列同一注册日内；批次 B 直接落在 11-15 记录的「`2026-09-21T17:23:39Z–17:25:16Z` 的 97 秒窗口」之内。**
+
+⭐⭐⭐⭐⭐ **推论：投放方把账号提前 1–5 个月养好、等到需要时才启用 —— 因此任何依赖「注册时间接近当前」的判据都在被针对性规避。**
+
+### ⭐⭐⭐⭐⭐ 判据修正三：「release 数量」应降级为「tag → commit → 代码 diff」链路闭合性
+
+11-16 刚用 `atlas7283/steam-library-bridge`（1 个 commit → 7 秒内 4 个语义无关版本号）证伪「release 多 = 有发布史」；本日 `kajisho5/ffmpeg-skill` 从正面给出同一条判据的真样本。
+
+| | 11-16 `steam-library-bridge`（伪造） | 本日 `ffmpeg-skill`（真实） |
+|---|---|---|
+| 版本号语义 | 4 个 release 互不相关（v1.2.8 → v4.4.2） | 100 个 tag 语义连续（v2.9.0 → v3.10.1） |
+| commit sha 是否唯一 | 仅 1 个 commit | **100 / 100 互不相同** |
+| 是否有代码 diff 支撑该版本 | **无** | **有**（父 commit 12/12 触及源码） |
+
+实测 `ffmpeg-skill` 的 release commit 本身只改元数据（8 个文件 +16/-9：`package.json` / `.claude-plugin/plugin.json` / `.cursor-plugin/plugin.json` / `gemini-extension.json` / `server.json` / `CHANGELOG.md` / `docs/contract.md` / `docs/roadmap.md`），⭐⭐⭐⭐⭐ 而**它的父 commit 100% 触及源码**（12 个 tag 抽样，触及源码文件数 2–17 个）；⭐⭐⭐⭐⭐ 最近 100 个 commit 中 47 个 `chore(release)` 里有 35 个紧接着一个 `fix:` / `feat:`。
+
+**⭐⭐⭐⭐⭐ 结论：判据不是「release 数量」，而是「tag → commit → 代码 diff」这条链是否闭合。**
+
+### ⭐⭐⭐⭐⭐ 趋势修正四：「Agent Skills」已收敛成「跨 harness 可移植包格式」，但安装协议未收敛
+
+实测 17 个相关仓库：**15 个带 `SKILL.md`**；⭐⭐⭐⭐⭐ 带 ≥3 套 harness 专属清单的有 4 个 —— `google/elephant-goldfish-model`（**6 套**：`.claude-plugin/` / `.codex-plugin/` / `.cursor-plugin/` / `.plugin/` / `.gemini/config.yaml` / Windsurf 适配器）、`mvanhorn/last30days-skill`（4 套，含 `.grok-plugin/`）、`kajisho5/ffmpeg-skill`（4 套）、`addyosmani/agent-skills`（3 套）。
+
+⭐⭐⭐⭐⭐ **但 17 个仓库里只有 3 个同时公开 `npx skills add` 与 `/plugin marketplace add` 两条安装命令**（`addyosmani/agent-skills` / `mvanhorn/last30days-skill` / `boringmarketer/boring-marketing-skills`）。⭐⭐⭐⭐⭐ **两条分发路线并存：EGM 自己逐 harness 适配（6 套清单 + 6 份文档 + 3 个分叉 CI 工作流）；last30days 靠 `npx skills` 聚合层覆盖「50+ hosts」。**
+
+**⭐⭐⭐⭐⭐ 结论：Skills 的竞争战场已从「技能内容」转移到「分发适配层」。**
+
+### ⭐⭐⭐⭐⭐ 趋势修正五：「内容质量」与「分发适配」被拆成两个可分别测量的维度
+
+`NVIDIA/SkillEvaluator` 把评估做成三个独立 tier：Tier 1 校验（安全 / 格式 / harness 兼容，依赖固定版本的 SkillSpector + Gitleaks）、Tier 2 去重（embeddings + chat）、Tier 3 实况评测（provider + agent + Docker 沙箱）。⭐⭐⭐⭐⭐ **门禁策略是成本阶梯：Tier 1 默认门禁 → Tier 2 默认门禁可关 → Tier 3 默认不门禁需显式开启；且实测原文「a scanner that cannot run is `INCOMPLETE` and exits nonzero」（fail-closed）。**
+
+⭐⭐⭐⭐⭐ 而它的 20 个 open issue 全是「我用自己的工具时发现的 BUG」，⭐⭐⭐⭐⭐ 其中 `[FEA]: Tier 1 security on a plugin scans only its bundled skills; hooks and bin/ are never scanned` 暴露了**评估工具自身的已知扫描盲区**（由用户报告），⭐⭐⭐⭐⭐ `[BUG]: docs CI recipe (ci-integration.mdx) is less hardened than the repo's own workflows` 暴露了**文档弱于实现**。
+
+### ⭐⭐⭐⭐⭐ 本日跨项目共性：自检（doctor）正在成为 agent 工具的标准配置
+
+| 项目 | 自检实现 | 证据 |
+|---|---|---|
+| `boringmarketer/boring-marketing-skills` | `_system/scripts/doctor.sh`（CI 第一步） | 实测 `ci.yml` |
+| `vercel-labs/agent-browser` | `cli/src/doctor/` 8 模块（chrome / config / daemon / environment / ffmpeg / launch / helpers / **fix**） | 实测目录树 |
+| `mvanhorn/last30days-skill` | `doctor` 命令（但实测 issue 显示它会误报） | 实测 issue 标题 |
+
+⭐⭐⭐⭐⭐ **而 `boring-marketing-skills` 的 CI 同时给出了「知识腐化」的解法：`refresh_check.py` + `tests/ttl_files.txt`（给文件设 TTL 并在 CI 里检查过期）。**
+
+### ⭐⭐⭐⭐⭐ 自我纠偏：模板相似性不构成判据
+
+⭐⭐⭐⭐⭐ **本日报实测一个真实学生账号 `francyellenn`（2023-05-28 创建、16 个公开仓库），其 14 个仓库中有 11 个使用同一套 `capsule-render.vercel.app` 横幅（`HAVARD-SQL` / `HAVARD-CS50-R` / `HAVARD-CS50-PYTHON` / `SANDBOX` / `comment-overdose` / `code-dumpster-fire` …），内容是葡萄牙语的 CS50 课程笔记。** ⭐⭐⭐⭐⭐ **因此「用了 capsule-render」本身不是判据 —— 本日报不据此主张任何结论；真正的判据是「owner + 占位仓库」的结构组合。**
+
+### ⭐⭐⭐⭐⭐ 本日工具链的第二个正例：机器可读契约
+
+| 项目 | 契约形态 | 特点 |
+|---|---|---|
+| `ag-ui-protocol/ag-ui` | **JSON Schema → 代码生成 SDK**（TS / Python / .NET） | 契约即代码源头；1.0 冻结并承诺 0.x 双向兼容 |
+| `kajisho5/ffmpeg-skill` | `docs/contract.md`（每次 release 同步更新） | 契约随版本化 |
+| `boringmarketer/boring-marketing-skills` | 7 个 JSON Schema（品牌 / 活动 / 内容 / 邮件 / 关键词 / VOC / 广告矩阵） | 契约用于 agent 间交接 |
+| `NVIDIA/SkillEvaluator` | `.gitleaks.toml` + `THIRD_PARTY_NOTICES.md` + 固定版本 scanner | 契约用于供应链 |
+
 ## 2026-11-16
 
 ### 本日新增项目

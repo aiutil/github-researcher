@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-11-16.md">Latest report</a> ·
+  <a href="daily/2026-11-17.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-11-16
+## Latest report · 2026-11-17
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 9 | 825 | 5 | 126k+ |
+| 9 | 833 | 5 | 134k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [WindGatorRise37/Gemini-Config-Checker-](projects/gemini-config-checker.md) | 473 stars | 观察型（反例样本） |
-| [atlas7283/steam-library-bridge](projects/steam-library-bridge.md) | 176 stars | 观察型（反例样本） |
-| [tsukumijima/pydtcpip](projects/pydtcpip.md) | 44 stars | 生产可用 |
-| [petekp/coordinator](projects/coordinator.md) | 34 stars | 工具型 |
-| [cnrad/interspace](projects/interspace.md) | 131 stars | 工具型 |
-| [lishuangqiang/mixbar](projects/mixbar.md) | 79 stars | 工具型 |
-| [rauchg/winamp-ui-sdk](projects/winamp-ui-sdk.md) | 42 stars | 观察型 |
-| [huangserva/h3-fight](projects/h3-fight.md) | 30 stars | 工具型 |
+| [OceanChandlerSewer/rob-run-cheat-private](projects/rob-run-cheat-private.md) | 236 stars | 观察型（反例样本） |
+| [hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client](projects/call-of-duty-modern-warfare-4-cheat-client.md) | 53 stars | 观察型（反例样本） |
+| [kajisho5/ffmpeg-skill](projects/ffmpeg-skill.md) | 6,630 stars | 生产可用 |
+| [google/elephant-goldfish-model](projects/elephant-goldfish-model.md) | 20,347 stars | 工具型 |
+| [NVIDIA/SkillEvaluator](projects/skillevaluator.md) | 2,623 stars | 平台候选 |
+| [mvanhorn/last30days-skill](projects/last30days-skill.md) | 68,087 stars | 生产可用 |
+| [vercel-labs/agent-browser](projects/agent-browser.md) | 51,996 stars | 生产可用 |
+| [ag-ui-protocol/ag-ui](projects/ag-ui.md) | 18,912 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 97 · repositories: WindGatorRise37/Gemini-Config-Checker-, MatinSenPai/Gemini-Config-Checker, TypeTyrantScheme/Gemini-Config-Checker-
-2. **Signal 2** · score 95 · repositories: WindGatorRise37/Gemini-Config-Checker-, Visionbeyondtrack/Gemini-Config-Checker-, Violetnyudress/Gemini-Config-Checker-
-3. **Signal 3** · score 93 · repositories: atlas7283/steam-library-bridge, HideKazekage/rob-run-cheat-tool
-4. **Signal 4** · score 92 · repositories: tsukumijima/pydtcpip, petekp/coordinator, cnrad/interspace
+1. **Signal 1** · score 96 · repositories: OceanChandlerSewer/rob-run-cheat-private, SandstoneShoutMoon/ROB-RUN-cheat-client, DiamondCockatooFlow/Apex-Legends-cheat-client
+2. **Signal 2** · score 94 · repositories: OceanChandlerSewer/rob-run-cheat-private, hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client, Brandtrocontrol/Marvel-Rivals-private-cheat
+3. **Signal 3** · score 92 · repositories: kajisho5/ffmpeg-skill, atlas7283/steam-library-bridge
+4. **Signal 4** · score 91 · repositories: google/elephant-goldfish-model, mvanhorn/last30days-skill, kajisho5/ffmpeg-skill
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-16.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-17.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-11-17](daily/2026-11-17.md) | 9 | 5 |
 | [2026-11-16](daily/2026-11-16.md) | 9 | 5 |
 | [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
 | [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
 | [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
 | [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
 | [2026-11-11](daily/2026-11-11.md) | 2 | 2 |
-| [2026-11-10](daily/2026-11-10.md) | 5 | 3 |
 
 ## Why this repository exists
 

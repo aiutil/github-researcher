@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-11-17 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日重点趋势</h2>
+<h3 id="1-score-96">1️⃣ 投放体的账号是「长期在编的产能」，不是当天现注册的（score 96）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日最硬的发现：<code>cheat client</code> 族是一套有 README 模板、有载荷域名、有账号队列、有占位仓库的完整投放体系，而且它的账号是提前几个月养好的。</strong></p>
+<p><strong>可核验事实一：族谱与模板。</strong> 本日报对 <code>created:2026-11-14..2026-11-16</code> 窗口内 70 个 <code>cheat</code>/<code>crack</code>/<code>trainer</code> 命名的候选逐个读取 README，<strong>9 个命中同一模板签名</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">forks</th>
+<th style="text-align: right;">subs</th>
+<th style="text-align: right;">oi</th>
+<th style="text-align: right;">blobs</th>
+<th>创建</th>
+<th>owner 账号创建</th>
+<th style="text-align: right;">owner 仓库数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OceanChandlerSewer/rob-run-cheat-private</code></td>
+<td style="text-align: right;"><strong>236</strong></td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;"><strong>91</strong></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td>11-15T18:10:56Z</td>
+<td>2026-08-10T10:12:04Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>SandstoneShoutMoon/ROB-RUN-cheat-client</code></td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-15T11:59:22Z</td>
+<td>2026-08-10T22:36:43Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>ashtherapistpillar/PUBG-private-cheat-midnight</code></td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-15T13:54:44Z</td>
+<td>2026-08-10T22:37:15Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>DiamondCockatooFlow/Apex-Legends-cheat-client</code></td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-14T18:50:33Z</td>
+<td>2026-08-10T22:36:23Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client</code></td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-14T18:09:49Z</td>
+<td>2026-09-21T17:25:39Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>VergeEnvoyAdze/GTA5-cheat-client</code></td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-15T11:51:14Z</td>
+<td>2026-08-10T22:36:56Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>Brandtrocontrol/Marvel-Rivals-private-cheat</code></td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-14T15:48:14Z</td>
+<td>2026-09-21T17:24:55Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><code>LairFreighter85/Warzone-Eclipse-cheat-client</code></td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td>11-14T19:26:19Z</td>
+<td>2026-08-10T22:36:14Z</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>9 个仓库全部是 2 个 blob</strong>（<code>LICENSE</code> + <code>README.md</code>），<strong>0 个代码文件</strong>，<strong>8/9 是 0 个 open issue</strong>（唯一 1 个 issue 的两个仓库，其 issue 内容分别是 <code>NOT WORK</code> 与 <code>无法运行</code> —— ⭐⭐⭐⭐⭐ <strong>即真实用户投诉「装不上」，而不是功能讨论</strong>）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>模板的三个可核验组件：</strong></p>
+<ol>
+<li><strong>横幅生成器</strong> <code>capsule-render.vercel.app/api?type=waving&amp;…&amp;text=&lt;项目名&gt;</code>（9/9 命中）</li>
+<li><strong>打字机动效</strong> <code>readme-typing-svg.demolab.com/…&amp;lines=…</code>（9/9 命中）</li>
+<li><strong>徽章阵列</strong> <code>img.shields.io/badge/…?style=for-the-badge</code>（9/9 命中）</li>
+</ol>
+<p>⭐⭐⭐⭐⭐ <strong>载荷域名：9 个里 6 个指向同一条 <code>modbay.live</code>（路径按游戏分：<code>/library/rob-run</code>、<code>/library/pubg</code>、<code>/library/gta-v-enhanced</code>），另 2 个指向 <code>readme-typing-svg</code> 的兄弟服务而未给出直接载荷地址。</strong> ⭐⭐⭐⭐⭐ <strong>本日报对 <code>modbay.live</code> 只做了一次 HTTP HEAD（返回 405、<code>Allow: GET</code>、<code>server: nginx/1.18.0 (Ubuntu)</code>），未下载、未打开任何载荷页面。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⚠️ 重要反证（本日自查）：</strong> <code>capsule-render</code> 与 <code>readme-typing-svg</code> 都是<strong>公开的第三方横幅生成器</strong>，不是投放方的私产。⭐⭐⭐⭐⭐ <strong>本日报实测一个真实学生账号 <code>francyellenn</code>（2023-05-28 创建、16 个公开仓库）的 14 个仓库里有 11 个使用同一套 <code>capsule-render</code> 横幅</strong>（<code>HAVARD-SQL</code> / <code>HAVARD-CS50-R</code> / <code>HAVARD-CS50-PYTHON</code> / <code>SANDBOX</code> / <code>comment-overdose</code> / <code>code-dumpster-fire</code> …），<strong>内容是葡萄牙语的 CS50 课程笔记。</strong> ⭐⭐⭐⭐⭐ <strong>因此「用了 capsule-render」本身不是判据 —— 本日报不据此主张任何结论。</strong>⭐⭐⭐⭐⭐ <strong>真正的判据是下述「占位仓库 + 账号队列」的结构组合。</strong></p>
+<p><strong>可核验事实二：账号是提前 1–5 个月养好的。</strong></p>
+<p>⭐⭐⭐⭐⭐ 9 个 owner 账号的注册时间分三批：</p>
+<table>
+<thead>
+<tr>
+<th>批次</th>
+<th>账号</th>
+<th>注册窗口</th>
+<th style="text-align: right;">跨度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>LairFreighter85</code> / <code>DiamondCockatooFlow</code> / <code>SandstoneShoutMoon</code> / <code>VergeEnvoyAdze</code> / <code>ashtherapistpillar</code></td>
+<td><code>2026-08-10T22:36:14Z – 22:37:15Z</code></td>
+<td style="text-align: right;"><strong>61 秒</strong></td>
+</tr>
+<tr>
+<td>B</td>
+<td><code>Brandtrocontrol</code> / <code>hubchrysalisspanner</code></td>
+<td><code>2026-09-21T17:24:55Z – 17:25:39Z</code></td>
+<td style="text-align: right;">44 秒</td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>DestroyerStrait</code> / <code>delugesovereignphase</code></td>
+<td><code>2026-06-15T19:48:39Z – 19:49:37Z</code></td>
+<td style="text-align: right;">58 秒</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>批次 A 的注册窗口（<code>2026-08-10T22:36Z</code> 附近）落在 11-15 日报记录的 <code>2026-08-10T10:11:27Z</code> 账号队列的同一批注册日内</strong> —— ⭐⭐⭐⭐⭐ <strong>同批账号，跨 12.5 小时的两段窗口，说明注册是按小时批量推进的。</strong>⭐⭐⭐⭐⭐ <strong>批次 B 的 <code>2026-09-21T17:24:55Z–17:25:39Z</code> 则直接落在 11-15 日报记录的「6 个 owner 创建于 <code>2026-09-21T17:23:39Z–17:25:16Z</code> 的 97 秒窗口」之内。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>这与 11-16 日报记录的判据修正完全吻合：11-16 已证伪「账号当天新建 ⇒ 农场」；本日的证据进一步说明投放方不但不是当天注册，而是</strong>提前养号、等到需要时启用<strong>。⭐⭐⭐⭐⭐ </strong>后果是：任何依赖「注册时间接近当前」的判据都会系统性漏掉这类投放体 —— 账号越老，越显得「正常」。**</p>
+<h3 id="2-score-94">2️⃣ 「占位仓库」成为更硬也更便宜的判据，且本日首次做成对照实验（score 94）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>10 个投放账号各持有一个「结构占位仓库」，签名是：整棵树只有 1 个 blob（<code>README.md</code>），内容恰好等于 <code># &lt;仓库名&gt;</code>（8 字符随机名 ⇒ 10 字节），0⭐，0 forks，0 issues，1 个 commit（<code>Initial commit</code>），创建于账号注册后 1–3 分钟。</strong></p>
+<table>
+<thead>
+<tr>
+<th>owner</th>
+<th>占位仓库</th>
+<th>README 实测内容</th>
+<th>blob sha</th>
+<th>创建</th>
+<th>账号创建</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OceanChandlerSewer</code></td>
+<td><code>trckulpa</code></td>
+<td><code># trckulpa</code></td>
+<td><code>32355ad9…</code></td>
+<td>08-10T10:13:55Z</td>
+<td>08-10T10:12:04Z</td>
+</tr>
+<tr>
+<td><code>SandstoneShoutMoon</code></td>
+<td><code>szoyxrqs</code></td>
+<td><code># szoyxrqs</code></td>
+<td><code>06ba1ecc…</code></td>
+<td>08-10T22:38:53Z</td>
+<td>08-10T22:36:43Z</td>
+</tr>
+<tr>
+<td><code>VergeEnvoyAdze</code></td>
+<td><code>fzohpjud</code></td>
+<td><code># fzohpjud</code></td>
+<td><code>609cb718…</code></td>
+<td>08-10T22:38:52Z</td>
+<td>08-10T22:36:56Z</td>
+</tr>
+<tr>
+<td><code>ashtherapistpillar</code></td>
+<td><code>cwjhmbpo</code></td>
+<td><code># cwjhmbpo</code></td>
+<td><code>cff42750…</code></td>
+<td>08-10T22:39:08Z</td>
+<td>08-10T22:37:15Z</td>
+</tr>
+<tr>
+<td><code>LairFreighter85</code></td>
+<td><code>ugqbrkec</code></td>
+<td><code># ugqbrkec</code></td>
+<td>—</td>
+<td>08-10T22:38:28Z</td>
+<td>08-10T22:36:14Z</td>
+</tr>
+<tr>
+<td><code>DiamondCockatooFlow</code></td>
+<td><code>hrolzfoa</code></td>
+<td><code># hrolzfoa</code></td>
+<td>—</td>
+<td>08-10T22:38:25Z</td>
+<td>08-10T22:36:23Z</td>
+</tr>
+<tr>
+<td><code>Brandtrocontrol</code></td>
+<td><code>upzuukrt</code></td>
+<td><code># upzuukrt</code></td>
+<td>—</td>
+<td>09-21T17:27:42Z</td>
+<td>09-21T17:24:55Z</td>
+</tr>
+<tr>
+<td><code>hubchrysalisspanner</code></td>
+<td><code>nuxtdjnj</code></td>
+<td><code># nuxtdjnj</code></td>
+<td>—</td>
+<td>09-21T17:28:06Z</td>
+<td>09-21T17:25:39Z</td>
+</tr>
+<tr>
+<td><code>DestroyerStrait</code></td>
+<td><code>rqpylldg</code></td>
+<td><code># rqpylldg</code></td>
+<td><code>4c4ccdac…</code></td>
+<td>06-15T19:52:00Z</td>
+<td>06-15T19:48:39Z</td>
+</tr>
+<tr>
+<td><code>delugesovereignphase</code></td>
+<td><code>khcmkgzv</code></td>
+<td><code># khcmkgzv</code></td>
+<td><code>9d2c5d0f…</code></td>
+<td>06-15T19:52:03Z</td>
+<td>06-15T19:49:37Z</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>本日报做了对照实验（这是本日最有方法论价值的一步）：</strong> 从同一天的候选池里取 <strong>16 个普通账号</strong>做同样的检查（<code>andyhuo520</code> / <code>stvlynn</code> / <code>chuanqisun</code> / <code>staryone</code> / <code>scottsturrock</code> / <code>Aabyss-Team</code> / <code>louis49</code> / <code>adamsardo</code> / <code>siliconjungle</code> / <code>squallsama</code> / <code>jackson-cmd</code> / <code>asimawdah</code> / <code>CoderL98</code> / <code>nagavineerpasam</code> / <code>oujingzhou</code> / <code>boringmarketer</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>组别</th>
+<th style="text-align: right;">账号数</th>
+<th style="text-align: right;">命中占位签名</th>
+<th style="text-align: right;">全部仓库都是占位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>投放账号</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>10（100%）</strong></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>对照账号</strong></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;"><strong>1（6.25%）</strong></td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>唯一命中的对照账号是 <code>staryone</code>（2020-07-04 创建、29 个公开仓库、20 followers），其占位仓库为 <code>sanckut</code> —— ⭐⭐⭐⭐⭐ </strong>一个只有 1 个占位仓库的正常开发者账号。<strong>⭐⭐⭐⭐⭐ </strong>即「至少持有一个占位仓库」在两组中的出现率是 100% vs 6.25%。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>判据因此升级：</strong></p>
+<blockquote>
+<p>❌ 旧：「这些账号是否在同一时间窗口注册？」—— 受账号闲置时间影响（11-12 已证伪「当天新建」），<strong>且投放方只需养号数月即可规避</strong>
+✅ 新：<strong>「这个 owner 的仓库列表里，是否存在一个 README 恰好等于 <code># &lt;仓库名&gt;</code> 的单 blob 随机名仓库？」</strong></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>这条判据的优势：① 一次 <code>users/{owner}/repos</code> 请求即可判定；② 不受账号年龄影响；③ 不受仓库命名词根相似性影响；④ 判据内容与被投放的品类完全无关。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 顺带闭合了一条跨日线索：11-15 日报记录的 7 个「零代码但高 subs」仓库，其 owner <code>Hairzenexalt</code>（2026-08-10T10:11:27Z 创建、2 个仓库）与 <code>prismarmorergirder</code>（2026-09-21T17:24:16Z 创建、2 个仓库），⭐⭐⭐⭐⭐ </strong>同样各持有一个 10 字节占位仓库（<code>fbvylkfq</code> / <code>mopeftmn</code>）<strong> —— ⭐⭐⭐⭐⭐ </strong>即本日族与 11-15 族不是两批人，而是同一套「养号 + 占位 + 启用」流程在不同品类的两次投放。**</p>
+<h3 id="3-11-16-release-score-92">3️⃣ 11-16 刚被证伪的「release 数量」判据，被一个真项目正面推翻（score 92）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>11-16 日报的核心结论之一是「release 多 / 版本号多不是发布历史的证据」。本日 <code>kajisho5/ffmpeg-skill</code> 给出了这条判据的正面反例 —— 而且它比反例本身更有价值，因为本日报找到了区分二者的方法。</strong></p>
+<p><strong>可核验事实：<code>ffmpeg-skill</code> 的 release 结构（2026-11-17 CST 快照）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>6,630 / 598 / 12 / 33</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>40,342 KB / 425</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建</td>
+<td>Python / MIT / 2026-09-03T14:33:38Z</td>
+</tr>
+<tr>
+<td>release 数</td>
+<td><strong>100</strong></td>
+</tr>
+<tr>
+<td>tag 数</td>
+<td><strong>100</strong></td>
+</tr>
+<tr>
+<td>tag 指向的 commit sha 去重后</td>
+<td><strong>100 / 100（无一重复）</strong></td>
+</tr>
+<tr>
+<td>release 的 tag_name 集合 == git tag 集合</td>
+<td><strong>True</strong></td>
+</tr>
+<tr>
+<td>100 个 release 最早 / 最晚</td>
+<td><code>2026-10-15T11:32:24Z</code> / <code>2026-11-15T23:32:43Z</code>（跨度 <strong>756.0 小时</strong>）</td>
+</tr>
+<tr>
+<td>相邻 release 间隔中位数</td>
+<td><strong>2.42 小时</strong>（最小 0.3 小时，最大 113.01 小时）</td>
+</tr>
+<tr>
+<td>带 asset 的 release</td>
+<td><strong>0 / 100</strong></td>
+</tr>
+<tr>
+<td><code>SKILL.md</code> 数量</td>
+<td>16</td>
+</tr>
+<tr>
+<td>harness 专属清单</td>
+<td><code>.claude-plugin/</code> · <code>.cursor-plugin/</code> · <code>gemini-extension.json</code> · <code>server.json</code>（4 套）</td>
+</tr>
+<tr>
+<td>CI 工作流</td>
+<td>8 个（<code>ci.yml</code> / <code>codeql.yml</code> / <code>scorecard.yml</code> / <code>release.yml</code> / <code>pages.yml</code> / <code>cflite.yml</code> / <code>dependabot-auto-merge.yml</code> / <code>release-drafter.yml</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>决定性的那一步：逐个查 tag 指向的 commit，看代码到底改没改。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>本日报抽样 12 个 tag，检查「tag 的 commit」与「它的父 commit」各自改了哪些文件：</strong></p>
+<table>
+<thead>
+<tr>
+<th>tag</th>
+<th>release commit 改的文件</th>
+<th style="text-align: right;">其中源码文件</th>
+<th><strong>父 commit</strong> 改的文件</th>
+<th style="text-align: right;"><strong>父 commit 中源码文件</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v3.10.1</code></td>
+<td>8（<code>package.json</code> / <code>plugin.json</code> / <code>CHANGELOG.md</code> / <code>docs/contract.md</code> / <code>docs/roadmap.md</code> / <code>server.json</code> / <code>gemini-extension.json</code> …）</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>17</td>
+<td style="text-align: right;"><strong>12</strong></td>
+</tr>
+<tr>
+<td><code>v3.10.0</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>5</td>
+<td style="text-align: right;"><strong>2</strong></td>
+</tr>
+<tr>
+<td><code>v3.9.3</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>19</td>
+<td style="text-align: right;"><strong>14</strong></td>
+</tr>
+<tr>
+<td><code>v3.9.2</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>8</td>
+<td style="text-align: right;"><strong>6</strong></td>
+</tr>
+<tr>
+<td><code>v3.9.1</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>9</td>
+<td style="text-align: right;"><strong>4</strong></td>
+</tr>
+<tr>
+<td><code>v3.9.0</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>21</td>
+<td style="text-align: right;"><strong>15</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.23</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>13</td>
+<td style="text-align: right;"><strong>10</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.22</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>9</td>
+<td style="text-align: right;"><strong>7</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.21</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>17</td>
+<td style="text-align: right;"><strong>12</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.20</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>6</td>
+<td style="text-align: right;"><strong>4</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.19</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>21</td>
+<td style="text-align: right;"><strong>17</strong></td>
+</tr>
+<tr>
+<td><code>v3.8.18</code></td>
+<td>8</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td>16</td>
+<td style="text-align: right;"><strong>13</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>结论：release commit 本身是纯元数据提交（8 个文件、+16/-9，全部是版本号与文档），但它的父 commit 100% 触及源码（2–17 个源码文件）。⭐⭐⭐⭐⭐ 换言之：真实功能 commit 落在 release commit 的前一位，release 只是给它贴标签。</strong>⭐⭐⭐⭐⭐ <strong>并且实测最近 100 个 commit 中，47 个 <code>chore(release)</code> 里有 35 个紧接着一个 <code>fix:</code> 或 <code>feat:</code> 提交。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>所以本日把 11-16 的判据补完为一条可执行的三段式检查：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>11-16 <code>steam-library-bridge</code>（伪造）</th>
+<th>本日 <code>ffmpeg-skill</code>（真实）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tag → commit 指向</td>
+<td>4 个 release 语义互不相关（v1.2.8 → v4.4.2）</td>
+<td>100 个 tag，版本号语义连续（v2.9.0 → v3.10.1）</td>
+</tr>
+<tr>
+<td>commit sha 是否唯一</td>
+<td>仅 1 个 commit</td>
+<td><strong>100 / 100 互不相同</strong></td>
+</tr>
+<tr>
+<td>是否有代码 diff 支撑该版本</td>
+<td><strong>无</strong>（只有 1 个 commit）</td>
+<td><strong>有</strong>（父 commit 12/12 触及源码）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 关键的方法论修正：判据不是「release 数量」，而是「tag → commit → 代码 diff」这条链是否闭合。⭐⭐⭐⭐⭐ 11-16 的反例之所以是伪造，不是因为它有 4 个 release，而是因为它的 4 个 tag 背后没有各自的代码。</strong></p>
+<h3 id="4-agent-skills-harness-score-91">4️⃣ 「Agent Skills」已收敛成「跨 harness 的可移植包格式」（score 91）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日 GitHub Trending 的日榜与周榜里，「Agent Skills」类目占据了显著位置</strong>（日榜：<code>anthropics/skills</code>（周榜 196,000⭐ / +6,077）、<code>NVIDIA/SkillEvaluator</code>（+953）、<code>elementalsouls/Claude-BugHunter</code>（+1,057）、<code>kajisho5/ffmpeg-skill</code>（+475）、<code>mvanhorn/last30days-skill</code>、<code>tradermonty/claude-trading-skills</code>（+841）、<code>google-labs-code/stitch-skills</code>（+540）；⭐⭐⭐⭐⭐ 周榜另有 <code>addyosmani/agent-skills</code>（118,308⭐ / +3,889）、<code>google/elephant-goldfish-model</code>（20,332⭐ / +5,060）、<code>openai/codex-security</code>（13,754⭐ / +2,294）、<code>QwenLM/qwen-code</code>）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>本日报对 17 个相关仓库做了「包内 harness 清单」的量化统计：</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">⭐</th>
+<th style="text-align: right;">SKILL.md 数</th>
+<th style="text-align: right;">harness 专属清单数</th>
+<th>具体清单</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>google/elephant-goldfish-model</code></td>
+<td style="text-align: right;">20,334</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td><code>.claude-plugin/</code> · <code>.codex-plugin/</code> · <code>.cursor-plugin/</code> · <code>.plugin/</code> · <code>.gemini/config.yaml</code> · Windsurf 适配器</td>
+</tr>
+<tr>
+<td><code>mvanhorn/last30days-skill</code></td>
+<td style="text-align: right;">68,075</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td><code>.claude-plugin/</code> · <code>.codex-plugin/</code> · <code>.grok-plugin/</code> · <code>gemini-extension.json</code></td>
+</tr>
+<tr>
+<td><code>kajisho5/ffmpeg-skill</code></td>
+<td style="text-align: right;">6,607</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td><code>.claude-plugin/</code> · <code>.cursor-plugin/</code> · <code>gemini-extension.json</code> · <code>server.json</code>（MCP）</td>
+</tr>
+<tr>
+<td><code>addyosmani/agent-skills</code></td>
+<td style="text-align: right;">118,309</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td><code>.claude-plugin/</code> · <code>.codex-plugin/</code> · <code>.plugin/</code></td>
+</tr>
+<tr>
+<td><code>ag-ui-protocol/ag-ui</code></td>
+<td style="text-align: right;">18,891</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">2</td>
+<td><code>.claude-plugin/</code> · <code>.mcp.json</code></td>
+</tr>
+<tr>
+<td><code>boringmarketer/boring-marketing-skills</code></td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1</td>
+<td><code>.claude-plugin/</code></td>
+</tr>
+<tr>
+<td><code>elementalsouls/Claude-BugHunter</code></td>
+<td style="text-align: right;">7,360</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">1</td>
+<td><code>.claude-plugin/</code></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>两个可核验的量化结论：</strong></p>
+<ol>
+<li><strong>「包内多 harness 清单」已经收敛：17 个仓库里 15 个带 <code>SKILL.md</code>，4 个仓库同时带 ≥3 套 harness 专属清单。</strong>⭐⭐⭐⭐⭐ <strong><code>google/elephant-goldfish-model</code> 的 6 套清单是本数据集里第一次见到的完整矩阵（Claude Code / Codex / Cursor / OpenCode-omp / Gemini CLI / Windsurf）。</strong></li>
+<li><strong>「安装协议」却远未收敛：17 个仓库里只有 3 个同时公开 <code>npx skills add &lt;owner&gt;/&lt;repo&gt;</code> 与 <code>/plugin marketplace add &lt;owner&gt;/&lt;repo&gt;</code> 两条命令</strong>（<code>addyosmani/agent-skills</code> / <code>mvanhorn/last30days-skill</code> / <code>boringmarketer/boring-marketing-skills</code>），⭐⭐⭐⭐⭐ <strong>其中 3 个仓库的安装命令被实测写在 README 的不同位置且参数不同（<code>--list</code> / <code>--skill &lt;name&gt;</code> / <code>-g</code> 全局标志 / <code>grok plugin marketplace add</code>）。</strong></li>
+</ol>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日最重要的架构判断由此而来：Skills 的竞争战场已经从「技能内容本身」转移到「分发适配层」。</strong>⭐⭐⭐⭐⭐ <strong>内容层已经高度商品化（<code>boring-marketing-skills</code> 用 6 个 commit 就交付 32 个技能），而适配层仍处于「每个仓库各写一套安装说明」的状态 —— ⭐⭐⭐⭐⭐ </strong>谁先把「一次打包、处处安装」做成默认，谁就拿到分发入口。**</p>
+<p>⭐⭐⭐⭐⭐ <strong><code>kajisho5/ffmpeg-skill</code> 的 README 里有一段直接回答了这个问题的设计说明（实测原文）：</strong></p>
+<blockquote>
+<p>Every tool is also callable as an MCP tool (<code>tools/list</code> advertises a core 12 by default to keep client context small, with <code>FFMPEG_SKILL_MCP_FULL=1</code> listing all 42; every tool is reachable by name through <code>tools/call</code> either way), and the whole set is described by a machine-readable contract.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>即它用「默认只暴露 12 个工具、保住客户端上下文预算」来解适配层的上下文成本问题 —— 这是一个可迁移的适配层设计范式。</strong></p>
+<h3 id="5-score-89">5️⃣ 「内容质量」与「分发适配」第一次被拆成两个可分别测量的维度（score 89）</h3>
+<p>⭐⭐⭐⭐⭐ <strong><code>NVIDIA/SkillEvaluator</code>（2,623⭐ · 356 forks · Apache-2.0 · 1,180 blobs · 9 个 <code>SKILL.md</code>）把「Skill 的质量」变成了工程流水线：</strong></p>
+<table>
+<thead>
+<tr>
+<th>可核验事实</th>
+<th>实测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI 工作流</td>
+<td>8 个，含 <code>evaluate-all-tiers.yml</code> / <code>evaluate-skills.yml</code> / <code>comment-skill-checks.yml</code> / <code>publish-benchmarks.yml</code> / <code>publish-docs.yml</code> / <code>dco.yml</code> / <code>ci.yml</code> / <code>feedback-all-tiers.yml</code></td>
+</tr>
+<tr>
+<td>Tier 基础设施</td>
+<td><code>ci/Dockerfile.tier1</code> / <code>ci/bootstrap_tiers.py</code> / <code>ci/benchmark_publish.py</code> / <code>ci/benchmark_reports.py</code></td>
+</tr>
+<tr>
+<td>安全扫描配置</td>
+<td><code>.gitleaks.toml</code> / <code>.gitleaksignore</code> / <code>SECURITY.md</code> / <code>GOVERNANCE.md</code></td>
+</tr>
+<tr>
+<td>许可与第三方声明</td>
+<td><code>LICENSE</code>（Apache-2.0）+ <code>NOTICE</code> + <strong><code>THIRD_PARTY_NOTICES.md</code></strong></td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>rng1995</code>（275）+ <code>chrisknvidia</code>（254）+ 9 位其他</td>
+</tr>
+<tr>
+<td>release</td>
+<td>11 个（<code>v0.9.0</code> 2026-11-13 · <code>v0.8.0</code> 11-06 · <code>v0.7.2</code> 11-04 · <code>v0.7.1</code> 11-03，每个 4–5 个 asset）</td>
+</tr>
+<tr>
+<td>论文与文档</td>
+<td>arXiv <code>2608.20614</code> + <code>docs.nvidia.com/skills/skillevaluator/</code> + NVIDIA 开发者博客 + YouTube 直播</td>
+</tr>
+<tr>
+<td>owner</td>
+<td><code>NVIDIA</code>（2012-05-10 创建、33,163 followers、846 repos）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它的 20 个 open issue 是对自己工具的 BUG 报告（实测标题）：</strong></p>
+<ul>
+<li><code>[BUG]: Packaged API caller builds invalid URLs for scalar path values containing spaces or reserved characters</code></li>
+<li><code>[BUG]: Task-list helper loses task text and changes saved status when descriptions contain status words</code></li>
+<li><code>[BUG]: Script lint skips valid UTF-8-BOM Python scripts and reports them as passed</code></li>
+<li><code>[BUG]: docs CI recipe (ci-integration.mdx) is less hardened than the repo's own workflows — empty-summary gate</code></li>
+<li><code>[FEA]: Tier 1 security on a plugin scans only its bundled skills; hooks and bin/ are never scanned</code></li>
+<li><code>[FEA]: Move other Tier 1 configs from code to yaml files</code></li>
+<li><code>Proposal: an EvalPort/OpenEval adapter for SkillEvaluator's ValidationResult</code></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>注意第 4 条 issue 的一句话最有价值：「仓库自身的工作流比它文档里推荐的 recipe 更 hardened」—— ⭐⭐⭐⭐⭐ </strong>即它在承认「文档里的推荐路径比代码里的实际路径弱」。⭐⭐⭐⭐⭐ <strong>而第 5 条更硬：「Tier 1 安全扫描只扫 bundled skills，hooks 和 <code>bin/</code> 永远不被扫描」—— ⭐⭐⭐⭐⭐ </strong>这是评估工具自身的安全盲区，且是用户自己报出来的。**</p>
+<p>⭐⭐⭐⭐⭐ <strong><code>google/elephant-goldfish-model</code> 的 122 个 open issue 则是协议层设计提案（实测标题）：</strong></p>
+<ul>
+<li><code>Add Adaptive Gating to EGM Lite</code> / <code>Add EGM Lite, a lightweight protocol for small changes</code></li>
+<li><code>Give each feature its own numbered folder under egm/</code></li>
+<li><code>Mention-neutralization fence matcher misses tilde and longer-backtick fences</code></li>
+<li><code>Check an implementation against its approved design</code></li>
+<li><code>Teach skills and personas to resolve plugin-root paths under omp</code></li>
+<li><code>Your plugin ranked #6 on the AI plugin leaderboard</code>（×2）</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 两组 issue 并置的架构含义：Skill 生态正在出现「自举」特征 —— ⭐⭐⭐⭐⭐ </strong>评估工具（SkillEvaluator）的 issue 是「我的检查器漏检了什么」，Skill 插件（EGM）的 issue 是「我想让协议长出新形状」。⭐⭐⭐⭐⭐ <strong>但本日实测的一个结构性事实是：17 个仓库里只有 4 个带 ≥3 套 harness 清单，且只有 3 个同时给出两条安装命令 —— ⭐⭐⭐⭐⭐ </strong>即「协议在演化」与「分发在收敛」之间还隔着一层没有标准化的适配层。**</p>
+<hr />
+<h2 id="_2">最值得关注的方向</h2>
+<p>⭐⭐⭐⭐⭐ <strong>方向一：判据从「账号注册聚集度」彻底转向「owner 的仓库结构指纹」。</strong>
+本日实测：10/10 投放账号有占位仓库，16 个对照账号只有 1 个有（6.25%）。⭐⭐⭐⭐⭐ <strong>这比 11-15 建立的「97 秒注册窗口」判据强得多 —— 因为投放方只需要养号数月就能规避时间聚集，却无法规避「自己造一个 10 字节的随机名仓库」这个结构。</strong>⭐⭐⭐⭐⭐ <strong>这条判据也直接可用于审计既有档案：<code>projects/</code> 里若某个项目的 owner 有占位仓库，它就值得复核。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向二：「release 数量」这类聚合计数判据应全面降级为「链路闭合性」判据。</strong>
+11-16 证明了 release 数能被凭空制造，本日证明了 release 数也能真实反映 100 次演进。⭐⭐⭐⭐⭐ <strong>两者唯一的区别是「tag → commit → 代码 diff」链是否闭合。⭐⭐⭐⭐⭐ </strong>推论：commit 数、push 频率、release 数、版本号多样性 —— 这四个最常见的活跃度指标，单独看全部无信息量，必须落到「某个具体版本背后的具体代码变更」上才有意义。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>方向三：Skill 的「内容」在商品化，「分发适配层」是下一个战场。</strong>
+<code>boring-marketing-skills</code> 用 6 个 commit 交付 32 个技能（235 blobs，其中 161 个是 <code>.md</code>）；⭐⭐⭐⭐⭐ <code>Claude-BugHunter</code> 用 83 个 <code>SKILL.md</code> 覆盖 681 份已披露的 HackerOne 报告模式。⭐⭐⭐⭐⭐ <strong>内容层的进入门槛在快速下降，而只有 4/17 的仓库带 ≥3 套 harness 清单、只有 3/17 同时公开两条主流安装命令 —— ⭐⭐⭐⭐⭐ </strong>适配层是明确的空位。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>方向四：上下文预算是适配层的真实成本，而不是技术洁癖。</strong>
+<code>ffmpeg-skill</code> 的做法是「MCP <code>tools/list</code> 默认只暴露 12 个核心工具，<code>FFMPEG_SKILL_MCP_FULL=1</code> 才列全部 42」。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这把「工具太多会撑爆客户端上下文」从一个抱怨变成了一个可配置的契约 —— 是本日报最值得直接抄走的一条工程决策。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向五：投放方正在把「养号」制度化，这是所有基于时间的判据的共同失效点。</strong>
+本日三批账号分别养了 1 个月、2 个月、5 个月。⭐⭐⭐⭐⭐ <strong>这意味着任何「注册时间接近当前」的启发式都在被针对性规避；⭐⭐⭐⭐⭐ </strong>未来的检测必须依赖「结构与行为的组合」，而不是「时间」。**</p>
+<hr />
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="oceanchandlersewerrob-run-cheat-private-star">🥇 <code>OceanChandlerSewer/rob-run-cheat-private</code> — 族内 star 最高、账号最干净的一个</h3>
+<p><strong>可核验事实（2026-11-17 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td><strong>236</strong> / 65 / <strong>91</strong> / 1</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>8 KB / <strong>2</strong>（<code>LICENSE</code> 1,075 B + <code>README.md</code> 5,151 B）</td>
+</tr>
+<tr>
+<td>语言 / 许可</td>
+<td><strong>无</strong>（仅 Markdown）/ MIT</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-11-15T18:10:56Z / 2026-11-16T14:26:30Z</td>
+</tr>
+<tr>
+<td>commit</td>
+<td>3 个：<code>Initial commit</code> / <code>Update README.md</code> ×2</td>
+</tr>
+<tr>
+<td>owner</td>
+<td><code>OceanChandlerSewer</code>，账号 <strong>2026-08-10T10:12:04Z</strong> 创建，<strong>0 followers</strong>，<strong>恰好 2 个公开仓库</strong></td>
+</tr>
+<tr>
+<td>兄弟仓库</td>
+<td><code>trckulpa</code>（0⭐ · 1 blob · README = <code># trckulpa</code> · 创建于账号后 1 分 51 秒）</td>
+</tr>
+<tr>
+<td>载荷入口</td>
+<td><code>modbay.live/library/rob-run</code>（仅 HEAD 请求，未下载）</td>
+</tr>
+<tr>
+<td>README 模板</td>
+<td><code>capsule-render.vercel.app</code> 横幅（<code>NOX PRIVATE</code> / <code>PRIVATE ROB RUN EDITION</code>）+ <code>img.shields.io</code> 徽章（<code>VERSION 3.0.0</code> / <code>STATUS RELEASED</code> / <code>GAME ROB RUN</code> / <code>PLATFORM WINDOWS</code>）</td>
+</tr>
+<tr>
+<td>唯一的 open issue</td>
+<td><code>NOT WORK</code>（作者 <code>Nicoo01x</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>本日报选择它作为 Top 1 的理由不是它 star 最高，而是它同时具备族内最干净的账号信号与最强的两个「反直觉」数据点：</strong></p>
+<p><strong>反直觉点一：<code>subs 91 / stars 236 = 38.6%</code> 是族内最高的订阅比。</strong> ⭐⭐⭐⭐⭐ <strong>11-15 日报已证明「subs 高」可以是纯订阅农场的手动产物，本日这条数据在族内再次复现 —— ⭐⭐⭐⭐⭐ </strong>但本日报不主张「91 个订阅是假的」，因为 <code>subscribers</code> 端点在本窗口对所有仓库（包括对照仓库 <code>anthropics/skills</code>）都返回 404，⭐⭐⭐⭐⭐ <strong>无法逐个取证。</strong></p>
+<p><strong>反直觉点二：它有 65 个 forks，而同族的 8 个兄弟仓库有 6 个是 0 forks。</strong> ⭐⭐⭐⭐⭐ <strong>这与「fork/star 比高 = 关注真实」的旧判据方向相反 —— 65/236 = 27.5% 的 fork/star 比，是族内唯一的高值。</strong>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 但两个 fork 都不能证明真实使用：11-13 记录的 <code>AIRzZ90/study-materials-fork</code> 表明 fork 关系本身可被制造，而本仓库的 <code>fork</code> 字段（<code>fork: false</code> / <code>parent: null</code>）说明它不是 GitHub 的 fork 关系。⭐⭐⭐⭐⭐ </strong>本日报对 fork 到达时间分布未做取证，故不对 65 个 fork 的来源作任何主张。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日真正的判据仍然是结构性的：这个账号的唯一另一个仓库，是一个 10 字节的随机名占位仓库。</strong>⭐⭐⭐⭐⭐ <strong>这与它 star 236、subs 91、forks 65 无关 —— 换言之，即使把所有热度指标都拿掉，这一条仍然成立。</strong></p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未下载、未运行、未打开任何被投放的载荷。</strong> 对 <code>modbay.live/library/rob-run</code> 只做了一次 HTTP HEAD（405 / <code>Allow: GET</code> / <code>server: nginx/1.18.0 (Ubuntu)</code>），<strong>未发起 GET</strong>。
+- ⭐⭐⭐ ⚠️ <strong><code>subscribers</code> 端点在本窗口对所有被测仓库返回 404</strong>（含对照仓库 <code>anthropics/skills</code>），故 <strong>91 个订阅者的身份未取证</strong>。
+- ⭐⭐⭐ ⚠️ <strong>65 个 fork 的到达时间分布未测</strong>，不主张「fork 是真的关注」。
+- ⭐⭐⭐ ⚠️ <strong>不主张「star 是刷的」</strong> —— 只记录「star 236 相对同族 52–175 是最高值」。
+- ⭐⭐⭐ ⚠️ <strong>「投放体」是结构推断，不是法律结论</strong>；本日报未核验这些仓库是否已收到下架通知、也未核验 <code>modbay.live</code> 的运营者身份。
+- ⭐⭐⭐ ⚠️ <strong>模板相似性不作为独立判据</strong> —— 本日报实测 <code>capsule-render</code> 在真实学生账号（<code>francyellenn</code>）的 14 个仓库里有 11 个被使用。</p>
+<hr />
+<h3 id="kajisho5ffmpeg-skill-100-release">🥈 <code>kajisho5/ffmpeg-skill</code> — 100 个 release 背后的真实代码链</h3>
+<p><strong>可核验事实（2026-11-17 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>6,630 / 598 / 12 / 33</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>40,342 KB / 425（<code>SKILL.md</code> 16 个）</td>
+</tr>
+<tr>
+<td>语言 / 许可</td>
+<td>Python / MIT</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-09-03T14:33:38Z / 2026-11-16T01:08:43Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://www.npmjs.com/package/ffmpeg-skill</code></td>
+</tr>
+<tr>
+<td>topics</td>
+<td>19 个，含 <code>agent-skills</code> / <code>mcp</code> / <code>mcp-server</code> / <code>model-context-protocol</code> / <code>gemini-cli-extension</code></td>
+</tr>
+<tr>
+<td>release / tag</td>
+<td>100 / 100，<strong>tag → commit sha 100/100 互不相同</strong></td>
+</tr>
+<tr>
+<td>release 跨度</td>
+<td><code>2026-10-15T11:32:24Z</code> – <code>2026-11-15T23:32:43Z</code>（<strong>756.0 小时</strong>）</td>
+</tr>
+<tr>
+<td>相邻 release 间隔</td>
+<td>中位 <strong>2.42 小时</strong>（min 0.3 h / max 113.01 h）</td>
+</tr>
+<tr>
+<td>带 asset 的 release</td>
+<td><strong>0 / 100</strong></td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>kajisho5</code> 322 · <code>github-actions[bot]</code> 194 · <code>claude[bot]</code> 53 · <code>dependabot[bot]</code> 9 · <code>claude</code> 4 · <code>rymalia</code> 2</td>
+</tr>
+<tr>
+<td>owner</td>
+<td><code>kajisho5</code>，账号 2016-07-25 创建、<strong>121 个公开仓库</strong>、0 followers</td>
+</tr>
+<tr>
+<td>harness 清单</td>
+<td><code>.claude-plugin/</code> · <code>.cursor-plugin/</code> · <code>gemini-extension.json</code> · <code>server.json</code>（4 套）</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>8 个工作流，含 <code>codeql.yml</code> / <code>scorecard.yml</code> / <code>cflite.yml</code>（ClusterFuzzLite）/ <code>pages.yml</code></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它的 CI 列表里有一个别的仓库没有的东西：<code>.clusterfuzzlite/Dockerfile</code> / <code>.clusterfuzzlite/build.sh</code> / <code>.clusterfuzzlite/project.yaml</code></strong> ⭐⭐⭐⭐⭐ <strong>—— 即它把 fuzzing 接进了自己的工具链。⭐⭐⭐⭐⭐ </strong>配合 33 个 open issue 与 <code>docs/contract.md</code>、<code>evals/results/iteration-22.json</code> 这类评测产物，⭐⭐⭐⭐⭐ <strong>它展示的是「Skill 作为软件工程制品」而非「Skill 作为提示词合集」的路线。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日最值得抄走的一条（实测 README 原文）：</strong></p>
+<blockquote>
+<p><code>tools/list</code> advertises a core 12 by default to keep client context small, with <code>FFMPEG_SKILL_MCP_FULL=1</code> listing all 42; every tool is reachable by name through <code>tools/call</code> either way</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这是「适配层成本」的一个具体解法：不是少做功能，而是给功能分级，并把分级做成环境变量开关。⭐⭐⭐⭐⭐ </strong>这直接回答了本日第 4 条趋势提出的问题 —— 分发适配层的真正瓶颈是客户端上下文预算，而 ffmpeg-skill 用「默认 12 / 全量 42」证明这个预算可以协商。**</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未 clone、未安装、未运行、未调用任何工具。</strong> 全部结论来自 GitHub API 的元数据、tree、commit diff 与 README 文本。
+- ⭐⭐⭐ ⚠️ <strong>12 个 tag 是抽样</strong>（100 个中的 12 个），<strong>不是全部 100 个都逐一查过父 commit</strong>；「12/12 父 commit 触及源码」是抽样结论，未外推到 100 个。
+- ⭐⭐⭐ ⚠️ <strong>100 个 release 全部 0 asset</strong>，因此<strong>未核验「release 资产是否随版本变化」</strong>（11-16 判据的第二段）—— 但因 0 asset，该问题在本仓库不适用。
+- ⭐⭐⭐ ⚠️ <strong>未核验 npm 上的包内容与仓库是否一致</strong>（<code>npmjs.com/package/ffmpeg-skill</code> 未访问）。
+- ⭐⭐⭐ ⚠️ <strong>README 中 <code>evals/</code> 的自评数字（如「7/8 routed」）是项目自述</strong>，本日报未复现任何一次评测。
+- ⭐⭐⭐ ⚠️ <strong>33 个 open issue 未逐条打开正文</strong>，仅读了标题与作者。</p>
+<hr />
+<h3 id="googleelephant-goldfish-model-6-harness">🥉 <code>google/elephant-goldfish-model</code> — 6 套 harness 清单的适配层范本</h3>
+<p><strong>可核验事实（2026-11-17 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>20,347 / 1,505 / 81 / 122</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>15,271 KB / 283（<code>SKILL.md</code> 7 个）</td>
+</tr>
+<tr>
+<td>语言 / 许可</td>
+<td>Python / Apache-2.0</td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-09-13T16:31:06Z / 2026-11-16T20:05:21Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://egm.dev</code></td>
+</tr>
+<tr>
+<td>owner</td>
+<td><code>google</code>（2012-01-18 创建、82,470 followers、2,945 repos）</td>
+</tr>
+<tr>
+<td>主贡献者</td>
+<td><code>n3wth</code> 123 · <code>dependabot[bot]</code> 11 · <code>briansuchy</code> 6 · <code>atrearyan</code> 5 · <code>YashDayani</code> 5 · <code>jpettitt</code> 5</td>
+</tr>
+<tr>
+<td><strong>harness 清单</strong></td>
+<td><strong>6 套</strong>：<code>.claude-plugin/</code>（含 <code>marketplace.json</code> + <code>plugin.json</code>）· <code>.codex-plugin/plugin.json</code> · <code>.cursor-plugin/</code>（含 <code>marketplace.json</code> + <code>plugin.json</code>）· <code>.plugin/plugin.json</code> · 根级 <code>plugin.json</code> · <code>.gemini/config.yaml</code> + <code>.gemini/styleguide.md</code> · <code>.agents/plugins/marketplace.json</code></td>
+</tr>
+<tr>
+<td>其他 harness 适配</td>
+<td><code>.github/workflows/copilot-native.yml</code> · <code>cursor-native.yml</code> · <code>opencode-native.yml</code>（+ 新增的 <code>Add experimental Windsurf (Devin Desktop) adapter</code>）</td>
+</tr>
+<tr>
+<td>仓库级契约</td>
+<td><code>AGENTS.md</code> · <code>AI_POLICY.md</code> · <code>ACCESSIBILITY.md</code> · <code>TESTING.md</code> · <code>CODEOWNERS</code> · <code>PR_PULL_REQUEST_TEMPLATE</code></td>
+</tr>
+<tr>
+<td>release</td>
+<td>2 个（<code>v0.1.1</code> 2026-11-06 · <code>v0.1.0</code> 2026-10-27，各 3 个 asset）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>它的设计主张（实测 README 原文）：</strong></p>
+<blockquote>
+<p><strong>Elephant</strong> holds your project context and drafts the specification. <strong>Goldfish</strong> reviewers examine the draft and referenced source material <strong>without the earlier conversation</strong>, helping expose unstated assumptions and blind spots. <strong>You</strong> make the architectural trade-offs and approve the specification before implementing.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这句话里藏着一个可迁移的架构原则：把「上下文持有」与「上下文无关的复核」拆成两个角色。⭐⭐⭐⭐⭐ </strong>金鱼角色的价值恰恰在于它没有前情 —— 这与本数据集里此前记录的多项目「让 agent 从零重新读代码」的做法同源，但 EGM 把它做成了协议内的固定角色，而不是人工纪律。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>它的 122 个 open issue 则暴露了这套机制的边界（实测标题）：</strong></p>
+<ul>
+<li><code>Add EGM Lite, a lightweight protocol for small changes</code> + <code>Add Adaptive Gating to EGM Lite</code> —— <strong>即「小改动用重量级流程太贵」这个抱怨直接来自用户。</strong></li>
+<li><code>Mention-neutralization fence matcher misses tilde and longer-backtick fences</code> + <code>Fix bare-mention neutralization bypass via stray fence backtick (#439)</code> —— <strong>即「防止 agent 用 @ 提及绕过复核」的防线被实测绕过了一次并已修复。</strong></li>
+<li><code>Teach skills and personas to resolve plugin-root paths under omp</code> —— <strong>跨 harness 的路径解析差异，是适配层真实成本的直接证据。</strong></li>
+<li><code>Your plugin ranked #6 on the AI plugin leaderboard</code>（×2）—— <strong>有人在用它排名。</strong></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 架构上最值得记的一条：EGM 的 <code>.plugin/</code>（OpenCode/omp）与 <code>.codex-plugin/</code>、<code>.cursor-plugin/</code>、<code>.claude-plugin/</code> 是并列的兄弟目录，⭐⭐⭐⭐⭐ 而 <code>Derive Claude root source in packaging (#394)</code> 这个 commit 说明连「打包时怎么定位 Claude 的根目录」都需要专门修 —— ⭐⭐⭐⭐⭐ </strong>即适配层的工作量不在「写几份清单」，而在「同一份内容在 N 个 harness 的路径与生命周期语义下都成立」。**</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未安装、未运行任何 EGM 插件、未跑任何 review 流程。</strong>
+- ⭐⭐⭐ ⚠️ <strong>122 个 open issue 未逐条读正文</strong>，仅读标题与作者；<code>Add EGM Lite</code> 等提案的<strong>实现状态未核验</strong>。
+- ⭐⭐⭐ ⚠️ <strong>「Windsurf 适配器」是 commit 消息所述，仓库树中未见独立的 <code>.windsurf-plugin/</code> 目录</strong> —— 其落地形态<strong>待核验</strong>。
+- ⭐⭐⭐ ⚠️ <strong><code>egm.dev</code> 与 <code>docs/</code> 站点未访问</strong>。
+- ⭐⭐⭐ ⚠️ <strong>owner 是 <code>google</code> 组织账号，但主贡献者是 <code>n3wth</code>（123 commits）</strong> —— 项目实际主导者与组织归属的关系未核验。
+- ⭐⭐⭐ ⚠️ <strong><code>google/elephant-goldfish-model</code> 的 star 在本窗口内上涨（周榜 +5,060），但本日报未做 star 增速的时间序列统计。</strong></p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>⭐⭐⭐⭐⭐ 风险一：占位仓库指纹一旦被广泛使用，投放方会立刻换结构。</strong>
+本日报的对照实验证明这条判据很强（100% vs 6.25%），⭐⭐⭐⭐⭐ <strong>但正因如此它也会被针对 —— 改掉占位仓库只需一次自动化操作。</strong>⭐⭐⭐⭐⭐ <strong>这不削弱它的价值：它至少把「发现这类投放体」的成本从「逐仓库读 README」降到「一次 owner 列表请求」，⭐⭐⭐⭐⭐ </strong>而且它能被历史数据回溯 —— 本日报已经用它把本日族和 11-15 族连成同一套流程。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 风险二：养号制度化让所有基于时间的判据同时失效。</strong>
+本日三批账号分别养了 1、2、5 个月。⭐⭐⭐⭐⭐ <strong>11-16 日报已经因为「账号当天新建」不成立而作废了那条判据；本日的证据说明投放方不是「碰巧不当天新建」，而是「刻意提前建好」。</strong>⭐⭐⭐⭐⭐ <strong>推论：判据库必须以结构与行为为主键，时间只能作为辅助排序。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险三：把「release 多」一刀切判为造假，会误伤真正在做发布纪律的项目。</strong>
+<code>ffmpeg-skill</code> 有 100 个 release、0 asset、release commit 只改元数据 —— ⭐⭐⭐⭐⭐ <strong>只看这三个数字，它和 11-16 的 <code>steam-library-bridge</code> 几乎一样。</strong>⭐⭐⭐⭐⭐ <strong>但它的每个版本背后都有一个触及源码的父 commit。</strong>⭐⭐⭐⭐⭐ <strong>如果不追到「tag → commit → diff」这一层，就会把一个每天发布 2–3 次、每次都带真实功能的项目误判为造假。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险四：Skill 生态的「自举」正在制造评估真空。</strong>
+<code>SkillEvaluator</code> 的用户自己报出「Tier 1 安全扫描只扫 bundled skills，hooks 和 <code>bin/</code> 永远不被扫描」⭐⭐⭐⭐⭐ <strong>——即当前最权威的 Skill 评估器之一，存在一个已知且未修的扫描盲区。</strong>⭐⭐⭐⭐⭐ <strong>同时 17 个仓库里只有 4 个带 ≥3 套 harness 清单，安装协议没有标准 —— ⭐⭐⭐⭐⭐ </strong>这意味着一份 Skill 会被装到哪、怎么装、装到哪个目录，<strong>目前仍然不统一，而 <code>Derive Claude root source in packaging</code> 这类 commit 说明差异会渗进打包逻辑。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险五：本日族把「游戏外挂」当载荷名，但载荷本身未核验。</strong>
+9 个仓库的 README 都列出了 aimbot / ESP / radar / 无敌 等功能表，⭐⭐⭐⭐⭐ <strong>但本日报未下载任何载荷，因此「这些功能表描述的是否与实际载荷一致」完全未知。</strong>⭐⭐⭐⭐⭐ <strong>同样未知的是 <code>modbay.live</code> 是否托管了其他品类 —— 本日报只在这 9 个 README 里看到它。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇一：「占位仓库」可以直接做成一零成本巡检项。</strong>
+一次 <code>users/{owner}/repos</code> 请求 → 检查是否存在 README 恰好等于 <code># &lt;仓库名&gt;</code> 的单 blob 仓库。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 更好的用法是反查：拿到一个可疑仓库 → 拉它的 owner 的全部仓库 → 若发现占位仓库，则该 owner 的其他仓库全部进入复核队列。⭐⭐⭐⭐⭐ </strong>这比逐仓库读 README 快一个数量级。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇二：「tag → commit → diff」三段式检查可以固化成 CI。</strong>
+本日报对 12 个 tag 的手工检查，完全可以脚本化：拉 tags → 逐个比对 commit sha 是否唯一 → 检查该 commit 或其父 commit 是否触及源码文件。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这条检查同时能识别「真发布」与「假版本号」，⭐⭐⭐⭐⭐ </strong>且成本极低（一次 <code>tags</code> 请求 + N 次 <code>commits</code> 请求）。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇三：<code>ffmpeg-skill</code> 的「默认 12 个工具 / 全量 42 个工具」是适配层上下文预算的可复用解法。</strong>
+⭐⭐⭐⭐⭐ <strong>在 MCP 协议里，<code>tools/list</code> 的返回量直接占用客户端上下文。⭐⭐⭐⭐⭐ </strong>把「核心集」与「全集」用环境变量分层，并保证全集里的每个工具<strong>按名</strong>可达，⭐⭐⭐⭐⭐ <strong>既守住默认上下文预算，又不牺牲能力 —— 这是本日最值得直接抄走的一条工程决策。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇四：EGM 的「大象/金鱼」双角色分离可以移植到任何 agent 复核流程。</strong>
+⭐⭐⭐⭐⭐ <strong>核心不是两个 agent，而是「复核方明确不持有前情」这一条。⭐⭐⭐⭐⭐ </strong>任何需要「挑出未言明假设」的场合（设计评审、代码审查、安全审计）都可以照搬这个角色分工。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇五：<code>boring-marketing-skills</code> 展示了「用 JSON Schema 固定 agent 间契约」的轻量做法。</strong>
+实测其树内有 <code>_system/schemas/brand-manifest.schema.json</code> / <code>campaign-brief.schema.json</code> / <code>content-brief.schema.json</code> / <code>email-sequence-summary.schema.json</code> / <code>keyword-plan.schema.json</code> / <code>voc.schema.json</code> 六个 schema，⭐⭐⭐⭐⭐ <strong>以及 <code>_system/CONVENTIONS.md</code> / <code>_system/brand-memory.md</code> / <code>_system/output-format.md</code> 三个共享上下文文件。⭐⭐⭐⭐⭐ </strong>⭐⭐⭐ 这与本数据集此前记录的 <code>pydtcpip</code> 的「能力矩阵三档」、<code>coordinator</code> 的 <code>.token-ceilings</code>、<code>interspace</code> 的签名校验条款同属一类：⭐⭐⭐⭐⭐ <strong>把纪律写进机器会读到的地方。</strong></p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th>类别</th>
+<th>档案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OceanChandlerSewer/rob-run-cheat-private</code></td>
+<td style="text-align: right;">236</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/rob-run-cheat-private.html">rob-run-cheat-private</a></td>
+</tr>
+<tr>
+<td><code>hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client</code></td>
+<td style="text-align: right;">53</td>
+<td>观察型（反例样本）</td>
+<td><a href="projects/call-of-duty-modern-warfare-4-cheat-client.html">call-of-duty-modern-warfare-4-cheat-client</a></td>
+</tr>
+<tr>
+<td><code>kajisho5/ffmpeg-skill</code></td>
+<td style="text-align: right;">6,630</td>
+<td>生产可用</td>
+<td><a href="projects/ffmpeg-skill.html">ffmpeg-skill</a></td>
+</tr>
+<tr>
+<td><code>google/elephant-goldfish-model</code></td>
+<td style="text-align: right;">20,347</td>
+<td>工具型</td>
+<td><a href="projects/elephant-goldfish-model.html">elephant-goldfish-model</a></td>
+</tr>
+<tr>
+<td><code>NVIDIA/SkillEvaluator</code></td>
+<td style="text-align: right;">2,623</td>
+<td>平台候选</td>
+<td><a href="projects/skillevaluator.html">skillevaluator</a></td>
+</tr>
+<tr>
+<td><code>mvanhorn/last30days-skill</code></td>
+<td style="text-align: right;">68,087</td>
+<td>生产可用</td>
+<td><a href="projects/last30days-skill.html">last30days-skill</a></td>
+</tr>
+<tr>
+<td><code>vercel-labs/agent-browser</code></td>
+<td style="text-align: right;">51,996</td>
+<td>生产可用</td>
+<td><a href="projects/agent-browser.html">agent-browser</a></td>
+</tr>
+<tr>
+<td><code>ag-ui-protocol/ag-ui</code></td>
+<td style="text-align: right;">18,912</td>
+<td>平台候选</td>
+<td><a href="projects/ag-ui.html">ag-ui</a></td>
+</tr>
+<tr>
+<td><code>boringmarketer/boring-marketing-skills</code></td>
+<td style="text-align: right;">117</td>
+<td>观察型</td>
+<td><a href="projects/boring-marketing-skills.html">boring-marketing-skills</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>首次记录：2026-11-17 · 全部元数据取自 2026-11-17 CST 的 GitHub REST / Search API 快照</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

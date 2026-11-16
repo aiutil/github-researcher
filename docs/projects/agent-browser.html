@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vercel-labs/agent-browser | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="vercel-labsagent-browser">vercel-labs/agent-browser</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>一个 Rust 写的浏览器自动化 CLI，把网页压缩成带 ref 的紧凑文本快照，让 agent 用「snapshot → 对 ref 动作 → 再 snapshot」三步循环驱动浏览器 —— 它是本数据集里 issue 密度最高、也最能说明「agent 需要什么形状的浏览器接口」的项目。</strong></p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>agent 驱动浏览器的核心矛盾是：网页是人类视觉设计的（导航、卡片、按钮），而 agent 需要的是稳定、可寻址、可验证的结构。</strong></p>
+<p>⭐⭐⭐⭐⭐ 传统做法是把整页 HTML 或 accessibility tree 塞给模型 —— ⭐⭐⭐⭐⭐ <strong>代价是上下文爆炸，而且元素引用不稳定。</strong></p>
+<p>⭐⭐⭐⭐⭐ 本项目的解法（实测 README 原文）：</p>
+<blockquote>
+<p>agent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. <code>snapshot</code> returns the page as compact text with a ref such as <code>@e1</code> for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 三个设计要点：① snapshot 是紧凑文本而不是完整 DOM；② 每个元素有稳定 ref（<code>@e1</code>）；③ 浏览器在命令之间保持打开，因此每一步都是一次短的 shell 调用。</strong></p>
+<h2 id="2026-11-17">为什么值得关注（2026-11-17）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本数据集里「issue 数量」这个指标的一个反例样本 —— 589 个 open issue 配 51,996⭐（1.1%），在这里是高活跃度的表现，而不是质量信号。</strong></p>
+<p><strong>可核验事实一：issue 密度与内容（实测）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / <strong>open issues</strong> / subs</td>
+<td>51,996 / 3,628 / <strong>589</strong> / 114</td>
+</tr>
+<tr>
+<td>issue/star 比</td>
+<td><strong>1.13%</strong></td>
+</tr>
+<tr>
+<td>fork/star 比</td>
+<td>7.0%</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>35,243 KB / 680</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建</td>
+<td>Rust / Apache-2.0 / 2026-01-11T05:38:15Z</td>
+</tr>
+<tr>
+<td>最后 push</td>
+<td>2026-11-16T22:33:21Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://agent-browser.dev</code></td>
+</tr>
+<tr>
+<td>release</td>
+<td><strong>100 个</strong>（GitHub API 单页上限）</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>2 个工作流：<code>ci.yml</code> / <code>release.yml</code></td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>ctate</code> 426 · <code>Railly</code> 84 · <code>lahfir</code> 72 · <code>github-actions[bot]</code> 68 · <code>jin-2-kakaoent</code> 27 · <code>mikewong23571</code> 10</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>Org <code>vercel-labs</code>（2022-07-01 创建、10,684 followers、398 repos）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日报把它与本日记录的 <code>ffmpeg-skill</code>（33 issue）放在一起看：⭐⭐⭐⭐⭐ </strong>同样是高 star 的 Agent 工具，issue 数差 18 倍 —— ⭐⭐⭐⭐⭐ <strong>这说明「issue 数量」本身完全不是质量判据，⭐⭐⭐⭐⭐ 而「issue 的内容是否具体」才是（详见「热度来源判断」）。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>实测近 8 个 commit 消息全部是具体的功能/修复条目：</strong></p>
+<ul>
+<li><code>fix(cdp): share session matching for direct-page events</code></li>
+<li><code>fix(flow): replay only interaction fields of recorded commands (#2607)</code></li>
+<li><code>feat(click): add right-click, middle-click, and modifier keys to click and dblclick</code></li>
+<li><code>fix(webmcp): accept invoke params after the tool name (#2591)</code></li>
+<li><code>fix(select): support custom ARIA combobox and listbox widgets (#2592)</code></li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 注意 <code>fix(webmcp): accept invoke params after the tool name</code> —— 即它实现了 WebMCP 侧的 agent 控制能力。</strong></p>
+<p><strong>可核验事实二：<code>doctor</code> 子系统（实测 <code>cli/src/doctor/</code> 目录）。</strong></p>
+<p>⭐⭐⭐⭐⭐ 实测 <code>cli/src/doctor/</code> 下有 8 个模块：<code>chrome.rs</code> · <code>config.rs</code> · <code>daemon.rs</code> · <code>environment.rs</code> · <code>ffmpeg.rs</code> · <code>fix.rs</code> · <code>helpers.rs</code> · <code>launch.rs</code> ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 即它有一个分模块的、且带 </strong><code>fix.rs</code>（自动修复）<strong> 的环境诊断子系统。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这与本日记录的 <code>last30days-skill</code> 的 <code>doctor</code>、以及 <code>NVIDIA/SkillEvaluator</code> 的 tier 流水线，属于同一条线索：⭐⭐⭐⭐⭐ </strong>「自检」正在成为 agent 工具的标准配置 —— ⭐⭐⭐⭐⭐ 而且本项目的 <code>doctor</code> 还带自动修复（<code>fix.rs</code>），比只报告更进一步。**</p>
+<p><strong>可核验事实三：12 个 SKILL.md 的构成（实测）。</strong></p>
+<p>⭐⭐⭐⭐⭐ 实测路径：<code>skills/agent-browser/SKILL.md</code>（对外的主技能）+ <code>skill-data/core</code> · <code>agentcore</code> · <code>derive-client</code> · <code>dogfood</code> · <code>electron</code> · <code>modern-web-guidance</code> · <code>slack</code> · <code>vercel</code> · <code>vercel-sandbox</code> · <code>webmcp-gen</code>（10 个 skill-data 目录）+ <code>.agents/skills/technical-writer/SKILL.md</code>。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 注意这 11 个 <code>skill-data/*</code> 并不是 11 个「产品技能」，⭐⭐⭐⭐⭐ 而是</strong>仓库自身的开发知识<strong>（如何写客户端、如何做 dogfood、如何接 Slack、如何接 Vercel Sandbox、如何生成 WebMCP）⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ </strong>即 agent-browser 把「开发 agent-browser 的知识」也做成了 Skill 供其他 agent 使用。⭐⭐⭐⭐⭐ 这是一种自举式的知识封装。**</p>
+<p><strong>可核验事实四：Rust 实现与安全模块。</strong></p>
+<p>⭐⭐⭐⭐⭐ 实测 <code>cli/src/</code> 含 <code>browser_security.rs</code> · <code>ca_bundle.rs</code> · <code>connection.rs</code> · <code>chat.rs</code> · <code>commands.rs</code> ⭐⭐⭐⭐⭐ 以及 <code>cli/cdp-protocol/browser_protocol.json</code> + <code>js_protocol.json</code>（⭐⭐⭐⭐⭐ <strong>即它把 CDP 与 JS 协议定义作为数据文件带在仓库里</strong>）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 「浏览器安全」与「CA bundle」被单独成文件，⭐⭐⭐⭐⭐ 对一个要下载并驱动真实浏览器的工具来说，这是必要的关注点。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p>⭐⭐⭐⭐⭐ <strong>判断：热度来源是「一个被所有 coding agent 都需要的底层能力 + 一个极低的接入成本」。</strong></p>
+<p>⭐⭐⭐⭐⭐ 支撑的<strong>可核验事实</strong>：</p>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 接入成本极低</strong>（实测 README）：
+   <code>bash
+   npm install -g agent-browser
+   agent-browser install           # 首次下载 Chrome for Testing</code>
+   ⭐⭐⭐⭐⭐ <strong>且支持 <code>npx agent-browser open example.com</code> 免安装、Homebrew 安装、<code>--with-deps</code> 处理 Linux 系统库。⭐⭐⭐⭐⭐ 「一个命令就能用」是 star 增长最直接的解释。</strong></li>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 分发面极广</strong>：实测 README 带 <code>skills.sh/vercel-labs/agent-browser</code> 徽章 —— 即它被收录进第三方 Skill 分发站。</li>
+<li>⭐⭐⭐⭐⭐ <strong>owner 是 <code>vercel-labs</code> 组织</strong>（10,684 followers、398 repos）⭐⭐⭐⭐⭐ 且主贡献者 <code>ctate</code> 有 426 commits，⭐⭐⭐⭐⭐ 另有 <code>Railly</code> 84 + <code>lahfir</code> 72 + <code>jin-2-kakaoent</code> 27 + <code>mikewong23571</code> 10 —— <strong>⭐⭐⭐⭐⭐ 5 位真实贡献者（其中 3 位非 bot 贡献 ≥10 commits）。</strong></li>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 589 个 issue 配 3,628 forks</strong>：⭐⭐⭐⭐⭐ 一个「被大量 agent 集成」的库才会同时有这两个数字。</li>
+<li>⭐⭐⭐⭐⭐ <strong>发布持续</strong>：最近一次 push 2026-11-16T22:33:21Z，⭐⭐⭐⭐⭐ 100 个 release（已达 GitHub API 单页上限，实际更多）。</li>
+</ol>
+<p>⭐⭐⭐⭐⭐ <strong>⚠️ 不作主张的部分：star 增速未做统计。⭐⭐⭐⭐⭐ 且本日报不主张「589 个 issue 是质量差的证据」—— ⭐⭐⭐⭐⭐ 从实测 commit 与 issue 标题看，它们是具体的功能条目。</strong></p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 紧凑文本快照 + 稳定 ref</strong>
+   ⭐⭐⭐⭐⭐ <code>snapshot -i</code> 返回带 <code>@e1</code> 式 ref 的紧凑文本，⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这同时解决了上下文预算与元素寻址两个问题 —— ⭐⭐⭐⭐⭐ 注意它选的是「可寻址的紧凑表示」而不是「完整的 accessibility tree」。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 浏览器跨命令保持打开</strong>
+   ⭐⭐⭐⭐⭐ 「The browser stays open between commands, so each step is one short shell call」⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这让整个交互变成一串短 shell 调用，⭐⭐⭐⭐⭐ 而不是每次都重开浏览器 —— 对延迟与状态保持都是关键。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 分层 doctor 子系统（8 模块，含自动修复 <code>fix.rs</code>）</strong>
+   ⭐⭐⭐⭐⭐ 覆盖 chrome · config · daemon · environment · ffmpeg · launch。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 带 <code>fix.rs</code> 意味着它不只是报告问题，还能修 —— ⭐⭐⭐⭐⭐ 这在「agent 面对一个装坏了的环境」时价值极大。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ WebMCP 支持</strong>
+   ⭐⭐⭐⭐⭐ 实测 commit <code>fix(webmcp): accept invoke params after the tool name (#2591)</code> ⭐⭐⭐⭐⭐ + <code>skill-data/webmcp-gen/SKILL.md</code>（⭐⭐⭐⭐⭐ <strong>生成 WebMCP 定义的技能</strong>）⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ 即它把「让 agent 通过 MCP 调用浏览器」做成了一等能力。</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 协议定义作为数据文件随仓库分发</strong>
+   ⭐⭐⭐⭐⭐ <code>cli/cdp-protocol/browser_protocol.json</code> + <code>js_protocol.json</code> ⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这让 CDP 协议的变化可以通过更新数据文件而非改代码来处理，⭐⭐⭐⭐⭐ 也让协议本身可被审阅。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ <code>browser_security.rs</code> 与 <code>ca_bundle.rs</code> 独立成文件</strong>
+   ⭐⭐⭐⭐⭐ 一个要下载并驱动真实浏览器的工具，⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 把安全与证书链单独成模块，说明「被 agent 驱动」这件事的信任边界被显式考虑过。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ <code>skill-data/</code> 把开发知识也封装成 Skill</strong>
+   ⭐⭐⭐⭐⭐ 10 个目录覆盖 core / agentcore / derive-client / dogfood / electron / slack / vercel / vercel-sandbox / webmcp-gen / modern-web-guidance。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 即「如何开发这个项目」本身是可被其他 agent 消费的 Skill。</strong></p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>一个 CLI 进程 + 一个它托管的浏览器进程</strong>。CLI 是 Rust 二进制（npm 分发），浏览器是 Chrome for Testing（运行时下载）。<strong>边界不含模型、不含 agent 运行时</strong> —— agent 通过 shell 调用 CLI</td>
+<td>仓库树实测（<code>cli/src/</code> 含 <code>browser_security.rs</code> / <code>ca_bundle.rs</code> / <code>doctor/</code> 8 模块 / <code>cdp-protocol/*.json</code>）；README 的安装与 quick start；<strong>未安装、未运行、未打开过任何网页</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>①<code>agent-browser open &lt;url&gt;</code> → 启动并保持浏览器 ②<code>snapshot -i</code> → 返回带 <code>@eN</code> ref 的紧凑文本 ③<code>click @e1</code> / <code>type @e2 "..."</code> 等动作 ④<code>get url</code> 等读取校验 ⑤循环。旁路：<code>doctor</code> 诊断/修复环境；<code>webmcp</code> 让 MCP 客户端直接调用</td>
+<td>上述五步来自 README 的 quick start 原文；<strong>各命令的完整语义未核验</strong>（实测 <code>cli/src/commands.rs</code> 未读）；<strong>CDP 交互细节未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>①<strong>上下文预算 vs 页面保真</strong> → 用紧凑快照 + ref 而非完整 DOM/a11y tree；②<strong>速度 vs 状态</strong> → 浏览器跨命令常驻；③<strong>易用 vs 安全</strong> → <code>browser_security.rs</code> / <code>ca_bundle.rs</code> 独立模块 + <code>doctor</code> 自动修复；④<strong>Rust 二进制 vs Node 生态分发</strong> → 走 npm 包但核心是原生二进制</td>
+<td>①②③ 有 README 与目录结构支撑；④ 由 <code>cli/Cargo.toml</code> + npm 安装方式推断；<strong>⭐⭐⭐ 「紧凑快照相对完整 a11y tree 节省多少上下文」无实测数据</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td><code>npm install -g agent-browser &amp;&amp; agent-browser install</code> → 对一个<strong>本地静态 HTML 文件</strong>（不联网、不碰真实站点）跑完整五步循环：open → <code>snapshot -i</code> → 记录 ref 数量与文本长度 → click 某个已知 ref → <code>get url</code> 验证 → 再 snapshot 确认 DOM 变化 → 跑 <code>agent-browser doctor</code> 看它报告什么 → 最后才接真实站点</td>
+<td>PoC 由本档案推导；⭐⭐⭐ <strong>第②步的「ref 数量与快照长度」是唯一可量化的验收指标</strong>，⭐⭐⭐ <strong>建议记录它作为上下文预算的基线</strong>；⭐⭐⭐ <strong><code>doctor</code> 的具体检查项未核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>启发一：⭐⭐⭐⭐⭐ 「紧凑文本 + 稳定 ref」是 agent 接口设计的一个可复用范式。</strong>
+⭐⭐⭐⭐⭐ 与 <code>ffmpeg-skill</code> 的「默认 12 个工具 / 全量 42 个」是同一条思路的两个层面：⭐⭐⭐⭐⭐ <strong>前者压缩「看什么」，后者压缩「调什么」。⭐⭐⭐⭐⭐ 两者都指向同一件事：⭐⭐⭐⭐⭐ </strong>agent 的上下文预算是首要设计约束，而不是事后优化项。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>启发二：⭐⭐⭐⭐⭐ <code>doctor</code> 应该带自动修复，而不只是报告。</strong>
+⭐⭐⭐⭐⭐ 实测 <code>cli/src/doctor/fix.rs</code> 的存在 ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 对 agent 而言，「环境坏了」是高频事件，⭐⭐⭐⭐⭐ 而一个只会报告的 doctor 要求 agent 自己想办法修，⭐⭐⭐⭐⭐ 一个能修的 doctor 直接把故障消掉。⭐⭐⭐⭐⭐ 本日记录的 <code>last30days-skill</code> 的 doctor 还会误报，⭐⭐⭐⭐⭐ </strong>说明「doctor 要会自测」本身也是一项工程要求。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>启发三：⭐⭐⭐⭐⭐ 协议定义应当作为数据文件随产物分发。</strong>
+⭐⭐⭐⭐⭐ <code>cli/cdp-protocol/*.json</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 好处有二：协议变化不需要改代码；协议本身可被审阅与 diff。⭐⭐⭐⭐⭐ 本数据集记录的 <code>docs/contract.md</code>（ffmpeg-skill）、<code>_system/schemas/*.schema.json</code>（boring-marketing-skills）都是同一模式的不同形态。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>启发四：⭐⭐⭐⭐⭐ 「把开发本项目的知识也做成 Skill」是一种自举式的知识封装。</strong>
+⭐⭐⭐⭐⭐ <code>skill-data/</code> 下 10 个目录 ⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 好处是：新贡献者（不论是人还是 agent）都能用同一套知识上手；⭐⭐⭐⭐⭐ 坏处是这些知识会随代码演进而腐化，⭐⭐⭐⭐⭐ 因此需要一个「知识是否仍然有效」的检查机制 —— ⭐⭐⭐⭐⭐ </strong>本项目有 <code>dogfood</code> 技能，但是否有针对 <code>skill-data</code> 的时效性检查，未核验。**</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Agent[AI agent / coding agent<br/>通过 shell 调用]
+  CLI[agent-browser CLI<br/>Rust 二进制 · npm 分发]
+  Snapshot[snapshot -i<br/>紧凑文本 + @eN ref]
+  Act[动作命令<br/>click / type / select<br/>含右键 中键 修饰键]
+  Verify[读取校验<br/>get url / 再次 snapshot]
+  Browser[常驻浏览器进程<br/>Chrome for Testing<br/>跨命令保持打开]
+  CDP[CDP / JS 协议<br/>browser_protocol.json<br/>js_protocol.json]
+  Doctor[doctor 子系统 8 模块<br/>chrome config daemon environment<br/>ffmpeg launch helpers fix]
+  Sec[安全与证书<br/>browser_security.rs<br/>ca_bundle.rs]
+  MCP[WebMCP<br/>agent 通过 MCP 调用浏览器<br/>webmcp-gen skill]
+  Skill[skills/agent-browser/SKILL.md<br/>对外主技能]
+  DevSkill[skill-data/* 10 个<br/>core / derive-client / dogfood<br/>electron / slack / vercel / webmcp-gen]
+  SkillsSh[第三方分发站<br/>skills.sh/vercel-labs/agent-browser]
+
+  Agent --> CLI
+  CLI --> Snapshot
+  Snapshot -->|带 ref 的文本| Agent
+  Agent --> Act
+  Act --> Browser
+  Snapshot --> Browser
+  Verify --> Browser
+  Browser --> CDP
+  CLI --> Sec
+  CLI --> Doctor
+  Doctor -.诊断并修复.-> Browser
+  CLI --> MCP
+  MCP --> Browser
+  Skill --> CLI
+  DevSkill -.封装本项目的开发知识.-> CLI
+  SkillsSh --> Skill
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>生产可用 —— 在「agent 驱动浏览器」这个具体位置上，它几乎没有竞品。</strong></p>
+<p>⭐⭐⭐⭐⭐ 51,996⭐ / 3,628 forks / 114 subs / 100+ release / 5 位真实贡献者 / Rust 实现 / Apache-2.0 ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这些指标说明它已经是一个被依赖的基础设施，而不是实验品。</strong></p>
+<p>⭐⭐⭐⭐ ⭐⭐⭐ 但要给它一个准确的定位，需要区分两件事：⭐⭐⭐⭐⭐ <strong>它卖的不是「浏览器自动化」，而是「给 agent 的浏览器接口形状」</strong> ⭐⭐⭐⭐⭐ —— 「紧凑快照 + 稳定 ref + 常驻进程 + 一条短命令一步」这套约定，⭐⭐⭐⭐⭐ <strong>实际上定义了 agent 该如何与网页交互。⭐⭐⭐⭐⭐ 这个约定的扩散速度，比代码本身更有长期影响。</strong></p>
+<h2 id="_8">风险/局限/泡沫点</h2>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 589 个 open issue 相对 3,628 forks 是偏高的</strong>：⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这更可能是「被广泛集成 + 大量边缘场景」的结果，⭐⭐⭐⭐⭐ 但也意味着维护压力与响应延迟 —— ⭐⭐⭐⭐⭐ 未核验 issue 的平均响应时间与关闭率。</strong></li>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 依赖浏览器二进制</strong>：需运行时下载 Chrome for Testing，⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 在受限网络/容器环境下会失败；⭐⭐⭐⭐⭐ <code>doctor</code> 正是为此存在，但它是否覆盖所有场景未核验。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>⭐⭐⭐ 磁盘内容的选择由工具决定</strong>：把整页压缩成文本必然丢失视觉与结构信息，⭐⭐⭐ ⚠️ <strong>⭐⭐⭐ 对依赖视觉布局的任务（截图验证、canvas 应用）能力有限 —— 未核验其边界。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>⭐⭐⭐ <code>skill-data/</code> 的 10 份开发知识会腐化</strong>，⭐⭐⭐ ⚠️ <strong>⭐⭐⭐ 且没有看到针对「知识时效性」的 CI 检查 —— 这是本档案的推断，未核验。</strong></li>
+<li>⭐⭐ ⚠️ <strong>未核验项</strong>：589 个 issue 的正文与状态、100 个 release 的内容、<code>agent-browser.dev</code> 站点、CDP 协议文件的完整性、npm 包与仓库的一致性、WebMCP 的具体行为。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>kajisho5/ffmpeg-skill</code></strong>：⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 两者是本日「上下文预算」主题的两个样本 —— ⭐⭐⭐⭐⭐ ffmpeg-skill 管「工具暴露面」（默认 12 / 全量 42），agent-browser 管「观察面」（紧凑快照 + ref）。⭐⭐⭐⭐⭐ </strong>⭐⭐⭐ 二者合起来给出了一条完整的 agent 工具设计原则：少给、少看、但按名可达。**</li>
+<li><strong>vs <code>ag-ui-protocol/ag-ui</code></strong>：⭐⭐⭐⭐⭐ <strong>互补且方向相反 —— ag-ui 是「让 agent 的事件流进入前端应用」，⭐⭐⭐⭐⭐ agent-browser 是「让 agent 读懂既有网页」。⭐⭐⭐⭐⭐ 前者定义协议，后者提供工具。</strong></li>
+<li><strong>vs <code>mvanhorn/last30days-skill</code></strong>：⭐⭐⭐⭐⭐ 同为多 harness 生态，但 last30days 是<strong>信息聚合</strong>、agent-browser 是<strong>执行环境</strong>；⭐⭐⭐⭐⭐ 两者都有 <code>doctor</code> 自检机制 —— <strong>⭐⭐⭐⭐⭐ 这可能是本日最明显的一个跨项目共性：agent 工具开始系统性地自检环境。</strong></li>
+<li><strong>vs <code>google/elephant-goldfish-model</code></strong>：⭐⭐⭐⭐⭐ 正交 —— EGM 管流程，agent-browser 提供执行环境。</li>
+<li><strong>vs <code>ChromeDevTools/chrome-devtools-mcp</code></strong>（同在日榜）：⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 直接竞争且路线不同 —— ChromeDevTools 走 MCP（模型直接调工具），agent-browser 走 CLI（模型走 shell）。⭐⭐⭐⭐⭐ </strong>⭐⭐⭐ 两条路线的取舍是：MCP 更结构化、CLI 更通用（任何能跑 shell 的 agent 都能用）。**</li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，优先级中高。</strong></p>
+<p>⭐⭐⭐⭐⭐ 理由：① 它定义了 agent 与网页交互的接口形状，⭐⭐⭐⭐⭐ 这类「接口层」项目的长期影响大于其 star 数；② 589 个 issue 是研究「agent 工具的真实失败模式」的富矿；③ 它与 <code>ffmpeg-skill</code> 一起构成了本日「上下文预算是首要约束」这条判断的两个实证样本。</p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 与 <code>ChromeDevTools/chrome-devtools-mcp</code> 的竞争格局</strong>（两者同在日榜，⭐⭐⭐⭐⭐ <strong>谁成为 agent 浏览器的事实标准值得跟踪</strong>）</li>
+<li>⭐⭐⭐⭐⭐ <strong><code>skill-data/</code> 是否引入时效性检查</strong> —— ⭐⭐⭐⭐⭐ 知识腐化是这个自举结构的主要风险</li>
+<li>⭐⭐⭐ ⭐ <strong>589 个 issue 的关闭速度与主题分布</strong> —— ⭐⭐⭐ ⭐ 这会揭示 agent 驱动浏览器的主要失效面</li>
+<li>⭐⭐⭐ ⭐ <strong>是否新增 harness 原生清单</strong>（当前只有 <code>.claude-plugin/marketplace.json</code>，⭐⭐⭐ ⭐ 是本日报 17 个仓库里带 ≥3 套清单的 4 个之一之外的一个）</li>
+<li>⭐⭐⭐ ⚠️ <strong><code>doctor</code> 的检查项是否覆盖「浏览器下载失败」等环境失败</strong> —— 实测已有 <code>chrome.rs</code> / <code>environment.rs</code> 模块，⭐⭐⭐ ⚠️ 具体覆盖未核验</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-11-17 · 全部元数据取自 2026-11-17 CST 的 GitHub REST API 快照</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
