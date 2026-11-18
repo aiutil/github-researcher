@@ -37,19 +37,160 @@
     </div>
 
         <div class="date-section">
-            <div class="date-toggle" onclick="toggleSection('ds-2026-11-17')" style="cursor:pointer;">
+            <div class="date-toggle" onclick="toggleSection('ds-2026-11-18')" style="cursor:pointer;">
                 <div class="date-header">
-                    <span class="date-badge">2026-11-17</span>
-                    <span class="date-summary">本日最硬的发现是**投放体的「账号队列」从一次性突击升级成了长期在编的产能** —— ⭐⭐⭐⭐⭐ `cheat client` 族的 **9 个仓库（ROB RUN ×3 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅生成器 + `readme-typing-svg` 打字动效 + shields.io 徽章 + 一张功能表），且其中 6 个统一指向同一条载荷域名 `modbay.live`**，⭐⭐⭐⭐⭐ **每个仓库的整棵树只有 2 个 blob（`LICENSE` + `README.md`），0 个代码文件，0 个 open issue**；⭐⭐⭐⭐⭐ 而**最关键的一条是「占位仓库指纹」首次被做成对照实验**：⭐⭐⭐⭐⭐ 本日报实测 **10/10 个投放账号**各持有一个「README 恰好等于 `# <仓库名>`、10 字节、1 个 blob、0⭐」的随机名占位仓库（`trckulpa` / `szoyxrqs` / `fzohpjud` / `cwjhmbpo` / `ugqbrkec` / `hrolzfoa` / `nuxtdjnj` / `upzuukrt` / `rqpylldg` / `khcmkgzv`），⭐⭐⭐⭐⭐ **对照组的 16 个普通账号里只有 1 个（`staryone/sanckut`）命中同一签名** —— 即 **6.25% vs 100%**，⭐⭐⭐⭐⭐ **这使「占位仓库」成为比「账号注册时间聚集」更硬、更便宜（一次 `users/{owner}/repos` 请求即可判定）的判据**。⭐⭐⭐⭐⭐ 与之并列的第二个发现是**投放方的账号是跨月常备的，不是当天现注册的**：⭐⭐⭐⭐⭐ 实测账号分三批创建 —— **2026-08-10 一批 6 个（`22:36:14Z–22:37:15Z`，跨度 61 秒）**、**2026-09-21 一批 2 个（`17:24:55Z–17:25:39Z`）**、**2026-06-15 一批 2 个**，⭐⭐⭐⭐⭐ **且 `2026-08-10` 那一批正好是 11-15 日报记录的 `2026-08-10T10:11:27Z` 账号队列的同一批注册窗口** —— ⭐⭐⭐⭐⭐ **即「账号注册聚集度」这条判据在 11-16 已被证明会被时间稀释（账号当天新建并不成立），而本日的证据表明：投放方干脆把账号提前 1–5 个月养好，等 payload 需要时才启用**。⭐⭐⭐⭐⭐ 第三个发现是**「release 数量」这条 11-16 刚被证伪的判据，在本日被一个真项目正面推翻**：`kajisho5/ffmpeg-skill`（6,630⭐ · 598 forks · MIT）**有 100 个 release、100 个 tag、100 个互不相同的 commit sha，且 100 个 release 与 100 个 tag 一一对应** —— ⭐⭐⭐⭐⭐ **但本日报逐个查了这 100 个 tag 的 commit：release commit 本身只改元数据（`package.json` / `plugin.json` / `CHANGELOG.md` / `docs/contract.md`，8 个文件 +16/-9），而它的父 commit 才是真正的代码变更（12 个 tag 抽样中 12/12 的父 commit 触及源码，触及文件数 2–17 个）** —— ⭐⭐⭐⭐⭐ **即「release 多」既可能是伪造的（11-16 的 `steam-library-bridge`：1 个 commit → 4 个语义无关的版本号），也可能是真实的（本日：每个版本号背后都有一个真实的功能 commit）；两者的区别不在 release 数量，而在「tag → commit → 代码 diff」这条链是否闭合**。⭐⭐⭐⭐⭐ 第四个发现是**「Agent Skills」已经从「一个技能格式」收敛成「一个跨 harness 的可移植包格式」**：⭐⭐⭐⭐⭐ 本日报实测 17 个相关仓库中 **15 个带 `SKILL.md`**，⭐⭐⭐⭐⭐ **`google/elephant-goldfish-model` 同时发布 6 套 harness 专属清单（`.claude-plugin/` / `.codex-plugin/` / `.cursor-plugin/` / `.plugin/` / `.gemini/config.yaml` / Windsurf 适配器）、`mvanhorn/last30days-skill` 与 `kajisho5/ffmpeg-skill` 各 4 套、`addyosmani/agent-skills` 3 套** —— ⭐⭐⭐⭐⭐ **且 17 个仓库里只有 3 个同时公开 `npx skills add` 与 `/plugin marketplace add` 两条安装命令，说明「安装协议」尚未收敛，而「包内多 harness 清单」已经收敛 —— 二者并置即本日最重要的架构判断：Skills 的竞争战场已经从「技能内容」转移到「分发适配层」。**</span>
-                    <span class="date-arrow" id="arrow-ds-2026-11-17">▼</span>
+                    <span class="date-badge">2026-11-18</span>
+                    <span class="date-summary">本日最硬的方法论发现是**给判据加上对照组之后，11-12~11-15 建立的「账号注册聚集度」判据被证伪了** —— ⭐⭐⭐⭐⭐ 实测 15 个 Trending 仓库各 100 个 fork（1,500 个 fork owner 账号）中「7 天内新建账号」占 **38.0%**，⭐⭐⭐⭐⭐ **而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5% —— 更高**；⭐⭐⭐⭐⭐ **逐仓库看更反直觉：`golang/go` 是 80/100、`rust-lang/rust` 是 72/100、`torvalds/linux` 是 71/100、`sveltejs/svelte` 是 88/100，⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击特征**；⭐⭐⭐⭐⭐ 与之并列的第二个发现是**「版本发布」这条判据必须从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 是否闭合 / 资产是否随版本演进），⭐⭐⭐⭐⭐ 本日实测四个真项目给出四种形态** —— ⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，**下载 57–951 次**）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（**含 CycloneDX SBOM**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag 但只有 1 个 release**（且是 prerelease 的审计数据 JSON），⭐⭐⭐⭐⭐ **而这 100 个 tag 的 commit 全部真实改动了 RAG 索引产物（`guide-chunk-cache.i8/.json/.scale.f32`），其父 commit 10/10 触及源码** —— ⭐⭐⭐⭐⭐ 即 11-16 记录的「假版本号」（`steam-library-bridge`）、11-17 记录的「多而实」（`ffmpeg-skill`）与本日新增的「有 tag 无 release」是**三种不同状态**，⭐⭐⭐⭐⭐ 而判据恰恰在于「链上有没有真实 diff」而非「功能 commit 在前还是在后」⭐⭐⭐⭐⭐ （本日 `open-code-review` 与 `plannotator` 各自实测到功能 commit 在 tag 与在父上交替出现）；⭐⭐⭐⭐⭐ 第三个发现是**「SKILL.md 数量」是一个被复制放大的计数，必须拆成三个独立指标**：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目，`affaan-m/ECC` 的 **1,087 个 SKILL.md 只对应 330 个独立技能身份（3.30×）**、最大单一技能被复制 **10 份**（`verification-loop` / `tdd-workflow` / `security-review` 等各 10 份）· `Tencent/LoopForge` 21 文件 / 9 身份（2.33×）· `backnotprop/plannotator` 23 / 11（2.09×）· `cursor/plugins` 173 / 113（1.53×），⭐⭐⭐⭐⭐ **而 `Claude-BugHunter`（83/83）、`superpowers`（15/15）、`addyosmani/agent-skills`（25/25）、`anthropics/skills`（20/20）、`stitch-skills`（16/16）是零复制**；⭐⭐⭐⭐⭐ **关键的反例是 `superpowers` 15 身份 / 5 套 harness 清单 / 复制 1.00×，⭐⭐⭐⭐⭐ 证明「零复制」与「多 harness」可以兼得 —— 因而 ECC 的 3.30× 是实现选择而非能力上限**；⭐⭐⭐⭐⭐ 第四个发现是**分发协议仍在缓慢收敛，且本日首次出现「零复制 + 多清单」的组合**：⭐⭐⭐⭐⭐ 对 11-17 同一批 17 个仓库同口径复测，**同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`），⭐⭐⭐⭐⭐ **而 `Tencent/LoopForge` 有 21 个技能文件却是 0 套 harness 目录、0 条安装命令**，⭐⭐⭐⭐⭐ **同批 12 个 skill 项目里 0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个 —— 适配层这条赛道的分化比 11-17 更明显，而不是更收敛**；⭐⭐⭐⭐⭐ 第五个发现是**「确定性 + LLM」的混合架构在两个不同领域各自独立出现**：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 是「确定性规则流水线（NPE/线程安全/XSS/SQL 注入）+ LLM Agent」，⭐⭐⭐⭐⭐ `google-research/paper-orchestra` 是 `autoraters/citation_f1.py`（确定性 F1）+ `agent_review.py`（LLM 评审），⭐⭐⭐⭐⭐ **两家机构、两个领域、同一分工 —— 这是本日最值得推广的架构范式**</span>
+                    <span class="date-arrow" id="arrow-ds-2026-11-18">▼</span>
                 </div>
             </div>
-            <div class="date-trends" id="ds-2026-11-17" style="display:block;">
+            <div class="date-trends" id="ds-2026-11-18" style="display:block;">
 <div style="margin-bottom:16px;">
                 <div class="trend-item">
                     <div class="trend-rank top">1</div>
                     <div class="trend-content">
-                        <div class="trend-title">⭐⭐⭐⭐⭐ 投放体的账号是「长期在编的产能」而不是当天现注册的：cheat client 族 9 个仓库（ROB RUN ×3 / PUBG / GTA V / Apex / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅 + readme-typing-svg 打字动效 + shields.io 徽章 + 一张功能表），其中 6 个统一指向同一条载荷域名 modbay.live；⭐⭐⭐⭐⭐ 每棵树只有 2 个 blob（LICENSE + README.md）、0 个代码文件、0 个 open issue；⭐⭐⭐⭐⭐ 实测账号分三批创建 —— 2026-08-10 一批 6 个（22:36:14Z–22:37:15Z，跨度 61 秒）、2026-09-21 一批 2 个、2026-06-15 一批 2 个；⭐⭐⭐⭐⭐ 其中 2026-08-10 那一批正是 11-15 日报记录的 2026-08-10T10:11:27Z 账号队列的同一注册窗口 —— 即投放方把账号提前 1–5 个月养好，需要时才启用</div>
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 「账号注册聚集度」这条判据在加上对照组之后被证伪 —— 15 个 Trending 仓库的 1,500 个 fork owner 中「7 天内新建账号」占 38.0%，⭐⭐⭐⭐⭐ 而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5%（更高）；⭐⭐⭐⭐⭐ 逐仓库看：`golang/go` 80/100 · `rust-lang/rust` 72/100 · `torvalds/linux` 71/100 · `sveltejs/svelte` 88/100；⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击信号 —— 本日报据此撤回对 `google-research/paper-orchestra` 的 100 个同日 fork 的任何「协调刷量」解读</div>
+                    </div>
+                    <div class="trend-score high">95/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank top">2</div>
+                    <div class="trend-content">
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 「版本发布」判据从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 闭合 / 资产随版本演进），本日实测四个真项目给出四种形态：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，asset 下载 57–951 次）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，deb/rpm/apk/zst + 14 个裸二进制，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（2.57 GB，**含 CycloneDX SBOM JSON 与 13 个 sha256**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag / 1 个 release**（prerelease 的审计数据 JSON），且其 10/10 抽样 tag 的 commit 真实改动 RAG 索引产物、其父 commit 10/10 触及源码；⭐⭐⭐⭐⭐ 关键结论：判据是「链上有没有真实 diff」而非「功能 commit 在前还是在后」（`open-code-review` 与 `plannotator` 实测到两种形态在同一仓库内交替出现）</div>
+                    </div>
+                    <div class="trend-score high">93/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank ">3</div>
+                    <div class="trend-content">
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 「SKILL.md 数量」是复制放大的计数，必须拆成「独立技能身份数 / harness 清单数 / 复制倍数」三个指标：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目 —— `affaan-m/ECC` **1,087 文件 / 330 身份（3.30×）**，最大单一技能被复制 10 份；⭐⭐⭐⭐⭐ `Tencent/LoopForge` 21/9（2.33×）· `backnotprop/plannotator` 23/11（2.09×）· `cursor/plugins` 173/113（1.53×）· `tradermonty/claude-trading-skills` 94/74（1.27×）；⭐⭐⭐⭐⭐ 而 `Claude-BugHunter` 83/83 · `superpowers` 15/15 · `addyosmani/agent-skills` 25/25 · `anthropics/skills` 20/20 · `stitch-skills` 16/16 · `mvanhorn/last30days-skill` 1/1 **全部是零复制**；⭐⭐⭐⭐⭐ 决定性的反例是 `obra/superpowers` **15 身份 / 5 套 harness 清单 / 复制 1.00×** —— 证明「零复制」与「多 harness」可兼得，⭐⭐⭐⭐⭐ 因而 ECC 的 3.30× 是实现选择而非能力上限</div>
+                    </div>
+                    <div class="trend-score high">92/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank ">4</div>
+                    <div class="trend-content">
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 分发协议仍在缓慢收敛，但赛道的**分化**比收敛更明显：对 11-17 同一批 17 个仓库同口径复测，⭐⭐⭐⭐⭐ **同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`）；⭐⭐⭐⭐⭐ 但在 12 个 skill 类 Trending 项目里，**0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个**；⭐⭐⭐⭐⭐ 而 `Tencent/LoopForge` 有 21 个技能文件却是 **0 套 harness 目录、0 条安装命令**（技能以 `local/.claude/skills/` 项目内目录形式交付）；⭐⭐⭐⭐⭐ 同日 `alibaba/open-code-review` 出现 `plugin-contract.yml` 与 `action-contract.yml` 两个把「契约」做成 CI 门禁的工作流 —— 即「把契约从文档变成可执行检查」本日首次出现，而「让外部用户能装上」仍是最薄弱的一环</div>
+                    </div>
+                    <div class="trend-score high">89/80</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-rank ">5</div>
+                    <div class="trend-content">
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 「确定性 + LLM」的混合架构在两个不同领域各自独立出现，成为本日最值得推广的架构范式：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 是「确定性规则流水线（NPE / 线程安全 / XSS / SQL 注入）+ LLM Agent」双轨，⭐⭐⭐⭐⭐ 并由 `ocr-review.yml`（用自己审自己的 PR）+ `pr-commit-policy.yml` + `codeql.yml` 三件套内建质量；⭐⭐⭐⭐⭐ `google-research/paper-orchestra` 是 `autoraters/citation_f1.py`（确定性 F1）+ `agent_review.py`（LLM 评审）+ `sxs_paper_quality.py`，⭐⭐⭐⭐⭐ 且它的 30 条 issue 全是「具体流程节点上的具体失效」（双盲模板默认、ensemble 响应格式错误、评审失败丢稿、编译器超时丢半成品）；⭐⭐⭐⭐⭐ 两家机构、两个领域、同一分工 —— **共同点是把确定性的部分承担「可复现可回归」，LLM 的部分承担「无法规则化的判断」，而分工边界写在哪里决定了系统是否可测试**</div>
+                    </div>
+                    <div class="trend-score high">88/80</div>
+                </div></div><div class="section-title" style="margin-bottom:12px;"><span>🎯 重点项目</span></div>
+<div class="card-grid" style="animation:none;margin-bottom:8px;">
+
+                <div class="card" onclick="window.location='/projects/modern-web-guidance-src.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">8,414 stars</div>
+                    </div>
+                    <div class="card-title">GoogleChrome/modern-web-guidance-src</div>
+                    <div class="card-desc">Chrome/Edge/Firefox/MDN 联合维护的 Web 平台技能包；Apache-2.0 / 2,405 blobs / 15 个 SKILL.md</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/GoogleChrome/modern-web-guidance-src" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">305,425 stars</div>
+                    </div>
+                    <div class="card-title">affaan-m/ECC</div>
+                    <div class="card-desc">Agent harness 操作系统，MIT / 4,878 blobs / 15 个 CI 工作流 / 9 套 harness 目录；本日实测 1,087 个</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/plannotator.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">13,035 stars</div>
+                    </div>
+                    <div class="card-title">backnotprop/plannotator</div>
+                    <div class="card-desc">人机协作工作台，Apache-2.0 / 7,261 blobs / 14 个 CI 工作流；100 个 release 每个带 36 个 asset（含 Cy</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/open-code-review.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">53,682 stars</div>
+                    </div>
+                    <div class="card-title">alibaba/open-code-review</div>
+                    <div class="card-desc">阿里的混合架构代码评审器（确定性规则 + LLM Agent），Apache-2.0 / 1,227 blobs / 14 个 CI 工作流（含 plugin-</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/paper-orchestra.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">2,884 stars</div>
+                    </div>
+                    <div class="card-title">google-research/paper-orchestra</div>
+                    <div class="card-desc">Google Cloud AI Research 的多 agent 论文写作框架，Apache-2.0 / 仅 56 blobs / 8 个 commit / </div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/google-research/paper-orchestra" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/arcane.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">9,275 stars</div>
+                    </div>
+                    <div class="card-title">getarcaneapp/arcane</div>
+                    <div class="card-desc">Go 写的 Docker 管理面板（server + agent 双组件），BSD-3-Clause / 2,524 blobs；100 个 release 每</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/getarcaneapp/arcane" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/loopforge.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">3,071 stars</div>
+                    </div>
+                    <div class="card-title">Tencent/LoopForge</div>
+                    <div class="card-desc">腾讯的自托管 coding-agent 交付编排平台（Go / NOASSERTION 许可 / 184 open issues）；21 个 SKILL.md </div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/Tencent/LoopForge" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/claude-bughunter.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">9,120 stars</div>
+                    </div>
+                    <div class="card-title">elementalsouls/Claude-BugHunter</div>
+                    <div class="card-desc">攻防安全技能包，MIT / 335 blobs / 8 个 CI 工作流；**83 个 SKILL.md = 83 个独立技能身份，复制倍数 1.00（零复制）</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/elementalsouls/Claude-BugHunter" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div>
+                <div class="card" onclick="window.location='/projects/last30days-skill.html'" style="cursor:pointer">
+                    <div class="card-top">
+                        <div class="card-emoji">📦</div>
+                        <div class="card-stars">68,964 stars</div>
+                    </div>
+                    <div class="card-title">mvanhorn/last30days-skill</div>
+                    <div class="card-desc">跨 10+ 平台聚合近期信号的研究技能，MIT / 759 blobs / 4 套 harness 清单；**1 个技能 = 1 个独立身份（复制 1.00）但</div>
+                    <div class="card-tags"><span class="tag tag-purple">项目</span></div>
+                    <div class="card-actions"><a href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
+                </div></div>
+
+            </div>
+        </div>
+
+        <div class="date-section">
+            <div class="date-toggle" onclick="toggleSection('ds-2026-11-17')" style="cursor:pointer;">
+                <div class="date-header">
+                    <span class="date-badge">2026-11-17</span>
+                    <span class="date-summary">本日最硬的发现是**投放体的「账号队列」从一次性突击升级成了长期在编的产能** —— ⭐⭐⭐⭐⭐ `cheat client` 族的 **8 个仓库（ROB RUN ×2 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅生成器 + `readme-typing-svg` 打字动效 + shields.io 徽章 + 一张功能表），且其中 6 个统一指向同一条载荷域名 `modbay.live`**，⭐⭐⭐⭐⭐ **每个仓库的整棵树只有 2 个 blob（`LICENSE` + `README.md`），0 个代码文件，7/8 是 0 个 open issue（唯一 1 个 issue 内容是 `NOT WORK`）**；⭐⭐⭐⭐⭐ 而**最关键的一条是「占位仓库指纹」首次被做成对照实验**：⭐⭐⭐⭐⭐ 本日报实测 **10/10 个投放账号**各持有一个「README 恰好等于 `# <仓库名>`、10 字节、1 个 blob、0⭐」的随机名占位仓库（`trckulpa` / `szoyxrqs` / `fzohpjud` / `cwjhmbpo` / `ugqbrkec` / `hrolzfoa` / `nuxtdjnj` / `upzuukrt` / `rqpylldg` / `khcmkgzv`），⭐⭐⭐⭐⭐ **对照组的 16 个普通账号里只有 1 个（`staryone/sanckut`）命中同一签名** —— 即 **6.25% vs 100%**，⭐⭐⭐⭐⭐ **这使「占位仓库」成为比「账号注册时间聚集」更硬、更便宜（一次 `users/{owner}/repos` 请求即可判定）的判据**。⭐⭐⭐⭐⭐ 与之并列的第二个发现是**投放方的账号是跨月常备的，不是当天现注册的**：⭐⭐⭐⭐⭐ 实测账号分三批创建 —— **2026-08-10 一批 6 个（`22:36:14Z–22:37:15Z`，跨度 61 秒）**、**2026-09-21 一批 2 个（`17:24:55Z–17:25:39Z`）**、**2026-06-15 一批 2 个**，⭐⭐⭐⭐⭐ **且 `2026-08-10` 那一批正好是 11-15 日报记录的 `2026-08-10T10:11:27Z` 账号队列的同一批注册窗口** —— ⭐⭐⭐⭐⭐ **即「账号注册聚集度」这条判据在 11-16 已被证明会被时间稀释（账号当天新建并不成立），而本日的证据表明：投放方干脆把账号提前 1–5 个月养好，等 payload 需要时才启用**。⭐⭐⭐⭐⭐ 第三个发现是**「release 数量」这条 11-16 刚被证伪的判据，在本日被一个真项目正面推翻**：`kajisho5/ffmpeg-skill`（6,630⭐ · 598 forks · MIT）**有 100 个 release、100 个 tag、100 个互不相同的 commit sha，且 100 个 release 与 100 个 tag 一一对应** —— ⭐⭐⭐⭐⭐ **但本日报逐个查了这 100 个 tag 的 commit：release commit 本身只改元数据（`package.json` / `plugin.json` / `CHANGELOG.md` / `docs/contract.md`，8 个文件 +16/-9），而它的父 commit 才是真正的代码变更（12 个 tag 抽样中 12/12 的父 commit 触及源码，触及文件数 2–17 个）** —— ⭐⭐⭐⭐⭐ **即「release 多」既可能是伪造的（11-16 的 `steam-library-bridge`：1 个 commit → 4 个语义无关的版本号），也可能是真实的（本日：每个版本号背后都有一个真实的功能 commit）；两者的区别不在 release 数量，而在「tag → commit → 代码 diff」这条链是否闭合**。⭐⭐⭐⭐⭐ 第四个发现是**「Agent Skills」已经从「一个技能格式」收敛成「一个跨 harness 的可移植包格式」**：⭐⭐⭐⭐⭐ 本日报实测 17 个相关仓库中 **15 个带 `SKILL.md`**，⭐⭐⭐⭐⭐ **`google/elephant-goldfish-model` 同时发布 6 套 harness 专属清单（`.claude-plugin/` / `.codex-plugin/` / `.cursor-plugin/` / `.plugin/` / `.gemini/config.yaml` / Windsurf 适配器）、`mvanhorn/last30days-skill` 与 `kajisho5/ffmpeg-skill` 各 4 套、`addyosmani/agent-skills` 3 套** —— ⭐⭐⭐⭐⭐ **且 17 个仓库里只有 3 个同时公开 `npx skills add` 与 `/plugin marketplace add` 两条安装命令，说明「安装协议」尚未收敛，而「包内多 harness 清单」已经收敛 —— 二者并置即本日最重要的架构判断：Skills 的竞争战场已经从「技能内容」转移到「分发适配层」。**</span>
+                    <span class="date-arrow" id="arrow-ds-2026-11-17">▶</span>
+                </div>
+            </div>
+            <div class="date-trends" id="ds-2026-11-17" style="display:none;">
+<div style="margin-bottom:16px;">
+                <div class="trend-item">
+                    <div class="trend-rank top">1</div>
+                    <div class="trend-content">
+                        <div class="trend-title">⭐⭐⭐⭐⭐ 投放体的账号是「长期在编的产能」而不是当天现注册的：cheat client 族 8 个仓库（ROB RUN ×2 / PUBG / GTA V / Apex / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅 8/8 + readme-typing-svg 打字动效 7/8 + shields.io 徽章 8/8），其中 6 个统一指向同一条载荷域名 modbay.live；⭐⭐⭐⭐⭐ 每棵树只有 2 个 blob（LICENSE + README.md）、0 个代码文件、7/8 是 0 个 open issue；⭐⭐⭐⭐⭐ 实测 10 个占位仓库账号分三批创建 —— 2026-08-10 一批 6 个（其中 5 个落在 22:36:14Z–22:37:15Z 的 61 秒窗口内，另 1 个在同日 10:12:04Z）、2026-09-21 一批 2 个、2026-06-15 一批 2 个；⭐⭐⭐⭐⭐ 其中 2026-08-10 那一批正是 11-15 日报记录的 2026-08-10T10:11:27Z 账号队列的同一注册窗口 —— 即投放方把账号提前 1–5 个月养好，需要时才启用</div>
                     </div>
                     <div class="trend-score high">96/80</div>
                 </div>
@@ -89,7 +230,7 @@
                         <div class="card-stars">236 stars</div>
                     </div>
                     <div class="card-title">OceanChandlerSewer/rob-run-cheat-private</div>
-                    <div class="card-desc">反例样本：cheat client 族 9 个仓库之一，整棵树只有 LICENSE + README.md 两个 blob、0 个代码文件、0 个 open i</div>
+                    <div class="card-desc">反例样本：cheat client 族 8 个仓库之一，整棵树只有 LICENSE + README.md 两个 blob、0 个代码文件；owner 账号 2</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"><a href="https://github.com/OceanChandlerSewer/rob-run-cheat-private" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
@@ -6226,7 +6367,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"><a href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-09-06.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">249,777 stars (+1,325/day)</div>
@@ -6234,7 +6375,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">Agent Harness 性能优化系统（"agent harness operating system"）——Skills / Instincts / Mem</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/projects/humanizer.html'" style="cursor:pointer">
                     <div class="card-top">
@@ -8010,7 +8151,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-08-22.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">241,753 stars</div>
@@ -8018,7 +8159,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, se</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/projects/ponytail.html'" style="cursor:pointer">
                     <div class="card-top">
@@ -8091,7 +8232,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-08-21.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">241,489 stars</div>
@@ -8099,7 +8240,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, se</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/daily/2026-08-21.html'" style="cursor:pointer">
                     <div class="card-top">
@@ -8232,7 +8373,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-08-20.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">241,489 stars</div>
@@ -8240,7 +8381,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, se</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/daily/2026-08-20.html'" style="cursor:pointer">
                     <div class="card-top">
@@ -11346,7 +11487,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-07-27.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">234,311 stars</div>
@@ -11354,7 +11495,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, se</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/daily/2026-07-27.html'" style="cursor:pointer">
                     <div class="card-top">
@@ -11467,7 +11608,7 @@
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
                     <div class="card-actions"></div>
                 </div>
-                <div class="card" onclick="window.location='/daily/2026-07-26.html'" style="cursor:pointer">
+                <div class="card" onclick="window.location='/projects/ecc.html'" style="cursor:pointer">
                     <div class="card-top">
                         <div class="card-emoji">📦</div>
                         <div class="card-stars">234,311 stars</div>
@@ -11475,7 +11616,7 @@
                     <div class="card-title">affaan-m/ECC</div>
                     <div class="card-desc">The agent harness performance optimization system. Skills, instincts, memory, se</div>
                     <div class="card-tags"><span class="tag tag-purple">项目</span></div>
-                    <div class="card-actions"></div>
+                    <div class="card-actions"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" onclick="event.stopPropagation();"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>GitHub</a></div>
                 </div>
                 <div class="card" onclick="window.location='/daily/2026-07-26.html'" style="cursor:pointer">
                     <div class="card-top">

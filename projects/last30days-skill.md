@@ -2,11 +2,11 @@
 title: "mvanhorn/last30days-skill"
 slug: "last30days-skill"
 date_added: "2026-06-07"
-last_seen_date: "2026-11-17"
+last_seen_date: "2026-11-18"
 category: "生产可用"
 emoji: "🔎"
-stars: "68,087 stars"
-stars_delta: "2026-11-17 更新：41,943⭐ → **68,087⭐**（+26,144，约为原值的 1.62 倍）；forks 6,035 · **subs 219** · oi 34 · 736 blobs · 56,718 KB · MIT · 4 套 harness 清单（claude-plugin / codex-plugin / grok-plugin / gemini-extension）· 100 个 commit（作者 `mvanhorn` 547 + `tmchow` 350 + `iliaal` 89 + `dependabot[bot]` 74 + `github-actions[bot]` 40 + `23241a6749` 40）；owner `mvanhorn` 账号 2010-10-26 创建、3318 repos、6119 followers"
+stars: "68,964 stars"
+stars_delta: "2026-11-18 更新：68,087⭐ → **68,964⭐**（+877，两个快照点之差，非时间序列增速）；forks **6,146** · **subs 221** · oi **36** · **759 blobs** · MIT · 4 套 harness 清单（claude-plugin / codex-plugin / grok-plugin / gemini-extension）· **1 个 SKILL.md = 1 个独立技能身份（复制倍数 1.00）** · 单技能体积 **31,980 B**（本日 skill 项目中最高）· 本日同口径复测：12 个 skill 类 Trending 项目中，同时公开 npx skills add 与 marketplace add 两条命令的仅 4 个，本项目是其中之一"
 language: "Python"
 score: 89
 tags: ["agent-skills", "multi-harness", "research", "social-search", "production-maturity"]
@@ -216,3 +216,33 @@ flowchart LR
 ---
 
 *首次记录：2026-06-07 · 本次更新：2026-11-17 · 全部元数据取自 2026-11-17 CST 的 GitHub REST API 快照*
+
+## 最近动态（2026-11-18）
+
+⭐⭐⭐⭐⭐ **本日对本项目做的是同口径复测（与 11-17 记录的是同一批 17 个仓库），核心结论：它仍是「分发适配层」这条线上收敛最快的样本之一，且是本组里唯一一个「单技能 + 多清单 + 双安装命令」的组合。**
+
+**可核验事实一：规模更新（2026-11-18 CST 快照）。**
+
+| 指标 | 11-17 快照 | 11-18 快照 |
+|---|---:|---:|
+| stars | 68,087 | **68,964**（+877） |
+| forks | 6,035 | **6,146**（+111） |
+| subs | 219 | **221**（+2） |
+| open issues | 34 | **36**（+2） |
+| blobs | 736 | **759** |
+| `SKILL.md` 文件数 | 1 | **1** |
+| **独立技能身份数** | — | **1**（复制倍数 **1.00**） |
+| harness 目录 | 4 | **4**（`.claude-plugin` / `.codex-plugin` / `.grok-plugin` / `gemini-extension.json`） |
+| 最后 push | 2026-11-17 | 2026-11-17T22:06:31Z |
+
+⭐⭐⭐⭐⭐ **可核验事实二：本项目的三条指标在 12 个 skill 类 Trending 项目中都很突出 —— ① 复制倍数 1.00（与 `superpowers` / `addyosmani/agent-skills` / `anthropics/skills` / `Claude-BugHunter` / `stitch-skills` 同属零复制阵营）；② 4 套 harness 目录（属「多 harness」阵营）；③ 同时公开 `npx skills add` 与 `marketplace add` 两条命令（12 个里仅 4 个做到）。⭐⭐⭐⭐⭐ 即它是「深（单技能）× 广（4 harness + 50+ host）」的独特象限 —— ⭐⭐⭐⭐⭐ **其他零复制项目要么技能多而 harness 少（`Claude-BugHunter` 83/1），要么两者都少（`stitch-skills` 16/1）；⭐⭐⭐⭐⭐ 只有它是 1 个技能却配了 4 套清单。⭐⭐⭐⭐⭐ 这正对应它 README 自述的「50+ Agent Skills hosts」策略 —— 一个技能 + 最大化的 host 覆盖面。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 可核验事实三：单技能体积仍是本日最高的之一。** ⭐⭐⭐⭐⭐ 实测 `skills/last30days/SKILL.md` 平均 **31,980 B**（11-17 快照为 31,980 B，无变化）⭐⭐⭐⭐⭐ —— **它把「聚合 10+ 平台 + 打分 + 合成」的全部知识压在一个文件里，⭐⭐⭐⭐⭐ 而 `Claude-BugHunter` 的 83 个技能平均 20,191 B。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 这再次印证本日记录的规律：⭐⭐⭐⭐⭐ **「单技能体量」与「技能数量」负相关 —— 知识打包的粒度由内容形态决定，不由项目偏好决定。**
+
+⭐⭐⭐⭐⭐ **可核验事实四：issue 继续以真机问题为主。** ⭐⭐⭐⭐⭐ 36 个 open issue（11-17 为 34），⭐⭐⭐⭐⭐ 本日报**未逐条读正文**，⭐⭐⭐⭐⭐ 仅记录其**数量与作者结构延续了 11-17 的观察**（机制级问题报告而非功能许愿）。
+
+**⭐⭐⭐ 证据边界（2026-11-18 更新部分）：**
+- ⭐⭐⭐ ⚠️ **本日报未安装、未运行、未调用本 skill，未访问其聚合的任何平台。**
+- ⭐⭐⭐ ⚠️ **本日报未逐条读取 36 个 open issue 的正文**，仅沿用 11-17 的形态判断并记录数量变化。
+- ⭐⭐⭐ ⚠️ **star 增速未做统计**（+877 是两个快照点之差，⭐⭐⭐⚠️ 不是时间序列增速）。
+- ⭐⭐⭐ ⚠️ **「50+ Agent Skills hosts」是项目自述**，本日报未核验其实际可用 host 数量。

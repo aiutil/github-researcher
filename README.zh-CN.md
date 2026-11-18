@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-11-17.md">最新日报</a> ·
+  <a href="daily/2026-11-18.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-11-17
+## 最新研究 · 2026-11-18
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 9 | 833 | 5 | 134k+ |
+| 9 | 839 | 5 | 55k+ |
 
-**今日核心判断：** 本日最硬的发现是**投放体的「账号队列」从一次性突击升级成了长期在编的产能** —— ⭐⭐⭐⭐⭐ `cheat client` 族的 **9 个仓库（ROB RUN ×3 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅生成器 + `readme-typing-svg` 打字动效 + shields.io 徽章 + 一张功能表），且其中 6 个统一指向同一条载荷域名 `modbay.live`**，⭐⭐⭐⭐⭐ **每个仓库的整棵树只有 2 个 blob（`LICENSE` + `README.md`），0 个代码文件，0 个 open issue**；⭐⭐⭐⭐⭐ 而**最关键的一条是「占位仓库指纹」首次被做成对照实验**：⭐⭐⭐⭐⭐ 本日报实测 **10/10 个投放账号**各持有一个「README 恰好等于 `# <仓库名>`、10 字节、1 个 blob、0⭐」的随机名占位仓库（`trckulpa` / `szoyxrqs` / `fzohpjud` / `cwjhmbpo` / `ugqbrkec` / `hrolzfoa` / `nuxtdjnj` / `upzuukrt` / `rqpylldg` / `khcmkgzv`），⭐⭐⭐⭐⭐ **对照组的 16 个普通账号里只有 1 个（`staryone/sanckut`）命中同一签名** —— 即 **6.25% vs 100%**，⭐⭐⭐⭐⭐ **这使「占位仓库」成为比「账号注册时间聚集」更硬、更便宜（一次 `users/{owner}/repos` 请求即可判定）的判据**。⭐⭐⭐⭐⭐ 与之并列的第二个发现是**投放方的账号是跨月常备的，不是当天现注册的**：⭐⭐⭐⭐⭐ 实测账号分三批创建 —— **2026-08-10 一批 6 个（`22:36:14Z–22:37:15Z`，跨度 61 秒）**、**2026-09-21 一批 2 个（`17:24:55Z–17:25:39Z`）**、**2026-06-15 一批 2 个**，⭐⭐⭐⭐⭐ **且 `2026-08-10` 那一批正好是 11-15 日报记录的 `2026-08-10T10:11:27Z` 账号队列的同一批注册窗口** —— ⭐⭐⭐⭐⭐ **即「账号注册聚集度」这条判据在 11-16 已被证明会被时间稀释（账号当天新建并不成立），而本日的证据表明：投放方干脆把账号提前 1–5 个月养好，等 payload 需要时才启用**。⭐⭐⭐⭐⭐ 第三个发现是**「release 数量」这条 11-16 刚被证伪的判据，在本日被一个真项目正面推翻**：`kajisho5/ffmpeg-skill`（6,630⭐ · 598 forks · MIT）**有 100 个 release、100 个 tag、100 个互不相同的 commit sha，且 100 个 release 与 100 个 tag 一一对应** —— ⭐⭐⭐⭐⭐ **但本日报逐个查了这 100 个 tag 的 commit：release commit 本身只改元数据（`package.json` / `plugin.json` / `CHANGELOG.md` / `docs/contract.md`，8 个文件 +16/-9），而它的父 commit 才是真正的代码变更（12 个 tag 抽样中 12/12 的父 commit 触及源码，触及文件数 2–17 个）** —— ⭐⭐⭐⭐⭐ **即「release 多」既可能是伪造的（11-16 的 `steam-library-bridge`：1 个 commit → 4 个语义无关的版本号），也可能是真实的（本日：每个版本号背后都有一个真实的功能 commit）；两者的区别不在 release 数量，而在「tag → commit → 代码 diff」这条链是否闭合**。⭐⭐⭐⭐⭐ 第四个发现是**「Agent Skills」已经从「一个技能格式」收敛成「一个跨 harness 的可移植包格式」**：⭐⭐⭐⭐⭐ 本日报实测 17 个相关仓库中 **15 个带 `SKILL.md`**，⭐⭐⭐⭐⭐ **`google/elephant-goldfish-model` 同时发布 6 套 harness 专属清单（`.claude-plugin/` / `.codex-plugin/` / `.cursor-plugin/` / `.plugin/` / `.gemini/config.yaml` / Windsurf 适配器）、`mvanhorn/last30days-skill` 与 `kajisho5/ffmpeg-skill` 各 4 套、`addyosmani/agent-skills` 3 套** —— ⭐⭐⭐⭐⭐ **且 17 个仓库里只有 3 个同时公开 `npx skills add` 与 `/plugin marketplace add` 两条安装命令，说明「安装协议」尚未收敛，而「包内多 harness 清单」已经收敛 —— 二者并置即本日最重要的架构判断：Skills 的竞争战场已经从「技能内容」转移到「分发适配层」。**
+**今日核心判断：** 本日最硬的方法论发现是**给判据加上对照组之后，11-12~11-15 建立的「账号注册聚集度」判据被证伪了** —— ⭐⭐⭐⭐⭐ 实测 15 个 Trending 仓库各 100 个 fork（1,500 个 fork owner 账号）中「7 天内新建账号」占 **38.0%**，⭐⭐⭐⭐⭐ **而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5% —— 更高**；⭐⭐⭐⭐⭐ **逐仓库看更反直觉：`golang/go` 是 80/100、`rust-lang/rust` 是 72/100、`torvalds/linux` 是 71/100、`sveltejs/svelte` 是 88/100，⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击特征**；⭐⭐⭐⭐⭐ 与之并列的第二个发现是**「版本发布」这条判据必须从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 是否闭合 / 资产是否随版本演进），⭐⭐⭐⭐⭐ 本日实测四个真项目给出四种形态** —— ⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，**下载 57–951 次**）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（**含 CycloneDX SBOM**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag 但只有 1 个 release**（且是 prerelease 的审计数据 JSON），⭐⭐⭐⭐⭐ **而这 100 个 tag 的 commit 全部真实改动了 RAG 索引产物（`guide-chunk-cache.i8/.json/.scale.f32`），其父 commit 10/10 触及源码** —— ⭐⭐⭐⭐⭐ 即 11-16 记录的「假版本号」（`steam-library-bridge`）、11-17 记录的「多而实」（`ffmpeg-skill`）与本日新增的「有 tag 无 release」是**三种不同状态**，⭐⭐⭐⭐⭐ 而判据恰恰在于「链上有没有真实 diff」而非「功能 commit 在前还是在后」⭐⭐⭐⭐⭐ （本日 `open-code-review` 与 `plannotator` 各自实测到功能 commit 在 tag 与在父上交替出现）；⭐⭐⭐⭐⭐ 第三个发现是**「SKILL.md 数量」是一个被复制放大的计数，必须拆成三个独立指标**：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目，`affaan-m/ECC` 的 **1,087 个 SKILL.md 只对应 330 个独立技能身份（3.30×）**、最大单一技能被复制 **10 份**（`verification-loop` / `tdd-workflow` / `security-review` 等各 10 份）· `Tencent/LoopForge` 21 文件 / 9 身份（2.33×）· `backnotprop/plannotator` 23 / 11（2.09×）· `cursor/plugins` 173 / 113（1.53×），⭐⭐⭐⭐⭐ **而 `Claude-BugHunter`（83/83）、`superpowers`（15/15）、`addyosmani/agent-skills`（25/25）、`anthropics/skills`（20/20）、`stitch-skills`（16/16）是零复制**；⭐⭐⭐⭐⭐ **关键的反例是 `superpowers` 15 身份 / 5 套 harness 清单 / 复制 1.00×，⭐⭐⭐⭐⭐ 证明「零复制」与「多 harness」可以兼得 —— 因而 ECC 的 3.30× 是实现选择而非能力上限**；⭐⭐⭐⭐⭐ 第四个发现是**分发协议仍在缓慢收敛，且本日首次出现「零复制 + 多清单」的组合**：⭐⭐⭐⭐⭐ 对 11-17 同一批 17 个仓库同口径复测，**同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`），⭐⭐⭐⭐⭐ **而 `Tencent/LoopForge` 有 21 个技能文件却是 0 套 harness 目录、0 条安装命令**，⭐⭐⭐⭐⭐ **同批 12 个 skill 项目里 0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个 —— 适配层这条赛道的分化比 11-17 更明显，而不是更收敛**；⭐⭐⭐⭐⭐ 第五个发现是**「确定性 + LLM」的混合架构在两个不同领域各自独立出现**：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 是「确定性规则流水线（NPE/线程安全/XSS/SQL 注入）+ LLM Agent」，⭐⭐⭐⭐⭐ `google-research/paper-orchestra` 是 `autoraters/citation_f1.py`（确定性 F1）+ `agent_review.py`（LLM 评审），⭐⭐⭐⭐⭐ **两家机构、两个领域、同一分工 —— 这是本日最值得推广的架构范式**
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [OceanChandlerSewer/rob-run-cheat-private](projects/rob-run-cheat-private.md) | 236 stars | 观察型（反例样本） |
-| [hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client](projects/call-of-duty-modern-warfare-4-cheat-client.md) | 53 stars | 观察型（反例样本） |
-| [kajisho5/ffmpeg-skill](projects/ffmpeg-skill.md) | 6,630 stars | 生产可用 |
-| [google/elephant-goldfish-model](projects/elephant-goldfish-model.md) | 20,347 stars | 工具型 |
-| [NVIDIA/SkillEvaluator](projects/skillevaluator.md) | 2,623 stars | 平台候选 |
-| [mvanhorn/last30days-skill](projects/last30days-skill.md) | 68,087 stars | 生产可用 |
-| [vercel-labs/agent-browser](projects/agent-browser.md) | 51,996 stars | 生产可用 |
-| [ag-ui-protocol/ag-ui](projects/ag-ui.md) | 18,912 stars | 平台候选 |
+| [GoogleChrome/modern-web-guidance-src](projects/modern-web-guidance-src.md) | 8,414 stars | 平台候选 |
+| [affaan-m/ECC](projects/ecc.md) | 305,425 stars | 平台候选 |
+| [backnotprop/plannotator](projects/plannotator.md) | 13,035 stars | 工具型 |
+| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 53,682 stars | 生产可用 |
+| [google-research/paper-orchestra](projects/paper-orchestra.md) | 2,884 stars | 观察型 |
+| [getarcaneapp/arcane](projects/arcane.md) | 9,275 stars | 生产可用 |
+| [Tencent/LoopForge](projects/loopforge.md) | 3,071 stars | 平台候选 |
+| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 9,120 stars | 工具型 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **⭐⭐⭐⭐⭐ 投放体的账号是「长期在编的产能」而不是当天现注册的：cheat client 族 9 个仓库（ROB RUN ×3 / PUBG / GTA V / Apex / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板（capsule-render 横幅 + readme-typing-svg 打字动效 + shields.io 徽章 + 一张功能表），其中 6 个统一指向同一条载荷域名 modbay.live；⭐⭐⭐⭐⭐ 每棵树只有 2 个 blob（LICENSE + README.md）、0 个代码文件、0 个 open issue；⭐⭐⭐⭐⭐ 实测账号分三批创建 —— 2026-08-10 一批 6 个（22:36:14Z–22:37:15Z，跨度 61 秒）、2026-09-21 一批 2 个、2026-06-15 一批 2 个；⭐⭐⭐⭐⭐ 其中 2026-08-10 那一批正是 11-15 日报记录的 2026-08-10T10:11:27Z 账号队列的同一注册窗口 —— 即投放方把账号提前 1–5 个月养好，需要时才启用** · 相关项目：OceanChandlerSewer/rob-run-cheat-private, SandstoneShoutMoon/ROB-RUN-cheat-client, DiamondCockatooFlow/Apex-Legends-cheat-client · 强度：96
-2. **⭐⭐⭐⭐⭐ 「占位仓库」成为比「账号注册聚集度」更硬也更便宜的判据，且本日首次被做成对照实验：10/10 个投放账号各持有一个 README 恰好等于 `# <仓库名>`、10 字节、1 个 blob、0⭐ 的随机名占位仓库（trckulpa / szoyxrqs / fzohpjud / cwjhmbpo / ugqbrkec / hrolzfoa / nuxtdjnj / upzuukrt / rqpylldg / khcmkgzv）；⭐⭐⭐⭐⭐ 对照组的 16 个普通账号里只有 1 个（staryone/sanckut）命中同一签名 —— 6.25% vs 100%；⭐⭐⭐⭐⭐ 该指纹只需一次 users/{owner}/repos 请求即可判定，不受账号闲置时间影响、也不受仓库命名词根相似性影响** · 相关项目：OceanChandlerSewer/rob-run-cheat-private, hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client, Brandtrocontrol/Marvel-Rivals-private-cheat · 强度：94
-3. **⭐⭐⭐⭐⭐ 11-16 刚被证伪的「release 数量」判据，在本日被一个真项目正面推翻 —— ffmpeg-skill 有 100 个 release / 100 个 tag / 100 个互不相同的 commit sha，release 与 tag 一一对应；⭐⭐⭐⭐⭐ 但逐个查这 100 个 tag 的 commit 发现：release commit 本身只改元数据（package.json / plugin.json / CHANGELOG.md / docs/contract.md，8 文件 +16/-9），而它的父 commit 才是真正的代码变更（12 个 tag 抽样中 12/12 的父 commit 触及源码，触及文件数 2–17 个）；⭐⭐⭐⭐⭐ 结论：判据不在 release 数量，而在「tag → commit → 代码 diff」这条链是否闭合 —— 11-16 的 steam-library-bridge（1 commit → 4 个语义无关版本号）是链断开的反例** · 相关项目：kajisho5/ffmpeg-skill, atlas7283/steam-library-bridge · 强度：92
-4. **⭐⭐⭐⭐⭐ 「Agent Skills」已从「一个技能格式」收敛成「一个跨 harness 的可移植包格式」：实测 17 个相关仓库中 15 个带 SKILL.md；⭐⭐⭐⭐⭐ google/elephant-goldfish-model 同时发布 6 套 harness 专属清单（.claude-plugin/ / .codex-plugin/ / .cursor-plugin/ / .plugin/ / .gemini/config.yaml / Windsurf 适配器）、mvanhorn/last30days-skill 与 kajisho5/ffmpeg-skill 各 4 套、addyosmani/agent-skills 3 套；⭐⭐⭐⭐⭐ 但 17 个仓库里只有 3 个同时公开 `npx skills add` 与 `/plugin marketplace add` 两条安装命令 —— 「包内多 harness 清单」已经收敛而「安装协议」尚未收敛，说明 Skills 的竞争战场正从技能内容转向分发适配层** · 相关项目：google/elephant-goldfish-model, mvanhorn/last30days-skill, kajisho5/ffmpeg-skill · 强度：91
+1. **⭐⭐⭐⭐⭐ 「账号注册聚集度」这条判据在加上对照组之后被证伪 —— 15 个 Trending 仓库的 1,500 个 fork owner 中「7 天内新建账号」占 38.0%，⭐⭐⭐⭐⭐ 而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5%（更高）；⭐⭐⭐⭐⭐ 逐仓库看：`golang/go` 80/100 · `rust-lang/rust` 72/100 · `torvalds/linux` 71/100 · `sveltejs/svelte` 88/100；⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击信号 —— 本日报据此撤回对 `google-research/paper-orchestra` 的 100 个同日 fork 的任何「协调刷量」解读** · 相关项目：google-research/paper-orchestra, backnotprop/plannotator, getarcaneapp/arcane · 强度：95
+2. **⭐⭐⭐⭐⭐ 「版本发布」判据从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 闭合 / 资产随版本演进），本日实测四个真项目给出四种形态：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，asset 下载 57–951 次）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，deb/rpm/apk/zst + 14 个裸二进制，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（2.57 GB，**含 CycloneDX SBOM JSON 与 13 个 sha256**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag / 1 个 release**（prerelease 的审计数据 JSON），且其 10/10 抽样 tag 的 commit 真实改动 RAG 索引产物、其父 commit 10/10 触及源码；⭐⭐⭐⭐⭐ 关键结论：判据是「链上有没有真实 diff」而非「功能 commit 在前还是在后」（`open-code-review` 与 `plannotator` 实测到两种形态在同一仓库内交替出现）** · 相关项目：GoogleChrome/modern-web-guidance-src, alibaba/open-code-review, getarcaneapp/arcane · 强度：93
+3. **⭐⭐⭐⭐⭐ 「SKILL.md 数量」是复制放大的计数，必须拆成「独立技能身份数 / harness 清单数 / 复制倍数」三个指标：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目 —— `affaan-m/ECC` **1,087 文件 / 330 身份（3.30×）**，最大单一技能被复制 10 份；⭐⭐⭐⭐⭐ `Tencent/LoopForge` 21/9（2.33×）· `backnotprop/plannotator` 23/11（2.09×）· `cursor/plugins` 173/113（1.53×）· `tradermonty/claude-trading-skills` 94/74（1.27×）；⭐⭐⭐⭐⭐ 而 `Claude-BugHunter` 83/83 · `superpowers` 15/15 · `addyosmani/agent-skills` 25/25 · `anthropics/skills` 20/20 · `stitch-skills` 16/16 · `mvanhorn/last30days-skill` 1/1 **全部是零复制**；⭐⭐⭐⭐⭐ 决定性的反例是 `obra/superpowers` **15 身份 / 5 套 harness 清单 / 复制 1.00×** —— 证明「零复制」与「多 harness」可兼得，⭐⭐⭐⭐⭐ 因而 ECC 的 3.30× 是实现选择而非能力上限** · 相关项目：affaan-m/ECC, elementalsouls/Claude-BugHunter, Tencent/LoopForge · 强度：92
+4. **⭐⭐⭐⭐⭐ 分发协议仍在缓慢收敛，但赛道的**分化**比收敛更明显：对 11-17 同一批 17 个仓库同口径复测，⭐⭐⭐⭐⭐ **同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`）；⭐⭐⭐⭐⭐ 但在 12 个 skill 类 Trending 项目里，**0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个**；⭐⭐⭐⭐⭐ 而 `Tencent/LoopForge` 有 21 个技能文件却是 **0 套 harness 目录、0 条安装命令**（技能以 `local/.claude/skills/` 项目内目录形式交付）；⭐⭐⭐⭐⭐ 同日 `alibaba/open-code-review` 出现 `plugin-contract.yml` 与 `action-contract.yml` 两个把「契约」做成 CI 门禁的工作流 —— 即「把契约从文档变成可执行检查」本日首次出现，而「让外部用户能装上」仍是最薄弱的一环** · 相关项目：alibaba/open-code-review, Tencent/LoopForge, google-labs-code/stitch-skills · 强度：89
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-11-18](daily/2026-11-18.md) | 9 | 5 |
 | [2026-11-17](daily/2026-11-17.md) | 9 | 5 |
 | [2026-11-16](daily/2026-11-16.md) | 9 | 5 |
 | [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
 | [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
 | [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
 | [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
-| [2026-11-11](daily/2026-11-11.md) | 2 | 2 |
 
 ## 为什么做这个项目
 

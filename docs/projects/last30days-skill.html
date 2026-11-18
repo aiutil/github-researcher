@@ -318,6 +318,73 @@ npx skills add mvanhorn/last30days-skill -g
 </ol>
 <hr />
 <p><em>首次记录：2026-06-07 · 本次更新：2026-11-17 · 全部元数据取自 2026-11-17 CST 的 GitHub REST API 快照</em></p>
+<h2 id="2026-11-18">最近动态（2026-11-18）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>本日对本项目做的是同口径复测（与 11-17 记录的是同一批 17 个仓库），核心结论：它仍是「分发适配层」这条线上收敛最快的样本之一，且是本组里唯一一个「单技能 + 多清单 + 双安装命令」的组合。</strong></p>
+<p><strong>可核验事实一：规模更新（2026-11-18 CST 快照）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">11-17 快照</th>
+<th style="text-align: right;">11-18 快照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars</td>
+<td style="text-align: right;">68,087</td>
+<td style="text-align: right;"><strong>68,964</strong>（+877）</td>
+</tr>
+<tr>
+<td>forks</td>
+<td style="text-align: right;">6,035</td>
+<td style="text-align: right;"><strong>6,146</strong>（+111）</td>
+</tr>
+<tr>
+<td>subs</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;"><strong>221</strong>（+2）</td>
+</tr>
+<tr>
+<td>open issues</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;"><strong>36</strong>（+2）</td>
+</tr>
+<tr>
+<td>blobs</td>
+<td style="text-align: right;">736</td>
+<td style="text-align: right;"><strong>759</strong></td>
+</tr>
+<tr>
+<td><code>SKILL.md</code> 文件数</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>1</strong></td>
+</tr>
+<tr>
+<td><strong>独立技能身份数</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>1</strong>（复制倍数 <strong>1.00</strong>）</td>
+</tr>
+<tr>
+<td>harness 目录</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"><strong>4</strong>（<code>.claude-plugin</code> / <code>.codex-plugin</code> / <code>.grok-plugin</code> / <code>gemini-extension.json</code>）</td>
+</tr>
+<tr>
+<td>最后 push</td>
+<td style="text-align: right;">2026-11-17</td>
+<td style="text-align: right;">2026-11-17T22:06:31Z</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实二：本项目的三条指标在 12 个 skill 类 Trending 项目中都很突出 —— ① 复制倍数 1.00（与 <code>superpowers</code> / <code>addyosmani/agent-skills</code> / <code>anthropics/skills</code> / <code>Claude-BugHunter</code> / <code>stitch-skills</code> 同属零复制阵营）；② 4 套 harness 目录（属「多 harness」阵营）；③ 同时公开 <code>npx skills add</code> 与 <code>marketplace add</code> 两条命令（12 个里仅 4 个做到）。⭐⭐⭐⭐⭐ 即它是「深（单技能）× 广（4 harness + 50+ host）」的独特象限 —— ⭐⭐⭐⭐⭐ </strong>其他零复制项目要么技能多而 harness 少（<code>Claude-BugHunter</code> 83/1），要么两者都少（<code>stitch-skills</code> 16/1）；⭐⭐⭐⭐⭐ 只有它是 1 个技能却配了 4 套清单。⭐⭐⭐⭐⭐ 这正对应它 README 自述的「50+ Agent Skills hosts」策略 —— 一个技能 + 最大化的 host 覆盖面。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 可核验事实三：单技能体积仍是本日最高的之一。</strong> ⭐⭐⭐⭐⭐ 实测 <code>skills/last30days/SKILL.md</code> 平均 <strong>31,980 B</strong>（11-17 快照为 31,980 B，无变化）⭐⭐⭐⭐⭐ —— <strong>它把「聚合 10+ 平台 + 打分 + 合成」的全部知识压在一个文件里，⭐⭐⭐⭐⭐ 而 <code>Claude-BugHunter</code> 的 83 个技能平均 20,191 B。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 这再次印证本日记录的规律：⭐⭐⭐⭐⭐ </strong>「单技能体量」与「技能数量」负相关 —— 知识打包的粒度由内容形态决定，不由项目偏好决定。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>可核验事实四：issue 继续以真机问题为主。</strong> ⭐⭐⭐⭐⭐ 36 个 open issue（11-17 为 34），⭐⭐⭐⭐⭐ 本日报<strong>未逐条读正文</strong>，⭐⭐⭐⭐⭐ 仅记录其<strong>数量与作者结构延续了 11-17 的观察</strong>（机制级问题报告而非功能许愿）。</p>
+<p><strong>⭐⭐⭐ 证据边界（2026-11-18 更新部分）：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未安装、未运行、未调用本 skill，未访问其聚合的任何平台。</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未逐条读取 36 个 open issue 的正文</strong>，仅沿用 11-17 的形态判断并记录数量变化。
+- ⭐⭐⭐ ⚠️ <strong>star 增速未做统计</strong>（+877 是两个快照点之差，⭐⭐⭐⚠️ 不是时间序列增速）。
+- ⭐⭐⭐ ⚠️ <strong>「50+ Agent Skills hosts」是项目自述</strong>，本日报未核验其实际可用 host 数量。</p>
     </div>
 </main>
     <footer class="footer">

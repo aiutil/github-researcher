@@ -28,7 +28,7 @@
         <h2 id="_1">今日重点趋势</h2>
 <h3 id="1-score-96">1️⃣ 投放体的账号是「长期在编的产能」，不是当天现注册的（score 96）</h3>
 <p>⭐⭐⭐⭐⭐ <strong>本日最硬的发现：<code>cheat client</code> 族是一套有 README 模板、有载荷域名、有账号队列、有占位仓库的完整投放体系，而且它的账号是提前几个月养好的。</strong></p>
-<p><strong>可核验事实一：族谱与模板。</strong> 本日报对 <code>created:2026-11-14..2026-11-16</code> 窗口内 70 个 <code>cheat</code>/<code>crack</code>/<code>trainer</code> 命名的候选逐个读取 README，<strong>9 个命中同一模板签名</strong>：</p>
+<p><strong>可核验事实一：族谱与模板。</strong> 本日报对 <code>created:2026-11-14..2026-11-16</code> 窗口内 70 个 <code>cheat</code>/<code>crack</code>/<code>trainer</code> 命名的候选逐个读取 README，<strong>9 个命中同一模板签名，其中 1 个是误报</strong>（<code>francyellenn/cheat-sheets</code>，详见下方反证）<strong>，故真正的族是 8 个</strong>：</p>
 <table>
 <thead>
 <tr>
@@ -134,17 +134,17 @@
 </tr>
 </tbody>
 </table>
-<p>⭐⭐⭐⭐⭐ <strong>9 个仓库全部是 2 个 blob</strong>（<code>LICENSE</code> + <code>README.md</code>），<strong>0 个代码文件</strong>，<strong>8/9 是 0 个 open issue</strong>（唯一 1 个 issue 的两个仓库，其 issue 内容分别是 <code>NOT WORK</code> 与 <code>无法运行</code> —— ⭐⭐⭐⭐⭐ <strong>即真实用户投诉「装不上」，而不是功能讨论</strong>）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>族内 8 个仓库全部是 2 个 blob</strong>（<code>LICENSE</code> + <code>README.md</code>），<strong>0 个代码文件</strong>，<strong>7/8 是 0 个 open issue</strong>（唯一 1 个 issue 在 <code>OceanChandlerSewer/rob-run-cheat-private</code>，内容是 <code>NOT WORK</code> —— ⭐⭐⭐⭐⭐ <strong>即真实用户投诉「装不上」，而不是功能讨论</strong>）。⭐⭐⭐⭐⭐ <strong>同批账号里另有一个 <code>DestroyerStrait/RobRun-Cheat-Ares-Crack</code>（66⭐ · 1 个 blob · 1 个 issue <code>无法运行</code>）同样零代码，但它不共享本模板</strong> —— ⭐⭐⭐⭐⭐ <strong>即「模板族」与「占位仓库账号集」是两个嵌套但不等价的集合，前者 8 个、后者 10 个。</strong></p>
 <p>⭐⭐⭐⭐⭐ <strong>模板的三个可核验组件：</strong></p>
 <ol>
-<li><strong>横幅生成器</strong> <code>capsule-render.vercel.app/api?type=waving&amp;…&amp;text=&lt;项目名&gt;</code>（9/9 命中）</li>
-<li><strong>打字机动效</strong> <code>readme-typing-svg.demolab.com/…&amp;lines=…</code>（9/9 命中）</li>
-<li><strong>徽章阵列</strong> <code>img.shields.io/badge/…?style=for-the-badge</code>（9/9 命中）</li>
+<li><strong>横幅生成器</strong> <code>capsule-render.vercel.app/api?type=waving&amp;…&amp;text=&lt;项目名&gt;</code>（<strong>8/8</strong> 命中）</li>
+<li><strong>打字机动效</strong> <code>readme-typing-svg.demolab.com/…&amp;lines=…</code>（<strong>7/8</strong> 命中；<code>OceanChandlerSewer</code> 与 <code>Brandtrocontrol</code> 未用）</li>
+<li><strong>徽章阵列</strong> <code>img.shields.io/badge/…?style=for-the-badge</code>（<strong>8/8</strong> 命中）</li>
 </ol>
-<p>⭐⭐⭐⭐⭐ <strong>载荷域名：9 个里 6 个指向同一条 <code>modbay.live</code>（路径按游戏分：<code>/library/rob-run</code>、<code>/library/pubg</code>、<code>/library/gta-v-enhanced</code>），另 2 个指向 <code>readme-typing-svg</code> 的兄弟服务而未给出直接载荷地址。</strong> ⭐⭐⭐⭐⭐ <strong>本日报对 <code>modbay.live</code> 只做了一次 HTTP HEAD（返回 405、<code>Allow: GET</code>、<code>server: nginx/1.18.0 (Ubuntu)</code>），未下载、未打开任何载荷页面。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>载荷域名：8 个里 6 个指向同一条 <code>modbay.live</code>（路径按游戏分：<code>/library/rob-run</code>、<code>/library/pubg</code>、<code>/library/gta-v-enhanced</code>），另 2 个指向 <code>readme-typing-svg</code> 的兄弟服务而未给出直接载荷地址。</strong> ⭐⭐⭐⭐⭐ <strong>本日报对 <code>modbay.live</code> 只做了一次 HTTP HEAD（返回 405、<code>Allow: GET</code>、<code>server: nginx/1.18.0 (Ubuntu)</code>），未下载、未打开任何载荷页面。</strong></p>
 <p>⭐⭐⭐⭐⭐ <strong>⚠️ 重要反证（本日自查）：</strong> <code>capsule-render</code> 与 <code>readme-typing-svg</code> 都是<strong>公开的第三方横幅生成器</strong>，不是投放方的私产。⭐⭐⭐⭐⭐ <strong>本日报实测一个真实学生账号 <code>francyellenn</code>（2023-05-28 创建、16 个公开仓库）的 14 个仓库里有 11 个使用同一套 <code>capsule-render</code> 横幅</strong>（<code>HAVARD-SQL</code> / <code>HAVARD-CS50-R</code> / <code>HAVARD-CS50-PYTHON</code> / <code>SANDBOX</code> / <code>comment-overdose</code> / <code>code-dumpster-fire</code> …），<strong>内容是葡萄牙语的 CS50 课程笔记。</strong> ⭐⭐⭐⭐⭐ <strong>因此「用了 capsule-render」本身不是判据 —— 本日报不据此主张任何结论。</strong>⭐⭐⭐⭐⭐ <strong>真正的判据是下述「占位仓库 + 账号队列」的结构组合。</strong></p>
 <p><strong>可核验事实二：账号是提前 1–5 个月养好的。</strong></p>
-<p>⭐⭐⭐⭐⭐ 9 个 owner 账号的注册时间分三批：</p>
+<p>⭐⭐⭐⭐⭐ 10 个 owner 账号的注册时间分三批：</p>
 <table>
 <thead>
 <tr>
@@ -156,10 +156,16 @@
 </thead>
 <tbody>
 <tr>
-<td>A</td>
+<td>A1</td>
 <td><code>LairFreighter85</code> / <code>DiamondCockatooFlow</code> / <code>SandstoneShoutMoon</code> / <code>VergeEnvoyAdze</code> / <code>ashtherapistpillar</code></td>
 <td><code>2026-08-10T22:36:14Z – 22:37:15Z</code></td>
 <td style="text-align: right;"><strong>61 秒</strong></td>
+</tr>
+<tr>
+<td>A2</td>
+<td><code>OceanChandlerSewer</code></td>
+<td><code>2026-08-10T10:12:04Z</code></td>
+<td style="text-align: right;">单点（同日）</td>
 </tr>
 <tr>
 <td>B</td>
@@ -175,7 +181,7 @@
 </tr>
 </tbody>
 </table>
-<p>⭐⭐⭐⭐⭐ <strong>批次 A 的注册窗口（<code>2026-08-10T22:36Z</code> 附近）落在 11-15 日报记录的 <code>2026-08-10T10:11:27Z</code> 账号队列的同一批注册日内</strong> —— ⭐⭐⭐⭐⭐ <strong>同批账号，跨 12.5 小时的两段窗口，说明注册是按小时批量推进的。</strong>⭐⭐⭐⭐⭐ <strong>批次 B 的 <code>2026-09-21T17:24:55Z–17:25:39Z</code> 则直接落在 11-15 日报记录的「6 个 owner 创建于 <code>2026-09-21T17:23:39Z–17:25:16Z</code> 的 97 秒窗口」之内。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>批次 A1 的注册窗口（<code>2026-08-10T22:36Z</code> 附近）落在 11-15 日报记录的 <code>2026-08-10T10:11:27Z</code> 账号队列的同一批注册日内</strong> —— ⭐⭐⭐⭐⭐ <strong>同批账号，跨 12.5 小时的两段窗口（A2 在 <code>10:12:04Z</code>、A1 在 <code>22:36Z</code>），说明注册是按小时批量推进的。</strong>⭐⭐⭐⭐⭐ <strong>批次 B 的 <code>2026-09-21T17:24:55Z–17:25:39Z</code> 则直接落在 11-15 日报记录的「6 个 owner 创建于 <code>2026-09-21T17:23:39Z–17:25:16Z</code> 的 97 秒窗口」之内。</strong></p>
 <p>⭐⭐⭐⭐⭐ <strong>这与 11-16 日报记录的判据修正完全吻合：11-16 已证伪「账号当天新建 ⇒ 农场」；本日的证据进一步说明投放方不但不是当天注册，而是</strong>提前养号、等到需要时启用<strong>。⭐⭐⭐⭐⭐ </strong>后果是：任何依赖「注册时间接近当前」的判据都会系统性漏掉这类投放体 —— 账号越老，越显得「正常」。**</p>
 <h3 id="2-score-94">2️⃣ 「占位仓库」成为更硬也更便宜的判据，且本日首次做成对照实验（score 94）</h3>
 <p>⭐⭐⭐⭐⭐ <strong>10 个投放账号各持有一个「结构占位仓库」，签名是：整棵树只有 1 个 blob（<code>README.md</code>），内容恰好等于 <code># &lt;仓库名&gt;</code>（8 字符随机名 ⇒ 10 字节），0⭐，0 forks，0 issues，1 个 commit（<code>Initial commit</code>），创建于账号注册后 1–3 分钟。</strong></p>
@@ -887,7 +893,7 @@
 <p><strong>⭐⭐⭐⭐⭐ 风险四：Skill 生态的「自举」正在制造评估真空。</strong>
 <code>SkillEvaluator</code> 的用户自己报出「Tier 1 安全扫描只扫 bundled skills，hooks 和 <code>bin/</code> 永远不被扫描」⭐⭐⭐⭐⭐ <strong>——即当前最权威的 Skill 评估器之一，存在一个已知且未修的扫描盲区。</strong>⭐⭐⭐⭐⭐ <strong>同时 17 个仓库里只有 4 个带 ≥3 套 harness 清单，安装协议没有标准 —— ⭐⭐⭐⭐⭐ </strong>这意味着一份 Skill 会被装到哪、怎么装、装到哪个目录，<strong>目前仍然不统一，而 <code>Derive Claude root source in packaging</code> 这类 commit 说明差异会渗进打包逻辑。</strong></p>
 <p><strong>⭐⭐⭐⭐⭐ 风险五：本日族把「游戏外挂」当载荷名，但载荷本身未核验。</strong>
-9 个仓库的 README 都列出了 aimbot / ESP / radar / 无敌 等功能表，⭐⭐⭐⭐⭐ <strong>但本日报未下载任何载荷，因此「这些功能表描述的是否与实际载荷一致」完全未知。</strong>⭐⭐⭐⭐⭐ <strong>同样未知的是 <code>modbay.live</code> 是否托管了其他品类 —— 本日报只在这 9 个 README 里看到它。</strong></p>
+族内 8 个仓库的 README 都列出了 aimbot / ESP / radar / 无敌 等功能表，⭐⭐⭐⭐⭐ <strong>但本日报未下载任何载荷，因此「这些功能表描述的是否与实际载荷一致」完全未知。</strong>⭐⭐⭐⭐⭐ <strong>同样未知的是 <code>modbay.live</code> 是否托管了其他品类 —— 本日报只在这 9 个 README 里看到它。</strong></p>
 <p><strong>⭐⭐⭐⭐⭐ 机遇一：「占位仓库」可以直接做成一零成本巡检项。</strong>
 一次 <code>users/{owner}/repos</code> 请求 → 检查是否存在 README 恰好等于 <code># &lt;仓库名&gt;</code> 的单 blob 仓库。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 更好的用法是反查：拿到一个可疑仓库 → 拉它的 owner 的全部仓库 → 若发现占位仓库，则该 owner 的其他仓库全部进入复核队列。⭐⭐⭐⭐⭐ </strong>这比逐仓库读 README 快一个数量级。**</p>
 <p><strong>⭐⭐⭐⭐⭐ 机遇二：「tag → commit → diff」三段式检查可以固化成 CI。</strong>

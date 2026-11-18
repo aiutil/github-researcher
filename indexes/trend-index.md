@@ -1,3 +1,168 @@
+---
+title: "2026-11-18 GitHub 趋势研究简报"
+slug: "2026-11-18"
+date_added: "2026-11-18"
+last_seen_date: "2026-11-18"
+category: "趋势索引"
+emoji: "📊"
+stars: "9 projects"
+stars_delta: "2026-11-18: 新增 6 个项目档案（modern-web-guidance-src / paper-orchestra / plannotator / arcane / loopforge / claude-bughunter），更新 3 个（ECC / alibaba-open-code-review / last30days-skill）"
+language: "Markdown"
+score: 95
+tags: ["trend-index", "daily", "methodology", "control-group", "version-criteria"]
+url: "https://github.com/aiutil/github-researcher"
+---
+
+## 2026-11-18
+
+### 本日新增项目
+
+| 项目 | ⭐ | forks | fork/star | subs | oi | 语言 | 体积 | blobs | tag/release | 类别 |
+|---|---:|---:|---:|---:|---:|---|---:|---:|---|---|
+| `GoogleChrome/modern-web-guidance-src` | 8,414 | 723 | 8.6% | 54 | **404** | TypeScript | 173,849 KB | 2,405 | **100 tag / 1 rel** | 平台候选 |
+| `affaan-m/ECC` | 305,425 | 44,975 | 14.7% | **1,495** | 153 | JavaScript | 64,399 KB | 4,878 | 20 tag / 19 rel | 平台候选 |
+| `backnotprop/plannotator` | 13,035 | 1,313 | 10.1% | 34 | 181 | TypeScript | 379,909 KB | 7,261 | 100 tag / 100 rel | 工具型 |
+| `alibaba/open-code-review` | 53,682 | 4,429 | 8.3% | 156 | 358 | Go | 55,473 KB | 1,227 | 100 tag / 100 rel | 生产可用 |
+| `google-research/paper-orchestra` | 2,884 | 403 | 14.0% | 25 | 37 | Python | 2,059 KB | **56** | 0 tag / 0 rel | 观察型 |
+| `getarcaneapp/arcane` | 9,275 | 509 | 5.5% | 18 | **9** | Go | — | 2,524 | 100 tag / 100 rel | 生产可用 |
+| `Tencent/LoopForge` | 3,071 | 435 | 14.2% | 12 | 184 | Go | 79,595 KB | 3,412 | 16 tag / 14 rel | 平台候选 |
+| `elementalsouls/Claude-BugHunter` | 9,120 | 1,349 | 14.8% | 49 | 11 | Python | 3,704 KB | 335 | 2 tag / 2 rel | 工具型 |
+| `mvanhorn/last30days-skill` | 68,964 | 6,146 | 8.9% | 221 | 36 | Python | — | 759 | 0 tag / 0 rel | 生产可用 |
+
+### ⭐⭐⭐⭐⭐ 判据修正一（本日的核心）：账号层面的判据必须加对照，否则测的是 GitHub 的常态
+
+**结论：11-12 ~ 11-15 日报建立的「账号注册聚集度」判据在加上同域对照组后被证伪。**
+
+| 组别 | 仓库数 | fork 样本 | **账号 ≤7 天** | 账号 ≤30 天 | 账号 ≤365 天 | 公开仓库 ≤2 | 0 followers | ≤2 仓库 + 0 followers |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| **Trending 组** | 15 | 1,500 | **570（38.0%）** | 603（40.2%） | 765（51.0%） | 305（20.3%） | 912（60.8%） | 300（20.0%） |
+| **对照组** | 11 | 1,100 | **446（40.5%）** | 481（43.7%） | 600（54.5%） | 184（16.7%） | 660（60.0%） | 173（15.7%） |
+
+**逐仓库对照（关键反例）：**
+
+| 仓库 | 组别 | 账号 ≤7 天 |
+|---|---|---:|
+| `sveltejs/svelte` | 对照 | **88 / 100** |
+| `golang/go` | 对照 | **80 / 100** |
+| `rust-lang/rust` | 对照 | **72 / 100** |
+| `torvalds/linux` | 对照 | **71 / 100** |
+| `mvanhorn/last30days-skill` | 对照 | 58 / 100 |
+| `jingyaogong/minimind` | 对照 | 24 / 100 |
+| `ZhuLinsen/daily_stock_analysis` | 对照 | 23 / 100 |
+| `openai/codex-security` | 对照 | 5 / 100 |
+| `vercel-labs/agent-browser` | 对照 | 7 / 100 |
+| `ChromeDevTools/chrome-devtools-mcp` | 对照 | 9 / 100 |
+| `dream-num/univer` | 对照 | 9 / 100 |
+| `getarcaneapp/arcane` | Trending | 76 / 100 |
+| `google-labs-code/stitch-skills` | Trending | 72 / 100 |
+| `backnotprop/plannotator` | Trending | 69 / 100 |
+| `GoogleChrome/modern-web-guidance-src` | Trending | 53 / 100 |
+| `tradermonty/claude-trading-skills` | Trending | 47 / 100 |
+| `affaan-m/ECC` | Trending | 38 / 100 |
+| `elementalsouls/Claude-BugHunter` | Trending | 35 / 100 |
+| `google-research/paper-orchestra` | Trending | 32 / 100 |
+| `obra/superpowers` | Trending | 30 / 100 |
+| `cursor/plugins` | Trending | 27 / 100 |
+| `Tencent/LoopForge` | Trending | **4 / 100** |
+| `anthropics/skills` | Trending | 10 / 100 |
+| `addyosmani/agent-skills` | Trending | 4 / 100 |
+| `alibaba/open-code-review` | Trending | 4 / 100 |
+
+**⭐⭐⭐⭐⭐ 修正后的规则：**
+
+> ❌ 旧：「这个 fork 的 owner 是不是最近才注册的？」—— **绝对阈值在 GitHub 上的基线极高**（`linux` 71% / `go` 80%），**没有对照时会把常态读成异常**
+> ✅ 新：**「该 fork owner 的账号年龄，相对同批对照仓库的同口径比例，偏离了多少？」** —— 对照组应固定为长期不变的成熟仓库（`linux` / `rust` / `go` / `svelte`）
+
+**⭐⭐⭐⭐⭐ 跨仓库账号网络（本日另一条实测）：** 15 个 Trending 仓库的 1,500 个 fork 中共 **1,393 个不同账号**，⭐⭐⭐⭐⭐ 其中 **87 个账号 fork 了 ≥2 个不同的 Trending 仓库（6.2%）**：⭐⭐⭐⭐⭐ `petar66-web` **6 个**（全部在 2026-11-17 同一天）· `kevin9326` 5 个 · `Virtual0ps` 4 个 · `Nien7979` 4 个。⭐⭐⭐⭐⭐ **⭐⭐⭐⭐⭐ 6.2% 远低于 11-16 记录的「账号 × 家族矩阵」判据（21 个 owner 各持 9–10 个副本 = 100%），⭐⭐⭐⭐⭐ 因此本日 Trending 榜单未见投放体。**
+
+**⭐⭐⭐⭐⭐ 本日 Trending 榜单（25 个去重仓库）全部通过本数据集全部判据：** ⭐⭐⭐⭐⭐ subs/star 比 0.002–0.025 · fork/star 比 5.5%–14.8% · README md5 两两全不同 · **无 2-blob 零代码仓库**（最小为 `paper-orchestra` 的 56 blobs 且 100% 真实源码）· **无载荷链接** · owner 账号全部有多年历史。
+
+### ⭐⭐⭐⭐⭐ 判据修正二：「版本发布」从一维拆成四维
+
+| 类别 | 样本 | tag | release | asset/版本 | 体积 | 下载次数 | tag commit 改源码? | 父 commit 改源码? | SBOM/校验 |
+|---|---|---:|---:|---:|---:|---:|---|---|---|
+| **A. 假版本号** | `steam-library-bridge`（11-16） | 4 | 4 | 2 | — | — | **否** | **否** | 无 |
+| **B. 多而实·无产物** | `ffmpeg-skill`（11-17） | 100 | 100 | **0** | — | — | 否（纯元数据） | **是（12/12）** | 无 |
+| **C. 有 tag 无 release** | **`modern-web-guidance-src`（本日）** | **100** | **1** | 2 | 0.30 MB | 18 / 350 | **是（RAG 索引）** | **是（10/10）** | 仅审计 JSON |
+| **D. 多而实·有产物** | `open-code-review`（本日） | 100 | 100 | **7** | **366 MB** | **57–951** | **是（5/24）** | 是（6/6） | `sha256sum.txt` |
+| **D. 多而实·有产物** | `arcane`（本日） | 100 | 100 | **41** | **1.78 GB** | 10–16 | 是（0/3） | 是（2/2） | **无** |
+| **D. 多而实·有产物** | `plannotator`（本日） | 100 | 100 | **36** | **2.57 GB** | **1–12** | 交替 | 交替 | **CycloneDX SBOM + 13 sha256** |
+| **E. 少而实** | `ECC`（本日） | 20 | 19 | 多数 0 | — | — | **是（36 源码文件）** | 是 | 无 |
+
+**⭐⭐⭐⭐⭐ 三条新规则：**
+
+1. **⭐⭐⭐⭐⭐ 「功能 commit 在 tag 上还是父上」是伪命题** —— 实测 `open-code-review` 的 `v1.13.11` / `v1.13.10` 功能在 tag commit、`v1.13.9` 功能在父 commit；`plannotator` 的 `v0.28.67` 功能在父、`v0.28.66` 功能在 tag。⭐⭐⭐⭐⭐ **判据只能是「链上有没有真实源码 diff」。**
+2. **⭐⭐⭐⭐⭐ 「asset 数量」与「asset 的信息价值」是两件事** —— `arcane` 41 asset 无 SBOM，`open-code-review` 7 asset 有 sha256，⭐⭐⭐⭐⭐ **最优解不是 asset 多，而是 asset 与分发需要匹配。**
+3. **⭐⭐⭐⭐⭐ 真实下载量是发布纪律的外部检验** —— 同为 100 release，下载次数是 **57–951 / 10–16 / 1–12**，⭐⭐⭐⭐⭐ **差一到两个数量级：「发布纪律」解决「版本可信」，「是否有人在用」是另一个正交问题。**
+
+### ⭐⭐⭐⭐⭐ 判据修正三：「SKILL.md 数」是复制放大的计数，须拆成三指标
+
+| 项目 | SKILL.md 文件 | **独立身份** | **复制倍数** | **harness 清单** | 最大单身份复制 | 安装命令 |
+|---|---:|---:|---:|---:|---:|---|
+| `affaan-m/ECC` | **1,087** | **330** | **3.30×** | **9** | **10 份** | 0 / 2 |
+| `Tencent/LoopForge` | 21 | 9 | 2.33× | **0** | 4 份 | **0 / 0** |
+| `backnotprop/plannotator` | 23 | 11 | 2.09× | 2 | 5 份 | 0 / 2 |
+| `cursor/plugins` | 173 | 113 | 1.53× | 2 | 2 份 | 0 / 0 |
+| `tradermonty/claude-trading-skills` | 94 | 74 | 1.27× | 0 | 3 份 | 0 / 0 |
+| `alibaba/open-code-review` | 4 | 4 | 1.00× | 2 | 1 份 | 1 / 1 |
+| `elementalsouls/Claude-BugHunter` | **83** | **83** | 1.00× | 1 | 1 份 | 0 / 2 |
+| `obra/superpowers` | 15 | 15 | **1.00×** | **5** | 1 份 | 0 / 2 |
+| `addyosmani/agent-skills` | 25 | 25 | 1.00× | 5 | 1 份 | 1 / 2 |
+| `anthropics/skills` | 20 | 20 | 1.00× | 1 | 1 份 | 0 / 2 |
+| `google-labs-code/stitch-skills` | 16 | 16 | 1.00× | 1 | 1 份 | 1 / 2 |
+| `mvanhorn/last30days-skill` | 1 | 1 | 1.00× | 4 | 1 份 | 1 / 2 |
+
+**⭐⭐⭐⭐⭐ ECC 的复制明细：** 1,087 个文件中 **1,029 个（94.7%）是 272 个身份的跨目录副本**；⭐⭐⭐⭐⭐ `verification-loop` / `tdd-workflow` / `security-review` / `frontend-patterns` / `coding-standards` / `backend-patterns` **各 10 份**；1,087 文件对应 **942 个不同 blob sha**，138 组 sha 有多份副本。
+
+**⭐⭐⭐⭐⭐ 决定性反例：`obra/superpowers` 是 15 身份 / 5 套 harness 清单 / 复制 1.00×** —— **证明「零复制」与「多 harness」可兼得，⭐⭐⭐⭐⭐ 因而 ECC 的 3.30× 是实现选择而非能力上限。**
+
+**⭐⭐⭐⭐⭐ 新的三个指标（建议固化为常规体检项）：** ⭐⭐⭐⭐⭐ **① 内容宽度 = 独立技能身份数；② 分发宽度 = harness 清单数；③ 适配冗余 = 文件数 ÷ 身份数。** ⭐⭐⭐⭐⭐ 代入：`Claude-BugHunter` 83×1（极深极窄）· `superpowers` 15×5（深而广）· `ECC` 330×9（广且冗余）· `LoopForge` 9×0（有内容无出口）。⭐⭐⭐⭐⭐ **用「SKILL.md 数」排序会得到完全错误的结论（83 > 15 > 9）。**
+
+**⭐⭐⭐⭐⭐ 另一条规律：技能数与单技能体量负相关** —— `Claude-BugHunter` 83 个平均 **20,191 B** · `superpowers` 15 个平均 9,540 B · `cursor/plugins` 173 个平均 3,753 B · `last30days-skill` **1 个 31,980 B（最高）**。
+
+### ⭐⭐⭐⭐⭐ 判据修正四：安装协议收敛极慢，赛道在分化而非收敛
+
+| 指标 | 11-17 记录 | **11-18 同口径复测** | 变化 |
+|---|---:|---:|---|
+| 同时公开 `npx skills add` + `marketplace add` | 3 / 17 | **4 / 17** | **+1** |
+| 只公开 `npx skills add` | — | 2 / 17 | — |
+| 只公开 `marketplace add` | — | 7 / 17 | — |
+| 两条都没有 | — | 4 / 17 | — |
+| ≥3 套 harness 目录 | 4 / 17 | **5 / 17** | +1 |
+| ≥2 套 harness 目录 | — | **9 / 17** | — |
+
+**⭐⭐⭐⭐⭐ 新增的那一个是 `google-labs-code/stitch-skills`（10,069⭐）—— ⭐⭐⭐⭐⭐ 它同时公开两条命令、且是零复制结构（16 文件 / 16 身份 / 1.00×）、有 1,327 forks、21 个 open issues、MIT。⭐⭐⭐⭐⭐ 这正是本日最值得记的组合形态：「零复制 + 双安装命令 + 多 harness」。**
+
+**⭐⭐⭐⭐⭐ 但在同一批 12 个 skill 类 Trending 项目里：0 条安装命令 4 个 / 只有 1 条 4 个 / 两条全有 4 个 —— ⭐⭐⭐⭐⭐ 三足鼎立，说明安装协议这条赛道在分化。** ⭐⭐⭐⭐⭐ 最刺眼的是 **`Tencent/LoopForge` 有 21 个技能文件却是 0 套 harness 目录、0 条安装命令**（技能以 `local/.claude/skills/` 项目内目录交付）。
+
+**⭐⭐⭐⭐⭐ 与之并列的正向发现：`alibaba/open-code-review` 出现 `plugin-contract.yml` 与 `action-contract.yml` 两个把「契约」做成 CI 门禁的工作流** —— ⭐⭐⭐⭐⭐ 从 11-17 的「契约写进文档并版本化」到「契约做成可执行检查」，是适配层成熟度的一个明确台阶。
+
+### ⭐⭐⭐⭐⭐ 架构范式：「确定性 + LLM」混合架构跨领域复现
+
+| | `alibaba/open-code-review` | `google-research/paper-orchestra` |
+|---|---|---|
+| 领域 | 代码评审 | 论文写作 |
+| 确定性部分 | 规则流水线：NPE / thread-safety / XSS / SQL injection | `autoraters/citation_f1.py` + `sxs_paper_quality.py` |
+| LLM 部分 | LLM Agent 语义评审（OpenAI / Anthropic 兼容） | `autoraters/agent_review.py`（AgentReview ensemble） |
+| 质量内建 | `ocr-review.yml` + `pr-commit-policy.yml` + `codeql.yml` | `templates/cvpr2025` + `templates/iclr2025` |
+| 契约 | `plugin-contract.yml` + `action-contract.yml` | `methods/prompts/` 5 个模块与 5 个 agent 一一对应 |
+| 规模 | 53,682⭐ / 4,429 forks / 1,227 blobs / 14 CI | 2,884⭐ / 403 forks / **56 blobs** / **0 CI** |
+
+**⭐⭐⭐⭐⭐ 共同原则：确定性的部分承担「可复现、可回归、可解释」，LLM 的部分承担「无法规则化的判断」—— ⭐⭐⭐⭐⭐ 而分工边界写在哪里，决定了系统是「可测试」还是「不可测试」。** ⭐⭐⭐⭐⭐ `paper-orchestra` 的 issue `#39 Handle malformed AgentReview ensemble responses` 恰好证明：没有确定性锚点时，让 LLM 评判 LLM 会真的出错。
+
+### ⭐⭐⭐⭐⭐ issue 形态作为「是否真在被使用」的免费信号
+
+| 项目 | open issues | issue 形态 |
+|---|---:|---|
+| `alibaba/open-code-review` | 358 | **开发者自测记录**（`#1022` 原文：「API 索引漏掉 AI 对话（32 个路由）…v0.4.0 的诊断导出/CLI 安装没有公开契约」） |
+| `google-research/paper-orchestra` | 37 | **用户失效报告**（双盲模板默认 / ensemble 响应格式错误 / 评审失败丢稿 / 编译器超时丢半成品） |
+| `getarcaneapp/arcane` | **9** | **仅 Bug**（README 明写功能请求已迁至 Discussions） |
+
+**⭐⭐⭐⭐⭐ 结论：issue 的技术含量与定位精度是判断项目是否真在被使用的免费信号；⭐⭐⭐⭐⭐ 而 issue 的数量不是（`open-code-review` 358 vs `arcane` 9，两者工程成熟度相当）。**
+
+---
+
+*首次记录：2026-11-18 · 全部元数据取自 2026-11-18 CST 的 GitHub REST / Search API 快照与 Trending HTML 快照*
 ## 2026-11-17
 
 ### 本日新增项目
@@ -47,13 +212,14 @@
 
 ### ⭐⭐⭐⭐⭐ 判据修正二：投放方的账号是「长期在编的产能」，不是当天现注册的
 
-9 个 `cheat client` 族仓库（ROB RUN ×3 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板：`capsule-render.vercel.app` 横幅生成器（9/9）+ `readme-typing-svg.demolab.com` 打字动效（9/9）+ `img.shields.io` 徽章阵列（9/9），⭐⭐⭐⭐⭐ 其中 6 个统一指向同一条载荷域名 `modbay.live`（路径按游戏分）。9/9 只有 2 个 blob、0 个源码文件、8/9 是 0 个 open issue（唯二的两个 issue 内容是 `NOT WORK` 与 `无法运行`）。
+8 个 `cheat client` 族仓库（ROB RUN ×2 / PUBG / GTA V / Apex Legends / Warzone / CoD MW4 / Marvel Rivals）共享同一套 README 模板：`capsule-render.vercel.app` 横幅生成器（**8/8**）+ `readme-typing-svg.demolab.com` 打字动效（**7/8**）+ `img.shields.io` 徽章阵列（**8/8**），⭐⭐⭐⭐⭐ 其中 6 个统一指向同一条载荷域名 `modbay.live`（路径按游戏分）。8/8 只有 2 个 blob、0 个源码文件、7/8 是 0 个 open issue（唯一 1 个 issue 内容是 `NOT WORK`；另一个 `无法运行` 属于同批账号的 `DestroyerStrait/RobRun-Cheat-Ares-Crack`，但它不共享本模板）。
 
 账号注册时间分三批：
 
 | 批次 | 账号 | 注册窗口 | 跨度 |
 |---|---|---|---:|
-| A | `LairFreighter85` / `DiamondCockatooFlow` / `SandstoneShoutMoon` / `VergeEnvoyAdze` / `ashtherapistpillar` | `2026-08-10T22:36:14Z – 22:37:15Z` | **61 秒** |
+| A1 | `LairFreighter85` / `DiamondCockatooFlow` / `SandstoneShoutMoon` / `VergeEnvoyAdze` / `ashtherapistpillar` | `2026-08-10T22:36:14Z – 22:37:15Z` | **61 秒** |
+| A2 | `OceanChandlerSewer` | `2026-08-10T10:12:04Z` | 单点（同日） |
 | B | `Brandtrocontrol` / `hubchrysalisspanner` | `2026-09-21T17:24:55Z – 17:25:39Z` | 44 秒 |
 | C | `DestroyerStrait` / `delugesovereignphase` | `2026-06-15T19:48:39Z – 19:49:37Z` | 58 秒 |
 

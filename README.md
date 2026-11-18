@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-11-17.md">Latest report</a> ·
+  <a href="daily/2026-11-18.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-11-17
+## Latest report · 2026-11-18
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 9 | 833 | 5 | 134k+ |
+| 9 | 839 | 5 | 55k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [OceanChandlerSewer/rob-run-cheat-private](projects/rob-run-cheat-private.md) | 236 stars | 观察型（反例样本） |
-| [hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client](projects/call-of-duty-modern-warfare-4-cheat-client.md) | 53 stars | 观察型（反例样本） |
-| [kajisho5/ffmpeg-skill](projects/ffmpeg-skill.md) | 6,630 stars | 生产可用 |
-| [google/elephant-goldfish-model](projects/elephant-goldfish-model.md) | 20,347 stars | 工具型 |
-| [NVIDIA/SkillEvaluator](projects/skillevaluator.md) | 2,623 stars | 平台候选 |
-| [mvanhorn/last30days-skill](projects/last30days-skill.md) | 68,087 stars | 生产可用 |
-| [vercel-labs/agent-browser](projects/agent-browser.md) | 51,996 stars | 生产可用 |
-| [ag-ui-protocol/ag-ui](projects/ag-ui.md) | 18,912 stars | 平台候选 |
+| [GoogleChrome/modern-web-guidance-src](projects/modern-web-guidance-src.md) | 8,414 stars | 平台候选 |
+| [affaan-m/ECC](projects/ecc.md) | 305,425 stars | 平台候选 |
+| [backnotprop/plannotator](projects/plannotator.md) | 13,035 stars | 工具型 |
+| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 53,682 stars | 生产可用 |
+| [google-research/paper-orchestra](projects/paper-orchestra.md) | 2,884 stars | 观察型 |
+| [getarcaneapp/arcane](projects/arcane.md) | 9,275 stars | 生产可用 |
+| [Tencent/LoopForge](projects/loopforge.md) | 3,071 stars | 平台候选 |
+| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 9,120 stars | 工具型 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 96 · repositories: OceanChandlerSewer/rob-run-cheat-private, SandstoneShoutMoon/ROB-RUN-cheat-client, DiamondCockatooFlow/Apex-Legends-cheat-client
-2. **Signal 2** · score 94 · repositories: OceanChandlerSewer/rob-run-cheat-private, hubchrysalisspanner/Call-of-Duty--Modern-Warfare-4-cheat-client, Brandtrocontrol/Marvel-Rivals-private-cheat
-3. **Signal 3** · score 92 · repositories: kajisho5/ffmpeg-skill, atlas7283/steam-library-bridge
-4. **Signal 4** · score 91 · repositories: google/elephant-goldfish-model, mvanhorn/last30days-skill, kajisho5/ffmpeg-skill
+1. **Signal 1** · score 95 · repositories: google-research/paper-orchestra, backnotprop/plannotator, getarcaneapp/arcane
+2. **Signal 2** · score 93 · repositories: GoogleChrome/modern-web-guidance-src, alibaba/open-code-review, getarcaneapp/arcane
+3. **Signal 3** · score 92 · repositories: affaan-m/ECC, elementalsouls/Claude-BugHunter, Tencent/LoopForge
+4. **Signal 4** · score 89 · repositories: alibaba/open-code-review, Tencent/LoopForge, google-labs-code/stitch-skills
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-17.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-18.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-11-18](daily/2026-11-18.md) | 9 | 5 |
 | [2026-11-17](daily/2026-11-17.md) | 9 | 5 |
 | [2026-11-16](daily/2026-11-16.md) | 9 | 5 |
 | [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
 | [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
 | [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
 | [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
-| [2026-11-11](daily/2026-11-11.md) | 2 | 2 |
 
 ## Why this repository exists
 

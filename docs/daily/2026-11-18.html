@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-11-18 GitHub 趋势研究简报 | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>📅</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/daily.html" class="back-link">← 返回日报索引</a>
+    <div class="content-card">
+        <h2 id="_1">今日重点趋势</h2>
+<h3 id="1-score-95">1️⃣ 给判据加上对照组之后，「账号注册聚集度」这条判据被证伪（score 95）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日最硬的发现不是关于某个项目的，而是关于我们自己的方法论：11-12 ~ 11-15 日报建立的一整族「账号层面」判据，在本日第一次被加上同域对照组之后，发现它们衡量的其实是 GitHub 的普遍行为。</strong></p>
+<p><strong>可核验事实：两组的对照实验设计。</strong></p>
+<p>本日报对本日 Trending 榜单的 15 个仓库各取<strong>最新 100 个 fork</strong>（共 <strong>1,500</strong> 个 fork），⭐⭐⭐⭐⭐ 对 11 个对照仓库同样各取<strong>最新 100 个 fork</strong>（共 <strong>1,100</strong> 个 fork），⭐⭐⭐⭐⭐ 逐个查询 fork owner 账号的创建时间、公开仓库数与 followers。⭐⭐⭐⭐⭐ 对照组包含两类：<strong>① 同生态但本日未上榜</strong>（<code>mvanhorn/last30days-skill</code> / <code>vercel-labs/agent-browser</code> / <code>ChromeDevTools/chrome-devtools-mcp</code> / <code>openai/codex-security</code> / <code>sveltejs/svelte</code> / <code>dream-num/univer</code> / <code>jingyaogong/minimind</code> / <code>ZhuLinsen/daily_stock_analysis</code>）⭐⭐⭐⭐⭐ 与 <strong>② 与 AI 无关的成熟基础设施</strong>（<code>torvalds/linux</code> / <code>rust-lang/rust</code> / <code>golang/go</code>）。</p>
+<p><strong>可核验事实：结果。</strong></p>
+<table>
+<thead>
+<tr>
+<th>组别</th>
+<th style="text-align: right;">仓库数</th>
+<th style="text-align: right;">fork 样本</th>
+<th style="text-align: right;"><strong>账号 ≤7 天</strong></th>
+<th style="text-align: right;">账号 ≤30 天</th>
+<th style="text-align: right;">账号 ≤365 天</th>
+<th style="text-align: right;">公开仓库 ≤2</th>
+<th style="text-align: right;">0 followers</th>
+<th style="text-align: right;">同时满足 ≤2 仓库 + 0 followers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trending 组</strong></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1,500</td>
+<td style="text-align: right;"><strong>570（38.0%）</strong></td>
+<td style="text-align: right;">603（40.2%）</td>
+<td style="text-align: right;">765（51.0%）</td>
+<td style="text-align: right;">305（20.3%）</td>
+<td style="text-align: right;">912（60.8%）</td>
+<td style="text-align: right;">300（20.0%）</td>
+</tr>
+<tr>
+<td><strong>对照组</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1,100</td>
+<td style="text-align: right;"><strong>446（40.5%）</strong></td>
+<td style="text-align: right;">481（43.7%）</td>
+<td style="text-align: right;">600（54.5%）</td>
+<td style="text-align: right;">184（16.7%）</td>
+<td style="text-align: right;">660（60.0%）</td>
+<td style="text-align: right;">173（15.7%）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 逐仓库的对照数据（本条的真正价值所在）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th>组别</th>
+<th style="text-align: right;">账号 ≤7 天</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sveltejs/svelte</code></td>
+<td>对照</td>
+<td style="text-align: right;"><strong>88 / 100</strong></td>
+</tr>
+<tr>
+<td><code>golang/go</code></td>
+<td>对照</td>
+<td style="text-align: right;"><strong>80 / 100</strong></td>
+</tr>
+<tr>
+<td><code>rust-lang/rust</code></td>
+<td>对照</td>
+<td style="text-align: right;"><strong>72 / 100</strong></td>
+</tr>
+<tr>
+<td><code>torvalds/linux</code></td>
+<td>对照</td>
+<td style="text-align: right;"><strong>71 / 100</strong></td>
+</tr>
+<tr>
+<td><code>mvanhorn/last30days-skill</code></td>
+<td>对照</td>
+<td style="text-align: right;">58 / 100</td>
+</tr>
+<tr>
+<td><code>jingyaogong/minimind</code></td>
+<td>对照</td>
+<td style="text-align: right;">24 / 100</td>
+</tr>
+<tr>
+<td><code>ZhuLinsen/daily_stock_analysis</code></td>
+<td>对照</td>
+<td style="text-align: right;">23 / 100</td>
+</tr>
+<tr>
+<td><code>openai/codex-security</code></td>
+<td>对照</td>
+<td style="text-align: right;">5 / 100</td>
+</tr>
+<tr>
+<td><code>vercel-labs/agent-browser</code></td>
+<td>对照</td>
+<td style="text-align: right;">7 / 100</td>
+</tr>
+<tr>
+<td><code>ChromeDevTools/chrome-devtools-mcp</code></td>
+<td>对照</td>
+<td style="text-align: right;">9 / 100</td>
+</tr>
+<tr>
+<td><code>dream-num/univer</code></td>
+<td>对照</td>
+<td style="text-align: right;">9 / 100</td>
+</tr>
+<tr>
+<td><code>getarcaneapp/arcane</code></td>
+<td>Trending</td>
+<td style="text-align: right;">76 / 100</td>
+</tr>
+<tr>
+<td><code>google-labs-code/stitch-skills</code></td>
+<td>Trending</td>
+<td style="text-align: right;">72 / 100</td>
+</tr>
+<tr>
+<td><code>backnotprop/plannotator</code></td>
+<td>Trending</td>
+<td style="text-align: right;">69 / 100</td>
+</tr>
+<tr>
+<td><code>GoogleChrome/modern-web-guidance-src</code></td>
+<td>Trending</td>
+<td style="text-align: right;">53 / 100</td>
+</tr>
+<tr>
+<td><code>tradermonty/claude-trading-skills</code></td>
+<td>Trending</td>
+<td style="text-align: right;">47 / 100</td>
+</tr>
+<tr>
+<td><code>affaan-m/ECC</code></td>
+<td>Trending</td>
+<td style="text-align: right;">38 / 100</td>
+</tr>
+<tr>
+<td><code>elementalsouls/Claude-BugHunter</code></td>
+<td>Trending</td>
+<td style="text-align: right;">35 / 100</td>
+</tr>
+<tr>
+<td><code>google-research/paper-orchestra</code></td>
+<td>Trending</td>
+<td style="text-align: right;">32 / 100</td>
+</tr>
+<tr>
+<td><code>obra/superpowers</code></td>
+<td>Trending</td>
+<td style="text-align: right;">30 / 100</td>
+</tr>
+<tr>
+<td><code>cursor/plugins</code></td>
+<td>Trending</td>
+<td style="text-align: right;">27 / 100</td>
+</tr>
+<tr>
+<td><code>Tencent/LoopForge</code></td>
+<td>Trending</td>
+<td style="text-align: right;"><strong>4 / 100</strong></td>
+</tr>
+<tr>
+<td><code>anthropics/skills</code></td>
+<td>Trending</td>
+<td style="text-align: right;">10 / 100</td>
+</tr>
+<tr>
+<td><code>addyosmani/agent-skills</code></td>
+<td>Trending</td>
+<td style="text-align: right;">4 / 100</td>
+</tr>
+<tr>
+<td><code>alibaba/open-code-review</code></td>
+<td>Trending</td>
+<td style="text-align: right;">4 / 100</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 结论一（决定性的）：Trending 组 38.0% &lt; 对照组 40.5%，⭐⭐⭐⭐⭐ 而 <code>linux</code> / <code>rust</code> / <code>go</code> / <code>svelte</code> 这四个最不可能被刷的仓库是 71%–88%。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 即这条判据在缺少对照组时会把 GitHub 的普遍行为读成异常特征。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 结论二：本日报据此</strong>撤回<strong>对 <code>google-research/paper-orchestra</code> 的 100 个同日 fork 的任何「协调刷量」解读。</strong> ⭐⭐⭐⭐⭐ 该仓库的 100/100 个 fork 确实全部发生在 <code>2026-11-17</code>（窗口 <code>09:23:58Z – 21:38:23Z</code>，逐小时分布 2–18 个，⭐⭐⭐⭐⭐ <strong>是均匀铺开的一天，不是几分钟内的突击</strong>），⭐⭐⭐⭐⭐ 其 40 个抽样 owner 中 13 个是当天新建账号（其中一个仅 1 个公开仓库、0 followers）—— ⭐⭐⭐⭐⭐ <strong>但同样的形态在 <code>linux</code> 上是 71/100，在 <code>go</code> 上是 80/100。⭐⭐⭐⭐⭐</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 结论三：真正有判别力的不是「账号年龄」，而是「账号是否被用于多个仓库」。</strong> ⭐⭐⭐⭐⭐ 本日报另做了跨仓库账号网络分析：15 个 Trending 仓库的 1,500 个 fork 中共出现 <strong>1,393 个不同账号</strong>，⭐⭐⭐⭐⭐ 其中 <strong>87 个账号 fork 了 ≥2 个不同的 Trending 仓库</strong>。⭐⭐⭐⭐⭐ 头部：<code>petar66-web</code> fork 了 <strong>6 个</strong>（含 <code>anthropics/skills</code> / <code>alibaba/open-code-review</code> / <code>elementalsouls/Claude-BugHunter</code> / <code>tradermonty/claude-trading-skills</code> / <code>we-promise/sure</code> / <code>GoogleChrome/modern-web-guidance-src</code>，<strong>全部在 2026-11-17 同一天</strong>）⭐⭐⭐⭐⭐ · <code>kevin9326</code> 5 个 · <code>Virtual0ps</code> 4 个 · <code>Nien7979</code> 4 个。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 87 / 1,393 = 6.2% 的账号跨多个仓库 fork，而 11-16 日报记录的「账号 × 家族矩阵」判据（21 个 owner 各持 9–10 个</strong>副本<strong>）是 100%。⭐⭐⭐⭐⭐ </strong>⭐⭐⭐⭐⭐ 即本日实测的跨仓库复用一个<strong>远低于</strong>投放体矩阵的形态，⭐⭐⭐⭐⭐ <strong>进一步支持「本日 Trending 榜单未见投放体」的判断。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 结论四：本日的 Trending 榜单里没有出现投放体。</strong> ⭐⭐⭐⭐⭐ 本日报对 25 个 Trending 仓库（日榜 15 + 周榜 14 去重）逐个实测了本数据集 11-12 ~ 11-17 建立的全部判据：⭐⭐⭐⭐⭐ <strong>subs/star 比全部落在 0.002–0.025 的正常区间</strong>（最高 <code>dream-num/univer</code> 0.025、最低 <code>vercel-labs/agent-browser</code> 0.002）⭐⭐⭐⭐⭐ · <strong>fork/star 比全部正常</strong>（<code>alibaba/open-code-review</code> 8.25% / <code>backnotprop/plannotator</code> 10.07% / <code>Tencent/LoopForge</code> 14.16% / <code>elementalsouls/Claude-BugHunter</code> 14.79%）⭐⭐⭐⭐⭐ · <strong>没有 README md5 聚类</strong>（25 个仓库两两之间 md5 全不相同）⭐⭐⭐⭐⭐ · <strong>没有 2-blob 零代码仓库</strong>（最小的是 <code>google-research/paper-orchestra</code> 的 56 blobs，且 100% 是真实源码）⭐⭐⭐⭐⭐ · <strong>没有载荷链接</strong>（实测 README 中无 Dropbox / mediafire / mega.nz / modbay.live 等载荷域名）⭐⭐⭐⭐⭐ · <strong>owner 账号全部有多年历史</strong>（最短 <code>getarcaneapp/arcane</code> 2025-10-07，最长 <code>sveltejs</code> 2016-11-20）。</p>
+<h3 id="2-score-93">2️⃣ 「版本发布」判据从一维拆成四维，本日实测出四种形态（score 93）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>11-16 用 <code>steam-library-bridge</code> 证伪了「release 多 = 有发布史」，11-17 用 <code>ffmpeg-skill</code> 给出了真样本，本日则发现——光有「tag 数」和「release 数」两个数仍然不够，必须加上「链上有没有真实 diff」与「资产是否随版本演进」。</strong></p>
+<p><strong>可核验事实：本日的四组对照数据。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">tag 数</th>
+<th style="text-align: right;">release 数</th>
+<th style="text-align: right;"><strong>每 release 的 asset</strong></th>
+<th style="text-align: right;"><strong>单版本体积</strong></th>
+<th style="text-align: right;"><strong>asset 下载次数</strong></th>
+<th>tag commit 改源码?</th>
+<th>父 commit 改源码?</th>
+<th><strong>SBOM / 校验</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alibaba/open-code-review</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;"><strong>7</strong></td>
+<td style="text-align: right;"><strong>366.20 MB</strong></td>
+<td style="text-align: right;"><strong>57–951</strong></td>
+<td><strong>是</strong>（5/24 文件）</td>
+<td>是（6/6）</td>
+<td><code>sha256sum.txt</code></td>
+</tr>
+<tr>
+<td><code>getarcaneapp/arcane</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;"><strong>41</strong></td>
+<td style="text-align: right;"><strong>1,782.85 MB</strong></td>
+<td style="text-align: right;">10–16</td>
+<td>是（0/3 文件）</td>
+<td>是（2/2）</td>
+<td><strong>无</strong></td>
+</tr>
+<tr>
+<td><code>backnotprop/plannotator</code></td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;"><strong>36</strong></td>
+<td style="text-align: right;"><strong>2,569.09 MB</strong></td>
+<td style="text-align: right;"><strong>1–12</strong></td>
+<td>交替（0/11、11/14）</td>
+<td>交替（19/25、0/12）</td>
+<td><strong>CycloneDX SBOM + 13 sha256</strong></td>
+</tr>
+<tr>
+<td><code>GoogleChrome/modern-web-guidance-src</code></td>
+<td style="text-align: right;"><strong>100</strong></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: right;">2（仅那 1 个）</td>
+<td style="text-align: right;">0.30 MB</td>
+<td style="text-align: right;">18 / 350</td>
+<td><strong>是</strong>（RAG 索引产物）</td>
+<td><strong>是</strong>（10/10）</td>
+<td>仅审计 JSON</td>
+</tr>
+<tr>
+<td><code>kajisho5/ffmpeg-skill</code>（11-17）</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td><strong>否</strong>（纯元数据 8 文件）</td>
+<td><strong>是</strong>（12/12）</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>atlas7283/steam-library-bridge</code>（11-16）</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td><strong>否</strong>（全仓 1 commit）</td>
+<td><strong>否</strong></td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 四个由此得到的分类：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>样本</th>
+<th>特征</th>
+<th>判读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. 假版本号</strong></td>
+<td><code>steam-library-bridge</code>（11-16）</td>
+<td>4 版本号 / 1 commit / 无 diff</td>
+<td><strong>伪造</strong></td>
+</tr>
+<tr>
+<td><strong>B. 多而实，但无产物</strong></td>
+<td><code>ffmpeg-skill</code>（11-17）</td>
+<td>100 release / 0 asset / 父 commit 有 diff</td>
+<td><strong>真实</strong></td>
+</tr>
+<tr>
+<td><strong>C. 多而实，有产物</strong></td>
+<td><code>open-code-review</code> / <code>arcane</code> / <code>plannotator</code></td>
+<td>100 release / 7–41 asset / diff 闭合</td>
+<td><strong>真实</strong>，产物形态不同</td>
+</tr>
+<tr>
+<td><strong>D. 有 tag 无 release</strong></td>
+<td><strong><code>modern-web-guidance-src</code>（本日）</strong></td>
+<td><strong>100 tag / 1 release（prerelease）/ diff 闭合</strong></td>
+<td><strong>真实，但发布面缺失</strong></td>
+</tr>
+<tr>
+<td><strong>E. 少而实</strong></td>
+<td><code>ECC</code>（本日）</td>
+<td>20 tag / 19 release / 13 个 0 asset / tag commit 改 36 个源码文件</td>
+<td><strong>真实</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 两条本日新得到的判定规则：</strong></p>
+<p><strong>规则一：功能 commit 在 tag 上还是父上，是一个伪命题。</strong> ⭐⭐⭐⭐⭐ 实测 <code>open-code-review</code> 的三个连续版本：<code>v1.13.11</code> 功能在 tag commit（24 文件 / 5 源码）· <code>v1.13.10</code> 功能在 tag commit（21 / 7）· <code>v1.13.9</code> 功能在父 commit（tag 只有 2 文件 / 2 源码，父 12 文件 / 7 源码）⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 同一仓库内两种形态交替出现。⭐⭐⭐⭐⭐ <code>plannotator</code> 同理（<code>v0.28.67</code> 功能在父、<code>v0.28.66</code> 功能在 tag）。⭐⭐⭐⭐⭐ 因此判据只能是</strong>「这条链上是否存在真实的源码 diff」**。</p>
+<p><strong>规则二：asset 数量与 asset 的信息价值是两件事。</strong> ⭐⭐⭐⭐⭐ <code>arcane</code> 41 个 asset（deb/rpm/apk/zst + 14 个裸二进制）但<strong>没有</strong> SBOM 或校验文件；⭐⭐⭐⭐⭐ <code>open-code-review</code> 只有 7 个 asset 但<strong>有</strong> <code>sha256sum.txt</code>，⭐⭐⭐⭐⭐ <code>plannotator</code> 36 个 asset 且<strong>有 CycloneDX SBOM + 13 个 sha256 清单</strong>。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ asset 数相差 5.9 倍，但「可验证性」是 <code>open-code-review</code> 最高。⭐⭐⭐⭐⭐ 最优解不是「asset 多」而是「asset 与分发需要匹配」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第三条（本日的意外发现）：真实下载量是发布纪律的外部检验，且与「asset 形态」强相关。</strong> ⭐⭐⭐⭐⭐ 实测 <code>open-code-review</code> 的 asset 下载 <strong>57–951</strong> 次 ⭐⭐⭐⭐⭐ 而 <code>plannotator</code> 只有 <strong>1–12</strong> 次、<code>arcane</code> <strong>10–16</strong> 次。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 同样是 100 个 release、同样有闭合的 diff，⭐⭐⭐⭐⭐ 谁被真的下载了，差别有 1–2 个数量级。⭐⭐⭐⭐⭐ 「发布纪律」解决的是「版本可信」，⭐⭐⭐⭐⭐ 而「是否有人在用」是一个正交且更难获得的问题。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第四条：类别 D 的具体形态（本日新增，最值得记）。</strong> ⭐⭐⭐⭐⭐ <code>modern-web-guidance-src</code> 的 10/10 抽样 tag 的 commit message <strong>完全相同</strong>（「docs: auto-update recent evals and skill coverage」），⭐⭐⭐⭐⭐ 且都改了 <code>src/rag/gen/guide-chunk-cache.i8</code> + <code>.json</code> + <code>.scale.f32</code>（⭐⭐⭐⭐⭐ <strong><code>.i8</code> = int8 量化后的 RAG 向量索引</strong>）；⭐⭐⭐⭐⭐ 而其父 commit 才是真正的功能变更（<code>src/build/publish-skills.ts</code> / <code>src/harness/public/builder.ts</code> / <code>guides/**/grader.ts</code> / <code>guides/**/demo.html</code>）。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 也就是说：它把「检索索引」当作编译产物版本化，⭐⭐⭐⭐⭐ 因此每次内容更新都会产生一个 tag —— 100 个 tag 对应的是 100 次内容/索引同步，⭐⭐⭐⭐⭐ 而不是 100 个面向用户的发布。⭐⭐⭐⭐⭐ 而它唯一的那 1 个 release 装的偏偏是</strong>审计数据<strong>（<code>expectations-coverage.json</code> / <code>eval-defects-pr1998.json</code>）⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ </strong>⭐⭐⭐⭐⭐ 「把审计产物当 release 发」比「把 release 笔记写好」更有信息量。**</p>
+<h3 id="3-skillmd-score-92">3️⃣ 「SKILL.md 数量」是复制放大的计数，必须拆成三个指标（score 92）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本数据集此前所有日报都在报「N 个 SKILL.md」。本日实测证明这个数字同时混合了三件不同的事：内容宽度、分发宽度、以及适配冗余。</strong></p>
+<p><strong>可核验事实：12 个 skill 类 Trending 项目的三指标对照。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">SKILL.md 文件</th>
+<th style="text-align: right;"><strong>独立技能身份</strong></th>
+<th style="text-align: right;"><strong>复制倍数</strong></th>
+<th style="text-align: right;"><strong>harness 清单</strong></th>
+<th style="text-align: right;">最大单一身份复制数</th>
+<th>安装命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>affaan-m/ECC</code></td>
+<td style="text-align: right;"><strong>1,087</strong></td>
+<td style="text-align: right;"><strong>330</strong></td>
+<td style="text-align: right;"><strong>3.30×</strong></td>
+<td style="text-align: right;"><strong>9</strong></td>
+<td style="text-align: right;"><strong>10 份</strong></td>
+<td>0 / 2</td>
+</tr>
+<tr>
+<td><code>Tencent/LoopForge</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2.33×</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4 份</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td><code>backnotprop/plannotator</code></td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2.09×</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5 份</td>
+<td>0 / 2</td>
+</tr>
+<tr>
+<td><code>cursor/plugins</code></td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">1.53×</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2 份</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td><code>tradermonty/claude-trading-skills</code></td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">1.27×</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3 份</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td><code>alibaba/open-code-review</code></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1 份</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td><code>elementalsouls/Claude-BugHunter</code></td>
+<td style="text-align: right;"><strong>83</strong></td>
+<td style="text-align: right;"><strong>83</strong></td>
+<td style="text-align: right;"><strong>1.00×</strong></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1 份</td>
+<td>0 / 2</td>
+</tr>
+<tr>
+<td><code>obra/superpowers</code></td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;"><strong>1.00×</strong></td>
+<td style="text-align: right;"><strong>5</strong></td>
+<td style="text-align: right;">1 份</td>
+<td>0 / 2</td>
+</tr>
+<tr>
+<td><code>addyosmani/agent-skills</code></td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1 份</td>
+<td>1 / 2</td>
+</tr>
+<tr>
+<td><code>anthropics/skills</code></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1 份</td>
+<td>0 / 2</td>
+</tr>
+<tr>
+<td><code>google-labs-code/stitch-skills</code></td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1 份</td>
+<td>1 / 2</td>
+</tr>
+<tr>
+<td><code>mvanhorn/last30days-skill</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1 份</td>
+<td>1 / 2</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ ECC 的复制明细（本日最刺眼的一组数字）：</strong> 1,087 个 <code>SKILL.md</code> 文件里，<strong>1,029 个是 272 个身份的跨目录副本</strong>（占 94.7%）；⭐⭐⭐⭐⭐ <code>verification-loop</code> / <code>tdd-workflow</code> / <code>security-review</code> / <code>frontend-patterns</code> / <code>coding-standards</code> / <code>backend-patterns</code> <strong>各被复制 10 份</strong>；⭐⭐⭐⭐⭐ 1,087 个文件对应 <strong>942 个不同 blob sha</strong>，⭐⭐⭐⭐⭐ 138 组 blob sha 存在多份副本（最大同一 sha 出现 3 次）。⭐⭐⭐⭐⭐ 技能分布根目录：<code>docs/</code> 518 · <code>skills/</code> 327 · <code>pi/</code> 138 · <code>.agents/</code> 48 · <code>.kiro/</code> 43 · <code>.cursor/</code> 13。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 决定性的反例：<code>obra/superpowers</code> 是 15 个独立身份 / 5 套 harness 清单 / 复制倍数 1.00×。</strong> ⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 这证明<strong>「零复制」与「多 harness」是可以兼得的</strong> —— ⭐⭐⭐⭐⭐ 即 ECC 的 3.30× 反映的是「同一份内容在 10 个路径下各存一份」这一具体实现选择，⭐⭐⭐⭐⭐ <strong>而不是它为了支持 9 个 harness 所必须付出的代价。⭐⭐⭐⭐⭐ 本日报认为：ECC 的分发纪律（SLSA3 provenance、pr-burst-guard、9 套清单）已经相当成熟，⭐⭐⭐⭐⭐ </strong>但它的内容层与适配层的投入比（3.30×）值得被持续观测。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 另一条规律：技能数与单技能体量负相关。</strong> ⭐⭐⭐⭐⭐ <code>Claude-BugHunter</code> 83 个技能平均 <strong>20,191 B</strong> · <code>superpowers</code> 15 个平均 <strong>9,540 B</strong> · <code>stitch-skills</code> 16 个平均 <strong>8,545 B</strong> · <code>cursor/plugins</code> 173 个平均 <strong>3,753 B</strong> · <code>last30days-skill</code> <strong>1 个技能 31,980 B</strong>（最高）⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ <strong>即技能多的项目单技能反而更小 —— 这是「知识包」与「单点能力」两种形态的自然结果，⭐⭐⭐⭐⭐ 用「技能数」比较这两者是范畴错误。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 修正后的三个指标（本日报建议固化为常规体检项）：</strong> ⭐⭐⭐⭐⭐ <strong>① 内容宽度 = 独立技能身份数；② 分发宽度 = harness 清单数；③ 适配冗余 = SKILL.md 文件数 ÷ 独立身份数。</strong> ⭐⭐⭐⭐⭐ 代入实测：<code>Claude-BugHunter</code> 83/1（极深极窄）· <code>superpowers</code> 15/5（深而广）· <code>ECC</code> 330/9（广且冗余）· <code>LoopForge</code> 9/0（有内容无出口）—— ⭐⭐⭐⭐⭐ <strong>用「SKILL.md 数」排序会得到完全错误的结论（83 &gt; 15 &gt; 9）。</strong></p>
+<h3 id="4-score-89">4️⃣ 分发协议仍在缓慢收敛，但赛道的分化比收敛更明显（score 89）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>11-17 日报记录「17 个仓库里只有 3 个同时公开 <code>npx skills add</code> 与 <code>/plugin marketplace add</code>」。本日对</strong>完全相同的一批 17 个仓库<strong>做同口径复测。</strong></p>
+<p><strong>可核验事实：同口径复测结果。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">11-17 记录</th>
+<th style="text-align: right;"><strong>11-18 实测</strong></th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同时公开两条安装命令</td>
+<td style="text-align: right;">3 / 17</td>
+<td style="text-align: right;"><strong>4 / 17</strong></td>
+<td><strong>+1</strong></td>
+</tr>
+<tr>
+<td>只公开 <code>npx skills add</code></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">2 / 17</td>
+<td>—</td>
+</tr>
+<tr>
+<td>只公开 <code>marketplace add</code></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">7 / 17</td>
+<td>—</td>
+</tr>
+<tr>
+<td>两条都没有</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">4 / 17</td>
+<td>—</td>
+</tr>
+<tr>
+<td>带 ≥3 套 harness 目录</td>
+<td style="text-align: right;">4 / 17</td>
+<td style="text-align: right;"><strong>5 / 17</strong></td>
+<td>+1</td>
+</tr>
+<tr>
+<td>带 ≥2 套 harness 目录</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>9 / 17</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 新增的那一个，是 <code>google-labs-code/stitch-skills</code></strong>（10,069⭐ · 16 个 SKILL.md · 88 blobs · 1,327 forks）—— ⭐⭐⭐⭐⭐ <strong>它同时公开两条命令、且是零复制结构（16 文件 / 16 身份 / 1.00×）。⭐⭐⭐⭐⭐ 这正是本日最值得记的组合形态：「零复制 + 双安装命令 + 多 harness」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 但在同一批 12 个 skill 类 Trending 项目里，⭐⭐⭐⭐⭐ 0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个 —— ⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 即分布是三足鼎立而非向「两条全有」集中，⭐⭐⭐⭐⭐ </strong>这说明安装协议这条赛道在分化，而不是在收敛。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 最刺眼的对照：<code>Tencent/LoopForge</code> 有 21 个技能文件（9 个独立身份），⭐⭐⭐⭐⭐ 却是 0 套 harness 目录、0 条 <code>npx skills add</code>、0 条 <code>marketplace add</code>。</strong> ⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 它的技能以 <code>local/.claude/skills/</code>（20 个）与 <code>local/.codebuddy/skills/</code> 的<strong>项目内目录</strong>形式交付 —— ⭐⭐⭐⭐⭐ 即「随项目带过去」而非「装到 harness 里」。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 这在 11-17 提出的「竞争战场已从内容转向分发适配层」这条判断上，是最末端的位置。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 与之并列的一条正向发现：<code>alibaba/open-code-review</code> 有两个把契约做成 CI 门禁的工作流</strong> —— <code>plugin-contract.yml</code> 与 <code>action-contract.yml</code>。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 即它把「插件接口长什么样」「action 接口长什么样」变成每次 CI 都校验的东西，⭐⭐⭐⭐⭐ 而 11-17 记录的 <code>ffmpeg-skill</code> 只是把 <code>docs/contract.md</code> 随 release 版本化（每次 release commit 改它 +2/-2）⭐⭐⭐⭐⭐ —— </strong>⭐⭐⭐⭐⭐ 从「把契约写进文档并版本化」到「把契约做成可执行门禁」，是本日适配层成熟度的一个明确台阶。**</p>
+<h3 id="5-llmscore-88">5️⃣ 「确定性 + LLM」的混合架构在两个领域各自独立出现（score 88）</h3>
+<p>⭐⭐⭐⭐⭐ <strong>本日最有迁移价值的架构观察：同一种分工，两家机构在两个毫不相干的领域各做了一遍。</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>alibaba/open-code-review</code></th>
+<th><code>google-research/paper-orchestra</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>领域</td>
+<td>代码评审</td>
+<td>论文写作</td>
+</tr>
+<tr>
+<td>确定性部分</td>
+<td>规则流水线：NPE / thread-safety / XSS / SQL injection</td>
+<td><code>autoraters/citation_f1.py</code>（F1）+ <code>sxs_paper_quality.py</code></td>
+</tr>
+<tr>
+<td>LLM 部分</td>
+<td>LLM Agent 做语义评审（兼容 OpenAI 与 Anthropic）</td>
+<td><code>autoraters/agent_review.py</code>（AgentReview ensemble）</td>
+</tr>
+<tr>
+<td>质量内建</td>
+<td><code>ocr-review.yml</code>（用自己审自己的 PR）+ <code>pr-commit-policy.yml</code> + <code>codeql.yml</code></td>
+<td><code>templates/cvpr2025</code> + <code>templates/iclr2025</code> 双会议模板</td>
+</tr>
+<tr>
+<td>契约</td>
+<td><code>plugin-contract.yml</code> + <code>action-contract.yml</code>（CI 门禁）</td>
+<td><code>methods/prompts/</code> 5 个提示词模块与 agent 一一对应</td>
+</tr>
+<tr>
+<td>规模</td>
+<td>53,682⭐ / 4,429 forks / 1,227 blobs / 14 CI</td>
+<td>2,884⭐ / 403 forks / <strong>56 blobs</strong> / <strong>0 CI</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 共同的架构原则：把确定性的那部分承担「可复现、可回归、可解释」，把 LLM 的那部分承担「无法规则化的判断」—— ⭐⭐⭐⭐⭐ 而分工边界写在哪里，决定了系统是「可测试」还是「不可测试」。</strong> ⭐⭐⭐⭐⭐ <code>open-code-review</code> 把边界写成 CI 工作流（<code>ocr-review.yml</code> / <code>plugin-contract.yml</code>），⭐⭐⭐⭐⭐ <code>paper-orchestra</code> 把边界写成 <code>autoraters/</code> 里的独立模块 —— ⭐⭐⭐⭐⭐ <strong>形式不同，位置相同。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 两者的 issue 形态差异则恰好是「成熟度」的两种表现：</strong> ⭐⭐⭐⭐⭐ <code>open-code-review</code> 的 issue 是<strong>开发者自测记录</strong>（<code>#1022</code> 原文指出「API 索引漏掉 AI 对话（/api/assistant，32 个路由）与共享 AI 定时任务，v0.4.0 的诊断导出/CLI 安装没有公开契约」）⭐⭐⭐⭐⭐ · <code>paper-orchestra</code> 的 issue 是<strong>用户失效报告</strong>（<code>#43</code> 默认 CVPR 模板应改双盲 / <code>#39</code> AgentReview ensemble 响应格式错误 / <code>#37</code> 评审失败时丢稿 / <code>#35</code> 编译器超时丢半成品）⭐⭐⭐⭐⭐ · ⭐⭐⭐⭐⭐ <strong>而 <code>arcane</code> 只有 9 个 issue 且被显式限定为 Bug（功能请求已迁至 Discussions）⭐⭐⭐⭐⭐ —— 三者叠加，本日报得到一条实用的区分线：⭐⭐⭐⭐⭐ </strong>⭐⭐⭐⭐⭐ issue 的技术含量与定位精度，是判断项目是否真在被使用的免费信号；⭐⭐⭐⭐⭐ 而 issue 的数量则不是（<code>open-code-review</code> 358 vs <code>arcane</code> 9，两者工程成熟度相当）。**</p>
+<hr />
+<h2 id="_2">最值得关注的方向</h2>
+<p>⭐⭐⭐⭐⭐ <strong>方向一（本日首选）：「分发适配层」的度量必须从一维升到三维。</strong> ⭐⭐⭐⭐⭐ 11-17 记录的「17 个仓库里只有 3 个同时公开两条安装命令」是一个好指标，⭐⭐⭐⭐⭐ <strong>但本日实测发现它会漏掉最关键的一维。</strong> ⭐⭐⭐⭐⭐ 修正后的三维是：<strong>内容宽度（独立技能身份数）× 分发宽度（harness 清单数）× 适配冗余（复制倍数）</strong>。⭐⭐⭐⭐⭐ 用它读本日的四个代表项目：⭐⭐⭐⭐⭐</p>
+<ul>
+<li><code>obra/superpowers</code> — <strong>15 × 5 × 1.00</strong>（深而广，且无冗余）⭐⭐⭐⭐⭐ <strong>这是本数据集目前最健康的形态</strong></li>
+<li><code>elementalsouls/Claude-BugHunter</code> — <strong>83 × 1 × 1.00</strong>（极深极窄，内容极专注）⭐⭐⭐⭐⭐</li>
+<li><code>affaan-m/ECC</code> — <strong>330 × 9 × 3.30</strong>（最广，但适配冗余最高）⭐⭐⭐⭐⭐</li>
+<li><code>Tencent/LoopForge</code> — <strong>9 × 0 × 2.33</strong>（<strong>有内容、无出口</strong>）⭐⭐⭐⭐⭐</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 方向二：版本判据的最终形态是四元组，而非任何单一数字。</strong> ⭐⭐⭐⭐⭐ <strong>① tag 数 ② release 数 ③ tag→commit→源码 diff 是否闭合 ④ 资产是否随版本演进（及其信息价值）。</strong> ⭐⭐⭐⭐⭐ 四元组把本日实测的五个项目分成了清晰的五类，⭐⭐⭐⭐⭐ 而任何单一数字都会把它们混在一起 —— ⭐⭐⭐⭐⭐ <strong>最典型的是 <code>modern-web-guidance-src</code>：它的 100 个 tag 若按「tag 数」计会被当成与 <code>ffmpeg-skill</code> 同类，但它的 release 只有 1 个。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>方向三：「确定性 + LLM」的混合架构正在从两个方向同时被验证。</strong> ⭐⭐⭐⭐⭐ 一端是<strong>产物生产</strong>（<code>paper-orchestra</code> 的 <code>autoraters/</code>），⭐⭐⭐⭐⭐ 一端是<strong>产物评判</strong>（<code>open-code-review</code> 的规则流水线）。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 而两者都指向同一条结论：⭐⭐⭐⭐⭐ 「让 LLM 评判 LLM」不可持续，⭐⭐⭐⭐⭐ 必须有确定性的锚点；而锚点的形式可以是 F1、可以是规则集、可以是契约校验。</strong></p>
+<hr />
+<h2 id="top-3">重点项目深度分析（Top 3）</h2>
+<h3 id="googlechromemodern-web-guidance-src">🥇 <code>GoogleChrome/modern-web-guidance-src</code> — 版本判据的第三类形态</h3>
+<p><strong>可核验事实（2026-11-18 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>8,414 / 723 / 54 / <strong>404</strong></td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>173,849 KB / 2,405（<code>SKILL.md</code> 15 个）</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建 / 最后 push</td>
+<td>TypeScript / Apache-2.0 / 2026-01-27T20:22:24Z / 2026-11-17T19:50:32Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://goo.gle/modern-web-guidance</code></td>
+</tr>
+<tr>
+<td><strong>tag 数 / release 数</strong></td>
+<td><strong>100 / 1</strong></td>
+</tr>
+<tr>
+<td>那 1 个 release</td>
+<td>tag <code>audit-data</code>，<strong>prerelease</strong>，2 个 <code>.json</code> asset，2026-10-14</td>
+</tr>
+<tr>
+<td>release asset 名</td>
+<td><code>audit-2026-09-24-expectations-coverage.json</code> · <code>audit-2026-10-12-eval-defects-pr1998.json</code></td>
+</tr>
+<tr>
+<td><strong>有 tag 但无 release</strong></td>
+<td><strong>100 / 100</strong></td>
+</tr>
+<tr>
+<td>CI 工作流</td>
+<td>8 个（<code>ci.yml</code> / <code>atl-triage.yml</code> / <code>guide-sync.yml</code> / <code>publish.yml</code> / <code>deploy-pages.yml</code> / <code>deploy-dashboard.yml</code> / <code>update-web-features.yml</code>）</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>paulirish</code> 393 · <code>micahjo7</code> 308 · <code>rviscomi</code> 248 · <code>jamesnw</code> 44 · <code>LeaVerou</code> 43 · <code>philipwalton</code> 43 · <code>connorjclark</code> 42</td>
+</tr>
+<tr>
+<td>harness 目录 / 安装命令</td>
+<td>1 套（<code>.agents</code>）/ <code>npx skills add</code> 有 · <code>marketplace add</code> 有</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的治理结构是本数据集里最强的机构背书（README 原文，实测）：</strong></p>
+<blockquote>
+<p><em>Stewarded by the Google Chrome, Microsoft Edge, Mozilla Firefox, and MDN teams, alongside the web development community.</em></p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的 100 个 tag 是「RAG 索引刷新」的版本化。</strong> ⭐⭐⭐⭐⭐ 实测 10/10 抽样 tag 的 commit message <strong>完全相同</strong>（「docs: auto-update recent evals and skill coverage」），⭐⭐⭐⭐⭐ 且 10/10 都改了 <code>src/rag/gen/guide-chunk-cache.i8</code> / <code>.json</code> / <code>.scale.f32</code>；⭐⭐⭐⭐⭐ 而父 commit 才是真正的功能变更（<code>src/build/publish-skills.ts</code> / <code>src/harness/public/builder.ts</code> / <code>guides/**/grader.ts</code> / <code>guides/**/demo.html</code> / <code>guides/**/expectations.md</code>）。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 即「指南的检索索引」被当作编译产物版本化，⭐⭐⭐⭐⭐ 从而保证「装到 agent 里的内容」与「仓库里的内容」不会漂移 —— ⭐⭐⭐⭐⭐ 这恰好是 skill 生态目前最常见的失败模式。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的产品形态是「按需检索」而非「全量注入」。</strong> ⭐⭐⭐⭐⭐ README 快速开始（实测原文）：<code>npx modern-web-guidance@latest install</code> / <code>search "animate a dialog modal backdrop"</code> / <code>retrieve "animate-to-from-top-layer"</code> / <code>legacy-scan .</code> ⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ <strong>而它对内容裁剪有明确主张：「The guides are </strong>designed to be token-efficient<strong>; we run evals enabling us to prune lowest-common-denominator content that models already know」⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 这与 11-17 <code>ffmpeg-skill</code> 的「默认 12 个工具 / 全量 42 个」是同一问题的两种解法 —— 一个裁内容，一个裁工具暴露面。</strong></p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未运行 <code>npx modern-web-guidance</code>、未安装任何技能、未复现任何一次评测。</strong>
+- ⭐⭐⭐ ⚠️ <strong>10 个 tag 是抽样</strong>（100 个中的 10 个），「10/10 触及源码」是抽样结论，未外推。
+- ⭐⭐⭐ ⚠️ <strong>版本号语义未核验</strong>：<code>v0.0.2</code> ~ <code>v0.0.206</code> 与 <code>v1.0.0</code> / <code>v1.0.1</code> 的关系未核验，且 tag 端点只返回 100 条，⭐⭐⭐ ⚠️ <strong>中间是否有未列出的 tag 未核验。</strong>
+- ⭐⭐⭐ ⚠️ <strong>「prune 掉模型已会的内容」是项目自述</strong>，⭐⭐⭐ ⚠️ <strong>裁剪是否真的降低了 token 而不降低有效性，完全未知。</strong>
+- ⭐⭐⭐ ⚠️ <strong>未核验项</strong>：<code>src/rag/gen/</code> 的索引构建实现、<code>.i8</code> 量化格式、npm 包与仓库一致性、<code>atl-triage.yml</code> 的分诊逻辑、Dashboard 与 Pages 站点内容、<code>legacy-scan</code> 的检测规则、404 个 issue 的正文。</p>
+<hr />
+<h3 id="affaan-mecc-30-330">🥈 <code>affaan-m/ECC</code> — 30 万星的适配层，与它的 3.30× 复制冗余</h3>
+<p><strong>可核验事实（2026-11-18 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>305,425 / 44,975 / 1,495 / 153</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>64,399 KB / 4,878</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建</td>
+<td>JavaScript / MIT / 2026-01-18T00:51:51Z</td>
+</tr>
+<tr>
+<td>最后 push</td>
+<td>2026-11-17T06:41:46Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://ecc.tools</code></td>
+</tr>
+<tr>
+<td><strong>SKILL.md 文件 / 独立身份</strong></td>
+<td><strong>1,087 / 330</strong>（复制倍数 <strong>3.30×</strong>）</td>
+</tr>
+<tr>
+<td><strong>被复制的身份 / 涉及文件</strong></td>
+<td><strong>272 个 / 1,029 个文件</strong></td>
+</tr>
+<tr>
+<td><strong>最大复制倍数</strong></td>
+<td><strong>10 份</strong>（<code>verification-loop</code> / <code>tdd-workflow</code> / <code>security-review</code> / <code>frontend-patterns</code> / <code>coding-standards</code> / <code>backend-patterns</code>）</td>
+</tr>
+<tr>
+<td>不同 blob sha / 有重复的 sha 组</td>
+<td>942 / 138</td>
+</tr>
+<tr>
+<td><strong>harness 目录</strong></td>
+<td><strong>9 个</strong>：<code>.agents</code> · <code>.claude-plugin</code> · <code>.codebuddy</code> · <code>.codex-plugin</code> · <code>.cursor</code> · <code>.gemini</code> · <code>.grok-plugin</code> · <code>.kiro</code> · <code>.opencode</code></td>
+</tr>
+<tr>
+<td><strong>CI 工作流</strong></td>
+<td><strong>15 个</strong>（含 <code>generator-generic-ossf-slsa3-publish.yml</code> · <code>pr-burst-guard.yml</code> · <code>issue-submission-guard.yml</code> · <code>monthly-metrics.yml</code>）</td>
+</tr>
+<tr>
+<td>release / tag</td>
+<td>19 / 20（<code>v0.6.0</code> 是唯一无 release 的 tag）</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>affaan-m</code> 1,778 · <code>haelyra</code> 882 · <code>montjeffrey</code> 179 · <code>L4XB</code> 84 · <code>dependabot[bot]</code> 80 · <code>shoyann</code> 57</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的 README 有一段本日最值得记的防御声明（实测原文）：</strong></p>
+<blockquote>
+<p><strong>Official sources only.</strong> Install ECC only from verified channels: the GitHub repository, the npm packages <code>ecc-universal</code> and <code>ecc-agentshield</code>, the GitHub App, the plugin slug <code>ecc@ecc</code>, and the project website <code>ecc.tools</code>. Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 这是本数据集里第一次由</strong>被投放/被模仿的一方<strong>主动做出的防御性声明 —— 此前 11-13 ~ 11-17 的记录中，防御动作全部在观测者一侧。⭐⭐⭐⭐⭐ 一个项目需要写这句话，说明它已经被复制过。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的 release 链条是「少而实」形态，且功能 commit 在 tag 上：</strong> ⭐⭐⭐⭐⭐ 实测 <code>v2.2.3</code> 的 tag commit 改了 <strong>205 个文件、其中 36 个是源码</strong>，其父 commit 只改 31 个文件（2 个源码）⭐⭐⭐⭐⭐ —— <strong>与 11-17 的 <code>ffmpeg-skill</code>（功能在父 commit）正好相反，⭐⭐⭐⭐⭐ 印证了本日结论：功能 commit 在前还是在后是伪命题。</strong> ⭐⭐⭐⭐⭐ 而且它的 release body 是有内容的（实测 <code>v2.2.1</code> body 含「It keeps the published <code>v2.2.0</code> history immutable」⭐⭐⭐⭐⭐ —— 把「发布历史不可变」写进发布说明）。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 但它的短板是发布可验证性：19 个 release 里 13 个是 0 asset</strong>，⭐⭐⭐⭐⭐ 且本日报<strong>未核验</strong> npm 上的 <code>ecc-universal</code> / <code>ecc-agentshield</code> 包内容与仓库是否一致。</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未安装、未运行、未验证 npm 包与 GitHub App 的实际分发内容。</strong>
+- ⭐⭐⭐ ⚠️ <strong>330 个独立技能身份中，有多少是真正可运行的（vs 纯文档型）未核验。</strong>
+- ⭐⭐⭐ ⚠️ <strong>1,029 个复制文件是否由 CI 同步生成未核验</strong> —— ⭐⭐⭐⚠️ <strong>若是手工复制，5 份 10 倍复制的技能存在漂移风险。</strong>
+- ⭐⭐⭐ ⚠️ <strong>star 增速未做统计</strong>：238,427⭐（08-07 快照）→ 305,425⭐（今日）是两个快照点，⭐⭐⭐⚠️ <strong>本日报不主张任何近期增速结论。</strong>
+- ⭐⭐⭐ ⚠️ <strong>未核验项</strong>：<code>pi/core</code> profile 的下游打包方行为、SLSA3 工作流是否真的产出可验证 provenance、18 语言 README 的同步机制。</p>
+<hr />
+<h3 id="backnotpropplannotator-sbom-release">🥉 <code>backnotprop/plannotator</code> — 首个把 SBOM 写进 release 的项目</h3>
+<p><strong>可核验事实（2026-11-18 CST 快照）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>13,035 / 1,313 / 34 / 181</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>379,909 KB / 7,261</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建 / 最后 push</td>
+<td>TypeScript / Apache-2.0 / 2025-12-28T02:09:40Z / 2026-11-17T22:25:20Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://plannotator.ai</code></td>
+</tr>
+<tr>
+<td>topics</td>
+<td><code>agents</code> · <code>claude-code</code> · <code>code-review</code> · <code>codex</code> · <code>obsidian</code> · <code>opencode</code> · <code>pi-mono</code> · <code>plan-mode</code> · <code>skills</code></td>
+</tr>
+<tr>
+<td><strong>release / tag</strong></td>
+<td><strong>100 / 100</strong></td>
+</tr>
+<tr>
+<td><strong>每 release 的 asset</strong></td>
+<td><strong>36</strong>（<code>.json</code> 1 · <code>.sha256</code> 13 · 无扩展名 8 · <code>.gz</code> 6 · <code>.xz</code> 4 · <code>.exe</code> 4）</td>
+</tr>
+<tr>
+<td><strong>SBOM 文件名</strong></td>
+<td><code>plannotator-0.28.67-release-sbom.cdx.json</code>（<strong>CycloneDX</strong>，文件名内嵌版本号）</td>
+</tr>
+<tr>
+<td><strong>单版本体积</strong></td>
+<td><strong>2,569.09 MB</strong>（<code>v0.28.67</code>）· 2,560.66 MB（<code>v0.28.66</code>）· 2,552.88 MB（<code>v0.28.65</code>）</td>
+</tr>
+<tr>
+<td>最大单个 asset</td>
+<td>221,427,712 B（≈211 MB）</td>
+</tr>
+<tr>
+<td><strong>asset 下载次数</strong></td>
+<td><strong>1–12</strong>（<code>v0.28.67</code>: 1,2,3,3,3,3,3,3,3,4,4,4）</td>
+</tr>
+<tr>
+<td><strong>SKILL.md 文件 / 独立身份</strong></td>
+<td><strong>23 / 11</strong>（<code>plannotator-review</code> 5 份 · <code>plannotator-annotate</code> 5 份 · <code>plannotator-last</code> 4 份 · <code>plannotator-inbox</code> 2 份）</td>
+</tr>
+<tr>
+<td>CI 工作流</td>
+<td>14 个（含 <code>security.yml</code> / <code>dast.yml</code> / <code>browser-smoke.yml</code> / <code>e2e-slice.yml</code> / <strong><code>snapshots-sign-check.yml</code></strong> / <code>inbox-claude-code.yml</code> / <code>inbox-pi.yml</code>）</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>backnotprop</code> 10,030 · <code>leoreisdias</code> 24 · <code>BenNewman100</code> 21 · <code>uvw</code> 21 · <code>utpalsinghdev</code> 21 · <code>FNDEVVE</code> 17 · <code>rdm-cpu</code> 16</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的「inbox」工作流让反馈投递成为自动化的一等公民：</strong> ⭐⭐⭐⭐⭐ 实测 <code>inbox-claude-code.yml</code> / <code>inbox-pi.yml</code> / <code>inbox-qwen-code.yml</code> ⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ 即「把 agent 的反馈送回某个 harness」不是一个手工复制粘贴的动作。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 它的 <code>snapshots-sign-check.yml</code> 是本数据集里唯一见到的「对快照做签名校验」的工作流</strong> ⭐⭐⭐⭐⭐ —— 配合每版 13 个 <code>.sha256</code> 与 CycloneDX SBOM，⭐⭐⭐⭐⭐ 即它把「发布物可验证」做成了流水线的一等步骤。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 但本日必须同时记下反差：它的 asset 下载次数只有 1–12 次，⭐⭐⭐⭐⭐ 而 <code>open-code-review</code> 是 57–951 次。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 同样 100 个 release、同样闭合的 diff、同样认真的供应链纪律，⭐⭐⭐⭐⭐ </strong>「有多少人真的下载了」差了一到两个数量级 —— 这说明发布纪律与采用度是两个正交的问题。**</p>
+<p><strong>证据边界：</strong>
+- ⭐⭐⭐ ⚠️ <strong>本日报未下载任何 asset、未校验 sha256、未反汇编任何二进制、未安装该应用。</strong>
+- ⭐⭐⭐ ⚠️ <strong>SBOM 的覆盖完整性未核验</strong>（只确认了文件名格式与存在，未读内容）。
+- ⭐⭐⭐ ⚠️ <strong>23 个 SKILL.md 中的 5 份复制是否由 CI 生成未核验。</strong>
+- ⭐⭐⭐ ⚠️ <strong>应用的技术栈与内部架构未核验</strong>（Electron / Tauri / 原生均未确认）。
+- ⭐⭐⭐ ⚠️ <strong>asset 下载次数极低的原因未核验</strong>（分发渠道？使用方式？），⭐⭐⭐ ⚠️ <strong>本日报不据此判定产品成败。</strong></p>
+<hr />
+<h2 id="_3">风险与机遇</h2>
+<p><strong>⭐⭐⭐⭐⭐ 风险一：本数据集 11-12 ~ 11-15 建立的账号层面判据，其可信区间此前从未被量化 —— 本日的对照实验给出了区间。</strong> ⭐⭐⭐⭐⭐ 「短期新建账号占比」在 Trending 组是 38.0%、对照组是 40.5%，⭐⭐⭐⭐⭐ 而 <code>linux</code> / <code>rust</code> / <code>go</code> / <code>svelte</code> 高达 71%–88%。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 这意味着：在没有同域对照的情况下，「账号很新」这条信号在 GitHub 上的基线极高，⭐⭐⭐⭐⭐ </strong>用它的绝对值做判断会系统性地把正常仓库误判为异常。<strong> ⭐⭐⭐⭐⭐ </strong>推论：判据库必须从「绝对阈值」改为「相对对照」，⭐⭐⭐⭐⭐ 且对照组应固定为长期不变的成熟仓库（<code>linux</code> / <code>rust</code> / <code>go</code> / <code>svelte</code>）。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 风险二：「SKILL.md 数」这个指标正在被生态自己用于宣传，因此必须被防御性解读。</strong> ⭐⭐⭐⭐⭐ 实测 <code>ECC</code> 的 1,087 里 94.7% 是副本。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 推论：引用任何项目的技能数时，都应先除以复制倍数，⭐⭐⭐⭐⭐ 否则会把分发投入误读为内容产出。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险三：「发布很多版本」与「有人在用」之间没有稳定的映射。</strong> ⭐⭐⭐⭐⭐ 实测同样 100 个 release 的三个项目，asset 下载次数分别是 <strong>57–951</strong> / <strong>1–12</strong> / <strong>10–16</strong>。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 推论：任何基于 release 频率、tag 数、asset 数的「项目成熟度」评分，⭐⭐⭐⭐⭐ 都必须补一个外部检验指标（下载量 / 活跃用户数 / issue 质量），⭐⭐⭐⭐⭐ 否则评的是发布习惯，不是产品。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 风险四：本日的 Trending 榜单本身不能被当作「质量筛选器」。</strong> ⭐⭐⭐⭐⭐ 本日 25 个 Trending 仓库全部通过了本数据集的全部判据（无投放体），⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 但同时它们中也包含 <code>paper-orchestra</code> 这样的 8-commit 薄实现与 <code>Tencent/LoopForge</code> 这样的 0 套分发清单项目。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 换言之：</strong>Trending 榜单在这两日里与「工程质量」没有表现出可测的相关性，⭐⭐⭐⭐⭐ 它衡量的是传播速度，不是实现质量。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇一：把四元组版本判据做成一个可复用的脚本。</strong> ⭐⭐⭐⭐⭐ 一次 <code>tags</code> 请求 + N 次 <code>commits</code> 请求 + 一次 <code>releases</code> 请求即可得到：<strong>tag 数 / release 数 / diff 闭合率 / asset 形态与信息价值</strong>。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 本日报的 <code>scripts/_deep_2026_11_18.py</code> 与 <code>scripts/_forensics_2026_11_18.py</code> 已经实现了这套抓取，⭐⭐⭐⭐⭐ 可直接迁移到任意仓库做历史回溯。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇二：把「复制倍数」列成 skill 仓库的常规体检项。</strong> ⭐⭐⭐⭐⭐ 一次 <code>git/trees?recursive=1</code> 请求即可计算（用 <code>SKILL.md</code> 的父目录名去重 + 比对 blob sha）。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 本日报的 <code>scripts/_identity_2026_11_18.py</code> 已实现，⭐⭐⭐⭐⭐ 成本一次请求，且能同时暴露「分发冗余」与「复制是否由 CI 保证」这两个问题。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇三：把「确定性锚点」作为 agent 产物的默认要求。</strong> ⭐⭐⭐⭐⭐ <code>open-code-review</code> 的 <code>plugin-contract.yml</code> 与 <code>paper-orchestra</code> 的 <code>autoraters/citation_f1.py</code> 证明：⭐⭐⭐⭐⭐ <strong>一个 agent 产物链如果没有可程序检查的锚点，⭐⭐⭐⭐⭐ 就只能靠另一个 LLM 来评价，⭐⭐⭐⭐⭐ 而后者在 <code>paper-orchestra</code> 自己的 issue 里被明确记录为会出错（<code>#39 Handle malformed AgentReview ensemble responses</code>）。⭐⭐⭐⭐⭐ </strong>⭐⭐⭐⭐⭐ 锚点的形式可以是 F1、可以是规则集、可以是契约校验 —— 三者本日各有一个样本。**</p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇四：<code>modern-web-guidance-src</code> 的「索引即编译产物」值得被广泛借鉴。</strong> ⭐⭐⭐⭐⭐ 把「用户实际拿到的检索索引」作为版本化产物，⭐⭐⭐⭐⭐ 能在每次内容变更时自动产出一个 tag，⭐⭐⭐⭐⭐ <strong>从而用「版本数」直接度量「内容同步次数」，⭐⭐⭐⭐⭐ 同时彻底消除「文档更新了但索引没更新」这类漂移。</strong></p>
+<p><strong>⭐⭐⭐⭐⭐ 机遇五：SBOM 作为 release 产物，是二进制分发项目最低成本的信任建立方式。</strong> ⭐⭐⭐⭐⭐ 一个 <code>.cdx.json</code> + 13 个 <code>.sha256</code> 的成本几乎为零，⭐⭐⭐⭐⭐ 收益是任何下载方都能独立验证。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 这比在 README 里写「我们很安全」有效得多 —— ⭐⭐⭐⭐⭐ 且本日实测证明它的成本远低于多格式分发（<code>arcane</code> 41 asset 无 SBOM vs <code>open-code-review</code> 7 asset 有 sha256）。</strong></p>
+<hr />
+<h2 id="_4">重点项目档案</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align: right;">⭐</th>
+<th>类别</th>
+<th>档案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GoogleChrome/modern-web-guidance-src</code></td>
+<td style="text-align: right;">8,414</td>
+<td>平台候选</td>
+<td><a href="projects/modern-web-guidance-src.html">modern-web-guidance-src</a></td>
+</tr>
+<tr>
+<td><code>affaan-m/ECC</code></td>
+<td style="text-align: right;">305,425</td>
+<td>平台候选</td>
+<td><a href="projects/ecc.html">ecc</a></td>
+</tr>
+<tr>
+<td><code>backnotprop/plannotator</code></td>
+<td style="text-align: right;">13,035</td>
+<td>工具型</td>
+<td><a href="projects/plannotator.html">plannotator</a></td>
+</tr>
+<tr>
+<td><code>alibaba/open-code-review</code></td>
+<td style="text-align: right;">53,682</td>
+<td>生产可用</td>
+<td><a href="projects/alibaba-open-code-review.html">alibaba-open-code-review</a></td>
+</tr>
+<tr>
+<td><code>google-research/paper-orchestra</code></td>
+<td style="text-align: right;">2,884</td>
+<td>观察型</td>
+<td><a href="projects/paper-orchestra.html">paper-orchestra</a></td>
+</tr>
+<tr>
+<td><code>getarcaneapp/arcane</code></td>
+<td style="text-align: right;">9,275</td>
+<td>生产可用</td>
+<td><a href="projects/arcane.html">arcane</a></td>
+</tr>
+<tr>
+<td><code>Tencent/LoopForge</code></td>
+<td style="text-align: right;">3,071</td>
+<td>平台候选</td>
+<td><a href="projects/loopforge.html">loopforge</a></td>
+</tr>
+<tr>
+<td><code>elementalsouls/Claude-BugHunter</code></td>
+<td style="text-align: right;">9,120</td>
+<td>工具型</td>
+<td><a href="projects/claude-bughunter.html">claude-bughunter</a></td>
+</tr>
+<tr>
+<td><code>mvanhorn/last30days-skill</code></td>
+<td style="text-align: right;">68,964</td>
+<td>生产可用</td>
+<td><a href="projects/last30days-skill.html">last30days-skill</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_5">本日证据边界（总览）</h2>
+<ul>
+<li>⭐⭐⭐ ⚠️ <strong>本日报未 clone、未安装、未运行任何被观测项目</strong>，未调用任何 LLM API，未下载任何 release asset，未访问任何被投放的载荷域名。全部结论来自 GitHub REST API 的元数据、tree、commit diff、tags、releases（含 asset 元数据）、readme、contributors、users 与 forks 端点，以及 <code>github.com/trending?since=daily</code> 与 <code>?since=weekly</code> 的 HTML 快照。</li>
+<li>⭐⭐⭐ ⚠️ <strong>fork 对照实验的样本边界</strong>：15 个 Trending + 11 个对照 × 各 100 个<strong>最新</strong> fork = 2,600 个样本。「最新 fork」是有偏样本（老 fork 不可见）；「账号 ≤7 天」的基线会随时间波动；<strong>单日单次快照不能当作长期基线</strong>。</li>
+<li>⭐⭐⭐ ⚠️ <strong>抽样而非全量</strong>：tag→commit 链的检查为抽样（<code>modern-web-guidance-src</code> 10 个 / <code>open-code-review</code> 3 个 / <code>plannotator</code> 3 个 / <code>ECC</code> 4 个），<strong>「N/N 触及源码」是抽样结论，未外推</strong>。</li>
+<li>⭐⭐⭐ ⚠️ <strong>skill 身份去重的口径</strong>：以 <code>SKILL.md</code> 的<strong>父目录名</strong>为身份、以 <strong>blob sha</strong> 判定内容同一性。⭐⭐⭐ ⚠️ 若两个技能同名但内容不同，会被计为两个身份；本日报的实测数字（ECC 330 / LoopForge 9 等）依赖此口径。</li>
+<li>⭐⭐⭐ ⚠️ <strong>issue 抽样</strong>：<code>paper-orchestra</code> 30 条、<code>LoopForge</code> 14 条、<code>open-code-review</code> 14 条，<strong>仅读标题、作者与正文长度，未逐条读正文</strong>。⭐⭐⭐ ⚠️ <code>arcane</code> 的 9 个 issue 与 <code>Claude-BugHunter</code> 的 11 个 issue 未读正文。</li>
+<li>⭐⭐⭐ ⚠️ <strong>star 增速未做统计</strong>：所有 ⭐ 数为快照绝对值；本日报出现的增量（如 ECC +66,998、last30days +877）<strong>都是两个快照点之差，不是时间序列增速</strong>。</li>
+<li>⭐⭐⭐ ⚠️ <strong>许可字段的不确定性</strong>：<code>Tencent/LoopForge</code> 的 <code>license.spdx_id</code> = <strong>NOASSERTION</strong>，⭐⭐⭐ ⚠️ <strong>本日报未读取其 LICENSE 文件，因此不主张其实际许可条款。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>网络与推送通道</strong>：本日的 <code>git pull --ff-only origin main</code> 在默认代理配置下持续失败（<code>gnutls_handshake() failed</code>），⭐⭐⭐ ⚠️ 重试并尝试 <code>http.sslCAInfo</code> 与 <code>http.version=HTTP/1.1</code> 均失败，绕过代理的直连亦超时；⭐⭐⭐ ⚠️ <strong>经 <code>api.github.com</code> 核验 remote HEAD 与 local HEAD 均为 <code>e1141ff</code>，即无待拉取的更新</strong>，⭐⭐⭐ ⚠️ <strong>最终提交通过 GitHub Git Data API 推送（见执行报告）。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>未核验项（部分）</strong>：ECC 的 npm 包与 GitHub App 分发物、<code>modern-web-guidance-src</code> 的 RAG 构建实现与索引格式、paper-orchestra 的全部 Python 实现与数据集发布计划、plannotator 的应用技术栈与 SBOM 内容、arcane 的 server↔agent 通信协议与权限模型、LoopForge 的部署前置条件与 API 路由清单、<code>open-code-review</code> 的规则集实现与命中情况。</li>
+</ul>
+<hr />
+<p><em>首次记录：2026-11-18 · 全部元数据取自 2026-11-18 CST 的 GitHub REST / Search API 快照与 Trending HTML 快照</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backnotprop/plannotator | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="backnotpropplannotator">backnotprop/plannotator</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>一个「保持在 agent 循环里」的桌面工作台 —— 它本日最值得记的技术事实是发布链：100 个 release，每个带 36 个 asset，其中包含 CycloneDX SBOM JSON 与逐文件 sha256 清单。</strong></p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>coding agent 的工作流断裂。</strong> README 描述（实测）：</p>
+<blockquote>
+<p>The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>它把「人」重新放回 agent 循环里</strong>：人负责 shape / decide / plan / annotate / review，⭐⭐⭐⭐⭐ 反馈一键送回 agent。⭐⭐⭐⭐⭐ topics 实测包含 <code>claude-code</code> / <code>codex</code> / <code>opencode</code> / <code>pi-mono</code> / <code>obsidian</code> / <code>plan-mode</code> / <code>skills</code> —— ⭐⭐⭐⭐⭐ <strong>即它不是又一个 IDE 插件，而是要同时接住多个 harness 的「中间层」。</strong></p>
+<h2 id="2026-11-18">为什么值得关注（2026-11-18）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本数据集里第一个把「供应链产物」写进 release 的项目 —— 100 个 release × 36 个 asset，其中每个 release 都带一份 CycloneDX SBOM 和一份 sha256 校验清单。⭐⭐⭐⭐⭐ 这让 11-16 提出的「release 资产是否随版本变化」这条判据第一次有了一个可用的正面样本。</strong></p>
+<p><strong>可核验事实（2026-11-18 CST 快照）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>13,035 / 1,313 / 34 / 181</td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>379,909 KB / 7,261</td>
+</tr>
+<tr>
+<td>语言 / 许可 / 创建 / 最后 push</td>
+<td>TypeScript / Apache-2.0 / 2025-12-28T02:09:40Z / 2026-11-17T22:25:20Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://plannotator.ai</code></td>
+</tr>
+<tr>
+<td><strong>release / tag</strong></td>
+<td><strong>100 / 100</strong></td>
+</tr>
+<tr>
+<td><strong>每个 release 的 asset 数</strong></td>
+<td><strong>36</strong>（实测 <code>v0.28.67</code> / <code>v0.28.66</code> / <code>v0.28.65</code> 三个版本均为 36）</td>
+</tr>
+<tr>
+<td><strong>asset 构成</strong></td>
+<td><code>.json</code> 1（SBOM）· <code>.sha256</code> 13 · 无扩展名 8 · <code>.gz</code> 6 · <code>.xz</code> 4 · <code>.exe</code> 4</td>
+</tr>
+<tr>
+<td><strong>SBOM 文件名实测</strong></td>
+<td><code>plannotator-0.28.67-release-sbom.cdx.json</code>（<strong>CycloneDX 格式</strong>，文件名含版本号）</td>
+</tr>
+<tr>
+<td>单个 release 总体积</td>
+<td><strong>2,569.09 MB</strong>（<code>v0.28.67</code>）/ 2,560.66 MB（<code>v0.28.66</code>）/ 2,552.88 MB（<code>v0.28.65</code>）</td>
+</tr>
+<tr>
+<td>最大单个 asset</td>
+<td><strong>221,427,712 B</strong>（≈211 MB）</td>
+</tr>
+<tr>
+<td>asset 下载次数（前 12）</td>
+<td><code>v0.28.67</code>: 1,2,3,3,3,3,3,3,3,4,4,4 · <code>v0.28.66</code>: 4,4,4,4,4,5,6,6,6,7,7,7</td>
+</tr>
+<tr>
+<td>CI 工作流</td>
+<td>14 个（<code>release.yml</code> / <code>security.yml</code> / <code>dast.yml</code> / <code>browser-smoke.yml</code> / <code>e2e-slice.yml</code> / <code>snapshots-sign-check.yml</code> / <code>relay.yml</code> / <code>inbox-claude-code.yml</code> / <code>inbox-pi.yml</code> / <code>inbox-qwen-code.yml</code>）</td>
+</tr>
+<tr>
+<td><strong>SKILL.md 文件数 / 独立身份</strong></td>
+<td><strong>23 / 11</strong>（<code>plannotator-review</code> 5 份 · <code>plannotator-annotate</code> 5 份 · <code>plannotator-last</code> 4 份 · <code>plannotator-inbox</code> 2 份 · <code>update-deps</code> 1 · <code>review-renovate</code> 1）</td>
+</tr>
+<tr>
+<td>harness 目录</td>
+<td><code>.agents</code> + <code>.claude-plugin</code>（2 套）</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>backnotprop</code> 10,030 · <code>leoreisdias</code> 24 · <code>BenNewman100</code> 21 · <code>uvw</code> 21 · <code>utpalsinghdev</code> 21 · <code>FNDEVVE</code> 17 · <code>rdm-cpu</code> 16</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日最硬的一条结构发现：它的 23 个 <code>SKILL.md</code> 只有 11 个独立技能身份，⭐⭐⭐⭐⭐ 复制倍数最高的是 <code>plannotator-review</code>（5 份）与 <code>plannotator-annotate</code>（5 份）—— ⭐⭐⭐⭐⭐ 分布在 <code>apps/kiro-cli/skills/</code>、<code>apps/qwen-code/skills/</code> 等不同 app 目录下。⭐⭐⭐⭐⭐ 即 <code>SKILL.md</code> 文件数同样是「复制放大型计数」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 而它的 tag→commit 链也是「真」的：实测 <code>v0.28.67</code> 的 tag commit 改 11 个文件（其中 0 个源码）、其父 commit 改 25 个文件（其中 19 个源码）；<code>v0.28.66</code> 的 tag commit 改 14 个文件（11 个源码）、父 commit 改 12 个文件（0 个源码）。⭐⭐⭐⭐⭐ ⭐⭐⭐ 即功能 commit 在 tag commit 与父 commit 之间</strong>交替出现<strong>，⭐⭐⭐⭐⭐ 这进一步确认了 11-18 的结论：</strong>判据是「链上有没有真实 diff」，而不是「功能 commit 在前还是在后」。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 还有一条：<code>snapshots-sign-check.yml</code> 这个工作流名说明它对「快照」做签名校验。⭐⭐⭐⭐⭐ 配合每个 release 的 13 个 <code>.sha256</code> 校验文件与 CycloneDX SBOM，⭐⭐⭐⭐⭐ 即它把「发布物可验证」做成了流水线的一等步骤 —— ⭐⭐⭐⭐⭐ 这在本数据集的 25 个 Trending 仓库里是独一份。</strong></p>
+<h2 id="_3">热度来源判断</h2>
+<p>⭐⭐⭐⭐⭐ <strong>判断：热度来自一个真实且未被解决的工作流痛点（人怎么和 agent 一起工作），并有非常扎实的工程执行；但它的可读性门槛（100 个 release、2.5 GB/版本、SBOM）说明它已经是一个「有运维负担的成熟产品」，而不是一个玩具。</strong></p>
+<p>支撑的<strong>可核验事实</strong>：
+1. <strong>⭐⭐⭐⭐⭐ 单一主导 + 真实外部贡献者</strong>：<code>backnotprop</code> 10,030 commits（占绝对多数），⭐⭐⭐⭐⭐ 加上 <code>leoreisdias</code> 24、<code>BenNewman100</code> 21、<code>uvw</code> 21、<code>utpalsinghdev</code> 21、<code>FNDEVVE</code> 17、<code>rdm-cpu</code> 16 —— <strong>有 7 位有实质贡献的外部开发者。</strong>
+2. <strong>⭐⭐⭐⭐⭐ 供应链纪律</strong>：每个 release 36 个 asset，含 SBOM + sha256；<code>snapshots-sign-check.yml</code> 做签名校验；<code>security.yml</code> + <code>dast.yml</code> + <code>browser-smoke.yml</code> + <code>e2e-slice.yml</code> 四类安全/测试工作流。
+3. <strong>⭐⭐⭐⭐⭐ release 版本号语义连续</strong>（<code>v0.28.64</code> → <code>v0.28.67</code>），⭐⭐⭐⭐⭐ <strong>且 SBOM 文件名内嵌版本号（<code>plannotator-0.28.67-release-sbom.cdx.json</code>），⭐⭐⭐⭐⭐ 即每个版本的 SBOM 是独立生成的，不是复制粘贴。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⚠️ 不作主张的部分</strong>：⭐⭐⭐⭐⭐ <strong>本日报未下载任何 release asset、未校验 sha256、未反汇编任何二进制、未安装该应用。</strong>⭐⭐⭐⭐⭐ <strong>asset 的下载次数（1–12 次/个）是极低的，⭐⭐⭐⭐⭐ 这说明「release 多」与「被下载得多」在这里是两回事 —— ⭐⭐⭐⭐⭐ </strong>本日报不据此主张采用度。<strong>⭐⭐⭐⭐⭐ </strong>本日报未做 star 增速的时间序列统计。**</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 每个 release 都带 CycloneDX SBOM</strong>
+   实测 asset 名 <code>plannotator-0.28.67-release-sbom.cdx.json</code>（<code>.cdx.json</code> = CycloneDX 的 JSON 序列化）⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 这是本数据集里第一次见到「SBOM 作为 release 的一等产物」。⭐⭐⭐⭐⭐ 对 Electron/Tauri 类桌面应用而言，这直接回答了「这个二进制里有什么」的问题。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 逐文件 sha256 校验</strong>
+   实测每个 release 13 个 <code>.sha256</code> 文件，覆盖 8 个无扩展名的二进制 + 6 个 <code>.gz</code> + 4 个 <code>.xz</code>（部分重复计入）⭐⭐⭐⭐⭐ —— <strong>即下载方能独立验证每一个压缩包与原始二进制的完整性。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 多平台二进制矩阵</strong>
+   实测 asset 名含 <code>plannotator-darwin-arm64</code> / <code>plannotator-darwin-x64</code> / <code>plannotator-linux-*</code> / <code>plannotator-windows-*.exe</code> ⭐⭐⭐⭐⭐ —— <strong>配合 4 个 <code>.exe</code>（Windows 全平台），⭐⭐⭐⭐⭐ 即它把「一个版本 = 全部平台」当作发布契约。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 签名校验工作流</strong>
+   <code>snapshots-sign-check.yml</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即它对「快照」做签名核验，⭐⭐⭐⭐⭐ 而快照通常来自 CI 构建产物 —— </strong>这是把供应链攻击面挡在发布链内部的做法。**</p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 「inbox」型工作流让反馈成为一等公民</strong>
+   实测工作流名 <code>inbox-claude-code.yml</code> / <code>inbox-pi.yml</code> / <code>inbox-qwen-code.yml</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即「把 agent 的反馈送回某个 harness」是自动化的，⭐⭐⭐⭐⭐ 而不是一个手工复制粘贴的动作。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 技能按 app 维度复用</strong>
+   实测 <code>apps/kiro-cli/skills/plannotator-review</code> 与 <code>apps/qwen-code/skills/plannotator-review</code> 是同一身份的两份副本 ⭐⭐⭐⭐⭐ —— <strong>即「一次定义、多端分发」的模式被用在</strong>技能<strong>上，与 ECC 的 9 套 harness 目录是同一类做法（但本项目只有 2 套目录、5 倍复制）。</strong></p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>一个「跨 harness 的人机协作工作台（桌面应用）+ 一条带供应链证明的发布链」</strong>。应用边界 = 多平台桌面二进制（<code>plannotator-{darwin,linux,windows}-*</code>）；集成边界 = 多个 harness 的 inbox 通道（Claude Code / pi / Qwen Code / Kiro CLI）；发布边界 = npm/GitHub release + SBOM + 校验清单 + 签名检查</td>
+<td>实测 asset 清单、14 个工作流名、23 个 SKILL.md 路径；<strong>应用内部架构（Electron? Tauri? 原生?）未核验，未运行</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 Plannotator 里 shape/plan/annotate/review → 反馈经 inbox 通道送回对应 harness（Claude Code / pi / Qwen Code）→ agent 执行 → 结果回流到 inbox → 用户签收。<strong>发布路径</strong>：功能 commit → <code>release.yml</code> → 构建多平台二进制 → 生成 SBOM（<code>.cdx.json</code>）→ 生成逐文件 sha256 → <code>snapshots-sign-check.yml</code> 校验签名 → 发布 36 个 asset</td>
+<td>主路径由 README 描述 + 工作流名 + asset 清单反推；<strong>SBOM 的生成工具、签名算法、校验是否强制未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>①<strong>发布可验证性</strong> vs <strong>发布体积</strong> → 每个版本 2.5 GB（SBOM + 多格式压缩 + 多平台）；②<strong>一次定义多处可用</strong> vs <strong>维护分叉</strong> → 5 份同一技能的副本（11 身份 / 23 文件）；③<strong>自动化反馈回路</strong> vs <strong>人工确认</strong> → inbox 工作流自动化了投递，但 <code>review</code> 仍由人做</td>
+<td>①由 asset 体积实测；②由身份去重实测；③由 inbox 工作流名 + README 的 "human approves" 语义推断，<strong>审批点位置未核验</strong></td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>只接<strong>一个</strong> harness（建议 Claude Code，因为 <code>inbox-claude-code.yml</code> 存在）→ 跑一次「计划 → 批注 → 送回 agent → 回流签收」的完整回路 → 检查 inbox 消息是否可溯源（能否定位到具体 commit/文件）→ 再评估第二、第三个 harness 的边际接入成本 → 最后才看 release 资产（SBOM/校验）是否值得依赖</td>
+<td>PoC 范围与退出路径由本档案推导；<strong>具体消息格式、溯源粒度、审批点均未核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>启发一（本日的核心）：「发布资产」终于成为一条可用的判据维度。</strong> ⭐⭐⭐⭐⭐ 11-16 提出「release 多不等于有发布史」，11-17 用「tag → commit → diff」补上了代码侧，⭐⭐⭐⭐⭐ <strong>本日 <code>plannotator</code> 补上了产物侧 —— 36 个 asset 里每个版本都有独立生成的 SBOM 与校验清单。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 三者合起来才是一条完整判据：tag 数 / release 数 / diff 闭合 / 资产随版本演进。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>启发二：SBOM 作为 release 产物，是桌面/二进制分发项目最低成本的信任建立方式。</strong> ⭐⭐⭐⭐⭐ 一个 <code>.cdx.json</code> + 13 个 <code>.sha256</code> 的成本几乎为零（CI 里跑一遍），⭐⭐⭐⭐⭐ 收益是「任何下载方都能独立验证」⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 这比在 README 里写「我们很安全」有效得多。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>启发三：技能复制的倍数是可管理的，但必须被度量。</strong> ⭐⭐⭐⭐⭐ 本项目 23 文件 / 11 身份 = 2.1×，ECC 1,087 / 330 = 3.3×，⭐⭐⭐⭐⭐ <code>cursor/plugins</code> 173 / 113 = 1.5×，⭐⭐⭐⭐⭐ <code>Tencent/LoopForge</code> 21 / 9 = 2.3×。⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 建议把「复制放大比」列成 skill 仓库的常规体检项 —— ⭐⭐⭐⭐⭐ 它同时揭示了「内容产出」与「分发投入」的比例。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>启发四：功能 commit 在 tag 上还是父上，是一个伪命题。</strong> ⭐⭐⭐⭐⭐ 本项目 <code>v0.28.67</code> 的功能在<strong>父</strong> commit，<code>v0.28.66</code> 的功能在 <strong>tag</strong> commit ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 同一仓库内两种形态交替出现，⭐⭐⭐⭐⭐ 所以判据只能是「链上有没有 diff」。</strong></p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  Human[人类使用者<br/>shape / decide / plan / annotate / review]
+  App[Plannotator 工作台<br/>多平台桌面应用<br/>darwin arm64/x64 · linux · windows exe<br/>内部实现待核验]
+  Inbox[反馈收件箱<br/>inbox 通道<br/>inbox-claude-code.yml<br/>inbox-pi.yml · inbox-qwen-code.yml]
+  Harness[目标 harness<br/>Claude Code / pi / Qwen Code / Kiro CLI]
+  Skills[技能定义<br/>11 个独立身份 / 23 个 SKILL.md 文件<br/>plannotator-review ×5<br/>plannotator-annotate ×5]
+  CI[CI 流水线 14 个工作流<br/>release.yml · security.yml · dast.yml<br/>browser-smoke.yml · e2e-slice.yml]
+  Build[构建产物<br/>8 个原始二进制 + 6 gz + 4 xz + 4 exe]
+  SBOM[供应链证明<br/>CycloneDX SBOM .cdx.json<br/>13 个 sha256 校验文件]
+  Sign[签名校验<br/>snapshots-sign-check.yml]
+  Release[发布面<br/>100 个 release × 36 个 asset<br/>版本号语义连续 v0.28.64→v0.28.67]
+
+  Human --> App
+  App --> Inbox
+  Inbox --> Harness
+  Harness --> App
+  Skills --> App
+  CI --> Build
+  Build --> SBOM
+  Build --> Sign
+  SBOM --> Release
+  Sign --> Release
+  Release -.供下游取用.-> App
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>工具型 —— 且是本数据集里「工程纪律」最完整的一端。</strong> ⭐⭐⭐⭐⭐ 在 Agent 工具链里，本项目占的位置是「<strong>人机协作的中枢</strong>」：⭐⭐⭐⭐⭐ <code>ag-ui-protocol/ag-ui</code>（11-17 档案）管的是「agent 与前端的协议」，<code>obra/superpowers</code>（本数据集已有）管的是「agent 的工作方法论」，⭐⭐⭐⭐⭐ <strong>本项目管的是「人怎么把反馈送进 agent、并把 agent 的产出接回来」。</strong> ⭐⭐⭐⭐⭐ 这三者是不同的层，不是竞争关系。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 本日给它「工具型」而非「生产可用」的理由：⭐⭐⭐⭐⭐ asset 下载次数实测只有 1–12 次/个，⭐⭐⭐⭐⭐ 181 个 open issue，⭐⭐⭐⭐⭐ 且 14 个工作流里带 <code>dast.yml</code> / <code>security.yml</code> 说明它自己在做安全工程但</strong>未核验其结论<strong>。⭐⭐⭐⭐⭐ 真实采用度需要更多时间序列数据。</strong></p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li>⭐⭐⭐ ⚠️ <strong>发布体积</strong>：⭐⭐⭐ ⚠️ 每个 release <strong>2.5 GB</strong>、36 个 asset、100 个 release —— ⭐⭐⭐ ⚠️ <strong>对下游 CI 与制品库是持续的存储与带宽成本，⭐⭐⭐ ⚠️ 且本日报未核验这些 asset 的实际保留策略。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>skill 复制 5 倍</strong>：⭐⭐⭐ ⚠️ <code>plannotator-review</code> / <code>plannotator-annotate</code> 各 5 份，⭐⭐⭐ ⚠️ <strong>本日报未核验这 5 份是否由 CI 生成（若是手工复制，则存在漂移风险）。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>asset 下载次数极低</strong>（1–12）：⭐⭐⭐ ⚠️ <strong>说明「发布很多版本」与「被使用」在本项目上是两件事，⭐⭐⭐ ⚠️ 本日报不据此判定产品成败，但也不主张其采用度。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>单一主导者</strong>：<code>backnotprop</code> 10,030 commits 占绝对多数，⭐⭐⭐ ⚠️ <strong>关键人风险仍在</strong>（虽有 7 位外部贡献者，但量级差 400 倍）。</li>
+<li>⭐⭐⭐ ⚠️ <strong>未核验项</strong>：应用的实际技术栈与内部架构、SBOM 的生成工具与覆盖完整性、签名算法与是否强制校验、181 个 open issue 的正文、asset 下载次数低的原因（是分发渠道问题还是使用方式问题）、发布体积是否是已知问题。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>affaan-m/ECC</code>（本日档案）</strong>：⭐⭐⭐⭐⭐ <strong>两个都是「跨 harness 适配」但方向相反 —— ECC 卖「能力与配置的分发」，本项目卖「人与 agent 的协作回路」。⭐⭐⭐⭐⭐ 在复制放大比上 ECC 是 3.3×、本项目是 2.1×；在供应链纪律上本项目有 SBOM + 签名校验，ECC 有 SLSA3。</strong></li>
+<li><strong>vs <code>ag-ui-protocol/ag-ui</code>（11-17 档案）</strong>：⭐⭐⭐⭐⭐ <strong>协议层 vs 应用层互补</strong> —— AG-UI 定义 agent↔前端的交互协议，本项目是这类交互的一个具体桌面实现。</li>
+<li><strong>vs <code>obra/superpowers</code></strong>：⭐⭐⭐⭐⭐ <strong>方法论 vs 工作台</strong> —— superpowers 定义 agent 应该怎么做事，本项目定义人怎么参与。</li>
+<li><strong>vs <code>backnotprop</code> 同门的 <code>elementalsouls/Claude-BugHunter</code></strong>：⭐⭐⭐⭐⭐ 无直接竞争，但<strong>两者的「技能文件数 vs 独立身份数」比值分别是 1.0（83/83）与 2.1（23/11）</strong>，⭐⭐⭐⭐⭐ 说明「复制放大」不是某些作者的习性，而是跨 harness 交付的普遍副作用。</li>
+<li><strong>vs <code>kajisho5/ffmpeg-skill</code>（11-17 档案）</strong>：⭐⭐⭐⭐⭐ <strong>发布纪律的两端 —— ffmpeg-skill「多而实但 0 asset」，本项目「多而实且 36 asset/版本」。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，优先级高 —— 它是「发布纪律」这条判据目前最完整的样本。</strong> ⭐⭐⭐⭐⭐ 三条理由：① 它提供了 11-16 判据缺失的<strong>产物侧证据</strong>（SBOM + 校验 + 签名），⭐⭐⭐⭐⭐ 可以让判据从「三分段」变成「四分段」；② 它的「inbox 自动化」是「人机回路」这个方向少见的实现，⭐⭐⭐⭐⭐ 与 <code>ag-ui</code> 的协议层形成上下游；③ ⭐⭐⭐⭐⭐ <strong>它的 asset 下载次数极低但 release 极多，⭐⭐⭐⭐⭐ 这个反差本身是一个值得追的问题 —— 是分发渠道的问题，还是发布策略的问题。</strong></p>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>asset 下载次数是否随版本上升</strong>（当前 1–12）—— ⭐⭐⭐⭐⭐ 若持续为个位数，说明「发布频率」与「实际分发」严重脱节</li>
+<li>⭐⭐⭐⭐⭐ <strong>SBOM 是否扩展到更多产物类型</strong>（当前只覆盖二进制）</li>
+<li>⭐⭐⭐⭐⭐ <strong>11 个独立技能身份是否增长</strong>（当前 11 身份 / 23 文件 / 5 倍复制）—— ⭐⭐⭐⭐⭐ <strong>若身份数不变而文件数增长，说明投入在分发而非功能</strong></li>
+<li>⭐⭐⭐ ⭐ <strong>inbox 支持的 harness 数</strong>（当前 Claude Code / pi / Qwen Code / Kiro CLI）⭐⭐⭐⭐⭐ <strong>新增一个即代表「多 harness 中枢」这一定位在推进</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>发布体积是否是已知问题</strong>（2.5 GB/版本 × 100 版本）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-11-18 · 全部元数据取自 2026-11-18 CST 的 GitHub REST API 快照（<code>repos/*</code>、<code>git/trees/*?recursive=1</code>、<code>commits/{sha}</code> 含 files diff、<code>tags</code>、<code>releases</code> 含 asset 元数据、<code>readme</code>、<code>contributors</code>、<code>users/*</code>、<code>forks?sort=newest&amp;per_page=100</code>）</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>

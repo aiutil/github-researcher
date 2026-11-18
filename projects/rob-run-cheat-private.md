@@ -26,7 +26,7 @@ url: "https://github.com/OceanChandlerSewer/rob-run-cheat-private"
 ## 为什么值得关注（2026-11-17）
 ⭐⭐⭐⭐⭐ **因为它把「占位仓库指纹」这条新判据的强度，用对照实验量化了出来。**
 
-**可核验事实一：族谱与模板。** 本日报对 `created:2026-11-14..2026-11-16` 窗口内 70 个 `cheat`/`crack`/`trainer` 候选逐个读 README，**9 个命中同一模板**：
+**可核验事实一：族谱与模板。** 本日报对 `created:2026-11-14..2026-11-16` 窗口内 70 个 `cheat`/`crack`/`trainer` 候选逐个读 README，**9 个命中同一模板签名，其中 1 个是误报**（`francyellenn/cheat-sheets`，详见下方反证）**，故模板族是 8 个**：
 
 | 仓库 | ⭐ | forks | subs | oi | blobs | owner 账号创建 |
 |---|---:|---:|---:|---:|---:|---|
@@ -38,9 +38,10 @@ url: "https://github.com/OceanChandlerSewer/rob-run-cheat-private"
 | `LairFreighter85/Warzone-Eclipse-cheat-client` | 53 | 0 | 0 | 0 | 2 | 2026-08-10T22:36:14Z |
 | `VergeEnvoyAdze/GTA5-cheat-client` | 52 | 0 | 24 | 0 | 2 | 2026-08-10T22:36:56Z |
 | `Brandtrocontrol/Marvel-Rivals-private-cheat` | 51 | 0 | 0 | 0 | 2 | 2026-09-21T17:24:55Z |
-| `DestroyerStrait/RobRun-Cheat-Ares-Crack` | 66 | 14 | 21 | 1 | **1** | 2026-06-15T19:48:39Z |
 
-⭐⭐⭐⭐⭐ **9/9 命中三个模板组件：`capsule-render.vercel.app` 横幅生成器、`readme-typing-svg.demolab.com` 打字机动效、`img.shields.io/badge/...?style=for-the-badge` 徽章阵列。⭐⭐⭐⭐⭐ 其中 6 个指向同一条载荷域名 `modbay.live`（路径按游戏分：`/library/rob-run`、`/library/pubg`、`/library/gta-v-enhanced`）。**
+⭐⭐⭐⭐⭐ **8/8 命中横幅生成器 `capsule-render.vercel.app` 与徽章阵列 `img.shields.io/badge/...?style=for-the-badge`；7/8 命中打字机动效 `readme-typing-svg.demolab.com`（`OceanChandlerSewer` 与 `Brandtrocontrol` 未用）。⭐⭐⭐⭐⭐ 其中 6 个指向同一条载荷域名 `modbay.live`（路径按游戏分：`/library/rob-run`、`/library/pubg`、`/library/gta-v-enhanced`）。**
+
+⭐⭐⭐⭐⭐ **同批账号里另有一个 `DestroyerStrait/RobRun-Cheat-Ares-Crack`（66⭐ · 14 forks · 21 subs · **1 个 blob** · 1 个 issue `无法运行`）同样零代码，但**不共享本模板**（实测无 `capsule-render` / 无 `readme-typing-svg` / 无 `modbay.live`）—— ⭐⭐⭐⭐⭐ **即「模板族」（8 个）与「占位仓库账号集」（10 个）是两个嵌套但不等价的集合。**
 
 ⭐⭐⭐⭐⭐ **⭐⭐⭐ 重要反证（本日自查，避免误判）：`capsule-render` 与 `readme-typing-svg` 是公开的第三方横幅生成器，不是投放方的私产。** ⭐⭐⭐⭐⭐ **本日报实测真实学生账号 `francyellenn`（2023-05-28 创建、16 个公开仓库）有 11 个仓库使用同一套 `capsule-render` 横幅，内容是葡萄牙语的 CS50 课程笔记。** ⭐⭐⭐⭐⭐ **因此「用了 capsule-render」本身不构成判据 —— 本档案不据此主张任何结论。真正的判据是下述占位仓库 + 账号队列的结构组合。**
 
@@ -81,7 +82,8 @@ url: "https://github.com/OceanChandlerSewer/rob-run-cheat-private"
 
 | 批次 | 账号 | 注册窗口 | 跨度 |
 |---|---|---|---:|
-| A | `LairFreighter85` / `DiamondCockatooFlow` / `SandstoneShoutMoon` / `VergeEnvoyAdze` / `ashtherapistpillar` | `2026-08-10T22:36:14Z – 22:37:15Z` | **61 秒** |
+| A1 | `LairFreighter85` / `DiamondCockatooFlow` / `SandstoneShoutMoon` / `VergeEnvoyAdze` / `ashtherapistpillar` | `2026-08-10T22:36:14Z – 22:37:15Z` | **61 秒** |
+| A2 | `OceanChandlerSewer` | `2026-08-10T10:12:04Z` | 单点（同日） |
 | B | `Brandtrocontrol` / `hubchrysalisspanner` | `2026-09-21T17:24:55Z – 17:25:39Z` | 44 秒 |
 | C | `DestroyerStrait` / `delugesovereignphase` | `2026-06-15T19:48:39Z – 19:49:37Z` | 58 秒 |
 
@@ -97,7 +99,7 @@ url: "https://github.com/OceanChandlerSewer/rob-run-cheat-private"
 ## 热度来源判断
 ⭐⭐⭐⭐⭐ **本档案的判断是：热度的「来源」极可能是人工的，但本日报只能证明结构，不能证明机制。**
 
-⭐⭐⭐⭐⭐ 支撑「人工」的**可核验事实**：0 个代码文件；8/9 族成员 0 个 open issue（唯二的两个 issue 内容是 `NOT WORK` 与 `无法运行` —— **真实用户投诉「装不上」，而非功能讨论**）；9/9 共享模板；6/9 共享载荷域名；10/10 owner 持占位仓库（对照 1/16）；账号提前 1–5 个月批量创建。
+⭐⭐⭐⭐⭐ 支撑「人工」的**可核验事实**：0 个代码文件；7/8 族成员 0 个 open issue（唯一 1 个 issue 内容是 `NOT WORK` —— **真实用户投诉「装不上」，而非功能讨论**）；8/8 共享横幅与徽章模板、7/8 共享打字动效；6/8 共享载荷域名；10/10 owner 持占位仓库（对照 1/16）；账号提前 1–5 个月批量创建。
 
 ⭐⭐⭐⭐⭐ **⭐⭐⭐ 不能证明的部分：star 的来源。** 本日报**未做 star 增速统计**（`stargazers` 端点在本窗口不可用），**因此不主张「236 个 star 是刷的」**，只记录「族内 star 取值为 51–236，本仓库最高」这一事实。
 

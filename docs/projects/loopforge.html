@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tencent/LoopForge | GitHub 趋势研究</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>⭐</text></svg>">
+    <link rel="stylesheet" href="/assets/style.css">
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub 趋势研究
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" id="nav-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>首页</span></a>
+                <a href="/daily.html" id="nav-daily"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg><span>日报</span></a>
+                <a href="/projects.html" id="nav-projects" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>项目</span></a>
+                <a href="/trends.html" id="nav-trends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>趋势</span></a>
+            </div>
+        </div>
+    </nav>
+<main class="container">
+    <a href="/projects.html" class="back-link">← 返回重点项目</a>
+    <div class="content-card">
+        <div style="margin-bottom:20px;"><a href="https://github.com/Tencent/LoopForge" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
+        <h1 id="tencentloopforge">Tencent/LoopForge</h1>
+<h2 id="_1">一句话定位</h2>
+<p><strong>腾讯的自托管 coding-agent 交付工作流平台 —— 但它本日最刺眼的一条事实是：它有 21 个 <code>SKILL.md</code>、9 个 harness 相关的技能目录，⭐⭐⭐⭐⭐ 却是本日实测的 12 个 skill 类 Trending 项目里 harness 目录数最少的一个（0 套）。</strong></p>
+<h2 id="_2">它解决的问题</h2>
+<p>⭐⭐⭐⭐⭐ <strong>coding agent 的「交付」环节没有编排层。</strong> README 描述（实测）：</p>
+<blockquote>
+<p>Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.</p>
+</blockquote>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 关键词是三个：「self-hosted」「scripts」「human approval gates」。⭐⭐⭐⭐⭐ 即它把 agent 当成一个需要被编排、被门禁把关的执行体，⭐⭐⭐⭐⭐ 而不是直接放进 IDE 的助手。⭐⭐⭐⭐⭐ topics 实测含 <code>human-on-the-loop</code>、<code>agent-orchestration</code>、<code>codebuddy</code>、<code>codex</code>、<code>claude-code</code>、<code>cursor</code>、<code>code-review</code>。</strong></p>
+<h2 id="2026-11-18">为什么值得关注（2026-11-18）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>因为它是本日实测的「分发适配层」这条线上最靠后的一端 —— ⭐⭐⭐⭐⭐ 21 个 SKILL.md 文件、9 个独立技能身份、复制倍数 2.33×，⭐⭐⭐⭐⭐ 但 </strong>0 套 harness 目录、0 条 <code>npx skills add</code>、0 条 <code>marketplace add</code><strong>。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 这与 ECC（9 套目录）、<code>obra/superpowers</code>（5 套）、<code>google/elephant-goldfish-model</code>（7 套）形成完整的梯度。</strong></p>
+<p><strong>可核验事实（2026-11-18 CST 快照）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stars / forks / subs / open issues</td>
+<td>3,071 / 435 / 12 / <strong>184</strong></td>
+</tr>
+<tr>
+<td>体积 / blobs</td>
+<td>79,595 KB / 3,412</td>
+</tr>
+<tr>
+<td>语言 / <strong>许可字段</strong></td>
+<td>Go / <strong><code>license.spdx_id</code> = NOASSERTION</strong></td>
+</tr>
+<tr>
+<td>创建 / 最后 push</td>
+<td>2026-07-28T03:51:01Z / 2026-11-17T17:57:53Z</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td><code>https://loopforge.cn</code></td>
+</tr>
+<tr>
+<td><strong>release / tag</strong></td>
+<td><strong>14 / 16</strong>（无 release 的 tag：<code>v0.3.7</code> / <code>v0.2.3</code>）</td>
+</tr>
+<tr>
+<td>release 节奏</td>
+<td><code>v0.4.0</code> 2026-11-17 · <code>v0.3.9-rc.1</code> 2026-11-13（prerelease）· <code>v0.3.8</code> 2026-11-12</td>
+</tr>
+<tr>
+<td>release asset</td>
+<td>多数 <strong>0 asset</strong>（<code>v0.4.0</code> 0 · <code>v0.3.9-rc.1</code> 0 · <code>v0.3.8</code> 0），全库合计仅 8 个 asset</td>
+</tr>
+<tr>
+<td><strong>SKILL.md 文件数 / 独立身份</strong></td>
+<td><strong>21 / 9</strong>（<code>knowledge-distillation</code> 4 份 · <code>brainstorming</code> 4 份 · <code>writing-plans</code> 3 份 · <code>tech-design</code> 3 份 · <code>agent-observability</code> 3 份 · <code>report-workflow-usage</code> 1 份）</td>
+</tr>
+<tr>
+<td><strong>harness 目录</strong></td>
+<td><strong>0 套</strong>（<strong>但</strong>有 <code>.claude/skills/</code> 与 <code>.codebuddy/skills/</code> 这样的嵌套技能目录）</td>
+</tr>
+<tr>
+<td>CI 工作流</td>
+<td>5 个（<code>e2e.yml</code> / <code>platform.yml</code> / <code>release.yml</code> / <code>release-local.yml</code> / <code>validate.yml</code>）</td>
+</tr>
+<tr>
+<td>贡献者</td>
+<td><code>Robert0622</code> 59 · <code>crispinhu27</code> 39 · <code>cocofhu</code> 20 · <code>dependabot[bot]</code> 13 · <code>newexploreor</code> 5 · <code>Yanami-2K</code> 4 · <code>Zhong-Chenchen</code> 3 · <code>wycocoyu</code> 2</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 关键结构发现（本日）：它的 21 个 SKILL.md 全部位于 <code>local/</code> 目录下</strong>（实测 <code>local/.claude/skills/</code> 20 个 + <code>local/.codebuddy/skills/</code>），⭐⭐⭐⭐⭐ <strong>即它把「面向不同 harness 的技能副本」放在一个 <code>local/</code> 目录里，⭐⭐⭐⭐⭐ 而不是在仓库根部按 harness 分目录。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 结果是：它的 SKILL.md 数量看起来不少（21），⭐⭐⭐⭐⭐ </strong>但它在 harness 清单这个维度上是 0。⭐⭐⭐⭐⭐ 「有多少技能文件」与「能被多少个 harness 直接加载」是两个独立的问题。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第二条：它的 release 有 2 个 tag 没有对应 release</strong>（<code>v0.3.7</code> / <code>v0.2.3</code>），⭐⭐⭐⭐⭐ 而 <code>modern-web-guidance-src</code> 是 100/100 个 tag 无 release（本日档案）。⭐⭐⭐⭐⭐ <strong>两个方向相反的缺口同时存在：⭐⭐⭐⭐⭐ 「有 tag 没 release」与「有 release 没 tag」都不是异常，⭐⭐⭐⭐⭐ 但它们各自指向不同的工程状态 —— 前者是「内部版本快照被推到 tags」，后者是「正式发布面缺失」。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第三条：<code>license.spdx_id</code> = NOASSERTION。</strong> ⭐⭐⭐⭐⭐ 这与 11-16 记录的 <code>cnrad/interspace</code> 情况相同（LICENSE 文件实为 MIT，但 GitHub 未能归类）⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 但本日报</strong>未读取<strong>其 LICENSE 文件，⭐⭐⭐⭐⭐ 因此</strong>不主张<strong>它的实际许可是什么。⭐⭐⭐⭐⭐ 这是一处必须记下的证据边界。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第四条：issue 质量极高，且全是「带定位信息的修复请求」。</strong> 实测 14 条 issue：</p>
+<ul>
+<li><code>#1026 fix(models): preserve and configure per-model reasoning efforts</code>（4,086 字符，<code>crispinhu27</code>）</li>
+<li><code>#1025 fix(sandbox): explain missing isolated runtime images</code>（1,549，<code>wcy12378</code>）</li>
+<li><code>#1024 docs(api): index assistant and shared schedule routes</code>（1,563）</li>
+<li><code>#1023 fix(assistant): explain unsupported OpenCode variants</code>（1,998）</li>
+<li><code>#1022 [Docs]: API 索引漏掉 AI 对话（/api/assistant，32 个路由）与共享 AI 定时任务，v0.4.0 的诊断导出/CLI 安装没有公开契约</code>（2,721，含代码块）</li>
+<li><code>#1021 Coordinate Runner OAuth refresh and reject sandbox credential replacement</code>（3,131）</li>
+<li><code>#1020 fix(assistant): report disk-full execution failures</code>（1,546）</li>
+<li><code>#1017 fix(workspace): recover a conversation after its instance dies</code>（2,319，含代码块）</li>
+</ul>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 这批 issue 的形态与 <code>paper-orchestra</code> 的完全不同：⭐⭐⭐⭐⭐ 那边是「用户跑流程时踩到的具体失效」，⭐⭐⭐⭐⭐ 这边是「</strong>开发者在自测中发现的边界条件与缺失契约<strong>」—— ⭐⭐⭐⭐⭐ 沙箱镜像缺失、磁盘满、实例死亡后恢复、OAuth 刷新与凭证替换、OpenCode 变体不支持、</strong>「32 个路由没有公开契约」<strong>。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ </strong>这说明这是一个正在被自己的团队高频使用、并把使用中的粗糙处写成 issue 的项目 —— 是本数据集里少见的「内部使用强度」的直接证据。**</p>
+<h2 id="_3">热度来源判断</h2>
+<p>⭐⭐⭐⭐⭐ <strong>判断：热度来自「腾讯内部 coding agent 交付的真实需求外化」，⭐⭐⭐⭐⭐ 而它的 issue 文本是最强的支撑证据 —— ⭐⭐⭐⭐⭐ 但它的分发面最弱（0 套 harness 清单、0 条安装命令），⭐⭐⭐⭐⭐ 所以它目前更像是「一个内部工具的开源版本」而不是「一个社区分发中心」。</strong></p>
+<p>支撑的<strong>可核验事实</strong>：
+1. <strong>⭐⭐⭐⭐⭐ 组织账号 + 真实的多人贡献结构</strong>：<code>Tencent</code>（2016-04-14 创建、15,261 followers、311 repos）⭐⭐⭐⭐⭐ 加上 <code>Robert0622</code> 59 / <code>crispinhu27</code> 39 / <code>cocofhu</code> 20 等 7 位真人贡献者。
+2. <strong>⭐⭐⭐⭐⭐ issue 是「开发者自测记录」而非功能许愿</strong>：见上表，⭐⭐⭐⭐⭐ 全部带具体子域前缀（<code>fix(models)</code> / <code>fix(sandbox)</code> / <code>fix(assistant)</code> / <code>fix(workspace)</code> / <code>fix(git)</code> / <code>feat(runner)</code>）。
+3. <strong>⭐⭐⭐⭐⭐ 有 <code>human approval gates</code> 与 <code>human-on-the-loop</code> topic</strong> ⭐⭐⭐⭐⭐ —— <strong>审批门是这类平台的真实卖点，不是包装词。</strong>
+4. <strong>⭐⭐⭐⭐⭐ fork/star = 14.16%</strong>（435 / 3,071），⭐⭐⭐⭐⭐ 属正常偏热区间。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⚠️ 不作主张的部分</strong>：⭐⭐⭐⭐⭐ <strong>本日报未安装、未运行、未访问 <code>loopforge.cn</code>。</strong>⭐⭐⭐⭐⭐ <strong><code>license.spdx_id</code> = NOASSERTION 意味着本日报</strong>不主张<strong>它的许可条款 —— ⭐⭐⭐⭐⭐ </strong>企业采用前必须先确认许可，这是本项目最实际的落地风险。<strong>⭐⭐⭐⭐⭐ </strong>本日报未做 star 增速统计。**</p>
+<h2 id="_4">关键技术亮点</h2>
+<ol>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 人工审批门是架构中的一等公民</strong>
+   README 明述「human approval gates」⭐⭐⭐⭐⭐ + topic <code>human-on-the-loop</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即它不是「agent 自己跑到底」，⭐⭐⭐⭐⭐ 而是每一步可被人类接管。这与 <code>paper-orchestra</code> 的 <code>paper_writing_cli.sh</code>（无门禁）、<code>ECC</code> 的「skills/memory/security 配置」都不同。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 三家 harness 统一编排</strong>
+   README 明述 Orchestrate <strong>CodeBuddy, Codex and Claude Code</strong> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ CodeBuddy 是腾讯自家的 coding agent，⭐⭐⭐⭐⭐ 即这是「大厂编排自家 + 竞品」的组合。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 自托管优先</strong>
+   homepage <code>loopforge.cn</code> + <code>release-local.yml</code> 工作流 + <code>local/</code> 目录 ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即它的分发形态包含「本地部署包」，⭐⭐⭐⭐⭐ 对企业内网场景是必需的。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 技能以「项目内目录」形式交付</strong>
+   实测 <code>local/.claude/skills/</code> 与 <code>local/.codebuddy/skills/</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即它不要求用户「安装插件」，而是把技能文件随项目带过去。⭐⭐⭐⭐⭐ 这与 ECC（npm + GitHub App + 插件 slug）的分发哲学相反，⭐⭐⭐⭐⭐ 但对企业内网更省事。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ 契约缺失被显式记录</strong>
+   issue <code>#1022</code> 原文（实测）：「v0.4.0 的诊断导出/CLI 安装没有公开契约」⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即团队自己知道「对外接口没有公开契约」是缺陷，⭐⭐⭐⭐⭐ 并把「32 个路由未收录进 API 索引」写成 issue。⭐⭐⭐⭐⭐ 这比 11-17 记录的 <code>EGM</code> 的「打包时怎么定位 Claude 根目录需要专门修」更具体。</strong></p>
+</li>
+<li>
+<p><strong>⭐⭐⭐⭐⭐ Runner 凭证与沙箱是显式的安全面</strong>
+   issue <code>#1016 feat(runner): support Antigravity login and harden credential refresh</code> ⭐⭐⭐⭐⭐ · <code>#1021 Coordinate Runner OAuth refresh and reject sandbox credential replacement</code> ⭐⭐⭐⭐⭐ · <code>#1025 fix(sandbox): explain missing isolated runtime images</code> ⭐⭐⭐⭐⭐ —— <strong>⭐⭐⭐⭐⭐ 即凭证刷新、凭证替换拒绝、沙箱隔离镜像是这个平台反复出问题的地方，⭐⭐⭐⭐⭐ 也是它的真实能力边界所在。</strong></p>
+</li>
+</ol>
+<h2 id="_5">架构师速览</h2>
+<table>
+<thead>
+<tr>
+<th>决策问题</th>
+<th>研究判断</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统边界</td>
+<td><strong>一个「自托管的 coding-agent 编排 + 交付平台」</strong>，⭐⭐⭐⭐⭐ 包含编排面（<code>platform.yml</code> / <code>release.yml</code> / <code>release-local.yml</code>）· 执行器面（Runner / Sandbox）· 客户端面（CodeBuddy / Codex / Claude Code）· 契约面（API 路由与共享定时任务）。<strong>不含模型</strong></td>
+<td>实测 5 个工作流名、README 描述、topics、issue 中的子域前缀（<code>fix(models)</code> / <code>fix(sandbox)</code> / <code>fix(assistant)</code> / <code>fix(workspace)</code> / <code>fix(git)</code> / <code>feat(runner)</code>）；<strong>未运行、未读任何 Go 源码，API 路由清单未获取</strong></td>
+</tr>
+<tr>
+<td>主路径</td>
+<td>用户在 LoopForge 上定义一个工作流（脚本 + 步骤）→ 平台把步骤分派给指定 harness（CodeBuddy / Codex / Claude Code）执行 → 每步之间经过人工审批门 → 结果与日志回流 → 平台产出交付物。<strong>发布路径</strong>：<code>release.yml</code>（平台）/ <code>release-local.yml</code>（本地包）</td>
+<td>主路径由 README 描述与工作流名反推；<strong>审批门的具体粒度（每步？每阶段？）、Runner 与 Sandbox 的部署形态、失败回滚策略均未核验</strong></td>
+</tr>
+<tr>
+<td>关键权衡</td>
+<td>①<strong>自动化 vs 可控</strong> → 用人工审批门换取可控性，代价是吞吐；②<strong>自托管 vs 开箱即用</strong> → 换取数据不出内网，代价是部署复杂度；③<strong>多 harness 编排 vs 适配成本</strong> → 统一了编排层，但<strong>技能分发层仍是 0 套清单</strong>，即它把「适配成本」推给了使用者</td>
+<td>①有 README 原文 + topic 支撑；②有 homepage + <code>release-local.yml</code> + <code>local/</code> 目录支撑；③由 harness 清单实测 = 0 支撑</td>
+</tr>
+<tr>
+<td>最小 PoC</td>
+<td>只接<strong>一个</strong> harness（建议 Claude Code，因为存在 <code>.claude/skills/</code> 副本）→ 定义一个含 <strong>1 个人工审批门</strong>的两步工作流 → 验证审批门确实能拦住执行 → 检查日志与交付物是否可溯源到具体步骤 → 再评估接入 Codex/CodeBuddy 的边际成本 → <strong>最后单独确认许可证</strong>（当前 <code>NOASSERTION</code>）</td>
+<td>PoC 范围与退出路径由本档案推导；<strong>部署前置条件、资源需求、审批门语义、许可证均未核验</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">架构启发</h2>
+<p>⭐⭐⭐⭐⭐ <strong>启发一（本日的核心）：「技能分发」与「技能适配」是两笔独立的成本，而 SKILL.md 文件数同时掩盖了两者。</strong> ⭐⭐⭐⭐⭐ 本日实测的三组数字：⭐⭐⭐⭐⭐ <code>ECC</code> 1,087 文件 / 330 身份 / <strong>9 套清单</strong> ⭐⭐⭐⭐⭐ · <code>obra/superpowers</code> 15 文件 / 15 身份 / <strong>5 套清单</strong> ⭐⭐⭐⭐⭐ · <code>Tencent/LoopForge</code> 21 文件 / 9 身份 / <strong>0 套清单</strong>。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 即 LoopForge 的技能文件数是 superpowers 的 1.4 倍、独立身份却只有 60%，⭐⭐⭐⭐⭐ <strong>而能被多少 harness 直接加载是 0。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ </strong>结论：测量 agent 生态成熟度时，「SKILL.md 数」与「独立身份数」与「harness 清单数」必须并列为三个指标。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>启发二：「把粗糙处写成 issue」是内部使用强度的公开证据。</strong> ⭐⭐⭐⭐⭐ 本项目的 issue 全是带定位信息的修复请求（<code>fix(sandbox)</code> / <code>fix(assistant)</code> / <code>fix(workspace)</code> / <code>feat(runner)</code>），⭐⭐⭐⭐⭐ 且明确指出「32 个路由没有公开契约」「诊断导出/CLI 安装没有公开契约」⭐⭐⭐⭐⭐ —— ⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 这类 issue 不可能由外部用户批量写出，⭐⭐⭐⭐⭐ 它是团队自己在用的证据。⭐⭐⭐⭐⭐ 这与本数据集记录的「反例样本」（issue 是 <code>NOT WORK</code> / <code>无法运行</code>）形成一条实用的区分线：⭐⭐⭐⭐⭐ </strong>issue 的技术含量与定位精度，是判断项目是否真被使用的免费信号。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>启发三：许可字段的「不确定」本身就是一条风险信号。</strong> ⭐⭐⭐⭐⭐ <code>NOASSERTION</code> 意味着 GitHub 的许可证检测器没能识别，⭐⭐⭐⭐⭐ <strong>对企业采用者来说，这必须先被解决，⭐⭐⭐⭐⭐ 而不是被默认为 MIT。⭐⭐⭐⭐⭐ 本日报在 <code>cnrad/interspace</code>（11-16）上已经遇到过同一情形，⭐⭐⭐⭐⭐ 当时是「实为 MIT 但字段 NOASSERTION」，⭐⭐⭐⭐⭐ </strong>本日再次遇到，说明这是一个值得单独建档的类别：「许可不可判定」。**</p>
+<h2 id="mmd">架构图（MMD）</h2>
+<blockquote>
+<p>证据边界：此图只采用本档案已有可核验描述；标注「待核验」的节点不应视为项目实现事实。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+  User[平台使用者 / 研发团队]
+  WF[工作流定义<br/>脚本 + 步骤<br/>release-local.yml 提供本地包]
+  Gate[人工审批门<br/>human approval gates<br/>human-on-the-loop]
+  Orch[编排层<br/>platform.yml / e2e.yml / validate.yml<br/>Go · 3,412 blobs]
+  Runner[Runner 执行器<br/>OAuth 刷新 / 凭证替换拒绝<br/>Antigravity 登录]
+  Sandbox[沙箱隔离<br/>isolated runtime images<br/>实例死亡后恢复]
+  Harness[目标 harness<br/>CodeBuddy · Codex · Claude Code<br/>topics 含 cursor]
+  Skills[技能副本<br/>local/.claude/skills 20 + local/.codebuddy/skills<br/>21 文件 / 9 独立身份 / 复制 2.33x]
+  API[契约面<br/>API 路由 32 个<br/>共享 AI 定时任务<br/>诊断导出 / CLI 安装<br/>issue 指出缺公开契约]
+  Release[发布面<br/>14 release / 16 tag<br/>2 个 tag 无 release<br/>多数 0 asset]
+  Lic[许可字段<br/>license.spdx_id = NOASSERTION<br/>实际条款未核验]
+
+  User --> WF
+  WF --> Orch
+  Orch --> Gate
+  Gate --> Runner
+  Runner --> Sandbox
+  Sandbox --> Harness
+  Harness --> Orch
+  Skills -.随项目带去.-> Harness
+  Orch --> API
+  Release -.发布平台与本地包.-> Orch
+  Lic -.落地风险 未核验.-> User
+</pre>
+<h2 id="_7">定位判断</h2>
+<p><strong>平台候选 —— 且是本日实测的「编排层」这一端的代表样本。</strong> ⭐⭐⭐⭐⭐ 与同组项目的层次关系清晰：<code>ECC</code> 做<strong>分发适配层</strong> ⭐⭐⭐⭐⭐ · <code>plannotator</code> 做<strong>人机协作工作台</strong> ⭐⭐⭐⭐⭐ · <code>open-code-review</code> 做<strong>评审引擎</strong> ⭐⭐⭐⭐⭐ · <code>modern-web-guidance-src</code> 做<strong>平台知识层</strong> ⭐⭐⭐⭐⭐ · <strong>LoopForge 做「执行编排层」</strong> ⭐⭐⭐⭐⭐ —— 即它是唯一把「谁来跑、跑哪一步、什么时候必须停下等人」作为核心抽象的项目。</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 但它的短板非常明确：分发面为 0。⭐⭐⭐⭐⭐ 一个 3,071⭐ 的平台项目，⭐⭐⭐⭐⭐ 有 21 个技能文件却没有任何 harness 清单、没有 <code>npx skills add</code>、没有 <code>marketplace add</code> —— ⭐⭐⭐⭐⭐ </strong>⭐⭐⭐⭐⭐ 即它的能力目前只能通过「自托管 + 读文档 + 自己拼装」来使用。⭐⭐⭐⭐⭐ 这使它在 11-17 提出的「Skills 的竞争战场已从内容转向分发适配层」这条判断上，处于这条赛道最末端的位置。**</p>
+<h2 id="_8">风险 / 局限 / 泡沫点</h2>
+<ol>
+<li>⭐⭐⭐ ⚠️ <strong>许可不可判定</strong>：<code>license.spdx_id</code> = <strong>NOASSERTION</strong> ⭐⭐⭐ ⚠️ —— <strong>⭐⭐⭐⭐⭐ 这是本项目最实际的落地风险：企业采用前必须先确认条款，本日报不主张任何许可内容。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>分发面为 0</strong>：⭐⭐⭐ ⚠️ 0 套 harness 清单、0 条安装命令，⭐⭐⭐ ⚠️ <strong>技能以 <code>local/</code> 目录形式交付，⭐⭐⭐ ⚠️ 使用门槛（自托管 + 手工拼装）显著高于 <code>npx skills add</code>。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>14 个 release 中多数 0 asset</strong>（全库合计仅 8 个 asset）⭐⭐⭐ ⚠️ —— <strong>⭐⭐⭐⚠️ 因此 11-16 判据的第二段「release 资产是否随版本变化」在本项目基本不可用。</strong></li>
+<li>⭐⭐⭐ ⚠️ <strong>2 个 tag 无对应 release</strong>（<code>v0.3.7</code> / <code>v0.2.3</code>）⭐⭐⭐ ⚠️ —— 版本与发布的对应关系不完全闭合。</li>
+<li>⭐⭐⭐ ⚠️ <strong>主贡献者占 34%</strong>（<code>Robert0622</code> 59 / 约 173）⭐⭐⭐ ⚠️ —— 关键人风险中等，有 7 位真人贡献者。</li>
+<li>⭐⭐⭐ ⚠️ <strong>未核验项</strong>：部署前置条件与资源需求、审批门的粒度语义、Runner/Sandbox 的安全模型、32 个 API 路由的完整清单、184 个 open issue 的正文（仅读了 14 条标题）、<code>local/</code> 目录中技能副本是否由 CI 生成、<code>loopforge.cn</code> 的实际内容。</li>
+</ol>
+<h2 id="_9">与同类项目的关系</h2>
+<ul>
+<li><strong>vs <code>alibaba/open-code-review</code>（本日档案）</strong>：⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 最直接的同类 —— 两家大厂各做一个 coding agent 平台：⭐⭐⭐⭐⭐ LoopForge 是</strong>编排 + 人工审批门<strong>（Go，3,071⭐，自托管），⭐⭐⭐⭐⭐ open-code-review 是</strong>评审引擎<strong>（Go，53,682⭐，二进制分发）。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 两者都出现了 <code>acp</code> 关键词（LoopForge 的 issue <code>#1023</code> 提到 OpenCode 变体，open-code-review 有 <code>acp-ci.yml</code>）。</strong></li>
+<li><strong>vs <code>affaan-m/ECC</code>（本日档案）</strong>：⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 互补且是本数据集里最好的一组「同层不同解」对照：⭐⭐⭐⭐⭐ ECC 是</strong>配置/技能的分发层<strong>（9 套清单 + npm + GitHub App + 插件 slug），⭐⭐⭐⭐⭐ LoopForge 是</strong>执行编排层<strong>（0 套清单 + 自托管 + 审批门）。⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ 一个解决「怎么把能力送到 harness」，一个解决「怎么在 harness 之间编排执行」。</strong></li>
+<li><strong>vs <code>backnotprop/plannotator</code>（本日档案）</strong>：⭐⭐⭐⭐⭐ <strong>互补 —— plannotator 的 inbox 通道（<code>inbox-claude-code.yml</code> / <code>inbox-pi.yml</code> / <code>inbox-qwen-code.yml</code>）也做「反馈送回 harness」，⭐⭐⭐⭐⭐ LoopForge 做「执行步骤编排与审批」。</strong></li>
+<li><strong>vs <code>obra/superpowers</code>（本数据集已有）</strong>：⭐⭐⭐⭐⭐ <strong>方法论 vs 平台 —— superpowers 定义 agent 怎么做事（15 个技能 / 5 套清单），⭐⭐⭐⭐⭐ LoopForge 定义人怎么把关 agent 的执行。</strong></li>
+<li><strong>vs <code>mvanhorn/last30days-skill</code>（11-17 档案）</strong>：⭐⭐⭐⭐⭐ 正交 —— 一个是信息聚合技能（68,964⭐ / 4 套清单），⭐⭐⭐⭐⭐ 一个是执行编排平台（3,071⭐ / 0 套清单），⭐⭐⭐⭐⭐ ⭐⭐⭐⭐⭐ <strong>两者构成「内容 vs 分发 vs 编排」三层的一个完整剖面。</strong></li>
+</ul>
+<h2 id="_10">是否值得持续跟踪</h2>
+<p><strong>值得，跟踪优先级中高 —— 它是本日实测的「适配层成熟度梯度」的最末端样本。</strong> ⭐⭐⭐⭐⭐ 具体三条：</p>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>harness 清单数是否从 0 变成非 0</strong> ⭐⭐⭐⭐⭐ —— <strong>这是本项目最重要的一条指标，⭐⭐⭐⭐⭐ 也是 11-17 「竞争战场转向分发适配层」这条判断的直接检验。</strong></li>
+<li>⭐⭐⭐⭐⭐ <strong>许可字段是否从 <code>NOASSERTION</code> 变成明确 SPDX</strong> ⭐⭐⭐⭐⭐ —— <strong>企业采用的前置条件。</strong></li>
+<li>⭐⭐⭐ ⭐ <strong>184 个 open issue 中「契约缺失类」的占比是否下降</strong> ⭐⭐⭐⭐⭐ （如 <code>#1022</code> 指出的 32 个路由未收录、诊断导出/CLI 安装无公开契约）⭐⭐⭐⭐⭐ —— <strong>契约收敛速度是平台成熟度的直接指标。</strong></li>
+</ol>
+<h2 id="_11">后续观察点</h2>
+<ol>
+<li>⭐⭐⭐⭐⭐ <strong>harness 清单数</strong>（当前 0）—— ⭐⭐⭐⭐⭐ 若出现 <code>.claude-plugin/</code> / <code>.cursor-plugin/</code> 等，即代表适配层开始补课</li>
+<li>⭐⭐⭐⭐⭐ <strong>许可字段</strong>（当前 <code>NOASSERTION</code>）</li>
+<li>⭐⭐⭐ ⭐ <strong>是否公开 <code>npx skills add</code> / <code>marketplace add</code> 任一安装命令</strong>（当前均为 0）</li>
+<li>⭐⭐⭐ ⭐ <strong>release 的 asset 数</strong>（当前 14 个 release 合计仅 8 个 asset，多数为 0）</li>
+<li>⭐⭐⭐ ⚠️ <strong>「契约缺失」类 issue 是否减少</strong>（⭐⭐⭐⚠️ 本日报仅读了 14 条标题，184 条 issue 的主题分布未统计）</li>
+</ol>
+<hr />
+<p><em>首次记录：2026-11-18 · 全部元数据取自 2026-11-18 CST 的 GitHub REST API 快照（<code>repos/*</code>、<code>git/trees/*?recursive=1</code>、<code>commits/{sha}</code> 含 files diff、<code>tags</code>、<code>releases</code> 含 asset 元数据、<code>readme</code>、<code>contributors</code>、<code>users/*</code>、<code>issues?state=all&amp;per_page=30</code>）</em></p>
+    </div>
+</main>
+    <footer class="footer">
+        <p><strong>AIUtil 产品</strong> · 研究内容由定时任务生成，结论以原始来源为准。</p>
+        <p style="margin-top:8px;"><a href="https://aiutil.com">AIUtil</a> · <a href="https://aiutil.com/about">关于</a> · <a href="https://agentos.aiutil.com">Agent OS</a> · <a href="https://radar.aiutil.com">前沿论文</a> · <a href="https://github-research.aiutil.com">GitHub 趋势</a> · <a href="https://nimbus.aiutil.com">Nimbus</a> · <a href="https://visionai.aiutil.com">VisionAI</a> · <a href="https://github.com/aiutil/github-researcher">源码</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose'});</script>
+</body>
+</html>
