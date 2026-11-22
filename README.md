@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="https://github-research.aiutil.com">Live research site</a> ·
-  <a href="daily/2026-11-18.md">Latest report</a> ·
+  <a href="daily/2026-11-23.md">Latest report</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub Researcher live site](docs/images/readme-overview.png)
 
-## Latest report · 2026-11-18
+## Latest report · 2026-11-23
 
 | Repositories analyzed today | Research archive | Core directions | Weekly star movement |
 | ---: | ---: | ---: | ---: |
-| 9 | 839 | 5 | 55k+ |
+| 9 | 842 | 5 | 45k+ |
 
 | Repository | Snapshot | Category |
 | --- | --- | --- |
-| [GoogleChrome/modern-web-guidance-src](projects/modern-web-guidance-src.md) | 8,414 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 305,425 stars | 平台候选 |
-| [backnotprop/plannotator](projects/plannotator.md) | 13,035 stars | 工具型 |
-| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 53,682 stars | 生产可用 |
-| [google-research/paper-orchestra](projects/paper-orchestra.md) | 2,884 stars | 观察型 |
-| [getarcaneapp/arcane](projects/arcane.md) | 9,275 stars | 生产可用 |
-| [Tencent/LoopForge](projects/loopforge.md) | 3,071 stars | 平台候选 |
-| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 9,120 stars | 工具型 |
+| [backnotprop/plannotator](projects/plannotator.md) | 14,399 stars | 工具型 |
+| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 55,384 stars | 生产可用 |
+| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 17,618 stars | 工具型 |
+| [affaan-m/ECC](projects/ecc.md) | 306,433 stars | 平台候选 |
+| [obra/superpowers](projects/superpowers.md) | 324,102 stars | 平台候选 |
+| [jingyaogong/minimind](projects/minimind.md) | 68,602 stars | 观察型 |
+| [nginx/nginx](projects/nginx.md) | 32,874 stars | 基础设施候选 |
+| [HKUDS/CLI-Anything](projects/cli-anything.md) | 62,725 stars | 平台候选 |
 
 ![Thirty-day GitHub research activity](docs/images/research-activity.svg)
 
 ## Current trend signals
 
-1. **Signal 1** · score 95 · repositories: google-research/paper-orchestra, backnotprop/plannotator, getarcaneapp/arcane
-2. **Signal 2** · score 93 · repositories: GoogleChrome/modern-web-guidance-src, alibaba/open-code-review, getarcaneapp/arcane
-3. **Signal 3** · score 92 · repositories: affaan-m/ECC, elementalsouls/Claude-BugHunter, Tencent/LoopForge
-4. **Signal 4** · score 89 · repositories: alibaba/open-code-review, Tencent/LoopForge, google-labs-code/stitch-skills
+1. **Signal 1** · score 96 · repositories: backnotprop/plannotator, alibaba/open-code-review, zhouxiaoka/autoclip
+2. **Signal 2** · score 95 · repositories: affaan-m/ECC, backnotprop/plannotator, cursor/plugins
+3. **Signal 3** · score 93 · repositories: elementalsouls/Claude-BugHunter, obra/superpowers, mvanhorn/last30days-skill
+4. **Signal 4** · score 89 · repositories: obra/superpowers, HKUDS/CLI-Anything, backnotprop/plannotator
 
-The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-18.md) for the complete source-linked reasoning record.
+The structured source reports are written in Chinese today; the charts, repository snapshots, methodology, and evidence boundaries are bilingual. Follow the [latest report](daily/2026-11-23.md) for the complete source-linked reasoning record.
 
 ## Recent research cadence
 
 | Date | Repositories analyzed | Core directions |
 | --- | ---: | ---: |
+| [2026-11-23](daily/2026-11-23.md) | 9 | 5 |
 | [2026-11-18](daily/2026-11-18.md) | 9 | 5 |
 | [2026-11-17](daily/2026-11-17.md) | 9 | 5 |
 | [2026-11-16](daily/2026-11-16.md) | 9 | 5 |
 | [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
 | [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
 | [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
-| [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
 
 ## Why this repository exists
 

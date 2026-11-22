@@ -2,20 +2,68 @@
 title: "backnotprop/plannotator"
 slug: "plannotator"
 date_added: "2026-11-18"
-last_seen_date: "2026-11-18"
+last_seen_date: "2026-11-23"
 category: "工具型"
 emoji: "🗂️"
-stars: "13,035 stars"
-stars_delta: "⭐ 2026-11-18 建档（快照 2026-11-18 CST，仓库创建于 2025-12-28T02:09:40Z）：13,035⭐（Trending 日榜 +691 / 周榜 +2,325）· forks 1,313 · subs 34 · oi 181 · **7,261 blobs** · 379,909 KB · TypeScript · Apache-2.0 · **100 个 release / 100 个 tag，每个 release 36 个 asset**（含 CycloneDX SBOM JSON + sha256 清单 + 多平台二进制）· 14 个 CI 工作流 · 23 个 SKILL.md（**去重后仅 11 个独立技能身份**）"
+stars: "14,399 stars"
+stars_delta: "⭐ 2026-11-23 更新（快照 2026-11-23 CST，仓库创建于 2025-12-28T02:09:40Z）：13,035⭐（11-18 快照）→ **14,399⭐**（+1,364，6 日序列 13,030 → 13,421 → 13,644 → 13,870 → 14,139 → 14,399）；forks 1,428 · subs 37 · oi 205 · **8,051 blobs**（11-18 为 7,261）· 379,909 KB · TypeScript · Apache-2.0 · **100 个 release / 100 个 tag，每个 release 36 个 asset**（CycloneDX SBOM + 13 个 sha256）· 14 个 CI 工作流 · **SKILL.md 23 个 / 名口径 11 身份（2.09×）/ 内容口径 23 身份（1.00×）** · **asset 下载真实区间 3–1,735（11-18 记的「1–12」是取 36 个 asset 中最小 12 个的截断伪影）** · harness 目录 4 套（11-18 为 2 套）"
 language: "TypeScript"
 license: "Apache-2.0"
-score: 90
-tags: ["agent-workspace", "multi-harness", "sbom", "signed-releases", "skill-replication", "release-discipline"]
+score: 93
+tags: ["agent-workspace", "sbom", "signed-releases", "caliber-audit", "multi-harness", "variant-vs-copy"]
 url: "https://github.com/backnotprop/plannotator"
 homepage: "https://plannotator.ai"
 ---
 
 # backnotprop/plannotator
+
+## 最近动态（2026-11-23）
+
+⭐⭐⭐⭐⭐ **本日对本项目做的是口径审计复测，结论是：11-18 日报对它下的两条判断都需要修正，而它本身作为供应链纪律标杆的地位不变。**
+
+**可核验事实一（修正一）：asset 下载次数。**
+
+| 口径 | 11-18 日报发布值 | **11-23 实测** |
+|---|---|---|
+| `v0.29.1` 下载区间 | — | **9 – 1,691**（11-18 视角显示 9–13，**低估 130.1×**） |
+| `v0.29.0` 下载区间 | — | **4 – 1,735**（11-18 视角 4–8，**216.9×**） |
+| `v0.29.2` 下载区间 | — | **3 – 453**（11-18 视角 3–5，**90.6×**） |
+| 全量 release 单 asset 最大下载 | — | **2,304** |
+| 全量 release 平均下载（最近 100 个） | — | **2,729** |
+| 最新 3 个 release 平均下载 | — | **6,857**（比全量均值高 2.5×） |
+
+⭐⭐⭐⭐⭐ **根因已定位到 11-18 的取数脚本第 60 / 163 行：先 `sorted(download_count)` 再取 `[:12]` 打印，而 36 个 asset 被截断成最小的 12 个，⭐⭐⭐⭐⭐ 日报把「1」与「12」读成了区间端点。⭐⭐⭐⭐⭐ 本日报据此**撤回**「plannotator 下载仅 1–12 次、是本组最低」的结论；⭐⭐⭐⭐⭐ **但也同时撤回「它下载很多」的相反主张 —— 实测其全量均值 2,729 低于 `open-code-review` 的 3,480，⭐⭐⭐⭐⭐ 准确表述是「两者在同一量级，11-18 的对比不成立」。**
+
+**可核验事实二（修正二）：SKILL.md 身份数。**
+
+| 口径 | 11-18 发布值 | **11-23 实测** |
+|---|---|---|
+| SKILL.md 文件数 | 23 | **23**（未变） |
+| **名口径**（身份 = 父目录名，11-18 用的口径） | 11 | **11**（复现 ✓） |
+| **内容口径**（身份 = 不同 blob sha 集合） | — | **23** |
+| `plannotator-review` | 5 份 | **5 份 / 5 个不同 blob sha** |
+| `plannotator-last` | 4 份 | **4 份 / 4 个不同 blob sha** |
+| `plannotator-inbox` | 2 份 | **2 份 / 2 个不同 blob sha** |
+
+⭐⭐⭐⭐⭐ **即 4 个被复制的技能身份，其每一份副本的内容都不同 —— 它们是「针对不同 app 定制过的同名技能变体」，⭐⭐⭐⭐⭐ 而不是「同一份内容存了 N 遍」。⭐⭐⭐⭐⭐ 这与它 41 个 generator/sync 脚本路径的存在一致（变体是被生成出来的，但生成器会针对目标 app 调整内容）。**
+
+**可核验事实三（未变，且加强）：供应链纪律仍是本队列最完整的一档。**
+
+| 指标 | 11-18 | **11-23** |
+|---|---:|---:|
+| release / tag | 100 / 100 | **100 / 100** |
+| 每 release 的 asset | 36 | **36** |
+| 最新 release | `v0.28.67` | **`v0.29.2`** |
+| SBOM 文件名 | `plannotator-0.28.67-release-sbom.cdx.json` | **`plannotator-0.29.2-release-sbom.cdx.json`**（文件名仍内嵌版本号，即每版独立生成） |
+| harness 目录 | 2 套 | **4 套**（`claude` / `codex` / `copilot` / `gemini`） |
+| blobs | 7,261 | **8,051**（+790） |
+| 6 日 star | 13,030 | **14,399**（+10.5%，逐日 +391/+223/+226/+269/+260） |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 值得单独指出的一条：实测 `v0.28.63` 的 asset 数是 26 而不是 36 —— 即 asset 构成本身在演进（新增了 10 个资产），⭐⭐⭐⭐⭐ 这符合 11-18 建立的「资产是否随版本演进」这条判据，是一个正向证据。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 而「harness 目录从 2 套增到 4 套」是一个新观测 —— 本日报 11-23 的第 4 条趋势指出，⭐⭐⭐⭐⭐ harness 目录数会随项目演进上下浮动（`obra/superpowers` 同期从 5 套降到 4 套），⭐⭐⭐⭐⭐ 因此不宜把目录数当作稳定的能力刻度。**
+
+---
 
 ## 一句话定位
 **一个「保持在 agent 循环里」的桌面工作台 —— 它本日最值得记的技术事实是发布链：100 个 release，每个带 36 个 asset，其中包含 CycloneDX SBOM JSON 与逐文件 sha256 清单。**

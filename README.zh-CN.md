@@ -9,7 +9,7 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="https://github-research.aiutil.com">在线研究站</a> ·
-  <a href="daily/2026-11-18.md">最新日报</a> ·
+  <a href="daily/2026-11-23.md">最新日报</a> ·
   <a href="https://aiutil.com">AIUtil</a>
 </p>
 
@@ -21,45 +21,45 @@
 
 ![GitHub 趋势研究真实站点](docs/images/readme-overview.png)
 
-## 最新研究 · 2026-11-18
+## 最新研究 · 2026-11-23
 
 | 今日深度分析 | 项目档案 | 核心趋势方向 | 本周 Star 变化 |
 | ---: | ---: | ---: | ---: |
-| 9 | 839 | 5 | 55k+ |
+| 9 | 842 | 5 | 45k+ |
 
-**今日核心判断：** 本日最硬的方法论发现是**给判据加上对照组之后，11-12~11-15 建立的「账号注册聚集度」判据被证伪了** —— ⭐⭐⭐⭐⭐ 实测 15 个 Trending 仓库各 100 个 fork（1,500 个 fork owner 账号）中「7 天内新建账号」占 **38.0%**，⭐⭐⭐⭐⭐ **而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5% —— 更高**；⭐⭐⭐⭐⭐ **逐仓库看更反直觉：`golang/go` 是 80/100、`rust-lang/rust` 是 72/100、`torvalds/linux` 是 71/100、`sveltejs/svelte` 是 88/100，⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击特征**；⭐⭐⭐⭐⭐ 与之并列的第二个发现是**「版本发布」这条判据必须从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 是否闭合 / 资产是否随版本演进），⭐⭐⭐⭐⭐ 本日实测四个真项目给出四种形态** —— ⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，**下载 57–951 次**）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（**含 CycloneDX SBOM**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag 但只有 1 个 release**（且是 prerelease 的审计数据 JSON），⭐⭐⭐⭐⭐ **而这 100 个 tag 的 commit 全部真实改动了 RAG 索引产物（`guide-chunk-cache.i8/.json/.scale.f32`），其父 commit 10/10 触及源码** —— ⭐⭐⭐⭐⭐ 即 11-16 记录的「假版本号」（`steam-library-bridge`）、11-17 记录的「多而实」（`ffmpeg-skill`）与本日新增的「有 tag 无 release」是**三种不同状态**，⭐⭐⭐⭐⭐ 而判据恰恰在于「链上有没有真实 diff」而非「功能 commit 在前还是在后」⭐⭐⭐⭐⭐ （本日 `open-code-review` 与 `plannotator` 各自实测到功能 commit 在 tag 与在父上交替出现）；⭐⭐⭐⭐⭐ 第三个发现是**「SKILL.md 数量」是一个被复制放大的计数，必须拆成三个独立指标**：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目，`affaan-m/ECC` 的 **1,087 个 SKILL.md 只对应 330 个独立技能身份（3.30×）**、最大单一技能被复制 **10 份**（`verification-loop` / `tdd-workflow` / `security-review` 等各 10 份）· `Tencent/LoopForge` 21 文件 / 9 身份（2.33×）· `backnotprop/plannotator` 23 / 11（2.09×）· `cursor/plugins` 173 / 113（1.53×），⭐⭐⭐⭐⭐ **而 `Claude-BugHunter`（83/83）、`superpowers`（15/15）、`addyosmani/agent-skills`（25/25）、`anthropics/skills`（20/20）、`stitch-skills`（16/16）是零复制**；⭐⭐⭐⭐⭐ **关键的反例是 `superpowers` 15 身份 / 5 套 harness 清单 / 复制 1.00×，⭐⭐⭐⭐⭐ 证明「零复制」与「多 harness」可以兼得 —— 因而 ECC 的 3.30× 是实现选择而非能力上限**；⭐⭐⭐⭐⭐ 第四个发现是**分发协议仍在缓慢收敛，且本日首次出现「零复制 + 多清单」的组合**：⭐⭐⭐⭐⭐ 对 11-17 同一批 17 个仓库同口径复测，**同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`），⭐⭐⭐⭐⭐ **而 `Tencent/LoopForge` 有 21 个技能文件却是 0 套 harness 目录、0 条安装命令**，⭐⭐⭐⭐⭐ **同批 12 个 skill 项目里 0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个 —— 适配层这条赛道的分化比 11-17 更明显，而不是更收敛**；⭐⭐⭐⭐⭐ 第五个发现是**「确定性 + LLM」的混合架构在两个不同领域各自独立出现**：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 是「确定性规则流水线（NPE/线程安全/XSS/SQL 注入）+ LLM Agent」，⭐⭐⭐⭐⭐ `google-research/paper-orchestra` 是 `autoraters/citation_f1.py`（确定性 F1）+ `agent_review.py`（LLM 评审），⭐⭐⭐⭐⭐ **两家机构、两个领域、同一分工 —— 这是本日最值得推广的架构范式**
+**今日核心判断：** 本日最硬的发现是**我们自己的两条判据在同一批数据上被证伪，而根因是同一个：测量口径** —— ⭐⭐⭐⭐⭐ 第一条是**「asset 下载次数」这条判据**：11-18 日报用它断言 `plannotator`「下载仅 1–12 次」、`open-code-review`「57–951 次」，⭐⭐⭐⭐⭐ **但那次的脚本取的是 `sorted(download_count)[:12]`（36 个 asset 里最小的 12 个）当成全量区间**，⭐⭐⭐⭐⭐ **本日在**同一时刻、同一批 release** 上复测：同一 tag `v0.29.1` 的真实区间是 9–1,691（11-18 视角显示 9–13，**被低估 130.1×**）、`v0.29.0` 是 4–1,735（**216.9×**）、`v0.29.2` 是 3–453（**90.6×**），⭐⭐⭐⭐⭐ **即 11-18 那条「采用度差一到两个数量级」的结论是测量伪影而非事实**；⭐⭐⭐⭐⭐ 第二条是**「SKILL.md 复制倍数」这条判据**：11-18 日报的核心发现是 ECC「1,087 文件 / 330 身份 = 3.30×」，⭐⭐⭐⭐⭐ **但 330 这个数用的是「父目录名」作身份，本日在同一棵树上并置两种口径后发现 —— 按名口径 331（3.29×，与 11-18 一致）、按内容 sha 口径 944（1.15×），⭐⭐⭐⭐⭐ 而 273 个「被复制」的技能名里有 240 个其副本**内容并不相同**，⭐⭐⭐⭐⭐ **即「复制倍数 3.30×」衡量的是「同名目录的分布」而非「同一份内容的冗余」，⭐⭐⭐⭐⭐ `plannotator` 更极端：名口径 23/11（2.09×）→ 内容口径 23/23（1.00×），4 个被复制的技能身份其 5/4/2 份副本逐份内容都不同**；⭐⭐⭐⭐⭐ **这两个修正合起来指向同一条方法论：凡是用「截断的样本」或「代理身份」去支撑一个关于「量级」的结论，都必须先做口径审计** —— ⭐⭐⭐⭐⭐ **而本日第三次给出正面证据的是「star 增速」这条本数据集连续 6 份日报都标注「未做统计」的指标**：⭐⭐⭐⭐⭐ **本数据集首次攒齐 6 个连续日快照（11-18 → 11-23，日更），⭐⭐⭐⭐⭐ 实测 14 个在 6 个快照中全程在榜的仓库、120 个相邻日区间，⭐⭐⭐⭐⭐ 结果是 **0 个负区间、0 个平区间**，min +49 / p25 +226 / median +415 / p75 +668 / max +2,156**，⭐⭐⭐⭐⭐ 且 `elementalsouls/Claude-BugHunter` 的日增序列是 **+2,156 / +1,140 / +1,670 / +1,824 / +1,733**，⭐⭐⭐⭐⭐ **即 6 天里没有一天是「异常值日」，⭐⭐⭐⭐⭐ 增长是连续的、有噪声但无断裂 —— 这与 11-17 记录的「投放体可用 30 行定时脚本凭空制造 push 频率」形成直接对照：⭐⭐⭐⭐⭐ 本数据集首次有了一条能真正区分「真实增长」与「被制造的增长」的基线**；⭐⭐⭐⭐⭐ 第四个发现是**「分发适配层」这条线在本日出现了一个反向样本**：`obra/superpowers` 仍是 **15 身份 / 15 文件 / 1.00× 零复制**，⭐⭐⭐⭐⭐ **但它的 harness 目录数从 11-18 的 5 套降到了 4 套，而 `backnotprop/plannotator` 从 2 套升到 4 套、`HKUDS/CLI-Anything` 是 0 套目录却有 3 条安装命令** —— ⭐⭐⭐⭐⭐ 即「harness 目录数」与「独立技能身份数」都不是稳定的能力指标，⭐⭐⭐⭐⭐ 而真正稳定的结构事实是「有没有一条别人能跑的安装命令」
 
 | 项目 | 当日快照 | 分类 |
 | --- | --- | --- |
-| [GoogleChrome/modern-web-guidance-src](projects/modern-web-guidance-src.md) | 8,414 stars | 平台候选 |
-| [affaan-m/ECC](projects/ecc.md) | 305,425 stars | 平台候选 |
-| [backnotprop/plannotator](projects/plannotator.md) | 13,035 stars | 工具型 |
-| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 53,682 stars | 生产可用 |
-| [google-research/paper-orchestra](projects/paper-orchestra.md) | 2,884 stars | 观察型 |
-| [getarcaneapp/arcane](projects/arcane.md) | 9,275 stars | 生产可用 |
-| [Tencent/LoopForge](projects/loopforge.md) | 3,071 stars | 平台候选 |
-| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 9,120 stars | 工具型 |
+| [backnotprop/plannotator](projects/plannotator.md) | 14,399 stars | 工具型 |
+| [alibaba/open-code-review](projects/alibaba-open-code-review.md) | 55,384 stars | 生产可用 |
+| [elementalsouls/Claude-BugHunter](projects/claude-bughunter.md) | 17,618 stars | 工具型 |
+| [affaan-m/ECC](projects/ecc.md) | 306,433 stars | 平台候选 |
+| [obra/superpowers](projects/superpowers.md) | 324,102 stars | 平台候选 |
+| [jingyaogong/minimind](projects/minimind.md) | 68,602 stars | 观察型 |
+| [nginx/nginx](projects/nginx.md) | 32,874 stars | 基础设施候选 |
+| [HKUDS/CLI-Anything](projects/cli-anything.md) | 62,725 stars | 平台候选 |
 
 ![最近三十期 GitHub 研究活动](docs/images/research-activity.svg)
 
 ## 当前趋势信号
 
-1. **⭐⭐⭐⭐⭐ 「账号注册聚集度」这条判据在加上对照组之后被证伪 —— 15 个 Trending 仓库的 1,500 个 fork owner 中「7 天内新建账号」占 38.0%，⭐⭐⭐⭐⭐ 而对照组 11 个仓库的 1,100 个 fork owner 中该比例是 40.5%（更高）；⭐⭐⭐⭐⭐ 逐仓库看：`golang/go` 80/100 · `rust-lang/rust` 72/100 · `torvalds/linux` 71/100 · `sveltejs/svelte` 88/100；⭐⭐⭐⭐⭐ 即「短期账号集中 fork 热门仓库」是 GitHub 的常态行为而非攻击信号 —— 本日报据此撤回对 `google-research/paper-orchestra` 的 100 个同日 fork 的任何「协调刷量」解读** · 相关项目：google-research/paper-orchestra, backnotprop/plannotator, getarcaneapp/arcane · 强度：95
-2. **⭐⭐⭐⭐⭐ 「版本发布」判据从一维拆成四维（tag 数 / release 数 / tag→commit→源码 diff 闭合 / 资产随版本演进），本日实测四个真项目给出四种形态：⭐⭐⭐⭐⭐ `alibaba/open-code-review` 100 release × 7 asset（366 MB，含 sha256sum.txt，asset 下载 57–951 次）· `getarcaneapp/arcane` 100 release × 41 asset（1.78 GB，deb/rpm/apk/zst + 14 个裸二进制，**无 SBOM**）· `backnotprop/plannotator` 100 release × 36 asset（2.57 GB，**含 CycloneDX SBOM JSON 与 13 个 sha256**，但下载仅 1–12 次）· ⭐⭐⭐⭐⭐ `GoogleChrome/modern-web-guidance-src` **100 个 tag / 1 个 release**（prerelease 的审计数据 JSON），且其 10/10 抽样 tag 的 commit 真实改动 RAG 索引产物、其父 commit 10/10 触及源码；⭐⭐⭐⭐⭐ 关键结论：判据是「链上有没有真实 diff」而非「功能 commit 在前还是在后」（`open-code-review` 与 `plannotator` 实测到两种形态在同一仓库内交替出现）** · 相关项目：GoogleChrome/modern-web-guidance-src, alibaba/open-code-review, getarcaneapp/arcane · 强度：93
-3. **⭐⭐⭐⭐⭐ 「SKILL.md 数量」是复制放大的计数，必须拆成「独立技能身份数 / harness 清单数 / 复制倍数」三个指标：⭐⭐⭐⭐⭐ 实测 12 个 skill 类 Trending 项目 —— `affaan-m/ECC` **1,087 文件 / 330 身份（3.30×）**，最大单一技能被复制 10 份；⭐⭐⭐⭐⭐ `Tencent/LoopForge` 21/9（2.33×）· `backnotprop/plannotator` 23/11（2.09×）· `cursor/plugins` 173/113（1.53×）· `tradermonty/claude-trading-skills` 94/74（1.27×）；⭐⭐⭐⭐⭐ 而 `Claude-BugHunter` 83/83 · `superpowers` 15/15 · `addyosmani/agent-skills` 25/25 · `anthropics/skills` 20/20 · `stitch-skills` 16/16 · `mvanhorn/last30days-skill` 1/1 **全部是零复制**；⭐⭐⭐⭐⭐ 决定性的反例是 `obra/superpowers` **15 身份 / 5 套 harness 清单 / 复制 1.00×** —— 证明「零复制」与「多 harness」可兼得，⭐⭐⭐⭐⭐ 因而 ECC 的 3.30× 是实现选择而非能力上限** · 相关项目：affaan-m/ECC, elementalsouls/Claude-BugHunter, Tencent/LoopForge · 强度：92
-4. **⭐⭐⭐⭐⭐ 分发协议仍在缓慢收敛，但赛道的**分化**比收敛更明显：对 11-17 同一批 17 个仓库同口径复测，⭐⭐⭐⭐⭐ **同时公开 `npx skills add` 与 `marketplace add` 两条命令的从 3/17 变为 4/17**（新增 `google-labs-code/stitch-skills`）；⭐⭐⭐⭐⭐ 但在 12 个 skill 类 Trending 项目里，**0 条安装命令的有 4 个、只有 1 条的有 4 个、两条全有的 4 个**；⭐⭐⭐⭐⭐ 而 `Tencent/LoopForge` 有 21 个技能文件却是 **0 套 harness 目录、0 条安装命令**（技能以 `local/.claude/skills/` 项目内目录形式交付）；⭐⭐⭐⭐⭐ 同日 `alibaba/open-code-review` 出现 `plugin-contract.yml` 与 `action-contract.yml` 两个把「契约」做成 CI 门禁的工作流 —— 即「把契约从文档变成可执行检查」本日首次出现，而「让外部用户能装上」仍是最薄弱的一环** · 相关项目：alibaba/open-code-review, Tencent/LoopForge, google-labs-code/stitch-skills · 强度：89
+1. **⭐⭐⭐⭐⭐ 「asset 下载次数」这条判据在同口径复测下被证伪 —— 根因是 11-18 的脚本取 `sorted(download_count)[:12]`（36 个 asset 里**最小的** 12 个）当作全量区间；⭐⭐⭐⭐⭐ 本日在同一时刻、同一批 release 上复测：plannotator 同一 tag `v0.29.1` 真实区间 9–1,691（11-18 视角显示 9–13，**低估 130.1×**）、`v0.29.0` 4–1,735（**216.9×**）、`v0.29.2` 3–453（**90.6×**）；⭐⭐⭐⭐⭐ 因此 11-18 那条「plannotator 下载仅 1–12 次 vs open-code-review 57–951 次，差一到两个数量级」的结论**是测量伪影，不是事实** —— 本日按「最新 3 个 release 均值 vs 全量 release 均值」复测，`open-code-review` 是 2.0×（旧 release 更热）、`nginx/nginx` 4.1×、`we-promise/sure` 4.1×，而 `plannotator` 0.4×、`autoclip` 0.2×（新 release 更热），⭐⭐⭐⭐⭐ 即下载量与 release 年龄的相关性在不同项目上符号相反，「取最新 release」根本不是一个可跨项目比较的采样策略** · 相关项目：backnotprop/plannotator, alibaba/open-code-review, zhouxiaoka/autoclip · 强度：96
+2. **⭐⭐⭐⭐⭐ 「SKILL.md 复制倍数」这条判据同样是口径问题 —— 11-18 头条「ECC 1,087 文件 / 330 身份 = 3.30×」用的是**父目录名**作身份；⭐⭐⭐⭐⭐ 本日在同一棵树上并置两种口径：**名口径 331（3.29×，与 11-18 复现一致）/ 内容 sha 口径 944（1.15×）**，⭐⭐⭐⭐⭐ 而 273 个「被复制」的技能名中 **240 个其副本内容并不相同**（仅 33 个是逐字节相同）；⭐⭐⭐⭐⭐ `plannotator` 更极端：名口径 23/11（2.09×）→ 内容口径 **23/23（1.00×）**，4 个被复制身份（`plannotator-review` 5 份 / `plannotator-last` 4 份 / `plannotator-inbox` 2 份 / `open-code-review` 2 份）的每一份副本内容都不同；⭐⭐⭐⭐⭐ **结论：3.30× 衡量的是「同名技能在多少个目录出现」，而非「同一份内容被冗余存储了几次」；⭐⭐⭐⭐⭐ ECC 真正的冗余是「944 个不同 blob sha / 1,089 个文件」这一层，即 1.15×，⭐⭐⭐⭐⭐ 而它 273 个同名技能里 240 个是「按 harness 改写过的变体」而非复制品** —— 修正后的判据应分三层：内容冗余倍数（sha 级）/ 变体倍数（同名不同内容）/ 身份跨度（同名跨目录）** · 相关项目：affaan-m/ECC, backnotprop/plannotator, cursor/plugins · 强度：95
+3. **⭐⭐⭐⭐⭐ 「star 增速」这条本数据集连续 6 份日报都标注「未做统计」的指标，本日首次有真实时间序列 —— 本数据集攒齐了 **6 个连续日快照（11-18 → 11-23，日更）**；⭐⭐⭐⭐⭐ 实测 14 个全程在榜仓库、**120 个相邻日区间：0 个负区间、0 个平区间**，min +49 / p25 +226 / median +415 / p75 +668 / max +2,156；⭐⭐⭐⭐⭐ `elementalsouls/Claude-BugHunter`（9,095 → 17,618，**+93.8% / 5 天**）日增序列为 **+2,156 / +1,140 / +1,670 / +1,824 / +1,733**，⭐⭐⭐⭐⭐ `obra/superpowers`（319,255 → 324,102，+1.5%）为 +2,022 / +738 / +774 / +866 / +447，⭐⭐⭐⭐⭐ **即 6 天里没有任何一天是「异常值日」，增长连续、有噪声但无断裂**；⭐⭐⭐⭐⭐ **这直接补上了 11-17 记录的那条判据缺口 —— 「push 频率与 commit 数量可被 30 行定时脚本凭空制造」，⭐⭐⭐⭐⭐ 而 star 增量的**连续性（0 个负区间 / 0 个平区间）是一条本数据集此前没有的、可与「被制造的增长」区分的基线** · 相关项目：elementalsouls/Claude-BugHunter, obra/superpowers, mvanhorn/last30days-skill · 强度：93
+4. **⭐⭐⭐⭐⭐ 「分发适配层」的三个度量在本日全部出现反向样本，说明它们都不是稳定的能力指标 —— ⭐⭐⭐⭐⭐ `obra/superpowers` 仍是 **15 身份 / 15 文件 / 1.00× 零复制**（11-18 的「零复制 + 多 harness」结论复现），⭐⭐⭐⭐⭐ **但它的 harness 目录数从 11-18 实测的 5 套降到了 4 套**（`antigravity` / `claude-code` / `codex` / `opencode`）；⭐⭐⭐⭐⭐ **而 `backnotprop/plannotator` 从 2 套升到 4 套（`claude` / `codex` / `copilot` / `gemini`）、`HKUDS/CLI-Anything` 是 0 套 harness 目录却有 3 条安装命令**（`pip install cli-anything-hub` / `npx skills add HKUDS/CLI-Anything --list` / `npx skills add HKUDS/CLI-Anything --skill cli-hub-meta-skill -g -y`）；⭐⭐⭐⭐⭐ 同口径复测 11-17 的 17 仓库队列，**双安装命令（`npx skills add` + `marketplace add`）的仓库数从 11-18 记录的 4/17 降为 2/9（在榜子集）**，⭐⭐⭐⭐⭐ 即结论是：唯一跨项目稳定的结构事实不是「harness 目录数」也不是「技能身份数」，而是「有没有一条别人能直接粘贴运行的安装命令」** · 相关项目：obra/superpowers, HKUDS/CLI-Anything, backnotprop/plannotator · 强度：89
 
 ## 最近 7 期更新量
 
 | 日期 | 深度分析项目 | 核心趋势方向 |
 | --- | ---: | ---: |
+| [2026-11-23](daily/2026-11-23.md) | 9 | 5 |
 | [2026-11-18](daily/2026-11-18.md) | 9 | 5 |
 | [2026-11-17](daily/2026-11-17.md) | 9 | 5 |
 | [2026-11-16](daily/2026-11-16.md) | 9 | 5 |
 | [2026-11-15](daily/2026-11-15.md) | 7 | 5 |
 | [2026-11-14](daily/2026-11-14.md) | 6 | 5 |
 | [2026-11-13](daily/2026-11-13.md) | 6 | 4 |
-| [2026-11-12](daily/2026-11-12.md) | 6 | 4 |
 
 ## 为什么做这个项目
 

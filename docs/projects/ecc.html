@@ -28,6 +28,111 @@
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="ecc">ECC</h1>
+<h2 id="2026-11-23">最近动态（2026-11-23）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>本日对本项目做的是口径审计复测，结论是：11-18 日报的头条发现「1,087 文件 / 330 身份 = 3.30×，最大单一技能被复制 10 份」需要按三层重新解读，⭐⭐⭐⭐⭐ 而其中「被复制 10 份」这一条经实测是</strong>不准确<strong>的。</strong></p>
+<p><strong>可核验事实一：两套口径在同一棵树上并置（2026-11-23 CST）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>定义</th>
+<th style="text-align: right;"><strong>11-23 实测</strong></th>
+<th style="text-align: right;">11-18 发布值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKILL.md 文件数</td>
+<td>—</td>
+<td style="text-align: right;"><strong>1,089</strong></td>
+<td style="text-align: right;">1,087</td>
+</tr>
+<tr>
+<td><strong>名口径</strong></td>
+<td>身份 = <code>SKILL.md</code> 的<strong>父目录名</strong></td>
+<td style="text-align: right;"><strong>331（3.29×）</strong></td>
+<td style="text-align: right;">330（3.30×）✓ 复现</td>
+</tr>
+<tr>
+<td><strong>内容口径</strong></td>
+<td>身份 = <strong>不同 blob sha 集合</strong></td>
+<td style="text-align: right;"><strong>944（1.15×）</strong></td>
+<td style="text-align: right;">未测</td>
+</tr>
+<tr>
+<td>不同 blob sha 总数</td>
+<td>—</td>
+<td style="text-align: right;"><strong>944</strong></td>
+<td style="text-align: right;">942（11-18 记录）</td>
+</tr>
+<tr>
+<td>同名身份中出现 ≥2 份的</td>
+<td>—</td>
+<td style="text-align: right;"><strong>273</strong></td>
+<td style="text-align: right;">273 ✓</td>
+</tr>
+<tr>
+<td><strong>其中逐字节相同的</strong></td>
+<td>—</td>
+<td style="text-align: right;"><strong>33</strong></td>
+<td style="text-align: right;">11-18 记「最大单一技能被复制 10 份」</td>
+</tr>
+<tr>
+<td><strong>其中内容不同的</strong></td>
+<td>—</td>
+<td style="text-align: right;"><strong>240</strong></td>
+<td style="text-align: right;">未测</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 决定性事实：11-18 说「<code>verification-loop</code> / <code>tdd-workflow</code> / <code>security-review</code> / <code>frontend-patterns</code> / <code>coding-standards</code> / <code>backend-patterns</code> 各被复制 10 份」—— 本日实测 <code>backend-patterns</code> 是 </strong>10 份副本 / 9 个不同 blob sha<strong>、<code>coding-standards</code> 是 </strong>10 份副本 / 9 个不同 blob sha<strong>，⭐⭐⭐⭐⭐ 即「10 份」是</strong>同名身份出现在 10 个目录<strong>，⭐⭐⭐⭐⭐ 而这 10 份里有 9 份是</strong>各自不同内容的 harness 变体<strong>，只有 1 份是原始件。⭐⭐⭐⭐⭐ 因此「被复制 10 份」这个说法在内容层面不成立。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐⭐⭐ 而这个修正不是贬低 ECC，反而解释了它为什么好：⭐⭐⭐⭐⭐ 9 个 harness 目录（<code>.agents</code> / <code>.claude-plugin</code> / <code>.codebuddy</code> / <code>.codex-plugin</code> / <code>.cursor</code> / <code>.gemini</code> / <code>.grok-plugin</code> / <code>.kiro</code> / <code>.opencode</code>）⭐⭐⭐⭐⭐ 意味着每个技能都要针对 9 个 harness 各写一份 —— ⭐⭐⭐⭐⭐ </strong>「变体」正是适配层的必要产物，⭐⭐⭐⭐⭐ 而 11-18 把这种必要产物误读成了「复制放大」，⭐⭐⭐⭐⭐ 由此得出的「ECC 的内容层与适配层投入比（3.30×）值得被持续观测」这一条推论也随之失效 —— 因为它的<strong>内容冗余倍数只有 1.15×</strong>，是本队列中第二低的。⭐⭐⭐⭐⭐ 修正后的正确表述是：ECC 的内容层（944 个不同技能内容）与适配层（1,089 个文件）之比是 1.15，⭐⭐⭐⭐⭐ 而「273 个技能有 9 套变体」才是它支持多 harness 的真实代价。**</p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 修正后的三层判据（本日报建议固化为常规体检项）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>定义</th>
+<th style="text-align: right;"><strong>ECC</strong></th>
+<th style="text-align: right;"><code>plannotator</code></th>
+<th style="text-align: right;"><code>cursor/plugins</code></th>
+<th style="text-align: right;"><code>claude-trading-skills</code></th>
+<th style="text-align: right;"><code>CLI-Anything</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 内容冗余倍数</strong></td>
+<td>文件数 ÷ 不同 blob sha</td>
+<td style="text-align: right;"><strong>1.15×</strong></td>
+<td style="text-align: right;">1.00×</td>
+<td style="text-align: right;">1.27×</td>
+<td style="text-align: right;">1.12×</td>
+<td style="text-align: right;">1.15×</td>
+</tr>
+<tr>
+<td><strong>② 变体率</strong></td>
+<td>同名不同内容的身份 ÷ 身份数</td>
+<td style="text-align: right;"><strong>0.73</strong></td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr>
+<td><strong>③ 身份跨度</strong></td>
+<td>同一身份名出现在几个目录</td>
+<td style="text-align: right;">273 个身份 ≥2 份</td>
+<td style="text-align: right;">4 个</td>
+<td style="text-align: right;">60 个</td>
+<td style="text-align: right;">10 个</td>
+<td style="text-align: right;">4 个</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第三点（本日的新事实）：它已离开 Trending 榜单。</strong> ⭐⭐⭐⭐⭐ 实测 11-18 的 25 个仓库中只有 15 个留在 11-23 榜单上，⭐⭐⭐⭐⭐ ECC 是离榜者之一（11-19 快照 306,433⭐ 后未再出现）。⭐⭐⭐⭐⭐ <strong>本日报不主张它的热度下降 —— 305,425 → 306,433 的 6 日净增仅 +1,008（约 +0.3%），⭐⭐⭐⭐⭐ 远低于它此前 11-17 记录的 +66,998，⭐⭐⭐⭐⭐ 但「此前 11-17 的 +66,998 是两个快照点之差而非时间序列增速」这一保留仍然成立，⭐⭐⭐⭐⭐ 本日无法用现有数据判断这个落差是趋势还是快照噪声。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 第四点：它的分发纪律部分未受影响。</strong> ⭐⭐⭐⭐⭐ 实测 15 个 CI 工作流仍在（含 <code>generator-generic-ossf-slsa3-publish.yml</code> / <code>pr-burst-guard.yml</code>），⭐⭐⭐⭐⭐ 9 套 harness 目录不变，⭐⭐⭐⭐⭐ 19 release / 20 tag 不变，⭐⭐⭐⭐⭐ 且实测到 <code>scripts/sync-ecc-to-codex.sh</code> / <code>scripts/dev/generate-skill-triggers.js</code> / <code>scripts/lib/codex-legacy-sync.js</code> 等 23 个生成/同步脚本路径 —— ⭐⭐⭐⭐⭐ <strong>即「变体是被脚本生成的」这一点有文件名层面的证据，⭐⭐⭐⭐⭐ 但本日报未读取这些脚本，⭐⭐⭐⭐⭐ 因此不主张它们生成的是「变体」还是「副本」以外的任何东西。</strong></p>
+<hr />
 <h2 id="_1">一句话定位</h2>
 <p><strong>Agent harness 的「操作系统」—— 本日它最有价值的一条发现不是它有多少技能，而是「1,087 个 SKILL.md」这个数字本身需要被拆开：实测其中 272 个技能身份（占 1,029 个文件）在 3–10 个 harness 目录下各存一份，真实的独立技能身份只有 330 个。</strong></p>
 <h2 id="_2">它解决的问题</h2>

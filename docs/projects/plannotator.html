@@ -28,6 +28,144 @@
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="backnotpropplannotator">backnotprop/plannotator</h1>
+<h2 id="2026-11-23">最近动态（2026-11-23）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>本日对本项目做的是口径审计复测，结论是：11-18 日报对它下的两条判断都需要修正，而它本身作为供应链纪律标杆的地位不变。</strong></p>
+<p><strong>可核验事实一（修正一）：asset 下载次数。</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>11-18 日报发布值</th>
+<th><strong>11-23 实测</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v0.29.1</code> 下载区间</td>
+<td>—</td>
+<td><strong>9 – 1,691</strong>（11-18 视角显示 9–13，<strong>低估 130.1×</strong>）</td>
+</tr>
+<tr>
+<td><code>v0.29.0</code> 下载区间</td>
+<td>—</td>
+<td><strong>4 – 1,735</strong>（11-18 视角 4–8，<strong>216.9×</strong>）</td>
+</tr>
+<tr>
+<td><code>v0.29.2</code> 下载区间</td>
+<td>—</td>
+<td><strong>3 – 453</strong>（11-18 视角 3–5，<strong>90.6×</strong>）</td>
+</tr>
+<tr>
+<td>全量 release 单 asset 最大下载</td>
+<td>—</td>
+<td><strong>2,304</strong></td>
+</tr>
+<tr>
+<td>全量 release 平均下载（最近 100 个）</td>
+<td>—</td>
+<td><strong>2,729</strong></td>
+</tr>
+<tr>
+<td>最新 3 个 release 平均下载</td>
+<td>—</td>
+<td><strong>6,857</strong>（比全量均值高 2.5×）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>根因已定位到 11-18 的取数脚本第 60 / 163 行：先 <code>sorted(download_count)</code> 再取 <code>[:12]</code> 打印，而 36 个 asset 被截断成最小的 12 个，⭐⭐⭐⭐⭐ 日报把「1」与「12」读成了区间端点。⭐⭐⭐⭐⭐ 本日报据此</strong>撤回<strong>「plannotator 下载仅 1–12 次、是本组最低」的结论；⭐⭐⭐⭐⭐ </strong>但也同时撤回「它下载很多」的相反主张 —— 实测其全量均值 2,729 低于 <code>open-code-review</code> 的 3,480，⭐⭐⭐⭐⭐ 准确表述是「两者在同一量级，11-18 的对比不成立」。**</p>
+<p><strong>可核验事实二（修正二）：SKILL.md 身份数。</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>11-18 发布值</th>
+<th><strong>11-23 实测</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKILL.md 文件数</td>
+<td>23</td>
+<td><strong>23</strong>（未变）</td>
+</tr>
+<tr>
+<td><strong>名口径</strong>（身份 = 父目录名，11-18 用的口径）</td>
+<td>11</td>
+<td><strong>11</strong>（复现 ✓）</td>
+</tr>
+<tr>
+<td><strong>内容口径</strong>（身份 = 不同 blob sha 集合）</td>
+<td>—</td>
+<td><strong>23</strong></td>
+</tr>
+<tr>
+<td><code>plannotator-review</code></td>
+<td>5 份</td>
+<td><strong>5 份 / 5 个不同 blob sha</strong></td>
+</tr>
+<tr>
+<td><code>plannotator-last</code></td>
+<td>4 份</td>
+<td><strong>4 份 / 4 个不同 blob sha</strong></td>
+</tr>
+<tr>
+<td><code>plannotator-inbox</code></td>
+<td>2 份</td>
+<td><strong>2 份 / 2 个不同 blob sha</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>即 4 个被复制的技能身份，其每一份副本的内容都不同 —— 它们是「针对不同 app 定制过的同名技能变体」，⭐⭐⭐⭐⭐ 而不是「同一份内容存了 N 遍」。⭐⭐⭐⭐⭐ 这与它 41 个 generator/sync 脚本路径的存在一致（变体是被生成出来的，但生成器会针对目标 app 调整内容）。</strong></p>
+<p><strong>可核验事实三（未变，且加强）：供应链纪律仍是本队列最完整的一档。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">11-18</th>
+<th style="text-align: right;"><strong>11-23</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release / tag</td>
+<td style="text-align: right;">100 / 100</td>
+<td style="text-align: right;"><strong>100 / 100</strong></td>
+</tr>
+<tr>
+<td>每 release 的 asset</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;"><strong>36</strong></td>
+</tr>
+<tr>
+<td>最新 release</td>
+<td style="text-align: right;"><code>v0.28.67</code></td>
+<td style="text-align: right;"><strong><code>v0.29.2</code></strong></td>
+</tr>
+<tr>
+<td>SBOM 文件名</td>
+<td style="text-align: right;"><code>plannotator-0.28.67-release-sbom.cdx.json</code></td>
+<td style="text-align: right;"><strong><code>plannotator-0.29.2-release-sbom.cdx.json</code></strong>（文件名仍内嵌版本号，即每版独立生成）</td>
+</tr>
+<tr>
+<td>harness 目录</td>
+<td style="text-align: right;">2 套</td>
+<td style="text-align: right;"><strong>4 套</strong>（<code>claude</code> / <code>codex</code> / <code>copilot</code> / <code>gemini</code>）</td>
+</tr>
+<tr>
+<td>blobs</td>
+<td style="text-align: right;">7,261</td>
+<td style="text-align: right;"><strong>8,051</strong>（+790）</td>
+</tr>
+<tr>
+<td>6 日 star</td>
+<td style="text-align: right;">13,030</td>
+<td style="text-align: right;"><strong>14,399</strong>（+10.5%，逐日 +391/+223/+226/+269/+260）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 值得单独指出的一条：实测 <code>v0.28.63</code> 的 asset 数是 26 而不是 36 —— 即 asset 构成本身在演进（新增了 10 个资产），⭐⭐⭐⭐⭐ 这符合 11-18 建立的「资产是否随版本演进」这条判据，是一个正向证据。</strong></p>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 而「harness 目录从 2 套增到 4 套」是一个新观测 —— 本日报 11-23 的第 4 条趋势指出，⭐⭐⭐⭐⭐ harness 目录数会随项目演进上下浮动（<code>obra/superpowers</code> 同期从 5 套降到 4 套），⭐⭐⭐⭐⭐ 因此不宜把目录数当作稳定的能力刻度。</strong></p>
+<hr />
 <h2 id="_1">一句话定位</h2>
 <p><strong>一个「保持在 agent 循环里」的桌面工作台 —— 它本日最值得记的技术事实是发布链：100 个 release，每个带 36 个 asset，其中包含 CycloneDX SBOM JSON 与逐文件 sha256 清单。</strong></p>
 <h2 id="_2">它解决的问题</h2>

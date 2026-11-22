@@ -28,6 +28,145 @@
     <div class="content-card">
         <div style="margin-bottom:20px;"><a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener" class="btn-github" style="padding:10px 20px;font-size:14px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> 查看 GitHub 项目</a></div>
         <h1 id="alibabaopen-code-review">alibaba/open-code-review</h1>
+<h2 id="2026-11-23">最近动态（2026-11-23）</h2>
+<p>⭐⭐⭐⭐⭐ <strong>本日对本项目做的是同口径复测，结论是：它作为「确定性 + LLM 混合架构」与「契约做成 CI 门禁」这两条的样本地位完全不变，⭐⭐⭐⭐⭐ 但 11-18 用来支撑对比的那组下载数字需要修正 —— 而修正的方向对它有利。</strong></p>
+<p><strong>可核验事实一：11-18 的下载区间之所以看起来高，是因为它的 asset 数少到不会被截断。</strong></p>
+<table>
+<thead>
+<tr>
+<th>release</th>
+<th style="text-align: right;">asset 数</th>
+<th>11-18 视角（<code>[:12]</code>，实际未截断）</th>
+<th><strong>真实区间</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v1.13.12</code></td>
+<td style="text-align: right;">7</td>
+<td>493 – 1,886</td>
+<td><strong>493 – 1,886</strong>（无截断）</td>
+</tr>
+<tr>
+<td><code>v1.13.13</code></td>
+<td style="text-align: right;">7</td>
+<td>476 – 991</td>
+<td><strong>476 – 991</strong>（无截断）</td>
+</tr>
+<tr>
+<td><code>v1.14.1</code></td>
+<td style="text-align: right;">7</td>
+<td>—</td>
+<td><strong>119（max）/ 441（total）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 关键的不对称就在这里：<code>plannotator</code> 每个 release 36 个 asset，被截断的正是 12 个（33%）；⭐⭐⭐⭐⭐ 而本项目每个 release 只有 7 个 asset，11-18 脚本的 <code>[:12]</code> </strong>根本没有触发截断<strong>。⭐⭐⭐⭐⭐ 也就是说，11-18 那次对比的误差</strong>只作用在对照组一侧<strong>，⭐⭐⭐⭐⭐ 这是一个典型的「非对称测量误差」案例 —— 也是本日第 1 条趋势的方法论核心。</strong></p>
+<p><strong>可核验事实二：全量 release 的下载分布。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release 数（API 前 100 条）</td>
+<td style="text-align: right;"><strong>100</strong></td>
+</tr>
+<tr>
+<td><strong>全量 release 平均下载</strong></td>
+<td style="text-align: right;"><strong>3,480</strong></td>
+</tr>
+<tr>
+<td>最新 3 个 release 平均下载</td>
+<td style="text-align: right;"><strong>1,726</strong>（比全量均值<strong>低</strong> 2.0×）</td>
+</tr>
+<tr>
+<td><strong>全量 release 单 asset 最大下载</strong></td>
+<td style="text-align: right;"><strong>16,263</strong></td>
+</tr>
+<tr>
+<td>最新 6 个 release 下载总量</td>
+<td style="text-align: right;"><strong>14,019</strong></td>
+</tr>
+<tr>
+<td>较老 release（9.8–159.1 天）下载总量</td>
+<td style="text-align: right;"><strong>333,966</strong>（<strong>23.8×</strong>）</td>
+</tr>
+<tr>
+<td>Spearman(发布年龄, 下载量)</td>
+<td style="text-align: right;"><strong>−0.549</strong>（n=100）</td>
+</tr>
+<tr>
+<td>30–34 天区间中位数</td>
+<td style="text-align: right;"><strong>28,400</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>即本项目的下载量是「越老越高」的（ρ = −0.549），⭐⭐⭐⭐⭐ 而 <code>nginx/nginx</code> 是「越老越低」（ρ = +0.370），⭐⭐⭐⭐⭐ <code>Ghost-Downloader-3</code> 越老越高（−0.636），<code>autoclip</code> 越老越低（−0.321）。⭐⭐⭐⭐⭐ </strong>四个项目两种符号 —— 这就是本日报主张「取最新 N 个 release 不能跨项目比较」的实证。**</p>
+<p><strong>可核验事实三：SKILL.md 身份口径（本日新发现的一处 11-18 口径不一致）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>11-18 发布值</th>
+<th><strong>11-23 实测</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SKILL.md 文件数</td>
+<td>4</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td><strong>名口径</strong>（身份 = 父目录名）</td>
+<td>—</td>
+<td><strong>2</strong>（<code>open-code-review</code> / <code>open-code-review-delegate</code>，各 2 份）</td>
+</tr>
+<tr>
+<td><strong>内容口径</strong>（身份 = 不同 blob sha 集合）</td>
+<td><strong>4</strong></td>
+<td><strong>4</strong>（复现 ✓）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 即 11-18 那张表里这一行用的是内容口径（或两者在此巧合相同），⭐⭐⭐⭐⭐ 而其余各行用的是名口径 —— 11-18 的表格内部口径并不统一，⭐⭐⭐⭐⭐ 这本身比任何一个单行的偏差更危险，因为它使整张表无法被复现。⭐⭐⭐⭐⭐ 且 4 份副本两两内容不同（<code>plugins/open-code-review/skills/</code> vs <code>skills/</code>），⭐⭐⭐⭐⭐ 同样是「变体」而非「复制」。</strong></p>
+<p><strong>可核验事实四：6 日 star 序列与契约工作流。</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6 日 star 序列</td>
+<td>53,669 → 54,166 → 54,369 → 54,746 → 55,070 → <strong>55,384</strong></td>
+</tr>
+<tr>
+<td>逐日增</td>
+<td>+497 / +203 / +377 / +324 / +314</td>
+</tr>
+<tr>
+<td>5 日总增</td>
+<td><strong>+1,715（+3.2%）</strong></td>
+</tr>
+<tr>
+<td>blobs</td>
+<td>1,227 → <strong>1,320</strong>（+93）</td>
+</tr>
+<tr>
+<td>harness 目录</td>
+<td>2 套（<code>claude-code</code> / <code>opencode</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>⭐⭐⭐⭐⭐ <strong>⭐⭐⭐ 而本项目特有的价值 —— 「把契约做成 CI 门禁」—— 本日出现了第二个独立样本：<code>HKUDS/CLI-Anything</code> 的 <code>check-codex-skill.yml</code> / <code>check-cursor-plugin.yml</code> / <code>check-root-skills.yml</code>。⭐⭐⭐⭐⭐ 两个不同机构、两个不同领域（代码评审 vs agent CLI 生成）、同一模式，⭐⭐⭐⭐⭐ </strong>本日报据此把「契约检查成为多 harness 项目的标准做法」列为本日的一条正面发现。**</p>
+<hr />
 <h2 id="_1">一句话定位</h2>
 <p><strong>阿里的混合架构代码评审工具 —— 确定性流水线 + LLM Agent 双轨并行，本日它的价值在于它是「发布纪律四档」里最经济的一档：100 个 release，每个只带 7 个 asset。</strong></p>
 <h2 id="_2">它解决的问题</h2>

@@ -2,18 +2,73 @@
 title: "CLI-Anything"
 slug: "cli-anything"
 date_added: "2026-04-26"
-last_seen_date: "2026-08-11"
+last_seen_date: "2026-11-23"
 category: "基础设施候选"
 emoji: "🔌"
-stars: "46,882 stars"
-stars_delta: "+14K (4个月)"
+stars: "62,725 stars"
+stars_delta: "⭐ 2026-11-23 更新（快照 2026-11-23 CST，仓库创建于 2026-03-08T13:52:57Z）：46,882⭐（08-11 快照）→ **62,725⭐**；**本日首次进入 Trending 日榜**（+687）· forks 5,689 · subs 232 · oi 285 · **1,872 blobs** · 42,161 KB · Python · Apache-2.0 · **151 个 SKILL.md / 名口径 82 身份（1.84×）/ 内容口径 131 身份（1.15×）** · **7 个 CI 工作流**（含 `check-codex-skill.yml` / `check-cursor-plugin.yml` / `check-root-skills.yml` 三个契约检查）· **0 套 harness 目录但有 3 条安装命令** · 贡献者 `yuh-yang` 290 + `AiMiDi` 43 + `omerarslan0` 33"
 language: "Python"
-score: 83
-tags: ["cli", "agent-native", "integration", "universal-adapter", "CLI-Hub", "HKUDS"]
+score: 89
+tags: ["agent-native", "cli-generation", "contract-as-ci", "caliber-audit", "community-hub", "multi-harness"]
 url: "https://github.com/HKUDS/CLI-Anything"
 ---
 
 # CLI-Anything — 让所有软件变为 Agent 可调用的 CLI
+
+## 最近动态（2026-11-23）
+
+⭐⭐⭐⭐⭐ **本日为本项目首次建立完整档案（此前仅有一条 2026-08-11 的简略记录），⭐⭐⭐⭐⭐ 并把它确立为本日第 4 条趋势中「契约检查成为标准做法」这条判断的第二个独立样本。**
+
+**可核验事实一（2026-11-23 CST 快照）：**
+
+| 指标 | 实测值 |
+|---|---|
+| stars / forks / subs / open issues | **62,725** / 5,689 / 232 / 285 |
+| 体积 / blobs | 42,161 KB / **1,872** |
+| 语言 / 许可 / 创建 / 最后 push | Python / Apache-2.0 / **2026-03-08T13:52:57Z** / 2026-11-20T10:05:15Z |
+| homepage | `https://clianything.cc/` |
+| **CI 工作流（7 个）** | `check-codex-skill.yml` · `check-cursor-plugin.yml` · `check-root-skills.yml` · `deploy-pages.yml` · `pr-labeler.yml` · `pr-labeler-tests.yml` · `publish-cli-hub.yml` |
+| 贡献者 | `yuh-yang` 290 · `AiMiDi` 43 · `omerarslan0` 33 · `furkankoykiran` 31 · `hito0512` 31 · `apireno` 22 · `haorui-harry` 19 · `OGRLEAF` 18 |
+| 顶层目录 | `skills/` 71 · `mailchimp/` 49 · `unimol_tools/` 47 · `docs/` 42 · `macrocli/` 40 · `iterm2/` 39 · `freecad/` 36 · `audacity/` 34 · `slay_the_spire_ii/` 34 · `firefly-iii/` 33 · `zotero/` 32 · `live2d/` 31 |
+| 扩展名分布 | `.py` **1,267** · `.md` 441 · `.json` 24 · `.sh` 18 · `.yml` 14 |
+| README 长度 | **80,335 B**（含 18 个 app 的 demo 章节与 arXiv 技术报告链接 `arxiv.org/abs/2606.03854`） |
+| **SKILL.md** | **151 个文件 / 名口径 82 身份（1.84×）/ 内容口径 131 身份（1.15×）** |
+| **同名身份中出现 ≥2 份的** | **4 个**（`skills` 67 份 / 67 个不同 sha · `cli-hub-meta-skill` 2 份 · `cli-anything-firefly-iii` 2 份 · `cli-anything-openrefine` 2 份），**逐字节相同的 0 个** |
+| **harness 目录** | **0 套** |
+| **安装命令** | `pip install cli-anything-hub` · `npx skills add HKUDS/CLI-Anything --list` · `npx skills add HKUDS/CLI-Anything --skill cli-hub-meta-skill -g -y` |
+| release / tag | 3 / 3 |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐⭐⭐ 三个本日报首次测到的事实：**
+
+**事实一：它是「有命令、无 harness 目录」的反向样本。** ⭐⭐⭐⭐⭐ 实测 **0 套 harness 目录**（`.claude` / `.codex` / `.cursor` / `.gemini` 等一个都没有），⭐⭐⭐⭐⭐ **却有 3 条别人能直接粘贴运行的安装命令**，⭐⭐⭐⭐⭐ 且其中两条是 `npx skills add` 协议 —— **即「包内多 harness 清单」与「安装协议」在本项目上是解耦的，⭐⭐⭐⭐⭐ 本日报第 4 条趋势据此判断：唯一稳定的结构事实是安装命令，而不是 harness 目录数。**
+
+**事实二：它是「契约检查」的第二个独立样本。** ⭐⭐⭐⭐⭐ 实测 7 个工作流里有 **3 个是契约检查**：`check-codex-skill.yml` / `check-cursor-plugin.yml` / `check-root-skills.yml` —— ⭐⭐⭐⭐⭐ **即「每个 harness 的产物形态是否符合契约」被做成了每次 CI 必跑的检查。⭐⭐⭐⭐⭐ 这与 11-18 记录的 `alibaba/open-code-review` 的 `plugin-contract.yml` / `action-contract.yml` 是同一模式，⭐⭐⭐⭐⭐ 两个不同机构、两个不同领域（代码评审 vs agent CLI 生成）、同一做法，⭐⭐⭐⭐⭐ **本日报把「契约检查正在成为多 harness 项目的标准做法」列为本日的一条正面发现。**
+
+**事实三：它的「复制」本质上是「为 67 个不同软件各生成一份适配」。** ⭐⭐⭐⭐⭐ 实测 `skills` 这个身份名下有 **67 份 SKILL.md、67 个不同的 blob sha**，⭐⭐⭐⭐⭐ 路径形如 `3MF/agent-harness/cli_anything/threemf/skills/SKILL.md` / `QGIS/agent-harness/cli_anything/qgis/skills/SKILL.md` / `adguardhome/agent-harness/cli_anything/adguardhome/skills/SKILL.md`；⭐⭐⭐⭐⭐ 且实测存在 `.github/scripts/generate_meta_skill.py` 与 `.github/scripts/sync_root_skills.py` 两个生成脚本、⭐⭐⭐⭐⭐ 各 app 目录下还有 `skill_generator.py` / `preview_bundle.py` / `core/generate.py` 等生成器。⭐⭐⭐⭐⭐ **即它的名口径 1.84× 几乎全部来自「按 app 生成的 per-CLI 适配」，而不是内容冗余（内容口径仅 1.15×）。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 修正后的三层判据定位：`CLI-Anything` = ① 内容冗余 1.15×（低）· ② 变体率 0.05（**最低**）· ③ 身份跨度 4 个。⭐⭐⭐⭐⭐ 即它是本队列里「变体率最低」的项目 —— 它的 151 个文件几乎都是不同 app 的不同技能，⭐⭐⭐⭐⭐ 而不是同一个技能的多个版本。**
+
+**可核验事实四：6 条抽样 issue 全是「具体 app + 具体现象」。**
+
+| issue | 提交者 | 标题 |
+|---|---|---|
+| `#691` | `ajack13` | fix(libreoffice): declare xmlns:of so Calc formulas evaluate |
+| `#690` | `dung997tb` | docs: update Japanese README to current version |
+| `#689` | `dung997tb` | docs: add Vietnamese README translation |
+| `#688` | `mhmd2520` | fix(blender): resolve the EEVEE engine id across Blender 4.2–5.x |
+| `#687` | `mhmd2520` | fix(blender,freecad,shotcut): stop live preview pid checks from killing processes |
+| `#686` | `mhmd2520` | [Bug]: [blender/freecad/shotcut] live preview pid check kills the poller on Windows |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 注意 `#690` 与 `#689` 是「文档翻译待补」类 issue —— 这与本数据集 11-16 记录的「issue 的技术含量与定位精度是免费信号」是同一条判断：**多语言文档的翻译进度被公开追踪，本身就是项目活跃度的一个侧面。**
+
+**证据边界：**
+- ⭐⭐⭐ ⚠️ **本日报未 clone、未运行任何生成的 CLI、未安装 `cli-anything-hub`、未验证任何一条安装命令可执行。**
+- ⭐⭐⭐ ⚠️ **151 个 SKILL.md 的「67 份不同 sha」只证明「不是逐字节相同」**，⭐⭐⭐ ⚠️ 未逐份 diff，⭐⭐⭐ ⚠️ **不主张它们在功能语义上不同。**
+- ⭐⭐⭐ ⚠️ **「2,461 个测试通过」「18 个 app 的 demo」「arXiv 技术报告」均为 README 自述**，⭐⭐⭐ ⚠️ **本日报未核验任何一项。**
+- ⭐⭐⭐ ⚠️ **8 月 11 日快照到本日的 star 跨度（46,882 → 62,725）跨越了三个多月**，⭐⭐⭐ ⚠️ **不是时间序列增速；⭐⭐⭐ ⚠️ 且本项目本日才首次进入 Trending 榜单，⭐⭐⭐ ⚠️ 故本日报不对其增长做任何速率主张。**
+- ⭐⭐⭐ ⚠️ **未核验项**：`check-*.yml` 三个契约检查的具体规则、CLI-Hub 的实际内容与审核流程、67 个 per-CLI 生成物的功能质量、285 个 issue 的正文、`publish-cli-hub.yml` 的发布策略。
+
+---
 
 ## 一句话定位
 港大 HKUDS 团队出品的 Agent-Native CLI 生成框架，自动将 GUI 软件转换为标准 CLI 接口，让 AI Agent（Claude Code / Codex / Cursor / OpenClaw）直接调用任何软件——配套 CLI-Hub 包管理器和 18+ 已适配应用。

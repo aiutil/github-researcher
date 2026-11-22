@@ -2,20 +2,54 @@
 title: "affaan-m/ECC"
 slug: "ecc"
 date_added: "2026-05-20"
-last_seen_date: "2026-11-18"
+last_seen_date: "2026-11-23"
 category: "平台候选"
 emoji: "⚡"
-stars: "305,425 stars"
-stars_delta: "⭐ 2026-11-18 更新（快照 2026-11-18 CST，仓库创建于 2026-01-18T00:51:51Z）：238,427⭐ → **305,425⭐**（+66,998，约为原值的 1.28 倍）；forks **44,975** · subs **1,495** · oi 153 · **4,878 blobs**（含 **1,087 个 SKILL.md**）· 64,399 KB · JavaScript · MIT · **19 个 release / 20 个 tag** · **9 套 harness 目录**（`.agents` / `.claude-plugin` / `.codebuddy` / `.codex-plugin` / `.cursor` / `.gemini` / `.grok-plugin` / `.kiro` / `.opencode`）· 15 个 CI 工作流 · 贡献者 `affaan-m` 1,778 + `haelyra` 882 + `montjeffrey` 179 + `L4XB` 84 + `dependabot[bot]` 80；owner `affaan-m` 账号 2023-02-04 创建、14,509 followers、28 repos"
+stars: "306,433 stars"
+stars_delta: "⭐ 2026-11-23 更新（快照 2026-11-23 CST，仓库创建于 2026-01-18T00:51:51Z）：305,425⭐（11-18 快照）→ **306,433⭐**（+1,008；本日已**离开 Trending 榜单**，最后可见快照为 2026-11-19 的 306,433⭐，之后未再进入日榜/周榜）；forks 44,975 · subs 1,495 · oi 153 · **4,951 blobs**（11-18 为 4,878）· 64,399 KB · JavaScript · MIT · **19 个 release / 20 个 tag** · **SKILL.md 1,089 个 / 名口径 331 身份（3.29×）/ 内容口径 944 身份（1.15×）**（11-18 记 1,087 / 330）· 9 套 harness 目录 · 15 个 CI 工作流"
 language: "JavaScript"
 license: "MIT"
-score: 91
-tags: ["agent-harness", "multi-harness", "skills", "release-discipline", "cross-harness", "installation-protocol"]
+score: 92
+tags: ["agent-harness", "multi-harness", "skills", "caliber-audit", "variant-vs-copy", "release-discipline"]
 url: "https://github.com/affaan-m/ECC"
 homepage: "https://ecc.tools"
 ---
 
 # ECC
+
+## 最近动态（2026-11-23）
+
+⭐⭐⭐⭐⭐ **本日对本项目做的是口径审计复测，结论是：11-18 日报的头条发现「1,087 文件 / 330 身份 = 3.30×，最大单一技能被复制 10 份」需要按三层重新解读，⭐⭐⭐⭐⭐ 而其中「被复制 10 份」这一条经实测是**不准确**的。**
+
+**可核验事实一：两套口径在同一棵树上并置（2026-11-23 CST）。**
+
+| 口径 | 定义 | **11-23 实测** | 11-18 发布值 |
+|---|---|---:|---:|
+| SKILL.md 文件数 | — | **1,089** | 1,087 |
+| **名口径** | 身份 = `SKILL.md` 的**父目录名** | **331（3.29×）** | 330（3.30×）✓ 复现 |
+| **内容口径** | 身份 = **不同 blob sha 集合** | **944（1.15×）** | 未测 |
+| 不同 blob sha 总数 | — | **944** | 942（11-18 记录） |
+| 同名身份中出现 ≥2 份的 | — | **273** | 273 ✓ |
+| **其中逐字节相同的** | — | **33** | 11-18 记「最大单一技能被复制 10 份」 |
+| **其中内容不同的** | — | **240** | 未测 |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐⭐⭐ 决定性事实：11-18 说「`verification-loop` / `tdd-workflow` / `security-review` / `frontend-patterns` / `coding-standards` / `backend-patterns` 各被复制 10 份」—— 本日实测 `backend-patterns` 是 **10 份副本 / 9 个不同 blob sha**、`coding-standards` 是 **10 份副本 / 9 个不同 blob sha**，⭐⭐⭐⭐⭐ 即「10 份」是**同名身份出现在 10 个目录**，⭐⭐⭐⭐⭐ 而这 10 份里有 9 份是**各自不同内容的 harness 变体**，只有 1 份是原始件。⭐⭐⭐⭐⭐ 因此「被复制 10 份」这个说法在内容层面不成立。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐⭐⭐ 而这个修正不是贬低 ECC，反而解释了它为什么好：⭐⭐⭐⭐⭐ 9 个 harness 目录（`.agents` / `.claude-plugin` / `.codebuddy` / `.codex-plugin` / `.cursor` / `.gemini` / `.grok-plugin` / `.kiro` / `.opencode`）⭐⭐⭐⭐⭐ 意味着每个技能都要针对 9 个 harness 各写一份 —— ⭐⭐⭐⭐⭐ **「变体」正是适配层的必要产物，⭐⭐⭐⭐⭐ 而 11-18 把这种必要产物误读成了「复制放大」，⭐⭐⭐⭐⭐ 由此得出的「ECC 的内容层与适配层投入比（3.30×）值得被持续观测」这一条推论也随之失效 —— 因为它的**内容冗余倍数只有 1.15×**，是本队列中第二低的。⭐⭐⭐⭐⭐ 修正后的正确表述是：ECC 的内容层（944 个不同技能内容）与适配层（1,089 个文件）之比是 1.15，⭐⭐⭐⭐⭐ 而「273 个技能有 9 套变体」才是它支持多 harness 的真实代价。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 修正后的三层判据（本日报建议固化为常规体检项）：**
+
+| 层 | 定义 | **ECC** | `plannotator` | `cursor/plugins` | `claude-trading-skills` | `CLI-Anything` |
+|---|---|---:|---:|---:|---:|---:|
+| **① 内容冗余倍数** | 文件数 ÷ 不同 blob sha | **1.15×** | 1.00× | 1.27× | 1.12× | 1.15× |
+| **② 变体率** | 同名不同内容的身份 ÷ 身份数 | **0.73** | 0.17 | 0.20 | 0.14 | 0.05 |
+| **③ 身份跨度** | 同一身份名出现在几个目录 | 273 个身份 ≥2 份 | 4 个 | 60 个 | 10 个 | 4 个 |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 第三点（本日的新事实）：它已离开 Trending 榜单。** ⭐⭐⭐⭐⭐ 实测 11-18 的 25 个仓库中只有 15 个留在 11-23 榜单上，⭐⭐⭐⭐⭐ ECC 是离榜者之一（11-19 快照 306,433⭐ 后未再出现）。⭐⭐⭐⭐⭐ **本日报不主张它的热度下降 —— 305,425 → 306,433 的 6 日净增仅 +1,008（约 +0.3%），⭐⭐⭐⭐⭐ 远低于它此前 11-17 记录的 +66,998，⭐⭐⭐⭐⭐ 但「此前 11-17 的 +66,998 是两个快照点之差而非时间序列增速」这一保留仍然成立，⭐⭐⭐⭐⭐ 本日无法用现有数据判断这个落差是趋势还是快照噪声。**
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 第四点：它的分发纪律部分未受影响。** ⭐⭐⭐⭐⭐ 实测 15 个 CI 工作流仍在（含 `generator-generic-ossf-slsa3-publish.yml` / `pr-burst-guard.yml`），⭐⭐⭐⭐⭐ 9 套 harness 目录不变，⭐⭐⭐⭐⭐ 19 release / 20 tag 不变，⭐⭐⭐⭐⭐ 且实测到 `scripts/sync-ecc-to-codex.sh` / `scripts/dev/generate-skill-triggers.js` / `scripts/lib/codex-legacy-sync.js` 等 23 个生成/同步脚本路径 —— ⭐⭐⭐⭐⭐ **即「变体是被脚本生成的」这一点有文件名层面的证据，⭐⭐⭐⭐⭐ 但本日报未读取这些脚本，⭐⭐⭐⭐⭐ 因此不主张它们生成的是「变体」还是「副本」以外的任何东西。**
+
+---
 
 ## 一句话定位
 **Agent harness 的「操作系统」—— 本日它最有价值的一条发现不是它有多少技能，而是「1,087 个 SKILL.md」这个数字本身需要被拆开：实测其中 272 个技能身份（占 1,029 个文件）在 3–10 个 harness 目录下各存一份，真实的独立技能身份只有 330 个。**

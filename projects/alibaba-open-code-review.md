@@ -2,20 +2,73 @@
 title: "alibaba/open-code-review"
 slug: "alibaba-open-code-review"
 date_added: "2026-06-06"
-last_seen_date: "2026-11-18"
+last_seen_date: "2026-11-23"
 category: "生产可用"
 emoji: "🔍"
-stars: "53,682 stars"
-stars_delta: "⭐ 2026-11-18 更新（快照 2026-11-18 CST，仓库创建于 2026-05-18T02:16:36Z）：19,475⭐（06-06 快照）→ **53,682⭐**；forks 4,429 · subs 156 · oi 358 · **1,227 blobs**（含 4 个 SKILL.md）· 55,473 KB · Go · Apache-2.0 · **100 个 release / 100 个 tag，每个 release 7 个 asset**（4 个裸二进制 + 2 个 Windows exe + 1 个 sha256sum.txt）· 14 个 CI 工作流 · 贡献者 `lizhengfeng101` 303 + `chethanuk` 39 + `wu21-web` 38 + `Qiyuanqiii` 25 + `stay-foolish-forever` 23 + `yingjiexu2002` 13 + `amh1k` 11 + `dependabot[bot]` 11"
+stars: "55,384 stars"
+stars_delta: "⭐ 2026-11-23 更新（快照 2026-11-23 CST，仓库创建于 2026-05-18T02:16:36Z）：53,682⭐（11-18 快照）→ **55,384⭐**（+1,702，6 日序列 53,669 → 54,166 → 54,369 → 54,746 → 55,070 → 55,384）；forks 4,600 · subs 158 · oi 345 · **1,320 blobs**（11-18 为 1,227）· Go · Apache-2.0 · **100 个 release / 100 个 tag，每个 release 7 个 asset**（含 sha256sum.txt）· **全量 release 单 asset 下载最大值 16,263，是「最新 6 个 release」窗口（14,019）的 23.8×** · **SKILL.md 4 个 / 名口径 2 身份（2.00×）/ 内容口径 4 身份（1.00×）** · harness 目录 2 套"
 language: "Go"
 license: "Apache-2.0"
-score: 89
-tags: ["code-review", "hybrid-architecture", "alibaba", "agent", "deterministic-pipeline", "release-discipline"]
+score: 91
+tags: ["code-review", "hybrid-architecture", "alibaba", "contract-as-ci", "release-discipline", "caliber-audit"]
 url: "https://github.com/alibaba/open-code-review"
 homepage: "https://open-codereview.ai"
 ---
 
 # alibaba/open-code-review
+
+## 最近动态（2026-11-23）
+
+⭐⭐⭐⭐⭐ **本日对本项目做的是同口径复测，结论是：它作为「确定性 + LLM 混合架构」与「契约做成 CI 门禁」这两条的样本地位完全不变，⭐⭐⭐⭐⭐ 但 11-18 用来支撑对比的那组下载数字需要修正 —— 而修正的方向对它有利。**
+
+**可核验事实一：11-18 的下载区间之所以看起来高，是因为它的 asset 数少到不会被截断。**
+
+| release | asset 数 | 11-18 视角（`[:12]`，实际未截断） | **真实区间** |
+|---|---:|---|---|
+| `v1.13.12` | 7 | 493 – 1,886 | **493 – 1,886**（无截断） |
+| `v1.13.13` | 7 | 476 – 991 | **476 – 991**（无截断） |
+| `v1.14.1` | 7 | — | **119（max）/ 441（total）** |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 关键的不对称就在这里：`plannotator` 每个 release 36 个 asset，被截断的正是 12 个（33%）；⭐⭐⭐⭐⭐ 而本项目每个 release 只有 7 个 asset，11-18 脚本的 `[:12]` **根本没有触发截断**。⭐⭐⭐⭐⭐ 也就是说，11-18 那次对比的误差**只作用在对照组一侧**，⭐⭐⭐⭐⭐ 这是一个典型的「非对称测量误差」案例 —— 也是本日第 1 条趋势的方法论核心。**
+
+**可核验事实二：全量 release 的下载分布。**
+
+| 指标 | 实测值 |
+|---|---:|
+| release 数（API 前 100 条） | **100** |
+| **全量 release 平均下载** | **3,480** |
+| 最新 3 个 release 平均下载 | **1,726**（比全量均值**低** 2.0×） |
+| **全量 release 单 asset 最大下载** | **16,263** |
+| 最新 6 个 release 下载总量 | **14,019** |
+| 较老 release（9.8–159.1 天）下载总量 | **333,966**（**23.8×**） |
+| Spearman(发布年龄, 下载量) | **−0.549**（n=100） |
+| 30–34 天区间中位数 | **28,400** |
+
+⭐⭐⭐⭐⭐ **即本项目的下载量是「越老越高」的（ρ = −0.549），⭐⭐⭐⭐⭐ 而 `nginx/nginx` 是「越老越低」（ρ = +0.370），⭐⭐⭐⭐⭐ `Ghost-Downloader-3` 越老越高（−0.636），`autoclip` 越老越低（−0.321）。⭐⭐⭐⭐⭐ **四个项目两种符号 —— 这就是本日报主张「取最新 N 个 release 不能跨项目比较」的实证。**
+
+**可核验事实三：SKILL.md 身份口径（本日新发现的一处 11-18 口径不一致）。**
+
+| 口径 | 11-18 发布值 | **11-23 实测** |
+|---|---|---|
+| SKILL.md 文件数 | 4 | **4** |
+| **名口径**（身份 = 父目录名） | — | **2**（`open-code-review` / `open-code-review-delegate`，各 2 份） |
+| **内容口径**（身份 = 不同 blob sha 集合） | **4** | **4**（复现 ✓） |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 即 11-18 那张表里这一行用的是内容口径（或两者在此巧合相同），⭐⭐⭐⭐⭐ 而其余各行用的是名口径 —— 11-18 的表格内部口径并不统一，⭐⭐⭐⭐⭐ 这本身比任何一个单行的偏差更危险，因为它使整张表无法被复现。⭐⭐⭐⭐⭐ 且 4 份副本两两内容不同（`plugins/open-code-review/skills/` vs `skills/`），⭐⭐⭐⭐⭐ 同样是「变体」而非「复制」。**
+
+**可核验事实四：6 日 star 序列与契约工作流。**
+
+| 指标 | 实测值 |
+|---|---|
+| 6 日 star 序列 | 53,669 → 54,166 → 54,369 → 54,746 → 55,070 → **55,384** |
+| 逐日增 | +497 / +203 / +377 / +324 / +314 |
+| 5 日总增 | **+1,715（+3.2%）** |
+| blobs | 1,227 → **1,320**（+93） |
+| harness 目录 | 2 套（`claude-code` / `opencode`） |
+
+⭐⭐⭐⭐⭐ **⭐⭐⭐ 而本项目特有的价值 —— 「把契约做成 CI 门禁」—— 本日出现了第二个独立样本：`HKUDS/CLI-Anything` 的 `check-codex-skill.yml` / `check-cursor-plugin.yml` / `check-root-skills.yml`。⭐⭐⭐⭐⭐ 两个不同机构、两个不同领域（代码评审 vs agent CLI 生成）、同一模式，⭐⭐⭐⭐⭐ **本日报据此把「契约检查成为多 harness 项目的标准做法」列为本日的一条正面发现。**
+
+---
 
 ## 一句话定位
 **阿里的混合架构代码评审工具 —— 确定性流水线 + LLM Agent 双轨并行，本日它的价值在于它是「发布纪律四档」里最经济的一档：100 个 release，每个只带 7 个 asset。**
